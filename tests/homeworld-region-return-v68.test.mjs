@@ -9,6 +9,11 @@ const bundle = await build({ stdin: { contents: `
 export * from './app/game/systems/homeworld';
 export * from './app/game/systems/homeworldInput';
 export * from './app/game/systems/homeworldContractsV68';
+export * from './app/game/systems/minorArcsV160';
+export { tribunalAccessV147, tribunalBlocksChroniclePromotionV147 } from './app/game/systems/honorTribunalV147';
+export { getChronicleRank } from './app/game/systems/clanChronicle';
+export { emptyResidenceV149, houseV149, isFutureResidenceV149, normalizeResidenceV149, recordResidenceFieldEventV149 } from './app/game/systems/residenceV149';
+export { emptyResidenceLifeV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, settleResidenceLifeV150 } from './app/game/systems/residenceLifeV150';
 export * from './app/game/systems/homeworldRegionsV68';
 export * from './app/game/save';
 `, resolveDir: process.cwd() }, bundle: true, write: false, format: 'esm', platform: 'node', logLevel: 'silent' });
@@ -70,7 +75,7 @@ function fixture() {
     writeSaveWithStatus(save) { const result = api.writeSaveWithStatus(save, storage, key); writes.push(result); return result; },
     reconcileSaveWrite(attempt, owner) { return api.reconcileSaveWrite(attempt, owner, storage, key); },
   };
-  for (const name of ['persist', 'persistSocialProgress', 'openHomeworldRegionV68', 'checkpointHomeworldRegionV68', 'fieldHomeworldRegionV68', 'reachCityHomeworldRegionV68']) root[name] = callback('GameClient.tsx', name, root);
+  for (const name of ['persist', 'persistSocialProgress', 'openHomeworldRegionV68', 'settleResidenceLifeForRegionV150', 'checkpointHomeworldRegionV68', 'fieldHomeworldRegionV68', 'reachCityHomeworldRegionV68']) root[name] = callback('GameClient.tsx', name, root);
   assert.equal(root.openHomeworldRegionV68('ash-marches'), true);
   const walking = structuredClone(root.saveRef.current.homeworldRegionV68);
   // An actual city interaction creates this arrival; no terminal flag is forged.

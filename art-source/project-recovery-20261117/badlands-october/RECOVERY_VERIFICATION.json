@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-17",
+  "operation": "source-preservation-only",
+  "manifest": "RECOVERY_MANIFEST.json",
+  "mainCommit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+  "archiveChecks": [
+    {
+      "pack": "PREDATOR_BADLANDS_V14_166_ASSETS/badlands_pack_v14",
+      "checksums": 177,
+      "matches": 177,
+      "checksum_mismatches": [],
+      "manifest_entries": 166,
+      "present_assets": 166,
+      "sha256_matches": 166,
+      "byte_matches": 166,
+      "dimension_matches": 166
+    },
+    {
+      "pack": "PREDATOR_BADLANDS_LOT14_7_AJOUTS/badlands_pack_lot14",
+      "checksums": 18,
+      "matches": 18,
+      "checksum_mismatches": [],
+      "manifest_entries": 7,
+      "present_assets": 7,
+      "sha256_matches": 7,
+      "byte_matches": 7,
+      "dimension_matches": 7
+    }
+  ],
+  "occurrenceChecks": {
+    "total": 200,
+    "passed": 200,
+    "failed": 0
+  },
+  "newSourceFiles": 23,
+  "newSourceBytes": 3385883,
+  "mainReferences": {
+    "occurrences": 174,
+    "uniqueContents": 167
+  },
+  "openPrOnlyReferences": 0,
+  "localDeduplicatedOccurrences": 3,
+  "sourceBytesModified": false,
+  "imageGenerationPerformed": false,
+  "inGameReviewPerformed": false
+}

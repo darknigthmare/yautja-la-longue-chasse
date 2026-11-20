@@ -1,6 +1,6 @@
 'use client';
 /* eslint-disable @next/next/no-img-element -- unmodified native ground, architectural modules and animation cells */
-import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent, type ReactNode } from 'react';
 import type { SaveGame } from './types';
 import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldBuildingSpritePlacementV64 } from './systems/homeworldGeometryV64';
 import { HOMEWORLD_BUILDING_ART_V64, HOMEWORLD_GROUND_ART_V64, HOMEWORLD_PROP_ART_V64, HOMEWORLD_INTERIOR_ART_V64 } from './systems/homeworldArtV64';
@@ -44,6 +44,12 @@ export interface HomeworldRegionV68Props {
   onBibleSceneAction?(action: BibleSceneActionV86, state: HomeworldRegionStateV68): BibleSceneResultV86;
   onReachCity(state?: HomeworldRegionStateV68): boolean | void;
   onOpenSettings?(): void;
+  /** V149: residence panel for a Demeure the player stands in (null when it holds no house). */
+  residenceV149?(buildingId: string, disabled: boolean): ReactNode;
+  /** V150: guests of the player's house at this tick (village walk or seated inside). */
+  guestsV150?(view: { regionId: string; runId: string; tick: number; zone: string; buildingId: string | null }): readonly { residentId: string; x: number; y: number; inside: boolean; moving: boolean; label: string }[];
+  /** V158: voie mission played on this route (null when none applies here). */
+  pathMissionV158?(disabled: boolean): ReactNode;
 }
 const axes = [['left', '←'], ['up', '↑'], ['down', '↓'], ['right', '→']] as const;
 type Move = typeof axes[number][0];
@@ -180,6 +186,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   }, [pause, resume, clear]);
   useEffect(() => {
     let frame = 0, last = 0, accumulator = 0;
+    const visitsAt = (checkpoint: HomeworldRegionStateV68) => latest.current.guestsV150?.(checkpoint) ?? [];
     const loop = (time: number) => {
       const delta = last ? Math.min(.05, (time - last) / 1000) : 0; last = time;
       const inactive = document.hidden || !document.hasFocus();
@@ -200,11 +207,11 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         while (accumulator >= 1 / 60 && !pauseRef.current && current.current) {
           accumulator -= 1 / 60;
           const confirm = interact.current; interact.current = false;
-          const before = current.current, interaction = confirm ? homeworldRegionInteractionV68(before) : null;
+          const before = current.current, interaction = confirm ? homeworldRegionInteractionV68(before, visitsAt(before)) : null;
           if((confirm)&&bibleCulturalNearbyV86(before)&&latest.current.onBibleSceneAction){openBible();break;}
           const activity = !interaction && before.zone === 'village' && (confirm) ? nearestVillageActivityV70(regionId, before.actor) : null;
           const villageResident = !interaction && !activity && before.zone === 'village' && (confirm) ? nearestHomeworldVillageResidentV69(regionId, before.tick, before.actor) : null;
-          const next = stepHomeworldRegionV68(before, { x: Number(active('hunt.moveRight') || touch.current.has('right') || sample.movement.right) - Number(active('hunt.moveLeft') || touch.current.has('left') || sample.movement.left), y: Number(active('hunt.moveDown') || touch.current.has('down') || sample.movement.down) - Number(active('hunt.moveUp') || touch.current.has('up') || sample.movement.up), interact: !activity && !villageResident && (confirm) });
+          const next = stepHomeworldRegionV68(before, { x: Number(active('hunt.moveRight') || touch.current.has('right') || sample.movement.right) - Number(active('hunt.moveLeft') || touch.current.has('left') || sample.movement.left), y: Number(active('hunt.moveDown') || touch.current.has('down') || sample.movement.down) - Number(active('hunt.moveUp') || touch.current.has('up') || sample.movement.up), interact: !activity && !villageResident && confirm }, false, visitsAt);
           current.current = next;
           if (next.tick % 2 === 0 || next.zone !== before.zone || next.pendingFieldEvent) setState(next);
           if (next.pendingFieldEvent) { if (!field(next)) break; }
@@ -227,7 +234,8 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const d = HOMEWORLD_GEOMETRY_V64.depthScale, position = project(state.actor), zoom = Math.min(.98, Math.max(.6, size.height / 720));
   const world = state.zone === 'passage' ? { width: 18700, depth: 3300 } : state.zone === 'interior' ? HOMEWORLD_REGION_INTERIOR_V68 : HOMEWORLD_VILLAGE_WORLD_V68;
   const camera = { x: world.width * zoom < size.width ? -(size.width - world.width * zoom) / 2 : Math.max(0, Math.min(world.width * zoom - size.width, position.x * zoom - size.width / 2)), y: state.zone === 'interior' && world.depth * d * zoom < size.height - 240 ? -(size.height - world.depth * d * zoom) / 2 : Math.max(-180, Math.min(world.depth * d * zoom - size.height + 190, position.y * zoom - size.height * .66)) };
-  const interaction = homeworldRegionInteractionV68(state), activity = !interaction && state.zone === 'village' ? nearestVillageActivityV70(regionId, state.actor) : null, villageResident = !interaction && !activity && state.zone === 'village' ? nearestHomeworldVillageResidentV69(regionId, state.tick, state.actor) : null, appearance = save.appearance;
+  const guests = props.guestsV150?.(state) ?? [];
+  const interaction = homeworldRegionInteractionV68(state, guests), activity = !interaction && state.zone === 'village' ? nearestVillageActivityV70(regionId, state.actor) : null, villageResident = !interaction && !activity && state.zone === 'village' ? nearestHomeworldVillageResidentV69(regionId, state.tick, state.actor) : null, appearance = save.appearance;
   const bibleNearby=!!props.onBibleSceneAction&&bibleCulturalNearbyV86(state),b=BIBLE_CULTURAL_BINDING_V86;
   const bibleContext=bibleCulturalContextV86({save,ownerSaveCreatedAt:save.createdAt,region:state,sceneActive:localPanel==='bible-v86'&&ready&&!error,
     focused,suspended,host:regionId===b.regionId&&state.zone==='village'?{id:b.npcId,present:true,alive:true,conscious:true}:null,
@@ -273,7 +281,8 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         {state.zone === 'village' && <>
           {definition.buildings.map(b => { const placement = homeworldBuildingSpritePlacementV64(b); return <span key={b.id} data-region-building={b.id} className={styles.building} style={{ ...placement, zIndex: Math.round(b.y), opacity: villageFacadeFadedV70(b, state.actor, youthWelcome ? 82 : 100) ? .42 : 1 }}><img alt="" draggable={false} src={b.art.src} /><span>{b.label}</span></span>; })}
           {definition.props.filter(p => !villagePaintOccludedV70(definition.buildings, p, state.actor, { actorHeight: youthWelcome ? 82 : 100 })).map(p => { const ground = project(p); return <HomeworldNativePropV64 key={p.id} id={`${regionId}-${p.id}`} artId={p.artId} art={HOMEWORLD_PROP_ART_V64[p.artId]} x={ground.x} y={ground.y} depth={p.y} />; })}
-          {definition.residents.map(n => { const p = regionResidentPositionV68(n, state.tick); return drawActor(n.id, p.x, p.y, n.morphId, n.dreadStyleId, n.route.length > 1, n); })}
+          {definition.residents.filter(n => !guests.some(g => g.residentId === n.id)).map(n => { const p = regionResidentPositionV68(n, state.tick); return drawActor(n.id, p.x, p.y, n.morphId, n.dreadStyleId, n.route.length > 1, n); })}
+          {guests.filter(g => !g.inside).map(g => { const n = definition.residents.find(r => r.id === g.residentId); return n ? <span key={`guest-${g.residentId}`} data-residence-guest-v150={g.residentId}>{drawActor(`guest-${n.id}`, g.x, g.y, n.morphId, n.dreadStyleId, g.moving, n)}</span> : null; })}
           {props.onBibleSceneAction&&<HomeworldBibleCultureHostV86 regionId={regionId} tick={state.tick} />}
           <HomeworldVillageLifeV69 regionId={regionId} tick={state.tick} actor={state.actor} actorHeight={youthWelcome ? 82 : 100} activityProgress={activitySession.progress} rect={{ left: camera.x / zoom, top: camera.y / zoom, right: (camera.x + size.width) / zoom, bottom: (camera.y + size.height) / zoom }} />
           {HOMEWORLD_REGION_TRACES_V68.map((p, n) => { const v = project(p); return <span key={p.id} className={`${styles.trace} ${state.traces.includes(p.id) ? styles.collected : ''}`} data-region-trace={p.id} style={{ left: v.x, top: v.y }}><i /><b>{p.label}</b><small>{definition.traceNotes[n]}</small></span>; })}
@@ -286,6 +295,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         {state.zone === 'interior' && <>
           {interiorShell?.groups.map(group => <span key={group.side} className={styles.interiorPanels} data-region-interior-panels={group.side} style={{ ...group.clip, left: group.clip.left + 25, top: group.clip.top + 35 * d }}>{group.panels.map(panel => <HomeworldNativePropV64 key={panel.id} id={panel.id} artId={panel.artId} art={panel.art} x={panel.localPaintPivot.x} y={panel.localPaintPivot.y} depth={group.side === 'north' ? 0 : panel.groundPivot.y} />)}</span>)}
           {homeworldRegionInteriorPropsV68(state.buildingId).map(prop => { const p = project(prop); return <HomeworldNativePropV64 key={prop.id} id={prop.id} artId={prop.artId} art={HOMEWORLD_PROP_ART_V64[prop.artId]} x={p.x} y={p.y} depth={prop.y} />; })}
+          {guests.filter(g => g.inside).map(g => { const n = definition.residents.find(r => r.id === g.residentId); return n ? <span key={`guest-${g.residentId}`} data-residence-guest-v150={g.residentId} data-guest-inside>{drawActor(`guest-${n.id}`, g.x, g.y, n.morphId, n.dreadStyleId, false, n)}</span> : null; })}
           <span className={styles.waypoint} style={{ left: 380, top: 620 * d }}><b>Sortie</b></span>
         </>}
         <span className={styles.actor} data-region-player data-youth-appearance={youthWelcome} data-x={state.actor.x} data-y={state.actor.y} style={{ left: position.x, top: position.y, zIndex: Math.round(state.actor.y) }}><i className={styles.shadow} />{(youthWelcome || hero.exactPreset) && playerPlacement ? <img src={hero.src} alt="" draggable={false} style={{ ...playerPlacement, position: 'absolute', transform: `scaleX(${state.actor.facing})` }} /> : <HomeworldModularHunter morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={appearance} showArmor armorId={save.loadout.armorId} hasWristblades={save.loadout.weaponIds.includes("wristblades")} gauntletVariantId={props.gauntletVariantId} motionPhase={state.tick / 60} speed={Math.hypot(state.actor.vx, state.actor.vy)} style={{ ...(playerPlacement ?? { width: 100, height: 100, top: -100 }), position: 'absolute', transform: `scaleX(${state.actor.facing})` }} />}</span>
@@ -295,6 +305,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
       <b>{narratives[0]?.instruction ?? regionObjectiveV68(state)}</b>
       {regionId===b.regionId&&props.onBibleSceneAction&&state.zone==='village'&&<span>Halte des Crêtes : table de la place, après le relevé remis au guide.{bibleNearby?' Arrête-toi puis interagis.':''}</span>}
       {destination && routeProgress && <span data-village-route-instruction-v70>{destination.name} · {routeProgress.arrived ? 'Approche atteinte : interagir sur place' : routeProgress.offRoute ? 'Reviens aux repères tracés au sol' : `${routeProgress.metres} m à pied`}</span>}
+      {props.pathMissionV158 && <div style={{ pointerEvents: 'auto' }}>{props.pathMissionV158(!localAllowed)}</div>}
       <span>{state.zone === 'village' ? `${state.visitedBuildings.length}/12 lieux visités · ${state.greeted.length}/12 témoins rencontrés · ${definition.residents.length + HOMEWORLD_VILLAGE_LIFE_V69[regionId].residents.length} habitants` : state.zone === 'passage' ? `${Math.round(state.walked * .023)} m parcourus · ${state.routeVisited.length}/${definition.route.length} bornes` : serviceBuilding?.label}</span>
     </aside>
     <footer className={styles.controls} inert={modal}><div>{axes.map(([id, label]) => <button key={id} aria-label={`Marcher ${id}`} onPointerDown={e => pointer(id, true, e)} onPointerUp={e => pointer(id, false, e)} onPointerCancel={e => pointer(id, false, e)} onLostPointerCapture={() => touch.current.delete(id)}>{label}</button>)}</div><button disabled={!bibleNearby&&!interaction && !activity && !villageResident} data-region-interact onPointerDown={e => { e.preventDefault(); interact.current = true; }}>{bibleNearby?'Parler à l’hôte de la halte':interaction?.label ?? (activity ? `Participer : ${activity.name}` : villageResident ? `Parler : ${villageResident.name}` : 'Approche un lieu ou un habitant')} <small>{controlActionShortcut('hunt.interact', save.settings.controlBindings)}</small></button><small>{controlActionShortcut('hunt.pause', save.settings.controlBindings)} · Pause</small></footer>
@@ -310,6 +321,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         <p>{serviceBuilding?.role === 'forge' ? 'Les balises et les outils demeurent aux ateliers. Le poste de calibration extérieur permet de comparer les lectures avant une sortie.' : serviceBuilding?.role === 'clinic' ? 'La maison des soins protège les retours. Observe les avertissements du territoire et interromps une sortie lorsque sa lecture devient incertaine.' : serviceBuilding?.role === 'archive' ? 'Les récits gardent leurs auteurs. Une préparation au village ne vaut ni trophée, ni preuve de terrain ; le guide ne confirme que les relevés réellement remis.' : serviceBuilding?.role === 'hall' ? 'La maison commune rassemble les chemins du clan. Les demeures, les ateliers et les soins ont chacun leur approche ; le poste extérieur reste séparé des rues.' : 'Cette demeure reste celle de ses habitants. Les coffrets et les outils ne sont pas des prises à emporter.'}</p>
         <p><b>Danger du territoire : {definition.hazard}.</b> Les avertissements concernent le poste extérieur, pas les services civils.</p>
         {narratives.map(n => <p key={n.id}><b>{n.title}</b><br />{n.instruction}{n.confirmedReport && <><br />{n.confirmedReport}</>}</p>)}
+        {serviceBuilding?.role === 'residence' && state.buildingId && props.residenceV149?.(state.buildingId, !localAllowed)}
         <p>Ressors par le seuil au sud, puis consulte le plan du village pour préparer ton chemin.</p>
       </div> : notice ? <><YautjaTranslationV67 text={notice} />{noticeFromGuide && narratives.map(n => <p key={n.id}>{n.instruction}{n.confirmedReport && <><br />{n.confirmedReport}</>}</p>)}</> : <p>{artError || (!gate.allowed ? gate.reason : !ready ? 'Les abords du territoire se dévoilent…' : state.zone === 'passage' ? `Suis les bornes jusqu’au village. La corniche mesure environ ${Math.round(homeworldRegionRouteMetresV68(regionId))} mètres ; tu peux revenir sur tes pas.` : definition.introduction)}</p>}
       {navigationError && <p role="alert">{navigationError}</p>}

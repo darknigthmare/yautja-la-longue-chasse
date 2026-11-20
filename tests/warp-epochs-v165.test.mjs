@@ -1,0 +1,184 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { homeworldSceneSsrV78 } from "./helpers/homeworld-scene-ssr-v78.mjs";
+
+// V165 : boucle Warp W-02 (1629). Modules réels, aucun mock de logique de jeu.
+const source = homeworldSceneSsrV78();
+const warp = source.load("app/game/systems/warpEpochsV165.ts");
+const { MISSIONS } = source.load("app/game/data.ts");
+const { defaultSave, normalizeSave, parseSaveImport, exportSave, SAVE_VERSION } = source.load("app/game/save.ts");
+
+const owner = "2026-11-20T10:00:00.000Z";
+const full = { blooded: true, personalShip: true, adjutant: true };
+const ok = update => { assert.equal(update.accepted, true, update.message); return update.state; };
+
+function readyState() {
+  let s = warp.createWarpEpochsV165(owner);
+  s = ok(warp.startWarpCommonQuestV165(s, full, "stabilite"));
+  for (const c of warp.WARP_COMPONENTS_V165) s = ok(warp.verifyWarpComponentV165(s, c.id, "reparer"));
+  s = ok(warp.installWarpModuleV165(s, "marge"));
+  return ok(warp.selectWarpBranchV165(s, "W-02"));
+}
+const huntResult = (outcome, extra = {}) => ({
+  outcome, completedObjectiveIds: ["scan-vanguard", "recover-transponder", "defeat-vey", "extract-jungle-trophy"],
+  kills: 6, trophyClaims: outcome === "success" ? [{ id: "claim-1" }] : [], completedAt: owner, ...extra,
+});
+
+test("accès refusé sans quête commune ni module, et sans Adjutant pour commencer", () => {
+  const empty = warp.createWarpEpochsV165(owner);
+  const ids = warp.evaluateWarpDepartureV165(empty, full).missing.map(m => m.id);
+  assert(ids.includes("quest") && ids.includes("module"));
+  assert.equal(warp.departWarpV165(empty, full).accepted, false);
+  assert.equal(warp.startWarpCommonQuestV165(empty, { ...full, adjutant: false }, "energie").accepted, false);
+  // Posséder les pièces n'installe pas le module (STATE5-26).
+  let s = ok(warp.startWarpCommonQuestV165(empty, full, "energie"));
+  for (const c of warp.WARP_COMPONENTS_V165) s = ok(warp.verifyWarpComponentV165(s, c.id, "variante"));
+  assert.equal(s.warpModuleInstalled, false);
+  assert(warp.evaluateWarpDepartureV165(s, full).missing.some(m => m.id === "module"));
+  // Une branche non implémentée ne peut pas être choisie.
+  assert.equal(warp.selectWarpBranchV165(readyState(), "W-01").accepted, false);
+});
+
+test("voyage engagé vers W-02, retour réservé même après la perte d'Adjutant", () => {
+  const ready = readyState();
+  assert.equal(warp.evaluateWarpDepartureV165(ready, { ...full, adjutant: false }).allowed, false);
+  const gone = ok(warp.departWarpV165(ready, full));
+  assert.equal(gone.activeWarpTripId, "warp-trip-1");
+  assert.equal(gone.warpReturnReservation, "reservee");
+  assert.equal(warp.branchVisitV165(gone, "W-02").visits, 1);
+  // Adjutant perdu après le départ : le retour n'en dépend pas (STATE5-29).
+  assert.equal(warp.canReturnFromWarpV165(gone), true);
+  assert.equal(warp.departWarpV165(gone, full).accepted, false);
+  const back = ok(warp.returnFromWarpV165(gone));
+  assert.equal(back.warpReturnReservation, "utilisee");
+  assert.equal(back.activeWarpTripId, null);
+  // Le prochain départ exige de nouveau la fonction Adjutant.
+  assert.equal(warp.departWarpV165(back, { ...full, adjutant: false }).accepted, false);
+});
+
+test("mission 1629 jouable via la chasse existante adaptée, sans honneur ni rang", () => {
+  const base = MISSIONS.find(m => m.id === warp.W02_HUNT_BASE_MISSION_ID_V165);
+  const mission = warp.warpW02HuntMissionV165(base);
+  assert.equal(mission.id, "jungle-vey");
+  assert.equal(mission.baseRewards.honor, 0);
+  assert.deepEqual(mission.objectives.map(o => o.id), base.objectives.map(o => o.id));
+  assert.match(mission.planetName, /1629/);
+  assert.equal(base.presentation, undefined);
+  assert.equal(mission.presentation.backgroundLayout, "single");
+  assert.match(mission.presentation.revealAnnouncement, /garde/);
+  const panorama = readFileSync(new URL(`../public${mission.presentation.backgroundPath}`, import.meta.url));
+  assert.equal(panorama.toString("ascii", 0, 4), "RIFF");
+  assert.equal(panorama.toString("ascii", 8, 12), "WEBP");
+  let s = ok(warp.departWarpV165(readyState(), full));
+  assert.equal(warp.canLaunchW02HuntV165(s).allowed, false);
+  s = ok(warp.resolveW02StepV165(s, "WARP-M16", "declencher"));
+  s = ok(warp.resolveW02StepV165(s, "WARP-M17", "affronter"));
+  assert.equal(warp.branchVisitV165(s, "W-02").steps["WARP-M17"].resolved, false);
+  assert.equal(warp.canLaunchW02HuntV165(s).allowed, true);
+  const after = ok(warp.applyW02HuntResultV165(s, huntResult("success"), false));
+  const visit = warp.branchVisitV165(after, "W-02");
+  assert.equal(visit.huntSuccess, true);
+  assert.deepEqual(visit.steps["WARP-M17"], { resolved: true, success: true, choice: "affronter" });
+  assert.equal(visit.trophy.branchId, "W-02");
+  assert.equal(visit.trophy.year, 1629);
+  assert(visit.deadIds.includes(warp.W02_CHAMPION_ID_V165));
+  // Le même événement ne s'applique pas deux fois ; le champion mort ferme la chasse.
+  assert.equal(warp.applyW02HuntResultV165(after, huntResult("success"), false).accepted, false);
+  const final = ok(warp.resolveW02StepV165(after, "WARP-M18", "accepter-don"));
+  assert.equal(warp.branchVisitV165(final, "W-02").epochCompleted, true);
+});
+
+test("échec, retrait et technologie laissée : pas de trophée, un écho vers W-03", () => {
+  let s = ok(warp.departWarpV165(readyState(), full));
+  s = ok(warp.resolveW02StepV165(s, "WARP-M16", "contourner"));
+  const failed = ok(warp.applyW02HuntResultV165(s, huntResult("failure", { completedObjectiveIds: ["scan-vanguard"] }), true));
+  const visit = warp.branchVisitV165(failed, "W-02");
+  assert.equal(visit.trophy, null);
+  assert.equal(visit.deadIds.includes(warp.W02_CHAMPION_ID_V165), false);
+  assert.equal(failed.echoes.length, 1);
+  assert.equal(failed.echoes[0].toBranchId, "W-03");
+  assert.equal(warp.canLaunchW02HuntV165(failed).allowed, true);
+});
+
+test("état de branche conservé à la revisite : morts et objets pris non réinitialisés", () => {
+  let s = ok(warp.departWarpV165(readyState(), full));
+  s = ok(warp.resolveW02StepV165(s, "WARP-M16", "declencher"));
+  s = ok(warp.resolveW02StepV165(s, "WARP-M17", "affronter"));
+  s = ok(warp.applyW02HuntResultV165(s, huntResult("success"), false));
+  s = ok(warp.resolveW02StepV165(s, "WARP-M18", "accepter-don"));
+  s = ok(warp.returnFromWarpV165(s));
+  const before = warp.branchVisitV165(s, "W-02");
+  s = ok(warp.departWarpV165(s, full));
+  assert.equal(s.activeWarpTripId, "warp-trip-2");
+  const again = warp.branchVisitV165(s, "W-02");
+  assert.equal(again.visits, 2);
+  assert.deepEqual({ ...again, visits: 0 }, { ...before, visits: 0 });
+  assert.equal(warp.canLaunchW02HuntV165(s).allowed, false);
+  assert.equal(warp.resolveW02StepV165(s, "WARP-M16", "contourner").changed, false);
+});
+
+test("héros canon intouchables : aucune issue ne les tue", () => {
+  assert.deepEqual([...warp.WARP_CANON_HERO_IDS_V165].sort(), ["kenji", "naru", "torres", "ursa"]);
+  const s = ok(warp.departWarpV165(readyState(), full));
+  for (const id of warp.WARP_CANON_HERO_IDS_V165) assert.equal(warp.recordBranchDeathV165(s, "W-02", id).accepted, false);
+  const mission = warp.warpW02HuntMissionV165(MISSIONS.find(m => m.id === "jungle-vey"));
+  for (const hero of ["Kenji", "Ursa", "Naru", "Torres"]) {
+    assert.doesNotMatch(mission.targetName + mission.boss.name, new RegExp(hero));
+  }
+  // Toutes les issues de la boucle : aucune ne place un héros parmi les morts.
+  let t = ok(warp.resolveW02StepV165(s, "WARP-M16", "contourner"));
+  t = ok(warp.applyW02HuntResultV165(t, huntResult("success"), false));
+  for (const id of warp.WARP_CANON_HERO_IDS_V165) assert.equal(warp.branchVisitV165(t, "W-02").deadIds.includes(id), false);
+  // Une sauvegarde forgée qui tue un héros est rejetée.
+  const forged = JSON.parse(JSON.stringify(t));
+  forged.branchVisitState["W-02"].deadIds.push("kenji");
+  assert.equal(warp.normalizeWarpEpochsV165(forged, owner), null);
+});
+
+test("sauvegarde : aller-retour, ancienne forme intacte, version future refusée", () => {
+  let s = ok(warp.departWarpV165(readyState(), full));
+  s = ok(warp.resolveW02StepV165(s, "WARP-M16", "declencher"));
+  const save = { ...defaultSave(owner), warpEpochsV165: s };
+  const round = parseSaveImport(exportSave(save));
+  assert.equal(round.failure ?? null, null);
+  assert.deepEqual(round.save.warpEpochsV165, s);
+  assert.equal(round.save.version, SAVE_VERSION);
+  // Ancienne sauvegarde : pas de champ Warp, rien d'ajouté ni de perdu.
+  const legacy = defaultSave(owner);
+  delete legacy.warpEpochsV165;
+  const normalized = normalizeSave(legacy);
+  assert.equal("warpEpochsV165" in normalized, false);
+  assert.deepEqual(normalized.gauntletV134, legacy.gauntletV134);
+  // Version future : refusée, pas effacée.
+  const future = { ...save, warpEpochsV165: { ...s, version: 2 } };
+  assert.equal(parseSaveImport(JSON.stringify(future)).failure, "future-version");
+  assert.equal(warp.inspectWarpEpochsV165({ ...s, version: 2 }, owner).status, "future-version");
+  // Autre campagne ou incohérence voyage/retour : invalide.
+  assert.equal(warp.inspectWarpEpochsV165(s, "2020-01-01T00:00:00.000Z").status, "invalid-save");
+  assert.equal(warp.inspectWarpEpochsV165({ ...s, warpReturnReservation: "inactive" }, owner).status, "invalid-save");
+});
+
+test("contexte d'accès lu depuis la chronique existante", () => {
+  const save = defaultSave(owner);
+  const ctx = warp.warpAccessContextFromSaveV165(save, { personalShipAvailable: true });
+  assert.equal(ctx.personalShip, true);
+  assert.equal(ctx.adjutant, false);
+});
+
+test("rendu SSR du panneau et intégration au client", () => {
+  const save = defaultSave(owner);
+  const html = source.render("app/game/WarpEpochsPanelV165.tsx", { save, onPersist: () => true, onClose: () => {} });
+  assert.match(html, /data-warp-epochs-v165/);
+  assert.match(html, /data-warp-quest="non_commence"/);
+  assert.match(html, /data-warp-condition="module" data-met="false"/);
+  assert.match(html, /W-02 · Japon féodal, 1629/);
+  assert.match(html, /data-warp-branch-card="W-01" data-status="non-implemente"/);
+  const ready = { ...save, warpEpochsV165: ok(warp.departWarpV165(readyState(), full)) };
+  const html2 = source.render("app/game/WarpEpochsPanelV165.tsx", { save: ready, onPersist: () => true, onClose: () => {} });
+  assert.match(html2, /data-warp-trip="warp-trip-1"/);
+  assert.match(html2, /data-warp-return="reservee"/);
+  const client = readFileSync(new URL("../app/game/GameClient.tsx", import.meta.url), "utf8");
+  assert.match(client, /const WarpEpochsPanelV165 = React\.lazy\(\(\) => import\("\.\/WarpEpochsPanelV165"\)\)/);
+  assert.match(client, /persistSocialProgress\(\{ warpEpochsV165: state \}\)/);
+});

@@ -11,6 +11,11 @@ export * from './app/game/systems/homeworld';
 export * from './app/game/systems/homeworldWorldV77';
 export * from './app/game/systems/homeworldInteriorsV64';
 export * from './app/game/systems/homeworldContractsV68';
+export * from './app/game/systems/minorArcsV160';
+export { tribunalAccessV147, tribunalBlocksChroniclePromotionV147 } from './app/game/systems/honorTribunalV147';
+export { getChronicleRank } from './app/game/systems/clanChronicle';
+export { emptyResidenceV149, houseV149, isFutureResidenceV149, normalizeResidenceV149, recordResidenceFieldEventV149 } from './app/game/systems/residenceV149';
+export { emptyResidenceLifeV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, settleResidenceLifeV150 } from './app/game/systems/residenceLifeV150';
 export * from './app/game/systems/homeworldRegionsV68';
 export * from './app/game/systems/homeworldAccessV69';
 export {createNurseryCampaign} from './app/game/systems/nurseryCampaign';
@@ -61,7 +66,7 @@ function fixture(initialOverrides = {}) {
     writeSaveWithStatus(save) { const result = api.writeSaveWithStatus(save, storage, key); writes.push(result.persisted); return result; },
     reconcileSaveWrite(attempt, owner) { return api.reconcileSaveWrite(attempt, owner, storage, key); },
   };
-  for (const name of ['persistSocialProgress', 'persistHomeworldProgress', 'pointInCurrentSpace', 'openHomeworldRegionV68', 'checkpointHomeworldRegionV68', 'fieldHomeworldRegionV68', 'submitContractV68']) environment[name] = callback(name, environment);
+  for (const name of ['persistSocialProgress', 'persistHomeworldProgress', 'pointInCurrentSpace', 'openHomeworldRegionV68', 'settleResidenceLifeForRegionV150', 'checkpointHomeworldRegionV68', 'fieldHomeworldRegionV68', 'submitContractV68']) environment[name] = callback(name, environment);
   environment.onProgress = environment.persistHomeworldProgress;
   const select = pointId => {
     const room = api.homeworldInteriorForPointV64(pointId);

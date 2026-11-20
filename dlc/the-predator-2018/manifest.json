@@ -1,0 +1,64 @@
+{
+  "id": "the-predator-2018-dual-campaign",
+  "title": "THE PREDATOR — CHASSE CROISÉE",
+  "version": "0.5.0-candidate.1",
+  "film": "The Predator (2018)",
+  "canonicalCut": "theatrical-2018",
+  "entryStandalone": "JOUER_THE_PREDATOR_2018_V0_5.html",
+  "entryWeb": "web/index.html",
+  "campaigns": {
+    "human": 26,
+    "predator": 26
+  },
+  "locations": 18,
+  "microZones": 183,
+  "saveKey": "yautja.dlc.the-predator-2018.v5",
+  "hostProtocolVersion": 2,
+  "officialPixelsIncluded": false,
+  "usesOriginalVectorFallback": true,
+  "hostAssetsReferenced": 7,
+  "nativeRouteBridge": true,
+  "nativeEventBridge": true,
+  "nativeCommandBridge": true,
+  "nativeRoute": "/dlc/the-predator-2018",
+  "usesHostCampaignSlots": false,
+  "usesHostHuntCanvas": false,
+  "installReversible": true,
+  "browserQA": {
+    "scenesChecked": 52,
+    "scenesPassed": 52,
+    "runtimeErrors": 0,
+    "interactionChecks": 14
+  },
+  "nodeQA": {
+    "passed": 146,
+    "failed": 0
+  },
+  "gameplay": {
+    "encounters": {
+      "traverse": 93,
+      "lockdown": 52,
+      "interaction": 15,
+      "defense": 17,
+      "stealth": 6
+    },
+    "reinforcementWaves": {
+      "0": 108,
+      "1": 58,
+      "2": 17
+    },
+    "hazardsUsed": 19,
+    "mirrorEvents": 27,
+    "squadOrders": [
+      "follow",
+      "focus",
+      "hold"
+    ]
+  },
+  "notes": [
+    "Chronologie et issues du montage cinéma verrouillées.",
+    "Dialogues de jeu originaux : aucun script intégral du film redistribué.",
+    "Les Emissary Predators et autres scènes coupées restent hors campagne principale.",
+    "Le protocole hôte v2 est bidirectionnel mais reste isolé des cinq slots principaux et de HuntCanvas."
+  ]
+}

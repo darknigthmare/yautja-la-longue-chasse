@@ -65,7 +65,11 @@ import { applyExplorationWorld, discoverExplorationRooms, interactWithExploratio
 import { defaultExplorationProgress, normalizeExplorationProgress, mergeExplorationProgress, explorationBonuses, isExplorationMission, explorationForMission } from "./systems/explorationProgress";
 import { OSERIS_VERTICAL_BOUNDS, PILOT_MISSION_ID, targetOserisCameraY } from "./systems/metroidvaniaPilot";
 import { resolvePlatformMotion, overlapsSolidPlatform, type PlatformMotionResult } from "./systems/platformCollision";
-import { attachCanopySwingV112, canopySupportReachableV112, canopySwingPointV112, isCanopySwingSnapshotV112, releaseCanopySwingV112, stepCanopySwingV112, type CanopySwingV112 } from "./systems/canopyTraversalV112";
+import {
+  attachCanopySwingV112, canopySupportReachableV112, canopySwingPointV112,
+  isCanopySwingSnapshotV112, releaseCanopySwingV112, selectCanopyEntrySupportV112,
+  stepCanopySwingV112, type CanopySwingV112,
+} from "./systems/canopyTraversalV112";
 import { solveCanopyGripRigV112 } from "./systems/canopyGripPresentationV112";
 import { canopyNavigationV112, type CanopyNavigationV112 } from "./systems/canopyNavigationV112";
 import { describeHuntFieldWorkV112, solveHuntFieldWorkRigV112, drawHuntFieldWorkV112,
@@ -295,6 +299,15 @@ import {
   hurtHuntCompanion, missingHuntCompanions, restoreHuntInsertion, stepHuntCompanions,
   type HuntCompanion, type HuntInsertionState,
 } from "./systems/huntInsertion";
+import { chromaticsForPieceV146, lightColorV146, type HunterPieceIdV146 } from "./hunterPiecesV146";
+import { camouflageVisibilityV146, heavyHitPieceV146, missionWearV146, wearFilterV146, type HunterMarkIdV146, type SkinPatternIdV146 } from "./systems/hunterCustomizationV146";
+import { markColorV146, markLayerV146, markStrokesV146 } from "./hunterMarksArtV146";
+import {
+  HOUND_ORDERS_V147, createHoundFieldV147, damageHoundFieldV147, houndHuntReportFromFieldV147, issueHoundOrderV147,
+  houndStickOrderV147, nextHoundOrderV147, pickHoundTargetV147, restoreHoundFieldV147, snapshotHoundFieldV147,
+  stepHoundFieldV147, type FieldPreyV147, type HoundOrderIdV147, type HoundFieldSnapshotV147, type HoundFieldV147, type HoundV147,
+} from "./systems/huntingHoundsV147";
+import { pieceCanvasSourceV148, pieceZoneColorsV148 } from "./hunterPieceZonesV148";
 import type {
   DifficultyId,
   ExplorationProgress,
@@ -332,6 +345,8 @@ interface HuntCanvasProps {
   appearance: HunterAppearance;
   /** Cosmetic-only wrist model chosen before mission entry; never a combat stat. */
   gauntletVariantId?: string;
+  /** V147: hunting hound chosen at the kennel (ready only); frozen for the hunt. */
+  houndV147?: HoundV147 | null;
   reducedGore: boolean;
   screenShake: boolean;
   highContrastVision: boolean;
@@ -347,6 +362,10 @@ interface HuntCanvasProps {
   onSuspendHunt?(payload: HuntPersistencePayload): void;
   onInvalidateHunt?(): void;
   onResumeFailure?(): void;
+  /** V155: Hardcore chronicle. A death is final: no retry, no relay, no abandon. */
+  hardcore?: boolean;
+  /** V155: called once when a Hardcore hunter dies, before the hunt sidecar is invalidated. */
+  onHardcoreDeath?(): void;
 }
 
 export interface HuntPersistencePayload {
@@ -379,6 +398,7 @@ type Action =
   | "gearTwo"
   | "interact"
   | "podSelfDestruct"
+  | "houndOrder"
   | "pause";
 
 type HuntPhase =
@@ -567,6 +587,8 @@ interface GearSlotSnapshot {
 }
 
 interface MissionCheckpointPayload {
+  /** V147: written only when a hound joined the hunt. */
+  houndFieldV147?: HoundFieldSnapshotV147;
   insertion?: HuntInsertionState;
   ecosystem?: CorpseDiscoveryStateV112;
   huntRites?: RitesOfHuntV77;
@@ -694,6 +716,7 @@ function selectedHandWeapon(
 }
 
 interface AssetBank {
+  houndPortraitV147?: HTMLImageElement | null;
   insertionShip?: HTMLImageElement | null;
   insertionPod?: { hull: HTMLImageElement | null; hatchInterior: HTMLImageElement | null;
     core: HTMLImageElement | null; pressure: HTMLImageElement | null; scorch: HTMLImageElement | null;
@@ -753,6 +776,9 @@ interface InputHub {
   gamepadHeld: Set<Action>;
   pressed: Set<Action>;
   previousGamepadButtons: boolean[];
+  /** V147: right-stick hound order (edge) and the direction currently held. */
+  houndStickOrderV147?: HoundOrderIdV147 | null;
+  houndStickHeldV147?: HoundOrderIdV147 | null;
   activeGamepadIndex: number | null;
   gamepadNeedsNeutral: boolean;
   gamepadDialogActions: HuntDialogGamepadAction[];
@@ -768,10 +794,22 @@ interface InputHub {
 }
 
 interface GameState {
+  /** V147: the hunting hound in the field (absent when no hound joined). */
+  houndFieldV147?: HoundFieldV147;
+  houndV147?: { name: string; bond: number };
+  /** Prey the hound marked, shown above it for a few seconds. */
+  houndMarkV147?: { preyId: string; until: number } | null;
+  houndFacingV147?: -1 | 1;
   insertion: HuntInsertionState;
   /** Live session identity, deliberately outside checkpoint authority. */
   insertionRunId: string;
   insertionShipId?: ShipId;
+  /** V146: visual detection multiplier from biome camouflage (solo hunt). */
+  camouflageV146?: number;
+  /** V146: armour pieces cracked by heavy hits during this hunt. */
+  heavyWearHitsV146?: HunterPieceIdV146[];
+  /** V146: recoloured plasma (cosmetic only), undefined = authored colour. */
+  plasmaColorV146?: string;
   ecosystem: CorpseDiscoveryStateV112;
   huntAccessibility?: HuntAccessibilityV112;
   ritualAssistV112?: RitualAssistStateV112;
@@ -864,6 +902,7 @@ interface GameState {
 
 interface UiSnapshot {
   canopyNavigationV112: CanopyNavigationV112 | null;
+  houndV147: HoundUiV147 | null;
   podRecovery: (HuntPodSafety & { phase: 'ready' | 'countdown' | 'destroyed'; remainingSeconds: number; count: number }) | null;
   insertion: {
     method: PlanetInsertionPlan['method']; searchRemaining: number;
@@ -962,6 +1001,7 @@ const HUNT_CONTROL_ACTIONS: Readonly<
   "hunt.useGearTwo": "gearTwo",
   "hunt.interact": "interact",
   "hunt.podSelfDestruct": "podSelfDestruct",
+  "hunt.houndOrder": "houndOrder",
   "hunt.pause": "pause",
 };
 
@@ -980,6 +1020,7 @@ const DEFAULT_HUNT_ACCESSIBILITY_CANVAS_V112 = normalizeHuntAccessibilityV112(un
 
 const EMPTY_UI: UiSnapshot = {
   canopyNavigationV112: null,
+  houndV147: null,
   podRecovery: null,
   insertion: { method: 'pod', team: 'solo', runId: '', shipId: null, searchRemaining: 0, members: [] },
   fieldPackV112:{carried:[],nearby:[],canDrop:false},
@@ -1256,7 +1297,7 @@ function bossArchetype(mission: MissionDefinition): string {
 }
 
 function backgroundPath(mission: MissionDefinition): string {
-  return backgroundPathForBiome(mission.biome);
+  return mission.presentation?.backgroundPath ?? backgroundPathForBiome(mission.biome);
 }
 
 function loadImage(path: string): Promise<HTMLImageElement | null> {
@@ -1499,10 +1540,16 @@ function makeGameState(
   const bossPatrolRight =
     world.bossArena.x + world.bossArena.width - bossWidth - 30;
 
+  // V146: colours matching the biome lower visual detection a little (solo/coop only).
+  const camouflageV146 = camouflageVisibilityV146(
+    appearance, [mission.palette.ground, mission.palette.platform, mission.palette.haze], "solo");
   const state: GameState = {
     insertion: createHuntInsertion(insertionPlan, huntRitesRunIdV77(mission.id, ecologyRunSeed), world),
     insertionRunId: insertionRunId ?? huntRitesRunIdV77(mission.id, ecologyRunSeed),
     insertionShipId,
+    camouflageV146,
+    heavyWearHitsV146: [],
+    plasmaColorV146: lightColorV146(appearance, "plasma", "") || undefined,
     ecosystem: createCorpseDiscoveryV112(huntRitesRunIdV77(mission.id, ecologyRunSeed)),
     flayingToolOwned: ownsFieldToolV111(inventory, "flaying-tool"),
     harvestArmorIdV112: loadout.armorId,
@@ -2046,6 +2093,7 @@ function captureCheckpoint(
     scans: state.scans,
     supportKills: state.supportKills,
     damageTaken: state.damageTaken,
+    ...(state.houndFieldV147 ? { houndFieldV147: snapshotHoundFieldV147(state.houndFieldV147) } : {}),
     secondWindUsed: state.secondWindUsed,
     boss: cloneEnemyState(state.boss),
     bossMechanics: cloneBossMechanics(state.bossMechanics),
@@ -2533,6 +2581,8 @@ function restoreCheckpoint(
     insertion: restoredInsertion ?? state.insertion,
     ecosystem: restoredEcosystem,
     huntRites: restoredRites ?? state.huntRites,
+    houndFieldV147: restoredHoundFieldV147(state, checkpoint),
+    houndMarkV147: null,
     riteMenuCorpseId: null,
     riteOperationDamageStart: checkpoint.riteOperationDamageStart ?? null,
     exploration,
@@ -3121,6 +3171,7 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
   const actorAt={x:state.player.x+state.player.width/2,y:state.player.y+state.player.height/2};
   return {
     canopyNavigationV112: currentCanopyNavigationV112(state),
+    houndV147: houndUiV147(state),
     podRecovery: state.insertion?.podRecovery ? {
       ...huntPodSafety(state.insertion.podRecovery, huntPodAnchors(state.insertion.plan, state.world), podSafetyInput(state)),
       phase: state.insertion.podRecovery.phase, remainingSeconds: state.insertion.podRecovery.remainingSeconds,
@@ -3314,6 +3365,7 @@ function resultFor(
   return {
     missionId: mission.id,
     insertionOutcome: state.insertion ? huntInsertionOutcome(state.insertion, state.insertionRunId) : undefined,
+    ...(state.houndFieldV147 ? { houndV147: houndHuntReportFromFieldV147(state.houndFieldV147) } : {}),
     exploration: normalizeExplorationProgress(state.exploration),
     difficultyId: difficulty,
     outcome,
@@ -3346,6 +3398,7 @@ function resultFor(
       ]),
     ],
     secondWindUsed: state.secondWindUsed,
+    ...(state.heavyWearHitsV146?.length ? { wearV146: { heavyPieces: [...state.heavyWearHitsV146] } } : {}),
     completedAt: new Date().toISOString(),
   };
 }
@@ -3486,7 +3539,9 @@ function drawFallbackCharacter(
 
 interface RegisteredLayerOptions {
   placement?: HunterLayerPlacement;
-  chromatics?: { appearance: HunterAppearance; channel: ChromaticChannelV113 };
+  chromatics?: { appearance: HunterAppearance; channel: ChromaticChannelV113; piece?: HunterPieceIdV146 };
+  /** V148: zone colours for a layer that has no V113 channel (gauntlet, blades, caster, weapons). */
+  pieceTint?: { appearance: HunterAppearance; piece: HunterPieceIdV146 };
   decalZone?: YautjaDecalZoneV133;
   clip?: readonly (readonly [number, number, number, number])[];
   alpha?: number;
@@ -3673,9 +3728,22 @@ function drawRegisteredLayer(
 ): boolean {
   if (!image) return false;
   const matrix = relativeBoneMatrix(frame, HUNTER_BIND_FRAME, boneId);
-  const recolored = options.chromatics ? chromaticCanvasSourceV113(
-    image, options.chromatics.appearance.chromaticsV113, options.chromatics.channel, options.placement, options.filter
-  ) : null;
+  // V146: a piece colour replaces the channel colour for this layer only.
+  const layerChromatics = options.chromatics
+    ? options.chromatics.piece
+      ? chromaticsForPieceV146(options.chromatics.appearance, options.chromatics.piece)
+      : options.chromatics.appearance.chromaticsV113
+    : undefined;
+  // V148: when the piece has zone colours, the plate is recoloured by zones
+  // (primary, secondary, accent) instead of the single V113 pigment.
+  const zoneColors = pieceZoneColorsV148(
+    options.chromatics?.appearance ?? options.pieceTint?.appearance,
+    options.chromatics?.piece ?? options.pieceTint?.piece);
+  const zoned = zoneColors && image instanceof HTMLImageElement
+    ? pieceCanvasSourceV148(image, zoneColors, options.placement, options.filter) : null;
+  const recolored = zoned ?? (options.chromatics ? chromaticCanvasSourceV113(
+    image, layerChromatics, options.chromatics.channel, options.placement, options.filter
+  ) : null);
   // Recolor then paint the decal from a fixed atlas; both passes are source-atop
   // and keep the existing 256x384 authored sprite / bone transform unchanged.
   const decorated = options.decalZone && options.chromatics
@@ -3748,6 +3816,79 @@ function drawWrappedLayerV145(
   context.restore();
 }
 
+const PATTERN_CANVAS_V146: { canvas?: HTMLCanvasElement } = {};
+const PATTERN_TILES_V146 = new Map<string, HTMLCanvasElement>();
+
+/** V146 skin pattern tile (procedural until pattern plates exist). */
+function skinPatternTileV146(pattern: SkinPatternIdV146, first: string, second: string): HTMLCanvasElement | null {
+  const key = pattern + first + second;
+  const cached = PATTERN_TILES_V146.get(key);
+  if (cached) return cached;
+  const tile = document.createElement("canvas");
+  tile.width = 18; tile.height = 18;
+  const c = tile.getContext("2d");
+  if (!c) return null;
+  c.fillStyle = first; c.strokeStyle = first;
+  if (pattern === "spots") {
+    c.beginPath(); c.arc(5, 5, 2.6, 0, Math.PI * 2); c.fill();
+    c.fillStyle = second; c.beginPath(); c.arc(13, 12, 1.8, 0, Math.PI * 2); c.fill();
+  } else if (pattern === "stripes") {
+    c.lineWidth = 2; c.beginPath(); c.moveTo(3, 0); c.lineTo(1, 18); c.stroke();
+    c.strokeStyle = second; c.lineWidth = 1; c.beginPath(); c.moveTo(11, 0); c.lineTo(9, 18); c.stroke();
+  } else if (pattern === "marbled") {
+    c.beginPath(); c.ellipse(7, 8, 5, 2.5, .5, 0, Math.PI * 2); c.fill();
+    c.fillStyle = second; c.beginPath(); c.ellipse(14, 3, 2, 3.5, -.3, 0, Math.PI * 2); c.fill();
+  } else if (pattern === "scales") {
+    c.lineWidth = 1;
+    for (const [x, y] of [[4.5, 9], [13.5, 9], [9, 18], [0, 18], [18, 18]]) { c.beginPath(); c.arc(x, y, 4.5, Math.PI, 0); c.stroke(); }
+  } else {
+    c.fillRect(0, 2, 18, 1.6); c.fillStyle = second; c.fillRect(0, 10, 18, 1);
+  }
+  if (PATTERN_TILES_V146.size > 24) PATTERN_TILES_V146.clear();
+  PATTERN_TILES_V146.set(key, tile);
+  return tile;
+}
+
+/** V146: draws the chosen skin pattern masked to one skin layer, in multiply. */
+function drawSkinPatternV146(
+  context: CanvasRenderingContext2D,
+  image: HTMLImageElement | null,
+  frame: HunterRigFrame,
+  boneId: HunterRigBoneId,
+  appearance: HunterAppearance,
+  placement?: { x: number; y: number; width: number; height: number },
+  clip?: readonly (readonly [number, number, number, number])[],
+): void {
+  const pattern = appearance.skinPatternIdV146;
+  if (!pattern || !image || typeof document === "undefined") return;
+  const colors = appearance.piecesV146?.["skin-pattern"];
+  const tile = skinPatternTileV146(pattern, colors?.primary ?? "#2d241d", colors?.secondary ?? colors?.primary ?? "#4a3a2c");
+  const canvas = PATTERN_CANVAS_V146.canvas ?? (PATTERN_CANVAS_V146.canvas = document.createElement("canvas"));
+  canvas.width = HUNTER_RIG_CANVAS.width;
+  canvas.height = HUNTER_RIG_CANVAS.height;
+  const local = canvas.getContext("2d");
+  if (!local || !tile) return;
+  local.drawImage(image, placement?.x ?? 0, placement?.y ?? 0,
+    placement?.width ?? HUNTER_RIG_CANVAS.width, placement?.height ?? HUNTER_RIG_CANVAS.height);
+  local.globalCompositeOperation = "source-in";
+  const fill = local.createPattern(tile, "repeat");
+  if (!fill) return;
+  local.fillStyle = fill;
+  local.fillRect(0, 0, HUNTER_RIG_CANVAS.width, HUNTER_RIG_CANVAS.height);
+  local.globalCompositeOperation = "source-over";
+  context.save();
+  applyAffine(context, relativeBoneMatrix(frame, HUNTER_BIND_FRAME, boneId));
+  if (clip) {
+    context.beginPath();
+    for (const rect of clip) context.rect(...rect);
+    context.clip();
+  }
+  context.globalAlpha *= 0.5;
+  context.globalCompositeOperation = "multiply";
+  context.drawImage(canvas, 0, 0, HUNTER_RIG_CANVAS.width, HUNTER_RIG_CANVAS.height);
+  context.restore();
+}
+
 function drawAtomicBodyPart(
   context: CanvasRenderingContext2D,
   assets: AssetBank,
@@ -3761,9 +3902,11 @@ function drawAtomicBodyPart(
     assets.hunterBodyParts[partId],
     frame,
     boneId,
-    { filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, bodyFilter(appearance)), placement: hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), clip: hunterBodyPartClipV62(appearance.bodyMorphId, partId), chromatics: { appearance, channel: "skin" },
+    { filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, bodyFilter(appearance)), placement: hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), clip: hunterBodyPartClipV62(appearance.bodyMorphId, partId), chromatics: { appearance, channel: "skin", piece: "skin" },
       decalZone:partId==="head"?"face":partId==="torso"?"body":undefined },
   );
+  drawSkinPatternV146(context, assets.hunterBodyParts[partId], frame, boneId, appearance,
+    hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), hunterBodyPartClipV62(appearance.bodyMorphId, partId));
   if (!hunterBodyPartHasNet(appearance.bodyMorphId, partId)) return;
   drawRegisteredLayer(
     context,
@@ -3773,7 +3916,7 @@ function drawAtomicBodyPart(
     {
       filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, bodyFilter(appearance)),
       clip: hunterBodyPartClipV62(appearance.bodyMorphId, partId),
-      chromatics: { appearance, channel: "outfit" },
+      chromatics: { appearance, channel: "outfit", piece: "fishnet" },
       alpha:
         appearance.armorStyleId === "feral"
           ? 0.28
@@ -3814,7 +3957,9 @@ function drawHunterHandWeapon(
   loadout: Loadout,
   assets: AssetBank,
   frame: HunterRigFrame,
+  appearance?: HunterAppearance,
 ): void {
+  const weaponTint = appearance ? { pieceTint: { appearance, piece: "weapons" as const } } : {};
   const weaponId = selectedHandWeapon(
     loadout,
     state.player.activeWeaponSlot,
@@ -3848,7 +3993,7 @@ function drawHunterHandWeapon(
       assets.hunterWeapons[visualId],
       frame,
       "handFront",
-      bowTransform,
+      { ...bowTransform, ...weaponTint },
     );
   }
 
@@ -3874,6 +4019,7 @@ function drawHunterTrophyLayers(
   alpha = 1,
   carried = false,
   partId?: TrophyPartId,
+  appearance?: HunterAppearance,
 ): void {
   for (const trophyId of trophyAtomicLayerIds(partId)) {
     const image = assets.hunterTrophies[trophyId];
@@ -3890,6 +4036,8 @@ function drawHunterTrophyLayers(
           translateY: layout.belt.y,
           pivot: layout.pivot,
           scale: layout.belt.scale,
+          // V148: worn trophies take the "trophies" piece colours (bone patina, bindings).
+          ...(appearance ? { pieceTint: { appearance, piece: "trophies" as const } } : {}),
         },
       );
       continue;
@@ -4060,7 +4208,9 @@ function drawHunterLayered(
   const atomicBodyReady = HUNTER_BODY_PART_IDS.every(
     (partId) => assets.hunterBodyParts[partId],
   );
-  const armorTint = armorFilter(appearance);
+  // V146 mission wear: scratches and dirt grow with damage taken this hunt.
+  const armorTint = [armorFilter(appearance), wearFilterV146(missionWearV146(state.damageTaken, player.maxHealth))]
+    .filter(part => part && part !== "none").join(" ") || "none";
 
   context.save();
   context.globalAlpha = alpha;
@@ -4075,7 +4225,7 @@ function drawHunterLayered(
         "head",
         {
           filter: dreadFilter(appearance.dreadTintId),
-          chromatics: { appearance, channel: "dreads" },
+          chromatics: { appearance, channel: "dreads", piece: "dreads" },
           pivot: HUNTER_DREAD_ROOT,
           rotation: strand.angle,
           scaleX: strand.scale,
@@ -4092,18 +4242,21 @@ function drawHunterLayered(
       assets.hunterPlasma.mount,
       frame,
       "casterShoulderMount",
+      { pieceTint: { appearance, piece: "caster" } },
     );
     drawRegisteredLayer(
       context,
       assets.hunterPlasma.upperArm,
       frame,
       "casterUpperArm",
+      { pieceTint: { appearance, piece: "caster" } },
     );
     drawRegisteredLayer(
       context,
       assets.hunterPlasma.lowerArm,
       frame,
       "casterLowerArm",
+      { pieceTint: { appearance, piece: "caster" } },
     );
   }
 
@@ -4113,7 +4266,7 @@ function drawHunterLayered(
     !state.trophyCarried &&
     appearance.trophyAdornmentId === "skull-spine"
   ) {
-    drawHunterTrophyLayers(context, assets, frame, 0.82, false);
+    drawHunterTrophyLayers(context, assets, frame, 0.82, false, undefined, appearance);
   }
 
   if (atomicBodyReady) {
@@ -4125,7 +4278,7 @@ function drawHunterLayered(
     if (loadout.armorId !== "scout") {
       for (const part of ["thigh-lower", "shin"] as const) {
         const greave: RegisteredLayerOptions = {
-          filter: armorTint === "none" ? "brightness(.72)" : `${armorTint} brightness(.72)`, chromatics: { appearance, channel: "armor" },
+          filter: armorTint === "none" ? "brightness(.72)" : `${armorTint} brightness(.72)`, chromatics: { appearance, channel: "armor", piece: "shin" },
           registration: hunterGreaveMatrixV145(appearance.bodyMorphId, part, "back"),
           clip: part === "shin" ? HUNTER_ARMOR_KEEP_CLIP_V145.shin : undefined,
         };
@@ -4141,20 +4294,22 @@ function drawHunterLayered(
         alpha: extension,
         registration: bladeFit,
         translateX: -46 * (1 - extension),
+        pieceTint: { appearance, piece: "wristblades" },
       });
-      drawRegisteredLayer(context, assets.hunterWristblades.housing, frame, "armBackLower", { registration: bladeFit });
+      drawRegisteredLayer(context, assets.hunterWristblades.housing, frame, "armBackLower",
+        { registration: bladeFit, pieceTint: { appearance, piece: "wristblades" } });
     }
     for (const partId of HUNTER_CORE_PARTS) {
       drawAtomicBodyPart(context, assets, frame, appearance, partId);
     }
   } else if (
-    !drawRegisteredLayer(
+    !(drawRegisteredLayer(
       context,
       assets.hunterBodyFull,
       frame,
       "root",
-      { filter: bodyFilter(appearance), chromatics: { appearance, channel: "skin" }, decalZone:"body" },
-    )
+      { filter: bodyFilter(appearance), chromatics: { appearance, channel: "skin", piece: "skin" }, decalZone:"body" },
+    ) && (drawSkinPatternV146(context, assets.hunterBodyFull, frame, "root", appearance), true))
   ) {
     drawFallbackCharacter(
       context,
@@ -4173,30 +4328,30 @@ function drawHunterLayered(
     assets.hunterArmor.belt,
     frame,
     "pelvis",
-    { filter: armorTint, chromatics: { appearance, channel: "armor" } },
+    { filter: armorTint, chromatics: { appearance, channel: "armor", piece: "belt" } },
   );
   drawRegisteredLayer(
     context,
     assets.hunterArmor.chest,
     frame,
     "torso",
-    { filter: armorTint, chromatics: { appearance, channel: "armor" }, decalZone:"armor" },
+    { filter: armorTint, chromatics: { appearance, channel: "armor", piece: "chest" }, decalZone:"armor" },
   );
   drawHunterBeltLoadout(context, assets, frame, loadout);
 
   // V145 wrap, first pass: plates behind their limb (and behind the head for
   // the shoulder). The masked second pass is drawn after the front limbs.
   const shoulderPlate: RegisteredLayerOptions = {
-    filter: armorTint, chromatics: { appearance, channel: "armor" },
+    filter: armorTint, chromatics: { appearance, channel: "armor", piece: "shoulder" },
     // Mirrored onto the deltoid, per-morph scale included.
     registration: hunterShoulderPlateMatrixV145(appearance.bodyMorphId),
     clip: HUNTER_ARMOR_KEEP_CLIP_V145[HUNTER_ARMOR_MODULES[appearance.armorStyleId].shoulder],
   };
   const frontLegPlates = loadout.armorId === "scout" ? [] : [
-    { image: assets.hunterArmor.thigh, bone: "legFrontUpper" as const, limb: "thigh-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const } } },
-    { image: assets.hunterArmor.thighLower, bone: "legFrontLower" as const, limb: "shin-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const },
+    { image: assets.hunterArmor.thigh, bone: "legFrontUpper" as const, limb: "thigh-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const, piece: "thigh" as const } } },
+    { image: assets.hunterArmor.thighLower, bone: "legFrontLower" as const, limb: "shin-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const, piece: "shin" as const },
       registration: hunterGreaveMatrixV145(appearance.bodyMorphId, "thigh-lower", "front") } },
-    { image: assets.hunterArmor.shin, bone: "legFrontLower" as const, limb: "shin-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const },
+    { image: assets.hunterArmor.shin, bone: "legFrontLower" as const, limb: "shin-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const, piece: "shin" as const },
       registration: hunterGreaveMatrixV145(appearance.bodyMorphId, "shin", "front"), clip: HUNTER_ARMOR_KEEP_CLIP_V145.shin } },
   ];
   drawRegisteredLayer(context, assets.hunterArmor.shoulder, frame, "armFrontUpper", shoulderPlate);
@@ -4212,7 +4367,7 @@ function drawHunterLayered(
   // L'arme secondaire suit la main avant. La main est redessinée ensuite
   // pour que la poignée reste réellement prise dans les doigts.
   const fieldWork = currentHuntFieldWorkV112(state, player);
-  if (!fieldWork) drawHunterHandWeapon(context, state, loadout, assets, frame);
+  if (!fieldWork) drawHunterHandWeapon(context, state, loadout, assets, frame, appearance);
   if (atomicBodyReady) {
     drawAtomicBodyPart(context, assets, frame, appearance, "hand-front");
   }
@@ -4225,7 +4380,7 @@ function drawHunterLayered(
     solveHunterSideDreadsV145(frame, appearance.bodyMorphId, appearance.dreadStyleId, appearance.headStyleId, player.dreadAngles).forEach((strand) => {
       drawRegisteredLayer(context, assets.hunterDreads, frame, "head", {
         filter: dreadFilter(appearance.dreadTintId),
-        chromatics: { appearance, channel: "dreads" },
+        chromatics: { appearance, channel: "dreads", piece: "dreads" },
         pivot: HUNTER_DREAD_ROOT,
         rotation: strand.angle,
         scaleX: strand.scale,
@@ -4242,7 +4397,7 @@ function drawHunterLayered(
       assets.hunterArmor.bracer,
       frame,
       "armFrontLower",
-      { filter: armorTint, chromatics: { appearance, channel: "armor" } },
+      { filter: armorTint, chromatics: { appearance, channel: "armor", piece: "bracer" } },
     );
     for (const plate of frontLegPlates) {
       drawWrappedLayerV145(context, plate.image, assets.hunterBodyParts[plate.limb], frame, plate.bone, plate.options);
@@ -4252,7 +4407,7 @@ function drawHunterLayered(
       assets.hunterArmor.knee,
       frame,
       "legFrontLower",
-      { filter: armorTint, chromatics: { appearance, channel: "armor" } },
+      { filter: armorTint, chromatics: { appearance, channel: "armor", piece: "knee" } },
     );
   }
 
@@ -4260,6 +4415,7 @@ function drawHunterLayered(
   // sur l'avant-bras arrière ; le lid pivote toujours sur sa charnière source.
   const gauntletPlacement = (image: HTMLImageElement | null): RegisteredLayerOptions => ({
     registration: gauntletFrontArmMatrixV145(appearance.bodyMorphId, !!image && isGauntletRigSpriteV139(image.src)),
+    pieceTint: { appearance, piece: "gauntlet" },
   });
   drawRegisteredLayer(
     context,
@@ -4287,24 +4443,28 @@ function drawHunterLayered(
       assets.hunterPlasma.yoke,
       frame,
       "casterYoke",
+      { pieceTint: { appearance, piece: "caster" } },
     );
     drawRegisteredLayer(
       context,
       assets.hunterPlasma.cannon,
       frame,
       "casterCannon",
+      { pieceTint: { appearance, piece: "caster" } },
     );
     drawRegisteredLayer(
       context,
       assets.hunterPlasma.barrel,
       frame,
       "casterBarrel",
+      { pieceTint: { appearance, piece: "caster" } },
     );
     drawRegisteredLayer(
       context,
       assets.hunterPlasma.muzzle,
       frame,
       "casterMuzzle",
+      { pieceTint: { appearance, piece: "caster" } },
     );
     if (player.aiming && player.maskOn && appearance.biomaskId) {
       drawRegisteredLayer(
@@ -4331,16 +4491,49 @@ function drawHunterLayered(
           appearance: { ...appearance,
             chromaticsV113: maskChromaticsForAppearanceV131(appearance) },
           channel: "biomask",
+          piece: "biomask",
         },
         decalZone:"biomask",
       },
     );
+  }
+  // V146 earned marks: skin marks always, biomask marks only on the worn mask.
+  drawMarksV146(context, frame, appearance, "skin", hunterMaskRigPlacement(appearance.biomaskId ?? "jungle"));
+  if (player.maskOn && appearance.biomaskId) {
+    drawMarksV146(context, frame, appearance, "biomask", hunterMaskRigPlacement(appearance.biomaskId));
   }
 
   if (state.trophyCarried && state.trophyClaim) {
     drawClaimedTrophyLayers(context, assets, frame, state.trophyClaim);
   }
   if (fieldWork) drawHuntFieldWorkV112(context, fieldWork, frame, { reducedMotion });
+  context.restore();
+}
+
+/** V146: procedural marks in head-bone source space (same paths as the DOM preview). */
+function drawMarksV146(
+  context: CanvasRenderingContext2D,
+  frame: HunterRigFrame,
+  appearance: HunterAppearance,
+  layer: "biomask" | "skin",
+  anchor: { x: number; y: number; width: number; height: number },
+): void {
+  const marks = Object.entries(appearance.marksV146 ?? {}) as [HunterMarkIdV146, { color: string | null }][];
+  const shown = marks.filter(([id]) => markLayerV146(id) === layer);
+  if (!shown.length || typeof Path2D === "undefined") return;
+  context.save();
+  applyAffine(context, relativeBoneMatrix(frame, HUNTER_BIND_FRAME, "head"));
+  context.lineCap = "round";
+  context.lineJoin = "round";
+  context.globalAlpha *= 0.9;
+  for (const [id, value] of shown) {
+    const color = markColorV146(id, value.color);
+    for (const stroke of markStrokesV146(id, anchor)) {
+      const path = new Path2D(stroke.d);
+      if (stroke.fill) { context.fillStyle = color; context.fill(path); }
+      else { context.strokeStyle = color; context.lineWidth = stroke.width; context.stroke(path); }
+    }
+  }
   context.restore();
 }
 
@@ -4366,7 +4559,7 @@ function drawAimAssist(
   const origin = handWeaponId
     ? frame.anchors.handGrip
     : frame.anchors.muzzle;
-  const color = LASER_COLOR_HEX[appearance.laserColorId ?? "crimson"] ?? mission.palette.accent;
+  const color = lightColorV146(appearance, "laser", LASER_COLOR_HEX[appearance.laserColorId ?? "crimson"] ?? mission.palette.accent);
   context.save();
   if (player.maskOn && appearance.biomaskId) {
     context.strokeStyle = `${color}c8`;
@@ -5085,7 +5278,8 @@ function renderGame(
       mission.id,
       cameraX + VIEW_WIDTH / 2,
     );
-    const usesStackedPanorama = mission.biome === "jungle";
+    const singlePanorama = mission.presentation?.backgroundLayout === "single";
+    const usesStackedPanorama = mission.biome === "jungle" && !singlePanorama;
     // The OpenAI panorama is deliberately composed as three unequal rooms:
     // 430 px surface, 206 px ruins and 305 px flooded understory. Equal thirds
     // sliced through the lake and duplicated the first room in later sectors.
@@ -5101,21 +5295,28 @@ function renderGame(
     const sourceRatio = image.naturalWidth / sourceHeight;
     const drawHeight = VIEW_HEIGHT;
     const drawWidth = Math.max(VIEW_WIDTH, drawHeight * sourceRatio);
-    const offset = -((cameraX * activeSector.layers.background.parallax) % drawWidth);
     context.save();
     context.globalAlpha = 0.78;
-    for (let x = offset - drawWidth; x < VIEW_WIDTH + drawWidth; x += drawWidth) {
-      context.drawImage(
-        image,
-        0,
-        sourceY,
-        image.naturalWidth,
-        sourceHeight,
-        x,
-        0,
-        drawWidth,
-        drawHeight,
-      );
+    if (singlePanorama) {
+      const cameraRange = Math.max(1, state.world.width - VIEW_WIDTH);
+      const progress = clamp(cameraX / cameraRange, 0, 1);
+      const x = -(drawWidth - VIEW_WIDTH) * progress;
+      context.drawImage(image, x, 0, drawWidth, drawHeight);
+    } else {
+      const offset = -((cameraX * activeSector.layers.background.parallax) % drawWidth);
+      for (let x = offset - drawWidth; x < VIEW_WIDTH + drawWidth; x += drawWidth) {
+        context.drawImage(
+          image,
+          0,
+          sourceY,
+          image.naturalWidth,
+          sourceHeight,
+          x,
+          0,
+          drawWidth,
+          drawHeight,
+        );
+      }
     }
     context.restore();
     context.fillStyle = `${palette.sky}55`;
@@ -5123,7 +5324,7 @@ function renderGame(
   }
   // Le panorama V4 contient déjà son lac en plans lointain, médian et proche.
   // L'ancien calque V2 reste un fallback, mais ne doit pas couper l'image V4.
-  if (mission.biome === "jungle" && assets.farLake && !assets.background) {
+  if (!mission.presentation && mission.biome === "jungle" && assets.farLake && !assets.background) {
     const lake = assets.farLake;
     const lakeHeight = 560;
     const lakeWidth = lakeHeight * (lake.naturalWidth / lake.naturalHeight);
@@ -5936,6 +6137,7 @@ function renderGame(
     drawCanopyNavigationMarkersV112(context, currentCanopyNavigationV112(state).markers);
   }
   drawHuntCompanions(context, state, assets);
+  drawHoundV147(context, state, assets.houndPortraitV147);
   const hunterAlpha = state.player.cloaked
     ? 0.24 + Math.sin(state.elapsed * 8) * 0.07
     : 1;
@@ -6610,6 +6812,8 @@ function hurtPlayer(
   ) {
     return;
   }
+  const crackedV146 = heavyHitPieceV146(amount, player.maxHealth, state.heavyWearHitsV146?.length ?? 0);
+  if (crackedV146) state.heavyWearHitsV146 = [...(state.heavyWearHitsV146 ?? []), crackedV146];
   player.health -= amount;
   if(state.huntRites?.carryingCorpseId)state.huntRites={...state.huntRites,carryingCorpseId:null};
   player.invulnerability = 0.55;
@@ -7572,7 +7776,8 @@ function playerWeapon(
     radius: attack.projectileRadius,
     damage: attack.damage,
     hostile: false,
-    color: weaponDefinition.color,
+    // V146 lights: the player's plasma colour, else the weapon's authored colour.
+    color: weapon.id === "plasma-caster" && state.plasmaColorV146 ? state.plasmaColorV146 : weaponDefinition.color,
     life:
       attack.recovery === "return"
         ? Math.max(4, (attack.rangePx / Math.max(1, speed)) * 3)
@@ -8537,20 +8742,13 @@ function updatePlayer(
     player.velocityX *= Math.pow(0.0008, delta);
   }
 
-  const playerCenter = {
-    x: player.x + player.width / 2,
-    y: player.y + player.height / 2,
-  };
   // Keep the active support before considering overlapping neighbours.
   const activeClimbZone = player.climbing
     ? state.world.climbables.find(zone => zone.id === player.climbZoneId &&
       canopySupportReachableV112(player, zone, state.world.platforms, player.canopySwing))
     : undefined;
-  const currentClimbZone = activeClimbZone ?? state.world.climbables
-    .filter(zone => canopySupportReachableV112(player, zone, state.world.platforms))
-    .sort((left, right) =>
-      Math.abs(playerCenter.x - left.x - left.width / 2) -
-      Math.abs(playerCenter.x - right.x - right.width / 2))[0];
+  const currentClimbZone = activeClimbZone ?? selectCanopyEntrySupportV112(player, state.world.climbables,
+    zone => canopySupportReachableV112(player, zone, state.world.platforms));
   if (player.climbing && (input.gripReleaseV112 || !activeClimbZone || player.stamina <= 0)) {
     if (input.gripReleaseV112) {
       player.climbReattachSeconds = CLIMB_TRAVERSAL.releaseSeconds;
@@ -9060,6 +9258,7 @@ function updateRegularEnemy(
   const visualContact =
     clamp(1 - targetDistance / visionRange, 0, 1) *
     cloakVisibility *
+    (player.cloaked ? 1 : state.camouflageV146 ?? 1) *
     facingVisibility *
     (1 - coverOcclusion * 0.9) * (structuralOcclusion ? 0 : 1);
   const thermalContact =
@@ -9684,7 +9883,7 @@ function updateBoss(
         break;
       case "reveal-cloak":
         forceDecloak(state);
-        announce(state, "La fusée de Vey révèle ta signature.", 2.5);
+        announce(state, mission.presentation?.revealAnnouncement ?? "La fusée de Vey révèle ta signature.", 2.5);
         break;
       case "armor-plate-broken":
         {
@@ -10435,6 +10634,9 @@ function pollGamepad(input: InputHub): "focus-lost" | "gamepad-disconnected" | n
   setDirection("right", right);
   setDirection("up", up);
   setDirection("down", down);
+  const houndStick = houndStickOrderV147(gamepad.axes[2], gamepad.axes[3]);
+  if (houndStick && houndStick !== input.houndStickHeldV147) input.houndStickOrderV147 = houndStick;
+  input.houndStickHeldV147 = houndStick;
   if (aiming) input.gamepadHeld.add("aim");
   if (current[buttons.jump]) input.gamepadHeld.add("jump");
 
@@ -10542,6 +10744,174 @@ function flushCorpseRiteGamepadV112(state:GameState,input:InputHub,root:HTMLElem
   if(focused?.nodeName==="BUTTON"&&menu.contains(focused))focused.setAttribute("data-gamepad-focus-v112","true");
 }
 
+// ---------------------------------------------------------------------------
+// V147: hunting hound in the field
+// ---------------------------------------------------------------------------
+
+interface HoundUiV147 {
+  name: string;
+  orderLabel: string;
+  healthShare: number;
+  wounded: boolean;
+  dead: boolean;
+}
+
+function attachHoundV147(state: GameState, hound: HoundV147): void {
+  // Field coordinates are at ground level (feet), like the hunter's and the prey's.
+  const at = { x: state.player.x + state.player.width / 2 - 40, y: state.world.floorY };
+  state.houndFieldV147 = createHoundFieldV147(hound, at);
+  state.houndV147 = { name: hound.name, bond: hound.bond };
+  state.houndMarkV147 = null;
+}
+
+/** Checkpoint field of the same hound; otherwise the live one (old checkpoints). */
+function restoredHoundFieldV147(state: GameState, checkpoint: MissionCheckpointPayload): HoundFieldV147 | undefined {
+  if (!state.houndFieldV147) return undefined;
+  if (!checkpoint.houndFieldV147) return state.houndFieldV147;
+  const field = restoreHoundFieldV147(checkpoint.houndFieldV147);
+  return field && field.houndId === state.houndFieldV147.houndId ? field : state.houndFieldV147;
+}
+
+/** Height above the floor a hound can still reach with a bite or a push (proposé). */
+const HOUND_REACH_ABOVE_FLOOR_V147 = 60;
+
+/**
+ * Prey the hound may work on. The hound stays on the ground: every position
+ * is projected onto the floor, and only prey standing near the floor can be
+ * driven or bitten (tracking follows the scent below any prey). The mission's
+ * target (boss) can be tracked but never driven or attacked: the duel belongs
+ * to the hunter (proposé).
+ */
+function houndPreyV147(state: GameState, tracking: boolean): FieldPreyV147[] {
+  const floor = state.world.floorY;
+  return state.enemies
+    .filter(enemy => enemy.active && enemy.alive && (tracking ||
+      !enemy.boss && floor - (enemy.y + enemy.height) <= HOUND_REACH_ABOVE_FLOOR_V147))
+    .map(enemy => ({ id: enemy.id, x: enemy.x + enemy.width / 2, y: floor, alive: true,
+      trailAge: Math.max(0, state.elapsed - enemy.lastTrackAt) }));
+}
+
+const houndOrderLabelV147 = (order: HoundFieldV147["order"]) =>
+  HOUND_ORDERS_V147.find(entry => entry.id === order)?.label ?? order;
+
+function updateHoundV147(
+  state: GameState, mission: MissionDefinition, input: InputHub, delta: number,
+  /** Order chosen directly with the right stick, if any. */
+  directOrder: HoundOrderIdV147 | null = null,
+): void {
+  let field = state.houndFieldV147;
+  const hound = state.houndV147;
+  if (!field || !hound) { input.pressed.delete("houndOrder"); return; }
+  const player = { x: state.player.x + state.player.width / 2, y: state.world.floorY };
+  const cycled = consume(input, "houndOrder");
+  if (cycled || directOrder) {
+    const target = pickHoundTargetV147(
+      { x: player.x, y: player.y, facing: state.player.facing }, houndPreyV147(state, false));
+    const next = directOrder ?? nextHoundOrderV147(field.order, hound.bond, !!target);
+    const issued = issueHoundOrderV147(field, next, hound.bond, next === "attack" ? target?.id ?? null : null);
+    if (issued.ok) {
+      field = issued.field;
+      announce(state, `${hound.name} : ${houndOrderLabelV147(next)}.`, 1.6);
+    } else {
+      announce(state, issued.reason === "dead" ? `${hound.name} est mort.`
+        : issued.reason === "wounded" ? `${hound.name} est blessé : il ne répond qu’au rappel.`
+        : issued.reason === "locked"
+          ? `${houndOrderLabelV147(next)} : lien ${HOUND_ORDERS_V147.find(entry => entry.id === next)?.bond ?? "?"} requis (${hound.bond}).`
+        : issued.reason === "no-target" ? `${hound.name} : aucune proie au sol à portée.`
+        : `${hound.name} ne peut pas exécuter cet ordre.`, 1.8);
+    }
+  }
+  const wasWounded = field.wounded, wasDead = field.dead, fromX = field.x;
+  const step = stepHoundFieldV147(field, { dt: delta, player, prey: houndPreyV147(state, field.order === "track") });
+  field = step.field;
+  for (const event of step.events) {
+    const enemy = "preyId" in event ? state.enemies.find(entry => entry.id === event.preyId) : undefined;
+    if (event.type === "push" && enemy && enemy.alive) {
+      enemy.x = clamp(enemy.x + event.dx, 0, state.world.width - enemy.width);
+    } else if (event.type === "bite" && enemy && enemy.alive && enemy.active) {
+      damageEnemy(state, mission, enemy, event.damage, "weapon");
+      // The prey fights back while it stands (provisional value, proposé).
+      if (enemy.alive) field = damageHoundFieldV147(field, Math.max(1, enemy.damage * 0.35));
+    } else if (event.type === "marked" && enemy) {
+      state.houndMarkV147 = { preyId: enemy.id, until: state.elapsed + 6 };
+      announce(state, `${hound.name} marque une proie.`, 1.6);
+    } else if (event.type === "driven") {
+      announce(state, `${hound.name} a rabattu la proie vers toi.`, 1.6);
+    }
+  }
+  if (field.dead && !wasDead) announce(state, `${hound.name} est mort. Il ne reviendra pas.`, 4);
+  else if (field.wounded && !wasWounded) announce(state, `${hound.name} est blessé et revient au pied.`, 3);
+  if (Math.abs(field.x - fromX) > 0.5) state.houndFacingV147 = field.x > fromX ? 1 : -1;
+  if (state.houndMarkV147 && state.houndMarkV147.until < state.elapsed) state.houndMarkV147 = null;
+  state.houndFieldV147 = field;
+}
+
+function houndUiV147(state: GameState): HoundUiV147 | null {
+  const field = state.houndFieldV147, hound = state.houndV147;
+  if (!field || !hound) return null;
+  return { name: hound.name, orderLabel: houndOrderLabelV147(field.order),
+    healthShare: field.maxHealth > 0 ? field.health / field.maxHealth : 0, wounded: field.wounded, dead: field.dead };
+}
+
+const FIELD_HOUND_SPRITE_V147 = "/game/hounds/v147/field-hound.webp";
+
+function drawHoundV147(context: CanvasRenderingContext2D, state: GameState, portrait?: HTMLImageElement | null): void {
+  const field = state.houndFieldV147;
+  if (!field) return;
+  const mark = state.houndMarkV147;
+  if (mark) {
+    const prey = state.enemies.find(entry => entry.id === mark.preyId && entry.alive);
+    if (prey) {
+      const x = prey.x + prey.width / 2, y = prey.y - 18;
+      context.save();
+      context.strokeStyle = "#ffb347"; context.lineWidth = 2;
+      context.beginPath(); context.moveTo(x - 8, y - 10); context.lineTo(x, y); context.lineTo(x + 8, y - 10); context.stroke();
+      context.restore();
+    }
+  }
+  if (field.x < state.cameraX - 120 || field.x > state.cameraX + VIEW_WIDTH + 120) return;
+  const facing = state.houndFacingV147 ?? (state.player.x + state.player.width / 2 >= field.x ? 1 : -1);
+  const groundY = field.y;
+  context.save();
+  context.translate(field.x, groundY);
+  if (field.dead) { context.rotate(facing * Math.PI / 2.4); context.globalAlpha = 0.7; }
+  context.scale(facing, 1);
+  if (portrait?.naturalWidth && portrait.naturalHeight) {
+    const height = 54;
+    const width = height * portrait.naturalWidth / portrait.naturalHeight;
+    context.drawImage(portrait, -width * 0.59, -height, width, height);
+  } else {
+    context.fillStyle = "#2a1d17";
+    context.strokeStyle = "#0d0907";
+    context.lineWidth = 2;
+    // Body, neck and head.
+    context.beginPath();
+    context.ellipse(0, -26, 30, 12, 0, 0, Math.PI * 2);
+    context.moveTo(22, -30); context.lineTo(38, -46); context.lineTo(54, -40); context.lineTo(48, -30); context.lineTo(28, -22);
+    context.fill(); context.stroke();
+    // Legs (four, alternating with movement).
+    const stride = field.dead ? 0 : Math.sin(state.elapsed * 12) * 5;
+    context.lineWidth = 4;
+    for (const [x, phase] of [[-20, 1], [-12, -1], [14, -1], [22, 1]] as const) {
+      context.beginPath(); context.moveTo(x, -18); context.lineTo(x + stride * phase, 0); context.stroke();
+    }
+    // Dorsal quills (hounds of Predators, 2010).
+    context.fillStyle = "#4b2f22";
+    for (let i = 0; i < 5; i++) {
+      const qx = -18 + i * 9;
+      context.beginPath(); context.moveTo(qx, -36); context.lineTo(qx + 4, -50 - (i % 2) * 5); context.lineTo(qx + 8, -36); context.fill();
+    }
+  }
+  context.restore();
+  if (!field.dead) {
+    context.save();
+    context.fillStyle = "#07100fd9"; context.fillRect(field.x - 26, groundY - 62, 52, 4);
+    context.fillStyle = field.wounded ? "#ff7e6a" : "#c9a24a";
+    context.fillRect(field.x - 26, groundY - 62, 52 * field.health / field.maxHealth, 4);
+    context.restore();
+  }
+}
+
 function stepGame(
   state: GameState,
   mission: MissionDefinition,
@@ -10625,6 +10995,9 @@ function stepGame(
   for (const enemy of state.enemies) {
     updateRegularEnemy(state, enemy, mission, delta);
   }
+  const houndStickOrder = state.riteMenuCorpseId ? null : input.houndStickOrderV147 ?? null;
+  input.houndStickOrderV147 = null;
+  updateHoundV147(state, mission, playerInput, delta, houndStickOrder);
   updateBoss(state, mission, difficulty, delta);
   state.playerUsedRangedWeapon = false;
   state.playerUsedEnergyWeapon = false;
@@ -10689,6 +11062,7 @@ export default function HuntCanvas({
   huntAccessibility,
   appearance,
   gauntletVariantId,
+  houndV147,
   reducedGore,
   screenShake,
   highContrastVision,
@@ -10704,10 +11078,13 @@ export default function HuntCanvas({
   onSuspendHunt,
   onInvalidateHunt,
   onResumeFailure,
+  hardcore = false,
+  onHardcoreDeath,
 }: HuntCanvasProps) {
   // Freeze the model for the current hunt. An external-tab cosmetic preference
   // update must not restart the same simulation or replace assets mid-combat.
   const [gauntletVisualId]=useState(()=>gauntletVariantId ?? "jungle-hunter");
+  const [frozenHound] = useState(() => houndV147 && houndV147.condition === "ready" ? houndV147 : null);
   const [frozenInsertion] = useState(() => normalizePlanetInsertionPlan(insertionPlan) ?? { ...DEFAULT_PLAN });
   const [frozenInsertionShipId] = useState(insertionShipId);
   const activeBindings = controlBindings ?? DEFAULT_CONTROL_BINDINGS;
@@ -10722,6 +11099,9 @@ export default function HuntCanvas({
   const persistHuntRef = useRef(onPersistHunt);
   const suspendHuntRef = useRef(onSuspendHunt);
   const invalidateHuntRef = useRef(onInvalidateHunt);
+  // Frozen for the hunt: the mode is fixed at campaign creation.
+  const [hardcoreHunt] = useState(hardcore);
+  const hardcoreDeathRef = useRef(onHardcoreDeath);
   const resumeFailureRef = useRef(onResumeFailure);
   const soundRef = useRef(onSound);
   const restartRef = useRef<() => void>(() => undefined);
@@ -10784,6 +11164,9 @@ export default function HuntCanvas({
   useEffect(() => {
     invalidateHuntRef.current = onInvalidateHunt;
   }, [onInvalidateHunt]);
+  useEffect(() => {
+    hardcoreDeathRef.current = onHardcoreDeath;
+  }, [onHardcoreDeath]);
 
   useEffect(() => {
     resumeFailureRef.current = onResumeFailure;
@@ -10898,6 +11281,7 @@ export default function HuntCanvas({
       frozenInsertionShipId,
     );
     game.huntAccessibility=normalizeHuntAccessibilityV112(activeAccessibility);
+    if (frozenHound) attachHoundV147(game, frozenHound);
     const restoredHunt = deserializeActiveHuntCheckpoint(resumeSnapshot);
     const restoredRetry = deserializeActiveHuntCheckpoint(
       resumeRetryCheckpoint,
@@ -11127,15 +11511,21 @@ export default function HuntCanvas({
       });
     }
 
+    if (frozenHound) {
+      queueImage(FIELD_HOUND_SPRITE_V147, image => { assets.houndPortraitV147 = image; });
+    }
+
     queueImage(backgroundPath(mission), (image) => {
       assets.background = image;
     });
-    queueImage(
-      "/game/assets/v2/environments/jungle/layers/far-lake.webp",
-      (image) => {
-        assets.farLake = image;
-      },
-    );
+    if (!mission.presentation) {
+      queueImage(
+        "/game/assets/v2/environments/jungle/layers/far-lake.webp",
+        (image) => {
+          assets.farLake = image;
+        },
+      );
+    }
 
     queueImage(hunterBodyFullPath(appearance.bodyMorphId), (image) => {
       assets.hunterBodyFull = image;
@@ -11452,6 +11842,8 @@ export default function HuntCanvas({
     });
 
     const restart = () => {
+      // V155: a Hardcore death is final; the retry and relay are never offered.
+      if (hardcoreHunt && game.phase === "dead") return;
       const retryFromCheckpoint = Boolean(game.lastCheckpoint);
       const visitedBeforeRetry = game.visitedScreenIds;
       const explorationBeforeRetry = game.exploration;
@@ -11532,6 +11924,8 @@ export default function HuntCanvas({
       finishRef.current(resultFor(game, mission, difficulty, "failed"));
     };
     requestAbortRef.current = () => {
+      // V155: abandoning cannot turn a Hardcore death into an interrupted hunt.
+      if (hardcoreHunt && game.phase === "dead") return;
       input.pressed.clear();
       if (game.player.cloaked) {
         game.player.cloaked = false;
@@ -11767,6 +12161,8 @@ export default function HuntCanvas({
         lastObservedPhase = game.phase;
         if (game.phase === "dead") {
           invalidateHuntRef.current?.();
+          // The sidecar is retired first; the session still knows the mission.
+          if (hardcoreHunt) hardcoreDeathRef.current?.();
         }
       }
       if (game.paused !== lastObservedPaused) {
@@ -11835,6 +12231,8 @@ export default function HuntCanvas({
     gauntletVisualId,
     frozenInsertion,
     frozenInsertionShipId,
+    frozenHound,
+    hardcoreHunt,
     insertionRunId,
     activeBindings,
     activeAccessibility,
@@ -12323,6 +12721,21 @@ export default function HuntCanvas({
               <span style={{ ...styles.modalKicker, color: mission.palette.danger }}>
                 SIGNAL VITAL PERDU
               </span>
+              {hardcoreHunt ? <>
+              <h2 id="hunt-dead-title" style={styles.modalTitle}>Mort définitive</h2>
+              <p style={styles.modalCopy} data-hardcore-death>
+                Chronique Hardcore : la mort ne se reprend pas. Transmets le rapport ; la clôture de la chronique et le legs au mausolée te seront demandés ensuite.
+              </p>
+              <div style={styles.modalActions}>
+                <button
+                  type="button"
+                  onClick={() => reportFailureRef.current()}
+                  style={styles.primaryButton}
+                >
+                  Rapport de mort
+                </button>
+              </div>
+              </> : <>
               <h2 id="hunt-dead-title" style={styles.modalTitle}>Le rite n’est pas terminé</h2>
               <p style={styles.modalCopy}>
                 {ui.checkpointLabel.startsWith("Relais")
@@ -12354,6 +12767,7 @@ export default function HuntCanvas({
                   Abandonner
                 </button>
               </div>
+              </>}
             </div>
           </div>
         ) : null}
@@ -12505,6 +12919,14 @@ export default function HuntCanvas({
             shortcut={controlActionShortcut("hunt.heal", activeBindings)}
             onPress={() => pressAction("heal")}
           />
+          {ui.houndV147 && (
+            <ActionButton
+              label={`${ui.houndV147.name} : ${ui.houndV147.dead ? "mort" : ui.houndV147.orderLabel}${ui.houndV147.wounded && !ui.houndV147.dead ? " (blessé)" : ""}`}
+              shortcut={controlActionShortcut("hunt.houndOrder", activeBindings)}
+              disabled={ui.houndV147.dead}
+              onPress={() => pressAction("houndOrder")}
+            />
+          )}
           </div>
         </details>
       </div>
@@ -12529,6 +12951,7 @@ export default function HuntCanvas({
         <span>{controlActionShortcut("hunt.toggleCloak", activeBindings)} · camouflage</span>
         <span>{controlActionShortcut("hunt.useGearOne", activeBindings)}/{controlActionShortcut("hunt.useGearTwo", activeBindings)} · équipements</span>
         <span>{controlActionShortcut("hunt.heal", activeBindings)} · soin ({ui.medicomps})</span>
+        {ui.houndV147 && <span>{controlActionShortcut("hunt.houndOrder", activeBindings)} · ordre suivant au chien</span>}
         <span>{controlActionShortcut("hunt.interact", activeBindings)} · interaction</span>
         <span>{controlActionShortcut("hunt.pause", activeBindings)} · pause</span>
         <span>Manette compatible</span>

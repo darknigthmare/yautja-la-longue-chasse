@@ -3,6 +3,7 @@ import {
   canopySupportReachableV112,
   canopySwingPointV112,
   isFlexibleCanopySupportV112,
+  selectCanopyEntrySupportV112,
   type CanopySwingV112,
 } from "./canopyTraversalV112";
 import { overlapsSolidPlatform } from "./platformCollision";
@@ -128,13 +129,18 @@ export function canopyNavigationV112(options: {
     };
   };
   const heldGrip = heldSupport ? describeGrip(heldSupport, true) : null;
+  const readyGrips = new Map<string, CanopyGripNavigationV112>();
   const nearby = climbables.flatMap(support => {
     if (support.id === heldSupport?.id || Math.abs(support.x + support.width / 2 - center.x) > VIEW_DISTANCE) return [];
     const item = describeGrip(support);
+    if (item.state === "ready") readyGrips.set(support.id, item);
     return item.distancePx <= VIEW_DISTANCE ? [item] : [];
   }).sort((a, b) => a.distancePx - b.distancePx || tieById(a, b));
   const nearbyGrip = nearby[0] ?? null;
-  const availableGrip = nearby.find(grip => grip.state === "ready") ?? null;
+  const entrySupport = readyGrips.size > 0
+    ? selectCanopyEntrySupportV112(player, climbables, support => readyGrips.has(support.id))
+    : undefined;
+  const availableGrip = entrySupport ? readyGrips.get(entrySupport.id) ?? null : null;
   const nextGrip = nearby.filter(grip => (grip.point.x - center.x) * player.facing > 18)
     .sort((a, b) => Math.abs(a.point.x - center.x) - Math.abs(b.point.x - center.x) ||
       a.distancePx - b.distancePx || tieById(a, b))[0] ?? null;

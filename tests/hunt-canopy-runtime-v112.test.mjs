@@ -9,7 +9,7 @@ import { build } from "esbuild";
 const url=new URL("../app/game/HuntCanvas.tsx",import.meta.url);
 const source=await readFile(url,"utf8");
 const bundle=await build({stdin:{contents:`${source.replace("export default function HuntCanvas","function HuntCanvas")}
-export {makeGameState,updatePlayer,captureCheckpoint,restoreCheckpoint,serializeActiveHuntCheckpoint,deserializeActiveHuntCheckpoint};
+export {makeGameState,updatePlayer,captureCheckpoint,restoreCheckpoint,serializeActiveHuntCheckpoint,deserializeActiveHuntCheckpoint,currentCanopyNavigationV112};
 export {defaultSave} from "./save"; export {MISSION_BY_ID} from "./data";`,
 resolveDir:fileURLToPath(new URL("../app/game/",import.meta.url)),sourcefile:fileURLToPath(url),loader:"tsx"},
 bundle:true,write:false,format:"cjs",platform:"node",jsx:"automatic",loader:{".module.css":"empty"},external:["react","react/jsx-runtime","react-dom"],logLevel:"silent"});
@@ -43,6 +43,26 @@ test("shared keyboard, touch and gamepad actions activate, pump and release the 
   assert.ok(Math.abs(f.state.player.velocityX-Math.cos(before.angle)*before.length*before.angularVelocity)<.001);
  }
 });
+test("the HUD and a real Up input choose the same support when two entries overlap", () => {
+  const f = fixture();
+  const { player } = f.state;
+  const centerX = player.x + player.width / 2;
+  const centerY = player.y + player.height / 2;
+  const tree = { ...f.support, id: "overlapping-tree", kind: "tree",
+    x: centerX - 24, y: centerY + 12, width: 48, height: 96 };
+  const vine = { ...f.support, id: "overlapping-vine",
+    x: centerX - 14, y: centerY - 100, width: 84, height: 200 };
+  f.state.world = { ...f.state.world, platforms: [], climbables: [vine, tree] };
+  Object.assign(player, { climbing: false, climbZoneId: null });
+  const navigation = runtime.currentCanopyNavigationV112(f.state);
+  assert.equal(navigation.nearbyGrip?.id, vine.id);
+  assert.equal(navigation.availableGrip?.id, tree.id);
+  f.held.add("up");
+  f.frame();
+  assert.equal(player.climbZoneId, navigation.availableGrip.id);
+  assert.equal(player.canopySwing, null);
+});
+
 test("real checkpoint cloning restores the same swing without replaying an impulse and rejects phantom anchors",()=>{
  const f=fixture();f.held.add("right");f.frame();
  const checkpoint=runtime.captureCheckpoint(f.state);

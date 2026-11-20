@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "date": "2026-11-17",
+  "runtimeVersion": "0.5.0-candidate.1",
+  "runtimeChanged": false,
+  "node": {"passed":146,"failed":0,"command":"node tests/validate.mjs"},
+  "initialBrowserRun": {"scenesPassed":52,"scenesChecked":52,"interactionsPassed":13,"interactionsChecked":14,"runtimeErrors":0,"failedTest":"room-transition-checkpoint-host-event"},
+  "harnessCorrection": {"scope":"temporary copy only","reason":"Fixed 6.4 second wall-clock wait was insufficient under headless rendering load.","change":"Observe the real room index for up to 25 seconds while holding the real movement key; always release the key in finally.","teleportUsed":false,"runtimeBypassUsed":false},
+  "correctedBrowserRun": {"scenesPassed":52,"scenesChecked":52,"interactionsPassed":14,"interactionsChecked":14,"runtimeErrors":0,"ok":true,"roomTransition":{"room":1,"checkpointRoom":1,"event":"room-enter"}},
+  "environment": {"node":"22.16.0","python":"3.13.5","browser":"Chromium /usr/bin/chromium"},
+  "limits": ["These are targeted checks, not complete campaign playthroughs.","Original reports and source bytes remain unchanged.","No production repository installer was executed.","No native HuntCanvas or host campaign slot integration is asserted.","Visual fidelity 1:1 is not certified by these tests."]
+}

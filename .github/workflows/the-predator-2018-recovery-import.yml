@@ -1,0 +1,27 @@
+name: The Predator 2018 source integrity
+
+# Import completed at fc72c4d05a46f71b9afa3bc7196c07909f6d195f.
+# Read-only verification: no external packages, download, auto-commit or push.
+on:
+  pull_request:
+    paths:
+      - 'dlc/the-predator-2018/**'
+      - '.github/workflows/the-predator-2018-recovery-import.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          lfs: false
+          persist-credentials: false
+          sparse-checkout: dlc/the-predator-2018
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python dlc/the-predator-2018/tools/verify_recovery.py

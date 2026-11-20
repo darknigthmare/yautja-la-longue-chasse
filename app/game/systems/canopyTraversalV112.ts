@@ -70,6 +70,25 @@ export function canopySupportReachableV112(
     center.y >= support.y - 28 && center.y <= support.y + support.height + 28 &&
     canopySegmentClearV112(center, nearest, platforms);
 }
+/** Entry favours the nearest horizontal centre; ties retain blueprint order. */
+export function selectCanopyEntrySupportV112(
+  body: WorldRect,
+  supports: readonly WorldClimbable[],
+  canEnter: (support: WorldClimbable) => boolean,
+): WorldClimbable | undefined {
+  const centerX = body.x + body.width / 2;
+  let closest: WorldClimbable | undefined;
+  let nearestOffset = Infinity;
+  for (const support of supports) {
+    const offset = Math.abs(centerX - (support.x + support.width / 2));
+    if (offset < nearestOffset && canEnter(support)) {
+      closest = support;
+      nearestOffset = offset;
+    }
+  }
+  return closest;
+}
+
 export function canopySwingPointV112(swing: CanopySwingV112, support: WorldClimbable) {
   return { x:support.x + support.width/2 + Math.sin(swing.angle)*swing.length,
     y:support.y + Math.cos(swing.angle)*swing.length };

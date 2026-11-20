@@ -413,14 +413,17 @@ test("suspended-hunt changes create a new auto and mission priority cannot be su
 test("a skipped safety auto still freezes every source preimage before switching parties", async () => {
   const s = await migrated(); await p.createCampaignSlot(2, "Two", s);
   const sourceKey = p.campaignSlotStorageKey(1), get = s.getItem.bind(s), before = get(MAIN), writes = s.writes.length;
-  let armed = false, changed = null;
+  const shipKey = p.SHIP_PROGRESSION_STORAGE_KEY;
+  let sourceAnnexRead = false, armed = false, changed = null;
   s.getItem = key => {
     const value = get(key);
-    if (key === sourceKey + ".backup" && !changed) armed = true;
+    if (key === shipKey) sourceAnnexRead = true;
+    // Heritage previews can read a slot backup before the safety auto captures the live annex.
+    if (key === sourceKey + ".backup" && sourceAnnexRead && !changed) armed = true;
     if (key === sourceKey && armed && !changed) {
-      const ship = JSON.parse(get(p.SHIP_PROGRESSION_STORAGE_KEY));
+      const ship = JSON.parse(get(shipKey));
       ship.training[Object.keys(ship.training)[0]].attempts += 7;
-      changed = JSON.stringify(ship); s.values.set(p.SHIP_PROGRESSION_STORAGE_KEY, changed); armed = false;
+      changed = JSON.stringify(ship); s.values.set(shipKey, changed); armed = false;
     }
     return value;
   };

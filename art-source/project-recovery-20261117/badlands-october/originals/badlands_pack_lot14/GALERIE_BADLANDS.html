@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Predator: Badlands — Lot 14 · 7 ajouts</title>
+<style>
+:root{--bg:#0c100f;--panel:#171e1b;--border:#354139;--text:#eef1e7;--muted:#a5b3a7;--accent:#b1ce81;--radius:16px}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% 0%,#26322588,transparent 48%),var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input,a{-webkit-tap-highlight-color:transparent}button,input{font:inherit}button,a{touch-action:manipulation}
+button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+header,main,footer{max-width:1480px;margin:auto;padding-left:32px;padding-right:32px}
+header{padding-top:56px;padding-bottom:34px}.eyebrow{display:flex;align-items:center;gap:12px;color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}.eyebrow:before{content:"";width:26px;height:2px;background:var(--accent)}
+h1{font-size:clamp(36px,5vw,70px);line-height:1.05;letter-spacing:-.045em;margin:18px 0 6px;font-weight:750}h1 span{display:block;font-size:.52em;font-weight:450;color:#bac6b4;letter-spacing:.02em;margin-top:10px}
+.intro{max-width:820px;color:var(--muted);margin:20px 0 26px;font-size:16px}.stats{display:flex;flex-wrap:wrap;gap:12px}.stat{padding:8px 14px;border:1px solid var(--border);border-radius:999px;font-size:13px;color:#d2dbc9}.stat b{color:var(--accent);margin-right:4px}
+.toolbar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:18px 0;margin-bottom:22px}
+.filters{display:flex;gap:5px;flex-wrap:wrap}.filter,.surface-button,.nav-button,.close-button{border:1px solid transparent;background:transparent;color:var(--muted);border-radius:9px;padding:9px 13px;font-size:14px;line-height:1.3}.filter[aria-pressed=true]{background:var(--accent);color:#10160e;font-weight:700}.filter:hover:not([aria-pressed=true]),.surface-button:hover,.nav-button:hover,.close-button:hover{background:#2c382f;color:white}
+.searchbox{margin-left:auto;position:relative;min-width:240px;flex:1;max-width:350px}.searchbox input{width:100%;border:1px solid var(--border);background:#141a17;color:var(--text);border-radius:10px;padding:11px 14px}.searchbox input::placeholder{color:#859485}
+.display-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 16px;color:var(--muted);font-size:13px}.surface-options{display:flex;align-items:center;gap:2px}.surface-label{margin-right:8px}.surface-button{padding:5px 9px;font-size:12px}.surface-button[aria-pressed=true]{border-color:var(--border);color:var(--text);background:#263128}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.card{min-width:0;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .16s,transform .16s}.card:hover{border-color:#718461;transform:translateY(-2px)}.card[hidden]{display:none}
+.art-button{display:block;width:100%;padding:0;border:0;background:none;color:inherit}.stage{height:250px;padding:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.stage.checker{background-color:#555d56;background-image:linear-gradient(45deg,#616960 25%,transparent 25%),linear-gradient(-45deg,#616960 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#616960 75%),linear-gradient(-45deg,transparent 75%,#616960 75%);background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0}
+.stage.light{background:#d5dacd}.stage.dark{background:#212923}.stage img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:none}
+.zoom-hint{position:absolute;right:10px;bottom:9px;background:#0c100fe6;border:1px solid #73866b;color:#e1ead6;border-radius:6px;padding:3px 7px;font-size:11px;opacity:0;transition:opacity .15s}.art-button:hover .zoom-hint,.art-button:focus-visible .zoom-hint{opacity:1}
+.card-content{padding:15px 16px 16px}.card-topline{display:flex;justify-content:space-between;align-items:center;font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:var(--accent);margin-bottom:7px}.index{color:#7f927e;font-variant-numeric:tabular-nums}h2{font-size:15px;font-weight:650;line-height:1.3;margin:0 0 9px;min-height:39px;display:flex;align-items:center}
+.asset-usage{font-size:11px;color:#b5c39f;margin:0 0 10px}.meta{font-size:11px;color:#9aaa9a;display:flex;align-items:center;justify-content:space-between;gap:8px}.download{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid #4c6147;background:#273624;color:#dce7cb;border-radius:8px;padding:7px 10px;font:600 11px system-ui,sans-serif;white-space:nowrap}.download:hover{background:#3a4d31;border-color:var(--accent)}.empty{border:1px dashed var(--border);padding:60px 24px;text-align:center;border-radius:var(--radius);color:var(--muted)}
+footer{padding-top:38px;padding-bottom:48px;color:#839380;font-size:12px}footer p{max-width:1050px;margin:0}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+dialog{width:min(1120px,94vw);max-height:95vh;padding:0;color:var(--text);background:#151d17;border:1px solid #5b7252;border-radius:18px;overflow:auto}dialog::backdrop{background:#040805dd;backdrop-filter:blur(5px)}.modal-header{display:flex;align-items:center;gap:15px;padding:16px 20px}.modal-title{margin:0;font-size:18px;min-height:0;flex:1}.close-button{font-size:20px;padding:5px 12px;border:1px solid var(--border)}.modal-stage{height:min(65vh,700px);padding:22px}.modal-footer{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.modal-meta{color:var(--muted);font-size:12px;overflow-wrap:anywhere}.modal-controls{display:flex;gap:8px;align-items:center}.nav-button{border:1px solid var(--border);font-size:20px;padding:5px 13px}.modal-download{font-size:13px;padding:10px 14px}
+@media(max-width:1150px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.stage{height:260px}}@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.searchbox{max-width:none}.toolbar{gap:12px}.stage{height:240px}}@media(max-width:560px){header,main,footer{padding-left:18px;padding-right:18px}header{padding-top:34px}.grid{grid-template-columns:1fr;gap:15px}.stage{height:290px}.card-content{padding:14px 16px}h2{min-height:0}.searchbox{min-width:100%;margin-left:0}.filter{font-size:12px;padding:8px 10px}.surface-label{display:none}.display-bar{align-items:flex-start}.modal-header{padding:12px}.modal-stage{height:55vh;padding:10px}.modal-footer{padding:12px}.modal-title{font-size:15px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.card:hover{transform:none}}
+</style>
+</head>
+<body>
+<header>
+<div class="eyebrow">Yautja · La Longue Chasse</div>
+<h1>PREDATOR: BADLANDS<span>Lot 14 · 7 ajouts</span></h1>
+<p class="intro">Faune, flore, synthétiques et Yautja pour Yautja : La Longue Chasse. Ouvrez chaque visuel pour l’examiner en grand ou récupérer son fichier PNG indépendant.</p>
+<div class="stats"><span class="stat"><b>7</b> PNG statiques</span><span class="stat"><b>PNG</b> fonds transparents</span><span class="stat">Galerie utilisable hors connexion</span></div>
+</header>
+<main>
+<div class="toolbar">
+<div class="filters" role="group" aria-label="Filtrer par catégorie">
+<button class="filter" type="button" data-category="all" aria-pressed="true">Tout · 7</button>
+<button class="filter" type="button" data-category="new" aria-pressed="false">Nouveautés · lot 14 · 7</button>
+<button class="filter" type="button" data-category="faune" aria-pressed="false">Faune · 2</button>
+<button class="filter" type="button" data-category="flore" aria-pressed="false">Flore · 2</button>
+<button class="filter" type="button" data-category="synthetiques" aria-pressed="false">Synthétiques · 2</button>
+<button class="filter" type="button" data-category="yautja" aria-pressed="false">Yautja · 1</button>
+</div>
+<div class="searchbox"><label class="sr-only" for="search">Rechercher un visuel</label><input id="search" type="search" placeholder="Rechercher : Kalisk, Thia, liane…" autocomplete="off" spellcheck="false"></div>
+</div>
+<div class="display-bar"><span id="result-count" role="status" aria-live="polite">7 visuels affichés</span><div class="surface-options" role="group" aria-label="Fond de prévisualisation"><span class="surface-label">Fond</span><button class="surface-button" type="button" data-surface="checker" aria-pressed="true">Grille</button><button class="surface-button" type="button" data-surface="light" aria-pressed="false">Clair</button><button class="surface-button" type="button" data-surface="dark" aria-pressed="false">Sombre</button></div></div>
+<section id="gallery" class="grid" aria-label="Visuels Predator Badlands"></section>
+<p id="empty" class="empty" hidden>Aucun visuel ne correspond à votre recherche.</p>
+<noscript>Activez JavaScript pour afficher la galerie et télécharger les PNG associés.</noscript>
+</main>
+<footer><p>V14 : 7 ajouts ou corrections à partir du nº 160. La collection cumulative conserve les 159 PNG antérieurs. Références et parties reconstituées détaillées par fichier. Images statiques ; les fonds de lecture ne font pas partie des PNG.</p></footer>
+<dialog id="viewer" aria-labelledby="modal-title">
+<div class="modal-header"><h2 id="modal-title" class="modal-title"></h2><button class="close-button" id="close" type="button" aria-label="Fermer l’aperçu">×</button></div>
+<div id="modal-stage" class="stage checker modal-stage"><img id="modal-image" alt=""></div>
+<div class="modal-footer"><div class="modal-meta" id="modal-meta"></div><div class="modal-controls"><button class="nav-button" id="previous" type="button" aria-label="Sprite précédent">‹</button><button class="nav-button" id="next" type="button" aria-label="Sprite suivant">›</button><a id="modal-download" class="download modal-download" href="#" download>Télécharger le PNG</a></div></div>
+</dialog>
+<script id="asset-data" type="application/json">[{"id":160,"title":"Vulture — posé, ailes rabattues","category":"Faune","categoryKey":"faune","filename":"160_vulture_pose_ailes_repliees.png","width":1536,"height":1024,"bytes":1741479,"data":"sprites/faune/160_vulture_pose_ailes_repliees.png","lot":14,"pose":"Debout en alerte sur deux pieds, bec fermé, ailes rabattues vers l’arrière avec membranes partiellement déployées, queue étendue","derivedFrom":null,"supersedes":null,"supersededBy":null,"morphologyCorrectedBy":null,"usage":"Repos au sol · pose reconstituée"},{"id":161,"title":"Vulture — attaque frontale","category":"Faune","categoryKey":"faune","filename":"161_vulture_attaque_frontale.png","width":1536,"height":1024,"bytes":2340103,"data":"sprites/faune/161_vulture_attaque_frontale.png","lot":14,"pose":"Attaque aérienne, deux ailes largement ouvertes, gueule ouverte, deux pieds griffus avancés, queue entière recourbée vers la droite","derivedFrom":null,"supersedes":null,"supersededBy":null,"morphologyCorrectedBy":null,"usage":"Attaque aérienne · extrémités reconstituées"},{"id":162,"title":"Feuilles en coupe — sans ver","category":"Flore","categoryKey":"flore","filename":"162_plante_feuilles_coupe_sans_ver.png","width":1024,"height":1536,"bytes":2417456,"data":"sprites/flore/162_plante_feuilles_coupe_sans_ver.png","lot":14,"pose":"Touffe entière à cinq feuilles en coupe, toutes vides","derivedFrom":99,"supersedes":null,"supersededBy":null,"morphologyCorrectedBy":null,"usage":"État vide · ressource absente"},{"id":163,"title":"Plante antidote — après cueillette","category":"Flore","categoryKey":"flore","filename":"163_plante_antidote_apres_cueillette.png","width":1262,"height":1246,"bytes":937969,"data":"sprites/flore/163_plante_antidote_apres_cueillette.png","lot":14,"pose":"Plante entière sans corolle, tige florale sectionnée au-dessus du feuillage basal","derivedFrom":130,"supersedes":null,"supersededBy":null,"morphologyCorrectedBy":null,"usage":"Après cueillette · état de jeu reconstitué"},{"id":164,"title":"Sas WY LAB-04 — ouvert","category":"Synthétiques","categoryKey":"synthetiques","filename":"164_sas_lab04_ouvert.png","width":1536,"height":1024,"bytes":1873448,"data":"sprites/synthetiques/164_sas_lab04_ouvert.png","lot":14,"pose":"Encadrement de sas entier, passages ouverts et transparents","derivedFrom":null,"supersedes":null,"supersededBy":null,"morphologyCorrectedBy":null,"usage":"Composant de décor · ouvert"},{"id":165,"title":"Meuble WY à modules verticaux","category":"Synthétiques","categoryKey":"synthetiques","filename":"165_meuble_modules_wy.png","width":1536,"height":1024,"bytes":2071699,"data":"sprites/synthetiques/165_meuble_modules_wy.png","lot":14,"pose":"Meuble entier isolé, cinq logements dont trois occupés","derivedFrom":null,"supersedes":null,"supersededBy":null,"morphologyCorrectedBy":null,"usage":"Mobilier de laboratoire · fonction non identifiée"},{"id":166,"title":"Ceinture et tablier de Kwei","category":"Yautja","categoryKey":"yautja","filename":"166_ceinture_tablier_pans_rouges_kwei.png","width":1254,"height":1254,"bytes":1494233,"data":"sprites/yautja/166_ceinture_tablier_pans_rouges_kwei.png","lot":14,"pose":"Ceinture vide en volume avec trois plaques centrales superposées et deux longs pans de tissu rouge.","derivedFrom":null,"supersedes":null,"supersededBy":null,"morphologyCorrectedBy":null,"usage":"Équipement isolé · ensemble de taille"}]</script>
+<script>
+(function(){
+  "use strict";
+  var assets=JSON.parse(document.getElementById("asset-data").textContent);
+  var gallery=document.getElementById("gallery"),viewer=document.getElementById("viewer");
+  var search=document.getElementById("search"),category="all",surface="checker",current=0;
+  function norm(value){return value.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();}
+  function size(bytes){return (bytes/1048576).toFixed(2).replace(".",",")+" Mo";}
+  function element(tag,cls,text){var el=document.createElement(tag);if(cls)el.className=cls;if(text)el.textContent=text;return el;}
+  assets.forEach(function(asset,index){
+    var card=element("article","card");card.dataset.category=asset.categoryKey;card.dataset.lot=String(asset.lot);
+    card.dataset.search=norm(asset.title+" "+asset.pose+" "+asset.usage+" "+asset.category+" "+asset.filename);
+    var view=element("button","art-button");view.type="button";view.setAttribute("aria-label","Agrandir : "+asset.title);
+    var stage=element("div","stage checker"),img=element("img");img.src=asset.data;img.alt=asset.title;img.loading="lazy";img.decoding="async";
+    stage.append(img,element("span","zoom-hint","Agrandir"));view.append(stage);view.addEventListener("click",function(){open(index);});
+    var content=element("div","card-content"),top=element("div","card-topline");
+    top.append(element("span",null,asset.category),element("span","index",String(asset.id).padStart(2,"0")));
+    var title=element("h2",null,asset.title),meta=element("div","meta"),link=element("a","download","↓ PNG");
+    link.href=asset.data;link.download=asset.filename;link.setAttribute("aria-label","Télécharger "+asset.title+" en PNG");
+    meta.append(element("span",null,asset.width+" × "+asset.height+" · "+size(asset.bytes)),link);
+    content.append(top,title,element("p","asset-usage",asset.usage),meta);card.append(view,content);gallery.append(card);
+  });
+  function filter(){var term=norm(search.value.trim()),count=0;
+    gallery.querySelectorAll(".card").forEach(function(card){var show=(category==="all"||(category==="new"&&card.dataset.lot==="14")||card.dataset.category===category)&&card.dataset.search.includes(term);card.hidden=!show;if(show)count++;});
+    document.getElementById("result-count").textContent=count+" visuel"+(count>1?"s":"")+" affiché"+(count>1?"s":"");
+    document.getElementById("empty").hidden=count!==0;
+  }
+  document.querySelectorAll(".filter[data-category]").forEach(function(button){button.addEventListener("click",function(){category=button.dataset.category;document.querySelectorAll(".filter").forEach(function(b){b.setAttribute("aria-pressed",String(b===button));});filter();});});
+  search.addEventListener("input",filter);
+  document.querySelectorAll("[data-surface]").forEach(function(button){button.addEventListener("click",function(){surface=button.dataset.surface;document.querySelectorAll(".stage").forEach(function(stage){stage.classList.remove("checker","light","dark");stage.classList.add(surface);});document.querySelectorAll(".surface-button").forEach(function(b){b.setAttribute("aria-pressed",String(b===button));});});});
+  function show(index){current=(index+assets.length)%assets.length;var asset=assets[current];
+    document.getElementById("modal-title").textContent=String(asset.id).padStart(2,"0")+" · "+asset.title;
+    var img=document.getElementById("modal-image");img.src=asset.data;img.alt=asset.title;
+    document.getElementById("modal-meta").textContent=asset.filename+" · "+asset.width+" × "+asset.height+" px · "+size(asset.bytes);
+    var link=document.getElementById("modal-download");link.href=asset.data;link.download=asset.filename;
+  }
+  function open(index){show(index);viewer.showModal();}
+  document.getElementById("close").addEventListener("click",function(){viewer.close();});
+  document.getElementById("previous").addEventListener("click",function(){show(current-1);});
+  document.getElementById("next").addEventListener("click",function(){show(current+1);});
+  viewer.addEventListener("click",function(event){if(event.target===viewer){var r=viewer.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)viewer.close();}});
+  viewer.addEventListener("keydown",function(event){if(event.key==="ArrowLeft"){event.preventDefault();show(current-1);}if(event.key==="ArrowRight"){event.preventDefault();show(current+1);}});
+})();
+</script>
+</body></html>

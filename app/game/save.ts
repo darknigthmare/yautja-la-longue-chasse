@@ -1,4 +1,14 @@
 import { inspectMobilityLedger } from "./systems/mobility/ledger";
+import { isFutureResidenceV149, normalizeResidenceV149 } from "./systems/residenceV149";
+import { isFutureResidenceLifeV150, normalizeResidenceLifeV150 } from "./systems/residenceLifeV150";
+import { isFutureResidenceScenesV154, normalizeResidenceScenesV154 } from "./systems/residenceScenesV154";
+import { isFutureOriginV151, normalizeOriginV151 } from "./systems/originsV151";
+import { isFuturePathObjectsV158, normalizePathObjectsV158 } from "./systems/pathObjectsV158";
+import { isFutureHeritageV152, normalizeHeritageV152 } from "./systems/heritageV152";
+import { hardcoreStatusV155, isFutureHardcoreV155, normalizeHardcoreV155, recordHardcoreDeathV155 } from "./systems/hardcoreV155";
+import { isFutureBlackGodV162, normalizeBlackGodV162 } from "./systems/blackGodV162";
+import { inspectMountsV153 } from "./systems/mobility/mountsV153";
+import { inspectMountRidesV156 } from "./systems/mobility/mountRidingV156";
 import { inspectTrophyTutorialV6 } from "./systems/trophyTutorialV6";
 import {normalizeHomeworldArrivalRecoveryV111} from './systems/homeworldArrivalRecoveryLedgerV111';
 import {normalizeHomeworldArchiveContinuationV111,archiveContinuationActiveV111} from './systems/homeworldArchiveContinuationLedgerV111';
@@ -14,6 +24,10 @@ import { normalizeYouthCampaign, youthCampaignMatchesSave } from "./systems/yout
 import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
 import { archiveTransferPending } from "./systems/archiveTransferGuard";
 import { defaultJusticeProgress, normalizeJusticeProgress } from "./systems/justice";
+import {
+  applyTribunalActionV147, effectiveRankV147, normalizeHonorTribunalV147, recordInfractionV147,
+  tribunalVersionStatusV147, type RecordInfractionInputV147, type TribunalActionResultV147, type TribunalActionV147,
+} from "./systems/honorTribunalV147";
 import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/homeworld";
 import {normalizeCntlipLedgerV77} from './systems/cntlipLedgerV77';
 import {homeworldCntlipEligibleV77} from './systems/homeworldCntlipPhysicalV77';
@@ -35,6 +49,7 @@ import { isHomeworldContractsV68 } from "./systems/homeworldContractsV68";
 import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/gameReserveV66";
 import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
 import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
+import { inspectSpaceRoutesV159 } from "./systems/spaceRoutesV159";
 import { inspectClanShipDocking } from "./systems/clanShipDocking";
 import { evaluateClanShipAccess, evaluateClanShipOperationsCampaign, inspectClanShipOperations } from "./systems/clanShipOperations";
 import { inspectWolfCastleVisit } from "./systems/wolfCastle";
@@ -48,6 +63,10 @@ import { inspectPlanetArrivalRun } from "./systems/planetArrivalRun";
 import { expeditionTrioReady, inspectExpeditionRoster } from "./systems/planetInsertion";
 import { hasShipInsertionDebit, inspectShipInsertionEnergy } from "./systems/shipInsertionEnergy";
 import { emptyGauntletCampaignV134, normalizeGauntletCampaignV134 } from "./systems/gauntletCampaignV134";
+import { inspectMinorArcsV160, recordMinorArcsHuntResultV160 } from "./systems/minorArcsV160";
+import { inspectQueenHuntV163, normalizeQueenHuntV163, QUEEN_HUNT_VERSION_V163 } from "./systems/queenHuntV163";
+import { inspectWarpEpochsV165 } from "./systems/warpEpochsV165";
+import { inspectTantalusLedgerV164, normalizeTantalusLedgerV164 } from "./systems/tantalusV164";
 import {
   ARMORS,
   CODEX_ENTRIES,
@@ -64,6 +83,13 @@ import {
   type HunterLorePresetId,
 } from "./hunterLore";
 import { ENEMY_V7_DEFINITIONS } from "./enemyRosterV7";
+import { HUNTER_PIECE_IDS_V146, hasCustomPiecesV146, normalizeLightsV146,
+  normalizePieceColorsV146, type HunterPieceIdV146 } from "./hunterPiecesV146";
+import { SKIN_PATTERN_IDS_V146, applyHeavyWearV146, earnedCosmeticsV146,
+  emptyCustomizationV146, normalizeCustomizationV146, normalizeMarksDisplayV146 } from "./systems/hunterCustomizationV146";
+import { isFutureTrophyUsagesV147, normalizeTrophyUsagesV147 } from "./systems/trophyUsagesV147";
+import { applyHoundHuntReportV147, huntSessionIdV147, isFutureHuntingHoundsV147,
+  normalizeHoundHuntReportV147, normalizeHuntingHoundsV147 } from "./systems/huntingHoundsV147";
 import {
   ECOLOGY_V8_BOSS_ENEMY_IDS,
   ECOLOGY_V8_ENEMIES,
@@ -649,6 +675,11 @@ function normalizeUpgradeRecord<T extends string>(
   return normalized;
 }
 
+/** V146: shared with outfits and share codes (same rules as campaign saves). */
+export function normalizeHunterAppearanceV146(source: unknown): HunterAppearance {
+  return normalizeAppearance(source);
+}
+
 function normalizeAppearance(source: unknown): HunterAppearance {
   if (!isRecord(source)) {
     return { ...DEFAULT_HUNTER_APPEARANCE };
@@ -697,6 +728,15 @@ function normalizeAppearance(source: unknown): HunterAppearance {
       : DEFAULT_HUNTER_APPEARANCE.laserColorId,
     chromaticsV113: migrateLegacyPhgAppearanceV115(source),
   };
+  // V146 fields are written only when present, so older appearances keep
+  // their exact shape (and their bytes) after normalisation.
+  const piecesV146 = normalizePieceColorsV146(source.piecesV146);
+  if (Object.keys(piecesV146).length) appearance.piecesV146 = piecesV146;
+  const lightsV146 = normalizeLightsV146(source.lightsV146);
+  if (Object.keys(lightsV146).length) appearance.lightsV146 = lightsV146;
+  const marksV146 = normalizeMarksDisplayV146(source.marksV146);
+  if (Object.keys(marksV146).length) appearance.marksV146 = marksV146;
+  if (isOneOf(source.skinPatternIdV146, SKIN_PATTERN_IDS_V146)) appearance.skinPatternIdV146 = source.skinPatternIdV146;
 
   if (appearance.presetId !== "custom") {
     const expected = appearanceForPreset(
@@ -725,7 +765,9 @@ function normalizeAppearance(source: unknown): HunterAppearance {
 
     // A legendary id describes the complete authored plate, never a label
     // that can remain attached to a manually altered combination of modules.
-    if (!matchesAuthoredModules || hasCustomChromaticsV113(appearance.chromaticsV113)) appearance.presetId = "custom";
+    if (!matchesAuthoredModules || hasCustomChromaticsV113(appearance.chromaticsV113) ||
+      hasCustomPiecesV146(appearance.piecesV146, appearance.lightsV146) ||
+      appearance.marksV146 !== undefined || appearance.skinPatternIdV146 !== undefined) appearance.presetId = "custom";
   }
 
   return appearance;
@@ -1151,6 +1193,8 @@ export function normalizeSave(value: unknown): SaveGame {
     rawProfile.honor,
     fallback.profile.honor,
   );
+  const tribunalV147 = source.tribunalV147 === undefined || source.tribunalV147 === null
+    ? null : normalizeHonorTribunalV147(source.tribunalV147);
   const requestedDifficultyId = isOneOf(
     rawSettings.difficultyId,
     DIFFICULTY_IDS,
@@ -1204,6 +1248,7 @@ export function normalizeSave(value: unknown): SaveGame {
     }
   }
 
+  const trophies = normalizeTrophies(source.trophies);
   return {
     version: SAVE_VERSION,
     createdAt: validIsoDate(source.createdAt, fallback.createdAt),
@@ -1213,7 +1258,7 @@ export function normalizeSave(value: unknown): SaveGame {
         rawProfile.hunterName,
         fallback.profile.hunterName,
       ).slice(0, 32),
-      rankId: rankForHonor(honor),
+      rankId: effectiveRankV147(rankForHonor(honor), tribunalV147),
       honor,
       clanMarks: nonNegativeInteger(
         rawProfile.clanMarks,
@@ -1261,12 +1306,67 @@ export function normalizeSave(value: unknown): SaveGame {
       clanShipReturnEscort: inspectClanShipReturnEscort(source.clanShipReturnEscort, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
     missionProgress,
-    trophies: normalizeTrophies(source.trophies),
+    trophies,
+    // V147 is written only after a first usage; it never removes a trophy.
+    ...(source.trophyUsagesV147 === undefined || source.trophyUsagesV147 === null ? {} : {
+      trophyUsagesV147: normalizeTrophyUsagesV147(source.trophyUsagesV147, trophies,
+        raw => normalizeTrophies([raw])[0] ?? null),
+    }),
+    // V147: written only once a tribunal record exists; older saves stay unchanged.
+    ...(tribunalV147 ? { tribunalV147 } : {}),
     ...(source.mobilityV1 === undefined ? {} : {
       mobilityV1: inspectMobilityLedger(source.mobilityV1,validIsoDate(source.createdAt,fallback.createdAt)).state,
     }),
+    ...(source.customizationV146 === undefined || source.customizationV146 === null ? {} : {
+      customizationV146: normalizeCustomizationV146(source.customizationV146, raw => ({ ...normalizeAppearance(raw) })),
+    }),
+    // V147: written only when present so older saves keep their exact shape.
+    ...(source.houndsV147 === undefined || source.houndsV147 === null ? {} : {
+      houndsV147: normalizeHuntingHoundsV147(source.houndsV147),
+    }),
+    ...(source.mountsV153 === undefined ? {} : {
+      mountsV153: inspectMountsV153(source.mountsV153,validIsoDate(source.createdAt,fallback.createdAt)).state,
+    }),
+    ...(source.mountRidesV156 === undefined ? {} : {
+      mountRidesV156: inspectMountRidesV156(source.mountRidesV156,validIsoDate(source.createdAt,fallback.createdAt),
+        inspectMountsV153(source.mountsV153,validIsoDate(source.createdAt,fallback.createdAt)).state).state,
+    }),
     ...(source.gauntletV134 === undefined ? {} : {
       gauntletV134: normalizeGauntletCampaignV134(source.gauntletV134,validIsoDate(source.createdAt,fallback.createdAt)),
+    }),
+    // V149: written only once the player has a residence state; old saves keep their shape.
+    ...(source.residenceV149 === undefined ? {} : { residenceV149: normalizeResidenceV149(source.residenceV149) }),
+    ...(source.residenceLifeV150 === undefined ? {} : { residenceLifeV150: normalizeResidenceLifeV150(source.residenceLifeV150) }),
+    ...(source.residenceScenesV154 === undefined ? {} : { residenceScenesV154: normalizeResidenceScenesV154(source.residenceScenesV154) }),
+    // STATE5-01: never rewritten; an absent origin is read as the documented default and not written until used.
+    ...(source.originV151 === undefined ? {} : { originV151: normalizeOriginV151(source.originV151) }),
+    // V158: absent until a voie mission or a material purchase writes it; old saves keep their shape.
+    ...(source.pathObjectsV158 === undefined ? {} : { pathObjectsV158: normalizePathObjectsV158(source.pathObjectsV158) }),
+    // V152: written only once a legacy is sealed or received; old saves keep their exact shape.
+    ...(source.heritageV152 === undefined ? {} : {
+      heritageV152: source.heritageV152 === null ? null : normalizeHeritageV152(source.heritageV152, validIsoDate(source.createdAt, fallback.createdAt)),
+    }),
+    // V155: written only for a Hardcore chronicle; normal and old saves keep their exact shape.
+    ...(source.hardcoreV155 === undefined ? {} : {
+      hardcoreV155: source.hardcoreV155 === null ? null : normalizeHardcoreV155(source.hardcoreV155, validIsoDate(source.createdAt, fallback.createdAt)),
+    }),
+    // V162: written only once the Black God trial has been attempted; old saves keep their exact shape.
+    ...(source.blackGodV162 === undefined ? {} : {
+      blackGodV162: source.blackGodV162 === null ? null : normalizeBlackGodV162(source.blackGodV162, validIsoDate(source.createdAt, fallback.createdAt)),
+    }),
+    ...(source.spaceRoutesV159 === undefined ? {} : {
+      spaceRoutesV159: inspectSpaceRoutesV159(source.spaceRoutesV159, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
+    // V160 : écrit seulement s'il existe déjà ; un registre illisible est retiré
+    // ici, mais inspectSavePayload refuse avant tout import une version future.
+    ...(source.minorArcsV160 === undefined || source.minorArcsV160 === null ? {} : {
+      minorArcsV160: inspectMinorArcsV160(source.minorArcsV160, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
+    ...(source.queenHuntV163 === undefined ? {} : {
+      queenHuntV163: normalizeQueenHuntV163(source.queenHuntV163, validIsoDate(source.createdAt, fallback.createdAt)),
+    }),
+    ...(source.warpEpochsV165 === undefined ? {} : {
+      warpEpochsV165: inspectWarpEpochsV165(source.warpEpochsV165, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
     ...(source.clanShipDocking === undefined ? {} : {
       clanShipDocking: inspectClanShipDocking(source.clanShipDocking, validIsoDate(source.createdAt, fallback.createdAt)).state,
@@ -1382,6 +1482,9 @@ export function normalizeSave(value: unknown): SaveGame {
     }),
     ...(source.shipAcquisitionV89 === undefined ? {} : {
       shipAcquisitionV89: normalizeShipAcquisitionV89(source.shipAcquisitionV89, validIsoDate(source.createdAt, fallback.createdAt)),
+    }),
+    ...(source.tantalusV164 === undefined ? {} : {
+      tantalusV164: normalizeTantalusLedgerV164(source.tantalusV164, validIsoDate(source.createdAt, fallback.createdAt)),
     }),
   };
 }
@@ -1524,12 +1627,14 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const expedition = inspectExpeditionRoster(value.expeditionRoster, typeof value.createdAt === 'string' ? value.createdAt : '');
   const shipEnergy = inspectShipInsertionEnergy(value.shipInsertionEnergy, typeof value.createdAt === 'string' ? value.createdAt : '');
   const mobility = inspectMobilityLedger(value.mobilityV1, typeof value.createdAt === "string" ? value.createdAt : "");
+  const mounts = inspectMountsV153(value.mountsV153, typeof value.createdAt === "string" ? value.createdAt : "");
+  const mountRides = inspectMountRidesV156(value.mountRidesV156, typeof value.createdAt === "string" ? value.createdAt : "", mounts.state);
   const cradle = inspectBuriedCradleCampaign(value.buriedCradle, typeof value.createdAt === 'string' ? value.createdAt : '');
   const residence = inspectCompanionResidence(value.companionResidence, typeof value.createdAt === 'string' ? value.createdAt : '');
   const incidents = inspectClanShipIncidents(value.clanShipIncidents, typeof value.createdAt === 'string' ? value.createdAt : '');
   const trophyHearing = inspectClanShipTrophyHearing(value.clanShipTrophyHearing, typeof value.createdAt === 'string' ? value.createdAt : '');
   const returnEscort = inspectClanShipReturnEscort(value.clanShipReturnEscort, typeof value.createdAt === 'string' ? value.createdAt : '');
-  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility]) {
+  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides]) {
     if (inspection.status === "future-version" || inspection.status === "invalid-save") {
       return { save: null, failure: inspection.status };
     }
@@ -1594,12 +1699,78 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   // Preserve incompatible inspection bytes instead of silently clearing a
   // player's checkpoint during import, archive export or account transfer.
   // A newer or cross-owner gauntlet receipt cannot be silently dropped during import/export.
+  if (isRecord(value.customizationV146) && Number(value.customizationV146.version) > 1)
+    return { save: null, failure: "future-version" };
+  // V147 trophy usages hold the exchange ledger: a newer format is never dropped silently.
+  if (isFutureTrophyUsagesV147(value.trophyUsagesV147)) return { save: null, failure: "future-version" };
+  if (isFutureHuntingHoundsV147(value.houndsV147))
+    return { save: null, failure: "future-version" };
+  // V147: a newer or unreadable tribunal record is refused, never silently cleared.
+  const tribunalStatusV147 = tribunalVersionStatusV147(value.tribunalV147);
+  if (tribunalStatusV147 === "future-version") return { save: null, failure: "future-version" };
+  if (tribunalStatusV147 === "invalid") return { save: null, failure: "invalid-save" };
   if (value.gauntletV134 !== undefined && value.gauntletV134 !== null) {
     if (isRecord(value.gauntletV134) && Number(value.gauntletV134.version) > 1)
       return { save:null, failure:"future-version" };
     if (typeof value.createdAt !== "string" ||
         !normalizeGauntletCampaignV134(value.gauntletV134,value.createdAt))
       return { save:null, failure:"invalid-save" };
+  }
+  if (value.residenceV149 !== undefined && value.residenceV149 !== null) {
+    if (isFutureResidenceV149(value.residenceV149)) return { save: null, failure: "future-version" };
+    if (!normalizeResidenceV149(value.residenceV149)) return { save: null, failure: "invalid-save" };
+  }
+  if (value.originV151 !== undefined && value.originV151 !== null) {
+    if (isFutureOriginV151(value.originV151)) return { save: null, failure: "future-version" };
+    if (!normalizeOriginV151(value.originV151)) return { save: null, failure: "invalid-save" };
+  }
+  if (value.residenceLifeV150 !== undefined && value.residenceLifeV150 !== null) {
+    if (isFutureResidenceLifeV150(value.residenceLifeV150)) return { save: null, failure: "future-version" };
+    if (!normalizeResidenceLifeV150(value.residenceLifeV150)) return { save: null, failure: "invalid-save" };
+  }
+  if (value.residenceScenesV154 !== undefined && value.residenceScenesV154 !== null) {
+    if (isFutureResidenceScenesV154(value.residenceScenesV154)) return { save: null, failure: "future-version" };
+    if (!normalizeResidenceScenesV154(value.residenceScenesV154)) return { save: null, failure: "invalid-save" };
+  }
+  if (value.pathObjectsV158 !== undefined && value.pathObjectsV158 !== null) {
+    if (isFuturePathObjectsV158(value.pathObjectsV158)) return { save: null, failure: "future-version" };
+    if (!normalizePathObjectsV158(value.pathObjectsV158)) return { save: null, failure: "invalid-save" };
+  }
+  if (value.heritageV152 !== undefined && value.heritageV152 !== null) {
+    if (isFutureHeritageV152(value.heritageV152)) return { save: null, failure: "future-version" };
+    if (typeof value.createdAt !== "string" || !normalizeHeritageV152(value.heritageV152, value.createdAt)) return { save: null, failure: "invalid-save" };
+  }
+  if (value.hardcoreV155 !== undefined && value.hardcoreV155 !== null) {
+    if (isFutureHardcoreV155(value.hardcoreV155)) return { save: null, failure: "future-version" };
+    if (typeof value.createdAt !== "string" || !normalizeHardcoreV155(value.hardcoreV155, value.createdAt)) return { save: null, failure: "invalid-save" };
+  }
+  if (value.blackGodV162 !== undefined && value.blackGodV162 !== null) {
+    if (isFutureBlackGodV162(value.blackGodV162)) return { save: null, failure: "future-version" };
+    if (typeof value.createdAt !== "string" || !normalizeBlackGodV162(value.blackGodV162, value.createdAt)) return { save: null, failure: "invalid-save" };
+  }
+  // A newer or foreign route log cannot be silently dropped during import/export.
+  if (value.spaceRoutesV159 !== undefined && value.spaceRoutesV159 !== null) {
+    const routes = inspectSpaceRoutesV159(value.spaceRoutesV159, typeof value.createdAt === "string" ? value.createdAt : "");
+    if (routes.status === "future-version" || routes.status === "invalid-save") return { save: null, failure: routes.status };
+  }
+  // V160 : un registre de mini-arcs plus récent ou d'un autre propriétaire n'est jamais effacé à l'import.
+  if (value.minorArcsV160 !== undefined && value.minorArcsV160 !== null) {
+    const arcs = inspectMinorArcsV160(value.minorArcsV160, typeof value.createdAt === "string" ? value.createdAt : "");
+    if (arcs.status === "future") return { save: null, failure: "future-version" };
+    if (arcs.status !== "valid") return { save: null, failure: "invalid-save" };
+  }
+  // V163 : un registre Queen Hunt futur ou étranger est refusé, jamais effacé.
+  if (value.queenHuntV163 !== undefined && value.queenHuntV163 !== null) {
+    if (isRecord(value.queenHuntV163) && Number(value.queenHuntV163.version) > QUEEN_HUNT_VERSION_V163)
+      return { save: null, failure: "future-version" };
+    if (typeof value.createdAt !== "string" ||
+        inspectQueenHuntV163(value.queenHuntV163, value.createdAt).status !== "valid")
+      return { save: null, failure: "invalid-save" };
+  }
+  // V165 : une version future ou une forme invalide du Warp est refusée, jamais effacée.
+  if (value.warpEpochsV165 !== undefined && value.warpEpochsV165 !== null) {
+    const warp = inspectWarpEpochsV165(value.warpEpochsV165, typeof value.createdAt === "string" ? value.createdAt : "");
+    if (warp.status === "future-version" || warp.status === "invalid-save") return { save: null, failure: warp.status };
   }
   if (value.shipPreparationV88 !== undefined && value.shipPreparationV88 !== null) {
     const raw = value.shipPreparationV88;
@@ -1610,6 +1781,12 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   }
   // Refuse incompatible shipyard checkpoints instead of clearing their work
   // during local import, complete archive export or account synchronization.
+  // V164 : un dossier Tantalus plus récent ou étranger n'est jamais remplacé par un dossier vide.
+  {
+    const status = inspectTantalusLedgerV164(value.tantalusV164, value.createdAt);
+    if (status === "future-version") return { save: null, failure: "future-version" };
+    if (status === "invalid") return { save: null, failure: "invalid-save" };
+  }
   if (value.shipAcquisitionV89 !== undefined && value.shipAcquisitionV89 !== null) {
     const raw = value.shipAcquisitionV89;
     if (isRecord(raw) && Number(raw.version) > 1) return { save: null, failure: "future-version" };
@@ -2314,8 +2491,12 @@ export function applyMissionResult(
   };
 
   if (result.outcome !== "success") {
-    return {
+    // V155: a death report in a Hardcore chronicle inscribes the final death (closure stays a player choice).
+    const hardcoreDeath = result.outcome === "failed" && hardcoreStatusV155(save) === "alive"
+      ? recordHardcoreDeathV155(save, mission.id, /^\d{4}-\d{2}-\d{2}T/.test(completedAt) ? completedAt : now) : null;
+    return withHoundAfterMissionV147(withCustomizationAfterMissionV146({
       ...save,
+      ...(hardcoreDeath?.ok ? { hardcoreV155: hardcoreDeath.hardcore } : {}),
       updatedAt: now,
       exploration,
       profile: {
@@ -2338,7 +2519,7 @@ export function applyMissionResult(
           (result.outcome === "failed" ? 1 : 0),
         currentHuntStreak: 0,
       },
-    };
+    }, rawResult), rawResult);
   }
 
   const firstCompletion = previous.completions === 0;
@@ -2436,7 +2617,7 @@ export function applyMissionResult(
     exploration,
     profile: {
       ...save.profile,
-      rankId: rankForHonor(nextHonor),
+      rankId: effectiveRankV147(rankForHonor(nextHonor), save.tribunalV147),
       honor: nextHonor,
       clanMarks: save.profile.clanMarks + clanMarksReward,
       playTimeSeconds: save.profile.playTimeSeconds + elapsedSeconds,
@@ -2472,12 +2653,87 @@ export function applyMissionResult(
       save.storyCompleted || mission.id === FINAL_STORY_MISSION_ID,
   };
 
-  return {
+  // V160 : seule une réussite réellement appliquée peut remplir le contrat SC-1 ;
+  // le champ n'est écrit que s'il existe déjà dans la sauvegarde.
+  const minorArcs = save.minorArcsV160 === undefined || save.minorArcsV160 === null
+    ? null : recordMinorArcsHuntResultV160(save.minorArcsV160, save.createdAt, result);
+  return withHoundAfterMissionV147(withCustomizationAfterMissionV146({
     ...progressedSave,
+    ...(minorArcs?.changed && minorArcs.state ? { minorArcsV160: minorArcs.state } : {}),
     inventory: unlockContent(
       progressedSave,
       nextHonor,
       missionProgress,
     ),
+  }, rawResult), rawResult);
+}
+
+/**
+ * V147: the hound that joined this hunt gains bond (at most 5 for this hunt),
+ * and its wound or permanent death is recorded once, whatever the outcome.
+ */
+function withHoundAfterMissionV147(next: SaveGame, raw: MissionResultInput): SaveGame {
+  const report = normalizeHoundHuntReportV147(raw.houndV147);
+  if (!report || !next.houndsV147) return next;
+  const at = validIsoDate(raw.completedAt, next.updatedAt);
+  const hounds = applyHoundHuntReportV147(next.houndsV147, report, huntSessionIdV147(raw.missionId, at), at);
+  return hounds === next.houndsV147 ? next : { ...next, houndsV147: hounds };
+}
+
+/**
+ * V146: heavy hits crack armour pieces until a forge repair (also after a
+ * failed hunt), and cosmetics earned by this result are recorded once.
+ */
+function withCustomizationAfterMissionV146(next: SaveGame, raw: MissionResultInput): SaveGame {
+  const reported = isRecord(raw.wearV146) && Array.isArray(raw.wearV146.heavyPieces)
+    ? raw.wearV146.heavyPieces.filter((id): id is HunterPieceIdV146 =>
+      (HUNTER_PIECE_IDS_V146 as readonly string[]).includes(id as string)).slice(0, 8)
+    : [];
+  const base = next.customizationV146 ?? null;
+  const earned = earnedCosmeticsV146({
+    honor: next.profile.honor, rankId: next.profile.rankId,
+    trophies: next.trophies, justiceDeclaration: next.justice?.declaration,
+  }, base?.earned ?? []);
+  const unchangedEarned = (base?.earned ?? []).length === earned.length;
+  if (!reported.length && unchangedEarned) return next;
+  return {
+    ...next,
+    customizationV146: applyHeavyWearV146({ ...(base ?? emptyCustomizationV146()), earned }, reported),
   };
+}
+
+// ---------------------------------------------------------------------------
+// V147 tribunal: one transaction for honour, rank, justice declaration and dossier
+// ---------------------------------------------------------------------------
+
+export interface TribunalSaveUpdateV147 {
+  update: Pick<SaveGame, "profile" | "justice" | "tribunalV147">;
+  result: TribunalActionResultV147;
+}
+
+/** Applies a played tribunal step to a campaign; the caller persists `update` atomically. */
+export function applyTribunalActionToSaveV147(save: SaveGame, action: TribunalActionV147, now = new Date().toISOString()): TribunalSaveUpdateV147 {
+  const tribunal = save.tribunalV147 ?? null;
+  const result = applyTribunalActionV147(tribunal, action, {
+    honor: save.profile.honor, rankId: save.profile.rankId,
+    currentRankThreshold: RANK_THRESHOLDS[save.profile.rankId],
+    missionsCompleted: save.statistics.missionsCompleted,
+    declaration: save.justice.declaration, now,
+  });
+  const honor = result.honor;
+  return {
+    result,
+    update: {
+      profile: { ...save.profile, honor, rankId: effectiveRankV147(rankForHonor(honor), result.tribunal) },
+      justice: { ...save.justice, declaration: result.declaration },
+      tribunalV147: result.ok ? result.tribunal : tribunal,
+    },
+  };
+}
+
+/** Records an act actually committed in play; returns null when the record is refused. */
+export function recordInfractionOnSaveV147(save: SaveGame, input: RecordInfractionInputV147):
+    { tribunalV147: NonNullable<SaveGame["tribunalV147"]>; infractionId: string } | null {
+  const recorded = recordInfractionV147(save.tribunalV147 ?? null, input);
+  return recorded ? { tribunalV147: recorded.tribunal, infractionId: recorded.infractionId } : null;
 }

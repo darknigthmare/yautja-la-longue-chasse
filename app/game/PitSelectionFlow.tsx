@@ -33,6 +33,9 @@ interface Props {
   onStageRetry?: () => void;
   stageAssetsPending?: boolean;
   launchLabel: string; launchDisabled: boolean; reducedMotion: boolean; highContrast: boolean;
+  /** V147: J1 slot of the campaign Yautja (presentation over `playerId`). */
+  personalOption?: { readonly name: string; readonly selected: boolean; readonly available: boolean } | null;
+  onPersonalSelect?: () => void;
 }
 
 const ROSTER_PAGE_SIZE = 24;
@@ -63,11 +66,17 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
   const [animationViewer, setAnimationViewer] = useState<string | null>(null);
   const [requestedRosterPage, setRequestedRosterPage] = useState(() => Math.floor(Math.max(0, PIT_VERSUS_FIGHTER_IDS.indexOf(playerId)) / ROSTER_PAGE_SIZE));
   const rosterSelected = state.slot === "player" ? playerId : opponentId;
+  const personal = props.personalOption ?? null;
+  const personalOnPlayer = Boolean(personal?.selected) && state.slot === "player";
+  const playerName = personal?.selected ? personal.name : PIT_FIGHTERS[playerId].name;
+  const rosterSelectedName = personalOnPlayer ? playerName : PIT_FIGHTERS[rosterSelected].name;
   const suppliedVariants = getPitFighterVariants(rosterSelected);
   const userIdentity = rosterSelected.startsWith("user-");
   const selectedVariantId = state.slot === "player" ? props.playerVariantId : props.opponentVariantId;
   const selectedVariant = getPitUserVariant(rosterSelected, selectedVariantId ?? (userIdentity ? suppliedVariants[0]?.id ?? null : null));
-  const variantChoices: readonly { id: string | null; label: string }[] = userIdentity
+  const variantChoices: readonly { id: string | null; label: string }[] = personalOnPlayer
+    ? [{ id: null, label: "Apparence de ta campagne" }]
+    : userIdentity
     ? suppliedVariants
     : [{ id: null, label: "Présentation actuelle" }, ...suppliedVariants];
   const variantValue = userIdentity ? (selectedVariant?.id ?? suppliedVariants[0]?.id ?? "") : (selectedVariantId ?? "");
@@ -118,7 +127,7 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
   useEffect(() => { const frame = requestAnimationFrame(focus); return () => cancelAnimationFrame(frame); }, [state.step, state.slot, focus]);
   const pick = (id: PitVersusFighterId) => {
     if (locked || (state.slot === "opponent" && (imposed || id === playerId)) || (state.slot === "player" && !canPitFighterEnterMode(id, mode))) return;
-    if (id === rosterSelected) return;
+    if (id === rosterSelected && !personalOnPlayer) return;
     if (state.slot === "player") props.onPlayerChange(id); else props.onOpponentChange(id);
     dispatch({ type: "pick", slot: state.slot });
   };
@@ -139,6 +148,11 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
     const current = variantChoices.findIndex(variant => (variant.id ?? "") === variantValue);
     const next = variantChoices[(Math.max(0, current) + direction + variantChoices.length) % variantChoices.length];
     changeVariant(next.id);
+  };
+  const pickPersonal = () => {
+    if (locked || state.slot !== "player" || !personal?.available || personal.selected) return;
+    props.onPersonalSelect?.();
+    dispatch({ type: "pick", slot: "player" });
   };
   const changeRosterQuery = (value: string) => { setRosterQuery(value); setRequestedRosterPage(0); };
   const changeRosterPage = (page: number) => {
@@ -228,6 +242,11 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
         <section className={styles.rosterConsole} aria-labelledby="pit-roster-heading">
       <div className={styles.rosterHeading}><div><span className={styles.consoleEyebrow}>REGISTRE DES CHASSEURS</span><h3 id="pit-roster-heading">{state.slot === "player" ? "Choisis ton combattant" : imposed ? "Confirme la rencontre du parcours" : "Choisis l’adversaire"}</h3></div><span className={styles.versus}>VS</span><span>{state.slot === "player" ? "J1" : mode === "local" ? "J2" : "RIVAL"}</span></div>
       {state.slot === "opponent" && imposed ? <p className={styles.imposed} role="status">{eventOnly ? "Cette branche est un événement sans combat." : `${PIT_FIGHTERS[opponentId].name} est imposé par ce parcours.`} Le choix du stage respecte la progression sauvegardée.</p> : <>
+        {personal && state.slot === "player" ? <button type="button" className={styles.personalSlot} data-pit-personal-slot-v147
+          aria-pressed={personal.selected} disabled={locked || !personal.available} onClick={pickPersonal}>
+          <span>TON YAUTJA</span><strong>{personal.name}</strong>
+          <small>{personal.available ? "Apparence de campagne · profil de duel équilibré" : "Duel CPU, versus local et entraînement uniquement"}</small>
+        </button> : null}
         <div className={styles.rosterTools}>
           <label>Rechercher un chasseur<input type="search" data-pit-roster-search aria-label="Rechercher un chasseur" autoComplete="off" spellCheck={false} placeholder="Nom, masque, variante…" value={rosterQuery} disabled={locked} onChange={event => changeRosterQuery(event.target.value)} /></label>
           <span role="status">{matchingFighterIds.length} / {PIT_VERSUS_FIGHTER_IDS.length}</span>
@@ -237,7 +256,7 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
         <div ref={gridRef} className={styles.roster} role="listbox" aria-label={state.slot === "player" ? "Combattant joueur" : "Adversaire"} data-pit-roster-total={PIT_VERSUS_FIGHTER_IDS.length} data-pit-roster-filtered={matchingFighterIds.length} data-pit-roster-page={rosterPage + 1}>
           {rosterChoices.map(id => {
             const variants = getPitFighterVariants(id);
-            return <button type="button" role="option" key={id} data-choice-id={id} aria-label={PIT_FIGHTERS[id].name} aria-selected={rosterSelected === id} disabled={isFighterUnavailable(id)} tabIndex={rosterTabStop === id ? 0 : -1} onClick={() => pick(id)} onFocus={() => { if (rosterSelected !== id) pick(id); }}><RosterPortrait id={id} /><strong>{PIT_FIGHTERS[id].name}</strong>{state.slot === "opponent" && id === playerId ? <small className={styles.rosterBadge}>J1</small> : (id === "kok-warlord" || id === "stone-heart") ? <small className={styles.rosterBadge}>BOSS</small> : !canPitFighterEnterMode(id, mode) ? <small className={styles.rosterBadge}>DUEL</small> : variants.length > 0 ? <small className={styles.rosterBadge} aria-label={`${variants.length} présentations fournies`}>{variants.length}</small> : null}</button>;
+            return <button type="button" role="option" key={id} data-choice-id={id} aria-label={PIT_FIGHTERS[id].name} aria-selected={rosterSelected === id && !personalOnPlayer} disabled={isFighterUnavailable(id)} tabIndex={rosterTabStop === id ? 0 : -1} onClick={() => pick(id)} onFocus={() => { if (rosterSelected !== id) pick(id); }}><RosterPortrait id={id} /><strong>{PIT_FIGHTERS[id].name}</strong>{state.slot === "opponent" && id === playerId ? <small className={styles.rosterBadge}>{personal?.selected ? "BASE J1" : "J1"}</small> : (id === "kok-warlord" || id === "stone-heart") ? <small className={styles.rosterBadge}>BOSS</small> : !canPitFighterEnterMode(id, mode) ? <small className={styles.rosterBadge}>DUEL</small> : variants.length > 0 ? <small className={styles.rosterBadge} aria-label={`${variants.length} présentations fournies`}>{variants.length}</small> : null}</button>;
           })}
         </div>
         {!matchingFighterIds.length && <p className={styles.emptyRoster} role="status">Aucun chasseur trouvé. La sélection actuelle est conservée.</p>}
@@ -272,7 +291,7 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
       </div>
     </> : <div className={styles.stageLayout}>
       <section className={styles.stageShowcase} aria-label="Arène sélectionnée">
-      <div className={styles.stageHeading}><div><span>STAGE SELECT</span><h3>{PIT_ARENAS[arenaId].name}</h3><p>{PIT_FIGHTERS[playerId].name} {eventOnly ? "· branche de parcours" : `VS ${PIT_FIGHTERS[opponentId].name}`}</p></div><span>{imposed ? "IMPOSÉ PAR LE PARCOURS" : `${PIT_ARENA_IDS.length} STAGES JOUABLES`}</span></div>
+      <div className={styles.stageHeading}><div><span>STAGE SELECT</span><h3>{PIT_ARENAS[arenaId].name}</h3><p>{playerName} {eventOnly ? "· branche de parcours" : `VS ${PIT_FIGHTERS[opponentId].name}`}</p></div><span>{imposed ? "IMPOSÉ PAR LE PARCOURS" : `${PIT_ARENA_IDS.length} STAGES JOUABLES`}</span></div>
       <PitStagePreview arenaId={arenaId} reducedMotion={props.reducedMotion} highContrast={props.highContrast} onStatus={onPreviewStatus} onRetry={props.onStageRetry} />
       <p className={styles.stageDescription}>{PIT_ARENAS[arenaId].setting} · Aperçu des plans réels P0–P5{props.reducedMotion ? " · mouvement réduit" : " · parallaxe active"}.</p>
       {screenMetadata && <p className={styles.referenceNote} data-pit-screen-reference>{screenMetadata.workTitle} · Réinterprétation latérale 2D ; disposition de combat recomposée. La fidélité exacte à chaque plan de l’œuvre n’est pas certifiée.{loreStage?.sourceUrl && <> <a href={loreStage.sourceUrl} target="_blank" rel="noreferrer">Source du lieu</a></>}</p>}
@@ -305,8 +324,8 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
       </nav>}
       </section>
     </div>}
-    <div className={styles.actions}><button type="button" onClick={back} disabled={locked}>{state.step === "stage" ? "Retour aux combattants" : state.slot === "opponent" ? "Retour au joueur 1" : "Retour au vaisseau"} · B</button><div className={styles.selectionCue} aria-hidden="true"><span>{state.step === "stage" ? "TERRAIN DU DUEL" : state.slot === "player" ? "JOUEUR 1" : "ADVERSAIRE"}</span><strong>{state.step === "stage" ? PIT_ARENAS[arenaId].name : PIT_FIGHTERS[rosterSelected].name}</strong></div><button ref={confirmRef} type="button" className={styles.confirm} data-pit-selection-confirm aria-keyshortcuts="Enter Space" data-gamepad-shortcut="A" onClick={confirm} disabled={(locked && state.step !== "stage") || props.launchDisabled || (state.step === "stage" && !stageReady)}>{state.step === "stage" ? stageReady ? props.launchLabel : "CHARGEMENT DU STAGE…" : state.slot === "player" ? "CONFIRMER JOUEUR 1" : imposed ? "CONFIRMER LA RENCONTRE" : "CONFIRMER L’ADVERSAIRE"} · A</button></div>
-    <details className={styles.commandHelp}><summary>COMMANDES <span>Flèches · choisir / Entrée · confirmer / Échap · retour</span></summary><p className={styles.instructions} role="status">{state.step === "fighters" ? `${state.slot === "player" ? "Joueur 1" : "Adversaire"} : ${PIT_FIGHTERS[rosterSelected].name}.` : `Stage : ${PIT_ARENAS[arenaId].name}.`} Flèches / croix directionnelle : choisir · Entrée / A : confirmer · Échap / B : retour. Q / E ou LT / RT : présentation précédente / suivante · LB / RB : changer de mode. Au tactile, touche une icône puis confirme.</p><p className={styles.instructions}>Les portraits illustrent la sélection. Les variantes partagent les règles de leur combattant ; elles ne garantissent pas un jeu d’animations complet. La couverture produite est consultable dans l’atelier d’animation.</p></details>
+    <div className={styles.actions}><button type="button" onClick={back} disabled={locked}>{state.step === "stage" ? "Retour aux combattants" : state.slot === "opponent" ? "Retour au joueur 1" : "Retour au vaisseau"} · B</button><div className={styles.selectionCue} aria-hidden="true"><span>{state.step === "stage" ? "TERRAIN DU DUEL" : state.slot === "player" ? "JOUEUR 1" : "ADVERSAIRE"}</span><strong>{state.step === "stage" ? PIT_ARENAS[arenaId].name : rosterSelectedName}</strong></div><button ref={confirmRef} type="button" className={styles.confirm} data-pit-selection-confirm aria-keyshortcuts="Enter Space" data-gamepad-shortcut="A" onClick={confirm} disabled={(locked && state.step !== "stage") || props.launchDisabled || (state.step === "stage" && !stageReady)}>{state.step === "stage" ? stageReady ? props.launchLabel : "CHARGEMENT DU STAGE…" : state.slot === "player" ? "CONFIRMER JOUEUR 1" : imposed ? "CONFIRMER LA RENCONTRE" : "CONFIRMER L’ADVERSAIRE"} · A</button></div>
+    <details className={styles.commandHelp}><summary>COMMANDES <span>Flèches · choisir / Entrée · confirmer / Échap · retour</span></summary><p className={styles.instructions} role="status">{state.step === "fighters" ? `${state.slot === "player" ? "Joueur 1" : "Adversaire"} : ${rosterSelectedName}.` : `Stage : ${PIT_ARENAS[arenaId].name}.`} Flèches / croix directionnelle : choisir · Entrée / A : confirmer · Échap / B : retour. Q / E ou LT / RT : présentation précédente / suivante · LB / RB : changer de mode. Au tactile, touche une icône puis confirme.</p><p className={styles.instructions}>Les portraits illustrent la sélection. Les variantes partagent les règles de leur combattant ; elles ne garantissent pas un jeu d’animations complet. La couverture produite est consultable dans l’atelier d’animation.</p></details>
   </div>;
 });
 export default PitSelectionFlow;

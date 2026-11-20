@@ -1,13 +1,35 @@
 {
   "schemaVersion": 1,
   "release": "V113",
-  "scope": "Existing unedited public files used by Homeworld, native forge and Preserve V6; no generated candidate artwork is integrated. All source bytes independently matched their original regular Git blobs.",
+  "scope": "Verified original public files used by Homeworld, native forge and Preserve V6, with newly integrated W-02 scenery and field hound art and their original source images.",
   "sourceSnapshot": {
     "commit": "03cf51badd450338d748da55599a317a71debd28",
     "tree": "8955aa3ae57f3c1c5151fc6e2980d083bbcd0aaa"
   },
-  "assets": [],
-  "provenance": [],
+  "assets": [
+    {
+      "path": "public/game/hounds/v147/field-hound.webp",
+      "bytes": 19826,
+      "sha256": "25ff327482e87e9fc5fa73edb223a74612290521a5d25842e4de89ea97a627d4"
+    },
+    {
+      "path": "public/game/warp/w02/cedar-pass-1629.webp",
+      "bytes": 248416,
+      "sha256": "45aa9c38a40fb0f5c209e10b2c8bbe302ed6b7f560c536b11592d6cdf2e77136"
+    }
+  ],
+  "provenance": [
+    {
+      "path": "art-source/v113/20261120-integration/cedar-pass-1629.png",
+      "bytes": 2584666,
+      "sha256": "1e7a9577984b54abf26fef93716ed0b9b8d34805db8bb7302e5317f74126555f"
+    },
+    {
+      "path": "art-source/v113/20261120-integration/field-hound.png",
+      "bytes": 1219185,
+      "sha256": "0b60b93e8233549599b41d50b6e2835f726afe3803e1543d305ccec1221710ed"
+    }
+  ],
   "runtimeAssets": [
     "public/audio/ambience/ship/v54.wav",
     "public/audio/sfx/cloak-off/v54.wav",

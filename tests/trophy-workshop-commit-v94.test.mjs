@@ -1,7 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { build } from 'esbuild';
-const bundled = await build({stdin: {contents: `export * from './app/game/systems/trophyWorkshopCommitV94'; export * from './app/game/save';`,resolveDir:process.cwd(),loader:'ts'},bundle:true,write:false,platform:'node',format:'esm',logLevel:'silent'});
+const bundled = await build({stdin: {contents: `
+export * from './app/game/systems/trophyWorkshopCommitV94';
+export * from './app/game/save';
+export { blackGodStatusV162 } from './app/game/systems/blackGodV162';
+export { tribunalAccessV147 } from './app/game/systems/honorTribunalV147';
+`,resolveDir:process.cwd(),loader:'ts'},bundle:true,write:false,platform:'node',format:'esm',logLevel:'silent'});
 const a=await import('data:text/javascript;base64,'+Buffer.from(bundled.outputFiles[0].text).toString('base64'));
 const owner='2026-10-16T00:00:00.000Z', date='2026-10-16T12:00:00.000Z',key='workshop-test';
 function setup(action='clean'){
@@ -99,6 +104,9 @@ const {runInNewContext}=await import('node:vm');
 for(const name of ['persist','persistNursery','persistSocialProgress','go','launchMission','resetProgress','confirmCompleteImport','confirmImport','saveManagedCheckpoint','returnToMainMenu','persistExplorationProgress','completeMission','exportComplete','readArchiveFile','openPit','openMap','openStationScreen','openHomeworldService'])test(`actual ${name} cannot discard or overwrite an unconfirmed rite`,async()=>{
  const messages=[],pending={current:{}};
  const env={pendingTrophyCommitRef:pending,sessionAliveRef:{current:true},saveRef:{current:{createdAt:owner}},setToast:m=>messages.push(m),setSaveTransferMessage:m=>messages.push(m),setCampaignSaveMessage:m=>messages.push(m)};
+ // These callbacks check campaign access before they reach the rite guard.
+ env.blackGodStatusV162 = a.blackGodStatusV162;
+ env.tribunalAccessV147 = a.tribunalAccessV147;
  // go also reads the actual location before its rite guard to protect driving.
  // Supply the workshop location while keeping every mutation dependency absent.
  if(name==='go')env.screen='trophies';

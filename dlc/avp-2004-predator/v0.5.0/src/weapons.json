@@ -1,0 +1,123 @@
+{
+  "wrist_blades": {
+    "name": "Wrist blades",
+    "kind": "melee",
+    "damage": 30,
+    "range": 92,
+    "cooldown": 0.34,
+    "actors": [
+      "Celtic",
+      "Scar"
+    ],
+    "canon": "screen_confirmed",
+    "acidRisk": true,
+    "durability": "acid_vulnerable"
+  },
+  "long_wrist_blades": {
+    "name": "Long arm blades",
+    "kind": "melee",
+    "damage": 34,
+    "range": 118,
+    "cooldown": 0.42,
+    "actors": [
+      "Chopper"
+    ],
+    "canon": "screen_confirmed",
+    "acidRisk": true,
+    "durability": "acid_vulnerable"
+  },
+  "combistick": {
+    "name": "Combistick",
+    "kind": "melee",
+    "damage": 38,
+    "range": 142,
+    "cooldown": 0.55,
+    "actors": [
+      "Celtic",
+      "Scar"
+    ],
+    "canon": "screen_confirmed",
+    "acidRisk": false,
+    "durability": "acid_resistant"
+  },
+  "netgun": {
+    "name": "Netgun",
+    "kind": "net",
+    "damage": 2,
+    "range": 520,
+    "cooldown": 2.4,
+    "actors": [
+      "Celtic"
+    ],
+    "canon": "screen_confirmed",
+    "ammo": 3,
+    "notes": "Capacité augmentée pour reproduire les tirs distincts sur Stafford puis Grid dans le film."
+  },
+  "shuriken": {
+    "name": "Shuriken",
+    "kind": "projectile",
+    "damage": 46,
+    "range": 620,
+    "cooldown": 0.9,
+    "actors": [
+      "Scar"
+    ],
+    "canon": "screen_confirmed",
+    "energy": 8,
+    "durability": "acid_resistant"
+  },
+  "dagger": {
+    "name": "Ceremonial dagger",
+    "kind": "melee",
+    "damage": 24,
+    "range": 72,
+    "cooldown": 0.32,
+    "actors": [
+      "Chopper",
+      "Celtic",
+      "Scar"
+    ],
+    "canon": "screen_confirmed",
+    "acidRisk": false,
+    "durability": "acid_resistant"
+  },
+  "plasmacaster": {
+    "name": "Plasmacaster",
+    "kind": "projectile",
+    "damage": 70,
+    "range": 840,
+    "cooldown": 0.75,
+    "actors": [
+      "Scar"
+    ],
+    "canon": "story_locked",
+    "energy": 24,
+    "storyUnlock": "plasma_recovered"
+  },
+  "elder_spear": {
+    "name": "Elder spear",
+    "kind": "ceremonial",
+    "damage": 0,
+    "range": 0,
+    "cooldown": 1,
+    "actors": [
+      "Elder"
+    ],
+    "canon": "screen_confirmed"
+  },
+  "wrist_blade_projectile": {
+    "name": "Wrist blade projectile",
+    "kind": "projectile",
+    "damage": 64,
+    "range": 760,
+    "cooldown": 1.0,
+    "actors": [
+      "Scar"
+    ],
+    "canon": "screen_confirmed_finale",
+    "ammo": 2,
+    "energy": 6,
+    "storyUnlock": "queen_arrival",
+    "notes": "Dernier recours de Scar durant le combat final contre la Reine."
+  }
+}

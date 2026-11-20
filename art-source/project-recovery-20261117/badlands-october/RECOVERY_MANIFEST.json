@@ -1,0 +1,3600 @@
+{
+  "schemaVersion": 1,
+  "operation": "preserve-existing-art-source-packs",
+  "date": "2026-11-17",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "comparison": {
+    "mainCommit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+    "refs": [
+      {
+        "ref": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "pullRequest": null
+      },
+      {
+        "ref": "refs/remotes/origin/pr134",
+        "commit": "b3963162d0285b9aeab55e3154eea89735b63c54",
+        "pullRequest": 134
+      },
+      {
+        "ref": "refs/remotes/origin/pr135",
+        "commit": "20b4bfdba53dc00037a029ad591b7350955e3a11",
+        "pullRequest": 135
+      },
+      {
+        "ref": "refs/remotes/origin/pr136",
+        "commit": "2d94fcb1d7e3484d6e818e720e4bc1ea0d8316f4",
+        "pullRequest": 136
+      },
+      {
+        "ref": "refs/remotes/origin/pr137",
+        "commit": "65bd9725ae8efad506f0f5aecb8ed3ec9d793954",
+        "pullRequest": 137
+      },
+      {
+        "ref": "refs/remotes/origin/pr138",
+        "commit": "35aa23d0dbb62ee6e59c7eead667fa9736b038f2",
+        "pullRequest": 138
+      },
+      {
+        "ref": "refs/remotes/origin/pr142",
+        "commit": "8ca95606cc930525ad7034ecd4107f41546557ef",
+        "pullRequest": 142
+      }
+    ],
+    "method": "Git blob SHA1 computed from original bytes and compared with the complete file trees of main and six open PR heads; archive integrity also checked with SHA256."
+  },
+  "scope": {
+    "archiveCount": 2,
+    "archiveMemberOccurrences": 197,
+    "standaloneDocumentOccurrences": 3,
+    "allOccurrences": 200,
+    "uniqueContents": 190,
+    "dispositions": {
+      "reused-main": 174,
+      "recovered-source-file": 23,
+      "reused-recovery-source": 3
+    },
+    "reusedMainUniqueContents": 167,
+    "newSourceFiles": 23,
+    "newSourceBytes": 3385883
+  },
+  "status": {
+    "artisticStatus": "approximation",
+    "humanArtReview": "not-validated",
+    "runtimeInstallation": "not-established-by-this-source-preservation",
+    "nativeYautjaIntegration": false,
+    "newSpritesGenerated": 0,
+    "sourceBytesChanged": false,
+    "publishedByThisManifest": false
+  },
+  "interpretation": {
+    "reused-main": "Identical bytes are already stored in main at the pinned path; this does not establish gameplay use or artistic approval.",
+    "referenced-open-pr": "Identical bytes found only in an open PR; not counted as merged or stored on main.",
+    "reused-recovery-source": "Identical source bytes occur elsewhere in these recovered packs and have one canonical destination.",
+    "recovered-source-file": "Original bytes preserved in this local recovery change; publication must be confirmed separately."
+  },
+  "archives": [
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "kind": "rar-archive",
+      "identity": {
+        "name": "PREDATOR_BADLANDS_V14_166_ASSETS.rar",
+        "path": "/PREDATOR_BADLANDS_V14_166_ASSETS.rar",
+        "library_file_id": "libfile_ba93b130c2f88191b1189aaeaed8a729",
+        "file_id": "file_0000000003d8820daad7fdc84dba94f5",
+        "size_bytes": 315116749,
+        "modified_at": "2026-10-07T09:47:05.288161Z"
+      },
+      "archive": {
+        "bytes": 315116749,
+        "sha256": "3e9d0b1d92dea991ccce0bd4addc2b736b3f7afd046a16b7ec535a284938eba1",
+        "git_blob_sha": "1eb27b6cd1343151fb4f4551b4215d23840266f6"
+      },
+      "archiveStoredAgain": false,
+      "membersPreservedViaManifest": true,
+      "extractionAlteredBytes": false,
+      "verification": {
+        "pack": "PREDATOR_BADLANDS_V14_166_ASSETS/badlands_pack_v14",
+        "checksums": 177,
+        "matches": 177,
+        "checksum_mismatches": [],
+        "manifest_entries": 166,
+        "present_assets": 166,
+        "sha256_matches": 166,
+        "byte_matches": 166,
+        "dimension_matches": 166
+      }
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "kind": "rar-archive",
+      "identity": {
+        "name": "PREDATOR_BADLANDS_LOT14_7_AJOUTS.rar",
+        "path": "/PREDATOR_BADLANDS_LOT14_7_AJOUTS.rar",
+        "library_file_id": "libfile_c843bdb704b48191b9a1c046da208c08",
+        "file_id": "file_000000007f78820da39a080e5b5c6adf",
+        "size_bytes": 13979918,
+        "modified_at": "2026-10-07T09:47:05.250272Z"
+      },
+      "archive": {
+        "bytes": 13979918,
+        "sha256": "b3f80a3ad46c172be9d0e6ea2739ade0aeb19e463da93649f0f4fba8d3712184",
+        "git_blob_sha": "57ea3f6b26bd383786a2ada76998a5e3b91ef649"
+      },
+      "archiveStoredAgain": false,
+      "membersPreservedViaManifest": true,
+      "extractionAlteredBytes": false,
+      "verification": {
+        "pack": "PREDATOR_BADLANDS_LOT14_7_AJOUTS/badlands_pack_lot14",
+        "checksums": 18,
+        "matches": 18,
+        "checksum_mismatches": [],
+        "manifest_entries": 7,
+        "present_assets": 7,
+        "sha256_matches": 7,
+        "byte_matches": 7,
+        "dimension_matches": 7
+      }
+    }
+  ],
+  "standaloneSources": [
+    {
+      "sourceId": "standalone-BADLANDS_RUNTIME_MANIFEST.json",
+      "kind": "standalone-document",
+      "identity": {
+        "name": "BADLANDS_RUNTIME_MANIFEST.json",
+        "path": "/BADLANDS_RUNTIME_MANIFEST.json",
+        "library_file_id": "libfile_81445f7d58648191b9254bb242d335d2",
+        "file_id": "file_000000009c38820d9b8c21be96e77378",
+        "size_bytes": 349941,
+        "modified_at": "2026-10-07T09:47:05.300962Z"
+      },
+      "content": {
+        "bytes": 349941,
+        "sha256": "a1de6fcb93e3a9129661187e926d0a29e7b30d42750e183305c726f5c0d6d148",
+        "git_blob_sha": "0feb3814b09c9d42b5704dc443f8fcf64aa5bc50"
+      }
+    },
+    {
+      "sourceId": "standalone-INTEGRATION_BADLANDS.md",
+      "kind": "standalone-document",
+      "identity": {
+        "name": "INTEGRATION_BADLANDS.md",
+        "path": "/INTEGRATION_BADLANDS.md",
+        "library_file_id": "libfile_74d9c97f54788191853b995da819d3b7",
+        "file_id": "file_00000000f11481f597e49806c05b2c7b",
+        "size_bytes": 10844,
+        "modified_at": "2026-10-07T09:47:05.195011Z"
+      },
+      "content": {
+        "bytes": 10844,
+        "sha256": "568f4b09c8322c721e0ac919d5bfddb4bd84b4ff8345e2f063c5536b10c52f9a",
+        "git_blob_sha": "afacba8b20e3fc62642b838bcd24f95f4c50cc7d"
+      }
+    },
+    {
+      "sourceId": "standalone-00_LIRE_MOI_PACKS_BADLANDS.txt",
+      "kind": "standalone-document",
+      "identity": {
+        "name": "00_LIRE_MOI_PACKS_BADLANDS.txt",
+        "path": "/00_LIRE_MOI_PACKS_BADLANDS.txt",
+        "library_file_id": "libfile_ca56bf39e72c8191863631f35e60ab69",
+        "file_id": "file_00000000650c81f5a1cfd9da25ad2997",
+        "size_bytes": 16167,
+        "modified_at": "2026-10-07T09:47:05.202772Z"
+      },
+      "content": {
+        "bytes": 16167,
+        "sha256": "c81a2dd55132def5911770a5cc078827f53ae70925efda479f48cb265db86466",
+        "git_blob_sha": "f7a4698c8a37938dbc1ea59c5ad5607fb935bcb8"
+      }
+    }
+  ],
+  "entries": [
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/APERCU_BADLANDS.png",
+      "bytes": 20245110,
+      "sha256": "6b4925ad7a47bf85d6fa2a03aaed80c0b7a34fc1e7ea35868896a4dc8ba4a8a2",
+      "gitBlobSha": "1e2c25c63df863884841aea808606a2db8e397ef",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v87/archive-audit/6b4925ad7a47bf85d6fa2a03aaed80c0b7a34fc1e7ea35868896a4dc8ba4a8a2.png",
+        "gitBlobSha": "1e2c25c63df863884841aea808606a2db8e397ef",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/AUDIT_FILM_BADLANDS.md",
+      "bytes": 10865,
+      "sha256": "0341e9dc42937b50f3a91a0c3800ccb835a25d4ab79fc911154b47ceb80af627",
+      "gitBlobSha": "309f10056ab3c2075dbc33e0542f204c30febb80",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_v14/AUDIT_FILM_BADLANDS.md"
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/BADLANDS_RUNTIME_MANIFEST.json",
+      "bytes": 349941,
+      "sha256": "a1de6fcb93e3a9129661187e926d0a29e7b30d42750e183305c726f5c0d6d148",
+      "gitBlobSha": "0feb3814b09c9d42b5704dc443f8fcf64aa5bc50",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_v14/BADLANDS_RUNTIME_MANIFEST.json"
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/CONTROLE_PNG.json",
+      "bytes": 162153,
+      "sha256": "ac02fbaf8873a51fe7fca428640ea5997c14ba8a86e0b5f7e57085ed0b13c05f",
+      "gitBlobSha": "5a0658eb3007df106530b2df1e253a25e9035df5",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_v14/CONTROLE_PNG.json"
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/GALERIE_BADLANDS.html",
+      "bytes": 88821,
+      "sha256": "934db731e02a9e90403a2ad9eb70c102e1cb0685aafec8a74c5f4bf9613ec2df",
+      "gitBlobSha": "f897218ca78d57ad94bba8b95adb23b0457c711a",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_v14/GALERIE_BADLANDS.html"
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/INTEGRATION_BADLANDS.md",
+      "bytes": 10844,
+      "sha256": "568f4b09c8322c721e0ac919d5bfddb4bd84b4ff8345e2f063c5536b10c52f9a",
+      "gitBlobSha": "afacba8b20e3fc62642b838bcd24f95f4c50cc7d",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_v14/INTEGRATION_BADLANDS.md"
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/INVENTAIRE_BADLANDS.csv",
+      "bytes": 201028,
+      "sha256": "ffc5ad0ac3cf0b9a0917b0f751b10fd48ba31b221c33a6bc9288a0629bdd3a68",
+      "gitBlobSha": "d2462fc6606dd3795b60325f706c0f00a6b4ca78",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_v14/INVENTAIRE_BADLANDS.csv"
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/LIRE_MOI.md",
+      "bytes": 25236,
+      "sha256": "11ef6b6a6fa32f390116469b44021732fff9a800a54b974a743c43457cb5a6a0",
+      "gitBlobSha": "dc6c89a98ccded73c620ebfd25509d9109770d8a",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_v14/LIRE_MOI.md"
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/MANIFEST_BADLANDS.json",
+      "bytes": 612260,
+      "sha256": "3391152087d7fa579c8c628fb1b2b7cc33a31068c2e4c0a22d66c1419b83e4b5",
+      "gitBlobSha": "b6595d4cf3769ac6a37861a4cd2732a82d80f0c6",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_v14/MANIFEST_BADLANDS.json"
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/PROMPTS_BADLANDS.json",
+      "bytes": 604313,
+      "sha256": "59f81b9abcf38d2a69b6538fa9bb26867d0b5768d6f539f8e4821deb64ed8acd",
+      "gitBlobSha": "e2129754192af6ccef61b07d6b960b68dc8266ed",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_v14/PROMPTS_BADLANDS.json"
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/SHA256SUMS.txt",
+      "bytes": 20033,
+      "sha256": "5a63f546edb5e9bb1be7b347fd66d8d04151f696d49ad83129cc75066475e5b3",
+      "gitBlobSha": "e3f8d9a2cd7960e11cf1977ff30a1466e74035a1",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_v14/SHA256SUMS.txt"
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/SOURCES_BADLANDS.md",
+      "bytes": 195135,
+      "sha256": "bc86a0158ad77f136c07acd1e37d922ebd5b116227d6254c728b57ee2c2e2a38",
+      "gitBlobSha": "e71ff276ca2c265cef31ca9be5dd5248a4146164",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_v14/SOURCES_BADLANDS.md"
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/01_kalisk_adulte.png",
+      "bytes": 1819978,
+      "sha256": "58ab68fcce48d575a5fdbb4b7b46bc4f11e525719a945f054e01987943fd8fbd",
+      "gitBlobSha": "98123f68f8abdee19900899a7b5e44a41a1cf756",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/58ab68fcce48d575a5fdbb4b7b46bc4f11e525719a945f054e01987943fd8fbd.png",
+        "gitBlobSha": "98123f68f8abdee19900899a7b5e44a41a1cf756",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/02_bud_juvenile.png",
+      "bytes": 2392357,
+      "sha256": "3289cf50a43f59bc3406421d6a1e32ab9eccd6ae1a2c10dbb21b5c69b89c1f3f",
+      "gitBlobSha": "6f1dda1ccbede8850ad8e6519463f8a9fd2460ea",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/3289cf50a43f59bc3406421d6a1e32ab9eccd6ae1a2c10dbb21b5c69b89c1f3f.png",
+        "gitBlobSha": "6f1dda1ccbede8850ad8e6519463f8a9fd2460ea",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/03_bone_bison.png",
+      "bytes": 2689909,
+      "sha256": "267060cee0d51d87e04af9b4934c016f9a25ae75d446c106a751d09480d930f4",
+      "gitBlobSha": "42df5305babb6fb163c117e4dc897ce296c6a7b6",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/267060cee0d51d87e04af9b4934c016f9a25ae75d446c106a751d09480d930f4.png",
+        "gitBlobSha": "42df5305babb6fb163c117e4dc897ce296c6a7b6",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/04_vulture_volant.png",
+      "bytes": 2021383,
+      "sha256": "f4bb6c83ccb0a70f06988356a181bf76b67275b3774c62877b17db034013958a",
+      "gitBlobSha": "5b284fb60282c62e9d7c0fa4dafdb021fa9457a4",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/f4bb6c83ccb0a70f06988356a181bf76b67275b3774c62877b17db034013958a.png",
+        "gitBlobSha": "5b284fb60282c62e9d7c0fa4dafdb021fa9457a4",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/05_luna_bug.png",
+      "bytes": 2213795,
+      "sha256": "00b855441a93af5077cfe7944cc5d391579adc794c2bc1dee4114a2f6e567d67",
+      "gitBlobSha": "ae5d745710beaedf3105794d90d6110f685f25cf",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/00b855441a93af5077cfe7944cc5d391579adc794c2bc1dee4114a2f6e567d67.png",
+        "gitBlobSha": "ae5d745710beaedf3105794d90d6110f685f25cf",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/06_spray_snake.png",
+      "bytes": 691280,
+      "sha256": "6571218a067b65d9d2c776adac378ae14ac7b44142a313463a5468e5c5682e57",
+      "gitBlobSha": "27bdd050fb5ffb5825ef62ec783b2c865893192c",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/6571218a067b65d9d2c776adac378ae14ac7b44142a313463a5468e5c5682e57.png",
+        "gitBlobSha": "27bdd050fb5ffb5825ef62ec783b2c865893192c",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/07_exploding_worm_repos.png",
+      "bytes": 2229657,
+      "sha256": "0a1dd7a0bda0cfbb755701bbe8fdc03855e4771facefaaf6c7ae6e7c2588f1e5",
+      "gitBlobSha": "3bab4311a084244088ed458bd0c24f05f70c5c36",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/0a1dd7a0bda0cfbb755701bbe8fdc03855e4771facefaaf6c7ae6e7c2588f1e5.png",
+        "gitBlobSha": "3bab4311a084244088ed458bd0c24f05f70c5c36",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/08_exploding_worm_arme.png",
+      "bytes": 2432392,
+      "sha256": "d6b51a2d82cd5c5f35008e5ec5c4a5112ab61b0dc190a73960de7f4d1a2a90ba",
+      "gitBlobSha": "dcf417d6b85e204e31058d11f026017d7cdb0ea8",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/d6b51a2d82cd5c5f35008e5ec5c4a5112ab61b0dc190a73960de7f4d1a2a90ba.png",
+        "gitBlobSha": "dcf417d6b85e204e31058d11f026017d7cdb0ea8",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/114_luna_bug_morphologie_corrigee_bouche_ouverte.png",
+      "bytes": 2327771,
+      "sha256": "f5794e654111430c487c0c2bf233086d09f308d1771c2bcd8622674b9790ac55",
+      "gitBlobSha": "36382b54258d4f5f693c19748e886f1c2d83e03e",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/f5794e654111430c487c0c2bf233086d09f308d1771c2bcd8622674b9790ac55.png",
+        "gitBlobSha": "36382b54258d4f5f693c19748e886f1c2d83e03e",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/115_luna_bug_morphologie_corrigee_bec_ferme.png",
+      "bytes": 2313698,
+      "sha256": "e5c9d4224e835b20b7e4ceefb020097f2b7ee981e4ce50036d37716b65fb97fa",
+      "gitBlobSha": "2f14ada8c6f83406e1b80e7721d2bdf5e9778348",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/e5c9d4224e835b20b7e4ceefb020097f2b7ee981e4ce50036d37716b65fb97fa.png",
+        "gitBlobSha": "2f14ada8c6f83406e1b80e7721d2bdf5e9778348",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/117_kalisk_regeneration_cervicale.png",
+      "bytes": 1792837,
+      "sha256": "f5bb1cfdcc89f855505fc4632a6f5308850d1724e27390c0b1fdec738166b5cb",
+      "gitBlobSha": "ee3136bfd83bcacc4a9c2dc3d4647a47fae4278e",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/f5bb1cfdcc89f855505fc4632a6f5308850d1724e27390c0b1fdec738166b5cb.png",
+        "gitBlobSha": "ee3136bfd83bcacc4a9c2dc3d4647a47fae4278e",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/129_squirt_projection_active_morphologie_corrigee.png",
+      "bytes": 1124077,
+      "sha256": "1c3f7a479d5125ec7b60be3bb1b0cb4e4698ac32f648227cbd9eb33e01df1b69",
+      "gitBlobSha": "5c3ab5b82e73a2b5f91507c39ac31c0ab0f85740",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/1c3f7a479d5125ec7b60be3bb1b0cb4e4698ac32f648227cbd9eb33e01df1b69.png",
+        "gitBlobSha": "5c3ab5b82e73a2b5f91507c39ac31c0ab0f85740",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/137_morceau_nourriture_roti_campement.png",
+      "bytes": 2877425,
+      "sha256": "2e566a487f8203700f83e99ee87b358abaa9af373b5e1e19b59ce466a069c9e8",
+      "gitBlobSha": "ebb50e1ca6933bf6629e70f32b180b9a704d1426",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/2e566a487f8203700f83e99ee87b358abaa9af373b5e1e19b59ce466a069c9e8.png",
+        "gitBlobSha": "ebb50e1ca6933bf6629e70f32b180b9a704d1426",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/144_restes_osseux_desert_yautja_prime_semi_enfouis.png",
+      "bytes": 756139,
+      "sha256": "c6edc3c90af4bd445ecf415f211893c046c25ad06a1149650dc3fe229e149207",
+      "gitBlobSha": "8bfa6e4f5f74129c837d8db99adb69749cf557a6",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/c6edc3c90af4bd445ecf415f211893c046c25ad06a1149650dc3fe229e149207.png",
+        "gitBlobSha": "8bfa6e4f5f74129c837d8db99adb69749cf557a6",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/147_squirt_repos_morphologie_corrigee.png",
+      "bytes": 1387270,
+      "sha256": "5822db95445136b0b8cacc62341d0c8b3e679298311f1974e95b9c36ca117604",
+      "gitBlobSha": "f2fdf4cd1f2302992e040e363bac9d201989ea4e",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/5822db95445136b0b8cacc62341d0c8b3e679298311f1974e95b9c36ca117604.png",
+        "gitBlobSha": "f2fdf4cd1f2302992e040e363bac9d201989ea4e",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/150_bud_juvenile_debout_repos.png",
+      "bytes": 2322592,
+      "sha256": "b7589ce154683a6dab1662be9760b3fac56e81712146d44342ccef7e08ddb604",
+      "gitBlobSha": "e9003439e655fdf621926c44fd31d405b6393255",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/b7589ce154683a6dab1662be9760b3fac56e81712146d44342ccef7e08ddb604.png",
+        "gitBlobSha": "e9003439e655fdf621926c44fd31d405b6393255",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/151_bud_branche_enflammee_camp.png",
+      "bytes": 1955856,
+      "sha256": "47a6fdb9cc9455284f31d3cc317f58e187c82b9b9acb9c9f985348b1ce396408",
+      "gitBlobSha": "3c117fe44ce1473236531e70ba9dfca75d3366cb",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/47a6fdb9cc9455284f31d3cc317f58e187c82b9b9acb9c9f985348b1ce396408.png",
+        "gitBlobSha": "3c117fe44ce1473236531e70ba9dfca75d3366cb",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/160_vulture_pose_ailes_repliees.png",
+      "bytes": 1741479,
+      "sha256": "d09735241c8d3bee1de691ba7d4836d275d9933826271c9708c7a2a4174d7346",
+      "gitBlobSha": "b27302a3f6dd3dd64c16b82da6265d3b79889179",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v87/drive-completion/d09735241c8d3bee1de691ba7d4836d275d9933826271c9708c7a2a4174d7346.png",
+        "gitBlobSha": "b27302a3f6dd3dd64c16b82da6265d3b79889179",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/161_vulture_attaque_frontale.png",
+      "bytes": 2340103,
+      "sha256": "0a1085996c0dd271ecaa1024e9075bbb3d46f1e5163f22d6957d77a69a291652",
+      "gitBlobSha": "e679932b06bd4359b44c77598841c2c4e574b2bd",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v87/drive-completion/0a1085996c0dd271ecaa1024e9075bbb3d46f1e5163f22d6957d77a69a291652.png",
+        "gitBlobSha": "e679932b06bd4359b44c77598841c2c4e574b2bd",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/20_exploding_worm_allonge_repos.png",
+      "bytes": 674090,
+      "sha256": "bce6dd94f36f6137325f6cd02c84d5de05aa363bff1f9f71883f4bdc0d66dbab",
+      "gitBlobSha": "23c5f126b5b95e7b93b1f42db01913a8dd43c3ac",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/bce6dd94f36f6137325f6cd02c84d5de05aa363bff1f9f71883f4bdc0d66dbab.png",
+        "gitBlobSha": "23c5f126b5b95e7b93b1f42db01913a8dd43c3ac",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/21_exploding_worm_allonge_arme.png",
+      "bytes": 1227107,
+      "sha256": "50e78420f4425b57828fed65a6a3d5ca65b57f2e2618a55af45ed2abff6a478e",
+      "gitBlobSha": "8e3b147441e7249f3aee92faab279e9a0878385f",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/50e78420f4425b57828fed65a6a3d5ca65b57f2e2618a55af45ed2abff6a478e.png",
+        "gitBlobSha": "8e3b147441e7249f3aee92faab279e9a0878385f",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/22_kalisk_attaque.png",
+      "bytes": 1880021,
+      "sha256": "52a8aa40dc7f9dccad9b1871173676669a6835a4b992fc9b2c0a9d17ee3773bd",
+      "gitBlobSha": "942ccdfe16ae841dbe3da2236dbf7fe691c91488",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/52a8aa40dc7f9dccad9b1871173676669a6835a4b992fc9b2c0a9d17ee3773bd.png",
+        "gitBlobSha": "942ccdfe16ae841dbe3da2236dbf7fe691c91488",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/23_bud_course.png",
+      "bytes": 2388310,
+      "sha256": "28e70ae922a86dbae1c0212a44dd4a716ed65afc804e0994ca465b28514a125e",
+      "gitBlobSha": "eb5f776dc03f6825eff61ca2ea557425a24d4e67",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/28e70ae922a86dbae1c0212a44dd4a716ed65afc804e0994ca465b28514a125e.png",
+        "gitBlobSha": "eb5f776dc03f6825eff61ca2ea557425a24d4e67",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/24_bone_bison_charge.png",
+      "bytes": 2617885,
+      "sha256": "ba31fbe7b745b527e9fa58e0cf5773cbcf6c419a555ebeefa4d2185bebbf662b",
+      "gitBlobSha": "058683eda32baf7e8e7988eb1dbcec7491bfc444",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/ba31fbe7b745b527e9fa58e0cf5773cbcf6c419a555ebeefa4d2185bebbf662b.png",
+        "gitBlobSha": "058683eda32baf7e8e7988eb1dbcec7491bfc444",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/25_vulture_battement_bas.png",
+      "bytes": 1934464,
+      "sha256": "3789138281a09ed91b83d31c870d19e5ae77c05ce09e6623eca62488a52543e7",
+      "gitBlobSha": "0e8702a612ecbf71bbc0c5076ab27c92a8922998",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/3789138281a09ed91b83d31c870d19e5ae77c05ce09e6623eca62488a52543e7.png",
+        "gitBlobSha": "0e8702a612ecbf71bbc0c5076ab27c92a8922998",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/34_rock_biter_partie_visible.png",
+      "bytes": 975392,
+      "sha256": "fca29813655a973b92aadb8eb7bbc98a8980d3cbacf207423213237557ee1ca3",
+      "gitBlobSha": "d3f9ab090cf0347cf93550303d55bb0b2adf51ed",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/fca29813655a973b92aadb8eb7bbc98a8980d3cbacf207423213237557ee1ca3.png",
+        "gitBlobSha": "d3f9ab090cf0347cf93550303d55bb0b2adf51ed",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/35_arthropode_cuirasse_yautja_prime.png",
+      "bytes": 1898184,
+      "sha256": "1273381ef98c80a31324867762cf663d9e51197d5b972f19c973d8cc6c839cf9",
+      "gitBlobSha": "5e8d2a6e8eb229cf92bfccd8156f4d119034eb9b",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/1273381ef98c80a31324867762cf663d9e51197d5b972f19c973d8cc6c839cf9.png",
+        "gitBlobSha": "5e8d2a6e8eb229cf92bfccd8156f4d119034eb9b",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/36_predateur_arachneen_yautja_prime.png",
+      "bytes": 1737372,
+      "sha256": "43b84b6e8c7d2a19601e2645740beb1d8952f3516b2ae2ba9d8878213f113d7b",
+      "gitBlobSha": "65141e0718e96aed3d5b671590d8fcc9bd7c67e6",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/43b84b6e8c7d2a19601e2645740beb1d8952f3516b2ae2ba9d8878213f113d7b.png",
+        "gitBlobSha": "65141e0718e96aed3d5b671590d8fcc9bd7c67e6",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/37_reptile_yautja_prime.png",
+      "bytes": 1220997,
+      "sha256": "9d514c17f0e466d9bd88e807fcfc8a643e0c56575bd20a7120cfb95daec51612",
+      "gitBlobSha": "841fc3e040a06be2a37a38912c402ea418121f40",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/9d514c17f0e466d9bd88e807fcfc8a643e0c56575bd20a7120cfb95daec51612.png",
+        "gitBlobSha": "841fc3e040a06be2a37a38912c402ea418121f40",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/42_bud_poncho_weyland_yutani.png",
+      "bytes": 2375980,
+      "sha256": "19d8af79d5ad58b169c70be306a4a63831f2e956e81323ad92a1d50046e65693",
+      "gitBlobSha": "c87ebd02ddd1a6b5935b17958cc960022e23192c",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/19d8af79d5ad58b169c70be306a4a63831f2e956e81323ad92a1d50046e65693.png",
+        "gitBlobSha": "c87ebd02ddd1a6b5935b17958cc960022e23192c",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/43_bud_grandi_portrait.png",
+      "bytes": 2427874,
+      "sha256": "16a7bb1ab8ff79798948f2607a2c1b293244a2c58b447d69fc7f12a27a655648",
+      "gitBlobSha": "82cfe502168d03eed1f326364f35ac469f9d85fe",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/16a7bb1ab8ff79798948f2607a2c1b293244a2c58b447d69fc7f12a27a655648.png",
+        "gitBlobSha": "82cfe502168d03eed1f326364f35ac469f9d85fe",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/49_rock_biter_corps_entier_reconstitue.png",
+      "bytes": 837427,
+      "sha256": "89c8d607ad7b5c6b7f15246d931bcbdf2d658325ecbc64206b67fc4c7fbdfb13",
+      "gitBlobSha": "686f1dc523ba8e1eac4bd3b460ac1cf16265382c",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/89c8d607ad7b5c6b7f15246d931bcbdf2d658325ecbc64206b67fc4c7fbdfb13.png",
+        "gitBlobSha": "686f1dc523ba8e1eac4bd3b460ac1cf16265382c",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/50_bud_grandi_corps_entier_reconstitue.png",
+      "bytes": 1471706,
+      "sha256": "4c29c7ae2855c5707c7ecd8de329ca725670fbd61d2b79bf11f50eb9ae0e7447",
+      "gitBlobSha": "973dafabb79db5f8a03e96928c1a40ba99dea507",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/4c29c7ae2855c5707c7ecd8de329ca725670fbd61d2b79bf11f50eb9ae0e7447.png",
+        "gitBlobSha": "973dafabb79db5f8a03e96928c1a40ba99dea507",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/62_kalisk_langue_prehension.png",
+      "bytes": 1757801,
+      "sha256": "9f0244c08ac60e281f81d213306dc1b065d90851ccef9764ff842f45a5dfe584",
+      "gitBlobSha": "d19e91aad4b87caaf9c4c7ec1b59f189682b9d5b",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/9f0244c08ac60e281f81d213306dc1b065d90851ccef9764ff842f45a5dfe584.png",
+        "gitBlobSha": "d19e91aad4b87caaf9c4c7ec1b59f189682b9d5b",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/63_kalisk_cryogenise_entier.png",
+      "bytes": 2361569,
+      "sha256": "fc15ac7898a0e81f12bede4958fe126792c8734d720da4beae210fbec5c39950",
+      "gitBlobSha": "c280e7087cb48d4859d626520777bd4d902f2ddb",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/fc15ac7898a0e81f12bede4958fe126792c8734d720da4beae210fbec5c39950.png",
+        "gitBlobSha": "c280e7087cb48d4859d626520777bd4d902f2ddb",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/64_bud_boule_defensive_reconstituee.png",
+      "bytes": 1699022,
+      "sha256": "2931e9d27efe9ae28ccc82ab5e9fe66fd63d136c8d5b351394cb0d402ec95d08",
+      "gitBlobSha": "36ec8cde4c0e8298f4c8d909c9a5cb22980a1d4b",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/2931e9d27efe9ae28ccc82ab5e9fe66fd63d136c8d5b351394cb0d402ec95d08.png",
+        "gitBlobSha": "36ec8cde4c0e8298f4c8d909c9a5cb22980a1d4b",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/65_squirt_tete_dressee_pret_a_projeter.png",
+      "bytes": 939819,
+      "sha256": "17cdc38df10b1eb9f57edfc2bac5a12e912c8d1a3d771cf4c92e2440acfc53f3",
+      "gitBlobSha": "12f95159dbc359d2e36929103fe35f382438a9ac",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/17cdc38df10b1eb9f57edfc2bac5a12e912c8d1a3d771cf4c92e2440acfc53f3.png",
+        "gitBlobSha": "12f95159dbc359d2e36929103fe35f382438a9ac",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/86_bone_bison_carapace_faciale_fermee.png",
+      "bytes": 2757591,
+      "sha256": "00b546a7826050d2980af5238135936a9c180e5adf3c76b9ec47ee92d5ea627f",
+      "gitBlobSha": "899f8f6905cdf13ff625d2f1c72d235509aa0444",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/00b546a7826050d2980af5238135936a9c180e5adf3c76b9ec47ee92d5ea627f.png",
+        "gitBlobSha": "899f8f6905cdf13ff625d2f1c72d235509aa0444",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/faune/97_luna_bug_bec_ferme_reconstitue.png",
+      "bytes": 2279188,
+      "sha256": "9d3b310bad81d30955c370f338941d827266c285966264e2d6246bcb02b2c522",
+      "gitBlobSha": "92e0d8ab6aa01adb31e04e3992eeb5092f7fb337",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/9d3b310bad81d30955c370f338941d827266c285966264e2d6246bcb02b2c522.png",
+        "gitBlobSha": "92e0d8ab6aa01adb31e04e3992eeb5092f7fb337",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/09_puffer_plant_repos.png",
+      "bytes": 1772055,
+      "sha256": "6edc0c45218941d1c9d70ed19724f878507e3b85567bd02c41ee554bf04774cc",
+      "gitBlobSha": "ddbb4db9c15040251e4b6b452f060308a50f6943",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/6edc0c45218941d1c9d70ed19724f878507e3b85567bd02c41ee554bf04774cc.png",
+        "gitBlobSha": "ddbb4db9c15040251e4b6b452f060308a50f6943",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/108_puffer_plant_gonflee_lobes_arrondis.png",
+      "bytes": 1858512,
+      "sha256": "03869cbd6d906cb7a4b2ac1d51f44801cc1f36f3582f4266f1436bd90a34ee25",
+      "gitBlobSha": "2bd05019e1adbf197465bf2ed0de6359b3723e9b",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/03869cbd6d906cb7a4b2ac1d51f44801cc1f36f3582f4266f1436bd90a34ee25.png",
+        "gitBlobSha": "2bd05019e1adbf197465bf2ed0de6359b3723e9b",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/10_puffer_plant_deployee.png",
+      "bytes": 2142414,
+      "sha256": "220a06594f39094f23e9d5a4ea5aa1e0977df99ca5278e8327af7d4df8f78529",
+      "gitBlobSha": "cafce567b6ae441f4b3fa59654f865e4815064fa",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/220a06594f39094f23e9d5a4ea5aa1e0977df99ca5278e8327af7d4df8f78529.png",
+        "gitBlobSha": "cafce567b6ae441f4b3fa59654f865e4815064fa",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/11_razor_grass_touffe.png",
+      "bytes": 1597707,
+      "sha256": "9e2dc45de028aa278321abd9c24bd8a133cbe791edacc206ecd1fba74b33f36a",
+      "gitBlobSha": "51831c8b7466a516178d93ac62f58c296db9928b",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/9e2dc45de028aa278321abd9c24bd8a133cbe791edacc206ecd1fba74b33f36a.png",
+        "gitBlobSha": "51831c8b7466a516178d93ac62f58c296db9928b",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/124_fleur_antidote_ouverte_cueillie.png",
+      "bytes": 1392774,
+      "sha256": "0837267f46df09db17d4873625e7d7c0f214ec77da3223d2570264459b8d017d",
+      "gitBlobSha": "a85cdb7670f38feddcfd2fc1838c69225b61977e",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/0837267f46df09db17d4873625e7d7c0f214ec77da3223d2570264459b8d017d.png",
+        "gitBlobSha": "a85cdb7670f38feddcfd2fc1838c69225b61977e",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/126_razor_grass_touffe_corrigee.png",
+      "bytes": 1882052,
+      "sha256": "d3b51d68a4d59e5bd7ee5dad1f19df3002d8b5558e40100b8483f5242f19208d",
+      "gitBlobSha": "55fc740e01830d180b8716ec860de4a3e09c8b4a",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/d3b51d68a4d59e5bd7ee5dad1f19df3002d8b5558e40100b8483f5242f19208d.png",
+        "gitBlobSha": "55fc740e01830d180b8716ec860de4a3e09c8b4a",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/12_lianes_tueuses_completes.png",
+      "bytes": 1733584,
+      "sha256": "3bb81cdf2ed37ce64df28643065fe2909049b8bba65ea1ae92eeb6bdabee0ad2",
+      "gitBlobSha": "51dd1ec567fe0954eb5c4e4c9085624b307f5525",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/3bb81cdf2ed37ce64df28643065fe2909049b8bba65ea1ae92eeb6bdabee0ad2.png",
+        "gitBlobSha": "51dd1ec567fe0954eb5c4e4c9085624b307f5525",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/130_plante_antidote_entiere_fleur_ouverte.png",
+      "bytes": 1014163,
+      "sha256": "ef353c10e20451583db6601c7c34ec82130efa79f19006df0902e6f256cb382e",
+      "gitBlobSha": "484e4a668d437c4462fca16a28eae4f069b711fc",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/ef353c10e20451583db6601c7c34ec82130efa79f19006df0902e6f256cb382e.png",
+        "gitBlobSha": "484e4a668d437c4462fca16a28eae4f069b711fc",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/131_herbe_genna_plumeau_blanc.png",
+      "bytes": 979137,
+      "sha256": "98149764fa6e335b7ec2c6fc204de2f5d03016a63dffb286b99c4d8f5341a13d",
+      "gitBlobSha": "062452156a6de8b9edd38f249b126bad942c62bf",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/98149764fa6e335b7ec2c6fc204de2f5d03016a63dffb286b99c4d8f5341a13d.png",
+        "gitBlobSha": "062452156a6de8b9edd38f249b126bad942c62bf",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/134_touffe_herbes_fines_vert_paille.png",
+      "bytes": 2076081,
+      "sha256": "d9fb663535bca015ef5aae891c2072fab0db859797e557df0531832e728e37c4",
+      "gitBlobSha": "dc7f553b0d45a3f103f73245eb1b741d8ea03569",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/d9fb663535bca015ef5aae891c2072fab0db859797e557df0531832e728e37c4.png",
+        "gitBlobSha": "dc7f553b0d45a3f103f73245eb1b741d8ea03569",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/135_arbuste_compact_vert_gris.png",
+      "bytes": 2781503,
+      "sha256": "96db4ed6345507c0304232b839975e1911455b76b861c03fbae8689316d0eb96",
+      "gitBlobSha": "210cec3e542d58560df498a314dddda49d4d83df",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/96db4ed6345507c0304232b839975e1911455b76b861c03fbae8689316d0eb96.png",
+        "gitBlobSha": "210cec3e542d58560df498a314dddda49d4d83df",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/136_petit_arbre_genna_couronne_irreguliere.png",
+      "bytes": 2706294,
+      "sha256": "986bb0e99a6b75994c60de834e341f5916f9d351939d0b2527688dd6bc849858",
+      "gitBlobSha": "0348b3eb3e513cf60fdf00e7b6fe81a5b7f979ab",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/986bb0e99a6b75994c60de834e341f5916f9d351939d0b2527688dd6bc849858.png",
+        "gitBlobSha": "0348b3eb3e513cf60fdf00e7b6fe81a5b7f979ab",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/138_razor_grass_bande_corrigee.png",
+      "bytes": 2355148,
+      "sha256": "5a6e5889a13877eca184d31df32e12dfc483b771cade6b1cf8d5e23cb8d9a140",
+      "gitBlobSha": "f0c2c20bd5912177bc910ccb51199ea5c0d2fae2",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/5a6e5889a13877eca184d31df32e12dfc483b771cade6b1cf8d5e23cb8d9a140.png",
+        "gitBlobSha": "f0c2c20bd5912177bc910ccb51199ea5c0d2fae2",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/139_petit_arbre_genna_clairseme.png",
+      "bytes": 2669420,
+      "sha256": "f814d83510b5a58eefdedc8701d9e05285fa929352613098c5433f0795eb61dc",
+      "gitBlobSha": "41f8e016343266304d1e5295d2138e7c22a34085",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/f814d83510b5a58eefdedc8701d9e05285fa929352613098c5433f0795eb61dc.png",
+        "gitBlobSha": "41f8e016343266304d1e5295d2138e7c22a34085",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/13_liane_attaque.png",
+      "bytes": 1278232,
+      "sha256": "f36ba910c9da88e85bf3e9289632227ba78b63a9fadd759916be9f5d65653c36",
+      "gitBlobSha": "a3f1db5fcb98a1744ac376626461b0c9d28223cc",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/f36ba910c9da88e85bf3e9289632227ba78b63a9fadd759916be9f5d65653c36.png",
+        "gitBlobSha": "a3f1db5fcb98a1744ac376626461b0c9d28223cc",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/140_vegetal_genna_stipe_gris_couronne_magenta.png",
+      "bytes": 1382424,
+      "sha256": "0d9d7f5961b609bee1c34b7eb819a51d86dcfc86d9ac10867e3e963eff77ce12",
+      "gitBlobSha": "c748031ecf45107d13cab502db0c3b668b212c22",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/0d9d7f5961b609bee1c34b7eb819a51d86dcfc86d9ac10867e3e963eff77ce12.png",
+        "gitBlobSha": "c748031ecf45107d13cab502db0c3b668b212c22",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/141_puffer_repos_corrige.png",
+      "bytes": 1670933,
+      "sha256": "f4d459b0c3813ad415a7380e1da7c7ffcb35793e875eb2bbb82cf1fa769ca64b",
+      "gitBlobSha": "f84ad56fc392ae05d41919434d3e5248ffb1f46d",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/f4d459b0c3813ad415a7380e1da7c7ffcb35793e875eb2bbb82cf1fa769ca64b.png",
+        "gitBlobSha": "f84ad56fc392ae05d41919434d3e5248ffb1f46d",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/142_arbuste_genna_aere.png",
+      "bytes": 2629812,
+      "sha256": "a81da087cddb7370adad1686388af1d71e225da7341bb690629b70b69e11dc96",
+      "gitBlobSha": "0fe7c8d685782ab239112f681d1ad38318e1aebb",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/a81da087cddb7370adad1686388af1d71e225da7341bb690629b70b69e11dc96.png",
+        "gitBlobSha": "0fe7c8d685782ab239112f681d1ad38318e1aebb",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/143_plante_fleurs_noires_touffe.png",
+      "bytes": 2531918,
+      "sha256": "3c650348e2dd6c67405f6f2cf538e043be24b5c390de5380efab0c2bf260d32b",
+      "gitBlobSha": "24e35e52cee3109d191365296f4cc6b8cf45e81c",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/3c650348e2dd6c67405f6f2cf538e043be24b5c390de5380efab0c2bf260d32b.png",
+        "gitBlobSha": "24e35e52cee3109d191365296f4cc6b8cf45e81c",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/148_liane_epineuse_corrigee.png",
+      "bytes": 1441649,
+      "sha256": "efa19433333193811a9f5c2d832362bb604e2f3f33dd157c358108661d3b54f4",
+      "gitBlobSha": "51579701541809e94d783f161befda7ff43c29be",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/efa19433333193811a9f5c2d832362bb604e2f3f33dd157c358108661d3b54f4.png",
+        "gitBlobSha": "51579701541809e94d783f161befda7ff43c29be",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/152_liane_repliee_epineuse_corrigee.png",
+      "bytes": 2438536,
+      "sha256": "1f3e4f3f41a95a829e69b0da4e60406682ea36ec8fb2b13df4380a272acc2553",
+      "gitBlobSha": "41143f40a64017f9c454ce04644b9ee790eb6242",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/1f3e4f3f41a95a829e69b0da4e60406682ea36ec8fb2b13df4380a272acc2553.png",
+        "gitBlobSha": "41143f40a64017f9c454ce04644b9ee790eb6242",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/153_liane_frappe_epineuse_corrigee.png",
+      "bytes": 1212234,
+      "sha256": "5e6858b1a7b19ad876f80576ef2a4892e4cfddfb5ac0d06ba680d0e3b15ecd5e",
+      "gitBlobSha": "0a699520f6a462564420fff724e80aec5d829ab7",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/5e6858b1a7b19ad876f80576ef2a4892e4cfddfb5ac0d06ba680d0e3b15ecd5e.png",
+        "gitBlobSha": "0a699520f6a462564420fff724e80aec5d829ab7",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/154_fougere_genna_touffe_reconstituee.png",
+      "bytes": 2551791,
+      "sha256": "e894b596c405847ca2df7a2692754fca43ed699b124ad84187a46a549ba2b2a6",
+      "gitBlobSha": "4faadb75146be6801164cb4bf08ccc77965e6815",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/e894b596c405847ca2df7a2692754fca43ed699b124ad84187a46a549ba2b2a6.png",
+        "gitBlobSha": "4faadb75146be6801164cb4bf08ccc77965e6815",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/162_plante_feuilles_coupe_sans_ver.png",
+      "bytes": 2417456,
+      "sha256": "0031e7592f3d1972313682847c5b19c18d15877964a174c011d4e4c6feb91486",
+      "gitBlobSha": "eaf395be037edc093522eabed8f654feed70de73",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v87/drive-completion/0031e7592f3d1972313682847c5b19c18d15877964a174c011d4e4c6feb91486.png",
+        "gitBlobSha": "eaf395be037edc093522eabed8f654feed70de73",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/163_plante_antidote_apres_cueillette.png",
+      "bytes": 937969,
+      "sha256": "3bb7a02f3892734a57fef9944e62eb8026b73e4464629ad9e1fd569631cff3eb",
+      "gitBlobSha": "b03d323164932c1ec96ed85f4d8fd22cc9032722",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v87/drive-completion/3bb7a02f3892734a57fef9944e62eb8026b73e4464629ad9e1fd569631cff3eb.png",
+        "gitBlobSha": "b03d323164932c1ec96ed85f4d8fd22cc9032722",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/26_liane_repliee.png",
+      "bytes": 1510237,
+      "sha256": "e1d0112d70fbd243c83251d0dac5566130c15817ad2319eb8066cbbaaddb262a",
+      "gitBlobSha": "69ae933f1195a24485ca9050821b732b280aa913",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/e1d0112d70fbd243c83251d0dac5566130c15817ad2319eb8066cbbaaddb262a.png",
+        "gitBlobSha": "69ae933f1195a24485ca9050821b732b280aa913",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/27_liane_frappe_plongeante.png",
+      "bytes": 1096943,
+      "sha256": "4cfaac75ae85a4c8c0879e179265f740a13072c8559e8b6fc22ad6462cbf1a65",
+      "gitBlobSha": "03c77e785ef4a7215c71994f060ae98b4c815538",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/4cfaac75ae85a4c8c0879e179265f740a13072c8559e8b6fc22ad6462cbf1a65.png",
+        "gitBlobSha": "03c77e785ef4a7215c71994f060ae98b4c815538",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/28_razor_grass_bande_basse.png",
+      "bytes": 1859095,
+      "sha256": "ce812d0257104aa628f2d1a3bf6deabb540f187681546a500b8dfc8a0a356ee7",
+      "gitBlobSha": "a286e91fa33481ac1a978239565ac1d28562f370",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/ce812d0257104aa628f2d1a3bf6deabb540f187681546a500b8dfc8a0a356ee7.png",
+        "gitBlobSha": "a286e91fa33481ac1a978239565ac1d28562f370",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/51_elephant_tree_entier_reconstitue.png",
+      "bytes": 2343874,
+      "sha256": "7ba7231ab3d64c6b880a47570e5fe4dd1b771226b369ebb9c0438ee42f289aed",
+      "gitBlobSha": "c662ea57dbb5b707ab83eb0247e3f3e995dda802",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/7ba7231ab3d64c6b880a47570e5fe4dd1b771226b369ebb9c0438ee42f289aed.png",
+        "gitBlobSha": "c662ea57dbb5b707ab83eb0247e3f3e995dda802",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/94_puffer_piege_vers_explosifs.png",
+      "bytes": 2093601,
+      "sha256": "f8c60a7c358a2942c68925b3661455cded3dc7e5e2be09133962240642ed65ad",
+      "gitBlobSha": "27fc5e23eca47745b93ec90191a46025896bebc6",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/f8c60a7c358a2942c68925b3661455cded3dc7e5e2be09133962240642ed65ad.png",
+        "gitBlobSha": "27fc5e23eca47745b93ec90191a46025896bebc6",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/95_aiguille_puffer_paralysante.png",
+      "bytes": 455344,
+      "sha256": "44f47ee3ee64b444a60197edbd5c1ea5d8b63a227e009efd6d965d31d68a0e6b",
+      "gitBlobSha": "56dde476b5924e3656e78ed1a4690905c52a0165",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/44f47ee3ee64b444a60197edbd5c1ea5d8b63a227e009efd6d965d31d68a0e6b.png",
+        "gitBlobSha": "56dde476b5924e3656e78ed1a4690905c52a0165",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/96_aiguille_puffer_ver_explosif.png",
+      "bytes": 844030,
+      "sha256": "6f5c7c8b039deafc238991c445fdd3c5e1886892cc05d70a0c043bbad441fbdf",
+      "gitBlobSha": "7f2ee8a5867022edd3ae1de894368ceb1ebb7e69",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/6f5c7c8b039deafc238991c445fdd3c5e1886892cc05d70a0c043bbad441fbdf.png",
+        "gitBlobSha": "7f2ee8a5867022edd3ae1de894368ceb1ebb7e69",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/98_feuille_soin_dek_reconstituee.png",
+      "bytes": 1032356,
+      "sha256": "25af99a270c0028091b1058db67ff2ed05c79f1777752da8e9cd9fdcc48b47ae",
+      "gitBlobSha": "6fc378c12ae4d211bfa335a8acacefbab9db65aa",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/25af99a270c0028091b1058db67ff2ed05c79f1777752da8e9cd9fdcc48b47ae.png",
+        "gitBlobSha": "6fc378c12ae4d211bfa335a8acacefbab9db65aa",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/flore/99_plante_feuilles_coupe_vers_sans_nom.png",
+      "bytes": 2234098,
+      "sha256": "4e46979538e3e763d74d79895027d77db6f9f5a76c12b68fcabcfca91fe0d9b9",
+      "gitBlobSha": "b862740d93aa0a81fbcbf430d90407370b289f58",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/4e46979538e3e763d74d79895027d77db6f9f5a76c12b68fcabcfca91fe0d9b9.png",
+        "gitBlobSha": "b862740d93aa0a81fbcbf430d90407370b289f58",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/107_scanner_cerebral_wy.png",
+      "bytes": 2383288,
+      "sha256": "00ef123b4709a21a6b308660fe7fc03a65fd18834af8ce4e315f457715493adb",
+      "gitBlobSha": "363264e4aab7e72417942c5a57e1d930f1dc4c12",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/00ef123b4709a21a6b308660fe7fc03a65fd18834af8ce4e315f457715493adb.png",
+        "gitBlobSha": "363264e4aab7e72417942c5a57e1d930f1dc4c12",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/112_tessa_super_power_loader_canon_corrige.png",
+      "bytes": 2582623,
+      "sha256": "049f81370f5adcc47ea8a06c44954dce0279e220fd951a6758aee0c6bcb65f83",
+      "gitBlobSha": "af1a611c8eb3ea1475105228eecc6f19aa3cead0",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/049f81370f5adcc47ea8a06c44954dce0279e220fd951a6758aee0c6bcb65f83.png",
+        "gitBlobSha": "af1a611c8eb3ea1475105228eecc6f19aa3cead0",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/113_projecteur_muthur.png",
+      "bytes": 2067541,
+      "sha256": "a22d7d69839bd2909dcf888c568670f916702b60156f758ec103b39da3353d58",
+      "gitBlobSha": "bb417f985c70dff6cc19c52ca77c8de7b9b79caf",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/a22d7d69839bd2909dcf888c568670f916702b60156f758ec103b39da3353d58.png",
+        "gitBlobSha": "bb417f985c70dff6cc19c52ca77c8de7b9b79caf",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/116_thia_reparee_fusil_wy.png",
+      "bytes": 1834592,
+      "sha256": "3077dff53176e7a400ddfc51bc05bdb4076bbd8c120079cddfd38ae34eef61b5",
+      "gitBlobSha": "60d1f73a727bccbb2e65c8970db8af7160b3b4f7",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/3077dff53176e7a400ddfc51bc05bdb4076bbd8c120079cddfd38ae34eef61b5.png",
+        "gitBlobSha": "60d1f73a727bccbb2e65c8970db8af7160b3b4f7",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/118_panneau_commande_muthur.png",
+      "bytes": 2210531,
+      "sha256": "6eb3a81e62a9a7aba62cbb22c7ccf93dfe2017e504bde551a1b343c776596302",
+      "gitBlobSha": "f170ac06ccac96839584d3b11bd7b2c84962897f",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/6eb3a81e62a9a7aba62cbb22c7ccf93dfe2017e504bde551a1b343c776596302.png",
+        "gitBlobSha": "f170ac06ccac96839584d3b11bd7b2c84962897f",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/120_pupitre_medical_wy_deux_pieds.png",
+      "bytes": 1391378,
+      "sha256": "8bcaec7984d3c860cecbf477c40f1c1d62e72cb9b233248f6640be7fa8142d96",
+      "gitBlobSha": "5e5ec00efacf8c2eb0d7469a99f82a3e33d21e65",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/8bcaec7984d3c860cecbf477c40f1c1d62e72cb9b233248f6640be7fa8142d96.png",
+        "gitBlobSha": "5e5ec00efacf8c2eb0d7469a99f82a3e33d21e65",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/121_console_laboratoire_wy_double_ecran.png",
+      "bytes": 1858175,
+      "sha256": "76e390491959e66f8dc1b3cf4e7cbde9a62b4f639eebdd6f90453d051d6e9da9",
+      "gitBlobSha": "18cef814538e9d8fc4fdc8d1257e0c9a1e7c5329",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/76e390491959e66f8dc1b3cf4e7cbde9a62b4f639eebdd6f90453d051d6e9da9.png",
+        "gitBlobSha": "18cef814538e9d8fc4fdc8d1257e0c9a1e7c5329",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/132_rack_maintenance_wy.png",
+      "bytes": 1417382,
+      "sha256": "d23fbef2d10bf3d21e8feb7091d8dab718ab2a64e75a44915a5bbb4034da094c",
+      "gitBlobSha": "85a534886ca7406bba1a25e9f286f6b278ada53e",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/d23fbef2d10bf3d21e8feb7091d8dab718ab2a64e75a44915a5bbb4034da094c.png",
+        "gitBlobSha": "85a534886ca7406bba1a25e9f286f6b278ada53e",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/133_meuble_outillage_wy.png",
+      "bytes": 1783053,
+      "sha256": "2512a8940e75964b149340a391d8969a38b4a8ba03f24b7f6dcea0c63380b68a",
+      "gitBlobSha": "3e232971b2a24409364c3df15579894630e3bfaf",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/2512a8940e75964b149340a391d8969a38b4a8ba03f24b7f6dcea0c63380b68a.png",
+        "gitBlobSha": "3e232971b2a24409364c3df15579894630e3bfaf",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/145_module_affichage_wy_portrait.png",
+      "bytes": 1994023,
+      "sha256": "b21d51d284c9df10f5c003565541ac097a4284d015f058fdd3c9fe9401015f2a",
+      "gitBlobSha": "3c35c8043e7a76535e82a9f6e3b1dcfe4f5cd6ae",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/b21d51d284c9df10f5c003565541ac097a4284d015f058fdd3c9fe9401015f2a.png",
+        "gitBlobSha": "3c35c8043e7a76535e82a9f6e3b1dcfe4f5cd6ae",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/14_thia_buste.png",
+      "bytes": 1450983,
+      "sha256": "bdc105d76e6eefbf7fd5d6b01c7f8f1ebbbaf341e9ab26fabd05b1b80a5bbd1a",
+      "gitBlobSha": "2753c6cc0c2c550c9560efd42c42a68317f0d896",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/bdc105d76e6eefbf7fd5d6b01c7f8f1ebbbaf341e9ab26fabd05b1b80a5bbd1a.png",
+        "gitBlobSha": "2753c6cc0c2c550c9560efd42c42a68317f0d896",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/155_capsule_reparation_wy_vide.png",
+      "bytes": 2129198,
+      "sha256": "c75616d8922432905fffc3c6e453747896872e3cad8db4bfd0e5e939b73cf52d",
+      "gitBlobSha": "a1db14e236b49e13fdedc3252a0320e18f763ec0",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/c75616d8922432905fffc3c6e453747896872e3cad8db4bfd0e5e939b73cf52d.png",
+        "gitBlobSha": "a1db14e236b49e13fdedc3252a0320e18f763ec0",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/156_luminaire_mural_wy.png",
+      "bytes": 1257254,
+      "sha256": "687adb27b2fc99119426f9392e699f5590269bfceb2bc0619bfe979ee01a4418",
+      "gitBlobSha": "838b75bb710e277e56b98ef1cefb17db068e926b",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/687adb27b2fc99119426f9392e699f5590269bfceb2bc0619bfe979ee01a4418.png",
+        "gitBlobSha": "838b75bb710e277e56b98ef1cefb17db068e926b",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/15_thia_jambes_autonomes.png",
+      "bytes": 1935607,
+      "sha256": "0f1d365d74a7585142390faa91a53b219dd12e421ae87e6ed83f6480d40d513b",
+      "gitBlobSha": "f40b953a5c361ee3d374a6d844252020ea47b33e",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/0f1d365d74a7585142390faa91a53b219dd12e421ae87e6ed83f6480d40d513b.png",
+        "gitBlobSha": "f40b953a5c361ee3d374a6d844252020ea47b33e",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/164_sas_lab04_ouvert.png",
+      "bytes": 1873448,
+      "sha256": "18b905ffe7628cecbe7d604fcef5dfa4dbe25fca527b7f52a8da80180155c5cf",
+      "gitBlobSha": "f5a787019d02dc8e7cf4d74028c63b24de85a9ce",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v87/drive-completion/18b905ffe7628cecbe7d604fcef5dfa4dbe25fca527b7f52a8da80180155c5cf.png",
+        "gitBlobSha": "f5a787019d02dc8e7cf4d74028c63b24de85a9ce",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/165_meuble_modules_wy.png",
+      "bytes": 2071699,
+      "sha256": "b1019354e944dbd2d908443a80c86ca2fe37482584dd8e5a319d848de0accaff",
+      "gitBlobSha": "5342af296ffb11c65b0e2b568f029a3d2110ba2f",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v87/drive-completion/b1019354e944dbd2d908443a80c86ca2fe37482584dd8e5a319d848de0accaff.png",
+        "gitBlobSha": "5342af296ffb11c65b0e2b568f029a3d2110ba2f",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/16_thia_reparee.png",
+      "bytes": 1599758,
+      "sha256": "60a824e78a6ef276fd56d2278de02d451871f56b4a8c47cd934c6f7268242f46",
+      "gitBlobSha": "cf0a63a05c188a5e87a2f24f7599540962786a5c",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/60a824e78a6ef276fd56d2278de02d451871f56b4a8c47cd934c6f7268242f46.png",
+        "gitBlobSha": "cf0a63a05c188a5e87a2f24f7599540962786a5c",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/17_tessa_uniforme.png",
+      "bytes": 1526448,
+      "sha256": "56c8a19d389581aa33967b425530f39d1e72717baa4e179f31fa7b1d845f646f",
+      "gitBlobSha": "f5eaf5fa25426be5c8b9f7621582d0a96d0c3967",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/56c8a19d389581aa33967b425530f39d1e72717baa4e179f31fa7b1d845f646f.png",
+        "gitBlobSha": "f5eaf5fa25426be5c8b9f7621582d0a96d0c3967",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/18_smyth_fusil.png",
+      "bytes": 936442,
+      "sha256": "b6efe86ef19543498b1b726f830ac209fea9830f228a28aae4b4ce641bec028c",
+      "gitBlobSha": "005cc5c29494638f4dc813ecb867b46d37755624",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/b6efe86ef19543498b1b726f830ac209fea9830f228a28aae4b4ce641bec028c.png",
+        "gitBlobSha": "005cc5c29494638f4dc813ecb867b46d37755624",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/19_tessa_super_power_loader.png",
+      "bytes": 2608762,
+      "sha256": "cf94ef0def3fca2bc4dcf34dd08d05410dd07f1d10d86beb138a4d1f5741132f",
+      "gitBlobSha": "e30f5ef5fd119f25b86b5ed2e7b03f9c0bb382a3",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/cf94ef0def3fca2bc4dcf34dd08d05410dd07f1d10d86beb138a4d1f5741132f.png",
+        "gitBlobSha": "e30f5ef5fd119f25b86b5ed2e7b03f9c0bb382a3",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/29_thia_buste_rampe.png",
+      "bytes": 1510253,
+      "sha256": "cadc1352a907595170755e23fdd2ea5bf7e920ff690c2a314658034ac5dfdb01",
+      "gitBlobSha": "de01163c7567608044acf5b41516e1f81d6fdd8e",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/cadc1352a907595170755e23fdd2ea5bf7e920ff690c2a314658034ac5dfdb01.png",
+        "gitBlobSha": "de01163c7567608044acf5b41516e1f81d6fdd8e",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/30_thia_jambes_course.png",
+      "bytes": 1638457,
+      "sha256": "0829a05dd78b268dfed4d21af3057e26ac1b45db3bcdea6c30ffe280a5a3271e",
+      "gitBlobSha": "9c4cfa6f052a5c189c9b7b9f717e7d69a5ba10e1",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/0829a05dd78b268dfed4d21af3057e26ac1b45db3bcdea6c30ffe280a5a3271e.png",
+        "gitBlobSha": "9c4cfa6f052a5c189c9b7b9f717e7d69a5ba10e1",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/31_thia_reparee_course.png",
+      "bytes": 1953929,
+      "sha256": "ec375ec7499c0e03561e6402b11455979d12f4f30f32298dc0f465216ca52e1a",
+      "gitBlobSha": "7e4fdedcf97621b73285003fec147d26f1b38231",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/ec375ec7499c0e03561e6402b11455979d12f4f30f32298dc0f465216ca52e1a.png",
+        "gitBlobSha": "7e4fdedcf97621b73285003fec147d26f1b38231",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/32_tessa_marche.png",
+      "bytes": 1682312,
+      "sha256": "646cb2778a998cf1c3d2ad7f1072ab65862c6be7d43e5486ef7bc8df236f980f",
+      "gitBlobSha": "5c4b42fb495943cb5bfc5786aa123fb6e77a4312",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/646cb2778a998cf1c3d2ad7f1072ab65862c6be7d43e5486ef7bc8df236f980f.png",
+        "gitBlobSha": "5c4b42fb495943cb5bfc5786aa123fb6e77a4312",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/33_smyth_tir_accroupi.png",
+      "bytes": 1216054,
+      "sha256": "fab2ae4cec9d71f1c25302e7b18115968eaa70be8bcb84bbc9fbbb4f8dbe5914",
+      "gitBlobSha": "f3da98577e783f5f8c84dbbba2a33f851dfc8cf3",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/fab2ae4cec9d71f1c25302e7b18115968eaa70be8bcb84bbc9fbbb4f8dbe5914.png",
+        "gitBlobSha": "f3da98577e783f5f8c84dbbba2a33f851dfc8cf3",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/44_thia_poncho_wy.png",
+      "bytes": 1760878,
+      "sha256": "a78b92f02689ce0db897abe7bd15c4172f3aca8992fca769e5e2a44e03fc3f13",
+      "gitBlobSha": "909a15c4b5c061ce5544669934e61ed36c66503b",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/a78b92f02689ce0db897abe7bd15c4172f3aca8992fca769e5e2a44e03fc3f13.png",
+        "gitBlobSha": "909a15c4b5c061ce5544669934e61ed36c66503b",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/45_tessa_endommagee.png",
+      "bytes": 1731190,
+      "sha256": "a359749c18a8589a875d416cb081c953ab8310ca8f77703cfdca8a90d61fdad3",
+      "gitBlobSha": "9c00d95772a1ab1bfa1955dfae048e90b67430af",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/a359749c18a8589a875d416cb081c953ab8310ca8f77703cfdca8a90d61fdad3.png",
+        "gitBlobSha": "9c00d95772a1ab1bfa1955dfae048e90b67430af",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/46_tessa_canon_yautja.png",
+      "bytes": 1684133,
+      "sha256": "9c857847a8a074222ee2d127c84a2b680a78c64d07b9a5a886a1da80ae46be35",
+      "gitBlobSha": "a71f8de74b07c347e22ad7e1beb8fc34fdc3c302",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/9c857847a8a074222ee2d127c84a2b680a78c64d07b9a5a886a1da80ae46be35.png",
+        "gitBlobSha": "a71f8de74b07c347e22ad7e1beb8fc34fdc3c302",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/47_tessa_crane_trophee.png",
+      "bytes": 2145912,
+      "sha256": "dd17d9b2b17eab9b164134311ae29c568670815a289870088b9a95b2a7333181",
+      "gitBlobSha": "faa4ac1e15af12367ea8c86ba9e2394eefd1d023",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/dd17d9b2b17eab9b164134311ae29c568670815a289870088b9a95b2a7333181.png",
+        "gitBlobSha": "faa4ac1e15af12367ea8c86ba9e2394eefd1d023",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/48_thia_veste_claire_finale.png",
+      "bytes": 1615043,
+      "sha256": "93dba560d390d3307207ab7932895530faf5f1555d0fa09d4b8798ab7133ce0c",
+      "gitBlobSha": "e0bb8792f0006a3d71aacac6ce57a6fd92738f6c",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/93dba560d390d3307207ab7932895530faf5f1555d0fa09d4b8798ab7133ce0c.png",
+        "gitBlobSha": "e0bb8792f0006a3d71aacac6ce57a6fd92738f6c",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/56_thia_tenue_expedition_entiere.png",
+      "bytes": 1732112,
+      "sha256": "babe0f58869bb542179988eda911822206b1006b71a390b664fd7abc08e9c8ec",
+      "gitBlobSha": "4a9e887382cdbfeba506b1f6d5ba56b29182cc3a",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/babe0f58869bb542179988eda911822206b1006b71a390b664fd7abc08e9c8ec.png",
+        "gitBlobSha": "4a9e887382cdbfeba506b1f6d5ba56b29182cc3a",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/57_smyth_poncho_terrain_intact.png",
+      "bytes": 1749925,
+      "sha256": "b3f85476f48d6ca6ec0c66d05027897bfed1927f53de6a70ada37c1cf213a8ac",
+      "gitBlobSha": "45257a951909d7dcad379c4cbe7996c14b24cc8a",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/b3f85476f48d6ca6ec0c66d05027897bfed1927f53de6a70ada37c1cf213a8ac.png",
+        "gitBlobSha": "45257a951909d7dcad379c4cbe7996c14b24cc8a",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/58_smyth_poncho_acide.png",
+      "bytes": 1867161,
+      "sha256": "d7cedb2136e7ae08ea7cdb45d45d02a95108f2941dad1179efbbf959ad3c53d8",
+      "gitBlobSha": "0fff6b816dc18ae631dbac2c7bbfee2de279bfaf",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/d7cedb2136e7ae08ea7cdb45d45d02a95108f2941dad1179efbbf959ad3c53d8.png",
+        "gitBlobSha": "0fff6b816dc18ae631dbac2c7bbfee2de279bfaf",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/59_dispositif_reparation_thia_complet.png",
+      "bytes": 1786270,
+      "sha256": "eb5698e6ff349a2f2242b737deea3c92a018887d43522adda03508b187009762",
+      "gitBlobSha": "38be5c15a3f64692d8834f9eec91b94ab423b6f4",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/eb5698e6ff349a2f2242b737deea3c92a018887d43522adda03508b187009762.png",
+        "gitBlobSha": "38be5c15a3f64692d8834f9eec91b94ab423b6f4",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/60_canon_tessa_complet.png",
+      "bytes": 1897982,
+      "sha256": "dab11af065d7485052d25185558d097ac249fb904d3b38576b77eca93662a912",
+      "gitBlobSha": "601c6e3343a233234a54c1fae382778afd1873dd",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/dab11af065d7485052d25185558d097ac249fb904d3b38576b77eca93662a912.png",
+        "gitBlobSha": "601c6e3343a233234a54c1fae382778afd1873dd",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/61_tessa_canon_reference_production.png",
+      "bytes": 1432978,
+      "sha256": "4778ba2e0e6387cbd024eaf53e60549c5f179a7963dbca0e82ed6d469c336096",
+      "gitBlobSha": "34cc7a70587deab3db4d2dab0a268c0c84d071a2",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/4778ba2e0e6387cbd024eaf53e60549c5f179a7963dbca0e82ed6d469c336096.png",
+        "gitBlobSha": "34cc7a70587deab3db4d2dab0a268c0c84d071a2",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/66_capsule_reparation_tessa.png",
+      "bytes": 2189947,
+      "sha256": "10b5a1884b773c2a5e923a17fdf88bb2b8a63b4eeba1d7de57f931af76117a03",
+      "gitBlobSha": "a62f279ef9e4955c21c899a5383a87e46b6569d9",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/10b5a1884b773c2a5e923a17fdf88bb2b8a63b4eeba1d7de57f931af76117a03.png",
+        "gitBlobSha": "a62f279ef9e4955c21c899a5383a87e46b6569d9",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/synthetiques/67_fusil_modulaire_synth.png",
+      "bytes": 1026555,
+      "sha256": "5dca89a37321c746aef85feba2066f4e5b56c0c2fc0d63dca15bca093a7bd683",
+      "gitBlobSha": "4610df3488deda36aea1179802363f20f4fecde7",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/5dca89a37321c746aef85feba2066f4e5b56c0c2fc0d63dca15bca093a7bd683.png",
+        "gitBlobSha": "4610df3488deda36aea1179802363f20f4fecde7",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/100_disque_entrave_njohrr_ferme.png",
+      "bytes": 1693507,
+      "sha256": "97828256f5a6462a999b720f0404068232a8aaad767fb98981cbc419c03e6ebb",
+      "gitBlobSha": "bc0d9617407b203976532edfe914085810a76f44",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/97828256f5a6462a999b720f0404068232a8aaad767fb98981cbc419c03e6ebb.png",
+        "gitBlobSha": "bc0d9617407b203976532edfe914085810a76f44",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/101_entrave_quatre_modules_deployee.png",
+      "bytes": 836736,
+      "sha256": "077be54a6eaae86baa1e464aa6ce9eca513a96212a49b7e7a923d60b60073d68",
+      "gitBlobSha": "b5563b643c4a2a3cdcbbbef2de7bf05fe423cc07",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/077be54a6eaae86baa1e464aa6ce9eca513a96212a49b7e7a923d60b60073d68.png",
+        "gitBlobSha": "b5563b643c4a2a3cdcbbbef2de7bf05fe423cc07",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/102_bouclier_energetique_kwei.png",
+      "bytes": 1994538,
+      "sha256": "4c5d989af9c499a42e89d859a486880d67b962846cb0e10566a4f506044cdd41",
+      "gitBlobSha": "77a787b1f410399794bf5346963191d8ea741218",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/4c5d989af9c499a42e89d859a486880d67b962846cb0e10566a4f506044cdd41.png",
+        "gitBlobSha": "77a787b1f410399794bf5346963191d8ea741218",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/103_kwei_sans_masque_bouclier.png",
+      "bytes": 1394457,
+      "sha256": "158edaeaefbe86b1396599af8b07af8b732e9947b9c6e3e2cb9210bc8556fd59",
+      "gitBlobSha": "f4b647d8743d97a6d8a474a17d347b8cc9e29a2f",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/158edaeaefbe86b1396599af8b07af8b732e9947b9c6e3e2cb9210bc8556fd59.png",
+        "gitBlobSha": "f4b647d8743d97a6d8a474a17d347b8cc9e29a2f",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/104_plastron_epaulieres_organiques_dek.png",
+      "bytes": 2123615,
+      "sha256": "ea89616e1fc42cc130eb3e75613eb593677897e5bf2317d9c108d9df5c747d43",
+      "gitBlobSha": "b05b18ad25177b984e0dc36daa46040e0a890672",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/ea89616e1fc42cc130eb3e75613eb593677897e5bf2317d9c108d9df5c747d43.png",
+        "gitBlobSha": "b05b18ad25177b984e0dc36daa46040e0a890672",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/105_harnais_lianes_portage_vide.png",
+      "bytes": 1369205,
+      "sha256": "86157575242a6733816ac43adeebd870e102092fd00c1a252448f9c748d16bfc",
+      "gitBlobSha": "ddc3e173ff7b5d75b47d2d7c097d85b818af28a8",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/86157575242a6733816ac43adeebd870e102092fd00c1a252448f9c748d16bfc.png",
+        "gitBlobSha": "ddc3e173ff7b5d75b47d2d7c097d85b818af28a8",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/106_bio_masque_njohrr_sans_barbe_corrige.png",
+      "bytes": 1408028,
+      "sha256": "af5ea165060847288591c142c47f465d86f1db861529ec468e57164afd0a804c",
+      "gitBlobSha": "a982b8c97dc3a2f3580801db4ba30066fb44ddd5",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/af5ea165060847288591c142c47f465d86f1db861529ec468e57164afd0a804c.png",
+        "gitBlobSha": "a982b8c97dc3a2f3580801db4ba30066fb44ddd5",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/109_canon_epaule_njohrr_isole.png",
+      "bytes": 1758798,
+      "sha256": "cc683c6a25ce9ec53056a2ab34f71d3ab7b455f2c53d43f681afc5a2b49daade",
+      "gitBlobSha": "60fcf69f55d75f8ef415336c6314858a72cf3379",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/cc683c6a25ce9ec53056a2ab34f71d3ab7b455f2c53d43f681afc5a2b49daade.png",
+        "gitBlobSha": "60fcf69f55d75f8ef415336c6314858a72cf3379",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/110_dek_entrave_quatre_modules.png",
+      "bytes": 1531277,
+      "sha256": "468117f7972da6c0ffa40c8a4892efe42a20e871ee61c092d7cbc16c8ca23565",
+      "gitBlobSha": "1611aabf66cd71bfe77adf6f21e37592e07dd6a7",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/468117f7972da6c0ffa40c8a4892efe42a20e871ee61c092d7cbc16c8ca23565.png",
+        "gitBlobSha": "1611aabf66cd71bfe77adf6f21e37592e07dd6a7",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/111_njohrr_main_droite_transpercee.png",
+      "bytes": 1825312,
+      "sha256": "b9a2f463ccb0196164a8073b26d7478a3415d9e7bc092f290d1ebc3d755efd59",
+      "gitBlobSha": "9abcc87b6b1d13ad7a0eb92da62ce65968b28409",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/b9a2f463ccb0196164a8073b26d7478a3415d9e7bc092f290d1ebc3d755efd59.png",
+        "gitBlobSha": "9abcc87b6b1d13ad7a0eb92da62ce65968b28409",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/119_kwei_blesse_avant_bras_droit.png",
+      "bytes": 2083562,
+      "sha256": "fadb33da1ecb5d2f85d749f7dddafcfb1331f5d20bd7d86b98d6d646076a0db0",
+      "gitBlobSha": "7a68fdf320888fe355f685c226c351f95139662a",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/fadb33da1ecb5d2f85d749f7dddafcfb1331f5d20bd7d86b98d6d646076a0db0.png",
+        "gitBlobSha": "7a68fdf320888fe355f685c226c351f95139662a",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/122_gantelet_scanner_vegetation_actif.png",
+      "bytes": 2576373,
+      "sha256": "0c163afa27069cdef250677df1cad52d39f63c6947f7736f04c286410c1ea49a",
+      "gitBlobSha": "3c3eab71322e9a2ffe6c544c8166d8220c7c94de",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/0c163afa27069cdef250677df1cad52d39f63c6947f7736f04c286410c1ea49a.png",
+        "gitBlobSha": "3c3eab71322e9a2ffe6c544c8166d8220c7c94de",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/123_paire_lames_translucides_combat_final.png",
+      "bytes": 1573150,
+      "sha256": "297f43754e1cd0735e470b5a70af7acd1a24d42aeed1c1e2bb0a30b84b8ecced",
+      "gitBlobSha": "c98394c0d245a531680b64f9a17ded3ede6e27ad",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/297f43754e1cd0735e470b5a70af7acd1a24d42aeed1c1e2bb0a30b84b8ecced.png",
+        "gitBlobSha": "c98394c0d245a531680b64f9a17ded3ede6e27ad",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/125_foyer_portatif_yautja_allume.png",
+      "bytes": 1420612,
+      "sha256": "b177e21de910e7dcecd6c882f0872c3801107a635e3a26a245758531de7b81cf",
+      "gitBlobSha": "95332375dddb3a8a3d08f81aa641ff826de63a27",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/b177e21de910e7dcecd6c882f0872c3801107a635e3a26a245758531de7b81cf.png",
+        "gitBlobSha": "95332375dddb3a8a3d08f81aa641ff826de63a27",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/127_epee_plasma_cassee_kalisk.png",
+      "bytes": 994582,
+      "sha256": "dfda89ba3a1c381605b39ff2e00e89e30696acd5aa1c2ad78b8903357021e860",
+      "gitBlobSha": "a0887f57bafef9deace43e6e3cd7c465e7c60d73",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/dfda89ba3a1c381605b39ff2e00e89e30696acd5aa1c2ad78b8903357021e860.png",
+        "gitBlobSha": "a0887f57bafef9deace43e6e3cd7c465e7c60d73",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/128_boitier_materiel_dek.png",
+      "bytes": 2374999,
+      "sha256": "41ea1d4aec1ebe519b98efb6a688029fcaae385a7c65b88f3cf0aaba15704428",
+      "gitBlobSha": "d7308c8b4ff1e0c0e85257d32111673fa213c056",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/41ea1d4aec1ebe519b98efb6a688029fcaae385a7c65b88f3cf0aaba15704428.png",
+        "gitBlobSha": "d7308c8b4ff1e0c0e85257d32111673fa213c056",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/146_plastron_metallique_initial_dek.png",
+      "bytes": 2470363,
+      "sha256": "2a5b7c2bf25dcc29037774e51cdb08841f026bf84138be76fbe5e424900f5094",
+      "gitBlobSha": "df6cb5d2bb85be0863b7825e2c8883c24d3cead7",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/2a5b7c2bf25dcc29037774e51cdb08841f026bf84138be76fbe5e424900f5094.png",
+        "gitBlobSha": "df6cb5d2bb85be0863b7825e2c8883c24d3cead7",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/149_ceinture_tablier_metallique_initial_dek.png",
+      "bytes": 1659276,
+      "sha256": "cb70633291bb018e52e394db9d3168e3b6b96f2a0abef240e99ec3047f62e93f",
+      "gitBlobSha": "0a9945e1389567bc914e07e0448b447e735683cb",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/cb70633291bb018e52e394db9d3168e3b6b96f2a0abef240e99ec3047f62e93f.png",
+        "gitBlobSha": "0a9945e1389567bc914e07e0448b447e735683cb",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/157_plastron_epaulieres_kwei.png",
+      "bytes": 2201325,
+      "sha256": "9ccbfd9134732892272cdb91df72437ab37d5f2820a0a71d17f116fde490618b",
+      "gitBlobSha": "138127f06524a878046d984797213e21e0a19b27",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/9ccbfd9134732892272cdb91df72437ab37d5f2820a0a71d17f116fde490618b.png",
+        "gitBlobSha": "138127f06524a878046d984797213e21e0a19b27",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/158_jambieres_initiales_dek_paire.png",
+      "bytes": 1619594,
+      "sha256": "7d04ff24f016434c49542c919a5a3aee0624557df2dba1ef1c1e621b586dff58",
+      "gitBlobSha": "dfee4ea9598ef0b36e1c796e2acbbbd5ffd9491f",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/7d04ff24f016434c49542c919a5a3aee0624557df2dba1ef1c1e621b586dff58.png",
+        "gitBlobSha": "dfee4ea9598ef0b36e1c796e2acbbbd5ffd9491f",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/159_jambieres_kwei_paire.png",
+      "bytes": 1767411,
+      "sha256": "7de9e9a6305d2b8de8c40b85abd6bc259c1cb4960a3c9610b14640a7c56d720c",
+      "gitBlobSha": "4318ff37a3c29ce72ccdde98fb1f73ea14f32568",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/drive-latest/badlands/7de9e9a6305d2b8de8c40b85abd6bc259c1cb4960a3c9610b14640a7c56d720c.png",
+        "gitBlobSha": "4318ff37a3c29ce72ccdde98fb1f73ea14f32568",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/166_ceinture_tablier_pans_rouges_kwei.png",
+      "bytes": 1494233,
+      "sha256": "1ce359e34401ce39a9344dc06b7885c77b123e52def7bb29aa23b0c7610e7e1a",
+      "gitBlobSha": "71868d1090f1986c964acbe242d3f6647f68430b",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v87/drive-completion/1ce359e34401ce39a9344dc06b7885c77b123e52def7bb29aa23b0c7610e7e1a.png",
+        "gitBlobSha": "71868d1090f1986c964acbe242d3f6647f68430b",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/38_dek_chasse_initiale.png",
+      "bytes": 1870200,
+      "sha256": "621ddd9dddd6d385d0beaf2c01398a10088297ee57a319024007f1a46b72e469",
+      "gitBlobSha": "9027f93639ff516c1267030c8c756de59adf1747",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/621ddd9dddd6d385d0beaf2c01398a10088297ee57a319024007f1a46b72e469.png",
+        "gitBlobSha": "9027f93639ff516c1267030c8c756de59adf1747",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/39_dek_armure_organique.png",
+      "bytes": 1975349,
+      "sha256": "469f9bf481c971ff68c225aa3803e108a109452d90a6132747de02d62b9daf17",
+      "gitBlobSha": "d80775480d56bb92d0159b67769333e097b6cda7",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/469f9bf481c971ff68c225aa3803e108a109452d90a6132747de02d62b9daf17.png",
+        "gitBlobSha": "d80775480d56bb92d0159b67769333e097b6cda7",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/40_kwei.png",
+      "bytes": 1797318,
+      "sha256": "21fd5cda8fed392387251a2b489c3b17807ea3e3f2b75ce07ffd3fa6ed40cfa1",
+      "gitBlobSha": "f2eca99a65d0bb0313ef755145135e4269a329d0",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/21fd5cda8fed392387251a2b489c3b17807ea3e3f2b75ce07ffd3fa6ed40cfa1.png",
+        "gitBlobSha": "f2eca99a65d0bb0313ef755145135e4269a329d0",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/41_njohrr.png",
+      "bytes": 2523432,
+      "sha256": "175d42bec243192d597e84f348fe8b37f7c2cdf7cfc3706df701b92431c06ed2",
+      "gitBlobSha": "c2d0ea3653f60a8a0f360d4525e5e57a9e5b8198",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/175d42bec243192d597e84f348fe8b37f7c2cdf7cfc3706df701b92431c06ed2.png",
+        "gitBlobSha": "c2d0ea3653f60a8a0f360d4525e5e57a9e5b8198",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/52_kwei_sans_masque.png",
+      "bytes": 1843156,
+      "sha256": "daf999c724e131b60f9d37f35664833f38fe77913233fdfb3c310608d2dd9c43",
+      "gitBlobSha": "9ace63567fe51b49218cd9195619377825fb9447",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/daf999c724e131b60f9d37f35664833f38fe77913233fdfb3c310608d2dd9c43.png",
+        "gitBlobSha": "9ace63567fe51b49218cd9195619377825fb9447",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/53_njohrr_sans_masque.png",
+      "bytes": 1278560,
+      "sha256": "6b2d1967272c601ae98314f3e06e869e46b94ac32bf6dacc73b787ab057c57e7",
+      "gitBlobSha": "45937e3da8ed1798a72392072cad3271d1fc6bd5",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/6b2d1967272c601ae98314f3e06e869e46b94ac32bf6dacc73b787ab057c57e7.png",
+        "gitBlobSha": "45937e3da8ed1798a72392072cad3271d1fc6bd5",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/54_dek_retour_final_camouflage.png",
+      "bytes": 806107,
+      "sha256": "9d1c36bd792cfe3943df192dfe37cfe888bc20fff9fbcb8073e772f9d94ede50",
+      "gitBlobSha": "4747e2b22701152cbbe84b6e2a0f2607ddb4a3c7",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/9d1c36bd792cfe3943df192dfe37cfe888bc20fff9fbcb8073e772f9d94ede50.png",
+        "gitBlobSha": "4747e2b22701152cbbe84b6e2a0f2607ddb4a3c7",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/55_dek_armure_organique_sans_masque.png",
+      "bytes": 2130247,
+      "sha256": "392129d28127b5be8e02046f9e6ebff208edc13257704ca34e4f2ccd726b4d67",
+      "gitBlobSha": "f9aea2c5103df934dbb392ad6a04cb9ae85b524a",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/392129d28127b5be8e02046f9e6ebff208edc13257704ca34e4f2ccd726b4d67.png",
+        "gitBlobSha": "f9aea2c5103df934dbb392ad6a04cb9ae85b524a",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/68_dek_bio_masque_initial.png",
+      "bytes": 1011582,
+      "sha256": "d2dad21ce76a4e69bb43823ce2dd8d0e229e96f16c3301df15069311a3afa6ec",
+      "gitBlobSha": "546f439635821642e74f0052c3d4a4efaba80117",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/d2dad21ce76a4e69bb43823ce2dd8d0e229e96f16c3301df15069311a3afa6ec.png",
+        "gitBlobSha": "546f439635821642e74f0052c3d4a4efaba80117",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/69_dek_portant_thia_harnais.png",
+      "bytes": 1035242,
+      "sha256": "4c40f50d2c8b34c6247605aec20d0085dde6ffb0430bf038bb85781ff339d366",
+      "gitBlobSha": "78ba61d2cd4b2fc9844565fc06e09a3234493b2a",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/4c40f50d2c8b34c6247605aec20d0085dde6ffb0430bf038bb85781ff339d366.png",
+        "gitBlobSha": "78ba61d2cd4b2fc9844565fc06e09a3234493b2a",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/70_bio_masque_dek_metal.png",
+      "bytes": 2104824,
+      "sha256": "f5e5d56fda27201795f9c2179bb1755c480888a8e5fff870407022b6ea97482a",
+      "gitBlobSha": "084947ae41624b8c432ebf0ec24f365d5fff3ac5",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/f5e5d56fda27201795f9c2179bb1755c480888a8e5fff870407022b6ea97482a.png",
+        "gitBlobSha": "084947ae41624b8c432ebf0ec24f365d5fff3ac5",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/71_masque_organique_bone_bison.png",
+      "bytes": 1223854,
+      "sha256": "83704595e55945259e6ecee6677698e4062a67dfe1a0584c87165328d24a3257",
+      "gitBlobSha": "2252b3032c3362f15670c6ad83afde6d6d829d10",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/83704595e55945259e6ecee6677698e4062a67dfe1a0584c87165328d24a3257.png",
+        "gitBlobSha": "2252b3032c3362f15670c6ad83afde6d6d829d10",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/72_bio_masque_kwei.png",
+      "bytes": 2362302,
+      "sha256": "730781ebbe337b0bf4e8f412d777d5f188b489a89ffa6e1cc51c2295fcbeffc2",
+      "gitBlobSha": "68599d2595fd0c6396495a120da06a2c33df130f",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/730781ebbe337b0bf4e8f412d777d5f188b489a89ffa6e1cc51c2295fcbeffc2.png",
+        "gitBlobSha": "68599d2595fd0c6396495a120da06a2c33df130f",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/73_bio_masque_njohrr_ramures.png",
+      "bytes": 1508062,
+      "sha256": "eb4176d094225c2573b14d144fed75d454297339644e950e15b589be934b9ae2",
+      "gitBlobSha": "7f64118a1c4ff80c3f4534efbc838ae1880b07c4",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/eb4176d094225c2573b14d144fed75d454297339644e950e15b589be934b9ae2.png",
+        "gitBlobSha": "7f64118a1c4ff80c3f4534efbc838ae1880b07c4",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/74_garde_njohrr_casque_sombre.png",
+      "bytes": 902480,
+      "sha256": "9e03365c019869d560608c1534fb77bacd7f398ad63f4c8771c6cb96a603ad57",
+      "gitBlobSha": "c7a87a8438a59efdec66547373f341cac50d086a",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/9e03365c019869d560608c1534fb77bacd7f398ad63f4c8771c6cb96a603ad57.png",
+        "gitBlobSha": "c7a87a8438a59efdec66547373f341cac50d086a",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/75_garde_njohrr_casque_clair.png",
+      "bytes": 950262,
+      "sha256": "38366a8ed1c5aab3b28819d27f81cfb463a9d1b7385ba860bbc388ee11abe100",
+      "gitBlobSha": "f3cbdc107a09b5b0c1f2806d4532058844b96c36",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/38366a8ed1c5aab3b28819d27f81cfb463a9d1b7385ba860bbc388ee11abe100.png",
+        "gitBlobSha": "f3cbdc107a09b5b0c1f2806d4532058844b96c36",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/76_epee_plasma_dek_deployee.png",
+      "bytes": 776316,
+      "sha256": "a8ae8c0300dc50234d754d90d25108b77d792c11ffbc51e478694dc7b692bed4",
+      "gitBlobSha": "1e6fc269d89f57d3fdd8a771891d83ff4b79294a",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/a8ae8c0300dc50234d754d90d25108b77d792c11ffbc51e478694dc7b692bed4.png",
+        "gitBlobSha": "1e6fc269d89f57d3fdd8a771891d83ff4b79294a",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/77_epee_plasma_dek_repliee.png",
+      "bytes": 1942585,
+      "sha256": "9a6d451cf9b4ced545190dbd7272c57dd2837515a4cff54022a0fcec78ae266e",
+      "gitBlobSha": "2e984bff606adfb50d071b22460dcf59a7f98b58",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/9a6d451cf9b4ced545190dbd7272c57dd2837515a4cff54022a0fcec78ae266e.png",
+        "gitBlobSha": "2e984bff606adfb50d071b22460dcf59a7f98b58",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/78_arc_dek_deploye.png",
+      "bytes": 1687670,
+      "sha256": "e4f445451484b51cf2734c7939ab83dcba570b3b39d6345f4f09a63ab8f8df3b",
+      "gitBlobSha": "81490c3786045f34e250c401925c7c9a01b7592e",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/e4f445451484b51cf2734c7939ab83dcba570b3b39d6345f4f09a63ab8f8df3b.png",
+        "gitBlobSha": "81490c3786045f34e250c401925c7c9a01b7592e",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/79_arc_dek_replie.png",
+      "bytes": 1729395,
+      "sha256": "3610263f95341848a9d842ccd18a26610ca6370f2103d4c3168b40fa383b5a9e",
+      "gitBlobSha": "78c61cb0197c166614295d73c2b3867fc9bce760",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/3610263f95341848a9d842ccd18a26610ca6370f2103d4c3168b40fa383b5a9e.png",
+        "gitBlobSha": "78c61cb0197c166614295d73c2b3867fc9bce760",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/80_shuriken_deux_lames_ouvert.png",
+      "bytes": 1517703,
+      "sha256": "1536e7b1b20c7ff43c5461bdb9e18babae2db54fb6614a67368327da1f6b767d",
+      "gitBlobSha": "b5861f2e855ad1bbe5c8a98fcd507e3e9a7ff656",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/1536e7b1b20c7ff43c5461bdb9e18babae2db54fb6614a67368327da1f6b767d.png",
+        "gitBlobSha": "b5861f2e855ad1bbe5c8a98fcd507e3e9a7ff656",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/81_shuriken_deux_lames_ferme.png",
+      "bytes": 2358850,
+      "sha256": "a36742f5442cfa3e9286cab718a6c7996f7e674d823900fc4c9336ff34f6374f",
+      "gitBlobSha": "00de21eccd60eed9701eca33787fb14e374cd700",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/a36742f5442cfa3e9286cab718a6c7996f7e674d823900fc4c9336ff34f6374f.png",
+        "gitBlobSha": "00de21eccd60eed9701eca33787fb14e374cd700",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/82_combistick_deploye.png",
+      "bytes": 907777,
+      "sha256": "dbf8028ad6eae2e174817083368410f4fccfe2d2ab1129a2b0134f9731116c4a",
+      "gitBlobSha": "ecfd5ebf8ffb1d574dbc10fe06ef1ab980b35856",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/dbf8028ad6eae2e174817083368410f4fccfe2d2ab1129a2b0134f9731116c4a.png",
+        "gitBlobSha": "ecfd5ebf8ffb1d574dbc10fe06ef1ab980b35856",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/83_combistick_retracte.png",
+      "bytes": 1069819,
+      "sha256": "ea0f7024f121cada41a82f321470fbf91838068897bf5ed7141b2b1a4911e59c",
+      "gitBlobSha": "4f9c5e8fc2a1079efe0c504e7f0fd86c68bc391a",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/ea0f7024f121cada41a82f321470fbf91838068897bf5ed7141b2b1a4911e59c.png",
+        "gitBlobSha": "4f9c5e8fc2a1079efe0c504e7f0fd86c68bc391a",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/84_gantelet_lames_deployees.png",
+      "bytes": 1502560,
+      "sha256": "d3d2c79ef8bbfca7823ba448437fd643e9347183acf8beb5c1aa689a49fba440",
+      "gitBlobSha": "a3d6d60d03d33b0d1a78be280f648c97f15cfb91",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/d3d2c79ef8bbfca7823ba448437fd643e9347183acf8beb5c1aa689a49fba440.png",
+        "gitBlobSha": "a3d6d60d03d33b0d1a78be280f648c97f15cfb91",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/85_gantelet_lames_retractees.png",
+      "bytes": 2550353,
+      "sha256": "3b5a484908a542d8934febd82a1ec340612ff282550b3451c82fee18d91d9bca",
+      "gitBlobSha": "96dda28eebcaea039618477c751c446e36742a5b",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/3b5a484908a542d8934febd82a1ec340612ff282550b3451c82fee18d91d9bca.png",
+        "gitBlobSha": "96dda28eebcaea039618477c751c446e36742a5b",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/87_module_camouflage_annulaire.png",
+      "bytes": 1415478,
+      "sha256": "799b05c3a12219a19ea5c9d122666fa4fb08e4259590f21e7225f3ae77ba1b30",
+      "gitBlobSha": "d5f7e28b1499927582f6887cea77514acd709c66",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/799b05c3a12219a19ea5c9d122666fa4fb08e4259590f21e7225f3ae77ba1b30.png",
+        "gitBlobSha": "d5f7e28b1499927582f6887cea77514acd709c66",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/88_gantelet_organique_bec_vulture.png",
+      "bytes": 2057410,
+      "sha256": "e5d7359226c499e0252269686acfb3a3ebc2c41d1cb6c177c15c01cc95c91583",
+      "gitBlobSha": "4ddf116afcca1500cf96272913bf668cbbf61cc2",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/e5d7359226c499e0252269686acfb3a3ebc2c41d1cb6c177c15c01cc95c91583.png",
+        "gitBlobSha": "4ddf116afcca1500cf96272913bf668cbbf61cc2",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/89_fouet_razor_grass_deploye.png",
+      "bytes": 532853,
+      "sha256": "ee2a800073e2cd25d2baf8026831c2bb089e74b9c6ac0fa4bb695b1959b83350",
+      "gitBlobSha": "0d1ad18eefd8cc841796cc2d57df97771754f175",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/ee2a800073e2cd25d2baf8026831c2bb089e74b9c6ac0fa4bb695b1959b83350.png",
+        "gitBlobSha": "0d1ad18eefd8cc841796cc2d57df97771754f175",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/90_fouet_razor_grass_enroule.png",
+      "bytes": 1962795,
+      "sha256": "575ea97a8165c94f2efc1911012a809febda4fa444ba714465d82dd93c04b001",
+      "gitBlobSha": "67be338ed5cdb98831fe26430ad76e963b319ebc",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/575ea97a8165c94f2efc1911012a809febda4fa444ba714465d82dd93c04b001.png",
+        "gitBlobSha": "67be338ed5cdb98831fe26430ad76e963b319ebc",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/91_canon_grappin_kwei_support_yautja.png",
+      "bytes": 2291586,
+      "sha256": "8008ed32197cd3bc3c969776273d0b2e173725147c0bea02c134ba1a2d97e39e",
+      "gitBlobSha": "d64709b777fa0a95486ebc8c1d0a97484bbd9afa",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/8008ed32197cd3bc3c969776273d0b2e173725147c0bea02c134ba1a2d97e39e.png",
+        "gitBlobSha": "d64709b777fa0a95486ebc8c1d0a97484bbd9afa",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/92_grenade_cryogenique_repos.png",
+      "bytes": 1691975,
+      "sha256": "8b0564797d7bc7834fb93a67862c21c522b8e16244b023e0fc817fdd3204e2c4",
+      "gitBlobSha": "a39725dd0ecdb39dcfbd8bbc3d0ff34f432c87d6",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/8b0564797d7bc7834fb93a67862c21c522b8e16244b023e0fc817fdd3204e2c4.png",
+        "gitBlobSha": "a39725dd0ecdb39dcfbd8bbc3d0ff34f432c87d6",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-v14-cumulative",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_v14/sprites/yautja/93_grenade_cryogenique_armee.png",
+      "bytes": 1716504,
+      "sha256": "718127c4d7372109545218365a1053b76068a47d0987266098fd0eaf2a59d7e6",
+      "gitBlobSha": "814dec286b96e1f3aac4d286c4f52a64be29d6c6",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v85/library/718127c4d7372109545218365a1053b76068a47d0987266098fd0eaf2a59d7e6.png",
+        "gitBlobSha": "814dec286b96e1f3aac4d286c4f52a64be29d6c6",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/APERCU_BADLANDS_LOT14.png",
+      "bytes": 921722,
+      "sha256": "ce419ec68da060501da0bd0c9ff51e6ea8a27b9ba12ebe9b9ae9c142496ad77a",
+      "gitBlobSha": "3a01a04b9166a1a17013b692a3fe1b69e72776e4",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_lot14/APERCU_BADLANDS_LOT14.png"
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/AUDIT_FILM_BADLANDS.md",
+      "bytes": 10865,
+      "sha256": "0341e9dc42937b50f3a91a0c3800ccb835a25d4ab79fc911154b47ceb80af627",
+      "gitBlobSha": "309f10056ab3c2075dbc33e0542f204c30febb80",
+      "disposition": "reused-recovery-source",
+      "reusedReference": {
+        "kind": "source-file-in-this-recovery",
+        "path": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_v14/AUDIT_FILM_BADLANDS.md",
+        "gitBlobSha": "309f10056ab3c2075dbc33e0542f204c30febb80"
+      }
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/BADLANDS_RUNTIME_MANIFEST.json",
+      "bytes": 18158,
+      "sha256": "e2abb59ba85557b7e86fd2c7e3f588489046105cdc50a03f129a4e6f19df03c8",
+      "gitBlobSha": "5cc7ad001719a6d372a8cedd67b39856a177d85e",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_lot14/BADLANDS_RUNTIME_MANIFEST.json"
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/CONTROLE_PNG.json",
+      "bytes": 7081,
+      "sha256": "58784638650e8104415f8c13ea6f52b2bb3809d18a924fc4a842efa25d13e36d",
+      "gitBlobSha": "9dd6d14c509225db4b48024456730d4bb3cfa413",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_lot14/CONTROLE_PNG.json"
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/GALERIE_BADLANDS.html",
+      "bytes": 18384,
+      "sha256": "3489d7a625513d7c60d2927da5ea13e95e34db0575005b4a64f443b9e5105b28",
+      "gitBlobSha": "e3f31e696d58c3709d1c7bd085cca287faf4a516",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_lot14/GALERIE_BADLANDS.html"
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/INTEGRATION_BADLANDS.md",
+      "bytes": 10848,
+      "sha256": "7054d85af77f799972fb0523e0fef35198fabd4db2ecadd5da6f63ac807f12d1",
+      "gitBlobSha": "1a128b72b790141dc8066cc7b269339ffca84b14",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_lot14/INTEGRATION_BADLANDS.md"
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/INVENTAIRE_BADLANDS.csv",
+      "bytes": 13349,
+      "sha256": "c19d7a6fc269994dd2e0079e7d17c1f435de1eec36dd7d3d067082135e11bac0",
+      "gitBlobSha": "2b948de71cbee8a735a5769cefa753cc7fbe6527",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_lot14/INVENTAIRE_BADLANDS.csv"
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/LIRE_MOI.md",
+      "bytes": 9721,
+      "sha256": "6d45a60bff9d84a5bbad60164ae88493a7bd8f94c297672282574d9c6f830975",
+      "gitBlobSha": "98e1887d82b610f6087b9d8e6c292bfa27082e10",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_lot14/LIRE_MOI.md"
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/MANIFEST_BADLANDS.json",
+      "bytes": 42147,
+      "sha256": "5939b1d319e27569fc9ec5918ecf7ff38223bae05e2e206d722e0b0f1225ea2a",
+      "gitBlobSha": "494b9e0c47198345439b012267274ebebf71f141",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_lot14/MANIFEST_BADLANDS.json"
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/PROMPTS_BADLANDS.json",
+      "bytes": 32628,
+      "sha256": "d4e2f87610f633d7dba55501e3f5cfb65c31becd50856ae13f9f26b2e68fe562",
+      "gitBlobSha": "fcaeb9c70b9797eb13705f95938042c5b7f3d0b9",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_lot14/PROMPTS_BADLANDS.json"
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/SHA256SUMS.txt",
+      "bytes": 1788,
+      "sha256": "6c50c63237b6053663eebd873475465874028939408b05944f0b31cac7333eaa",
+      "gitBlobSha": "194daea765507ce49cc41cc347c6222dc4cd1050",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_lot14/SHA256SUMS.txt"
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/SOURCES_BADLANDS.md",
+      "bytes": 13261,
+      "sha256": "4e0fe8ffb057bf40cc0541678fedd6c5ad81b1d82ff0f27c49ac03e97f629611",
+      "gitBlobSha": "c3d962e4947e18e681b71f947aa74ae2a4b940c6",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_lot14/SOURCES_BADLANDS.md"
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/sprites/faune/160_vulture_pose_ailes_repliees.png",
+      "bytes": 1741479,
+      "sha256": "d09735241c8d3bee1de691ba7d4836d275d9933826271c9708c7a2a4174d7346",
+      "gitBlobSha": "b27302a3f6dd3dd64c16b82da6265d3b79889179",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v87/drive-completion/d09735241c8d3bee1de691ba7d4836d275d9933826271c9708c7a2a4174d7346.png",
+        "gitBlobSha": "b27302a3f6dd3dd64c16b82da6265d3b79889179",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/sprites/faune/161_vulture_attaque_frontale.png",
+      "bytes": 2340103,
+      "sha256": "0a1085996c0dd271ecaa1024e9075bbb3d46f1e5163f22d6957d77a69a291652",
+      "gitBlobSha": "e679932b06bd4359b44c77598841c2c4e574b2bd",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v87/drive-completion/0a1085996c0dd271ecaa1024e9075bbb3d46f1e5163f22d6957d77a69a291652.png",
+        "gitBlobSha": "e679932b06bd4359b44c77598841c2c4e574b2bd",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/sprites/flore/162_plante_feuilles_coupe_sans_ver.png",
+      "bytes": 2417456,
+      "sha256": "0031e7592f3d1972313682847c5b19c18d15877964a174c011d4e4c6feb91486",
+      "gitBlobSha": "eaf395be037edc093522eabed8f654feed70de73",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v87/drive-completion/0031e7592f3d1972313682847c5b19c18d15877964a174c011d4e4c6feb91486.png",
+        "gitBlobSha": "eaf395be037edc093522eabed8f654feed70de73",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/sprites/flore/163_plante_antidote_apres_cueillette.png",
+      "bytes": 937969,
+      "sha256": "3bb7a02f3892734a57fef9944e62eb8026b73e4464629ad9e1fd569631cff3eb",
+      "gitBlobSha": "b03d323164932c1ec96ed85f4d8fd22cc9032722",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v87/drive-completion/3bb7a02f3892734a57fef9944e62eb8026b73e4464629ad9e1fd569631cff3eb.png",
+        "gitBlobSha": "b03d323164932c1ec96ed85f4d8fd22cc9032722",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/sprites/synthetiques/164_sas_lab04_ouvert.png",
+      "bytes": 1873448,
+      "sha256": "18b905ffe7628cecbe7d604fcef5dfa4dbe25fca527b7f52a8da80180155c5cf",
+      "gitBlobSha": "f5a787019d02dc8e7cf4d74028c63b24de85a9ce",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v87/drive-completion/18b905ffe7628cecbe7d604fcef5dfa4dbe25fca527b7f52a8da80180155c5cf.png",
+        "gitBlobSha": "f5a787019d02dc8e7cf4d74028c63b24de85a9ce",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/sprites/synthetiques/165_meuble_modules_wy.png",
+      "bytes": 2071699,
+      "sha256": "b1019354e944dbd2d908443a80c86ca2fe37482584dd8e5a319d848de0accaff",
+      "gitBlobSha": "5342af296ffb11c65b0e2b568f029a3d2110ba2f",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v87/drive-completion/b1019354e944dbd2d908443a80c86ca2fe37482584dd8e5a319d848de0accaff.png",
+        "gitBlobSha": "5342af296ffb11c65b0e2b568f029a3d2110ba2f",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "badlands-lot14-additions",
+      "sourceKind": "archive-member",
+      "sourcePath": "badlands_pack_lot14/sprites/yautja/166_ceinture_tablier_pans_rouges_kwei.png",
+      "bytes": 1494233,
+      "sha256": "1ce359e34401ce39a9344dc06b7885c77b123e52def7bb29aa23b0c7610e7e1a",
+      "gitBlobSha": "71868d1090f1986c964acbe242d3f6647f68430b",
+      "disposition": "reused-main",
+      "reusedReference": {
+        "kind": "repository-file",
+        "repository": "darknigthmare/yautja-la-longue-chasse",
+        "branch": "main",
+        "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+        "path": "public/game/imports/v87/drive-completion/1ce359e34401ce39a9344dc06b7885c77b123e52def7bb29aa23b0c7610e7e1a.png",
+        "gitBlobSha": "71868d1090f1986c964acbe242d3f6647f68430b",
+        "mode": "100644"
+      }
+    },
+    {
+      "sourceId": "standalone-BADLANDS_RUNTIME_MANIFEST.json",
+      "sourceKind": "standalone-document",
+      "sourcePath": "BADLANDS_RUNTIME_MANIFEST.json",
+      "bytes": 349941,
+      "sha256": "a1de6fcb93e3a9129661187e926d0a29e7b30d42750e183305c726f5c0d6d148",
+      "gitBlobSha": "0feb3814b09c9d42b5704dc443f8fcf64aa5bc50",
+      "disposition": "reused-recovery-source",
+      "reusedReference": {
+        "kind": "source-file-in-this-recovery",
+        "path": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_v14/BADLANDS_RUNTIME_MANIFEST.json",
+        "gitBlobSha": "0feb3814b09c9d42b5704dc443f8fcf64aa5bc50"
+      }
+    },
+    {
+      "sourceId": "standalone-INTEGRATION_BADLANDS.md",
+      "sourceKind": "standalone-document",
+      "sourcePath": "INTEGRATION_BADLANDS.md",
+      "bytes": 10844,
+      "sha256": "568f4b09c8322c721e0ac919d5bfddb4bd84b4ff8345e2f063c5536b10c52f9a",
+      "gitBlobSha": "afacba8b20e3fc62642b838bcd24f95f4c50cc7d",
+      "disposition": "reused-recovery-source",
+      "reusedReference": {
+        "kind": "source-file-in-this-recovery",
+        "path": "art-source/project-recovery-20261117/badlands-october/originals/badlands_pack_v14/INTEGRATION_BADLANDS.md",
+        "gitBlobSha": "afacba8b20e3fc62642b838bcd24f95f4c50cc7d"
+      }
+    },
+    {
+      "sourceId": "standalone-00_LIRE_MOI_PACKS_BADLANDS.txt",
+      "sourceKind": "standalone-document",
+      "sourcePath": "00_LIRE_MOI_PACKS_BADLANDS.txt",
+      "bytes": 16167,
+      "sha256": "c81a2dd55132def5911770a5cc078827f53ae70925efda479f48cb265db86466",
+      "gitBlobSha": "f7a4698c8a37938dbc1ea59c5ad5607fb935bcb8",
+      "disposition": "recovered-source-file",
+      "destination": "art-source/project-recovery-20261117/badlands-october/supporting_documents/00_LIRE_MOI_PACKS_BADLANDS.txt"
+    }
+  ]
+}

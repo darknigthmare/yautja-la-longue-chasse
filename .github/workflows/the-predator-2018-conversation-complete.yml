@@ -1,0 +1,31 @@
+name: The Predator 2018 complete source integrity
+
+# Source publication completed at afa543a3ed56d80e790e5c30e3e544de35cb38c6.
+# Read-only verification: no asset download, generation, auto-commit, push or deployment.
+on:
+  pull_request:
+    paths:
+      - 'dlc/the-predator-2018/**'
+      - '.github/workflows/the-predator-2018-conversation-complete.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          lfs: false
+          persist-credentials: false
+          sparse-checkout: dlc/the-predator-2018
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check 'Pillow==12.0.0'
+      - name: Verify historical DLC originals
+        run: python dlc/the-predator-2018/tools/verify_recovery.py
+      - name: Verify 45 available conversation inputs and all 13 original generated images
+        run: python dlc/the-predator-2018/tools/verify_conversation_publication.py

@@ -1,0 +1,1094 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-17",
+  "operation": "complete-historical-source-recovery",
+  "auditedBaseCommit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+  "pack": "predator-badlands",
+  "sourceHost": "Aliens: Tantalus Frontier",
+  "artisticStatus": "draft",
+  "nativeYautjaIntegration": false,
+  "oneToOneArtCertified": false,
+  "sourceArchive": {
+    "filename": "BADLANDS_PR121_V02_RECONSTRUITE_COMPLET.zip",
+    "bytes": 4931101,
+    "sha256": "db3fc9faf3a6a89a22ef0266a439e72a97bb9ca5701f463bce913484b6101909",
+    "gitBlobSha": "7eaad84064c5ce6d4842c1d97c09344e102ac943",
+    "fileCount": 79,
+    "sourceUrl": "https://drive.google.com/file/d/17W6Wa0tnTm4G2PiF8JDbxO7BQNktJzcX/view",
+    "crcVerifiedDuringImport": true
+  },
+  "fileCount": 79,
+  "files": [
+    {
+      "path": "dlc/predator-badlands/.gitattributes",
+      "sourceArchiveEntry": "dlc/predator-badlands/.gitattributes",
+      "disposition": "existing-file-preserved",
+      "bytes": 86,
+      "sha256": "57d750c257e1ef611665d178518bba537fd75023856bdb89c2d0e39bacaf07ca",
+      "gitBlobSha": "93a76e6c35b1d7a0c492932da2af4c7565f6a734"
+    },
+    {
+      "path": "dlc/predator-badlands/ASSET_INVENTORY.json",
+      "sourceArchiveEntry": "dlc/predator-badlands/ASSET_INVENTORY.json",
+      "disposition": "restored-missing-file",
+      "bytes": 7495,
+      "sha256": "feb54fbf9e3a7c59b182f5a50274a014ab7c670be516f777a1beca63ccbee32f",
+      "gitBlobSha": "ee8e6c679e7378484b6dc6a052fa26c00cf361a7"
+    },
+    {
+      "path": "dlc/predator-badlands/historical/import-package-20261106/IMPORT_STATUS.json",
+      "sourceArchiveEntry": "dlc/predator-badlands/IMPORT_STATUS.json",
+      "disposition": "historical-package-status-retained-at-new-path",
+      "bytes": 1151,
+      "sha256": "15472c76afa15d788200cda8f37bf15ea2dd2ed9fdc42f4b026559e6d3c55cbc",
+      "gitBlobSha": "b487156ddaeade5bea6b62d2121a05206e0b04e7"
+    },
+    {
+      "path": "dlc/predator-badlands/LIVRAISON_LOCALE.md",
+      "sourceArchiveEntry": "dlc/predator-badlands/LIVRAISON_LOCALE.md",
+      "disposition": "restored-missing-file",
+      "bytes": 1099,
+      "sha256": "a08ae515ac7e27a693a0bfc6c52be7f232e6ba6c392907ccf14e157b4e1b0112",
+      "gitBlobSha": "f6a716332a01f5dfa97ed03e1605111c58d823d3"
+    },
+    {
+      "path": "dlc/predator-badlands/PACKAGE_SHA256SUMS.txt",
+      "sourceArchiveEntry": "dlc/predator-badlands/PACKAGE_SHA256SUMS.txt",
+      "disposition": "restored-missing-file",
+      "bytes": 7438,
+      "sha256": "2f52abba2c0eccb0d425cf8805ae35ca8bb69e9cfdedefac50418c2c00c38a0a",
+      "gitBlobSha": "938e7f3ff70e4e8b54c3790a106d14bfc9b7b7ce"
+    },
+    {
+      "path": "dlc/predator-badlands/README.md",
+      "sourceArchiveEntry": "dlc/predator-badlands/README.md",
+      "disposition": "existing-file-preserved",
+      "bytes": 2728,
+      "sha256": "2546b6f9e992d1215d0a24f83af29fd98b73c36860e570abb2be73c3f50f47ca",
+      "gitBlobSha": "e41db5787749e81066b3a5d9768e320b51ff69db"
+    },
+    {
+      "path": "dlc/predator-badlands/historical/import-20261106-v01/IMPORT_MANIFEST.json",
+      "sourceArchiveEntry": "dlc/predator-badlands/historical/import-20261106-v01/IMPORT_MANIFEST.json",
+      "disposition": "restored-missing-file",
+      "bytes": 16229,
+      "sha256": "7431ec0783041ced931247d508d8d946e42464460a679e27ef1a68cbfccc72bf",
+      "gitBlobSha": "42b4396511a823fc11fc33d1a393415e2b92302c"
+    },
+    {
+      "path": "dlc/predator-badlands/historical/import-20261106-v01/import_badlands.py",
+      "sourceArchiveEntry": "dlc/predator-badlands/historical/import-20261106-v01/import_badlands.py",
+      "disposition": "restored-missing-file",
+      "bytes": 12332,
+      "sha256": "2ffeb8e5746fac229e467d59823f6f82fce2cb788b7e838e7275a143beeb9dce",
+      "gitBlobSha": "3f29451b2bb70e0905507c60f70d6f7cddba29ec"
+    },
+    {
+      "path": "dlc/predator-badlands/qa/binary-patch-validation.json",
+      "sourceArchiveEntry": "dlc/predator-badlands/qa/binary-patch-validation.json",
+      "disposition": "restored-missing-file",
+      "bytes": 283,
+      "sha256": "d2e7b5a57a82f2e8f8066dbdaca88ff57a6d9633782ca866d241d01eb3f0aade",
+      "gitBlobSha": "01923707bd230ec9bb4288baf45db7a71ba9a29c"
+    },
+    {
+      "path": "dlc/predator-badlands/qa/data-checks.log",
+      "sourceArchiveEntry": "dlc/predator-badlands/qa/data-checks.log",
+      "disposition": "restored-missing-file",
+      "bytes": 7382,
+      "sha256": "ce0bd78583f79bb8771534c5ae8e6a5fa90fc6fef7f2224ab627d01eb17810cc",
+      "gitBlobSha": "d3db0f1543a59b7a92fcb2b9b730aeea398729f5"
+    },
+    {
+      "path": "dlc/predator-badlands/qa/github-v02-transfer-verification.json",
+      "sourceArchiveEntry": "dlc/predator-badlands/qa/github-v02-transfer-verification.json",
+      "disposition": "restored-missing-file",
+      "bytes": 424,
+      "sha256": "5a9d73da9159c8f44dcd903147e1f4eda9cfd72c7a32fe4d491706ec09db3b14",
+      "gitBlobSha": "177e01f1484fd07206a70387f59608b48ffbbbfc"
+    },
+    {
+      "path": "dlc/predator-badlands/qa/import-validation.json",
+      "sourceArchiveEntry": "dlc/predator-badlands/qa/import-validation.json",
+      "disposition": "restored-missing-file",
+      "bytes": 722,
+      "sha256": "86b6bcedf5d84c66c648a08492597697b046f5edf01c3213cb6ebc90b06b7cf3",
+      "gitBlobSha": "77ad8e7c61bfd71551537ce8316aa02a7972948e"
+    },
+    {
+      "path": "dlc/predator-badlands/qa/restore-tool-tests.json",
+      "sourceArchiveEntry": "dlc/predator-badlands/qa/restore-tool-tests.json",
+      "disposition": "existing-file-preserved",
+      "bytes": 254,
+      "sha256": "5aa70cdabf8bf3c2f5e1aecbc91e6f8830c133d81e6ab889b5f27b22571a8aa7",
+      "gitBlobSha": "ef602b6189294b576dbdfc08b26749ba9550189b"
+    },
+    {
+      "path": "dlc/predator-badlands/releases/ALIENS_TANTALUS_DLC_PREDATOR_BADLANDS_v0.1.0.zip",
+      "sourceArchiveEntry": "dlc/predator-badlands/releases/ALIENS_TANTALUS_DLC_PREDATOR_BADLANDS_v0.1.0.zip",
+      "disposition": "restored-missing-file",
+      "bytes": 1405111,
+      "sha256": "65fba89f2148ee36cea58bafde3f93066f5a1883dea02f10dfef95350194b320",
+      "gitBlobSha": "198a41c9f66900ba6ffd692af7f9deedb2c4bc80"
+    },
+    {
+      "path": "dlc/predator-badlands/tools/build_v02.py",
+      "sourceArchiveEntry": "dlc/predator-badlands/tools/build_v02.py",
+      "disposition": "existing-file-preserved",
+      "bytes": 2046,
+      "sha256": "39d2d75021f8065b20c6f6bc2bcaa6da7705588736203b0cdc24b66365b551de",
+      "gitBlobSha": "18c43bc0521f7d921e21da2770604b93db51620b"
+    },
+    {
+      "path": "dlc/predator-badlands/tools/restore_v01.py",
+      "sourceArchiveEntry": "dlc/predator-badlands/tools/restore_v01.py",
+      "disposition": "existing-file-preserved",
+      "bytes": 3055,
+      "sha256": "8a41d2e9fb357182efd6c9178bbb5c0f63ff57986eb40f454e9f478f429e9a6e",
+      "gitBlobSha": "a0e562ddf776e6b8423493609b5f96c06b422e95"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/CODEX_BADLANDS.html",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/CODEX_BADLANDS.html",
+      "disposition": "existing-file-preserved",
+      "bytes": 14627,
+      "sha256": "1d89a1e3139034b0d4cf716818ccf6f5574b0fe24374a56c06640d7651a2db88",
+      "gitBlobSha": "23555ea603820a52c848c2b1fa110c6e079796fd"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/CODEX_BADLANDS.md",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/CODEX_BADLANDS.md",
+      "disposition": "existing-file-preserved",
+      "bytes": 15217,
+      "sha256": "89f7c239cc0e305a35619445d3062189b1840520e54ecdf570f4fb663cbbb100",
+      "gitBlobSha": "6fe350aff5bb30ed3ab53c84e5e7aa52d4b442bd"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/INSTALLER_TANTALUS.mjs",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/INSTALLER_TANTALUS.mjs",
+      "disposition": "existing-file-preserved",
+      "bytes": 1199,
+      "sha256": "c21166e55631267bfdbdf0d09e46ba923154da3ac26230763432e80a28ba043d",
+      "gitBlobSha": "6740d3588181dfef7102c15260387104b502e915"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/JOUER_PREDATOR_BADLANDS.html",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/JOUER_PREDATOR_BADLANDS.html",
+      "disposition": "existing-file-preserved",
+      "bytes": 3558,
+      "sha256": "8291233f2511d1ef2ebf08959b9451631f6a2fd6bb70ddae8022fd0d68468ae9",
+      "gitBlobSha": "9ce1d1611802055de331b06504781e583d803d12"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/JOUER_PREDATOR_BADLANDS_STANDALONE.html",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/JOUER_PREDATOR_BADLANDS_STANDALONE.html",
+      "disposition": "restored-missing-file",
+      "bytes": 67354,
+      "sha256": "f8be31ce49b3a1a6c7aa40c7cce0f974216e76ae16ab308e2c9d1b2e6b52f3f6",
+      "gitBlobSha": "688161a5bfb20dca8066e6dbf9d48d10d2e2cfab"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/LICENSE_NOTICE.md",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/LICENSE_NOTICE.md",
+      "disposition": "existing-file-preserved",
+      "bytes": 338,
+      "sha256": "6ff409fce810ddce349d90a951ccedfacc2aee4519b3cfdb5c7d10b459b4f5b0",
+      "gitBlobSha": "e3f5b049a8bbb9d430c6d438a6940a3e5a1ce64b"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/RAPPORT_VISUEL_BADLANDS.html",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/RAPPORT_VISUEL_BADLANDS.html",
+      "disposition": "existing-file-preserved",
+      "bytes": 3234,
+      "sha256": "8efad0039844e148622efa3b3239354840e13a62c66b46c089b02c807a5349a6",
+      "gitBlobSha": "38fa8f1fa0bb10cc5ac1ccd553798b1df4f6fbbe"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/README.md",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/README.md",
+      "disposition": "existing-file-preserved",
+      "bytes": 1794,
+      "sha256": "3ed9777d4dbc117b88785a6272c8d9d022f364afd3c03524ed39f393ae0dbc99",
+      "gitBlobSha": "f6a7cba7c726190a14d63e803df64478217e8dde"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/SHA256SUMS.txt",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/SHA256SUMS.txt",
+      "disposition": "existing-file-preserved",
+      "bytes": 3783,
+      "sha256": "1eb5f065dbc8db49d29da6c39059b64fbc80a70bcdc089dba5969136d897aeeb",
+      "gitBlobSha": "4e449b86545f2e15e0811ad4873f58afda074728"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/SOURCES.md",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/SOURCES.md",
+      "disposition": "existing-file-preserved",
+      "bytes": 1842,
+      "sha256": "ee94e207e925d2066edfa951645dd5aa6cedea70ffb38922292bb01792773172",
+      "gitBlobSha": "917d331c6b9fef36dde670884f7c251287e07840"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/UNINSTALLER_TANTALUS.mjs",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/UNINSTALLER_TANTALUS.mjs",
+      "disposition": "existing-file-preserved",
+      "bytes": 576,
+      "sha256": "6fe54b19ea1d58537d80773b3c75bd1dfa70d5d28c7754d9cfeece983f328e04",
+      "gitBlobSha": "532de407fe48b3dbaf0ca2b904179929b91c335d"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/bone_bison.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/bone_bison.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 339,
+      "sha256": "d8c04511a0d34bd80821209ee871a352b44b9f20e155c1de487914d118c92a9e",
+      "gitBlobSha": "e4fc05e32ee448d0c4a04392fbca03a3bcb2182b"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/bud.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/bud.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 339,
+      "sha256": "445231c68a008ad7bae62eb59c3f0261cc9973f4a551bf7f27629ad7c1b32deb",
+      "gitBlobSha": "435909414f5b4dbf66e6a7fd68a23e271769f36f"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/cryo_grenade.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/cryo_grenade.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 223,
+      "sha256": "fadaf0002ed41e1f56915b813d35f7f2c2fc96e18aa70548236049ce5b4aabd2",
+      "gitBlobSha": "180a684f2db6a89223a46329884d1dec49851d4f"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/dek.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/dek.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 453,
+      "sha256": "4ff59adb9a29ed00439de7809c805005730d10717df5fd50928a01c4adc8c333",
+      "gitBlobSha": "0fdbdd722b01580de52ea547c07227ee3e20ba94"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/genna_vulture.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/genna_vulture.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 339,
+      "sha256": "35768c1a6d939727955e37326a86c8706d12caa23bf6e7ebcb0dc572754e8f3b",
+      "gitBlobSha": "3cd7ad6900abececd7dd98c235b940340d2a4d70"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/kalisk.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/kalisk.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 431,
+      "sha256": "852837ae9149b5b9538aba8dbde420b3db71ae54cdef2f8ab4973a163c8cf75e",
+      "gitBlobSha": "9619c847c7988cfd5f6a04f73102a4313ae35bc6"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/kwei.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/kwei.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 453,
+      "sha256": "13b502537dc3644e2a389dbff2b548f994134c0cfc99f8c7251c27c21dbef656",
+      "gitBlobSha": "cc92347cfc355c6d647c8c97d64aa8053302b262"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/kwei_ship.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/kwei_ship.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 320,
+      "sha256": "151222c9e71dbbddc6981e914b4c49bd68a1d82ac2d896a25667a90e5f3ab981",
+      "gitBlobSha": "947c8f8a3a1e583c7084ddeff34262f25ad02088"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/luna_bug.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/luna_bug.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 339,
+      "sha256": "6d4f6ad6292c62301dbc259f76bbe54c3b652d0cccf56432d2cc9c2c74001a2a",
+      "gitBlobSha": "da9426e64acb72a34f09928e4978cc5193602586"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/njohrr.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/njohrr.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 453,
+      "sha256": "3208f611de563b3404e85f1caf8c30297987ea3dc9db17a70b9c2ff982b37058",
+      "gitBlobSha": "f2fa26c558c9da9d55ac6ff9b681d416dddeca73"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/plasma_sword.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/plasma_sword.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 223,
+      "sha256": "6ce5e1586f96c0c03cb1bf8e5d2a685546031df3aa7bc1cbf1557d8522b599e3",
+      "gitBlobSha": "06e02ba9cfd9a3aef535fe5d864da6e785b7ce04"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/power_loader.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/power_loader.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 381,
+      "sha256": "429064bdc1b4ed0667954cbceabc53c8b18179925876e0013b052a5ef4da6e87",
+      "gitBlobSha": "04fa4c9ee8c8a1ea4279ed095131d2a69e207671"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/spike_pod.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/spike_pod.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 293,
+      "sha256": "79c8c3348fec886b3db4e5eafbee4cb9c37f4aaac65201b43b2d2c537fefb7f6",
+      "gitBlobSha": "aa44606e874e8f54e9ac137711903ed57b431a41"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/squirt_cannon.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/squirt_cannon.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 223,
+      "sha256": "4ab988e539dda61161c4f32df4e50db837fed940ec5ecf17986b7b3b26e252b8",
+      "gitBlobSha": "10075abf115b57bd23a3720f0a1000bd77de7f22"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/synth_drone.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/synth_drone.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 346,
+      "sha256": "7f2b431799a98a9dc5dc01c4546025fa971d9f1d4a7d993bfca8bc71ee23f4e3",
+      "gitBlobSha": "3f6e6173fcff84aba29d88fb0fbe47c6fd4da893"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/tessa.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/tessa.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 346,
+      "sha256": "dcbca2ecd66f650fafd0c9afccdbbbbe381ebe4a96d5050715e14edd14eb2234",
+      "gitBlobSha": "311a0e5d9e1a8de264bab91f05de9887a09b6753"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/thia.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/thia.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 346,
+      "sha256": "695af9cc11affa164d68468ec0c3466805c9342354a939c3b40ae2c88d3d6311",
+      "gitBlobSha": "bedb1ca36a1147c7b55ded93807534d28ada274c"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/tree_vine.svg",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/assets/svg/tree_vine.svg",
+      "disposition": "existing-file-preserved",
+      "bytes": 293,
+      "sha256": "fcae69592899fafc8eef285095b3a7d7a5a397116d375f6cf98518ee0d9215b5",
+      "gitBlobSha": "796d05160b5ae762bc85e853a00097543e82ddb8"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/dlc-manifest.json",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/dlc-manifest.json",
+      "disposition": "existing-file-preserved",
+      "bytes": 657,
+      "sha256": "af5968cdaced685f65af33c7f91d132150b2444ab8625ae4b43fb0cdac1c068d",
+      "gitBlobSha": "2d91f7d14fb470f2c3bdd1e9c027d76a9a3b4b2a"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/manifest.json",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/manifest.json",
+      "disposition": "existing-file-preserved",
+      "bytes": 787,
+      "sha256": "a9e1f7dbfd21c679acf4046f7c628de50fc5d1b355eb8c951882e966111937d5",
+      "gitBlobSha": "7af81b2ad80895785ecb98f7c7351064b320c090"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/screenshots/00_title.png",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/screenshots/00_title.png",
+      "disposition": "restored-missing-file",
+      "bytes": 327614,
+      "sha256": "f20cf1f4e84524e3bae444d23a0d68d31058d7fd46b32ba1b35d888aa66f893f",
+      "gitBlobSha": "fd1e887fd1e61388f8c2c1c8645dc9c45a169082"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/screenshots/01_wy_cockpit.png",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/screenshots/01_wy_cockpit.png",
+      "disposition": "restored-missing-file",
+      "bytes": 166967,
+      "sha256": "aa213c8551e3528fb94ac632cccd4288fb51594c9a5c9c1b38fbb876a43fad44",
+      "gitBlobSha": "780299fce016d65481384218f9306ff4c61fa387"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/screenshots/02_wy_finale.png",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/screenshots/02_wy_finale.png",
+      "disposition": "restored-missing-file",
+      "bytes": 165184,
+      "sha256": "fcca492d0169bae9a19ecab9385ed7517a60ae89f1b31ea888b4006458e67174",
+      "gitBlobSha": "f6816215a62da0524c632cd6fbb35cec3334c1af"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/screenshots/03_pred_vines.png",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/screenshots/03_pred_vines.png",
+      "disposition": "restored-missing-file",
+      "bytes": 182659,
+      "sha256": "ce783c342e8e7273af4d0b49230e79ecc02058609b0d48a8e0dbcbeca99825b0",
+      "gitBlobSha": "199ef9e57bd1258020381f36cd0d23613fd8d653"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/screenshots/04_pred_kalisk.png",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/screenshots/04_pred_kalisk.png",
+      "disposition": "restored-missing-file",
+      "bytes": 184885,
+      "sha256": "9844fcf6882eaf9d8b6e24d30afb4725d1e8eceee63f64535602b6cfadc23656",
+      "gitBlobSha": "8a4538f1be3c03b358566a30f1683fc109e5cf67"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/screenshots/05_pred_organic.png",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/screenshots/05_pred_organic.png",
+      "disposition": "restored-missing-file",
+      "bytes": 186136,
+      "sha256": "9cd1de2b00fb87a6cd9600b4bc1d80ff40b94388e4b18f8ab7da70d4c1d9c3d9",
+      "gitBlobSha": "86e4c2124d769887e8e9bf811bc58512e1dcdc6c"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/screenshots/06_pred_njohrr.png",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/screenshots/06_pred_njohrr.png",
+      "disposition": "restored-missing-file",
+      "bytes": 173595,
+      "sha256": "3fd3942a247ea14fd40f4bb1bff9e0b50c0a871d938069cfef410f082cdc0076",
+      "gitBlobSha": "26f168d2a02e0dbd86a3fe9650d890e6e5ec9f06"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/src/badlands-data.js",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/src/badlands-data.js",
+      "disposition": "existing-file-preserved",
+      "bytes": 45776,
+      "sha256": "05fe27cdc9c44e76f9b38d29ff8a22a4dbd1b14fde2acbc49f1d06585dcf435d",
+      "gitBlobSha": "fba830148e558d843ecac9c7ee8b9636bd6509e4"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/src/badlands-game.js",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/src/badlands-game.js",
+      "disposition": "existing-file-preserved",
+      "bytes": 12968,
+      "sha256": "985bec074b50e2e6dcdf6fc1643f0751beeebb1a555b1c22602fd02458d3f15f",
+      "gitBlobSha": "6238a83d402ce956d4e2c159fc86a175f9f54d86"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/styles/badlands.css",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/styles/badlands.css",
+      "disposition": "existing-file-preserved",
+      "bytes": 5141,
+      "sha256": "f73a0c97437f0ebdc8ec8056c1d1a28c67af9d491cf6da11f757f0fa727ac6e1",
+      "gitBlobSha": "3881dbf55ee2bd733ee5de855f5825408f9efd04"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/tests/browser-smoke.json",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/tests/browser-smoke.json",
+      "disposition": "existing-file-preserved",
+      "bytes": 123,
+      "sha256": "02c8fe74ceec6a8be5e39e4640af6a9efdd410da30a6aefc944f8e2ae1daf959",
+      "gitBlobSha": "4afa4b417d7beb3389164231ec1f8a9ec2bc2251"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/tests/test_badlands.mjs",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.1.0/tests/test_badlands.mjs",
+      "disposition": "existing-file-preserved",
+      "bytes": 1395,
+      "sha256": "ad7a9a4bfde3d0a4433b2bf46e1cfd403ea0bd47b214af9a42c4b219faba9adc",
+      "gitBlobSha": "0508f8b63e516b51d6fb9451d7e2ca562fe9e50c"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/JOUER_PREDATOR_BADLANDS.html",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/JOUER_PREDATOR_BADLANDS.html",
+      "disposition": "existing-file-preserved",
+      "bytes": 3837,
+      "sha256": "92e7d6a7cff0abbfa24abe21ed98dfdb39e77eb00709bed8c20900e702204d3b",
+      "gitBlobSha": "6141809c1b30a7e8eb5795fda012c9bcd1266200"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/JOUER_PREDATOR_BADLANDS_STANDALONE.html",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/JOUER_PREDATOR_BADLANDS_STANDALONE.html",
+      "disposition": "restored-missing-file",
+      "bytes": 92019,
+      "sha256": "0207263600687caee5ca18beca3dd734d02c4dde984e6d8ad02371f2a7838c84",
+      "gitBlobSha": "62801fe5a9a257802826d900444b11976c1dd4ef"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/RAPPORT_VISUEL_BADLANDS.html",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/RAPPORT_VISUEL_BADLANDS.html",
+      "disposition": "restored-missing-file",
+      "bytes": 1383625,
+      "sha256": "231c0e0fa7b92f10635d849e75af7a964f2d8c6b2862c649ceca0c5c344832d1",
+      "gitBlobSha": "f782ec277d30abc6be4562ef240bce37c79a95ef"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/README.md",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/README.md",
+      "disposition": "existing-file-preserved",
+      "bytes": 4274,
+      "sha256": "1a3870512cc4e2caf274df1389ebd4521aa06bb979847500faef6f59dba1bdbb",
+      "gitBlobSha": "0c27ec4268393e21e0122135c475293dad993c3f"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/manifest.json",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/manifest.json",
+      "disposition": "existing-file-preserved",
+      "bytes": 858,
+      "sha256": "2313b3ece0919292f89893fdeeadeb90e20306f962508117b6b1a16ba62a1d74",
+      "gitBlobSha": "877acbb92536f3bf634413c89e38d1b017b19bcc"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/qa/01_menu.png",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/qa/01_menu.png",
+      "disposition": "restored-missing-file",
+      "bytes": 386192,
+      "sha256": "3243939ac94f5c80f5e4683b13b4d09d6d33ee5732e2fc3ab7b4368bf42a4028",
+      "gitBlobSha": "d071a1ff0dbbf258053c4991860e63e1f4d834fa"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/qa/02_puzzle.png",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/qa/02_puzzle.png",
+      "disposition": "restored-missing-file",
+      "bytes": 110734,
+      "sha256": "9289f3ac292677b4e8b35f5362213385f0ac43da64a524bdc0661410cba4262f",
+      "gitBlobSha": "d402a4ee2fe93b95a202c915537adb88b383d0d7"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/qa/03_combat.png",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/qa/03_combat.png",
+      "disposition": "restored-missing-file",
+      "bytes": 94004,
+      "sha256": "ee9bde6aa5fb458a1a9b6b4e0c1da06ee4464100bf8ef75d36d1c46f30d8dfde",
+      "gitBlobSha": "c0cd014f505ac77e63f86491b16247fce7ae4926"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/qa/04_meute.png",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/qa/04_meute.png",
+      "disposition": "restored-missing-file",
+      "bytes": 93952,
+      "sha256": "18429777af6d0ba4c74491a1a2d44e2ea952fd4164dac72d4f8d91664ce027fc",
+      "gitBlobSha": "f22e31738b59e1f92259054301f5b5dc8e440ac2"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/qa/05_codex.png",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/qa/05_codex.png",
+      "disposition": "restored-missing-file",
+      "bytes": 312542,
+      "sha256": "7f64a063379cd51990be045194de7b776fc70b895f2a973a705f8f7c07c4518c",
+      "gitBlobSha": "64eca1f0ce0f6ceff256c3fb3dd714182ba1d61b"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/qa/06_mobile.png",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/qa/06_mobile.png",
+      "disposition": "restored-missing-file",
+      "bytes": 38268,
+      "sha256": "e5ea027c053153a6bc3541166a327e15ab5db3fc5c57d1f69d8d4f24c91c022b",
+      "gitBlobSha": "896465691dc978ca59cfeaf4ec0121c38f9b2de6"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/qa/browser-validation.json",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/qa/browser-validation.json",
+      "disposition": "restored-missing-file",
+      "bytes": 3440,
+      "sha256": "24ac9769c6d3da0f859ea905d8c5ec2a0f227be6017c3957b958dd687ca8df2d",
+      "gitBlobSha": "484f25708cd6750bbcc47e26f285d5d06dff6ac7"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/qa/core-tests.tap",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/qa/core-tests.tap",
+      "disposition": "restored-missing-file",
+      "bytes": 12380,
+      "sha256": "1b379f562abb43db423f59792f605da37444b99984e188f53c1c2f54b172211e",
+      "gitBlobSha": "04f4bd2831473f52e81b4989215ab0f87b68fbc0"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/qa/validation-summary.json",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/qa/validation-summary.json",
+      "disposition": "existing-file-preserved",
+      "bytes": 746,
+      "sha256": "59b155bc90eae53a0a0a4c515c77b43a723d4ed421733a1abe1d621843624fad",
+      "gitBlobSha": "cc4baee94f0c4bf14290eae38ad17ce3cc481b6f"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/src/browser.js",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/src/browser.js",
+      "disposition": "existing-file-preserved",
+      "bytes": 15121,
+      "sha256": "4790f4efea55543cc871cef1d826af8270ee2e4fb61641f618a77c4108f81048",
+      "gitBlobSha": "9afd14cd0cd7cdb9c8b271e432cb0a90c4c85182"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/src/core.js",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/src/core.js",
+      "disposition": "existing-file-preserved",
+      "bytes": 11954,
+      "sha256": "7d5f71cddf83060c0000536dfc49bd146bb0ac316f17eb28aacaf783dbcd3ba4",
+      "gitBlobSha": "0149a5069d32ddc698142c2c5807e5ff5969bb19"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/src/data.js",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/src/data.js",
+      "disposition": "existing-file-preserved",
+      "bytes": 4184,
+      "sha256": "14fae2f678f3eb418ba2fbae28ebaef14b82eea0773d2b083be0c00905555e77",
+      "gitBlobSha": "69bfa2a767e4c89b73f58c41b55283fe0ef79eb8"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/styles/badlands.css",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/styles/badlands.css",
+      "disposition": "existing-file-preserved",
+      "bytes": 4213,
+      "sha256": "082de6e0347b50e651150a1b70b01a2b0881f88f594e9320fce3e78ad5162757",
+      "gitBlobSha": "f798b00c721a71520cbd149918291d8b1722c2ba"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/tests/test_browser.py",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/tests/test_browser.py",
+      "disposition": "existing-file-preserved",
+      "bytes": 7941,
+      "sha256": "c47d23001edadd900d59a70c0b409ff5822ae4b352dd6b637992f094ce5caff1",
+      "gitBlobSha": "b2f6069d5434b4a773abedf16f5b34c5f1fb9aae"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/tests/test_core.mjs",
+      "sourceArchiveEntry": "dlc/predator-badlands/v0.2.0/tests/test_core.mjs",
+      "disposition": "existing-file-preserved",
+      "bytes": 7902,
+      "sha256": "ff11c5537323bb81c1e1e824cc881f65041c104b924fac49d55c4e7f6d481ef3",
+      "gitBlobSha": "69e752353b6b52fa1d15671f52e48fa30720fa79"
+    }
+  ],
+  "restoredFileCount": 28,
+  "restoredFiles": [
+    "ASSET_INVENTORY.json",
+    "LIVRAISON_LOCALE.md",
+    "PACKAGE_SHA256SUMS.txt",
+    "historical/import-20261106-v01/IMPORT_MANIFEST.json",
+    "historical/import-20261106-v01/import_badlands.py",
+    "qa/binary-patch-validation.json",
+    "qa/data-checks.log",
+    "qa/github-v02-transfer-verification.json",
+    "qa/import-validation.json",
+    "releases/ALIENS_TANTALUS_DLC_PREDATOR_BADLANDS_v0.1.0.zip",
+    "v0.1.0/JOUER_PREDATOR_BADLANDS_STANDALONE.html",
+    "v0.1.0/screenshots/00_title.png",
+    "v0.1.0/screenshots/01_wy_cockpit.png",
+    "v0.1.0/screenshots/02_wy_finale.png",
+    "v0.1.0/screenshots/03_pred_vines.png",
+    "v0.1.0/screenshots/04_pred_kalisk.png",
+    "v0.1.0/screenshots/05_pred_organic.png",
+    "v0.1.0/screenshots/06_pred_njohrr.png",
+    "v0.2.0/JOUER_PREDATOR_BADLANDS_STANDALONE.html",
+    "v0.2.0/RAPPORT_VISUEL_BADLANDS.html",
+    "v0.2.0/qa/01_menu.png",
+    "v0.2.0/qa/02_puzzle.png",
+    "v0.2.0/qa/03_combat.png",
+    "v0.2.0/qa/04_meute.png",
+    "v0.2.0/qa/05_codex.png",
+    "v0.2.0/qa/06_mobile.png",
+    "v0.2.0/qa/browser-validation.json",
+    "v0.2.0/qa/core-tests.tap"
+  ],
+  "existingIdenticalPackageFiles": 50,
+  "keptExistingPackageFiles": [
+    ".gitattributes",
+    "README.md",
+    "qa/restore-tool-tests.json",
+    "tools/build_v02.py",
+    "tools/restore_v01.py",
+    "v0.1.0/CODEX_BADLANDS.html",
+    "v0.1.0/CODEX_BADLANDS.md",
+    "v0.1.0/INSTALLER_TANTALUS.mjs",
+    "v0.1.0/JOUER_PREDATOR_BADLANDS.html",
+    "v0.1.0/LICENSE_NOTICE.md",
+    "v0.1.0/RAPPORT_VISUEL_BADLANDS.html",
+    "v0.1.0/README.md",
+    "v0.1.0/SHA256SUMS.txt",
+    "v0.1.0/SOURCES.md",
+    "v0.1.0/UNINSTALLER_TANTALUS.mjs",
+    "v0.1.0/assets/svg/bone_bison.svg",
+    "v0.1.0/assets/svg/bud.svg",
+    "v0.1.0/assets/svg/cryo_grenade.svg",
+    "v0.1.0/assets/svg/dek.svg",
+    "v0.1.0/assets/svg/genna_vulture.svg",
+    "v0.1.0/assets/svg/kalisk.svg",
+    "v0.1.0/assets/svg/kwei.svg",
+    "v0.1.0/assets/svg/kwei_ship.svg",
+    "v0.1.0/assets/svg/luna_bug.svg",
+    "v0.1.0/assets/svg/njohrr.svg",
+    "v0.1.0/assets/svg/plasma_sword.svg",
+    "v0.1.0/assets/svg/power_loader.svg",
+    "v0.1.0/assets/svg/spike_pod.svg",
+    "v0.1.0/assets/svg/squirt_cannon.svg",
+    "v0.1.0/assets/svg/synth_drone.svg",
+    "v0.1.0/assets/svg/tessa.svg",
+    "v0.1.0/assets/svg/thia.svg",
+    "v0.1.0/assets/svg/tree_vine.svg",
+    "v0.1.0/dlc-manifest.json",
+    "v0.1.0/manifest.json",
+    "v0.1.0/src/badlands-data.js",
+    "v0.1.0/src/badlands-game.js",
+    "v0.1.0/styles/badlands.css",
+    "v0.1.0/tests/browser-smoke.json",
+    "v0.1.0/tests/test_badlands.mjs",
+    "v0.2.0/JOUER_PREDATOR_BADLANDS.html",
+    "v0.2.0/README.md",
+    "v0.2.0/manifest.json",
+    "v0.2.0/qa/validation-summary.json",
+    "v0.2.0/src/browser.js",
+    "v0.2.0/src/core.js",
+    "v0.2.0/src/data.js",
+    "v0.2.0/styles/badlands.css",
+    "v0.2.0/tests/test_browser.py",
+    "v0.2.0/tests/test_core.mjs"
+  ],
+  "sourceStatusRelocation": {
+    "reason": "Archive IMPORT_STATUS.json predates the already-published main status; preserve both histories instead of overwriting current state with an older one.",
+    "historicalPackagePath": "dlc/predator-badlands/historical/import-package-20261106/IMPORT_STATUS.json",
+    "mainStatusBeforeRecovery": {
+      "commit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+      "path": "dlc/predator-badlands/IMPORT_STATUS.json",
+      "bytes": 2155,
+      "sha256": "67b71ce2fd057244a7ebc90566fe6bc2ddf0b651b98d32b35a1b008bf97fc516",
+      "gitBlobSha": "d814244c003f7c43e7f578510f17137efd2b0d6c"
+    }
+  },
+  "baselineFiles": [
+    {
+      "path": "dlc/predator-badlands/.gitattributes",
+      "bytes": 86,
+      "sha256": "57d750c257e1ef611665d178518bba537fd75023856bdb89c2d0e39bacaf07ca",
+      "gitBlobSha": "93a76e6c35b1d7a0c492932da2af4c7565f6a734"
+    },
+    {
+      "path": "dlc/predator-badlands/IMPORT_STATUS.json",
+      "bytes": 2155,
+      "sha256": "67b71ce2fd057244a7ebc90566fe6bc2ddf0b651b98d32b35a1b008bf97fc516",
+      "gitBlobSha": "d814244c003f7c43e7f578510f17137efd2b0d6c"
+    },
+    {
+      "path": "dlc/predator-badlands/LIVRAISON_COMPLETE.md",
+      "bytes": 3238,
+      "sha256": "04184b47caede673a91ad0c3ddcb81525a8c33e4864be2b31643dbd19b414710",
+      "gitBlobSha": "0c7efd0ed625f52bca81e0235991aea5b0b7ff9e"
+    },
+    {
+      "path": "dlc/predator-badlands/README.md",
+      "bytes": 2728,
+      "sha256": "2546b6f9e992d1215d0a24f83af29fd98b73c36860e570abb2be73c3f50f47ca",
+      "gitBlobSha": "e41db5787749e81066b3a5d9768e320b51ff69db"
+    },
+    {
+      "path": "dlc/predator-badlands/qa/complete-delivery-audit-20261106.json",
+      "bytes": 1341,
+      "sha256": "9abe7d055b529baebd14d99fe5964dda10bd2ef1b940bf8e35967ccf868273ed",
+      "gitBlobSha": "65d0732c1d730cd4c015cb1aa49ff0afe4988029"
+    },
+    {
+      "path": "dlc/predator-badlands/qa/github-transfer-verification.json",
+      "bytes": 675,
+      "sha256": "85b4859730e04dbd5dff5eae6d549013e11ab1c0d08e7ffe1177460957e36258",
+      "gitBlobSha": "0e00c0d24b519225cef57b2a27ed112088f572cb"
+    },
+    {
+      "path": "dlc/predator-badlands/qa/local-validation-20261106.json",
+      "bytes": 993,
+      "sha256": "104ccc24262f15b944d761e701dbf705d25c7e2e85f24b13c8d819dca3d3385a",
+      "gitBlobSha": "d415b73cbd62d5e7a18e38c3f5191e8d50c3c5d1"
+    },
+    {
+      "path": "dlc/predator-badlands/qa/restore-tool-tests.json",
+      "bytes": 254,
+      "sha256": "5aa70cdabf8bf3c2f5e1aecbc91e6f8830c133d81e6ab889b5f27b22571a8aa7",
+      "gitBlobSha": "ef602b6189294b576dbdfc08b26749ba9550189b"
+    },
+    {
+      "path": "dlc/predator-badlands/tools/build_standalone.py",
+      "bytes": 2750,
+      "sha256": "c6658d3408deebee65cf6d3225dc98d0ee196c43f2c2fe1177ca6a579f904920",
+      "gitBlobSha": "2aed29386bf40eed207682bf67989acdc46ef02c"
+    },
+    {
+      "path": "dlc/predator-badlands/tools/build_v02.py",
+      "bytes": 2046,
+      "sha256": "39d2d75021f8065b20c6f6bc2bcaa6da7705588736203b0cdc24b66365b551de",
+      "gitBlobSha": "18c43bc0521f7d921e21da2770604b93db51620b"
+    },
+    {
+      "path": "dlc/predator-badlands/tools/restore_v01.py",
+      "bytes": 3055,
+      "sha256": "8a41d2e9fb357182efd6c9178bbb5c0f63ff57986eb40f454e9f478f429e9a6e",
+      "gitBlobSha": "a0e562ddf776e6b8423493609b5f96c06b422e95"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/CODEX_BADLANDS.html",
+      "bytes": 14627,
+      "sha256": "1d89a1e3139034b0d4cf716818ccf6f5574b0fe24374a56c06640d7651a2db88",
+      "gitBlobSha": "23555ea603820a52c848c2b1fa110c6e079796fd"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/CODEX_BADLANDS.md",
+      "bytes": 15217,
+      "sha256": "89f7c239cc0e305a35619445d3062189b1840520e54ecdf570f4fb663cbbb100",
+      "gitBlobSha": "6fe350aff5bb30ed3ab53c84e5e7aa52d4b442bd"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/INSTALLER_TANTALUS.mjs",
+      "bytes": 1199,
+      "sha256": "c21166e55631267bfdbdf0d09e46ba923154da3ac26230763432e80a28ba043d",
+      "gitBlobSha": "6740d3588181dfef7102c15260387104b502e915"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/JOUER_PREDATOR_BADLANDS.html",
+      "bytes": 3558,
+      "sha256": "8291233f2511d1ef2ebf08959b9451631f6a2fd6bb70ddae8022fd0d68468ae9",
+      "gitBlobSha": "9ce1d1611802055de331b06504781e583d803d12"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/LICENSE_NOTICE.md",
+      "bytes": 338,
+      "sha256": "6ff409fce810ddce349d90a951ccedfacc2aee4519b3cfdb5c7d10b459b4f5b0",
+      "gitBlobSha": "e3f5b049a8bbb9d430c6d438a6940a3e5a1ce64b"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/RAPPORT_VISUEL_BADLANDS.html",
+      "bytes": 3234,
+      "sha256": "8efad0039844e148622efa3b3239354840e13a62c66b46c089b02c807a5349a6",
+      "gitBlobSha": "38fa8f1fa0bb10cc5ac1ccd553798b1df4f6fbbe"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/README.md",
+      "bytes": 1794,
+      "sha256": "3ed9777d4dbc117b88785a6272c8d9d022f364afd3c03524ed39f393ae0dbc99",
+      "gitBlobSha": "f6a7cba7c726190a14d63e803df64478217e8dde"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/SHA256SUMS.txt",
+      "bytes": 3783,
+      "sha256": "1eb5f065dbc8db49d29da6c39059b64fbc80a70bcdc089dba5969136d897aeeb",
+      "gitBlobSha": "4e449b86545f2e15e0811ad4873f58afda074728"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/SOURCES.md",
+      "bytes": 1842,
+      "sha256": "ee94e207e925d2066edfa951645dd5aa6cedea70ffb38922292bb01792773172",
+      "gitBlobSha": "917d331c6b9fef36dde670884f7c251287e07840"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/UNINSTALLER_TANTALUS.mjs",
+      "bytes": 576,
+      "sha256": "6fe54b19ea1d58537d80773b3c75bd1dfa70d5d28c7754d9cfeece983f328e04",
+      "gitBlobSha": "532de407fe48b3dbaf0ca2b904179929b91c335d"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/bone_bison.svg",
+      "bytes": 339,
+      "sha256": "d8c04511a0d34bd80821209ee871a352b44b9f20e155c1de487914d118c92a9e",
+      "gitBlobSha": "e4fc05e32ee448d0c4a04392fbca03a3bcb2182b"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/bud.svg",
+      "bytes": 339,
+      "sha256": "445231c68a008ad7bae62eb59c3f0261cc9973f4a551bf7f27629ad7c1b32deb",
+      "gitBlobSha": "435909414f5b4dbf66e6a7fd68a23e271769f36f"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/cryo_grenade.svg",
+      "bytes": 223,
+      "sha256": "fadaf0002ed41e1f56915b813d35f7f2c2fc96e18aa70548236049ce5b4aabd2",
+      "gitBlobSha": "180a684f2db6a89223a46329884d1dec49851d4f"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/dek.svg",
+      "bytes": 453,
+      "sha256": "4ff59adb9a29ed00439de7809c805005730d10717df5fd50928a01c4adc8c333",
+      "gitBlobSha": "0fdbdd722b01580de52ea547c07227ee3e20ba94"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/genna_vulture.svg",
+      "bytes": 339,
+      "sha256": "35768c1a6d939727955e37326a86c8706d12caa23bf6e7ebcb0dc572754e8f3b",
+      "gitBlobSha": "3cd7ad6900abececd7dd98c235b940340d2a4d70"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/kalisk.svg",
+      "bytes": 431,
+      "sha256": "852837ae9149b5b9538aba8dbde420b3db71ae54cdef2f8ab4973a163c8cf75e",
+      "gitBlobSha": "9619c847c7988cfd5f6a04f73102a4313ae35bc6"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/kwei.svg",
+      "bytes": 453,
+      "sha256": "13b502537dc3644e2a389dbff2b548f994134c0cfc99f8c7251c27c21dbef656",
+      "gitBlobSha": "cc92347cfc355c6d647c8c97d64aa8053302b262"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/kwei_ship.svg",
+      "bytes": 320,
+      "sha256": "151222c9e71dbbddc6981e914b4c49bd68a1d82ac2d896a25667a90e5f3ab981",
+      "gitBlobSha": "947c8f8a3a1e583c7084ddeff34262f25ad02088"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/luna_bug.svg",
+      "bytes": 339,
+      "sha256": "6d4f6ad6292c62301dbc259f76bbe54c3b652d0cccf56432d2cc9c2c74001a2a",
+      "gitBlobSha": "da9426e64acb72a34f09928e4978cc5193602586"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/njohrr.svg",
+      "bytes": 453,
+      "sha256": "3208f611de563b3404e85f1caf8c30297987ea3dc9db17a70b9c2ff982b37058",
+      "gitBlobSha": "f2fa26c558c9da9d55ac6ff9b681d416dddeca73"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/plasma_sword.svg",
+      "bytes": 223,
+      "sha256": "6ce5e1586f96c0c03cb1bf8e5d2a685546031df3aa7bc1cbf1557d8522b599e3",
+      "gitBlobSha": "06e02ba9cfd9a3aef535fe5d864da6e785b7ce04"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/power_loader.svg",
+      "bytes": 381,
+      "sha256": "429064bdc1b4ed0667954cbceabc53c8b18179925876e0013b052a5ef4da6e87",
+      "gitBlobSha": "04fa4c9ee8c8a1ea4279ed095131d2a69e207671"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/spike_pod.svg",
+      "bytes": 293,
+      "sha256": "79c8c3348fec886b3db4e5eafbee4cb9c37f4aaac65201b43b2d2c537fefb7f6",
+      "gitBlobSha": "aa44606e874e8f54e9ac137711903ed57b431a41"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/squirt_cannon.svg",
+      "bytes": 223,
+      "sha256": "4ab988e539dda61161c4f32df4e50db837fed940ec5ecf17986b7b3b26e252b8",
+      "gitBlobSha": "10075abf115b57bd23a3720f0a1000bd77de7f22"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/synth_drone.svg",
+      "bytes": 346,
+      "sha256": "7f2b431799a98a9dc5dc01c4546025fa971d9f1d4a7d993bfca8bc71ee23f4e3",
+      "gitBlobSha": "3f6e6173fcff84aba29d88fb0fbe47c6fd4da893"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/tessa.svg",
+      "bytes": 346,
+      "sha256": "dcbca2ecd66f650fafd0c9afccdbbbbe381ebe4a96d5050715e14edd14eb2234",
+      "gitBlobSha": "311a0e5d9e1a8de264bab91f05de9887a09b6753"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/thia.svg",
+      "bytes": 346,
+      "sha256": "695af9cc11affa164d68468ec0c3466805c9342354a939c3b40ae2c88d3d6311",
+      "gitBlobSha": "bedb1ca36a1147c7b55ded93807534d28ada274c"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/assets/svg/tree_vine.svg",
+      "bytes": 293,
+      "sha256": "fcae69592899fafc8eef285095b3a7d7a5a397116d375f6cf98518ee0d9215b5",
+      "gitBlobSha": "796d05160b5ae762bc85e853a00097543e82ddb8"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/dlc-manifest.json",
+      "bytes": 657,
+      "sha256": "af5968cdaced685f65af33c7f91d132150b2444ab8625ae4b43fb0cdac1c068d",
+      "gitBlobSha": "2d91f7d14fb470f2c3bdd1e9c027d76a9a3b4b2a"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/manifest.json",
+      "bytes": 787,
+      "sha256": "a9e1f7dbfd21c679acf4046f7c628de50fc5d1b355eb8c951882e966111937d5",
+      "gitBlobSha": "7af81b2ad80895785ecb98f7c7351064b320c090"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/src/badlands-data.js",
+      "bytes": 45776,
+      "sha256": "05fe27cdc9c44e76f9b38d29ff8a22a4dbd1b14fde2acbc49f1d06585dcf435d",
+      "gitBlobSha": "fba830148e558d843ecac9c7ee8b9636bd6509e4"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/src/badlands-game.js",
+      "bytes": 12968,
+      "sha256": "985bec074b50e2e6dcdf6fc1643f0751beeebb1a555b1c22602fd02458d3f15f",
+      "gitBlobSha": "6238a83d402ce956d4e2c159fc86a175f9f54d86"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/styles/badlands.css",
+      "bytes": 5141,
+      "sha256": "f73a0c97437f0ebdc8ec8056c1d1a28c67af9d491cf6da11f757f0fa727ac6e1",
+      "gitBlobSha": "3881dbf55ee2bd733ee5de855f5825408f9efd04"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/tests/browser-smoke.json",
+      "bytes": 123,
+      "sha256": "02c8fe74ceec6a8be5e39e4640af6a9efdd410da30a6aefc944f8e2ae1daf959",
+      "gitBlobSha": "4afa4b417d7beb3389164231ec1f8a9ec2bc2251"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/tests/test_badlands.mjs",
+      "bytes": 1395,
+      "sha256": "ad7a9a4bfde3d0a4433b2bf46e1cfd403ea0bd47b214af9a42c4b219faba9adc",
+      "gitBlobSha": "0508f8b63e516b51d6fb9451d7e2ca562fe9e50c"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/JOUER_PREDATOR_BADLANDS.html",
+      "bytes": 3837,
+      "sha256": "92e7d6a7cff0abbfa24abe21ed98dfdb39e77eb00709bed8c20900e702204d3b",
+      "gitBlobSha": "6141809c1b30a7e8eb5795fda012c9bcd1266200"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/README.md",
+      "bytes": 4274,
+      "sha256": "1a3870512cc4e2caf274df1389ebd4521aa06bb979847500faef6f59dba1bdbb",
+      "gitBlobSha": "0c27ec4268393e21e0122135c475293dad993c3f"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/manifest.json",
+      "bytes": 858,
+      "sha256": "2313b3ece0919292f89893fdeeadeb90e20306f962508117b6b1a16ba62a1d74",
+      "gitBlobSha": "877acbb92536f3bf634413c89e38d1b017b19bcc"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/qa/validation-summary.json",
+      "bytes": 746,
+      "sha256": "59b155bc90eae53a0a0a4c515c77b43a723d4ed421733a1abe1d621843624fad",
+      "gitBlobSha": "cc4baee94f0c4bf14290eae38ad17ce3cc481b6f"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/src/browser.js",
+      "bytes": 15121,
+      "sha256": "4790f4efea55543cc871cef1d826af8270ee2e4fb61641f618a77c4108f81048",
+      "gitBlobSha": "9afd14cd0cd7cdb9c8b271e432cb0a90c4c85182"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/src/core.js",
+      "bytes": 11954,
+      "sha256": "7d5f71cddf83060c0000536dfc49bd146bb0ac316f17eb28aacaf783dbcd3ba4",
+      "gitBlobSha": "0149a5069d32ddc698142c2c5807e5ff5969bb19"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/src/data.js",
+      "bytes": 4184,
+      "sha256": "14fae2f678f3eb418ba2fbae28ebaef14b82eea0773d2b083be0c00905555e77",
+      "gitBlobSha": "69bfa2a767e4c89b73f58c41b55283fe0ef79eb8"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/styles/badlands.css",
+      "bytes": 4213,
+      "sha256": "082de6e0347b50e651150a1b70b01a2b0881f88f594e9320fce3e78ad5162757",
+      "gitBlobSha": "f798b00c721a71520cbd149918291d8b1722c2ba"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/tests/test_browser.py",
+      "bytes": 7941,
+      "sha256": "c47d23001edadd900d59a70c0b409ff5822ae4b352dd6b637992f094ce5caff1",
+      "gitBlobSha": "b2f6069d5434b4a773abedf16f5b34c5f1fb9aae"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/tests/test_core.mjs",
+      "bytes": 7902,
+      "sha256": "ff11c5537323bb81c1e1e824cc881f65041c104b924fac49d55c4e7f6d481ef3",
+      "gitBlobSha": "69e752353b6b52fa1d15671f52e48fa30720fa79"
+    }
+  ],
+  "allowedBaselineChange": "dlc/predator-badlands/IMPORT_STATUS.json",
+  "entryPoints": [
+    "dlc/predator-badlands/v0.1.0/JOUER_PREDATOR_BADLANDS_STANDALONE.html",
+    "dlc/predator-badlands/v0.2.0/JOUER_PREDATOR_BADLANDS_STANDALONE.html"
+  ],
+  "publicationScope": "Source-tree restoration. Publication must be established by the enclosing Git commit; no runtime integration or release is implied."
+}

@@ -1,0 +1,27 @@
+{
+  "version": "0.5.0",
+  "passed": true,
+  "counts": {
+    "chapters": 20,
+    "beats": 106,
+    "rooms": 95,
+    "storyTransitions": 105,
+    "graphEdges": 119,
+    "secondaryTraces": 34,
+    "codexEntries": 27,
+    "weapons": 9
+  },
+  "suites": {
+    "verify": "PASS",
+    "allBeats": "PASS",
+    "progression": "PASS",
+    "migration": "PASS",
+    "runtime": "PASS",
+    "installer": "PASS",
+    "graph": "PASS"
+  },
+  "browserVisual": {
+    "status": "BLOCKED_ENVIRONMENT",
+    "note": "Chromium headless did not terminate in this environment; report images are static control renders, not browser screenshots."
+  }
+}

@@ -1,0 +1,75 @@
+{
+ "source": "Classeur V6, onglet « Missions des six voies » (texte repris tel quel)",
+ "missions": [
+  {
+   "id": "O1-M16",
+   "title": "La lame rendue",
+   "originId": "O1",
+   "act": "III — Parmi les chasseurs",
+   "minimumRank": "Young Blood",
+   "entry": "O1-M15 résolue ; lire son résultat réel (réussite, issue partielle, refus ou échec) pour adapter les personnages et les objets présents.",
+   "conditions": "Homeworld ; statut Young Blood déjà obtenu dans la campagne commune. Les relations, blessures, absences et objets affichés proviennent de l’état de partie ; aucun partenaire n’est recréé par la scène.",
+   "scene": "Une lame de Varek est restée prise dans la roche après la poursuite. Le joueur revient par un autre itinéraire, dégage le socle et récupère l’arme sans la présenter comme trophée de victoire. Un proche du père propose de la racheter avant l’audience locale.",
+   "choices": "Conserver l’arme pour la confrontation ou la remettre à une garde neutre change sa garde matérielle.",
+   "failure": "Un éboulement ferme l’accès bas mais découvre une corniche ; l’arme ne se duplique pas au changement de route.",
+   "exit": "Enregistrer O1-M16.resolved séparément de .success, puis O1-M16.choice, les observations et les transferts réellement accomplis. L’objet reçoit provenance et emplacement uniques ; sa restitution éventuelle reste visible dans la galerie.",
+   "sourceRow": 21
+  },
+  {
+   "id": "O2-M16",
+   "title": "Le trophée sous un autre angle",
+   "originId": "O2",
+   "act": "III — Parmi les chasseurs",
+   "minimumRank": "Young Blood",
+   "entry": "O2-M15 résolue ; lire son résultat réel (réussite, issue partielle, refus ou échec) pour adapter les personnages et les objets présents.",
+   "conditions": "Homeworld ; statut Young Blood déjà obtenu dans la campagne commune. Les relations, blessures, absences et objets affichés proviennent de l’état de partie ; aucun partenaire n’est recréé par la scène.",
+   "scene": "Dans l’atelier, le joueur oriente le trophée familial sur son berceau et examine des marques situées à des angles opposés. Les indices correspondent à plusieurs phases : piste, combat, extraction. Le mini-jeu conserve chaque observation séparément.",
+   "choices": "Construire une chronologie complète ou annoter les trois phases sans les relier règle le niveau d’affirmation.",
+   "failure": "Une orientation non observée laisse une étape inconnue ; le berceau peut être repris à tout moment.",
+   "exit": "Enregistrer O2-M16.resolved séparément de .success, puis O2-M16.choice, les observations et les transferts réellement accomplis. Le futur récit du crâne partagé s’appuie sur des traces distinctes et une incertitude explicite.",
+   "sourceRow": 57
+  },
+  {
+   "id": "O3-M12",
+   "title": "Le nom qui reste inconnu",
+   "originId": "O3",
+   "act": "II — Apprendre sa manière",
+   "minimumRank": "Unblooded",
+   "entry": "O3-M11 résolue ; lire son résultat réel (réussite, issue partielle, refus ou échec) pour adapter les personnages et les objets présents.",
+   "conditions": "Homeworld ; formation commune Unblooded ouverte ; équipement effectivement acquis. Les relations, blessures, absences et objets affichés proviennent de l’état de partie ; aucun partenaire n’est recréé par la scène.",
+   "scene": "Un fragment portant une marque incomplète est découvert dans les décombres. Le joueur compare trois objets et interroge deux familles, mais aucune attribution certaine n’apparaît. Un support séparé permet de garder la question ouverte.",
+   "choices": "Conserver le fragment au refuge ou le confier à l’atelier de comparaison change son lieu de consultation.",
+   "failure": "Une attribution prématurée peut être retirée après vérification et donne une scène d’explication aux proches.",
+   "exit": "Enregistrer O3-M12.resolved séparément de .success, puis O3-M12.choice, les observations et les transferts réellement accomplis. Le registre possède une entrée inconnue honnête ; aucun nom n’est inventé pour achever la mission.",
+   "sourceRow": 89
+  },
+  {
+   "id": "O4-M07",
+   "title": "La lame sous le tissu",
+   "originId": "O4",
+   "act": "II — Apprendre sa manière",
+   "minimumRank": "Unblooded",
+   "entry": "O4-M06 résolue ; lire son résultat réel (réussite, issue partielle, refus ou échec) pour adapter les personnages et les objets présents.",
+   "conditions": "Homeworld ; formation commune Unblooded ouverte ; équipement effectivement acquis. Les relations, blessures, absences et objets affichés proviennent de l’état de partie ; aucun partenaire n’est recréé par la scène.",
+   "scene": "Unblooded, le joueur découvre l’arme de l’ancêtre emballée dans une réserve familiale. Un textile coincé dans sa garde possède un motif correspondant aux victimes du récit. L’inspection utilise lumière, orientation et comparaison sur un support d’atelier.",
+   "choices": "Conserver l’arme en dépôt ou demander immédiatement un examen neutre change sa chaîne de garde.",
+   "failure": "Une pièce bloquée reste en place jusqu’à un outil adapté, sans arracher l’indice pour terminer l’étape.",
+   "exit": "Enregistrer O4-M07.resolved séparément de .success, puis O4-M07.choice, les observations et les transferts réellement accomplis. La piste devient documentée ; posséder l’arme ne confère aucun mérite ni culpabilité au joueur.",
+   "sourceRow": 120
+  },
+  {
+   "id": "O5-M19",
+   "title": "La main sur le câble",
+   "originId": "O5",
+   "act": "IV — Au-delà du ciel",
+   "minimumRank": "Blooded",
+   "entry": "O5-M18 résolue ; lire son résultat réel (réussite, issue partielle, refus ou échec) pour adapter les personnages et les objets présents.",
+   "conditions": "Blooded commun acquis ; vaisseau personnel possédé ; trajet réel requis pour toute scène hors Homeworld. Mara jamais rencontrée personnellement auparavant ; arrivée jouée sur Namarra PLAN13 ; EXP01–02.",
+   "scene": "EXP01–02. Blooded, vaisseau acquis et trajet vers Namarra PLAN13 joué, le joueur suit une proie près d’une falaise instable. Mara Venn, pisteuse humaine adulte, tend un câble depuis une corniche et lui évite une chute. Ils affrontent ensuite séparément une menace immédiate avant de chercher un signe commun.",
+   "choices": "Accepter son point d’appui ou atteindre une seconde prise avant de la rejoindre change le secours vécu.",
+   "failure": "Une prise ratée mène au palier inférieur relié au câble ; Mara n’est ni tuée ni recrutée par un échec de tutoriel.",
+   "exit": "Enregistrer O5-M19.resolved séparément de .success, puis O5-M19.choice, les observations et les transferts réellement accomplis. Première rencontre personnelle confirmée ; Mara est une personne autonome et la dette naît d’un geste observé.",
+   "sourceRow": 168
+  }
+ ]
+}
