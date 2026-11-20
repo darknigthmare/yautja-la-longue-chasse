@@ -285,7 +285,11 @@ export function mountExerciseRefusalV153(m: MountV153, exercise: MountExerciseV1
   return null;
 }
 
-type Campaign = Pick<SaveGame, 'createdAt' | 'profile' | 'prologue'> & { mobilityV1?: MobilityLedger | null; mountsV153?: MountsV153 | null };
+type Campaign = Pick<SaveGame, 'createdAt' | 'profile' | 'prologue'> & {
+  mobilityV1?: MobilityLedger | null; mountsV153?: MountsV153 | null;
+  /** V156 : registre des chevauchées ; une sortie montée en cours gèle le registre des montures. */
+  mountRidesV156?: { active?: unknown } | null;
+};
 
 export function actMountsV153(campaign: Campaign, command: MountCommandV153): MountResultV153 {
   const refuse = (message: string): MountResultV153 => ({ accepted: false, message, state: null, clanMarks: campaign.profile.clanMarks, outcome: null });
@@ -295,6 +299,7 @@ export function actMountsV153(campaign: Campaign, command: MountCommandV153): Mo
   const mobility = inspectMobilityLedger(campaign.mobilityV1, campaign.createdAt);
   if (!['absent', 'valid'].includes(mobility.status)) return refuse('Archive de mobilité incompatible ; elle reste protégée.');
   if (mobility.state?.active) return refuse('Aire des convois occupée : remise l’engin avant de t’occuper d’une monture.');
+  if (record(campaign.mountRidesV156) && campaign.mountRidesV156.active != null) return refuse('Chevauchée en cours : reviens au sas avant toute autre action sur la monture.');
   const old = inspected.state ?? createMountsV153(campaign.createdAt);
   if (command.expectedRevision !== old.revision) return refuse('Le registre des montures a changé. Actualise avant de confirmer.');
   if (!mobilityCampaignEligible(campaign)) return refuse('Le rite Blooded doit être reconnu avant cette activité autonome.');

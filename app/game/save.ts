@@ -8,6 +8,7 @@ import { isFutureHeritageV152, normalizeHeritageV152 } from "./systems/heritageV
 import { hardcoreStatusV155, isFutureHardcoreV155, normalizeHardcoreV155, recordHardcoreDeathV155 } from "./systems/hardcoreV155";
 import { isFutureBlackGodV162, normalizeBlackGodV162 } from "./systems/blackGodV162";
 import { inspectMountsV153 } from "./systems/mobility/mountsV153";
+import { inspectMountRidesV156 } from "./systems/mobility/mountRidingV156";
 import { inspectTrophyTutorialV6 } from "./systems/trophyTutorialV6";
 import {normalizeHomeworldArrivalRecoveryV111} from './systems/homeworldArrivalRecoveryLedgerV111';
 import {normalizeHomeworldArchiveContinuationV111,archiveContinuationActiveV111} from './systems/homeworldArchiveContinuationLedgerV111';
@@ -1321,6 +1322,10 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.mountsV153 === undefined ? {} : {
       mountsV153: inspectMountsV153(source.mountsV153,validIsoDate(source.createdAt,fallback.createdAt)).state,
     }),
+    ...(source.mountRidesV156 === undefined ? {} : {
+      mountRidesV156: inspectMountRidesV156(source.mountRidesV156,validIsoDate(source.createdAt,fallback.createdAt),
+        inspectMountsV153(source.mountsV153,validIsoDate(source.createdAt,fallback.createdAt)).state).state,
+    }),
     ...(source.gauntletV134 === undefined ? {} : {
       gauntletV134: normalizeGauntletCampaignV134(source.gauntletV134,validIsoDate(source.createdAt,fallback.createdAt)),
     }),
@@ -1601,12 +1606,13 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const shipEnergy = inspectShipInsertionEnergy(value.shipInsertionEnergy, typeof value.createdAt === 'string' ? value.createdAt : '');
   const mobility = inspectMobilityLedger(value.mobilityV1, typeof value.createdAt === "string" ? value.createdAt : "");
   const mounts = inspectMountsV153(value.mountsV153, typeof value.createdAt === "string" ? value.createdAt : "");
+  const mountRides = inspectMountRidesV156(value.mountRidesV156, typeof value.createdAt === "string" ? value.createdAt : "", mounts.state);
   const cradle = inspectBuriedCradleCampaign(value.buriedCradle, typeof value.createdAt === 'string' ? value.createdAt : '');
   const residence = inspectCompanionResidence(value.companionResidence, typeof value.createdAt === 'string' ? value.createdAt : '');
   const incidents = inspectClanShipIncidents(value.clanShipIncidents, typeof value.createdAt === 'string' ? value.createdAt : '');
   const trophyHearing = inspectClanShipTrophyHearing(value.clanShipTrophyHearing, typeof value.createdAt === 'string' ? value.createdAt : '');
   const returnEscort = inspectClanShipReturnEscort(value.clanShipReturnEscort, typeof value.createdAt === 'string' ? value.createdAt : '');
-  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts]) {
+  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides]) {
     if (inspection.status === "future-version" || inspection.status === "invalid-save") {
       return { save: null, failure: inspection.status };
     }

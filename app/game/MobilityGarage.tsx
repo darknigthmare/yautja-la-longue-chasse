@@ -10,16 +10,19 @@ import type {MobilityWriter} from './systems/mobility/controller';
 import MobilityDrivingYard from './MobilityDrivingYard';
 import MobilityMountsV153 from './MobilityMountsV153';
 import type {MountWriterV153} from './systems/mobility/mountsV153';
+import MountRidingYardV156 from './MountRidingYardV156';
+import type {MountRideWriterV156} from './systems/mobility/mountRidingV156';
 import styles from './MobilityGarage.module.css';
-export interface MobilityGarageProps {save:SaveGame;suspended?:boolean;onCommand:MobilityWriter;onMountCommand?:MountWriterV153;onClose:()=>void;onSound?:(id:GameSfxId)=>void}
+export interface MobilityGarageProps {save:SaveGame;suspended?:boolean;onCommand:MobilityWriter;onMountCommand?:MountWriterV153;onRideCommand?:MountRideWriterV156;onClose:()=>void;onSound?:(id:GameSfxId)=>void}
 const modeLabels:Record<string,string>={purchase:'Commande aux Forges',quest:'Quête / recrutement',craft:'Fabrication',faction:'Réservé à une faction','training-loan':'Formation / remise du clan','clan-service':'Service du clan',insertion:'Insertion',narrative:'Narration','non-pilotable':'Non pilotable'};
-export default function MobilityGarage({save,suspended=false,onCommand,onMountCommand,onClose,onSound}:MobilityGarageProps){
+export default function MobilityGarage({save,suspended=false,onCommand,onMountCommand,onRideCommand,onClose,onSound}:MobilityGarageProps){
  const [selected,setSelected]=useState('clan_hoverbike'),[filter,setFilter]=useState('all'),[message,setMessage]=useState('');
  const ledger=useMemo(()=>save.mobilityV1??createMobilityLedger(save.createdAt),[save.mobilityV1,save.createdAt]);
  const model=MOBILITY_CATALOGUE.find(d=>d.id===selected)!;
  const owned=ledger.owned.find(v=>v.id===model.id);
  const stats=owned?mobilityStats(model.id,owned.upgrades,owned.condition):mobilityStats(model.id);
- const allowed=!suspended&&!ledger.active;
+ const ride=save.mountRidesV156?.active?save.mountRidesV156:null;
+ const allowed=!suspended&&!ledger.active&&!ride;
  const order=(action:MobilityOrder)=>{if(!allowed)return;const r=onCommand({...action,ownerCreatedAt:save.createdAt,expectedRevision:ledger.revision});setMessage(r.message);if(r.accepted)onSound?.('select');return r;};
  const entries=MOBILITY_CATALOGUE.filter(d=>filter==='all'||filter==='owned'&&(ledger.owned.some(v=>v.id===d.id)||!!save.mountsV153?.mounts.some(v=>v.id===d.id))||filter==='sale'&&d.shopEnabled||filter===d.kind);
  const paidAllowed=allowed&&ledger.recoveryDebt===0;
@@ -29,7 +32,7 @@ export default function MobilityGarage({save,suspended=false,onCommand,onMountCo
  return <section className={styles.shell} aria-labelledby="mobility-title" data-mobility-garage>
   <header className={styles.heading}><div><small>FORGES · COMPTOIR DES CONVOIS</small><h2 id="mobility-title">Registre de mobilité</h2><p>Commande, entretien et aire de conduite du clan</p></div><div className={styles.balance}><strong>{save.profile.clanMarks.toLocaleString('fr-FR')}</strong><span>marques de clan</span><span>Permis : {ledger.circulationPermit?'confirmé':'à obtenir'}</span><span data-mobility-owned-count={ledger.owned.length}>{ledger.owned.length} engin(s) au garage</span></div></header>
   {ledger.recoveryDebt>0&&<section className={styles.notice} aria-label="Dette de remorquage"><strong>Récupération à régler · {ledger.recoveryDebt} marques</strong><p>Le retour de sécurité conserve les dommages et la réserve. Les sorties personnelles et l’atelier sont suspendus jusqu’au règlement ; les chasses à pied restent accessibles.</p><button disabled={!allowed||save.profile.clanMarks<ledger.recoveryDebt} onClick={()=>order({type:'settle-recovery',expectedCost:ledger.recoveryDebt})}>Régler le remorquage · {ledger.recoveryDebt} marques</button></section>}
-  {ledger.active ? <MobilityDrivingYard key={`${save.createdAt}:${ledger.active.id}`} state={ledger} bindings={save.settings.controlBindings} suspended={suspended} onCommand={onCommand} onSound={onSound}/> : <>
+  {ride&&onRideCommand&&!ledger.active ? <MountRidingYardV156 key={`${save.createdAt}:ride:${ride.active!.id}`} state={ride} bindings={save.settings.controlBindings} suspended={suspended} onCommand={onRideCommand} onSound={onSound}/> : ledger.active ? <MobilityDrivingYard key={`${save.createdAt}:${ledger.active.id}`} state={ledger} bindings={save.settings.controlBindings} suspended={suspended} onCommand={onCommand} onSound={onSound}/> : <>
    <section className={styles.notice} aria-label="Prêt de formation"><strong>{ledger.circulationPermit?'Aire des convois':'Obtenir le permis de circulation'}</strong><p>Un Grav-Sled est prêté pour les trois balises, un chargement et le retour au sas. Ce prêt ne donne ni propriété, ni rang, ni honneur.</p><button onClick={()=>order({type:'start',modelId:'scout_grav_sled',loaned:true})} disabled={!allowed}>Prendre le Grav-Sled de formation</button></section>
    <section className={styles.notice} aria-label="Remise du Grav-Sled" data-mobility-training-reward={reward?.status??'unearned'}>
     <strong>Le sceau du convoyeur</strong>
@@ -49,7 +52,7 @@ export default function MobilityGarage({save,suspended=false,onCommand,onMountCo
      {owned&&<section data-mobility-maintenance><h4>Garage · état persistant</h4><p>État {owned.condition.toFixed(1)} % · réserve {owned.energy.toFixed(1)} % · trajet {owned.distance.toFixed(0)} unités de piste</p><div className={styles.actions}>{(['repair','recharge','care']as const).map(type=>{const cost=mobilityServiceQuote(ledger,model.id,type);if((type==='care')!==(model.kind==='mount'))return null;return <button key={type} disabled={!paidAllowed||cost===null||save.profile.clanMarks<(cost??Infinity)} onClick={()=>order({type,modelId:model.id,expectedCost:cost!})}>{type==='repair'?'Réparer':type==='recharge'?'Recharger':'Soigner / reposer'}{cost!==null?` · ${cost} marques`:' · inutile'}</button>;})}<button disabled={!paidAllowed||!model.trialEnabled||owned.condition<25||owned.energy<10} onClick={()=>order({type:'start',modelId:model.id,loaned:false})}>Sortir sur l’aire</button></div>
       {model.kind==='machine'&&<div className={styles.modules}>{MOBILITY_MODULES.map(mod=>{const preview=mobilityUpgradePreview(ledger,model.id,mod.id);const cost=mobilityServiceQuote(ledger,model.id,'upgrade',mod.id);return <article key={mod.id}><strong>{mod.name} · {owned.upgrades[mod.id]}/3</strong><p>{mod.description}</p>{preview&&<div data-upgrade-preview={mod.id}><p className={styles.hint}>Avant → après · état {preview.condition.toFixed(1)} %, sans cargaison</p><dl className={styles.comparison}>{MOBILITY_STAT_LABELS.map(stat=>{const scale='scale' in stat?stat.scale:1;const before=preview.current[stat.key]*scale,after=preview.next[stat.key]*scale;return <div key={stat.key}><dt>{stat.label}</dt><dd>{before.toFixed(stat.decimals)} → <strong>{after.toFixed(stat.decimals)}</strong> {stat.unit}</dd></div>;})}</dl></div>}<button disabled={!paidAllowed||cost===null||save.profile.clanMarks<(cost??Infinity)} onClick={()=>order({type:'upgrade',modelId:model.id,module:mod.id,expectedCost:cost!})}>{cost===null?'Niveau maximal':`Installer · ${cost} marques`}</button></article>;})}</div>}
      </section>}
-     {model.kind==='mount'&&<MobilityMountsV153 save={save} mountId={model.id} allowed={allowed} onCommand={onMountCommand} onMessage={setMessage}/>}
+     {model.kind==='mount'&&<MobilityMountsV153 save={save} mountId={model.id} allowed={allowed} onCommand={onMountCommand} onRideCommand={onRideCommand} onMessage={setMessage}/>}
      <details><summary>Doctrine, limites et biomes</summary><p>{model.source_class}</p><p>Biomes : {model.biomes.join(', ')}.</p><p>Contraintes : {model.weaknesses.join(' · ')}.</p><p>Capacités de conception : {model.abilities.join(' · ')}.</p><p>Gabarit proposé : {model.dimensions} · équipage : {model.crew}.</p><p>Chasses montées, transfert orbital, variantes d’état, animations et sons dédiés restent suivis séparément ; aucune propriété de compagnon n’est créée par ce catalogue.</p></details>
     </article>
    </div>
