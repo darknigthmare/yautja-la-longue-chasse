@@ -724,6 +724,8 @@ export interface SaveGame {
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
   /** V146: outfits, mode outfits, clan palette, earned cosmetics, heavy wear. */
   customizationV146?: CustomizationV146 | null;
+  /** V147: trophy usages (display, worn, exchange ledger, studies); written after a first usage. */
+  trophyUsagesV147?: import("./systems/trophyUsagesV147").TrophyUsagesV147 | null;
   version: number;
   createdAt: string;
   updatedAt: string;
