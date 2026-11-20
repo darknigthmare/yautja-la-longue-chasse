@@ -1,4 +1,5 @@
-import { HONOR_RANK_THRESHOLDS_V166, missionHonorRewardV166, promoteRankV166, resolveAcquiredRankV166 } from "./systems/honorProgressionV166";
+import { HONOR_RANK_THRESHOLDS_V166, missionHonorRewardV166, resolveAcquiredRankV166 } from "./systems/honorProgressionV166";
+import { createRankTrialsV168, recordRankTrialHuntV168, resolveRankTrialsV168, settleRankTrialsV168 } from "./systems/rankTrialsV168";
 import { inspectMobilityLedger } from "./systems/mobility/ledger";
 import { inspectTrophyTutorialV6 } from "./systems/trophyTutorialV6";
 import {normalizeHomeworldArrivalRecoveryV111} from './systems/homeworldArrivalRecoveryLedgerV111';
@@ -347,6 +348,7 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
       hunterName: "Chasseur sans nom",
       rankId: "young-blood",
       acquiredRankIdV166: "young-blood",
+      rankTrialsV168: createRankTrialsV168(),
       honor: 0,
       clanMarks: 0,
       playTimeSeconds: 0,
@@ -1136,10 +1138,16 @@ export function normalizeSave(value: unknown): SaveGame {
     rawProfile.honor,
     fallback.profile.honor,
   );
-  const acquiredRankId = resolveAcquiredRankV166(
-    honor,
+  // V168 : sans état d'épreuves, la sauvegarde est antérieure et garde le rang
+  // que V166 donnait (réputé épreuve réussie) ; avec, l'honneur seul ne fait
+  // plus monter (voir systems/rankTrialsV168.ts).
+  const rankTrials = resolveRankTrialsV168(
+    rawProfile.rankTrialsV168,
     rawProfile.acquiredRankIdV166,
+    resolveAcquiredRankV166(honor, rawProfile.acquiredRankIdV166),
+    validIsoDate(source.updatedAt, fallback.updatedAt),
   );
+  const acquiredRankId = rankTrials.rankId;
   const requestedDifficultyId = isOneOf(
     rawSettings.difficultyId,
     DIFFICULTY_IDS,
@@ -1193,7 +1201,7 @@ export function normalizeSave(value: unknown): SaveGame {
     }
   }
 
-  return {
+  const normalized: SaveGame = {
     version: SAVE_VERSION,
     createdAt: validIsoDate(source.createdAt, fallback.createdAt),
     updatedAt: validIsoDate(source.updatedAt, fallback.updatedAt),
@@ -1206,6 +1214,7 @@ export function normalizeSave(value: unknown): SaveGame {
       // garde le rang qu'elle affichait (anciens seuils), voir resolveAcquiredRankV166.
       rankId: acquiredRankId,
       acquiredRankIdV166: acquiredRankId,
+      rankTrialsV168: rankTrials.state,
       honor,
       clanMarks: nonNegativeInteger(
         rawProfile.clanMarks,
@@ -1376,6 +1385,9 @@ export function normalizeSave(value: unknown): SaveGame {
       shipAcquisitionV89: normalizeShipAcquisitionV89(source.shipAcquisitionV89, validIsoDate(source.createdAt, fallback.createdAt)),
     }),
   };
+  // V168 : une crête de reine rapportée hors chasse (Berceau) peut compléter
+  // l'épreuve Elite ; la reconnaissance est idempotente.
+  return settleRankTrialsV168(normalized, normalized.updatedAt);
 }
 
 function browserStorage(): Storage | null {
@@ -2312,6 +2324,8 @@ export function applyMissionResult(
       exploration,
       profile: {
         ...save.profile,
+        // V168 : une chasse d'épreuve échouée ou abandonnée compte comme tentative.
+        rankTrialsV168: recordRankTrialHuntV168(save, result, completedAt),
         playTimeSeconds:
           save.profile.playTimeSeconds + elapsedSeconds,
       },
@@ -2375,8 +2389,9 @@ export function applyMissionResult(
       replayMultiplier,
   );
   const nextHonor = Math.max(0, save.profile.honor + honorReward);
-  // L'honneur perdu peut repasser sous un seuil ; le rang acquis reste.
-  const nextRankId = promoteRankV166(save.profile.rankId, nextHonor);
+  // V168 : le rang ne monte plus au seuil ; seule l'épreuve réussie fait
+  // monter (settleRankTrialsV168 ci-dessous). Le rang acquis reste.
+  const nextRankId = save.profile.rankId;
   const nextMission = MISSIONS.find(
     (candidate) => candidate.order === mission.order + 1,
   );
@@ -2422,6 +2437,7 @@ export function applyMissionResult(
       ...save.profile,
       rankId: nextRankId,
       acquiredRankIdV166: nextRankId,
+      rankTrialsV168: recordRankTrialHuntV168(save, result, completedAt),
       honor: nextHonor,
       clanMarks: save.profile.clanMarks + clanMarksReward,
       playTimeSeconds: save.profile.playTimeSeconds + elapsedSeconds,
@@ -2457,12 +2473,12 @@ export function applyMissionResult(
       save.storyCompleted || mission.id === FINAL_STORY_MISSION_ID,
   };
 
-  return {
+  return settleRankTrialsV168({
     ...progressedSave,
     inventory: unlockContent(
       progressedSave,
       nextHonor,
       missionProgress,
     ),
-  };
+  }, completedAt);
 }

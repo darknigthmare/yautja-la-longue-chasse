@@ -297,6 +297,8 @@ import { useHunterGauntletV133 } from "./systems/useHunterGauntletV133";
 import { gauntletCampaignClaimV134,gauntletCampaignEquipV134 } from "./systems/gauntletCampaignV134";
 import { gauntletByIdV132, type GauntletThemeV132 } from "./systems/clanWarGauntletCatalogV132";
 import { captureHuntGauntletV142, resumeHuntGauntletV142 } from "./systems/huntGauntletIdentityV142";
+import { armRankTrialV168, disarmRankTrialV168, type RankTrialPartIdV168 } from "./systems/rankTrialsV168";
+import { RankTrialBriefingV168 } from "./RankTrialBriefingV168";
 
 const HomeworldExpedition = React.lazy(() => import("./HomeworldExpedition"));
 const GlassDesertExpedition = React.lazy(() => import("./GlassDesertExpedition"));
@@ -3190,6 +3192,18 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return mountArrivalHunt(completed, run);
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, mountArrivalHunt, persistSocialProgress, screen, settingsOpen]);
 
+  // V168 : engager ou retirer une épreuve de rang avant de partir en chasse.
+  const armRankTrial = useCallback((partId: RankTrialPartIdV168) => {
+    const update = armRankTrialV168(saveRef.current, partId, new Date().toISOString());
+    if (update.ok && !persistSocialProgress({ profile: update.profile })) return;
+    setToast(update.message);
+  }, [persistSocialProgress]);
+  const disarmRankTrial = useCallback(() => {
+    const update = disarmRankTrialV168(saveRef.current);
+    if (update.ok && !persistSocialProgress({ profile: update.profile })) return;
+    setToast(update.message);
+  }, [persistSocialProgress]);
+
   const launchMission = useCallback(() => {
     if(saveRef.current.mobilityV1?.active){setToast("Remise au garage requise avant une chasse : reprends la sortie depuis le comptoir des Forges.");return;}
     if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de lancer une chasse."); return; }
@@ -5069,6 +5083,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   busy={settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !!resumableHunt}
                   onChange={setInsertionPlan} onRecruit={recruitExpeditionHunter} onAssign={assignExpeditionHunter}
                   onReserve={reserveExpeditionHunter} onCare={careForExpeditionHunter} />
+                <RankTrialBriefingV168 save={save} missionId={selectedMission.id}
+                  context={{ triadAccess: { allowed: evaluateClanShipAccess(save).allowed, reason: evaluateClanShipAccess(save).reason } }}
+                  busy={settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !!resumableHunt}
+                  onArm={armRankTrial} onDisarm={disarmRankTrial} />
                 <div className="briefing-actions">
                   <button
                     type="button"

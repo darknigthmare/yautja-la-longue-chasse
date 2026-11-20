@@ -616,6 +616,11 @@ export interface PlayerProfile {
    * d'une sauvegarde antérieure : la migration garde le rang qu'elle affichait.
    */
   acquiredRankIdV166?: RankId;
+  /**
+   * V168 : épreuves de rang (systems/rankTrialsV168.ts). Absent d'une
+   * sauvegarde antérieure : les rangs acquis sont réputés épreuve réussie.
+   */
+  rankTrialsV168?: import("./systems/rankTrialsV168").RankTrialsStateV168;
   honor: number;
   clanMarks: number;
   playTimeSeconds: number;
