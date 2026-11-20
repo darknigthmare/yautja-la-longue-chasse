@@ -1,48 +1,72 @@
 "use client";
-/**
- * V148 DOM overlay: one rig layer recoloured by zones (primary, secondary,
- * accent), drawn on a canvas above the original image. Zones the player left
- * alone stay transparent, so the graded original shows through.
- */
-import { useEffect, useRef, type CSSProperties } from "react";
+
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import type { PieceColorsV146 } from "./hunterPiecesV146";
-import { hasZoneColorsV148, recolorPlateAutoV148 } from "./hunterPieceZonesV148";
+import { hasZoneColorsV148, pieceCanvasSourceV148 } from "./hunterPieceZonesV148";
+import { HUNTER_RIG_CANVAS } from "./hunterRig";
 
 type Placement = { x: number; y: number; width: number; height: number };
 
-export default function PieceZoneLayerV148({ src, colors, placement, style, piece }: {
+type Props = {
   src: string;
   colors: PieceColorsV146 | null;
   placement?: Placement;
   style?: CSSProperties;
   piece?: string;
-}) {
-  const ref = useRef<HTMLCanvasElement | null>(null);
-  const primary = colors?.primary ?? "", secondary = colors?.secondary ?? "", accent = colors?.accent ?? "", finish = colors?.finish;
-  const px = placement?.x, py = placement?.y, pw = placement?.width, ph = placement?.height;
+  base: ReactNode;
+  baseFilter?: string;
+  slot?: string;
+};
+
+export default function PieceZoneLayerV148(props: Props) {
+  const { src, colors, placement, base, baseFilter } = props;
+  if (!colors || !hasZoneColorsV148(colors)) return base;
+  const key = JSON.stringify([src, colors.primary, colors.secondary, colors.accent, colors.finish,
+    placement?.x, placement?.y, placement?.width, placement?.height, baseFilter]);
+  return <ColoredPlate key={key} {...props} colors={colors} />;
+}
+
+const { width, height } = HUNTER_RIG_CANVAS;
+
+function ColoredPlate({ src, colors, placement, style, piece, base, baseFilter, slot }: Props & { colors: PieceColorsV146 }) {
+  const ref = useRef<HTMLCanvasElement>(null);
+  const [ready, setReady] = useState(false);
+  const { primary, secondary, accent, finish } = colors;
+  const { x, y, width: plateWidth, height: plateHeight } = placement ?? {};
   useEffect(() => {
     const canvas = ref.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d", { willReadFrequently: true });
-    if (!ctx) return;
+    const context = canvas.getContext("2d");
+    if (!context) return;
     let alive = true;
     const image = new Image();
     image.decoding = "async";
     image.onload = () => {
       if (!alive) return;
-      ctx.clearRect(0, 0, 256, 384);
-      ctx.drawImage(image, px ?? 0, py ?? 0, pw ?? 256, ph ?? 384);
       try {
-        const pixels = ctx.getImageData(0, 0, 256, 384);
-        pixels.data.set(recolorPlateAutoV148(pixels.data,
-          { primary: primary || null, secondary: secondary || null, accent: accent || null, light: null, finish }, undefined, true));
-        ctx.putImageData(pixels, 0, 0);
-      } catch { ctx.clearRect(0, 0, 256, 384); }
+        const position = x !== undefined && y !== undefined && plateWidth !== undefined && plateHeight !== undefined
+          ? { x, y, width: plateWidth, height: plateHeight } : undefined;
+        const plate = pieceCanvasSourceV148(image, { primary, secondary, accent, light: null, finish }, position, baseFilter);
+        if (!plate) return;
+        context.clearRect(0, 0, width, height);
+        context.drawImage(plate, 0, 0);
+        setReady(true);
+      } catch {
+        // The authored image remains visible if the recoloured plate cannot be drawn.
+      }
     };
     image.src = src;
-    return () => { alive = false; };
-  }, [src, primary, secondary, accent, finish, px, py, pw, ph]);
-  if (!hasZoneColorsV148(colors)) return null;
-  return <canvas ref={ref} width={256} height={384} aria-hidden="true" data-piece-zones-v148={piece}
-    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", ...style }} />;
+    return () => {
+      alive = false;
+      image.onload = null;
+    };
+  }, [src, primary, secondary, accent, finish, x, y, plateWidth, plateHeight, baseFilter]);
+
+  // Both plates contain the source alpha. Showing them together alters the silhouette.
+  return <>
+    {!ready && base}
+    <canvas ref={ref} width={width} height={height} aria-hidden="true" data-piece-zones-v148={piece}
+      data-rig-slot={ready ? slot : undefined} style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
+        pointerEvents: "none", ...style, display: ready ? style?.display : "none" }} />
+  </>;
 }

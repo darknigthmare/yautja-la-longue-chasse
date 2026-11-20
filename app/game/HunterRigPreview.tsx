@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element */
 
-import { Fragment, type CSSProperties } from "react";
+import type { CSSProperties } from "react";
 import PieceZoneLayerV148 from "./PieceZoneLayerV148";
 import { pieceZoneColorsV148 } from "./hunterPieceZonesV148";
 import type { HunterPieceIdV146 } from "./hunterPiecesV146";
@@ -354,8 +354,7 @@ export function HunterRigPreview({
   recoil = 0,
   debugBones = false,
 }: HunterRigPreviewProps) {
-  // V148: equipment layers without a V113 channel get a zone overlay when the
-  // player gave the piece colours (gauntlet, wristblades, caster, weapons).
+  // V148: equipment without a V113 channel can still use piece colours.
   const registeredLayer = (
     path: string, matrix: AffineMatrix, zIndex: number, slot: string, filter?: string,
     opacity?: number, placement?: HunterLayerPlacement, clipPath?: string,
@@ -368,9 +367,9 @@ export function HunterRigPreview({
       : slot.startsWith("trophy-") && !trophyCarried ? "trophies" : null;
     const colors = piece ? pieceZoneColorsV148(appearance, piece) : null;
     if (!colors) return base;
-    return <Fragment key={slot}>{base}
-      <PieceZoneLayerV148 src={path} colors={colors} placement={placement} piece={piece ?? undefined}
-        style={{ zIndex, opacity, clipPath, transformOrigin: "0 0", transform: cssMatrix(matrix) }} /></Fragment>;
+    return <PieceZoneLayerV148 src={path} key={slot} colors={colors} placement={placement}
+      piece={piece ?? undefined} base={base} baseFilter={filter} slot={slot}
+      style={{ zIndex, opacity, clipPath: placement ? undefined : clipPath, transformOrigin: "0 0", transform: cssMatrix(matrix) }} />;
   };
   const resolvedAimAngle =
     aimAngle ??
@@ -599,20 +598,11 @@ export function HunterRigPreview({
               transform: cssMatrix(strand.matrix),
             }}
           >
-            <img
-              alt=""
-              data-rig-dread-inner=""
-              draggable={false}
-              src={hunterDreadPath(appearance.dreadStyleId)}
-              style={
-                {
-                  ...fullCanvasImage,
-                  filter: HUNTER_DREAD_FILTERS_V114[appearance.dreadTintId],
-                } as CSSProperties
-              }
-            />
             <ChromaticSurfaceV113 appearance={appearance} channel="dreads" piece="dreads"
-              maskPath={hunterDreadPath(appearance.dreadStyleId)} style={fullCanvasImage} />
+              maskPath={hunterDreadPath(appearance.dreadStyleId)} style={fullCanvasImage}
+              baseFilter={HUNTER_DREAD_FILTERS_V114[appearance.dreadTintId]}
+              base={<img alt="" data-rig-dread-inner="" draggable={false} src={hunterDreadPath(appearance.dreadStyleId)}
+                style={{ ...fullCanvasImage, filter: HUNTER_DREAD_FILTERS_V114[appearance.dreadTintId] }} />} />
           </span>
         );
       })}
@@ -647,14 +637,17 @@ export function HunterRigPreview({
         const boneId = HUNTER_BODY_PART_BONES[partId] as HunterRigBoneId;
         const matrix = boneMatrix(boneId);
         const z = 20 + index * 2;
+        const path = hunterBodyPartPath(appearance.bodyMorphId, partId, appearance.headStyleId);
+        const placement = hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId);
+        const clipPath = hunterBodyPartClipCssV62(appearance.bodyMorphId, partId);
+        const skinFilter = hunterBodyPartColorV62(appearance.bodyMorphId, partId, HUNTER_SKIN_FILTERS_V114[appearance.skinId]);
+        const layerStyle = { ...fullCanvasImage, zIndex: z, transform: cssMatrix(matrix), clipPath };
         return [
-          registeredLayer(hunterBodyPartPath(appearance.bodyMorphId, partId, appearance.headStyleId), matrix, z,
-            `body-${partId}`, hunterBodyPartColorV62(appearance.bodyMorphId, partId, HUNTER_SKIN_FILTERS_V114[appearance.skinId]), undefined,
-            hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId), hunterBodyPartClipCssV62(appearance.bodyMorphId, partId)),
           <ChromaticSurfaceV113 key={`chromatic-skin-${partId}`} appearance={appearance} channel="skin" piece="skin"
-            maskPath={hunterBodyPartPath(appearance.bodyMorphId, partId, appearance.headStyleId)}
-            placement={hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId)}
-            style={{ ...fullCanvasImage, zIndex: z, transform: cssMatrix(matrix), clipPath: hunterBodyPartClipCssV62(appearance.bodyMorphId, partId) }} />,
+            maskPath={path} placement={placement} style={layerStyle}
+            zoneStyle={placement ? { ...layerStyle, clipPath: undefined } : layerStyle}
+            slot={`body-${partId}`} baseFilter={skinFilter}
+            base={registeredLayerBase(path, matrix, z, `body-${partId}`, skinFilter, undefined, placement, clipPath)} />,
           <SkinPatternSurfaceV146 key={`skin-pattern-${partId}`} appearance={appearance}
             maskPath={hunterBodyPartPath(appearance.bodyMorphId, partId, appearance.headStyleId)}
             placement={hunterBodyPartPlacement(appearance.bodyMorphId, partId, appearance.headStyleId)}
@@ -669,25 +662,12 @@ export function HunterRigPreview({
           ] : []),
           ...(hunterBodyPartHasNet(appearance.bodyMorphId, partId)
             ? [
-                <img
-                  aria-hidden="true"
-                  alt=""
-                  data-rig-slot={`net-${partId}`}
-                  draggable={false}
-                  key={`net-${partId}`}
-                  src={hunterNetPartPath(appearance.bodyMorphId, partId)}
-                  style={{
-                    ...fullCanvasImage,
-                    zIndex: z + 1,
-                    opacity: netOpacity,
-                    filter: hunterBodyPartColorV62(appearance.bodyMorphId, partId, HUNTER_SKIN_FILTERS_V114[appearance.skinId]),
-                    clipPath: hunterBodyPartClipCssV62(appearance.bodyMorphId, partId),
-                    transform: cssMatrix(matrix),
-                  }}
-                />,
                 <ChromaticSurfaceV113 key={`chromatic-outfit-${partId}`} appearance={appearance} channel="outfit" piece="fishnet"
                   maskPath={hunterNetPartPath(appearance.bodyMorphId, partId)}
-                  style={{ ...fullCanvasImage, zIndex: z + 1, transform: cssMatrix(matrix), clipPath: hunterBodyPartClipCssV62(appearance.bodyMorphId, partId) }} />,
+                  style={{ ...layerStyle, zIndex: z + 1 }} zoneStyle={{ ...layerStyle, zIndex: z + 1, opacity: netOpacity }}
+                  slot={`net-${partId}`} baseFilter={skinFilter}
+                  base={registeredLayerBase(hunterNetPartPath(appearance.bodyMorphId, partId), matrix, z + 1, `net-${partId}`,
+                    skinFilter, netOpacity, undefined, clipPath)} />,
               ]
             : []),
         ];
@@ -699,21 +679,21 @@ export function HunterRigPreview({
         const clipPath = keep ? `inset(${cssPercentage(keep[1], 384)} ${cssPercentage(256 - keep[0] - keep[2], 256)} ${cssPercentage(384 - keep[1] - keep[3], 384)} ${cssPercentage(keep[0], 256)})` : undefined;
         const filter = slot.shade ? `${armorFilter} brightness(.72)` : armorFilter;
         const limb = slot.wrap && hunterBodyPartPath(appearance.bodyMorphId, slot.wrap.part, appearance.headStyleId);
+        const path = hunterArmorPath(slot.id);
+        const rigSlot = `armor-${slot.id}${slot.shade ? "-far" : ""}`;
         return <span key={`${slot.id}-${slot.bone}`}>
-          {registeredLayer(hunterArmorPath(slot.id), matrix, slot.z, `armor-${slot.id}${slot.shade ? "-far" : ""}`,
-            filter, undefined, undefined, clipPath)}
-          {/* Pigment/material must share the plate's source-space keep region;
-              the full alpha also contains stray pixels intentionally clipped above. */}
-          <ChromaticSurfaceV113 appearance={appearance} channel="armor" piece={pieceForArmorSlotV146(slot.id)} maskPath={hunterArmorPath(slot.id)}
-            style={{ ...fullCanvasImage, zIndex: slot.z, transform: cssMatrix(matrix), clipPath }} />
+          <ChromaticSurfaceV113 appearance={appearance} channel="armor" piece={pieceForArmorSlotV146(slot.id)} maskPath={path}
+            style={{ ...fullCanvasImage, zIndex: slot.z, transform: cssMatrix(matrix), clipPath }}
+            slot={rigSlot} baseFilter={filter}
+            base={registeredLayerBase(path, matrix, slot.z, rigSlot, filter, undefined, undefined, clipPath)} />
           {slot.wrap && limb && <span aria-hidden="true" data-rig-armor-wrap={slot.id}
             style={{ ...fullCanvasImage, zIndex: slot.wrap.wrapZ, transform: cssMatrix(boneMatrix(slot.bone)),
               maskImage: `url("${limb}")`, WebkitMaskImage: `url("${limb}")`, maskSize: "100% 100%", WebkitMaskSize: "100% 100%",
               maskRepeat: "no-repeat", WebkitMaskRepeat: "no-repeat" }}>
-            <img alt="" draggable={false} src={hunterArmorPath(slot.id)}
-              style={{ ...fullCanvasImage, filter, clipPath, transform: slot.fit ? cssMatrix(slot.fit) : undefined }} />
-            <ChromaticSurfaceV113 appearance={appearance} channel="armor" piece={pieceForArmorSlotV146(slot.id)} maskPath={hunterArmorPath(slot.id)}
-              style={{ ...fullCanvasImage, transform: slot.fit ? cssMatrix(slot.fit) : undefined, clipPath }} />
+            <ChromaticSurfaceV113 appearance={appearance} channel="armor" piece={pieceForArmorSlotV146(slot.id)} maskPath={path}
+              style={{ ...fullCanvasImage, transform: slot.fit ? cssMatrix(slot.fit) : undefined, clipPath }}
+              baseFilter={filter} base={<img alt="" draggable={false} src={path}
+                style={{ ...fullCanvasImage, filter, clipPath, transform: slot.fit ? cssMatrix(slot.fit) : undefined }} />} />
           </span>}
           {slot.id === armorFamily.chest && <DecalSurfaceV133 appearance={appearance} zone="armor"
             maskPath={hunterArmorPath(slot.id)}
@@ -727,10 +707,11 @@ export function HunterRigPreview({
       ).map((strand, index) => (
         <span aria-hidden="true" data-rig-slot={`dread-side-${index}`} key={`side-${appearance.dreadStyleId}-${index}`}
           style={{ ...fullCanvasImage, zIndex: 66, transform: cssMatrix(strand.matrix) }}>
-          <img alt="" draggable={false} src={hunterDreadPath(appearance.dreadStyleId)}
-            style={{ ...fullCanvasImage, filter: HUNTER_DREAD_FILTERS_V114[appearance.dreadTintId] } as CSSProperties} />
           <ChromaticSurfaceV113 appearance={appearance} channel="dreads" piece="dreads"
-            maskPath={hunterDreadPath(appearance.dreadStyleId)} style={fullCanvasImage} />
+            maskPath={hunterDreadPath(appearance.dreadStyleId)} style={fullCanvasImage}
+            baseFilter={HUNTER_DREAD_FILTERS_V114[appearance.dreadTintId]}
+            base={<img alt="" draggable={false} src={hunterDreadPath(appearance.dreadStyleId)}
+              style={{ ...fullCanvasImage, filter: HUNTER_DREAD_FILTERS_V114[appearance.dreadTintId] }} />} />
         </span>
       ))}
 
@@ -753,21 +734,17 @@ export function HunterRigPreview({
       ))}
 
       {maskWorn && appearance.biomaskId && <>
-        {registeredLayer(
-          hunterMaskRigPath(appearance.biomaskId),
-          boneMatrix("head"),
-          70,
-          `mask-${appearance.biomaskId}`,
-          "drop-shadow(0 2px 2px rgb(0 0 0 / .9))",
-          undefined,
-          hunterMaskRigPlacement(appearance.biomaskId),
-        )}
+        <ChromaticSurfaceV113
+          appearance={{ chromaticsV113: maskChromaticsForAppearanceV131(appearance), piecesV146: appearance.piecesV146 }}
+          channel="biomask" piece="biomask" maskPath={hunterMaskRigPath(appearance.biomaskId)}
+          placement={hunterMaskRigPlacement(appearance.biomaskId)}
+          style={{ ...fullCanvasImage, zIndex: 71, transform: cssMatrix(boneMatrix("head")) }}
+          zoneStyle={{ ...fullCanvasImage, zIndex: 70, transform: cssMatrix(boneMatrix("head")) }}
+          slot={`mask-${appearance.biomaskId}`} baseFilter="drop-shadow(0 2px 2px rgb(0 0 0 / .9))"
+          base={registeredLayerBase(hunterMaskRigPath(appearance.biomaskId), boneMatrix("head"), 70, `mask-${appearance.biomaskId}`,
+            "drop-shadow(0 2px 2px rgb(0 0 0 / .9))", undefined, hunterMaskRigPlacement(appearance.biomaskId))} />
         <span data-rig-biomask-pigment-v131 aria-hidden="true"
           style={{ ...fullCanvasImage, zIndex: 71, transform: cssMatrix(boneMatrix("head")) }}>
-          <ChromaticSurfaceV113
-            appearance={{ chromaticsV113: maskChromaticsForAppearanceV131(appearance), piecesV146: appearance.piecesV146 }}
-            channel="biomask" piece="biomask" maskPath={hunterMaskRigPath(appearance.biomaskId)}
-            placement={hunterMaskRigPlacement(appearance.biomaskId)} style={fullCanvasImage} />
           <DecalSurfaceV133 appearance={appearance} zone="biomask"
             maskPath={hunterMaskRigPath(appearance.biomaskId)}
             placement={hunterMaskRigPlacement(appearance.biomaskId)} style={fullCanvasImage} />

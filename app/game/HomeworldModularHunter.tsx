@@ -92,6 +92,11 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
   const appearance = clanNpcId && clanPalette && appearanceProp && !appearanceProp.piecesV146
     ? { ...appearanceProp, piecesV146: clanNpcPiecesV146(clanPalette, clanNpcId) }
     : appearanceProp;
+  const dreadPath = hunterDreadPath(dreadStyleId);
+  const dreadFilter = HUNTER_DREAD_FILTERS_V114[appearance?.dreadTintId ?? "obsidian"];
+  const netPath = `${HUNTER_ASSET_ROOT_V3}/body/${morphId}/net/full.webp`;
+  const gauntletColors = pieceZoneColorsV148(appearance, "gauntlet");
+  const bladeColors = pieceZoneColorsV148(appearance, "wristblades");
   return <span className={className} style={style} data-modular-homeworld-character data-body-morph={morphId} data-modular-status="static-bitmap-composition" aria-hidden="true">
     <span style={{ position: "absolute", height: "100%", aspectRatio: "2 / 3", left: "50%", bottom: 0, transform: "translateX(-50%)", isolation: "isolate" }}>
       {solveHunterDreadsV63(REST_FRAME, morphId, dreadStyleId, appearance?.headStyleId,
@@ -100,8 +105,9 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
         zIndex: index, transformOrigin: `${HOMEWORLD_DREAD_ROOT.x / 256 * 100}% ${HOMEWORLD_DREAD_ROOT.y / 384 * 100}%`,
         transform: `translate(${strand.x / 256 * 100}%, ${strand.y / 384 * 100}%) rotate(${strand.angle}rad) scale(${strand.scale})`,
       }}>
-        <img alt="" draggable={false} src={hunterDreadPath(dreadStyleId)} style={{ ...imageStyle, filter: HUNTER_DREAD_FILTERS_V114[appearance?.dreadTintId ?? "obsidian"] }} />
-        <ChromaticSurfaceV113 appearance={appearance} channel="dreads" piece="dreads" maskPath={hunterDreadPath(dreadStyleId)} style={imageStyle} />
+        <ChromaticSurfaceV113 appearance={appearance} channel="dreads" piece="dreads" maskPath={dreadPath}
+          style={imageStyle} baseFilter={dreadFilter}
+          base={<img alt="" draggable={false} src={dreadPath} style={{ ...imageStyle, filter: dreadFilter }} />} />
       </span>)}
       {/* Apply the base grade to anatomical bitmap pixels only. A filter on
           this parent also recolors tattoos, custom pigments and decals;
@@ -113,13 +119,14 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
           const gradedFilter = hunterBodyPartColorV62(morphId, partId,
             HUNTER_SKIN_FILTERS_V114[appearance?.skinId ?? "ochre-mottle"]);
           return <span key={partId} style={{ ...imageStyle }} data-homeworld-body-part={partId}>
-            <img alt="" draggable={false} src={source} style={placement ? {
-              position: "absolute", left: `${placement.x / 256 * 100}%`, top: `${placement.y / 384 * 100}%`,
-              width: `${placement.width / 256 * 100}%`, height: `${placement.height / 384 * 100}%`, objectFit: "fill", zIndex: 1,
-              filter: gradedFilter,
-            } : { ...imageStyle, filter: gradedFilter, clipPath: hunterBodyPartClipCssV62(morphId, partId) }} />
             <ChromaticSurfaceV113 appearance={appearance} channel="skin" piece="skin" maskPath={source} placement={placement}
-              style={{ ...imageStyle, zIndex: 2, clipPath: hunterBodyPartClipCssV62(morphId, partId) }} />
+              style={{ ...imageStyle, zIndex: 2, clipPath: hunterBodyPartClipCssV62(morphId, partId) }}
+              zoneStyle={{ ...imageStyle, zIndex: placement ? 1 : undefined, clipPath: placement ? undefined : hunterBodyPartClipCssV62(morphId, partId) }}
+              baseFilter={gradedFilter} base={<img alt="" draggable={false} src={source} style={placement ? {
+                position: "absolute", left: `${placement.x / 256 * 100}%`, top: `${placement.y / 384 * 100}%`,
+                width: `${placement.width / 256 * 100}%`, height: `${placement.height / 384 * 100}%`, objectFit: "fill", zIndex: 1,
+                filter: gradedFilter,
+              } : { ...imageStyle, filter: gradedFilter, clipPath: hunterBodyPartClipCssV62(morphId, partId) }} />} />
             <SkinPatternSurfaceV146 appearance={appearance} maskPath={source} placement={placement}
               style={{ ...imageStyle, zIndex: 2, clipPath: hunterBodyPartClipCssV62(morphId, partId) }} />
             {(partId === "head" || partId === "torso") && <DecalSurfaceV133
@@ -131,26 +138,25 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
       </span>
       {/* The legacy net plate contains old facial pixels: keep only clothing below the neck. */}
       <img alt="" draggable={false} data-homeworld-layer="clothing" src={`${HUNTER_ASSET_ROOT_V3}/body/${morphId}/net/full.webp`} style={{ ...imageStyle, zIndex: 11, opacity: .9, filter: hunterBodyPartColorV62(morphId, "torso", HUNTER_SKIN_FILTERS_V114[appearance?.skinId ?? "ochre-mottle"]), clipPath: "inset(27.34375% 0 0 0)", maskImage: `url("${hunterBodyFullPath(morphId)}")`, maskSize: "100% 100%", maskRepeat: "no-repeat" }} />
-      <img alt="" draggable={false} data-homeworld-layer="loincloth" src={`${HUNTER_ASSET_ROOT_V3}/body/${morphId}/net/full.webp`} style={{ ...imageStyle, zIndex: 12, clipPath: clothClip(morphId) }} />
-      <ChromaticSurfaceV113 appearance={appearance} channel="outfit" piece="fishnet" maskPath={`${HUNTER_ASSET_ROOT_V3}/body/${morphId}/net/full.webp`}
-        style={{ ...imageStyle, zIndex: 13, clipPath: clothClip(morphId) }} />
-      {appearance?.biomaskId
-        && <span data-homeworld-biomask-pigment-v131 style={{ ...imageStyle, zIndex: 71 }}>
-          <img alt="" draggable={false} src={hunterMaskRigPath(appearance.biomaskId)} style={{
-            position: "absolute",
-            left: String(hunterMaskRigPlacement(appearance.biomaskId).x / 256 * 100) + "%",
-            top: String(hunterMaskRigPlacement(appearance.biomaskId).y / 384 * 100) + "%",
-            width: String(hunterMaskRigPlacement(appearance.biomaskId).width / 256 * 100) + "%",
-            height: String(hunterMaskRigPlacement(appearance.biomaskId).height / 384 * 100) + "%",
-          }} />
+      <ChromaticSurfaceV113 appearance={appearance} channel="outfit" piece="fishnet" maskPath={netPath}
+        style={{ ...imageStyle, zIndex: 13, clipPath: clothClip(morphId) }}
+        zoneStyle={{ ...imageStyle, zIndex: 12, clipPath: clothClip(morphId) }}
+        base={<img alt="" draggable={false} data-homeworld-layer="loincloth" src={netPath}
+          style={{ ...imageStyle, zIndex: 12, clipPath: clothClip(morphId) }} />} />
+      {appearance?.biomaskId && (() => {
+        const path = hunterMaskRigPath(appearance.biomaskId);
+        const placement = hunterMaskRigPlacement(appearance.biomaskId);
+        return <span data-homeworld-biomask-pigment-v131 style={{ ...imageStyle, zIndex: 71 }}>
           <ChromaticSurfaceV113 channel="biomask" piece="biomask"
-            appearance={{ chromaticsV113: maskChromaticsForAppearanceV131(appearance), piecesV146: appearance?.piecesV146 }}
-            maskPath={hunterMaskRigPath(appearance.biomaskId)}
-            placement={hunterMaskRigPlacement(appearance.biomaskId)} style={imageStyle} />
-          <DecalSurfaceV133 appearance={appearance} zone="biomask"
-            maskPath={hunterMaskRigPath(appearance.biomaskId)}
-            placement={hunterMaskRigPlacement(appearance.biomaskId)} style={imageStyle} />
-        </span>}
+            appearance={{ chromaticsV113: maskChromaticsForAppearanceV131(appearance), piecesV146: appearance.piecesV146 }}
+            maskPath={path} placement={placement} style={imageStyle}
+            base={<img alt="" draggable={false} src={path} style={{
+              position: "absolute", left: `${placement.x / 256 * 100}%`, top: `${placement.y / 384 * 100}%`,
+              width: `${placement.width / 256 * 100}%`, height: `${placement.height / 384 * 100}%`,
+            }} />} />
+          <DecalSurfaceV133 appearance={appearance} zone="biomask" maskPath={path} placement={placement} style={imageStyle} />
+        </span>;
+      })()}
       {showArmor && homeworldArmorSlotsV114(appearance, armorId).map(plate => {
         const path = hunterArmorPath(plate.id);
         // V145 registration: shoulder mirrored onto the deltoid, greaves widened
@@ -160,11 +166,12 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
         const keep = HUNTER_ARMOR_KEEP_CLIP_V145[plate.id]?.[0];
         const clipPath = keep ? `inset(${keep[1] / 384 * 100}% ${(256 - keep[0] - keep[2]) / 256 * 100}% ${(384 - keep[1] - keep[3]) / 384 * 100}% ${keep[0] / 256 * 100}%)` : undefined;
         const far = plate.greave === "back";
+        const filter = HUNTER_ARMOR_FILTERS_V114[appearance?.armorTintId ?? "bronze"] + (far ? " brightness(.72)" : "");
         const plateLayer = (zIndex: number, key: string) => <span key={key} data-homeworld-layer="armor" data-armor-module={plate.id}
           style={{ ...imageStyle, zIndex, transformOrigin: fit ? "0 0" : undefined, transform: fit ? restMatrixCss(fit) : undefined }}>
-          <img alt="" draggable={false} src={path} style={{ ...imageStyle, clipPath,
-            filter: HUNTER_ARMOR_FILTERS_V114[appearance?.armorTintId ?? "bronze"] + (far ? " brightness(.72)" : "") }} />
-          <ChromaticSurfaceV113 appearance={appearance} channel="armor" piece={pieceForArmorSlotV146(plate.id)} maskPath={path} style={{ ...imageStyle, clipPath }} />
+          <ChromaticSurfaceV113 appearance={appearance} channel="armor" piece={pieceForArmorSlotV146(plate.id)} maskPath={path}
+            style={{ ...imageStyle, clipPath }} baseFilter={filter}
+            base={<img alt="" draggable={false} src={path} style={{ ...imageStyle, clipPath, filter }} />} />
           {plate.id === HUNTER_ARMOR_MODULES[appearance?.armorStyleId ?? "classic"].chest &&
             <DecalSurfaceV133 appearance={appearance} zone="armor" maskPath={path} style={imageStyle} />}
         </span>;
@@ -182,27 +189,26 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
       {showArmor && solveHunterSideDreadsV145(REST_FRAME, morphId, dreadStyleId, appearance?.headStyleId, dreadAngles ?? []).map((strand, index) =>
         <span key={"side-" + index} data-homeworld-layer="dread-side" style={{ ...imageStyle, zIndex: 23,
           transformOrigin: "0 0", transform: restMatrixCss(strand.matrix) }}>
-          <img alt="" draggable={false} src={hunterDreadPath(dreadStyleId)} style={{ ...imageStyle, filter: HUNTER_DREAD_FILTERS_V114[appearance?.dreadTintId ?? "obsidian"] }} />
-          <ChromaticSurfaceV113 appearance={appearance} channel="dreads" piece="dreads" maskPath={hunterDreadPath(dreadStyleId)} style={imageStyle} />
+          <ChromaticSurfaceV113 appearance={appearance} channel="dreads" piece="dreads" maskPath={dreadPath}
+            style={imageStyle} baseFilter={dreadFilter}
+            base={<img alt="" draggable={false} src={dreadPath} style={{ ...imageStyle, filter: dreadFilter }} />} />
         </span>)}
       {/* Worn kit at rest, with the same forearm fits as HunterRigPreview (V145):
           wrist computer on the front forearm, blade housing on the back one. */}
       {showArmor && (() => {
         const gauntlet = restMatrixCss(gauntletFrontArmMatrixV145(morphId, true));
+        const bladePath = HUNTER_EQUIPMENT_V3.wristblades.housing;
+        const bladeStyle: CSSProperties = { ...imageStyle, zIndex: 26, transformOrigin: "0 0",
+          transform: restMatrixCss(hunterWristbladeRegistrationMatrix(morphId)) };
         return <>
-          {(["base", "lid"] as const).map((part, index) => <img key={part} alt="" draggable={false}
-            data-homeworld-layer="gauntlet" data-gauntlet-part={part} src={gauntletRigSpriteV139(gauntletVariantId, part)}
-            style={{ ...imageStyle, zIndex: 24 + index, transformOrigin: "0 0", transform: gauntlet }} />)}
-          {hasWristblades && <img alt="" draggable={false} data-homeworld-layer="blade-housing"
-            src={HUNTER_EQUIPMENT_V3.wristblades.housing}
-            style={{ ...imageStyle, zIndex: 26, transformOrigin: "0 0", transform: restMatrixCss(hunterWristbladeRegistrationMatrix(morphId)) }} />}
-          {/* V148: zone colours on the worn kit, same overlay as the rig preview. */}
-          {(["base", "lid"] as const).map((part, index) => <PieceZoneLayerV148 key={"zones-" + part} piece="gauntlet"
-            src={gauntletRigSpriteV139(gauntletVariantId, part)} colors={pieceZoneColorsV148(appearance, "gauntlet")}
-            style={{ zIndex: 24 + index, transformOrigin: "0 0", transform: gauntlet }} />)}
-          {hasWristblades && <PieceZoneLayerV148 piece="wristblades" src={HUNTER_EQUIPMENT_V3.wristblades.housing}
-            colors={pieceZoneColorsV148(appearance, "wristblades")}
-            style={{ zIndex: 26, transformOrigin: "0 0", transform: restMatrixCss(hunterWristbladeRegistrationMatrix(morphId)) }} />}
+          {(["base", "lid"] as const).map((part, index) => {
+            const path = gauntletRigSpriteV139(gauntletVariantId, part);
+            const layerStyle: CSSProperties = { ...imageStyle, zIndex: 24 + index, transformOrigin: "0 0", transform: gauntlet };
+            return <PieceZoneLayerV148 key={part} piece="gauntlet" src={path} colors={gauntletColors} style={layerStyle}
+              base={<img alt="" draggable={false} data-homeworld-layer="gauntlet" data-gauntlet-part={part} src={path} style={layerStyle} />} />;
+          })}
+          {hasWristblades && <PieceZoneLayerV148 piece="wristblades" src={bladePath} colors={bladeColors} style={bladeStyle}
+            base={<img alt="" draggable={false} data-homeworld-layer="blade-housing" src={bladePath} style={bladeStyle} />} />}
         </>;
       })()}
     </span>
