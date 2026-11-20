@@ -714,6 +714,8 @@ export interface SaveGame {
   heritageV152?: import("./systems/heritageV152").HeritageStateV152 | null;
   /** V155: mode Hardcore choisi à la création (fixé) et mort définitive. Absent sur une partie normale. */
   hardcoreV155?: import("./systems/hardcoreV155").HardcoreStateV155 | null;
+  /** V162: épreuve finale Black God (hors canon), victoire et sacrifice qui clôt la chronique. Absent tant qu'il n'est pas utilisé. */
+  blackGodV162?: import("./systems/blackGodV162").BlackGodStateV162 | null;
   version: number;
   createdAt: string;
   updatedAt: string;
