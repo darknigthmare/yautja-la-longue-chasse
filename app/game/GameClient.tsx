@@ -290,7 +290,7 @@ import type {
 import { recordGlassDesertExpedition, type HomeworldProgress, type HomeworldService } from "./systems/homeworld";
 import type { GlassDesertProof } from "./systems/glassDesert";
 
-import { tribunalAccessV147 } from "./systems/honorTribunalV147";
+import { tribunalAccessV147, tribunalBlocksChroniclePromotionV147, tribunalClanShipDepartureV147 } from "./systems/honorTribunalV147";
 import { advanceJusticeTime, applyJusticeAction, getJusticeStatus, getJusticeRouteControl, type JusticeProgress, type JusticeJurisdictionId } from "./systems/justice";
 
 import { normalizeHomeworldExpeditionProof, type HomeworldExpeditionProof } from "./systems/homeworldExpedition";
@@ -1263,6 +1263,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           !soloV68NeedsScene(loadedSave.soloV68) && !soloV69NeedsScene(loadedSave.soloV69) && !soloV70NeedsScene(loadedSave.soloV70) && !soloV90NeedsScene(loadedSave.soloV90)) {
         setHubLocation("clan-ship"); setNewGamePhase(null); setScreen("clan-ship");
       }
+      const exileDeparture = tribunalClanShipDepartureV147(loadedSave.clanShipDocking?.status);
+      if (!tribunalAccessV147(loadedSave.tribunalV147).city &&
+          entry.location !== "mission" && entry.location !== "new-game" &&
+          (exileDeparture || (worldResume && worldResume !== "game-reserve") ||
+            ["homeworld", "clan-ship", "prologue", "youth-training"].includes(entry.location))) {
+        const destination = exileDeparture ? "clan-ship" : "deck";
+        setHubLocation(destination); setNewGamePhase(null); setScreen(destination);
+      }
       if ((!worldResume || worldResume === 'homeworld') && entry.location !== 'mission' && entry.location !== 'new-game' &&
           loadedSave.wolfCastle && loadedSave.wolfCastle.status !== 'departed' &&
           (!loadedSave.prologue || (loadedSave.prologue.status === 'completed' &&
@@ -1700,7 +1708,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const persistNursery = useCallback((next: SaveGame): boolean => {
     if (pendingTrophyCommitRef.current) return false;
     if (!sessionAliveRef.current || next.createdAt !== entry.ownerCreatedAt) return false;
-    if (JSON.stringify(next) === JSON.stringify(saveRef.current)) {
+    const current = saveRef.current;
+    if (tribunalBlocksChroniclePromotionV147(current.tribunalV147,
+      getChronicleRank(current.prologue?.chronicle), getChronicleRank(next.prologue?.chronicle))) {
+      setNurseryPersistenceError("Le rang est gelé. Termine la réparation avant de valider ce rite."); return false;
+    }
+    if (JSON.stringify(next) === JSON.stringify(current)) {
       // A paused/no-op checkpoint still needs the same durable owner and bytes.
       // Parse without observing: reading another tab must not authorize overwriting it.
       try {
@@ -2218,6 +2231,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       }
     }
     const next = { ...current, ...update };
+    if (update.prologue && tribunalBlocksChroniclePromotionV147(current.tribunalV147,
+      getChronicleRank(current.prologue?.chronicle), getChronicleRank(update.prologue.chronicle))) {
+      setToast("Le rang est gelé. Termine la réparation avant de valider ce rite."); return false;
+    }
     const session = activeHuntSessionRef.current;
     if (session && isExplorationMission(session.missionId)) {
       const failure = explorationWriteFailure(session, next, reconcileHuntWrite());
@@ -2254,6 +2271,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const commitCompanionResidence = useCallback((action: CompanionResidenceAction, observation: CompanionResidenceObservation): boolean => {
     const current = saveRef.current;
+    if (screen === "clan-ship" && !tribunalAccessV147(current.tribunalV147).clanShip) return false;
     const active = sessionAliveRef.current && current.createdAt === entry.ownerCreatedAt && gameFocusedV89 &&
       !settingsOpen && !archiveTransferBusy && !archiveRecoveryIssue && !campaignSaveBusy && !trophyWorkshop &&
       !activeHuntSessionRef.current && !resumableHunt && !current.planetArrival &&
@@ -2273,6 +2291,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const commitClanShipIncident = useCallback((action: ClanShipIncidentAction, observation: ClanShipIncidentObservation): boolean => {
     const current = saveRef.current;
+    if (!tribunalAccessV147(current.tribunalV147).clanShip) return false;
     const active = sessionAliveRef.current && current.createdAt === entry.ownerCreatedAt && screen === 'clan-ship' &&
       current.clanShipDocking?.status === 'aboard' && gameFocusedV89 && !settingsOpen && !trophyWorkshop &&
       !archiveTransferBusy && !archiveRecoveryIssue && !campaignSaveBusy && !activeHuntSessionRef.current &&
@@ -2297,6 +2316,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const commitClanShipTrophyHearing = useCallback((action: ClanShipTrophyHearingAction, observation: ClanShipIncidentObservation): boolean => {
     const current = saveRef.current;
+    if (!tribunalAccessV147(current.tribunalV147).clanShip) return false;
     const active = sessionAliveRef.current && current.createdAt === entry.ownerCreatedAt && screen === 'clan-ship' &&
       current.clanShipDocking?.status === 'aboard' && gameFocusedV89 && !settingsOpen && !trophyWorkshop &&
       !archiveTransferBusy && !archiveRecoveryIssue && !campaignSaveBusy && !activeHuntSessionRef.current &&
@@ -2312,6 +2332,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const commitClanShipReturnEscort = useCallback((action: ClanShipReturnEscortAction, observation: ClanShipReturnEscortObservation): boolean => {
     const current = saveRef.current;
+    if (!tribunalAccessV147(current.tribunalV147).clanShip) return false;
     const active = sessionAliveRef.current && current.createdAt === entry.ownerCreatedAt && screen === 'clan-ship' &&
       current.clanShipDocking?.status === 'aboard' && gameFocusedV89 && !settingsOpen && !trophyWorkshop &&
       !archiveTransferBusy && !archiveRecoveryIssue && !campaignSaveBusy && !activeHuntSessionRef.current &&
@@ -2330,6 +2351,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const retryClanShipReturnEscort = useCallback((): boolean => {
     const current = saveRef.current;
+    if (!tribunalAccessV147(current.tribunalV147).clanShip) return false;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== 'clan-ship' ||
         current.clanShipDocking?.status !== 'aboard' || !gameFocusedV89 || settingsOpen || trophyWorkshop ||
         archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || activeHuntSessionRef.current ||
@@ -2579,7 +2601,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       const docking = saveRef.current.clanShipDocking;
       // V147: an exile loses access to the city and the clan ship (bible, voie Bad Blood).
       const tribunalAccess = tribunalAccessV147(saveRef.current.tribunalV147);
-      if ((next === "homeworld" && !tribunalAccess.city) || (next === "clan-ship" && !tribunalAccess.clanShip && docking?.status !== "aboard")) {
+      if ((next === "homeworld" && !tribunalAccess.city) || (next === "clan-ship" && !tribunalAccess.clanShip && !tribunalClanShipDepartureV147(docking?.status))) {
         setToast("Exil prononcé par le tribunal : la cité et le navire de clan te sont fermés. Le dossier de justice reste ouvert depuis le pont."); return;
       }
       if (docking && docking.status !== "free-flight" && ["homeworld", "map", "briefing", "mission", "game-reserve", "ship-acquisition-v89", "wolf-castle", "planet-arrival"].includes(next)) {
@@ -2609,6 +2631,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const openClanShip = useCallback(() => {
     const current = saveRef.current;
+    if (!tribunalAccessV147(current.tribunalV147).clanShip && !tribunalClanShipDepartureV147(current.clanShipDocking?.status)) {
+      setToast("Le navire de clan est fermé pendant l’exil."); return;
+    }
     if ((current.wolfCastle && current.wolfCastle.status !== 'departed') || current.planetArrival) return;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || !gameFocusedV89 || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || resumableHunt) return;
     if (current.prologue && !["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(current.prologue.chronicle) ?? "")) return;
@@ -2716,13 +2741,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const personalShipId = loadShipProgression(current).selectedShipId;
     const state = normalizeClanShipDocking(current.clanShipDocking, current.createdAt, personalShipId);
     if (!state) return false;
+    if (!tribunalAccessV147(current.tribunalV147).clanShip && action.type !== tribunalClanShipDepartureV147(state.status)) {
+      setToast("Le navire de clan est fermé pendant l’exil. Rejoins le pont personnel."); return false;
+    }
     const result = actClanShipDocking(state, action, { ownerCreatedAt: current.createdAt, personalShipId });
     if (!result.accepted) { setToast(result.message); return false; }
     if (result.changed && !persistSocialProgress({ clanShipDocking: result.state })) {
       setToast("Manœuvre non confirmée : l’escale reste à la dernière étape sauvegardée. Réessaie."); return false;
     }
     setSelectedShipId(personalShipId);
-    if (action.type === "return-to-personal" || action.type === "undock" || action.type === "cancel-approach") {
+    if (action.type === "undock" || action.type === "cancel-approach" ||
+        (action.type === "return-to-personal" && tribunalAccessV147(current.tribunalV147).clanShip)) {
       setHubLocation("deck"); setScreen("deck");
     }
     setToast(result.message);
@@ -2731,6 +2760,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const commitClanShipOperations = useCallback((action: ClanShipOperationsAction): boolean => {
     const current = saveRef.current;
+    if (!tribunalAccessV147(current.tribunalV147).clanShip) return false;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "clan-ship" ||
         current.clanShipDocking?.status !== "aboard" || !gameFocusedV89 || settingsOpen ||
         archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || resumableHunt) return false;
@@ -2765,6 +2795,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const openHomeworldExpedition = useCallback((regionId: "ash-marches" | "glass-desert" = "ash-marches") => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return;
+    if (!tribunalAccessV147(current.tribunalV147).city) { setToast("La cité est fermée pendant l’exil."); return; }
     const access = canEnterHomeworldPassageV67(current, regionId);
     if (!access.allowed) { setToast(access.reason); return; }
     if (current.homeworldRegionV68) { setToast("Reviens par le sentier du village avant de lancer une enquête."); return; }
@@ -2781,6 +2812,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const openHomeworldRegionV68 = useCallback((regionId: HomeworldRegionIdV68): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || current.homeworldPassageV67) return false;
+    if (!tribunalAccessV147(current.tribunalV147).city) { setToast("La cité est fermée pendant l’exil."); return false; }
     const access = canEnterHomeworldRegionV68(current, regionId);
     if (!access.allowed) { setToast(access.reason); return false; }
     const previous = current.homeworldRegionV68;
@@ -2950,6 +2982,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const openStationScreen = useCallback(
     (next: StationScreen, returnScreen: StationReturnScreen, facility?: ChromaticFacilityV115) => {
+      const access = tribunalAccessV147(saveRef.current.tribunalV147);
+      if ((returnScreen === "homeworld" && !access.city) || (returnScreen === "clan-ship" && !access.clanShip)) {
+        setToast("Les services du clan sont fermés pendant l’exil. Le dossier de justice est accessible depuis le pont."); return;
+      }
       if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de changer d’installation."); return; }
       setHubLocation(returnScreen === "homeworld" ? "homeworld" : returnScreen === "clan-ship" ? "clan-ship" : "deck");
       setStationReturnScreen(returnScreen);
@@ -2962,6 +2998,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const openClanShipService = useCallback((service: ClanShipService) => {
     const current = saveRef.current;
+    if (!tribunalAccessV147(current.tribunalV147).clanShip) return;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "clan-ship" ||
         current.clanShipDocking?.status !== "aboard" || !gameFocusedV89 || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy) return;
     const roomForService = { armory: "armurerie", trophies: "trophees", medbay: "soins", training: "entrainement", codex: "archives", "clan-war": "conseil" } as const;
@@ -2971,6 +3008,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, go, openStationScreen, screen, settingsOpen]);
 
   const openHomeworldService = useCallback((service: HomeworldService) => {
+    if (!tribunalAccessV147(saveRef.current.tribunalV147).city) { setToast("La cité est fermée pendant l’exil."); return; }
     if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant d’utiliser un autre service."); return; }
     const youth = saveRef.current.prologue;
     if (youth && !["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(youth.chronicle) ?? "") &&
@@ -4178,6 +4216,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     : newGamePhase ? "new-game" : save.planetArrival ? "planet-arrival"
     : screen === "wolf-castle" || (save.wolfCastle && save.wolfCastle.status !== 'departed') ? 'wolf-castle'
     : save.buriedCradle && ['active', 'suspended'].includes(save.buriedCradle.status) ? 'buried-cradle'
+    : !tribunalAccessV147(save.tribunalV147).city ? tribunalClanShipDepartureV147(save.clanShipDocking?.status) ? "clan-ship" : "deck"
     : screen === "clan-ship" || save.clanShipDocking?.status === "aboard" || save.clanShipDocking?.status === "approach" ? "clan-ship" : hubLocation === "homeworld" ? "homeworld" : "deck";
   const checkpointBlockedReason = pendingTrophyCommit ? "Un rite attend sa sauvegarde : réessayez ou exportez son résultat avant de quitter."
     : pendingHuntResult || saveFailure ? "La progression principale attend sa sauvegarde. Réessayez avant de créer un checkpoint."
@@ -4304,7 +4343,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     !newGamePhase && !clanShipVisible && screen !== "prologue" && screen !== "youth-training" && screen !== "solo-v66" && screen !== "solo-v67" && screen !== "solo-v68" && screen !== "solo-v69" && screen !== "solo-v70" && screen !== "solo-v90" && screen !== "homeworld-region-v68" && screen !== "homeworld-passage-v67" && screen !== "game-reserve" && screen !== "ship-acquisition-v89" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" && screen !== "pit-narrative" ? (
       <TopBar
         save={save}
-        onShip={() => go(save.clanShipDocking?.status === "aboard" || save.clanShipDocking?.status === "approach" ? "clan-ship" : save.prologue ? "homeworld" : "deck")}
+        onShip={() => {
+          const docking = save.clanShipDocking?.status;
+          const access = tribunalAccessV147(save.tribunalV147);
+          go((docking === "aboard" || docking === "approach" || (!access.clanShip && tribunalClanShipDepartureV147(docking)))
+            ? "clan-ship" : save.prologue && access.city ? "homeworld" : "deck");
+        }}
         onSettings={() => {
           void playSound("ui");
           setSettingsOpen(true);
@@ -4840,7 +4884,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             onClose={() => {
               // An exile pronounced while in the city returns to the personal deck.
               const access = tribunalAccessV147(saveRef.current.tribunalV147);
-              go((justiceReturnScreen === "homeworld" && !access.city) || (justiceReturnScreen === "clan-ship" && !access.clanShip && saveRef.current.clanShipDocking?.status !== "aboard") ? "deck" : justiceReturnScreen);
+              go((justiceReturnScreen === "homeworld" && !access.city) || (justiceReturnScreen === "clan-ship" && !access.clanShip && !tribunalClanShipDepartureV147(saveRef.current.clanShipDocking?.status)) ? "deck" : justiceReturnScreen);
             }} />
           <HonorTribunalPanelV147 save={save} onCommit={persistTribunalV147} onNotify={setToast} />
         </Suspense>
@@ -6663,7 +6707,7 @@ function TopBar({
         type="button"
         className="brand-lockup ghost-button"
         onClick={onShip}
-        aria-label={save.prologue ? "Retour à la cité" : "Retour au vaisseau"}
+        aria-label={save.prologue && tribunalAccessV147(save.tribunalV147).city ? "Retour à la cité" : "Retour au vaisseau"}
       >
         <span className="brand-rune" aria-hidden="true">
           <span>Y</span>

@@ -7,6 +7,7 @@ import { shipForId, shipProfileAssetPath, type ShipId } from "./shipCatalogue";
 import type { ClanShipDockingState, ClanShipDockingAction, ClanShipRoomId } from "./systems/clanShipDocking";
 import { CLAN_SHIP_INTERIOR_ROOM_ORDER, CLAN_SHIP_INTERIOR_ROOMS } from "./systems/clanShipInterior";
 import { useMenuGamepad } from "./useMenuGamepad";
+import { tribunalAccessV147, tribunalClanShipDepartureV147 } from "./systems/honorTribunalV147";
 import ClanShipInterior from "./ClanShipInterior";
 import ClanShipOperationsPanel from "./ClanShipOperationsPanel";
 import type { CompanionResidenceControlled } from "./CompanionResidencePanel";
@@ -112,8 +113,15 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, te
     return accepted;
   }, [onAction, signature, state.roomId, suspended]);
 
+  const clanShipClosed = !tribunalAccessV147(save.tribunalV147).clanShip;
   const goBack = useCallback(() => {
     if (suspended) return;
+    if (clanShipClosed) {
+      const departure = tribunalClanShipDepartureV147(state.status);
+      if (departure) act({ type: departure });
+      else onExit();
+      return;
+    }
     if (state.status === "aboard") {
       // A destination is a walking route. Only the interaction at the berth
       // can transfer the hunter back to the personal ship.
@@ -121,18 +129,18 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, te
     }
     else if (state.status === "approach") act({ type: "cancel-approach" });
     else onExit();
-  }, [act, onExit, state.status, suspended]);
+  }, [act, clanShipClosed, onExit, state.status, suspended]);
 
-  useMenuGamepad(rootRef, !suspended && !aboard, `clan-ship-${state.status}`, goBack);
+  useMenuGamepad(rootRef, !suspended && (!aboard || clanShipClosed), `clan-ship-${state.status}`, goBack);
 
   useEffect(() => {
-    if (suspended || aboard) return;
+    if (suspended || (aboard && !clanShipClosed)) return;
     const frame = requestAnimationFrame(() => primaryRef.current?.focus({ preventScroll: true }));
     return () => cancelAnimationFrame(frame);
-  }, [state.status, suspended, aboard]);
+  }, [state.status, suspended, aboard, clanShipClosed]);
 
   const onKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (suspended || aboard || event.repeat || event.defaultPrevented || event.key !== "Escape") return;
+    if (suspended || (aboard && !clanShipClosed) || event.repeat || event.defaultPrevented || event.key !== "Escape") return;
     event.preventDefault();
     event.stopPropagation();
     goBack();
@@ -162,6 +170,21 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, te
   const returnToPersonal = useCallback(() => { act({ type: "return-to-personal" }); }, [act]);
   const clearTarget = useCallback(() => setTargetRoomId(null), []);
   const targetName = ROOMS.find((entry) => entry.id === targetRoomId)?.name;
+
+  if (clanShipClosed) {
+    const departure = tribunalClanShipDepartureV147(state.status);
+    const label = departure === "cancel-approach" ? "Annuler l’approche"
+      : departure === "undock" ? "Désamarrer" : "Rejoindre mon vaisseau";
+    return <section ref={rootRef} className={styles.hub} aria-label="Départ du Clan Ship" aria-hidden={suspended || undefined} data-clan-ship-status={state.status} onKeyDown={onKeyDown}>
+      <div className={styles.dockingPanel}>
+        <h1>Accès au Clan Ship fermé</h1>
+        <p>Le tribunal a prononcé ton exil. Le dossier de justice est accessible depuis le pont personnel.</p>
+        <button ref={primaryRef} type="button" className={styles.primaryButton} disabled={suspended}
+          data-clan-ship-action={departure ?? undefined} onClick={goBack}>{departure ? label : "Retour au pont"}</button>
+        {error && <p role="status">{error}</p>}
+      </div>
+    </section>;
+  }
 
   return (
     <section ref={rootRef} className={`${styles.hub} ${aboard ? styles.hubAboard : ""}`} aria-label="Clan Ship — vaisseau-mère AVP" aria-hidden={suspended || undefined} data-clan-ship-status={state.status} data-clan-ship-room={state.roomId} data-clan-ship-target={targetRoomId ?? undefined} onKeyDown={onKeyDown}>

@@ -28,6 +28,8 @@
  */
 import type { JusticeDeclaration } from "./justice";
 import type { RankId } from "../types";
+import type { ClanShipDockingStatus } from "./clanShipDocking";
+import { CHRONICLE_RANK_IDS, type ChronicleRankId } from "./clanChronicle";
 
 export const HONOR_TRIBUNAL_VERSION_V147 = 1 as const;
 
@@ -372,6 +374,26 @@ export function effectiveRankV147(honorRank: RankId, t: HonorTribunalV147 | null
 export function rankTrialsBlockedV147(t: HonorTribunalV147 | null | undefined): boolean {
   return !!t && (t.freeze !== null || t.exile !== null);
 }
+/** Un gel judiciaire bloque les nouveaux rangs de la chronique et conserve les rangs acquis. */
+export function tribunalBlocksChroniclePromotionV147(
+  tribunal: HonorTribunalV147 | null | undefined,
+  current: ChronicleRankId | null,
+  next: ChronicleRankId | null,
+): boolean {
+  if (!rankTrialsBlockedV147(tribunal) || next === null) return false;
+  return current === null || CHRONICLE_RANK_IDS.indexOf(next) > CHRONICLE_RANK_IDS.indexOf(current);
+}
+
+/** Un chasseur exilé déjà engagé dans l'amarrage doit pouvoir quitter le vaisseau. */
+export function tribunalClanShipDepartureV147(status: ClanShipDockingStatus | undefined) {
+  switch (status) {
+    case "approach": return "cancel-approach";
+    case "docked": return "undock";
+    case "aboard": return "return-to-personal";
+    default: return null;
+  }
+}
+
 /** Exil : perte de l'accès à la cité et au navire de clan. */
 export function tribunalAccessV147(t: HonorTribunalV147 | null | undefined): { city: boolean; clanShip: boolean } {
   const exiled = !!t?.exile;

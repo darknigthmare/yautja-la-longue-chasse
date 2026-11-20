@@ -239,3 +239,37 @@ test("V147 stays separate from the C-37 trophy hearing", async () => {
   const { update } = m.applyTribunalActionToSaveV147({ ...base, tribunalV147: rec.tribunalV147 }, { type: "open-trial", infractionId: rec.infractionId }, NOW);
   assert.deepEqual(Object.keys(update).sort(), ["justice", "profile", "tribunalV147"]);
 });
+
+test("V147 exile permits only the current berth departure and freeze preserves established chronicle ranks", async () => {
+  const m = await bundle;
+  assert.equal(m.tribunalClanShipDepartureV147(undefined), null);
+  assert.equal(m.tribunalClanShipDepartureV147("free-flight"), null);
+  assert.equal(m.tribunalClanShipDepartureV147("approach"), "cancel-approach");
+  assert.equal(m.tribunalClanShipDepartureV147("docked"), "undock");
+  assert.equal(m.tribunalClanShipDepartureV147("aboard"), "return-to-personal");
+  const { tribunal, infractionId } = record(m, null, "kill-defenseless-or-unworthy");
+  const sentenced = playTrial(m, tribunal, infractionId).tribunal;
+  assert.equal(m.tribunalBlocksChroniclePromotionV147(sentenced, "elder", "ancient"), true);
+  assert.equal(m.tribunalBlocksChroniclePromotionV147(sentenced, "blooded", "blooded"), false);
+  assert.equal(m.tribunalBlocksChroniclePromotionV147(sentenced, "elder", null), false);
+  const reparated = m.applyTribunalActionV147(sentenced, { type: "complete-reparation" }, ctx({ missionsCompleted: 5 }));
+  assert.equal(reparated.ok, true);
+  assert.equal(m.tribunalBlocksChroniclePromotionV147(reparated.tribunal, "elder", "ancient"), false);
+});
+
+test("V147 campaign resume, berth actions and rank writes enforce the same ruling", () => {
+  const client = read("app/game/GameClient.tsx");
+  const hub = read("app/game/ClanShipHub.tsx");
+  assert.match(client, /exileDeparture = tribunalClanShipDepartureV147\(loadedSave\.clanShipDocking\?\.status\)/);
+  assert.match(client, /action\.type !== tribunalClanShipDepartureV147\(state\.status\)/);
+  assert.match(client, /tribunalBlocksChroniclePromotionV147\(current\.tribunalV147,\s+getChronicleRank\(current\.prologue\?\.chronicle\), getChronicleRank\(next\.prologue\?\.chronicle\)/);
+  assert.match(client, /update\.prologue && tribunalBlocksChroniclePromotionV147/);
+  assert.match(client, /worldResume && worldResume !== "game-reserve"/);
+  for (const handler of ["commitClanShipOperations", "commitClanShipIncident", "commitClanShipTrophyHearing",
+    "commitClanShipReturnEscort", "openClanShipService"]) {
+    const declaration = client.indexOf(`  const ${handler} = useCallback(`);
+    assert.ok(declaration !== -1, handler);
+    assert.match(client.slice(declaration, declaration + 420), /!tribunalAccessV147\(current\.tribunalV147\)\.clanShip/);
+  }
+  assert.match(hub, /if \(clanShipClosed\)[\s\S]+data-clan-ship-action=\{departure \?\? undefined\}/);
+});
