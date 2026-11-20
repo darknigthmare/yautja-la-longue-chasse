@@ -58,6 +58,56 @@ test("rapid context changes never resurrect an old loop; a missing new score sto
   const h = harness([entry("music", "combat", [source("/audio/combat.wav")]), entry("music", "menu")]);
   try { h.files.unlock(); await tick(); const old = h.files.startLoop("music", "combat", 0); const next = h.files.startLoop("music", "menu", 0); await Promise.all([old, next]); assert.equal(h.files.activeLoop("music"), null); assert.ok(!h.played.includes("/audio/combat.wav")); await h.files.startLoop("music", "combat", 0); assert.equal(h.files.activeLoop("music"), "combat"); assert.ok(h.connections.includes(h.music)); await h.files.startLoop("music", "menu", 0); assert.equal(h.files.activeLoop("music"), null); assert.ok(h.elements.every(element => element.paused)); } finally { h.restore(); }
 });
+test("a finite return cue follows the music transport and cannot finish a superseded scene", async () => {
+  const h = harness([entry("music", "cradle-return", [source("/audio/return.mp3", "audio/mpeg")]),
+    entry("music", "ship", [source("/audio/ship.mp3", "audio/mpeg")])]);
+  try {
+    h.files.unlock();
+    await tick();
+    let finishes = 0;
+    const continueOnShip = () => { finishes++; void h.files.startLoop("music", "ship", 0); };
+    await h.files.startLoop("music", "cradle-return", 0, undefined, undefined, continueOnShip);
+    const cue = h.elements.find(element => element.src === "/audio/return.mp3");
+    assert.equal(cue.loop, false);
+    h.files.setPaused(true);
+    assert.equal(cue.paused, true);
+    h.files.setPaused(false);
+    await tick();
+    assert.equal(cue.paused, false);
+    cue.dispatchEvent(new Event("ended"));
+    await tick();
+    assert.equal(h.files.activeLoop("music"), "ship");
+    assert.equal(h.elements.find(element => element.src === "/audio/ship.mp3").loop, true);
+    cue.dispatchEvent(new Event("ended"));
+    assert.equal(finishes, 1);
+    await h.files.startLoop("music", "cradle-return", 0, undefined, undefined, continueOnShip);
+    const superseded = h.elements.find(element => element.src === "/audio/return.mp3");
+    h.files.stopLoop("music", 0);
+    superseded.dispatchEvent(new Event("ended"));
+    assert.equal(finishes, 1);
+    assert.equal(h.files.activeLoop("music"), null);
+  } finally { h.restore(); }
+});
+test("return score falls back to the ship loop after ending or becoming unavailable", async () => {
+  const audio = new GameAudio();
+  audio.unlock = async () => {};
+  audio.readyTime = () => 0;
+  const started = [];
+  audio.fileAudio.startLoop = async (_category, id, _fade, _ready, unavailable, ended) => {
+    started.push({ id, unavailable, ended });
+  };
+  await audio.setMusicContext("cradle-return");
+  started[0].ended();
+  await tick();
+  await audio.setMusicContext("cradle-return");
+  assert.deepEqual(started.map(row => row.id), ["cradle-return", "ship", "ship"]);
+  audio.resetCradleReturnMusic();
+  await audio.setMusicContext("cradle-return");
+  started[3].unavailable();
+  await tick();
+  assert.deepEqual(started.map(row => row.id), ["cradle-return", "ship", "ship", "cradle-return", "ship"]);
+  audio.dispose();
+});
 test("blocked autoplay is distinct from missing and resumes after a later unlock", async () => {
   const h = harness([entry("music", "combat", [source("/audio/combat.wav")])], { block: true });
   try { h.files.unlock(); await tick(); await h.files.startLoop("music", "combat", 0); assert.equal(h.files.diagnostics()[0].state, "blocked"); h.unblock(); h.files.unlock(); await tick(); await tick(); assert.equal(h.files.activeLoop("music"), "combat"); assert.equal(h.files.diagnostics(true)[0].state, "disabled"); } finally { h.restore(); }

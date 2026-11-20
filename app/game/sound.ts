@@ -2,7 +2,7 @@
 import { OptionalAudioFiles } from "./audioFiles.ts";
 import { GameSceneAudio } from "./systems/sceneAudio.ts";
 
-export type GameMusicContext = "menu" | "ship" | "galaxy" | "exploration" | "combat" | "boss" | "homeworld";
+export type GameMusicContext = "menu" | "ship" | "galaxy" | "exploration" | "combat" | "boss" | "homeworld" | "cradle-return";
 
 /** Original synth signatures for HUD variants; these are NOT film SFX recordings. */
 export type GameGauntletSoundProfileV133 = "classic" | "urban" | "elder" | "bronze" | "stealth" | "scar" | "wolf" | "brutal" | "feral" | "badlands";
@@ -139,6 +139,7 @@ export class GameAudio {
   private requestedAmbience: GameAudioBiome | null = null;
   private musicRequest = 0;
   private requestedMusic: GameMusicContext | null = null;
+  private cradleReturnMusicFinished = false;
   private cloakFileActive = false;
   private fileAudio: OptionalAudioFiles;
   private readonly sceneVoices = new Set<GameSceneAudio>();
@@ -388,8 +389,19 @@ export class GameAudio {
     this.requestedMusic = context;
     await this.unlock();
     if (this.disposed || request !== this.musicRequest || context !== this.requestedMusic || this.readyTime() === null) return;
-    void this.fileAudio.startLoop("music", context, fade);
+    if (context === "cradle-return" && !this.cradleReturnMusicFinished) {
+      const continueOnShip = () => {
+        if (this.disposed || this.requestedMusic !== "cradle-return" || this.cradleReturnMusicFinished) return;
+        this.cradleReturnMusicFinished = true;
+        void this.setMusicContext("cradle-return", { fadeSeconds: fade });
+      };
+      void this.fileAudio.startLoop("music", context, fade, undefined, continueOnShip, continueOnShip);
+      return;
+    }
+    void this.fileAudio.startLoop("music", context === "cradle-return" ? "ship" : context, fade);
   }
+
+  resetCradleReturnMusic(): void { this.cradleReturnMusicFinished = false; }
 
   stopMusic(fadeSeconds = .4): void {
     this.musicRequest++; this.requestedMusic = null;

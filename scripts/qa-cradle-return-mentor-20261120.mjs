@@ -3,6 +3,7 @@
  * boarding is performed through the ordinary room and return-panel controls. */
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { chromium } from 'playwright-core';
@@ -18,6 +19,26 @@ assert.ok(buildId);
 const scenario = process.env.CRADLE_RETURN_QA_SCENARIO ?? 'mentor';
 assert(['mentor', 'acid'].includes(scenario), 'Choose CRADLE_RETURN_QA_SCENARIO=mentor or acid.');
 const acid = scenario === 'acid';
+const audio = process.env.CRADLE_RETURN_QA_AUDIO === '1';
+if (audio) assert(acid, 'The audio proof follows the complete acid return.');
+const returnFiles = {
+  repair: 'sfx/armor-repair/berceau.wav',
+  cue: 'music/cradle-return/MUS-15-retour.mp3',
+  ship: 'music/ship/MUS-02-veille.mp3',
+};
+const audioSources = {};
+if (audio) {
+  const inventory = JSON.parse(await readFile('public/audio/manifest.json', 'utf8'));
+  const files = inventory.entries.flatMap(entry => entry.sources);
+  for (const [id, file] of Object.entries(returnFiles)) {
+    const source = files.find(row => row.url.split('?')[0] === '/audio/' + file);
+    assert(source, file);
+    const bytes = await readFile('public/audio/' + file);
+    assert.equal(bytes.byteLength, source.bytes);
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), source.sha256);
+    audioSources[id] = source;
+  }
+}
 const output = resolve(process.env.CRADLE_RETURN_QA_OUTPUT ?? (acid ? 'outputs/qa-cradle-return-acid' : 'outputs/qa-cradle-return-mentor'));
 await mkdir(output, { recursive: true });
 const qa = homeworldSceneSsrV78();
@@ -30,7 +51,7 @@ const { MISSIONS } = qa.load('app/game/data.ts');
 const context = { personalShipId: 'classic-predator-spaceship', ownedShipIds: ['classic-predator-spaceship'] };
 const owner = '2026-11-20T02:00:00.000Z';
 let save = saves.defaultSave(owner);
-save.settings.masterVolume = 0;
+save.settings.masterVolume = audio ? .6 : 0;
 for (const mission of MISSIONS) {
   save.missionProgress[mission.id] = { ...save.missionProgress[mission.id], status: 'completed', attempts: 1, completions: 1 };
 }
@@ -84,6 +105,37 @@ try {
   });
   page.setDefaultTimeout(45_000);
   page.on('pageerror', error => report.errors.push(error.message));
+  if (audio) {
+    report.audioSources = audioSources;
+    await page.addInitScript(({ repairBytes }) => {
+      const observed = { music: [], repairs: [] };
+      window.cradleAudioProof = observed;
+      const play = HTMLMediaElement.prototype.play;
+      HTMLMediaElement.prototype.play = function () {
+        const uri = this.currentSrc || this.src;
+        const pending = play.call(this);
+        if (this instanceof HTMLAudioElement && /\/MUS-(15|02)-/.test(uri)) {
+          void pending.then(() => observed.music.push({ element: this, uri, loop: this.loop, duration: this.duration }),
+            () => {});
+        }
+        return pending;
+      };
+      const decode = AudioContext.prototype.decodeAudioData;
+      const repairs = new WeakSet();
+      AudioContext.prototype.decodeAudioData = function (bytes, ...callbacks) {
+        const isRepair = bytes.byteLength === repairBytes &&
+          new DataView(bytes).getUint32(0) === 0x52494646;
+        const pending = decode.call(this, bytes, ...callbacks);
+        if (isRepair) void pending.then(buffer => repairs.add(buffer), () => {});
+        return pending;
+      };
+      const start = AudioBufferSourceNode.prototype.start;
+      AudioBufferSourceNode.prototype.start = function (...args) {
+        if (this.buffer && repairs.has(this.buffer)) observed.repairs.push({ duration: this.buffer.duration });
+        return start.apply(this, args);
+      };
+    }, { repairBytes: audioSources.repair.bytes });
+  }
 
   const shipSelector = '[data-ship-interior="2.5d"]:not([inert])';
   const ship = page.locator(shipSelector);
@@ -188,6 +240,31 @@ try {
     await panel.waitFor();
     await panel.getByText('L’acide a détruit la crête pendant le transport.', { exact: false }).waitFor();
     report.checks.push({ kind: 'physical-acid-extraction', outcome: returned.buriedCradle.outcome, exit: returned.buriedCradle.snapshot.run.roomId });
+    if (audio) {
+      const cue = await page.waitForFunction(url => {
+        const row = window.cradleAudioProof.music.find(item => item.uri.endsWith(url));
+        return row && { url: row.uri, duration: row.duration, loop: row.loop };
+      }, audioSources.cue.url);
+      const first = await cue.jsonValue();
+      assert.equal(first.loop, false);
+      assert(Math.abs(first.duration - 90) < .2);
+      // Seek on the real decoded element so its native ended event advances
+      // the score without slowing the physical field-to-ship regression.
+      await page.evaluate(url => {
+        const row = window.cradleAudioProof.music.find(item => item.uri.endsWith(url));
+        row.element.currentTime = row.element.duration - .15;
+      }, audioSources.cue.url);
+      const shipMusic = await page.waitForFunction(({ cueUrl, shipUrl }) => {
+        const rows = window.cradleAudioProof.music;
+        const cueIndex = rows.findIndex(item => item.uri.endsWith(cueUrl));
+        const row = rows.find((item, index) => index > cueIndex && item.uri.endsWith(shipUrl) &&
+          item.loop && !item.element.paused);
+        return cueIndex >= 0 && row && { url: row.uri, duration: row.duration, loop: row.loop };
+      }, { cueUrl: audioSources.cue.url, shipUrl: audioSources.ship.url });
+      const then = await shipMusic.jsonValue();
+      assert(Math.abs(then.duration - 180) < .2);
+      report.checks.push({ kind: 'native-cradle-score', first, then, exercisedBy: 'end seek on decoded cue' });
+    }
   } else {
     await openShip();
   }
@@ -199,6 +276,12 @@ try {
   await cleaning.waitFor({ state: 'attached' });
   await ship.locator('[data-cradle-return-panel][data-return-revision="1"]').waitFor();
   report.checks.push({ kind: 'physical-acid-cleaning', room: 'medical-bay', onHunterArmor: true });
+  if (audio) {
+    const played = await page.waitForFunction(() => window.cradleAudioProof.repairs[0]);
+    assert(Math.abs((await played.jsonValue()).duration - 1.25) < .02);
+    assert.equal(await page.evaluate(() => window.cradleAudioProof.repairs.length), 1);
+    report.checks.push({ kind: 'native-armor-repair', duration: 1.25, trigger: 'acknowledged care' });
+  }
   assert.equal(await mentor.count(), 0);
   const beforeExamination = await diskSave();
   assert.equal(beforeExamination.buriedCradle.returnVisit.events[0].witness, undefined);

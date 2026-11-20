@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "99682a144bf72b148413fcb71b3f9840e50c725b3ed49b9a4a2a1af91e5ce734",
+  "version": "562950322c8fa62d0cac28553a5f8700f14767d8032b005176217f2854ab83c0",
   "entries": [
     {
       "id": "ui",
@@ -440,7 +440,14 @@
       "id": "ship",
       "category": "music",
       "folder": "music/ship",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/music/ship/MUS-02-veille.mp3?v=22782bef14c6127c",
+          "mime": "audio/mpeg",
+          "bytes": 1080288,
+          "sha256": "22782bef14c6127cb2b4b8569ba9a6cb48120d8c64a3b64ed2be719f150f9980"
+        }
+      ],
       "fallback": "silence"
     },
     {
@@ -476,6 +483,20 @@
       "category": "music",
       "folder": "music/homeworld",
       "sources": [],
+      "fallback": "silence"
+    },
+    {
+      "id": "cradle-return",
+      "category": "music",
+      "folder": "music/cradle-return",
+      "sources": [
+        {
+          "url": "/audio/music/cradle-return/MUS-15-retour.mp3?v=4ed54892d66a86a6",
+          "mime": "audio/mpeg",
+          "bytes": 540288,
+          "sha256": "4ed54892d66a86a6bbeafaeed58ec759a1447a1ad3f87b26c59704a45f8f8291"
+        }
+      ],
       "fallback": "silence"
     }
   ]
