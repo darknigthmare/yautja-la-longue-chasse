@@ -1,0 +1,73 @@
+name: Assemble Yautja pull requests
+
+on:
+  push:
+    branches:
+      - codex/assemble-prs-20261120
+
+permissions: {}
+
+concurrency:
+  group: yautja-integration-prs-20261120
+  cancel-in-progress: false
+
+jobs:
+  assemble:
+    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/codex/assemble-prs-20261120'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    permissions:
+      contents: write
+    env:
+      INTEGRATION_SEED: 'a96bb977cc9064effd533b0b9cc0e28ffc0081b0'
+      INTEGRATION_REF: refs/heads/codex/integration-prs-20261120
+      GIT_LFS_SKIP_SMUDGE: '1'
+      GIT_TERMINAL_PROMPT: '0'
+
+    steps:
+      - name: Read the assembly script from the control commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout: /tools/integrate-pr-wave-20261120.py
+          sparse-checkout-cone-mode: false
+
+      - name: Fetch the integration seed with a partial Git checkout
+        shell: bash
+        run: |
+          script=tools/integrate-pr-wave-20261120.py
+          install -m 0600 "$script" "$RUNNER_TEMP/integrate-pr-wave-20261120.py"
+          git config --local core.hooksPath /dev/null
+          git fetch --filter=blob:none --no-tags origin "$INTEGRATION_REF:$INTEGRATION_REF"
+          test "$(git rev-parse "$INTEGRATION_REF")" = "$INTEGRATION_SEED"
+          git switch --detach "$INTEGRATION_SEED"
+
+      - name: Assemble the integration commits
+        shell: bash
+        run: |
+          python3 "$RUNNER_TEMP/integrate-pr-wave-20261120.py"
+          git diff --exit-code --quiet
+          git diff --cached --exit-code --quiet
+
+      - name: Publish the integration checkpoint
+        shell: bash
+        env:
+          CHECKPOINT_TOKEN: ${{ github.token }}
+        run: |
+          test "$(git remote get-url origin)" = "https://github.com/$GITHUB_REPOSITORY"
+          candidate="$(git rev-parse HEAD)"
+          test "$candidate" != "$INTEGRATION_SEED"
+          git merge-base --is-ancestor "$INTEGRATION_SEED" "$candidate"
+
+          read -r remote_sha remote_ref <<< "$(git ls-remote --exit-code origin "$INTEGRATION_REF")"
+          test "$remote_ref" = "$INTEGRATION_REF"
+          test "$remote_sha" = "$INTEGRATION_SEED"
+
+          basic_auth="$(printf 'x-access-token:%s' "$CHECKPOINT_TOKEN" | base64 -w 0)"
+          echo "::add-mask::$basic_auth"
+          unset CHECKPOINT_TOKEN
+          GIT_CONFIG_COUNT=1 \
+            GIT_CONFIG_KEY_0=http.https://github.com/.extraheader \
+            GIT_CONFIG_VALUE_0="AUTHORIZATION: basic $basic_auth" \
+            git push --porcelain origin "$candidate:$INTEGRATION_REF"
+          printf 'Integration checkpoint: %s\n' "$candidate"
