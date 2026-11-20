@@ -14,6 +14,7 @@ import {
   type ControlBindings,
 } from "./systems/controlBindings";
 import {
+  CLAN_PLASMA_DRILL,
   TRAINING_DRILL_ACTIONS,
   TRAINING_DRILL_CONFIGS,
   trainingDrillAccuracy,
@@ -32,6 +33,7 @@ export interface TrainingDrillProps {
   disciplineId: TrainingDisciplineId;
   controlBindings?: ControlBindings;
   seed?: number;
+  clanPlasma?: boolean;
   autoFocus?: boolean;
   suspended?: boolean;
   gamepadEnabled?: boolean;
@@ -65,7 +67,7 @@ const FEEDBACK_LABELS: Readonly<
 export default function TrainingDrill(props: TrainingDrillProps) {
   return (
     <TrainingDrillSession
-      key={`${props.disciplineId}:${props.seed ?? 0}`}
+      key={`${props.disciplineId}:${props.seed ?? 0}:${props.clanPlasma === true}`}
       {...props}
     />
   );
@@ -75,6 +77,7 @@ function TrainingDrillSession({
   disciplineId,
   controlBindings = DEFAULT_CONTROL_BINDINGS,
   seed = 0,
+  clanPlasma = false,
   autoFocus = true,
   suspended = false,
   gamepadEnabled = true,
@@ -86,10 +89,12 @@ function TrainingDrillSession({
   const backdropRef = useRef<HTMLDivElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
+  const plasmaPractice = clanPlasma && disciplineId === "targeting";
   const { game, paused, resultSent, deliveryError, canAct, begin, submitAction, cancel, recordResult } = useTrainingDrillRuntimeV94({
-    disciplineId, seed, rootRef: panelRef, suspended, gamepadEnabled, onComplete, onCancel,
+    disciplineId, seed, clanPlasma: plasmaPractice, rootRef: panelRef, suspended, gamepadEnabled, onComplete, onCancel,
   });
-  const config = TRAINING_DRILL_CONFIGS[disciplineId];
+  const config = plasmaPractice ? CLAN_PLASMA_DRILL : TRAINING_DRILL_CONFIGS[disciplineId];
+  const cueLabels = plasmaPractice ? CLAN_PLASMA_DRILL.cueLabels : config.actionLabels;
   const actionShortcuts: Readonly<Record<TrainingDrillAction, string>> = {
     left: controlActionShortcut("training.left", controlBindings),
     right: controlActionShortcut("training.right", controlBindings),
@@ -241,7 +246,7 @@ function TrainingDrillSession({
         <header style={styles.header}>
           <div>
             <p className="eyebrow">
-              SALLE D’ENTRAÎNEMENT · {TRAINING_LABELS[disciplineId]}
+              SALLE D’ENTRAÎNEMENT · {plasmaPractice ? "Préparation des rites du clan" : TRAINING_LABELS[disciplineId]}
             </p>
             <h2 id="training-drill-title">{config.title}</h2>
           </div>
@@ -279,7 +284,7 @@ function TrainingDrillSession({
           </button>
         ) : null}
 
-        <div style={styles.sequence} aria-label="Séquence d’entraînement">
+        {!plasmaPractice && <div style={styles.sequence} aria-label="Séquence d’entraînement">
           {game.sequence.map((action, index) => (
             <span
               key={`${action}-${index}`}
@@ -297,16 +302,16 @@ function TrainingDrillSession({
               {ACTION_GLYPHS[action]}
             </span>
           ))}
-        </div>
+        </div>}
 
         <section style={styles.workArea} aria-label="Commande actuelle">
           <span className="eyebrow">SIGNAL ACTUEL</span>
           <strong style={styles.currentGlyph} aria-hidden="true">
-            {currentAction ? ACTION_GLYPHS[currentAction] : "◆"}
+            {currentAction && !plasmaPractice ? ACTION_GLYPHS[currentAction] : "◆"}
           </strong>
           <strong style={styles.currentLabel}>
             {currentAction
-              ? config.actionLabels[currentAction]
+              ? cueLabels[currentAction]
               : game.status === "complete"
                 ? "Séquence terminée"
                 : "Lance l’épreuve"}

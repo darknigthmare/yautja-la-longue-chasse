@@ -103,7 +103,7 @@ export default function ClanChroniclePanel({ save, onClose, onGameReserveV66, on
             <h4>Elite · L-05, L-06 et L-07</h4>
             <ul>
               <li>Chasse solitaire · Quatza-Rij adulte. Chapitre indisponible.</li>
-              <li>Rites d’initiation et d’ascension du clan. Chapitre indisponible.</li>
+              <li>Rites d’initiation et d’ascension du clan. Après les huit chasses, la station d’entraînement propose une préparation au plasma.</li>
               <li>Crête de la Matriarche · {rankDossier.queen.label}.</li>
             </ul>
             {rankDossier.queen.canOpenExpedition && onOpenCradle && <button type="button" onClick={onOpenCradle}>Ouvrir le dossier du Berceau</button>}

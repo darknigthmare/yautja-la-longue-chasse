@@ -1,3 +1,5 @@
+import { MISSIONS } from "../data";
+import type { SaveGame } from "../types";
 import type { TrainingDisciplineId } from "./progression";
 
 export const TRAINING_DRILL_ACTIONS = [
@@ -120,6 +122,34 @@ export const TRAINING_DRILL_CONFIGS: Readonly<
   },
 };
 
+export const CLAN_PLASMA_DRILL: TrainingDrillConfig & {
+  cueLabels: Readonly<Record<TrainingDrillAction, string>>;
+} = {
+  ...TRAINING_DRILL_CONFIGS.targeting,
+  title: "Maîtrise du plasma",
+  instruction: "Préparation aux rites du clan. Recentre le viseur sur la cible d’exercice, tire lorsqu’elle est alignée et retiens le tir devant une silhouette protégée.",
+  actionLabels: {
+    left: "Recentrer à gauche",
+    right: "Recentrer à droite",
+    primary: "Tirer au plasma",
+    secondary: "Retenir le tir",
+  },
+  cueLabels: {
+    left: "Cible d’exercice à gauche",
+    right: "Cible d’exercice à droite",
+    primary: "Cible d’exercice alignée",
+    secondary: "Silhouette protégée en ligne de tir",
+  },
+};
+
+const CLAN_PLASMA_OPENING: readonly TrainingDrillAction[] = ["left", "primary", "right", "secondary"];
+const CLAN_RITE_HUNTS = MISSIONS.slice(0, 8);
+
+export function canPracticeClanPlasma(progress: SaveGame["missionProgress"]): boolean {
+  return CLAN_RITE_HUNTS.length === 8 &&
+    CLAN_RITE_HUNTS.every(({ id }) => progress[id]?.completions > 0);
+}
+
 const DISCIPLINE_SALTS: Readonly<Record<TrainingDisciplineId, number>> = {
   targeting: 0x31a57e21,
   wristblades: 0x7a1d5e9b,
@@ -148,11 +178,12 @@ function buildSequence(
   disciplineId: TrainingDisciplineId,
   seed: number,
   cueCount: number,
+  opening: readonly TrainingDrillAction[],
 ): readonly TrainingDrillAction[] {
-  const sequence: TrainingDrillAction[] = [];
+  const sequence: TrainingDrillAction[] = [...opening];
   let generator = normalizedSeed(disciplineId, seed);
 
-  for (let index = 0; index < cueCount; index += 1) {
+  for (let index = sequence.length; index < cueCount; index += 1) {
     generator = nextSeed(generator);
     let actionIndex =
       (generator >>> 24) % TRAINING_DRILL_ACTIONS.length;
@@ -171,6 +202,7 @@ function buildSequence(
 export function createTrainingDrill(
   disciplineId: TrainingDisciplineId,
   seed = 0,
+  clanPlasma = false,
 ): TrainingDrillState {
   const config = TRAINING_DRILL_CONFIGS[disciplineId];
   const safeSeed = Number.isFinite(seed) ? Math.trunc(seed) : 0;
@@ -182,6 +214,7 @@ export function createTrainingDrill(
       disciplineId,
       safeSeed,
       config.cueCount,
+      clanPlasma && disciplineId === "targeting" ? CLAN_PLASMA_OPENING : [],
     ),
     cueIndex: 0,
     cueElapsedSeconds: 0,

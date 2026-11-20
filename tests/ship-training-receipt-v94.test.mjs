@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {build} from 'esbuild';
-const b=await build({stdin:{contents:`export * from './app/game/systems/shipTrainingReceiptV94'; export * from './app/game/systems/progression'; export * from './app/game/save'; export * from './app/game/systems/archiveTransferGuard';`,resolveDir:process.cwd()},bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
+const b=await build({stdin:{contents:`export * from './app/game/systems/shipTrainingReceiptV94'; export * from './app/game/systems/progression'; export * from './app/game/save'; export * from './app/game/systems/archiveTransferGuard'; export * from './app/game/systems/trainingDrill'; export {MISSIONS} from './app/game/data';`,resolveDir:process.cwd()},bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
 const a=await import('data:text/javascript;base64,'+Buffer.from(b.outputFiles[0].text).toString('base64'));
 const date='2026-10-16T12:00:00.000Z',owner='2026-10-16T00:00:00.000Z',key=a.SHIP_PROGRESSION_STORAGE_KEY;
-function fixture(discipline='targeting',score=80){
- const save=a.defaultSave(owner),base=a.createDefaultShipProgression(save,owner),data=new Map([[a.SAVE_STORAGE_KEY,JSON.stringify(save)],[key,JSON.stringify(base)]]);
+function fixture(discipline='targeting',score=80,prepare=()=>{}){
+ const save=a.defaultSave(owner);prepare(save);
+ const base=a.createDefaultShipProgression(save,owner),data=new Map([[a.SAVE_STORAGE_KEY,JSON.stringify(save)],[key,JSON.stringify(base)]]);
  const writes=[],fault={quota:false,drop:false,read:false,readback:false,throwAfter:false};
  const storage={getItem(k){if(fault.read&&k===key){fault.read=false;throw Error('read');}return data.get(k)??null;},setItem(k,v){writes.push([k,v]);if(fault.quota)throw Error('quota');if(fault.drop)return;data.set(k,v);if(fault.readback){fault.readback=false;fault.read=true;}if(fault.throwAfter)throw Error('after');},removeItem(k){data.delete(k);}};
  const io={storage:()=>storage,write:(s,v,d)=>a.writeShipProgressionWithStatus(s,v,d)};
@@ -14,6 +15,37 @@ function fixture(discipline='targeting',score=80){
 }
 for(const discipline of Object.keys(a.TRAINING_LABELS))test(`${discipline}: confirmed once, authored score and date preserved`,()=>{
  const f=fixture(discipline),original=JSON.stringify(f.base),campaign=f.data.get(a.SAVE_STORAGE_KEY),r=f.run();assert.equal(r.status,'confirmed');assert.equal(r.state.training[discipline].attempts,1);assert.equal(r.state.training[discipline].lastScore,80);assert.equal(r.state.training[discipline].lastCompletedAt,date);assert.equal(f.run().status,'ignored');assert.equal(f.writes.length,1);assert.equal(JSON.stringify(f.base),original);assert.equal(f.data.get(a.SAVE_STORAGE_KEY),campaign);
+});
+test('clan plasma practice admits eight successful hunts, rewards holding fire and recovers a training score only',()=>{
+ let drill=a.startTrainingDrill(a.createTrainingDrill('targeting',0,true));
+ assert.equal(drill.sequence.length,a.TRAINING_DRILL_CONFIGS.targeting.cueCount);
+ for(const action of ['left','primary','right'])drill=a.submitTrainingDrillAction(drill,action).state;
+ assert.equal(a.CLAN_PLASMA_DRILL.cueLabels[drill.sequence[drill.cueIndex]],'Silhouette protégée en ligne de tir');
+ assert.equal(a.submitTrainingDrillAction(drill,'primary').outcome,'wrong');
+ const held=a.submitTrainingDrillAction(drill,'secondary');
+ assert.equal(held.outcome,'perfect');drill=held.state;
+ while(drill.status==='playing')drill=a.submitTrainingDrillAction(drill,drill.sequence[drill.cueIndex]).state;
+ const score=a.trainingDrillScore(drill),f=fixture('targeting',score,save=>{
+  assert.equal(a.canPracticeClanPlasma(save.missionProgress),false);
+  for(const {id} of a.MISSIONS.slice(0,7))Object.assign(save.missionProgress[id],{status:'completed',attempts:1,completions:1});
+  assert.equal(a.canPracticeClanPlasma(save.missionProgress),false);
+  const last=a.MISSIONS[7].id;
+  Object.assign(save.missionProgress[last],{status:'completed',attempts:1,completions:1});
+  save.storyCompleted=true;
+  assert.equal(a.canPracticeClanPlasma(save.missionProgress),true);
+ });
+ const campaign=f.data.get(a.SAVE_STORAGE_KEY);
+ f.fault.quota=true;assert.equal(f.run().status,'pending');
+ const recovered=a.restoreShipTrainingReceiptV94(JSON.stringify(f.receipt.recoveryCopy()),f.save,f.io);
+ assert.ok(recovered);
+ f.fault.quota=false;
+ const result=recovered.attempt(f.save,f.base);
+ assert.equal(result.status,'confirmed');
+ assert.equal(result.state.training.targeting.attempts,1);
+ assert.equal(result.state.training.targeting.lastScore,score);
+ assert.deepEqual(result.state.completedRiteIds,f.base.completedRiteIds);
+ assert.equal(f.data.get(a.SAVE_STORAGE_KEY),campaign);
+ assert.equal(recovered.attempt(f.save,f.base).status,'ignored');
 });
 for(const kind of ['drop','quota'])test(`${kind}: retry records one attempt, no gesture replay and same completion date`,()=>{
  const f=fixture();f.fault[kind]=true;assert.equal(f.run().status,'pending');assert.equal(f.base.training.targeting.attempts,0);f.fault[kind]=false;const r=f.run();assert.equal(r.status,'confirmed');assert.equal(r.state.training.targeting.attempts,1);assert.equal(r.state.training.targeting.lastCompletedAt,date);

@@ -40,6 +40,7 @@ export function createTrainingPadV94() {
 interface TrainingRuntimeOptionsV94 {
   disciplineId: TrainingDisciplineId;
   seed: number;
+  clanPlasma?: boolean;
   rootRef: RefObject<HTMLDivElement | null>;
   suspended: boolean;
   gamepadEnabled: boolean;
@@ -48,8 +49,8 @@ interface TrainingRuntimeOptionsV94 {
 }
 
 /** Owns one exercise, not its campaign persistence. Recording is an explicit action. */
-export function useTrainingDrillRuntimeV94({ disciplineId, seed, rootRef, suspended, gamepadEnabled, onComplete, onCancel }: TrainingRuntimeOptionsV94) {
-  const [game, setGame] = useState(() => createTrainingDrill(disciplineId, seed));
+export function useTrainingDrillRuntimeV94({ disciplineId, seed, clanPlasma, rootRef, suspended, gamepadEnabled, onComplete, onCancel }: TrainingRuntimeOptionsV94) {
+  const [game, setGame] = useState(() => createTrainingDrill(disciplineId, seed, clanPlasma));
   const [resultSent, setResultSent] = useState(false);
   const [deliveryError, setDeliveryError] = useState<string | null>(null);
   const pageActive = useSyncExternalStore(subscribePageActivityV94, pageActivitySnapshotV94, serverPageActivityV94);
