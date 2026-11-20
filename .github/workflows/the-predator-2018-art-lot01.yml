@@ -70,11 +70,13 @@ jobs:
               assert asset['status'] == 'draft-generated-not-approved'
               assert (root/'production'/asset['file']).is_file()
           pinned = json.loads(pathlib.Path('docs/qa/current-integration-20261103/runtime-inputs.json').read_text())
-          assert len(pinned['entries']) == pinned['files'] == 2308
+          by_path = {entry['path']: entry for entry in pinned['entries']}
+          assert len(by_path) == len(pinned['entries']) == pinned['files'], 'Runtime input inventory count or path uniqueness mismatch'
           for name in ('.vercelignore','tsconfig.json'):
-              entry = next(e for e in pinned['entries'] if e['path'] == name)
+              assert name in by_path, f'Runtime input absent from inventory: {name}'
+              entry = by_path[name]
               raw = pathlib.Path(name).read_bytes()
-              assert entry['bytes'] == len(raw) and entry['sha256'] == hashlib.sha256(raw).hexdigest()
+              assert entry['bytes'] == len(raw) and entry['sha256'] == hashlib.sha256(raw).hexdigest(), f'Runtime input pin mismatch: {name}'
           for name in ('verify_recovery.py','run_recovery_qa.py'):
               ast.parse((root/'tools'/name).read_text(),filename=name)
           print('PASS: 63 recovered files, 51 unchanged v0.5 members, 4 decoded PNGs, 2 individual candidate sprites, 2 updated config inventory entries. No 1:1 or runtime integration certification.')

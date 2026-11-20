@@ -20,6 +20,7 @@ const {createPlanetArrival,requestPlanetArrivalHandoff,completePlanetArrivalHand
 const {normalizePlanetInsertionPlan,shipSupportsSurfaceInsertion,expeditionTrioReady}=qa.load("app/game/systems/planetInsertion.ts");
 const {evaluateClanShipAccess}=qa.load("app/game/systems/clanShipOperations.ts");
 const {hasShipInsertionDebit}=qa.load("app/game/systems/shipInsertionEnergy.ts");
+const {blackGodStatusV162}=qa.load("app/game/systems/blackGodV162.ts");
 const {isShipId}=qa.load("app/game/shipCatalogue.ts");
 const {
   defaultSave,exportSave,parseSaveImport,normalizeSave,RANK_THRESHOLDS,
@@ -153,7 +154,7 @@ test("Arrival handoff and first-mount recovery retain the captured gauntlet afte
     MISSIONS:[{id:"jungle-vey"}],hunterGauntlet:{equippedId:equipped()},huntResumePayload:null,
     normalizeSave,normalizeHuntAccessibilityV112,captureHuntGauntletV142,resumeHuntGauntletV142,
     normalizePlanetInsertionPlan,isShipId,evaluateClanShipAccess,shipSupportsSurfaceInsertion,
-    expeditionTrioReady,hasShipInsertionDebit,
+    expeditionTrioReady,hasShipInsertionDebit,blackGodStatusV162,
     setHuntResumePayload(value){environment.huntResumePayload=value;},
     setHuntRuntimeSave(value){environment.huntRuntimeSave=value;},
     setPendingHuntResult(){},setLastResult(){},setLastRewardSummary(){},setSelectedMission(){},

@@ -54,8 +54,17 @@ test("V113 masks still position their pigment in the authored rig frame", async 
     appearance: { chromaticsV113: { maskHex: "#b43215" } },
   }));
   assert.match(markup, /data-authored-plate=""/);
-  assert.match(markup, /data-chromatic-channel="biomask" style="position:absolute;inset:0;width:100%;height:100%/);
-  assert.match(markup, /left:25%;top:25%;width:50%;height:50%/);
+  const layers = /data-chromatic-channel="biomask" style="([^"]+)"><span style="([^"]+)"/.exec(markup);
+  assert.ok(layers, "the mask pigment has its own positioned layer inside the rig frame");
+  const [, frameStyle, pigmentStyle] = layers;
+  const frameRules = frameStyle.split(";");
+  const pigmentRules = pigmentStyle.split(";");
+  for (const rule of ["position:absolute", "inset:0", "width:100%", "height:100%"]) {
+    assert.ok(frameRules.includes(rule), `frame: ${rule}`);
+  }
+  for (const rule of ["inset:auto", "left:25%", "top:25%", "width:50%", "height:50%"]) {
+    assert.ok(pigmentRules.includes(rule), `pigment: ${rule}`);
+  }
 });
 
 test("the shared recolour preserves fractional source alpha, placement and filter", async () => {
