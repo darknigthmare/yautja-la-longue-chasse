@@ -54,6 +54,7 @@ import { actShipAcquisitionV89, normalizeShipAcquisitionV89, shipAcquisitionElig
 import { withNurseryCheckpoint, withNurseryCompletion } from "./systems/nurseryCampaign";
 import type { NurseryState, NurseryCompletionReceipt } from "./systems/nurseryPrologue";
 import { getChronicleRank, CHRONICLE_RANK_LABELS } from "./systems/clanChronicle";
+import { actTantalusV164, tantalusGateFromSaveV164, type TantalusActionV164, type TantalusResultV164 } from "./systems/tantalusV164";
 import campaignMenuStyles from "./CampaignMainMenu.module.css";
 import CampaignFrontEnd, { type CampaignSessionEntry } from "./CampaignFrontEnd";
 import { CampaignSavePanel } from "./CampaignMainMenu";
@@ -330,6 +331,7 @@ const WolfCastleScene = React.lazy(() => import("./WolfCastleScene"));
 const PlanetArrivalCinematic = React.lazy(() => import("./PlanetArrivalCinematic"));
 const PitHonorsPanel = React.lazy(() => import("./PitHonorsPanel"));
 const GalaxyMapPanel = React.lazy(() => import("./GalaxyMapPanel"));
+const TantalusPanelV164 = React.lazy(() => import("./TantalusPanelV164"));
 const ShipInterior25D = React.lazy(() => import("./ShipInterior25D"));
 const ShipAcquisitionV89 = React.lazy(() => import("./ShipAcquisitionV89"));
 const TrophyWorkshop = React.lazy(() => import("./TrophyWorkshop"));
@@ -2185,7 +2187,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6" | "warpEpochsV165">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6" | "warpEpochsV165" | "tantalusV164">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2195,7 +2197,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6, warpEpochsV165: update.warpEpochsV165 });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6, warpEpochsV165: update.warpEpochsV165, tantalusV164: update.tantalusV164 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2233,6 +2235,18 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setSave(result.save);
     return true;
   }, [reconcileHuntWrite]);
+
+  // V164 : branche Warp Tantalus 2204. Le module Warp n'a encore aucune source
+  // dans la sauvegarde : le départ reste refusé tant qu'aucun contenu ne l'installe.
+  const commitTantalusV164 = useCallback((action: TantalusActionV164): TantalusResultV164 => {
+    const current = saveRef.current;
+    const result = actTantalusV164(current.tantalusV164 ?? null, current.createdAt, action, tantalusGateFromSaveV164(current));
+    if (!result.changed) return result;
+    if (!persistSocialProgress({ tantalusV164: result.ledger })) {
+      return { ...result, accepted: false, changed: false, ledger: saveRef.current.tantalusV164 ?? null, message: "Sauvegarde non confirmée : la branche reste dans son dernier état enregistré." };
+    }
+    return result;
+  }, [persistSocialProgress]);
 
   const commitTrophyTutorialCheckpoint = useCallback((candidate: TrophyTutorialStateV6): boolean => {
     const current = saveRef.current;
@@ -4934,6 +4948,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             justiceControlLabel={getJusticeRouteControl(save.justice, "clan-core").label}
             onOpenJustice={() => { setJusticeJurisdiction("clan-core"); openStationScreen("justice", hubLocation); setJusticeReturnScreen("map"); }}
           />
+        </Suspense>
+      )}
+      {screen === "map" && (
+        <Suspense fallback={null}>
+          <TantalusPanelV164 save={save} onCommit={commitTantalusV164} />
         </Suspense>
       )}
 

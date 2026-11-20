@@ -49,6 +49,7 @@ import { expeditionTrioReady, inspectExpeditionRoster } from "./systems/planetIn
 import { hasShipInsertionDebit, inspectShipInsertionEnergy } from "./systems/shipInsertionEnergy";
 import { emptyGauntletCampaignV134, normalizeGauntletCampaignV134 } from "./systems/gauntletCampaignV134";
 import { inspectWarpEpochsV165 } from "./systems/warpEpochsV165";
+import { inspectTantalusLedgerV164, normalizeTantalusLedgerV164 } from "./systems/tantalusV164";
 import {
   ARMORS,
   CODEX_ENTRIES,
@@ -1387,6 +1388,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.shipAcquisitionV89 === undefined ? {} : {
       shipAcquisitionV89: normalizeShipAcquisitionV89(source.shipAcquisitionV89, validIsoDate(source.createdAt, fallback.createdAt)),
     }),
+    ...(source.tantalusV164 === undefined ? {} : {
+      tantalusV164: normalizeTantalusLedgerV164(source.tantalusV164, validIsoDate(source.createdAt, fallback.createdAt)),
+    }),
   };
 }
 
@@ -1619,6 +1623,12 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   }
   // Refuse incompatible shipyard checkpoints instead of clearing their work
   // during local import, complete archive export or account synchronization.
+  // V164 : un dossier Tantalus plus récent ou étranger n'est jamais remplacé par un dossier vide.
+  {
+    const status = inspectTantalusLedgerV164(value.tantalusV164, value.createdAt);
+    if (status === "future-version") return { save: null, failure: "future-version" };
+    if (status === "invalid") return { save: null, failure: "invalid-save" };
+  }
   if (value.shipAcquisitionV89 !== undefined && value.shipAcquisitionV89 !== null) {
     const raw = value.shipAcquisitionV89;
     if (isRecord(raw) && Number(raw.version) > 1) return { save: null, failure: "future-version" };
