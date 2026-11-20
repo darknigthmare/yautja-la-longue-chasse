@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: yautja-priorities-p0-p3-receipt-20261120
+  group: yautja-priorities-p0-p3-exact-20261120
   cancel-in-progress: false
 
 jobs:
@@ -19,13 +19,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'f9bf35ea2553b512d15aea76049fd4bc4afb1b66'
+      ASSET_RACCORDS_SOURCE_COMMIT: '5690b90ff0dbfbf1386a29e4b79b93dc3bb2a3ac'
       BASE_COMMIT: '5417bafe9b2fe3ed064693d9e0f12d9d591217d3'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'f9bf35ea2553b512d15aea76049fd4bc4afb1b66'
+          ref: '5690b90ff0dbfbf1386a29e4b79b93dc3bb2a3ac'
           persist-credentials: false
           fetch-depth: 3
           filter: blob:none
@@ -106,7 +106,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: runtime-candidate-f9bf35ea2553b512d15aea76049fd4bc4afb1b66
+          name: runtime-candidate-5690b90ff0dbfbf1386a29e4b79b93dc3bb2a3ac
           path: outputs/qa-asset-raccords-20261120/
           if-no-files-found: error
 
@@ -117,7 +117,7 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'f9bf35ea2553b512d15aea76049fd4bc4afb1b66'
+      ASSET_RACCORDS_SOURCE_COMMIT: '5690b90ff0dbfbf1386a29e4b79b93dc3bb2a3ac'
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: /usr/bin/google-chrome
       AUDIT_CHROME_CHANNEL: chrome
@@ -130,12 +130,12 @@ jobs:
       COMMAND_SUMMARY_OUTPUT: outputs/p0p1-native/command-keyboard
       AUDIT_CHROME_EXECUTABLE: /usr/bin/google-chrome
       YAUTJA_LOGISTICS_V108_QA_SCENARIO: storage-recovery
-      YAUTJA_QA_RUNTIME_COMMIT: 'f9bf35ea2553b512d15aea76049fd4bc4afb1b66'
+      YAUTJA_QA_RUNTIME_COMMIT: '5690b90ff0dbfbf1386a29e4b79b93dc3bb2a3ac'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'f9bf35ea2553b512d15aea76049fd4bc4afb1b66'
+          ref: '5690b90ff0dbfbf1386a29e4b79b93dc3bb2a3ac'
           persist-credentials: false
           fetch-depth: 3
           filter: blob:none
@@ -171,6 +171,35 @@ jobs:
             /public/game/assets/v134/gauntlets/jungle-hunter/07-beam.svg
             /public/game/planets/v101/runtime/clouds-cirrus.webp
             /public/game/planets/v101/runtime/clouds-low.webp
+            /public/game/assets/v133/concept-masks/glypic.webp
+            /public/game/assets/v133/concept-masks/instinct.webp
+            /public/game/assets/v133/concept-masks/nova.webp
+            /public/game/assets/v133/concept-masks/paroxysm.webp
+            /public/game/assets/v133/concept-masks/requiem.webp
+            /public/game/assets/v133/concept-masks/tyrant.webp
+            /public/game/assets/v133/concept-masks/warlord.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/berserker.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/celtic.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/chopper.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/city.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/dek.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/enforcer.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/feral.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/fugitive.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/jungle.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/scar.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/wolf.webp
+            /public/game/sprites/v5/film-plates/youngblood.png
+            /public/game/sprites/v6/ranks-lasers-atlas.png
+            /public/game/sprites/v62/masks/berserker.png
+            /public/game/sprites/v62/masks/dek.png
+            /public/game/sprites/v62/masks/falconer.png
+            /public/game/sprites/v62/masks/feral.png
+            /public/game/sprites/v62/masks/fugitive.png
+            /public/game/sprites/v62/masks/wolf.png
+            /public/game/assets/v3/actors/yautja/hunter/dreads/registered/braided.webp
+            /public/game/assets/v139/rig-gauntlets/jungle-hunter/base.svg
+            /public/game/assets/v139/rig-gauntlets/jungle-hunter/lid.svg
             /public/game/planets/v101/runtime/land-temperate.webp
             /public/game/planets/v101/runtime/surface-water.webp
             /public/game/assets/v133/decals/decal-atlas.webp
@@ -324,14 +353,14 @@ jobs:
         if: ${{ !cancelled() && steps.server.outcome == 'success' }}
         env:
           CRADLE_RETURN_QA_URL: http://127.0.0.1:3121/
-          CRADLE_RETURN_QA_COMMIT: f9bf35ea2553b512d15aea76049fd4bc4afb1b66
+          CRADLE_RETURN_QA_COMMIT: 5690b90ff0dbfbf1386a29e4b79b93dc3bb2a3ac
           CRADLE_RETURN_QA_OUTPUT: outputs/p0p1-native/cradle-return
         run: node scripts/qa-cradle-return-mentor-20261120.mjs
       - name: Preserve browser evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: browser-recipes-f9bf35ea2553b512d15aea76049fd4bc4afb1b66
+          name: browser-recipes-5690b90ff0dbfbf1386a29e4b79b93dc3bb2a3ac
           path: |
             outputs/p0p1-native/
             outputs/phg-decal-parity/
