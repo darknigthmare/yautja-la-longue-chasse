@@ -37,7 +37,8 @@ class Target{
  constructor(tag,parent=null){this.tag=tag;this.parent=parent;}
  closest(selector){
   const tags=selector.split(',').filter(part=>/^[a-z]+$/.test(part));
-  for(let node=this;node;node=node.parent)if(tags.includes(node.tag))return node;
+  if(tags.includes(this.tag))return this;
+  for(let ancestor=this.parent;ancestor;ancestor=ancestor.parent)if(tags.includes(ancestor.tag))return ancestor;
   return null;
  }
 }

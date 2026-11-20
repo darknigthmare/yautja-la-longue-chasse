@@ -37,7 +37,7 @@ if(mode==='isolated-component'){
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));baseUrl='http://127.0.0.1:'+server.address().port;
 }
 assert.ok(['localhost','127.0.0.1'].includes(new URL(baseUrl).hostname));
-const check=(name,value,detail)=>{checks.push({name,status:value?'PASS':'FAIL',...(detail===undefined?{}:{detail})});console.log((value?'PASS ':'FAIL ')+name);assert.ok(value,name);};
+const check=(name,value,detail)=>{checks.push({name,status:value?'PASS':'FAIL',...(detail===undefined?{}:{detail})});console.log((value?'PASS ':'FAIL ')+name);if(!value&&detail!==undefined)console.error(JSON.stringify(detail));assert.ok(value,name);};
 const root=page=>page.locator('[data-logistics-v109]');
 const state=page=>page.evaluate(key=>{const text=localStorage.getItem(key);return text?JSON.parse(text):null;},key);
 async function settled(page){await page.waitForFunction(()=>{const root=document.querySelector('[data-logistics-v109]');return root&&!root.querySelector('[role="status"]')?.textContent.includes('Confirmation en cours');});}
@@ -108,7 +108,7 @@ async function playStorageRecovery(page,context){
  try{
   second.setDefaultTimeout(30000);
   second.on('pageerror',error=>errors.push(String(error)));
-  second.on('console',entry=>{if(entry.type()==='error')errors.push(entry.text());});
+  second.on('console',entry=>{if(entry.type()==='error')errors.push([entry.text(),entry.location().url].filter(Boolean).join(' · '));});second.on('response',response=>{if(response.status()>=400)errors.push('HTTP '+response.status()+' '+response.url());});
   await enter(second);
   check('The second tab opens the exact mid-channel revision',Number(await root(second).getAttribute('data-revision'))===before.revision&&before.convoy.boat.progress===6);
   await click(second,'Débarquer les porteurs');
@@ -132,7 +132,7 @@ async function playStorageRecovery(page,context){
 try{
  browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE_PATH??process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH??'/usr/bin/chromium',args:['--no-sandbox','--autoplay-policy=no-user-gesture-required']});
  const legacyBundle=await build({stdin:{contents:"export {createLogisticsSessionV108} from './app/game/systems/clanLogisticsSessionV108';",resolveDir:process.cwd()},bundle:true,write:false,format:'iife',globalName:'__legacySupplyQaV109',platform:'browser',target:'es2022',logLevel:'silent'});
- const context=await browser.newContext({viewport:{width:1440,height:1080},reducedMotion:'reduce',acceptDownloads:true}),page=await context.newPage();page.setDefaultTimeout(30000);page.on('pageerror',error=>errors.push(String(error)));page.on('console',entry=>{if(entry.type()==='error')errors.push(entry.text());});
+ const context=await browser.newContext({viewport:{width:1440,height:1080},reducedMotion:'reduce',acceptDownloads:true}),page=await context.newPage();page.setDefaultTimeout(30000);page.on('pageerror',error=>errors.push(String(error)));page.on('console',entry=>{if(entry.type()==='error')errors.push([entry.text(),entry.location().url].filter(Boolean).join(' · '));});page.on('response',response=>{if(response.status()>=400)errors.push('HTTP '+response.status()+' '+response.url());});
  if(scenario==='storage-recovery'){
   finalState=await playStorageRecovery(page,context);
   check('No JavaScript or console error occurred',errors.length===0,errors);
