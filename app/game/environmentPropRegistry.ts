@@ -360,6 +360,52 @@ export function isEnvironmentPropCompatibleWithFeature(
 }
 
 /**
+ * Legacy climb art is admitted by biome and physical kind, not by role alone.
+ * Generic rock faces use the matching fixed wall/column in ice, volcano and
+ * ruins. Missing entries deliberately keep HuntCanvas's existing native
+ * fallback (for example the ice ladder or an ocean rock face).
+ * These are runtime bindings, not human artistic validation.
+ */
+const LEGACY_CLIMBABLE_ARCHETYPE_HINTS: Readonly<
+  Record<EnvironmentPropBiomeId, Readonly<Partial<Record<string, readonly string[]>>>>
+> = {
+  jungle: { tree: ["buttress-trunk"], vine: ["hanging-vine"], ladder: ["field-ladder"] },
+  ice: { "ice-wall": ["ice-wall"], "rock-face": ["ice-wall"], rope: ["maintenance-rope"] },
+  volcano: {
+    "basalt-column": ["basalt-column"], "rock-face": ["basalt-column"],
+    ladder: ["ritual-ladder"], chain: ["suspended-chain"],
+  },
+  swamp: { tree: ["mangrove-trunk"], vine: ["hanging-root"], rope: ["salvage-rope"] },
+  desert: { "rock-face": ["canyon-rock-face"], rope: ["anchor-rope"], ladder: ["mine-ladder"] },
+  ocean: { rope: ["salvage-rope"], ladder: ["station-ladder"] },
+  fungal: { tree: ["tower-gill"], vine: ["cord-vine"], ladder: ["maintenance-ladder"] },
+  ruins: { "rock-face": ["fractured-spire"], ladder: ["service-ladder"] },
+};
+
+function legacyClimbableArchetypeHintsFor(
+  biomeId: EnvironmentPropBiomeId,
+  kind: string | undefined,
+): readonly string[] {
+  const byKind = LEGACY_CLIMBABLE_ARCHETYPE_HINTS[biomeId];
+  return kind !== undefined && Object.hasOwn(byKind, kind)
+    ? byKind[kind] ?? []
+    : [];
+}
+
+/** Choose the semantic family before deduplication; reuse its variants before
+ * falling back to another family merely because its images are unused. */
+function preferredArchetypeCandidates(
+  candidates: readonly EnvironmentPropRuntimeAsset[],
+  hints: readonly string[],
+): readonly EnvironmentPropRuntimeAsset[] {
+  for (const archetypeId of hints) {
+    const matching = candidates.filter((asset) => asset.archetypeId === archetypeId);
+    if (matching.length > 0) return matching;
+  }
+  return [];
+}
+
+/**
  * Lava and timed steam vents must keep a readable material identity. Prefer
  * the first available semantic archetype, then rotate only its silhouettes.
  * Reusing a matching source is safer than depicting lava as a steam chimney;
@@ -412,12 +458,14 @@ function selectGameplayAsset(
       return leftHint - rightHint || left.id.localeCompare(right.id);
     });
 
-  const semanticCandidates = preferredVolcanoHazardCandidates(
-    candidates,
-    biomeId,
-    expectedPropRole(feature),
-    feature.kind,
-  );
+  const semanticCandidates = feature.role === "climb"
+    ? preferredArchetypeCandidates(candidates, hints)
+    : preferredVolcanoHazardCandidates(
+        candidates,
+        biomeId,
+        expectedPropRole(feature),
+        feature.kind,
+      );
   const unusedCandidates = semanticCandidates.filter(
     (asset) => !usedAssetIds.has(asset.id),
   );
@@ -508,12 +556,17 @@ function selectLegacyGeometryAsset(
   ]
     .filter((asset) => asset.role === geometryRole)
     .sort((left, right) => left.id.localeCompare(right.id));
-  const semanticCandidates = preferredVolcanoHazardCandidates(
-    candidates,
-    biomeId,
-    geometryRole,
-    geometry.kind,
-  );
+  const semanticCandidates = geometryRole === "climbable"
+    ? preferredArchetypeCandidates(
+        candidates,
+        legacyClimbableArchetypeHintsFor(biomeId, geometry.kind),
+      )
+    : preferredVolcanoHazardCandidates(
+        candidates,
+        biomeId,
+        geometryRole,
+        geometry.kind,
+      );
   const unusedCandidates = semanticCandidates.filter(
     (asset) => !usedAssetIds.has(asset.id),
   );

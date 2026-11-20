@@ -18,6 +18,7 @@ import styles from './HomeworldPassageV67.module.css';
 
 export interface HomeworldPassageV67Props {
   save: SaveGame; regionId: HomeworldPlayableRegionId; checkpoint?: unknown;
+  gauntletVariantId?: string;
   direction?: HomeworldPassageDirectionV67; suspended?: boolean;
   onCheckpoint(state: HomeworldPassageStateV67): boolean;
   onReachBiome(regionId: HomeworldPlayableRegionId): boolean | void;
@@ -202,7 +203,7 @@ export default function HomeworldPassageV67(props: HomeworldPassageV67Props) {
         {definition.nodes.map((point, index) => <span key={index} className={styles.landmark} style={{ left: point.x, top: (point.y - 240) * depthScale }}>{point.title}</span>)}
         <div className={styles.actor} data-passage-actor style={{ left: position.x, top: position.y, zIndex: Math.round(actor.y) }}>
           <span className={styles.shadow} /><span style={{ position: 'absolute', transform: `scaleX(${actor.facing})` }}>
-            {modular ? <HomeworldModularHunter morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={save.appearance} motionPhase={state.tick / 60} speed={Math.hypot(actor.vx, actor.vy)} style={{ position: 'absolute', ...(placement ?? { left: -36, top: -100, width: 72, height: 100 }) }} />
+            {modular ? <HomeworldModularHunter morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={save.appearance} showArmor armorId={save.loadout.armorId} hasWristblades={save.loadout.weaponIds.includes("wristblades")} gauntletVariantId={props.gauntletVariantId} motionPhase={state.tick / 60} speed={Math.hypot(actor.vx, actor.vy)} style={{ position: 'absolute', ...(placement ?? { left: -36, top: -100, width: 72, height: 100 }) }} />
               : <img src={hero.src} alt="" draggable={false} style={{ position: 'absolute', ...(placement ?? { left: -36, top: -100, width: 72, height: 100 }) }} />}
           </span>
         </div>

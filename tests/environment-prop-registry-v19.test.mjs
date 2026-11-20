@@ -7,6 +7,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { build } from "vite";
 
 import { ENVIRONMENT_PROP_SPECS } from "../app/game/environmentPropCatalogue.ts";
+import { EXPECTED_LEGACY_CLIMB_FAMILIES, CLIMB_FAMILY_FEATURE_WITNESSES } from "./fixtures/environment-prop-raccord-contract-20261120.mjs";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputDirectory = await mkdtemp(
@@ -88,6 +89,13 @@ async function pathExists(filePath) {
   }
 }
 
+function expectedLegacyClimbFamilies(biomeId, kind) {
+  const byKind = EXPECTED_LEGACY_CLIMB_FAMILIES[biomeId];
+  assert.ok(byKind && Object.hasOwn(byKind, kind),
+    `${biomeId}/${kind}: a legacy physical kind needs an explicit reviewed expectation`);
+  return byKind[kind];
+}
+
 test("V19 runtime projection strips source-only generation fields", () => {
   assert.equal(registry.ENVIRONMENT_PROP_RUNTIME_ASSETS.length, 800);
   for (const asset of registry.ENVIRONMENT_PROP_RUNTIME_ASSETS) {
@@ -139,16 +147,32 @@ test("gameplay assignments use available compatible props or stay procedural", (
       registry.ENVIRONMENT_GAMEPLAY_PROP_ASSIGNMENTS.filter(
         ({ missionId }) => missionId === layout.missionId,
       );
-    // A partly produced volcanic hazard archetype may have just one image;
-    // repeated lava must still look like lava rather than borrow steam art.
+    // Semantic climbing families and partly produced volcanic hazards may
+    // repeat a valid source instead of borrowing an unrelated unused image.
     const distinctAssignments = assignments.filter(
-      ({ biomeId, featureRole }) => biomeId !== "volcano" || featureRole !== "hazard",
+      ({ biomeId, featureRole }) => featureRole !== "climb" && (biomeId !== "volcano" || featureRole !== "hazard"),
     );
     assert.equal(
       new Set(distinctAssignments.map(({ asset }) => asset.id)).size,
       distinctAssignments.length,
-      `${layout.missionId}: available non-volcanic-hazard gameplay art must be distinct`,
+      `${layout.missionId}: available non-climb, non-volcanic-hazard gameplay art must be distinct`,
     );
+
+    const climbFamilies = new Map();
+    for (const assignment of assignments.filter(({ featureRole }) => featureRole === "climb")) {
+      const key = assignment.asset.archetypeId;
+      const family = climbFamilies.get(key) ?? [];
+      family.push(assignment);
+      climbFamilies.set(key, family);
+    }
+    for (const [archetypeId, family] of climbFamilies) {
+      const available = registry.ENVIRONMENT_PROP_AVAILABLE_RUNTIME_ASSETS.filter(
+        (asset) => asset.biomeId === layout.biome && asset.role === "climbable" && asset.archetypeId === archetypeId,
+      );
+      assert.equal(new Set(family.map(({ asset }) => asset.id)).size,
+        Math.min(family.length, available.length),
+        `${layout.missionId}/${archetypeId}: use the valid family's variants before repeating them`);
+    }
 
     for (const screen of layout.screens) {
       for (const feature of screen.features) {
@@ -235,7 +259,8 @@ test("same-plane geometry uses available V19 props and otherwise stays procedura
                     feature,
                     asset,
                   )
-                : asset.role === role),
+                : asset.role === role && (role !== "climbable" ||
+                    expectedLegacyClimbFamilies(layout.biome, geometry.kind).includes(asset.archetypeId))),
           );
         const assignment = registry.environmentGameplayPropForGeometryId(
           layout.missionId,
@@ -270,6 +295,11 @@ test("same-plane geometry uses available V19 props and otherwise stays procedura
           expectedLegacyCount += 1;
           assert.equal(assignment.source, "legacy-world-geometry");
           assert.equal(assignment.geometryRole, role);
+          if (role === "climbable") {
+            assert.ok(expectedLegacyClimbFamilies(layout.biome, geometry.kind)
+              .includes(assignment.asset.archetypeId),
+            `${layout.missionId}/${geometry.id}: wrong visual family for the physical support`);
+          }
         }
       }
     }
@@ -361,12 +391,12 @@ test("available decoration assets become deterministic non-colliding sector deco
   }
 });
 
-test("available physical variants rotate across persistent hunt attempts", () => {
+test("available non-climb physical variants rotate across persistent hunt attempts", () => {
   for (const layout of Object.values(registry.WORLD_SCREENS_BY_MISSION)) {
     const expectedIds = new Set(
       registry.ENVIRONMENT_PROP_AVAILABLE_RUNTIME_ASSETS.filter(
         ({ biomeId, role }) =>
-          biomeId === layout.biome && role !== "decoration",
+          biomeId === layout.biome && role !== "decoration" && role !== "climbable",
       ).map(({ id }) => id),
     );
     const seenIds = new Set();
@@ -393,9 +423,70 @@ test("available physical variants rotate across persistent hunt attempts", () =>
     assert.deepEqual(
       [...seenIds].filter((id) => expectedIds.has(id)).sort(),
       [...expectedIds].sort(),
-      `${layout.missionId}: every available physical variant must be reachable`,
+      `${layout.missionId}: every available non-climb physical variant must be reachable`,
     );
   }
+});
+
+test("every produced climbing family rotates through an explicitly admitted room-plan witness", async () => {
+  const families = new Map();
+  for (const asset of registry.ENVIRONMENT_PROP_AVAILABLE_RUNTIME_ASSETS.filter(({ role }) => role === "climbable")) {
+    const key = `${asset.biomeId}:${asset.archetypeId}`;
+    const family = families.get(key) ?? [];
+    family.push(asset);
+    families.set(key, family);
+  }
+  for (const family of families.values()) {
+    const { biomeId, archetypeId } = family[0];
+    const expectedKind = CLIMB_FAMILY_FEATURE_WITNESSES[biomeId]?.[archetypeId];
+    assert.equal(typeof expectedKind, "string", `${biomeId}/${archetypeId}: unreviewed climbing family`);
+    const fixture = await registryWithAvailableIds(family.map(({ id }) => id));
+    const layout = Object.values(fixture.WORLD_SCREENS_BY_MISSION).find(({ biome }) => biome === biomeId);
+    const witness = layout.screens.flatMap(({ features }) => features)
+      .find(({ role, kind }) => role === "climb" && kind === expectedKind);
+    assert.ok(witness, `${biomeId}/${archetypeId}: missing real room-plan witness`);
+    const seen = new Set();
+    for (let encounterRun = 0; encounterRun < 100; encounterRun += 1) {
+      const assignment = fixture.environmentGameplayPropForFeatureId(layout.missionId, witness.id, encounterRun);
+      assert.ok(assignment, `${biomeId}/${archetypeId}: produced family must remain available in its declared fallback context`);
+      assert.equal(assignment.asset.archetypeId, archetypeId);
+      seen.add(assignment.asset.id);
+    }
+    assert.deepEqual([...seen].sort(), family.map(({ id }) => id).sort(),
+      `${biomeId}/${archetypeId}: every produced variant remains reachable without borrowing a wrong support`);
+  }
+});
+
+test("one produced climbing variant is reused before unrelated unused art", async () => {
+  const ids = [
+    "environment-prop-v19-jungle-clm-hanging-vine-01-straight",
+    "environment-prop-v19-jungle-clm-field-ladder-01-straight",
+    "environment-prop-v19-jungle-clm-buttress-trunk-01-straight",
+  ];
+  const fixture = await registryWithAvailableIds(ids);
+  const world = fixture.WORLD_BLUEPRINTS_BY_MISSION["jungle-vey"];
+  const vines = world.climbables.filter(({ kind }) => kind === "vine");
+  assert.ok(vines.length > 1, "the real world must actually exhaust the one produced vine variant");
+  for (let encounterRun = 0; encounterRun < 12; encounterRun += 1) {
+    for (const featureId of ["j-canopy-vine", "j-lake-vine"]) {
+      assert.equal(fixture.environmentGameplayPropForFeatureId("jungle-vey", featureId, encounterRun).asset.id, ids[0]);
+    }
+    for (const support of vines) {
+      assert.equal(fixture.environmentGameplayPropForGeometryId("jungle-vey", support.id, encounterRun).asset.id, ids[0]);
+    }
+  }
+});
+
+test("legacy supports without an admitted family stay physical and procedural", async () => {
+  const ladder = "environment-prop-v19-jungle-clm-field-ladder-01-straight";
+  const fixture = await registryWithAvailableIds([ladder]);
+  const worldBefore = JSON.stringify(fixture.WORLD_BLUEPRINTS_BY_MISSION);
+  assert.ok(fixture.WORLD_BLUEPRINTS_BY_MISSION["jungle-vey"].climbables.some(({ id, kind }) => id === "j-tree-west" && kind === "tree"));
+  for (let encounterRun = 0; encounterRun < 8; encounterRun += 1) {
+    assert.equal(fixture.environmentGameplayPropForGeometryId("jungle-vey", "j-tree-west", encounterRun), null);
+    assert.equal(fixture.environmentGameplayPropForGeometryId("jungle-vey", "j-rock-cut", encounterRun), null);
+  }
+  assert.equal(JSON.stringify(fixture.WORLD_BLUEPRINTS_BY_MISSION), worldBefore);
 });
 
 test("sector URL lists are unique, available, local and limited to that sector", async () => {

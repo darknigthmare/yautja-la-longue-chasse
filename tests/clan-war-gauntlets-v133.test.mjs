@@ -31,9 +31,31 @@ test("gauntlet UI integrates with the REAL ship armory, character and clan war",
   assert.match(game,/data-testid="hunter-gauntlet-slot-v133"/);
   assert.match(game,/useHunterGauntletV133\(save.createdAt,save.profile.rankId,save.gauntletV134\)/);
   assert.match(game,/gauntletVariantId=\{hunterGauntlet.equippedId\}/);
-  // Three previews show current equipment; HuntCanvas preserves the V142
-  // mission-start identity when resuming a previously suspended hunt.
-  assert.equal((game.match(/gauntletVariantId=\{hunterGauntlet.equippedId\}/g)||[]).length,3);
+  // The three previews and each Homeworld parent receive current owner equipment.
+  // HuntCanvas preserves the V142 mission-start identity for a suspended hunt.
+  const source=ts.createSourceFile("GameClient.tsx",game,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+  const elementCounts=new Map([["HunterRigPreview",3],["HomeworldHub",1],["HomeworldRegionV68",1],["HomeworldPassageV67",1]]);
+  const elements=new Map([...elementCounts.keys()].map(name=>[name,[]]));
+  function collectElements(node){
+    if ((ts.isJsxSelfClosingElement(node)||ts.isJsxOpeningElement(node))&&ts.isIdentifier(node.tagName)) {
+      elements.get(node.tagName.text)?.push(node);
+    }
+    ts.forEachChild(node,collectElements);
+  }
+  collectElements(source);
+  for (const [name,count] of elementCounts) {
+    const matches=elements.get(name);
+    assert.equal(matches.length,count,name+" must retain its real JSX elements");
+    for (const element of matches) {
+      const props=element.attributes.properties.filter(property=>
+        ts.isJsxAttribute(property)&&property.name.getText(source)==="gauntletVariantId");
+      assert.equal(props.length,1,name+" must set one gauntlet identity directly");
+      assert.ok(props[0].initializer&&ts.isJsxExpression(props[0].initializer),
+        name+" must resolve its gauntlet identity from the current owner");
+      assert.equal(props[0].initializer.expression?.getText(source),"hunterGauntlet.equippedId",
+        name+" must use the owner-resolved equipped identity");
+    }
+  }
   const huntElement=game.slice(game.indexOf("<HuntCanvas"),game.indexOf("<HuntCanvas")+1300);
   assert.match(huntElement,/gauntletVariantId=\{huntResumePayload\?\.gauntletVariantId \?\? hunterGauntlet.equippedId\}/);
   assert.match(rig,/data-gauntlet-equipped=\{selectedGauntlet\?\.id \?\? "jungle-hunter"\}/);
