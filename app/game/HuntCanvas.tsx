@@ -303,6 +303,7 @@ import {
   houndStickOrderV147, nextHoundOrderV147, pickHoundTargetV147, restoreHoundFieldV147, snapshotHoundFieldV147,
   stepHoundFieldV147, type FieldPreyV147, type HoundOrderIdV147, type HoundFieldSnapshotV147, type HoundFieldV147, type HoundV147,
 } from "./systems/huntingHoundsV147";
+import { pieceCanvasSourceV148, pieceZoneColorsV148 } from "./hunterPieceZonesV148";
 import type {
   DifficultyId,
   ExplorationProgress,
@@ -798,6 +799,8 @@ interface GameState {
   camouflageV146?: number;
   /** V146: armour pieces cracked by heavy hits during this hunt. */
   heavyWearHitsV146?: HunterPieceIdV146[];
+  /** V146: recoloured plasma (cosmetic only), undefined = authored colour. */
+  plasmaColorV146?: string;
   ecosystem: CorpseDiscoveryStateV112;
   huntAccessibility?: HuntAccessibilityV112;
   ritualAssistV112?: RitualAssistStateV112;
@@ -1537,6 +1540,7 @@ function makeGameState(
     insertionShipId,
     camouflageV146,
     heavyWearHitsV146: [],
+    plasmaColorV146: lightColorV146(appearance, "plasma", "") || undefined,
     ecosystem: createCorpseDiscoveryV112(huntRitesRunIdV77(mission.id, ecologyRunSeed)),
     flayingToolOwned: ownsFieldToolV111(inventory, "flaying-tool"),
     harvestArmorIdV112: loadout.armorId,
@@ -3527,6 +3531,8 @@ function drawFallbackCharacter(
 interface RegisteredLayerOptions {
   placement?: HunterLayerPlacement;
   chromatics?: { appearance: HunterAppearance; channel: ChromaticChannelV113; piece?: HunterPieceIdV146 };
+  /** V148: zone colours for a layer that has no V113 channel (gauntlet, blades, caster, weapons). */
+  pieceTint?: { appearance: HunterAppearance; piece: HunterPieceIdV146 };
   decalZone?: YautjaDecalZoneV133;
   clip?: readonly (readonly [number, number, number, number])[];
   alpha?: number;
@@ -3719,9 +3725,16 @@ function drawRegisteredLayer(
       ? chromaticsForPieceV146(options.chromatics.appearance, options.chromatics.piece)
       : options.chromatics.appearance.chromaticsV113
     : undefined;
-  const recolored = options.chromatics ? chromaticCanvasSourceV113(
+  // V148: when the piece has zone colours, the plate is recoloured by zones
+  // (primary, secondary, accent) instead of the single V113 pigment.
+  const zoneColors = pieceZoneColorsV148(
+    options.chromatics?.appearance ?? options.pieceTint?.appearance,
+    options.chromatics?.piece ?? options.pieceTint?.piece);
+  const zoned = zoneColors && image instanceof HTMLImageElement
+    ? pieceCanvasSourceV148(image, zoneColors, options.placement, options.filter) : null;
+  const recolored = zoned ?? (options.chromatics ? chromaticCanvasSourceV113(
     image, layerChromatics, options.chromatics.channel, options.placement, options.filter
-  ) : null;
+  ) : null);
   // Recolor then paint the decal from a fixed atlas; both passes are source-atop
   // and keep the existing 256x384 authored sprite / bone transform unchanged.
   const decorated = options.decalZone && options.chromatics
@@ -3935,7 +3948,9 @@ function drawHunterHandWeapon(
   loadout: Loadout,
   assets: AssetBank,
   frame: HunterRigFrame,
+  appearance?: HunterAppearance,
 ): void {
+  const weaponTint = appearance ? { pieceTint: { appearance, piece: "weapons" as const } } : {};
   const weaponId = selectedHandWeapon(
     loadout,
     state.player.activeWeaponSlot,
@@ -3969,7 +3984,7 @@ function drawHunterHandWeapon(
       assets.hunterWeapons[visualId],
       frame,
       "handFront",
-      bowTransform,
+      { ...bowTransform, ...weaponTint },
     );
   }
 
@@ -3995,6 +4010,7 @@ function drawHunterTrophyLayers(
   alpha = 1,
   carried = false,
   partId?: TrophyPartId,
+  appearance?: HunterAppearance,
 ): void {
   for (const trophyId of trophyAtomicLayerIds(partId)) {
     const image = assets.hunterTrophies[trophyId];
@@ -4011,6 +4027,8 @@ function drawHunterTrophyLayers(
           translateY: layout.belt.y,
           pivot: layout.pivot,
           scale: layout.belt.scale,
+          // V148: worn trophies take the "trophies" piece colours (bone patina, bindings).
+          ...(appearance ? { pieceTint: { appearance, piece: "trophies" as const } } : {}),
         },
       );
       continue;
@@ -4215,18 +4233,21 @@ function drawHunterLayered(
       assets.hunterPlasma.mount,
       frame,
       "casterShoulderMount",
+      { pieceTint: { appearance, piece: "caster" } },
     );
     drawRegisteredLayer(
       context,
       assets.hunterPlasma.upperArm,
       frame,
       "casterUpperArm",
+      { pieceTint: { appearance, piece: "caster" } },
     );
     drawRegisteredLayer(
       context,
       assets.hunterPlasma.lowerArm,
       frame,
       "casterLowerArm",
+      { pieceTint: { appearance, piece: "caster" } },
     );
   }
 
@@ -4236,7 +4257,7 @@ function drawHunterLayered(
     !state.trophyCarried &&
     appearance.trophyAdornmentId === "skull-spine"
   ) {
-    drawHunterTrophyLayers(context, assets, frame, 0.82, false);
+    drawHunterTrophyLayers(context, assets, frame, 0.82, false, undefined, appearance);
   }
 
   if (atomicBodyReady) {
@@ -4264,8 +4285,10 @@ function drawHunterLayered(
         alpha: extension,
         registration: bladeFit,
         translateX: -46 * (1 - extension),
+        pieceTint: { appearance, piece: "wristblades" },
       });
-      drawRegisteredLayer(context, assets.hunterWristblades.housing, frame, "armBackLower", { registration: bladeFit });
+      drawRegisteredLayer(context, assets.hunterWristblades.housing, frame, "armBackLower",
+        { registration: bladeFit, pieceTint: { appearance, piece: "wristblades" } });
     }
     for (const partId of HUNTER_CORE_PARTS) {
       drawAtomicBodyPart(context, assets, frame, appearance, partId);
@@ -4335,7 +4358,7 @@ function drawHunterLayered(
   // L'arme secondaire suit la main avant. La main est redessinée ensuite
   // pour que la poignée reste réellement prise dans les doigts.
   const fieldWork = currentHuntFieldWorkV112(state, player);
-  if (!fieldWork) drawHunterHandWeapon(context, state, loadout, assets, frame);
+  if (!fieldWork) drawHunterHandWeapon(context, state, loadout, assets, frame, appearance);
   if (atomicBodyReady) {
     drawAtomicBodyPart(context, assets, frame, appearance, "hand-front");
   }
@@ -4383,6 +4406,7 @@ function drawHunterLayered(
   // sur l'avant-bras arrière ; le lid pivote toujours sur sa charnière source.
   const gauntletPlacement = (image: HTMLImageElement | null): RegisteredLayerOptions => ({
     registration: gauntletFrontArmMatrixV145(appearance.bodyMorphId, !!image && isGauntletRigSpriteV139(image.src)),
+    pieceTint: { appearance, piece: "gauntlet" },
   });
   drawRegisteredLayer(
     context,
@@ -4410,24 +4434,28 @@ function drawHunterLayered(
       assets.hunterPlasma.yoke,
       frame,
       "casterYoke",
+      { pieceTint: { appearance, piece: "caster" } },
     );
     drawRegisteredLayer(
       context,
       assets.hunterPlasma.cannon,
       frame,
       "casterCannon",
+      { pieceTint: { appearance, piece: "caster" } },
     );
     drawRegisteredLayer(
       context,
       assets.hunterPlasma.barrel,
       frame,
       "casterBarrel",
+      { pieceTint: { appearance, piece: "caster" } },
     );
     drawRegisteredLayer(
       context,
       assets.hunterPlasma.muzzle,
       frame,
       "casterMuzzle",
+      { pieceTint: { appearance, piece: "caster" } },
     );
     if (player.aiming && player.maskOn && appearance.biomaskId) {
       drawRegisteredLayer(
@@ -7731,7 +7759,8 @@ function playerWeapon(
     radius: attack.projectileRadius,
     damage: attack.damage,
     hostile: false,
-    color: weaponDefinition.color,
+    // V146 lights: the player's plasma colour, else the weapon's authored colour.
+    color: weapon.id === "plasma-caster" && state.plasmaColorV146 ? state.plasmaColorV146 : weaponDefinition.color,
     life:
       attack.recovery === "return"
         ? Math.max(4, (attack.rangePx / Math.max(1, speed)) * 3)

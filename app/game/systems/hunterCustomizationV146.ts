@@ -6,7 +6,7 @@
  * (`piecesV146`, `lightsV146`, `marksV146`); this module never grants combat stats.
  */
 import {
-  HUNTER_PIECES_V146, HUNTER_PIECE_IDS_V146, hexToRgbV146, normalizeHexV146,
+  HUNTER_PIECES_V146, HUNTER_PIECE_IDS_V146, PIECE_FINISHES_V148, hexToRgbV146, normalizeHexV146,
   normalizeLightsV146, normalizePieceColorsV146,
   type HunterLightsV146, type HunterPieceColorsV146, type HunterPieceIdV146,
 } from "../hunterPiecesV146.ts";
@@ -128,6 +128,24 @@ export function allowedMarksV146(
     if (earned.includes("mark:" + id)) out[id] = value;
   }
   return out;
+}
+
+/** V148: drops finishes the player has not earned; colours are always kept. */
+export function allowedPiecesV148(
+  pieces: HunterPieceColorsV146, earned: readonly string[],
+): { pieces: HunterPieceColorsV146; removed: string[] } {
+  const out: HunterPieceColorsV146 = {};
+  const removed: string[] = [];
+  for (const [id, colors] of Object.entries(pieces) as [HunterPieceIdV146, NonNullable<HunterPieceColorsV146[HunterPieceIdV146]>][]) {
+    const unlock = colors.finish ? PIECE_FINISHES_V148[colors.finish].unlock : null;
+    if (unlock && !earned.includes(unlock)) {
+      const { finish: _finish, ...rest } = colors;
+      void _finish;
+      removed.push(unlock);
+      if (rest.primary || rest.secondary || rest.accent || rest.light) out[id] = rest;
+    } else out[id] = colors;
+  }
+  return { pieces: out, removed: [...new Set(removed)] };
 }
 
 // ---------------------------------------------------------------------------
@@ -292,7 +310,9 @@ export function decodeOutfitShareCodeV146(
   const marks = normalizeMarksDisplayV146(isRecord(payload.a) ? payload.a.marksV146 : undefined);
   const allowed = allowedMarksV146(marks, earned);
   for (const id of Object.keys(marks)) if (!(id in allowed)) replaced.push("mark:" + id);
-  return { ok: true, appearance: { ...appearance, marksV146: allowed }, replaced };
+  const finishes = allowedPiecesV148(normalizePieceColorsV146(isRecord(payload.a) ? payload.a.piecesV146 : undefined), earned);
+  replaced.push(...finishes.removed);
+  return { ok: true, appearance: { ...appearance, marksV146: allowed, piecesV146: finishes.pieces }, replaced };
 }
 
 /** Small deterministic per-NPC variation around the clan palette (bible: proposé). */

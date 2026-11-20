@@ -2,7 +2,10 @@
 
 /* eslint-disable @next/next/no-img-element */
 
-import type { CSSProperties } from "react";
+import { Fragment, type CSSProperties } from "react";
+import PieceZoneLayerV148 from "./PieceZoneLayerV148";
+import { pieceZoneColorsV148 } from "./hunterPieceZonesV148";
+import type { HunterPieceIdV146 } from "./hunterPiecesV146";
 import ChromaticSurfaceV113 from "./ChromaticSurfaceV113";
 import { lightColorV146, pieceForArmorSlotV146 } from "./hunterPiecesV146";
 import { HunterMarksOverlayV146, SkinPatternSurfaceV146 } from "./HunterCosmeticOverlaysV146";
@@ -286,7 +289,7 @@ function buildAccessibleLabel({
   return `Aperçu modulaire du chasseur Yautja, ${details.join(", ")}.`;
 }
 
-function registeredLayer(
+function registeredLayerBase(
   path: string,
   matrix: AffineMatrix,
   zIndex: number,
@@ -351,6 +354,24 @@ export function HunterRigPreview({
   recoil = 0,
   debugBones = false,
 }: HunterRigPreviewProps) {
+  // V148: equipment layers without a V113 channel get a zone overlay when the
+  // player gave the piece colours (gauntlet, wristblades, caster, weapons).
+  const registeredLayer = (
+    path: string, matrix: AffineMatrix, zIndex: number, slot: string, filter?: string,
+    opacity?: number, placement?: HunterLayerPlacement, clipPath?: string,
+  ): React.ReactNode => {
+    const base = registeredLayerBase(path, matrix, zIndex, slot, filter, opacity, placement, clipPath);
+    const piece: HunterPieceIdV146 | null = slot.startsWith("caster-") && !slot.includes("laser") ? "caster"
+      : slot === "blade-housing" || slot === "wristblades" ? "wristblades"
+      : slot.startsWith("gauntlet-") ? "gauntlet"
+      : slot.startsWith("weapon-") ? "weapons"
+      : slot.startsWith("trophy-") && !trophyCarried ? "trophies" : null;
+    const colors = piece ? pieceZoneColorsV148(appearance, piece) : null;
+    if (!colors) return base;
+    return <Fragment key={slot}>{base}
+      <PieceZoneLayerV148 src={path} colors={colors} placement={placement} piece={piece ?? undefined}
+        style={{ zIndex, opacity, clipPath, transformOrigin: "0 0", transform: cssMatrix(matrix) }} /></Fragment>;
+  };
   const resolvedAimAngle =
     aimAngle ??
     (facing > 0

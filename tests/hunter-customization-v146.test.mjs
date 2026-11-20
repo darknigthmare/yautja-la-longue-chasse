@@ -109,7 +109,8 @@ test("V146 share codes round-trip and never grant unearned marks", async () => {
   assert.ok(code.startsWith("YLC1."));
   const decoded = m.decodeOutfitShareCodeV146(code, raw => ({ ...raw }), ["mark:rank-blooded"]);
   assert.equal(decoded.ok, true);
-  assert.deepEqual(decoded.appearance.piecesV146, appearance.piecesV146);
+  // V148: shared pieces come back normalised (finishes are filtered against earned cosmetics).
+  assert.deepEqual(decoded.appearance.piecesV146, { chest: { primary: "#123456", secondary: null, accent: null, light: null } });
   assert.deepEqual(Object.keys(decoded.appearance.marksV146), ["rank-blooded"]);
   assert.deepEqual(decoded.replaced, ["mark:bad-blood"]);
   assert.deepEqual(m.decodeOutfitShareCodeV146("hello", x => x, []), { ok: false, reason: "format" });
