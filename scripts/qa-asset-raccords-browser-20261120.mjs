@@ -109,13 +109,15 @@ async function equipment(kind,expected){
   assert.equal(disk.loadout.armorId,'scout');assert.ok(disk.loadout.weaponIds.includes('wristblades'));
   return observed;
 }
-async function capture(label,kind,inline=false){
-  await frame();
-  const viewport=page.viewportSize(),full=await page.screenshot({fullPage:false,animations:'disabled'});
+async function captureViewport(label){
+  const full=await page.screenshot({fullPage:false,animations:'disabled'});
   const fullName=label+'-viewport.png';
   await writeFile(path.join(out,fullName),full);
   report.captures.push({file:fullName,kind:'native-viewport',bytes:full.length,sha256:hash(full),width:full.readUInt32BE(16),height:full.readUInt32BE(20)});
-  const actor=actorFor(kind),modular=actor.locator('[data-modular-homeworld-character]'),bounds=await modular.boundingBox();
+}
+async function capture(label,kind,inline=false){
+  await frame();await captureViewport(label);
+  const viewport=page.viewportSize(),actor=actorFor(kind),modular=actor.locator('[data-modular-homeworld-character]'),bounds=await modular.boundingBox();
   assert.ok(bounds&&bounds.width>0&&bounds.height>0,'The actual modular player must have a visible native rectangle.');
   const x=Math.max(0,Math.floor(bounds.x)-16),y=Math.max(0,Math.floor(bounds.y)-16);
   const right=Math.min(viewport.width,Math.ceil(bounds.x+bounds.width)+16),bottom=Math.min(viewport.height,Math.ceil(bounds.y+bounds.height)+16);
@@ -193,6 +195,14 @@ try{
       export {createHomeworldCheckpointV77} from './app/game/systems/homeworldLocationV77';
       export {gauntletRigSpriteV139} from './app/game/systems/gauntletRigSpritesV139';
       export {homeworldArmorSlotsV114} from './app/game/HomeworldModularHunter';
+      export {homeworldMotionSourcesV74} from './app/game/useHomeworldMotionAssetsV74';
+      export {SHIP_INTERIOR_25D_ART,SHIP_INTERIOR_25D_FLOOR} from './app/game/shipInterior25dArt';
+      export {SHIP_LEVEL_ART} from './app/game/shipInteriorKit';
+      export {SHIP_LEVEL_ART_V22} from './app/game/shipInteriorV22';
+      export {HOMEWORLD_PASSAGES_V67,HOMEWORLD_PASSAGE_BRIDGE_V67} from './app/game/systems/homeworldPassageV67';
+      export {HOMEWORLD_REGIONS_V68,REGION_FAUNA_ART_V68} from './app/game/systems/homeworldRegionsV68';
+      export {HOMEWORLD_BUILDING_ART_V64,HOMEWORLD_PROP_ART_V64,HOMEWORLD_GROUND_ART_V64,HOMEWORLD_INTERIOR_ART_V64} from './app/game/systems/homeworldArtV64';
+      export {homeworldFaunaSourceUrlsV77} from './app/game/systems/homeworldFaunaV77';
       export {HUNTER_ASSET_ROOT_V3,HUNTER_BODY_PART_IDS,hunterBodyPartPath,hunterBodyFullPath,hunterDreadPath,hunterArmorPath,hunterMaskRigPath,HUNTER_EQUIPMENT_V3} from './app/game/hunterVisuals';`,resolveDir:root,loader:'ts'},
     bundle:true,write:false,format:'cjs',platform:'node',jsx:'automatic',loader:{'.css':'empty'},external:['react','react-dom'],logLevel:'silent',
   });
@@ -233,6 +243,29 @@ try{
       ...expected.armorModules.map(part=>api.hunterArmorPath(part)),...Object.values(expected.gauntlet),expected.bladeHousing,
       ...(save.appearance.biomaskId?[api.hunterMaskRigPath(save.appearance.biomaskId)]:[])])paths.add('public'+src);
   }
+  // The official snapshot is supplemented by the same native registries read
+  // by the unchanged deck/Hub/outing owners. In particular, adult V74 motion
+  // sheets are a real readiness dependency, not optional decorative images.
+  const nativeBindings={
+    adultHomeworldMotionV74:api.homeworldMotionSourcesV74(false),
+    initialDeck:[api.SHIP_INTERIOR_25D_ART,api.SHIP_INTERIOR_25D_FLOOR,api.SHIP_LEVEL_ART,api.SHIP_LEVEL_ART_V22],
+    hunterEquipment:api.HUNTER_EQUIPMENT_V3,
+    passageV67:[api.HOMEWORLD_PASSAGES_V67['ash-marches'],api.HOMEWORLD_PASSAGE_BRIDGE_V67],
+    regionV68:[api.HOMEWORLD_REGIONS_V68['luminous-marshes'],api.REGION_FAUNA_ART_V68['luminous-marshes'],api.homeworldFaunaSourceUrlsV77('luminous-marshes')],
+    regionalNativeArtV64:[api.HOMEWORLD_BUILDING_ART_V64,api.HOMEWORLD_PROP_ART_V64,api.HOMEWORLD_GROUND_ART_V64,api.HOMEWORLD_INTERIOR_ART_V64],
+  },nativePreloadPaths={};
+  const collectUrls=(value,urls=new Set())=>{
+    if(typeof value==='string'&&value.startsWith('/'))urls.add(decodeURIComponent(new URL(value,'http://localhost').pathname));
+    else if(Array.isArray(value))for(const item of value)collectUrls(item,urls);
+    else if(value&&typeof value==='object')for(const item of Object.values(value))collectUrls(item,urls);
+    return urls;
+  };
+  for(const [name,value] of Object.entries(nativeBindings)){
+    const files=[...collectUrls(value)].map(src=>'public'+src).sort();assert.ok(files.length>0,'Native preparation binding must not be empty: '+name);
+    nativePreloadPaths[name]=files;for(const file of files)paths.add(file);
+  }
+  for(const source of api.homeworldMotionSourcesV74(false))assert.ok(nativePreloadPaths.adultHomeworldMotionV74.includes('public'+source.src),'Every native adult Hub preload must be prepared.');
+  assert.ok(nativePreloadPaths.hunterEquipment.includes('public'+api.HUNTER_EQUIPMENT_V3.wristblades.blades),'The initial deck also renders the real wristblade image.');
   for(const file of paths){assert.ok(/^public\/[A-Za-z0-9._/-]+$/.test(file)&&!file.split('/').includes('..'));assert.ok(tracked.has(file),'Prepared asset must be tracked: '+file);}
   let sparse=false;
   try{sparse=execFileSync('git',['config','--bool','core.sparseCheckout'],{cwd:root,encoding:'utf8'}).trim()==='true';}
@@ -249,7 +282,8 @@ try{
   for(const file of [...paths].sort()){
     const {record}=await publicBytes(file.slice(6));prepared.set(file,record);
   }
-  report.preparation={classification:'PREPARATION_ONLY',assets:prepared.size,bytes:[...prepared.values()].reduce((sum,item)=>sum+item.bytes,0),substituteAssets:false,records:[...prepared.values()]};
+  for(const files of Object.values(nativePreloadPaths))for(const file of files)assert.ok(prepared.get(file)?.matchesHead,'Every native registry preload must have verified original bytes before Chromium: '+file);
+  report.preparation={classification:'PREPARATION_ONLY',assets:prepared.size,bytes:[...prepared.values()].reduce((sum,item)=>sum+item.bytes,0),substituteAssets:false,nativePreloadPaths,records:[...prepared.values()]};
   await writeFile(path.join(out,'prepared-assets.json'),JSON.stringify(report.preparation,null,2)+'\n');
   report.preparationCompleted=true;
   if(prepareOnly){report.classification='PREPARATION_ONLY';}
@@ -284,7 +318,7 @@ try{
       page=await context.newPage();page.setDefaultTimeout(60000);
       page.on('pageerror',error=>report.errors.push({kind,error:String(error)}));
       page.on('console',message=>{if(message.type()==='error')report.consoleErrors.push({kind,text:message.text()});});
-      await page.goto(url);await page.bringToFront();await openCampaign();await enterCity();currentScene='city';
+      await page.goto(url);await page.bringToFront();await openCampaign();currentScene='city';await enterCity();
       let first;
       await check(kind+': original GameClient resolves City Hunter and worn Scout kit in the real city',async()=>{
         first=await equipment('city',expected);journey.observations.push({scene:'city-before',...first});await capture(kind+'-01-city','city',kind==='passage');return first;
@@ -359,7 +393,19 @@ try{
 }catch(error){
   report.failure=String(error.stack??error);report.classification='FAILED_ATTEMPT';
   if(page&&!page.isClosed()){
-    try{report.failureText=await page.locator('body').innerText();if(currentScene)await capture('failure',currentScene);}catch{/* keep the original failure */}
+    try{
+      report.failureText=(await page.locator('body').innerText()).slice(0,16000);
+      report.failureDom=await page.evaluate(()=>({
+        title:document.title,url:location.href,visible:!document.hidden,focused:document.hasFocus(),
+        scenes:[...document.querySelectorAll('[data-homeworld-hub],[data-homeworld-passage-v67],section[data-homeworld-region-v68]')].map(node=>({visible:node.getClientRects().length>0,attributes:Object.fromEntries([...node.attributes].filter(attr=>attr.name.startsWith('data-')).map(attr=>[attr.name,attr.value])),text:node.innerText.slice(0,6000)})),
+        failedImages:[...document.images].filter(img=>img.complete&&img.naturalWidth===0).slice(0,32).map(img=>({src:img.getAttribute('src'),complete:img.complete,naturalWidth:img.naturalWidth})),
+        pendingImages:[...document.images].filter(img=>!img.complete).slice(0,32).map(img=>img.getAttribute('src')),
+      }));
+      const failures=[...requests.values()].filter(item=>item.status!==200);
+      console.log('ASSET_RACCORDS_FAILURE_DIAGNOSTICS '+JSON.stringify({sourceCommit:revision,scene:currentScene,failure:report.failure,body:report.failureText,dom:report.failureDom,assetFailures:failures,consoleErrors:report.consoleErrors.slice(-20),pageErrors:report.errors}));
+      await captureViewport('failure');
+      if(currentScene&&await actorFor(currentScene).isVisible())await capture('failure-scene',currentScene);
+    }catch(diagnosticError){report.diagnosticFailure=String(diagnosticError);console.log('ASSET_RACCORDS_DIAGNOSTIC_ERROR '+String(diagnosticError));}
   }
 }finally{
   report.assets=[...requests.values()];report.assetFailures=report.assets.filter(item=>item.status!==200);

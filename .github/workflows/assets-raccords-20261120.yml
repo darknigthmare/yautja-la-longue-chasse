@@ -13,6 +13,7 @@ on:
       - 'tests/browser/asset-raccords-20261120.fixture.jsx'
       - 'tests/browser/environment-prop-raccords-20261120.fixture.mjs'
       - 'tests/environment-prop-registry-v19.test.mjs'
+      - 'tests/clan-war-gauntlets-v133.test.mjs'
       - 'docs/qa/current-integration-20261103/runtime-inputs.json'
       - '.github/workflows/assets-raccords-20261120.yml'
       - 'package*.json'
@@ -145,6 +146,7 @@ jobs:
           tests/homeworld-player-equipment-raccords-20261120.test.mjs
           tests/environment-prop-raccords-20261120.test.mjs
           tests/environment-prop-registry-v19.test.mjs
+          tests/clan-war-gauntlets-v133.test.mjs
           tests/fixtures/environment-prop-raccord-contract-20261120.mjs
           scripts/materialize-asset-raccords-20261120.mjs
           scripts/qa-asset-raccords-browser-20261120.mjs
@@ -164,6 +166,7 @@ jobs:
             tests/homeworld-passage-persistence-v67.test.mjs \
             tests/homeworld-regions-v68.test.mjs \
             tests/hunter-rig-origin.test.mjs \
+            tests/clan-war-gauntlets-v133.test.mjs \
             2>&1 | tee outputs/qa-asset-raccords-20261120/native-regressions.log
       - name: Build the actual Next production application
         run: npm run build:production
