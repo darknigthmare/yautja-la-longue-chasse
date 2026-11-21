@@ -71,6 +71,13 @@ try {
   const root = page.locator('section[data-homeworld-region-v68="luminous-marshes"]');
   const ground = homeworldRegionNavigatorV68(page, region);
   const disk = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), saves.SAVE_STORAGE_KEY);
+  page.on('response', response => {
+    const target = new URL(response.url());
+    if (target.origin === url.origin && target.pathname.startsWith('/game/homeworld/') && response.status() >= 400) {
+      report.sceneResponseErrors ??= [];
+      report.sceneResponseErrors.push({ path: target.pathname, status: response.status() });
+    }
+  });
   const location = async () => (await disk()).residenceV149.objects.find(object => object.id === lamp).location;
   const source = root.locator('[data-residence-v149="' + first + '"]');
   const threshold = root.locator('[data-residence-open-threshold]');
@@ -88,6 +95,10 @@ try {
     if (await play.isVisible()) await play.click();
     await root.waitFor();
     await root.locator('[data-region-player]').waitFor();
+    const resume = root.locator('[data-region-resume]');
+    const artError = root.getByRole('button', { name: 'Recharger le décor' });
+    await resume.or(artError).first().waitFor();
+    assert.equal(await artError.isVisible(), false, await root.getByRole('dialog').innerText());
     await page.clock.pauseAt(new Date(await page.evaluate(() => Date.now() + 100)));
     await ground.resume();
   }

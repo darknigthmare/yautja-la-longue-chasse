@@ -216,6 +216,38 @@ jobs:
             /public/game/homeworld/v69/
             /public/game/homeworld/v70/
             /public/game/homeworld/v77/
+            /public/game/homeworld/v84/npcs/apprentice/13.png
+            /public/game/homeworld/v84/npcs/apprentice/14.png
+            /public/game/homeworld/v84/npcs/apprentice/15.png
+            /public/game/homeworld/v84/npcs/apprentice/16.png
+            /public/game/homeworld/v84/npcs/archivist/05.png
+            /public/game/homeworld/v84/npcs/archivist/06.png
+            /public/game/homeworld/v84/npcs/archivist/07.png
+            /public/game/homeworld/v84/npcs/artisan/08.png
+            /public/game/homeworld/v84/npcs/artisan/09.png
+            /public/game/homeworld/v84/npcs/artisan/10.png
+            /public/game/homeworld/v84/npcs/guard/01.png
+            /public/game/homeworld/v84/npcs/guard/02.png
+            /public/game/homeworld/v84/npcs/guard/03.png
+            /public/game/homeworld/v84/npcs/guard/04.png
+            /public/game/homeworld/v84/npcs/guide/18.png
+            /public/game/homeworld/v84/npcs/healer/15.png
+            /public/game/homeworld/v84/npcs/hunter/18.png
+            /public/game/homeworld/v84/npcs/hunter/19.png
+            /public/game/homeworld/v84/npcs/instructor/09.png
+            /public/game/homeworld/v84/npcs/instructor/10.png
+            /public/game/homeworld/v84/npcs/porter/08.png
+            /public/game/homeworld/v84/npcs/porter/09.png
+            /public/game/homeworld/v84/npcs/porter/10.png
+            /public/game/homeworld/v84/npcs/porter/11.png
+            /public/game/homeworld/v84/npcs/resident/08.png
+            /public/game/homeworld/v84/npcs/resident/09.png
+            /public/game/homeworld/v84/npcs/resident/10.png
+            /public/game/homeworld/v84/npcs/resident/11.png
+            /public/game/homeworld/v84/npcs/resident/12.png
+            /public/game/homeworld/v84/npcs/resident/13.png
+            /public/game/imports/v85/library/89459c8c16b2c60b06c109913f8aaede3cedf3d799d11642aa13d13bf5c92bd3.png
+            /public/game/imports/v85/library/99d1175afdb9d368692c902b138a462bb6db44908986cfafa8193c610e78594d.png
             /public/game/assets/v37/tribes/v2/
             /public/game/assets/v3/actors/yautja/hunter/
             /public/game/backgrounds/
@@ -250,7 +282,7 @@ jobs:
           done
           curl --fail --silent http://127.0.0.1:3121/ > /dev/null
           printf 'YAUTJA_QA_BUILD_ID=%s\n' "$(cat .next/BUILD_ID)" >> "$GITHUB_ENV"
-      - name: Verify the live actor, crate and new threshold after reload
+      - name: Verify the native village art and the arrived original after reload
         env:
           RESIDENCE_QA_COMMIT: '${{ github.sha }}'
         run: node scripts/qa-residence-move-20261121.mjs
