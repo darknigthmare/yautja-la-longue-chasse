@@ -1,0 +1,28 @@
+name: Enforcers V6.13 PNG provenance blocks
+on:
+  push:
+    branches:
+      - codex/qa-enforcers-png-provenance-20261121
+permissions:
+  contents: read
+jobs:
+  enforcer-png-metadata:
+    name: Verify original PNG hashes and provenance block inventory
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            docs/suivi-production/v613/data
+            public/game/production/enforcers-v613
+            scripts
+      - name: Inspect V6.13 PNG bytes without exposing metadata content
+        run: python3 scripts/audit-enforcer-png-metadata.py outputs/enforcers-v613-png-metadata/report.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: enforcers-v613-png-metadata
+          path: outputs/enforcers-v613-png-metadata/report.json
+          if-no-files-found: error
+          retention-days: 14
