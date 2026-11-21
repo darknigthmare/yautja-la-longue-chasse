@@ -1,0 +1,80 @@
+name: B136-0376 sustained native masked hunt
+on:
+  push:
+    branches: [codex/verify-b136-0376-long-native-mask-20261121]
+permissions:
+  contents: read
+jobs:
+  native:
+    name: Ten cycles of real masked HuntCanvas play
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          sparse-checkout-cone-mode: false
+          filter: blob:none
+          sparse-checkout: |
+            /*
+            !/public/
+            !/docs/
+            !/production/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues.json
+            /public/game/assets/v139/rig-gauntlets/jungle-hunter/
+            /docs/production/Yautja_PHG_Backlog_Production_V137.xlsx
+            /production/p0p1-20261109/qa/phg-hunt/attempt-3/initial-alpha-ogre.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Read untouched Backlog Master cells and candidate source status
+        run: |
+          mkdir -p outputs/b136-0376
+          git diff --exit-code 0318b48420a6944882b1349b6d14ef473299ac10 HEAD -- app lib
+          python3 - <<'PY'
+          from xml.etree import ElementTree as ET
+          from zipfile import ZipFile
+          import json
+          XLS = 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'
+          REL = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships'
+          Q = lambda tag: f'{{{XLS}}}{tag}'
+          with ZipFile('docs/production/Yautja_PHG_Backlog_Production_V137.xlsx') as book:
+              sheets = ET.fromstring(book.read('xl/workbook.xml')).find(Q('sheets'))
+              rid, = [sheet.attrib[f'{{{REL}}}id'] for sheet in sheets if sheet.attrib['name']=='Backlog_Master']
+              rels = ET.fromstring(book.read('xl/_rels/workbook.xml.rels'))
+              target, = [item.attrib['Target'] for item in rels if item.attrib['Id']==rid]
+              target = target.lstrip('/') if target.startswith('/') else 'xl/'+target
+              cells = ET.fromstring(book.read(target)).find(Q('sheetData'))
+              values = [[c.attrib['r'], ''.join(t.text or '' for t in c.iter(Q('t'))) or c.findtext(Q('v'))] for row in cells if row.attrib['r']=='380' for c in row]
+          assert any(v=='B136-0376' for _,v in values)
+          assert any(v=='P0' for _,v in values)
+          open('outputs/b136-0376/source-row.json','w').write(json.dumps(values,ensure_ascii=False,indent=2))
+          print(json.dumps(values,ensure_ascii=False))
+          PY
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Play and resume a genuine sustained native masked hunt
+        run: |
+          node scripts/qa-b136-0376-long-mask.mjs \
+            --inspect-only --campaign-source production/p0p1-20261109/qa/phg-hunt/attempt-3/initial-alpha-ogre.json \
+            --missions jungle-vey --cycles 10 --seconds-per-cycle 30 \
+            --chromium /usr/bin/google-chrome --asset-cache outputs/source-cache --output outputs/b136-0376
+      - if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFile} from 'node:fs/promises';
+          try {
+            const r=JSON.parse(await readFile('outputs/b136-0376/report.json','utf8')), l=r.longMask;
+            console.log(JSON.stringify({qualification:r.qualification,cycles:l?.cycles?.length,maskedSeconds:l?.maskedSeconds,
+             maskChecks:l?.maskChecks,scanActivations:l?.scanActivations,resources:l?.resources,pausedMidway:l?.pausedMidway,
+             durableResume:l?.durableResume,failure:r.failure,errors:r.errors,missingAssets:r.missingAssets,abortedRequests:r.abortedRequests?.length}));
+          } catch(error) { console.log(error.message); }
+          NODE
+      - if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: b136-0376-native-long-masked-hunt
+          path: outputs/b136-0376/
