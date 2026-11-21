@@ -1,0 +1,43 @@
+name: Recover the RTS and stealth servers
+on:
+  push:
+    branches: [codex/verify-lot3-reprise-coop-20261121]
+permissions:
+  contents: read
+jobs:
+  tcp:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /types/
+            /tests/
+            /scripts/
+            /docs/clan-war*/
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Exercise actual TCP and durable reopenings
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/clan-war-rts-coop-v133.test.mjs tests/clan-war-stealth-coop-v115.test.mjs
+          tests/clan-war-practice-durable-v127.test.mjs tests/clan-war-outer-ops-server-v115.test.mjs
+      - name: ESLint
+        if: ${{ !cancelled() }}
+        run: >-
+          npx --no-install eslint --max-warnings 0
+          scripts/clan-war-coop-journal.mjs
+          scripts/serve-clan-war-rts-coop-v133.mjs scripts/serve-clan-war-stealth-coop-v115.mjs
+          tests/clan-war-rts-coop-v133.test.mjs tests/clan-war-stealth-coop-v115.test.mjs
