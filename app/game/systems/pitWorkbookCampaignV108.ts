@@ -57,7 +57,21 @@ export function observePitWorkbookCampaignCombatV108(run:PitWorkbookCampaignRunV
   const encounter=getPitWorkbookCampaignEncounterV108(run),hero=combat.fighters[0];
   if(run.phase!=='fight'||!encounter||combat.version!==15||combat.rules.normalMoves!=='workbook-v107'||
       hero.definitionId!==encounter.leftId||hero.variantId||combat.fighters[1].definitionId!==encounter.rightId||combat.arenaId!==encounter.arenaId||
-      combat.frame<=(run.continuityV108.observation?.frame??-1))return run;
+      combat.round!==1||combat.frame<=(run.continuityV108.observation?.frame??-1))return run;
+  const terminal = combat.lastRoundResult;
+  // The campaign owns one decisive round. Resolve the draw before the free
+  // combat engine begins another round and reconstructs both fighters' kits.
+  if(combat.phase==='round-over'&&terminal?.frame===combat.frame&&terminal.round===1&&terminal.winnerId===null&&
+      (terminal.reason==='draw'||terminal.reason==='double-ko')&&combat.fighters.every(fighter=>fighter.roundsWon===1)){
+    const result:PitNarrativeResultInput={mode:'cpu',leftId:encounter.leftId,rightId:encounter.rightId,
+      arenaId:encounter.arenaId,winnerId:null,resultId:encounter.id+':'+terminal.reason};
+    const tied=previous.applyPitWorkbookCampaignResultV107(run,result,encounter.id);
+    if(!tied.applied)return run;
+    const reason=terminal.reason==='double-ko'?'Double K.-O.':'Égalité à la fin du temps.';
+    return {...tied.run,lastObservedFrame:combat.frame,
+      continuityV108:{...run.continuityV108,observation:null},
+      lastMessage:reason+' Reprenez cette rencontre avec son kit d’entrée.'};
+  }
   const wasReleased=run.continuityV108.carry.device.status==='spent'||Boolean(run.continuityV108.observation?.released);
   const released=wasReleased||combat.events.some(event=>event.type==='workbook-device-v107'&&event.fighterId===run.fighterId&&
     event.kind===run.continuityV108.carry.device.item&&(event.event==='placed'||event.event==='launched'));

@@ -7,9 +7,9 @@ import HunterRigPreview from './HunterRigPreview';
 import { controlActionShortcut } from './controlBindingLabels';
 import { DEFAULT_CONTROL_BINDINGS, matchesControlAction } from './systems/controlBindings';
 import {
-  QUATZA_FLOOR, QUATZA_INPUT, QUATZA_PLATFORMS, QUATZA_POSTS, QUATZA_WIDTH,
+  QUATZA_FLOOR, QUATZA_INPUT, QUATZA_PLATFORMS, QUATZA_POSTS, QUATZA_RETURN_SUBJECTS, QUATZA_WIDTH,
   canEnterQuatza, replayQuatzaAttempt, stepQuatza, type QuatzaAttempt, type QuatzaCommand,
-  type QuatzaFrame, type QuatzaMode,
+  type QuatzaFrame, type QuatzaMode, type QuatzaReturnSubject,
 } from './systems/quatzaRij';
 import styles from './QuatzaRijScene.module.css';
 
@@ -17,6 +17,7 @@ const BEAST = '/game/quatza-rij/poses.png';
 const HIDE = '/game/quatza-rij/hide.png';
 const SKULL = '/game/quatza-rij/skull.png';
 const title: Record<QuatzaMode, string> = { triad: 'Le Quatza-Rij à trois', solo: 'Le Quatza-Rij solitaire' };
+const subjectLabel: Record<QuatzaReturnSubject, string> = { companions: 'Saar et Vek', trophy: 'La peau et le crâne' };
 const controls = [
   ['left', 'hunt.moveLeft', '←'], ['right', 'hunt.moveRight', '→'], ['jump', 'hunt.jump', 'Sauter'],
   ['strike', 'hunt.melee', 'Frapper'], ['interact', 'hunt.interact', 'Interagir'], ['signal', 'hunt.scan', 'Signal'],
@@ -39,14 +40,14 @@ function markers(frame: QuatzaFrame, mode: QuatzaMode) {
     { x: refuge, label: frame.skull ? 'Extraction' : frame.kit === 'care' && frame.player.health <= 3 && !frame.player.careSpent ? 'Soin au refuge' : 'Repli', current: frame.skull },
     ...(!frame.trail ? [{ x: trail, label: 'Lire la piste', current: true }] : []),
   ];
-  if (frame.phase === 'return') return [{ x: witness, label: 'Présenter la peau et le crâne', current: true }];
+  if (frame.phase === 'return') return [{ x: witness, label: mode === 'triad' ? 'Rejoindre les témoins avec la triade' : 'Présenter la peau et le crâne', current: true }];
   return [];
 }
 
 function objective(frame: QuatzaFrame, mode: QuatzaMode): string {
-  if (frame.phase === 'delivered') return 'La peau et le crâne ont été remis aux témoins.';
+  if (frame.phase === 'delivered') return mode === 'triad' ? 'La triade a atteint les témoins avec les deux pièces.' : 'La peau et le crâne ont été remis aux témoins.';
   if (frame.phase === 'retreated') return 'Repli consigné. Aucun trophée rapporté.';
-  if (frame.phase === 'return') return 'Rejoins les témoins et présente les deux pièces rapportées.';
+  if (frame.phase === 'return') return mode === 'triad' ? 'Rejoins les témoins avec Saar et Vek sans laisser les pièces derrière.' : 'Rejoins les témoins et présente les deux pièces rapportées.';
   if (frame.phase === 'preparation') {
     if (!frame.checked) return 'Au râtelier, vérifie les lames disponibles.';
     if (!frame.route) return 'Lis le plan du territoire et confirme les règles au poste suivant.';
@@ -81,6 +82,7 @@ function Expedition({ save, mode, attempt, attempts, onCommand, suspended = fals
   const [frame, setFrame] = useState(() => replayQuatzaAttempt(mode, attempt.input));
   const [running, setRunning] = useState(false);
   const [blocked, setBlocked] = useState(false);
+  const [witnessError, setWitnessError] = useState(false);
   const [assets, setAssets] = useState<'loading' | 'ready' | 'failed'>('loading');
   const [assetRetry, setAssetRetry] = useState(0);
   const [width, setWidth] = useState(900);
@@ -205,7 +207,11 @@ function Expedition({ save, mode, attempt, attempts, onCommand, suspended = fals
   const camera = Math.max(0, Math.min(QUATZA_WIDTH - width, frame.player.x - width * .42));
   const pose = poseOf(frame);
   const beastWidth = mode === 'solo' ? 325 : 282, beastHeight = beastWidth * 168 / 276;
-  const heldProof = frame.hide && (frame.phase === 'field' || frame.phase === 'return');
+  const reachedWitnesses = mode === 'triad' && frame.phase === 'delivered' && attempt.phase === 'delivered';
+  const presentations = reachedWitnesses ? save.quatzaRij?.expeditions.triad?.presentations ?? [] : [];
+  const remainingSubjects = QUATZA_RETURN_SUBJECTS.filter(subject => !presentations.includes(subject));
+  const heldProof = frame.hide && (frame.phase === 'field' || frame.phase === 'return' ||
+    reachedWitnesses && remainingSubjects.includes('trophy'));
   return <div ref={expeditionRef} data-quatza-expedition={mode}
     onBlur={event => {
       if (running && (!(event.relatedTarget instanceof Node) || !expeditionRef.current?.contains(event.relatedTarget))) stop();
@@ -259,10 +265,27 @@ function Expedition({ save, mode, attempt, attempts, onCommand, suspended = fals
         </div></div>
         {heldProof && <img className={styles.proof} data-quatza-carried src={frame.skull ? SKULL : HIDE}
           style={{ left: frame.player.x - 21, top: frame.player.y - 35 }} alt={frame.skull ? 'Peau et crâne portés' : 'Peau portée'} />}
-        {frame.phase === 'delivered' && <img className={styles.proof} src={SKULL} style={{ left: QUATZA_POSTS.witness + 62, top: QUATZA_FLOOR - 28 }} alt="Crâne remis" />}
+        {frame.phase === 'delivered' && (mode === 'solo' || presentations.includes('trophy')) &&
+          <img className={styles.proof} src={SKULL} style={{ left: QUATZA_POSTS.witness + 62, top: QUATZA_FLOOR - 28 }} alt="Crâne remis" />}
+        {reachedWitnesses && presentations.includes('trophy') &&
+          <img className={styles.proof} src={HIDE} style={{ left: QUATZA_POSTS.witness + 109, top: QUATZA_FLOOR - 28 }} alt="Peau remise" />}
       </div>
     </div>
     <p className={styles.status} role="status">{objective(frame, mode)}</p>
+    {reachedWitnesses && <section className={styles.testimony} aria-label="Présentation aux témoins" data-quatza-witness>
+      {presentations.length > 0 && <ol aria-label="Ordre des présentations">{presentations.map(subject => <li key={subject}
+        data-quatza-presented={subject}>{subjectLabel[subject]}</li>)}</ol>}
+      {presentations.includes('companions') && <ul aria-label="État des partenaires au retour">{frame.companions.map(member =>
+        <li key={member.id}>{member.id === 'saar' ? 'Saar' : 'Vek'} · vitalité {member.health}/3 au retour</li>)}</ul>}
+      {remainingSubjects.length ? <>
+        <p>{presentations.length ? 'Présente aussi le second sujet aux témoins.' : 'Qui ou quoi présentes-tu en premier ?'}</p>
+        <div className={styles.controls}>{remainingSubjects.map(subject => <button key={subject} type="button"
+          data-quatza-present={subject} disabled={suspended || blocked}
+          onClick={() => setWitnessError(!onCommand({ type: 'present-return', mode: 'triad', expectedAttempts: attempts,
+            expectedPresentations: presentations.length, subject }))}>Présenter {subjectLabel[subject]}</button>)}</div>
+        {witnessError && <p role="alert">Présentation non confirmée. Relis le registre, puis réessaie.</p>}
+      </> : <p role="status">Les témoins ont consigné le retour de la triade et les deux pièces.</p>}
+    </section>}
     {!terminal && <div className={styles.controls} aria-label="Commandes du Quatza-Rij">
       {visibleControls.map(([id, action, label]) => <button key={id} type="button" data-quatza-control={id}
         disabled={!running || blocked || suspended} aria-label={label} onPointerDown={event => touch(event, id)}

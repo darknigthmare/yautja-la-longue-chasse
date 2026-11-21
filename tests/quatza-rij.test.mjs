@@ -146,6 +146,47 @@ test('real triad replay resolves separately placed roles, both trophies and witn
   assert.deepEqual(restored.save.quatzaRij, save.quatzaRij);
 });
 
+test('witnesses record either triad presentation order once and preserve the completed field replay', () => {
+  const { save: origin } = formationCampaignRoute();
+  const begun = commit(origin, { type: 'begin', mode: 'triad', expectedAttempts: 0 });
+  const choice = (subject, expectedPresentations) => ({
+    type: 'present-return', mode: 'triad', expectedAttempts: 1, expectedPresentations, subject,
+  });
+  assert.equal(engine.commitQuatzaRij(begun, choice('companions', 0)).ok, false);
+  const played = playing('triad');
+  played.prepare(); played.fight(); played.gatherAndReturn();
+  const delivered = persistInputs(begun, 'triad', played.input);
+  assert.equal(delivered.quatzaRij.expeditions.triad.presentations, undefined);
+  const originalAttempts = delivered.quatzaRij.expeditions.triad.attempts;
+  const oldRoundtrip = saves.parseSaveImport(saves.exportSave(delivered));
+  assert(oldRoundtrip.save, oldRoundtrip.failure);
+  assert.equal(oldRoundtrip.save.quatzaRij.expeditions.triad.presentations, undefined);
+
+  for (const order of [['companions', 'trophy'], ['trophy', 'companions']]) {
+    const first = commit(oldRoundtrip.save, choice(order[0], 0));
+    assert.equal(engine.isQuatzaRijSuccessor(delivered.quatzaRij, first.quatzaRij), true);
+    assert.equal(engine.commitQuatzaRij(first, choice(order[1], 0)).ok, false);
+    assert.equal(engine.commitQuatzaRij(first, choice(order[0], 1)).ok, false);
+    const loaded = saves.parseSaveImport(saves.exportSave(first));
+    assert(loaded.save, loaded.failure);
+    const second = commit(loaded.save, choice(order[1], 1));
+    assert.equal(engine.isQuatzaRijSuccessor(first.quatzaRij, second.quatzaRij), true);
+    assert.equal(engine.isQuatzaRijSuccessor(delivered.quatzaRij, second.quatzaRij), false);
+    assert.deepEqual(second.quatzaRij.expeditions.triad.presentations, order);
+    assert.deepEqual(second.quatzaRij.expeditions.triad.attempts, originalAttempts);
+    assert.deepEqual(second.profile, delivered.profile);
+    assert.deepEqual(second.inventory, delivered.inventory);
+    assert.deepEqual(second.prologue, delivered.prologue);
+    assert.equal(engine.commitQuatzaRij(second, choice(order[1], 2)).ok, false);
+    const duplicate = structuredClone(second);
+    duplicate.quatzaRij.expeditions.triad.presentations = [order[0], order[0]];
+    assert.equal(saves.parseSaveImport(JSON.stringify(duplicate)).failure, 'invalid-save');
+  }
+  const premature = structuredClone(begun);
+  premature.quatzaRij.expeditions.triad.presentations = ['trophy'];
+  assert.equal(saves.parseSaveImport(JSON.stringify(premature)).failure, 'invalid-save');
+});
+
 test('solo returns the same trophies after independent attack cycles and rejects receipt tampering', () => {
   const owned = playShipAcquisitionV161(qa, adult());
   const run = playing('solo');

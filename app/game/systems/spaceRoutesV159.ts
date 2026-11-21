@@ -3,6 +3,7 @@ import { GALAXY_SYSTEM_REGISTRY } from '../galaxyRegistry';
 import { isShipId, type ShipId } from '../shipCatalogue';
 import type { SaveGame } from '../types';
 import { shipReceiptV161 } from './shipReceiptV161';
+import { activeW3S18RoutePost, type W3S18RoutePost } from './w3S18RoutePost';
 
 /**
  * V159 — routes spatiales typées et incidents V6 entre systèmes.
@@ -197,14 +198,25 @@ export type SpaceShipLocationV159 =
   | { kind: 'system'; systemId: string }
   | { kind: 'route'; routeId: string; fromSystemId: string; toSystemId: string };
 export interface SpaceTripIncidentV159 { incidentId: SpaceIncidentIdV159; atLeg: number; option: 0 | 1 | null }
+export interface W3S18PassageAgreementV159 {
+  tripId: string;
+  routeId: string;
+  fromSystemId: string;
+  shipId: ShipId;
+  sourceSha256: string;
+  supplyRevision: number;
+}
 export interface SpaceTripV159 {
   tripId: string; routeId: string; fromSystemId: string; toSystemId: string;
-  /** STATE5-20 travelManifest, limité ici à l’appareil embarqué. */
-  manifest: { shipId: ShipId };
+  /** STATE5-20 appareil embarqué et accord du poste W3-S18 le cas échéant. */
+  manifest: { shipId: ShipId; w3S18Passage?: W3S18PassageAgreementV159 };
   legsTotal: number; legsDone: number; incident: SpaceTripIncidentV159 | null;
 }
 export interface SpaceIncidentRecordV159 { tripId: string; incidentId: SpaceIncidentIdV159; option: 0 | 1; delayLegs: number }
-export interface SpaceArrivalRecordV159 { tripId: string; routeId: string; fromSystemId: string; toSystemId: string; legs: number }
+export interface SpaceArrivalRecordV159 {
+  tripId: string; routeId: string; fromSystemId: string; toSystemId: string; legs: number;
+  w3S18Passage?: W3S18PassageAgreementV159;
+}
 export interface SpaceRoutesStateV159 {
   version: 1; ownerCreatedAt: string; tripSequence: number;
   /** STATE5-18 personalShipLocation. */
@@ -214,6 +226,8 @@ export interface SpaceRoutesStateV159 {
   trip: SpaceTripV159 | null;
   incidentLog: SpaceIncidentRecordV159[];
   arrivals: SpaceArrivalRecordV159[];
+  /** Explicit approval for the next departure from the real W3-S18 post. */
+  w3S18Passage?: W3S18PassageAgreementV159;
 }
 
 export function createSpaceRoutesV159(ownerCreatedAt: string): SpaceRoutesStateV159 {
@@ -254,13 +268,30 @@ const count = (value: unknown, max = 10_000): value is number => Number.isSafeIn
 const knownSystem = (value: unknown): value is string => typeof value === 'string' && SYSTEM_NAMES.has(value);
 const delayOf = (incidentId: string, option: 0 | 1) => PROPOSED_INCIDENT_PROFILE_V159[incidentId]?.delayLegs[option] ?? 0;
 
+function optionalPassageKeys(value: Record<string, unknown>, keys: readonly string[]) {
+  return exact(value, Object.hasOwn(value, 'w3S18Passage') ? [...keys, 'w3S18Passage'] : keys);
+}
+
+function readW3S18Passage(raw: unknown, tripId: string, fromSystemId: string): W3S18PassageAgreementV159 | null {
+  if (!record(raw) || !exact(raw, ['tripId', 'routeId', 'fromSystemId', 'shipId', 'sourceSha256', 'supplyRevision']) ||
+      raw.tripId !== tripId || raw.fromSystemId !== fromSystemId || !isShipId(raw.shipId) ||
+      typeof raw.sourceSha256 !== 'string' || !/^[a-f0-9]{64}$/.test(raw.sourceSha256) ||
+      !count(raw.supplyRevision) || raw.supplyRevision === 0) return null;
+  const route = spaceRouteV159(raw.routeId);
+  if (!route?.systems.includes(fromSystemId)) return null;
+  return {
+    tripId, routeId: route.id, fromSystemId, shipId: raw.shipId,
+    sourceSha256: raw.sourceSha256, supplyRevision: raw.supplyRevision,
+  };
+}
+
 export function inspectSpaceRoutesV159(raw: unknown, ownerCreatedAt: string): {
   status: 'absent' | 'valid' | 'future-version' | 'invalid-save'; state: SpaceRoutesStateV159 | null;
 } {
   if (raw === undefined || raw === null) return { status: 'absent', state: null };
   if (record(raw) && typeof raw.version === 'number' && raw.version > SPACE_ROUTES_V159_VERSION) return { status: 'future-version', state: null };
   const invalid = { status: 'invalid-save' as const, state: null };
-  if (!record(raw) || !exact(raw, ['version', 'ownerCreatedAt', 'tripSequence', 'location', 'currentSystemId', 'trip', 'incidentLog', 'arrivals']) ||
+  if (!record(raw) || !optionalPassageKeys(raw, ['version', 'ownerCreatedAt', 'tripSequence', 'location', 'currentSystemId', 'trip', 'incidentLog', 'arrivals']) ||
       raw.version !== 1 || typeof ownerCreatedAt !== 'string' || raw.ownerCreatedAt !== ownerCreatedAt ||
       !count(raw.tripSequence) || !knownSystem(raw.currentSystemId) ||
       !Array.isArray(raw.incidentLog) || raw.incidentLog.length > LOG_LIMIT ||
@@ -268,6 +299,8 @@ export function inspectSpaceRoutesV159(raw: unknown, ownerCreatedAt: string): {
   const sequence = Number(raw.tripSequence);
   const tripIdValid = (id: unknown): id is string => typeof id === 'string' &&
     /^voyage-v159-[1-9][0-9]*$/.test(id) && Number(id.slice('voyage-v159-'.length)) <= sequence;
+  const w3S18Passage = readW3S18Passage(raw.w3S18Passage, spaceTripIdV159(sequence + 1), raw.currentSystemId);
+  if (Object.hasOwn(raw, 'w3S18Passage') && (!w3S18Passage || raw.trip !== null || sequence >= 10_000)) return invalid;
   // Trip
   let trip: SpaceTripV159 | null = null;
   if (raw.trip !== null) {
@@ -277,7 +310,10 @@ export function inspectSpaceRoutesV159(raw: unknown, ownerCreatedAt: string): {
     const entry = spaceRouteV159(t.routeId);
     if (!entry || !knownSystem(t.fromSystemId) || !entry.systems.includes(t.fromSystemId) ||
         t.toSystemId !== otherEnd(entry, t.fromSystemId) || t.fromSystemId !== raw.currentSystemId) return invalid;
-    if (!record(t.manifest) || !exact(t.manifest, ['shipId']) || !isShipId(t.manifest.shipId)) return invalid;
+    if (!record(t.manifest) || !optionalPassageKeys(t.manifest, ['shipId']) || !isShipId(t.manifest.shipId)) return invalid;
+    const passage = readW3S18Passage(t.manifest.w3S18Passage, String(t.tripId), t.fromSystemId);
+    if (Object.hasOwn(t.manifest, 'w3S18Passage') &&
+        (!passage || passage.routeId !== entry.id || passage.shipId !== t.manifest.shipId)) return invalid;
     const drawn = drawSpaceIncidentV159(t.tripId, entry.id);
     let incident: SpaceTripIncidentV159 | null = null;
     let delay = 0;
@@ -294,7 +330,8 @@ export function inspectSpaceRoutesV159(raw: unknown, ownerCreatedAt: string): {
     // The last leg is only held open by the incident met on it (answered or not); otherwise arrival happened.
     if (Number(t.legsDone) === Number(t.legsTotal) && incident?.atLeg !== Number(t.legsDone)) return invalid;
     trip = { tripId: t.tripId, routeId: entry.id, fromSystemId: t.fromSystemId, toSystemId: t.toSystemId,
-      manifest: { shipId: t.manifest.shipId }, legsTotal: Number(t.legsTotal), legsDone: Number(t.legsDone), incident };
+      manifest: { shipId: t.manifest.shipId, ...(passage ? { w3S18Passage: passage } : {}) },
+      legsTotal: Number(t.legsTotal), legsDone: Number(t.legsDone), incident };
   }
   // Location (STATE5-18) must agree with the trip.
   const l = raw.location;
@@ -317,11 +354,14 @@ export function inspectSpaceRoutesV159(raw: unknown, ownerCreatedAt: string): {
   const arrivals: SpaceArrivalRecordV159[] = [];
   for (const entry of raw.arrivals) {
     const known = record(entry) ? spaceRouteV159(entry.routeId) : null;
-    if (!record(entry) || !exact(entry, ['tripId', 'routeId', 'fromSystemId', 'toSystemId', 'legs']) || !known ||
+    if (!record(entry) || !optionalPassageKeys(entry, ['tripId', 'routeId', 'fromSystemId', 'toSystemId', 'legs']) || !known ||
         !tripIdValid(entry.tripId) || entry.tripId === trip?.tripId || !knownSystem(entry.fromSystemId) ||
         !known.systems.includes(entry.fromSystemId) || entry.toSystemId !== otherEnd(known, entry.fromSystemId) ||
         !count(entry.legs, 64) || arrivals.some(item => item.tripId === entry.tripId)) return invalid;
-    arrivals.push({ tripId: entry.tripId, routeId: known.id, fromSystemId: entry.fromSystemId, toSystemId: entry.toSystemId, legs: Number(entry.legs) });
+    const passage = readW3S18Passage(entry.w3S18Passage, entry.tripId, entry.fromSystemId);
+    if (Object.hasOwn(entry, 'w3S18Passage') && (!passage || passage.routeId !== known.id)) return invalid;
+    arrivals.push({ tripId: entry.tripId, routeId: known.id, fromSystemId: entry.fromSystemId, toSystemId: entry.toSystemId,
+      legs: Number(entry.legs), ...(passage ? { w3S18Passage: passage } : {}) });
   }
   // A resolved incident of the active trip is logged exactly once.
   if (trip?.incident?.option !== null && trip?.incident && !incidentLog.some(item =>
@@ -329,7 +369,7 @@ export function inspectSpaceRoutesV159(raw: unknown, ownerCreatedAt: string): {
   if (trip && (trip.incident?.option ?? null) === null && incidentLog.some(item => item.tripId === trip!.tripId)) return invalid;
   return { status: 'valid', state: {
     version: 1, ownerCreatedAt, tripSequence: sequence, location, currentSystemId: raw.currentSystemId,
-    trip, incidentLog, arrivals,
+    trip, incidentLog, arrivals, ...(w3S18Passage ? { w3S18Passage } : {}),
   } };
 }
 export const normalizeSpaceRoutesV159 = (raw: unknown, ownerCreatedAt: string) =>
@@ -376,6 +416,7 @@ export function spaceLegacyTripV159(state: SpaceRoutesStateV159 | null, ship: Sp
 
 export type SpaceRoutesActionV159 =
   | { kind: 'engage'; routeId: string }
+  | { kind: 'w3-authorize' | 'w3-engage'; routeId: string; post: W3S18RoutePost }
   | { kind: 'advance' }
   | { kind: 'choose'; option: 0 | 1 };
 export interface SpaceRoutesResultV159 {
@@ -398,17 +439,37 @@ export function actSpaceRoutesV159(raw: unknown, action: SpaceRoutesActionV159, 
   if (inspected.status === 'invalid-save') return deny('Carnet de route illisible : il est conservé sans modification.');
   const state = structuredClone(inspected.state ?? createSpaceRoutesV159(context.ownerCreatedAt));
 
-  if (action.kind === 'engage') {
+  if (action.kind === 'engage' || action.kind === 'w3-authorize' || action.kind === 'w3-engage') {
     if (!context.ship.owned || !context.ship.shipId) return deny(context.ship.reason ?? 'Aucun vaisseau personnel possédé.');
     if (state.trip) return deny('Un voyage est déjà engagé : il doit arriver avant d’en commencer un autre.');
+    if (state.tripSequence >= 10_000) return deny('Carnet de voyage arrivé à sa limite.');
     const entry = spaceRouteV159(action.routeId);
     if (!entry || !entry.systems.includes(state.currentSystemId)) return deny('Cette route ne part pas du système où se trouve le vaisseau.');
+    const tripId = spaceTripIdV159(state.tripSequence + 1);
+    const passage = state.w3S18Passage;
+    if (action.kind !== 'engage') {
+      if (!activeW3S18RoutePost(action.post)) return deny('Accord W3-S18 indisponible : reprenez le service depuis le poste confirmé.');
+      if (action.kind === 'w3-authorize') {
+        if (passage?.routeId === entry.id && passage.shipId === context.ship.shipId &&
+            passage.sourceSha256 === action.post.sourceSha256 && passage.supplyRevision === action.post.supplyRevision)
+          return deny('L’accord de passage est déjà enregistré pour cette liaison.');
+        state.w3S18Passage = {
+          tripId, routeId: entry.id, fromSystemId: state.currentSystemId, shipId: context.ship.shipId,
+          sourceSha256: action.post.sourceSha256, supplyRevision: action.post.supplyRevision,
+        };
+        return { accepted: true, changed: true, state, message: 'Accord de passage W3-S18 enregistré pour cette coque et cette liaison.' };
+      }
+      if (!passage || passage.routeId !== entry.id || passage.shipId !== context.ship.shipId ||
+          passage.sourceSha256 !== action.post.sourceSha256 || action.post.supplyRevision < passage.supplyRevision)
+        return deny('Demandez l’accord W3-S18 pour ce vaisseau et cette liaison.');
+    }
+    delete state.w3S18Passage;
     state.tripSequence += 1;
-    const tripId = spaceTripIdV159(state.tripSequence);
     const drawn = drawSpaceIncidentV159(tripId, entry.id);
     const toSystemId = otherEnd(entry, state.currentSystemId);
     state.trip = { tripId, routeId: entry.id, fromSystemId: state.currentSystemId, toSystemId,
-      manifest: { shipId: context.ship.shipId }, legsTotal: entry.legs, legsDone: 0,
+      manifest: { shipId: context.ship.shipId, ...(action.kind === 'w3-engage' && passage ? { w3S18Passage: passage } : {}) },
+      legsTotal: entry.legs, legsDone: 0,
       incident: drawn ? { ...drawn, option: null } : null };
     state.location = { kind: 'route', routeId: entry.id, fromSystemId: state.currentSystemId, toSystemId };
     return { accepted: true, changed: true, state,
@@ -444,7 +505,8 @@ export function actSpaceRoutesV159(raw: unknown, action: SpaceRoutesActionV159, 
     return { accepted: true, changed: true, state, message: `Étape ${trip.legsDone}/${trip.legsTotal} parcourue.` };
   }
   state.arrivals = [...state.arrivals, { tripId: trip.tripId, routeId: trip.routeId, fromSystemId: trip.fromSystemId,
-    toSystemId: trip.toSystemId, legs: trip.legsTotal }].slice(-LOG_LIMIT);
+    toSystemId: trip.toSystemId, legs: trip.legsTotal,
+    ...(trip.manifest.w3S18Passage ? { w3S18Passage: trip.manifest.w3S18Passage } : {}) }].slice(-LOG_LIMIT);
   state.currentSystemId = trip.toSystemId;
   state.location = { kind: 'system', systemId: trip.toSystemId };
   state.trip = null;

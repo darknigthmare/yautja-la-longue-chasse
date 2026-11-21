@@ -1,6 +1,7 @@
 "use client";
 
-import { useContext, useId, useState } from "react";
+import { useContext, useId, useRef, useState } from "react";
+import { W3S18RoutePostContext } from "./W3S18RoutePostContext";
 import { GalaxyRouteDestinationContext } from "./GalaxyRouteDestinationContext";
 import styles from "./SpaceRoutesPanelV159.module.css";
 import { shipForId } from "./shipCatalogue";
@@ -35,6 +36,9 @@ export interface SpaceRoutesPanelV159Props {
 export default function SpaceRoutesPanelV159({ ownerCreatedAt, state, ship, disabled = false, onAction }: SpaceRoutesPanelV159Props) {
   const [message, setMessage] = useState<string | null>(null);
   const mapDestination = useContext(GalaxyRouteDestinationContext);
+  const confirmW3S18Post = useContext(W3S18RoutePostContext);
+  const passagePending = useRef(false);
+  const [requestingPassage, setRequestingPassage] = useState(false);
   const [manualDestination, setManualDestination] = useState<{ mapDestination: string | null; id: string } | null>(null);
   const itineraryTitleId = useId();
   const mapDestinationId = mapDestination && SPACE_ROUTE_DESTINATIONS_V159.includes(mapDestination) ? mapDestination : "";
@@ -51,6 +55,29 @@ export default function SpaceRoutesPanelV159({ ownerCreatedAt, state, ship, disa
     if (disabled) return;
     setMessage(onAction(action).message);
   };
+  const passage = view.w3S18Passage;
+  const authorized = (routeId: string) => passage?.routeId === routeId && passage.shipId === ship.shipId;
+  async function submitW3S18Passage(kind: "w3-authorize" | "w3-engage", routeId: string) {
+    if (disabled || !ship.owned || !confirmW3S18Post || passagePending.current) return;
+    passagePending.current = true;
+    setRequestingPassage(true);
+    try {
+      const result = await confirmW3S18Post(post => onAction({ kind, routeId, post }));
+      setMessage(result.message);
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Le poste W3-S18 ne répond pas.");
+    } finally {
+      passagePending.current = false;
+      setRequestingPassage(false);
+    }
+  }
+  function engageRoute(routeId: string) {
+    if (confirmW3S18Post) {
+      void submitW3S18Passage("w3-engage", routeId);
+      return;
+    }
+    run({ kind: "engage", routeId });
+  }
   const tripRoute = trip ? spaceRouteV159(trip.routeId) : null;
   const resolved = trip?.incident && trip.incident.option !== null ? spaceIncidentV159(trip.incident.incidentId) : null;
   const lastArrival = view.arrivals.at(-1) ?? null;
@@ -67,6 +94,13 @@ export default function SpaceRoutesPanelV159({ ownerCreatedAt, state, ship, disa
           {ship.owned && ship.shipId ? `Vaisseau personnel : ${shipForId(ship.shipId).name}` : ship.reason}
         </p>
       </header>
+
+      {confirmW3S18Post && !trip && (
+        <div className={styles.note}>
+          <p>Demandez l’accord du poste pour cette coque et une liaison. La navette prêtée a sa propre autorisation.</p>
+          {passage && <p data-w3-s18-passage={passage.routeId}>Accord enregistré pour le voyage {passage.tripId}.</p>}
+        </div>
+      )}
 
       <section className={styles.itinerary} aria-labelledby={itineraryTitleId} data-space-itinerary
         data-itinerary-from={itineraryOrigin} data-itinerary-destination={destination}>
@@ -103,10 +137,19 @@ export default function SpaceRoutesPanelV159({ ownerCreatedAt, state, ship, disa
               })}
             </ol>
             {!trip && (
-              <button type="button" className="ghost-button" disabled={disabled || !ship.owned}
-                onClick={() => run({ kind: "engage", routeId: firstSegment.route.id })}>
-                Engager la première liaison
-              </button>
+              <div className={styles.choices}>
+                {confirmW3S18Post && (
+                  <button type="button" className="ghost-button" disabled={disabled || !ship.owned || requestingPassage}
+                    onClick={() => void submitW3S18Passage("w3-authorize", firstSegment.route.id)}>
+                    {authorized(firstSegment.route.id) ? "Renouveler l’accord de la première liaison" : "Demander l’accord pour la première liaison"}
+                  </button>
+                )}
+                <button type="button" className="ghost-button"
+                  disabled={disabled || !ship.owned || requestingPassage || (!!confirmW3S18Post && !authorized(firstSegment.route.id))}
+                  onClick={() => engageRoute(firstSegment.route.id)}>
+                  Engager la première liaison
+                </button>
+              </div>
             )}
           </>
         )}
@@ -124,10 +167,19 @@ export default function SpaceRoutesPanelV159({ ownerCreatedAt, state, ship, disa
                   <span>{type.label} · risque {type.risk} · {entry.legs} étapes</span>
                   <small>{type.typical}</small>
                 </div>
-                <button type="button" className="ghost-button" disabled={disabled || !ship.owned}
-                  onClick={() => run({ kind: "engage", routeId: entry.id })}>
-                  Engager la route
-                </button>
+                <div className={styles.choices}>
+                  {confirmW3S18Post && (
+                    <button type="button" className="ghost-button" disabled={disabled || !ship.owned || requestingPassage}
+                      onClick={() => void submitW3S18Passage("w3-authorize", entry.id)}>
+                      {authorized(entry.id) ? "Renouveler l’accord de passage" : "Demander l’accord de passage"}
+                    </button>
+                  )}
+                  <button type="button" className="ghost-button"
+                    disabled={disabled || !ship.owned || requestingPassage || (!!confirmW3S18Post && !authorized(entry.id))}
+                    onClick={() => engageRoute(entry.id)}>
+                    Engager la route
+                  </button>
+                </div>
               </li>
             );
           })}
@@ -143,6 +195,7 @@ export default function SpaceRoutesPanelV159({ ownerCreatedAt, state, ship, disa
           <p className={styles.note} data-trip-ship-id={trip.manifest.shipId}>
             Appareil au manifeste · {shipForId(trip.manifest.shipId).name}
           </p>
+          {trip.manifest.w3S18Passage && <p className={styles.note} data-w3-s18-passage={trip.routeId}>Accord du poste W3-S18 au manifeste.</p>}
           <progress max={trip.legsTotal} value={trip.legsDone} aria-label="Progression du trajet" />
           {spaceLegacyTripV159(view, ship) && (
             <p className={styles.note} data-legacy-trip>
@@ -185,6 +238,7 @@ export default function SpaceRoutesPanelV159({ ownerCreatedAt, state, ship, disa
       {!trip && lastArrival && (
         <p className={styles.resolved} data-last-arrival={lastArrival.tripId}>
           Dernière arrivée : {spaceSystemNameV159(lastArrival.toSystemId)} ({lastArrival.legs} étapes).
+          {lastArrival.w3S18Passage && " Accord W3-S18 joint au relevé d’arrivée."}
         </p>
       )}
       {message && <p className={styles.message} aria-live="polite">{message}</p>}

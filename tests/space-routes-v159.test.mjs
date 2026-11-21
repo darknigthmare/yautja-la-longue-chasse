@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {homeworldSceneSsrV78} from './helpers/homeworld-scene-ssr-v78.mjs';
 import {playShipAcquisitionV161} from './helpers/ship-receipt-v161.mjs';
+import {createLegacySupplyDriverV109} from './helpers/clan-supply-route-v109-fixture.mjs';
 
 const qa=homeworldSceneSsrV78();
 const routes=qa.load('app/game/systems/spaceRoutesV159.ts');
@@ -171,6 +172,77 @@ test('itinéraire multi-système minimal sur le réseau V159, hors incidents',()
  assert.equal(planSpaceRouteV159('system-inconnu','system-oseris'),null);
  assert.equal(planSpaceRouteV159('system-oseris','system-inconnu'),null);
  assert.deepEqual(new Set(SPACE_ROUTE_DESTINATIONS_V159),new Set(routes.SPACE_ROUTES_V159.flatMap(({systems})=>systems)));
+});
+
+test('accord W3-S18 : poste confirmé, décision explicite, passage borné et arrivée durable',async()=>{
+ const logistics=qa.load('app/game/systems/clanLogisticsV108.ts');
+ const {CLAN_SUPPLY_KEY_V109}=qa.load('app/game/systems/clanSupplyRouteV109.ts');
+ const {createSupplySessionV109}=qa.load('app/game/systems/clanSupplySessionV109.ts');
+ const fixture=createLegacySupplyDriverV109(logistics);
+ fixture.send({kind:'hire',actor:'carrier'});
+ fixture.send({kind:'hire',actor:'operator:W3-S18'});
+ fixture.wait(3);
+ for(const [actor,amount] of [['carrier',20],['operator:W3-S18',6]]){
+  fixture.home(actor);
+  fixture.send({kind:'rav-load',actor,location:'depot',amount});
+ }
+ fixture.build('W3-S18');
+ const storage=store();
+ storage.setItem(CLAN_SUPPLY_KEY_V109,logistics.exportLogisticsV108(fixture.state));
+ const session=createSupplySessionV109(storage,async operation=>operation());
+ session.hydrate();
+ await session.whenSettled();
+ const routeId='route-oseris-nivalis';
+ await assert.rejects(session.withConfirmedW3S18Post(()=>assert.fail('poste non reconnu')),/Reconnaissez/);
+ await session.act({kind:'recon'});
+ const exercise=storage.getItem(CLAN_SUPPLY_KEY_V109);
+ assert.equal(session.getSnapshot().state.convoy.shuttle.authorized,false);
+
+ const issue=(state,save=blooded())=>session.withConfirmedW3S18Post(post=>
+  routes.actSpaceRoutesV159(state,{kind:'w3-authorize',routeId,post},ctx(save)));
+ const attempt=(state,route=routeId)=>session.withConfirmedW3S18Post(post=>
+  routes.actSpaceRoutesV159(state,{kind:'w3-engage',routeId:route,post},ctx(blooded())));
+ assert.equal((await issue(null,rankBlooded())).accepted,false);
+ assert.equal((await attempt(null)).accepted,false);
+ const permission=await issue(null);
+ assert.equal(permission.accepted,true,permission.message);
+ const agreed=permission.state;
+ assert.equal(agreed.trip,null);
+ assert.equal(agreed.tripSequence,0);
+ assert.equal(agreed.w3S18Passage.shipId,SHIP);
+ assert.equal((await issue(agreed)).accepted,false);
+ assert.equal((await attempt(agreed,'route-oseris-cinder')).accepted,false);
+ const fakePost={sourceSha256:agreed.w3S18Passage.sourceSha256,supplyRevision:agreed.w3S18Passage.supplyRevision};
+ assert.equal(routes.actSpaceRoutesV159(agreed,{kind:'w3-engage',routeId,post:fakePost},ctx(blooded())).accepted,false);
+
+ const campaign=store();
+ assert.equal(saves.writeSaveWithStatus({...blooded(),spaceRoutesV159:agreed},campaign,key).persisted,true);
+ const reloaded=saves.loadSaveWithStatus(campaign,key).save.spaceRoutesV159;
+ assert.deepEqual(reloaded,agreed);
+ const differentSource=structuredClone(agreed);
+ differentSource.w3S18Passage.sourceSha256='0'.repeat(64);
+ assert.equal((await attempt(differentSource)).accepted,false);
+ const changed=structuredClone(agreed);
+ changed.w3S18Passage.tripId='voyage-v159-2';
+ assert.equal(saves.parseSaveImport(JSON.stringify({...blooded(),spaceRoutesV159:changed})).failure,'invalid-save');
+
+ const next=await attempt(reloaded);
+ assert.equal(next.accepted,true,next.message);
+ let travelling=next.state;
+ assert.equal(travelling.w3S18Passage,undefined);
+ assert.deepEqual(travelling.trip.manifest.w3S18Passage,agreed.w3S18Passage);
+ assert.equal((await attempt(travelling)).accepted,false);
+ for(let step=0;step<7&&travelling.trip;step++){
+  const action=routes.pendingSpaceIncidentV159(travelling)?{kind:'choose',option:0}:{kind:'advance'};
+  travelling=act(travelling,action).state;
+ }
+ assert.equal(travelling.trip,null);
+ assert.deepEqual(travelling.arrivals[0].w3S18Passage,agreed.w3S18Passage);
+ assert.equal(saves.writeSaveWithStatus({...blooded(),spaceRoutesV159:travelling},campaign,key).persisted,true);
+ assert.deepEqual(saves.loadSaveWithStatus(campaign,key).save.spaceRoutesV159,travelling);
+ assert.equal(storage.getItem(CLAN_SUPPLY_KEY_V109),exercise);
+ storage.setItem(CLAN_SUPPLY_KEY_V109,exercise+' ');
+ await assert.rejects(issue(null),/autre session/);
 });
 
 test('rendu SSR du poste de route et intégration à la carte',()=>{

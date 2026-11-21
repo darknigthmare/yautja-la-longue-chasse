@@ -33,10 +33,18 @@ export interface QuatzaFrame {
   hide: boolean; skull: boolean; previous: number;
 }
 export interface QuatzaAttempt { input: number[]; phase: QuatzaPhase }
-export interface QuatzaExpedition { mode: QuatzaMode; attempts: QuatzaAttempt[] }
+export const QUATZA_RETURN_SUBJECTS = ['companions', 'trophy'] as const;
+export type QuatzaReturnSubject = typeof QUATZA_RETURN_SUBJECTS[number];
+export interface QuatzaExpedition {
+  mode: QuatzaMode;
+  attempts: QuatzaAttempt[];
+  /** Two different subjects are presented in the order chosen at the witnessed triad return. */
+  presentations?: QuatzaReturnSubject[];
+}
 export interface QuatzaRijCampaign { version: 1; ownerCreatedAt: string; expeditions: Partial<Record<QuatzaMode, QuatzaExpedition>> }
 export type QuatzaCommand = { type: 'begin'; mode: QuatzaMode; expectedAttempts: number } |
-  { type: 'advance'; mode: QuatzaMode; expectedAttempts: number; expectedTick: number; input: readonly number[] };
+  { type: 'advance'; mode: QuatzaMode; expectedAttempts: number; expectedTick: number; input: readonly number[] } |
+  { type: 'present-return'; mode: 'triad'; expectedAttempts: number; expectedPresentations: number; subject: QuatzaReturnSubject };
 export type QuatzaResponse = { ok: false; message: string } | { ok: true; state: QuatzaRijCampaign; message: string };
 
 const record = (value: unknown): value is Record<string, unknown> => !!value && typeof value === 'object' && !Array.isArray(value);
@@ -47,6 +55,7 @@ const near = (a: number, b: number, range = 52) => Math.abs(a - b) <= range;
 const validInput = (code: unknown): code is number => typeof code === 'number' && Number.isSafeInteger(code) &&
   code >= 0 && code < 64 && (code & 3) !== 3;
 const finished = (phase: QuatzaPhase) => phase === 'retreated' || phase === 'delivered';
+const returnSubject = (value: unknown): value is QuatzaReturnSubject => QUATZA_RETURN_SUBJECTS.some(subject => subject === value);
 const partyAt = (frame: QuatzaFrame, x: number) => frame.companions.every(ally => ally.health > 0 && near(ally.x, x, 158));
 
 export function createQuatzaFrame(mode: QuatzaMode): QuatzaFrame {
@@ -211,14 +220,21 @@ export function inspectQuatzaRij(value: unknown, owner: string) {
   for (const mode of QUATZA_MODES) {
     if (!Object.hasOwn(value.expeditions, mode)) continue;
     const expedition = value.expeditions[mode];
-    if (!record(expedition) || !exact(expedition, ['mode', 'attempts']) || expedition.mode !== mode ||
+    if (!record(expedition) || expedition.mode !== mode ||
         !Array.isArray(expedition.attempts) || !expedition.attempts.length || expedition.attempts.length > 16) return invalid;
+    const hasPresentations = Object.hasOwn(expedition, 'presentations');
+    if (!exact(expedition, hasPresentations ? ['mode', 'attempts', 'presentations'] : ['mode', 'attempts'])) return invalid;
+    if (hasPresentations && (mode !== 'triad' || !Array.isArray(expedition.presentations) ||
+        expedition.presentations.length < 1 || expedition.presentations.length > QUATZA_RETURN_SUBJECTS.length ||
+        !Array.from(expedition.presentations).every(returnSubject) ||
+        new Set(expedition.presentations).size !== expedition.presentations.length)) return invalid;
     for (const [index, attempt] of expedition.attempts.entries()) {
       if (!record(attempt) || !exact(attempt, ['input', 'phase']) || !Array.isArray(attempt.input) ||
           attempt.input.length > QUATZA_TICK_LIMIT || !attempt.input.every(validInput)) return invalid;
       const replay = replayQuatzaAttempt(mode, attempt.input);
       if (replay.tick !== attempt.input.length || replay.phase !== attempt.phase ||
           index < expedition.attempts.length - 1 && replay.phase !== 'retreated') return invalid;
+      if (hasPresentations && index === expedition.attempts.length - 1 && replay.phase !== 'delivered') return invalid;
     }
   }
   return { status: 'valid' as const, state: structuredClone(value) as unknown as QuatzaRijCampaign };
@@ -245,9 +261,18 @@ export function isQuatzaRijSuccessor(before: QuatzaRijCampaign | null | undefine
     JSON.stringify(before?.expeditions[mode]) !== JSON.stringify(next.expeditions[mode]));
   if (changed.length !== 1) return false;
   const [mode] = changed;
-  const oldAttempts = before?.expeditions[mode]?.attempts ?? [];
-  const attempts = next.expeditions[mode]?.attempts;
-  if (!attempts) return false;
+  const oldExpedition = before?.expeditions[mode], expedition = next.expeditions[mode];
+  if (!expedition) return false;
+  const oldAttempts = oldExpedition?.attempts ?? [];
+  const { attempts } = expedition;
+  const oldPresentations = oldExpedition?.presentations ?? [], presentations = expedition.presentations ?? [];
+  if (JSON.stringify(oldPresentations) !== JSON.stringify(presentations)) {
+    const subject = presentations.at(-1);
+    return mode === 'triad' && oldAttempts.at(-1)?.phase === 'delivered' && !!subject && returnSubject(subject) &&
+      presentations.length === oldPresentations.length + 1 && !oldPresentations.includes(subject) &&
+      oldPresentations.every((value, index) => value === presentations[index]) &&
+      JSON.stringify(oldAttempts) === JSON.stringify(attempts);
+  }
   const previous = oldAttempts.at(-1);
   const current = attempts.at(-1);
   if (!current) return false;
@@ -273,6 +298,17 @@ export function commitQuatzaRij(save: SaveGame, command: QuatzaCommand): QuatzaR
   if (command.type === 'begin' && expedition.attempts.length === command.expectedAttempts + 1 && current?.input.length === 0)
     return { ok: true, state, message: 'Préparation déjà enregistrée.' };
   if (expedition.attempts.length !== command.expectedAttempts) return refuse('La tentative vient de changer.');
+  if (command.type === 'present-return') {
+    if (expedition.mode !== 'triad' || current?.phase !== 'delivered' || !returnSubject(command.subject))
+      return refuse('Rejoins les témoins avec la triade et les deux pièces avant la présentation.');
+    const presented = expedition.presentations ?? [];
+    if (presented.length !== command.expectedPresentations || presented.includes(command.subject))
+      return refuse('La présentation vient de changer. Relis ce que les témoins ont entendu.');
+    expedition.presentations = [...presented, command.subject];
+    return { ok: true, state, message: command.subject === 'companions'
+      ? 'Les témoins ont entendu le retour de Saar et Vek.'
+      : 'Les témoins ont examiné la peau et le crâne rapportés.' };
+  }
   if (command.type === 'begin') {
     if (current && current.phase !== 'retreated') return refuse('Une tentative est déjà consignée.');
     if (expedition.attempts.length >= 16) return refuse('Le registre a atteint sa capacité de tentatives.');
@@ -292,6 +328,7 @@ export function commitQuatzaRij(save: SaveGame, command: QuatzaCommand): QuatzaR
   const resulting = replayQuatzaAttempt(command.mode, input);
   if (resulting.tick !== input.length) return refuse('La séquence dépasse la fin de la chasse.');
   current.input = input; current.phase = resulting.phase;
-  return { ok: true, state, message: resulting.phase === 'delivered' ? 'Peau et crâne présentés aux témoins.' :
+  return { ok: true, state, message: resulting.phase === 'delivered'
+    ? command.mode === 'triad' ? 'Triade, peau et crâne réunis chez les témoins.' : 'Peau et crâne présentés aux témoins.' :
     resulting.phase === 'retreated' ? 'Repli consigné. La peau et le crâne restent sur le terrain.' : 'Terrain enregistré.' };
 }
