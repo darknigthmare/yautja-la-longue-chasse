@@ -1,0 +1,36 @@
+name: Vérification du duel W3-S14
+on:
+  push:
+    branches: [codex/p1-w3-s14-check-20261121]
+permissions:
+  contents: read
+jobs:
+  duel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /app/
+            /scripts/
+            /tests/
+            /public/**/*.json
+            /docs/**/*.json
+            /package.json
+            /package-lock.json
+            /.npmrc
+            /tsconfig*.json
+            /eslint.config.mjs
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '22'}
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node --test --test-reporter=spec tests/clan-war-w3-s14-duel.test.mjs tests/clan-war-practice-server-v127.test.mjs tests/clan-war-practice-durable-v127.test.mjs tests/clan-logistics-v108.test.mjs tests/clan-supply-route-v109.test.mjs
+      - run: node scripts/qa-w3-s14-duel-20261121.mjs
+      - run: npx --no-install eslint --max-warnings 0 app/game/ClanSupplyRouteV109.tsx scripts/clan-war-w3-s14-client.mjs scripts/serve-clan-war-w3-s14-duel.mjs scripts/serve-clan-war-practice-v127.mjs tests/clan-war-w3-s14-duel.test.mjs scripts/qa-w3-s14-duel-20261121.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: duel-autoritaire-w3-s14
+          path: outputs/qa-w3-s14-duel-20261121
