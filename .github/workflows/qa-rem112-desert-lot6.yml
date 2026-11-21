@@ -31,6 +31,7 @@ jobs:
             /public/**/manifest.json
             /public/game/dialogues/v85/bible-dialogues.json
             /docs/qa/v112-campaign-canonical/native-raw.tar.gz
+            /docs/qa/v112-campaign-canonical/native-report.json
             /docs/qa/v112-campaign-canonical/provenance.json
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -48,8 +49,16 @@ jobs:
           archive=root/'native-raw.tar.gz'
           witness=next(row for row in source['artifacts'] if row['file']==archive.name)
           assert sha256(archive.read_bytes()).hexdigest()==witness['sha256']
+          report=root/'native-report.json'
+          report_witness=next(row for row in source['artifacts'] if row['file']==report.name)
+          report_bytes=report.read_bytes()
+          assert sha256(report_bytes).hexdigest()==report_witness['sha256']
+          run=next(row for row in json.loads(report_bytes)['attempts'] if row['missionId']=='swamp-hydra')
+          assert run['status']=='NATIVE_SIMULATION_SUCCESS' and run['final']['phase']=='finished'
+          assert run['inputs']['file'].endswith('-inputs.json')
+          expected=run['inputs']['file'].removesuffix('-inputs.json')+'-campaign-save.json'
           with tarfile.open(archive,'r:gz') as tar:
-              member,=[row for row in tar.getmembers() if Path(row.name).name.endswith('swamp-hydra-campaign-save.json')]
+              member,=[row for row in tar.getmembers() if Path(row.name).name==expected]
               assert member.isfile()
               data=tar.extractfile(member).read()
           decoded=json.loads(data)
@@ -59,7 +68,7 @@ jobs:
           assert desert['status']=='available' and desert['attempts']==0
           out=Path('outputs/admission')
           (out/'earned-swamp-save.json').write_bytes(data)
-          proof={'archiveSha256':witness['sha256'],'member':member.name,'saveSha256':sha256(data).hexdigest(),
+          proof={'archiveSha256':witness['sha256'],'member':member.name,'sourceReportSha256':report_witness['sha256'],'saveSha256':sha256(data).hexdigest(),
                  'earlierProof':'native game engine and native mission result as documented','origin':source['sourceCommit'],
                  'swamp':swamp,'desert':desert}
           (out/'provenance.json').write_text(json.dumps(proof,ensure_ascii=False,indent=2)+'\n')
