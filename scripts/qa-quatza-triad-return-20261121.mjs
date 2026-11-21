@@ -113,6 +113,8 @@ try {
     await currentPage.locator('[data-campaign-location="homeworld"]').waitFor();
     await currentPage.locator('[data-homeworld-viewport]').waitFor();
   }
+  const openCityNavigation = currentPage =>
+    currentPage.getByRole('button', { name: 'Navigation', exact: true }).click();
   async function openDocument(currentPage) {
     const response = await currentPage.goto(origin.href, { waitUntil: 'domcontentloaded' });
     assert(response?.ok() && (await response.text()).includes(buildId));
@@ -123,6 +125,7 @@ try {
   const locked = await browser.newPage({ viewport, storageState: storageState(prior.save) });
   await openDocument(locked);
   await openHomeworld(locked);
+  await openCityNavigation(locked);
   assert.equal(await locked.locator('[data-open-quatza-homeworld]').count(), 0);
   report.admissionChecks.push('native Homeworld before V90 has no triad entry');
   await locked.close();
@@ -145,12 +148,13 @@ try {
   const homeworldEntry = page.locator('[data-open-quatza-homeworld]');
   const dossier = page.locator('[data-clan-chronicle]');
   async function openDossier() {
-    await openHomeworld(page);
     await homeworldEntry.click();
     await dossier.waitFor();
     await dossier.getByRole('button', { name: 'Parcours et rites', exact: true }).click();
   }
   async function navigate() {
+    await openHomeworld(page);
+    await openCityNavigation(page);
     await openDossier();
     await dossier.locator('[data-quatza-open="triad"]').click();
     await root.waitFor();
@@ -165,10 +169,15 @@ try {
   await openDocument(page);
   await openHomeworld(page);
   const cityPoint = (await disk()).homeworld.locationV77;
+  const actor = page.locator('[data-homeworld-actor]');
+  const actorPoint = () => actor.evaluate(node => [node.dataset.x, node.dataset.y, node.dataset.homeworldLevelV77]);
+  await openCityNavigation(page);
+  const livePoint = await actorPoint();
   await openDossier();
   await dossier.getByRole('button', { name: 'Retour', exact: true }).click();
   await openHomeworld(page);
   assert.deepEqual((await disk()).homeworld.locationV77, cityPoint);
+  assert.deepEqual(await actorPoint(), livePoint);
   report.admissionChecks.push('eligible triad entry returns to the same Homeworld checkpoint');
   await navigate();
   assert.equal(await action('companions').count(), 0);

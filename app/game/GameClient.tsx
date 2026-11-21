@@ -1283,7 +1283,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   // Keep the physical room and avatar alive while consulting any of its services,
   // including the council (which has its own full-screen panel).
   const clanShipMounted = clanShipVisible || (screen === "clan-war" && archiveReturnV85 === "clan-ship" && clanShipState?.status === "aboard");
-  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89"));
+  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || (screen === "clan-chronicle" && chronicleReturnScreen === "homeworld") || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89"));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
   );
