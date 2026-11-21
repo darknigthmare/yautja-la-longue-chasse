@@ -54,13 +54,14 @@ function recordSource(file,contents){
   const name=path.relative(root,file),bytes=Buffer.from(contents),blob=createHash('sha1').update('blob '+bytes.length+'\0').update(bytes).digest('hex');
   applicationSources.set(name,{file:name,sha256:hash(bytes),gitBlob:blob,matchesBaseCommit:baseBlobs.get(name)===blob});return contents;
 }
-const bootstrap=await build({stdin:{contents:'export {defaultSave,SAVE_STORAGE_KEY} from "./app/game/save";export {GALAXY_NAVIGATION} from "./app/game/galaxyNavigation";export {MISSIONS} from "./app/game/data";',resolveDir:root,loader:'ts'},
+const bootstrap=await build({stdin:{contents:'export {defaultSave,parseSaveImport,SAVE_STORAGE_KEY} from "./app/game/save";export {GALAXY_NAVIGATION} from "./app/game/galaxyNavigation";export {MISSIONS} from "./app/game/data";',resolveDir:root,loader:'ts'},
   bundle:true,write:false,format:'cjs',platform:'node',logLevel:'silent'});
 const mod={exports:{}};runInNewContext(bootstrap.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url)});
 const campaignSource=option('--campaign-source',null);
 const campaignInputRaw=campaignSource?await readFile(path.resolve(root,campaignSource),'utf8'):null;
 const campaignInput=campaignInputRaw?JSON.parse(campaignInputRaw):null;
 const admission=campaignInput?.finalSave??campaignInput??mod.exports.defaultSave('2026-11-02T00:00:00.000Z'),storageKey=mod.exports.SAVE_STORAGE_KEY;
+const parsedAdmission=mod.exports.parseSaveImport(JSON.stringify(admission));
 const routes=new Map(mod.exports.GALAXY_NAVIGATION.sectors.flatMap(sector=>sector.systems.flatMap(system=>system.bodies
   .flatMap(body=>body.missions.map(mission=>[mission.id,{sector,system,body,mission}])))));
 const requested=option('--missions',mod.exports.MISSIONS.map(mission=>mission.id).join(',')).split(',');
@@ -93,7 +94,8 @@ const report={schema:1,generatedAt:new Date().toISOString(),sourceCommit:revisio
     gameClientSourceSha256:hash(gameClientSource)},
   huntSourceSha256:hash(source),scope:'Whole GameClient in portable Chromium, exact legacy defaultSave admission; read-only hunt observation, real DOM/keyboard/mouse inputs. No nursery, phone, physical gamepad, artwork or performance qualification.',
   admission:{kind:campaignSource?'declared campaign continuation; inspect its parent evidence':'exact defaultSave in a fresh browser context',
-    continuationSource:campaignSource,continuationSha256:campaignInputRaw?hash(campaignInputRaw):null,save:admission,sha256:hash(admission)},
+    continuationSource:campaignSource,continuationSha256:campaignInputRaw?hash(campaignInputRaw):null,save:admission,sha256:hash(admission),
+    parseSaveImport:{accepted:Boolean(parsedAdmission.save),failure:parsedAdmission.failure??null}},
   requestedMissionIds:requested,
   harvestSpeciesGoal:harvestSpecies,skipHarvest,
   attempts:[],captures:[],errors:[],missingAssets:[],inputs:[],armoryTransactions:[],harvestAttempts:[],workshop:[],discoveryObservations:[],qualification:'ATTEMPT_ONLY'};
@@ -136,9 +138,40 @@ const server=createServer(async(req,res)=>{try{
 }catch{missing.add(req.url);res.writeHead(404);res.end();}});
 let browser,page,context;
 let stopRequested=false;process.on('SIGINT',()=>{stopRequested=true;});
+
+async function enterCampaign(page){
+  const menu=page.locator('[data-campaign-menu]'),session=page.locator('[data-campaign-session]');
+  await page.waitForSelector('[data-campaign-menu], [data-campaign-session]');
+  if(await menu.isVisible()){
+    const campaign=page.locator('[data-menu-section="campaign"]');
+    if(await campaign.isVisible())await campaign.click();
+    await page.locator('[data-menu-action="continue"]').click();
+  }
+  await session.waitFor();
+}
+
+async function enterCampaignDeck(page){
+  await enterCampaign(page);
+  const play=page.getByRole('button',{name:'Jouer',exact:true});
+  const shortcuts=page.getByRole('button',{name:'Accès rapide aux installations',exact:true});
+  await play.or(shortcuts).first().waitFor();
+  if(await play.isVisible())await play.click();
+  await shortcuts.waitFor();
+}
+
+async function resumeCampaignHunt(page){
+  await enterCampaign(page);
+  await page.waitForFunction(()=>window.__observeCanonicalHuntV112?.().alive||
+    [...document.querySelectorAll('button')].some(button=>button.textContent?.trim().startsWith('Reprendre la chasse')));
+  const alreadyMounted=await page.evaluate(()=>window.__observeCanonicalHuntV112?.().alive===true);
+  if(!alreadyMounted)await page.getByRole('button',{name:/^Reprendre la chasse/}).first().click();
+  await page.waitForFunction(()=>window.__observeCanonicalHuntV112?.().alive);
+}
+
 try{
   await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});
   const address=server.address();assert.ok(address&&typeof address==='object');
+  assert.ok(parsedAdmission.save,'Campaign admission rejected by parseSaveImport: '+parsedAdmission.failure);
   browser=await chromium.launch({executablePath:option('--chromium','/usr/bin/chromium'),args:['--no-sandbox']});
   report.browser=browser.version();
   context=await browser.newContext({viewport:{width:1280,height:900},deviceScaleFactor:1});
@@ -149,8 +182,7 @@ try{
   await page.goto('http://127.0.0.1:'+address.port+'/',{waitUntil:'domcontentloaded'});
   await page.bringToFront();
   const capture=async name=>{const buffer=await page.screenshot({animations:'disabled'});await writeFile(path.join(out,name+'.png'),buffer);report.captures.push({file:name+'.png',sha256:hash(buffer),bytes:buffer.length});};
-  await page.getByRole('button',{name:/^Continuer/}).click();
-  await page.locator('[data-campaign-session][data-campaign-location="deck"]').waitFor();
+  await enterCampaignDeck(page);
   await capture('01-legacy-default-deck');
   await writeFile(path.join(out,'deck-visible-buttons.json'),JSON.stringify(await page.getByRole('button').allTextContents(),null,2)+'\n');
   const saved=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),storageKey);
@@ -194,8 +226,7 @@ try{
       if(job&&!pausedAndReloaded&&job.unitsDone===1){
         await page.getByRole('button',{name:/^Suspendre sans perte ·/}).first().click();
         const beforeReload=await saved();await capture('workshop-paused');await page.reload();
-        await page.getByRole('button',{name:/^Continuer/}).click();
-        await page.locator('[data-campaign-session][data-campaign-location="deck"]').waitFor();
+        await enterCampaignDeck(page);
         const afterReload=await saved();assert.deepEqual(afterReload.inventory.harvestV112,beforeReload.inventory.harvestV112);
         assert.equal(afterReload.profile.clanMarks,beforeReload.profile.clanMarks);
         await openDirect('TROPHÉES');pausedAndReloaded=true;actions.push('pause-reload-exact-resume');continue;
@@ -223,11 +254,7 @@ try{
     const serialized=JSON.stringify(played);
     await page.evaluate(raw=>localStorage.setItem('yautja-long-hunt.active-hunt',raw),serialized);
     assert.equal(await page.evaluate(()=>localStorage.getItem('yautja-long-hunt.active-hunt')),serialized,'whole sidecar is admitted unchanged');
-    await page.reload();await page.getByRole('button',{name:/^Continuer/}).click();
-    await page.waitForFunction(()=>window.__observeCanonicalHuntV112?.().alive||[...document.querySelectorAll('button')].some(button=>button.textContent?.trim().startsWith('Reprendre la chasse')));
-    const alreadyMounted=await page.evaluate(()=>window.__observeCanonicalHuntV112?.().alive===true);
-    const resume=page.getByRole('button',{name:/^Reprendre la chasse/}).first();if(!alreadyMounted&&await resume.count()&&await resume.isVisible())await resume.click();
-    await page.waitForFunction(()=>window.__observeCanonicalHuntV112?.().alive);
+    await page.reload();await resumeCampaignHunt(page);
     await page.getByText('Synchronisation du biomask…',{exact:true}).waitFor({state:'hidden',timeout:60000});
     await page.locator('canvas').last().focus();let observed=await page.evaluate(()=>window.__observeCanonicalHuntV112());
     assert.equal(observed.missionId,played.missionId);assert.ok(observed.state.elapsed>=played.snapshot.checkpoint.elapsed&&observed.state.elapsed-played.snapshot.checkpoint.elapsed<2);
@@ -383,8 +410,7 @@ try{
           const sidecar=await page.evaluate(()=>JSON.parse(localStorage.getItem('yautja-long-hunt.active-hunt')));
           assert.ok(sidecar&&sidecar.snapshot?.checkpoint?.elapsed>=20,'the active native sidecar must contain this actual hunt');
           await captureHunt('suspended-to-deck');await page.reload();
-          await page.getByRole('button',{name:/^Continuer/}).click();
-          const resume=page.getByRole('button',{name:/Reprendre la chasse/}).first();if(await resume.count())await resume.click();
+          await resumeCampaignHunt(page);
           await page.locator('canvas').last().focus();
           const restored=await page.evaluate(()=>window.__observeCanonicalHuntV112?.());
           assert.ok(restored?.alive&&restored.missionId===missionId&&restored.state.elapsed>=sidecar.snapshot.checkpoint.elapsed&&

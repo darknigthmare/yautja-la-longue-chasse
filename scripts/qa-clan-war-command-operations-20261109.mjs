@@ -8,6 +8,7 @@ import {fileURLToPath} from 'node:url';
 import {build} from 'esbuild';
 import {chromium} from 'playwright-core';
 const root=fileURLToPath(new URL('../',import.meta.url));
+const assaultReplayMode=process.env.COMMAND_OPERATIONS_ASSAULT_REPLAY==='1';
 const out=path.resolve(root,process.env.COMMAND_OPERATIONS_OUTPUT||'production/clan-war-command-20261109/qa/operations/attempt-1');
 await fs.mkdir(out,{recursive:true});await fs.writeFile(path.join(out,'run.lock'),new Date().toISOString()+'\n',{flag:'wx'});
 await fs.copyFile(fileURLToPath(import.meta.url),path.join(out,'recipe-used.mjs'));
@@ -19,6 +20,7 @@ const deployedTeams=startingWorld.teams.slice(0,2);
 const deployedUnits=deployedTeams.map(team=>domain.DEFAULT_WAR_RULES_V6.units.find(unit=>unit.id===team.unitId));
 const formationUpkeep=deployedUnits.reduce((total,unit)=>total+unit.upkeepRav,0);
 const sourceNames=['app/game/ClanWarOperationsV115.tsx','app/game/ClanWarOperationsV115.module.css','app/game/ClanWarFieldShortcuts.tsx','app/game/systems/clanWarFieldControls.ts','app/game/ClanWarCommandOverlay.tsx','app/game/ClanWarCommandOverlay.module.css','app/game/systems/clanWarOperationsArchive.ts','app/game/systems/clanWarOperationsV115.ts','app/game/systems/clanWarAssaultContactV141.ts','app/game/systems/clanWarFocusV142.ts','app/game/systems/clanWarFenceV94.ts','app/game/systems/clanWarStealthAcousticsV115.ts','app/game/systems/sceneAudio.ts','app/game/audioFiles.ts','app/game/sound.ts','tests/browser/clan-war-v151-four-modes.fixture.tsx','public/audio/manifest.json','public/audio/sfx/footstep/v54.wav','scripts/qa-clan-war-command-operations-20261109.mjs'];
+if(assaultReplayMode)sourceNames.push('scripts/replay-clan-war-assault-v115.mjs');
 const footstepPath='/audio/sfx/footstep/v54.wav';
 const footstepEntry=JSON.parse(await fs.readFile(path.join(root,'public/audio/manifest.json'),'utf8')).entries.find(entry=>entry.id==='footstep');
 const footstep=footstepEntry.sources.find(source=>new URL(source.url,'http://localhost').pathname===footstepPath);
@@ -44,6 +46,95 @@ function findListenRoute(start){
 const source=async()=>Object.fromEntries(await Promise.all(sourceNames.map(async name=>[name,sha(await fs.readFile(path.join(root,name)))])));
 const report={schemaVersion:1,scope:'Actual production operations component and shared dialog, esbuild host with original W3 rules. Real browser events, localStorage, IDB and Web Locks. Not full GameClient, campaign, physical-controller or canonical-art certification.',checks:[],screenshots:[],errors:[],httpErrors:[],sourceBefore:await source(),canonicalKey:'yautja.clan-war.v115.operations.fenced.v2'};
 const pass=(name,detail={})=>report.checks.push({name,passed:true,...detail});
+
+async function captureBrowserAssaultReplay(page,operations,screenshot) {
+ const {
+  loadWarAssaultReplayRulesV115,assaultReplayChecksumV115,recordAssaultReplayV115,
+  sampleAssaultReplayV115,verifyAssaultReplayV115,
+ }=await import('./replay-clan-war-assault-v115.mjs');
+ const game=await loadWarAssaultReplayRulesV115();
+ const recipe=sampleAssaultReplayV115(game);
+ const team=recipe.teamIds[0];
+ const unit=game.DEFAULT_WAR_RULES_V6.units.find(entry=>entry.id===startingWorld.teams[0].unitId);
+ const readNative=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)||'null'),report.canonicalKey);
+ assert.equal(await readNative(),null);
+ const observer=await page.context().newCDPSession(page);
+ const persisted=[];
+ const collect=event=>{
+  if(!event.storageId.isLocalStorage||event.key!==report.canonicalKey||!event.newValue)return;
+  persisted.push(JSON.parse(event.newValue));
+ };
+ observer.on('DOMStorage.domStorageItemAdded',collect);
+ observer.on('DOMStorage.domStorageItemUpdated',collect);
+ await observer.send('DOMStorage.enable');
+
+ await operations.locator('[data-war-mode-card="assault"]').click();
+ const briefing=page.getByRole('dialog',{name:'Préparer un mandat',exact:true});
+ await briefing.getByRole('combobox',{name:'Territoire de la Bible V6',exact:true}).selectOption(recipe.targetId);
+ await briefing.locator('[data-war-briefing-step-button="teams"]').click();
+ for(const choice of await briefing.locator('input[type="checkbox"]').all())await choice.uncheck();
+ await briefing.locator('input[type="checkbox"]').first().check();
+ await briefing.getByRole('button',{name:/^Lancer :/}).click();
+ await briefing.waitFor({state:'hidden'});
+ await page.waitForFunction(key=>JSON.parse(localStorage.getItem(key)||'null')?.active?.mode==='assault',report.canonicalKey);
+ const initialBattle=await readNative();
+ assert.deepEqual(initialBattle.active.teamIds,[team]);
+ const missionId=initialBattle.active.id;
+ const field=operations.locator('[data-war-field-mode="assault"]');
+ const deploymentCost=Math.min(72,Math.max(8,unit.commandPoints*8));
+ const deploy=field.getByRole('button',{name:unit.name+' · '+deploymentCost+' AP',exact:true});
+ await deploy.click();
+ await page.waitForFunction(({key,team})=>
+  JSON.parse(localStorage.getItem(key)||'null')?.active?.assault?.launched.includes(team),
+  {key:report.canonicalKey,team});
+ await field.scrollIntoViewIfNeeded();
+ await screenshot('01-assaut-v115-ordre-execute.png');
+ await page.waitForFunction(({key,missionId})=>{
+  const value=JSON.parse(localStorage.getItem(key)||'null');
+  return !value?.active&&value?.reports.some(item=>item.id===missionId);
+ },{key:report.canonicalKey,missionId},{timeout:95000});
+ const final=await readNative();
+ const nativeReport=final.reports.find(item=>item.id===missionId);
+ assert.ok(nativeReport&&nativeReport.outcome!=='retreat');
+ await operations.locator('[data-war-command="reports"]').click();
+ const dialog=page.getByRole('dialog',{name:'Comptes rendus',exact:true});
+ await dialog.getByText(nativeReport.summary,{exact:true}).waitFor();
+ await screenshot('02-assaut-v115-rapport-natif.png');
+
+ // DevTools reports the browser writes themselves, including writes between polling frames.
+ await observer.send('DOMStorage.getDOMStorageItems',{storageId:{securityOrigin:report.url,isLocalStorage:true}});
+ await observer.detach();
+ assert.deepEqual(persisted.at(-1),final,'the last DevTools commit is the report saved by the panel');
+ assert.deepEqual(persisted[0].active.teamIds,[team]);
+ assert.equal(persisted[0].active.tick,0);
+ const commands=persisted.slice(1).map((state,index)=>{
+  const before=persisted[index].active;
+  assert.ok(before?.assault);
+  if(!state.active){
+   assert.equal(state.reports.at(-1).id,missionId);
+   return ['tick'];
+  }
+  const after=state.active;
+  assert.equal(after.id,missionId);
+  if(after.tick===before.tick+1)return ['tick'];
+  assert.equal(after.tick,before.tick);
+  assert.deepEqual(after.assault.launched,[...before.assault.launched,team]);
+  return ['deploy',team];
+ });
+ assert.equal(commands.filter(command=>command[0]==='deploy').length,1);
+ const replay=recordAssaultReplayV115(game,{...recipe,commands,finish:false});
+ assert.deepEqual(replay.report,nativeReport);
+ assert.deepEqual(replay.frames.map(frame=>frame.stateDigest),persisted.map(assaultReplayChecksumV115));
+ assert.equal(replay.finalStateDigest,assaultReplayChecksumV115(final));
+ const verified=verifyAssaultReplayV115(game,replay);
+ await fs.writeFile(path.join(out,'replay.headless.json'),JSON.stringify(replay,null,2)+'\n');
+ await fs.writeFile(path.join(out,'rapport.natif.json'),JSON.stringify(nativeReport,null,2)+'\n');
+ pass('Native browser orders and every committed state reproduce the same assault and final report headlessly',{
+  missionId,outcome:nativeReport.outcome,commits:persisted.length,checksum:verified.sha256,
+  sourceSha:replay.seedInputs.sourceSha,regionalSeed:replay.seedInputs.regionalSeed,
+  reportSha256:assaultReplayChecksumV115(nativeReport),
+ });
+}
 const bundle=await build({absWorkingDir:root,entryPoints:['tests/browser/clan-war-v151-four-modes.fixture.tsx'],bundle:true,platform:'browser',format:'iife',jsx:'automatic',write:false,outfile:'command.js',logLevel:'warning'});
 const js=bundle.outputFiles.find(f=>f.path.endsWith('.js')).contents,css=bundle.outputFiles.find(f=>f.path.endsWith('.css')).contents;
 report.bundle={jsSha256:sha(js),cssSha256:sha(css)};
@@ -71,6 +162,9 @@ try{
  const archive=()=>page.evaluate(key=>localStorage.getItem(key),report.canonicalKey);
  assert.equal(await archive(),null);pass('Mount and command desks never initialize a war archive');
  const screenshot=async name=>{await page.screenshot({path:path.join(out,name)});report.screenshots.push({filename:name,sha256:sha(await fs.readFile(path.join(out,name))),opened:false});};
+ if(assaultReplayMode){
+  await captureBrowserAssaultReplay(page,operations,screenshot);
+ }else{
  await screenshot('01-command-desktop.png');
  for(const [id,title] of [['recruitment','Renforts de clan'],['medical','Triage du clan'],['reports','Comptes rendus'],['archive','Archives et règles']]){
   const trigger=operations.locator(`[data-war-command="${id}"]`);await trigger.click();
@@ -350,6 +444,7 @@ try{
  },{key:report.canonicalKey,team});
  await page.waitForFunction(id=>document.querySelector('[data-war-assault-cloak='+JSON.stringify(id)+'] button')?.getAttribute('aria-pressed')==='false',team);
  pass('A deployed squad can engage assault camouflage by keyboard, reload with the same battery, and exhaust it on native combat ticks');
+ }
  assert.deepEqual(report.errors,[]);assert.deepEqual(report.httpErrors,[]);pass('No page or resource errors');
  report.sourceAfter=await source();assert.deepEqual(report.sourceAfter,report.sourceBefore);pass('Sources and shared overlay remain byte-identical during native run');
  report.passed=true;
