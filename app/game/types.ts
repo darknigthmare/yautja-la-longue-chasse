@@ -723,6 +723,7 @@ export interface SaveGame {
   soloV70?: SoloV70Campaign | null;
   /** Local preparation only; never substitutes for a Blooded rite. */
   soloV90?: SoloV90Campaign | null;
+  quatzaRij?: import("./systems/quatzaRij").QuatzaRijCampaign | null;
   homeworldRegionV68?: HomeworldRegionStateV68 | null;
   /** Physical city/biome connector; separate from expedition evidence. */
   homeworldPassageV67?: HomeworldPassageStateV67 | null;
@@ -735,6 +736,7 @@ export interface SaveGame {
   clanShipDocking?: import("./systems/clanShipDocking").ClanShipDockingState | null;
   /** Clan mandate, accepted contracts and recruited crew share the campaign transaction. */
   clanShipOperations?: import("./systems/clanShipOperations").ClanShipOperationsState | null;
+  clanHullProjectV171?: import("./systems/clanHullProjectV171").ClanHullProjectV171 | null;
   /** Separate orbital castle visit, bound to this campaign and its personal hull. */
   wolfCastle?: import("./systems/wolfCastle").WolfCastleVisit | null;
   /** Arrival and frozen start configuration are written in one campaign transaction. */

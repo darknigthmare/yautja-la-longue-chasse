@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState, type ReactNode } from "react";
 import {
   DEFAULT_WAR_RULES_V6, WAR_PRIVATE_IMPORT_MAX_BYTES_V6,
   estimateWarTeamV6, parsePrivateWarRulesV6, planWarRouteV6, warTeamTierV6,
@@ -40,7 +40,7 @@ type CouncilSection = typeof COUNCIL_TOOL_GROUPS[number]["tools"][number][0];
 
 const fold = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 /** Latest workbook figures and route planning, without invented campaign acquisitions. */
-export default function ClanWarBibleV6Panel({ active = true, gauntletId = "jungle-hunter", holographic = false, createSceneAudio }: { active?: boolean; gauntletId?: string; holographic?: boolean; createSceneAudio?: () => RecordedSceneAudioPort | null }) {
+export default function ClanWarBibleV6Panel({ active = true, gauntletId = "jungle-hunter", holographic = false, createSceneAudio, campaignRoutesPanel }: { active?: boolean; gauntletId?: string; holographic?: boolean; createSceneAudio?: () => RecordedSceneAudioPort | null; campaignRoutesPanel?: ReactNode }) {
   const [privateRules, setPrivateRules] = useState<WarRulesV6 | null>(null);
   const [importName, setImportName] = useState(""), [importError, setImportError] = useState(""), [importBusy, setImportBusy] = useState(false);
   const importTicket = useRef(0);
@@ -132,7 +132,7 @@ export default function ClanWarBibleV6Panel({ active = true, gauntletId = "jungl
     <div hidden={section !== "exercise"}><ClanWarExerciseV6 key={rulesGeneration} rules={rules}/></div>
     <div hidden={section !== "works"}><ClanWarWorksV6 key={rulesGeneration} rules={rules}/></div>
     <div hidden={section !== "specialized"}><ClanWarSpecializedV107 key={rulesGeneration} rules={rules} active={active && section === "specialized" && !sourceOpen && !rulesOpen}/></div>
-    <div hidden={section !== "logistics"}>{section === "logistics" && <ClanSupplyRouteV109 key={rulesGeneration} rules={rules} active={active && section === "logistics" && !sourceOpen && !rulesOpen}/>}</div>
+    <div hidden={section !== "logistics"}>{section === "logistics" && <ClanSupplyRouteV109 key={rulesGeneration} rules={rules} active={active && section === "logistics" && !sourceOpen && !rulesOpen} campaignRoutesPanel={campaignRoutesPanel}/>}</div>
     {section === "teams" && <div>
       <h4>Hypothèses de l’équipe</h4><p>Le calcul reprend la feuille « Simuler Une équipe ». Ces valeurs servent à comparer une préparation ; elles ne deviennent pas des guerriers, des compétences ou des ressources dans votre campagne.</p>
       <div className={styles.controlGrid}><label>Type d’équipe<select value={hypothesis.unitId} onChange={event => { const selected = WAR_UNITS_V6.find(item => item.id === event.target.value); if (selected) setHypothesis(current => ({ ...current, unitId: selected.id, deployableMembers: selected.fullMembers, frontNeedRav: Math.max(current.frontNeedRav, selected.upkeepRav) })); }}>{WAR_UNITS_V6.map(item => <option key={item.id} value={item.id}>{item.id} · {item.name}</option>)}</select></label>{numberInput("xp", `Expérience · 0 à ${WAR_PARAMETERS_V6.xp_max}`, WAR_PARAMETERS_V6.xp_max)}{numberInput("fatigue", `Fatigue · 0 à ${WAR_PARAMETERS_V6.fatigue_max}`, WAR_PARAMETERS_V6.fatigue_max)}{numberInput("deployableMembers", "Membres déployables", unit?.fullMembers ?? 0)}{numberInput("availableRav", "RAV disponibles ce tour", WAR_PARAMETERS_V6.rav_cap)}{numberInput("frontNeedRav", "Besoin RAV du front · équipe incluse une fois", 1000000)}{numberInput("terrainBonus", `Bonus de défense du terrain · plafonné à ${WAR_PARAMETERS_V6.terrain_bonus_cap} %`, 100)}<label>Prochain objectif<select value={hypothesis.nextObjectiveXp} onChange={event => setHypothesis(current => ({ ...current, nextObjectiveXp: Number(event.target.value) }))}><option value={WAR_PARAMETERS_V6.xp_recon}>Reconnaissance nouvelle · {WAR_PARAMETERS_V6.xp_recon} XP</option><option value={WAR_PARAMETERS_V6.xp_hero}>Action héroïque{WAR_PARAMETERS_V6.xp_retreat === WAR_PARAMETERS_V6.xp_hero ? " ou repli" : ""} · {WAR_PARAMETERS_V6.xp_hero} XP</option>{WAR_PARAMETERS_V6.xp_retreat !== WAR_PARAMETERS_V6.xp_hero && <option value={WAR_PARAMETERS_V6.xp_retreat}>Repli organisé · {WAR_PARAMETERS_V6.xp_retreat} XP</option>}<option value={WAR_PARAMETERS_V6.xp_battle}>Objectif de bataille · {WAR_PARAMETERS_V6.xp_battle} XP</option><option value={WAR_PARAMETERS_V6.xp_campaign}>Finale · remplace l’objectif standard · {WAR_PARAMETERS_V6.xp_campaign} XP</option></select></label></div>

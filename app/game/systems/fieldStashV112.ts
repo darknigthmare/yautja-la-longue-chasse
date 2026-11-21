@@ -62,8 +62,19 @@ export function moveFieldSpecimenV112<T extends FieldStashStateV112>(state:T,act
   const entries=state.stashedSpecimensV112??[],stored=entries.find(e=>e.specimenId===specimenId);
   if(action==="drop"){
     if(stored)return refuse("Cette prise est déjà déposée.");
-    const x=Math.max(6,Math.min(world.width-6,actor.x+actor.width/2)),y=actor.y+actor.height;
-    if(huntStructuralBarrierV94({x,y:y-6},{x,y:y-6},world.platforms))return refuse("Pas d'espace libre pour déposer cette prise.");
+    const y=actor.y+actor.height;
+    const clampToWorld=(x:number)=>Math.max(6,Math.min(world.width-6,x));
+    const center=clampToWorld(actor.x+actor.width/2);
+    const candidates=Math.abs(y-world.floorY)<=1e-6 ? [center] : world.platforms.flatMap(support=>{
+      const right=support.x+support.width;
+      if(Math.abs(y-support.y)>1e-6||actor.x>=right||actor.x+actor.width<=support.x)return [];
+      // A hunter standing on the rim can have their centre outside the ledge.
+      // The specimen needs its own contact on the same physical support.
+      const inset=Math.min(6,support.width/2);
+      return [clampToWorld(Math.max(support.x+inset,Math.min(right-inset,center)))];
+    }).sort((a,b)=>Math.abs(center-a)-Math.abs(center-b));
+    const x=candidates.find(target=>!huntStructuralBarrierV94({x:center,y:y-6},{x:target,y:y-6},world.platforms));
+    if(x===undefined)return refuse("Pas d'espace libre sur cet appui pour déposer cette prise.");
     return {accepted:true,message:"Prise déposée ici. Elle reste unique et ne suivra pas votre extraction ; revenez la reprendre.",
       state:{...state,stashedSpecimensV112:[...entries,{specimenId:item.id,x,y,fallSpeed:0}]}};
   }

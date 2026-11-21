@@ -25,6 +25,8 @@ import { canMentorElderNovice, type MentoringCommand, type MentoringResponse } f
 import ElderAssembly from "./ElderAssembly";
 import { canConveneElderAssembly, elderAssemblyProofs, type AssemblyCommand, type AssemblyResponse } from "./systems/elderAssemblyV168";
 import EliteMastery from "./EliteMastery";
+import QuatzaRijScene from './QuatzaRijScene';
+import { canEnterQuatza, type QuatzaCommand } from './systems/quatzaRij';
 import { canEnterEliteMastery, type MasteryCommand, type MasteryResponse } from "./systems/eliteMasteryV170";
 
 const regions = [
@@ -58,7 +60,7 @@ function HomeworldRegionArt({ name }: { name: string }) {
 
 /** The dossier presents receipts and delegates each playable rite to its campaign owner. */
 export default function ClanChroniclePanel({
-  save, onClose, onGameReserveV66, onOpenCradle, onPassageCommand, onMentoringCommand, onAssemblyCommand, onMasteryCommand,
+  save, onClose, onGameReserveV66, onOpenCradle, onPassageCommand, onMentoringCommand, onAssemblyCommand, onMasteryCommand, onQuatzaCommand, quatzaSuspended,
 }: {
   save: SaveGame;
   onClose: () => void;
@@ -68,13 +70,17 @@ export default function ClanChroniclePanel({
   onMentoringCommand?: (command: MentoringCommand) => MentoringResponse;
   onAssemblyCommand?: (command: AssemblyCommand) => AssemblyResponse;
   onMasteryCommand?: (command: MasteryCommand) => MasteryResponse;
+  onQuatzaCommand?: (command: QuatzaCommand) => boolean;
+  quatzaSuspended?: boolean;
 }) {
   const [section, setSection] = useState<"journey" | "worlds" | "humans" | "companions">("journey");
   const [query, setQuery] = useState("");
-  const [activeRite, setCampaignRite] = useState<"mentoring" | "passage" | "assembly" | "mastery" | null>(null);
+  const [activeRite, setCampaignRite] = useState<"mentoring" | "passage" | "assembly" | "mastery" | "quatza-triad" | "quatza-solo" | null>(null);
   const proofs = elderAssemblyProofs(save);
+  const triadAvailable = !!onQuatzaCommand && (!!save.quatzaRij?.expeditions.triad || canEnterQuatza(save, 'triad'));
+  const soloAvailable = !!onQuatzaCommand && (!!save.quatzaRij?.expeditions.solo || canEnterQuatza(save, 'solo'));
   const closeCampaignRite = () => setCampaignRite(null);
-  const toggleCampaignRite = (rite: "mentoring" | "passage" | "assembly" | "mastery") =>
+  const toggleCampaignRite = (rite: "mentoring" | "passage" | "assembly" | "mastery" | "quatza-triad" | "quatza-solo") =>
     setCampaignRite(current => current === rite ? null : rite);
   const chronicle = useMemo(() => save.prologue?.chronicle ?? migrateV35ClanChronicle(save), [save]);
   const rankDossier = useMemo(() => rankRiteDossierV168(save), [save]);
@@ -116,13 +122,23 @@ export default function ClanChroniclePanel({
           </ol>
         </details>
         <ol className={styles.rites}>
-          <li><h4>Young Blood · L-02 et L-03</h4><p>Chasser le Quatza-Rij à trois, rentrer, puis recevoir la reconnaissance du clan.</p><p>Épreuve à produire.</p></li>
+          <li><h4>Young Blood · L-02 et L-03</h4><p>Chasser le Quatza-Rij à trois et présenter la peau et le crâne.</p>
+            {triadAvailable ? <button type="button" data-quatza-open="triad" onClick={() => toggleCampaignRite("quatza-triad")}
+              aria-controls="quatza-expedition-triad" aria-expanded={activeRite === "quatza-triad"}>
+              {activeRite === "quatza-triad" ? "Replier la chasse en triade" : "Ouvrir la chasse en triade"}</button> :
+              <p>Le départ s’ouvre après la répétition du trio, au rang Young Blood.</p>}
+          </li>
           <li><h4>Blooded · L-04</h4><p>Traverser la pyramide en triade, chacun avec sa prise, puis recevoir la marque à l’acide.</p><p>Épreuve à produire.</p></li>
           {onMasteryCommand && (canEnterEliteMastery(save) || save.eliteMasteryV170) && <li>
             <h4>Mon domaine de maîtrise</h4>
             <button type="button" onClick={() => toggleCampaignRite("mastery")} aria-expanded={activeRite === "mastery"}>
               {activeRite === "mastery" ? "Replier le terrain de maîtrise" : "Ouvrir le terrain de maîtrise"}
             </button>
+          </li>}
+          {soloAvailable && <li><h4>Le Quatza-Rij solitaire · L-05</h4>
+            <button type="button" data-quatza-open="solo" onClick={() => toggleCampaignRite("quatza-solo")}
+              aria-controls="quatza-expedition-solo" aria-expanded={activeRite === "quatza-solo"}>
+              {activeRite === "quatza-solo" ? "Replier la chasse solitaire" : "Ouvrir la chasse solitaire"}</button>
           </li>}
           <li data-rank-queen-proof-v168>
             <h4>Elite · L-05, L-06 et L-07</h4>
@@ -155,6 +171,9 @@ export default function ClanChroniclePanel({
           </li>
         </ol>
       </section>
+      {(activeRite === "quatza-triad" || activeRite === "quatza-solo") && onQuatzaCommand &&
+        <QuatzaRijScene key={save.createdAt + ':' + activeRite} mode={activeRite === "quatza-triad" ? "triad" : "solo"}
+          save={save} onCommand={onQuatzaCommand} suspended={quatzaSuspended} />}
       {activeRite === "mastery" && onMasteryCommand && <EliteMastery key={save.createdAt}
         save={save} onCommand={onMasteryCommand} onClose={closeCampaignRite} />}
       {activeRite === "mentoring" && onMentoringCommand && <ElderMentoring key={save.createdAt}

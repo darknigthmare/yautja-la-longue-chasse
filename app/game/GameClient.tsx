@@ -103,11 +103,13 @@ import { campaignWelcomeV69 } from "./systems/campaignWelcomeV69";
 import { useHomeworldReducedMotionV77 } from "./useHomeworldReducedMotionV77";
 import { campaignWorldResumeV70 } from "./systems/campaignWorldResumeV70";
 import { actClanShipDocking, normalizeClanShipDocking, type ClanShipDockingAction } from "./systems/clanShipDocking";
-import { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, evaluateClanShipAccess, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, type ClanShipOperationsAction } from "./systems/clanShipOperations";
+import { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, evaluateClanShipAccess, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, type ClanShipNpcId, type ClanShipOperationsAction } from "./systems/clanShipOperations";
 import { actClanShipIncident, actClanShipTrophyHearing, type ClanShipIncidentAction, type ClanShipIncidentObservation } from './systems/clanShipIncidents';
 import type { ClanShipTrophyHearingAction } from './systems/clanShipTrophyHearing';
 import { actClanShipReturnEscort, type ClanShipReturnEscortAction, type ClanShipReturnEscortObservation } from './systems/clanShipReturnEscort';
 import type { ClanShipService } from "./ClanShipHub";
+import { commitQuatzaRij, type QuatzaCommand } from "./systems/quatzaRij";
+import { commitClanHullProject, type ClanHullProjectCommandV171, type ClanHullProjectResponseV171 } from "./systems/clanHullProjectV171";
 import { actBuriedCradleCampaign, evaluateBuriedCradleAccess, type CradleCampaignAction } from './systems/buriedCradleCampaign';
 import type { CradleReturnOperation, CradleReturnObservation } from './systems/buriedCradleReturn';
 import { commitElderPassageJudgment, type PassageCommand, type PassageResponse } from './systems/elderPassageJudgmentV168';
@@ -2281,7 +2283,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "elderPassageJudgmentV168" | "elderMentoringV168" | "elderAssemblyV168" | "eliteMasteryV170" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "spaceRoutesV159" | "queenHuntV163" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "mountRidesV156" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155" | "blackGodV162" | "minorArcsV160" | "warpEpochsV165" | "tantalusV164">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "quatzaRij" | "buriedCradle" | "elderPassageJudgmentV168" | "elderMentoringV168" | "elderAssemblyV168" | "eliteMasteryV170" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "spaceRoutesV159" | "queenHuntV163" | "clanShipDocking" | "clanShipOperations" | "clanHullProjectV171" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "mountRidesV156" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155" | "blackGodV162" | "minorArcsV160" | "warpEpochsV165" | "tantalusV164">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2340,6 +2342,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     !resumableHunt && !activeHuntSessionRef.current,
   [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
     resumableHunt, screen, settingsOpen]);
+
+  const onQuatzaCommand = useCallback((command: QuatzaCommand): boolean => {
+    if (!elderRiteAvailable()) return false;
+    const result = commitQuatzaRij(saveRef.current, command);
+    if (!result.ok) return false;
+    return JSON.stringify(saveRef.current.quatzaRij) === JSON.stringify(result.state) ||
+      persistSocialProgress({ quatzaRij: result.state });
+  }, [elderRiteAvailable, persistSocialProgress]);
 
   const onElderPassageCommand = useCallback((command: PassageCommand): PassageResponse => {
     if (!elderRiteAvailable()) return { ok: false, message: "Rouvre le dossier lorsque la campagne sera disponible." };
@@ -3045,6 +3055,21 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setToast(recruitment?.changed ? recruitment.message : result.message);
     return true;
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, persistSocialProgress, resumableHunt, screen, settingsOpen]);
+
+  const onClanHullProject = useCallback((command: ClanHullProjectCommandV171, contact: ClanShipNpcId | null): ClanHullProjectResponseV171 => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "clan-ship" ||
+        !gameFocusedV89 || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy ||
+        resumableHunt || activeHuntSessionRef.current || trophyWorkshop !== null) {
+      return { ok: false, message: "Rouvre le dossier lorsque le bord sera disponible." };
+    }
+    const result = commitClanHullProject(current, command, contact);
+    if (!result.ok) return result;
+    return persistSocialProgress({ clanHullProjectV171: result.state })
+      ? { ok: true, message: result.message }
+      : { ok: false, message: "La sauvegarde attend sa confirmation. Relis le dossier avant de reprendre." };
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
+    persistSocialProgress, resumableHunt, screen, settingsOpen, trophyWorkshop]);
 
   const openHomeworldExpedition = useCallback((regionId: "ash-marches" | "glass-desert" = "ash-marches") => {
     const current = saveRef.current;
@@ -4958,7 +4983,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       <div hidden={screen === "homeworld" || screen === "sprite-library" || trophyTutorialOpen} inert={shipStationOpen || settingsOpen || screen === "sprite-library"}>{topBar}</div>
 
       {screen === "clan-war" && <section className="screen panel-screen" inert={settingsOpen}>
-        <Suspense fallback={<DeferredGameScreen />}><ClanWarPanelV85 save={save} createSceneAudio={createSceneAudio} onClose={() => go(archiveReturnV85)} onGauntletSound={playGauntletSignal} onEquipGauntlet={equipGauntletCampaignV134} onClaimGauntletStudy={claimGauntletResearchV134} /></Suspense>
+        <Suspense fallback={<DeferredGameScreen />}>
+          <ClanWarPanelV85 save={save} createSceneAudio={createSceneAudio} onClose={() => go(archiveReturnV85)}
+            onGauntletSound={playGauntletSignal} onEquipGauntlet={equipGauntletCampaignV134} onClaimGauntletStudy={claimGauntletResearchV134}
+            campaignRoutesPanel={<SpaceRoutesPanelV159 ownerCreatedAt={save.createdAt}
+              state={normalizeSpaceRoutesV159(save.spaceRoutesV159, save.createdAt)} ship={spacePersonalShipV159(save)}
+              disabled={settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy}
+              onAction={onSpaceRouteActionV159} />}
+          />
+        </Suspense>
       </section>}
       {screen === "sprite-library" && <Suspense fallback={<DeferredGameScreen />}>
         <RecentSpriteLibraryV85 onClose={() => go(archiveReturnV85)} />
@@ -5157,6 +5190,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <div className="screen-safe">
             <Suspense fallback={<DeferredGameScreen />}>
               <ClanChroniclePanel save={save} onGameReserveV66={openGameReserveV66} onClose={() => go(chronicleReturnScreen)}
+                onQuatzaCommand={onQuatzaCommand}
+                quatzaSuspended={settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !!resumableHunt || !gameFocusedV89}
                 onPassageCommand={onElderPassageCommand} onMentoringCommand={onElderMentoringCommand} onAssemblyCommand={onElderAssemblyCommand} onMasteryCommand={onEliteMasteryCommand}
                 onOpenCradle={campaignSaveBusy || archiveTransferBusy || archiveRecoveryIssue || resumableHunt
                   ? undefined : () => go("buried-cradle-briefing")} />
@@ -5405,6 +5440,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 suspended={screen !== "clan-ship" || settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !gameFocusedV89}
                 onAction={commitClanShipAction}
                 onOperations={commitClanShipOperations}
+                onHullProject={onClanHullProject}
                 companions={{ save, selectedShipId, ownedShipIds: loadShipProgression(save).unlockedShipIds, onAction: commitCompanionResidence }}
                 incidents={{ save, onAction: commitClanShipIncident, onHearingAction: commitClanShipTrophyHearing }}
                 returnEscort={{ save, onAction: commitClanShipReturnEscort, onRetry: retryClanShipReturnEscort, checkpointFailed: saveFailure !== null }}
