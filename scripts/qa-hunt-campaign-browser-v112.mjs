@@ -29,7 +29,8 @@ const maxRetries=Number(option('--max-retries','2'));
 const harvestSpecies=option('--harvest-species',null),skipHarvest=argv.includes('--skip-harvest');
 const resumeHudSource=option('--resume-hud-source',null);
 const requireComplete=argv.includes('--require-complete'),requireResume=argv.includes('--require-resume');
-assert.ok(!(requireComplete||requireResume)||!inspectOnly&&!resumeHudSource,
+const requireIceUnderpass=argv.includes('--require-ice-underpass');
+assert.ok(!(requireComplete||requireResume||requireIceUnderpass)||!inspectOnly&&!resumeHudSource,
   'campaign checks require the playable GameClient path');
 assert.ok(budget>0&&budget<=7200);
 assert.ok(Number.isSafeInteger(maxRetries)&&maxRetries>=0&&maxRetries<=10);
@@ -67,6 +68,7 @@ const routes=new Map(mod.exports.GALAXY_NAVIGATION.sectors.flatMap(sector=>secto
 const requested=option('--missions',mod.exports.MISSIONS.map(mission=>mission.id).join(',')).split(',');
 assert.ok(requested.length&&requested.every(id=>routes.has(id)),'real requested campaign routes');
 if(requireComplete||requireResume)assert.equal(new Set(requested).size,requested.length,'each required contract must be distinct');
+if(requireIceUnderpass)assert.ok(requested.includes('ice-cryostalker'),'the ice underpass needs a real Cryostalker attempt');
 const entry='import {createRoot} from "react-dom/client";import GameClient from "./app/game/GameClient";import "./app/globals.css";createRoot(document.getElementById("root")).render(<GameClient/>);';
 const bundle=await build({stdin:{contents:entry,resolveDir:root,loader:'tsx'},bundle:true,write:false,metafile:true,
   format:'iife',platform:'browser',jsx:'automatic',outfile:'campaign.js',logLevel:'silent',external:['/game/*'],
@@ -98,7 +100,7 @@ const report={schema:1,generatedAt:new Date().toISOString(),sourceCommit:revisio
     parseSaveImport:{accepted:Boolean(parsedAdmission.save),failure:parsedAdmission.failure??null}},
   requestedMissionIds:requested,
   harvestSpeciesGoal:harvestSpecies,skipHarvest,
-  attempts:[],captures:[],errors:[],missingAssets:[],inputs:[],armoryTransactions:[],harvestAttempts:[],workshop:[],discoveryObservations:[],resumeObservations:[],qualification:'ATTEMPT_ONLY'};
+  attempts:[],captures:[],errors:[],missingAssets:[],inputs:[],armoryTransactions:[],harvestAttempts:[],workshop:[],discoveryObservations:[],resumeObservations:[],routeObservations:[],qualification:'ATTEMPT_ONLY'};
 report.sourceContext.applicationSources=[...applicationSources.values()].sort((a,b)=>a.file.localeCompare(b.file));
 report.sourceContext.changedApplicationSources=report.sourceContext.applicationSources.filter(input=>!input.matchesBaseCommit).map(input=>input.file);
 report.sourceContext.gitCommitIsBaseOnly=report.sourceContext.changedApplicationSources.length>0;
@@ -304,7 +306,9 @@ try{
     const keys={left:'ArrowLeft',right:'ArrowRight',up:'ArrowUp',down:'ArrowDown',jump:'Space',aim:'ShiftLeft',
       melee:'KeyJ',weapon:'KeyK',weaponOne:'Digit1',weaponTwo:'Digit2',weaponNext:'KeyR',scan:'KeyV',heal:'KeyH',
       interact:'KeyE',pause:'Escape',cloak:'KeyC',gearOne:'Digit3',gearTwo:'Digit4'};
-    const samples=[],examined=new Set(),harvestTries=new Map(),discoveryChannels=new Set(),retryEvents=[];let final=null,lastSecond=-1,lastPhase='',resumed=false,resumeReceipt=null,lastDecision=null;
+    const samples=[],examined=new Set(),harvestTries=new Map(),discoveryChannels=new Set(),retryEvents=[];
+    let final=null,lastSecond=-1,lastPhase='',resumed=false,resumeReceipt=null,lastDecision=null;
+    let startedWestOfIceGate=false,seenIceUnderpass=false;
     const releaseKeys=async()=>{for(const action of held)await page.keyboard.up(keys[action]);held.clear();};
     while(!stopRequested&&Date.now()-start<budget*1000){
       const {observed,activeElement,bodyId}=await page.evaluate(()=>{
@@ -316,6 +320,18 @@ try{
       });
       if(!observed?.alive){final=observed;break;}
       const game=observed.state;final=observed;
+      if(missionId==='ice-cryostalker'&&!seenIceUnderpass){
+        const gate=game.world.platforms.find(platform=>platform.id==='ice-region-thermal-return-gate'&&platform.collision==='solid');
+        const player=game.player;
+        if(gate&&player.x+player.width<=gate.x)startedWestOfIceGate=true;
+        if(gate&&startedWestOfIceGate&&player.x>=gate.x+gate.width&&player.y>=gate.y+gate.height){
+          seenIceUnderpass=true;
+          const underpass={missionId,attempt:observed.encounterRun,elapsed:game.elapsed,
+            player:{x:player.x,y:player.y},gate:{x:gate.x,y:gate.y,width:gate.width,height:gate.height}};
+          report.routeObservations.push(underpass);
+          console.log(JSON.stringify({browserIceUnderpass:underpass}));
+        }
+      }
       if(Math.floor(game.elapsed)!==lastSecond){
         samples.push(observed);lastSecond=Math.floor(game.elapsed);
         await writeFile(path.join(out,'progress.json'),JSON.stringify({wallSeconds:(Date.now()-start)/1000,missionId:observed.missionId,
@@ -473,6 +489,10 @@ finally{
     if(requireComplete&&report.coverage.incomplete.length)report.requiredCoverageFailure='Contracts without durable success: '+report.coverage.incomplete.join(', ');
     if(requireResume&&report.coverage.missingResume.length){
       const problem='Contracts without durable success and observed sidecar resume: '+report.coverage.missingResume.join(', ');
+      report.requiredCoverageFailure=[report.requiredCoverageFailure,problem].filter(Boolean).join('\n');
+    }
+    if(requireIceUnderpass&&!report.routeObservations.some(row=>row.missionId==='ice-cryostalker')){
+      const problem='The closed thermal gate has no observed lower-route crossing';
       report.requiredCoverageFailure=[report.requiredCoverageFailure,problem].filter(Boolean).join('\n');
     }
   }
