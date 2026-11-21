@@ -24,10 +24,11 @@ export default function ClanWarW3S14ReceiptDossier({ownerCreatedAt, sourceSha}: 
 }) {
   const [receipts, setReceipts] = useState<W3S14SignedReceipt[]>([]);
   const [message, setMessage] = useState("");
-  const ticket = useRef(0);
+  const ticket = useRef({value: 0});
   const storedRevision = useRef(0);
 
   useEffect(() => {
+    const admission = ticket.current;
     let alive = true;
     let readNumber = 0;
     async function reload() {
@@ -58,19 +59,19 @@ export default function ClanWarW3S14ReceiptDossier({ownerCreatedAt, sourceSha}: 
     void reload();
     return () => {
       alive = false;
-      ticket.current++;
+      admission.value++;
       window.removeEventListener("storage", storage);
     };
   }, [ownerCreatedAt, sourceSha]);
 
   async function admit(file: File) {
-    const attempt = ++ticket.current;
+    const attempt = ++ticket.current.value;
     setMessage("Vérification du reçu…");
     try {
       const receipt = file.size <= W3_S14_RECEIPT_MAX_BYTES
         ? await verifyW3S14Receipt(parse(await file.text()), trustedKey, ownerCreatedAt, sourceSha)
         : null;
-      if (attempt !== ticket.current) return;
+      if (attempt !== ticket.current.value) return;
       if (!receipt) {
         setMessage("Reçu refusé. Vérifiez le document signé, la clé configurée et le créneau de campagne.");
         return;
@@ -79,7 +80,7 @@ export default function ClanWarW3S14ReceiptDossier({ownerCreatedAt, sourceSha}: 
       const existing = localStorage.getItem(key);
       if (existing !== null) {
         const prior = await verifyW3S14Receipt(parse(existing), trustedKey, ownerCreatedAt, sourceSha);
-        if (attempt !== ticket.current) return;
+        if (attempt !== ticket.current.value) return;
         if (prior) {
           setMessage(prior.signature === receipt.signature ? "Ce reçu est déjà classé." : "Un autre résultat signé occupe déjà ce salon.");
           return;
@@ -93,7 +94,7 @@ export default function ClanWarW3S14ReceiptDossier({ownerCreatedAt, sourceSha}: 
         .sort((a, b) => a.body.roomId.localeCompare(b.body.roomId)));
       setMessage("Reçu signé vérifié et classé.");
     } catch {
-      if (attempt === ticket.current) setMessage("Le reçu n’a pas pu être classé dans le dossier local.");
+      if (attempt === ticket.current.value) setMessage("Le reçu n’a pas pu être classé dans le dossier local.");
     }
   }
 
