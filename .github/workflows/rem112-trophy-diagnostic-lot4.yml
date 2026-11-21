@@ -1,0 +1,26 @@
+name: REM112 trace de la revisite cryothermique
+on:
+  push:
+    branches: [codex/qa-rem112-ice-trophy-diagnostic-lot4]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          run-id: 44942307737
+          name: rem112-lot4-ice-xeno-bone-control
+          github-token: ${{ github.token }}
+          path: evidence
+      - run: |
+          node --input-type=module <<'NODE'
+          import {readFile} from 'node:fs/promises';
+          const parse=async file=>JSON.parse(await readFile('evidence/'+file,'utf8'));
+          const latest=await parse('progress.json'),report=await parse('report.json'),attempt=report.attempts[0],g=attempt.final.state;
+          const outline=({id,x,y,width,height,active,alive,kind,archetype,collision})=>({id,x,y,width,height,active,alive,kind,archetype,collision});
+          const b=outline(g.boss),p=outline(g.player);
+          console.log(JSON.stringify({receipt:'TROPHY-STOP',wall:attempt.wallSeconds,progress:latest,elapsed:g.elapsed,boss:b,player:p,phase:g.phase,missing:report.missingAssets.length,errors:report.errors,alive:g.enemies.filter(e=>e.alive&&e.active&&Math.abs(e.x-p.x)<800).map(outline),platforms:g.world.platforms.filter(a=>a.x<p.x+400&&a.x+a.width>p.x-400).map(outline)}));
+          NODE
