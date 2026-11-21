@@ -85,7 +85,7 @@ Chaîne jouable actuelle, dans l'ordre du jeu : nurserie (V47) → accueil Unblo
 | 49 | R2-M041 | Préparer la chasse solitaire | Blooded | Texte seul | — |
 | 50 | R2-M042 | Le Quatza-Rij solitaire | Blooded | Texte seul | — |
 | 51 | R2-M043 | La reconnaissance Elite | Blooded | Texte seul | — |
-| 52 | R2-M044 | La coque d’un groupe | Elite | Texte seul | — |
+| 52 | R2-M044 | La coque d’un groupe | Elite | Inspection à bord partielle | `clanHullProjectV171` |
 | 53 | R2-M045 | Une porte, plusieurs haltes | Elite | Texte seul | — |
 | 54 | R2-M046 | Une mission vraiment collective | Elite | Texte seul | — |
 | 55 | R2-M047 | Ce que la guerre laisse au retour | Elite | Texte seul | — |
@@ -2419,6 +2419,8 @@ Navire de clan, résidence, opérations collectives, conséquences de guerre, me
 **Déroulé :** visiter la coque collective, inspecter les ponts fermés, rencontrer les détenteurs des droits ; renvoie aux 24 missions du navire. **Choix :** viser la Veille Partagée ou garder le vaisseau personnel. **Sauvegarde :** `clanship.projectDiscovered`
 
 *Production (proposé)* — **Props :** Chantier des Coques Ouvertes, coque collective en cale sèche, ponts fermés par des scellés, détenteurs des droits (PNJ). **VFX :** projecteurs de chantier, étincelles. **SFX :** `shipyard-ambience`, `weld-loop`, `seal-locked`. **Musique :** MUS-47. **Lien :** `production/clan-ship-20261104/`.
+
+**Raccord jouable.** À bord du Clan Ship, après la reconnaissance Elite et la remise de la coque personnelle, le poste du hangar conserve le relevé des deux ponts scellés. Le Garde du Seuil au hangar et la Veille des Astres au conseil éclairent les droits depuis leurs postes. Le conseil enregistre l’intention, puis le dossier ouvre les opérations du navire. Le registre `clanHullProjectV171` conserve ce choix avec le reçu de la coque personnelle. La visite extérieure en cale sèche et ses effets restent à produire.
 
 ### R2-M045 — Une porte, plusieurs haltes
 

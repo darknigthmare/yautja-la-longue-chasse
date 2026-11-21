@@ -124,14 +124,16 @@ async function cli() {
   const { resolve } = await import('node:path');
   const { fileURLToPath } = await import('node:url');
   const args = process.argv.slice(2);
-  if (args.length > 1 || (args.length === 1 && args[0] !== '--check')) {
-    throw new Error('Usage: node scripts/build-priority-lots-workbook-20261121.mjs [--check]');
+  if (new Set(args).size !== args.length || args.some(arg => arg !== '--check' && arg !== '--lot-2')) {
+    throw new Error('Usage: node scripts/build-priority-lots-workbook-20261121.mjs [--lot-2] [--check]');
   }
-  const check = args[0] === '--check';
+  const check = args.includes('--check');
+  const lot2 = args.includes('--lot-2');
   const root = fileURLToPath(new URL('../', import.meta.url));
-  const input = JSON.parse(await readFile(resolve(root, SOURCE), 'utf8'));
+  const fileName = name => lot2 ? name.replace('_20261121.', '_LOT2_20261121.') : name;
+  const input = JSON.parse(await readFile(resolve(root, fileName(SOURCE)), 'utf8'));
   const workbook = buildPriorityLotsWorkbook(input);
-  const path = resolve(root, OUTPUT);
+  const path = resolve(root, fileName(OUTPUT));
   if (check) {
     const present = await readFile(path);
     if (present.length !== workbook.length || present.some((byte, i) => byte !== workbook[i])) {

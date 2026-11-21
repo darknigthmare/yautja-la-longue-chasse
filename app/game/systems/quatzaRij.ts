@@ -266,8 +266,8 @@ export function commitQuatzaRij(save: SaveGame, command: QuatzaCommand): QuatzaR
   if (!QUATZA_MODES.includes(command.mode) || !canEnterQuatza(save, command.mode)) return refuse('Les conditions de cette chasse ne sont pas réunies.');
   const checked = inspectQuatzaRij(save.quatzaRij, save.createdAt);
   if (checked.status === 'invalid-save' || checked.status === 'future-version') return refuse('Le registre du Quatza-Rij ne peut pas être relu.');
-  const state = checked.state ?? { version: 1 as const, ownerCreatedAt: save.createdAt, expeditions: {} };
-  const expedition = state.expeditions[command.mode] ?? { mode: command.mode, attempts: [] };
+  const state: QuatzaRijCampaign = checked.state ?? { version: 1, ownerCreatedAt: save.createdAt, expeditions: {} };
+  const expedition: QuatzaExpedition = state.expeditions[command.mode] ?? { mode: command.mode, attempts: [] };
   const current = expedition.attempts.at(-1);
   if (command.type === 'begin' && expedition.attempts.length === command.expectedAttempts + 1 && current?.input.length === 0)
     return { ok: true, state, message: 'Préparation déjà enregistrée.' };
