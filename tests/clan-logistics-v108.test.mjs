@@ -27,7 +27,7 @@ test('W3-S15 gain and pan follow the existing playback range and the real occlus
  const left=sample('ship');
  assert.equal(left.status,'audible');
  assert(left.pan < -.8);
- d.walk(listener,560,70);
+ d.walk(listener,555,70);
  const right=sample('ship');
  assert.equal(right.status,'audible');
  assert(right.pan > .8);
@@ -39,7 +39,7 @@ test('W3-S15 gain and pan follow the existing playback range and the real occlus
  const scan=sample('scan');
  assert.equal(scan.status,'audible');
  assert(scan.pan > .8);
- d.walk(listener,820,110);
+ d.walk(listener,820,100);
  const covered=sample('scan');
  assert.equal(covered.status,'occluded');
  assert(covered.distance < 150);

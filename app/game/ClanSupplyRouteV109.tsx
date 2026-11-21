@@ -190,13 +190,14 @@ export default function ClanSupplyRouteV109({rules,active=true,campaignRoutesPan
    resetTake(sourceId,media);
    return;
   }
-  const take=progress.current[sourceId]??{last:media.currentTime,seconds:0};
-  const delta=media.currentTime-take.last;
-  if((!media.paused||media.ended)&&!media.seeking&&!media.muted&&media.volume>0&&spatialPlayback.playingOutput(media)&&delta>0&&delta<1)
-   take.seconds+=delta;
-  take.last=media.currentTime;
-  progress.current[sourceId]=take;
-  setHeard(previous=>({...previous,[sourceId]:take.seconds}));
+  const last=media.currentTime;
+  const take=progress.current[sourceId]??{last,seconds:0};
+  const delta=last-take.last;
+  const audiblePlayback=(!media.paused||media.ended)&&!media.seeking&&!media.muted&&media.volume>0&&
+   spatialPlayback.playingOutput(media)&&delta>0&&delta<1;
+  const seconds=take.seconds+(audiblePlayback?delta:0);
+  progress.current[sourceId]={last,seconds};
+  setHeard(previous=>({...previous,[sourceId]:seconds}));
  }
  function selectActor(id:string){stop();setSelected(id);}
  function reorderStop(index:number,direction:-1|1,button:HTMLButtonElement){

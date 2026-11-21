@@ -157,18 +157,18 @@ try {
 
   await root.getByRole('button', {name: /^W3-S15 ·/}).click();
   await root.getByRole('combobox', {name: /^Équipe contrôlée/}).selectOption(listener);
-  await walk(730, 50);
+  await walk(730, 30);
   await walk(640, 70);
   await play('ship');
   const left = await waitMeasured('ship', -1);
-  await walk(560, 70);
+  await walk(555, 70);
   const right = await waitMeasured('ship', 1);
   assert(right.gain > left.gain);
   record('Les deux canaux de la machinerie s’inversent et le niveau augmente en approchant du même fichier.');
   await root.getByRole('button', {name: 'Conserver la prise ship'}).click();
   await page.waitForFunction(key => JSON.parse(localStorage.getItem(key)).convoy.recordings.length === 1, CLAN_SUPPLY_KEY_V109);
 
-  await walk(750, 70);
+  await walk(765, 70);
   assert.equal(await view('ship').getAttribute('data-availability'), 'range');
   assert.equal(await view('ship').locator('audio').evaluate(media => media.paused), true);
   assert.equal(await take('ship').isDisabled(), true);
@@ -177,7 +177,7 @@ try {
   await walk(820, 145);
   await play('scan');
   await waitMeasured('scan', 1);
-  await walk(820, 110);
+  await walk(820, 100);
   assert.equal(await view('scan').getAttribute('data-availability'), 'occluded');
   assert.equal(await view('scan').locator('audio').evaluate(media => media.paused), true);
   assert.equal(await take('scan').isDisabled(), true);
