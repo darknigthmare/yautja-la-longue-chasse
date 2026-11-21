@@ -130,6 +130,7 @@ export const RESIDENCE_SLOT_IDS_V149 = Object.keys(RESIDENCE_SLOTS_V149) as Resi
 export type ResidenceLocationV149 =
   | { kind: "carried" }
   | { kind: "room"; houseId: string; slotId: ResidenceSlotIdV149 }
+  | { kind: "unmounted"; returnTo: { houseId: string; slotId: "display" } }
   | { kind: "transfer"; returnTo: { houseId: string; slotId: ResidenceSlotIdV149 } };
 
 export interface ResidenceObjectV149 {
@@ -152,6 +153,10 @@ export interface ResidenceTransferV149 {
   toHouseId: string;
   stage: "packing" | "in-transit";
 }
+export type ResidenceChoiceV149 =
+  | { kind: "stay"; houseId: string }
+  | { kind: "moved"; fromHouseId: string; houseId: string; objectIds: string[] };
+
 export interface ResidenceStateV149 {
   version: typeof RESIDENCE_VERSION_V149;
   respect: Record<string, number>;
@@ -162,6 +167,8 @@ export interface ResidenceStateV149 {
   activeResidenceId: string | null;
   objects: ResidenceObjectV149[];
   transfer: ResidenceTransferV149 | null;
+  /** Last R2-M045 decision physically acknowledged at a residence threshold. */
+  lastChoice?: ResidenceChoiceV149;
   /** P2 sleeping place chosen from the two fixed positions (0/1), per house. */
   bed: Record<string, 0 | 1>;
 }
@@ -184,6 +191,8 @@ function normalizeLocation(raw: unknown): ResidenceLocationV149 | null {
   const slot = (value: unknown): value is ResidenceSlotIdV149 => typeof value === "string" && value in RESIDENCE_SLOTS_V149;
   if (raw.kind === "carried") return { kind: "carried" };
   if (raw.kind === "room" && houseV149(raw.houseId) && slot(raw.slotId)) return { kind: "room", houseId: String(raw.houseId), slotId: raw.slotId };
+  if (raw.kind === "unmounted" && isRecord(raw.returnTo) && houseV149(raw.returnTo.houseId) && raw.returnTo.slotId === "display")
+    return { kind: "unmounted", returnTo: { houseId: String(raw.returnTo.houseId), slotId: "display" } };
   if (raw.kind === "transfer" && isRecord(raw.returnTo) && houseV149(raw.returnTo.houseId) && slot(raw.returnTo.slotId))
     return { kind: "transfer", returnTo: { houseId: String(raw.returnTo.houseId), slotId: raw.returnTo.slotId } };
   return null;
@@ -226,9 +235,23 @@ export function normalizeResidenceV149(raw: unknown): ResidenceStateV149 | null 
       typeof raw.transfer.toHouseId === "string" && state.rights.includes(raw.transfer.toHouseId) &&
       raw.transfer.toHouseId !== state.activeResidenceId && (raw.transfer.stage === "packing" || raw.transfer.stage === "in-transit"))
     state.transfer = { fromHouseId: state.activeResidenceId, toHouseId: raw.transfer.toHouseId, stage: raw.transfer.stage };
-  // Without a transfer, a packed object goes back to its recorded place (never lost, never doubled).
-  if (!state.transfer) state.objects = state.objects.map(object => object.location.kind === "transfer"
-    ? { ...object, location: { kind: "room", ...object.location.returnTo } } : object);
+  state.objects = state.objects.map(object => {
+    const location = object.location;
+    if (location.kind !== "transfer" && location.kind !== "unmounted") return object;
+    if (state.transfer?.fromHouseId === location.returnTo.houseId &&
+        (location.kind === "transfer" || state.transfer.stage === "packing")) return object;
+    return { ...object, location: { kind: "room", ...location.returnTo } };
+  });
+  const choice = raw.lastChoice;
+  if (isRecord(choice) && typeof choice.houseId === "string" && choice.houseId === state.activeResidenceId) {
+    if (choice.kind === "stay") state.lastChoice = { kind: "stay", houseId: choice.houseId };
+    if (choice.kind === "moved" && typeof choice.fromHouseId === "string" && choice.fromHouseId !== choice.houseId &&
+        state.rights.includes(choice.fromHouseId) && Array.isArray(choice.objectIds) && choice.objectIds.length <= MAX_OBJECTS &&
+        choice.objectIds.every(id => typeof id === "string" && state.objects.some(object => object.id === id)) &&
+        new Set(choice.objectIds).size === choice.objectIds.length) {
+      state.lastChoice = { kind: "moved", fromHouseId: choice.fromHouseId, houseId: choice.houseId, objectIds: [...choice.objectIds] };
+    }
+  }
   if (isRecord(raw.bed)) for (const [id, value] of Object.entries(raw.bed))
     if (houseV149(id) && (value === 0 || value === 1)) state.bed[id] = value;
   return state;
@@ -244,6 +267,8 @@ export interface ResidenceContextV149 {
   regionAllowed(regionId: string): boolean;
   /** House whose interior the player stands in, if any. */
   atHouseId: string | null;
+  /** Native house doorway; omitted by older integrations that supply a threshold house directly. */
+  atThreshold?: boolean;
 }
 
 export interface ResidenceAccessV149 {
@@ -439,15 +464,29 @@ export function startTransferV149(current: ResidenceStateV149, toHouseId: string
   return { ok: true, state, message: `Déménagement vers ${house.title} : choisis et emballe les originaux.` };
 }
 
-/** One original joins the single transfer charge; it leaves its slot at once. */
+export function unmountDisplayedObjectV149(current: ResidenceStateV149, objectId: string, context: ResidenceContextV149): ResidenceChangeV149 {
+  const transfer = current.transfer;
+  if (transfer?.stage !== "packing" || context.atHouseId !== transfer.fromHouseId) return refuse("Décroche l’objet dans la maison que tu quittes.");
+  const object = slotOccupants(current, transfer.fromHouseId, "display").find(entry => entry.id === objectId);
+  if (!object) return refuse("Cet original n’est pas exposé ici.");
+  const state = clone(current);
+  state.objects = state.objects.map(entry => entry.id === objectId
+    ? { ...entry, location: { kind: "unmounted", returnTo: { houseId: transfer.fromHouseId, slotId: "display" } } } : entry);
+  return { ok: true, state, message: `${object.label} décroché. Place-le dans le contenant avant de partir.` };
+}
+
+/** Each original joins the transfer load at its single durable location. */
 export function packObjectV149(current: ResidenceStateV149, objectId: string, context: ResidenceContextV149): ResidenceChangeV149 {
   const transfer = current.transfer;
   if (!transfer || transfer.stage !== "packing") return refuse("Aucun emballage en cours.");
   if (context.atHouseId !== transfer.fromHouseId) return refuse("L’emballage se fait dans la maison que tu quittes.");
   const object = current.objects.find(entry => entry.id === objectId);
-  if (!object || object.location.kind !== "room" || object.location.houseId !== transfer.fromHouseId) return refuse("Cet objet n’est pas dans la maison que tu quittes.");
+  const location = object?.location;
+  if (!location || location.kind !== "room" && location.kind !== "unmounted") return refuse("Cet original est indisponible.");
+  const returnTo = location.kind === "unmounted" ? location.returnTo : { houseId: location.houseId, slotId: location.slotId };
+  if (returnTo.houseId !== transfer.fromHouseId) return refuse("Cet objet appartient à une autre maison.");
+  if (location.kind === "room" && location.slotId === "display") return refuse("Décroche d’abord l’objet exposé.");
   const state = clone(current);
-  const returnTo = { houseId: object.location.houseId, slotId: object.location.slotId };
   state.objects = state.objects.map(entry => entry.id === objectId ? { ...entry, location: { kind: "transfer", returnTo } } : entry);
   return { ok: true, state, message: `${object.label} emballé dans la charge de transfert.` };
 }
@@ -457,7 +496,8 @@ export function unpackObjectV149(current: ResidenceStateV149, objectId: string, 
   if (!transfer || transfer.stage !== "packing") return refuse("La charge est déjà partie.");
   if (context.atHouseId !== transfer.fromHouseId) return refuse("Le déballage se fait sur place.");
   const object = current.objects.find(entry => entry.id === objectId);
-  if (!object || object.location.kind !== "transfer") return refuse("Cet objet n’est pas emballé.");
+  if (!object || (object.location.kind !== "transfer" && object.location.kind !== "unmounted") ||
+      object.location.returnTo.houseId !== transfer.fromHouseId) return refuse("Cet objet ne fait pas partie de la préparation.");
   const back = object.location.returnTo;
   const state = clone(current);
   const occupied = slotOccupants(state, back.houseId, back.slotId).length >= RESIDENCE_SLOTS_V149[back.slotId].capacity;
@@ -470,7 +510,9 @@ export function unpackObjectV149(current: ResidenceStateV149, objectId: string, 
 export function confirmDepartureV149(current: ResidenceStateV149, context: ResidenceContextV149): ResidenceChangeV149 {
   const transfer = current.transfer;
   if (!transfer || transfer.stage !== "packing") return refuse("Aucun départ à confirmer.");
-  if (context.atHouseId !== transfer.fromHouseId) return refuse("Le dernier départ se confirme au seuil.");
+  if (context.atHouseId !== transfer.fromHouseId || context.atThreshold === false) return refuse("Le dernier départ se confirme au seuil.");
+  if (slotOccupants(current, transfer.fromHouseId, "display").length || current.objects.some(object => object.location.kind === "unmounted"))
+    return refuse("L’objet exposé doit être décroché puis rangé dans le contenant.");
   const state = clone(current);
   state.transfer = { ...transfer, stage: "in-transit" };
   const count = state.objects.filter(object => object.location.kind === "transfer").length;
@@ -484,7 +526,7 @@ export function cancelTransferV149(current: ResidenceStateV149, context: Residen
   if (transfer.stage !== "packing") return refuse("La charge est en route : termine l’arrivée au seuil de la nouvelle maison.");
   if (context.atHouseId !== transfer.fromHouseId) return refuse("L’annulation se fait sur place.");
   let state = clone(current);
-  for (const object of current.objects.filter(entry => entry.location.kind === "transfer")) {
+  for (const object of current.objects.filter(entry => entry.location.kind === "transfer" || entry.location.kind === "unmounted")) {
     const result = unpackObjectV149(state, object.id, context);
     if (result.ok) state = result.state;
   }
@@ -492,23 +534,38 @@ export function cancelTransferV149(current: ResidenceStateV149, context: Residen
   return { ok: true, state, message: "Déménagement annulé ; la résidence et les biens restent en place." };
 }
 
+export function confirmStayV149(current: ResidenceStateV149, context: ResidenceContextV149): ResidenceChangeV149 {
+  const houseId = current.activeResidenceId;
+  if (!houseId || context.atHouseId !== houseId || context.atThreshold === false)
+    return refuse("Le choix de rester se confirme au seuil de la maison active.");
+  if (!residenceAccessV149(current, houseId, context).inhabit) return refuse("Droit d’habiter requis.");
+  const cancelled = current.transfer ? cancelTransferV149(current, context) : null;
+  if (cancelled && !cancelled.ok) return cancelled;
+  const state = cancelled?.state ?? clone(current);
+  state.lastChoice = { kind: "stay", houseId };
+  return { ok: true, state, message: "Résidence actuelle confirmée." };
+}
+
 /** Arrival at the new threshold: activation, unpacking, old address inactive (HOME-R01, E20). */
 export function confirmArrivalV149(current: ResidenceStateV149, context: ResidenceContextV149): ResidenceChangeV149 {
   const transfer = current.transfer;
   if (!transfer || transfer.stage !== "in-transit") return refuse("Aucune charge en route.");
-  if (context.atHouseId !== transfer.toHouseId) return refuse("L’arrivée se confirme au seuil de la nouvelle maison.");
+  if (context.atHouseId !== transfer.toHouseId || context.atThreshold === false) return refuse("L’arrivée se confirme au seuil de la nouvelle maison.");
   const access = residenceAccessV149(current, transfer.toHouseId, context);
   if (!access.inhabit) return refuse(access.missing.join(" "));
   const state = clone(current);
   let arrivalFree = slotOccupants(state, transfer.toHouseId, "arrival").length === 0;
+  const objectIds: string[] = [];
   state.objects = state.objects.map(object => {
-    if (object.location.kind !== "transfer") return object;
+    if (object.location.kind !== "transfer" || object.location.returnTo.houseId !== transfer.fromHouseId) return object;
     const slotId: ResidenceSlotIdV149 = arrivalFree ? "arrival" : "chest";
     arrivalFree = false;
+    objectIds.push(object.id);
     return { ...object, location: { kind: "room", houseId: transfer.toHouseId, slotId } };
   });
   state.activeResidenceId = transfer.toHouseId;
   state.transfer = null;
+  state.lastChoice = { kind: "moved", fromHouseId: transfer.fromHouseId, houseId: transfer.toHouseId, objectIds };
   return { ok: true, state, message: `${houseV149(transfer.toHouseId)!.title} est ta résidence active. ${houseV149(transfer.fromHouseId)!.title} garde ses pièces et ton droit de retour.` };
 }
 
@@ -540,10 +597,12 @@ export type ResidenceActionV149 =
   | { kind: "place"; objectId: string; slotId: ResidenceSlotIdV149 }
   | { kind: "bed"; position: 0 | 1 }
   | { kind: "start-transfer"; toHouseId: string }
+  | { kind: "unmount"; objectId: string }
   | { kind: "pack"; objectId: string }
   | { kind: "unpack"; objectId: string }
   | { kind: "depart" }
   | { kind: "arrive" }
+  | { kind: "stay" }
   | { kind: "cancel-transfer" };
 
 /** `houseId` is the house the panel shows (the one the player stands in). */
@@ -555,10 +614,12 @@ export function applyResidenceActionV149(current: ResidenceStateV149, houseId: s
     case "place": return placeObjectV149(current, action.objectId, action.slotId, context);
     case "bed": return chooseBedPositionV149(current, action.position, context);
     case "start-transfer": return startTransferV149(current, action.toHouseId, context);
+    case "unmount": return unmountDisplayedObjectV149(current, action.objectId, context);
     case "pack": return packObjectV149(current, action.objectId, context);
     case "unpack": return unpackObjectV149(current, action.objectId, context);
     case "depart": return confirmDepartureV149(current, context);
     case "arrive": return confirmArrivalV149(current, context);
+    case "stay": return confirmStayV149(current, context);
     case "cancel-transfer": return cancelTransferV149(current, context);
     default: return refuse("Action inconnue.");
   }

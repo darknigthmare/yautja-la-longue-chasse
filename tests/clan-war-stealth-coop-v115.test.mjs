@@ -1,5 +1,8 @@
 import assert from 'node:assert/strict';
 import {once} from 'node:events';
+import {mkdtemp, readFile, rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 import test from 'node:test';
 import {createWarStealthCoopServerV115, loadWarStealthCoopRulesV115} from '../scripts/serve-clan-war-stealth-coop-v115.mjs';
 
@@ -7,9 +10,12 @@ const game = await loadWarStealthCoopRulesV115();
 const tokens = ['A', 'B', 'C', 'D'].map(letter => letter.repeat(43));
 const times = (amount, command) => Array(amount).fill(command);
 
-async function room(t, count = 2) {
-  const server = createWarStealthCoopServerV115(game, {tokens: tokens.slice(0, count)});
-  t.after(() => new Promise((resolve, reject) => server.close(error => error ? reject(error) : resolve())));
+async function room(t, count = 2, {stateDirectory, orderPrefix = 'step'} = {}) {
+  const server = createWarStealthCoopServerV115(game, {tokens: tokens.slice(0, count), stateDirectory});
+  const close = () => server.listening
+    ? new Promise((resolve, reject) => server.close(error => error ? reject(error) : resolve()))
+    : Promise.resolve();
+  t.after(close);
   server.listen(0, '127.0.0.1');
   await once(server, 'listening');
   const origin = 'http://127.0.0.1:' + server.address().port;
@@ -20,7 +26,7 @@ async function room(t, count = 2) {
     return response.json();
   }
   let id = 0;
-  const order = (snapshot, kind) => ({id: 'step-' + (++id), sequence: snapshot.nextSequence,
+  const order = (snapshot, kind) => ({id: orderPrefix + '-' + (++id), sequence: snapshot.nextSequence,
     revision: snapshot.revision, tick: snapshot.tick, kind, target: null});
   async function send(player, command) {
     const response = await fetch(origin + '/order', {method: 'POST',
@@ -36,7 +42,7 @@ async function room(t, count = 2) {
     for (let player = 0; player < count; player++) await submit(player, 'ready');
     return submit(0, 'launch');
   }
-  return {origin, read, order, send, submit, launch};
+  return {origin, read, order, send, submit, launch, close};
 }
 
 test('four infiltrators receive one physical briefing and a ready-gated start', async t => {
@@ -89,12 +95,18 @@ test('clues require actual sight and one actor’s detection, noise and position
   assert.equal(failed.self.detected, false);
 });
 
-test('relay sabotage and both real exits are required for one collective immutable receipt', async t => {
-  const session = await room(t);
+test('relay sabotage, private actor state and one collective immutable receipt survive server restarts', async t => {
+  const stateDirectory = await mkdtemp(join(tmpdir(), 'yautja-stealth-coop-'));
+  t.after(() => rm(stateDirectory, {recursive: true, force: true}));
+  let session = await room(t, 2, {stateDirectory});
   await session.launch();
   const outbound = [...times(4, 'up'), 'cloak', ...times(6, 'right'), 'sabotage', 'wait'];
   for (const kind of outbound) await session.submit(0, kind);
-  const briefing = await session.read(1);
+  const checkpoint = [await session.read(0), await session.read(1)];
+  await session.close();
+  session = await room(t, 2, {stateDirectory, orderPrefix: 'resumed'});
+  assert.deepEqual([await session.read(0), await session.read(1)], checkpoint);
+  const briefing = checkpoint[1];
   assert.equal(briefing.objective.sabotaged, true);
   assert.equal(briefing.objective.extracted, 0);
   for (const kind of [...times(6, 'left'), ...times(4, 'down')]) await session.submit(0, kind);
@@ -114,7 +126,14 @@ test('relay sabotage and both real exits are required for one collective immutab
   assert.equal(last.state.report.reason, 'collective-extraction');
   assert.equal(last.state.report.campaignMutation, false);
   assert.deepEqual((await session.read(0)).report, last.state.report);
+  const terminal = [await session.read(0), await session.read(1)];
+  await session.close();
+  session = await room(t, 2, {stateDirectory, orderPrefix: 'terminal'});
+  assert.deepEqual([await session.read(0), await session.read(1)], terminal);
   assert.equal((await session.send(1, order)).error, 'duplicate-order');
   assert.equal((await session.send(1, session.order(last.state, 'extract'))).status, 422);
   assert.deepEqual((await session.read(1)).report, last.state.report);
+  const header = await readFile(join(stateDirectory, '00000.json'), 'utf8');
+  assert.ok(tokens.every(token => !header.includes(token)));
+  assert.throws(() => createWarStealthCoopServerV115(game, {tokens, stateDirectory}), /ne correspond pas/);
 });

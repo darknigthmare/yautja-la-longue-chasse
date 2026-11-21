@@ -46,7 +46,7 @@ export function exactVolumeCandidatesV112(candidates,{load,pool}){
 
 /** Reserve a specific, currently admissible anatomy part instead of making
  * the closest body an unconditional blocking waypoint. */
-export function chooseGroundHarvestV112(candidates,tick,memory,loadRatio,minimumRatio,packing){
+export function chooseGroundHarvestV112(candidates,tick,memory,loadRatio,minimumRatio,packing,preferred=new Set()){
   let selected=candidates.find(candidate=>candidate.key===memory.target?.key);
   if(selected&&selected.distance<memory.bestDistance-MIN_APPROACH_GAIN){
     memory.bestDistance=selected.distance;
@@ -64,7 +64,8 @@ export function chooseGroundHarvestV112(candidates,tick,memory,loadRatio,minimum
   const ranked=exact.length?exact:eligible;
   const efficiency=candidate=>(Math.min(candidate.projectedRatio,threshold)-loadRatio)/
     (candidate.workSeconds+candidate.distance/220);
-  ranked.sort((a,b)=>efficiency(b)-efficiency(a)||a.distance-b.distance);
+  ranked.sort((a,b)=>Number(preferred.has(b.key))-Number(preferred.has(a.key))||
+    efficiency(b)-efficiency(a)||a.distance-b.distance);
   selected=ranked[0];
   if(!selected)return null;
   memory.target=selected;

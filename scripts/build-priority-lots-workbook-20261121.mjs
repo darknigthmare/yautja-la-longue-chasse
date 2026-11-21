@@ -124,13 +124,14 @@ async function cli() {
   const { resolve } = await import('node:path');
   const { fileURLToPath } = await import('node:url');
   const args = process.argv.slice(2);
-  if (new Set(args).size !== args.length || args.some(arg => arg !== '--check' && arg !== '--lot-2')) {
-    throw new Error('Usage: node scripts/build-priority-lots-workbook-20261121.mjs [--lot-2] [--check]');
+  const lots = args.filter(arg => arg === '--lot-2' || arg === '--lot-3');
+  if (lots.length > 1 || new Set(args).size !== args.length || args.some(arg => arg !== '--check' && !lots.includes(arg))) {
+    throw new Error('Usage: node scripts/build-priority-lots-workbook-20261121.mjs [--lot-2|--lot-3] [--check]');
   }
   const check = args.includes('--check');
-  const lot2 = args.includes('--lot-2');
+  const number = lots[0]?.at(-1);
   const root = fileURLToPath(new URL('../', import.meta.url));
-  const fileName = name => lot2 ? name.replace('_20261121.', '_LOT2_20261121.') : name;
+  const fileName = name => number ? name.replace('_20261121.', '_LOT' + number + '_20261121.') : name;
   const input = JSON.parse(await readFile(resolve(root, fileName(SOURCE)), 'utf8'));
   const workbook = buildPriorityLotsWorkbook(input);
   const path = resolve(root, fileName(OUTPUT));

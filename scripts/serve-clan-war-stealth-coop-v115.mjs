@@ -2,6 +2,7 @@ import {resolve} from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 import {build} from 'esbuild';
 import {clanWarTokenIdentitiesV127, createClanWarHttpServiceV127} from './serve-clan-war-practice-v127.mjs';
+import {coopOrderSequences, openClanWarCoopJournal} from './clan-war-coop-journal.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const offsets = {up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0]};
@@ -41,7 +42,7 @@ function validOrder(order) {
     Number.isSafeInteger(order.tick) && order.tick >= 0 && actions.has(order.kind) && order.target === null;
 }
 
-export function createWarStealthCoopServerV115(game, {tokens, targetId = 'W3-K02'} = {}) {
+export function createWarStealthCoopServerV115(game, {tokens, targetId = 'W3-K02', stateDirectory} = {}) {
   if (!Array.isArray(tokens) || tokens.length < 2 || tokens.length > 4) {
     throw new Error('Un salon d’infiltration exige deux à quatre jetons.');
   }
@@ -156,7 +157,7 @@ export function createWarStealthCoopServerV115(game, {tokens, targetId = 'W3-K02
     return true;
   }
 
-  function submit(identity, order) {
+  function applyOrder(identity, order) {
     if (!validOrder(order)) return {status: 400, error: 'invalid-order'};
     const progress = personal.get(identity.id);
     if (progress.orders.has(order.id)) return {status: 409, error: 'duplicate-order'};
@@ -175,9 +176,39 @@ export function createWarStealthCoopServerV115(game, {tokens, targetId = 'W3-K02
     revision++;
     progress.sequence = order.sequence;
     progress.orders.add(order.id);
-    return {status: 200, state: view(identity)};
+
+    return {status: 200};
   }
-  return createClanWarHttpServiceV127({identities, view, submit, tick: () => {}, tickMs: 60_000});
+
+  const journal = openClanWarCoopJournal(stateDirectory,
+    {schema: 'clan-stealth-coop-v115-1', targetId, seats: identities.length},
+    event => {
+      const identity = identities.find(player => player.id === event.actor);
+      return !!identity && applyOrder(identity, event.order).status === 200;
+    },
+    () => ({phase, revision, tick, patrol, team, radio, sabotaged, report, personal: coopOrderSequences(personal)}));
+
+  function submit(identity, order) {
+    try {
+      journal?.assertCurrent();
+      const result = applyOrder(identity, order);
+      if (result.status !== 200) return result;
+      journal?.commit({actor: identity.id, order});
+      return {status: 200, state: view(identity)};
+    } catch (error) {
+      if (!journal) throw error;
+      journal.invalidate();
+      return {status: 503, error: 'journal-unavailable'};
+    }
+  }
+
+  return createClanWarHttpServiceV127({
+    identities, submit, tick: () => {}, tickMs: 60_000,
+    view(identity) {
+      journal?.assertCurrent();
+      return view(identity);
+    },
+  });
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
@@ -191,6 +222,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   }
   const server = createWarStealthCoopServerV115(await loadWarStealthCoopRulesV115(), {
     tokens, targetId: process.env.YAUTJA_CLAN_STEALTH_COOP_TARGET,
+    stateDirectory: process.env.YAUTJA_CLAN_STEALTH_COOP_STATE_DIRECTORY,
   });
   server.on('error', error => {
     process.stderr.write('Impossible d’ouvrir le salon (' + (error.code ?? 'erreur') + ').\n');

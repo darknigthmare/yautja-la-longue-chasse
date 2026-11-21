@@ -278,7 +278,23 @@ test("BUILD5-07 / QA5-05: a confirmed threshold mission opens three rooms and mo
   performed(f.actHouse(NEXT, { kind: "route", choice: 0 }));
   f.house(FIRST);
   performed(f.actHouse(FIRST, { kind: "start-transfer", toHouseId: NEXT }));
+  assert.equal(f.actHouse(FIRST, { kind: "pack", objectId: lamp }).ok, false, "display must be unmounted");
+  assert.equal(f.actHouse(FIRST, { kind: "depart" }).ok, false, "display remains at the old address until unmounted");
+  performed(f.actHouse(FIRST, { kind: "unmount", objectId: lamp }));
+  const unmounted = f.reload().residenceV149;
+  assert.deepEqual(unmounted.objects.find(object => object.id === lamp).location,
+    { kind: "unmounted", returnTo: { houseId: FIRST, slotId: "display" } });
+  assert.equal(f.actHouse(FIRST, { kind: "depart" }).ok, false, "an unmounted item has not entered the container yet");
+  performed(f.actHouse(FIRST, { kind: "stay" }));
+  assert.deepEqual(f.reload().residenceV149.lastChoice, { kind: "stay", houseId: FIRST });
+  assert.deepEqual(f.current().residenceV149.objects.find(object => object.id === lamp).location,
+    { kind: "room", houseId: FIRST, slotId: "display" });
+
+  performed(f.actHouse(FIRST, { kind: "start-transfer", toHouseId: NEXT }));
+  performed(f.actHouse(FIRST, { kind: "unmount", objectId: lamp }));
   performed(f.actHouse(FIRST, { kind: "pack", objectId: lamp }));
+  const departureContext = { ...context(f, FIRST), atThreshold: false };
+  assert.equal(api.confirmDepartureV149(f.current().residenceV149, departureContext).ok, false);
   performed(f.actHouse(FIRST, { kind: "depart" }));
   const travelling = f.reload();
   const imported = api.parseSaveImport(api.exportSave(travelling));
@@ -294,6 +310,7 @@ test("BUILD5-07 / QA5-05: a confirmed threshold mission opens three rooms and mo
   const settled = f.reload().residenceV149;
   assert.equal(settled.activeResidenceId, NEXT);
   assert.equal(settled.transfer, null);
+  assert.deepEqual(settled.lastChoice, { kind: "moved", fromHouseId: FIRST, houseId: NEXT, objectIds: [lamp] });
   assert.deepEqual([...settled.rights].sort(), [FIRST, NEXT]);
   assert.deepEqual(settled.objects.filter(object => object.id === lamp).map(object => object.location),
     [{ kind: "room", houseId: NEXT, slotId: "arrival" }]);

@@ -4,6 +4,8 @@ import {decideGroundApexTrophyInputV112,decideHuntCampaignInputV112,groundTrophy
 import {chooseGroundHarvestV112,exactVolumeCandidatesV112,groundHarvestMenuActionV112,nearestGroundHarvestThreatV112,observeGroundHarvestV112} from "../scripts/lib/qa-hunt-ground-harvest-v112.mjs";
 import {decideLoadedCanopyRouteV112,loadedCanopyRouteV112} from "../scripts/lib/qa-hunt-full-canopy-route-v112.mjs";
 
+import {decideHuntCampaignInputV112 as decideBrowserHunt} from "../scripts/lib/qa-hunt-campaign-input-v112.mjs";
+
 const brain=()=>({target:null,pending:null,deferred:new Map(),events:[]});
 const corpse=(id,action,requiresFlay=false,projectedRatio=.25)=>({
   key:action+":"+id,corpse:{id},part:{action,requiresFlay},distance:25,workSeconds:3,projectedRatio,
@@ -14,6 +16,35 @@ const survivor={id:"survivor",active:true,alive:true,x:6030,y:240,width:65,heigh
 const ocean={phase:"trophy",bossMechanics:{missionId:"ocean-leviathan"},scanNodes:[],recoveryNodes:[],
   boss:{id:"leviathan",x:6067,y:444,width:160,height:180,alive:false,active:true},
   world:{width:8200,platforms:[]},player,enemies:[survivor],cameraX:0};
+
+test("the browser pilot walks off the Glace ledge, under the gate and fully beyond it",()=>{
+  const gate={id:"ice-region-thermal-return-gate",x:2090,y:0,width:28,height:328,collision:"solid"};
+  const game={...ocean,phase:"tracking",bossMechanics:{missionId:"ice-cryostalker"},
+    player:{...player,x:2018,y:314,width:72,scanCooldown:1},
+    scanNodes:[{x:3108,y:588,scanned:false}],enemies:[],world:{floorY:624,platforms:[gate]}};
+  const memory={previousX:2018,stuckTicks:20,jumpUntil:600};
+  const west=decideBrowserHunt(game,1,memory);
+  assert.deepEqual(west.held,["left"]);
+  assert.deepEqual(west.pressed,[]);
+  assert.equal(decideBrowserHunt({...game,player:{...game.player,x:1870,y:321}},2,memory).held[0],"left");
+  const under=decideBrowserHunt({...game,player:{...game.player,x:1840,y:404}},3,memory);
+  assert.deepEqual(under.held,["right"]);
+  assert.deepEqual(under.pressed,[]);
+  assert.equal(decideBrowserHunt({...game,player:{...game.player,x:2100,y:404}},4,memory).reason,under.reason);
+  assert.equal(decideBrowserHunt({...game,player:{...game.player,x:2118,y:404}},5,memory).reason,"trace");
+  assert.equal(memory.iceLowerPass,undefined);
+  assert.equal(decideBrowserHunt({...game,world:{...game.world,platforms:[]}},6,memory).reason,"trace");
+});
+
+test("the harvest preference reserves a legal part without overriding a previous reservation",()=>{
+  const near=corpse("near","harvest-bone",false,.2);
+  const hide={...corpse("far","harvest-hide",true,.15),distance:95};
+  const preferred=new Set([hide.key]);
+  const memory=brain();
+  assert.equal(chooseGroundHarvestV112([near,hide],0,memory,0,1,undefined,preferred),hide);
+  assert.equal(chooseGroundHarvestV112([near,hide],1,memory,0,1,undefined),hide);
+  assert.equal(chooseGroundHarvestV112([near],2,brain(),0,1,undefined,preferred),near);
+});
 
 test("ground trophy does not yield a reachable corpse to distant-height combat",()=>{
   const shared=decideHuntCampaignInputV112(ocean,1,{previousX:player.x,stuckTicks:0,jumpUntil:-1});

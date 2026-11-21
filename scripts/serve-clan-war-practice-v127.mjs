@@ -262,7 +262,7 @@ export function createClanWarPracticeServer(game, {
   return createClanWarHttpServiceV127({identities, view, submit, tick: tickMatch, tickMs});
 }
 
-export function createClanWarHttpServiceV127({identities, view, submit, tick, tickMs}) {
+export function createClanWarHttpServiceV127({identities, view, submit, tick, tickMs, client}) {
   function identityFor(authorization) {
     const [, presented] = /^Bearer ([A-Za-z0-9_-]{43,128})$/i.exec(authorization ?? '') ?? [];
     if (!presented) return undefined;
@@ -275,6 +275,18 @@ export function createClanWarHttpServiceV127({identities, view, submit, tick, ti
     requestTimeout: 5000, headersTimeout: 5000, keepAliveTimeout: 2000, maxHeaderSize: 8192,
   }, async (request, response) => {
     try {
+      if (client && request.method === 'GET' && (request.url === '/' || request.url === '/client.js')) {
+        const document = request.url === '/';
+        response.writeHead(200, {
+          'Content-Type': document ? 'text/html; charset=utf-8' : 'text/javascript; charset=utf-8',
+          'Cache-Control': 'no-store',
+          'Content-Security-Policy': "default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'",
+          'Referrer-Policy': 'no-referrer',
+          'X-Content-Type-Options': 'nosniff',
+        });
+        response.end(document ? client.html : client.script);
+        return;
+      }
       if (!((request.url === '/state' && request.method === 'GET') ||
             (request.url === '/order' && request.method === 'POST'))) {
         responseJson(response, 404, {error: 'unknown-route'});
@@ -297,12 +309,14 @@ export function createClanWarHttpServiceV127({identities, view, submit, tick, ti
     }
   });
 
-  let timer;
-  server.on('listening', () => {
-    timer = setInterval(tick, tickMs);
-    timer.unref();
-  });
-  server.on('close', () => clearInterval(timer));
+  if (tick) {
+    let timer;
+    server.on('listening', () => {
+      timer = setInterval(tick, tickMs);
+      timer.unref();
+    });
+    server.on('close', () => clearInterval(timer));
+  }
   return server;
 }
 
