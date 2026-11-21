@@ -23,9 +23,30 @@ export function observeGroundHarvestV112(ledger,tick,memory){
   }
 }
 
+/** Available anatomy can have 2- or 3-unit steps. Keep a path to the exact
+ * volume limit when the current set of genuine prey supports one. */
+function canCompleteVolumeV112(pool,excluded,massBudget,volumeBudget){
+  if(volumeBudget<0||massBudget< -1e-9)return false;
+  const leastMass=Array(volumeBudget+1).fill(Infinity);
+  leastMass[0]=0;
+  for(const option of pool){
+    if(option.key===excluded||option.volumeUnits>volumeBudget)continue;
+    for(let units=volumeBudget;units>=option.volumeUnits;units--){
+      leastMass[units]=Math.min(leastMass[units],leastMass[units-option.volumeUnits]+option.massKg);
+    }
+  }
+  return leastMass[volumeBudget]<=massBudget+1e-9;
+}
+export function exactVolumeCandidatesV112(candidates,{load,pool}){
+  const remainingVolume=load.capacityVolumeUnits-load.volumeUnits;
+  const remainingMass=load.capacityMassKg-load.massKg;
+  return candidates.filter(candidate=>canCompleteVolumeV112(pool,candidate.key,
+    remainingMass-candidate.part.massKg,remainingVolume-candidate.part.volumeUnits));
+}
+
 /** Reserve a specific, currently admissible anatomy part instead of making
  * the closest body an unconditional blocking waypoint. */
-export function chooseGroundHarvestV112(candidates,tick,memory,loadRatio,minimumRatio){
+export function chooseGroundHarvestV112(candidates,tick,memory,loadRatio,minimumRatio,packing){
   let selected=candidates.find(candidate=>candidate.key===memory.target?.key);
   if(selected&&selected.distance<memory.bestDistance-MIN_APPROACH_GAIN){
     memory.bestDistance=selected.distance;
@@ -39,10 +60,12 @@ export function chooseGroundHarvestV112(candidates,tick,memory,loadRatio,minimum
     return !record||record.attempts<2&&tick>=record.until;
   });
   const threshold=minimumRatio??1;
+  const exact=packing&&minimumRatio===1?exactVolumeCandidatesV112(eligible,packing):[];
+  const ranked=exact.length?exact:eligible;
   const efficiency=candidate=>(Math.min(candidate.projectedRatio,threshold)-loadRatio)/
     (candidate.workSeconds+candidate.distance/220);
-  eligible.sort((a,b)=>efficiency(b)-efficiency(a)||a.distance-b.distance);
-  selected=eligible[0];
+  ranked.sort((a,b)=>efficiency(b)-efficiency(a)||a.distance-b.distance);
+  selected=ranked[0];
   if(!selected)return null;
   memory.target=selected;
   memory.bestDistance=selected.distance;

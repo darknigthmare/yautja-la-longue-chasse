@@ -1,0 +1,120 @@
+name: Verify the first hunting and provenance lot outcomes
+on:
+  push:
+    branches: [codex/verify-priority-lots-early-20261121]
+permissions:
+  contents: read
+jobs:
+  ice:
+    name: Try the native Ice full-load route after a durable victory
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /scripts/
+            /tests/
+            /docs/qa/v112-ground-campaign/campaign-origin-save.json
+            /docs/qa/v112-ground-campaign/tool-origin.json
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify trophy approach and candidate selection
+        run: node --test tests/qa-hunt-ground-policy-v112.test.mjs
+      - name: Earn a recorded Ice victory without authored loot or a modified seed
+        run: node scripts/qa-hunt-ground-campaign-v112.mjs --mission=ice-cryostalker --armor=hunter --baseSave=docs/qa/v112-ground-campaign/campaign-origin-save.json --replay=true --seconds=180 --output=outputs/qa-ice-origin --successSave=outputs/qa-ice-origin/after-win.json
+      - name: Replay Ice as Scout with a visible ship insertion and measure the payload
+        run: node scripts/qa-hunt-ground-campaign-v112.mjs --mission=ice-cryostalker --armor=scout --harvest=true --baseSave=outputs/qa-ice-origin/after-win.json --insertion=visible-ship --harvestSweep=true --replay=true --seconds=360 --minimumRetainedLoad=1 --output=outputs/qa-ice-full
+      - name: Preserve all load and extraction results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ice-visible-ship-sweep
+          path: |
+            outputs/qa-ice-origin/
+            outputs/qa-ice-full/
+          if-no-files-found: error
+
+  swamp:
+    name: Replay the Swamp with the Scout and retain a full bag
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /scripts/
+            /tests/
+            /docs/qa/v112-ground-campaign/campaign-origin-save.json
+            /docs/qa/v112-ground-campaign/tool-origin.json
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify trophy approach and candidate selection
+        run: node --test tests/qa-hunt-ground-policy-v112.test.mjs
+      - name: Harvest and extract in the authored Swamp mission
+        run: node scripts/qa-hunt-ground-campaign-v112.mjs --mission=swamp-hydra --armor=scout --baseSave=docs/qa/v112-ground-campaign/campaign-origin-save.json --harvest=true --harvestSweep=true --replay=true --seconds=360 --minimumRetainedLoad=1 --output=outputs/qa-swamp-full
+      - name: Preserve the full-load outcome
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: swamp-scout-sweep
+          path: outputs/qa-swamp-full/
+          if-no-files-found: error
+
+  provenance:
+    name: Regenerate both Enforcers search lists from pinned sources
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          filter: blob:none
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/export-enforcer-recovery-worklist.mjs
+            /docs/suivi-production/enforcers-recherche-sources-20261121.tsv
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Fetch the exact source commit and its four Git objects
+        run: |
+          ref=d71e995ae886df69c4165a1a153291449e8f22f6
+          git fetch --no-tags --depth=1 --filter=blob:none origin "$ref"
+          git show "$ref:docs/suivi-production/v611/data/prior-production-v610.json" > /dev/null
+          git show "$ref:docs/suivi-production/v613/data/production-manifest.json" > /dev/null
+          git show "$ref:docs/suivi-production/v613/recovery/native-checkpoint.json" > /dev/null
+          git show "$ref:docs/suivi-production/v613/recovery/verified-native-files.json" > /dev/null
+      - name: Check the audited tab-separated report
+        run: |
+          node scripts/export-enforcer-recovery-worklist.mjs | cmp - docs/suivi-production/enforcers-recherche-sources-20261121.tsv
+          wc -l docs/suivi-production/enforcers-recherche-sources-20261121.tsv

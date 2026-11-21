@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {decideGroundApexTrophyInputV112,decideHuntCampaignInputV112,groundTrophyGuardV112,observeGroundTrophyDamageV112} from "../scripts/lib/qa-hunt-ground-policy-v112.mjs";
-import {chooseGroundHarvestV112,groundHarvestMenuActionV112,nearestGroundHarvestThreatV112,observeGroundHarvestV112} from "../scripts/lib/qa-hunt-ground-harvest-v112.mjs";
+import {chooseGroundHarvestV112,exactVolumeCandidatesV112,groundHarvestMenuActionV112,nearestGroundHarvestThreatV112,observeGroundHarvestV112} from "../scripts/lib/qa-hunt-ground-harvest-v112.mjs";
 
 const brain=()=>({target:null,pending:null,deferred:new Map(),events:[]});
 const corpse=(id,action,requiresFlay=false,projectedRatio=.25)=>({
@@ -111,4 +111,31 @@ test("trophy defense opens only after damage interrupts a real rite",()=>{
   assert.equal(groundTrophyGuardV112(game,11,memory,()=>true),null);
   assert.equal(groundTrophyGuardV112({...game,enemies:[survivor]},11,memory,()=>false),null);
   assert.equal(groundTrophyGuardV112(game,250,memory,()=>false),null);
+});
+
+test("the sweep avoids a 17-of-18 dead end when two genuine bones can fill the bag",()=>{
+  const bone={...corpse("bone-1","harvest-bone",false,16/18),part:{action:"harvest-bone",massKg:1.2,volumeUnits:2},workSeconds:10};
+  const hide={...corpse("hide-1","harvest-hide",true,17/18),part:{action:"harvest-hide",massKg:3.8,volumeUnits:3},workSeconds:2};
+  const liveBone={key:"harvest-bone:bone-2",massKg:1.2,volumeUnits:2};
+  const load={massKg:8,capacityMassKg:24,volumeUnits:14,capacityVolumeUnits:18};
+  const packing={load,pool:[{...bone.part,key:bone.key},{...hide.part,key:hide.key},liveBone]};
+  assert.deepEqual(exactVolumeCandidatesV112([bone,hide],packing),[bone]);
+  assert.equal(chooseGroundHarvestV112([bone,hide],0,brain(),14/18,1,packing),bone);
+  assert.equal(chooseGroundHarvestV112([bone,hide],0,brain(),14/18,1),hide);
+});
+
+test("exact volume also checks mass and cannot count the same corpse part twice",()=>{
+  const bone={...corpse("bone-1","harvest-bone"),part:{action:"harvest-bone",massKg:1.2,volumeUnits:2}};
+  const load={massKg:23,capacityMassKg:24,volumeUnits:16,capacityVolumeUnits:18};
+  const packing={load,pool:[{...bone.part,key:bone.key}]};
+  assert.deepEqual(exactVolumeCandidatesV112([bone],packing),[]);
+  assert.deepEqual(exactVolumeCandidatesV112([bone],{
+    ...packing,load:{...load,massKg:8,volumeUnits:14},
+  }),[]);
+});
+
+test("the last legal piece can saturate volume without an extra source",()=>{
+  const bone={...corpse("bone-1","harvest-bone"),part:{action:"harvest-bone",massKg:1.2,volumeUnits:2}};
+  const load={massKg:22.8,capacityMassKg:24,volumeUnits:16,capacityVolumeUnits:18};
+  assert.deepEqual(exactVolumeCandidatesV112([bone],{load,pool:[]}),[bone]);
 });
