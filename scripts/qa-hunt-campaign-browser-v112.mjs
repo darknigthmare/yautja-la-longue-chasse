@@ -293,7 +293,11 @@ try{
     await page.getByRole('button',{name:route.mission.title,exact:false}).first().click();
     const prepare=page.getByRole('button',{name:/^Préparer (la chasse|cette revisite)$/});
     await prepare.click();await page.getByRole('button',{name:'Départ rapide',exact:true}).click();
-    await page.getByRole('button',{name:'Commencer la chasse',exact:true}).click();
+    const skipArrival=page.getByRole('button',{name:'Passer l’arrivée',exact:true});
+    const startHunt=page.getByRole('button',{name:'Commencer la chasse',exact:true});
+    await skipArrival.or(startHunt).first().waitFor();
+    if(await skipArrival.isVisible())await skipArrival.click();
+    await startHunt.click();
     await page.locator('canvas').last().focus();
     await captureHunt('03-true-hunt-start');
     const start=Date.now(),memory={previousX:0,stuckTicks:0,jumpUntil:-1},held=new Set();
