@@ -303,7 +303,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     try {
       owners = JSON.parse(ownerConfig);
     } catch {
-      throw Error('YAUTJA_W3_S14_CAMPAIGN_OWNERS doit contenir deux dates ISO de création.');
+      throw Error('YAUTJA_W3_S14_CAMPAIGN_OWNERS doit contenir les deux créneaux affichés.');
     }
     issuance = {privateKey: await readFile(signingKey, 'utf8'), owners};
   }

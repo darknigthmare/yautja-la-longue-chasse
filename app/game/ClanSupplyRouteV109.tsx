@@ -14,7 +14,9 @@ const routePhases:Record<string,string>={reserved:'Lot réservé',active:'Livrai
 const routeHolders:Record<string,string>={depot:'le dépôt',boat:'la soute du skiff',carrier:'le portage U19',shuttle:'la navette'};
 
 function duelServiceUrl(): string | null {
- const configured = process.env.NEXT_PUBLIC_YAUTJA_W3_S14_ORIGIN ?? 'http://127.0.0.1:8791';
+ let configured = 'http://127.0.0.1:8791';
+ try {configured = process.env.NEXT_PUBLIC_YAUTJA_W3_S14_ORIGIN ?? configured;}
+ catch {/* Standalone browser hosts use the local service address. */}
  try {
   const url = new URL(configured);
   const local = ['localhost','127.0.0.1','[::1]'].includes(url.hostname);

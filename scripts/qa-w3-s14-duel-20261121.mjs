@@ -272,6 +272,7 @@ async function proveDossier(challengerPage, expected) {
   const send = bytes => upload.setInputFiles({name: 'recu-w3-s14.json', mimeType: 'application/json', buffer: bytes});
   async function open(slot = 'challenger') {
     await page.goto(target + '/?slot=' + slot);
+    assert.deepEqual(errors, []);
     await page.locator('button[data-war-tool-group="forces"]').click();
     await page.getByRole('button', {name: 'Convoi des six ouvrages', exact: true}).click();
     await page.getByRole('button', {name: /^W3-S14 ·/}).click();
