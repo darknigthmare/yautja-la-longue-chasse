@@ -1,0 +1,130 @@
+name: Verify equipment, forge and stellar navigation
+on:
+  push:
+    branches: [codex/verify-equipment-forge-star-lot5-20261121]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source:
+    name: Validate armory studies and stellar routes
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ASSET_RACCORDS_SOURCE_COMMIT: '0fb20d06685e0d18666725aae46805d6364b15b1'
+      BASE_COMMIT: '1559ca1e70ddec090294f12d2322172bf31a1d64'
+    steps:
+      - name: Checkout the exact candidate and bounded inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '0fb20d06685e0d18666725aae46805d6364b15b1'
+          persist-credentials: false
+          fetch-depth: 12
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /production/YAUTJA_LOTS_P0_P3_20261121.*
+            /production/YAUTJA_LOTS_P0_P3_LOT2_20261121.*
+            /public/game/xeno-prime/berceau-v1/
+            /public/audio/
+            /public/game/quatza-rij/
+            /public/game/assets/v37/tribes/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp
+            /public/game/assets/v37/tribes/v2/homeworld-forest-v2--8fdc633789dcd9c0.webp
+            /public/game/assets/v37/tribes/v2/homeworld-lava-v2--ecd85e06796799d2.webp
+            /public/game/backgrounds/ice-depth-v4.webp
+            /public/game/backgrounds/ocean-depth-v8.png
+            /public/game/backgrounds/ruins-depth-v8.png
+            /public/game/backgrounds/swamp-depth-v8.png
+            /public/game/homeworld/v67/ash-causeway-vista.png
+            /public/game/homeworld/v67/glass-processional-vista.png
+            /public/game/sprites/v8/ecology/cinder-12/basalt-ram-sheet.png
+            /public/game/sprites/v8/ecology/cinder-12/smoke-wyvern-sheet.png
+            /public/game/sprites/v8/ecology/naraka-delta/mire-shell-sheet.png
+            /public/game/sprites/v8/ecology/nivalis-k/snow-prowler-sheet.png
+            /public/game/sprites/v8/ecology/oseris-iv/amber-jaw-stalker-sheet.png
+            /public/game/sprites/v8/ecology/pelagos-m/shellback-sheet.png
+            /public/game/sprites/v8/ecology/serekh-9/burrow-snake-sheet.png
+            /public/game/assets/clan-field-20261103/
+            /public/**/manifest.json
+            /public/game/assets/v139/rig-gauntlets/
+            /public/game/assets/v134/
+            /public/game/assets/v135/
+            /public/game/assets/v136/
+            /public/game/p0-sprites-20261113/warp/
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize official runtime inputs and install dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate canonical runtime evidence
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs candidate || { cat outputs/qa-asset-raccords-20261120/runtime-generator.log; exit 1; }
+          node scripts/check-hunt-integration-source-v112.mjs --current
+      - name: Verify Next types
+        if: ${{ !cancelled() }}
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Lint armory and route code
+        if: ${{ !cancelled() }}
+        run: >-
+          npx eslint app/game/ClanWarGauntletLockerV132.tsx app/game/systems/gauntletCampaignV134.ts
+          app/game/GalaxyRouteDestinationContext.ts app/game/GalaxyMapPanel.tsx
+          app/game/SpaceRoutesPanelV159.tsx app/game/systems/spaceRoutesV159.ts
+      - name: Armory and route progression
+        if: ${{ !cancelled() }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/clan-war-gauntlet-research-v134.test.mjs
+          tests/gauntlet-preference-v144.test.mjs
+          tests/gauntlet-save-roundtrip-v136.test.mjs
+          tests/space-routes-v159.test.mjs
+      - name: Real browser and save writer
+        if: ${{ !cancelled() }}
+        env:
+          GAUNTLET_CAMPAIGN_OUTPUT: outputs/gauntlet-equipment-lot5
+        run: node scripts/qa-gauntlet-campaign-v144.mjs
+      - name: Upload browser evidence
+        if: ${{ !cancelled() && hashFiles('outputs/gauntlet-equipment-lot5/*') != '' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: armurerie-recherche-chromium-lot5
+          path: outputs/gauntlet-equipment-lot5/
+          if-no-files-found: error
+      - name: Report canonical inventory differences
+        if: ${{ !cancelled() && hashFiles('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json') != '' }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs';
+          const prior = JSON.parse(readFileSync('docs/qa/current-integration-20261103/runtime-inputs.json'));
+          const next = JSON.parse(readFileSync('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json'));
+          const old = new Map(prior.entries.map(item => [item.path, item]));
+          const paths = new Set(next.entries.map(item => item.path));
+          const changes = next.entries.filter(item => JSON.stringify(old.get(item.path)) !== JSON.stringify(item));
+          const removed = prior.entries.filter(item => !paths.has(item.path)).map(item => item.path);
+          console.log('V113_DELTA ' + JSON.stringify({ files: next.files, bytes: next.bytes, changes, removed }));
+          NODE
+
