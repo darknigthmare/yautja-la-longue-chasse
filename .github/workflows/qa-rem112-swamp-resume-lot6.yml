@@ -1,0 +1,91 @@
+name: REM112 reprise de l’extraction authentique au Marais
+on:
+  push:
+    branches: [codex/qa-rem112-swamp-extraction-resume-lot6]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  resume:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          run-id: 44953627451
+          name: p2-rem112-swamp-browser
+          github-token: ${{ github.token }}
+          path: archived-swamp
+      - name: Admit the actual extraction checkpoint with its original hide
+        run: |
+          mkdir -p outputs/admission
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import {createHash} from 'node:crypto';
+          import {readdir,readFile,writeFile} from 'node:fs/promises';
+          import {join,dirname} from 'node:path';
+          const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+          const files=(await readdir('archived-swamp',{recursive:true,encoding:'utf8'})).filter(path=>path.split('/').at(-1)==='report.json');
+          assert.equal(files.length,1);
+          const file=join('archived-swamp',files[0]);
+          const raw=await readFile(file),q=JSON.parse(raw);
+          const storage=JSON.parse(await readFile(join(dirname(file),'browser-storage-state.json'),'utf8'));
+          const entry=storage.origins.flatMap(x=>x.localStorage).find(x=>x.name==='yautja-long-hunt.active-hunt');
+          assert.equal(entry?.value,JSON.stringify(q.activeHunt));
+          const active=q.activeHunt;
+          assert.equal(active.ownerSaveCreatedAt,q.finalSave.createdAt);
+          assert.equal(active.encounterRun,0);
+          assert.equal(active.missionId,'swamp-hydra');
+          const cp=active.snapshot.checkpoint;
+          assert.equal(cp.phase,'extraction');
+          assert.ok(Math.abs(cp.elapsed-143.65)<.001);
+          const piece=cp.huntRites.specimensV112.find(x=>x.id==='swamp-hydra:0:swamp-hydra-foragers-4:hide');
+          assert.equal(piece?.quality,61);
+          assert.equal(piece.speciesId,'naraka-delta--fen-leaper');
+          const proof={sourceRun:44953627451,sourceArtifact:14727332367,sourceReportSha256:sha(raw),
+            sidecarSha256:sha(entry.value),elapsed:cp.elapsed,sourceX:cp.player.x,phase:cp.phase,piece};
+          console.log(JSON.stringify({swampAdmission:proof}));
+          await writeFile('outputs/admission/actual-swamp-report.json',raw);
+          await writeFile('outputs/admission/provenance.json',JSON.stringify(proof,null,2)+'\n');
+          NODE
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: |
+          node scripts/qa-hunt-resume-lot6.mjs --continue-active-hunt --campaign-source outputs/admission/actual-swamp-report.json \
+            --missions swamp-hydra --harvest-species naraka-delta--fen-leaper --harvest-action harvest-hide \
+            --max-retries 0 --require-resume --require-complete --require-harvest-workshop \
+            --wall-seconds 360 --chromium /usr/bin/google-chrome --output outputs/browser --asset-cache outputs/source-cache
+      - if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFile} from 'node:fs/promises';
+          let q;try{q=JSON.parse(await readFile('outputs/browser/report.json','utf8'));}catch(error){console.log(error.message);process.exit(0);}
+          console.log(JSON.stringify({qualification:q.qualification,coverage:q.coverage,resumes:q.resumeObservations,
+             attempts:q.attempts.map(a=>({missionId:a.missionId,delivered:a.delivered,settlement:a.settlement,
+                 terminal:{phase:a.final?.state?.phase,elapsed:a.final?.state?.elapsed,health:a.final?.state?.player?.health,x:a.final?.state?.player?.x}})),
+             workshop:q.workshop.map(({before,after,...row})=>row),missingAssets:q.missingAssets,errors:q.errors,failure:q.failure}));
+          NODE
+      - if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: rem112-swamp-resumed-extraction
+          path: |
+            outputs/browser/
+            outputs/admission/provenance.json
