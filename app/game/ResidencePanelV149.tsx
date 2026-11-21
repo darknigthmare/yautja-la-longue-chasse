@@ -23,11 +23,12 @@ const ACTION_LABELS: Record<ResidenceProofActionV149, string> = {
 };
 const RANK_LABELS: Record<string, string> = { unblooded: "Unblooded", "young-blood": "Young Blood", blooded: "Blooded", elite: "Elite" };
 
-export default function ResidencePanelV149({ house, residence, rankId, disabled, regionAllowed, onAction }: {
+export default function ResidencePanelV149({ house, residence, rankId, disabled, regionAllowed, onAction, threshold = false }: {
   house: ResidenceHouseV149;
   residence: unknown;
   rankId: string;
   disabled: boolean;
+  threshold?: boolean;
   regionAllowed(regionId: string): boolean;
   onAction(action: ResidenceActionV149): { ok: boolean; message: string };
 }) {
@@ -47,7 +48,37 @@ export default function ResidencePanelV149({ house, residence, rankId, disabled,
   const here = objectsInHouseV149(state, house.id);
   const placeable = [...here, ...state.objects.filter(object => object.location.kind === "carried")];
   const packed = packedObjectsV149(state);
-  const destinations = state.rights.filter(id => id !== house.id).map(id => houseV149(id)!).filter(Boolean);
+  const unmounted = state.objects.filter(object => object.location.kind === "unmounted" && object.location.returnTo.houseId === house.id);
+  const displayed = here.some(object => object.location.kind === "room" && object.location.slotId === "display");
+  const destinations = state.rights.filter(id => id !== house.id).map(id => {
+    const target = houseV149(id)!;
+    return { target, rights: residenceAccessV149(state, target.id, context) };
+  });
+
+  if (threshold) {
+    const packingHere = transfer?.stage === "packing" && transfer.fromHouseId === house.id;
+    const arrivingHere = transfer?.stage === "in-transit" && transfer.toHouseId === house.id;
+    return <section className={styles.panel} data-residence-threshold-panel={house.id}>
+      <h3>{house.title}</h3>
+      {packingHere && <>
+        <p>{packed.length} pièce(s) dans le contenant. {unmounted.length || displayed ? "Range l’exposé décroché à l’intérieur." : "Le contenant peut partir."}</p>
+        <button type="button" disabled={disabled || displayed || unmounted.length > 0} data-residence-depart
+          onClick={() => act({ kind: "depart" })}>Confirmer le départ au seuil</button>
+      </>}
+      {arrivingHere && <>
+        <p>{packed.length} pièce(s) sont arrivées dans le contenant de {houseV149(transfer.fromHouseId)?.title}.</p>
+        <button type="button" disabled={disabled || !access.inhabit} data-residence-arrive
+          onClick={() => act({ kind: "arrive" })}>Confirmer l’arrivée au seuil</button>
+      </>}
+      {access.active && transfer?.stage !== "in-transit" && <button type="button" disabled={disabled || !access.inhabit}
+        data-residence-stay onClick={() => act({ kind: "stay" })}>Rester dans cette résidence</button>}
+      {access.active && transfer?.stage === "in-transit" && <p>Le contenant est en route vers {houseV149(transfer.toHouseId)?.title}.</p>}
+      {state.lastChoice?.houseId === house.id && <p data-residence-choice={state.lastChoice.kind}>
+        {state.lastChoice.kind === "stay" ? "Résidence actuelle confirmée." : "Emménagement confirmé à ce seuil."}
+      </p>}
+      {message && <p role="status" className={styles.message}>{message}</p>}
+    </section>;
+  }
 
   return (
     <section className={styles.panel} data-residence-v149={house.id} data-residence-active={access.active || undefined}>
@@ -82,11 +113,9 @@ export default function ResidencePanelV149({ house, residence, rankId, disabled,
 
       {!state.activeResidenceId && access.right && <button disabled={disabled || !access.inhabit} data-residence-activate onClick={() => act({ kind: "activate" })}>Habiter cette maison</button>}
 
-      {transfer?.stage === "in-transit" && transfer.toHouseId === house.id && <div className={styles.block}>
-        <h4>Arrivée de la charge de transfert</h4>
-        <p>{packed.length} original(aux) en route depuis {houseV149(transfer.fromHouseId)?.title}.</p>
-        <button disabled={disabled || !access.inhabit} data-residence-arrive onClick={() => act({ kind: "arrive" })}>Confirmer l’arrivée au seuil</button>
-      </div>}
+      {transfer?.stage === "in-transit" && transfer.toHouseId === house.id && <p className={styles.note}>
+        Le contenant attend au seuil. Rejoins la porte pour confirmer son arrivée.
+      </p>}
 
       {access.active && <>
         <nav className={styles.rooms} aria-label="Pièces">
@@ -113,17 +142,39 @@ export default function ResidencePanelV149({ house, residence, rankId, disabled,
 
         <div className={styles.block}>
           <h4>Déménagement</h4>
-          {!transfer && (destinations.length
-            ? destinations.map(target => <button key={target.id} disabled={disabled} data-residence-transfer={target.id} onClick={() => act({ kind: "start-transfer", toHouseId: target.id })}>Préparer le départ vers {target.title}</button>)
-            : <p className={styles.note}>Un autre droit de résidence est nécessaire ({RESIDENCE_HOUSES_V149.length} demeures dans le monde natal).</p>)}
+          {!transfer && (destinations.length ? <table className={styles.residenceComparison} data-residence-rights>
+            <caption>Comparer les droits de résidence</caption>
+            <thead><tr><th scope="col">Demeure</th><th scope="col">Rang minimal</th><th scope="col">Respect pour habiter</th><th scope="col">Choix</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">{house.title}</th><td>{RANK_LABELS[house.minimumRank]}</td>
+                <td>{access.respect}/{house.respect.inhabit}</td><td>Résidence active</td></tr>
+              {destinations.map(({ target, rights }) => <tr key={target.id}><th scope="row">{target.title}</th><td>{RANK_LABELS[target.minimumRank]}</td>
+                <td>{rights.respect}/{target.respect.inhabit}</td><td>{rights.inhabit
+                  ? <button type="button" disabled={disabled} data-residence-transfer={target.id}
+                      onClick={() => act({ kind: "start-transfer", toHouseId: target.id })}>Préparer le départ</button>
+                  : rights.missing.join(" ")}</td></tr>)}
+            </tbody>
+          </table> : <p className={styles.note}>Un autre droit de résidence est nécessaire ({RESIDENCE_HOUSES_V149.length} demeures dans le monde natal).</p>)}
           {transfer?.stage === "packing" && <>
-            <p>Vers {houseV149(transfer.toHouseId)?.title}. Chaque original emballé quitte sa place et rejoint une seule charge.</p>
+            <p>Contenant pour {houseV149(transfer.toHouseId)?.title} · {packed.length} pièce(s).</p>
             <ul className={styles.slots}>
-              {here.map(object => <li key={object.id}>{object.label} <button disabled={disabled} data-residence-pack={object.id} onClick={() => act({ kind: "pack", objectId: object.id })}>Emballer</button></li>)}
-              {packed.map(object => <li key={object.id}>{object.label} (emballé) <button disabled={disabled} data-residence-unpack={object.id} onClick={() => act({ kind: "unpack", objectId: object.id })}>Remettre en place</button></li>)}
+              {here.map(object => <li key={object.id}>{object.label} {object.location.kind === "room" && object.location.slotId === "display"
+                ? <button type="button" disabled={disabled} data-residence-unmount={object.id}
+                    onClick={() => act({ kind: "unmount", objectId: object.id })}>Décrocher</button>
+                : <button type="button" disabled={disabled} data-residence-pack={object.id}
+                    onClick={() => act({ kind: "pack", objectId: object.id })}>Mettre dans le contenant</button>}</li>)}
+              {unmounted.map(object => <li key={object.id} data-residence-unmounted={object.id}>{object.label} (décroché)
+                <button type="button" disabled={disabled} data-residence-pack={object.id}
+                  onClick={() => act({ kind: "pack", objectId: object.id })}>Mettre dans le contenant</button>
+                <button type="button" disabled={disabled} data-residence-unpack={object.id}
+                  onClick={() => act({ kind: "unpack", objectId: object.id })}>Raccrocher</button>
+              </li>)}
+              {packed.map(object => <li key={object.id} data-residence-packed={object.id}>{object.label} (dans le contenant)
+                <button type="button" disabled={disabled} data-residence-unpack={object.id}
+                  onClick={() => act({ kind: "unpack", objectId: object.id })}>Remettre en place</button></li>)}
             </ul>
-            <button disabled={disabled} data-residence-depart onClick={() => act({ kind: "depart" })}>Confirmer le dernier départ</button>
-            <button disabled={disabled} onClick={() => act({ kind: "cancel-transfer" })}>Annuler</button>
+            <p>Confirme le départ ou le choix de rester en revenant à la porte.</p>
+            <button type="button" disabled={disabled} onClick={() => act({ kind: "cancel-transfer" })}>Annuler la préparation</button>
           </>}
           {transfer?.stage === "in-transit" && <p>Charge en route vers {houseV149(transfer.toHouseId)?.title} : confirme l’arrivée à son seuil. Cette maison reste active jusque-là.</p>}
         </div>

@@ -1,5 +1,8 @@
 import assert from 'node:assert/strict';
 import {once} from 'node:events';
+import {mkdtemp, readdir, readFile, rm, writeFile} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 import test from 'node:test';
 import {createWarRtsCoopServerV133, loadWarRtsCoopRulesV133} from '../scripts/serve-clan-war-rts-coop-v133.mjs';
 
@@ -7,10 +10,14 @@ const game = await loadWarRtsCoopRulesV133();
 const rules = game.DEFAULT_WAR_RULES_V6;
 const tokens = ['A', 'B', 'C', 'D'].map(c => c.repeat(43));
 
-async function room(t, count) {
-  let time = 40;
-  const server = createWarRtsCoopServerV133(game, {tokens: tokens.slice(0, count), leaseMs: 500, now: () => time});
-  t.after(() => new Promise((resolve, reject) => server.close(error => error ? reject(error) : resolve())));
+async function room(t, count, {stateDirectory, orderPrefix = 'order', time = {value: 40}} = {}) {
+  const server = createWarRtsCoopServerV133(game, {
+    tokens: tokens.slice(0, count), leaseMs: 500, now: () => time.value, stateDirectory,
+  });
+  const close = () => server.listening
+    ? new Promise((resolve, reject) => server.close(error => error ? reject(error) : resolve()))
+    : Promise.resolve();
+  t.after(close);
   server.listen(0, '127.0.0.1');
   await once(server, 'listening');
   const url = 'http://127.0.0.1:' + server.address().port;
@@ -22,7 +29,7 @@ async function room(t, count) {
     return response.json();
   }
   const envelope = (state, kind, target = null) => ({
-    id: 'order-' + (++id), sequence: state.nextSequence, revision: state.revision,
+    id: orderPrefix + '-' + (++id), sequence: state.nextSequence, revision: state.revision,
     tick: state.tick, kind, target,
   });
   async function send(player, order) {
@@ -35,7 +42,7 @@ async function room(t, count) {
     assert.equal(reply.status, 200, reply.error);
     return reply.state;
   }
-  return {url, read, send, envelope, submit, advance: delta => {time += delta;}};
+  return {url, read, send, envelope, submit, close, advance: delta => {time.value += delta;}};
 }
 
 async function launch(session, count) {
@@ -144,4 +151,56 @@ test('live V133 battle state comes from the real reducer, and fog does not expos
   assert.deepEqual(after.intel.enemies.map(enemy => enemy.id),
     game.visibleWarRtsEnemiesV133(predicted).map(enemy => enemy.id));
   assert.equal(after.report, null);
+});
+
+test('durable RTS resumes units, accepted orders, authoritative lease expiry and one terminal report', async t => {
+  const stateDirectory = await mkdtemp(join(tmpdir(), 'yautja-rts-coop-'));
+  t.after(() => rm(stateDirectory, {recursive: true, force: true}));
+  const time = {value: 100};
+  let session = await room(t, 2, {stateDirectory, time});
+  const started = await launch(session, 2);
+  const target = {squadId: started.squads[0].id};
+  const selected = await session.submit(0, 'select', target);
+  const command = session.envelope(selected, 'wait', target);
+  const admitted = await session.send(0, command);
+  assert.equal(admitted.status, 200);
+  assert.equal(admitted.state.tick, 1);
+  const wing = await session.read(1);
+  await session.close();
+
+  session = await room(t, 2, {stateDirectory, time, orderPrefix: 'resumed'});
+  assert.deepEqual(await session.read(0), admitted.state);
+  assert.deepEqual(await session.read(1), wing);
+  assert.equal((await session.send(0, command)).error, 'duplicate-order');
+  session.advance(501);
+  const expired = await session.read(0);
+  assert.equal(expired.revision, admitted.state.revision + 1);
+  assert.equal(expired.tick, admitted.state.tick);
+  assert.equal(expired.squads.find(squad => squad.id === target.squadId).controller, null);
+  await session.close();
+
+  session = await room(t, 2, {stateDirectory, time, orderPrefix: 'after-expiry'});
+  assert.deepEqual(await session.read(0), expired);
+  await session.submit(0, 'select', target);
+  const retreat = session.envelope(await session.read(0), 'retreat', target);
+  const settled = await session.send(0, retreat);
+  assert.equal(settled.status, 200);
+  assert.ok(settled.state.report);
+  assert.ok(settled.state.squads.every(squad => squad.controller === null));
+  await session.close();
+
+  session = await room(t, 2, {stateDirectory, time, orderPrefix: 'terminal'});
+  assert.deepEqual(await session.read(0), settled.state);
+  assert.deepEqual((await session.read(1)).report, settled.state.report);
+  assert.equal((await session.send(0, retreat)).error, 'duplicate-order');
+  await session.close();
+
+  const journalFile = (await readdir(stateDirectory)).filter(name => /^\d{5}\.json$/.test(name)).sort().at(-1);
+  const path = join(stateDirectory, journalFile);
+  const edited = JSON.parse(await readFile(path, 'utf8'));
+  edited.stateSha256 = '0'.repeat(64);
+  await writeFile(path, JSON.stringify(edited));
+  assert.throws(() => createWarRtsCoopServerV133(game, {
+    tokens: tokens.slice(0, 2), leaseMs: 500, now: () => time.value, stateDirectory,
+  }), /journal coopératif incohérent/);
 });

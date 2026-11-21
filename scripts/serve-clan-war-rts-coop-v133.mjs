@@ -2,6 +2,7 @@ import {resolve} from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 import {build} from 'esbuild';
 import {clanWarTokenIdentitiesV127, createClanWarHttpServiceV127} from './serve-clan-war-practice-v127.mjs';
+import {coopOrderSequences, openClanWarCoopJournal} from './clan-war-coop-journal.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const identifier = /^[A-Za-z0-9_-]{1,64}$/;
@@ -54,7 +55,7 @@ function validOrder(order) {
 }
 
 export function createWarRtsCoopServerV133(game, {tokens, missionId = 'W3-RTS01', leaseMs = 6000,
-  now = () => performance.now()} = {}) {
+  now = () => performance.timeOrigin + performance.now(), stateDirectory} = {}) {
   if (!Array.isArray(tokens) || tokens.length < 2 || tokens.length > 4) {
     throw new Error('Un salon RTS coopératif exige deux à quatre jetons.');
   }
@@ -68,15 +69,17 @@ export function createWarRtsCoopServerV133(game, {tokens, missionId = 'W3-RTS01'
   const ready = new Set();
   const selections = new Map();
   let state = game.createWarRtsSquadsV133(missionId, game.DEFAULT_WAR_RULES_V6);
-  let revision = 0;
+  let revision = 0, lastEventAt = 0;
 
   function releaseExpired(at) {
+    const before = revision;
     for (const [squadId, lease] of selections) {
       if (lease.until > at && state.phase === 'active' &&
           state.squads.some(squad => squad.id === squadId && squad.status === 'active' && squad.hp > 0)) continue;
       selections.delete(squadId);
       revision++;
     }
+    return revision !== before;
   }
 
   function visibleEscort() {
@@ -89,9 +92,7 @@ export function createWarRtsCoopServerV133(game, {tokens, missionId = 'W3-RTS01'
       extracted: escort.extracted, carrierSquadId: escort.carrierSquadId} : null;
   }
 
-  function view(player) {
-    const at = now();
-    releaseExpired(at);
+  function view(player, at) {
     const map = state.map;
     return {
       mode: 'co-op-rts-v133', revision, tick: state.turn, missionId: state.mission.id, phase: state.phase,
@@ -117,10 +118,8 @@ export function createWarRtsCoopServerV133(game, {tokens, missionId = 'W3-RTS01'
     };
   }
 
-  function submit(player, order) {
+  function applyOrder(player, order, at) {
     if (!validOrder(order)) return {status: 400, error: 'invalid-order'};
-    const at = now();
-    releaseExpired(at);
     const progress = personal.get(player.id);
     if (progress.orders.has(order.id)) return {status: 409, error: 'duplicate-order'};
     if (progress.orders.size >= 2048) return {status: 422, error: 'order-limit'};
@@ -173,11 +172,72 @@ export function createWarRtsCoopServerV133(game, {tokens, missionId = 'W3-RTS01'
     revision++;
     progress.sequence = order.sequence;
     progress.orders.add(order.id);
-    return {status: 200, state: view(player)};
+    releaseExpired(at);
+    return {status: 200};
+  }
+
+  const journal = openClanWarCoopJournal(stateDirectory,
+    {schema: 'clan-rts-coop-v133-1', missionId, leaseMs, seats: players.length},
+    event => {
+      if (!Number.isFinite(event.at) || event.at < lastEventAt) return false;
+      lastEventAt = event.at;
+      if (event.kind === 'expire') return releaseExpired(event.at);
+      if (event.kind !== 'order') return false;
+      const player = players.find(candidate => candidate.id === event.actor);
+      return !!player && applyOrder(player, event.order, event.at).status === 200;
+    },
+    () => ({state, revision, ready: [...ready], selections: [...selections], personal: coopOrderSequences(personal)}));
+
+  // Relative lease delays are measured by the authority. The persisted clock
+  // supports restart and prevents a backwards clock from reviving old leases.
+  function refreshLeases() {
+    journal?.assertCurrent();
+    const current = now();
+    if (!Number.isFinite(current)) throw new Error('Horloge du salon invalide.');
+    const at = Math.max(lastEventAt, current);
+    if (releaseExpired(at)) {
+      journal?.commit({kind: 'expire', at});
+      lastEventAt = at;
+    }
+    return at;
+  }
+
+  function submit(player, order) {
+    if (!validOrder(order)) return {status: 400, error: 'invalid-order'};
+    try {
+      const at = refreshLeases();
+      const result = applyOrder(player, order, at);
+      if (result.status !== 200) return result;
+      journal?.commit({kind: 'order', at, actor: player.id, order});
+      lastEventAt = at;
+      return {status: 200, state: view(player, at)};
+    } catch (error) {
+      if (!journal) throw error;
+      journal.invalidate();
+      return {status: 503, error: 'journal-unavailable'};
+    }
   }
 
   return createClanWarHttpServiceV127({
-    identities: players, view, submit, tick: () => releaseExpired(now()), tickMs: Math.min(500, leaseMs),
+    identities: players,
+    view(player) {
+      try {
+        return view(player, refreshLeases());
+      } catch (error) {
+        journal?.invalidate();
+        throw error;
+      }
+    },
+    submit,
+    tick() {
+      try {
+        refreshLeases();
+      } catch (error) {
+        if (!journal) throw error;
+        journal.invalidate();
+      }
+    },
+    tickMs: Math.min(500, leaseMs),
   });
 }
 
@@ -192,6 +252,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   }
   const server = createWarRtsCoopServerV133(await loadWarRtsCoopRulesV133(), {
     tokens, missionId: process.env.YAUTJA_CLAN_RTS_COOP_MISSION,
+    stateDirectory: process.env.YAUTJA_CLAN_RTS_COOP_STATE_DIRECTORY,
   });
   server.on('error', error => {
     process.stderr.write('Impossible d’ouvrir le salon (' + (error.code ?? 'erreur') + ').\n');

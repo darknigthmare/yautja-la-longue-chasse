@@ -76,7 +76,7 @@ import type { SoloV69State, SoloV69Receipt } from "./systems/firstHuntSoloV69";
 import type { SoloV70State, SoloV70Receipt } from "./systems/firstHuntSoloV70";
 import { startSoloV90Campaign, withSoloV90Checkpoint, withSoloV90Progress, soloV90NeedsScene } from "./systems/campaignSoloV90";
 import type { SoloV90State, SoloV90Receipt } from "./systems/firstHuntSoloV90";
-import { createHomeworldRegionV68, normalizeHomeworldRegionV68, canEnterHomeworldRegionV68, canAdvanceHomeworldRegionV68, acknowledgeHomeworldRegionEventV68, type HomeworldRegionStateV68, type HomeworldRegionIdV68, type RegionFieldEventV68 } from "./systems/homeworldRegionsV68";
+import { createHomeworldRegionV68, normalizeHomeworldRegionV68, homeworldRegionInteractionV68, canEnterHomeworldRegionV68, canAdvanceHomeworldRegionV68, acknowledgeHomeworldRegionEventV68, type HomeworldRegionStateV68, type HomeworldRegionIdV68, type RegionFieldEventV68 } from "./systems/homeworldRegionsV68";
 import {BIBLE_CULTURAL_BINDING_V86,bibleCulturalContextV86,createBibleSceneTransactionV86,defaultBibleSceneLedgerV86,normalizeBibleSceneLedgerV86,type BibleSceneActionV86,type BibleSceneResultV86} from './systems/bibleSceneCulturalV86';
 import { bindContractsVillageRunV68, recordContractsFieldEventV68, contractMarksV68 } from "./systems/homeworldContractsV68";
 import { bindMinorArcsRunV160, recordMinorArcsFieldEventV160, type MinorArcsV160 } from "./systems/minorArcsV160";
@@ -3154,7 +3154,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (isFutureResidenceV149(current.residenceV149)) return { ok: false, message: "Registre de résidence d’une version plus récente : rien n’est modifié." };
     const region = current.homeworldRegionV68;
     const atHouseId = region && region.zone === "interior" ? houseForBuildingV149(region.regionId, region.buildingId)?.id ?? null : null;
-    const context = { rankId: current.profile.rankId, atHouseId, regionAllowed: (regionId: string) => canEnterHomeworldRegionV68(current, regionId).allowed };
+    const atThreshold = !!region && homeworldRegionInteractionV68(region)?.kind === "exit-interior";
+    const context = { rankId: current.profile.rankId, atHouseId, atThreshold,
+      regionAllowed: (regionId: string) => canEnterHomeworldRegionV68(current, regionId).allowed };
     const change = applyResidenceActionV149(normalizeResidenceV149(current.residenceV149) ?? emptyResidenceV149(), houseId, action, context);
     if (!change.ok) return { ok: false, message: change.reason };
     return persistSocialProgress({ residenceV149: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
@@ -5271,21 +5273,23 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <HomeworldRegionV68 contractsValue={save.homeworld.contractsV68} key={save.createdAt+":"+save.homeworldRegionV68.runId} save={save} gauntletVariantId={hunterGauntlet.equippedId} regionId={save.homeworldRegionV68.regionId} checkpoint={save.homeworldRegionV68}
             suspended={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy} onCheckpoint={checkpointHomeworldRegionV68}
             onFieldEvent={fieldHomeworldRegionV68} onBibleSceneAction={bibleActionHomeworldV86} onReachCity={reachCityHomeworldRegionV68} onOpenSettings={() => setSettingsOpen(true)}
-            residenceV149={(buildingId: string, disabled: boolean) => {
+            residenceV149={(buildingId: string, disabled: boolean, threshold = false) => {
               const house = houseForBuildingV149(save.homeworldRegionV68!.regionId, buildingId);
               if (!house) return null;
               return <>
-                <ResidencePanelV149 house={house} residence={save.residenceV149} rankId={save.profile.rankId} disabled={disabled}
+                <ResidencePanelV149 house={house} residence={save.residenceV149} rankId={save.profile.rankId} disabled={disabled} threshold={threshold}
                   regionAllowed={regionId => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={action => residenceActionV149(house.id, action)} />
-                <ResidenceLifePanelV150 house={house} residence={save.residenceV149} life={save.residenceLifeV150} rankId={save.profile.rankId} disabled={disabled}
-                  regionAllowed={regionId => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={residenceLifeActionV150} />
-                <OriginTransitionPanelV151 house={house} residence={save.residenceV149} origin={save.originV151} rankId={save.profile.rankId} disabled={disabled}
-                  regionAllowed={regionId => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={originActionV151} />
-                <HouseScenesPanelV154 house={house} residence={save.residenceV149} life={save.residenceLifeV150} scenes={save.residenceScenesV154}
-                  region={save.homeworldRegionV68 ? { runId: save.homeworldRegionV68.runId, tick: save.homeworldRegionV68.tick } : null} rankId={save.profile.rankId} disabled={disabled}
-                  regionAllowed={(regionId: string) => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={residenceSceneActionV154}
-                  stock={(() => { const objects = normalizePathObjectsV158(save.pathObjectsV158) ?? emptyPathObjectsV158(); return { materials: objects.materials, receipts: objects.receipts }; })()} />
-                <HouseMaterialsPanelV158 house={house} objects={save.pathObjectsV158} clanMarks={save.profile.clanMarks} disabled={disabled} onBuy={buyMaterialActionV158} />
+                {!threshold && <>
+                  <ResidenceLifePanelV150 house={house} residence={save.residenceV149} life={save.residenceLifeV150} rankId={save.profile.rankId} disabled={disabled}
+                    regionAllowed={regionId => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={residenceLifeActionV150} />
+                  <OriginTransitionPanelV151 house={house} residence={save.residenceV149} origin={save.originV151} rankId={save.profile.rankId} disabled={disabled}
+                    regionAllowed={regionId => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={originActionV151} />
+                  <HouseScenesPanelV154 house={house} residence={save.residenceV149} life={save.residenceLifeV150} scenes={save.residenceScenesV154}
+                    region={save.homeworldRegionV68 ? { runId: save.homeworldRegionV68.runId, tick: save.homeworldRegionV68.tick } : null} rankId={save.profile.rankId} disabled={disabled}
+                    regionAllowed={(regionId: string) => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={residenceSceneActionV154}
+                    stock={(() => { const objects = normalizePathObjectsV158(save.pathObjectsV158) ?? emptyPathObjectsV158(); return { materials: objects.materials, receipts: objects.receipts }; })()} />
+                  <HouseMaterialsPanelV158 house={house} objects={save.pathObjectsV158} clanMarks={save.profile.clanMarks} disabled={disabled} onBuy={buyMaterialActionV158} />
+                </>}
               </>;
             }}
             guestsV150={(view: { regionId: string; runId: string; tick: number; zone: string; buildingId: string | null }) => guestsInSceneV150(normalizeResidenceLifeV150(save.residenceLifeV150) ?? emptyResidenceLifeV150(), view)}

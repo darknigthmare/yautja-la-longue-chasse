@@ -31,6 +31,7 @@ import { contractRegionNarrativesV70 } from './systems/homeworldContractNarrativ
 import HomeworldVillageAtlasV70 from './HomeworldVillageAtlasV70';
 import { villageFacadeFadedV70, villagePaintOccludedV70 } from './systems/homeworldVillageOcclusionV70';
 import YautjaTranslationV67 from './YautjaTranslationV67';
+import { houseForBuildingV149 } from './systems/residenceV149';
 import styles from './HomeworldRegionV68.module.css';
 
 export interface HomeworldRegionV68Props {
@@ -45,7 +46,7 @@ export interface HomeworldRegionV68Props {
   onReachCity(state?: HomeworldRegionStateV68): boolean | void;
   onOpenSettings?(): void;
   /** V149: residence panel for a Demeure the player stands in (null when it holds no house). */
-  residenceV149?(buildingId: string, disabled: boolean): ReactNode;
+  residenceV149?(buildingId: string, disabled: boolean, threshold?: boolean): ReactNode;
   /** V150: guests of the player's house at this tick (village walk or seated inside). */
   guestsV150?(view: { regionId: string; runId: string; tick: number; zone: string; buildingId: string | null }): readonly { residentId: string; x: number; y: number; inside: boolean; moving: boolean; label: string }[];
   /** V158: voie mission played on this route (null when none applies here). */
@@ -121,6 +122,16 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
     const s = current.current;
     if (!s || s.zone !== 'village' || s.status !== 'walking' || latest.current.suspended || !readyRef.current || s.pendingFieldEvent) return;
     freeze(); if (persist(s)) { noticeRef.current = ''; setNotice(''); setLocalPanel('atlas'); setNavigationError(''); }
+  }, [freeze, persist]);
+  const openResidenceThreshold = useCallback(() => {
+    const live = current.current;
+    if (!live || live.status !== 'walking' || live.pendingFieldEvent || latest.current.suspended ||
+        !readyRef.current || homeworldRegionInteractionV68(live)?.kind !== 'exit-interior') return;
+    const houseId = houseForBuildingV149(live.regionId, live.buildingId)?.id;
+    const residence = latest.current.save.residenceV149;
+    if (!houseId || (residence?.activeResidenceId !== houseId && residence?.transfer?.toHouseId !== houseId)) return;
+    freeze();
+    if (persist(live)) { noticeRef.current = ''; setNotice(''); setLocalPanel('residence-threshold'); }
   }, [freeze, persist]);
   const chooseDestination = useCallback((id: string) => {
     const s = current.current;
@@ -243,6 +254,12 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const selectedActivity = HOMEWORLD_VILLAGE_ACTIVITIES_V70[regionId].find(a => a.id === localPanel), activityProgress = selectedActivity ? activitySession.progress[selectedActivity.id] ?? 0 : 0;
   const destination = navigation && villageDestinationsV70(regionId).find(d => d.id === navigation.id), routeProgress = navigation && state.zone === 'village' ? villageRouteRemainingV70(navigation.points, state.actor) : null;
   const serviceBuilding = definition.buildings.find(b => b.id === state.buildingId);
+  const thresholdHouse = interaction?.kind === 'exit-interior' ? houseForBuildingV149(regionId, state.buildingId) : null;
+  const residence = save.residenceV149;
+  const residenceThreshold = !!thresholdHouse && (residence?.activeResidenceId === thresholdHouse.id ||
+    residence?.transfer?.toHouseId === thresholdHouse.id);
+  const carriesResidence = residence?.transfer?.stage === 'in-transit' &&
+    residence.objects.some(object => object.location.kind === 'transfer');
   const localAllowed = !suspended && !error && ready && gate.allowed && state.status === 'walking' && !state.pendingFieldEvent;
   const playerPlacement = youthWelcome || hero.exactPreset ? homeworldPortraitPlacementV64(hero.plateId, hero.src, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.physicalHeight : 100) : homeworldModularPlacementV64(save.appearance.bodyMorphId, appearance.headStyleId, 100);
   const hazard = regionHazardPhaseV68(state.tick), fauna = REGION_FAUNA_ART_V68[regionId], f = state.fauna;
@@ -298,6 +315,8 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
           {guests.filter(g => g.inside).map(g => { const n = definition.residents.find(r => r.id === g.residentId); return n ? <span key={`guest-${g.residentId}`} data-residence-guest-v150={g.residentId} data-guest-inside>{drawActor(`guest-${n.id}`, g.x, g.y, n.morphId, n.dreadStyleId, false, n)}</span> : null; })}
           <span className={styles.waypoint} style={{ left: 380, top: 620 * d }}><b>Sortie</b></span>
         </>}
+        {carriesResidence && <span data-residence-cargo><HomeworldNativePropV64 id="residence-cargo" artId="chest"
+          art={HOMEWORLD_PROP_ART_V64.chest} x={position.x - 62} y={position.y + 6} depth={state.actor.y + 1} /></span>}
         <span className={styles.actor} data-region-player data-youth-appearance={youthWelcome} data-x={state.actor.x} data-y={state.actor.y} style={{ left: position.x, top: position.y, zIndex: Math.round(state.actor.y) }}><i className={styles.shadow} />{(youthWelcome || hero.exactPreset) && playerPlacement ? <img src={hero.src} alt="" draggable={false} style={{ ...playerPlacement, position: 'absolute', transform: `scaleX(${state.actor.facing})` }} /> : <HomeworldModularHunter morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={appearance} showArmor armorId={save.loadout.armorId} hasWristblades={save.loadout.weaponIds.includes("wristblades")} gauntletVariantId={props.gauntletVariantId} motionPhase={state.tick / 60} speed={Math.hypot(state.actor.vx, state.actor.vy)} style={{ ...(playerPlacement ?? { width: 100, height: 100, top: -100 }), position: 'absolute', transform: `scaleX(${state.actor.facing})` }} />}</span>
       </div>
     </div>
@@ -308,16 +327,20 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
       {props.pathMissionV158 && <div style={{ pointerEvents: 'auto' }}>{props.pathMissionV158(!localAllowed)}</div>}
       <span>{state.zone === 'village' ? `${state.visitedBuildings.length}/12 lieux visités · ${state.greeted.length}/12 témoins rencontrés · ${definition.residents.length + HOMEWORLD_VILLAGE_LIFE_V69[regionId].residents.length} habitants` : state.zone === 'passage' ? `${Math.round(state.walked * .023)} m parcourus · ${state.routeVisited.length}/${definition.route.length} bornes` : serviceBuilding?.label}</span>
     </aside>
-    <footer className={styles.controls} inert={modal}><div>{axes.map(([id, label]) => <button key={id} aria-label={`Marcher ${id}`} onPointerDown={e => pointer(id, true, e)} onPointerUp={e => pointer(id, false, e)} onPointerCancel={e => pointer(id, false, e)} onLostPointerCapture={() => touch.current.delete(id)}>{label}</button>)}</div><button disabled={!bibleNearby&&!interaction && !activity && !villageResident} data-region-interact onPointerDown={e => { e.preventDefault(); interact.current = true; }}>{bibleNearby?'Parler à l’hôte de la halte':interaction?.label ?? (activity ? `Participer : ${activity.name}` : villageResident ? `Parler : ${villageResident.name}` : 'Approche un lieu ou un habitant')} <small>{controlActionShortcut('hunt.interact', save.settings.controlBindings)}</small></button><small>{controlActionShortcut('hunt.pause', save.settings.controlBindings)} · Pause</small></footer>
+    <footer className={styles.controls} inert={modal}><div>{axes.map(([id, label]) => <button key={id} aria-label={`Marcher ${id}`} onPointerDown={e => pointer(id, true, e)} onPointerUp={e => pointer(id, false, e)} onPointerCancel={e => pointer(id, false, e)} onLostPointerCapture={() => touch.current.delete(id)}>{label}</button>)}</div><button disabled={!bibleNearby&&!interaction && !activity && !villageResident} data-region-interact onPointerDown={e => { e.preventDefault(); interact.current = true; }}>{bibleNearby?'Parler à l’hôte de la halte':interaction?.label ?? (activity ? `Participer : ${activity.name}` : villageResident ? `Parler : ${villageResident.name}` : 'Approche un lieu ou un habitant')} <small>{controlActionShortcut('hunt.interact', save.settings.controlBindings)}</small></button>
+      {residenceThreshold && props.residenceV149 && <button type="button" data-residence-open-threshold
+        disabled={!localAllowed} onClick={openResidenceThreshold}>Déménagement au seuil</button>}
+      <small>{controlActionShortcut('hunt.pause', save.settings.controlBindings)} · Pause</small></footer>
     {modal && <div className={styles.backdrop}><div className={`${styles.dialog} ${localPanel === 'atlas' ? styles.atlasDialog : ''}`} role="dialog" aria-modal="true" aria-labelledby="region-v68-title" tabIndex={-1} ref={panel}>
-      <span>{definition.name}</span><h2 id="region-v68-title">{error ? 'Reprise conservée' : localPanel === 'atlas' ? 'Chemins du village' : selectedActivity ? selectedActivity.name : localPanel === 'interior' ? serviceBuilding?.label : notice ? 'Paroles du clan' : !gate.allowed ? 'Départ accompagné requis' : state.status === 'at-city' ? 'La cité est devant toi' : state.zone === 'passage' ? definition.routeTitle : definition.village}</h2>
+      <span>{definition.name}</span><h2 id="region-v68-title">{error ? 'Reprise conservée' : localPanel === 'atlas' ? 'Chemins du village' : selectedActivity ? selectedActivity.name : localPanel === 'residence-threshold' ? 'Au seuil de la résidence' : localPanel === 'interior' ? serviceBuilding?.label : notice ? 'Paroles du clan' : !gate.allowed ? 'Départ accompagné requis' : state.status === 'at-city' ? 'La cité est devant toi' : state.zone === 'passage' ? definition.routeTitle : definition.village}</h2>
       {error ? <p>{error}</p> : localPanel==='bible-v86'?<BibleSceneCulturalV86 ledger={save.homeworld.bibleScenesV86} context={bibleContext} onAction={bibleAction} message={bibleMessage} onClose={()=>{bibleOpenRef.current=false;resume();}} />:localPanel === 'atlas' ? <HomeworldVillageAtlasV70 regionId={regionId} actor={state.actor} disabled={!localAllowed} onChoose={chooseDestination} /> : selectedActivity ? <div data-village-service-v70={selectedActivity.id} data-service-progress={activityProgress}>
         <p>{selectedActivity.description}</p><p className={styles.serviceInstruction}>{activityProgress >= 3 ? selectedActivity.completion : `${activityProgress + 1}/3 · ${selectedActivity.steps[activityProgress]}`}</p>
         {activityProgress < 3 && <div className={styles.serviceChoices}>{selectedActivity.choices.map((choice, i) => <button key={choice} data-village-activity-choice-v70={i} disabled={!localAllowed} onClick={() => setActivitySession(previous => stepVillageActivityV70(previous, current.current ?? state, selectedActivity.id, i, localAllowed))}>{choice}</button>)}</div>}
         {activityProgress < 3 && <p role="status">{activitySession.feedback[selectedActivity.id]}</p>}
         {activityProgress >= 3 && <button data-village-service-route-v70 disabled={!localAllowed} onClick={() => chooseDestination(selectedActivity.destinationId)}>Voir le chemin : {villageDestinationsV70(regionId).find(d => d.id === selectedActivity.destinationId)?.name}</button>}
         <small>Geste local pendant cette visite. Les relevés de terrain et les contrats se font séparément auprès du guide.</small>
-      </div> : localPanel === 'interior' ? <div data-village-interior-service-v70={state.buildingId}>
+      </div> : localPanel === 'residence-threshold' && state.buildingId ? props.residenceV149?.(state.buildingId, !localAllowed, true)
+        : localPanel === 'interior' ? <div data-village-interior-service-v70={state.buildingId}>
         <p>{serviceBuilding?.role === 'forge' ? 'Les balises et les outils demeurent aux ateliers. Le poste de calibration extérieur permet de comparer les lectures avant une sortie.' : serviceBuilding?.role === 'clinic' ? 'La maison des soins protège les retours. Observe les avertissements du territoire et interromps une sortie lorsque sa lecture devient incertaine.' : serviceBuilding?.role === 'archive' ? 'Les récits gardent leurs auteurs. Une préparation au village ne vaut ni trophée, ni preuve de terrain ; le guide ne confirme que les relevés réellement remis.' : serviceBuilding?.role === 'hall' ? 'La maison commune rassemble les chemins du clan. Les demeures, les ateliers et les soins ont chacun leur approche ; le poste extérieur reste séparé des rues.' : 'Cette demeure reste celle de ses habitants. Les coffrets et les outils ne sont pas des prises à emporter.'}</p>
         <p><b>Danger du territoire : {definition.hazard}.</b> Les avertissements concernent le poste extérieur, pas les services civils.</p>
         {narratives.map(n => <p key={n.id}><b>{n.title}</b><br />{n.instruction}{n.confirmedReport && <><br />{n.confirmedReport}</>}</p>)}
