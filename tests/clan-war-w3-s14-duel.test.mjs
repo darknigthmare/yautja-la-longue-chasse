@@ -321,6 +321,10 @@ test('two role-bound Ed25519 attestations are written with the real winner and s
   assert.deepEqual(await game.verifyW3S14Receipt(settled.attestation, selected.trust, owners[0], source), settled.attestation);
   assert.deepEqual(await game.verifyW3S14Receipt(rival.attestation, selected.trust, owners[1], source), rival.attestation);
   assert.equal(await game.verifyW3S14Receipt(rival.attestation, selected.trust, owners[0], source), null);
+  const equivalentDate = '2026-11-21T09:00:00+00:00';
+  assert.equal(Date.parse(equivalentDate), Date.parse(owners[0]));
+  assert.ok(game.w3s14OwnerMaterial(equivalentDate).endsWith(equivalentDate));
+  assert.equal(await game.verifyW3S14Receipt(settled.attestation, selected.trust, equivalentDate, source), null);
   assert.equal(await game.verifyW3S14Receipt(settled.attestation, other.trust, owners[0], source), null);
   assert.equal(await game.verifyW3S14Receipt(settled.attestation, selected.trust, owners[0], 'f'.repeat(64)), null);
   const forged = structuredClone(settled.attestation);

@@ -37,8 +37,8 @@ const shortBase64 = /^[A-Za-z0-9_-]+$/;
 const encoder = new TextEncoder();
 
 export function w3s14OwnerMaterial(ownerCreatedAt: string): string {
-  const date = new Date(ownerCreatedAt);
-  if (!Number.isFinite(date.getTime()) || date.toISOString() !== ownerCreatedAt) {
+  // Saved owners compare exact bytes. Older valid dates need not use current ISO formatting.
+  if (!Number.isFinite(Date.parse(ownerCreatedAt))) {
     throw new Error("Identité temporelle du créneau de campagne illisible.");
   }
   return "yautja:w3-s14:campaign-owner/v1\0" + ownerCreatedAt;
