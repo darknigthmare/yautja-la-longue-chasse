@@ -36,6 +36,15 @@ function digest(token) {
   return createHash('sha256').update(token).digest();
 }
 
+export function clanWarTokenIdentitiesV127(players) {
+  const tokens = players.map(player => player.token);
+  if (tokens.some(token => typeof token !== 'string' || !tokenPattern.test(token)) ||
+      new Set(tokens).size !== tokens.length) {
+    throw new Error('Configurez des jetons de salon distincts et aléatoires.');
+  }
+  return players.map(({token, ...player}) => ({...player, secret: digest(token)}));
+}
+
 function responseJson(response, status, payload) {
   response.writeHead(status, {
     'Content-Type': 'application/json; charset=utf-8',
@@ -82,10 +91,6 @@ function validOrder(order) {
 export function createClanWarPracticeServer(game, {
   hunterToken, rivalToken, scenarioId, seed = randomInt(2 ** 32), tickMs = 5000, turnLimit = 60,
 } = {}) {
-  if (typeof hunterToken !== 'string' || typeof rivalToken !== 'string' ||
-      !tokenPattern.test(hunterToken) || !tokenPattern.test(rivalToken) || hunterToken === rivalToken) {
-    throw new Error('Configurez deux jetons de salon distincts et aléatoires.');
-  }
   if (!Number.isSafeInteger(tickMs) || tickMs < 250 || tickMs > 60000) {
     throw new Error('La durée d’un tick doit être comprise entre 250 et 60000 ms.');
   }
@@ -94,10 +99,10 @@ export function createClanWarPracticeServer(game, {
     throw new Error('La manche doit durer entre 2 et 20000 ticks.');
   }
 
-  const identities = [
-    {id: 'exercise-hunter', unit: 'exercise-hunter-unit', side: sides[0], secret: digest(hunterToken)},
-    {id: 'exercise-rival', unit: 'exercise-rival-unit', side: sides[1], secret: digest(rivalToken)},
-  ];
+  const identities = clanWarTokenIdentitiesV127([
+    {id: 'exercise-hunter', unit: 'exercise-hunter-unit', side: sides[0], token: hunterToken},
+    {id: 'exercise-rival', unit: 'exercise-rival-unit', side: sides[1], token: rivalToken},
+  ]);
   const [hunter, rival] = identities;
   const source = scenarioId ?? game.CLAN_WAR_COHERENT_VARIANTS_V126
     .find(item => item.geography.worldKind === 'earth')?.sourceId;
@@ -148,14 +153,6 @@ export function createClanWarPracticeServer(game, {
     }
   }
 
-  function identityFor(authorization) {
-    const [, presented] = /^Bearer ([A-Za-z0-9_-]{43,128})$/i.exec(authorization ?? '') ?? [];
-    if (!presented) return undefined;
-    const fingerprint = digest(presented);
-    const matches = identities.map(identity => timingSafeEqual(identity.secret, fingerprint));
-    return identities[matches.indexOf(true)];
-  }
-
   function actorMember(identity) {
     return match.room.members.find(member => member.id === identity.id);
   }
@@ -195,6 +192,18 @@ export function createClanWarPracticeServer(game, {
     return {status: 200, state: view(identity)};
   }
 
+  return createClanWarHttpServiceV127({identities, view, submit, tick: tickMatch, tickMs});
+}
+
+export function createClanWarHttpServiceV127({identities, view, submit, tick, tickMs}) {
+  function identityFor(authorization) {
+    const [, presented] = /^Bearer ([A-Za-z0-9_-]{43,128})$/i.exec(authorization ?? '') ?? [];
+    if (!presented) return undefined;
+    const fingerprint = digest(presented);
+    const matches = identities.map(identity => timingSafeEqual(identity.secret, fingerprint));
+    return identities[matches.indexOf(true)];
+  }
+
   const server = createServer({
     requestTimeout: 5000, headersTimeout: 5000, keepAliveTimeout: 2000, maxHeaderSize: 8192,
   }, async (request, response) => {
@@ -223,7 +232,7 @@ export function createClanWarPracticeServer(game, {
 
   let timer;
   server.on('listening', () => {
-    timer = setInterval(tickMatch, tickMs);
+    timer = setInterval(tick, tickMs);
     timer.unref();
   });
   server.on('close', () => clearInterval(timer));

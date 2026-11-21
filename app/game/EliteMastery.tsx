@@ -93,8 +93,9 @@ export default function EliteMastery({ save, onCommand, onClose }: {
       {state.profile.secondary ? " et " + MASTERY_LABELS[state.profile.secondary] : " · Spécialité"}
     </p> : mentor && completed.length > 0 ? <fieldset className={styles.choice}>
       <legend>Présenter la démonstration au mentor</legend>
-      <label>Discipline principale
-        <select value={primary} onChange={event => {
+      <div>
+        <label htmlFor="mastery-primary">Discipline principale</label>
+        <select id="mastery-primary" value={primary} onChange={event => {
           const value = event.target.value as MasteryDiscipline | "";
           setPrimary(value);
           if (value === secondary) setSecondary("");
@@ -102,14 +103,15 @@ export default function EliteMastery({ save, onCommand, onClose }: {
           <option value="">Choisir une discipline</option>
           {completed.map(discipline => <option key={discipline} value={discipline}>{MASTERY_LABELS[discipline]}</option>)}
         </select>
-      </label>
-      {completed.length > 1 && <label>Discipline associée
-        <select value={secondary} onChange={event => setSecondary(event.target.value as MasteryDiscipline | "")}>
+      </div>
+      {completed.length > 1 && <div>
+        <label htmlFor="mastery-secondary">Discipline associée</label>
+        <select id="mastery-secondary" value={secondary} onChange={event => setSecondary(event.target.value as MasteryDiscipline | "")}>
           <option value="">Garder cette spécialité</option>
           {completed.filter(discipline => discipline !== primary).map(discipline =>
             <option key={discipline} value={discipline}>{MASTERY_LABELS[discipline]}</option>)}
         </select>
-      </label>}
+      </div>}
       <button type="button" disabled={!primary} onClick={() => {
         if (primary) submit({ type: "profile", profile: { primary, secondary: secondary || null } });
       }}>Consigner le profil</button>

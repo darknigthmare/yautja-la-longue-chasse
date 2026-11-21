@@ -58,4 +58,24 @@ Le processus écoute sur `127.0.0.1:8787` (`YAUTJA_CLAN_PRACTICE_PORT` pour choi
 
 La recette est `node --test tests/clan-war-practice-server-v127.test.mjs`. Elle ouvre un socket TCP et vérifie le contrôle de deux identités, le masquage, le refus de requêtes invalides, les séquences, la concurrence, la lecture après réouverture de connexion et le tick serveur.
 
-Le salon V127 applique l’arbitrage de `CW130-NET-013` à son duel d’exercice. Les critères de coopération `CW130-NET-003`, `CW130-NET-004` et `CW130-NET-005` restent ouverts. Le service WebSocket public, les comptes de campagne, la persistance SQL, les reçus et l’horloge signés, ainsi que la recette sur deux appareils restent à réaliser. Le redémarrage du processus ouvre une nouvelle partie d’exercice.
+Le salon V127 applique l’arbitrage de `CW130-NET-013` à son duel d’exercice. Les critères de coopération `CW130-NET-004` et `CW130-NET-005` restent ouverts. Le service WebSocket public, les comptes de campagne, la persistance SQL, les reçus et l’horloge signés, ainsi que la recette sur deux appareils restent à réaliser. Le redémarrage du processus ouvre une nouvelle partie d’exercice.
+
+## Assaut coopératif V115
+
+Le salon coopératif réutilise l’assaut V115 et les détachements réels de la Bible V6. Les deux à quatre joueurs disposent chacun de leur propre équipe et de la même réserve d’AP/RAV. Le premier jeton désigne le commandant, seul habilité à lancer l’assaut après la confirmation de tous et à acheter l’amélioration d’AP. Le moteur vérifie la route et le total des PC, débite les RAV au départ et traite les renforts un par un sur l’aire commune.
+
+Fournissez un tableau JSON de deux à quatre clés distinctes dans `YAUTJA_CLAN_COOP_TOKENS`. Le serveur écoute sur `127.0.0.1:8788`. `YAUTJA_CLAN_COOP_PORT` permet de changer le port et `YAUTJA_CLAN_COOP_TARGET` de sélectionner un territoire V6 praticable pour les équipes attribuées.
+
+```sh
+node scripts/serve-clan-war-assault-coop-v115.mjs
+```
+
+Dans chaque terminal joueur, utilisez la clé attribuée dans `YAUTJA_CLAN_PRACTICE_TOKEN`. Après la commande `ready` de chaque joueur, le commandant donne `launch`. Chaque joueur peut ensuite donner `deploy`, `cloak`, `hold` ou `withdraw` à son équipe.
+
+```sh
+export YAUTJA_CLAN_PRACTICE_URL=http://127.0.0.1:8788
+node scripts/play-clan-war-practice-v127.mjs state
+node scripts/play-clan-war-practice-v127.mjs ready
+```
+
+Si l’aire de départ est occupée, patientez jusqu’à son dégagement. Le refus conserve les AP. Le salon qualifie la boucle de `CW130-NET-003` en exercice hébergé. Les comptes de campagne, le matchmaking, la reprise après redémarrage du serveur et la validation sur appareils distincts restent à réaliser.

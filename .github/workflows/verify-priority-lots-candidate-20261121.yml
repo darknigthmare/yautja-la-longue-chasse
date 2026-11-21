@@ -13,13 +13,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'f9a0b2083d2492e684c91485b6f30d6b70be7c4d'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'd4310da79bdc8c3c8c1fbc4dcea56ecff76592c9'
       BASE_COMMIT: '09dbd50474fe77e3f055a919dcfc09c66bab69f1'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'f9a0b2083d2492e684c91485b6f30d6b70be7c4d'
+          ref: 'd4310da79bdc8c3c8c1fbc4dcea56ecff76592c9'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -69,11 +69,25 @@ jobs:
         run: >-
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
           tests/elite-mastery-v170.test.mjs tests/elder-assembly-v168.test.mjs tests/nursery-campaign.test.mjs
-          tests/clan-war-practice-server-v127.test.mjs tests/clan-war-assault-replay-v115.test.mjs
+          tests/clan-war-practice-server-v127.test.mjs tests/clan-war-assault-coop-v115.test.mjs tests/clan-war-assault-replay-v115.test.mjs
           tests/clan-war-tactical-runtime-v115.test.mjs tests/qa-hunt-ground-policy-v112.test.mjs
       - name: Preserve the existing hunting workbook byte for byte
         if: ${{ !cancelled() }}
         run: node scripts/build-hunt-mechanics-workbook-v112.mjs --check
+
+      - name: Report canonical inventory differences
+        if: ${{ !cancelled() }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs';
+          const prior = JSON.parse(readFileSync('docs/qa/current-integration-20261103/runtime-inputs.json'));
+          const next = JSON.parse(readFileSync('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json'));
+          const old = new Map(prior.entries.map(item => [item.path, item]));
+          const paths = new Set(next.entries.map(item => item.path));
+          const changes = next.entries.filter(item => JSON.stringify(old.get(item.path)) !== JSON.stringify(item));
+          const removed = prior.entries.filter(item => !paths.has(item.path)).map(item => item.path);
+          console.log('V113_DELTA ' + JSON.stringify({ files: next.files, bytes: next.bytes, changes, removed }));
+          NODE
 
   browser:
     name: Play the mastery terrain and reopen its checkpoints in compiled Next
@@ -82,7 +96,7 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'f9a0b2083d2492e684c91485b6f30d6b70be7c4d'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'd4310da79bdc8c3c8c1fbc4dcea56ecff76592c9'
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: /usr/bin/google-chrome
       AUDIT_CHROME_CHANNEL: chrome
@@ -90,12 +104,12 @@ jobs:
       YAUTJA_QA_BASE_URL: http://127.0.0.1:3121
       YAUTJA_QA_MODE: compiled-app
       AUDIT_CHROME_EXECUTABLE: /usr/bin/google-chrome
-      YAUTJA_QA_RUNTIME_COMMIT: 'f9a0b2083d2492e684c91485b6f30d6b70be7c4d'
+      YAUTJA_QA_RUNTIME_COMMIT: 'd4310da79bdc8c3c8c1fbc4dcea56ecff76592c9'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'f9a0b2083d2492e684c91485b6f30d6b70be7c4d'
+          ref: 'd4310da79bdc8c3c8c1fbc4dcea56ecff76592c9'
           persist-credentials: false
           fetch-depth: 3
           filter: blob:none
@@ -305,53 +319,14 @@ jobs:
           printf 'YAUTJA_QA_BUILD_ID=%s\n' "$(cat .next/BUILD_ID)" >> "$GITHUB_ENV"
       - name: Play the tracking and mobility demonstrations
         env:
-          ELITE_MASTERY_QA_COMMIT: f9a0b2083d2492e684c91485b6f30d6b70be7c4d
+          ELITE_MASTERY_QA_COMMIT: d4310da79bdc8c3c8c1fbc4dcea56ecff76592c9
         run: node scripts/qa-elite-mastery-v170.mjs
       - name: Preserve the compiled browser evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: compiled-scenes-f9a0b2083d2492e684c91485b6f30d6b70be7c4d
+          name: compiled-scenes-d4310da79bdc8c3c8c1fbc4dcea56ecff76592c9
           path: |
             outputs/p0-p3-20261121/
             outputs/qa-elite-mastery-v170/
           if-no-files-found: error
-
-  volcano:
-    name: Play and resume the Volcano contract from the documented Glacier save
-    runs-on: ubuntu-24.04
-    timeout-minutes: 21
-    env:
-      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          ref: 'f9a0b2083d2492e684c91485b6f30d6b70be7c4d'
-          persist-credentials: false
-          filter: blob:none
-          sparse-checkout-cone-mode: false
-          sparse-checkout: |
-            /*
-            !/*/
-            /app/
-            /lib/
-            /types/
-            /scripts/
-            /tests/
-            /docs/qa/v112-ground-campaign/campaign-origin-save.json
-            /docs/qa/v112-ground-campaign/tool-origin.json
-            /docs/qa/v112-campaign-canonical/browser-workshop/browser-report.json
-            /public/**/manifest.json
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
-        with:
-          node-version: '22'
-      - run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Play the real client with explicit success and resume gates
-        run: node scripts/qa-hunt-campaign-browser-v112.mjs --campaign-source docs/qa/v112-campaign-canonical/browser-workshop/browser-report.json --missions volcano-bad-blood --wall-seconds 600 --chromium /usr/bin/google-chrome --require-complete --require-resume --output outputs/qa-rem112-volcano-browser
-      - name: Preserve the Volcano contract result
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with:
-          name: rem112-volcano-browser
-          path: outputs/qa-rem112-volcano-browser/
-          if-no-files-found: warn

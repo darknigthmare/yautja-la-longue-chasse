@@ -14,10 +14,10 @@ async function main() {
   }
   const hasTarget = verb === 'move' || verb === 'attack';
   const target = hasTarget ? coordinates.map(Number) : null;
-  if (!['state', 'move', 'attack', 'hold', 'retreat'].includes(verb) ||
+  if (!['state', 'move', 'attack', 'hold', 'retreat', 'ready', 'launch', 'deploy', 'cloak', 'withdraw', 'upgrade-ap'].includes(verb) ||
       (hasTarget && (target.length !== 2 || coordinates.some(value => !/^\d+$/.test(value)) ||
         !target.every(Number.isSafeInteger))) || (!hasTarget && coordinates.length)) {
-    throw new Error('Commandes disponibles : state, move x y, attack x y, hold, retreat.');
+    throw new Error('Commandes disponibles : state, move x y, attack x y, hold, retreat, ready, launch, deploy, cloak, withdraw, upgrade-ap.');
   }
 
   async function send(path, order) {
@@ -29,6 +29,7 @@ async function main() {
       redirect: 'error', signal: AbortSignal.timeout(5000),
     });
     const payload = await response.json();
+    if (payload.error === 'deployment-occupied') throw new Error('L’aire de départ est occupée. Attendez son dégagement.');
     if (payload.error === 'state-changed') {
       throw new Error('La manche a avancé. Relisez le plateau et confirmez votre nouvel ordre.');
     }
