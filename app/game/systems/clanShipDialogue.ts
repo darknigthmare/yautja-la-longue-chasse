@@ -1,6 +1,6 @@
 import type { SaveGame } from '../types';
 import type { ClanShipRoomId } from './clanShipDocking';
-import { CLAN_SHIP_RECRUITS, clanShipContract, inspectClanShipOperations, type ClanShipNpcId } from './clanShipOperations';
+import { CLAN_SHIP_COLLECTIVE_ID, CLAN_SHIP_RECRUITS, clanShipContract, inspectClanShipOperations, type ClanShipNpcId } from './clanShipOperations';
 import { CLAN_SHIP_SPACE_SCENARIOS } from './clanShipSpaceEncounter';
 import { inspectCompanionResidence, type CompanionCampaign } from './companionResidence';
 import { inspectExpeditionRoster, TRIO_MEMBERS } from './planetInsertion';
@@ -140,6 +140,14 @@ export function clanShipDialogue(save: DialogueSave, npcId: ClanShipNpcId, roomI
       ? state.spaceEncounter : archived?.proof.kind === 'space' ? archived.proof.encounter : null;
     if (!encounter || encounter.status === 'active') return say('no-report', voice.noReport);
     const line = encounter.status === 'victory' ? voice.victory : encounter.status === 'defeat' ? voice.defeat : voice.withdrawn;
+    if (encounter.status === 'victory' && archived?.contractId === CLAN_SHIP_COLLECTIVE_ID && archived.proof.kind === 'space') {
+      const briefing = archived.proof.collective;
+      if (briefing) {
+        const role = briefing.role === 'field' ? 'conduite depuis le hangar' : 'coordination depuis le conseil';
+        return say('return-victory', line,
+          `Veille Partagée · ${role} · ${briefing.checkedNpcIds.length} postes vérifiés · capacité enregistrée de ${briefing.capacity}.`);
+      }
+    }
     return say(`return-${encounter.status}`, line, `Engagement spatial : ${CLAN_SHIP_SPACE_SCENARIOS[encounter.kind].title}.`);
   }
   return say('greeting', voice.greeting);

@@ -29,10 +29,17 @@ const won = encounter(['scan', 'manoeuvre', 'brace', 'brace', 'extract']);
 const withdrawn = encounter(['withdraw']);
 const lost = encounter(Array(16).fill('brace'));
 
-test('all twelve contracts retain the exact baseline mechanics, rewards, rooms, identities and recruitment gates', () => {
+test('the twelve original contracts and the collective escort retain their exact mechanics', () => {
   const frozen = JSON.parse(fs.readFileSync('tests/fixtures/clan-quest-mechanics-19317af4.json', 'utf8'));
   assert.equal(ops.CLAN_SHIP_OPERATIONS_VERSION, frozen.version);
-  assert.deepEqual(ops.CLAN_SHIP_CONTRACTS.map(value => ({ ...without(value, ['name', 'summary', 'briefing', 'steps']), steps: value.steps.map(step => without(step, ['label', 'description'])) })), frozen.contracts);
+  const mechanics = ops.CLAN_SHIP_CONTRACTS.map(value => ({
+    ...without(value, ['name', 'summary', 'briefing', 'steps']),
+    steps: value.steps.map(step => without(step, ['label', 'description'])),
+  }));
+  assert.deepEqual(mechanics, [...frozen.contracts, {
+    id: 'space-collective-escort', kind: 'space', roomId: 'conseil', clanMarksReward: 0,
+    prerequisiteIds: [], missionId: null, minimumScore: 0, minimumScans: 0, spaceKind: 'escort', steps: [],
+  }]);
   assert.deepEqual(ops.CLAN_SHIP_ONBOARDING_STEPS.map(step => without(step, ['label', 'description'])), frozen.onboarding);
   assert.deepEqual(ops.CLAN_SHIP_RECRUITS.map(value => without(value, ['summary', 'joinLine'])), frozen.recruits);
 });

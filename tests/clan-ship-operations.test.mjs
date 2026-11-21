@@ -585,6 +585,7 @@ test('collective escort checks real postings, applies role-specific orders and s
   const hull = qa.load('app/game/systems/clanHullProjectV171.ts');
   const docking = qa.load('app/game/systems/clanShipDocking.ts');
   const acquisition = qa.load('app/game/systems/shipAcquisitionV89.ts');
+  const { clanShipDialogue } = qa.load('app/game/systems/clanShipDialogue.ts');
   let save = campaign();
   save.profile = { ...save.profile, honor: 5000, rankId: 'elite' };
   save = playShipAcquisitionV161(qa, save);
@@ -668,6 +669,10 @@ test('collective escort checks real postings, applies role-specific orders and s
     const restored = saves.parseSaveImport(saves.exportSave(valid));
     assert.equal(restored.failure, null);
     assert.deepEqual(restored.save.clanShipOperations, state);
+    const report = clanShipDialogue(restored.save, 'star-watch', 'conseil', 'return');
+    assert.equal(report?.phase, 'return-victory');
+    assert.match(report.detail, /Veille Partagée.*6 postes vérifiés.*capacité enregistrée de 7/);
+    assert.ok(report.detail.includes(role === 'field' ? 'conduite depuis le hangar' : 'coordination depuis le conseil'));
     const damaged = structuredClone(valid);
     damaged.clanShipOperations.completedContracts.at(-1).proof.collective.checkedNpcIds.pop();
     assert.equal(saves.parseSaveImport(JSON.stringify(damaged)).failure, 'invalid-save');
