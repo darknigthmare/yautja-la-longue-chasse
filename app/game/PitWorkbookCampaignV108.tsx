@@ -41,7 +41,14 @@ export default function PitWorkbookCampaignV108({fighterId,owner,onBack,pitProps
  const publish=useCallback((next:PitWorkbookCampaignRunV108)=>{ref.current=next;setRun(next);persist(next);},[persist]);
  const start=async(replace=false)=>{if(incompatibleText.current){if(!replace){setConfirmReplacement(true);return;}try{const text=incompatibleText.current,key=pitWorkbookCampaignStorageKeyV108(owner,fighterId)+':incompatible:'+Date.now().toString(36)+'-'+crypto.randomUUID();const session=saveSession.current;if(!session||await session.archiveIncompatible(key)!==text)throw new Error('Unconfirmed archive');if(saveSession.current!==session)return;replacementAuthorized.current=text;incompatibleText.current=null;setIncompatible(false);setConfirmReplacement(false);}catch{setNotice('Archivage non confirmé : le carnet incompatible reste conservé. Aucun remplacement effectué.');return;}}const id='exercise-v108-'+(typeof crypto.randomUUID==='function'?crypto.randomUUID():Date.now().toString(36));publish(createPitWorkbookCampaignRunV108(fighterId,owner,id));pending.current=null;setConfirmRestart(false);};
  const stage=run?route.stages[run.stageIndex]:null,encounter=run?getPitWorkbookCampaignEncounterV108(run):null,observedEncounterId=encounter?.id??'';
- const observe=useCallback((combat:Readonly<PitCombatState>)=>{const current=ref.current;if(!current||pending.current||getPitWorkbookCampaignEncounterV108(current)?.id!==observedEncounterId)return;const next=observePitWorkbookCampaignCombatV108(current,combat);ref.current=next;if(next.counters!==current.counters){setRun(next);persist(next);}},[persist,observedEncounterId]);
+ const observe=useCallback((combat:Readonly<PitCombatState>)=>{
+  const current=ref.current;
+  if(!current||pending.current||getPitWorkbookCampaignEncounterV108(current)?.id!==observedEncounterId)return;
+  const next=observePitWorkbookCampaignCombatV108(current,combat);
+  if(next.phase!==current.phase){publish(next);return;}
+  ref.current=next;
+  if(next.counters!==current.counters){setRun(next);persist(next);}
+ },[persist,publish,observedEncounterId]);
  const matchComplete=useCallback((result:PitNarrativeResultInput)=>{const current=ref.current;if(!current||pending.current)return;const applied=applyPitWorkbookCampaignResultV108(current,result,observedEncounterId);if(applied.applied){pending.current=applied.run;persist(applied.run);}},[persist,observedEncounterId]);
  const leaveMatch=useCallback(()=>{const current=ref.current;if(current)publish(pending.current??checkpointPitWorkbookCampaignV108(current));pending.current=null;},[publish]);
  const status=useCallback((id:PitArenaId,value:PitStagePreviewStatus)=>setPreview({id,status:value}),[]);

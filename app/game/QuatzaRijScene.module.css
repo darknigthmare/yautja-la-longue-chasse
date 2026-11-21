@@ -21,4 +21,7 @@
 .controls button { min-width: 48px; min-height: 44px; touch-action: none; }
 .vital { display: flex; flex-wrap: wrap; gap: 1rem; }
 .status { color: #e7ffd8; }
+.testimony { display: grid; gap: .55rem; margin-top: .75rem; padding: .75rem; border-top: 1px solid #67846c; }
+.testimony ol, .testimony ul { margin: 0; padding-left: 1.4rem; }
+.testimony button { flex: 0 1 auto; text-align: start; }
 @media (max-width: 620px) { .quest { padding: .65rem; } .viewport { height: 425px; } }

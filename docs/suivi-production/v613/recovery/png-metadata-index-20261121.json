@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "d5e95fba7358924108e425cf7056a5a38fe2b944",
+  "requirements": [
+    {
+      "id": "ENFORCERS-V613-RECEIPTS",
+      "status": "OUVERT_SOURCE",
+      "priority": "P3",
+      "source": "V6.13 production-manifest.json / summary",
+      "sourceRowSha256": "590d35184f14a857215fd1603b840e63276467952e637672212b565a02d5e4f9",
+      "acceptance": "Récupérer les reçus/traces historiques authentiques ; un nouveau dessin ou reçu ne répare pas leur absence."
+    },
+    {
+      "id": "ENFORCERS-V610-TRACES",
+      "status": "OUVERT_SOURCE",
+      "priority": "P3",
+      "source": "Attestation de réconciliation d71e995ae886df69c4165a1a153291449e8f22f6",
+      "sourceRowSha256": "a09a43632b3eeac0bbb421f6bbe72d7347cf62759e51557150906d85c0ec1fc3",
+      "acceptance": "Récupérer les reçus/traces historiques authentiques ; un nouveau dessin ou reçu ne répare pas leur absence."
+    }
+  ],
+  "knownSources": {
+    "openWorkstreams": {
+      "path": "docs/v112-open-workstreams-audit.json",
+      "gitBlobSha": "e9d3fabb03733af644a486a689661868ebcc5b76"
+    },
+    "historicalSourceIndex": {
+      "path": "docs/suivi-production/enforcers-recherche-sources-20261121.tsv",
+      "gitBlobSha": "46b68d4f9586d3c15ff52e65f9264175754dbd1b",
+      "rows": 57
+    },
+    "publishedV613Checkpoint": {
+      "path": "docs/suivi-production/v613/recovery/native-checkpoint.json",
+      "gitBlobSha": "994e3504234745e8b6ad587f15bc6433fb08e935"
+    }
+  },
+  "v610": {
+    "originalPngRecovered": 0,
+    "expectedPngCount": 36,
+    "currentFindings": [
+      "Le delta du PR #184 ne contient aucun PNG ni checkpoint Enforcers.",
+      "Aucun raccourci Drive, export de conversation ou checkpoint de production supplémentaire n’a été renvoyé par les recherches ciblées.",
+      "Le corpus récupéré dans art-source/project-recovery-20261117/corpus/collections contient 103 entrées Humains Photos et Homeworld, sans taille correspondant aux PNG recherchés."
+    ]
+  },
+  "v613": {
+    "finalPngCount": 36,
+    "matchingPublishedReceipts": 15,
+    "missingPublishedReceipts": 21,
+    "nativePngAudit": {
+      "auditedCommit": "3da8ebced4b628e04fafd92aa56ff15caa2fa188",
+      "verifierPath": "scripts/audit-enforcer-png-metadata.py",
+      "verifierGitBlobSha": "870038302fe10633f03d4667f360272295d4651b",
+      "run": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44953849844/job/136997482333",
+      "reportArchive": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44953849844/artifacts/14726642765",
+      "reportArchiveDigest": "sha256:1e773f7c831994f0c9b5e8b81b89d3c95c9da876f616336af12c82ce4fcc0683",
+      "reportArchiveExpiresAt": "2026-12-05T21:53:26Z",
+      "summary": {
+        "manifestBlob": "6a5a6f1ce1dbc5b0d0f366b7a27f5468c4fee572",
+        "allFinalFiles": {
+          "files": 36,
+          "chunkTypeCounts": {
+            "IHDR": 36,
+            "caBX": 36,
+            "IDAT": 1245,
+            "IEND": 36
+          },
+          "withC2paCarrier": 36,
+          "withC2paClaimMarker": 36,
+          "withC2paSignatureMarker": 36,
+          "withC2paPromptFieldMarker": 0,
+          "withC2paReceiptFieldMarker": 0,
+          "withProvenanceChunk": 0,
+          "withUnclassifiedChunk": 0,
+          "withTrailingBytes": 0
+        },
+        "filesWithoutAcceptedReceipt": {
+          "files": 21,
+          "chunkTypeCounts": {
+            "IHDR": 21,
+            "caBX": 21,
+            "IDAT": 719,
+            "IEND": 21
+          },
+          "withC2paCarrier": 21,
+          "withC2paClaimMarker": 21,
+          "withC2paSignatureMarker": 21,
+          "withC2paPromptFieldMarker": 0,
+          "withC2paReceiptFieldMarker": 0,
+          "withProvenanceChunk": 0,
+          "withUnclassifiedChunk": 0,
+          "withTrailingBytes": 0
+        }
+      },
+      "interpretation": "Les SHA‑256, tailles et CRC des PNG concordent. Les blocs caBX portent des marqueurs de manifeste et de signature C2PA ; leur présence seule ne vérifie pas la signature. Les fichiers à reçu manquant ne portent aucun bloc texte, EXIF ou heure PNG, ni marqueur brut du champ de prompt/reçu recherché. Aucun reçu de production n’est récupéré."
+    },
+    "c2paVerification": {
+      "verifiedAtUtc": "2026-11-21T21:57:18.3140760Z",
+      "auditedCommit": "5168bd62710323d9de1da2b2edbc374ff1ffb2f7",
+      "verifierPath": "scripts/audit-enforcer-c2pa.py",
+      "verifierGitBlobSha": "5bb635a52f62e1b5efbb2fff1fe17ba7dc0353f7",
+      "tool": {
+        "name": "c2patool",
+        "version": "v0.29.0",
+        "releaseUrl": "https://github.com/contentauth/c2patool/releases/download/v0.29.0/v0.29.0-x86_64-unknown-linux-gnu.tar.gz",
+        "distributionSha256": "sha256:af5494722fc8c3f239980f36ceb3acf496d1481850d356a4bb34777b33b08043"
+      },
+      "trustList": {
+        "name": "C2PA official conformance trust list",
+        "sourceCommit": "285d98e4b575198180c1d6404a7ee1a317e04911",
+        "gitBlobSha": "9af0c319794489ca9a01e688e0299bc525a996cc",
+        "url": "https://raw.githubusercontent.com/c2pa-org/conformance-public/285d98e4b575198180c1d6404a7ee1a317e04911/trust-list/C2PA-TRUST-LIST.pem"
+      },
+      "verificationMode": "Exécution hors réseau après installation vérifiée des dépendances. Le rapport ne contient que les états, codes C2PA normalisés, tailles et empreintes.",
+      "run": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44954155066/job/136998435233",
+      "reportArchive": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44954155066/artifacts/14726602172",
+      "reportArchiveDigest": "sha256:eb87f6759b26506f32ceaeb4e7636919ea1340b6d803d35544e88bf4e68effaa",
+      "reportArchiveExpiresAt": "2026-12-05T21:57:18Z",
+      "summary": {
+        "allFinalFiles": {
+          "files": 36,
+          "states": {
+            "Trusted": 36
+          },
+          "activeManifestStatusCodes": {
+            "assertion.dataHash.match": 36,
+            "assertion.hashedURI.match": 36,
+            "claimSignature.insideValidity": 36,
+            "claimSignature.validated": 36,
+            "signingCredential.ocsp.skipped": 36,
+            "signingCredential.trusted": 36,
+            "timeStamp.untrusted": 36,
+            "timeStamp.validated": 36
+          }
+        },
+        "filesWithoutAcceptedReceipt": {
+          "files": 21,
+          "states": {
+            "Trusted": 21
+          },
+          "activeManifestStatusCodes": {
+            "assertion.dataHash.match": 21,
+            "assertion.hashedURI.match": 21,
+            "claimSignature.insideValidity": 21,
+            "claimSignature.validated": 21,
+            "signingCredential.ocsp.skipped": 21,
+            "signingCredential.trusted": 21,
+            "timeStamp.untrusted": 21,
+            "timeStamp.validated": 21
+          }
+        },
+        "negativeControl": {
+          "state": "Invalid",
+          "codes": [
+            "assertion.dataHash.mismatch",
+            "assertion.hashedURI.match",
+            "claimSignature.insideValidity",
+            "claimSignature.validated",
+            "signingCredential.ocsp.skipped",
+            "signingCredential.trusted",
+            "timeStamp.untrusted",
+            "timeStamp.validated"
+          ],
+          "exitCode": 0
+        }
+      },
+      "proven": "Pour les 36 fichiers contrôlés, le manifeste actif signé est relié aux octets du PNG et le certificat de signature est approuvé par la liste officielle C2PA épinglée. Un changement non signé du fichier témoin fait échouer la liaison.",
+      "limits": "Le certificat de l’horodatage n’est pas approuvé par cette liste. OCSP est ignoré hors réseau. Cette attestation ne restitue ni le prompt exact, ni un horodatage de génération certifié, ni le reçu historique du lot."
+    }
+  }
+}

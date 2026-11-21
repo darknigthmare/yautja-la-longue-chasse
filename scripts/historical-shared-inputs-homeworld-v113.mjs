@@ -1,7 +1,8 @@
-/** The 82 shared artifacts republished after the original V112 Homeworld/Pit
+/** The shared artifacts republished after the original V112 Homeworld/Pit
  * commit a5ed39dfbed118669b2e76402c490b200136a74d. Each blob is checked against
  * that immutable tree and the unchanged capsule manifest before use. */
 export const HOMEWORLD_SHARED_PREIMAGES_V113=Object.freeze([
+ Object.freeze({"path":"docs/v108-clan-logistics-contract.md","gitBlobSha":"13c1cec8ef2c0f345c86e48c1f8e630ab629e172"}),
  Object.freeze({"path":"docs/YAUTJA_V112_SUIVI.xlsx","gitBlobSha":"dfc95e250d01959650229ad9281558ccf5f7f973"}),
  Object.freeze({"path":"docs/excel-followup-homeworld-v112.md","gitBlobSha":"f198a2a5b6a81bfe4fe7ecdf78a3444474a8529d"}),
  Object.freeze({"path":"docs/qa/v112-homeworld/browser-result.json.gz","gitBlobSha":"43744b39fb56a294c7d011eef437bd84bcd4c350"}),

@@ -108,7 +108,7 @@ import { actClanShipIncident, actClanShipTrophyHearing, type ClanShipIncidentAct
 import type { ClanShipTrophyHearingAction } from './systems/clanShipTrophyHearing';
 import { actClanShipReturnEscort, type ClanShipReturnEscortAction, type ClanShipReturnEscortObservation } from './systems/clanShipReturnEscort';
 import type { ClanShipService } from "./ClanShipHub";
-import { commitQuatzaRij, type QuatzaCommand } from "./systems/quatzaRij";
+import { canEnterQuatza, commitQuatzaRij, type QuatzaCommand } from "./systems/quatzaRij";
 import { commitClanHullProject, type ClanHullProjectCommandV171, type ClanHullProjectResponseV171 } from "./systems/clanHullProjectV171";
 import { actBuriedCradleCampaign, evaluateBuriedCradleAccess, type CradleCampaignAction } from './systems/buriedCradleCampaign';
 import type { CradleReturnOperation, CradleReturnObservation } from './systems/buriedCradleReturn';
@@ -1145,7 +1145,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const gameFocusedV89 = useSyncExternalStore(subscribeGameFocusV89, readGameFocusV89, serverGameFocusV89);
   const reducedMotionV90 = useHomeworldReducedMotionV77();
   const [screen, setScreen] = useState<Screen>(entry.location === "new-game" ? "customization" : entry.location === "mission" ? "title" : entry.location);
-  const [chronicleReturnScreen, setChronicleReturnScreen] = useState<"deck" | "title">("deck");
+  const [chronicleReturnScreen, setChronicleReturnScreen] = useState<"deck" | "title" | "homeworld">("deck");
   const [newGamePhase, setNewGamePhase] = useState<"identity" | "briefing" | null>(entry.location === "new-game" ? "identity" : null);
   const [hydrated, setHydrated] = useState(false);
   const [nurseryPersistenceError, setNurseryPersistenceError] = useState<string | null>(null);
@@ -1283,7 +1283,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   // Keep the physical room and avatar alive while consulting any of its services,
   // including the council (which has its own full-screen panel).
   const clanShipMounted = clanShipVisible || (screen === "clan-war" && archiveReturnV85 === "clan-ship" && clanShipState?.status === "aboard");
-  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89"));
+  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || (screen === "clan-chronicle" && chronicleReturnScreen === "homeworld") || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89"));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
   );
@@ -5238,6 +5238,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <button type="button" className="ghost-button" onClick={() => {
                   setJusticeJurisdiction("homeworld"); openStationScreen("justice", "homeworld");
                 }}>Dossier · {getJusticeStatus(save.justice).label}</button>
+                {canEnterQuatza(save, "triad") && <button type="button" className="ghost-button" data-open-quatza-homeworld
+                  disabled={settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !!resumableHunt}
+                  onClick={() => { setChronicleReturnScreen("homeworld"); go("clan-chronicle"); }}>
+                  Dossier de campagne · Quatza-Rij
+                </button>}
                 {!save.prologue && <button type="button" className="ghost-button" onClick={() => go("deck")}>Rejoindre le vaisseau</button>}
                 <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages</button>
                 <button type="button" className="ghost-button" onClick={openShipAcquisitionV89}>Chantier naval · inspection</button>

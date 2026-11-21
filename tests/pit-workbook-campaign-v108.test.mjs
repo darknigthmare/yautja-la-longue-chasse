@@ -34,6 +34,56 @@ test('an unused object survives V107 round cleanup and an observed defeat retrie
  assert.equal(combat.matchWinnerId,e.rightId);const result={mode:'cpu',leftId:e.leftId,rightId:e.rightId,arenaId:e.arenaId,winnerId:e.rightId,resultId:e.id+':real-defeat'};run=applyResult(run,result).run;assert.equal(run.phase,'retry');assert.deepEqual(run.continuityV108.carry,entry);
  const restored=p.deserializePitWorkbookCampaignV108(p.serializePitWorkbookCampaignV108(run),owner);assert.deepEqual(restored,run);assert.deepEqual(p.beginPitWorkbookCampaignStageV108(restored).continuityV108.carry,entry);
 });
+test('a timed draw or double KO retries the decisive duel with the same spent device and saved vitality',()=>{
+  for(const [fighterId,reason] of [['feral-hunter','draw'],['scar','double-ko']]){
+    let run=p.beginPitWorkbookCampaignStageV108(start(fighterId));
+    run=p.applyPitWorkbookCampaignFieldV108(run,fieldDone(run));
+    run=p.beginPitWorkbookCampaignStageV108(p.advancePitWorkbookCampaignV108(run));
+    const won=actualWin(run,true);
+    run=applyResult(won.run,won.result).run;
+    assert.equal(run.continuityV108.carry.device.status,'spent');
+    assert.ok(run.continuityV108.carry.health<p.PIT_FIGHTERS[fighterId].maxHealth);
+    run=p.beginPitWorkbookCampaignStageV108(p.advancePitWorkbookCampaignV108(run));
+    const entry=clone(run.continuityV108.carry),completed=clone(run.completedStages);
+    const encounter=p.getPitWorkbookCampaignEncounterV108(run);
+    const fight=()=>p.createPitCombatState(encounter.leftId,encounter.rightId,{normalMoves:encounter.normalMoves,arenaId:encounter.arenaId});
+    let combat=p.preparePitWorkbookCampaignCombatV108(fight(),entry);
+    assert.equal(combat.fighters[0].workbookDeviceV107.status,'spent');
+    // Admit the last tied tick to exercise the real engine's round resolver.
+    // The campaign entry carry is already earned and this setup leaves it alone.
+    combat.roundFramesRemaining=1;
+    for(const actor of combat.fighters)actor.health=reason==='double-ko'?0:p.PIT_FIGHTERS[actor.definitionId].maxHealth;
+    combat=p.stepPitCombat(combat,[{},{}]);
+    assert.equal(combat.lastRoundResult.reason,reason);
+    assert.equal(combat.phase,'round-over');
+    const retry=p.observePitWorkbookCampaignCombatV108(run,combat);
+    assert.equal(retry.phase,'retry');
+    assert.equal(retry.stageIndex,run.stageIndex);
+    assert.equal(retry.attempt,run.attempt);
+    assert.deepEqual(retry.completedStages,completed);
+    assert.deepEqual(retry.continuityV108.victories,run.continuityV108.victories);
+    assert.deepEqual(retry.continuityV108.carry,entry);
+    assert.equal(retry.receipts.at(-1).kind,'draw');
+    assert.equal(retry.receipts.at(-1).match.winnerId,null);
+    assert.equal(p.observePitWorkbookCampaignCombatV108(retry,combat),retry);
+    const restored=p.deserializePitWorkbookCampaignV108(p.serializePitWorkbookCampaignV108(retry),owner);
+    assert.deepEqual(restored,retry);
+    const replay=p.beginPitWorkbookCampaignStageV108(restored);
+    assert.equal(replay.attempt,run.attempt+1);
+    const again=p.preparePitWorkbookCampaignCombatV108(fight(),replay.continuityV108.carry);
+    assert.equal(again.round,1);
+    assert.equal(again.fighters[0].health,entry.health);
+    assert.equal(again.fighters[0].traque,entry.traque);
+    assert.equal(again.fighters[0].workbookDeviceV107.status,'spent');
+  }
+  let free=p.createPitCombatState('feral-hunter','scar',{normalMoves:'workbook-v107'});
+  free.roundFramesRemaining=1;
+  free=p.stepPitCombat(free,[{},{}]);
+  assert.equal(free.lastRoundResult.reason,'draw');
+  for(let i=0;i<p.PIT_ROUND_TRANSITION_FRAMES;i++)free=p.stepPitCombat(free,[{},{}]);
+  assert.equal(free.round,2);
+  assert.equal(free.phase,'round');
+});
 test('native equipment inspection has six unchanged drawings and40ticks in each facing, without replenishing the kit',()=>{
  for(const fighter of ['feral-hunter','scar']){
   const definition=p.PIT_WORKBOOK_EQUIPMENT_INSPECTION_REGISTRY_V108.find(entry=>entry.fighterId===fighter);assert.ok(definition);
