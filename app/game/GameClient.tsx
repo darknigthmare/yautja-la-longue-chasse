@@ -4255,7 +4255,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             : ARMORS.find(({ id }) => id === request.id)?.name;
       const label = itemName ?? "Équipement";
 
+      const displayedQuote = quoteUpgrade(save, request);
       const result = purchaseUpgrade(current, request);
+      if (result.quote.nextLevel !== displayedQuote.nextLevel || result.quote.cost !== displayedQuote.cost) {
+        setToast("Le devis de forge a changé. Vérifie le niveau et le prix avant de confirmer.");
+        return;
+      }
       if (!result.ok || result.newLevel === null) {
         const { failure, cost } = result.quote;
         setToast(failure === "max-level"
@@ -4276,7 +4281,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       void playSound("select");
     },
     [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt,
-      persistSocialProgress, playSound, screen, settingsOpen],
+      persistSocialProgress, playSound, save, screen, settingsOpen],
   );
 
   const updateAppearance = useCallback(

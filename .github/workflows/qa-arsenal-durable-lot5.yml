@@ -1,7 +1,7 @@
 name: P0 écritures durables de la forge d’équipement
 on:
   push:
-    branches: [codex/qa-arsenal-durable-lot5-20261121]
+    branches: [codex/qa-arsenal-durable-quote-lot5-20261121]
 permissions:
   contents: read
 jobs:
@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        variant: [baseline, corrected]
+        variant: [corrected, duplicate]
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
@@ -38,12 +38,9 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: |
           set -eu
-          args=()
-          if [ "$VARIANT" = baseline ]; then
-            git show 1559ca1e70ddec090294f12d2322172bf31a1d64:app/game/GameClient.tsx > app/game/GameClient.tsx
-            args+=(--baseline-armory)
-          fi
-          node scripts/qa-armory-upgrade-persistence-lot5.mjs --inspect-only --armory-upgrade-only "${args[@]}" \
+          args=(--armory-upgrade-only)
+          if [ "$VARIANT" = duplicate ]; then args=(--duplicate-armory-upgrade); fi
+          node scripts/qa-armory-upgrade-persistence-lot5.mjs --inspect-only "${args[@]}" \
             --campaign-source docs/qa/v112-campaign-canonical/browser-workshop/browser-report.json \
             --output outputs/browser --asset-cache outputs/source-cache --chromium /usr/bin/google-chrome
           node --input-type=module -e 'import {readFile} from "node:fs/promises";const r=JSON.parse(await readFile("outputs/browser/report.json","utf8"));if(!r.armoryDurability)throw Error("Missing armory confirmation");console.log(JSON.stringify({receipt:r.armoryDurability,assets:r.missingAssets.length,errors:r.errors,source:r.sourceCommit,changedSources:r.sourceContext.changedApplicationSources}));'
@@ -76,76 +73,3 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npx eslint app/game/GameClient.tsx tests/arsenal-system.test.mjs
       - run: node --test tests/arsenal-system.test.mjs
-  workbook:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 8
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          persist-credentials: false
-          sparse-checkout-cone-mode: false
-          sparse-checkout: |
-            !/*
-            /docs/production/Yautja_PHG_Backlog_Production_V137.xlsx
-            /docs/production/Yautja_PHG_QA_Visual_Morphologies_V141.xlsx
-            /docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx
-            /production/YAUTJA_V114_SUIVI.xlsx
-            /production/YAUTJA_LOTS_P0_P3_LOT4_20261121.xlsx
-      - run: |
-          python3 - <<'PY'
-          import hashlib, json, posixpath, re, xml.etree.ElementTree as X
-          from pathlib import Path
-          from zipfile import ZipFile
-          NS={'s':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
-          REL='{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id'
-          SEARCH=re.compile(r'forge|matériau|amélior|emport|charge|armes?|équipement|armur|arsenal|carte stellaire|personnalis',re.I)
-          CODE=re.compile(r'P0(?:\b|[-:])',re.I)
-          for path in (
-              'docs/production/Yautja_PHG_Backlog_Production_V137.xlsx',
-              'docs/production/Yautja_PHG_QA_Visual_Morphologies_V141.xlsx',
-              'production/YAUTJA_V114_SUIVI.xlsx',
-              'production/YAUTJA_LOTS_P0_P3_LOT4_20261121.xlsx',
-              'docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx',
-          ):
-              with ZipFile(path) as z:
-                  wsp=X.fromstring(z.read('xl/workbook.xml'))
-                  rels={t.attrib['Id']:t.attrib['Target'] for t in X.fromstring(z.read('xl/_rels/workbook.xml.rels'))}
-                  sst=[]
-                  if 'xl/sharedStrings.xml' in z.namelist():
-                      sst=[''.join(t.text or '' for t in i.findall('.//s:t',NS)) for i in X.fromstring(z.read('xl/sharedStrings.xml'))]
-                  def value(cell):
-                      if cell.get('t')=='inlineStr':
-                          return ''.join(x.text or '' for x in cell.findall('.//s:t',NS)).strip()
-                      val=cell.findtext('s:v',default='',namespaces=NS)
-                      return ((sst[int(val)] if val else '') if cell.get('t')=='s' else val).strip()
-                  sheets=wsp.findall('./s:sheets/s:sheet',NS)
-                  print(json.dumps({'book':path,'sha256':hashlib.sha256(Path(path).read_bytes()).hexdigest(),
-                                    'sheets':len(sheets),'relevant':[a.get('name') for a in sheets if SEARCH.search(a.get('name',''))]},ensure_ascii=False))
-                  shown=0
-                  for sheet in sheets:
-                      name=sheet.get('name','')
-                      bible='Bible_Cumulative' in path
-                      if bible and not re.search(r'personnal|équip|arsenal|progress|carte|économie|gameloop|campagne',name,re.I):
-                          continue
-                      if 'Backlog' in path and name!='Backlog_Master':
-                          continue
-                      if 'Visual' in path and name not in {'Sources_PHG_V141','Portées_V141','Régressions','Ecart_Documentaire'}:
-                          continue
-                      loc=rels[sheet.attrib[REL]]
-                      target=loc.lstrip('/') if loc.startswith('/') else posixpath.join('xl',loc)
-                      root=X.fromstring(z.read(target))
-                      for row in root.findall('./s:sheetData/s:row',NS):
-                          cells={c.get('r'):value(c) for c in row.findall('s:c',NS)}
-                          cells={k:v for k,v in cells.items() if v}
-                          line=' · '.join(cells.values())
-                          p0=any(CODE.match(v) for v in cells.values())
-                          if not SEARCH.search(line) or not (p0 or bible):
-                              continue
-                          if 'LOT4' in path and re.search(r'REM112|\bCW130',line):
-                              continue
-                          if shown>=38: break
-                          print(json.dumps({'book':path,'sheet':name,'row':row.get('r'),'priority':p0,
-                                            'cells':{k:v[:420] for k,v in list(cells.items())[:12]}},ensure_ascii=False))
-                          shown+=1
-                      if shown>=38: break
-          PY

@@ -292,6 +292,33 @@ try{
       marksAfterReload:restored.profile.clanMarks,levels:[before.inventory.armorUpgrades.hunter,failed.inventory.armorUpgrades.hunter,
         committed.inventory.armorUpgrades.hunter,restored.inventory.armorUpgrades.hunter],faults};
   };
+  if(argv.includes('--duplicate-armory-upgrade')){
+    const before=await saved();
+    assert.equal(before.inventory.gearUpgrades['motion-sensor'],0);
+    assert.ok(before.profile.clanMarks>=500,'the two successive prices must both be affordable');
+    await openDirect('wall-armory');
+    const card=page.locator('article.equipment-card').filter({has:page.getByRole('heading',{name:'Capteur de mouvement',exact:true})});
+    const first=card.getByRole('button',{name:'Améliorer au niveau 1',exact:true});
+    const second=card.getByRole('button',{name:'Améliorer au niveau 2',exact:true});
+    await first.waitFor({timeout:15000});
+    assert.ok(await first.isEnabled());
+    await first.evaluate(button=>{button.click();button.click();});
+    await second.waitFor({timeout:6000});
+    const afterDuplicate=await saved();
+    assert.equal(afterDuplicate.inventory.gearUpgrades['motion-sensor'],1);
+    assert.equal(afterDuplicate.profile.clanMarks,before.profile.clanMarks-150);
+    await capture('01-same-quote-twice-one-charge');
+    assert.ok(await second.isEnabled());
+    await activateWithKeyboard(second);
+    await card.getByRole('button',{name:'Amélioration maximale',exact:true}).waitFor({timeout:6000});
+    const afterNewQuote=await saved();
+    assert.equal(afterNewQuote.inventory.gearUpgrades['motion-sensor'],2);
+    assert.equal(afterNewQuote.profile.clanMarks,afterDuplicate.profile.clanMarks-350);
+    await capture('02-new-quote-confirmed-and-charged');
+    report.armoryDurability={status:'DUPLICATE_QUOTE_CHARGED_ONCE',marksBefore:before.profile.clanMarks,
+      marksAfterDuplicate:afterDuplicate.profile.clanMarks,marksAfterNewQuote:afterNewQuote.profile.clanMarks,
+      levels:[before.inventory.gearUpgrades['motion-sensor'],afterDuplicate.inventory.gearUpgrades['motion-sensor'],afterNewQuote.inventory.gearUpgrades['motion-sensor']]};
+  }
   if(argv.includes('--armory-upgrade-only')){
     await exerciseArmoryStorage();
     console.log(JSON.stringify({armoryDurability:report.armoryDurability}));

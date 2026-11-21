@@ -282,6 +282,8 @@ test("l’armurerie confirme le niveau et son débit après l’écriture durabl
   const handler = ui.slice(start, end);
   assert.match(handler, /const current = saveRef\.current/);
   assert.match(handler, /const result = purchaseUpgrade\(current, request\)/);
+  assert.match(handler, /result\.quote\.nextLevel !== displayedQuote\.nextLevel/);
+  assert.match(handler, /result\.quote\.cost !== displayedQuote\.cost/);
   assert.match(handler, /if \(!persistSocialProgress\(\{ profile: result\.save\.profile, inventory: result\.save\.inventory \}\)\) \{[\s\S]*?return;\s+\}[\s\S]*?niveau .*acquis/);
   assert.doesNotMatch(handler, /\bpersist\(result\.save\)/);
 });
