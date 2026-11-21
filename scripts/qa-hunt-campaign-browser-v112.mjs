@@ -56,7 +56,7 @@ function recordSource(file,contents){
 }
 const bootstrap=await build({stdin:{contents:'export {defaultSave,parseSaveImport,SAVE_STORAGE_KEY} from "./app/game/save";export {GALAXY_NAVIGATION} from "./app/game/galaxyNavigation";export {MISSIONS} from "./app/game/data";',resolveDir:root,loader:'ts'},
   bundle:true,write:false,format:'cjs',platform:'node',logLevel:'silent'});
-const mod={exports:{}};runInNewContext(bootstrap.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url)});
+const mod={exports:{}};runInNewContext(bootstrap.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url),TextEncoder});
 const campaignSource=option('--campaign-source',null);
 const campaignInputRaw=campaignSource?await readFile(path.resolve(root,campaignSource),'utf8'):null;
 const campaignInput=campaignInputRaw?JSON.parse(campaignInputRaw):null;
@@ -186,19 +186,20 @@ try{
   await capture('01-legacy-default-deck');
   await writeFile(path.join(out,'deck-visible-buttons.json'),JSON.stringify(await page.getByRole('button').allTextContents(),null,2)+'\n');
   const saved=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),storageKey);
-  const openDirect=async label=>{
+  const openDirect=async stationId=>{
     const shortcuts=page.getByRole('button',{name:'Accès rapide aux installations',exact:true});
     if(await shortcuts.getAttribute('aria-expanded')!=='true')await shortcuts.click();
-    const direct=page.getByText('Accès direct aux interfaces · sans déplacement du chasseur',{exact:true});
-    if(await direct.locator('..').getAttribute('open')===null)await direct.click();
-    await page.getByRole('button',{name:new RegExp('^'+label+'.*Ouvrir l’interface')}).first().click();
+    const direct=page.locator('[data-ship-shortcuts]');
+    await direct.waitFor();
+    if(await direct.getAttribute('open')===null)await direct.locator('summary').click();
+    await direct.locator('[data-ship-shortcut="'+stationId+'"]').click();
   };
   const backToDeck=()=>page.getByRole('button',{name:/^← Retour au pont/}).click();
   const acquireEarnedTool=async()=>{
     const before=await saved();
     if((before.inventory.fieldToolIds.includes('flaying-tool')||before.profile.clanMarks<120)&&
       ((before.inventory.armorUpgrades.hunter??0)>=2||before.profile.clanMarks<250))return;
-    await openDirect('ARMURERIE');
+    await openDirect('wall-armory');
     if(!before.inventory.fieldToolIds.includes('flaying-tool')&&before.profile.clanMarks>=120){
       await page.getByRole('article',{name:'Flaying Tool',exact:true}).getByRole('button',{name:'Acquérir · 120 marques',exact:true}).click();
       const after=await saved();assert.ok(after.inventory.fieldToolIds.includes('flaying-tool'));
@@ -218,7 +219,7 @@ try{
   };
   const conserveRealSpecimen=async()=>{
     const admissionSave=await saved();if(!admissionSave.inventory.harvestV112.specimens.length)return;
-    await openDirect('TROPHÉES');
+    await openDirect('trophy-hall');
     let pausedAndReloaded=false;const actions=[];
     for(let step=0;step<40;step++){
       const state=await saved(),ledger=state.inventory.harvestV112,item=ledger.specimens[0];if(!item)break;
@@ -229,7 +230,7 @@ try{
         await enterCampaignDeck(page);
         const afterReload=await saved();assert.deepEqual(afterReload.inventory.harvestV112,beforeReload.inventory.harvestV112);
         assert.equal(afterReload.profile.clanMarks,beforeReload.profile.clanMarks);
-        await openDirect('TROPHÉES');pausedAndReloaded=true;actions.push('pause-reload-exact-resume');continue;
+        await openDirect('trophy-hall');pausedAndReloaded=true;actions.push('pause-reload-exact-resume');continue;
       }
       const label=job?(job.status==='paused'?/^Reprendre sans frais ·/:/^Effectuer un geste ·/):
         item.stage==='mounted'?/^Ranger en réserve ·/:/^(Nettoyer|Traiter|Sécher|Monter) ·/;
@@ -277,7 +278,7 @@ try{
       const count=(captureCounts.get(name)??0)+1;captureCounts.set(name,count);
       return capture(missionId+'-'+name+(count>1?'-repeat-'+count:''));
     };
-    await openDirect('NAVIGATION');
+    await openDirect('galaxy-map');
     await writeFile(path.join(out,'shortcuts-visible-buttons.json'),JSON.stringify(await page.getByRole('button').allTextContents(),null,2)+'\n');
     await captureHunt('02-galaxy-map');
     const galaxyRoot=page.locator('.galaxy-v10-breadcrumbs button').first();if(await galaxyRoot.isEnabled())await galaxyRoot.click();

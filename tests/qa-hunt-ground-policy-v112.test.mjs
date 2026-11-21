@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {decideGroundApexTrophyInputV112,decideHuntCampaignInputV112,groundTrophyGuardV112,observeGroundTrophyDamageV112} from "../scripts/lib/qa-hunt-ground-policy-v112.mjs";
 import {chooseGroundHarvestV112,exactVolumeCandidatesV112,groundHarvestMenuActionV112,nearestGroundHarvestThreatV112,observeGroundHarvestV112} from "../scripts/lib/qa-hunt-ground-harvest-v112.mjs";
+import {decideLoadedCanopyRouteV112,loadedCanopyRouteV112} from "../scripts/lib/qa-hunt-full-canopy-route-v112.mjs";
 
 const brain=()=>({target:null,pending:null,deferred:new Map(),events:[]});
 const corpse=(id,action,requiresFlay=false,projectedRatio=.25)=>({
@@ -138,4 +139,34 @@ test("the last legal piece can saturate volume without an extra source",()=>{
   const bone={...corpse("bone-1","harvest-bone"),part:{action:"harvest-bone",massKg:1.2,volumeUnits:2}};
   const load={massKg:22.8,capacityMassKg:24,volumeUnits:16,capacityVolumeUnits:18};
   assert.deepEqual(exactVolumeCandidatesV112([bone],{load,pool:[]}),[bone]);
+});
+
+test("the full canopy pilot names real authored supports and waits for ground exit",()=>{
+  const world={floorY:624,platforms:[],climbables:[]};
+  assert.equal(loadedCanopyRouteV112(world,"jungle-vey",0),null);
+  for(let index=0;index<6;index++){
+    const id="v112-canopy-jungle-vey-0-"+index;
+    world.platforms.push({id:id+"-rest",x:100+index*180,y:270,width:130});
+    world.climbables.push({id:id+"-grip",x:141+index*180,y:40,width:48});
+  }
+  const route=loadedCanopyRouteV112(world,"jungle-vey",0);
+  const game={world,player:{x:140,y:508,width:50,height:116,grounded:true,stamina:100,maxStamina:100}};
+  const memory={route,stage:"approach",startedTick:0,events:[]};
+  const decide=(tick,reachable=()=>false)=>decideLoadedCanopyRouteV112(game,tick,memory,reachable);
+  assert.deepEqual(decide(10).held,["up"]);
+  assert.equal(memory.stage,"climb-entry");
+  game.player.climbZoneId=route.entry.id;game.player.y=130;
+  assert.deepEqual(decide(20).held,["right"]);
+  assert.equal(memory.stage,"land-first-rest");
+  memory.stage="catch-second-vine";game.player.climbReattachSeconds=0;
+  assert.deepEqual(decide(30,support=>support===route.secondVine).held,["right","up"]);
+  game.player.climbZoneId=route.secondVine.id;game.player.climbing=true;
+  assert.deepEqual(decide(32).held,["right"]);
+  assert.deepEqual(decide(34).pressed,["jump"]);
+  game.player.grounded=false;
+  assert.deepEqual(decide(50).held,["right"]);
+  game.player.grounded=true;game.player.y=508;
+  assert.deepEqual(decide(60).held,[]);
+  assert.equal(memory.stage,"grounded-exit");
+  assert.equal(memory.events.find(e=>e.stage==="leave-second-vine").supportId,route.secondVine.id);
 });
