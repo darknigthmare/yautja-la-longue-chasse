@@ -1,4 +1,4 @@
-name: Verify authored extraction with a full field bag
+name: Verify loaded Jungle canopy and native extraction
 on:
   push:
     branches: [codex/verify-swamp-payload-20261121]
@@ -13,22 +13,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - profile: volcano-skip-hound-tendon
-            mission: volcano-bad-blood
-            previousWins: 2
-            args: --insertion=visible-ship --leaveSpecimens=harvest-tissue:volcano-hounds-2
-          - profile: volcano-skip-patrol-tendon
-            mission: volcano-bad-blood
-            previousWins: 2
-            args: --insertion=visible-ship --leaveSpecimens=harvest-tissue:volcano-bad-blood:3:insertion-patrol-2
-          - profile: volcano-quiet-skip-hound
-            mission: volcano-bad-blood
-            previousWins: 2
-            args: --insertion=visible-ship --sweepDistance=270 --leaveSpecimens=harvest-tissue:volcano-hounds-2
-          - profile: volcano-close-skip-hound
-            mission: volcano-bad-blood
-            previousWins: 2
-            args: --insertion=visible-ship --sweepDistance=200 --leaveSpecimens=harvest-tissue:volcano-hounds-2
+          - profile: jungle-full-canopy-route0
+            mission: jungle-vey
+            previousWins: 5
+            args: --insertion=visible-ship --fullCanopy=true --canopySequence=0
+          - profile: jungle-full-canopy-route1
+            mission: jungle-vey
+            previousWins: 5
+            args: --insertion=visible-ship --fullCanopy=true --canopySequence=1
+          - profile: jungle-full-canopy-route2
+            mission: jungle-vey
+            previousWins: 5
+            args: --insertion=visible-ship --fullCanopy=true --canopySequence=2
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
     steps:
@@ -77,7 +73,7 @@ jobs:
             const file = JSON.parse(await readFile("outputs/qa-native-load/" + process.argv[1] + "-scout.json", "utf8"));
             console.log(JSON.stringify({
               profile: process.argv[2],
-              full: file.retainedLoad.qualified,
+              full: file.retainedLoad.qualified, canopyRoute: file.canopyRoute,
               harvest: file.harvestDecisions,
               phases: file.events.map(({phase,t,x,health,message,kills})=>({phase,t,x,health,message,kills})),
               final: {threats:file.terminal.threats,result:file.result?.outcome,load:file.retainedLoad.atExtraction?.load},
