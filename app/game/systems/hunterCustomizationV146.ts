@@ -407,9 +407,11 @@ export function missionWearV146(damageTaken: number, maxHealth: number): number 
 /** A hit of at least 20 % of max health leaves cracks on one armour piece. */
 export const HEAVY_HIT_RATIO_V146 = 0.2;
 const WEAR_ROTATION: readonly HunterPieceIdV146[] = ["chest", "shoulder", "shin", "thigh", "bracer", "biomask", "knee", "belt"];
-export function heavyHitPieceV146(amount: number, maxHealth: number, heavyHitsSoFar: number): HunterPieceIdV146 | null {
+export function heavyHitPieceV146(amount: number, maxHealth: number, heavyHitsSoFar: number,
+  worn?: (piece: HunterPieceIdV146) => boolean): HunterPieceIdV146 | null {
   if (!(maxHealth > 0) || amount < maxHealth * HEAVY_HIT_RATIO_V146) return null;
-  return WEAR_ROTATION[heavyHitsSoFar % WEAR_ROTATION.length];
+  const eligible = worn ? WEAR_ROTATION.filter(worn) : WEAR_ROTATION;
+  return eligible[heavyHitsSoFar % eligible.length] ?? null;
 }
 
 export function applyHeavyWearV146(state: CustomizationV146, pieces: readonly HunterPieceIdV146[]): CustomizationV146 {
@@ -434,7 +436,7 @@ export function repairPieceV146(state: CustomizationV146, id: HunterPieceIdV146)
  * Pays a repair with harvested materials: units are taken from the specimen
  * archive (largest stacks first). Returns null when the archive is too small.
  */
-export function payRepairFromArchiveV146<T extends { count: number }>(
+export function payRepairFromArchiveV146<T extends { count: number; qualityTotal?: number }>(
   archive: readonly T[], cost: number,
 ): T[] | null {
   if (cost <= 0) return archive.map(entry => ({ ...entry }));
@@ -445,8 +447,16 @@ export function payRepairFromArchiveV146<T extends { count: number }>(
   let remaining = cost;
   for (const { index } of order) {
     if (!remaining) break;
-    const take = Math.min(next[index].count, remaining);
-    next[index].count -= take;
+    const entry = next[index];
+    const take = Math.min(entry.count, remaining);
+    const leftover = entry.count - take;
+    // The ledger stores an aggregate, so retire the same share of its quality.
+    // Integer arithmetic keeps the result within the original per-unit bounds.
+    if (leftover > 0 && entry.qualityTotal !== undefined) {
+      const count = BigInt(entry.count);
+      entry.qualityTotal = Number((BigInt(entry.qualityTotal) * BigInt(leftover) + count / BigInt(2)) / count);
+    }
+    entry.count = leftover;
     remaining -= take;
   }
   return next.filter(entry => entry.count > 0);

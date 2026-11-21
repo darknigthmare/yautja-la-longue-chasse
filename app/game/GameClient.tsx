@@ -6205,6 +6205,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <div className="customization-rig-stage">
                   <HunterRigPreview
                     className="customization-rig"
+                    heavyWearV146={save.customizationV146?.heavyWear}
                     appearance={{ ...(draftAppearanceV146 ?? save.appearance), ...(draftChromaticsV114 ? { chromaticsV113: draftChromaticsV114 } : {}) }}
                     armorId={save.loadout.armorId}
                     weaponIds={save.loadout.weaponIds}
@@ -6998,6 +6999,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             explorationProgress={activeMissionSave.exploration}
             onExplorationProgress={persistExplorationProgress}
             appearance={campaignAppearanceV146(activeMissionSave)}
+            heavyWearV146={activeMissionSave.customizationV146?.heavyWear}
             gauntletVariantId={huntResumePayload?.gauntletVariantId ?? hunterGauntlet.equippedId}
             difficulty={activeMissionSave.settings.difficultyId}
             controlBindings={activeMissionSave.settings.controlBindings}

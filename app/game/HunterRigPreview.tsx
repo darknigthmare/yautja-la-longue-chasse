@@ -4,6 +4,8 @@
 
 import type { CSSProperties } from "react";
 import PieceZoneLayerV148 from "./PieceZoneLayerV148";
+import HunterArmorWearLayerV172 from "./HunterArmorWearLayerV172";
+import type { CustomizationV146 } from "./systems/hunterCustomizationV146";
 import { pieceZoneColorsV148 } from "./hunterPieceZonesV148";
 import type { HunterPieceIdV146 } from "./hunterPiecesV146";
 import ChromaticSurfaceV113 from "./ChromaticSurfaceV113";
@@ -82,6 +84,7 @@ export interface HunterRigPreviewProps {
   aimAngle?: number;
   recoil?: number;
   debugBones?: boolean;
+  heavyWearV146?: CustomizationV146["heavyWear"];
 }
 
 const LASER_COLORS: Readonly<Record<LaserColorId, { solid: string; fade: string; shadow: string }>> = {
@@ -353,6 +356,7 @@ export function HunterRigPreview({
   aimAngle,
   recoil = 0,
   debugBones = false,
+  heavyWearV146,
 }: HunterRigPreviewProps) {
   // V148: equipment without a V113 channel can still use piece colours.
   const registeredLayer = (
@@ -681,11 +685,16 @@ export function HunterRigPreview({
         const limb = slot.wrap && hunterBodyPartPath(appearance.bodyMorphId, slot.wrap.part, appearance.headStyleId);
         const path = hunterArmorPath(slot.id);
         const rigSlot = `armor-${slot.id}${slot.shade ? "-far" : ""}`;
+        const piece = pieceForArmorSlotV146(slot.id);
+        const wear = piece ? heavyWearV146?.[piece] ?? 0 : 0;
         return <span key={`${slot.id}-${slot.bone}`}>
           <ChromaticSurfaceV113 appearance={appearance} channel="armor" piece={pieceForArmorSlotV146(slot.id)} maskPath={path}
             style={{ ...fullCanvasImage, zIndex: slot.z, transform: cssMatrix(matrix), clipPath }}
             slot={rigSlot} baseFilter={filter}
             base={registeredLayerBase(path, matrix, slot.z, rigSlot, filter, undefined, undefined, clipPath)} />
+          {piece && wear > 0 && <HunterArmorWearLayerV172 src={path} piece={piece} level={wear}
+            keep={HUNTER_ARMOR_KEEP_CLIP_V145[slot.id]}
+            style={{ ...fullCanvasImage, zIndex: slot.z, transform: cssMatrix(matrix), clipPath }} />}
           {slot.wrap && limb && <span aria-hidden="true" data-rig-armor-wrap={slot.id}
             style={{ ...fullCanvasImage, zIndex: slot.wrap.wrapZ, transform: cssMatrix(boneMatrix(slot.bone)),
               maskImage: `url("${limb}")`, WebkitMaskImage: `url("${limb}")`, maskSize: "100% 100%", WebkitMaskSize: "100% 100%",
@@ -694,6 +703,9 @@ export function HunterRigPreview({
               style={{ ...fullCanvasImage, transform: slot.fit ? cssMatrix(slot.fit) : undefined, clipPath }}
               baseFilter={filter} base={<img alt="" draggable={false} src={path}
                 style={{ ...fullCanvasImage, filter, clipPath, transform: slot.fit ? cssMatrix(slot.fit) : undefined }} />} />
+            {piece && wear > 0 && <HunterArmorWearLayerV172 src={path} piece={piece} level={wear}
+              keep={HUNTER_ARMOR_KEEP_CLIP_V145[slot.id]}
+              style={{ ...fullCanvasImage, clipPath, transform: slot.fit ? cssMatrix(slot.fit) : undefined }} />}
           </span>}
           {slot.id === armorFamily.chest && <DecalSurfaceV133 appearance={appearance} zone="armor"
             maskPath={hunterArmorPath(slot.id)}
@@ -743,6 +755,9 @@ export function HunterRigPreview({
           slot={`mask-${appearance.biomaskId}`} baseFilter="drop-shadow(0 2px 2px rgb(0 0 0 / .9))"
           base={registeredLayerBase(hunterMaskRigPath(appearance.biomaskId), boneMatrix("head"), 70, `mask-${appearance.biomaskId}`,
             "drop-shadow(0 2px 2px rgb(0 0 0 / .9))", undefined, hunterMaskRigPlacement(appearance.biomaskId))} />
+        {!!heavyWearV146?.biomask && <HunterArmorWearLayerV172 src={hunterMaskRigPath(appearance.biomaskId)}
+          piece="biomask" level={heavyWearV146.biomask} placement={hunterMaskRigPlacement(appearance.biomaskId)}
+          style={{ ...fullCanvasImage, zIndex: 70, transform: cssMatrix(boneMatrix("head")) }} />}
         <span data-rig-biomask-pigment-v131 aria-hidden="true"
           style={{ ...fullCanvasImage, zIndex: 71, transform: cssMatrix(boneMatrix("head")) }}>
           <DecalSurfaceV133 appearance={appearance} zone="biomask"
