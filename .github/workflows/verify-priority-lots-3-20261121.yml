@@ -13,13 +13,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'f31b7a7355ae3a289f7c33471cc01f976addb5b4'
+      ASSET_RACCORDS_SOURCE_COMMIT: '32b53e9bf2738bb3937affac6fc85d72d6df3439'
       BASE_COMMIT: '3d1138af7b22a2d2f02da080ef05706af3170ba7'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'f31b7a7355ae3a289f7c33471cc01f976addb5b4'
+          ref: '32b53e9bf2738bb3937affac6fc85d72d6df3439'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -95,6 +95,7 @@ jobs:
           tests/ice-exploration-physics.test.mjs
           tests/qa-hunt-ground-policy-v112.test.mjs
           tests/hunt-field-guide-v112.test.mjs
+          tests/hunt-input-runtime.test.mjs
           tests/field-stash-v112.test.mjs
       - name: Preserve the existing hunting workbook byte for byte
         if: ${{ !cancelled() }}
