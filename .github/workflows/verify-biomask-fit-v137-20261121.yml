@@ -1,0 +1,41 @@
+name: Verify original V133 biomask fit
+on:
+  push:
+    branches: [codex/verify-biomask-fit-v137-20261121]
+permissions:
+  contents: read
+jobs:
+  profile:
+    name: Original biomasks on the native DOM rig
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /tests/hunter-open-gaps-v137.test.mjs
+            /scripts/qa-concept-biomask-fit-v137.mjs
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/assets/v133/concept-masks/
+            /public/game/assets/v139/rig-gauntlets/jungle-hunter/
+            /public/game/sprites/v62/heads/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node --experimental-strip-types --test tests/hunter-open-gaps-v137.test.mjs
+      - run: node scripts/qa-concept-biomask-fit-v137.mjs
+      - if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: original-biomasks-v137-native-rig
+          path: outputs/biomask-fit-v137/
