@@ -7,19 +7,19 @@ permissions:
   actions: read
 jobs:
   source:
-    name: Validate armory studies and stellar routes
+    name: Validate the integrated armory, forge and route sources
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '0fb20d06685e0d18666725aae46805d6364b15b1'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'f48e16a8529cb2b1c7c1efe09cfa1d5bccf0e4e1'
       BASE_COMMIT: '1559ca1e70ddec090294f12d2322172bf31a1d64'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '0fb20d06685e0d18666725aae46805d6364b15b1'
+          ref: 'f48e16a8529cb2b1c7c1efe09cfa1d5bccf0e4e1'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -62,6 +62,10 @@ jobs:
             /public/game/assets/clan-field-20261103/
             /public/**/manifest.json
             /public/game/assets/v139/rig-gauntlets/
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/assets/v133/concept-masks/
+            /public/game/assets/v133/decals/decal-atlas.webp
+            /public/game/sprites/v62/heads/
             /public/game/assets/v134/
             /public/game/assets/v135/
             /public/game/assets/v136/
@@ -88,13 +92,16 @@ jobs:
         run: |
           node node_modules/next/dist/bin/next typegen
           node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
-      - name: Lint armory and route code
+      - name: Lint changed application paths
         if: ${{ !cancelled() }}
         run: >-
           npx eslint app/game/ClanWarGauntletLockerV132.tsx app/game/systems/gauntletCampaignV134.ts
           app/game/GalaxyRouteDestinationContext.ts app/game/GalaxyMapPanel.tsx
           app/game/SpaceRoutesPanelV159.tsx app/game/systems/spaceRoutesV159.ts
-      - name: Armory and route progression
+          app/game/GameClient.tsx app/game/HunterPieceForgeV146.tsx app/game/HunterRigPreview.tsx
+          app/game/HuntCanvas.tsx app/game/hunterArmorWearV172.ts app/game/HunterArmorWearLayerV172.tsx
+          app/game/systems/hunterCustomizationV146.ts app/game/systems/hunterCustomizationPersistenceV146.ts
+      - name: Progression, receipts, forge repair and cosmetics
         if: ${{ !cancelled() }}
         run: >-
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
@@ -102,6 +109,12 @@ jobs:
           tests/gauntlet-preference-v144.test.mjs
           tests/gauntlet-save-roundtrip-v136.test.mjs
           tests/space-routes-v159.test.mjs
+          tests/arsenal-system.test.mjs
+          tests/field-tool-purchase-ui-v111.test.mjs
+          tests/hunter-customization-v146.test.mjs
+          tests/hunter-forge-wear-v172.test.mjs
+          tests/hunter-share-pattern-v146.test.mjs
+          tests/hunter-open-gaps-v137.test.mjs
       - name: Real browser and save writer
         if: ${{ !cancelled() }}
         env:
@@ -113,6 +126,23 @@ jobs:
         with:
           name: armurerie-recherche-chromium-lot5
           path: outputs/gauntlet-equipment-lot5/
+          if-no-files-found: error
+      - name: Verify native stellar route and biomask browsers
+        if: ${{ !cancelled() }}
+        env:
+          CHROMIUM_EXECUTABLE_PATH: /usr/bin/google-chrome
+          BIOMASK_FIT_OUTPUT: outputs/biomasks-lot5-integrated
+        run: |
+          node scripts/qa-space-itinerary-v159.mjs
+          GITHUB_SHA=${ASSET_RACCORDS_SOURCE_COMMIT} node scripts/qa-concept-biomask-fit-v137.mjs
+      - name: Upload navigation and biomask evidence
+        if: ${{ !cancelled() && hashFiles('outputs/qa-space-itinerary-v159/*') != '' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: profils-biomasks-et-carte-lot5
+          path: |
+            outputs/qa-space-itinerary-v159/
+            outputs/biomasks-lot5-integrated/
           if-no-files-found: error
       - name: Report canonical inventory differences
         if: ${{ !cancelled() && hashFiles('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json') != '' }}
