@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2404,
-  "bytes": 1116487982,
+  "files": 2410,
+  "bytes": 1116534492,
   "entries": [
     {
       "path": ".github/workflows/p0-p1-coherence-20261109.yml",
@@ -175,8 +175,8 @@
     },
     {
       "path": "app/game/ClanChroniclePanel.tsx",
-      "bytes": 16349,
-      "sha256": "177a30b5ea9c44c1eccd37b4b362860af3e1cec2e0ac802018abd1b4bf35048d"
+      "bytes": 18428,
+      "sha256": "ce4d9b8ea8c488f650a3a3ef881a36b42775c307d0e5def61fbca1e84a4e2e70"
     },
     {
       "path": "app/game/ClanLogisticsV108.module.css",
@@ -609,6 +609,26 @@
       "sha256": "4f21eb4b75e73636c0ee6e0bdadd4a09247f73635743c611c9e277ad2fbd6153"
     },
     {
+      "path": "app/game/ElderAssembly.module.css",
+      "bytes": 1214,
+      "sha256": "1f8357476d74fe73318212cb56a9480367bf478a598921a20421cf15577b0c74"
+    },
+    {
+      "path": "app/game/ElderAssembly.tsx",
+      "bytes": 2925,
+      "sha256": "c01f4be0789803eb2af999b85391d69e4f820334fb03e1d47758256ce1a325a6"
+    },
+    {
+      "path": "app/game/ElderMentoring.module.css",
+      "bytes": 2341,
+      "sha256": "a51fc55e647fcc2d0167b25bc5949b5ac05ac904679b3c3883e9497120b1a6ff"
+    },
+    {
+      "path": "app/game/ElderMentoring.tsx",
+      "bytes": 10213,
+      "sha256": "e4f6e55808f8cda23d6dd39e9ad4bbffbe8a7ef5ba7d1edfa4caa7159be96fcb"
+    },
+    {
       "path": "app/game/ElderPassageJudgment.module.css",
       "bytes": 1397,
       "sha256": "da3884cc50ff18aaa44e7a5d8dd6afdb1aa83ab23aa0d6405da886823eaf934f"
@@ -730,8 +750,8 @@
     },
     {
       "path": "app/game/GameClient.tsx",
-      "bytes": 433047,
-      "sha256": "2f7db1e7ffc849d55dd2698adf3924a5ef4ad3323b3d4dfdd83607e7742410a8"
+      "bytes": 434720,
+      "sha256": "d0de445d4d4134c1ca8bae0ad9d0d350ceadfd23bdf160a4196eadb606ba9183"
     },
     {
       "path": "app/game/GameReserveEntryV104.module.css",
@@ -1395,8 +1415,8 @@
     },
     {
       "path": "app/game/HuntCanvas.tsx",
-      "bytes": 494887,
-      "sha256": "2e0105f3b6235ec6ba7973b612383d1e18b5cd9311eceb02c225a7b05245cb98"
+      "bytes": 494923,
+      "sha256": "0b85333d2b0fa662da62e629632aae68f33aae951f2eae9c7bf46933a040b47d"
     },
     {
       "path": "app/game/HuntFieldGuideV112.tsx",
@@ -3620,8 +3640,8 @@
     },
     {
       "path": "app/game/save.ts",
-      "bytes": 118253,
-      "sha256": "8d369c1a4140f0cf87ddcd14fffb9e4d2d219ddd0345be0bc35f7496ec593ebe"
+      "bytes": 120178,
+      "sha256": "f9f6320ae608b860a253d8bf7cb4fcd016cdd251d6b7eb4c7837ce88b9576dcb"
     },
     {
       "path": "app/game/ship-level.css",
@@ -3810,8 +3830,8 @@
     },
     {
       "path": "app/game/systems/canopyTraversalV112.ts",
-      "bytes": 12798,
-      "sha256": "f78c5cf10a0dc4c84991fcc674bd5fe377e04cd32c27954f507e378eea7010f5"
+      "bytes": 13182,
+      "sha256": "043f1f3a88b7ee1789a142a87f12a4775af015f0009a2c0544a7e6b515a0b72b"
     },
     {
       "path": "app/game/systems/carcassSupportsV112.ts",
@@ -4522,6 +4542,16 @@
       "path": "app/game/systems/corpseDiscoveryV112.ts",
       "bytes": 14717,
       "sha256": "5695e512ebc2698381296d7126c50088f273d495818143642917673a3f69f2c2"
+    },
+    {
+      "path": "app/game/systems/elderAssemblyV168.ts",
+      "bytes": 5894,
+      "sha256": "7da5635213a79beaa0550e1cd32989db1e19d4c70aa97712715d117f4add7ab6"
+    },
+    {
+      "path": "app/game/systems/elderMentoringV168.ts",
+      "bytes": 10254,
+      "sha256": "781161c4766718628a1b1426e1e3ee07d16f86a7f37efe578b568319edd2e660"
     },
     {
       "path": "app/game/systems/elderPassageJudgmentV168.ts",
@@ -6650,8 +6680,8 @@
     },
     {
       "path": "app/game/types.ts",
-      "bytes": 26396,
-      "sha256": "27fd00e9e64fd6319cae3ef49717fbb79b9d729220079ddc12847460b9260489"
+      "bytes": 26571,
+      "sha256": "65e87aeaac38c90772e975875b79089d783adb609a5d82bac472ce0976d76f33"
     },
     {
       "path": "app/game/useGeneratedWarCatalogV102.ts",
@@ -11360,8 +11390,8 @@
     },
     {
       "path": "tests/canopy-traversal-v112.test.mjs",
-      "bytes": 13220,
-      "sha256": "7b988c8375450e9f10207468c819a43dd61ce74fc1e8d74df97ae95c65a6e2dd"
+      "bytes": 14509,
+      "sha256": "09914fe212f8a7f3ecf52e27e4fbd5b6220905281a93cf00dc50cdf4dbc1b930"
     },
     {
       "path": "tests/carcass-anatomy-v112.test.mjs",
@@ -11880,8 +11910,8 @@
     },
     {
       "path": "tests/hunt-canopy-runtime-v112.test.mjs",
-      "bytes": 18750,
-      "sha256": "f0a922921b2cd17a12e8f91db35961e9b81cc8f706342c9af4e85343fde368eb"
+      "bytes": 24858,
+      "sha256": "b2bf26db2d30b634022904d883a0bcd2c4b031aef6a6968bcee9913ee8ca083b"
     },
     {
       "path": "tests/hunt-carcass-runtime-v112.test.mjs",

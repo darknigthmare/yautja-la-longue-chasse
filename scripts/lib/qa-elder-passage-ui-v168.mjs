@@ -1,3 +1,5 @@
+import assert from "node:assert/strict";
+
 export async function completeElderPassage(page, disk) {
   const button = name => page.locator("[data-elder-passage-v168]").getByRole("button", { name, exact: true });
   const waitStatus = words => page.waitForFunction(text => document.querySelector("[data-passage-status]")?.textContent.includes(text), words);

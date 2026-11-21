@@ -90,9 +90,9 @@ Chaîne jouable actuelle, dans l'ordre du jeu : nurserie (V47) → accueil Unblo
 | 54 | R2-M046 | Une mission vraiment collective | Elite | Texte seul | — |
 | 55 | R2-M047 | Ce que la guerre laisse au retour | Elite | Texte seul | — |
 | 56 | R2-M048 | La branche qu’on ne possède pas | Elite | Texte seul | — |
-| 57 | R2-M049 | Former sans remplacer | Elite | Texte seul | — |
-| 58 | R2-M050 | Un désaccord à résoudre sur le terrain | Elite | Texte seul | — |
-| 59 | R2-M051 | Être reconnu Elder | Elite | Texte seul | — |
+| 57 | R2-M049 | Former sans remplacer | Elite | Jouable dans le dossier adulte | Terrain, appuis et reçu de mentorat |
+| 58 | R2-M050 | Un désaccord à résoudre sur le terrain | Elite | Jouable dans le dossier adulte | Traces, horaires ou passerelle et témoin |
+| 59 | R2-M051 | Être reconnu Elder | Elite | Jouable dans le dossier adulte | Dépositions et engagement enregistré |
 | 60 | R2-M052 | L’atelier qui fonctionne sans moi | Elder | Texte seul | — |
 | 61 | R2-M053 | Un ancien terrain a changé | Elder | Texte seul | — |
 | 62 | R2-M054 | La décision du successeur | Elder | Texte seul | — |
@@ -2410,7 +2410,7 @@ Après les 8 chasses : première reine, fonction Adjutant, quête du Warp (facul
 
 ## Acte VII — Elite (R2-M044 → M051)
 
-Navire de clan, résidence, opérations collectives, conséquences de guerre, mentorat et jugement jusqu'au rang Elder. Toutes en texte seul.
+Navire de clan, résidence, opérations collectives, conséquences de guerre, mentorat et jugement jusqu'au rang Elder. Les actes R2-M049 à R2-M051 se jouent dans le dossier des campagnes adultes admissibles.
 
 ### R2-M044 — La coque d’un groupe
 
@@ -2444,19 +2444,25 @@ Navire de clan, résidence, opérations collectives, conséquences de guerre, me
 
 ### R2-M049 — Former sans remplacer
 
-**Déroulé :** accompagner un novice dans une chasse d’exercice, préparer ses appuis, lui laisser une décision réelle ; un mentor observe. **Choix :** donner un indice ou laisser la tentative complète. **Sauvegarde :** `elder.mentoringObserved`
+**Déroulé :** accompagner un novice dans une chasse d’exercice, préparer ses appuis, lui laisser une décision réelle ; un mentor observe. **Choix :** donner un indice ou laisser la tentative complète. **Sauvegarde :** `elder.mentoringObserved`.
+
+Le dossier ouvre le terrain à Elite et 8 000 d’honneur de carrière. Le registre `elderMentoringV168` conserve les appuis, le choix, les observations et la confirmation du mentor.
 
 *Production (proposé)* — **Props :** terrain d'exercice avec points d'appui à préparer, novice (sprite Unblooded existant recoloré), mentor observateur, proie d'exercice. **VFX :** marqueurs d'appui posés par le joueur. **SFX :** `partner-call`, footstep (existe). **Musique :** MUS-49.
 
 ### R2-M050 — Un désaccord à résoudre sur le terrain
 
-**Déroulé :** deux chasseurs contestent un passage ; inspecter les traces, rejouer leurs trajets, proposer une solution testée dans le décor. **Choix :** séparer les horaires ou ouvrir un second chemin. **Échec :** un refus laisse le conflit ouvert. **Sauvegarde :** `elder.judgmentObserved`
+**Déroulé :** deux chasseurs contestent un passage ; inspecter les traces, rejouer leurs trajets, proposer une solution testée dans le décor. **Choix :** séparer les horaires ou ouvrir un second chemin. **Échec :** un refus laisse le conflit ouvert. **Sauvegarde :** `elder.judgmentObserved`.
+
+Le dossier conserve la solution vérifiée et la décision du témoin dans `elderPassageJudgmentV168`.
 
 *Production (proposé)* — **Props :** passage disputé, traces des deux chasseurs (deux couleurs), deux PNJ chasseurs, second chemin constructible (échelle, pont de corde), panneau d'horaires. **VFX :** relecture fantôme des trajets. **SFX :** `rope-bridge`, scan (existe). **Musique :** MUS-49.
 
 ### R2-M051 — Être reconnu Elder
 
-**Déroulé :** une assemblée revient sur les actes observés ; le joueur choisit comment assumer les responsabilités proposées. **Choix :** fonction régulière ou engagement itinérant. **Sauvegarde :** `rank.Elder=true`
+**Déroulé :** une assemblée revient sur les actes observés ; le joueur choisit comment assumer les responsabilités proposées. **Choix :** fonction régulière ou engagement itinérant. **Sauvegarde :** `rank.Elder=true`.
+
+Dans une campagne adulte admissible, le joueur écoute les deux dépositions et choisit son engagement après le mentorat observé et le jugement du passage. Le registre `elderAssemblyV168` conserve la reconnaissance. Le raccord au parcours narratif du prologue dépend des rites d’initiation et de reconnaissance Elite. L’habillage audiovisuel et les missions propres à chaque engagement restent en production.
 
 *Production (proposé)* — **Props :** salle d'assemblée, sièges des anciens, insigne Elder (variante d'apparence). **VFX :** halo de cérémonie, braseros. **SFX :** `assembly-murmur`, `clan-chant-long`. **Musique :** MUS-08.
 
