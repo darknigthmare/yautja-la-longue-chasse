@@ -4,6 +4,8 @@ Nov 5, 2026 · @darknigthmare
 
 ## Mode d'emploi
 
+**Avenant du 21 novembre 2026 :** [Terre — Le Terrain de Chasse](TERRE_TERRAIN_DE_CHASSE_20261121.md) ouvre la Terre après R2-M023 : 20 sites réels hors des films, en quatre paliers (Blooded, Adjutant, Elite, Elder), datés au présent du joueur, avec un Indice de Discrétion persistant et la Division ARGOS, antagoniste distincte de l'OWLF. Le déroulé jouable des missions, phase par phase, et la liste de ce qu'il faut produire sont dans [Terre — Gameplay des missions](TERRE_GAMEPLAY_MISSIONS_20261121.md).
+
 **Avenant du 9 novembre 2026 :** [Quêtes et voix du clan](QUETES_VIVANTES_20261109.md) précise la réécriture des opérations, les conversations contextuelles OPS-B05 et leurs limites. Les fiches historiques et leurs états de production sont conservés ci-dessous.
 
 Cette bible fusionne la « Campagne commune » du classeur V6 (60 fiches R2-M001 → R2-M060) et les 8 chasses de « La Longue Chasse », insérées à R2-M024. Chaque fiche sépare ce qui est écrit dans le projet de ce qui reste à produire.
@@ -448,6 +450,7 @@ La note parlait de « Glacier Moon » et « Swamp Moon » : elles deviennent des
 | Rogue Space Tribe | bios NECA | Warp, Bad Bloods, voie Enforcer |
 | Harek | rival du départ O6 | Bad Blood possible ou chef du clan rival |
 | OWLF, époque future | unité secrète de la CIA de *Predator 2* (Other Worldly Life Forms) | descendants de l'OWLF qui traquent les Yautja à l'époque du jeu |
+| Division ARGOS *(avenant du 21 novembre)* | aucun : création du projet | cellule internationale née des incidents terrestres, distincte de l'OWLF ; veut prouver et capturer ; montée selon l'Indice de Discrétion ; fin à Norilsk ([Terre — Le Terrain de Chasse](TERRE_TERRAIN_DE_CHASSE_20261121.md)) |
 | Chasseurs humains de Yautja | Project Stargazer et ses Reapers (*The Predator* ; roman *Hunters and Hunted*), Predator Hunters de Jaya Soames (comics), Spearhead (*Xenogenesis*) | contrats et embuscades contre le joueur, captures et évasions |
 | USS Tantalus (crossover) | ton jeu *Aliens: Tantalus Frontier* | *mission annexe « Le silence d'Asphodèle », détaillée ci-dessous* |
 
