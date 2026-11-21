@@ -13,24 +13,34 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - profile: swamp-visible-early-240
+          - profile: swamp-visible-seed2
             mission: swamp-hydra
-            args: --insertion=visible-ship --policy=shared --sweepEarly=true
-          - profile: swamp-visible-early-165
+            previousWins: 1
+            args: --insertion=visible-ship --policy=shared
+          - profile: swamp-visible-seed3
             mission: swamp-hydra
-            args: --insertion=visible-ship --policy=shared --sweepEarly=true --sweepDistance=165
-          - profile: swamp-visible-close-165
+            previousWins: 2
+            args: --insertion=visible-ship --policy=shared
+          - profile: swamp-visible-seed4
             mission: swamp-hydra
-            args: --insertion=visible-ship --policy=shared --sweepDistance=165
-          - profile: swamp-visible-close-195
-            mission: swamp-hydra
-            args: --insertion=visible-ship --policy=shared --sweepDistance=195
-          - profile: swamp-visible-early-210
-            mission: swamp-hydra
-            args: --insertion=visible-ship --policy=shared --sweepEarly=true --sweepDistance=210
-          - profile: volcano-visible-early-185
+            previousWins: 3
+            args: --insertion=visible-ship --policy=shared
+          - profile: volcano-visible-seed2
             mission: volcano-bad-blood
-            args: --insertion=visible-ship --sweepEarly=true --sweepDistance=185
+            previousWins: 1
+            args: --insertion=visible-ship
+          - profile: volcano-visible-seed3
+            mission: volcano-bad-blood
+            previousWins: 2
+            args: --insertion=visible-ship
+          - profile: ice-visible-seed5
+            mission: ice-cryostalker
+            previousWins: 4
+            args: --insertion=visible-ship --policy=shared
+          - profile: ice-visible-seed8
+            mission: ice-cryostalker
+            previousWins: 7
+            args: --insertion=visible-ship --policy=shared
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
     steps:
@@ -57,8 +67,20 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Verify ground-policy unit regressions
         run: node --test tests/qa-hunt-ground-policy-v112.test.mjs
+      - name: Earn the documented encounter number by playing prior victories
+        env:
+          HUNT_MISSION: ${{ matrix.mission }}
+          SEED_WINS: ${{ matrix.previousWins }}
+        run: |
+          save=docs/qa/v112-ground-campaign/campaign-origin-save.json
+          for (( attempt=1; attempt<=SEED_WINS; attempt++ )); do
+            out="outputs/qa-origin/$attempt"
+            node scripts/qa-hunt-ground-campaign-v112.mjs --mission="$HUNT_MISSION" --armor=hunter --replay=true --seconds=240 --baseSave="$save" --output="$out" --successSave="$out/after-win.json"
+            save="$out/after-win.json"
+          done
+          printf 'EARNED_SAVE=%s\n' "$save" >> "$GITHUB_ENV"
       - name: Play the declared extraction with a real empty bag
-        run: node scripts/qa-hunt-ground-campaign-v112.mjs --mission=${{ matrix.mission }} --armor=scout --baseSave=docs/qa/v112-ground-campaign/campaign-origin-save.json --harvest=true --harvestSweep=true ${{ matrix.args }} --replay=true --seconds=360 --minimumRetainedLoad=1 --output=outputs/qa-native-load
+        run: node scripts/qa-hunt-ground-campaign-v112.mjs --mission=${{ matrix.mission }} --armor=scout --baseSave="$EARNED_SAVE" --harvest=true --harvestSweep=true ${{ matrix.args }} --replay=true --seconds=360 --minimumRetainedLoad=1 --output=outputs/qa-native-load
       - name: Describe the observed stock after the attempt
         if: always()
         run: |
@@ -78,5 +100,7 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: ${{ matrix.profile }}
-          path: outputs/qa-native-load/
+          path: |
+            outputs/qa-origin/
+            outputs/qa-native-load/
           if-no-files-found: error
