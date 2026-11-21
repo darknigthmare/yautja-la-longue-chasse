@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { test } from 'node:test';
 import { inspectRenamedOriginals, matchingAttempt } from '../scripts/audit-enforcer-historical-recovery.mjs';
 
@@ -17,6 +18,8 @@ test('matching historical bytes only yield a receipt with the exact accepted pro
   assert.equal(matchingAttempt(target, row), attempt);
   assert.equal(matchingAttempt(target, { ...row, attempts: [row.attempts[0]] }), null);
   assert.equal(matchingAttempt(target, { ...row, attempts: [{ ...attempt, accepted: false }] }), null);
+  assert.equal(matchingAttempt({ ...target, acceptedOutputPromptExact: null }, row), row.attempts[0]);
+  assert.equal(matchingAttempt({ ...target, acceptedOutputPromptExact: null }, { ...row, attempts: [{ ...attempt, promptExact: ' ' }] }), null);
 });
 
 test('a real Git tree exposes the exact renamed original and excludes unrelated bytes of the same size', t => {
@@ -39,4 +42,14 @@ test('a real Git tree exposes the exact renamed original and excludes unrelated 
   assert.deepEqual(report.originalImages.map(({ id, path, bytes }) => ({ id, path, bytes })),
     [{ id: target.id, path: 'archive renomme.png', bytes: png.length }]);
   assert.equal(report.originalImages[0].sha256, target.sha256);
+});
+
+test('a symbolic command entry still validates options', { skip: process.platform === 'win32' }, t => {
+  const root = mkdtempSync(join(tmpdir(), 'yautja-cli-scan-'));
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+  const path = join(root, 'recovery');
+  symlinkSync(fileURLToPath(new URL('../scripts/audit-enforcer-historical-recovery.mjs', import.meta.url)), path);
+  const result = spawnSync(process.execPath, [path, '--not-a-recovery-option'], { encoding: 'utf8' });
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /not-a-recovery-option/);
 });

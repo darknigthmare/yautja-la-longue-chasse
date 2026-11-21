@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { lstatSync, readdirSync, readFileSync } from 'node:fs';
+import { lstatSync, readdirSync, readFileSync, realpathSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
@@ -45,13 +45,17 @@ function parseCheckpoint(checkpoint) {
   return new Map(checkpoint.assets.map(row => [row.id, row]));
 }
 
+function manifestRecordsPrompt(target) {
+  return typeof target.acceptedOutputPromptExact === 'string' && target.acceptedOutputPromptExact.trim().length > 0;
+}
+
 export function matchingAttempt(target, row) {
   if (!row || row.repoPngPath !== target.repoPngPath || row.sha256 !== target.sha256
       || row.bytes !== target.bytes || !Array.isArray(row.attempts)) return null;
   return row.attempts.find(attempt =>
     attempt.accepted === true && attempt.sha256 === target.sha256 && attempt.bytes === target.bytes
-    && typeof target.acceptedOutputPromptExact === 'string' && target.acceptedOutputPromptExact.trim()
-    && attempt.promptExact === target.acceptedOutputPromptExact
+    && typeof attempt.promptExact === 'string' && attempt.promptExact.trim()
+    && (!manifestRecordsPrompt(target) || attempt.promptExact === target.acceptedOutputPromptExact)
     && typeof attempt.generatedAtUtc === 'string' && Number.isFinite(Date.parse(attempt.generatedAtUtc))
   ) ?? null;
 }
@@ -59,7 +63,10 @@ export function matchingAttempt(target, row) {
 function matchingReceipts(finals, checkpoint, source) {
   return finals.flatMap(target => {
     const attempt = matchingAttempt(target, checkpoint.get(target.id));
-    return attempt ? [{ id: target.id, sha256: target.sha256, ...source, attemptIndex: attempt.attemptIndex }] : [];
+    return attempt ? [{
+      id: target.id, sha256: target.sha256, ...source, attemptIndex: attempt.attemptIndex,
+      promptEvidence: manifestRecordsPrompt(target) ? 'matches-final-manifest' : 'requires-independent-source',
+    }] : [];
   });
 }
 
@@ -249,7 +256,16 @@ function collectReport(refs, { archive, checkpoint, zip, 'scan-git-tree': scanGi
   };
 }
 
-if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+function invokedAsCommand() {
+  if (!process.argv[1]) return false;
+  try {
+    return realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url));
+  } catch {
+    return false;
+  }
+}
+
+if (invokedAsCommand()) {
   const { values, positionals } = parseArgs({
     options: {
       archive: { type: 'string', multiple: true, default: [] },

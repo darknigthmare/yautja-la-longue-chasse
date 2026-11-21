@@ -45,7 +45,7 @@ L’option `--scan-git-tree` parcourt les chemins de chaque référence fournie 
 node scripts/audit-enforcer-historical-recovery.mjs --scan-git-tree d71e995ae886df69c4165a1a153291449e8f22f6
 ```
 
-Un checkpoint candidat V6.13 doit aussi contenir le prompt exact accepté dans le manifeste final, avec la taille et l’empreinte du PNG. Un texte renseigné pour une autre tentative ne suffit pas.
+Un checkpoint V6.13 doit correspondre au chemin, à la taille et à l’empreinte du PNG. Quand le manifeste contient le prompt exact accepté, le checkpoint doit restituer ce texte. Quand le manifeste est muet, le rapport indique `requires-independent-source` et laisse le reçu candidat en attente d’une source de provenance indépendante.
 
 ## Vérifier une archive de production disponible localement
 
