@@ -14,6 +14,7 @@ MANIFEST = Path("docs/suivi-production/v613/data/production-manifest.json")
 MANIFEST_BLOB = "6a5a6f1ce1dbc5b0d0f366b7a27f5468c4fee572"
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 PROVENANCE_CHUNKS = {b"tEXt", b"zTXt", b"iTXt", b"eXIf", b"tIME"}
+C2PA_CHUNK = b"caBX"
 IMAGE_CHUNKS = {
     b"IHDR", b"PLTE", b"IDAT", b"IEND", b"tRNS", b"cHRM", b"gAMA", b"iCCP",
     b"cICP", b"mDCV", b"cLLI", b"sBIT", b"sRGB", b"bKGD", b"hIST", b"pHYs",
@@ -37,6 +38,7 @@ def png_metadata(raw, path):
     chunk_types = Counter()
     provenance_chunks = []
     other_chunks = []
+    c2pa_chunks = []
     while offset + 12 <= len(raw):
         length, chunk_type = struct.unpack_from(">I4s", raw, offset)
         data_start = offset + 8
@@ -58,6 +60,21 @@ def png_metadata(raw, path):
             }
             if chunk_type in PROVENANCE_CHUNKS:
                 provenance_chunks.append(record)
+            elif chunk_type == C2PA_CHUNK:
+                data = raw[data_start:crc_start]
+                c2pa_chunks.append({
+                    **record,
+                    "jumboBoxHeader": data[4:8] == b"jumb",
+                    "claimMarker": b"c2pa.claim" in data,
+                    "signatureMarker": b"c2pa.signature" in data,
+                    "actionMarker": b"c2pa.actions" in data,
+                    "promptFieldMarker": any(
+                        label in data for label in (b"prompt", b"Prompt", b"promptExact")
+                    ),
+                    "receiptFieldMarker": any(
+                        label in data for label in (b"receipt", b"receiptCreatedAtUtc", b"generatedAtUtc")
+                    ),
+                })
             else:
                 other_chunks.append(record)
 
@@ -68,6 +85,7 @@ def png_metadata(raw, path):
                 "chunkTypes": dict(chunk_types),
                 "provenanceChunks": provenance_chunks,
                 "otherChunks": other_chunks,
+                "c2paChunks": c2pa_chunks,
                 "trailingData": {"bytes": len(trailing), "sha256": sha256(trailing)}
                 if trailing else None,
             }
@@ -104,6 +122,12 @@ def audit():
     def counts(group):
         return {
             "files": len(group),
+            "chunkTypeCounts": dict(sum((Counter(row["chunkTypes"]) for row in group), Counter())),
+            "withC2paCarrier": sum(bool(row["c2paChunks"]) for row in group),
+            "withC2paClaimMarker": sum(any(c["claimMarker"] for c in row["c2paChunks"]) for row in group),
+            "withC2paSignatureMarker": sum(any(c["signatureMarker"] for c in row["c2paChunks"]) for row in group),
+            "withC2paPromptFieldMarker": sum(any(c["promptFieldMarker"] for c in row["c2paChunks"]) for row in group),
+            "withC2paReceiptFieldMarker": sum(any(c["receiptFieldMarker"] for c in row["c2paChunks"]) for row in group),
             "withProvenanceChunk": sum(bool(row["provenanceChunks"]) for row in group),
             "withUnclassifiedChunk": sum(bool(row["otherChunks"]) for row in group),
             "withTrailingBytes": sum(bool(row["trailingData"]) for row in group),
