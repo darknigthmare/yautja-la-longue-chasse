@@ -87,7 +87,7 @@ try {
     await root.or(play).first().waitFor();
     if (await play.isVisible()) await play.click();
     await root.waitFor();
-    await root.locator('[data-region-resume]').waitFor();
+    await root.locator('[data-region-player]').waitFor();
     await page.clock.pauseAt(new Date(await page.evaluate(() => Date.now() + 100)));
     await ground.resume();
   }
@@ -129,6 +129,8 @@ try {
   });
   assert.deepEqual(crate, { width: 1254, height: 1254 });
 
+  report.checks.push({ kind: 'departure-and-crate', crate });
+  assert.equal((await disk()).homeworldRegionV68.zone, 'village');
   await page.clock.resume();
   await page.reload({ waitUntil: 'domcontentloaded' });
   await enter();
