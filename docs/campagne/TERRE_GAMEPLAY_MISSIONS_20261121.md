@@ -281,7 +281,7 @@ Règle reprise du code existant : la règle d'honneur `scan-target` (« cible sc
 
 ### 8.4 Écoute
 - Les radios humaines sont **écoutées** (mode EM) : elles annoncent relèves, renforts, déplacements de convois.
-- *(proposé)* Le joueur peut enregistrer une phrase humaine et la **rejouer** pour attirer quelqu'un (imitation de voix, canon). Usage limité : 3 phrases en mémoire.
+- **Décision :** le joueur garde **3 phrases** humaines en mémoire (imitation de voix, canon) et peut les rejouer **à voix haute ou sur une radio capturée** (fausse relève, faux ordre de repli).
 
 ### 8.5 À créer
 - Mode biomask **Analyse** (nouvel état visuel, marques colorées).
@@ -323,7 +323,7 @@ Un humain devient **témoin** s'il voit le joueur clairement et quitte le site v
 
 - **Téléphone ou caméra :** quand un humain filme, une jauge **« Envoi »** se remplit (6 à 10 s selon l'époque ; instantané après 2080 avec les réseaux). Pleine, l'image est partie : Indice + 8. Détruire l'appareil avant : Indice – 3.
 - **Radio :** un appel radio sur le joueur déclenche des renforts (vague `trigger: "objective"`) mais ne fait pas monter l'Indice.
-- **Fuite :** un fuyard qui atteint la limite du site = Indice + 4. Il peut être rattrapé ; s'il est désarmé, il ne peut pas être tué (il doit être laissé partir ou assommé *(proposé)*).
+- **Fuite :** un fuyard qui atteint la limite du site = Indice + 4. Il peut être rattrapé. **Décision :** s'il est désarmé, le joueur peut l'**assommer** (il ne compte pas comme témoin, aucune infraction) ou le laisser partir ; le tuer reste une infraction.
 
 ### 9.4 Isoler la proie
 Moyens d'isoler la proie principale de son groupe :
@@ -339,7 +339,7 @@ Moyens d'isoler la proie principale de son groupe :
 
 ### 9.6 Faune
 - La faune réagit à la traque : oiseaux qui s'envolent (alertent les humains en Calme → Suspicion), prédateurs qui chassent les humains aussi.
-- Un grand prédateur peut être **attiré** vers un camp (sang, appât) : il fait le travail ou crée la diversion. Tuer des humains par un animal attiré ne rapporte pas d'honneur au joueur *(proposé)*.
+- Un grand prédateur peut être **attiré** vers un camp (sang, appât) : il fait le travail ou crée la diversion. **Décision :** des humains tués par un animal attiré ne rapportent **aucun honneur** au joueur ; c'est une diversion, pas une mise à mort.
 
 ### 9.7 À créer
 - États d'IA Terre : extension du comportement d'escouade existant avec Suspicion, Recherche, Panique, Fuite.
@@ -390,7 +390,7 @@ La proie principale est un **boss** (`BossDefinition`, `threatLevel: 4`).
 
 ### 11.1 Ce que le joueur fait
 - Il s'approche du corps et **prélève** le trophée (le crâne, une arme, un objet personnel selon la proie). Le code existant gère déjà le trophée comme un **objet physique porté jusqu'à l'extraction** (`TrophyDefinition.partId`).
-- Le prélèvement prend **6 à 12 s** pendant lesquelles le joueur est exposé (camouflage coupé *(proposé)*).
+- Le prélèvement prend **6 à 12 s**. **Décision :** le camouflage est coupé pendant le geste ; il faut avoir nettoyé la zone avant.
 
 ### 11.2 Qualité du trophée
 | Facteur | Effet |
@@ -465,7 +465,7 @@ TRACES RESTANTES
 ### 13.4 Autodestruction
 - Possible si le joueur est à moins de 10 % de santé, sans fenêtre et encerclé (canon).
 - Effet : mort honorable, mission perdue, site **réinitialisé** (nouvelles proies, Indice + 25), et en zone habitée : **jugement** (bible).
-- En mode normal, la partie reprend au retour du vaisseau sans le joueur… *(à trancher, section 29)*.
+- **Décision :** en mode normal et réalisme, le vaisseau récupère le joueur mourant de justesse ; mission perdue, honneur – 100, + 1 an de dérive. En hardcore, mort définitive.
 
 ### 13.5 À créer
 - Séquence d'extraction (réutilise celle des 8 chasses).
@@ -599,7 +599,7 @@ Une à deux chasses plus tard, la console d'écoute du vaisseau capte des **nouv
 - Déclencheur : vaincu par ARGOS (santé à 0 contre une équipe ARGOS, en mode normal ou réalisme).
 - Le joueur se réveille dans une **base ARGOS** (laboratoire souterrain, désarmé).
 - Boucle : récupérer son équipement (3 casiers), libérer ou non d'autres captifs (faune, un autre Yautja), sortir.
-- Pendant ce temps, le clan prépare un sauvetage : au bout de 15 min, une équipe du clan attaque la base (le joueur perd de l'honneur pour avoir été sauvé).
+- **Décision :** le joueur tente l'évasion seul ; au bout de 15 min, une équipe du clan attaque la base. Être sauvé coûte de l'honneur (– 75) ; s'évader seul n'en coûte pas.
 - Technologie restée chez ARGOS : honneur – 50 par objet (bible) ; une mission de récupération apparaît plus tard.
 
 ### 18.3 Confrontation finale (Norilsk, site 19)
@@ -899,7 +899,7 @@ Varga, Echeverría, Mensah, « Aiguille », puis la successeure (avenant). Portr
 ## 25. Son et musique à créer
 
 - **Ambiances :** une par site (20), avec variante nuit / orage quand le site en a.
-- **Radios humaines :** voix en langues locales, sans sous-titres, sauf ce que le joueur traduit en écoute *(proposé)*.
+- **Radios humaines :** voix en langues locales. **Décision :** le biomask les **traduit après quelques secondes d'écoute** ; avant, seuls le ton et les mots-clés (noms, chiffres) sont lisibles.
 - **SFX :** `earth-registry-open`, `analysis-scan`, `mark-armed`, `mark-noncombatant`, `upload-bar`, `phone-destroyed`, `voice-record`, `voice-replay`, `dissolve-hiss`, `extraction-window`, `argos-pulse-jammer`, `argos-net-launch`, `tide-rise`, `airboat-pass`, `wildfire-roar`, `geyser-burst`.
 - **Musique :** thème « Terre » (registre, orbite), thème ARGOS, thème de la chasse ultime (après MUS-73).
 
@@ -962,12 +962,16 @@ Valeurs de l'avenant (section 7). Cible : un joueur discret reste sous 40 jusqu'
 
 ---
 
-## 29. Questions ouvertes
+## 29. Décisions du 21 novembre 2026 (soir)
 
-1. **Autodestruction en mode normal** : que devient la partie ? (proposé : le joueur survit de justesse, évacué par le vaisseau, avec une perte d'honneur forte ; seule la version hardcore tue)
-2. **Prélèvement du trophée** : le camouflage est-il coupé pendant le geste ?
-3. **Fuyard désarmé** : peut-on l'assommer, ou seulement le laisser partir ?
-4. **Animal attiré qui tue des humains** : aucun honneur pour le joueur, ou une part ?
-5. **Capture par ARGOS** : sauvetage du clan au bout de 15 min, ou évasion seule ?
-6. **Imitation de voix** : limite de 3 phrases, et peut-on imiter une radio ?
-7. **Langues des radios** : traduites par l'écoute ou jamais ?
+| Question | Décision |
+| --- | --- |
+| Autodestruction en mode normal | évacué de justesse par le vaisseau ; mission perdue, honneur – 100 ; mort définitive en hardcore seulement |
+| Camouflage pendant le trophée | coupé pendant tout le geste |
+| Fuyard désarmé | l'assommer (pas témoin, pas d'infraction) ou le laisser partir |
+| Humains tués par un animal attiré | aucun honneur |
+| Capture par ARGOS | évasion jouable ; sauvetage du clan au bout de 15 min, avec perte d'honneur |
+| Imitation de voix | 3 phrases ; à voix haute ou sur une radio capturée |
+| Langues des radios | traduites par le biomask après quelques secondes d'écoute |
+
+Il ne reste aucune question ouverte dans ce document. Les points de l'avenant (section 16 de [Terre — Le Terrain de Chasse](TERRE_TERRAIN_DE_CHASSE_20261121.md)) restent à valider.
