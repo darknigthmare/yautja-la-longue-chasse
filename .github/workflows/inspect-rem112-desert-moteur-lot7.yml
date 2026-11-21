@@ -1,0 +1,41 @@
+name: Lire le vrai sidecar de secours Désert
+on:
+  push:
+    branches: [codex/inspect-rem112-desert-moteur-lot7]
+permissions:
+  actions: read
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          run-id: 44957203591
+          name: rem112-desert-apex-marais-moteur
+          github-token: ${{ github.token }}
+          path: archived
+      - run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import {readFile,readdir} from 'node:fs/promises';
+          import {join,dirname} from 'node:path';
+          import {createHash} from 'node:crypto';
+          const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
+          const files=(await readdir('archived',{recursive:true})).filter(x=>x.endsWith('/report.json')||x==='report.json');
+          assert.equal(files.length,1);
+          const file=join('archived',files[0]),raw=await readFile(file),r=JSON.parse(raw);
+          const state=JSON.parse(await readFile(join(dirname(file),'browser-storage-state.json'),'utf8'));
+          const active=state.origins.flatMap(x=>x.localStorage).find(x=>x.name==='yautja-long-hunt.active-hunt');
+          const snapshot=r.activeHunt?.snapshot?.checkpoint;
+          if(active) assert.equal(active.value,JSON.stringify(r.activeHunt));
+          const native=r.attempts[0]?.final?.state;
+          const inputs=r.inputs.filter(x=>x.type==='DOM retry unavailable'||x.type==='DOM retry');
+          const buttons=JSON.parse(await readFile(join(dirname(file),'terminal-visible-buttons.json'),'utf8'));
+          console.log(JSON.stringify({artifact:14728473543,reportSha256:hash(raw),retryInputs:inputs,
+            resumeSource:snapshot?{exactBytesMatch:true,phase:snapshot.phase,elapsed:snapshot.elapsed,x:snapshot.player.x,health:snapshot.player.health,
+              bone:snapshot.huntRites?.specimensV112?.find(x=>x.partId==='bone'),ownerMatches:r.activeHunt.ownerSaveCreatedAt===r.finalSave.createdAt}:null,
+            terminal:native?{phase:native.phase,elapsed:native.elapsed,bossAlive:native.boss.alive,bossHealth:native.boss.health}:null,
+            buttons:buttons.filter(x=>/relai|Réessayer|Rapport|Abandonner/i.test(x)),wallSeconds:r.attempts[0]?.wallSeconds}));
+          NODE
