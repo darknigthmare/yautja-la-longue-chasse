@@ -1,0 +1,48 @@
+name: P0 Read Volcan harvest and route evidence
+on:
+  push:
+    branches: [codex/qa-rem112-volcan-diagnostic-lot4]
+permissions:
+  actions: read
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: rem112-06-volcano-continuation
+          run-id: 44916265800
+          github-token: ${{ github.token }}
+          path: old
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: rem112-lot3-volcano-contract
+          run-id: 44925274493
+          github-token: ${{ github.token }}
+          path: won
+      - run: |
+          node --input-type=module <<'NODE'
+          import {readFile} from 'node:fs/promises';
+          const read=async p=>JSON.parse(await readFile(p,'utf8'));
+          const old=await read('old/report.json');
+          console.log(JSON.stringify({receipt:'harvests',attempts:old.harvestAttempts}));
+          const samples=await read('won/volcano-bad-blood-hunt-samples.json');
+          const useful=s=>s.state.huntRites.corpses.filter(c=>/hell-hound|scorch-xeno|basalt-ram/.test(c.sourceEnemyId));
+          const candidates=new Map();
+          for(const s of samples){
+            const g=s.state,p=g.player;
+            const living=g.enemies.filter(e=>e.active&&e.alive);
+            const threats=Math.min(Infinity,...living.map(e=>Math.hypot(e.x-p.x,e.y-p.y)));
+            for(const c of useful(s)){
+              const h=Math.abs(c.x-p.x-p.width/2),v=Math.abs(c.y-p.y-p.height);
+              if(h>400||v>220||g.phase==='extraction')continue;
+              const old=candidates.get(c.id);
+              if(!old||h+v<old.distance)candidates.set(c.id,{x:c.x,y:c.y,species:c.sourceEnemyId,phase:g.phase,
+                elapsed:g.elapsed,corpse:c.id,player:{x:p.x,y:p.y,health:p.health,grounded:p.grounded},
+                nearestThreat:threats,bossActive:g.boss.active,distance:h+v});
+            }
+          }
+          console.log(JSON.stringify({receipt:'route',positions:[...candidates.values()]}));
+          NODE
