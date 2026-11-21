@@ -2440,7 +2440,7 @@ Navire de clan, résidence, opérations collectives, conséquences de guerre, me
 
 *Production (proposé)* — **Props :** ponts du navire de clan, postes d'équipage (7, 13 ou 19), salle de briefing, rampe de départ, équipage incarné (sprites existants des gardes de clans). **VFX :** voyants de poste occupé / vide, lumières de départ. **SFX :** `briefing-room`, `ramp-lower`, `crew-chatter`. **Musique :** MUS-47.
 
-**Raccord jouable.** La Veille Partagée propose une première escorte après le choix du projet collectif. Vérifie les postes de chaque recrue disponible avant le départ. Le carnet distingue la capacité réellement acquise (7, 13 ou 19) et les postes occupés pour cette sortie. Le conducteur agit depuis le hangar. La coordination part du conseil avec les ordres complets. Une victoire jouée inscrit le rôle, la capacité et les postes vérifiés au reçu de campagne.
+**Raccord jouable.** La Veille Partagée propose une première escorte après le choix du projet collectif. Vérifie les postes de chaque recrue disponible avant le départ. Le carnet distingue la capacité réellement acquise (7, 13 ou 19) et les postes occupés pour cette sortie. Le conducteur agit depuis le hangar. Le départ se confirme au hangar. Le poste de coordination au conseil dispose des ordres complets. Une victoire jouée inscrit le rôle, la capacité et les postes vérifiés au reçu de campagne.
 
 ### R2-M047 — Ce que la guerre laisse au retour
 
