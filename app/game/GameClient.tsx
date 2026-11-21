@@ -113,6 +113,7 @@ import type { CradleReturnOperation, CradleReturnObservation } from './systems/b
 import { commitElderPassageJudgment, type PassageCommand, type PassageResponse } from './systems/elderPassageJudgmentV168';
 import { commitElderMentoring, type MentoringCommand, type MentoringResponse } from './systems/elderMentoringV168';
 import { commitElderAssembly, type AssemblyCommand, type AssemblyResponse } from './systems/elderAssemblyV168';
+import { commitEliteMastery, type MasteryCommand, type MasteryResponse } from './systems/eliteMasteryV170';
 import { getCradleCrownCondition } from './systems/buriedCradle';
 import cradleArt from './data/buriedCradleArt.json';
 import { actCompanionResidence, bindCompanionResidenceMission, settleCompanionResidenceMission, releaseCompanionResidenceMission,
@@ -2280,7 +2281,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "elderPassageJudgmentV168" | "elderMentoringV168" | "elderAssemblyV168" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "spaceRoutesV159" | "queenHuntV163" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "mountRidesV156" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155" | "blackGodV162" | "minorArcsV160" | "warpEpochsV165" | "tantalusV164">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "elderPassageJudgmentV168" | "elderMentoringV168" | "elderAssemblyV168" | "eliteMasteryV170" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "spaceRoutesV159" | "queenHuntV163" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "mountRidesV156" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155" | "blackGodV162" | "minorArcsV160" | "warpEpochsV165" | "tantalusV164">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2358,6 +2359,16 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       return { ok: false, message: "Inscription en attente. Vérifie la sauvegarde puis reprends l’action." };
     }
     return { ok: true, message: result.message };
+  }, [elderRiteAvailable, persistSocialProgress]);
+
+  const onEliteMasteryCommand = useCallback((command: MasteryCommand): MasteryResponse => {
+    if (!elderRiteAvailable()) return { ok: false, message: "Rouvre le dossier lorsque la campagne sera disponible." };
+    const result = commitEliteMastery(saveRef.current, command);
+    if (!result.ok) return result;
+    if (!persistSocialProgress({ eliteMasteryV170: result.state })) {
+      return { ok: false, message: "Inscription en attente. Vérifie la sauvegarde puis reprends l’action." };
+    }
+    return { ok: true, message: result.message, destination: result.destination };
   }, [elderRiteAvailable, persistSocialProgress]);
 
   const onElderAssemblyCommand = useCallback((command: AssemblyCommand): AssemblyResponse => {
@@ -5146,7 +5157,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <div className="screen-safe">
             <Suspense fallback={<DeferredGameScreen />}>
               <ClanChroniclePanel save={save} onGameReserveV66={openGameReserveV66} onClose={() => go(chronicleReturnScreen)}
-                onPassageCommand={onElderPassageCommand} onMentoringCommand={onElderMentoringCommand} onAssemblyCommand={onElderAssemblyCommand}
+                onPassageCommand={onElderPassageCommand} onMentoringCommand={onElderMentoringCommand} onAssemblyCommand={onElderAssemblyCommand} onMasteryCommand={onEliteMasteryCommand}
                 onOpenCradle={campaignSaveBusy || archiveTransferBusy || archiveRecoveryIssue || resumableHunt
                   ? undefined : () => go("buried-cradle-briefing")} />
             </Suspense>

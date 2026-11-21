@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2410,
-  "bytes": 1116534492,
+  "files": 2415,
+  "bytes": 1116571357,
   "entries": [
     {
       "path": ".github/workflows/p0-p1-coherence-20261109.yml",
@@ -175,8 +175,8 @@
     },
     {
       "path": "app/game/ClanChroniclePanel.tsx",
-      "bytes": 18428,
-      "sha256": "ce4d9b8ea8c488f650a3a3ef881a36b42775c307d0e5def61fbca1e84a4e2e70"
+      "bytes": 19316,
+      "sha256": "dbbd3f05686b1039ac397bb3c88622b51acfb5d7b09e4d1877958b5ff88a48d8"
     },
     {
       "path": "app/game/ClanLogisticsV108.module.css",
@@ -639,6 +639,16 @@
       "sha256": "bfcfbe7a114e077e022eb3acd751fad6c501ae97283dd8f65bde38c7e3541661"
     },
     {
+      "path": "app/game/EliteMastery.module.css",
+      "bytes": 2198,
+      "sha256": "41fedcbe222259b3bd1f97ffdce3221c98acf16fc0df92c9097c479215cc8e44"
+    },
+    {
+      "path": "app/game/EliteMastery.tsx",
+      "bytes": 6489,
+      "sha256": "4cc489ae971716d2d4d531fd4ed9f27852ba0c4be6ae19f7a19676a6860a3910"
+    },
+    {
       "path": "app/game/EnemyBestiaryV7.tsx",
       "bytes": 4539,
       "sha256": "ff774d4abe72491457e0d3d3c7017ff4093686919fe9ae2edce56d260c329e0d"
@@ -750,8 +760,8 @@
     },
     {
       "path": "app/game/GameClient.tsx",
-      "bytes": 434720,
-      "sha256": "d0de445d4d4134c1ca8bae0ad9d0d350ceadfd23bdf160a4196eadb606ba9183"
+      "bytes": 435526,
+      "sha256": "27317ec7f715f239d5f251eeb04f8e029d6050cc89b449547af914c812f2e8aa"
     },
     {
       "path": "app/game/GameReserveEntryV104.module.css",
@@ -3640,8 +3650,8 @@
     },
     {
       "path": "app/game/save.ts",
-      "bytes": 120178,
-      "sha256": "f9f6320ae608b860a253d8bf7cb4fcd016cdd251d6b7eb4c7837ce88b9576dcb"
+      "bytes": 120989,
+      "sha256": "14bd98c31e183b5f776b3d8d9c86f7ec67c6ed060d163cac0bbabaf6dee34d48"
     },
     {
       "path": "app/game/ship-level.css",
@@ -4135,8 +4145,8 @@
     },
     {
       "path": "app/game/systems/clanWarOperationsV115.ts",
-      "bytes": 106367,
-      "sha256": "de239032640cd03601bf6d7e25c1c72f9e8fb035a4c0c6e3082349c368cb17a8"
+      "bytes": 106790,
+      "sha256": "791366e32cc9855892978793f1c7afe2c26edc6aa6a98ee89fa173829783d6c1"
     },
     {
       "path": "app/game/systems/clanWarOuterChoicesV142.ts",
@@ -4557,6 +4567,11 @@
       "path": "app/game/systems/elderPassageJudgmentV168.ts",
       "bytes": 9666,
       "sha256": "73b60b7c836a3ee55118a5471665b8cbd836513e24f2fb40764a795aac4ba978"
+    },
+    {
+      "path": "app/game/systems/eliteMasteryV170.ts",
+      "bytes": 9004,
+      "sha256": "9c213eb8760ecade6b5fc03627f5b3e529cf14efdd7e1243df347d7262e1561e"
     },
     {
       "path": "app/game/systems/expansionExplorationRegions.ts",
@@ -6680,8 +6695,8 @@
     },
     {
       "path": "app/game/types.ts",
-      "bytes": 26571,
-      "sha256": "65e87aeaac38c90772e975875b79089d783adb609a5d82bac472ce0976d76f33"
+      "bytes": 26654,
+      "sha256": "93a39516c1e10aaf9b5fc73e0f4a4842fcc58e3a0d353eb275215dc81cb447c9"
     },
     {
       "path": "app/game/useGeneratedWarCatalogV102.ts",
@@ -10910,8 +10925,8 @@
     },
     {
       "path": "scripts/build-hunt-mechanics-workbook-v112.mjs",
-      "bytes": 35041,
-      "sha256": "accae4c379f005d91ec9ede2fe9135a1e642c11f7310201447999cdc400713cf"
+      "bytes": 22307,
+      "sha256": "318770138bae171139d0ac1d6d6bd72d3f9017efd226df1fef275462e36c5a56"
     },
     {
       "path": "scripts/build-pit-backward-art-v112.mjs",
@@ -11064,6 +11079,11 @@
       "sha256": "359f02835643ea86913d3381daa175ae43bbd3065d933c62c9a232e82bc31163"
     },
     {
+      "path": "scripts/lib/workbook-ooxml.mjs",
+      "bytes": 13446,
+      "sha256": "f6ce54b911d40308e9a90dc66a33c9d9e9f59c692091033b6773fcd6ff6e0f3d"
+    },
+    {
       "path": "scripts/mobility-qa-driver.mjs",
       "bytes": 1732,
       "sha256": "d866f7c99ba27a6cb48ab192e0958fb5c5fab6c62bfa7b614f76bcd54dc8fd49"
@@ -11135,8 +11155,8 @@
     },
     {
       "path": "scripts/qa-clan-war-command-operations-20261109.mjs",
-      "bytes": 29567,
-      "sha256": "c35d9ffde08e7ad3c1d72f7b6c405eb3523ac49d841c046e3ec5a447500f7352"
+      "bytes": 34848,
+      "sha256": "9270252c8378726f862d5742ea604e4f667c207cce4b3b30197ae843a2a01363"
     },
     {
       "path": "scripts/qa-clan-war-four-modes-v147.mjs",
@@ -11312,6 +11332,11 @@
       "path": "scripts/qa-warp-module-p0p1-20261109.mjs",
       "bytes": 8672,
       "sha256": "97a9e7877649bcf32378ac42fd77160d9c17234eb9074ce97b006616285819a0"
+    },
+    {
+      "path": "scripts/replay-clan-war-assault-v115.mjs",
+      "bytes": 10170,
+      "sha256": "125da2163b6b2b9818e93035f1728e17ed797224f7cdb83b7a072c5229fa18e0"
     },
     {
       "path": "scripts/review-pit-native-borders-v109.py",

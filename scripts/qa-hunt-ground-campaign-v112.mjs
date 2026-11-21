@@ -11,17 +11,19 @@ import {build} from "esbuild";
 import ts from "typescript";
 import {decideGroundApexTrophyInputV112,decideHuntCampaignInputV112,groundTrophyGuardV112,observeGroundTrophyDamageV112} from "./lib/qa-hunt-ground-policy-v112.mjs";
 import {chooseGroundHarvestV112,groundHarvestMenuActionV112,nearestGroundHarvestThreatV112,observeGroundHarvestV112} from "./lib/qa-hunt-ground-harvest-v112.mjs";
+import {decideLoadedCanopyRouteV112,loadedCanopyRouteV112} from "./lib/qa-hunt-full-canopy-route-v112.mjs";
 
 const root=fileURLToPath(new URL("../",import.meta.url));
 const scriptBytesAtAdmission=await readFile(fileURLToPath(import.meta.url));
 const policyBytesAtAdmission=await readFile(new URL("./lib/qa-hunt-ground-policy-v112.mjs",import.meta.url));
 const harvestPolicyBytesAtAdmission=await readFile(new URL("./lib/qa-hunt-ground-harvest-v112.mjs",import.meta.url));
+const canopyPolicyBytesAtAdmission=await readFile(new URL("./lib/qa-hunt-full-canopy-route-v112.mjs",import.meta.url));
 const source=await readFile(new URL("../app/game/HuntCanvas.tsx",import.meta.url),"utf8");
 const ast=ts.createSourceFile("HuntCanvas.tsx",source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
 let riteHandler;
 const visit=node=>{if(ts.isBinaryExpression(node)&&node.left.getText(ast)==="riteMenuActionRef.current"&&ts.isArrowFunction(node.right)&&node.right.parameters.length===1)riteHandler=node.right;ts.forEachChild(node,visit);};
 visit(ast);assert.ok(riteHandler,"the actual rite UI callback must exist");
-const append="\nexport {makeGameState,stepGame,snapshot,riteContextV77,riteRuntimeOptionsV112,huntRiteMenuSnapshotV77,riteOperationSecondsV77,trophyHarvestPoint,trophyHarvestInReach,APEX_TROPHY_REACH,huntStructuralBarrierV94};\nexport {defaultSave,applyMissionResult,normalizeSave} from './save'; export {purchaseFieldToolV111} from './systems/fieldToolsV111'; export {anatomyPartsV112,makeAnatomySpecimenV112} from './systems/anatomyHarvestV112'; export {fieldLoadV112} from './systems/harvestInventoryV112'; export {carriedFieldSpecimensV112} from './systems/fieldStashV112'; export {MISSION_BY_ID,ARMOR_BY_ID,WEAPON_BY_ID,GEAR_BY_ID} from './data';\nexport {evaluateClanShipAccess} from './systems/clanShipOperations'; export {shipSupportsSurfaceInsertion} from './systems/planetInsertion'; export {loadShipProgression} from './systems/progression';\n"+
+const append="\nexport {makeGameState,stepGame,snapshot,riteContextV77,riteRuntimeOptionsV112,huntRiteMenuSnapshotV77,riteOperationSecondsV77,trophyHarvestPoint,trophyHarvestInReach,APEX_TROPHY_REACH,huntStructuralBarrierV94,canopySupportReachableV112};\nexport {defaultSave,applyMissionResult,normalizeSave} from './save'; export {purchaseFieldToolV111} from './systems/fieldToolsV111'; export {anatomyPartsV112,makeAnatomySpecimenV112} from './systems/anatomyHarvestV112'; export {fieldLoadV112} from './systems/harvestInventoryV112'; export {carriedFieldSpecimensV112} from './systems/fieldStashV112'; export {MISSION_BY_ID,ARMOR_BY_ID,WEAPON_BY_ID,GEAR_BY_ID} from './data';\nexport {evaluateClanShipAccess} from './systems/clanShipOperations'; export {shipSupportsSurfaceInsertion} from './systems/planetInsertion'; export {loadShipProgression} from './systems/progression';\n"+
  "export function visibleSoloShipPlanQa(){return normalizePlanetInsertionPlan({version:1,method:'ship',team:'solo'});}\n"+
  "export function nativeRiteMenuQa(game,mission,action){const setUi=()=>{};const emitPersistence=()=>{};const persistHuntRef={current:null};const handler="+riteHandler.getText(ast)+";handler(action);}";
 const bundle=await build({stdin:{contents:source+append,
@@ -42,6 +44,17 @@ if(args.successSave!==undefined){
  assert.ok(args.successSave!==args.baseSave,"--successSave must preserve the original campaign save");
 }
 const minimumRetainedLoad=args.minimumRetainedLoad===undefined?null:Number(args.minimumRetainedLoad);
+const harvestSweep=args.harvestSweep==="true";
+const sweepEarly=args.sweepEarly==="true";
+const fullCanopy=args.fullCanopy==="true";
+const canopySequence=args.canopySequence===undefined?0:Number(args.canopySequence);
+if(fullCanopy)assert.ok(args.harvest==="true"&&minimumRetainedLoad===1,"loaded canopy requires a real bag at the full threshold");
+if(args.canopySequence!==undefined)assert.ok(fullCanopy&&Number.isInteger(canopySequence)&&canopySequence>=0,"select an authored loaded canopy route");
+const sweepDistance=args.sweepDistance===undefined?240:Number(args.sweepDistance);
+const leaveSpecimens=new Set((args.leaveSpecimens??"").split(",").filter(Boolean));
+if(harvestSweep)assert.ok(args.harvest==="true"&&minimumRetainedLoad!==null,"--harvestSweep requires a declared harvest load target");
+if(sweepEarly||args.sweepDistance!==undefined||leaveSpecimens.size)assert.equal(harvestSweep,true,"sweep tuning requires --harvestSweep=true");
+assert.ok(Number.isFinite(sweepDistance)&&sweepDistance>=0,"sweep distance must be a finite map distance");
 if(minimumRetainedLoad!==null){
  assert.ok(Number.isFinite(minimumRetainedLoad)&&minimumRetainedLoad>0&&minimumRetainedLoad<=1,
   "--minimumRetainedLoad must be a finite ratio above zero and at most one");
@@ -58,6 +71,17 @@ function packedLoad(state,armorId,tick){
  return {tick,load:runtime.fieldLoadV112(items,armorId),specimenIds:items.map(item=>item.id)};
 }
 function meetsLoad(load,minimum){return load.ratio+1e-9>=minimum;}
+function harvestStock(state){
+ return state.enemies.filter(enemy=>!enemy.boss).flatMap(enemy=>{
+  const parts=runtime.anatomyPartsV112(enemy.archetype);
+  if(!parts.length)return [];
+  return [{id:enemy.id,archetype:enemy.archetype,active:enemy.active,alive:enemy.alive,x:Math.round(enemy.x),
+   y:Math.round(enemy.y+enemy.height),parts:parts.map(part=>({
+    id:part.partId,massKg:part.massKg,volumeUnits:part.volumeUnits,
+    taken:state.huntRites.completedEventIds.includes(part.action+":"+enemy.id),
+   }))}];
+ });
+}
 function brief(s){return {t:+s.elapsed.toFixed(3),phase:s.phase,x:+s.player.x.toFixed(2),y:+s.player.y.toFixed(2),vx:+s.player.velocityX.toFixed(2),vy:+s.player.velocityY.toFixed(2),health:+s.player.health.toFixed(2),stamina:+s.player.stamina.toFixed(2),energy:+s.player.energy.toFixed(2),kills:s.supportKills,boss:{active:s.boss.active,alive:s.boss.alive,health:s.boss.health,x:s.boss.x},scans:s.scanNodes.map(n=>n.scanned),recoveries:s.recoveryNodes.map(n=>n.recovered),objectives:[...s.completedObjectives],message:s.message,grounded:s.player.grounded,climbing:s.player.climbing,load:s.fieldLoadV112,energyWeaponsLocked:s.energyWeaponsLocked,weaponSlot:s.player.activeWeaponSlot,threats:s.enemies.filter(e=>e.active&&e.alive).map(e=>({id:e.id,x:e.x,y:e.y,health:e.health,width:e.width,height:e.height}))};}
 for(const missionId of missionIds)for(const armorId of armorIds){
  randomState=0x1122026;
@@ -115,6 +139,8 @@ for(const missionId of missionIds)for(const armorId of armorIds){
  const useSharedPolicy=args.policy==="shared"||["volcano-bad-blood","ocean-leviathan"].includes(missionId);
  const harvestMemory={target:null,pending:null,deferred:new Map(),events:[]};
  const trophyMemory={},trophyInterruptions=[];
+ const sweepEvents=[];
+ let lastSweepTarget=null,stockAtApex=null,canopy=null;
  let peakLoadRatio=0,peakSpecimens=[],firstLoadAt=null;
  let atBoarding=null,atLoadTarget=null,heldLoadTarget=true;
  const lastPress={};
@@ -128,15 +154,23 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   const enemies=[...state.enemies.filter(e=>e.alive&&e.active),...(state.boss.alive&&state.boss.active?[state.boss]:[])].sort((a,b)=>Math.abs(a.x+a.width/2-center)-Math.abs(b.x+b.width/2-center));
   const trophyGuard=groundTrophyGuardV112(state,tick,trophyMemory,
    (a,b)=>runtime.huntStructuralBarrierV94(a,b,state.world.platforms));
-  const target=trophyGuard??enemies[0],gap=target?Math.abs(target.x+target.width/2-center)-(target.width+p.width)/2:Infinity;
   const purgePending=state.bossMechanics.missionId==="volcano-bad-blood"&&state.bossMechanics.purgeSeconds!==null&&!state.bossMechanics.purgeResolved;
   observeGroundHarvestV112(state.huntRites,tick,harvestMemory);
-  const loadRatio=state.fieldLoadV112?.ratio??initial.load.ratio;
+  const load=state.fieldLoadV112??initial.load;
+  const loadRatio=load.ratio;
+  const needsLoad=minimumRetainedLoad===null||!meetsLoad(load,minimumRetainedLoad);
+  const groundThreat=args.harvest==="true"?nearestGroundHarvestThreatV112(p,enemies):Infinity;
+  if(fullCanopy&&atLoadTarget&&!canopy){
+   const route=loadedCanopyRouteV112(state.world,missionId,canopySequence);
+   canopy={route,stage:route?"approach":"route-missing",startedTick:tick,events:[],exitLoad:null};
+  }
+  const nextCanopy=canopy?.route&&!["timeout","lost-first-vine","grounded-exit"].includes(canopy.stage)
+   ?decideLoadedCanopyRouteV112(state,tick,canopy,support=>runtime.canopySupportReachableV112(p,support,state.world.platforms)):null;
+  if(canopy?.stage==="grounded-exit"&&!canopy.exitLoad)canopy.exitLoad=packedLoad(state,armorId,tick);
   let harvestTarget=null;
   if(args.harvest==="true"&&!state.huntRites.operation&&!state.trophyExtracting&&
     (state.phase==="tracking"||state.phase==="target")&&
-    (minimumRetainedLoad===null||!meetsLoad({ratio:loadRatio},minimumRetainedLoad))&&
-    nearestGroundHarvestThreatV112(p,enemies)>650){
+    needsLoad&&groundThreat>(harvestSweep?sweepDistance:650)){
    const options=runtime.riteRuntimeOptionsV112(state),choices=[];
    for(const corpse of state.huntRites.corpses){
     if(corpse.erased||Math.abs(corpse.y-(p.y+p.height))>=45)continue;
@@ -144,7 +178,7 @@ for(const missionId of missionIds)for(const armorId of armorIds){
     if(distance<=88&&options.worksiteBlocked(corpse))continue;
     for(const part of runtime.anatomyPartsV112(corpse.sourceEnemyId)){
      const key=part.action+":"+corpse.id;
-     if(state.huntRites.completedEventIds.includes(key))continue;
+     if(leaveSpecimens.has(key)||state.huntRites.completedEventIds.includes(key))continue;
      const item=runtime.makeAnatomySpecimenV112(state.huntRites.runId,corpse.id,corpse.sourceEnemyId,part.action,corpse.integrity??100,corpse.analyzed);
      const preview=options.specimenPreview(item);
      if(!preview.accepted)continue;
@@ -153,9 +187,45 @@ for(const missionId of missionIds)for(const armorId of armorIds){
       workSeconds:seconds(part.action)+(part.requiresFlay&&!corpse.flayed?seconds("flay"):0)});
     }
    }
-   harvestTarget=chooseGroundHarvestV112(choices,tick,harvestMemory,loadRatio,minimumRetainedLoad);
+   let packing;
+   if(harvestSweep&&choices.length){
+    const pool=choices.filter(choice=>{
+     const skipped=harvestMemory.deferred.get(choice.key);
+     return !skipped||skipped.attempts<2&&tick>=skipped.until;
+    }).map(choice=>({key:choice.key,massKg:choice.part.massKg,volumeUnits:choice.part.volumeUnits}));
+    for(const enemy of enemies){
+     if(enemy.boss)continue;
+     for(const part of runtime.anatomyPartsV112(enemy.archetype)){
+      const key=part.action+":"+enemy.id;
+      if(!leaveSpecimens.has(key))pool.push({key,massKg:part.massKg,volumeUnits:part.volumeUnits});
+     }
+    }
+    packing={load,pool};
+   }
+   harvestTarget=chooseGroundHarvestV112(choices,tick,harvestMemory,loadRatio,minimumRetainedLoad,packing);
   }
-  if(state.huntRites.operation){
+  const sweepRouteReady=sweepEarly
+   ?(state.phase==="tracking"||state.phase==="target")&&state.scanNodes.some(node=>node.scanned)
+   :state.phase==="target"&&state.scanNodes.every(node=>node.scanned)&&state.recoveryNodes.every(node=>node.recovered);
+  const sweepAllowed=harvestSweep&&needsLoad&&!harvestTarget&&!state.huntRites.operation&&
+    !state.trophyExtracting&&sweepRouteReady&&p.health>p.maxHealth*.4&&
+    (!state.boss.active||nearestGroundHarvestThreatV112(p,[state.boss])>325);
+  const sweepTarget=sweepAllowed?enemies.find(enemy=>!enemy.boss&&
+    Math.abs(enemy.x+enemy.width/2-center)<1200&&Math.abs(enemy.y+enemy.height-p.y-p.height)<140&&
+    runtime.anatomyPartsV112(enemy.archetype).some(part=>
+     !leaveSpecimens.has(part.action+":"+enemy.id)&&part.massKg<=load.capacityMassKg-load.massKg+1e-9&&part.volumeUnits<=load.capacityVolumeUnits-load.volumeUnits)&&
+    !runtime.huntStructuralBarrierV94({x:center,y:p.y+p.height/2},
+     {x:enemy.x+enemy.width/2,y:enemy.y+enemy.height/2},state.world.platforms)):null;
+  if(sweepTarget&&sweepTarget.id!==lastSweepTarget){
+   lastSweepTarget=sweepTarget.id;
+   sweepEvents.push({tick,enemyId:sweepTarget.id,archetype:sweepTarget.archetype,loadRatio,groundThreat});
+  }
+  const target=trophyGuard??sweepTarget??enemies[0];
+  const gap=target?Math.abs(target.x+target.width/2-center)-(target.width+p.width)/2:Infinity;
+  if(nextCanopy){
+   input.keyboardHeld=new Set(nextCanopy.held);
+   for(const action of nextCanopy.pressed)press(action);
+  }else if(state.huntRites.operation){
    // Native rite time advances with enemies, damage and interruptions live.
   }else if(harvestTarget){
    moveTo(harvestTarget.corpse.x,10);
@@ -191,7 +261,7 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   }else {
    const scan=state.scanNodes.find(n=>!n.scanned),recover=state.recoveryNodes.find(n=>!n.recovered);
    let waypoint=scan?.x??recover?.x??(state.boss.active?state.boss.x+state.boss.width/2:state.world.bossArena.x-150);
-   if(state.phase==="target"&&state.supportKills<(mission.objectives.find(o=>o.kind==="hunt")?.targetCount??0)&&target)waypoint=target.x+target.width/2;
+   if(sweepTarget||state.phase==="target"&&state.supportKills<(mission.objectives.find(o=>o.kind==="hunt")?.targetCount??0)&&target)waypoint=target.x+target.width/2;
    if(scan&&Math.hypot(scan.x-center,scan.y-(p.y+p.height/2))<410&&p.scanCooldown<=0)press("scan");
    if(!scan&&recover&&Math.hypot(recover.x-center,recover.y-(p.y+p.height/2))<95)press("interact");
    const duel=state.energyWeaponsLocked||missionId==="volcano-bad-blood"&&target?.boss&&gap<600;
@@ -199,6 +269,7 @@ for(const missionId of missionIds)for(const armorId of armorIds){
    if(!duel&&p.activeWeaponSlot!==1)press("weaponTwo");
    if(target&&gap<850){
     input.keyboardHeld.add("aim");
+    if(sweepTarget)input.pointerScreen={x:target.x+target.width/2-state.cameraX,y:target.y+target.height/2-(state.cameraY??0)};
     if(p.weaponChargeSeconds>=.95&&p.weaponCooldown<=0&&p.energy>=35)press("weapon");
     if(gap<100&&p.stamina>14&&(duel||p.energy<35||p.weaponCooldown>0)){input.keyboardHeld.delete("aim");press("melee");}
     if(!duel&&gap<250&&p.grounded&&state.elapsed>nextJump){press("jump");input.keyboardHeld.add("jump");nextJump=state.elapsed+1.1;}
@@ -209,9 +280,9 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   }
   if(!state.trophyExtracting&&p.health<p.maxHealth*.55&&p.medicomps>0&&p.healCooldown<=0)press("heal");
   const lava=state.world.hazards.find(h=>h.kind==="lava"&&p.x+p.width>h.x-50&&p.x<h.x+h.width+25);
-  if(!harvestTarget&&!state.huntRites.operation&&state.phase!=="trophy"&&stuck>.5&&p.grounded&&state.elapsed>nextJump){press("jump");input.keyboardHeld.add("jump");nextJump=state.elapsed+1;stuck=0;}
+  if(!nextCanopy&&!harvestTarget&&!state.huntRites.operation&&state.phase!=="trophy"&&stuck>.5&&p.grounded&&state.elapsed>nextJump){press("jump");input.keyboardHeld.add("jump");nextJump=state.elapsed+1;stuck=0;}
   if(state.elapsed<jumpUntil)input.keyboardHeld.add("jump");
-  if(useSharedPolicy&&(state.phase!=="trophy"||purgePending)&&!state.trophyExtracting&&!harvestTarget&&!state.huntRites.operation){
+  if(useSharedPolicy&&(state.phase!=="trophy"||purgePending)&&!state.trophyExtracting&&!harvestTarget&&!state.huntRites.operation&&!sweepTarget&&!nextCanopy){
    const decision=decideHuntCampaignInputV112(state,tick,sharedMemory,"mixed");
    input.keyboardHeld=new Set(decision.held);input.pressed.clear();
    for(const action of decision.pressed)press(action);
@@ -253,7 +324,10 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   maxX=Math.max(maxX,p.x);
   if(input.keyboardHeld.has("right")||input.keyboardHeld.has("left")){stuck=Math.abs(p.x-lastX)<.05?stuck+dt:0;}else stuck=0;
   lastX=p.x;
-  if(state.phase!==lastPhase){events.push(brief(state));lastPhase=state.phase;}
+  if(state.phase!==lastPhase){
+   if(harvestSweep&&state.phase==="trophy"&&!stockAtApex)stockAtApex=harvestStock(state);
+   events.push(brief(state));lastPhase=state.phase;
+  }
   if(Math.floor(state.elapsed)>lastSnapshot){samples.push(brief(state));lastSnapshot=Math.floor(state.elapsed);}
  }
  const success=result?.outcome==="success";
@@ -262,7 +336,10 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   qualified:minimumRetainedLoad===null?null:!!(atLoadTarget&&heldLoadTarget&&atBoarding&&atExtraction&&
     meetsLoad(atBoarding.load,minimumRetainedLoad)&&meetsLoad(atExtraction.load,minimumRetainedLoad)&&
     atLoadTarget.specimenIds.every(id=>atBoarding.specimenIds.includes(id)&&atExtraction.specimenIds.includes(id)))};
- const outcome={missionId,armorId,success,result,climbFrames,swingFrames,authoredCanopyContactFrames,maxX,terminal:brief(state),admission,events,traceFrames:trace.length,ticksExecuted,harvestActions,harvestDecisions:harvestMemory.events,trophyInterruptions,peakLoadRatio,peakSpecimens,firstLoadAt,retainedLoad};
+ const canopyRoute=fullCanopy?{sequence:canopySequence,stage:canopy?.stage??"load-not-reached",
+  events:canopy?.events??[],exitLoad:canopy?.exitLoad??null,qualified:Boolean(canopy?.stage==="grounded-exit"&&
+   canopy.exitLoad?.load.ratio===1&&climbFrames>0&&swingFrames>0&&authoredCanopyContactFrames>0)}:null;
+ const outcome={missionId,armorId,success,result,canopyRoute,climbFrames,swingFrames,authoredCanopyContactFrames,maxX,terminal:brief(state),admission,events,traceFrames:trace.length,ticksExecuted,harvestActions,harvestDecisions:harvestMemory.events,sweepEvents,stockAtApex,trophyInterruptions,peakLoadRatio,peakSpecimens,firstLoadAt,retainedLoad};
  if(result)assert.equal(state.phase,"finished");
  if(outcome.success){
   assert.ok(atBoarding,"success must include a native boarding transition");
@@ -284,9 +361,11 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   assert.ok(mission.objectives.every(o=>state.completedObjectives.has(o.id)),"every mission objective must finish natively");
   assert.ok(result.trophyClaims.some(c=>c.definitionId===mission.trophy.id));
  }
- assert.equal(climbFrames,0,"terrestrial controller must never attach to a climb support");
- assert.equal(swingFrames,0,"terrestrial controller must never swing");
- assert.equal(authoredCanopyContactFrames,0,"terrestrial route must never borrow an authored canopy rest");
+ if(!fullCanopy){
+  assert.equal(climbFrames,0,"terrestrial controller must never attach to a climb support");
+  assert.equal(swingFrames,0,"terrestrial controller must never swing");
+  assert.equal(authoredCanopyContactFrames,0,"terrestrial route must never borrow an authored canopy rest");
+ }
  if(args.replay==="true"){
   randomState=0x1122026;
   const replay=createState();
@@ -312,6 +391,9 @@ for(const missionId of missionIds)for(const armorId of armorIds){
     "the next attempt must come from committing the real mission result");
  }
  if(!success)console.log(JSON.stringify({case:missionId+"/"+armorId,events,trophyInterruptions,terminal:outcome.terminal}));
+ if(harvestSweep)console.log(JSON.stringify({sweepCase:missionId+"/"+armorId,encounterRun,patrolIds:state.insertion.patrolIds,
+  harvested:harvestMemory.events.filter(event=>event.reason==="prise récoltée"),sweepEvents,stockAtApex,
+  canopyRoute,peakLoadRatio,atLoadTarget,atBoarding,atExtraction}));
  outcomes.push(outcome);
  await writeFile(`${output}/${missionId}-${armorId}.json`,JSON.stringify({...outcome,samples,inputTrace:trace},null,2)+"\n");
  console.log(JSON.stringify({missionId,armorId,result:result?.outcome??result?.status??null,phase:state.phase,t:state.elapsed,x:state.player.x,health:state.player.health,kills:state.supportKills,bossHealth:state.boss.health,scans:state.scanNodes.map(n=>n.scanned),recoveries:state.recoveryNodes.map(n=>n.recovered),climbFrames,swingFrames,boardingRatio:atBoarding?.load.ratio??null,retainedRatio:atExtraction?.load.ratio??null,loadQualified:retainedLoad.qualified}));
@@ -323,7 +405,7 @@ if(head.startsWith("ref: ")){
  try{commit=(await readFile(root+".git/"+ref,"utf8")).trim();}
  catch{commit=(await readFile(root+".git/packed-refs","utf8")).split("\n").find(line=>line.endsWith(" "+ref))?.split(" ")[0]??null;}
 }
-const report={schema:1,createdAt:new Date().toISOString(),commit,sourceSha256:createHash("sha256").update(source).digest("hex"),bundleSha256:createHash("sha256").update(bundle.outputFiles[0].text).digest("hex"),scriptSha256:createHash("sha256").update(scriptBytesAtAdmission).digest("hex"),policySha256:createHash("sha256").update(policyBytesAtAdmission).digest("hex"),harvestPolicySha256:createHash("sha256").update(harvestPolicyBytesAtAdmission).digest("hex"),command:process.argv,harvest:args.harvest==="true",minimumRetainedLoad,scope:"Native stepGame, unchanged production source with appended exports and verbatim AST-extracted rite UI callback. GameInput and native menu callback only after explicit replay armor admission. Hunter difficulty, zero upgrades, seeded Math.random for reproducible legal spawn jitter. Harvest mode buys its tool using two documented real mission results, and only prepares real prey killed during this run. Actions capped at 10 rising edges per second. No browser, progression, physical keyboard or visual qualification.",outcomes};
+const report={schema:1,createdAt:new Date().toISOString(),commit,sourceSha256:createHash("sha256").update(source).digest("hex"),bundleSha256:createHash("sha256").update(bundle.outputFiles[0].text).digest("hex"),scriptSha256:createHash("sha256").update(scriptBytesAtAdmission).digest("hex"),policySha256:createHash("sha256").update(policyBytesAtAdmission).digest("hex"),harvestPolicySha256:createHash("sha256").update(harvestPolicyBytesAtAdmission).digest("hex"),canopyPolicySha256:createHash("sha256").update(canopyPolicyBytesAtAdmission).digest("hex"),fullCanopy,canopySequence,command:process.argv,harvest:args.harvest==="true",harvestSweep,sweepEarly,sweepDistance,leaveSpecimens:[...leaveSpecimens],minimumRetainedLoad,scope:"Native stepGame, unchanged production source with appended exports and verbatim AST-extracted rite UI callback. GameInput and native menu callback only after explicit replay armor admission. Hunter difficulty, zero upgrades, seeded Math.random for reproducible legal spawn jitter. Harvest mode buys its tool using two documented real mission results, and only prepares real prey killed during this run. Actions capped at 10 rising edges per second. No browser, progression, physical keyboard or visual qualification.",outcomes};
 await writeFile(`${output}/report.json`,JSON.stringify(report,null,2)+"\n");
 if(args.successSave!==undefined){
  assert.ok(verifiedSuccessSave,"a successful native extraction is required to emit the next campaign save");
@@ -332,3 +414,5 @@ if(args.successSave!==undefined){
 if(args.requireComplete==="true")assert.ok(outcomes.every(o=>o.success),"all requested missions must finish through native extraction");
 if(minimumRetainedLoad!==null)assert.ok(outcomes.every(o=>o.retainedLoad.qualified===true),
  "all requested hunts must board and finish with the required real bag load; see each recorded outcome");
+if(fullCanopy)assert.ok(outcomes.every(o=>o.success&&o.canopyRoute.qualified),
+ "all requested hunts must complete the authored canopy transfer and end with a native extraction");

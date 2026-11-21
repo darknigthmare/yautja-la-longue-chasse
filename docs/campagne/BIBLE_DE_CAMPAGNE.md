@@ -81,7 +81,7 @@ Chaîne jouable actuelle, dans l'ordre du jeu : nurserie (V47) → accueil Unblo
 | 45 | R2-M037 | La carte a des chemins | Blooded | Texte seul | voisin : Guerres des clans |
 | 46 | R2-M038 | L’histoire dans le meuble | Blooded | Texte seul | voisin : atelier des trophées |
 | 47 | R2-M039 | Revenir chez les siens | Blooded | Texte seul | — |
-| 48 | R2-M040 | Mon domaine de maîtrise | Blooded | Texte seul | — |
+| 48 | R2-M040 | Mon domaine de maîtrise | Blooded | Jouable dans le dossier | Quatre exercices et profil enregistré |
 | 49 | R2-M041 | Préparer la chasse solitaire | Blooded | Texte seul | — |
 | 50 | R2-M042 | Le Quatza-Rij solitaire | Blooded | Texte seul | — |
 | 51 | R2-M043 | La reconnaissance Elite | Blooded | Texte seul | — |
@@ -2386,7 +2386,9 @@ Après les 8 chasses : première reine, fonction Adjutant, quête du Warp (facul
 
 ### R2-M040 — Mon domaine de maîtrise
 
-**Déroulé :** démonstration libre (piste, mobilité, piège, confrontation) sur un terrain à plusieurs solutions. **Choix :** spécialité ou combinaison. **Sauvegarde :** `elite.masteryProfileReady`
+**Déroulé :** démonstration libre (piste, mobilité, piège, confrontation) sur un terrain à plusieurs solutions. **Choix :** spécialité ou combinaison. **Sauvegarde :** `elite.masteryProfileReady`.
+
+Le terrain du dossier de campagne est accessible après la reconnaissance Blooded. Il propose de relever une piste, franchir un appui puis redescendre par une liane, préparer un piège ou esquiver et riposter. Le mentor consigne une spécialité ou deux disciplines effectivement démontrées dans `eliteMasteryV170`.
 
 *Production (proposé)* — **Props :** terrain de démonstration à quatre solutions (piste, mobilité, piège, confrontation), cibles et mannequins, mentor observateur. **VFX :** tracé de l'itinéraire choisi en fin d'épreuve. **SFX :** selon les outils employés, objective (existe). **Musique :** MUS-11.
 

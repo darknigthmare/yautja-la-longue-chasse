@@ -64,6 +64,7 @@ import { inspectBuriedCradleCampaign } from "./systems/buriedCradleCampaign";
 import { inspectElderPassageJudgment } from "./systems/elderPassageJudgmentV168";
 import { inspectElderMentoring, isElderMentoringSuccessor } from "./systems/elderMentoringV168";
 import { inspectElderAssembly, isElderAssemblySuccessor } from "./systems/elderAssemblyV168";
+import { inspectEliteMastery, isEliteMasterySuccessor } from "./systems/eliteMasteryV170";
 import { inspectCompanionResidence, evaluateCompanionResidenceCampaign } from "./systems/companionResidence";
 import { inspectClanShipIncidents, evaluateClanShipIncidentsCampaign, evaluateClanShipTrophyHearingCampaign } from "./systems/clanShipIncidents";
 import { inspectClanShipTrophyHearing } from "./systems/clanShipTrophyHearing";
@@ -1303,6 +1304,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.elderAssemblyV168 === undefined ? {} : {
       elderAssemblyV168: inspectElderAssembly(source.elderAssemblyV168, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
+    ...(source.eliteMasteryV170 === undefined ? {} : {
+      eliteMasteryV170: inspectEliteMastery(source.eliteMasteryV170, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     ...(source.companionResidence === undefined ? {} : {
       companionResidence: inspectCompanionResidence(source.companionResidence, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1650,7 +1654,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const owner = typeof value.createdAt === "string" ? value.createdAt : "";
   const elderMentoring = inspectElderMentoring(value.elderMentoringV168, owner);
   const elderAssembly = inspectElderAssembly(value.elderAssemblyV168, owner);
-  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides, elderPassage, elderMentoring, elderAssembly]) {
+  const eliteMastery = inspectEliteMastery(value.eliteMasteryV170, owner);
+  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides, elderPassage, elderMentoring, elderAssembly, eliteMastery]) {
     if (inspection.status === "future-version" || inspection.status === "invalid-save") {
       return { save: null, failure: inspection.status };
     }
@@ -2177,6 +2182,14 @@ function persistCampaign(
         ? !requestedAssembly || (JSON.stringify(previousAssembly) !== JSON.stringify(requestedAssembly) &&
           !isElderAssemblySuccessor(previousAssembly, requestedAssembly))
         : requestedAssembly && requestedAssembly.revision !== 1) {
+        return failed("save-conflict", previous);
+      }
+      const previousMastery = previous.eliteMasteryV170;
+      const requestedMastery = requested.eliteMasteryV170;
+      if (previousMastery
+        ? !requestedMastery || (JSON.stringify(previousMastery) !== JSON.stringify(requestedMastery) &&
+          !isEliteMasterySuccessor(previousMastery, requestedMastery))
+        : requestedMastery && requestedMastery.revision !== 1) {
         return failed("save-conflict", previous);
       }
     }
