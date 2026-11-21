@@ -41,7 +41,7 @@ test('the V112 capsule keeps the published commit, its 22 original test files an
   const integrity = await verifyHistoricalHomeworldExcelContextV113();
   assert.equal(integrity.currentRuntimeCovered, false);
   assert.equal(integrity.sourcesVerified, 3279); assert.equal(integrity.sharedVerified, 1507);
-  assert.equal(integrity.restoredSharedVerified, 82);
+  assert.equal(integrity.restoredSharedVerified, 83);
   const historicalWorkbook = await fs.readFile(path.join(context.root, workbookPath));
   assert.equal(historicalWorkbook.length, 9383908);
   assert.equal(createHash('sha256').update(historicalWorkbook).digest('hex'), 'b29aa412000717cdfd81be1a60e2c2f9d8489c0b8b2ed5d29404668d04dd1d02');
