@@ -233,7 +233,10 @@ jobs:
           node scripts/materialize-asset-raccords-20261120.mjs catalogue
           ASSET_RACCORDS_PREPARE_ONLY=1 node scripts/qa-asset-raccords-browser-20261120.mjs
       - name: Validate residence custody, import and actual campaign actions
-        run: node --experimental-strip-types --test --test-reporter=spec tests/residence-v149.test.mjs tests/residence-save-v149.test.mjs tests/homeworld-build5-origin-residence-integration.test.mjs
+        run: |
+          set -o pipefail
+          mkdir -p outputs/p0-p3-20261121
+          node --experimental-strip-types --test --test-reporter=spec tests/residence-v149.test.mjs tests/residence-save-v149.test.mjs tests/homeworld-build5-origin-residence-integration.test.mjs 2>&1 | tee outputs/p0-p3-20261121/residence-node.log
       - name: Build and start the production application
         id: server
         run: |

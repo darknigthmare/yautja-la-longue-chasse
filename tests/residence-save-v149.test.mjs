@@ -59,8 +59,13 @@ test("the panel shows the house, its thresholds and the mission from the workboo
   assert.match(html, /Trois appuis avant la crue/);
   assert.match(html, /data-residence-accept/);
   assert.match(html, /0\/100/);
-  const moving = source.render(PANEL, { house: R.houseV149("HOME-CM08"), residence: residenceMidMove(), rankId: "blooded", disabled: false,
-    regionAllowed: () => true, onAction: () => ({ ok: true, message: "" }) });
-  assert.match(moving, /data-residence-arrive/);
-  assert.match(moving, /1 original\(aux\) en route/);
+  const movingProps = { house: R.houseV149("HOME-CM08"), residence: residenceMidMove(), rankId: "blooded", disabled: false,
+    regionAllowed: () => true, onAction: () => ({ ok: true, message: "" }) };
+  const workbench = source.render(PANEL, movingProps);
+  assert.doesNotMatch(workbench, /data-residence-arrive/);
+  assert.match(workbench, /Le contenant attend au seuil/);
+  const threshold = source.render(PANEL, { ...movingProps, threshold: true });
+  assert.match(threshold, /data-residence-threshold-panel="HOME-CM08"/);
+  assert.match(threshold, /data-residence-arrive/);
+  assert.match(threshold, /1 pièce\(s\).*contenant/);
 });
