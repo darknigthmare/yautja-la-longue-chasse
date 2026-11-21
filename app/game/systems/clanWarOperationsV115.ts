@@ -146,7 +146,12 @@ export interface WarOperationsStateV115 {
   pendingRecruits?: WarRecruitmentV115[]; recruitedTeamIds?: string[];
   pendingTreatments?: WarTreatmentV116[]; treatmentReceipts?: string[];
 }
-export interface WarOperationsUpdateV115 { state: WarOperationsStateV115; accepted: boolean; message: string; listenCue?: WarStealthListenCueV115 }
+export interface WarOperationsUpdateV115 { state: WarOperationsStateV115; accepted: boolean; message: string; listenCue?: WarStealthListenCueV115; assaultStep?: WarAssaultStepV115 }
+export interface WarAssaultStepV115 {
+  field: WarPlayableMissionV115;
+  shots: ReturnType<typeof warAssaultContactV141>["shots"];
+  defeated: WarMissionActorV115[];
+}
 const MAX_REPORTS = 120;
 
 const reject = (state: WarOperationsStateV115, message: string): WarOperationsUpdateV115 => ({ state, accepted: false, message });
@@ -518,7 +523,7 @@ export function issueWarAssaultSpecialV117(
  * franchise canonical spawn table. Four distinct unit roles when possible.
  */
 export interface WarAssaultWaveProfileV140{
- territoryId:string;regionId:string;unitIds:string[];maximumWaves:number;
+ territoryId:string;regionId:string;regionalSeed:number;unitIds:string[];maximumWaves:number;
 }
 export function warAssaultWaveProfileV140(targetId:string,rules:WarRulesV6):WarAssaultWaveProfileV140 {
  const territory=rules.territories.find(t=>t.id===targetId);
@@ -543,7 +548,7 @@ export function warAssaultWaveProfileV140(targetId:string,rules:WarRulesV6):WarA
   picked.push(u.id);taken.add(u.id);roles.add(u.role);
  }
  for(const u of rotated){if(picked.length>=4)break;if(!taken.has(u.id)){picked.push(u.id);taken.add(u.id);}}
- return {territoryId:territory.id,regionId:territory.region,unitIds:picked,
+ return {territoryId:territory.id,regionId:territory.region,regionalSeed:hash,unitIds:picked,
   maximumWaves:Math.min(9,6+Math.floor(Math.max(0,territory.terrainDefense)/12))};
 }
 
@@ -602,12 +607,14 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
         order.expiresAtTick>tick)),
     heldUntil:Object.fromEntries(Object.entries(arena.heldUntil??{}).filter(([,until])=>until>tick))};
   const advanced={...state,clock:state.clock+1,active:{...mission,tick,assault:nextArena}};
+  const assaultStep = {field:advanced.active,shots:exchange.shots,defeated:exchange.actors.filter(actor=>actor.hp<=0)};
   if(rivalBase<=0 || ownBase<=0 || tick>=95) {
     const outcome = rivalBase<=0 && ownBase>0 ? "victory" : "defeat";
-    return accept(recordOutcome(advanced,mission.id,"assault",null,mission.targetId,mission.teamIds,outcome,nextArena.fallen,rules,
+    const result = accept(recordOutcome(advanced,mission.id,"assault",null,mission.targetId,mission.teamIds,outcome,nextArena.fallen,rules,
       outcome==="victory"?"Bastion adverse neutralisé dans la simulation latérale.":"Sortie repoussée dans l'exercice."),"Bataille terminée : rapport consigné.");
+    return {...result, assaultStep};
   }
-  return accept(advanced,"La bataille latérale progresse.");
+  return {...accept(advanced,"La bataille latérale progresse."), assaultStep};
 }
 export type StealthCommandV115 = "up"|"down"|"left"|"right"|"cloak"|"interact"|"wait"|"decoy"|"hide"|"listen"|"quiet-sabotage"|"cut-grid"|"restore-grid"|"cover-up"|"cover-down"|"cover-left"|"cover-right";
 export function commandStealthV115(state:WarOperationsStateV115,command:StealthCommandV115,rules:WarRulesV6):WarOperationsUpdateV115 {

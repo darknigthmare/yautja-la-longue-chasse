@@ -35,6 +35,16 @@ function fromSocket(url, token, options = {}) {
   });
 }
 
+async function openPractice(t, options = {}) {
+  const server = createClanWarPracticeServer(game, {
+    hunterToken: tokens.hunter, rivalToken: tokens.rival, ...options,
+  });
+  t.after(() => new Promise((resolve, reject) => server.close(error => error ? reject(error) : resolve())));
+  server.listen(0, '127.0.0.1');
+  await once(server, 'listening');
+  return 'http://127.0.0.1:' + server.address().port;
+}
+
 const move = (view, id, target) => ({
   id, sequence: view.nextSequence, revision: view.revision, tick: view.tick, kind: 'move', target,
 });
@@ -45,14 +55,7 @@ test('the practice server requires two distinct provisioned credentials', () => 
 });
 
 test('the HTTP authority authenticates simultaneous participants and preserves private state through a new socket', async t => {
-  const server = createClanWarPracticeServer(game, {
-    hunterToken: tokens.hunter, rivalToken: tokens.rival, seed: 42, tickMs: 4000,
-  });
-  t.after(() => new Promise((resolve, reject) => server.close(error => error ? reject(error) : resolve())));
-  server.listen(0, '127.0.0.1');
-  await once(server, 'listening');
-  const {port} = server.address();
-  const origin = 'http://127.0.0.1:' + port;
+  const origin = await openPractice(t, {seed: 42, tickMs: 4000});
   const read = token => fromSocket(origin + '/state', token);
   const post = (token, body, contentType) => fromSocket(origin + '/order', token, {body, contentType});
   async function againstCurrentState(token, draft) {
@@ -139,26 +142,30 @@ test('the HTTP authority authenticates simultaneous participants and preserves p
   assert.deepEqual(playerView.fighters, after.fighters, 'the shipped client reads the authoritative board');
 });
 
+async function practiceView(origin, token) {
+  const reply = await fromSocket(origin + '/state', token);
+  assert.equal(reply.status, 200);
+  return reply.body;
+}
+
+async function sendPracticeOrder(origin, token, command, deadline) {
+  while (Date.now() < deadline) {
+    const state = await practiceView(origin, token);
+    assert.equal(state.stage, 'started');
+    const reply = await fromSocket(origin + '/order', token, {body: command(state)});
+    if (reply.status === 200) return reply.body.state;
+    // A timer edge or a fighter's one-order-per-tick rule can postpone the next input.
+    assert.ok(reply.status === 409 || reply.status === 422, JSON.stringify(reply.body));
+    await new Promise(resolve => setTimeout(resolve, 40));
+  }
+  assert.fail('The requested legal order did not arrive before the test deadline');
+}
+
 test('an authenticated duel takes the real objective for three server ticks', async t => {
-  const server = createClanWarPracticeServer(game, {
-    hunterToken: tokens.hunter, rivalToken: tokens.rival, seed: 43, tickMs: 300,
-  });
-  t.after(() => new Promise((resolve, reject) => server.close(error => error ? reject(error) : resolve())));
-  server.listen(0, '127.0.0.1');
-  await once(server, 'listening');
-  const origin = 'http://127.0.0.1:' + server.address().port;
+  const origin = await openPractice(t, {seed: 43, tickMs: 300});
   const deadline = Date.now() + 12_000;
-  const view = async token => (await fromSocket(origin + '/state', token)).body;
-  const next = async (token, command) => {
-    while (Date.now() < deadline) {
-      const reply = await fromSocket(origin + '/order', token, {body: command(await view(token))});
-      if (reply.status === 200) return reply.body.state;
-      // A timer edge or a fighter's one-order-per-tick rule can postpone the next input.
-      assert.ok(reply.status === 409 || reply.status === 422, JSON.stringify(reply.body));
-      await new Promise(resolve => setTimeout(resolve, 40));
-    }
-    assert.fail('The requested legal order did not arrive before the deadline');
-  };
+  const view = token => practiceView(origin, token);
+  const next = (token, command) => sendPracticeOrder(origin, token, command, deadline);
 
   await next(tokens.rival, state => ({...move(state, 'guard', null), kind: 'hold'}));
   let captured;
@@ -177,9 +184,77 @@ test('an authenticated duel takes the real objective for three server ticks', as
   assert.equal(finished.winner, 'hunter');
   assert.equal(finished.stage, 'completed');
   assert.equal(finished.tick, captured.tick + 3);
+  assert.deepEqual(finished.settlement, {winner: 'hunter', basis: 'objective',
+    tick: finished.tick, revision: finished.revision, controlledTicks: {hunter: 3, rival: 0}});
   const closed = await fromSocket(origin + '/order', tokens.rival, {
     body: {...move(finished, 'after-victory', null), kind: 'hold'},
   });
   assert.equal(closed.status, 422);
   assert.equal((await view(tokens.hunter)).revision, finished.revision);
+});
+
+async function waitForSettlement(origin, token, timeoutMs = 5000) {
+  const deadline = Date.now() + timeoutMs;
+  do {
+    const {body} = await fromSocket(origin + '/state', token);
+    if (body.stage === 'completed') return body;
+    await new Promise(resolve => setTimeout(resolve, 40));
+  } while (Date.now() < deadline);
+  assert.fail('The authority did not settle the room before the test deadline');
+}
+
+test('the timeout settles identical draws for both sides and the clock cannot overwrite them', async t => {
+  const origin = await openPractice(t, {seed: 44, turnLimit: 2, tickMs: 300});
+  const draw = await waitForSettlement(origin, tokens.hunter);
+  assert.equal(draw.remainingTicks, 0);
+  assert.equal(draw.winner, null);
+  assert.deepEqual(draw.settlement, {winner: null, basis: 'timeout-draw', tick: 2,
+    revision: draw.revision, controlledTicks: {hunter: 0, rival: 0}});
+  const refused = await fromSocket(origin + '/order', tokens.hunter, {body: move(draw, 'after-draw', [2, 1])});
+  assert.equal(refused.status, 422);
+  await new Promise(resolve => setTimeout(resolve, 350));
+  const rival = (await fromSocket(origin + '/state', tokens.rival)).body;
+  assert.deepEqual(rival.settlement, draw.settlement);
+  assert.equal(rival.revision, draw.revision);
+});
+
+test('an authorized withdrawal produces a single victor even if both parties submit orders', async t => {
+  const origin = await openPractice(t, {seed: 45, tickMs: 3000});
+  const {body: waiting} = await fromSocket(origin + '/state', tokens.rival);
+  const leave = {...move(waiting, 'leave', null), kind: 'retreat'};
+  const results = await Promise.all([
+    fromSocket(origin + '/order', tokens.rival, {body: leave}),
+    fromSocket(origin + '/order', tokens.rival, {body: {...leave, id: 'second-retreat'}}),
+  ]);
+  assert.deepEqual(results.map(reply => reply.status).sort(), [200, 409]);
+  const resolved = results.find(reply => reply.status === 200).body.state;
+  assert.deepEqual(resolved.settlement, {winner: 'hunter', basis: 'withdrawal', tick: waiting.tick,
+    revision: waiting.revision + 1, controlledTicks: {hunter: 0, rival: 0}});
+  assert.deepEqual((await waitForSettlement(origin, tokens.hunter)).settlement, resolved.settlement);
+  const replay = await fromSocket(origin + '/order', tokens.rival, {body: leave});
+  assert.equal(replay.body.error, results[0].status === 200 ? 'duplicate-order' : 'state-changed');
+});
+
+test('at the deadline controlled ticks win without needing elimination or three consecutive ticks', async t => {
+  const origin = await openPractice(t, {seed: 46, turnLimit: 9, tickMs: 400});
+  const deadline = Date.now() + 6000;
+  for (const [index, point] of [[2, 1], [3, 1], [4, 1]].entries()) {
+    await sendPracticeOrder(origin, tokens.hunter, state => move(state, 'stage-' + index, point), deadline);
+  }
+  let before;
+  do {
+    before = await practiceView(origin, tokens.hunter);
+    if (before.remainingTicks <= 2) break;
+    await new Promise(resolve => setTimeout(resolve, 30));
+  } while (Date.now() < deadline);
+  const entered = await sendPracticeOrder(origin, tokens.hunter,
+    state => move(state, 'touch-objective', [4, 2]), deadline);
+  const timed = await waitForSettlement(origin, tokens.rival);
+  assert.equal(entered.stage, 'started');
+  assert.equal(timed.tick, 9);
+  assert.equal(timed.settlement.basis, 'timeout-control');
+  assert.equal(timed.settlement.winner, 'hunter');
+  assert.equal(timed.settlement.controlledTicks.hunter, 9 - entered.tick);
+  assert.equal(timed.settlement.controlledTicks.rival, 0);
+  assert.equal(timed.fighters[0].hp, 12, 'the losing fighter stayed alive');
 });

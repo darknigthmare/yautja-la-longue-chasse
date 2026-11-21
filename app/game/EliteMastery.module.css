@@ -1,0 +1,71 @@
+.scene {
+  display: grid;
+  gap: 0.9rem;
+  margin-block: 1rem;
+  padding: clamp(0.8rem, 3vw, 1.4rem);
+  background: radial-gradient(ellipse at 35% 0%, #293e30, #111b17 72%);
+  border: 1px solid #4b6655;
+  color: #edf4e4;
+}
+
+.header, .movement, .choice {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.header { justify-content: space-between; }
+.scene p, .header h3 { margin: 0; }
+
+.layout {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 3fr) minmax(9rem, 2fr);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  grid-auto-rows: clamp(1.45rem, 4.9vw, 2.7rem);
+  gap: 2px;
+  border: 1px solid #4e6655;
+  padding: 3px;
+  background: #131e19;
+}
+
+.tile {
+  display: grid;
+  min-width: 0;
+  overflow: hidden;
+  place-items: center;
+  font-size: clamp(0.42rem, 1vw, 0.72rem);
+  white-space: nowrap;
+  background: #293f32;
+  color: #eaf4e8;
+}
+
+.tile[data-terrain="wall"] { background: #192620; }
+.tile[data-terrain="track"] { background: #43583d; }
+.tile[data-terrain="mobility"] { background: #30545a; }
+.tile[data-terrain="trap"] { background: #624e31; }
+.tile[data-terrain="duel"] { background: #573a3d; }
+.tile[data-player] { box-shadow: inset 0 0 0 2px #ebd6a4; }
+.player { font-size: 1rem; color: #ffdf9b; }
+
+.movement { justify-content: center; margin-block-start: 0.45rem; }
+.movement button { min-inline-size: 2.75rem; }
+.details { display: grid; gap: 0.65rem; align-content: start; }
+.disciplines { display: grid; gap: 0.35rem; margin: 0; padding: 0; list-style: none; }
+.disciplines li { display: flex; justify-content: space-between; gap: 0.5rem; }
+.disciplines li span:last-child { color: #c5d8bf; }
+.choice { min-inline-size: 0; padding: 0.6rem; border: 1px solid #4b6655; }
+.choice label { display: grid; gap: 0.3rem; }
+.scene button, .scene select { min-block-size: 2.75rem; white-space: normal; }
+.scene :is(button, select, .board):focus-visible { outline: 2px solid #ffe1a3; outline-offset: 2px; }
+.status:empty { display: none; }
+.result { padding: 0.7rem; border-inline-start: 3px solid #b4cc92; background: #29392a; }
+
+@media (max-width: 580px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+}

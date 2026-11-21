@@ -24,6 +24,8 @@ import ElderMentoring from "./ElderMentoring";
 import { canMentorElderNovice, type MentoringCommand, type MentoringResponse } from "./systems/elderMentoringV168";
 import ElderAssembly from "./ElderAssembly";
 import { canConveneElderAssembly, elderAssemblyProofs, type AssemblyCommand, type AssemblyResponse } from "./systems/elderAssemblyV168";
+import EliteMastery from "./EliteMastery";
+import { canEnterEliteMastery, type MasteryCommand, type MasteryResponse } from "./systems/eliteMasteryV170";
 
 const regions = [
   ["Désert", "Unblooded", "Dunes, oueds, citerne tribale et canyons de chasse."],
@@ -56,7 +58,7 @@ function HomeworldRegionArt({ name }: { name: string }) {
 
 /** The dossier presents receipts and delegates each playable rite to its campaign owner. */
 export default function ClanChroniclePanel({
-  save, onClose, onGameReserveV66, onOpenCradle, onPassageCommand, onMentoringCommand, onAssemblyCommand,
+  save, onClose, onGameReserveV66, onOpenCradle, onPassageCommand, onMentoringCommand, onAssemblyCommand, onMasteryCommand,
 }: {
   save: SaveGame;
   onClose: () => void;
@@ -65,14 +67,15 @@ export default function ClanChroniclePanel({
   onPassageCommand?: (command: PassageCommand) => PassageResponse;
   onMentoringCommand?: (command: MentoringCommand) => MentoringResponse;
   onAssemblyCommand?: (command: AssemblyCommand) => AssemblyResponse;
+  onMasteryCommand?: (command: MasteryCommand) => MasteryResponse;
 }) {
   const [section, setSection] = useState<"journey" | "worlds" | "humans" | "companions">("journey");
   const [query, setQuery] = useState("");
-  const [elderRite, setElderRite] = useState<"mentoring" | "passage" | "assembly" | null>(null);
+  const [activeRite, setCampaignRite] = useState<"mentoring" | "passage" | "assembly" | "mastery" | null>(null);
   const proofs = elderAssemblyProofs(save);
-  const closeElderRite = () => setElderRite(null);
-  const toggleElderRite = (rite: "mentoring" | "passage" | "assembly") =>
-    setElderRite(current => current === rite ? null : rite);
+  const closeCampaignRite = () => setCampaignRite(null);
+  const toggleCampaignRite = (rite: "mentoring" | "passage" | "assembly" | "mastery") =>
+    setCampaignRite(current => current === rite ? null : rite);
   const chronicle = useMemo(() => save.prologue?.chronicle ?? migrateV35ClanChronicle(save), [save]);
   const rankDossier = useMemo(() => rankRiteDossierV168(save), [save]);
   const narrativeRank = getChronicleRank(chronicle) ?? "youngling";
@@ -115,6 +118,12 @@ export default function ClanChroniclePanel({
         <ol className={styles.rites}>
           <li><h4>Young Blood · L-02 et L-03</h4><p>Chasser le Quatza-Rij à trois, rentrer, puis recevoir la reconnaissance du clan.</p><p>Épreuve à produire.</p></li>
           <li><h4>Blooded · L-04</h4><p>Traverser la pyramide en triade, chacun avec sa prise, puis recevoir la marque à l’acide.</p><p>Épreuve à produire.</p></li>
+          {onMasteryCommand && (canEnterEliteMastery(save) || save.eliteMasteryV170) && <li>
+            <h4>Mon domaine de maîtrise</h4>
+            <button type="button" onClick={() => toggleCampaignRite("mastery")} aria-expanded={activeRite === "mastery"}>
+              {activeRite === "mastery" ? "Replier le terrain de maîtrise" : "Ouvrir le terrain de maîtrise"}
+            </button>
+          </li>}
           <li data-rank-queen-proof-v168>
             <h4>Elite · L-05, L-06 et L-07</h4>
             <ul>
@@ -128,30 +137,32 @@ export default function ClanChroniclePanel({
             <h4>Elder · R2-M049 à R2-M051</h4>
             <p>{proofs.mentoring ? "Le mentor a consigné la chasse du novice." : "Accompagner un novice dans sa chasse d’exercice."}</p>
             {(canMentorElderNovice(save) || proofs.mentoring) && onMentoringCommand &&
-              <button type="button" onClick={() => toggleElderRite("mentoring")} aria-expanded={elderRite === "mentoring"}>
-                {elderRite === "mentoring" ? "Replier le mentorat" : "Ouvrir le terrain du novice"}
+              <button type="button" onClick={() => toggleCampaignRite("mentoring")} aria-expanded={activeRite === "mentoring"}>
+                {activeRite === "mentoring" ? "Replier le mentorat" : "Ouvrir le terrain du novice"}
               </button>}
             <p>{proofs.judgment ? "Le témoin a consigné le règlement du passage." : "Régler le désaccord du passage devant un témoin."}</p>
             {(canJudgeElderPassage(save) || proofs.judgment) && onPassageCommand
-              ? <button type="button" onClick={() => toggleElderRite("passage")} aria-expanded={elderRite === "passage"}>
-                  {elderRite === "passage" ? "Replier le dossier du passage" : "Ouvrir le dossier du passage"}
+              ? <button type="button" onClick={() => toggleCampaignRite("passage")} aria-expanded={activeRite === "passage"}>
+                  {activeRite === "passage" ? "Replier le dossier du passage" : "Ouvrir le dossier du passage"}
                 </button>
               : <p>Les actes Elder s’ouvrent à Elite avec 8 000 points d’honneur de carrière.</p>}
             <p>{save.elderAssemblyV168?.responsibility ? "L’assemblée a consigné la reconnaissance Elder." :
               "L’assemblée examine les deux actes avant de proposer un engagement."}</p>
             {(canConveneElderAssembly(save) || save.elderAssemblyV168?.responsibility) && onAssemblyCommand &&
-              <button type="button" onClick={() => toggleElderRite("assembly")} aria-expanded={elderRite === "assembly"}>
-                {elderRite === "assembly" ? "Replier l’assemblée" : "Ouvrir l’assemblée des aînés"}
+              <button type="button" onClick={() => toggleCampaignRite("assembly")} aria-expanded={activeRite === "assembly"}>
+                {activeRite === "assembly" ? "Replier l’assemblée" : "Ouvrir l’assemblée des aînés"}
               </button>}
           </li>
         </ol>
       </section>
-      {elderRite === "mentoring" && onMentoringCommand && <ElderMentoring key={save.createdAt}
-        save={save} onCommand={onMentoringCommand} onClose={closeElderRite} />}
-      {elderRite === "passage" && onPassageCommand && <ElderPassageJudgment key={save.createdAt} owner={save.createdAt}
-        saved={save.elderPassageJudgmentV168} onCommand={onPassageCommand} onClose={closeElderRite} />}
-      {elderRite === "assembly" && onAssemblyCommand && <ElderAssembly key={save.createdAt}
-        save={save} onCommand={onAssemblyCommand} onClose={closeElderRite} />}
+      {activeRite === "mastery" && onMasteryCommand && <EliteMastery key={save.createdAt}
+        save={save} onCommand={onMasteryCommand} onClose={closeCampaignRite} />}
+      {activeRite === "mentoring" && onMentoringCommand && <ElderMentoring key={save.createdAt}
+        save={save} onCommand={onMentoringCommand} onClose={closeCampaignRite} />}
+      {activeRite === "passage" && onPassageCommand && <ElderPassageJudgment key={save.createdAt} owner={save.createdAt}
+        saved={save.elderPassageJudgmentV168} onCommand={onPassageCommand} onClose={closeCampaignRite} />}
+      {activeRite === "assembly" && onAssemblyCommand && <ElderAssembly key={save.createdAt}
+        save={save} onCommand={onAssemblyCommand} onClose={closeCampaignRite} />}
       <h3 className={styles.subheading}>Reconnaissances enregistrées dans la chronique</h3>
       <ol className={styles.rites}>
         {CHRONICLE_RITES.filter(rite => rite.id === "nursery-recognition" || rite.id === "unguided-hunt-recognition" ||

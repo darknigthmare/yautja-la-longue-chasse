@@ -28,6 +28,9 @@ const inspectOnly=argv.includes('--inspect-only'),budget=Number(option('--wall-s
 const maxRetries=Number(option('--max-retries','2'));
 const harvestSpecies=option('--harvest-species',null),skipHarvest=argv.includes('--skip-harvest');
 const resumeHudSource=option('--resume-hud-source',null);
+const requireComplete=argv.includes('--require-complete'),requireResume=argv.includes('--require-resume');
+assert.ok(!(requireComplete||requireResume)||!inspectOnly&&!resumeHudSource,
+  'campaign checks require the playable GameClient path');
 assert.ok(budget>0&&budget<=7200);
 assert.ok(Number.isSafeInteger(maxRetries)&&maxRetries>=0&&maxRetries<=10);
 await mkdir(out,{recursive:true});
@@ -62,6 +65,7 @@ const routes=new Map(mod.exports.GALAXY_NAVIGATION.sectors.flatMap(sector=>secto
   .flatMap(body=>body.missions.map(mission=>[mission.id,{sector,system,body,mission}])))));
 const requested=option('--missions',mod.exports.MISSIONS.map(mission=>mission.id).join(',')).split(',');
 assert.ok(requested.length&&requested.every(id=>routes.has(id)),'real requested campaign routes');
+if(requireComplete||requireResume)assert.equal(new Set(requested).size,requested.length,'each required contract must be distinct');
 const entry='import {createRoot} from "react-dom/client";import GameClient from "./app/game/GameClient";import "./app/globals.css";createRoot(document.getElementById("root")).render(<GameClient/>);';
 const bundle=await build({stdin:{contents:entry,resolveDir:root,loader:'tsx'},bundle:true,write:false,metafile:true,
   format:'iife',platform:'browser',jsx:'automatic',outfile:'campaign.js',logLevel:'silent',external:['/game/*'],
@@ -236,7 +240,10 @@ try{
   }
   if(!inspectOnly&&!resumeHudSource)for(const missionId of requested){
     const currentSave=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),storageKey);
-    if(currentSave.missionProgress[missionId].status==='completed'&&!argv.includes('--replay-completed'))continue;
+    if(currentSave.missionProgress[missionId].status==='completed'&&!argv.includes('--replay-completed')){
+      report.attempts.push({missionId,status:'NOT_PLAYED_ALREADY_COMPLETED'});
+      continue;
+    }
     if(currentSave.missionProgress[missionId].status==='locked'){report.attempts.push({missionId,status:'NOT_ADMITTED_LOCKED'});break;}
     await acquireEarnedTool();
     const route=routes.get(missionId),captureCounts=new Map(),captureHunt=name=>{
@@ -301,7 +308,7 @@ try{
       }
       if(game.phase==='finished')break;
       if(game.paused){await page.keyboard.press('Escape');await page.waitForTimeout(50);continue;}
-      if(skipHarvest&&!activeElement.isCanvas){
+      if(!activeElement.isCanvas){
         await releaseKeys();await page.locator('canvas').last().focus();
         report.inputs.push({missionId,elapsed:game.elapsed,type:'focus reconciliation through DOM',previous:activeElement});
       }
@@ -411,8 +418,23 @@ try{
 finally{
   if(page)try{report.finalSave=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),storageKey);report.activeHunt=await page.evaluate(()=>JSON.parse(localStorage.getItem('yautja-long-hunt.active-hunt')));}catch{ /* original failure retained */ }
   if(context)try{await context.storageState({path:path.join(out,'browser-storage-state.json'),indexedDB:true});}catch{ /* original failure retained */ }
+  if(!inspectOnly&&!resumeHudSource){
+    const attempted=new Map(report.attempts.map(attempt=>[attempt.missionId,attempt]));
+    const durable=requested.filter(id=>attempted.get(id)?.settlement?.confirmed===true);
+    const resumed=durable.filter(id=>attempted.get(id)?.suspendedAndReloaded===true);
+    report.coverage={requested,durable,resumed,
+      incomplete:requested.filter(id=>!durable.includes(id)),
+      missingResume:requested.filter(id=>!resumed.includes(id))};
+    if(durable.length===requested.length)report.qualification='BROWSER_HUNTS_AND_DURABLE_SETTLEMENT';
+    if(requireComplete&&report.coverage.incomplete.length)report.requiredCoverageFailure='Contracts without durable success: '+report.coverage.incomplete.join(', ');
+    if(requireResume&&report.coverage.missingResume.length){
+      const problem='Contracts without durable success and observed sidecar resume: '+report.coverage.missingResume.join(', ');
+      report.requiredCoverageFailure=[report.requiredCoverageFailure,problem].filter(Boolean).join('\n');
+    }
+  }
   report.missingAssets=[...missing];report.sourceCacheServed=[...cached.values()];await writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');
   await browser?.close();await new Promise(resolve=>server.close(resolve));
 }
 console.log('Canonical browser attempt report: '+path.join(out,'report.json'));
-if(report.failure)process.exitCode=1;
+if(report.requiredCoverageFailure)console.error(report.requiredCoverageFailure);
+if(report.failure||report.requiredCoverageFailure)process.exitCode=1;
