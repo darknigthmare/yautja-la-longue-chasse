@@ -61,6 +61,7 @@ import { inspectClanShipDocking } from "./systems/clanShipDocking";
 import { evaluateClanShipAccess, evaluateClanShipOperationsCampaign, inspectClanShipOperations } from "./systems/clanShipOperations";
 import { inspectWolfCastleVisit } from "./systems/wolfCastle";
 import { inspectBuriedCradleCampaign } from "./systems/buriedCradleCampaign";
+import { inspectElderPassageJudgment } from "./systems/elderPassageJudgmentV168";
 import { inspectCompanionResidence, evaluateCompanionResidenceCampaign } from "./systems/companionResidence";
 import { inspectClanShipIncidents, evaluateClanShipIncidentsCampaign, evaluateClanShipTrophyHearingCampaign } from "./systems/clanShipIncidents";
 import { inspectClanShipTrophyHearing } from "./systems/clanShipTrophyHearing";
@@ -1291,6 +1292,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.buriedCradle === undefined ? {} : {
       buriedCradle: inspectBuriedCradleCampaign(source.buriedCradle, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
+    ...(source.elderPassageJudgmentV168 === undefined ? {} : {
+      elderPassageJudgmentV168: inspectElderPassageJudgment(source.elderPassageJudgmentV168, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     ...(source.companionResidence === undefined ? {} : {
       companionResidence: inspectCompanionResidence(source.companionResidence, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1634,7 +1638,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const incidents = inspectClanShipIncidents(value.clanShipIncidents, typeof value.createdAt === 'string' ? value.createdAt : '');
   const trophyHearing = inspectClanShipTrophyHearing(value.clanShipTrophyHearing, typeof value.createdAt === 'string' ? value.createdAt : '');
   const returnEscort = inspectClanShipReturnEscort(value.clanShipReturnEscort, typeof value.createdAt === 'string' ? value.createdAt : '');
-  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides]) {
+  const elderPassage = inspectElderPassageJudgment(value.elderPassageJudgmentV168, typeof value.createdAt === 'string' ? value.createdAt : '');
+  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides, elderPassage]) {
     if (inspection.status === "future-version" || inspection.status === "invalid-save") {
       return { save: null, failure: inspection.status };
     }
@@ -2135,6 +2140,13 @@ function persistCampaign(
       // This receipt ledger belongs to the confirmed campaign write. Refuse a
       // stale copy before it can lose points or convert them into a rank.
       if (JSON.stringify(previous.honorSourcesV169) !== JSON.stringify(requested.honorSourcesV169)) {
+        return failed("save-conflict", previous);
+      }
+      const previousPassage = previous.elderPassageJudgmentV168;
+      const requestedPassage = requested.elderPassageJudgmentV168;
+      if (previousPassage && (!requestedPassage ||
+          (JSON.stringify(previousPassage) !== JSON.stringify(requestedPassage) &&
+            (previousPassage.resolved || requestedPassage.revision !== previousPassage.revision + 1)))) {
         return failed("save-conflict", previous);
       }
     }
