@@ -1,4 +1,7 @@
 'use client';
+import {W3S18RoutePostContext} from './W3S18RoutePostContext';
+import type {SpaceRoutesResultV159} from './systems/spaceRoutesV159';
+import type {W3S18RoutePost} from './systems/w3S18RoutePost';
 import {useEffect,useId,useLayoutEffect,useRef,useState,useSyncExternalStore,type KeyboardEvent,type ReactNode} from 'react';
 import type {WarRulesV6} from './systems/clanWarBibleV6';
 import ClanWarW3S14ReceiptDossier from './ClanWarW3S14ReceiptDossier';
@@ -76,6 +79,15 @@ export default function ClanSupplyRouteV109({rules,active=true,campaignRoutesPan
  }),[store]);
  useEffect(()=>{let timer:number|undefined;if(!active){timer=window.setTimeout(()=>{setTarget(null);setHeld(null);setHeard({});},0);progress.current={};for(const player of Object.values(audio.current))player?.pause();}const pause=()=>{if(document.visibilityState==='hidden'||!document.hasFocus()){setTarget(null);setHeld(null);progress.current={};setHeard({});for(const player of Object.values(audio.current))player?.pause();}};window.addEventListener('blur',pause);document.addEventListener('visibilitychange',pause);return()=>{if(timer!==undefined)window.clearTimeout(timer);window.removeEventListener('blur',pause);document.removeEventListener('visibilitychange',pause);};},[active]);
  useEffect(()=>{if((!target&&!held)||!active)return;let cancelled=false;const timer=window.setInterval(async()=>{const latest=store.getSnapshot();if(container.current?.closest('[inert],[hidden],[aria-hidden="true"]')){setTarget(null);setHeld(null);return;}if(cancelled||!activity.current||document.hidden||!document.hasFocus()||latest.pending||latest.migrationPending||!latest.state)return;const actor=logisticsActorV108(latest.state.convoy,selectedRef.current);if(!actor)return;let step=held;if(target){const dx=target.x-actor.x,dy=target.y-actor.y,d=Math.hypot(dx,dy);if(d<3){setTarget(null);return;}step={dx:dx/Math.max(1,d)*Math.min(18,d),dy:dy/Math.max(1,d)*Math.min(18,d)};}if(!step)return;const revision=latest.state.revision;await store.act({kind:'move',actor:actor.id,...step});if(store.getSnapshot().state?.revision===revision){setTarget(null);setHeld(null);}},100);return()=>{cancelled=true;window.clearInterval(timer);};},[target,held,active,store]);
+ function confirmRoutePost(operation:(post:W3S18RoutePost)=>SpaceRoutesResultV159){
+  stop();
+  return store.withConfirmedW3S18Post(post=>{
+   const panel=container.current;
+   if(!activity.current||!panel?.isConnected||panel.closest('[inert],[hidden],[aria-hidden="true"]')||document.hidden)
+    throw Error('Le poste W3-S18 doit rester au premier plan.');
+   return operation(post);
+  });
+ }
  function act(action:SupplyActionV109){stop();if(!active||snapshot.migrationPending)return;setIoMessage('');void store.act(action);}
  function handleTerrainKey(event:KeyboardEvent<SVGSVGElement>){
   if(event.defaultPrevented||event.target!==event.currentTarget||event.nativeEvent.isComposing||
@@ -210,7 +222,9 @@ export default function ClanSupplyRouteV109({rules,active=true,campaignRoutesPan
    {site==='W3-S18'&&active&&campaignRoutesPanel&&<section aria-label="Routes de campagne depuis W3-S18">
     {snapshot.pending>0||snapshot.blocked||snapshot.migrationPending
       ? <p>Confirmez le carnet du convoi pour ouvrir le poste de routes de campagne.</p>
-      : functional?campaignRoutesPanel:<p>Terminez l’ouvrage, affectez son opérateur et ravitaillez son casier pour ouvrir le poste de routes de campagne.</p>}
+      : functional?<W3S18RoutePostContext.Provider value={confirmRoutePost}>
+        {campaignRoutesPanel}
+      </W3S18RoutePostContext.Provider>:<p>Terminez l’ouvrage, affectez son opérateur et ravitaillez son casier pour ouvrir le poste de routes de campagne.</p>}
    </section>}
   </article>
   <details><summary>Archive V109 · tournée et copie originale V108</summary><p>Chaque geste confirmé enregistre une seule archive complète sous une clé dédiée. Une autre session ou une écriture refusée garde le dernier état confirmé. Les carnets historiques et la sauvegarde de campagne restent séparés.</p><div className={styles.toolbar}><button type="button" onClick={()=>{stop();setExportText(exportSupplyV109(snapshot.state!)??'');}}>Préparer l’export logistique</button>{exportText&&<button type="button" onClick={()=>{const url=URL.createObjectURL(new Blob([exportText],{type:'application/json'})),link=document.createElement('a');link.href=url;link.download='tournee-six-ouvrages-v109.json';link.click();URL.revokeObjectURL(url);}}>Télécharger l’archive V109</button>}</div>{exportText&&<label>Export logistique V109<textarea readOnly value={preview(exportText)} rows={4}/></label>}<label>Importer une archive logistique V109<textarea value={draft} readOnly={draftIsPreview} disabled={loading} rows={4} maxLength={4*1024*1024} onChange={event=>replaceDraft(event.target.value)}/></label><label>Ou choisir un carnet V109<input type="file" accept=".json,application/json" onChange={event=>readFile(event.target.files?.[0])} ref={node=>{if(!node)return;const cancel=()=>{replaceDraft();setIoMessage('Lecture annulée ; ancien texte invalidé.');};node.addEventListener('cancel',cancel);return()=>node.removeEventListener('cancel',cancel);}}/></label><div className={styles.toolbar}><button type="button" disabled={loading||snapshot.pending>0||snapshot.blocked||snapshot.migrationPending||!draft.trim()} onClick={()=>{if(read.current.loading||!read.current.text.trim())return;setIoMessage('');stop();silence();void store.importText(read.current.text);}}>Vérifier et reprendre le convoi</button><button type="button" onClick={()=>{replaceDraft();setIoMessage('Lecture annulée ; ancien texte invalidé.');}}>Annuler la lecture du carnet</button></div></details>

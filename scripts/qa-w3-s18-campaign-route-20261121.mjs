@@ -109,13 +109,16 @@ try {
   const pick = page => page.getByRole('button', {name: /^W3-S18 ·/}).click();
   const loadCampaign = page => page.evaluate(key => JSON.parse(localStorage.getItem(key)), saves.SAVE_STORAGE_KEY);
   const readSupply = page => page.evaluate(key => localStorage.getItem(key), CLAN_SUPPLY_KEY_V109);
-  const join = page => work(page).locator('[data-route-id="route-oseris-nivalis"]').getByRole('button', {name: 'Engager la route'});
+  const firstRoute = page => work(page).locator('[data-route-id="route-oseris-nivalis"]');
+  const join = page => firstRoute(page).getByRole('button', {name: 'Engager la route'});
+  const agreement = page => firstRoute(page).getByRole('button', {name: 'Demander l’accord de passage'});
 
   const preview = await open(plain);
   const supplyPanel = await convoi(preview.page);
   assert.equal(await work(preview.page).count(), 0);
   await pick(preview.page);
   assert.equal(await work(preview.page).locator('[data-ship-owned]').getAttribute('data-ship-owned'), 'false');
+  assert.equal(await agreement(preview.page).isDisabled(), true);
   assert.equal(await join(preview.page).isDisabled(), true);
   assert.equal((await loadCampaign(preview.page)).spaceRoutesV159, undefined);
   record('Le quai actif refuse tout départ de campagne avant acquisition V161.');
@@ -142,13 +145,39 @@ try {
 
   const acquired = await open(owned);
   const page = acquired.page;
-  await convoi(page);
+  const acquiredPanel = await convoi(page);
   await pick(page);
-  const exerciseBytes = await readSupply(page);
   assert.equal(await work(page).locator('[data-ship-owned]').getAttribute('data-ship-owned'), 'true');
+  assert.equal(await join(page).isDisabled(), true);
+  await agreement(page).click();
+  await work(page).getByText(/Reconnaissez l’escale à pied et maintenez son opérateur/).waitFor();
+  assert.equal((await loadCampaign(page)).spaceRoutesV159, undefined);
+  await acquiredPanel.getByRole('button', {name: 'Reconnaître l’escale à pied', exact: true}).click();
+  await page.waitForFunction(key => JSON.parse(localStorage.getItem(key))?.convoy.shuttle.recon === true, CLAN_SUPPLY_KEY_V109);
+  const exerciseBytes = await readSupply(page);
+  assert.equal(JSON.parse(exerciseBytes).convoy.shuttle.authorized, false);
+  await agreement(page).click();
+  await work(page).locator('[data-w3-s18-passage="route-oseris-nivalis"]').waitFor();
+  const authorized = (await loadCampaign(page)).spaceRoutesV159;
+  assert.equal(authorized.trip, null);
+  assert.equal(authorized.tripSequence, 0);
+  assert.equal(authorized.w3S18Passage.shipId, ship.shipId);
+  assert.equal(authorized.w3S18Passage.supplyRevision, JSON.parse(exerciseBytes).revision);
+  assert.equal(await readSupply(page), exerciseBytes);
+  record('La reconnaissance est jouée au poste ; l’accord de campagne s’enregistre pour la coque et la liaison, indépendamment de la navette prêtée.');
+
+  await page.reload({waitUntil: 'domcontentloaded'});
+  await convoi(page);await pick(page);
+  assert.equal(await join(page).isEnabled(), true);
+  const other = work(page).locator('[data-route-id="route-oseris-cinder"]').getByRole('button', {name: 'Engager la route'});
+  assert.equal(await other.isDisabled(), true);
   await join(page).click();
+  await work(page).locator('[data-trip-id]').waitFor();
   const embarked = (await loadCampaign(page)).spaceRoutesV159;
+  assert.equal(embarked.w3S18Passage, undefined);
   assert.equal(embarked.trip.manifest.shipId, ship.shipId);
+  assert.deepEqual(embarked.trip.manifest.w3S18Passage, authorized.w3S18Passage);
+  record('Après rechargement, seule la liaison autorisée embarque l’accord au manifeste une fois.');
   const next = () => work(page).getByRole('button', {name: /Parcourir l’étape suivante|Achever le trajet/}).click();
   await next();
   const running = (await loadCampaign(page)).spaceRoutesV159;
@@ -168,6 +197,7 @@ try {
   assert.equal(arrived.trip, null);
   assert.equal(arrived.arrivals.length, 1);
   assert.equal(arrived.arrivals[0].tripId, embarked.trip.tripId);
+  assert.deepEqual(arrived.arrivals[0].w3S18Passage, embarked.trip.manifest.w3S18Passage);
   assert.equal(await readSupply(page), exerciseBytes);
   assert.deepEqual(errors, []);
   await work(page).locator('[data-space-routes-v159]').screenshot({path: resolve(out, 'arrivee-w3-s18.png')});

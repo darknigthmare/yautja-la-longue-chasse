@@ -1,0 +1,49 @@
+name: Accord de passage campagne W3-S18 (recette isolée)
+on:
+  push:
+    branches: ['codex/qa-p1-w3-s18-passage-lot6-20261121']
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /app/
+            /scripts/
+            /tests/
+            /docs/**/*.json
+            /public/**/*.json
+            /production/**/*.json
+            /package.json
+            /package-lock.json
+            /.npmrc
+            /tsconfig*.json
+            /eslint.config.mjs
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Lint du périmètre
+        run: npx eslint app/game/systems/w3S18RoutePost.ts app/game/W3S18RoutePostContext.ts app/game/systems/clanSupplySessionV109.ts app/game/systems/spaceRoutesV159.ts app/game/ClanSupplyRouteV109.tsx app/game/SpaceRoutesPanelV159.tsx scripts/qa-w3-s18-campaign-route-20261121.mjs tests/space-routes-v159.test.mjs
+      - name: Types projet
+        run: npm run typecheck
+      - name: Contrats V159, V161 et V109
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/space-routes-v159.test.mjs tests/ship-receipt-v161.test.mjs tests/clan-supply-route-v109.test.mjs
+      - name: Recette de campagne et régression carte stellaire
+        run: |
+          node scripts/qa-w3-s18-campaign-route-20261121.mjs
+          node scripts/qa-space-itinerary-v159.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: accord-w3-s18-v159-v109
+          path: |
+            outputs/qa-w3-s18-campaign-route-20261121
+            outputs/qa-space-itinerary-v159
