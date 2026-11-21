@@ -7,7 +7,7 @@ import HunterRigPreview from './HunterRigPreview';
 import { controlActionShortcut } from './controlBindingLabels';
 import { DEFAULT_CONTROL_BINDINGS, matchesControlAction } from './systems/controlBindings';
 import {
-  QUATZA_FLOOR, QUATZA_INPUT, QUATZA_MODES, QUATZA_PLATFORMS, QUATZA_POSTS, QUATZA_WIDTH,
+  QUATZA_FLOOR, QUATZA_INPUT, QUATZA_PLATFORMS, QUATZA_POSTS, QUATZA_WIDTH,
   canEnterQuatza, replayQuatzaAttempt, stepQuatza, type QuatzaAttempt, type QuatzaCommand,
   type QuatzaFrame, type QuatzaMode,
 } from './systems/quatzaRij';
@@ -272,23 +272,18 @@ function Expedition({ save, mode, attempt, attempts, onCommand, suspended = fals
   </div>;
 }
 
-export default function QuatzaRijScene(props: Props) {
-  const { save, onCommand, suspended } = props;
-  const [mode, setMode] = useState<QuatzaMode | null>(null);
-  const entries = QUATZA_MODES.filter(item => save.quatzaRij?.expeditions[item] || canEnterQuatza(save, item));
-  if (!entries.length) return null;
-  const active = mode && entries.includes(mode) ? mode : entries[0];
-  const expedition = save.quatzaRij?.expeditions[active];
+export default function QuatzaRijScene(props: Props & { mode: QuatzaMode }) {
+  const { save, mode, onCommand, suspended } = props;
+  const expedition = save.quatzaRij?.expeditions[mode];
+  const mayStart = canEnterQuatza(save, mode);
+  if (!expedition && !mayStart) return null;
   const attempts = expedition?.attempts.length ?? 0;
   const attempt = expedition?.attempts.at(-1);
-  const mayStart = canEnterQuatza(save, active);
-  return <section className={styles.quest} data-quatza-campaign aria-label="Campagne du Quatza-Rij">
-    <h3>{title[active]}</h3>
-    {entries.length > 1 && <nav className={styles.choice} aria-label="Expédition">{entries.map(item =>
-      <button key={item} type="button" aria-pressed={active === item} onClick={() => setMode(item)}>{title[item]}</button>)}</nav>}
-    {attempt && <Expedition key={active + '-' + attempts} {...props} mode={active} attempt={attempt} attempts={attempts} />}
-    {(!attempt || attempt.phase === 'retreated') && <button type="button" data-quatza-begin={active}
+  return <section id={'quatza-expedition-' + mode} className={styles.quest} data-quatza-campaign aria-label={title[mode]}>
+    <h3>{title[mode]}</h3>
+    {attempt && <Expedition key={attempts} {...props} attempt={attempt} attempts={attempts} />}
+    {(!attempt || attempt.phase === 'retreated') && <button type="button" data-quatza-begin={mode}
       disabled={!!suspended || !mayStart}
-      onClick={() => onCommand({ type: 'begin', mode: active, expectedAttempts: attempts })}>{attempt ? 'Préparer une nouvelle tentative' : 'Préparer l’expédition'}</button>}
+      onClick={() => onCommand({ type: 'begin', mode, expectedAttempts: attempts })}>{attempt ? 'Préparer une nouvelle tentative' : 'Préparer l’expédition'}</button>}
   </section>;
 }

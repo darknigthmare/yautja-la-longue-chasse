@@ -78,12 +78,21 @@ try {
   browser = await chromium.launch(process.env.CHROMIUM_EXECUTABLE_PATH
     ? {executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, args: ['--no-sandbox']}
     : {channel: 'chrome', args: ['--no-sandbox']});
-  async function open(save) {
+  async function open(save, blockMigration = false) {
     const context = await browser.newContext({locale: 'fr-FR', viewport: {width: 1280, height: 900}});
-    await context.addInitScript(({supply, supplyKey, save, saveKey}) => {
+    await context.addInitScript(({supply, supplyKey, save, saveKey, blockMigration}) => {
       if (!localStorage.getItem(supplyKey)) localStorage.setItem(supplyKey, supply);
       if (!localStorage.getItem(saveKey)) localStorage.setItem(saveKey, save);
-    }, {supply, supplyKey: CLAN_SUPPLY_KEY_V109, save: JSON.stringify(save), saveKey: saves.SAVE_STORAGE_KEY});
+      if (blockMigration) {
+        const original = Storage.prototype.setItem;
+        Storage.prototype.setItem = function(key, value) {
+          if (this === localStorage && key === supplyKey && !sessionStorage.getItem('permit-v109-qa')) {
+            throw new DOMException('Quota V109 de la recette.', 'QuotaExceededError');
+          }
+          return original.call(this, key, value);
+        };
+      }
+    }, {supply, supplyKey: CLAN_SUPPLY_KEY_V109, save: JSON.stringify(save), saveKey: saves.SAVE_STORAGE_KEY, blockMigration});
     const page = await context.newPage();
     page.on('pageerror', error => errors.push(error.message));
     await page.goto(origin);
@@ -115,6 +124,21 @@ try {
   assert.equal(await work(preview.page).locator('[data-space-routes-v159]').count(), 0);
   record('Le service W3-S18 doit rester tenu et ravitaillé pour ouvrir le poste.');
   await preview.context.close();
+
+  const blocked = await open(owned, true);
+  const blockedPanel = await convoi(blocked.page);
+  await pick(blocked.page);
+  await work(blocked.page).getByText(/Confirmez le carnet du convoi/).waitFor();
+  assert.equal(await work(blocked.page).locator('[data-space-routes-v159]').count(), 0);
+  assert.equal(await readSupply(blocked.page), supply);
+  assert.equal((await loadCampaign(blocked.page)).spaceRoutesV159, undefined);
+  await blocked.page.evaluate(() => sessionStorage.setItem('permit-v109-qa', 'yes'));
+  await blockedPanel.getByRole('button', {name: 'Réessayer la reprise du carnet V108', exact: true}).click();
+  await join(blocked.page).waitFor();
+  assert.notEqual(await readSupply(blocked.page), supply);
+  assert.equal((await loadCampaign(blocked.page)).spaceRoutesV159, undefined);
+  record('Un carnet V109 refusé bloque le poste et sa reprise confirmée l’ouvre sans départ implicite.');
+  await blocked.context.close();
 
   const acquired = await open(owned);
   const page = acquired.page;

@@ -82,8 +82,8 @@ Chaîne jouable actuelle, dans l'ordre du jeu : nurserie (V47) → accueil Unblo
 | 46 | R2-M038 | L’histoire dans le meuble | Blooded | Texte seul | voisin : atelier des trophées |
 | 47 | R2-M039 | Revenir chez les siens | Blooded | Texte seul | — |
 | 48 | R2-M040 | Mon domaine de maîtrise | Blooded | Jouable dans le dossier | Quatre exercices et profil enregistré |
-| 49 | R2-M041 | Préparer la chasse solitaire | Blooded | Texte seul | — |
-| 50 | R2-M042 | Le Quatza-Rij solitaire | Blooded | Texte seul | — |
+| 49 | R2-M041 | Préparer la chasse solitaire | Blooded | Préparation raccordée au dossier du clan | `quatzaRij.expeditions.solo` |
+| 50 | R2-M042 | Le Quatza-Rij solitaire | Blooded | Combat, prélèvement et retour raccordés | `quatzaRij.expeditions.solo` |
 | 51 | R2-M043 | La reconnaissance Elite | Blooded | Texte seul | — |
 | 52 | R2-M044 | La coque d’un groupe | Elite | Inspection à bord partielle | `clanHullProjectV171` |
 | 53 | R2-M045 | Une porte, plusieurs haltes | Elite | Texte seul | — |
@@ -157,6 +157,8 @@ Nouvelle chaîne : Youngling → Unblooded en pack → **Young Blood** par le Qu
 **Validation :** Quatza-Rij tué par le trio, les trois vivants ou ramenés. **Échec :** un trio décimé n'est pas validé ; les survivants retournent au pack.
 
 *Production (proposé)* — **Props :** territoire du Quatza-Rij sur le monde natal, carcasses, marquages, créature Quatza-Rij (la source ne décrit pas son apparence : design à créer en accord avec le masque Sideshow ; 10 animations). **VFX :** sang de la bête, poussière de charge. **SFX :** `quatza-roar`, `quatza-charge`, `quatza-bite`, `partner-call`. **Musique :** MUS-16 (à ajouter au catalogue).
+
+**Raccord jouable.** Depuis le dossier du clan après la formation de la tribu, le chasseur suit les traces, appelle Saar et Vek, puis exploite leurs ouvertures. Le même parcours permet de porter peau et crâne jusqu’aux témoins. Le registre rejoue les entrées pour vérifier le retour et les blessures. L-03 et le rite de la pyramide gardent leurs propres séquences.
 
 ### L-03 — La cérémonie du masque
 
@@ -2403,6 +2405,8 @@ Le terrain du dossier de campagne est accessible après la reconnaissance Bloode
 **Déroulé :** combat en plusieurs phases, seul, avec repli possible ; dégâts et pertes persistent. **Choix :** occasion brève ou ouverture plus sûre. **Sauvegarde :** `elite.soloSuccess` si réussi
 
 *Production (proposé)* — **Props :** arène solitaire à trois niveaux, issue de repli, cible Quatza-Rij (même sprite que R2-M018, variante adulte plus grande), corps et trophée. **VFX :** sang acide, vapeur, marqueur de fenêtre ouverte par le joueur seul. **SFX :** `xeno-hiss`, `xeno-screech`, `acid-sizzle`, hit / slash (existe). **Musique :** MUS-14.
+
+**Raccord jouable.** Après les huit chasses et la remise de la coque personnelle, le dossier du clan ouvre la préparation et le terrain solo. Le râtelier, le plan et la marge choisie conditionnent la sortie. Le relevé de terrain conserve les attaques, les replis et la remise des deux pièces. La reconnaissance et les sons dédiés restent à produire.
 
 ### R2-M043 — La reconnaissance Elite
 

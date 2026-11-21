@@ -1,6 +1,6 @@
 .quest { display: grid; gap: .85rem; padding: 1rem; border: 1px solid #476d5b; border-radius: 12px; background: #0c211c; color: #eef7ed; }
 .quest h3, .quest p { margin: 0; }
-.heading, .controls, .choice { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .55rem; }
+.heading, .controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .55rem; }
 .heading strong { font-size: 1.12rem; }
 .viewport { overflow: hidden; position: relative; height: 440px; isolation: isolate; background: linear-gradient(#314a39, #576b49 58%, #273e25 68%, #17261a); border: 1px solid #67846c; border-radius: 8px; }
 .viewport:focus-visible { outline: 3px solid #bbeb9a; outline-offset: 3px; }
@@ -18,7 +18,7 @@
 .marker::after { content: ''; position: absolute; top: 100%; left: -2px; height: 28px; border-left: 2px solid #b9e694; }
 .proof { z-index: 5; width: 45px; height: 40px; object-fit: contain; transform: translate(-50%, -100%); }
 .controls { justify-content: flex-start; }
-.controls button, .choice button { min-width: 48px; min-height: 44px; touch-action: none; }
+.controls button { min-width: 48px; min-height: 44px; touch-action: none; }
 .vital { display: flex; flex-wrap: wrap; gap: 1rem; }
 .status { color: #e7ffd8; }
 @media (max-width: 620px) { .quest { padding: .65rem; } .viewport { height: 425px; } }
