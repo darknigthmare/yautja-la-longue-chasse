@@ -128,11 +128,15 @@ export function iceInteract(progress: ExplorationProgress, body: WorldRect): Ice
 export function iceHint(progress: ExplorationProgress, body: WorldRect): string | null {
   if (!validBody(body)) return null;
   const state = normalizeExplorationProgress(progress);
-  if (onFloor(body, ICE_THERMAL_RETURN_LEDGE.y)
-    && distanceX(body, ICE_THERMAL_RETURN_GATE) <= 44) {
-    return state.abilityIds.includes("thermal-resistance")
-      ? "Résistance thermique active : route supérieure vers le relais ouverte."
-      : "Passage cryothermique scellé : résistance thermique du volcan requise";
+  if (distanceX(body, ICE_THERMAL_RETURN_GATE) <= 44) {
+    if (state.abilityIds.includes("thermal-resistance")) {
+      if (onFloor(body, ICE_THERMAL_RETURN_LEDGE.y)) return "Résistance thermique active : route supérieure vers le relais ouverte.";
+    } else if (body.y < ICE_THERMAL_RETURN_GATE.y + ICE_THERMAL_RETURN_GATE.height &&
+      body.y + body.height > ICE_THERMAL_RETURN_GATE.y) {
+      const edge = body.x + body.width / 2 < ICE_THERMAL_RETURN_GATE.x + ICE_THERMAL_RETURN_GATE.width / 2
+        ? "ouest" : "est";
+      return `Passage cryothermique scellé. Pour poursuivre la chasse, redescends par le bord ${edge} du gradin et passe sous la grille.`;
+    }
   }
   if (onFloor(body, ICE_RELAY_FLOOR_Y) && near(body, ICE_RELAY)) {
     return state.openedGateIds.includes(ICE_RELAY_ID) ? "Passerelle déployée : la chambre se trouve en contrebas." : "Alimenter le relais supérieur";
