@@ -60,3 +60,11 @@ Le code 0 de la troisième commande signifie que les assertions de fidélité et
 ## Limites de qualification
 
 Le critère moteur natif de CHA112-02 — route principale sans récolte optionnelle — est couvert pour les huit missions et les trois armures. Les charges pleines, tous les tirages et toutes les difficultés ne sont pas couverts. ROU112-05, CHA112-05 et REM112-08 restent donc partiels sur leur quantification des charges. Les deux morts en replays palustres chargés ne démontrent pas un blocage physique du jeu ; elles démontrent l’échec de ces entrées et restent publiées. Cette preuve ne qualifie ni le navigateur, ni un appareil réel, ni la progression d’une chaîne montée dans GameClient. Aucun statut Excel/JSON historique n’est réécrit par ce dossier.
+
+## Relance des routes moteur du 21 novembre 2026
+
+La recette recherche le point de prise réel du trophée. Après une interruption du rite par dégâts, elle permet une courte riposte contre un garde accessible. Elle réserve chaque pièce anatomique et ne dépece que lorsque cette pièce le demande.
+
+Les **24 essais terrestres** terminent l’extraction, dont **20 avec des prises**. Le meilleur remplissage conservé atteint **50 %**. Les trois variantes Océan terminent. Aucun essai n’atteint le seuil de pleine charge de `REM112-08`. [Matrice et traces moteur](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44896017906/artifacts/14704375813)
+
+Le scénario de canopée commence au pied d’un arbre avec six peaux récoltées par les opérations natives, soit 18 unités sur 18 avec l’armure Scout. Les six pièces restent dans le sac après la grimpe, le transfert de branche et les deux lianes. Ce scénario s’arrête à la seconde liane. [Recette de canopée](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44896017906/job/136821720281)
