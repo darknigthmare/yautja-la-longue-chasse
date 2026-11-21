@@ -1,0 +1,135 @@
+name: P0 Hunt qualification at pinned main
+on:
+  push:
+    branches: [codex/qa-rem112-qualification-20261121]
+permissions:
+  contents: read
+jobs:
+  browser:
+    name: Browser GameClient - ${{ matrix.scenario }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 28
+    strategy:
+      fail-fast: false
+      matrix:
+        scenario: [volcano-continuation, full-campaign]
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /docs/qa/v112-campaign-canonical/browser-workshop/browser-report.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Play, pause, resume and settle with the GameClient
+        env:
+          SCENARIO: ${{ matrix.scenario }}
+        run: |
+          extras=()
+          if [[ "$SCENARIO" == volcano-continuation ]]; then
+            extras+=(--campaign-source docs/qa/v112-campaign-canonical/browser-workshop/browser-report.json --missions volcano-bad-blood)
+          fi
+          node scripts/qa-hunt-campaign-browser-v112.mjs "${extras[@]}" --wall-seconds 400 --chromium /usr/bin/google-chrome --require-complete --require-resume --output outputs/rem112-06
+      - name: Summarize actually played coverage
+        if: always()
+        run: |
+          if test -f outputs/rem112-06/report.json; then
+            node -e 'const r=require("./outputs/rem112-06/report.json"); console.log(JSON.stringify({qualification:r.qualification,coverage:r.coverage,failure:r.failure,requiredCoverageFailure:r.requiredCoverageFailure,errors:r.errors?.slice(0,10),missingAssets:r.missingAssets?.slice(0,10),attempts:r.attempts?.map(a=>({mission:a.missionId,status:a.status,resume:a.suspendedAndReloaded,wallSeconds:a.wallSeconds,phase:a.final?.state?.phase})),armory:r.armoryTransactions,harvests:r.harvestAttempts?.map(a=>({mission:a.missionId,items:a.specimens?.length})),workshop:r.workshop?.length}));'
+          fi
+      - if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: rem112-06-${{ matrix.scenario }}
+          path: |
+            outputs/rem112-06/
+            !outputs/rem112-06/source-cache/**
+          if-no-files-found: ignore
+  loaded:
+    name: Real loaded repli - ${{ matrix.mission }} ${{ matrix.armor }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {mission: jungle-vey, armor: hunter}
+          - {mission: jungle-vey, armor: berserker}
+          - {mission: ice-cryostalker, armor: scout}
+          - {mission: volcano-bad-blood, armor: hunter}
+          - {mission: volcano-bad-blood, armor: berserker}
+          - {mission: swamp-hydra, armor: scout}
+          - {mission: desert-sandmaw, armor: scout}
+          - {mission: ocean-leviathan, armor: scout}
+          - {mission: fungal-hivemind, armor: scout}
+          - {mission: ruins-ancient-guardian, armor: scout}
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /docs/qa/v112-ground-campaign/campaign-origin-save.json
+            /docs/qa/v112-ground-campaign/tool-origin.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Search naturally earned attempts and prove a full retained bag
+        env:
+          MISSION: ${{ matrix.mission }}
+          ARMOR: ${{ matrix.armor }}
+        run: |
+          origin=docs/qa/v112-ground-campaign/campaign-origin-save.json
+          root="outputs/rem112-08/$MISSION-$ARMOR"
+          mkdir -p "$root"
+          full=0
+          for seed in {1..8}; do
+            output="$root/attempt-$seed"
+            extra=()
+            if [ "$seed" -ge 4 ]; then extra+=(--sweepEarly=true); fi
+            if node scripts/qa-hunt-ground-campaign-v112.mjs --mission="$MISSION" --armor="$ARMOR" --baseSave="$origin" --insertion=visible-ship --harvest=true --harvestSweep=true "${extra[@]}" --minimumRetainedLoad=1 --replay=true --seconds=360 --output="$output" > "$root/load-$seed.log" 2>&1; then full=1; fi
+            if test -f "$output/report.json"; then
+              node -e 'const r=require("./"+process.argv[1]); for(const o of r.outcomes) console.log(JSON.stringify({m:o.missionId,armor:o.armorId,seed:o.admission.encounterRun,status:o.result?.outcome??o.terminal?.phase,load:o.retainedLoad,peak:o.peakLoadRatio,replay:o.replay?.verified}));' "$output/report.json"
+            else
+              tail -30 "$root/load-$seed.log"
+            fi
+            if [ "$full" -eq 1 ]; then break; fi
+            if [ "$seed" -lt 8 ]; then
+              advance="$root/advance-$seed"
+              if ! node scripts/qa-hunt-ground-campaign-v112.mjs --mission="$MISSION" --armor=hunter --baseSave="$origin" --replay=true --requireComplete=true --seconds=300 --output="$advance" --successSave="$advance/after-win.json" > "$root/advance-$seed.log" 2>&1; then
+                tail -30 "$root/advance-$seed.log"
+                break
+              fi
+              origin="$advance/after-win.json"
+            fi
+          done
+          test "$full" -eq 1
+      - if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: rem112-08-${{ matrix.mission }}-${{ matrix.armor }}
+          path: outputs/rem112-08/
+          if-no-files-found: ignore
