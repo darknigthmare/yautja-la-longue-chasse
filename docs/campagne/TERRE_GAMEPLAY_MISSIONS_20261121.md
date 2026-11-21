@@ -375,9 +375,13 @@ La proie principale est un **boss** (`BossDefinition`, `threatLevel: 4`).
 - Épargner : honneur + 30 *(proposé)* ; la proie survit, **témoin** (Indice + 3) ; elle peut revenir plus tard (chasse ultime, contrats d'héritier).
 - Achever : honneur normal, trophée possible.
 
+### 10.3 bis Don au guerrier
+Après un duel perdu ou un humain épargné, le joueur peut lui **laisser un trophée ancien** (décision du 21 novembre ; détail dans l'avenant, section 17).
+
 ### 10.4 Interruptions
 - Une **équipe ARGOS** peut intervenir pendant le combat si l'Indice ≥ 60 (vague `trigger: "boss-phase"`).
 - Un **Bad Blood** peut voler la mise à mort (événement dynamique).
+- Rarement, la mission bascule en **purge de ruche** : des Xénomorphes sont sur le site (avenant, section 18).
 
 ### 10.5 À créer
 - 20 boss : 14 humains, 6 animaux nommés (liste en section 23), en suivant les gabarits.

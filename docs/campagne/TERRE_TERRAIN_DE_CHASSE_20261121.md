@@ -27,7 +27,11 @@ Le déroulé jouable des missions est détaillé dans [Terre — Gameplay des mi
 13. Fiches des 20 sites
 14. Événements dynamiques
 15. Production *(proposé)*
-16. Questions ouvertes
+16. Décisions du 21 novembre 2026 (soir)
+17. Don au guerrier
+18. Xénomorphes sur Terre
+19. Weyland-Yutani sur Terre
+20. Coop sur Terre
 
 ---
 
@@ -684,3 +688,142 @@ Nouvel onglet « Terre » : n° site, nom, palier, rang requis, dates, proie ape
 | Contrats de la chasse ultime | **les 5 validés** (section 13.1) |
 
 Il ne reste aucune question ouverte dans cet avenant.
+
+---
+
+## 17. Don au guerrier
+
+**Décision (21 novembre 2026) :** le joueur peut honorer un humain digne en lui laissant un objet. **[Lore]** Dans *Predator 2*, les chasseurs laissent à Harrigan un pistolet ancien, pris lors d'une chasse de 1715.
+
+### 17.1 Quand le don est possible
+- Après un **duel perdu** par le joueur, quand l'humain l'a vaincu loyalement et que le joueur se retire vivant.
+- Après un humain **épargné** au salut au guerrier.
+- À l'extraction, si un humain armé a tenu tête au joueur toute la mission sans le fuir *(proposé)*.
+
+### 17.2 Ce que le joueur peut donner *(proposé)*
+Jamais une arme yautja ni un appareil (interdit du code). Seulement un **trophée ancien** de sa salle, un objet humain d'une autre époque :
+
+| Objet | Exemple |
+| --- | --- |
+| Arme humaine ancienne | pistolet à silex, sabre, lance |
+| Insigne | plaque d'unité d'une guerre ancienne |
+| Objet personnel | montre, médaille, carnet d'un chasseur d'un autre siècle |
+
+Le trophée donné **quitte la salle** pour de bon ; sa provenance garde la mention « donné à … ».
+
+### 17.3 Effets
+- Honneur + 40 ; aucune hausse de l'Indice pour ce témoin (il ne parle pas : il a compris).
+- L'humain entre au registre comme **« Honoré »**. Il peut revenir :
+
+| Retour possible | Quand |
+| --- | --- |
+| **Allié discret** : il détourne une enquête, fait disparaître une image | chasse suivante sur le même site ou un site voisin ; Indice – 10 une fois |
+| **Rival** : il revient mieux armé pour une revanche loyale | palier suivant |
+| **Héritier** : son enfant ou son élève, avec l'objet donné | après une ellipse de 20 ans ou plus |
+| **Chasse ultime** : le contrat « chasseur survivant » (section 13.1) | site 20 |
+
+- Si ARGOS met la main sur l'objet (humain capturé ou mort), il entre dans le dossier du « Patient » : ARGOS apprend l'existence du code *(proposé)*.
+
+### 17.4 À créer
+- Interface de don (choisir un trophée ancien de sa salle, depuis le biomask).
+- État « Honoré » dans le registre et contrats de retour.
+- Scène courte : l'humain reçoit l'objet ; le Yautja disparaît.
+
+---
+
+## 18. Xénomorphes sur Terre
+
+**Décision :** un **événement rare**. **[Lore]** Des Xénomorphes ont déjà menacé la Terre après des chasses yautja ratées.
+
+### 18.1 Déclenchement *(proposé)*
+- Probabilité faible par mission (5 %), à partir du palier 2.
+- Cause dans le monde : un vaisseau d'un autre Yautja s'est écrasé ou un chasseur a été infesté. Le Registre le signale parfois avant (rumeur captée à l'écoute).
+- Jamais deux fois de suite sur le même site.
+
+### 18.2 Ce qui change dans la mission
+| Étape | Contenu |
+| --- | --- |
+| Signes | animaux morts, humains disparus, cocons, acide sur le sol, radios paniquées |
+| Contrat changé | la proie principale devient **la ruche** ; le contrat d'origine est suspendu |
+| Purge | tuer la reine ou la jeune reine, détruire les œufs, brûler les cocons |
+| Nettoyage | effacer **toute** trace d'acide et de corps ; le dissolvant bleu sert ici |
+| Temps | une **jauge de propagation** : si elle se remplit, la ruche gagne le site voisin et l'Indice prend + 30 |
+
+- Les humains du site deviennent des **victimes** : sauver un humain armé d'un Xénomorphe ne compte pas comme épargné, mais il peut devenir témoin.
+- L'OWLF et ARGOS arrivent vite (alerte au niveau 2 au minimum) ; ARGOS veut un spécimen.
+- Honneur selon le barème Queen Hunt de la bible ; trophée de reine terrestre unique.
+
+### 18.3 Si la purge échoue
+- Le site est **« brûlé »** : fermé pendant 20 ans de jeu.
+- Le tribunal convoque le joueur (laisser une ruche sur une réserve commune est une faute).
+- Un **contrat Cleaner** apparaît pour un Elite (le joueur ou un autre chasseur du clan).
+
+### 18.4 À créer
+- Variante « ruche terrestre » pour les 6 secteurs d'un site (cocons, nids dans les bâtiments humains).
+- Xénomorphes nés d'hôtes humains et animaux du site (formes adaptées : lion, ours, crocodile *(proposé)*).
+- Jauge de propagation et état « site brûlé ».
+
+---
+
+## 19. Weyland-Yutani sur Terre
+
+**Décision :** **faction de fin** sur les sites des **paliers 3 et 4** (Elite et Elder, à partir de 2050 et surtout après 2100). **[Lore]** La compagnie traque la technologie yautja et les Xénomorphes ; la bible la place déjà sur Tantalus en 2204.
+
+### 19.1 Où et comment *(proposé)*
+| Période | Présence |
+| --- | --- |
+| 2050–2100 | sociétés-écrans, labos, sécurité privée sur les sites miniers (Altiplano, Iakoutie, Alang) |
+| 2100–2150 | sécurité W-Y en armure, drones, **synthétiques** ; Norilsk sous dômes appartient en partie à W-Y |
+
+### 19.2 Ce que W-Y veut
+- La technologie du joueur et, si possible, un spécimen vivant (comme ARGOS) ; mais **pour la vendre**, pas pour la révéler.
+- Les Xénomorphes : W-Y peut être la **cause** d'une ruche terrestre (section 18), par un labo.
+
+### 19.3 Triangle avec ARGOS et l'OWLF
+| | ARGOS | OWLF | W-Y |
+| --- | --- | --- | --- |
+| But | prouver au monde | garder le secret | posséder et vendre |
+| Méthode | science, capture | effacement | argent, synthétiques |
+| Relation | rivale des deux | efface les preuves d'ARGOS | rachète les preuves d'ARGOS *(proposé)* |
+
+### 19.4 Synthétiques
+- **Proie à part** : ils ne sont ni humains ni animaux. Ils saignent blanc, ne paniquent pas, continuent de se battre en morceaux.
+- Code : un synthétique n'est **pas une proie digne** (aucun honneur, comme un objet), mais le détruire n'est pas une faute *(proposé)*.
+- Un synthétique qui voit le joueur **enregistre tout** : image envoyée instantanément si sa tête n'est pas détruite.
+
+### 19.5 À créer
+- Archétypes `wy-security`, `wy-synthetic`, `wy-drone`.
+- Props : labos, logos, véhicules W-Y de l'époque.
+- Dialogues radio W-Y (ton d'entreprise).
+
+---
+
+## 20. Coop sur Terre
+
+**Décision :** les missions sur Terre se jouent en **coop jusqu'à 3** (la triade), comme la coop de campagne.
+
+### 20.1 Règles
+- Les invités prennent la place de Yena et Tov (ou des alliés IA).
+- **Tout est celui de l'hôte** : site, contrat, date, Indice, ARGOS, registre, tribunal.
+- Les invités gardent l'**honneur** et les **trophées** qu'ils prennent eux-mêmes dans leur propre campagne *(proposé)*.
+- Une faute d'un invité passe au tribunal **de l'hôte** (le clan juge la chasse de l'hôte) ; l'invité, lui, reçoit seulement un blâme dans sa campagne *(proposé)*.
+
+### 20.2 Ce que la coop change en mission *(proposé)*
+| Phase | En coop |
+| --- | --- |
+| Orbite | chaque joueur peut choisir une zone de dépôt différente |
+| Repérage | les marques du biomask sont partagées |
+| Traque | rôles naturels : un qui attire, un qui isole, un qui guette les témoins |
+| Témoins | plus de joueurs = plus de chances d'être vu ; l'Indice compte pour tous les gestes |
+| Affrontement | un seul peut accepter un duel ; les autres doivent se retirer |
+| Trophée | la mise à mort décide à qui va le trophée |
+| Extraction | il faut que tous soient au point ; un joueur laissé derrière doit faire une extraction d'urgence |
+
+### 20.3 Équilibrage
+- Humains plus nombreux et proie principale plus résistante avec chaque joueur (+ 40 % par invité).
+- Honneur par joueur ramené à × 0,8 en coop, pour qu'un trio ne monte pas trois fois plus vite.
+
+### 20.4 À créer
+- Partage des marques et des traces.
+- Choix de zone de dépôt par joueur.
+- Règle de trophée et de duel en coop.
