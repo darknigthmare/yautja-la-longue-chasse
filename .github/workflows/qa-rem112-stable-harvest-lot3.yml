@@ -1,0 +1,84 @@
+name: P0 Ice supported and stable skinning
+on:
+  push:
+    branches: [codex/qa-rem112-safe-harvest-lot3-20261121]
+permissions:
+  contents: read
+jobs:
+  loaded:
+    name: Repli ${{ matrix.scenario }} à charge naturelle
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {scenario: glace-hunter, mission: ice-cryostalker, armor: scout, seed: 6, difficulty: hunter}
+          - {scenario: glace-jeune-sang, mission: ice-cryostalker, armor: scout, seed: 6, difficulty: young-blood}
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /public/**/manifest.json
+            /docs/qa/v112-ground-campaign/campaign-origin-save.json
+            /docs/qa/v112-ground-campaign/tool-origin.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Use earned replays and prioritize the real skin before the bone
+        env:
+          SCENARIO: ${{ matrix.scenario }}
+          MISSION: ${{ matrix.mission }}
+          ARMOR: ${{ matrix.armor }}
+          SEED: ${{ matrix.seed }}
+          DIFFICULTY: ${{ matrix.difficulty }}
+        run: |
+          origin=docs/qa/v112-ground-campaign/campaign-origin-save.json
+          root="outputs/rem112-08/$SCENARIO"
+          mkdir -p "$root"
+          for seed in $(seq 1 "$((SEED-1))"); do
+            advance="$root/advance-$seed"
+            if ! node scripts/qa-hunt-ground-campaign-v112.mjs --mission="$MISSION" --armor=hunter --baseSave="$origin" --replay=true --requireComplete=true --seconds=300 --output="$advance" --successSave="$advance/after-win.json" > "$root/advance-$seed.log" 2>&1; then
+              tail -30 "$root/advance-$seed.log"
+              exit 1
+            fi
+            origin="$advance/after-win.json"
+          done
+          full=0
+          for trial in early120 early160 early190 early240 early320 normal240 early120-pack early240-pack; do
+            distance=${trial//[!0-9]/}
+            extra=("--sweepDistance=$distance")
+            if [[ "$trial" == early* ]]; then extra+=(--sweepEarly=true); fi
+            if [[ "$MISSION" == ice-cryostalker ]]; then
+              extra+=("--preferSpecimens=harvest-hide:ice-cryostalker:6:insertion-patrol-1")
+              if [[ "$trial" == *-pack ]]; then extra+=("--leaveSpecimens=harvest-tissue:ice-brutes-1"); fi
+            elif [[ "$trial" == *-pack ]]; then
+              continue
+            fi
+            output="$root/$trial"
+            if node scripts/qa-hunt-ground-campaign-v112.mjs --mission="$MISSION" --armor="$ARMOR"               --difficulty="$DIFFICULTY" --baseSave="$origin" --insertion=visible-ship --harvest=true               --harvestSweep=true "${extra[@]}" --minimumRetainedLoad=1 --replay=true --seconds=360               --output="$output" > "$root/$trial.log" 2>&1; then full=1; fi
+            if [ -f "$output/report.json" ]; then
+              node -e 'const r=require("./"+process.argv[1]); for (const o of r.outcomes) console.log(JSON.stringify({trial:process.argv[2],mission:o.missionId,armor:o.armorId,attempt:o.admission.encounterRun,difficulty:o.admission.difficulty,success:o.success,ratio:o.retainedLoad.atExtraction?.load.ratio,qualified:o.retainedLoad.qualified,replayed:o.replay?.verified,load:o.retainedLoad.atExtraction?.load,ids:o.retainedLoad.atExtraction?.specimenIds,preferred:o.harvestDecisions?.filter(e=>e.corpseId.endsWith("insertion-patrol-1")).slice(0,24)}));' "$output/report.json" "$trial"
+            else
+              tail -30 "$root/$trial.log"
+            fi
+            if [ "$full" -eq 1 ]; then break; fi
+          done
+          test "$full" -eq 1
+      - if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: rem112-lot3-${{ matrix.scenario }}
+          path: outputs/rem112-08/
+          if-no-files-found: ignore
