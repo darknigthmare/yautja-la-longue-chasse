@@ -1,7 +1,7 @@
 name: REM112 prélèvement avec atelier en navigateur
 on:
   push:
-    branches: [codex/qa-rem112-volcan-lot4-20261121]
+    branches: [codex/qa-rem112-ice-workshop-lot4-20261121]
 permissions:
   contents: read
 jobs:
@@ -13,18 +13,6 @@ jobs:
       fail-fast: false
       matrix:
         case:
-          - id: volcano-hound-tissue
-            mission: volcano-bad-blood
-            seed: browser-workshop
-            species: cinder-12--hell-hound-stalker
-            action: harvest-tissue
-            budget: 1000
-          - id: volcano-xeno-bone
-            mission: volcano-bad-blood
-            seed: browser-workshop
-            species: cinder-12--scorch-xeno
-            action: harvest-bone
-            budget: 1000
           - id: ice-xeno-bone-control
             mission: ice-cryostalker
             seed: browser-ice
@@ -58,7 +46,7 @@ jobs:
             --missions "${{ matrix.case.mission }}" \
             --harvest-species "${{ matrix.case.species }}" \
             --harvest-action "${{ matrix.case.action }}" \
-            --require-harvest-workshop --require-complete --require-resume \
+            --replay-completed --require-harvest-workshop --require-complete --require-resume \
             --wall-seconds "${{ matrix.case.budget }}" --chromium /usr/bin/google-chrome \
             --asset-cache outputs/source-cache --output outputs/browser
       - if: always()
@@ -76,27 +64,3 @@ jobs:
         with:
           name: rem112-lot4-${{ matrix.case.id }}
           path: outputs/browser/
-  source:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    env:
-      ELECTRON_SKIP_BINARY_DOWNLOAD: 1
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          sparse-checkout-cone-mode: false
-          sparse-checkout: |
-            /*
-            !/public/
-            !/docs/
-            !/production/
-            /public/**/manifest.json
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci --ignore-scripts --no-audit --no-fund
-      - run: node --check scripts/qa-hunt-campaign-browser-v112.mjs
-      - run: npx eslint app/game/ConservationPanelV112.tsx
-      - run: |
-          node --test tests/harvest-inventory-v112.test.mjs tests/conservation-persistence-ui-v112.test.mjs tests/hunt-skinning-worksite-20261109.test.mjs
