@@ -33,4 +33,9 @@ jobs:
             retries:report.attempts[0]?.retryEvents?.map(x=>({elapsed:x.elapsed,button:x.button})),
             final:{phase:final?.phase,elapsed:final?.elapsed,x:final?.player?.x,health:final?.player?.health,specimens:final?.huntRites?.specimensV112}};
           console.log(JSON.stringify({receipt:'VOLCAN-CARRY-STOP',...subject}));
+          const latest=await parse('progress.json'),p=final.player;
+          console.log(JSON.stringify({receipt:'VOLCAN-PILOT-GEOMETRY',elapsed:final.elapsed,facing:p.facing,feet:p.y+p.height,
+            energy:p.energy,activeWeaponSlot:p.activeWeaponSlot,lastDecision:latest.lastDecision,boss:{x:final.boss.x,y:final.boss.y,health:final.boss.health,active:final.boss.active},
+            threats:final.enemies.filter(e=>e.active&&e.alive&&Math.abs(e.x-p.x)<800).map(({id,x,y,width,height,health,archetype})=>({id,x,y,width,height,health,archetype})),
+            ledges:final.world.platforms.filter(e=>e.x<p.x+150&&e.x+e.width>p.x-150).map(({id,x,y,width,height,collision})=>({id,x,y,width,height,collision}))}));
           NODE
