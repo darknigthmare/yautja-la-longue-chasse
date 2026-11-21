@@ -2364,7 +2364,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!elderRiteAvailable()) return { ok: false, message: "Rouvre le dossier lorsque la campagne sera disponible." };
     const result = commitElderAssembly(saveRef.current, command);
     if (!result.ok) return result;
-    if (!persistSocialProgress(result.update)) {
+    if (!persistSocialProgress({ elderAssemblyV168: result.state })) {
       return { ok: false, message: "Inscription en attente. Vérifie la sauvegarde puis reprends l’action." };
     }
     return { ok: true, message: result.message };

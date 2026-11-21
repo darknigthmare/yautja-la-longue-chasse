@@ -48,8 +48,6 @@ export const CHRONICLE_EVIDENCE = [
   { id: "solitary-trial", label: "La Traque solitaire réussie", sourceId: "chronicle.solitary-trial.completed" },
   { id: "long-hunt-history", label: "Longue histoire de chasses et de transmission établie", sourceId: "chronicle.long-hunt-history.completed" },
   { id: "next-generation", label: "Ceux qui reviendront : nouvelle génération initiée", sourceId: "chronicle.next-generation.completed" },
-  { id: "elder-mentoring-observed", label: "Chasse du novice observée par le mentor", sourceId: "chronicle.elder-mentoring.observed" },
-  { id: "elder-judgment-observed", label: "Règlement du passage observé par le témoin", sourceId: "chronicle.elder-judgment.observed" },
   { id: "elder-time-passage", label: "Ellipse narrative compatible avec la dignité d’Elder", sourceId: "chronicle.elder-time-passage.completed" },
   { id: "ancient-time-passage", label: "Très grande ancienneté établie dans le récit", sourceId: "chronicle.ancient-time-passage.completed" },
   { id: "lasting-legacy", label: "Héritage durable transmis", sourceId: "chronicle.lasting-legacy.completed" },
@@ -58,7 +56,7 @@ export const CHRONICLE_EVIDENCE = [
 export type ChronicleEvidenceId = typeof CHRONICLE_EVIDENCE[number]["id"];
 export interface ChronicleEvidenceReceipt { id: ChronicleEvidenceId; sourceId: string }
 export type ChronicleRiteId = "nursery-recognition" | "unguided-hunt-recognition" |
-  "blooding-mark" | "elite-recognition" | "elder-recognition" | "elder-assembly-v168" | "ancient-recognition" |
+  "blooding-mark" | "elite-recognition" | "elder-recognition" | "ancient-recognition" |
   "adjutant-appointment";
 export interface ChronicleRiteDefinition {
   id: ChronicleRiteId;
@@ -74,7 +72,6 @@ export const CHRONICLE_RITES: readonly ChronicleRiteDefinition[] = [
   { id: "blooding-mark", label: "Reconnaissance du Temple des Trois Ombres", sourceId: "chronicle.rite.blooding", fromRankId: "young-blood", grantsRankId: "blooded", requiredEvidenceIds: ["quatza-rij-triad-hunt", "temple-three-shadows-triad", "temple-three-shadows-changing-layout", "temple-three-shadows-no-energy", "initiation-return"] },
   { id: "elite-recognition", label: "Reconnaissance de l’Elite", sourceId: "chronicle.rite.elite", fromRankId: "blooded", grantsRankId: "elite", requiredEvidenceIds: ["first-queen-hunt", "diverse-mastery", "solitary-trial"] },
   { id: "elder-recognition", label: "Conseil des aînés", sourceId: "chronicle.rite.elder", fromRankId: "elite", grantsRankId: "elder", requiredEvidenceIds: ["long-hunt-history", "next-generation", "elder-time-passage"] },
-  { id: "elder-assembly-v168", label: "Engagement devant l’assemblée des aînés", sourceId: "chronicle.rite.elder-assembly-v168", fromRankId: "elite", grantsRankId: "elder", requiredEvidenceIds: ["elder-mentoring-observed", "elder-judgment-observed"] },
   { id: "ancient-recognition", label: "Transmission de l’héritage ancien", sourceId: "chronicle.rite.ancient", fromRankId: "elder", grantsRankId: "ancient", requiredEvidenceIds: ["ancient-time-passage", "lasting-legacy", "forgotten-debt"] },
   { id: "adjutant-appointment", label: "Nomination comme second de chasse", sourceId: "chronicle.appointment.adjutant", fromRankId: "blooded", grantsRankId: null, requiredEvidenceIds: ["multiple-world-hunts", "team-extraction"] },
 ];
