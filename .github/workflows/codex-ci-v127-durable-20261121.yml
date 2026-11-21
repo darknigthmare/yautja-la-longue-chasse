@@ -1,0 +1,36 @@
+name: V127 durable duel restart validation
+on:
+  push:
+    branches: ['codex/ci-v127-durable-20261121']
+permissions:
+  contents: read
+jobs:
+  durable-duel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /eslint.config.mjs
+            /tsconfig.json
+            /scripts/clan-war-practice-journal-v127.mjs
+            /scripts/serve-clan-war-practice-v127.mjs
+            /scripts/play-clan-war-practice-v127.mjs
+            /tests/clan-war-practice-server-v127.test.mjs
+            /tests/clan-war-practice-durable-v127.test.mjs
+            /tests/clan-war-multiplayer-practice-v127.test.mjs
+            /app/game/systems/clanWar*
+            /app/game/data/clanWar*
+            /app/game/data/earth*V12*.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '22'}
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Existing and durable live services on loopback
+        run: node --test --test-reporter=spec tests/clan-war-practice-server-v127.test.mjs tests/clan-war-practice-durable-v127.test.mjs tests/clan-war-multiplayer-practice-v127.test.mjs
+      - name: Lint journal, server and restart tests
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 scripts/serve-clan-war-practice-v127.mjs scripts/clan-war-practice-journal-v127.mjs tests/clan-war-practice-durable-v127.test.mjs
