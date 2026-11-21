@@ -1,132 +1,71 @@
-name: Verify the fourth P0–P3 lots
+name: Verify the fourth delivery and all workbooks
 on:
   push:
     branches: [codex/verify-priority-lots-4-20261121]
 permissions:
   contents: read
-  actions: read
 jobs:
-  source:
-    name: Test the guide, escort, anatomy and signed receipts
+  package:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 10
     env:
-      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
-      NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '82fae2372c7687497c7a84a0240eebb8e2292b57'
-      BASE_COMMIT: '69abfd0bb2f4f5d38edd22aa1f0cc2c7ab701c87'
+      VERIFIED_CODE: '82fae2372c7687497c7a84a0240eebb8e2292b57'
+      VERIFIED_INVENTORY: '0d0033368533e4aaa21559ff3f78059156cbf7e0'
     steps:
-      - name: Checkout the exact candidate and bounded inputs
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '82fae2372c7687497c7a84a0240eebb8e2292b57'
+          ref: 'a7bf6bf8510080b8d865219f56c42de31541eb8a'
           persist-credentials: false
-          fetch-depth: 12
+          fetch-depth: 8
           filter: blob:none
           sparse-checkout-cone-mode: false
           sparse-checkout: |
-            /*
-            !/*/
-            /app/
-            /lib/
-            /types/
-            /desktop/
-            /worker/
-            /tests/
-            /scripts/
-            /build/
-            /.openai/
-            /.github/workflows/
-            /docs/
+            /scripts/build-priority-lots-workbook-20261121.mjs
+            /scripts/lib/workbook-ooxml.mjs
+            /scripts/qa-hunt-campaign-browser-v112.mjs
+            /docs/qa/current-integration-20261103/runtime-inputs.json
             /production/YAUTJA_LOTS_P0_P3_20261121.*
             /production/YAUTJA_LOTS_P0_P3_LOT2_20261121.*
-            /public/game/xeno-prime/berceau-v1/
-            /public/audio/
-            /public/game/quatza-rij/
-            /public/game/assets/v37/tribes/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp
-            /public/game/assets/v37/tribes/v2/homeworld-forest-v2--8fdc633789dcd9c0.webp
-            /public/game/assets/v37/tribes/v2/homeworld-lava-v2--ecd85e06796799d2.webp
-            /public/game/backgrounds/ice-depth-v4.webp
-            /public/game/backgrounds/ocean-depth-v8.png
-            /public/game/backgrounds/ruins-depth-v8.png
-            /public/game/backgrounds/swamp-depth-v8.png
-            /public/game/homeworld/v67/ash-causeway-vista.png
-            /public/game/homeworld/v67/glass-processional-vista.png
-            /public/game/sprites/v8/ecology/cinder-12/basalt-ram-sheet.png
-            /public/game/sprites/v8/ecology/cinder-12/smoke-wyvern-sheet.png
-            /public/game/sprites/v8/ecology/naraka-delta/mire-shell-sheet.png
-            /public/game/sprites/v8/ecology/nivalis-k/snow-prowler-sheet.png
-            /public/game/sprites/v8/ecology/oseris-iv/amber-jaw-stalker-sheet.png
-            /public/game/sprites/v8/ecology/pelagos-m/shellback-sheet.png
-            /public/game/sprites/v8/ecology/serekh-9/burrow-snake-sheet.png
-            /public/game/assets/clan-field-20261103/
-            /public/**/manifest.json
-            /public/game/p0-sprites-20261113/warp/
-            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
-            /public/game/homeworld/v77/lava-transit-skiff.png
-            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
-            /public/game/homeworld/v64/clan-shuttle.png
-            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
-      - name: Node 22
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+            /production/YAUTJA_LOTS_P0_P3_LOT3_20261121.*
+            /production/YAUTJA_LOTS_P0_P3_LOT4_20261121.*
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
-      - name: Materialize official runtime inputs and install dependencies
+      - name: Confirm that the tested code and official inventory match the delivery
         run: |
-          node scripts/materialize-asset-raccords-20261120.mjs runtime
-          npm ci --ignore-scripts --no-audit --no-fund
-      - name: Generate canonical runtime evidence
+          git diff --exit-code "$VERIFIED_CODE" HEAD -- app tests scripts ':!scripts/qa-hunt-campaign-browser-v112.mjs'
+          node --check scripts/qa-hunt-campaign-browser-v112.mjs
+          test "$(git hash-object scripts/qa-hunt-campaign-browser-v112.mjs)" = "f0189adf3a6e118d1b8f9566194f12e3e08b80ea"
+          test "$(git hash-object docs/qa/current-integration-20261103/runtime-inputs.json)" = "$VERIFIED_INVENTORY"
+      - name: Reproduce the four workbooks and inspect the final archive
         run: |
-          node scripts/materialize-asset-raccords-20261120.mjs candidate || { cat outputs/qa-asset-raccords-20261120/runtime-generator.log; exit 1; }
-          node scripts/check-hunt-integration-source-v112.mjs --current
-      - name: Verify Next types
-        if: ${{ !cancelled() }}
-        run: |
-          node node_modules/next/dist/bin/next typegen
-          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
-      - name: Targeted ESLint
-        if: ${{ !cancelled() }}
-        run: >-
-          npx eslint app/game/HuntFieldGuideV112.tsx app/game/ConservationPanelV112.tsx
-          app/game/ClanShipOperationsPanel.tsx app/game/ClanShipSpaceEncounter.tsx app/game/ClanShipHub.tsx app/game/systems/clanShipOperations.ts
-          app/game/ClanWarW3S14ReceiptDossier.tsx app/game/systems/clanWarW3S14Receipt.ts scripts/serve-clan-war-w3-s14-duel.mjs
-      - name: Verify the new routes and existing progression alongside real TCP
-        if: ${{ !cancelled() }}
-        run: >-
-          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
-          tests/hunt-field-guide-v112.test.mjs
-          tests/canopy-navigation-v112.test.mjs
-          tests/hunt-canopy-runtime-v112.test.mjs
-          tests/hunt-accessibility-v112.test.mjs
-          tests/hunt-carcass-runtime-v112.test.mjs
-          tests/hunt-skinning-worksite-20261109.test.mjs
-          tests/hunt-input-runtime.test.mjs
-          tests/conservation-persistence-ui-v112.test.mjs
-          tests/clan-ship-operations.test.mjs
-          tests/clan-ship-operations-save.test.mjs
-          tests/clan-ship-space-encounter.test.mjs
-          tests/clan-ship-crew-dialogue-ui.test.mjs
-          tests/clan-hull-project-v171.test.mjs
-          tests/clan-war-w3-s14-duel.test.mjs
-          tests/clan-war-rts-coop-v133.test.mjs
-          tests/clan-war-stealth-coop-v115.test.mjs
-          tests/qa-hunt-ground-policy-v112.test.mjs
-      - name: Preserve the existing hunting workbook byte for byte
-        if: ${{ !cancelled() }}
-        run: node scripts/build-hunt-mechanics-workbook-v112.mjs --check
-
-
-      - name: Report canonical inventory differences
-        if: ${{ !cancelled() && hashFiles('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json') != '' }}
-        run: |
-          node --input-type=module <<'NODE'
-          import { readFileSync } from 'node:fs';
-          const prior = JSON.parse(readFileSync('docs/qa/current-integration-20261103/runtime-inputs.json'));
-          const next = JSON.parse(readFileSync('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json'));
-          const old = new Map(prior.entries.map(item => [item.path, item]));
-          const paths = new Set(next.entries.map(item => item.path));
-          const changes = next.entries.filter(item => JSON.stringify(old.get(item.path)) !== JSON.stringify(item));
-          const removed = prior.entries.filter(item => !paths.has(item.path)).map(item => item.path);
-          console.log('V113_DELTA ' + JSON.stringify({ files: next.files, bytes: next.bytes, changes, removed }));
-          NODE
-
+          node scripts/build-priority-lots-workbook-20261121.mjs --check
+          node scripts/build-priority-lots-workbook-20261121.mjs --lot-2 --check
+          node scripts/build-priority-lots-workbook-20261121.mjs --lot-3 --check
+          node scripts/build-priority-lots-workbook-20261121.mjs --lot-4 --check
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from xml.etree import ElementTree as ET
+          from zipfile import ZipFile
+          book = Path("production/YAUTJA_LOTS_P0_P3_LOT4_20261121")
+          data = json.loads(book.with_suffix(".json").read_text(encoding="utf-8"))
+          counts = [len(lot["entries"]) for lot in data["lots"]]
+          assert counts == [10, 10, 10, 2]
+          ids = [entry["id"] for lot in data["lots"] for entry in lot["entries"]]
+          assert len(ids) == len(set(ids))
+          assert "R2-M047" in ids and "R2-M045" not in ids
+          ns = {"x": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+          with ZipFile(book.with_suffix(".xlsx")) as z:
+              assert z.testzip() is None
+              for name in z.namelist():
+                  if name.endswith((".xml", ".rels")):
+                      ET.fromstring(z.read(name))
+              sheets = ET.fromstring(z.read("xl/workbook.xml"))
+              assert [item.attrib["name"] for item in sheets.findall(".//x:sheet", ns)] == ["Synthèse", "P0", "P1", "P2", "P3"]
+              for index, count in enumerate(counts, start=2):
+                  sheet = ET.fromstring(z.read(f"xl/worksheets/sheet{index}.xml"))
+                  assert len(sheet.findall(".//x:sheetData/x:row", ns)) == count + 4
+                  assert sheet.find("./x:autoFilter", ns).attrib["ref"] == f"A4:G{count + 4}"
+          print("LOT4_XLSX_OK", counts)
+          PY
