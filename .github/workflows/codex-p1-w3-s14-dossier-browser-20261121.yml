@@ -1,0 +1,37 @@
+name: Chromium du dossier signé W3-S14
+on:
+  push:
+    branches: [codex/p1-w3-s14-dossier-browser-20261121]
+permissions:
+  contents: read
+jobs:
+  receipts:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /app/
+            /scripts/
+            /tests/
+            /public/**/*.json
+            /docs/**/*.json
+            /public/game/homeworld/v64/
+            /public/game/homeworld/v77/
+            /public/audio/
+            /package.json
+            /package-lock.json
+            /.npmrc
+            /tsconfig*.json
+            /eslint.config.mjs
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '22'}
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node scripts/qa-w3-s14-duel-20261121.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dossier-recus-w3-s14
+          path: outputs/qa-w3-s14-duel-20261121
