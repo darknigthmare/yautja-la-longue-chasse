@@ -58,7 +58,7 @@ export async function loadWarAssaultReplayRulesV115() {
   return import('data:text/javascript;base64,' + Buffer.from(result.outputFiles[0].contents).toString('base64'));
 }
 
-function checksum(value) {
+export function assaultReplayChecksumV115(value) {
   const text = JSON.stringify(value, (_key, entry) =>
     entry !== null && typeof entry === 'object' && !Array.isArray(entry)
       ? Object.fromEntries(Object.keys(entry).sort().map(key => [key, entry[key]]))
@@ -120,7 +120,10 @@ export function recordAssaultReplayV115(game, input) {
   let state = launch.state;
   let mission = state.active;
   const missionId = mission.id;
-  const frames = [{command: ['begin'], accepted: true, message: launch.message, ...tacticalFrame(state, mission, rules)}];
+  const frames = [{
+    command: ['begin'], accepted: true, message: launch.message,
+    stateDigest: assaultReplayChecksumV115(state), ...tacticalFrame(state, mission, rules),
+  }];
   function execute(command) {
     if (!state.active) throw new Error('La recette contient un ordre après le rapport final.');
     const [kind, ...args] = command;
@@ -129,7 +132,8 @@ export function recordAssaultReplayV115(game, input) {
     const step = next.assaultStep;
     mission = step?.field ?? state.active ?? mission;
     frames.push({
-      command, accepted: next.accepted, message: next.message, ...tacticalFrame(state, mission, rules),
+      command, accepted: next.accepted, message: next.message,
+      stateDigest: assaultReplayChecksumV115(state), ...tacticalFrame(state, mission, rules),
       ...(step ? {exchange: {shots: step.shots, defeated: step.defeated}} : {}),
     });
   }
@@ -142,20 +146,20 @@ export function recordAssaultReplayV115(game, input) {
   const payload = {
     schema: traceSchema, recipe,
     seedInputs: {
-      sourceSha: initial.sourceSha, initialDigest: checksum(initial), missionId, startedAt: recipe.startedAt,
+      sourceSha: initial.sourceSha, initialDigest: assaultReplayChecksumV115(initial), missionId, startedAt: recipe.startedAt,
       regionalSeed: game.warAssaultWaveProfileV140(territory.id, rules).regionalSeed,
       waveTerritory: {id: territory.id, region: territory.region, column: territory.column, row: territory.row},
     },
-    frames, finalStateDigest: checksum(state),
+    frames, finalStateDigest: assaultReplayChecksumV115(state),
     report: state.reports.find(report => report.id === missionId) ?? null,
   };
-  return {...payload, sha256: checksum(payload)};
+  return {...payload, sha256: assaultReplayChecksumV115(payload)};
 }
 
 export function verifyAssaultReplayV115(game, replay) {
   if (!replay || replay.schema !== traceSchema) throw new Error('Format de replay inconnu.');
   const {sha256, ...payload} = replay;
-  if (checksum(payload) !== sha256) throw new Error('Empreinte du replay invalide.');
+  if (assaultReplayChecksumV115(payload) !== sha256) throw new Error('Empreinte du replay invalide.');
   const regenerated = recordAssaultReplayV115(game, replay.recipe);
   if (regenerated.sha256 !== sha256) throw new Error('Le moteur courant ne reproduit pas le replay.');
   return {verified: true, sha256, frames: regenerated.frames.length, report: regenerated.report};

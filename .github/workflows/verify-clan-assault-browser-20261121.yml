@@ -1,0 +1,56 @@
+name: Capture and replay a native V115 assault
+on:
+  push:
+    branches: [codex/verify-clan-assault-browser-20261121]
+permissions:
+  contents: read
+jobs:
+  replay:
+    name: Capture the native assault report and compare every committed state
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      COMMAND_OPERATIONS_ASSAULT_REPLAY: '1'
+      COMMAND_OPERATIONS_OUTPUT: outputs/qa-assault-replay
+      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+    steps:
+      - name: Checkout the real V115 panel, rules and browser fixture
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /tsconfig.json
+            /app/
+            /types/
+            /lib/
+            /scripts/qa-clan-war-command-operations-20261109.mjs
+            /scripts/replay-clan-war-assault-v115.mjs
+            /tests/browser/clan-war-v151-four-modes.fixture.tsx
+            /tests/clan-war-assault-replay-v115.test.mjs
+            /public/audio/manifest.json
+            /public/audio/sfx/footstep/v54.wav
+            /public/game/assets/clan-field-20261103/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install pinned dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify the replay reader and CLI
+        run: node --test --test-reporter=spec tests/clan-war-assault-replay-v115.test.mjs
+      - name: Complete the native browser assault and reconcile its report
+        run: |
+          node scripts/qa-clan-war-command-operations-20261109.mjs
+          node -e "console.log(JSON.stringify(require('./outputs/qa-assault-replay/report.browser-run.json').checks, null, 2))"
+      - name: Preserve actual native panel captures and the replay
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: assault-v115-native-panel-and-replay
+          path: outputs/qa-assault-replay/
+          if-no-files-found: warn
