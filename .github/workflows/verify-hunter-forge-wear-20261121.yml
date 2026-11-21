@@ -354,7 +354,7 @@ jobs:
           done
           curl --fail --silent http://127.0.0.1:3121/ > /dev/null
           printf 'YAUTJA_QA_BUILD_ID=%s\n' "$(cat .next/BUILD_ID)" >> "$GITHUB_ENV"
-      - name: Verify exact armor alpha, restored repair and the locked outfit pattern
+      - name: Qualify the typed plate mask, repaired reserve and outfit admission
         if: ${{ !cancelled() && steps.server.conclusion == 'success' }}
         env:
           HUNTER_FORGE_QA_COMMIT: '${{ github.sha }}'

@@ -74,7 +74,7 @@ export function armorWearCanvasV172(image: HTMLImageElement, wear: ArmorWearV172
   silhouette.drawImage(image, placement?.x ?? 0, placement?.y ?? 0, placement?.width ?? width, placement?.height ?? height);
   let pixels: Uint8ClampedArray;
   try { pixels = silhouette.getImageData(0, 0, width, height).data; } catch { return null; }
-  let left = width, top = height, right = -1, bottom = -1;
+  let left: number = width, top: number = height, right = -1, bottom = -1;
   for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
     if (pixels[(y * width + x) * 4 + 3] < 160) continue;
     left = Math.min(left, x);
