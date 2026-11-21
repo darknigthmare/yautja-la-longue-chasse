@@ -282,7 +282,7 @@ jobs:
           done
           curl --fail --silent http://127.0.0.1:3121/ > /dev/null
           printf 'YAUTJA_QA_BUILD_ID=%s\n' "$(cat .next/BUILD_ID)" >> "$GITHUB_ENV"
-      - name: Verify the native village art and the arrived original after reload
+      - name: Walk the village after native art loads and confirm final custody at the door
         env:
           RESIDENCE_QA_COMMIT: '${{ github.sha }}'
         run: node scripts/qa-residence-move-20261121.mjs

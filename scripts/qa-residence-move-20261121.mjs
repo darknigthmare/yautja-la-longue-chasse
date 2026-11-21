@@ -94,11 +94,11 @@ try {
     await root.or(play).first().waitFor();
     if (await play.isVisible()) await play.click();
     await root.waitFor();
-    await root.locator('[data-region-player]').waitFor();
+    await root.locator('[data-region-player]').waitFor({ state: 'attached' });
     const resume = root.locator('[data-region-resume]');
     const artError = root.getByRole('button', { name: 'Recharger le décor' });
     await resume.or(artError).first().waitFor();
-    assert.equal(await artError.isVisible(), false, await root.getByRole('dialog').innerText());
+    if (await artError.isVisible()) throw new Error(await root.getByRole('dialog').innerText());
     await page.clock.pauseAt(new Date(await page.evaluate(() => Date.now() + 100)));
     await ground.resume();
   }
