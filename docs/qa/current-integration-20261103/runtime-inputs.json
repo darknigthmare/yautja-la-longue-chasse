@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2415,
-  "bytes": 1116571357,
+  "files": 2424,
+  "bytes": 1116775155,
   "entries": [
     {
       "path": ".github/workflows/p0-p1-coherence-20261109.yml",
@@ -175,8 +175,13 @@
     },
     {
       "path": "app/game/ClanChroniclePanel.tsx",
-      "bytes": 19316,
-      "sha256": "dbbd3f05686b1039ac397bb3c88622b51acfb5d7b09e4d1877958b5ff88a48d8"
+      "bytes": 20978,
+      "sha256": "77aca5e1876bf3cee7f174b0659728fca4698eb6414b6be2e2db08132ab5df5f"
+    },
+    {
+      "path": "app/game/ClanHullProjectPanel.tsx",
+      "bytes": 3695,
+      "sha256": "cbbe33823a2cfac49f1e3c2a4a824f602f36a1105596dbe6faf8d5bd1c12b63a"
     },
     {
       "path": "app/game/ClanLogisticsV108.module.css",
@@ -200,8 +205,8 @@
     },
     {
       "path": "app/game/ClanShipHub.tsx",
-      "bytes": 19934,
-      "sha256": "d0d8fb1133c207be20a5b43a0f6a3e5f0691e4f7779ec57f3a7cf4b279d1d686"
+      "bytes": 20275,
+      "sha256": "eb9f049a6d8bd103499e810b7f230a0e07112e4dcb5fe63588b8467b09d94b5d"
     },
     {
       "path": "app/game/ClanShipHuntConversation.tsx",
@@ -245,8 +250,8 @@
     },
     {
       "path": "app/game/ClanShipOperationsPanel.tsx",
-      "bytes": 24741,
-      "sha256": "4304de4ec0adbd2c5e4ed04c3cc9af3f696676341b927e9ccf253888fdc82194"
+      "bytes": 25541,
+      "sha256": "e9894d034750bf062a083d93e8dd9a2ed8eed62ed4ee35e39d9854f91a735ec1"
     },
     {
       "path": "app/game/ClanShipReturnEscortScene.module.css",
@@ -285,8 +290,8 @@
     },
     {
       "path": "app/game/ClanSupplyRouteV109.tsx",
-      "bytes": 42478,
-      "sha256": "48fde9c58b733ffef256b70d2e9a6dcf9bef5948e5022ed98a6ba4fcf16eefc4"
+      "bytes": 42986,
+      "sha256": "f55c0164aad5a4719bd3d62184649e3c74ef12b2800cedf662d9f5e51048e5d5"
     },
     {
       "path": "app/game/ClanWarAssaultV106.module.css",
@@ -310,8 +315,8 @@
     },
     {
       "path": "app/game/ClanWarBibleV6Panel.tsx",
-      "bytes": 24705,
-      "sha256": "bcf78e47c0035eee707d86489e3252540ae6355456c7da2a6fe7369956f74656"
+      "bytes": 24817,
+      "sha256": "3087f2e003b65c5078baa65fbeb086c9c9f8943e92451428418eb77c379940ee"
     },
     {
       "path": "app/game/ClanWarCommandOverlay.module.css",
@@ -460,8 +465,8 @@
     },
     {
       "path": "app/game/ClanWarPanelV85.tsx",
-      "bytes": 83226,
-      "sha256": "d71c339fba8235752ec1bb151f1bd667f378ca8358bdcda28999e3d5b889fef1"
+      "bytes": 83337,
+      "sha256": "53ce7da19803a61ef3beef970b5bd231ac76c5552a8cf57c3e1dd8129757327a"
     },
     {
       "path": "app/game/ClanWarPlanetsV96.module.css",
@@ -730,8 +735,8 @@
     },
     {
       "path": "app/game/FirstHuntSoloV70.tsx",
-      "bytes": 19313,
-      "sha256": "08abf4111c5d6360ffabe81785248a3ae7e5ab7e3c5473079fde036e2b92f728"
+      "bytes": 19680,
+      "sha256": "8eabf01cbeb104c608ffd65446e2bf49315609c498ebc8befac5acd593348113"
     },
     {
       "path": "app/game/FirstHuntSoloV90.module.css",
@@ -760,8 +765,8 @@
     },
     {
       "path": "app/game/GameClient.tsx",
-      "bytes": 435526,
-      "sha256": "27317ec7f715f239d5f251eeb04f8e029d6050cc89b449547af914c812f2e8aa"
+      "bytes": 438002,
+      "sha256": "d504b81e8b7d7f2ebb71baa91a76bbc8027eaf65b680252400fbdcf40f104827"
     },
     {
       "path": "app/game/GameReserveEntryV104.module.css",
@@ -1852,6 +1857,16 @@
       "path": "app/game/PlanetTraversalLabV154.tsx",
       "bytes": 13108,
       "sha256": "b34d98cab1728089928d2bb4542d67d9f5f0a8047f189873bf223506ef02c8fc"
+    },
+    {
+      "path": "app/game/QuatzaRijScene.module.css",
+      "bytes": 2322,
+      "sha256": "4ca14acb062997175810bf4f976903817609d2c3a4ba249fb2a603e2d78773de"
+    },
+    {
+      "path": "app/game/QuatzaRijScene.tsx",
+      "bytes": 17565,
+      "sha256": "8429e05521484dfccc9fa352063200f8ccf30b38f4bf4d61985d5aa6a8cd2cc3"
     },
     {
       "path": "app/game/QueenHuntPanelV163.tsx",
@@ -3080,8 +3095,8 @@
     },
     {
       "path": "app/game/firstHuntSoloV70Rendering.ts",
-      "bytes": 8317,
-      "sha256": "2b8f382112a9331abef67775a80697aa09d5e2171eeba766f641609d3fadec59"
+      "bytes": 8771,
+      "sha256": "b9981d450fd81451575bdd1f0f936cb3874313e854f8b345653533422ed6f266"
     },
     {
       "path": "app/game/firstHuntSoloV90Rendering.ts",
@@ -3650,8 +3665,8 @@
     },
     {
       "path": "app/game/save.ts",
-      "bytes": 120989,
-      "sha256": "14bd98c31e183b5f776b3d8d9c86f7ec67c6ed060d163cac0bbabaf6dee34d48"
+      "bytes": 122772,
+      "sha256": "28aaf384783f8e7b8d1b71d20e6f229ccc11a4a8dbf971e3cefcf4f46cbf5a05"
     },
     {
       "path": "app/game/ship-level.css",
@@ -3805,8 +3820,8 @@
     },
     {
       "path": "app/game/systems/campaignSoloV70.ts",
-      "bytes": 8326,
-      "sha256": "3a06c22455907f27759966ae1dc7755f0a8ac39a4f22d5e0147b0fcdd49ef6e4"
+      "bytes": 9878,
+      "sha256": "d6dfca67fa80c7fb7662df3e2951206de9747ef374aa99b8d0cab32e11598e75"
     },
     {
       "path": "app/game/systems/campaignSoloV90.ts",
@@ -3857,6 +3872,11 @@
       "path": "app/game/systems/clanHoistMaintenanceV90.ts",
       "bytes": 27270,
       "sha256": "b6dd3960df9a897712e651e9d932df57932bda1a5d7f54024af23ee3e0e95a65"
+    },
+    {
+      "path": "app/game/systems/clanHullProjectV171.ts",
+      "bytes": 6880,
+      "sha256": "58a787bba7a3f7f2cf6e150bb8828ef31337545672335dfb6939e2970db2f632"
     },
     {
       "path": "app/game/systems/clanLogisticsSessionV108.ts",
@@ -4145,8 +4165,8 @@
     },
     {
       "path": "app/game/systems/clanWarOperationsV115.ts",
-      "bytes": 106790,
-      "sha256": "791366e32cc9855892978793f1c7afe2c26edc6aa6a98ee89fa173829783d6c1"
+      "bytes": 106797,
+      "sha256": "0cb8eb153c13379b36d329e9d0b1e87aaaf4a4ed660f5f11717c69c63c391664"
     },
     {
       "path": "app/game/systems/clanWarOuterChoicesV142.ts",
@@ -4600,8 +4620,8 @@
     },
     {
       "path": "app/game/systems/fieldStashV112.ts",
-      "bytes": 6629,
-      "sha256": "4bd744bd057c3f11a10fe9b7707d545af851002659a86b25e5a39817c41ee6bf"
+      "bytes": 7360,
+      "sha256": "e9e4a5cc0d70fc408da6754048e3fc9e0ebaab995c31d228d0f1d06ddd404694"
     },
     {
       "path": "app/game/systems/fieldToolsV111.ts",
@@ -4630,8 +4650,8 @@
     },
     {
       "path": "app/game/systems/firstHuntSoloV70.ts",
-      "bytes": 19097,
-      "sha256": "26b7f73eb78a91da277f184ae4efac784d097c178b6c16c46b427a097bc0b1a4"
+      "bytes": 23212,
+      "sha256": "47a416829090602f14c0a51601b23b18c90e559b8616e309b3109ca6a9047110"
     },
     {
       "path": "app/game/systems/firstHuntSoloV90.ts",
@@ -6444,6 +6464,11 @@
       "sha256": "cf7709212f8c3c782d5d77fec43db751e5c05cfc6d5d2d1e573a356948864c09"
     },
     {
+      "path": "app/game/systems/quatzaRij.ts",
+      "bytes": 18516,
+      "sha256": "b46af971dba707eea3bda67112597281655f0c677bf6e195f11669629c49f12b"
+    },
+    {
       "path": "app/game/systems/queenHuntV163.ts",
       "bytes": 18354,
       "sha256": "dfbdfd715a080dfdccf3194c021c3c50675fe4234ef82e0c44b7538dc59ebcba"
@@ -6695,8 +6720,8 @@
     },
     {
       "path": "app/game/types.ts",
-      "bytes": 26654,
-      "sha256": "93a39516c1e10aaf9b5fc73e0f4a4842fcc58e3a0d353eb275215dc81cb447c9"
+      "bytes": 26816,
+      "sha256": "21331255f490b729f5bb69340f075b031aa0ec42384e4015debb89783cb09299"
     },
     {
       "path": "app/game/useGeneratedWarCatalogV102.ts",
@@ -7424,6 +7449,11 @@
       "sha256": "d54f5b7eee907d2182e720148b46310679c7a22b08ac08f7a1c62185b505d9cf"
     },
     {
+      "path": "docs/suivi-production/v113-quatza-rij-20261121/manifest.json",
+      "bytes": 2198,
+      "sha256": "3355eb75dca1d04ecd6ddc2b9046197299ba5f3163e5c44fc5fe742d1eded96a"
+    },
+    {
       "path": "docs/suivi-production/v113-warp-p0p1-20261120.md",
       "bytes": 1978,
       "sha256": "3dc6253a85f0bf857ed202fedc9fd0ab2fa05bc749550e8bafc3261a8033573f"
@@ -7510,8 +7540,8 @@
     },
     {
       "path": "docs/v113-runtime-public-inputs.json",
-      "bytes": 202224,
-      "sha256": "13407fb18f1d53e7f9e806774642d65d25b93261e663885538ebdf3fe019b916"
+      "bytes": 203006,
+      "sha256": "cc3273ea01a9c533e87429b4e805319aff4db5f57c8b012c9c408afb7d78d3c1"
     },
     {
       "path": "next.config.ts",
@@ -9684,6 +9714,21 @@
       "sha256": "8a7abf0d92d9d38b985d2c6d18bb7e441c9d5f7bd7b2c22c4bae83bbf57319db"
     },
     {
+      "path": "public/game/quatza-rij/hide.png",
+      "bytes": 10153,
+      "sha256": "826df71b7646950aee05e8cc08feabd831ac488563d73e29537086fa6c80df7a"
+    },
+    {
+      "path": "public/game/quatza-rij/poses.png",
+      "bytes": 116961,
+      "sha256": "5299f3228c1ad96fd2c40ca1fe4f3849958ca29bc81b3a18471ae068b2965633"
+    },
+    {
+      "path": "public/game/quatza-rij/skull.png",
+      "bytes": 8358,
+      "sha256": "965dc1980d2213af7c5b7df2562bb1db2c3447b3ccd51b1ed272362f3c94dffd"
+    },
+    {
       "path": "public/game/ship-interior/v20/corridor-wall.webp",
       "bytes": 577450,
       "sha256": "3ee33442f266c8e84d8b2110d4c28758b84cff2ab04433bb6a81a8b2eaa1039a"
@@ -11500,8 +11545,8 @@
     },
     {
       "path": "tests/field-stash-v112.test.mjs",
-      "bytes": 7771,
-      "sha256": "2cdb4f86f5ee52317d097c776ee652ea6001a3bd2716ad6d35e729f351138dba"
+      "bytes": 8958,
+      "sha256": "8e9541a78f289ef38462d0b99f9106d3e4a300ea6ae3b9192fd8980e992178c3"
     },
     {
       "path": "tests/fixtures/excel-history-v111-homeworld-v112.json",
