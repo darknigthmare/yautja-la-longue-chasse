@@ -1,29 +1,20 @@
-name: REM112 repli à pleine charge depuis captures naturelles
+name: REM112 repli Glace compteurs issus de victoires
 on:
   push:
-    branches: [codex/qa-rem112-native-repli-lot4-20261121]
+    branches: [codex/qa-rem112-repli-ice-retry-lot4]
 permissions:
   contents: read
+  actions: read
 jobs:
-  loaded:
-    name: ${{ matrix.case.id }}
+  ice:
     runs-on: ubuntu-24.04
-    timeout-minutes: 17
-    strategy:
-      fail-fast: false
-      matrix:
-        case:
-          - {id: ice-scout, mission: ice-cryostalker, armor: scout, seeds: '9 10 12'}
-          - {id: swamp-scout, mission: swamp-hydra, armor: scout, seeds: '9 10 12'}
-          - {id: desert-scout, mission: desert-sandmaw, armor: scout, seeds: '9 10 12'}
-          - {id: volcano-hunter, mission: volcano-bad-blood, armor: hunter, seeds: '9 10 12'}
+    timeout-minutes: 16
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
-          fetch-depth: 1
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /*
@@ -35,39 +26,30 @@ jobs:
             /docs/qa/v112-ground-campaign/tool-origin.json
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
-          node-version: '22'
+          node-version: 22
           cache: npm
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: rem112-lot4-ice-scout-repli
+          run-id: 44942587435
+          github-token: ${{ github.token }}
+          path: outputs/admission
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Réappliquer les véritables victoires puis essayer des prises admises
-        env:
-          CASE: ${{ matrix.case.id }}
-          MISSION: ${{ matrix.case.mission }}
-          ARMOR: ${{ matrix.case.armor }}
-          SEEDS: ${{ matrix.case.seeds }}
-        run: |
-          origin=docs/qa/v112-ground-campaign/campaign-origin-save.json
-          root="outputs/repli/$CASE"
+      - run: |
+          root=outputs/repli-ice
           mkdir -p "$root"
-          stage=1
+          seed="$(find outputs/admission -path '*/earned-9/after-win.json' -print -quit)"
+          test -f "$seed"
+          cp "$seed" "$root/attempt-10-origin.json"
+          origin="$root/attempt-10-origin.json"
           full=0
-          for attempt in $SEEDS; do
-            while [ "$stage" -lt "$attempt" ]; do
-              advance="$root/earned-$stage"
-              node scripts/qa-hunt-ground-campaign-v112.mjs --mission="$MISSION" --armor=hunter \
-                --baseSave="$origin" --replay=true --requireComplete=true --seconds=300 \
-                --output="$advance" --successSave="$advance/after-win.json" > "$root/earned-$stage.log" 2>&1 ||
-                { tail -30 "$root/earned-$stage.log"; exit 1; }
-              origin="$advance/after-win.json"
-              stage=$((stage + 1))
-            done
-            for trial in early160 early360 late550; do
+          for attempt in 10 11 12; do
+            for trial in early270 early360 early460 early720; do
               distance=${trial//[!0-9]/}
-              extra=("--sweepDistance=$distance")
-              if [[ "$trial" == early* ]]; then extra+=(--sweepEarly=true); fi
               output="$root/$attempt-$trial"
-              if node scripts/qa-hunt-ground-campaign-v112.mjs --mission="$MISSION" --armor="$ARMOR" \
-                --baseSave="$origin" --insertion=visible-ship --harvest=true --harvestSweep=true \
-                "${extra[@]}" --minimumRetainedLoad=1 --replay=true --seconds=360 --output="$output" > "$output.log" 2>&1
+              if node scripts/qa-hunt-ground-campaign-v112.mjs --mission=ice-cryostalker --armor=scout \
+                --baseSave="$origin" --insertion=visible-ship --harvest=true --harvestSweep=true --sweepEarly=true \
+                "--sweepDistance=$distance" --minimumRetainedLoad=1 --replay=true --seconds=360 --output="$output" > "$output.log" 2>&1
               then full=1
               fi
               if [ -f "$output/report.json" ]; then
@@ -75,12 +57,19 @@ jobs:
               else
                 tail -30 "$output.log"
               fi
+              if [ "$full" -eq 1 ]; then break; fi
             done
+            if [ "$full" -eq 1 ] || [ "$attempt" -eq 12 ]; then break; fi
+            output="$root/earned-$attempt"
+            if ! node scripts/qa-hunt-ground-campaign-v112.mjs --mission=ice-cryostalker --armor=berserker \
+              --difficulty=young-blood --baseSave="$origin" --replay=true --requireComplete=true --seconds=300 \
+              --output="$output" --successSave="$output/after-win.json" > "$output.log" 2>&1
+            then tail -30 "$output.log"; break; fi
+            origin="$output/after-win.json"
           done
           test "$full" -eq 1
       - if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: rem112-lot4-${{ matrix.case.id }}-repli
-          path: outputs/repli/
-          if-no-files-found: ignore
+          name: rem112-lot4-ice-targeted-repli
+          path: outputs/repli-ice/
