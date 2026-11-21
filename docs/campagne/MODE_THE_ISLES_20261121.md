@@ -4,6 +4,8 @@ Nov 21, 2026 · @darknigthmare
 
 Mode de jeu dédié, à côté de The Pit, de la Guerre des clans et de Queen Hunt (voir « Modes multijoueur dédiés » dans la [Bible de campagne](BIBLE_DE_CAMPAGNE.md)).
 
+Tout ce qu'il faut produire est listé dans [The Isles — Inventaire complet de production](ISLES_PRODUCTION_COMPLETE_20261121.md).
+
 **Règle de lecture.** Tout est *(proposé)* sauf les lignes **Décision**. Les règles de la campagne (code d'honneur, barème, IA humaine, chiens) s'appliquent quand ce document ne dit rien d'autre.
 
 ### Décisions du 21 novembre 2026
