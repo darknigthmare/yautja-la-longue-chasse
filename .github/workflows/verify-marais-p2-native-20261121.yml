@@ -1,4 +1,4 @@
-name: Qualify the next V112 browser hunt in Naraka Delta
+name: Finish the real Naraka Delta extraction and workshop
 on:
   push:
     branches: [codex/verify-marais-p2-20261121]
@@ -9,7 +9,7 @@ permissions:
 jobs:
   swamp:
     runs-on: ubuntu-latest
-    timeout-minutes: 27
+    timeout-minutes: 37
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: 1
       NEXT_TELEMETRY_DISABLED: 1
@@ -36,6 +36,31 @@ jobs:
           name: rem112-lot4-volcano-hound-tissue
           github-token: ${{ github.token }}
           path: outputs/volcano-parent
+      - name: Read the earlier authentic swamp receipt, without admitting unverified state
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          run-id: 44953627451
+          name: p2-rem112-swamp-browser
+          github-token: ${{ github.token }}
+          path: outputs/swamp-incomplete-parent
+      - name: Observe the final Swamp sidecar from the budget-limited run
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFile } from 'node:fs/promises';
+          const original = JSON.parse(await readFile('outputs/swamp-incomplete-parent/report.json'));
+          const last = original.attempts.at(-1)?.final?.state;
+          const first = original.attempts.find(a => a.missionId === 'swamp-hydra')?.resumeReceipt?.sidecar;
+          const active = original.activeHunt;
+          console.log(JSON.stringify({
+            parent: '44953627451/14727332367',
+            earlyPause: first?.snapshot?.checkpoint?.elapsed,
+            activeAtCapture: active?.snapshot?.checkpoint?.elapsed,
+            activeEncounter: active?.encounterRun ?? active?.snapshot?.encounterRun,
+            decision: last?.phase, x: last?.player.x, y: last?.player.y, health: last?.player.health,
+            exit: last?.mission.exitX ?? last?.mission.extractionX ?? last?.world.width,
+            events: last?.huntRites?.specimensV112,
+          }));
+          NODE
       - name: Read the unlocked swamp campaign with the existing earned tool
         run: |
           node --input-type=module <<'NODE'
@@ -61,7 +86,7 @@ jobs:
             --campaign-source outputs/volcano-parent/report.json \
             --missions swamp-hydra --harvest-action harvest-hide --harvest-species naraka-delta--fen-leaper \
             --require-harvest-workshop --require-complete --require-resume --max-retries 2 \
-            --wall-seconds 990 --chromium /usr/bin/google-chrome \
+            --wall-seconds 1560 --chromium /usr/bin/google-chrome \
             --asset-cache outputs/source-cache --output outputs/swamp
       - name: Preserve the original swamp observations and native receipts
         if: always()
