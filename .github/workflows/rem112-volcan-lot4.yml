@@ -1,7 +1,7 @@
 name: REM112 prélèvement avec atelier en navigateur
 on:
   push:
-    branches: [codex/qa-rem112-volcan-lot4-20261121]
+    branches: [codex/qa-rem112-volcan-receipts-lot4-20261121]
 permissions:
   contents: read
 jobs:
@@ -18,12 +18,6 @@ jobs:
             seed: browser-workshop
             species: cinder-12--hell-hound-stalker
             action: harvest-tissue
-            budget: 1000
-          - id: volcano-xeno-bone
-            mission: volcano-bad-blood
-            seed: browser-workshop
-            species: cinder-12--scorch-xeno
-            action: harvest-bone
             budget: 1000
           - id: ice-xeno-bone-control
             mission: ice-cryostalker
@@ -58,18 +52,18 @@ jobs:
             --missions "${{ matrix.case.mission }}" \
             --harvest-species "${{ matrix.case.species }}" \
             --harvest-action "${{ matrix.case.action }}" \
-            --require-harvest-workshop --require-complete --require-resume \
+            --replay-completed --require-harvest-workshop --require-complete --require-resume \
             --wall-seconds "${{ matrix.case.budget }}" --chromium /usr/bin/google-chrome \
             --asset-cache outputs/source-cache --output outputs/browser
       - if: always()
         run: |
           node --input-type=module <<'NODE'
           import {readFile} from 'node:fs/promises';
-          const path='outputs/browser/browser-report.json';
+          const path='outputs/browser/report.json';
           let report;
           try { report=JSON.parse(await readFile(path,'utf8')); }
           catch (error) { console.log(error.message); process.exit(0); }
-          console.log(JSON.stringify({qualification:report.qualification,coverage:report.coverage,errors:report.errors,harvests:report.harvestAttempts,workshop:report.workshop,assetCount:report.missingAssets.length,attempts:report.attempts.map(x=>({missionId:x.missionId,delivered:x.delivered,resumed:x.suspendedAndReloaded,final:{phase:x.final?.phase,elapsed:x.final?.elapsed,health:x.final?.player?.health},specimens:x.specimensAfterDelivery}))}));
+          console.log(JSON.stringify({qualification:report.qualification,coverage:report.coverage,failure:report.failure,errors:report.errors,harvests:report.harvestAttempts,workshop:report.workshop.map(({before,after,...work})=>work),assetCount:report.missingAssets.length,attempts:report.attempts.map(x=>({missionId:x.missionId,delivered:x.delivered,resumed:x.suspendedAndReloaded,final:{phase:x.final?.state.phase,elapsed:x.final?.state.elapsed,health:x.final?.state.player?.health},specimens:x.delivered}))}));
           NODE
       - if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

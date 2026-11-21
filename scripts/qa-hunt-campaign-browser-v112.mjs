@@ -70,7 +70,7 @@ const routes=new Map(mod.exports.GALAXY_NAVIGATION.sectors.flatMap(sector=>secto
   .flatMap(body=>body.missions.map(mission=>[mission.id,{sector,system,body,mission}])))));
 const requested=option('--missions',mod.exports.MISSIONS.map(mission=>mission.id).join(',')).split(',');
 assert.ok(requested.length&&requested.every(id=>routes.has(id)),'real requested campaign routes');
-if(requireComplete||requireResume)assert.equal(new Set(requested).size,requested.length,'each required contract must be distinct');
+if(requireComplete||requireResume||requireHarvestWorkshop)assert.equal(new Set(requested).size,requested.length,'each required contract must be distinct');
 if(requireIceUnderpass)assert.ok(requested.includes('ice-cryostalker'),'the ice underpass needs a real Cryostalker attempt');
 const entry='import {createRoot} from "react-dom/client";import GameClient from "./app/game/GameClient";import "./app/globals.css";createRoot(document.getElementById("root")).render(<GameClient/>);';
 const bundle=await build({stdin:{contents:entry,resolveDir:root,loader:'tsx'},bundle:true,write:false,metafile:true,
@@ -223,8 +223,9 @@ try{
     await capture('earned-flaying-tool');await backToDeck();
   };
   const conserveRealSpecimen=async({missionId,delivered,returnMarks})=>{
-    const target=delivered[0];if(!target)return;
     const admissionSave=await saved();
+    const target=delivered[0]??(!requireHarvestWorkshop?admissionSave.inventory.harvestV112.specimens[0]:null);
+    if(!target)return;
     await openDirect('trophy-hall');
     const card=page.locator('[data-specimen-id-v112='+JSON.stringify(target.id)+']');
     let pausedAndReloaded=false;const actions=[];
@@ -237,6 +238,7 @@ try{
         const beforeReload=await saved();
         const paused=beforeReload.inventory.harvestV112.jobs.find(value=>value.id===job.id);
         assert.equal(paused?.status,'paused');assert.equal(paused.unitsDone,job.unitsDone);
+        assert.equal(beforeReload.profile.clanMarks,state.profile.clanMarks,'pausing the paid work must not charge or refund marks');
         await capture('workshop-paused');await page.reload();
         await enterCampaignDeck(page);
         const afterReload=await saved();assert.deepEqual(afterReload.inventory.harvestV112,beforeReload.inventory.harvestV112);
@@ -248,7 +250,24 @@ try{
       const button=card.getByRole('button',{name:label});
       const actionLabel=await button.textContent();await button.click();
       const next=await saved();
-      assert.notDeepEqual(next.inventory.harvestV112,ledger,'the selected workshop action must write its actual ledger');
+      const updated=next.inventory.harvestV112;
+      assert.notDeepEqual(updated,ledger,'the selected workshop action must write its actual ledger');
+      const nextJob=updated.jobs.find(value=>value.specimenId===item.id&&value.status!=='completed');
+      if(!job&&item.stage!=='mounted'){
+        assert.equal(nextJob?.status,'active');
+        assert.equal(nextJob.unitsDone,0);
+        assert.equal(next.profile.clanMarks,state.profile.clanMarks-nextJob.costPaid);
+      }else{
+        assert.equal(next.profile.clanMarks,state.profile.clanMarks,'working, resuming and archiving cannot charge marks again');
+        if(job?.status==='paused'){
+          assert.equal(nextJob?.id,job.id);
+          assert.equal(nextJob.status,'active');
+          assert.equal(nextJob.unitsDone,job.unitsDone);
+        }else if(job){
+          const progressed=updated.jobs.find(value=>value.id===job.id);
+          assert.equal(progressed?.unitsDone,job.unitsDone+1,'one input records one gesture in the same job');
+        }
+      }
       actions.push(actionLabel);
     }
     const after=await saved();
@@ -376,7 +395,8 @@ try{
         if(retryEvents.length>=maxRetries||!await retry.count())break;
         await releaseKeys();const label=await retry.textContent();retryEvents.push({elapsed:game.elapsed,nativeDeath:observed,button:label});
         await retry.click();Object.assign(memory,{previousX:0,stuckTicks:0,jumpUntil:-1,nextJump:0,nextInteractTick:0});
-        delete memory.dropDirection;delete memory.dropTargetX;examined.clear();
+        delete memory.dropDirection;delete memory.dropTargetX;delete memory.harvestEdge;delete memory.harvestDirection;
+        examined.clear();harvestTries.clear();
         report.inputs.push({missionId,elapsed:game.elapsed,type:'DOM retry',label});continue;
       }
       if(game.phase==='finished')break;
@@ -426,7 +446,8 @@ try{
                   observed.state.huntRites.completedEventIds.includes(eventId));
               },flags,{timeout:45000});
               const completed=await page.evaluate(eventId=>window.__observeCanonicalHuntV112?.().state.huntRites.completedEventIds.includes(eventId)===true,eventId);
-              if(completed)await open.locator('[data-rite-action-v112="leave"]').waitFor({timeout:4000});
+              if(completed&&(action==='analyze'||action==='flay'))
+                await open.locator('[data-rite-action-v112="leave"]').waitFor({timeout:4000});
               return completed;
             };
             if(await open.locator('[data-rite-action-v112="analyze"]:enabled').isVisible())await perform('analyze');
@@ -438,11 +459,12 @@ try{
             const chosen=await enabledPart().getAttribute('data-rite-action-v112',{timeout:2000}).catch(()=>null);
             if(chosen)attempt.completed=await perform(chosen);
           }
-          const observed=await page.evaluate(()=>window.__observeCanonicalHuntV112?.().state);
-          attempt.specimens=observed?.huntRites.specimensV112??[];
-          attempt.message=observed?.message;
-          await captureHunt(attempt.specimens.length?'actual-anatomical-harvest':'rite-attempt-no-specimen');
         }catch(error){attempt.failure=String(error);}
+        const observed=await page.evaluate(()=>window.__observeCanonicalHuntV112?.().state);
+        attempt.specimens=observed?.huntRites.specimensV112??[];
+        attempt.completedEventIds=observed?.huntRites.completedEventIds.filter(id=>id.endsWith(':'+bodyId))??[];
+        attempt.message=observed?.message;
+        await captureHunt(attempt.specimens.length?'actual-anatomical-harvest':'rite-attempt-no-specimen');
         const close=bodyMenu.getByRole('button',{name:'Fermer le menu rituel',exact:true});
         if(await close.isVisible())try{await close.click({timeout:3000});}catch(error){attempt.closeFailure=String(error);}
         await page.locator('canvas').last().focus();report.harvestAttempts.push(attempt);
@@ -516,8 +538,10 @@ try{
       afterProgress.attempts===beforeProgress.attempts+1&&settled.statistics.missionsCompleted===currentSave.statistics.missionsCompleted+1;
     const field=final?.state.huntRites.specimensV112??[];
     const priorIds=new Set(currentSave.inventory.harvestV112.specimens.map(item=>item.id));
-    const delivered=settlementConfirmed?settled.inventory.harvestV112.specimens.filter(item=>!priorIds.has(item.id)&&field.some(source=>
-      source.id===item.id&&source.sourceId===item.sourceId&&source.speciesId===item.speciesId&&source.partId===item.partId)):[];
+    const wantedPart=harvestAction?.slice('harvest-'.length);
+    const delivered=settlementConfirmed?settled.inventory.harvestV112.specimens.filter(item=>
+      !priorIds.has(item.id)&&(!harvestSpecies||item.speciesId===harvestSpecies)&&(!wantedPart||item.partId===wantedPart)&&
+      field.some(source=>source.id===item.id&&source.sourceId===item.sourceId&&source.speciesId===item.speciesId&&source.partId===item.partId)):[];
     report.attempts.push({missionId,final,retryEvents,suspendedAndReloaded:resumed,resumeReceipt,delivered,
       settlement:{confirmed:settlementConfirmed,beforeProgress,afterProgress},wallSeconds:(Date.now()-start)/1000,
       status:settlementConfirmed?'BROWSER_HUNT_AND_SETTLEMENT_SUCCESS':final?.state.phase==='dead'?'CONTROLLER_DIED':'ATTEMPT_INCOMPLETE'});
