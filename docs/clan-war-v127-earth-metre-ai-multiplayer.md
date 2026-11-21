@@ -58,7 +58,7 @@ Le processus écoute sur `127.0.0.1:8787` (`YAUTJA_CLAN_PRACTICE_PORT` pour choi
 
 La recette est `node --test tests/clan-war-practice-server-v127.test.mjs`. Elle ouvre un socket TCP et vérifie le contrôle de deux identités, le masquage, le refus de requêtes invalides, les séquences, la concurrence, la lecture après réouverture de connexion et le tick serveur.
 
-Le salon V127 applique l’arbitrage de `CW130-NET-013` à son duel d’exercice. Les critères de coopération `CW130-NET-004` et `CW130-NET-005` restent ouverts. Le service WebSocket public, les comptes de campagne, la persistance SQL, les reçus et l’horloge signés, ainsi que la recette sur deux appareils restent à réaliser. Le redémarrage du processus ouvre une nouvelle partie d’exercice.
+Le salon V127 applique l’arbitrage de `CW130-NET-013` à son duel d’exercice. Les critères de coopération `CW130-NET-004` et `CW130-NET-005` restent ouverts. Le service WebSocket public, les comptes de campagne, la persistance SQL, les reçus et l’horloge signés, ainsi que la recette sur deux appareils restent à réaliser. Pour retrouver le duel et son règlement après un redémarrage, définis `YAUTJA_CLAN_PRACTICE_STATE_DIRECTORY` sur un dossier local privé conservé entre les relances et garde les mêmes clés configurées. Le premier tick après reprise repart du chronomètre du serveur. En l’absence de ce dossier, chaque démarrage ouvre une manche.
 
 ## Assaut coopératif V115
 

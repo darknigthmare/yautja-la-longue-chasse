@@ -68,3 +68,39 @@ La recette recherche le point de prise réel du trophée. Après une interruptio
 Les **24 essais terrestres** terminent l’extraction, dont **20 avec des prises**. Le meilleur remplissage conservé atteint **50 %**. Les trois variantes Océan terminent. Aucun essai n’atteint le seuil de pleine charge de `REM112-08`. [Matrice et traces moteur](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44896017906/artifacts/14704375813)
 
 Le scénario de canopée commence au pied d’un arbre avec six peaux récoltées par les opérations natives, soit 18 unités sur 18 avec l’armure Scout. Les six pièces restent dans le sac après la grimpe, le transfert de branche et les deux lianes. Ce scénario s’arrête à la seconde liane. [Recette de canopée](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44896017906/job/136821720281)
+
+## Extractions à plein volume sur routes terrestres
+
+Trois recettes strictes atteignent les 18 unités du sac Scout. Le sac est vide à l’insertion. Les mêmes identifiants de prises restent présents depuis le seuil de charge jusqu’à l’embarquement et au résultat. Chaque prise possède un reçu de prélèvement. Le rejeu des entrées reproduit le résultat, l’état terminal ainsi que la charge et l’instant d’embarquement. Aucun parcours ne grimpe, ne se balance ou ne touche une plateforme de repos de canopée.
+
+| Parcours Scout en vaisseau visible | Tentative | Prises | Masse et volume conservés | Extraction | Preuve |
+| --- | ---: | ---: | --- | ---: | --- |
+| Jungle, pilote terrestre | 6 | 9 | 13,8 kg · 18/18 u | 118,45 s | [Trace et sauvegardes](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44901828529/artifacts/14705404441) |
+| Jungle, poursuite précoce des proies | 6 | 9 | 13,8 kg · 18/18 u | 134,35 s | [Trace et sauvegardes](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44901828529/artifacts/14705429325) |
+| Volcan, distance de 200 px et tendon laissé sur le corps | 3 | 8 | 14 kg · 18/18 u | 155,25 s | [Trace et sauvegardes](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44902069827/artifacts/14706203062) |
+
+À partir de `campaign-origin-save.json`, cinq victoires terrestres Hunter amènent la Jungle à la tentative 6 et deux victoires Hunter amènent le Volcan à la tentative 3. Chaque résultat émis par le moteur passe par `applyMissionResult`. Le numéro de tentative de la partie Scout provient de la sauvegarde gagnée. La recette ne remplace ni la géométrie, ni les ennemis, ni les objectifs. L’insertion en vaisseau ajoute ses propres patrouilles par la règle du jeu.
+
+`--harvestSweep=true` permet de chercher les proies encore en vie avant l’Apex et de composer le sac avec les parties connues. Au Volcan, la capacité devient accessible lorsqu’un tendon d’une unité reste sur sa proie et laisse assez de place pour la peau de bélier de trois unités. La recette ne dépose aucune prise après le seuil. L’option `--leaveSpecimens=harvest-tissue:volcano-hounds-2` désigne ce tendon.
+
+Pour reproduire la première ligne, exécuter cette chaîne depuis le dépôt. Pour le Volcan, utiliser `mission=volcano-bad-blood`, `wins=2` et ajouter `--sweepDistance=200 --leaveSpecimens=harvest-tissue:volcano-hounds-2` à la seconde commande.
+
+```bash
+mission=jungle-vey
+wins=5
+origin=docs/qa/v112-ground-campaign/campaign-origin-save.json
+for ((attempt=1; attempt<=wins; attempt++)); do
+  out="outputs/qa-full-native/$mission/earned-$attempt"
+  node scripts/qa-hunt-ground-campaign-v112.mjs --mission="$mission" --armor=hunter --baseSave="$origin" --replay=true --seconds=240 --output="$out" --successSave="$out/after-win.json" || exit 1
+  origin="$out/after-win.json"
+done
+node scripts/qa-hunt-ground-campaign-v112.mjs --mission="$mission" --armor=scout --baseSave="$origin" --insertion=visible-ship --harvest=true --harvestSweep=true --minimumRetainedLoad=1 --replay=true --seconds=360 --output="outputs/qa-full-native/$mission/full"
+```
+
+La [variante Jungle avec le pilote partagé](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44901828529/artifacts/14706326962) extrait 17 unités. Le [Marais Scout en vaisseau visible](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44901304750/job/136837587201) extrait 16 unités et les relevés des variantes mesurent 16 unités engendrées avant l’Apex dans la configuration de tentative 1 essayée. La [Glace Scout visible, tentative 2](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44900938592/job/136836488058) extrait 7 unités. Les autres configurations terrestres à pleine charge restent ouvertes. `REM112-08` reste ouvert à l’échelle demandée des huit missions et des armures.
+
+## Passage chargé continu de la Jungle à l’extraction
+
+La même campagne Jungle Scout à la tentative 6 donne également une traversée continue de la canopée vers la navette. Le chasseur emporte les neuf prises réelles à 18/18, monte l’arbre de la séquence 0, touche deux branches, se balance sur la première liane, relâche et rattrape la deuxième. Il revient ensuite au sol, termine ses objectifs, vainc l’Apex, collecte son trophée et embarque avec les mêmes neuf prises. Le résultat est réussi en **143,68 s**, avec **102,18 PV**, **263 images de grimpe** et **118 images de balancement**. Le rejeu vérifie les mêmes entrées et la charge réellement embarquée. [Résultat, sauvegardes gagnées et trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44902826842/artifacts/14706502930)
+
+Après les cinq victoires Hunter de la commande précédente, ajouter `--fullCanopy=true --canopySequence=0` à la commande Scout. Le pilote reprend les plateformes et supports de la géométrie finale. Les ennemis, collisions, dégâts et objectifs restent actifs. Dans cette admission, les indices 1 et 2 ne désignent aucun parcours engendré. Les deux essais correspondants publient `route-missing` et une extraction terrestre à 18/18, sans qualifier de traversée. [Indice 1](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44902826842/artifacts/14706507937) · [Indice 2](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44902826842/artifacts/14705774844)
