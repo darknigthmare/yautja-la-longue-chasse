@@ -1,0 +1,52 @@
+name: P0 Hunt archived trace diagnosis
+on:
+  push:
+    branches: [codex/qa-rem112-traces-lot3-20261121]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  receipts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: rem112-06-full-campaign
+          run-id: 44916265800
+          github-token: ${{ github.token }}
+          path: browser
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: rem112-08-focus-ice-cryostalker-scout
+          run-id: 44917611354
+          github-token: ${{ github.token }}
+          path: loaded
+      - name: Read the archived traces for the frozen upper route and the remaining patrol parts
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFile,readdir} from 'node:fs/promises';
+          const read=async p=>JSON.parse(await readFile(p,'utf8'));
+          const walk=async (d,n)=> (await readdir(d,{recursive:true})).filter(p=>p.endsWith(n)).map(p=>d+'/'+p);
+          const browser=await walk('browser','ice-cryostalker-hunt-samples.json');
+          if(browser.length!==1)throw Error('Expected exact Ice browser samples');
+          const observations=(await read(browser[0])).filter(o=>o.state.player.x===2018);
+          for(const q of [observations[0],observations.at(-1)].filter(Boolean)){
+            const g=q.state,p=g.player;
+            console.log(JSON.stringify({receipt:'ICE-BROWSER-WALL',elapsed:g.elapsed,
+              player:{x:p.x,y:p.y,width:p.width,height:p.height,grounded:p.grounded,
+                climbing:p.climbing,zone:p.climbZoneId},exploration:g.exploration,
+              scans:g.scanNodes.map(n=>({id:n.id,x:n.x,y:n.y,done:n.scanned})),
+              lastNearbyPlatforms:g.world.platforms.filter(a=>a.x+a.width>p.x-330&&a.x<p.x+750)}));
+          }
+          const packing=await walk('loaded','early-120/ice-cryostalker-scout.json');
+          if(packing.length!==1)throw Error('Expected the real Ice packing trace');
+          const q=await read(packing[0]),wanted='insertion-patrol-1';
+          const field=q.stockAtApex.find(e=>e.id.endsWith(wanted));
+          console.log(JSON.stringify({receipt:'ICE-REMAINING-PATROL-PARTS',field,
+            sweep:q.sweepEvents.filter(a=>a.enemyId.endsWith(wanted)),
+            decisions:q.harvestDecisions.filter(a=>a.corpseId.endsWith(wanted)),
+            surrounding:q.samples?.filter(s=>s.x>field.x-250&&s.x<field.x+250).slice(-16).map(s=>({x:s.x,y:s.y,t:s.t,phase:s.phase,grounded:s.grounded,climbing:s.climbing})),
+            operations:q.harvestActions.filter(a=>a.corpseId?.endsWith(wanted)),score:q.result.score,
+            load:q.retainedLoad.atExtraction.load}));
+          NODE
