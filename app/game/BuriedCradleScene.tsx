@@ -22,6 +22,7 @@ interface SpriteDefinition { src: string; width: number; height: number; bounds:
 const assets: Record<string, SpriteDefinition> = art.assets;
 const attackLabels = { puncture: 'Perforation', sweep: 'Balayage bas', capture: 'Capture', salvo: 'Salve acide',
   breath: 'Souffle acide', bite: 'Morsure', pulse: 'Onde au sol', whips: 'Fouets diagonaux' };
+const drainageLabels = { idle: 'Drainage · passage à sec', telegraph: 'Drainage · remontée imminente', active: 'Drainage · poussée acide' };
 
 export interface BuriedCradleSceneProps {
   progress: BuriedCradleProgress;
@@ -106,6 +107,7 @@ export default function BuriedCradleScene(props: BuriedCradleSceneProps) {
   const blockedRef = useRef(blocked);
   const weak = getCradleWeakPoint(frame);
   const hazards = getCradleEnvironmentHazards(frame);
+  const drainageWindow = frame.roomId === '09' && frame.progress.drainageOpened ? hazards[0]?.stage : undefined;
   const boss = frame.boss;
   const inBoss = frame.roomId === '12';
   const interactionKey = controlActionShortcut('hunt.interact', controlBindings);
@@ -284,7 +286,8 @@ export default function BuriedCradleScene(props: BuriedCradleSceneProps) {
       <div><span className={styles.eyebrow}>XENO PRIME · LE BERCEAU ENFOUI</span><h2>{room.name}</h2></div>
       <div className={styles.vitals}><label>Vitalité <meter min={0} max={100} value={frame.player.health} /></label>
         <span>Balise {frame.progress.checkpointId} · {frame.progress.visitedRoomIds.length}/12 lieux</span>
-        {crownCondition !== 'unclaimed' && <span>{crownLabel}</span>}</div>
+        {crownCondition !== 'unclaimed' && <span>{crownLabel}</span>}
+        {drainageWindow && <span role="status" data-cradle-drainage-stage={drainageWindow}>{drainageLabels[drainageWindow]}</span>}</div>
       <button type="button" onClick={togglePause} aria-pressed={paused} disabled={!!pending || !!resourceError || runtimeError || frame.extracted || suspended}>{paused ? 'Reprendre' : 'Pause'}</button>
     </header>
     <div className={styles.viewport} ref={viewportRef} onErrorCapture={event => {
@@ -295,7 +298,9 @@ export default function BuriedCradleScene(props: BuriedCradleSceneProps) {
         <image href={assets[sourceScene.background ?? 'BG01'].src} x={cameraX * .55} y={0} width={Math.max(room.width, visibleWidth)} height={720} preserveAspectRatio="xMidYMid slice" />
         <rect x={0} y={0} width={room.width} height={720} fill="#02090d" opacity={.2} />
         {sourceScene.scenery.map((item, i) => {
-          const id = frame.progress.bossDefeated ? item.after : item.id;
+          const changed = frame.roomId === '09' && item.id === '029'
+            ? frame.progress.drainageOpened : frame.progress.bossDefeated;
+          const id = changed ? item.after : item.id;
           if (!id) return null;
           return <Sprite key={i} id={id} x={item.x / sourceScene.width * room.width} y={item.y / sourceScene.height * 624}
             width={item.width / sourceScene.height * 624} height={item.height / sourceScene.height * 624}

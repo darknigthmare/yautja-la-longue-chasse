@@ -13,7 +13,7 @@ function fixture(discipline='targeting',score=80,prepare=()=>{}){
  const receipt=a.createShipTrainingReceiptV94(save,base,discipline,score,io,date);assert.ok(receipt);
  return{save,base,data,writes,storage,io,receipt,fault,run:(...args)=>receipt.attempt(...(args.length?args:[save,base]))};
 }
-for(const discipline of Object.keys(a.TRAINING_LABELS))test(`${discipline}: confirmed once, authored score and date preserved`,()=>{
+for(const discipline of a.STANDARD_TRAINING_IDS)test(`${discipline}: confirmed once, authored score and date preserved`,()=>{
  const f=fixture(discipline),original=JSON.stringify(f.base),campaign=f.data.get(a.SAVE_STORAGE_KEY),r=f.run();assert.equal(r.status,'confirmed');assert.equal(r.state.training[discipline].attempts,1);assert.equal(r.state.training[discipline].lastScore,80);assert.equal(r.state.training[discipline].lastCompletedAt,date);assert.equal(f.run().status,'ignored');assert.equal(f.writes.length,1);assert.equal(JSON.stringify(f.base),original);assert.equal(f.data.get(a.SAVE_STORAGE_KEY),campaign);
 });
 test('clan plasma practice admits eight successful hunts, rewards holding fire and recovers a training score only',()=>{
@@ -47,6 +47,66 @@ test('clan plasma practice admits eight successful hunts, rewards holding fire a
  assert.equal(f.data.get(a.SAVE_STORAGE_KEY),campaign);
  assert.equal(recovered.attempt(f.save,f.base).status,'ignored');
 });
+test('the clan hunt requires all eight hunts and puts an actual three-phase result in its own training record', () => {
+  const old = fixture();
+  assert.equal(a.createShipTrainingReceiptV94(old.save, old.base, 'clan-hunt', 100, old.io, date), null);
+  assert.equal(Object.hasOwn(old.base.training, 'clan-hunt'), false);
+  assert.deepEqual(a.validateCanonicalShipProgression(JSON.parse(JSON.stringify(old.base)), old.save), old.base);
+
+  const play = (seed, shootProtected) => {
+    let drill = a.startTrainingDrill(a.createTrainingDrill('clan-hunt', seed));
+    const phases = [];
+    while (drill.status === 'playing') {
+      const cue = a.getClanHuntCue(drill);
+      const expected = drill.sequence[drill.cueIndex];
+      if (!phases.includes(cue.phase)) phases.push(cue.phase);
+      const unsafe = shootProtected && cue.phase === 'plasma' && expected === 'secondary';
+      const step = a.submitTrainingDrillAction(drill, unsafe ? 'primary' : expected);
+      assert.equal(step.outcome, unsafe ? 'wrong' : 'perfect');
+      drill = step.state;
+    }
+    assert.deepEqual(phases, ['track', 'blades', 'plasma']);
+    return drill;
+  };
+  const first = play(0, false);
+  const mirrored = play(1, false);
+  assert.equal(first.sequence[0], 'left');
+  assert.equal(mirrored.sequence[0], 'right');
+  assert.match(a.getClanHuntCue(a.createTrainingDrill('clan-hunt', 1)).label, /droite/);
+  assert.equal(a.trainingDrillScore(first), 100);
+  assert.equal(a.trainingDrillScore(play(1, true)), 49);
+  const f = fixture('clan-hunt', a.trainingDrillScore(first), save => {
+    for (const {id} of a.MISSIONS.slice(0, 8)) {
+      Object.assign(save.missionProgress[id], {status: 'completed', attempts: 1, completions: 1});
+    }
+    save.storyCompleted = true;
+  });
+  const campaign = f.data.get(a.SAVE_STORAGE_KEY);
+  f.fault.drop = true;
+  assert.equal(f.run().status, 'pending');
+  assert.equal(Object.hasOwn(JSON.parse(f.data.get(key)).training, 'clan-hunt'), false);
+  f.fault.drop = false;
+
+  const recovery = JSON.stringify(f.receipt.recoveryCopy());
+  assert.equal(a.restoreShipTrainingReceiptV94(recovery, old.save, f.io), null);
+  const replay = a.restoreShipTrainingReceiptV94(recovery, f.save, f.io);
+  assert.ok(replay);
+  const result = replay.attempt(f.save, f.base);
+  assert.equal(result.status, 'confirmed');
+  assert.equal(replay.attempt(f.save, f.base).status, 'ignored');
+
+  const state = JSON.parse(f.data.get(key));
+  assert.deepEqual(a.validateCanonicalShipProgression(state, f.save), state);
+  const { 'clan-hunt': clanHunt, ...standard } = state.training;
+  assert.equal(clanHunt.attempts, 1);
+  assert.equal(clanHunt.lastScore, 100);
+  assert.equal(clanHunt.lastCompletedAt, date);
+  assert.deepEqual(standard, f.base.training);
+  assert.deepEqual(state.completedRiteIds, f.base.completedRiteIds);
+  assert.equal(a.evaluateClanProgression(f.save, state).prestige, a.evaluateClanProgression(f.save, f.base).prestige);
+  assert.equal(f.data.get(a.SAVE_STORAGE_KEY), campaign);
+});
+
 for(const kind of ['drop','quota'])test(`${kind}: retry records one attempt, no gesture replay and same completion date`,()=>{
  const f=fixture();f.fault[kind]=true;assert.equal(f.run().status,'pending');assert.equal(f.base.training.targeting.attempts,0);f.fault[kind]=false;const r=f.run();assert.equal(r.status,'confirmed');assert.equal(r.state.training.targeting.attempts,1);assert.equal(r.state.training.targeting.lastCompletedAt,date);
 });

@@ -81,7 +81,7 @@ export const BURIED_CRADLE_ROOMS: readonly CradleRoom[] = [
     [[368, 520, 320], [752, 424, 224], [1032, 520, 320], [96, 272, 256, "solid"],
       [416, 272, 256, "solid"], [1056, 272, 256, "solid"], [1408, 272, 288, "solid"]],
     [point(96), point(1696)]),
-  room("09", "La Pouponnière de dérivation", 1536, point(4, 3), "underground", "Valve facultative ; réduit la durée des flaques du boss.",
+  room("09", "La Pouponnière de dérivation", 1536, point(4, 3), "underground", "Valve facultative ; ouvre une fenêtre locale et raccourcit les flaques du boss.",
     [[320, 536, 256], [656, 456, 256], [1008, 536, 304], [128, 232, 288, "solid"], [960, 232, 288, "solid"]],
     [point(96), point(1408)]),
   room("10", "Le Nœud des racines", 1792, point(5, 2), "underground", "Faire manquer une perforation, couper l’anneau et libérer la porte.",
@@ -492,8 +492,13 @@ export function getCradleEnvironmentHazards(run: BuriedCradleRun): CradleEnviron
   const stage = t < 2.8 ? "idle" : t < 4 ? "telegraph" : "active";
   if (run.roomId === "03" && !run.progress.bossDefeated) return [{ id: "river-sweep", x: 680, y: 584, width: 304, height: 40, warning: "Tension, raclement puis balayage.", stage }];
   if (run.roomId === "07" && !run.progress.bossDefeated) return [{ id: "fault-vent", x: 1008, y: 504, width: 80, height: 120, warning: "Membrane gonflée puis évent.", stage }];
-  if (run.roomId === "08" || run.roomId === "09") return [{ id: "autonomous-acid", x: 512, y: 602, width: 144, height: 22,
-    warning: "Acide autonome ; ne disparaît pas avec la Matriarche.", stage: "active" }];
+  if (run.roomId === "08" || run.roomId === "09") {
+    const drainedNursery = run.roomId === "09" && run.progress.drainageOpened;
+    return [{ id: "autonomous-acid", x: 512, y: 602, width: 144, height: 22,
+      warning: drainedNursery ? "Après le drainage, la remontée d’acide est annoncée avant la poussée."
+        : "Acide autonome ; ne disparaît pas avec la Matriarche.",
+      stage: drainedNursery ? stage : "active" }];
+  }
   return [];
 }
 /** The cargo sprite and the acid test share this world-space footprint. */

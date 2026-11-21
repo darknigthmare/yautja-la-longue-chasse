@@ -347,3 +347,29 @@ test("an accepted flay reveals the hunter while analysis and marking preserve th
     assert.equal(other.state.huntRites.operation.action,action,"the new input rule applies only to flaying");
   }
 });
+
+test("the native corpse menu can advance through overlapping prey without interrupting work", () => {
+  const f=fixture({owned:true});
+  const other=r.makeEnemy("second-physical-prey", "hell-hound-stalker", f.mission.id,
+    f.enemy.x, f.state.world.width, 80, 10, 0, 1, 1);
+  Object.assign(other,{x:f.enemy.x+f.enemy.width/2-other.width/2,
+    y:400-other.height, knockbackRestY:400});
+  f.state.enemies.push(other);
+  r.damageEnemy(f.state,f.mission,other,other.maxHealth+1,"melee");
+  const handler=riteHandler(f);
+  const readonly=JSON.stringify(f.state.huntRites);
+  handler("next-corpse");
+  assert.equal(f.state.riteMenuCorpseId,null,"cycling requires an open menu");
+  handler("open");
+  assert.equal(f.state.riteMenuCorpseId,f.enemy.id,"ties retain the original nearest order");
+  handler("next-corpse");
+  assert.equal(f.state.riteMenuCorpseId,other.id);
+  assert.equal(JSON.stringify(f.state.huntRites),readonly,"selecting prey never mutates harvest state");
+  handler("flay");
+  assert.equal(f.state.huntRites.operation?.corpseId,other.id);
+  handler("next-corpse");
+  assert.equal(f.state.riteMenuCorpseId,other.id);
+  assert.equal(f.state.huntRites.operation?.corpseId,other.id);
+  handler("close");
+  assert.equal(f.state.huntRites.operation,null);
+});

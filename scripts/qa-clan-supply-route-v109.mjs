@@ -115,6 +115,22 @@ async function playStorageRecovery(page,context){
  check('One plain arrow moves only the focused selected team by one step',afterKey.revision===beforeKeys.revision+1&&
   operatorAfter.x===operatorBefore.x+18&&operatorAfter.y===operatorBefore.y&&
   await terrain.evaluate(node=>node===document.activeElement));
+ const westButton=pad.getByRole('button',{name:'Marcher ouest',exact:true});
+ await westButton.click();
+ await page.waitForFunction(revision=>Number(document.querySelector('[data-logistics-v109]')?.dataset.revision)>revision,afterKey.revision);
+ await settled(page);
+ const afterTap=await state(page);
+ check('A native pointer tap moves the selected team by exactly one step',afterTap.revision===afterKey.revision+1&&
+  api.logisticsActorV108(afterTap.convoy,op).x===operatorBefore.x);
+ await westButton.dispatchEvent('click',{detail:1});
+ await settled(page);
+ check('The pointer compatibility click cannot add a release step',JSON.stringify(await state(page))===JSON.stringify(afterTap));
+ await pad.getByRole('button',{name:'Marcher est',exact:true}).press('Enter');
+ await page.waitForFunction(revision=>Number(document.querySelector('[data-logistics-v109]')?.dataset.revision)>revision,afterTap.revision);
+ await settled(page);
+ check('The movement pad still activates on Enter with exactly one step',(await state(page)).revision===afterTap.revision+1&&
+  api.logisticsActorV108((await state(page)).convoy,op).x===operatorAfter.x);
+ await terrain.focus();
  await send(page,'Poser l’appui gauche');
  for(let i=0;i<3;i++){await terrain.press('ArrowRight');await settled(page);}
  await send(page,'Poser l’appui droit');
@@ -181,6 +197,25 @@ try{
  const campaignBefore=await page.evaluate(key=>JSON.stringify(Object.fromEntries(Object.entries(localStorage).filter(([k])=>k!==key))),key);
  const route=root(page).getByRole('region',{name:'Tournée de ravitaillement',exact:true});
  for(const id of ['W3-S09','W3-S10','W3-S13','W3-S14','W3-S15','W3-S18'])await route.locator(`[data-supply-plan-work="${id}"]`).check();
+ const draftStart=await state(page);
+ const draftOrder=route.getByRole('list',{name:'Ordre des livraisons',exact:true});
+ const firstDraftStop=draftOrder.locator('[data-supply-draft-stop="W3-S09"]');
+ const firstQuantity=route.getByRole('spinbutton').first();
+ const reserveButton=route.getByRole('button',{name:'Réserver la tournée dans ce stock',exact:true});
+ await firstQuantity.fill('');
+ check('An empty delivery amount disables reservation before any balance changes',await reserveButton.isDisabled());
+ await firstQuantity.fill('5');
+ await firstDraftStop.getByRole('button',{name:/^Descendre /}).press('Enter');
+ check('Keyboard reordering preserves delivery amount, focus and confirmed balances',
+  await draftOrder.getByRole('listitem').first().getAttribute('data-supply-draft-stop')==='W3-S10'&&
+  (await firstDraftStop.textContent())?.includes('5 RAV')&&
+  await firstDraftStop.getByRole('button',{name:/^Descendre /}).evaluate(button=>document.activeElement===button)&&
+  JSON.stringify(await state(page))===JSON.stringify(draftStart));
+ await firstDraftStop.getByRole('button',{name:/^Monter /}).press('Enter');
+ check('Moving to the route start keeps focus on the remaining available direction',
+  await draftOrder.getByRole('listitem').first().getAttribute('data-supply-draft-stop')==='W3-S09'&&
+  await firstDraftStop.getByRole('button',{name:/^Descendre /}).evaluate(button=>document.activeElement===button));
+ await firstQuantity.fill('2');
  const boatBefore=(await state(page)).convoy.boat.cargo;await send(page,'Réserver la tournée dans ce stock');check('Six stops reserve16 existing RAV without creating another stock',(await state(page)).route.stops.length===6&&api.supplyReservationV109((await state(page)).route)===16&&(await state(page)).convoy.boat.cargo===boatBefore);await capture(page,'02-reservation-in-existing-source.png');
  await root(page).getByRole('combobox',{name:/^Stock à rejoindre/}).selectOption('boat');await click(page,'Marcher vers ce stock');await page.waitForFunction(()=>{const n=document.querySelector('[data-logistics-actor="carrier"]');return Math.hypot(Number(n.dataset.x)-362,Number(n.dataset.y)-328)<3;});await click(page,'Stopper le déplacement');await send(page,'Charger ou reprendre le même lot');const loaded=await state(page);check('The native U19 physically load the exact lot and its four provisions',loaded.convoy.actors[0].rav===16&&loaded.convoy.boat.cargo===boatBefore-16&&loaded.route.holder==='carrier');await send(page,'Déposer la prochaine étape');
  await choose(page,'W3-S09');await send(page,'Embarquer les mêmes U19');while((await state(page)).convoy.turn%4>1)await send(page,'Avancer un tour et payer l’entretien');await send(page,'Partir sur le chenal');for(let i=0;i<7;i++)await send(page,'Avancer le skiff');

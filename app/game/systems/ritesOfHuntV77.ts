@@ -89,9 +89,12 @@ export function registerRitePreyV77(state:RitesOfHuntV77,proof:RitePreyProofV77,
     worthy:proof.worthy,protectedPrey:proof.protectedPrey,defeatedAt:proof.defeatedAt,analyzed:false,marked:false,flayed:false,erased:false,supportId:null,hangingAt:null,witnesses:[],witnessFear:[],integrity:proof.integrity??100,massKg:proof.massKg??70,hung:false};
   return result({...state,elapsed:Math.max(state.elapsed,proof.defeatedAt),corpses:[...state.corpses,corpse]},true,'Trace de chasse conservée ; aucun trophée encore prélevé.');
 }
+export function nearbyRiteCorpsesV77(state:RitesOfHuntV77,actor:RitePointV77):RiteCorpseV77[] {
+  if(!point(actor))return [];
+  return state.corpses.filter(c=>!c.erased&&distance(c,actor)<=88).sort((a,b)=>distance(a,actor)-distance(b,actor));
+}
 export function nearestRiteCorpseV77(state:RitesOfHuntV77,actor:RitePointV77):RiteCorpseV77|null {
-  if(!point(actor))return null;
-  return state.corpses.filter(c=>!c.erased&&distance(c,actor)<=88).sort((a,b)=>distance(a,actor)-distance(b,actor))[0]??null;
+  return nearbyRiteCorpsesV77(state,actor)[0]??null;
 }
 /** One prerequisite for the command and its preview. Depositing a specimen does
  * not undo its irreversible extraction or permit a later quality upgrade. */

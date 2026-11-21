@@ -68,3 +68,36 @@ Les deux ZIP V6.12 référencés par la PR #9 déclarent 72 PNG des lots V6.11 e
 Les 31 commentaires et avis des PR #7, #9, #10, #15, #174 et #175 ne contiennent aucune pièce jointe ni archive supplémentaire. Les arbres `main` complets des deux dépôts liés, l’archive DLC et la base Yautja, totalisent respectivement 46 et 63 fichiers Git. Aucun chemin de production ni aucune taille de fichier n’y correspond aux preuves recherchées.
 
 Le classeur Drive V6.12 possède sept révisions listées. Le téléchargement de l’avant-dernière révision a renvoyé HTTP 403. Une archive locale demeure nécessaire pour rapprocher les 36 PNG V6.10 ou les 21 reçus finaux V6.13 encore absents.
+
+## Lire directement un ZIP
+
+Le mode `--zip` utilise Python 3 pour parcourir un ZIP local en lecture seule,
+sans décompression sur disque. Chaque PNG cible est reconnu par sa taille et
+son SHA‑256. L'audit regarde aussi les fichiers JSON dont le schéma correspond
+à celui des checkpoints V6.13.
+
+```sh
+node scripts/audit-enforcer-historical-recovery.mjs \
+  --zip /chemin/vers/partie-1.zip \
+  --zip /chemin/vers/partie-2.zip
+```
+
+
+Le rapport affiche les chemins internes des correspondances et l'empreinte
+des checkpoints candidats. Les fichiers JSON de plus de 8 Mio sont signalés
+dans `oversizedJson`. Ils peuvent être fournis à part via `--checkpoint`.
+La métadonnée Drive de la partie 1 confirme une archive de 99 314 336 octets
+réservée à son propriétaire. Ses octets restent à examiner depuis un espace
+de travail capable de lire le fichier.
+
+Le dossier de publication contient deux archives privées et le classeur
+V6.12. Les deux ZIP ont chacun une seule révision listée. [PR #9](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/9)
+
+Les répertoires ZIP internes de cinq des douze classeurs associés à la
+publication ont aussi été examinés au commit
+`842bc7e69ab5aed086d0fbbfcafd1d86a14e9f38`. Le catalogue des médias et les
+suivis Pit V60, V61, V62 et V63 réunissent 107 entrées. Aucun de ces cinq
+classeurs ne contient d'image intégrée, de fichier JSON ou d'entrée ayant la
+taille d'un PNG V6.10 recherché. Les sept autres classeurs restent à vérifier
+depuis une copie Git locale.
+[Inventaire des fichiers publiés](https://github.com/darknigthmare/yautja-la-longue-chasse/blob/842bc7e69ab5aed086d0fbbfcafd1d86a14e9f38/scripts/package-enforcer-production-v612.py)

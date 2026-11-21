@@ -411,3 +411,26 @@ test('production renderer exposes real controls and hides the Matriarch outside 
   assert.doesNotMatch(html, /059_matriarche_intacte\.png/);
   assert.match(html, /Repli/); assert.match(html, /Vers 02/);
 });
+
+test('the nursery shows its emptied reservoir and announces the dry window only after its valve was opened', () => {
+  const save = fresh();
+  const snapshots = qa.load('app/game/systems/buriedCradleSnapshot.ts');
+  const atlas = JSON.parse(fs.readFileSync('app/game/data/buriedCradleArt.json', 'utf8'));
+  const render = (bossDefeated, drainageOpened) => {
+    const progress = { ...cradle.createBuriedCradleProgress(), visitedRoomIds: [...cradle.CRADLE_ROOM_IDS],
+      bossDefeated, rootRingCut: bossDefeated, drainageOpened };
+    const run = cradle.createBuriedCradleRun(progress, 2);
+    run.roomId = '09';
+    const snapshot = snapshots.snapshotBuriedCradleRun(run);
+    return qa.render('app/game/BuriedCradleScene.tsx', { progress, snapshot, difficultyId: 'young-blood',
+      appearance: save.appearance, loadout: save.loadout, onCheckpoint: () => true, onExtract: () => true, onExit: () => true });
+  };
+  const stillFull = render(true, false);
+  assert.ok(stillFull.includes(atlas.assets['029'].src));
+  assert.ok(!stillFull.includes(atlas.assets['083'].src));
+  const drained = render(false, true);
+  assert.ok(drained.includes(atlas.assets['083'].src));
+  assert.ok(!drained.includes(atlas.assets['029'].src));
+  assert.match(drained, /data-cradle-drainage-stage="idle"/);
+  assert.match(drained, /passage à sec/);
+});

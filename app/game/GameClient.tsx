@@ -370,6 +370,7 @@ const PitCanvas = React.lazy(() => import("./PitExperienceV79"));
 const PitNarrativeTrials = React.lazy(() => import("./PitNarrativeTrials"));
 const ShipHub = React.lazy(() => import("./ShipHub"));
 const BuriedCradleScene = React.lazy(() => import('./BuriedCradleScene'));
+const BuriedCradleApproach = React.lazy(() => import('./BuriedCradleApproach'));
 const ClanShipHub = React.lazy(() => import("./ClanShipHub"));
 const WolfCastleScene = React.lazy(() => import("./WolfCastleScene"));
 const PlanetArrivalCinematic = React.lazy(() => import("./PlanetArrivalCinematic"));
@@ -2881,6 +2882,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || resumableHunt || activeHuntSessionRef.current ||
       !['buried-cradle', 'buried-cradle-briefing'].includes(screen)) return false;
     const fleet = loadShipProgression(current);
+    if (action.type === 'prepare' && !action.approach) return false;
     const result = actBuriedCradleCampaign(current, action, { personalShipId: fleet.selectedShipId, ownedShipIds: fleet.unlockedShipIds });
     if (!result.accepted) { setToast(result.message); return false; }
     if (result.changed && !persistSocialProgress({ buriedCradle: result.state, prologue: result.prologue })) return false;
@@ -5272,8 +5274,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               const access = evaluateBuriedCradleAccess(save, fleet.selectedShipId, fleet.unlockedShipIds);
               const state = save.buriedCradle;
               return <><ul>{access.missing.map(message => <li key={message}>{message}</li>)}</ul>
-                {!state && <button type="button" className="alien-button" disabled={!access.allowed || campaignSaveBusy || settingsOpen}
-                  onClick={() => commitCradleAction({ type: 'prepare' })}>Confirmer l’itinéraire et l’extraction</button>}
+                {!state && access.allowed && <Suspense fallback={<DeferredGameScreen />}>
+                  <BuriedCradleApproach appearance={save.appearance} loadout={save.loadout}
+                    disabled={campaignSaveBusy || settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue || !!resumableHunt || !gameFocusedV89}
+                    onComplete={approach => commitCradleAction({ type: 'prepare', approach })} />
+                </Suspense>}
+                {state?.approach && <p data-cradle-approach-receipt>{state.approach.route === 'reconnaissance'
+                  ? 'Reconnaissance consignée à la balise.' : 'Itinéraire direct consigné à la balise.'}</p>}
                 {state && (['prepared', 'suspended', 'active'].includes(state.status) || state.status === 'reported' && !state.crownDelivered) && <button type="button" className="alien-button"
                   disabled={!access.allowed || campaignSaveBusy || settingsOpen} onClick={() => commitCradleAction({ type: 'depart' })}>
                   {state.status === 'prepared' ? 'Rejoindre Xeno Prime' : state.status === 'reported' ? 'Repartir en expédition'

@@ -205,3 +205,30 @@ test('the actual menu exposes physical refusals, tool cost, stock and a named pr
   assert.match(active,/<span aria-live="off">/);assert.match(active,/<progress aria-live="off"/);
   assert.match(active,/Interrompre le geste/);
 });
+
+test('the next-prey button lists reachable bodies and excludes erased, occluded or distant ones',()=>{
+  const f=scene();
+  const origin=f.context().prey[0];
+  const second={...origin,id:'second',label:'Seconde proie'};
+  const wall={...origin,id:'wall',x:122,label:'Proie derrière un obstacle'};
+  const remote={...origin,id:'remote',x:240};
+  const erased={...origin,id:'erased',x:131};
+  for(const proof of [second,wall,remote,erased]){
+    const known=api.registerRitePreyV77(f.state,proof,{...f.context(),prey:[origin,proof]});
+    assert.equal(known.accepted,true);
+    f.state=known.state;
+  }
+  f.state={...f.state,corpses:f.state.corpses.map(corpse=>corpse.id===erased.id?{...corpse,erased:true}:corpse)};
+  const menu=id=>api.huntRiteMenuSnapshotV77(f.state,f.context().actor,id,true,{
+    ...f.options(),worksiteBlocked:corpse=>corpse.x===wall.x,
+  });
+  assert.equal(menu(null).nextCorpseId,undefined);
+  assert.equal(menu('body').nextCorpseId,second.id);
+  assert.equal(menu(second.id).nextCorpseId,'body');
+  assert.match(renderToStaticMarkup(createElement(api.Menu,{
+    menu:menu('body'),onOpen(){},onClose(){},onAction(){},onNextCorpse(){},
+  })),/data-rite-next-corpse-v112="true">Proie suivante<\/button>/);
+  f.complete('flay');
+  assert.equal(f.start('carry').accepted,true);
+  assert.equal(menu('body').nextCorpseId,undefined);
+});

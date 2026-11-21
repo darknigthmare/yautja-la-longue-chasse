@@ -129,6 +129,44 @@ try{
   assert.equal(await campaign(),primary);
   assert.equal(await writes(page),1);
  },'?clan-plasma=1');
+ await scenario('the clan hunt plays track, blades and plasma, then stores a dedicated record', async page => {
+  const before = await disk(page);
+  const campaign = () => page.evaluate(() => localStorage.getItem(window.__shipQa.campaignKey));
+  const primary = await campaign();
+  assert.equal(Object.hasOwn(before.training, 'clan-hunt'), false);
+  await open(page, 'Simulation de chasse du clan');
+  await page.getByRole('heading', {name: 'Simulation de chasse du clan', exact: true}).waitFor();
+
+  const phases = ['track', 'blades', 'plasma'];
+  const answers = [
+    'Suivre la piste à gauche', 'Écarter la trace', 'Marquer la trace', 'Suivre la piste à droite',
+    'Parer', 'Esquiver à gauche', 'Frapper aux lames', 'Parer',
+    'Recentrer à droite', 'Retenir le tir', 'Recentrer à gauche', 'Tirer au plasma',
+  ];
+  const panel = page.locator('.training-drill-panel');
+  const controls = page.getByRole('group', {name: 'Commandes tactiles'});
+  const cue = panel.locator('[data-clan-hunt-phase]');
+  for (const [index, name] of answers.entries()) {
+   assert.equal(await cue.getAttribute('data-clan-hunt-phase'), phases[Math.floor(index / 4)]);
+   await controls.getByRole('button', {name: new RegExp('^' + name)}).click();
+   const threshold = Math.round((index + 1) / answers.length * 100);
+   await page.waitForFunction(value => Number(document.querySelector('[aria-label="Progression de l’épreuve"]')?.getAttribute('aria-valuenow')) >= value, threshold);
+  }
+  assert.match(await panel.textContent(), /12\/12 réponses correctes/);
+  assert.equal(Object.hasOwn((await disk(page)).training, 'clan-hunt'), false);
+  await page.getByRole('button', {name: 'Consigner le résultat', exact: true}).click();
+  await page.waitForFunction(() => JSON.parse(localStorage.getItem(window.__shipQa.sidecarKey)).training['clan-hunt']?.attempts === 1);
+  const after = await disk(page);
+  assert.ok(after.training['clan-hunt'].lastScore >= 85);
+  assert.deepEqual(after.training.targeting, before.training.targeting);
+  assert.deepEqual(after.completedRiteIds, before.completedRiteIds);
+  assert.equal(await campaign(), primary);
+  assert.equal(await writes(page), 1);
+  await page.reload();
+  await page.getByRole('button', {name: /Simulation de chasse du clan/}).waitFor();
+  assert.deepEqual((await disk(page)).training['clan-hunt'], after.training['clan-hunt']);
+  assert.equal(await writes(page), 0);
+ }, '?clan-plasma=1');
  await scenario('a played pending score survives a full reload and saves exactly once on explicit recovery',async page=>{
   await open(page);await page.evaluate(()=>window.__shipQa.fault('drop'));await finish(page);await waitBackup(page);
   const saved=JSON.parse(await backup(page));assert.equal((await disk(page)).training.targeting.attempts,0);

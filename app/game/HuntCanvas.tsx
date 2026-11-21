@@ -2508,7 +2508,7 @@ function restoreCheckpoint(
   const restoredRites = checkpoint.huntRites===undefined
     ? state.huntRites ? {...state.huntRites,elapsed:checkpoint.elapsed,corpses:[],operation:null,honorDelta:0,awareness:0,fear:0,completedEventIds:[],carryingCorpseId:null,specimensV112:[],stashedSpecimensV112:[]} : undefined
     : restoreRitesRuntimeV77(checkpoint.huntRites, state.huntRites.runId,
-    state.world.missionId, checkpoint.enemies, checkpoint.elapsed, riteSourceLabelV77, {flayingToolOwned:state.flayingToolOwned,maximumSpecimens:state.harvestDepotFreeV112,...carcassGeometryV112(restoredWorldV112)});
+    state.world.missionId, checkpoint.enemies, checkpoint.elapsed, riteSourceLabelV77, {flayingToolOwned:state.flayingToolOwned,maximumSpecimens:state.harvestDepotFreeV112,harvestArmorId:state.harvestArmorIdV112,...carcassGeometryV112(restoredWorldV112)});
   if (checkpoint.huntRites!==undefined&&(!restoredRites||!fieldStashGeometryValidV112(restoredRites,restoredWorldV112))) return {...state, paused:true, message:'Les traces de chasse ne correspondent pas à cette rencontre ; reprise refusée.', messageTimer:5};
   const restoredEcosystem=restoreCorpseDiscoveryV112(checkpoint.ecosystem,state.huntRites?.runId??"legacy",
     restoredRites?.corpses??[],discoveryActorsV112(checkpoint.enemies),checkpoint.elapsed);
@@ -11116,7 +11116,7 @@ export default function HuntCanvas({
   const fieldPackActionRefV112=useRef<(action:"drop"|"take",id:string)=>void>(()=>undefined);
   const companionCommandRef = useRef<(id: ExpeditionMemberId, command: HuntCompanionCommand) => void>(() => undefined);
   const podCommandRef = useRef<() => void>(() => undefined);
-  const riteMenuActionRef = useRef<(action:HuntRiteActionV77|'open'|'close')=>void>(()=>undefined);
+  const riteMenuActionRef = useRef<(action:HuntRiteActionV77|'open'|'close'|'next-corpse')=>void>(()=>undefined);
   const dismissMissionOpeningRef = useRef<() => void>(() => undefined);
   const missionOpeningActiveRef = useRef(false);
   const openingSeenRunRef = useRef<string | null>(null);
@@ -11296,9 +11296,9 @@ export default function HuntCanvas({
         !restoreHuntInsertion(saved.checkpoint.insertion, game.insertion.runId, game.world) ||
         !samePlanetInsertion(saved.checkpoint.insertion?.plan, game.insertion.plan))) ||
       (restoredHunt && !restoreRitesRuntimeV77(restoredHunt.checkpoint.huntRites,game.huntRites.runId,mission.id,
-        restoredHunt.checkpoint.enemies,restoredHunt.checkpoint.elapsed,riteSourceLabelV77,{flayingToolOwned:game.flayingToolOwned,maximumSpecimens:game.harvestDepotFreeV112,...carcassGeometryV112(game.world)})) ||
+        restoredHunt.checkpoint.enemies,restoredHunt.checkpoint.elapsed,riteSourceLabelV77,{flayingToolOwned:game.flayingToolOwned,maximumSpecimens:game.harvestDepotFreeV112,harvestArmorId:game.harvestArmorIdV112,...carcassGeometryV112(game.world)})) ||
       (restoredRetry && !restoreRitesRuntimeV77(restoredRetry.checkpoint.huntRites,game.huntRites.runId,mission.id,
-        restoredRetry.checkpoint.enemies,restoredRetry.checkpoint.elapsed,riteSourceLabelV77,{flayingToolOwned:game.flayingToolOwned,maximumSpecimens:game.harvestDepotFreeV112,...carcassGeometryV112(game.world)}));
+        restoredRetry.checkpoint.enemies,restoredRetry.checkpoint.elapsed,riteSourceLabelV77,{flayingToolOwned:game.flayingToolOwned,maximumSpecimens:game.harvestDepotFreeV112,harvestArmorId:game.harvestArmorIdV112,...carcassGeometryV112(game.world)}));
     if (restoredHunt && !invalidResume) {
       game = restoreCheckpoint(game, restoredHunt.checkpoint, "resume");
       game.nextCheckpointIndex = Math.min(
@@ -11976,6 +11976,12 @@ export default function HuntCanvas({
       const context=riteContextV77(game),menu=huntRiteMenuSnapshotV77(game.huntRites,context.actor,game.riteMenuCorpseId,true,riteRuntimeOptionsV112(game));
       if(action==='close'){game.riteMenuCorpseId=null;game.huntRites={...game.huntRites,operation:null};game.riteOperationDamageStart=null;}
       else if(action==='open'){if(menu)game.riteMenuCorpseId=menu.corpseId;}
+      else if(action==='next-corpse'){
+        if(!menu?.nextCorpseId)return;
+        game.riteMenuCorpseId=menu.nextCorpseId;
+        setUi(snapshot(game,mission));
+        return;
+      }
       else if(menu&&menu.open){
         if(action==='hang'&&!menu.canHang) {announce(game,menu.hangReason,3);return;}
         if(action==='flay'&&!menu.canFlay) {announce(game,menu.flayLockedReason??'Dépeçage indisponible.',3);return;}
@@ -12603,7 +12609,7 @@ export default function HuntCanvas({
 
         <HuntRitesMenuV77 menu={assetsReady?ui.huntRiteMenu:null} gamepadButtons={activeAccessibility.gamepadButtons}
           onOpen={()=>riteMenuActionRef.current('open')} onClose={()=>riteMenuActionRef.current('close')}
-          onAction={action=>riteMenuActionRef.current(action)}/>
+          onNextCorpse={()=>riteMenuActionRef.current('next-corpse')} onAction={action=>riteMenuActionRef.current(action)}/>
 
         {ui.trophySeconds !== null || ui.trophyCue !== null ? (
           <div style={{...styles.trophyTimer,pointerEvents:ui.trophyCue?"auto":"none",maxWidth:"min(92%, 380px)",maxHeight:"calc(100% - 32px)",overflowY:"auto",boxSizing:"border-box"}}>

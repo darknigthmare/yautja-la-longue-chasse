@@ -15,7 +15,9 @@ import {warStealthDecoyPatrolV141} from "./clanWarStealthDecoyV141";
 import {warStealthListenCueV115,type WarStealthListenCueV115} from "./clanWarStealthAcousticsV115";
 import {chooseStealthSupportGuard} from "./clanWarStealthGuardPlacement";
 import {warOuterRouteChoicesV142} from "./clanWarOuterChoicesV142";
-import {warAssaultContactV141} from "./clanWarAssaultContactV141";
+import {
+  WAR_ASSAULT_CLOAK_CAPACITY_V115, WAR_ASSAULT_CLOAK_RECHARGE_EDGE_V115, warAssaultContactV141,
+} from "./clanWarAssaultContactV141";
 
 /**
  * V115: self-contained V6 training theatre. This is NOT a CON-T/RTS-U campaign
@@ -32,7 +34,11 @@ export type WarMissionModeV115 = "assault" | "outer" | "stealth" | "rts";
 export type WarMissionOutcomeV115 = "victory" | "defeat" | "retreat";
 export type OuterFocusV115 = "recon" | "intercept" | "escort";
 type Side = "ally" | "rival";
-export interface WarMissionActorV115 { id: string; teamId: string | null; unitId: string; side: Side; x: number; hp: number }
+export interface WarMissionActorV115 {
+  id: string; teamId: string | null; unitId: string; side: Side; x: number; hp: number;
+  /** An assault-only device. Older actors have a full, inactive reserve. */
+  assaultCloak?: { active: boolean; energy: number };
+}
 export interface WarRtsActorV115 extends WarMissionActorV115 { y: number }
 export interface WarAssaultV115 {
   ap: number; ownBase: number; rivalBase: number;
@@ -445,6 +451,26 @@ export function deployAssaultUnitV115(state:WarOperationsStateV115,teamId:string
   const active={...mission,assault:{...arena,ap:arena.ap-cost,launched:[...arena.launched,teamId],actors:[...arena.actors,actor]}};
   return accept({...state,active},"Renfort déployé : coût "+cost+" AP (valeur d'exercice, pas PC/RAV).");
 }
+export function toggleWarAssaultCloakV115(
+  state: WarOperationsStateV115, teamId: string, rules: WarRulesV6,
+): WarOperationsUpdateV115 {
+  const mission = state.active, arena = mission?.assault;
+  if (mission?.mode !== "assault" || !arena || state.sourceSha !== rules.metadata.sha256)
+    return reject(state, "Un assaut actif et sa source V6 sont requis.");
+  const actor = arena.actors.find(item => item.side === "ally" && item.teamId === teamId && item.hp > 0);
+  if (!mission.teamIds.includes(teamId) || !arena.launched.includes(teamId) || !actor)
+    return reject(state, "Le camouflage requiert un détachement vivant déjà déployé.");
+  const cloak = actor.assaultCloak ?? { active: false, energy: WAR_ASSAULT_CLOAK_CAPACITY_V115 };
+  if (!cloak.active && cloak.energy === 0)
+    return reject(state, "Réserve vide. Repliez le détachement au bastion pour la recharger.");
+  if (!cloak.active && (arena.focusOrders?.[teamId]?.expiresAtTick ?? 0) > mission.tick)
+    return reject(state, "Attendez le tir prioritaire déjà ordonné avant d’activer le camouflage.");
+  const active = !cloak.active;
+  const actors = arena.actors.map(item => item === actor ? { ...item, assaultCloak: { ...cloak, active } } : item);
+  return accept({ ...state, active: { ...mission, assault: { ...arena, actors } } },
+    active ? "Camouflage activé. Le détachement retient ses tirs." : "Camouflage désactivé.");
+}
+
 /** Inspired by the AP management loop in Metal Slug Attack, not by a Yautja
  * research tech. Source-defined command points and RAV remain unchanged. */
 export function upgradeWarAssaultApV117(state:WarOperationsStateV115):WarOperationsUpdateV115 {
@@ -471,6 +497,7 @@ export function issueWarAssaultSpecialV117(
   if(arena.ap<20) return reject(state,"Cette coordination exige 20 AP.");
   const actor=arena.actors.find(item=>item.side==="ally"&&item.teamId===teamId&&item.hp>0);
   if(!actor) return reject(state,"Cette équipe n'est plus en position pour concentrer son attaque.");
+  if(actor.assaultCloak?.active) return reject(state,"Désactivez le camouflage avant le feu concentré.");
   const unit=unitFor(rules,actor.unitId);
   if(!unit) return reject(state,"La fiche de cette équipe est manquante.");
   const range=clamp(unit.range*2+3,5,22);
@@ -551,9 +578,18 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
   const rivalBase=arena.rivalBase-exchange.rivalBaseDamage;
   const wounds=unique([...arena.fallen,...exchange.actors
     .filter(actor=>actor.hp<=0&&actor.teamId).map(actor=>actor.teamId!)]);
+  const hits = new Set(exchange.shots.map(shot => shot.targetId));
+  const survivors = exchange.actors.filter(actor => actor.hp > 0).map(actor => {
+    const cloak = actor.assaultCloak;
+    if (!cloak) return actor;
+    const struck = hits.has(actor.id);
+    const recharge = !struck && actor.x <= WAR_ASSAULT_CLOAK_RECHARGE_EDGE_V115 ? 1 : 0;
+    const energy = clamp(cloak.energy + (cloak.active ? (struck ? -2 : -1) : recharge), 0, WAR_ASSAULT_CLOAK_CAPACITY_V115);
+    return { ...actor, assaultCloak: { energy, active: cloak.active && !struck && energy > 0 } };
+  });
   const level=arena.apLevel??1;
   const nextArena={...arena,ap:clamp(arena.ap+9+(level-1)*4,0,100+(level-1)*35),ownBase:Math.max(0,ownBase),rivalBase:Math.max(0,rivalBase),
-    actors:exchange.actors.filter(actor=>actor.hp>0),fallen:wounds,
+    actors:survivors,fallen:wounds,
     rivalRosterIds:[...roster],wavesIssued,spawnedWaves,
     ...(arena.baseScreen?{baseScreen:screen&&absorbed===0&&screen.expiresAtTick>tick?screen:undefined}:{}),
     bracedUntil:Object.fromEntries(Object.entries(arena.bracedUntil??{})
@@ -1281,6 +1317,11 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
       (actor.side==="ally" ? typeof actor.teamId==="string"&&!!ownTeam(v,actor.teamId) : actor.side==="rival"&&actor.teamId===null)&&
       Number.isFinite(actor.x)&&actor.x>=0&&actor.x<=(mode==="assault"?100:8)&&
       Number.isFinite(actor.hp)&&actor.hp>=0&&actor.hp<=100&&
+      (actor.assaultCloak===undefined||(mode==="assault"&&actor.side==="ally"&&actor.hp>0&&
+        actor.assaultCloak&&typeof actor.assaultCloak.active==="boolean"&&
+        Number.isInteger(actor.assaultCloak.energy)&&actor.assaultCloak.energy>=0&&
+        actor.assaultCloak.energy<=WAR_ASSAULT_CLOAK_CAPACITY_V115&&
+        (!actor.assaultCloak.active||actor.assaultCloak.energy>0)))&&
       (mode==="assault"||Number.isInteger((actor as WarRtsActorV115).y)&&
        (actor as WarRtsActorV115).y>=0&&(actor as WarRtsActorV115).y<=5);
     const active=v.active;
