@@ -417,7 +417,8 @@ test('the nursery shows its emptied reservoir and announces the dry window only 
   const snapshots = qa.load('app/game/systems/buriedCradleSnapshot.ts');
   const atlas = JSON.parse(fs.readFileSync('app/game/data/buriedCradleArt.json', 'utf8'));
   const render = (bossDefeated, drainageOpened) => {
-    const progress = { ...cradle.createBuriedCradleProgress(), visitedRoomIds: [...cradle.CRADLE_ROOM_IDS],
+    const visitedRoomIds = bossDefeated ? [...cradle.CRADLE_ROOM_IDS] : cradle.CRADLE_ROOM_IDS.slice(0, 9);
+    const progress = { ...cradle.createBuriedCradleProgress(), visitedRoomIds,
       bossDefeated, rootRingCut: bossDefeated, drainageOpened };
     const run = cradle.createBuriedCradleRun(progress, 2);
     run.roomId = '09';
