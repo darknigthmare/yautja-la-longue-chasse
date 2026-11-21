@@ -70,7 +70,7 @@ function currentHullAccess(save: HullSave) {
   const receipt = shipAcquisitionOwnedHullV89(save.shipAcquisitionV89, save.createdAt);
   if (!receipt || docking?.status !== "aboard" || docking.personalShipId !== receipt.shipId) return null;
   const rank = save.prologue ? getChronicleRank(save.prologue.chronicle) : save.profile.rankId;
-  if (rank !== "elite" && rank !== "elder" && rank !== "ancient" && rank !== "black-god") return null;
+  if (rank !== "elite" && rank !== "elder" && rank !== "ancient") return null;
   return tribunalAccessV147(save.tribunalV147).clanShip ? { room: docking.roomId, instanceId: receipt.instanceId } : null;
 }
 

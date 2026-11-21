@@ -1,7 +1,8 @@
 import type { SaveGame } from '../types';
 import { normalizeSoloV69Campaign, soloV69MatchesSave } from './campaignSoloV69';
 import { getChronicleRank } from './clanChronicle';
-import { createSoloV70State, normalizeSoloV70State, SOLO_V70_PHASES, SOLO_V70_SIGNS, soloV70Receipts, soloV70Portal, soloV70CanTravel, type SoloV70State, type SoloV70Receipt } from './firstHuntSoloV70';
+import { createSoloV70State, normalizeSoloV70State, SOLO_V70_PHASES, SOLO_V70_SIGNS, SOLO_V70_ENERGY_VAULT, SOLO_V70_LOAN_RACK, SOLO_V70_QUARANTINE_THRESHOLD,
+  soloV70Receipts, soloV70Portal, soloV70CanTravel, soloV70TrioPresent, soloV70TrioObservation, type SoloV70State, type SoloV70Receipt } from './firstHuntSoloV70';
 export interface SoloV70Campaign { version:1;status:'active'|'completed';checkpoint:SoloV70State;receipts:SoloV70Receipt[];startedAt:string;completedAt:string|null }
 export type SoloV70Save=SaveGame&{soloV70?:SoloV70Campaign|null};
 const record=(v:unknown):v is Record<string,unknown>=>!!v&&typeof v==='object'&&!Array.isArray(v);
@@ -18,6 +19,24 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
  const old=before.checkpoint,delta=next.tick-old.tick,op=SOLO_V70_PHASES.indexOf(old.phase),np=SOLO_V70_PHASES.indexOf(next.phase),receipts=soloV70Receipts(next),fresh=receipts.slice(before.receipts.length);
  if(delta<0||np<op||np>op+1||next.phaseStartedAt<old.phaseStartedAt||next.walked<old.walked||next.walked-old.walked>delta*3.5+.1||next.signs<old.signs||next.signs>old.signs+1||next.signals<old.signals||next.signals-old.signals>delta||next.configuration<old.configuration||next.configuration>old.configuration+1||next.liftTicks<old.liftTicks||next.liftTicks-old.liftTicks>Math.max(1,delta)||next.attempts<old.attempts||next.attempts>old.attempts+1||next.drone.hits<old.drone.hits||next.drone.hits>old.drone.hits+1||next.doorCrossings<old.doorCrossings||next.doorCrossings>old.doorCrossings+1||old.visited.some((x,i)=>x&&!next.visited[i])||before.receipts.some((r,i)=>!same(r,receipts[i]))||fresh.length>1||fresh.some(r=>!incoming.some(i=>same(i,r)))||incoming.some(i=>!receipts.some(r=>same(i,r)))||new Set(incoming.map(i=>i.id)).size!==incoming.length||before.status==='completed'&&!same(old,next))return null;
  const near=(room:number,x:number,y=430,t=40)=>next.room===room&&Math.abs(next.player.x-x)<t&&Math.abs(next.player.y-y)<.01;
+ const previousAdmission = old.riteAdmission, admission = next.riteAdmission;
+ if (Boolean(previousAdmission) !== Boolean(admission)) return null;
+ if (previousAdmission && admission) {
+   if (previousAdmission.sealedEnergy) {
+     if (!same(previousAdmission.sealedEnergy, admission.sealedEnergy)) return null;
+   } else if (admission.sealedEnergy && (old.phase !== 'arsenal' || old.room !== SOLO_V70_ENERGY_VAULT.room ||
+     next.phase !== 'arsenal' || !near(SOLO_V70_ENERGY_VAULT.room, SOLO_V70_ENERGY_VAULT.x) || next.player.vx !== 0 ||
+     old.scan + delta < SOLO_V70_ENERGY_VAULT.holdTicks || next.scan !== 0 ||
+     !same(admission.sealedEnergy, soloV70TrioObservation(next, 1)))) return null;
+   if (fresh[0]?.id === 'arsenal-opened' && (!previousAdmission.sealedEnergy ||
+     !near(SOLO_V70_LOAN_RACK.room, SOLO_V70_LOAN_RACK.x) || next.player.vx !== 0 || !soloV70TrioPresent(next))) return null;
+   if (previousAdmission.threshold) {
+     if (!same(previousAdmission.threshold, admission.threshold)) return null;
+   } else if (admission.threshold && (old.phase !== 'quarantine' || old.room !== SOLO_V70_QUARANTINE_THRESHOLD.room ||
+     fresh[0]?.id !== 'quarantine-valves' || old.valveTimer <= delta || old.scan + delta < 45 ||
+     !near(SOLO_V70_QUARANTINE_THRESHOLD.room, SOLO_V70_QUARANTINE_THRESHOLD.x) || next.player.vx !== 0 ||
+     !same(admission.threshold, soloV70TrioObservation(next, 2)))) return null;
+ }
  if(next.room!==old.room){const side=next.room>old.room?'right':'left',exit=soloV70Portal(old.room,side,old.configuration),entry=soloV70Portal(next.room,side==='right'?'left':'right',next.configuration);if(!soloV70CanTravel(old,next.room)||next.doorCrossings!==old.doorCrossings+1||next.lastDoor?.from!==old.room||next.lastDoor.to!==next.room||next.lastDoor.tick!==next.tick||next.roomEnteredAt!==next.tick||Math.abs(old.player.x-exit.x)>delta*3.5+42||!near(next.room,entry.x,entry.y,1)||next.player.vx!==0||next.player.vy!==0)return null;}
  else if(next.doorCrossings!==old.doorCrossings||!same(next.lastDoor,old.lastDoor)||next.attempts===old.attempts&&Math.abs(next.player.x-old.player.x)>delta*3.5+.1)return null;
  if(next.visited.some((x,i)=>x!==(old.visited[i]||i===next.room))||next.room===old.room&&next.companions.some((c,i)=>Math.abs(c.x-old.companions[i].x)>delta*2.9+.1))return null;

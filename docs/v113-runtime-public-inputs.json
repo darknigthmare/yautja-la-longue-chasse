@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "release": "V113",
-  "scope": "Verified original public files used by Homeworld, native forge and Preserve V6, with newly integrated W-02 scenery and field hound art and their original source images. The unchanged WARP-199 bay and WARP-193 bell source PNGs are reused in the pilot and W-02.",
+  "scope": "Verified original public files used by Homeworld, native forge and Preserve V6, with newly integrated W-02 scenery and field hound art and their original source images. The unchanged WARP-199 bay and WARP-193 bell source PNGs are reused in the pilot and W-02. The Quatza-Rij sprite sheet and trophies are pinned with their provenance manifest.",
   "sourceSnapshot": {
     "commit": "03cf51badd450338d748da55599a317a71debd28",
     "tree": "8955aa3ae57f3c1c5151fc6e2980d083bbcd0aaa"
@@ -16,6 +16,21 @@
       "path": "public/game/warp/w02/cedar-pass-1629.webp",
       "bytes": 248416,
       "sha256": "45aa9c38a40fb0f5c209e10b2c8bbe302ed6b7f560c536b11592d6cdf2e77136"
+    },
+    {
+      "path": "public/game/quatza-rij/poses.png",
+      "bytes": 116961,
+      "sha256": "5299f3228c1ad96fd2c40ca1fe4f3849958ca29bc81b3a18471ae068b2965633"
+    },
+    {
+      "path": "public/game/quatza-rij/skull.png",
+      "bytes": 8358,
+      "sha256": "965dc1980d2213af7c5b7df2562bb1db2c3447b3ccd51b1ed272362f3c94dffd"
+    },
+    {
+      "path": "public/game/quatza-rij/hide.png",
+      "bytes": 10153,
+      "sha256": "826df71b7646950aee05e8cc08feabd831ac488563d73e29537086fa6c80df7a"
     }
   ],
   "provenance": [
@@ -33,6 +48,11 @@
       "path": "docs/suivi-production/v113-warp-p0p1-20261120.md",
       "bytes": 1978,
       "sha256": "3dc6253a85f0bf857ed202fedc9fd0ab2fa05bc749550e8bafc3261a8033573f"
+    },
+    {
+      "path": "docs/suivi-production/quatza-rij-20261121/manifest.json",
+      "bytes": 2198,
+      "sha256": "3355eb75dca1d04ecd6ddc2b9046197299ba5f3163e5c44fc5fe742d1eded96a"
     }
   ],
   "runtimeAssets": [

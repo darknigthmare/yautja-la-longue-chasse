@@ -108,6 +108,10 @@ test('solo requires the actual V89 hull entry and eight missions, then a physica
   assert.equal(engine.canEnterQuatza(rights, 'solo'), false);
   const owned = playShipAcquisitionV161(qa, profile);
   assert.equal(engine.canEnterQuatza(owned, 'solo'), true);
+  assert.equal(owned.loadout.weaponIds.includes('wristblades'), false, 'The rack verifies possessions, not the travelling set.');
+  const unarmed = { ...owned, inventory: { ...owned.inventory,
+    unlockedWeaponIds: owned.inventory.unlockedWeaponIds.filter(item => item !== 'wristblades') } };
+  assert.equal(engine.canEnterQuatza(unarmed, 'solo'), false);
   const locked = structuredClone(owned);
   locked.missionProgress[MISSIONS[0].id].status = 'available';
   assert.equal(engine.canEnterQuatza(locked, 'solo'), false);

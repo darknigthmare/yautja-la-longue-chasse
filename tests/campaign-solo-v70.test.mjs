@@ -30,16 +30,39 @@ test('fabricated endpoints and door teleportation cannot certify receipts despit
  const forged=structuredClone(r.commits[3].state);forged.visited[8]=true;assert.equal(p.normalizeSoloV70State(forged),null);
 });
 
+test('new admission receipts are immutable and cannot be inserted into or removed from an acknowledged run',()=>{
+ const r=played(), arsenal=r.commits.find(c=>c.receipts[0]?.id==='arsenal-opened');
+ const sealed=arsenal.before.soloV70.checkpoint.riteAdmission.sealedEnergy;
+ assert(sealed);
+ assert.deepEqual(arsenal.after.soloV70.checkpoint.riteAdmission.sealedEnergy,sealed);
+ const stripped=structuredClone(arsenal.state);
+ delete stripped.riteAdmission;
+ assert.equal(p.withSoloV70Progress(arsenal.before,arsenal.receipts,stripped,stamp),null);
+ const altered=structuredClone(arsenal.state);
+ altered.riteAdmission.sealedEnergy.positions[1]+=1;
+ assert(p.normalizeSoloV70State(altered));
+ assert.equal(p.withSoloV70Progress(arsenal.before,arsenal.receipts,altered,stamp),null);
+
+ const threshold=r.commits.find(c=>c.receipts[0]?.id==='quarantine-valves');
+ const before=structuredClone(threshold.before);
+ delete before.soloV70.checkpoint.riteAdmission;
+ assert(p.normalizeSoloV70Campaign(before.soloV70));
+ assert.equal(p.withSoloV70Progress(before,threshold.receipts,threshold.state,stamp),null);
+ const falsePresence=structuredClone(threshold.state);
+ falsePresence.riteAdmission.threshold.positions[2]=80;
+ assert.equal(p.normalizeSoloV70State(falsePresence),null);
+});
+
 test('120-tick writes persist physical subobjectives immediately and exact refused arguments remain valid while all simulation freezes',()=>{
  let save=p.startSoloV70Campaign(played().origin,stamp),state=p.createSoloV70State(),last=0,writes=0;const refusals=new Set();
  for(let i=0;i<16000&&state.phase!=='complete';i++){
   const before=state,out=p.stepSoloV70(state,templeInput(state),env);state=out.state;if(!p.soloV70NeedsImmediateCheckpoint(before,state)&&state.tick-last<120)continue;
   const argument=state,serialized=JSON.stringify(argument),write=()=>out.receipts.length?p.withSoloV70Progress(save,out.receipts,argument,stamp):p.withSoloV70Checkpoint(save,argument,stamp),candidate=write();assert(candidate,'refused '+state.phase+' tick '+state.tick);
-  const kind=before.room!==state.room?'door':state.signs>before.signs?'sign':state.liftTicks>before.liftTicks&&before.liftTicks===0?'lift':state.valveTimer>before.valveTimer?'valve':state.drone.hp<before.drone.hp?'drone-hit':state.companionMode!==before.companionMode?'triad':'';
-  if(kind&&!refusals.has(kind)){refusals.add(kind);const durable=JSON.stringify(save);for(let j=0;j<180;j++)state=p.stepSoloV70(state,{move:1,jump:true,command:true,interact:true},{...env,paused:true}).state;for(const key of ['tick','player','companions','drone','health','scan','liftTicks','valveTimer','milestones'])assert.deepEqual(state[key],argument[key],kind+':'+key);assert.equal(JSON.stringify(save),durable);assert.equal(JSON.stringify(argument),serialized);assert.deepEqual(write(),candidate);}
+  const kind=before.room!==state.room?'door':state.signs>before.signs?'sign':state.liftTicks>before.liftTicks&&before.liftTicks===0?'lift':state.valveTimer>before.valveTimer?'valve':state.drone.hp<before.drone.hp?'drone-hit':state.companionMode!==before.companionMode?'triad':state.riteAdmission?.sealedEnergy&&!before.riteAdmission?.sealedEnergy?'energy-seal':'';
+  if(kind&&!refusals.has(kind)){refusals.add(kind);const durable=JSON.stringify(save);for(let j=0;j<180;j++)state=p.stepSoloV70(state,{move:1,jump:true,command:true,interact:true},{...env,paused:true}).state;for(const key of ['tick','player','companions','drone','health','scan','liftTicks','valveTimer','milestones','riteAdmission'])assert.deepEqual(state[key],argument[key],kind+':'+key);assert.equal(JSON.stringify(save),durable);assert.equal(JSON.stringify(argument),serialized);assert.deepEqual(write(),candidate);}
   save=candidate;last=argument.tick;writes++;
  }
- assert.equal(state.phase,'complete');assert.equal(save.soloV70.receipts.length,15);assert.deepEqual([...refusals].sort(),['door','drone-hit','lift','sign','triad','valve']);assert(writes<120,'periodic ordinary movement remains bounded '+writes);
+ assert.equal(state.phase,'complete');assert.equal(save.soloV70.receipts.length,15);assert.deepEqual([...refusals].sort(),['door','drone-hit','energy-seal','lift','sign','triad','valve']);assert(writes<120,'periodic ordinary movement remains bounded '+writes);
 });
 
 test('a genuinely defeated chamber cannot be healed through an early retry or fabricated extra combat hits',()=>{

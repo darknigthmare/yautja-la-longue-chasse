@@ -12,6 +12,45 @@ test('nine physical rooms, reversible doors, three configurations and five real 
  assert.equal(r.transitions.filter(t=>t.before.room!==t.after.room&&t.after.configuration===3).length,8);assert.match(p.soloV70Objective(r.state).instruction,/restent à accomplir/);
 });
 
+test('fresh triad seals three emitters and confirms physical presence at the changing quarantine threshold',()=>{
+ const r=played(), admission=r.state.riteAdmission;
+ assert(admission.sealedEnergy.tick>r.state.milestones['signs-read']);
+ assert(admission.sealedEnergy.tick<r.state.milestones['arsenal-opened']);
+ const threshold=r.transitions.find(t=>t.receipts[0]?.id==='quarantine-valves');
+ assert.equal(threshold.before.configuration,2);
+ assert.equal(threshold.after.configuration,3);
+ assert.deepEqual(admission.threshold,p.soloV70TrioObservation(threshold.after,2));
+ assert.equal(admission.threshold.tick,r.state.milestones['quarantine-valves']);
+ assert.equal(p.normalizeSoloV70State(r.state).riteAdmission.threshold.tick,admission.threshold.tick);
+ assert(r.state.riteAdmission.sealedEnergy.positions.slice(1).every(x=>Math.abs(x-admission.sealedEnergy.positions[0])<185));
+
+ const advance=(state,ticks)=>{
+  for(let step=0;step<ticks;step++)state=p.stepSoloV70(state,{interact:true},env).state;
+  return state;
+ };
+ const arsenal=r.transitions.find(t=>t.before.room===2&&t.after.room===3).after;
+ const atTools={...arsenal,inputArmed:true,player:{...arsenal.player,x:820},companions:[{x:760},{x:690}]};
+ assert.equal(advance(atTools,60).phase,'arsenal','the tools stay locked before the energy deposit');
+ const atSealAlone={...arsenal,inputArmed:true,player:{...arsenal.player,x:p.SOLO_V70_ENERGY_VAULT.x}};
+ assert.equal(advance(atSealAlone,36).riteAdmission.sealedEnergy,null,'a lone hunter cannot seal all three emitters');
+
+ const gate=structuredClone(threshold.before);
+ Object.assign(gate,{valveTimer:80,scan:0,companions:[{x:190},{x:250}]});
+ assert.equal(advance(gate,55).phase,'quarantine','a lone hunter cannot confirm the return opening');
+ assert.equal(advance(gate,55).riteAdmission.threshold,null);
+});
+
+test('legacy V70 runs never receive the new admission proof retroactively',()=>{
+ const initial=p.createSoloV70State();
+ delete initial.riteAdmission;
+ const restored=p.normalizeSoloV70State(JSON.parse(JSON.stringify(initial)));
+ assert(restored);
+ assert.equal(Object.hasOwn(restored,'riteAdmission'),false);
+ const r=playTemple({initial:restored});
+ assert.equal(r.receipts.length,15);
+ assert.equal(Object.hasOwn(r.state,'riteAdmission'),false);
+});
+
 test('cold restoration every 83 ticks clears held inputs and still traverses galleries, moving lift and native drone challenge',()=>{
  const r=playTemple({restoreEvery:83});assert.equal(r.state.phase,'complete');assert(r.state.visited.every(Boolean));assert.equal(r.receipts.length,15);assert.equal(r.state.drone.hp,0);assert.equal(r.state.attempts,0);
  const held=structuredClone(played().snapshots.drone);held.inputArmed=true;held.previousInteract=held.previousJump=held.previousCommand=true;const restored=p.normalizeSoloV70State(held);assert(restored);assert.equal(restored.inputArmed,false);assert.equal(restored.previousCommand,false);

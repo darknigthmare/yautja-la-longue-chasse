@@ -104,3 +104,45 @@ La [variante Jungle avec le pilote partagé](https://github.com/darknigthmare/ya
 La même campagne Jungle Scout à la tentative 6 donne également une traversée continue de la canopée vers la navette. Le chasseur emporte les neuf prises réelles à 18/18, monte l’arbre de la séquence 0, touche deux branches, se balance sur la première liane, relâche et rattrape la deuxième. Il revient ensuite au sol, termine ses objectifs, vainc l’Apex, collecte son trophée et embarque avec les mêmes neuf prises. Le résultat est réussi en **143,68 s**, avec **102,18 PV**, **263 images de grimpe** et **118 images de balancement**. Le rejeu vérifie les mêmes entrées et la charge réellement embarquée. [Résultat, sauvegardes gagnées et trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44902826842/artifacts/14706502930)
 
 Après les cinq victoires Hunter de la commande précédente, ajouter `--fullCanopy=true --canopySequence=0` à la commande Scout. Le pilote reprend les plateformes et supports de la géométrie finale. Les ennemis, collisions, dégâts et objectifs restent actifs. Dans cette admission, les indices 1 et 2 ne désignent aucun parcours engendré. Les deux essais correspondants publient `route-missing` et une extraction terrestre à 18/18, sans qualifier de traversée. [Indice 1](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44902826842/artifacts/14706507937) · [Indice 2](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44902826842/artifacts/14705774844)
+
+## Repli chargé sur la source du 21 novembre 2026
+
+Le moteur de `0c6708999e393b7e7af8f6c8c8753ab7ec5d9437` a effectué **79 extractions sur 80 essais** sur dix couples mission–armure. Les 80 traces reproduisent exactement l’état terminal. La sauvegarde de départ est celle de la campagne gagnée, et chaque nouvelle tentative provient d’un résultat de mission réel appliqué à cette sauvegarde. L’insertion en vaisseau visible laisse les patrouilles, ennemis et objectifs actifs. Toutes les prises viennent des corps de l’essai. Le meilleur sac est mesuré à l’embarquement et à la sortie. [Run de la matrice](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800)
+
+| Mission | Armure | Extractions | Tentative du meilleur sac | Volume conservé | Preuve |
+| --- | --- | ---: | ---: | ---: | --- |
+| Désert | Scout | 8/8 | 2 | 15/18 | [Rapport et trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800/artifacts/14712027393) |
+| Fongique | Scout | 8/8 | 1 | 1/18 | [Rapport et trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800/artifacts/14711288476) |
+| Glace | Scout | 8/8 | 6 | 16/18 | [Rapport et trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800/artifacts/14712380655) |
+| Jungle | Berserker | 8/8 | 6 | 17/30 | [Rapport et trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800/artifacts/14711203812) |
+| Jungle | Hunter | 8/8 | 3 | 14/24 | [Rapport et trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800/artifacts/14711957720) |
+| Océan | Scout | 7/8 | 2 | 11/18 | [Rapport et trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800/artifacts/14712216905) |
+| Ruines | Scout | 8/8 | 5 | 6/18 | [Rapport et trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800/artifacts/14711812830) |
+| Marais | Scout | 8/8 | 8 | 14/18 | [Rapport et trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800/artifacts/14711997513) |
+| Volcan | Berserker | 8/8 | 3 | 19/30 | [Rapport et trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800/artifacts/14711313369) |
+| Volcan | Hunter | 8/8 | 3 | 19/24 | [Rapport et trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800/artifacts/14711368254) |
+
+Aucun des 80 essais n’atteint le seuil plein demandé au pilote. Les résultats à 18/18 déjà obtenus dans la Jungle et le Volcan restent documentés plus haut. `REM112-08` reste partiel pour la couverture des huit missions et des différentes armures. Les essais moteur reproduisent une charge déclarée et les interactions réelles du modèle. Les preuves de navigateur relèvent de `REM112-06`.
+
+Le dépôt de terrain utilise désormais l’appui sous les pieds même si le centre du chasseur est au-delà du bord. Une prise posée sur une branche reste accessible sur cette branche. Le jeu refuse le dépôt si l’appui manque. Les 54 tests de dépôt, de cycle dans le moteur et de repli passent. [Contrôle de régression](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916625804/job/136883527714)
+
+## Variante de collecte et disponibilité des prises
+
+La recherche a rejoué quatre admissions documentées avec 14 variantes de distance et de déclenchement de collecte par admission. **53 extractions sur 56** et **56 états terminaux reproduits**. Les valeurs ci-dessous sont celles effectivement gardées à la sortie. [Run des variantes](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916768090)
+
+| Configuration | Tentative | Extractions | Meilleur sac conservé | Preuve |
+| --- | ---: | ---: | ---: | --- |
+| Volcan Hunter | 3 | 11/14 | 19/24 | [Rapport et trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916768090/artifacts/14711787946) |
+| Désert Scout | 2 | 14/14 | 15/18 | [Rapport et trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916768090/artifacts/14711629709) |
+| Glace Scout | 6 | 14/14 | 16/18 | [Rapport et trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916768090/artifacts/14712148397) |
+| Marais Scout | 1 | 14/14 | 12/18 | [Rapport et trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916768090/artifacts/14712381833) |
+
+Dans la meilleure variante Désert, le relevé à l’activation de l’Apex montre deux unités encore disponibles sur une proie déjà vaincue. Dans la variante Glace, il reste trois unités sur la patrouille d’insertion n°1. Ces comptages décrivent ces parties et le moment observé.
+
+Le rangement alternatif Glace Scout a laissé la pièce d’une unité du Brute pour essayer la patrouille d’insertion à la place. Ses huit variantes extraient et se rejouent exactement. La meilleure garde **15/18 unités** et trois unités restent sur la patrouille. Le meilleur résultat Glace du lot est **16/18**. Total de la matrice et des variantes du lot : **140 extractions sur 144 essais**, avec **144 rejeux terminaux identiques** et aucune extraction supplémentaire au seuil plein. [Rapports et traces du rangement Glace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44917611354/artifacts/14712605891)
+
+## Reprise navigateur du Volcan
+
+Le navigateur ouvre le vrai GameClient depuis la sauvegarde Glace et atelier déjà documentée. Le bouton de pause ouvre le dialogue natif, puis « Suspendre et sauvegarder » ferme le terrain de chasse. Après rechargement et reprise, le Volcan repart à **21,500 s** pour la même tentative `0`. Le sidecar observé porte le SHA‑256 `fcc5d98d3f6525d50399bff25ea2ff90a62ab04b255f882af64838f8c1aa8146`. [Rapport navigateur, entrées et captures](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800/artifacts/14711934633)
+
+Le Volcan reste en phase cible après 806,829 s murales. Le dernier point publié au journal indique 120,850 s simulées et 178,74 PV. L’essai ne donne ni extraction ni règlement durable. Les deux ouvertures de menu anatomique ne produisent aucune pièce et la recette ne passe pas par l’atelier dans cette chasse. Le rapport recense zéro ressource manquante et deux requêtes audio annulées. `REM112-06` gagne une reprise effectivement observée. Les victoires navigateur précédentes dans la Jungle et la Glace ainsi que la conservation déjà documentée restent les résultats positifs pour ces étapes. [Historique de la campagne navigateur](../v112-campaign-canonical/README.md) · [Journal de l’essai Volcan](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800/job/136882419575)

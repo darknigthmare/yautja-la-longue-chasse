@@ -5,11 +5,18 @@ export const SOLO_V70_PROOFS = ['briefed','upper-entry','triad-oath','signs-read
 export type SoloV70Proof = typeof SOLO_V70_PROOFS[number];
 export interface SoloV70Receipt { id: SoloV70Proof; sourceId: 'solo.temple-opening.v70'; tick: number }
 export interface SoloV70Actor { x:number;y:number;vx:number;vy:number;facing:-1|1 }
+interface SoloV70TrioObservation { tick: number; configuration: 1 | 2; positions: [number, number, number] }
+interface SoloV70RiteAdmission {
+  version: 1;
+  sealedEnergy: SoloV70TrioObservation | null;
+  threshold: SoloV70TrioObservation | null;
+}
 export interface SoloV70State {
  version:1;phase:SoloV70Phase;tick:number;phaseStartedAt:number;room:number;roomEnteredAt:number;walked:number;configuration:1|2|3;visited:boolean[];
  player:SoloV70Actor;companions:[{x:number},{x:number}];companionMode:'follow'|'plates';signals:number;signs:number;scan:number;liftTicks:number;valveTimer:number;
  drone:{x:number;hp:number;mode:'watch'|'telegraph'|'lunge'|'recover'|'dead';age:number;hits:number};health:number;hurtTimer:number;attackTimer:number;attackCooldown:number;acid:{x:number;ttl:number};failedAt:number|null;attempts:number;
  doorCrossings:number;lastDoor:{from:number;to:number;tick:number}|null;inputArmed:boolean;previousJump:boolean;previousInteract:boolean;previousCommand:boolean;milestones:Partial<Record<SoloV70Proof,number>>;
+ riteAdmission?: SoloV70RiteAdmission;
 }
 export interface SoloV70Input { move?:-1|0|1;jump?:boolean;interact?:boolean;command?:boolean }
 export interface SoloV70Environment { assetsReady:boolean;pageVisible:boolean;paused:boolean }
@@ -26,18 +33,35 @@ export const SOLO_V70_ROOMS = [
 ] as const;
 export const SOLO_V70_GROUND=430,SOLO_V70_WIDTH=1120;
 export const SOLO_V70_SIGNS=[{x:290,y:360},{x:540,y:300},{x:850,y:360}] as const;
+export const SOLO_V70_ENERGY_VAULT = { room: 3, x: 460, holdTicks: 36 } as const;
+export const SOLO_V70_LOAN_RACK = { room: 3, x: 820 } as const;
+export const SOLO_V70_QUARANTINE_THRESHOLD = { room: 8, x: 980 } as const;
 const clamp=(n:number,a:number,b:number)=>Math.max(a,Math.min(b,n));
 const record=(v:unknown):v is Record<string,unknown>=>!!v&&typeof v==='object'&&!Array.isArray(v);
 const finite=(v:unknown,a:number,b:number):v is number=>typeof v==='number'&&Number.isFinite(v)&&v>=a&&v<=b;
 const int=(v:unknown,a:number,b:number):v is number=>finite(v,a,b)&&Number.isSafeInteger(v);
+export const soloV70TrioPresent = (s: SoloV70State) =>
+  s.companions.every(companion => Math.abs(companion.x - s.player.x) < 185);
+export const soloV70TrioObservation = (s: SoloV70State, configuration: 1 | 2): SoloV70TrioObservation =>
+  ({ tick: s.tick, configuration, positions: [s.player.x, s.companions[0].x, s.companions[1].x] });
+
+function readTrioObservation(value: unknown, center: number, configuration: 1 | 2, maxTick: number): SoloV70TrioObservation | null {
+  if (!record(value) || Object.keys(value).length !== 3 || value.configuration !== configuration ||
+    !int(value.tick, 1, maxTick) || !Array.isArray(value.positions) || value.positions.length !== 3 ||
+    !Array.from(value.positions).every(x => finite(x, 65, 1055))) return null;
+  const [player, saar, vek] = value.positions as [number, number, number];
+  if (Math.abs(player - center) >= 38 || Math.abs(saar - player) >= 185 || Math.abs(vek - player) >= 185) return null;
+  return { tick: value.tick, configuration, positions: [player, saar, vek] };
+}
+
 export const soloV70ProofCount=(s:Pick<SoloV70State,'phase'>)=>SOLO_V70_PHASES.indexOf(s.phase);
 export const soloV70Receipts=(s:SoloV70State):SoloV70Receipt[]=>SOLO_V70_PROOFS.slice(0,soloV70ProofCount(s)).map(id=>({id,sourceId:'solo.temple-opening.v70',tick:s.milestones[id]!}));
-export function createSoloV70State():SoloV70State {return {version:1,phase:'briefing',tick:0,phaseStartedAt:0,room:0,roomEnteredAt:0,walked:0,configuration:1,visited:[true,false,false,false,false,false,false,false,false],player:{x:125,y:430,vx:0,vy:0,facing:1},companions:[{x:80},{x:65}],companionMode:'follow',signals:0,signs:0,scan:0,liftTicks:0,valveTimer:0,drone:{x:925,hp:5,mode:'watch',age:0,hits:0},health:6,hurtTimer:0,attackTimer:0,attackCooldown:0,acid:{x:925,ttl:0},failedAt:null,attempts:0,doorCrossings:0,lastDoor:null,inputArmed:false,previousJump:false,previousInteract:false,previousCommand:false,milestones:{}};}
+export function createSoloV70State():SoloV70State {return {version:1,phase:'briefing',tick:0,phaseStartedAt:0,room:0,roomEnteredAt:0,walked:0,configuration:1,visited:[true,false,false,false,false,false,false,false,false],player:{x:125,y:430,vx:0,vy:0,facing:1},companions:[{x:80},{x:65}],companionMode:'follow',signals:0,signs:0,scan:0,liftTicks:0,valveTimer:0,drone:{x:925,hp:5,mode:'watch',age:0,hits:0},health:6,hurtTimer:0,attackTimer:0,attackCooldown:0,acid:{x:925,ttl:0},failedAt:null,attempts:0,doorCrossings:0,lastDoor:null,inputArmed:false,previousJump:false,previousInteract:false,previousCommand:false,milestones:{},riteAdmission:{version:1,sealedEnergy:null,threshold:null}};}
 export function soloV70Platforms(s:SoloV70State):{x:number;y:number;width:number}[]{const fixed:{x:number;y:number;width:number}[]=SOLO_V70_ROOMS[s.room].platforms.map(([x,y,width])=>({x,y,width}));if(s.room===5)fixed.push({x:440,y:430-Math.max(0,s.liftTicks-1)*170/99,width:220});return fixed;}
 export function soloV70Support(s:SoloV70State,a=s.player){return soloV70Platforms(s).find(p=>a.x>p.x-17&&a.x<p.x+p.width+17&&a.y<=p.y+.01)?.y??430;}
 export function soloV70Portal(room:number,side:'left'|'right',configuration:number){return {x:side==='left'?80:1040,y:side==='right'&&configuration!==3?(room===0||room===4?270:room===5?300:430):430};}
 export function soloV70CanTravel(s:SoloV70State,to:number){if(to<0||to>8||Math.abs(to-s.room)!==1)return false;if(to<s.room)return true;return soloV70ProofCount(s)>=[0,2,3,4,5,6,7,8,10][to];}
-export function soloV70NeedsImmediateCheckpoint(a:SoloV70State,b:SoloV70State){return a.phase!==b.phase||a.room!==b.room||a.signs!==b.signs||a.companionMode!==b.companionMode||a.signals!==b.signals||a.liftTicks===0&&b.liftTicks>0||b.valveTimer>a.valveTimer||a.drone.hp!==b.drone.hp||a.health!==b.health||a.failedAt!==b.failedAt||a.attempts!==b.attempts;}
+export function soloV70NeedsImmediateCheckpoint(a:SoloV70State,b:SoloV70State){return a.phase!==b.phase||a.room!==b.room||a.signs!==b.signs||a.companionMode!==b.companionMode||a.signals!==b.signals||a.liftTicks===0&&b.liftTicks>0||b.valveTimer>a.valveTimer||a.drone.hp!==b.drone.hp||a.health!==b.health||a.failedAt!==b.failedAt||a.attempts!==b.attempts||a.riteAdmission?.sealedEnergy?.tick!==b.riteAdmission?.sealedEnergy?.tick;}
 export function normalizeSoloV70State(v:unknown):SoloV70State|null{
  if(!record(v)||v.version!==1||!SOLO_V70_PHASES.some(p=>p===v.phase)||!int(v.tick,0,5_184_000)||!int(v.phaseStartedAt,0,v.tick)||!int(v.room,0,8)||!int(v.roomEnteredAt,0,v.tick)||!finite(v.walked,0,v.tick*3.5+.1)||![1,2,3].includes(v.configuration as number)||!Array.isArray(v.visited)||v.visited.length!==9||!v.visited.every(x=>typeof x==='boolean')||!v.visited[0]||!v.visited[v.room]||!record(v.player)||!Array.isArray(v.companions)||v.companions.length!==2||!v.companions.every(c=>record(c)&&finite(c.x,65,1055))||!['follow','plates'].includes(String(v.companionMode))||!int(v.signals,0,99999)||!int(v.signs,0,3)||!int(v.scan,0,89)||!int(v.liftTicks,0,100)||!int(v.valveTimer,0,600)||!record(v.drone)||!finite(v.drone.x,650,970)||!int(v.drone.hp,0,5)||!['watch','telegraph','lunge','recover','dead'].includes(String(v.drone.mode))||!int(v.drone.age,0,89)||!int(v.drone.hits,0,9999)||!int(v.health,0,6)||!int(v.hurtTimer,0,75)||!int(v.attackTimer,0,18)||!int(v.attackCooldown,0,45)||!record(v.acid)||!finite(v.acid.x,650,970)||!int(v.acid.ttl,0,120)||!(v.failedAt===null||int(v.failedAt,0,v.tick))||!int(v.attempts,0,9999)||!int(v.doorCrossings,0,99999)||!record(v.milestones))return null;
  const a=v.player,count=soloV70ProofCount(v as unknown as SoloV70State),furthest=[0,0,1,2,3,4,5,6,7,7,8,8,8,8,8,8][count],visited=v.visited;
@@ -45,10 +69,26 @@ export function normalizeSoloV70State(v:unknown):SoloV70State|null{
  if(!finite(a.x,65,1055)||!finite(a.y,130,430)||!finite(a.vx,-3.5,3.5)||!finite(a.vy,-12,16)||![-1,1].includes(a.facing as number)||v.health===0&&v.failedAt===null||v.health>0&&v.failedAt!==null||(v.drone.hp===0)!==(v.drone.mode==='dead')||v.drone.hits<5-v.drone.hp||count>=4&&v.signs!==3||count<3&&v.signs!==0||v.configuration!==(count>=12?3:count>=9?2:1)||count<11&&v.drone.hp===0||count>=11&&v.drone.hp!==0||count<10&&v.drone.hp!==5||count>=7&&v.liftTicks!==100||count<6&&v.liftTicks!==0||count>=13&&v.room!==0||Object.keys(v.milestones).length!==count)return null;
  if(v.lastDoor===null?v.doorCrossings!==0:!record(v.lastDoor)||!int(v.lastDoor.from,0,8)||!int(v.lastDoor.to,0,8)||Math.abs(v.lastDoor.from-v.lastDoor.to)!==1||!int(v.lastDoor.tick,1,v.tick)||v.lastDoor.to!==v.room||v.lastDoor.tick!==v.roomEnteredAt||v.doorCrossings<1)return null;
  const milestones:SoloV70State['milestones']={};let prior=0;for(const id of SOLO_V70_PROOFS.slice(0,count)){const tick=v.milestones[id];if(!int(tick,1,v.tick)||tick<=prior)return null;milestones[id]=tick;prior=tick;}if(prior!==v.phaseStartedAt)return null;
- return {...v,player:{...a},companions:v.companions.map(c=>({...c})),drone:{...v.drone},acid:{...v.acid},visited:[...v.visited],milestones,inputArmed:false,previousJump:false,previousInteract:false,previousCommand:false} as unknown as SoloV70State;
+ let riteAdmission: SoloV70RiteAdmission | undefined;
+ if (Object.hasOwn(v, 'riteAdmission')) {
+   const raw = v.riteAdmission;
+   if (!record(raw) || Object.keys(raw).length !== 3 || raw.version !== 1) return null;
+   const seal = raw.sealedEnergy === null ? null : readTrioObservation(raw.sealedEnergy, SOLO_V70_ENERGY_VAULT.x, 1, v.tick);
+   const threshold = raw.threshold === null ? null : readTrioObservation(raw.threshold, SOLO_V70_QUARANTINE_THRESHOLD.x, 2, v.tick);
+   if (raw.sealedEnergy !== null && !seal || raw.threshold !== null && !threshold) return null;
+   const arsenalOpened = milestones['arsenal-opened'];
+   const signsRead = milestones['signs-read'];
+   const thresholdReached = milestones['quarantine-valves'];
+   if ((seal && (signsRead === undefined || seal.tick - signsRead < SOLO_V70_ENERGY_VAULT.holdTicks)) ||
+     (arsenalOpened !== undefined && (!seal || seal.tick >= arsenalOpened)) ||
+     (threshold?.tick ?? null) !== (thresholdReached ?? null)) return null;
+   riteAdmission = { version: 1, sealedEnergy: seal, threshold };
+ }
+ return {...v,player:{...a},companions:v.companions.map(c=>({...c})),drone:{...v.drone},acid:{...v.acid},visited:[...v.visited],milestones,
+   ...(riteAdmission ? { riteAdmission } : {}),inputArmed:false,previousJump:false,previousInteract:false,previousCommand:false} as unknown as SoloV70State;
 }
 export function stepSoloV70(state:SoloV70State,input:SoloV70Input,env:SoloV70Environment):{state:SoloV70State;receipts:SoloV70Receipt[]}{
- const s:SoloV70State={...state,player:{...state.player},companions:state.companions.map(c=>({...c})) as SoloV70State['companions'],drone:{...state.drone},acid:{...state.acid},visited:[...state.visited],milestones:{...state.milestones}},receipts:SoloV70Receipt[]=[];
+ const s:SoloV70State={...state,...(state.riteAdmission ? { riteAdmission: { ...state.riteAdmission } } : {}),player:{...state.player},companions:state.companions.map(c=>({...c})) as SoloV70State['companions'],drone:{...state.drone},acid:{...state.acid},visited:[...state.visited],milestones:{...state.milestones}},receipts:SoloV70Receipt[]=[];
  if(!env.assetsReady||!env.pageVisible||env.paused||s.phase==='complete'){s.inputArmed=false;s.previousJump=s.previousInteract=s.previousCommand=false;return {state:s,receipts};}
  if(!s.inputArmed){if(!input.move&&!input.jump&&!input.interact&&!input.command)s.inputArmed=true;return {state:s,receipts};}
  const jump=!!input.jump&&!s.previousJump,interact=!!input.interact&&!s.previousInteract,command=!!input.command&&!s.previousCommand;s.previousJump=!!input.jump;s.previousInteract=!!input.interact;s.previousCommand=!!input.command;s.tick++;
@@ -74,7 +114,17 @@ export function stepSoloV70(state:SoloV70State,input:SoloV70Input,env:SoloV70Env
  else if(s.phase==='ascent'&&s.room===0&&near(900,270)&&interact)proof('upper-entry','oath');
  else if(s.phase==='oath'&&s.room===1&&scan(near(520)&&!a.vx&&s.companionMode==='plates'&&s.companions.every((c,i)=>Math.abs(c.x-plateTargets[i])<5)&&!!input.interact,45))proof('triad-oath','signs');
  else if(s.phase==='signs'&&s.room===2){const target=SOLO_V70_SIGNS[s.signs];if(target&&scan(near(target.x,target.y)&&!a.vx&&!!input.interact,30)){s.signs++;s.scan=0;if(s.signs===3)proof('signs-read','arsenal');}}
- else if(s.phase==='arsenal'&&s.room===3&&scan(near(820)&&!a.vx&&!!input.interact,45))proof('arsenal-opened','belvedere');
+ else if (s.phase === 'arsenal' && s.room === SOLO_V70_ENERGY_VAULT.room) {
+   const admission = s.riteAdmission;
+   if (admission && !admission.sealedEnergy) {
+     if (scan(near(SOLO_V70_ENERGY_VAULT.x) && !a.vx && soloV70TrioPresent(s) && !!input.interact, SOLO_V70_ENERGY_VAULT.holdTicks)) {
+       admission.sealedEnergy = soloV70TrioObservation(s, 1);
+       s.scan = 0;
+     }
+   } else if (scan(near(SOLO_V70_LOAN_RACK.x) && !a.vx && (!admission || soloV70TrioPresent(s)) && !!input.interact, 45)) {
+     proof('arsenal-opened','belvedere');
+   }
+ }
  else if(s.phase==='belvedere'&&s.room===4&&near(950,270)&&interact)proof('belvedere-serviced','counterweight');
  else if(s.phase==='counterweight'&&s.room===5){if(!s.liftTicks&&scan(near(540)&&!a.vx&&!!input.interact,30))s.liftTicks=1;if(s.liftTicks===100&&near(950,300)&&interact)proof('counterweight-aligned','humans');}
  else if(s.phase==='humans'&&s.room===6&&scan(near(740)&&!a.vx&&!!input.interact,60))proof('human-truce','configuration');
@@ -86,7 +136,20 @@ export function stepSoloV70(state:SoloV70State,input:SoloV70Input,env:SoloV70Env
   if(command&&!s.attackCooldown){s.attackTimer=18;s.attackCooldown=45;if(d.mode==='recover'&&Math.abs(a.x-d.x)<100&&a.y>330){d.hp--;d.hits++;s.acid={x:d.x,ttl:120};}}
   if(!s.hurtTimer&&(d.mode==='lunge'&&Math.abs(a.x-d.x)<65&&a.y>350||s.acid.ttl>0&&Math.abs(a.x-s.acid.x)<40&&a.y===430)){s.health--;s.hurtTimer=75;if(!s.health)s.failedAt=s.tick;}
   if(!d.hp){d.mode='dead';d.age=0;proof('drone-confined','quarantine');}
- }else if(s.phase==='quarantine'&&s.room===8){if(near(200)&&!a.vx&&input.interact&&s.valveTimer===0&&scan(true,30)){s.valveTimer=600;s.scan=0;}else if(near(980)&&!a.vx&&s.valveTimer>0&&scan(!!input.interact,45)){s.configuration=3;s.valveTimer=0;proof('quarantine-valves','return');}else if(!near(200)&&!near(980))s.scan=0;}
+ } else if (s.phase === 'quarantine' && s.room === SOLO_V70_QUARANTINE_THRESHOLD.room) {
+   const threshold = SOLO_V70_QUARANTINE_THRESHOLD.x;
+   if (near(200) && !a.vx && input.interact && s.valveTimer === 0 && scan(true, 30)) {
+     s.valveTimer = 600;
+     s.scan = 0;
+   } else if (near(threshold) && !a.vx && s.valveTimer > 0) {
+     if (scan((!s.riteAdmission || soloV70TrioPresent(s)) && !!input.interact, 45)) {
+       if (s.riteAdmission) s.riteAdmission.threshold = soloV70TrioObservation(s, 2);
+       s.configuration = 3;
+       s.valveTimer = 0;
+       proof('quarantine-valves', 'return');
+     }
+   } else if (!near(200) && !near(threshold)) s.scan = 0;
+ }
  else if(s.phase==='return'&&s.room===0&&near(160)&&s.walked>=10000&&interact)proof('returned','debrief');
  else if(s.phase==='debrief'&&s.room===0&&near(160)&&interact)proof('mentor-report','recognition');
  else if(s.phase==='recognition'&&s.room===0&&scan(near(160)&&!a.vx&&!!input.interact,90))proof('opening-attested','complete');
@@ -99,14 +162,19 @@ export function soloV70Objective(s:SoloV70State):{title:string;instruction:strin
  ascent:['Marches des Trois','Saute les marches réelles et confirme la terrasse supérieure.',0,900,270],
  oath:['Trois poids, un serment','Signal : place Saar et Vek sur leurs plaques. Tiens Interaction sur la plaque centrale.',1,520,430],
  signs:['Tribune des Signes',`Relevé ${s.signs}/3. Gagne chaque tribune et maintiens Interaction immobile.`,2,SOLO_V70_SIGNS[Math.min(2,s.signs)].x,SOLO_V70_SIGNS[Math.min(2,s.signs)].y],
- arsenal:['Arsenal des Épreuves','Inspecte le râtelier. Les outils empruntés servent aux mécanismes ; aucune arme énergétique ou dotation permanente.',3,820,430],
+ arsenal:s.riteAdmission && !s.riteAdmission.sealedEnergy
+   ? ['Déposer les armes énergétiques', 'Réunis Saar et Vek devant le coffre et maintiens Interaction pour sceller les trois émetteurs.', SOLO_V70_ENERGY_VAULT.room, SOLO_V70_ENERGY_VAULT.x, 430]
+   : ['Arsenal des Épreuves', 'Vérifie le râtelier des lames et outils de rite. Ils sont prêtés pour ce parcours.', SOLO_V70_LOAN_RACK.room, SOLO_V70_LOAN_RACK.x, 430],
  belvedere:['Belvédère Fracturé','Traverse les terrasses. Ouvre la sortie de service depuis l’intérieur.',4,950,270],
  counterweight:['Puits des Contrepoids','Tiens Interaction sur le plateau bas pour engager le contrepoids. Monte avec lui puis saute vers la galerie.',5,s.liftTicks<70?540:950,s.liftTicks<70?430-Math.max(0,s.liftTicks-1)*170/99:300],
  humans:['Camp des Intrus','Le garde protège les survivants. Approche sans attaque et maintiens Interaction pour établir une trêve ; les humains ne sont pas des aliens à éliminer.',6,740,430],
  configuration:['II · La Reconnexion','Tiens Interaction au pupitre : les accès internes se réorientent, les sorties de service restent disponibles.',7,300,430],
  separation:['Les deux ailes','Signal : Saar et Vek gagnent leurs plaques éloignées. Maintiens le contrepoids central jusqu’à rétablir la connexion.',7,300,430],
  drone:['Un drone dans la vanne','Télégraphe → bond → retrait. Saute ou prends de la distance, puis Lame/Signal pendant le retrait à portée. L’acide reste au point d’impact. Interaction après une défaite reprend le point sûr.',8,740,430],
- quarantine:['III · Isolement local','Tiens Interaction à la première vanne puis rejoins la seconde avant la fin de la fenêtre. Le foyer profond reste fermé, pas éradiqué.',8,s.valveTimer?980:200,430],
+ quarantine:['III · Isolement local', s.riteAdmission
+   ? 'Ouvre la première vanne. Réunis la triade au seuil pendant l’ouverture, puis maintiens Interaction à la seconde vanne.'
+   : 'Tiens Interaction à la première vanne puis rejoins la seconde avant la fin de la fenêtre. Le foyer profond reste fermé.',
+   SOLO_V70_QUARANTINE_THRESHOLD.room, s.valveTimer ? SOLO_V70_QUARANTINE_THRESHOLD.x : 200, 430],
  return:['Revenir avec la triade','Reviens à pied par les portes et sorties de service. Saar et Vek doivent arriver près de chaque porte.',0,160,430],
  debrief:['Le temple reste une chasse','Remets le rapport d’ouverture. Un drone combattu ne signe ni la mort de la reine ni les chasses de chaque camarade.',0,160,430],
  recognition:['Acte I · L’Ouverture attestée','Maintiens Interaction. Le clan conserve les quinze faits du parcours ; tu restes Young Blood.',0,160,430],
