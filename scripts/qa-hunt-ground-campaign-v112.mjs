@@ -21,7 +21,8 @@ const ast=ts.createSourceFile("HuntCanvas.tsx",source,ts.ScriptTarget.Latest,tru
 let riteHandler;
 const visit=node=>{if(ts.isBinaryExpression(node)&&node.left.getText(ast)==="riteMenuActionRef.current"&&ts.isArrowFunction(node.right)&&node.right.parameters.length===1)riteHandler=node.right;ts.forEachChild(node,visit);};
 visit(ast);assert.ok(riteHandler,"the actual rite UI callback must exist");
-const append="\nexport {makeGameState,stepGame,snapshot,riteContextV77,riteRuntimeOptionsV112,huntRiteMenuSnapshotV77,riteOperationSecondsV77,trophyHarvestPoint,trophyHarvestInReach,APEX_TROPHY_REACH,huntStructuralBarrierV94};\nexport {defaultSave,applyMissionResult,normalizeSave} from './save'; export {purchaseFieldToolV111} from './systems/fieldToolsV111'; export {anatomyPartsV112,makeAnatomySpecimenV112} from './systems/anatomyHarvestV112'; export {fieldLoadV112} from './systems/harvestInventoryV112'; export {carriedFieldSpecimensV112} from './systems/fieldStashV112'; export {MISSION_BY_ID,ARMOR_BY_ID,WEAPON_BY_ID,GEAR_BY_ID} from './data';\nexport {evaluateClanShipAccess} from './systems/clanShipOperations'; export {normalizePlanetInsertionPlan,shipSupportsSurfaceInsertion} from './systems/planetInsertion'; export {loadShipProgression} from './systems/progression';\n"+
+const append="\nexport {makeGameState,stepGame,snapshot,riteContextV77,riteRuntimeOptionsV112,huntRiteMenuSnapshotV77,riteOperationSecondsV77,trophyHarvestPoint,trophyHarvestInReach,APEX_TROPHY_REACH,huntStructuralBarrierV94};\nexport {defaultSave,applyMissionResult,normalizeSave} from './save'; export {purchaseFieldToolV111} from './systems/fieldToolsV111'; export {anatomyPartsV112,makeAnatomySpecimenV112} from './systems/anatomyHarvestV112'; export {fieldLoadV112} from './systems/harvestInventoryV112'; export {carriedFieldSpecimensV112} from './systems/fieldStashV112'; export {MISSION_BY_ID,ARMOR_BY_ID,WEAPON_BY_ID,GEAR_BY_ID} from './data';\nexport {evaluateClanShipAccess} from './systems/clanShipOperations'; export {shipSupportsSurfaceInsertion} from './systems/planetInsertion'; export {loadShipProgression} from './systems/progression';\n"+
+ "export function visibleSoloShipPlanQa(){return normalizePlanetInsertionPlan({version:1,method:'ship',team:'solo'});}\n"+
  "export function nativeRiteMenuQa(game,mission,action){const setUi=()=>{};const emitPersistence=()=>{};const persistHuntRef={current:null};const handler="+riteHandler.getText(ast)+";handler(action);}";
 const bundle=await build({stdin:{contents:source+append,
  resolveDir:root+"app/game",sourcefile:root+"app/game/HuntCanvas.tsx",loader:"tsx"},bundle:true,write:false,format:"cjs",platform:"node",jsx:"automatic",loader:{".module.css":"empty"},external:["react","react/jsx-runtime","react-dom"],logLevel:"silent"});
@@ -84,7 +85,7 @@ for(const missionId of missionIds)for(const armorId of armorIds){
  }
  const campaignSave=args.successSave!==undefined?structuredClone(save):null;
  const insertionPlan=args.insertion==="visible-ship"
-  ?runtime.normalizePlanetInsertionPlan({version:1,method:"ship",team:"solo"}):undefined;
+  ?runtime.visibleSoloShipPlanQa():undefined;
  if(args.insertion!==undefined)assert.ok(insertionPlan,"the selected native insertion must normalize");
  const insertionShipId=insertionPlan?runtime.loadShipProgression(save).selectedShipId:undefined;
  if(insertionPlan){
