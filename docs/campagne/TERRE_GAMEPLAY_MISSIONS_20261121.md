@@ -573,7 +573,7 @@ Une à deux chasses plus tard, la console d'écoute du vaisseau capte des **nouv
 - Ordres au pack : suivre, attendre, encercler, se cacher.
 - Mécanique : un Unblooded **désobéit** si une proie humaine l'attaque (jet de discipline) ; le joueur doit intervenir avant qu'il tue.
 - Réussite : tout le pack ramené, chaque Unblooded avec un trophée de faune.
-- *(à valider)* compte pour l'épreuve d'Adjutant.
+- **Décision :** compte pour l'épreuve d'Adjutant, comme une des voies possibles.
 
 ### 17.5 Contrat Cleaner (Elite)
 - Un autre Yautja a raté une chasse : corps, technologie et témoins sont sur le site.
@@ -974,4 +974,4 @@ Valeurs de l'avenant (section 7). Cible : un joueur discret reste sous 40 jusqu'
 | Imitation de voix | 3 phrases ; à voix haute ou sur une radio capturée |
 | Langues des radios | traduites par le biomask après quelques secondes d'écoute |
 
-Il ne reste aucune question ouverte dans ce document. Les points de l'avenant (section 16 de [Terre — Le Terrain de Chasse](TERRE_TERRAIN_DE_CHASSE_20261121.md)) restent à valider.
+Il ne reste aucune question ouverte dans ce document. Les points de l'avenant sont aussi tranchés (section 16 de [Terre — Le Terrain de Chasse](TERRE_TERRAIN_DE_CHASSE_20261121.md)).

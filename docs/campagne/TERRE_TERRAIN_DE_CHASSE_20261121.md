@@ -77,7 +77,7 @@ Cet avenant s'appuie sur ces décisions, sans les changer :
 - Le clan d'origine du joueur connaît les 20 sites depuis des générations. Le **Registre terrestre** est consultable aux Archives des Lignées (CITY-13).
 - Les sites sont rangés par palier. Un chasseur ne peut pas viser un site au-dessus de son rang.
 
-### 3.3 Sur la carte galactique *(proposé)*
+### 3.3 Sur la carte galactique (décision)
 - Ajouter un système **Sol** (13ᵉ système de `galaxyRegistry.ts`), relié par une **route humaine** (risque moyen) : cargos Weyland-Yutani, patrouilles, équipes de chasseurs humains.
 - Sur la Terre, la descente se fait vers un des 20 sites débloqués ; le scan révèle les lieux annexes du site.
 - Le trajet consomme du temps, comme toute route.
@@ -254,7 +254,7 @@ Lien avec le Warp : c'est la version terrestre des **échos** de la « Discréti
 | **Sergent Kofi Mensah** | chef d'équipe terrain | pisteur hors pair ; proie digne de haut niveau |
 | **« Aiguille »** | tireuse d'élite | seule à suivre le joueur sous camouflage à longue distance |
 
-**Avec les ellipses :** ARGOS dure plus longtemps qu'une vie humaine. Varga vieillit et passe la main. *(proposé)* Vers 2080, sa fille ou son élève **Mira Varga-Echeverría** dirige ARGOS ; vers 2120, ARGOS est une institution, avec un mémorial de ses morts et un dossier complet sur le joueur, qu'elle appelle **« le Patient »** (il revient toujours).
+**Avec les ellipses :** ARGOS dure plus longtemps qu'une vie humaine. Varga vieillit et passe la main. **Décision :** vers 2080, sa fille ou son élève **Mira Varga-Echeverría** dirige ARGOS ; vers 2120, ARGOS est une institution, avec un mémorial de ses morts et un dossier complet sur le joueur, qu'elle appelle **« le Patient »** (il revient toujours).
 
 ### 8.3 Montée en puissance
 
@@ -292,7 +292,7 @@ Deux organisations, deux fils séparés :
 | Déclencheur | repérée après Blooded (arc récurrent) | Indice de Discrétion au niveau 3 |
 | Fin | assaut final sur la base du joueur | confrontation à Norilsk |
 
-**Rivalité *(proposé)* :**
+**Rivalité (décision) :**
 - L'OWLF efface les preuves d'ARGOS (vidéos, témoins) : quand l'OWLF est active sur un site, l'Indice monte moins vite (– 25 %).
 - Les deux peuvent se retrouver sur le même site : le joueur peut les laisser s'affronter.
 - ARGOS peut un jour découvrir l'OWLF et la dénoncer : la fin « Varga épargnée » peut mener à cette révélation dans les chroniques.
@@ -319,7 +319,7 @@ Deux organisations, deux fils séparés :
 - Certaines proies apex sont **nommées** : un individu légendaire du site, avec un trophée signature.
 - Les grands animaux dangereux mais non prédateurs (buffle, hippopotame, éléphant) ne sont dignes que s'ils chargent.
 
-### 10.3 Espèces protégées par le clan *(proposé)*
+### 10.3 Espèces protégées par le clan (décision)
 Le clan interdit de chasser une espèce au bord de l'extinction : une proie que la Terre ne peut plus remplacer n'est pas digne. Concerne : ours du Gobi, léopard des neiges, panthère de Floride, tigre (sauf s'il attaque). Les tuer en défense n'est pas une faute.
 
 ---
@@ -329,7 +329,7 @@ Le clan interdit de chasser une espèce au bord de l'extinction : une proie que 
 - **Triade** (Yena, Tov) : peut accompagner le joueur sur Terre en coop ou en IA. Règle de mort définitive des compagnons.
 - **Chiens de chasse** : autorisés sur tous les sites. *(proposé)* Ils ne peuvent pas être camouflés : un chien vu fait monter l'Indice de 3. Une mise à mort par le chien compte comme faite par le joueur.
 - **Montures** : aucune sur Terre (pas d'habitat adapté, règle V6).
-- **Pack d'Unblooded** *(proposé)* : à Adjutant, le joueur peut mener une **sortie du pack** sur un site du palier 1. Faune seulement : les Unblooded n'ont pas le droit de tuer un humain. Si un humain armé les attaque, le joueur doit le traiter lui-même. Ramener tout le pack compte pour l'épreuve d'Adjutant *(à valider)*.
+- **Pack d'Unblooded** *(proposé)* : à Adjutant, le joueur peut mener une **sortie du pack** sur un site du palier 1. Faune seulement : les Unblooded n'ont pas le droit de tuer un humain. Si un humain armé les attaque, le joueur doit le traiter lui-même. **Décision :** ramener tout le pack compte pour l'épreuve d'Adjutant, comme une des voies possibles.
 
 ---
 
@@ -616,7 +616,7 @@ Format de chaque fiche : biome, saison de chasse, forme du niveau, proie apex, p
 - **Sensibilité :** faible.
 - **Évolution :** vers 2150, les glaciers ont reculé : la chasse se fait entre roche nue et lacs.
 
-### 13.1 Contrats de la chasse ultime *(proposé)*
+### 13.1 Contrats de la chasse ultime (décision)
 
 | Condition dans le registre | Proie de la chasse ultime |
 | --- | --- |
@@ -671,12 +671,16 @@ Nouvel onglet « Terre » : n° site, nom, palier, rang requis, dates, proie ape
 
 ---
 
-## 16. Questions ouvertes
+## 16. Décisions du 21 novembre 2026 (soir)
 
-1. **Système Sol :** valider son ajout à la carte galactique, sur une route humaine.
-2. **Valeurs de l'Indice** : gains, baisses et plancher à équilibrer en test.
-3. **Sortie du pack sur Terre** : peut-elle compter pour l'épreuve d'Adjutant ?
-4. **Espèces protégées** par le clan : valider la liste et la règle.
-5. **Succession d'ARGOS** après Varga : valider Mira Varga-Echeverría et le surnom « le Patient ».
-6. **Rivalité ARGOS / OWLF** : valider l'effacement des preuves par l'OWLF (– 25 % d'Indice).
-7. **Contrats de la chasse ultime** : valider la liste.
+| Question | Décision |
+| --- | --- |
+| Système Sol | **ajouté** à la carte galactique (13ᵉ système), relié par une **route humaine** (risque moyen) |
+| Valeurs de l'Indice | **validées comme base** (section 7), à rééquilibrer en test |
+| Sortie du pack sur Terre | **compte pour l'épreuve d'Adjutant**, comme une des voies possibles |
+| Espèces protégées par le clan | **règle gardée** : les tuer hors légitime défense vaut un blâme au tribunal |
+| Succession d'ARGOS | **Mira Varga-Echeverría** vers 2080 ; vers 2120, ARGOS est une institution qui appelle le joueur « le Patient » |
+| Rivalité ARGOS / OWLF | **gardée** : l'OWLF efface les preuves d'ARGOS (Indice – 25 % quand l'OWLF est sur le site) |
+| Contrats de la chasse ultime | **les 5 validés** (section 13.1) |
+
+Il ne reste aucune question ouverte dans cet avenant.
