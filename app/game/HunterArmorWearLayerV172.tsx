@@ -3,7 +3,8 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import { armorWearCanvasV172 } from "./hunterArmorWearV172";
 import type { HunterPieceIdV146 } from "./hunterPiecesV146";
-import { HUNTER_RIG_CANVAS, type HunterLayerPlacement } from "./hunterVisuals";
+import { HUNTER_RIG_CANVAS } from "./hunterRig";
+import type { HunterLayerPlacement } from "./hunterHeadArtV62";
 
 export default function HunterArmorWearLayerV172({ src, piece, level, placement, keep, style }: {
   src: string;

@@ -177,21 +177,31 @@ try {
   const painted = await wear.evaluate(canvas => {
     const { width, height } = canvas;
     const pixels = canvas.getContext('2d').getImageData(0, 0, width, height).data;
+    const original = document.querySelector('.customization-rig-stage img[data-rig-slot^="armor-chest"]');
+    const source = document.createElement('canvas');
+    source.width = width;
+    source.height = height;
+    const sourceContext = source.getContext('2d');
+    sourceContext.drawImage(original, 0, 0, width, height);
+    const silhouette = sourceContext.getImageData(0, 0, width, height).data;
+    let outsidePlatePixels = 0;
     let visiblePixels = 0;
     let maxAlpha = 0;
     for (let index = 3; index < pixels.length; index += 4) {
       const alpha = pixels[index];
       if (alpha > 0) visiblePixels++;
+      if (alpha > silhouette[index] + 1) outsidePlatePixels++;
       if (alpha > maxAlpha) maxAlpha = alpha;
     }
     const box = canvas.getBoundingClientRect();
-    return { width, height, visiblePixels, maxAlpha, displayWidth: box.width, displayHeight: box.height };
+    return { width, height, visiblePixels, maxAlpha, outsidePlatePixels, displayWidth: box.width, displayHeight: box.height };
   });
   assert.equal(painted.width, 256);
   assert.equal(painted.height, 384);
   assert(painted.displayWidth > 0 && painted.displayHeight > 0);
   assert(painted.visiblePixels > 0 && painted.visiblePixels < painted.width * painted.height, 'The damage must be drawn as a localized visible overlay.');
   assert(painted.maxAlpha > 0);
+  assert.equal(painted.outsidePlatePixels, 0, 'The fracture stays within the exact plate silhouette.');
   report.wearLayer = painted;
   assert.match(await confirm().innerText(), /2 matériaux/);
   await capture('chest-worn');
@@ -225,6 +235,25 @@ try {
   assert.deepEqual(restored.inventory.harvestV112.archive, repaired.inventory.harvestV112.archive);
   assert.deepEqual(restored.customizationV146.heavyWear, {});
   await capture('repair-restored');
+
+  const color = '#a76540';
+  const lockedPattern = 'bands';
+  const earned = customization.earnedCosmeticsV146({ honor: restored.profile.honor, rankId: restored.profile.rankId,
+    trophies: restored.trophies, justiceDeclaration: restored.justice?.declaration }, restored.customizationV146.earned);
+  assert.equal(earned.includes('pattern:' + lockedPattern), false);
+  const shared = customization.encodeOutfitShareCodeV146({ ...restored.appearance,
+    skinPatternIdV146: lockedPattern, piecesV146: { ...restored.appearance.piecesV146, chest: { primary: color } } });
+  await forge.getByRole('tab', { name: 'Tenues', exact: true }).click();
+  await forge.getByPlaceholder('Coller un code YLC1...').fill(shared);
+  await forge.getByRole('button', { name: 'Charger le code', exact: true }).click();
+  assert.match(await forge.getByRole('status').innerText(), /pattern:bands/);
+  await forge.getByRole('button', { name: 'Confirmer les couleurs', exact: true }).click();
+  await page.waitForFunction(({ saveKey, color }) =>
+    JSON.parse(localStorage.getItem(saveKey))?.appearance.piecesV146?.chest?.primary === color, { saveKey: key, color });
+  const received = await disk();
+  assert.equal(received.appearance.skinPatternIdV146 ?? null, null);
+  assert.deepEqual(received.inventory.harvestV112.archive, restored.inventory.harvestV112.archive);
+  report.share = { fallback: lockedPattern, color: received.appearance.piecesV146.chest.primary };
   assert.deepEqual(report.errors, []);
   report.result = { remaining: restored.inventory.harvestV112.archive[0], wear: restored.customizationV146.heavyWear, marks: restored.profile.clanMarks };
   report.passed = true;

@@ -285,14 +285,61 @@ jobs:
         run: |
           node scripts/materialize-asset-raccords-20261120.mjs catalogue
           ASSET_RACCORDS_PREPARE_ONLY=1 node scripts/qa-asset-raccords-browser-20261120.mjs
+      - name: Locate exact rows in the read-only Bible and V137 book
+        run: |
+          git sparse-checkout add --stdin <<'PATHS'
+          /production/excel-bible-20261108/suivi/bible-requirements.json
+          /docs/production/Yautja_PHG_Backlog_Production_V137.xlsx
+          PATHS
+          python - <<'PY'
+          import json, re
+          from pathlib import Path
+          from zipfile import ZipFile
+          from xml.etree import ElementTree as ET
+          terms = re.compile(r'usure|fissur|dégâts lourds|skin pattern|motifs?\s+(?:de peau|à gagner)|code de partage|(?:repair|armou?r)\s+wear', re.I)
+          def records(value):
+              if isinstance(value, dict):
+                  fields = {k:v for k,v in value.items() if isinstance(v, (str,int))}
+                  if terms.search(json.dumps(fields, ensure_ascii=False)):
+                      yield fields
+                  for v in value.values():
+                      yield from records(v)
+              elif isinstance(value, list):
+                  for v in value:
+                      yield from records(v)
+          bible = Path("production/excel-bible-20261108/suivi/bible-requirements.json")
+          if bible.exists():
+              for row in list(records(json.loads(bible.read_text())))[:30]:
+                  print("FORGE_SOURCE", json.dumps(row, ensure_ascii=False)[:1600])
+          ns = {"s":"http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+          def words(node):
+              return "".join(child.text or "" for child in node.findall(".//s:t", ns))
+          path = Path("docs/production/Yautja_PHG_Backlog_Production_V137.xlsx")
+          if path.exists():
+              with ZipFile(path) as book:
+                  strings = [words(node) for node in ET.fromstring(book.read("xl/sharedStrings.xml"))] if "xl/sharedStrings.xml" in book.namelist() else []
+                  for path in book.namelist():
+                      if not re.fullmatch(r"xl/worksheets/sheet\d+\.xml", path):
+                          continue
+                      ids = set()
+                      for row in ET.fromstring(book.read(path)).findall(".//s:row", ns):
+                          values = []
+                          for cell in row.findall("s:c", ns):
+                              item = cell.findtext("s:v", namespaces=ns) or words(cell)
+                              values.append(strings[int(item)] if cell.get("t") == "s" and item.isdigit() else item)
+                          line = " | ".join(value for value in values if value)
+                          if terms.search(line) and line not in ids and len(ids) < 30:
+                              ids.add(line)
+                              print("FORGE_SOURCE", path, row.get("r"), line[:1600])
+          PY
       - name: Validate the repair transaction and registered armor layers
         run: |
           set -o pipefail
           mkdir -p outputs/p0-p3-20261121
-          node --experimental-strip-types --test --test-reporter=spec tests/hunter-forge-wear-v172.test.mjs tests/hunter-customization-v146.test.mjs tests/hunter-armor-chromatic-clipping.test.mjs tests/harvest-inventory-v112.test.mjs 2>&1 | tee outputs/p0-p3-20261121/hunter-forge-node.log
+          node --experimental-strip-types --test --test-reporter=spec tests/hunter-forge-wear-v172.test.mjs tests/hunter-share-pattern-v146.test.mjs tests/hunter-customization-v146.test.mjs tests/hunter-armor-chromatic-clipping.test.mjs tests/harvest-inventory-v112.test.mjs 2>&1 | tee outputs/p0-p3-20261121/hunter-forge-node.log
       - name: Strict lint of the armor and workshop paths
         if: ${{ !cancelled() && steps.inputs.conclusion == 'success' }}
-        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/systems/hunterCustomizationV146.ts app/game/systems/hunterCustomizationPersistenceV146.ts app/game/HunterPieceForgeV146.tsx app/game/hunterArmorWearV172.ts app/game/HunterArmorWearLayerV172.tsx app/game/HunterRigPreview.tsx app/game/HuntCanvas.tsx tests/hunter-forge-wear-v172.test.mjs scripts/qa-hunter-forge-wear-20261121.mjs
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/systems/hunterCustomizationV146.ts app/game/systems/hunterCustomizationPersistenceV146.ts app/game/HunterPieceForgeV146.tsx app/game/hunterArmorWearV172.ts app/game/HunterArmorWearLayerV172.tsx app/game/HunterRigPreview.tsx app/game/HuntCanvas.tsx tests/hunter-forge-wear-v172.test.mjs tests/hunter-share-pattern-v146.test.mjs scripts/qa-hunter-forge-wear-20261121.mjs
       - name: Build and start the production application
         id: server
         if: ${{ !cancelled() && steps.inputs.conclusion == 'success' }}
@@ -307,7 +354,7 @@ jobs:
           done
           curl --fail --silent http://127.0.0.1:3121/ > /dev/null
           printf 'YAUTJA_QA_BUILD_ID=%s\n' "$(cat .next/BUILD_ID)" >> "$GITHUB_ENV"
-      - name: Read the clipped crack and a restored repair in Chromium
+      - name: Verify exact armor alpha, restored repair and the locked outfit pattern
         if: ${{ !cancelled() && steps.server.conclusion == 'success' }}
         env:
           HUNTER_FORGE_QA_COMMIT: '${{ github.sha }}'

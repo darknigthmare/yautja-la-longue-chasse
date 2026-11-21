@@ -15,7 +15,7 @@ import {
 import { CHROMATIC_PALETTE_PRESETS_V115 } from "./hunterChromaticsV113";
 import {
   CUSTOMIZATION_MODES_V146, HUNTER_MARKS_V146, OUTFIT_SLOTS_V146, SKIN_PATTERN_IDS_V146,
-  allowedMarksV146, allowedPiecesV148, assignModeOutfitV146, clanColorsForNpcV146, decodeOutfitShareCodeV146, deleteOutfitV146,
+  allowedMarksV146, allowedPiecesV148, allowedSkinPatternV146, assignModeOutfitV146, clanColorsForNpcV146, decodeOutfitShareCodeV146, deleteOutfitV146,
   earnedCosmeticsV146, effectivePrimaryV146, emptyCustomizationV146, encodeOutfitShareCodeV146,
   repairCostV146, saveOutfitV146,
   type CustomizationModeV146, type CustomizationV146, type HunterMarkIdV146, type SkinPatternIdV146,
@@ -37,6 +37,11 @@ const PATTERN_LABELS: Record<SkinPatternIdV146, string> = {
   spots: "Taches", stripes: "Rayures", marbled: "Marbrures", scales: "Écailles", bands: "Bandes",
 };
 const EMPTY: PieceColorsV146 = { primary: null, secondary: null, accent: null, light: null };
+
+function earnedForSave(save: SaveGame) {
+  return earnedCosmeticsV146({ honor: save.profile.honor, rankId: save.profile.rankId, trophies: save.trophies,
+    justiceDeclaration: save.justice?.declaration }, save.customizationV146?.earned);
+}
 
 export type CustomizationApplyV146 = (save: SaveGame) => SaveGame | null;
 
@@ -60,10 +65,7 @@ export default function HunterPieceForgeV146({
   const [shareInput, setShareInput] = useState("");
   const customization: CustomizationV146 = save.customizationV146 ?? emptyCustomizationV146();
   const repairStock = tab === "forge" ? harvestInventoryForV112(save.inventory).archive.reduce((total, entry) => total + entry.count, 0) : 0;
-  const earned = useMemo(() => earnedCosmeticsV146({
-    honor: save.profile.honor, rankId: save.profile.rankId, trophies: save.trophies,
-    justiceDeclaration: save.justice?.declaration,
-  }, customization.earned), [save, customization.earned]);
+  const earned = useMemo(() => earnedForSave(save), [save]);
 
   // A mask, pigment or preset can be confirmed in a neighbouring editor.
   // Adopt those fields while retaining draft edits on the remaining fields.
@@ -107,16 +109,20 @@ export default function HunterPieceForgeV146({
     if (disabled) return;
     setMessage(onCommit(apply, confirmation) ? confirmation : "Changement non enregistré : la sauvegarde n'a pas confirmé l'écriture.");
   };
-  const commitAppearance = () => commit(current => ({
-    // Never trust the draft for earned content: unearned marks and finishes are dropped.
-    ...current, appearance: normalizeHunterAppearanceV146({
-      ...draft, marksV146: allowedMarksV146(draft.marksV146 ?? {}, earned),
-      piecesV146: allowedPiecesV148(draft.piecesV146 ?? {}, earned).pieces,
-    }),
-    customizationV146: { ...(current.customizationV146 ?? emptyCustomizationV146()), earned },
-  }), "Couleurs enregistrées dans la campagne.");
+  const commitAppearance = () => commit(current => {
+    const confirmedEarned = earnedForSave(current);
+    return {
+      ...current, appearance: normalizeHunterAppearanceV146({
+        ...draft, marksV146: allowedMarksV146(draft.marksV146 ?? {}, confirmedEarned),
+        piecesV146: allowedPiecesV148(draft.piecesV146 ?? {}, confirmedEarned).pieces,
+        skinPatternIdV146: allowedSkinPatternV146(draft.skinPatternIdV146, confirmedEarned, current.appearance.skinPatternIdV146),
+      }),
+      customizationV146: { ...(current.customizationV146 ?? emptyCustomizationV146()), earned: confirmedEarned },
+    };
+  }, "Couleurs enregistrées dans la campagne.");
   const withCustomization = (change: (state: CustomizationV146) => CustomizationV146): CustomizationApplyV146 =>
-    current => ({ ...current, customizationV146: change({ ...(current.customizationV146 ?? emptyCustomizationV146()), earned }) });
+    current => ({ ...current, customizationV146: change({ ...(current.customizationV146 ?? emptyCustomizationV146()),
+      earned: earnedForSave(current) }) });
 
   const zoneInput = (zone: keyof PieceColorsV146, label: string) => {
     const fallback = zone === "primary" ? effectivePrimaryV146(draft, pieceId) : null;
@@ -236,7 +242,12 @@ export default function HunterPieceForgeV146({
           return <li key={slot}>
             <strong>{outfit ? outfit.name : `Emplacement ${slot + 1} (vide)`}</strong>
             <button type="button" disabled={disabled} onClick={() => commit(
-              withCustomization(state => saveOutfitV146(state, slot, outfitName || outfit?.name || "", normalizeHunterAppearanceV146(draft))),
+              withCustomization(state => {
+                const saved = state.outfits[slot];
+                const previous = normalizeHunterAppearanceV146(saved?.appearance).skinPatternIdV146;
+                const skinPatternIdV146 = allowedSkinPatternV146(draft.skinPatternIdV146, state.earned, previous);
+                return saveOutfitV146(state, slot, outfitName || saved?.name || "", normalizeHunterAppearanceV146({ ...draft, skinPatternIdV146 }));
+              }),
               "Tenue enregistrée.")}>Enregistrer ici</button>
             {outfit && <button type="button" disabled={disabled}
               onClick={() => setDraft(normalizeHunterAppearanceV146(outfit.appearance))}>Essayer</button>}
@@ -269,7 +280,7 @@ export default function HunterPieceForgeV146({
           if (!decoded.ok) { setMessage(decoded.reason === "version" ? "Code d'une version plus récente." : "Code illisible."); return; }
           setDraft(normalizeHunterAppearanceV146(decoded.appearance));
           setMessage(decoded.replaced.length
-            ? `Tenue chargée. Remplacé par la pièce de base (non débloqué ici) : ${decoded.replaced.join(", ")}.`
+            ? `Tenue chargée. Éléments indisponibles remplacés ou retirés : ${decoded.replaced.join(", ")}.`
             : "Tenue chargée dans l'aperçu. Confirme pour l'enregistrer.");
         }}>Charger le code</button>
       </fieldset>

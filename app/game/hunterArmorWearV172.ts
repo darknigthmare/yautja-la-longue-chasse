@@ -1,5 +1,6 @@
 import type { HunterPieceIdV146 } from "./hunterPiecesV146";
-import { HUNTER_RIG_CANVAS, type HunterLayerPlacement } from "./hunterVisuals";
+import { HUNTER_RIG_CANVAS } from "./hunterRig";
+import type { HunterLayerPlacement } from "./hunterHeadArtV62";
 import type { ArmorId } from "./types";
 
 type WearLevel = 0 | 1 | 2 | 3;
@@ -7,7 +8,8 @@ type Line = readonly (readonly [number, number])[];
 type Keep = readonly (readonly [number, number, number, number])[];
 export type ArmorWearV172 = { light: number; heavy: number };
 const { width, height } = HUNTER_RIG_CANVAS;
-const lastPlate = new WeakMap<HTMLImageElement, { key: string; canvas: HTMLCanvasElement }>();
+const plateWear = new WeakMap<HTMLImageElement, Map<string, HTMLCanvasElement>>();
+const MAX_PLATE_OVERLAYS = 6;
 
 export function armorWearPieceIsWornV172(piece: HunterPieceIdV146, armor: ArmorId, maskWorn: boolean): boolean {
   switch (piece) {
@@ -55,8 +57,9 @@ export function armorWearCanvasV172(image: HTMLImageElement, wear: ArmorWearV172
   const light = level(wear.light), heavy = level(wear.heavy);
   if ((!light && !heavy) || !image.naturalWidth || typeof document === "undefined") return null;
   const key = JSON.stringify([light, heavy, placement, keep]);
-  const previous = lastPlate.get(image);
-  if (previous?.key === key) return previous.canvas;
+  const overlays = plateWear.get(image) ?? new Map<string, HTMLCanvasElement>();
+  const previous = overlays.get(key);
+  if (previous) return previous;
 
   const mask = document.createElement("canvas");
   mask.width = width;
@@ -107,6 +110,11 @@ export function armorWearCanvasV172(image: HTMLImageElement, wear: ArmorWearV172
   }
   context.globalCompositeOperation = "destination-in";
   context.drawImage(mask, 0, 0);
-  lastPlate.set(image, { key, canvas });
+  if (overlays.size >= MAX_PLATE_OVERLAYS) {
+    const oldest = overlays.keys().next();
+    if (!oldest.done) overlays.delete(oldest.value);
+  }
+  overlays.set(key, canvas);
+  plateWear.set(image, overlays);
   return canvas;
 }
