@@ -74,6 +74,7 @@ try {
   const location = async () => (await disk()).residenceV149.objects.find(object => object.id === lamp).location;
   const source = root.locator('[data-residence-v149="' + first + '"]');
   const threshold = root.locator('[data-residence-open-threshold]');
+  const cargo = root.locator('[data-residence-cargo] [data-homeworld-prop-id="residence-cargo"][data-homeworld-art-id="chest"]');
   async function enter() {
     await page.waitForSelector('[data-campaign-menu], [data-campaign-session]');
     if (await page.locator('[data-campaign-menu]').isVisible()) {
@@ -121,8 +122,8 @@ try {
   await ground.resume();
   await ground.interact();
   assert.equal(await root.getAttribute('data-zone'), 'village');
-  await root.locator('[data-residence-cargo]').waitFor();
-  const crate = await root.locator('[data-residence-cargo] img').evaluate(async image => {
+  await cargo.waitFor({ state: 'visible' });
+  const crate = await cargo.locator('img').evaluate(async image => {
     await image.decode();
     return { width: image.naturalWidth, height: image.naturalHeight };
   });
@@ -133,7 +134,7 @@ try {
   await enter();
   assert.equal(await root.getAttribute('data-zone'), 'village');
   assert.deepEqual(await location(), { kind: 'transfer', returnTo: { houseId: first, slotId: 'display' } });
-  await root.locator('[data-residence-cargo]').waitFor();
+  await cargo.waitFor({ state: 'visible' });
   await root.screenshot({ path: join(output, 'village-cargo-reloaded.png') });
 
   await ground.walkTo(destination);
