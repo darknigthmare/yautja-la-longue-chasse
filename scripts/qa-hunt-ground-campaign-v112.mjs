@@ -85,9 +85,10 @@ for(const missionId of missionIds)for(const armorId of armorIds){
  assert.ok(weight<=runtime.ARMOR_BY_ID[armorId].carryingCapacity);
  const state=runtime.makeGameState(mission,save.loadout,save.inventory,"hunter",save.appearance,false,false,encounterRun,save.exploration);
  const input={keyboardHeld:new Set(),touchHeld:new Set(),gamepadHeld:new Set(),pressed:new Set(),previousGamepadButtons:[],activeGamepadIndex:null,gamepadNeedsNeutral:true,gamepadDialogActions:[],pointerScreen:null};
- const admission=JSON.parse(JSON.stringify({missionId,armorId,loadout:save.loadout,inventory:save.inventory,toolOrigin,baseSaveOrigin,exploration:save.exploration,difficulty:"hunter",encounterRun,random:{algorithm:"xorshift32",seed:0x1122026},spawn:{...state.world.spawn},initial:brief(state),world:{width:state.world.width,bossArena:state.world.bossArena,extraction:state.world.extraction,platforms:state.world.platforms.filter(p=>p.collision==="solid"),hazards:state.world.hazards},scanNodes:state.scanNodes,recoveryNodes:state.recoveryNodes}));
+ const initial=packedLoad(state,armorId,-1);
+ assert.equal(initial.specimenIds.length,0,"qualified loads must be obtained during the hunt");
+ const admission=JSON.parse(JSON.stringify({missionId,armorId,loadout:save.loadout,inventory:save.inventory,toolOrigin,baseSaveOrigin,exploration:save.exploration,difficulty:"hunter",encounterRun,random:{algorithm:"xorshift32",seed:0x1122026},spawn:{...state.world.spawn},initial:{...brief(state),load:initial.load},world:{width:state.world.width,bossArena:state.world.bossArena,extraction:state.world.extraction,platforms:state.world.platforms.filter(p=>p.collision==="solid"),hazards:state.world.hazards},scanNodes:state.scanNodes,recoveryNodes:state.recoveryNodes}));
  const originalEnemies=[...state.enemies];
- assert.equal(admission.initial.load.ratio,0,"qualified loads must be obtained during the hunt");
  let result=null,climbFrames=0,swingFrames=0,authoredCanopyContactFrames=0,maxX=state.player.x,lastX=state.player.x,stuck=0,nextJump=0,jumpUntil=-1,lastPhase=state.phase,lastAction="",lastSnapshot=-1,ticksExecuted=0;
  const trace=[],samples=[],events=[],harvestActions=[];
  const sharedMemory={previousX:state.player.x,stuckTicks:0,jumpUntil:-1};

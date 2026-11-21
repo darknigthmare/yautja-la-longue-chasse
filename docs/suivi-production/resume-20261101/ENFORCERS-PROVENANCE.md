@@ -98,6 +98,8 @@ publication ont aussi été examinés au commit
 `842bc7e69ab5aed086d0fbbfcafd1d86a14e9f38`. Le catalogue des médias et les
 suivis Pit V60, V61, V62 et V63 réunissent 107 entrées. Aucun de ces cinq
 classeurs ne contient d'image intégrée, de fichier JSON ou d'entrée ayant la
-taille d'un PNG V6.10 recherché. Les sept autres classeurs restent à vérifier
-depuis une copie Git locale.
+taille d'un PNG V6.10 recherché. Les sept autres classeurs ont été vérifiés
+par le même audit ZIP à partir de leurs octets Git. Les sept résultats
+contiennent zéro PNG original et zéro checkpoint V6.13.
+[Rapport de vérification des sept classeurs](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44887329571/artifacts/14700561366)
 [Inventaire des fichiers publiés](https://github.com/darknigthmare/yautja-la-longue-chasse/blob/842bc7e69ab5aed086d0fbbfcafd1d86a14e9f38/scripts/package-enforcer-production-v612.py)
