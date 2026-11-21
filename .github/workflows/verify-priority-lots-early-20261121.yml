@@ -13,34 +13,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - profile: swamp-visible-seed2
-            mission: swamp-hydra
-            previousWins: 1
+          - profile: jungle-visible-seed6-shared
+            mission: jungle-vey
+            previousWins: 5
             args: --insertion=visible-ship --policy=shared
-          - profile: swamp-visible-seed3
-            mission: swamp-hydra
-            previousWins: 2
-            args: --insertion=visible-ship --policy=shared
-          - profile: swamp-visible-seed4
-            mission: swamp-hydra
-            previousWins: 3
-            args: --insertion=visible-ship --policy=shared
-          - profile: volcano-visible-seed2
-            mission: volcano-bad-blood
-            previousWins: 1
+          - profile: jungle-visible-seed6-native
+            mission: jungle-vey
+            previousWins: 5
             args: --insertion=visible-ship
-          - profile: volcano-visible-seed3
-            mission: volcano-bad-blood
-            previousWins: 2
-            args: --insertion=visible-ship
-          - profile: ice-visible-seed5
-            mission: ice-cryostalker
-            previousWins: 4
-            args: --insertion=visible-ship --policy=shared
-          - profile: ice-visible-seed8
-            mission: ice-cryostalker
-            previousWins: 7
-            args: --insertion=visible-ship --policy=shared
+          - profile: jungle-visible-seed6-early
+            mission: jungle-vey
+            previousWins: 5
+            args: --insertion=visible-ship --policy=shared --sweepEarly=true --sweepDistance=210
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
     steps:
