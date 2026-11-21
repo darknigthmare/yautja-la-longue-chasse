@@ -1,7 +1,7 @@
-name: P0 Homeworld marché et cargaison depuis preuves gelées
+name: V110 original dans le contexte historique V111 vérifié
 on:
   push:
-    branches: [codex/qa-homeworld-pinned-recovery-lot6-20261121]
+    branches: [codex/qa-homeworld-v110-inside-v112-lot6]
 permissions:
   contents: read
 jobs:
@@ -73,37 +73,28 @@ jobs:
       - name: Install locked dependencies without lifecycle scripts
         id: dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Compare actual shared paths to their frozen inventory
+      - name: Run the original V111 CLI inside its original immutable checkout
         run: |
-          node --input-type=module <<'NODE'
-          import fs from 'node:fs';
-          import {createHash} from 'node:crypto';
-          const manifest=JSON.parse(fs.readFileSync('tests/fixtures/excel-history-v111-homeworld-v112.json','utf8'));
-          const actual=manifest.shared.map(row=>{
-            const bytes=fs.readFileSync(row.path);
-            const sha256=createHash('sha256').update(bytes).digest('hex');
-            return sha256===row.sha256&&bytes.length===row.bytes?null:
-              {path:row.path,historicalBytes:row.bytes,currentBytes:bytes.length,historicalSha256:row.sha256,currentSha256:sha256};
-          }).filter(Boolean);
-          console.log(JSON.stringify({historicalSource:manifest.sourceCommit,mismatches:actual}));
-          NODE
-      - name: Verify original preimages and Homeworld native behavior
-        run: |
-          mkdir -p outputs/homeworld-proof
-          sha256sum docs/v108-clan-logistics-contract.md > outputs/homeworld-proof/current-before.sha256
+          mkdir -p outputs/homeworld-v110-proof
           set -o pipefail
-          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 \
-            tests/historical-shared-inputs.test.mjs \
-            tests/homeworld-mobility-v112.test.mjs tests/homeworld-market-rejoin-v112.test.mjs \
-            tests/homeworld-dynamic-navigation-v109.test.mjs \
-            tests/homeworld-geometry-recovery-v112.test.mjs tests/homeworld-geometry-recovery-integration-v112.test.mjs \
-            tests/homeworld-geometry-recovery-matrix-v112.test.mjs \
-            tests/homeworld-dressing-recovery-v113.test.mjs tests/homeworld-dressing-planner-v113.test.mjs \
-            | tee outputs/homeworld-proof/regression.log
-          sha256sum -c outputs/homeworld-proof/current-before.sha256
-          git diff --exit-code -- docs/v108-clan-logistics-contract.md tests/fixtures/excel-history-v111-homeworld-v112.json tests/fixtures/excel-history-v111-homeworld-v112.json.gz
+          node --input-type=module <<'NODE' | tee outputs/homeworld-v110-proof/v110-in-v111.log
+          import assert from 'node:assert/strict';
+          import {execFileSync} from 'node:child_process';
+          import {historicalGitEnvironment} from './scripts/lib/historical-git.mjs';
+          import {getHistoricalHomeworldExcelContextV112,verifyHistoricalHomeworldExcelContextV112} from './scripts/historical-excel-context-homeworld-v112.mjs';
+          const ctx=await getHistoricalHomeworldExcelContextV112();
+          const before=await verifyHistoricalHomeworldExcelContextV112();
+          assert.equal(before.restoredSharedVerified,2);
+          console.log(JSON.stringify({witness:before}));
+          const stdout=execFileSync(process.execPath,['--experimental-strip-types','scripts/check-excel-history-homeworld-v111.mjs','--check','--tests'],{
+            cwd:ctx.root,env:historicalGitEnvironment(),encoding:'utf8',maxBuffer:12*1024*1024,stdio:['ignore','pipe','inherit']});
+          console.log(stdout);
+          assert.match(stdout,/PASS_ORIGINAL_HOMEWORLD_V110|historicalTests|testFiles|tests/);
+          const after=await verifyHistoricalHomeworldExcelContextV112();
+          assert.deepEqual(after,before);
+          NODE
       - if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: homeworld-market-cargo-frozen-proof
-          path: outputs/homeworld-proof/
+          name: original-v110-inside-verified-v111
+          path: outputs/homeworld-v110-proof/
