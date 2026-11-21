@@ -22,6 +22,10 @@ Mode de jeu dédié, à côté de The Pit, de la Guerre des clans et de Queen Hu
 | Autodestruction en Chasse inversée | **gardée** : 10 s pour sortir du rayon |
 | Voyage rapide du vaisseau | **entre repaires, sauf Calder et Ironhook** |
 | Ouverture des îles | **cordon naval d'ARGOS** à saboter |
+| Histoire | **arc Hale en 8 étapes** (section 17) |
+| Vie en ligne | **saisons de 8 semaines** (section 18) |
+| Mort en chasse libre | **trophées non rapportés perdus** ; réapparition au dernier repaire (section 11.4) |
+| Voix en Chasse inversée | **voix de proximité + radio**, que le Yautja peut écouter (section 13.3) |
 
 ---
 
@@ -43,6 +47,8 @@ Mode de jeu dédié, à côté de The Pit, de la Guerre des clans et de Queen Hu
 14. Progression du mode
 15. Production
 16. Questions ouvertes
+17. Arc Hale
+18. Saisons
 
 ---
 
@@ -401,6 +407,12 @@ Un trophée **non rapporté** est perdu si le joueur meurt.
 | **Collection** | fragments gravés de l'autel cachés sur toutes les îles : ils racontent la chasse ancienne | objets cachés |
 | **Siège d'Ironhook** | raid de fin, en coop | braquage final |
 
+### 11.4 Mort en chasse libre (décision)
+- Le joueur réapparaît au **dernier repaire** visité.
+- Les **trophées portés** (non rapportés) tombent sur place. Ils y restent **10 minutes de jeu** : le joueur peut revenir les chercher ; en ligne, un autre joueur peut les prendre (il les rapporte comme « trophée repris », honneur réduit de moitié).
+- Les marques d'alerte retombent à 0, sauf au niveau 5 (ARGOS se souvient pendant la session).
+- Aucune perte de réputation ni d'équipement.
+
 ### 11.3 Code d'honneur dans le mode
 - Les mêmes interdits que sur Terre : non-combattants, désarmés, technologie laissée.
 - Une faute fait baisser la **réputation des Îles** (section 14) et peut faire de toi un **Bad Blood des Îles** : les autres joueurs voient ta marque et gagnent une prime en te chassant (section 13).
@@ -518,6 +530,13 @@ Chaque équipe a au plus un rôle de chaque type. Les rôles se débloquent avec
 - Météo et heure tirées au début : la nuit favorise le Yautja ; la pluie révèle son camouflage.
 - Les civils sont absents de ce mode (zones évacuées) : pas de non-combattant hors des humains rendus.
 
+#### Voix (décision)
+- **Voix de proximité** : les humains s'entendent à environ 20 m ; à travers un mur, la voix est étouffée.
+- **Radio** : le rôle Radio porte un poste qui relie toute l'équipe, quelle que soit la distance. Les autres rôles peuvent ramasser des talkies sur la carte (portée limitée, piles).
+- **Le Yautja entend** la voix de proximité des humains proches (comme un animal entend) et peut **écouter la radio** en mode électromagnétique du biomask. Il peut **enregistrer 3 phrases** et les rejouer sur la radio ou à voix haute (imitation de voix, règle de la campagne).
+- Les humains peuvent couper leur radio pour ne pas être écoutés, mais perdent alors le lien d'équipe.
+- Le Yautja n'a pas de voix : il communique par ses clics, entendus de près.
+
 #### Matchmaking et progression
 - 5 humains par défaut ; 4 ou 6 en partie privée.
 - File séparée pour le Yautja (rôle demandé) et les humains.
@@ -620,3 +639,75 @@ Un repaire principal (au choix du joueur) expose les trophées du mode, avec leu
 ## 16. Questions ouvertes
 
 Aucune : toutes les questions du mode sont tranchées (décisions en tête du document).
+
+---
+
+## 17. Arc Hale
+
+**Décision :** un fil narratif en 8 étapes dans le monde ouvert. Il se joue en solo ou en groupe (progression de l'hôte).
+
+### 17.1 Augustin Hale
+- Le magnat qui a fondé Halcyon dans les années 1990. On le croit mort ou ruiné.
+- En réalité, il vit **reclus sur Halcyon Cay**, très âgé, avec une garde d'élite.
+- Hale a toujours su : enfant, il a vu une chasse yautja. Toute sa vie, il a imité les chasseurs : sa réserve, sa **salle des trophées humains** (les braconniers qu'il a fait abattre), son code à lui, perverti.
+- Son but final : **prendre un crâne de Yautja**, pour devenir à ses yeux leur égal.
+
+### 17.2 Les 8 étapes *(proposé)*
+| Étape | Île | Contenu | Ouverture |
+| --- | --- | --- | --- |
+| 1. L'appât | Verdant | des braconniers chassent avec des armes trop modernes ; le joueur découvre qu'ils sont payés pour attirer un Yautja | réputation 1 |
+| 2. Les enclos | Tallgrass | au lodge abandonné, des archives de Halcyon : Hale avait des caméras partout, et des images d'un Yautja en 1997 | réputation 2 |
+| 3. Le guide | Hollowpine | un chasseur légendaire engagé par Hale piste le joueur ; duel ou mise à mort | réputation 4 |
+| 4. L'argent | Calder | la tour Hale : remonter la piste de l'argent par les toits, sans civil touché | étape 3 + île ouverte |
+| 5. Le marché | Dustwater | Hale achète une arme yautja volée à un trafiquant ; la reprendre (technologie laissée = faute) | réputation 6 |
+| 6. Le cordon | Ember | Hale paie ARGOS en secret pour garder le cordon fermé ; saboter le radar du volcan | étape 5 |
+| 7. La salle | Halcyon Cay | infiltration du manoir ; la salle des trophées de Hale ; il s'enfuit | réputation 8 |
+| 8. La chasse de Hale | Frost Isle | Hale, armé d'une arme yautja montée sur armure, chasse le joueur sur le glacier | étape 7 |
+
+### 17.3 La fin
+- **Combat final** en 3 phases : Hale chasse le joueur (il voit le camouflage grâce à un masque volé) ; Hale perd l'arme yautja ; Hale, vieil homme, sans arme.
+- **Choix final :**
+  - **l'achever** quand il est désarmé : faute grave, la réputation tombe et le joueur devient Bad Blood des Îles ;
+  - **le laisser mourir dans le froid** : neutre ;
+  - **le laisser à ARGOS** (qui arrive) : ARGOS découvre la salle des trophées et l'arme yautja ; le cordon tombe pour de bon.
+- Récompense : l'**arme yautja récupérée** rendue à l'autel (honneur et un emplacement de trophée légendaire), le masque volé de Hale en trophée.
+
+### 17.4 À créer
+- Hale (3 âges en archives : 1990, 1997, aujourd'hui), sa garde d'élite, le guide légendaire.
+- Halcyon Cay : manoir, salle des trophées, quai.
+- 8 missions scriptées dans le monde ouvert, avec scènes courtes en vue isométrique.
+
+---
+
+## 18. Saisons
+
+**Décision :** des **saisons de 8 semaines**.
+
+### 18.1 Contenu d'une saison *(proposé)*
+| Élément | Contenu |
+| --- | --- |
+| Événement de monde | un changement de la carte pendant toute la saison |
+| Légendaires | 2 nouveaux grands animaux ou humains nommés |
+| Contrats de saison | 10 contrats de l'autel, propres à la saison |
+| Chasse inversée | une nouvelle carte ou une variante de règle |
+| Cosmétiques | gravures, teintes, ornements, tenues humaines ; gagnés en jouant |
+| Classement | honneur de saison et victoires en Chasse inversée |
+
+### 18.2 Exemples de saisons
+| Saison | Événement de monde |
+| --- | --- |
+| 1. L'ouragan | un ouragan traverse l'archipel ; inondations à Saltmarsh, ponts coupés, ferries arrêtés |
+| 2. L'éruption | Ember entre en éruption ; nouvelles coulées, villages évacués, cendres qui brouillent le thermique |
+| 3. Le marché noir | une grande vente d'armes à Dustwater attire des trafiquants du monde entier |
+| 4. L'été polaire | la glace de Frost Isle fond ; passages nouveaux, ours polaires affamés |
+| 5. La mutinerie | Blackrock se soulève ; prisonniers armés sur Calder |
+| 6. L'invasion | une ruche Xénomorphe sur Ironhook, échappée d'un labo ; purge en coop |
+
+### 18.3 Règles
+- L'arc Hale et l'ouverture des îles restent les mêmes d'une saison à l'autre.
+- Les cosmétiques de saison restent acquis après la saison.
+- Rien ne s'achète avec de l'argent réel dans ce document (à décider à part).
+
+### 18.4 À créer
+- Système de saisons (calendrier, événements de monde activables, contrats, classement).
+- Une variante de carte par événement de monde.
