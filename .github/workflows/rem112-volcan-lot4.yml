@@ -1,14 +1,14 @@
 name: REM112 prélèvement avec atelier en navigateur
 on:
   push:
-    branches: [codex/qa-rem112-volcan-receipts-lot4-20261121]
+    branches: [codex/qa-rem112-volcan-keyboard-lot4-20261121]
 permissions:
   contents: read
 jobs:
   gameplay:
     name: ${{ matrix.case.id }}
     runs-on: ubuntu-latest
-    timeout-minutes: 23
+    timeout-minutes: 27
     strategy:
       fail-fast: false
       matrix:
@@ -18,13 +18,13 @@ jobs:
             seed: browser-workshop
             species: cinder-12--hell-hound-stalker
             action: harvest-tissue
-            budget: 1000
+            budget: 1200
           - id: ice-xeno-bone-control
             mission: ice-cryostalker
             seed: browser-ice
             species: nivalis-k--frost-xeno
             action: harvest-bone
-            budget: 720
+            budget: 960
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: 1
       NEXT_TELEMETRY_DISABLED: 1
