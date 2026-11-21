@@ -5,7 +5,8 @@ import type { SaveGame } from './types';
 import type { ClanShipRoomId } from './systems/clanShipDocking';
 import { CLAN_SHIP_INTERIOR_ROOMS } from './systems/clanShipInterior';
 import {
-  CLAN_SHIP_CONTRACTS, CLAN_SHIP_ONBOARDING_STEPS, CLAN_SHIP_RECRUITS,
+  CLAN_SHIP_CONTRACTS, CLAN_SHIP_ONBOARDING_STEPS, CLAN_SHIP_RECRUITS, CLAN_SHIP_COLLECTIVE_ID, CLAN_SHIP_COLLECTIVE_FIELD_ORDERS,
+  clanShipCollectiveStation,
   clanShipContract, evaluateClanShipContract, evaluateClanShipOperationsPhase,
   evaluateClanShipRecruit, getClanShipActiveStep,
   type ClanShipNpcId, type ClanShipOperationsAction, type ClanShipOperationsState,
@@ -66,6 +67,8 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
   const currentOnboarding = CLAN_SHIP_ONBOARDING_STEPS[state.onboardingStep];
   const activeContract = state.activeContract ? clanShipContract(state.activeContract.contractId) : null;
   const activeStep = getClanShipActiveStep(state);
+  const collective = state.activeContract?.collective;
+  const collectiveStation = collective?.role ? clanShipCollectiveStation(collective.role) : 'conseil';
   const selection = clanShipContract(selectedId);
   const selectionAccess = selection ? evaluateClanShipContract(state, selection.id, save) : null;
   const atCouncil = roomId === 'conseil';
@@ -134,9 +137,37 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
       <p>Rejoins le hangar, embarque sur ton vaisseau puis désamarre. Le bouton « Contrat du clan » du pont ouvre le briefing de la chasse. Le rapport sera reconnu après une réussite répondant aux objectifs.</p>
       {routeButton('hangar', 'Rejoindre le hangar pour préparer le départ')}
     </div>}
-    {state.spaceEncounter && (atCouncil ? <ClanShipSpaceEncounter encounter={state.spaceEncounter} suspended={suspended} campaign={save}
+    {collective && !state.spaceEncounter && <section className={styles.step} aria-label="Préparation de l’escorte">
+      <h4>Équipage et postes</h4>
+      <p data-collective-capacity={collective.capacity}>{availableCrew.length + 1} disponibles sur {collective.capacity}, joueur compris.
+        {collective.capacity > 7 && ` ${collective.capacity - 7} places supplémentaires sans spécialiste affecté à cette escorte.`}</p>
+      {collective.role ? <p>Ton poste : {collective.role === 'field' ? 'terrain, au hangar' : 'coordination, au conseil'}.</p>
+        : atCouncil ? <div className={styles.missionSteps} role="group" aria-label="Ton rôle pour l’escorte">
+          <button type="button" disabled={suspended} className={styles.secondary} data-collective-role="field"
+            onClick={() => act({ type: 'collective-role', role: 'field', expectedRevision: state.revision })}>Conduire l’escorte sur le terrain</button>
+          <button type="button" disabled={suspended} className={styles.secondary} data-collective-role="coordination"
+            onClick={() => act({ type: 'collective-role', role: 'coordination', expectedRevision: state.revision })}>Coordonner depuis le conseil</button>
+        </div> : routeButton('conseil', 'Choisir ton rôle au conseil')}
+      <ul className={styles.missionSteps}>{CLAN_SHIP_RECRUITS.map(member => {
+        const checked = collective.checkedNpcIds.includes(member.id), available = availableCrew.includes(member.id);
+        return <li key={member.id}>
+          <strong>{member.name} · {member.role}</strong><span>{CLAN_SHIP_INTERIOR_ROOMS[member.roomId].label} · {
+            !available ? 'Indisponible' : checked ? 'Poste vérifié' : 'À vérifier'}</span>
+          {available && !checked && (roomId === member.roomId ? <button type="button" className={styles.secondary}
+            data-collective-check={member.id} disabled={suspended}
+            onClick={() => act({ type: 'collective-check', npcId: member.id, expectedRevision: state.revision })}>Vérifier ce poste</button>
+            : routeButton(member.roomId, `Rejoindre ${member.name}`))}
+        </li>;
+      })}</ul>
+      {collective.role && collective.checkedNpcIds.length === CLAN_SHIP_RECRUITS.length && availableCrew.length === CLAN_SHIP_RECRUITS.length &&
+        (roomId === 'hangar' ? <button type="button" className={styles.primary} data-collective-launch disabled={suspended}
+          onClick={() => act({ type: 'collective-launch', expectedRevision: state.revision })}>Donner le départ de l’escorte</button>
+          : routeButton('hangar', 'Gagner le hangar pour le départ'))}
+    </section>}
+    {state.spaceEncounter && (roomId === collectiveStation ? <ClanShipSpaceEncounter encounter={state.spaceEncounter} suspended={suspended} campaign={save}
+      allowedOrders={collective?.role === 'field' ? CLAN_SHIP_COLLECTIVE_FIELD_ORDERS : undefined}
       onCommand={command => act({ type: 'space-command', command, expectedRevision: state.revision })} />
-      : <div className={styles.step}><p>L’engagement reste à son dernier ordre enregistré. Reprends son commandement à la table du conseil.</p>{routeButton('conseil')}</div>)}
+      : <div className={styles.step}><p>L’engagement reste à son dernier ordre enregistré.</p>{routeButton(collectiveStation, 'Rejoindre le poste de commandement')}</div>)}
     {atCouncil && <button type="button" className={styles.quiet} disabled={suspended}
       data-clan-cancel-contract onClick={() => act({ type: 'cancel-contract', expectedRevision: state.revision })}>
       Clore ce départ sans récompense
@@ -215,7 +246,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
             </section>
             {selection && <article className={styles.briefing} data-clan-contract-detail={selection.id}>
               <span className={styles.eyebrow}>{KINDS[selection.kind]}</span><h3>{selection.name}</h3><p>{selection.briefing}</p>
-              <dl><div><dt>Récompense unique</dt><dd>{selection.clanMarksReward} marques de clan</dd></div>
+              <dl>{selection.id !== CLAN_SHIP_COLLECTIVE_ID && <div><dt>Récompense unique</dt><dd>{selection.clanMarksReward} marques de clan</dd></div>}
                 <div><dt>Attribution</dt><dd>{selection.kind === 'field' ? 'Après une chasse réussie et reconnue' : selection.kind === 'space' ? 'Après l’objectif tactique accompli' : 'Après la dernière intervention enregistrée'}</dd></div>
               </dl>
               {selection.steps.length > 0 && <ol className={styles.missionSteps}>{selection.steps.map(step => <li key={step.id}><strong>{step.label}</strong><span>{CLAN_SHIP_INTERIOR_ROOMS[step.roomId].label}</span></li>)}</ol>}
@@ -290,7 +321,10 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
         {tab === 'journal' && <div className={styles.postLayout}>
           <section><span className={styles.eyebrow}>CHRONIQUE DE SERVICE</span><h3>Les preuves du clan</h3>
             {state.completedContracts.length ? <ol className={styles.receipts}>{state.completedContracts.map(receipt => <li key={receipt.contractId}>
-              <span aria-hidden="true">✓</span><div><strong>{clanShipContract(receipt.contractId)?.name}</strong><p>{KINDS[receipt.proof.kind]} · récompense déjà attribuée</p></div>
+              <span aria-hidden="true">✓</span><div><strong>{clanShipContract(receipt.contractId)?.name}</strong>
+                {receipt.proof.kind === 'space' && receipt.proof.collective
+                  ? <p data-collective-completed>{receipt.proof.collective.role === 'field' ? 'Terrain' : 'Coordination'} · Transport extrait · {receipt.proof.collective.checkedNpcIds.length + 1}/{receipt.proof.collective.capacity} postes affectés</p>
+                  : <p>{KINDS[receipt.proof.kind]} · récompense déjà attribuée</p>}</div>
             </li>)}</ol> : <p>Aucun dossier achevé. L’accueil du bord ouvre le premier chapitre.</p>}
           </section>
           <section className={styles.lore}><span className={styles.eyebrow}>REPÈRES DE LORE</span><h3>La doctrine de ce clan</h3>
