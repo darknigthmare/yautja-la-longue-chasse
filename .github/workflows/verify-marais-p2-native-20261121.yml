@@ -1,0 +1,84 @@
+name: Qualify the next V112 browser hunt in Naraka Delta
+on:
+  push:
+    branches: [codex/verify-marais-p2-20261121]
+    paths: ['.github/workflows/verify-marais-p2-native-20261121.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  swamp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 27
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+      NEXT_TELEMETRY_DISABLED: 1
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/public/
+            !/docs/
+            !/production/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - name: Admit the exact prior Volcano browser receipt
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          run-id: 44944025907
+          name: rem112-lot4-volcano-hound-tissue
+          github-token: ${{ github.token }}
+          path: outputs/volcano-parent
+      - name: Read the unlocked swamp campaign with the existing earned tool
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { createHash } from 'node:crypto';
+          import { readFile } from 'node:fs/promises';
+          const source = await readFile('outputs/volcano-parent/report.json');
+          const report = JSON.parse(source), save = report.finalSave;
+          assert.equal(save.missionProgress['volcano-bad-blood'].status, 'completed');
+          assert.equal(save.missionProgress['swamp-hydra'].status, 'available');
+          assert.ok(save.inventory.fieldToolIds.includes('flaying-tool'));
+          const proof = report.workshop.find(work => work.missionId === 'volcano-bad-blood');
+          assert.equal(proof.specimen.partId, 'tissue');
+          assert.equal(proof.archiveAfter, proof.archiveBefore + 1);
+          assert.equal(proof.pausedAndReloaded, true);
+          console.log(JSON.stringify({ parent: '44944025907/14723426291', sha256: createHash('sha256').update(source).digest('hex'),
+            priorSpecimen: proof.specimen, admission: save.missionProgress['swamp-hydra'], armor: save.loadout.armorId }));
+          NODE
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Hunt the Hydra and conserve a real hide after reload
+        run: |
+          node scripts/qa-hunt-campaign-browser-v112.mjs \
+            --campaign-source outputs/volcano-parent/report.json \
+            --missions swamp-hydra --harvest-action harvest-hide --harvest-species naraka-delta--fen-leaper \
+            --require-harvest-workshop --require-complete --require-resume --max-retries 2 \
+            --wall-seconds 990 --chromium /usr/bin/google-chrome \
+            --asset-cache outputs/source-cache --output outputs/swamp
+      - name: Preserve the original swamp observations and native receipts
+        if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFile } from 'node:fs/promises';
+          let r; try{r=JSON.parse(await readFile('outputs/swamp/report.json','utf8'));}catch(e){console.log(e.message);process.exit(0);}
+          console.log(JSON.stringify({ qualification:r.qualification, coverage:r.coverage, failure:r.failure,
+            errors:r.errors, missingAssets:r.missingAssets, workshop:r.workshop?.map(({before,after,...w})=>w),
+            specimens:r.harvestAttempts, resume:r.resumeObservations,
+            attempts:r.attempts.map(a=>({missionId:a.missionId,status:a.status,
+              resumed:a.suspendedAndReloaded, retries:a.retryEvents?.length, delivered:a.delivered,
+              elapsed:a.final?.state?.elapsed, phase:a.final?.state?.phase, health:a.final?.state?.player?.health})) }));
+          NODE
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: p2-rem112-swamp-browser
+          path: outputs/swamp/
+          if-no-files-found: warn
