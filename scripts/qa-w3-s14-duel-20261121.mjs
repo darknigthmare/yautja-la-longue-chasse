@@ -1,13 +1,22 @@
 import assert from 'node:assert/strict';
-import {mkdir, mkdtemp, rm, writeFile} from 'node:fs/promises';
+import {generateKeyPairSync} from 'node:crypto';
+import {mkdir, mkdtemp, readFile, rm, writeFile} from 'node:fs/promises';
+import {createServer} from 'node:http';
 import {tmpdir} from 'node:os';
-import {join, resolve} from 'node:path';
+import {join, resolve, sep} from 'node:path';
+import {build} from 'esbuild';
 import {chromium} from 'playwright-core';
 import {createWarW3S14DuelServer, loadWarW3S14DuelRules} from './serve-clan-war-w3-s14-duel.mjs';
 import {createLegacySupplyDriverV109} from '../tests/helpers/clan-supply-route-v109-fixture.mjs';
 
 const game = await loadWarW3S14DuelRules();
 const tokens = ['A'.repeat(43), 'B'.repeat(43)];
+const {publicKey, privateKey} = generateKeyPairSync('ed25519');
+const trustedKey = publicKey.export({type: 'spki', format: 'der'}).toString('base64url');
+const issuance = {
+  privateKey: privateKey.export({type: 'pkcs8', format: 'pem'}),
+  owners: ['2026-11-21T09:00:00.000Z', '2026-11-21T12:00:00.000Z'],
+};
 const operator = 'operator:W3-S14';
 const fixture = createLegacySupplyDriverV109(game);
 for (const actor of ['carrier', operator, 'rival']) fixture.send({kind: 'hire', actor});
@@ -33,13 +42,13 @@ const out = resolve(process.env.YAUTJA_W3_S14_QA_OUTPUT ?? 'outputs/qa-w3-s14-du
 await mkdir(out, {recursive: true});
 const directory = await mkdtemp(join(tmpdir(), 'yautja-w3-s14-browser-'));
 const report = {
-  scope: 'Chromium et service HTTP W3-S14 local, deux contextes séparés et carnet V109 préparé par les commandes V108.',
+  scope: 'Chromium et service W3-S14 local, deux accès, carnet V109 préparé par les commandes V108, dossier natif de la Bible V6 avec deux créneaux déclarés.',
   passed: false,
   checks: [],
   screenshots: [],
 };
 const errors = [];
-let server, browser, origin, leader;
+let server, dossierServer, browser, origin, leader;
 const arena = page => page.locator('#duel-arena');
 const figure = (page, role) => page.locator('[data-duel-participant="' + role + '"]');
 const receipt = page => page.locator('[data-duel-receipt]');
@@ -99,7 +108,7 @@ async function snapshot(page, token) {
 }
 
 try {
-  server = createWarW3S14DuelServer(game, {tokens, databasePath: join(directory, 'duel.sqlite'), checkpoint});
+  server = createWarW3S14DuelServer(game, {tokens, databasePath: join(directory, 'duel.sqlite'), checkpoint, issuance});
   await new Promise((ready, reject) => {
     server.once('error', reject);
     server.listen(0, '127.0.0.1', ready);
@@ -194,6 +203,7 @@ try {
     report.screenshots.push(filename);
   }
   record('Le coffre revient au vainqueur et reste attribué après reconnexion.');
+  await proveDossier(leader, won.attestation);
   report.passed = true;
 } catch (error) {
   report.error = error.message;
@@ -207,6 +217,98 @@ try {
   report.browserErrors = errors;
   await writeFile(join(out, 'report.json'), JSON.stringify(report, null, 2) + '\n');
   await browser?.close();
-  if (server?.listening) await new Promise((done, reject) => server.close(error => error ? reject(error) : done()));
+  for (const listener of [server, dossierServer]) {
+    if (listener?.listening) await new Promise((done, reject) => listener.close(error => error ? reject(error) : done()));
+  }
   await rm(directory, {recursive: true, force: true});
+}
+
+async function proveDossier(challengerPage, expected) {
+  const [download] = await Promise.all([
+    challengerPage.waitForEvent('download'),
+    challengerPage.getByRole('button', {name: 'Télécharger mon reçu signé', exact: true}).click(),
+  ]);
+  const signedFile = await readFile(await download.path());
+  assert.deepEqual(JSON.parse(signedFile), expected);
+  assert.doesNotMatch(signedFile.toString(), new RegExp(tokens.join('|')));
+  record('Le téléchargement authentifié contient le reçu Ed25519 inscrit par SQLite, sans jeton.');
+
+  const result = await build({entryPoints: ['tests/browser/clan-w3-s14-receipt-dossier.fixture.tsx'],
+    outdir: directory, write: false, bundle: true, platform: 'browser', format: 'iife', jsx: 'automatic',
+    define: {'process.env.NODE_ENV': '"production"', 'process.env.NEXT_PUBLIC_YAUTJA_W3_S14_VERIFY_KEY': JSON.stringify(trustedKey)}});
+  const js = result.outputFiles.find(file => file.path.endsWith('.js')).contents;
+  const css = result.outputFiles.find(file => file.path.endsWith('.css')).contents;
+  const publicDir = resolve('public');
+  dossierServer = createServer(async (request, response) => {
+    try {
+      const path = new URL(request.url, 'http://127.0.0.1').pathname;
+      if (path === '/') {
+        response.setHeader('content-type', 'text/html; charset=utf-8');
+        response.end('<!doctype html><html lang="fr"><meta name="viewport" content="width=device-width"><title>Dossier W3-S14</title><link rel="stylesheet" href="/dossier.css"><div id="root"></div><script src="/dossier.js"></script></html>');
+      } else if (path === '/dossier.js' || path === '/dossier.css') {
+        response.setHeader('content-type', path.endsWith('.js') ? 'text/javascript' : 'text/css');
+        response.end(path.endsWith('.js') ? js : css);
+      } else if (path === '/favicon.ico') {
+        response.writeHead(204).end();
+      } else {
+        const file = resolve(publicDir, '.' + decodeURIComponent(path));
+        if (!file.startsWith(publicDir + sep)) {response.writeHead(404).end();return;}
+        response.end(await readFile(file));
+      }
+    } catch {
+      response.writeHead(404).end();
+    }
+  });
+  await new Promise((ready, reject) => {
+    dossierServer.once('error', reject);
+    dossierServer.listen(0, '127.0.0.1', ready);
+  });
+  const target = 'http://127.0.0.1:' + dossierServer.address().port;
+  const page = await challengerPage.context().newPage();
+  page.on('pageerror', error => errors.push(error.message));
+  const dossier = page.locator('[data-w3-s14-receipt-dossier]');
+  const entries = dossier.locator('[data-w3-s14-receipt]');
+  const upload = dossier.getByLabel('Importer mon reçu signé');
+  const send = bytes => upload.setInputFiles({name: 'recu-w3-s14.json', mimeType: 'application/json', buffer: bytes});
+  async function open(slot = 'challenger') {
+    await page.goto(target + '/?slot=' + slot);
+    assert.deepEqual(errors, []);
+    await page.locator('button[data-war-tool-group="forces"]').click();
+    await page.getByRole('button', {name: 'Convoi des six ouvrages', exact: true}).click();
+    await page.getByRole('button', {name: /^W3-S14 ·/}).click();
+    await dossier.locator('summary').click();
+  }
+  const stored = () => page.evaluate(() => Object.fromEntries(Object.entries(localStorage)
+    .filter(([key]) => key.startsWith('yautja:w3-s14:dossier-v1:'))));
+
+  await open();
+  const forged = structuredClone(expected);
+  forged.body.checkpointSha = 'a'.repeat(64);
+  await send(Buffer.from(JSON.stringify(forged)));
+  await dossier.getByText(/^Reçu refusé/).waitFor();
+  assert.deepEqual(await stored(), {});
+  await send(signedFile);
+  await dossier.getByText('Reçu signé vérifié et classé.', {exact: true}).waitFor();
+  assert.equal(await entries.count(), 1);
+  const before = await stored();
+  assert.equal(Object.keys(before).length, 1);
+  await send(signedFile);
+  await dossier.getByText('Ce reçu est déjà classé.', {exact: true}).waitFor();
+  assert.deepEqual(await stored(), before);
+  record('Le dossier refuse un faux résultat, classe le reçu signé et rend son import répétable sans doublon.');
+
+  await open();
+  await entries.waitFor();
+  assert.equal(await entries.getAttribute('data-w3-s14-receipt'), expected.body.roomId);
+  await dossier.screenshot({path: join(out, 'dossier-w3-s14-verifie.png')});
+  report.screenshots.push('dossier-w3-s14-verifie.png');
+  await open('rival');
+  assert.equal(await entries.count(), 0);
+  await send(signedFile);
+  await dossier.getByText(/^Reçu refusé/).waitFor();
+  assert.deepEqual(await stored(), before);
+  assert.doesNotMatch(JSON.stringify(before), new RegExp(tokens.join('|')));
+  assert.deepEqual(errors, []);
+  record('Le même créneau retrouve son reçu après rechargement. Un autre créneau ne peut ni le voir ni l’importer.');
+  await page.close();
 }

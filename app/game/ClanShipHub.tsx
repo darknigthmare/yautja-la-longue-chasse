@@ -13,8 +13,9 @@ import ClanShipOperationsPanel from "./ClanShipOperationsPanel";
 import type { CompanionResidenceControlled } from "./CompanionResidencePanel";
 import type { ClanShipIncidentControlled } from "./ClanShipIncidentPanel";
 import type { ClanShipReturnEscortControlled } from "./ClanShipReturnEscortScene";
-import { CLAN_SHIP_ONBOARDING_STEPS, clanShipContract, createClanShipOperations, getClanShipActiveStep, inspectClanShipOperations, type ClanShipNpcId, type ClanShipOperationsAction } from "./systems/clanShipOperations";
+import { CLAN_SHIP_ONBOARDING_STEPS, CLAN_SHIP_RECRUITS, clanShipCollectiveStation, clanShipContract, createClanShipOperations, getClanShipActiveStep, inspectClanShipOperations, type ClanShipNpcId, type ClanShipOperationsAction } from "./systems/clanShipOperations";
 import { ClanShipOperationsAudio } from "./systems/clanShipOperationsAudio";
+import { clanResidenceCrewPostRooms } from "./systems/companionResidence";
 import type { ClanHullProjectCommandV171, ClanHullProjectResponseV171 } from "./systems/clanHullProjectV171";
 import type { SceneAudioPort } from "./systems/sceneAudio";
 import styles from "./ClanShipHub.module.css";
@@ -72,6 +73,13 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, te
   const operations = operationsInspection.state ?? (operationsInspection.status === 'absent' ? createClanShipOperations(save.createdAt) : null);
   const operationStep = operations ? CLAN_SHIP_ONBOARDING_STEPS[operations.onboardingStep] ?? getClanShipActiveStep(operations) : null;
   const activeContract = operations?.activeContract ? clanShipContract(operations.activeContract.contractId) : null;
+  const collective = operations?.activeContract?.collective;
+  const pendingMember = collective && !operations?.spaceEncounter
+    ? CLAN_SHIP_RECRUITS.find(member => !collective.checkedNpcIds.includes(member.id)) : null;
+  const collectiveRoom = collective && (!collective.role ? 'conseil' : operations?.spaceEncounter
+    ? clanShipCollectiveStation(collective.role)
+    : pendingMember ? clanResidenceCrewPostRooms(save)[pendingMember.id] ?? 'conseil' : 'hangar');
+  const bannerRoom = operationStep?.roomId ?? collectiveRoom;
   const signature = `${state.ownerCreatedAt}:${state.status}:${state.roomId}:${state.personalShipId}`;
   const error = failure?.signature === signature ? failure.message : "";
   const aboard = state.status === "aboard";
@@ -230,9 +238,9 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, te
             {onOperations && operations && <div className={styles.operationObjective} data-clan-operation-objective>
               <div><span className={styles.eyebrow}>{operations.mandateAccepted ? 'OPÉRATIONS DU CLAN' : 'ACCUEIL DU BORD'}</span>
                 <strong>{operationStep?.label ?? activeContract?.name ?? (operations.mandateAccepted ? 'Choisir un dossier à la table du conseil' : 'Recevoir le mandat du conseil')}</strong>
-                <p>{operationStep ? CLAN_SHIP_INTERIOR_ROOMS[operationStep.roomId].label : activeContract?.kind === 'field' ? 'Retour au hangar, puis désamarrage avant la chasse.' : `${operations.recruitedNpcIds.length} accords de recrutement · ${operations.completedContracts.length} dossiers accomplis`}</p>
+                <p>{bannerRoom ? CLAN_SHIP_INTERIOR_ROOMS[bannerRoom].label : activeContract?.kind === 'field' ? 'Retour au hangar, puis désamarrage avant la chasse.' : `${operations.recruitedNpcIds.length} accords de recrutement · ${operations.completedContracts.length} dossiers accomplis`}</p>
               </div>
-              <button type="button" disabled={suspended} onClick={() => setTargetRoomId(operationStep?.roomId ?? (activeContract?.kind === 'field' ? 'hangar' : 'conseil'))}>
+              <button type="button" disabled={suspended} onClick={() => setTargetRoomId(bannerRoom ?? (activeContract?.kind === 'field' ? 'hangar' : 'conseil'))}>
                 Rejoindre le prochain poste
               </button>
             </div>}

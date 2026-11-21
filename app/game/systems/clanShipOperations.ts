@@ -8,11 +8,13 @@ import {
 
 /** Original clan doctrine and playable contracts, not additional AVP canon.
  * This owner-bound DTO never owns a ship, promotes a hunter or writes storage. */
+import { clanHullProjectMatchesOwnedHull, inspectClanHullProject } from './clanHullProjectV171';
+
 export const CLAN_SHIP_OPERATIONS_VERSION = 1 as const;
 export const CLAN_SHIP_CONTRACT_IDS = [
   'welcome-aboard', 'ship-seal-check', 'ship-armory-audit', 'ship-triage-route', 'ship-training-circuit',
   'field-jungle-survey', 'field-ice-route', 'field-bad-blood', 'field-ruins-memory',
-  'space-screening', 'space-interception', 'space-recovery',
+  'space-screening', 'space-interception', 'space-recovery', 'space-collective-escort',
 ] as const;
 export type ClanShipContractId = typeof CLAN_SHIP_CONTRACT_IDS[number];
 export const CLAN_SHIP_NPC_IDS = ['ash-scar', 'star-watch', 'iron-claw', 'cold-trace', 'black-suture', 'threshold-guard'] as const;
@@ -111,7 +113,20 @@ export const CLAN_SHIP_CONTRACTS: readonly ClanShipContractDefinition[] = [
     summary: 'Récupère une capsule à la dérive avant de dégager ta formation.',
     briefing: 'Une capsule dérive sous le feu. Tant que l’équipe ne l’a pas rejointe, son contenu reste inconnu. Protège l’approche, termine la récupération puis donne le signal d’extraction. Ne sacrifie pas le retour pour poursuivre le tireur.',
     clanMarksReward: 55, spaceKind: 'recovery', prerequisiteIds: ['space-screening'] }),
+  contract({ id: 'space-collective-escort', kind: 'space', name: 'La première Veille Partagée',
+    summary: 'Rassemble les six spécialistes, contrôle leurs postes et escorte un transport en formation.',
+    briefing: 'Depuis le hangar, prends la tête de l’escorte. Depuis le conseil, coordonne tous les ordres du groupe. Le transport doit passer les trois segments et sortir de la zone.',
+    spaceKind: 'escort' }),
 ];
+
+export const CLAN_SHIP_COLLECTIVE_ID = 'space-collective-escort' as const;
+export const CLAN_SHIP_COLLECTIVE_FIELD_ORDERS = ['scan', 'manoeuvre', 'brace', 'extract', 'withdraw'] as const;
+export type ClanShipCollectiveRole = 'field' | 'coordination';
+export interface ClanShipCollectiveBriefing {
+  role: ClanShipCollectiveRole | null;
+  capacity: 7 | 13 | 19;
+  checkedNpcIds: ClanShipNpcId[];
+}
 
 export interface ClanShipRecruitDefinition {
   id: ClanShipNpcId; name: string; role: string; roomId: ClanShipRoomId;
@@ -147,11 +162,12 @@ export interface ClanShipActiveContract {
   /** Stable across active-hunt runId rotation on resume. */
   missionEncounterRun: number | null;
   baselineCompletions: number;
+  collective?: ClanShipCollectiveBriefing;
 }
 export type ClanShipContractProof =
   | { kind: 'onboarding' | 'interior'; stepIds: string[] }
   | { kind: 'field'; missionId: MissionId; encounterRun: number; completedAt: string; score: number; scans: number }
-  | { kind: 'space'; encounter: ClanShipSpaceEncounter };
+  | { kind: 'space'; encounter: ClanShipSpaceEncounter; collective?: ClanShipCollectiveBriefing };
 export interface ClanShipContractReceipt { contractId: ClanShipContractId; completedRevision: number; proof: ClanShipContractProof }
 export interface ClanShipOperationsState {
   version: 1; ownerCreatedAt: string; revision: number;
@@ -165,6 +181,9 @@ export interface ClanShipCampaignEvidence {
   createdAt: string;
   prologue?: { status?: string; chronicle: unknown } | null;
   missionProgress: Partial<Record<MissionId, { status: string; attempts: number; completions: number }>>;
+  clanHullProjectV171?: unknown;
+  shipAcquisitionV89?: unknown;
+  companionResidence?: { clanCapacity: 7 | 13 | 19 } | null;
 }
 export interface ClanShipOperationsContext {
   ownerCreatedAt: string;
@@ -173,6 +192,7 @@ export interface ClanShipOperationsContext {
   /** Omitted by older campaigns; provided by the residence ledger once a
    * recruitment has an explicit hull posting, suspension or reserve state. */
   availableCrewIds?: readonly ClanShipNpcId[];
+  crewPostRooms?: Readonly<Partial<Record<ClanShipNpcId, ClanShipRoomId>>>;
 }
 type SpaceCommand = Parameters<typeof actClanShipSpaceEncounter>[1];
 export type ClanShipOperationsAction = { expectedRevision: number } & (
@@ -184,6 +204,9 @@ export type ClanShipOperationsAction = { expectedRevision: number } & (
   | { type: 'recruit'; npcId: ClanShipNpcId }
   | { type: 'confirm-circle' }
   | { type: 'space-command'; command: SpaceCommand }
+  | { type: 'collective-role'; role: ClanShipCollectiveRole }
+  | { type: 'collective-check'; npcId: ClanShipNpcId }
+  | { type: 'collective-launch' }
 );
 export interface ClanShipOperationsResult {
   accepted: boolean; changed: boolean; state: ClanShipOperationsState;
@@ -232,6 +255,37 @@ export function createClanShipOperations(ownerCreatedAt: string): ClanShipOperat
     circleConfirmed: false, activeContract: null, completedContracts: [], recruitedNpcIds: [], spaceEncounter: null };
 }
 
+const collectiveRole = (value: unknown): value is ClanShipCollectiveRole => value === 'field' || value === 'coordination';
+const collectiveCapacity = (value: unknown): value is 7 | 13 | 19 => value === 7 || value === 13 || value === 19;
+const completeCollectiveRoster = (briefing: ClanShipCollectiveBriefing) =>
+  CLAN_SHIP_RECRUITS.every(member => briefing.checkedNpcIds.includes(member.id));
+export function clanShipCollectiveStation(role: ClanShipCollectiveRole): ClanShipRoomId {
+  return role === 'field' ? 'hangar' : 'conseil';
+}
+function collectiveAllowsOrder(role: ClanShipCollectiveRole, order: unknown): boolean {
+  return role === 'coordination' || CLAN_SHIP_COLLECTIVE_FIELD_ORDERS.some(allowed => order === allowed);
+}
+function validCollectiveBriefing(value: unknown): value is ClanShipCollectiveBriefing {
+  return record(value) && exact(value, ['role', 'capacity', 'checkedNpcIds']) &&
+    (value.role === null || collectiveRole(value.role)) && collectiveCapacity(value.capacity) &&
+    Array.isArray(value.checkedNpcIds) && value.checkedNpcIds.length <= CLAN_SHIP_RECRUITS.length &&
+    Array.from(value.checkedNpcIds).every(id => !!clanShipRecruit(id)) &&
+    new Set(value.checkedNpcIds).size === value.checkedNpcIds.length;
+}
+function validCollectiveDeparture(briefing: ClanShipCollectiveBriefing, encounter: ClanShipSpaceEncounter): boolean {
+  const role = briefing.role;
+  return role !== null && completeCollectiveRoster(briefing) &&
+    CLAN_SHIP_RECRUITS.every(member => encounter.crewRoles.includes(member.spaceCrewRole)) &&
+    encounter.history.every(order => collectiveAllowsOrder(role, order));
+}
+function collectivePreparationCommands(briefing: ClanShipCollectiveBriefing, launched: boolean): number {
+  return Number(briefing.role !== null) + briefing.checkedNpcIds.length + Number(launched);
+}
+function collectiveProjectRecorded(campaign: { createdAt: string; clanHullProjectV171?: unknown; shipAcquisitionV89?: unknown }): boolean {
+  const project = inspectClanHullProject(campaign.clanHullProjectV171, campaign.createdAt).state;
+  return project?.pledge === 'shared-watch' && clanHullProjectMatchesOwnedHull(project, campaign.shipAcquisitionV89, campaign.createdAt);
+}
+
 function validProof(raw: unknown, definition: ClanShipContractDefinition): boolean {
   if (!record(raw) || raw.kind !== definition.kind) return false;
   if (raw.kind === 'onboarding' || raw.kind === 'interior') {
@@ -244,7 +298,11 @@ function validProof(raw: unknown, definition: ClanShipContractDefinition): boole
     integer(raw.scans) && raw.scans >= definition.minimumScans;
   if (raw.kind === 'space') {
     const inspected = inspectClanShipSpaceEncounter(raw.encounter);
-    return exact(raw, ['kind', 'encounter']) && inspected.status === 'valid' && inspected.state?.status === 'victory' && inspected.state.kind === definition.spaceKind;
+    const encounter = inspected.state;
+    if (inspected.status !== 'valid' || encounter?.status !== 'victory' || encounter.kind !== definition.spaceKind) return false;
+    return definition.id === CLAN_SHIP_COLLECTIVE_ID
+      ? exact(raw, ['kind', 'encounter', 'collective']) && validCollectiveBriefing(raw.collective) && validCollectiveDeparture(raw.collective, encounter)
+      : exact(raw, ['kind', 'encounter']);
   }
   return false;
 }
@@ -276,7 +334,8 @@ export function inspectClanShipOperations(raw: unknown, ownerCreatedAt: string):
       if (receipt.completedRevision !== CLAN_SHIP_ONBOARDING_STEPS.length) return invalid('impossible-receipt-revision');
     } else {
       const proof = receipt.proof as ClanShipContractProof;
-      const commands = 1 + (definition.kind === 'interior' ? definition.steps.length : proof.kind === 'space' ? proof.encounter.turn : 2);
+      const preparation = proof.kind === 'space' && proof.collective ? collectivePreparationCommands(proof.collective, true) : 0;
+      const commands = 1 + preparation + (definition.kind === 'interior' ? definition.steps.length : proof.kind === 'space' ? proof.encounter.turn : 2);
       // One acceptance, then the ordered steps, bound hunt/result or space
       // turns. There cannot be two completed contracts in those same revisions.
       if (receipt.completedRevision < Math.max(lastRevision, CLAN_SHIP_ONBOARDING_STEPS.length + 1) + commands) return invalid('impossible-receipt-revision');
@@ -306,8 +365,11 @@ export function inspectClanShipOperations(raw: unknown, ownerCreatedAt: string):
   if (inspectedSpace.state?.crewRoles.some(role => !earnedCrew.has(role))) return invalid('unearned-space-crew');
   const active = raw.activeContract;
   if (active !== null) {
-    if (!record(active) || !exact(active, ['contractId', 'acceptedRevision', 'stepIndex', 'missionEncounterRun', 'baselineCompletions'])) return invalid('invalid-active-contract');
+    if (!record(active)) return invalid('invalid-active-contract');
     const definition = clanShipContract(active.contractId);
+    const collective = definition?.id === CLAN_SHIP_COLLECTIVE_ID;
+    const keys = ['contractId', 'acceptedRevision', 'stepIndex', 'missionEncounterRun', 'baselineCompletions'];
+    if (!exact(active, collective ? [...keys, 'collective'] : keys)) return invalid('invalid-active-contract');
     if (!definition || definition.kind === 'onboarding' || !raw.mandateAccepted || ids.has(definition.id) ||
         !definition.prerequisiteIds.every(id => ids.has(id)) || !integer(active.acceptedRevision) ||
         active.acceptedRevision <= Math.max(lastRevision, CLAN_SHIP_ONBOARDING_STEPS.length + 1) ||
@@ -315,10 +377,17 @@ export function inspectClanShipOperations(raw: unknown, ownerCreatedAt: string):
         active.missionEncounterRun !== null && !integer(active.missionEncounterRun)) return invalid('invalid-active-contract');
     if (definition.kind === 'interior' ? active.stepIndex >= definition.steps.length : active.stepIndex !== 0) return invalid('invalid-step');
     if (definition.kind !== 'field' && (active.missionEncounterRun !== null || active.baselineCompletions !== 0)) return invalid('unexpected-field-proof');
-    if (definition.kind === 'space') {
+    let preparation = 0;
+    if (collective) {
+      const briefing = active.collective;
+      if (!validCollectiveBriefing(briefing) || !CLAN_SHIP_RECRUITS.every(member => recruited.has(member.id)) ||
+          inspectedSpace.state && (inspectedSpace.state.kind !== definition.spaceKind || inspectedSpace.state.status !== 'active' ||
+          !validCollectiveDeparture(briefing, inspectedSpace.state))) return invalid('invalid-collective-operation');
+      preparation = collectivePreparationCommands(briefing, inspectedSpace.state !== null);
+    } else if (definition.kind === 'space') {
       if (!inspectedSpace.state || inspectedSpace.state.kind !== definition.spaceKind || inspectedSpace.state.status !== 'active') return invalid('invalid-active-space');
     } else if (inspectedSpace.state !== null) return invalid('unexpected-space-encounter');
-    const commandsAfterAcceptance = Number(active.stepIndex) + Number(active.missionEncounterRun !== null) + (inspectedSpace.state?.turn ?? 0);
+    const commandsAfterAcceptance = preparation + Number(active.stepIndex) + Number(active.missionEncounterRun !== null) + (inspectedSpace.state?.turn ?? 0);
     if (active.acceptedRevision + commandsAfterAcceptance > raw.revision) return invalid('impossible-active-revision');
     minimumRevision += 1 + commandsAfterAcceptance;
   } else if (inspectedSpace.state?.status === 'active') return invalid('orphan-active-space');
@@ -355,6 +424,14 @@ export function evaluateClanShipOperationsCampaign(state: ClanShipOperationsStat
       Number.isSafeInteger(progress.completions) && Number(progress.completions) >= 0 ? progress : null;
   };
   const active = state.activeContract, definition = clanShipContract(active?.contractId);
+  const collectiveReceipt = state.completedContracts.find(receipt => receipt.contractId === CLAN_SHIP_COLLECTIVE_ID);
+  const briefing = active?.collective ?? (collectiveReceipt?.proof.kind === 'space' ? collectiveReceipt.proof.collective : undefined);
+  if (briefing) {
+    const capacity = record(campaign.companionResidence) ? campaign.companionResidence.clanCapacity : 7;
+    if (!collectiveCapacity(capacity) || briefing.capacity > capacity ||
+        !collectiveProjectRecorded({ createdAt: campaign.createdAt, clanHullProjectV171: campaign.clanHullProjectV171,
+          shipAcquisitionV89: campaign.shipAcquisitionV89 })) return access(false, 'L’équipage et la Veille Partagée doivent appartenir à cette campagne.');
+  }
   if (active && definition?.kind === 'field' && definition.missionId) {
     const progress = progressFor(definition.missionId);
     if (!progress || progress.completions !== active.baselineCompletions ||
@@ -381,6 +458,10 @@ export function evaluateClanShipContract(state: ClanShipOperationsState, id: Cla
   if (!evaluateClanShipAccess(campaign).allowed || !state.mandateAccepted) return access(false, 'Reçois le mandat du conseil après l’accueil à bord.');
   if (completed(state, id)) return access(false, 'Ce contrat est déjà accompli.');
   if (state.activeContract) return access(false, 'Un contrat est déjà suivi. Termine-le ou retire-le au conseil.');
+  if (id === CLAN_SHIP_COLLECTIVE_ID) {
+    if (!collectiveProjectRecorded(campaign)) return access(false, 'Après remise de ta coque, consigne le projet Veille Partagée au conseil.');
+    if (!allRecruited(state)) return access(false, 'Obtiens l’accord des six spécialistes avant de préparer ce départ.');
+  }
   const missing = definition.prerequisiteIds.find(required => !completed(state, required));
   if (missing) return access(false, `Dossier requis : ${clanShipContract(missing)?.name ?? missing}.`);
   if (definition.missionId) {
@@ -411,16 +492,18 @@ function receiptFor(state: ClanShipOperationsState, definition: ClanShipContract
 }
 function finishContract(state: ClanShipOperationsState, definition: ClanShipContractDefinition, proof: ClanShipContractProof, spaceEncounter: ClanShipSpaceEncounter | null = null): ClanShipOperationsResult {
   return changed(state, { activeContract: null, completedContracts: [...state.completedContracts, receiptFor(state, definition, proof)], spaceEncounter },
-    `${definition.name} : dossier accompli. Les membres concernés attendent ta proposition à leur poste.`, definition.clanMarksReward);
+    proof.kind === 'space' && proof.collective ? 'Transport extrait. Le rapport collectif est consigné au conseil.'
+      : `${definition.name} : dossier accompli. Les membres concernés attendent ta proposition à leur poste.`, definition.clanMarksReward);
 }
 function validAction(action: unknown): action is ClanShipOperationsAction {
   if (!record(action) || !integer(action.expectedRevision)) return false;
   const base = ['type', 'expectedRevision'];
   if (action.type === 'onboard-step' || action.type === 'interior-step') return exact(action, [...base, 'stepId']) && identity(action.stepId);
   if (action.type === 'accept-contract') return exact(action, [...base, 'contractId']) && !!clanShipContract(action.contractId);
-  if (action.type === 'recruit') return exact(action, [...base, 'npcId']) && !!clanShipRecruit(action.npcId);
+  if (action.type === 'recruit' || action.type === 'collective-check') return exact(action, [...base, 'npcId']) && !!clanShipRecruit(action.npcId);
+  if (action.type === 'collective-role') return exact(action, [...base, 'role']) && collectiveRole(action.role);
   if (action.type === 'space-command') return exact(action, [...base, 'command']) && record(action.command);
-  return exact(action, base) && ['accept-mandate', 'cancel-contract', 'confirm-circle'].includes(String(action.type));
+  return exact(action, base) && ['accept-mandate', 'cancel-contract', 'confirm-circle', 'collective-launch'].includes(String(action.type));
 }
 
 /** Caller acknowledges only after one durable write of state + currency. */
@@ -454,6 +537,13 @@ export function actClanShipOperations(state: ClanShipOperationsState, action: Cl
       const evaluated = evaluateClanShipContract(state, action.contractId, context.campaign);
       if (!evaluated.allowed) return refused(state, 'contract-unavailable', evaluated.reason);
       const definition = clanShipContract(action.contractId)!;
+      if (definition.id === CLAN_SHIP_COLLECTIVE_ID) {
+        const capacity = context.campaign.companionResidence?.clanCapacity ?? 7;
+        if (!collectiveCapacity(capacity)) return refused(state, 'invalid-capacity', 'Relis la capacité reçue au registre des quartiers.');
+        return changed(state, { activeContract: { contractId: definition.id, acceptedRevision: state.revision + 1, stepIndex: 0,
+          missionEncounterRun: null, baselineCompletions: 0, collective: { role: null, capacity, checkedNpcIds: [] } }, spaceEncounter: null },
+        'Le conseil ouvre les préparatifs. Choisis ta place puis rejoins les spécialistes à leurs postes.');
+      }
       const roles = state.recruitedNpcIds.filter(id => !context.availableCrewIds || context.availableCrewIds.includes(id))
         .map(id => clanShipRecruit(id)!.spaceCrewRole);
       return changed(state, { activeContract: { contractId: definition.id, acceptedRevision: state.revision + 1, stepIndex: 0,
@@ -485,13 +575,46 @@ export function actClanShipOperations(state: ClanShipOperationsState, action: Cl
       if (!at('conseil')) return wrongRoom();
       if (state.circleConfirmed || !circleReady(state)) return refused(state, 'circle-incomplete', 'Le cercle demande les six accords, une chasse de contrat et une opération spatiale accomplies.');
       return changed(state, { circleConfirmed: true }, 'Le conseil reconnaît ton cercle d’expédition. Aucun rang ni titre de propriété n’a changé.');
+    case 'collective-role':
+    case 'collective-check':
+    case 'collective-launch': {
+      const active = state.activeContract, briefing = active?.collective;
+      if (!active || !briefing || state.spaceEncounter) return refused(state, 'no-collective-briefing', 'Aucun équipage en préparation.');
+      if (!collectiveProjectRecorded(context.campaign)) return refused(state, 'missing-collective-project', 'Le projet Veille Partagée doit être consigné.');
+      const available = (id: ClanShipNpcId) => context.availableCrewIds?.includes(id) === true;
+      if (action.type === 'collective-role') {
+        if (!at('conseil')) return wrongRoom();
+        if (briefing.role !== null) return refused(state, 'role-chosen', 'Ta place figure déjà dans le briefing.');
+        return changed(state, { activeContract: { ...active, collective: { ...briefing, role: action.role } } },
+          action.role === 'field' ? 'Terrain : tu conduiras l’escorte depuis le poste du hangar.' : 'Coordination : tu donneras les ordres à la table du conseil.');
+      }
+      if (action.type === 'collective-check') {
+        const member = clanShipRecruit(action.npcId)!;
+        const station = context.crewPostRooms ? context.crewPostRooms[member.id] : member.roomId;
+        if (station && !at(station)) return wrongRoom();
+        if (!station || !available(member.id) || briefing.checkedNpcIds.includes(member.id))
+          return refused(state, 'collective-post-unavailable', 'Vérifie la disponibilité et les contrôles déjà enregistrés.');
+        return changed(state, { activeContract: { ...active, collective: { ...briefing,
+          checkedNpcIds: [...briefing.checkedNpcIds, member.id] } } }, `${member.name} confirme son poste pour l’escorte.`);
+      }
+      if (!at('hangar')) return wrongRoom();
+      if (briefing.role === null || !completeCollectiveRoster(briefing) || !CLAN_SHIP_RECRUITS.every(member => available(member.id)) ||
+          (context.campaign.companionResidence?.clanCapacity ?? 7) < briefing.capacity)
+        return refused(state, 'collective-crew-incomplete', 'Il faut choisir ton poste et vérifier les six spécialistes disponibles avant le départ.');
+      return changed(state, { spaceEncounter: createClanShipSpaceEncounter('escort', CLAN_SHIP_RECRUITS.map(member => member.spaceCrewRole)) },
+        'Le hangar confirme le départ de la formation. Rejoins ton poste pour couvrir le transport.');
+    }
     case 'space-command': {
-      if (!at('conseil')) return wrongRoom();
+      const briefing = state.activeContract?.collective;
+      if (!at(briefing?.role ? clanShipCollectiveStation(briefing.role) : 'conseil')) return wrongRoom();
       const definition = clanShipContract(state.activeContract?.contractId);
       if (!definition || definition.kind !== 'space' || !state.spaceEncounter) return refused(state, 'no-space-encounter', 'Aucune opération spatiale active.');
+      if (briefing?.role && !collectiveAllowsOrder(briefing.role, action.command.type))
+        return refused(state, 'collective-order-unavailable', 'Cet ordre relève de la coordination au conseil.');
       const result = actClanShipSpaceEncounter(state.spaceEncounter, action.command);
       if (!result.accepted || !result.changed) return refused(state, result.reason ?? 'space-command-refused', result.message);
-      if (result.state.status === 'victory') return finishContract(state, definition, { kind: 'space', encounter: result.state }, result.state);
+      if (result.state.status === 'victory') return finishContract(state, definition, { kind: 'space', encounter: result.state,
+        ...(briefing ? { collective: briefing } : {}) }, result.state);
       if (result.state.status === 'defeat' || result.state.status === 'withdrawn') return changed(state, { activeContract: null, spaceEncounter: result.state }, result.message);
       return changed(state, { spaceEncounter: result.state }, result.message);
     }

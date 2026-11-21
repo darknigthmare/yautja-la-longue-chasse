@@ -7000,10 +7000,12 @@ function updateHuntRitesV77(state:GameState,delta:number):void {
     const corpse=state.huntRites.corpses.find(entry=>entry.id===corpseId);
     if(!corpse||!state.player.grounded||state.player.climbing||
       huntStructuralBarrierV94({x:context.actor.x,y:context.actor.y-Math.min(48,state.player.height*.4)},{x:corpse.x,y:corpse.y-12},state.world.platforms)){
+      const interruption=before.action==='flay'?'Dépeçage interrompu':
+        before.action==='hang'?'Suspension interrompue':'Prélèvement interrompu';
       state.huntRites={...state.huntRites,operation:null};
       state.riteOperationDamageStart=null;
       before=null;
-      announce(state,'Dépeçage interrompu : garde un appui dégagé près de la proie.',2.8);
+      announce(state,`${interruption} : garde un appui dégagé près de la proie.`,2.8);
     }
   }
   const stepped=stepHuntRiteV77(state.huntRites,delta,context);
@@ -8538,9 +8540,12 @@ function updatePlayer(
     ];
     if (moveAxis !== 0 || climbAxis !== 0 ||
       interruptingActions.some(action => input.pressed.has(action) || isHeld(input, action))) {
+      const action = state.huntRites.operation.action;
+      const interruption = action === "flay" ? "Dépeçage interrompu" :
+        action === "hang" ? "Suspension interrompue" : "Prélèvement interrompu";
       state.huntRites = { ...state.huntRites, operation: null };
       state.riteOperationDamageStart = null;
-      announce(state, "Dépeçage interrompu : le chasseur reprend son action.", 2.4);
+      announce(state, `${interruption} : le chasseur reprend son action.`, 2.4);
     }
   }
   if(state.huntRites?.carryingCorpseId && (climbAxis!==0 ||
@@ -11994,7 +11999,7 @@ export default function HuntCanvas({
         const corpse=game.huntRites.corpses.find(entry=>entry.id===menu.corpseId);
         if((action==='flay'||action==='hang'||action==='carry'||action.startsWith('harvest-'))&&(!corpse||!game.player.grounded||game.player.climbing||
           huntStructuralBarrierV94({x:context.actor.x,y:context.actor.y-Math.min(48,game.player.height*.4)},{x:corpse.x,y:corpse.y-12},game.world.platforms))){
-          announce(game,'Rejoins la proie sur un appui dégagé pour la dépecer.',3);return;
+          announce(game,'Rejoins la proie sur un appui dégagé.',3);return;
         }
         const started=startHuntRiteV77(game.huntRites,menu.corpseId,action,context,{supportId:menu.hangSupportId??undefined});
         game.huntRites=started.state;
@@ -12503,7 +12508,8 @@ export default function HuntCanvas({
       {activeAccessibility.fieldGuide && <HuntFieldGuideV112 bindings={activeBindings} gamepadButtons={activeAccessibility.gamepadButtons}
         phase={ui.phase} climbing={ui.climbing} grounded={ui.grounded} stamina={ui.stamina} corpseNearby={!!ui.huntRiteMenu}
         gripExhausted={ui.gripExhaustedV112} toolOwned={ownsFieldToolV111(inventory,"flaying-tool")}
-        toolCondition={ui.toolConditionV112} fieldLoad={ui.fieldLoadV112}/>}
+        toolCondition={ui.toolConditionV112} fieldLoad={ui.fieldLoadV112}
+        navigation={ui.canopyNavigationV112} gripInput={activeAccessibility.gripInput} rite={ui.huntRiteMenu}/>}
       {/* Bloc : objectif courant annoncé aux lecteurs d’écran. */}
       <div style={styles.objectiveBar}>
         <div aria-live="polite" aria-atomic="true">

@@ -119,7 +119,7 @@ import { commitEliteMastery, type MasteryCommand, type MasteryResponse } from '.
 import { getCradleCrownCondition } from './systems/buriedCradle';
 import cradleArt from './data/buriedCradleArt.json';
 import { actCompanionResidence, bindCompanionResidenceMission, settleCompanionResidenceMission, releaseCompanionResidenceMission,
-  registerCompanionResidenceRecruitment, availableClanResidenceCrew, type CompanionResidenceAction, type CompanionResidenceObservation } from './systems/companionResidence';
+  registerCompanionResidenceRecruitment, availableClanResidenceCrew, clanResidenceCrewPostRooms, type CompanionResidenceAction, type CompanionResidenceObservation } from './systems/companionResidence';
 import { createWolfCastleVisit, inspectWolfCastleVisit, actWolfCastle, applyWolfCastleCheckpoint, type WolfCastleAction, type WolfCastleCheckpoint } from "./systems/wolfCastle";
 import { createPlanetArrival, inspectPlanetArrival, completePlanetArrivalHandoff, type PlanetArrivalState } from "./systems/planetArrival";
 import { inspectPlanetArrivalRun, type PlanetArrivalRun } from "./systems/planetArrivalRun";
@@ -3034,6 +3034,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const result = actClanShipOperations(state, action, {
       ownerCreatedAt: current.createdAt, docking: current.clanShipDocking, campaign: current,
       availableCrewIds: availableClanResidenceCrew(current),
+      crewPostRooms: action.type === 'collective-check' ? clanResidenceCrewPostRooms(current) : undefined,
     });
     if (!result.accepted) { setToast(result.message); return false; }
     const reward = result.clanMarksReward;

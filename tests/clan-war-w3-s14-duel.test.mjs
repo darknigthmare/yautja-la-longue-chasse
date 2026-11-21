@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {randomUUID} from 'node:crypto';
+import {generateKeyPairSync, randomUUID} from 'node:crypto';
 import {mkdtemp, rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
@@ -49,8 +49,8 @@ async function newRoom(t) {
   });
   return {
     databasePath,
-    async open(seed) {
-      const server = createWarW3S14DuelServer(game, {tokens, databasePath, checkpoint: seed});
+    async open(seed, issuance) {
+      const server = createWarW3S14DuelServer(game, {tokens, databasePath, checkpoint: seed, issuance});
       await new Promise((resolve, reject) => {
         server.once('error', reject);
         server.listen(0, '127.0.0.1', resolve);
@@ -282,4 +282,90 @@ test('three failed attacks and real counterattacks allow the rival to win and cl
   const claimed = await accept(room, 1, 'claim');
   assert.equal(claimed.duel.chestHolder, winner.memberId);
   assert.deepEqual(claimed.receipt, won.receipt);
+});
+
+const owners = ['2026-11-21T09:00:00.000Z', '2026-11-21T12:00:00.000Z'];
+function issuer() {
+  const {publicKey, privateKey} = generateKeyPairSync('ed25519');
+  return {
+    trust: publicKey.export({type: 'spki', format: 'der'}).toString('base64url'),
+    issuance: {privateKey: privateKey.export({type: 'pkcs8', format: 'pem'}), owners},
+  };
+}
+const source = game.DEFAULT_WAR_RULES_V6.metadata.sha256;
+
+test('two role-bound Ed25519 attestations are written with the real winner and survive restart', async t => {
+  const selected = issuer();
+  const other = issuer();
+  const league = await newRoom(t);
+  let room = await league.open(checkpoint, selected.issuance);
+  const live = await startDuel(room);
+  assert.equal(live.attestation, null);
+  await refuse(room, 0, {...orderFor(live, 'claim'), attestation: {winner: 'local'}}, 400);
+  let settled;
+  for (let hit = 1; hit <= 3; hit++) {
+    settled = await accept(room, 0, 'strike');
+    if (hit < 3) {
+      await accept(room, 0, 'move', [-24, 0]);
+      await accept(room, 1, 'strike');
+      await accept(room, 0, 'move', [24, 0]);
+    }
+  }
+  const rival = await room.read(1);
+  assert.equal(settled.receipt.outcome, 'won');
+  assert.equal(settled.attestation.body.winner, settled.receipt.winner);
+  assert.equal(settled.attestation.body.role, 'challenger');
+  assert.equal(rival.attestation.body.role, 'rival');
+  assert.notEqual(settled.attestation.body.ownerDigest, rival.attestation.body.ownerDigest);
+  assert.notEqual(settled.attestation.signature, rival.attestation.signature);
+  assert.deepEqual(await game.verifyW3S14Receipt(settled.attestation, selected.trust, owners[0], source), settled.attestation);
+  assert.deepEqual(await game.verifyW3S14Receipt(rival.attestation, selected.trust, owners[1], source), rival.attestation);
+  assert.equal(await game.verifyW3S14Receipt(rival.attestation, selected.trust, owners[0], source), null);
+  const equivalentDate = '2026-11-21T09:00:00+00:00';
+  assert.equal(Date.parse(equivalentDate), Date.parse(owners[0]));
+  assert.ok(game.w3s14OwnerMaterial(equivalentDate).endsWith(equivalentDate));
+  assert.equal(await game.verifyW3S14Receipt(settled.attestation, selected.trust, equivalentDate, source), null);
+  assert.equal(await game.verifyW3S14Receipt(settled.attestation, other.trust, owners[0], source), null);
+  assert.equal(await game.verifyW3S14Receipt(settled.attestation, selected.trust, owners[0], 'f'.repeat(64)), null);
+  const forged = structuredClone(settled.attestation);
+  forged.body.checkpointSha = 'a'.repeat(64);
+  assert.equal(await game.verifyW3S14Receipt(forged, selected.trust, owners[0], source), null);
+  assert.equal(await game.verifyW3S14Receipt({...settled.attestation, publicKey: selected.trust}, selected.trust, owners[0], source), null);
+  assert.doesNotMatch(JSON.stringify(settled.attestation), new RegExp(tokens.join('|')));
+  const taken = await accept(room, 0, 'claim');
+  assert.deepEqual(taken.attestation, settled.attestation);
+  await room.close();
+  await assert.rejects(league.open(undefined, other.issuance), /journal W3-S14/);
+  await assert.rejects(league.open(undefined, {...selected.issuance, owners: [...owners].reverse()}), /journal W3-S14/);
+  room = await league.open(undefined, selected.issuance);
+  assert.deepEqual((await room.read(0)).attestation, settled.attestation);
+  assert.deepEqual((await room.read(1)).attestation, rival.attestation);
+});
+
+test('an unsigned historical room stays readable and cannot issue a retrospective campaign receipt', async t => {
+  const league = await newRoom(t);
+  const room = await league.open(checkpoint);
+  const refused = await accept(room, 1, 'decline');
+  assert.equal(refused.receipt.outcome, 'declined');
+  assert.equal(refused.attestation, null);
+  await room.close();
+  await assert.rejects(league.open(undefined, issuer().issuance), /journal W3-S14/);
+  const reopened = await league.open();
+  assert.deepEqual((await reopened.read(1)).receipt, refused.receipt);
+  assert.equal((await reopened.read(1)).attestation, null);
+});
+
+test('an imported legacy campaign creation date is admitted without merging equivalent dates', async t => {
+  const selected = issuer();
+  const legacyOwner = '2026-11-21T09:00:00Z';
+  const league = await newRoom(t);
+  await assert.rejects(league.open(checkpoint, {
+    ...selected.issuance, owners: [legacyOwner.padEnd(129, ' '), owners[1]],
+  }), /créneau de campagne/);
+  const room = await league.open(checkpoint, {...selected.issuance, owners: [legacyOwner, owners[1]]});
+  await accept(room, 1, 'decline');
+  const receipt = (await room.read(0)).attestation;
+  assert.ok(await game.verifyW3S14Receipt(receipt, selected.trust, legacyOwner, source));
+  assert.equal(Date.parse(legacyOwner), Date.parse(owners[0]));
+  assert.equal(await game.verifyW3S14Receipt(receipt, selected.trust, owners[0], source), null);
 });

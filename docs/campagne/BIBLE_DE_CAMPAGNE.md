@@ -87,7 +87,7 @@ Chaîne jouable actuelle, dans l'ordre du jeu : nurserie (V47) → accueil Unblo
 | 51 | R2-M043 | La reconnaissance Elite | Blooded | Texte seul | — |
 | 52 | R2-M044 | La coque d’un groupe | Elite | Inspection à bord partielle | `clanHullProjectV171` |
 | 53 | R2-M045 | Une porte, plusieurs haltes | Elite | Transfert entre seuils raccordé | `residenceV149.lastChoice` |
-| 54 | R2-M046 | Une mission vraiment collective | Elite | Texte seul | — |
+| 54 | R2-M046 | Une mission vraiment collective | Elite | Escorte raccordée | `clanShipOperations` |
 | 55 | R2-M047 | Ce que la guerre laisse au retour | Elite | Texte seul | — |
 | 56 | R2-M048 | La branche qu’on ne possède pas | Elite | Texte seul | — |
 | 57 | R2-M049 | Former sans remplacer | Elite | Jouable dans le dossier adulte | Terrain, appuis et reçu de mentorat |
@@ -2439,6 +2439,8 @@ Navire de clan, résidence, opérations collectives, conséquences de guerre, me
 **Déroulé :** préparer une mission avec les personnes disponibles, vérifier les postes, traverser les ponts ; capacités de 7, 13 ou 19 personnes. **Choix :** terrain ou coordination. **Sauvegarde :** `clanship.firstCollectiveOperationResolved`
 
 *Production (proposé)* — **Props :** ponts du navire de clan, postes d'équipage (7, 13 ou 19), salle de briefing, rampe de départ, équipage incarné (sprites existants des gardes de clans). **VFX :** voyants de poste occupé / vide, lumières de départ. **SFX :** `briefing-room`, `ramp-lower`, `crew-chatter`. **Musique :** MUS-47.
+
+**Raccord jouable.** La Veille Partagée propose une première escorte après le choix du projet collectif. Vérifie les postes de chaque recrue disponible avant le départ. Le carnet distingue la capacité réellement acquise (7, 13 ou 19) et les postes occupés pour cette sortie. Le conducteur agit depuis le hangar. Le départ se confirme au hangar. Le poste de coordination au conseil dispose des ordres complets. Une victoire jouée inscrit le rôle, la capacité et les postes vérifiés au reçu de campagne.
 
 ### R2-M047 — Ce que la guerre laisse au retour
 

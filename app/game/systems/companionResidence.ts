@@ -2,7 +2,7 @@ import { isShipId, shipForId, type ShipId } from '../shipCatalogue';
 import type { MissionId, SaveGame } from '../types';
 import { CLAN_SHIP_RECRUITS, evaluateClanShipAccess, inspectClanShipOperations, type ClanShipNpcId } from './clanShipOperations';
 import { CLAN_SHIP_INTERIOR_METRICS, CLAN_SHIP_INTERIOR_ROOMS } from './clanShipInterior';
-import type { ClanShipRoomId } from './clanShipDocking';
+import { isClanShipRoomId, type ClanShipRoomId } from './clanShipDocking';
 import { isNearShipInterior25dStation, isShipInterior25dRoomId, type ShipInterior25dRoomId } from './shipInterior25d';
 import { TRIO_MEMBERS, inspectExpeditionRoster, normalizePlanetInsertionPlan, type ExpeditionMemberId, type ExpeditionRoster, type PlanetInsertionPlan } from './planetInsertion';
 
@@ -557,6 +557,20 @@ export function companionUsesLegacyClanPost(save: CompanionCampaign, id: ClanShi
   if (inspected.status === 'invalid-save' || inspected.status === 'future-version') return false;
   const member = inspected.state?.members.find(entry => entry.id === id);
   return !member || member.legacyClanPost && member.relation === 'active';
+}
+
+/** A check is made at the room where this officer's usable avatar stands. */
+export function clanResidenceCrewPostRooms(save: CompanionCampaign): Partial<Record<ClanShipNpcId, ClanShipRoomId>> {
+  const available = availableClanResidenceCrew(save);
+  const residents = companionResidencePresence(save, { kind: 'clan', shipId: 'avp-predator-mothership' });
+  const posts: Partial<Record<ClanShipNpcId, ClanShipRoomId>> = {};
+  for (const member of CLAN_SHIP_RECRUITS) {
+    if (!available.includes(member.id)) continue;
+    const room = companionUsesLegacyClanPost(save, member.id) ? member.roomId
+      : residents.find(item => item.id === member.id && item.avatarVisible && item.serviceAvailable)?.avatarRoomId;
+    if (isClanShipRoomId(room)) posts[member.id] = room;
+  }
+  return posts;
 }
 
 export interface CompanionMissionBinding { ownerCreatedAt: string; missionId: MissionId; encounterRun: number; shipId: ShipId; insertion: PlanetInsertionPlan }

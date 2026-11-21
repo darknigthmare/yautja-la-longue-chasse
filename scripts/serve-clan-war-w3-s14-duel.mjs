@@ -1,4 +1,4 @@
-import {createHash, randomUUID} from 'node:crypto';
+import {createHash, createPrivateKey, createPublicKey, randomUUID, sign} from 'node:crypto';
 import {readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {DatabaseSync} from 'node:sqlite';
@@ -21,6 +21,7 @@ export async function loadWarW3S14DuelRules() {
         export {DEFAULT_WAR_RULES_V6} from './app/game/systems/clanWarBibleV6';
         export * from './app/game/systems/clanLogisticsV108';
         export * from './app/game/systems/clanSupplyRouteV109';
+        export {canonicalW3S14Receipt, verifyW3S14Receipt, w3s14OwnerMaterial} from './app/game/systems/clanWarW3S14Receipt';
       `,
       resolveDir: root,
     },
@@ -55,7 +56,22 @@ function transact(db, mode, execute) {
   }
 }
 
-export function createWarW3S14DuelServer(game, {tokens, databasePath, checkpoint} = {}) {
+function receiptIssuer(game, options) {
+  if (options === undefined) return null;
+  const {privateKey: material, owners} = options;
+  if (!Array.isArray(owners) || owners.length !== 2 || owners.some(owner => typeof owner !== 'string') ||
+      new Set(owners).size !== owners.length) {
+    throw Error('Associez deux créneaux de campagne distincts au salon.');
+  }
+  const privateKey = createPrivateKey(material);
+  if (privateKey.asymmetricKeyType !== 'ed25519') throw Error('Clé de signature Ed25519 requise.');
+  const spki = createPublicKey(privateKey).export({type: 'spki', format: 'der'});
+  const ownerDigests = Object.fromEntries(['challenger', 'rival'].map((role, index) =>
+    [role, sha(game.w3s14OwnerMaterial(owners[index]))]));
+  return {privateKey, ownerDigests, config: JSON.stringify({key: sha(spki), ownerDigests})};
+}
+
+export function createWarW3S14DuelServer(game, {tokens, databasePath, checkpoint, issuance} = {}) {
   if (!Array.isArray(tokens) || tokens.length !== 2) throw Error('Deux jetons distincts sont requis.');
   if (typeof databasePath !== 'string' || !databasePath || databasePath === ':memory:') {
     throw Error('Un journal SQLite durable W3-S14 est requis.');
@@ -65,6 +81,7 @@ export function createWarW3S14DuelServer(game, {tokens, databasePath, checkpoint
     {token: tokens[1], role: 'rival', actorId: 'rival'},
   ]);
   const authority = sha(players.map(player => player.secret.toString('hex')).join(':'));
+  const issuer = receiptIssuer(game, issuance);
   const rules = game.DEFAULT_WAR_RULES_V6;
   const readModel = raw => {
     const {state, error} = game.importSupplyV109(raw, rules);
@@ -87,6 +104,14 @@ export function createWarW3S14DuelServer(game, {tokens, databasePath, checkpoint
         model TEXT NOT NULL,
         receipt TEXT
       );
+      CREATE TABLE IF NOT EXISTS w3_s14_issuer (
+        singleton INTEGER PRIMARY KEY CHECK (singleton = 1),
+        config TEXT NOT NULL
+      );
+      CREATE TABLE IF NOT EXISTS w3_s14_attestations (
+        role TEXT PRIMARY KEY CHECK (role IN ('challenger', 'rival')),
+        envelope TEXT NOT NULL
+      );
       CREATE TABLE IF NOT EXISTS w3_s14_commands (
         role TEXT NOT NULL CHECK (role IN ('challenger', 'rival')),
         order_id TEXT NOT NULL,
@@ -97,12 +122,15 @@ export function createWarW3S14DuelServer(game, {tokens, databasePath, checkpoint
       );
     `);
     const readRow = db.prepare('SELECT * FROM w3_s14_room WHERE singleton = 1');
+    const readIssuer = db.prepare('SELECT config FROM w3_s14_issuer WHERE singleton = 1');
     transact(db, 'BEGIN IMMEDIATE', () => {
       const prior = readRow.get();
+      const persistedIssuer = readIssuer.get()?.config ?? null;
       if (prior) {
         if (prior.rule_source !== rules.metadata.sha256 || prior.authority !== authority ||
+            persistedIssuer !== (issuer?.config ?? null) ||
             (checkpoint !== undefined && sha(checkpoint) !== prior.checkpoint_hash)) {
-          throw Error('Le salon, ses participants ou son carnet ne correspondent pas au journal W3-S14.');
+          throw Error('Le salon, ses participants, sa clé ou son carnet ne correspondent pas au journal W3-S14.');
         }
         readModel(prior.model);
         return;
@@ -122,10 +150,13 @@ export function createWarW3S14DuelServer(game, {tokens, databasePath, checkpoint
         VALUES (1, ?, ?, ?, ?, 0, ?)`).run(
         siteId + '-' + randomUUID(), rules.metadata.sha256, authority, sha(checkpoint), checkpoint,
       );
+      if (issuer) db.prepare('INSERT INTO w3_s14_issuer (singleton, config) VALUES (1, ?)').run(issuer.config);
     });
 
     const readSequence = db.prepare('SELECT COALESCE(MAX(sequence),0) AS sequence FROM w3_s14_commands WHERE role = ?');
     const knownOrder = db.prepare('SELECT 1 FROM w3_s14_commands WHERE role = ? AND order_id = ?');
+    const readAttestation = db.prepare('SELECT envelope FROM w3_s14_attestations WHERE role = ?');
+    const writeAttestation = db.prepare('INSERT INTO w3_s14_attestations (role, envelope) VALUES (?, ?)');
     const writeOrder = db.prepare('INSERT INTO w3_s14_commands (role, order_id, sequence, kind) VALUES (?, ?, ?, ?)');
     const writeRoom = db.prepare('UPDATE w3_s14_room SET revision = ?, model = ?, receipt = ? WHERE singleton = 1');
     let cachedBytes, cachedModel;
@@ -141,6 +172,7 @@ export function createWarW3S14DuelServer(game, {tokens, databasePath, checkpoint
     function project(player, row, model) {
       const {convoy} = model;
       const receipt = row.receipt === null ? null : JSON.parse(row.receipt);
+      const envelope = readAttestation.get(player.role)?.envelope;
       const participants = players.map(({role, actorId}) => {
         const {members, x, y} = game.logisticsActorV108(convoy, actorId);
         return {role, memberId: members[0], x, y};
@@ -150,7 +182,7 @@ export function createWarW3S14DuelServer(game, {tokens, databasePath, checkpoint
         nextSequence: readSequence.get(player.role).sequence + 1,
         serviceReady: game.logisticsFunctionalV108(convoy, siteId),
         duel: {...convoy.duel, phase: receipt?.outcome === 'declined' ? 'declined' : convoy.duel.phase},
-        participants, receipt,
+        participants, receipt, attestation: envelope ? JSON.parse(envelope) : null,
       };
     }
 
@@ -210,10 +242,23 @@ export function createWarW3S14DuelServer(game, {tokens, databasePath, checkpoint
         }
         const revision = row.revision + 1;
         const savedReceipt = recorded === null ? null : JSON.stringify(recorded);
+        if (issuer && !receipt && recorded) signResult(recorded, next.convoy);
         writeOrder.run(player.role, order.id, order.sequence, kind);
         writeRoom.run(revision, bytes, savedReceipt);
         return {status: 200, state: project(player, {...row, revision, receipt: savedReceipt}, next)};
       });
+    }
+
+    function signResult(receipt, convoy) {
+      const {campaignReward, ...outcome} = receipt;
+      if (campaignReward !== false) throw Error('Règlement W3-S14 incompatible.');
+      const challenger = game.logisticsActorV108(convoy, players[0].actorId).members[0];
+      const rivalMember = game.logisticsActorV108(convoy, players[1].actorId).members[0];
+      for (const {role} of players) {
+        const body = {version: 1, ...outcome, challenger, rivalMember, role, ownerDigest: issuer.ownerDigests[role]};
+        const signature = sign(null, Buffer.from(game.canonicalW3S14Receipt(body)), issuer.privateKey).toString('base64url');
+        writeAttestation.run(role, JSON.stringify({body, signature}));
+      }
     }
 
     function makeReceipt(row, duel, outcome, declinedBy = null) {
@@ -247,8 +292,23 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     throw Error('YAUTJA_W3_S14_TOKENS doit contenir un tableau JSON de deux jetons.');
   }
   const checkpoint = process.env.YAUTJA_W3_S14_CHECKPOINT;
+  const signingKey = process.env.YAUTJA_W3_S14_SIGNING_KEY;
+  const ownerConfig = process.env.YAUTJA_W3_S14_CAMPAIGN_OWNERS;
+  if (Boolean(signingKey) !== Boolean(ownerConfig)) {
+    throw Error('La clé Ed25519 et les deux créneaux de campagne sont requis ensemble.');
+  }
+  let issuance;
+  if (signingKey) {
+    let owners;
+    try {
+      owners = JSON.parse(ownerConfig);
+    } catch {
+      throw Error('YAUTJA_W3_S14_CAMPAIGN_OWNERS doit contenir les deux créneaux affichés.');
+    }
+    issuance = {privateKey: await readFile(signingKey, 'utf8'), owners};
+  }
   const server = createWarW3S14DuelServer(await loadWarW3S14DuelRules(), {
-    tokens, databasePath: process.env.YAUTJA_W3_S14_DATABASE,
+    tokens, databasePath: process.env.YAUTJA_W3_S14_DATABASE, issuance,
     checkpoint: checkpoint ? await readFile(checkpoint, 'utf8') : undefined,
   });
   server.on('error', error => {

@@ -107,6 +107,7 @@ export const W3_S14_CLIENT_HTML = `<!doctype html>
         <h2 id="duel-receipt-title">Reçu du duel</h2>
         <p id="duel-result"></p>
         <p id="duel-chest"></p>
+        <button type="button" id="duel-download" hidden>Télécharger mon reçu signé</button>
       </section>
 
       <div class="toolbar">
@@ -133,6 +134,7 @@ const distanceLabel = document.querySelector('#duel-distance');
 const receiptPanel = document.querySelector('[data-duel-receipt]');
 const resultLabel = document.querySelector('#duel-result');
 const chestLabel = document.querySelector('#duel-chest');
+const downloadButton = document.querySelector('#duel-download');
 const commandButtons = document.querySelectorAll('[data-command]');
 const players = Object.fromEntries(
   Array.from(document.querySelectorAll('[data-duel-participant]'), row => [row.dataset.duelParticipant, {
@@ -204,6 +206,7 @@ function draw(snapshot) {
   }
 
   receiptPanel.hidden = !receipt;
+  downloadButton.hidden = !snapshot.attestation;
   if (receipt) {
     receiptPanel.dataset.outcome = receipt.outcome;
     resultLabel.textContent = duel.winner ? 'Vainqueur · ' + duel.winner : 'Duel refusé';
@@ -369,6 +372,17 @@ async function play(button) {
 for (const button of commandButtons) {
   button.addEventListener('click', () => void play(button));
 }
+downloadButton.addEventListener('click', () => {
+  const attestation = session?.snapshot?.attestation;
+  if (!attestation) return;
+  const file = new Blob([JSON.stringify(attestation, null, 2) + '\\n'], {type: 'application/json'});
+  const url = URL.createObjectURL(file);
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = 'recu-w3-s14-signe.json';
+  anchor.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
 refreshButton.addEventListener('click', () => void refresh(session, true));
 disconnectButton.addEventListener('click', () => disconnect('Session déconnectée.'));
 setInterval(() => {
