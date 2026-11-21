@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "date": "2026-11-21",
+  "baseCommit": "0318b48420a6944882b1349b6d14ef473299ac10",
+  "lots": [
+    {
+      "priority": "P0",
+      "limit": 10,
+      "entries": [
+        {
+          "id": "REM112-06",
+          "source": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+          "sourceDetail": "Restant!A10:F10 · lot chasse priorisé pour cette reprise",
+          "criterion": "Huit chasses avec combat, canopée optionnelle, prélèvements, extraction, sauvegarde/reprise et atelier par les entrées du produit. Jouer chaque chasse sans retirer ennemis, téléporter ni forcer un résultat ; conserver armure, charge, profil d'accessibilité, parcours, morts/reprises et stock final. Les scénarios automatisés bornés restent explicitement bornés.",
+          "status": "PARTIEL",
+          "result": "Le pilote respecte l’ancre et la portée natives du crâne. Les deux essais du Désert prélèvent l’os de chacal de qualité 68. La relance au relais est vérifiée sur l’admission depuis le Marais Chromium. Le règlement et l’atelier du Désert restent ouverts. Les points de reprise disponibles gardent l’Apex vivant.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957203591/artifacts/14729095208",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957203591/artifacts/14728473543",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957203591/job/137007837266",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44959156155/job/137013878240"
+          ]
+        },
+        {
+          "id": "B136-0376",
+          "source": "docs/production/Yautja_PHG_Backlog_Production_V137.xlsx",
+          "sourceDetail": "Backlog_Master!A380:N380 · Canvas masqué",
+          "criterion": "Longue session avec masques retirés/équipés. Capture/trace reproductible + succès CI + validation sur la branche cible.",
+          "status": "VÉRIFIÉ",
+          "result": "Jungle, apparence Ogre. 10 cycles avec KeyM et 10 scans, 53 s de simulation masquée et 191,729 s murales masquées. Le côté moteur de la pause et la reprise avec position, 160 PV et biomask porté sont vérifiés. Preuve technique sur la base 0318b48.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44959209286/artifacts/14729295968",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44959209286"
+          ]
+        }
+      ]
+    },
+    {
+      "priority": "P1",
+      "limit": 10,
+      "entries": [
+        {
+          "id": "W3-S15",
+          "source": "production/p0p1-20261109/qa/war-admission/source-requirement-groups.txt#L749",
+          "sourceDetail": "Structures de guerre!C20:K20 · besoin original V6",
+          "criterion": "Raccorder des sons enregistrés et situés, leur portée et leur occultation ; une direction de voix écrite n'est pas un son. Mêmes objets, stocks finis, trajet réel, refus/reprise persistants ; acquisition et accord de campagne restent distincts des exercices.",
+          "status": "PARTIEL",
+          "result": "Les WAV V54 de machinerie et de scanner suivent la distance et la direction. L’axe, le niveau, l’occlusion, l’inactivité et la reprise des prises sont vérifiés sous Chromium. Les sons de faune et de météo et le raccord hors exercice restent ouverts.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957935284/artifacts/14728258442",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957935284"
+          ]
+        }
+      ]
+    },
+    {
+      "priority": "P2",
+      "limit": 10,
+      "entries": [
+        {
+          "id": "R2-M019",
+          "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sourceDetail": "Acte III · Revenir avec la triade",
+          "criterion": "Effectuer le retour avec les trois chasseurs et remettre la même preuve.",
+          "status": "PARTIEL",
+          "result": "809 ticks de vrai combat produisent l’incapacité de Saar. Le secours joue la recherche, la stabilisation et le transport au refuge. Reprise pendant le portage au tick 395, même reçu remis au témoin. Les soins d’un blessé ambulant, la civière dédiée et les médias restent ouverts.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957690748/artifacts/14727809549",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957690748",
+            "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2019"
+          ]
+        },
+        {
+          "id": "R2-M046",
+          "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sourceDetail": "Acte VII · Une mission vraiment collective",
+          "criterion": "Préparer la mission avec les personnes disponibles, vérifier les postes et parcourir les ponts. Prendre le rôle terrain ou coordination. La résolution doit être consignée dans le dossier de campagne.",
+          "status": "VÉRIFIÉ",
+          "result": "Les deux rôles ont joué les six contrôles de poste, le départ et l’extraction du transport dans le GameClient. Le reçu est conservé après rechargement. Le rapport terrain reste lisible au hangar et celui de coordination au conseil. Capacité jouée de 7 postes.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957466066/artifacts/14727749518",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957466066/artifacts/14728191923",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957239134"
+          ]
+        }
+      ]
+    },
+    {
+      "priority": "P3",
+      "limit": 10,
+      "entries": [
+        {
+          "id": "ENFORCERS-V613-RECEIPTS",
+          "source": "docs/YAUTJA_REPRISE_CHANTIERS_20261101.xlsx",
+          "sourceDetail": "V112/V113/V114 · PrioritesV112!C20 · P3 ouvert source",
+          "criterion": "21 prompts/reçus finaux non récupérés ; 15 retrouvés. Les prompts planifiés ne sont pas des soumissions attestées. Récupérer les reçus/traces historiques authentiques ; un nouveau dessin ou reçu ne répare pas leur absence.",
+          "status": "PARTIEL",
+          "result": "La liste officielle TSA a aussi été chargée. Les signatures et la liaison aux 36 PNG sont validées hors réseau. Les horodatages restent non approuvés et les 21 reçus historiques restent à retrouver.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957283603/artifacts/14728186220",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957283603/artifacts/14728636002"
+          ]
+        },
+        {
+          "id": "ENFORCERS-V610-TRACES",
+          "source": "docs/YAUTJA_REPRISE_CHANTIERS_20261101.xlsx",
+          "sourceDetail": "V112/V113/V114 · PrioritesV112!C21 · P3 ouvert source",
+          "criterion": "36 traces historiques V6.10 sans PNG récupéré ; zéro fichier produit ajouté à ce titre. Récupérer les reçus/traces historiques authentiques ; un nouveau dessin ou reçu ne répare pas leur absence.",
+          "status": "BLOQUÉ",
+          "result": "Le classeur de variantes épinglé V6.10 a été identifié et ses octets Git contrôlés. Son audit ne contient aucun des 36 PNG originaux attendus. L’identité avec la version Drive bloquée reste à établir.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957283603/artifacts/14728636002",
+            "docs/suivi-production/v611/references/Yautja_Suivi_Variantes_2026-10-20.xlsx"
+          ]
+        }
+      ]
+    }
+  ],
+  "deliveries": [
+    {
+      "id": "PROVENANCE-P3-LOT7",
+      "source": "production/YAUTJA_V114_SUIVI.xlsx",
+      "sourceDetail": "PrioritesV112 · contrôle des classeurs physiques",
+      "criterion": "Vérifier l’assignation exacte des P3 dans les quatre classeurs et la portée de leurs preuves.",
+      "status": "VÉRIFIÉ",
+      "result": "526 feuilles et 58 674 lignes contrôlées. Six occurrences P3 renvoient à deux identifiants distincts. Les horodatages des 36 fichiers V6.13 restent non approuvés sous la liste officielle TSA.",
+      "evidence": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957283603/artifacts/14728636002",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957283603/artifacts/14728186220"
+      ]
+    },
+    {
+      "id": "BUILD-PRODUCTION-LOT7",
+      "source": "scripts/build-production-v94.mjs",
+      "sourceDetail": "Commande de déploiement déclarée dans vercel.json",
+      "criterion": "Compiler les sources exactes et tester leur serveur de production.",
+      "status": "VÉRIFIÉ",
+      "result": "111 tests ciblés, compilation Next avec la commande de déploiement et première page servie par le serveur de production local au runner.",
+      "evidence": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44958167304",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44959212773"
+      ]
+    }
+  ]
+}
