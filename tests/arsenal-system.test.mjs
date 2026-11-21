@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { after, test } from "node:test";
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -272,4 +272,16 @@ test("audio and accessibility settings resolve and apply through an adapter", ()
     ["gore", 0.25],
   ]);
   assert.deepEqual(calls[6].slice(0, 2), ["contrast", true]);
+});
+
+test("l’armurerie confirme le niveau et son débit après l’écriture durable", async () => {
+  const ui = await readFile(resolve(projectRoot, "app/game/GameClient.tsx"), "utf8");
+  const start = ui.indexOf("  const purchaseEquipmentUpgrade = useCallback(");
+  const end = ui.indexOf("  const updateAppearance = useCallback(", start);
+  assert.ok(start >= 0 && end > start);
+  const handler = ui.slice(start, end);
+  assert.match(handler, /const current = saveRef\.current/);
+  assert.match(handler, /const result = purchaseUpgrade\(current, request\)/);
+  assert.match(handler, /if \(!persistSocialProgress\(\{ profile: result\.save\.profile, inventory: result\.save\.inventory \}\)\) \{[\s\S]*?return;\s+\}[\s\S]*?niveau .*acquis/);
+  assert.doesNotMatch(handler, /\bpersist\(result\.save\)/);
 });

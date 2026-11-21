@@ -4242,7 +4242,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const purchaseEquipmentUpgrade = useCallback(
     (request: UpgradePurchaseRequest) => {
-      const quote = quoteUpgrade(save, request);
+      const current = saveRef.current;
+      if (screen !== "armory" || settingsOpen || campaignSaveBusy ||
+          archiveTransferBusy || archiveRecoveryIssue || nurseryWriteAttemptRef.current ||
+          current.createdAt !== entry.ownerCreatedAt) return;
+
       const itemName =
         request.domain === "weapon"
           ? WEAPONS.find(({ id }) => id === request.id)?.name
@@ -4251,30 +4255,28 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             : ARMORS.find(({ id }) => id === request.id)?.name;
       const label = itemName ?? "Équipement";
 
-      if (!quote.canPurchase) {
-        const message =
-          quote.failure === "max-level"
-            ? `${label} est déjà au niveau maximum.`
-            : quote.failure === "insufficient-clan-marks"
-              ? `${label} requiert ${quote.cost ?? 0} marques du clan.`
-              : `${label} doit être déverrouillé avant son amélioration.`;
-        setToast(message);
-        return;
-      }
-
-      const result = purchaseUpgrade(save, request);
+      const result = purchaseUpgrade(current, request);
       if (!result.ok || result.newLevel === null) {
-        setToast(`La forge n’a pas pu améliorer ${label}.`);
+        const { failure, cost } = result.quote;
+        setToast(failure === "max-level"
+          ? `${label} est déjà au niveau maximum.`
+          : failure === "insufficient-clan-marks"
+            ? `${label} requiert ${cost ?? 0} marques du clan.`
+            : `${label} doit être déverrouillé avant son amélioration.`);
         return;
       }
 
-      persist(result.save);
+      if (!persistSocialProgress({ profile: result.save.profile, inventory: result.save.inventory })) {
+        setToast("Amélioration non confirmée. Vérifie la sauvegarde et réessaie le même achat.");
+        return;
+      }
       setToast(
         `${label} · niveau ${result.newLevel}/2 acquis pour ${result.spentClanMarks} marques.`,
       );
       void playSound("select");
     },
-    [persist, playSound, save],
+    [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt,
+      persistSocialProgress, playSound, screen, settingsOpen],
   );
 
   const updateAppearance = useCallback(
