@@ -1,0 +1,86 @@
+name: REM112 repli à pleine charge depuis captures naturelles
+on:
+  push:
+    branches: [codex/qa-rem112-native-repli-lot4-20261121]
+permissions:
+  contents: read
+jobs:
+  loaded:
+    name: ${{ matrix.case.id }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    strategy:
+      fail-fast: false
+      matrix:
+        case:
+          - {id: ice-scout, mission: ice-cryostalker, armor: scout, seeds: '9 10 12'}
+          - {id: swamp-scout, mission: swamp-hydra, armor: scout, seeds: '9 10 12'}
+          - {id: desert-scout, mission: desert-sandmaw, armor: scout, seeds: '9 10 12'}
+          - {id: volcano-hunter, mission: volcano-bad-blood, armor: hunter, seeds: '9 10 12'}
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /public/**/manifest.json
+            /docs/qa/v112-ground-campaign/campaign-origin-save.json
+            /docs/qa/v112-ground-campaign/tool-origin.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Réappliquer les véritables victoires puis essayer des prises admises
+        env:
+          CASE: ${{ matrix.case.id }}
+          MISSION: ${{ matrix.case.mission }}
+          ARMOR: ${{ matrix.case.armor }}
+          SEEDS: ${{ matrix.case.seeds }}
+        run: |
+          origin=docs/qa/v112-ground-campaign/campaign-origin-save.json
+          root="outputs/repli/$CASE"
+          mkdir -p "$root"
+          stage=1
+          full=0
+          for attempt in $SEEDS; do
+            while [ "$stage" -lt "$attempt" ]; do
+              advance="$root/earned-$stage"
+              node scripts/qa-hunt-ground-campaign-v112.mjs --mission="$MISSION" --armor=hunter \
+                --baseSave="$origin" --replay=true --requireComplete=true --seconds=300 \
+                --output="$advance" --successSave="$advance/after-win.json" > "$root/earned-$stage.log" 2>&1 ||
+                { tail -30 "$root/earned-$stage.log"; exit 1; }
+              origin="$advance/after-win.json"
+              stage=$((stage + 1))
+            done
+            for trial in early160 early360 late550; do
+              distance=${trial//[!0-9]/}
+              extra=("--sweepDistance=$distance")
+              if [[ "$trial" == early* ]]; then extra+=(--sweepEarly=true); fi
+              output="$root/$attempt-$trial"
+              if node scripts/qa-hunt-ground-campaign-v112.mjs --mission="$MISSION" --armor="$ARMOR" \
+                --baseSave="$origin" --insertion=visible-ship --harvest=true --harvestSweep=true \
+                "${extra[@]}" --minimumRetainedLoad=1 --replay=true --seconds=360 --output="$output" > "$output.log" 2>&1
+              then full=1
+              fi
+              if [ -f "$output/report.json" ]; then
+                node -e 'const r=require("./"+process.argv[1]);for(const o of r.outcomes)console.log(JSON.stringify({trial:process.argv[2],source:r.commit,mission:o.missionId,armor:o.armorId,attempt:o.admission.encounterRun,success:o.success,boarding:o.retainedLoad.atBoarding?.load,extraction:o.retainedLoad.atExtraction?.load,qualified:o.retainedLoad.qualified,ids:o.retainedLoad.atExtraction?.specimenIds,replayed:o.replay?.verified}));' "$output/report.json" "$trial"
+              else
+                tail -30 "$output.log"
+              fi
+            done
+          done
+          test "$full" -eq 1
+      - if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: rem112-lot4-${{ matrix.case.id }}-repli
+          path: outputs/repli/
+          if-no-files-found: ignore
