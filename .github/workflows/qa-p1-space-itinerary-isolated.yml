@@ -1,0 +1,43 @@
+name: Itinéraire stellaire V159 (recette isolée)
+on:
+  push:
+    branches: ['codex/qa-p1-space-itinerary-20261121']
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /app/
+            /scripts/
+            /tests/
+            /docs/**/*.json
+            /public/**/*.json
+            /production/**/*.json
+            /package.json
+            /package-lock.json
+            /.npmrc
+            /tsconfig*.json
+            /eslint.config.mjs
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Lint du périmètre
+        run: npx eslint app/game/GalaxyRouteDestinationContext.ts app/game/GalaxyMapPanel.tsx app/game/SpaceRoutesPanelV159.tsx app/game/systems/spaceRoutesV159.ts tests/space-routes-v159.test.mjs scripts/qa-space-itinerary-v159.mjs
+      - name: Contrats V159 et V161
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/space-routes-v159.test.mjs tests/ship-receipt-v161.test.mjs
+      - name: Carte puis trajet réel dans Chrome
+        run: node scripts/qa-space-itinerary-v159.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: itineraire-stellaire-v159
+          path: outputs/qa-space-itinerary-v159
