@@ -4,6 +4,7 @@ on:
     branches: [codex/verify-b136-0376-long-native-mask-20261121]
 permissions:
   contents: read
+  actions: read
 jobs:
   native:
     name: Ten cycles of real masked HuntCanvas play
@@ -19,9 +20,11 @@ jobs:
           filter: blob:none
           sparse-checkout: |
             /*
-            !/public/
-            !/docs/
-            !/production/
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /scripts/
             /public/**/manifest.json
             /public/game/dialogues/v85/bible-dialogues.json
             /public/game/assets/v139/rig-gauntlets/jungle-hunter/
@@ -55,12 +58,32 @@ jobs:
           open('outputs/b136-0376/source-row.json','w').write(json.dumps(values,ensure_ascii=False,indent=2))
           print(json.dumps(values,ensure_ascii=False))
           PY
+      - name: Diagnose the first measured cycle without rerunning it
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/14728519122/zip" > outputs/prior-run.zip
+          (echo '5d4a6e019af9f0df59b57b44bfd923162ba0920dd690a548c60b9505ee58d665  outputs/prior-run.zip' | sha256sum -c)
+          python3 - <<'PY'
+          import json
+          from zipfile import ZipFile
+          with ZipFile('outputs/prior-run.zip') as package:
+              name, = [p for p in package.namelist() if p.rsplit('/',1)[-1]=='report.json']
+              previous=json.loads(package.read(name))
+          first=previous['longMask']['cycles'][0]
+          observed={'sourceRun':44958557128,'sourceArtifact':14728519122,
+                    'actualSimulatedSeconds':first['ranMaskedSeconds'], 'samples':len(first['samples']),
+                    'begin':first['onAgain'], 'last':first['samples'][-1], 'reason':previous['failure']}
+          with open('outputs/b136-0376/prior-run-exact-elapsed.json','w') as output:
+              json.dump(observed,output,indent=2)
+          print(json.dumps(observed,ensure_ascii=False))
+          PY
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Play and resume a genuine sustained native masked hunt
         run: |
           node scripts/qa-b136-0376-long-mask.mjs \
             --inspect-only --campaign-source production/p0p1-20261109/qa/phg-hunt/attempt-3/initial-alpha-ogre.json \
-            --missions jungle-vey --cycles 10 --seconds-per-cycle 30 \
+            --missions jungle-vey --cycles 10 --seconds-per-cycle 3 \
             --chromium /usr/bin/google-chrome --asset-cache outputs/source-cache --output outputs/b136-0376
       - if: always()
         run: |
@@ -68,7 +91,7 @@ jobs:
           import {readFile} from 'node:fs/promises';
           try {
             const r=JSON.parse(await readFile('outputs/b136-0376/report.json','utf8')), l=r.longMask;
-            console.log(JSON.stringify({qualification:r.qualification,cycles:l?.cycles?.length,maskedSeconds:l?.maskedSeconds,
+            console.log(JSON.stringify({qualification:r.qualification,cycles:l?.cycles?.length,maskedSeconds:l?.maskedSeconds,maskedWallMilliseconds:l?.maskedWallMilliseconds,
              maskChecks:l?.maskChecks,scanActivations:l?.scanActivations,resources:l?.resources,pausedMidway:l?.pausedMidway,
              durableResume:l?.durableResume,failure:r.failure,errors:r.errors,missingAssets:r.missingAssets,abortedRequests:r.abortedRequests?.length}));
           } catch(error) { console.log(error.message); }

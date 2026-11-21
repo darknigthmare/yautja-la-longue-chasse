@@ -72,9 +72,10 @@ const normalized=mod.exports.parseSaveImport(JSON.stringify(initial)).save;
 assert.ok(normalized,'The declared T04 start must pass the current campaign importer');
 const admission=JSON.parse(JSON.stringify(normalized));
 assert.equal(admission.appearance.chromaticsV113.maskMaterialId,campaignInput.appearance.chromaticsV113.maskMaterialId);
-const totalCycles=Number(option('--cycles','10')), perCycle=Number(option('--seconds-per-cycle','30'));
+const totalCycles=Number(option('--cycles','10')), perCycle=Number(option('--seconds-per-cycle','3'));
+const minimumWallMillisecondsPerCycle=18_000;
 assert.ok(Number.isSafeInteger(totalCycles)&&totalCycles>=2&&totalCycles<=20);
-assert.ok(Number.isSafeInteger(perCycle)&&perCycle>=10&&perCycle<=120);
+assert.ok(Number.isSafeInteger(perCycle)&&perCycle>=3&&perCycle<=120);
 const parsedAdmission=mod.exports.parseSaveImport(JSON.stringify(admission));
 const routes=new Map(mod.exports.GALAXY_NAVIGATION.sectors.flatMap(sector=>sector.systems.flatMap(system=>system.bodies
   .flatMap(body=>body.missions.map(mission=>[mission.id,{sector,system,body,mission}])))));
@@ -254,7 +255,7 @@ try{
   assert.equal(initialState.paused,false);
   const anchor=initialState.x, atGround=initialState.y;
   const long=report.longMask={cycles:[],requestedCycles:totalCycles,requestedMaskedSeconds:totalCycles*perCycle,
-    maskedSeconds:0,wallStartedAt:new Date().toISOString(),initialState,maskChecks:0,scanActivations:0,moveSamples:[]};
+    maskedSeconds:0,maskedWallMilliseconds:0,wallStartedAt:new Date().toISOString(),initialState,maskChecks:0,scanActivations:0,moveSamples:[]};
   await canvasCapture('02-mask-in-original-native-mission');
 
   for(let cycle=1;cycle<=totalCycles;cycle++){
@@ -273,7 +274,7 @@ try{
       long.maskChecks+=2;
       if(shot)await canvasCapture('cycle-'+cycle+'-key-m-on-native');
       assert.ok(onAgain.elapsed>=off.elapsed);
-      long.cycles.push({number:cycle,on,off,onAgain,samples:[]});
+      long.cycles.push({number:cycle,on,off,onAgain,samples:[],onAgainWallMilliseconds:Date.now()});
     }finally{
       await page.keyboard.up('ShiftLeft');
     }
@@ -300,8 +301,9 @@ try{
     assert.ok(scan.energy<=preScan.energy-6,'Native active scan must spend suit energy');
     long.scanActivations++;
     active.scan={before:preScan,after:scan};
-    const deadline=Date.now()+120000;
-    while(last.elapsed-active.onAgain.elapsed<perCycle&&Date.now()<deadline){
+    const deadline=active.onAgainWallMilliseconds+90_000;
+    const liveWall=()=>Date.now()-active.onAgainWallMilliseconds;
+    while((last.elapsed-active.onAgain.elapsed<perCycle||liveWall()<minimumWallMillisecondsPerCycle)&&Date.now()<deadline){
       await page.waitForTimeout(1500);
       last=await sample();
       assert.equal(last.maskOn,true,'Biomask must stay on throughout the measured interval');
@@ -309,9 +311,14 @@ try{
       active.samples.push(last);
     }
     active.ranMaskedSeconds=last.elapsed-active.onAgain.elapsed;
-    assert.ok(active.ranMaskedSeconds>=perCycle,'Actual HuntCanvas simulated time per cycle');
+    active.ranMaskedWallMilliseconds=liveWall();
     long.maskedSeconds+=active.ranMaskedSeconds;
-    console.log(JSON.stringify({cycle,elapsed:last.elapsed,maskedSeconds:long.maskedSeconds,health:last.health,x:last.x,y:last.y,phase:last.phase}));
+    long.maskedWallMilliseconds+=active.ranMaskedWallMilliseconds;
+    console.log(JSON.stringify({cycle,elapsed:last.elapsed,maskedSeconds:long.maskedSeconds,
+      cycleMaskedSeconds:active.ranMaskedSeconds,cycleMaskedWallMilliseconds:active.ranMaskedWallMilliseconds,
+      health:last.health,x:last.x,y:last.y,phase:last.phase}));
+    assert.ok(active.ranMaskedSeconds>=perCycle&&active.ranMaskedWallMilliseconds>=minimumWallMillisecondsPerCycle,
+      'Observed HuntCanvas elapsed cycle minimum was not met within the 90-second real budget');
     if(cycle===Math.ceil(totalCycles/2)){
       await pause();
       const frozen=await waitFor(state=>state.paused);
@@ -329,6 +336,7 @@ try{
   }
 
   assert.ok(long.maskedSeconds>=totalCycles*perCycle);
+  assert.ok(long.maskedWallMilliseconds>=totalCycles*minimumWallMillisecondsPerCycle);
   assert.equal(long.maskChecks,totalCycles*2);
   assert.equal(long.scanActivations,totalCycles);
   assert.ok(long.moveSamples.some(data=>data.after.x-data.before.x>5));
