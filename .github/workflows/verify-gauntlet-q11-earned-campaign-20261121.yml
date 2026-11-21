@@ -1,0 +1,112 @@
+name: V144 Q11 gauntlet through an earned campaign
+on:
+  push:
+    branches: [codex/verify-gauntlet-q11-earned-campaign-20261121]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  transitions:
+    name: ${{ matrix.case.mission }} earned campaign
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    strategy:
+      fail-fast: false
+      matrix:
+        case:
+          - mission: ice-cryostalker
+            artifact: 14723910667
+            digest: 2b0b540b2f562576fc171136cdba371d2dca8f1e53ed87c51ffac8ba47aaa4b0
+          - mission: volcano-bad-blood
+            artifact: 14723426291
+            digest: 8b703c322a0fc1cadcf64e7cf1e15eab007249d5a36021bc56f06390c4a1ce9c
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          sparse-checkout-cone-mode: false
+          filter: blob:none
+          sparse-checkout: |
+            /*
+            !/public/
+            !/docs/
+            !/production/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues.json
+            /public/game/assets/v139/rig-gauntlets/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Download the untouched played campaign artifact and check provenance
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EARNED_MISSION: ${{ matrix.case.mission }}
+          EARNED_ARTIFACT: ${{ matrix.case.artifact }}
+          EARNED_SHA256: ${{ matrix.case.digest }}
+        run: |
+          mkdir -p outputs/q11
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$EARNED_ARTIFACT/zip" > outputs/earned.zip
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          from zipfile import ZipFile
+
+          evidence = Path('outputs/earned.zip')
+          digest = hashlib.sha256(evidence.read_bytes()).hexdigest()
+          assert digest == os.environ['EARNED_SHA256'], digest
+          with ZipFile(evidence) as archive:
+              assert archive.testzip() is None
+              names = archive.namelist()
+              report_path, = [name for name in names if name.rsplit('/', 1)[-1] == 'report.json']
+              storage_path, = [name for name in names if name.rsplit('/', 1)[-1] == 'browser-storage-state.json']
+              report = json.loads(archive.read(report_path))
+              browser = json.loads(archive.read(storage_path))
+          mission = os.environ['EARNED_MISSION']
+          assert report['sourceCommit'] == '8c19ba580ea38088fcb696d80f1c22200da5fbaa'
+          assert not report['sourceContext']['gitCommitIsBaseOnly']
+          assert report['qualification'] == 'BROWSER_HUNTS_HARVEST_AND_WORKSHOP'
+          attempts = [entry for entry in report['attempts'] if entry['missionId'] == mission]
+          assert attempts and attempts[-1]['settlement']['confirmed']
+          assert attempts[-1]['delivered'] and mission in report['coverage']['harvestedAndArchived']
+          source = report['finalSave']
+          native, = [value['value'] for origin in browser['origins'] for value in origin['localStorage']
+                     if value['name'] == 'yautja-long-hunt.save']
+          assert json.loads(native) == source
+          assert any(trophy['missionId'] == mission for trophy in source['trophies'])
+          proof = {'artifact': int(os.environ['EARNED_ARTIFACT']), 'run': 44944025907,
+                   'digest': digest, 'missionId': mission, 'nativeBrowserSnapshotMatched': True,
+                   'originalSource': report['sourceCommit'], 'sourceQualification': report['qualification'],
+                   'targetSource': 'd5e95fba7358924108e425cf7056a5a38fe2b944'}
+          payload = {'finalSave': source, 'provenance': proof}
+          Path('outputs/earned.json').write_text(json.dumps(payload, ensure_ascii=False))
+          Path('outputs/q11/earned-provenance.json').write_text(json.dumps(proof, indent=2))
+          print(json.dumps({'report': proof, 'rank': source['profile']['rankId'],
+                'trophies': [(x['missionId'], x['quality']) for x in source['trophies']],
+                'totalScans': source['statistics']['totalScans']}))
+          PY
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify native transitions on the earned campaign
+        run: |
+          git diff --exit-code d5e95fba7358924108e425cf7056a5a38fe2b944 HEAD -- app lib
+          node scripts/qa-gauntlet-q11-earned-campaign.mjs \
+            --inspect-only --campaign-source outputs/earned.json --missions "${{ matrix.case.mission }}" \
+            --chromium /usr/bin/google-chrome --asset-cache outputs/source-cache --output outputs/q11
+      - if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFile} from 'node:fs/promises';
+          try {
+            const r=JSON.parse(await readFile('outputs/q11/report.json','utf8'));
+            console.log(JSON.stringify({qualification:r.qualification,gauntlet:r.gauntlet,failure:r.failure,errors:r.errors,missing:r.missingAssets.length}));
+          } catch(error) { console.log(error.message); }
+          NODE
+      - if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: v144-q11-earned-${{ matrix.case.mission }}
+          path: outputs/q11/
