@@ -125,25 +125,51 @@ export function iceInteract(progress: ExplorationProgress, body: WorldRect): Ice
   }
   return null;
 }
-export function iceHint(progress: ExplorationProgress, body: WorldRect): string | null {
+interface IceExplorationHint {
+  text: string;
+  interaction: boolean;
+}
+export function iceExplorationHint(progress: ExplorationProgress, body: WorldRect): IceExplorationHint | null {
   if (!validBody(body)) return null;
   const state = normalizeExplorationProgress(progress);
-  if (onFloor(body, ICE_THERMAL_RETURN_LEDGE.y)
-    && distanceX(body, ICE_THERMAL_RETURN_GATE) <= 44) {
-    return state.abilityIds.includes("thermal-resistance")
-      ? "Résistance thermique active : route supérieure vers le relais ouverte."
-      : "Passage cryothermique scellé : résistance thermique du volcan requise";
+  if (distanceX(body, ICE_THERMAL_RETURN_GATE) <= 44) {
+    if (state.abilityIds.includes("thermal-resistance")) {
+      if (onFloor(body, ICE_THERMAL_RETURN_LEDGE.y)) return {
+        text: "Résistance thermique active : route supérieure vers le relais ouverte.", interaction: false,
+      };
+    } else if (body.y < ICE_THERMAL_RETURN_GATE.y + ICE_THERMAL_RETURN_GATE.height &&
+      body.y + body.height > ICE_THERMAL_RETURN_GATE.y) {
+      const edge = body.x + body.width / 2 < ICE_THERMAL_RETURN_GATE.x + ICE_THERMAL_RETURN_GATE.width / 2
+        ? "ouest" : "est";
+      return {
+        text: `Passage cryothermique scellé. Pour poursuivre la chasse, redescends par le bord ${edge} du gradin et passe sous la grille.`,
+        interaction: false,
+      };
+    }
   }
   if (onFloor(body, ICE_RELAY_FLOOR_Y) && near(body, ICE_RELAY)) {
-    return state.openedGateIds.includes(ICE_RELAY_ID) ? "Passerelle déployée : la chambre se trouve en contrebas." : "Alimenter le relais supérieur";
+    return state.openedGateIds.includes(ICE_RELAY_ID)
+      ? { text: "Passerelle déployée : la chambre se trouve en contrebas.", interaction: false }
+      : { text: "Alimenter le relais supérieur", interaction: true };
   }
   if (onFloor(body, ICE_VAULT_FLOOR_Y)) {
-    if (near(body, ICE_CACHE, 24) && !state.secretIds.includes(ICE_SECRET_ID)) return "Récupérer la réserve énergétique du clan";
-    if (distanceX(body, ICE_HATCH) <= 14 && !state.openedGateIds.includes(ICE_HATCH_ID)) return "Déployer l’échelle depuis le dessus de la trappe";
+    if (near(body, ICE_CACHE, 24) && !state.secretIds.includes(ICE_SECRET_ID))
+      return { text: "Récupérer la réserve énergétique du clan", interaction: true };
+    if (distanceX(body, ICE_HATCH) <= 14 && !state.openedGateIds.includes(ICE_HATCH_ID))
+      return { text: "Déployer l’échelle depuis le dessus de la trappe", interaction: true };
   }
   const room = iceRoomAt(body.x + body.width / 2, body.y + body.height / 2);
   if (room?.id === "ice-region-approach" || room?.id === "ice-region-shaft") {
-    return state.abilityIds.includes("aerial-boost") ? "Depuis le gradin, l’impulsion aérienne atteint le relais minier." : "Montée facultative : impulsion aérienne de la jungle requise. Le chemin au sol reste libre.";
+    return {
+      text: state.abilityIds.includes("aerial-boost")
+        ? "Depuis le gradin, l’impulsion aérienne atteint le relais minier."
+        : "Montée facultative : impulsion aérienne de la jungle requise. Le chemin au sol reste libre.",
+      interaction: false,
+    };
   }
   return null;
 }
+export function iceHint(progress: ExplorationProgress, body: WorldRect): string | null {
+  return iceExplorationHint(progress, body)?.text ?? null;
+}
+

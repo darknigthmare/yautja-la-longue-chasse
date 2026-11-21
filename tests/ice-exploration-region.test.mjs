@@ -13,13 +13,26 @@ const bundle = await build({
 const compiled = { exports: {} };
 runInNewContext(bundle.outputFiles[0].text, { module: compiled, exports: compiled.exports, require: createRequire(import.meta.url) });
 const { ICE_MISSION_ID, ICE_ROOMS, ICE_RELAY_ID, ICE_HATCH_ID, ICE_SECRET_ID, ICE_RELAY_FLOOR_Y, ICE_REGION_TEXTURE_PATHS,
-  defaultExplorationProgress, mergeExplorationProgress, explorationBonuses, iceInteract, iceHint,
+  defaultExplorationProgress, mergeExplorationProgress, explorationBonuses, iceInteract, iceHint, iceExplorationHint,
   iceRegionPlatforms, iceRegionClimbables, applyIceExplorationWorld, discoverIceRooms, iceRoomAt, IceExplorationMap, worldBlueprintFor } = compiled.exports;
 const plain = value => JSON.parse(JSON.stringify(value));
 const body = (x, floor = 624) => ({ x, y: floor - 116, width: 72, height: 116 });
 const boosted = () => mergeExplorationProgress(defaultExplorationProgress(), { abilityIds: ["aerial-boost"], secretIds: ["jungle-clan-cache"] });
 const power = () => iceInteract(boosted(), body(984, ICE_RELAY_FLOOR_Y)).progress;
 const render = (props = {}) => renderToStaticMarkup(createElement(IceExplorationMap, { progress: defaultExplorationProgress(), playerX: 0, playerY: 566, ...props }));
+
+test("the cryothermal hint explains the lower path from the upper ledge and the rift platform", () => {
+  const state = defaultExplorationProgress();
+  for (const feet of [304, 430]) {
+    assert.match(iceHint(state, body(2018, feet)), /bord ouest du gradin et passe sous la grille/);
+    assert.match(iceHint(state, body(2118, feet)), /bord est du gradin et passe sous la grille/);
+  }
+  assert.equal(iceHint(state, body(2018, 520)), null, "the underpass is already clear below the gate");
+  assert.equal(iceExplorationHint(state, body(2018, 430)).interaction, false);
+  assert.equal(iceExplorationHint(boosted(), body(984, ICE_RELAY_FLOOR_Y)).interaction, true);
+  assert.match(iceHint(mergeExplorationProgress(state, { abilityIds: ["thermal-resistance"] }),
+    body(2018, 304)), /route supérieure vers le relais ouverte/);
+});
 
 test("relay requires the jungle ability and upper physical contact, never granting a new ability", () => {
   const locked = iceInteract(defaultExplorationProgress(), body(984, ICE_RELAY_FLOOR_Y));

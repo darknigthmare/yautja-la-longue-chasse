@@ -86,7 +86,7 @@ Chaîne jouable actuelle, dans l'ordre du jeu : nurserie (V47) → accueil Unblo
 | 50 | R2-M042 | Le Quatza-Rij solitaire | Blooded | Combat, prélèvement et retour raccordés | `quatzaRij.expeditions.solo` |
 | 51 | R2-M043 | La reconnaissance Elite | Blooded | Texte seul | — |
 | 52 | R2-M044 | La coque d’un groupe | Elite | Inspection à bord partielle | `clanHullProjectV171` |
-| 53 | R2-M045 | Une porte, plusieurs haltes | Elite | Texte seul | — |
+| 53 | R2-M045 | Une porte, plusieurs haltes | Elite | Transfert entre seuils raccordé | `residenceV149.lastChoice` |
 | 54 | R2-M046 | Une mission vraiment collective | Elite | Texte seul | — |
 | 55 | R2-M047 | Ce que la guerre laisse au retour | Elite | Texte seul | — |
 | 56 | R2-M048 | La branche qu’on ne possède pas | Elite | Texte seul | — |
@@ -2431,6 +2431,8 @@ Navire de clan, résidence, opérations collectives, conséquences de guerre, me
 **Déroulé :** comparer ses droits de résidence, préparer des contenants, confirmer un déménagement au seuil ; un objet exposé doit être décroché et transporté. **Choix :** rester ou déménager. **Échec :** un transfert incomplet laisse les objets dans leurs contenants. **Sauvegarde :** `residence.activeChoiceConfirmed`
 
 *Production (proposé)* — **Props :** résidences éligibles, contenants de déménagement (vides / pleins), objet exposé à décrocher, seuil de la nouvelle maison, cabine de vaisseau en halte. **VFX :** surbrillance des objets à transporter. **SFX :** `crate-stow`, `trophy-mount`, `door-heavy`. **Musique :** MUS-04.
+
+**Raccord jouable.** Au panneau de résidence, le joueur compare les droits et peut confirmer qu’il reste. S’il prépare le transfert, l’objet exposé doit d’abord être décroché, puis rangé dans le contenant. Le départ se confirme au vrai seuil intérieur. À l’autre seuil, le dossier relit la même caisse et enregistre l’arrivée avec le même objet. Le registre `residenceV149.lastChoice` conserve la décision.
 
 ### R2-M046 — Une mission vraiment collective
 

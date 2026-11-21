@@ -59,7 +59,7 @@ import { IceExplorationMap } from "./IceExplorationMap";
 import { ExpansionExplorationMap } from "./ExpansionExplorationMap";
 import { drawExpansionRegionDevices, EXPANSION_DEVICE_TEXTURE_PATHS, type ExpansionDeviceTextures } from "./expansionExplorationRendering";
 import { drawIceRegionBackdrop, drawIceRegionPlatform, drawIceRegionDevices, ICE_REGION_TEXTURE_PATHS, type IceRegionTextures } from "./iceExplorationRendering";
-import { ICE_MISSION_ID } from "./systems/iceExplorationRegion";
+import { ICE_MISSION_ID, iceExplorationHint } from "./systems/iceExplorationRegion";
 import { isExpansionExplorationMission } from "./systems/expansionExplorationRegions";
 import { applyExplorationWorld, discoverExplorationRooms, interactWithExplorationRegion, explorationRegionHint } from "./systems/explorationRegions";
 import { defaultExplorationProgress, normalizeExplorationProgress, mergeExplorationProgress, explorationBonuses, isExplorationMission, explorationForMission } from "./systems/explorationProgress";
@@ -925,6 +925,7 @@ interface UiSnapshot {
   playerY: number;
   exploration: ExplorationProgress;
   pilotHint: string | null;
+  pilotHintInteractive: boolean;
   aerialBoostUsed: boolean;
   grounded: boolean;
   visitedScreenIds: string[];
@@ -1032,6 +1033,7 @@ const EMPTY_UI: UiSnapshot = {
   playerY: 0,
   exploration: defaultExplorationProgress(),
   pilotHint: null,
+  pilotHintInteractive: false,
   aerialBoostUsed: false,
   grounded: true,
   visitedScreenIds: [],
@@ -3169,6 +3171,7 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
       : null;
   const fieldItems=carriedFieldSpecimensV112(state.huntRites);
   const actorAt={x:state.player.x+state.player.width/2,y:state.player.y+state.player.height/2};
+  const icePrompt = mission.id === ICE_MISSION_ID ? iceExplorationHint(state.exploration, state.player) : null;
   return {
     canopyNavigationV112: currentCanopyNavigationV112(state),
     houndV147: houndUiV147(state),
@@ -3213,7 +3216,9 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
     playerX: state.player.x + state.player.width / 2,
     playerY: state.player.y + state.player.height / 2,
     exploration: normalizeExplorationProgress(state.exploration),
-    pilotHint: explorationRegionHint(mission.id, state.exploration, state.player),
+    pilotHint: mission.id === ICE_MISSION_ID
+      ? icePrompt?.text ?? null : explorationRegionHint(mission.id, state.exploration, state.player),
+    pilotHintInteractive: mission.id !== ICE_MISSION_ID || icePrompt?.interaction === true,
     aerialBoostUsed: state.player.aerialBoostUsed,
     grounded: state.player.grounded,
     visitedScreenIds: [...state.visitedScreenIds],
@@ -12509,7 +12514,7 @@ export default function HuntCanvas({
             interact: `${controlActionShortcut("hunt.interact", activeBindings)} / B`,
           })}</span>
           {ui.pilotHint && <span style={{ ...styles.objectiveDetail, color: "#d9f1ad" }}>
-            {ui.pilotHint} · Interaction {controlActionShortcut("hunt.interact", activeBindings)}
+            {ui.pilotHint}{ui.pilotHintInteractive && ` · Interaction ${controlActionShortcut("hunt.interact", activeBindings)}`}
           </span>}
         </div>
         <details className={presentationStyles.missionStats}>
