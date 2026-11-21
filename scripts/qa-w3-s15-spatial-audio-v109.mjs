@@ -157,7 +157,7 @@ try {
 
   await root.getByRole('button', {name: /^W3-S15 ·/}).click();
   await root.getByRole('combobox', {name: /^Équipe contrôlée/}).selectOption(listener);
-  await walk(730, 50);
+  await walk(730, 30);
   await walk(640, 70);
   await play('ship');
   const left = await waitMeasured('ship', -1);
@@ -168,7 +168,7 @@ try {
   await root.getByRole('button', {name: 'Conserver la prise ship'}).click();
   await page.waitForFunction(key => JSON.parse(localStorage.getItem(key)).convoy.recordings.length === 1, CLAN_SUPPLY_KEY_V109);
 
-  await walk(750, 70);
+  await walk(765, 70);
   assert.equal(await view('ship').getAttribute('data-availability'), 'range');
   assert.equal(await view('ship').locator('audio').evaluate(media => media.paused), true);
   assert.equal(await take('ship').isDisabled(), true);
