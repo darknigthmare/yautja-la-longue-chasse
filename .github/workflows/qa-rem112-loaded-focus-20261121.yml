@@ -59,6 +59,7 @@ jobs:
             output="$root/$variant"
             if node scripts/qa-hunt-ground-campaign-v112.mjs --mission="$MISSION" --armor="$ARMOR" --baseSave="$origin" --insertion=visible-ship --harvest=true --harvestSweep=true "${params[@]}" --minimumRetainedLoad=1 --replay=true --seconds=360 --output="$output" > "$root/$variant.log" 2>&1; then full=1; fi
             if [ -f "$output/report.json" ]; then
+              node -e 'const r=require("./"+process.argv[1]); for (const o of r.outcomes) console.log(JSON.stringify({scenario:process.argv[2],mission:o.missionId,armor:o.armorId,attempt:o.admission.encounterRun,success:o.success,ratio:o.retainedLoad.atExtraction?.load.ratio,peak:o.peakLoadRatio,qualified:o.retainedLoad.qualified,replayed:o.replay?.verified,load:o.retainedLoad.atExtraction?.load,fieldStock:o.stockAtApex?.filter(e=>e.active).map(e=>({id:e.id,alive:e.alive,potential:e.parts.reduce((n,p)=>n+(p.taken?0:p.volumeUnits),0)}))}));' "$output/report.json" "$variant"
             else
               tail -30 "$root/$variant.log"
             fi
