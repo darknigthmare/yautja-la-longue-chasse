@@ -13,21 +13,24 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - profile: swamp-visible-scout
+          - profile: swamp-visible-early-240
             mission: swamp-hydra
-            args: --insertion=visible-ship
-          - profile: swamp-visible-shared-scout
+            args: --insertion=visible-ship --policy=shared --sweepEarly=true
+          - profile: swamp-visible-early-165
             mission: swamp-hydra
-            args: --insertion=visible-ship --policy=shared
-          - profile: swamp-capsule-shared-scout
+            args: --insertion=visible-ship --policy=shared --sweepEarly=true --sweepDistance=165
+          - profile: swamp-visible-close-165
             mission: swamp-hydra
-            args: --policy=shared
-          - profile: volcano-visible-scout
+            args: --insertion=visible-ship --policy=shared --sweepDistance=165
+          - profile: swamp-visible-close-195
+            mission: swamp-hydra
+            args: --insertion=visible-ship --policy=shared --sweepDistance=195
+          - profile: swamp-visible-early-210
+            mission: swamp-hydra
+            args: --insertion=visible-ship --policy=shared --sweepEarly=true --sweepDistance=210
+          - profile: volcano-visible-early-185
             mission: volcano-bad-blood
-            args: --insertion=visible-ship
-          - profile: desert-visible-scout
-            mission: desert-sandmaw
-            args: --insertion=visible-ship
+            args: --insertion=visible-ship --sweepEarly=true --sweepDistance=185
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
     steps:

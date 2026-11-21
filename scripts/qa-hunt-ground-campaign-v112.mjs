@@ -43,7 +43,11 @@ if(args.successSave!==undefined){
 }
 const minimumRetainedLoad=args.minimumRetainedLoad===undefined?null:Number(args.minimumRetainedLoad);
 const harvestSweep=args.harvestSweep==="true";
+const sweepEarly=args.sweepEarly==="true";
+const sweepDistance=args.sweepDistance===undefined?240:Number(args.sweepDistance);
 if(harvestSweep)assert.ok(args.harvest==="true"&&minimumRetainedLoad!==null,"--harvestSweep requires a declared harvest load target");
+if(sweepEarly||args.sweepDistance!==undefined)assert.equal(harvestSweep,true,"sweep tuning requires --harvestSweep=true");
+assert.ok(Number.isFinite(sweepDistance)&&sweepDistance>=0,"sweep distance must be a finite map distance");
 if(minimumRetainedLoad!==null){
  assert.ok(Number.isFinite(minimumRetainedLoad)&&minimumRetainedLoad>0&&minimumRetainedLoad<=1,
   "--minimumRetainedLoad must be a finite ratio above zero and at most one");
@@ -60,6 +64,17 @@ function packedLoad(state,armorId,tick){
  return {tick,load:runtime.fieldLoadV112(items,armorId),specimenIds:items.map(item=>item.id)};
 }
 function meetsLoad(load,minimum){return load.ratio+1e-9>=minimum;}
+function harvestStock(state){
+ return state.enemies.filter(enemy=>!enemy.boss).flatMap(enemy=>{
+  const parts=runtime.anatomyPartsV112(enemy.archetype);
+  if(!parts.length)return [];
+  return [{id:enemy.id,archetype:enemy.archetype,active:enemy.active,alive:enemy.alive,x:Math.round(enemy.x),
+   y:Math.round(enemy.y+enemy.height),parts:parts.map(part=>({
+    id:part.partId,massKg:part.massKg,volumeUnits:part.volumeUnits,
+    taken:state.huntRites.completedEventIds.includes(part.action+":"+enemy.id),
+   }))}];
+ });
+}
 function brief(s){return {t:+s.elapsed.toFixed(3),phase:s.phase,x:+s.player.x.toFixed(2),y:+s.player.y.toFixed(2),vx:+s.player.velocityX.toFixed(2),vy:+s.player.velocityY.toFixed(2),health:+s.player.health.toFixed(2),stamina:+s.player.stamina.toFixed(2),energy:+s.player.energy.toFixed(2),kills:s.supportKills,boss:{active:s.boss.active,alive:s.boss.alive,health:s.boss.health,x:s.boss.x},scans:s.scanNodes.map(n=>n.scanned),recoveries:s.recoveryNodes.map(n=>n.recovered),objectives:[...s.completedObjectives],message:s.message,grounded:s.player.grounded,climbing:s.player.climbing,load:s.fieldLoadV112,energyWeaponsLocked:s.energyWeaponsLocked,weaponSlot:s.player.activeWeaponSlot,threats:s.enemies.filter(e=>e.active&&e.alive).map(e=>({id:e.id,x:e.x,y:e.y,health:e.health,width:e.width,height:e.height}))};}
 for(const missionId of missionIds)for(const armorId of armorIds){
  randomState=0x1122026;
@@ -118,7 +133,7 @@ for(const missionId of missionIds)for(const armorId of armorIds){
  const harvestMemory={target:null,pending:null,deferred:new Map(),events:[]};
  const trophyMemory={},trophyInterruptions=[];
  const sweepEvents=[];
- let lastSweepTarget=null;
+ let lastSweepTarget=null,stockAtApex=null;
  let peakLoadRatio=0,peakSpecimens=[],firstLoadAt=null;
  let atBoarding=null,atLoadTarget=null,heldLoadTarget=true;
  const lastPress={};
@@ -141,7 +156,7 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   let harvestTarget=null;
   if(args.harvest==="true"&&!state.huntRites.operation&&!state.trophyExtracting&&
     (state.phase==="tracking"||state.phase==="target")&&
-    needsLoad&&groundThreat>(harvestSweep?240:650)){
+    needsLoad&&groundThreat>(harvestSweep?sweepDistance:650)){
    const options=runtime.riteRuntimeOptionsV112(state),choices=[];
    for(const corpse of state.huntRites.corpses){
     if(corpse.erased||Math.abs(corpse.y-(p.y+p.height))>=45)continue;
@@ -174,9 +189,11 @@ for(const missionId of missionIds)for(const armorId of armorIds){
    }
    harvestTarget=chooseGroundHarvestV112(choices,tick,harvestMemory,loadRatio,minimumRetainedLoad,packing);
   }
+  const sweepRouteReady=sweepEarly
+   ?(state.phase==="tracking"||state.phase==="target")&&state.scanNodes.some(node=>node.scanned)
+   :state.phase==="target"&&state.scanNodes.every(node=>node.scanned)&&state.recoveryNodes.every(node=>node.recovered);
   const sweepAllowed=harvestSweep&&needsLoad&&!harvestTarget&&!state.huntRites.operation&&
-    !state.trophyExtracting&&state.phase==="target"&&p.health>p.maxHealth*.4&&
-    state.scanNodes.every(node=>node.scanned)&&state.recoveryNodes.every(node=>node.recovered)&&
+    !state.trophyExtracting&&sweepRouteReady&&p.health>p.maxHealth*.4&&
     (!state.boss.active||nearestGroundHarvestThreatV112(p,[state.boss])>325);
   const sweepTarget=sweepAllowed?enemies.find(enemy=>!enemy.boss&&
     Math.abs(enemy.x+enemy.width/2-center)<1200&&Math.abs(enemy.y+enemy.height-p.y-p.height)<140&&
@@ -289,7 +306,10 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   maxX=Math.max(maxX,p.x);
   if(input.keyboardHeld.has("right")||input.keyboardHeld.has("left")){stuck=Math.abs(p.x-lastX)<.05?stuck+dt:0;}else stuck=0;
   lastX=p.x;
-  if(state.phase!==lastPhase){events.push(brief(state));lastPhase=state.phase;}
+  if(state.phase!==lastPhase){
+   if(harvestSweep&&state.phase==="trophy"&&!stockAtApex)stockAtApex=harvestStock(state);
+   events.push(brief(state));lastPhase=state.phase;
+  }
   if(Math.floor(state.elapsed)>lastSnapshot){samples.push(brief(state));lastSnapshot=Math.floor(state.elapsed);}
  }
  const success=result?.outcome==="success";
@@ -298,7 +318,7 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   qualified:minimumRetainedLoad===null?null:!!(atLoadTarget&&heldLoadTarget&&atBoarding&&atExtraction&&
     meetsLoad(atBoarding.load,minimumRetainedLoad)&&meetsLoad(atExtraction.load,minimumRetainedLoad)&&
     atLoadTarget.specimenIds.every(id=>atBoarding.specimenIds.includes(id)&&atExtraction.specimenIds.includes(id)))};
- const outcome={missionId,armorId,success,result,climbFrames,swingFrames,authoredCanopyContactFrames,maxX,terminal:brief(state),admission,events,traceFrames:trace.length,ticksExecuted,harvestActions,harvestDecisions:harvestMemory.events,sweepEvents,trophyInterruptions,peakLoadRatio,peakSpecimens,firstLoadAt,retainedLoad};
+ const outcome={missionId,armorId,success,result,climbFrames,swingFrames,authoredCanopyContactFrames,maxX,terminal:brief(state),admission,events,traceFrames:trace.length,ticksExecuted,harvestActions,harvestDecisions:harvestMemory.events,sweepEvents,stockAtApex,trophyInterruptions,peakLoadRatio,peakSpecimens,firstLoadAt,retainedLoad};
  if(result)assert.equal(state.phase,"finished");
  if(outcome.success){
   assert.ok(atBoarding,"success must include a native boarding transition");
@@ -349,7 +369,7 @@ for(const missionId of missionIds)for(const armorId of armorIds){
  }
  if(!success)console.log(JSON.stringify({case:missionId+"/"+armorId,events,trophyInterruptions,terminal:outcome.terminal}));
  if(harvestSweep)console.log(JSON.stringify({sweepCase:missionId+"/"+armorId,encounterRun,patrolIds:state.insertion.patrolIds,
-  harvested:harvestMemory.events.filter(event=>event.reason==="prise récoltée"),sweepEvents,
+  harvested:harvestMemory.events.filter(event=>event.reason==="prise récoltée"),sweepEvents,stockAtApex,
   peakLoadRatio,atLoadTarget,atBoarding,atExtraction}));
  outcomes.push(outcome);
  await writeFile(`${output}/${missionId}-${armorId}.json`,JSON.stringify({...outcome,samples,inputTrace:trace},null,2)+"\n");
@@ -362,7 +382,7 @@ if(head.startsWith("ref: ")){
  try{commit=(await readFile(root+".git/"+ref,"utf8")).trim();}
  catch{commit=(await readFile(root+".git/packed-refs","utf8")).split("\n").find(line=>line.endsWith(" "+ref))?.split(" ")[0]??null;}
 }
-const report={schema:1,createdAt:new Date().toISOString(),commit,sourceSha256:createHash("sha256").update(source).digest("hex"),bundleSha256:createHash("sha256").update(bundle.outputFiles[0].text).digest("hex"),scriptSha256:createHash("sha256").update(scriptBytesAtAdmission).digest("hex"),policySha256:createHash("sha256").update(policyBytesAtAdmission).digest("hex"),harvestPolicySha256:createHash("sha256").update(harvestPolicyBytesAtAdmission).digest("hex"),command:process.argv,harvest:args.harvest==="true",harvestSweep,minimumRetainedLoad,scope:"Native stepGame, unchanged production source with appended exports and verbatim AST-extracted rite UI callback. GameInput and native menu callback only after explicit replay armor admission. Hunter difficulty, zero upgrades, seeded Math.random for reproducible legal spawn jitter. Harvest mode buys its tool using two documented real mission results, and only prepares real prey killed during this run. Actions capped at 10 rising edges per second. No browser, progression, physical keyboard or visual qualification.",outcomes};
+const report={schema:1,createdAt:new Date().toISOString(),commit,sourceSha256:createHash("sha256").update(source).digest("hex"),bundleSha256:createHash("sha256").update(bundle.outputFiles[0].text).digest("hex"),scriptSha256:createHash("sha256").update(scriptBytesAtAdmission).digest("hex"),policySha256:createHash("sha256").update(policyBytesAtAdmission).digest("hex"),harvestPolicySha256:createHash("sha256").update(harvestPolicyBytesAtAdmission).digest("hex"),command:process.argv,harvest:args.harvest==="true",harvestSweep,sweepEarly,sweepDistance,minimumRetainedLoad,scope:"Native stepGame, unchanged production source with appended exports and verbatim AST-extracted rite UI callback. GameInput and native menu callback only after explicit replay armor admission. Hunter difficulty, zero upgrades, seeded Math.random for reproducible legal spawn jitter. Harvest mode buys its tool using two documented real mission results, and only prepares real prey killed during this run. Actions capped at 10 rising edges per second. No browser, progression, physical keyboard or visual qualification.",outcomes};
 await writeFile(`${output}/report.json`,JSON.stringify(report,null,2)+"\n");
 if(args.successSave!==undefined){
  assert.ok(verifiedSuccessSave,"a successful native extraction is required to emit the next campaign save");
