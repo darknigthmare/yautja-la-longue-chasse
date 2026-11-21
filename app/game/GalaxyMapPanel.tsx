@@ -48,6 +48,7 @@ import {
   type GalaxySystemNode,
 } from "./galaxyNavigation";
 import { galaxyOrbitRingGeometry } from "./galaxyRegistry";
+import { GalaxyRouteDestinationContext } from "./GalaxyRouteDestinationContext";
 import { calculateMissionMastery, getMissionReplayGoals } from "./missionMastery";
 import replayStyles from "./MissionReplayGoals.module.css";
 import {
@@ -873,7 +874,9 @@ export default function GalaxyMapPanel({
             </p>
           ) : null}
         </div>
-        {routesPanel}
+        <GalaxyRouteDestinationContext.Provider value={previewSystem?.id ?? selection.system?.id ?? null}>
+          {routesPanel}
+        </GalaxyRouteDestinationContext.Provider>
       </div>
     </section>
   );

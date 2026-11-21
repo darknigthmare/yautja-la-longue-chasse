@@ -156,6 +156,23 @@ test('ancienne sauvegarde intacte, version future et propriétaire étranger ref
  assert.equal(future.accepted,false);assert.match(future.message,/version future/);
 });
 
+test('itinéraire multi-système minimal sur le réseau V159, hors incidents',()=>{
+ const {planSpaceRouteV159,SPACE_ROUTE_DESTINATIONS_V159}=routes;
+ const itinerary=planSpaceRouteV159('system-oseris','system-tempest');
+ assert.equal(itinerary.legs,10);
+ assert.deepEqual(itinerary.segments.map(({route,fromSystemId,toSystemId})=>[route.id,route.type,fromSystemId,toSystemId]),[
+  ['route-oseris-cinder','humaine','system-oseris','system-cinder'],
+  ['route-cinder-pelagos','sauvage','system-cinder','system-pelagos'],
+  ['route-pelagos-tempest','interdite','system-pelagos','system-tempest'],
+ ]);
+ assert.deepEqual(planSpaceRouteV159('system-tempest','system-oseris').segments.map(({route})=>route.id),
+  itinerary.segments.map(({route})=>route.id).reverse());
+ assert.deepEqual(planSpaceRouteV159('system-oseris','system-oseris'),{legs:0,segments:[]});
+ assert.equal(planSpaceRouteV159('system-inconnu','system-oseris'),null);
+ assert.equal(planSpaceRouteV159('system-oseris','system-inconnu'),null);
+ assert.deepEqual(new Set(SPACE_ROUTE_DESTINATIONS_V159),new Set(routes.SPACE_ROUTES_V159.flatMap(({systems})=>systems)));
+});
+
 test('rendu SSR du poste de route et intégration à la carte',()=>{
  const props=(state,save=blooded())=>({ownerCreatedAt:owner,state,ship:routes.spacePersonalShipV159(save),onAction:()=>({accepted:false,changed:false,state,message:''})});
  const idle=qa.render('app/game/SpaceRoutesPanelV159.tsx',props(null));
@@ -166,6 +183,7 @@ test('rendu SSR du poste de route et intégration à la carte',()=>{
  assert.match(refused,/data-ship-owned="false"/);assert.match(refused,/Blooded/);assert.match(refused,/disabled=""/);
  let s=act(null,{kind:'engage',routeId:'route-oseris-nivalis'}).state;s=act(s,{kind:'advance'}).state;s=act(s,{kind:'advance'}).state;
  const incident=qa.render('app/game/SpaceRoutesPanelV159.tsx',props(s));
+ assert.match(incident,new RegExp(`data-trip-ship-id="${SHIP}"`));
  assert.match(incident,/data-incident-id="SPACE-E33"/);assert.match(incident,/La relève volontaire/);
  assert.match(incident,/transfert maintenant/);assert.match(incident,/apprentissage prolongé/);
  assert.match(incident,/SPACE-BASE-03/);assert.doesNotMatch(incident,/Parcourir l’étape suivante/);

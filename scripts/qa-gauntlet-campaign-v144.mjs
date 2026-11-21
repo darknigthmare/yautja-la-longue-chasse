@@ -98,7 +98,16 @@ try{
   await locked.waitFor({state:"visible"});
   assert.equal(await locked.getAttribute("data-unlocked"),"false");
   assert.equal(await locked.getByRole("button",{name:/verrouillé/}).isDisabled(),true);
-  pass("Unclaimed other study cannot be equipped",other);
+  await locked.getByRole("button",{name:"Fiche"}).click();
+  const dossier = locker.getByRole("region",{name:"Dossier d'étude du gauntlet"});
+  const missing = dossier.getByRole("listitem").filter({hasText:/^À réunir/});
+  assert.ok(await missing.count() >= 2);
+  assert.equal(await missing.filter({hasText:/0\/\d+ chasse/}).count(),1);
+  assert.equal(await missing.filter({hasText:/Trophée de/}).count(),1);
+  assert.equal(await dossier.getByRole("button",{name:"Étude encore verrouillée"}).isDisabled(),true);
+  pass("Unclaimed other study cannot be equipped",{
+    model:other, missingRequirements:await missing.allTextContents(),
+  });
   await search.fill(study);
   const card=locker.locator(`[data-gauntlet-model="${study}"]`);
   await card.waitFor({state:"visible"});
@@ -107,6 +116,8 @@ try{
   const award=locker.getByRole("button",{name:"Valider l'étude et débloquer"});
   await award.waitFor({state:"visible"});
   assert.equal(await award.isEnabled(),true);
+  assert.equal(await dossier.getByRole("listitem").count(),4);
+  assert.equal(await dossier.getByRole("listitem").filter({hasText:/^Réuni/}).count(),4);
   await page.screenshot({path:resolve(output,"01-unclaimed-study-ready.png"),fullPage:false});
   await award.click();
   await page.waitForFunction(({key,id})=>{
