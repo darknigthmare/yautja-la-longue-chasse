@@ -1,0 +1,35 @@
+name: P0 field stash physical support verification
+on:
+  push:
+    branches: [codex/qa-rem112-field-stash-20261121]
+permissions:
+  contents: read
+jobs:
+  stash:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          --test-reporter=spec tests/field-stash-v112.test.mjs
+          tests/hunt-field-stash-runtime-v112.test.mjs tests/hunt-ground-recovery-v112.test.mjs
