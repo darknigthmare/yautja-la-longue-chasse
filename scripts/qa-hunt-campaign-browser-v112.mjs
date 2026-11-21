@@ -191,6 +191,10 @@ try{
   await capture('01-legacy-default-deck');
   await writeFile(path.join(out,'deck-visible-buttons.json'),JSON.stringify(await page.getByRole('button').allTextContents(),null,2)+'\n');
   const saved=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),storageKey);
+  const activateWithKeyboard=async button=>{
+    await button.focus();
+    await page.keyboard.press('Enter');
+  };
   const openDirect=async stationId=>{
     const shortcuts=page.getByRole('button',{name:'Accès rapide aux installations',exact:true});
     if(await shortcuts.getAttribute('aria-expanded')!=='true')await shortcuts.click();
@@ -234,7 +238,7 @@ try{
       if(!item)break;
       const job=ledger.jobs.find(value=>value.specimenId===item.id&&value.status!=='completed');
       if(job&&!pausedAndReloaded&&job.unitsDone===1){
-        await card.getByRole('button',{name:/^Suspendre sans perte ·/}).click();
+        await activateWithKeyboard(card.getByRole('button',{name:/^Suspendre sans perte ·/}));
         const beforeReload=await saved();
         const paused=beforeReload.inventory.harvestV112.jobs.find(value=>value.id===job.id);
         assert.equal(paused?.status,'paused');assert.equal(paused.unitsDone,job.unitsDone);
@@ -248,7 +252,7 @@ try{
       const label=job?(job.status==='paused'?/^Reprendre sans frais ·/:/^Effectuer un geste ·/):
         item.stage==='mounted'?/^Ranger en réserve ·/:/^(Nettoyer|Traiter|Sécher|Monter) ·/;
       const button=card.getByRole('button',{name:label});
-      const actionLabel=await button.textContent();await button.click();
+      const actionLabel=await button.textContent();await activateWithKeyboard(button);
       const next=await saved();
       const updated=next.inventory.harvestV112;
       assert.notDeepEqual(updated,ledger,'the selected workshop action must write its actual ledger');
@@ -391,12 +395,14 @@ try{
           receipts:game.ecosystem.receipts.filter(receipt=>receipt.actorId===visibleDiscovery.actorId&&receipt.corpseId===visibleDiscovery.corpseId),capture:name});
       }
       if(game.phase==='dead'){
-        const retry=page.getByRole('button',{name:/^(Reprendre au relais|Réessayer la chasse|Recommencer la chasse)$/}).first();
+        const retry=page.getByRole('button',{name:/^(Reprendre au relais|Réessayer(?: la chasse)?|Recommencer la chasse)$/}).first();
         if(retryEvents.length>=maxRetries||!await retry.count())break;
         await releaseKeys();const label=await retry.textContent();retryEvents.push({elapsed:game.elapsed,nativeDeath:observed,button:label});
         await retry.click();Object.assign(memory,{previousX:0,stuckTicks:0,jumpUntil:-1,nextJump:0,nextInteractTick:0});
         delete memory.dropDirection;delete memory.dropTargetX;delete memory.harvestEdge;delete memory.harvestDirection;
         examined.clear();harvestTries.clear();
+        // The new live attempt needs its own observed save roundtrip.
+        resumed=false;resumeReceipt=null;
         report.inputs.push({missionId,elapsed:game.elapsed,type:'DOM retry',label});continue;
       }
       if(game.phase==='finished')break;
@@ -423,7 +429,7 @@ try{
           await page.waitForFunction(()=>{const p=window.__observeCanonicalHuntV112?.().state.player;
             return p?.grounded&&!p.climbing&&Math.abs(p.velocityX)<5;},null,{timeout:3000});
           const examine=bodyMenu.getByRole('button',{name:'Examiner la proie vaincue',exact:true});
-          if(await examine.isVisible())await examine.click({timeout:3000});
+          if(await examine.isVisible())await activateWithKeyboard(examine);
           const open=page.locator('[data-rite-open-v112="true"][data-corpse-id='+JSON.stringify(bodyId)+']');
           await open.waitFor({timeout:4000});
           const parts=()=>open.locator(harvestAction?'[data-rite-action-v112="'+harvestAction+'"]':'[data-rite-action-v112^="harvest-"]');
@@ -432,7 +438,7 @@ try{
               const command=open.locator('[data-rite-action-v112="'+action+'"]');
               const eventId=action+':'+bodyId;
               if(!await command.isVisible()||!await command.isEnabled())return false;
-              await command.click({timeout:3000});
+              await activateWithKeyboard(command);
               attempt.actions.push(action);
               const flags={bodyId,action,eventId};
               await page.waitForFunction(({bodyId,action,eventId})=>{
@@ -466,7 +472,7 @@ try{
         attempt.message=observed?.message;
         await captureHunt(attempt.specimens.length?'actual-anatomical-harvest':'rite-attempt-no-specimen');
         const close=bodyMenu.getByRole('button',{name:'Fermer le menu rituel',exact:true});
-        if(await close.isVisible())try{await close.click({timeout:3000});}catch(error){attempt.closeFailure=String(error);}
+        if(await close.isVisible())try{await activateWithKeyboard(close);}catch(error){attempt.closeFailure=String(error);}
         await page.locator('canvas').last().focus();report.harvestAttempts.push(attempt);
         console.log(JSON.stringify({browserHarvest:attempt}));
         if(!attempt.specimens?.length&&(harvestTries.get(bodyId)??0)<3)examined.delete(bodyId);
