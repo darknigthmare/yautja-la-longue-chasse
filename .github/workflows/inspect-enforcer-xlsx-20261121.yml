@@ -1,0 +1,68 @@
+name: Inspect seven remaining published Enforcer source containers
+on:
+  push:
+    branches: [codex/verify-enforcer-xlsx-20261121]
+permissions:
+  contents: read
+jobs:
+  provenance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: cf76fe476e65ac9184fbaa37aa24ef2040d70146
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/audit-enforcer-historical-recovery.mjs
+            /scripts/inspect-enforcer-recovery-zip.py
+            /tests/test_enforcer_recovery_zip.py
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Run the ZIP inspection regression test
+        run: python3 -B tests/test_enforcer_recovery_zip.py
+      - name: Match the published XLSX bytes against original fingerprints
+        shell: bash
+        run: |
+          set -euo pipefail
+          published=842bc7e69ab5aed086d0fbbfcafd1d86a14e9f38
+          evidence=d71e995ae886df69c4165a1a153291449e8f22f6
+          mkdir -p outputs/enforcer-xlsx "$RUNNER_TEMP/enforcer-xlsx"
+          git fetch --no-tags --filter=blob:none --depth=1 origin "$published" "$evidence"
+          proof=(
+            docs/suivi-production/v611/data/prior-production-v610.json
+            docs/suivi-production/v613/data/production-manifest.json
+            docs/suivi-production/v613/recovery/native-checkpoint.json
+          )
+          for file in "${proof[@]}"; do
+            git cat-file blob "$evidence:$file" >/dev/null
+          done
+          git cat-file blob HEAD:docs/suivi-production/v613/recovery/native-checkpoint.json >/dev/null
+          workbooks=(
+            docs/YAUTJA_V100_SUIVI.xlsx
+            docs/YAUTJA_V99_SUIVI.xlsx
+            docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx
+            docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx
+            docs/suivi-production/v611/references/Yautja_Suivi_Variantes_2026-10-20.xlsx
+            docs/suivi-production/v611/Yautja_Suivi_Variantes_2026-10-21.xlsx
+            docs/suivi-production/v612/Yautja_Suivi_Variantes_V612_2026-10-21.xlsx
+          )
+          args=()
+          for file in "${workbooks[@]}"; do
+            target="$RUNNER_TEMP/enforcer-xlsx/${file##*/}"
+            git cat-file blob "$published:$file" > "$target"
+            test -s "$target"
+            args+=(--zip "$target")
+          done
+          node scripts/audit-enforcer-historical-recovery.mjs "${args[@]}" > outputs/enforcer-xlsx/report.json
+          node -e 'const out=require("./outputs/enforcer-xlsx/report.json"); console.log(JSON.stringify(out, null, 2));'
+      - name: Preserve the scan report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: enforcer-repository-containers-20261121
+          path: outputs/enforcer-xlsx/
+          if-no-files-found: warn
