@@ -60,7 +60,7 @@
 .disciplines li { display: flex; justify-content: space-between; gap: 0.5rem; }
 .disciplines li span:last-child { color: #c5d8bf; }
 .choice { min-inline-size: 0; padding: 0.6rem; border: 1px solid #4b6655; }
-.choice label { display: grid; gap: 0.3rem; }
+.choice > div { display: grid; gap: 0.3rem; }
 .scene button, .scene select { min-block-size: 2.75rem; white-space: normal; }
 .scene :is(button, select, .board):focus-visible { outline: 2px solid #ffe1a3; outline-offset: 2px; }
 .status:empty { display: none; }
