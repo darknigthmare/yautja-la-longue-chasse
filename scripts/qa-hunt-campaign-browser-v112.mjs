@@ -98,7 +98,7 @@ const report={schema:1,generatedAt:new Date().toISOString(),sourceCommit:revisio
     parseSaveImport:{accepted:Boolean(parsedAdmission.save),failure:parsedAdmission.failure??null}},
   requestedMissionIds:requested,
   harvestSpeciesGoal:harvestSpecies,skipHarvest,
-  attempts:[],captures:[],errors:[],missingAssets:[],inputs:[],armoryTransactions:[],harvestAttempts:[],workshop:[],discoveryObservations:[],qualification:'ATTEMPT_ONLY'};
+  attempts:[],captures:[],errors:[],missingAssets:[],inputs:[],armoryTransactions:[],harvestAttempts:[],workshop:[],discoveryObservations:[],resumeObservations:[],qualification:'ATTEMPT_ONLY'};
 report.sourceContext.applicationSources=[...applicationSources.values()].sort((a,b)=>a.file.localeCompare(b.file));
 report.sourceContext.changedApplicationSources=report.sourceContext.applicationSources.filter(input=>!input.matchesBaseCommit).map(input=>input.file);
 report.sourceContext.gitCommitIsBaseOnly=report.sourceContext.changedApplicationSources.length>0;
@@ -307,10 +307,15 @@ try{
     const samples=[],examined=new Set(),harvestTries=new Map(),discoveryChannels=new Set(),retryEvents=[];let final=null,lastSecond=-1,lastPhase='',resumed=false,resumeReceipt=null,lastDecision=null;
     const releaseKeys=async()=>{for(const action of held)await page.keyboard.up(keys[action]);held.clear();};
     while(!stopRequested&&Date.now()-start<budget*1000){
-      const observed=await page.evaluate(()=>window.__observeCanonicalHuntV112?.());
+      const {observed,activeElement,bodyId}=await page.evaluate(()=>{
+        const element=document.activeElement;
+        return {observed:window.__observeCanonicalHuntV112?.(),
+          activeElement:{tag:element?.tagName,role:element?.getAttribute('role'),
+            text:element?.textContent?.slice(0,120),isCanvas:element?.tagName==='CANVAS'},
+          bodyId:document.querySelector('[data-hunt-rites-v77]')?.getAttribute('data-corpse-id')??null};
+      });
       if(!observed?.alive){final=observed;break;}
       const game=observed.state;final=observed;
-      const activeElement=await page.evaluate(()=>{const element=document.activeElement;return{tag:element?.tagName,role:element?.getAttribute('role'),text:element?.textContent?.slice(0,120),isCanvas:element?.tagName==='CANVAS'};});
       if(Math.floor(game.elapsed)!==lastSecond){
         samples.push(observed);lastSecond=Math.floor(game.elapsed);
         await writeFile(path.join(out,'progress.json'),JSON.stringify({wallSeconds:(Date.now()-start)/1000,missionId:observed.missionId,
@@ -345,7 +350,6 @@ try{
         report.inputs.push({missionId,elapsed:game.elapsed,type:'focus reconciliation through DOM',previous:activeElement});
       }
       const bodyMenu=page.locator('[data-hunt-rites-v77]');
-      const bodyId=await page.evaluate(()=>document.querySelector('[data-hunt-rites-v77]')?.getAttribute('data-corpse-id')??null);
       const quiet=game.enemies.every(enemy=>!enemy.active||!enemy.alive||Math.hypot(enemy.x-game.player.x,enemy.y-game.player.y)>650)&&
         (!game.boss.active||!game.boss.alive||Math.abs(game.boss.x-game.player.x)>900);
       const desiredCorpse=harvestSpecies?game.huntRites.corpses.find(corpse=>corpse.sourceEnemyId===harvestSpecies&&!corpse.erased&&!examined.has(corpse.id)):null;
@@ -407,21 +411,29 @@ try{
         report.inputs.push({missionId,elapsed:game.elapsed,type:'press',action});
       }
       if(!resumed&&game.elapsed>=20){
-        for(const action of held)await page.keyboard.up(keys[action]);held.clear();
-        await page.keyboard.press('Escape');
-        const suspend=page.getByRole('button',{name:'Suspendre et sauvegarder',exact:true}).first();
-        if(await suspend.count()){
-          await suspend.click();
-          const sidecar=await page.evaluate(()=>JSON.parse(localStorage.getItem('yautja-long-hunt.active-hunt')));
-          assert.ok(sidecar&&sidecar.snapshot?.checkpoint?.elapsed>=20,'the active native sidecar must contain this actual hunt');
-          await captureHunt('suspended-to-deck');await page.reload();
-          await resumeCampaignHunt(page);
-          await page.locator('canvas').last().focus();
-          const restored=await page.evaluate(()=>window.__observeCanonicalHuntV112?.());
-          assert.ok(restored?.alive&&restored.missionId===missionId&&restored.state.elapsed>=sidecar.snapshot.checkpoint.elapsed&&
-            restored.state.elapsed-sidecar.snapshot.checkpoint.elapsed<2,'the real mounted runtime must continue the persisted hunt');
-          resumeReceipt={sidecar,restored};resumed=true;
-        }else await page.keyboard.press('Escape');
+        await releaseKeys();
+        await page.getByRole('button',{name:'Mettre en pause, consulter la carte et le sac',exact:true}).click();
+        const pause=page.getByRole('dialog',{name:'Chasse en pause · Carte et sac',exact:true});
+        await pause.getByRole('button',{name:'Suspendre et sauvegarder',exact:true}).click();
+        const sidecarKey='yautja-long-hunt.active-hunt';
+        await page.waitForFunction(({id,key})=>{
+          const save=JSON.parse(localStorage.getItem(key)??'null');
+          return window.__observeCanonicalHuntV112?.().alive!==true&&
+            save?.missionId===id&&save.snapshot?.checkpoint?.elapsed>=20;
+        },{id:missionId,key:sidecarKey});
+        const sidecar=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),sidecarKey);
+        await captureHunt('suspended-to-deck');await page.reload();
+        await resumeCampaignHunt(page);
+        await page.locator('canvas').last().focus();
+        const restored=await page.evaluate(()=>window.__observeCanonicalHuntV112?.());
+        assert.ok(restored?.alive&&restored.missionId===missionId&&restored.encounterRun===observed.encounterRun&&
+          restored.state.elapsed>=sidecar.snapshot.checkpoint.elapsed&&restored.state.elapsed-sidecar.snapshot.checkpoint.elapsed<2,
+          'the real mounted runtime must continue the persisted hunt at its observed encounter');
+        resumeReceipt={sidecar,restored};resumed=true;
+        const resume={missionId,encounterRun:restored.encounterRun,
+          savedElapsed:sidecar.snapshot.checkpoint.elapsed,restoredElapsed:restored.state.elapsed,sidecarSha256:hash(sidecar)};
+        report.resumeObservations.push(resume);
+        console.log(JSON.stringify({browserResume:resume}));
       }
       await page.waitForTimeout(35);
     }
@@ -452,8 +464,9 @@ finally{
   if(!inspectOnly&&!resumeHudSource){
     const attempted=new Map(report.attempts.map(attempt=>[attempt.missionId,attempt]));
     const durable=requested.filter(id=>attempted.get(id)?.settlement?.confirmed===true);
+    const observedResumes=requested.filter(id=>report.resumeObservations.some(resume=>resume.missionId===id));
     const resumed=durable.filter(id=>attempted.get(id)?.suspendedAndReloaded===true);
-    report.coverage={requested,durable,resumed,
+    report.coverage={requested,durable,resumed,observedResumes,
       incomplete:requested.filter(id=>!durable.includes(id)),
       missingResume:requested.filter(id=>!resumed.includes(id))};
     if(durable.length===requested.length)report.qualification='BROWSER_HUNTS_AND_DURABLE_SETTLEMENT';

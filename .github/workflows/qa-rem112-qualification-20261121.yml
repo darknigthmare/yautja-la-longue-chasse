@@ -8,7 +8,7 @@ jobs:
   browser:
     name: Browser GameClient - ${{ matrix.scenario }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 28
+    timeout-minutes: 55
     strategy:
       fail-fast: false
       matrix:
@@ -27,6 +27,8 @@ jobs:
             !/*/
             /app/
             /scripts/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues.json
             /docs/qa/v112-campaign-canonical/browser-workshop/browser-report.json
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -42,7 +44,7 @@ jobs:
           if [[ "$SCENARIO" == volcano-continuation ]]; then
             extras+=(--campaign-source docs/qa/v112-campaign-canonical/browser-workshop/browser-report.json --missions volcano-bad-blood)
           fi
-          node scripts/qa-hunt-campaign-browser-v112.mjs "${extras[@]}" --wall-seconds 400 --chromium /usr/bin/google-chrome --require-complete --require-resume --output outputs/rem112-06
+          node scripts/qa-hunt-campaign-browser-v112.mjs "${extras[@]}" --wall-seconds 800 --chromium /usr/bin/google-chrome --require-complete --require-resume --output outputs/rem112-06
       - name: Summarize actually played coverage
         if: always()
         run: |
@@ -89,6 +91,8 @@ jobs:
             !/*/
             /app/
             /scripts/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues.json
             /docs/qa/v112-ground-campaign/campaign-origin-save.json
             /docs/qa/v112-ground-campaign/tool-origin.json
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
