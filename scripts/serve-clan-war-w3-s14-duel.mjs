@@ -10,7 +10,7 @@ import {W3_S14_CLIENT_HTML, W3_S14_CLIENT_SCRIPT} from './clan-war-w3-s14-client
 const root = fileURLToPath(new URL('../', import.meta.url));
 const siteId = 'W3-S14';
 const commandId = /^[A-Za-z0-9_-]{1,64}$/;
-const orderKinds = new Set(['sign', 'start', 'decline', 'renegotiate', 'strike', 'claim', 'move']);
+const orderKinds = new Set(['sign', 'start', 'decline', 'renegotiate', 'strike', 'miss', 'claim', 'move']);
 const finalized = phase => phase === 'won' || phase === 'lost';
 const sha = value => createHash('sha256').update(value).digest('hex');
 
@@ -178,7 +178,7 @@ export function createWarW3S14DuelServer(game, {tokens, databasePath, checkpoint
           return {status: 422, error: 'duel-closed'};
         }
         if (kind === 'claim' && receipt?.winner !== who) return {status: 403, error: 'winner-required'};
-        if ((kind === 'start' || kind === 'renegotiate') && player.role !== 'challenger') {
+        if ((kind === 'start' || kind === 'renegotiate' || kind === 'miss') && player.role !== 'challenger') {
           return {status: 403, error: 'challenger-required'};
         }
 
@@ -191,7 +191,13 @@ export function createWarW3S14DuelServer(game, {tokens, databasePath, checkpoint
             kind === 'sign' ? {kind, actor: player.actorId} :
             kind === 'strike' ? {kind: player.role === 'challenger' ? 'duel-strike' : 'duel-reply'} :
             {kind: 'duel-' + kind};
-          const update = game.applySupplyV109(model, game.supplyCommandV109(model, action), rules);
+          if (kind === 'start' && !convoy.works.find(work => work.id === siteId)?.staffed) {
+            const staff = {kind: 'staff', work: siteId};
+            const restored = game.applySupplyV109(model, game.supplyCommandV109(model, staff), rules);
+            if (!restored.accepted) return {status: 422, error: 'order-refused'};
+            next = restored.state;
+          }
+          const update = game.applySupplyV109(next, game.supplyCommandV109(next, action), rules);
           if (!update.accepted) return {status: 422, error: 'order-refused'};
           next = update.state;
           if (!recorded && finalized(next.convoy.duel.phase)) {

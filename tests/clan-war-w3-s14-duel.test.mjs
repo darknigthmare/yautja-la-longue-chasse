@@ -235,3 +235,51 @@ test('W3-S14 resolves contact and dodges, then persists one chest and one receip
   assert.equal(observed.duel.chestHolder, champion.memberId);
   assert.deepEqual(observed.receipt, earnedReceipt);
 });
+
+test('a challenger can return to service and renegotiate after leaving the ring', async t => {
+  const league = await newRoom(t);
+  let room = await league.open(checkpoint);
+  await startDuel(room);
+  for (let step = 0; step < 3; step++) await accept(room, 0, 'move', [-24, 0]);
+  const paused = await room.read(0);
+  assert.equal(paused.duel.phase, 'interrupted');
+  assert.deepEqual(paused.duel.signatures, []);
+  assert.equal(paused.serviceReady, false);
+  await refuse(room, 0, orderFor(paused, 'renegotiate'));
+  await room.close();
+  room = await league.open();
+  assert.deepEqual(await room.read(0), paused);
+  for (let step = 0; step < 3; step++) await accept(room, 0, 'move', [24, 0]);
+  await accept(room, 0, 'renegotiate');
+  await accept(room, 0, 'sign');
+  await accept(room, 1, 'sign');
+  const restored = await accept(room, 0, 'start');
+  assert.equal(restored.serviceReady, true);
+  assert.equal(restored.duel.phase, 'active');
+  assert.equal(restored.duel.round, 0);
+});
+
+test('three failed attacks and real counterattacks allow the rival to win and claim the same chest', async t => {
+  const room = await (await newRoom(t)).open(checkpoint);
+  const started = await startDuel(room);
+  await refuse(room, 0, orderFor(started, 'miss'));
+  await refuse(room, 1, orderFor(await room.read(1), 'miss'));
+  let won;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    await accept(room, 0, 'move', [-24, 0]);
+    const missed = await accept(room, 0, 'miss');
+    assert.equal(missed.duel.rival, 3);
+    assert.equal(missed.duel.round, attempt * 2 - 1);
+    await accept(room, 0, 'move', [24, 0]);
+    won = await accept(room, 1, 'strike');
+    assert.equal(won.duel.player, 3 - attempt);
+  }
+  const winner = actor(won, 'rival');
+  assert.equal(won.duel.phase, 'lost');
+  assert.equal(won.receipt.outcome, 'lost');
+  assert.equal(won.receipt.winner, winner.memberId);
+  await refuse(room, 0, orderFor(await room.read(0), 'claim'));
+  const claimed = await accept(room, 1, 'claim');
+  assert.equal(claimed.duel.chestHolder, winner.memberId);
+  assert.deepEqual(claimed.receipt, won.receipt);
+});

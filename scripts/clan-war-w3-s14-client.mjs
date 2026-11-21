@@ -96,6 +96,7 @@ export const W3_S14_CLIENT_HTML = `<!doctype html>
             <button type="button" data-command="decline">Refuser le duel</button>
             <button type="button" data-command="start">Engager le duel</button>
             <button type="button" data-command="strike">Frapper</button>
+            <button type="button" data-command="miss">Tenter hors de portée</button>
             <button type="button" data-command="renegotiate">Renégocier</button>
             <button type="button" data-command="claim">Retirer le coffre</button>
           </div>
@@ -217,6 +218,7 @@ function draw(snapshot) {
     decline: beforeStart,
     start: duel.phase === 'accepted' && isChallenger,
     strike: duel.phase === 'active' && inTurn && (!isChallenger || distance <= 32),
+    miss: duel.phase === 'active' && inTurn && isChallenger && distance > 32,
     renegotiate: duel.phase === 'interrupted' && isChallenger,
     claim: Boolean(receipt && duel.winner === own.memberId && duel.chestHolder === 'site'),
   };

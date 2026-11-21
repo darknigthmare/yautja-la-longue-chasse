@@ -28,7 +28,7 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: node --test --test-reporter=spec tests/clan-war-w3-s14-duel.test.mjs tests/clan-war-practice-server-v127.test.mjs tests/clan-war-practice-durable-v127.test.mjs tests/clan-logistics-v108.test.mjs tests/clan-supply-route-v109.test.mjs
       - run: node scripts/qa-w3-s14-duel-20261121.mjs
-      - run: npx --no-install eslint --max-warnings 0 app/game/ClanSupplyRouteV109.tsx scripts/clan-war-w3-s14-client.mjs scripts/serve-clan-war-w3-s14-duel.mjs scripts/serve-clan-war-practice-v127.mjs tests/clan-war-w3-s14-duel.test.mjs scripts/qa-w3-s14-duel-20261121.mjs
+      - run: npx --no-install eslint --max-warnings 0 app/game/systems/clanLogisticsV108.ts app/game/ClanSupplyRouteV109.tsx scripts/clan-war-w3-s14-client.mjs scripts/serve-clan-war-w3-s14-duel.mjs scripts/serve-clan-war-practice-v127.mjs tests/clan-war-w3-s14-duel.test.mjs scripts/qa-w3-s14-duel-20261121.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
