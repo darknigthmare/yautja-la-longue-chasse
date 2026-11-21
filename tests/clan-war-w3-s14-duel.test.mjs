@@ -354,3 +354,18 @@ test('an unsigned historical room stays readable and cannot issue a retrospectiv
   assert.deepEqual((await reopened.read(1)).receipt, refused.receipt);
   assert.equal((await reopened.read(1)).attestation, null);
 });
+
+test('an imported legacy campaign creation date is admitted without merging equivalent dates', async t => {
+  const selected = issuer();
+  const legacyOwner = '2026-11-21T09:00:00Z';
+  const league = await newRoom(t);
+  await assert.rejects(league.open(checkpoint, {
+    ...selected.issuance, owners: [legacyOwner.padEnd(129, ' '), owners[1]],
+  }), /créneau de campagne/);
+  const room = await league.open(checkpoint, {...selected.issuance, owners: [legacyOwner, owners[1]]});
+  await accept(room, 1, 'decline');
+  const receipt = (await room.read(0)).attestation;
+  assert.ok(await game.verifyW3S14Receipt(receipt, selected.trust, legacyOwner, source));
+  assert.equal(Date.parse(legacyOwner), Date.parse(owners[0]));
+  assert.equal(await game.verifyW3S14Receipt(receipt, selected.trust, owners[0], source), null);
+});
