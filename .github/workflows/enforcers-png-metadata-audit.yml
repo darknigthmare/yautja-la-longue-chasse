@@ -20,9 +20,37 @@ jobs:
             scripts
       - name: Inspect V6.13 PNG bytes without exposing metadata content
         run: python3 scripts/audit-enforcer-png-metadata.py outputs/enforcers-v613-png-metadata/report.json
+      - name: Install pinned public C2PA verifier and official trust list
+        shell: bash
+        run: |
+          set -euo pipefail
+          verifier_dir="$RUNNER_TEMP/enforcers-c2pa"
+          mkdir -p "$verifier_dir"
+          curl --fail --silent --show-error --location --retry 2 --max-time 60 \
+            --output "$verifier_dir/tool.tar.gz" \
+            'https://github.com/contentauth/c2patool/releases/download/v0.29.0/v0.29.0-x86_64-unknown-linux-gnu.tar.gz'
+          printf '%s  %s\n' 'af5494722fc8c3f239980f36ceb3acf496d1481850d356a4bb34777b33b08043' "$verifier_dir/tool.tar.gz" | sha256sum --check --status
+          tar -xzf "$verifier_dir/tool.tar.gz" -C "$verifier_dir"
+          verifier="$(find "$verifier_dir" -type f -name c2patool -print -quit)"
+          test -x "$verifier"
+          "$verifier" --version
+          curl --fail --silent --show-error --location --retry 2 --max-time 60 \
+            --output "$verifier_dir/anchors.pem" \
+            'https://raw.githubusercontent.com/c2pa-org/conformance-public/285d98e4b575198180c1d6404a7ee1a317e04911/trust-list/C2PA-TRUST-LIST.pem'
+          test "$(git hash-object "$verifier_dir/anchors.pem")" = '9af0c319794489ca9a01e688e0299bc525a996cc'
+          printf 'ENFORCER_C2PA_BIN=%s\nENFORCER_C2PA_ANCHORS=%s\n' \
+            "$verifier" "$verifier_dir/anchors.pem" >> "$GITHUB_ENV"
+      - name: Validate signatures and asset binding with networking disabled
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo unshare --net -- runuser -u "$(id -un)" -- python3 scripts/audit-enforcer-c2pa.py \
+            outputs/enforcers-v613-png-metadata/report.json \
+            "$ENFORCER_C2PA_BIN" "$ENFORCER_C2PA_ANCHORS" \
+            outputs/enforcers-v613-png-metadata/c2pa-report.json
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: enforcers-v613-png-metadata
-          path: outputs/enforcers-v613-png-metadata/report.json
+          path: outputs/enforcers-v613-png-metadata/*.json
           if-no-files-found: error
           retention-days: 14
