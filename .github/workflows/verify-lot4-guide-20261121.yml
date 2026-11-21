@@ -1,0 +1,40 @@
+name: Guide real canopy and anatomy states
+on:
+  push:
+    branches: [codex/verify-lot4-guide-20261121]
+permissions:
+  contents: read
+jobs:
+  guide:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 'ebd470eb1dedd6a4ec040c1062e73b138435c69d'
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /types/
+            /scripts/
+            /tests/
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Test terrain, guide, reach and field interaction regressions
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/hunt-field-guide-v112.test.mjs tests/canopy-navigation-v112.test.mjs
+          tests/hunt-canopy-runtime-v112.test.mjs tests/hunt-accessibility-v112.test.mjs
+          tests/hunt-carcass-runtime-v112.test.mjs tests/hunt-input-runtime.test.mjs
+      - name: Lint field guide
+        if: ${{ !cancelled() }}
+        run: npx --no-install eslint --max-warnings 0 app/game/HuntFieldGuideV112.tsx
