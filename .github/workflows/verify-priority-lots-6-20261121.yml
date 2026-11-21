@@ -13,13 +13,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '8e92abe1daa684cf31f707b5a98137ab63b82bcf'
+      ASSET_RACCORDS_SOURCE_COMMIT: '7ea12efc4b7e59734bfc61521c46f06a5b82ba4d'
       BASE_COMMIT: 'd5e95fba7358924108e425cf7056a5a38fe2b944'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '8e92abe1daa684cf31f707b5a98137ab63b82bcf'
+          ref: '7ea12efc4b7e59734bfc61521c46f06a5b82ba4d'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -100,6 +100,21 @@ jobs:
           tests/clan-ship-dialogue.test.mjs
           tests/clan-ship-operations.test.mjs
           scripts/historical-excel-context-homeworld-v112.mjs
+          app/game/systems/w3S18RoutePost.ts
+          app/game/W3S18RoutePostContext.ts
+          app/game/systems/clanSupplySessionV109.ts
+          app/game/systems/spaceRoutesV159.ts
+          app/game/ClanSupplyRouteV109.tsx
+          app/game/SpaceRoutesPanelV159.tsx
+          scripts/qa-w3-s18-campaign-route-20261121.mjs
+          tests/space-routes-v159.test.mjs
+          app/game/systems/quatzaRij.ts
+          app/game/QuatzaRijScene.tsx
+          tests/quatza-rij.test.mjs
+          scripts/qa-quatza-triad-return-20261121.mjs
+          app/game/systems/pitWorkbookCampaignV108.ts
+          app/game/PitWorkbookCampaignV108.tsx
+          tests/pit-workbook-campaign-v108.test.mjs
       - name: Verify durable progression and source regressions
         if: ${{ !cancelled() }}
         run: >-
@@ -113,6 +128,10 @@ jobs:
           tests/homeworld-dynamic-navigation-v109.test.mjs
           tests/homeworld-geometry-recovery-v112.test.mjs
           tests/homeworld-geometry-recovery-integration-v112.test.mjs
+          tests/space-routes-v159.test.mjs
+          tests/quatza-rij.test.mjs
+          tests/pit-workbook-campaign-v108.test.mjs
+          tests/pit-workbook-save-session-v108.test.mjs
       - name: Report canonical inventory differences
         if: ${{ !cancelled() && hashFiles('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json') != '' }}
         run: |
