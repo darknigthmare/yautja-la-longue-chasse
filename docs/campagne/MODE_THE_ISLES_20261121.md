@@ -6,6 +6,18 @@ Mode de jeu dédié, à côté de The Pit, de la Guerre des clans et de Queen Hu
 
 **Règle de lecture.** Tout est *(proposé)* sauf les lignes **Décision**. Les règles de la campagne (code d'honneur, barème, IA humaine, chiens) s'appliquent quand ce document ne dit rien d'autre.
 
+### Décisions du 21 novembre 2026
+
+| Sujet | Décision |
+| --- | --- |
+| Lien avec la campagne | **aucun effet** : trophées et cosmétiques propres au mode |
+| Époque | **présent fixe, années 2020** |
+| Chasse inversée | **gardée et prioritaire** : mode phare dès le lancement (section 13.3) |
+| Victoire des humains en Chasse inversée | **fuir l'île ou tenir** jusqu'à la fin du temps |
+| Taille et moteur | **8 × 8 km**, **three.js** |
+| Villes | **Calder et une petite ville** : Dustwater, ville minière de Redmesa |
+| Joueurs par session | **8** |
+
 ---
 
 ## Sommaire
@@ -31,7 +43,7 @@ Mode de jeu dédié, à côté de The Pit, de la Guerre des clans et de Queen Hu
 
 ## 1. Le concept
 
-**The Isles** est un archipel fictif de la Terre, au présent. Chaque île a son biome. Le joueur y chasse librement, seul ou en ligne avec d'autres Yautja, dans un **monde ouvert en 3D isométrique**.
+**The Isles** est un archipel fictif de la Terre, au présent (**décision :** années 2020). Chaque île a son biome. Le joueur y chasse librement, seul ou en ligne avec d'autres Yautja, dans un **monde ouvert en 3D isométrique**.
 
 - **Vue :** caméra isométrique haute qui suit le joueur et anticipe ses mouvements, dans l'esprit du prototype *Race'n'Chase* (l'ancêtre de GTA), mais en 3D.
 - **Rendu :** monde en tuiles extrudées en volumes (voxels), éclairé, avec jour et nuit, dans l'esprit des recompilations 3D de Pokémon Rouge et Bleu.
@@ -47,10 +59,10 @@ Les décisions de la boucle Terre (code, témoins, nettoyage, ARGOS…) sont rep
 | --- | --- |
 | Accès | Mode à part, dans le menu principal, comme The Pit et Queen Hunt |
 | Personnage | le Yautja de la campagne, avec son apparence et son équipement |
-| Effet sur la campagne | **aucun** : ni honneur, ni rang, ni âge. Même règle que la Guerre des clans en multijoueur |
+| Effet sur la campagne | **Décision : aucun** : ni honneur, ni rang, ni âge. Même règle que la Guerre des clans en multijoueur |
 | Ce que le joueur garde | trophées et cosmétiques du mode, dans une salle des trophées des Îles |
 | Solo | jouable hors ligne, avec d'autres Yautja en IA |
-| En ligne | sessions de 1 à 8 joueurs (section 13) |
+| En ligne | **Décision :** sessions de 1 à 8 joueurs (section 13) |
 | Continuité | séparée de la campagne, comme le DLC Badlands |
 
 ---
@@ -121,7 +133,7 @@ Thermique, électromagnétique, mouvement et analyse fonctionnent comme sur Terr
 | GTA VI (Leonida) | État en régions très différentes, dont un chapelet d'îles et des marais | chaque région est un **écosystème** distinct avec sa faune, ses humains, sa lumière |
 
 **Principes retenus pour The Isles :**
-1. Une **seule ville** dense ; tout le reste est un gradient vers la nature.
+1. **Une grande ville** dense (Calder) et **une petite ville** (Dustwater) ; tout le reste est un gradient vers la nature.
 2. Un **volcan central** visible de toutes les îles, qui sert de boussole.
 3. Les îles s'ouvrent **par groupes**, avec une raison dans le monde (section 14).
 4. Chaque île a **un biome, une faction humaine dominante, une proie apex**.
@@ -164,7 +176,7 @@ Thermique, électromagnétique, mouvement et analyse fonctionnent comme sur Terr
                                   S
 ```
 
-**Taille visée :** environ 4 096 × 4 096 tuiles (8 × 8 km), dont un peu plus de la moitié en terres. C'est l'ordre de grandeur des grands mondes ouverts récents, à l'échelle compressée habituelle.
+**Taille (décision) :** 4 096 × 4 096 tuiles (8 × 8 km), dont un peu plus de la moitié en terres. C'est l'ordre de grandeur des grands mondes ouverts récents, à l'échelle compressée habituelle.
 
 ---
 
@@ -204,15 +216,17 @@ Format : **biome**, **part de la surface des terres**, **densité humaine**, **f
 - **Lieux :** bayous, village sur pilotis, cabane de chasse, raffinerie
 - **Unique :** **hydroglisseurs** bruyants ; brouillard du matin
 
-### 7.5 Redmesa — désert et canyons
-- **Surface :** 12 % · **Densité :** faible
-- **Faction :** milice d'une mine privée, trafiquants
+### 7.5 Redmesa — désert et canyons, avec Dustwater
+- **Surface :** 12 % · **Densité :** faible, moyenne à Dustwater
+- **Faction :** milice d'une mine privée, trafiquants ; à Dustwater, shérif et adjoints
 - **Proie apex :** puma ; secondaire : coyote, serpent
 - **Repère :** la mesa du Chef, avec son antenne
-- **Lieux :** canyons, mine à ciel ouvert, ville fantôme, ranch, motel sur la route
-- **Unique :** **chaleur** qui brouille le thermique le jour ; **tempêtes de sable**
+- **Lieux :** canyons, mine à ciel ouvert, **Dustwater** (petite ville minière : rue principale, saloon, bureau du shérif, gare de minerai, cité ouvrière), ville fantôme, ranch, motel sur la route
+- **Unique :** **chaleur** qui brouille le thermique le jour ; **tempêtes de sable** ; Dustwater est le **deuxième terrain urbain**, bas et horizontal (toits plats, voie ferrée), à l'opposé de Calder, dense et vertical
 
-### 7.6 Calder — ville portuaire *(seule ville)*
+**Décision :** deux villes sur l'archipel : Calder et Dustwater.
+
+### 7.6 Calder — ville portuaire *(grande ville)*
 - **Surface :** 15 % · **Densité :** très forte au centre, moyenne en banlieue
 - **Factions :** police, deux gangs rivaux (les Docks contre les Hauteurs), sécurité privée des tours
 - **Proie apex :** aucune ; humains seulement
@@ -272,19 +286,20 @@ Format : **biome**, **part de la surface des terres**, **densité humaine**, **f
 | --- | --- | --- |
 | Urbain dense | 6 % | centre de Calder |
 | Urbain et banlieue | 9 % | Calder |
-| Villages, hameaux, ranchs | 8 % | une par île sauf Ember |
+| Petite ville | 2 % | Dustwater (Redmesa) |
+| Villages, hameaux, ranchs | 6 % | une par île sauf Ember |
 | Industriel, militaire, mines | 10 % | Ironhook, docks, Redmesa, Saltmarsh, Hollowpine |
 | Agricole, prairie | 10 % | Tallgrass, abords de Calder |
 | Nature sauvage | 52 % | toutes les îles |
 | Îlots spéciaux | 5 % | Blackrock, Halcyon Cay, phare, épave, plateforme |
 
-Comme dans les GTA récents, la nature occupe **plus de la moitié** : c'est le terrain de chasse. La ville est petite, dense et verticale.
+Comme dans les GTA récents, la nature occupe **plus de la moitié** : c'est le terrain de chasse. Calder est petite, dense et verticale ; Dustwater est basse et étirée le long de la route et de la voie ferrée.
 
 ### 8.2 Gradient de densité
 ```text
   densité humaine
   ████████  centre de Calder
-  ██████    port, banlieue, Ironhook
+  ██████    port, banlieue, Ironhook, Dustwater
   ████      villages, ranchs, mines, station polaire
   ██        camps de braconniers, de bûcherons, de trafiquants
   ░         nature
@@ -306,7 +321,7 @@ Comme dans les GTA récents, la nature occupe **plus de la moitié** : c'est le 
 | --- | --- | --- | --- | --- |
 | Civils | non | **interdit** | Calder, villages | jour surtout |
 | Ouvriers, scientifiques, archéologues | non | **interdit** | mines, Ember, Verdant, Frost | jour |
-| Police | oui | proie digne | Calder, routes | toujours ; plus la nuit après une alerte |
+| Police | oui | proie digne | Calder, Dustwater (shérif), routes | toujours ; plus la nuit après une alerte |
 | Gangs | oui | proie digne | Calder (Docks, Hauteurs) | nuit surtout |
 | Braconniers, chasseurs | oui | proie digne | Verdant, Tallgrass, Saltmarsh, Hollowpine, Frost | aube et crépuscule |
 | Trafiquants, contrebandiers | oui | proie digne | Shallows, Saltmarsh, Redmesa, épave, phare | nuit |
@@ -413,7 +428,7 @@ C'est l'équivalent des étoiles de recherche de GTA, en glyphes yautja. Elles s
 ## 13. En ligne
 
 ### 13.1 Sessions
-- **1 à 8 joueurs** par session, plus les Yautja en IA en solo.
+- **Décision : 8 joueurs** au plus par session, plus les Yautja en IA en solo.
 - Les joueurs peuvent former des **groupes de chasse** (jusqu'à 4) qui partagent marques, objectifs et trophées de groupe.
 - **Règle de l'archipel :** pas de combat entre joueurs, sauf dans les modes qui le prévoient et contre un Bad Blood des Îles.
 
@@ -427,9 +442,92 @@ C'est l'équivalent des étoiles de recherche de GTA, en glyphes yautja. Elles s
 | **Grand gibier** | 2–8 | 30 min | un légendaire apparaît, le premier qui le tue proprement gagne |
 | **Siège d'Ironhook** | 4 | 40 min | raid de fin, en plusieurs étapes |
 | **Chasse au Bad Blood** | 1 contre 1–3 | libre | décision de la bible (invasion Enforcer ↔ Bad Blood), adaptée au monde ouvert |
-| **Chasse inversée** *(à valider)* | 1 Yautja contre 4–6 humains joués | 15 min | les joueurs humains doivent survivre et fuir l'île ; le Yautja doit les chasser selon le code |
+| **Chasse inversée** (**décision : prioritaire**) | 1 Yautja contre 4–6 humains joués | 15 min | les humains gagnent en **fuyant l'île ou en tenant** jusqu'à la fin ; le Yautja chasse selon le code (section 13.3) |
 
-### 13.3 Réseau *(proposé)*
+### 13.3 Chasse inversée — mode phare
+
+**Décisions :** gardée et prioritaire ; les humains gagnent en fuyant l'île ou en tenant jusqu'à la fin du temps.
+
+#### Le principe
+Un joueur incarne le Yautja. Quatre à six joueurs incarnent une **équipe humaine** lâchée sur une île des Îles. Le Yautja chasse ; les humains doivent **sortir de l'île** ou **tenir 15 minutes**. La vue isométrique sert le mode : chaque humain ne voit que ce que son personnage voit (cône de vision et brouillard), alors que le Yautja voit à travers son biomask.
+
+#### Déroulé d'une partie (15 min)
+| Moment | Humains | Yautja |
+| --- | --- | --- |
+| 0:00 – 0:30 | arrivée en groupe (bateau, 4×4 ou hélicoptère selon l'île) ; choix du chemin | descente du vaisseau, loin d'eux ; il ne sait pas où ils sont |
+| 0:30 – 5:00 | trouver les **3 pièces** de la sortie (section suivante), poser des pièges | repérage, traces, isoler un premier humain |
+| 5:00 – 12:00 | appeler l'**extraction** à la radio ; se regrouper | chasse ; il peut attaquer la radio ou le point d'extraction |
+| 12:00 – 15:00 | rejoindre l'extraction, ou tenir jusqu'à la fin | tout faire pour qu'aucun ne parte |
+
+#### Conditions de victoire
+| Camp | Victoire | Score |
+| --- | --- | --- |
+| Humains | **fuite** : au moins un humain monte dans l'extraction | victoire nette ; points par humain sorti |
+| Humains | **tenir** : au moins deux humains en vie à 15:00 | victoire de survie ; moins de points que la fuite |
+| Humains | **abattre le Yautja** | victoire, mais le Yautja peut déclencher son autodestruction (plus bas) |
+| Yautja | aucun humain ne fuit et moins de deux en vie à 15:00 | victoire ; honneur selon la manière |
+| Yautja | tous les humains tués et leurs trophées pris | victoire parfaite |
+
+#### Les pièces de la sortie (selon l'île)
+| Île | Pièce 1 | Pièce 2 | Pièce 3 | Extraction |
+| --- | --- | --- | --- | --- |
+| Verdant | radio du camp de braconniers | batterie du générateur | fusées éclairantes | hydravion sur le fleuve |
+| Tallgrass | clés de l'avion de brousse | carburant | carte du terrain | aérodrome de brousse |
+| Saltmarsh | hélice de l'hydroglisseur | carburant | radio | bayou vers la mer |
+| Redmesa (Dustwater) | aiguillage de la voie ferrée | clé de la locomotive | radio du shérif | train de minerai |
+| Hollowpine | courant du téléphérique | clé de la cabine | radio | téléphérique vers le col |
+| Calder (docks, nuit) | badge du port | clé de vedette | radio | vedette dans le port |
+| Frost Isle | carburant de motoneige | balise de détresse | carte | avion de la station |
+
+L'emplacement des pièces change à chaque partie (3 positions possibles pour chacune).
+
+#### Les rôles humains *(proposé, originaux)*
+| Rôle | Arme | Capacité | Faiblesse |
+| --- | --- | --- | --- |
+| **Pisteur** | fusil de chasse | lit les traces du Yautja (eau, sang, branches) pendant 8 s | arme lente |
+| **Tireur** | fusil à lunette | marque une distorsion repérée pour toute l'équipe | faible au corps à corps |
+| **Démolisseur** | fusil à pompe | 3 pièges (mine, fil, filet) | lent |
+| **Médecin** | pistolet | relève un équipier à terre deux fois plus vite ; 2 fusées éclairantes | peu de dégâts |
+| **Radio** | fusil d'assaut | appelle l'extraction plus vite ; brouille le biomask 5 s une fois | bruyant |
+| **Garde de la réserve** | carabine | voit les animaux et les fait fuir | aucune protection |
+
+Chaque équipe a au plus un rôle de chaque type. Les rôles se débloquent avec le niveau du joueur côté humain (cosmétiques et variantes, jamais d'arme plus forte).
+
+#### Le code d'honneur en jeu
+- Le Yautja ne gagne de l'honneur que sur les **humains armés**.
+- **Se rendre :** un humain peut **jeter son arme**. Il devient non-combattant : le Yautja ne peut plus le tuer sans faute grave. En échange, il ne peut ni reprendre d'arme pendant 90 s, ni porter une pièce, ni utiliser la radio. S'il atteint l'extraction désarmé, il compte à moitié. Un Yautja qui tue un humain rendu **perd la partie** sur-le-champ.
+- **Duel :** quand il ne reste qu'un humain armé, il peut défier le Yautja ; si le Yautja accepte (masque et armes à distance retirés), un duel au corps à corps décide de la partie. Le vainqueur humain fuit automatiquement.
+
+#### Humains à terre
+- Un humain blessé tombe **à terre** : ses équipiers ont 30 s pour le relever.
+- Le Yautja peut prendre son **trophée** (6 à 12 s, camouflage coupé, comme sur Terre) : l'humain est éliminé.
+- Un humain à terre peut tirer au pistolet.
+
+#### Le Yautja
+- Le Yautja de la campagne du joueur, avec apparence et équipement ; **statistiques ramenées à l'équilibre du mode** (même règle que The Pit en classé).
+- Équipement : lames, combistick, disque, plasma (surchauffe), filet, camouflage, biomask, imitation de voix (3 phrases).
+- **Autodestruction :** si le Yautja tombe à 0, il peut la déclencher : les humains ont 10 s pour sortir du rayon. S'ils en sortent tous, victoire humaine parfaite ; sinon, ceux restés dedans sont éliminés.
+
+#### Faune et monde
+- La faune de l'île est présente et hostile à tous. Elle sert le Yautja (diversion) comme les humains (le Garde la fait fuir).
+- Météo et heure tirées au début : la nuit favorise le Yautja ; la pluie révèle son camouflage.
+- Les civils sont absents de ce mode (zones évacuées) : pas de non-combattant hors des humains rendus.
+
+#### Matchmaking et progression
+- 5 humains par défaut ; 4 ou 6 en partie privée.
+- File séparée pour le Yautja (rôle demandé) et les humains.
+- Deux progressions distinctes : **niveau de chasseur** (cosmétiques du Yautja, gravures) et **niveau de survivant** (tenues, variantes de rôle).
+
+#### Ce qu'il faut créer pour ce mode
+- Vision par joueur : cône de vision humain, brouillard ; vue biomask du Yautja.
+- 6 rôles humains jouables : animations isométriques 8 directions, armes, capacités.
+- 7 cartes de partie (une par île citée), avec 3 positions par pièce et une extraction.
+- Interface humaine : santé, munitions, pièces trouvées, chrono, statut d'équipe, alerte « distorsion repérée ».
+- Interface Yautja : honneur de la partie, humains repérés, chrono.
+- Règles serveur : rendre les armes, duel, autodestruction, victoire.
+- Sons : respiration et cœur des humains quand le Yautja est proche, clics du Yautja, radio, extraction qui arrive.
+
+### 13.4 Réseau *(proposé)*
 - Le dépôt utilise déjà Cloudflare (Wrangler) : une session serait un **Durable Object** qui tient l'état de l'archipel (joueurs, alertes, proies importantes).
 - Les humains et la faune ordinaires sont simulés **près des joueurs seulement**, par zones de 32 × 32 tuiles.
 - Positions envoyées 15 fois par seconde ; actions importantes (mise à mort, trophée, image envoyée) validées par le serveur.
@@ -466,7 +564,7 @@ Un repaire principal (au choix du joueur) expose les trophées du mode, avec leu
 ### 15.1 Ce qu'il faut créer
 
 **Technique**
-- **Moteur isométrique 3D** : le dépôt n'a pas encore de bibliothèque 3D. Proposition : WebGL2 avec three.js, ou un moteur maison minimal. Grille de tuiles, volumes par blocs regroupés (meshing par zones de 32 × 32 tuiles), instanciation des objets répétés.
+- **Moteur isométrique 3D** : le dépôt n'a pas encore de bibliothèque 3D. **Décision : three.js** (WebGL2). Grille de tuiles, volumes par blocs regroupés (meshing par zones de 32 × 32 tuiles), instanciation des objets répétés.
 - **Streaming de la carte** : chargement des zones autour du joueur.
 - **Caméra** : 4 rotations, 3 zooms, anticipation, transparence des obstacles.
 - **Éditeur de tuiles** : outil interne pour peindre les îles (sol, hauteur, biome, objets, zones de peuplement).
@@ -494,13 +592,15 @@ Un repaire principal (au choix du joueur) expose les trophées du mode, avec leu
 - Musique : thème des Îles, thème d'alerte qui monte avec les marques, thème du siège d'Ironhook.
 
 ### 15.2 Ordre de production
-1. **Prototype de vue** : une petite île de test, caméra, Yautja qui court, saute, grimpe, se camoufle.
-2. **Tranche verticale : Verdant** complète en solo (faune, braconniers, autel, contrats, trophées, alerte 1 à 3).
-3. **Calder** : la ville, densité, police et gangs, toits, alerte 1 à 4.
-4. **Réseau** : sessions à 2 joueurs, puis 8.
-5. **Îles restantes**, une par une.
-6. **Ironhook**, ARGOS, siège.
-7. **Modes en ligne** compétitifs.
+1. **Prototype de vue** (three.js) : une petite île de test, caméra, Yautja qui court, saute, grimpe, se camoufle.
+2. **Réseau minimal** : 2 puis 6 joueurs sur l'île de test.
+3. **Chasse inversée sur Verdant** (mode phare) : 1 Yautja contre 5 humains, 6 rôles, pièces, extraction, règles du code.
+4. **Tranche verticale du monde ouvert : Verdant** en chasse libre (faune, braconniers, autel, contrats, trophées, alerte 1 à 3).
+5. **Chasse inversée** sur Tallgrass, Saltmarsh et Hollowpine.
+6. **Calder** et **Dustwater** : villes, densité, police, gangs, toits, alerte 1 à 4 ; Chasse inversée sur les docks et à Dustwater.
+7. **Îles restantes**, une par une ; Frost Isle et sa carte de Chasse inversée.
+8. **Ironhook**, ARGOS, siège.
+9. **Autres modes en ligne** (course aux trophées, grand gibier).
 
 ### 15.3 Tests
 - Caméra : aucun moment où le joueur est caché derrière un décor sans transparence.
@@ -514,10 +614,8 @@ Un repaire principal (au choix du joueur) expose les trophées du mode, avec leu
 
 ## 16. Questions ouvertes
 
-1. **Continuité** : The Isles sans effet sur la campagne, comme proposé, ou lié à la campagne ?
-2. **Époque** : présent fixe (années 2020), ou au choix du joueur parmi les époques de sa campagne ?
-3. **Chasse inversée** (des joueurs jouent des humains) : à garder ou non ?
-4. **Ville** : une seule ville (Calder), ou une deuxième petite ville ?
-5. **Taille** : 8 × 8 km comme proposé, ou plus petit pour commencer ?
-6. **Moteur 3D** : three.js ou moteur maison ?
-7. **Nombre de joueurs** par session : 8, ou plus ?
+1. **Humain rendu** en Chasse inversée : la règle (désarmé 90 s, compte à moitié à l'extraction, Yautja qui le tue perd la partie) te convient-elle ?
+2. **Rôles humains** : les 6 proposés, ou en changer ?
+3. **Autodestruction** en Chasse inversée : la garder ?
+4. **Voyage rapide** du vaisseau entre repaires : interdit à Calder et Ironhook, comme proposé ?
+5. **Cordon naval d'ARGOS** comme raison d'ouverture des îles : à garder ?
