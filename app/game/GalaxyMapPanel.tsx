@@ -874,7 +874,7 @@ export default function GalaxyMapPanel({
             </p>
           ) : null}
         </div>
-        <GalaxyRouteDestinationContext.Provider value={previewSystem?.id ?? selection.system?.id ?? null}>
+        <GalaxyRouteDestinationContext.Provider value={previewSystem?.id ?? null}>
           {routesPanel}
         </GalaxyRouteDestinationContext.Provider>
       </div>

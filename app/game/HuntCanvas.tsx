@@ -300,7 +300,8 @@ import {
   type HuntCompanion, type HuntInsertionState,
 } from "./systems/huntInsertion";
 import { chromaticsForPieceV146, lightColorV146, type HunterPieceIdV146 } from "./hunterPiecesV146";
-import { camouflageVisibilityV146, heavyHitPieceV146, missionWearV146, wearFilterV146, type HunterMarkIdV146, type SkinPatternIdV146 } from "./systems/hunterCustomizationV146";
+import { camouflageVisibilityV146, heavyHitPieceV146, missionWearV146, wearFilterV146, type CustomizationV146, type HunterMarkIdV146, type SkinPatternIdV146 } from "./systems/hunterCustomizationV146";
+import { armorWearCanvasV172, armorWearPieceIsWornV172, type ArmorWearV172 } from "./hunterArmorWearV172";
 import { markColorV146, markLayerV146, markStrokesV146 } from "./hunterMarksArtV146";
 import {
   HOUND_ORDERS_V147, createHoundFieldV147, damageHoundFieldV147, houndHuntReportFromFieldV147, issueHoundOrderV147,
@@ -343,6 +344,7 @@ interface HuntCanvasProps {
   controlBindings?: ControlBindings;
   huntAccessibility?: HuntAccessibilityV112;
   appearance: HunterAppearance;
+  heavyWearV146?: CustomizationV146["heavyWear"];
   /** Cosmetic-only wrist model chosen before mission entry; never a combat stat. */
   gauntletVariantId?: string;
   /** V147: hunting hound chosen at the kennel (ready only); frozen for the hunt. */
@@ -3548,6 +3550,7 @@ interface RegisteredLayerOptions {
   /** V148: zone colours for a layer that has no V113 channel (gauntlet, blades, caster, weapons). */
   pieceTint?: { appearance: HunterAppearance; piece: HunterPieceIdV146 };
   decalZone?: YautjaDecalZoneV133;
+  wear?: ArmorWearV172;
   clip?: readonly (readonly [number, number, number, number])[];
   alpha?: number;
   filter?: string;
@@ -3786,6 +3789,13 @@ function drawRegisteredLayer(
     decorated || recolored ? HUNTER_RIG_CANVAS.width : options.placement?.width ?? HUNTER_RIG_CANVAS.width,
     decorated || recolored ? HUNTER_RIG_CANVAS.height : options.placement?.height ?? HUNTER_RIG_CANVAS.height,
   );
+  if (options.wear) {
+    const wear = armorWearCanvasV172(image, options.wear, options.placement, options.clip);
+    if (wear) {
+      context.filter = "none";
+      context.drawImage(wear, 0, 0);
+    }
+  }
   context.restore();
   return true;
 }
@@ -4195,6 +4205,7 @@ function drawHunterLayered(
   assets: AssetBank,
   alpha: number,
   reducedMotion = false,
+  heavyWearV146?: CustomizationV146["heavyWear"],
 ): void {
   const player = state.player;
   const hasPlasmaCaster = loadout.weaponIds.includes("plasma-caster");
@@ -4213,9 +4224,14 @@ function drawHunterLayered(
   const atomicBodyReady = HUNTER_BODY_PART_IDS.every(
     (partId) => assets.hunterBodyParts[partId],
   );
-  // V146 mission wear: scratches and dirt grow with damage taken this hunt.
-  const armorTint = [armorFilter(appearance), wearFilterV146(missionWearV146(state.damageTaken, player.maxHealth))]
+  const missionWear = missionWearV146(state.damageTaken, player.maxHealth);
+  const armorTint = [armorFilter(appearance), wearFilterV146(missionWear)]
     .filter(part => part && part !== "none").join(" ") || "none";
+  const wearFor = (piece: HunterPieceIdV146): ArmorWearV172 | undefined => {
+    if (!heavyWearV146) return undefined;
+    const heavy = (heavyWearV146[piece] ?? 0) + (state.heavyWearHitsV146?.filter(hit => hit === piece).length ?? 0);
+    return missionWear || heavy ? { light: missionWear * 3, heavy } : undefined;
+  };
 
   context.save();
   context.globalAlpha = alpha;
@@ -4284,6 +4300,7 @@ function drawHunterLayered(
       for (const part of ["thigh-lower", "shin"] as const) {
         const greave: RegisteredLayerOptions = {
           filter: armorTint === "none" ? "brightness(.72)" : `${armorTint} brightness(.72)`, chromatics: { appearance, channel: "armor", piece: "shin" },
+          wear: wearFor("shin"),
           registration: hunterGreaveMatrixV145(appearance.bodyMorphId, part, "back"),
           clip: part === "shin" ? HUNTER_ARMOR_KEEP_CLIP_V145.shin : undefined,
         };
@@ -4333,30 +4350,30 @@ function drawHunterLayered(
     assets.hunterArmor.belt,
     frame,
     "pelvis",
-    { filter: armorTint, chromatics: { appearance, channel: "armor", piece: "belt" } },
+    { filter: armorTint, chromatics: { appearance, channel: "armor", piece: "belt" }, wear: wearFor("belt") },
   );
   drawRegisteredLayer(
     context,
     assets.hunterArmor.chest,
     frame,
     "torso",
-    { filter: armorTint, chromatics: { appearance, channel: "armor", piece: "chest" }, decalZone:"armor" },
+    { filter: armorTint, chromatics: { appearance, channel: "armor", piece: "chest" }, decalZone:"armor", wear: wearFor("chest") },
   );
   drawHunterBeltLoadout(context, assets, frame, loadout);
 
   // V145 wrap, first pass: plates behind their limb (and behind the head for
   // the shoulder). The masked second pass is drawn after the front limbs.
   const shoulderPlate: RegisteredLayerOptions = {
-    filter: armorTint, chromatics: { appearance, channel: "armor", piece: "shoulder" },
+    filter: armorTint, chromatics: { appearance, channel: "armor", piece: "shoulder" }, wear: wearFor("shoulder"),
     // Mirrored onto the deltoid, per-morph scale included.
     registration: hunterShoulderPlateMatrixV145(appearance.bodyMorphId),
     clip: HUNTER_ARMOR_KEEP_CLIP_V145[HUNTER_ARMOR_MODULES[appearance.armorStyleId].shoulder],
   };
   const frontLegPlates = loadout.armorId === "scout" ? [] : [
-    { image: assets.hunterArmor.thigh, bone: "legFrontUpper" as const, limb: "thigh-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const, piece: "thigh" as const } } },
-    { image: assets.hunterArmor.thighLower, bone: "legFrontLower" as const, limb: "shin-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const, piece: "shin" as const },
+    { image: assets.hunterArmor.thigh, bone: "legFrontUpper" as const, limb: "thigh-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const, piece: "thigh" as const }, wear: wearFor("thigh") } },
+    { image: assets.hunterArmor.thighLower, bone: "legFrontLower" as const, limb: "shin-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const, piece: "shin" as const }, wear: wearFor("shin"),
       registration: hunterGreaveMatrixV145(appearance.bodyMorphId, "thigh-lower", "front") } },
-    { image: assets.hunterArmor.shin, bone: "legFrontLower" as const, limb: "shin-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const, piece: "shin" as const },
+    { image: assets.hunterArmor.shin, bone: "legFrontLower" as const, limb: "shin-front" as const, options: { filter: armorTint, chromatics: { appearance, channel: "armor" as const, piece: "shin" as const }, wear: wearFor("shin"),
       registration: hunterGreaveMatrixV145(appearance.bodyMorphId, "shin", "front"), clip: HUNTER_ARMOR_KEEP_CLIP_V145.shin } },
   ];
   drawRegisteredLayer(context, assets.hunterArmor.shoulder, frame, "armFrontUpper", shoulderPlate);
@@ -4402,7 +4419,7 @@ function drawHunterLayered(
       assets.hunterArmor.bracer,
       frame,
       "armFrontLower",
-      { filter: armorTint, chromatics: { appearance, channel: "armor", piece: "bracer" } },
+      { filter: armorTint, chromatics: { appearance, channel: "armor", piece: "bracer" }, wear: wearFor("bracer") },
     );
     for (const plate of frontLegPlates) {
       drawWrappedLayerV145(context, plate.image, assets.hunterBodyParts[plate.limb], frame, plate.bone, plate.options);
@@ -4412,7 +4429,7 @@ function drawHunterLayered(
       assets.hunterArmor.knee,
       frame,
       "legFrontLower",
-      { filter: armorTint, chromatics: { appearance, channel: "armor", piece: "knee" } },
+      { filter: armorTint, chromatics: { appearance, channel: "armor", piece: "knee" }, wear: wearFor("knee") },
     );
   }
 
@@ -4498,7 +4515,7 @@ function drawHunterLayered(
           channel: "biomask",
           piece: "biomask",
         },
-        decalZone:"biomask",
+        decalZone:"biomask", wear: wearFor("biomask"),
       },
     );
   }
@@ -5258,6 +5275,7 @@ function renderGame(
   encounterRun: number,
   deviceScale: number,
   reducedMotion = false,
+  heavyWearV146?: CustomizationV146["heavyWear"],
 ): void {
   context.setTransform(deviceScale, 0, 0, deviceScale, 0, 0);
   context.clearRect(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
@@ -6163,6 +6181,7 @@ function renderGame(
       assets,
       hunterAlpha,
       reducedMotion,
+      heavyWearV146,
     );
     drawAimAssist(context, state, mission, loadout, appearance);
   }
@@ -6817,7 +6836,8 @@ function hurtPlayer(
   ) {
     return;
   }
-  const crackedV146 = heavyHitPieceV146(amount, player.maxHealth, state.heavyWearHitsV146?.length ?? 0);
+  const crackedV146 = heavyHitPieceV146(amount, player.maxHealth, state.heavyWearHitsV146?.length ?? 0,
+    piece => armorWearPieceIsWornV172(piece, state.harvestArmorIdV112, player.maskOn));
   if (crackedV146) state.heavyWearHitsV146 = [...(state.heavyWearHitsV146 ?? []), crackedV146];
   player.health -= amount;
   if(state.huntRites?.carryingCorpseId)state.huntRites={...state.huntRites,carryingCorpseId:null};
@@ -11075,6 +11095,7 @@ export default function HuntCanvas({
   controlBindings,
   huntAccessibility,
   appearance,
+  heavyWearV146,
   gauntletVariantId,
   houndV147,
   reducedGore,
@@ -11098,6 +11119,7 @@ export default function HuntCanvas({
   // Freeze the model for the current hunt. An external-tab cosmetic preference
   // update must not restart the same simulation or replace assets mid-combat.
   const [gauntletVisualId]=useState(()=>gauntletVariantId ?? "jungle-hunter");
+  const [frozenHeavyWear] = useState(() => ({ ...heavyWearV146 }));
   const [frozenHound] = useState(() => houndV147 && houndV147.condition === "ready" ? houndV147 : null);
   const [frozenInsertion] = useState(() => normalizePlanetInsertionPlan(insertionPlan) ?? { ...DEFAULT_PLAN });
   const [frozenInsertionShipId] = useState(insertionShipId);
@@ -12142,7 +12164,7 @@ export default function HuntCanvas({
         }
         navigateHuntDialogWithGamepad(huntDialogRef.current, input.gamepadDialogActions.splice(0));
         input.pressed.clear();
-        renderGame(context, game, mission, loadout, appearance, assets, encounterRun, deviceScale, fieldMotionPreference.matches);
+        renderGame(context, game, mission, loadout, appearance, assets, encounterRun, deviceScale, fieldMotionPreference.matches, frozenHeavyWear);
         if (time - lastUiPush >= 100) {
           lastUiPush = time;
           setUi(snapshot(game, mission));
@@ -12207,6 +12229,7 @@ export default function HuntCanvas({
         encounterRun,
         deviceScale,
         fieldMotionPreference.matches,
+        frozenHeavyWear,
       );
       if (time - lastUiPush >= 100) {
         lastUiPush = time;
@@ -12252,6 +12275,7 @@ export default function HuntCanvas({
     frozenInsertion,
     frozenInsertionShipId,
     frozenHound,
+    frozenHeavyWear,
     hardcoreHunt,
     insertionRunId,
     activeBindings,
