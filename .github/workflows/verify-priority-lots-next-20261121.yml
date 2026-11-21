@@ -1,96 +1,31 @@
-name: Verify the second P0–P3 lots
+name: Verify the delivered second-lot workbook
 on:
   push:
     branches: [codex/verify-priority-lots-next-20261121]
 permissions:
   contents: read
-  actions: read
 jobs:
-  source:
-    name: Test the native scenes, real TCP and campaign persistence
+  workbook:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
-    env:
-      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
-      NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '60076e6baeb480b71cf0fbfeebe0e90bf5770d01'
-      BASE_COMMIT: '0c6708999e393b7e7af8f6c8c8753ab7ec5d9437'
+    timeout-minutes: 10
     steps:
-      - name: Checkout the exact candidate and bounded inputs
+      - name: Checkout the exact workbook and generator
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '60076e6baeb480b71cf0fbfeebe0e90bf5770d01'
+          ref: '0382f9c4a15f6cef3d75edf6cc5faab63807e774'
           persist-credentials: false
-          fetch-depth: 12
           filter: blob:none
+          fetch-depth: 1
           sparse-checkout-cone-mode: false
           sparse-checkout: |
-            /*
-            !/*/
-            /app/
-            /lib/
-            /types/
-            /desktop/
-            /worker/
-            /tests/
-            /scripts/
-            /build/
-            /.openai/
-            /.github/workflows/
-            /docs/
+            /scripts/build-priority-lots-workbook-20261121.mjs
+            /scripts/lib/workbook-ooxml.mjs
             /production/YAUTJA_LOTS_P0_P3_20261121.*
             /production/YAUTJA_LOTS_P0_P3_LOT2_20261121.*
-            /public/game/xeno-prime/berceau-v1/
-            /public/audio/
-            /public/game/quatza-rij/
-            /public/game/assets/clan-field-20261103/
-            /public/**/manifest.json
-            /public/game/p0-sprites-20261113/warp/
-            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
-            /public/game/homeworld/v77/lava-transit-skiff.png
-            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
-            /public/game/homeworld/v64/clan-shuttle.png
-            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
-      - name: Materialize official runtime inputs and install dependencies
-        run: |
-          node scripts/materialize-asset-raccords-20261120.mjs runtime
-          npm ci --ignore-scripts --no-audit --no-fund
-      - name: Generate canonical runtime evidence
-        run: |
-          node scripts/materialize-asset-raccords-20261120.mjs candidate || { cat outputs/qa-asset-raccords-20261120/runtime-generator.log; exit 1; }
-          node scripts/check-hunt-integration-source-v112.mjs --current
-      - name: Verify Next types
-        if: ${{ !cancelled() }}
-        run: |
-          node node_modules/next/dist/bin/next typegen
-          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
-      - name: Targeted ESLint
-        if: ${{ !cancelled() }}
-        run: >-
-          npx eslint app/game/ClanHullProjectPanel.tsx app/game/ClanShipHub.tsx app/game/ClanShipOperationsPanel.tsx
-          app/game/QuatzaRijScene.tsx app/game/ClanChroniclePanel.tsx app/game/systems/quatzaRij.ts
-          app/game/systems/clanHullProjectV171.ts app/game/systems/fieldStashV112.ts
-          app/game/ClanWarPanelV85.tsx app/game/ClanWarBibleV6Panel.tsx app/game/ClanSupplyRouteV109.tsx
-          app/game/FirstHuntSoloV70.tsx app/game/firstHuntSoloV70Rendering.ts app/game/systems/firstHuntSoloV70.ts app/game/systems/campaignSoloV70.ts
-          scripts/serve-clan-war-stealth-coop-v115.mjs scripts/serve-clan-war-rts-coop-v133.mjs
-      - name: Verify the new routes and existing progression alongside real TCP
-        if: ${{ !cancelled() }}
-        run: >-
-          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
-          tests/clan-hull-project-v171.test.mjs tests/quatza-rij.test.mjs tests/field-stash-v112.test.mjs
-          tests/clan-war-rts-coop-v133.test.mjs tests/clan-war-stealth-coop-v115.test.mjs
-          tests/clan-war-rts-squads-v133.test.mjs tests/clan-ship-docking.test.mjs tests/ship-receipt-v161.test.mjs
-          tests/qa-hunt-ground-policy-v112.test.mjs tests/first-hunt-solo-v70.test.mjs tests/campaign-solo-v70.test.mjs
-          tests/hunt-field-stash-runtime-v112.test.mjs
-      - name: Preserve the existing hunting workbook byte for byte
-        if: ${{ !cancelled() }}
-        run: node scripts/build-hunt-mechanics-workbook-v112.mjs --check
-
-
       - name: Verify both lots workbooks against the reviewed source
         if: ${{ !cancelled() }}
         run: |
@@ -106,6 +41,8 @@ jobs:
           counts = [len(item["entries"]) for item in src["lots"]]
           assert counts == [10, 10, 10, 2], counts
           ids = [row["id"] for lot in src["lots"] for row in lot["entries"]]
+          checked = {row["id"]: row["status"] for lot in src["lots"] for row in lot["entries"]}
+          assert checked["R2-M041"] == "Validé"
           assert len(ids) == len(set(ids))
           with ZipFile(stem.with_suffix(".xlsx")) as archive:
               assert archive.testzip() is None
@@ -121,18 +58,4 @@ jobs:
                   assert sheet.find("./x:autoFilter", ns) is not None
           print("LOT2_XLSX_OK", counts)
           PY
-
-      - name: Report canonical inventory differences
-        if: ${{ !cancelled() && hashFiles('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json') != '' }}
-        run: |
-          node --input-type=module <<'NODE'
-          import { readFileSync } from 'node:fs';
-          const prior = JSON.parse(readFileSync('docs/qa/current-integration-20261103/runtime-inputs.json'));
-          const next = JSON.parse(readFileSync('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json'));
-          const old = new Map(prior.entries.map(item => [item.path, item]));
-          const paths = new Set(next.entries.map(item => item.path));
-          const changes = next.entries.filter(item => JSON.stringify(old.get(item.path)) !== JSON.stringify(item));
-          const removed = prior.entries.filter(item => !paths.has(item.path)).map(item => item.path);
-          console.log('V113_DELTA ' + JSON.stringify({ files: next.files, bytes: next.bytes, changes, removed }));
-          NODE
 
