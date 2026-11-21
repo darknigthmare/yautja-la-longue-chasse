@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2426,
-  "bytes": 1116820207,
+  "files": 2429,
+  "bytes": 1116840922,
   "entries": [
     {
       "path": ".github/workflows/p0-p1-coherence-20261109.yml",
@@ -385,13 +385,13 @@
     },
     {
       "path": "app/game/ClanWarGauntletLockerV132.module.css",
-      "bytes": 3484,
-      "sha256": "c6c7662f88a1496fff0dc8eb024386865ccfe4fc85b2f03024936669ccc27a83"
+      "bytes": 3743,
+      "sha256": "447b646f29ef0602e29f3a0c69cec5d576166cc87939ef0aa57309a42841320d"
     },
     {
       "path": "app/game/ClanWarGauntletLockerV132.tsx",
-      "bytes": 8962,
-      "sha256": "9e10e637277848c1c6540f4b49ec17fbe09432cd7f9e6f460101d61f262aba28"
+      "bytes": 9191,
+      "sha256": "a09e635ad45d3841f49237b11127948cbbbe76a8a51a62bc0871e8a6b6923057"
     },
     {
       "path": "app/game/ClanWarGauntletV131.module.css",
@@ -765,13 +765,18 @@
     },
     {
       "path": "app/game/GalaxyMapPanel.tsx",
-      "bytes": 46271,
-      "sha256": "a7a06fe272a244e8f325c785077751088656f67f44e598455e9c69c4a26e067f"
+      "bytes": 46487,
+      "sha256": "729a5d0a3c0a33c8b64cdc467a7de92118680776e516cfdb58edd1ebe411af5e"
+    },
+    {
+      "path": "app/game/GalaxyRouteDestinationContext.ts",
+      "bytes": 225,
+      "sha256": "62c63cafc6796b343611ce9a27b38a2c134f9be3ab23021e15e1aeff32e30924"
     },
     {
       "path": "app/game/GameClient.tsx",
-      "bytes": 438402,
-      "sha256": "2790c49c2d8338cfc68b8be499a1f601a2354b4b1cdbb636c71e00c281884cb2"
+      "bytes": 439241,
+      "sha256": "3f29f45e97259f2738611bca591651ba3ecfb00ffba4e2bca402714f5ee5df42"
     },
     {
       "path": "app/game/GameReserveEntryV104.module.css",
@@ -1435,8 +1440,8 @@
     },
     {
       "path": "app/game/HuntCanvas.tsx",
-      "bytes": 495756,
-      "sha256": "d72de60db917d838d5ba9146fc6c77db0e48d109ff4d305a2d5819fd47794e17"
+      "bytes": 497056,
+      "sha256": "aa3dc64fea26e4cfdc60367cdbb54e844b2a6de8f9012101444b7c6b20f6dc80"
     },
     {
       "path": "app/game/HuntFieldGuideV112.tsx",
@@ -1457,6 +1462,11 @@
       "path": "app/game/HuntRitualMeterV112.tsx",
       "bytes": 886,
       "sha256": "f9c3343a575fe046ef9d91477d15a837daa984a457c4517c0749c34d067ea160"
+    },
+    {
+      "path": "app/game/HunterArmorWearLayerV172.tsx",
+      "bytes": 1787,
+      "sha256": "7e38992e84d4fddafb18b4bd77b8dce896aeddd2ab73edfa5303c6e4e221b8b7"
     },
     {
       "path": "app/game/HunterChromaticForgeV113.module.css",
@@ -1485,13 +1495,13 @@
     },
     {
       "path": "app/game/HunterPieceForgeV146.tsx",
-      "bytes": 20111,
-      "sha256": "252e666c063ab5cc4a1ce3c7aabfd566a36961a192e7b212116e233bb43958f7"
+      "bytes": 20693,
+      "sha256": "da47279e0253df9e09d1f3ed132e554d812fb1666292d9c013ab5d80558604b7"
     },
     {
       "path": "app/game/HunterRigPreview.tsx",
-      "bytes": 34497,
-      "sha256": "899365a8851ae8225f7046bce31aa02173581e87088f25a258c389f4a1f77d9e"
+      "bytes": 35669,
+      "sha256": "ddc33089189ed10d725277e42e1e42f79f0f35f639cb10430e84c0ec42978081"
     },
     {
       "path": "app/game/HuntingHoundsPanelV147.module.css",
@@ -1990,13 +2000,13 @@
     },
     {
       "path": "app/game/SpaceRoutesPanelV159.module.css",
-      "bytes": 1601,
-      "sha256": "b32151b7a5cceaaf3618decac9e2ee376774495a052b264975519586363cbe18"
+      "bytes": 2088,
+      "sha256": "d0a0504625af874b3dbfcf42f1b278f98ce0c06e450c750c57eab778081ba7e9"
     },
     {
       "path": "app/game/SpaceRoutesPanelV159.tsx",
-      "bytes": 6114,
-      "sha256": "c827d67aa41bd1b2d417e2fa0bdde6ac4da8b64ea05ccd1ccc5d2c851fe7d23f"
+      "bytes": 9452,
+      "sha256": "e64d2111c682685ed8efacc5f121703a5eb8999779f37ef18bbc877e56692d41"
     },
     {
       "path": "app/game/TantalusPanelV164.module.css",
@@ -3177,6 +3187,11 @@
       "path": "app/game/huntAnnouncementQueueV78.ts",
       "bytes": 3033,
       "sha256": "82fd5e96fd9d2d2bdc1ac8ce209c632ae9cb2c91f8350ee0b7e4cb0eb68ae2ef"
+    },
+    {
+      "path": "app/game/hunterArmorWearV172.ts",
+      "bytes": 5338,
+      "sha256": "24879352792a5eafa59fefffb2cac13c136623d368415a09b8849d30ba651818"
     },
     {
       "path": "app/game/hunterChromaticCanvasV113.ts",
@@ -4720,8 +4735,8 @@
     },
     {
       "path": "app/game/systems/gauntletCampaignV134.ts",
-      "bytes": 7096,
-      "sha256": "f9860af6defb2de220e07ff6d516f4546b7655f6a5fcd90cc6e8ae5e5bcfcded"
+      "bytes": 8241,
+      "sha256": "165bbb3199fbd39689c305ce439551df3da567a97dd370fa85c4cb44c6c66976"
     },
     {
       "path": "app/game/systems/gauntletMissionVisualV141.ts",
@@ -5800,13 +5815,13 @@
     },
     {
       "path": "app/game/systems/hunterCustomizationPersistenceV146.ts",
-      "bytes": 2131,
-      "sha256": "ea467b84c07ea288f20d3e5fd482d2a65042f4704098bdf6351adefa9a64ac92"
+      "bytes": 3209,
+      "sha256": "11da50776b815842e850be60dd360a4c4ea15d5d5bdbfefa561915be0163b75f"
     },
     {
       "path": "app/game/systems/hunterCustomizationV146.ts",
-      "bytes": 22861,
-      "sha256": "9554397d929298c6de71485cf7328242dadf0f45b63cec78667081d01bad7ba0"
+      "bytes": 24103,
+      "sha256": "de83ba70ee304e5ec229cf7fcf8984974b131a2e26b476546aef419c29e5c916"
     },
     {
       "path": "app/game/systems/hunterModeAppearanceV147.ts",
@@ -6585,8 +6600,8 @@
     },
     {
       "path": "app/game/systems/spaceRoutesV159.ts",
-      "bytes": 27575,
-      "sha256": "eecb1e790eb2245110995fbd49d96c306e8eb20353df5ec3f0428bc8a1ec04ff"
+      "bytes": 29053,
+      "sha256": "e7edd379bc5ab76b8cd79bc09976acf5ce576cf99bdac35dec533a90d07d381b"
     },
     {
       "path": "app/game/systems/tantalusV164.ts",

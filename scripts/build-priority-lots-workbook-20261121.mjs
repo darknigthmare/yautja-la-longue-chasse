@@ -89,6 +89,16 @@ export function buildPriorityLotsWorkbook(input) {
   const sheets = PRIORITIES.map(priority => ({
     name: priority, title: 'Lot ' + priority, columns: ENTRY_COLUMNS, rows: byPriority.get(priority),
   }));
+  let deliveries = [];
+  if (input.deliveries !== undefined) {
+    if (!Array.isArray(input.deliveries) || input.deliveries.length === 0 || input.deliveries.length > LIMIT) {
+      throw new TypeError('Delivery evidence needs one to ' + LIMIT + ' entries');
+    }
+    deliveries = [{
+      name: 'Livraisons', title: 'Parcours intégrés et vérifications', columns: ENTRY_COLUMNS,
+      rows: input.deliveries.map(entry => itemForWorkbook(entry, allIds)),
+    }];
+  }
   const summary = {
     name: 'Synthèse', title: 'Suivi des lots P0 à P3', columns: SUMMARY_COLUMNS,
     rows: sheets.map(sheet => ({
@@ -99,7 +109,7 @@ export function buildPriorityLotsWorkbook(input) {
 
   return renderWorkbook({
     title: summary.title, scope: 'Exigences distinctes, critères et résultats des quatre lots.',
-    asOf: input.date, release: 'Yautja · Lots P0 à P3', sheets: [summary, ...sheets],
+    asOf: input.date, release: 'Yautja · Lots P0 à P3', sheets: [summary, ...sheets, ...deliveries],
   }, {
     applicationName: 'Yautja Priority Lots Workbook',
     subtitle: input.date + ' · Base ' + input.baseCommit,
@@ -124,9 +134,9 @@ async function cli() {
   const { resolve } = await import('node:path');
   const { fileURLToPath } = await import('node:url');
   const args = process.argv.slice(2);
-  const lots = args.filter(arg => arg === '--lot-2' || arg === '--lot-3' || arg === '--lot-4');
+  const lots = args.filter(arg => /^--lot-[2-5]$/.test(arg));
   if (lots.length > 1 || new Set(args).size !== args.length || args.some(arg => arg !== '--check' && !lots.includes(arg))) {
-    throw new Error('Usage: node scripts/build-priority-lots-workbook-20261121.mjs [--lot-2|--lot-3|--lot-4] [--check]');
+    throw new Error('Usage: node scripts/build-priority-lots-workbook-20261121.mjs [--lot-2|--lot-3|--lot-4|--lot-5] [--check]');
   }
   const check = args.includes('--check');
   const number = lots[0]?.at(-1);
