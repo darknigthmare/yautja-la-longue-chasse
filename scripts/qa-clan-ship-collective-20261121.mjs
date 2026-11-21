@@ -313,9 +313,12 @@ try {
       assert.deepEqual(proof.encounter.crewRoles.slice().sort(), clanPosts.map(npc => npc.spaceCrewRole).sort());
       assert.equal(won.profile.clanMarks, seed.profile.clanMarks);
       assert.equal(saves.parseSaveImport(saves.exportSave(won)).failure, null);
-      await capture('extraction');
       const final = await reload(station);
       assert.deepEqual(receipt(final), records);
+      if (station !== 'conseil') await visit('conseil');
+      await openPost('journal');
+      await panel.locator('[data-collective-completed]').waitFor();
+      await capture('extraction');
       run.receipt = records[0];
       run.marks = final.profile.clanMarks;
     } finally {

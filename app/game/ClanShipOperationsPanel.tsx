@@ -15,7 +15,7 @@ import ClanShipSpaceEncounter from './ClanShipSpaceEncounter';
 import ClanShipCrewDialogue from './ClanShipCrewDialogue';
 import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
 import { CLAN_SHIP_CREW_ART_ROLES, clanShipCrewArtIdentity } from './clanShipCrew';
-import { availableClanResidenceCrew, companionHostLabel } from './systems/companionResidence';
+import { availableClanResidenceCrew, clanResidenceCrewPostRooms, companionHostLabel } from './systems/companionResidence';
 import { selectClanShipCrewDialogue, type ClanShipCrewDialogueContext } from './systems/clanShipCrewDialogue';
 import { clanShipDialogue } from './systems/clanShipDialogue';
 import { useMenuGamepad } from './useMenuGamepad';
@@ -74,6 +74,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
   const atCouncil = roomId === 'conseil';
   const completed = new Set(state.completedContracts.map(receipt => receipt.contractId));
   const availableCrew = availableClanResidenceCrew(save);
+  const collectivePosts = collective ? clanResidenceCrewPostRooms(save) : null;
   useMenuGamepad(rootRef, !suspended, 'clan-ship-operations', onClose);
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
@@ -149,14 +150,15 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
             onClick={() => act({ type: 'collective-role', role: 'coordination', expectedRevision: state.revision })}>Coordonner depuis le conseil</button>
         </div> : routeButton('conseil', 'Choisir ton rôle au conseil')}
       <ul className={styles.missionSteps}>{CLAN_SHIP_RECRUITS.map(member => {
-        const checked = collective.checkedNpcIds.includes(member.id), available = availableCrew.includes(member.id);
+        const checked = collective.checkedNpcIds.includes(member.id);
+        const station = collectivePosts?.[member.id];
         return <li key={member.id}>
-          <strong>{member.name} · {member.role}</strong><span>{CLAN_SHIP_INTERIOR_ROOMS[member.roomId].label} · {
-            !available ? 'Indisponible' : checked ? 'Poste vérifié' : 'À vérifier'}</span>
-          {available && !checked && (roomId === member.roomId ? <button type="button" className={styles.secondary}
+          <strong>{member.name} · {member.role}</strong><span>{CLAN_SHIP_INTERIOR_ROOMS[station ?? member.roomId].label} · {
+            !station ? 'Indisponible' : checked ? 'Poste vérifié' : 'À vérifier'}</span>
+          {station && !checked && (roomId === station ? <button type="button" className={styles.secondary}
             data-collective-check={member.id} disabled={suspended}
             onClick={() => act({ type: 'collective-check', npcId: member.id, expectedRevision: state.revision })}>Vérifier ce poste</button>
-            : routeButton(member.roomId, `Rejoindre ${member.name}`))}
+            : routeButton(station, `Rejoindre ${member.name}`))}
         </li>;
       })}</ul>
       {collective.role && collective.checkedNpcIds.length === CLAN_SHIP_RECRUITS.length && availableCrew.length === CLAN_SHIP_RECRUITS.length &&

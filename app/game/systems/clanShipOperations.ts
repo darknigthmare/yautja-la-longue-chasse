@@ -192,7 +192,7 @@ export interface ClanShipOperationsContext {
   /** Omitted by older campaigns; provided by the residence ledger once a
    * recruitment has an explicit hull posting, suspension or reserve state. */
   availableCrewIds?: readonly ClanShipNpcId[];
-  clanCapacity?: 7 | 13 | 19;
+  crewPostRooms?: Readonly<Partial<Record<ClanShipNpcId, ClanShipRoomId>>>;
 }
 type SpaceCommand = Parameters<typeof actClanShipSpaceEncounter>[1];
 export type ClanShipOperationsAction = { expectedRevision: number } & (
@@ -538,7 +538,7 @@ export function actClanShipOperations(state: ClanShipOperationsState, action: Cl
       if (!evaluated.allowed) return refused(state, 'contract-unavailable', evaluated.reason);
       const definition = clanShipContract(action.contractId)!;
       if (definition.id === CLAN_SHIP_COLLECTIVE_ID) {
-        const capacity = context.clanCapacity ?? 7;
+        const capacity = context.campaign.companionResidence?.clanCapacity ?? 7;
         if (!collectiveCapacity(capacity)) return refused(state, 'invalid-capacity', 'Relis la capacité reçue au registre des quartiers.');
         return changed(state, { activeContract: { contractId: definition.id, acceptedRevision: state.revision + 1, stepIndex: 0,
           missionEncounterRun: null, baselineCompletions: 0, collective: { role: null, capacity, checkedNpcIds: [] } }, spaceEncounter: null },
@@ -590,15 +590,16 @@ export function actClanShipOperations(state: ClanShipOperationsState, action: Cl
       }
       if (action.type === 'collective-check') {
         const member = clanShipRecruit(action.npcId)!;
-        if (!at(member.roomId)) return wrongRoom();
-        if (!available(member.id) || briefing.checkedNpcIds.includes(member.id))
+        const station = context.crewPostRooms ? context.crewPostRooms[member.id] : member.roomId;
+        if (station && !at(station)) return wrongRoom();
+        if (!station || !available(member.id) || briefing.checkedNpcIds.includes(member.id))
           return refused(state, 'collective-post-unavailable', 'Vérifie la disponibilité et les contrôles déjà enregistrés.');
         return changed(state, { activeContract: { ...active, collective: { ...briefing,
           checkedNpcIds: [...briefing.checkedNpcIds, member.id] } } }, `${member.name} confirme son poste pour l’escorte.`);
       }
       if (!at('hangar')) return wrongRoom();
       if (briefing.role === null || !completeCollectiveRoster(briefing) || !CLAN_SHIP_RECRUITS.every(member => available(member.id)) ||
-          (context.clanCapacity ?? 7) < briefing.capacity)
+          (context.campaign.companionResidence?.clanCapacity ?? 7) < briefing.capacity)
         return refused(state, 'collective-crew-incomplete', 'Il faut choisir ton poste et vérifier les six spécialistes disponibles avant le départ.');
       return changed(state, { spaceEncounter: createClanShipSpaceEncounter('escort', CLAN_SHIP_RECRUITS.map(member => member.spaceCrewRole)) },
         'Le hangar confirme le départ de la formation. Rejoins ton poste pour couvrir le transport.');
