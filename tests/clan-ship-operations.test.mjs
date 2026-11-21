@@ -675,7 +675,7 @@ test('collective escort checks real postings, applies role-specific orders and s
   }
 
   const residence = qa.load('app/game/systems/companionResidence.ts');
-  const interior = qa.load('app/game/systems/clanShipInterior.ts');
+  const interiorMap = qa.load('app/game/systems/clanShipInterior.ts');
   const recognized = act(escort(baseline), 'confirm-circle', {}, 'conseil', save).state;
   let quarters = { ...save, clanShipDocking: berth, clanShipOperations: recognized,
     profile: { ...save.profile, clanMarks: 360 } };
@@ -683,7 +683,7 @@ test('collective escort checks real postings, applies role-specific orders and s
     const expanded = residence.actCompanionResidence({ type: 'expand-clan-quarters', ownerCreatedAt: OWNER,
       expectedRevision: quarters.companionResidence?.revision ?? 0 }, { save: quarters, selectedShipId: receipt.shipId,
       ownedShipIds: [receipt.shipId], active: true, site: 'clan',
-      observation: { site: 'clan', roomId: 'hangar', ...interior.CLAN_SHIP_INTERIOR_ROOMS.hangar.servicePoint } });
+      observation: { site: 'clan', roomId: 'hangar', ...interiorMap.CLAN_SHIP_INTERIOR_ROOMS.hangar.servicePoint } });
     assert.ok(expanded.accepted, expanded.message);
     assert.equal(expanded.state.clanCapacity, capacity);
     assert.equal(expanded.clanMarks, remaining);
