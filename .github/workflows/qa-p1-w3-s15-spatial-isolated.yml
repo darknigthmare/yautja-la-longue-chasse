@@ -1,0 +1,48 @@
+name: Écoute native W3-S15 (recette isolée)
+on:
+  push:
+    branches: ['codex/qa-p1-w3-s15-spatial-lot7-20261121']
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /app/
+            /scripts/
+            /tests/
+            /docs/**/*.json
+            /public/**/*.json
+            /production/**/*.json
+            /public/audio/ambience/ship/v54.wav
+            /public/audio/sfx/scan/v54.wav
+            /package.json
+            /package-lock.json
+            /.npmrc
+            /tsconfig*.json
+            /eslint.config.mjs
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Lint du périmètre
+        run: npx eslint app/game/systems/clanLogisticsV108.ts app/game/systems/logisticsSpatialPlayback.ts app/game/ClanSupplyRouteV109.tsx tests/clan-logistics-v108.test.mjs scripts/qa-w3-s15-spatial-audio-v109.mjs
+      - name: Contrats V108 et V109
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/clan-logistics-v108.test.mjs tests/clan-supply-route-v109.test.mjs
+      - name: Signal réel gauche droite et occultation dans Chrome
+        run: node scripts/qa-w3-s15-spatial-audio-v109.mjs
+      - name: Types projet
+        if: always()
+        run: npm run typecheck
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: w3-s15-ecoute-spatiale
+          path: outputs/qa-w3-s15-spatial-audio-v109

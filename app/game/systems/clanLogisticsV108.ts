@@ -67,7 +67,29 @@ export function createLogisticsV108(rules:WarRulesV6=DEFAULT_WAR_RULES_V6):Logis
 }
 export function logisticsCanStandV108(x:number,y:number,radius=9){return x>=radius&&x<=1000-radius&&y>=radius&&y<=600-radius&&!(x+radius>850&&y-radius<130)&&!(x+radius>430&&x-radius<540&&y-radius<410)&&!CLAN_LOGISTICS_WALLS_V108.some(w=>x+radius>w.x&&x-radius<w.x+w.w&&y+radius>w.y&&y-radius<w.y+w.h);}
 function clear(a:{x:number;y:number},b:{x:number;y:number},radius=9){const steps=Math.ceil(dist(a,b)/3);for(let i=1;i<=steps;i++)if(!logisticsCanStandV108(a.x+(b.x-a.x)*i/steps,a.y+(b.y-a.y)*i/steps,radius))return false;return true;}
-export function logisticsHearingV108(s:LogisticsStateV108,sourceId:string){const source=CLAN_LOGISTICS_AUDIO_V108.find(a=>a.id===sourceId),a=logisticsActorV108(s,actorId('W3-S15'))!;return !!source&&logisticsReadyV108(s,a)&&a.layer==='surface'&&dist(a,source)<=150&&clear(a,source,0);}
+const HEARING_RANGE_V108 = 150;
+export interface LogisticsAcousticsV108 {
+  status: 'audible' | 'range' | 'occluded' | 'unavailable';
+  distance: number | null;
+  gain: number;
+  pan: number;
+}
+
+/** Same range and wall test as the replay contract; gain and pan only affect live playback. */
+export function logisticsAcousticsV108(state:LogisticsStateV108,sourceId:string):LogisticsAcousticsV108 {
+ const source=CLAN_LOGISTICS_AUDIO_V108.find(item=>item.id===sourceId);
+ const listener=logisticsActorV108(state,actorId('W3-S15'));
+ if(!source||!listener||!logisticsReadyV108(state,listener)||listener.layer!=='surface')
+  return {status:'unavailable',distance:null,gain:0,pan:0};
+ const distance=dist(listener,source);
+ if(distance>HEARING_RANGE_V108)return {status:'range',distance,gain:0,pan:0};
+ if(!clear(listener,source,0))return {status:'occluded',distance,gain:0,pan:0};
+ const remaining=1-distance/HEARING_RANGE_V108;
+ return {status:'audible',distance,gain:.08+.72*remaining*remaining,pan:.85*(source.x-listener.x)/Math.max(24,distance)};
+}
+export function logisticsHearingV108(state:LogisticsStateV108,sourceId:string) {
+ return logisticsAcousticsV108(state,sourceId).status==='audible';
+}
 function pay(s:LogisticsStateV108,a:LogisticsActorV108,need:number){let paid=0;const take=(available:number)=>Math.min(available,need-paid);let n=take(a.rav);a.rav-=n;paid+=n;
  if(a.aboard){const hull=s[a.aboard];n=take(hull.cargo);hull.cargo-=n;paid+=n;}
  else if(near(a,CLAN_LOGISTICS_DEPOT_V108,70)){n=take(s.depot);s.depot-=n;paid+=n;}
