@@ -4,6 +4,8 @@ Nov 21, 2026 · @darknigthmare
 
 Avenant à la [Bible de campagne](BIBLE_DE_CAMPAGNE.md). Il ajoute la Terre comme terrain de chasses libres, avec 20 sites réels, sans reprendre aucun lieu des films.
 
+Le déroulé jouable des missions est détaillé dans [Terre — Gameplay des missions](TERRE_GAMEPLAY_MISSIONS_20261121.md).
+
 **Règle de lecture.** Les lignes **Décision** viennent des réponses de l'auteur (21 novembre 2026). Tout ce qui est marqué *(proposé)* est à valider, comme dans le reste de la bible. Les renvois (R2-M…, JUST-…, TR-F…, L-…) pointent vers les fiches et règles existantes de la bible et du classeur V6.
 
 ---
