@@ -12,6 +12,8 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const publicRoot = resolve(root, 'public');
 const output = resolve(root, process.env.BIOMASK_FIT_OUTPUT ?? 'outputs/biomask-fit-v137');
 const catalog = JSON.parse(await readFile(resolve(root, 'app/game/data/conceptBiomasksV133.json'), 'utf8')).records;
+const atlas = JSON.parse(await readFile(resolve(root, 'app/game/data/decalCatalogV133.json'), 'utf8'));
+const decalIds = ['hunting-glyph', 'war-scratch', 'scorched-line'].map(id => 'clan-v133-biomask-' + id);
 const morphs = ['classic', 'young', 'elder', 'super', 'feral', 'huntress'];
 const poses = ['idle', 'run', 'jump', 'fall', 'climb', 'extract'];
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -20,16 +22,18 @@ const fixture = {
   contents: [
     "import { createRoot } from 'react-dom/client';",
     "import { HunterRigPreview } from './app/game/HunterRigPreview';",
+    "import { DEFAULT_CHROMATICS_V113 } from './app/game/hunterChromaticsV113';",
     "const params = new URLSearchParams(location.search);",
     "const mask = params.get('mask');",
     "const pose = params.get('pose');",
+    "const chromaticsV113 = { ...DEFAULT_CHROMATICS_V113, maskDecalId: params.get('decal') };",
     "const arms = pose === 'run' ? { speed: 170 } : pose === 'fall' ? { verticalVelocity: 220 } : {};",
     "const morphs = " + JSON.stringify(morphs) + ";",
     "createRoot(document.querySelector('main')).render(morphs.flatMap(morph => [1, -1].map(facing =>",
     "  <section key={morph + facing} data-case data-facing={facing}>",
     "    <span>{morph} · {facing === 1 ? 'profil droit' : 'profil gauche'}</span>",
     "    <HunterRigPreview size={180} appearance={{ presetId: 'custom', bodyMorphId: morph,",
-    "      headStyleId: 'reference', skinId: 'ochre-mottle', biomaskId: mask,",
+    "      headStyleId: 'reference', skinId: 'ochre-mottle', biomaskId: mask, chromaticsV113,",
     "      dreadStyleId: morph === 'feral' || morph === 'huntress' ? morph : 'classic',",
     "      dreadTintId: 'obsidian', armorStyleId: 'classic', armorTintId: 'bronze', trophyAdornmentId: 'none' }}",
     "      armorId='scout' weaponIds={[]} facing={facing} pose={pose} phase={.36} extractionProgress={.45} {...arms} />",
@@ -85,12 +89,13 @@ await mkdir(output, { recursive: true });
 for (const mask of catalog) {
   assert.equal(digest(await readFile(resolve(publicRoot, '.' + mask.assetPath))), mask.fileSha256);
 }
+assert.equal(digest(await readFile(resolve(publicRoot, '.' + atlas.atlasPath))), atlas.atlasSha256);
 const report = {
   source: process.env.GITHUB_SHA ?? null,
   scope: 'Composant HunterRigPreview natif. Deux directions miroir de la même projection 2D, six morphologies et six poses.',
   limitations: ['Vue de face et vue de dos dédiées absentes du rig', 'Captures Chromium de la couche DOM uniquement',
     'Aucune homologation artistique, détection de collision anatomique humaine ou fidélité PHG 1:1'],
-  cases: [], captures: [], failedRequests: [], runtimeErrors: [],
+  cases: [], decals: [], captures: [], failedRequests: [], runtimeErrors: [],
 };
 let browser;
 try {
@@ -107,14 +112,16 @@ try {
   });
   const origin = 'http://127.0.0.1:' + server.address().port;
 
+  const waitForRig = () => page.waitForFunction(() => {
+    const rigs = [...document.querySelectorAll('[data-hunter-rig]')];
+    return rigs.length === 12 && rigs.every(rig =>
+      [...rig.querySelectorAll('img')].every(image => image.complete && image.naturalWidth > 0));
+  });
+
   for (const mask of catalog) {
     for (const pose of poses) {
       await page.goto(origin + '/?' + new URLSearchParams({ mask: mask.id, pose }));
-      await page.waitForFunction(() => {
-        const rigs = [...document.querySelectorAll('[data-hunter-rig]')];
-        return rigs.length === 12 && rigs.every(rig =>
-          [...rig.querySelectorAll('img')].every(image => image.complete && image.naturalWidth > 0));
-      });
+      await waitForRig();
       const cases = await page.evaluate(id => {
         const size = { width: 256, height: 384 };
         const canvas = document.createElement('canvas');
@@ -185,11 +192,109 @@ try {
       report.captures.push({ name, sha256: digest(bytes) });
     }
   }
+  // Compare actual pixels against the translated alpha of the native owner.
+  const decalMask = catalog[0];
+  const baseRoute = origin + '/?' + new URLSearchParams({ mask: decalMask.id, pose: 'run' });
+  const grid = page.locator('main');
+  await page.goto(baseRoute);
+  await waitForRig();
+  const base = await grid.screenshot();
+  const dataUrl = bytes => 'data:image/png;base64,' + bytes.toString('base64');
+  for (const decalId of decalIds) {
+    assert.ok(atlas.records.some(entry => entry.id === decalId && entry.zone === 'biomask'));
+    await page.goto(baseRoute + '&decal=' + decalId);
+    await waitForRig();
+    const decals = page.locator('[data-yautja-decal-zone]');
+    assert.equal(await decals.count(), 12);
+    const tinted = await grid.screenshot();
+    const decorated = await page.evaluate(async ({ old, current, mask, decalId, atlasPath }) => {
+      async function bitmap(url) {
+        const source = new Image();
+        source.src = url;
+        await source.decode();
+        return source;
+      }
+      const [oldImage, currentImage] = await Promise.all([bitmap(old), bitmap(current)]);
+      const canvas = document.createElement('canvas');
+      canvas.width = oldImage.naturalWidth;
+      canvas.height = oldImage.naturalHeight;
+      const { width, height } = canvas;
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+      function pixels(image) {
+        ctx.clearRect(0, 0, width, height);
+        ctx.drawImage(image, 0, 0);
+        return ctx.getImageData(0, 0, width, height).data;
+      }
+      const oldPixels = pixels(oldImage);
+      const newPixels = pixels(currentImage);
+      const frame = document.querySelector('main').getBoundingClientRect();
+      ctx.clearRect(0, 0, width, height);
+      const entries = [...document.querySelectorAll('[data-case]')].map(item => {
+        const rig = item.querySelector('[data-hunter-rig]');
+        const image = rig.querySelector('img[data-rig-slot="mask-' + mask + '"]');
+        const bounds = rig.getBoundingClientRect();
+        const matrix = new DOMMatrixReadOnly(getComputedStyle(image.parentElement).transform);
+        const local = getComputedStyle(image);
+        ctx.save();
+        ctx.translate(bounds.x - frame.x, bounds.y - frame.y);
+        ctx.transform(matrix.a, matrix.b, matrix.c, matrix.d, matrix.e, matrix.f);
+        ctx.drawImage(image, parseFloat(local.left), parseFloat(local.top), parseFloat(local.width), parseFloat(local.height));
+        ctx.restore();
+        const decal = rig.querySelector('[data-yautja-decal-zone]');
+        const decalOwner = decal.querySelector('[data-decal-mask-owner-v139]');
+        const cell = decal.querySelector('[data-decal-projected-cell-v139]');
+        return {
+          morph: rig.dataset.bodyMorph, facing: Number(item.dataset.facing),
+          ownerMatches: getComputedStyle(decalOwner).maskImage.includes(image.getAttribute('src')),
+          atlasMatches: getComputedStyle(cell).backgroundImage.includes(atlasPath),
+          correctZone: decal.dataset.yautjaDecalZone === 'biomask' && decal.dataset.yautjaDecalId === decalId,
+          left: Math.floor(item.getBoundingClientRect().left - frame.left),
+          top: Math.floor(item.getBoundingClientRect().top - frame.top),
+          right: Math.ceil(item.getBoundingClientRect().right - frame.left),
+          bottom: Math.ceil(item.getBoundingClientRect().bottom - frame.top),
+          coveredChanges: 0,
+        };
+      });
+      const support = ctx.getImageData(0, 0, width, height).data;
+      let outside = 0;
+      function nearMask(x, y) {
+        // Two CSS pixels absorb raster antialiasing between canvas and CSS.
+        for (let sy = Math.max(0, y - 2); sy <= Math.min(height - 1, y + 2); sy++) {
+          for (let sx = Math.max(0, x - 2); sx <= Math.min(width - 1, x + 2); sx++) {
+            if (support[(sy * width + sx) * 4 + 3] > 8) return true;
+          }
+        }
+        return false;
+      }
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          const index = (y * width + x) * 4;
+          const distance = Math.abs(oldPixels[index] - newPixels[index]) +
+            Math.abs(oldPixels[index + 1] - newPixels[index + 1]) +
+            Math.abs(oldPixels[index + 2] - newPixels[index + 2]);
+          if (distance <= 24) continue;
+          if (!nearMask(x, y)) outside++;
+          const owner = entries.find(caseInfo => x >= caseInfo.left && x < caseInfo.right &&
+            y >= caseInfo.top && y < caseInfo.bottom);
+          if (owner) owner.coveredChanges++;
+        }
+      }
+      return { outside, entries };
+    }, { old: dataUrl(base), current: dataUrl(tinted), mask: decalMask.id, decalId, atlasPath: atlas.atlasPath });
+    report.decals.push({ id: decalId, ...decorated });
+    assert.equal(decorated.outside, 0, decalId + ' changed pixels outside its owning biomask alpha');
+    assert.equal(decorated.entries.length, 12);
+    assert.ok(decorated.entries.every(entry => entry.ownerMatches && entry.atlasMatches &&
+      entry.correctZone && entry.coveredChanges > 0), decalId + ' must visibly paint only its own zone');
+    const name = decalId + '-on-' + decalMask.id + '-run.png';
+    await writeFile(resolve(output, name), tinted);
+    report.captures.push({ name, sha256: digest(tinted) });
+  }
   assert.equal(report.cases.length, catalog.length * morphs.length * 2 * poses.length);
   assert.deepEqual(report.failedRequests, []);
   assert.deepEqual(report.runtimeErrors, []);
   report.passed = true;
-  console.log(JSON.stringify({ cases: report.cases.length, captures: report.captures.length, passed: true }));
+  console.log(JSON.stringify({ cases: report.cases.length, decals: report.decals.length, captures: report.captures.length, passed: true }));
 } catch (error) {
   report.passed = false;
   report.error = String(error?.stack ?? error);
