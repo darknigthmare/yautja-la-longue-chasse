@@ -292,7 +292,7 @@ jobs:
           node --experimental-strip-types --test --test-reporter=spec tests/clan-ship-operations.test.mjs tests/clan-ship-space-encounter.test.mjs tests/clan-ship-operations-save.test.mjs tests/clan-hull-project-v171.test.mjs 2>&1 | tee outputs/p0-p3-20261121/clan-collective-node.log
       - name: Strict lint of the changed Ship paths
         if: ${{ !cancelled() && steps.inputs.conclusion == 'success' }}
-        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/systems/clanShipOperations.ts app/game/ClanShipHub.tsx app/game/ClanShipOperationsPanel.tsx app/game/ClanShipSpaceEncounter.tsx tests/clan-ship-operations.test.mjs scripts/qa-clan-ship-collective-20261121.mjs
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/systems/clanShipOperations.ts app/game/systems/companionResidence.ts app/game/ClanShipHub.tsx app/game/ClanShipOperationsPanel.tsx app/game/ClanShipSpaceEncounter.tsx tests/clan-ship-operations.test.mjs scripts/qa-clan-ship-collective-20261121.mjs
       - name: Build and start the production application
         id: server
         if: ${{ !cancelled() && steps.inputs.conclusion == 'success' }}
@@ -307,7 +307,7 @@ jobs:
           done
           curl --fail --silent http://127.0.0.1:3121/ > /dev/null
           printf 'YAUTJA_QA_BUILD_ID=%s\n' "$(cat .next/BUILD_ID)" >> "$GITHUB_ENV"
-      - name: Cross all six posts, reload and play both genuine escort roles
+      - name: Verify the six actual posts, restored escort turns and council journal
         if: ${{ !cancelled() && steps.server.conclusion == 'success' }}
         env:
           CLAN_COLLECTIVE_QA_COMMIT: '${{ github.sha }}'

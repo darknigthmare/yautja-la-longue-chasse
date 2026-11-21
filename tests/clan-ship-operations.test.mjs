@@ -673,4 +673,30 @@ test('collective escort checks real postings, applies role-specific orders and s
     assert.equal(saves.parseSaveImport(JSON.stringify(damaged)).failure, 'invalid-save');
     assert.equal(saves.parseSaveImport(JSON.stringify({ ...valid, clanHullProjectV171: null })).failure, 'invalid-save');
   }
+
+  const residence = qa.load('app/game/systems/companionResidence.ts');
+  const interior = qa.load('app/game/systems/clanShipInterior.ts');
+  const recognized = act(escort(baseline), 'confirm-circle', {}, 'conseil', save).state;
+  let quarters = { ...save, clanShipDocking: berth, clanShipOperations: recognized,
+    profile: { ...save.profile, clanMarks: 360 } };
+  for (const [capacity, remaining] of [[13, 240], [19, 0]]) {
+    const expanded = residence.actCompanionResidence({ type: 'expand-clan-quarters', ownerCreatedAt: OWNER,
+      expectedRevision: quarters.companionResidence?.revision ?? 0 }, { save: quarters, selectedShipId: receipt.shipId,
+      ownedShipIds: [receipt.shipId], active: true, site: 'clan',
+      observation: { site: 'clan', roomId: 'hangar', ...interior.CLAN_SHIP_INTERIOR_ROOMS.hangar.servicePoint } });
+    assert.ok(expanded.accepted, expanded.message);
+    assert.equal(expanded.state.clanCapacity, capacity);
+    assert.equal(expanded.clanMarks, remaining);
+    quarters = { ...quarters, companionResidence: expanded.state, profile: { ...quarters.profile, clanMarks: remaining } };
+    const expandedContract = accept(recognized, ops.CLAN_SHIP_COLLECTIVE_ID, quarters);
+    assert.equal(expandedContract.activeContract.collective.capacity, capacity);
+    assert.equal(ops.evaluateClanShipOperationsCampaign(expandedContract, quarters).allowed, true);
+    assert.equal(ops.evaluateClanShipOperationsCampaign(expandedContract, save).allowed, false);
+  }
+
+  const posted = accept(baseline, ops.CLAN_SHIP_COLLECTIVE_ID, save);
+  const check = command(posted, 'collective-check', { npcId: 'threshold-guard' });
+  const assignedPost = { availableCrewIds: all, crewPostRooms: { 'threshold-guard': 'trophees' } };
+  denied(posted, check, { ...context('hangar', save), ...assignedPost }, 'wrong-room');
+  assert.equal(ops.actClanShipOperations(posted, check, { ...context('trophees', save), ...assignedPost }).accepted, true);
 });
