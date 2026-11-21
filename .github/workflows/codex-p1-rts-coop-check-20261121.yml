@@ -11,13 +11,21 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
+          sparse-checkout-cone-mode: false
           sparse-checkout: |
-            app
-            scripts
-            tests
-            public/game/homeworld/v64
-            public/game/homeworld/v77
-            public/audio
+            /app/
+            /scripts/
+            /tests/
+            /public/**/*.json
+            /docs/**/*.json
+            /public/game/homeworld/v64/
+            /public/game/homeworld/v77/
+            /public/audio/
+            /package.json
+            /package-lock.json
+            /.npmrc
+            /tsconfig*.json
+            /eslint.config.mjs
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with: {node-version: '22'}
       - run: npm ci --ignore-scripts --no-audit --no-fund
