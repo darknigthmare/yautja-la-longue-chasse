@@ -1,0 +1,93 @@
+name: General P3 source inventory and C2PA timestamp verification
+on:
+  push:
+    branches:
+      - codex/qa-p3-sources-and-tsa-20261121
+permissions:
+  contents: read
+jobs:
+  workbook-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/YAUTJA_V112_SUIVI.xlsx
+            /production/YAUTJA_V113_SUIVI.xlsx
+            /production/YAUTJA_V114_SUIVI.xlsx
+            /docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx
+            /scripts/audit-p3-workbooks.py
+      - name: Read actual workbook XML and verify each pinned blob
+        run: |
+          python3 scripts/audit-p3-workbooks.py outputs/p3-source-audit/workbooks.json '0318b48420a6944882b1349b6d14ef473299ac10' '[{"path":"docs/YAUTJA_V112_SUIVI.xlsx","sha":"56b8c21b5ce90da02bb371b5d946604df3423258"},{"path":"production/YAUTJA_V113_SUIVI.xlsx","sha":"21f17de724bfc9ce399449e1e69ee3e48695dea8"},{"path":"production/YAUTJA_V114_SUIVI.xlsx","sha":"8000e3a311e467c47abfa1ba934740114c751204"},{"path":"docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx","sha":"c0ce09f644f44fad77de9ee6af33fb9101cc49a2"}]'
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: p3-physical-workbook-inventory
+          path: outputs/p3-source-audit/workbooks.json
+          if-no-files-found: error
+          retention-days: 14
+  c2pa-timestamp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/suivi-production/v613/data/production-manifest.json
+            /public/game/production/enforcers-v613/
+            /scripts/audit-enforcer-png-metadata.py
+            /scripts/audit-enforcer-c2pa.py
+      - name: Verify original PNG bytes and CRC
+        run: python3 scripts/audit-enforcer-png-metadata.py outputs/p3-source-audit/png.json
+      - name: Pin public verifier, manifest trust and timestamp trust
+        run: |
+          set -euo pipefail
+          verifier_dir="$RUNNER_TEMP/enforcers-c2pa"
+          mkdir -p "$verifier_dir"
+          curl --fail --silent --show-error --location --retry 2 --max-time 60 \
+            --output "$verifier_dir/tool.tar.gz" \
+            'https://github.com/contentauth/c2patool/releases/download/v0.29.0/v0.29.0-x86_64-unknown-linux-gnu.tar.gz'
+          printf '%s  %s\n' 'af5494722fc8c3f239980f36ceb3acf496d1481850d356a4bb34777b33b08043' "$verifier_dir/tool.tar.gz" | sha256sum --check --status
+          tar -xzf "$verifier_dir/tool.tar.gz" -C "$verifier_dir"
+          verifier="$(find "$verifier_dir" -type f -name c2patool -print -quit)"
+          test -x "$verifier"
+          "$verifier" --version
+          curl --fail --silent --show-error --location --retry 2 --max-time 60 \
+            --output "$verifier_dir/anchors.pem" 'https://raw.githubusercontent.com/c2pa-org/conformance-public/285d98e4b575198180c1d6404a7ee1a317e04911/trust-list/C2PA-TRUST-LIST.pem'
+          curl --fail --silent --show-error --location --retry 2 --max-time 60 \
+            --output "$verifier_dir/tsa.pem" 'https://raw.githubusercontent.com/c2pa-org/conformance-public/64b3f9c8ebb95d2b73557aea25172d694db67c1e/trust-list/C2PA-TSA-TRUST-LIST.pem'
+          test "$(git hash-object "$verifier_dir/anchors.pem")" = '9af0c319794489ca9a01e688e0299bc525a996cc'
+          test "$(git hash-object "$verifier_dir/tsa.pem")" = '754286c8d83fb0f11ec1421466f4fdf9e7dcfa60'
+          python3 - "$verifier_dir" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          directory = Path(sys.argv[1])
+          anchors = [
+              {"trust_kind": "manifest", "trust_anchors": (directory / "anchors.pem").read_text(),
+               "trust_uri": "https://c2pa.org/trustlist"},
+              {"trust_kind": "tsa", "trust_anchors": (directory / "tsa.pem").read_text(),
+               "trust_uri": "https://c2pa.org/trustlist/tsa"},
+          ]
+          settings = {"trust": {"anchors": anchors}, "verify": {"verify_trust": True, "verify_timestamp_trust": True}}
+          (directory / "settings.json").write_text(json.dumps(settings))
+          PY
+          printf 'ENFORCER_C2PA_BIN=%s\nENFORCER_C2PA_SETTINGS=%s\n' \
+            "$verifier" "$verifier_dir/settings.json" >> "$GITHUB_ENV"
+      - name: Verify signature and timestamp with networking disabled
+        run: |
+          set -euo pipefail
+          sudo unshare --net -- runuser -u "$(id -un)" -- python3 scripts/audit-enforcer-c2pa.py \
+            outputs/p3-source-audit/png.json "$ENFORCER_C2PA_BIN" "$ENFORCER_C2PA_SETTINGS" \
+            outputs/p3-source-audit/timestamp.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: p3-c2pa-timestamp-proof
+          path: outputs/p3-source-audit/*.json
+          if-no-files-found: error
+          retention-days: 14
