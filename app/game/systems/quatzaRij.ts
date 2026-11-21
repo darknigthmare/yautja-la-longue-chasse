@@ -32,7 +32,31 @@ export interface QuatzaFrame {
   trail: boolean; approachCalled: boolean; blockCalled: boolean;
   hide: boolean; skull: boolean; previous: number;
 }
-export interface QuatzaAttempt { input: number[]; phase: QuatzaPhase }
+export const QUATZA_RESCUE_TICKS = 7200;
+const QUATZA_RESCUE_HOLD = 24;
+export type QuatzaRescuePhase = 'report' | 'departure' | 'track' | 'treat' | 'carry' | 'return' | 'reunited' | 'interrupted';
+export interface QuatzaRescue {
+  id: string;
+  input: number[];
+  phase: QuatzaRescuePhase;
+}
+export interface QuatzaRescueFrame {
+  tick: number;
+  phase: QuatzaRescuePhase;
+  x: number;
+  facing: -1 | 1;
+  patient: Companion['id'];
+  lastSeenX: number;
+  traceX: number;
+  careTicks: number;
+  previous: number;
+}
+export interface QuatzaAttempt {
+  input: number[];
+  phase: QuatzaPhase;
+  rescueRules?: 1;
+  rescue?: QuatzaRescue;
+}
 export const QUATZA_RETURN_SUBJECTS = ['companions', 'trophy'] as const;
 export type QuatzaReturnSubject = typeof QUATZA_RETURN_SUBJECTS[number];
 export interface QuatzaExpedition {
@@ -44,7 +68,9 @@ export interface QuatzaExpedition {
 export interface QuatzaRijCampaign { version: 1; ownerCreatedAt: string; expeditions: Partial<Record<QuatzaMode, QuatzaExpedition>> }
 export type QuatzaCommand = { type: 'begin'; mode: QuatzaMode; expectedAttempts: number } |
   { type: 'advance'; mode: QuatzaMode; expectedAttempts: number; expectedTick: number; input: readonly number[] } |
-  { type: 'present-return'; mode: 'triad'; expectedAttempts: number; expectedPresentations: number; subject: QuatzaReturnSubject };
+  { type: 'present-return'; mode: 'triad'; expectedAttempts: number; expectedPresentations: number; subject: QuatzaReturnSubject } |
+  { type: 'begin-rescue'; mode: 'triad'; expectedAttempts: number } |
+  { type: 'advance-rescue'; mode: 'triad'; expectedAttempts: number; id: string; expectedTick: number; input: readonly number[] };
 export type QuatzaResponse = { ok: false; message: string } | { ok: true; state: QuatzaRijCampaign; message: string };
 
 const record = (value: unknown): value is Record<string, unknown> => !!value && typeof value === 'object' && !Array.isArray(value);
@@ -198,6 +224,70 @@ export function replayQuatzaAttempt(mode: QuatzaMode, input: readonly number[]):
   return input.reduce((frame, code) => stepQuatza(mode, frame, code), createQuatzaFrame(mode));
 }
 
+export function quatzaMissingCompanion(frame: QuatzaFrame): Companion | undefined {
+  if (frame.phase !== 'retreated' || !frame.trail || frame.player.health <= 0) return;
+  return frame.companions.find(ally => ally.health === 0);
+}
+
+export function createQuatzaRescueFrame(hunt: QuatzaFrame): QuatzaRescueFrame | null {
+  const patient = quatzaMissingCompanion(hunt);
+  if (!patient) return null;
+  return {
+    tick: 0, phase: 'report', x: 95, facing: 1, patient: patient.id, lastSeenX: patient.x,
+    traceX: Math.max(QUATZA_POSTS.refuge + 70, patient.x - 132), careTicks: 0, previous: 0,
+  };
+}
+
+export const quatzaRescueFinished = (phase: QuatzaRescuePhase) => phase === 'reunited' || phase === 'interrupted';
+const validRescueInput = (code: unknown): code is number => validInput(code) &&
+  (code & ~(QUATZA_INPUT.left | QUATZA_INPUT.right | QUATZA_INPUT.interact | QUATZA_INPUT.signal)) === 0;
+
+export function stepQuatzaRescue(current: QuatzaRescueFrame, code: number): QuatzaRescueFrame {
+  if (!validRescueInput(code) || quatzaRescueFinished(current.phase)) return current;
+  const frame = { ...current, tick: current.tick + 1, previous: code };
+  const { phase, lastSeenX, traceX } = frame;
+  const right = QUATZA_INPUT.right, left = QUATZA_INPUT.left;
+  const interact = !!(code & QUATZA_INPUT.interact);
+  const pressed = interact && !(current.previous & QUATZA_INPUT.interact);
+  const signaled = !!(code & QUATZA_INPUT.signal) && !(current.previous & QUATZA_INPUT.signal);
+  const field = phase === 'track' || phase === 'treat' || phase === 'carry';
+  const carrying = phase === 'carry' || phase === 'return';
+  const direction = code & left ? -1 : code & right ? 1 : 0;
+  if (direction) frame.facing = direction;
+  frame.x = clamp(frame.x + direction * (carrying ? 2.75 : 5), 30, field ? QUATZA_WIDTH - 30 : 900);
+  if (phase === 'report' && pressed && near(frame.x, QUATZA_POSTS.witness)) frame.phase = 'departure';
+  else if (phase === 'departure' && pressed && near(frame.x, QUATZA_POSTS.departure)) {
+    frame.phase = 'track'; frame.x = QUATZA_POSTS.refuge;
+  } else if (phase === 'track' && signaled && near(frame.x, traceX, 38)) frame.phase = 'treat';
+  else if (phase === 'treat') {
+    frame.careTicks = !direction && interact && near(frame.x, lastSeenX, 30) ? current.careTicks + 1 : 0;
+    if (frame.careTicks >= QUATZA_RESCUE_HOLD) frame.phase = 'carry';
+  } else if (phase === 'carry' && pressed && near(frame.x, QUATZA_POSTS.refuge, 34)) {
+    frame.phase = 'return'; frame.x = 95;
+  } else if (phase === 'return' && pressed && near(frame.x, QUATZA_POSTS.witness, 36)) frame.phase = 'reunited';
+  if (frame.tick >= QUATZA_RESCUE_TICKS && !quatzaRescueFinished(frame.phase)) frame.phase = 'interrupted';
+  return frame;
+}
+
+export function replayQuatzaRescue(hunt: QuatzaFrame, input: readonly number[]): QuatzaRescueFrame | null {
+  const origin = createQuatzaRescueFrame(hunt);
+  return origin && input.reduce(stepQuatzaRescue, origin);
+}
+
+function quatzaRescueId(owner: string, attempt: number) {
+  const time = BigInt.asUintN(64, BigInt(Date.parse(owner))).toString(16).padStart(16, '0');
+  return time.slice(0, 8) + '-' + time.slice(8, 12) + '-8' + time.slice(12, 15) +
+    '-a' + time[15] + attempt.toString(16).padStart(2, '0') + '-717561747a61';
+}
+
+export function canRetryQuatza(mode: QuatzaMode, attempt?: QuatzaAttempt) {
+  if (!attempt) return true;
+  if (attempt.phase !== 'retreated') return false;
+  if (attempt.rescue) return quatzaRescueFinished(attempt.rescue.phase);
+  return mode !== 'triad' || attempt.rescueRules !== 1 ||
+    !quatzaMissingCompanion(replayQuatzaAttempt(mode, attempt.input));
+}
+
 export function canEnterQuatza(save: SaveGame, mode: QuatzaMode): boolean {
   if (rankTrialsBlockedV147(save.tribunalV147)) return false;
   const rank = save.prologue ? getChronicleRank(save.prologue.chronicle) : save.profile.rankId;
@@ -229,9 +319,27 @@ export function inspectQuatzaRij(value: unknown, owner: string) {
         !Array.from(expedition.presentations).every(returnSubject) ||
         new Set(expedition.presentations).size !== expedition.presentations.length)) return invalid;
     for (const [index, attempt] of expedition.attempts.entries()) {
-      if (!record(attempt) || !exact(attempt, ['input', 'phase']) || !Array.isArray(attempt.input) ||
-          attempt.input.length > QUATZA_TICK_LIMIT || !attempt.input.every(validInput)) return invalid;
+      if (!record(attempt) || !Array.isArray(attempt.input) ||
+          attempt.input.length > QUATZA_TICK_LIMIT || !Array.from(attempt.input).every(validInput)) return invalid;
+      const fields = ['input', 'phase'];
+      if (Object.hasOwn(attempt, 'rescueRules')) {
+        if (mode !== 'triad' || attempt.rescueRules !== 1) return invalid;
+        fields.push('rescueRules');
+      }
+      if (Object.hasOwn(attempt, 'rescue')) fields.push('rescue');
+      if (!exact(attempt, fields)) return invalid;
       const replay = replayQuatzaAttempt(mode, attempt.input);
+      if (Object.hasOwn(attempt, 'rescue')) {
+        const rescue = attempt.rescue;
+        if (mode !== 'triad' || !record(rescue) || !exact(rescue, ['id', 'input', 'phase']) ||
+            rescue.id !== quatzaRescueId(owner, index + 1) || !Array.isArray(rescue.input) ||
+            rescue.input.length > QUATZA_RESCUE_TICKS || !Array.from(rescue.input).every(validRescueInput)) return invalid;
+        const recovered = replayQuatzaRescue(replay, rescue.input);
+        if (!recovered || recovered.phase !== rescue.phase || recovered.tick !== rescue.input.length ||
+            index < expedition.attempts.length - 1 && !quatzaRescueFinished(recovered.phase)) return invalid;
+      } else if (attempt.rescueRules === 1 && index < expedition.attempts.length - 1 && quatzaMissingCompanion(replay)) {
+        return invalid;
+      }
       if (replay.tick !== attempt.input.length || replay.phase !== attempt.phase ||
           index < expedition.attempts.length - 1 && replay.phase !== 'retreated') return invalid;
       if (hasPresentations && index === expedition.attempts.length - 1 && replay.phase !== 'delivered') return invalid;
@@ -277,12 +385,26 @@ export function isQuatzaRijSuccessor(before: QuatzaRijCampaign | null | undefine
   const current = attempts.at(-1);
   if (!current) return false;
   if (attempts.length === oldAttempts.length + 1) {
-    return (!previous || previous.phase === 'retreated') && current.input.length === 0 &&
+    return canRetryQuatza(mode, previous) && current.input.length === 0 && current.phase === 'preparation' &&
+      current.rescueRules === (mode === 'triad' ? 1 : undefined) && !current.rescue &&
       JSON.stringify(attempts.slice(0, -1)) === JSON.stringify(oldAttempts);
   }
-  return !!previous && attempts.length === oldAttempts.length &&
-    JSON.stringify(attempts.slice(0, -1)) === JSON.stringify(oldAttempts.slice(0, -1)) &&
-    !finished(previous.phase) && current.input.length > previous.input.length &&
+  if (!previous || attempts.length !== oldAttempts.length ||
+      JSON.stringify(attempts.slice(0, -1)) !== JSON.stringify(oldAttempts.slice(0, -1)) ||
+      previous.rescueRules !== current.rescueRules) return false;
+  if (current.rescue) {
+    const prior = previous.rescue;
+    const nextRescue = current.rescue;
+    if (mode !== 'triad' || previous.phase !== 'retreated' || current.phase !== previous.phase ||
+        JSON.stringify(current.input) !== JSON.stringify(previous.input) ||
+        nextRescue.id !== quatzaRescueId(next.ownerCreatedAt, attempts.length)) return false;
+    if (!prior) return nextRescue.phase === 'report' && nextRescue.input.length === 0 &&
+      !!quatzaMissingCompanion(replayQuatzaAttempt(mode, previous.input));
+    return prior.id === nextRescue.id && !quatzaRescueFinished(prior.phase) &&
+      nextRescue.input.length > prior.input.length && nextRescue.input.length <= prior.input.length + 180 &&
+      prior.input.every((input, index) => nextRescue.input[index] === input);
+  }
+  return !previous.rescue && !finished(previous.phase) && current.input.length > previous.input.length &&
     current.input.length <= previous.input.length + 180 &&
     previous.input.every((input, index) => current.input[index] === input);
 }
@@ -309,10 +431,39 @@ export function commitQuatzaRij(save: SaveGame, command: QuatzaCommand): QuatzaR
       ? 'Les témoins ont entendu le retour de Saar et Vek.'
       : 'Les témoins ont examiné la peau et le crâne rapportés.' };
   }
+  if (command.type === 'begin-rescue' || command.type === 'advance-rescue') {
+    if (expedition.mode !== 'triad' || !current || current.phase !== 'retreated')
+      return refuse('Aucune absence ne permet d’ouvrir un secours.');
+    const hunt = replayQuatzaAttempt('triad', current.input);
+    const origin = createQuatzaRescueFrame(hunt);
+    if (!origin) return refuse('Aucune absence ne permet d’ouvrir un secours.');
+    const id = quatzaRescueId(save.createdAt, expedition.attempts.length);
+    if (command.type === 'begin-rescue') {
+      if (current.rescue) return refuse('Le secours est déjà consigné.');
+      current.rescue = { id, input: [], phase: 'report' };
+      return { ok: true, state, message: 'Rapporte l’absence au témoin avant le départ.' };
+    }
+    const rescue = current.rescue;
+    if (!rescue || id !== command.id || !Number.isSafeInteger(command.expectedTick) || command.expectedTick < 0 ||
+        !Array.isArray(command.input) || !command.input.length || command.input.length > 180 ||
+        !Array.from(command.input).every(validRescueInput)) return refuse('Le secours vient de changer. Relis sa dernière position.');
+    if (command.expectedTick + command.input.length === rescue.input.length &&
+        command.input.every((code, index) => rescue.input[command.expectedTick + index] === code))
+      return { ok: true, state, message: 'Progression du secours déjà enregistrée.' };
+    if (quatzaRescueFinished(rescue.phase) || command.expectedTick !== rescue.input.length ||
+        rescue.input.length + command.input.length > QUATZA_RESCUE_TICKS)
+      return refuse('Le secours vient de changer. Relis sa dernière position.');
+    const input = [...rescue.input, ...command.input];
+    const next = replayQuatzaRescue(hunt, input);
+    if (!next || next.tick !== input.length) return refuse('La séquence dépasse la fin du secours.');
+    current.rescue = { id, input, phase: next.phase };
+    return { ok: true, state, message: next.phase === 'reunited'
+      ? 'Le témoin a vu revenir le chasseur secouru.' : 'Progression du secours enregistrée.' };
+  }
   if (command.type === 'begin') {
-    if (current && current.phase !== 'retreated') return refuse('Une tentative est déjà consignée.');
+    if (!canRetryQuatza(command.mode, current)) return refuse('Termine la tentative ou le secours ouvert avant de repartir.');
     if (expedition.attempts.length >= 16) return refuse('Le registre a atteint sa capacité de tentatives.');
-    expedition.attempts.push({ input: [], phase: 'preparation' });
+    expedition.attempts.push({ input: [], phase: 'preparation', ...(command.mode === 'triad' ? { rescueRules: 1 } : {}) });
     state.expeditions[command.mode] = expedition;
     return { ok: true, state, message: 'Préparation ouverte au râtelier.' };
   }

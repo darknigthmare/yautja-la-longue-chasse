@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "0318b48420a6944882b1349b6d14ef473299ac10",
+  "auditCommit": "616ee27dbb9ff4dd50422872b157c9b47d61d3a6",
+  "requirements": [
+    {
+      "id": "ENFORCERS-V610-TRACES",
+      "priority": "P3",
+      "status": "OUVERT_SOURCE",
+      "requiredOriginalPngs": 36,
+      "recoveredOriginalPngs": 0
+    },
+    {
+      "id": "ENFORCERS-V613-RECEIPTS",
+      "priority": "P3",
+      "status": "OUVERT_SOURCE",
+      "requiredFinalReceipts": 36,
+      "recoveredFinalReceipts": 15
+    }
+  ],
+  "physicalWorkbooks": {
+    "evidenceJob": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957283603/job/137008082414",
+    "evidenceArchive": {
+      "runArtifact": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957283603/artifacts/14728636002",
+      "sha256": "sha256:0fe4c7fca5411cde03a3b811d00bd74e11b9ae7878a959b30ed12541b002b09f",
+      "expiresAtUtc": "2026-12-05T22:35:35Z"
+    },
+    "method": "Valeurs exactes des cellules OpenXML, y compris chaînes partagées. Une référence P3 hors colonne de priorité reste à vérifier.",
+    "files": [
+      {
+        "path": "docs/YAUTJA_V112_SUIVI.xlsx",
+        "gitBlobSha": "56b8c21b5ce90da02bb371b5d946604df3423258",
+        "bytes": 9433700,
+        "sheets": 122,
+        "rows": 13129,
+        "p3Cells": [
+          {
+            "sheet": "PrioritesV112",
+            "cell": "C20",
+            "priorityHeader": true,
+            "id": "ENFORCERS-V613-RECEIPTS"
+          },
+          {
+            "sheet": "PrioritesV112",
+            "cell": "C21",
+            "priorityHeader": true,
+            "id": "ENFORCERS-V610-TRACES"
+          }
+        ]
+      },
+      {
+        "path": "production/YAUTJA_V113_SUIVI.xlsx",
+        "gitBlobSha": "21f17de724bfc9ce399449e1e69ee3e48695dea8",
+        "bytes": 10373135,
+        "sheets": 130,
+        "rows": 13840,
+        "p3Cells": [
+          {
+            "sheet": "PrioritesV112",
+            "cell": "C20",
+            "priorityHeader": true,
+            "id": "ENFORCERS-V613-RECEIPTS"
+          },
+          {
+            "sheet": "PrioritesV112",
+            "cell": "C21",
+            "priorityHeader": true,
+            "id": "ENFORCERS-V610-TRACES"
+          }
+        ]
+      },
+      {
+        "path": "production/YAUTJA_V114_SUIVI.xlsx",
+        "gitBlobSha": "8000e3a311e467c47abfa1ba934740114c751204",
+        "bytes": 10600088,
+        "sheets": 135,
+        "rows": 14085,
+        "p3Cells": [
+          {
+            "sheet": "PrioritesV112",
+            "cell": "C20",
+            "priorityHeader": true,
+            "id": "ENFORCERS-V613-RECEIPTS"
+          },
+          {
+            "sheet": "PrioritesV112",
+            "cell": "C21",
+            "priorityHeader": true,
+            "id": "ENFORCERS-V610-TRACES"
+          }
+        ]
+      },
+      {
+        "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "gitBlobSha": "c0ce09f644f44fad77de9ee6af33fb9101cc49a2",
+        "bytes": 2101543,
+        "sheets": 139,
+        "rows": 17620,
+        "p3Cells": []
+      }
+    ],
+    "totals": {
+      "workbooks": 4,
+      "sheets": 526,
+      "rows": 58674,
+      "explicitP3Cells": 6,
+      "distinctP3Ids": [
+        "ENFORCERS-V610-TRACES",
+        "ENFORCERS-V613-RECEIPTS"
+      ]
+    }
+  },
+  "v610HistoricalSource": {
+    "path": "docs/suivi-production/v611/references/Yautja_Suivi_Variantes_2026-10-20.xlsx",
+    "gitBlobSha": "f6d6d1eb80edb5db3e239986dd75c13a8a853c32",
+    "bytes": 1624759,
+    "manifestPinnedSha256": "76fe0e138a2ee2c901b491c48edea9e8d3777f1babeb9c480b932c82ffca0d6e",
+    "historicalInspectionJob": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44887329571/job/136795369117",
+    "finding": "Le contrôle précédent des entrées ZIP du classeur versionné ne relève aucun PNG cible ni checkpoint. La révision Drive relevée à 20:24:40 UTC le 20 octobre a la même taille, mais son accès renvoyait HTTP 403 et son identité demeure non vérifiée."
+  },
+  "v613C2paTimestamp": {
+    "evidenceJob": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957283603/job/137008082231",
+    "evidenceArchive": {
+      "runArtifact": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957283603/artifacts/14728186220",
+      "sha256": "sha256:327af8cb94da40e5184cf40a6f0610896c68e62307ea8cef6e82c11d9157ee17",
+      "expiresAtUtc": "2026-12-05T22:34:05Z"
+    },
+    "previousAudit": "docs/suivi-production/v613/recovery/png-metadata-index-20261121.json",
+    "tool": {
+      "name": "c2patool",
+      "version": "0.29.0",
+      "sha256": "af5494722fc8c3f239980f36ceb3acf496d1481850d356a4bb34777b33b08043"
+    },
+    "pinnedManifestTrustList": {
+      "sourceCommit": "285d98e4b575198180c1d6404a7ee1a317e04911",
+      "gitBlobSha": "9af0c319794489ca9a01e688e0299bc525a996cc"
+    },
+    "pinnedTimestampTrustList": {
+      "ref": "64b3f9c8ebb95d2b73557aea25172d694db67c1e",
+      "blob": "754286c8d83fb0f11ec1421466f4fdf9e7dcfa60",
+      "url": "https://raw.githubusercontent.com/c2pa-org/conformance-public/64b3f9c8ebb95d2b73557aea25172d694db67c1e/trust-list/C2PA-TSA-TRUST-LIST.pem"
+    },
+    "summary": {
+      "allFinalFiles": {
+        "files": 36,
+        "states": {
+          "Trusted": 36
+        },
+        "activeManifestStatusCodes": {
+          "assertion.dataHash.match": 36,
+          "assertion.hashedURI.match": 36,
+          "claimSignature.insideValidity": 36,
+          "claimSignature.validated": 36,
+          "signingCredential.ocsp.skipped": 36,
+          "signingCredential.trusted": 36,
+          "timeStamp.untrusted": 36,
+          "timeStamp.validated": 36
+        }
+      },
+      "filesWithoutAcceptedReceipt": {
+        "files": 21,
+        "states": {
+          "Trusted": 21
+        },
+        "activeManifestStatusCodes": {
+          "assertion.dataHash.match": 21,
+          "assertion.hashedURI.match": 21,
+          "claimSignature.insideValidity": 21,
+          "claimSignature.validated": 21,
+          "signingCredential.ocsp.skipped": 21,
+          "signingCredential.trusted": 21,
+          "timeStamp.untrusted": 21,
+          "timeStamp.validated": 21
+        }
+      },
+      "negativeControl": {
+        "state": "Invalid",
+        "codes": [
+          "assertion.dataHash.mismatch",
+          "assertion.hashedURI.match",
+          "claimSignature.insideValidity",
+          "claimSignature.validated",
+          "signingCredential.ocsp.skipped",
+          "signingCredential.trusted",
+          "timeStamp.untrusted",
+          "timeStamp.validated"
+        ],
+        "exitCode": 0
+      }
+    },
+    "finding": "Les 36 manifestes actifs restent signés et liés à leurs octets sous la liste officielle. Les 36 horodatages renvoient timeStamp.validated et timeStamp.untrusted après chargement de la liste officielle TSA. La validation hors réseau ne réalise pas OCSP. La vérification n’établit aucune date de génération, aucun prompt exact et aucun des 21 reçus manquants."
+  }
+}

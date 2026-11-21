@@ -8,8 +8,9 @@ import { controlActionShortcut } from './controlBindingLabels';
 import { DEFAULT_CONTROL_BINDINGS, matchesControlAction } from './systems/controlBindings';
 import {
   QUATZA_FLOOR, QUATZA_INPUT, QUATZA_PLATFORMS, QUATZA_POSTS, QUATZA_RETURN_SUBJECTS, QUATZA_WIDTH,
-  canEnterQuatza, replayQuatzaAttempt, stepQuatza, type QuatzaAttempt, type QuatzaCommand,
-  type QuatzaFrame, type QuatzaMode, type QuatzaReturnSubject,
+  canEnterQuatza, canRetryQuatza, quatzaMissingCompanion, quatzaRescueFinished, replayQuatzaAttempt, replayQuatzaRescue,
+  stepQuatza, stepQuatzaRescue, type QuatzaAttempt, type QuatzaCommand, type QuatzaFrame, type QuatzaMode,
+  type QuatzaRescue, type QuatzaRescueFrame, type QuatzaReturnSubject,
 } from './systems/quatzaRij';
 import styles from './QuatzaRijScene.module.css';
 
@@ -295,6 +296,174 @@ function Expedition({ save, mode, attempt, attempts, onCommand, suspended = fals
   </div>;
 }
 
+const rescueControls = controls.filter(([id]) => id === 'left' || id === 'right' || id === 'interact' || id === 'signal');
+const companionName = { saar: 'Saar', vek: 'Vek' } as const;
+
+function rescueObjective(frame: QuatzaRescueFrame) {
+  const name = companionName[frame.patient];
+  switch (frame.phase) {
+    case 'report': return `Rejoins le témoin à pied et signale l’absence de ${name}.`;
+    case 'departure': return 'Rejoins la sortie du camp pour engager le secours.';
+    case 'track': return 'À portée de la trace, utilise le signal pour retrouver le chasseur.';
+    case 'treat': return `Approche de ${name}, immobilise-toi et maintiens Interagir pour stabiliser la blessure.`;
+    case 'carry': return `Ramène ${name} jusqu’au refuge et interagis pour quitter le terrain.`;
+    case 'return': return `Présente ${name} au témoin du camp pour confirmer l’évacuation.`;
+    case 'reunited': return `Le témoin a confirmé le retour de ${name} après le secours.`;
+    case 'interrupted': return `Secours interrompu. L’absence de ${name} reste consignée dans cette tentative.`;
+  }
+}
+
+function Recovery({ save, hunt, rescue, attempts, onCommand, suspended = false }: Props & {
+  hunt: QuatzaFrame; rescue: QuatzaRescue; attempts: number;
+}) {
+  const [frame, setFrame] = useState(() => replayQuatzaRescue(hunt, rescue.input)!);
+  const [running, setRunning] = useState(false);
+  const [blocked, setBlocked] = useState(false);
+  const [width, setWidth] = useState(900);
+  const node = useRef<HTMLDivElement>(null);
+  const surface = useRef<HTMLDivElement>(null);
+  const current = useRef(frame);
+  const input = useRef(0);
+  const buffer = useRef<number[]>([]);
+  const savedTick = useRef(rescue.input.length);
+  const commit = useRef(onCommand);
+  const bindings = save.settings.controlBindings ?? DEFAULT_CONTROL_BINDINGS;
+  const terminal = quatzaRescueFinished(frame.phase);
+  useEffect(() => { commit.current = onCommand; }, [onCommand]);
+  useEffect(() => {
+    if (!surface.current) return;
+    const observer = new ResizeObserver(([entry]) => setWidth(Math.max(1, entry.contentRect.width)));
+    observer.observe(surface.current);
+    return () => observer.disconnect();
+  }, []);
+  const flush = useCallback(() => {
+    if (!buffer.current.length) return true;
+    const pending = [...buffer.current];
+    if (!commit.current({ type: 'advance-rescue', mode: 'triad', expectedAttempts: attempts,
+      id: rescue.id, expectedTick: savedTick.current, input: pending })) {
+      input.current = 0;
+      setBlocked(true);
+      setRunning(false);
+      return false;
+    }
+    savedTick.current += pending.length;
+    buffer.current.length = 0;
+    return true;
+  }, [attempts, rescue.id]);
+  const stop = useCallback(() => {
+    input.current = 0;
+    setRunning(false);
+    flush();
+  }, [flush]);
+  useEffect(() => {
+    if (!running || suspended || blocked) return;
+    let animation = 0, previous = 0, accumulated = 0;
+    const tick = (time: number) => {
+      accumulated += previous ? Math.min(45, time - previous) : 0;
+      previous = time;
+      while (accumulated >= 1000 / 60) {
+        accumulated -= 1000 / 60;
+        const code = (input.current & 3) === 3 ? input.current & ~3 : input.current;
+        const before = current.current;
+        const next = stepQuatzaRescue(before, code);
+        current.current = next;
+        buffer.current.push(code);
+        if ((before.phase !== next.phase || buffer.current.length >= 60) && !flush()) break;
+        if (quatzaRescueFinished(next.phase)) { setRunning(false); break; }
+      }
+      setFrame(current.current);
+      if (!quatzaRescueFinished(current.current.phase)) animation = requestAnimationFrame(tick);
+    };
+    animation = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(animation);
+  }, [blocked, flush, running, suspended]);
+  useEffect(() => {
+    if (!running) return;
+    if (suspended) {
+      const animation = requestAnimationFrame(stop);
+      return () => cancelAnimationFrame(animation);
+    }
+    const keyboard = (event: KeyboardEvent) => {
+      if (!node.current?.contains(document.activeElement) || event.altKey || event.ctrlKey || event.metaKey) return;
+      const match = rescueControls.find(([, action]) => matchesControlAction(action, event, bindings));
+      if (!match) return;
+      event.preventDefault();
+      const bit = QUATZA_INPUT[match[0]];
+      input.current = event.type === 'keydown' ? input.current | bit : input.current & ~bit;
+    };
+    const loseFocus = () => { if (document.hidden || !document.hasFocus()) stop(); };
+    window.addEventListener('keydown', keyboard);
+    window.addEventListener('keyup', keyboard);
+    window.addEventListener('blur', loseFocus);
+    document.addEventListener('visibilitychange', loseFocus);
+    return () => {
+      window.removeEventListener('keydown', keyboard);
+      window.removeEventListener('keyup', keyboard);
+      window.removeEventListener('blur', loseFocus);
+      document.removeEventListener('visibilitychange', loseFocus);
+    };
+  }, [bindings, running, stop, suspended]);
+  const field = frame.phase === 'track' || frame.phase === 'treat' || frame.phase === 'carry';
+  const carriesPatient = frame.phase === 'carry' || frame.phase === 'return';
+  const patientVisible = frame.phase === 'treat' || carriesPatient || frame.phase === 'reunited';
+  const readsWitness = frame.phase === 'report' || frame.phase === 'return' || frame.phase === 'reunited';
+  const marker = readsWitness ? QUATZA_POSTS.witness : frame.phase === 'departure' ? QUATZA_POSTS.departure :
+    frame.phase === 'track' ? frame.traceX : frame.phase === 'treat' ? frame.lastSeenX : QUATZA_POSTS.refuge;
+  const markerLabel = readsWitness ? 'Témoin' : frame.phase === 'departure' ? 'Départ du camp' :
+    frame.phase === 'track' ? 'Dernière trace' : frame.phase === 'treat' ? companionName[frame.patient] : 'Refuge';
+  const camera = Math.max(0, Math.min(QUATZA_WIDTH - width, frame.x - width * .42));
+  return <section ref={node} data-quatza-rescue={rescue.id} data-phase={frame.phase} data-tick={frame.tick}
+    data-x={frame.x} data-patient={frame.patient} data-care={frame.careTicks}
+    aria-label="Secours de la triade"
+    onBlur={event => {
+      if (running && (!(event.relatedTarget instanceof Node) || !node.current?.contains(event.relatedTarget))) stop();
+    }}>
+    <div className={styles.heading}>
+      <strong>{terminal ? 'Compte rendu du secours' : 'Secours de la triade'}</strong>
+      {!terminal && (running ? <button type="button" onClick={stop}>Pause</button> :
+        <button type="button" disabled={suspended || blocked}
+          onClick={() => { setRunning(true); surface.current?.focus(); }}>Reprendre le secours</button>)}
+    </div>
+    {blocked && <p role="alert">Sauvegarde du secours à confirmer. <button type="button"
+      disabled={suspended} onClick={() => { if (flush()) setBlocked(false); }}>Réessayer</button></p>}
+    <div className={styles.viewport} ref={surface} tabIndex={0} aria-label="Terrain de secours">
+      <div className={styles.world} style={{ transform: `translateX(${-camera}px)` }}>
+        <div className={styles.land} />
+        {field && QUATZA_PLATFORMS.map(place => <span key={place.left} className={styles.platform}
+          style={{ left: place.left, top: place.y, width: place.right - place.left }} />)}
+        {frame.phase !== 'interrupted' && <span className={styles.marker} data-ready
+          style={{ left: marker, top: QUATZA_FLOOR - 28 }}>{markerLabel}</span>}
+        <div className={styles.actor} style={{ left: frame.x, top: QUATZA_FLOOR }}>
+          <div><HunterRigPreview appearance={save.appearance} armorId={save.loadout.armorId} weaponIds={['wristblades']}
+            gearIds={[]} facing={frame.facing} size={108} label="Ton chasseur" pose={frame.previous & 3 ? 'run' : 'idle'}
+            phase={frame.tick / 8} /></div>
+        </div>
+        {patientVisible && <div className={styles.actor} data-quatza-recovery-patient={frame.patient}
+          data-carried={carriesPatient} style={{ left: carriesPatient ? frame.x - 30 * frame.facing :
+            frame.phase === 'reunited' ? frame.x - 46 : frame.lastSeenX, top: carriesPatient ? QUATZA_FLOOR - 45 : QUATZA_FLOOR }}>
+          <span className={styles.actorName}>{companionName[frame.patient]}</span>
+          <div className={frame.phase === 'reunited' ? undefined : styles.wounded}>
+            <HunterRigPreview appearance={save.appearance} armorId={frame.patient === 'saar' ? 'scout' : save.loadout.armorId}
+              weaponIds={['wristblades']} gearIds={[]} size={98} label={companionName[frame.patient]} />
+          </div>
+        </div>}
+      </div>
+    </div>
+    <p className={styles.status} role="status">{rescueObjective(frame)}</p>
+    {frame.phase === 'treat' && <progress aria-label="Stabilisation de la blessure" value={frame.careTicks} max={24} />}
+    {!terminal && <div className={styles.controls} aria-label="Commandes du secours">
+      {rescueControls.map(([id, action, label]) => <button key={id} type="button" data-quatza-rescue-control={id}
+        disabled={!running || suspended || blocked} aria-label={label} onPointerDown={event => {
+          event.preventDefault();
+          event.currentTarget.setPointerCapture(event.pointerId);
+          input.current |= QUATZA_INPUT[id];
+        }} onPointerUp={() => { input.current &= ~QUATZA_INPUT[id]; }}
+        onPointerCancel={() => { input.current &= ~QUATZA_INPUT[id]; }}
+        onLostPointerCapture={() => { input.current &= ~QUATZA_INPUT[id]; }}>{label} · {controlActionShortcut(action, bindings)}</button>)}
+    </div>}
+  </section>;
+}
+
 export default function QuatzaRijScene(props: Props & { mode: QuatzaMode }) {
   const { save, mode, onCommand, suspended } = props;
   const expedition = save.quatzaRij?.expeditions[mode];
@@ -302,10 +471,19 @@ export default function QuatzaRijScene(props: Props & { mode: QuatzaMode }) {
   if (!expedition && !mayStart) return null;
   const attempts = expedition?.attempts.length ?? 0;
   const attempt = expedition?.attempts.at(-1);
+  const hunt = mode === 'triad' && attempt?.phase === 'retreated' ? replayQuatzaAttempt(mode, attempt.input) : null;
+  const absent = hunt && quatzaMissingCompanion(hunt);
   return <section id={'quatza-expedition-' + mode} className={styles.quest} data-quatza-campaign aria-label={title[mode]}>
     <h3>{title[mode]}</h3>
-    {attempt && <Expedition key={attempts} {...props} attempt={attempt} attempts={attempts} />}
-    {(!attempt || attempt.phase === 'retreated') && <button type="button" data-quatza-begin={mode}
+    {attempt && !attempt.rescue && <Expedition key={attempts} {...props} attempt={attempt} attempts={attempts} />}
+    {hunt && attempt?.rescue && <Recovery key={attempt.rescue.id} {...props} hunt={hunt}
+      rescue={attempt.rescue} attempts={attempts} />}
+    {absent && !attempt?.rescue && <div className={styles.testimony}>
+      <p role="status" data-quatza-absence={absent.id}>{companionName[absent.id]} manque au retour du terrain.</p>
+      <button type="button" data-quatza-open-rescue disabled={!!suspended || !mayStart}
+        onClick={() => onCommand({ type: 'begin-rescue', mode: 'triad', expectedAttempts: attempts })}>Ouvrir le secours</button>
+    </div>}
+    {canRetryQuatza(mode, attempt) && <button type="button" data-quatza-begin={mode}
       disabled={!!suspended || !mayStart}
       onClick={() => onCommand({ type: 'begin', mode, expectedAttempts: attempts })}>{attempt ? 'Préparer une nouvelle tentative' : 'Préparer l’expédition'}</button>}
   </section>;

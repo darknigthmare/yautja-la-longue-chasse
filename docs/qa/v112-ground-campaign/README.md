@@ -209,3 +209,18 @@ Depuis la sauvegarde de campagne gagnée, des victoires appliquées par le moteu
 La matrice n’atteint aucun nouveau seuil de pleine charge. Les preuves Scout à 18/18 de la Jungle et du Volcan demeurent celles des essais précédents de ce dossier. `REM112-08` reste partiel. [Journal des quatre scénarios](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44942587435)
 
 Une reprise de la sauvegarde obtenue après la tentative 9 ouvre ensuite les tentatives 11 et 12 avec des victoires Berserker en Jeune Sang. Les douze replays Scout de ce contrôle extraient et se rejouent exactement, dont huit avec des prises. Le meilleur sac reste à 15/18. Le lot totalise **45 extractions et 45 rejeux exacts**, dont **37 avec prises**. La variante Glace 10 à 360 px a été jouée dans les deux séries. [Rapports et traces de la relance Glace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44943046524/artifacts/14722517508)
+
+## Désert au lot 7
+
+Le premier essai archivé maintenait le chasseur sur un gradin de 512 px à 145,00 s. La nouvelle recette Chromium lit le point de prise fourni par la chasse et son contrôle de portée, puis reprend les gestes de descente déjà utilisés par la recette au sol. Sur le même relevé, le crâne se prend à `x = 6249,17` et `y = 572` avec une portée de 125 px. Le pilote choisit le bord à `x = 6280,5` et avance à droite. Il attend une position admise par la chasse avant d’envoyer la commande de prise. [Contrôle de régression](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957203591/job/137007837266) · [Recette Chromium](../../../scripts/qa-hunt-campaign-browser-v112.mjs)
+
+Les deux essais suivants utilisent le vrai GameClient à la révision `2823202`. Ils prélèvent l’os `desert-sandmaw:0:desert-sandmaw-foragers-4:bone` après `analyze` et `harvest-bone`. Il pèse **1,2 kg**, occupe **2 volumes** et sa qualité vaut **68**.
+
+| Sauvegarde d’admission | Reprises exactes | Prélèvement | Dernier résultat | Preuve |
+| --- | --- | --- | --- | --- |
+| Marais réglé sous Chromium, peau archivée à l’atelier | 20,450 s et 46,433 s | 27,850 s | Mort en phase cible à 145,417 s, reprise au relais confirmée, seconde mort à 116,233 s | [Rapport, captures et entrées](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957203591/artifacts/14729095208) · [Journal](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957203591/job/137007837561) |
+| Marais terminé dans l’archive de simulation native | 22,000 s | 29,700 s | Mort en phase cible à 131,600 s | [Rapport, captures et entrées](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957203591/artifacts/14728473543) · [Journal](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44957203591/job/137007837432) |
+
+Les journaux indiquent zéro ressource manquante et deux requêtes audio interrompues après admission Chromium et trois après admission moteur. Le crâne, l’extraction du même os et l’atelier du Désert restent à qualifier. `REM112-06` demeure partiel. [Campagne navigateur et simulation des huit contrats](../v112-campaign-canonical/README.md)
+
+Les sauvegardes exportées contiennent encore l’os de qualité 68. Le dernier point de reprise admissible du trajet Chromium se situe à **105,583 s** en combat, avec **192 PV** et un Apex à **836,32 PV**. Le trajet d’admission moteur conserve un point de reprise à **115,050 s** avec **109,40 PV** et un Apex à **715 PV**. Le contrôle des rapports et des archives de stockage n’a trouvé aucun point enregistré en phase trophée ou extraction. [Contrôle des sauvegardes](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44959156155/job/137013878240)

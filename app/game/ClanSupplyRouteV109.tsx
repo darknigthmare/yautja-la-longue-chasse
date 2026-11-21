@@ -2,18 +2,25 @@
 import {W3S18RoutePostContext} from './W3S18RoutePostContext';
 import type {SpaceRoutesResultV159} from './systems/spaceRoutesV159';
 import type {W3S18RoutePost} from './systems/w3S18RoutePost';
-import {useEffect,useId,useLayoutEffect,useRef,useState,useSyncExternalStore,type KeyboardEvent,type ReactNode} from 'react';
+import {useCallback,useEffect,useId,useLayoutEffect,useRef,useState,useSyncExternalStore,type KeyboardEvent,type ReactNode} from 'react';
 import type {WarRulesV6} from './systems/clanWarBibleV6';
 import ClanWarW3S14ReceiptDossier from './ClanWarW3S14ReceiptDossier';
 import {SPECIALIZED_ASSETS_V107,specializedDefinitionsV107,type SpecializedIdV107} from './systems/clanWarSpecializedV107';
-import {CLAN_LOGISTICS_AUDIO_V108,CLAN_LOGISTICS_DEPOT_V108,CLAN_LOGISTICS_HYPOTHESES_V108,CLAN_LOGISTICS_KEY_V108,CLAN_LOGISTICS_SITES_V108,CLAN_LOGISTICS_WALLS_V108,logisticsActorV108,logisticsFunctionalV108,logisticsHearingV108,logisticsPcV108} from './systems/clanLogisticsV108';
+import {CLAN_LOGISTICS_AUDIO_V108,CLAN_LOGISTICS_DEPOT_V108,CLAN_LOGISTICS_HYPOTHESES_V108,CLAN_LOGISTICS_KEY_V108,CLAN_LOGISTICS_SITES_V108,CLAN_LOGISTICS_WALLS_V108,logisticsActorV108,logisticsFunctionalV108,logisticsAcousticsV108,logisticsPcV108} from './systems/clanLogisticsV108';
 import type {LogisticsLockV108} from './systems/clanLogisticsSessionV108';
 import {createSupplySessionV109} from './systems/clanSupplySessionV109';
+import {createLogisticsSpatialPlayback} from './systems/logisticsSpatialPlayback';
 import {CLAN_MOUNT_PARKING_V109,exportSupplyV109,supplyReservationV109,type SupplyActionV109,type SupplyStopV109} from './systems/clanSupplyRouteV109';
 import extra from './ClanSupplyRouteV109.module.css';
 import styles from './ClanLogisticsV108.module.css';
 const phases:Record<string,string>={planned:'À préparer',reserved:'Kit au dépôt',carried:'Kit porté',delivered:'Kit livré',building:'En construction',ready:'Terminé'};
 const routePhases:Record<string,string>={reserved:'Lot réservé',active:'Livraisons en cours',paused:'Tournée interrompue',returning:'Retour au dépôt',completed:'Tournée terminée',cancelled:'Tournée close sans livraison complète'};
+const soundStateV108 = {
+ audible: 'audible',
+ range: 'hors portée',
+ occluded: 'masquée par un obstacle',
+ unavailable: 'guetteur indisponible',
+} as const;
 const routeHolders:Record<string,string>={depot:'le dépôt',boat:'la soute du skiff',carrier:'le portage U19',shuttle:'la navette'};
 
 function duelServiceUrl(): string | null {
@@ -50,6 +57,7 @@ export default function ClanSupplyRouteV109({rules,active=true,campaignRoutesPan
  const [target,setTarget]=useState<{x:number;y:number}|null>(null),[held,setHeld]=useState<{dx:number;dy:number}|null>(null),[draft,setDraft]=useState(''),[draftIsPreview,setDraftIsPreview]=useState(false),[loading,setLoading]=useState(false),[ioMessage,setIoMessage]=useState(''),[exportText,setExportText]=useState('');
  const [tourSource,setTourSource]=useState<'depot'|'boat'>('boat'),[stops,setStops]=useState<SupplyStopV109[]>([]),[allowance,setAllowance]=useState(4),[zoom,setZoom]=useState(1);
  const [heard,setHeard]=useState<Record<string,number>>({});
+ const [spatialPlayback]=useState(createLogisticsSpatialPlayback);
  const terrainInstructionsId=useId();
  const pendingStopFocus=useRef<HTMLButtonElement|null>(null);
  useLayoutEffect(()=>{
@@ -63,21 +71,73 @@ export default function ClanSupplyRouteV109({rules,active=true,campaignRoutesPan
  const read=useRef({generation:0,loading:false,text:''}),audio=useRef<Record<string,HTMLAudioElement|null>>({}),progress=useRef<Record<string,{last:number;seconds:number}>>({});
  const activity=useRef(active),selectedRef=useRef(selected);
  useEffect(()=>{activity.current=active;selectedRef.current=selected;},[active,selected]);
- useEffect(()=>()=>{for(const media of mediaNodes.current)media.pause();mediaNodes.current.clear();},[]);
+ useEffect(()=>()=>{
+  for(const media of mediaNodes.current)media.pause();
+  mediaNodes.current.clear();
+  spatialPlayback.close();
+ },[spatialPlayback]);
  const stop=()=>{setTarget(null);setHeld(null);};
- function silence(){for(const player of Object.values(audio.current))player?.pause();progress.current={};setHeard({});}
- useEffect(()=>{const observer=new MutationObserver(()=>{if(!container.current?.closest('[inert],[hidden],[aria-hidden="true"]'))return;setTarget(null);setHeld(null);for(const player of Object.values(audio.current))player?.pause();progress.current={};setHeard({});});observer.observe(document.body,{attributes:true,subtree:true,attributeFilter:['inert','hidden','aria-hidden']});return()=>observer.disconnect();},[]);
+ const silence=useCallback(()=>{
+  for(const player of Object.values(audio.current)){
+   if(!player)continue;
+   spatialPlayback.mix(player,null);
+   player.pause();
+  }
+  progress.current={};
+  setHeard({});
+ },[spatialPlayback]);
+ function selectSite(nextSite:SpecializedIdV107){
+  stop();
+  if(site!==nextSite){
+   silence();
+   spatialPlayback.close();
+   mediaNodes.current.clear();
+  }
+  setSite(nextSite);
+  setLocation(nextSite);
+ }
+ useEffect(()=>{
+  const silenceUnderOverlay=()=>{
+   if(!container.current?.closest('[inert],[hidden],[aria-hidden="true"]'))return;
+   setTarget(null);
+   setHeld(null);
+   silence();
+  };
+  const observer=new MutationObserver(silenceUnderOverlay);
+  observer.observe(document.body,{attributes:true,subtree:true,attributeFilter:['inert','hidden','aria-hidden']});
+  return()=>observer.disconnect();
+ },[silence]);
  useEffect(()=>{store.hydrate();const external=(event:StorageEvent)=>{if(event.key===CLAN_LOGISTICS_KEY_V108||event.key===null)store.externalChange();};window.addEventListener('storage',external);return()=>window.removeEventListener('storage',external);},[store]);
  useEffect(()=>store.subscribe(()=>{
   const current=store.getSnapshot();
+  const confirmed=activity.current&&!document.hidden&&!container.current?.closest('[inert],[hidden],[aria-hidden="true"]')&&
+   !current.blocked&&!current.migrationPending&&current.state;
   for(const [id,player] of Object.entries(audio.current)){
-   if(!player||!progress.current[id]||(!current.blocked&&!current.migrationPending&&current.state&&logisticsHearingV108(current.state.convoy,id)))continue;
+   if(!player)continue;
+   const acoustics=confirmed?logisticsAcousticsV108(confirmed.convoy,id):null;
+   spatialPlayback.mix(player,acoustics);
+   if(acoustics?.status==='audible'||!progress.current[id])continue;
    player.pause();
    delete progress.current[id];
    setHeard(previous=>({...previous,[id]:0}));
   }
- }),[store]);
- useEffect(()=>{let timer:number|undefined;if(!active){timer=window.setTimeout(()=>{setTarget(null);setHeld(null);setHeard({});},0);progress.current={};for(const player of Object.values(audio.current))player?.pause();}const pause=()=>{if(document.visibilityState==='hidden'||!document.hasFocus()){setTarget(null);setHeld(null);progress.current={};setHeard({});for(const player of Object.values(audio.current))player?.pause();}};window.addEventListener('blur',pause);document.addEventListener('visibilitychange',pause);return()=>{if(timer!==undefined)window.clearTimeout(timer);window.removeEventListener('blur',pause);document.removeEventListener('visibilitychange',pause);};},[active]);
+ }),[store,spatialPlayback]);
+ useEffect(()=>{
+  const pause=()=>{
+   setTarget(null);
+   setHeld(null);
+   silence();
+  };
+  const pauseWhenHidden=()=>{if(document.hidden||!document.hasFocus())pause();};
+  const timer=active?undefined:window.setTimeout(pause,0);
+  window.addEventListener('blur',pauseWhenHidden);
+  document.addEventListener('visibilitychange',pauseWhenHidden);
+  return()=>{
+   if(timer!==undefined)window.clearTimeout(timer);
+   window.removeEventListener('blur',pauseWhenHidden);
+   document.removeEventListener('visibilitychange',pauseWhenHidden);
+  };
+ },[active,silence]);
  useEffect(()=>{if((!target&&!held)||!active)return;let cancelled=false;const timer=window.setInterval(async()=>{const latest=store.getSnapshot();if(container.current?.closest('[inert],[hidden],[aria-hidden="true"]')){setTarget(null);setHeld(null);return;}if(cancelled||!activity.current||document.hidden||!document.hasFocus()||latest.pending||latest.migrationPending||!latest.state)return;const actor=logisticsActorV108(latest.state.convoy,selectedRef.current);if(!actor)return;let step=held;if(target){const dx=target.x-actor.x,dy=target.y-actor.y,d=Math.hypot(dx,dy);if(d<3){setTarget(null);return;}step={dx:dx/Math.max(1,d)*Math.min(18,d),dy:dy/Math.max(1,d)*Math.min(18,d)};}if(!step)return;const revision=latest.state.revision;await store.act({kind:'move',actor:actor.id,...step});if(store.getSnapshot().state?.revision===revision){setTarget(null);setHeld(null);}},100);return()=>{cancelled=true;window.clearInterval(timer);};},[target,held,active,store]);
  function confirmRoutePost(operation:(post:W3S18RoutePost)=>SpaceRoutesResultV159){
   stop();
@@ -100,7 +160,45 @@ export default function ClanSupplyRouteV109({rules,active=true,campaignRoutesPan
   event.preventDefault();
   act({kind:'move',actor:selected,...step});
  }
- function canHear(sourceId:string){const latest=store.getSnapshot();return!!latest.state&&!latest.blocked&&!latest.migrationPending&&logisticsHearingV108(latest.state.convoy,sourceId);}
+ function currentAcoustics(sourceId:string){
+  const latest=store.getSnapshot();
+  if(!activity.current||document.hidden||container.current?.closest('[inert],[hidden],[aria-hidden="true"]')||
+     latest.blocked||latest.migrationPending||!latest.state)return null;
+  return logisticsAcousticsV108(latest.state.convoy,sourceId);
+ }
+ function resetTake(sourceId:string,media:HTMLAudioElement){
+  progress.current[sourceId]={last:media.currentTime,seconds:0};
+  setHeard(previous=>({...previous,[sourceId]:0}));
+ }
+ function wakeSound(sourceId:string,media:HTMLAudioElement){
+  const acoustics=currentAcoustics(sourceId);
+  if(acoustics?.status!=='audible'){
+   spatialPlayback.mix(media,null);
+   media.pause();
+   return;
+  }
+  void spatialPlayback.wake(media,acoustics).catch(()=>{
+   media.pause();
+   resetTake(sourceId,media);
+   setIoMessage('Lecture spatiale indisponible sur ce navigateur.');
+  });
+ }
+ function trackAudibleTake(sourceId:string,media:HTMLAudioElement){
+  if(currentAcoustics(sourceId)?.status!=='audible'){
+   spatialPlayback.mix(media,null);
+   media.pause();
+   resetTake(sourceId,media);
+   return;
+  }
+  const last=media.currentTime;
+  const take=progress.current[sourceId]??{last,seconds:0};
+  const delta=last-take.last;
+  const audiblePlayback=(!media.paused||media.ended)&&!media.seeking&&!media.muted&&media.volume>0&&
+   spatialPlayback.playingOutput(media)&&delta>0&&delta<1;
+  const seconds=take.seconds+(audiblePlayback?delta:0);
+  progress.current[sourceId]={last,seconds};
+  setHeard(previous=>({...previous,[sourceId]:seconds}));
+ }
  function selectActor(id:string){stop();setSelected(id);}
  function reorderStop(index:number,direction:-1|1,button:HTMLButtonElement){
   const nextIndex=index+direction;
@@ -149,7 +247,7 @@ export default function ClanSupplyRouteV109({rules,active=true,campaignRoutesPan
    {btn('Réserver la tournée dans ce stock',{kind:'supply-plan',source:tourSource,allowance,stops},stops.length<2||plannedTotal>20||invalidStop)}</>:<><p><strong>{routePhases[route!.phase]}</strong> · {route!.cursor}/{route!.stops.length} étapes déposées · {route!.heldAmount} RAV à livrer · lot dans {routeHolders[route!.holder??'']??'aucun lieu'} · {supplyReservationV109(route)} réservés dans ce stock réel.</p><ol>{route!.stops.map((stop,i)=><li key={stop.workId} aria-current={i===route!.cursor?'step':undefined}>{definitions.find(d=>d.id===stop.workId)!.name} · {stop.amount} RAV · {i<route!.cursor?'déposé':i===route!.cursor?'prochaine étape':'à venir'}</li>)}</ol><div className={styles.toolbar}>{btn('Charger ou reprendre le même lot',{kind:'supply-load'},!['depot','boat'].includes(route!.holder??''))}{btn('Déposer la prochaine étape',{kind:'supply-deliver'},route!.phase!=='active')}{btn('Interrompre la tournée',{kind:'supply-pause'},route!.phase==='paused')}{btn('Reprendre la tournée',{kind:'supply-resume'},route!.phase!=='paused')}{btn('Engager le retour avec le reliquat',{kind:'supply-return'},!route!.loaded||route!.phase==='paused')}{btn('Clore la tournée au dépôt',{kind:'supply-close'},route!.phase!=='returning')}{btn('Annuler la réservation non chargée',{kind:'supply-cancel'},route!.loaded)}</div><p>Rejoignez le lieu du lot avant de le charger, puis chaque casier dans l’ordre. Après une traversée en skiff, le lot demeure dans la soute jusqu’à sa reprise physique. Un tour qui entamerait la réservation est refusé ; complétez les vivres depuis un stock rejoint.</p><div className={styles.toolbar}>{btn('Prendre 2 vivres dans le stock rejoint',{kind:'supply-provision',location:location as 'depot'|'boat'|SpecializedIdV107,amount:2})}{btn('Prendre 6 vivres dans le stock rejoint',{kind:'supply-provision',location:location as 'depot'|'boat'|SpecializedIdV107,amount:6})}</div></>}
    {snapshot.state!.completedRoutes.length>0&&<p>{snapshot.state!.completedRoutes.length} tournée(s) close(s), sans rang, revenu ni acquisition de campagne.</p>}
   </section>
-  <div className={styles.toolbar}>{definitions.map(d=><button type="button" key={d.id} aria-pressed={site===d.id} onClick={()=>{stop();if(site!==d.id)silence();setSite(d.id);setLocation(d.id);}}>{d.id} · {d.name} · {phases[state.works.find(w=>w.id===d.id)!.phase]}</button>)}</div>
+  <div className={styles.toolbar}>{definitions.map(d=><button type="button" key={d.id} aria-pressed={site===d.id} onClick={()=>selectSite(d.id)}>{d.id} · {d.name} · {phases[state.works.find(w=>w.id===d.id)!.phase]}</button>)}</div>
   <div className={styles.layout}><div>
    <div className={styles.toolbar}><button type="button" onClick={()=>setZoom(z=>Math.max(1,z-.5))}>Réduire le terrain</button><span>Zoom {Math.round(zoom*100)} %</span><button type="button" onClick={()=>setZoom(z=>Math.min(3,z+.5))}>Agrandir le terrain</button></div>
    <p id={terrainInstructionsId} className={styles.tip}>Les flèches seules déplacent l’équipe sélectionnée quand le terrain a le focus clavier.</p><div className={extra.viewport}>
@@ -161,7 +259,7 @@ export default function ClanSupplyRouteV109({rules,active=true,campaignRoutesPan
     {CLAN_LOGISTICS_WALLS_V108.map((r,i)=><g key={i}><rect {...r} fill="#36423c" stroke="#9c9c7a" strokeWidth="4"/><path d={`M${r.x+3} ${r.y+10}l15 20 -10 20 14 15`} fill="none" stroke="#697369" strokeWidth="3"/></g>)}
     <rect x="850" y="0" width="150" height="130" fill="#0a1b30" stroke="#a2b4b8" strokeDasharray="5 5"/><text x="925" y="25" textAnchor="middle" fill="#c8d6d1" fontSize="12">ESCALE ORBITALE</text><text x="925" y="120" textAnchor="middle" fill="#a9bdb6" fontSize="10">Accès par navette uniquement</text>
     <g transform="translate(100 500)"><rect x="-38" y="-30" width="76" height="60" rx="5" fill="#756b42" stroke="#d9c281" strokeWidth="3"/><path d="M-32 -22H32M-32 -8H32M-32 6H32M-10 -28V26M15 -28V26" stroke="#4f5137" strokeWidth="3"/><text y="47" textAnchor="middle" fill="#f1e7c9" fontSize="14">DÉPÔT · {state.depot}</text></g>
-    {state.works.map(w=>{const p=CLAN_LOGISTICS_SITES_V108[w.id],on=logisticsFunctionalV108(state,w.id),d=definitions.find(d=>d.id===w.id)!;return <g key={w.id} transform={`translate(${p.x} ${p.y})`} data-logistics-work={w.id} data-phase={w.phase} data-bin={w.bin} data-staffed={w.staffed} onClick={event=>{event.stopPropagation();stop();if(site!==w.id)silence();setSite(w.id);setLocation(w.id);}} style={{cursor:'pointer'}}><circle r="43" fill={site===w.id?'#63745366':'#182a2366'} stroke={on?'#d4de88':'#869875'} strokeWidth={site===w.id?3:1} strokeDasharray={w.phase==='ready'?undefined:'5 4'}/>{w.phase==='ready'?<><rect x="-30" y="-16" width="60" height="32" rx={w.id==='W3-S14'?16:2} fill={on?'#4f765c':'#3b4940'} stroke="#b7b58a" strokeWidth="3"/><path d={w.id==='W3-S09'?'M-38 -15H38M-38 0H38M-38 15H38':w.id==='W3-S15'?'M-18 14L0 -28 18 14M0 -28V-42':w.id==='W3-S18'?'M-26 -20L26 20M26 -20L-26 20':'M-22 0H22M0 -13V13'} stroke="#d5c590" fill="none" strokeWidth="3"/></>:<text textAnchor="middle" fill="#e5dbb4" fontSize="20">{w.worked?`${w.worked}/${d.turns}`:'+'}</text>}{w.supports.map(i=><rect key={i} x={i?21:-27} y="21" width="6" height="12" fill="#c3bd82"/>)}<text y="-51" textAnchor="middle" fill="#f0e4b5" fontSize="12">{w.id} · {d.name}</text><text y={w.id==='W3-S10'?-35:62} textAnchor="middle" fill="#c4d2bb" fontSize="11">{w.bin} RAV · {on?'service actif':phases[w.phase]}</text></g>;})}
+    {state.works.map(w=>{const p=CLAN_LOGISTICS_SITES_V108[w.id],on=logisticsFunctionalV108(state,w.id),d=definitions.find(d=>d.id===w.id)!;return <g key={w.id} transform={`translate(${p.x} ${p.y})`} data-logistics-work={w.id} data-phase={w.phase} data-bin={w.bin} data-staffed={w.staffed} onClick={event=>{event.stopPropagation();selectSite(w.id);}} style={{cursor:'pointer'}}><circle r="43" fill={site===w.id?'#63745366':'#182a2366'} stroke={on?'#d4de88':'#869875'} strokeWidth={site===w.id?3:1} strokeDasharray={w.phase==='ready'?undefined:'5 4'}/>{w.phase==='ready'?<><rect x="-30" y="-16" width="60" height="32" rx={w.id==='W3-S14'?16:2} fill={on?'#4f765c':'#3b4940'} stroke="#b7b58a" strokeWidth="3"/><path d={w.id==='W3-S09'?'M-38 -15H38M-38 0H38M-38 15H38':w.id==='W3-S15'?'M-18 14L0 -28 18 14M0 -28V-42':w.id==='W3-S18'?'M-26 -20L26 20M26 -20L-26 20':'M-22 0H22M0 -13V13'} stroke="#d5c590" fill="none" strokeWidth="3"/></>:<text textAnchor="middle" fill="#e5dbb4" fontSize="20">{w.worked?`${w.worked}/${d.turns}`:'+'}</text>}{w.supports.map(i=><rect key={i} x={i?21:-27} y="21" width="6" height="12" fill="#c3bd82"/>)}<text y="-51" textAnchor="middle" fill="#f0e4b5" fontSize="12">{w.id} · {d.name}</text><text y={w.id==='W3-S10'?-35:62} textAnchor="middle" fill="#c4d2bb" fontSize="11">{w.bin} RAV · {on?'service actif':phases[w.phase]}</text></g>;})}
     {state.works.filter(w=>w.phase!=='planned').map(w=>{const holder=w.kitHolder==='depot'?{x:155,y:550}:w.kitHolder==='carrier'?logisticsActorV108(state,'carrier')!:CLAN_LOGISTICS_SITES_V108[w.id];return <rect key={`kit:${w.id}`} x={holder.x-7} y={holder.y+12} width="14" height="10" fill="#b0985f" stroke="#e9d198" data-logistics-kit={w.id} data-holder={w.kitHolder}/>;})}
     <g data-logistics-boat={state.boat.phase} data-x={state.boat.x} data-y={state.boat.y}><image href={SPECIALIZED_ASSETS_V107.boat} x={state.boat.x-49} y={state.boat.y-33} width="98" height="66" preserveAspectRatio="xMidYMid meet"/><text x={state.boat.x} y={state.boat.y+42} fill="#efe5bc" textAnchor="middle" fontSize="12">Skiff · {state.boat.cargo} RAV</text></g>
     {CLAN_MOUNT_PARKING_V109.map((p,i)=><g key={`parking:${i}`} pointerEvents="none"><rect x={p.x-28} y={p.y-24} width="56" height="48" rx="8" fill="#29433855" stroke="#b6c88b" strokeDasharray="5 4"/>{!state.mounts.some(m=>Math.hypot(m.x-p.x,m.y-p.y)<=48)&&<text x={p.x} y={p.y+37} textAnchor="middle" fill="#d4deb4" fontSize="10">Place {i+1}</text>}</g>)}
@@ -217,7 +315,35 @@ export default function ClanSupplyRouteV109({rules,active=true,campaignRoutesPan
     {active&&campaignOwnerCreatedAt&&<ClanWarW3S14ReceiptDossier
       key={campaignOwnerCreatedAt+"-"+rules.metadata.sha256} ownerCreatedAt={campaignOwnerCreatedAt} sourceSha={rules.metadata.sha256}/>}
     <h5>Répétition locale du duel</h5><p>{state.duel.phase} · touches {state.duel.player}/{state.duel.rival} · signatures {state.duel.signatures.length}/2 · coffre {state.duel.chestHolder}.</p><div className={styles.toolbar}>{btn('Signer avec le duelliste',{kind:'sign',actor:'operator:W3-S14'})}{btn('Signer avec le rival',{kind:'sign',actor:'rival'})}{btn('Commencer le duel accepté',{kind:'duel-start'})}{btn('Frapper au contact',{kind:'duel-strike'})}{btn('Réponse du rival',{kind:'duel-reply'})}{btn('Retirer le coffre gagné',{kind:'duel-claim'})}{btn('Renégocier après interruption',{kind:'duel-renegotiate'})}</div><p>Après une touche, déplacez le duelliste hors du contact avant la réponse. Sortir de l’aire ou y faire entrer U19 suspend le duel. La renégociation conserve les touches ; aucune nouvelle récompense.</p></>}
-   {site==='W3-S15'&&<><h5>Deux vrais fichiers, une écoute située</h5><div className={styles.audio}>{CLAN_LOGISTICS_AUDIO_V108.map(source=><div key={source.id}><p>{source.name} · {logisticsHearingV108(state,source.id)?'audible':'hors portée ou masqué'}</p><audio controls preload="none" src={source.src} ref={node=>{audio.current[source.id]=node;if(node)mediaNodes.current.add(node);}} onPlay={event=>{progress.current[source.id]={last:event.currentTarget.currentTime,seconds:0};if(!active||container.current?.closest('[inert],[hidden],[aria-hidden="true"]')||!canHear(source.id))event.currentTarget.pause();}} onSeeking={event=>{progress.current[source.id]={last:event.currentTarget.currentTime,seconds:0};setHeard(v=>({...v,[source.id]:0}));}} onTimeUpdate={event=>{const media=event.currentTarget,p=progress.current[source.id]??{last:media.currentTime,seconds:0},delta=media.currentTime-p.last;if(container.current?.closest('[inert],[hidden],[aria-hidden="true"]'))media.pause();if(activity.current&&!container.current?.closest('[inert],[hidden],[aria-hidden="true"]')&&(!media.paused||media.ended)&&!media.seeking&&delta>0&&delta<1&&canHear(source.id))p.seconds+=delta;p.last=media.currentTime;progress.current[source.id]=p;setHeard(v=>({...v,[source.id]:p.seconds}));}}/><button type="button" disabled={!active||snapshot.pending>0||snapshot.blocked||snapshot.migrationPending||!logisticsHearingV108(state,source.id)||(heard[source.id]??0)<.25} onClick={()=>{act({kind:'record',sourceId:source.id,seconds:Math.min(30,heard[source.id]??0)});progress.current[source.id]={last:audio.current[source.id]?.currentTime??0,seconds:0};setHeard(v=>({...v,[source.id]:0}));}}>Conserver la prise {source.id}</button></div>)}</div><div className={styles.toolbar}>{btn('Comparer les prises à la station',{kind:'compare'})}</div><p>{state.recordings.length} prises ; {state.compared?'comparaison effectuée':'retour à la station requis'}. Les sources ne contiennent ni faune ni météo enregistrées ; ces incertitudes restent affichées.</p></>}
+   {site==='W3-S15'&&<>
+    <h5>Écouter les sources depuis le guetteur</h5>
+    <div className={styles.audio}>{CLAN_LOGISTICS_AUDIO_V108.map(source=>{
+     const acoustics=logisticsAcousticsV108(state,source.id);
+     return <div key={source.id} data-logistics-audio={source.id} data-availability={acoustics.status}>
+      <p>{source.name} · {soundStateV108[acoustics.status]}</p>
+      <audio controls preload="none" src={source.src} aria-label={source.name}
+       ref={node=>{audio.current[source.id]=node;if(node)mediaNodes.current.add(node);}}
+       onPointerDownCapture={event=>wakeSound(source.id,event.currentTarget)}
+       onKeyDownCapture={event=>{if(event.key==='Enter'||event.key===' ')wakeSound(source.id,event.currentTarget);}}
+       onPlay={event=>{resetTake(source.id,event.currentTarget);wakeSound(source.id,event.currentTarget);}}
+       onSeeking={event=>resetTake(source.id,event.currentTarget)}
+       onVolumeChange={event=>{const media=event.currentTarget;if(media.muted||media.volume<=0)resetTake(source.id,media);}}
+       onTimeUpdate={event=>trackAudibleTake(source.id,event.currentTarget)}/>
+      <button type="button" disabled={!active||snapshot.pending>0||snapshot.blocked||snapshot.migrationPending||
+       acoustics.status!=='audible'||(heard[source.id]??0)<.25}
+       onClick={()=>{
+        const player=audio.current[source.id],seconds=progress.current[source.id]?.seconds??0;
+        if(!player||seconds<.25||currentAcoustics(source.id)?.status!=='audible')return;
+        act({kind:'record',sourceId:source.id,seconds:Math.min(30,seconds)});
+        resetTake(source.id,player);
+       }}>
+       Conserver la prise {source.id}
+      </button>
+     </div>;
+    })}</div>
+    <div className={styles.toolbar}>{btn('Comparer les prises à la station',{kind:'compare'})}</div>
+    <p>{state.recordings.length} prises ; {state.compared?'comparaison effectuée':'retour à la station requis'}. Les sources ne contiennent ni faune ni météo enregistrées ; ces incertitudes restent affichées.</p>
+   </>}
    {site==='W3-S18'&&<><h5>La navette prêtée, sa route et ses occupants</h5><p>{state.shuttle.id} · pilote {state.shuttle.pilotId} · {state.shuttle.phase} · {state.shuttle.progress}/16 · carburant {state.shuttle.fuel}/4 · charge {state.shuttle.cargo} · manifeste {state.shuttle.passenger??'pilote seul'}.</p><div className={styles.toolbar}>{btn('Reconnaître l’escale à pied',{kind:'recon'})}{btn('Autoriser cette coque et cette route',{kind:'authorize'})}{btn('Embarquer sur la navette',{kind:'shuttle-board'})}{btn('Engager le trajet orbital',{kind:'shuttle-depart'})}{btn('Avancer la navette',{kind:'shuttle-step'})}{btn('Débarquer au lieu atteint',{kind:'shuttle-land'})}</div><p>La surface et l’orbite sont des lieux distincts. Une approche retour attend un opérateur nourri au sol. L’inspection et le voyage de cette coque prêtée ne valident pas R2-M021.</p></>}
    {site==='W3-S18'&&active&&campaignRoutesPanel&&<section ref={routePost} aria-label="Routes de campagne depuis W3-S18">
     {snapshot.pending>0||snapshot.blocked||snapshot.migrationPending

@@ -25,3 +25,9 @@
 .testimony ol, .testimony ul { margin: 0; padding-left: 1.4rem; }
 .testimony button { flex: 0 1 auto; text-align: start; }
 @media (max-width: 620px) { .quest { padding: .65rem; } .viewport { height: 425px; } }
+
+.wounded {
+  transform: translateY(23px) rotate(-72deg);
+  transform-origin: center 70%;
+}
+
