@@ -55,7 +55,7 @@ export function decideHuntCampaignInputV112(game,tick,memory,strategy='mixed'){
         pressed.push('melee');
       }
     }
-    if(gap<55)target={...target,x:pc.x};
+    if(gap<55&&Math.sign(point.x-pc.x)===player.facing)target={...target,x:pc.x};
     if(range<260&&player.grounded&&tick>=(memory.nextJump??0)){
       pressed.push('jump');held.push('jump');memory.nextJump=tick+66;memory.jumpUntil=tick+12;
     }

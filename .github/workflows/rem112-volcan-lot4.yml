@@ -1,7 +1,7 @@
 name: REM112 extraction depuis le tendon réellement conservé
 on:
   push:
-    branches: [codex/qa-rem112-volcan-authentic-carry-lot4]
+    branches: [codex/qa-rem112-volcan-authentic-facing-lot4]
 permissions:
   contents: read
   actions: read
@@ -19,7 +19,7 @@ jobs:
             seed: browser-workshop
             species: cinder-12--hell-hound-stalker
             action: harvest-tissue
-            budget: 1000
+            budget: 650
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: 1
       NEXT_TELEMETRY_DISABLED: 1
@@ -57,6 +57,22 @@ jobs:
           assert.equal(JSON.stringify(report.activeHunt),active.value);
           assert.equal(createHash('sha256').update(active.value).digest('hex'),'496609d2401572703892fd6d33f1385357ace12e9885d9bb2af9f16ef54382ef');
           NODE
+      - run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import {decideHuntCampaignInputV112} from './scripts/lib/qa-hunt-campaign-input-v112.mjs';
+          const player={x:4931.46627447466,y:508,width:72,height:116,health:109,maxHealth:192,medicomps:0,
+            scanCooldown:0,energy:120,activeWeaponSlot:0,stamina:110,melee:{phase:'idle'},grounded:true,facing:1};
+          const enemy={id:'volcano-ambush-1',x:4794.7169485194845,y:504,width:84,height:120,active:true,alive:true};
+          const boss={id:'mission-boss',x:7321,y:470,width:160,height:154,active:true,alive:true};
+          const game={player,phase:'target',scanNodes:[],recoveryNodes:[],boss,bossMechanics:{missionId:'volcano-bad-blood',purgeSeconds:null},
+            enemies:[enemy],world:{platforms:[],floorY:624}};
+          const choose=()=>decideHuntCampaignInputV112(game,7201,{previousX:player.x,nextJump:8000});
+          assert.equal(choose().reason,'combat:volcano-ambush-1');
+          assert.ok(choose().held.includes('left'),'the Hunter must face the target before the next strike');
+          player.facing=-1;
+          assert.ok(!choose().held.includes('left'),'an aligned Hunter keeps the existing close-range stop');
+          NODE
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: |
           node scripts/qa-hunt-campaign-browser-v112.mjs \
@@ -80,5 +96,5 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: rem112-lot4-exact-tendon-continuation
+          name: rem112-lot4-exact-tendon-with-facing
           path: outputs/browser/
