@@ -104,3 +104,25 @@ test("expanded help keeps native disclosure and distinct cancellation, preparati
   assert.match(html,/Fermer le menu interrompt/);assert.match(html,/Annuler le prélèvement/);
   assert.match(html,/Le temps et les ennemis continuent/);
 });
+
+test("the field cue distinguishes the actual rigid support, flexible swing and a reachable grip",()=>{
+  const bindings={...api.DEFAULT_CONTROL_BINDINGS,"hunt.moveUp":["F1"],"hunt.jump":["F3"]};
+  const rigid=cue(render({bindings,grounded:false,climbing:true,navigation:{heldGrip:{label:"Arbre",flexible:false}}}));
+  assert.match(rigid,/Arbre.*direction \+ Saut \(F3/);
+  assert.doesNotMatch(rigid,/pomper/);
+  const swing=cue(render({bindings,grounded:false,climbing:true,navigation:{heldGrip:{label:"Liane",flexible:true}}}));
+  assert.match(swing,/Liane.*pomper/);
+  const ready=cue(render({bindings,grounded:false,gripInput:"toggle",navigation:{availableGrip:{label:"Branche"}}}));
+  assert.match(ready,/Branche à portée.*presse.*F1/);
+  const missed=cue(render({bindings,grounded:false,navigation:{availableGrip:null}}));
+  assert.match(missed,/réception/);
+  assert.doesNotMatch(missed,/F1/);
+});
+test("a live anatomy operation replaces the open-menu hint, then only genuinely available next gestures are suggested",()=>{
+  const asRite=rite=>cue(render({corpseNearby:true,rite:{open:true,operation:null,canAnalyze:false,canFlay:false,parts:[],...rite}}));
+  assert.match(asRite({operation:{label:"Tendon"}}),/Tendon en cours/);
+  assert.match(asRite({canAnalyze:true}),/Analyse la proie/);
+  assert.match(asRite({parts:[{available:true,harvested:false}]}),/partie disponible/);
+  assert.match(asRite({worksiteLockedReason:"Dégage la zone.",canAnalyze:true}),/Dégage la zone/);
+  assert.doesNotMatch(asRite({parts:[{available:false,harvested:true}]}),/Choisis une partie disponible/);
+});
