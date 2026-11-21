@@ -1,0 +1,36 @@
+name: REM112 reçu de terrain après le tendon du Volcan
+on:
+  push:
+    branches: [codex/qa-rem112-carry-receipt-diagnostic-lot4]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          run-id: 44942225541
+          name: rem112-lot4-volcano-hound-tissue
+          github-token: ${{ github.token }}
+          path: evidence
+      - run: |
+          node --input-type=module <<'NODE'
+          import {readFile} from 'node:fs/promises';
+          import {createHash} from 'node:crypto';
+          import assert from 'node:assert/strict';
+          const parse=async file=>JSON.parse(await readFile('evidence/'+file,'utf8'));
+          const report=await parse('report.json'),storage=await parse('browser-storage-state.json');
+          const stores=storage.origins.flatMap(x=>x.localStorage),entry=stores.find(x=>x.name==='yautja-long-hunt.active-hunt');
+          const sidecar=report.activeHunt,final=report.attempts[0]?.final?.state;
+          if(sidecar)assert.deepEqual(JSON.parse(entry.value),sidecar);
+          const cp=sidecar?.snapshot?.checkpoint;
+          const subject={sidecar:sidecar?createHash('sha256').update(JSON.stringify(sidecar)).digest('hex'):null,
+            storageMatches:!!entry,elapsed:cp?.elapsed,attempt:sidecar?.encounterRun,missionId:sidecar?.missionId,
+            player:{x:cp?.player?.x,y:cp?.player?.y,health:cp?.player?.health},phase:cp?.phase,cpKeys:Object.keys(cp??{}),
+            specimens:cp?.huntRites?.specimensV112,saveReady:!!report.finalSave,ownerSame:sidecar?.ownerSaveCreatedAt===report.finalSave?.createdAt,
+            retries:report.attempts[0]?.retryEvents?.map(x=>({elapsed:x.elapsed,button:x.button})),
+            final:{phase:final?.phase,elapsed:final?.elapsed,x:final?.player?.x,health:final?.player?.health,specimens:final?.huntRites?.specimensV112}};
+          console.log(JSON.stringify({receipt:'VOLCAN-CARRY-STOP',...subject}));
+          NODE
