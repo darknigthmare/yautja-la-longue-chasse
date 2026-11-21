@@ -1,0 +1,369 @@
+{
+  "version": 1,
+  "date": "2026-11-21",
+  "baseCommit": "0c6708999e393b7e7af8f6c8c8753ab7ec5d9437",
+  "lots": [
+    {
+      "priority": "P0",
+      "limit": 10,
+      "entries": [
+        {
+          "id": "REM112-01",
+          "source": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+          "sourceDetail": "Restant!A5:F5 · lot chasse priorisé pour cette reprise",
+          "criterion": "Un joueur nouveau comprend prise, repos, épuisement, préparation, prélèvement, extraction et conservation sans explication extérieure. Exécuter les 9 tâches du protocole avec 5 nouveaux joueurs ; noter aide, erreurs, temps et explication. Cible 4/5 sans aide pour les tâches essentielles. Aucun participant ni résultat humain n'est consigné ; textes et états logiciels testés ne prouvent pas cette compréhension.",
+          "status": "Bloqué",
+          "result": "5 nouveaux joueurs requis. La recette et la cible 4/5 restent documentées.",
+          "evidence": ""
+        },
+        {
+          "id": "REM112-02",
+          "source": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+          "sourceDetail": "Restant!A6:F6 · lot chasse priorisé pour cette reprise",
+          "criterion": "Commandes tactiles et sorties dans une chasse réelle sur téléphone Android identifié. Consigner modèle, OS, navigateur, viewport, version testée, orientation, gestes, perte de focus et reprise ; joindre captures et incidents. Une émulation Chromium ne ferme pas ce critère.",
+          "status": "Bloqué",
+          "result": "Un téléphone Android physique identifié est requis. Pas de résultat sur appareil durant ce lot.",
+          "evidence": ""
+        },
+        {
+          "id": "REM112-03",
+          "source": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+          "sourceDetail": "Restant!A7:F7 · lot chasse priorisé pour cette reprise",
+          "criterion": "Commandes tactiles et sorties dans une chasse réelle sur iPhone identifié. Consigner modèle, iOS, Safari, viewport, version, orientation, gestes, perte de focus et reprise ; joindre captures/incidents. Aucun appareil réel utilisé dans cette qualification.",
+          "status": "Bloqué",
+          "result": "Un iPhone physique et Safari sont requis. Pas de résultat sur appareil durant ce lot.",
+          "evidence": ""
+        },
+        {
+          "id": "REM112-04",
+          "source": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+          "sourceDetail": "Restant!A8:F8 · lot chasse priorisé pour cette reprise",
+          "criterion": "Commande corporelle et atelier, remappage, branchement/rebranchement sur contrôleur identifié. Consigner modèle, transport USB/Bluetooth, OS/navigateur, affectations, navigation, confirmation/annulation, reconnexion et absence d'action derrière le menu. Le pad logiciel ne qualifie pas le périphérique.",
+          "status": "Bloqué",
+          "result": "La reconnexion et le remappage doivent être vérifiés sur une manette physique.",
+          "evidence": ""
+        },
+        {
+          "id": "REM112-05",
+          "source": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+          "sourceDetail": "Restant!A9:F9 · lot chasse priorisé pour cette reprise",
+          "criterion": "Coût de trame et mémoire dans le produit avec rendu, illustrations et sons sur matériel cible. Consigner CPU/GPU/RAM, OS, navigateur, résolution, version et scène dense ; relever p 50/p 95/p 99/max des trames, pics mémoire et durée. Une mesure Node du CPU de simulation en CI reste distincte.",
+          "status": "Bloqué",
+          "result": "Les mesures sur matériel cible CPU/GPU/mémoire restent à relever.",
+          "evidence": ""
+        },
+        {
+          "id": "REM112-06",
+          "source": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+          "sourceDetail": "Restant!A10:F10 · lot chasse priorisé pour cette reprise",
+          "criterion": "Huit chasses avec combat, canopée optionnelle, prélèvements, extraction, sauvegarde/reprise et atelier par les entrées du produit. Jouer chaque chasse sans retirer ennemis, téléporter ni forcer un résultat ; conserver armure, charge, profil d'accessibilité, parcours, morts/reprises et stock final. Les scénarios automatisés bornés restent explicitement bornés.",
+          "status": "Partiel",
+          "result": "Recette GameClient depuis une sauvegarde neuve. Jungle réglée durablement après reprise exacte à 21,600 s. Glace et Volcan repris à 20,450 s et 21,500 s, avec combats encore ouverts dans ces essais. Le passage Glace–atelier historique est documenté. Les huit parcours complets restent ouverts.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800/artifacts/14711789372",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800/artifacts/14711934633",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/main/docs/qa/v112-ground-campaign/README.md"
+          ]
+        },
+        {
+          "id": "REM112-07",
+          "source": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+          "sourceDetail": "Restant!A11:F11 · lot chasse priorisé pour cette reprise",
+          "criterion": "Ouverture et usage du classeur livré dans Excel, sans alerte de réparation. Consigner version Excel/OS et empreinte du XLSX ; essayer filtres, volets gelés, liens et impression. ZIP/XML et reproduction déterministe ne constituent pas une session Excel native.",
+          "status": "Bloqué",
+          "result": "La vérification par reproduction des octets et le contrôle de structure du classeur sont automatisables. Il reste à ouvrir, filtrer, suivre les liens et réenregistrer le document dans Microsoft Excel sur un poste identifié.",
+          "evidence": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/main/scripts/build-priority-lots-workbook-20261121.mjs"
+        },
+        {
+          "id": "REM112-08",
+          "source": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+          "sourceDetail": "Restant!A12:F12 · lot chasse priorisé pour cette reprise",
+          "criterion": "Le repli au sol reste praticable dans les huit missions avec armures et charges admissibles, ennemis et objectifs réels. Vérifier le parcours intégral jusqu'à l'extraction avec charge/armure déterminées. Les 72 traversées de canopée isolées démontrent les repos et accès, pas toutes les campagnes au sol.",
+          "status": "Partiel",
+          "result": "140 extractions sur 144 essais moteur et 144 rejeux exacts. Glace Scout 16/18, Désert Scout 15/18, Volcan Hunter 19/24 et Berserker 19/30. Le dépôt utilise l’appui réel, avec 54 tests verts. Les pleines charges Jungle et Volcan Scout étaient déjà établies. Les variantes de rangement n’ont pas franchi un nouveau seuil de pleine charge.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916768090",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916625804/job/136883527714",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44917611354/artifacts/14712605891"
+          ]
+        },
+        {
+          "id": "CW130-NET-006",
+          "source": "docs/clan-war-v130/Yautja_Guerres_Clans_Plan_Production_V130_2026-10-30.xlsx",
+          "sourceDetail": "MULTIJOUEUR!A10:I10 · ROADMAP_GLOBALE!A119:I119",
+          "criterion": "Confier départ, rappel, incidents, échéance et reçu d’Outer Ops à l’autorité du serveur. Vérifier que changer l’horloge du client reste sans effet.",
+          "status": "Partiel",
+          "result": "Service Outer Ops d’exercice. Deux tests sur TCP et SQLite vérifient une horloge client réglée sur 2100, le délai causé par un incident, le rappel autoritaire et un reçu signé durable après redémarrage. Les comptes et les stocks de campagne restent à raccorder.",
+          "evidence": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44902974466/job/136842576054"
+        },
+        {
+          "id": "CW130-NET-012",
+          "source": "docs/clan-war-v130/Yautja_Guerres_Clans_Plan_Production_V130_2026-10-30.xlsx",
+          "sourceDetail": "MULTIJOUEUR!A16:I16 · ROADMAP_GLOBALE!A125:I125",
+          "criterion": "Rattraper l’état avec un instantané pendant la mission et au règlement, sans dupliquer une unité, un butin ou un ordre.",
+          "status": "Partiel",
+          "result": "Le duel d’exercice V127 reprend après arrêt forcé sur journal local. Les ordres déjà admis, ticks et résultats restent uniques. La reprise des autres modes et du multijoueur de campagne reste à vérifier.",
+          "evidence": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44902739947/job/136841868275"
+        }
+      ]
+    },
+    {
+      "priority": "P1",
+      "limit": 10,
+      "entries": [
+        {
+          "id": "CW130-NET-003",
+          "source": "docs/clan-war-v143/Yautja_Guerres_Clans_Suivi_Production_V143_2026-10-31.xlsx",
+          "sourceDetail": "MULTIJOUEUR!E7:G7 · production/p0p1-20261109/qa/war-admission/source-requirement-groups.txt L507–508",
+          "criterion": "2–4 alliés avec rôles de déploiement, ressources partagées et priorité de contrôle. Un seul acteur peut être affecté/commandé à une position unique. Preuve attendue. Test autoritaire multi-client et scénarios réseau négatifs",
+          "status": "Partiel",
+          "result": "Deux à quatre foyers de contrôle distincts sur des équipes V6. Prêt unanime, chef autorisé, RAV/PC du trajet et AP communs. Un seul premier déploiement concurrent, second possible après déplacement. Matchmaking, comptes de campagne, persistance et recette sur appareils distincts non couverts.",
+          "evidence": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44901610911/job/136838514987"
+        },
+        {
+          "id": "CW130-NET-004",
+          "source": "docs/clan-war-v143/Yautja_Guerres_Clans_Suivi_Production_V143_2026-10-31.xlsx",
+          "sourceDetail": "MULTIJOUEUR!E8:G8 · production/p0p1-20261109/qa/war-admission/source-requirement-groups.txt L509–510",
+          "criterion": "Briefing, indices partagés par radio, traçage de bruit séparé et sortie collective. Un joueur détecté n'expose pas automatiquement la position des autres. Preuve attendue. Test autoritaire multi-client et scénarios réseau négatifs",
+          "status": "Partiel",
+          "result": "Serveur d’exercice par TCP. Quatre infiltrateurs au briefing, indices partagés par secteur, bruit et alarme par acteur. Deux sorties effectives et sabotage produisent un seul reçu stable. Intégration à la campagne multijoueur et serveur public à faire.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916900102/job/136884348146",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/c07f36fbbd3fa3eb79622ae3a439ffa6fdb86c1e/scripts/serve-clan-war-stealth-coop-v115.mjs"
+          ]
+        },
+        {
+          "id": "CW130-NET-005",
+          "source": "docs/clan-war-v143/Yautja_Guerres_Clans_Suivi_Production_V143_2026-10-31.xlsx",
+          "sourceDetail": "MULTIJOUEUR!E9:G9 · production/p0p1-20261109/qa/war-admission/source-requirement-groups.txt L511–512",
+          "criterion": "Partager groupes entre commandants avec verrouillage de sélection temporaire. Deux commandes contradictoires résolues de façon déterministe. Preuve attendue. Test autoritaire multi-client et scénarios réseau négatifs",
+          "status": "Partiel",
+          "result": "Quatre clients et escouades testés, avec bail de sélection temporaire, conflit, expiration et reconnexion. Le contrôle partagé fonctionne dans l’exercice serveur. L’interface de campagne distante reste à raccorder.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916900102/job/136884348146",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/c07f36fbbd3fa3eb79622ae3a439ffa6fdb86c1e/scripts/serve-clan-war-rts-coop-v133.mjs"
+          ]
+        },
+        {
+          "id": "CW130-NET-013",
+          "source": "docs/clan-war-v143/Yautja_Guerres_Clans_Suivi_Production_V143_2026-10-31.xlsx",
+          "sourceDetail": "MULTIJOUEUR!E17:G17 · production/p0p1-20261109/qa/war-admission/source-requirement-groups.txt L513–514",
+          "criterion": "Conditions de victoire par objectif/temps/repli, pas simple compteur de morts. Deux joueurs ne reçoivent pas tous deux victoire par double exécution. Preuve attendue. Test autoritaire multi-client et scénarios réseau négatifs",
+          "status": "Partiel",
+          "result": "Le sabotage et les sorties réelles aboutissent au reçu d’infiltration commun, stable lors des relectures. Des exercices précédents couvrent l’assaut. Le règlement dans les sauvegardes d’une campagne réseau reste ouvert.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916900102/job/136884348146",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/c07f36fbbd3fa3eb79622ae3a439ffa6fdb86c1e/tests/clan-war-stealth-coop-v115.test.mjs"
+          ]
+        },
+        {
+          "id": "CW130-RTS-021",
+          "source": "docs/clan-war-v143/Yautja_Guerres_Clans_Suivi_Production_V143_2026-10-31.xlsx",
+          "sourceDetail": "RTS!E25:G25 · production/p0p1-20261109/qa/war-admission/source-requirement-groups.txt L535–536",
+          "criterion": "Autorité serveur, groupes partagés, fog par équipe et reconciliation. Deux clients ne peuvent ni forger ressources ni voir unités cachées. Preuve attendue. test V129 + démonstration multi-escouades + rapport",
+          "status": "Partiel",
+          "result": "L’exercice réutilise le moteur et le brouillard V133. Les demandes n’accordent aucune ressource ni information sur l’ennemi caché. Cohérence des instantanés et reconnexion vérifiées en TCP. Hébergement et entrée réseau du client de campagne restent à intégrer.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916900102/job/136884348146",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/c07f36fbbd3fa3eb79622ae3a439ffa6fdb86c1e/tests/clan-war-rts-coop-v133.test.mjs"
+          ]
+        },
+        {
+          "id": "W3-S14",
+          "source": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+          "sourceDetail": "Structures de guerre!C19:K19 · exigence source W3-S14",
+          "criterion": "Raccorder un duel véritablement accepté par ses participants, avec le résultat exact et la reprise conservée dans la campagne.",
+          "status": "Ouvert",
+          "result": "L’exercice logistique existant reste borné. Il faut raccorder les participants et le résultat réel au poste de campagne sans octroyer la victoire d’office.",
+          "evidence": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/main/docs/suivi-production/v113-open-production-20261102/annexes/requirements-audit.json"
+        },
+        {
+          "id": "W3-S09",
+          "source": "production/YAUTJA_V114_SUIVI.xlsx",
+          "sourceDetail": "PrioritesV112!A11:G11 · production/p0p1-20261109/qa/war-admission/source-requirement-groups.txt L741–742",
+          "criterion": "Raccorder un quai à une rive praticable et à un transport réellement identifié ; pas de téléportation de cargaison. Raccorder un quai à une rive praticable et à un transport réellement identifié ; pas de téléportation de cargaison.\nMêmes objets, stocks finis, trajet réel, refus/reprise persistants ; acquisition et accord de campagne restent distincts des exercices. Preuve attendue. Mêmes objets, stocks finis, trajet réel, refus/reprise persistants ; acquisition et accord de campagne restent distincts des exercices.",
+          "status": "Ouvert",
+          "result": "Le quai V108/V109 déplace réellement le même skiff prêté dans l’exercice. La fixture skiff-v108-one ne constitue pas une acquisition native. Relier quai/transport acquis et route de campagne à un reçu consommé, sans téléportation de lot.",
+          "evidence": ""
+        },
+        {
+          "id": "W3-S10",
+          "source": "production/YAUTJA_V114_SUIVI.xlsx",
+          "sourceDetail": "PrioritesV112!A12:G12 · production/p0p1-20261109/qa/war-admission/source-requirement-groups.txt L743–744",
+          "criterion": "Identifier et déplacer les montures existantes, leurs gardiens et leur capacité ; ne pas créer une monture depuis un compteur. Identifier et déplacer les montures existantes, leurs gardiens et leur capacité ; ne pas créer une monture depuis un compteur.\nMêmes objets, stocks finis, trajet réel, refus/reprise persistants ; acquisition et accord de campagne restent distincts des exercices. Preuve attendue. Mêmes objets, stocks finis, trajet réel, refus/reprise persistants ; acquisition et accord de campagne restent distincts des exercices.",
+          "status": "Ouvert",
+          "result": "L’exercice déplace deux montures et des acteurs locaux. Aucun lien d’identité ni capacité entre monture autorisée de campagne et ouvrage W3-S10 effectué. Faire entrer monture, garde et capacité autorisés dans l’ouvrage, avec reprise et déplacement réel.",
+          "evidence": ""
+        },
+        {
+          "id": "W3-S13",
+          "source": "production/YAUTJA_V114_SUIVI.xlsx",
+          "sourceDetail": "PrioritesV112!A13:G13 · production/p0p1-20261109/qa/war-admission/source-requirement-groups.txt L745–746",
+          "criterion": "Raccorder l'alimentation et le coût réel de confinement ; aucun effet gratuit déduit de la description. Raccorder l'alimentation et le coût réel de confinement ; aucun effet gratuit déduit de la description.\nMêmes objets, stocks finis, trajet réel, refus/reprise persistants ; acquisition et accord de campagne restent distincts des exercices. Preuve attendue. Mêmes objets, stocks finis, trajet réel, refus/reprise persistants ; acquisition et accord de campagne restent distincts des exercices.",
+          "status": "Ouvert",
+          "result": "Le confinement consomme bien les charges de la cellule native dans V108. La cellule de l’exercice est une dotation fixe, aucun coût transactionnel de campagne raccordé. Consommer la même cellule et sa charge à partir d’une autorisation de campagne durable.",
+          "evidence": ""
+        },
+        {
+          "id": "W3-S18",
+          "source": "production/YAUTJA_V114_SUIVI.xlsx",
+          "sourceDetail": "PrioritesV112!A16:G16 · production/p0p1-20261109/qa/war-admission/source-requirement-groups.txt L751–752",
+          "criterion": "Raccorder un navire acquis et une route orbitale effective ; l'inspection documentaire ne donne ni navire ni voyage. Raccorder un navire acquis et une route orbitale effective ; l'inspection documentaire ne donne ni navire ni voyage.\nMêmes objets, stocks finis, trajet réel, refus/reprise persistants ; acquisition et accord de campagne restent distincts des exercices. Preuve attendue. Mêmes objets, stocks finis, trajet réel, refus/reprise persistants ; acquisition et accord de campagne restent distincts des exercices.",
+          "status": "Partiel",
+          "result": "Le poste ouvre les routes V159 après service et confirmation du carnet V109. Dans la recette Chromium des composants reliés, V161 refuse le départ sans coque délivrée, puis la même coque revient après reprise et atteint sa destination. Le trajet de campagne complet et la correspondance de la cargaison V109 restent à qualifier.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44918394911/artifacts/14712925716",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44918394911/job/136888856801",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/c0a4d868fb34730a33426a49ac84273775426e63/app/game/ClanSupplyRouteV109.tsx"
+          ]
+        }
+      ]
+    },
+    {
+      "priority": "P2",
+      "limit": 10,
+      "entries": [
+        {
+          "id": "R2-M017",
+          "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sourceDetail": "Acte III · Temple des Trois Ombres",
+          "criterion": "Préparer trois participants, leurs outils limités et atteindre le seuil sur une configuration mobile.",
+          "status": "Partiel",
+          "result": "Au Temple des Trois Ombres, l’acte I impose le dépôt des trois émetteurs au coffre avant le contrôle du râtelier. Les trois chasseurs atteignent ensemble le seuil de quarantaine pendant son ouverture. Le parcours V70 raccordé reste à éprouver sur téléphone et l’accès aux salles profondes reste ouvert. La sortie Quatza-Rij en triade constitue un autre parcours.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/main/tests/campaign-solo-v70.test.mjs",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/main/tests/first-hunt-solo-v70.test.mjs"
+          ]
+        },
+        {
+          "id": "R2-M018",
+          "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sourceDetail": "Acte III · Le Quatza-Rij à trois",
+          "criterion": "Vaincre le Quatza-Rij avec trois rôles qui agissent et une preuve physique liée à la chasse.",
+          "status": "Partiel",
+          "result": "Dans la chasse L-02 du monde natal, les trois rôles agissent et Vek doit fermer le passage avant la frappe. La scène joue le prélèvement de la peau et du crâne. Le combat de rite dans le Temple, après R2-M017, reste à raccorder.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9aecdb03e18e30e6b606f567bf191c0528e7c582/tests/quatza-rij.test.mjs",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9aecdb03e18e30e6b606f567bf191c0528e7c582/docs/suivi-production/quatza-rij-20261121/manifest.json"
+          ]
+        },
+        {
+          "id": "R2-M019",
+          "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sourceDetail": "Acte III · Revenir avec la triade",
+          "criterion": "Effectuer le retour avec les trois chasseurs et remettre la même preuve.",
+          "status": "Partiel",
+          "result": "Le retour L-02 ramène les trois participants, conserve la blessure de Saar et remet les deux pièces aux témoins. Le retour depuis le Temple du rite et la reconnaissance narrative suivante restent à jouer.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9aecdb03e18e30e6b606f567bf191c0528e7c582/tests/quatza-rij.test.mjs",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9aecdb03e18e30e6b606f567bf191c0528e7c582/app/game/systems/quatzaRij.ts"
+          ]
+        },
+        {
+          "id": "R2-M020",
+          "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sourceDetail": "Acte III · Porter la marque Blooded",
+          "criterion": "Recevoir la reconnaissance à la suite du rite et ouvrir réellement les démarches de vaisseau.",
+          "status": "Ouvert",
+          "result": "Le retour de la triade dispose d’une preuve persistante. La reconnaissance suivant le rite et son articulation avec l’accès au chantier ne sont pas déclenchées par cette preuve.",
+          "evidence": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9aecdb03e18e30e6b606f567bf191c0528e7c582/app/game/systems/quatzaRij.ts"
+        },
+        {
+          "id": "R2-M045",
+          "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sourceDetail": "Acte VII · Une porte, plusieurs haltes",
+          "criterion": "Comparer les droits de résidence, décrocher un objet exposé, préparer les contenants et confirmer l’emménagement au seuil. Les contenants protègent les objets en cas d’interruption.",
+          "status": "Ouvert",
+          "result": "Relier les droits et le déplacement des objets dans le parcours de déménagement prévu par la bible.",
+          "evidence": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/main/docs/campagne/BIBLE_DE_CAMPAGNE.md"
+        },
+        {
+          "id": "R2-M041",
+          "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sourceDetail": "Acte VI · Préparer la chasse solitaire",
+          "criterion": "Vérifier l’équipement et l’itinéraire, puis choisir entre soin et mobilité avant le départ.",
+          "status": "Partiel",
+          "result": "Râtelier, plan et choix exclusif entre soin ou mobilité dans la préparation de la sortie solo. Le départ est verrouillé tant que les vérifications ne sont pas complètes.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9aecdb03e18e30e6b606f567bf191c0528e7c582/tests/quatza-rij.test.mjs",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9aecdb03e18e30e6b606f567bf191c0528e7c582/scripts/qa-quatza-preflight-20261121.mjs",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44918540936"
+          ]
+        },
+        {
+          "id": "R2-M042",
+          "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sourceDetail": "Acte VI · Le Quatza-Rij solitaire et condition L-05",
+          "criterion": "Après les huit chasses et un vaisseau réellement acquis, vaincre seul une cible en plusieurs phases puis rapporter une preuve persistante. Repli possible.",
+          "status": "Partiel",
+          "result": "Les huit chasses et une coque réellement reçue sont nécessaires. La chasse solo joue des fenêtres de frappe, le prélèvement et le retour. Le trajet complet a été reconstitué avec les entrées du moteur. Il reste la recette de terrain sur le navigateur.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9aecdb03e18e30e6b606f567bf191c0528e7c582/tests/quatza-rij.test.mjs",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9aecdb03e18e30e6b606f567bf191c0528e7c582/app/game/systems/quatzaRij.ts"
+          ]
+        },
+        {
+          "id": "R2-M043",
+          "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sourceDetail": "Acte VI · La reconnaissance Elite",
+          "criterion": "Présenter les preuves et recevoir la reconnaissance avec choix public ou restreint après les rites requis.",
+          "status": "Ouvert",
+          "result": "Le retour du Quatza-Rij dispose d’une preuve. Présentation des preuves et choix de reconnaissance publique ou restreinte restent à câbler.",
+          "evidence": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9aecdb03e18e30e6b606f567bf191c0528e7c582/app/game/systems/quatzaRij.ts"
+        },
+        {
+          "id": "L-06",
+          "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md#l-06--les-rites-du-clan-elite-modèle-avp-2010",
+          "sourceDetail": "L-06, lignes 181–185 de la bible",
+          "criterion": "Terminer le rite avec le chef de clan et le vétéran, au-delà du simulateur de station.",
+          "status": "Ouvert",
+          "result": "",
+          "evidence": ""
+        },
+        {
+          "id": "R2-M044",
+          "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sourceDetail": "Acte VII · La coque d’un groupe",
+          "criterion": "Visiter la coque collective, examiner les ponts et rencontrer les détenteurs des droits, puis choisir le projet collectif ou le vaisseau personnel.",
+          "status": "Partiel",
+          "result": "Avec un rang Elite et une coque personnelle délivrée, le joueur relève les scellés au hangar, rencontre deux détenteurs à leur poste et inscrit son choix au conseil. Le dossier renvoie aux opérations du navire. La cale sèche extérieure, ses effets et sa recette navigateur restent à produire.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/c0a4d868fb34730a33426a49ac84273775426e63/tests/clan-hull-project-v171.test.mjs",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/c0a4d868fb34730a33426a49ac84273775426e63/docs/campagne/BIBLE_DE_CAMPAGNE.md"
+          ]
+        }
+      ]
+    },
+    {
+      "priority": "P3",
+      "limit": 10,
+      "entries": [
+        {
+          "id": "ENFORCERS-V613-RECEIPTS",
+          "source": "docs/YAUTJA_REPRISE_CHANTIERS_20261101.xlsx",
+          "sourceDetail": "OuvertsSource!A27 · V6.13 production-manifest.json / summary",
+          "criterion": "21 prompts/reçus finaux non récupérés ; 15 retrouvés. Les prompts planifiés ne sont pas des soumissions attestées. Récupérer les reçus/traces historiques authentiques ; un nouveau dessin ou reçu ne répare pas leur absence.",
+          "status": "Bloqué",
+          "result": "21 pièces originales restent à retrouver. Les 15 reçus retrouvés sont conservés. Le contrôle après #179 n’a retrouvé aucun reçu final supplémentaire dans Git, les artefacts de vérification ou les ZIP contrôlés.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44897782277",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/0c6708999e393b7e7af8f6c8c8753ab7ec5d9437/docs/suivi-production/enforcers-recherche-sources-20261121.tsv"
+          ]
+        },
+        {
+          "id": "ENFORCERS-V610-TRACES",
+          "source": "docs/YAUTJA_REPRISE_CHANTIERS_20261101.xlsx",
+          "sourceDetail": "OuvertsSource!A28 · Attestation de réconciliation d71e995ae886df69c4165a1a153291449e8f22f6",
+          "criterion": "36 traces historiques V6.10 sans PNG récupéré ; zéro fichier produit ajouté à ce titre. Récupérer les reçus/traces historiques authentiques ; un nouveau dessin ou reçu ne répare pas leur absence.",
+          "status": "Bloqué",
+          "result": "Les 36 images originales restent à retrouver. Git, les artefacts de vérification et les ZIP contrôlés ne contiennent aucun nouveau PNG attribuable. L’index conserve les traces originales et la fenêtre du 20 octobre 2026.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44897782277",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/0c6708999e393b7e7af8f6c8c8753ab7ec5d9437/docs/suivi-production/enforcers-recherche-sources-20261121.tsv"
+          ]
+        }
+      ]
+    }
+  ]
+}
