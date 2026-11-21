@@ -161,7 +161,7 @@ try {
   await walk(640, 70);
   await play('ship');
   const left = await waitMeasured('ship', -1);
-  await walk(560, 70);
+  await walk(555, 70);
   const right = await waitMeasured('ship', 1);
   assert(right.gain > left.gain);
   record('Les deux canaux de la machinerie s’inversent et le niveau augmente en approchant du même fichier.');
@@ -177,7 +177,7 @@ try {
   await walk(820, 145);
   await play('scan');
   await waitMeasured('scan', 1);
-  await walk(820, 110);
+  await walk(820, 100);
   assert.equal(await view('scan').getAttribute('data-availability'), 'occluded');
   assert.equal(await view('scan').locator('audio').evaluate(media => media.paused), true);
   assert.equal(await take('scan').isDisabled(), true);
