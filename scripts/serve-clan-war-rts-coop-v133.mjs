@@ -172,6 +172,7 @@ export function createWarRtsCoopServerV133(game, {tokens, missionId = 'W3-RTS01'
     revision++;
     progress.sequence = order.sequence;
     progress.orders.add(order.id);
+    releaseExpired(at);
     return {status: 200};
   }
 

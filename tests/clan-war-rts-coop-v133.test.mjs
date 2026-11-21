@@ -186,6 +186,7 @@ test('durable RTS resumes units, accepted orders, authoritative lease expiry and
   const settled = await session.send(0, retreat);
   assert.equal(settled.status, 200);
   assert.ok(settled.state.report);
+  assert.ok(settled.state.squads.every(squad => squad.controller === null));
   await session.close();
 
   session = await room(t, 2, {stateDirectory, time, orderPrefix: 'terminal'});
