@@ -1,0 +1,513 @@
+name: Verify current P0 through P3 campaign flows
+
+on:
+  push:
+    branches: [codex/verify-p0-p3-20261121]
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: yautja-p0-p3-20261121
+  cancel-in-progress: false
+
+jobs:
+  source:
+    name: Application, tests and reproducible runtime inventory
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'cf76fe476e65ac9184fbaa37aa24ef2040d70146'
+      BASE_COMMIT: 'c136732ac051358152455c2c497dbedbf66e6fc3'
+    steps:
+      - name: Checkout the exact candidate and bounded inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 'cf76fe476e65ac9184fbaa37aa24ef2040d70146'
+          persist-credentials: false
+          fetch-depth: 12
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /public/game/xeno-prime/berceau-v1/
+            /public/audio/
+            /public/game/assets/clan-field-20261103/
+            /public/**/manifest.json
+            /public/game/p0-sprites-20261113/warp/
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize official runtime inputs and install dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate the official candidate inventory
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs candidate
+          node scripts/snapshot-runtime-v113.mjs --check outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json
+          node scripts/check-hunt-integration-source-v112.mjs --current
+      - name: Verify Next types
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Exercise the changed and adjacent contracts
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          git fetch --no-tags --filter=blob:none --depth=1 origin "$BASE_COMMIT"
+          mapfile -t changed < <(git diff --name-only --diff-filter=AM "$BASE_COMMIT" HEAD -- 'tests/*.test.mjs' 'tests/*.test.ts')
+          mapfile -t suites < <(printf '%s\n' "${changed[@]}" \
+            tests/scene-audio.test.mjs \
+            tests/game-client-ship-flow.test.mjs \
+            tests/harvest-inventory-v112.test.mjs \
+            tests/hunt-harvest-runtime-v111.test.mjs \
+            tests/honor-sources-v169.test.mjs \
+            tests/nursery-campaign.test.mjs \
+            tests/canopy-traversal-v112.test.mjs \
+            tests/hunt-canopy-runtime-v112.test.mjs \
+            tests/hunt-skinning-worksite-20261109.test.mjs \
+            tests/hunt-harvest-runtime-v111.test.mjs \
+            tests/trophy-harvest-v111.test.mjs \
+            tests/warp-module-bay.test.mjs \
+            tests/warp-epochs-v165.test.mjs \
+            tests/tantalus-warp-v167.test.mjs \
+            tests/clan-logistics-v108.test.mjs \
+            tests/clan-supply-route-v109.test.mjs \
+            tests/clan-war-summary-keyboard-20261120.test.mjs \
+            tests/ship-receipt-v161.test.mjs \
+            tests/homeworld-contracts-v68-integration.test.mjs \
+            tests/residence-life-v150.test.mjs \
+            tests/mobility-training-reward.test.mjs \
+            tests/pit-backward-throws-v112.test.mjs \
+            tests/pit-forward-throws-v109.test.mjs | sort -u)
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 "${suites[@]}"
+      - name: Strict lint of modified source and QA drivers
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          mapfile -t edited < <(git diff --name-only --diff-filter=AM "$BASE_COMMIT" HEAD -- 'app/**/*.ts' 'app/**/*.tsx' 'scripts/*.mjs' 'tests/*.test.mjs')
+          test "${#edited[@]}" -gt 0
+          node node_modules/eslint/bin/eslint.js --max-warnings=0 "${edited[@]}"
+      - name: Read private-style ZIP fixtures with the standard-library inspector
+        if: ${{ !cancelled() }}
+        run: python3 -B tests/test_enforcer_recovery_zip.py
+      - name: Preserve inventory and materialization evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: runtime-candidate-cf76fe476e65ac9184fbaa37aa24ef2040d70146
+          path: outputs/qa-asset-raccords-20261120/
+          if-no-files-found: error
+
+
+  browser:
+    name: Compiled Cradle, Elder passage and convoy scenes
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'cf76fe476e65ac9184fbaa37aa24ef2040d70146'
+      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+      PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: /usr/bin/google-chrome
+      AUDIT_CHROME_CHANNEL: chrome
+      PHG_QA_URL: http://127.0.0.1:3121
+      YAUTJA_QA_BASE_URL: http://127.0.0.1:3121
+      YAUTJA_QA_MODE: compiled-app
+      AUDIT_CHROME_EXECUTABLE: /usr/bin/google-chrome
+      YAUTJA_QA_RUNTIME_COMMIT: 'cf76fe476e65ac9184fbaa37aa24ef2040d70146'
+    steps:
+      - name: Checkout the exact candidate and bounded inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 'cf76fe476e65ac9184fbaa37aa24ef2040d70146'
+          persist-credentials: false
+          fetch-depth: 3
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /public/**/manifest.json
+            /public/game/p0-sprites-20261113/warp/
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+            /public/game/assets/clan-field-20261103/
+            /public/game/assets/v134/gauntlets/jungle-hunter/01-arm.svg
+            /public/game/assets/v134/gauntlets/jungle-hunter/02-housing.svg
+            /public/game/assets/v134/gauntlets/jungle-hunter/03-display-glyphs.svg
+            /public/game/assets/v134/gauntlets/jungle-hunter/04-hinge.svg
+            /public/game/assets/v134/gauntlets/jungle-hunter/05-lid.svg
+            /public/game/assets/v134/gauntlets/jungle-hunter/06-emitter.svg
+            /public/game/assets/v134/gauntlets/jungle-hunter/07-beam.svg
+            /public/game/planets/v101/runtime/clouds-cirrus.webp
+            /public/game/planets/v101/runtime/clouds-low.webp
+            /public/game/assets/v133/concept-masks/glypic.webp
+            /public/game/assets/v133/concept-masks/instinct.webp
+            /public/game/assets/v133/concept-masks/nova.webp
+            /public/game/assets/v133/concept-masks/paroxysm.webp
+            /public/game/assets/v133/concept-masks/requiem.webp
+            /public/game/assets/v133/concept-masks/tyrant.webp
+            /public/game/assets/v133/concept-masks/warlord.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/berserker.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/celtic.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/chopper.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/city.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/dek.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/enforcer.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/feral.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/fugitive.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/jungle.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/scar.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/wolf.webp
+            /public/game/sprites/v5/film-plates/youngblood.png
+            /public/game/sprites/v6/ranks-lasers-atlas.png
+            /public/game/sprites/v62/masks/berserker.png
+            /public/game/sprites/v62/masks/dek.png
+            /public/game/sprites/v62/masks/falconer.png
+            /public/game/sprites/v62/masks/feral.png
+            /public/game/sprites/v62/masks/fugitive.png
+            /public/game/sprites/v62/masks/wolf.png
+            /public/game/assets/v3/actors/yautja/hunter/dreads/registered/
+            /public/game/assets/v3/actors/yautja/hunter/body/*/net/
+            /public/game/xeno-prime/berceau-v1/
+            /public/audio/
+            /public/game/assets/v139/rig-gauntlets/jungle-hunter/base.svg
+            /public/game/assets/v139/rig-gauntlets/jungle-hunter/lid.svg
+            /public/game/planets/v101/runtime/land-temperate.webp
+            /public/game/planets/v101/runtime/surface-water.webp
+            /public/game/assets/v133/decals/decal-atlas.webp
+            /public/game/ships/v13/classic-predator-spaceship-top.webp
+            /public/game/backgrounds/ship-hub-v4.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp
+            /public/game/sprites/v62/heads/elder-head.png
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/foot-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/foot-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/net/full.webp
+            /public/game/sprites/v62/heads/super-head.png
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/foot-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/foot-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/net/full.webp
+            /public/game/sprites/v62/heads/feral-head.png
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/foot-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/foot-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/net/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/foot-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/foot-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/net/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/foot-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/foot-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/net/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/full.webp
+            /public/game/sprites/v5/film-plates/jungle-hunter.png
+            /public/game/sprites/v5/film-plates/city-hunter.png
+            /public/game/sprites/v5/film-plates/greyback.png
+            /public/game/sprites/v5/film-plates/boar.png
+            /public/game/sprites/v5/film-plates/shaman.png
+            /public/game/sprites/v5/film-plates/lost-borg.png
+            /public/game/sprites/v5/film-plates/snake.png
+            /public/game/sprites/v5/film-plates/warrior.png
+            /public/game/sprites/v5/film-plates/guardian.png
+            /public/game/sprites/v5/film-plates/lost-scout.png
+            /public/game/sprites/v5/film-plates/lost-stalker.png
+            /public/game/sprites/v5/film-plates/scar.png
+            /public/game/sprites/v5/film-plates/celtic.png
+            /public/game/sprites/v5/film-plates/chopper.png
+            /public/game/sprites/v5/film-plates/avp-elder.png
+            /public/game/sprites/v5/film-plates/ancient-warrior.png
+            /public/game/sprites/v5/film-plates/temple-guard.png
+            /public/game/sprites/v62/masks/city.png
+            /public/game/assets/v3/actors/yautja/hunter/masks/elder.webp
+            /public/game/sprites/v62/masks/boar.png
+            /public/game/sprites/v62/masks/snake.png
+            /public/game/sprites/v62/masks/enforcer.png
+            /public/game/sprites/v62/masks/scar.png
+            /public/game/sprites/v62/masks/celtic.png
+            /public/game/sprites/v62/masks/chopper.png
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize official runtime inputs and install dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Materialize source assets actually used by the scenes
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs catalogue
+          ASSET_RACCORDS_PREPARE_ONLY=1 node scripts/qa-asset-raccords-browser-20261120.mjs
+      - name: Build and start the production application
+        id: server
+        run: |
+          mkdir -p outputs/p0-p3-20261121
+          npm run build:production
+          npm run start:production -- --hostname 127.0.0.1 --port 3121 > outputs/p0-p3-20261121/next-server.log 2>&1 &
+          for attempt in {1..70}; do
+            if curl --fail --silent http://127.0.0.1:3121/ > /dev/null; then break; fi
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:3121/ > /dev/null
+          printf 'YAUTJA_QA_BUILD_ID=%s\n' "$(cat .next/BUILD_ID)" >> "$GITHUB_ENV"
+      - name: Play both approaches to the Cradle in the actual application
+        if: ${{ !cancelled() && steps.server.outcome == 'success' }}
+        env:
+          CRADLE_APPROACH_QA_COMMIT: cf76fe476e65ac9184fbaa37aa24ef2040d70146
+          CRADLE_APPROACH_QA_OUTPUT: outputs/p0-p3-20261121/approach
+        run: node scripts/qa-cradle-approach-20261121.mjs
+      - name: Verify the active T09 valve, reservoir image and acid cycle
+        if: ${{ !cancelled() && steps.server.outcome == 'success' }}
+        env:
+          CRADLE_NURSERY_QA_COMMIT: cf76fe476e65ac9184fbaa37aa24ef2040d70146
+          CRADLE_NURSERY_QA_OUTPUT: outputs/p0-p3-20261121/nursery
+        run: node scripts/qa-cradle-nursery-20261121.mjs
+      - name: Play the watched passage, reject a collision and reload the accepted arrangement
+        if: ${{ !cancelled() && steps.server.outcome == 'success' }}
+        env:
+          ELDER_PASSAGE_QA_COMMIT: cf76fe476e65ac9184fbaa37aa24ef2040d70146
+        run: node scripts/qa-elder-passage-20261121.mjs
+      - name: Play the local convoy with acquisition, ordering and interrupted movement
+        if: ${{ !cancelled() && steps.server.outcome == 'success' }}
+        env:
+          YAUTJA_CLAN_SUPPLY_V109_OUTPUT: outputs/p0-p3-20261121/convoy
+        run: node scripts/qa-clan-supply-route-v109.mjs
+      - name: Preserve the compiled browser evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: compiled-scenes-cf76fe476e65ac9184fbaa37aa24ef2040d70146
+          path: outputs/p0-p3-20261121/
+          if-no-files-found: error
+  operations:
+    name: Native V115 assault, infiltration and transactional command archive
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+      COMMAND_OPERATIONS_OUTPUT: outputs/p0-p3-20261121/mandates
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: cf76fe476e65ac9184fbaa37aa24ef2040d70146
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /tests/browser/
+            /scripts/
+            /public/audio/
+            /public/game/assets/clan-field-20261103/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node scripts/qa-clan-war-command-operations-20261109.mjs
+      - name: Preserve the assault and command captures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: native-command-cf76fe476e65ac9184fbaa37aa24ef2040d70146
+          path: outputs/p0-p3-20261121/mandates/
+          if-no-files-found: error
+  ground:
+    name: Measure the unchanged full-load criterion across 24 missions and armors
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: cf76fe476e65ac9184fbaa37aa24ef2040d70146
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /scripts/
+            /docs/qa/v112-ground-campaign/campaign-origin-save.json
+            /docs/qa/v112-ground-campaign/tool-origin.json
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Exercise actual carriage through boarding and extraction
+        run: node scripts/qa-hunt-ground-campaign-v112.mjs --harvest=true --baseSave=docs/qa/v112-ground-campaign/campaign-origin-save.json --replay=true --seconds=360 --minimumRetainedLoad=1 --output=outputs/qa-p0-ground-full
+      - name: Preserve all load and extraction results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: p0-ground-campaign-cf76fe476e65ac9184fbaa37aa24ef2040d70146
+          path: outputs/qa-p0-ground-full/
+          if-no-files-found: error
+  ship-training:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      AUDIT_CHROME_CHANNEL: chrome
+      AUDIT_CHROME_EXECUTABLE: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: cf76fe476e65ac9184fbaa37aa24ef2040d70146
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install locked dependencies without lifecycle scripts
+        id: dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: New score receipts and runtime regressions
+        run: >-
+          node --test --test-reporter=spec
+          tests/ship-training-receipt-v94.test.mjs
+          tests/ship-training-lifecycle-v94.test.mjs
+          tests/ship-training-recovery-v94.test.mjs
+          tests/ship-training-ack-v94.test.mjs
+          tests/ship-service-commit-v94.test.mjs
+      - name: Historical ship progression, ownership and training rules
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec
+          tests/ship-progression.test.mjs tests/ship-progression-owner.test.mjs
+          tests/ship-hub-input-runtime.test.mjs tests/training-drill.test.mjs
+          tests/training-lifecycle-v94.test.mjs
+      - name: Strict lint of changed ship training runtime
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/game/ShipHub.tsx app/game/TrainingDrill.tsx
+          app/game/useShipTrainingV94.ts app/game/systems/shipTrainingReceiptV94.ts
+          app/game/systems/shipTrainingRecoveryV94.ts
+          app/game/systems/shipTrainingAcknowledgementV94.ts
+          app/game/useShipServiceCommitV94.ts
+      - name: Play native ship training and verify score storage in Chrome
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-ship-training-browser-v94.mjs
+      - name: Preserve training score and recovery artifacts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ship-training-cf76fe476e65ac9184fbaa37aa24ef2040d70146
+          path: outputs/
+          if-no-files-found: warn
