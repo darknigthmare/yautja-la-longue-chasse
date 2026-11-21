@@ -1,0 +1,133 @@
+name: Verify loaded canopy controls and field extraction
+on:
+  push:
+    branches: [codex/verify-canopy-ground-20261121]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source:
+    name: Check actual loaded canopy controls and reproducible runtime inputs
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'a4f12de1c5c16d6706eda31c27312a48ad4af6a9'
+      BASE_COMMIT: 'ed2bc3635f7c818ea56c9ce40a47c92b1664aac5'
+    steps:
+      - name: Checkout the exact candidate and bounded inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 'a4f12de1c5c16d6706eda31c27312a48ad4af6a9'
+          persist-credentials: false
+          fetch-depth: 12
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /public/game/xeno-prime/berceau-v1/
+            /public/audio/
+            /public/game/assets/clan-field-20261103/
+            /public/**/manifest.json
+            /public/game/p0-sprites-20261113/warp/
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize official runtime inputs and install dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate the official candidate inventory
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs candidate
+          node scripts/snapshot-runtime-v113.mjs --check outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json
+          node scripts/check-hunt-integration-source-v112.mjs --current
+      - name: Verify Next types
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Exercise pendulum, loaded climb and trophy policy on actual simulation
+        if: ${{ !cancelled() }}
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          tests/canopy-traversal-v112.test.mjs tests/hunt-canopy-runtime-v112.test.mjs
+          tests/hunt-harvest-runtime-v111.test.mjs tests/qa-hunt-ground-policy-v112.test.mjs
+          tests/elder-assembly-v168.test.mjs tests/elder-mentoring-v168.test.mjs
+      - name: Report canonical inventory changes in a compact form
+        if: ${{ !cancelled() }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs';
+          const before = JSON.parse(readFileSync('docs/qa/current-integration-20261103/runtime-inputs.json'));
+          const after = JSON.parse(readFileSync('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json'));
+          const previous = new Map(before.entries.map(row => [row.path, row]));
+          const observed = new Set(after.entries.map(row => row.path));
+          const changes = after.entries.filter(row => JSON.stringify(previous.get(row.path)) !== JSON.stringify(row));
+          console.log('V113_DELTA ' + JSON.stringify({ files: after.files, bytes: after.bytes, changes, removed: before.entries.filter(row => !observed.has(row.path)).map(row => row.path) }));
+          NODE
+      - name: Preserve the official candidate inventory
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: runtime-inputs-a4f12de1c5c16d6706eda31c27312a48ad4af6a9
+          path: outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json
+          if-no-files-found: warn
+
+  ground:
+    name: Measure the unchanged full-load criterion across 24 missions and armors
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 'a4f12de1c5c16d6706eda31c27312a48ad4af6a9'
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /scripts/
+            /tests/
+            /docs/qa/v112-ground-campaign/campaign-origin-save.json
+            /docs/qa/v112-ground-campaign/tool-origin.json
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify trophy approach and candidate selection
+        run: node --test tests/qa-hunt-ground-policy-v112.test.mjs
+      - name: Exercise actual carriage through boarding and extraction
+        run: node scripts/qa-hunt-ground-campaign-v112.mjs --harvest=true --baseSave=docs/qa/v112-ground-campaign/campaign-origin-save.json --replay=true --seconds=360 --minimumRetainedLoad=1 --output=outputs/qa-p0-ground-full
+      - name: Preserve all load and extraction results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ground-recovery-final-matrix
+          path: outputs/qa-p0-ground-full/
+          if-no-files-found: error
