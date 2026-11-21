@@ -134,9 +134,9 @@ async function cli() {
   const { resolve } = await import('node:path');
   const { fileURLToPath } = await import('node:url');
   const args = process.argv.slice(2);
-  const lots = args.filter(arg => /^--lot-[2-5]$/.test(arg));
+  const lots = args.filter(arg => /^--lot-[2-6]$/.test(arg));
   if (lots.length > 1 || new Set(args).size !== args.length || args.some(arg => arg !== '--check' && !lots.includes(arg))) {
-    throw new Error('Usage: node scripts/build-priority-lots-workbook-20261121.mjs [--lot-2|--lot-3|--lot-4|--lot-5] [--check]');
+    throw new Error('Usage: node scripts/build-priority-lots-workbook-20261121.mjs [--lot-2|--lot-3|--lot-4|--lot-5|--lot-6] [--check]');
   }
   const check = args.includes('--check');
   const number = lots[0]?.at(-1);

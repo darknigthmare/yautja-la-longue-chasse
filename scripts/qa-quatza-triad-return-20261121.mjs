@@ -6,7 +6,6 @@ import { join, resolve } from 'node:path';
 import { chromium } from 'playwright-core';
 import { homeworldSceneSsrV78 } from '../tests/helpers/homeworld-scene-ssr-v78.mjs';
 import { formationCampaignRoute } from '../tests/helpers/solo-v90-played-route.mjs';
-import { openCampaignDossier } from './qa-elder-mentoring-v168.mjs';
 
 const origin = new URL(process.env.QUATZA_QA_URL ?? 'http://127.0.0.1:3121/');
 assert.equal(origin.protocol, 'http:');
@@ -84,12 +83,12 @@ function inputRoute() {
 }
 
 const report = {
-  commit, buildId, passed: false, errors: [],
+  commit, buildId, passed: false, errors: [], admissionChecks: [],
   admission: 'Prior formation and temple are played in their canonical reducer fixture. No Quatza action, receipt, skin, skull or witness presentation is seeded. Playwright advances a virtual animation clock and delivers only ordinary keyboard and DOM events. The native browser replay must exactly match the input oracle.',
 };
-let browser;
+let browser, page;
 try {
-  const { save } = formationCampaignRoute();
+  const { save, origin: priorFormation } = formationCampaignRoute();
   save.settings.masterVolume = 0;
   const imported = saves.parseSaveImport(saves.exportSave(save));
   assert(imported.save, imported.failure);
@@ -100,12 +99,38 @@ try {
     executablePath: process.env.CHROMIUM_EXECUTABLE || process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || undefined,
     headless: true,
   });
-  const page = await browser.newPage({
-    viewport: { width: 1380, height: 950 },
-    storageState: { cookies: [], origins: [{ origin: origin.origin, localStorage: [
-      { name: key, value: JSON.stringify(imported.save) },
-    ] }] },
-  });
+  const viewport = { width: 1380, height: 950 };
+  const storageState = seed => ({ cookies: [], origins: [{ origin: origin.origin, localStorage: [
+    { name: key, value: JSON.stringify(seed) },
+  ] }] });
+  async function openHomeworld(currentPage) {
+    await currentPage.locator('[data-campaign-menu], [data-campaign-session]').first().waitFor();
+    if (await currentPage.locator('[data-campaign-menu]').isVisible()) {
+      const campaign = currentPage.locator('[data-menu-section="campaign"]');
+      if (await campaign.isVisible()) await campaign.click();
+      await currentPage.locator('[data-menu-action="continue"]').click();
+    }
+    await currentPage.locator('[data-campaign-location="homeworld"]').waitFor();
+    await currentPage.locator('[data-homeworld-viewport]').waitFor();
+  }
+  const openCityNavigation = currentPage =>
+    currentPage.getByRole('button', { name: 'Navigation', exact: true }).click();
+  async function openDocument(currentPage) {
+    const response = await currentPage.goto(origin.href, { waitUntil: 'domcontentloaded' });
+    assert(response?.ok() && (await response.text()).includes(buildId));
+  }
+  const prior = saves.parseSaveImport(saves.exportSave(priorFormation));
+  assert(prior.save, prior.failure);
+  assert(!engine.canEnterQuatza(prior.save, mode));
+  const locked = await browser.newPage({ viewport, storageState: storageState(prior.save) });
+  await openDocument(locked);
+  await openHomeworld(locked);
+  await openCityNavigation(locked);
+  assert.equal(await locked.locator('[data-open-quatza-homeworld]').count(), 0);
+  report.admissionChecks.push('native Homeworld before V90 has no triad entry');
+  await locked.close();
+
+  page = await browser.newPage({ viewport, storageState: storageState(imported.save) });
   page.setDefaultTimeout(40_000);
   page.on('pageerror', error => report.errors.push(error.message));
   const root = page.locator('[data-quatza-campaign]');
@@ -120,9 +145,18 @@ try {
     trophies: checkpoint.trophies, profile: checkpoint.profile,
     specimens: checkpoint.inventory.harvestV112,
   });
+  const homeworldEntry = page.locator('[data-open-quatza-homeworld]');
+  const dossier = page.locator('[data-clan-chronicle]');
+  async function openDossier() {
+    await homeworldEntry.click();
+    await dossier.waitFor();
+    await dossier.getByRole('button', { name: 'Parcours et rites', exact: true }).click();
+  }
   async function navigate() {
-    await openCampaignDossier(page);
-    await page.locator('[data-quatza-open="triad"]').click();
+    await openHomeworld(page);
+    await openCityNavigation(page);
+    await openDossier();
+    await dossier.locator('[data-quatza-open="triad"]').click();
     await root.waitFor();
   }
   async function awaitPresentations(count) {
@@ -132,8 +166,19 @@ try {
     return disk();
   }
 
-  const response = await page.goto(origin.href, { waitUntil: 'domcontentloaded' });
-  assert(response?.ok() && (await response.text()).includes(buildId));
+  await openDocument(page);
+  await openHomeworld(page);
+  const cityPoint = (await disk()).homeworld.locationV77;
+  const actor = page.locator('[data-homeworld-actor]');
+  const actorPoint = () => actor.evaluate(node => [node.dataset.x, node.dataset.y, node.dataset.homeworldLevelV77]);
+  await openCityNavigation(page);
+  const livePoint = await actorPoint();
+  await openDossier();
+  await dossier.getByRole('button', { name: 'Retour', exact: true }).click();
+  await openHomeworld(page);
+  assert.deepEqual((await disk()).homeworld.locationV77, cityPoint);
+  assert.deepEqual(await actorPoint(), livePoint);
+  report.admissionChecks.push('eligible triad entry returns to the same Homeworld checkpoint');
   await navigate();
   assert.equal(await action('companions').count(), 0);
   assert.equal(await action('trophy').count(), 0);
@@ -208,9 +253,20 @@ try {
   report.passed = true;
 } catch (error) {
   report.failure = String(error.stack ?? error);
+  if (page) {
+    report.failurePage = await page.evaluate(saveKey => ({
+      url: location.href, location: document.querySelector('[data-campaign-location]')?.dataset.campaignLocation,
+      phase: document.querySelector('[data-quatza-expedition]')?.dataset.phase,
+      tick: document.querySelector('[data-quatza-expedition]')?.dataset.tick,
+      activeSavePresent: localStorage.getItem(saveKey) !== null,
+      text: document.body.innerText.slice(0, 1200),
+    }), key).catch(() => null);
+    await page.screenshot({ path: join(output, 'failure.png'), timeout: 5000 }).catch(() => {});
+  }
   throw error;
 } finally {
   await browser?.close();
   await writeFile(join(output, 'report.json'), JSON.stringify(report, null, 2) + '\n');
-  console.log(JSON.stringify({ commit, buildId, passed: report.passed, failure: report.failure ?? null }));
+  console.log(JSON.stringify({ commit, buildId, passed: report.passed, failure: report.failure ?? null,
+    state: report.failurePage ?? null, result: report.result ?? null }));
 }
