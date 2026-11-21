@@ -4,7 +4,7 @@ Nov 5, 2026 · @darknigthmare
 
 ## Mode d'emploi
 
-**Avenant du 21 novembre 2026 :** [Terre — Le Terrain de Chasse](TERRE_TERRAIN_DE_CHASSE_20261121.md) ouvre la Terre après R2-M023 : 20 sites réels hors des films, en quatre paliers (Blooded, Adjutant, Elite, Elder), datés au présent du joueur, avec un Indice de Discrétion persistant et la Division ARGOS, antagoniste distincte de l'OWLF.
+**Avenant du 21 novembre 2026 :** [Terre — Le Terrain de Chasse](TERRE_TERRAIN_DE_CHASSE_20261121.md) ouvre la Terre après R2-M023 : 20 sites réels hors des films, en quatre paliers (Blooded, Adjutant, Elite, Elder), datés au présent du joueur, avec un Indice de Discrétion persistant et la Division ARGOS, antagoniste distincte de l'OWLF. Le déroulé jouable des missions, phase par phase, et la liste de ce qu'il faut produire sont dans [Terre — Gameplay des missions](TERRE_GAMEPLAY_MISSIONS_20261121.md).
 
 **Avenant du 9 novembre 2026 :** [Quêtes et voix du clan](QUETES_VIVANTES_20261109.md) précise la réécriture des opérations, les conversations contextuelles OPS-B05 et leurs limites. Les fiches historiques et leurs états de production sont conservés ci-dessous.
 
