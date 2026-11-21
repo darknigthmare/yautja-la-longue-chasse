@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import {decideGroundApexTrophyInputV112,decideHuntCampaignInputV112} from "../scripts/lib/qa-hunt-ground-policy-v112.mjs";
+import {decideGroundApexTrophyInputV112,decideHuntCampaignInputV112,groundTrophyGuardV112,observeGroundTrophyDamageV112} from "../scripts/lib/qa-hunt-ground-policy-v112.mjs";
 import {chooseGroundHarvestV112,groundHarvestMenuActionV112,nearestGroundHarvestThreatV112,observeGroundHarvestV112} from "../scripts/lib/qa-hunt-ground-harvest-v112.mjs";
 
 const brain=()=>({target:null,pending:null,deferred:new Map(),events:[]});
@@ -96,4 +96,19 @@ test("threat distance accounts for both body footprints and height",()=>{
   assert.equal(nearestGroundHarvestThreatV112(player,[{...survivor,x:player.x,y:player.y,width:player.width,height:player.height}]),0);
   const below={...player,y:1000};
   assert.ok(nearestGroundHarvestThreatV112(below,[survivor])>650);
+});
+
+test("trophy defense opens only after damage interrupts a real rite",()=>{
+  const memory={};
+  const guard={...survivor,id:"floor-guard",x:6140,y:525,height:99};
+  const game={...ocean,enemies:[survivor,guard],damageTaken:27,trophyExtracting:false};
+  assert.equal(groundTrophyGuardV112(game,0,memory,()=>false),null);
+  assert.equal(observeGroundTrophyDamageV112(game,10,memory,false,0),false);
+  assert.equal(observeGroundTrophyDamageV112(game,10,memory,true,27),false);
+  assert.equal(observeGroundTrophyDamageV112({...game,phase:"extraction"},10,memory,true,0),false);
+  assert.equal(observeGroundTrophyDamageV112(game,10,memory,true,0),true);
+  assert.equal(groundTrophyGuardV112(game,11,memory,()=>false),guard);
+  assert.equal(groundTrophyGuardV112(game,11,memory,()=>true),null);
+  assert.equal(groundTrophyGuardV112({...game,enemies:[survivor]},11,memory,()=>false),null);
+  assert.equal(groundTrophyGuardV112(game,250,memory,()=>false),null);
 });
