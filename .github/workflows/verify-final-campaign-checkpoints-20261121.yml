@@ -1,0 +1,79 @@
+name: Verify final campaign inputs and admissible save checkpoints
+
+on:
+  push:
+    branches: [codex/verify-final-campaign-checkpoints-20261121]
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: yautja-final-campaign-checkpoints-20261121
+  cancel-in-progress: false
+
+jobs:
+  source:
+    name: Cradle, passage, hunting and admitted training in the final release
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ASSET_RACCORDS_SOURCE_COMMIT: '685673179367ce3434e3f4cd77577013ed3cf7a9'
+      BASE_COMMIT: 'c136732ac051358152455c2c497dbedbf66e6fc3'
+    steps:
+      - name: Checkout the exact candidate and bounded inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '685673179367ce3434e3f4cd77577013ed3cf7a9'
+          persist-credentials: false
+          fetch-depth: 12
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /public/game/xeno-prime/berceau-v1/
+            /public/audio/
+            /public/game/assets/clan-field-20261103/
+            /public/**/manifest.json
+            /public/game/p0-sprites-20261113/warp/
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize official runtime inputs and install dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify the exact committed inventory with the official generator
+        run: node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json
+      - name: Exercise final admission, archive and save regressions
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/buriedCradle.test.ts tests/buried-cradle-approach.test.mjs tests/buried-cradle-campaign.test.mjs tests/buried-cradle-return.test.mjs
+          tests/elder-passage-judgment.test.mjs tests/hunt-carcass-runtime-v112.test.mjs tests/hunt-harvest-runtime-v111.test.mjs
+          tests/hunt-skinning-worksite-20261109.test.mjs tests/ship-training-receipt-v94.test.mjs tests/ship-training-recovery-v94.test.mjs
+          tests/clan-war-tactical-runtime-v115.test.mjs
+      - name: Verify archive ZIP behavior and script syntax
+        if: ${{ !cancelled() }}
+        run: |
+          python3 -B tests/test_enforcer_recovery_zip.py
+          node --check scripts/qa-hunt-ground-campaign-v112.mjs
