@@ -17,6 +17,11 @@ Mode de jeu dédié, à côté de The Pit, de la Guerre des clans et de Queen Hu
 | Taille et moteur | **8 × 8 km**, **three.js** |
 | Villes | **Calder et une petite ville** : Dustwater, ville minière de Redmesa |
 | Joueurs par session | **8** |
+| Humain qui se rend (Chasse inversée) | **règle proposée validée** : intouchable, désarmé 90 s, ni pièce ni radio ; compte à moitié à l'extraction ; le Yautja qui le tue perd la partie |
+| Rôles humains | **les 6** : Pisteur, Tireur, Démolisseur, Médecin, Radio, Garde de la réserve |
+| Autodestruction en Chasse inversée | **gardée** : 10 s pour sortir du rayon |
+| Voyage rapide du vaisseau | **entre repaires, sauf Calder et Ironhook** |
+| Ouverture des îles | **cordon naval d'ARGOS** à saboter |
 
 ---
 
@@ -364,7 +369,7 @@ Comme dans les GTA récents, la nature occupe **plus de la moitié** : c'est le 
 | Ponts | relient les îles proches ; gardés selon l'alerte |
 | Gués | à marée basse seulement (Verdant–Shallows, Tallgrass–Redmesa) |
 | Ferries humains | monter à bord camouflé ; trajet rapide, risque d'être vu |
-| Vaisseau personnel | voyage rapide vers un **repaire** découvert ; ne peut pas descendre à Calder ni à Ironhook |
+| Vaisseau personnel | **Décision :** voyage rapide vers un **repaire** découvert ; jamais à Calder ni à Ironhook |
 | Téléphérique | Hollowpine |
 
 **Repaires :** comme les planques de GTA. Un par île, à découvrir (grotte, toit, épave). On y sauvegarde, change d'équipement, expose ses trophées, et le vaisseau peut y venir.
@@ -481,7 +486,7 @@ Un joueur incarne le Yautja. Quatre à six joueurs incarnent une **équipe humai
 
 L'emplacement des pièces change à chaque partie (3 positions possibles pour chacune).
 
-#### Les rôles humains *(proposé, originaux)*
+#### Les rôles humains (décision : les 6, originaux)
 | Rôle | Arme | Capacité | Faiblesse |
 | --- | --- | --- | --- |
 | **Pisteur** | fusil de chasse | lit les traces du Yautja (eau, sang, branches) pendant 8 s | arme lente |
@@ -537,7 +542,7 @@ Chaque équipe a au plus un rôle de chaque type. Les rôles se débloquent avec
 ## 14. Progression du mode
 
 ### 14.1 Ouverture des îles
-Comme les ponts de GTA III, les îles s'ouvrent par groupes. Raison dans le monde : un **cordon naval d'ARGOS** (bouées sonar, patrouilles) isole des groupes d'îles. Le joueur le lève par des actions de sabotage.
+Comme les ponts de GTA III, les îles s'ouvrent par groupes. **Décision :** la raison dans le monde est un **cordon naval d'ARGOS** (bouées sonar, patrouilles) isole des groupes d'îles. Le joueur le lève par des actions de sabotage.
 
 | Étape | Îles ouvertes | Ce qui ouvre l'étape suivante |
 | --- | --- | --- |
@@ -614,8 +619,4 @@ Un repaire principal (au choix du joueur) expose les trophées du mode, avec leu
 
 ## 16. Questions ouvertes
 
-1. **Humain rendu** en Chasse inversée : la règle (désarmé 90 s, compte à moitié à l'extraction, Yautja qui le tue perd la partie) te convient-elle ?
-2. **Rôles humains** : les 6 proposés, ou en changer ?
-3. **Autodestruction** en Chasse inversée : la garder ?
-4. **Voyage rapide** du vaisseau entre repaires : interdit à Calder et Ironhook, comme proposé ?
-5. **Cordon naval d'ARGOS** comme raison d'ouverture des îles : à garder ?
+Aucune : toutes les questions du mode sont tranchées (décisions en tête du document).
