@@ -1,0 +1,17 @@
+name: Vérification RTS coopératif V133
+on:
+  push:
+    branches: [codex/p1-rts-coop-check-20261121]
+permissions:
+  contents: read
+jobs:
+  rts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '22'}
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node --test --test-reporter=spec tests/clan-war-rts-coop-v133.test.mjs tests/clan-war-rts-squads-v133.test.mjs tests/clan-war-rts24-source-v129.test.mjs
+      - run: npx --no-install eslint --max-warnings 0 scripts/serve-clan-war-rts-coop-v133.mjs tests/clan-war-rts-coop-v133.test.mjs
