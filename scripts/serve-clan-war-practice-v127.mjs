@@ -36,6 +36,15 @@ function digest(token) {
   return createHash('sha256').update(token).digest();
 }
 
+export function clanWarTokenIdentitiesV127(players) {
+  const tokens = players.map(player => player.token);
+  if (tokens.some(token => typeof token !== 'string' || !tokenPattern.test(token)) ||
+      new Set(tokens).size !== tokens.length) {
+    throw new Error('Configurez des jetons de salon distincts et aléatoires.');
+  }
+  return players.map(({token, ...player}) => ({...player, secret: digest(token)}));
+}
+
 function responseJson(response, status, payload) {
   response.writeHead(status, {
     'Content-Type': 'application/json; charset=utf-8',
@@ -80,20 +89,20 @@ function validOrder(order) {
 }
 
 export function createClanWarPracticeServer(game, {
-  hunterToken, rivalToken, scenarioId, seed = randomInt(2 ** 32), tickMs = 5000,
+  hunterToken, rivalToken, scenarioId, seed = randomInt(2 ** 32), tickMs = 5000, turnLimit = 60,
 } = {}) {
-  if (typeof hunterToken !== 'string' || typeof rivalToken !== 'string' ||
-      !tokenPattern.test(hunterToken) || !tokenPattern.test(rivalToken) || hunterToken === rivalToken) {
-    throw new Error('Configurez deux jetons de salon distincts et aléatoires.');
-  }
   if (!Number.isSafeInteger(tickMs) || tickMs < 250 || tickMs > 60000) {
     throw new Error('La durée d’un tick doit être comprise entre 250 et 60000 ms.');
   }
 
-  const identities = [
-    {id: 'exercise-hunter', unit: 'exercise-hunter-unit', side: sides[0], secret: digest(hunterToken)},
-    {id: 'exercise-rival', unit: 'exercise-rival-unit', side: sides[1], secret: digest(rivalToken)},
-  ];
+  if (!Number.isSafeInteger(turnLimit) || turnLimit < 2 || turnLimit > 20000) {
+    throw new Error('La manche doit durer entre 2 et 20000 ticks.');
+  }
+
+  const identities = clanWarTokenIdentitiesV127([
+    {id: 'exercise-hunter', unit: 'exercise-hunter-unit', side: sides[0], token: hunterToken},
+    {id: 'exercise-rival', unit: 'exercise-rival-unit', side: sides[1], token: rivalToken},
+  ]);
   const [hunter, rival] = identities;
   const source = scenarioId ?? game.CLAN_WAR_COHERENT_VARIANTS_V126
     .find(item => item.geography.worldKind === 'earth')?.sourceId;
@@ -111,13 +120,37 @@ export function createClanWarPracticeServer(game, {
   }
   applyLobbyChange(game.startWarMultiplayerLobbyV126(room, hunter.id));
   let match = game.createWarMultiplayerPracticeV127(room);
+  let settlement = null;
+  const controlledTicks = {hunter: 0, rival: 0};
 
-  function identityFor(authorization) {
-    const [, presented] = /^Bearer ([A-Za-z0-9_-]{43,128})$/i.exec(authorization ?? '') ?? [];
-    if (!presented) return undefined;
-    const fingerprint = digest(presented);
-    const matches = identities.map(identity => timingSafeEqual(identity.secret, fingerprint));
-    return identities[matches.indexOf(true)];
+  function settle(winner, basis) {
+    if (settlement) return;
+    match = {...match, winner, room: {...match.room, stage: 'completed'}};
+    settlement = {
+      winner, basis, tick: match.room.tick, revision: match.room.revision,
+      controlledTicks: {...controlledTicks},
+    };
+  }
+
+  function tickMatch() {
+    if (settlement) return;
+    const next = game.stepWarMultiplayerPracticeV127(match);
+    if (!next.accepted) return;
+    match = next.state;
+    for (const side of sides) {
+      if (match.hold[side] > 0) controlledTicks[side]++;
+    }
+    if (match.winner) {
+      settle(match.winner, 'objective');
+      return;
+    }
+    if (match.room.tick < turnLimit) return;
+    if (controlledTicks.hunter === controlledTicks.rival) {
+      settle(null, 'timeout-draw');
+    } else {
+      const winner = controlledTicks.hunter > controlledTicks.rival ? 'hunter' : 'rival';
+      settle(winner, 'timeout-control');
+    }
   }
 
   function actorMember(identity) {
@@ -129,6 +162,8 @@ export function createClanWarPracticeServer(game, {
     return {
       roomId, scenarioId: match.room.scenarioId, revision: match.room.revision, tick: board.tick,
       stage: board.stage, side: identity.side, winner: board.winner,
+      remainingTicks: settlement ? 0 : turnLimit - board.tick, settlement,
+      controlledTicks: controlledTicks[identity.side],
       nextSequence: actorMember(identity).lastSequence + 1,
       map: {
         width: match.map.width, height: match.map.height, capture: board.capture,
@@ -153,7 +188,20 @@ export function createClanWarPracticeServer(game, {
     }, identity.id);
     if (!change.accepted) return {status: 422, error: 'order-refused'};
     match = change.state;
+    if (match.winner) settle(match.winner, order.kind === 'retreat' ? 'withdrawal' : 'elimination');
     return {status: 200, state: view(identity)};
+  }
+
+  return createClanWarHttpServiceV127({identities, view, submit, tick: tickMatch, tickMs});
+}
+
+export function createClanWarHttpServiceV127({identities, view, submit, tick, tickMs}) {
+  function identityFor(authorization) {
+    const [, presented] = /^Bearer ([A-Za-z0-9_-]{43,128})$/i.exec(authorization ?? '') ?? [];
+    if (!presented) return undefined;
+    const fingerprint = digest(presented);
+    const matches = identities.map(identity => timingSafeEqual(identity.secret, fingerprint));
+    return identities[matches.indexOf(true)];
   }
 
   const server = createServer({
@@ -184,10 +232,7 @@ export function createClanWarPracticeServer(game, {
 
   let timer;
   server.on('listening', () => {
-    timer = setInterval(() => {
-      const next = game.stepWarMultiplayerPracticeV127(match);
-      if (next.accepted) match = next.state;
-    }, tickMs);
+    timer = setInterval(tick, tickMs);
     timer.unref();
   });
   server.on('close', () => clearInterval(timer));
@@ -203,6 +248,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     hunterToken: process.env.YAUTJA_CLAN_PRACTICE_HUNTER_TOKEN,
     rivalToken: process.env.YAUTJA_CLAN_PRACTICE_RIVAL_TOKEN,
     scenarioId: process.env.YAUTJA_CLAN_PRACTICE_SCENARIO,
+    turnLimit: Number(process.env.YAUTJA_CLAN_PRACTICE_TURN_LIMIT ?? 60),
   });
   server.on('error', error => {
     process.stderr.write('Impossible d’ouvrir le salon (' + (error.code ?? 'erreur') + ').\n');
