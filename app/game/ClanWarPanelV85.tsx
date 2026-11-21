@@ -539,7 +539,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
     {gauntletStorageWarning && <p className={styles.storage} role="status">{gauntletStorageWarning}</p>}
     {pendingWrites > 0 && <p className={styles.storage} role="status">Enregistrement des exercices en cours…</p>}
     {canRetryPersistence && <button type="button" disabled={pendingWrites > 0} onClick={() => { sessionStore.retryPersistence(); if (planetSession !== sessionStore) planetSession.retryPersistence(); }}>Réessayer la sauvegarde des exercices</button>}
-    <div hidden={tab !== "bible"}><ClanWarBibleV6Panel active={tab === "bible" && !suspended && pageActive && commandLayer === null} gauntletId={equippedGauntletId} holographic={presentation==="gauntlet"} createSceneAudio={createSceneAudio} campaignRoutesPanel={campaignRoutesPanel}/></div>
+    <div hidden={tab !== "bible"}><ClanWarBibleV6Panel active={tab === "bible" && !suspended && pageActive && commandLayer === null} gauntletId={equippedGauntletId} holographic={presentation==="gauntlet"} createSceneAudio={createSceneAudio} campaignRoutesPanel={campaignRoutesPanel} campaignOwnerCreatedAt={save.createdAt}/></div>
     {tab === "operations" && <ClanWarMissionsV114 key={planet.id} simulation={simulation} planetName={planet.name} active={!suspended && pageActive && commandLayer === null && pendingWrites === 0 && strategic.writableWar} onPrepareSite={(from, to, kind) => { setTab("korthas"); prepareSite(from, to, kind); }}/>}
 
     {tab === "composition" && <div>
