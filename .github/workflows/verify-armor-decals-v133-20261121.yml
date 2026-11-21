@@ -1,0 +1,42 @@
+name: Verify original V133 armor decal fit
+on:
+  push:
+    branches: [codex/verify-armor-decals-v133-20261121]
+permissions:
+  contents: read
+jobs:
+  profile:
+    name: Original armor decals on the native DOM rig
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      ARMOR_DECAL_SOURCE: 'f48e16a8529cb2b1c7c1efe09cfa1d5bccf0e4e1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /tests/hunter-open-gaps-v137.test.mjs
+            /scripts/qa-armor-decals-v133-source.mjs
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/assets/v133/concept-masks/
+            /public/game/assets/v133/decals/decal-atlas.webp
+            /public/game/assets/v139/rig-gauntlets/jungle-hunter/
+            /public/game/sprites/v62/heads/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node scripts/qa-armor-decals-v133-source.mjs
+      - if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: original-armor-decals-v133-native-rig
+          path: outputs/armor-decals-v133/
