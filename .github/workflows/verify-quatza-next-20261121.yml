@@ -226,6 +226,8 @@ jobs:
         run: |
           node scripts/materialize-asset-raccords-20261120.mjs catalogue
           ASSET_RACCORDS_PREPARE_ONLY=1 node scripts/qa-asset-raccords-browser-20261120.mjs
+      - name: Verify both expeditions and protected reload before the native recipe
+        run: node --experimental-strip-types --test --test-reporter=spec tests/quatza-rij.test.mjs
       - name: Build and start the production application
         id: server
         run: |

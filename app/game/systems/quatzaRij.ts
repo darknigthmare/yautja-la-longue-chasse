@@ -190,11 +190,12 @@ export function replayQuatzaAttempt(mode: QuatzaMode, input: readonly number[]):
 }
 
 export function canEnterQuatza(save: SaveGame, mode: QuatzaMode): boolean {
-  if (rankTrialsBlockedV147(save.tribunalV147) || !save.loadout.weaponIds.includes('wristblades')) return false;
+  if (rankTrialsBlockedV147(save.tribunalV147)) return false;
   const rank = save.prologue ? getChronicleRank(save.prologue.chronicle) : save.profile.rankId;
-  if (mode === 'triad') return rank === 'young-blood' && normalizeSoloV90Campaign(save.soloV90)?.status === 'completed' &&
-    soloV90MatchesSave(save);
-  return (rank === 'blooded' || rank === 'elite' || rank === 'elder' || rank === 'ancient' || rank === 'black-god') &&
+  if (mode === 'triad') return rank === 'young-blood' && save.youthTraining?.equipment.wristblade === true &&
+    normalizeSoloV90Campaign(save.soloV90)?.status === 'completed' && soloV90MatchesSave(save);
+  return (rank === 'blooded' || rank === 'elite' || rank === 'elder' || rank === 'ancient') &&
+    save.inventory.unlockedWeaponIds.includes('wristblades') &&
     MISSIONS.every(mission => save.missionProgress[mission.id]?.status === 'completed') &&
     !!shipAcquisitionOwnedHullV89(save.shipAcquisitionV89, save.createdAt);
 }
