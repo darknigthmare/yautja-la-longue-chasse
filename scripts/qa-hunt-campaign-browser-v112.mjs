@@ -26,11 +26,14 @@ const out=path.resolve(root,option('--output','outputs/qa-hunt-campaign-browser-
 const assetCache=path.resolve(root,option('--asset-cache','outputs/qa-hunt-campaign-browser-v112/source-cache'));
 const inspectOnly=argv.includes('--inspect-only'),budget=Number(option('--wall-seconds','600'));
 const maxRetries=Number(option('--max-retries','2'));
-const harvestSpecies=option('--harvest-species',null),skipHarvest=argv.includes('--skip-harvest');
+const harvestSpecies=option('--harvest-species',null),harvestAction=option('--harvest-action',null);
+const skipHarvest=argv.includes('--skip-harvest'),requireHarvestWorkshop=argv.includes('--require-harvest-workshop');
+assert.ok(!requireHarvestWorkshop||!skipHarvest,'a required workshop receipt needs field harvests');
+assert.ok(harvestAction===null||['harvest-hide','harvest-tissue','harvest-bone'].includes(harvestAction),'use one real anatomical action');
 const resumeHudSource=option('--resume-hud-source',null);
 const requireComplete=argv.includes('--require-complete'),requireResume=argv.includes('--require-resume');
 const requireIceUnderpass=argv.includes('--require-ice-underpass');
-assert.ok(!(requireComplete||requireResume||requireIceUnderpass)||!inspectOnly&&!resumeHudSource,
+assert.ok(!(requireComplete||requireResume||requireIceUnderpass||requireHarvestWorkshop)||!inspectOnly&&!resumeHudSource,
   'campaign checks require the playable GameClient path');
 assert.ok(budget>0&&budget<=7200);
 assert.ok(Number.isSafeInteger(maxRetries)&&maxRetries>=0&&maxRetries<=10);
@@ -99,7 +102,7 @@ const report={schema:1,generatedAt:new Date().toISOString(),sourceCommit:revisio
     continuationSource:campaignSource,continuationSha256:campaignInputRaw?hash(campaignInputRaw):null,save:admission,sha256:hash(admission),
     parseSaveImport:{accepted:Boolean(parsedAdmission.save),failure:parsedAdmission.failure??null}},
   requestedMissionIds:requested,
-  harvestSpeciesGoal:harvestSpecies,skipHarvest,
+  harvestSpeciesGoal:harvestSpecies,harvestActionGoal:harvestAction,skipHarvest,
   attempts:[],captures:[],errors:[],missingAssets:[],inputs:[],armoryTransactions:[],harvestAttempts:[],workshop:[],discoveryObservations:[],resumeObservations:[],routeObservations:[],qualification:'ATTEMPT_ONLY'};
 report.sourceContext.applicationSources=[...applicationSources.values()].sort((a,b)=>a.file.localeCompare(b.file));
 report.sourceContext.changedApplicationSources=report.sourceContext.applicationSources.filter(input=>!input.matchesBaseCommit).map(input=>input.file);
@@ -219,16 +222,22 @@ try{
     }
     await capture('earned-flaying-tool');await backToDeck();
   };
-  const conserveRealSpecimen=async()=>{
-    const admissionSave=await saved();if(!admissionSave.inventory.harvestV112.specimens.length)return;
+  const conserveRealSpecimen=async({missionId,delivered,returnMarks})=>{
+    const target=delivered[0];if(!target)return;
+    const admissionSave=await saved();
     await openDirect('trophy-hall');
+    const card=page.locator('[data-specimen-id-v112='+JSON.stringify(target.id)+']');
     let pausedAndReloaded=false;const actions=[];
     for(let step=0;step<40;step++){
-      const state=await saved(),ledger=state.inventory.harvestV112,item=ledger.specimens[0];if(!item)break;
+      const state=await saved(),ledger=state.inventory.harvestV112,item=ledger.specimens.find(value=>value.id===target.id);
+      if(!item)break;
       const job=ledger.jobs.find(value=>value.specimenId===item.id&&value.status!=='completed');
       if(job&&!pausedAndReloaded&&job.unitsDone===1){
-        await page.getByRole('button',{name:/^Suspendre sans perte ·/}).first().click();
-        const beforeReload=await saved();await capture('workshop-paused');await page.reload();
+        await card.getByRole('button',{name:/^Suspendre sans perte ·/}).click();
+        const beforeReload=await saved();
+        const paused=beforeReload.inventory.harvestV112.jobs.find(value=>value.id===job.id);
+        assert.equal(paused?.status,'paused');assert.equal(paused.unitsDone,job.unitsDone);
+        await capture('workshop-paused');await page.reload();
         await enterCampaignDeck(page);
         const afterReload=await saved();assert.deepEqual(afterReload.inventory.harvestV112,beforeReload.inventory.harvestV112);
         assert.equal(afterReload.profile.clanMarks,beforeReload.profile.clanMarks);
@@ -236,14 +245,25 @@ try{
       }
       const label=job?(job.status==='paused'?/^Reprendre sans frais ·/:/^Effectuer un geste ·/):
         item.stage==='mounted'?/^Ranger en réserve ·/:/^(Nettoyer|Traiter|Sécher|Monter) ·/;
-      const button=page.getByRole('button',{name:label}).first();const actionLabel=await button.textContent();await button.click();actions.push(actionLabel);
+      const button=card.getByRole('button',{name:label});
+      const actionLabel=await button.textContent();await button.click();
+      const next=await saved();
+      assert.notDeepEqual(next.inventory.harvestV112,ledger,'the selected workshop action must write its actual ledger');
+      actions.push(actionLabel);
     }
-    const after=await saved(),target=admissionSave.inventory.harvestV112.specimens[0];
-    const previousCount=admissionSave.inventory.harvestV112.archive.find(item=>item.speciesId===target.speciesId&&item.partId===target.partId)?.count??0;
-    const actualCount=after.inventory.harvestV112.archive.find(item=>item.speciesId===target.speciesId&&item.partId===target.partId)?.count??0;
-    assert.ok(actualCount>previousCount&&!after.inventory.harvestV112.specimens.some(item=>item.id===target.id),'the actual selected specimen must be archived');
-    await capture('workshop-mounted-archive');report.workshop.push({pausedAndReloaded,actions,before:admissionSave.inventory.harvestV112,
-      after:after.inventory.harvestV112,marksBefore:admissionSave.profile.clanMarks,marksAfter:after.profile.clanMarks});
+    const after=await saved();
+    const samePart=item=>item.speciesId===target.speciesId&&item.partId===target.partId;
+    const previousCount=admissionSave.inventory.harvestV112.archive.find(samePart)?.count??0;
+    const actualCount=after.inventory.harvestV112.archive.find(samePart)?.count??0;
+    assert.equal(actualCount,previousCount+1,'archive exactly one part from the declared hunt');
+    assert.ok(!after.inventory.harvestV112.specimens.some(item=>item.id===target.id),'the workshop must archive this same physical specimen');
+    await capture('workshop-mounted-archive');
+    const receipt={missionId,specimen:target,pausedAndReloaded,actions,archiveBefore:previousCount,archiveAfter:actualCount,
+      before:admissionSave.inventory.harvestV112,after:after.inventory.harvestV112,
+      returnMarks,marksBefore:admissionSave.profile.clanMarks,marksAfter:after.profile.clanMarks};
+    report.workshop.push(receipt);
+    console.log(JSON.stringify({browserWorkshop:{missionId,specimen:target,pausedAndReloaded,actions,
+      archiveBefore:previousCount,archiveAfter:actualCount}}));
     await backToDeck();
   };
   if(resumeHudSource){
@@ -365,32 +385,68 @@ try{
         await releaseKeys();await page.locator('canvas').last().focus();
         report.inputs.push({missionId,elapsed:game.elapsed,type:'focus reconciliation through DOM',previous:activeElement});
       }
-      const bodyMenu=page.locator('[data-hunt-rites-v77]');
       const quiet=game.enemies.every(enemy=>!enemy.active||!enemy.alive||Math.hypot(enemy.x-game.player.x,enemy.y-game.player.y)>650)&&
         (!game.boss.active||!game.boss.alive||Math.abs(game.boss.x-game.player.x)>900);
-      const desiredCorpse=harvestSpecies?game.huntRites.corpses.find(corpse=>corpse.sourceEnemyId===harvestSpecies&&!corpse.erased&&!examined.has(corpse.id)):null;
+      const distanceToCorpse=corpse=>Math.hypot(corpse.x-game.player.x-game.player.width/2,corpse.y-game.player.y-game.player.height);
+      const desiredCorpse=!skipHarvest&&harvestSpecies?game.huntRites.corpses
+        .filter(corpse=>corpse.sourceEnemyId===harvestSpecies&&corpse.worthy&&!corpse.protectedPrey&&
+          !corpse.erased&&corpse.id!==undefined&&!examined.has(corpse.id))
+        .sort((a,b)=>distanceToCorpse(a)-distanceToCorpse(b))[0]??null:null;
       if(!skipHarvest&&game.flayingToolOwned&&!game.huntRites.specimensV112.length&&bodyId&&
         (!harvestSpecies||bodyId===desiredCorpse?.id)&&!examined.has(bodyId)&&quiet&&game.player.grounded&&
         (game.phase==='tracking'||game.phase==='target')){
-        examined.add(bodyId);await releaseKeys();const attempt={missionId,bodyId,actions:[],elapsed:game.elapsed};
+        examined.add(bodyId);await releaseKeys();
+        const attempt={missionId,bodyId,actions:[],elapsed:game.elapsed};
+        const bodyMenu=page.locator('[data-hunt-rites-v77][data-corpse-id='+JSON.stringify(bodyId)+']');
         harvestTries.set(bodyId,(harvestTries.get(bodyId)??0)+1);
         try{
-          await page.waitForFunction(()=>{const p=window.__observeCanonicalHuntV112?.().state.player;return p&&Math.abs(p.velocityX)<5;},null,{timeout:3000});
+          await page.waitForFunction(()=>{const p=window.__observeCanonicalHuntV112?.().state.player;
+            return p?.grounded&&!p.climbing&&Math.abs(p.velocityX)<5;},null,{timeout:3000});
           const examine=bodyMenu.getByRole('button',{name:'Examiner la proie vaincue',exact:true});
-          if(await examine.count()){await examine.focus();await page.keyboard.press('Enter');}
-          for(const action of ['analyze','flay','harvest']){
-            if(action==='flay'&&await bodyMenu.locator('[data-rite-action-v112^="harvest-"]').count()===0)break;
-            const button=action==='harvest'?bodyMenu.locator('[data-rite-action-v112^="harvest-"]:enabled').first():bodyMenu.locator('[data-rite-action-v112="'+action+'"]');
-            if(!await button.count()||!await button.isEnabled())continue;
-            const canonicalAction=await button.getAttribute('data-rite-action-v112');await button.focus();await page.keyboard.press('Enter');attempt.actions.push(canonicalAction);
-            await page.waitForFunction(()=>{const g=window.__observeCanonicalHuntV112?.().state;return g&&(!g.huntRites.operation||g.phase==='dead');},null,{timeout:45000});
-            await bodyMenu.locator('[data-rite-action-v112="leave"]').waitFor();
+          if(await examine.isVisible())await examine.click({timeout:3000});
+          const open=page.locator('[data-rite-open-v112="true"][data-corpse-id='+JSON.stringify(bodyId)+']');
+          await open.waitFor({timeout:4000});
+          const parts=()=>open.locator(harvestAction?'[data-rite-action-v112="'+harvestAction+'"]':'[data-rite-action-v112^="harvest-"]');
+          if(await parts().count()){
+            const perform=async action=>{
+              const command=open.locator('[data-rite-action-v112="'+action+'"]');
+              const eventId=action+':'+bodyId;
+              if(!await command.isVisible()||!await command.isEnabled())return false;
+              await command.click({timeout:3000});
+              attempt.actions.push(action);
+              const flags={bodyId,action,eventId};
+              await page.waitForFunction(({bodyId,action,eventId})=>{
+                const ledger=window.__observeCanonicalHuntV112?.().state.huntRites;
+                return ledger?.completedEventIds.includes(eventId)||
+                  (ledger?.operation?.corpseId===bodyId&&ledger.operation.action===action);
+              },flags,{timeout:3000});
+              await page.waitForFunction(({eventId})=>{
+                const observed=window.__observeCanonicalHuntV112?.();
+                return observed&&(observed.state.phase==='dead'||!observed.state.huntRites.operation||
+                  observed.state.huntRites.completedEventIds.includes(eventId));
+              },flags,{timeout:45000});
+              const completed=await page.evaluate(eventId=>window.__observeCanonicalHuntV112?.().state.huntRites.completedEventIds.includes(eventId)===true,eventId);
+              if(completed)await open.locator('[data-rite-action-v112="leave"]').waitFor({timeout:4000});
+              return completed;
+            };
+            if(await open.locator('[data-rite-action-v112="analyze"]:enabled').isVisible())await perform('analyze');
+            const enabledPart=()=>open.locator((harvestAction?'[data-rite-action-v112="'+harvestAction+'"]':'[data-rite-action-v112^="harvest-"]')+':enabled').first();
+            if(!await enabledPart().isVisible()&&await open.locator('[data-rite-action-v112="flay"]:enabled').isVisible()){
+              await perform('flay');
+              if(await enabledPart().count())await enabledPart().waitFor({state:'visible',timeout:3000});
+            }
+            const chosen=await enabledPart().getAttribute('data-rite-action-v112',{timeout:2000}).catch(()=>null);
+            if(chosen)attempt.completed=await perform(chosen);
           }
-          const state=await page.evaluate(()=>window.__observeCanonicalHuntV112().state);attempt.specimens=state.huntRites.specimensV112;
-          await captureHunt(state.huntRites.specimensV112.length?'actual-anatomical-harvest':'rite-attempt-no-specimen');
+          const observed=await page.evaluate(()=>window.__observeCanonicalHuntV112?.().state);
+          attempt.specimens=observed?.huntRites.specimensV112??[];
+          attempt.message=observed?.message;
+          await captureHunt(attempt.specimens.length?'actual-anatomical-harvest':'rite-attempt-no-specimen');
         }catch(error){attempt.failure=String(error);}
-        const close=page.getByRole('button',{name:'Fermer le menu rituel',exact:true});if(await close.count())try{await close.focus();await page.keyboard.press('Enter');}catch(error){attempt.closeFailure=String(error);}
+        const close=bodyMenu.getByRole('button',{name:'Fermer le menu rituel',exact:true});
+        if(await close.isVisible())try{await close.click({timeout:3000});}catch(error){attempt.closeFailure=String(error);}
         await page.locator('canvas').last().focus();report.harvestAttempts.push(attempt);
+        console.log(JSON.stringify({browserHarvest:attempt}));
         if(!attempt.specimens?.length&&(harvestTries.get(bodyId)??0)<3)examined.delete(bodyId);
         continue;
       }
@@ -458,14 +514,19 @@ try{
     const settled=await saved(),beforeProgress=currentSave.missionProgress[missionId],afterProgress=settled.missionProgress[missionId];
     const settlementConfirmed=final?.state.phase==='finished'&&afterProgress.completions===beforeProgress.completions+1&&
       afterProgress.attempts===beforeProgress.attempts+1&&settled.statistics.missionsCompleted===currentSave.statistics.missionsCompleted+1;
-    report.attempts.push({missionId,final,retryEvents,suspendedAndReloaded:resumed,resumeReceipt,settlement:{confirmed:settlementConfirmed,beforeProgress,afterProgress},wallSeconds:(Date.now()-start)/1000,
+    const field=final?.state.huntRites.specimensV112??[];
+    const priorIds=new Set(currentSave.inventory.harvestV112.specimens.map(item=>item.id));
+    const delivered=settlementConfirmed?settled.inventory.harvestV112.specimens.filter(item=>!priorIds.has(item.id)&&field.some(source=>
+      source.id===item.id&&source.sourceId===item.sourceId&&source.speciesId===item.speciesId&&source.partId===item.partId)):[];
+    report.attempts.push({missionId,final,retryEvents,suspendedAndReloaded:resumed,resumeReceipt,delivered,
+      settlement:{confirmed:settlementConfirmed,beforeProgress,afterProgress},wallSeconds:(Date.now()-start)/1000,
       status:settlementConfirmed?'BROWSER_HUNT_AND_SETTLEMENT_SUCCESS':final?.state.phase==='dead'?'CONTROLLER_DIED':'ATTEMPT_INCOMPLETE'});
     await writeFile(path.join(out,missionId+'-hunt-samples.json'),JSON.stringify(samples,null,2)+'\n');
     report.finalSave=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),storageKey);
     await writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');
     if(!settlementConfirmed)break;
     await page.getByRole('button',{name:'Retour au vaisseau',exact:true}).last().click();
-    await conserveRealSpecimen();
+    await conserveRealSpecimen({missionId,delivered,returnMarks:settled.profile.clanMarks});
   }
   await context.storageState({path:path.join(out,'browser-storage-state.json'),indexedDB:true});
   report.browser=browser.version();report.finalSave=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)??'null'),storageKey);
@@ -482,7 +543,12 @@ finally{
     const durable=requested.filter(id=>attempted.get(id)?.settlement?.confirmed===true);
     const observedResumes=requested.filter(id=>report.resumeObservations.some(resume=>resume.missionId===id));
     const resumed=durable.filter(id=>attempted.get(id)?.suspendedAndReloaded===true);
-    report.coverage={requested,durable,resumed,observedResumes,
+    const harvestedAndArchived=durable.filter(id=>{
+      const attempt=attempted.get(id);
+      return report.workshop.some(entry=>entry.missionId===id&&entry.pausedAndReloaded&&
+        attempt.delivered.some(item=>item.id===entry.specimen.id&&item.sourceId===entry.specimen.sourceId));
+    });
+    report.coverage={requested,durable,resumed,observedResumes,harvestedAndArchived,
       incomplete:requested.filter(id=>!durable.includes(id)),
       missingResume:requested.filter(id=>!resumed.includes(id))};
     if(durable.length===requested.length)report.qualification='BROWSER_HUNTS_AND_DURABLE_SETTLEMENT';
@@ -491,6 +557,13 @@ finally{
       const problem='Contracts without durable success and observed sidecar resume: '+report.coverage.missingResume.join(', ');
       report.requiredCoverageFailure=[report.requiredCoverageFailure,problem].filter(Boolean).join('\n');
     }
+    if(requireHarvestWorkshop&&harvestedAndArchived.length!==requested.length){
+      const problem='Contracts without a delivered field specimen and resumed workshop archive: '+
+        requested.filter(id=>!harvestedAndArchived.includes(id)).join(', ');
+      report.requiredCoverageFailure=[report.requiredCoverageFailure,problem].filter(Boolean).join('\n');
+    }
+    if(requireHarvestWorkshop&&harvestedAndArchived.length===requested.length)
+      report.qualification='BROWSER_HUNTS_HARVEST_AND_WORKSHOP';
     if(requireIceUnderpass&&!report.routeObservations.some(row=>row.missionId==='ice-cryostalker')){
       const problem='The closed thermal gate has no observed lower-route crossing';
       report.requiredCoverageFailure=[report.requiredCoverageFailure,problem].filter(Boolean).join('\n');

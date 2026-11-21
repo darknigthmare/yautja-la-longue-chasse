@@ -492,7 +492,8 @@ function receiptFor(state: ClanShipOperationsState, definition: ClanShipContract
 }
 function finishContract(state: ClanShipOperationsState, definition: ClanShipContractDefinition, proof: ClanShipContractProof, spaceEncounter: ClanShipSpaceEncounter | null = null): ClanShipOperationsResult {
   return changed(state, { activeContract: null, completedContracts: [...state.completedContracts, receiptFor(state, definition, proof)], spaceEncounter },
-    `${definition.name} : dossier accompli. Les membres concernés attendent ta proposition à leur poste.`, definition.clanMarksReward);
+    proof.kind === 'space' && proof.collective ? 'Transport extrait. Le rapport collectif est consigné au conseil.'
+      : `${definition.name} : dossier accompli. Les membres concernés attendent ta proposition à leur poste.`, definition.clanMarksReward);
 }
 function validAction(action: unknown): action is ClanShipOperationsAction {
   if (!record(action) || !integer(action.expectedRevision)) return false;
@@ -603,10 +604,10 @@ export function actClanShipOperations(state: ClanShipOperationsState, action: Cl
         'Le hangar confirme le départ de la formation. Rejoins ton poste pour couvrir le transport.');
     }
     case 'space-command': {
-      const definition = clanShipContract(state.activeContract?.contractId);
-      if (!definition || definition.kind !== 'space' || !state.spaceEncounter) return refused(state, 'no-space-encounter', 'Aucune opération spatiale active.');
       const briefing = state.activeContract?.collective;
       if (!at(briefing?.role ? clanShipCollectiveStation(briefing.role) : 'conseil')) return wrongRoom();
+      const definition = clanShipContract(state.activeContract?.contractId);
+      if (!definition || definition.kind !== 'space' || !state.spaceEncounter) return refused(state, 'no-space-encounter', 'Aucune opération spatiale active.');
       if (briefing?.role && !collectiveAllowsOrder(briefing.role, action.command.type))
         return refused(state, 'collective-order-unavailable', 'Cet ordre relève de la coordination au conseil.');
       const result = actClanShipSpaceEncounter(state.spaceEncounter, action.command);

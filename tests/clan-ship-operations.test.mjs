@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { homeworldSceneSsrV78 } from './helpers/homeworld-scene-ssr-v78.mjs';
+import { playShipAcquisitionV161 } from './helpers/ship-receipt-v161.mjs';
 
 const qa = homeworldSceneSsrV78();
 const ops = qa.load('app/game/systems/clanShipOperations.ts');
@@ -85,9 +86,10 @@ function escort(state) {
   return state;
 }
 
-test('catalogue has twelve original contracts and six distinct stationed recruits', () => {
-  assert.equal(ops.CLAN_SHIP_CONTRACTS.length, 12);
-  assert.equal(new Set(ops.CLAN_SHIP_CONTRACTS.map(item => item.id)).size, 12);
+test('catalogue keeps twelve original contracts, adds the collective escort and retains six stationed recruits', () => {
+  assert.equal(ops.CLAN_SHIP_CONTRACTS.length, 13);
+  assert.equal(new Set(ops.CLAN_SHIP_CONTRACTS.map(item => item.id)).size, 13);
+  assert.equal(ops.clanShipContract(ops.CLAN_SHIP_COLLECTIVE_ID).spaceKind, 'escort');
   assert.equal(ops.CLAN_SHIP_RECRUITS.length, 6);
   assert.equal(ops.CLAN_SHIP_ONBOARDING_STEPS.length, 3);
   for (const definition of ops.CLAN_SHIP_CONTRACTS) {
@@ -571,9 +573,104 @@ test('all twelve contracts remain completable through real campaign unlocks and 
     assert.equal(state.spaceEncounter.status, 'victory', id);
     assert.equal(reward, ops.clanShipContract(id).clanMarksReward, id);
   }
-  assert.equal(state.completedContracts.length, ops.CLAN_SHIP_CONTRACTS.length);
-  assert.deepEqual(new Set(state.completedContracts.map(receipt => receipt.contractId)), new Set(ops.CLAN_SHIP_CONTRACT_IDS));
+  const originalIds = ops.CLAN_SHIP_CONTRACT_IDS.filter(id => id !== ops.CLAN_SHIP_COLLECTIVE_ID);
+  assert.equal(state.completedContracts.length, originalIds.length);
+  assert.deepEqual(new Set(state.completedContracts.map(receipt => receipt.contractId)), new Set(originalIds));
   const recognized = act(state, 'confirm-circle', {}, 'conseil', save).state;
   assert.equal(ops.evaluateClanShipOperationsPhase(save, recognized), 'circle-confirmed');
   assert.deepEqual(ops.inspectClanShipOperations(JSON.parse(JSON.stringify(recognized)), OWNER).state, recognized);
+});
+
+test('collective escort checks real postings, applies role-specific orders and settles exactly one fresh receipt', () => {
+  const hull = qa.load('app/game/systems/clanHullProjectV171.ts');
+  const docking = qa.load('app/game/systems/clanShipDocking.ts');
+  const acquisition = qa.load('app/game/systems/shipAcquisitionV89.ts');
+  let save = campaign();
+  save.profile = { ...save.profile, honor: 5000, rankId: 'elite' };
+  save = playShipAcquisitionV161(qa, save);
+  const receipt = acquisition.shipAcquisitionOwnedHullV89(save.shipAcquisitionV89, OWNER);
+  assert.ok(receipt);
+  const dockContext = { ownerCreatedAt: OWNER, personalShipId: receipt.shipId };
+  let berth = docking.createClanShipDockingState(OWNER, receipt.shipId);
+  for (const type of ['approach', 'dock', 'board']) {
+    const next = docking.actClanShipDocking(berth, { type }, dockContext);
+    assert.ok(next.accepted, next.message);
+    berth = next.state;
+  }
+  save.clanShipDocking = berth;
+  const chooseProject = (type, contact = null, patch = {}) => {
+    const answer = hull.commitClanHullProject(save, { type, expectedRevision: save.clanHullProjectV171?.revision ?? 0, ...patch }, contact);
+    assert.ok(answer.ok, answer.message);
+    save.clanHullProjectV171 = answer.state;
+  };
+  chooseProject('inspect');
+  chooseProject('consult', 'threshold-guard');
+  const council = docking.actClanShipDocking(berth, { type: 'move-room', roomId: 'conseil' }, dockContext);
+  assert.ok(council.accepted, council.message);
+  save.clanShipDocking = council.state;
+  chooseProject('consult', 'star-watch');
+  chooseProject('pledge', null, { pledge: 'shared-watch' });
+  let state = ready();
+  assert.equal(ops.evaluateClanShipContract(state, ops.CLAN_SHIP_COLLECTIVE_ID, save).allowed, false);
+  for (const id of ['ship-seal-check', 'ship-armory-audit', 'ship-triage-route', 'ship-training-circuit']) state = interior(state, id);
+  for (const [id, missionId] of [['field-jungle-survey', 'jungle-vey'], ['field-ice-route', 'ice-cryostalker']]) {
+    state = bind(accept(state, id, save), save, missionId);
+    const settled = settle(state, save, missionResult(missionId));
+    assert.ok(settled.result.accepted, settled.result.message);
+    state = settled.result.state; save = settled.progressed;
+  }
+  for (const npc of ops.CLAN_SHIP_RECRUITS) state = act(state, 'recruit', { npcId: npc.id }, npc.roomId, save).state;
+  assert.equal(ops.evaluateClanShipContract(state, ops.CLAN_SHIP_COLLECTIVE_ID, { ...save, clanHullProjectV171: null }).allowed, false);
+  const baseline = state, all = baseline.recruitedNpcIds;
+  const orders = ['scan', 'manoeuvre', 'brace', 'brace', 'extract'];
+  for (const role of ['field', 'coordination']) {
+    state = accept(baseline, ops.CLAN_SHIP_COLLECTIVE_ID, save);
+    assert.equal(state.spaceEncounter, null);
+    const post = (type, fields, roomId, availableCrewIds = all) => {
+      const ctx = { ...context(roomId, save), availableCrewIds };
+      const result = ops.actClanShipOperations(state, command(state, type, fields), ctx);
+      if (result.accepted) {
+        assert.ok(result.changed);
+        assert.equal(result.clanMarksReward, 0);
+        state = result.state;
+        assert.equal(ops.inspectClanShipOperations(state, OWNER).status, 'valid', result.message);
+      }
+      return result;
+    };
+    assert.equal(post('collective-launch', {}, 'hangar').reason, 'collective-crew-incomplete');
+    assert.equal(post('collective-role', { role }, 'hangar').reason, 'wrong-room');
+    assert.ok(post('collective-role', { role }, 'conseil').accepted);
+    assert.equal(post('collective-role', { role }, 'conseil').reason, 'role-chosen');
+    assert.equal(post('collective-check', { npcId: 'threshold-guard' }, 'conseil').reason, 'wrong-room');
+    assert.equal(post('collective-check', { npcId: 'threshold-guard' }, 'hangar', []).reason, 'collective-post-unavailable');
+    for (const npc of ops.CLAN_SHIP_RECRUITS) {
+      assert.ok(post('collective-check', { npcId: npc.id }, npc.roomId).accepted);
+    }
+    assert.equal(post('collective-check', { npcId: 'threshold-guard' }, 'hangar').reason, 'collective-post-unavailable');
+    assert.equal(post('collective-launch', {}, 'conseil').reason, 'wrong-room');
+    assert.equal(post('collective-launch', {}, 'hangar', all.slice(1)).reason, 'collective-crew-incomplete');
+    assert.ok(post('collective-launch', {}, 'hangar').accepted);
+    const room = ops.clanShipCollectiveStation(role);
+    assert.equal(post('space-command', { command: { type: 'scan', expectedTurn: 0 } },
+      room === 'hangar' ? 'conseil' : 'hangar').reason, 'wrong-room');
+    if (role === 'field') assert.equal(post('space-command', { command: { type: 'fire', expectedTurn: 0 } }, room).reason, 'collective-order-unavailable');
+    for (const type of orders) {
+      const result = post('space-command', { command: { type, expectedTurn: state.spaceEncounter.turn } }, room);
+      assert.ok(result.accepted, result.message);
+    }
+    const last = state.completedContracts.at(-1);
+    assert.equal(last.contractId, ops.CLAN_SHIP_COLLECTIVE_ID);
+    assert.equal(last.proof.encounter.status, 'victory');
+    assert.deepEqual(last.proof.collective, { role, capacity: 7, checkedNpcIds: all });
+    assert.deepEqual(last.proof.encounter.history, orders);
+    assert.equal(ops.evaluateClanShipContract(state, ops.CLAN_SHIP_COLLECTIVE_ID, save).allowed, false);
+    const valid = { ...save, clanShipOperations: state };
+    const restored = saves.parseSaveImport(saves.exportSave(valid));
+    assert.equal(restored.failure, null);
+    assert.deepEqual(restored.save.clanShipOperations, state);
+    const damaged = structuredClone(valid);
+    damaged.clanShipOperations.completedContracts.at(-1).proof.collective.checkedNpcIds.pop();
+    assert.equal(saves.parseSaveImport(JSON.stringify(damaged)).failure, 'invalid-save');
+    assert.equal(saves.parseSaveImport(JSON.stringify({ ...valid, clanHullProjectV171: null })).failure, 'invalid-save');
+  }
 });
