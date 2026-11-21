@@ -1,0 +1,36 @@
+name: Inspect the exact preserved Naraka Delta sidecar
+on:
+  push:
+    branches: [codex/verify-marais-p2-20261121]
+    paths: ['.github/workflows/inspect-preserved-marais-sidecar-20261121.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  receipt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Download the exact browser receipt
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          run-id: 44953627451
+          name: p2-rem112-swamp-browser
+          github-token: ${{ github.token }}
+          path: outputs/swamp-parent
+      - name: Compare the final live hunt with the persisted sidecar
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFile } from 'node:fs/promises';
+          const r = JSON.parse(await readFile('outputs/swamp-parent/report.json'));
+          const final = r.attempts.at(-1)?.final?.state;
+          const active = r.activeHunt;
+          const checkpoint = active?.snapshot?.checkpoint;
+          console.log(JSON.stringify({
+            realField: final?.huntRites?.specimensV112,
+            final: {phase: final?.phase, x: final?.player?.x, y: final?.player?.y, exit: final?.mission?.extractionX ?? final?.world?.width},
+            persisted: {phase: checkpoint?.phase, elapsed: checkpoint?.elapsed, x: checkpoint?.player?.x,
+              receipts: checkpoint?.huntRites?.specimensV112, identity: active?.missionId, encounter: active?.encounterRun ?? checkpoint?.encounterRun},
+            comparison: {owner: active?.ownerCreatedAt, saveOwner: r.finalSave?.createdAt, hasActive: !!active },
+          }));
+          NODE
