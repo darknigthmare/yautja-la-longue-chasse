@@ -1,0 +1,45 @@
+name: Verify the collective mission return post
+on:
+  push:
+    branches: [codex/verify-lot7-collective-20261121]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /scripts/
+            /tests/
+            /types/
+            /docs/
+            /worker/
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify recorded escort and baseline dialogue
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/clan-ship-dialogue.test.mjs
+          tests/clan-ship-operations.test.mjs
+          tests/clan-ship-operations-save.test.mjs
+          tests/clan-ship-crew-dialogue-ui.test.mjs
+          tests/clan-ship-return-escort.test.mjs
+      - name: Verify source lint
+        run: npx eslint app/game/ClanShipOperationsPanel.tsx tests/clan-ship-operations.test.mjs

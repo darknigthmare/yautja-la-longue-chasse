@@ -673,6 +673,18 @@ test('collective escort checks real postings, applies role-specific orders and s
     assert.equal(report?.phase, 'return-victory');
     assert.match(report.detail, /Veille Partagée.*6 postes vérifiés.*capacité enregistrée de 7/);
     assert.ok(report.detail.includes(role === 'field' ? 'conduite depuis le hangar' : 'coordination depuis le conseil'));
+    const renderPost = roomId => {
+      const dock = roomId === 'conseil' ? restored.save.clanShipDocking
+        : docking.actClanShipDocking(restored.save.clanShipDocking, { type: 'move-room', roomId }, dockContext).state;
+      return qa.render('app/game/ClanShipOperationsPanel.tsx', {
+        save: { ...restored.save, clanShipDocking: dock }, state: restored.save.clanShipOperations,
+        roomId, suspended: false, onAction: () => { throw Error('A report must only read completed proof'); },
+        onClose() {}, onNavigate() {}, onClanWar() {},
+      });
+    };
+    assert.match(renderPost('conseil'), new RegExp(`data-collective-report-role="${role}"`));
+    if (role === 'field') assert.match(renderPost('hangar'), /data-collective-report-role="field"/);
+    else assert.doesNotMatch(renderPost('hangar'), /data-collective-report-role=/);
     const damaged = structuredClone(valid);
     damaged.clanShipOperations.completedContracts.at(-1).proof.collective.checkedNpcIds.pop();
     assert.equal(saves.parseSaveImport(JSON.stringify(damaged)).failure, 'invalid-save');
