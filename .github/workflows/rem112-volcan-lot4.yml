@@ -1,14 +1,15 @@
-name: REM112 prélèvement avec atelier en navigateur
+name: REM112 extraction depuis le tendon réellement conservé
 on:
   push:
-    branches: [codex/qa-rem112-volcan-keyboard-lot4-20261121]
+    branches: [codex/qa-rem112-volcan-authentic-carry-lot4]
 permissions:
   contents: read
+  actions: read
 jobs:
   gameplay:
     name: ${{ matrix.case.id }}
     runs-on: ubuntu-latest
-    timeout-minutes: 27
+    timeout-minutes: 23
     strategy:
       fail-fast: false
       matrix:
@@ -18,13 +19,7 @@ jobs:
             seed: browser-workshop
             species: cinder-12--hell-hound-stalker
             action: harvest-tissue
-            budget: 1200
-          - id: ice-xeno-bone-control
-            mission: ice-cryostalker
-            seed: browser-ice
-            species: nivalis-k--frost-xeno
-            action: harvest-bone
-            budget: 960
+            budget: 1000
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: 1
       NEXT_TELEMETRY_DISABLED: 1
@@ -45,10 +40,27 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          run-id: 44942225541
+          name: rem112-lot4-volcano-hound-tissue
+          github-token: ${{ github.token }}
+          path: evidence
+      - run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import {readFile} from 'node:fs/promises';
+          import {createHash} from 'node:crypto';
+          const report=JSON.parse(await readFile('evidence/report.json','utf8'));
+          const store=JSON.parse(await readFile('evidence/browser-storage-state.json','utf8'));
+          const active=store.origins.flatMap(x=>x.localStorage).find(row=>row.name==='yautja-long-hunt.active-hunt');
+          assert.equal(JSON.stringify(report.activeHunt),active.value);
+          assert.equal(createHash('sha256').update(active.value).digest('hex'),'496609d2401572703892fd6d33f1385357ace12e9885d9bb2af9f16ef54382ef');
+          NODE
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: |
           node scripts/qa-hunt-campaign-browser-v112.mjs \
-            --campaign-source "docs/qa/v112-campaign-canonical/${{ matrix.case.seed }}/browser-report.json" \
+            --campaign-source evidence/report.json --continue-active-hunt --max-retries 0 \
             --missions "${{ matrix.case.mission }}" \
             --harvest-species "${{ matrix.case.species }}" \
             --harvest-action "${{ matrix.case.action }}" \
@@ -68,29 +80,5 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: rem112-lot4-${{ matrix.case.id }}
+          name: rem112-lot4-exact-tendon-continuation
           path: outputs/browser/
-  source:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    env:
-      ELECTRON_SKIP_BINARY_DOWNLOAD: 1
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          sparse-checkout-cone-mode: false
-          sparse-checkout: |
-            /*
-            !/public/
-            !/docs/
-            !/production/
-            /public/**/manifest.json
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci --ignore-scripts --no-audit --no-fund
-      - run: node --check scripts/qa-hunt-campaign-browser-v112.mjs
-      - run: npx eslint app/game/ConservationPanelV112.tsx
-      - run: |
-          node --test tests/harvest-inventory-v112.test.mjs tests/conservation-persistence-ui-v112.test.mjs tests/hunt-skinning-worksite-20261109.test.mjs

@@ -31,6 +31,7 @@ const skipHarvest=argv.includes('--skip-harvest'),requireHarvestWorkshop=argv.in
 assert.ok(!requireHarvestWorkshop||!skipHarvest,'a required workshop receipt needs field harvests');
 assert.ok(harvestAction===null||['harvest-hide','harvest-tissue','harvest-bone'].includes(harvestAction),'use one real anatomical action');
 const resumeHudSource=option('--resume-hud-source',null);
+const continueActiveHunt=argv.includes('--continue-active-hunt');
 const requireComplete=argv.includes('--require-complete'),requireResume=argv.includes('--require-resume');
 const requireIceUnderpass=argv.includes('--require-ice-underpass');
 assert.ok(!(requireComplete||requireResume||requireIceUnderpass||requireHarvestWorkshop)||!inspectOnly&&!resumeHudSource,
@@ -64,12 +65,22 @@ const mod={exports:{}};runInNewContext(bootstrap.outputFiles[0].text,{module:mod
 const campaignSource=option('--campaign-source',null);
 const campaignInputRaw=campaignSource?await readFile(path.resolve(root,campaignSource),'utf8'):null;
 const campaignInput=campaignInputRaw?JSON.parse(campaignInputRaw):null;
+const activeKey='yautja-long-hunt.active-hunt';
+const archivedSidecar=continueActiveHunt?campaignInput?.activeHunt:null;
+if(continueActiveHunt)assert.ok(campaignInput?.finalSave&&archivedSidecar?.snapshot?.checkpoint&&!inspectOnly&&!resumeHudSource&&maxRetries===0,
+  'a continued receipt requires the archived campaign and active hunt used as played, without a replacement run');
 const admission=campaignInput?.finalSave??campaignInput??mod.exports.defaultSave('2026-11-02T00:00:00.000Z'),storageKey=mod.exports.SAVE_STORAGE_KEY;
 const parsedAdmission=mod.exports.parseSaveImport(JSON.stringify(admission));
 const routes=new Map(mod.exports.GALAXY_NAVIGATION.sectors.flatMap(sector=>sector.systems.flatMap(system=>system.bodies
   .flatMap(body=>body.missions.map(mission=>[mission.id,{sector,system,body,mission}])))));
 const requested=option('--missions',mod.exports.MISSIONS.map(mission=>mission.id).join(',')).split(',');
 assert.ok(requested.length&&requested.every(id=>routes.has(id)),'real requested campaign routes');
+if(continueActiveHunt){
+  assert.deepEqual(requested,[archivedSidecar.missionId]);
+  assert.equal(admission.createdAt,archivedSidecar.ownerSaveCreatedAt);
+  assert.equal(admission.missionProgress[archivedSidecar.missionId].attempts,archivedSidecar.encounterRun);
+  for(const key of ['inventory','loadout','appearance'])assert.deepEqual(admission[key],archivedSidecar.configuration[key]);
+}
 if(requireComplete||requireResume||requireHarvestWorkshop)assert.equal(new Set(requested).size,requested.length,'each required contract must be distinct');
 if(requireIceUnderpass)assert.ok(requested.includes('ice-cryostalker'),'the ice underpass needs a real Cryostalker attempt');
 const entry='import {createRoot} from "react-dom/client";import GameClient from "./app/game/GameClient";import "./app/globals.css";createRoot(document.getElementById("root")).render(<GameClient/>);';
@@ -180,16 +191,22 @@ try{
   browser=await chromium.launch({executablePath:option('--chromium','/usr/bin/chromium'),args:['--no-sandbox']});
   report.browser=browser.version();
   context=await browser.newContext({viewport:{width:1280,height:900},deviceScaleFactor:1});
-  await context.addInitScript(({save,key})=>{if(localStorage.length===0)localStorage.setItem(key,JSON.stringify(save));},{save:admission,key:storageKey});
+  await context.addInitScript(({save,key,activeKey,serializedSidecar})=>{
+    if(localStorage.length!==0)return;
+    localStorage.setItem(key,JSON.stringify(save));
+    if(serializedSidecar)localStorage.setItem(activeKey,serializedSidecar);
+  },{save:admission,key:storageKey,activeKey,serializedSidecar:archivedSidecar?JSON.stringify(archivedSidecar):null});
   page=await context.newPage();page.setDefaultTimeout(20000);page.on('pageerror',error=>report.errors.push(String(error)));
   page.on('console',message=>{if(message.type()==='error')report.errors.push('console.error: '+message.text());});
   page.on('requestfailed',request=>report.errors.push('requestfailed: '+request.url()+' '+request.failure()?.errorText));
   await page.goto('http://127.0.0.1:'+address.port+'/',{waitUntil:'domcontentloaded'});
   await page.bringToFront();
   const capture=async name=>{const buffer=await page.screenshot({animations:'disabled'});await writeFile(path.join(out,name+'.png'),buffer);report.captures.push({file:name+'.png',sha256:hash(buffer),bytes:buffer.length});};
-  await enterCampaignDeck(page);
-  await capture('01-legacy-default-deck');
-  await writeFile(path.join(out,'deck-visible-buttons.json'),JSON.stringify(await page.getByRole('button').allTextContents(),null,2)+'\n');
+  if(!continueActiveHunt){
+    await enterCampaignDeck(page);
+    await capture('01-legacy-default-deck');
+    await writeFile(path.join(out,'deck-visible-buttons.json'),JSON.stringify(await page.getByRole('button').allTextContents(),null,2)+'\n');
+  }
   const saved=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),storageKey);
   const activateWithKeyboard=async button=>{
     await button.focus();
@@ -318,39 +335,59 @@ try{
       continue;
     }
     if(currentSave.missionProgress[missionId].status==='locked'){report.attempts.push({missionId,status:'NOT_ADMITTED_LOCKED'});break;}
-    await acquireEarnedTool();
     const route=routes.get(missionId),captureCounts=new Map(),captureHunt=name=>{
       const count=(captureCounts.get(name)??0)+1;captureCounts.set(name,count);
       return capture(missionId+'-'+name+(count>1?'-repeat-'+count:''));
     };
-    await openDirect('galaxy-map');
-    await writeFile(path.join(out,'shortcuts-visible-buttons.json'),JSON.stringify(await page.getByRole('button').allTextContents(),null,2)+'\n');
-    await captureHunt('02-galaxy-map');
-    const galaxyRoot=page.locator('.galaxy-v10-breadcrumbs button').first();if(await galaxyRoot.isEnabled())await galaxyRoot.click();
-    await writeFile(path.join(out,'map-visible-buttons.json'),JSON.stringify(await page.getByRole('button').allTextContents(),null,2)+'\n');
-    // Each native autopilot leg must physically arrive before the Entrer button
-    // appears. Read-only content data supplies labels, never navigation state.
-    for(const label of [route.sector.name,route.system.name,route.body.name]){
-      const choice=page.locator('.galaxy-v10-spatial-map button').filter({hasText:label}).first();
-      await choice.click();
-      await page.getByRole('button',{name:'Entrer',exact:true}).click();
+    if(continueActiveHunt){
+      const storedBefore=await page.evaluate(key=>localStorage.getItem(key),activeKey);
+      assert.equal(storedBefore,JSON.stringify(archivedSidecar),'the original active hunt is admitted whole');
+      await resumeCampaignHunt(page);
+    }else{
+      await acquireEarnedTool();
+      await openDirect('galaxy-map');
+      await writeFile(path.join(out,'shortcuts-visible-buttons.json'),JSON.stringify(await page.getByRole('button').allTextContents(),null,2)+'\n');
+      await captureHunt('02-galaxy-map');
+      const galaxyRoot=page.locator('.galaxy-v10-breadcrumbs button').first();if(await galaxyRoot.isEnabled())await galaxyRoot.click();
+      await writeFile(path.join(out,'map-visible-buttons.json'),JSON.stringify(await page.getByRole('button').allTextContents(),null,2)+'\n');
+      // Each native autopilot leg must physically arrive before the Entrer button
+      // appears. Read-only content data supplies labels, never navigation state.
+      for(const label of [route.sector.name,route.system.name,route.body.name]){
+        const choice=page.locator('.galaxy-v10-spatial-map button').filter({hasText:label}).first();
+        await choice.click();
+        await page.getByRole('button',{name:'Entrer',exact:true}).click();
+      }
+      await page.getByRole('button',{name:route.mission.title,exact:false}).first().click();
+      const prepare=page.getByRole('button',{name:/^Préparer (la chasse|cette revisite)$/});
+      await prepare.click();await page.getByRole('button',{name:'Départ rapide',exact:true}).click();
+      const skipArrival=page.getByRole('button',{name:'Passer l’arrivée',exact:true});
+      const startHunt=page.getByRole('button',{name:'Commencer la chasse',exact:true});
+      await skipArrival.or(startHunt).first().waitFor();
+      if(await skipArrival.isVisible())await skipArrival.click();
+      await startHunt.click();
     }
-    await page.getByRole('button',{name:route.mission.title,exact:false}).first().click();
-    const prepare=page.getByRole('button',{name:/^Préparer (la chasse|cette revisite)$/});
-    await prepare.click();await page.getByRole('button',{name:'Départ rapide',exact:true}).click();
-    const skipArrival=page.getByRole('button',{name:'Passer l’arrivée',exact:true});
-    const startHunt=page.getByRole('button',{name:'Commencer la chasse',exact:true});
-    await skipArrival.or(startHunt).first().waitFor();
-    if(await skipArrival.isVisible())await skipArrival.click();
-    await startHunt.click();
     await page.locator('canvas').last().focus();
-    await captureHunt('03-true-hunt-start');
+    let resumeReceipt=null;
+    if(continueActiveHunt){
+      const restored=await page.evaluate(()=>window.__observeCanonicalHuntV112?.());
+      const savedElapsed=archivedSidecar.snapshot.checkpoint.elapsed;
+      assert.equal(restored?.missionId,missionId);
+      assert.equal(restored.encounterRun,archivedSidecar.encounterRun);
+      assert.ok(restored.state.elapsed>=savedElapsed&&restored.state.elapsed-savedElapsed<2);
+      assert.deepEqual(restored.state.huntRites.specimensV112,archivedSidecar.snapshot.checkpoint.huntRites.specimensV112);
+      resumeReceipt={sidecar:archivedSidecar,restored,origin:'archived native browser storage'};
+      const resume={missionId,encounterRun:restored.encounterRun,savedElapsed,restoredElapsed:restored.state.elapsed,
+        sidecarSha256:hash(archivedSidecar),specimens:restored.state.huntRites.specimensV112};
+      report.resumeObservations.push(resume);
+      console.log(JSON.stringify({browserResume:resume}));
+    }
+    await captureHunt(continueActiveHunt?'03-archived-native-hunt-resumed':'03-true-hunt-start');
     const start=Date.now(),memory={previousX:0,stuckTicks:0,jumpUntil:-1},held=new Set();
     const keys={left:'ArrowLeft',right:'ArrowRight',up:'ArrowUp',down:'ArrowDown',jump:'Space',aim:'ShiftLeft',
       melee:'KeyJ',weapon:'KeyK',weaponOne:'Digit1',weaponTwo:'Digit2',weaponNext:'KeyR',scan:'KeyV',heal:'KeyH',
       interact:'KeyE',pause:'Escape',cloak:'KeyC',gearOne:'Digit3',gearTwo:'Digit4'};
     const samples=[],examined=new Set(),harvestTries=new Map(),discoveryChannels=new Set(),retryEvents=[];
-    let final=null,lastSecond=-1,lastPhase='',resumed=false,resumeReceipt=null,lastDecision=null;
+    let final=null,lastSecond=-1,lastPhase='',resumed=resumeReceipt!==null,lastDecision=null;
     let startedWestOfIceGate=false,seenIceUnderpass=false;
     const releaseKeys=async()=>{for(const action of held)await page.keyboard.up(keys[action]);held.clear();};
     while(!stopRequested&&Date.now()-start<budget*1000){
@@ -547,7 +584,8 @@ try{
     const wantedPart=harvestAction?.slice('harvest-'.length);
     const delivered=settlementConfirmed?settled.inventory.harvestV112.specimens.filter(item=>
       !priorIds.has(item.id)&&(!harvestSpecies||item.speciesId===harvestSpecies)&&(!wantedPart||item.partId===wantedPart)&&
-      field.some(source=>source.id===item.id&&source.sourceId===item.sourceId&&source.speciesId===item.speciesId&&source.partId===item.partId)):[];
+      field.some(source=>source.id===item.id&&source.sourceId===item.sourceId&&source.speciesId===item.speciesId&&source.partId===item.partId)&&
+      (!continueActiveHunt||archivedSidecar.snapshot.checkpoint.huntRites.specimensV112.some(source=>source.id===item.id&&source.quality===item.quality))):[];
     report.attempts.push({missionId,final,retryEvents,suspendedAndReloaded:resumed,resumeReceipt,delivered,
       settlement:{confirmed:settlementConfirmed,beforeProgress,afterProgress},wallSeconds:(Date.now()-start)/1000,
       status:settlementConfirmed?'BROWSER_HUNT_AND_SETTLEMENT_SUCCESS':final?.state.phase==='dead'?'CONTROLLER_DIED':'ATTEMPT_INCOMPLETE'});
