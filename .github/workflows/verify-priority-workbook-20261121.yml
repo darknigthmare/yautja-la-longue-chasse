@@ -1,0 +1,62 @@
+name: Verify the four priority lots workbook
+on:
+  push:
+    branches: [codex/verify-priority-workbook-20261121]
+permissions:
+  contents: read
+jobs:
+  excel:
+    name: Reproduce both workbooks and reopen all 32 registered rows
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '3dbdacb23020c8f5a5630aafbc1289a1419ef70f'
+          filter: blob:none
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/lib/workbook-ooxml.mjs
+            /scripts/build-hunt-mechanics-workbook-v112.mjs
+            /scripts/build-priority-lots-workbook-20261121.mjs
+            /docs/hunt-mechanics-v112.json
+            /docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx
+            /production/YAUTJA_LOTS_P0_P3_20261121.json
+            /production/YAUTJA_LOTS_P0_P3_20261121.xlsx
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Reproduce the published files without rewriting them
+        run: |
+          node scripts/build-priority-lots-workbook-20261121.mjs --check
+          node scripts/build-hunt-mechanics-workbook-v112.mjs --check
+      - name: Independently read the cells, filters and frozen rows from the ZIP
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          from xml.etree import ElementTree as ET
+          from zipfile import ZipFile
+          stem = Path('production/YAUTJA_LOTS_P0_P3_20261121')
+          record = json.loads(stem.with_suffix('.json').read_text(encoding='utf-8'))
+          workbook = stem.with_suffix('.xlsx')
+          ns = {'x': 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+          fields = ('id', 'source', 'sourceDetail', 'criterion', 'status', 'result', 'evidence')
+          with ZipFile(workbook) as package:
+              assert package.testzip() is None
+              meta = ET.fromstring(package.read('xl/workbook.xml'))
+              assert [sheet.get('name') for sheet in meta.findall('.//x:sheet', ns)] == ['Synthèse', 'P0', 'P1', 'P2', 'P3']
+              for sheet_number, lot in enumerate(record['lots'], 2):
+                  sheet = ET.fromstring(package.read(f'xl/worksheets/sheet{sheet_number}.xml'))
+                  rows = sheet.findall('./x:sheetData/x:row', ns)
+                  assert sheet.find('.//x:pane', ns).get('state') == 'frozen'
+                  assert sheet.find('./x:autoFilter', ns) is not None
+                  assert len(rows[4:]) == len(lot['entries']) <= 10
+                  for xml_row, item in zip(rows[4:], lot['entries'], strict=True):
+                      values = [(c.find('.//x:t', ns).text or '') for c in xml_row.findall('./x:c', ns)]
+                      expected = [item[name] if not isinstance(item[name], list) else '\n'.join(item[name]) for name in fields]
+                      assert values == expected, item['id']
+          print(json.dumps({'result':'PASS_ZIP_XML_CELLS','rows':[len(lot['entries']) for lot in record['lots']], 'sha256':hashlib.sha256(workbook.read_bytes()).hexdigest(), 'nativeExcelExecuted':False}))
+          PY
