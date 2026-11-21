@@ -56,7 +56,7 @@ function recordSource(file,contents){
 }
 const bootstrap=await build({stdin:{contents:'export {defaultSave,parseSaveImport,SAVE_STORAGE_KEY} from "./app/game/save";export {GALAXY_NAVIGATION} from "./app/game/galaxyNavigation";export {MISSIONS} from "./app/game/data";',resolveDir:root,loader:'ts'},
   bundle:true,write:false,format:'cjs',platform:'node',logLevel:'silent'});
-const mod={exports:{}};runInNewContext(bootstrap.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url)});
+const mod={exports:{}};runInNewContext(bootstrap.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url),TextEncoder});
 const campaignSource=option('--campaign-source',null);
 const campaignInputRaw=campaignSource?await readFile(path.resolve(root,campaignSource),'utf8'):null;
 const campaignInput=campaignInputRaw?JSON.parse(campaignInputRaw):null;
