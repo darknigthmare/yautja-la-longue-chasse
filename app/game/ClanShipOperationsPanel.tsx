@@ -18,6 +18,8 @@ import { availableClanResidenceCrew, companionHostLabel } from './systems/compan
 import { selectClanShipCrewDialogue, type ClanShipCrewDialogueContext } from './systems/clanShipCrewDialogue';
 import { clanShipDialogue } from './systems/clanShipDialogue';
 import { useMenuGamepad } from './useMenuGamepad';
+import ClanHullProjectPanel from './ClanHullProjectPanel';
+import { canReviewClanHullProject, type ClanHullProjectCommandV171, type ClanHullProjectResponseV171 } from './systems/clanHullProjectV171';
 import styles from './ClanShipOperationsPanel.module.css';
 
 interface Props {
@@ -28,14 +30,16 @@ interface Props {
   temporarySession?: boolean;
   crewFocus?: ClanShipNpcId | null;
   onAction: (action: ClanShipOperationsAction) => boolean;
+  onHullProject?: (command: ClanHullProjectCommandV171) => ClanHullProjectResponseV171;
   onClose: () => void;
   onNavigate: (roomId: ClanShipRoomId) => void;
   onClanWar: () => void;
 }
-type Tab = 'post' | 'contracts' | 'crew' | 'journal';
+type Tab = 'post' | 'contracts' | 'crew' | 'journal' | 'project';
 const TABS: { id: Tab; label: string }[] = [
   { id: 'post', label: 'Poste & mandat' }, { id: 'contracts', label: 'Opérations' },
   { id: 'crew', label: 'Équipage' }, { id: 'journal', label: 'Chronique' },
+  { id: 'project', label: 'Projet collectif' },
 ];
 const KINDS = { onboarding: 'Accueil du clan', interior: 'Mission à bord', field: 'Chasse de clan', space: 'Opération spatiale' };
 const PHASES = {
@@ -50,7 +54,8 @@ const CREW_DIALOGUE_CONTEXTS: Record<ClanShipCrewDialogueContext, string> = {
 
 /** Controlled campaign terminal. Only the parent can acknowledge a durable
  * command; closing, tabbing or looking at a card never grants progression. */
-export default function ClanShipOperationsPanel({ state, save, roomId, suspended, crewFocus, temporarySession = false, onAction, onClose, onNavigate, onClanWar }: Props) {
+export default function ClanShipOperationsPanel({ state, save, roomId, suspended, crewFocus, temporarySession = false, onAction, onHullProject, onClose, onNavigate, onClanWar }: Props) {
+  const projectAvailable = !!onHullProject && !temporarySession && canReviewClanHullProject(save);
   const rootRef = useRef<HTMLElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const [tab, setTab] = useState<Tab>(crewFocus ? 'crew' : roomId === 'conseil' && state.mandateAccepted ? 'contracts' : 'post');
@@ -155,10 +160,14 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
         <button ref={closeRef} type="button" className={styles.close} disabled={suspended} data-clan-operations-close onClick={onClose}>Retour au pont <span aria-hidden="true">×</span></button>
       </header>
       <nav className={styles.tabs} aria-label="Dossiers du Clan Ship">
-        {TABS.map(entry => <button key={entry.id} type="button" aria-pressed={tab === entry.id} disabled={suspended}
+        {TABS.filter(entry => entry.id !== 'project' || projectAvailable).map(entry => <button key={entry.id} type="button" aria-pressed={tab === entry.id} disabled={suspended}
           data-clan-operations-tab={entry.id} onClick={() => { setTab(entry.id); setFeedback(''); }}>{entry.label}</button>)}
       </nav>
       <div className={styles.content}>
+        {tab === 'project' && projectAvailable && onHullProject && <ClanHullProjectPanel
+          save={save} roomId={roomId} crewFocus={crewFocus} onAction={onHullProject}
+          onNavigate={onNavigate} onContracts={() => setTab('contracts')} onClose={onClose}
+        />}
         {tab === 'post' && <div className={styles.postLayout}>
           <section className={styles.introduction}>
             <span className={styles.eyebrow}>DU RITE AU MANDAT</span><h3>Une place dans le clan se gagne.</h3>

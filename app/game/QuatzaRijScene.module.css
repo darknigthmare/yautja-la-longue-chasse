@@ -1,0 +1,24 @@
+.quest { display: grid; gap: .85rem; padding: 1rem; border: 1px solid #476d5b; border-radius: 12px; background: #0c211c; color: #eef7ed; }
+.quest h3, .quest p { margin: 0; }
+.heading, .controls, .choice { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .55rem; }
+.heading strong { font-size: 1.12rem; }
+.viewport { overflow: hidden; position: relative; height: 440px; isolation: isolate; background: linear-gradient(#314a39, #576b49 58%, #273e25 68%, #17261a); border: 1px solid #67846c; border-radius: 8px; }
+.viewport:focus-visible { outline: 3px solid #bbeb9a; outline-offset: 3px; }
+.world { position: absolute; left: 0; top: 0; height: 440px; min-width: 1780px; }
+.land { position: absolute; inset: 405px 0 0; border-top: 3px solid #a5bc7a; background: repeating-linear-gradient(160deg, #253423 0 19px, #2d3925 19px 28px); }
+.platform { position: absolute; height: 12px; border: 2px solid #a5bd83; background: #303d2d; box-shadow: 0 3px 12px #0e241e; }
+.actor, .beast, .marker, .proof { position: absolute; top: 0; }
+.actor { width: 0; height: 0; z-index: 4; }
+.actor > div { transform: translate(-50%, -100%); }
+.actorName { position: absolute; min-width: 48px; text-align: center; bottom: 93px; left: -24px; color: #eef7ed; background: #182d27; border-radius: 4px; }
+.beast { z-index: 3; transform: translate(-48%, -100%); background-repeat: no-repeat; }
+.groundWarning { position: absolute; z-index: 2; top: 389px; height: 16px; border: 2px solid #ffbc70; background: repeating-linear-gradient(135deg, #d98c4e88 0 7px, #822c1477 7px 14px); }
+.marker { z-index: 2; border-left: 2px solid #b9e694; padding: 7px; max-width: 130px; color: #f1ffea; transform: translate(-12%, -100%); background: #10261ddd; }
+.marker[data-ready=true]{border-color:#f9c878;color:#ffd7a0;}
+.marker::after { content: ''; position: absolute; top: 100%; left: -2px; height: 28px; border-left: 2px solid #b9e694; }
+.proof { z-index: 5; width: 45px; height: 40px; object-fit: contain; transform: translate(-50%, -100%); }
+.controls { justify-content: flex-start; }
+.controls button, .choice button { min-width: 48px; min-height: 44px; touch-action: none; }
+.vital { display: flex; flex-wrap: wrap; gap: 1rem; }
+.status { color: #e7ffd8; }
+@media (max-width: 620px) { .quest { padding: .65rem; } .viewport { height: 425px; } }

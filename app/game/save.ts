@@ -59,6 +59,8 @@ import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
 import { inspectSpaceRoutesV159 } from "./systems/spaceRoutesV159";
 import { inspectClanShipDocking } from "./systems/clanShipDocking";
 import { evaluateClanShipAccess, evaluateClanShipOperationsCampaign, inspectClanShipOperations } from "./systems/clanShipOperations";
+import { clanHullProjectMatchesOwnedHull, inspectClanHullProject, isClanHullProjectSuccessor } from "./systems/clanHullProjectV171";
+import { inspectQuatzaRij, isQuatzaRijSuccessor, quatzaCampaignMatchesSave } from "./systems/quatzaRij";
 import { inspectWolfCastleVisit } from "./systems/wolfCastle";
 import { inspectBuriedCradleCampaign } from "./systems/buriedCradleCampaign";
 import { inspectElderPassageJudgment } from "./systems/elderPassageJudgmentV168";
@@ -1388,6 +1390,12 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.clanShipOperations === undefined ? {} : {
       clanShipOperations: inspectClanShipOperations(source.clanShipOperations, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
+    ...(source.clanHullProjectV171 === undefined ? {} : {
+      clanHullProjectV171: inspectClanHullProject(source.clanHullProjectV171, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
+    ...(source.quatzaRij === undefined ? {} : {
+      quatzaRij: inspectQuatzaRij(source.quatzaRij, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     ...(source.wolfCastle === undefined ? {} : {
       wolfCastle: inspectWolfCastleVisit(source.wolfCastle, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1655,10 +1663,15 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const elderMentoring = inspectElderMentoring(value.elderMentoringV168, owner);
   const elderAssembly = inspectElderAssembly(value.elderAssemblyV168, owner);
   const eliteMastery = inspectEliteMastery(value.eliteMasteryV170, owner);
-  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides, elderPassage, elderMentoring, elderAssembly, eliteMastery]) {
+  const hullProject = inspectClanHullProject(value.clanHullProjectV171, owner);
+  const quatza = inspectQuatzaRij(value.quatzaRij, owner);
+  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides, elderPassage, elderMentoring, elderAssembly, eliteMastery, hullProject, quatza]) {
     if (inspection.status === "future-version" || inspection.status === "invalid-save") {
       return { save: null, failure: inspection.status };
     }
+  }
+  if (!clanHullProjectMatchesOwnedHull(hullProject.state, value.shipAcquisitionV89, owner)) {
+    return { save: null, failure: "invalid-save" };
   }
   if (elderAssembly.state && (!elderMentoring.state?.resolved || !elderPassage.state?.resolved)) {
     return { save: null, failure: "invalid-save" };
@@ -2038,6 +2051,9 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (!isRecord(value.profile) || !isRecord(value.missionProgress)) {
     return { save: null, failure: "invalid-save" };
   }
+  if (quatza.state && !quatzaCampaignMatchesSave(value as unknown as SaveGame)) {
+    return { save: null, failure: "invalid-save" };
+  }
   return { save: normalizeSave(value), failure: null };
 }
 
@@ -2182,6 +2198,18 @@ function persistCampaign(
         ? !requestedAssembly || (JSON.stringify(previousAssembly) !== JSON.stringify(requestedAssembly) &&
           !isElderAssemblySuccessor(previousAssembly, requestedAssembly))
         : requestedAssembly && requestedAssembly.revision !== 1) {
+        return failed("save-conflict", previous);
+      }
+      const previousHullProject = previous.clanHullProjectV171;
+      const requestedHullProject = requested.clanHullProjectV171;
+      if (previousHullProject
+        ? !requestedHullProject || (JSON.stringify(previousHullProject) !== JSON.stringify(requestedHullProject) &&
+          !isClanHullProjectSuccessor(previousHullProject, requestedHullProject))
+        : requestedHullProject && requestedHullProject.revision !== 1) {
+        return failed("save-conflict", previous);
+      }
+      if (JSON.stringify(previous.quatzaRij ?? null) !== JSON.stringify(requested.quatzaRij ?? null) &&
+          !isQuatzaRijSuccessor(previous.quatzaRij, requested.quatzaRij)) {
         return failed("save-conflict", previous);
       }
       const previousMastery = previous.eliteMasteryV170;

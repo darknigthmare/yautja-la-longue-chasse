@@ -160,7 +160,7 @@ const clamp = (number: number, min: number, max: number) => Math.max(min, Math.m
 const isTextId = (value: unknown) => typeof value === "string" && /^[A-Za-z0-9:_-]{1,150}$/.test(value);
 const coord = (x: number, y: number) => String(x) + "," + String(y);
 const distance = (a: {x:number;y:number}, b: {x:number;y:number}) => Math.abs(a.x-b.x) + Math.abs(a.y-b.y);
-function guardSeesHunter(terrain:WarMissionTerrainV116,guard:{x:number;y:number},
+export function guardSeesHunter(terrain:WarMissionTerrainV116,guard:{x:number;y:number},
  hunter:{x:number;y:number},cloaked:boolean,hidden:boolean):boolean{
  return !cloaked&&!hidden&&((hunter.y===guard.y&&Math.abs(hunter.x-guard.x)<=2)||
   (hunter.x===guard.x&&Math.abs(hunter.y-guard.y)<=1))&&
