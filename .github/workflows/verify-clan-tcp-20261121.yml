@@ -1,0 +1,64 @@
+name: Verify the V127 clan socket
+on:
+  push:
+    branches: [codex/verify-clan-tcp-20261121]
+permissions:
+  contents: read
+jobs:
+  tcp:
+    name: Authenticate two players and complete a duel on TCP
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Checkout the candidate and its clan rules
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '7d5925842d807fa698271cd7758694237fa4608b'
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package-lock.json
+            /app/game/systems/clanWarMultiplayerV126.ts
+            /app/game/systems/clanWarMultiplayerPracticeV127.ts
+            /app/game/systems/clanWarWorldClimateV126.ts
+            /app/game/systems/clanWarVariantAtlasV120.ts
+            /app/game/systems/clanWarEarthV126.ts
+            /app/game/data/clanWarOriginalPlacesV120.json
+            /app/game/data/clanWarLoreFramesV120.json
+            /app/game/data/clanWarHomageAssaultV120.json
+            /app/game/data/clanWarHomageOuterV120.json
+            /app/game/data/clanWarHomageStealthV120.json
+            /app/game/data/clanWarHomageRtsV120.json
+            /app/game/data/earthLandNaturalEarth110mV126.json
+            /scripts/serve-clan-war-practice-v127.mjs
+            /scripts/play-clan-war-practice-v127.mjs
+            /tests/clan-war-practice-server-v127.test.mjs
+            /docs/clan-war-v127-earth-metre-ai-multiplayer.md
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install the locked esbuild dependency in the temporary workspace
+        run: |
+          node --input-type=module <<'NODE'
+          import {mkdirSync, readFileSync, writeFileSync} from 'node:fs';
+          const lock = JSON.parse(readFileSync('package-lock.json', 'utf8'));
+          const main = lock.packages['node_modules/esbuild'];
+          const manifest = {name: 'v127-tcp-qa', version: '1.0.0', private: true,
+            devDependencies: {esbuild: main.version}};
+          const packages = {'': manifest, 'node_modules/esbuild': main};
+          for (const name of Object.keys(main.optionalDependencies)) {
+            const path = 'node_modules/' + name;
+            packages[path] = lock.packages[path];
+          }
+          mkdirSync('.v127-tcp-qa');
+          writeFileSync('.v127-tcp-qa/package.json', JSON.stringify(manifest));
+          writeFileSync('.v127-tcp-qa/package-lock.json', JSON.stringify(
+            {name: manifest.name, version: manifest.version, lockfileVersion: 3, packages},
+          ));
+          NODE
+          npm ci --prefix .v127-tcp-qa --ignore-scripts --no-audit --no-fund
+          ln -s .v127-tcp-qa/node_modules node_modules
+      - name: Run the three native TCP cases
+        run: node --test --test-reporter=spec tests/clan-war-practice-server-v127.test.mjs
