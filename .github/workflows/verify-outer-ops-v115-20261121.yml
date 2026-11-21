@@ -1,0 +1,52 @@
+name: Verify authoritative Outer Ops V115
+on:
+  push:
+    branches: [codex/verify-outer-ops-v115-20261121]
+permissions:
+  contents: read
+jobs:
+  tcp:
+    name: Settle native Outer Ops on a real server clock and SQLite
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Checkout the candidate and its clan rules
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package-lock.json
+            /app/
+            /lib/
+            /scripts/serve-clan-war-practice-v127.mjs
+            /scripts/serve-clan-war-outer-ops-v115.mjs
+            /tests/clan-war-outer-ops-server-v115.test.mjs
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install the locked esbuild dependency in the temporary workspace
+        run: |
+          node --input-type=module <<'NODE'
+          import {mkdirSync, readFileSync, writeFileSync} from 'node:fs';
+          const lock = JSON.parse(readFileSync('package-lock.json', 'utf8'));
+          const main = lock.packages['node_modules/esbuild'];
+          const manifest = {name: 'v127-tcp-qa', version: '1.0.0', private: true,
+            devDependencies: {esbuild: main.version}};
+          const packages = {'': manifest, 'node_modules/esbuild': main};
+          for (const name of Object.keys(main.optionalDependencies)) {
+            const path = 'node_modules/' + name;
+            packages[path] = lock.packages[path];
+          }
+          mkdirSync('.v127-tcp-qa');
+          writeFileSync('.v127-tcp-qa/package.json', JSON.stringify(manifest));
+          writeFileSync('.v127-tcp-qa/package-lock.json', JSON.stringify(
+            {name: manifest.name, version: manifest.version, lockfileVersion: 3, packages},
+          ));
+          NODE
+          npm ci --prefix .v127-tcp-qa --ignore-scripts --no-audit --no-fund
+          ln -s .v127-tcp-qa/node_modules node_modules
+      - name: Verify the authoritative Outer Ops deadlines and receipts
+        run: node --test --test-reporter=spec tests/clan-war-outer-ops-server-v115.test.mjs
