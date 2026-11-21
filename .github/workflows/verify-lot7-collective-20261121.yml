@@ -1,45 +1,73 @@
-name: Verify the collective mission return post
+name: Verify collective escort in the native campaign
 on:
   push:
     branches: [codex/verify-lot7-collective-20261121]
 permissions:
   contents: read
 jobs:
-  check:
+  native:
+    name: Native collective escort · ${{ matrix.role }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 12
+    timeout-minutes: 22
+    strategy:
+      fail-fast: false
+      matrix:
+        role: [field, coordination]
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
+      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+      CLAN_COLLECTIVE_ROLE: ${{ matrix.role }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          persist-credentials: false
+          fetch-depth: 1
           filter: blob:none
+          persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /*
             !/*/
             /app/
             /lib/
+            /types/
+            /worker/
             /scripts/
             /tests/
-            /types/
             /docs/
-            /worker/
+            /desktop/
+            /build/
+            /production/quetes-vivantes-20261109/
+            /production/quetes-vivantes-suite-20261109/
+            /.openai/hosting.json
             /public/**/manifest.json
+      - name: Restore original declared assets without modifying their contents
+        run: |
+          python3 - <<'PY'
+          import json,pathlib,subprocess
+          root=pathlib.Path.cwd()
+          files={x['path'] for x in json.loads((root/'docs/qa/current-integration-20261103/runtime-inputs.json').read_text())['entries']}
+          files.update(json.loads((root/'tests/fixtures/clan-ship-browser-assets.json').read_text())['paths'])
+          files.update('public'+x['src'] for x in json.loads((root/'app/game/data/buriedCradleArt.json').read_text())['assets'].values())
+          files.update(['public/game/prologue/v47/village.png','public/game/prologue/v47/arena.png','public/game/ships/v14/avp-predator-mothership.webp','public/game/ships/v12/classic-predator-spaceship.webp','public/game/ships/v13/classic-predator-spaceship-top.webp','public/game/backgrounds/ship-hub-v4.webp'])
+          for name in files:
+            path=pathlib.PurePosixPath(name);assert not path.is_absolute() and '..' not in path.parts
+          subprocess.run(['git','sparse-checkout','add','--stdin'],input='\n'.join('/'+p for p in sorted(files))+'\n',text=True,check=True)
+          assert all((root/p).is_file() for p in files)
+          PY
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
-      - name: Install locked dependencies
-        run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Verify recorded escort and baseline dialogue
-        run: >-
-          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
-          tests/clan-ship-dialogue.test.mjs
-          tests/clan-ship-operations.test.mjs
-          tests/clan-ship-operations-save.test.mjs
-          tests/clan-ship-crew-dialogue-ui.test.mjs
-          tests/clan-ship-return-escort.test.mjs
-      - name: Verify source lint
-        run: npx eslint app/game/ClanShipOperationsPanel.tsx tests/clan-ship-operations.test.mjs
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Lint the real return report and browser proof
+        run: npx eslint app/game/ClanShipOperationsPanel.tsx tests/clan-ship-operations.test.mjs scripts/qa-clan-collective-return-20261121.mjs
+      - name: Play the real board and reload the recorded return
+        run: node scripts/qa-clan-collective-return-20261121.mjs
+      - name: Preserve original screenshots and receipts
+        if: ${{ !cancelled() && hashFiles('outputs/qa-collective-return/report.json') != '' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: collective-escort-${{ matrix.role }}
+          path: outputs/qa-collective-return/
+          if-no-files-found: error
