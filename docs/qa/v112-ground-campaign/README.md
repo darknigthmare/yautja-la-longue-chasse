@@ -152,3 +152,31 @@ Le Volcan reste en phase cible après 806,829 s murales. Le dernier point publi�
 La chaîne des huit contrats est lancée depuis le `defaultSave` historique sur le GameClient actuel. La Jungle a repris sa tentative `0` à **21,600 s**, puis a terminé ses objectifs, le rite Apex et l’extraction. Le règlement durable confirme les compteurs de tentative et de réussite. [Rapport de chaîne, traces et captures](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800/artifacts/14711789372)
 
 La Glace a repris sa tentative `0` à **20,450 s**. Elle est restée en phase de pistage à `x = 2018` jusqu’au dernier point journalisé à **190 s** simulées. La tentative s’est arrêtée au budget mural sans extraction. La chaîne s’arrête là. Elle consigne l’achat du Flaying Tool pour 120 marques et l’amélioration Hunter pour 250 marques. Le rapport conserve les deux reprises distinctes du règlement, et recense zéro ressource manquante et deux requêtes audio annulées. [Journal de chaîne](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44916265800/job/136882419372)
+
+## Détour cryothermique et nouvelles preuves du lot 3
+
+Le relevé navigateur du lot 2 plaçait le chasseur à `x = 2018`, avec une largeur de 72 px et des pieds à `y = 430`. La grille commence à `x = 2090` et se termine à `y = 328`. Le HUD de la Glace indique désormais le bord du gradin par lequel redescendre. Le texte d’orientation s’affiche sans raccourci. Les indications du relais, de la réserve et de la trappe gardent leur commande lorsqu’un geste est proposé. Les **115 tests** du HUD, du terrain et du harnais de commandes ainsi que le lint strict passent. [Traces à la grille et sur les prises](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44924625428/job/136907889626) · [Tests et lint](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44925859087/job/136911669859)
+
+### Reprise, passage et règlement par le vrai GameClient
+
+- **Glace, passage inférieur.** Le chasseur reprend sa tentative `0` à **20,650 s**. Le franchissement est observé à **24,600 s**, après le bord droit de la grille toujours fermée, avec le chasseur à `x = 2129,99`, `y = 404`. La recette courte atteint la phase cible au lieu de rester au pied de la grille. [Rapport, captures et entrées](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44925274493/artifacts/14715318947)
+- **Volcan, contrat réglé.** Au départ de la sauvegarde Glace et atelier documentée, la tentative `0` reprend exactement à **21,550 s**, puis se termine et incrémente les compteurs durables de tentative et de réussite. L’extraction termine à **133,950 s simulées**, avec **74,34 PV**. Cette variante teste le combat, le rite et l’extraction sans collecte anatomique. Le rapport indique zéro ressource manquante et trois requêtes audio annulées. [Rapport, captures et entrées](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44925274493/artifacts/14715503587)
+
+- **Glace, essai de contrat.** Le même détour passe sous la grille lors d’une seconde session, à **28,050 s**, après une reprise exacte à **21,300 s**. L’essai atteint `x = 6231,54`, en phase cible à **91,300 s** simulées avec **145,58 PV**. Le budget mural s’arrête avant le règlement. Les six tentatives anatomiques ne rapportent aucune pièce. Le rapport recense zéro ressource manquante et deux requêtes audio annulées. [Rapport, captures et entrées](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44925274493/artifacts/14715792279)
+
+Le Volcan rejoint la Jungle et la Glace historiques parmi les trois contrats distincts terminés avec reprise. La preuve d’atelier de la Glace relève toujours de la revisite documentée. `REM112-06` demeure partiel pour les huit chasses et leurs parcours anatomiques, d’extraction et d’atelier. [Historique navigateur](../v112-campaign-canonical/README.md)
+
+### Charges naturellement récoltées
+
+Les essais repartent de la sauvegarde gagnée. Chaque tentative supplémentaire provient d’une vraie extraction appliquée à cette sauvegarde. Le moteur, les adversaires et les corps proviennent du code de `3d1138af7b22a2d2f02da080ef05706af3170ba7`. La modification de priorité dirige uniquement les actions vers des pièces anatomiques admissibles. Les variantes de repli produisent **42 extractions sur 44 essais moteur**, avec **44 rejeux terminaux exacts**. Le chargement est mesuré à l’embarquement et au retour en campagne.
+
+| Mission | Armure et difficulté | Variante | Extractions | Meilleur volume conservé | Preuve |
+| --- | --- | --- | ---: | ---: | --- |
+| Glace | Scout, Hunter | Peau de patrouille prioritaire | 8/8 | 16/18 | [Trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44925274493/artifacts/14715039627) |
+| Glace | Scout, Jeune Sang | Peau de patrouille prioritaire | 8/8 | 14/18 | [Trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44925274493/artifacts/14715880136) |
+| Désert | Scout, Jeune Sang | Distances de collecte | 6/6 | 8/18 | [Trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44925274493/artifacts/14715054355) |
+| Volcan | Hunter, Jeune Sang | Distances de collecte | 4/6 | 19/24 | [Trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44925274493/artifacts/14715094170) |
+| Glace | Scout, Hunter | Stabilisation au poste | 8/8 | 16/18 | [Trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44925744096/artifacts/14715413943) |
+| Glace | Scout, Jeune Sang | Stabilisation au poste | 8/8 | 14/18 | [Trace](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44925744096/artifacts/14715478932) |
+
+Sur la meilleure admission Glace, la peau de trois unités est toujours sur le bélier à la suite d’une interruption du travail. Les nouvelles variantes n’atteignent pas un seuil de pleine charge supplémentaire. `REM112-08` demeure partiel. [Décision et gestes de collecte constatés](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44924625428/job/136907889626)
