@@ -1,25 +1,23 @@
-name: Build lot seven with the production command
+name: Verify the seventh priority workbook
 on:
   push:
     branches: [codex/verify-priority-lots-7-20261121]
 permissions:
   contents: read
-  actions: read
 jobs:
-  source:
-    name: Build and serve the exact release code
+  workbook:
+    name: Check exact product tree and reproducible Excel
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 10
     env:
-      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
-      NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'cdb87f4a77503bcbc8a8c5f513904d14f791e639'
-      BASE_COMMIT: '0318b48420a6944882b1349b6d14ef473299ac10'
+      RELEASE_HEAD: 'bd99a770077ff69efceed8e4cefb0f1976043952'
+      VERIFIED_CODE: 'cdb87f4a77503bcbc8a8c5f513904d14f791e639'
+      EXPECTED_INVENTORY: '4ef812f07c98671f733cc1dd1abc7fac5041f384'
     steps:
-      - name: Checkout the exact candidate and bounded inputs
+      - name: Read the released tree and workbook inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'cdb87f4a77503bcbc8a8c5f513904d14f791e639'
+          ref: 'bd99a770077ff69efceed8e4cefb0f1976043952'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -27,77 +25,62 @@ jobs:
           sparse-checkout: |
             /*
             !/*/
-            /app/
-            /lib/
-            /types/
-            /desktop/
-            /worker/
-            /tests/
-            /scripts/
-            /build/
-            /.openai/
-            /.github/workflows/
-            /docs/
-            /production/YAUTJA_LOTS_P0_P3_20261121.*
-            /production/YAUTJA_LOTS_P0_P3_LOT2_20261121.*
-            /public/game/xeno-prime/berceau-v1/
-            /public/audio/
-            /public/game/quatza-rij/
-            /public/game/assets/v37/tribes/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp
-            /public/game/assets/v37/tribes/v2/homeworld-forest-v2--8fdc633789dcd9c0.webp
-            /public/game/assets/v37/tribes/v2/homeworld-lava-v2--ecd85e06796799d2.webp
-            /public/game/backgrounds/ice-depth-v4.webp
-            /public/game/backgrounds/ocean-depth-v8.png
-            /public/game/backgrounds/ruins-depth-v8.png
-            /public/game/backgrounds/swamp-depth-v8.png
-            /public/game/homeworld/v67/ash-causeway-vista.png
-            /public/game/homeworld/v67/glass-processional-vista.png
-            /public/game/sprites/v8/ecology/cinder-12/basalt-ram-sheet.png
-            /public/game/sprites/v8/ecology/cinder-12/smoke-wyvern-sheet.png
-            /public/game/sprites/v8/ecology/naraka-delta/mire-shell-sheet.png
-            /public/game/sprites/v8/ecology/nivalis-k/snow-prowler-sheet.png
-            /public/game/sprites/v8/ecology/oseris-iv/amber-jaw-stalker-sheet.png
-            /public/game/sprites/v8/ecology/pelagos-m/shellback-sheet.png
-            /public/game/sprites/v8/ecology/serekh-9/burrow-snake-sheet.png
-            /public/game/assets/clan-field-20261103/
-            /public/**/manifest.json
-            /public/game/assets/v139/rig-gauntlets/
-            /public/game/assets/v3/actors/yautja/hunter/
-            /public/game/assets/v133/concept-masks/
-            /public/game/assets/v133/decals/decal-atlas.webp
-            /public/game/sprites/v62/heads/
-            /public/game/assets/v134/
-            /public/game/assets/v135/
-            /public/game/assets/v136/
-            /public/game/p0-sprites-20261113/warp/
-            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
-            /public/game/homeworld/v77/lava-transit-skiff.png
-            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
-            /public/game/homeworld/v64/clan-shuttle.png
-            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+            /scripts/build-priority-lots-workbook-20261121.mjs
+            /scripts/lib/workbook-ooxml.mjs
+            /production/YAUTJA_LOTS_P0_P3*20261121.json
+            /production/YAUTJA_LOTS_P0_P3*20261121.xlsx
+            /production/p3-source-audit-lot7-20261121.json
+            /docs/qa/current-integration-20261103/runtime-inputs.json
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
-      - name: Materialize official runtime inputs and install dependencies
-        run: |
-          node scripts/materialize-asset-raccords-20261120.mjs runtime
-          npm ci --ignore-scripts --no-audit --no-fund
-      - name: Build with the command from vercel.json
-        run: node scripts/build-production-v94.mjs
-      - name: Serve the exact production build
+      - name: Check the verified application and canonical runtime inventory
         run: |
           set -eu
-          node node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 4219 > /tmp/yautja-lot7-next.log 2>&1 &
-          server_pid=$!
-          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
-          for attempt in $(seq 1 25); do
-            if curl --fail --silent --show-error http://127.0.0.1:4219/ -o /tmp/yautja-lot7-index.html; then
-              test -s /tmp/yautja-lot7-index.html
-              printf 'PASS exact Next production build %s\n' "$(git rev-parse HEAD)"
-              exit 0
-            fi
-            sleep 2
+          test "$(git rev-parse HEAD)" = "$RELEASE_HEAD"
+          git diff --exit-code "$VERIFIED_CODE" HEAD -- app public
+          test "$(git diff --name-only "$VERIFIED_CODE" HEAD -- scripts tests)" = "$(printf '%s\n' 'scripts/build-priority-lots-workbook-20261121.mjs')"
+          test "$(git rev-parse HEAD:scripts/build-priority-lots-workbook-20261121.mjs)" = 2c5a23a61e5cc4e7254c69f5a4b5b202f78ab801
+          test "$(git rev-parse HEAD:docs/qa/current-integration-20261103/runtime-inputs.json)" = "$EXPECTED_INVENTORY"
+          git diff --check "$VERIFIED_CODE" HEAD
+      - name: Reproduce the seven published workbooks exactly
+        run: |
+          node scripts/build-priority-lots-workbook-20261121.mjs --check
+          for lot in 2 3 4 5 6 7; do
+            node scripts/build-priority-lots-workbook-20261121.mjs "--lot-$lot" --check
           done
-          cat /tmp/yautja-lot7-next.log
-          exit 1
+      - name: Inspect Excel package, row counts and P3 provenance
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json, zipfile
+          from xml.etree import ElementTree as ET
+
+          prod = Path('production')
+          prefix = 'YAUTJA_LOTS_P0_P3_LOT7_20261121'
+          summary = json.loads((prod / (prefix + '.json')).read_text())
+          assert [lot['priority'] for lot in summary['lots']] == ['P0', 'P1', 'P2', 'P3']
+          counts = [len(lot['entries']) for lot in summary['lots']]
+          assert counts == [2,1,2,2]
+          assert all(0 <= count <= 10 for count in counts)
+          assert len(summary['deliveries']) <= 10
+          assert {entry['id'] for entry in summary['lots'][-1]['entries']} == {'ENFORCERS-V613-RECEIPTS', 'ENFORCERS-V610-TRACES'}
+          p3 = json.loads(Path('production/p3-source-audit-lot7-20261121.json').read_text())
+          assert p3['sourceCommit'] == summary['baseCommit']
+          assert {entry['id'] for entry in p3['requirements']} == {'ENFORCERS-V613-RECEIPTS', 'ENFORCERS-V610-TRACES'}
+          totals = p3['physicalWorkbooks']['totals']
+          assert (totals['workbooks'], totals['sheets'], totals['rows']) == (4, 526, 58674)
+          assert p3['v613C2paTimestamp']['summary']['allFinalFiles']['states']['Trusted'] == 36
+          ns = {'s': 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+          with zipfile.ZipFile(prod / (prefix + '.xlsx')) as pack:
+              assert pack.testzip() is None
+              root = ET.fromstring(pack.read('xl/workbook.xml'))
+              names = [sheet.get('name') for sheet in root.findall('s:sheets/s:sheet', ns)]
+              assert names == ['Synthèse', 'P0', 'P1', 'P2', 'P3', 'Livraisons']
+              for idx, count in enumerate(counts + [len(summary['deliveries'])], start=2):
+                  sheet = ET.fromstring(pack.read(f'xl/worksheets/sheet{idx}.xml'))
+                  assert len(sheet.findall('s:sheetData/s:row', ns)) == count + 4
+                  assert sheet.find('s:autoFilter', ns).get('ref') == f'A4:G{count + 4}'
+          print('PASS official source counts, reproducible workbook and delivery records:', counts, len(summary['deliveries']))
+          PY
