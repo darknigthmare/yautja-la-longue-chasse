@@ -15,7 +15,13 @@ jobs:
           run-id: 44957203591
           name: rem112-desert-apex-marais-moteur
           github-token: ${{ github.token }}
-          path: archived
+          path: archived-moteur
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          run-id: 44957203591
+          name: rem112-desert-apex-marais-chromium
+          github-token: ${{ github.token }}
+          path: archived-chromium
       - run: |
           node --input-type=module <<'NODE'
           import assert from 'node:assert/strict';
@@ -23,19 +29,40 @@ jobs:
           import {join,dirname} from 'node:path';
           import {createHash} from 'node:crypto';
           const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
-          const files=(await readdir('archived',{recursive:true})).filter(x=>x.endsWith('/report.json')||x==='report.json');
-          assert.equal(files.length,1);
-          const file=join('archived',files[0]),raw=await readFile(file),r=JSON.parse(raw);
-          const state=JSON.parse(await readFile(join(dirname(file),'browser-storage-state.json'),'utf8'));
-          const active=state.origins.flatMap(x=>x.localStorage).find(x=>x.name==='yautja-long-hunt.active-hunt');
-          const snapshot=r.activeHunt?.snapshot?.checkpoint;
-          if(active) assert.equal(active.value,JSON.stringify(r.activeHunt));
-          const native=r.attempts[0]?.final?.state;
-          const inputs=r.inputs.filter(x=>x.type==='DOM retry unavailable'||x.type==='DOM retry');
-          const buttons=JSON.parse(await readFile(join(dirname(file),'terminal-visible-buttons.json'),'utf8'));
-          console.log(JSON.stringify({artifact:14728473543,reportSha256:hash(raw),retryInputs:inputs,
-            resumeSource:snapshot?{exactBytesMatch:true,phase:snapshot.phase,elapsed:snapshot.elapsed,x:snapshot.player.x,health:snapshot.player.health,
-              bone:snapshot.huntRites?.specimensV112?.find(x=>x.partId==='bone'),ownerMatches:r.activeHunt.ownerSaveCreatedAt===r.finalSave.createdAt}:null,
-            terminal:native?{phase:native.phase,elapsed:native.elapsed,bossAlive:native.boss.alive,bossHealth:native.boss.health}:null,
-            buttons:buttons.filter(x=>/relai|Réessayer|Rapport|Abandonner/i.test(x)),wallSeconds:r.attempts[0]?.wallSeconds}));
+          for (const [kind,artifact] of [['moteur',14728473543],['chromium',14729095208]]) {
+            const directory='archived-'+kind;
+            const files=(await readdir(directory,{recursive:true})).filter(x=>x.endsWith('/report.json')||x==='report.json');
+            assert.equal(files.length,1);
+            const file=join(directory,files[0]),raw=await readFile(file),r=JSON.parse(raw);
+            const state=JSON.parse(await readFile(join(dirname(file),'browser-storage-state.json'),'utf8'));
+            const storage=state.origins.flatMap(x=>x.localStorage);
+            const active=storage.find(x=>x.name==='yautja-long-hunt.active-hunt');
+            if(active) assert.equal(active.value,JSON.stringify(r.activeHunt));
+            const checkpoints=new Map();
+            function scan(value,origin) {
+              if(typeof value==='string'&&/^[\[{]/.test(value)){
+                try{scan(JSON.parse(value),origin+' (serialized)');}catch{}
+              }
+              if(!value||typeof value!=='object')return;
+              if(value.missionId==='desert-sandmaw'&&value.ownerSaveCreatedAt===r.finalSave.createdAt&&value.snapshot?.checkpoint){
+                const cp=value.snapshot.checkpoint,piece=cp.huntRites?.specimensV112?.find(x=>x.id==='desert-sandmaw:0:desert-sandmaw-foragers-4:bone');
+                if(piece){
+                  const id=hash(JSON.stringify(value));
+                  checkpoints.set(id,{origin,phase:cp.phase,elapsed:cp.elapsed,x:cp.player.x,health:cp.player.health,
+                    bossHP:cp.boss?.health,quality:piece.quality});
+                }
+              }
+              for(const [key,child] of Object.entries(value))scan(child,origin+'.'+key);
+            }
+            scan(storage,'storage');scan(r.activeHunt,'report.activeHunt');scan(r.attempts[0]?.resumeReceipt?.sidecar,'last resume receipt');
+            const native=r.attempts[0]?.final?.state;
+            const inputs=r.inputs.filter(x=>x.type==='DOM retry unavailable'||x.type==='DOM retry');
+            const buttons=JSON.parse(await readFile(join(dirname(file),'terminal-visible-buttons.json'),'utf8'));
+            const samples=JSON.parse(await readFile(join(dirname(file),'desert-sandmaw-hunt-samples.json'),'utf8'));
+            const landmarks=samples.filter(x=>x.state.boss?.active&&x.state.player.x>5900).filter((_,i)=>i%3===0).map(x=>({elapsed:x.state.elapsed,phase:x.state.phase,playerHP:x.state.player.health,bossHP:x.state.boss.health,bossX:x.state.boss.x,gear2:x.state.player.activeWeaponSlot}));
+            console.log(JSON.stringify({artifact,reportSha256:hash(raw),retryInputs:inputs,checkpoints:[...checkpoints.values()],
+              shortSource:[...checkpoints.values()].filter(x=>x.phase==='trophy'||x.phase==='extraction'),
+              terminal:native?{phase:native.phase,elapsed:native.elapsed,bossAlive:native.boss.alive,bossHealth:native.boss.health}:null,
+              landmarks,buttons:buttons.filter(x=>/relai|Réessayer|Rapport|Abandonner/i.test(x)),wallSeconds:r.attempts[0]?.wallSeconds}));
+          }
           NODE
