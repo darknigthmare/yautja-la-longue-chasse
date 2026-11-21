@@ -71,9 +71,17 @@ try {
   const root = page.locator('section[data-homeworld-region-v68="luminous-marshes"]');
   const ground = homeworldRegionNavigatorV68(page, region);
   const disk = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), saves.SAVE_STORAGE_KEY);
+  page.on('response', response => {
+    const target = new URL(response.url());
+    if (target.origin === url.origin && target.pathname.startsWith('/game/homeworld/') && response.status() >= 400) {
+      report.sceneResponseErrors ??= [];
+      report.sceneResponseErrors.push({ path: target.pathname, status: response.status() });
+    }
+  });
   const location = async () => (await disk()).residenceV149.objects.find(object => object.id === lamp).location;
   const source = root.locator('[data-residence-v149="' + first + '"]');
   const threshold = root.locator('[data-residence-open-threshold]');
+  const cargo = root.locator('[data-residence-cargo] [data-homeworld-prop-id="residence-cargo"][data-homeworld-art-id="chest"]');
   async function enter() {
     await page.waitForSelector('[data-campaign-menu], [data-campaign-session]');
     if (await page.locator('[data-campaign-menu]').isVisible()) {
@@ -86,7 +94,11 @@ try {
     await root.or(play).first().waitFor();
     if (await play.isVisible()) await play.click();
     await root.waitFor();
-    await root.locator('[data-region-resume]').waitFor();
+    await root.locator('[data-region-player]').waitFor({ state: 'attached' });
+    const resume = root.locator('[data-region-resume]');
+    const artError = root.getByRole('button', { name: 'Recharger le décor' });
+    await resume.or(artError).first().waitFor();
+    if (await artError.isVisible()) throw new Error(await root.getByRole('dialog').innerText());
     await page.clock.pauseAt(new Date(await page.evaluate(() => Date.now() + 100)));
     await ground.resume();
   }
@@ -121,19 +133,21 @@ try {
   await ground.resume();
   await ground.interact();
   assert.equal(await root.getAttribute('data-zone'), 'village');
-  await root.locator('[data-residence-cargo]').waitFor();
-  const crate = await root.locator('[data-residence-cargo] img').evaluate(async image => {
+  await cargo.waitFor({ state: 'visible' });
+  const crate = await cargo.locator('img').evaluate(async image => {
     await image.decode();
     return { width: image.naturalWidth, height: image.naturalHeight };
   });
   assert.deepEqual(crate, { width: 1254, height: 1254 });
 
+  report.checks.push({ kind: 'departure-and-crate', crate });
+  assert.equal((await disk()).homeworldRegionV68.zone, 'village');
   await page.clock.resume();
   await page.reload({ waitUntil: 'domcontentloaded' });
   await enter();
   assert.equal(await root.getAttribute('data-zone'), 'village');
   assert.deepEqual(await location(), { kind: 'transfer', returnTo: { houseId: first, slotId: 'display' } });
-  await root.locator('[data-residence-cargo]').waitFor();
+  await cargo.waitFor({ state: 'visible' });
   await root.screenshot({ path: join(output, 'village-cargo-reloaded.png') });
 
   await ground.walkTo(destination);
