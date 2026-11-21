@@ -1,0 +1,99 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import {decideGroundApexTrophyInputV112,decideHuntCampaignInputV112} from "../scripts/lib/qa-hunt-ground-policy-v112.mjs";
+import {chooseGroundHarvestV112,groundHarvestMenuActionV112,nearestGroundHarvestThreatV112,observeGroundHarvestV112} from "../scripts/lib/qa-hunt-ground-harvest-v112.mjs";
+
+const brain=()=>({target:null,pending:null,deferred:new Map(),events:[]});
+const corpse=(id,action,requiresFlay=false,projectedRatio=.25)=>({
+  key:action+":"+id,corpse:{id},part:{action,requiresFlay},distance:25,workSeconds:3,projectedRatio,
+});
+const player={x:6042,y:508,width:50,height:116,grounded:true,health:26,maxHealth:100,medicomps:0,
+  energy:0,stamina:100,activeWeaponSlot:0,melee:{phase:"idle"}};
+const survivor={id:"survivor",active:true,alive:true,x:6030,y:240,width:65,height:90,telegraph:0};
+const ocean={phase:"trophy",bossMechanics:{missionId:"ocean-leviathan"},scanNodes:[],recoveryNodes:[],
+  boss:{id:"leviathan",x:6067,y:444,width:160,height:180,alive:false,active:true},
+  world:{width:8200,platforms:[]},player,enemies:[survivor],cameraX:0};
+
+test("ground trophy does not yield a reachable corpse to distant-height combat",()=>{
+  const shared=decideHuntCampaignInputV112(ocean,1,{previousX:player.x,stuckTicks:0,jumpUntil:-1});
+  assert.equal(shared.reason,"combat:survivor");
+  assert.deepEqual(shared.pressed,[]);
+  const point={x:6147,y:572};
+  const route=decideGroundApexTrophyInputV112(ocean,1,{},point,true);
+  assert.deepEqual(route.held,[]);
+  assert.deepEqual(route.pressed,["interact"]);
+  assert.equal(decideGroundApexTrophyInputV112(ocean,1,{},point,false).held[0],"right");
+});
+
+test("ground trophy follows a ledge edge before returning toward the exact body",()=>{
+  const memory={};
+  const point={x:6120,y:572};
+  const onLedge={...ocean,player:{...player,y:300},world:{...ocean.world,platforms:[{x:6000,y:416,width:300,height:25}]}};
+  const descent=decideGroundApexTrophyInputV112(onLedge,10,memory,point,false);
+  assert.deepEqual(descent.held,["left"]);
+  assert.deepEqual(descent.pressed,[]);
+  const below={...onLedge,player:{...onLedge.player,x:5950,y:314,grounded:false}};
+  const approach=decideGroundApexTrophyInputV112(below,30,memory,point,false);
+  assert.deepEqual(approach.held,["right"]);
+  assert.deepEqual(approach.pressed,[]);
+});
+
+test("a blocked trophy approach tries a standard jump without changing the target",()=>{
+  const point={x:6350,y:572};
+  const memory={};
+  let route;
+  for(let tick=0;tick<20;tick++)route=decideGroundApexTrophyInputV112(ocean,tick,memory,point,false);
+  assert.equal(route.held.includes("right"),true);
+  assert.equal(route.held.includes("jump"),true);
+  assert.equal(route.held.includes("up"),false);
+  assert.equal(route.pressed.includes("interact"),false);
+});
+
+test("menu dispatch harvests an eligible bone directly and prepares only a hide",()=>{
+  const bone=corpse("first","harvest-bone");
+  const hide=corpse("first","harvest-hide",true);
+  const menu={corpseId:"first",open:true,flayed:false,canFlay:true,
+    parts:[{action:"harvest-bone",available:true},{action:"harvest-hide",available:false}]};
+  assert.equal(groundHarvestMenuActionV112(menu,bone),"harvest-bone");
+  assert.equal(groundHarvestMenuActionV112(menu,hide),"flay");
+  assert.equal(groundHarvestMenuActionV112({...menu,canFlay:false},hide),null);
+  assert.equal(groundHarvestMenuActionV112({...menu,open:false},bone),"open");
+  assert.equal(groundHarvestMenuActionV112({...menu,corpseId:"other",nextCorpseId:"first"},bone),"next-corpse");
+});
+
+test("stall and interruption release a reservation and bound attempts for the next body",()=>{
+  const memory=brain();
+  const first=corpse("first","harvest-bone");
+  const second=corpse("second","harvest-tissue",false,.1);
+  assert.equal(chooseGroundHarvestV112([first,second],0,memory,0,1),first);
+  const closer={...first,distance:19};
+  assert.equal(chooseGroundHarvestV112([closer,second],120,memory,0,1),closer);
+  assert.equal(chooseGroundHarvestV112([closer,second],256,memory,0,1),second);
+  memory.pending={action:second.part.action,target:second};
+  observeGroundHarvestV112({completedEventIds:[],operation:null},259,memory);
+  assert.equal(chooseGroundHarvestV112([first,second],260,memory,0,1),null);
+  assert.equal(chooseGroundHarvestV112([first,second],497,memory,0,1),first);
+  memory.pending={action:first.part.action,target:first};
+  observeGroundHarvestV112({completedEventIds:[],operation:null},500,memory);
+  assert.equal(chooseGroundHarvestV112([first],1000,memory,0,1),null);
+  assert.deepEqual(memory.events.filter(event=>event.reason==="geste interrompu").map(event=>event.corpseId),["second","first"]);
+});
+
+test("a successful preparatory action retains its source until the native receipt arrives",()=>{
+  const memory=brain(),hide=corpse("body","harvest-hide",true);
+  assert.equal(chooseGroundHarvestV112([hide],0,memory,0,1),hide);
+  memory.pending={action:"flay",target:hide};
+  observeGroundHarvestV112({completedEventIds:["flay:body"],operation:null},200,memory);
+  assert.equal(chooseGroundHarvestV112([hide],201,memory,0,1),hide);
+  memory.pending={action:"harvest-hide",target:hide};
+  observeGroundHarvestV112({completedEventIds:["flay:body","harvest-hide:body"],operation:null},450,memory);
+  assert.equal(memory.target,null);
+  assert.equal(memory.events.at(-1).reason,"prise récoltée");
+});
+
+test("threat distance accounts for both body footprints and height",()=>{
+  assert.equal(nearestGroundHarvestThreatV112(player,[]),Infinity);
+  assert.equal(nearestGroundHarvestThreatV112(player,[{...survivor,x:player.x,y:player.y,width:player.width,height:player.height}]),0);
+  const below={...player,y:1000};
+  assert.ok(nearestGroundHarvestThreatV112(below,[survivor])>650);
+});

@@ -1,0 +1,85 @@
+name: Requalify ground extraction and trophy approach
+on:
+  push:
+    branches: [codex/verify-ground-recovery-20261121]
+permissions:
+  contents: read
+jobs:
+  ground:
+    name: Measure the unchanged full-load criterion across 24 missions and armors
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /scripts/
+            /tests/
+            /docs/qa/v112-ground-campaign/campaign-origin-save.json
+            /docs/qa/v112-ground-campaign/tool-origin.json
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify trophy approach and candidate selection
+        run: node --test tests/qa-hunt-ground-policy-v112.test.mjs
+      - name: Exercise actual carriage through boarding and extraction
+        run: node scripts/qa-hunt-ground-campaign-v112.mjs --harvest=true --baseSave=docs/qa/v112-ground-campaign/campaign-origin-save.json --replay=true --seconds=360 --minimumRetainedLoad=1 --output=outputs/qa-p0-ground-full
+      - name: Preserve all load and extraction results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ground-recovery-full-matrix
+          path: outputs/qa-p0-ground-full/
+          if-no-files-found: error
+  ocean:
+    name: Check the three Ocean trophy approaches in the production simulation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /scripts/
+            /tests/
+            /docs/qa/v112-ground-campaign/campaign-origin-save.json
+            /docs/qa/v112-ground-campaign/tool-origin.json
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify trophy approach and candidate selection
+        run: node --test tests/qa-hunt-ground-policy-v112.test.mjs
+      - name: Exercise actual carriage through boarding and extraction
+        run: node scripts/qa-hunt-ground-campaign-v112.mjs --mission=ocean-leviathan --harvest=true --baseSave=docs/qa/v112-ground-campaign/campaign-origin-save.json --replay=true --seconds=180 --minimumRetainedLoad=1 --output=outputs/qa-p0-ground-ocean
+      - name: Preserve all load and extraction results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ground-recovery-ocean
+          path: outputs/qa-p0-ground-ocean/
+          if-no-files-found: error
