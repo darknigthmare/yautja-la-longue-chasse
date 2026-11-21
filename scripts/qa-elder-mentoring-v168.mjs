@@ -1,4 +1,4 @@
-/** R2-M049 on compiled Next, with a declared Elite campaign admission.
+/** R2-M049 on compiled Next, with a declared adult campaign admission.
  * All terrain movement, mentoring choices, observations and witness reporting
  * use the real campaign UI. Import the helper or run this file directly. */
 import assert from 'node:assert/strict';
@@ -71,43 +71,38 @@ export async function openCampaignDossier(page) {
     await page.locator('[data-menu-action="continue"]').click();
     await page.locator('[data-campaign-session]').waitFor();
   }
-  await button(page, 'Dossier de campagne').click();
+  const play = button(page, 'Jouer');
+  const dossier = button(page, 'Dossier de campagne');
+  await play.or(dossier).first().waitFor();
+  if (await play.isVisible()) await play.click();
+  await dossier.click();
   await button(page, 'Parcours et rites').click();
 }
 
-export function eliteAdmission(qa) {
+/** Admit the canonical adult campaign at the mentor's rank and honor threshold. */
+export function adultElderTrialAdmission(qa) {
   const saves = qa.load('app/game/save.ts');
-  const chronicle = qa.load('app/game/systems/clanChronicle.ts');
-  const nursery = qa.load('app/game/systems/nurseryCampaign.ts');
-  const { NURSERY_TIMING } = qa.load('app/game/systems/nurseryPrologue.ts');
+  const { canMentorElderNovice } = qa.load('app/game/systems/elderMentoringV168.ts');
+  const { youthCampaignMatchesSave } = qa.load('app/game/systems/youthCampaign.ts');
   const owner = '2026-11-21T02:49:00.000Z';
   const save = saves.defaultSave(owner);
-  const campaign = nursery.createNurseryCampaign();
-  const priorRites = new Set(['nursery-recognition', 'unguided-hunt-recognition', 'blooding-mark', 'elite-recognition']);
-  const rites = chronicle.CHRONICLE_RITES.filter(rite => priorRites.has(rite.id));
-  const priorProof = new Set(['intro-begun', ...rites.flatMap(rite => rite.requiredEvidenceIds)]);
-  const evidence = chronicle.CHRONICLE_EVIDENCE.filter(item => priorProof.has(item.id));
-  const titleStartedAt = 240 + NURSERY_TIMING.koTicks + NURSERY_TIMING.villageRevealTicks;
-  save.prologue = {
-    ...campaign, status: 'completed', completedAt: owner,
-    checkpoint: {
-      ...campaign.checkpoint, phase: 'complete', tick: titleStartedAt + NURSERY_TIMING.moonTitleTicks,
-      duelStartedAt: 120, knockoutAt: 240, titleStartedAt, winner: 'player',
-      rival: { ...campaign.checkpoint.rival, composure: 0, action: 'ko' },
-    },
-    chronicle: {
-      ...campaign.chronicle,
-      evidence: evidence.map(({ id, sourceId }) => ({ id, sourceId })),
-      rites: rites.map(({ id, sourceId }) => ({ id, sourceId })),
-    },
-  };
   save.profile.honor = 8000;
+  save.profile.rankId = 'elite';
+  save.profile.acquiredRankIdV166 = 'elite';
   save.settings.masterVolume = 0;
-  const imported = saves.parseSaveImport(saves.exportSave(save));
-  assert.ok(imported.save, imported.failure);
-  assert.equal(chronicle.getChronicleRank(imported.save.prologue.chronicle), 'elite');
+  // The save parser accepts the adult campaign without a prologue and
+  // derives career Elder at 8000 honor. Narrative rites need their own chapters.
+  assert.equal(save.prologue, null);
+  assert.ok(youthCampaignMatchesSave(save), 'Admission must satisfy the youth archive contract');
+  const admitted = saves.parseSaveImport(JSON.stringify(save));
+  assert.ok(admitted.save, 'Adult campaign parse failed: ' + admitted.failure);
+  const imported = saves.parseSaveImport(saves.exportSave(admitted.save));
+  assert.ok(imported.save, 'Adult campaign round trip failed: ' + imported.failure);
+  assert.equal(imported.save.prologue, null);
+  assert.equal(imported.save.profile.rankId, 'elder');
   assert.equal(imported.save.profile.honor, 8000);
   assert.equal(saves.SAVE_STORAGE_KEY, SAVE_KEY);
+  assert.ok(canMentorElderNovice(imported.save), 'Adult campaign must qualify for mentoring');
   assert.ok(imported.save.elderMentoringV168 == null);
   return imported.save;
 }
@@ -124,14 +119,13 @@ async function run() {
   await mkdir(output, { recursive: true });
   const report = {
     commit, buildId, passed: false, errors: [],
-    scope: 'R2-M049. Canonical import admission supplies the four preceding narrative recognitions through Elite and 8000 career honor. The mentoring proof begins absent; Chromium plays the terrain and verifies that the witnessed outcome survives reload.',
+    scope: 'R2-M049. Canonical adult career admission supplies 8000 honor, which the save parser normalizes to the Elder career rank. The mentoring proof begins absent; Chromium plays the terrain and verifies that the witnessed outcome survives reload.',
   };
   let browser;
   let page;
   try {
     const qa = homeworldSceneSsrV78();
-    const save = eliteAdmission(qa);
-    const chronicle = qa.load('app/game/systems/clanChronicle.ts');
+    const save = adultElderTrialAdmission(qa);
     browser = await chromium.launch({
       executablePath: process.env.CHROMIUM_EXECUTABLE || process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || undefined,
       headless: true,
@@ -155,7 +149,8 @@ async function run() {
     await openCampaignDossier(page);
     const reloaded = await readCampaign(page);
     assert.equal(reloaded.createdAt, save.createdAt);
-    assert.equal(chronicle.getChronicleRank(reloaded.prologue.chronicle), 'elite');
+    assert.equal(reloaded.prologue, null);
+    assert.equal(reloaded.profile.rankId, 'elder');
     assert.equal(reloaded.profile.honor, 8000);
     assert.deepEqual(reloaded.elderMentoringV168, report.receipt);
     await button(page, OPEN).click();

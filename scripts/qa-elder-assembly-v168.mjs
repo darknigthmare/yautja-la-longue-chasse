@@ -5,7 +5,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { chromium } from "playwright-core";
 import { homeworldSceneSsrV78 } from "../tests/helpers/homeworld-scene-ssr-v78.mjs";
-import { completeElderMentoring, eliteAdmission, openCampaignDossier } from "./qa-elder-mentoring-v168.mjs";
+import { completeElderMentoring, adultElderTrialAdmission, openCampaignDossier } from "./qa-elder-mentoring-v168.mjs";
 import { completeElderPassage } from "./lib/qa-elder-passage-ui-v168.mjs";
 
 const origin = "http://127.0.0.1:3121/";
@@ -17,11 +17,10 @@ const buildId = (await readFile(".next/BUILD_ID", "utf8")).trim();
 assert.ok(buildId);
 const qa = homeworldSceneSsrV78();
 const saves = qa.load("app/game/save.ts");
-const { getChronicleRank } = qa.load("app/game/systems/clanChronicle.ts");
-const admitted = eliteAdmission(qa);
+const admitted = adultElderTrialAdmission(qa);
 const report = {
   commit, buildId, passed: false, errors: [],
-  admission: "Declared narrative Elite and 8000 career honor. All three acts are played in one compiled campaign.",
+  admission: "Declared legacy adult campaign and 8000 career honor. All three acts are played in one compiled campaign.",
 };
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_EXECUTABLE || undefined, headless: true });
 try {
@@ -45,7 +44,7 @@ try {
   await page.locator("[data-elder-passage-v168]").waitFor();
   await completeElderPassage(page, disk);
   const before = await disk();
-  assert.equal(getChronicleRank(before.prologue.chronicle), "elite");
+  assert.equal(before.elderAssemblyV168 ?? null, null);
   assert.deepEqual(before.elderPassageJudgmentV168.trial, { method: "schedule", delay: 3 });
   report.judgment = before.elderPassageJudgmentV168;
   await button(openAssembly).click();
@@ -63,7 +62,8 @@ try {
     mentoringReviewed: true, judgmentReviewed: true, responsibility: "travel",
   });
   assert.equal(completed.profile.honor, before.profile.honor);
-  assert.equal(getChronicleRank(completed.prologue.chronicle), "elder");
+  assert.equal(completed.profile.rankId, before.profile.rankId);
+  assert.equal(completed.prologue, null);
   assert.deepEqual(completed.elderMentoringV168, report.mentoring);
   assert.deepEqual(completed.elderPassageJudgmentV168, report.judgment);
   report.assembly = completed.elderAssemblyV168;

@@ -62,8 +62,6 @@ const CHRONICLE_HONOR_V169: Readonly<Record<ChronicleEvidenceId, number>> = {
   "long-hunt-history": 50,
   "next-generation": 50,
   "elder-time-passage": 0,
-  "elder-mentoring-observed": 0,
-  "elder-judgment-observed": 0,
   "ancient-time-passage": 0,
   "lasting-legacy": 50,
   "forgotten-debt": 50,

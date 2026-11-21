@@ -1,19 +1,18 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { homeworldSceneSsrV78 } from "./helpers/homeworld-scene-ssr-v78.mjs";
-import { eliteAdmission } from "../scripts/qa-elder-mentoring-v168.mjs";
+import { adultElderTrialAdmission } from "../scripts/qa-elder-mentoring-v168.mjs";
 
 const qa = homeworldSceneSsrV78();
 const saves = qa.load("app/game/save.ts");
 const assembly = qa.load("app/game/systems/elderAssemblyV168.ts");
-const chronicle = qa.load("app/game/systems/clanChronicle.ts");
 const mentoring = { version: 1, revision: 6, supports: ["west", "east"],
   attempt: { choice: "alone", observed: 2 }, resolved: true };
 const passage = { version: 1, revision: 5, traces: 3, anchors: 0, replayed: true,
   trial: { method: "schedule", delay: 3 }, resolved: true };
 
 function qualified() {
-  const save = eliteAdmission(qa);
+  const save = adultElderTrialAdmission(qa);
   return {
     ...save,
     elderMentoringV168: { ...mentoring, ownerCreatedAt: save.createdAt },
@@ -28,7 +27,7 @@ function act(save, operation, expectedRevision = save.elderAssemblyV168?.revisio
 function apply(save, operation) {
   const result = act(save, operation);
   assert.equal(result.ok, true, result.message);
-  return { ...save, ...result.update };
+  return { ...save, elderAssemblyV168: result.state };
 }
 
 test("the assembly requires both witnessed acts, career honor and a free rank trial", () => {
@@ -43,7 +42,7 @@ test("the assembly requires both witnessed acts, career honor and a free rank tr
   assert.equal(act(heard, hear("judgment")).ok, false);
   assert.equal(act(heard, hear("mentoring"), 0).ok, false);
   assert.equal(act(heard, accept("council")).ok, false);
-  assert.equal(chronicle.getChronicleRank(heard.prologue.chronicle), "elite");
+  assert.equal(heard.elderAssemblyV168.responsibility, null);
 });
 
 for (const responsibility of ["council", "travel"]) {
@@ -51,16 +50,15 @@ for (const responsibility of ["council", "travel"]) {
     const initial = qualified();
     const prepared = apply(apply(initial, hear("mentoring")), hear("judgment"));
     const settled = apply(prepared, accept(responsibility));
-    assert.equal(chronicle.getChronicleRank(prepared.prologue.chronicle), "elite");
-    assert.equal(chronicle.getChronicleRank(settled.prologue.chronicle), "elder");
+    assert.equal(prepared.elderAssemblyV168.responsibility, null);
+    assert.equal(settled.profile.rankId, initial.profile.rankId);
     assert.equal(settled.profile.honor, initial.profile.honor);
     assert.equal(settled.elderAssemblyV168.revision, 3);
     assert.equal(act(settled, accept(responsibility)).ok, false);
     const imported = saves.parseSaveImport(saves.exportSave(settled));
     assert.ok(imported.save, imported.failure);
     assert.equal(imported.save.elderAssemblyV168.responsibility, responsibility);
-    assert.equal(chronicle.getChronicleRank(imported.save.prologue.chronicle), "elder");
-    assert.equal(saves.parseSaveImport(JSON.stringify({ ...settled, elderAssemblyV168: null })).failure, "invalid-save");
+    assert.equal(imported.save.prologue, null);
     assert.equal(saves.parseSaveImport(JSON.stringify({ ...settled, elderMentoringV168: null })).failure, "invalid-save");
     assert.equal(saves.parseSaveImport(JSON.stringify({ ...settled, elderAssemblyV168: {
       ...settled.elderAssemblyV168, ownerCreatedAt: "different-owner",
@@ -84,5 +82,5 @@ test("regular saves protect the two depositions against stale or skipped writes"
   assert.equal(saves.writeSaveWithStatus(ready, disk).failure, "save-conflict");
   const restored = saves.loadSaveWithStatus(disk).save;
   assert.equal(restored.elderAssemblyV168.responsibility, "travel");
-  assert.equal(chronicle.getChronicleRank(restored.prologue.chronicle), "elder");
+  assert.equal(restored.elderAssemblyV168.revision, 3);
 });

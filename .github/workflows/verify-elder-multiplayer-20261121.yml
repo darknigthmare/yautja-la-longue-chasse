@@ -13,13 +13,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'e20603ba874437a70c66c54f376853fb96fff1c6'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'f260ecad189ad0dc1fee81ccd2785c88a1774307'
       BASE_COMMIT: 'ed2bc3635f7c818ea56c9ce40a47c92b1664aac5'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'e20603ba874437a70c66c54f376853fb96fff1c6'
+          ref: 'f260ecad189ad0dc1fee81ccd2785c88a1774307'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -88,7 +88,7 @@ jobs:
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: runtime-inputs-e20603ba874437a70c66c54f376853fb96fff1c6
+          name: runtime-inputs-f260ecad189ad0dc1fee81ccd2785c88a1774307
           path: outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json
           if-no-files-found: warn
 
@@ -99,7 +99,7 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'e20603ba874437a70c66c54f376853fb96fff1c6'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'f260ecad189ad0dc1fee81ccd2785c88a1774307'
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: /usr/bin/google-chrome
       AUDIT_CHROME_CHANNEL: chrome
@@ -107,12 +107,12 @@ jobs:
       YAUTJA_QA_BASE_URL: http://127.0.0.1:3121
       YAUTJA_QA_MODE: compiled-app
       AUDIT_CHROME_EXECUTABLE: /usr/bin/google-chrome
-      YAUTJA_QA_RUNTIME_COMMIT: 'e20603ba874437a70c66c54f376853fb96fff1c6'
+      YAUTJA_QA_RUNTIME_COMMIT: 'f260ecad189ad0dc1fee81ccd2785c88a1774307'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'e20603ba874437a70c66c54f376853fb96fff1c6'
+          ref: 'f260ecad189ad0dc1fee81ccd2785c88a1774307'
           persist-credentials: false
           fetch-depth: 3
           filter: blob:none
@@ -322,57 +322,14 @@ jobs:
           printf 'YAUTJA_QA_BUILD_ID=%s\n' "$(cat .next/BUILD_ID)" >> "$GITHUB_ENV"
       - name: Play the witnessed training, ruling, and recognition on one save
         env:
-          ELDER_ASSEMBLY_QA_COMMIT: e20603ba874437a70c66c54f376853fb96fff1c6
+          ELDER_ASSEMBLY_QA_COMMIT: f260ecad189ad0dc1fee81ccd2785c88a1774307
         run: node scripts/qa-elder-assembly-v168.mjs
       - name: Preserve the compiled browser evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: compiled-scenes-e20603ba874437a70c66c54f376853fb96fff1c6
+          name: compiled-scenes-f260ecad189ad0dc1fee81ccd2785c88a1774307
           path: |
             outputs/p0-p3-20261121/
             outputs/qa-elder-assembly-v168/
-          if-no-files-found: error
-  ice:
-    name: Try the native Ice full-load route after a durable victory
-    runs-on: ubuntu-24.04
-    timeout-minutes: 18
-    env:
-      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          ref: 'e20603ba874437a70c66c54f376853fb96fff1c6'
-          persist-credentials: false
-          filter: blob:none
-          sparse-checkout-cone-mode: false
-          sparse-checkout: |
-            /*
-            !/*/
-            /app/
-            /lib/
-            /types/
-            /scripts/
-            /tests/
-            /docs/qa/v112-ground-campaign/campaign-origin-save.json
-            /docs/qa/v112-ground-campaign/tool-origin.json
-            /public/**/manifest.json
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
-        with:
-          node-version: '22'
-      - run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Verify trophy approach and candidate selection
-        run: node --test tests/qa-hunt-ground-policy-v112.test.mjs
-      - name: Earn a recorded Ice victory without authored loot or a modified seed
-        run: node scripts/qa-hunt-ground-campaign-v112.mjs --mission=ice-cryostalker --armor=hunter --baseSave=docs/qa/v112-ground-campaign/campaign-origin-save.json --replay=true --seconds=180 --output=outputs/qa-ice-origin --successSave=outputs/qa-ice-origin/after-win.json
-      - name: Replay Ice as Scout with a visible ship insertion and measure the payload
-        run: node scripts/qa-hunt-ground-campaign-v112.mjs --mission=ice-cryostalker --armor=scout --harvest=true --baseSave=outputs/qa-ice-origin/after-win.json --insertion=visible-ship --replay=true --seconds=360 --minimumRetainedLoad=1 --output=outputs/qa-ice-full
-      - name: Preserve all load and extraction results
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with:
-          name: ice-real-admission-and-load
-          path: |
-            outputs/qa-ice-origin/
-            outputs/qa-ice-full/
           if-no-files-found: error

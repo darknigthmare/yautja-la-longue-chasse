@@ -63,7 +63,7 @@ import { inspectWolfCastleVisit } from "./systems/wolfCastle";
 import { inspectBuriedCradleCampaign } from "./systems/buriedCradleCampaign";
 import { inspectElderPassageJudgment } from "./systems/elderPassageJudgmentV168";
 import { inspectElderMentoring, isElderMentoringSuccessor } from "./systems/elderMentoringV168";
-import { inspectElderAssembly, isElderAssemblySuccessor, matchesElderAssemblyChronicle } from "./systems/elderAssemblyV168";
+import { inspectElderAssembly, isElderAssemblySuccessor } from "./systems/elderAssemblyV168";
 import { inspectCompanionResidence, evaluateCompanionResidenceCampaign } from "./systems/companionResidence";
 import { inspectClanShipIncidents, evaluateClanShipIncidentsCampaign, evaluateClanShipTrophyHearingCampaign } from "./systems/clanShipIncidents";
 import { inspectClanShipTrophyHearing } from "./systems/clanShipTrophyHearing";
@@ -1655,8 +1655,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       return { save: null, failure: inspection.status };
     }
   }
-  if ((elderAssembly.state && (!elderMentoring.state?.resolved || !elderPassage.state?.resolved)) ||
-      !matchesElderAssemblyChronicle(elderAssembly.state, value.prologue)) {
+  if (elderAssembly.state && (!elderMentoring.state?.resolved || !elderPassage.state?.resolved)) {
     return { save: null, failure: "invalid-save" };
   }
   if (residence.state && (!isRecord(value.missionProgress) || !isRecord(value.profile) ||
