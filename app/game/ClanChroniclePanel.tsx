@@ -20,6 +20,10 @@ import type {GameReserveChoiceV109} from './systems/gameReserveV66';
 import { rankRiteDossierV168 } from "./systems/rankRiteDossierV168";
 import ElderPassageJudgment from "./ElderPassageJudgment";
 import { canJudgeElderPassage, type PassageCommand, type PassageResponse } from "./systems/elderPassageJudgmentV168";
+import ElderMentoring from "./ElderMentoring";
+import { canMentorElderNovice, type MentoringCommand, type MentoringResponse } from "./systems/elderMentoringV168";
+import ElderAssembly from "./ElderAssembly";
+import { canConveneElderAssembly, elderAssemblyProofs, type AssemblyCommand, type AssemblyResponse } from "./systems/elderAssemblyV168";
 
 const regions = [
   ["Désert", "Unblooded", "Dunes, oueds, citerne tribale et canyons de chasse."],
@@ -50,17 +54,25 @@ function HomeworldRegionArt({ name }: { name: string }) {
   return art ? <Image unoptimized className={styles.regionArt} src={art.thumbnailSrc} alt={"Illustration de la tribu " + name + " · source V2, niveau non livré"} width={320} height={220} loading="lazy" decoding="async" /> : null;
 }
 
-/** Read-only design dossier. Never grants evidence, equipment, ownership or XP. */
-export default function ClanChroniclePanel({ save, onClose, onGameReserveV66, onOpenCradle, onPassageCommand }: {
+/** The dossier presents receipts and delegates each playable rite to its campaign owner. */
+export default function ClanChroniclePanel({
+  save, onClose, onGameReserveV66, onOpenCradle, onPassageCommand, onMentoringCommand, onAssemblyCommand,
+}: {
   save: SaveGame;
   onClose: () => void;
   onGameReserveV66?: (fresh: boolean, version?: GameReserveChoiceV109) => boolean;
   onOpenCradle?: () => void;
   onPassageCommand?: (command: PassageCommand) => PassageResponse;
+  onMentoringCommand?: (command: MentoringCommand) => MentoringResponse;
+  onAssemblyCommand?: (command: AssemblyCommand) => AssemblyResponse;
 }) {
   const [section, setSection] = useState<"journey" | "worlds" | "humans" | "companions">("journey");
   const [query, setQuery] = useState("");
-  const [passageOpen, setPassageOpen] = useState(false);
+  const [elderRite, setElderRite] = useState<"mentoring" | "passage" | "assembly" | null>(null);
+  const proofs = elderAssemblyProofs(save);
+  const closeElderRite = () => setElderRite(null);
+  const toggleElderRite = (rite: "mentoring" | "passage" | "assembly") =>
+    setElderRite(current => current === rite ? null : rite);
   const chronicle = useMemo(() => save.prologue?.chronicle ?? migrateV35ClanChronicle(save), [save]);
   const rankDossier = useMemo(() => rankRiteDossierV168(save), [save]);
   const narrativeRank = getChronicleRank(chronicle) ?? "youngling";
@@ -113,19 +125,33 @@ export default function ClanChroniclePanel({ save, onClose, onGameReserveV66, on
             {rankDossier.queen.canOpenExpedition && onOpenCradle && <button type="button" onClick={onOpenCradle}>Ouvrir le dossier du Berceau</button>}
           </li>
           <li>
-            <h4>Elder · R2-M049 et R2-M050</h4>
-            <p>Former un novice lors d’une chasse observée. Épreuve à produire.</p>
-            <p>{save.elderPassageJudgmentV168?.resolved ? "Le témoin a consigné le règlement du passage." : "Régler le désaccord du passage devant un témoin."}</p>
-            {(canJudgeElderPassage(save) || save.elderPassageJudgmentV168?.resolved) && onPassageCommand
-              ? <button type="button" onClick={() => setPassageOpen(value => !value)} aria-expanded={passageOpen}>
-                  {passageOpen ? "Replier le dossier du passage" : "Ouvrir le dossier du passage"}
+            <h4>Elder · R2-M049 à R2-M051</h4>
+            <p>{proofs.mentoring ? "Le mentor a consigné la chasse du novice." : "Accompagner un novice dans sa chasse d’exercice."}</p>
+            {(canMentorElderNovice(save) || proofs.mentoring) && onMentoringCommand &&
+              <button type="button" onClick={() => toggleElderRite("mentoring")} aria-expanded={elderRite === "mentoring"}>
+                {elderRite === "mentoring" ? "Replier le mentorat" : "Ouvrir le terrain du novice"}
+              </button>}
+            <p>{proofs.judgment ? "Le témoin a consigné le règlement du passage." : "Régler le désaccord du passage devant un témoin."}</p>
+            {(canJudgeElderPassage(save) || proofs.judgment) && onPassageCommand
+              ? <button type="button" onClick={() => toggleElderRite("passage")} aria-expanded={elderRite === "passage"}>
+                  {elderRite === "passage" ? "Replier le dossier du passage" : "Ouvrir le dossier du passage"}
                 </button>
-              : <p>Le dossier du passage s’ouvre à Elite avec 8 000 points d’honneur de carrière.</p>}
+              : <p>Les actes Elder s’ouvrent à Elite avec 8 000 points d’honneur de carrière.</p>}
+            <p>{save.elderAssemblyV168?.responsibility ? "L’assemblée a consigné la reconnaissance Elder." :
+              "L’assemblée examine les deux actes avant de proposer un engagement."}</p>
+            {(canConveneElderAssembly(save) || save.elderAssemblyV168?.responsibility) && onAssemblyCommand &&
+              <button type="button" onClick={() => toggleElderRite("assembly")} aria-expanded={elderRite === "assembly"}>
+                {elderRite === "assembly" ? "Replier l’assemblée" : "Ouvrir l’assemblée des aînés"}
+              </button>}
           </li>
         </ol>
       </section>
-      {passageOpen && onPassageCommand && <ElderPassageJudgment key={save.createdAt} owner={save.createdAt}
-        saved={save.elderPassageJudgmentV168} onCommand={onPassageCommand} onClose={() => setPassageOpen(false)} />}
+      {elderRite === "mentoring" && onMentoringCommand && <ElderMentoring key={save.createdAt}
+        save={save} onCommand={onMentoringCommand} onClose={closeElderRite} />}
+      {elderRite === "passage" && onPassageCommand && <ElderPassageJudgment key={save.createdAt} owner={save.createdAt}
+        saved={save.elderPassageJudgmentV168} onCommand={onPassageCommand} onClose={closeElderRite} />}
+      {elderRite === "assembly" && onAssemblyCommand && <ElderAssembly key={save.createdAt}
+        save={save} onCommand={onAssemblyCommand} onClose={closeElderRite} />}
       <h3 className={styles.subheading}>Reconnaissances enregistrées dans la chronique</h3>
       <ol className={styles.rites}>
         {CHRONICLE_RITES.filter(rite => rite.id === "nursery-recognition" || rite.id === "unguided-hunt-recognition" ||

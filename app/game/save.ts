@@ -62,6 +62,8 @@ import { evaluateClanShipAccess, evaluateClanShipOperationsCampaign, inspectClan
 import { inspectWolfCastleVisit } from "./systems/wolfCastle";
 import { inspectBuriedCradleCampaign } from "./systems/buriedCradleCampaign";
 import { inspectElderPassageJudgment } from "./systems/elderPassageJudgmentV168";
+import { inspectElderMentoring, isElderMentoringSuccessor } from "./systems/elderMentoringV168";
+import { inspectElderAssembly, isElderAssemblySuccessor } from "./systems/elderAssemblyV168";
 import { inspectCompanionResidence, evaluateCompanionResidenceCampaign } from "./systems/companionResidence";
 import { inspectClanShipIncidents, evaluateClanShipIncidentsCampaign, evaluateClanShipTrophyHearingCampaign } from "./systems/clanShipIncidents";
 import { inspectClanShipTrophyHearing } from "./systems/clanShipTrophyHearing";
@@ -1295,6 +1297,12 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.elderPassageJudgmentV168 === undefined ? {} : {
       elderPassageJudgmentV168: inspectElderPassageJudgment(source.elderPassageJudgmentV168, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
+    ...(source.elderMentoringV168 === undefined ? {} : {
+      elderMentoringV168: inspectElderMentoring(source.elderMentoringV168, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
+    ...(source.elderAssemblyV168 === undefined ? {} : {
+      elderAssemblyV168: inspectElderAssembly(source.elderAssemblyV168, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     ...(source.companionResidence === undefined ? {} : {
       companionResidence: inspectCompanionResidence(source.companionResidence, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1639,10 +1647,16 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const trophyHearing = inspectClanShipTrophyHearing(value.clanShipTrophyHearing, typeof value.createdAt === 'string' ? value.createdAt : '');
   const returnEscort = inspectClanShipReturnEscort(value.clanShipReturnEscort, typeof value.createdAt === 'string' ? value.createdAt : '');
   const elderPassage = inspectElderPassageJudgment(value.elderPassageJudgmentV168, typeof value.createdAt === 'string' ? value.createdAt : '');
-  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides, elderPassage]) {
+  const owner = typeof value.createdAt === "string" ? value.createdAt : "";
+  const elderMentoring = inspectElderMentoring(value.elderMentoringV168, owner);
+  const elderAssembly = inspectElderAssembly(value.elderAssemblyV168, owner);
+  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides, elderPassage, elderMentoring, elderAssembly]) {
     if (inspection.status === "future-version" || inspection.status === "invalid-save") {
       return { save: null, failure: inspection.status };
     }
+  }
+  if (elderAssembly.state && (!elderMentoring.state?.resolved || !elderPassage.state?.resolved)) {
+    return { save: null, failure: "invalid-save" };
   }
   if (residence.state && (!isRecord(value.missionProgress) || !isRecord(value.profile) ||
       !evaluateCompanionResidenceCampaign(residence.state, value as unknown as SaveGame).allowed)) {
@@ -2147,6 +2161,22 @@ function persistCampaign(
       if (previousPassage && (!requestedPassage ||
           (JSON.stringify(previousPassage) !== JSON.stringify(requestedPassage) &&
             (previousPassage.resolved || requestedPassage.revision !== previousPassage.revision + 1)))) {
+        return failed("save-conflict", previous);
+      }
+      const previousMentoring = previous.elderMentoringV168;
+      const requestedMentoring = requested.elderMentoringV168;
+      if (previousMentoring
+        ? !requestedMentoring || (JSON.stringify(previousMentoring) !== JSON.stringify(requestedMentoring) &&
+          !isElderMentoringSuccessor(previousMentoring, requestedMentoring))
+        : requestedMentoring && requestedMentoring.revision !== 1) {
+        return failed("save-conflict", previous);
+      }
+      const previousAssembly = previous.elderAssemblyV168;
+      const requestedAssembly = requested.elderAssemblyV168;
+      if (previousAssembly
+        ? !requestedAssembly || (JSON.stringify(previousAssembly) !== JSON.stringify(requestedAssembly) &&
+          !isElderAssemblySuccessor(previousAssembly, requestedAssembly))
+        : requestedAssembly && requestedAssembly.revision !== 1) {
         return failed("save-conflict", previous);
       }
     }

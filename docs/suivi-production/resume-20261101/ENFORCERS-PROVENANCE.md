@@ -37,6 +37,16 @@ l’essai accepté du checkpoint qui correspond aux octets finaux est retenu.
 Un nouveau résultat concordant exige un rapprochement avec son archive de
 production avant clôture. Les deux exigences sources du classeur restent ouvertes.
 
+### Rechercher un original renommé
+
+L’option `--scan-git-tree` parcourt les chemins de chaque référence fournie et ouvre seulement les blobs dont la taille correspond à un PNG recherché. Le rapport `gitTreeCandidates` donne le commit, le chemin retrouvé et le SHA‑256. Les objets Git nécessaires doivent déjà être présents localement.
+
+```sh
+node scripts/audit-enforcer-historical-recovery.mjs --scan-git-tree d71e995ae886df69c4165a1a153291449e8f22f6
+```
+
+Un checkpoint V6.13 doit correspondre au chemin, à la taille et à l’empreinte du PNG. Quand le manifeste contient le prompt exact accepté, le checkpoint doit restituer ce texte. Quand le manifeste est muet, le rapport indique `requires-independent-source` et laisse le reçu candidat en attente d’une source de provenance indépendante.
+
 ## Vérifier une archive de production disponible localement
 
 Une archive extraite peut contenir un original V6.10 à un autre emplacement.
