@@ -1,4 +1,4 @@
-name: Verify the witnessed Quatza triad return in production Next
+name: Verify the witnessed Quatza triad return from Homeworld
 on:
   push:
     branches: [codex/verify-quatza-witness-20261121]
@@ -293,7 +293,7 @@ jobs:
           node --experimental-strip-types --test --test-reporter=spec tests/quatza-rij.test.mjs 2>&1 | tee outputs/p0-p3-20261121/quatza-witness-node.log
       - name: Strict lint for the witnessed return
         if: ${{ !cancelled() && steps.inputs.conclusion == 'success' }}
-        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/systems/quatzaRij.ts app/game/QuatzaRijScene.tsx tests/quatza-rij.test.mjs scripts/qa-quatza-triad-return-20261121.mjs
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/GameClient.tsx app/game/systems/quatzaRij.ts app/game/QuatzaRijScene.tsx tests/quatza-rij.test.mjs scripts/qa-quatza-triad-return-20261121.mjs
       - name: Build and start the production application
         id: server
         if: ${{ !cancelled() && steps.inputs.conclusion == 'success' }}
