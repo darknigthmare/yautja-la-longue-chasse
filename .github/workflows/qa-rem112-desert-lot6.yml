@@ -1,4 +1,4 @@
-name: REM112 lecture de l’approche réelle du trophée du Désert
+name: REM112 vérifier les sauvegardes réellement archivées dans le Désert
 on:
   push:
     branches: [codex/qa-rem112-desert-trophy-diagnostic-lot6]
@@ -18,23 +18,31 @@ jobs:
       - run: |
           node --input-type=module <<'NODE'
           import assert from 'node:assert/strict';
+          import {createHash} from 'node:crypto';
           import {readdir,readFile} from 'node:fs/promises';
           import {join} from 'node:path';
-          const files=await readdir('evidence',{recursive:true});
-          const name=files.find(p=>p.endsWith('desert-sandmaw-hunt-samples.json'));
-          assert.ok(name);
-          const s=JSON.parse(await readFile(join('evidence',name),'utf8')).map(x=>x.state);
-          for(const at of [145,170,200,228]){
-            const q=s.find(x=>x.phase==='trophy'&&x.elapsed>=at);
-            if(!q)continue;
-            const p=q.player,b=q.boss,center={x:p.x+p.width/2,y:p.y+p.height/2};
-            const trophy={x:b.x+b.width/2,y:b.y+b.height-52};
-            const active=q.enemies.filter(z=>z.active&&z.alive).map(z=>({
-              id:z.id,x:z.x,y:z.y,width:z.width,height:z.height,health:z.health,
-              distance:Math.hypot(z.x+z.width/2-center.x,z.y+z.height/2-center.y),
-            })).sort((a,b)=>a.distance-b.distance).slice(0,4);
-            const surfaces=q.world.platforms.filter(z=>z.x<p.x+300&&z.x+z.width>p.x-300).map(({id,x,y,width,height,collision})=>({id,x,y,width,height,collision}));
-            console.log(JSON.stringify({at:q.elapsed,phase:q.phase,player:{x:p.x,y:p.y,feet:p.y+p.height,facing:p.facing,health:p.health,grounded:p.grounded},
-               trophy,actualRange:Math.hypot(center.x-trophy.x,center.y-trophy.y),active,surfaces,health:p.health,operation:q.trophyExtracting})); 
+          const files=(await readdir('evidence',{recursive:true})).filter(p=>p.endsWith('.json'));
+          assert.ok(files.some(x=>x.endsWith('report.json')));
+          assert.ok(files.some(x=>x.endsWith('browser-storage-state.json')));
+          const found=new Map();
+          function visit(value,source){
+            if(typeof value==='string'){
+              if(value.startsWith('{')&&value.includes('ownerSaveCreatedAt')&&value.includes('checkpoint')){
+                try{visit(JSON.parse(value),source+' (serialized)');}catch{}
+              }
+              return;
+            }
+            if(!value||typeof value!=='object')return;
+            if(value.missionId==='desert-sandmaw'&&typeof value.ownerSaveCreatedAt==='string'&&typeof value.runId==='string'&&value.snapshot?.checkpoint){
+              const sha256=createHash('sha256').update(JSON.stringify(value)).digest('hex'),cp=value.snapshot.checkpoint;
+              if(!found.has(sha256))found.set(sha256,{sha256,phase:cp.phase,elapsed:cp.elapsed,encounterRun:value.encounterRun,
+                x:cp.player?.x,health:cp.player?.health,specimens:cp.huntRites?.specimensV112?.map(({id,quality})=>({id,quality})),locations:[]});
+              found.get(sha256).locations.push(source);
+              return;
+            }
+            for(const [key,child]of Object.entries(value))visit(child,source+'.'+key);
           }
+          for(const file of files)visit(JSON.parse(await readFile(join('evidence',file),'utf8')),file);
+          assert.ok(found.size>0);
+          console.log(JSON.stringify({scanned:files,sidecars:[...found.values()],savedPreMortBone:[...found.values()].filter(q=>q.phase==='trophy'&&q.specimens?.some(s=>s.id==='desert-sandmaw:0:desert-sandmaw-foragers-4:bone'))}));
           NODE
