@@ -111,6 +111,8 @@ import type { ClanShipService } from "./ClanShipHub";
 import { actBuriedCradleCampaign, evaluateBuriedCradleAccess, type CradleCampaignAction } from './systems/buriedCradleCampaign';
 import type { CradleReturnOperation, CradleReturnObservation } from './systems/buriedCradleReturn';
 import { commitElderPassageJudgment, type PassageCommand, type PassageResponse } from './systems/elderPassageJudgmentV168';
+import { commitElderMentoring, type MentoringCommand, type MentoringResponse } from './systems/elderMentoringV168';
+import { commitElderAssembly, type AssemblyCommand, type AssemblyResponse } from './systems/elderAssemblyV168';
 import { getCradleCrownCondition } from './systems/buriedCradle';
 import cradleArt from './data/buriedCradleArt.json';
 import { actCompanionResidence, bindCompanionResidenceMission, settleCompanionResidenceMission, releaseCompanionResidenceMission,
@@ -2331,19 +2333,42 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return true;
   }, [reconcileHuntWrite]);
 
+  const elderRiteAvailable = useCallback(() => sessionAliveRef.current &&
+    saveRef.current.createdAt === entry.ownerCreatedAt && screen === "clan-chronicle" &&
+    gameFocusedV89 && !settingsOpen && !archiveTransferBusy && !archiveRecoveryIssue && !campaignSaveBusy &&
+    !resumableHunt && !activeHuntSessionRef.current,
+  [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
+    resumableHunt, screen, settingsOpen]);
+
   const onElderPassageCommand = useCallback((command: PassageCommand): PassageResponse => {
-    const current = saveRef.current;
-    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "clan-chronicle" ||
-        !gameFocusedV89 || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy ||
-        resumableHunt || activeHuntSessionRef.current) return { ok: false, message: "Rouvre le dossier lorsque la campagne sera disponible." };
-    const result = commitElderPassageJudgment(current, command);
+    if (!elderRiteAvailable()) return { ok: false, message: "Rouvre le dossier lorsque la campagne sera disponible." };
+    const result = commitElderPassageJudgment(saveRef.current, command);
     if (!result.ok) return result;
     if (!persistSocialProgress({ elderPassageJudgmentV168: result.state })) {
       return { ok: false, message: "Inscription en attente. Vérifie la sauvegarde puis reprends l’action." };
     }
     return { ok: true, message: result.message };
-  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
-    persistSocialProgress, resumableHunt, screen, settingsOpen]);
+  }, [elderRiteAvailable, persistSocialProgress]);
+
+  const onElderMentoringCommand = useCallback((command: MentoringCommand): MentoringResponse => {
+    if (!elderRiteAvailable()) return { ok: false, message: "Rouvre le dossier lorsque la campagne sera disponible." };
+    const result = commitElderMentoring(saveRef.current, command);
+    if (!result.ok) return result;
+    if (!persistSocialProgress({ elderMentoringV168: result.state })) {
+      return { ok: false, message: "Inscription en attente. Vérifie la sauvegarde puis reprends l’action." };
+    }
+    return { ok: true, message: result.message };
+  }, [elderRiteAvailable, persistSocialProgress]);
+
+  const onElderAssemblyCommand = useCallback((command: AssemblyCommand): AssemblyResponse => {
+    if (!elderRiteAvailable()) return { ok: false, message: "Rouvre le dossier lorsque la campagne sera disponible." };
+    const result = commitElderAssembly(saveRef.current, command);
+    if (!result.ok) return result;
+    if (!persistSocialProgress(result.update)) {
+      return { ok: false, message: "Inscription en attente. Vérifie la sauvegarde puis reprends l’action." };
+    }
+    return { ok: true, message: result.message };
+  }, [elderRiteAvailable, persistSocialProgress]);
 
   /** V152: legacy sealing and the bequeathed original's single location, written before anything is announced. */
   const heritageActionV152 = useCallback((action: HeritageActionV152): { ok: boolean; message: string } => {
@@ -5121,7 +5146,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <div className="screen-safe">
             <Suspense fallback={<DeferredGameScreen />}>
               <ClanChroniclePanel save={save} onGameReserveV66={openGameReserveV66} onClose={() => go(chronicleReturnScreen)}
-                onPassageCommand={onElderPassageCommand} onOpenCradle={campaignSaveBusy || archiveTransferBusy || archiveRecoveryIssue || resumableHunt
+                onPassageCommand={onElderPassageCommand} onMentoringCommand={onElderMentoringCommand} onAssemblyCommand={onElderAssemblyCommand}
+                onOpenCradle={campaignSaveBusy || archiveTransferBusy || archiveRecoveryIssue || resumableHunt
                   ? undefined : () => go("buried-cradle-briefing")} />
             </Suspense>
             <p className="source-badge">

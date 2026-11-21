@@ -693,6 +693,8 @@ export interface SaveGame {
   /** Physical PLAN08 expedition, with distinct victory, crest and debrief receipts. */
   buriedCradle?: import("./systems/buriedCradleCampaign").BuriedCradleCampaign | null;
   elderPassageJudgmentV168?: import("./systems/elderPassageJudgmentV168").ElderPassageJudgmentV168 | null;
+  elderMentoringV168?: import("./systems/elderMentoringV168").ElderMentoringV168 | null;
+  elderAssemblyV168?: import("./systems/elderAssemblyV168").ElderAssemblyV168 | null;
   /** Explicit residence, installed quarters and physical presence of recruited companions. */
   companionResidence?: import("./systems/companionResidence").CompanionResidenceState | null;
   /** Replayed physical incidents at the existing clan terminals, OPS-B01/B02/B03. */

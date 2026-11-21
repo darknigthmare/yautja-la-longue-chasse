@@ -76,3 +76,41 @@ export function decideHuntCampaignInputV112(game,tick,memory,strategy='mixed'){
   memory.previousX=player.x;
   return{held:[...new Set(held)],pressed:[...new Set(pressed)],pointer,reason,target};
 }
+
+/** The ground recipe approaches the actual trophy, even when another target is
+ * alive. Reach is assessed by production before the interact edge is emitted. */
+export function decideGroundApexTrophyInputV112(game,tick,memory,point,inReach){
+  const player=game.player,pc=center(player);
+  if(inReach){
+    delete memory.trophyExit;
+    return {held:[],pressed:["interact"],reason:"reachable apex trophy"};
+  }
+  const feet=player.y+player.height;
+  if(memory.trophyExit&&feet>memory.trophyExit.surfaceY+6)delete memory.trophyExit;
+  if(!memory.trophyExit&&player.grounded&&point.y-pc.y>88){
+    const support=game.world.platforms.find(platform=>
+      Math.abs(platform.y-feet)<3&&player.x+player.width>platform.x&&player.x<platform.x+platform.width);
+    if(support){
+      const ends=[support.x-player.width/2-18,support.x+support.width+player.width/2+18]
+        .filter(x=>x>=player.width/2&&x<=game.world.width-player.width/2);
+      ends.sort((a,b)=>Math.abs(a-pc.x)-Math.abs(b-pc.x));
+      if(ends.length)memory.trophyExit={x:ends[0],surfaceY:support.y};
+    }
+  }
+  let x=memory.trophyExit?.x??point.x;
+  const side=(Math.floor(tick/90)%2)===0?1:-1;
+  if(!memory.trophyExit&&player.grounded&&Math.abs(x-pc.x)<18)x+=side*85;
+  const dx=x-pc.x,held=[],pressed=[];
+  if(Math.abs(dx)>6)held.push(dx>0?"right":"left");
+  const still=held.length&&Number.isFinite(memory.previousTrophyX)&&Math.abs(memory.previousTrophyX-player.x)<.2;
+  memory.trophyStuckTicks=still?(memory.trophyStuckTicks??0)+1:0;
+  memory.previousTrophyX=player.x;
+  if(player.grounded&&!memory.trophyExit&&tick>=(memory.nextTrophyJump??0)&&
+      (memory.trophyStuckTicks>=18||point.y<pc.y-88&&Math.abs(point.x-pc.x)<145)){
+    pressed.push("jump");
+    memory.nextTrophyJump=tick+66;
+    memory.trophyJumpUntil=tick+12;
+  }
+  if(tick<(memory.trophyJumpUntil??0))held.push("jump");
+  return {held,pressed,reason:memory.trophyExit?"descend to apex trophy":"approach apex trophy"};
+}

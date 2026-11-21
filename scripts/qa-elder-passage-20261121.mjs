@@ -4,6 +4,7 @@ import { execFileSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { chromium } from "playwright-core";
+import { completeElderPassage } from "./lib/qa-elder-passage-ui-v168.mjs";
 import { homeworldSceneSsrV78 } from "../tests/helpers/homeworld-scene-ssr-v78.mjs";
 
 const url = "http://127.0.0.1:3121/";
@@ -26,8 +27,6 @@ const page = await browser.newPage({ viewport: { width:980,height:840 },storageS
 }]} });
 page.on("pageerror",error=>report.errors.push(error.message));
 const disk = () => page.evaluate(key=>JSON.parse(localStorage.getItem(key)),SAVE_STORAGE_KEY);
-const button = name => page.locator("[data-elder-passage-v168]").getByRole("button",{name,exact:true});
-const waitStatus = words => page.waitForFunction(text=>document.querySelector("[data-passage-status]")?.textContent.includes(text),words);
 async function open() {
   await page.waitForSelector("[data-campaign-menu], [data-campaign-session]");
   if (await page.locator("[data-campaign-menu]").isVisible()) {
@@ -48,18 +47,7 @@ async function open() {
 try {
   await page.goto(url);
   await open();
-  await page.locator("[data-passage-board]").focus();
-  await page.keyboard.press("ArrowUp");
-  for (const name of ["Ouest","Ouest","Relever la trace ouest","Est","Est","Est","Est","Relever la trace est","Rejouer le trajet contesté"]) await button(name).click();
-  await waitStatus("au même moment");
-  await button("Essayer les horaires").click();
-  await waitStatus("Le trajet reste impraticable");
-  assert.equal((await disk()).elderPassageJudgmentV168.resolved,false);
-  await page.locator("[data-elder-passage-v168] select").selectOption("3");
-  await button("Essayer les horaires").click();
-  await waitStatus("Les deux trajets passent");
-  for (const name of ["Ouest","Ouest","Sud","Sud","Présenter l’arrangement au témoin"]) await button(name).click();
-  await page.locator("[data-passage-resolved]").waitFor();
+  await completeElderPassage(page, disk);
   const concluded = await disk();
   assert.deepEqual(concluded.elderPassageJudgmentV168.trial,{method:"schedule",delay:3});
   assert.deepEqual(concluded.profile,admitted.profile);
