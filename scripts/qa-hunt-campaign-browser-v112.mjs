@@ -18,6 +18,7 @@ import {chromium} from 'playwright-core';
 import postcss from 'postcss';
 import tailwind from '@tailwindcss/postcss';
 import {decideHuntCampaignInputV112} from './lib/qa-hunt-campaign-input-v112.mjs';
+import {decideGroundApexTrophyInputV112} from './lib/qa-hunt-ground-policy-v112.mjs';
 
 assert.notEqual(process.env.SITES_MANAGED_LINUX_CONTAINER,'1','Managed Sites requires its supported CUA preview; this runner is portable only.');
 const root=fileURLToPath(new URL('../',import.meta.url));
@@ -81,7 +82,15 @@ const bundle=await build({stdin:{contents:entry,resolveDir:root,loader:'tsx'},bu
     builder.onLoad({filter:/\/HuntCanvas\.tsx$/},()=>{
       const marker='    const fixedStep = 1 / 60;';
       assert.equal(source.split(marker).length,2,'exactly one native observation point');
-      const observer='    window.__observeCanonicalHuntV112 = () => ({ alive, missionId: mission.id, encounterRun, state: JSON.parse(JSON.stringify(game, (_key,value) => value instanceof Set ? [...value] : value)) });\n';
+      const observer=`
+    window.__observeCanonicalHuntV112 = () => {
+      const target = game.phase === "trophy" && !game.trophyExtracting && !game.regularTrophyDropId
+        ? activeTrophyHarvestTargetV111(game) : null;
+      return { alive, missionId: mission.id, encounterRun,
+        apexTrophy: target && { ...target, inReach: canContinueTrophyHarvestV111(game) },
+        state: JSON.parse(JSON.stringify(game, (_key, value) => value instanceof Set ? [...value] : value)) };
+    };
+`;
       recordSource(path.join(root,'app/game/HuntCanvas.tsx'),source);
       return{loader:'tsx',resolveDir:path.join(root,'app/game'),contents:source.replace(marker,observer+marker)};
     });
@@ -103,7 +112,7 @@ const report={schema:1,generatedAt:new Date().toISOString(),sourceCommit:revisio
     parseSaveImport:{accepted:Boolean(parsedAdmission.save),failure:parsedAdmission.failure??null}},
   requestedMissionIds:requested,
   harvestSpeciesGoal:harvestSpecies,harvestActionGoal:harvestAction,skipHarvest,
-  attempts:[],captures:[],errors:[],missingAssets:[],inputs:[],armoryTransactions:[],harvestAttempts:[],workshop:[],discoveryObservations:[],resumeObservations:[],routeObservations:[],qualification:'ATTEMPT_ONLY'};
+  attempts:[],captures:[],errors:[],missingAssets:[],inputs:[],armoryTransactions:[],harvestAttempts:[],workshop:[],discoveryObservations:[],resumeObservations:[],routeObservations:[],apexTrophyObservations:[],qualification:'ATTEMPT_ONLY'};
 report.sourceContext.applicationSources=[...applicationSources.values()].sort((a,b)=>a.file.localeCompare(b.file));
 report.sourceContext.changedApplicationSources=report.sourceContext.applicationSources.filter(input=>!input.matchesBaseCommit).map(input=>input.file);
 report.sourceContext.gitCommitIsBaseOnly=report.sourceContext.changedApplicationSources.length>0;
@@ -352,6 +361,7 @@ try{
     const samples=[],examined=new Set(),harvestTries=new Map(),discoveryChannels=new Set(),retryEvents=[];
     let final=null,lastSecond=-1,lastPhase='',resumed=false,resumeReceipt=null,lastDecision=null;
     let startedWestOfIceGate=false,seenIceUnderpass=false;
+    let trophyApproachMemory={},previousApexReason=null;
     const releaseKeys=async()=>{for(const action of held)await page.keyboard.up(keys[action]);held.clear();};
     while(!stopRequested&&Date.now()-start<budget*1000){
       const {observed,activeElement,bodyId}=await page.evaluate(()=>{
@@ -395,10 +405,26 @@ try{
           receipts:game.ecosystem.receipts.filter(receipt=>receipt.actorId===visibleDiscovery.actorId&&receipt.corpseId===visibleDiscovery.corpseId),capture:name});
       }
       if(game.phase==='dead'){
-        const retry=page.getByRole('button',{name:/^(Reprendre au relais|Réessayer(?: la chasse)?|Recommencer la chasse)$/}).first();
-        if(retryEvents.length>=maxRetries||!await retry.count())break;
-        await releaseKeys();const label=await retry.textContent();retryEvents.push({elapsed:game.elapsed,nativeDeath:observed,button:label});
-        await retry.click();Object.assign(memory,{previousX:0,stuckTicks:0,jumpUntil:-1,nextJump:0,nextInteractTick:0});
+        if(retryEvents.length>=maxRetries)break;
+        await releaseKeys();
+        const dialog=page.getByRole('dialog',{name:'Le rite n’est pas terminé',exact:true});
+        const retry=dialog.getByRole('button',{name:/^(Reprendre au relais|Réessayer)$/});
+        let label;
+        try{
+          label=await retry.textContent({timeout:4000});
+          await retry.focus({timeout:4000});
+          await page.keyboard.press('Enter');
+          await page.waitForFunction(()=>{
+            const current=window.__observeCanonicalHuntV112?.();
+            return current?.alive&&current.state.phase!=='dead';
+          },null,{timeout:8000});
+        }catch(error){
+          report.inputs.push({missionId,elapsed:game.elapsed,type:'DOM retry unavailable',reason:String(error)});
+          break;
+        }
+        retryEvents.push({elapsed:game.elapsed,nativeDeath:observed,button:label});
+        Object.assign(memory,{previousX:0,stuckTicks:0,jumpUntil:-1,nextJump:0,nextInteractTick:0});
+        trophyApproachMemory={};previousApexReason=null;
         delete memory.dropDirection;delete memory.dropTargetX;delete memory.harvestEdge;delete memory.harvestDirection;
         examined.clear();harvestTries.clear();
         // The new live attempt needs its own observed save roundtrip.
@@ -478,7 +504,25 @@ try{
         if(!attempt.specimens?.length&&(harvestTries.get(bodyId)??0)<3)examined.delete(bodyId);
         continue;
       }
-      const decision=decideHuntCampaignInputV112(game,Math.round(game.elapsed*60),memory,'mixed');
+      const tick=Math.round(game.elapsed*60);
+      const decision=decideHuntCampaignInputV112(game,tick,memory,'mixed');
+      const trophy=observed.apexTrophy;
+      const purgePending=game.bossMechanics.missionId==='volcano-bad-blood'&&
+        game.bossMechanics.purgeSeconds!==null&&!game.bossMechanics.purgeResolved;
+      if(trophy&&!purgePending&&['apex trophy','descend by support edge'].includes(decision.reason)){
+        const approach=decideGroundApexTrophyInputV112(game,tick,trophyApproachMemory,trophy.point,trophy.inReach);
+        decision.held=approach.held;
+        decision.pressed=[...decision.pressed.filter(action=>action==='heal'||action==='scan'),...approach.pressed];
+        decision.pointer=null;decision.reason=approach.reason;decision.target=trophy.point;
+        if(previousApexReason!==approach.reason){
+          previousApexReason=approach.reason;
+          const {x,y,height,grounded}=game.player;
+          const receipt={missionId,elapsed:game.elapsed,reason:approach.reason,player:{x,y,feet:y+height,grounded},
+            target:trophy,exit:trophyApproachMemory.trophyExit??null};
+          report.apexTrophyObservations.push(receipt);
+          console.log(JSON.stringify({browserApexTrophy:receipt}));
+        }
+      }
       if(desiredCorpse&&!game.huntRites.specimensV112.length&&quiet&&!game.trophyExtracting&&(game.phase==='tracking'||game.phase==='target')){
         let destination=desiredCorpse.x;const pc=game.player.x+game.player.width/2,feet=game.player.y+game.player.height;
         if(game.player.grounded&&desiredCorpse.y-feet>40){

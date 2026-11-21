@@ -16,4 +16,36 @@ test('persistent session writes and reloads the exact whole archive without camp
 test('quota denial rolls back, incompatible and concurrent bytes remain untouched',async()=>{let raw=null,fail=false;const storage={getItem:()=>raw,setItem:(_,v)=>{if(fail)throw Error('quota');raw=v;}},lock=async f=>f(),s=api.createLogisticsSessionV108(storage,lock);s.hydrate();await s.act({kind:'hire',actor:'carrier'});const previous=s.getSnapshot().state,bytes=raw;fail=true;await s.act({kind:'wait'});assert.equal(s.getSnapshot().state,previous);assert.equal(raw,bytes);fail=false;raw='foreign';await s.act({kind:'wait'});assert.equal(s.getSnapshot().state,previous);assert.equal(raw,'foreign');assert.equal(s.getSnapshot().blocked,true);const other=api.createLogisticsSessionV108(storage,lock);other.hydrate();assert.equal(other.getSnapshot().blocked,true);assert.equal(raw,'foreign');});
 test('two pre-existing mounted footprints return to a staffed area and consume one shared finite bidon',()=>{const d=driver();initial(d,'W3-S10');d.build('W3-S10');d.home('carrier');d.send({kind:'load-object',object:'water'});d.east('carrier',720,530);d.send({kind:'install-object',object:'water'});for(const [i,x] of [[1,570],[2,650]]){d.east('operator:W3-S10',x,90);d.send({kind:'lead',mount:'mount-v108-'+i});d.walk('operator:W3-S10',570,90);d.walk('operator:W3-S10',570,390);d.walk('operator:W3-S10',660,390);d.walk('operator:W3-S10',660,530);d.walk('operator:W3-S10',720,530);d.send({kind:'staff',work:'W3-S10'});d.send({kind:'care',mount:'mount-v108-'+i});d.send({kind:'unlead',mount:'mount-v108-'+i});}assert.equal(d.s.water.remaining,2);assert.equal(d.s.water.consumed,4);assert.ok(d.s.mounts.every(m=>m.watered===2&&m.x===720&&m.y===530));d.send({kind:'recover-object',object:'water'});d.home('carrier');d.send({kind:'return-object',object:'water'});assert.equal(d.s.water.remaining,2);});
 test('third-party interruption, renewed signatures, actual movement dodge and one chest handover',()=>{const d=driver();for(const a of ['carrier','operator:W3-S14','rival'])d.hire(a);d.wait(3);for(const a of ['operator:W3-S14','rival']){d.home(a);d.send({kind:'rav-load',actor:a,location:'depot',amount:6});}d.send({kind:'rav-load',actor:'carrier',location:'depot',amount:20});d.build('W3-S14');d.east('rival',815,320);d.walk('carrier',800,405);for(const a of ['operator:W3-S14','rival'])d.send({kind:'sign',actor:a});d.send({kind:'duel-start'});d.walk('carrier',800,370);assert.equal(d.s.duel.phase,'interrupted');d.walk('carrier',800,405);d.send({kind:'duel-renegotiate'});for(const a of ['operator:W3-S14','rival'])d.send({kind:'sign',actor:a});d.send({kind:'duel-start'});for(let i=0;i<3;i++){d.walk('operator:W3-S14',800,320);d.send({kind:'duel-strike'});if(i<2){d.walk('operator:W3-S14',770,320);d.send({kind:'duel-reply'});}}d.send({kind:'duel-claim'});d.deny({kind:'duel-claim'});assert.equal(d.s.duel.phase,'won');assert.equal(d.s.duel.player,3);assert.equal(d.s.receipts.filter(r=>r==='duel:chest').length,1);});
+test('W3-S15 gain and pan follow the existing playback range and the real occlusion gate',()=>{
+ const d=driver();
+ initial(d,'W3-S15');
+ d.build('W3-S15');
+ const listener='operator:W3-S15';
+ const sample=source=>api.logisticsAcousticsV108(d.s,source);
+ assert.equal(sample('missing').status,'unavailable');
+ d.east(listener,640,70);
+ const left=sample('ship');
+ assert.equal(left.status,'audible');
+ assert(left.pan < -.8);
+ d.walk(listener,560,70);
+ const right=sample('ship');
+ assert.equal(right.status,'audible');
+ assert(right.pan > .8);
+ assert(right.gain > left.gain);
+ d.walk(listener,750,70);
+ assert.deepEqual(sample('ship'),{status:'range',distance:170,gain:0,pan:0});
+ d.walk(listener,820,70);
+ d.walk(listener,820,145);
+ const scan=sample('scan');
+ assert.equal(scan.status,'audible');
+ assert(scan.pan > .8);
+ d.walk(listener,820,110);
+ const covered=sample('scan');
+ assert.equal(covered.status,'occluded');
+ assert(covered.distance < 150);
+ assert.equal(covered.gain,0);
+ assert.equal(api.logisticsHearingV108(d.s,'scan'),false);
+ d.deny({kind:'record',sourceId:'scan',seconds:1});
+});
+
 test('same U19, hull and finite cargo resume midflight and return across physically distinct layers',()=>{const d=driver();initial(d,'W3-S18');d.build('W3-S18');d.home('carrier');d.send({kind:'rav-load',actor:'carrier',location:'depot',amount:20});d.east('carrier',900,480);d.send({kind:'rav-deposit',actor:'carrier',location:'W3-S18',amount:20});d.send({kind:'rav-load',actor:'carrier',location:'W3-S18',amount:6});d.send({kind:'recon'});d.send({kind:'authorize'});d.send({kind:'shuttle-board'});d.send({kind:'shuttle-depart'});for(let i=0;i<7;i++)d.send({kind:'shuttle-step'});const mid=api.importLogisticsV108(api.exportLogisticsV108(d.s));assert.deepEqual(mid.state,d.s);d.deny({kind:'shuttle-land'});for(let i=7;i<16;i++)d.send({kind:'shuttle-step'});d.send({kind:'shuttle-land'});assert.equal(d.s.actors[0].layer,'orbit');d.walk('carrier',890,60);d.deny({kind:'move',actor:'carrier',dx:-18,dy:0});d.send({kind:'shuttle-board'});d.send({kind:'shuttle-depart'});for(let i=0;i<16;i++)d.send({kind:'shuttle-step'});d.send({kind:'shuttle-land'});assert.equal(d.s.actors[0].layer,'surface');assert.equal(d.s.shuttle.fuel,2);assert.equal(d.s.receipts.filter(r=>r.startsWith('shuttle:')).length,2);assert.equal(api.logisticsConservationV108(d.s),true);});

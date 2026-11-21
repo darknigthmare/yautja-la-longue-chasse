@@ -175,8 +175,15 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
       Clore ce départ sans récompense
     </button>}
   </article>;
-  const spaceReport = !activeContract && state.spaceEncounter && atCouncil && <article className={styles.activeContract} data-clan-space-report>
+  const lastReceipt = state.completedContracts.at(-1);
+  const collectiveReturn = state.spaceEncounter?.status === 'victory' &&
+    lastReceipt?.contractId === CLAN_SHIP_COLLECTIVE_ID && lastReceipt.proof.kind === 'space'
+    ? lastReceipt.proof.collective : undefined;
+  const atReportPost = atCouncil || (collectiveReturn?.role != null && roomId === clanShipCollectiveStation(collectiveReturn.role));
+  const spaceReport = !activeContract && state.spaceEncounter && atReportPost && <article className={styles.activeContract}
+    data-clan-space-report data-collective-report-role={collectiveReturn?.role}>
     <span className={styles.eyebrow}>DERNIER RAPPORT TACTIQUE</span>
+    {collectiveReturn && <h3>{clanShipContract(CLAN_SHIP_COLLECTIVE_ID)?.name}</h3>}
     <ClanShipSpaceEncounter encounter={state.spaceEncounter} suspended={suspended} campaign={save}
       onCommand={command => act({ type: 'space-command', command, expectedRevision: state.revision })} />
   </article>;

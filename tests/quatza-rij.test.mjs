@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { homeworldSceneSsrV78 } from './helpers/homeworld-scene-ssr-v78.mjs';
 import { playShipAcquisitionV161 } from './helpers/ship-receipt-v161.mjs';
 import { formationCampaignRoute } from './helpers/solo-v90-played-route.mjs';
+import { playQuatzaAbsence, playQuatzaRescue } from './helpers/quatza-triage-route.mjs';
 
 const qa = homeworldSceneSsrV78();
 const engine = qa.load('app/game/systems/quatzaRij.ts');
@@ -229,4 +230,72 @@ test('original Quatza sheet and separate field trophies retain their runtime dim
     assert.equal(binary.readUInt32BE(16), width);
     assert.equal(binary.readUInt32BE(20), height);
   }
+});
+
+test('an actual missing companion opens a separate, resumable rescue with no trophy or rank', () => {
+  const { save: origin } = formationCampaignRoute();
+  const begin = expectedAttempts => ({ type: 'begin', mode: 'triad', expectedAttempts });
+  const open = { type: 'begin-rescue', mode: 'triad', expectedAttempts: 1 };
+  const begun = commit(origin, begin(0));
+  assert.equal(engine.commitQuatzaRij(begun, open).ok, false);
+  const hunt = playQuatzaAbsence(engine);
+  const retreated = persistInputs(begun, 'triad', hunt.input);
+  const last = save => save.quatzaRij.expeditions.triad.attempts.at(-1);
+  assert.equal(last(retreated).phase, 'retreated');
+  assert.equal(engine.canRetryQuatza('triad', last(retreated)), false);
+  assert.equal(engine.commitQuatzaRij(retreated, begin(1)).ok, false);
+  assert.equal(engine.commitQuatzaRij(retreated, {
+    type: 'present-return', mode: 'triad', expectedAttempts: 1, subject: 'companions', expectedPresentations: 0,
+  }).ok, false);
+  const legacy = structuredClone(retreated);
+  delete last(legacy).rescueRules;
+  assert(engine.canRetryQuatza('triad', last(legacy)));
+  const restoredLegacy = saves.parseSaveImport(saves.exportSave(legacy));
+  assert(restoredLegacy.save, restoredLegacy.failure);
+  assert.deepEqual(last(restoredLegacy.save), last(legacy));
+  assert(engine.commitQuatzaRij(legacy, open).ok);
+
+  let save = commit(retreated, open);
+  assert(engine.isQuatzaRijSuccessor(retreated.quatzaRij, save.quatzaRij));
+  const id = last(save).rescue.id;
+  assert.match(id, /^[0-9a-f]{8}-[0-9a-f]{4}-8[0-9a-f]{3}-a[0-9a-f]{3}-[0-9a-f]{12}$/);
+  assert.equal(engine.commitQuatzaRij(save, open).ok, false);
+  const operation = playQuatzaRescue(engine, hunt.frame);
+  const advance = (expectedTick, input, nextId = id) => ({
+    type: 'advance-rescue', mode: 'triad', expectedAttempts: 1, id: nextId, expectedTick, input,
+  });
+  assert.equal(engine.commitQuatzaRij(save, advance(0, operation.input.slice(0, 1), id.replace(/^./, 'e'))).ok, false);
+  assert.equal(engine.commitQuatzaRij(save, advance(0, [I.jump])).ok, false);
+  const starts = [0, operation.admissionTick, operation.carryTick, operation.input.length];
+  for (let leg = 0; leg < starts.length - 1; leg++) {
+    for (let tick = starts[leg]; tick < starts[leg + 1]; tick += 60) {
+      const command = advance(tick, operation.input.slice(tick, Math.min(tick + 60, starts[leg + 1])));
+      const next = commit(save, command);
+      assert(engine.isQuatzaRijSuccessor(save.quatzaRij, next.quatzaRij));
+      assert.deepEqual(commit(next, command), next);
+      assert.equal(engine.commitQuatzaRij(next, advance(tick, [I.signal])).ok, false);
+      const imported = saves.parseSaveImport(saves.exportSave(next));
+      assert(imported.save, imported.failure);
+      save = imported.save;
+    }
+  }
+  assert.equal(last(save).rescue.phase, 'reunited');
+  assert.equal(last(save).phase, 'retreated');
+  assert.deepEqual(last(save).input, hunt.input);
+  assert.deepEqual(engine.replayQuatzaRescue(hunt.frame, last(save).rescue.input), operation.frame);
+  assert.equal(engine.hasQuatzaReturn(save.quatzaRij, save.createdAt, 'triad'), false);
+  assert.deepEqual(save.profile, retreated.profile);
+  assert.deepEqual(save.prologue, retreated.prologue);
+  assert.deepEqual(save.inventory, retreated.inventory);
+  assert.deepEqual(save.trophies, retreated.trophies);
+  const forged = structuredClone(save);
+  last(forged).rescue.id = '00000000-0000-8000-a000-000000000000';
+  assert.equal(saves.parseSaveImport(JSON.stringify(forged)).failure, 'invalid-save');
+  last(forged).rescue.id = id;
+  last(forged).rescue.input = [];
+  assert.equal(saves.parseSaveImport(JSON.stringify(forged)).failure, 'invalid-save');
+  const retry = commit(save, begin(1));
+  assert(engine.isQuatzaRijSuccessor(save.quatzaRij, retry.quatzaRij));
+  assert.deepEqual(retry.quatzaRij.expeditions.triad.attempts[0], last(save));
+  assert.equal(engine.commitQuatzaRij(retry, advance(operation.frame.tick, [0])).ok, false);
 });
