@@ -9,7 +9,8 @@ import { build } from "esbuild";
 const url=new URL("../app/game/HuntCanvas.tsx",import.meta.url);
 const source=await readFile(url,"utf8");
 const bundle=await build({stdin:{contents:`${source.replace("export default function HuntCanvas","function HuntCanvas")}
-export {makeGameState,updatePlayer,captureCheckpoint,restoreCheckpoint,serializeActiveHuntCheckpoint,deserializeActiveHuntCheckpoint,currentCanopyNavigationV112};
+export {makeGameState,updatePlayer,captureCheckpoint,restoreCheckpoint,serializeActiveHuntCheckpoint,deserializeActiveHuntCheckpoint,currentCanopyNavigationV112,
+ makeEnemy,damageEnemy,riteContextV77,startHuntRiteV77,updateHuntRitesV77,huntFieldLoadV112,canopySupportReachableV112};
 export {defaultSave} from "./save"; export {MISSION_BY_ID} from "./data";`,
 resolveDir:fileURLToPath(new URL("../app/game/",import.meta.url)),sourcefile:fileURLToPath(url),loader:"tsx"},
 bundle:true,write:false,format:"cjs",platform:"node",jsx:"automatic",loader:{".module.css":"empty"},external:["react","react/jsx-runtime","react-dom"],logLevel:"silent"});
@@ -268,6 +269,126 @@ test("a pumped native pendulum releases and catches the next authored vine witho
  assert.equal(f.state.player.climbZoneId,nextId);
  assert.equal(f.state.player.aerialBoostUsed,false);
  assert.ok(f.state.player.stamina>0&&f.state.player.stamina<f.state.player.maxStamina);
+});
+
+test("a full-volume scout bag earned through native flaying stays aboard through authored canopy transfers",()=>{
+ const save=runtime.defaultSave("2026-11-21T00:00:00Z");
+ save.loadout.armorId="scout";
+ save.inventory.fieldToolIds=["flaying-tool"];
+ const mission=runtime.MISSION_BY_ID["jungle-vey"];
+ const state=runtime.makeGameState(mission,save.loadout,save.inventory,"hunter",save.appearance,false,false,"canopy-loaded",save.exploration);
+ const {player,world}=state;
+ const rests=world.platforms.filter(platform=>platform.id.startsWith("v112-canopy-jungle-vey-0-"));
+ assert.equal(rests.length,6);
+ const [entry,vine,next]=rests.slice(0,3).map(rest=>world.climbables.find(support=>support.id===rest.id.replace("-rest","-grip")));
+ assert.equal(entry.kind,"tree");
+ assert.equal(vine.kind,"vine");
+ assert.equal(next.kind,"vine");
+ const center=actor=>actor.x+actor.width/2;
+ const feet=()=>player.y+player.height;
+ const dt=1/120;
+ const held=new Set();
+ const input={keyboardHeld:held,touchHeld:new Set(),gamepadHeld:new Set(),pressed:new Set(),
+  previousGamepadButtons:[],activeGamepadIndex:null,gamepadNeedsNeutral:true,gamepadDialogActions:[],pointerScreen:null};
+ const frame=()=>{
+  state.elapsed+=dt;
+  runtime.updatePlayer(state,mission,save.loadout,save.inventory,save.appearance,"hunter",input,dt,()=>{});
+ };
+ const until=(stage,ticks,predicate)=>{
+  for(let tick=0;tick<ticks&&!predicate();tick++)frame();
+  assert.ok(predicate(),stage);
+ };
+ const jump=()=>{held.add("jump");input.pressed.add("jump");};
+ const onRest=rest=>player.grounded&&Math.abs(feet()-rest.y)<1e-6&&player.x+player.width>rest.x&&player.x<rest.x+rest.width;
+
+ // Admit the worksite at the foot of the authored tree. Each seeded prey is
+ // killed by production damage and each hide earns its own two completed rites.
+ state.enemies=[];
+ Object.assign(player,{x:center(entry)-player.width/2,y:world.floorY-player.height,
+  previousY:world.floorY-player.height,velocityX:0,velocityY:0,grounded:true,
+  climbing:false,climbZoneId:null,canopySwing:null});
+ for(let index=0;index<6;index++){
+  const prey=runtime.makeEnemy("canopy-prey-"+index,"hell-hound-stalker",mission.id,center(player)+40,world.width,80,10,0,1,1);
+  Object.assign(prey,{x:center(player)+40-prey.width/2,y:world.floorY-prey.height,
+   knockbackRestY:world.floorY-prey.height,scanned:true});
+  state.enemies.push(prey);
+  runtime.damageEnemy(state,mission,prey,prey.maxHealth+1,"melee");
+  assert.equal(prey.alive,false);
+  for(const action of ["flay","harvest-hide"]){
+   const started=runtime.startHuntRiteV77(state.huntRites,prey.id,action,runtime.riteContextV77(state));
+   assert.ok(started.accepted,started.message);
+   state.huntRites=started.state;
+   state.riteOperationDamageStart=state.damageTaken;
+   for(let tick=0;tick<120&&state.huntRites.operation;tick++){
+    state.elapsed+=.1;
+    runtime.updateHuntRitesV77(state,.1);
+   }
+   assert.ok(state.huntRites.completedEventIds.includes(action+":"+prey.id),action+" must complete natively");
+  }
+ }
+ const cargo=JSON.stringify(state.huntRites.specimensV112);
+ assert.equal(state.huntRites.specimensV112.length,6);
+ const load=runtime.huntFieldLoadV112(state);
+ assert.equal(load.volumeUnits,18);
+ assert.equal(load.volumeUnits,load.capacityVolumeUnits);
+ assert.ok(load.massKg<load.capacityMassKg);
+ assert.equal(load.overloaded,false);
+
+ held.add("up");
+ until("enter and climb the authored tree with the loaded bag",420,()=>player.climbZoneId===entry.id&&feet()<=rests[0].y-16);
+ held.clear();held.add("right");frame();held.clear();
+ until("land on the first authored branch",240,()=>onRest(rests[0]));
+ held.add("right");
+ until("walk toward the first branch's takeoff edge",90,()=>center(player)>=center(rests[0])+36);
+ jump();
+ for(let tick=0;tick<240&&!onRest(rests[1]);tick++){
+  if(center(player)>=center(rests[1])-20)held.delete("right");
+  frame();
+ }
+ assert.ok(onRest(rests[1]),"land on the second authored branch with the bag");
+ held.clear();frame();
+ held.add("up");
+ until("climb the actual vine above the second branch",120,()=>
+  player.climbZoneId===vine.id&&player.y+player.height*.28-vine.y<=120);
+ held.clear();held.add("right");frame();
+ const initialSwing=player.canopySwing;
+ assert.ok(initialSwing);
+
+ // Exercise the field-load multiplier through updatePlayer, rather than
+ // passing it by hand to the pendulum solver.
+ held.clear();held.add("up");
+ for(let tick=0;tick<6;tick++)frame();
+ assert.ok(player.canopySwing);
+ assert.ok(Math.abs(initialSwing.length-player.canopySwing.length-80*load.movementMultiplier*6*dt)<1e-6);
+ held.clear();held.add("down");
+ for(let tick=0;tick<6;tick++)frame();
+ held.clear();
+
+ for(let tick=0;tick<720;tick++){
+  const swing=player.canopySwing;
+  assert.ok(swing,"the loaded hunter keeps a real grip while pumping");
+  if(swing.angle>=.15&&swing.angle<=.8&&Math.cos(swing.angle)*swing.length*swing.angularVelocity>=300)break;
+  held.clear();held.add(swing.angularVelocity>=0?"right":"left");
+  frame();
+ }
+ const release=player.canopySwing;
+ assert.ok(release&&release.angle>=.15&&release.angle<=.8);
+ assert.ok(Math.cos(release.angle)*release.length*release.angularVelocity>=300,"native pumping produces a useful tangent");
+ held.clear();held.add("right");jump();frame();
+ assert.equal(player.climbing,false);
+ assert.equal(player.canopySwing,null);
+ held.delete("jump");
+ const reachable=support=>runtime.canopySupportReachableV112(player,support,world.platforms);
+ for(let tick=0;tick<90&&!player.climbing;tick++){
+  if(!reachable(vine)&&reachable(next)&&player.climbReattachSeconds<=dt)held.add("up");
+  else held.delete("up");
+  frame();
+ }
+ assert.equal(player.climbZoneId,next.id,"the real flight reaches the next authored vine");
+ assert.equal(player.aerialBoostUsed,false);
+ assert.ok(player.stamina>0&&player.stamina<player.maxStamina);
+ assert.equal(JSON.stringify(state.huntRites.specimensV112),cargo);
+ assert.equal(runtime.huntFieldLoadV112(state).volumeUnits,load.capacityVolumeUnits);
 });
 
 for(const [supportId,expectedHeight,gripLength] of [
