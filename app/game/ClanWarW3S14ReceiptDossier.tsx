@@ -6,7 +6,10 @@ import {
   type W3S14SignedReceipt,
 } from "./systems/clanWarW3S14Receipt";
 
-const trustedKey = process.env.NEXT_PUBLIC_YAUTJA_W3_S14_VERIFY_KEY?.trim() ?? "";
+const trustedKey = (() => {
+  try {return process.env.NEXT_PUBLIC_YAUTJA_W3_S14_VERIFY_KEY?.trim() ?? "";}
+  catch {return "";}
+})();
 const outcomeLabels = {won: "Victoire du challenger", lost: "Victoire du rival", declined: "Duel refusé"};
 
 function parse(text: string): unknown {
