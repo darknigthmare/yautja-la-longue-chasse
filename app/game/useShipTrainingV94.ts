@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { pageActivitySnapshotV94 } from "./systems/pageActivityV94";
 import { createShipTrainingReceiptV94, restoreShipTrainingReceiptV94, type ShipTrainingReceiptV94 } from "./systems/shipTrainingReceiptV94";
-import { recordTrainingResult, TRAINING_LABELS, type ShipProgressionState, type TrainingDisciplineId } from "./systems/progression";
+import { recordTrainingResult, shipTrainingRecord, TRAINING_LABELS, type ShipProgressionState, type TrainingDisciplineId } from "./systems/progression";
 import { createShipTrainingRecoveryPortV94, createShipTrainingRecoveryQueueV94, type ShipTrainingRecoveryPortV94 } from "./systems/shipTrainingRecoveryV94";
 import type { SaveGame } from "./types";
 import { canPracticeClanPlasma } from "./systems/trainingDrill";
@@ -151,7 +151,8 @@ export function useShipTrainingV94(options: Options) {
   const acceptScore = useCallback((id: number, score: number) => {
     const o = live.current, active = session.current;
     if (!mounted.current || !active || active.id !== id || active.owner !== o.save.createdAt || claimed.current) return;
-    if (!Number.isInteger(score) || score < 0 || score > 100) {
+    if (!Number.isInteger(score) || score < 0 || score > 100 ||
+        (active.disciplineId === "clan-hunt" && !canPracticeClanPlasma(o.save.missionProgress))) {
       session.current = null; setTrainingSession(null); notify("Résultat d’entraînement invalide : aucun score consigné."); return;
     }
     claimed.current = true;
@@ -210,11 +211,13 @@ export function useShipTrainingV94(options: Options) {
   }, [notify, retryTrainingSave]);
   const requestTraining = useCallback(async (disciplineId: TrainingDisciplineId, clanPlasma = false) => {
     const o = live.current;
+    const clanPreparation = clanPlasma || disciplineId === "clan-hunt";
     if (!available() || finishing.current || session.current || hasPendingResult() || !Object.hasOwn(TRAINING_LABELS, disciplineId) ||
         o.progression.ownerSaveCreatedAt !== o.save.createdAt ||
-        (clanPlasma && (disciplineId !== "targeting" || !canPracticeClanPlasma(o.save.missionProgress)))) return;
+        (clanPlasma && disciplineId !== "targeting") ||
+        (clanPreparation && !canPracticeClanPlasma(o.save.missionProgress))) return;
     const active: TrainingSessionV94 = { id: ++nextId.current, owner: o.save.createdAt, disciplineId,
-      seed: o.progression.training[disciplineId].attempts, external: !clanPlasma && !!o.onTrainingRequested, clanPlasma };
+      seed: shipTrainingRecord(o.progression, disciplineId).attempts, external: !clanPreparation && !!o.onTrainingRequested, clanPlasma };
     session.current = active; claimed.current = false; setSaveIssue(null); setTrainingSession(active);
     notify(`${TRAINING_LABELS[disciplineId]} : ${active.external ? "épreuve externe en attente" : "épreuve autonome prête"}.`);
     if (!o.onTrainingRequested) return;

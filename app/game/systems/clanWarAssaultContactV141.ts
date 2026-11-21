@@ -15,6 +15,15 @@ export interface WarAssaultContactV141 {
 const clamp=(x:number,min:number,max:number)=>Math.max(min,Math.min(max,x));
 const sourceUnit=(rules:WarRulesV6,id:string)=>rules.units.find(u=>u.id===id);
 
+// W3-U04 follows traces on the ground even when optical contact is lost.
+export const WAR_ASSAULT_CLOAK_CAPACITY_V115 = 5;
+export const WAR_ASSAULT_CLOAK_RECHARGE_EDGE_V115 = 18;
+export function warAssaultCanSeeActorV141(observer: WarMissionActorV115, target: WarMissionActorV115): boolean {
+ if (!target.assaultCloak?.active) return true;
+ const distance = Math.abs(observer.x - target.x);
+ return distance <= 2 || (observer.unitId === "W3-U04" && distance <= 7);
+}
+
 export function warAssaultContactV141(
  original:readonly WarMissionActorV115[],rules:WarRulesV6,
  heldUntil:Readonly<Record<string,number>>,tick:number,
@@ -36,11 +45,12 @@ export function warAssaultContactV141(
    .sort((a,b)=>Math.abs(actor.x-a.x)-Math.abs(actor.x-b.x)||a.id.localeCompare(b.id));
   const ordered=actor.side==="ally"&&actor.teamId?focusOrders[actor.teamId]:undefined;
   const focus=ordered&&ordered.expiresAtTick>=tick?
-    opponents.find(other=>other.id===ordered.targetId&&
+    opponents.find(other=>other.id===ordered.targetId&&warAssaultCanSeeActorV141(actor,other)&&
       Math.abs(actor.x-other.x)<=range&&!opponents.some(blocker=>
         blocker.id!==other.id&&Math.abs(blocker.x-actor.x)<Math.abs(other.x-actor.x))) : undefined;
-  const hostile=focus??opponents[0];
-  if(hostile&&Math.abs(actor.x-hostile.x)<=range){
+  const nearest=opponents[0];
+  const hostile=focus??(nearest&&warAssaultCanSeeActorV141(actor,nearest)?nearest:undefined);
+  if(!actor.assaultCloak?.active&&hostile&&Math.abs(actor.x-hostile.x)<=range){
    const unguarded=clamp(Math.ceil((unit?.attack??3)/3),2,15)+(focus?1:0);
    // Bracing mitigates each actual enemy hit by exactly one, but
    // never makes any living enemy strike magically harmless.
@@ -103,7 +113,7 @@ export function warAssaultContactV141(
   const unit=sourceUnit(rules,actor.unitId);
   const damage=clamp(Math.ceil((unit?.attack??3)/3),2,15)*3;
   // Existing base-contact rule. The 1D edge cannot be crossed.
-  if(actor.side==="ally"&&actor.x>=94){rivalBaseDamage+=damage;actor.x=94;}
+  if(actor.side==="ally"&&actor.x>=94&&!actor.assaultCloak?.active){rivalBaseDamage+=damage;actor.x=94;}
   else if(actor.side==="rival"&&actor.x<=6){ownBaseDamage+=damage;actor.x=6;}
  }
  return {actors:next,ownBaseDamage,rivalBaseDamage,shots,focusedTeamIds,advancements:

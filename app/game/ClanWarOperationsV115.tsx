@@ -12,7 +12,7 @@ import {
   WAR_OPERATIONS_STORAGE_V115, beginWarOperationV115, commandRtsV115, commandStealthV115,
   createWarOperationsV115, deployAssaultUnitV115, issueWarRtsRealtimeOrderV115,
   holdWarRtsAlternatingV119,
-  upgradeWarAssaultApV117, issueWarAssaultSpecialV117,
+  upgradeWarAssaultApV117, issueWarAssaultSpecialV117, toggleWarAssaultCloakV115,
   queueWarRecruitmentV115,
   queueWarTreatmentV116, cancelWarTreatmentV116,
   leaveWarOperationV115, readWarOperationsV115, stepWarRtsRealtimeV115, toggleWarRtsRealtimeV115,
@@ -33,6 +33,7 @@ import {
 import {warOuterWeightedProgressV141} from "./systems/clanWarOuterWeightedProgressV141";
 import {warOuterRouteChoicesV142} from "./systems/clanWarOuterChoicesV142";
 import {issueWarAssaultFocusV142} from "./systems/clanWarFocusV142";
+import {WAR_ASSAULT_CLOAK_CAPACITY_V115, warAssaultCanSeeActorV141} from "./systems/clanWarAssaultContactV141";
 import {commandWarAssaultBraceV143} from "./systems/clanWarBraceV143";
 import {commandWarAssaultRegroupV144} from "./systems/clanWarRegroupV144";
 import {commandWarAssaultInterposeV145} from "./systems/clanWarInterposeV145";
@@ -615,6 +616,30 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           label="Illustration originale du bastion : aucun nouvel obstacle de collision" size={72}/>
         <p>Vagues régionales : <strong>{assault.wavesIssued??0} / {warAssaultWaveProfileV140(world.active?.targetId??world.baseId,rules).maximumWaves}</strong> · profils d&apos;unités de la Bible V6 : {(assault.rivalRosterIds??[]).join(", ")||"archive V115 à initialiser"}.</p>
         <p className={styles.explain}>V141 : échanges de tirs simulés simultanément au cours du même tour. Aucun combattant ne peut passer à travers un front ennemi ou se déplacer en dehors de la voie.</p>
+        <section aria-label="Camouflage des détachements">
+          <p className={styles.explain}>Le camouflage suspend les tirs et consomme une charge par tour. Le contact proche et les traqueurs d’odeurs peuvent repérer l’équipe. Un impact coupe le camouflage. Recharge près du bastion à l’arrêt du camouflage.</p>
+          <div className={styles.cards}>
+            {assault.actors.filter(actor => actor.side === "ally" && actor.hp > 0 && actor.teamId).map(actor => {
+              const teamId = actor.teamId!;
+              const cloak = actor.assaultCloak;
+              const engaged = cloak?.active ?? false;
+              const energy = cloak?.energy ?? WAR_ASSAULT_CLOAK_CAPACITY_V115;
+              const seen = engaged && assault.actors.some(enemy =>
+                enemy.side === "rival" && enemy.hp > 0 && warAssaultCanSeeActorV141(enemy, actor) &&
+                !assault.actors.some(other => other.side === "ally" && other.hp > 0 && other.id !== actor.id &&
+                  Math.abs(other.x - enemy.x) < Math.abs(actor.x - enemy.x)));
+              const pendingFire = (assault.focusOrders?.[teamId]?.expiresAtTick ?? 0) > current.tick;
+              return <div key={actor.id} data-war-assault-cloak={teamId}>
+                <button type="button" aria-pressed={engaged}
+                  disabled={!active || blocked || (!engaged && (energy === 0 || pendingFire))}
+                  onClick={() => commit(toggleWarAssaultCloakV115(worldRef.current, teamId, rules))}>
+                  Camouflage optique · {teamsById(teamId)}
+                </button>
+                <p>{energy}/{WAR_ASSAULT_CLOAK_CAPACITY_V115} charges · {seen ? "Repéré" : engaged ? "Dissimulé" : energy === 0 ? "Réserve vide" : "Désactivé"}</p>
+              </div>;
+            })}
+          </div>
+        </section>
         <div className={styles.cards}>
          {assault.actors.filter(u=>u.side==="ally"&&u.hp>0&&u.teamId).map(ally=>{
           const unit=rules.units.find(u=>u.id===ally.unitId);
@@ -624,7 +649,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
             !assault.actors.some(other=>other.side==="rival"&&other.hp>0&&other.id!==enemy.id&&
               Math.abs(other.x-ally.x)<Math.abs(enemy.x-ally.x)));
           return <div key={"focus-"+ally.id}>{foes.map(enemy=><button type="button"
-           key={enemy.id} disabled={blocked||assault.ap<12||
+           key={enemy.id} disabled={blocked||ally.assaultCloak?.active||assault.ap<12||
              (assault.focusUsedIds??[]).includes(ally.teamId!)}
            onClick={()=>commit(issueWarAssaultFocusV142(worldRef.current,ally.teamId!,enemy.id,rules))}>
            Priorité de tir · {ally.unitId} → {enemy.unitId} (12 AP, une salve)
@@ -705,7 +730,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           {Array.from({length:12},(_,index)=><path key={index} d={"M"+(index*88)+" 175 l35 -50 l26 50"} stroke="#486057" strokeWidth="1.5" fill="none"/>)}
           <rect x="8" y="72" width="45" height="103" fill="#667c76" stroke="#d0d3a8" strokeWidth="3"/>
           <rect x="947" y="72" width="45" height="103" fill="#805b50" stroke="#e7ae87" strokeWidth="3"/>
-          {assault.actors.map(actor=><g key={actor.id} transform={"translate("+(18+actor.x*9.6)+",142)"}>
+          {assault.actors.map(actor=><g key={actor.id} opacity={actor.assaultCloak?.active ? 0.45 : 1} transform={"translate("+(18+actor.x*9.6)+",142)"}>
             <circle r="15" fill={actor.side==="ally"?"#8aa79b":"#ba7a69"} stroke="#f0e4c6" strokeWidth="2"/>
             <path d="M-8 13 L-12 29 M8 13 L12 29 M-15 -5 L-26 2 M15 -5 L26 2" stroke="#eee1bd" strokeWidth="4"/>
             <title>{actor.side==="ally"?teamsById(actor.teamId??""):"Opposition d'exercice"} · vie {Math.max(0,actor.hp)}</title>
@@ -722,7 +747,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         })}</div>
         <div className={styles.cards}>
           {current.teamIds.filter(id=>assault.launched.includes(id)).map(id=><button type="button" key={"special-"+id}
-            disabled={blocked||assault.ap<20||(assault.usedSpecials??[]).includes(id)||!assault.actors.some(actor=>actor.teamId===id&&actor.hp>0)}
+            disabled={blocked||assault.ap<20||(assault.usedSpecials??[]).includes(id)||!assault.actors.some(actor=>actor.teamId===id&&actor.hp>0&&!actor.assaultCloak?.active)}
             onClick={()=>commit(issueWarAssaultSpecialV117(worldRef.current,id,rules))}>
             {teamsById(id)} · feu concentré (20 AP){(assault.usedSpecials??[]).includes(id)?" · utilisé":""}
           </button>)}

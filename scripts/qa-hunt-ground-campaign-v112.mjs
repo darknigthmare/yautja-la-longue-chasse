@@ -19,7 +19,7 @@ const ast=ts.createSourceFile("HuntCanvas.tsx",source,ts.ScriptTarget.Latest,tru
 let riteHandler;
 const visit=node=>{if(ts.isBinaryExpression(node)&&node.left.getText(ast)==="riteMenuActionRef.current"&&ts.isArrowFunction(node.right)&&node.right.parameters.length===1)riteHandler=node.right;ts.forEachChild(node,visit);};
 visit(ast);assert.ok(riteHandler,"the actual rite UI callback must exist");
-const append="\nexport {makeGameState,stepGame,snapshot,riteContextV77,riteRuntimeOptionsV112,huntRiteMenuSnapshotV77};\nexport {defaultSave,applyMissionResult,normalizeSave} from './save'; export {purchaseFieldToolV111} from './systems/fieldToolsV111'; export {anatomyPartsV112,makeAnatomySpecimenV112} from './systems/anatomyHarvestV112'; export {MISSION_BY_ID,ARMOR_BY_ID,WEAPON_BY_ID,GEAR_BY_ID} from './data';\n"+
+const append="\nexport {makeGameState,stepGame,snapshot,riteContextV77,riteRuntimeOptionsV112,huntRiteMenuSnapshotV77};\nexport {defaultSave,applyMissionResult,normalizeSave} from './save'; export {purchaseFieldToolV111} from './systems/fieldToolsV111'; export {anatomyPartsV112,makeAnatomySpecimenV112} from './systems/anatomyHarvestV112'; export {fieldLoadV112} from './systems/harvestInventoryV112'; export {carriedFieldSpecimensV112} from './systems/fieldStashV112'; export {MISSION_BY_ID,ARMOR_BY_ID,WEAPON_BY_ID,GEAR_BY_ID} from './data';\n"+
  "export function nativeRiteMenuQa(game,mission,action){const setUi=()=>{};const emitPersistence=()=>{};const persistHuntRef={current:null};const handler="+riteHandler.getText(ast)+";handler(action);}";
 const bundle=await build({stdin:{contents:source+append,
  resolveDir:root+"app/game",sourcefile:root+"app/game/HuntCanvas.tsx",loader:"tsx"},bundle:true,write:false,format:"cjs",platform:"node",jsx:"automatic",loader:{".module.css":"empty"},external:["react","react/jsx-runtime","react-dom"],logLevel:"silent"});
@@ -33,11 +33,22 @@ const allMissionIds=["jungle-vey","ice-cryostalker","volcano-bad-blood","swamp-h
 const args=Object.fromEntries(process.argv.slice(2).map(v=>v.replace(/^--/,"").split("=")));
 const missionIds=args.mission?args.mission.split(","):allMissionIds;
 const armorIds=args.armor?[args.armor]:["scout","hunter","berserker"];
+const minimumRetainedLoad=args.minimumRetainedLoad===undefined?null:Number(args.minimumRetainedLoad);
+if(minimumRetainedLoad!==null){
+ assert.ok(Number.isFinite(minimumRetainedLoad)&&minimumRetainedLoad>0&&minimumRetainedLoad<=1,
+  "--minimumRetainedLoad must be a finite ratio above zero and at most one");
+ assert.equal(args.harvest,"true","--minimumRetainedLoad needs --harvest=true to obtain specimens in play");
+}
 const output=root+(args.output??"docs/qa/v112-ground-campaign");
 await mkdir(output,{recursive:true});
 // HuntCanvas's actual animation loop advances the simulation at 1/60 s.
 const dt=1/60;
 const outcomes=[];
+function packedLoad(state,armorId,tick){
+ const items=runtime.carriedFieldSpecimensV112(state.huntRites);
+ return {tick,load:runtime.fieldLoadV112(items,armorId),specimenIds:items.map(item=>item.id)};
+}
+function meetsLoad(load,minimum){return load.ratio+1e-9>=minimum;}
 function brief(s){return {t:+s.elapsed.toFixed(3),phase:s.phase,x:+s.player.x.toFixed(2),y:+s.player.y.toFixed(2),vx:+s.player.velocityX.toFixed(2),vy:+s.player.velocityY.toFixed(2),health:+s.player.health.toFixed(2),stamina:+s.player.stamina.toFixed(2),energy:+s.player.energy.toFixed(2),kills:s.supportKills,boss:{active:s.boss.active,alive:s.boss.alive,health:s.boss.health,x:s.boss.x},scans:s.scanNodes.map(n=>n.scanned),recoveries:s.recoveryNodes.map(n=>n.recovered),objectives:[...s.completedObjectives],message:s.message,grounded:s.player.grounded,climbing:s.player.climbing,load:s.fieldLoadV112,energyWeaponsLocked:s.energyWeaponsLocked,weaponSlot:s.player.activeWeaponSlot,threats:s.enemies.filter(e=>e.active&&e.alive).map(e=>({id:e.id,x:e.x,y:e.y,health:e.health,width:e.width,height:e.height}))};}
 for(const missionId of missionIds)for(const armorId of armorIds){
  randomState=0x1122026;
@@ -74,12 +85,15 @@ for(const missionId of missionIds)for(const armorId of armorIds){
  assert.ok(weight<=runtime.ARMOR_BY_ID[armorId].carryingCapacity);
  const state=runtime.makeGameState(mission,save.loadout,save.inventory,"hunter",save.appearance,false,false,encounterRun,save.exploration);
  const input={keyboardHeld:new Set(),touchHeld:new Set(),gamepadHeld:new Set(),pressed:new Set(),previousGamepadButtons:[],activeGamepadIndex:null,gamepadNeedsNeutral:true,gamepadDialogActions:[],pointerScreen:null};
- const admission=JSON.parse(JSON.stringify({missionId,armorId,loadout:save.loadout,inventory:save.inventory,toolOrigin,baseSaveOrigin,exploration:save.exploration,difficulty:"hunter",encounterRun,random:{algorithm:"xorshift32",seed:0x1122026},spawn:{...state.world.spawn},initial:brief(state),world:{width:state.world.width,bossArena:state.world.bossArena,extraction:state.world.extraction,platforms:state.world.platforms.filter(p=>p.collision==="solid"),hazards:state.world.hazards},scanNodes:state.scanNodes,recoveryNodes:state.recoveryNodes}));
+ const initial=packedLoad(state,armorId,-1);
+ assert.equal(initial.specimenIds.length,0,"qualified loads must be obtained during the hunt");
+ const admission=JSON.parse(JSON.stringify({missionId,armorId,loadout:save.loadout,inventory:save.inventory,toolOrigin,baseSaveOrigin,exploration:save.exploration,difficulty:"hunter",encounterRun,random:{algorithm:"xorshift32",seed:0x1122026},spawn:{...state.world.spawn},initial:{...brief(state),load:initial.load},world:{width:state.world.width,bossArena:state.world.bossArena,extraction:state.world.extraction,platforms:state.world.platforms.filter(p=>p.collision==="solid"),hazards:state.world.hazards},scanNodes:state.scanNodes,recoveryNodes:state.recoveryNodes}));
  const originalEnemies=[...state.enemies];
  let result=null,climbFrames=0,swingFrames=0,authoredCanopyContactFrames=0,maxX=state.player.x,lastX=state.player.x,stuck=0,nextJump=0,jumpUntil=-1,lastPhase=state.phase,lastAction="",lastSnapshot=-1,ticksExecuted=0;
  const trace=[],samples=[],events=[],harvestActions=[];
  const sharedMemory={previousX:state.player.x,stuckTicks:0,jumpUntil:-1};
  let peakLoadRatio=0,peakSpecimens=[],firstLoadAt=null;
+ let atBoarding=null,atLoadTarget=null,heldLoadTarget=true;
  const lastPress={};
  const press=a=>input.pressed.add(a);
  const moveTo=(target,tolerance=15)=>{const dx=target-(state.player.x+state.player.width/2);if(Math.abs(dx)>tolerance)input.keyboardHeld.add(dx>0?"right":"left");};
@@ -89,20 +103,31 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   const p=state.player,center=p.x+p.width/2;
   const enemies=[...state.enemies.filter(e=>e.alive&&e.active),...(state.boss.alive&&state.boss.active?[state.boss]:[])].sort((a,b)=>Math.abs(a.x+a.width/2-center)-Math.abs(b.x+b.width/2-center));
   const target=enemies[0],gap=target?Math.abs(target.x+target.width/2-center)-(target.width+p.width)/2:Infinity;
-  const availableCorpse=args.harvest==="true"&&!state.trophyExtracting&&['tracking','target'].includes(state.phase)&&gap>650?
-   state.huntRites.corpses.filter(c=>!c.erased&&runtime.anatomyPartsV112(c.sourceEnemyId).some(part=>!state.huntRites.completedEventIds.includes(part.action+":"+c.id)))
-    .filter(c=>Math.abs(c.y-(p.y+p.height))<45)
-    .filter(c=>runtime.anatomyPartsV112(c.sourceEnemyId).some(part=>!state.huntRites.completedEventIds.includes(part.action+":"+c.id)&&runtime.riteRuntimeOptionsV112(state).acceptSpecimen(runtime.makeAnatomySpecimenV112(state.huntRites.runId,c.id,c.sourceEnemyId,part.action,c.integrity??100,c.analyzed))))
-    .sort((a,b)=>Math.abs(a.x-center)-Math.abs(b.x-center))[0]:null;
+  let availableCorpse=null;
+  if(args.harvest==="true"&&!state.trophyExtracting&&['tracking','target'].includes(state.phase)&&gap>650){
+   const options=runtime.riteRuntimeOptionsV112(state);
+   availableCorpse=state.huntRites.corpses.filter(c=>!c.erased&&Math.abs(c.y-(p.y+p.height))<45)
+    .filter(c=>Math.abs(c.x-center)>88||!options.worksiteBlocked(c))
+    .filter(c=>runtime.anatomyPartsV112(c.sourceEnemyId).some(part=>!state.huntRites.completedEventIds.includes(part.action+":"+c.id)&&options.acceptSpecimen(runtime.makeAnatomySpecimenV112(state.huntRites.runId,c.id,c.sourceEnemyId,part.action,c.integrity??100,c.analyzed))))
+    .sort((a,b)=>Math.abs(a.x-center)-Math.abs(b.x-center))[0]??null;
+  }
   if(state.huntRites.operation){
    // Native rite time advances with all enemies, damage and interruptions live.
   }else if(availableCorpse){
    moveTo(availableCorpse.x,10);
    if(p.grounded&&Math.abs(p.velocityX)<10&&Math.abs(availableCorpse.x-center)<60){
     const menu=runtime.huntRiteMenuSnapshotV77(state.huntRites,runtime.riteContextV77(state).actor,state.riteMenuCorpseId,true,runtime.riteRuntimeOptionsV112(state));
-    if(menu?.corpseId===availableCorpse.id){
-     menuAction=!menu.open?"open":menu.canFlay?"flay":menu.parts.find(part=>part.available)?.action??null;
-     if(menuAction){runtime.nativeRiteMenuQa(state,mission,menuAction);harvestActions.push({tick,t:state.elapsed,action:menuAction,corpseId:availableCorpse.id,sourceEnemyId:availableCorpse.sourceEnemyId,operation:state.huntRites.operation?{...state.huntRites.operation}:null});}
+    if(menu){
+     if(menu.corpseId===availableCorpse.id)
+      menuAction=!menu.open?"open":menu.canFlay?"flay":menu.parts.find(part=>part.available)?.action??null;
+     else if(menu.open&&menu.nextCorpseId)menuAction="next-corpse";
+     else if(!menu.open)menuAction="open";
+     if(menuAction){
+      runtime.nativeRiteMenuQa(state,mission,menuAction);
+      const selected=state.huntRites.corpses.find(corpse=>corpse.id===state.riteMenuCorpseId);
+      harvestActions.push({tick,t:state.elapsed,action:menuAction,corpseId:selected?.id??null,
+       sourceEnemyId:selected?.sourceEnemyId??null,operation:state.huntRites.operation?{...state.huntRites.operation}:null});
+     }
     }
    }
   }else if(state.trophyExtracting&&state.trophyRitual){
@@ -164,15 +189,40 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   if(p.grounded&&state.world.platforms.some(platform=>platform.id?.startsWith("v112-canopy-")&&Math.abs(platform.y-p.y-p.height)<1e-6&&p.x+p.width>platform.x&&p.x<platform.x+platform.width))authoredCanopyContactFrames++;
   if(state.fieldLoadV112.ratio>peakLoadRatio){peakLoadRatio=state.fieldLoadV112.ratio;peakSpecimens=state.huntRites.specimensV112.map(item=>({...item}));}
   if(firstLoadAt===null&&state.fieldLoadV112.ratio>0)firstLoadAt={tick,...brief(state)};
+  if(!atBoarding&&state.dropShip?.phase==="boarding")atBoarding=packedLoad(state,armorId,tick);
+  if(minimumRetainedLoad!==null){
+   const atTick=packedLoad(state,armorId,tick);
+   if(!atLoadTarget&&meetsLoad(atTick.load,minimumRetainedLoad))atLoadTarget=atTick;
+   else if(atLoadTarget&&(!meetsLoad(atTick.load,minimumRetainedLoad)||
+     !atLoadTarget.specimenIds.every(id=>atTick.specimenIds.includes(id))))heldLoadTarget=false;
+  }
   maxX=Math.max(maxX,p.x);
   if(input.keyboardHeld.has("right")||input.keyboardHeld.has("left")){stuck=Math.abs(p.x-lastX)<.05?stuck+dt:0;}else stuck=0;
   lastX=p.x;
   if(state.phase!==lastPhase){events.push(brief(state));lastPhase=state.phase;}
   if(Math.floor(state.elapsed)>lastSnapshot){samples.push(brief(state));lastSnapshot=Math.floor(state.elapsed);}
  }
- const outcome={missionId,armorId,success:result?.outcome==="success",result,climbFrames,swingFrames,authoredCanopyContactFrames,maxX,terminal:brief(state),admission,events,traceFrames:trace.length,ticksExecuted,harvestActions,peakLoadRatio,peakSpecimens,firstLoadAt};
+ const success=result?.outcome==="success";
+ const atExtraction=success?packedLoad(state,armorId,ticksExecuted-1):null;
+ const retainedLoad={requiredRatio:minimumRetainedLoad,atLoadTarget,atBoarding,atExtraction,
+  qualified:minimumRetainedLoad===null?null:!!(atLoadTarget&&heldLoadTarget&&atBoarding&&atExtraction&&
+    meetsLoad(atBoarding.load,minimumRetainedLoad)&&meetsLoad(atExtraction.load,minimumRetainedLoad)&&
+    atLoadTarget.specimenIds.every(id=>atBoarding.specimenIds.includes(id)&&atExtraction.specimenIds.includes(id)))};
+ const outcome={missionId,armorId,success,result,climbFrames,swingFrames,authoredCanopyContactFrames,maxX,terminal:brief(state),admission,events,traceFrames:trace.length,ticksExecuted,harvestActions,peakLoadRatio,peakSpecimens,firstLoadAt,retainedLoad};
  if(result)assert.equal(state.phase,"finished");
  if(outcome.success){
+  assert.ok(atBoarding,"success must include a native boarding transition");
+  const bag=runtime.carriedFieldSpecimensV112(state.huntRites);
+  assert.equal(JSON.stringify(result.specimensV112),JSON.stringify(bag),"mission result must carry the actual final bag");
+  assert.ok(atExtraction.load.overloaded===false,"the final bag must respect both capacity limits");
+  assert.ok(atBoarding.specimenIds.every(id=>atExtraction.specimenIds.includes(id)),"boarding cannot discard a packed specimen");
+  for(const item of bag){
+   const corpse=state.huntRites.corpses.find(c=>state.huntRites.runId+":"+c.id===item.sourceId);
+   assert.ok(corpse,"each packed item has a live-encounter source");
+   const part=runtime.anatomyPartsV112(corpse.sourceEnemyId).find(candidate=>candidate.partId===item.partId);
+   assert.ok(part&&result.toolUseIdsV112.includes(state.huntRites.runId+":"+part.action+":"+corpse.id),
+    "each packed item has a native harvesting receipt");
+  }
   assert.ok(state.player.health>0);
   assert.equal(state.boss.alive,false);
   assert.equal(state.boss.health,0);
@@ -187,20 +237,23 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   randomState=0x1122026;
   const replay=runtime.makeGameState(mission,save.loadout,save.inventory,"hunter",save.appearance,false,false,encounterRun,save.exploration);
   const replayInput={keyboardHeld:new Set(),touchHeld:new Set(),gamepadHeld:new Set(),pressed:new Set(),previousGamepadButtons:[],activeGamepadIndex:null,gamepadNeedsNeutral:true,gamepadDialogActions:[],pointerScreen:null};
-  let index=0,action=trace[0],replayedResult=null;
+  let index=0,action=trace[0],replayedResult=null,replayedBoarding=null;
   for(let tick=0;tick<ticksExecuted;tick++){
    if(trace[index+1]?.tick===tick)action=trace[++index];
    replayInput.keyboardHeld=new Set(action.held);replayInput.pressed=new Set(action.pressed);replayInput.pointerScreen=action.pointer??null;
    if(action.menuAction)runtime.nativeRiteMenuQa(replay,mission,action.menuAction);
    runtime.stepGame(replay,mission,save.loadout,save.inventory,save.appearance,"hunter",replayInput,dt,r=>{replayedResult=r;});
+   if(!replayedBoarding&&replay.dropShip?.phase==="boarding")replayedBoarding=packedLoad(replay,armorId,tick);
   }
   assert.equal(JSON.stringify(brief(replay)),JSON.stringify(outcome.terminal),"the recorded inputs must reproduce the exact terminal simulation");
-  assert.equal(replayedResult?.outcome,result?.outcome);
+  const receipt=payload=>payload&&{outcome:payload.outcome,specimens:payload.specimensV112,toolUses:payload.toolUseIdsV112};
+  assert.equal(JSON.stringify(receipt(replayedResult)),JSON.stringify(receipt(result)),"replay must preserve the returned items and tool receipts");
+  assert.equal(JSON.stringify(replayedBoarding),JSON.stringify(atBoarding),"replay must preserve load and time at boarding");
   outcome.replay={verified:true,ticks:ticksExecuted,terminalSha256:createHash("sha256").update(JSON.stringify(brief(replay))).digest("hex")};
  }
  outcomes.push(outcome);
  await writeFile(`${output}/${missionId}-${armorId}.json`,JSON.stringify({...outcome,samples,inputTrace:trace},null,2)+"\n");
- console.log(JSON.stringify({missionId,armorId,result:result?.outcome??result?.status??null,phase:state.phase,t:state.elapsed,x:state.player.x,health:state.player.health,kills:state.supportKills,bossHealth:state.boss.health,scans:state.scanNodes.map(n=>n.scanned),recoveries:state.recoveryNodes.map(n=>n.recovered),climbFrames,swingFrames}));
+ console.log(JSON.stringify({missionId,armorId,result:result?.outcome??result?.status??null,phase:state.phase,t:state.elapsed,x:state.player.x,health:state.player.health,kills:state.supportKills,bossHealth:state.boss.health,scans:state.scanNodes.map(n=>n.scanned),recoveries:state.recoveryNodes.map(n=>n.recovered),climbFrames,swingFrames,boardingRatio:atBoarding?.load.ratio??null,retainedRatio:atExtraction?.load.ratio??null,loadQualified:retainedLoad.qualified}));
 }
 const head=(await readFile(root+".git/HEAD","utf8")).trim();
 let commit=head;
@@ -209,6 +262,8 @@ if(head.startsWith("ref: ")){
  try{commit=(await readFile(root+".git/"+ref,"utf8")).trim();}
  catch{commit=(await readFile(root+".git/packed-refs","utf8")).split("\n").find(line=>line.endsWith(" "+ref))?.split(" ")[0]??null;}
 }
-const report={schema:1,createdAt:new Date().toISOString(),commit,sourceSha256:createHash("sha256").update(source).digest("hex"),bundleSha256:createHash("sha256").update(bundle.outputFiles[0].text).digest("hex"),scriptSha256:createHash("sha256").update(scriptBytesAtAdmission).digest("hex"),policySha256:createHash("sha256").update(policyBytesAtAdmission).digest("hex"),command:process.argv,harvest:args.harvest==="true",scope:"Native stepGame, unchanged production source with appended exports and verbatim AST-extracted rite UI callback. GameInput and native menu callback only after explicit replay armor admission. Hunter difficulty, zero upgrades, seeded Math.random for reproducible legal spawn jitter. Harvest mode buys its tool using two documented real mission results, and only prepares real prey killed during this run. Actions capped at 10 rising edges per second. No browser, progression, physical keyboard or visual qualification.",outcomes};
+const report={schema:1,createdAt:new Date().toISOString(),commit,sourceSha256:createHash("sha256").update(source).digest("hex"),bundleSha256:createHash("sha256").update(bundle.outputFiles[0].text).digest("hex"),scriptSha256:createHash("sha256").update(scriptBytesAtAdmission).digest("hex"),policySha256:createHash("sha256").update(policyBytesAtAdmission).digest("hex"),command:process.argv,harvest:args.harvest==="true",minimumRetainedLoad,scope:"Native stepGame, unchanged production source with appended exports and verbatim AST-extracted rite UI callback. GameInput and native menu callback only after explicit replay armor admission. Hunter difficulty, zero upgrades, seeded Math.random for reproducible legal spawn jitter. Harvest mode buys its tool using two documented real mission results, and only prepares real prey killed during this run. Actions capped at 10 rising edges per second. No browser, progression, physical keyboard or visual qualification.",outcomes};
 await writeFile(`${output}/report.json`,JSON.stringify(report,null,2)+"\n");
 if(args.requireComplete==="true")assert.ok(outcomes.every(o=>o.success),"all requested missions must finish through native extraction");
+if(minimumRetainedLoad!==null)assert.ok(outcomes.every(o=>o.retainedLoad.qualified===true),
+ "all requested hunts must board and finish with the required real bag load; see each recorded outcome");

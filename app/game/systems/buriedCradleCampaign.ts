@@ -5,6 +5,7 @@ import { getChronicleRank, recordChronicleEvidence } from './clanChronicle';
 import { createBuriedCradleProgress, getCradleCrownCondition, hasCradleCrownForReturn,
   parseBuriedCradleProgress, type BuriedCradleProgress } from './buriedCradle';
 import { inspectBuriedCradleSnapshot, type BuriedCradleSnapshot } from './buriedCradleSnapshot';
+import { parseCradleApproachReceipt, type CradleApproachReceipt } from './buriedCradleApproach';
 import { advanceCradleReturnVisit, createCradleReturnVisit, inspectCradleReturnVisit, isCradleReturnOperation,
   type CradleReturnVisit, type CradleReturnOperation, type CradleReturnObservation } from './buriedCradleReturn';
 
@@ -23,6 +24,7 @@ export interface BuriedCradleCampaign {
   progress: BuriedCradleProgress;
   outcome: 'unresolved' | 'retreated' | 'victory-without-crown' | 'crown-returned';
   crownDelivered: boolean;
+  approach?: CradleApproachReceipt;
   snapshot?: BuriedCradleSnapshot | null;
   returnVisit?: CradleReturnVisit | null;
 }
@@ -39,10 +41,12 @@ const extractionOutcome = (progress: BuriedCradleProgress): BuriedCradleCampaign
 export function inspectBuriedCradleCampaign(value: unknown, owner: string): CradleCampaignInspection {
   if (value == null) return { status: 'absent', state: null };
   if (record(value) && (typeof value.version === 'number' && value.version > 1 ||
-      record(value.progress) && typeof value.progress.version === 'number' && value.progress.version > 1)) return { status: 'future-version', state: null };
+      record(value.progress) && typeof value.progress.version === 'number' && value.progress.version > 1 ||
+      record(value.approach) && typeof value.approach.version === 'number' && value.approach.version > 1)) return { status: 'future-version', state: null };
   const invalid = (): CradleCampaignInspection => ({ status: 'invalid-save', state: null });
   if (!record(value) || Object.keys(value).sort().join('|') !==
       ['version', 'ownerCreatedAt', 'personalShipId', 'difficultyId', 'status', 'progress', 'outcome', 'crownDelivered',
+        ...(Object.hasOwn(value, 'approach') ? ['approach'] : []),
         ...(Object.hasOwn(value, 'snapshot') ? ['snapshot'] : []),
         ...(Object.hasOwn(value, 'returnVisit') ? ['returnVisit'] : [])].sort().join('|') ||
       value.version !== 1 || !owner || value.ownerCreatedAt !== owner || !isShipId(value.personalShipId) ||
@@ -51,7 +55,8 @@ export function inspectBuriedCradleCampaign(value: unknown, owner: string): Crad
       typeof value.outcome !== 'string' || !['unresolved', 'retreated', 'victory-without-crown', 'crown-returned'].includes(value.outcome) ||
       typeof value.crownDelivered !== 'boolean') return invalid();
   const progress = parseBuriedCradleProgress(value.progress);
-  if (!progress) return invalid();
+  const approach = parseCradleApproachReceipt(value.approach);
+  if (!progress || Object.hasOwn(value, 'approach') && !approach) return invalid();
   const budget = CRADLE_CHECKPOINT_BUDGET[value.difficultyId as DifficultyId];
   if ((progress.checkpointId === '07' && budget < 1) || (progress.checkpointId === '11' && budget < 2)) return invalid();
   const snapshot = inspectBuriedCradleSnapshot(value.snapshot, progress, budget);
@@ -71,6 +76,7 @@ export function inspectBuriedCradleCampaign(value: unknown, owner: string): Crad
   return { status: 'valid', state: { version: 1, ownerCreatedAt: owner, personalShipId: value.personalShipId,
     difficultyId: value.difficultyId as DifficultyId, status: value.status as BuriedCradleCampaign['status'],
     progress, outcome: value.outcome as BuriedCradleCampaign['outcome'], crownDelivered: value.crownDelivered,
+    ...(approach ? { approach } : {}),
     ...(Object.hasOwn(value, 'snapshot') ? { snapshot: snapshot.state } : {}),
     ...(Object.hasOwn(value, 'returnVisit') ? { returnVisit: returnVisit.state } : {}) } };
 }
@@ -89,7 +95,8 @@ export function evaluateBuriedCradleAccess(save: Pick<SaveGame, 'prologue' | 'mi
   return { allowed: missing.length === 0, missing };
 }
 
-export type CradleCampaignAction = { type: 'prepare' | 'depart' | 'suspend' | 'report' }
+export type CradleCampaignAction = { type: 'prepare'; approach?: CradleApproachReceipt }
+  | { type: 'depart' | 'suspend' | 'report' }
   | { type: 'checkpoint' | 'extract'; progress: BuriedCradleProgress; snapshot?: BuriedCradleSnapshot }
   | { type: CradleReturnOperation; expectedRevision: number };
 export interface CradleCampaignContext { personalShipId: ShipId; ownedShipIds: readonly string[];
@@ -120,6 +127,7 @@ export function actBuriedCradleCampaign(save: SaveGame, action: CradleCampaignAc
       !['prepare', 'depart', 'suspend', 'report', 'checkpoint', 'extract'].includes(action.type) && !isCradleReturnOperation(action.type) ||
       Object.keys(action).sort().join('|') !== (action.type === 'checkpoint' || action.type === 'extract'
         ? Object.hasOwn(action, 'snapshot') ? 'progress|snapshot|type' : 'progress|type'
+        : action.type === 'prepare' && Object.hasOwn(action, 'approach') ? 'approach|type'
         : isCradleReturnOperation(action.type) ? 'expectedRevision|type' : 'type'))
     return refuse('Commande d’expédition inconnue.');
   const before = JSON.stringify(state);
@@ -129,9 +137,11 @@ export function actBuriedCradleCampaign(save: SaveGame, action: CradleCampaignAc
     if (state && state.personalShipId !== context.personalShipId) return refuse('Reprendre la coque affectée à cette expédition.');
     if (action.type === 'prepare') {
       if (state) return refuse('Les préparatifs sont déjà consignés.');
+      const approach = parseCradleApproachReceipt(action.approach);
+      if (Object.hasOwn(action, 'approach') && !approach) return refuse('Termine les préparatifs et reviens à la balise.');
       state = { version: 1, ownerCreatedAt: save.createdAt, personalShipId: context.personalShipId,
         difficultyId: save.settings.difficultyId, status: 'prepared', progress: createBuriedCradleProgress(),
-        outcome: 'unresolved', crownDelivered: false, snapshot: null };
+        outcome: 'unresolved', crownDelivered: false, snapshot: null, ...(approach ? { approach } : {}) };
       if (prologue) {
         const evidence = recordChronicleEvidence(prologue.chronicle,
           { id: 'queen-mission-briefing', sourceId: 'chronicle.queen-briefing.completed' });

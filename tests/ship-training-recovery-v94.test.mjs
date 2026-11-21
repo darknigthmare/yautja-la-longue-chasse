@@ -1,15 +1,23 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {build} from 'esbuild';
-const bundle=await build({stdin:{contents:`export * from './app/game/systems/shipTrainingReceiptV94';export * from './app/game/systems/shipTrainingRecoveryV94';export * from './app/game/systems/progression';export * from './app/game/save';export * from './app/game/systems/archiveTransferGuard';`,resolveDir:process.cwd()},bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
+const bundle=await build({stdin:{contents:`export * from './app/game/systems/shipTrainingReceiptV94';export * from './app/game/systems/shipTrainingRecoveryV94';export * from './app/game/systems/progression';export * from './app/game/save';export * from './app/game/systems/archiveTransferGuard';export {MISSIONS} from './app/game/data';`,resolveDir:process.cwd()},bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
 const a=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
 const owner='2026-10-16T00:00:00.000Z',date='2026-10-17T01:00:00.000Z',key=a.SHIP_PROGRESSION_STORAGE_KEY;
 function fixture(discipline='targeting',score=82){
- const save=a.defaultSave(owner),base=a.createDefaultShipProgression(save,owner),data=new Map([[a.SAVE_STORAGE_KEY,JSON.stringify(save)],[key,JSON.stringify(base)]]),writes=[];
+ const save=a.defaultSave(owner);
+ if(discipline==='clan-hunt'){
+  for(const {id} of a.MISSIONS.slice(0,8)){
+   Object.assign(save.missionProgress[id],{status:'completed',attempts:1,completions:1});
+  }
+  save.storyCompleted=true;
+ }
+ const base=a.createDefaultShipProgression(save,owner),data=new Map([[a.SAVE_STORAGE_KEY,JSON.stringify(save)],[key,JSON.stringify(base)]]),writes=[];
  const fault={drop:false,readback:false,read:false};
  const storage={getItem(k){if(k===key&&fault.read){fault.read=false;throw Error('read unavailable');}return data.get(k)??null;},setItem(k,v){writes.push([k,v]);if(!fault.drop)data.set(k,v);if(fault.readback){fault.readback=false;fault.read=true;}},removeItem:k=>data.delete(k)};
  const io={storage:()=>storage,write:(s,v,d)=>a.writeShipProgressionWithStatus(s,v,d)};
  const receipt=a.createShipTrainingReceiptV94(save,base,discipline,score,io,date);
+ assert.ok(receipt);
  const raw=()=>JSON.stringify(receipt.recoveryCopy());
  return{save,base,data,writes,storage,io,receipt,fault,raw,restore:r=>a.restoreShipTrainingReceiptV94(r??raw(),save,io)};
 }

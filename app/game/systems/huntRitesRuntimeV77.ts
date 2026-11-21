@@ -3,9 +3,10 @@ import type { WorldBlueprint } from "./worldBlueprints";
 import { anatomyPartsV112, anatomyIntegrityV112, anatomyBodyMassV112, specimenQualityV112, makeAnatomySpecimenV112 } from "./anatomyHarvestV112.ts";
 import { CARCASS_HANG_DROP_V112, carcassFitsSocketV112 } from "./carcassSupportsV112.ts";
 import type { FieldSpecimenV112 } from "./harvestInventoryV112";
-import {TOOL_WEAR_PER_COMPLETION_V112} from "./harvestInventoryV112.ts";
+import {fieldLoadV112,TOOL_WEAR_PER_COMPLETION_V112} from "./harvestInventoryV112.ts";
+import type { ArmorId } from "../types";
 import type { RiteSupportV77 } from "./ritesOfHuntV77";
-import {createRitesOfHuntV77,normalizeRitesOfHuntV77,nearestRiteCorpseV77,riteAnalysisLockedReasonV77,ritePhysicalActionLockedReasonV77,riteWorksiteLockedReasonV77,riteOperationSecondsV77,
+import {createRitesOfHuntV77,normalizeRitesOfHuntV77,nearbyRiteCorpsesV77,riteAnalysisLockedReasonV77,ritePhysicalActionLockedReasonV77,riteWorksiteLockedReasonV77,riteOperationSecondsV77,
   type RitesOfHuntV77,type RitePreyProofV77,type RiteLiveContextV77,type HuntRiteActionV77,type RiteWorksiteTargetV77} from './ritesOfHuntV77.ts';
 
 /** Physical runtime adapters only. No quest, honor, trophy, inventory or rank
@@ -18,7 +19,7 @@ export interface RiteRuntimeActorV77 {
 }
 export interface RiteRuntimeOptionsV111 {
   readonly flayingToolOwned:boolean; readonly world?:WorldBlueprint; readonly supports?:readonly RiteSupportV77[];
-  readonly maximumSpecimens?:number; readonly toolWorkMultiplier?:number; readonly acceptSpecimen?:(item:FieldSpecimenV112)=>boolean;
+  readonly maximumSpecimens?:number; readonly harvestArmorId?:ArmorId; readonly toolWorkMultiplier?:number; readonly acceptSpecimen?:(item:FieldSpecimenV112)=>boolean;
   readonly fieldLoad?:()=>HuntRiteFieldLoadV112;
   readonly specimenPreview?:(item:FieldSpecimenV112)=>{accepted:boolean;reason:string;projectedLoad:HuntRiteFieldLoadV112};
   readonly grounded?:boolean; readonly climbing?:boolean; readonly toolCondition?:number;
@@ -86,7 +87,9 @@ export function restoreRitesRuntimeV77(raw:unknown,runId:string,missionId:string
   if(state.operation&&((state.operation.action==='flay'||state.operation.action.startsWith('harvest-'))&&options.flayingToolOwned!==true||
     state.operation.action==='hang'&&(!options.supports?.some(s=>s.id===state.operation?.supportId&&s.suitable)||state.carryingCorpseId!==state.operation.corpseId)))return null;
   if((state.specimensV112??[]).length&&options.flayingToolOwned!==true)return null;
-  if((state.specimensV112??[]).length>64||carriedFieldSpecimensV112(state).length>Math.min(64,options.maximumSpecimens??64))return null;
+  const carried=carriedFieldSpecimensV112(state);
+  if((state.specimensV112??[]).length>64||carried.length>Math.min(64,options.maximumSpecimens??64))return null;
+  if(options.harvestArmorId!==undefined&&fieldLoadV112(carried,options.harvestArmorId).overloaded)return null;
   return state;
 }
 /** Landing moves the real dead actor first. The ledger follows this same anchor,
@@ -121,6 +124,7 @@ export function reactToRiteWitnessV77<T extends {mode:string;suspicion:number;mo
 export interface HuntRiteMenuSnapshotV77 {
   corpseId:string;label:string;analyzed:boolean;marked:boolean;flayed:boolean;canFlay:boolean;flayLockedReason:string|null;open:boolean;
   canAnalyze:boolean;analysisLockedReason:string|null;fieldLoad?:HuntRiteFieldLoadV112;
+  nextCorpseId?:string;
   operation:{action:HuntRiteActionV77;progress:number;label?:string;secondsTotal?:number;secondsRemaining?:number;toolWear?:number}|null;witnessCount:number;
   /** Effective real-world duration, including the current field-tool wear. */
   flaySeconds?:number;
@@ -142,13 +146,15 @@ export function huntRiteMenuSnapshotV77(state:RitesOfHuntV77,actor:{x:number;y:n
     (c.massKg===undefined||typeof c.massKg==="number"&&Number.isFinite(c.massKg)&&c.massKg>=12&&c.massKg<=170)):null;
   // A falling neighbour must not steal an open menu or its interrupt button.
   // Each preferred identity still passes the normal erased-body/reach check.
-  const inReach=(id:string|null|undefined)=>{
-    const candidate=id?state.corpses.find(c=>c.id===id):null;
-    return candidate?nearestRiteCorpseV77({...state,corpses:[candidate]},actor):null;
-  };
-  const corpse=(carried?nearestRiteCorpseV77({...state,corpses:[carried]},actor):null)??
-    inReach(state.operation?.corpseId)??inReach(selectedId)??nearestRiteCorpseV77(state,actor);
+  const nearby=nearbyRiteCorpsesV77(state,actor);
+  const inReach=(id:string|null|undefined)=>nearby.find(candidate=>candidate.id===id);
+  const corpse=inReach(carried?.id)??inReach(state.operation?.corpseId)??inReach(selectedId)??nearby[0];
   if(!corpse)return null;
+  const open=selectedId===corpse.id;
+  const selectable=open&&!state.operation&&!state.carryingCorpseId
+    ?nearby.filter(candidate=>options.worksiteBlocked?.(candidate)!==true):[];
+  const currentIndex=selectable.indexOf(corpse);
+  const nextCorpse=selectable.length?selectable[(currentIndex+1)%selectable.length]:undefined;
   const analysisLockedReason=riteAnalysisLockedReasonV77(state,corpse);
   const flayLockedReason=corpse.flayed?'Dépeçage déjà terminé.':options.flayingToolOwned!==true?'Acheter le Flaying Tool à l’armurerie.':
     corpse.protectedPrey||!corpse.worthy?'Le Code protège cette proie.':ritePhysicalActionLockedReasonV77(state,corpse,'flay',options);
@@ -186,7 +192,8 @@ export function huntRiteMenuSnapshotV77(state:RitesOfHuntV77,actor:{x:number;y:n
       conditionAfterCompletion:condition===null?null:Math.max(0,condition-TOOL_WEAR_PER_COMPLETION_V112)},stock:{total:parts.length,remaining:parts.filter(part=>!part.harvested).length},
     canHang,hangSupportId:canHang?support!.id:null,hangReason:corpse.supportId?'Corps déjà suspendu.':!carrying?'Dépecer puis porter la carcasse jusqu’au crochet.':worksiteLockedReason??(!support?'Pas de crochet libre et assez solide à portée.':''),
     parts,corpseId:corpse.id,label:corpse.label,analyzed:corpse.analyzed,canAnalyze:analysisLockedReason===null,analysisLockedReason,
-    fieldLoad:options.fieldLoad?.(),marked:corpse.marked,flayed:corpse.flayed,canFlay:flayLockedReason===null,flayLockedReason,open:selectedId===corpse.id,
+    fieldLoad:options.fieldLoad?.(),marked:corpse.marked,flayed:corpse.flayed,canFlay:flayLockedReason===null,flayLockedReason,open,
+    ...(nextCorpse&&nextCorpse.id!==corpse.id?{nextCorpseId:nextCorpse.id}:{}),
     operation:operation?{action:operation.action,progress:Math.min(1,operation.elapsed/operationDuration),label:operationLabel,
       secondsTotal:actualDuration,secondsRemaining:Math.max(0,operationDuration-operation.elapsed)*operationMultiplier,
       toolWear:operationUsesTool?TOOL_WEAR_PER_COMPLETION_V112:0}:null,

@@ -200,6 +200,33 @@ test("drainage is a local interaction that changes actual acid lifetimes, never 
   }
 });
 
+test("the nursery valve gives a local dry window and leaves autonomous acid in the neighboring gallery", () => {
+  const wet = frame(inRoom("09", 580));
+  assert.equal(wet.player.health, 90);
+  const valve = api.stepBuriedCradle(inRoom("09", 1408), { interactPressed: true }, dt);
+  assert.ok(valve.events.some(event => event.type === "drainage-opened"));
+  const source = { ...valve.run.progress, bossDefeated: true, crownClaimed: true, rootRingCut: true };
+  const carrier = api.createBuriedCradleRun(source);
+  carrier.roomId = "09";
+  carrier.player.x = 580;
+  assert.equal(api.getCradleEnvironmentHazards(carrier)[0].stage, "idle");
+  const dry = frame(carrier);
+  assert.equal(dry.player.health, 100);
+  assert.equal(dry.progress.crownTransport?.acidSeconds ?? 0, 0);
+  const warning = frame({ ...carrier, clockSeconds: 3 });
+  assert.equal(api.getCradleEnvironmentHazards(warning)[0].stage, "telegraph");
+  assert.equal(warning.player.health, 100);
+  assert.equal(warning.progress.crownTransport?.acidSeconds ?? 0, 0);
+  const pulse = frame({ ...carrier, clockSeconds: 4.25 });
+  assert.equal(api.getCradleEnvironmentHazards(pulse)[0].stage, "active");
+  assert.equal(pulse.player.health, 90);
+  assert.ok((pulse.progress.crownTransport?.acidSeconds ?? 0) > 0);
+  const gallery = frame({ ...carrier, roomId: "08" });
+  assert.equal(api.getCradleEnvironmentHazards(gallery)[0].stage, "active");
+  assert.equal(gallery.player.health, 90);
+  assert.ok((gallery.progress.crownTransport?.acidSeconds ?? 0) > 0);
+});
+
 test("boss anatomy only accepts exposed ordinary melee and retains damage between openings", () => {
   let run = inRoom("12", 260);
   run.boss.targetX = 340;

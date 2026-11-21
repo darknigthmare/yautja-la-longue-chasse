@@ -15,6 +15,7 @@ import {
 } from "./systems/controlBindings";
 import {
   CLAN_PLASMA_DRILL,
+  getClanHuntCue,
   TRAINING_DRILL_ACTIONS,
   TRAINING_DRILL_CONFIGS,
   trainingDrillAccuracy,
@@ -94,7 +95,10 @@ function TrainingDrillSession({
     disciplineId, seed, clanPlasma: plasmaPractice, rootRef: panelRef, suspended, gamepadEnabled, onComplete, onCancel,
   });
   const config = plasmaPractice ? CLAN_PLASMA_DRILL : TRAINING_DRILL_CONFIGS[disciplineId];
+  const huntCue = getClanHuntCue(game);
+  const hidesSequence = plasmaPractice || disciplineId === "clan-hunt";
   const cueLabels = plasmaPractice ? CLAN_PLASMA_DRILL.cueLabels : config.actionLabels;
+  const actionLabels = huntCue?.actionLabels ?? config.actionLabels;
   const actionShortcuts: Readonly<Record<TrainingDrillAction, string>> = {
     left: controlActionShortcut("training.left", controlBindings),
     right: controlActionShortcut("training.right", controlBindings),
@@ -246,7 +250,7 @@ function TrainingDrillSession({
         <header style={styles.header}>
           <div>
             <p className="eyebrow">
-              SALLE D’ENTRAÎNEMENT · {plasmaPractice ? "Préparation des rites du clan" : TRAINING_LABELS[disciplineId]}
+              SALLE D’ENTRAÎNEMENT · {hidesSequence ? "Préparation des rites du clan" : TRAINING_LABELS[disciplineId]}
             </p>
             <h2 id="training-drill-title">{config.title}</h2>
           </div>
@@ -284,7 +288,7 @@ function TrainingDrillSession({
           </button>
         ) : null}
 
-        {!plasmaPractice && <div style={styles.sequence} aria-label="Séquence d’entraînement">
+        {!hidesSequence && <div style={styles.sequence} aria-label="Séquence d’entraînement">
           {game.sequence.map((action, index) => (
             <span
               key={`${action}-${index}`}
@@ -304,14 +308,14 @@ function TrainingDrillSession({
           ))}
         </div>}
 
-        <section style={styles.workArea} aria-label="Commande actuelle">
-          <span className="eyebrow">SIGNAL ACTUEL</span>
+        <section style={styles.workArea} aria-label="Commande actuelle" data-clan-hunt-phase={huntCue?.phase}>
+          <span className="eyebrow">{huntCue?.title ?? "SIGNAL ACTUEL"}</span>
           <strong style={styles.currentGlyph} aria-hidden="true">
-            {currentAction && !plasmaPractice ? ACTION_GLYPHS[currentAction] : "◆"}
+            {currentAction && !hidesSequence ? ACTION_GLYPHS[currentAction] : "◆"}
           </strong>
           <strong style={styles.currentLabel}>
             {currentAction
-              ? cueLabels[currentAction]
+              ? huntCue?.label ?? cueLabels[currentAction]
               : game.status === "complete"
                 ? "Séquence terminée"
                 : "Lance l’épreuve"}
@@ -345,6 +349,7 @@ function TrainingDrillSession({
           <span>
             Précision {Math.round(accuracy * 100)} % · score provisoire {score}
           </span>
+          {game.unsafeFire && <span>Tir interdit · score plafonné à 49.</span>}
         </div>
 
         <div
@@ -375,7 +380,7 @@ function TrainingDrillSession({
               type="button"
               className="hub-action"
               disabled={paused || game.status !== "playing"}
-              aria-label={`${config.actionLabels[action]}. ${actionShortcuts[action]}`}
+              aria-label={`${actionLabels[action]}. ${actionShortcuts[action]}`}
               onPointerDown={(event) => {
                 if (event.button !== 0 || event.isPrimary === false) return;
                 event.preventDefault();
@@ -390,7 +395,7 @@ function TrainingDrillSession({
                 {ACTION_GLYPHS[action]}
               </span>
               <span>
-                <strong>{config.actionLabels[action]}</strong>
+                <strong>{actionLabels[action]}</strong>
                 <small>{actionShortcuts[action]}</small>
               </span>
             </button>

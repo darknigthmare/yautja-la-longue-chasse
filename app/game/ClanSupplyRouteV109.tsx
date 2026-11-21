@@ -1,5 +1,5 @@
 'use client';
-import {useEffect,useId,useRef,useState,useSyncExternalStore,type KeyboardEvent} from 'react';
+import {useEffect,useId,useLayoutEffect,useRef,useState,useSyncExternalStore,type KeyboardEvent} from 'react';
 import type {WarRulesV6} from './systems/clanWarBibleV6';
 import {SPECIALIZED_ASSETS_V107,specializedDefinitionsV107,type SpecializedIdV107} from './systems/clanWarSpecializedV107';
 import {CLAN_LOGISTICS_AUDIO_V108,CLAN_LOGISTICS_DEPOT_V108,CLAN_LOGISTICS_HYPOTHESES_V108,CLAN_LOGISTICS_KEY_V108,CLAN_LOGISTICS_SITES_V108,CLAN_LOGISTICS_WALLS_V108,logisticsActorV108,logisticsFunctionalV108,logisticsHearingV108,logisticsPcV108} from './systems/clanLogisticsV108';
@@ -21,6 +21,7 @@ const terrainMoves = new Map([
  ['ArrowUp',{dx:0,dy:-18}],
  ['ArrowDown',{dx:0,dy:18}],
 ]);
+const padMoves=[['Nord',0,-18],['Ouest',-18,0],['Stop',0,0],['Est',18,0],['Sud',0,18]] as const;
 const names:Record<string,string>={carrier:'Porteurs U19',rival:'Rival U08','operator:W3-S09':'Nageurs U25','operator:W3-S10':'Guides U21','operator:W3-S13':'Sentinelles U27','operator:W3-S14':'Duelliste U08','operator:W3-S15':'Guetteur U05','operator:W3-S18':'Briseurs U26'};
 /** The complete terrain, people and archive belong to one finite exercise.
  * Nothing here creates a campaign hull, rank, fauna sound or CON-T territory. */
@@ -32,6 +33,14 @@ export default function ClanSupplyRouteV109({rules,active=true}:{rules:WarRulesV
  const [tourSource,setTourSource]=useState<'depot'|'boat'>('boat'),[stops,setStops]=useState<SupplyStopV109[]>([]),[allowance,setAllowance]=useState(4),[zoom,setZoom]=useState(1);
  const [heard,setHeard]=useState<Record<string,number>>({});
  const terrainInstructionsId=useId();
+ const pendingStopFocus=useRef<HTMLButtonElement|null>(null);
+ useLayoutEffect(()=>{
+  const button=pendingStopFocus.current;
+  pendingStopFocus.current=null;
+  if(!button?.isConnected)return;
+  const target=button.disabled?button.parentElement?.querySelector<HTMLButtonElement>('button:not(:disabled)'):button;
+  target?.focus();
+ },[stops]);
  const container=useRef<HTMLElement|null>(null),mediaNodes=useRef(new Set<HTMLAudioElement>());
  const read=useRef({generation:0,loading:false,text:''}),audio=useRef<Record<string,HTMLAudioElement|null>>({}),progress=useRef<Record<string,{last:number;seconds:number}>>({});
  const activity=useRef(active),selectedRef=useRef(selected);
@@ -66,6 +75,14 @@ export default function ClanSupplyRouteV109({rules,active=true}:{rules:WarRulesV
  }
  function canHear(sourceId:string){const latest=store.getSnapshot();return!!latest.state&&!latest.blocked&&!latest.migrationPending&&logisticsHearingV108(latest.state.convoy,sourceId);}
  function selectActor(id:string){stop();setSelected(id);}
+ function reorderStop(index:number,direction:-1|1,button:HTMLButtonElement){
+  const nextIndex=index+direction;
+  if(nextIndex<0||nextIndex>=stops.length)return;
+  if(document.activeElement===button)pendingStopFocus.current=button;
+  const next=stops.slice();
+  [next[index],next[nextIndex]]=[next[nextIndex],next[index]];
+  setStops(next);
+ }
  const preview=(text:string)=>text.length>20000?text.slice(0,1800)+'\n… Aperçu limité ; le fichier complet reste conservé pour la vérification.':text;
  function replaceDraft(text=''){read.current.generation++;read.current.loading=false;read.current.text=text;setLoading(false);setDraftIsPreview(text.length>20000);setDraft(preview(text));}
  async function readFile(file?:File){replaceDraft();setIoMessage('');const ticket=read.current.generation;if(!file||file.size===0||file.size>4*1024*1024){setIoMessage('Fichier vide ou supérieur à 4 Mo refusé.');return;}read.current.loading=true;setLoading(true);try{const text=await file.text();if(ticket!==read.current.generation)return;if(!text.trim()){setIoMessage('Fichier vide refusé.');return;}read.current.text=text;setDraftIsPreview(text.length>20000);setDraft(preview(text));setIoMessage('Lecture terminée ; vérifiez puis reprenez ce carnet.');}catch{if(ticket===read.current.generation)setIoMessage('Lecture refusée ; aucun ancien texte réutilisé.');}finally{if(ticket===read.current.generation){read.current.loading=false;setLoading(false);}}}
@@ -76,6 +93,7 @@ export default function ClanSupplyRouteV109({rules,active=true}:{rules:WarRulesV
  const operator=logisticsActorV108(state,`operator:${site}`)!,functional=logisticsFunctionalV108(state,site);
  const objectPosition=(holder:string,siteId:SpecializedIdV107)=>holder==='depot'?CLAN_LOGISTICS_DEPOT_V108:holder==='carrier'?logisticsActorV108(state,'carrier')!:CLAN_LOGISTICS_SITES_V108[siteId];
  const routeOpen=!!route&&!['completed','cancelled'].includes(route.phase),plannedTotal=stops.reduce((sum,stop)=>sum+stop.amount,0)+allowance;
+ const invalidStop=stops.some(stop=>!Number.isSafeInteger(stop.amount)||stop.amount<1||stop.amount>20);
  const supplyAt=route?.holder==='depot'?CLAN_LOGISTICS_DEPOT_V108:route?.holder==='carrier'?logisticsActorV108(state,'carrier')!:route?.holder==='boat'?state.boat:state.shuttle;
  const waterAt=objectPosition(state.water.holder,'W3-S10'),cellAt=objectPosition(state.cell.holder,'W3-S13');
  const chestActor=state.actors.find(a=>a.members.includes(state.duel.chestHolder));const chestAt=chestActor??CLAN_LOGISTICS_SITES_V108['W3-S14'];
@@ -88,7 +106,20 @@ export default function ClanSupplyRouteV109({rules,active=true}:{rules:WarRulesV
   {snapshot.migrationPending&&<div className={extra.recovery} role="alert"><p>La copie exacte du carnet V108 doit être confirmée avec son nouveau checkpoint avant de jouer.</p><button type="button" disabled={snapshot.pending>0||snapshot.blocked} onClick={()=>{stop();void store.retryMigration();}}>Réessayer la reprise du carnet V108</button></div>}
   <section className={extra.route} aria-label="Tournée de ravitaillement" data-supply-phase={route?.phase??'none'} data-supply-cursor={route?.cursor??0} data-supply-holder={route?.holder??'none'} data-supply-reserved={supplyReservationV109(route)}>
    <h4>Tournée de ravitaillement</h4><p>Deux à six ouvrages déjà terminés, un ordre précis et les mêmes porteurs. Les RAV réservés restent inclus dans le dépôt, la soute ou le portage affiché ; ils ne s’ajoutent jamais au total. Les vivres et l’entretien proviennent des mêmes réserves finies.</p>
-   {!routeOpen?<><label>Stock de départ<select value={tourSource} onChange={e=>setTourSource(e.target.value as 'depot'|'boat')}><option value="boat">Soute du même skiff</option><option value="depot">Dépôt commun</option></select></label><label>Vivres portés avec le lot<select value={allowance} onChange={e=>setAllowance(Number(e.target.value))}>{[0,2,4,6].map(n=><option key={n} value={n}>{n} RAV</option>)}</select></label><ol className={extra.plan}>{definitions.map(d=>{const stop=stops.find(s=>s.workId===d.id),ready=state.works.find(w=>w.id===d.id)?.phase==='ready';return <li key={d.id}><label><input type="checkbox" data-supply-plan-work={d.id} checked={!!stop} disabled={!ready} onChange={e=>setStops(v=>e.target.checked?[...v,{workId:d.id,amount:2}]:v.filter(s=>s.workId!==d.id))}/>{d.name}{!ready?' · à construire':''}</label>{stop&&<label>Quantité pour {d.name}<input type="number" min={1} max={20} value={stop.amount} onChange={e=>setStops(v=>v.map(s=>s.workId===d.id?{...s,amount:Number(e.target.value)}:s))}/></label>}</li>;})}</ol><p>Ordre choisi : {stops.map(s=>definitions.find(d=>d.id===s.workId)!.name).join(' → ')||'aucun'} · charge avec vivres {plannedTotal}/20.</p>{btn('Réserver la tournée dans ce stock',{kind:'supply-plan',source:tourSource,allowance,stops},stops.length<2||plannedTotal>20)}</>:<><p><strong>{routePhases[route!.phase]}</strong> · {route!.cursor}/{route!.stops.length} étapes déposées · {route!.heldAmount} RAV à livrer · lot dans {routeHolders[route!.holder??'']??'aucun lieu'} · {supplyReservationV109(route)} réservés dans ce stock réel.</p><ol>{route!.stops.map((stop,i)=><li key={stop.workId} aria-current={i===route!.cursor?'step':undefined}>{definitions.find(d=>d.id===stop.workId)!.name} · {stop.amount} RAV · {i<route!.cursor?'déposé':i===route!.cursor?'prochaine étape':'à venir'}</li>)}</ol><div className={styles.toolbar}>{btn('Charger ou reprendre le même lot',{kind:'supply-load'},!['depot','boat'].includes(route!.holder??''))}{btn('Déposer la prochaine étape',{kind:'supply-deliver'},route!.phase!=='active')}{btn('Interrompre la tournée',{kind:'supply-pause'},route!.phase==='paused')}{btn('Reprendre la tournée',{kind:'supply-resume'},route!.phase!=='paused')}{btn('Engager le retour avec le reliquat',{kind:'supply-return'},!route!.loaded||route!.phase==='paused')}{btn('Clore la tournée au dépôt',{kind:'supply-close'},route!.phase!=='returning')}{btn('Annuler la réservation non chargée',{kind:'supply-cancel'},route!.loaded)}</div><p>Rejoignez le lieu du lot avant de le charger, puis chaque casier dans l’ordre. Après une traversée en skiff, le lot demeure dans la soute jusqu’à sa reprise physique. Un tour qui entamerait la réservation est refusé ; complétez les vivres depuis un stock rejoint.</p><div className={styles.toolbar}>{btn('Prendre 2 vivres dans le stock rejoint',{kind:'supply-provision',location:location as 'depot'|'boat'|SpecializedIdV107,amount:2})}{btn('Prendre 6 vivres dans le stock rejoint',{kind:'supply-provision',location:location as 'depot'|'boat'|SpecializedIdV107,amount:6})}</div></>}
+   {!routeOpen?<><label>Stock de départ<select value={tourSource} onChange={e=>setTourSource(e.target.value as 'depot'|'boat')}><option value="boat">Soute du même skiff</option><option value="depot">Dépôt commun</option></select></label><label>Vivres portés avec le lot<select value={allowance} onChange={e=>setAllowance(Number(e.target.value))}>{[0,2,4,6].map(n=><option key={n} value={n}>{n} RAV</option>)}</select></label><ol className={extra.plan}>{definitions.map(d=>{const stop=stops.find(s=>s.workId===d.id),ready=state.works.find(w=>w.id===d.id)?.phase==='ready';return <li key={d.id}><label><input type="checkbox" data-supply-plan-work={d.id} checked={!!stop} disabled={!ready} onChange={e=>setStops(v=>e.target.checked?[...v,{workId:d.id,amount:2}]:v.filter(s=>s.workId!==d.id))}/>{d.name}{!ready?' · à construire':''}</label>{stop&&<label>Quantité pour {d.name}<input type="number" min={1} max={20} value={stop.amount||''} onChange={e=>setStops(v=>v.map(s=>s.workId===d.id?{...s,amount:Number(e.target.value)}:s))}/></label>}</li>;})}</ol>
+   {stops.length>0&&<ol className={extra.plan} aria-label="Ordre des livraisons">
+    {stops.map((stop,index)=>{
+     const name=definitions.find(d=>d.id===stop.workId)!.name;
+     return <li key={stop.workId} data-supply-draft-stop={stop.workId}>
+      <p>{name} · {stop.amount} RAV</p>
+      <button type="button" aria-label={`Monter ${name}`} disabled={index===0} onClick={event=>reorderStop(index,-1,event.currentTarget)}>Monter</button>
+      <button type="button" aria-label={`Descendre ${name}`} disabled={index===stops.length-1} onClick={event=>reorderStop(index,1,event.currentTarget)}>Descendre</button>
+     </li>;
+    })}
+   </ol>}
+   <p>Charge avec vivres {plannedTotal}/20 RAV.</p>
+   {invalidStop&&<p role="status">Saisir de 1 à 20 RAV entiers par livraison.</p>}
+   {btn('Réserver la tournée dans ce stock',{kind:'supply-plan',source:tourSource,allowance,stops},stops.length<2||plannedTotal>20||invalidStop)}</>:<><p><strong>{routePhases[route!.phase]}</strong> · {route!.cursor}/{route!.stops.length} étapes déposées · {route!.heldAmount} RAV à livrer · lot dans {routeHolders[route!.holder??'']??'aucun lieu'} · {supplyReservationV109(route)} réservés dans ce stock réel.</p><ol>{route!.stops.map((stop,i)=><li key={stop.workId} aria-current={i===route!.cursor?'step':undefined}>{definitions.find(d=>d.id===stop.workId)!.name} · {stop.amount} RAV · {i<route!.cursor?'déposé':i===route!.cursor?'prochaine étape':'à venir'}</li>)}</ol><div className={styles.toolbar}>{btn('Charger ou reprendre le même lot',{kind:'supply-load'},!['depot','boat'].includes(route!.holder??''))}{btn('Déposer la prochaine étape',{kind:'supply-deliver'},route!.phase!=='active')}{btn('Interrompre la tournée',{kind:'supply-pause'},route!.phase==='paused')}{btn('Reprendre la tournée',{kind:'supply-resume'},route!.phase!=='paused')}{btn('Engager le retour avec le reliquat',{kind:'supply-return'},!route!.loaded||route!.phase==='paused')}{btn('Clore la tournée au dépôt',{kind:'supply-close'},route!.phase!=='returning')}{btn('Annuler la réservation non chargée',{kind:'supply-cancel'},route!.loaded)}</div><p>Rejoignez le lieu du lot avant de le charger, puis chaque casier dans l’ordre. Après une traversée en skiff, le lot demeure dans la soute jusqu’à sa reprise physique. Un tour qui entamerait la réservation est refusé ; complétez les vivres depuis un stock rejoint.</p><div className={styles.toolbar}>{btn('Prendre 2 vivres dans le stock rejoint',{kind:'supply-provision',location:location as 'depot'|'boat'|SpecializedIdV107,amount:2})}{btn('Prendre 6 vivres dans le stock rejoint',{kind:'supply-provision',location:location as 'depot'|'boat'|SpecializedIdV107,amount:6})}</div></>}
    {snapshot.state!.completedRoutes.length>0&&<p>{snapshot.state!.completedRoutes.length} tournée(s) close(s), sans rang, revenu ni acquisition de campagne.</p>}
   </section>
   <div className={styles.toolbar}>{definitions.map(d=><button type="button" key={d.id} aria-pressed={site===d.id} onClick={()=>{stop();if(site!==d.id)silence();setSite(d.id);setLocation(d.id);}}>{d.id} · {d.name} · {phases[state.works.find(w=>w.id===d.id)!.phase]}</button>)}</div>
@@ -121,7 +152,29 @@ export default function ClanSupplyRouteV109({rules,active=true}:{rules:WarRulesV
    <div className={styles.toolbar}><button type="button" onClick={stop}>Stopper le déplacement</button>{btn('Avancer un tour et payer l’entretien',{kind:'wait'})}</div>
   </div><aside className={styles.side}>
    <div><div className={extra.actors} aria-label="Sélection des équipes">{state.actors.map(a=><button type="button" key={a.id} aria-pressed={selected===a.id} onClick={()=>selectActor(a.id)}>{names[a.id]}</button>)}</div><label>Équipe contrôlée<select value={selected} onChange={event=>selectActor(event.target.value)}>{state.actors.map(a=><option key={a.id} value={a.id}>{names[a.id]} · {a.active?'engagée':a.hired?'réserve':'volontaire'}</option>)}</select></label><p>{actor.members.length} personne(s) · {actor.rav} RAV portés · contrat {actor.active?`tour ${actor.until}`:'inactif'} · intégration {Math.max(0,actor.readyAt-state.turn)} tour(s).</p><div className={styles.toolbar}>{btn('Recruter cette équipe',{kind:'hire',actor:selected},actor.hired)}{btn('Reprendre un contrat de 12 tours',{kind:'contract',actor:selected},!actor.hired||actor.active)}{btn('Clore le contrat au dépôt',{kind:'release',actor:selected},!actor.active)}</div><p className={styles.tip}>Chaque nouvelle équipe coûte le recrutement V6. Le plafond PC oblige à ramener les opérateurs précédents au dépôt avant de les remettre en réserve. Après 12 tours, leur service cesse ; le retour reste possible.</p></div>
-   <div><div className={`${styles.pad} ${extra.movementPad}`} role="group" aria-label="Commandes de déplacement">{[['Nord',0,-18],['Ouest',-18,0],['Stop',0,0],['Est',18,0],['Sud',0,18]].map(([label,dx,dy])=><button type="button" key={label} disabled={!active||snapshot.blocked||snapshot.migrationPending} onPointerDown={event=>{event.preventDefault();event.currentTarget.setPointerCapture(event.pointerId);setTarget(null);if(dx||dy)setHeld({dx:Number(dx),dy:Number(dy)});else stop();}} onPointerUp={()=>setHeld(null)} onPointerCancel={()=>setHeld(null)} onLostPointerCapture={()=>setHeld(null)} onClick={()=>{if(dx||dy)act({kind:'move',actor:selected,dx:Number(dx),dy:Number(dy)});else stop();}} aria-label={dx||dy?`Marcher ${String(label).toLowerCase()}`:"Arrêter le déplacement"}>{label}</button>)}</div>
+   <div><div className={`${styles.pad} ${extra.movementPad}`} role="group" aria-label="Commandes de déplacement">
+    {padMoves.map(([label,dx,dy])=><button
+     type="button" key={label} disabled={!active||snapshot.blocked||snapshot.migrationPending}
+     onPointerDown={event=>{
+      if(!event.isPrimary||event.button!==0)return;
+      event.preventDefault();
+      event.currentTarget.setPointerCapture(event.pointerId);
+      if(!dx&&!dy){stop();return;}
+      act({kind:'move',actor:selected,dx,dy});
+      setHeld({dx,dy});
+     }}
+     onPointerUp={()=>setHeld(null)}
+     onPointerCancel={()=>setHeld(null)}
+     onLostPointerCapture={()=>setHeld(null)}
+     onClick={event=>{
+      // Keep keyboard and programmatic activation after the pointer's initial step.
+      if(event.detail!==0)return;
+      if(dx||dy)act({kind:'move',actor:selected,dx,dy});
+      else stop();
+     }}
+     aria-label={dx||dy?`Marcher ${label.toLowerCase()}`:"Arrêter le déplacement"}
+    >{label}</button>)}
+   </div>
    <label>Stock à rejoindre<select value={location} onChange={event=>setLocation(event.target.value)}><option value="depot">Dépôt commun</option><option value="boat">Même soute du skiff</option>{definitions.map(d=><option key={d.id} value={d.id}>{d.name}</option>)}</select></label><button type="button" disabled={!active||snapshot.blocked||snapshot.migrationPending} onClick={()=>{stop();const point=location==='depot'?{x:100,y:540}:location==='boat'?{x:state.boat.x+(state.boat.phase==='west'?-28:28),y:state.boat.y+28}:workApproach(location as SpecializedIdV107);setTarget(point);}}>Marcher vers ce stock</button><div className={styles.toolbar}>{[2,6,20].map(amount=><span key={amount}>{btn(`Prendre ${amount} RAV`,{kind:'rav-load',actor:selected,location:location as 'depot'|'boat'|SpecializedIdV107,amount})}</span>)}{btn(`Déposer la charge (${actor.rav})`,{kind:'rav-deposit',actor:selected,location:location as 'depot'|'boat'|SpecializedIdV107,amount:actor.rav},!actor.rav)}</div><p className={styles.tip}>Prélevez la réserve du skiff auprès de sa coque. Chaque équipe consomme son portage ou un stock accessible ; les ouvrages finis consomment leur propre casier, même sans opérateur.</p></div>
   </aside></div>
   <article className={styles.operation}><button type="button" disabled={!active||snapshot.blocked||snapshot.migrationPending} onClick={()=>{stop();setTarget(workApproach(site));}}>Marcher vers ce chantier</button><h4>{definition.name} · {functional?'service actif':phases[work.phase]}</h4><p>{definition.effect} {definition.limit}</p><p>Pièces {definition.cost} RAV · entretien {definition.upkeep}/tour · travail {work.worked}/{definition.turns} · {names[operator.id]} ({definition.operator}). Casier {work.bin}/40.</p>

@@ -37,8 +37,7 @@ function checkpointEntries(commit) {
   }));
 }
 
-function parseCheckpoint(bytes) {
-  const checkpoint = JSON.parse(bytes);
+function parseCheckpoint(checkpoint) {
   assert.equal(checkpoint.schemaVersion, 'yautja-v613-native-checkpoint-1');
   assert.ok(Array.isArray(checkpoint.assets));
   assert.equal(new Set(checkpoint.assets.map(row => row.id)).size, checkpoint.assets.length,
@@ -67,7 +66,7 @@ function inspectCandidates(commits, images, finals) {
   const rows = commits.map(commit => {
     const index = checkpointEntries(commit);
     const checkpointBlob = index.get(checkpointPath);
-    const checkpoint = checkpointBlob ? parseCheckpoint(git('cat-file', 'blob', checkpointBlob)) : new Map();
+    const checkpoint = checkpointBlob ? parseCheckpoint(JSON.parse(git('cat-file', 'blob', checkpointBlob))) : new Map();
     const originalImages = [];
     const differingImages = [];
     for (const target of images) {
@@ -120,14 +119,39 @@ function inspectArchiveCheckpoint(path, finals) {
   assert.ok(stat.isFile(), 'Fichier checkpoint attendu : ' + path);
   const file = readFileSync(path);
   const checkpointSha256 = createHash('sha256').update(file).digest('hex');
-  const finalReceipts = matchingReceipts(finals, parseCheckpoint(file), { checkpointSha256 });
+  const finalReceipts = matchingReceipts(finals, parseCheckpoint(JSON.parse(file)), { checkpointSha256 });
   return { path, checkpointSha256, finalReceipts };
 }
 
-function collectReport(refs, { archive, checkpoint }) {
+function inspectZip(path, images, finals) {
+  assert.ok(lstatSync(path).isFile(), 'Fichier ZIP attendu : ' + path);
+  const script = fileURLToPath(new URL('./inspect-enforcer-recovery-zip.py', import.meta.url));
+  const result = spawnSync('python3', [script, resolve(path)], {
+    cwd: root,
+    input: JSON.stringify(images.map(({ id, bytes, sha256 }) => ({ id, bytes, sha256 }))),
+    encoding: 'utf8',
+    maxBuffer: 16 * 1024 * 1024,
+  });
+  if (result.error) throw result.error;
+  assert.equal(result.status, 0, 'Inspection ZIP ' + path + ' : ' + result.stderr);
+
+  const { originalImages, checkpoints, oversizedJson } = JSON.parse(result.stdout);
+  return {
+    path,
+    originalImages,
+    checkpoints: checkpoints.map(({ path: entry, checkpointSha256, document }) => ({
+      path: entry,
+      checkpointSha256,
+      finalReceipts: matchingReceipts(finals, parseCheckpoint(document), { checkpointSha256 }),
+    })),
+    oversizedJson,
+  };
+}
+
+function collectReport(refs, { archive, checkpoint, zip }) {
   const v610 = JSON.parse(git('show', originalCommit + ':' + v610Path));
   const v613 = JSON.parse(git('show', originalCommit + ':' + v613Path));
-  const historic = parseCheckpoint(git('show', originalCommit + ':' + checkpointPath));
+  const historic = parseCheckpoint(JSON.parse(git('show', originalCommit + ':' + checkpointPath)));
   assert.equal(v610.records.length, 36);
   assert.equal(v613.assets.length, 36);
   assert.equal(historic.size, 21);
@@ -147,15 +171,20 @@ function collectReport(refs, { archive, checkpoint }) {
   const candidates = inspectCandidates([...new Set(refs.map(commitFor))], v610.records, v613.assets);
   const archiveCandidates = archive.map(directory => inspectArchive(directory, v610.records));
   const checkpointCandidates = checkpoint.map(path => inspectArchiveCheckpoint(path, v613.assets));
-  const pngIds = new Set([...candidates, ...archiveCandidates].flatMap(row => row.originalImages.map(image => image.id)));
+  const zipCandidates = zip.map(path => inspectZip(path, v610.records, v613.assets));
+  const pngIds = new Set(
+    [...candidates, ...archiveCandidates, ...zipCandidates].flatMap(row => row.originalImages.map(image => image.id))
+  );
   const receiptCandidateIds = new Set(
-    [...candidates, ...checkpointCandidates].flatMap(row => row.finalReceipts.map(receipt => receipt.id))
+    [...candidates, ...checkpointCandidates, ...zipCandidates.flatMap(row => row.checkpoints)]
+      .flatMap(row => row.finalReceipts.map(receipt => receipt.id))
   );
   return {
     schemaVersion: 1,
     originalCommit,
     scope: 'Observation des chemins et checkpoints aux seuls commits examinés. Revue de provenance requise pour un nouveau reçu concordant.'
-      + (archive.length || checkpoint.length ? ' Dossiers et checkpoints locaux fournis examinés aussi.' : ''),
+      + (archive.length || checkpoint.length ? ' Dossiers et checkpoints locaux fournis examinés aussi.' : '')
+      + (zip.length ? ' Archives ZIP locales inspectées en lecture seule.' : ''),
     v610: {
       criterion: 'ENFORCERS-V610-TRACES',
       preservedTraceCount: v610.records.length,
@@ -174,6 +203,7 @@ function collectReport(refs, { archive, checkpoint }) {
     candidates,
     ...(archive.length ? { archiveCandidates } : {}),
     ...(checkpoint.length ? { checkpointCandidates } : {}),
+    ...(zip.length ? { zipCandidates } : {}),
   };
 }
 
@@ -181,6 +211,7 @@ const { values, positionals } = parseArgs({
   options: {
     archive: { type: 'string', multiple: true, default: [] },
     checkpoint: { type: 'string', multiple: true, default: [] },
+    zip: { type: 'string', multiple: true, default: [] },
   },
   allowPositionals: true,
 });

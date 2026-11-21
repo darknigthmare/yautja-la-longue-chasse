@@ -24,6 +24,7 @@ export function issueWarAssaultFocusV142(
  const target=arena.actors.find(u=>u.id===rivalActorId&&u.side==="rival"&&u.hp>0);
  if(!actor||!target||actor.id===target.id)
   return fail("La cible et le détachement doivent être réellement présents et vivants.");
+ if(actor.assaultCloak?.active) return fail("Désactivez le camouflage avant d’ordonner un tir prioritaire.");
  const unit=rules.units.find(u=>u.id===actor.unitId);
  if(!unit) return fail("Le détachement est absent de la Bible V6.");
  const range=Math.max(5,Math.min(22,unit.range*2+3));

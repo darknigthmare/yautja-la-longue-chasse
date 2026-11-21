@@ -18,6 +18,8 @@ import HuntingHoundsPanelV147 from "./HuntingHoundsPanelV147";
 import GameReserveEntryV66 from "./GameReserveEntryV66";
 import type {GameReserveChoiceV109} from './systems/gameReserveV66';
 import { rankRiteDossierV168 } from "./systems/rankRiteDossierV168";
+import ElderPassageJudgment from "./ElderPassageJudgment";
+import { canJudgeElderPassage, type PassageCommand, type PassageResponse } from "./systems/elderPassageJudgmentV168";
 
 const regions = [
   ["Désert", "Unblooded", "Dunes, oueds, citerne tribale et canyons de chasse."],
@@ -49,14 +51,16 @@ function HomeworldRegionArt({ name }: { name: string }) {
 }
 
 /** Read-only design dossier. Never grants evidence, equipment, ownership or XP. */
-export default function ClanChroniclePanel({ save, onClose, onGameReserveV66, onOpenCradle }: {
+export default function ClanChroniclePanel({ save, onClose, onGameReserveV66, onOpenCradle, onPassageCommand }: {
   save: SaveGame;
   onClose: () => void;
   onGameReserveV66?: (fresh: boolean, version?: GameReserveChoiceV109) => boolean;
   onOpenCradle?: () => void;
+  onPassageCommand?: (command: PassageCommand) => PassageResponse;
 }) {
   const [section, setSection] = useState<"journey" | "worlds" | "humans" | "companions">("journey");
   const [query, setQuery] = useState("");
+  const [passageOpen, setPassageOpen] = useState(false);
   const chronicle = useMemo(() => save.prologue?.chronicle ?? migrateV35ClanChronicle(save), [save]);
   const rankDossier = useMemo(() => rankRiteDossierV168(save), [save]);
   const narrativeRank = getChronicleRank(chronicle) ?? "youngling";
@@ -108,9 +112,20 @@ export default function ClanChroniclePanel({ save, onClose, onGameReserveV66, on
             </ul>
             {rankDossier.queen.canOpenExpedition && onOpenCradle && <button type="button" onClick={onOpenCradle}>Ouvrir le dossier du Berceau</button>}
           </li>
-          <li><h4>Elder · R2-M049 et R2-M050</h4><p>Former un pack et juger un différend devant le clan.</p><p>Épreuve à produire.</p></li>
+          <li>
+            <h4>Elder · R2-M049 et R2-M050</h4>
+            <p>Former un novice lors d’une chasse observée. Épreuve à produire.</p>
+            <p>{save.elderPassageJudgmentV168?.resolved ? "Le témoin a consigné le règlement du passage." : "Régler le désaccord du passage devant un témoin."}</p>
+            {(canJudgeElderPassage(save) || save.elderPassageJudgmentV168?.resolved) && onPassageCommand
+              ? <button type="button" onClick={() => setPassageOpen(value => !value)} aria-expanded={passageOpen}>
+                  {passageOpen ? "Replier le dossier du passage" : "Ouvrir le dossier du passage"}
+                </button>
+              : <p>Le dossier du passage s’ouvre à Elite avec 8 000 points d’honneur de carrière.</p>}
+          </li>
         </ol>
       </section>
+      {passageOpen && onPassageCommand && <ElderPassageJudgment key={save.createdAt} owner={save.createdAt}
+        saved={save.elderPassageJudgmentV168} onCommand={onPassageCommand} onClose={() => setPassageOpen(false)} />}
       <h3 className={styles.subheading}>Reconnaissances enregistrées dans la chronique</h3>
       <ol className={styles.rites}>
         {CHRONICLE_RITES.filter(rite => rite.id === "nursery-recognition" || rite.id === "unguided-hunt-recognition" ||

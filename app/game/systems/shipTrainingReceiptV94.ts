@@ -7,6 +7,7 @@ import {
   type ShipProgressionState, type ShipProgressionWriteResult, type TrainingDisciplineId,
 } from "./progression";
 import type { SaveGame } from "../types";
+import { canPracticeClanPlasma } from "./trainingDrill";
 
 export interface ShipTrainingStorageV94 {
   getItem(key: string): string | null;
@@ -60,7 +61,8 @@ export function createShipTrainingReceiptV94(
   score: number, io: ShipTrainingIOV94 = browserIO, completedAt = new Date().toISOString(),
 ): ShipTrainingReceiptV94 | null {
   if (!Object.hasOwn(TRAINING_LABELS, disciplineId) || !Number.isInteger(score) || score < 0 || score > 100 ||
-      base.ownerSaveCreatedAt !== save.createdAt || !Number.isFinite(Date.parse(completedAt))) return null;
+      base.ownerSaveCreatedAt !== save.createdAt || !Number.isFinite(Date.parse(completedAt)) ||
+      (disciplineId === "clan-hunt" && !canPracticeClanPlasma(save.missionProgress))) return null;
   // A fixed comparison clock ignores only the outer UI clock, not progress.
   const clock = save.updatedAt;
   let baseline: string, candidate: ShipProgressionState;
@@ -85,6 +87,7 @@ export function restoreShipTrainingReceiptV94(
         typeof v.id !== "string" || !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(v.id) ||
         v.owner !== save.createdAt || !Object.hasOwn(TRAINING_LABELS, v.disciplineId) ||
         !Number.isInteger(v.score) || v.score < 0 || v.score > 100 ||
+        (v.disciplineId === "clan-hunt" && !canPracticeClanPlasma(save.missionProgress)) ||
         typeof v.completedAt !== "string" || !Number.isFinite(Date.parse(v.completedAt)) ||
         typeof v.clock !== "string" || !Number.isFinite(Date.parse(v.clock)) ||
         typeof v.baseline !== "string" || typeof v.observed !== "boolean" ||

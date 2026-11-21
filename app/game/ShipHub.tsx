@@ -38,6 +38,7 @@ import {
 } from "./systems/controlBindings";
 import {
   TRAINING_LABELS,
+  STANDARD_TRAINING_IDS,
   SHIP_PROGRESSION_STORAGE_KEY,
   TROPHY_METHOD_LABELS,
   TROPHY_SPECIES_LABELS,
@@ -50,6 +51,7 @@ import {
   resolveMedbayTreatment,
   saveLoadoutPreset,
   selectShip,
+  shipTrainingRecord,
   startMedbayTreatment,
   unlockAvailableShips,
   type ShipLoadoutSlotId,
@@ -728,14 +730,13 @@ export default function ShipHub({
     }
 
     if (activeRoomId === "training") {
-      const drills = (
-        Object.keys(TRAINING_LABELS) as TrainingDisciplineId[]
-      ).map((disciplineId) => ({
+      const drills = STANDARD_TRAINING_IDS.map((disciplineId) => ({
         id: `train-${disciplineId}`,
         label: TRAINING_LABELS[disciplineId],
         detail: `Record ${progression.training[disciplineId].bestScore}/100 · ${progression.training[disciplineId].attempts} essai(s)`,
         run: () => { if (!hasPendingService()) return requestTraining(disciplineId); },
       }));
+      const clanHunt = shipTrainingRecord(progression, "clan-hunt");
       return [
         ...(onOpenPit
           ? [{
@@ -751,6 +752,11 @@ export default function ShipHub({
           label: "Préparation des rites · Plasma",
           detail: "Cibles simulées et retenue du tir. Le score rejoint le registre de ciblage Biomask.",
           run: () => { if (!hasPendingService()) return requestTraining("targeting", true); },
+        }, {
+          id: "train-clan-hunt",
+          label: TRAINING_LABELS["clan-hunt"],
+          detail: `Pistage, lames et plasma · Record ${clanHunt.bestScore}/100 · ${clanHunt.attempts} essai(s)`,
+          run: () => { if (!hasPendingService()) return requestTraining("clan-hunt"); },
         }] : []),
       ];
     }

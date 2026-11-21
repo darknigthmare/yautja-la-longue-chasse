@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { build } from "esbuild";
 
-const bundle=await build({stdin:{contents:"export * from './app/game/systems/clanWarOperationsV115'; export * from './app/game/systems/clanWarBibleV6';",resolveDir:process.cwd()},bundle:true,write:false,format:"esm",platform:"node",target:"es2022",logLevel:"silent"});
+const bundle=await build({stdin:{contents:"export * from './app/game/systems/clanWarOperationsV115'; export * from './app/game/systems/clanWarBibleV6'; export * from './app/game/systems/clanWarAssaultContactV141'; export * from './app/game/systems/clanWarFocusV142';",resolveDir:process.cwd()},bundle:true,write:false,format:"esm",platform:"node",target:"es2022",logLevel:"silent"});
 const war=await import("data:text/javascript;base64,"+Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 const bible=war.DEFAULT_WAR_RULES_V6;
 const base=()=>war.createWarOperationsV115(bible);
@@ -91,4 +91,90 @@ test("archive checks reject impossible actors, cross-team orders, duplicate pers
   const fabricated=structuredClone(settled);
   fabricated.reports[0].engagementLog=["fake".repeat(300)];
   assert.equal(war.readWarOperationsV115(JSON.stringify(fabricated),bible),null);
+});
+
+function deployedAssault() {
+  const origin = base(), team = origin.teams[0].id;
+  const started = war.beginWarOperationV115(origin, "assault", routeFor(origin, [team]), [team], bible, 60000);
+  assert.equal(started.accepted, true);
+  const teamUnit = bible.units.find(unit => unit.id === origin.teams[0].unitId);
+  assert(teamUnit);
+  const deployed = war.deployAssaultUnitV115(started.state, team, bible);
+  assert.equal(deployed.accepted, true);
+  return { team, started: started.state, deployed: deployed.state };
+}
+
+test("assault camouflage drains exactly one charge per quiet turn, resumes from the archive and recharges at the bastion", () => {
+  const { team, started, deployed } = deployedAssault();
+  assert.equal(war.toggleWarAssaultCloakV115(started, team, bible).accepted, false);
+  assert.deepEqual(war.readWarOperationsV115(JSON.stringify(deployed), bible), deployed);
+  const active = war.toggleWarAssaultCloakV115(deployed, team, bible);
+  assert(active.accepted);
+  assert.equal(active.state.clock, deployed.clock);
+  assert.equal(active.state.rav, deployed.rav);
+  assert.equal(active.state.active.assault.ap, deployed.active.assault.ap);
+  const ally = state => state.active.assault.actors.find(actor => actor.teamId === team);
+  assert.equal(ally(deployed).assaultCloak, undefined);
+  assert.deepEqual(ally(active.state).assaultCloak, { active: true, energy: 5 });
+  let state = active.state;
+  for (let energy = 4; energy >= 0; energy--) {
+    const before = war.readWarOperationsV115(JSON.stringify(state), bible);
+    assert.deepEqual(before, state);
+    state = war.stepAssaultV115(before, bible).state;
+    assert.deepEqual(ally(state).assaultCloak, { active: energy > 0, energy });
+  }
+  assert.equal(war.toggleWarAssaultCloakV115(state, team, bible).accepted, false);
+  const front = structuredClone(state);
+  ally(front).x = 35;
+  assert.equal(ally(war.stepAssaultV115(front, bible).state).assaultCloak.energy, 0);
+  const back = structuredClone(state);
+  ally(back).x = 8;
+  assert.deepEqual(ally(war.stepAssaultV115(back, bible).state).assaultCloak, { active: false, energy: 1 });
+});
+
+test("assault camouflage holds fire and blocks crossings while ordinary enemies lose optical contact", () => {
+  const ally = { id: "ally", teamId: "team", unitId: "W3-U14", side: "ally", x: 42, hp: 35,
+    assaultCloak: { active: true, energy: 4 } };
+  const rival = { id: "rival", teamId: null, unitId: "W3-U14", side: "rival", x: 46, hp: 35 };
+  const beyond = { ...ally, id: "back", teamId: "other", x: 40, assaultCloak: undefined };
+  const first = war.warAssaultContactV141([ally, rival, beyond], bible, {}, 1);
+  assert(!first.shots.some(shot => shot.attackerId === ally.id || shot.attackerId === rival.id));
+  assert(first.actors.find(actor => actor.id === rival.id).x > ally.x);
+  assert(first.actors.find(actor => actor.id === ally.id).x < rival.x);
+  const byBastion = war.warAssaultContactV141([{ ...ally, x: 94 }], bible, {}, 1);
+  assert.equal(byBastion.rivalBaseDamage, 0);
+  const opticalContact = war.warAssaultContactV141([ally, { ...rival, x: 44 }], bible, {}, 1);
+  assert(opticalContact.shots.some(shot => shot.attackerId === rival.id && shot.targetId === ally.id));
+  assert(!opticalContact.shots.some(shot => shot.attackerId === ally.id));
+});
+
+test("source W3-U04 detects nearby cloaked troops, makes an impact and leaves a disrupted archive", () => {
+  const { team, deployed } = deployedAssault();
+  const state = war.toggleWarAssaultCloakV115(deployed, team, bible).state;
+  const arena = state.active.assault, ally = arena.actors.find(actor => actor.teamId === team);
+  ally.x = 40;
+  const tracker = { id: "track-unit", teamId: null, unitId: "W3-U04", side: "rival", x: 46, hp: 35 };
+  arena.actors = [ally, tracker];
+  assert.equal(war.warAssaultCanSeeActorV141(tracker, ally), true);
+  assert.equal(war.warAssaultCanSeeActorV141({ ...tracker, x: 48 }, ally), false);
+  arena.ap = 40;
+  const special = war.issueWarAssaultSpecialV117(state, team, bible);
+  const focus = war.issueWarAssaultFocusV142(state, team, tracker.id, bible);
+  assert.equal(special.accepted, false);
+  assert.equal(focus.accepted, false);
+  assert.equal(special.state, state);
+  assert.equal(focus.state, state);
+  const after = war.stepAssaultV115(state, bible).state;
+  const struck = after.active.assault.actors.find(actor => actor.teamId === team);
+  assert(struck.hp < ally.hp);
+  assert.deepEqual(struck.assaultCloak, { active: false, energy: 3 });
+  assert.deepEqual(war.readWarOperationsV115(JSON.stringify(after), bible), after);
+  for (const corruptCloak of [{ active: true, energy: 0 }, { active: false, energy: 6 }, { active: false, energy: 1.5 }]) {
+    const invalid = structuredClone(state);
+    invalid.active.assault.actors[0].assaultCloak = corruptCloak;
+    assert.equal(war.readWarOperationsV115(JSON.stringify(invalid), bible), null);
+  }
+  const counterfeit = structuredClone(after);
+  counterfeit.active.assault.actors.find(actor => actor.id === tracker.id).assaultCloak = { active: true, energy: 3 };
+  assert.equal(war.readWarOperationsV115(JSON.stringify(counterfeit), bible), null);
 });
