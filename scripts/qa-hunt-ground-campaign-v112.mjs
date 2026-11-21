@@ -45,8 +45,9 @@ const minimumRetainedLoad=args.minimumRetainedLoad===undefined?null:Number(args.
 const harvestSweep=args.harvestSweep==="true";
 const sweepEarly=args.sweepEarly==="true";
 const sweepDistance=args.sweepDistance===undefined?240:Number(args.sweepDistance);
+const leaveSpecimens=new Set((args.leaveSpecimens??"").split(",").filter(Boolean));
 if(harvestSweep)assert.ok(args.harvest==="true"&&minimumRetainedLoad!==null,"--harvestSweep requires a declared harvest load target");
-if(sweepEarly||args.sweepDistance!==undefined)assert.equal(harvestSweep,true,"sweep tuning requires --harvestSweep=true");
+if(sweepEarly||args.sweepDistance!==undefined||leaveSpecimens.size)assert.equal(harvestSweep,true,"sweep tuning requires --harvestSweep=true");
 assert.ok(Number.isFinite(sweepDistance)&&sweepDistance>=0,"sweep distance must be a finite map distance");
 if(minimumRetainedLoad!==null){
  assert.ok(Number.isFinite(minimumRetainedLoad)&&minimumRetainedLoad>0&&minimumRetainedLoad<=1,
@@ -164,7 +165,7 @@ for(const missionId of missionIds)for(const armorId of armorIds){
     if(distance<=88&&options.worksiteBlocked(corpse))continue;
     for(const part of runtime.anatomyPartsV112(corpse.sourceEnemyId)){
      const key=part.action+":"+corpse.id;
-     if(state.huntRites.completedEventIds.includes(key))continue;
+     if(leaveSpecimens.has(key)||state.huntRites.completedEventIds.includes(key))continue;
      const item=runtime.makeAnatomySpecimenV112(state.huntRites.runId,corpse.id,corpse.sourceEnemyId,part.action,corpse.integrity??100,corpse.analyzed);
      const preview=options.specimenPreview(item);
      if(!preview.accepted)continue;
@@ -182,7 +183,8 @@ for(const missionId of missionIds)for(const armorId of armorIds){
     for(const enemy of enemies){
      if(enemy.boss)continue;
      for(const part of runtime.anatomyPartsV112(enemy.archetype)){
-      pool.push({key:part.action+":"+enemy.id,massKg:part.massKg,volumeUnits:part.volumeUnits});
+      const key=part.action+":"+enemy.id;
+      if(!leaveSpecimens.has(key))pool.push({key,massKg:part.massKg,volumeUnits:part.volumeUnits});
      }
     }
     packing={load,pool};
@@ -198,7 +200,7 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   const sweepTarget=sweepAllowed?enemies.find(enemy=>!enemy.boss&&
     Math.abs(enemy.x+enemy.width/2-center)<1200&&Math.abs(enemy.y+enemy.height-p.y-p.height)<140&&
     runtime.anatomyPartsV112(enemy.archetype).some(part=>
-     part.massKg<=load.capacityMassKg-load.massKg+1e-9&&part.volumeUnits<=load.capacityVolumeUnits-load.volumeUnits)&&
+     !leaveSpecimens.has(part.action+":"+enemy.id)&&part.massKg<=load.capacityMassKg-load.massKg+1e-9&&part.volumeUnits<=load.capacityVolumeUnits-load.volumeUnits)&&
     !runtime.huntStructuralBarrierV94({x:center,y:p.y+p.height/2},
      {x:enemy.x+enemy.width/2,y:enemy.y+enemy.height/2},state.world.platforms)):null;
   if(sweepTarget&&sweepTarget.id!==lastSweepTarget){
@@ -382,7 +384,7 @@ if(head.startsWith("ref: ")){
  try{commit=(await readFile(root+".git/"+ref,"utf8")).trim();}
  catch{commit=(await readFile(root+".git/packed-refs","utf8")).split("\n").find(line=>line.endsWith(" "+ref))?.split(" ")[0]??null;}
 }
-const report={schema:1,createdAt:new Date().toISOString(),commit,sourceSha256:createHash("sha256").update(source).digest("hex"),bundleSha256:createHash("sha256").update(bundle.outputFiles[0].text).digest("hex"),scriptSha256:createHash("sha256").update(scriptBytesAtAdmission).digest("hex"),policySha256:createHash("sha256").update(policyBytesAtAdmission).digest("hex"),harvestPolicySha256:createHash("sha256").update(harvestPolicyBytesAtAdmission).digest("hex"),command:process.argv,harvest:args.harvest==="true",harvestSweep,sweepEarly,sweepDistance,minimumRetainedLoad,scope:"Native stepGame, unchanged production source with appended exports and verbatim AST-extracted rite UI callback. GameInput and native menu callback only after explicit replay armor admission. Hunter difficulty, zero upgrades, seeded Math.random for reproducible legal spawn jitter. Harvest mode buys its tool using two documented real mission results, and only prepares real prey killed during this run. Actions capped at 10 rising edges per second. No browser, progression, physical keyboard or visual qualification.",outcomes};
+const report={schema:1,createdAt:new Date().toISOString(),commit,sourceSha256:createHash("sha256").update(source).digest("hex"),bundleSha256:createHash("sha256").update(bundle.outputFiles[0].text).digest("hex"),scriptSha256:createHash("sha256").update(scriptBytesAtAdmission).digest("hex"),policySha256:createHash("sha256").update(policyBytesAtAdmission).digest("hex"),harvestPolicySha256:createHash("sha256").update(harvestPolicyBytesAtAdmission).digest("hex"),command:process.argv,harvest:args.harvest==="true",harvestSweep,sweepEarly,sweepDistance,leaveSpecimens:[...leaveSpecimens],minimumRetainedLoad,scope:"Native stepGame, unchanged production source with appended exports and verbatim AST-extracted rite UI callback. GameInput and native menu callback only after explicit replay armor admission. Hunter difficulty, zero upgrades, seeded Math.random for reproducible legal spawn jitter. Harvest mode buys its tool using two documented real mission results, and only prepares real prey killed during this run. Actions capped at 10 rising edges per second. No browser, progression, physical keyboard or visual qualification.",outcomes};
 await writeFile(`${output}/report.json`,JSON.stringify(report,null,2)+"\n");
 if(args.successSave!==undefined){
  assert.ok(verifiedSuccessSave,"a successful native extraction is required to emit the next campaign save");

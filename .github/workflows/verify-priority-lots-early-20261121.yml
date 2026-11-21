@@ -13,18 +13,22 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - profile: jungle-visible-seed6-shared
-            mission: jungle-vey
-            previousWins: 5
-            args: --insertion=visible-ship --policy=shared
-          - profile: jungle-visible-seed6-native
-            mission: jungle-vey
-            previousWins: 5
-            args: --insertion=visible-ship
-          - profile: jungle-visible-seed6-early
-            mission: jungle-vey
-            previousWins: 5
-            args: --insertion=visible-ship --policy=shared --sweepEarly=true --sweepDistance=210
+          - profile: volcano-skip-hound-tendon
+            mission: volcano-bad-blood
+            previousWins: 2
+            args: --insertion=visible-ship --leaveSpecimens=harvest-tissue:volcano-hounds-2
+          - profile: volcano-skip-patrol-tendon
+            mission: volcano-bad-blood
+            previousWins: 2
+            args: --insertion=visible-ship --leaveSpecimens=harvest-tissue:volcano-bad-blood:3:insertion-patrol-2
+          - profile: volcano-quiet-skip-hound
+            mission: volcano-bad-blood
+            previousWins: 2
+            args: --insertion=visible-ship --sweepDistance=270 --leaveSpecimens=harvest-tissue:volcano-hounds-2
+          - profile: volcano-close-skip-hound
+            mission: volcano-bad-blood
+            previousWins: 2
+            args: --insertion=visible-ship --sweepDistance=200 --leaveSpecimens=harvest-tissue:volcano-hounds-2
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
     steps:
