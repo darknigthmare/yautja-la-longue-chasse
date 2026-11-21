@@ -81,10 +81,19 @@ export default function ClanWarGauntletLockerV132({ hunterRank, equippedId, onEq
         </p>
         {study && <section className={styles.research} aria-label="Dossier d'étude du gauntlet">
           <h4>Dossier d&apos;étude · reconstitution de l&apos;atelier de clan</h4>
-          <p>Source de preuve : {study.study?.missionId} · trophée {study.study?.quality} · {study.study?.minimumScans} scans au total.</p>
           {studyClaimed ? <p className={styles.studyReady}>Archive de recherche validée et sauvegardée.</p>
-            : study.missing.length ? <p className={styles.studyMissing}>{study.missing.join(" · ")}</p>
-            : <p className={styles.studyReady}>Conditions remplies : validation disponible au comptoir.</p>}
+            : <>
+              <ul className={styles.studyRequirements}>
+                {study.requirements.map(requirement => <li
+                  key={requirement.id}
+                  className={requirement.met ? styles.studyReady : styles.studyMissing}
+                >
+                  <strong>{requirement.met ? "Réuni" : "À réunir"}</strong>
+                  <span>{requirement.label}</span>
+                </li>)}
+              </ul>
+              {study.ok && <p className={styles.studyReady}>Conditions remplies. Validez le dossier au comptoir.</p>}
+            </>}
           <button type="button" disabled={disabled||studyClaimed||!study.ok||!onClaimStudy}
             onClick={()=>onClaimStudy?.(preview.id)}>
             {studyClaimed?"Dossier déjà validé":study.ok?"Valider l'étude et débloquer":"Étude encore verrouillée"}

@@ -31,6 +31,39 @@
   color: #f0b07a;
 }
 
+.itinerary {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(123, 224, 141, 0.25);
+}
+
+.itinerary h3,
+.itinerary p {
+  margin: 0;
+}
+
+.itinerary h3 {
+  font-size: 0.9rem;
+}
+
+.destination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.destination select {
+  max-width: 100%;
+  color: inherit;
+  background: #14241b;
+  border: 1px solid #789780;
+  border-radius: 4px;
+  padding: 0.35rem 0.45rem;
+}
+
 .routes {
   display: grid;
   gap: 0.5rem;

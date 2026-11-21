@@ -36,7 +36,19 @@ export interface GauntletCampaignEvidenceV134 {
     readonly workshop?:{readonly completedActions:readonly string[]}}[];
   readonly statistics:{readonly totalScans:number};
 }
-export type GauntletStudyResultV134={ok:boolean; missing:string[]; label:string; study:GauntletStudyV134|null};
+interface GauntletStudyRequirementV134 {
+  id: "rank" | "missions" | "scans" | "trophy" | "rite";
+  label: string;
+  met: boolean;
+}
+
+export type GauntletStudyResultV134 = {
+  ok: boolean;
+  missing: string[];
+  label: string;
+  study: GauntletStudyV134 | null;
+  requirements: GauntletStudyRequirementV134[];
+};
 
 function fingerprint(id:string):number{
   let value=2166136261;
@@ -65,24 +77,59 @@ const RANK_INDEX:Readonly<Record<HunterRankV132,number>>={
 };
 export function gauntletStudyV134(id:string):GauntletStudyV134|undefined{return STUDY_BY_ID.get(id);}
 
-export function evaluateGauntletStudyV134(save:GauntletCampaignEvidenceV134,id:string):GauntletStudyResultV134{
-  const study=gauntletStudyV134(id);
-  if(!study) return {ok:false,missing:["Aucun dossier de recherche correspondant."],label:"Dossier inconnu",study:null};
-  const missing:string[]=[];
-  const rank=save.profile.rankId;
-  if(RANK_INDEX[rank]<RANK_INDEX[study.rank]) missing.push(`Rang ${study.rank} requis`);
-  const progress=save.missionProgress[study.missionId];
-  if(!progress||progress.completions<study.completions)
-    missing.push(`${study.completions} mission(s) validée(s) : ${study.missionId}`);
-  if(save.statistics.totalScans<study.minimumScans)
-    missing.push(`Lectures de terrain : ${save.statistics.totalScans}/${study.minimumScans} scans`);
-  const minimalQuality=QUALITY.indexOf(study.quality);
-  const actualTrophies=save.trophies.filter(t=>t.missionId===study.missionId &&
-    QUALITY.indexOf(t.quality)>=minimalQuality);
-  if(!actualTrophies.length)missing.push(`Trophée de ${study.missionId} de qualité ${study.quality} ou supérieure`);
-  if(study.workshop && !actualTrophies.some(t=>t.workshop?.completedActions?.includes("rite")))
-    missing.push("Rite d'atelier accompli sur ce trophée, avec archive confirmée");
-  return {ok:missing.length===0,missing,label:missing.length===0?"Étude admissible à l'armurerie":"Éléments encore à réunir",study};
+function recordedCount(value: number | undefined): number {
+  return typeof value === "number" && Number.isSafeInteger(value) && value >= 0 ? value : 0;
+}
+
+export function evaluateGauntletStudyV134(save: GauntletCampaignEvidenceV134, id: string): GauntletStudyResultV134 {
+  const study = gauntletStudyV134(id);
+  if (!study) return {
+    ok: false, missing: ["Aucun dossier de recherche correspondant."],
+    label: "Dossier inconnu", study: null, requirements: [],
+  };
+
+  const rank = save.profile.rankId;
+  const knownRank = Object.hasOwn(RANK_INDEX, rank);
+  const completions = recordedCount(save.missionProgress[study.missionId]?.completions);
+  const scans = recordedCount(save.statistics.totalScans);
+  const minimumQuality = QUALITY.indexOf(study.quality);
+  const eligibleTrophies = save.trophies.filter(trophy =>
+    trophy.missionId === study.missionId && QUALITY.indexOf(trophy.quality) >= minimumQuality);
+  const requirements: GauntletStudyRequirementV134[] = [
+    {
+      id: "rank",
+      label: `Rang ${study.rank} requis · rang actuel ${knownRank ? rank : "inconnu"}`,
+      met: knownRank && RANK_INDEX[rank] >= RANK_INDEX[study.rank],
+    },
+    {
+      id: "missions",
+      label: `${completions}/${study.completions} chasse(s) validée(s) · ${study.missionId}`,
+      met: completions >= study.completions,
+    },
+    {
+      id: "scans",
+      label: `Lectures de terrain · ${scans}/${study.minimumScans} scans`,
+      met: scans >= study.minimumScans,
+    },
+    {
+      id: "trophy",
+      label: `Trophée de ${study.missionId} · qualité ${study.quality} ou supérieure`,
+      met: eligibleTrophies.length > 0,
+    },
+  ];
+  if (study.workshop) requirements.push({
+    id: "rite",
+    label: "Rite d’atelier archivé sur un trophée admissible",
+    met: eligibleTrophies.some(trophy => trophy.workshop?.completedActions?.includes("rite")),
+  });
+  const missing = requirements.filter(requirement => !requirement.met).map(requirement => requirement.label);
+  return {
+    ok: missing.length === 0,
+    missing,
+    label: missing.length === 0 ? "Étude admissible à l’armurerie" : "Éléments encore à réunir",
+    study,
+    requirements,
+  };
 }
 export function emptyGauntletCampaignV134(ownerCreatedAt:string):GauntletCampaignV134{
   return {version:1,ownerCreatedAt,equippedId:DEFAULT_GAUNTLET_ID_V132,claimedStudies:[]};
@@ -102,16 +149,20 @@ export function normalizeGauntletCampaignV134(raw:unknown,ownerCreatedAt:string)
 }
 export function gauntletCampaignEquipV134(save:GauntletCampaignEvidenceV134 & {gauntletV134?:GauntletCampaignV134|null},id:string):
   {ok:boolean;reason:string;archive:GauntletCampaignV134|null} {
-  const archived=save.gauntletV134??emptyGauntletCampaignV134(save.createdAt);
-  if(archived.ownerCreatedAt!==save.createdAt)return {ok:false,reason:"Archive d'un autre chasseur.",archive:null};
+  const archived = save.gauntletV134 == null
+    ? emptyGauntletCampaignV134(save.createdAt)
+    : normalizeGauntletCampaignV134(save.gauntletV134, save.createdAt);
+  if (!archived) return {ok:false, reason:"Archive de gauntlet invalide pour ce chasseur.", archive:null};
   if(!gauntletUnlockedV132(id,save.profile.rankId,archived.claimedStudies))
     return {ok:false,reason:"Gauntlet non débloqué par ce chasseur.",archive:null};
   return {ok:true,reason:"Gauntlet équipé (cosmétique seulement).",archive:{...archived,equippedId:id}};
 }
 export function gauntletCampaignClaimV134(save:GauntletCampaignEvidenceV134 & {gauntletV134?:GauntletCampaignV134|null},id:string):
   {ok:boolean;reason:string;archive:GauntletCampaignV134|null} {
-  const archived=save.gauntletV134??emptyGauntletCampaignV134(save.createdAt);
-  if(archived.ownerCreatedAt!==save.createdAt)return {ok:false,reason:"Archive d'un autre chasseur.",archive:null};
+  const archived = save.gauntletV134 == null
+    ? emptyGauntletCampaignV134(save.createdAt)
+    : normalizeGauntletCampaignV134(save.gauntletV134, save.createdAt);
+  if (!archived) return {ok:false, reason:"Archive de gauntlet invalide pour ce chasseur.", archive:null};
   if(archived.claimedStudies.includes(id)) return {ok:false,reason:"Dossier déjà validé : aucune deuxième récompense.",archive:null};
   const proof=evaluateGauntletStudyV134(save,id);
   if(!proof.ok)return {ok:false,reason:proof.missing.join(" · "),archive:null};

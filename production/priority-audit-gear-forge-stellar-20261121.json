@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "1559ca1e70ddec090294f12d2322172bf31a1d64",
+  "auditDateUtc": "2026-11-21",
+  "scope": [
+    "équipement",
+    "personnalisation",
+    "forge",
+    "carte stellaire"
+  ],
+  "workbookEvidence": [
+    {
+      "path": "docs/production/Yautja_PHG_Backlog_Production_V137.xlsx",
+      "gitBlobSha": "feeed7291eb3713f20e3f0fb800756e4f99a361a",
+      "sheets": 8,
+      "xmlRowsRead": 482,
+      "p3TextMentions": [
+        {
+          "sheet": "Guide",
+          "cell": "B8",
+          "value": "P0 Bloquant / P1 majeur / P2 normal / P3 amélioration"
+        }
+      ]
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx",
+      "gitBlobSha": "0e0cc8ed80781d50fea6053218fb8245d2893a9c",
+      "sheets": 21,
+      "xmlRowsRead": 929,
+      "p3TextMentions": []
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+      "gitBlobSha": "f8812c64f74017559b243d7f18a1029df33281b3",
+      "sheets": 9,
+      "xmlRowsRead": 750,
+      "p3TextMentions": []
+    },
+    {
+      "path": "docs/production/Yautja_PHG_QA_Visual_Morphologies_V141.xlsx",
+      "gitBlobSha": "0e254e90e4f77acfac05c461968f94ad8ddfc502",
+      "sheets": 10,
+      "xmlRowsRead": 1489,
+      "p3TextMentions": []
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+      "gitBlobSha": "9b8fbccab2186498d8cb58f3d139f644a235798f",
+      "sheets": 8,
+      "xmlRowsRead": 1117,
+      "p3TextMentions": []
+    },
+    {
+      "path": "docs/Yautja_Gauntlets_V144_Controle_Campagne.xlsx",
+      "gitBlobSha": "a40f98ad80244f24f9cb73625934703ea695e82f",
+      "sheets": 4,
+      "xmlRowsRead": 132,
+      "p3TextMentions": []
+    }
+  ],
+  "backlogEvidence": {
+    "workbook": "docs/production/Yautja_PHG_Backlog_Production_V137.xlsx",
+    "worksheet": "Backlog_Master",
+    "primaryIdColumn": "A",
+    "priorityColumn": "G",
+    "priorities": {
+      "P0": 29,
+      "P1": 211,
+      "P2": 149,
+      "P3": 0
+    },
+    "p3Rows": []
+  },
+  "otherSourceEvidence": [
+    {
+      "path": "docs/campagne/WARP_UNIVERSE_REPRISE.md",
+      "gitBlobSha": "a3c21d4bd63ddd4abc82932d2c8ac24c4403d756",
+      "finding": "Le plan définit P0 pour le pilote, P1 pour les scènes terrestres et le pilotage, P2 pour les extensions hors Terre."
+    },
+    {
+      "path": "production/p0p1-20261109/inventory/warp-priority-requests.json",
+      "gitBlobSha": "99f73c211a745abbe27ceedd48ae2309587cf1a8",
+      "priorities": {
+        "P0": 5,
+        "P1": 21,
+        "P2": 0,
+        "P3": 0
+      }
+    },
+    {
+      "path": "production/native-open-20261102/archives/forge/forge-context-review-r6.json",
+      "gitBlobSha": "4a06ca776309eb4795765cdd44f0104202000426",
+      "finding": "Le reçu décrit le réemploi des flammes P3-C du Pit. P3-C est dans le nom des fichiers, sans affectation de priorité au reçu."
+    },
+    {
+      "path": "production/native-open-20261102/archives/fauna-energy/gear/gear-index.json",
+      "gitBlobSha": "d6bf676fa6ea5fe7bdcc1d24aba913ec96b8720a",
+      "finding": "Six cibles d’équipement disposent de reçus de fabrication. Le registre garde la validation humaine et la clôture source ouvertes."
+    }
+  ],
+  "conclusion": {
+    "p3RowsInScope": [],
+    "evidenceLimit": "Les deux P3 Enforcers du lot 4 relèvent de la provenance historique. Aucun lien direct avec les quatre domaines contrôlés n’a été établi."
+  }
+}

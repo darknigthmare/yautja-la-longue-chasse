@@ -1,11 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useContext, useId, useState } from "react";
+import { GalaxyRouteDestinationContext } from "./GalaxyRouteDestinationContext";
 import styles from "./SpaceRoutesPanelV159.module.css";
 import { shipForId } from "./shipCatalogue";
 import {
+  SPACE_ROUTE_DESTINATIONS_V159,
   SPACE_ROUTE_TYPES_V159,
   pendingSpaceIncidentV159,
+  planSpaceRouteV159,
   spaceBaseV159,
   spaceIncidentV159,
   spaceRouteV159,
@@ -31,8 +34,18 @@ export interface SpaceRoutesPanelV159Props {
 
 export default function SpaceRoutesPanelV159({ ownerCreatedAt, state, ship, disabled = false, onAction }: SpaceRoutesPanelV159Props) {
   const [message, setMessage] = useState<string | null>(null);
+  const mapDestination = useContext(GalaxyRouteDestinationContext);
+  const [manualDestination, setManualDestination] = useState<{ mapDestination: string | null; id: string } | null>(null);
+  const itineraryTitleId = useId();
+  const mapDestinationId = mapDestination && SPACE_ROUTE_DESTINATIONS_V159.includes(mapDestination) ? mapDestination : "";
+  const destination = manualDestination && manualDestination.mapDestination === mapDestination
+    ? manualDestination.id
+    : mapDestinationId;
   const view = state ?? createSpaceRoutesV159(ownerCreatedAt);
   const trip = view.trip;
+  const itineraryOrigin = trip?.toSystemId ?? view.currentSystemId;
+  const itinerary = destination ? planSpaceRouteV159(itineraryOrigin, destination) : null;
+  const firstSegment = itinerary?.segments[0];
   const pending = pendingSpaceIncidentV159(view);
   const run = (action: SpaceRoutesActionV159) => {
     if (disabled) return;
@@ -54,6 +67,50 @@ export default function SpaceRoutesPanelV159({ ownerCreatedAt, state, ship, disa
           {ship.owned && ship.shipId ? `Vaisseau personnel : ${shipForId(ship.shipId).name}` : ship.reason}
         </p>
       </header>
+
+      <section className={styles.itinerary} aria-labelledby={itineraryTitleId} data-space-itinerary
+        data-itinerary-from={itineraryOrigin} data-itinerary-destination={destination}>
+        <h3 id={itineraryTitleId}>Préparer un itinéraire</h3>
+        <label className={styles.destination}>
+          <span>Destination de l’itinéraire</span>
+          <select value={destination} onChange={(event) => setManualDestination({ mapDestination, id: event.target.value })}>
+            <option value="">Choisir un système</option>
+            {SPACE_ROUTE_DESTINATIONS_V159.map((id) => <option key={id} value={id}>{spaceSystemNameV159(id)}</option>)}
+          </select>
+        </label>
+        {destination && (
+          <p role="status" className={styles.note}>
+            {itinerary && firstSegment
+              ? `${trip ? "Après l’arrivée à" : "Depuis"} ${spaceSystemNameV159(itineraryOrigin)} · ${itinerary.legs} étapes de base, hors incidents.`
+              : itinerary
+                ? trip ? "Ce système est la destination du voyage en cours." : "Le vaisseau est déjà dans ce système."
+                : "Aucune liaison connue vers ce système."}
+          </p>
+        )}
+        {itinerary && firstSegment && (
+          <>
+            <ol className={styles.routes} aria-label="Liaisons de l’itinéraire">
+              {itinerary.segments.map(({ route, fromSystemId, toSystemId }) => {
+                const type = SPACE_ROUTE_TYPES_V159[route.type];
+                return (
+                  <li key={route.id} className={styles.route} data-itinerary-route={route.id} data-route-type={route.type}>
+                    <div>
+                      <strong>{spaceSystemNameV159(fromSystemId)} → {spaceSystemNameV159(toSystemId)}</strong>
+                      <span>{type.label} · risque {type.risk} · {route.legs} étapes</span>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+            {!trip && (
+              <button type="button" className="ghost-button" disabled={disabled || !ship.owned}
+                onClick={() => run({ kind: "engage", routeId: firstSegment.route.id })}>
+                Engager la première liaison
+              </button>
+            )}
+          </>
+        )}
+      </section>
 
       {!trip && (
         <ul className={styles.routes} aria-label="Routes depuis ce système">
@@ -82,6 +139,9 @@ export default function SpaceRoutesPanelV159({ ownerCreatedAt, state, ship, disa
           <p>
             {SPACE_ROUTE_TYPES_V159[tripRoute.type].label} · {spaceSystemNameV159(trip.fromSystemId)} → {spaceSystemNameV159(trip.toSystemId)}
             {" "}· étape {trip.legsDone}/{trip.legsTotal}
+          </p>
+          <p className={styles.note} data-trip-ship-id={trip.manifest.shipId}>
+            Appareil au manifeste · {shipForId(trip.manifest.shipId).name}
           </p>
           <progress max={trip.legsTotal} value={trip.legsDone} aria-label="Progression du trajet" />
           {spaceLegacyTripV159(view, ship) && (

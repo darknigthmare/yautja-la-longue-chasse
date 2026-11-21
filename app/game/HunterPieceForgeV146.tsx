@@ -15,13 +15,14 @@ import {
 import { CHROMATIC_PALETTE_PRESETS_V115 } from "./hunterChromaticsV113";
 import {
   CUSTOMIZATION_MODES_V146, HUNTER_MARKS_V146, OUTFIT_SLOTS_V146, SKIN_PATTERN_IDS_V146,
-  allowedMarksV146, allowedPiecesV148, assignModeOutfitV146, clanColorsForNpcV146, decodeOutfitShareCodeV146, deleteOutfitV146,
+  allowedMarksV146, allowedPiecesV148, allowedSkinPatternV146, assignModeOutfitV146, clanColorsForNpcV146, decodeOutfitShareCodeV146, deleteOutfitV146,
   earnedCosmeticsV146, effectivePrimaryV146, emptyCustomizationV146, encodeOutfitShareCodeV146,
-  payRepairFromArchiveV146, repairCostV146, repairPieceV146, saveOutfitV146,
+  repairCostV146, saveOutfitV146,
   type CustomizationModeV146, type CustomizationV146, type HunterMarkIdV146, type SkinPatternIdV146,
 } from "./systems/hunterCustomizationV146";
 import { normalizeHunterAppearanceV146 } from "./save";
 import { harvestInventoryForV112 } from "./systems/harvestInventoryV112";
+import { applyHunterForgeRepairV146 } from "./systems/hunterCustomizationPersistenceV146";
 import styles from "./HunterPieceForgeV146.module.css";
 
 type Tab = "pieces" | "lights" | "body" | "outfits" | "clan" | "forge";
@@ -36,6 +37,11 @@ const PATTERN_LABELS: Record<SkinPatternIdV146, string> = {
   spots: "Taches", stripes: "Rayures", marbled: "Marbrures", scales: "Écailles", bands: "Bandes",
 };
 const EMPTY: PieceColorsV146 = { primary: null, secondary: null, accent: null, light: null };
+
+function earnedForSave(save: SaveGame) {
+  return earnedCosmeticsV146({ honor: save.profile.honor, rankId: save.profile.rankId, trophies: save.trophies,
+    justiceDeclaration: save.justice?.declaration }, save.customizationV146?.earned);
+}
 
 export type CustomizationApplyV146 = (save: SaveGame) => SaveGame | null;
 
@@ -58,10 +64,8 @@ export default function HunterPieceForgeV146({
   const [outfitName, setOutfitName] = useState("");
   const [shareInput, setShareInput] = useState("");
   const customization: CustomizationV146 = save.customizationV146 ?? emptyCustomizationV146();
-  const earned = useMemo(() => earnedCosmeticsV146({
-    honor: save.profile.honor, rankId: save.profile.rankId, trophies: save.trophies,
-    justiceDeclaration: save.justice?.declaration,
-  }, customization.earned), [save, customization.earned]);
+  const repairStock = tab === "forge" ? harvestInventoryForV112(save.inventory).archive.reduce((total, entry) => total + entry.count, 0) : 0;
+  const earned = useMemo(() => earnedForSave(save), [save]);
 
   // A mask, pigment or preset can be confirmed in a neighbouring editor.
   // Adopt those fields while retaining draft edits on the remaining fields.
@@ -105,16 +109,20 @@ export default function HunterPieceForgeV146({
     if (disabled) return;
     setMessage(onCommit(apply, confirmation) ? confirmation : "Changement non enregistré : la sauvegarde n'a pas confirmé l'écriture.");
   };
-  const commitAppearance = () => commit(current => ({
-    // Never trust the draft for earned content: unearned marks and finishes are dropped.
-    ...current, appearance: normalizeHunterAppearanceV146({
-      ...draft, marksV146: allowedMarksV146(draft.marksV146 ?? {}, earned),
-      piecesV146: allowedPiecesV148(draft.piecesV146 ?? {}, earned).pieces,
-    }),
-    customizationV146: { ...(current.customizationV146 ?? emptyCustomizationV146()), earned },
-  }), "Couleurs enregistrées dans la campagne.");
+  const commitAppearance = () => commit(current => {
+    const confirmedEarned = earnedForSave(current);
+    return {
+      ...current, appearance: normalizeHunterAppearanceV146({
+        ...draft, marksV146: allowedMarksV146(draft.marksV146 ?? {}, confirmedEarned),
+        piecesV146: allowedPiecesV148(draft.piecesV146 ?? {}, confirmedEarned).pieces,
+        skinPatternIdV146: allowedSkinPatternV146(draft.skinPatternIdV146, confirmedEarned, current.appearance.skinPatternIdV146),
+      }),
+      customizationV146: { ...(current.customizationV146 ?? emptyCustomizationV146()), earned: confirmedEarned },
+    };
+  }, "Couleurs enregistrées dans la campagne.");
   const withCustomization = (change: (state: CustomizationV146) => CustomizationV146): CustomizationApplyV146 =>
-    current => ({ ...current, customizationV146: change({ ...(current.customizationV146 ?? emptyCustomizationV146()), earned }) });
+    current => ({ ...current, customizationV146: change({ ...(current.customizationV146 ?? emptyCustomizationV146()),
+      earned: earnedForSave(current) }) });
 
   const zoneInput = (zone: keyof PieceColorsV146, label: string) => {
     const fallback = zone === "primary" ? effectivePrimaryV146(draft, pieceId) : null;
@@ -234,7 +242,12 @@ export default function HunterPieceForgeV146({
           return <li key={slot}>
             <strong>{outfit ? outfit.name : `Emplacement ${slot + 1} (vide)`}</strong>
             <button type="button" disabled={disabled} onClick={() => commit(
-              withCustomization(state => saveOutfitV146(state, slot, outfitName || outfit?.name || "", normalizeHunterAppearanceV146(draft))),
+              withCustomization(state => {
+                const saved = state.outfits[slot];
+                const previous = normalizeHunterAppearanceV146(saved?.appearance).skinPatternIdV146;
+                const skinPatternIdV146 = allowedSkinPatternV146(draft.skinPatternIdV146, state.earned, previous);
+                return saveOutfitV146(state, slot, outfitName || saved?.name || "", normalizeHunterAppearanceV146({ ...draft, skinPatternIdV146 }));
+              }),
               "Tenue enregistrée.")}>Enregistrer ici</button>
             {outfit && <button type="button" disabled={disabled}
               onClick={() => setDraft(normalizeHunterAppearanceV146(outfit.appearance))}>Essayer</button>}
@@ -267,7 +280,7 @@ export default function HunterPieceForgeV146({
           if (!decoded.ok) { setMessage(decoded.reason === "version" ? "Code d'une version plus récente." : "Code illisible."); return; }
           setDraft(normalizeHunterAppearanceV146(decoded.appearance));
           setMessage(decoded.replaced.length
-            ? `Tenue chargée. Remplacé par la pièce de base (non débloqué ici) : ${decoded.replaced.join(", ")}.`
+            ? `Tenue chargée. Éléments indisponibles remplacés ou retirés : ${decoded.replaced.join(", ")}.`
             : "Tenue chargée dans l'aperçu. Confirme pour l'enregistrer.");
         }}>Charger le code</button>
       </fieldset>
@@ -277,6 +290,7 @@ export default function HunterPieceForgeV146({
       onSave={palette => commit(withCustomization(state => ({ ...state, clanPalette: palette })), "Couleurs du clan enregistrées.")} />}
 
     {tab === "forge" && <div className={styles.panel}>
+      <p data-forge-repair-stock={repairStock}>{repairStock} unité(s) de matière disponibles dans l&apos;archive des prélèvements.</p>
       {Object.keys(customization.heavyWear).length === 0
         ? <p>Aucune pièce fissurée. Les éraflures de mission disparaissent au retour au navire.</p>
         : <ul className={styles.slots}>
@@ -284,20 +298,14 @@ export default function HunterPieceForgeV146({
             const cost = repairCostV146(customization, id);
             return <li key={id}>
               <strong>{HUNTER_PIECES_V146.find(p => p.id === id)?.label} : usure {level}/3</strong>
-              <button type="button" disabled={disabled} onClick={() => commit(current => {
-                const harvest = harvestInventoryForV112(current.inventory);
-                const archive = payRepairFromArchiveV146(harvest.archive, cost);
-                if (!archive) return null;
-                return {
-                  ...current,
-                  inventory: { ...current.inventory, harvestV112: { ...harvest, archive } },
-                  customizationV146: repairPieceV146(current.customizationV146 ?? emptyCustomizationV146(), id),
-                };
-              }, "Pièce réparée à la forge.")}>Réparer ({cost} matériaux)</button>
+              <button type="button" data-forge-repair-piece={id} disabled={disabled || repairStock < cost}
+                onClick={() => commit(current => applyHunterForgeRepairV146(current, id, level), "Pièce réparée à la forge.")}>
+                Réparer ({cost} matériaux)
+              </button>
             </li>;
           })}
         </ul>}
-      <p className={styles.note}>Les matériaux viennent de l&apos;archive des prélèvements (récolte).</p>
+      <p className={styles.note}>Prépare puis archive les prises de chasse pour remplir la réserve de réparation.</p>
     </div>}
 
     <footer className={styles.footer}>

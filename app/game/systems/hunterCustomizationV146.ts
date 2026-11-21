@@ -97,6 +97,13 @@ export const COSMETIC_UNLOCKS_V146: readonly CosmeticUnlockV146[] = Object.freez
 export const SKIN_PATTERN_IDS_V146 = ["spots", "stripes", "marbled", "scales", "bands"] as const;
 export type SkinPatternIdV146 = (typeof SKIN_PATTERN_IDS_V146)[number];
 
+export function allowedSkinPatternV146(requested: unknown, earned: readonly string[],
+  confirmed: SkinPatternIdV146 | null = null): SkinPatternIdV146 | null {
+  if (requested == null) return null;
+  const pattern = SKIN_PATTERN_IDS_V146.find(id => id === requested);
+  return pattern && (pattern === confirmed || earned.includes("pattern:" + pattern)) ? pattern : confirmed;
+}
+
 function conditionMet(condition: CosmeticCondition, progress: CosmeticProgressV146): boolean {
   switch (condition.kind) {
     case "honor": return progress.honor >= condition.minimum;
@@ -290,8 +297,8 @@ export type ShareDecodeV146 =
   | { ok: false; reason: "format" | "version" };
 
 /**
- * Decodes a code for THIS player: anything not earned here (marks) is dropped
- * and listed, so the receiver sees the base piece with the shared colours.
+ * Decodes a code for the recipient. Locked marks, finishes and skin patterns
+ * are removed and reported while keeping the shared colours.
  */
 export function decodeOutfitShareCodeV146(
   code: string,
@@ -312,7 +319,10 @@ export function decodeOutfitShareCodeV146(
   for (const id of Object.keys(marks)) if (!(id in allowed)) replaced.push("mark:" + id);
   const finishes = allowedPiecesV148(normalizePieceColorsV146(isRecord(payload.a) ? payload.a.piecesV146 : undefined), earned);
   replaced.push(...finishes.removed);
-  return { ok: true, appearance: { ...appearance, marksV146: allowed, piecesV146: finishes.pieces }, replaced };
+  const sharedPattern = isRecord(appearance) ? appearance.skinPatternIdV146 : undefined;
+  const skinPatternIdV146 = allowedSkinPatternV146(sharedPattern, earned);
+  if (typeof sharedPattern === "string" && skinPatternIdV146 === null) replaced.push("pattern:" + sharedPattern);
+  return { ok: true, appearance: { ...appearance, marksV146: allowed, piecesV146: finishes.pieces, skinPatternIdV146 }, replaced };
 }
 
 /** Small deterministic per-NPC variation around the clan palette (bible: proposé). */
@@ -407,9 +417,11 @@ export function missionWearV146(damageTaken: number, maxHealth: number): number 
 /** A hit of at least 20 % of max health leaves cracks on one armour piece. */
 export const HEAVY_HIT_RATIO_V146 = 0.2;
 const WEAR_ROTATION: readonly HunterPieceIdV146[] = ["chest", "shoulder", "shin", "thigh", "bracer", "biomask", "knee", "belt"];
-export function heavyHitPieceV146(amount: number, maxHealth: number, heavyHitsSoFar: number): HunterPieceIdV146 | null {
+export function heavyHitPieceV146(amount: number, maxHealth: number, heavyHitsSoFar: number,
+  worn?: (piece: HunterPieceIdV146) => boolean): HunterPieceIdV146 | null {
   if (!(maxHealth > 0) || amount < maxHealth * HEAVY_HIT_RATIO_V146) return null;
-  return WEAR_ROTATION[heavyHitsSoFar % WEAR_ROTATION.length];
+  const eligible = worn ? WEAR_ROTATION.filter(worn) : WEAR_ROTATION;
+  return eligible[heavyHitsSoFar % eligible.length] ?? null;
 }
 
 export function applyHeavyWearV146(state: CustomizationV146, pieces: readonly HunterPieceIdV146[]): CustomizationV146 {
@@ -434,7 +446,7 @@ export function repairPieceV146(state: CustomizationV146, id: HunterPieceIdV146)
  * Pays a repair with harvested materials: units are taken from the specimen
  * archive (largest stacks first). Returns null when the archive is too small.
  */
-export function payRepairFromArchiveV146<T extends { count: number }>(
+export function payRepairFromArchiveV146<T extends { count: number; qualityTotal?: number }>(
   archive: readonly T[], cost: number,
 ): T[] | null {
   if (cost <= 0) return archive.map(entry => ({ ...entry }));
@@ -445,8 +457,16 @@ export function payRepairFromArchiveV146<T extends { count: number }>(
   let remaining = cost;
   for (const { index } of order) {
     if (!remaining) break;
-    const take = Math.min(next[index].count, remaining);
-    next[index].count -= take;
+    const entry = next[index];
+    const take = Math.min(entry.count, remaining);
+    const leftover = entry.count - take;
+    // The ledger stores an aggregate, so retire the same share of its quality.
+    // Integer arithmetic keeps the result within the original per-unit bounds.
+    if (leftover > 0 && entry.qualityTotal !== undefined) {
+      const count = BigInt(entry.count);
+      entry.qualityTotal = Number((BigInt(entry.qualityTotal) * BigInt(leftover) + count / BigInt(2)) / count);
+    }
+    entry.count = leftover;
     remaining -= take;
   }
   return next.filter(entry => entry.count > 0);

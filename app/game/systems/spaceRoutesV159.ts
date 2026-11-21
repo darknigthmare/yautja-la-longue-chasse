@@ -151,6 +151,46 @@ export const spaceBaseV159 = (id: unknown) => SPACE_BASES_V159.find(entry => ent
 export const spaceRoutesFromV159 = (systemId: string) => SPACE_ROUTES_V159.filter(entry => entry.systems.includes(systemId));
 const otherEnd = (entry: SpaceRouteV159, from: string) => entry.systems[0] === from ? entry.systems[1] : entry.systems[0];
 
+export const SPACE_ROUTE_DESTINATIONS_V159 = Object.freeze(
+  GALAXY_SYSTEM_REGISTRY.filter(({ id }) => SPACE_ROUTES_V159.some(route => route.systems.includes(id)))
+    .map(({ id }) => id),
+);
+
+export interface SpaceItineraryV159 {
+  legs: number;
+  segments: readonly {
+    route: SpaceRouteV159;
+    fromSystemId: string;
+    toSystemId: string;
+  }[];
+}
+
+/** Fewest base steps on the V159 route graph, before incident delays. */
+export function planSpaceRouteV159(fromSystemId: string, toSystemId: string): SpaceItineraryV159 | null {
+  if (!SYSTEM_NAMES.has(fromSystemId) || !SYSTEM_NAMES.has(toSystemId)) return null;
+  const pending = new Map<string, SpaceItineraryV159>([[fromSystemId, { legs: 0, segments: [] }]]);
+  const visited = new Set<string>();
+  while (pending.size > 0) {
+    const [systemId, journey] = [...pending].sort(
+      ([leftId, left], [rightId, right]) => left.legs - right.legs || leftId.localeCompare(rightId),
+    )[0];
+    if (systemId === toSystemId) return journey;
+
+    pending.delete(systemId);
+    visited.add(systemId);
+    for (const route of spaceRoutesFromV159(systemId)) {
+      const nextId = otherEnd(route, systemId);
+      const legs = journey.legs + route.legs;
+      if (visited.has(nextId) || legs >= (pending.get(nextId)?.legs ?? Infinity)) continue;
+      pending.set(nextId, {
+        legs,
+        segments: [...journey.segments, { route, fromSystemId: systemId, toSystemId: nextId }],
+      });
+    }
+  }
+  return null;
+}
+
 // ---------------------------------------------------------------- state
 
 export type SpaceShipLocationV159 =

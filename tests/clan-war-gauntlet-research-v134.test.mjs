@@ -48,6 +48,27 @@ test("no study unlock from rank alone, nonexistent trophies, wrong hunts or miss
   assert.ok(!evaluateGauntletStudyV134(evidence({quality:"worthy"}),study.id).ok);
   assert.ok(!evaluateGauntletStudyV134(base,"source-not-in-catalog").ok);
 });
+test("study requirements use recorded counts and the rite of the same eligible trophy", () => {
+  const study = GAUNTLET_STUDIES_V134.find(candidate => candidate.quality === "flawless");
+  const base = evidence({ rank: "unknown-rank", scans: Number.NaN, completions: Infinity, rite: false });
+  const otherMission = MISSIONS.find(mission => mission !== study.missionId);
+  const save = {
+    ...base,
+    trophies: [
+      ...base.trophies,
+      { missionId: study.missionId, quality: "worthy", workshop: { completedActions: ["rite"] } },
+      { missionId: otherMission, quality: "flawless", workshop: { completedActions: ["rite"] } },
+    ],
+  };
+  const requirements = evaluateGauntletStudyV134(save, study.id).requirements;
+  assert.deepEqual(requirements.map(({ id, met }) => [id, met]), [
+    ["rank", false], ["missions", false], ["scans", false], ["trophy", true], ["rite", false],
+  ]);
+  assert.match(requirements[1].label, /^0\//);
+  assert.match(requirements[2].label, /· 0\//);
+  assert.equal(gauntletCampaignClaimV134(save, study.id).ok, false);
+});
+
 test("all 44 replicas can be earned only by validated study and exactly once",()=>{
   let save=evidence();
   for(const study of GAUNTLET_STUDIES_V134){
@@ -73,6 +94,9 @@ test("owner mismatch and forged/duplicate/future gauntlet receipts are rejected"
   assert.equal(normalizeGauntletCampaignV134({...archive,claimedStudies:[GAUNTLET_STUDIES_V134[0].id,GAUNTLET_STUDIES_V134[0].id]},"A"),null);
   assert.equal(gauntletCampaignEquipV134({...evidence({owner:"B"}),gauntletV134:archive},"jungle-hunter").ok,false);
   assert.equal(gauntletCampaignClaimV134({...evidence({owner:"B"}),gauntletV134:archive},GAUNTLET_STUDIES_V134[0].id).ok,false);
+  const invalid = { ...evidence({ owner: "A" }), gauntletV134: { ...archive, version: 2 } };
+  assert.equal(gauntletCampaignEquipV134(invalid, "jungle-hunter").ok, false);
+  assert.equal(gauntletCampaignClaimV134(invalid, GAUNTLET_STUDIES_V134[0].id).ok, false);
 });
 test("Save V13 path, transactional equip and source-protected campaign contracts are wired",()=>{
   const save=read("app/game/save.ts"),types=read("app/game/types.ts");
