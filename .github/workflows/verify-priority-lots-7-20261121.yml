@@ -1,4 +1,4 @@
-name: Verify lot seven gameplay
+name: Build lot seven with the production command
 on:
   push:
     branches: [codex/verify-priority-lots-7-20261121]
@@ -7,7 +7,7 @@ permissions:
   actions: read
 jobs:
   source:
-    name: Check native campaign, logistics, rescue and hunting sources
+    name: Build and serve the exact release code
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     env:
@@ -83,56 +83,21 @@ jobs:
         run: |
           node scripts/materialize-asset-raccords-20261120.mjs runtime
           npm ci --ignore-scripts --no-audit --no-fund
-      - name: Generate canonical runtime evidence
+      - name: Build with the command from vercel.json
+        run: node scripts/build-production-v94.mjs
+      - name: Serve the exact production build
         run: |
-          node scripts/materialize-asset-raccords-20261120.mjs candidate || { cat outputs/qa-asset-raccords-20261120/runtime-generator.log; exit 1; }
-          node scripts/check-hunt-integration-source-v112.mjs --current
-      - name: Verify Next types
-        if: ${{ !cancelled() }}
-        run: |
-          node node_modules/next/dist/bin/next typegen
-          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
-      - name: Lint edited source, tests and recipes
-        if: ${{ !cancelled() }}
-        run: >-
-          npx eslint
-          app/game/ClanShipOperationsPanel.tsx
-          tests/clan-ship-operations.test.mjs
-          scripts/qa-clan-collective-return-20261121.mjs
-          scripts/qa-hunt-campaign-browser-v112.mjs
-          app/game/systems/clanLogisticsV108.ts
-          app/game/systems/logisticsSpatialPlayback.ts
-          app/game/ClanSupplyRouteV109.tsx
-          tests/clan-logistics-v108.test.mjs
-          scripts/qa-w3-s15-spatial-audio-v109.mjs
-          scripts/qa-quatza-rescue-20261121.mjs
-          app/game/systems/quatzaRij.ts
-          app/game/QuatzaRijScene.tsx
-          tests/helpers/quatza-triage-route.mjs
-          tests/quatza-rij.test.mjs
-      - name: Check exact routes, save compatibility and physical returns
-        if: ${{ !cancelled() }}
-        run: >-
-          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
-          tests/clan-ship-operations.test.mjs
-          tests/clan-ship-operations-save.test.mjs
-          tests/clan-ship-dialogue.test.mjs
-          tests/clan-ship-crew-dialogue-ui.test.mjs
-          tests/quatza-rij.test.mjs
-          tests/clan-logistics-v108.test.mjs
-          tests/space-routes-v159.test.mjs
-          tests/qa-hunt-ground-policy-v112.test.mjs
-      - name: Report canonical inventory differences
-        if: ${{ !cancelled() && hashFiles('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json') != '' }}
-        run: |
-          node --input-type=module <<'NODE'
-          import { readFileSync } from 'node:fs';
-          const prior = JSON.parse(readFileSync('docs/qa/current-integration-20261103/runtime-inputs.json'));
-          const next = JSON.parse(readFileSync('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json'));
-          const old = new Map(prior.entries.map(item => [item.path, item]));
-          const paths = new Set(next.entries.map(item => item.path));
-          const changes = next.entries.filter(item => JSON.stringify(old.get(item.path)) !== JSON.stringify(item));
-          const removed = prior.entries.filter(item => !paths.has(item.path)).map(item => item.path);
-          console.log('V113_DELTA ' + JSON.stringify({ files: next.files, bytes: next.bytes, changes, removed }));
-          NODE
-
+          set -eu
+          node node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 4219 > /tmp/yautja-lot7-next.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 25); do
+            if curl --fail --silent --show-error http://127.0.0.1:4219/ -o /tmp/yautja-lot7-index.html; then
+              test -s /tmp/yautja-lot7-index.html
+              printf 'PASS exact Next production build %s\n' "$(git rev-parse HEAD)"
+              exit 0
+            fi
+            sleep 2
+          done
+          cat /tmp/yautja-lot7-next.log
+          exit 1
