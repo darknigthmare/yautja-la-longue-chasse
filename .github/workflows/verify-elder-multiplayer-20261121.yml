@@ -13,13 +13,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '7d5925842d807fa698271cd7758694237fa4608b'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'e20603ba874437a70c66c54f376853fb96fff1c6'
       BASE_COMMIT: 'ed2bc3635f7c818ea56c9ce40a47c92b1664aac5'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '7d5925842d807fa698271cd7758694237fa4608b'
+          ref: 'e20603ba874437a70c66c54f376853fb96fff1c6'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -66,16 +66,29 @@ jobs:
           node node_modules/next/dist/bin/next typegen
           node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
       - name: Exercise progression, existing save contracts and real TCP concurrency
+        if: ${{ !cancelled() }}
         run: >-
           node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
           tests/elder-mentoring-v168.test.mjs tests/elder-assembly-v168.test.mjs tests/elder-passage-judgment.test.mjs
           tests/nursery-campaign.test.mjs tests/honor-sources-v169.test.mjs tests/clan-war-practice-server-v127.test.mjs
-          tests/qa-hunt-ground-policy-v112.test.mjs tests/canopy-traversal-v112.test.mjs
+          tests/qa-hunt-ground-policy-v112.test.mjs tests/canopy-traversal-v112.test.mjs tests/hunt-canopy-runtime-v112.test.mjs
+      - name: Report canonical inventory changes in a compact form
+        if: ${{ !cancelled() }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs';
+          const before = JSON.parse(readFileSync('docs/qa/current-integration-20261103/runtime-inputs.json'));
+          const after = JSON.parse(readFileSync('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json'));
+          const previous = new Map(before.entries.map(row => [row.path, row]));
+          const observed = new Set(after.entries.map(row => row.path));
+          const changes = after.entries.filter(row => JSON.stringify(previous.get(row.path)) !== JSON.stringify(row));
+          console.log('V113_DELTA ' + JSON.stringify({ files: after.files, bytes: after.bytes, changes, removed: before.entries.filter(row => !observed.has(row.path)).map(row => row.path) }));
+          NODE
       - name: Preserve the official candidate inventory
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: runtime-inputs-7d5925842d807fa698271cd7758694237fa4608b
+          name: runtime-inputs-e20603ba874437a70c66c54f376853fb96fff1c6
           path: outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json
           if-no-files-found: warn
 
@@ -86,7 +99,7 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '7d5925842d807fa698271cd7758694237fa4608b'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'e20603ba874437a70c66c54f376853fb96fff1c6'
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: /usr/bin/google-chrome
       AUDIT_CHROME_CHANNEL: chrome
@@ -94,12 +107,12 @@ jobs:
       YAUTJA_QA_BASE_URL: http://127.0.0.1:3121
       YAUTJA_QA_MODE: compiled-app
       AUDIT_CHROME_EXECUTABLE: /usr/bin/google-chrome
-      YAUTJA_QA_RUNTIME_COMMIT: '7d5925842d807fa698271cd7758694237fa4608b'
+      YAUTJA_QA_RUNTIME_COMMIT: 'e20603ba874437a70c66c54f376853fb96fff1c6'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '7d5925842d807fa698271cd7758694237fa4608b'
+          ref: 'e20603ba874437a70c66c54f376853fb96fff1c6'
           persist-credentials: false
           fetch-depth: 3
           filter: blob:none
@@ -309,13 +322,13 @@ jobs:
           printf 'YAUTJA_QA_BUILD_ID=%s\n' "$(cat .next/BUILD_ID)" >> "$GITHUB_ENV"
       - name: Play the witnessed training, ruling, and recognition on one save
         env:
-          ELDER_ASSEMBLY_QA_COMMIT: 7d5925842d807fa698271cd7758694237fa4608b
+          ELDER_ASSEMBLY_QA_COMMIT: e20603ba874437a70c66c54f376853fb96fff1c6
         run: node scripts/qa-elder-assembly-v168.mjs
       - name: Preserve the compiled browser evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: compiled-scenes-7d5925842d807fa698271cd7758694237fa4608b
+          name: compiled-scenes-e20603ba874437a70c66c54f376853fb96fff1c6
           path: |
             outputs/p0-p3-20261121/
             outputs/qa-elder-assembly-v168/
@@ -329,7 +342,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '7d5925842d807fa698271cd7758694237fa4608b'
+          ref: 'e20603ba874437a70c66c54f376853fb96fff1c6'
           persist-credentials: false
           filter: blob:none
           sparse-checkout-cone-mode: false

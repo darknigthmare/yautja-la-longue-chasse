@@ -9,7 +9,7 @@ import {runInNewContext} from "node:vm";
 import {createHash} from "node:crypto";
 import {build} from "esbuild";
 import ts from "typescript";
-import {decideGroundApexTrophyInputV112,decideHuntCampaignInputV112} from "./lib/qa-hunt-ground-policy-v112.mjs";
+import {decideGroundApexTrophyInputV112,decideHuntCampaignInputV112,groundTrophyGuardV112,observeGroundTrophyDamageV112} from "./lib/qa-hunt-ground-policy-v112.mjs";
 import {chooseGroundHarvestV112,groundHarvestMenuActionV112,nearestGroundHarvestThreatV112,observeGroundHarvestV112} from "./lib/qa-hunt-ground-harvest-v112.mjs";
 
 const root=fileURLToPath(new URL("../",import.meta.url));
@@ -21,7 +21,8 @@ const ast=ts.createSourceFile("HuntCanvas.tsx",source,ts.ScriptTarget.Latest,tru
 let riteHandler;
 const visit=node=>{if(ts.isBinaryExpression(node)&&node.left.getText(ast)==="riteMenuActionRef.current"&&ts.isArrowFunction(node.right)&&node.right.parameters.length===1)riteHandler=node.right;ts.forEachChild(node,visit);};
 visit(ast);assert.ok(riteHandler,"the actual rite UI callback must exist");
-const append="\nexport {makeGameState,stepGame,snapshot,riteContextV77,riteRuntimeOptionsV112,huntRiteMenuSnapshotV77,riteOperationSecondsV77,trophyHarvestPoint,trophyHarvestInReach,APEX_TROPHY_REACH};\nexport {defaultSave,applyMissionResult,normalizeSave} from './save'; export {purchaseFieldToolV111} from './systems/fieldToolsV111'; export {anatomyPartsV112,makeAnatomySpecimenV112} from './systems/anatomyHarvestV112'; export {fieldLoadV112} from './systems/harvestInventoryV112'; export {carriedFieldSpecimensV112} from './systems/fieldStashV112'; export {MISSION_BY_ID,ARMOR_BY_ID,WEAPON_BY_ID,GEAR_BY_ID} from './data';\nexport {evaluateClanShipAccess} from './systems/clanShipOperations'; export {normalizePlanetInsertionPlan,shipSupportsSurfaceInsertion} from './systems/planetInsertion'; export {loadShipProgression} from './systems/progression';\n"+
+const append="\nexport {makeGameState,stepGame,snapshot,riteContextV77,riteRuntimeOptionsV112,huntRiteMenuSnapshotV77,riteOperationSecondsV77,trophyHarvestPoint,trophyHarvestInReach,APEX_TROPHY_REACH,huntStructuralBarrierV94};\nexport {defaultSave,applyMissionResult,normalizeSave} from './save'; export {purchaseFieldToolV111} from './systems/fieldToolsV111'; export {anatomyPartsV112,makeAnatomySpecimenV112} from './systems/anatomyHarvestV112'; export {fieldLoadV112} from './systems/harvestInventoryV112'; export {carriedFieldSpecimensV112} from './systems/fieldStashV112'; export {MISSION_BY_ID,ARMOR_BY_ID,WEAPON_BY_ID,GEAR_BY_ID} from './data';\nexport {evaluateClanShipAccess} from './systems/clanShipOperations'; export {shipSupportsSurfaceInsertion} from './systems/planetInsertion'; export {loadShipProgression} from './systems/progression';\n"+
+ "export function visibleSoloShipPlanQa(){return normalizePlanetInsertionPlan({version:1,method:'ship',team:'solo'});}\n"+
  "export function nativeRiteMenuQa(game,mission,action){const setUi=()=>{};const emitPersistence=()=>{};const persistHuntRef={current:null};const handler="+riteHandler.getText(ast)+";handler(action);}";
 const bundle=await build({stdin:{contents:source+append,
  resolveDir:root+"app/game",sourcefile:root+"app/game/HuntCanvas.tsx",loader:"tsx"},bundle:true,write:false,format:"cjs",platform:"node",jsx:"automatic",loader:{".module.css":"empty"},external:["react","react/jsx-runtime","react-dom"],logLevel:"silent"});
@@ -84,7 +85,7 @@ for(const missionId of missionIds)for(const armorId of armorIds){
  }
  const campaignSave=args.successSave!==undefined?structuredClone(save):null;
  const insertionPlan=args.insertion==="visible-ship"
-  ?runtime.normalizePlanetInsertionPlan({version:1,method:"ship",team:"solo"}):undefined;
+  ?runtime.visibleSoloShipPlanQa():undefined;
  if(args.insertion!==undefined)assert.ok(insertionPlan,"the selected native insertion must normalize");
  const insertionShipId=insertionPlan?runtime.loadShipProgression(save).selectedShipId:undefined;
  if(insertionPlan){
@@ -113,7 +114,7 @@ for(const missionId of missionIds)for(const armorId of armorIds){
  const sharedMemory={previousX:state.player.x,stuckTicks:0,jumpUntil:-1};
  const useSharedPolicy=args.policy==="shared"||["volcano-bad-blood","ocean-leviathan"].includes(missionId);
  const harvestMemory={target:null,pending:null,deferred:new Map(),events:[]};
- const trophyMemory={};
+ const trophyMemory={},trophyInterruptions=[];
  let peakLoadRatio=0,peakSpecimens=[],firstLoadAt=null;
  let atBoarding=null,atLoadTarget=null,heldLoadTarget=true;
  const lastPress={};
@@ -125,7 +126,9 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   input.pointerScreen=null;
   const p=state.player,center=p.x+p.width/2;
   const enemies=[...state.enemies.filter(e=>e.alive&&e.active),...(state.boss.alive&&state.boss.active?[state.boss]:[])].sort((a,b)=>Math.abs(a.x+a.width/2-center)-Math.abs(b.x+b.width/2-center));
-  const target=enemies[0],gap=target?Math.abs(target.x+target.width/2-center)-(target.width+p.width)/2:Infinity;
+  const trophyGuard=groundTrophyGuardV112(state,tick,trophyMemory,
+   (a,b)=>runtime.huntStructuralBarrierV94(a,b,state.world.platforms));
+  const target=trophyGuard??enemies[0],gap=target?Math.abs(target.x+target.width/2-center)-(target.width+p.width)/2:Infinity;
   const purgePending=state.bossMechanics.missionId==="volcano-bad-blood"&&state.bossMechanics.purgeSeconds!==null&&!state.bossMechanics.purgeResolved;
   observeGroundHarvestV112(state.huntRites,tick,harvestMemory);
   const loadRatio=state.fieldLoadV112?.ratio??initial.load.ratio;
@@ -171,6 +174,11 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   }else if(state.trophyExtracting&&state.trophyRitual){
    const ritual=state.trophyRitual;
    if(ritual.phase==="cue"&&ritual.cueElapsedSeconds>=(useSharedPolicy ? .48 : .49))press(ritual.sequence[ritual.cueIndex]);
+  }else if(state.phase==="trophy"&&!purgePending&&trophyGuard){
+   if(p.activeWeaponSlot!==0)press("weaponOne");
+   if(gap<90)press("melee");
+   const guardX=trophyGuard.x+trophyGuard.width/2;
+   if(gap>35||Math.sign(guardX-center)!==p.facing)moveTo(guardX,10);
   }else if(state.phase==="trophy"&&!purgePending){
    const point=runtime.trophyHarvestPoint(state.boss,52);
    const inReach=runtime.trophyHarvestInReach(p,point,state.world.platforms,runtime.APEX_TROPHY_REACH);
@@ -221,7 +229,12 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   for(const action of ["left","right","jump"])if(input.pressed.has(action))input.keyboardHeld.add(action);
   const action=JSON.stringify({held:[...input.keyboardHeld],pressed:[...input.pressed],pointer:input.pointerScreen,menuAction});
   if(action!==lastAction){trace.push({tick,...JSON.parse(action)});lastAction=action;}
+  const wasApexRite=state.phase==="trophy"&&state.trophyExtracting,damageBefore=state.damageTaken;
   runtime.stepGame(state,mission,save.loadout,save.inventory,save.appearance,"hunter",input,dt,r=>{result=r;});
+  if(observeGroundTrophyDamageV112(state,tick,trophyMemory,wasApexRite,damageBefore)){
+   trophyInterruptions.push({tick,t:state.elapsed,x:state.player.x,health:state.player.health,
+    damage:state.damageTaken-damageBefore});
+  }
   ticksExecuted=tick+1;
   assert.ok(Number.isFinite(p.x)&&Number.isFinite(p.y)&&Number.isFinite(p.health));
   assert.ok(originalEnemies.every(enemy=>state.enemies.includes(enemy)),"original enemies remain owned by the native simulation");
@@ -249,7 +262,7 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   qualified:minimumRetainedLoad===null?null:!!(atLoadTarget&&heldLoadTarget&&atBoarding&&atExtraction&&
     meetsLoad(atBoarding.load,minimumRetainedLoad)&&meetsLoad(atExtraction.load,minimumRetainedLoad)&&
     atLoadTarget.specimenIds.every(id=>atBoarding.specimenIds.includes(id)&&atExtraction.specimenIds.includes(id)))};
- const outcome={missionId,armorId,success,result,climbFrames,swingFrames,authoredCanopyContactFrames,maxX,terminal:brief(state),admission,events,traceFrames:trace.length,ticksExecuted,harvestActions,harvestDecisions:harvestMemory.events,peakLoadRatio,peakSpecimens,firstLoadAt,retainedLoad};
+ const outcome={missionId,armorId,success,result,climbFrames,swingFrames,authoredCanopyContactFrames,maxX,terminal:brief(state),admission,events,traceFrames:trace.length,ticksExecuted,harvestActions,harvestDecisions:harvestMemory.events,trophyInterruptions,peakLoadRatio,peakSpecimens,firstLoadAt,retainedLoad};
  if(result)assert.equal(state.phase,"finished");
  if(outcome.success){
   assert.ok(atBoarding,"success must include a native boarding transition");
@@ -298,6 +311,7 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   assert.equal(verifiedSuccessSave.missionProgress[missionId].attempts,encounterRun+1,
     "the next attempt must come from committing the real mission result");
  }
+ if(!success)console.log(JSON.stringify({case:missionId+"/"+armorId,events,trophyInterruptions,terminal:outcome.terminal}));
  outcomes.push(outcome);
  await writeFile(`${output}/${missionId}-${armorId}.json`,JSON.stringify({...outcome,samples,inputTrace:trace},null,2)+"\n");
  console.log(JSON.stringify({missionId,armorId,result:result?.outcome??result?.status??null,phase:state.phase,t:state.elapsed,x:state.player.x,health:state.player.health,kills:state.supportKills,bossHealth:state.boss.health,scans:state.scanNodes.map(n=>n.scanned),recoveries:state.recoveryNodes.map(n=>n.recovered),climbFrames,swingFrames,boardingRatio:atBoarding?.load.ratio??null,retainedRatio:atExtraction?.load.ratio??null,loadQualified:retainedLoad.qualified}));

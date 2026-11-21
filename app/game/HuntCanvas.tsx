@@ -8930,7 +8930,8 @@ function updatePlayer(
   let swingMotion: PlatformMotionResult | null = null;
   if (player.climbing && currentClimbZone && player.canopySwing) {
     const swing = stepCanopySwingV112(player.canopySwing, player, currentClimbZone,
-      {moveAxis, climbAxis}, delta, state.world.platforms, state.world.floorY, fieldLoad.climbStaminaMultiplier);
+      {moveAxis, climbAxis}, delta, state.world.platforms, state.world.floorY,
+      fieldLoad.climbStaminaMultiplier, fieldLoad.movementMultiplier);
     player.canopySwing = swing.swing;
     player.x = swing.body.x; player.y = swing.body.y;
     player.velocityX = swing.body.velocityX; player.velocityY = swing.body.velocityY;

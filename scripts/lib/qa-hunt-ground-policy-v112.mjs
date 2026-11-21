@@ -114,3 +114,21 @@ export function decideGroundApexTrophyInputV112(game,tick,memory,point,inReach){
   if(tick<(memory.trophyJumpUntil??0))held.push("jump");
   return {held,pressed,reason:memory.trophyExit?"descend to apex trophy":"approach apex trophy"};
 }
+
+/** A damaged rite is allowed a short local defence before trying the trophy
+ * again. A wall or a different floor cannot turn defence into a waypoint. */
+export function observeGroundTrophyDamageV112(game,tick,memory,wasExtracting,previousDamage){
+  if(!wasExtracting||game.phase!=="trophy"||game.trophyExtracting||game.damageTaken<=previousDamage)return false;
+  memory.defendUntil=tick+240;
+  return true;
+}
+
+export function groundTrophyGuardV112(game,tick,memory,blocked){
+  if(game.phase!=="trophy"||game.trophyExtracting||!game.player.grounded||tick>=(memory.defendUntil??0))return null;
+  const player=game.player,pc=center(player),feet=player.y+player.height;
+  return game.enemies.filter(enemy=>enemy.alive&&enemy.active&&!enemy.boss)
+    .map(enemy=>({enemy,point:center(enemy)}))
+    .filter(({enemy,point})=>Math.abs(feet-enemy.y-enemy.height)<=72&&Math.abs(pc.y-point.y)<=100&&
+      Math.abs(pc.x-point.x)-(player.width+enemy.width)/2<=125&&!blocked(pc,point))
+    .sort((a,b)=>Math.abs(pc.x-a.point.x)-Math.abs(pc.x-b.point.x))[0]?.enemy??null;
+}

@@ -65,6 +65,32 @@ test("pumping and length adjustment remain finite, bounded and charge stamina on
   assert.throws(()=>runtime.stepCanopySwingV112(swing,actor,support,{moveAxis:0,climbAxis:0},.251,[],624),/delta/);
 });
 
+test("cargo slows reeling and the minimum and maximum stops charge only for holding",()=>{
+  const swing=runtime.attachCanopySwingV112(body,support);
+  const down={moveAxis:0,climbAxis:1};
+  const empty=runtime.stepCanopySwingV112(swing,body,support,down,.25,[],624);
+  const loaded=runtime.stepCanopySwingV112(swing,body,support,down,.25,[],624,1.6,.68);
+  close(empty.swing.length-swing.length,20);
+  close(loaded.swing.length-swing.length,13.6);
+  close(empty.staminaCost,2);
+  close(loaded.staminaCost,3.2);
+
+  for(const [length,axis] of [[runtime.CANOPY_PHYSICS_V112.minimumLength,-1],[support.height,1]]){
+    const atStop={...swing,length};
+    const point=runtime.canopySwingPointV112(atStop,support);
+    const actor={...body,y:point.y-body.height*.28};
+    const held=runtime.stepCanopySwingV112(atStop,actor,support,{moveAxis:0,climbAxis:axis},.25,[],624,1.6,.68);
+    close(held.swing.length,length);
+    close(held.staminaCost,1.6);
+  }
+
+  const nearStop={...swing,length:support.height-1};
+  const point=runtime.canopySwingPointV112(nearStop,support);
+  const partial=runtime.stepCanopySwingV112(nearStop,{...body,y:point.y-body.height*.28},support,down,.25,[],624,1.6,.68);
+  close(partial.swing.length,support.height);
+  close(partial.staminaCost,1.6+4*1.6/(80*.68));
+});
+
 test("release exports tangent velocity, including downward motion, without adding a boost",()=>{
   for(const angle of [-.8,0,.8]){
     const swing={supportId:support.id,length:220,angle,angularVelocity:2};
