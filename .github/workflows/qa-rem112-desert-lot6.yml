@@ -1,104 +1,40 @@
-name: REM112 Désert Chromium depuis une victoire native du Marais
+name: REM112 lecture de l’approche réelle du trophée du Désert
 on:
   push:
-    branches: [codex/qa-rem112-desert-lot6-20261121]
+    branches: [codex/qa-rem112-desert-trophy-diagnostic-lot6]
 permissions:
+  actions: read
   contents: read
 jobs:
-  safari:
-    name: Désert ${{ matrix.case }}
+  trace:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
-    strategy:
-      fail-fast: false
-      matrix:
-        case: [extraction, os-et-atelier]
-    env:
-      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
-      NEXT_TELEMETRY_DISABLED: '1'
-      CASE: ${{ matrix.case }}
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          persist-credentials: false
-          fetch-depth: 1
-          sparse-checkout-cone-mode: false
-          sparse-checkout: |
-            /*
-            !/*/
-            /app/
-            /scripts/
-            /public/**/manifest.json
-            /public/game/dialogues/v85/bible-dialogues.json
-            /docs/qa/v112-campaign-canonical/native-raw.tar.gz
-            /docs/qa/v112-campaign-canonical/native-report.json
-            /docs/qa/v112-campaign-canonical/provenance.json
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
-        with:
-          node-version: 22
-          cache: npm
-      - name: Admit the exact save from the recorded native Swamp win
-        run: |
-          mkdir -p outputs/admission
-          python3 - <<'PY'
-          from hashlib import sha256
-          from pathlib import Path
-          import json, tarfile
-          root=Path('docs/qa/v112-campaign-canonical')
-          source=json.loads((root/'provenance.json').read_bytes())
-          archive=root/'native-raw.tar.gz'
-          witness=next(row for row in source['artifacts'] if row['file']==archive.name)
-          assert sha256(archive.read_bytes()).hexdigest()==witness['sha256']
-          report=root/'native-report.json'
-          report_witness=next(row for row in source['artifacts'] if row['file']==report.name)
-          report_bytes=report.read_bytes()
-          assert sha256(report_bytes).hexdigest()==report_witness['sha256']
-          run=next(row for row in json.loads(report_bytes)['attempts'] if row['missionId']=='swamp-hydra')
-          assert run['status']=='NATIVE_SIMULATION_SUCCESS' and run['final']['phase']=='finished'
-          assert run['inputs']['file'].endswith('-inputs.json')
-          expected=run['inputs']['file'].removesuffix('-inputs.json')+'-campaign-save.json'
-          with tarfile.open(archive,'r:gz') as tar:
-              member,=[row for row in tar.getmembers() if Path(row.name).name==expected]
-              assert member.isfile()
-              data=tar.extractfile(member).read()
-          decoded=json.loads(data)
-          swamp=decoded['missionProgress']['swamp-hydra']
-          desert=decoded['missionProgress']['desert-sandmaw']
-          assert swamp['status']=='completed' and swamp['completions']>=1
-          assert desert['status']=='available' and desert['attempts']==0
-          out=Path('outputs/admission')
-          (out/'earned-swamp-save.json').write_bytes(data)
-          proof={'archiveSha256':witness['sha256'],'member':member.name,'sourceReportSha256':report_witness['sha256'],'saveSha256':sha256(data).hexdigest(),
-                 'earlierProof':'native game engine and native mission result as documented','origin':source['sourceCommit'],
-                 'swamp':swamp,'desert':desert}
-          (out/'provenance.json').write_text(json.dumps(proof,ensure_ascii=False,indent=2)+'\n')
-          print(json.dumps(proof,ensure_ascii=False))
-          PY
-      - run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Run the actual GameClient from the admitted campaign
-        run: |
-          if [ "$CASE" = os-et-atelier ]; then
-            extra=(--harvest-species serekh-9--dust-jackal --harvest-action harvest-bone --require-harvest-workshop)
-          else
-            extra=(--skip-harvest)
-          fi
-          node scripts/qa-hunt-campaign-browser-v112.mjs --campaign-source outputs/admission/earned-swamp-save.json \
-            --missions desert-sandmaw --require-complete --require-resume --max-retries 1 "${extra[@]}" \
-            --wall-seconds 1080 --chromium /usr/bin/google-chrome --output outputs/browser --asset-cache outputs/source-cache
-      - if: always()
-        run: |
+          run-id: 44954090127
+          name: rem112-desert-os-et-atelier
+          github-token: ${{ github.token }}
+          path: evidence
+      - run: |
           node --input-type=module <<'NODE'
-          import {readFile} from 'node:fs/promises';
-          let q;try{q=JSON.parse(await readFile('outputs/browser/report.json','utf8'));}catch(error){console.log(error.message);process.exit(0);}
-          console.log(JSON.stringify({qualification:q.qualification,coverage:q.coverage,resumes:q.resumeObservations,
-            attempts:q.attempts.map(a=>({missionId:a.missionId,delivered:a.delivered,retries:a.retryEvents?.map(x=>({button:x.button,elapsed:x.elapsed})),
-              settlement:a.settlement,terminal:{phase:a.final?.state?.phase,elapsed:a.final?.state?.elapsed,health:a.final?.state?.player?.health,x:a.final?.state?.player?.x}})),
-            workshop:q.workshop.map(({before,after,...row})=>row),errors:q.errors,missingAssets:q.missingAssets,failure:q.failure}));
+          import assert from 'node:assert/strict';
+          import {readdir,readFile} from 'node:fs/promises';
+          import {join} from 'node:path';
+          const files=await readdir('evidence',{recursive:true});
+          const name=files.find(p=>p.endsWith('desert-sandmaw-hunt-samples.json'));
+          assert.ok(name);
+          const s=JSON.parse(await readFile(join('evidence',name),'utf8')).map(x=>x.state);
+          for(const at of [145,170,200,228]){
+            const q=s.find(x=>x.phase==='trophy'&&x.elapsed>=at);
+            if(!q)continue;
+            const p=q.player,b=q.boss,center={x:p.x+p.width/2,y:p.y+p.height/2};
+            const trophy={x:b.x+b.width/2,y:b.y+b.height-52};
+            const active=q.enemies.filter(z=>z.active&&z.alive).map(z=>({
+              id:z.id,x:z.x,y:z.y,width:z.width,height:z.height,health:z.health,
+              distance:Math.hypot(z.x+z.width/2-center.x,z.y+z.height/2-center.y),
+            })).sort((a,b)=>a.distance-b.distance).slice(0,4);
+            const surfaces=q.world.platforms.filter(z=>z.x<p.x+300&&z.x+z.width>p.x-300).map(({id,x,y,width,height,collision})=>({id,x,y,width,height,collision}));
+            console.log(JSON.stringify({at:q.elapsed,phase:q.phase,player:{x:p.x,y:p.y,feet:p.y+p.height,facing:p.facing,health:p.health,grounded:p.grounded},
+               trophy,actualRange:Math.hypot(center.x-trophy.x,center.y-trophy.y),active,surfaces,health:p.health,operation:q.trophyExtracting})); 
+          }
           NODE
-      - if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with:
-          name: rem112-desert-${{ matrix.case }}
-          path: |
-            outputs/browser/
-            outputs/admission/
