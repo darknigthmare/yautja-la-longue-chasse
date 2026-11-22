@@ -19,6 +19,7 @@ jobs:
             /package.json
             /package-lock.json
             /tsconfig.json
+            /eslint.config.mjs
             /next-env.d.ts
             /app/
             /lib/
@@ -35,6 +36,7 @@ jobs:
         with:
           node-version: 22
       - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npx eslint app/game/NurseryPrologueScreen.tsx
       - run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/nursery-cohort-v172.test.mjs tests/nursery-continuity-v72.test.mjs tests/nursery-campaign.test.mjs tests/nurseryPrologue.test.ts
       - run: node tests/qa-nursery-courtyard.playwright.mjs
       - uses: actions/upload-artifact@v4
