@@ -26,17 +26,34 @@ Cette bible fusionne la « Campagne commune » du classeur V6 (60 fiches R2-M001
 
 **Règle de lecture.** Les lignes « Production (proposé) » sont des propositions déduites de la scène écrite dans la fiche ; elles ne figurent pas dans le classeur et sont à valider. Il en va de même des blocs « Comblement » des chasses, du catalogue musical (MUS-01 → MUS-73) et de la section « Comblement des vides ». Les identifiants SFX en police technique (`rifle-burst`…) sont des noms de dossiers proposés pour `public/audio/sfx/`, sur le modèle des 21 existants. Pour les 8 chasses, « Existant » et « Manquant » sont vérifiés dans les fichiers du dépôt.
 
+
+### Raccords du 22 novembre 2026
+
+Le classeur décrit les 68 fiches au commit de référence. Il consigne les nouveaux parcours, leurs preuves et les étapes de production encore ouvertes. [Classeur Excel](../../production/INVENTAIRE_BIBLE_20261122.xlsx)
+
+- R2-M002 · Duel, outil, barrière et choix de cohorte. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996315371)
+- R2-M003 · Audience, remise à la forge et repères de cité. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996220777)
+- R2-M013 · Kit, écran, alerte, dépense et repos. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44995579576)
+- R2-M028 · Ordres au quai, verrou à l’atelier et reprise. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44995821505)
+- R2-M039 · Quai, atelier, relais et témoin. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996173113)
+- R2-M047 · Passe des Cendres et deux interventions. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44994874573)
+- R2-M048 · Crue, rassemblement et choix d’intervention. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44995209730)
+- R2-M052 · Armurerie et remise à Griffe de Fer. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44995540968)
+- R2-M053 · Ancien relevé, rive ou canopée. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996071556)
+
+Les huit surfaces planétaires ont chacune une ambiance originale. Le menu d’accueil joue le thème MUS‑01. Les médias utilisent le manifeste audio du jeu. [Ambiances](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996749682) · [MUS‑01](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996634637)
+
 ## Vue d'ensemble
 
-La campagne compte 68 missions : 60 fiches communes, plus 8 chasses planétaires qui réalisent R2-M024. Les 8 chasses sont jouables, 6 fiches sont partielles, 53 n'existent qu'en texte et en dialogues.
+La campagne comprend 60 fiches communes et 8 chasses planétaires qui réalisent R2-M024. Le tableau associe les fiches à leur parcours. Le classeur du 22 novembre détaille les cas où une fiche partage un système avec un autre chapitre et les écarts encore ouverts.
 
 Chaîne jouable actuelle, dans l'ordre du jeu : nurserie (V47) → accueil Unblooded, dojo, première lame, biomask, camp (V48) → reconnaissance du désert (V49) → patrouille (V52) → petite Fosse (V53) → Premières Pistes (V66) → passages du Homeworld (V67) → Cohorte des Aspirants, Young Blood (V68) → Seuils du Premier Sang (V69) → Temple des Trois Ombres, acte I (V70) → préparation de triade (V90, V92) → vaisseau (V87 → V89) → 8 chasses. Ces chapitres jeunesse couvrent des gestes proches des fiches M001 → M015 sans en suivre les scènes : ils sont notés « voisin ».
 
 | # | Fiche | Titre | Rang | État | Lien dans le jeu |
 | --- | --- | --- | --- | --- | --- |
 | 1 | R2-M001 | Pourquoi nous combattons | Youngling | Texte seul | voisin : V47 nurserie |
-| 2 | R2-M002 | Le filet et les visages | Youngling | Texte seul | — |
-| 3 | R2-M003 | Le chemin vers la cité | Youngling | Texte seul | voisin : V48 trajet dans la cité |
+| 2 | R2-M002 | Le filet et les visages | Youngling | Cour de la nurserie raccordée | Duel, outil, barrière et choix de cohorte |
+| 3 | R2-M003 | Le chemin vers la cité | Youngling | Course et forge raccordées, fiche partielle | Audience, remise à la forge et repères de cité |
 | 4 | R2-M004 | L’épreuve des trois gestes | Youngling | Texte seul | voisin : V48 dojo |
 | 5 | R2-M005 | La piste avant la prise | Youngling | Texte seul | voisin : V66 Premières Pistes |
 | 6 | R2-M006 | Entrer parmi les Unblooded | Youngling | Texte seul | voisin : V48 accueil |
@@ -46,7 +63,7 @@ Chaîne jouable actuelle, dans l'ordre du jeu : nurserie (V47) → accueil Unblo
 | 10 | R2-M010 | Le combistick revient à la main | Unblooded | Texte seul | — |
 | 11 | R2-M011 | Le tir qui demande une ligne | Unblooded | Texte seul | — |
 | 12 | R2-M012 | Le piège et le retour | Unblooded | Texte seul | — |
-| 13 | R2-M013 | Le soin dans un abri | Unblooded | Texte seul | — |
+| 13 | R2-M013 | Le soin dans un abri | Unblooded | Atelier de soin raccordé | Kit, écran, alerte, dépense et repos |
 | 14 | R2-M014 | La boucle des régions proches | Unblooded | Texte seul | voisin : V52 patrouille, V67 passages |
 | 15 | R2-M015 | Recevoir la place de Young Blood | Unblooded | Partiel | V68 accorde Young Blood |
 | 16 | R2-M016 | Former la triade | Young Blood | Partiel | V68 cohorte, V90 entraînement |
@@ -69,7 +86,7 @@ Chaîne jouable actuelle, dans l'ordre du jeu : nurserie (V47) → accueil Unblo
 | 33 | R2-M025 | Préparer Xeno Prime | Blooded | Texte seul | — |
 | 34 | R2-M026 | La première reine | Blooded | Texte seul | — |
 | 35 | R2-M027 | Ce que la reine a changé | Blooded | Texte seul | — |
-| 36 | R2-M028 | L’essai de coordination | Blooded | Texte seul | — |
+| 36 | R2-M028 | L’essai de coordination | Blooded | Essai à deux équipes raccordé | Ordres au quai, verrou à l’atelier et reprise |
 | 37 | R2-M029 | La fonction Adjutant | Blooded | Texte seul | — |
 | 38 | R2-M030 | Le seuil du Warp | Blooded | Texte seul | — |
 | 39 | R2-M031 | Les pièces d’un retour | Blooded | Texte seul | — |
@@ -80,7 +97,7 @@ Chaîne jouable actuelle, dans l'ordre du jeu : nurserie (V47) → accueil Unblo
 | 44 | R2-M036 | Voir le champ depuis les hauteurs | Blooded | Texte seul | voisin : Guerres des clans |
 | 45 | R2-M037 | La carte a des chemins | Blooded | Texte seul | voisin : Guerres des clans |
 | 46 | R2-M038 | L’histoire dans le meuble | Blooded | Texte seul | voisin : atelier des trophées |
-| 47 | R2-M039 | Revenir chez les siens | Blooded | Texte seul | — |
+| 47 | R2-M039 | Revenir chez les siens | Blooded | Retour civique raccordé | Quai, atelier, relais et témoin |
 | 48 | R2-M040 | Mon domaine de maîtrise | Blooded | Jouable dans le dossier | Quatre exercices et profil enregistré |
 | 49 | R2-M041 | Préparer la chasse solitaire | Blooded | Préparation raccordée au dossier du clan | `quatzaRij.expeditions.solo` |
 | 50 | R2-M042 | Le Quatza-Rij solitaire | Blooded | Combat, prélèvement et retour raccordés | `quatzaRij.expeditions.solo` |
@@ -88,13 +105,13 @@ Chaîne jouable actuelle, dans l'ordre du jeu : nurserie (V47) → accueil Unblo
 | 52 | R2-M044 | La coque d’un groupe | Elite | Inspection à bord partielle | `clanHullProjectV171` |
 | 53 | R2-M045 | Une porte, plusieurs haltes | Elite | Transfert entre seuils raccordé | `residenceV149.lastChoice` |
 | 54 | R2-M046 | Une mission vraiment collective | Elite | Escorte raccordée | `clanShipOperations` |
-| 55 | R2-M047 | Ce que la guerre laisse au retour | Elite | Texte seul | — |
-| 56 | R2-M048 | La branche qu’on ne possède pas | Elite | Texte seul | — |
+| 55 | R2-M047 | Ce que la guerre laisse au retour | Elite | Retour de la Veille Partagée raccordé | Passe des Cendres et deux interventions |
+| 56 | R2-M048 | La branche qu’on ne possède pas | Elite | Hameau W‑02 raccordé | Crue, rassemblement et choix d’intervention |
 | 57 | R2-M049 | Former sans remplacer | Elite | Jouable dans le dossier adulte | Terrain, appuis et reçu de mentorat |
 | 58 | R2-M050 | Un désaccord à résoudre sur le terrain | Elite | Jouable dans le dossier adulte | Traces, horaires ou passerelle et témoin |
 | 59 | R2-M051 | Être reconnu Elder | Elite | Jouable dans le dossier adulte | Dépositions et engagement enregistré |
-| 60 | R2-M052 | L’atelier qui fonctionne sans moi | Elder | Texte seul | — |
-| 61 | R2-M053 | Un ancien terrain a changé | Elder | Texte seul | — |
+| 60 | R2-M052 | L’atelier qui fonctionne sans moi | Elder | Établi Elder raccordé | Armurerie et remise à Griffe de Fer |
+| 61 | R2-M053 | Un ancien terrain a changé | Elder | Retour à Oseris-IV raccordé | Ancien relevé, rive ou canopée |
 | 62 | R2-M054 | La décision du successeur | Elder | Texte seul | — |
 | 63 | R2-M055 | L’épreuve de la longue mémoire | Elder | Texte seul | — |
 | 64 | R2-M056 | La reconnaissance Ancient | Elder | Texte seul | — |

@@ -2,7 +2,7 @@
 
 import { useId, useMemo, useState, type KeyboardEvent } from 'react';
 import ShipFlightDrillV87 from './ShipFlightDrillV87';
-import styles from './EarthHuntV171.module.css';
+import styles from './FirstInterstellarV173.module.css';
 import {
   FIRST_INTERSTELLAR_V173,
   firstInterstellarRouteV173,

@@ -47,19 +47,22 @@
       },
       "fiche": 1839,
       "etatSurMain": "NON_COMMENCE_OBSERVE",
-      "observation": "Sur 65361bb · La boucle d’après-duel concernant barrière, filet et trois camarades reste à produire.\nRecette · Le Canvas natif de la cour valide le déplacement, la barrière et les gestes de Harek, Yena, Tov et Saar. La progression reprend au deuxième geste après rechargement. L’aide à Yena, le retour de l’outil et la sortie sont confirmés.",
+      "observation": "Sur 65361bb · La boucle d’après-duel concernant barrière, filet et trois camarades reste à produire.\nRecette · Le Canvas natif de la cour valide le déplacement, la barrière et les gestes de Harek, Yena, Tov et Saar. La progression reprend au deuxième geste après rechargement. L’aide à Yena, le retour de l’outil et la sortie sont confirmés.\nCorrectif de composition · Le lint et 47 tests passent. Après une première exécution interrompue par le délai du harnais, la relance confirme Chrome et le contrôle TypeScript ciblé.",
       "preuves": [
         "app/game/NurseryPrologueScreen.tsx#L35-L52",
         "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2976-L2979"
       ],
       "chantierActif": "actes_i_iii",
-      "etatDeLivraison": "Chrome validé · avant composition",
+      "etatDeLivraison": "Chrome, tests et lint validés",
       "reste": "Accessoires et personnages réutilisent les atlas de la nurserie. Donner aux trois jeunes des poses propres et animer leurs gestes reste à produire. Le harnais Chrome joue le choix Yena avec le son désactivé.",
       "preuvesLivraison": [
         "actions/runs/44995203586",
         "actions/runs/44995203586/artifacts/14743865686",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/d5f301b21ac0ac620a834000866b6b6f32559cc1/tests/qa-nursery-courtyard.playwright.mjs#L84-L121",
-        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/d5f301b21ac0ac620a834000866b6b6f32559cc1/app/game/nurseryRendering.ts#L256-L282"
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/d5f301b21ac0ac620a834000866b6b6f32559cc1/app/game/nurseryRendering.ts#L256-L282",
+        "actions/runs/44996020198",
+        "actions/runs/44996315371",
+        "actions/runs/44996315371/artifacts/14743683067"
       ]
     },
     {
@@ -74,10 +77,19 @@
       },
       "fiche": 1849,
       "etatSurMain": "VOISIN",
-      "observation": "V48 fournit le trajet et des rencontres. Forge, livraison et orientation locale de cette fiche restent ouvertes.",
+      "observation": "Sur 65361bb · V48 fournit le trajet et des rencontres. Forge, livraison et orientation locale de cette fiche restent ouvertes.\nCandidat · Après la fin de la cour et l’audience en ville, la pièce est remise à la forge. Le choix forge ou archives, la visite des repères des archives, du chenil et du foyer ainsi que l’ordre acquis sont conservés.\nChrome · Départ à l’audience, remise de la pièce et rechargement en ville confirmés avant le blocage de l’itinéraire du pilote.",
       "preuves": [
         "app/game/systems/youthCampaign.ts#L135-L148",
         "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2976-L2984"
+      ],
+      "etatDeLivraison": "Mission partielle · vérification en cours",
+      "reste": "Le raccord s’ouvre après l’ellipse et la cohorte. La passerelle guidée par Saar, le contournement d’un chariot et les panneaux dédiés restent ouverts. Le contrôle des trois repères reste à terminer après le blocage devant le mobilier des archives.",
+      "preuvesLivraison": [
+        "actions/runs/44996220777",
+        "actions/runs/44996220777/artifacts/14744116870",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/376e29f838603879f610521b99917509b17c2251/app/game/systems/youthCityErrandV172.ts",
+        "actions/runs/44996896732",
+        "actions/runs/44997046720"
       ]
     },
     {
@@ -462,13 +474,20 @@
       },
       "fiche": 2065,
       "etatSurMain": "PARTIEL_MISSION",
-      "observation": "Route V159 engage la coque réellement possédée et garde les étapes et l’arrivée. W3-S18 signe la liaison et le service. La séquence première exacte prévol, balises, amarrage à la base et sortie sur le quai reste à relier.",
+      "observation": "Sur 65361bb · Route V159 engage la coque réellement possédée et garde les étapes et l’arrivée. W3-S18 signe la liaison et le service. La séquence première exacte prévol, balises, amarrage à la base et sortie sur le quai reste à relier.\nCandidat · Depuis la coque acquise et le prévol, la Couronne des Départs propose trois balises, l’amarrage V87, le débarquement physique sur le quai et le retour à bord. Le reçu de voyage se conserve.",
       "preuves": [
         "app/game/systems/spaceRoutesV159.ts#L392-L408",
         "app/game/systems/spaceRoutesV159.ts#L450-L475",
         "app/game/systems/spaceRoutesV159.ts#L495-L515",
         "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2996-L2998",
         "pull/186"
+      ],
+      "etatDeLivraison": "Parcours adulte V161 · recette à confirmer",
+      "reste": "Les commandes tactiques sont discrètes et le quai est un corridor stylisé. Les variantes d’escale du premier voyage, les médias dédiés et l’inscription de Sol parmi les destinations dessinées restent à couvrir. La recette navigateur de la campagne adulte V161 est en préparation.",
+      "preuvesLivraison": [
+        "actions/runs/44996353823",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/4b1d9800e994ac3e2de3b35c02b1bd1673bfe6ce/app/game/systems/firstInterstellarV173.ts",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/4b1d9800e994ac3e2de3b35c02b1bd1673bfe6ce/app/game/FirstInterstellarV173.tsx"
       ]
     },
     {
@@ -706,11 +725,20 @@
       },
       "fiche": 2317,
       "etatSurMain": "VOISIN",
-      "observation": "Les opérations collectives utilisent rôles et postes. Les Guerres fournissent ordres et terrain. Aucun raccord observé pour la récupération Adjutant à deux équipes et la résolution du blocage au sol.",
+      "observation": "Sur 65361bb · Les opérations collectives utilisent rôles et postes. Les Guerres fournissent ordres et terrain. Aucun raccord observé pour la récupération Adjutant à deux équipes et la résolution du blocage au sol.\nRecette · L’épreuve s’ouvre après le débrief du Berceau. Les tests valident les deux équipes, le choix terrain ou délégation, le verrou bloqué, le signal prématuré et la reprise locale jusqu’à la remise de la caisse.",
       "preuves": [
         "app/game/systems/clanShipOperations.ts#L578-L615",
         "app/game/systems/clanWarMissionModesV114.ts#L233-L253",
         "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2317-L2321"
+      ],
+      "etatDeLivraison": "Tests, types et lint · Chrome partiel",
+      "reste": "La première recette Chrome arrive à la reprise après signal prématuré et bloque en allant à l’atelier. Le modèle couvre la sortie des deux équipes. Le reçu porte la coordination de l’exercice sans nomination Adjutant ni reconnaissance de rang.",
+      "preuvesLivraison": [
+        "actions/runs/44995821505",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/5ac43fe31fac207ff4144049c872be70838f6c3a/tests/homeworld-coordination-m028.test.mjs#L43-L89",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/5ac43fe31fac207ff4144049c872be70838f6c3a/app/game/systems/homeworldCoordinationM028.ts#L37-L100",
+        "actions/runs/44996323416",
+        "actions/runs/44996869503"
       ]
     },
     {
@@ -916,18 +944,21 @@
       },
       "fiche": 2383,
       "etatSurMain": "VOISIN",
-      "observation": "Sur 65361bb · Les rues, missions et conversations des activités locales existent. Le retour dédié dont les réactions se fondent sur les chasses effectivement faites reste à raccorder.\nRecette · Le retour rattache les conversations aux chasses terminées. Les tests couvrent les deux contacts natifs, la réparation du même relais et le rapport persistant. Le signal du relais est rendu dans la scène d’origine.",
+      "observation": "Sur 65361bb · Les rues, missions et conversations des activités locales existent. Le retour dédié dont les réactions se fondent sur les chasses effectivement faites reste à raccorder.\nRecette · Le retour rattache les conversations aux chasses terminées. Les tests couvrent les deux contacts natifs, la réparation du même relais et le rapport persistant. Le signal du relais est rendu dans la scène d’origine.\nRecette Chrome · Le trajet de la ville, l’intervention au quai et la reprise après rechargement ont été joués dans Homeworld.",
       "preuves": [
         "app/game/HomeworldHub.tsx#L1254-L1259",
         "app/game/HomeworldHub.tsx#L1596",
         "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2383-L2387"
       ],
       "chantierActif": "actes_iv_vi",
-      "etatDeLivraison": "Tests validés · recette visuelle à compléter",
-      "reste": "La recette navigateur du trajet dans la ville et des choix de lien reste à documenter. La variante livrée suit la réparation du relais. Escorte et piste locale restent des variantes à produire.",
+      "etatDeLivraison": "Réparation et reprise validées dans Chrome",
+      "reste": "La variante livrée suit la réparation du relais dans la scène existante. Escorte et piste locale restent des variantes à produire.",
       "preuvesLivraison": [
         "actions/runs/44995049646",
-        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/a9bed649b9f6df5188be67225c0cd3dd35d4708b/app/game/HomeworldReturnM039.tsx#L36-L72"
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/a9bed649b9f6df5188be67225c0cd3dd35d4708b/app/game/HomeworldReturnM039.tsx#L36-L72",
+        "actions/runs/44996173113",
+        "actions/runs/44996173113/artifacts/14744470606",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/ee47b10c3d0ff45502f7e54e6a60d8b97035589f/scripts/qa-homeworld-return-m039.mjs"
       ]
     },
     {
@@ -1222,10 +1253,19 @@
       },
       "fiche": 2491,
       "etatSurMain": "VOISIN",
-      "observation": "Environnement et activités de retour existent. Aucun rapprochement jouable des anciens relevés du même terrain et des changements actuels attestés.",
+      "observation": "Sur 65361bb · Environnement et activités de retour existent. Aucun rapprochement jouable des anciens relevés du même terrain et des changements actuels attestés.\nRecette · L’entrée Elder franchit le contrôle de l’assemblée et vérifie la première chasse d’Oseris. Le terrain compare l’ancien relevé à la tranchée transformée. Les traversées rive entretenue et canopée adoptée, la reprise et le rapport sont validés dans GameClient.",
       "preuves": [
         "app/game/data.ts#L532-L1510",
         "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2491-L2495"
+      ],
+      "etatDeLivraison": "Deux issues GameClient validées · avant composition",
+      "reste": "Le terrain 2D emploie le panorama existant d’Oseris et des repères propres à ce retour. La recette prépare l’accès avec les fonctions de campagne de chasse, de coque et d’assemblée. Les autres planètes et leurs changements restent à produire.",
+      "preuvesLivraison": [
+        "actions/runs/44996071556",
+        "actions/runs/44996071556/artifacts/14744115691",
+        "actions/runs/44996071556/artifacts/14743713967",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a3472449f16594a8d2c6d2df4716df83ef75a73/app/game/systems/oserisReturnR2M053.ts#L57-L88",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a3472449f16594a8d2c6d2df4716df83ef75a73/scripts/qa-oseris-return-r2-m053.mjs#L112-L141"
       ]
     },
     {
@@ -1418,6 +1458,11 @@
           "nom": "Qualified source references, native A/B pixels and paired workbook",
           "conclusion": "success",
           "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987296686/job/137100559999"
+        },
+        {
+          "nom": "Pilote Terre · six tests ciblés et résultat navigateur",
+          "conclusion": "tests ciblés verts, navigateur non validé",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996353823/job/137128108184"
         }
       ],
       "deploiement": [
@@ -1438,7 +1483,7 @@
         "docs/campagne/TERRE_PROMPTS_IMAGE_20261122.md",
         "docs/campagne/TERRE_TERRAIN_DE_CHASSE_20261121.md"
       ],
-      "observation": "Avenant documentaire pour la Terre, 20 sites et 54 fiches. L’ouverture officielle repose sur le retour validé de R2-M023. Le pilote T-CT-01A est un chantier séparé. Aucun fichier de runtime dans cette PR.",
+      "observation": "Avenant documentaire pour la Terre, 20 sites et 54 fiches. L’ouverture officielle repose sur le retour validé de R2-M023. Le pilote T-CT-01A est un chantier séparé. Aucun fichier de runtime dans cette PR.\nPilote Okavango sur branche · Le pilote Okavango ouvre après le premier trajet attesté et l’accès physique Terre. Le contrat couvre les témoins et l’Indice de Discrétion, Lisle en trois phases, le choix du trophée ou de l’épargne, le nettoyage, l’extraction et le débrief.\nSix tests ciblés passent et TypeScript est vert. Le navigateur n’a pas validé l’entrée dans le pilote. La progression narrative jusqu’au vrai marqueur L‑04/M020 et sa compatibilité avec les valideurs V66–V90 bloquent cette intégration.\nReste · Le pilote se limite à T‑CT‑01A. Les autres sites et contrats, ARGOS, les médias propres et le transfert du trophée dans les archives globales restent ouverts.",
       "chantierActif": "terre_isles / T-CT-01A"
     },
     {
@@ -1530,6 +1575,23 @@
       "fusionnee": false,
       "fusionGitPossible": false,
       "observation": "Les substituts Blooded, Elite et Elder proposés se trouvent dans une branche ouverte et conflictuelle. La lecture de la Bible et la scène Elder intégrée se fondent sur main. Les cérémonies exactes Blooded et Elite gardent leur chantier."
+    },
+    {
+      "pr": 188,
+      "titre": "Bible de campagne · raccorder les scènes encore ouvertes",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/188",
+      "commit": "691be70c76756ea5855b4f093c1640ee8ead1b1e",
+      "etat": "open",
+      "fusionnee": false,
+      "fusionGitPossible": true,
+      "observation": "Pull request en brouillon pour composer les premiers raccords. Le contrôle groupé au commit c71d241 est passé. Les recettes de branche restent consultables par fiche.",
+      "controles": [
+        {
+          "nom": "Vérification groupée",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996205292"
+        }
+      ]
     }
   ],
   "transverses": [
@@ -1547,7 +1609,7 @@
     {
       "id": "SON_AMBIANCES_PLANETAIRES",
       "etat": "PARTIEL_MISSION",
-      "observation": "Les huit ambiances planétaires ont un repli procédural et aucune source publiée au ref. Le vaisseau a une source WAV.",
+      "observation": "Les huit ambiances planétaires ont un repli procédural et aucune source publiée au ref. Le vaisseau a une source WAV.\nLivraison · Le générateur de secours produit huit paysages sonores originaux, un par biome, à partir de sons synthétisés. Il vérifie le rendu Vorbis et les niveaux. Le rendu final de secours a publié huit boucles Ogg Vorbis stéréo de 18 secondes à 24 kHz.",
       "manquants": [
         "jungle",
         "ice",
@@ -1562,12 +1624,29 @@
         "public/audio/manifest.json",
         "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2543-L2549"
       ],
-      "chantierActif": "bible_transversale"
+      "chantierActif": "bible_transversale",
+      "etatDeLivraison": "Huit sources Ogg encodées et vérifiées",
+      "reste": "La validation du niveau et des boucles de chaque paysage a été faite au rendu. L’écoute complète des transitions et le mixage par chasse restent à vérifier.",
+      "preuvesLivraison": [
+        "actions/runs/44996749682",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/c8975d82d57e2385fa57b42e7bcbe856fd3748d2/scripts/generate-planet-ambiences-v173.mjs",
+        "actions/runs/44996749682/artifacts/14743769833"
+      ],
+      "fichiersLivraison": [
+        "public/audio/ambience/jungle/surface-v173.ogg",
+        "public/audio/ambience/ice/surface-v173.ogg",
+        "public/audio/ambience/volcano/surface-v173.ogg",
+        "public/audio/ambience/swamp/surface-v173.ogg",
+        "public/audio/ambience/desert/surface-v173.ogg",
+        "public/audio/ambience/ocean/surface-v173.ogg",
+        "public/audio/ambience/fungal/surface-v173.ogg",
+        "public/audio/ambience/ruins/surface-v173.ogg"
+      ]
     },
     {
       "id": "SON_MUSIQUES",
       "etat": "PARTIEL_MISSION",
-      "observation": "MUS‑02 et MUS‑15 sont déjà des MP3 natifs. Les six autres contextes présents au manifeste et les autres morceaux de catalogue gardent leur propre chantier.",
+      "observation": "MUS‑02 et MUS‑15 sont déjà des MP3 natifs. Les six autres contextes présents au manifeste et les autres morceaux de catalogue gardent leur propre chantier.\nLivraison · MUS‑01 est une piste d’accueil instrumentale originale de 180 secondes. Le fichier Ogg Vorbis stéréo et le générateur sont fournis. Le contrôle du rendu décode le média et vérifie les deux canaux et sa durée.",
       "presents": [
         {
           "contexte": "ship",
@@ -1590,7 +1669,14 @@
         "public/audio/manifest.json",
         "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2543-L2549"
       ],
-      "chantierActif": "bible_transversale / MUS-01 selon disponibilité"
+      "chantierActif": "bible_transversale / MUS-01 selon disponibilité",
+      "etatDeLivraison": "MUS‑01 · piste originale vérifiée",
+      "reste": "Galaxy, exploration, combat, boss et Homeworld gardent des contextes sans source. Les autres thèmes du catalogue ont leur propre suivi.",
+      "preuvesLivraison": [
+        "actions/runs/44996634637",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/7c2173343532f2ad10dcd5b02a4f61fadef21c8c/scripts/generate-menu-theme-mus01.mjs",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/7c2173343532f2ad10dcd5b02a4f61fadef21c8c/public/audio/music/menu/mus-01.ogg"
+      ]
     },
     {
       "id": "VFX_DANGERS",
@@ -1707,7 +1793,9 @@
   "limites": [
     "Le classement assure la couverture des 68 entrées de la table au ref. Les décisions hors table sont recensées quand un parcours ou un écart a pu être vérifié. Il ne remplace pas l’inventaire des dizaines de missions de chaque avenant Bible, l’audit artistique ou un rapport de test exécuté pour le ref.",
     "Les tests cités sont les fichiers présents ou les artefacts existants. La lecture n’a pas réexécuté le jeu ni les suites. L’absence d’un raccord observé s’applique aux routes et écritures inspectées.",
-    "Les recettes sur branches ajoutées à la colonne Livraison décrivent leurs scénarios vérifiés avant composition. Le compte de la synthèse reste fondé sur le main de référence."
+    "Les recettes sur branches ajoutées à la colonne Livraison décrivent leurs scénarios vérifiés avant composition. Le compte de la synthèse reste fondé sur le main de référence.",
+    "La composition suit les acquits de branche indépendamment du bilan des 68 fiches de référence. La qualification d’un raccord inclut l’état observable du scénario et la portée de sa recette.",
+    "Ce lot traite dix fiches. Sept ont une recette Chrome sur leur branche. M003 est partielle, M028 a une recette Chrome partielle, et M023 attend une recette en campagne adulte. Les 32 autres fiches ouvertes du relevé initial restent hors du lot."
   ],
   "limitesActuelles": {
     "totalPartiel": 9,
@@ -1715,5 +1803,57 @@
     "exactSansRaccordHorsQuatreChantiers": 29,
     "partiellesHorsQuatreChantiers": 9
   },
-  "actualiseLe": "2026-11-22"
+  "actualiseLe": "2026-11-22",
+  "bilanComposition": {
+    "fichesRaccordeesSurRef": 26,
+    "fichesSansNouveauRaccordDansLeLot": [
+      "R2-M001",
+      "R2-M004",
+      "R2-M006",
+      "R2-M007",
+      "R2-M008",
+      "R2-M009",
+      "R2-M010",
+      "R2-M011",
+      "R2-M012",
+      "R2-M014",
+      "R2-M016",
+      "R2-M017",
+      "R2-M020",
+      "R2-M029",
+      "R2-M030",
+      "R2-M031",
+      "R2-M032",
+      "R2-M033",
+      "R2-M034",
+      "R2-M035",
+      "R2-M036",
+      "R2-M037",
+      "R2-M038",
+      "R2-M043",
+      "R2-M044",
+      "R2-M054",
+      "R2-M055",
+      "R2-M056",
+      "R2-M057",
+      "R2-M058",
+      "R2-M059",
+      "R2-M060"
+    ],
+    "fichesAvecRecetteChrome": [
+      "R2-M002",
+      "R2-M013",
+      "R2-M039",
+      "R2-M047",
+      "R2-M048",
+      "R2-M052",
+      "R2-M053"
+    ],
+    "fichesPartiellesOuEnAttente": [
+      "R2-M003",
+      "R2-M023",
+      "R2-M028"
+    ],
+    "piloteTerre": "Tests ciblés 6/6 sur branche. Bloqué pour l’intégration au parcours narratif."
+  }
 }

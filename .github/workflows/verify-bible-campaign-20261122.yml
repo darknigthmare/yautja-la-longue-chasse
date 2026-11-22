@@ -13,13 +13,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '691be70c76756ea5855b4f093c1640ee8ead1b1e'
+      ASSET_RACCORDS_SOURCE_COMMIT: '97e4ff0c3c15f83d3c1d16d5903d01231541bed5'
       BASE_COMMIT: '65361bb4e2071ce7b61b81f17ab812e7ba299335'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '691be70c76756ea5855b4f093c1640ee8ead1b1e'
+          ref: '97e4ff0c3c15f83d3c1d16d5903d01231541bed5'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -62,6 +62,7 @@ jobs:
             /public/game/sprites/v8/ecology/serekh-9/burrow-snake-sheet.png
             /public/game/assets/clan-field-20261103/
             /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues-index.json
             /public/game/assets/v139/rig-gauntlets/
             /public/game/assets/v3/actors/yautja/hunter/
             /public/game/assets/v133/concept-masks/
@@ -128,9 +129,12 @@ jobs:
           app/game/WarpEpochsPanelV165.tsx
           scripts/qa-warp-village-r2-m048.mjs
           app/game/FirstInterstellarV173.tsx
-          app/game/EarthHuntV171.tsx
+          app/game/ShipInterior25D.tsx
+          app/game/systems/shipPreparationV88.ts
+          app/game/systems/youthCityErrandV172.ts
+          scripts/generate-planet-ambiences-v173.mjs
+          scripts/generate-menu-theme-mus01.mjs
           app/game/systems/firstInterstellarV173.ts
-          app/game/systems/earthHuntV171.ts
           app/game/HomeworldCoordinationM028.tsx
           app/game/systems/homeworldCoordinationM028.ts
           app/game/OserisReturnR2M053Panel.tsx
@@ -139,8 +143,13 @@ jobs:
       - name: Verify canonical chapter state and workbook
         if: ${{ !cancelled() }}
         run: |
-          node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec tests/nursery-cohort-v172.test.mjs tests/youth-training.test.ts tests/homeworld-return-m039.test.mjs tests/clan-ship-operations.test.mjs tests/warp-epochs-v165.test.mjs tests/elder-workshop-v172.test.mjs tests/elder-assembly-v168.test.mjs tests/ship-receipt-v161.test.mjs tests/homeworld-coordination-m028.test.mjs tests/oseris-return-r2-m053.test.mjs tests/first-interstellar-v173.test.mjs tests/earth-hunt-v171.test.mjs
+          node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec tests/nursery-cohort-v172.test.mjs tests/youth-training.test.ts tests/homeworld-return-m039.test.mjs tests/clan-ship-operations.test.mjs tests/warp-epochs-v165.test.mjs tests/elder-workshop-v172.test.mjs tests/elder-assembly-v168.test.mjs tests/ship-receipt-v161.test.mjs tests/homeworld-coordination-m028.test.mjs tests/oseris-return-r2-m053.test.mjs tests/first-interstellar-v173.test.mjs tests/ship-preparation-v88.test.mjs tests/youth-city-errand-v172.test.mjs
           node scripts/build-bible-inventory-workbook-20261122.mjs --check
+      - name: Verify ambient files, menu track and existing audio playback lifecycle
+        if: ${{ !cancelled() }}
+        run: |
+          npm run audio:qa
+          git diff --exit-code -- public/audio/manifest.json
       - name: Report canonical inventory differences
         if: ${{ !cancelled() && hashFiles('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json') != '' }}
         run: |
