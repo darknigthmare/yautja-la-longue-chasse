@@ -44,7 +44,49 @@ const capture = async file => {
   report.captures.push(file);
 };
 const disk = () => page.evaluate(() => JSON.parse(localStorage.getItem("yautja-long-hunt.save")));
-let nav;
+let nav, indoorNav;
+async function openNativePoint(pointId) {
+  const room = api.homeworldInteriorForPointV64(pointId);
+  assert.ok(room, pointId);
+  if (await nav.room() !== room.buildingId) await nav.enter(room.buildingId);
+  else await nav.closeDialog();
+
+  const start = await indoorNav.position();
+  const successors = [[0, -8], [8, 0], [-8, 0], [0, 8]];
+  const keyFor = point => point.x + "," + point.y;
+  const walkable = point => api.isHomeworldInteriorWalkableV64(room, point, { halfWidth: 26, halfDepth: 16 });
+  const reached = point => {
+    const target = api.nearestHomeworldInteriorTargetV64(room, point);
+    return target?.pointId === pointId && Math.hypot(point.x - target.position.x, point.y - target.position.y) < 59;
+  };
+  const queue = [start];
+  const visited = new Map([[keyFor(start), null]]);
+  let goal = null;
+  for (let index = 0; index < queue.length; index += 1) {
+    const current = queue[index];
+    if (reached(current)) {
+      goal = current;
+      break;
+    }
+    for (const [dx, dy] of successors) {
+      const next = { x: current.x + dx, y: current.y + dy };
+      if (visited.has(keyFor(next)) || !walkable(next) ||
+          !walkable({ x: current.x + dx / 2, y: current.y + dy / 2 })) continue;
+      visited.set(keyFor(next), current);
+      queue.push(next);
+    }
+  }
+  assert.ok(goal, "A roomy physical approach to " + pointId);
+  const path = [];
+  for (let point = goal; point; point = visited.get(keyFor(point))) path.push(point);
+  await indoorNav.follow(path.reverse());
+  const at = await indoorNav.position();
+  assert.equal(api.nearestHomeworldInteriorTargetV64(room, at)?.pointId, pointId);
+  await page.keyboard.press("KeyE");
+  await indoorNav.tick(160);
+  await page.locator("[data-homeworld-hub]").getByRole("dialog").waitFor();
+  report.routes.push({ kind: "interior", pointId, roomId: room.buildingId, from: start, to: at, steps: path.length });
+}
 async function boot() {
   await page.clock.resume();
   assert((await page.reload({ waitUntil: "domcontentloaded" })).ok());
@@ -57,6 +99,7 @@ async function boot() {
   await page.bringToFront();
   await page.clock.pauseAt(await page.evaluate(() => Date.now() + 150));
   nav = homeworldNavigatorV77(page, api);
+  indoorNav = homeworldNavigatorV77(page, api, { waypointTolerance: 3, driverTickMs: 26, pulseInputs: true });
   await nav.focus();
 }
 async function action(selector, reached) {
@@ -64,7 +107,9 @@ async function action(selector, reached) {
   await nav.tick(160);
   const save = await disk();
   assert.equal(save.homeworld.youthCityErrandV172.reached, reached);
-  report.checks.push({ reached, room: await nav.room(), position: await nav.position() });
+  const recorded = { reached, room: await nav.room(), position: await nav.position() };
+  report.checks.push(recorded);
+  console.log("M003", JSON.stringify(recorded));
   return save;
 }
 function saveRoutes() {
@@ -111,23 +156,23 @@ try {
   await boot();
   const initial = await disk();
   assert.equal(initial.homeworld.youthCityErrandV172, undefined);
-  await nav.openPoint("audience-point");
+  await openNativePoint("audience-point");
   await action('[data-r2-m003-route="escort"]', 0);
   await capture("01-piece-confiee.png");
-  await nav.openPoint("forge-service");
+  await openNativePoint("forge-service");
   await action('[data-r2-m003-stop="forge-service"]', 1);
   await capture("02-remise-forge.png");
   saveRoutes();
   await boot();
   assert.equal((await disk()).homeworld.youthCityErrandV172.reached, 1);
-  await nav.openPoint("memory-service");
+  await openNativePoint("memory-service");
   await action('[data-r2-m003-stop="memory-service"]', 2);
   await nav.reach({ levelId: "0", point: { x: 7380, y: 5500 } });
   await nav.release();
   await page.keyboard.press("KeyE");
   await nav.tick(160);
   await action('[data-r2-m003-stop="kennel"]', 3);
-  await nav.openPoint("training-service");
+  await openNativePoint("training-service");
   const completed = await action('[data-r2-m003-stop="training-service"]', 4);
   assert.deepEqual(completed.inventory, initial.inventory);
   await capture("03-reperes-consignes.png");
