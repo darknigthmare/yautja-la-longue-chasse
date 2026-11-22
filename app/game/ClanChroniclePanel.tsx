@@ -110,7 +110,7 @@ export default function ClanChroniclePanel({
       <div className={styles.opening}><p className={styles.eyebrow}>OUVERTURE · YOUNGLING</p><h3>L’Arène de la nurserie</h3><p>Duel d’enfance sans HUD, vision rouge, orange et jaune. Maintien « Prêt », poings, prises, petites lames détachées et victoire au KO. La caméra révèle ensuite la nurserie bâtie autour du squelette sec et évidé d’un scolopendre géant, puis la lune rouge.</p><p>Le titre reste <strong>Yautja: The Long Hunt</strong>. Le passage Unblooded précède l’arrivée à la cité, le dojo, le premier biomask, les baraquements et le premier réveil.</p></div>
       {save.prologue?.checkpoint.cohortV172?.steps === 7 && <article className={styles.opening} data-r2-m002-cohort-receipt>
         <h3>Le filet et les visages</h3>
-        <p>Outil rendu, barrière fermée et retour de la cohorte entendu. Harek, Yena et Tov ont rejoint le passage du village.</p>
+        <p>Outil rendu, barrière fermée et retour de la cohorte entendu. Les échanges avec Harek, Yena et Tov sont consignés.</p>
         {save.prologue.checkpoint.cohortV172.choice === "review" && <p>Harek retient l’appui repris avec toi.</p>}
         {save.prologue.checkpoint.cohortV172.choice === "help" && <p>Yena se souvient que tu es revenu l’aider à ranger le filet.</p>}
       </article>}

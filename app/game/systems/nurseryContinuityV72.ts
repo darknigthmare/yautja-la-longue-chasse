@@ -97,7 +97,16 @@ export function nurseryStoryCardV72(state: NurseryState, hunterName = "Jeune du 
     text: "Tu incarnes un jeune du clan, dans un exercice surveillé et non létal. Le rival est un autre élève. La mise à terre met fin au duel ; le village et sa lune apparaissent ensuite. Ta reprise conserve exactement l'épreuve déjà jouée.",
     objective: state.winner === "player" ? "La victoire est acquise. Le débrief et le voyage vers la cité restent à suivre." : "Maîtriser le duel, puis écouter le maître avant de quitter le village.", button: "Reprendre la scène sauvegardée" };
   if (state.phase === "prompt") return intro[story.introPage] ?? null;
-  if (state.phase === "debrief") return debrief[story.debriefPage] ?? null;
+  if (state.phase === "debrief") {
+    const card = debrief[story.debriefPage];
+    if (state.cohortV172 && card?.id === "rival-recovery") return {
+      ...card, chapter: "Retour vers la cour",
+      text: "« Tu m’as pris mes appuis. Je retiendrai la leçon. » Le rival a repris ses forces sous la surveillance du maître. Dehors, Saar a réuni la cohorte autour du filet.",
+      objective: "Rejoindre les autres et remettre la cour en ordre.",
+      button: "Rejoindre la cour",
+    };
+    return card ?? null;
+  }
   if (state.phase === "journey") return journey[story.journeyPage] ?? null;
   if (state.phase === "reception") {
     const name = hunterName.trim().slice(0, 40) || "Jeune du clan";
