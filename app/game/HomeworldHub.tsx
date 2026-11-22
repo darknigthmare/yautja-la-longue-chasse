@@ -1313,7 +1313,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   const canCoordinateM028 = useMemo(() => homeworldCoordinationOpenM028(save), [save]);
   const atCoordinationGateM028 = coordinationM028?.phase === "jammed" &&
     homeworldCoordinationWorkshopReachedM028(interior?.buildingId ?? null, actor);
-  const coordinationPromptM028 = coordinationM028?.role === "delegate" ? "Montrer le verrou à l’équipe" : "Libérer le verrou";
+  const coordinationPromptM028 = coordinationM028?.role === "delegate" ? "Repérer le verrou pour l’équipe" : "Libérer le verrou";
   const residentRenderContextV110={ownerCreatedAt:save.createdAt,currentOwnerCreatedAt:save.createdAt,actor,levelId:levelIdV77,seconds:phase,interiorId,inTransit:!!transitV77||!!skiffV77,active:true,cargo:cargoViewV108};
   const selectedResidentV68 = homeworldResidentDialogueContactV110(dialog?.residentV110,residentRenderContextV110);
   const selectedResidentRoutineV84 = selectedResidentV68 ? homeworldCivilianRoutineV84(selectedResidentV68) : null;

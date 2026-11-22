@@ -8,6 +8,7 @@ const tasks = {
   briefed: "Ouvre le passage depuis la console de coordination.",
   jammed: "Rejoins l’allée de maintenance de l’Atelier des convois pour dégager le verrou.",
   delayed: "Reprends la coordination au Contrôle d’amarrage.",
+  surveyed: "Retourne au Contrôle d’amarrage et indique à l’équipe quel verrou libérer.",
   cleared: "Retourne au Contrôle d’amarrage et envoie le signal de récupération.",
   recovering: "Donne l’ordre de retour aux deux équipes.",
   returned: "Les deux équipes ont regagné le quai avec la caisse.",
@@ -52,7 +53,8 @@ export default function HomeworldCoordinationM028({ trial, disabled, onAction }:
         <p>{tasks[trial.phase]}</p>
         {trial.delays > 0 && <p>Retards consignés · {trial.delays}</p>}
         {trial.phase === "briefed" && <button type="button" disabled={disabled} onClick={() => onAction({ kind: "dispatch" })}>Ouvrir le passage</button>}
-        {(trial.phase === "jammed" || trial.phase === "cleared") &&
+        {trial.phase === "surveyed" && <button type="button" disabled={disabled} onClick={() => onAction({ kind: "order-clear" })}>Ordonner de libérer le verrou repéré</button>}
+        {(trial.phase === "jammed" || trial.phase === "surveyed" || trial.phase === "cleared") &&
           <button type="button" disabled={disabled} onClick={() => onAction({ kind: "signal" })}>Envoyer le signal</button>}
         {trial.phase === "delayed" && <button type="button" disabled={disabled} onClick={() => onAction({ kind: "retry" })}>Reprendre depuis le passage</button>}
         {trial.phase === "recovering" && <button type="button" disabled={disabled} onClick={() => onAction({ kind: "recall" })}>Ordonner le retour des équipes</button>}

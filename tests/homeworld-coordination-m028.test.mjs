@@ -10,7 +10,7 @@ const cradle = qa.load("app/game/systems/buriedCradle.ts");
 const snapshots = qa.load("app/game/systems/buriedCradleSnapshot.ts");
 const { defaultSave, normalizeSave } = qa.load("app/game/save.ts");
 const { MISSIONS } = qa.load("app/game/data.ts");
-const chairs = qa.load("app/game/systems/homeworldInteriorsV64.ts");
+const interiors = qa.load("app/game/systems/homeworldInteriorsV64.ts");
 
 const council = { ...system.COORDINATION_OFFICER_M028, actor: { x: 1, y: 1 }, suspended: false };
 const workshop = { roomId: system.COORDINATION_WORKSHOP_M028.roomId, pointId: null,
@@ -67,7 +67,14 @@ test("M028 opens after the existing Berceau debrief and keeps both team assignme
     deny("clear", council);
     deny("clear", { ...workshop, actor: { x: 0, y: 0 } });
     deny("clear", { ...workshop, suspended: true });
-    act("clear", workshop);
+    const fieldResult = act("clear", workshop);
+    assert.equal(fieldResult.phase, role === "field" ? "cleared" : "surveyed");
+    if (role === "delegate") {
+      deny("order-clear", workshop);
+      act("order-clear");
+    } else {
+      deny("order-clear", council);
+    }
     const recovery = act("signal");
     assert.match(system.homeworldCoordinationTeamsM028(recovery)[1], /caisse prise/);
     const receipt = act("recall");
@@ -83,7 +90,7 @@ test("M028 opens after the existing Berceau debrief and keeps both team assignme
 });
 
 test("M028 places the jammed gate beside a real, walkable route in the existing workshop", () => {
-  const room = chairs.homeworldInteriorForBuildingV64(workshop.roomId);
+  const room = interiors.homeworldInteriorForBuildingV64(workshop.roomId);
   assert.ok(room);
   const moves = [[4, 0], [-4, 0], [0, 4], [0, -4]];
   const queue = [room.spawn];
@@ -92,7 +99,7 @@ test("M028 places the jammed gate beside a real, walkable route in the existing 
   for (let index = 0; index < queue.length; index += 1) {
     const point = queue[index];
     const key = point.x + "," + point.y;
-    if (seen.has(key) || !chairs.isHomeworldInteriorWalkableV64(room, point)) continue;
+    if (seen.has(key) || !interiors.isHomeworldInteriorWalkableV64(room, point)) continue;
     seen.add(key);
     if (system.homeworldCoordinationWorkshopReachedM028(room.buildingId, point)) {
       reached = point;

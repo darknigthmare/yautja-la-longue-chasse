@@ -8,7 +8,7 @@ export const COORDINATION_WORKSHOP_M028 = {
   reach: 22,
 } as const;
 
-const phases = ["briefed", "jammed", "delayed", "cleared", "recovering", "returned"] as const;
+const phases = ["briefed", "jammed", "delayed", "surveyed", "cleared", "recovering", "returned"] as const;
 type CoordinationPhase = (typeof phases)[number];
 type CoordinationRole = "field" | "delegate";
 
@@ -22,7 +22,7 @@ export interface HomeworldCoordinationM028 {
 
 export type HomeworldCoordinationActionM028 =
   | { kind: "begin"; role: CoordinationRole }
-  | { kind: "dispatch" | "clear" | "signal" | "recall" | "retry" };
+  | { kind: "dispatch" | "clear" | "order-clear" | "signal" | "recall" | "retry" };
 
 export function normalizeHomeworldCoordinationM028(raw: unknown): HomeworldCoordinationM028 | null {
   if (!raw || typeof raw !== "object") return null;
@@ -30,7 +30,7 @@ export function normalizeHomeworldCoordinationM028(raw: unknown): HomeworldCoord
   if (version !== 1 || typeof ownerCreatedAt !== "string" || !Number.isFinite(Date.parse(ownerCreatedAt)) ||
       !phases.some(value => value === phase) || (role !== "field" && role !== "delegate") ||
       typeof delays !== "number" || !Number.isSafeInteger(delays) || delays < 0 ||
-      (phase === "delayed" && delays === 0)) return null;
+      (phase === "delayed" && delays === 0) || (phase === "surveyed" && role !== "delegate")) return null;
   return { version: 1, ownerCreatedAt, phase: phase as CoordinationPhase, role, delays };
 }
 
@@ -72,7 +72,7 @@ export function actHomeworldCoordinationM028(
   if (action.kind === "dispatch" && state.phase === "briefed") {
     return advance("jammed", "L’équipe du passage est en place. La commande a atteint la porte, dont le verrou est coincé.");
   }
-  if (action.kind === "signal" && state.phase === "jammed") {
+  if (action.kind === "signal" && (state.phase === "jammed" || state.phase === "surveyed")) {
     if (state.delays === Number.MAX_SAFE_INTEGER) return { message: "Le registre des retards a atteint sa limite." };
     return {
       state: { ...state, phase: "delayed", delays: state.delays + 1 },
@@ -83,9 +83,12 @@ export function actHomeworldCoordinationM028(
     return advance("jammed", "L’équipe du passage reste devant le verrou. Confirme l’ouverture sur place avant le signal.");
   }
   if (action.kind === "clear" && state.phase === "jammed") {
-    return advance("cleared", state.role === "field"
-      ? "Tu as libéré le verrou. Signale l’ouverture depuis le poste de coordination."
-      : "L’équipe de passage a libéré le verrou que tu lui as désigné. Signale l’ouverture depuis le poste de coordination.");
+    return state.role === "field"
+      ? advance("cleared", "Tu as libéré le verrou. Signale l’ouverture depuis le poste de coordination.")
+      : advance("surveyed", "Le verrou à libérer est repéré. Retourne à la console pour transmettre l’ordre à l’équipe.");
+  }
+  if (action.kind === "order-clear" && state.phase === "surveyed") {
+    return advance("cleared", "L’équipe du passage a libéré le verrou repéré sur place.");
   }
   if (action.kind === "signal" && state.phase === "cleared") {
     return advance("recovering", "Signal reçu. L’équipe de récupération a franchi la porte et chargé la caisse.");
@@ -104,6 +107,7 @@ const teams: Record<CoordinationPhase, readonly [string, string]> = {
   briefed: [dock, wait],
   jammed: [workshop + " · verrou bloqué", wait],
   delayed: [workshop + " · verrou bloqué", "Quai · retour sans la caisse"],
+  surveyed: [workshop + " · verrou repéré, attend l’ordre", wait],
   cleared: [workshop + " · porte dégagée", wait],
   recovering: [workshop + " · tient le passage", "Aire de chargement · caisse prise"],
   returned: [dock, "Quai · caisse remise"],
