@@ -1,18 +1,28 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { aboard, fixture, ops, qa, saves } from './helpers/clan-ship-trophy-hearing-fixture.mjs';
+import { recognizeElderThroughAssembly } from './helpers/elder-recognition-r2-m051.mjs';
 
 const scene = qa.load('app/game/systems/oserisReturnR2M053.ts');
 
 test('R2-M053 revisits the original Oseris flood trench through either surveyed route', () => {
   const seed = aboard(fixture({ evidence: false, ruins: false }), 'hangar');
-  const elder = { ...seed, profile: { ...seed.profile, rankId: 'elder', acquiredRankIdV166: 'elder', honor: 8000 } };
+  const qualified = { ...seed, profile: { ...seed.profile, rankId: 'elite', acquiredRankIdV166: 'elite', honor: 8000 } };
+  const elder = recognizeElderThroughAssembly(qa, qualified);
+  assert.equal(elder.profile.rankId, 'elite');
+  assert.equal(elder.elderAssemblyV168.responsibility, 'travel');
+  assert.equal(scene.oserisReturnAvailable(qualified), false);
+  assert.equal(scene.oserisReturnAvailable({ ...elder, elderMentoringV168: null }), false);
+  assert.equal(scene.oserisReturnAvailable({ ...elder, elderPassageJudgmentV168: null }), false);
+  assert.equal(scene.oserisReturnAvailable({ ...elder, createdAt: 'other' }), false);
+  assert.equal(scene.oserisReturnAvailable({ ...elder, missionProgress: {} }), false);
   const base = elder.clanShipOperations;
   const action = (save, state, order, roomId = 'hangar', revision = state.revision) =>
     ops.actClanShipOperations(state, { type: 'oseris-return', expectedRevision: revision, order }, {
       ownerCreatedAt: save.createdAt, campaign: save, docking: { ...save.clanShipDocking, roomId },
     });
   assert.equal(action(seed, base, 'land').reason, 'oseris-return-access');
+  assert.equal(action(qualified, base, 'land').reason, 'oseris-return-access');
   assert.equal(action(elder, base, 'land', 'conseil').reason, 'wrong-room');
   assert.equal(action(elder, base, 'compare').reason, 'oseris-return-order');
   assert.equal(scene.OSERIS_RETURN_TERRAIN_R2_M053.trench.id, 'j-flood-pulse');

@@ -8,6 +8,7 @@ import { chromium } from 'playwright-core';
 import { createServer } from 'vite';
 import { fixture, docking, qa, saves } from '../tests/helpers/clan-ship-trophy-hearing-fixture.mjs';
 import { playShipAcquisitionV161 } from '../tests/helpers/ship-receipt-v161.mjs';
+import { recognizeElderThroughAssembly } from '../tests/helpers/elder-recognition-r2-m051.mjs';
 
 const choice = process.env.OSERIS_RETURN_CHOICE ?? 'maintain';
 assert.ok(['maintain', 'adapt'].includes(choice));
@@ -18,7 +19,7 @@ const terrain = qa.load('app/game/systems/oserisReturnR2M053.ts');
 const key = saves.SAVE_STORAGE_KEY;
 let initial = fixture({ evidence: false, ruins: false });
 initial = playShipAcquisitionV161(qa, {
-  ...initial, clanShipDocking: null, profile: { ...initial.profile, honor: 8000, rankId: 'elder', acquiredRankIdV166: 'elder' },
+  ...initial, clanShipDocking: null, profile: { ...initial.profile, honor: 8000, rankId: 'elite', acquiredRankIdV166: 'elite' },
 });
 const owner = initial.createdAt;
 const ship = acquisition.shipAcquisitionOwnedHullV89(initial.shipAcquisitionV89, owner);
@@ -31,11 +32,14 @@ for (const type of ['approach', 'dock', 'board']) {
   berth = result.state;
 }
 initial = { ...initial, clanShipDocking: berth, settings: { ...initial.settings, masterVolume: 0 } };
+assert.equal(terrain.oserisReturnAvailable(initial), false);
+initial = recognizeElderThroughAssembly(qa, initial);
 const admitted = saves.parseSaveImport(saves.exportSave(initial));
 assert.equal(admitted.failure, null);
 assert.ok(terrain.oserisReturnAvailable(admitted.save));
+assert.equal(admitted.save.elderAssemblyV168.responsibility, 'travel');
 const report = { commit, choice, passed: false, visits: [], errors: [], missing: [], captures: [],
-  admission: 'Synthetic eligibility using the production hunt result reducer and ship acquisition, before any R2-M053 action.' };
+  admission: 'Synthetic eligibility using the production hunt result, ship acquisition and Elder assembly reducers, before any R2-M053 action.' };
 await mkdir(out, { recursive: true });
 let browser, server, page;
 try {
@@ -132,6 +136,7 @@ try {
   assert.equal(final.clanShipOperations.legacy.returnedWorldCompared, true);
   assert.deepEqual(final.missionProgress['jungle-vey'], admitted.save.missionProgress['jungle-vey']);
   assert.equal(final.profile.honor, admitted.save.profile.honor);
+  assert.deepEqual(final.elderAssemblyV168, admitted.save.elderAssemblyV168);
   assert.deepEqual(report.errors, []);
   assert.deepEqual(report.missing, []);
   report.receipt = final.clanShipOperations.legacy;

@@ -1,5 +1,5 @@
 import { getChronicleRank } from './clanChronicle';
-import type { MissionId, SaveGame } from '../types';
+import type { MissionId } from '../types';
 import type { ClanShipDockingState, ClanShipRoomId } from './clanShipDocking';
 import {
   createClanShipSpaceEncounter, inspectClanShipSpaceEncounter, actClanShipSpaceEncounter,
@@ -11,7 +11,7 @@ import {
 import { clanHullProjectMatchesOwnedHull, inspectClanHullProject } from './clanHullProjectV171';
 import { applyWarReturnOrder, inspectWarReturn, type WarReturnOrder, type WarReturnRecord } from './warReturnR2M047';
 import { applyOserisReturn, inspectOserisReturn, oserisReturnAvailable, oserisReturnPriorHunts,
-  type OserisReturnOrder, type OserisReturnRecord } from './oserisReturnR2M053';
+  type OserisReturnCampaign, type OserisReturnOrder, type OserisReturnRecord } from './oserisReturnR2M053';
 
 export const CLAN_SHIP_OPERATIONS_VERSION = 1 as const;
 export const CLAN_SHIP_CONTRACT_IDS = [
@@ -182,11 +182,10 @@ export interface ClanShipOperationsState {
   war?: WarReturnRecord;
   legacy?: OserisReturnRecord;
 }
-export interface ClanShipCampaignEvidence {
+export interface ClanShipCampaignEvidence extends OserisReturnCampaign {
   createdAt: string;
   prologue?: { status?: string; chronicle: unknown } | null;
   missionProgress: Partial<Record<MissionId, { status: string; attempts: number; completions: number }>>;
-  profile?: Pick<SaveGame['profile'], 'rankId'>;
   clanHullProjectV171?: unknown;
   shipAcquisitionV89?: unknown;
   companionResidence?: { clanCapacity: 7 | 13 | 19 } | null;

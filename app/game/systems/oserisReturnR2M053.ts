@@ -1,5 +1,6 @@
 import type { SaveGame } from '../types';
 import { getChronicleRank } from './clanChronicle';
+import { elderAssemblyProofs, inspectElderAssembly } from './elderAssemblyV168';
 import { worldBlueprintFor } from './worldBlueprints';
 
 const missionId = 'jungle-vey';
@@ -52,11 +53,11 @@ export interface OserisReturnRecord {
   returnedWorldCompared: boolean;
 }
 type HuntProgress = SaveGame['missionProgress'];
-type OserisCampaign = {
-  profile?: Pick<SaveGame['profile'], 'rankId'>;
+export interface OserisReturnCampaign extends Pick<SaveGame,
+  'createdAt' | 'elderAssemblyV168' | 'elderMentoringV168' | 'elderPassageJudgmentV168'> {
   prologue?: { status?: string; chronicle: unknown } | null;
   missionProgress: unknown;
-};
+}
 
 export function oserisReturnPriorHunts(progress: unknown): number {
   if (!progress || typeof progress !== 'object' || !Object.hasOwn(progress, missionId)) return 0;
@@ -64,11 +65,15 @@ export function oserisReturnPriorHunts(progress: unknown): number {
   return hunt?.status === 'completed' && Number.isSafeInteger(hunt.completions) && hunt.completions > 0 ? hunt.completions : 0;
 }
 
-export function oserisReturnAvailable(save: OserisCampaign): boolean {
-  const rank = save.prologue
-    ? save.prologue.status === 'completed' && getChronicleRank(save.prologue.chronicle)
-    : save.profile?.rankId;
-  return (rank === 'elder' || rank === 'ancient') && oserisReturnPriorHunts(save.missionProgress) > 0;
+export function oserisReturnAvailable(save: OserisReturnCampaign): boolean {
+  if (oserisReturnPriorHunts(save.missionProgress) < 1 ||
+      (save.prologue && save.prologue.status !== 'completed')) return false;
+  const rank = save.prologue ? getChronicleRank(save.prologue.chronicle) : null;
+  if (rank === 'elder' || rank === 'ancient') return true;
+  const assembly = inspectElderAssembly(save.elderAssemblyV168, save.createdAt).state;
+  if (!assembly?.responsibility) return false;
+  const witnesses = elderAssemblyProofs(save);
+  return witnesses.mentoring && witnesses.judgment;
 }
 
 const FIELDS: Partial<Record<OserisReturnOrder, OserisReturnPlace>> = {

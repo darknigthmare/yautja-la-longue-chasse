@@ -61,10 +61,10 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Lint the Oseris field visit and browser proof
-        run: npx eslint app/game/ClanShipOperationsPanel.tsx app/game/OserisReturnR2M053Panel.tsx app/game/systems/oserisReturnR2M053.ts app/game/systems/clanShipOperations.ts tests/oseris-return-r2-m053.test.mjs scripts/qa-oseris-return-r2-m053.mjs
+        run: npx eslint app/game/ClanShipOperationsPanel.tsx app/game/OserisReturnR2M053Panel.tsx app/game/systems/oserisReturnR2M053.ts app/game/systems/clanShipOperations.ts tests/oseris-return-r2-m053.test.mjs tests/helpers/elder-recognition-r2-m051.mjs scripts/qa-oseris-return-r2-m053.mjs
       - name: Check the original hunt requirement and both durable paths
         if: matrix.choice == 'maintain'
-        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/oseris-return-r2-m053.test.mjs tests/clan-ship-operations.test.mjs tests/clan-ship-operations-save.test.mjs
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/oseris-return-r2-m053.test.mjs tests/clan-ship-operations.test.mjs tests/clan-ship-operations-save.test.mjs tests/elder-assembly-v168.test.mjs
       - name: Compare the restored map in GameClient, cross and reload
         run: node scripts/qa-oseris-return-r2-m053.mjs
       - name: Preserve original screenshots and receipts
