@@ -78,13 +78,13 @@ export function enableNurseryContinuityV72(state: NurseryState): NurseryState {
   return { ...state, continuityV72: { version: 1, introPage: fresh ? 0 : 5, debriefPage: 0, journeyPage: 0, receptionPage: 0, recap: !fresh } };
 }
 export function nurseryContinuityPhaseV72(phase: NurseryPhase): boolean {
-  return phase === "debrief" || phase === "walkout" || phase === "journey" || phase === "reception" || phase === "clan-entry" || phase === "clan-departure";
+  return phase === "debrief" || phase === "cohort" || phase === "walkout" || phase === "journey" || phase === "reception" || phase === "clan-entry" || phase === "clan-departure";
 }
 export function nurseryContinuityMatchesPhaseV72(story: NurseryContinuityV72, phase: NurseryPhase): boolean {
   if (phase === "loading" || phase === "prompt") return story.introPage < 5 && story.debriefPage === 0 && story.journeyPage === 0 && story.receptionPage === 0;
   if (story.introPage !== 5) return false;
   if (phase === "debrief") return story.debriefPage < 2 && story.journeyPage === 0 && story.receptionPage === 0;
-  if (phase === "walkout") return story.debriefPage === 2 && story.journeyPage === 0 && story.receptionPage === 0 && !story.recap;
+  if (phase === "cohort" || phase === "walkout") return story.debriefPage === 2 && story.journeyPage === 0 && story.receptionPage === 0 && !story.recap;
   if (phase === "journey") return story.debriefPage === 2 && story.journeyPage < 2 && story.receptionPage === 0 && !story.recap;
   if (phase === "reception" || phase === "complete" || phase === "clan-entry" || phase === "clan-departure") return story.debriefPage === 2 && story.journeyPage === 2 && !story.recap &&
     (phase === "reception" ? story.receptionPage < 4 : phase === "clan-entry" ? story.receptionPage === 1 : story.receptionPage === 4);

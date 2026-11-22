@@ -1,0 +1,40 @@
+name: QA cour R2-M002
+on:
+  push:
+    branches: [codex/qa-r2-m002-cour-20261122]
+permissions:
+  contents: read
+jobs:
+  courtyard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*
+            /package.json
+            /package-lock.json
+            /tsconfig.json
+            /next-env.d.ts
+            /app/
+            /lib/
+            /types/
+            /tests/
+            /worker/
+            /docs/
+            /scripts/
+            /public/game/prologue/
+            /public/game/sprites/
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/nursery-cohort-v172.test.mjs tests/nursery-continuity-v72.test.mjs tests/nursery-campaign.test.mjs tests/nurseryPrologue.test.ts
+      - run: npx tsc --noEmit --incremental false 2>&1 | tee /tmp/courtyard-typescript.log
+      - run: |
+          if rg 'app/game/(NurseryPrologueScreen|nurseryRendering|systems/nursery(CohortV172|Prologue|Campaign|ContinuityV72))' /tmp/courtyard-typescript.log; then exit 1; fi
