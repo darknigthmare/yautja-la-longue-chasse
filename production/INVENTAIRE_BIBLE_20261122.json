@@ -1,0 +1,1689 @@
+{
+  "date": "2026-11-22",
+  "depot": "darknigthmare/yautja-la-longue-chasse",
+  "refMain": "65361bb4e2071ce7b61b81f17ab812e7ba299335",
+  "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+  "methode": "Lecture de code, chemins normaux campagne et preuves navigateur explicitement identifiées, à la date et au ref indiqués. Rang, mécanisme libre ou texte seuls ne suffisent pas à prouver la fiche. Les besoins de production et de validation artistique s’évaluent séparément.",
+  "statuts": {
+    "RACCORDE": "Boucle de la fiche jouée et persistée, ou chapitre que la Bible accepte expressément comme équivalent. Les écarts signalés restent ouverts.",
+    "PARTIEL_MISSION": "Une partie propre à la fiche a un déclenchement ou une preuve jouable. Des étapes spécifiées restent ouvertes.",
+    "VOISIN": "Un mécanisme analogue est présent. La mission exacte n’a pas de raccord observé.",
+    "NON_COMMENCE_OBSERVE": "Aucune boucle propre observée dans le périmètre d’audit. Le statut décrit le ref, la fiche peut être en chantier."
+  },
+  "stats": {
+    "VOISIN": 26,
+    "NON_COMMENCE_OBSERVE": 7,
+    "RACCORDE": 26,
+    "PARTIEL_MISSION": 9
+  },
+  "missions": [
+    {
+      "ordre": 1,
+      "id": "R2-M001",
+      "titre": "Pourquoi nous combattons",
+      "rang": "Youngling",
+      "table": {
+        "ligne": 37,
+        "etat": "Texte seul",
+        "lien": "voisin : V47 nurserie"
+      },
+      "fiche": 1829,
+      "etatSurMain": "VOISIN",
+      "observation": "Duel de nursery existant. Sortie protégée, animal d’exercice échappé et coopération filet restent à produire.",
+      "preuves": [
+        "app/game/NurseryPrologueScreen.tsx#L31-L38",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2976-L2979"
+      ]
+    },
+    {
+      "ordre": 2,
+      "id": "R2-M002",
+      "titre": "Le filet et les visages",
+      "rang": "Youngling",
+      "table": {
+        "ligne": 38,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 1839,
+      "etatSurMain": "NON_COMMENCE_OBSERVE",
+      "observation": "La boucle d’après-duel concernant barrière, filet et trois camarades reste à produire.",
+      "preuves": [
+        "app/game/NurseryPrologueScreen.tsx#L35-L52",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2976-L2979"
+      ],
+      "chantierActif": "actes_i_iii",
+      "etatDeLivraison": "Recette Chrome avant composition",
+      "reste": "Valider l’intégration des libellés retestés dans la composition finale.",
+      "preuvesLivraison": [
+        "actions/runs/44995005229"
+      ]
+    },
+    {
+      "ordre": 3,
+      "id": "R2-M003",
+      "titre": "Le chemin vers la cité",
+      "rang": "Youngling",
+      "table": {
+        "ligne": 39,
+        "etat": "Texte seul",
+        "lien": "voisin : V48 trajet dans la cité"
+      },
+      "fiche": 1849,
+      "etatSurMain": "VOISIN",
+      "observation": "V48 fournit le trajet et des rencontres. Forge, livraison et orientation locale de cette fiche restent ouvertes.",
+      "preuves": [
+        "app/game/systems/youthCampaign.ts#L135-L148",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2976-L2984"
+      ]
+    },
+    {
+      "ordre": 4,
+      "id": "R2-M004",
+      "titre": "L’épreuve des trois gestes",
+      "rang": "Youngling",
+      "table": {
+        "ligne": 40,
+        "etat": "Texte seul",
+        "lien": "voisin : V48 dojo"
+      },
+      "fiche": 1859,
+      "etatSurMain": "VOISIN",
+      "observation": "Le dojo V48 produit un reçu et des gestes d’entraînement. Le circuit anneau, poutre et cible à ressort reste à raccorder.",
+      "preuves": [
+        "app/game/systems/youthTraining.ts#L39-L42",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2979-L2980"
+      ]
+    },
+    {
+      "ordre": 5,
+      "id": "R2-M005",
+      "titre": "La piste avant la prise",
+      "rang": "Youngling",
+      "table": {
+        "ligne": 41,
+        "etat": "Texte seul",
+        "lien": "voisin : V66 Premières Pistes"
+      },
+      "fiche": 1869,
+      "etatSurMain": "RACCORDE",
+      "observation": "Premières Pistes V66 rejoue la traque, le retour et le débrief, puis atteste first-tracks. La fusion ciblée de la Bible accepte cette scène.",
+      "preuves": [
+        "app/game/systems/campaignSoloV66.ts#L29-L46",
+        "app/game/systems/campaignSoloV66.ts#L59-L83",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2976-L2982"
+      ]
+    },
+    {
+      "ordre": 6,
+      "id": "R2-M006",
+      "titre": "Entrer parmi les Unblooded",
+      "rang": "Youngling",
+      "table": {
+        "ligne": 42,
+        "etat": "Texte seul",
+        "lien": "voisin : V48 accueil"
+      },
+      "fiche": 1879,
+      "etatSurMain": "VOISIN",
+      "observation": "La nursery reconnaît déjà Unblooded par une cérémonie différente. La validation des deux exercices et le franchissement du râtelier restent ouverts.",
+      "preuves": [
+        "app/game/systems/nurseryCampaign.ts#L45-L56",
+        "app/game/ClanChroniclePanel.tsx#L109-L110",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2979-L2980"
+      ]
+    },
+    {
+      "ordre": 7,
+      "id": "R2-M007",
+      "titre": "Le masque et ses lectures",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 43,
+        "etat": "Texte seul",
+        "lien": "voisin : V48 premier biomask"
+      },
+      "fiche": 1893,
+      "etatSurMain": "VOISIN",
+      "observation": "Premier biomask reçu et teinte du lien choisie en V48. Atelier des attaches, parcours de lecture et choix du profil réversible restent ouverts.",
+      "preuves": [
+        "app/game/systems/youthCampaign.ts#L29-L31",
+        "app/game/systems/youthTraining.ts#L515-L524",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2979-L2982"
+      ]
+    },
+    {
+      "ordre": 8,
+      "id": "R2-M008",
+      "titre": "La distance des lames",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 44,
+        "etat": "Texte seul",
+        "lien": "voisin : V48 première lame"
+      },
+      "fiche": 1903,
+      "etatSurMain": "VOISIN",
+      "observation": "La lame et son premier reçu sont joués en V48. L’aire spécifique à trois distances et le franchissement étroit restent ouverts.",
+      "preuves": [
+        "app/game/systems/youthCampaign.ts#L29-L31",
+        "app/game/systems/youthTraining.ts#L34-L41",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2979-L2982"
+      ]
+    },
+    {
+      "ordre": 9,
+      "id": "R2-M009",
+      "titre": "Ce que le camouflage laisse voir",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 45,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 1913,
+      "etatSurMain": "VOISIN",
+      "observation": "Le camouflage est un outil du runtime. Le parcours Unblooded flaque, trace et détour vertical n’a pas de raccord observé.",
+      "preuves": [
+        "app/game/data.ts#L532",
+        "app/game/systems/youthTraining.ts#L39-L41",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2983"
+      ]
+    },
+    {
+      "ordre": 10,
+      "id": "R2-M010",
+      "titre": "Le combistick revient à la main",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 46,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 1923,
+      "etatSurMain": "VOISIN",
+      "observation": "Le combistick est dans le catalogue. L’atelier avec cible mobile et récupération physique reste ouvert.",
+      "preuves": [
+        "app/game/data.ts#L75-L204",
+        "app/game/systems/youthTraining.ts#L39-L41",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2983"
+      ]
+    },
+    {
+      "ordre": 11,
+      "id": "R2-M011",
+      "titre": "Le tir qui demande une ligne",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 47,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 1933,
+      "etatSurMain": "VOISIN",
+      "observation": "Le speargun existe comme équipement. Son exercice Unblooded de couvert, ligne de vue, cible mobile et récupération reste ouvert.",
+      "preuves": [
+        "app/game/data.ts#L75-L204",
+        "app/game/systems/youthTraining.ts#L39-L41",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2983"
+      ]
+    },
+    {
+      "ordre": 12,
+      "id": "R2-M012",
+      "titre": "Le piège et le retour",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 48,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 1943,
+      "etatSurMain": "VOISIN",
+      "observation": "Des pièges existent en chasse. Leur atelier d’apprentissage avec mannequin allié, rayon lisible et reprise locale reste ouvert.",
+      "preuves": [
+        "app/game/data.ts#L532-L558",
+        "app/game/systems/youthTraining.ts#L39-L41",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2983"
+      ]
+    },
+    {
+      "ordre": 13,
+      "id": "R2-M013",
+      "titre": "Le soin dans un abri",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 49,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 1953,
+      "etatSurMain": "VOISIN",
+      "observation": "La cohorte V68 récupère et emploie un medicomp. L’exercice propre avec écran de protection, interruption et reprise reste ouvert.",
+      "preuves": [
+        "app/game/systems/campaignSoloV68.ts#L55-L62",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2983"
+      ]
+    },
+    {
+      "ordre": 14,
+      "id": "R2-M014",
+      "titre": "La boucle des régions proches",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 50,
+        "etat": "Texte seul",
+        "lien": "voisin : V52 patrouille, V67 passages"
+      },
+      "fiche": 1963,
+      "etatSurMain": "VOISIN",
+      "observation": "V52 et V67 donnent patrouille et passages. La boucle cumulative désert, forêt et bordure, les haltes, le retour de prêt et le reçu restent ouverts.",
+      "preuves": [
+        "app/game/systems/youthTraining.ts#L39-L42",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2976-L2985"
+      ]
+    },
+    {
+      "ordre": 15,
+      "id": "R2-M015",
+      "titre": "Recevoir la place de Young Blood",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 51,
+        "etat": "Partiel",
+        "lien": "V68 accorde Young Blood"
+      },
+      "fiche": 1973,
+      "etatSurMain": "RACCORDE",
+      "observation": "La reconnaissance V68 produit réellement le rite Young Blood aux côtés de la cohorte. La Bible l’accepte pour M015 dans sa fusion. Position de la cérémonie L-03 encore à harmoniser.",
+      "preuves": [
+        "app/game/systems/campaignSoloV68.ts#L52-L68",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2983-L2985"
+      ]
+    },
+    {
+      "ordre": 16,
+      "id": "R2-M016",
+      "titre": "Former la triade",
+      "rang": "Young Blood",
+      "table": {
+        "ligne": 52,
+        "etat": "Partiel",
+        "lien": "V68 cohorte, V90 entraînement"
+      },
+      "fiche": 1987,
+      "etatSurMain": "PARTIEL_MISSION",
+      "observation": "La cohorte Saar/Vek et l’entraînement triade V90 existent, avec un reçu de préparation. Le recrutement des partenaires et l’affectation libre de leurs rôles restent ouverts.",
+      "preuves": [
+        "app/game/systems/campaignSoloV90.ts#L26-L38",
+        "app/game/systems/campaignSoloV90.ts#L59-L66",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L1987-L1994"
+      ]
+    },
+    {
+      "ordre": 17,
+      "id": "R2-M017",
+      "titre": "Le Temple des Trois Ombres",
+      "rang": "Young Blood",
+      "table": {
+        "ligne": 53,
+        "etat": "Partiel",
+        "lien": "V69 + V70 acte I (9 salles)"
+      },
+      "fiche": 1998,
+      "etatSurMain": "PARTIEL_MISSION",
+      "observation": "Les neuf salles de l’acte I (V70) sont jouées et sauvegardées. Les six salles profondes, la reine captive, l’épreuve Kainde Amedha distincte et la purge restent à produire.",
+      "preuves": [
+        "app/game/systems/campaignSoloV70.ts#L22-L57",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L1998-L2005",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2989-L2994"
+      ]
+    },
+    {
+      "ordre": 18,
+      "id": "R2-M018",
+      "titre": "Le Quatza-Rij à trois",
+      "rang": "Young Blood",
+      "table": {
+        "ligne": 54,
+        "etat": "Texte seul",
+        "lien": "V90 = entraînement, pas le rite"
+      },
+      "fiche": 2009,
+      "etatSurMain": "RACCORDE",
+      "observation": "Combat natif triade après V90 avec Saar et Vek, équipement, vraies ouvertures et preuves rejouables. L-02 révisée impose le Homeworld. Le Temple Blooded L-04 demeure un chantier séparé.",
+      "preuves": [
+        "app/game/ClanChroniclePanel.tsx#L124-L131",
+        "app/game/systems/quatzaRij.ts#L291-L299",
+        "app/game/systems/quatzaRij.ts#L175-L224",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L153-L175",
+        "actions/runs/44955278445/artifacts/14727645258"
+      ]
+    },
+    {
+      "ordre": 19,
+      "id": "R2-M019",
+      "titre": "Revenir avec la triade",
+      "rang": "Young Blood",
+      "table": {
+        "ligne": 55,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2019,
+      "etatSurMain": "RACCORDE",
+      "observation": "Retour du Quatza aux témoins avec ordre de présentation, absence, repérage, stabilisation et portage observés après reprise. L-03 cérémonie du masque et le rite Blooded L-04 demeurent ouverts.",
+      "preuves": [
+        "app/game/systems/quatzaRij.ts#L423-L461",
+        "actions/runs/44955278445/artifacts/14727645258",
+        "actions/runs/44957690748/artifacts/14727809549"
+      ]
+    },
+    {
+      "ordre": 20,
+      "id": "R2-M020",
+      "titre": "Porter la marque Blooded",
+      "rang": "Young Blood",
+      "table": {
+        "ligne": 56,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2029,
+      "etatSurMain": "NON_COMMENCE_OBSERVE",
+      "observation": "La marque Blooded de L-04 reste annoncée à produire. Aucun geste d’acide, remise des outils et cérémonie de cette fiche observés sur le ref. #171 propose un substitut non intégré de reconnaissance.",
+      "preuves": [
+        "app/game/ClanChroniclePanel.tsx#L125-L131",
+        "app/game/systems/clanChronicle.ts#L70-L75",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L169-L175",
+        "pull/171"
+      ]
+    },
+    {
+      "ordre": 21,
+      "id": "R2-M021",
+      "titre": "Une coque vraiment acquise",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 57,
+        "etat": "Partiel",
+        "lien": "V87 → V89 vaisseau"
+      },
+      "fiche": 2043,
+      "etatSurMain": "RACCORDE",
+      "observation": "Reçu nominatif produit après inspection, panne, remise en état, droits et entrée physique attestée. V161 et les routes consomment ce reçu.",
+      "preuves": [
+        "app/game/systems/shipAcquisitionV89.ts#L229-L261",
+        "app/game/systems/shipAcquisitionV89.ts#L367-L394",
+        "app/game/systems/shipReceiptV161.ts#L65-L88",
+        "app/game/GameClient.tsx#L2765-L2772"
+      ]
+    },
+    {
+      "ordre": 22,
+      "id": "R2-M022",
+      "titre": "Huit salles pour préparer la route",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 58,
+        "etat": "Partiel",
+        "lien": "V88 préparation"
+      },
+      "fiche": 2054,
+      "etatSurMain": "RACCORDE",
+      "observation": "Prévol physique V88, huit postes utiles, observations liées à la salle et à la coque, persistance. Le choix narratif court/escale reste à vérifier séparément.",
+      "preuves": [
+        "app/game/systems/shipPreparationV88.ts#L127-L193",
+        "app/game/systems/shipPreparationV88.ts#L193-L230",
+        "app/game/GameClient.tsx#L2712-L2734"
+      ]
+    },
+    {
+      "ordre": 23,
+      "id": "R2-M023",
+      "titre": "Le premier trajet entre les mondes",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 59,
+        "etat": "Partiel",
+        "lien": "V89, trajet non joué"
+      },
+      "fiche": 2065,
+      "etatSurMain": "PARTIEL_MISSION",
+      "observation": "Route V159 engage la coque réellement possédée et garde les étapes et l’arrivée. W3-S18 signe la liaison et le service. La séquence première exacte prévol, balises, amarrage à la base et sortie sur le quai reste à relier.",
+      "preuves": [
+        "app/game/systems/spaceRoutesV159.ts#L392-L408",
+        "app/game/systems/spaceRoutesV159.ts#L450-L475",
+        "app/game/systems/spaceRoutesV159.ts#L495-L515",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2996-L2998",
+        "pull/186"
+      ]
+    },
+    {
+      "ordre": 24,
+      "id": "R2-M024",
+      "titre": "La première chasse d’un autre ciel",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 60,
+        "etat": "Jouable",
+        "lien": "réalisée par les 8 chasses"
+      },
+      "fiche": 2075,
+      "etatSurMain": "RACCORDE",
+      "observation": "Première des huit chasses, chaîne d’objectifs et extraction commune. Les variantes art, acoustique, boss et objectifs spécifiques sont suivies séparément.",
+      "preuves": [
+        "app/game/data.ts#L532-L1510",
+        "app/game/GameClient.tsx#L4052-L4056",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2075-L2081"
+      ]
+    },
+    {
+      "ordre": 25,
+      "id": "R2-M024.1",
+      "titre": "Sang dans la canopée — Oseris-IV",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 61,
+        "etat": "Jouable",
+        "lien": "`jungle-vey`"
+      },
+      "fiche": 2083,
+      "etatSurMain": "RACCORDE",
+      "observation": "Chasse native jungle-vey. Les besoins de variantes d’objectifs, de boss et les médias s’évaluent indépendamment.",
+      "preuves": [
+        "app/game/data.ts#L534-L555",
+        "app/game/GameClient.tsx#L4052-L4056"
+      ]
+    },
+    {
+      "ordre": 26,
+      "id": "R2-M024.2",
+      "titre": "Chaleur sous la glace — Nivalis-K",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 62,
+        "etat": "Jouable",
+        "lien": "`ice-cryostalker`"
+      },
+      "fiche": 2113,
+      "etatSurMain": "RACCORDE",
+      "observation": "Chasse native ice-cryostalker. Les besoins de variantes d’objectifs, de boss et les médias s’évaluent indépendamment.",
+      "preuves": [
+        "app/game/data.ts#L765-L786",
+        "app/game/GameClient.tsx#L4052-L4056"
+      ]
+    },
+    {
+      "ordre": 27,
+      "id": "R2-M024.3",
+      "titre": "Le dernier rite — Cinder-12",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 63,
+        "etat": "Jouable",
+        "lien": "`volcano-bad-blood`"
+      },
+      "fiche": 2142,
+      "etatSurMain": "RACCORDE",
+      "observation": "Chasse native volcano-bad-blood. Les besoins de variantes d’objectifs, de boss et les médias s’évaluent indépendamment.",
+      "preuves": [
+        "app/game/data.ts#L990-L1011",
+        "app/game/GameClient.tsx#L4052-L4056"
+      ]
+    },
+    {
+      "ordre": 28,
+      "id": "R2-M024.4",
+      "titre": "Les gueules du delta — Naraka-Delta",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 64,
+        "etat": "Jouable",
+        "lien": "`swamp-hydra`"
+      },
+      "fiche": 2173,
+      "etatSurMain": "RACCORDE",
+      "observation": "Chasse native swamp-hydra. Les besoins de variantes d’objectifs, de boss et les médias s’évaluent indépendamment.",
+      "preuves": [
+        "app/game/data.ts#L1226-L1247",
+        "app/game/GameClient.tsx#L4052-L4056"
+      ]
+    },
+    {
+      "ordre": 29,
+      "id": "R2-M024.5",
+      "titre": "Le chant sous les dunes — Serekh-9",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 65,
+        "etat": "Jouable",
+        "lien": "`desert-sandmaw`"
+      },
+      "fiche": 2197,
+      "etatSurMain": "RACCORDE",
+      "observation": "Chasse native desert-sandmaw. Les besoins de variantes d’objectifs, de boss et les médias s’évaluent indépendamment.",
+      "preuves": [
+        "app/game/data.ts#L1293-L1314",
+        "app/game/GameClient.tsx#L4052-L4056"
+      ]
+    },
+    {
+      "ordre": 30,
+      "id": "R2-M024.6",
+      "titre": "Sous l'œil de la tempête — Pelagos-M",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 66,
+        "etat": "Jouable",
+        "lien": "`ocean-leviathan`"
+      },
+      "fiche": 2221,
+      "etatSurMain": "RACCORDE",
+      "observation": "Chasse native ocean-leviathan. Les besoins de variantes d’objectifs, de boss et les médias s’évaluent indépendamment.",
+      "preuves": [
+        "app/game/data.ts#L1360-L1381",
+        "app/game/GameClient.tsx#L4052-L4056"
+      ]
+    },
+    {
+      "ordre": 31,
+      "id": "R2-M024.7",
+      "titre": "La forêt qui se souvient — Mycora-V",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 67,
+        "etat": "Jouable",
+        "lien": "`fungal-hivemind`"
+      },
+      "fiche": 2245,
+      "etatSurMain": "RACCORDE",
+      "observation": "Chasse native fungal-hivemind. Les besoins de variantes d’objectifs, de boss et les médias s’évaluent indépendamment.",
+      "preuves": [
+        "app/game/data.ts#L1427-L1448",
+        "app/game/GameClient.tsx#L4052-L4056"
+      ]
+    },
+    {
+      "ordre": 32,
+      "id": "R2-M024.8",
+      "titre": "Les chasseurs de pierre — Acheron-Sigma",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 68,
+        "etat": "Jouable",
+        "lien": "`ruins-ancient-guardian`"
+      },
+      "fiche": 2268,
+      "etatSurMain": "RACCORDE",
+      "observation": "Chasse native ruins-ancient-guardian. Les besoins de variantes d’objectifs, de boss et les médias s’évaluent indépendamment.",
+      "preuves": [
+        "app/game/data.ts#L1494-L1515",
+        "app/game/GameClient.tsx#L4052-L4056"
+      ]
+    },
+    {
+      "ordre": 33,
+      "id": "R2-M025",
+      "titre": "Préparer Xeno Prime",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 69,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2295,
+      "etatSurMain": "RACCORDE",
+      "observation": "Approche Xeno Prime réelle, repères de trajet, test et preuve des préparatifs. Le choix supplémentaire de reconnaissance en variante et l’habillage restent à valider.",
+      "preuves": [
+        "app/game/GameClient.tsx#L5353-L5380",
+        "app/game/systems/buriedCradleCampaign.ts#L84-L97",
+        "app/game/systems/buriedCradleCampaign.ts#L134-L159",
+        "app/game/systems/buriedCradleApproach.ts"
+      ]
+    },
+    {
+      "ordre": 34,
+      "id": "R2-M026",
+      "titre": "La première reine",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 70,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2303,
+      "etatSurMain": "RACCORDE",
+      "observation": "Scène de combat Matriarche du Berceau, progression et état physique, repli/extraction, preuve de victoire ou absence de prise. Le mode Réserve V163 est distinct et reprend le résultat.",
+      "preuves": [
+        "app/game/GameClient.tsx#L5387-L5411",
+        "app/game/systems/buriedCradleCampaign.ts#L166-L183",
+        "app/game/systems/queenHuntV163.ts#L260-L270"
+      ]
+    },
+    {
+      "ordre": 35,
+      "id": "R2-M027",
+      "titre": "Ce que la reine a changé",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 71,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2311,
+      "etatSurMain": "RACCORDE",
+      "observation": "Retour physique à la coque de départ, soin, examen auprès du mentor et choix clan/atelier avec couronne ou preuve de retour persistée.",
+      "preuves": [
+        "app/game/systems/buriedCradleReturn.ts#L3-L18",
+        "app/game/systems/buriedCradleReturn.ts#L61-L79",
+        "app/game/systems/buriedCradleCampaign.ts#L198-L211",
+        "app/game/GameClient.tsx#L5534",
+        "tests/buried-cradle-return.test.mjs"
+      ]
+    },
+    {
+      "ordre": 36,
+      "id": "R2-M028",
+      "titre": "L’essai de coordination",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 72,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2317,
+      "etatSurMain": "VOISIN",
+      "observation": "Les opérations collectives utilisent rôles et postes. Les Guerres fournissent ordres et terrain. Aucun raccord observé pour la récupération Adjutant à deux équipes et la résolution du blocage au sol.",
+      "preuves": [
+        "app/game/systems/clanShipOperations.ts#L578-L615",
+        "app/game/systems/clanWarMissionModesV114.ts#L233-L253",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2317-L2321"
+      ]
+    },
+    {
+      "ordre": 37,
+      "id": "R2-M029",
+      "titre": "La fonction Adjutant",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 73,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2323,
+      "etatSurMain": "VOISIN",
+      "observation": "Chronique, conditions et lectures pour la fonction Adjutant existent. La nomination acceptée ou différée après l’essai et la mission de quai restent à produire.",
+      "preuves": [
+        "app/game/systems/clanChronicle.ts#L72-L76",
+        "app/game/systems/clanChronicle.ts#L162-L166",
+        "app/game/systems/warpEpochsV165.ts#L345-L370",
+        "app/game/ClanChroniclePanel.tsx#L187-L204"
+      ]
+    },
+    {
+      "ordre": 38,
+      "id": "R2-M030",
+      "titre": "Le seuil du Warp",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 74,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2329,
+      "etatSurMain": "PARTIEL_MISSION",
+      "observation": "L'option stabilité ou énergie ouvre le reçu dédié et les prochaines étapes. L’Observatoire, les balises, la galerie et le dispositif ne sont pas joués dans le panneau.",
+      "preuves": [
+        "app/game/systems/warpEpochsV165.ts#L399-L405",
+        "app/game/WarpEpochsPanelV165.tsx#L101-L112",
+        "app/game/GameClient.tsx#L5218-L5224"
+      ]
+    },
+    {
+      "ordre": 39,
+      "id": "R2-M031",
+      "titre": "Les pièces d’un retour",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 75,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2335,
+      "etatSurMain": "PARTIEL_MISSION",
+      "observation": "Validation séparée des trois pièces, réparation ou variante, événements durables. Les trois ateliers à parcourir et leurs tests physiques restent ouverts.",
+      "preuves": [
+        "app/game/systems/warpEpochsV165.ts#L105-L110",
+        "app/game/systems/warpEpochsV165.ts#L408-L414",
+        "app/game/WarpEpochsPanelV165.tsx#L113-L120"
+      ]
+    },
+    {
+      "ordre": 40,
+      "id": "R2-M032",
+      "titre": "Installer le module du Warp",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 76,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2341,
+      "etatSurMain": "PARTIEL_MISSION",
+      "observation": "Choix de marge/fenêtre et état installé persistent après trois pièces. Le montage physique et le test propres à la quête restent ouverts. La baie test isolée ne valide pas WARP-M030–M033.",
+      "preuves": [
+        "app/game/systems/warpEpochsV165.ts#L417-L423",
+        "app/game/WarpEpochsPanelV165.tsx#L122-L123",
+        "app/game/systems/warpModuleBay.ts#L1-L2"
+      ]
+    },
+    {
+      "ordre": 41,
+      "id": "R2-M033",
+      "titre": "Traverser et revenir",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 77,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2347,
+      "etatSurMain": "PARTIEL_MISSION",
+      "observation": "Voyage et retour par fenêtre réservée persistent. W-02 fournit une vraie chasse dans une branche historique. Repère de terrain physiquement posé et alcôve de premier trajet spécifiques restent ouverts.",
+      "preuves": [
+        "app/game/systems/warpEpochsV165.ts#L436-L456",
+        "app/game/WarpEpochsPanelV165.tsx#L57-L68",
+        "app/game/WarpEpochsPanelV165.tsx#L140-L168"
+      ]
+    },
+    {
+      "ordre": 42,
+      "id": "R2-M034",
+      "titre": "Choisir la prochaine route",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 78,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2353,
+      "etatSurMain": "VOISIN",
+      "observation": "Carte routée native, quais et services existent. Aucun choix commun chasse, exploration ou service ouvrant la préparation Elite observé.",
+      "preuves": [
+        "app/game/systems/spaceRoutesV159.ts#L170-L191",
+        "app/game/GameClient.tsx#L4995-L5003",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2353-L2357"
+      ]
+    },
+    {
+      "ordre": 43,
+      "id": "R2-M035",
+      "titre": "Un conflit de clan à hauteur de chasseur",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 79,
+        "etat": "Texte seul",
+        "lien": "voisin : Guerres des clans"
+      },
+      "fiche": 2359,
+      "etatSurMain": "VOISIN",
+      "observation": "Les campagnes et exercices de Guerre fournissent des objectifs et des combats au sol. La fiche introduction depuis le parcours Blooded et sa visite d’un même lieu transformé restent ouvertes.",
+      "preuves": [
+        "app/game/GameClient.tsx#L4995-L5003",
+        "app/game/GameClient.tsx#L5249",
+        "app/game/systems/clanWarMissionModesV114.ts#L126-L156"
+      ]
+    },
+    {
+      "ordre": 44,
+      "id": "R2-M036",
+      "titre": "Voir le champ depuis les hauteurs",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 80,
+        "etat": "Texte seul",
+        "lien": "voisin : Guerres des clans"
+      },
+      "fiche": 2365,
+      "etatSurMain": "VOISIN",
+      "observation": "Le mode RTS avec groupes de combat et objectifs existe. Le passage au sol de cette introduction Blooded et son reçu par voie restent à raccorder.",
+      "preuves": [
+        "app/game/systems/clanWarMissionModesV114.ts#L20-L22",
+        "app/game/systems/clanWarMissionModesV114.ts#L233-L253",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2365-L2369"
+      ]
+    },
+    {
+      "ordre": 45,
+      "id": "R2-M037",
+      "titre": "La carte a des chemins",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 81,
+        "etat": "Texte seul",
+        "lien": "voisin : Guerres des clans"
+      },
+      "fiche": 2371,
+      "etatSurMain": "VOISIN",
+      "observation": "Carte/exercices, ordres et système tactique de ravitaillement présents. L’introduction campagne avec une liaison, visite 2D du passage et reçu spécifique reste à raccorder.",
+      "preuves": [
+        "app/game/systems/clanWarExerciseV6.ts#L30-L51",
+        "app/game/GameClient.tsx#L4995-L5003",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2371-L2375"
+      ]
+    },
+    {
+      "ordre": 46,
+      "id": "R2-M038",
+      "titre": "L’histoire dans le meuble",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 82,
+        "etat": "Texte seul",
+        "lien": "voisin : atelier des trophées"
+      },
+      "fiche": 2377,
+      "etatSurMain": "VOISIN",
+      "observation": "Atelier, amélioration, provenance et destination d’exposition du trophée sont déjà joués. La fiche d’introduction qui suit le même original du berceau au meuble avec reçu commun reste à raccorder.",
+      "preuves": [
+        "app/game/GameClient.tsx#L6840-L6868",
+        "app/game/GameClient.tsx#L7198-L7210",
+        "app/game/systems/trophyUsagesV147.ts#L283-L306"
+      ]
+    },
+    {
+      "ordre": 47,
+      "id": "R2-M039",
+      "titre": "Revenir chez les siens",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 83,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2383,
+      "etatSurMain": "VOISIN",
+      "observation": "Les rues, missions et conversations des activités locales existent. Le retour dédié dont les réactions se fondent sur les chasses effectivement faites reste à raccorder.",
+      "preuves": [
+        "app/game/HomeworldHub.tsx#L1254-L1259",
+        "app/game/HomeworldHub.tsx#L1596",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2383-L2387"
+      ],
+      "chantierActif": "actes_iv_vi",
+      "etatDeLivraison": "Tests avant composition",
+      "reste": "Compléter la recette visuelle après les vérifications automatisées.",
+      "preuvesLivraison": [
+        "actions/runs/44995049646"
+      ]
+    },
+    {
+      "ordre": 48,
+      "id": "R2-M040",
+      "titre": "Mon domaine de maîtrise",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 84,
+        "etat": "Jouable dans le dossier",
+        "lien": "Quatre exercices et profil enregistré"
+      },
+      "fiche": 2389,
+      "etatSurMain": "RACCORDE",
+      "observation": "Terrain de maîtrise quatre disciplines et profil d’une ou deux disciplines démontrées, sauvegardé depuis le dossier.",
+      "preuves": [
+        "app/game/ClanChroniclePanel.tsx#L132-L137",
+        "app/game/GameClient.tsx#L2374-L2382",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2389-L2395",
+        "tests/elite-mastery-v170.test.mjs"
+      ]
+    },
+    {
+      "ordre": 49,
+      "id": "R2-M041",
+      "titre": "Préparer la chasse solitaire",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 85,
+        "etat": "Préparation raccordée au dossier du clan",
+        "lien": "`quatzaRij.expeditions.solo`"
+      },
+      "fiche": 2397,
+      "etatSurMain": "RACCORDE",
+      "observation": "Râtelier, plan, marge choisie et départ du solo. Le registre du Quatza lie les étapes et la coque réellement possédée.",
+      "preuves": [
+        "app/game/ClanChroniclePanel.tsx#L138-L142",
+        "app/game/systems/quatzaRij.ts#L291-L299",
+        "app/game/systems/quatzaRij.ts#L463-L468",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2403-L2409"
+      ]
+    },
+    {
+      "ordre": 50,
+      "id": "R2-M042",
+      "titre": "Le Quatza-Rij solitaire",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 86,
+        "etat": "Combat, prélèvement et retour raccordés",
+        "lien": "`quatzaRij.expeditions.solo`"
+      },
+      "fiche": 2403,
+      "etatSurMain": "RACCORDE",
+      "observation": "Combat solo, repli persistant, remise des deux pièces avec rejeu dans la sauvegarde. La reconnaissance et les sons dédiés restent à produire.",
+      "preuves": [
+        "app/game/ClanChroniclePanel.tsx#L138-L142",
+        "app/game/systems/quatzaRij.ts#L175-L224",
+        "app/game/systems/quatzaRij.ts#L470-L484",
+        "tests/quatza-rij.test.mjs"
+      ]
+    },
+    {
+      "ordre": 51,
+      "id": "R2-M043",
+      "titre": "La reconnaissance Elite",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 87,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2411,
+      "etatSurMain": "NON_COMMENCE_OBSERVE",
+      "observation": "Le dossier enregistre déjà certaines preuves nécessaires (Quatza solo, maîtrise, reine). La reconnaissance devant témoins, son choix et l’épreuve réelle L-06 restent ouverts.",
+      "preuves": [
+        "app/game/ClanChroniclePanel.tsx#L138-L151",
+        "app/game/systems/rankRiteDossierV168.ts",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L183-L193",
+        "pull/171"
+      ]
+    },
+    {
+      "ordre": 52,
+      "id": "R2-M044",
+      "titre": "La coque d’un groupe",
+      "rang": "Elite",
+      "table": {
+        "ligne": 88,
+        "etat": "Inspection à bord partielle",
+        "lien": "`clanHullProjectV171`"
+      },
+      "fiche": 2421,
+      "etatSurMain": "PARTIEL_MISSION",
+      "observation": "Inspection des seuils avec deux témoins, conseil et choix de la coque liés au reçu personnel. Visite extérieure de cale sèche et effets propres restent ouverts.",
+      "preuves": [
+        "app/game/systems/clanHullProjectV171.ts#L59-L104",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2421-L2427",
+        "tests/clan-hull-project-v171.test.mjs"
+      ]
+    },
+    {
+      "ordre": 53,
+      "id": "R2-M045",
+      "titre": "Une porte, plusieurs haltes",
+      "rang": "Elite",
+      "table": {
+        "ligne": 89,
+        "etat": "Transfert entre seuils raccordé",
+        "lien": "`residenceV149.lastChoice`"
+      },
+      "fiche": 2429,
+      "etatSurMain": "RACCORDE",
+      "observation": "Un même objet, décroché et emballé, traverse deux vrais seuils. La décision rester ou déménager se sauvegarde.",
+      "preuves": [
+        "app/game/systems/residenceV149.ts#L169-L171",
+        "app/game/systems/residenceV149.ts#L234-L252",
+        "app/game/systems/residenceV149.ts#L616-L621",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2429-L2435"
+      ]
+    },
+    {
+      "ordre": 54,
+      "id": "R2-M046",
+      "titre": "Une mission vraiment collective",
+      "rang": "Elite",
+      "table": {
+        "ligne": 90,
+        "etat": "Escorte raccordée",
+        "lien": "`clanShipOperations`"
+      },
+      "fiche": 2437,
+      "etatSurMain": "RACCORDE",
+      "observation": "Deux rôles et postes vérifiés, escorte jouée jusqu’à la victoire et reçu relu après reprise. Les preuves navigateur fournies ouvrent sur la capacité de 7 personnes.",
+      "preuves": [
+        "app/game/systems/clanShipOperations.ts#L578-L615",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2437-L2443",
+        "actions/runs/44957466066/artifacts/14727749518",
+        "actions/runs/44957466066/artifacts/14728191923"
+      ]
+    },
+    {
+      "ordre": 55,
+      "id": "R2-M047",
+      "titre": "Ce que la guerre laisse au retour",
+      "rang": "Elite",
+      "table": {
+        "ligne": 91,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2445,
+      "etatSurMain": "NON_COMMENCE_OBSERVE",
+      "observation": "La visite du lieu transformé après bataille, avec un vétéran et la tâche de retour, n’a pas de raccord observé. Le reçu de M046 est un point d’entrée réel.",
+      "preuves": [
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2445-L2449",
+        "app/game/systems/clanShipOperations.ts#L660",
+        "pull/187"
+      ],
+      "chantierActif": "actes_vii_ix",
+      "etatDeLivraison": "Recette Chrome avant composition",
+      "reste": "Vérifier les deux issues dans la composition finale.",
+      "preuvesLivraison": [
+        "actions/runs/44994874573"
+      ]
+    },
+    {
+      "ordre": 56,
+      "id": "R2-M048",
+      "titre": "La branche qu’on ne possède pas",
+      "rang": "Elite",
+      "table": {
+        "ligne": 92,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2451,
+      "etatSurMain": "VOISIN",
+      "observation": "W-02 a trois étapes en branche distincte, dont observation ou duel réel et restituer/recevoir un objet. La mission d’aide à un groupe local de M048, son choix et son reçu restent ouverts.",
+      "preuves": [
+        "app/game/systems/warpEpochsV165.ts#L123-L145",
+        "app/game/systems/warpEpochsV165.ts#L464-L495",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2451-L2455"
+      ],
+      "etatDeLivraison": "Recette Chrome avant composition",
+      "reste": "Vérifier les deux issues dans la composition finale.",
+      "preuvesLivraison": [
+        "actions/runs/44995209730"
+      ]
+    },
+    {
+      "ordre": 57,
+      "id": "R2-M049",
+      "titre": "Former sans remplacer",
+      "rang": "Elite",
+      "table": {
+        "ligne": 93,
+        "etat": "Jouable dans le dossier adulte",
+        "lien": "Terrain, appuis et reçu de mentorat"
+      },
+      "fiche": 2457,
+      "etatSurMain": "RACCORDE",
+      "observation": "Terrain du novice, soutien et décision observés par le mentor et conservés. Accès Elite et honneur de carrière.",
+      "preuves": [
+        "app/game/ClanChroniclePanel.tsx#L153-L157",
+        "app/game/systems/elderMentoringV168.ts#L168-L216",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2457-L2461",
+        "tests/elder-mentoring-v168.test.mjs"
+      ]
+    },
+    {
+      "ordre": 58,
+      "id": "R2-M050",
+      "titre": "Un désaccord à résoudre sur le terrain",
+      "rang": "Elite",
+      "table": {
+        "ligne": 94,
+        "etat": "Jouable dans le dossier adulte",
+        "lien": "Traces, horaires ou passerelle et témoin"
+      },
+      "fiche": 2465,
+      "etatSurMain": "RACCORDE",
+      "observation": "Le décor enregistre les observations et les deux solutions, puis le témoin enregistre la décision.",
+      "preuves": [
+        "app/game/ClanChroniclePanel.tsx#L159-L164",
+        "app/game/GameClient.tsx#L2354-L2362",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2465-L2469"
+      ]
+    },
+    {
+      "ordre": 59,
+      "id": "R2-M051",
+      "titre": "Être reconnu Elder",
+      "rang": "Elite",
+      "table": {
+        "ligne": 95,
+        "etat": "Jouable dans le dossier adulte",
+        "lien": "Dépositions et engagement enregistré"
+      },
+      "fiche": 2473,
+      "etatSurMain": "RACCORDE",
+      "observation": "Dans les campagnes adultes admissibles, deux preuves, deux dépositions et responsabilité choisie puis reconnue. L’accès narratif par le prologue dépend de L-04 et M043.",
+      "preuves": [
+        "app/game/systems/elderAssemblyV168.ts#L54-L104",
+        "app/game/GameClient.tsx#L2384-L2391",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2473-L2477"
+      ]
+    },
+    {
+      "ordre": 60,
+      "id": "R2-M052",
+      "titre": "L’atelier qui fonctionne sans moi",
+      "rang": "Elder",
+      "table": {
+        "ligne": 96,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2485,
+      "etatSurMain": "NON_COMMENCE_OBSERVE",
+      "observation": "Atelier déjà mené par un PNJ, aide bornée, conduite rendue et reçu absents du périmètre observé.",
+      "preuves": [
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2485-L2489",
+        "app/game/ClanChroniclePanel.tsx#L153-L186"
+      ],
+      "chantierActif": "root"
+    },
+    {
+      "ordre": 61,
+      "id": "R2-M053",
+      "titre": "Un ancien terrain a changé",
+      "rang": "Elder",
+      "table": {
+        "ligne": 97,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2491,
+      "etatSurMain": "VOISIN",
+      "observation": "Environnement et activités de retour existent. Aucun rapprochement jouable des anciens relevés du même terrain et des changements actuels attestés.",
+      "preuves": [
+        "app/game/data.ts#L532-L1510",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2491-L2495"
+      ]
+    },
+    {
+      "ordre": 62,
+      "id": "R2-M054",
+      "titre": "La décision du successeur",
+      "rang": "Elder",
+      "table": {
+        "ligne": 98,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2497,
+      "etatSurMain": "VOISIN",
+      "observation": "Les jeunes/novices et le mentorat ont un terrain M049. Aucun ordre de mission réellement conçu par le successeur de M054 n’a été trouvé.",
+      "preuves": [
+        "app/game/systems/elderMentoringV168.ts#L159-L216",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2497-L2501"
+      ]
+    },
+    {
+      "ordre": 63,
+      "id": "R2-M055",
+      "titre": "L’épreuve de la longue mémoire",
+      "rang": "Elder",
+      "table": {
+        "ligne": 99,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2503,
+      "etatSurMain": "NON_COMMENCE_OBSERVE",
+      "observation": "Aucune épreuve liant trois lieux vécus, leurs conséquences comparées et une transmission démontrée n’a été trouvée.",
+      "preuves": [
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2503-L2507",
+        "app/game/systems/heritageV152.ts#L149-L170"
+      ]
+    },
+    {
+      "ordre": 64,
+      "id": "R2-M056",
+      "titre": "La reconnaissance Ancient",
+      "rang": "Elder",
+      "table": {
+        "ligne": 100,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2509,
+      "etatSurMain": "VOISIN",
+      "observation": "Le rite Ancient est déclaré dans la chronique et le legs Elder est jouable. Aucune cérémonie témoin liant les actes de la fiche au changement de rang n’a été trouvée.",
+      "preuves": [
+        "app/game/systems/clanChronicle.ts#L73-L76",
+        "app/game/systems/heritageV152.ts#L149-L170",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2509-L2513"
+      ]
+    },
+    {
+      "ordre": 65,
+      "id": "R2-M057",
+      "titre": "Le mausolée des chasses racontées",
+      "rang": "Ancient",
+      "table": {
+        "ligne": 101,
+        "etat": "Texte seul",
+        "lien": "voisin : mausolée"
+      },
+      "fiche": 2515,
+      "etatSurMain": "PARTIEL_MISSION",
+      "observation": "Le mausolée natif permet marche, piédestaux, accès par rang, statut DLC et examen/lecture sauvegardés. Le jalon Ancient et la version audio de la chronique restent ouverts.",
+      "preuves": [
+        "app/game/GameClient.tsx#L5275",
+        "app/game/Mausoleum.tsx#L42-L98",
+        "app/game/Mausoleum.tsx#L135-L145",
+        "app/game/systems/mausoleum.ts#L35-L76"
+      ]
+    },
+    {
+      "ordre": 66,
+      "id": "R2-M058",
+      "titre": "Entrer dans une chronique cinéma",
+      "rang": "Ancient",
+      "table": {
+        "ligne": 102,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2521,
+      "etatSurMain": "VOISIN",
+      "observation": "Le mausolée définit un adaptateur DLC et valide un point de retour séparé, avec registre d’adaptateurs vide. Aucun support de transition, choix des deux modes et chapitre cinéma lancé n’a été trouvé.",
+      "preuves": [
+        "app/game/systems/mausoleum.ts#L68-L86",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2521-L2525"
+      ]
+    },
+    {
+      "ordre": 67,
+      "id": "R2-M059",
+      "titre": "La nouvelle cohorte revient",
+      "rang": "Ancient",
+      "table": {
+        "ligne": 103,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2527,
+      "etatSurMain": "NON_COMMENCE_OBSERVE",
+      "observation": "Aucun retour jouable avec la nouvelle cohorte, support préparé et témoignage enregistré dans ce périmètre.",
+      "preuves": [
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2527-L2531",
+        "app/game/ClanChroniclePanel.tsx#L153-L186"
+      ]
+    },
+    {
+      "ordre": 68,
+      "id": "R2-M060",
+      "titre": "La longue chasse demeure",
+      "rang": "Ancient, épilogue",
+      "table": {
+        "ligne": 104,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2533,
+      "etatSurMain": "VOISIN",
+      "observation": "Le choix de fin propre aux voies et le legs existent. Aucun épilogue commun incarné dans le lieu actuel avec le dernier geste et reçu M060 n’a été trouvé.",
+      "preuves": [
+        "app/game/systems/originEndingsV170.ts#L39-L46",
+        "app/game/systems/originEndingsV170.ts#L120-L155",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2533-L2537"
+      ]
+    }
+  ],
+  "aventants": [
+    {
+      "pr": 182,
+      "titre": "Bible : la Terre, terrain de chasse (20 sites, paliers, Indice de Discrétion, ARGOS)",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/182",
+      "commit": "537e797a5f7c3ddcae285a9f6201958c4de22fdb",
+      "etat": "open",
+      "fusionnee": false,
+      "fusionGitPossible": true,
+      "controles": [
+        {
+          "nom": "Vercel Preview Comments",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/runs/137108276811"
+        },
+        {
+          "nom": "CodeRabbit",
+          "conclusion": "skipped",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/runs/137100572414"
+        },
+        {
+          "nom": "Exact C pixels, inherited qualifications and immutable A/B/R",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987296741/job/137100560365"
+        },
+        {
+          "nom": "Exact C pixels, inherited qualifications and immutable A/B/R",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987296731/job/137100560282"
+        },
+        {
+          "nom": "Native named mask candidates, source pins and workbook",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987296727/job/137100560267"
+        },
+        {
+          "nom": "Official-source mask candidates, source pins and workbook",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987296748/job/137100560171"
+        },
+        {
+          "nom": "Original A bytes, PHG B native pixels and paired workbook",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987296707/job/137100560155"
+        },
+        {
+          "nom": "Native P0 pixels, source pins and deterministic XLSX",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987296761/job/137100560067"
+        },
+        {
+          "nom": "regressions",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987296714/job/137100560034"
+        },
+        {
+          "nom": "Qualified source references, native A/B pixels and paired workbook",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987296686/job/137100559999"
+        }
+      ],
+      "deploiement": [
+        {
+          "nom": "Vercel",
+          "etat": "success",
+          "detail": "Deployment has completed",
+          "lien": "https://vercel.com/darknigthmares-projects/yautja-la-longue-chasse/HC4iVxeLGhYL8V9KAUTcNeq5TK5L"
+        }
+      ],
+      "fichiers": [
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+        "docs/campagne/TERRE_ACCUEIL_DIFFICULTE_SUCCES_20261122.md",
+        "docs/campagne/TERRE_FICHES_MISSIONS_20261122.md",
+        "docs/campagne/TERRE_GAMEPLAY_MISSIONS_20261121.md",
+        "docs/campagne/TERRE_MONDE_LEVEL_DESIGN_20261122.md",
+        "docs/campagne/TERRE_PRODUCTION_COMPLETE_20261121.md",
+        "docs/campagne/TERRE_PROMPTS_IMAGE_20261122.md",
+        "docs/campagne/TERRE_TERRAIN_DE_CHASSE_20261121.md"
+      ],
+      "observation": "Avenant documentaire pour la Terre, 20 sites et 54 fiches. L’ouverture officielle repose sur le retour validé de R2-M023. Le pilote T-CT-01A est un chantier séparé. Aucun fichier de runtime dans cette PR.",
+      "chantierActif": "terre_isles / T-CT-01A"
+    },
+    {
+      "pr": 185,
+      "titre": "Bible : mode The Isles, chasse en monde ouvert isométrique",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/185",
+      "commit": "5217130e64794f48f54a114fcdac5dc2c5f4b936",
+      "etat": "open",
+      "fusionnee": false,
+      "fusionGitPossible": true,
+      "controles": [
+        {
+          "nom": "regressions",
+          "conclusion": "failure",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987657898/job/137101721738"
+        },
+        {
+          "nom": "CodeRabbit",
+          "conclusion": "skipped",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/runs/137101668854"
+        },
+        {
+          "nom": "Qualified source references, native A/B pixels and paired workbook",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987657982/job/137101656995"
+        },
+        {
+          "nom": "Original A bytes, PHG B native pixels and paired workbook",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987657959/job/137101656897"
+        },
+        {
+          "nom": "Official-source mask candidates, source pins and workbook",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987657859/job/137101656758"
+        },
+        {
+          "nom": "Exact C pixels, inherited qualifications and immutable A/B/R",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987657894/job/137101656735"
+        },
+        {
+          "nom": "Native P0 pixels, source pins and deterministic XLSX",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987657877/job/137101656687"
+        },
+        {
+          "nom": "Native named mask candidates, source pins and workbook",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987657858/job/137101656615"
+        },
+        {
+          "nom": "Exact C pixels, inherited qualifications and immutable A/B/R",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44987657884/job/137101656488"
+        }
+      ],
+      "deploiement": [
+        {
+          "nom": "Vercel",
+          "etat": "failure",
+          "detail": "Deployment rate limited — retry in 24 hours.",
+          "lien": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+        }
+      ],
+      "fichiers": [
+        "docs/YAUTJA_TERRE_ISLES_SUIVI_20261122.xlsx",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+        "docs/campagne/ISLES_ACCUEIL_ECONOMIE_SUCCES_20261122.md",
+        "docs/campagne/ISLES_EXTENSION_METROPOLE_QUARANTAINE_20261122.md",
+        "docs/campagne/ISLES_FICHES_MISSIONS_20261122.md",
+        "docs/campagne/ISLES_MONDE_LEVEL_DESIGN_20261122.md",
+        "docs/campagne/ISLES_PRODUCTION_COMPLETE_20261121.md",
+        "docs/campagne/ISLES_PROMPTS_IMAGE_20261122.md",
+        "docs/campagne/MODE_THE_ISLES_20261121.md",
+        "docs/prototypes/ISLES_PROTOTYPE_ISOMETRIQUE_20261122.html"
+      ],
+      "observation": "Avenant The Isles, classeur Excel et prototype HTML Three.js pour Verdant. Le prototype est autonome, hors routes /game et hors sauvegarde campagne. Les régressions échouent sur un test de dialogue Clan Ship à ce head (1 213/1 214); Vercel est limité par quota.",
+      "preuveRegression": "actions/runs/44987657898/job/137101721738",
+      "echec": "tests/clan-ship-dialogue.test.mjs",
+      "chantierActif": "Aucun chantier Isles annoncé"
+    },
+    {
+      "pr": 171,
+      "titre": "Épreuves de rang Blooded, Elite, Elder (V168)",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/171",
+      "commit": "c904613de03b3e98146cd9ec8e114f9a579cf09a",
+      "etat": "open",
+      "fusionnee": false,
+      "fusionGitPossible": false,
+      "observation": "Les substituts Blooded, Elite et Elder proposés se trouvent dans une branche ouverte et conflictuelle. La lecture de la Bible et la scène Elder intégrée se fondent sur main. Les cérémonies exactes Blooded et Elite gardent leur chantier."
+    }
+  ],
+  "transverses": [
+    {
+      "id": "L-02_L-03_L-04",
+      "etat": "PARTIEL_MISSION",
+      "observation": "La Bible révisée sépare chasse Quatza sur le Homeworld, cérémonie de la cohorte avec masque puis pyramide contre les Kainde Amedha. Le combat Quatza actuel exige déjà Young Blood; V68 le reconnaît. La cérémonie L-03, les six salles, la reine captive et le rite Blooded doivent retrouver cet ordre sans enlever les anciens accès.",
+      "preuves": [
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L153-L175",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2958-L2962",
+        "app/game/systems/quatzaRij.ts#L291-L299",
+        "app/game/systems/campaignSoloV68.ts#L64-L68"
+      ]
+    },
+    {
+      "id": "SON_AMBIANCES_PLANETAIRES",
+      "etat": "PARTIEL_MISSION",
+      "observation": "Les huit ambiances planétaires ont un repli procédural et aucune source publiée au ref. Le vaisseau a une source WAV.",
+      "manquants": [
+        "jungle",
+        "ice",
+        "volcano",
+        "swamp",
+        "desert",
+        "ocean",
+        "fungal",
+        "ruins"
+      ],
+      "preuves": [
+        "public/audio/manifest.json",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2543-L2549"
+      ],
+      "chantierActif": "bible_transversale"
+    },
+    {
+      "id": "SON_MUSIQUES",
+      "etat": "PARTIEL_MISSION",
+      "observation": "MUS‑02 et MUS‑15 sont déjà des MP3 natifs. Les six autres contextes présents au manifeste et les autres morceaux de catalogue gardent leur propre chantier.",
+      "presents": [
+        {
+          "contexte": "ship",
+          "source": "/audio/music/ship/MUS-02-veille.mp3?v=22782bef14c6127c"
+        },
+        {
+          "contexte": "cradle-return",
+          "source": "/audio/music/cradle-return/MUS-15-retour.mp3?v=4ed54892d66a86a6"
+        }
+      ],
+      "contextesSansSource": [
+        "menu",
+        "galaxy",
+        "exploration",
+        "combat",
+        "boss",
+        "homeworld"
+      ],
+      "preuves": [
+        "public/audio/manifest.json",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2543-L2549"
+      ],
+      "chantierActif": "bible_transversale / MUS-01 selon disponibilité"
+    },
+    {
+      "id": "VFX_DANGERS",
+      "etat": "PARTIEL_MISSION",
+      "observation": "Les dangers ont une zone colorée avec anticipation, clignotement, contour et réaction. Les VFX distincts par biome listés par la Bible restent à qualifier ou réaliser.",
+      "preuves": [
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2551-L2553",
+        "app/game/HuntCanvas.tsx#L5595-L5610"
+      ]
+    },
+    {
+      "id": "DECORS_V19",
+      "etat": "PARTIEL_MISSION",
+      "observation": "Les compteurs du registre sont encore exactement 464/800. La plupart des objets cités par la Bible ont des descriptions et IDs, sans support visuel natif admis.",
+      "presentsParBiome": {
+        "jungle": 100,
+        "ice": 100,
+        "volcano": 54,
+        "swamp": 51,
+        "desert": 42,
+        "ocean": 39,
+        "fungal": 38,
+        "ruins": 40
+      },
+      "manquants": 336,
+      "preuves": [
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2555-L2568",
+        "app/game/environmentPropAvailabilityData.ts#L9",
+        "app/game/environmentPropCatalogue.ts#L388-L541"
+      ]
+    },
+    {
+      "id": "CHASSES_4_8_ENTREES_ET_BOSS",
+      "etat": "PARTIEL_MISSION",
+      "observation": "V157 donne des cartes et passages propres. Le Gardien a désormais une adaptation spécifique. Les autres extensions partagent le modèle 60/25 % avec effets distincts. Les boucles de traque et objectifs complets proposées par biome demeurent à qualifier ou raccorder.",
+      "preuves": [
+        "app/game/systems/huntExpansionLayoutsV157.ts",
+        "app/game/systems/huntSystems.ts#L2187-L2277",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L3000-L3012"
+      ]
+    },
+    {
+      "id": "LEURRE_BOSS",
+      "etat": "NON_COMMENCE_OBSERVE",
+      "observation": "Impulse audio mécanique en chasse ordinaire. L’appel de simulation du boss ne reçoit aucun événement de leurre; la règle par Apex reste ouverte.",
+      "preuves": [
+        "app/game/systems/huntSystems.ts#L1151-L1181",
+        "app/game/HuntCanvas.tsx#L9858-L9882",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L3014-L3016"
+      ]
+    },
+    {
+      "id": "ACHERON_VIDE",
+      "etat": "NON_COMMENCE_OBSERVE",
+      "observation": "Le code commun garde la trace sonore et olfactive. La détection par vibration/énergie, l’absence des deux propagations hors contact et les SFX étouffés restent ouverts.",
+      "preuves": [
+        "app/game/HuntCanvas.tsx#L6651-L6709",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L3018-L3020"
+      ]
+    },
+    {
+      "id": "GLOSSAIRE_V147",
+      "etat": "RACCORDE",
+      "observation": "Codex natif et recherche, source par terme et catégories canon/proposé. Enregistrements des clics et voix de chaque race restent un chantier distinct.",
+      "preuves": [
+        "app/game/GameClient.tsx#L6937",
+        "app/game/YautjaGlossaryV147.tsx",
+        "app/game/yautjaLanguageV147.ts#L16-L43",
+        "app/game/yautjaLanguageV147.ts#L109-L127"
+      ]
+    },
+    {
+      "id": "WARP_AUTRES_EPOQUES_ET_PROTOTYPE",
+      "etat": "PARTIEL_MISSION",
+      "observation": "W-02 et Tantalus 2204 ont une boucle native. W-01, W-03 à W-05, W-GB et l’arc de vol du prototype ont un cadre explicitement documenté. Aucune boucle jouable intégrée n’a été trouvée pour elles.",
+      "preuves": [
+        "app/game/systems/warpEpochsV165.ts#L64-L103",
+        "app/game/WarpEpochsPanelV165.tsx#L140-L171"
+      ]
+    },
+    {
+      "id": "FIN_DE_VOIE",
+      "etat": "PARTIEL_MISSION",
+      "observation": "Les choix de fin de voie Ox-M29 sont enregistrés. Le code garde endingRealized à false en attente des scènes Ox-M30. L’épilogue commun M060 se suit séparément.",
+      "preuves": [
+        "app/game/systems/originEndingsV170.ts#L39-L50",
+        "app/game/systems/originEndingsV170.ts#L138-L155",
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L777-L804"
+      ]
+    },
+    {
+      "id": "COOP_DE_CAMPAGNE",
+      "etat": "NON_COMMENCE_OBSERVE",
+      "observation": "Pas de preuve de la campagne hôte avec invités conservant leurs gains et leurs restrictions de rites dans les points recensés. Les modes de pratique Clan Wars sont distincts.",
+      "preuves": [
+        "docs/campagne/BIBLE_DE_CAMPAGNE.md#L816-L825",
+        "app/game/ClanWarMultiplayerPracticeV127.tsx",
+        "app/game/systems/clanWarMultiplayerV126.ts"
+      ]
+    },
+    {
+      "id": "FORGE_CARTE_RECOLTE_CANOPEE",
+      "etat": "PARTIEL_MISSION",
+      "observation": "Forge d’apparence et usure V172, trajets sauvegardés V159, principes de prélèvement V112 et parcours de canopée V112 sont des systèmes dans main. Leur présence est indépendante des cours Unblooded M007–014, du premier trajet M023 et de la présentation M038.",
+      "preuves": [
+        "app/game/hunterArmorWearV172.ts",
+        "app/game/systems/spaceRoutesV159.ts#L495-L515",
+        "app/game/systems/anatomyHarvestV112.ts",
+        "app/game/systems/canopyTraversalV112.ts",
+        "docs/campagne/AVENANT_SKINNING_CANOPEE_20261109.md"
+      ]
+    }
+  ],
+  "limites": [
+    "Le classement assure la couverture des 68 entrées de la table au ref. Les décisions hors table sont recensées quand un parcours ou un écart a pu être vérifié. Il ne remplace pas l’inventaire des dizaines de missions de chaque avenant Bible, l’audit artistique ou un rapport de test exécuté pour le ref.",
+    "Les tests cités sont les fichiers présents ou les artefacts existants. La lecture n’a pas réexécuté le jeu ni les suites. L’absence d’un raccord observé s’applique aux routes et écritures inspectées."
+  ],
+  "limitesActuelles": {
+    "totalPartiel": 9,
+    "exactSansRaccordObserve": 33,
+    "exactSansRaccordHorsQuatreChantiers": 29,
+    "partiellesHorsQuatreChantiers": 9
+  }
+}

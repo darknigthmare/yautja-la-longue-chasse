@@ -11,6 +11,8 @@ import { fixture, completeInterior, docking, ops, qa, saves } from '../tests/hel
 import { playShipAcquisitionV161 } from '../tests/helpers/ship-receipt-v161.mjs';
 
 const role = process.env.CLAN_COLLECTIVE_ROLE ?? 'field';
+const aftermathChoice = process.env.CLAN_WAR_RETURN_CHOICE;
+assert.ok(aftermathChoice === undefined || ['reconstruct', 'escort'].includes(aftermathChoice));
 assert.ok(['field', 'coordination'].includes(role));
 const out = resolve(process.env.CLAN_COLLECTIVE_OUTPUT ?? 'outputs/qa-collective-return');
 const commit = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
@@ -164,6 +166,46 @@ try {
   const tactical = panel.locator('[data-clan-space-report][data-collective-report-role="' + role + '"]');
   await tactical.waitFor({ state: 'visible' });
   await capture('tactical-report-' + role);
+  if (aftermathChoice) {
+    const tab = 'war-return';
+    const order = id => panel.locator('[data-war-return-order="' + id + '"]');
+    const field = panel.locator('[data-war-return-location]');
+    if (station !== 'hangar') {
+      await panel.locator('[data-clan-operations-tab="war-return"]').click();
+      assert.equal(await order('land').count(), 0);
+      await visit('hangar');
+      await open(tab);
+    } else {
+      await panel.locator('[data-clan-operations-tab="war-return"]').click();
+    }
+    for (const id of ['land', 'walk-to-veterans', 'meet-veterans', 'walk-to-bridge', 'inspect-bridge']) {
+      await durable(order(id));
+    }
+    assert.equal(await field.getAttribute('data-war-return-location'), 'bridge');
+    await capture('inspection-du-pont-' + aftermathChoice);
+    await durable(order(aftermathChoice));
+    const other = aftermathChoice === 'reconstruct' ? 'escort' : 'reconstruct';
+    assert.equal(await order(other).count(), 0);
+    const branch = aftermathChoice === 'reconstruct'
+      ? ['walk-to-depot', 'take-material', 'carry-to-bridge', 'anchor', 'test-crossing']
+      : ['walk-to-aid', 'ready-litter', 'escort-bend', 'escort-shelter', 'hand-over'];
+    await durable(order(branch[0]));
+    const halfway = (await read()).clanShipOperations.war;
+    await page.reload();
+    await enter();
+    await visit('hangar');
+    await open(tab);
+    assert.deepEqual((await read()).clanShipOperations.war, halfway);
+    for (const id of branch.slice(1)) await durable(order(id));
+    assert.equal(await field.getAttribute('data-war-return-location'), aftermathChoice === 'reconstruct' ? 'far-bank' : 'refuge');
+    if (aftermathChoice === 'reconstruct') assert.equal(await field.locator('[data-bridge-restored]').getAttribute('data-bridge-restored'), 'true');
+    await capture('tache-de-retour-' + aftermathChoice);
+    await durable(order('return-aboard'));
+    assert.equal(await field.getAttribute('data-war-return-completed'), 'true');
+    report.aftermath = (await read()).clanShipOperations.war;
+    assert.equal(report.aftermath.returnConsequenceSeen, true);
+    assert.equal(report.aftermath.escortRevision, receipt.completedRevision);
+  }
   await page.reload();
   await enter();
   await visit(station);
@@ -174,6 +216,13 @@ try {
   assert.match(await journal.innerText(), /Transport extrait.*7\/7/);
   const restored = await read();
   assert.deepEqual(restored.clanShipOperations.completedContracts.at(-1), receipt);
+  if (aftermathChoice) {
+    const aftermathReceipt = panel.locator('[data-war-return-receipt]');
+    assert.match(await aftermathReceipt.innerText(), aftermathChoice === 'reconstruct' ? /Passage rouvert/ : /Blessés remis à la relève/);
+    assert.deepEqual(restored.clanShipOperations.war, report.aftermath);
+    assert.equal(restored.profile.clanMarks, admitted.save.profile.clanMarks);
+    await capture('releve-consigne-' + aftermathChoice);
+  }
   assert.equal(restored.clanShipOperations.completedContracts.filter(entry => entry.contractId === receipt.contractId).length, 1);
   await capture('reloaded-chronicle-' + role);
   assert.deepEqual(report.errors, []);

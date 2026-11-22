@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { KeyboardEvent } from "react";
+import type { KeyboardEvent, ReactNode } from "react";
 import type { SaveGame } from "./types";
 import { shipForId, shipProfileAssetPath, type ShipId } from "./shipCatalogue";
 import type { ClanShipDockingState, ClanShipDockingAction, ClanShipRoomId } from "./systems/clanShipDocking";
@@ -38,6 +38,7 @@ export interface ClanShipHubProps {
   incidents?: ClanShipIncidentControlled;
   createSceneAudio?: () => SceneAudioPort | null;
   returnEscort?: ClanShipReturnEscortControlled;
+  elderWorkshop?: ReactNode;
 }
 
 type Room = { id: ClanShipRoomId; name: string; detail: string; action: string; service?: ClanShipService; number: string };
@@ -61,7 +62,7 @@ const STATUS = {
 } as const;
 const STEPS = ["Approche", "Amarrage", "À bord"];
 
-export default function ClanShipHub({ state, save, selectedShipId, suspended, temporarySession = false, onAction, onOperations, onHullProject, onService, onExit, onOpenSettings, companions, incidents, returnEscort, createSceneAudio }: ClanShipHubProps) {
+export default function ClanShipHub({ state, save, selectedShipId, suspended, temporarySession = false, onAction, onOperations, onHullProject, onService, onExit, onOpenSettings, companions, incidents, returnEscort, elderWorkshop, createSceneAudio }: ClanShipHubProps) {
   const rootRef = useRef<HTMLElement>(null);
   const primaryRef = useRef<HTMLButtonElement>(null);
   const [failure, setFailure] = useState<{ signature: string; message: string } | null>(null);
@@ -277,6 +278,7 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, te
       {aboard && operationsOpen && operations && onOperations && <ClanShipOperationsPanel
         state={operations} save={save} roomId={state.roomId} suspended={suspended} crewFocus={crewFocus} temporarySession={temporarySession}
         onAction={actOperations} onClose={closeOperations}
+        elderWorkshop={state.roomId === "armurerie" && !temporarySession ? elderWorkshop : null}
         onHullProject={onHullProject ? command => onHullProject(command, crewFocus) : undefined}
         onNavigate={roomId => { closeOperations(); setTargetRoomId(roomId); }}
         onClanWar={() => { if (!suspended && state.roomId === 'conseil') { closeOperations(); onService('clan-war'); } }}

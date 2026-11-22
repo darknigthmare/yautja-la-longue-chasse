@@ -16,16 +16,25 @@ import HomeworldCivilianV72 from './HomeworldCivilianV72';
 import { HOMEWORLD_STREET_DECOR_ART_V83, homeworldStreetDecorPolygonV83 } from './systems/homeworldStreetDecorV83';
 import { homeworldPortNativePropArtV84, homeworldPortNativePolygonV84 } from './systems/homeworldPortPublicComplexV84';
 import styles from './HomeworldCity.module.css';
+import returnStyles from './HomeworldReturnM039.module.css';
+import { HOMEWORLD_RETURN_CONTACTS_M039, type HomeworldReturnM039 } from './systems/homeworldReturnM039';
 
 /** Room coordinates are local unprojected ground coordinates, never district coordinates. */
-export default function HomeworldInteriorSurface({ room, activePointId, trophies = [], actorPosition }: {
+export default function HomeworldInteriorSurface({ room, activePointId, trophies = [], actorPosition, returnM039 }: {
   room: HomeworldInteriorV64; actorPosition: HomeworldGroundPointV64;
   activePointId: string | null; trophies?: readonly TrophyRecord[];
+  returnM039?: HomeworldReturnM039;
 }) {
   const displayed = room.buildingId === 'trophy-mausoleum' ? homeworldTrophyDisplays(trophies).slice(-8) : [];
   const exit = homeworldProjectGroundV64(room.exit);
   const trophySlots = homeworldInteriorTrophySlotsV64(room);
   const shell = homeworldInteriorShellV64(room);
+  const officerPost = HOMEWORLD_RETURN_CONTACTS_M039.officer;
+  const relayPoint = returnM039 && room.buildingId === officerPost.roomId
+    ? room.points.find(point => point.pointId === officerPost.pointId)
+    : null;
+  const relayPosition = relayPoint ? homeworldProjectGroundV64(relayPoint) : null;
+  const relayActive = returnM039?.phase === 'commissioned' || returnM039?.phase === 'reported';
   return <>
     <div className={styles.interiorFloorV64} data-interior-floor={room.buildingId}
       data-homeworld-monument-interior-v81={room.monumentLayoutV81?room.buildingId:undefined}
@@ -118,6 +127,11 @@ export default function HomeworldInteriorSurface({ room, activePointId, trophies
       const point = HOMEWORLD_POINTS.find(point => point.id === placement.pointId);
       return point ? <HomeworldPointVisualV64 key={point.id} point={{ ...point, x: placement.x, y: placement.y }} active={point.id === activePointId} /> : null;
     })}
+    {relayPosition && (
+      <span role="img" aria-label={relayActive ? 'Relais du quai en service' : 'Relais du quai hors service'}
+        data-homeworld-relay-m039={relayActive ? 'online' : 'offline'} className={returnStyles.relay}
+        style={{ left: relayPosition.x, top: relayPosition.y }} />
+    )}
     <div className={styles.interiorExitV64} data-homeworld-physical-exit={room.buildingId}
       style={{ left: exit.x, top: exit.y }}><i /><span>VERS LA CITÉ</span></div>
   </>;

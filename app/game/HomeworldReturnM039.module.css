@@ -1,0 +1,17 @@
+.relay {
+  position: absolute;
+  z-index: 2;
+  width: 12px;
+  height: 8px;
+  border: 2px solid #34231b;
+  border-radius: 4px;
+  background: #d88b55;
+  box-shadow: 0 0 7px #ed773d;
+  transform: translate(20px, -15px);
+  pointer-events: none;
+}
+
+.relay[data-homeworld-relay-m039="online"] {
+  background: #b3e18c;
+  box-shadow: 0 0 9px #a4eb7f;
+}
