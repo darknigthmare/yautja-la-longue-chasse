@@ -4,6 +4,8 @@ Nov 21, 2026 · @darknigthmare
 
 Liste de **tout ce qu'il faut créer** pour le mode [The Isles](MODE_THE_ISLES_20261121.md) : musique, sons, sprites isométriques, tuiles et textures, props, bâtiments, zones, PNJ, faune, IA, actions, histoire, missions principales et annexes, Chasse inversée, saisons, interface.
 
+Les missions, les cartes de Chasse inversée et les scènes sont écrites en entier dans [The Isles — Fiches de mission et scènes écrites](ISLES_FICHES_MISSIONS_20261122.md).
+
 **Règle de lecture.** Tout ce qui suit est *(proposé)*, sauf ce qui découle des décisions du mode. Le mode est en **3D isométrique sous three.js** : les personnages sont des modèles ou des sprites à **8 directions**, le monde est fait de **tuiles de 2 m** extrudées en volumes.
 
 | Préfixe | Contenu |
