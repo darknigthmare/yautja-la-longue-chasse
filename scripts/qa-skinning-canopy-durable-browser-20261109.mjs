@@ -22,7 +22,7 @@ const out=path.resolve(root,process.env.SKINNING_CANOPY_QA_OUTPUT??'outputs/qa-s
 const only=process.env.SKINNING_CANOPY_QA_CASE??'both';
 assert.ok(['both','field','canopy'].includes(only));
 await mkdir(out,{recursive:true});
-const hash=value=>createHash('sha256').update(typeof value==='string'||Buffer.isBuffer(value)?value:JSON.stringify(value)).digest('hex');
+const hash=value=>createHash('sha256').update(typeof value==='string'||ArrayBuffer.isView(value)?value:JSON.stringify(value)).digest('hex');
 const revision=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
 const dirty=execFileSync('git',['status','--porcelain'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(Boolean);
 const source=await readFile(path.join(root,'app/game/HuntCanvas.tsx'),'utf8');

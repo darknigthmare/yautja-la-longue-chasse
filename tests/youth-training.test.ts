@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { build } from 'esbuild';
 import { fileURLToPath } from 'node:url';
+import { YOUTH_MEDICOMP, youthMedicompCharges } from '../app/game/systems/youthMedicompV172.ts';
 import type { YouthState, YouthInput, YouthEnvironment, YouthReceipt } from '../app/game/systems/youthTraining';
 const bundle = await build({ entryPoints: [fileURLToPath(new URL('../app/game/systems/youthTraining.ts', import.meta.url))], bundle: true, write: false, format: 'esm', platform: 'node', target: 'es2022' });
 const api = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].text).toString('base64')) as typeof import('../app/game/systems/youthTraining');
@@ -266,4 +267,52 @@ test('corrupted KO and embedded-wall checkpoints are rejected instead of loading
     const jump = reach('dojo-jump').state;
     jump.player.x = 470;
     assert.equal(api.normalizeYouthTraining(jump), null);
+});
+
+test('R2-M013 requires physical shelter, spends one dose and resumes both routes across reloading', () => {
+    const original = reach('barracks').state;
+    const walk = (s: YouthState, x: number) => {
+        s = tick(s);
+        for (let k = 0; k < 300 && Math.abs(s.player.x - x) >= 8; k++) s = tick(s, { move: dir(x - s.player.x) });
+        assert.ok(Math.abs(s.player.x - x) < 8);
+        return s;
+    };
+    const interact = (s: YouthState) => tick(tick(s), { interact: true });
+    let entered = interact(walk(original, YOUTH_MEDICOMP.kitX));
+    assert.equal(entered.medicompV172?.stage, 'cover');
+    assert.equal(youthMedicompCharges(entered.medicompV172!), 3);
+    assert.equal(interact(walk(entered, YOUTH_MEDICOMP.alcoveX)).medicompV172?.stage, 'cover', 'Cannot use the kit before closing the screen');
+    for (const prepare of [false, true]) {
+        let s = entered;
+        if (prepare) s = interact(walk(s, YOUTH_MEDICOMP.exitX));
+        s = interact(walk(s, YOUTH_MEDICOMP.screenX));
+        assert.equal(s.medicompV172?.stage, 'ready');
+        s = interact(walk(s, YOUTH_MEDICOMP.alcoveX));
+        assert.equal(s.medicompV172?.stage, 'treating');
+        assert.equal(youthMedicompCharges(s.medicompV172!), 2);
+        s = advance(s, 10);
+        s = tick(s, { move: -1 });
+        assert.equal(s.medicompV172?.stage, 'resume');
+        assert.equal(s.medicompV172?.treatedTicks, 10);
+        s = api.normalizeYouthTraining(JSON.parse(JSON.stringify(s)))!;
+        assert.equal(youthMedicompCharges(s.medicompV172!), 2);
+        s = interact(walk(s, YOUTH_MEDICOMP.alcoveX));
+        s = advance(s, YOUTH_MEDICOMP.alertTick - 10);
+        assert.equal(s.medicompV172?.stage, 'alert');
+        s = api.normalizeYouthTraining(JSON.parse(JSON.stringify(s)))!;
+        if (!prepare) {
+            assert.equal(interact(s).medicompV172?.stage, 'alert', 'An unchecked exit must be visited');
+            s = interact(walk(s, YOUTH_MEDICOMP.exitX));
+        } else {
+            s = interact(s);
+        }
+        assert.equal(s.medicompV172?.route, prepare ? 'prepared' : 'reactive');
+        s = interact(walk(s, YOUTH_MEDICOMP.alcoveX));
+        s = advance(s, YOUTH_MEDICOMP.duration - YOUTH_MEDICOMP.alertTick);
+        assert.equal(s.medicompV172?.stage, 'complete');
+        assert.equal(youthMedicompCharges(s.medicompV172!), 2);
+        s = interact(walk(s, 680));
+        assert.equal(s.phase, 'rest');
+        assert.equal(api.normalizeYouthTraining(JSON.parse(JSON.stringify(s)))?.medicompV172?.stage, 'complete');
+    }
 });

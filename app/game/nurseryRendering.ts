@@ -1,4 +1,5 @@
 import { NURSERY_ARENA, type NurseryPresentation } from "./systems/nurseryPrologue";
+import { NURSERY_COHORT_STOPS, NURSERY_COHORT_RADIUS } from "./systems/nurseryCohortV172";
 import { NURSERY_CONTINUITY_V72 } from "./systems/nurseryContinuityV72";
 import { YOUTH_ART_MANIFEST } from "./youthArtManifest";
 import { homeworldCivilianArtV72, type HomeworldCivilianRoleV72 } from "./systems/homeworldIdentityV72";
@@ -208,6 +209,92 @@ function drawClanAudienceV72(ctx: CanvasRenderingContext2D, presentation: Nurser
     drawCeremonyCivilianV72(ctx, bank, role, x, y, 136, x > 430);
   }
 }
+function drawNurseryCohort(ctx: CanvasRenderingContext2D, presentation: NurseryPresentation, bank: NurseryArtBank, reducedMotion: boolean) {
+  const cohort = presentation.cohort;
+  if (!cohort) return;
+  const floor = NURSERY_ARENA.groundY;
+  const [, gate, harek, yena, tov, saar, exit] = NURSERY_COHORT_STOPS;
+
+  ctx.save();
+  ctx.fillStyle = "#220c05bf";
+  ctx.fillRect(0, floor + 23, NURSERY_ARENA.width, 52);
+
+  ctx.strokeStyle = "#8f6142";
+  ctx.lineWidth = 5;
+  ctx.beginPath();
+  ctx.moveTo(gate.x - 26, floor + 5); ctx.lineTo(gate.x - 26, floor - 43);
+  ctx.moveTo(gate.x + 26, floor + 5); ctx.lineTo(gate.x + 26, floor - 43);
+  for (const h of [19, 34]) {
+    ctx.moveTo(gate.x - 26, floor - h);
+    ctx.lineTo(gate.x + (cohort.steps >= 2 ? 26 : -2), floor - h - (cohort.steps >= 2 ? 0 : 9));
+  }
+  ctx.moveTo(yena.x - 34, floor + 3); ctx.lineTo(yena.x - 34, floor - 66);
+  ctx.lineTo(yena.x + 34, floor - 66); ctx.lineTo(yena.x + 34, floor + 3);
+  ctx.stroke();
+
+  ctx.strokeStyle = "#be9065";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  for (let i = 0; i < 6; i++) {
+    const x = yena.x - 30 + 12 * i;
+    ctx.moveTo(x, floor - 63); ctx.quadraticCurveTo(x + 6, floor - 29, x - 1, floor - 8);
+  }
+  for (let i = 1; i <= 4; i++) {
+    const y = floor - 66 + i * 11;
+    ctx.moveTo(yena.x - 31, y); ctx.quadraticCurveTo(yena.x, y + 9, yena.x + 33, y);
+  }
+  ctx.stroke();
+
+  ctx.fillStyle = "#573522";
+  ctx.fillRect(tov.x + 16, floor - 23, 27, 23);
+  ctx.strokeStyle = "#bd8354";
+  ctx.strokeRect(tov.x + 16, floor - 23, 27, 23);
+  ctx.beginPath(); ctx.moveTo(tov.x + 17, floor - 22); ctx.lineTo(tov.x + 42, floor - 1); ctx.stroke();
+  ctx.fillRect(exit.x - 18, floor - 17, 37, 17);
+  ctx.strokeRect(exit.x - 18, floor - 17, 37, 17);
+
+  const player = presentation.actors[0];
+  const poseTick = reducedMotion ? 0 : player.poseTick;
+  function actor(id: "player" | "rival", x: number, facing: -1 | 1, pose: NurseryArtPose, tint = "") {
+    const atlas = bank.manifest.actors[id][facing === 1 ? "right" : "left"];
+    const frame = nurseryClipFrame(atlas.clips[pose], reducedMotion ? 0 : poseTick);
+    const image = bank.images.get(atlas.src)!;
+    const contact = getSpriteContact(image, frame.rect, frame.pivot[1]);
+    const scale = NURSERY_ARENA.actorHeight / atlas.bodyHeight;
+    const left = x - frame.pivot[0] * scale;
+    const top = floor - (frame.pivot[1] - (contact?.offsetY ?? 0)) * scale;
+    drawActorContactShadow(ctx, x, floor, 13, 0);
+    ctx.save();
+    if (tint) ctx.filter = tint;
+    ctx.drawImage(image, ...frame.rect, left, top, frame.rect[2] * scale, frame.rect[3] * scale);
+    ctx.restore();
+  }
+  actor("rival", harek.x, -1, cohort.steps <= 2 && !reducedMotion ? "ready" : "idle");
+  actor("rival", yena.x, -1, cohort.steps <= 3 && !reducedMotion ? "ready" : "idle", "sepia(.38) hue-rotate(13deg)");
+  actor("player", tov.x, 1, "idle", "saturate(.48) brightness(.84)");
+  drawCeremonyCivilianV72(ctx, bank, "instructor", saar.x, floor, 122, true);
+  actor("player", cohort.x, cohort.facing, player.pose === "walk" && !reducedMotion ? "walk" : "idle");
+
+  const blade = bank.images.get(bank.manifest.blade.src)!;
+  const toolX = cohort.steps === 0 ? NURSERY_COHORT_STOPS[0].x : cohort.x + 16 * cohort.facing;
+  const toolY = cohort.steps === 0 ? floor - 12 : floor - 43;
+  const toolHeight = 20;
+  const toolWidth = toolHeight * blade.width / blade.height;
+  ctx.drawImage(blade, toolX - toolWidth / 2, toolY, toolWidth, toolHeight);
+
+  ctx.font = "600 13px system-ui, sans-serif";
+  ctx.textAlign = "center";
+  for (const [index, stop] of NURSERY_COHORT_STOPS.entries()) {
+    const optional = index === 2 || index === 3;
+    const available = index === cohort.steps || cohort.steps === 6 && !cohort.choice && optional;
+    const nearby = available && Math.abs(stop.x - cohort.x) <= NURSERY_COHORT_RADIUS;
+    ctx.fillStyle = nearby ? "#fff3c5" : available ? "#ffd08a" : "#b8a088";
+    ctx.beginPath(); ctx.arc(stop.x, floor + 12, nearby ? 6 : 3.5, 0, Math.PI * 2); ctx.fill();
+    ctx.fillText(stop.label, stop.x, floor + 44);
+  }
+  ctx.restore();
+}
+
 /** Younglings and the Unblooded have native directions. Original clan residents
  * may mirror their one facing; no adult rig substitutes the child fighters. */
 export function drawNurseryScene(ctx: CanvasRenderingContext2D, presentation: NurseryPresentation, bank: NurseryArtBank | null, reducedMotion: boolean) {
@@ -219,6 +306,12 @@ export function drawNurseryScene(ctx: CanvasRenderingContext2D, presentation: Nu
   if (presentation.camera.shot === "arena") {
     if (!reducedMotion) ctx.filter = `blur(${presentation.camera.blur * 12}px)`;
     backdrop(ctx, scene("arena"));
+    if (presentation.cohort) {
+      ctx.filter = "none";
+      drawNurseryCohort(ctx, presentation, bank, reducedMotion);
+      ctx.restore();
+      return;
+    }
     const blade = images.get(manifest.blade.src)!;
     const bladeHeight = 20, bladeWidth = bladeHeight * blade.width / blade.height;
     if (presentation.groundBlade.visible) {

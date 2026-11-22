@@ -8,13 +8,14 @@ import { MISSIONS } from "./data";
 import {
   WARP_BRANCHES_V165, WARP_COMPONENTS_V165, WARP_PROTOTYPE_ARC_V165, WARP_W02_CONTRACTS_V165, WARP_W02_STEPS_V165,
   W02_HUNT_BASE_MISSION_ID_V165, WARP_W02_BONSHO_V165, WARP_W02_TERRACE_ALERT_V165,
-  applyW02HuntResultV165, branchVisitV165, canLaunchW02HuntV165, canReturnFromWarpV165,
+  actWarpVillageV165, applyW02HuntResultV165, branchVisitV165, canLaunchW02HuntV165, canReturnFromWarpV165,
   createWarpEpochsV165, departWarpV165, evaluateWarpDepartureV165, installWarpModuleV165, normalizeWarpEpochsV165,
   resolveW02StepV165, returnFromWarpV165, selectWarpBranchV165, startWarpCommonQuestV165, verifyWarpComponentV165,
-  warpAccessContextFromSaveV165, warpConditionsV165, warpW02HuntMissionV165,
+  warpAccessContextFromSaveV165, warpConditionsV165, warpVillageRankAllowed, warpW02HuntMissionV165,
   type WarpEpochsStateV165, type WarpUpdateV165,
 } from "./systems/warpEpochsV165";
 import { mergeLegacyTantalusV167 } from "./systems/tantalusV164";
+import { warpVillageView, type WarpVillageOrder, type WarpVillageRecord } from "./systems/warpVillageR2M048";
 import TantalusPanelV164 from "./TantalusPanelV164";
 import styles from "./WarpEpochsPanelV165.module.css";
 
@@ -29,6 +30,30 @@ export interface WarpEpochsPanelV165Props {
    * dans `state` et doit être effacé dans la même écriture. */
   onPersist(state: WarpEpochsStateV165, clearLegacyTantalus?: boolean): boolean;
   onClose(): void;
+}
+
+function WarpVillage({ record, inBranch, eligible, onOrder }: {
+  record: WarpVillageRecord | undefined;
+  inBranch: boolean;
+  eligible: boolean;
+  onOrder: (order: WarpVillageOrder) => void;
+}) {
+  const view = warpVillageView(record?.orders ?? []);
+  if (!inBranch && !record) return null;
+  const stage = !record || record.orders.length < 2 ? "Reconnaissance" : record.orders.length < 4 ? "Passage" : "Rassemblement";
+  return <article className={styles.section} aria-labelledby="warp-village-title" data-warp-village
+    data-warp-village-place={view.location} data-warp-village-completed={view.complete} data-warp-village-choice={view.choice}>
+    <h4 id="warp-village-title">La branche qu’on ne possède pas</h4>
+    <p>Hameau des Cèdres · {view.complete ? "Trajet consigné" : stage}</p>
+    {inBranch ? <><h5>{view.site.name}</h5><p>{view.site.ground}</p></> :
+      !view.complete && <p>Reprends le relevé lors de ton prochain voyage vers W-02.</p>}
+    {(inBranch || view.complete) && <p aria-live="polite">{view.note}</p>}
+    {inBranch && !eligible && !view.complete && <p className={styles.missing}>Une expédition Elite peut reprendre ce relevé.</p>}
+    {inBranch && !view.complete && <div className={styles.actions}>
+      {view.options.map(option => <button key={option.id} type="button" disabled={!eligible}
+        data-warp-village-order={option.id} onClick={() => onOrder(option.id)}>{option.label}</button>)}
+    </div>}
+  </article>;
 }
 
 export default function WarpEpochsPanelV165({ save, shipContext = { personalShipAvailable: false }, onPersist, onClose }: WarpEpochsPanelV165Props) {
@@ -148,6 +173,8 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
     <div className={styles.section} data-warp-w02 data-visits={w02.visits}>
       <h3>W-02 · Japon féodal, 1629</h3>
       <p>Visites : {w02.visits} · morts dans la branche : {w02.deadIds.length + w02.localKills} · objets prélevés : {w02.takenObjectIds.length}{w02.alertedPassages.length ? " · passages alertés : " + w02.alertedPassages.join(", ") : ""}</p>
+      <WarpVillage record={w02.r2M048} inBranch={inW02} eligible={warpVillageRankAllowed(save)}
+        onOrder={order => { apply(actWarpVillageV165(state, save, order)); }} />
       <h4>Mini-arc (fiches V6 WARP-M16 → M18, rattachement proposé)</h4>
       {WARP_W02_STEPS_V165.map(step => {
         const done = w02.steps[step.id];

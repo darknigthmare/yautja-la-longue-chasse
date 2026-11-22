@@ -1,0 +1,32 @@
+.workshop {
+  display: grid;
+  gap: .7rem;
+  margin-block: 1rem;
+  padding: 1rem;
+  border: 1px solid #896841;
+  border-radius: .65rem;
+  background: #211b16;
+  color: #fcf1de;
+}
+
+.workshop h3,
+.workshop p {
+  margin: 0;
+}
+
+.workbench {
+  display: grid;
+  gap: .35rem;
+  padding: .75rem;
+  background: #34271e;
+}
+
+.workbench meter {
+  width: min(100%, 16rem);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+}
