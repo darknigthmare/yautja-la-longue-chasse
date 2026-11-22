@@ -6,6 +6,8 @@ Liste de **tout ce qu'il faut créer** pour les chasses sur Terre : musique, son
 
 Documents de référence : [Terre — Le Terrain de Chasse](TERRE_TERRAIN_DE_CHASSE_20261121.md) (avenant, décisions, fiches des sites) et [Terre — Gameplay des missions](TERRE_GAMEPLAY_MISSIONS_20261121.md) (boucle jouable, systèmes).
 
+Les contrats et les scènes sont écrits en entier dans [Terre — Fiches de mission et scènes écrites](TERRE_FICHES_MISSIONS_20261122.md).
+
 **Règle de lecture.** Tout ce qui suit est *(proposé)*, sauf ce qui découle des décisions déjà prises. « Réutiliser » signale un élément déjà présent dans le dépôt. Les identifiants suivent les conventions de la bible (MUS-) et ajoutent des préfixes propres à la Terre :
 
 | Préfixe | Contenu |
