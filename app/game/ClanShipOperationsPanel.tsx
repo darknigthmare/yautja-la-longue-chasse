@@ -20,6 +20,8 @@ import { selectClanShipCrewDialogue, type ClanShipCrewDialogueContext } from './
 import { clanShipDialogue } from './systems/clanShipDialogue';
 import { useMenuGamepad } from './useMenuGamepad';
 import ClanHullProjectPanel from './ClanHullProjectPanel';
+import ClanWarReturnR2M047Panel from './ClanWarReturnR2M047Panel';
+import { warReturnView } from './systems/warReturnR2M047';
 import { canReviewClanHullProject, type ClanHullProjectCommandV171, type ClanHullProjectResponseV171 } from './systems/clanHullProjectV171';
 import styles from './ClanShipOperationsPanel.module.css';
 
@@ -36,11 +38,11 @@ interface Props {
   onNavigate: (roomId: ClanShipRoomId) => void;
   onClanWar: () => void;
 }
-type Tab = 'post' | 'contracts' | 'crew' | 'journal' | 'project';
+type Tab = 'post' | 'contracts' | 'crew' | 'journal' | 'project' | 'war-return';
 const TABS: { id: Tab; label: string }[] = [
   { id: 'post', label: 'Poste & mandat' }, { id: 'contracts', label: 'Opérations' },
   { id: 'crew', label: 'Équipage' }, { id: 'journal', label: 'Chronique' },
-  { id: 'project', label: 'Projet collectif' },
+  { id: 'project', label: 'Projet collectif' }, { id: 'war-return', label: 'Retour du front' },
 ];
 const KINDS = { onboarding: 'Accueil du clan', interior: 'Mission à bord', field: 'Chasse de clan', space: 'Opération spatiale' };
 const PHASES = {
@@ -73,6 +75,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
   const selectionAccess = selection ? evaluateClanShipContract(state, selection.id, save) : null;
   const atCouncil = roomId === 'conseil';
   const completed = new Set(state.completedContracts.map(receipt => receipt.contractId));
+  const warReturnAvailable = !temporarySession && completed.has(CLAN_SHIP_COLLECTIVE_ID);
   const availableCrew = availableClanResidenceCrew(save);
   const collectivePosts = collective ? clanResidenceCrewPostRooms(save) : null;
   useMenuGamepad(rootRef, !suspended, 'clan-ship-operations', onClose);
@@ -200,10 +203,18 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
         <button ref={closeRef} type="button" className={styles.close} disabled={suspended} data-clan-operations-close onClick={onClose}>Retour au pont <span aria-hidden="true">×</span></button>
       </header>
       <nav className={styles.tabs} aria-label="Dossiers du Clan Ship">
-        {TABS.filter(entry => entry.id !== 'project' || projectAvailable).map(entry => <button key={entry.id} type="button" aria-pressed={tab === entry.id} disabled={suspended}
+        {TABS.filter(entry => (entry.id !== 'project' || projectAvailable) &&
+          (entry.id !== 'war-return' || warReturnAvailable)).map(entry => <button key={entry.id} type="button" aria-pressed={tab === entry.id} disabled={suspended}
           data-clan-operations-tab={entry.id} onClick={() => { setTab(entry.id); setFeedback(''); }}>{entry.label}</button>)}
       </nav>
       <div className={styles.content}>
+        {tab === 'war-return' && warReturnAvailable && (roomId === 'hangar' ? <ClanWarReturnR2M047Panel
+          war={state.war} blocked={activeContract !== null} disabled={suspended}
+          onOrder={order => { act({ type: 'war-return', order, expectedRevision: state.revision }); }} /> :
+          <section className={styles.step}><h3>Ce que la guerre laisse au retour</h3>
+            <p>La navette et le relevé de la Passe des Cendres se trouvent au hangar.</p>
+            {routeButton('hangar', 'Rejoindre la navette au hangar')}
+          </section>)}
         {tab === 'project' && projectAvailable && onHullProject && <ClanHullProjectPanel
           save={save} roomId={roomId} crewFocus={crewFocus} onAction={onHullProject}
           onNavigate={onNavigate} onContracts={() => setTab('contracts')} onClose={onClose}
@@ -335,6 +346,9 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
                   ? <p data-collective-completed>{receipt.proof.collective.role === 'field' ? 'Terrain' : 'Coordination'} · Transport extrait · {receipt.proof.collective.checkedNpcIds.length + 1}/{receipt.proof.collective.capacity} postes affectés</p>
                   : <p>{KINDS[receipt.proof.kind]} · récompense déjà attribuée</p>}</div>
             </li>)}</ol> : <p>Aucun dossier achevé. L’accueil du bord ouvre le premier chapitre.</p>}
+            {state.war?.returnConsequenceSeen && <p className={styles.notice} data-war-return-receipt>
+              Passe des Cendres · {warReturnView(state.war.orders).choice === 'reconstruct' ? 'Passage rouvert' : 'Blessés remis à la relève'}
+            </p>}
           </section>
           <section className={styles.lore}><span className={styles.eyebrow}>REPÈRES DE LORE</span><h3>La doctrine de ce clan</h3>
             <p>Le rite initiatique, le rôle d’un Ancien et les projections à bord s’appuient sur <cite>Alien vs. Predator</cite>. Les affrontements entre vaisseaux apparaissent aussi dans <cite>The Predator</cite>.</p>

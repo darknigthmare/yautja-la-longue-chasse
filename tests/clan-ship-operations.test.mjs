@@ -623,6 +623,7 @@ test('collective escort checks real postings, applies role-specific orders and s
   for (const npc of ops.CLAN_SHIP_RECRUITS) state = act(state, 'recruit', { npcId: npc.id }, npc.roomId, save).state;
   assert.equal(ops.evaluateClanShipContract(state, ops.CLAN_SHIP_COLLECTIVE_ID, { ...save, clanHullProjectV171: null }).allowed, false);
   const baseline = state, all = baseline.recruitedNpcIds;
+  denied(baseline, command(baseline, 'war-return', { order: 'land' }), context('hangar', save), 'escort-required');
   const orders = ['scan', 'manoeuvre', 'brace', 'brace', 'extract'];
   for (const role of ['field', 'coordination']) {
     state = accept(baseline, ops.CLAN_SHIP_COLLECTIVE_ID, save);
@@ -685,6 +686,46 @@ test('collective escort checks real postings, applies role-specific orders and s
     assert.match(renderPost('conseil'), new RegExp(`data-collective-report-role="${role}"`));
     if (role === 'field') assert.match(renderPost('hangar'), /data-collective-report-role="field"/);
     else assert.doesNotMatch(renderPost('hangar'), /data-collective-report-role=/);
+    const sourceState = state;
+    const order = (id, roomId = 'hangar', expectedRevision = state.revision) =>
+      ops.actClanShipOperations(state, { type: 'war-return', order: id, expectedRevision }, context(roomId, save));
+    assert.equal(order('land', 'conseil').reason, 'wrong-room');
+    assert.equal(order('inspect-bridge').reason, 'war-return-order');
+    const choice = role === 'field' ? 'reconstruct' : 'escort';
+    const branch = choice === 'reconstruct'
+      ? ['walk-to-depot', 'take-material', 'carry-to-bridge', 'anchor', 'test-crossing']
+      : ['walk-to-aid', 'ready-litter', 'escort-bend', 'escort-shelter', 'hand-over'];
+    const aftermath = ['land', 'walk-to-veterans', 'meet-veterans', 'walk-to-bridge', 'inspect-bridge', choice, ...branch, 'return-aboard'];
+    for (const id of aftermath) {
+      const result = order(id);
+      assert.ok(result.accepted, result.message);
+      assert.equal(result.clanMarksReward, 0);
+      state = result.state;
+      assert.equal(state.war.returnConsequenceSeen, id === 'return-aboard');
+      const roundTrip = saves.parseSaveImport(saves.exportSave({ ...save, clanShipOperations: state }));
+      assert.equal(roundTrip.failure, null);
+      assert.deepEqual(roundTrip.save.clanShipOperations.war, state.war);
+      state = roundTrip.save.clanShipOperations;
+      if (id === choice) {
+        const other = choice === 'reconstruct' ? 'escort' : 'reconstruct';
+        assert.equal(order(other).reason, 'war-return-order');
+        assert.equal(order(branch[0], 'hangar', state.revision - 1).reason, 'stale-revision');
+      }
+    }
+    assert.deepEqual(state.war, { escortRevision: last.completedRevision, departureRevision: sourceState.revision + 1,
+      orders: aftermath, returnConsequenceSeen: true });
+    assert.deepEqual(state.completedContracts, sourceState.completedContracts);
+    assert.equal(order('return-aboard').reason, 'war-return-order');
+    for (const tamper of [
+      war => { war.orders[1] = 'hand-over'; },
+      war => { war.escortRevision--; },
+      war => { war.departureRevision = last.completedRevision; },
+      war => { war.returnConsequenceSeen = false; },
+    ]) {
+      const tampered = structuredClone({ ...save, clanShipOperations: state });
+      tamper(tampered.clanShipOperations.war);
+      assert.equal(saves.parseSaveImport(JSON.stringify(tampered)).failure, 'invalid-save');
+    }
     const damaged = structuredClone(valid);
     damaged.clanShipOperations.completedContracts.at(-1).proof.collective.checkedNpcIds.pop();
     assert.equal(saves.parseSaveImport(JSON.stringify(damaged)).failure, 'invalid-save');
