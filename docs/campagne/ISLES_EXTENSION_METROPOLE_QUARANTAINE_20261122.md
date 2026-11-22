@@ -341,6 +341,9 @@ Un long ponton en bois sur pilotis, au bout de la plage d'Eastbank, couvert d'un
 - **Légendaire :** **Cendre**, un lion à crinière grise né dans les ruines.
 
 ### 10.7 Missions de Grayhaven
+
+Fiches complètes, nuit de 2003 heure par heure, personnages et jugement : [Grayhaven — fiches de mission et récit](ISLES_GRAYHAVEN_FICHES_20261122.md).
+
 | ID | Mission | Contenu |
 | --- | --- | --- |
 | I-GH-01 | **Le mur** | entrer dans la zone sans alerte |

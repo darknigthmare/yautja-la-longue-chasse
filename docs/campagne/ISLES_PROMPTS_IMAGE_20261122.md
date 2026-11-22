@@ -88,7 +88,7 @@ Gabarit : **GI-ROT**.
 | I-PNJ-15 | Kaz Lenk | `A prison riot leader, forties, orange jumpsuit tied at the waist, tattoos, makeshift weapon then a guard's rifle.` |
 | I-PNJ-16 | Sœur-de-Pierre | `A very old female alien hunter, grey mottled skin, long white dreadlocks with stone beads, ceremonial robes over ancient armour, carved staff, no mask.` (joindre les planches V3) |
 | I-PNJ-17 | Vash'Tar (archives, 1997) | `An alien hunter with sand-coloured armour and red clan markings, filmed on grainy 1997 video in a savanna, seen from a distance.` |
-| I-PNJ-18 | Mara la Grise | `A scavenger queen of a quarantined ruined city, forties, patched gas mask pushed up, grey ash on her clothes, armoured coat made of road signs, shotgun, a necklace of scavenged objects.` |
+| I-PNJ-18 | Mara la Grise | `A scavenger queen of a quarantined ruined city, early thirties, patched gas mask pushed up, grey ash on her clothes, armoured coat made of road signs, shotgun, a necklace of scavenged objects.` |
 
 ### Légendaires
 | ID | Nom | Prompt (GI-ROT) |
