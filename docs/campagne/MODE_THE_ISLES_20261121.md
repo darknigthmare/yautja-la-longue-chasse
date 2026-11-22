@@ -574,9 +574,9 @@ Comme les ponts de GTA III, les îles s'ouvrent par groupes. **Décision :** la 
 | 1 | Verdant, The Shallows, Tallgrass | réputation 3 + sabotage des bouées du sud |
 | 2 | + Saltmarsh, Redmesa, Hollowpine | réputation 5 + sabotage du radar d'Ember |
 | 3 | + Ember, Calder, Eastbank, îlots | réputation 7 + coupure des relais de Calder |
-| 4 | + Frost Isle | réputation 8 + fin de l'arc Hale |
-| 5 | + **Grayhaven** (révision du 22 novembre) | réputation 9 |
-| 6 | + Ironhook | réputation 10 : siège d'Ironhook |
+| 4 | + Frost Isle (ouverte par le sabotage du radar, I-MP-06) | réputation 9 + fin de l'arc Hale (I-MP-08, sur Frost Isle) |
+| 5 | + **Grayhaven** (révision du 22 novembre) | réputation 10 |
+| 6 | + Ironhook | siège d'Ironhook (réputation 10, après Grayhaven ou en parallèle) |
 
 En ligne, une session prend l'ouverture de l'**hôte** ; les invités gardent leur propre progression.
 
