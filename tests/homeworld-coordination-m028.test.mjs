@@ -18,6 +18,7 @@ const workshop = { roomId: system.COORDINATION_WORKSHOP_M028.roomId, pointId: nu
 
 function prepareCampaign() {
   let save = defaultSave("2026-11-22T10:00:00.000Z");
+  save.settings.difficultyId = "hunter";
   const ship = "classic-predator-spaceship";
   const context = { personalShipId: ship, ownedShipIds: [ship] };
   for (const mission of MISSIONS) Object.assign(save.missionProgress[mission.id], { status: "completed", attempts: 1, completions: 1 });
@@ -28,7 +29,7 @@ function prepareCampaign() {
   }
   apply({ type: "prepare" });
   apply({ type: "depart" });
-  let run = cradle.createBuriedCradleRun(cradle.createBuriedCradleProgress(), 0);
+  let run = cradle.createBuriedCradleRun(cradle.createBuriedCradleProgress(), 1);
   run.player.x = 156;
   run.player.y = 508;
   run = cradle.stepBuriedCradle(run, { interactPressed: true }, 1 / 60).run;
