@@ -17,6 +17,8 @@ jobs:
           sparse-checkout: |
             /scripts/generate-menu-theme-mus01.mjs
             /public/audio/music/menu/
+      - name: Install the Vorbis encoder
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - name: Render, verify and record exact delivery
         run: |
           set -euo pipefail
