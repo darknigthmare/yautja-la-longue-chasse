@@ -460,10 +460,42 @@ Pour chaque île : ce qui **s'ajoute** aux structures, à la faune et aux PNJ d�
 | PNJ | métropole (environ 30 variantes de plus), Maple Hollow (familles, enfants, retraités), forains, supporters, fermiers, skieurs, charognards (4), Mara la Grise, les Restés |
 | Faune | animaux de ferme, faune de la métropole, faune de montagne complétée, éléphants, girafes, rhinocéros, lions de Grayhaven, chiens errants, Cendre |
 | Son | ambiances métropole (Lumen Square, métro, stade, fête foraine), Maple Hollow (jour, nuit), Grayhaven (vent dans les ruines, compteur de contamination, silence du point zéro) |
-| Musique | **MUS-124 Métropole de nuit**, **MUS-125 Gull Pier**, **MUS-126 Maple Hollow**, **MUS-127 Grayhaven**, **MUS-128 Le point zéro** (prompts à rédiger dans le même format) |
+| Musique | MUS-124 → MUS-128 (section 13.1) |
 | Systèmes | métro (rames, horaires, coupures de courant), autoroute (trafic dense), stades et événements (foule), contamination, ruines (effondrements scriptés) |
 
 ---
+
+### 13.1 Musique de l'extension
+
+**MUS-124 — Métropole de nuit** · Calder, Midtown et Downtown la nuit · 3:00 · 94 BPM · Do mineur · boucle.
+
+```text
+Instrumental, no vocals. Night loop for a huge coastal metropolis seen from skyscraper rooftops by a cloaked alien hunter. 94 BPM, C minor. Deep synth bass, slow broken-beat drums, distant sirens and subway rumble as texture, glassy neon pads, a muted trumpet line far away, the four-note descending clan motif on low brass. Vast, lonely, electric. Two layers: calm and stalking. Seamless loop.
+```
+
+**MUS-125 — Gull Pier** · ponton et fête foraine · 2:30 · 108 BPM · Fa majeur vers Fa mineur · boucle.
+
+```text
+Instrumental loop for an old seaside pier with a wooden roller coaster and a Ferris wheel. 108 BPM. Calm layer: a slightly out-of-tune calliope and carousel organ in F major, waves, gulls. Stalking layer: the same melody slowed and detuned in F minor, creaking wood, low drone, the clan motif hidden in the organ. Nostalgic turning eerie. Seamless loop.
+```
+
+**MUS-126 — Maple Hollow** · quartier résidentiel · 2:30 · 84 BPM · Sol majeur vers Sol mineur · boucle.
+
+```text
+Instrumental loop for a quiet American suburb with lawns and porches. 84 BPM. Calm layer: warm acoustic guitar, soft piano, sprinklers and distant dogs, G major. Stalking layer: the same chords turned minor, muted heartbeat bass, wind chimes, a low horn with the four-note clan motif. Peaceful surface, something watching. Seamless loop.
+```
+
+**MUS-127 — Grayhaven** · zone de quarantaine · 3:00 · 62 BPM · atonal vers Ré mineur · boucle.
+
+```text
+Instrumental ambient loop for a quarantined island city destroyed twenty years ago. 62 BPM. Wind through broken windows, distant creaking metal, a Geiger-like crackle used as rhythm, slow detuned strings, a broken music box, low choir pads without words, the four-note clan motif played once on a lonely horn. Grief, emptiness, danger. Seamless loop.
+```
+
+**MUS-128 — Le point zéro** · cratère et masque de Vash'Tar · 3:30 · 50 BPM · Ré mineur.
+
+```text
+Instrumental elegy for an alien hunter who destroyed a city with his own death, heard at the bottom of the crater. 50 BPM, D minor. Near silence, a deep sub drone, slow single taiko hits, a solo cello carrying the four-note clan motif, then a wordless choir rising and a full brass statement before returning to wind. Tragic, solemn, unresolved.
+```
 
 ## 14. Décisions du 22 novembre 2026
 

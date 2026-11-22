@@ -30,6 +30,7 @@ Suite de l'[Inventaire complet de production](ISLES_PRODUCTION_COMPLETE_20261121
 | 1990 | rachète une partie de l'archipel ; fonde **Halcyon**, réserve de chasse pour clients fortunés |
 | 1997 | ses caméras filment un Yautja sur Tallgrass. Il garde les images pour lui |
 | 1998–2008 | il fait abattre des braconniers qui entrent sur ses terres ; garde leurs crânes. Sa propre « salle des trophées » |
+| 2003 | ses mercenaires traquent le même Yautja (**Vash'Tar**) sur Grayhaven ; encerclé à Ashgrove, il s'autodétruit ; l'île est mise en quarantaine. Hale fait croire à un accident ([extension](ISLES_EXTENSION_METROPOLE_QUARANTAINE_20261122.md), section 10) |
 | 2009 | faillite d'Halcyon ; les animaux sont relâchés ; on le croit ruiné et reclus |
 | 2010–2024 | il vit sur Halcyon Cay avec la garde de Rhea Kost ; il achète en secret tout ce qui touche aux chasseurs |
 | 2026 (présent du mode) | il apprend qu'une arme yautja est en vente à Dustwater. Il prépare sa dernière chasse |
@@ -94,6 +95,7 @@ Suite de l'[Inventaire complet de production](ISLES_PRODUCTION_COMPLETE_20261121
   2. Le shérif Ortiz surveille aussi la vente ; elle est armée et honnête.
   3. Infiltrer, tuer Silas Moreau et ses gardes.
   4. L'arme yautja n'est plus là : un hélicoptère de Hale l'a emportée une heure plus tôt.
+  5. Dans le bureau de Moreau, un reçu : l'arme vient d'un pillard de **Grayhaven**. C'est l'arme de Vash'Tar, ramassée près du point zéro.
 - **Moment fort :** le joueur trouve l'étui vide, avec les marques d'une arme de son peuple.
 - **Choix :** Ortiz voit le joueur. L'épargner, l'honorer ou l'affronter (annexe I-AN-14).
 - **Répliques :** Moreau : « Un vieil homme a payé une fortune pour un morceau de métal. Je ne pose pas de questions. »
@@ -229,7 +231,7 @@ Les 50 fragments racontent, dans l'ordre, la **chasse ancienne** qui a fait de l
 
 ---
 
-## 5. Chasse inversée : les 7 cartes
+## 5. Chasse inversée : les 9 cartes
 
 | Carte | Entrées humaines | Pièces (3 positions chacune) | Extraction | Particularité |
 | --- | --- | --- | --- | --- |
@@ -240,6 +242,8 @@ Les 50 fragments racontent, dans l'ordre, la **chasse ancienne** qui a fait de l
 | **Hollowpine — Le col** | chalets ; scierie | courant (barrage, salle des machines, poste électrique) ; clé de cabine (gare basse, scierie, chalet) ; radio (lac, gare haute, grotte) | téléphérique | dénivelé ; brouillard |
 | **Calder — Les docks** | marché ; conteneurs | badge (bureau du port, poste de garde, conteneur) ; clé de vedette (capitainerie, bar, entrepôt) ; radio (grue, quai, navire) | vedette dans le port | nuit, néons, conteneurs en labyrinthe |
 | **Frost Isle — La station** | station ; baleinière | carburant (hangar, motoneige, citerne) ; balise (station, glacier, crevasse) ; carte (bureau, laboratoire, épave) | avion de la station | froid : les humains aussi ont une jauge de chaleur |
+| **Gull Pier — De nuit** | plage ; métro aérien (terminus) | jeton (arcade, caisse, bureau) ; fusible (grande roue, montagnes russes, train fantôme) ; radio du gardien (guérite, aquarium, théâtre) | bateau sous le ponton | maison des miroirs (le camouflage s'y reflète partout) ; combat sur les rails des montagnes russes |
+| **Ashgrove — Les ruines** | trou dans le mur ; port effondré | code du mur (mirador, poste, camion) ; batterie (hôpital, métro noyé, garage) ; fusées (école, église, supermarché) | hélicoptère au-delà du mur | contamination autour du point zéro pour tous ; effondrements ; charognards en IA hostiles aux deux camps |
 
 ### 5.1 Répliques des rôles (exemples)
 | Rôle | Pièce trouvée | Yautja repéré | À terre | Reddition |

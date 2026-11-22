@@ -4,6 +4,8 @@ Nov 22, 2026 · @darknigthmare
 
 Quatrième document de la série The Isles, après le [mode](MODE_THE_ISLES_20261121.md), l'[inventaire](ISLES_PRODUCTION_COMPLETE_20261121.md) et les [fiches de mission](ISLES_FICHES_MISSIONS_20261122.md). Il approfondit l'**histoire de l'archipel**, le **monde**, le **level design** du monde ouvert isométrique et la **modularité** (tuiles, bâtiments, quartiers, PNJ, météo, peuplement).
 
+> **Révision du 22 novembre :** carte à 12 × 12 km, métropole de Calder, Eastbank et Grayhaven. Les métriques ci-dessous restent valables ; les nouveaux quartiers, transports et la quarantaine sont dans [Métropole, transports, zone de quarantaine](ISLES_EXTENSION_METROPOLE_QUARANTAINE_20261122.md).
+
 **Règle de lecture.** Tout est *(proposé)*. L'archipel, ses peuples, ses villes et ses personnages sont fictifs.
 
 ---
@@ -43,6 +45,7 @@ Quatrième document de la série The Isles, après le [mode](MODE_THE_ISLES_2026
 | 1914–1945 | **Ironhook** devient une base navale ; la digue est construite |
 | 1960 | Indépendance en territoire autonome, sous protection lointaine ; Calder grandit grâce au port franc |
 | 1990 | Augustin Hale rachète Tallgrass et Halcyon Cay ; fondation de la réserve **Halcyon** |
+| 2003 | **Autodestruction de Vash'Tar** à Ashgrove (Grayhaven), traqué par les mercenaires de Hale ; « accident de dépôt de munitions » ; île en quarantaine |
 | 2009 | Faillite d'Halcyon ; les animaux sont relâchés |
 | 2015 | Une société minière privée reprend la mine de Redmesa avec sa propre milice |
 | 2020 | ARGOS installe discrètement une station sur Ironhook, sous couverture militaire |
@@ -75,6 +78,9 @@ Quatrième document de la série The Isles, après le [mode](MODE_THE_ISLES_2026
 | **Chasseurs de Tallgrass** | Tallgrass, Hollowpine | Torres, Vance | chasse au gros gibier pour clients riches | proie digne |
 | **Bûcherons armés** | Hollowpine | Skov | coupe illégale | proie digne |
 | **Garde de Hale** | Halcyon Cay | Rhea Kost | protéger Hale | proie digne |
+| **Charognards de Grayhaven** | Grayhaven | Mara la Grise | piller les ruines, vendre la technologie | proie digne |
+| **Garnison du mur** | Grayhaven | sous les ordres d'Ironhook | garder la quarantaine | proie digne |
+| **Les Restés** | Grayhaven | — | survivre dans les ruines | **interdits** |
 | **Garnison d'Ironhook** | Ironhook | Major Petrov | la base ; obéit à des ordres de loin | proie digne |
 | **ARGOS (station des Îles)** | Ironhook | Dr Haddad | étudier le terrain commun | équipe spécialisée |
 | **Civils** | partout | — | vivre | **interdits** |
@@ -194,6 +200,9 @@ Le joueur peut **utiliser ces relations** : frapper un gang sous l'apparence de 
 | Hollowpine ↔ Frost Isle | ferry | 3 | glace en hiver |
 | Ember ↔ Ironhook | digue | toujours (3) | entrée unique |
 | Calder ↔ îlots | bateaux | — | Blackrock et Halcyon Cay par la mer |
+| Calder ↔ Eastbank | tunnel du Port, pont de la Baie, métro (lignes 2 et 3) | 2 | trafic dense |
+| Eastbank ↔ Grayhaven | aucune liaison officielle ; nage ou bateau de nuit | toujours (3) au mur | quarantaine |
+| Ironhook ↔ Grayhaven | route militaire du mur | toujours (3) | entrée des militaires |
 
 ### 9.2 Le réseau vertical
 - **Calder :** un **réseau de toits** continu sur la vieille ville et les Hauteurs (saut) ; grappin pour le centre d'affaires.
@@ -369,6 +378,8 @@ Un civil a une **maison**, un **travail** et 1 ou 2 **lieux de loisir**. Il se d
 | Hollowpine | 40 | — | 30 | — | 30 | — | — |
 | Frost Isle | 30 | — | — | — | 20 | — | 50 |
 | Ironhook | 50 | — | 30 | — | 20 | — | — |
+| Eastbank | 50 | 20 | 20 | 10 | — | — | — |
+| Grayhaven | 30 | — | 20 (pluie de cendres) | — | 50 (cendres, fumée) | — | — |
 
 - La météo est **par île** : il peut pleuvoir sur Hollowpine et faire grand soleil sur Tallgrass.
 - Elle change toutes les 20 à 40 minutes de jeu, avec un temps de transition de 2 minutes.

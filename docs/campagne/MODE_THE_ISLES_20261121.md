@@ -158,6 +158,8 @@ Thermique, électromagnétique, mouvement et analyse fonctionnent comme sur Terr
 
 ## 6. La carte de l'archipel
 
+> **Révision du 22 novembre :** la carte passe à 12 × 12 km avec Eastbank et Grayhaven. La carte à jour est dans [Métropole, transports, zone de quarantaine](ISLES_EXTENSION_METROPOLE_QUARANTAINE_20261122.md), section 2. Le schéma ci-dessous est la première version.
+
 ```text
                                   N
                        ┌───────────────────┐
@@ -497,6 +499,8 @@ Un joueur incarne le Yautja. Quatre à six joueurs incarnent une **équipe humai
 | Hollowpine | courant du téléphérique | clé de la cabine | radio | téléphérique vers le col |
 | Calder (docks, nuit) | badge du port | clé de vedette | radio | vedette dans le port |
 | Frost Isle | carburant de motoneige | balise de détresse | carte | avion de la station |
+| Gull Pier (nuit) | jeton de la salle des machines | fusible de la grande roue | radio du gardien | bateau sous le ponton |
+| Ashgrove (Grayhaven) | code du mur | batterie de l'hôpital | fusées | hélicoptère au-delà du mur |
 
 L'emplacement des pièces change à chaque partie (3 positions possibles pour chacune).
 
@@ -569,9 +573,10 @@ Comme les ponts de GTA III, les îles s'ouvrent par groupes. **Décision :** la 
 | --- | --- | --- |
 | 1 | Verdant, The Shallows, Tallgrass | réputation 3 + sabotage des bouées du sud |
 | 2 | + Saltmarsh, Redmesa, Hollowpine | réputation 5 + sabotage du radar d'Ember |
-| 3 | + Ember, Calder, îlots | réputation 7 + coupure des relais de Calder |
-| 4 | + Frost Isle | réputation 8 |
-| 5 | + Ironhook | réputation 10 : siège d'Ironhook |
+| 3 | + Ember, Calder, Eastbank, îlots | réputation 7 + coupure des relais de Calder |
+| 4 | + Frost Isle | réputation 8 + fin de l'arc Hale |
+| 5 | + **Grayhaven** (révision du 22 novembre) | réputation 9 |
+| 6 | + Ironhook | réputation 10 : siège d'Ironhook |
 
 En ligne, une session prend l'ouverture de l'**hôte** ; les invités gardent leur propre progression.
 

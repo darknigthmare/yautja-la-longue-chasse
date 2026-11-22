@@ -6,6 +6,8 @@ Liste de **tout ce qu'il faut créer** pour le mode [The Isles](MODE_THE_ISLES_2
 
 Les missions, les cartes de Chasse inversée et les scènes sont écrites en entier dans [The Isles — Fiches de mission et scènes écrites](ISLES_FICHES_MISSIONS_20261122.md).
 
+> **Révision du 22 novembre :** la métropole de Calder, Eastbank, Gull Pier, les stades, les transports et Grayhaven ajoutent du contenu listé dans [Métropole, transports, zone de quarantaine](ISLES_EXTENSION_METROPOLE_QUARANTAINE_20261122.md), section 13. Les quantités ci-dessous ne le comptent pas.
+
 **Règle de lecture.** Tout ce qui suit est *(proposé)*, sauf ce qui découle des décisions du mode. Le mode est en **3D isométrique sous three.js** : les personnages sont des modèles ou des sprites à **8 directions**, le monde est fait de **tuiles de 2 m** extrudées en volumes.
 
 | Préfixe | Contenu |
@@ -133,7 +135,7 @@ Instrumental ambient loop for an ancient overgrown jungle altar where alien hunt
 | MUS-122 | La mutinerie | `Instrumental loop for a prison riot spilling into a port city: alarms, urban drums, distorted bass, sirens. 112 BPM.` |
 | MUS-123 | L'invasion | `Instrumental horror loop for an alien hive escaping a military lab on an island: organic textures, metallic percussion, brass clusters. 108 BPM.` |
 
-**Total : 29 pistes (MUS-95 → MUS-123).** Dossier proposé : `public/audio/music/isles/`.
+**Total : 29 pistes (MUS-95 → MUS-123)**, plus 5 pistes de l'extension (MUS-124 → MUS-128, prompts dans [Métropole, transports, zone de quarantaine](ISLES_EXTENSION_METROPOLE_QUARANTAINE_20261122.md), section 13.1). Dossier proposé : `public/audio/music/isles/`.
 
 ---
 
@@ -734,7 +736,7 @@ Chaque saison : 1 thème musical (MUS-118 → MUS-123), 1 scène d'ouverture (I-
 
 | Catégorie | Quantité |
 | --- | --- |
-| Musique | 29 pistes (MUS-95 → MUS-123) |
+| Musique | 34 pistes (MUS-95 → MUS-128, avec l'extension) |
 | Ambiances | 20, avec variantes jour, nuit et météo |
 | Effets sonores | environ 120 (plus ceux de la Terre réutilisés) |
 | Voix | environ 1 400 répliques |
