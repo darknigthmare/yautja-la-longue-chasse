@@ -74,7 +74,11 @@ const pointOnScreen = (point: ShipInterior25dPoint) => {
 
 /** The same eight services, on a real ground plane. All coordinates below are
  * physical floor coordinates until the one projection in the renderer. */
-export default function ShipInterior25D(props: PhysicalShipDeckProps & { onOpenPersonalTrophyHall?: () => void }) {
+type CampaignVoyages = { prepare?: () => void; travel?: () => void; earth?: () => void };
+export default function ShipInterior25D(props: PhysicalShipDeckProps & {
+  onOpenPersonalTrophyHall?: () => void;
+  campaignVoyages?: CampaignVoyages;
+}) {
   const {
     appearance, loadout, trophyDisplays = [], rankLabel = "Chasseur",
     selectedDestination = "Choisis une chasse à la carte galactique",
@@ -162,6 +166,15 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps & { onOpenP
     };
     actions[id]?.();
   }, [stop]);
+
+  const atCampaignVoyagePost = (command: keyof CampaignVoyages) => {
+    if (suspendedRef.current) return;
+    const { roomId, actor } = frameRef.current;
+    const site = nearbyShipInterior25dInteraction(roomId, actor);
+    if (site?.type !== "service" || site.station.id !== "galaxy-map") return;
+    stop();
+    propsRef.current.campaignVoyages?.[command]?.();
+  };
 
   const walkTo = useCallback((point: ShipInterior25dPoint) => {
     if (suspendedRef.current) return;
@@ -485,6 +498,14 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps & { onOpenP
       <div className={styles.actions}>
         {cradleState?.returnVisit && ['extracted', 'reported'].includes(cradleState.status) && <button type="button"
           disabled={suspended} onClick={focusCradleReturn}>Retour du Berceau · Y / Triangle</button>}
+        {serviceNearby === "galaxy-map" && props.campaignVoyages && <div aria-label="Routes de campagne">
+          {props.campaignVoyages.prepare && <button type="button" disabled={suspended} data-prepare-first-interstellar
+            onClick={() => atCampaignVoyagePost("prepare")}>Préparer le premier trajet</button>}
+          {props.campaignVoyages.travel && <button type="button" disabled={suspended} data-open-first-interstellar
+            onClick={() => atCampaignVoyagePost("travel")}>Premier trajet interstellaire</button>}
+          {props.campaignVoyages.earth && <button type="button" disabled={suspended} data-open-earth-hunt
+            onClick={() => atCampaignVoyagePost("earth")}>Sol · Registre terrestre</button>}
+        </div>}
         <button type="button" disabled={suspended || !nearby} className={styles.interact} data-ship-interact onClick={interact}><kbd>{interactionKey} / A</kbd>{interactLabel}</button>
         <div><button type="button" disabled={suspended} data-ship-approach-service onClick={stationRequest}>Rejoindre le poste</button>
           <button type="button" disabled={suspended || (!frame.path.length && !waypoint)} onClick={cancelGuidance}>Arrêter le trajet</button></div>
