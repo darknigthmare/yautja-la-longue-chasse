@@ -22,6 +22,8 @@ import { useMenuGamepad } from './useMenuGamepad';
 import ClanHullProjectPanel from './ClanHullProjectPanel';
 import ClanWarReturnR2M047Panel from './ClanWarReturnR2M047Panel';
 import { warReturnView } from './systems/warReturnR2M047';
+import OserisReturnR2M053Panel from './OserisReturnR2M053Panel';
+import { oserisReturnAvailable, oserisReturnView } from './systems/oserisReturnR2M053';
 import { canReviewClanHullProject, type ClanHullProjectCommandV171, type ClanHullProjectResponseV171 } from './systems/clanHullProjectV171';
 import styles from './ClanShipOperationsPanel.module.css';
 
@@ -38,11 +40,12 @@ interface Props {
   onNavigate: (roomId: ClanShipRoomId) => void;
   onClanWar: () => void;
 }
-type Tab = 'post' | 'contracts' | 'crew' | 'journal' | 'project' | 'war-return';
+type Tab = 'post' | 'contracts' | 'crew' | 'journal' | 'project' | 'war-return' | 'oseris-return';
 const TABS: { id: Tab; label: string }[] = [
   { id: 'post', label: 'Poste & mandat' }, { id: 'contracts', label: 'Opérations' },
   { id: 'crew', label: 'Équipage' }, { id: 'journal', label: 'Chronique' },
   { id: 'project', label: 'Projet collectif' }, { id: 'war-return', label: 'Retour du front' },
+  { id: 'oseris-return', label: 'Retour à Oseris-IV' },
 ];
 const KINDS = { onboarding: 'Accueil du clan', interior: 'Mission à bord', field: 'Chasse de clan', space: 'Opération spatiale' };
 const PHASES = {
@@ -76,6 +79,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
   const atCouncil = roomId === 'conseil';
   const completed = new Set(state.completedContracts.map(receipt => receipt.contractId));
   const warReturnAvailable = !temporarySession && completed.has(CLAN_SHIP_COLLECTIVE_ID);
+  const oserisAvailable = !temporarySession && state.mandateAccepted && (oserisReturnAvailable(save) || !!state.legacy);
   const availableCrew = availableClanResidenceCrew(save);
   const collectivePosts = collective ? clanResidenceCrewPostRooms(save) : null;
   useMenuGamepad(rootRef, !suspended, 'clan-ship-operations', onClose);
@@ -204,10 +208,16 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
       </header>
       <nav className={styles.tabs} aria-label="Dossiers du Clan Ship">
         {TABS.filter(entry => (entry.id !== 'project' || projectAvailable) &&
-          (entry.id !== 'war-return' || warReturnAvailable)).map(entry => <button key={entry.id} type="button" aria-pressed={tab === entry.id} disabled={suspended}
+          (entry.id !== 'war-return' || warReturnAvailable) && (entry.id !== 'oseris-return' || oserisAvailable)).map(entry => <button key={entry.id} type="button" aria-pressed={tab === entry.id} disabled={suspended}
           data-clan-operations-tab={entry.id} onClick={() => { setTab(entry.id); setFeedback(''); }}>{entry.label}</button>)}
       </nav>
       <div className={styles.content}>
+        {tab === 'oseris-return' && oserisAvailable && (roomId === 'hangar' ? <OserisReturnR2M053Panel
+          save={save} record={state.legacy} disabled={suspended || activeContract !== null || !oserisReturnAvailable(save)}
+          onOrder={order => { act({ type: 'oseris-return', order, expectedRevision: state.revision }); }} /> :
+          <section className={styles.step}><h3>Un ancien terrain a changé</h3>
+            <p>Le départ vers Oseris-IV se prépare au hangar.</p>{routeButton('hangar')}
+          </section>)}
         {tab === 'war-return' && warReturnAvailable && (roomId === 'hangar' ? <ClanWarReturnR2M047Panel
           war={state.war} blocked={activeContract !== null} disabled={suspended}
           onOrder={order => { act({ type: 'war-return', order, expectedRevision: state.revision }); }} /> :
@@ -346,6 +356,9 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
                   ? <p data-collective-completed>{receipt.proof.collective.role === 'field' ? 'Terrain' : 'Coordination'} · Transport extrait · {receipt.proof.collective.checkedNpcIds.length + 1}/{receipt.proof.collective.capacity} postes affectés</p>
                   : <p>{KINDS[receipt.proof.kind]} · récompense déjà attribuée</p>}</div>
             </li>)}</ol> : <p>Aucun dossier achevé. L’accueil du bord ouvre le premier chapitre.</p>}
+            {state.legacy?.returnedWorldCompared && <p className={styles.notice} data-oseris-return-receipt>
+              Oseris-IV · {oserisReturnView(state.legacy.orders).choice === 'maintain' ? 'Passage de rive entretenu' : 'Canopée adoptée'}
+            </p>}
             {state.war?.returnConsequenceSeen && <p className={styles.notice} data-war-return-receipt>
               Passe des Cendres · {warReturnView(state.war.orders).choice === 'reconstruct' ? 'Passage rouvert' : 'Blessés remis à la relève'}
             </p>}

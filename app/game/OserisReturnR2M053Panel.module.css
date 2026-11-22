@@ -1,0 +1,128 @@
+.panel {
+  padding: clamp(0.8rem, 3vw, 1.4rem);
+  border: 1px solid #526757;
+  border-radius: 0.65rem;
+  background: #101b17;
+  color: #f4f8e8;
+}
+
+.panel h3 {
+  margin: 0;
+}
+
+.terrain {
+  position: relative;
+  min-height: 13.5rem;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid #879a7e;
+  border-radius: 0.35rem;
+  background-color: #152724;
+  background-position: center;
+  background-size: cover;
+}
+
+.terrain::before {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(#15212b35 45%, #151f2591);
+  content: "";
+}
+
+.ground,
+.water,
+.crown,
+.ledge,
+.vine,
+.archive,
+.marker,
+.hunter {
+  position: absolute;
+}
+
+.ground {
+  inset-inline: 0;
+  bottom: 0;
+  background: linear-gradient(#536844, #212e23);
+}
+
+.water {
+  bottom: 0;
+  background: repeating-linear-gradient(11deg, #244858ee 0 6px, #427287f0 7px 9px, #2b5667 10px 16px);
+  border-top: 2px solid #9dd0d2;
+}
+
+.crown,
+.ledge {
+  height: 4%;
+  border-radius: 30% 12% 35% 18%;
+}
+
+.crown {
+  background: linear-gradient(#6f9a52, #514127);
+}
+
+.ledge {
+  background: linear-gradient(#8a9870, #485447);
+}
+
+.vine {
+  width: 0.32rem;
+  border-radius: 50%;
+  background: #9db977;
+  transform: rotate(-5deg);
+  transform-origin: top;
+}
+
+.archive {
+  border-top: 3px dashed #ffdd89;
+}
+
+.marker {
+  width: 0.22rem;
+  height: 8%;
+  background: #e2b66a;
+  transform: translateY(-55%);
+}
+
+.hunter {
+  display: block;
+  width: 14%;
+  height: 27%;
+  transform: translate(-50%, -100%);
+  transition: left 360ms ease-in-out, top 270ms ease-out;
+}
+
+.legend {
+  font-size: 0.8rem;
+  color: #ebcf8c;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.actions button {
+  min-height: 44px;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid #a6b793;
+  border-radius: 0.35rem;
+  background: #243b31;
+  color: #fffbe4;
+}
+
+.actions button:focus-visible {
+  outline: 2px solid #ffe29a;
+  outline-offset: 3px;
+}
+
+.actions button:disabled {
+  opacity: 0.65;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hunter { transition: none; }
+}
