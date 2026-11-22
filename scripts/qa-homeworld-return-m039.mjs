@@ -43,6 +43,49 @@ const capture = async file => {
 };
 const disk = () => page.evaluate(() => JSON.parse(localStorage.getItem("yautja-long-hunt.save")));
 let nav;
+let indoorNav;
+async function openNativePoint(pointId) {
+  const room = api.homeworldInteriorForPointV64(pointId);
+  assert.ok(room, pointId);
+  if (await nav.room() !== room.buildingId) await nav.enter(room.buildingId);
+  else await nav.closeDialog();
+
+  const start = await indoorNav.position();
+  const successors = [[0, -8], [8, 0], [-8, 0], [0, 8]];
+  const keyFor = point => point.x + "," + point.y;
+  const walkable = point => api.isHomeworldInteriorWalkableV64(room, point, { halfWidth: 26, halfDepth: 16 });
+  const reached = point => {
+    const target = api.nearestHomeworldInteriorTargetV64(room, point);
+    return target?.pointId === pointId && Math.hypot(point.x - target.position.x, point.y - target.position.y) < 59;
+  };
+  const queue = [start];
+  const visited = new Map([[keyFor(start), null]]);
+  let goal = null;
+  for (let index = 0; index < queue.length; index += 1) {
+    const current = queue[index];
+    if (reached(current)) {
+      goal = current;
+      break;
+    }
+    for (const [dx, dy] of successors) {
+      const next = { x: current.x + dx, y: current.y + dy };
+      if (visited.has(keyFor(next)) || !walkable(next) ||
+          !walkable({ x: current.x + dx / 2, y: current.y + dy / 2 })) continue;
+      visited.set(keyFor(next), current);
+      queue.push(next);
+    }
+  }
+  assert.ok(goal, "A roomy physical approach to " + pointId);
+  const path = [];
+  for (let point = goal; point; point = visited.get(keyFor(point))) path.push(point);
+  await indoorNav.follow(path.reverse());
+  const at = await indoorNav.position();
+  assert.equal(api.nearestHomeworldInteriorTargetV64(room, at)?.pointId, pointId);
+  await page.keyboard.press("KeyE");
+  await indoorNav.tick(160);
+  await page.locator("[data-homeworld-hub]").getByRole("dialog").waitFor();
+  report.routes.push({ kind: "interior", pointId, roomId: room.buildingId, from: start, to: at, steps: path.length });
+}
 async function boot() {
   await page.clock.resume();
   assert((await page.reload({ waitUntil: "domcontentloaded" })).ok());
@@ -55,11 +98,12 @@ async function boot() {
   await page.bringToFront();
   await page.clock.pauseAt(await page.evaluate(() => Date.now() + 150));
   nav = homeworldNavigatorV77(page, api);
+  indoorNav = homeworldNavigatorV77(page, api, { waypointTolerance: 3, driverTickMs: 26, pulseInputs: true });
   await nav.focus();
 }
 async function action(label, phase) {
   const button = dialogue.getByRole("button", { name: label, exact: true });
-  await button.click();
+  await button.press("Enter");
   await nav.tick(160);
   const save = await disk();
   assert.equal(save.homeworld.returnM039.phase, phase);
@@ -92,7 +136,7 @@ try {
   await boot();
   const initial = await disk();
   assert.equal(initial.homeworld.returnM039, undefined);
-  await nav.openPoint("dock-officer-point");
+  await openNativePoint("dock-officer-point");
   const observed = await dialogue.innerText();
   assert.match(observed, /Oseris-IV/);
   assert.doesNotMatch(observed, /Nivalis-K/);
@@ -100,14 +144,14 @@ try {
   assert.equal(await page.locator(debt).getAttribute("data-homeworld-relay-m039"), "offline");
   await capture("01-quai-panne.png");
 
-  await nav.openPoint("forge-service");
+  await openNativePoint("forge-service");
   await action("Ajuster et prendre le disjoncteur", "part-ready");
   await capture("02-piece-ajustee.png");
   saveRoutes();
   await boot();
   assert.equal((await disk()).homeworld.returnM039.phase, "part-ready");
   assert.equal(await nav.room(), "deep-forge");
-  await nav.openPoint("dock-officer-point");
+  await openNativePoint("dock-officer-point");
   await action("Monter le disjoncteur", "mounted");
   assert.equal(await page.locator(debt).getAttribute("data-homeworld-relay-m039"), "offline");
   await action("Tester le relais sous charge", "commissioned");
@@ -126,6 +170,7 @@ try {
   report.passed = true;
 } catch (error) {
   report.failure = String(error.stack ?? error);
+  console.error(JSON.stringify({ checks: report.checks, routes: report.routes, httpErrors: report.httpErrors.slice(-8) }));
   if (nav) saveRoutes();
   await capture("failure.png").catch(() => {});
   throw error;
