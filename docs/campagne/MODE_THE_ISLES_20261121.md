@@ -414,7 +414,7 @@ Un trophée **non rapporté** est perdu si le joueur meurt.
 ### 11.4 Mort en chasse libre (décision)
 - Le joueur réapparaît au **dernier repaire** visité.
 - Les **trophées portés** (non rapportés) tombent sur place. Ils y restent **10 minutes de jeu** : le joueur peut revenir les chercher ; en ligne, un autre joueur peut les prendre (il les rapporte comme « trophée repris », honneur réduit de moitié).
-- Les marques d'alerte retombent à 0, sauf au niveau 5 (ARGOS se souvient pendant la session).
+- Les marques d'alerte retombent à 0. **Exception :** si le joueur était au niveau 5, il réapparaît au **niveau 3** (ARGOS se souvient pendant la session) ; réapparaître au repaire ne compte pas comme y être rentré vivant.
 - Aucune perte de réputation ni d'équipement.
 
 ### 11.3 Code d'honneur dans le mode
@@ -442,7 +442,7 @@ C'est l'équivalent des étoiles de recherche de GTA, en glyphes yautja. Elles s
 - sortir de la **zone de recherche** (cercle sur la carte) et y rester caché un moment ;
 - rester camouflé et immobile hors de vue ;
 - détruire les appareils qui ont filmé ;
-- rentrer à un repaire (efface tout sauf 5).
+- rentrer **vivant** à un repaire : efface toutes les marques, **y compris le niveau 5**. C'est la seule façon de perdre le niveau 5 (révision du 22 novembre, après revue).
 
 ---
 
@@ -571,12 +571,14 @@ Comme les ponts de GTA III, les îles s'ouvrent par groupes. **Décision :** la 
 
 | Étape | Îles ouvertes | Ce qui ouvre l'étape suivante |
 | --- | --- | --- |
-| 1 | Verdant, The Shallows, Tallgrass | réputation 3 + sabotage des bouées du sud |
-| 2 | + Saltmarsh, Redmesa, Hollowpine | réputation 5 + sabotage du radar d'Ember |
-| 3 | + Ember, Calder, Eastbank, îlots | réputation 7 + coupure des relais de Calder |
-| 4 | + Frost Isle (ouverte par le sabotage du radar, I-MP-06) | réputation 9 + fin de l'arc Hale (I-MP-08, sur Frost Isle) |
+| 1 | Verdant, The Shallows, Tallgrass | réputation 3 + sabotage des **bouées du sud** (sur les Shallows) |
+| 2 | + Saltmarsh, Redmesa, Hollowpine | réputation 5 + sabotage du **relais du barrage** (sur Hollowpine) |
+| 3 | + Ember, Calder, Eastbank, îlots | réputation 7 + sabotage du **radar d'Ember** (mission I-MP-06, sur Ember) |
+| 4 | + Frost Isle | réputation 9 + fin de l'arc Hale (I-MP-08, sur Frost Isle) |
 | 5 | + **Grayhaven** (révision du 22 novembre) | réputation 10 |
-| 6 | + Ironhook | siège d'Ironhook (réputation 10, après Grayhaven ou en parallèle) |
+| 6 | + Ironhook | — (siège d'Ironhook) |
+
+**Règle (révision du 22 novembre, après revue) :** chaque sabotage se trouve sur une île **déjà ouverte** à l'étape où il est demandé. Les trois points du cordon sont, dans l'ordre : les bouées du sud, le relais du barrage, le radar d'Ember.
 
 En ligne, une session prend l'ouverture de l'**hôte** ; les invités gardent leur propre progression.
 
@@ -636,7 +638,7 @@ Un repaire principal (au choix du joueur) expose les trophées du mode, avec leu
 ### 15.3 Tests
 - Caméra : aucun moment où le joueur est caché derrière un décor sans transparence.
 - Code : un non-combattant n'est jamais une cible valide ; une faute fait baisser la réputation.
-- Alerte : elle tombe bien hors de la zone de recherche ; le niveau 5 ne tombe qu'au repaire.
+- Alerte : les niveaux 1 à 4 tombent hors de la zone de recherche ; le niveau 5 ne tombe qu'en **rentrant vivant** à un repaire ; après une mort au niveau 5, le joueur réapparaît au niveau 3.
 - Ouverture : une île fermée est inaccessible même à la nage (cordon).
 - Réseau : une mise à mort contestée par deux joueurs est attribuée une seule fois.
 - Sauvegarde : migration sans `islesV1`, aller-retour JSON.

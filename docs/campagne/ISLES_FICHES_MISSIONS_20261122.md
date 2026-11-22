@@ -231,6 +231,16 @@ Les 50 fragments racontent, dans l'ordre, la **chasse ancienne** qui a fait de l
 
 ---
 
+### 4.5 Sabotages du cordon (I-AN-47)
+
+Chaque sabotage se fait sur une île déjà ouverte et ouvre le groupe d'îles suivant (avec le seuil de réputation).
+
+| Ordre | Point | Île | Déroulé | Moment fort | Ouvre |
+| --- | --- | --- | --- | --- | --- |
+| 1 | **Les bouées du sud** | The Shallows | nager de nuit jusqu'à 3 bouées sonar ancrées dans les passes ; arracher leur module sans être repéré par la vedette de patrouille | la vedette passe au-dessus du joueur pendant qu'il travaille sous l'eau | Saltmarsh, Redmesa, Hollowpine (réputation 3) |
+| 2 | **Le relais du barrage** | Hollowpine | ARGOS a posé un relais radio du cordon sur la crête du barrage ; monter la paroi, éliminer les 4 gardes, couper le relais | descente en rappel le long du mur du barrage, dans le brouillard | Ember, Calder, Eastbank, îlots (réputation 5) |
+| 3 | **Le radar d'Ember** | Ember | mission de l'arc Hale I-MP-06 | le radar s'effondre dans une coulée | Frost Isle (réputation 7) |
+
 ## 5. Chasse inversée : les 9 cartes
 
 | Carte | Entrées humaines | Pièces (3 positions chacune) | Extraction | Particularité |

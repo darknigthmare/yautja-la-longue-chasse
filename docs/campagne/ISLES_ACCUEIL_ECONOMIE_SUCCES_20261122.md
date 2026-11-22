@@ -58,14 +58,16 @@ Ce document couvre ce qui manquait encore au mode [The Isles](MODE_THE_ISLES_202
 | --- | --- | --- |
 | 1 | 0 | Verdant, Shallows, Tallgrass |
 | 2 | 500 | 2ᵉ emplacement de trophée au repaire |
-| 3 | 1 500 | sabotage des bouées du sud |
-| 4 | 3 000 | Saltmarsh, Redmesa, Hollowpine ; contrats de groupe |
-| 5 | 5 000 | sabotage du radar d'Ember |
+| 3 | 1 500 | sabotage des bouées du sud ; une fois fait : Saltmarsh, Redmesa, Hollowpine |
+| 4 | 3 000 | contrats de groupe |
+| 5 | 5 000 | sabotage du relais du barrage ; une fois fait : Ember, Calder, Eastbank, îlots |
 | 6 | 8 000 | primes de niveau 2 |
-| 7 | 12 000 | Ember, Calder, Eastbank, îlots |
-| 8 | 17 000 | Frost Isle (par l'arc Hale) |
-| 9 | 23 000 | Grayhaven après l'arc Hale |
-| 10 | 30 000 | siège d'Ironhook |
+| 7 | 12 000 | sabotage du radar d'Ember (I-MP-06) ; une fois fait : Frost Isle |
+| 8 | 17 000 | Halcyon Cay (I-MP-07) |
+| 9 | 23 000 | Grayhaven, après la fin de l'arc Hale |
+| 10 | 30 000 | Ironhook et son siège |
+
+Ce tableau suit l'ordre d'ouverture du [mode](MODE_THE_ISLES_20261121.md), section 14.1.
 
 ### 3.2 Gains d'honneur dans le mode
 - Barème de la campagne (humain armé 15, équipe spécialisée 30, multiplicateurs de manière).

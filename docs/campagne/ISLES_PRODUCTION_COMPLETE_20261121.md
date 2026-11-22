@@ -673,7 +673,7 @@ Textures des volumes : façades par style (affaires, populaire, pavillon, wester
 | I-AN-44 | Épreuves | 12 parcours chronométrés (canopée, toits de Calder, canyons, téléphérique, glacier…) |
 | I-AN-45 | Fragments de l'autel | 50 fragments gravés, cachés sur toutes les îles ; à 50, la chasse ancienne est racontée entièrement |
 | I-AN-46 | Repaires | 10 à découvrir et ouvrir |
-| I-AN-47 | Sabotages du cordon | 3 (bouées du sud, radar d'Ember, relais de Calder) |
+| I-AN-47 | Sabotages du cordon | 3, dans l'ordre : bouées du sud (Shallows), relais du barrage (Hollowpine), radar d'Ember (I-MP-06) |
 | I-AN-48 | Chasse de rachat | pour sortir du statut de Bad Blood des Îles |
 
 ---
