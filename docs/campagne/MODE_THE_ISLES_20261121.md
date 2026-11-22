@@ -16,8 +16,8 @@ Tout ce qu'il faut produire est listé dans [The Isles — Inventaire complet de
 | Époque | **présent fixe, années 2020** |
 | Chasse inversée | **gardée et prioritaire** : mode phare dès le lancement (section 13.3) |
 | Victoire des humains en Chasse inversée | **fuir l'île ou tenir** jusqu'à la fin du temps |
-| Taille et moteur | **8 × 8 km**, **three.js** |
-| Villes | **Calder et une petite ville** : Dustwater, ville minière de Redmesa |
+| Taille et moteur | **12 × 12 km** (révisé le 22 novembre, au lieu de 8 × 8), **three.js** |
+| Villes | **révisé le 22 novembre** : Calder devient une **métropole** type New York, avec Eastbank (quartier américain Maple Hollow, zone commerciale, stades, Gull Pier) ; Dustwater ; 7 villages ; et **Grayhaven**, île en quarantaine ouverte après l'arc Hale. Détail : [extension](ISLES_EXTENSION_METROPOLE_QUARANTAINE_20261122.md) |
 | Joueurs par session | **8** |
 | Humain qui se rend (Chasse inversée) | **règle proposée validée** : intouchable, désarmé 90 s, ni pièce ni radio ; compte à moitié à l'extraction ; le Yautja qui le tue perd la partie |
 | Rôles humains | **les 6** : Pisteur, Tireur, Démolisseur, Médecin, Radio, Garde de la réserve |
