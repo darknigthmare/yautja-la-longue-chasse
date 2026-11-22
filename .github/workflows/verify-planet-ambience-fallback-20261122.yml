@@ -17,6 +17,8 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
+      - name: Install the media encoder and probe
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
       - name: Encode and verify media
         run: node scripts/generate-planet-ambiences-v173.mjs
       - name: Export original bytes with hash metadata
