@@ -28,9 +28,10 @@
  * dans `tantalusV164.ts` et utilise ce même état (un seul voyage engagé, un
  * seul retour réservé, état de branche STATE5-30).
  */
-import type { MissionDefinition, MissionResult } from "../types";
+import type { MissionDefinition, MissionResult, SaveGame } from "../types";
+import { actWarpVillage, normalizeWarpVillage, type WarpVillageOrder, type WarpVillageRecord } from "./warpVillageR2M048";
 import {
-  evaluateChronicleAccess, getChronicleFunctions, migrateV35ClanChronicle, type ChronicleAccessContext, type ClanChronicle,
+  evaluateChronicleAccess, getChronicleFunctions, getChronicleRank, migrateV35ClanChronicle, type ChronicleAccessContext, type ClanChronicle,
 } from "./clanChronicle";
 import { shipAcquisitionOwnedHullV89 } from "./shipAcquisitionV89";
 
@@ -184,6 +185,7 @@ export interface WarpBranchVisitV165 {
   epochCompleted: boolean;
   /** V167, branche 2204 seulement : sort de l'Echo-8, décidé une fois et conservé (STATE5-30). Absent ailleurs. */
   echo8?: WarpTantalusEcho8V165;
+  r2M048?: WarpVillageRecord;
 }
 export interface WarpEchoV165 { id: string; fromBranchId: WarpBranchIdV165; toBranchId: WarpBranchIdV165; text: string; effect: string }
 export interface WarpEpochsStateV165 {
@@ -270,8 +272,15 @@ function normalizeVisit(value: unknown, id: WarpBranchIdV165): WarpBranchVisitV1
         (e.choice !== "emporte" && e.choice !== "marque") || !safeId(e.tripId)) return null;
     echo8 = { choice: e.choice, tripId: e.tripId };
   }
+  let r2M048: WarpVillageRecord | null = null;
+  if (Object.hasOwn(value, "r2M048")) {
+    if (id !== "W-02" || value.visits < 1) return null;
+    r2M048 = normalizeWarpVillage(value.r2M048);
+    if (!r2M048) return null;
+  }
   return { visits: value.visits, steps, alertedPassages, deadIds, takenObjectIds, localKills: value.localKills,
-    huntRuns: value.huntRuns, huntSuccess: value.huntSuccess, trophy, epochCompleted: value.epochCompleted, ...(echo8 ? { echo8 } : {}) };
+    huntRuns: value.huntRuns, huntSuccess: value.huntSuccess, trophy, epochCompleted: value.epochCompleted,
+    ...(echo8 ? { echo8 } : {}), ...(r2M048 ? { r2M048 } : {}) };
 }
 
 /** Renvoie l'état normalisé, ou null si la forme est invalide ou d'une autre campagne. */
@@ -299,6 +308,11 @@ export function normalizeWarpEpochsV165(value: unknown, ownerCreatedAt: string):
     if (!visit) return null;
     branchVisitState[key as WarpBranchIdV165] = visit;
   }
+  const historicalOrders = branchVisitState["W-02"]?.r2M048?.orders ?? [];
+  const historicalEvents = consumedEventIds.filter(id => id.startsWith("W-02:R2-M048:"));
+  if (historicalEvents.length !== historicalOrders.length ||
+      !historicalOrders.every((id, index) => historicalEvents[index] === `W-02:R2-M048:${index}:${id}`)) return null;
+  if (historicalOrders.length > 0 && (!value.warpModuleInstalled || value.tripCount < (branchVisitState["W-02"]?.visits ?? 0))) return null;
   const echoes: WarpEchoV165[] = [];
   for (const raw of value.echoes) {
     if (!record(raw) || !safeId(raw.id) || !branchId(raw.fromBranchId) || !branchId(raw.toBranchId) ||
@@ -458,6 +472,31 @@ export function returnFromWarpV165(state: WarpEpochsStateV165): WarpUpdateV165 {
 
 function requireTripIn(state: WarpEpochsStateV165, id: WarpBranchIdV165): string | null {
   return state.activeWarpTripId && state.activeTripBranchId === id ? null : `Il faut un voyage engagé dans ${id}.`;
+}
+
+type WarpVillageCampaign = Pick<SaveGame, "createdAt" | "profile" | "prologue">;
+export function warpVillageRankAllowed(save: WarpVillageCampaign): boolean {
+  if (!save.prologue) return save.profile.rankId === "elite" || save.profile.rankId === "elder";
+  if (save.prologue.status !== "completed") return false;
+  const rank = getChronicleRank(save.prologue.chronicle);
+  return rank === "elite" || rank === "elder" || rank === "ancient";
+}
+
+/** R2-M048 writes only the chosen branch and requires the real reserved trip. */
+export function actWarpVillageV165(state: WarpEpochsStateV165, save: WarpVillageCampaign, order: WarpVillageOrder): WarpUpdateV165 {
+  const current = normalizeWarpEpochsV165(state, save.createdAt);
+  if (!current || !warpVillageRankAllowed(save) || !current.warpModuleInstalled ||
+      !canReturnFromWarpV165(current) || requireTripIn(current, "W-02")) {
+    return refuse(state, "Le hameau demande le rang Elite et un voyage engagé vers W-02.");
+  }
+  const visit = branchVisitV165(current, "W-02");
+  if (visit.visits < 1 || !current.consumedEventIds.includes(`trip:${current.activeWarpTripId}:depart`) ||
+      current.consumedEventIds.length >= 2000) return refuse(state, "Le relevé du voyage ne peut pas être confirmé.");
+  const next = actWarpVillage(visit.r2M048, order);
+  if (!next) return refuse(state, "Le relevé local attend l’étape indiquée.");
+  return commit(current, `W-02:R2-M048:${next.orders.length - 1}:${order}`, {
+    ...current, branchVisitState: withVisit(current, "W-02", previous => ({ ...previous, r2M048: next })),
+  }, next.advancedBranchResolved ? "Le trajet du hameau est consigné dans W-02." : "Relevé du hameau enregistré.");
 }
 
 /** Résout une étape texte du mini-arc W-02. M17 « affronter » se résout par la chasse. */

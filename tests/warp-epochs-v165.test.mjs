@@ -211,8 +211,66 @@ test("rendu SSR du panneau et intégration au client", () => {
   const html2 = source.render("app/game/WarpEpochsPanelV165.tsx", { save: ready, onPersist: () => true, onClose: () => {} });
   assert.match(html2, /data-warp-trip="warp-trip-1"/);
   assert.match(html2, /data-warp-return="reservee"/);
+  assert.match(html2, /disabled="" data-warp-village-order="meet-weavers"/);
   const client = readFileSync(new URL("../app/game/GameClient.tsx", import.meta.url), "utf8");
   assert.match(client, /const WarpEpochsPanelV165 = React\.lazy\(\(\) => import\("\.\/WarpEpochsPanelV165"\)\)/);
   // V167 : l'écriture efface aussi l'ancien dossier tantalusV164 une fois repris dans l'état Warp.
   assert.match(client, /persistSocialProgress\(clearLegacyTantalus \? \{ warpEpochsV165: state, tantalusV164: null \} : \{ warpEpochsV165: state \}\)/);
+});
+
+test("R2-M048 garde l’aide bornée et l’observation dans W-02 après le retour", () => {
+  const base = readyState();
+  const campaign = defaultSave(owner);
+  const elite = { ...campaign, profile: { ...campaign.profile, rankId: "elite", honor: 5000 } };
+  assert.equal(warp.actWarpVillageV165(base, elite, "meet-weavers").accepted, false);
+  const active = ok(warp.departWarpV165(base, full));
+  assert.equal(warp.actWarpVillageV165(active, campaign, "meet-weavers").accepted, false);
+  assert.equal(warp.actWarpVillageV165(active, { ...elite, createdAt: "other" }, "meet-weavers").accepted, false);
+  assert.equal(warp.actWarpVillageV165(active, elite, "verify-granary").accepted, false);
+  const branch2204 = ok(warp.selectWarpBranchV165(base, warp.WARP_TANTALUS_BRANCH_ID_V165));
+  assert.equal(warp.actWarpVillageV165(ok(warp.departWarpV165(branch2204, full)), elite, "meet-weavers").accepted, false);
+
+  for (const choice of ["limited-aid", "observation"]) {
+    const afterward = choice === "limited-aid" ? "guide-from-bank" : "follow-locals";
+    const other = afterward === "guide-from-bank" ? "follow-locals" : "guide-from-bank";
+    let state = active;
+    const orders = ["meet-weavers", "survey-mill", choice, afterward, "verify-granary", "record-trace"];
+    for (const order of orders) {
+      state = ok(warp.actWarpVillageV165(state, elite, order));
+      const current = warp.branchVisitV165(state, "W-02").r2M048;
+      assert.equal(current.advancedBranchResolved, order === "record-trace");
+      const loaded = parseSaveImport(exportSave({ ...elite, warpEpochsV165: state }));
+      assert.equal(loaded.failure, null);
+      assert.deepEqual(warp.branchVisitV165(loaded.save.warpEpochsV165, "W-02").r2M048, current);
+      state = loaded.save.warpEpochsV165;
+      if (order === choice) {
+        assert.equal(warp.actWarpVillageV165(state, elite, other).accepted, false);
+        state = ok(warp.returnFromWarpV165(state));
+        assert.equal(warp.actWarpVillageV165(state, elite, afterward).accepted, false);
+        state = ok(warp.departWarpV165(state, full));
+      }
+    }
+    assert.deepEqual(warp.branchVisitV165(state, "W-02").r2M048, { orders, advancedBranchResolved: true });
+    assert.equal(warp.actWarpVillageV165(state, elite, "record-trace").changed, false);
+    const completed = ok(warp.returnFromWarpV165(state));
+    const { r2M048, ...mainVisit } = warp.branchVisitV165(completed, "W-02");
+    assert.equal(r2M048.advancedBranchResolved, true);
+    assert.deepEqual(mainVisit, { ...warp.emptyBranchVisitV165(), visits: 2 });
+    assert.deepEqual(completed.echoes, []);
+    const out = parseSaveImport(exportSave({ ...elite, warpEpochsV165: completed }));
+    assert.equal(out.failure, null);
+    assert.deepEqual(out.save.warpEpochsV165.branchVisitState["W-02"].r2M048, r2M048);
+    assert.deepEqual(out.save.trophies, elite.trophies);
+    assert.equal(out.save.profile.honor, elite.profile.honor);
+    for (const alter of [
+      bad => { bad.branchVisitState["W-02"].r2M048.orders[1] = "record-trace"; },
+      bad => { bad.branchVisitState["W-02"].r2M048.advancedBranchResolved = false; },
+      bad => { bad.consumedEventIds = bad.consumedEventIds.filter(id => !id.startsWith("W-02:R2-M048:")); },
+      bad => { bad.branchVisitState["W-01"] = bad.branchVisitState["W-02"]; },
+    ]) {
+      const bad = structuredClone(completed);
+      alter(bad);
+      assert.equal(warp.inspectWarpEpochsV165(bad, owner).status, "invalid-save");
+    }
+  }
 });
