@@ -91,7 +91,7 @@ import { actSpaceRoutesV159, normalizeSpaceRoutesV159, spacePersonalShipV159, ty
 import { shipAcquisitionAuthorityV161, shipReceiptV161 } from './systems/shipReceiptV161';
 import { applyEarthHuntActionV171, getEarthHuntAccessV171, type EarthHuntActionV171 } from './systems/earthHuntV171';
 import { FIRST_INTERSTELLAR_V173, commitFirstInterstellarV173, firstInterstellarAccessV173,
-  firstInterstellarReceiptV173, inspectFirstInterstellarV173, type FirstInterstellarActionV173 } from './systems/firstInterstellarV173';
+  firstInterstellarInFlightV173, firstInterstellarReceiptV173, type FirstInterstellarActionV173 } from './systems/firstInterstellarV173';
 import { actShipAcquisitionV89, normalizeShipAcquisitionV89, shipAcquisitionEligibleV89, shipAcquisitionSceneFactsV89, type ShipAcquisitionContextV89, type ShipAcquisitionActionV89, type ShipAcquisitionResultV89 } from './systems/shipAcquisitionV89';
 import { withNurseryCheckpoint, withNurseryCompletion } from "./systems/nurseryCampaign";
 import type { NurseryState, NurseryCompletionReceipt } from "./systems/nurseryPrologue";
@@ -2848,8 +2848,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy) {
       return refused('Poste de route suspendu : confirme d’abord la campagne et ses sauvegardes.');
     }
-    const firstJourney = inspectFirstInterstellarV173(current.firstInterstellarV173, current.createdAt).view;
-    if (['travel', 'approach', 'quay'].includes(firstJourney.phase)) {
+    if (firstInterstellarInFlightV173(current.firstInterstellarV173, current.createdAt)) {
       return refused('Regagnez le pont après le premier trajet avant d’engager une autre route.');
     }
     const result = actSpaceRoutesV159(current.spaceRoutesV159, action,
@@ -2912,6 +2911,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     (next: Screen) => {
       if (screen === "mobility" && saveRef.current.mobilityV1?.active && next !== "mobility") { setToast("Remise au garage ou retour de sécurité requis avant de quitter l’aire."); return; }
       if (pendingTrophyCommitRef.current) { setToast("Confirmez la sauvegarde du rite ou exportez son résultat avant de changer de lieu."); return; }
+      const currentFirstTrip = saveRef.current;
+      if (["homeworld", "map", "mission", "briefing", "game-reserve", "clan-ship", "wolf-castle"].includes(next) &&
+          firstInterstellarInFlightV173(currentFirstTrip.firstInterstellarV173, currentFirstTrip.createdAt)) {
+        setScreen("first-interstellar-v173");
+        setToast("Terminez le retour à bord avant de choisir une autre destination.");
+        return;
+      }
       const cradle = saveRef.current.buriedCradle;
       if (cradle && ['active', 'suspended'].includes(cradle.status) && !['buried-cradle', 'buried-cradle-briefing'].includes(next)) {
         setScreen(cradle.status === 'active' ? 'buried-cradle' : 'buried-cradle-briefing');

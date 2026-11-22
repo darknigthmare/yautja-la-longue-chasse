@@ -1,10 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { homeworldSceneSsrV78 } from './helpers/homeworld-scene-ssr-v78.mjs';
-import { playShipAcquisitionV161 } from './helpers/ship-receipt-v161.mjs';
+import { OWNER as owner, SHIP as shipId, firstVoyageAdmissionV173, qa, saves } from './helpers/first-interstellar-fixture-v173.mjs';
 
-const qa = homeworldSceneSsrV78();
-const { defaultSave, parseSaveImport } = qa.load('app/game/save.ts');
+const { defaultSave, parseSaveImport, writeSaveWithStatus } = saves;
 const { createDefaultShipProgression } = qa.load('app/game/systems/progression.ts');
 const { evaluateShipPreparationV88, inspectShipPreparationV88 } = qa.load('app/game/systems/shipPreparationV88.ts');
 const { SHIP_LEVEL_STATIONS } = qa.load('app/game/systems/shipLevelLayout.ts');
@@ -14,28 +12,10 @@ const {
   firstInterstellarReceiptV173: receipt,
   inspectFirstInterstellarV173: inspect,
 } = qa.load('app/game/systems/firstInterstellarV173.ts');
-const chronicle = qa.load('app/game/systems/clanChronicle.ts');
-const { getEarthHuntAccessV171 } = qa.load('app/game/systems/earthHuntV171.ts');
+const { applyEarthHuntActionV171, getEarthHuntAccessV171 } = qa.load('app/game/systems/earthHuntV171.ts');
 const { shipReceiptV161 } = qa.load('app/game/systems/shipReceiptV161.ts');
-const shipId = 'classic-predator-spaceship';
-const owner = '2026-11-22T12:00:00.000Z';
-const rank = () => {
-  const save = defaultSave(owner);
-  let history = chronicle.createClanChronicle();
-  const earn = id => {
-    const proof = chronicle.CHRONICLE_EVIDENCE.find(candidate => candidate.id === id);
-    history = chronicle.recordChronicleEvidence(history, { id, sourceId: proof.sourceId }).state;
-  };
-  earn('intro-begun');
-  for (const rite of chronicle.CHRONICLE_RITES.slice(0, 3)) {
-    rite.requiredEvidenceIds.forEach(earn);
-    history = chronicle.performChronicleRite(history, { id: rite.id, sourceId: rite.sourceId }).state;
-  }
-  assert.equal(chronicle.getChronicleRank(history), 'blooded');
-  save.prologue = { chronicle: history };
-  return save;
-};
-const owned = playShipAcquisitionV161(qa, rank());
+const rank = () => defaultSave(owner);
+const { save: owned } = firstVoyageAdmissionV173();
 const admission = accessFor(owned, shipId, true, null);
 assert.equal(admission.allowed, true);
 
@@ -57,6 +37,10 @@ const relay = { kind: 'relay' };
 const repeat = (number, action) => Array.from({ length: number }, () => action);
 const prepare = route => run(null, { kind: 'plan', route }, ...repeat(4, walk(1)), launch);
 const flyDirect = () => run(prepare('direct'), steer(-1), beacon, steer(1), steer(1), beacon, steer(-1), beacon);
+function store() {
+  const data = new Map();
+  return { getItem: key => data.get(key) ?? null, setItem: (key, value) => data.set(key, value), removeItem: key => data.delete(key) };
+}
 
 function align(state) {
   return run(state, ...repeat(3, mooring({ type: 'lateral', direction: -1 })), mooring({ type: 'align' }));
@@ -147,6 +131,39 @@ test('Old saves remain compatible and future journals are protected', () => {
   assert.equal(parseSaveImport(JSON.stringify(future)).failure, 'future-version');
   const wrongOwner = { ...old, firstInterstellarV173: { ...prepare('direct'), owner: 'foreign' } };
   assert.equal(parseSaveImport(JSON.stringify(wrongOwner)).failure, 'invalid-save');
+});
+
+test('Concurrent writes cannot replace, skip or remove either voyage journal', () => {
+  const storage = store();
+  assert.equal(writeSaveWithStatus(owned, storage).persisted, true);
+  const planned = run(null, { kind: 'plan', route: 'direct' });
+  const competing = run(null, { kind: 'plan', route: 'stopover' });
+  const saveJourney = firstInterstellarV173 => writeSaveWithStatus({ ...owned, firstInterstellarV173 }, storage);
+  assert.equal(saveJourney(planned).persisted, true);
+  for (const attempt of [null, competing, run(planned, walk(1), walk(1))]) {
+    assert.equal(saveJourney(attempt).failure, 'save-conflict');
+  }
+  const next = run(planned, walk(1));
+  assert.equal(saveJourney(next).persisted, true);
+  const repeated = saveJourney(next);
+  assert.equal(repeated.persisted, true);
+  assert.equal(repeated.save.firstInterstellarV173.actions.length, 2);
+
+  const returned = run(dock(align(flyDirect())), ...repeat(5, walk(1)), ...repeat(5, walk(-1)));
+  const campaign = { ...owned, firstInterstellarV173: returned };
+  const earthStorage = store();
+  assert.equal(writeSaveWithStatus(campaign, earthStorage).persisted, true);
+  const earthAccess = getEarthHuntAccessV171(campaign, true);
+  const deploy = site => applyEarthHuntActionV171(null, owner, { kind: 'deploy', site }, earthAccess).state;
+  const papyrus = deploy('papyrus');
+  const saveEarth = earthHuntV171 => writeSaveWithStatus({ ...campaign, earthHuntV171 }, earthStorage);
+  assert.equal(saveEarth(papyrus).persisted, true);
+  const one = applyEarthHuntActionV171(papyrus, owner, { kind: 'move', direction: 'north' }, earthAccess).state;
+  const two = applyEarthHuntActionV171(one, owner, { kind: 'move', direction: 'north' }, earthAccess).state;
+  for (const attempt of [null, deploy('lions'), two]) {
+    assert.equal(saveEarth(attempt).failure, 'save-conflict');
+  }
+  assert.equal(saveEarth(one).persisted, true);
 });
 
 test('The campaign screen displays both source routes and the physical quay', () => {

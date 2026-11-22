@@ -57,7 +57,7 @@ import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/game
 import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
 import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
 import { inspectSpaceRoutesV159 } from "./systems/spaceRoutesV159";
-import { inspectFirstInterstellarV173, firstInterstellarReceiptV173 } from "./systems/firstInterstellarV173";
+import { inspectFirstInterstellarV173, firstInterstellarInFlightV173, firstInterstellarReceiptV173 } from "./systems/firstInterstellarV173";
 import { inspectEarthHuntV171, getEarthHuntAccessV171 } from "./systems/earthHuntV171";
 import { shipReceiptV161 } from "./systems/shipReceiptV161";
 import { inspectClanShipDocking } from "./systems/clanShipDocking";
@@ -2071,7 +2071,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     return { save: null, failure: "invalid-save" };
   }
   const save = normalizeSave(value);
-  if (firstInterstellar.state && shipReceiptV161(save).receipt?.instanceId !== firstInterstellar.state.hullInstanceId)
+  if (firstInterstellar.state && (shipReceiptV161(save).receipt?.instanceId !== firstInterstellar.state.hullInstanceId ||
+      (save.spaceRoutesV159?.trip && firstInterstellarInFlightV173(firstInterstellar.state, campaignOwner))))
     return { save: null, failure: "invalid-save" };
   if (earthHunt.state && !getEarthHuntAccessV171(save,
       Boolean(firstInterstellarReceiptV173(save, firstInterstellar.state))).allowed)
@@ -2152,6 +2153,15 @@ export function loadSave(
   return loadSaveWithStatus(storage, key).save;
 }
 
+function isVoyageJournalSuccessor(
+  previous: { actions: readonly unknown[] } | null | undefined,
+  requested: { actions: readonly unknown[] } | null | undefined,
+): boolean {
+  const prefix = previous?.actions ?? [];
+  return !!requested && requested.actions.length === prefix.length + 1 &&
+    prefix.every((action, index) => JSON.stringify(action) === JSON.stringify(requested.actions[index]));
+}
+
 function persistCampaign(
   save: SaveGame,
   storage: Storage | null,
@@ -2197,6 +2207,20 @@ function persistCampaign(
       // This receipt ledger belongs to the confirmed campaign write. Refuse a
       // stale copy before it can lose points or convert them into a rank.
       if (JSON.stringify(previous.honorSourcesV169) !== JSON.stringify(requested.honorSourcesV169)) {
+        return failed("save-conflict", previous);
+      }
+      const previousVoyage = previous.firstInterstellarV173;
+      const requestedVoyage = requested.firstInterstellarV173;
+      if (JSON.stringify(previousVoyage ?? null) !== JSON.stringify(requestedVoyage ?? null) &&
+          (!requestedVoyage || !isVoyageJournalSuccessor(previousVoyage, requestedVoyage) || previous.spaceRoutesV159?.trip ||
+            shipReceiptV161(previous).receipt?.instanceId !== requestedVoyage.hullInstanceId)) {
+        return failed("save-conflict", previous);
+      }
+      const previousEarth = previous.earthHuntV171;
+      const requestedEarth = requested.earthHuntV171;
+      if (JSON.stringify(previousEarth ?? null) !== JSON.stringify(requestedEarth ?? null) &&
+          (!isVoyageJournalSuccessor(previousEarth, requestedEarth) ||
+            !getEarthHuntAccessV171(previous, Boolean(firstInterstellarReceiptV173(previous, previousVoyage))).allowed)) {
         return failed("save-conflict", previous);
       }
       const previousPassage = previous.elderPassageJudgmentV168;
