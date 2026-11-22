@@ -243,6 +243,11 @@ export function commitFirstInterstellarV173(raw: unknown, command: FirstInterste
   return { ...result, state };
 }
 
+export function firstInterstellarInFlightV173(raw: unknown, owner: string): boolean {
+  const { phase } = inspectFirstInterstellarV173(raw, owner).view;
+  return phase === 'travel' || phase === 'approach' || phase === 'quay';
+}
+
 export function firstInterstellarReceiptV173(save: ShipSave, raw: unknown) {
   const receipt = shipReceiptV161(save).receipt;
   if (!receipt) return null;

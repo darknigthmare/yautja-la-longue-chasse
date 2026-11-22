@@ -74,7 +74,7 @@ const pointOnScreen = (point: ShipInterior25dPoint) => {
 
 /** The same eight services, on a real ground plane. All coordinates below are
  * physical floor coordinates until the one projection in the renderer. */
-type CampaignVoyages = { prepare?: () => void; travel?: () => void; earth?: () => void };
+type CampaignVoyages = { prepare?: () => void; travel?: () => void };
 export default function ShipInterior25D(props: PhysicalShipDeckProps & {
   onOpenPersonalTrophyHall?: () => void;
   campaignVoyages?: CampaignVoyages;
@@ -503,8 +503,6 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps & {
             onClick={() => atCampaignVoyagePost("prepare")}>Préparer le premier trajet</button>}
           {props.campaignVoyages.travel && <button type="button" disabled={suspended} data-open-first-interstellar
             onClick={() => atCampaignVoyagePost("travel")}>Premier trajet interstellaire</button>}
-          {props.campaignVoyages.earth && <button type="button" disabled={suspended} data-open-earth-hunt
-            onClick={() => atCampaignVoyagePost("earth")}>Sol · Registre terrestre</button>}
         </div>}
         <button type="button" disabled={suspended || !nearby} className={styles.interact} data-ship-interact onClick={interact}><kbd>{interactionKey} / A</kbd>{interactLabel}</button>
         <div><button type="button" disabled={suspended} data-ship-approach-service onClick={stationRequest}>Rejoindre le poste</button>

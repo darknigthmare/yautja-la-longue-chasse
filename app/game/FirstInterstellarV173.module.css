@@ -17,8 +17,7 @@
   margin: 0 auto 1.6rem;
 }
 
-.header p,
-.legend {
+.header p {
   color: #b6c6ac;
 }
 
@@ -36,88 +35,6 @@
   line-height: 1.02;
 }
 
-.field {
-  max-width: 80rem;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(17rem, 1fr);
-  align-items: start;
-  gap: clamp(.8rem, 2vw, 1.7rem);
-}
-
-.terrain {
-  padding: .5rem;
-  border: 1px solid #66745c;
-  border-radius: .7rem;
-  background: #18282a;
-}
-
-.tiles {
-  overflow: clip;
-  border-radius: .4rem;
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 1px;
-  background: #1f322d;
-}
-
-.tile {
-  display: grid;
-  place-content: center;
-  aspect-ratio: 1;
-  min-width: 0;
-  color: #fff7db;
-  font-size: clamp(.63rem, 1.3vw, 1.05rem);
-  font-weight: 700;
-  background: repeating-linear-gradient(23deg, #456148 0 3px, #4b6147 3px 6px);
-}
-
-.tile[data-terrain="water"] {
-  background: repeating-linear-gradient(162deg, #1b3b43 0 7px, #264651 7px 8px);
-}
-
-.tile[data-terrain="tracks"],
-.tile[data-terrain="cover"] {
-  background: repeating-linear-gradient(101deg, #213c33 0 3px, #364f3a 3px 5px, #415c40 5px 6px);
-}
-
-.tile[data-terrain="ford"],
-.tile[data-terrain="papyrus"] {
-  background: repeating-linear-gradient(160deg, #627455 0 4px, #829173 4px 5px);
-}
-
-.tile[data-terrain="camp"],
-.tile[data-terrain="island"] {
-  background: repeating-linear-gradient(75deg, #79553a 0 6px, #583e30 6px 8px);
-}
-
-.tile[data-terrain="lions"] {
-  background: repeating-linear-gradient(132deg, #635f3e 0 3px, #79764c 3px 6px);
-}
-
-.tile[data-terrain="extraction"] {
-  background: #3b6767;
-  font-size: 1.45rem;
-}
-
-.tile[data-threat="true"] {
-  color: #ffe0a4;
-  text-shadow: 0 1px 3px #090300;
-}
-
-.tile[data-player="true"] {
-  background: #e7cf78;
-  color: #201e11;
-  outline: 2px solid #ffebad;
-  outline-offset: -2px;
-}
-
-.tile[data-player="true"][data-cloak="true"] {
-  background: #98dde7;
-  color: #092426;
-  outline-color: #c5f6ff;
-}
-
 .panel {
   border: 1px solid #536652;
   background: #101c17;
@@ -132,28 +49,6 @@
 .panel h2,
 .panel p:first-of-type {
   margin-top: 0;
-}
-
-.stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .6rem;
-  margin: 1rem 0;
-}
-
-.stats div {
-  border-left: 2px solid #98a780;
-  padding-left: .55rem;
-}
-
-.stats dt {
-  font-size: .8rem;
-  color: #b7c6ac;
-}
-
-.stats dd {
-  margin: .12rem 0 0;
-  font-variant-numeric: tabular-nums;
 }
 
 .commands {
@@ -179,8 +74,7 @@
   background: #446044;
 }
 
-.scene button:focus-visible,
-.terrain:focus-visible {
+.scene button:focus-visible {
   outline: 3px solid #f1d67f;
   outline-offset: 2px;
 }
@@ -190,11 +84,6 @@
   max-width: 80rem;
   margin: .9rem auto 0;
   color: #f1d67f;
-}
-
-@media (max-width: 50rem) {
-  .field { grid-template-columns: minmax(0, 1fr); }
-  .legend { margin-bottom: 0; }
 }
 
 @media (max-width: 24rem) {
