@@ -82,15 +82,25 @@ try {
   page.on("pageerror", error => errors.push(error.message));
   await page.goto(base);
   const canvas = page.locator("canvas[data-nursery-cohort]");
-  await page.waitForFunction(() => document.querySelector("canvas")?.dataset.nurseryAssets === "true");
+  const ready = async () => {
+    await page.bringToFront();
+    await page.waitForFunction(() => document.querySelector("canvas")?.dataset.nurseryAssets === "true");
+    await canvas.focus();
+    const tick = Number(await canvas.getAttribute("data-nursery-tick"));
+    await page.waitForFunction(before => Number(document.querySelector("canvas").dataset.nurseryTick) >= before + 6, tick);
+  };
+  await ready();
   assert.equal(await canvas.getAttribute("data-nursery-cohort"), "0");
   async function walk(target) {
     await canvas.focus();
     const current = Number(await canvas.getAttribute("data-nursery-cohort-x"));
     const key = current <= target ? "ArrowRight" : "ArrowLeft";
     await page.keyboard.down(key);
-    await page.waitForFunction(want => Math.abs(Number(document.querySelector("canvas").dataset.nurseryCohortX) - want) <= 16, target);
-    await page.keyboard.up(key);
+    try {
+      await page.waitForFunction(want => Math.abs(Number(document.querySelector("canvas").dataset.nurseryCohortX) - want) <= 16, target);
+    } finally {
+      await page.keyboard.up(key);
+    }
   }
   const step = async (x, ordinal) => {
     await walk(x);
@@ -101,7 +111,7 @@ try {
   await step(278, 2);
   await page.screenshot({ path: "cour-before-reload.png" });
   await page.reload();
-  await page.waitForFunction(() => document.querySelector("canvas")?.dataset.nurseryAssets === "true");
+  await ready();
   assert.equal(await canvas.getAttribute("data-nursery-cohort"), "2");
   await step(394, 3);
   await step(510, 4);
