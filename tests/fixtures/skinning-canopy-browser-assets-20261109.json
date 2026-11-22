@@ -5,7 +5,7 @@
   "recipe": "scripts/qa-skinning-canopy-durable-browser-20261109.mjs",
   "fixture": "tests/browser/skinning-canopy-durable-20261109.fixture.jsx",
   "reportSha256": "fb8e89853a0dda0a50ce69294c5f80743328cd591aa3b984f530eb78fb8128c4",
-  "scope": "Exact asset paths observed by the successful native GameClient field and canopy recipe. Bytes repinned to the original Cradle score manifest. Historical capture and set observation retain their identity.",
+  "scope": "Exact asset paths observed by the successful native GameClient field and canopy recipe. The generated audio manifest follows the original campaign soundtrack. Historical captures and asset-set observation retain their identity.",
   "assets": [
     {
       "path": "public/audio/ambience/ship/v54.wav",
@@ -15,9 +15,9 @@
     },
     {
       "path": "public/audio/manifest.json",
-      "bytes": 12834,
-      "sha256": "40fea9056d515c86520180c4b5e1959b9bcf1c1788795520eab01815ae1ce9b6",
-      "gitBlob": "27b2416db1b450ea8d17966192935601c0135b9b"
+      "bytes": 15078,
+      "sha256": "64f3eda471fc891aef6d5e208e55288a0217eb5d00e0e1dc8e7ae0e04a7db573",
+      "gitBlob": "ebe3dfc3b2c317e06a5410ffbfb4232e0273cc80"
     },
     {
       "path": "public/audio/sfx/cloak-off/v54.wav",
@@ -1743,7 +1743,7 @@
     }
   ],
   "assetSetObservationSourceRef": "ce82e2b742c2243e524e23aee4efe26cd5c6a644",
-  "repinnedAt": "2026-11-20T23:32:35.136Z",
+  "repinnedAt": "2026-11-22T07:24:08Z",
   "repinnedFromManifestSha256": "b0e136b082fd6af63552273a9ac24ff582e8a90a6db6302e2b0479e16a2f609d",
   "repinnedChanges": [
     {
@@ -1758,7 +1758,24 @@
         "bytes": 12834,
         "sha256": "40fea9056d515c86520180c4b5e1959b9bcf1c1788795520eab01815ae1ce9b6",
         "gitBlob": "27b2416db1b450ea8d17966192935601c0135b9b"
-      }
+      },
+      "repinnedAt": "2026-11-20T23:32:35.136Z"
+    },
+    {
+      "before": {
+        "path": "public/audio/manifest.json",
+        "bytes": 12834,
+        "sha256": "40fea9056d515c86520180c4b5e1959b9bcf1c1788795520eab01815ae1ce9b6",
+        "gitBlob": "27b2416db1b450ea8d17966192935601c0135b9b"
+      },
+      "after": {
+        "path": "public/audio/manifest.json",
+        "bytes": 15078,
+        "sha256": "64f3eda471fc891aef6d5e208e55288a0217eb5d00e0e1dc8e7ae0e04a7db573",
+        "gitBlob": "ebe3dfc3b2c317e06a5410ffbfb4232e0273cc80"
+      },
+      "repinnedAt": "2026-11-22T07:24:08Z",
+      "sourceRef": "66e9da0125bb4b930b588a54409519bce9bd24df"
     }
   ]
 }
