@@ -951,6 +951,10 @@ Valeurs de l'avenant (section 7). Cible : un joueur discret reste sous 40 jusqu'
 
 ---
 
+### 27.1 Prototype de la tranche verticale (22 novembre 2026)
+
+Un prototype autonome du contrat T-CT-01A « L'ivoire rouge » est dans `docs/prototypes/TERRE_PROTOTYPE_OKAVANGO_20261122.html` (page HTML, non reliée au code du jeu). Il couvre : insertion, 6 secteurs, montée des eaux, analyse et marques, traduction des radios, 3 traces, caméra de chasse, porteurs qui filment (jauge d'envoi), assommer, lions, Lisle en 3 phases (chiens et fusée, fuite vers le bateau), choix achever / épargner, éléphant à sauver, trophée (camouflage coupé), cacher un corps, fenêtre d'extraction, débrief (barème de la bible, objectifs, Indice, registre). Il sert à juger les règles, pas l'art.
+
 ## 28. Tests
 
 - Terre fermée avant R2-M023 ; ouverte après.
