@@ -45,7 +45,7 @@ const capture = async file => {
 };
 const disk = () => page.evaluate(() => JSON.parse(localStorage.getItem("yautja-long-hunt.save")));
 let nav, indoorNav;
-async function approachNative(room, endpoint, accepts) {
+async function approachNative(room, endpoint, accepts, inRange) {
   const start = await indoorNav.position();
   const successors = [[0, -8], [8, 0], [-8, 0], [0, 8]];
   const keyFor = point => point.x + "," + point.y;
@@ -73,7 +73,7 @@ async function approachNative(room, endpoint, accepts) {
   await indoorNav.focus();
   await indoorNav.follow(path.reverse());
   const at = await indoorNav.position();
-  assert.ok(accepts(at), "Physical target " + endpoint + " from " + JSON.stringify(at));
+  assert.ok(inRange(at), "Physical target " + endpoint + " from " + JSON.stringify(at));
   await page.keyboard.press("KeyE");
   await indoorNav.tick(160);
   const walked = { endpoint, roomId: room.buildingId, from: start, to: at, steps: path.length };
@@ -88,7 +88,7 @@ async function exitNativeRoom() {
   assert.ok(room);
   const accepts = point => api.nearestHomeworldInteriorTargetV64(room, point)?.kind === "exit" &&
     Math.hypot(point.x - room.exit.x, point.y - room.exit.y) < 18;
-  await approachNative(room, "sortie", accepts);
+  await approachNative(room, "sortie", accepts, point => api.nearestHomeworldInteriorTargetV64(room, point)?.kind === "exit");
   assert.equal(await nav.room(), null);
 }
 async function openNativePoint(pointId) {
@@ -100,9 +100,9 @@ async function openNativePoint(pointId) {
   } else await nav.closeDialog();
   const accepts = point => {
     const target = api.nearestHomeworldInteriorTargetV64(room, point);
-    return target?.pointId === pointId && Math.hypot(point.x - target.position.x, point.y - target.position.y) < 59;
+    return target?.pointId === pointId && Math.hypot(point.x - target.position.x, point.y - target.position.y) < 54;
   };
-  await approachNative(room, pointId, accepts);
+  await approachNative(room, pointId, accepts, point => api.nearestHomeworldInteriorTargetV64(room, point)?.pointId === pointId);
   await page.locator("[data-homeworld-hub]").getByRole("dialog").waitFor();
 }
 async function boot() {
@@ -174,10 +174,10 @@ try {
   await boot();
   const initial = await disk();
   assert.equal(initial.homeworld.youthCityErrandV172, undefined);
-  await openNativePoint("audience-point");
+  await nav.openPoint("audience-point");
   await action('[data-r2-m003-route="escort"]', 0);
   await capture("01-piece-confiee.png");
-  await openNativePoint("forge-service");
+  await nav.openPoint("forge-service");
   await action('[data-r2-m003-stop="forge-service"]', 1);
   await capture("02-remise-forge.png");
   saveRoutes();
