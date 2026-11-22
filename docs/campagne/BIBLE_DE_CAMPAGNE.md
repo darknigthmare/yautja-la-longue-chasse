@@ -34,7 +34,8 @@ Le classeur décrit les 68 fiches au commit de référence. Il consigne les nouv
 - R2-M002 · Duel, outil, barrière et choix de cohorte. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996315371)
 - R2-M003 · Audience, remise à la forge et repères de cité. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996220777)
 - R2-M013 · Kit, écran, alerte, dépense et repos. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44995579576)
-- R2-M028 · Ordres au quai, verrou à l’atelier et reprise. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44995821505)
+- R2-M023 · Coque V161, sas, trois balises, amarrage et quai. La recette se déroule sur une campagne adulte avec le prévol V88 préparé. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44997075667)
+- R2-M028 · Ordres au quai, verrou à l’atelier et reprise. Le rôle de délégation a été joué dans Chrome. Le moteur couvre aussi le rôle terrain. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996869503)
 - R2-M039 · Quai, atelier, relais et témoin. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996173113)
 - R2-M047 · Passe des Cendres et deux interventions. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44994874573)
 - R2-M048 · Crue, rassemblement et choix d’intervention. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44995209730)
@@ -73,7 +74,7 @@ Chaîne jouable actuelle, dans l'ordre du jeu : nurserie (V47) → accueil Unblo
 | 20 | R2-M020 | Porter la marque Blooded | Young Blood | Texte seul | — |
 | 21 | R2-M021 | Une coque vraiment acquise | Blooded | Partiel | V87 → V89 vaisseau |
 | 22 | R2-M022 | Huit salles pour préparer la route | Blooded | Partiel | V88 préparation |
-| 23 | R2-M023 | Le premier trajet entre les mondes | Blooded | Partiel | V89, trajet non joué |
+| 23 | R2-M023 | Le premier trajet entre les mondes | Blooded | Quai interstellaire raccordé | Coque V161, sas, trois balises, amarrage et quai |
 | 24 | R2-M024 | La première chasse d’un autre ciel | Blooded | Jouable | réalisée par les 8 chasses |
 | 25 | R2-M024.1 | Sang dans la canopée — Oseris-IV | Blooded | Jouable | `jungle-vey` |
 | 26 | R2-M024.2 | Chaleur sous la glace — Nivalis-K | Blooded | Jouable | `ice-cryostalker` |
@@ -2307,7 +2308,7 @@ Huit chasses jouables enchaînées : chacune exige la précédente, et la huiti�
 
 ## Acte VI — Blooded : Xeno Prime, Warp et guerre (R2-M025 → M043)
 
-Après les 8 chasses : première reine, fonction Adjutant, quête du Warp (facultative pour Elite), introduction aux trois modes de guerre, retour au Homeworld puis Quatza-Rij solitaire jusqu'au rang Elite. Toutes en texte seul ; les modes Guerres des clans existent à part.
+Après les 8 chasses : première reine, fonction Adjutant, quête du Warp (facultative pour Elite), introduction aux trois modes de guerre, retour au Homeworld puis Quatza-Rij solitaire jusqu'au rang Elite. Le Berceau, le Warp, l’essai de coordination et le retour au Homeworld ont des parcours propres. Les trois modes Guerres des clans existent à part.
 
 ### R2-M025 — Préparer Xeno Prime
 
@@ -2497,7 +2498,7 @@ Dans une campagne adulte admissible, le joueur écoute les deux dépositions et 
 
 ## Acte VIII — Elder et Ancient (R2-M052 → M060)
 
-Transmission, retour sur un ancien terrain, successeur, rang Ancient, mausolée, chroniques cinéma et épilogue. Toutes en texte seul ; le mausolée existe comme système séparé (`systems/mausoleum.ts`).
+Transmission, retour sur un ancien terrain, successeur, rang Ancient, mausolée, chroniques cinéma et épilogue. Les parcours M052 et M053 se jouent à partir du Clan Ship. Le mausolée existe indépendamment dans `systems/mausoleum.ts`. Les fiches de transmission qui suivent gardent leur état de production dans le classeur.
 
 ### R2-M052 — L’atelier qui fonctionne sans moi
 
