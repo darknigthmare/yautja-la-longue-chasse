@@ -28,7 +28,7 @@ const bootstrap = await build({ stdin: {
 }, bundle: true, write: false, format: "iife", platform: "browser", logLevel: "silent" });
 
 const api = homeworldQaModelV64(process.cwd(), [
-  "homeworldWorldV77.ts", "homeworldNavigationV77.ts", "homeworldGeometryV64.ts", "homeworldInteriorsV64.ts",
+  "homeworldWorldV77.ts", "homeworldNavigationV77.ts", "homeworldNavigationV109.ts", "homeworldGeometryV64.ts", "homeworldInteriorsV64.ts",
 ]);
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
@@ -108,7 +108,15 @@ async function boot() {
   await page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]').waitFor();
   await page.bringToFront();
   await page.clock.pauseAt(await page.evaluate(() => Date.now() + 150));
-  nav = homeworldNavigatorV77(page, api);
+  const exterior = {
+    ...api,
+    homeworldWorldRouteV77(from, to) {
+      if (from.levelId !== to.levelId) return api.homeworldWorldRouteV77(from, to);
+      const walk = api.homeworldWalkRouteV109(from.levelId, from.point, to.point);
+      return { status: walk.status, segments: walk.status === "reachable" ? [walk] : [] };
+    },
+  };
+  nav = homeworldNavigatorV77(page, exterior, { waypointTolerance: 3, driverTickMs: 26, pulseInputs: true });
   indoorNav = homeworldNavigatorV77(page, api, { waypointTolerance: 3, driverTickMs: 26, pulseInputs: true });
   await nav.focus();
 }

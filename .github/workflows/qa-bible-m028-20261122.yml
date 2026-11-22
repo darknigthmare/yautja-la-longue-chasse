@@ -43,6 +43,8 @@ jobs:
             /public/game/assets/v135/
             /public/game/assets/v136/
             /public/game/sprites/v62/heads/
+            /public/game/sprites/v5/film-plates/jungle-hunter.png
+            /public/game/assets/v15/trophies/trophy-ruins-ancient-guardian.webp
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
