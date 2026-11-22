@@ -1,0 +1,149 @@
+name: Verify composed Bible campaign
+on:
+  push:
+    branches: [codex/verify-bible-campaign-20261122]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source:
+    name: Verify campaign proofs, workbook and runtime asset inventory
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'b0c8f0cb613849ab1c0d3ddf13799524c5935239'
+      BASE_COMMIT: '65361bb4e2071ce7b61b81f17ab812e7ba299335'
+    steps:
+      - name: Checkout the exact candidate and bounded inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 'b0c8f0cb613849ab1c0d3ddf13799524c5935239'
+          persist-credentials: false
+          fetch-depth: 12
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /production/INVENTAIRE_BIBLE_20261122.*
+            /production/YAUTJA_LOTS_P0_P3_20261121.*
+            /production/YAUTJA_LOTS_P0_P3_LOT2_20261121.*
+            /public/game/xeno-prime/berceau-v1/
+            /public/audio/
+            /public/game/quatza-rij/
+            /public/game/assets/v37/tribes/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp
+            /public/game/assets/v37/tribes/v2/homeworld-forest-v2--8fdc633789dcd9c0.webp
+            /public/game/assets/v37/tribes/v2/homeworld-lava-v2--ecd85e06796799d2.webp
+            /public/game/backgrounds/ice-depth-v4.webp
+            /public/game/backgrounds/ocean-depth-v8.png
+            /public/game/backgrounds/ruins-depth-v8.png
+            /public/game/backgrounds/swamp-depth-v8.png
+            /public/game/homeworld/v67/ash-causeway-vista.png
+            /public/game/homeworld/v67/glass-processional-vista.png
+            /public/game/sprites/v8/ecology/cinder-12/basalt-ram-sheet.png
+            /public/game/sprites/v8/ecology/cinder-12/smoke-wyvern-sheet.png
+            /public/game/sprites/v8/ecology/naraka-delta/mire-shell-sheet.png
+            /public/game/sprites/v8/ecology/nivalis-k/snow-prowler-sheet.png
+            /public/game/sprites/v8/ecology/oseris-iv/amber-jaw-stalker-sheet.png
+            /public/game/sprites/v8/ecology/pelagos-m/shellback-sheet.png
+            /public/game/sprites/v8/ecology/serekh-9/burrow-snake-sheet.png
+            /public/game/assets/clan-field-20261103/
+            /public/**/manifest.json
+            /public/game/assets/v139/rig-gauntlets/
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/assets/v133/concept-masks/
+            /public/game/assets/v133/decals/decal-atlas.webp
+            /public/game/sprites/v62/heads/
+            /public/game/assets/v134/
+            /public/game/assets/v135/
+            /public/game/assets/v136/
+            /public/game/p0-sprites-20261113/warp/
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize official runtime inputs and install dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate canonical runtime evidence
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs candidate || { cat outputs/qa-asset-raccords-20261120/runtime-generator.log; exit 1; }
+          node scripts/check-hunt-integration-source-v112.mjs --current
+      - name: Verify Next types
+        if: ${{ !cancelled() }}
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Lint changed feature modules
+        if: ${{ !cancelled() }}
+        run: >-
+          npx eslint
+          app/game/systems/elderWorkshopV172.ts
+          app/game/ClanShipHub.tsx
+          app/game/ClanShipOperationsPanel.tsx
+          app/game/ElderWorkshopV172.tsx
+          scripts/qa-elder-workshop-v172.mjs
+          app/game/systems/nurseryCohortV172.ts
+          app/game/systems/nurseryPrologue.ts
+          app/game/systems/nurseryContinuityV72.ts
+          app/game/systems/nurseryCampaign.ts
+          app/game/nurseryRendering.ts
+          app/game/NurseryPrologueScreen.tsx
+          app/game/ClanChroniclePanel.tsx
+          app/game/systems/youthMedicompV172.ts
+          app/game/systems/youthTraining.ts
+          app/game/systems/youthCampaign.ts
+          app/game/YouthTrainingScreen.tsx
+          app/game/youthTrainingRendering.ts
+          app/game/systems/homeworldReturnM039.ts
+          app/game/HomeworldReturnM039.tsx
+          app/game/systems/homeworld.ts
+          app/game/HomeworldHub.tsx
+          app/game/HomeworldInteriorSurface.tsx
+          app/game/systems/warReturnR2M047.ts
+          app/game/systems/clanShipOperations.ts
+          app/game/ClanWarReturnR2M047Panel.tsx
+          scripts/qa-clan-collective-return-20261121.mjs
+          app/game/systems/warpVillageR2M048.ts
+          app/game/systems/warpEpochsV165.ts
+          app/game/WarpEpochsPanelV165.tsx
+          scripts/qa-warp-village-r2-m048.mjs
+          scripts/build-bible-inventory-workbook-20261122.mjs
+      - name: Verify canonical chapter state and workbook
+        if: ${{ !cancelled() }}
+        run: |
+          node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec tests/nursery-cohort-v172.test.mjs tests/youth-training.test.ts tests/homeworld-return-m039.test.mjs tests/clan-ship-operations.test.mjs tests/warp-epochs-v165.test.mjs tests/elder-workshop-v172.test.mjs tests/elder-assembly-v168.test.mjs tests/ship-receipt-v161.test.mjs
+          node scripts/build-bible-inventory-workbook-20261122.mjs --check
+      - name: Report canonical inventory differences
+        if: ${{ !cancelled() && hashFiles('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json') != '' }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs';
+          const prior = JSON.parse(readFileSync('docs/qa/current-integration-20261103/runtime-inputs.json'));
+          const next = JSON.parse(readFileSync('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json'));
+          const old = new Map(prior.entries.map(item => [item.path, item]));
+          const paths = new Set(next.entries.map(item => item.path));
+          const changes = next.entries.filter(item => JSON.stringify(old.get(item.path)) !== JSON.stringify(item));
+          const removed = prior.entries.filter(item => !paths.has(item.path)).map(item => item.path);
+          console.log('V113_DELTA ' + JSON.stringify({ files: next.files, bytes: next.bytes, changes, removed }));
+          NODE
+
