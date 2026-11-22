@@ -47,16 +47,19 @@
       },
       "fiche": 1839,
       "etatSurMain": "NON_COMMENCE_OBSERVE",
-      "observation": "La boucle d’après-duel concernant barrière, filet et trois camarades reste à produire.",
+      "observation": "Sur 65361bb · La boucle d’après-duel concernant barrière, filet et trois camarades reste à produire.\nRecette · Le Canvas natif de la cour valide le déplacement, la barrière et les gestes de Harek, Yena, Tov et Saar. La progression reprend au deuxième geste après rechargement. L’aide à Yena, le retour de l’outil et la sortie sont confirmés.",
       "preuves": [
         "app/game/NurseryPrologueScreen.tsx#L35-L52",
         "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2976-L2979"
       ],
       "chantierActif": "actes_i_iii",
-      "etatDeLivraison": "Recette Chrome avant composition",
-      "reste": "Valider l’intégration des libellés retestés dans la composition finale.",
+      "etatDeLivraison": "Chrome validé · avant composition",
+      "reste": "Accessoires et personnages réutilisent les atlas de la nurserie. Donner aux trois jeunes des poses propres et animer leurs gestes reste à produire. Le harnais Chrome joue le choix Yena avec le son désactivé.",
       "preuvesLivraison": [
-        "actions/runs/44995005229"
+        "actions/runs/44995203586",
+        "actions/runs/44995203586/artifacts/14743865686",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/d5f301b21ac0ac620a834000866b6b6f32559cc1/tests/qa-nursery-courtyard.playwright.mjs#L84-L121",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/d5f301b21ac0ac620a834000866b6b6f32559cc1/app/game/nurseryRendering.ts#L256-L282"
       ]
     },
     {
@@ -259,10 +262,19 @@
       },
       "fiche": 1953,
       "etatSurMain": "VOISIN",
-      "observation": "La cohorte V68 récupère et emploie un medicomp. L’exercice propre avec écran de protection, interruption et reprise reste ouvert.",
+      "observation": "Sur 65361bb · La cohorte V68 récupère et emploie un medicomp. L’exercice propre avec écran de protection, interruption et reprise reste ouvert.\nRecette · Les deux ordres de soin maintiennent la dose unique et la reprise après interruption. Chrome a rejoué la voie réactive dans les baraquements, de l’atelier et de l’écran à l’alerte, au rechargement, au soin puis au repos.",
       "preuves": [
         "app/game/systems/campaignSoloV68.ts#L55-L62",
         "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2983"
+      ],
+      "etatDeLivraison": "Tests et Chrome validés · avant composition",
+      "reste": "Le Canvas s’appuie sur les décors existants, un écran géométrique et des repères dessinés. Les tests couvrent les deux voies. La capture Chrome valide la voie réactive, avec le son désactivé.",
+      "preuvesLivraison": [
+        "actions/runs/44995515584",
+        "actions/runs/44995579576",
+        "actions/runs/44995579576/artifacts/14743577399",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/261e911f597e208e7abcc9dbf21c77aaee8db0cf/tests/qa-youth-medicomp.playwright.mjs#L107-L142",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/261e911f597e208e7abcc9dbf21c77aaee8db0cf/app/game/youthTrainingRendering.ts#L156-L188"
       ]
     },
     {
@@ -904,17 +916,18 @@
       },
       "fiche": 2383,
       "etatSurMain": "VOISIN",
-      "observation": "Les rues, missions et conversations des activités locales existent. Le retour dédié dont les réactions se fondent sur les chasses effectivement faites reste à raccorder.",
+      "observation": "Sur 65361bb · Les rues, missions et conversations des activités locales existent. Le retour dédié dont les réactions se fondent sur les chasses effectivement faites reste à raccorder.\nRecette · Le retour rattache les conversations aux chasses terminées. Les tests couvrent les deux contacts natifs, la réparation du même relais et le rapport persistant. Le signal du relais est rendu dans la scène d’origine.",
       "preuves": [
         "app/game/HomeworldHub.tsx#L1254-L1259",
         "app/game/HomeworldHub.tsx#L1596",
         "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2383-L2387"
       ],
       "chantierActif": "actes_iv_vi",
-      "etatDeLivraison": "Tests avant composition",
-      "reste": "Compléter la recette visuelle après les vérifications automatisées.",
+      "etatDeLivraison": "Tests validés · recette visuelle à compléter",
+      "reste": "La recette navigateur du trajet dans la ville et des choix de lien reste à documenter. La variante livrée suit la réparation du relais. Escorte et piste locale restent des variantes à produire.",
       "preuvesLivraison": [
-        "actions/runs/44995049646"
+        "actions/runs/44995049646",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/a9bed649b9f6df5188be67225c0cd3dd35d4708b/app/game/HomeworldReturnM039.tsx#L36-L72"
       ]
     },
     {
@@ -1068,17 +1081,20 @@
       },
       "fiche": 2445,
       "etatSurMain": "NON_COMMENCE_OBSERVE",
-      "observation": "La visite du lieu transformé après bataille, avec un vétéran et la tâche de retour, n’a pas de raccord observé. Le reçu de M046 est un point d’entrée réel.",
+      "observation": "Sur 65361bb · La visite du lieu transformé après bataille, avec un vétéran et la tâche de retour, n’a pas de raccord observé. Le reçu de M046 est un point d’entrée réel.\nRecette · Après l’escorte collective réglée, les deux visites de la Passe des Cendres confirment la relève des blessés ou la réouverture du pont, avec reprise et reçu.",
       "preuves": [
         "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2445-L2449",
         "app/game/systems/clanShipOperations.ts#L660",
         "pull/187"
       ],
       "chantierActif": "actes_vii_ix",
-      "etatDeLivraison": "Recette Chrome avant composition",
-      "reste": "Vérifier les deux issues dans la composition finale.",
+      "etatDeLivraison": "Deux issues Chrome validées · avant composition",
+      "reste": "La visite se déroule sur une carte de repères et des actions ordonnées. Un déplacement libre sur le terrain reconstruit, les animations d’accompagnement et un décor dédié restent à produire.",
       "preuvesLivraison": [
-        "actions/runs/44994874573"
+        "actions/runs/44994874573",
+        "actions/runs/44994874573/artifacts/14743582358",
+        "actions/runs/44994874573/artifacts/14743087478",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/eff9d96726fab162ad62cada9c12509222241be6/app/game/ClanWarReturnR2M047Panel.tsx#L35-L58"
       ]
     },
     {
@@ -1093,16 +1109,19 @@
       },
       "fiche": 2451,
       "etatSurMain": "VOISIN",
-      "observation": "W-02 a trois étapes en branche distincte, dont observation ou duel réel et restituer/recevoir un objet. La mission d’aide à un groupe local de M048, son choix et son reçu restent ouverts.",
+      "observation": "Sur 65361bb · W-02 a trois étapes en branche distincte, dont observation ou duel réel et restituer/recevoir un objet. La mission d’aide à un groupe local de M048, son choix et son reçu restent ouverts.\nRecette · Le Hameau des Cèdres dans W‑02 valide aide limitée et observation. Les choix restent dans la branche et le départ de retour utilise la fenêtre réservée.",
       "preuves": [
         "app/game/systems/warpEpochsV165.ts#L123-L145",
         "app/game/systems/warpEpochsV165.ts#L464-L495",
         "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2451-L2455"
       ],
-      "etatDeLivraison": "Recette Chrome avant composition",
-      "reste": "Vérifier les deux issues dans la composition finale.",
+      "etatDeLivraison": "Deux issues Chrome validées · avant composition",
+      "reste": "Le hameau progresse par postes et actions du panneau Warp. La traversée incarnée du hameau et son habillage propre restent à produire.",
       "preuvesLivraison": [
-        "actions/runs/44995209730"
+        "actions/runs/44995209730",
+        "actions/runs/44995209730/artifacts/14743267437",
+        "actions/runs/44995209730/artifacts/14743129129",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/8d0c9512fc59bb9ea98a0c8054eed43fce750e4b/app/game/WarpEpochsPanelV165.tsx#L35-L59"
       ]
     },
     {
@@ -1175,12 +1194,21 @@
       },
       "fiche": 2485,
       "etatSurMain": "NON_COMMENCE_OBSERVE",
-      "observation": "Atelier déjà mené par un PNJ, aide bornée, conduite rendue et reçu absents du périmètre observé.",
+      "observation": "Sur 65361bb · Atelier déjà mené par un PNJ, aide bornée, conduite rendue et reçu absents du périmètre observé.\nRecette · Depuis l’armurerie du Clan Ship, Chrome a joué les deux choix de Griffe de Fer, réparation au guide ou montage à froid. Les alignements survivent à un rechargement. La pose puis la remise de l’atelier terminent le reçu, exporté et relu.",
       "preuves": [
         "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2485-L2489",
         "app/game/ClanChroniclePanel.tsx#L153-L186"
       ],
-      "chantierActif": "root"
+      "chantierActif": "root",
+      "etatDeLivraison": "Deux issues GameClient validées · avant composition",
+      "reste": "L’établi passe par un panneau intégré et une jauge de crans. L’animation de montage, la bague visible en jeu et l’habillage dédié du poste restent à produire.",
+      "preuvesLivraison": [
+        "actions/runs/44995540968",
+        "actions/runs/44995540968/artifacts/14743513863",
+        "actions/runs/44995540968/artifacts/14743513818",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b315713983527deb8257c868ec4ecad356b62500/scripts/qa-elder-workshop-v172.mjs#L68-L85",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b315713983527deb8257c868ec4ecad356b62500/app/game/ElderWorkshopV172.tsx#L21-L51"
+      ]
     },
     {
       "ordre": 61,
@@ -1678,12 +1706,14 @@
   ],
   "limites": [
     "Le classement assure la couverture des 68 entrées de la table au ref. Les décisions hors table sont recensées quand un parcours ou un écart a pu être vérifié. Il ne remplace pas l’inventaire des dizaines de missions de chaque avenant Bible, l’audit artistique ou un rapport de test exécuté pour le ref.",
-    "Les tests cités sont les fichiers présents ou les artefacts existants. La lecture n’a pas réexécuté le jeu ni les suites. L’absence d’un raccord observé s’applique aux routes et écritures inspectées."
+    "Les tests cités sont les fichiers présents ou les artefacts existants. La lecture n’a pas réexécuté le jeu ni les suites. L’absence d’un raccord observé s’applique aux routes et écritures inspectées.",
+    "Les recettes sur branches ajoutées à la colonne Livraison décrivent leurs scénarios vérifiés avant composition. Le compte de la synthèse reste fondé sur le main de référence."
   ],
   "limitesActuelles": {
     "totalPartiel": 9,
     "exactSansRaccordObserve": 33,
     "exactSansRaccordHorsQuatreChantiers": 29,
     "partiellesHorsQuatreChantiers": 9
-  }
+  },
+  "actualiseLe": "2026-11-22"
 }

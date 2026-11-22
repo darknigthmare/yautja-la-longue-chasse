@@ -75,7 +75,8 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
   const [artError, setArtError] = useState("");
   const [loadAttempt, setLoadAttempt] = useState(0);
   const [phase, setPhase] = useState(initial.phase);
-  const [cohort, setCohort] = useState(initial.phase === "cohort" ? initial.cohortV172 : undefined);
+  const [cohortCheckpoint, setCohortCheckpoint] = useState(initial.cohortV172);
+  const cohort = phase === "cohort" ? cohortCheckpoint : undefined;
   const [readyProgress, setReadyProgress] = useState(0);
   const [paused, setPaused] = useState(false);
   const [pressReady, setPressReady] = useState(initial.readyMode === "press");
@@ -245,7 +246,7 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
       }
       if (phaseChanged || storyChanged || timestamp - lastUi >= 80) {
         lastUi = timestamp; setPhase(result.state.phase); setReadyProgress(presentation.readyGestureProgress);
-        setCohort(presentation.cohort);
+        setCohortCheckpoint(result.state.cohortV172);
         setStoryCard(previous => previous?.id === card?.id ? previous : card);
         setStoryReady(result.state.continuityV72?.recap === true || result.state.phaseTick >= 24);
         setAwaitingChapter(presentation.awaitingNextChapter && !latestRef.current.nextChapterReady);
@@ -328,7 +329,7 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
       </div>}
       {phase === "moon-title" && !storyCard && <div className={styles.title}><h1>Yautja: The Long Hunt</h1><p>Un exercice s’achève. Ton apprentissage commence à peine.</p>{awaitingChapter && <p>Le chapitre suivant se prépare. Votre point de reprise est conservé.</p>}</div>}
       {phase === "complete" && <div className={styles.walkCaption}><strong>Vers la cité du clan</strong><p role="status">{saving ? "Enregistrement du prologue et de l'accueil…" : saveError ? "La fin reste à enregistrer. Vous pouvez réessayer sans rejouer le duel." : "Le passage vers la cité est prêt."}</p></div>}
-      {phase === "walkout" && !effectivePaused && <div className={styles.walkCaption}><strong>Retour au village · à pied</strong><p>{adapterRef.current.state.cohortV172?.steps === 7 ? "La cour a retrouvé son calme. Vous rejoignez le passage du village." : "Le rival a récupéré. Vous rendez le matériel et quittez ensemble la nurserie."}</p></div>}
+      {phase === "walkout" && !effectivePaused && <div className={styles.walkCaption}><strong>Retour au village · à pied</strong><p>{cohortCheckpoint?.steps === 7 ? "La cour a retrouvé son calme. Vous rejoignez le passage du village." : "Le rival a récupéré. Vous rendez le matériel et quittez ensemble la nurserie."}</p></div>}
       {phase === "clan-entry" && !effectivePaused && <div className={styles.walkCaption}><strong>L’annonce est reçue · le voile s’ouvre</strong><p>L’Unblooded traverse le couloir pour rejoindre le hall d’audience.</p></div>}
       {phase === "clan-departure" && !effectivePaused && <div className={styles.walkCaption}><strong>L’audience s’achève · vers les allées de la cité</strong><p>Le jeune quitte le hall à pied. Les consignes personnelles restent à recevoir sur place.</p></div>}
       {paused && !props.externallyPaused && <div className={styles.backdrop}><div ref={panelRef} className={styles.pause} role="dialog" aria-modal="true" aria-label="Prologue en pause"

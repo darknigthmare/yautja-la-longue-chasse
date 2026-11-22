@@ -3,6 +3,8 @@ import { ARMOR_BY_ID, GEAR_BY_ID, MISSION_BY_ID, WEAPON_BY_ID } from '../data';
 import { isShipId, shipForId, SHIP_IDS, type ShipId } from '../shipCatalogue';
 import type { SaveGame } from '../types';
 import { nearestPhysicalShipStation } from './physicalShipMotion';
+import { FIRST_INTERSTELLAR_V173 } from './firstInterstellarV173';
+import { shipReceiptV161 } from './shipReceiptV161';
 import { SHIP_PROGRESSION_STORAGE_KEY, validateCanonicalShipProgression, type ShipProgressionState } from './progression';
 import { SHIP_LEVEL_STATIONS, type PhysicalShipStationId } from './shipLevelLayout';
 import { isShipInterior25dRoomId, isNearShipInterior25dStation, type ShipInterior25dRoomId } from './shipInterior25d';
@@ -128,7 +130,13 @@ export function shipPreparationFactsV88(context: ShipPreparationContextV88): Shi
   const { save, selectedMissionId } = context;
   const fleet = context.fleet ? validateCanonicalShipProgression(context.fleet, save) : null;
   const mission = selectedMissionId && Object.hasOwn(MISSION_BY_ID, selectedMissionId) ? MISSION_BY_ID[selectedMissionId as keyof typeof MISSION_BY_ID] : null;
-  const missionReady = !!mission && ['available', 'completed'].includes(save.missionProgress[mission.id]?.status);
+  const firstJourney = selectedMissionId === FIRST_INTERSTELLAR_V173.missionId;
+  const missionReady = firstJourney
+    ? shipReceiptV161(save).receipt?.shipId === context.shipId
+    : !!mission && ['available', 'completed'].includes(save.missionProgress[mission.id]?.status);
+  const destinationRequired = firstJourney
+    ? 'Confirmer la coque possédée pour la Couronne des Départs.'
+    : 'Choisir une chasse accessible à la carte galactique.';
   const kitReady = !!ARMOR_BY_ID[save.loadout.armorId] && save.inventory.unlockedArmorIds.includes(save.loadout.armorId) &&
     save.loadout.weaponIds.every(id => !!WEAPON_BY_ID[id] && save.inventory.unlockedWeaponIds.includes(id)) &&
     save.loadout.gearIds.every(id => !!GEAR_BY_ID[id] && save.inventory.unlockedGearIds.includes(id));
@@ -142,8 +150,9 @@ export function shipPreparationFactsV88(context: ShipPreparationContextV88): Shi
     switch (station.id) {
       case 'galaxy-map':
         gesture = 'Inspecter les repères de navigation';
-        details = [mission ? `Chasse choisie : ${mission.title} · ${mission.planetName}` : 'Aucune destination choisie.'];
-        if (!missionReady) missing.push('Choisir une chasse réellement accessible à la carte galactique.');
+        details = [firstJourney ? FIRST_INTERSTELLAR_V173.destination.title
+          : mission ? `Chasse choisie : ${mission.title} · ${mission.planetName}` : 'Aucune destination choisie.'];
+        if (!missionReady) missing.push(firstJourney ? destinationRequired : 'Choisir une chasse réellement accessible à la carte galactique.');
         values = [selectedMissionId, missionReady]; break;
       case 'wall-armory':
         gesture = 'Inspecter le kit sur les supports';
@@ -178,7 +187,7 @@ export function shipPreparationFactsV88(context: ShipPreparationContextV88): Shi
       case 'launch-airlock':
         gesture = 'Inspecter le kit et la destination au sas';
         details = ['Les sept autres postes doivent être contrôlés.', 'La descente en chasse conserve son briefing et ses conditions actuelles.'];
-        if (!missionReady) missing.push('Choisir une chasse accessible avant le contrôle du sas.');
+        if (!missionReady) missing.push(firstJourney ? destinationRequired : 'Choisir une chasse accessible avant le contrôle du sas.');
         if (!kitReady) missing.push('Le kit courant doit être disponible.');
         values = [selectedMissionId, missionReady, kit, kitReady]; break;
     }

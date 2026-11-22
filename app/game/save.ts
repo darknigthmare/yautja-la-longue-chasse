@@ -57,6 +57,9 @@ import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/game
 import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
 import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
 import { inspectSpaceRoutesV159 } from "./systems/spaceRoutesV159";
+import { inspectFirstInterstellarV173, firstInterstellarReceiptV173 } from "./systems/firstInterstellarV173";
+import { inspectEarthHuntV171, getEarthHuntAccessV171 } from "./systems/earthHuntV171";
+import { shipReceiptV161 } from "./systems/shipReceiptV161";
 import { inspectClanShipDocking } from "./systems/clanShipDocking";
 import { evaluateClanShipAccess, evaluateClanShipOperationsCampaign, inspectClanShipOperations } from "./systems/clanShipOperations";
 import { clanHullProjectMatchesOwnedHull, inspectClanHullProject, isClanHullProjectSuccessor } from "./systems/clanHullProjectV171";
@@ -1377,6 +1380,12 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.spaceRoutesV159 === undefined ? {} : {
       spaceRoutesV159: inspectSpaceRoutesV159(source.spaceRoutesV159, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
+    ...(source.firstInterstellarV173 === undefined ? {} : {
+      firstInterstellarV173: inspectFirstInterstellarV173(source.firstInterstellarV173, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
+    ...(source.earthHuntV171 === undefined ? {} : {
+      earthHuntV171: inspectEarthHuntV171(source.earthHuntV171, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     // V160 : écrit seulement s'il existe déjà ; un registre illisible est retiré
     // ici, mais inspectSavePayload refuse avant tout import une version future.
     ...(source.minorArcsV160 === undefined || source.minorArcsV160 === null ? {} : {
@@ -1802,6 +1811,13 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     const routes = inspectSpaceRoutesV159(value.spaceRoutesV159, typeof value.createdAt === "string" ? value.createdAt : "");
     if (routes.status === "future-version" || routes.status === "invalid-save") return { save: null, failure: routes.status };
   }
+  const campaignOwner = typeof value.createdAt === "string" ? value.createdAt : "";
+  const firstInterstellar = inspectFirstInterstellarV173(value.firstInterstellarV173, campaignOwner);
+  const earthHunt = inspectEarthHuntV171(value.earthHuntV171, campaignOwner);
+  if (firstInterstellar.status === "future-version" || earthHunt.status === "future-version")
+    return { save: null, failure: "future-version" };
+  if (firstInterstellar.status === "invalid" || earthHunt.status === "invalid")
+    return { save: null, failure: "invalid-save" };
   // V160 : un registre de mini-arcs plus récent ou d'un autre propriétaire n'est jamais effacé à l'import.
   if (value.minorArcsV160 !== undefined && value.minorArcsV160 !== null) {
     const arcs = inspectMinorArcsV160(value.minorArcsV160, typeof value.createdAt === "string" ? value.createdAt : "");
@@ -2059,11 +2075,16 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (quatza.state && !quatzaCampaignMatchesSave(value as unknown as SaveGame)) {
     return { save: null, failure: "invalid-save" };
   }
-  const normalized = normalizeSave(value);
-  if (elderWorkshop.state && !hasElderWorkshopFoundationV172(normalized)) {
+  const save = normalizeSave(value);
+  if (firstInterstellar.state && shipReceiptV161(save).receipt?.instanceId !== firstInterstellar.state.hullInstanceId)
+    return { save: null, failure: "invalid-save" };
+  if (earthHunt.state && !getEarthHuntAccessV171(save,
+      Boolean(firstInterstellarReceiptV173(save, firstInterstellar.state))).allowed)
+    return { save: null, failure: "invalid-save" };
+  if (elderWorkshop.state && !hasElderWorkshopFoundationV172(save)) {
     return { save: null, failure: "invalid-save" };
   }
-  return { save: normalized, failure: null };
+  return { save, failure: null };
 }
 
 /** Parse first, without writing anything; callers can confirm a valid import. */

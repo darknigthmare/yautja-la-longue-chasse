@@ -13,13 +13,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'b0c8f0cb613849ab1c0d3ddf13799524c5935239'
+      ASSET_RACCORDS_SOURCE_COMMIT: '691be70c76756ea5855b4f093c1640ee8ead1b1e'
       BASE_COMMIT: '65361bb4e2071ce7b61b81f17ab812e7ba299335'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'b0c8f0cb613849ab1c0d3ddf13799524c5935239'
+          ref: '691be70c76756ea5855b4f093c1640ee8ead1b1e'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -127,11 +127,19 @@ jobs:
           app/game/systems/warpEpochsV165.ts
           app/game/WarpEpochsPanelV165.tsx
           scripts/qa-warp-village-r2-m048.mjs
+          app/game/FirstInterstellarV173.tsx
+          app/game/EarthHuntV171.tsx
+          app/game/systems/firstInterstellarV173.ts
+          app/game/systems/earthHuntV171.ts
+          app/game/HomeworldCoordinationM028.tsx
+          app/game/systems/homeworldCoordinationM028.ts
+          app/game/OserisReturnR2M053Panel.tsx
+          app/game/systems/oserisReturnR2M053.ts
           scripts/build-bible-inventory-workbook-20261122.mjs
       - name: Verify canonical chapter state and workbook
         if: ${{ !cancelled() }}
         run: |
-          node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec tests/nursery-cohort-v172.test.mjs tests/youth-training.test.ts tests/homeworld-return-m039.test.mjs tests/clan-ship-operations.test.mjs tests/warp-epochs-v165.test.mjs tests/elder-workshop-v172.test.mjs tests/elder-assembly-v168.test.mjs tests/ship-receipt-v161.test.mjs
+          node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec tests/nursery-cohort-v172.test.mjs tests/youth-training.test.ts tests/homeworld-return-m039.test.mjs tests/clan-ship-operations.test.mjs tests/warp-epochs-v165.test.mjs tests/elder-workshop-v172.test.mjs tests/elder-assembly-v168.test.mjs tests/ship-receipt-v161.test.mjs tests/homeworld-coordination-m028.test.mjs tests/oseris-return-r2-m053.test.mjs tests/first-interstellar-v173.test.mjs tests/earth-hunt-v171.test.mjs
           node scripts/build-bible-inventory-workbook-20261122.mjs --check
       - name: Report canonical inventory differences
         if: ${{ !cancelled() && hashFiles('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json') != '' }}
