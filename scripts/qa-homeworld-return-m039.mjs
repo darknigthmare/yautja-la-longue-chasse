@@ -46,7 +46,11 @@ let nav;
 async function boot() {
   await page.clock.resume();
   assert((await page.reload({ waitUntil: "domcontentloaded" })).ok());
-  await page.getByRole("button", { name: /^Continuer/ }).click();
+  await page.locator('[data-campaign-menu="main"]').waitFor();
+  await page.locator('[data-menu-section="campaign"]').click();
+  await page.locator('[data-menu-action="continue"]').click();
+  const play = page.getByRole("button", { name: "Jouer", exact: true });
+  if (await play.isVisible()) await play.click();
   await page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]').waitFor();
   await page.bringToFront();
   await page.clock.pauseAt(await page.evaluate(() => Date.now() + 150));
