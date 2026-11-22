@@ -1,0 +1,39 @@
+name: Encode eight original landscape ambiences
+on:
+  push:
+    branches: [codex/verify-planet-ambience-fallback-20261122]
+permissions:
+  contents: read
+jobs:
+  media:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout: scripts/generate-planet-ambiences-v173.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Encode and verify media
+        run: node scripts/generate-planet-ambiences-v173.mjs
+      - name: Export original bytes with hash metadata
+        run: |
+          python3 - <<'PY'
+          import base64, json, pathlib
+          root = pathlib.Path("outputs/planet-ambience-v173")
+          entries = json.loads((root / "generated-planet-ambiences.json").read_text())
+          for entry in entries:
+              data = base64.b64encode((root / entry["path"]).read_bytes()).decode()
+              blocks = [data[i:i + 8000] for i in range(0, len(data), 8000)]
+              print("PLANET_META " + json.dumps({**entry, "chunks": len(blocks)}, separators=(",", ":")))
+              for i, block in enumerate(blocks):
+                  print(f"PLANET_DATA {entry['id']} {i + 1}/{len(blocks)} {block}")
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: planet-ambience-v173
+          path: outputs/planet-ambience-v173/
+          if-no-files-found: error
