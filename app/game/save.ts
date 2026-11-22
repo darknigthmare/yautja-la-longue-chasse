@@ -66,6 +66,7 @@ import { inspectBuriedCradleCampaign } from "./systems/buriedCradleCampaign";
 import { inspectElderPassageJudgment } from "./systems/elderPassageJudgmentV168";
 import { inspectElderMentoring, isElderMentoringSuccessor } from "./systems/elderMentoringV168";
 import { inspectElderAssembly, isElderAssemblySuccessor } from "./systems/elderAssemblyV168";
+import { canWorkWithClanArmorerV172, hasElderWorkshopFoundationV172, inspectElderWorkshopV172, isElderWorkshopSuccessorV172 } from "./systems/elderWorkshopV172";
 import { inspectEliteMastery, isEliteMasterySuccessor } from "./systems/eliteMasteryV170";
 import { inspectCompanionResidence, evaluateCompanionResidenceCampaign } from "./systems/companionResidence";
 import { inspectClanShipIncidents, evaluateClanShipIncidentsCampaign, evaluateClanShipTrophyHearingCampaign } from "./systems/clanShipIncidents";
@@ -1306,6 +1307,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.elderAssemblyV168 === undefined ? {} : {
       elderAssemblyV168: inspectElderAssembly(source.elderAssemblyV168, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
+    ...(source.elderWorkshopV172 === undefined ? {} : {
+      elderWorkshopV172: inspectElderWorkshopV172(source.elderWorkshopV172, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     ...(source.eliteMasteryV170 === undefined ? {} : {
       eliteMasteryV170: inspectEliteMastery(source.eliteMasteryV170, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1662,10 +1666,11 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const owner = typeof value.createdAt === "string" ? value.createdAt : "";
   const elderMentoring = inspectElderMentoring(value.elderMentoringV168, owner);
   const elderAssembly = inspectElderAssembly(value.elderAssemblyV168, owner);
+  const elderWorkshop = inspectElderWorkshopV172(value.elderWorkshopV172, owner);
   const eliteMastery = inspectEliteMastery(value.eliteMasteryV170, owner);
   const hullProject = inspectClanHullProject(value.clanHullProjectV171, owner);
   const quatza = inspectQuatzaRij(value.quatzaRij, owner);
-  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides, elderPassage, elderMentoring, elderAssembly, eliteMastery, hullProject, quatza]) {
+  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides, elderPassage, elderMentoring, elderAssembly, elderWorkshop, eliteMastery, hullProject, quatza]) {
     if (inspection.status === "future-version" || inspection.status === "invalid-save") {
       return { save: null, failure: inspection.status };
     }
@@ -2054,7 +2059,11 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (quatza.state && !quatzaCampaignMatchesSave(value as unknown as SaveGame)) {
     return { save: null, failure: "invalid-save" };
   }
-  return { save: normalizeSave(value), failure: null };
+  const normalized = normalizeSave(value);
+  if (elderWorkshop.state && !hasElderWorkshopFoundationV172(normalized)) {
+    return { save: null, failure: "invalid-save" };
+  }
+  return { save: normalized, failure: null };
 }
 
 /** Parse first, without writing anything; callers can confirm a valid import. */
@@ -2198,6 +2207,13 @@ function persistCampaign(
         ? !requestedAssembly || (JSON.stringify(previousAssembly) !== JSON.stringify(requestedAssembly) &&
           !isElderAssemblySuccessor(previousAssembly, requestedAssembly))
         : requestedAssembly && requestedAssembly.revision !== 1) {
+        return failed("save-conflict", previous);
+      }
+      const previousWorkshop = previous.elderWorkshopV172;
+      const requestedWorkshop = requested.elderWorkshopV172;
+      if (JSON.stringify(previousWorkshop ?? null) !== JSON.stringify(requestedWorkshop ?? null) &&
+          (!requestedWorkshop || !isElderWorkshopSuccessorV172(previousWorkshop, requestedWorkshop) ||
+            !canWorkWithClanArmorerV172(previous))) {
         return failed("save-conflict", previous);
       }
       const previousHullProject = previous.clanHullProjectV171;

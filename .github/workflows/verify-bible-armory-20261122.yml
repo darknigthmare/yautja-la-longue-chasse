@@ -1,0 +1,43 @@
+name: Verify Bible armory M052
+on:
+  push:
+    branches: [codex/verify-bible-armory-20261122]
+permissions:
+  contents: read
+jobs:
+  armory:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node --test --test-concurrency=1 tests/elder-workshop-v172.test.mjs tests/elder-assembly-v168.test.mjs tests/clan-ship-operations-save.test.mjs
+      - if: ${{ !cancelled() }}
+        run: npx eslint app/game/ElderWorkshopV172.tsx app/game/systems/elderWorkshopV172.ts app/game/ClanShipHub.tsx app/game/ClanShipOperationsPanel.tsx tests/elder-workshop-v172.test.mjs
+      - if: ${{ !cancelled() }}
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false

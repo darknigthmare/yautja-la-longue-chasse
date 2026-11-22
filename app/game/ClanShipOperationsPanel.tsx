@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
+import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import type { SaveGame } from './types';
 import type { ClanShipRoomId } from './systems/clanShipDocking';
 import { CLAN_SHIP_INTERIOR_ROOMS } from './systems/clanShipInterior';
@@ -30,6 +30,7 @@ interface Props {
   suspended: boolean;
   temporarySession?: boolean;
   crewFocus?: ClanShipNpcId | null;
+  elderWorkshop?: ReactNode;
   onAction: (action: ClanShipOperationsAction) => boolean;
   onHullProject?: (command: ClanHullProjectCommandV171) => ClanHullProjectResponseV171;
   onClose: () => void;
@@ -55,7 +56,7 @@ const CREW_DIALOGUE_CONTEXTS: Record<ClanShipCrewDialogueContext, string> = {
 
 /** Controlled campaign terminal. Only the parent can acknowledge a durable
  * command; closing, tabbing or looking at a card never grants progression. */
-export default function ClanShipOperationsPanel({ state, save, roomId, suspended, crewFocus, temporarySession = false, onAction, onHullProject, onClose, onNavigate, onClanWar }: Props) {
+export default function ClanShipOperationsPanel({ state, save, roomId, suspended, crewFocus, temporarySession = false, elderWorkshop, onAction, onHullProject, onClose, onNavigate, onClanWar }: Props) {
   const projectAvailable = !!onHullProject && !temporarySession && canReviewClanHullProject(save);
   const rootRef = useRef<HTMLElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -232,7 +233,8 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
                 <button type="button" className={styles.primary} disabled={suspended} onClick={() => setTab('contracts')}>Consulter les opérations</button>
               </div>}
           </section>
-          <section className={styles.postAside}>{activeSection || spaceReport || <div className={styles.empty}><span aria-hidden="true">◈</span><h3>Le bord est à l’écoute</h3><p>Les contrats acceptés, leur prochaine étape et les membres attendus apparaissent ici. Tu peux préparer ton équipement et visiter les salles entre deux opérations.</p></div>}
+          <section className={styles.postAside}>{elderWorkshop}
+            {activeSection || spaceReport || <div className={styles.empty}><span aria-hidden="true">◈</span><h3>Le bord est à l’écoute</h3><p>Les contrats acceptés, leur prochaine étape et les membres attendus apparaissent ici. Tu peux préparer ton équipement et visiter les salles entre deux opérations.</p></div>}
             {atCouncil && <div className={styles.generalWar}><h3>Guerre des clans</h3><p>Le conseil conserve l’accès aux campagnes stratégiques générales du clan.</p>
               <button type="button" className={styles.secondary} disabled={suspended} data-clan-general-war onClick={onClanWar}>Ouvrir la guerre des clans</button>
             </div>}
