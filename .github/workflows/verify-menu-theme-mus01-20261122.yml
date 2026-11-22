@@ -1,0 +1,33 @@
+name: Render and verify MUS-01
+on:
+  push:
+    branches: [codex/verify-menu-theme-mus01-20261122]
+    paths: [scripts/generate-menu-theme-mus01.mjs, .github/workflows/verify-menu-theme-mus01-20261122.yml]
+permissions:
+  contents: write
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/generate-menu-theme-mus01.mjs
+            /public/audio/music/menu/
+      - name: Render, verify and record exact delivery
+        run: |
+          set -euo pipefail
+          expected=public/audio/music/menu/mus-01.ogg
+          mkdir -p "$(dirname "$expected")"
+          node scripts/generate-menu-theme-mus01.mjs /tmp/mus-01.wav
+          ffmpeg -hide_banner -loglevel error -i /tmp/mus-01.wav -map_metadata -1 -c:a libvorbis -q:a 4 "$expected"
+          ffmpeg -hide_banner -v error -i "$expected" -f null -
+          ffprobe -v error -show_entries stream=channels,codec_name,sample_rate,duration -of json "$expected"
+          sha256sum "$expected"
+          git add "$expected"
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Render the original MUS-01 menu theme'
+          git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
+          git rev-parse "HEAD:$expected"
