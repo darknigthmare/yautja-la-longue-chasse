@@ -27,10 +27,18 @@ jobs:
             /worker/
             /docs/
             /scripts/
+            /public/game/youth/
+            /public/game/prologue/v47/detached-blade.png
             /public/**/manifest.json
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/youth-training.test.ts tests/youth-campaign.test.mjs tests/youth-cage-v53.test.mjs tests/youth-patrol-v52.test.mjs
+      - run: node tests/qa-youth-medicomp.playwright.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: captures-medicomp-r2-m013
+          path: medicomp-*.png
       - run: npx tsc --noEmit --incremental false
