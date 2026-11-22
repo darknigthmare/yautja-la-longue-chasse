@@ -1,0 +1,76 @@
+name: Jouer R2-M003 dans la cité du Homeworld
+on:
+  push:
+    branches: [codex/qa-bible-m003-20261122]
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 23
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      YAUTJA_M003_QA_URL: http://127.0.0.1:4398
+      YAUTJA_M003_QA_OUTPUT: outputs/qa-bible-m003
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /docs/
+            /.github/workflows/
+            /public/audio/
+            /public/**/manifest.json
+            /public/game/homeworld/
+            /public/game/prologue/
+            /public/game/youth/
+            /public/game/assets/v37/tribes/
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/assets/v133/concept-masks/
+            /public/game/assets/v133/decals/decal-atlas.webp
+            /public/game/assets/v134/
+            /public/game/assets/v135/
+            /public/game/assets/v136/
+            /public/game/sprites/v62/heads/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Prepare the exact application files
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+          node scripts/build-production-v94.mjs
+      - name: Vérifier le raccord et les sauvegardes
+        run: |
+          npx eslint app/game/systems/youthCityErrandV172.ts app/game/systems/homeworld.ts app/game/HomeworldHub.tsx
+          node --test --test-reporter=spec tests/youth-city-errand-v172.test.mjs
+      - name: Porter la pièce et relever les trois repères
+        run: |
+          mkdir -p "$YAUTJA_M003_QA_OUTPUT"
+          node node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 4398 > "$YAUTJA_M003_QA_OUTPUT"/server.log 2>&1 &
+          server=$!
+          trap 'kill "$server" || true' EXIT
+          for attempt in {1..40}; do
+            if curl --silent --fail --output /dev/null "$YAUTJA_M003_QA_URL"; then break; fi
+            sleep 1
+          done
+          node scripts/qa-youth-city-errand-v172.mjs
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ always() }}
+        with:
+          name: homeworld-youth-city-m003-browser
+          path: outputs/qa-bible-m003/
+          if-no-files-found: warn
