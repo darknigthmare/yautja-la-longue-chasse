@@ -8,8 +8,8 @@ export const HOMEWORLD_RETURN_CONTACTS_M039 = {
 } as const;
 
 export const HOMEWORLD_RETURN_LINKS_M039 = [
-  { id: "cohort", label: "Retrouver la cohorte", reply: "La cohorte saura où la retrouver. Elle gardera ce quai accessible à son groupe." },
-  { id: "path-family", label: "Retrouver la famille de voie", reply: "La famille de voie recevra ton rapport. Elle saura auprès de qui entretenir le relais." },
+  { id: "cohort", label: "Retrouver la cohorte", reply: "Je remettrai le rapport au responsable de ta cohorte. Elle saura que le relais est revenu en service." },
+  { id: "path-family", label: "Retrouver la famille de voie", reply: "La famille de voie recevra ton rapport. Le relevé de la pièce ajustée lui sera joint." },
   { id: "community", label: "Rester auprès de la communauté", reply: "Le rapport restera au quai, à la disposition des habitants et de ceux qui assurent la relève." },
 ] as const;
 
@@ -62,7 +62,10 @@ export function normalizeHomeworldReturnM039(raw: unknown): HomeworldReturnM039 
 export function homeworldReturnHuntsM039(save: HomeworldReturnSaveM039) {
   const rank = save.prologue ? getChronicleRank(save.prologue.chronicle) : save.profile.rankId;
   if (rank !== "blooded" && rank !== "elite" && rank !== "elder" && rank !== "ancient") return [];
-  return MISSIONS.filter(mission => save.missionProgress[mission.id]?.status === "completed");
+  return MISSIONS.filter(mission => {
+    const progress = save.missionProgress[mission.id];
+    return progress?.status === "completed" && progress.completions > 0;
+  });
 }
 
 interface ReturnContactM039 {

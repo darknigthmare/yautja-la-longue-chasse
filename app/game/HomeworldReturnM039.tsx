@@ -49,10 +49,10 @@ export default function HomeworldReturnM039({ contact, receipt, hunts, disabled,
     <section className={styles.notice} aria-label="Revenir chez les siens" data-homeworld-return-m039={phase}>
       <h4>Revenir chez les siens</h4>
       {contact === "officer" && (
-        <p>« Le quai a reçu tes rapports de chasse {mentioned.map(hunt => hunt.planetName).join(", ")}. J’ai besoin de tes mains ici. Le disjoncteur du relais a lâché. »</p>
+        <p>« Les rapports du quai attestent ton retour de chasse. Mondes visités : {mentioned.map(hunt => hunt.planetName).join(", ")}. Le relais a besoin de tes mains. »</p>
       )}
       {contact === "artisan" && (
-        <p>« Je reconnais les mondes de tes relevés {mentioned.map(hunt => hunt.planetName).join(", ")}. Montre-moi la platine de ce relais. »</p>
+        <p>« J’ai croisé le rapport de ton retour de {mentioned[0]?.planetName}. Pose le relevé de la platine ici. »</p>
       )}
       {phase === "offer" && <button type="button" disabled={disabled} onClick={() => onAction({ kind: "accept" })}>Prendre en charge le relais du quai</button>}
       {phase === "assigned" && contact === "artisan" && (

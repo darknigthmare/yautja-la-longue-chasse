@@ -16,7 +16,8 @@ const at = contact => ({ ...HOMEWORLD_RETURN_CONTACTS_M039[contact], suspended: 
 function campaign() {
   const save = defaultSave("2026-11-22T10:00:00.000Z");
   save.profile.rankId = "blooded";
-  save.missionProgress["jungle-vey"].status = "completed";
+  save.profile.acquiredRankIdV166 = "blooded";
+  save.missionProgress["jungle-vey"] = { ...save.missionProgress["jungle-vey"], status: "completed", attempts: 1, completions: 1 };
   save.missionProgress["ice-cryostalker"].status = "available";
   return save;
 }
@@ -58,6 +59,9 @@ test("M039 requires a recorded hunt and admits each action only at the correct n
   save.missionProgress["jungle-vey"].status = "available";
   assert.equal(actHomeworldReturnM039(undefined, save, accept, at("officer")).state, undefined);
   save.missionProgress["jungle-vey"].status = "completed";
+  save.missionProgress["jungle-vey"].completions = 0;
+  assert.equal(actHomeworldReturnM039(undefined, save, accept, at("officer")).state, undefined);
+  save.missionProgress["jungle-vey"].completions = 1;
   save.profile.rankId = "young-blood";
   assert.equal(actHomeworldReturnM039(undefined, save, accept, at("officer")).state, undefined);
 });
