@@ -45,26 +45,17 @@ const capture = async file => {
 };
 const disk = () => page.evaluate(() => JSON.parse(localStorage.getItem("yautja-long-hunt.save")));
 let nav, indoorNav;
-async function openNativePoint(pointId) {
-  const room = api.homeworldInteriorForPointV64(pointId);
-  assert.ok(room, pointId);
-  if (await nav.room() !== room.buildingId) await nav.enter(room.buildingId);
-  else await nav.closeDialog();
-
+async function approachNative(room, endpoint, accepts) {
   const start = await indoorNav.position();
   const successors = [[0, -8], [8, 0], [-8, 0], [0, 8]];
   const keyFor = point => point.x + "," + point.y;
-  const walkable = point => api.isHomeworldInteriorWalkableV64(room, point, { halfWidth: 26, halfDepth: 16 });
-  const reached = point => {
-    const target = api.nearestHomeworldInteriorTargetV64(room, point);
-    return target?.pointId === pointId && Math.hypot(point.x - target.position.x, point.y - target.position.y) < 59;
-  };
+  const walkable = point => api.isHomeworldInteriorWalkableV64(room, point, { halfWidth: 27, halfDepth: 17 });
   const queue = [start];
   const visited = new Map([[keyFor(start), null]]);
   let goal = null;
   for (let index = 0; index < queue.length; index += 1) {
     const current = queue[index];
-    if (reached(current)) {
+    if (accepts(current)) {
       goal = current;
       break;
     }
@@ -76,16 +67,43 @@ async function openNativePoint(pointId) {
       queue.push(next);
     }
   }
-  assert.ok(goal, "A roomy physical approach to " + pointId);
+  assert.ok(goal, "A roomy physical approach to " + endpoint);
   const path = [];
   for (let point = goal; point; point = visited.get(keyFor(point))) path.push(point);
+  await indoorNav.focus();
   await indoorNav.follow(path.reverse());
   const at = await indoorNav.position();
-  assert.equal(api.nearestHomeworldInteriorTargetV64(room, at)?.pointId, pointId);
+  assert.ok(accepts(at), "Physical target " + endpoint + " from " + JSON.stringify(at));
   await page.keyboard.press("KeyE");
   await indoorNav.tick(160);
+  const walked = { endpoint, roomId: room.buildingId, from: start, to: at, steps: path.length };
+  report.routes.push(walked);
+  console.log("M003 walk", JSON.stringify(walked));
+}
+async function exitNativeRoom() {
+  const roomId = await nav.room();
+  if (!roomId) return;
+  await nav.closeDialog();
+  const room = api.homeworldInteriorForBuildingV64(roomId);
+  assert.ok(room);
+  const accepts = point => api.nearestHomeworldInteriorTargetV64(room, point)?.kind === "exit" &&
+    Math.hypot(point.x - room.exit.x, point.y - room.exit.y) < 18;
+  await approachNative(room, "sortie", accepts);
+  assert.equal(await nav.room(), null);
+}
+async function openNativePoint(pointId) {
+  const room = api.homeworldInteriorForPointV64(pointId);
+  assert.ok(room, pointId);
+  if (await nav.room() !== room.buildingId) {
+    await exitNativeRoom();
+    await nav.enter(room.buildingId);
+  } else await nav.closeDialog();
+  const accepts = point => {
+    const target = api.nearestHomeworldInteriorTargetV64(room, point);
+    return target?.pointId === pointId && Math.hypot(point.x - target.position.x, point.y - target.position.y) < 59;
+  };
+  await approachNative(room, pointId, accepts);
   await page.locator("[data-homeworld-hub]").getByRole("dialog").waitFor();
-  report.routes.push({ kind: "interior", pointId, roomId: room.buildingId, from: start, to: at, steps: path.length });
 }
 async function boot() {
   await page.clock.resume();
@@ -109,7 +127,7 @@ async function action(selector, reached) {
   assert.equal(save.homeworld.youthCityErrandV172.reached, reached);
   const recorded = { reached, room: await nav.room(), position: await nav.position() };
   report.checks.push(recorded);
-  console.log("M003", JSON.stringify(recorded));
+  console.log("M003 step", JSON.stringify(recorded));
   return save;
 }
 function saveRoutes() {
@@ -167,6 +185,7 @@ try {
   assert.equal((await disk()).homeworld.youthCityErrandV172.reached, 1);
   await openNativePoint("memory-service");
   await action('[data-r2-m003-stop="memory-service"]', 2);
+  await exitNativeRoom();
   await nav.reach({ levelId: "0", point: { x: 7380, y: 5500 } });
   await nav.release();
   await page.keyboard.press("KeyE");
