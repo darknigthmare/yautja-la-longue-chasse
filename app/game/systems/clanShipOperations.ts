@@ -9,6 +9,9 @@ import {
 /** Original clan doctrine and playable contracts, not additional AVP canon.
  * This owner-bound DTO never owns a ship, promotes a hunter or writes storage. */
 import { clanHullProjectMatchesOwnedHull, inspectClanHullProject } from './clanHullProjectV171';
+import { applyWarReturnOrder, inspectWarReturn, type WarReturnOrder, type WarReturnRecord } from './warReturnR2M047';
+import { applyOserisReturn, inspectOserisReturn, oserisReturnAvailable, oserisReturnPriorHunts,
+  type OserisReturnCampaign, type OserisReturnOrder, type OserisReturnRecord } from './oserisReturnR2M053';
 
 export const CLAN_SHIP_OPERATIONS_VERSION = 1 as const;
 export const CLAN_SHIP_CONTRACT_IDS = [
@@ -176,8 +179,10 @@ export interface ClanShipOperationsState {
   completedContracts: ClanShipContractReceipt[];
   recruitedNpcIds: ClanShipNpcId[];
   spaceEncounter: ClanShipSpaceEncounter | null;
+  war?: WarReturnRecord;
+  legacy?: OserisReturnRecord;
 }
-export interface ClanShipCampaignEvidence {
+export interface ClanShipCampaignEvidence extends OserisReturnCampaign {
   createdAt: string;
   prologue?: { status?: string; chronicle: unknown } | null;
   missionProgress: Partial<Record<MissionId, { status: string; attempts: number; completions: number }>>;
@@ -207,6 +212,8 @@ export type ClanShipOperationsAction = { expectedRevision: number } & (
   | { type: 'collective-role'; role: ClanShipCollectiveRole }
   | { type: 'collective-check'; npcId: ClanShipNpcId }
   | { type: 'collective-launch' }
+  | { type: 'war-return'; order: WarReturnOrder }
+  | { type: 'oseris-return'; order: OserisReturnOrder }
 );
 export interface ClanShipOperationsResult {
   accepted: boolean; changed: boolean; state: ClanShipOperationsState;
@@ -314,7 +321,10 @@ export function inspectClanShipOperations(raw: unknown, ownerCreatedAt: string):
   if (!record(raw)) return invalid('invalid-record');
   if (integer(raw.version) && raw.version > CLAN_SHIP_OPERATIONS_VERSION) return { status: 'future-version', state: null, reason: 'unsupported-version' };
   if (raw.version !== 1) return invalid('invalid-version');
-  if (!exact(raw, ['version', 'ownerCreatedAt', 'revision', 'onboardingStep', 'mandateAccepted', 'circleConfirmed', 'activeContract', 'completedContracts', 'recruitedNpcIds', 'spaceEncounter'])) return invalid('invalid-fields');
+  const fields = ['version', 'ownerCreatedAt', 'revision', 'onboardingStep', 'mandateAccepted', 'circleConfirmed', 'activeContract', 'completedContracts', 'recruitedNpcIds', 'spaceEncounter'];
+  if (Object.hasOwn(raw, 'war')) fields.push('war');
+  if (Object.hasOwn(raw, 'legacy')) fields.push('legacy');
+  if (!exact(raw, fields)) return invalid('invalid-fields');
   if (!identity(ownerCreatedAt) || raw.ownerCreatedAt !== ownerCreatedAt) return invalid('owner-mismatch');
   if (!integer(raw.revision) || !integer(raw.onboardingStep) || raw.onboardingStep > CLAN_SHIP_ONBOARDING_STEPS.length ||
       typeof raw.mandateAccepted !== 'boolean' || typeof raw.circleConfirmed !== 'boolean') return invalid('invalid-progression');
@@ -322,6 +332,7 @@ export function inspectClanShipOperations(raw: unknown, ownerCreatedAt: string):
       !Array.isArray(raw.recruitedNpcIds) || raw.recruitedNpcIds.length > CLAN_SHIP_RECRUITS.length) return invalid('invalid-ledger');
   const ids = new Set<ClanShipContractId>();
   let lastRevision = 0;
+  let collectiveReceiptRevision: number | undefined;
   let minimumRevision = raw.onboardingStep + Number(raw.mandateAccepted) + raw.recruitedNpcIds.length + Number(raw.circleConfirmed);
   for (const receipt of raw.completedContracts) {
     if (!record(receipt) || !exact(receipt, ['contractId', 'completedRevision', 'proof'])) return invalid('invalid-receipt');
@@ -343,7 +354,16 @@ export function inspectClanShipOperations(raw: unknown, ownerCreatedAt: string):
       if (proof.kind === 'space' && proof.encounter.crewRoles.some(role =>
           !CLAN_SHIP_RECRUITS.find(npc => npc.spaceCrewRole === role)?.requiredContractIds.every(id => ids.has(id)))) return invalid('unearned-space-crew');
     }
+    if (definition.id === CLAN_SHIP_COLLECTIVE_ID) collectiveReceiptRevision = receipt.completedRevision;
     ids.add(definition.id); lastRevision = receipt.completedRevision;
+  }
+  if (Object.hasOwn(raw, 'war')) {
+    if (!inspectWarReturn(raw.war, collectiveReceiptRevision, raw.revision)) return invalid('invalid-war-return');
+    minimumRevision += raw.war.orders.length;
+  }
+  if (Object.hasOwn(raw, 'legacy')) {
+    if (!raw.mandateAccepted || !inspectOserisReturn(raw.legacy)) return invalid('invalid-legacy-return');
+    minimumRevision += raw.legacy.orders.length;
   }
   if (ids.has('welcome-aboard') !== (raw.onboardingStep === CLAN_SHIP_ONBOARDING_STEPS.length) ||
       raw.mandateAccepted && !ids.has('welcome-aboard')) return invalid('invalid-onboarding');
@@ -417,6 +437,9 @@ export function evaluateClanShipOperationsCampaign(state: ClanShipOperationsStat
   if (!record(campaign) || !identity(campaign.createdAt) || !record(campaign.missionProgress) ||
       inspectClanShipOperations(state, campaign.createdAt).status !== 'valid') return access(false, 'Le dossier et les chasses doivent appartenir à la même campagne.');
   const missionProgress = campaign.missionProgress;
+  if (state.legacy && oserisReturnPriorHunts(missionProgress) < state.legacy.priorCompletions) {
+    return access(false, 'Le retour à Oseris-IV exige le relevé de la chasse de cette campagne.');
+  }
   const progressFor = (missionId: MissionId) => {
     const progress = missionProgress[missionId];
     return record(progress) && typeof progress.status === 'string' && ['available', 'completed'].includes(progress.status) &&
@@ -503,6 +526,7 @@ function validAction(action: unknown): action is ClanShipOperationsAction {
   if (action.type === 'recruit' || action.type === 'collective-check') return exact(action, [...base, 'npcId']) && !!clanShipRecruit(action.npcId);
   if (action.type === 'collective-role') return exact(action, [...base, 'role']) && collectiveRole(action.role);
   if (action.type === 'space-command') return exact(action, [...base, 'command']) && record(action.command);
+  if (action.type === 'war-return' || action.type === 'oseris-return') return exact(action, [...base, 'order']) && identity(action.order);
   return exact(action, base) && ['accept-mandate', 'cancel-contract', 'confirm-circle', 'collective-launch'].includes(String(action.type));
 }
 
@@ -519,6 +543,28 @@ export function actClanShipOperations(state: ClanShipOperationsState, action: Cl
   const at = (roomId: ClanShipRoomId) => context.docking?.roomId === roomId;
   const wrongRoom = () => refused(state, 'wrong-room', 'Rejoins le poste indiqué avant cette action.');
   switch (action.type) {
+    case 'oseris-return': {
+      if (!at('hangar')) return wrongRoom();
+      if (!state.mandateAccepted || !oserisReturnAvailable(context.campaign) ||
+          !evaluateClanShipOperationsCampaign(state, context.campaign).allowed) {
+        return refused(state, 'oseris-return-access', 'Ouvre le retour au hangar après une chasse à Oseris-IV et la reconnaissance Elder.');
+      }
+      if (state.activeContract) return refused(state, 'operation-active', 'Termine l’opération active avant ce retour.');
+      const legacy = applyOserisReturn(state.legacy, action.order, oserisReturnPriorHunts(context.campaign.missionProgress));
+      if (!legacy) return refused(state, 'oseris-return-order', 'Le relevé attend l’étape indiquée.');
+      return changed(state, { legacy }, legacy.returnedWorldCompared ? 'Le retour à Oseris-IV est consigné.' : 'Relevé de terrain mis à jour.');
+    }
+    case 'war-return': {
+      if (!at('hangar')) return wrongRoom();
+      const escort = state.completedContracts.find(receipt => receipt.contractId === CLAN_SHIP_COLLECTIVE_ID);
+      if (!escort || !evaluateClanShipOperationsCampaign(state, context.campaign).allowed) {
+        return refused(state, 'escort-required', 'Il faut le reçu de la première escorte collective dans ce dossier.');
+      }
+      if (state.activeContract) return refused(state, 'operation-active', 'Termine l’opération en cours avant de repartir au sol.');
+      const war = applyWarReturnOrder(state.war, action.order, escort.completedRevision, state.revision + 1);
+      if (!war) return refused(state, 'war-return-order', 'Suis le repère du terrain avant d’avancer.');
+      return changed(state, { war }, war.returnConsequenceSeen ? 'Le relevé de la Passe des Cendres est enregistré.' : 'Étape du retour enregistrée.');
+    }
     case 'onboard-step': {
       const step = CLAN_SHIP_ONBOARDING_STEPS[state.onboardingStep];
       if (!step || step.id !== action.stepId) return refused(state, 'wrong-step', 'Poursuis la prochaine étape de l’accueil.');

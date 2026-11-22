@@ -57,6 +57,9 @@ import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/game
 import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
 import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
 import { inspectSpaceRoutesV159 } from "./systems/spaceRoutesV159";
+import { inspectFirstInterstellarV173, firstInterstellarReceiptV173 } from "./systems/firstInterstellarV173";
+import { inspectEarthHuntV171, getEarthHuntAccessV171 } from "./systems/earthHuntV171";
+import { shipReceiptV161 } from "./systems/shipReceiptV161";
 import { inspectClanShipDocking } from "./systems/clanShipDocking";
 import { evaluateClanShipAccess, evaluateClanShipOperationsCampaign, inspectClanShipOperations } from "./systems/clanShipOperations";
 import { clanHullProjectMatchesOwnedHull, inspectClanHullProject, isClanHullProjectSuccessor } from "./systems/clanHullProjectV171";
@@ -66,6 +69,7 @@ import { inspectBuriedCradleCampaign } from "./systems/buriedCradleCampaign";
 import { inspectElderPassageJudgment } from "./systems/elderPassageJudgmentV168";
 import { inspectElderMentoring, isElderMentoringSuccessor } from "./systems/elderMentoringV168";
 import { inspectElderAssembly, isElderAssemblySuccessor } from "./systems/elderAssemblyV168";
+import { canWorkWithClanArmorerV172, hasElderWorkshopFoundationV172, inspectElderWorkshopV172, isElderWorkshopSuccessorV172 } from "./systems/elderWorkshopV172";
 import { inspectEliteMastery, isEliteMasterySuccessor } from "./systems/eliteMasteryV170";
 import { inspectCompanionResidence, evaluateCompanionResidenceCampaign } from "./systems/companionResidence";
 import { inspectClanShipIncidents, evaluateClanShipIncidentsCampaign, evaluateClanShipTrophyHearingCampaign } from "./systems/clanShipIncidents";
@@ -1306,6 +1310,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.elderAssemblyV168 === undefined ? {} : {
       elderAssemblyV168: inspectElderAssembly(source.elderAssemblyV168, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
+    ...(source.elderWorkshopV172 === undefined ? {} : {
+      elderWorkshopV172: inspectElderWorkshopV172(source.elderWorkshopV172, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     ...(source.eliteMasteryV170 === undefined ? {} : {
       eliteMasteryV170: inspectEliteMastery(source.eliteMasteryV170, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1372,6 +1379,12 @@ export function normalizeSave(value: unknown): SaveGame {
     }),
     ...(source.spaceRoutesV159 === undefined ? {} : {
       spaceRoutesV159: inspectSpaceRoutesV159(source.spaceRoutesV159, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
+    ...(source.firstInterstellarV173 === undefined ? {} : {
+      firstInterstellarV173: inspectFirstInterstellarV173(source.firstInterstellarV173, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
+    ...(source.earthHuntV171 === undefined ? {} : {
+      earthHuntV171: inspectEarthHuntV171(source.earthHuntV171, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
     // V160 : écrit seulement s'il existe déjà ; un registre illisible est retiré
     // ici, mais inspectSavePayload refuse avant tout import une version future.
@@ -1662,10 +1675,11 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const owner = typeof value.createdAt === "string" ? value.createdAt : "";
   const elderMentoring = inspectElderMentoring(value.elderMentoringV168, owner);
   const elderAssembly = inspectElderAssembly(value.elderAssemblyV168, owner);
+  const elderWorkshop = inspectElderWorkshopV172(value.elderWorkshopV172, owner);
   const eliteMastery = inspectEliteMastery(value.eliteMasteryV170, owner);
   const hullProject = inspectClanHullProject(value.clanHullProjectV171, owner);
   const quatza = inspectQuatzaRij(value.quatzaRij, owner);
-  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides, elderPassage, elderMentoring, elderAssembly, eliteMastery, hullProject, quatza]) {
+  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides, elderPassage, elderMentoring, elderAssembly, elderWorkshop, eliteMastery, hullProject, quatza]) {
     if (inspection.status === "future-version" || inspection.status === "invalid-save") {
       return { save: null, failure: inspection.status };
     }
@@ -1797,6 +1811,13 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     const routes = inspectSpaceRoutesV159(value.spaceRoutesV159, typeof value.createdAt === "string" ? value.createdAt : "");
     if (routes.status === "future-version" || routes.status === "invalid-save") return { save: null, failure: routes.status };
   }
+  const campaignOwner = typeof value.createdAt === "string" ? value.createdAt : "";
+  const firstInterstellar = inspectFirstInterstellarV173(value.firstInterstellarV173, campaignOwner);
+  const earthHunt = inspectEarthHuntV171(value.earthHuntV171, campaignOwner);
+  if (firstInterstellar.status === "future-version" || earthHunt.status === "future-version")
+    return { save: null, failure: "future-version" };
+  if (firstInterstellar.status === "invalid" || earthHunt.status === "invalid")
+    return { save: null, failure: "invalid-save" };
   // V160 : un registre de mini-arcs plus récent ou d'un autre propriétaire n'est jamais effacé à l'import.
   if (value.minorArcsV160 !== undefined && value.minorArcsV160 !== null) {
     const arcs = inspectMinorArcsV160(value.minorArcsV160, typeof value.createdAt === "string" ? value.createdAt : "");
@@ -2054,7 +2075,16 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (quatza.state && !quatzaCampaignMatchesSave(value as unknown as SaveGame)) {
     return { save: null, failure: "invalid-save" };
   }
-  return { save: normalizeSave(value), failure: null };
+  const save = normalizeSave(value);
+  if (firstInterstellar.state && shipReceiptV161(save).receipt?.instanceId !== firstInterstellar.state.hullInstanceId)
+    return { save: null, failure: "invalid-save" };
+  if (earthHunt.state && !getEarthHuntAccessV171(save,
+      Boolean(firstInterstellarReceiptV173(save, firstInterstellar.state))).allowed)
+    return { save: null, failure: "invalid-save" };
+  if (elderWorkshop.state && !hasElderWorkshopFoundationV172(save)) {
+    return { save: null, failure: "invalid-save" };
+  }
+  return { save, failure: null };
 }
 
 /** Parse first, without writing anything; callers can confirm a valid import. */
@@ -2198,6 +2228,13 @@ function persistCampaign(
         ? !requestedAssembly || (JSON.stringify(previousAssembly) !== JSON.stringify(requestedAssembly) &&
           !isElderAssemblySuccessor(previousAssembly, requestedAssembly))
         : requestedAssembly && requestedAssembly.revision !== 1) {
+        return failed("save-conflict", previous);
+      }
+      const previousWorkshop = previous.elderWorkshopV172;
+      const requestedWorkshop = requested.elderWorkshopV172;
+      if (JSON.stringify(previousWorkshop ?? null) !== JSON.stringify(requestedWorkshop ?? null) &&
+          (!requestedWorkshop || !isElderWorkshopSuccessorV172(previousWorkshop, requestedWorkshop) ||
+            !canWorkWithClanArmorerV172(previous))) {
         return failed("save-conflict", previous);
       }
       const previousHullProject = previous.clanHullProjectV171;

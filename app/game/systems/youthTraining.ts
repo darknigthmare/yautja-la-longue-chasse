@@ -1,3 +1,4 @@
+import { createYouthMedicomp, nearYouthMedicomp, normalizeYouthMedicomp, stepYouthMedicomp, youthMedicompObjective, YOUTH_MEDICOMP, type YouthMedicomp } from "./youthMedicompV172";
 import { YOUTH_CAGE_PHASES, YOUTH_CAGE_MILESTONES, YOUTH_CAGE, createYouthCage, cloneYouthCage, normalizeYouthCage, retryYouthCage, youthCageProofCount, isYouthCagePhase, type YouthCageProgress } from "./youthCage";
 import { YOUTH_PATROL_PHASES, YOUTH_PATROL_MILESTONES, YOUTH_PATROL_HALTS, YOUTH_PATROL_HOLD_TICKS, createYouthPatrol, cloneYouthPatrol, normalizeYouthPatrol, retryYouthPatrol, stepYouthPatrolEncounter, isYouthPatrolPhase, type YouthPatrolProgress } from "./youthPatrol";
 /** Deterministic Unblooded training. Original playable adaptation; no rank, XP or adult equipment grant. */
@@ -72,6 +73,7 @@ export interface YouthState {
     desert: YouthDesertProgress | null;
     patrol: YouthPatrolProgress | null;
     cage: YouthCageProgress | null;
+    medicompV172?: YouthMedicomp;
     progress: {
         moveMarkers: number;
         jumps: number;
@@ -103,6 +105,9 @@ export type YouthEvent = {
     type: 'course-retry';
 } | {
     type: 'dodge-success';
+} | {
+    type: 'medicomp';
+    signal: 'step' | 'dose' | 'alert';
 };
 export interface YouthStep {
     state: YouthState;
@@ -552,10 +557,27 @@ export function stepYouthTraining(previous: YouthState, input: YouthInput = {}, 
                 transition(s, 'barracks', out.events);
             }
             break;
-        case 'barracks':
+        case 'barracks': {
+            const medicomp = s.medicompV172;
+            const stationary = !move && canAct(a) && a.y === YOUTH_ARENA.groundY;
+            if (!medicomp && stationary && pressed.interact && nearYouthMedicomp(a.x, YOUTH_MEDICOMP.kitX)) {
+                s.medicompV172 = createYouthMedicomp();
+                out.events.push({ type: 'medicomp', signal: 'step' });
+                break;
+            }
+            if (medicomp && medicomp.stage !== 'complete') {
+                const updated = stepYouthMedicomp(medicomp, a.x, stationary, pressed.interact);
+                s.medicompV172 = updated;
+                if (updated.stage !== medicomp.stage || updated.route !== medicomp.route) {
+                    const signal = updated.stage === 'alert' ? 'alert' : updated.stage === 'treating' && medicomp.stage === 'ready' ? 'dose' : 'step';
+                    out.events.push({ type: 'medicomp', signal });
+                }
+                break;
+            }
             if (pressed.interact && Math.abs(a.x - 680) <= 48 && grounded(a))
                 transition(s, 'rest', out.events);
             break;
+        }
     }
     return out;
 }
@@ -572,7 +594,9 @@ export function getYouthObjective(s: YouthState): YouthObjective {
         case 'camp-run': return { ...base, title: 'Parcours du camp', instruction: 'Franchis les traverses et rejoins les trois balises avant la fin du temps.', targetX: s.progress.courseMarkers % 2 === 0 ? 830 : 140, counter: s.progress.courseMarkers, required: 3, timerTicks: Math.max(0, YOUTH_TIMING.courseLimitTicks - s.progress.courseElapsed) };
         case 'camp-duel': return { ...base, title: 'Épreuve de combat', instruction: 'Remporte ce duel non létal. La lame d’entraînement et les projections sont autorisées.', targetX: s.rival.x };
         case 'camp-defeat': return { ...base, title: 'Le maître interrompt le duel', instruction: 'Reprends le combat quand tu es prêt. Le parcours réussi reste acquis.', targetX: null };
-        case 'barracks': return { ...base, title: 'Repos aux baraquements', instruction: 'Rejoins ta couche et interagis pour passer la nuit.', targetX: 680 };
+        case 'barracks': return s.medicompV172
+            ? { ...base, title: 'Le soin dans un abri', ...youthMedicompObjective(s.medicompV172) }
+            : { ...base, title: 'Repos aux baraquements', instruction: 'Tu peux prendre le medicomp au poste d’exercice ou rejoindre ta couche pour passer la nuit.', targetX: 680 };
         case 'rest': return { ...base, title: 'La nuit passe', instruction: 'Le camp s’apaise. La formation de ce jour est terminée.', targetX: null };
         case 'morning': return { ...base, title: 'Le lendemain', instruction: 'La formation est acquise. Pars avec le maître vers le camp de chasse du désert quand tu es prêt.', targetX: null };
         case 'desert-briefing': return { ...base, title: 'Au-delà des murs — le rassemblement', instruction: 'Rejoins le maître et interagis. Les autres chasseurs se préparent au loin ; votre groupe part lire le terrain.', targetX: s.rival.x };
@@ -660,5 +684,8 @@ export function normalizeYouthTraining(v: unknown): YouthState | null {
     if (phase === 'patrol-defeat' && player.composure !== 0 || phase === 'patrol-ambush' && patrol && player.composure !== Math.max(0, 100 - patrol.hits * 34)) return null;
     const cage = isYouthCagePhase(phase) ? normalizeYouthCage(v.cage, phase, player, rival, v.phaseTick) : null;
     if (isYouthCagePhase(phase) ? !cage : v.cage !== undefined && v.cage !== null) return null;
-    return { version: 1, phase, desert, patrol, cage, tick: v.tick, phaseTick: v.phaseTick, phaseStartedAt: v.phaseStartedAt, inputArmed: false, previousButtons: noButtons(), player, rival, rivalDecisionTicks: v.rivalDecisionTicks, practiceThreatened: v.practiceThreatened, jumpCleared: v.jumpCleared, cosmetic: v.cosmetic as YouthCosmetic | null, milestones, progress: { moveMarkers: p.moveMarkers as number, jumps: p.jumps as number, dodges: p.dodges as number, strikes: p.strikes as number, throws: p.throws as number, courseMarkers: p.courseMarkers as number, courseElapsed: p.courseElapsed as number, courseAttempts: p.courseAttempts as number, duelAttempts: p.duelAttempts as number } };
+    const medicompV172 = v.medicompV172 === undefined ? undefined : normalizeYouthMedicomp(v.medicompV172);
+    if (medicompV172 === null || medicompV172 && (ordinal < YOUTH_PHASES.indexOf('barracks') ||
+        phase !== 'barracks' && medicompV172.stage !== 'complete')) return null;
+    return { version: 1, phase, desert, patrol, cage, ...(medicompV172 ? { medicompV172 } : {}), tick: v.tick, phaseTick: v.phaseTick, phaseStartedAt: v.phaseStartedAt, inputArmed: false, previousButtons: noButtons(), player, rival, rivalDecisionTicks: v.rivalDecisionTicks, practiceThreatened: v.practiceThreatened, jumpCleared: v.jumpCleared, cosmetic: v.cosmetic as YouthCosmetic | null, milestones, progress: { moveMarkers: p.moveMarkers as number, jumps: p.jumps as number, dodges: p.dodges as number, strikes: p.strikes as number, throws: p.throws as number, courseMarkers: p.courseMarkers as number, courseElapsed: p.courseElapsed as number, courseAttempts: p.courseAttempts as number, duelAttempts: p.duelAttempts as number } };
 }

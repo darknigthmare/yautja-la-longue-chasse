@@ -1,0 +1,138 @@
+.scene {
+  display: grid;
+  gap: 1rem;
+  margin-block: 0.5rem;
+  padding: clamp(0.9rem, 3vw, 1.6rem);
+  border: 1px solid #6b6452;
+  border-radius: 0.85rem;
+  color: #f0eadb;
+  background: linear-gradient(155deg, #292a26, #141715 65%);
+}
+
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.heading h3,
+.heading p,
+.note {
+  margin: 0;
+}
+
+.heading p {
+  margin-top: 0.35rem;
+  color: #c5bc9e;
+}
+
+.heading > span {
+  padding: 0.3rem 0.55rem;
+  border: 1px solid #938c72;
+  border-radius: 0.3rem;
+  color: #e8d9ac;
+}
+
+.map {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.35rem;
+  min-height: 9rem;
+  margin: 0;
+  padding: 0.85rem;
+  border: 1px solid #6b6452;
+  border-radius: 0.5rem;
+  background:
+    linear-gradient(120deg, transparent 51%, #88816a40 53%, #110e0f 54% 58%, #7a735a60 59%, transparent 61%),
+    repeating-linear-gradient(150deg, #343528 0 9px, #303126 10px 13px, #37372d 14px 26px);
+  list-style: none;
+}
+
+.map li {
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.25rem;
+  border: 1px solid #cec1a523;
+  border-radius: 0.3rem;
+  background: #121612c9;
+  color: #ddd4ba;
+  text-align: center;
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+}
+
+.map li[aria-current] {
+  border-color: #f6cb77;
+  color: #fff5cc;
+  box-shadow: 0 0 0.75rem #f6cb7740;
+}
+
+.marker {
+  width: 0.85rem;
+  height: 0.85rem;
+  border: 1px solid #cbc08e;
+  border-radius: 50%;
+}
+
+.map [aria-current] .marker {
+  border-color: #ffe3a0;
+  background: #f6cb77;
+}
+
+.map [data-location="bridge"] .marker {
+  width: 1.35rem;
+  border-color: #ffae94;
+  border-style: dashed;
+  border-radius: 0.12rem;
+}
+
+.map[data-bridge-restored="true"] [data-location="bridge"] .marker {
+  border-color: #cfe58d;
+  border-style: solid;
+}
+
+.note {
+  max-width: 58ch;
+  line-height: 1.55;
+}
+
+.orders {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.orders button {
+  min-height: 44px;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #d9ba70;
+  border-radius: 0.35rem;
+  background: #373023;
+  color: #fff5d7;
+  text-align: left;
+  cursor: pointer;
+}
+
+.orders button:hover:not(:disabled) {
+  background: #4f4127;
+}
+
+.orders button:focus-visible {
+  outline: 2px solid #fff5d7;
+  outline-offset: 3px;
+}
+
+.orders button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+@media (max-width: 540px) {
+  .map {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

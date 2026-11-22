@@ -1,0 +1,17 @@
+.gate {
+  position: absolute;
+  z-index: 2;
+  padding: 2px 7px;
+  border: 1px solid #d88b55;
+  background-color: #251b14;
+  color: #ffe0bc;
+  font: bold 10px/1.4 system-ui, sans-serif;
+  transform: translate(-50%, -120%);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.gate[data-homeworld-coordination-gate-m028="open"] {
+  border-color: #b3e18c;
+  color: #dcf8ce;
+}

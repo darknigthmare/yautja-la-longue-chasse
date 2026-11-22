@@ -108,6 +108,12 @@ export default function ClanChroniclePanel({
         <p>{save.prologue ? "Le rang narratif vient du prologue et de ses rites réellement enregistrés. Aucun honneur adulte, biomask ou vaisseau n’est accordé par la nurserie." : "Cette reconnaissance historique ne valide pas rétroactivement les nouveaux rites. Le grade affiché appartient à la carrière adulte. Les actes du parcours du clan figurent dans le registre ci-dessous."}</p>
       </aside>
       <div className={styles.opening}><p className={styles.eyebrow}>OUVERTURE · YOUNGLING</p><h3>L’Arène de la nurserie</h3><p>Duel d’enfance sans HUD, vision rouge, orange et jaune. Maintien « Prêt », poings, prises, petites lames détachées et victoire au KO. La caméra révèle ensuite la nurserie bâtie autour du squelette sec et évidé d’un scolopendre géant, puis la lune rouge.</p><p>Le titre reste <strong>Yautja: The Long Hunt</strong>. Le passage Unblooded précède l’arrivée à la cité, le dojo, le premier biomask, les baraquements et le premier réveil.</p></div>
+      {save.prologue?.checkpoint.cohortV172?.steps === 7 && <article className={styles.opening} data-r2-m002-cohort-receipt>
+        <h3>Le filet et les visages</h3>
+        <p>Outil rendu, barrière fermée et retour de la cohorte entendu. Les échanges avec Harek, Yena et Tov sont consignés.</p>
+        {save.prologue.checkpoint.cohortV172.choice === "review" && <p>Harek retient l’appui repris avec toi.</p>}
+        {save.prologue.checkpoint.cohortV172.choice === "help" && <p>Yena se souvient que tu es revenu l’aider à ranger le filet.</p>}
+      </article>}
       {save.prologue && <aside className={styles.legacy} data-youth-chronicle><h3>Formation auprès du clan</h3><p>{youthCampaignObjective(save.youthTraining)}</p><p>{youthEquipmentSummary(save.youthTraining)}</p><p>Les gestes du dojo, les remises d’équipement, le parcours chronométré, le duel, le repos et la reconnaissance accompagnée du désert gardent leurs propres preuves. Ils ne remplacent ni les Premières Pistes ni la chasse sans guide ; aucun rang supplémentaire ne vient d’une visite de menu.</p></aside>}
       <section aria-labelledby="chronicle-campaign-rank-rites" data-campaign-rank-rites-v168>
         <h3 id="chronicle-campaign-rank-rites" className={styles.subheading}>Épreuves de rang de la campagne</h3>

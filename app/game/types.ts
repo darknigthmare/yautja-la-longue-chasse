@@ -695,6 +695,7 @@ export interface SaveGame {
   elderPassageJudgmentV168?: import("./systems/elderPassageJudgmentV168").ElderPassageJudgmentV168 | null;
   elderMentoringV168?: import("./systems/elderMentoringV168").ElderMentoringV168 | null;
   elderAssemblyV168?: import("./systems/elderAssemblyV168").ElderAssemblyV168 | null;
+  elderWorkshopV172?: import("./systems/elderWorkshopV172").ElderWorkshopV172 | null;
   eliteMasteryV170?: import("./systems/eliteMasteryV170").EliteMasteryV170 | null;
   /** Explicit residence, installed quarters and physical presence of recruited companions. */
   companionResidence?: import("./systems/companionResidence").CompanionResidenceState | null;
@@ -773,6 +774,10 @@ export interface SaveGame {
   blackGodV162?: import("./systems/blackGodV162").BlackGodStateV162 | null;
   /** V159: routes spatiales typées, voyage engagé et position du vaisseau (STATE5-18/19); absent des anciennes sauvegardes. */
   spaceRoutesV159?: import("./systems/spaceRoutesV159").SpaceRoutesStateV159 | null;
+  /** Owner-bound journal of the independent first interstellar journey. */
+  firstInterstellarV173?: import("./systems/firstInterstellarV173").FirstInterstellarStateV173 | null;
+  /** The Earth register uses its own mission journal and leaves the eight main hunts independent. */
+  earthHuntV171?: import("./systems/earthHuntV171").EarthHuntStateV171 | null;
   /** V160 : mini-arcs Lost Tribe / Serpent Clan, champ additif créé à la première épreuve acceptée. */
   minorArcsV160?: import("./systems/minorArcsV160").MinorArcsV160 | null;
   /** V163: contrats Queen Hunt et jalon firstQueenResolved ; champ additif, absent des anciennes sauvegardes. */

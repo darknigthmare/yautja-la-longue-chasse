@@ -96,6 +96,13 @@ function advance(save: SaveGame, incoming: readonly YouthReceipt[], state: Youth
   if (supplied.some(item => !item || !receipts.some(receipt => same(item, receipt))) || new Set(supplied.map(item => item?.id)).size !== supplied.length) return null;
   const fresh = receipts.filter(receipt => !progress.receipts.some(previous => previous.id === receipt.id));
   if (fresh.some(receipt => !supplied.some(item => same(item, receipt)))) return null;
+  if (previous.medicompV172) {
+    const before = previous.medicompV172, after = checkpoint.medicompV172;
+    if (!after || after.treatedTicks < before.treatedTicks || before.alertCleared && !after.alertCleared ||
+        before.route !== "unchecked" && after.route !== before.route ||
+        before.stage !== "cover" && after.stage === "cover" ||
+        before.stage !== "cover" && before.stage !== "ready" && after.stage === "ready") return null;
+  }
   if (previous.desert && (!checkpoint.desert || checkpoint.desert.clues < previous.desert.clues || previous.desert.ravineCleared && !checkpoint.desert.ravineCleared)) return null;
   // Existing completed reconnaissance remains a safe stop. Only the explicitly
   // acknowledged patrol briefing can open the new chapter, never a later proof.
