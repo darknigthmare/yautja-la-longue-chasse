@@ -31,7 +31,7 @@ import HomeworldArchiveV106, {HomeworldArchiveJournalV106} from './HomeworldArch
 import {HOMEWORLD_ARCHIVE_V106} from './systems/homeworldArchiveDefinitionV106';
 import {defaultHomeworldArchiveV106,normalizeHomeworldArchiveV106} from './systems/homeworldArchiveLedgerV106';
 import {archiveActiveV106,archiveNearbyActionV106,archivePostReachedV106,createArchiveTransactionV106,sampleArchiveWalkV106,type ArchiveActionV106} from './systems/homeworldArchiveV106';
-import { useCallback, useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent, type PointerEvent, type ReactNode } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent, type PointerEvent, type ReactNode } from "react";
 import { controlActionShortcut } from "./controlBindingLabels";
 import { youthCampaignObjective, youthEquipmentSummary } from "./systems/youthCampaign";
 import { getChronicleRank } from "./systems/clanChronicle";
@@ -105,6 +105,8 @@ import {isHoundKennelContactV147} from './systems/houndKennelV147';
 import HoundKennelPanelV147, {type HoundKennelActionV147} from './HoundKennelPanelV147';
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import HomeworldInteriorSurface from "./HomeworldInteriorSurface";
+import HomeworldReturnM039, { HomeworldReturnJournalM039 } from "./HomeworldReturnM039";
+import { actHomeworldReturnM039, homeworldReturnContactM039, homeworldReturnHuntsM039, type HomeworldReturnActionM039 } from "./systems/homeworldReturnM039";
 import HomeworldYouthMotionV74 from "./HomeworldYouthMotionV74";
 import HomeworldYouthMotionV72 from "./HomeworldYouthMotionV72";
 import { useHomeworldMotionAssetsV74 } from "./useHomeworldMotionAssetsV74";
@@ -1258,7 +1260,27 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     if (result.changed && result.state && !onMinorArcsV160(result.state)) message = "L’épreuve n’a pas été sauvegardée. Réessaie ici ; rien n’a été enregistré.";
     setAnnouncement(message); onNotify(message); setDialog(current => current ? { ...current, message } : current);
   };
+  const submitHomeworldReturnM039 = (action: HomeworldReturnActionM039) => {
+    const current = saveRef.current;
+    const room = interiorRef.current;
+    const point = pointInCurrentSpace(actorRef.current, room, levelRefV77.current);
+    if (save.createdAt !== current.createdAt || !point || dialogStateRef.current?.point?.id !== point.id) return;
+    const result = actHomeworldReturnM039(progressRef.current.returnM039, current, action, {
+      roomId: room?.buildingId ?? null,
+      pointId: point.id,
+      suspended: suspendedRef.current || pausedRef.current || !!transitRefV77.current || !!skiffRefV77.current,
+    });
+    const message = result.state && !onProgress({ ...progressRef.current, returnM039: result.state })
+      ? "La remise en service n’a pas été enregistrée. Réessaie à ce poste."
+      : result.message;
+    clearInputs();
+    setAnnouncement(message);
+    setDialog(current => current ? { ...current, message } : current);
+  };
   const selectedPoint = dialog?.point;
+  const returnHuntsM039 = useMemo(() => homeworldReturnHuntsM039(save), [save]);
+  const returnM039 = save.homeworld.returnM039?.ownerCreatedAt === save.createdAt ? save.homeworld.returnM039 : undefined;
+  const returnContactM039 = homeworldReturnContactM039(interior?.buildingId ?? null, selectedPoint?.id ?? null);
   const residentRenderContextV110={ownerCreatedAt:save.createdAt,currentOwnerCreatedAt:save.createdAt,actor,levelId:levelIdV77,seconds:phase,interiorId,inTransit:!!transitV77||!!skiffV77,active:true,cargo:cargoViewV108};
   const selectedResidentV68 = homeworldResidentDialogueContactV110(dialog?.residentV110,residentRenderContextV110);
   const selectedResidentRoutineV84 = selectedResidentV68 ? homeworldCivilianRoutineV84(selectedResidentV68) : null;
@@ -1412,7 +1434,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
           if (!open) requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true })); }} />
       {!interior && <div className={styles.sky} aria-hidden="true" />}
       <div className={styles.world} aria-hidden="true" data-homeworld-camera-mode={camera.mode} data-homeworld-camera-zoom={zoom.toFixed(3)} style={{ pointerEvents: 'none', width: sceneWidth, height: sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale, transform: `translate(${-cameraX * zoom}px,${-cameraY * zoom}px) scale(${zoom})` }}>
-        {interior ? <HomeworldInteriorSurface room={interior} actorPosition={actor} activePointId={nearest?.id ?? null} trophies={save.trophies} />
+        {interior ? <HomeworldInteriorSurface room={interior} actorPosition={actor} activePointId={nearest?.id ?? null} trophies={save.trophies} returnM039={returnM039} />
           : <HomeworldWorldSceneV77 archivistActiveV111={!!dialog?.archivePlaqueV109&&dialog.archivePlaqueV109.owner===save.createdAt&&nearbyPlaqueHostV109} archivistPausedV111={archivistPausedV111} archivistSequenceV111={archivistSequenceV111} archivePlaqueV109={progress.visitedDistrictIds.includes('port')&&motionAssetsV74.ready?plaqueEffectiveViewV111:undefined} cargoV108={cargoViewV108} comparisonV107={comparisonViewV107} archiveV106={archiveViewV106} archiveActiveV106={nearbyArchivistV106} actor={actor} levelId={levelIdV77} camera={camera} seconds={phase} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} activeCartographyV104={nearbyCartographerV104} cartographyHighPointV105={cartographyActiveV105(progress.cartographyV105)} activeStreetContactV100={!nearbyConnectorV77&&!nearestDoor&&!nearest&&!nearbyCntlipHostV77&&!nearbyCartographerV104?nearbyStreetContactV100?.id:null} youthWelcome={youthWelcome} skiffActive={!!skiffV77} reducedMotion={reducedMotionV77} transit={transitV77} liftStateV83={liftSessionOwnerV83 === save.createdAt ? liftStateV83 : null} />}
         <div className={styles.hero} data-homeworld-actor="true" data-homeworld-depth-layer-v81="1" data-homeworld-level-v77={levelIdV77} data-homeworld-elevation-v77={elevationV77.toFixed(3)} data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={(youthWelcome ? youthSpeedV74 : actorSpeed) > 5} data-homeworld-running-v81={!blocked && Math.hypot(actor.vx / HOMEWORLD_ACTOR.walkSpeed, actor.vy / HOMEWORLD_ACTOR.depthSpeed) > 1.01} data-facing={actor.facing} data-youth-distance-v74={youthWelcome ? youthMotionV74.distanceWorld.toFixed(3) : undefined} style={{ transform: `translate(${projectedActor.x}px,${projectedActor.y + heroBob}px)`, zIndex: interior ? Math.round(actor.y) : homeworldSceneDepthV78(actor.y,elevationV77) }}>
           <span className={styles.heroVisual} style={youthWelcome ? { transform: "none" } : undefined}>
@@ -1465,6 +1487,9 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     <footer className={styles.footer}><div className={styles.progress}><strong>{youthWelcome ? youthProgressTitle : inquiryJournal.step === "complete" ? "Contre-enquête remise à la cité" : inquiryJournal.step !== "locked" ? "Contre-enquête du convoi · " + inquiryJournal.completed + "/5" : progress.audienceOutcome ? "Première audience accomplie" : "Dossier introductif · Le trophée contesté"}</strong><span>{progress.visitedDistrictIds.length}/{HOMEWORLD_DISTRICTS.length} quartiers · {!youthWelcome && <>{progress.evidenceIds.length}/{HOMEWORLD_EVIDENCE.length} preuves · </>}{progress.greetedNpcIds.length} rencontres · {save.profile.clanMarks} marques{progress.expeditions["ash-marches"] ? " · Convoi retrouvé" : ""}{progress.expeditions["glass-desert"] ? " · Détournement documenté" : ""}</span></div>
       <button type="button" disabled={cargoMigrationPendingV108} onClick={() => { clearInputs(); setDialog({ point: null }); }}>{youthWelcome ? "Journal de l’accueil" : "Journal de la cité"}</button>
     </footer>
+    {!dialog && returnM039 && (
+      <HomeworldReturnJournalM039 receipt={returnM039} disabled={blocked} onGuide={requestLandmarkV75} />
+    )}
     {!youthWelcome && inquiryJournal.step !== "locked" && <div className={styles.help} data-homeworld-inquiry-step={inquiryJournal.step}><strong>{inquiryJournal.label}</strong> · {inquiryJournal.objective}</div>}
     {pendingVisitCount > 0 && <div className={styles.notice} role="status">
       <p>{pendingVisitCount} {pendingVisitCount === 1 ? "visite de quartier non enregistrée" : "visites de quartiers non enregistrées"}. Ces visites restent en attente tant que la cité reste ouverte.</p>
@@ -1590,6 +1615,10 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
           </div></>}
           {!youthWelcome && selectedPoint.kind === "audience" && <p>Présente les trois preuves et prends position sur le sort du témoin avant l’audience. Cette première décision est conservée dans ta sauvegarde ; elle ne termine pas toute la campagne.</p>}
           {!youthWelcome && selectedPoint.evidenceId === "undercity-testimony" && canChoose && <><div className={styles.notice}>Les trois preuves sont réunies. Ta première position sur le témoin sera définitive pour cette introduction.</div>{HOMEWORLD_WITNESS_CHOICES.map(choice => <div key={choice.id}><p>{choice.description}</p><button type="button" onClick={() => chooseWitness(choice.id)}>{choice.label}</button></div>)}</>}
+          {returnContactM039 && (
+            <HomeworldReturnM039 contact={returnContactM039} receipt={returnM039} hunts={returnHuntsM039}
+              disabled={suspended || paused || inactive} onAction={submitHomeworldReturnM039} />
+          )}
           <HomeworldSideStoryV66 progress={progress.sideStoryV66} pointId={selectedPoint.id} eligible={!youthWelcome} disabled={suspended || paused || inactive} onAction={action => submitNarrativeV66("side", action)} />
           <HomeworldNpcMissionsV66 value={progress.npcMissionsV66} npcId={selectedPoint.npcId} autonomousHunter={!youthWelcome} disabled={suspended || paused || inactive} onAction={action => { submitNarrativeV66("npc", action); }} />
           <HomeworldContractsV68 value={progress.contractsV68} npcId={selectedPoint.npcId} eligible={villagesOpenV69} disabled={suspended || paused || inactive} onAction={submitContractV68} />
