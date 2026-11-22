@@ -17,13 +17,16 @@ import { HOMEWORLD_STREET_DECOR_ART_V83, homeworldStreetDecorPolygonV83 } from '
 import { homeworldPortNativePropArtV84, homeworldPortNativePolygonV84 } from './systems/homeworldPortPublicComplexV84';
 import styles from './HomeworldCity.module.css';
 import returnStyles from './HomeworldReturnM039.module.css';
+import coordinationStyles from './HomeworldCoordinationM028.module.css';
 import { HOMEWORLD_RETURN_CONTACTS_M039, type HomeworldReturnM039 } from './systems/homeworldReturnM039';
+import { COORDINATION_WORKSHOP_M028, type HomeworldCoordinationM028 } from './systems/homeworldCoordinationM028';
 
 /** Room coordinates are local unprojected ground coordinates, never district coordinates. */
-export default function HomeworldInteriorSurface({ room, activePointId, trophies = [], actorPosition, returnM039 }: {
+export default function HomeworldInteriorSurface({ room, activePointId, trophies = [], actorPosition, returnM039, coordinationM028 }: {
   room: HomeworldInteriorV64; actorPosition: HomeworldGroundPointV64;
   activePointId: string | null; trophies?: readonly TrophyRecord[];
   returnM039?: HomeworldReturnM039;
+  coordinationM028?: HomeworldCoordinationM028;
 }) {
   const displayed = room.buildingId === 'trophy-mausoleum' ? homeworldTrophyDisplays(trophies).slice(-8) : [];
   const exit = homeworldProjectGroundV64(room.exit);
@@ -35,6 +38,11 @@ export default function HomeworldInteriorSurface({ room, activePointId, trophies
     : null;
   const relayPosition = relayPoint ? homeworldProjectGroundV64(relayPoint) : null;
   const relayActive = returnM039?.phase === 'commissioned' || returnM039?.phase === 'reported';
+  const trialPhase = coordinationM028?.phase;
+  const workshopGate = room.buildingId === COORDINATION_WORKSHOP_M028.roomId && trialPhase && trialPhase !== 'briefed'
+    ? homeworldProjectGroundV64(COORDINATION_WORKSHOP_M028.position)
+    : null;
+  const gateOpen = trialPhase === 'cleared' || trialPhase === 'recovering' || trialPhase === 'returned';
   return <>
     <div className={styles.interiorFloorV64} data-interior-floor={room.buildingId}
       data-homeworld-monument-interior-v81={room.monumentLayoutV81?room.buildingId:undefined}
@@ -127,6 +135,10 @@ export default function HomeworldInteriorSurface({ room, activePointId, trophies
       const point = HOMEWORLD_POINTS.find(point => point.id === placement.pointId);
       return point ? <HomeworldPointVisualV64 key={point.id} point={{ ...point, x: placement.x, y: placement.y }} active={point.id === activePointId} /> : null;
     })}
+    {workshopGate && (
+      <span className={coordinationStyles.gate} data-homeworld-coordination-gate-m028={gateOpen ? 'open' : 'jammed'}
+        style={{ left: workshopGate.x, top: workshopGate.y }}>{gateOpen ? 'Passage dégagé' : 'Verrou coincé'}</span>
+    )}
     {relayPosition && (
       <span role="img" aria-label={relayActive ? 'Relais du quai en service' : 'Relais du quai hors service'}
         data-homeworld-relay-m039={relayActive ? 'online' : 'offline'} className={returnStyles.relay}
