@@ -1,0 +1,110 @@
+name: REM112-08 · pleine charge, 8 missions × 3 armures (lot 8)
+on:
+  push:
+    branches: [claude/funny-ride-njwojd]
+    paths:
+      - .github/workflows/qa-rem112-08-full-load-lot8.yml
+permissions:
+  contents: read
+jobs:
+  loaded:
+    name: ${{ matrix.case.id }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        case:
+          - {id: jungle-scout, mission: jungle-vey, armor: scout}
+          - {id: jungle-hunter, mission: jungle-vey, armor: hunter}
+          - {id: jungle-berserker, mission: jungle-vey, armor: berserker}
+          - {id: ice-scout, mission: ice-cryostalker, armor: scout}
+          - {id: ice-hunter, mission: ice-cryostalker, armor: hunter}
+          - {id: ice-berserker, mission: ice-cryostalker, armor: berserker}
+          - {id: volcano-scout, mission: volcano-bad-blood, armor: scout}
+          - {id: volcano-hunter, mission: volcano-bad-blood, armor: hunter}
+          - {id: volcano-berserker, mission: volcano-bad-blood, armor: berserker}
+          - {id: swamp-scout, mission: swamp-hydra, armor: scout}
+          - {id: swamp-hunter, mission: swamp-hydra, armor: hunter}
+          - {id: swamp-berserker, mission: swamp-hydra, armor: berserker}
+          - {id: desert-scout, mission: desert-sandmaw, armor: scout}
+          - {id: desert-hunter, mission: desert-sandmaw, armor: hunter}
+          - {id: desert-berserker, mission: desert-sandmaw, armor: berserker}
+          - {id: ocean-scout, mission: ocean-leviathan, armor: scout}
+          - {id: ocean-hunter, mission: ocean-leviathan, armor: hunter}
+          - {id: ocean-berserker, mission: ocean-leviathan, armor: berserker}
+          - {id: fungal-scout, mission: fungal-hivemind, armor: scout}
+          - {id: fungal-hunter, mission: fungal-hivemind, armor: hunter}
+          - {id: fungal-berserker, mission: fungal-hivemind, armor: berserker}
+          - {id: ruins-scout, mission: ruins-ancient-guardian, armor: scout}
+          - {id: ruins-hunter, mission: ruins-ancient-guardian, armor: hunter}
+          - {id: ruins-berserker, mission: ruins-ancient-guardian, armor: berserker}
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /public/**/manifest.json
+            /docs/qa/v112-ground-campaign/campaign-origin-save.json
+            /docs/qa/v112-ground-campaign/tool-origin.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Victoires réelles appliquées, puis tentatives de repli à pleine charge
+        env:
+          CASE: ${{ matrix.case.id }}
+          MISSION: ${{ matrix.case.mission }}
+          ARMOR: ${{ matrix.case.armor }}
+        run: |
+          origin=docs/qa/v112-ground-campaign/campaign-origin-save.json
+          root="outputs/full-load/$CASE"
+          mkdir -p "$root"
+          stage=1
+          full=0
+          for attempt in 1 3 6; do
+            while [ "$stage" -lt "$attempt" ]; do
+              advance="$root/earned-$stage"
+              node scripts/qa-hunt-ground-campaign-v112.mjs --mission="$MISSION" --armor=hunter \
+                --baseSave="$origin" --replay=true --requireComplete=true --seconds=300 \
+                --output="$advance" --successSave="$advance/after-win.json" > "$root/earned-$stage.log" 2>&1 ||
+                { tail -30 "$root/earned-$stage.log"; break 2; }
+              origin="$advance/after-win.json"
+              stage=$((stage + 1))
+            done
+            for trial in early160 early360 late550; do
+              distance=${trial//[!0-9]/}
+              extra=("--sweepDistance=$distance")
+              if [[ "$trial" == early* ]]; then extra+=(--sweepEarly=true); fi
+              output="$root/$attempt-$trial"
+              if node scripts/qa-hunt-ground-campaign-v112.mjs --mission="$MISSION" --armor="$ARMOR" \
+                --baseSave="$origin" --insertion=visible-ship --harvest=true --harvestSweep=true \
+                "${extra[@]}" --minimumRetainedLoad=1 --replay=true --seconds=360 --output="$output" > "$output.log" 2>&1
+              then full=1
+              fi
+              if [ -f "$output/report.json" ]; then
+                node -e 'const r=require("./"+process.argv[1]);for(const o of r.outcomes)console.log(JSON.stringify({trial:process.argv[2],source:r.commit,mission:o.missionId,armor:o.armorId,attempt:o.admission.encounterRun,success:o.success,boarding:o.retainedLoad.atBoarding?.load,extraction:o.retainedLoad.atExtraction?.load,qualified:o.retainedLoad.qualified,replayed:o.replay?.verified}));' "$output/report.json" "$trial"
+              else
+                tail -30 "$output.log"
+              fi
+              if [ "$full" -eq 1 ]; then break 2; fi
+            done
+          done
+          echo "{\"case\":\"$CASE\",\"fullLoadExtraction\":$full}" | tee "$root/verdict.json"
+          test "$full" -eq 1
+      - if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: rem112-08-lot8-${{ matrix.case.id }}
+          path: outputs/full-load/
+          if-no-files-found: ignore
