@@ -3,6 +3,8 @@ import {recoverAnyArchiveV71} from "./systems/archiveRecoveryV71";
 import {useCallback,useEffect,useRef,useState,lazy,Suspense,type ComponentType} from 'react';
 import {flushSync} from 'react-dom';
 import CampaignMainMenu,{type CampaignMenuEntry} from './CampaignMainMenu';
+import StudioIntroV174 from './StudioIntroV174';
+import {studioIntroEnabledV174} from './systems/studioIntroV174';
 import { defaultSave, loadSaveWithStatus } from './save';
 import type { SaveGame } from './types';
 import { mainMenuModeAccessV81, mainMenuBrowserShipContextV81, type MainMenuGameModeV81 } from './systems/mainMenuModesV81';
@@ -27,6 +29,9 @@ export default function CampaignFrontEnd({SessionComponent}:{SessionComponent:Co
  const [modeCampaign,setModeCampaign]=useState<SaveGame|null>(null),[bonusMode,setBonusMode]=useState<MainMenuGameModeV81|null>(null);
  const [modeContext,setModeContext]=useState<ChronicleAccessContext>({personalShipAvailable:false});
  const [menuEntry,setMenuEntry]=useState<CampaignMenuEntry|undefined>(undefined);
+ // Launch intro: once per page load, never again when returning to the menu.
+ const [introPending,setIntroPending]=useState(()=>typeof window!=='undefined'&&studioIntroEnabledV174(window.location.search,navigator.webdriver===true));
+ const endIntro=useCallback(()=>setIntroPending(false),[]);
  const alive=useRef(true),operation=useRef(false),generation=useRef(0);
  const refresh=useCallback(async()=>{
   if(operation.current)return;operation.current=true;setBusy(true);
@@ -72,6 +77,7 @@ export default function CampaignFrontEnd({SessionComponent}:{SessionComponent:Co
  if(spritesOpen)return <Suspense fallback={<p role="status">Ouverture des archives visuelles…</p>}><RecentSpriteLibraryV85 onClose={()=>setSpritesOpen(false)} /></Suspense>;
  if(mausoleumOpen)return <Suspense fallback={<p role="status">Ouverture des archives…</p>}><Mausoleum save={null} source="menu" onExit={()=>setMausoleumOpen(false)} /></Suspense>;
  if(entry)return <SessionComponent key={entry.token} entry={entry} onMainMenu={showMenu} />;
+ if(introPending)return <StudioIntroV174 onDone={endIntro} />;
  const menuGeneration=generation.current;
  return <CampaignMainMenu catalog={catalog} busy={busy} message={message} onRefresh={refresh} initialEntry={menuEntry}
   onPrepareImport={(id,serialized)=>{if(!validId(id)||operation.current||!alive.current||generation.current!==menuGeneration)return{ok:false,failure:'save-conflict',message:'Cette session de menu a changé. Revenez au menu et relisez le fichier.',preview:null};return prepareCampaignSlotImport(id,serialized);}}
