@@ -258,3 +258,7 @@ Pour juger si une mission peut remplir le sac, le lanceur moteur recense désorm
 | Ruines | 2 | 2 | 2 | 2 | 4 | 0 |
 
 Les patrouilles d'insertion en vaisseau visible ajoutent des créatures : la matrice a extrait 24 unités en Jungle Hunter à la tentative 6, au-delà des 19 recensées ici. Ce relevé est donc un ordre de grandeur, pas une borne stricte. Le Fongique et les Ruines restent toutefois à 4 unités au plus par tentative, et la matrice n'y a jamais extrait plus de 2 unités. Avec ce contenu, une pleine charge (18, 24 ou 30 unités) y paraît hors d'atteinte. La décision sur le critère de `REM112-08` revient au propriétaire du projet.
+
+### Critère REM112-08 reformulé le 23 novembre 2026
+
+Sur décision du propriétaire, `REM112-08` ne demande plus la pleine charge du sac dans chaque mission. Le critère devient : pour chaque mission et chaque armure admissible, extraire au sol la **charge maximale que la mission offre réellement**, mesurée par le recensement anatomique de la tentative jouée (`anatomyCensusAtEnd`), avec ennemis et objectifs réels et un rejeu exact. Les deux pleines charges de la Jungle restent acquises. Pour chaque autre couple, il faudra comparer le meilleur volume extrait au volume recensé dans la même partie. Cette comparaison n'est pas encore faite. `REM112-08` reste partiel.
