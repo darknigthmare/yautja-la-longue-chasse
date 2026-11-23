@@ -183,8 +183,13 @@ async function resumeCampaignHunt(page){
   await enterCampaign(page);
   await page.waitForFunction(()=>window.__observeCanonicalHuntV112?.().alive||
     [...document.querySelectorAll('button')].some(button=>button.textContent?.trim().startsWith('Reprendre la chasse')));
-  const alreadyMounted=await page.evaluate(()=>window.__observeCanonicalHuntV112?.().alive===true);
-  if(!alreadyMounted)await page.getByRole('button',{name:/^Reprendre la chasse/}).first().click();
+  // The deck button, never the in-hunt pause control that shares its accessible name.
+  const deckResume=page.locator('button:not(.hunt-pause-button)').filter({hasText:/^\s*Reprendre la chasse/}).first();
+  const mounted=()=>page.evaluate(()=>window.__observeCanonicalHuntV112?.().alive===true);
+  if(!await mounted()&&await deckResume.isVisible()){
+    try{await deckResume.click({timeout:5000});}
+    catch(error){if(!await mounted())throw error;}
+  }
   await page.waitForFunction(()=>window.__observeCanonicalHuntV112?.().alive);
 }
 
@@ -365,8 +370,8 @@ try{
       melee:'KeyJ',weapon:'KeyK',weaponOne:'Digit1',weaponTwo:'Digit2',weaponNext:'KeyR',scan:'KeyV',heal:'KeyH',
       interact:'KeyE',pause:'Escape',cloak:'KeyC',gearOne:'Digit3',gearTwo:'Digit4'};
     const samples=[],examined=new Set(),harvestTries=new Map(),discoveryChannels=new Set(),retryEvents=[];
-    // Control cadence: one tick per observation round trip, measured in simulated and wall time.
-    const controlLoop={iterations:0,firstElapsed:null,lastElapsed:null};
+    // Control cadence: one tick per observation round trip; simulated time summed across relay resumes.
+    const controlLoop={iterations:0,simulatedSeconds:0,lastElapsed:null};
     let final=null,lastSecond=-1,lastPhase='',resumed=false,resumeReceipt=null,lastDecision=null;
     let startedWestOfIceGate=false,seenIceUnderpass=false;
     let trophyApproachMemory={},previousApexReason=null;
@@ -382,7 +387,7 @@ try{
       const observeFull=()=>page.evaluate(()=>window.__observeCanonicalHuntV112?.(false));
       if(!observed?.alive){final=await observeFull()??observed;break;}
       const game=observed.state;
-      controlLoop.iterations++;controlLoop.firstElapsed??=game.elapsed;controlLoop.lastElapsed=game.elapsed;
+      controlLoop.iterations++;if(controlLoop.lastElapsed!==null&&game.elapsed>=controlLoop.lastElapsed)controlLoop.simulatedSeconds+=game.elapsed-controlLoop.lastElapsed;controlLoop.lastElapsed=game.elapsed;
       if(missionId==='ice-cryostalker'&&!seenIceUnderpass){
         const gate=game.world.platforms.find(platform=>platform.id==='ice-region-thermal-return-gate'&&platform.collision==='solid');
         const player=game.player;
@@ -605,7 +610,7 @@ try{
     const delivered=settlementConfirmed?settled.inventory.harvestV112.specimens.filter(item=>
       !priorIds.has(item.id)&&(!harvestSpecies||item.speciesId===harvestSpecies)&&(!wantedPart||item.partId===wantedPart)&&
       field.some(source=>source.id===item.id&&source.sourceId===item.sourceId&&source.speciesId===item.speciesId&&source.partId===item.partId)):[];
-    controlLoop.simulatedSecondsPerTick=controlLoop.iterations>1?(controlLoop.lastElapsed-controlLoop.firstElapsed)/(controlLoop.iterations-1):null;
+    controlLoop.simulatedSecondsPerTick=controlLoop.iterations>1?controlLoop.simulatedSeconds/(controlLoop.iterations-1):null;
     report.attempts.push({missionId,final,retryEvents,controlLoop,suspendedAndReloaded:resumed,resumeReceipt,delivered,
       settlement:{confirmed:settlementConfirmed,beforeProgress,afterProgress},wallSeconds:(Date.now()-start)/1000,
       status:settlementConfirmed?'BROWSER_HUNT_AND_SETTLEMENT_SUCCESS':final?.state.phase==='dead'?'CONTROLLER_DIED':'ATTEMPT_INCOMPLETE'});
