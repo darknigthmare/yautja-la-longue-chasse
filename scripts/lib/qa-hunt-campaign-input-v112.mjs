@@ -26,7 +26,10 @@ export function decideHuntCampaignInputV112(game,tick,memory,strategy='mixed'){
     if(ritual.phase==='cue'&&ritual.cueElapsedSeconds>=.48)pressed.push(ritual.sequence[ritual.cueIndex]);
     return{held,pressed,reason:'native trophy glyph'};
   }
-  if(player.health<player.maxHealth*.58&&player.medicomps>0&&player.healCooldown<=0)pressed.push('heal');
+  // Browser control reacts in tenths of a second: heal earlier, but keep the last charge for the Apex.
+  const apexFight=game.boss.active&&game.boss.alive,ratio=player.health/player.maxHealth;
+  const reserve=!apexFight&&player.medicomps<=1&&ratio>=.35;
+  if(ratio<.7&&player.medicomps>0&&player.healCooldown<=0&&!reserve)pressed.push('heal');
   if(player.scanCooldown<=0&&game.scanNodes.some(node=>!node.scanned&&Math.hypot(node.x-pc.x,node.y-pc.y)<450))pressed.push('scan');
   let target=game.scanNodes.find(node=>!node.scanned),reason='trace';
   if(!target){target=game.recoveryNodes.find(node=>!node.recovered);reason='technology';}
@@ -63,7 +66,7 @@ export function decideHuntCampaignInputV112(game,tick,memory,strategy='mixed'){
     if(range<260&&player.grounded&&tick>=(memory.nextJump??0)){
       pressed.push('jump');held.push('jump');memory.nextJump=tick+66;memory.jumpUntil=tick+12;
     }
-    if(enemy.telegraph>0&&gap<100&&player.grounded&&player.stamina>25&&tick%30===0){
+    if(enemy.telegraph>0&&gap<100&&player.grounded&&player.stamina>25){
       held.push('down',point.x>pc.x?'left':'right');pressed.push('jump');
     }
   }

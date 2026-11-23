@@ -220,3 +220,28 @@ for(const [label,decide] of [["browser",decideBrowserHunt],["native ground",deci
   const busy=decide({...game,player:{...hunter,melee:{phase:"recovery"}}},3,memory);
   assert.ok(!busy.held.includes("left"),"facing only changes while the native melee is idle");
 });
+
+test("the browser pilot dodges every telegraphed blow in contact, not one tick in thirty",()=>{
+  const hunter={...player,x:5300,y:508,width:72,height:116,facing:1,health:150,maxHealth:192,medicomps:2,
+    energy:0,stamina:100,scanCooldown:1,healCooldown:0,melee:{phase:"idle"}};
+  const guard={id:"desert-sandmaw-guardians-0",x:5420,y:535,width:60,height:90,alive:true,active:true,telegraph:.3};
+  const game={...ocean,phase:"target",bossMechanics:{missionId:"desert-sandmaw"},energyWeaponsLocked:false,
+    player:hunter,enemies:[guard],boss:{id:"mission-boss",x:6900,y:482,width:157,height:142,alive:true,active:false},
+    world:{floorY:624,platforms:[]}};
+  const decision=decideBrowserHunt(game,7,{previousX:hunter.x,stuckTicks:0,jumpUntil:-1,nextJump:Infinity});
+  assert.ok(decision.pressed.includes("jump")&&decision.held.includes("down"),"tick 7 is not a multiple of 30");
+  assert.ok(decision.held.includes("left"),"the dodge leaves the attacker's side");
+});
+
+test("the browser pilot heals earlier but keeps its last Medicomp for the Apex",()=>{
+  const base={...player,x:2000,y:508,width:72,height:116,facing:1,maxHealth:192,energy:0,stamina:100,scanCooldown:1,healCooldown:0,melee:{phase:"idle"}};
+  const game=hunter=>({...ocean,phase:"tracking",bossMechanics:{missionId:"desert-sandmaw"},player:hunter,enemies:[],
+    scanNodes:[{x:3000,y:560,scanned:false}],boss:{id:"mission-boss",x:6900,y:482,width:157,height:142,alive:true,active:false},
+    world:{floorY:624,platforms:[]}});
+  const memory=()=>({previousX:2000,stuckTicks:0,jumpUntil:-1});
+  assert.ok(decideBrowserHunt(game({...base,health:128,medicomps:2}),1,memory()).pressed.includes("heal"),"heal under 70%");
+  assert.ok(!decideBrowserHunt(game({...base,health:128,medicomps:1}),1,memory()).pressed.includes("heal"),"the last charge waits for the Apex");
+  assert.ok(decideBrowserHunt(game({...base,health:60,medicomps:1}),1,memory()).pressed.includes("heal"),"an emergency still heals");
+  const apex={...game({...base,health:128,medicomps:1}),boss:{id:"mission-boss",x:2100,y:482,width:157,height:142,alive:true,active:true}};
+  assert.ok(decideBrowserHunt(apex,1,memory()).pressed.includes("heal"),"against the active Apex the last charge is used");
+});
