@@ -139,6 +139,7 @@ for(const missionId of missionIds)for(const armorId of armorIds){
  const admission=JSON.parse(JSON.stringify({missionId,armorId,loadout:save.loadout,inventory:save.inventory,toolOrigin,baseSaveOrigin,exploration:save.exploration,difficulty:difficultyId,encounterRun,random:{algorithm:"xorshift32",seed:0x1122026},spawn:{...state.world.spawn},initial:{...brief(state),load:initial.load},insertion:{plan:state.insertion.plan,shipId:insertionShipId??null,patrolIds:state.insertion.patrolIds},world:{width:state.world.width,bossArena:state.world.bossArena,extraction:state.world.extraction,platforms:state.world.platforms.filter(p=>p.collision==="solid"),hazards:state.world.hazards},scanNodes:state.scanNodes,recoveryNodes:state.recoveryNodes}));
  const originalEnemies=[...state.enemies];
  let result=null,climbFrames=0,swingFrames=0,authoredCanopyContactFrames=0,maxX=state.player.x,lastX=state.player.x,stuck=0,nextJump=0,jumpUntil=-1,lastPhase=state.phase,lastAction="",lastSnapshot=-1,ticksExecuted=0;
+ const seenStock=new Map();
  const trace=[],samples=[],events=[],harvestActions=[];
  const sharedMemory={previousX:state.player.x,stuckTicks:0,jumpUntil:-1};
  const useSharedPolicy=args.policy==="shared"||["volcano-bad-blood","ocean-leviathan"].includes(missionId);
@@ -307,6 +308,7 @@ for(const missionId of missionIds)for(const armorId of armorIds){
   if(action!==lastAction){trace.push({tick,...JSON.parse(action)});lastAction=action;}
   const wasApexRite=state.phase==="trophy"&&state.trophyExtracting,damageBefore=state.damageTaken;
   runtime.stepGame(state,mission,save.loadout,save.inventory,save.appearance,difficultyId,input,dt,r=>{result=r;});
+  if(ticksExecuted%30===0)for(const row of harvestStock(state))if(!seenStock.has(row.id))seenStock.set(row.id,row);
   if(observeGroundTrophyDamageV112(state,tick,trophyMemory,wasApexRite,damageBefore)){
    trophyInterruptions.push({tick,t:state.elapsed,x:state.player.x,health:state.player.health,
     damage:state.damageTaken-damageBefore});
@@ -344,7 +346,12 @@ for(const missionId of missionIds)for(const armorId of armorIds){
  const canopyRoute=fullCanopy?{sequence:canopySequence,stage:canopy?.stage??"load-not-reached",
   events:canopy?.events??[],exitLoad:canopy?.exitLoad??null,qualified:Boolean(canopy?.stage==="grounded-exit"&&
    canopy.exitLoad?.load.ratio===1&&climbFrames>0&&swingFrames>0&&authoredCanopyContactFrames>0)}:null;
- const outcome={missionId,armorId,success,result,canopyRoute,climbFrames,swingFrames,authoredCanopyContactFrames,maxX,terminal:brief(state),admission,events,traceFrames:trace.length,ticksExecuted,harvestActions,harvestDecisions:harvestMemory.events,sweepEvents,stockAtApex,trophyInterruptions,peakLoadRatio,peakSpecimens,firstLoadAt,retainedLoad};
+ // Upper bound of the bag: every anatomical part on every non-Apex creature seen during the run (sampled every 30 ticks).
+ for(const row of harvestStock(state))if(!seenStock.has(row.id))seenStock.set(row.id,row);
+ const endStock=[...seenStock.values()],volumeOf=rows=>rows.reduce((sum,row)=>sum+row.parts.reduce((s,part)=>s+part.volumeUnits,0),0);
+ const anatomyCensusAtEnd={sampledEveryTicks:30,creaturesWithPartsSeen:endStock.length,spawnedCreaturesAtEnd:state.enemies.filter(enemy=>!enemy.boss).length,totalVolume:volumeOf(endStock),defeatedAtEndVolume:volumeOf(harvestStock(state).filter(row=>!row.alive)),
+  bySpecies:Object.entries(endStock.reduce((map,row)=>{map[row.archetype]=(map[row.archetype]??0)+row.parts.reduce((s,part)=>s+part.volumeUnits,0);return map;},{})).map(([species,volume])=>({species,volume}))};
+ const outcome={missionId,armorId,success,result,canopyRoute,climbFrames,swingFrames,authoredCanopyContactFrames,maxX,terminal:brief(state),admission,events,traceFrames:trace.length,ticksExecuted,harvestActions,harvestDecisions:harvestMemory.events,sweepEvents,stockAtApex,trophyInterruptions,peakLoadRatio,peakSpecimens,firstLoadAt,retainedLoad,anatomyCensusAtEnd};
  if(result)assert.equal(state.phase,"finished");
  if(outcome.success){
   assert.ok(atBoarding,"success must include a native boarding transition");
