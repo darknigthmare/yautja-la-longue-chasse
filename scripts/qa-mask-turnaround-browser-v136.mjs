@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /** B136 browser proof: the real MaskTurnaroundV136 armory insert for each V133 concept mask,
- * with the published profile sprite and the pending face/back state. Captures retained. */
+ * with the published V133 sprite as the face view and the pending profile/back state. Captures retained. */
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {once} from 'node:events';
@@ -36,7 +36,7 @@ const server = createServer(async (request, response) => {
 });
 server.listen(0, '127.0.0.1'); await once(server, 'listening');
 const base = 'http://127.0.0.1:' + server.address().port;
-const report = {schema: 1, scope: 'Real MaskTurnaroundV136 insert alone in Chromium (not the whole armory screen). Face and back stay pending until the B136 art is delivered.', masks: []};
+const report = {schema: 1, scope: 'Real MaskTurnaroundV136 insert alone in Chromium (not the whole armory screen). The V133 sprite is the face; profile and back stay pending until the B136 art is delivered.', masks: []};
 const browser = await chromium.launch({executablePath: option('--chromium', '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome'), args: ['--no-sandbox']});
 try {
   for (const [label, viewport] of [['wide', {width: 820, height: 600}], ['phone', {width: 390, height: 700}]]) {
@@ -45,17 +45,17 @@ try {
       await page.goto(base + '/?mask=concept-v133-' + mask);
       const insert = page.locator('[data-mask-turnaround-v136]');
       await insert.waitFor();
-      const profile = insert.locator('[data-view=profile] img');
+      const profile = insert.locator('[data-view=face] img');
       await profile.evaluate(img => img.complete ? null : new Promise(resolve => img.addEventListener('load', resolve, {once: true})));
       const natural = await profile.evaluate(img => [img.naturalWidth, img.naturalHeight]);
-      assert.deepEqual(natural, [256, 384], 'published profile sprite loaded');
-      assert.equal(await insert.locator('[data-pending=true]').count(), 2, 'face and back are marked pending');
+      assert.deepEqual(natural, [256, 384], 'published V133 sprite loaded as the face view');
+      assert.equal(await insert.locator('[data-pending=true]').count(), 2, 'profile and back are marked pending');
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
       assert.ok(overflow <= 0);
       const buffer = await insert.screenshot();
       const file = label + '-' + mask + '.png';
       await writeFile(path.join(out, file), buffer);
-      report.masks.push({mask, viewport: label, file, sha256: createHash('sha256').update(buffer).digest('hex'), profile: natural, pending: ['face', 'back']});
+      report.masks.push({mask, viewport: label, file, sha256: createHash('sha256').update(buffer).digest('hex'), face: natural, pending: ['profile', 'back']});
     }
   }
   await (await browser.newContext()).newPage().then(async page => {

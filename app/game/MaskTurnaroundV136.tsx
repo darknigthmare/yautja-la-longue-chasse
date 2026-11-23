@@ -1,21 +1,21 @@
 "use client";
 /** B136 · Face, profile and back of the worn concept mask in the armory.
- * Profile is the published V133 sprite; face and back come from maskViewsV136.json
- * once delivered and checked, otherwise the tile states that the view is pending.
+ * The published V133 sprite is the face view (owner decision, 2026-11-23); profile and back
+ * come from maskViewsV136.json once delivered and checked, otherwise the tile says it is pending.
  * Every view shares the 256×384 mask canvas; tiles show its 128×128 head window (x 64–192, y 0–128). */
 import views from "./data/maskViewsV136.json";
 import { conceptBiomaskV133 } from "./conceptBiomasksV133";
 import styles from "./MaskTurnaroundV136.module.css";
 
-type MaskViewsV136 = { face?: string; back?: string };
+type MaskViewsV136 = { profile?: string; back?: string };
 const registry = views.records as Record<string, MaskViewsV136>;
 
 /** View paths for a concept mask, or null when the mask is not a V133 concept. */
-export function maskTurnaroundV136(maskId: unknown): { name: string; profile: string; face: string | null; back: string | null } | null {
+export function maskTurnaroundV136(maskId: unknown): { name: string; face: string; profile: string | null; back: string | null } | null {
   const concept = conceptBiomaskV133(maskId);
   if (!concept) return null;
   const entry = registry[concept.id] ?? {};
-  return { name: concept.name.replace(/^Biomask concept · /, ""), profile: concept.assetPath, face: entry.face ?? null, back: entry.back ?? null };
+  return { name: concept.name.replace(/^Biomask concept · /, ""), face: concept.assetPath, profile: entry.profile ?? null, back: entry.back ?? null };
 }
 
 export default function MaskTurnaroundV136({ maskId }: { maskId: unknown }) {
