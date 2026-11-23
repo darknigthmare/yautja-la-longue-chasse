@@ -185,7 +185,9 @@ export function createWarOuterOpsAccountsServerV130(game, {store, authenticate, 
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
-  const port = Number(process.env.YAUTJA_CLAN_OUTER_PORT ?? 8790);
+  // PORT is the platform convention (Fly.io, Railway); the host defaults to loopback behind a reverse proxy.
+  const port = Number(process.env.YAUTJA_CLAN_OUTER_PORT ?? process.env.PORT ?? 8790);
+  const host = process.env.YAUTJA_CLAN_OUTER_HOST ?? '127.0.0.1';
   const signing = Buffer.from(process.env.YAUTJA_CLAN_OUTER_SIGNING_SECRET ?? '', 'hex');
   try {
     if (!Number.isSafeInteger(port) || port < 1 || port > 65535 || signing.length < 32) {
@@ -202,7 +204,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
       process.stderr.write('Impossible d’ouvrir le service Outer Ops (' + (error.code ?? 'erreur') + ').\n');
       process.exitCode = 1;
     });
-    server.listen(port, '127.0.0.1', () => process.stdout.write('Outer Ops V130 par comptes sur http://127.0.0.1:' + port + '\n'));
+    server.listen(port, host, () => process.stdout.write('Outer Ops V130 par comptes sur ' + host + ':' + port + '\n'));
   } catch (error) {
     process.stderr.write(error.message + '\n');
     process.exitCode = 1;

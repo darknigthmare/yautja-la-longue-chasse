@@ -30,7 +30,8 @@ node scripts/serve-clan-war-outer-ops-accounts-v130.mjs
 | `SUPABASE_PUBLISHABLE_KEY` | `apikey` envoyée à `/auth/v1/user` pour résoudre le jeton du joueur | non (publique) |
 | `SUPABASE_SERVICE_ROLE_KEY` | clé service role pour PostgREST et `rpc/yautja_war_commit_v130` | **oui** |
 | `YAUTJA_CLAN_OUTER_SIGNING_SECRET` | clé HMAC-SHA256 des reçus, en hexadécimal, au moins 32 octets (64 caractères) | **oui** |
-| `YAUTJA_CLAN_OUTER_PORT` | port d'écoute, défaut `8790` | non |
+| `YAUTJA_CLAN_OUTER_PORT` | port d'écoute ; à défaut `PORT` (fourni par Fly.io ou Railway), sinon `8790` | non |
+| `YAUTJA_CLAN_OUTER_HOST` | adresse d'écoute, défaut `127.0.0.1` ; `0.0.0.0` sur Fly.io ou Railway | non |
 | `YAUTJA_CLAN_OUTER_ALLOWED_ORIGINS` | origines navigateur autorisées, séparées par des virgules, comparées exactement (`https://jeu.exemple`, sans `/` final) ; vide = aucune réponse CORS | non |
 
 Générer le secret de signature (même primitive que la V115, `randomBytes(32)`) :
@@ -44,18 +45,12 @@ le client, dans `app/game/data/`, ni dans le dépôt : uniquement dans les secre
 plateforme (`fly secrets`, variables Railway) ou un fichier d'environnement du VPS hors dépôt.
 La clé service role contourne la RLS.
 
-## Écoute réseau — suivi de code requis
+## Écoute réseau
 
-Le script appelle `server.listen(port, '127.0.0.1', …)` (ligne 205) : l'adresse est codée
-en dur et le service n'écoute **que** la boucle locale.
+Le service écoute `YAUTJA_CLAN_OUTER_HOST` (défaut `127.0.0.1`) sur `YAUTJA_CLAN_OUTER_PORT`, ou `PORT` à défaut, ou `8790`.
 
-- **VPS** : convient tel quel derrière un proxy inverse (nginx, Caddy…) qui termine TLS
-  et relaie vers `http://127.0.0.1:8790`.
-- **Fly.io / Railway** : le proxy de la plateforme joint le conteneur par son interface
-  réseau, pas par `127.0.0.1`. **Une modification du code est nécessaire** (par exemple une
-  variable d'hôte optionnelle permettant `0.0.0.0`) avant tout déploiement sur ces
-  plateformes. Le script ne lit pas `PORT` : fixer `YAUTJA_CLAN_OUTER_PORT` au port interne
-  déclaré à la plateforme.
+- **VPS** : garder `127.0.0.1` derrière un proxy inverse (nginx, Caddy…) qui termine TLS et relaie vers `http://127.0.0.1:8790`.
+- **Fly.io / Railway** : définir `YAUTJA_CLAN_OUTER_HOST=0.0.0.0`. Le port vient de `PORT`, que la plateforme fournit, ou de `YAUTJA_CLAN_OUTER_PORT`.
 
 ## HTTPS
 
@@ -87,7 +82,7 @@ contrôlables. Ne pas faire tourner plusieurs instances avec des secrets différ
 
 ## Vérification après déploiement
 
-- [ ] Journal de démarrage : `Outer Ops V130 par comptes sur http://127.0.0.1:<port>`.
+- [ ] Journal de démarrage : `Outer Ops V130 par comptes sur <hôte>:<port>`.
 - [ ] `GET /state` avec le jeton d'accès d'un vrai compte → **200**, `clanId` égal à
       l'identifiant (UUID) de l'utilisateur Supabase :
       `curl -i https://<hôte>/state -H "Authorization: Bearer <access_token>"`
