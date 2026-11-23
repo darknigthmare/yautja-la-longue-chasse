@@ -241,3 +241,20 @@ Le [run 45160172928](https://github.com/darknigthmare/yautja-la-longue-chasse/ac
 | Ruines | 2/18 | 2/24 | 0/30 |
 
 Seuls deux couples atteignent la pleine charge. Dans le Fongique et les Ruines, aucune extraction ne dépasse 2 unités. Au Désert et dans l'Océan, aucune ne dépasse 6. Dans ces configurations, le volume prélevable sur les corps semble limiter le sac plus que le repli au sol. Des séries antérieures ont pourtant atteint 15/18 au Désert, avec d'autres tentatives et distances de collecte. `REM112-08` reste partiel : 2 couples sur 24 atteignent la pleine charge.
+
+### Volume anatomique rencontré par tentative
+
+Pour juger si une mission peut remplir le sac, le lanceur moteur recense désormais toutes les créatures non-Apex porteuses de pièces vues pendant la partie (`anatomyCensusAtEnd`, relevé toutes les 30 images). Chaque mission a été jouée en Hunter depuis `campaign-origin-save.json`, sans prélèvement ni insertion en vaisseau visible. Six victoires réelles s'enchaînent ; chacune ouvre la tentative suivante. Les valeurs donnent le volume total des pièces sur ces créatures, en unités.
+
+| Mission | T1 | T2 | T3 | T4 | T5 | T6 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Jungle | 1 | 0 | 12 | 1 | 0 | 19 |
+| Glace | 5 | 17 | 9 | 5 | 17 | 14 |
+| Volcan | 10 | 4 | 13 | 3 | 4 | 5 |
+| Marais | 12 | 8 | 14 | 6 | 13 | 10 |
+| Désert | 9 | 12 | 4 | 8 | 8 | 11 |
+| Océan | 6 | 10 | 2 | 9 | 8 | 0 |
+| Fongique | 4 | 1 | 2 | 2 | 2 | 2 |
+| Ruines | 2 | 2 | 2 | 2 | 4 | 0 |
+
+Les patrouilles d'insertion en vaisseau visible ajoutent des créatures : la matrice a extrait 24 unités en Jungle Hunter à la tentative 6, au-delà des 19 recensées ici. Ce relevé est donc un ordre de grandeur, pas une borne stricte. Le Fongique et les Ruines restent toutefois à 4 unités au plus par tentative, et la matrice n'y a jamais extrait plus de 2 unités. Avec ce contenu, une pleine charge (18, 24 ou 30 unités) y paraît hors d'atteinte. La décision sur le critère de `REM112-08` revient au propriétaire du projet.
