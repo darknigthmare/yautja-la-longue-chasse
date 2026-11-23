@@ -60,6 +60,7 @@ import { readWarOperationsArchive, writeWarOperationsArchive, repairWarOperation
 import type { RecordedSceneAudioPort } from "./systems/sceneAudio";
 import ClanWarCommandOverlay from "./ClanWarCommandOverlay";
 import styles from "./ClanWarOperationsV115.module.css";
+import OuterOpsAccountPanelV130 from "./OuterOpsAccountPanelV130";
 
 const modeLabels: Record<WarMissionModeV115, string> = {
   assault: "Assaut latéral · déploiement AP", outer: "Mandats délégués · rapport différé",
@@ -1042,6 +1043,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
           Ces objectifs W3 utilisent une adaptation tactique 9 × 6 : les décors narratifs et les cartes sources complètes W3-MAP01/02 restent à développer.</p>
       </div>}
     </section>}
+
+    <OuterOpsAccountPanelV130/>
 
     <section className={styles.delegated}>
       <h4>Outer Ops · opérations en attente ({world.outer.length}/3)</h4>

@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "scope": "Real OuterOpsAccountPanelV130 in Chromium against the CW130 account authority with an in-memory store and a test identity. Not the Supabase project, not GameClient.",
+  "captures": [
+    {
+      "file": "01-account-state.png",
+      "sha256": "61d5efbc98f5236a873bd690c019d2a22e3c39cbb593381bb197a075188433fb"
+    },
+    {
+      "file": "02-dispatched.png",
+      "sha256": "30e604ff777b555ef26e9f3c9a6fae3cde89baafd01bbe2179b41d3d6024fd63"
+    },
+    {
+      "file": "03-recalled.png",
+      "sha256": "2205116c45630ae7f9aae8a3dcbfd62fef731c81549edb13e7ca6bf3220be2b1"
+    },
+    {
+      "file": "04-signed-receipt.png",
+      "sha256": "619c79a920501dd6999c7f6d3decddc5cd2a57cbebc348e2aa37e08a8c628ff3"
+    },
+    {
+      "file": "05-phone-width.png",
+      "sha256": "8136f9b90de0ec1c91b722492e065df9d69d8dc1121f45257525b5c9e0d15029"
+    }
+  ],
+  "steps": [
+    {
+      "step": "dispatch",
+      "revision": 1,
+      "startedAt": 1800000000000,
+      "dueAt": 1800000040000
+    },
+    {
+      "step": "recall",
+      "revision": 2,
+      "dueAt": 1800000010000
+    },
+    {
+      "step": "settled",
+      "revision": 3,
+      "receipt": {
+        "operationId": "W115-OPS-0001",
+        "settledAt": 1800000010000,
+        "outcome": "retreat"
+      }
+    },
+    {
+      "step": "signed-out",
+      "panelRendered": false
+    }
+  ],
+  "result": "PASS"
+}

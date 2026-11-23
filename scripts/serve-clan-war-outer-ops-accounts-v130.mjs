@@ -136,7 +136,7 @@ function monotonicClock() {
 }
 
 /** HTTP authority: GET /state and POST /order, one campaign per authenticated account. */
-export function createWarOuterOpsAccountsServerV130(game, {store, authenticate, secret, clock = monotonicClock(), tickMs = 1000}) {
+export function createWarOuterOpsAccountsServerV130(game, {store, authenticate, secret, clock = monotonicClock(), tickMs = 1000, allowedOrigins = []}) {
   if (!store || typeof authenticate !== 'function' || !Buffer.isBuffer(secret) || secret.length < 32 ||
       typeof clock !== 'function' || !Number.isSafeInteger(tickMs) || tickMs < 250 || tickMs > 60000) {
     throw new Error('Configuration Outer Ops par comptes invalide.');
@@ -168,7 +168,7 @@ export function createWarOuterOpsAccountsServerV130(game, {store, authenticate, 
   }
 
   return createClanWarHttpServiceV127({
-    authenticate,
+    authenticate, allowedOrigins,
     view: identity => withAccount(identity.id, (stored, now) => logic.snapshot(identity.id, stored, now)),
     submit: (identity, order) => validOrder(order)
       ? withAccount(identity.id, (stored, now, accepted) => {
@@ -196,6 +196,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
       store: createSupabaseOuterOpsStoreV130({url, serviceKey: process.env.SUPABASE_SERVICE_ROLE_KEY}),
       authenticate: createSupabaseIdentityV130({url, apiKey: process.env.SUPABASE_PUBLISHABLE_KEY}),
       secret: signing,
+      allowedOrigins: (process.env.YAUTJA_CLAN_OUTER_ALLOWED_ORIGINS ?? '').split(',').map(item => item.trim()).filter(Boolean),
     });
     server.on('error', error => {
       process.stderr.write('Impossible d’ouvrir le service Outer Ops (' + (error.code ?? 'erreur') + ').\n');
