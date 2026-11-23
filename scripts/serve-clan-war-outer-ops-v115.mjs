@@ -32,7 +32,7 @@ function monotonicClock() {
   return () => epoch + Math.floor(performance.now() - counter);
 }
 
-function validOrder(order) {
+export function validOrder(order) {
   if (!order || typeof order !== 'object' || Array.isArray(order) || !validId(order.id) ||
       !Number.isSafeInteger(order.revision) || order.revision < 0 ||
       !Number.isSafeInteger(order.sequence) || order.sequence < 1 ||
@@ -47,50 +47,19 @@ function validOrder(order) {
   return validId(order.operationId) && (order.kind === 'recall' || ['secure', 'detour'].includes(order.decision));
 }
 
-export function createWarOuterOpsServerV115(game, {
-  clans, databasePath = ':memory:', tickMs = 500, clock = monotonicClock(),
-} = {}) {
-  if (!Array.isArray(clans) || clans.length < 1 || clans.length > 4 ||
-      clans.some(clan => !clan || !validId(clan.id)) || new Set(clans.map(clan => clan.id)).size !== clans.length) {
-    throw new Error('Configurez un à quatre clans d’exercice distincts.');
-  }
-  if (!Number.isSafeInteger(tickMs) || tickMs < 250 || tickMs > 60000 || typeof clock !== 'function') {
-    throw new Error('Configuration de cadence Outer Ops invalide.');
-  }
-  const identities = clanWarTokenIdentitiesV127(clans);
+/** Outer Ops rules shared by the SQLite exercise and account-backed authorities.
+ * `stored` is {revision, sequence, previousTime, commandIds, receipts, world}. */
+export function createWarOuterOpsLogicV115(game, secret) {
   const rules = game.DEFAULT_WAR_RULES_V6;
-  const database = new DatabaseSync(databasePath);
-  let secret, get, write;
-  try {
-    database.exec(`
-      PRAGMA busy_timeout=1000;
-      CREATE TABLE IF NOT EXISTS outer_ops_authority (id INTEGER PRIMARY KEY CHECK(id=1), secret TEXT NOT NULL);
-      CREATE TABLE IF NOT EXISTS outer_ops_clans (id TEXT PRIMARY KEY, state TEXT NOT NULL);
-    `);
-    database.prepare('INSERT OR IGNORE INTO outer_ops_authority (id, secret) VALUES (1, ?)').run(randomBytes(32).toString('hex'));
-    secret = Buffer.from(database.prepare('SELECT secret FROM outer_ops_authority WHERE id=1').get().secret, 'hex');
-    get = database.prepare('SELECT state FROM outer_ops_clans WHERE id=?');
-    write = database.prepare('UPDATE outer_ops_clans SET state=? WHERE id=?');
-    const initialize = database.prepare('INSERT OR IGNORE INTO outer_ops_clans (id, state) VALUES (?, ?)');
-    for (const {id} of identities) {
-      initialize.run(id, JSON.stringify({
-        revision: 0, sequence: 0, previousTime: 0, commandIds: [], receipts: [],
-        world: game.createWarOperationsV115(rules),
-      }));
-      const stored = JSON.parse(get.get(id).state);
-      if (!game.readWarOperationsV115(JSON.stringify(stored.world), rules)) {
-        throw new Error('Source V6 incompatible avec le dossier sauvegardé du serveur.');
-      }
-    }
-  } catch (error) {
-    database.close();
-    throw error;
-  }
+  const initial = () => ({revision: 0, sequence: 0, previousTime: 0, commandIds: [], receipts: [],
+    world: game.createWarOperationsV115(rules)});
+  const compatible = world => Boolean(game.readWarOperationsV115(JSON.stringify(world), rules));
 
+  /** Settle every due mandate at `now`; returns the receipts it appended. */
   function finishDue(stored, now, clanId) {
     const world = stored.world;
     const due = world.outer.filter(operation => operation.dueAt <= now);
-    if (!due.length) return;
+    if (!due.length) return [];
     const result = game.settleWarOuterOpsV115(world, now, rules);
     if (!result.accepted) throw new Error(result.message);
     const receipts = due.map(operation => {
@@ -103,6 +72,86 @@ export function createWarOuterOpsServerV115(game, {
     stored.world = result.state;
     stored.receipts.push(...receipts);
     stored.revision++;
+    return receipts;
+  }
+
+  function snapshot(clanId, stored, now) {
+    const world = stored.world;
+    const free = world.teams.find(team => !world.assignments[team.id] && team.members.some(member => member.status === 'fit'));
+    const suggested = free ? rules.territories.find(site =>
+      game.warMissionEligibleV115(world, rules, site.id, [free.id]) === null) : null;
+    return {
+      clanId, revision: stored.revision, nextSequence: stored.sequence + 1,
+      serverTime: now, rav: world.rav, clock: world.clock,
+      suggestedDispatch: suggested ? {targetId: suggested.id, teamIds: [free.id], focus: 'recon'} : null,
+      teams: world.teams.map(team => ({id: team.id, unitId: team.unitId, assigned: world.assignments[team.id] ?? null})),
+      operations: world.outer.map(order => ({
+        ...order, remainingMs: Math.max(0, order.dueAt - now),
+        incident: game.warOuterIncidentV143(order, now, rules),
+      })),
+      receipts: stored.receipts.slice(-120),
+    };
+  }
+
+  /** Validate and apply one client order; mutates `stored` only when accepted. */
+  function apply(clanId, stored, order, now) {
+    if (!validOrder(order)) return {status: 400, error: 'invalid-order'};
+    if (stored.commandIds.includes(order.id)) return {status: 409, error: 'duplicate-order'};
+    if (order.revision !== stored.revision || order.sequence !== stored.sequence + 1) {
+      return {status: 409, error: 'state-changed'};
+    }
+    if (stored.commandIds.length >= 5000) return {status: 422, error: 'session-limit'};
+    const world = stored.world;
+    const update = order.kind === 'start'
+      ? game.beginWarOperationV115(world, 'outer', order.targetId, order.teamIds, rules, now, order.focus)
+      : order.kind === 'incident'
+        ? game.commandWarOuterIncidentV143(world, order.operationId, order.decision, now, rules)
+        : game.recallWarOuterMissionV116(world, order.operationId, now, rules);
+    if (!update.accepted) return {status: 422, error: 'order-refused', reason: update.message};
+    stored.world = update.state;
+    stored.sequence = order.sequence;
+    stored.commandIds.push(order.id);
+    stored.revision++;
+    return {status: 200, state: snapshot(clanId, stored, now), message: update.message};
+  }
+
+  return {rules, initial, compatible, finishDue, snapshot, apply};
+}
+
+export function createWarOuterOpsServerV115(game, {
+  clans, databasePath = ':memory:', tickMs = 500, clock = monotonicClock(),
+} = {}) {
+  if (!Array.isArray(clans) || clans.length < 1 || clans.length > 4 ||
+      clans.some(clan => !clan || !validId(clan.id)) || new Set(clans.map(clan => clan.id)).size !== clans.length) {
+    throw new Error('Configurez un à quatre clans d’exercice distincts.');
+  }
+  if (!Number.isSafeInteger(tickMs) || tickMs < 250 || tickMs > 60000 || typeof clock !== 'function') {
+    throw new Error('Configuration de cadence Outer Ops invalide.');
+  }
+  const identities = clanWarTokenIdentitiesV127(clans);
+  const database = new DatabaseSync(databasePath);
+  let logic, get, write;
+  try {
+    database.exec(`
+      PRAGMA busy_timeout=1000;
+      CREATE TABLE IF NOT EXISTS outer_ops_authority (id INTEGER PRIMARY KEY CHECK(id=1), secret TEXT NOT NULL);
+      CREATE TABLE IF NOT EXISTS outer_ops_clans (id TEXT PRIMARY KEY, state TEXT NOT NULL);
+    `);
+    database.prepare('INSERT OR IGNORE INTO outer_ops_authority (id, secret) VALUES (1, ?)').run(randomBytes(32).toString('hex'));
+    logic = createWarOuterOpsLogicV115(game,
+      Buffer.from(database.prepare('SELECT secret FROM outer_ops_authority WHERE id=1').get().secret, 'hex'));
+    get = database.prepare('SELECT state FROM outer_ops_clans WHERE id=?');
+    write = database.prepare('UPDATE outer_ops_clans SET state=? WHERE id=?');
+    const initialize = database.prepare('INSERT OR IGNORE INTO outer_ops_clans (id, state) VALUES (?, ?)');
+    for (const {id} of identities) {
+      initialize.run(id, JSON.stringify(logic.initial()));
+      if (!logic.compatible(JSON.parse(get.get(id).state).world)) {
+        throw new Error('Source V6 incompatible avec le dossier sauvegardé du serveur.');
+      }
+    }
+  } catch (error) {
+    database.close();
+    throw error;
   }
 
   function withClan(identity, operation) {
@@ -113,7 +162,7 @@ export function createWarOuterOpsServerV115(game, {
       if (!Number.isSafeInteger(time) || time < 0) throw new Error('Horloge serveur invalide.');
       const now = Math.max(time, current.previousTime);
       const before = current.revision;
-      finishDue(current, now, identity.id);
+      logic.finishDue(current, now, identity.id);
       const result = operation(current, now);
       if (current.revision !== before) {
         current.previousTime = now;
@@ -127,51 +176,13 @@ export function createWarOuterOpsServerV115(game, {
     }
   }
 
-  function snapshot(identity, stored, now) {
-    const world = stored.world;
-    const free = world.teams.find(team => !world.assignments[team.id] && team.members.some(member => member.status === 'fit'));
-    const suggested = free ? rules.territories.find(site =>
-      game.warMissionEligibleV115(world, rules, site.id, [free.id]) === null) : null;
-    return {
-      clanId: identity.id, revision: stored.revision, nextSequence: stored.sequence + 1,
-      serverTime: now, rav: world.rav, clock: world.clock,
-      suggestedDispatch: suggested ? {targetId: suggested.id, teamIds: [free.id], focus: 'recon'} : null,
-      teams: world.teams.map(team => ({id: team.id, unitId: team.unitId, assigned: world.assignments[team.id] ?? null})),
-      operations: world.outer.map(order => ({
-        ...order, remainingMs: Math.max(0, order.dueAt - now),
-        incident: game.warOuterIncidentV143(order, now, rules),
-      })),
-      receipts: stored.receipts.slice(-120),
-    };
-  }
-
-  function submit(identity, order) {
-    if (!validOrder(order)) return {status: 400, error: 'invalid-order'};
-    return withClan(identity, (stored, now) => {
-      if (stored.commandIds.includes(order.id)) return {status: 409, error: 'duplicate-order'};
-      if (order.revision !== stored.revision || order.sequence !== stored.sequence + 1) {
-        return {status: 409, error: 'state-changed'};
-      }
-      if (stored.commandIds.length >= 5000) return {status: 422, error: 'session-limit'};
-      const world = stored.world;
-      const update = order.kind === 'start'
-        ? game.beginWarOperationV115(world, 'outer', order.targetId, order.teamIds, rules, now, order.focus)
-        : order.kind === 'incident'
-          ? game.commandWarOuterIncidentV143(world, order.operationId, order.decision, now, rules)
-          : game.recallWarOuterMissionV116(world, order.operationId, now, rules);
-      if (!update.accepted) return {status: 422, error: 'order-refused', reason: update.message};
-      stored.world = update.state;
-      stored.sequence = order.sequence;
-      stored.commandIds.push(order.id);
-      stored.revision++;
-      return {status: 200, state: snapshot(identity, stored, now), message: update.message};
-    });
-  }
-
   const server = createClanWarHttpServiceV127({
     identities,
-    view: identity => withClan(identity, (stored, now) => snapshot(identity, stored, now)),
-    submit, tickMs,
+    view: identity => withClan(identity, (stored, now) => logic.snapshot(identity.id, stored, now)),
+    submit: (identity, order) => validOrder(order)
+      ? withClan(identity, (stored, now) => logic.apply(identity.id, stored, order, now))
+      : {status: 400, error: 'invalid-order'},
+    tickMs,
     tick: () => {
       for (const identity of identities) withClan(identity, () => {});
     },

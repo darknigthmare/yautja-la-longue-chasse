@@ -262,7 +262,9 @@ export function createClanWarPracticeServer(game, {
   return createClanWarHttpServiceV127({identities, view, submit, tick: tickMatch, tickMs});
 }
 
-export function createClanWarHttpServiceV127({identities, view, submit, tick, tickMs, client}) {
+/** `authenticate(authorization)` may replace the token table with an async account check
+ * (resolving to an identity or undefined); view, submit and tick may be async. */
+export function createClanWarHttpServiceV127({identities, view, submit, tick, tickMs, client, authenticate}) {
   function identityFor(authorization) {
     const [, presented] = /^Bearer ([A-Za-z0-9_-]{43,128})$/i.exec(authorization ?? '') ?? [];
     if (!presented) return undefined;
@@ -292,17 +294,17 @@ export function createClanWarHttpServiceV127({identities, view, submit, tick, ti
         responseJson(response, 404, {error: 'unknown-route'});
         return;
       }
-      const identity = identityFor(request.headers.authorization);
+      const identity = authenticate ? await authenticate(request.headers.authorization) : identityFor(request.headers.authorization);
       if (!identity) {
         responseJson(response, 401, {error: 'unauthorized'});
         return;
       }
       if (request.method === 'GET') {
-        responseJson(response, 200, view(identity));
+        responseJson(response, 200, await view(identity));
         return;
       }
       const parsed = await readOrder(request);
-      const {status, ...payload} = parsed.error ? parsed : submit(identity, parsed.order);
+      const {status, ...payload} = parsed.error ? parsed : await submit(identity, parsed.order);
       responseJson(response, status, payload);
     } catch {
       if (!response.destroyed) responseJson(response, 500, {error: 'practice-unavailable'});
@@ -312,7 +314,12 @@ export function createClanWarHttpServiceV127({identities, view, submit, tick, ti
   if (tick) {
     let timer;
     server.on('listening', () => {
-      timer = setInterval(tick, tickMs);
+      let running = false;
+      timer = setInterval(() => {
+        if (running) return;
+        running = true;
+        Promise.resolve().then(tick).catch(() => {}).finally(() => { running = false; });
+      }, tickMs);
       timer.unref();
     });
     server.on('close', () => clearInterval(timer));
