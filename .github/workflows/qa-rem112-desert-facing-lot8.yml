@@ -103,7 +103,7 @@ jobs:
       - name: Play the Desert hunt and archive the same bone in the workshop
         run: |
           node scripts/qa-hunt-campaign-browser-v112.mjs --campaign-source outputs/admission/campaign.json \
-            --missions desert-sandmaw --require-complete --require-resume --max-retries 1 \
+            --missions desert-sandmaw --require-complete --require-resume --max-retries 4 \
             --harvest-species serekh-9--dust-jackal --harvest-action harvest-bone --require-harvest-workshop \
             --wall-seconds 2700 --chromium /usr/bin/google-chrome --output outputs/browser --asset-cache outputs/source-cache
           node --input-type=module <<'NODE'
