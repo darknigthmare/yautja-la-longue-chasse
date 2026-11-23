@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2454,
-  "bytes": 1117026872,
+  "files": 2464,
+  "bytes": 1117052572,
   "entries": [
     {
       "path": ".github/workflows/p0-p1-coherence-20261109.yml",
@@ -145,8 +145,8 @@
     },
     {
       "path": "app/game/CampaignFrontEnd.tsx",
-      "bytes": 11500,
-      "sha256": "f8d4d4a23916c39dc390cebc5db1a7644e6f52f481a29ebde8261cd365b821a0"
+      "bytes": 11972,
+      "sha256": "624de2d6ec53ec32d1d51f956da0132f11c9c75dd6a03439fc59203ed5af3420"
     },
     {
       "path": "app/game/CampaignMainMenu.module.css",
@@ -455,8 +455,8 @@
     },
     {
       "path": "app/game/ClanWarOperationsV115.tsx",
-      "bytes": 107229,
-      "sha256": "df7d48eb5c7921d0e426f290b289e59bff9d75db5fe6eef48c52cff7c4253384"
+      "bytes": 107329,
+      "sha256": "6cd5fa15f9d2e4c150622a6432399d8d6d8c5486aff76cdb975fdbbf3892251b"
     },
     {
       "path": "app/game/ClanWarPanelV85.module.css",
@@ -805,8 +805,8 @@
     },
     {
       "path": "app/game/GameClient.tsx",
-      "bytes": 446457,
-      "sha256": "f8a1a4c742d6f0ce20b2fa4b2b522e277dd890c677f28cbb21cd1b420f3058b1"
+      "bytes": 446584,
+      "sha256": "8c56fec575be3dc0712cd1baa1543e7b1eb2307615fd5ac9ce672876be33afaa"
     },
     {
       "path": "app/game/GameReserveEntryV104.module.css",
@@ -1609,6 +1609,16 @@
       "sha256": "3919be47bce5379642a8dfaca3edd3ff843da4e103587e2a86efecb04d223375"
     },
     {
+      "path": "app/game/MaskTurnaroundV136.module.css",
+      "bytes": 907,
+      "sha256": "a1affd43d3fffe04a4ce2d95e8151bca4ab036a40fc9cf084fd531505d6d4827"
+    },
+    {
+      "path": "app/game/MaskTurnaroundV136.tsx",
+      "bytes": 2474,
+      "sha256": "e22930b3896f7b2babb96d17e5b89897508e9b7644c1327500c82285e708d767"
+    },
+    {
       "path": "app/game/Mausoleum.module.css",
       "bytes": 5195,
       "sha256": "9c063c730426386112bab6a11921c6662d1313fe8aa7f73413d46eece05cbbff"
@@ -1682,6 +1692,16 @@
       "path": "app/game/OserisReturnR2M053Panel.tsx",
       "bytes": 4057,
       "sha256": "b2f2c79c45946a128f5585dd1f124a13146f45252a77ed5ccd7cd1d81eaaafc9"
+    },
+    {
+      "path": "app/game/OuterOpsAccountPanelV130.module.css",
+      "bytes": 871,
+      "sha256": "e1aa20c7eca046c0c6882b3aa1c4c72c221a1c7c05d330358144031e06da18d9"
+    },
+    {
+      "path": "app/game/OuterOpsAccountPanelV130.tsx",
+      "bytes": 6831,
+      "sha256": "576489686d1967da2e07bbae22924a39b54ce585fa183f9d489f0dbcddcc9641"
     },
     {
       "path": "app/game/PathMissionPanelV158.tsx",
@@ -2067,6 +2087,16 @@
       "path": "app/game/SpaceRoutesPanelV159.tsx",
       "bytes": 12385,
       "sha256": "4d8096cfa39e8140b392a899f7dd6277edf0f001e720255ca932f1c389fc492c"
+    },
+    {
+      "path": "app/game/StudioIntroV174.module.css",
+      "bytes": 2193,
+      "sha256": "6c9b04a55aa9882ae6af846341b101321eef88fdd7863724603af14d87f439af"
+    },
+    {
+      "path": "app/game/StudioIntroV174.tsx",
+      "bytes": 3611,
+      "sha256": "73000e06f043d53b0b58dbeb75e2584d3268ce0f491b9dbc880f97cab4378fe9"
     },
     {
       "path": "app/game/TantalusPanelV164.module.css",
@@ -2744,6 +2774,11 @@
       "sha256": "e57a24dfcb29ae9b19417c69951846ca938d0398331b9e2c816491832d88b14a"
     },
     {
+      "path": "app/game/data/maskViewsV136.json",
+      "bytes": 266,
+      "sha256": "8e64ad5d953bbb6a66a63a00d6d2a7ee0360f159c4b097cec92890b99318f270"
+    },
+    {
       "path": "app/game/data/npcProductionV615.json",
       "bytes": 52512,
       "sha256": "3d3c2a15d29f9877ad5ceb8ff7cf135c6dbca4bf9235f3f922179b7eb18e0733"
@@ -2757,6 +2792,11 @@
       "path": "app/game/data/originsV151.json",
       "bytes": 21736,
       "sha256": "88b33e7239b6a4712f8fb0e5ad6a35e16fff80f585cd7ebfcda8dbba24fba533"
+    },
+    {
+      "path": "app/game/data/outerOpsAccountConfigV130.json",
+      "bytes": 18,
+      "sha256": "0e698eec5055470f2892aa4984b902b8c082cda661a33a159425a700ce7f1893"
     },
     {
       "path": "app/game/data/pathObjectsV158.json",
@@ -6099,6 +6139,11 @@
       "sha256": "aa9ecfdb69100d41bdac2f9677fbfa785f881a47e0c79a86d8c7936d4ea31436"
     },
     {
+      "path": "app/game/systems/outerOpsAccountClientV130.ts",
+      "bytes": 5581,
+      "sha256": "21a50a239a93090605fdb24d730356c83c16c231a0d4c327dc0274b323c75404"
+    },
+    {
       "path": "app/game/systems/pageActivityV94.ts",
       "bytes": 788,
       "sha256": "9a05c9b31fe4996f5c5b493564587e7faa074ea6471450bd3f03b9f29914fee9"
@@ -6702,6 +6747,11 @@
       "path": "app/game/systems/spaceRoutesV159.ts",
       "bytes": 33040,
       "sha256": "55739db8fe7db2fd997af2d7d9ff4b311243923f50e45ff0c7c0d1e014dab084"
+    },
+    {
+      "path": "app/game/systems/studioIntroV174.ts",
+      "bytes": 1962,
+      "sha256": "4d62cfc8bb160932424992e30b8a90fb382a35879822ecd11c07dbda5fe79eca"
     },
     {
       "path": "app/game/systems/tantalusV164.ts",
@@ -11250,8 +11300,8 @@
     },
     {
       "path": "scripts/lib/qa-hunt-campaign-input-v112.mjs",
-      "bytes": 6922,
-      "sha256": "9a43cf4f273addb3665a6792d1e5b47f0fa6aaaa53e6f63ba0bb539f9ca64dee"
+      "bytes": 7209,
+      "sha256": "f2a3c93d56560e4c03127bb1db3174f4c6d4a8c49d68f1663f40ff2fbad49634"
     },
     {
       "path": "scripts/lib/qa-hunt-field-guide-v112.mjs",
