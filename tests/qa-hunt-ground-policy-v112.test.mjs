@@ -201,3 +201,22 @@ test("the full canopy pilot names real authored supports and waits for ground ex
   assert.equal(memory.stage,"grounded-exit");
   assert.equal(memory.events.find(e=>e.stage==="leave-second-vine").supportId,route.secondVine.id);
 });
+
+test("the browser pilot turns toward an Apex behind it before swinging in contact",()=>{
+  // Desert lot 7 trace: hunter at x 6241 above the arena floor, facing right, Apex pinned at its left patrol bound.
+  const hunter={...player,x:6241,y:508,width:72,height:116,facing:1,health:163,maxHealth:192,medicomps:0,
+    energy:120,stamina:80,scanCooldown:1,healCooldown:0,melee:{phase:"idle"}};
+  const apex={id:"mission-boss",x:6120,y:482,width:157,height:142,alive:true,active:true,scanned:true,telegraph:0,boss:true};
+  const game={...ocean,phase:"target",bossMechanics:{missionId:"desert-sandmaw"},energyWeaponsLocked:false,
+    player:hunter,boss:apex,enemies:[],world:{floorY:624,platforms:[]}};
+  const memory={previousX:hunter.x,stuckTicks:0,jumpUntil:-1,nextJump:Infinity};
+  const turn=decideBrowserHunt(game,1,memory);
+  assert.equal(turn.reason,"combat:mission-boss");
+  assert.ok(turn.held.includes("left"),"the hunter must face the Apex before the next swing");
+  assert.ok(!turn.pressed.includes("melee"),"a swing facing away cannot reach the Apex");
+  const facing=decideBrowserHunt({...game,player:{...hunter,facing:-1}},2,memory);
+  assert.ok(facing.pressed.includes("melee"));
+  assert.ok(!facing.held.includes("left")&&!facing.held.includes("right"));
+  const busy=decideBrowserHunt({...game,player:{...hunter,melee:{phase:"recovery"}}},3,memory);
+  assert.ok(!busy.held.includes("left"),"facing only changes while the native melee is idle");
+});
