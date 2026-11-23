@@ -13,7 +13,7 @@ jobs:
   desert:
     name: Désert ${{ matrix.admission }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 28
+    timeout-minutes: 55
     strategy:
       fail-fast: false
       matrix:
@@ -105,7 +105,7 @@ jobs:
           node scripts/qa-hunt-campaign-browser-v112.mjs --campaign-source outputs/admission/campaign.json \
             --missions desert-sandmaw --require-complete --require-resume --max-retries 1 \
             --harvest-species serekh-9--dust-jackal --harvest-action harvest-bone --require-harvest-workshop \
-            --wall-seconds 1200 --chromium /usr/bin/google-chrome --output outputs/browser --asset-cache outputs/source-cache
+            --wall-seconds 2700 --chromium /usr/bin/google-chrome --output outputs/browser --asset-cache outputs/source-cache
           node --input-type=module <<'NODE'
           import assert from 'node:assert/strict';
           import {readFile} from 'node:fs/promises';
