@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2454,
-  "bytes": 1117026872,
+  "files": 2469,
+  "bytes": 1117181972,
   "entries": [
     {
       "path": ".github/workflows/p0-p1-coherence-20261109.yml",
@@ -145,8 +145,8 @@
     },
     {
       "path": "app/game/CampaignFrontEnd.tsx",
-      "bytes": 11500,
-      "sha256": "f8d4d4a23916c39dc390cebc5db1a7644e6f52f481a29ebde8261cd365b821a0"
+      "bytes": 11835,
+      "sha256": "238df9c3dda28fda98c73f4b59767549091dee8b5594075a4293e78f9b309cab"
     },
     {
       "path": "app/game/CampaignMainMenu.module.css",
@@ -155,8 +155,8 @@
     },
     {
       "path": "app/game/CampaignMainMenu.tsx",
-      "bytes": 46137,
-      "sha256": "a19788bdd43c0d54b558ee139ce4e1db775e22b57d9e2f3c2d5e43731bb3fe65"
+      "bytes": 46633,
+      "sha256": "98f4807f6c50889001d89236ac2faf7297498dffdd705a9f500b96cb5d7316ef"
     },
     {
       "path": "app/game/CatalogueHunterBrowser.tsx",
@@ -1579,6 +1579,16 @@
       "sha256": "b1a75803f26e6a997da4bba9e0c8596eb889cf9dc50ab0d2c0c16a79cdbde110"
     },
     {
+      "path": "app/game/IslesModeV1.module.css",
+      "bytes": 5458,
+      "sha256": "dd6d96b5157de0ab3524aa7bff415384d8beb72ba5ea3a069bd43b62eaf50742"
+    },
+    {
+      "path": "app/game/IslesModeV1.tsx",
+      "bytes": 25031,
+      "sha256": "88e5185effe3520cba6b950a41e005397375b07f73e0bb46248c301342c0697a"
+    },
+    {
       "path": "app/game/JungleHunterLayeredV134.module.css",
       "bytes": 355,
       "sha256": "0fcd77a8f4465ce3ebb71a2c1a875fdf0d18eb921c42ec70da67824732c59ecf"
@@ -2744,6 +2754,31 @@
       "sha256": "e57a24dfcb29ae9b19417c69951846ca938d0398331b9e2c816491832d88b14a"
     },
     {
+      "path": "app/game/data/islesMapTestV1.json",
+      "bytes": 3909,
+      "sha256": "cccdf1674f438a505634e0fce8685e65ae8056f9b24a7cbbea4d87f9abcb7eac"
+    },
+    {
+      "path": "app/game/data/islesMapVerdantV1.json",
+      "bytes": 11310,
+      "sha256": "b62cd118252f9ffa8e8789937b98aeddab4fe9412af892eb932b3583d737b1e5"
+    },
+    {
+      "path": "app/game/data/islesNetConfigV1.json",
+      "bytes": 158,
+      "sha256": "49d424734391f686a7d5f7a80a06000aa4cb2ad09b88ce8071a3c59d4598059a"
+    },
+    {
+      "path": "app/game/data/islesReverseHuntV1.json",
+      "bytes": 3442,
+      "sha256": "761522f0fc1882df2732bea4655503d1830973e1d1f538c171dd71f7a78004b8"
+    },
+    {
+      "path": "app/game/data/islesTuningV1.json",
+      "bytes": 1384,
+      "sha256": "1b3acb15fb6203518b1cbf5b51aef874f71e1f0030c8c11297755d9e9582eed0"
+    },
+    {
       "path": "app/game/data/npcProductionV615.json",
       "bytes": 52512,
       "sha256": "3d3c2a15d29f9877ad5ceb8ff7cf135c6dbca4bf9235f3f922179b7eb18e0733"
@@ -3337,6 +3372,46 @@
       "path": "app/game/iceExplorationRendering.ts",
       "bytes": 7016,
       "sha256": "abfe899fc132bb50af156dccb7e79e1d5e4fdde4e6a186dc981452da63589dad"
+    },
+    {
+      "path": "app/game/isles/islesCameraV1.ts",
+      "bytes": 4802,
+      "sha256": "d729fa4050af0195df5cdc4931464a1d46a5c2171e3f812a520d4b0971c9802b"
+    },
+    {
+      "path": "app/game/isles/islesMapV1.ts",
+      "bytes": 4438,
+      "sha256": "7560ff3e96983bcd1813316ba04605c77760a1f86dca07662a7d36aec20b1022"
+    },
+    {
+      "path": "app/game/isles/islesMovementV1.ts",
+      "bytes": 7994,
+      "sha256": "1f110950a95254379c9e756e340f5e122c51a2a3c0b5d684468cf9afb4578f00"
+    },
+    {
+      "path": "app/game/isles/islesNetClientV1.ts",
+      "bytes": 4607,
+      "sha256": "c9a4579f7141269bac77445e36450548a5f2f74b1f3ce08807ffe853b50676e7"
+    },
+    {
+      "path": "app/game/isles/islesPathV1.ts",
+      "bytes": 3587,
+      "sha256": "2f41a522c266bd0b38fbb4f8c736b05034471f220c1c0975c14f4e25557413d0"
+    },
+    {
+      "path": "app/game/isles/islesReverseHuntV1.ts",
+      "bytes": 41001,
+      "sha256": "8bcaa380900d203b03992884054dc741ad490b483ca2b2bda5619b40480513b3"
+    },
+    {
+      "path": "app/game/isles/islesRoomV1.ts",
+      "bytes": 11273,
+      "sha256": "19cea0a290c3eafd42d1a408d75f0ac8ef4d4e2b87730a700bb368ef42b2fde5"
+    },
+    {
+      "path": "app/game/isles/islesSceneV1.ts",
+      "bytes": 22977,
+      "sha256": "1b09d29725428e85af03df91f933e7304ac0f415e8ed54c185be517dfd15666f"
     },
     {
       "path": "app/game/missionMastery.ts",
@@ -7700,13 +7775,13 @@
     },
     {
       "path": "package-lock.json",
-      "bytes": 389978,
-      "sha256": "763dcb2fdfef2e1a7ce196540cca3f4f5617eeb28a36b380d0dc6079410c1892"
+      "bytes": 392821,
+      "sha256": "46cee2f3e51c7258b618a6668228cf907d9a2df9c5febe82227f61cdc7bd46d9"
     },
     {
       "path": "package.json",
-      "bytes": 8562,
-      "sha256": "246599abd3ca304b98201bbffbbcaaeef481486a91f3cad637a15c3ee20efbe5"
+      "bytes": 8617,
+      "sha256": "dd4a60d60f348fec3db004aa64189a0c1aba49098d1251964e9873a4685d62df"
     },
     {
       "path": "production/clan-war-command-20261109/qa/ci/runtime-file-inputs.json",

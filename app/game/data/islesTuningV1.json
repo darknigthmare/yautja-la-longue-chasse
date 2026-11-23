@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "source": "docs/campagne/MODE_THE_ISLES_20261121.md, sections 4.1, 4.2, 4.3, 10 et 13.4",
+  "tileMeters": 2,
+  "movement": {
+    "walkSpeed": 4.4,
+    "runSpeed": 8.6,
+    "swimSpeed": 2.4,
+    "acceleration": 38,
+    "gravity": 24,
+    "jumpSpeed": 8.4,
+    "stepHeight": 0.6,
+    "climbSpeed": 3.6,
+    "climbMaxHeight": 12,
+    "climbPushDot": 0.35,
+    "radius": 0.4,
+    "bodyHeight": 2.3,
+    "waterLevel": 0,
+    "swimDepth": 1.1,
+    "climbable": ["rock", "tree", "wall", "roof", "pillar", "ruin", "crate"]
+  },
+  "cloak": {
+    "capacity": 100,
+    "drainPerSecond": 5,
+    "runDrainPerSecond": 9,
+    "regenPerSecond": 8,
+    "minToEngage": 15,
+    "waterRevealSeconds": 2.5
+  },
+  "camera": {
+    "pitchDegrees": 35,
+    "baseYawDegrees": 45,
+    "zoomHalfHeights": [8, 14, 24],
+    "zoomNames": ["traque", "course", "repérage"],
+    "defaultZoom": 1,
+    "leadSeconds": 0.6,
+    "leadMax": 6,
+    "leadSmoothing": 3.5,
+    "cutawayRadius": 2.6,
+    "cutawayMinDepth": 0.35,
+    "cutawayFeetMargin": 0.25,
+    "distance": 60
+  },
+  "net": {
+    "maxPlayers": 8,
+    "snapshotHz": 15,
+    "inputHz": 15,
+    "speedTolerance": 1.35,
+    "verticalTolerance": 14,
+    "strikeRange": 3,
+    "strikeCooldownSeconds": 0.6,
+    "preyHealth": 3,
+    "preyRespawnSeconds": 20,
+    "preySpeed": 2.2,
+    "interpolationMs": 120,
+    "idleTimeoutSeconds": 30
+  }
+}
