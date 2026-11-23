@@ -118,7 +118,7 @@ jobs:
           import {readFile} from 'node:fs/promises';
           let q;try{q=JSON.parse(await readFile('outputs/browser/report.json','utf8'));}catch(error){console.log(error.message);process.exit(0);}
           console.log(JSON.stringify({qualification:q.qualification,coverage:q.coverage,resumes:q.resumeObservations,apex:q.apexTrophyObservations,
-            attempts:q.attempts.map(a=>({missionId:a.missionId,delivered:a.delivered,retries:a.retryEvents?.map(x=>({button:x.button,elapsed:x.elapsed})),
+            attempts:q.attempts.map(a=>({missionId:a.missionId,controlLoop:a.controlLoop,delivered:a.delivered,retries:a.retryEvents?.map(x=>({button:x.button,elapsed:x.elapsed})),
               settlement:a.settlement,terminal:{phase:a.final?.state?.phase,elapsed:a.final?.state?.elapsed,health:a.final?.state?.player?.health,x:a.final?.state?.player?.x}})),
             workshop:q.workshop.map(({before,after,...row})=>row),errors:q.errors,missingAssets:q.missingAssets,failure:q.failure}));
           NODE

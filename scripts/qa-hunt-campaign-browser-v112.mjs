@@ -84,12 +84,17 @@ const bundle=await build({stdin:{contents:entry,resolveDir:root,loader:'tsx'},bu
       const marker='    const fixedStep = 1 / 60;';
       assert.equal(source.split(marker).length,2,'exactly one native observation point');
       const observer=`
-    window.__observeCanonicalHuntV112 = () => {
+    window.__observeCanonicalHuntV112 = (slim = false) => {
       const target = game.phase === "trophy" && !game.trophyExtracting && !game.regularTrophyDropId
         ? activeTrophyHarvestTargetV111(game) : null;
-      return { alive, missionId: mission.id, encounterRun,
+      // A slim read leaves out heavy history the pilot never reads; evidence samples stay complete.
+      const heavy = slim ? new Set(["lastCheckpoint", "tracks", "ecologyDeck", "goreParticles", "scentNodes", "honorEvents", "regularTrophyDrops"]) : null;
+      return { alive, missionId: mission.id, encounterRun, slim,
         apexTrophy: target && { ...target, inReach: canContinueTrophyHarvestV111(game) },
-        state: JSON.parse(JSON.stringify(game, (_key, value) => value instanceof Set ? [...value] : value)) };
+        state: JSON.parse(JSON.stringify(game, function (key, value) {
+          if (heavy && this === game && heavy.has(key)) return undefined;
+          return value instanceof Set ? [...value] : value;
+        })) };
     };
 `;
       recordSource(path.join(root,'app/game/HuntCanvas.tsx'),source);
@@ -360,6 +365,8 @@ try{
       melee:'KeyJ',weapon:'KeyK',weaponOne:'Digit1',weaponTwo:'Digit2',weaponNext:'KeyR',scan:'KeyV',heal:'KeyH',
       interact:'KeyE',pause:'Escape',cloak:'KeyC',gearOne:'Digit3',gearTwo:'Digit4'};
     const samples=[],examined=new Set(),harvestTries=new Map(),discoveryChannels=new Set(),retryEvents=[];
+    // Control cadence: one tick per observation round trip, measured in simulated and wall time.
+    const controlLoop={iterations:0,firstElapsed:null,lastElapsed:null};
     let final=null,lastSecond=-1,lastPhase='',resumed=false,resumeReceipt=null,lastDecision=null;
     let startedWestOfIceGate=false,seenIceUnderpass=false;
     let trophyApproachMemory={},previousApexReason=null;
@@ -367,13 +374,15 @@ try{
     while(!stopRequested&&Date.now()-start<budget*1000){
       const {observed,activeElement,bodyId}=await page.evaluate(()=>{
         const element=document.activeElement;
-        return {observed:window.__observeCanonicalHuntV112?.(),
+        return {observed:window.__observeCanonicalHuntV112?.(true),
           activeElement:{tag:element?.tagName,role:element?.getAttribute('role'),
             text:element?.textContent?.slice(0,120),isCanvas:element?.tagName==='CANVAS'},
           bodyId:document.querySelector('[data-hunt-rites-v77]')?.getAttribute('data-corpse-id')??null};
       });
-      if(!observed?.alive){final=observed;break;}
-      const game=observed.state;final=observed;
+      const observeFull=()=>page.evaluate(()=>window.__observeCanonicalHuntV112?.(false));
+      if(!observed?.alive){final=await observeFull()??observed;break;}
+      const game=observed.state;
+      controlLoop.iterations++;controlLoop.firstElapsed??=game.elapsed;controlLoop.lastElapsed=game.elapsed;
       if(missionId==='ice-cryostalker'&&!seenIceUnderpass){
         const gate=game.world.platforms.find(platform=>platform.id==='ice-region-thermal-return-gate'&&platform.collision==='solid');
         const player=game.player;
@@ -386,8 +395,11 @@ try{
           console.log(JSON.stringify({browserIceUnderpass:underpass}));
         }
       }
+      if(Math.floor(game.elapsed)!==lastSecond||game.phase==='dead'||game.phase==='finished'){
+        final=await observeFull()??observed;
+      }
       if(Math.floor(game.elapsed)!==lastSecond){
-        samples.push(observed);lastSecond=Math.floor(game.elapsed);
+        samples.push(final);lastSecond=Math.floor(game.elapsed);
         await writeFile(path.join(out,'progress.json'),JSON.stringify({wallSeconds:(Date.now()-start)/1000,missionId:observed.missionId,
           elapsed:game.elapsed,phase:game.phase,paused:game.paused,player:game.player,scans:game.scans,kills:game.kills,
           scanNodes:game.scanNodes,activeElement,lastDecision,reason:'native browser observation'},null,2)+'\n');
@@ -423,7 +435,7 @@ try{
           report.inputs.push({missionId,elapsed:game.elapsed,type:'DOM retry unavailable',reason:String(error)});
           break;
         }
-        retryEvents.push({elapsed:game.elapsed,nativeDeath:observed,button:label});
+        retryEvents.push({elapsed:game.elapsed,nativeDeath:final,button:label});
         Object.assign(memory,{previousX:0,stuckTicks:0,jumpUntil:-1,nextJump:0,nextInteractTick:0});
         trophyApproachMemory={};previousApexReason=null;
         delete memory.dropDirection;delete memory.dropTargetX;delete memory.harvestEdge;delete memory.harvestDirection;
@@ -593,7 +605,8 @@ try{
     const delivered=settlementConfirmed?settled.inventory.harvestV112.specimens.filter(item=>
       !priorIds.has(item.id)&&(!harvestSpecies||item.speciesId===harvestSpecies)&&(!wantedPart||item.partId===wantedPart)&&
       field.some(source=>source.id===item.id&&source.sourceId===item.sourceId&&source.speciesId===item.speciesId&&source.partId===item.partId)):[];
-    report.attempts.push({missionId,final,retryEvents,suspendedAndReloaded:resumed,resumeReceipt,delivered,
+    controlLoop.simulatedSecondsPerTick=controlLoop.iterations>1?(controlLoop.lastElapsed-controlLoop.firstElapsed)/(controlLoop.iterations-1):null;
+    report.attempts.push({missionId,final,retryEvents,controlLoop,suspendedAndReloaded:resumed,resumeReceipt,delivered,
       settlement:{confirmed:settlementConfirmed,beforeProgress,afterProgress},wallSeconds:(Date.now()-start)/1000,
       status:settlementConfirmed?'BROWSER_HUNT_AND_SETTLEMENT_SUCCESS':final?.state.phase==='dead'?'CONTROLLER_DIED':'ATTEMPT_INCOMPLETE'});
     await writeFile(path.join(out,missionId+'-hunt-samples.json'),JSON.stringify(samples,null,2)+'\n');
