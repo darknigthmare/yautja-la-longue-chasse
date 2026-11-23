@@ -57,7 +57,7 @@ import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/game
 import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
 import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
 import { inspectSpaceRoutesV159 } from "./systems/spaceRoutesV159";
-import { inspectFirstInterstellarV173, firstInterstellarInFlightV173, firstInterstellarReceiptV173 } from "./systems/firstInterstellarV173";
+import { inspectFirstInterstellarV173, firstInterstellarInFlightV173 } from "./systems/firstInterstellarV173";
 import { shipReceiptV161 } from "./systems/shipReceiptV161";
 import { inspectClanShipDocking } from "./systems/clanShipDocking";
 import { evaluateClanShipAccess, evaluateClanShipOperationsCampaign, inspectClanShipOperations } from "./systems/clanShipOperations";
