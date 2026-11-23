@@ -224,3 +224,20 @@ Les deux essais suivants utilisent le vrai GameClient à la révision `2823202`.
 Les journaux indiquent zéro ressource manquante et deux requêtes audio interrompues après admission Chromium et trois après admission moteur. Le crâne, l’extraction du même os et l’atelier du Désert restent à qualifier. `REM112-06` demeure partiel. [Campagne navigateur et simulation des huit contrats](../v112-campaign-canonical/README.md)
 
 Les sauvegardes exportées contiennent encore l’os de qualité 68. Le dernier point de reprise admissible du trajet Chromium se situe à **105,583 s** en combat, avec **192 PV** et un Apex à **836,32 PV**. Le trajet d’admission moteur conserve un point de reprise à **115,050 s** avec **109,40 PV** et un Apex à **715 PV**. Le contrôle des rapports et des archives de stockage n’a trouvé aucun point enregistré en phase trophée ou extraction. [Contrôle des sauvegardes](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44959156155/job/137013878240)
+
+## Matrice du lot 8 : huit missions et trois armures
+
+Le [run 45160172928](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45160172928) joue les 24 couples mission–armure depuis `campaign-origin-save.json`. Des victoires Hunter réelles, appliquées à la sauvegarde, ouvrent les tentatives 1, 3 et 6. Chaque tentative essaie trois variantes de collecte avec l'insertion en vaisseau visible et le seuil plein (`--minimumRetainedLoad=1`). Le pilote moteur au sol se tourne désormais vers l'Apex au contact. Le lot compte **213 essais**, **207 extractions** et **213 rejeux terminaux exacts**. Aucune victoire intermédiaire n'a échoué.
+
+| Mission | Scout | Hunter | Berserker |
+| --- | --- | --- | --- |
+| Jungle | **18/18, plein** (tentative 6) | **24/24, plein** (tentative 6) | 24/30 |
+| Glace | 16/18 | 16/24 | 19/30 |
+| Volcan | 16/18 | 19/24 | 19/30 |
+| Marais | 12/18 | 11/24 | 14/30 |
+| Désert | 6/18 | 6/24 | 6/30 |
+| Océan | 6/18 | 6/24 | 6/30 |
+| Fongique | 1/18 | 1/24 | 2/30 |
+| Ruines | 2/18 | 2/24 | 0/30 |
+
+Seuls deux couples atteignent la pleine charge. Dans le Fongique et les Ruines, aucune extraction ne dépasse 2 unités. Au Désert et dans l'Océan, aucune ne dépasse 6. Dans ces configurations, le volume prélevable sur les corps semble limiter le sac plus que le repli au sol. Des séries antérieures ont pourtant atteint 15/18 au Désert, avec d'autres tentatives et distances de collecte. `REM112-08` reste partiel : 2 couples sur 24 atteignent la pleine charge.
