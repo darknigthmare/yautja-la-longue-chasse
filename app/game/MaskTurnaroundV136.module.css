@@ -1,0 +1,10 @@
+.turnaround{margin:16px 0;padding:14px;border:1px solid #5f6b55;background:#131a16;color:#e6e3cf}
+.turnaround h3{margin:0 0 10px;font-size:1rem;color:#e2d29a}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tile{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px;border:1px solid #3e4b40;background:#0e1411}
+.window{position:relative;width:100%;max-width:180px;aspect-ratio:1/1;overflow:hidden}
+.window img{position:absolute;left:-50%;top:0;width:200%;height:auto;image-rendering:pixelated}
+.tile figcaption{font-size:.8rem;color:#c6cdb8}
+.pending{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;max-width:180px;aspect-ratio:1/1;border:1px dashed #6b7360;color:#aab4a2;font-size:.78rem;text-align:center;padding:6px}
+.pending small{color:#8e9786}
+@media(max-width:520px){.tiles{gap:6px}.tile{padding:5px}}

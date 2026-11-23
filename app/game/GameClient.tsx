@@ -350,6 +350,7 @@ import { useHunterGauntletV133 } from "./systems/useHunterGauntletV133";
 import { gauntletCampaignClaimV134,gauntletCampaignEquipV134 } from "./systems/gauntletCampaignV134";
 import { gauntletByIdV132, type GauntletThemeV132 } from "./systems/clanWarGauntletCatalogV132";
 import { captureHuntGauntletV142, resumeHuntGauntletV142 } from "./systems/huntGauntletIdentityV142";
+import MaskTurnaroundV136 from "./MaskTurnaroundV136";
 
 const HomeworldExpedition = React.lazy(() => import("./HomeworldExpedition"));
 const GlassDesertExpedition = React.lazy(() => import("./GlassDesertExpedition"));
@@ -5986,6 +5987,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   plasmacaster disposent chacun de leur propre emplacement.
                 </p>
               </div>
+              <MaskTurnaroundV136 maskId={save.appearance.biomaskId} />
               <div className="armory-atlas-shelves">
                 <section
                   className="armory-exact-kit"
