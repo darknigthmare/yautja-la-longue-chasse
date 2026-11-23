@@ -39,7 +39,8 @@ assert.ok(!(requireComplete||requireResume||requireIceUnderpass||requireHarvestW
 assert.ok(budget>0&&budget<=7200);
 assert.ok(Number.isSafeInteger(maxRetries)&&maxRetries>=0&&maxRetries<=10);
 await mkdir(out,{recursive:true});
-const hash=value=>createHash('sha256').update(typeof value==='string'||Buffer.isBuffer(value)?value:JSON.stringify(value)).digest('hex');
+// Byte views are hashed as bytes: a JSON spelling of the grown bundle exceeds V8's string limit.
+const hash=value=>createHash('sha256').update(typeof value==='string'||ArrayBuffer.isView(value)?value:JSON.stringify(value)).digest('hex');
 const source=await readFile(path.join(root,'app/game/HuntCanvas.tsx'),'utf8');
 const gameClientSource=await readFile(path.join(root,'app/game/GameClient.tsx'),'utf8');
 const git=promisify(execFile);
