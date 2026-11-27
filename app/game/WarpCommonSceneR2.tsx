@@ -6,6 +6,7 @@ import {
   type WarpBenchChoiceR2, type WarpCommonChoiceR2, type WarpCommonCommandR2, type WarpCommonViewR2,
   type WarpInstallChoiceR2,
 } from "./systems/warpCommonRouteR2";
+import type { WarpSurveyActionR2, WarpSurveyR2 } from "./systems/warpEpochsV165";
 import styles from "./WarpCommonSceneR2.module.css";
 
 const rooms = {
@@ -146,5 +147,43 @@ export default function WarpCommonSceneR2({ view, disabled, onCommand }: {
     </>}
     {view.section === "workshops" && <WorkshopPanel at={at} view={view} disabled={disabled} onCommand={onCommand} />}
     {view.section === "bay" && <InstallationPanel at={at} view={view} disabled={disabled} onCommand={onCommand} />}
+  </section>;
+}
+
+const landingPosts = [
+  { title: "Fenêtre de retour", position: 0 }, { title: "Repère de terrain", position: 4 }, { title: "Alcôve", position: 11 },
+] as const;
+
+export function WarpSurveySceneR2({ survey, onAction }: {
+  survey: WarpSurveyR2 | undefined;
+  onAction: (action: WarpSurveyActionR2) => void;
+}) {
+  const [at, setAt] = useState(survey?.nicheVisited ? 11 : survey ? 4 : 0);
+  const move = (direction: number) => setAt(position => Math.max(0, Math.min(16, position + direction)));
+  const ready = (target: number) => withinReach(at, target);
+  return <section className={styles.scene} data-warp-survey-r2 data-warp-survey-position={at}>
+    <h4>M033 · Premier relevé au col des cèdres</h4>
+    <p>Pose le repère du passage. Tu peux visiter l’alcôve ou revenir par la fenêtre réservée.</p>
+    <div className={styles.walkway} style={{ backgroundImage: "url(/game/warp/w02/cedar-pass-1629.webp)" }} tabIndex={0}
+      role="group" aria-label="Sentier du col des cèdres" onKeyDown={event => {
+        if (event.target !== event.currentTarget || event.altKey || event.ctrlKey || event.metaKey) return;
+        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+        event.preventDefault();
+        move(event.key === "ArrowLeft" ? -1 : 1);
+      }}>
+      {landingPosts.map(post => <span key={post.title} className={styles.post} style={styleAt(post.position)}
+        data-near={ready(post.position)}>{post.title}</span>)}
+      <span className={styles.actor} aria-hidden="true" style={styleAt(at)} />
+    </div>
+    <div className={styles.actions}>
+      <button type="button" disabled={at === 0} data-warp-survey-walk="left" onClick={() => move(-1)}>Marcher à gauche</button>
+      <button type="button" disabled={at === 16} data-warp-survey-walk="right" onClick={() => move(1)}>Marcher à droite</button>
+      {!survey && <button type="button" disabled={!ready(4)} data-warp-survey-action="marker"
+        onClick={() => onAction({ kind: "marker", at })}>Ancrer le repère</button>}
+      {survey && !survey.nicheVisited && <button type="button" disabled={!ready(11)} data-warp-survey-action="niche"
+        onClick={() => onAction({ kind: "niche", at })}>Observer l’alcôve</button>}
+      {survey && <button type="button" disabled={!ready(0)} data-warp-survey-action="return"
+        onClick={() => onAction({ kind: "return", at })}>Franchir la fenêtre et rapporter le relevé</button>}
+    </div>
   </section>;
 }

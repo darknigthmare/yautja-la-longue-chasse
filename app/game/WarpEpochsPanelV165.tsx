@@ -8,7 +8,7 @@ import { MISSIONS } from "./data";
 import {
   WARP_BRANCHES_V165, WARP_COMPONENTS_V165, WARP_PROTOTYPE_ARC_V165, WARP_W02_CONTRACTS_V165, WARP_W02_STEPS_V165,
   W02_HUNT_BASE_MISSION_ID_V165, WARP_W02_BONSHO_V165, WARP_W02_TERRACE_ALERT_V165,
-  actWarpVillageV165, advanceWarpCommonRouteV165, applyW02HuntResultV165, branchVisitV165, canLaunchW02HuntV165, canReturnFromWarpV165,
+  actWarpVillageV165, advanceWarpCommonRouteV165, advanceWarpSurveyR2, applyW02HuntResultV165, branchVisitV165, canLaunchW02HuntV165, canReturnFromWarpV165,
   createWarpEpochsV165, departWarpV165, evaluateWarpDepartureV165, installWarpModuleV165, normalizeWarpEpochsV165,
   resolveW02StepV165, returnFromWarpV165, selectWarpBranchV165, verifyWarpComponentV165,
   warpAccessContextFromSaveV165, warpConditionsV165, warpVillageRankAllowed, warpW02HuntMissionV165,
@@ -19,7 +19,7 @@ import { warpVillageView, type WarpVillageOrder, type WarpVillageRecord } from "
 import TantalusPanelV164 from "./TantalusPanelV164";
 import { shipReceiptV161 } from "./systems/shipReceiptV161";
 import { warpCommonViewR2 } from "./systems/warpCommonRouteR2";
-import WarpCommonSceneR2 from "./WarpCommonSceneR2";
+import WarpCommonSceneR2, { WarpSurveySceneR2 } from "./WarpCommonSceneR2";
 import styles from "./WarpEpochsPanelV165.module.css";
 
 const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
@@ -175,6 +175,10 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
       </div>
       {!departure.allowed && !state.activeWarpTripId && <p className={styles.missing}>Départ impossible : {departure.missing.map(m => m.label).join(" · ")}</p>}
       {state.activeWarpTripId && <p>Voyage {state.activeWarpTripId} engagé vers {state.activeTripBranchId}. Le retour reste réservé même si une condition de départ se perd.</p>}
+      {state.firstSurveyR2?.stage === "complete" ? <p className={styles.ok} data-warp-survey-complete>
+        Le relevé du col est archivé. {state.firstSurveyR2.nicheVisited ? "L’alcôve figure dans le rapport." : "Retour direct par la fenêtre."}
+      </p> : inW02 && <WarpSurveySceneR2 key={state.activeWarpTripId} survey={state.firstSurveyR2}
+        onAction={action => apply(advanceWarpSurveyR2(state, action))} />}
     </div>
 
     <div className={styles.section} data-warp-w02 data-visits={w02.visits}>

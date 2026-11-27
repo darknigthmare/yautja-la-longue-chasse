@@ -84,7 +84,7 @@ import { hasShipInsertionDebit, inspectShipInsertionEnergy } from "./systems/shi
 import { emptyGauntletCampaignV134, normalizeGauntletCampaignV134 } from "./systems/gauntletCampaignV134";
 import { inspectMinorArcsV160, recordMinorArcsHuntResultV160 } from "./systems/minorArcsV160";
 import { inspectQueenHuntV163, normalizeQueenHuntV163, QUEEN_HUNT_VERSION_V163 } from "./systems/queenHuntV163";
-import { inspectWarpEpochsV165 } from "./systems/warpEpochsV165";
+import { inspectWarpEpochsV165, isWarpSurveySuccessorR2 } from "./systems/warpEpochsV165";
 import { isWarpCommonSuccessorR2, warpCommonViewR2 } from "./systems/warpCommonRouteR2";
 import { inspectTantalusLedgerV164, normalizeTantalusLedgerV164 } from "./systems/tantalusV164";
 import {
@@ -2251,6 +2251,9 @@ function persistCampaign(
       // This receipt ledger belongs to the confirmed campaign write. Refuse a
       // stale copy before it can lose points or convert them into a rank.
       if (JSON.stringify(previous.honorSourcesV169) !== JSON.stringify(requested.honorSourcesV169)) {
+        return failed("save-conflict", previous);
+      }
+      if (!isWarpSurveySuccessorR2(previous.warpEpochsV165, requested.warpEpochsV165)) {
         return failed("save-conflict", previous);
       }
       const previousWarp = previous.warpEpochsV165?.commonRouteR2;

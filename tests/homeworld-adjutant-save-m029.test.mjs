@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { writeFileSync } from "node:fs";
 import { test } from "node:test";
 import { bloodedTempleAdmissionV174, qa } from "./helpers/blooded-temple-fixture-v174.mjs";
 import { playShipAcquisitionV161 } from "./helpers/ship-receipt-v161.mjs";
@@ -165,6 +166,9 @@ test("M029 and the common Warp route validate their atomic receipts, checkpoints
   const ctx = warp.warpAccessContextFromSaveV165(save, {});
   const hull = authority.shipReceiptV161(save).receipt;
   assert.ok(hull && ctx.blooded && ctx.personalShip && ctx.adjutant);
+  if (process.env.WARP_COMMON_BROWSER_FIXTURE) {
+    writeFileSync(process.env.WARP_COMMON_BROWSER_FIXTURE, JSON.stringify({ key: saves.SAVE_STORAGE_KEY, save }));
+  }
   const step = action => warp.advanceWarpCommonRouteV165(
     save.warpEpochsV165 ?? warp.createWarpEpochsV165(save.createdAt), ctx, hull.instanceId, action,
   );
@@ -214,4 +218,26 @@ test("M029 and the common Warp route validate their atomic receipts, checkpoints
   assert.equal(saves.parseSaveImport(JSON.stringify({ ...recovered, warpEpochsV165: {
     ...recovered.warpEpochsV165, commonRouteR2: { ...recovered.warpEpochsV165.commonRouteR2, hullInstanceId: "wrong-hull" },
   } })).failure, "invalid-save");
+
+  const updateWarp = result => {
+    assert.ok(result.changed, result.message);
+    persist({ ...save, warpEpochsV165: result.state });
+  };
+  updateWarp(warp.selectWarpBranchV165(save.warpEpochsV165, "W-02"));
+  updateWarp(warp.departWarpV165(save.warpEpochsV165, ctx));
+  const survey = (kind, at) => warp.advanceWarpSurveyR2(save.warpEpochsV165, { kind, at });
+  assert.equal(survey("marker", 0).accepted, false);
+  assert.equal(survey("return", 0).accepted, false);
+  updateWarp(survey("marker", 4));
+  updateWarp(warp.returnFromWarpV165(save.warpEpochsV165));
+  assert.equal(save.warpEpochsV165.firstSurveyR2, undefined);
+  updateWarp(warp.departWarpV165(save.warpEpochsV165, ctx));
+  updateWarp(survey("marker", 4));
+  updateWarp(survey("niche", 11));
+  assert.equal(survey("return", 11).accepted, false);
+  updateWarp(survey("return", 0));
+  const roundTrip = saves.parseSaveImport(saves.exportSave(save)).save.warpEpochsV165;
+  assert.deepEqual(roundTrip.firstSurveyR2, { tripId: "warp-trip-2", stage: "complete", nicheVisited: true });
+  assert.equal(roundTrip.activeWarpTripId, null);
+  assert.equal(roundTrip.warpReturnReservation, "utilisee");
 });

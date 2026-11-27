@@ -13,13 +13,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '2508504407a10c2933267cbdd31baf89ab18fa80'
+      ASSET_RACCORDS_SOURCE_COMMIT: '8768d8713c503b7d35792002b507e84510b5bc6a'
       BASE_COMMIT: '9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '2508504407a10c2933267cbdd31baf89ab18fa80'
+          ref: '8768d8713c503b7d35792002b507e84510b5bc6a'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -117,6 +117,7 @@ jobs:
           app/game/HomeworldRouteM034.tsx app/game/systems/homeworldRouteM034.ts
           app/game/HomeworldPackTrialM029.tsx app/game/HomeworldAdjutantM029.tsx app/game/systems/homeworldAdjutantM029.ts app/game/WarCommandIntroR2M036Panel.tsx app/game/systems/warCommandIntroR2M036.ts
           app/game/WarNarrativeR2M035.tsx app/game/systems/warNarrativeR2M035.ts app/game/ClanWarCanyonM037.tsx app/game/systems/clanWarM037.ts app/game/WarpCommonSceneR2.tsx app/game/WarpEpochsPanelV165.tsx app/game/systems/warpCommonRouteR2.ts
+          scripts/qa-warp-common-route-r2.mjs
       - name: Report canonical inventory differences
         if: ${{ !cancelled() && hashFiles('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json') != '' }}
         run: |
