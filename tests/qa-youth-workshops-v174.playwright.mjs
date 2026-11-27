@@ -117,7 +117,10 @@ function play(s: YouthState): YouthInput {
     await page.waitForFunction(want => Math.abs(Number(document.querySelector("canvas[data-youth-stage]").dataset.youthPositions.split(",")[0]) - want) <= 10, target);
     await page.keyboard.up(key);
   }
-  const press = key => page.keyboard.press(key, { delay: 26 });
+  const press = async key => {
+    await page.keyboard.press(key, { delay: 26 });
+    await page.waitForTimeout(36);
+  };
   const interact = () => press("h");
   const state = () => canvas.evaluate(node => JSON.parse(node.dataset.youthWorkshop || "null"));
   const waitState = (lesson, stage) => page.waitForFunction(({l,s}) => {
