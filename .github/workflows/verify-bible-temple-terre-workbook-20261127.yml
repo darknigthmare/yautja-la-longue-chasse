@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
+          ref: 'd52a7cdaf96645f230834aae226b24338c967029'
           persist-credentials: false
           filter: blob:none
           sparse-checkout-cone-mode: false
@@ -40,7 +41,7 @@ jobs:
           rows = data['missions']
           assert len(rows) == len(set(item['id'] for item in rows)) == 68
           assert Counter(data['stats']) == Counter(row['etatSurMain'] for row in rows)
-          assert data['refMain'] == 'd52a7cdaf96645f230834aae226b24338c967029'
+          assert data['refMain'] == '31647a205a99ead71d1e7615d635406a39c969cc'
           assert data['stats'] == {'RACCORDE': 64, 'PARTIEL_MISSION': 4, 'VOISIN': 0, 'NON_COMMENCE_OBSERVE': 0}
           assert data['bilanComposition']['projectionDuCandidat'] == {'RACCORDE': 64, 'PARTIEL_MISSION': 4, 'VOISIN': 0, 'NON_COMMENCE_OBSERVE': 0}
           assert len(data['transverses']) == 17
