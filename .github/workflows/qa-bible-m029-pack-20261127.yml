@@ -52,6 +52,7 @@ jobs:
         run: |
           node scripts/materialize-asset-raccords-20261120.mjs runtime
           npm ci --ignore-scripts --no-audit --no-fund
+          M029_ADMISSION_ONLY=1 node scripts/qa-homeworld-pack-m029.mjs
           node scripts/build-production-v94.mjs
       - name: Use the native Homeworld to bring all 12 pupils out and back
         run: |

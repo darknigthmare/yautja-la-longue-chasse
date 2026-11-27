@@ -36,11 +36,24 @@ const rooms = qa.load("app/game/systems/homeworldInteriorsV64.ts");
 
 function prepareAdmission() {
   let save = bloodedTempleAdmissionV174();
+  const data = new Map();
+  const disk = { getItem: key => data.get(key) ?? null, setItem: (key, value) => data.set(key, value), removeItem: key => data.delete(key) };
+  const initial = saves.replaceSaveWithStatus(save, disk);
+  assert.ok(initial.persisted, initial.failure);
+  save = initial.save;
+  const checked = (stage) => {
+    const imported = saves.parseSaveImport(JSON.stringify(save));
+    assert.ok(imported.save, stage + ": " + imported.failure);
+    console.log("M029 admission verified " + stage);
+    save = imported.save;
+  };
   let time = Date.parse(save.createdAt) + 86400000;
   const play = action => {
     const result = temple.advanceBloodedTempleV174(save, { action, expectedRevision: save.bloodedTempleV174?.events.length ?? 0 }, time += 100);
     assert.ok(result.ok, result.notice + " while " + JSON.stringify(action));
-    save = { ...save, ...result.update };
+    const stored = saves.writeSaveWithStatus({ ...save, ...result.update }, disk);
+    assert.ok(stored.persisted, "Temple " + JSON.stringify(action) + ": " + stored.failure);
+    save = stored.save;
   };
   play("present");
   for (const [index, room] of temple.BLOODED_ROOMS.entries()) {
@@ -60,12 +73,15 @@ function prepareAdmission() {
   assert.equal(chronicles.getChronicleRank(save.prologue.chronicle), "blooded");
   save.profile.honor = 3000;
   save.settings.masterVolume = 0;
+  checked("Blooded and honor");
   const ship = "classic-predator-spaceship";
   save = playShipAcquisitionV161(qa, save);
+  checked("ship");
   const context = { personalShipId: ship, ownedShipIds: [ship] };
   for (const mission of qa.load("app/game/data.ts").MISSIONS) {
     Object.assign(save.missionProgress[mission.id], { status: "completed", attempts: 1, completions: 1 });
   }
+  checked("hunt proceedings");
   const apply = action => {
     const result = cradleCampaign.actBuriedCradleCampaign(save, action, context);
     assert.ok(result.accepted, result.message);
@@ -79,7 +95,9 @@ function prepareAdmission() {
   run = cradle.stepBuriedCradle(run, { interactPressed: true }, 1 / 60).run;
   assert.ok(run.extracted);
   apply({ type: "extract", progress: run.progress, snapshot: snapshotBuriedCradleRun(run) });
+  checked("extract cradle");
   save = createCradleReturnRoute(qa).complete(save, context);
+  checked("cradle report");
   const dock = { ...coordination.COORDINATION_OFFICER_M028, actor: { x: 1, y: 1 }, suspended: false };
   const workshop = { roomId: coordination.COORDINATION_WORKSHOP_M028.roomId, pointId: null,
     actor: coordination.COORDINATION_WORKSHOP_M028.position, suspended: false };
@@ -92,11 +110,11 @@ function prepareAdmission() {
   save.homeworld.locationV77 = { version: 1, layoutRevision: 1, ownerCreatedAt: save.createdAt, levelId: hall.levelId,
     exterior: geometry.homeworldBuildingDoorwayV64(hall).approach,
     interiorId: hall.id, local: rooms.homeworldInteriorForBuildingV64(hall.id).spawn };
-  const imported = saves.parseSaveImport(saves.exportSave(save));
-  assert.ok(imported.save, imported.failure);
-  return imported.save;
+  checked("coordination and location");
+  return save;
 }
 const seed = prepareAdmission();
+if (process.env.M029_ADMISSION_ONLY === "1") process.exit(0);
 const api = homeworldQaModelV64(process.cwd(), [
   "homeworldWorldV77.ts", "homeworldNavigationV77.ts", "homeworldNavigationV109.ts", "homeworldGeometryV64.ts", "homeworldInteriorsV64.ts",
 ]);
