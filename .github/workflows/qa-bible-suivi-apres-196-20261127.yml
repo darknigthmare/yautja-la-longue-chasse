@@ -28,6 +28,7 @@ jobs:
           node scripts/build-bible-inventory-workbook-20261122.mjs --check
           node scripts/build-bible-inventory-workbook-20261122.mjs --date=20261127 --check
           python3 - <<'PY'
+          import hashlib
           import json
           from collections import Counter
           from pathlib import Path
@@ -41,7 +42,13 @@ jobs:
           assert data['stats'] == Counter(row['etatSurMain'] for row in rows)
           assert data['refMain'] == '9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404'
           assert next(p for p in data['aventants'] if p['pr'] == 196)['fusionnee']
-          bible = Path(data['source']).read_text(encoding='utf-8').splitlines()
+          source = data.get('sourceDocument', {})
+          bible_file = Path(source.get('path', data['source']))
+          bible_bytes = bible_file.read_bytes()
+          if 'blob' in source:
+              prefix = ('blob ' + str(len(bible_bytes)) + chr(0)).encode('ascii')
+              assert hashlib.sha1(prefix + bible_bytes).hexdigest() == source['blob']
+          bible = bible_bytes.decode('utf-8').splitlines()
           for row in rows:
               label = row['id']
               assert bible[row['table']['ligne'] - 1].startswith(f"| {row['ordre']} | {label} | ")
