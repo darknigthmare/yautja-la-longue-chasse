@@ -278,7 +278,7 @@ test('R2-M013 requires physical shelter, spends one dose and resumes both routes
         return s;
     };
     const interact = (s: YouthState) => tick(tick(s), { interact: true });
-    let entered = interact(walk(original, YOUTH_MEDICOMP.kitX));
+    const entered = interact(walk(original, YOUTH_MEDICOMP.kitX));
     assert.equal(entered.medicompV172?.stage, 'cover');
     assert.equal(youthMedicompCharges(entered.medicompV172!), 3);
     assert.equal(interact(walk(entered, YOUTH_MEDICOMP.alcoveX)).medicompV172?.stage, 'cover', 'Cannot use the kit before closing the screen');
@@ -326,6 +326,7 @@ test('M007 to M012 use the youth simulation, preserve recovery and require each 
     const wait = (frames: number) => { for (let frame = 0; frame < frames; frame++) run(); };
     const act = (input: YouthInput) => { run(); run(input); run(); };
     const walk = (target: number, { jump = true, quiet = false } = {}) => {
+        run();
         for (let frame = 0; frame < 700 && (Math.abs(s.player.x - target) > 5 || s.player.y < 429); frame++) {
             const move = Math.abs(s.player.x - target) <= 5 ? 0 : dir(target - s.player.x);
             const hurdle = jump && api.getYouthObstacles(s).some(item => move === 1

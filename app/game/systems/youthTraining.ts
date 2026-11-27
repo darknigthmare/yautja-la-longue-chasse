@@ -727,6 +727,6 @@ export function normalizeYouthTraining(v: unknown): YouthState | null {
     if (medicompV172 === null || medicompV172 && (ordinal < YOUTH_PHASES.indexOf('barracks') ||
         phase !== 'barracks' && medicompV172.stage !== 'complete')) return null;
     if (workshopV174?.active && medicompV172 && medicompV172.stage !== 'complete') return null;
-    if (workshopV174 && workshopV174.reports.some(report => report.tick <= (milestones['youth-camp-duel'] ?? v.tick))) return null;
+    if (workshopV174 && workshopV174.reports.some(report => report.tick <= (milestones['youth-camp-duel'] ?? Number.POSITIVE_INFINITY))) return null;
     return { version: 1, phase, desert, patrol, cage, ...(medicompV172 ? { medicompV172 } : {}), ...(workshopV174 ? { workshopV174 } : {}), tick: v.tick, phaseTick: v.phaseTick, phaseStartedAt: v.phaseStartedAt, inputArmed: false, previousButtons: noButtons(), player, rival, rivalDecisionTicks: v.rivalDecisionTicks, practiceThreatened: v.practiceThreatened, jumpCleared: v.jumpCleared, cosmetic: v.cosmetic as YouthCosmetic | null, milestones, progress: { moveMarkers: p.moveMarkers as number, jumps: p.jumps as number, dodges: p.dodges as number, strikes: p.strikes as number, throws: p.throws as number, courseMarkers: p.courseMarkers as number, courseElapsed: p.courseElapsed as number, courseAttempts: p.courseAttempts as number, duelAttempts: p.duelAttempts as number } };
 }
