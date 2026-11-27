@@ -41,7 +41,7 @@ export default function HuntCanopyHudV112({ navigation, bindings, gamepadButtons
     </div>
     <p className={styles.cue} data-canopy-cue-v112 role="status" aria-live="polite" aria-atomic="true">{cue}</p>
     {heldGrip?.flexible && navigation.movementMultiplier < 1 && <p className={styles.cue} data-canopy-loaded-pace-v112>
-      Charge embarquée · pompage et réglage de la liane à {Math.round(navigation.movementMultiplier * 100)} %.
+      Charge embarquée · pompage et réglage de la longueur à {Math.round(navigation.movementMultiplier * 100)} %.
     </p>}
     <details className={styles.details}>
       <summary>Commandes et repères de traversée</summary>
