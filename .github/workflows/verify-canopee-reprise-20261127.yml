@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '791b49558f49ca9a03ff0885f7b14813a266ea97'
+          ref: '35d3316b7e88049fb247ceeaa5d9e6ac3fd5fa1d'
           persist-credentials: false
           filter: blob:none
           sparse-checkout-cone-mode: false
@@ -23,6 +23,7 @@ jobs:
             /*
             !/*/
             /app/
+            /content/the-pit/
             /lib/
             /types/
             /worker/
@@ -62,7 +63,7 @@ jobs:
       - name: Checkout current application and exact asset index
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '791b49558f49ca9a03ff0885f7b14813a266ea97'
+          ref: '35d3316b7e88049fb247ceeaa5d9e6ac3fd5fa1d'
           persist-credentials: false
           filter: blob:none
           fetch-depth: 3
@@ -71,6 +72,7 @@ jobs:
             /*
             !/*/
             /app/
+            /content/the-pit/
             /lib/
             /types/
             /worker/
@@ -149,6 +151,13 @@ jobs:
           NODE
       - name: Play field work, durable reloads, extraction, workshop and canopy
         run: node scripts/qa-skinning-canopy-durable-browser-20261109.mjs
+      - name: Tap Up after native tangent release and catch the next vine
+        if: ${{ !cancelled() }}
+        env:
+          SKINNING_CANOPY_QA_CASE: canopy
+          SKINNING_CANOPY_QA_TRANSFER: buffered
+          SKINNING_CANOPY_QA_OUTPUT: outputs/qa-canopy-buffered-transfer
+        run: node scripts/qa-skinning-canopy-durable-browser-20261109.mjs
       - name: Print the result of the native browser recipe
         if: always()
         run: |
@@ -168,6 +177,7 @@ jobs:
           name: skinning-canopy-durable-${{ github.sha }}
           path: |
             outputs/qa-skinning-canopy-20261109/
+            outputs/qa-canopy-buffered-transfer/
             outputs/qa-asset-raccords-20261120/materialization-hunt-runtime.json
           if-no-files-found: error
           retention-days: 30
