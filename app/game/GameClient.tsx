@@ -1338,6 +1338,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const cohortRace = screen === "homeworld" && hydrated ? activeCohortRaceO6(save) : null;
   const rivalRace = screen === "homeworld" && hydrated ? activeRivalRaceO6(save) : null;
   const littleTrail = screen === "homeworld" && hydrated ? activeLittleTrailO6(save) : null;
+  const littleTrailListening = littleTrail !== null;
   const homeworldMounted = !firstShock && !cohortRace && !rivalRace && !littleTrail && (screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || (screen === "clan-chronicle" && chronicleReturnScreen === "homeworld") || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89")));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
@@ -1583,7 +1584,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const cradleReturnOnDeck = screen === "deck" && hubLocation === "deck" && cradleReturnPending;
   useEffect(() => {
     const context: GameMusicContext | null = cradleReturnOnDeck ? "cradle-return"
-      : settingsOpen || (screen === "buried-cradle-briefing" && cradleReturnPending) || screen === "planet-arrival" || screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90" ? null
+      : settingsOpen || littleTrailListening || (screen === "buried-cradle-briefing" && cradleReturnPending) || screen === "planet-arrival" || screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90" ? null
       : screen === "title" ? "menu"
       : screen === "mission" ? huntMusicContext
       : screen === 'buried-cradle' ? 'exploration'
@@ -1598,7 +1599,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     apply();
     document.addEventListener("visibilitychange", apply);
     return () => document.removeEventListener("visibilitychange", apply);
-  }, [screen, settingsOpen, huntMusicContext, hubLocation, shipStationOpen, cradleReturnOnDeck, cradleReturnPending]);
+  }, [screen, settingsOpen, huntMusicContext, hubLocation, shipStationOpen, cradleReturnOnDeck, cradleReturnPending, littleTrailListening]);
 
   useEffect(() => {
     const apply = () => audioRef.current?.setPaused(settingsOpen || document.hidden);
@@ -2995,7 +2996,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return true;
   }, [persistSocialProgress]);
 
-  const playLittleTrailCue = useCallback((cue: LittleTrailCueO6) => audioRef.current?.littleTrailCueO6(cue), []);
+  const playLittleTrailCue = useCallback((cue: LittleTrailCueO6) => {
+    const audio = audioRef.current, journal = saveRef.current.originV151?.littleTrailO6?.journal.length;
+    if (!audio || journal === undefined) return;
+    void audio.unlock().then(() => {
+      const trail = saveRef.current.originV151?.littleTrailO6;
+      if (audioRef.current === audio && trail && !trail.resolved && trail.journal.length === journal) audio.littleTrailCueO6(cue);
+    });
+  }, []);
   const advanceLittleTrail = useCallback((order: LittleTrailOrderO6) => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || !current.originV151) return false;
