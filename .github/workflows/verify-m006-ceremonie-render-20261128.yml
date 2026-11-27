@@ -1,0 +1,30 @@
+name: Render the original R2-M006 audio
+on:
+  push:
+    branches: [codex/qa-m006-ceremonie-render-20261128]
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/generate-m006-ceremony-score.mjs
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Check deterministic render and media envelope
+        run: |
+          ffmpeg -version | head -1
+          node scripts/generate-m006-ceremony-score.mjs --write > /tmp/m006-ceremony-hashes.txt
+          node scripts/generate-m006-ceremony-score.mjs --verify | diff -u /tmp/m006-ceremony-hashes.txt -
+          ffprobe -v error -of json -show_entries format=duration,size public/audio/music/ceremony-m006/mus-06-clan-ceremonie.ogg
+      - name: Transfer bounded authoring bytes
+        run: node scripts/generate-m006-ceremony-score.mjs --emit
