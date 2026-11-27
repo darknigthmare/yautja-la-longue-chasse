@@ -13,13 +13,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'b54f984077254c97b17c1b07ab812ec56efcbff8'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'eb32aee240c0b16f68e23871f5394db3d7a7e9a5'
       BASE_COMMIT: '42cd44605a5bf5b61cb87b9071e47acb20168695'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'b54f984077254c97b17c1b07ab812ec56efcbff8'
+          ref: 'eb32aee240c0b16f68e23871f5394db3d7a7e9a5'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
