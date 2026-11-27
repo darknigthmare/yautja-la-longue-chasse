@@ -142,6 +142,46 @@ try {
     assert.equal(await page.getByRole('button', { name: 'Lancer la chronique · non installée' }).isDisabled(), true);
     assert.equal((await events()).filter(e => e.kind === 'write').length, 0);
   });
+  async function openCabinet(key = 'f') {
+    await page.getByRole('button', { name: 'Approcher le casier d’archives' }).click();
+    await page.waitForFunction(() => document.querySelector('[data-mausoleum-x]')?.getAttribute('data-mausoleum-x') === '834');
+    await page.keyboard.press(key);
+    await page.locator('[data-mausoleum-cabinet-open]').waitFor();
+  }
+  await check('archive cabinet needs an approach, confirms a real write and survives page reload', async () => {
+    await page.keyboard.press('f');
+    assert.equal(await page.locator('[data-mausoleum-cabinet-open]').count(), 0);
+    await openCabinet();
+    await page.getByRole('button', { name: 'Prey', exact: true }).click();
+    await page.getByText('Biomask osseux', { exact: true }).waitFor();
+    assert.equal(await page.getByRole('button', { name: 'Jim Hopper' }).count(), 0);
+    await page.evaluate(() => { window.__mausoleumAuditV94.failWrites = true; });
+    const file = page.getByRole('button', { name: 'Inscrire la lecture au registre' });
+    await file.click();
+    await page.getByText('Consultation non enregistrée', { exact: false }).waitFor();
+    assert.equal((await events()).filter(e => e.kind === 'write').length, 0);
+    await page.evaluate(() => { window.__mausoleumAuditV94.failWrites = false; });
+    await file.click();
+    await page.getByText('Lecture inscrite au registre du mausolée.', { exact: true }).waitFor();
+    await file.click();
+    assert.equal((await events()).filter(e => e.kind === 'write' && e.value.cabinetReadIds?.includes('prey')).length, 1);
+    await page.getByRole('button', { name: 'Fermer le casier' }).click();
+    assert.equal(await x(), 834);
+    await page.reload();
+    await page.locator('[data-mausoleum]').waitFor();
+    await openCabinet();
+    await page.getByRole('button', { name: 'Prey · lecture inscrite', exact: true }).waitFor();
+    await page.keyboard.press('p');
+    await page.locator('[data-mausoleum-cabinet-open]').waitFor({ state: 'hidden' });
+  });
+  await check('catalogue preview may read a transcription without touching the campaign', async () => {
+    await reset(true);
+    await openCabinet('Enter');
+    await page.getByRole('button', { name: 'Prey', exact: true }).click();
+    await page.getByText('Biomask osseux', { exact: true }).waitFor();
+    assert.equal(await page.getByRole('button', { name: 'Inscrire la lecture au registre' }).isDisabled(), true);
+    assert.equal((await events()).filter(e => e.kind === 'write').length, 0);
+  });
   await check('missing mask remains unavailable rather than substituting another', async () => {
     await page.getByRole('button', { name: 'Alcôves →' }).click(); await approach('jim-hopper', 180);
     await page.keyboard.press('f'); await page.getByRole('dialog').waitFor();

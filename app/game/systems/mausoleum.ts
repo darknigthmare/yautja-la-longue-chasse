@@ -45,7 +45,13 @@ export function canConsultMausoleum(access: MausoleumAccess, entryId: string): b
   const chronicle = MAUSOLEUM_CHRONICLES.find(value => value.id === entryId);
   return !!chronicle && !access.preview && canVisitMausoleumGallery(access, chronicle.gallery) && rankOrder.indexOf(access.rank) >= rankOrder.indexOf("young-blood");
 }
-export interface MausoleumProgress { version: 1; examinedIds: string[]; consultedIds: string[] }
+export interface MausoleumProgress {
+  version: 1;
+  examinedIds: string[];
+  consultedIds: string[];
+  /** Absent from saves written before the archive cabinet was available. */
+  cabinetReadIds?: string[];
+}
 export const defaultMausoleumProgress = (): MausoleumProgress => ({ version: 1, examinedIds: [], consultedIds: [] });
 export function normalizeMausoleumProgress(value: unknown): MausoleumProgress {
   const clean = defaultMausoleumProgress();
@@ -54,6 +60,12 @@ export function normalizeMausoleumProgress(value: unknown): MausoleumProgress {
   if (v.version !== 1) return clean;
   const ids = new Set(MAUSOLEUM_CHRONICLES.map(entry => entry.id));
   for (const key of ["examinedIds", "consultedIds"] as const) if (Array.isArray(v[key])) clean[key] = [...new Set(v[key].filter((id): id is string => typeof id === "string" && ids.has(id)))];
+  if (Array.isArray(v.cabinetReadIds)) {
+    const cabinetReads = [...new Set(v.cabinetReadIds.filter(
+      (id): id is string => typeof id === "string" && clean.consultedIds.includes(id),
+    ))];
+    if (cabinetReads.length) clean.cabinetReadIds = cabinetReads;
+  }
   clean.examinedIds = [...new Set([...clean.examinedIds, ...clean.consultedIds])];
   return clean;
 }
@@ -63,6 +75,40 @@ export function recordMausoleumVisit(progress: unknown, id: string, kind: "exami
   if (!next.examinedIds.includes(id)) next.examinedIds.push(id);
   if (kind === "consulted" && !next.consultedIds.includes(id)) next.consultedIds.push(id);
   return next;
+}
+
+
+export const MAUSOLEUM_CABINET_X = 834;
+export const MAUSOLEUM_CABINET_REACH = 36;
+export const MAUSOLEUM_ALCOVE_PAGE_SIZE = 3;
+
+interface MausoleumCabinetPosition {
+  galleryId: string;
+  page: number;
+  actorX: number;
+}
+
+export function mausoleumAlcoveEntries(galleryId: string, page: number): readonly MausoleumChronicle[] {
+  if (!Number.isSafeInteger(page) || page < 0) return [];
+  const start = page * MAUSOLEUM_ALCOVE_PAGE_SIZE;
+  return MAUSOLEUM_CHRONICLES.filter(chronicle => chronicle.gallery === galleryId)
+    .slice(start, start + MAUSOLEUM_ALCOVE_PAGE_SIZE);
+}
+
+export function recordMausoleumCabinetReading(
+  progress: unknown,
+  id: string,
+  position: MausoleumCabinetPosition,
+  access: MausoleumAccess,
+): MausoleumProgress | null {
+  if (!Number.isFinite(position.actorX) ||
+      Math.abs(position.actorX - MAUSOLEUM_CABINET_X) > MAUSOLEUM_CABINET_REACH ||
+      position.actorX < 40 || position.actorX > 860 ||
+      !mausoleumAlcoveEntries(position.galleryId, position.page).some(chronicle => chronicle.id === id) ||
+      !canConsultMausoleum(access, id)) return null;
+  const next = recordMausoleumVisit(progress, id, "consulted", access);
+  const cabinetReadIds = [...new Set([...(next.cabinetReadIds ?? []), id])];
+  return { ...next, cabinetReadIds };
 }
 
 /** Installed content must supply its own executable adapter and durable run; Pit duels never satisfy this contract. */

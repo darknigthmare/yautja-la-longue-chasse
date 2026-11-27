@@ -37,3 +37,9 @@
   flex-wrap: wrap;
   gap: .4rem;
 }
+
+.campaignLink { display: flex; align-items: center; gap: .65rem; flex-wrap: wrap; }
+.campaignLink > div { display: grid; gap: .15rem; border: 1px solid #695649; border-radius: .3rem; padding: .5rem .75rem; }
+.campaignLink > div[data-held="true"] { border-color: #79b892; background: #17352d; }
+.campaignLink > div > span { color: #e1cdb4; }
+.linkArrow { color: #d8b888; }
