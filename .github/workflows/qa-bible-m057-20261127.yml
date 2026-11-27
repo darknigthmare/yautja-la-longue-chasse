@@ -1,0 +1,58 @@
+name: Verify the Mausoleum archive cabinet
+on:
+  push:
+    branches: [codex/qa-bible-m057-cabinet-20261127]
+permissions:
+  contents: read
+jobs:
+  archive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /public/**/manifest.json
+            /public/game/sprites/v62/masks/
+            /public/game/homeworld/v56/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Test archive and old saves
+        run: node --experimental-strip-types --test tests/mausoleum.test.mjs
+      - name: Typecheck Next and lint the interacting files
+        if: ${{ !cancelled() }}
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+          npx eslint app/game/Mausoleum.tsx app/game/systems/mausoleum.ts tests/browser/mausoleum-v94.fixture.tsx
+      - name: Verify avoidance, cabinet, persistence and the existing ritual in Chromium
+        if: ${{ !cancelled() }}
+        run: |
+          node node_modules/playwright-core/cli.js install chromium --with-deps
+          node scripts/qa-mausoleum-browser-v94.mjs
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ !cancelled() }}
+        with:
+          name: mausoleum-cabinet-m057
+          path: outputs/qa-audit-v94/mausoleum-browser.json
+          if-no-files-found: ignore
