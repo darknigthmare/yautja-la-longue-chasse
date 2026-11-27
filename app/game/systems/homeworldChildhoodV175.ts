@@ -82,7 +82,7 @@ function ledgerVersion(view: ChildhoodViewV175): ChildhoodLedgerV175["version"] 
   return view.ceremony ? CHILDHOOD_LEDGER_VERSION_V175 : view.cohortPresentations > 0 ? 2 : 1;
 }
 
-function journeyEvent(event: ChildhoodCommandV175, trainingStarted: boolean) {
+function journeyEvent(event: Exclude<ChildhoodCommandV175, "reset-current">, trainingStarted: boolean): ChildhoodEvent {
   return event === "handoff" && !trainingStarted ? "begin-ceremony" : event;
 }
 
@@ -331,7 +331,7 @@ export function isChildhoodSuccessorV175(
   const checked = inspect(prior);
   if (!checked) return false;
   return childhoodOptionsV175(checked.view).some(command => {
-    const event = journeyEvent(command, trainingStarted);
+    const event = command === "reset-current" ? command : journeyEvent(command, trainingStarted);
     const view = event === "reset-current" ? checked.view : advance(checked.view, event);
     if (!view) return false;
     const expected = selectJournal(checked, event, view);

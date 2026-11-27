@@ -115,6 +115,25 @@ test("writing the actual prologue receipt and then the courtyard works across co
   assert.equal(n.writeSaveWithStatus(staged, storage).persisted, false);
 });
 
+test("an imported city or dojo save can only keep a completed courtyard departure", () => {
+  const { completed } = admittedFirstShockO6();
+  const previousOrigin = n.createOriginV151("O6");
+  const legacyCity = { ...completed, originV151: previousOrigin,
+    homeworld: { ...completed.homeworld, greetedNpcIds: ["hunt-king", "terrace-instructor"] } };
+  const youth = n.startYouthCampaign(legacyCity);
+  assert.ok(youth);
+  assert.ok(saved(youth).youthTraining);
+  const premature = { ...youth, originV151: completed.originV151 };
+  assert.equal(n.parseSaveImport(JSON.stringify(premature)).failure, "invalid-save");
+
+  const { save, harek } = approachHarek(completed);
+  const heard = n.applyFirstShockO6(save, "hear-harek", harek).save;
+  const state = n.firstShockActiveO6(heard);
+  assert.equal(n.parseSaveImport(JSON.stringify({ ...youth, originV151: heard.originV151 })).failure, "invalid-save");
+  const departed = n.applyFirstShockO6(heard, "return-weapon", state.netX).save;
+  assert.ok(saved({ ...youth, originV151: departed.originV151 }).youthTraining);
+});
+
 test("the completed native nursery preserves M006 admission and starts only the explicit O6 episode", () => {
   const { waiting, completed } = admittedFirstShockO6({ ceremony: true });
   assert.equal(waiting.prologue.ceremonyM006, true);
