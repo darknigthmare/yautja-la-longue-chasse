@@ -3,7 +3,7 @@
   "depot": "darknigthmare/yautja-la-longue-chasse",
   "refMain": "2769b094862aea97f10fc0e5c4f1154489a8a8bc",
   "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
-  "methode": "La photographie de main du 27 novembre s’appuie sur les 68 entrées de la Bible et les scènes déjà publiées par #188. La colonne Livraison décrit les parcours vérifiés dans ce lot. Les sources historiques demeurent liées à leur révision. La PR #196 rassemble la composition en cours.",
+  "methode": "La photographie de main du 27 novembre s’appuie sur les 68 entrées de la Bible et les scènes publiées par #188. La colonne Livraison indique la portée des recettes de ce lot, dont les contrôles groupés du candidat de la PR #196. Les sources historiques restent ancrées à leur révision.",
   "statuts": {
     "RACCORDE": "Boucle de la fiche jouée et persistée, ou chapitre que la Bible accepte expressément comme équivalent. Les écarts signalés restent ouverts.",
     "PARTIEL_MISSION": "Une partie propre à la fiche a un déclenchement ou une preuve jouable. Des étapes spécifiées restent ouvertes.",
@@ -468,12 +468,13 @@
         "pull/171"
       ],
       "etatDeLivraison": "Rite Blooded raccordé · six salles jouées dans Chrome",
-      "reste": "Le pilote prépare les chapitres précédents et les deux dépôts de M019 via leurs réducteurs. La célébration de cohorte ou la visite calme en ville reste à décliner. Le build de production et le contrôle de types du candidat passent.",
+      "reste": "Le pilote prépare les chapitres précédents et les deux dépôts de M019 par leurs réducteurs. La célébration de cohorte ou la visite calme en ville reste à décliner. Le candidat groupé passe ses tests et démarre après compilation de production.",
       "preuvesLivraison": [
         "actions/runs/45978406278",
         "actions/runs/45978406278/artifacts/15187264945",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/98e6961b454ee0f8d70bea9aaab1a66317f95927/app/game/systems/bloodedTempleV174.ts",
-        "actions/runs/45981382813"
+        "actions/runs/45981382813",
+        "actions/runs/45981382812"
       ]
     },
     {
@@ -1747,7 +1748,7 @@
       "controles": [
         {
           "nom": "Recette groupée du candidat",
-          "conclusion": "typecheck réussi · suite en cours",
+          "conclusion": "réussi · tests, types, lint et inventaire",
           "lien": "actions/runs/45981382812"
         },
         {
@@ -2044,7 +2045,7 @@
       "ref": "30780adc919a2ab0234fe5ff238868781af4fd9a",
       "build": "actions/runs/45981382813",
       "tests": "actions/runs/45981382812",
-      "qualifies": null,
+      "qualifies": true,
       "buildReussi": true
     },
     "brancheSimulationsValidees": [
