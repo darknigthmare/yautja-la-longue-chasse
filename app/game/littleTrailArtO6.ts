@@ -29,6 +29,7 @@ export function drawLittleTrailO6(ctx: CanvasRenderingContext2D, art: LittleTrai
     ctx.drawImage(art.get(sprite.src)!, ...sprite.rect, x - sprite.pivot[0] * size, y - sprite.pivot[1] * size, sprite.rect[2] * size, height);
     ctx.globalAlpha = 1;
   };
+  ctx.save();
   ctx.clearRect(0, 0, route.width, route.height);
   ctx.drawImage(image, (route.width - image.width * scale) / 2, 0, image.width * scale, image.height * scale);
   const dusk = ctx.createLinearGradient(0, 0, 0, route.height);
@@ -71,4 +72,5 @@ export function drawLittleTrailO6(ctx: CanvasRenderingContext2D, art: LittleTrai
       view.stage === "far" ? grazer.left.watch : grazer.right.watch;
     prop(sprite, x, route.bottom, preyMotion?.flee ? 43 : 49);
   }
+  ctx.restore();
 }

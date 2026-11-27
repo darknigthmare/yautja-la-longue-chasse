@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useEffectEvent, useRef, useState } from "react";
+import { useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 import { controlActionShortcut } from "./controlBindingLabels";
 import HomeworldCivilianV72 from "./HomeworldCivilianV72";
 import HomeworldYouthMotionV72 from "./HomeworldYouthMotionV72";
@@ -86,7 +86,8 @@ export default function OriginLittleTrailO6({ record, bindings, paused, onOrder,
   const [travel, setTravel] = useState<LittleTrailOrderO6 | null>(null);
   const [climbFrame, setClimbFrame] = useState(0);
 
-  const entry = record.journal.length, view = littleTrailViewO6(record);
+  const entry = record.journal.length;
+  const view = useMemo(() => littleTrailViewO6(record), [record]);
   const x = draft.entry === entry ? draft.x : view.x;
   const available = !paused && art !== null && !travel;
   const groundY = view.plane === "trail" ? route.bottom : route.overlook;
@@ -110,7 +111,7 @@ export default function OriginLittleTrailO6({ record, bindings, paused, onOrder,
     if (ctx && art) drawLittleTrailO6(ctx, art, view, prey);
   }, [art, view, prey]);
 
-  const play = useCallback((order: LittleTrailOrderO6) => {
+  function play(order: LittleTrailOrderO6) {
     const saved = onOrder(order);
     setSaveError(!saved);
     if (saved) {
@@ -121,7 +122,7 @@ export default function OriginLittleTrailO6({ record, bindings, paused, onOrder,
       }
     }
     return saved;
-  }, [onCue, onOrder, view.stage]);
+  }
 
   useEffect(() => {
     if (!prey || paused) return;
@@ -155,19 +156,19 @@ export default function OriginLittleTrailO6({ record, bindings, paused, onOrder,
     return () => cancelAnimationFrame(frame);
   }, [paused, travel]);
 
-  const walk = useCallback((direction: -1 | 1) => {
+  function walk(direction: -1 | 1) {
     if (!available) return;
     const next = walkLittleTrailO6(view.plane, x, direction);
     setFacing(direction);
     if (littleTrailThreatO6(view, next)) play({ type: "lose", x: next, plane: view.plane });
     else setDraft({ entry, x: next, steps: draft.steps + Number(next !== x) });
-  }, [available, draft.steps, entry, play, view, x]);
+  }
 
-  const act = useCallback((order: LittleTrailOrderO6) => {
+  function act(order: LittleTrailOrderO6) {
     if (!available) return;
     if (order.type === "ascend") setTravel(order);
     else play(order);
-  }, [available, play]);
+  }
 
   const interact = useEffectEvent((move: -1 | 1 | 0, primary: boolean, secondary: boolean) => {
     if (move) walk(move);
