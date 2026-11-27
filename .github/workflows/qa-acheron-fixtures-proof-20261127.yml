@@ -1,0 +1,244 @@
+name: Acheron fixture qualification 2026-11-27
+
+on:
+  push:
+    branches: ['codex/qa-acheron-fixtures-20261127']
+    paths: ['.github/workflows/qa-acheron-fixtures-proof-20261127.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  gameplay-cloud:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 02c37f40daaa45ce139328c2b40dbaa4a3c6acac
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/hosting.json
+            /docs/hunt-mechanics-v111.json
+            /docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx
+            /docs/hunt-mechanics-v112.json
+            /content/the-pit/les-masques-brises/art-index.v1.json
+            /content/the-pit/les-masques-brises/extension.v1.json
+            /docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx
+            /public/game/ui/v112/
+            /public/game/assets/v112/discovery/
+            /public/**/manifest.json
+            /public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png
+      - name: Verify exact candidate checkout
+        run: test "$(git rev-parse HEAD)" = "02c37f40daaa45ce139328c2b40dbaa4a3c6acac"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install locked dependencies without lifecycle scripts
+        id: dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate Next route types and check application TypeScript
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          npm run typecheck
+      # Homeworld / PIT V112 tests require their own large binary fixtures; this sparse job checks hunt only.
+      - name: Exercise explicit V112 hunt canopy, carcass, logistics, accessibility and ecosystem tests
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/canopy-traversal-v112.test.mjs
+          tests/carcass-anatomy-v112.test.mjs
+          tests/conservation-persistence-ui-v112.test.mjs
+          tests/corpse-discovery-v112.test.mjs
+          tests/excel-history-preservation-v112.test.mjs
+          tests/field-stash-v112.test.mjs
+          tests/harvest-inventory-v112.test.mjs
+          tests/hunt-accessibility-v112.test.mjs
+          tests/hunt-canopy-runtime-v112.test.mjs
+          tests/hunt-carcass-runtime-v112.test.mjs
+          tests/hunt-field-load-v112.test.mjs
+          tests/hunt-field-stash-runtime-v112.test.mjs
+          tests/hunt-mechanics-workbook-v112.test.mjs
+      - name: Verify deterministic V112 workbook and discovery resources
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node scripts/build-hunt-mechanics-workbook-v112.mjs --check
+          python3 scripts/verify-hunt-mechanics-workbook-v112.py
+          node scripts/build-discovery-signals-v112.mjs --check
+      - name: Simulated full youth routes and native hunt helpers (not whole-game QA)
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=4
+          tests/campaign-solo-v*.test.mjs tests/first-hunt-solo-v*.test.mjs
+          tests/nursery-campaign.test.mjs tests/youth-campaign.test.mjs
+          tests/metroidvania-pilot*.test.mjs tests/campaign-training-v90.test.mjs
+          tests/hunt-campaign-runtime.test.mjs tests/hunt-exploration-save-runtime.test.mjs
+          tests/hunt-jump-assist-runtime.test.mjs
+      - name: Exercise V111 native harvesting, field-tool ownership and purchase acknowledgement
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1
+          tests/field-tools-rites-v111.test.mjs tests/field-tool-purchase-ui-v111.test.mjs
+          tests/trophy-harvest-v111.test.mjs tests/hunt-harvest-runtime-v111.test.mjs
+      - name: Verify deterministic V111 workbook and OpenXML
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          node scripts/build-hunt-mechanics-workbook.mjs --check
+          python3 scripts/verify-hunt-mechanics-workbook-v111.py
+      - name: Cloud account, archive, controller and response bounds (offline fixtures)
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node --test --test-reporter=spec tests/cloud*.test.mjs
+      - name: Lint bounded transport
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/game/systems/cloudAccountRestV71.ts app/game/systems/cloudResponseV94.ts
+  spatial:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ARRIVAL_SPATIAL_SOURCE_COMMIT: 02c37f40daaa45ce139328c2b40dbaa4a3c6acac
+      ARRIVAL_SPATIAL_START_SERVER: '1'
+      ARRIVAL_SPATIAL_HEADED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 02c37f40daaa45ce139328c2b40dbaa4a3c6acac
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /content/the-pit/les-masques-brises/
+            /scripts/
+            /tests/
+            /desktop/
+            /build/
+            /.openai/hosting.json
+            /public/**/manifest.json
+            /public/audio/
+            /public/game/ship-interior/
+            /public/game/planet-arrival/
+            /public/game/cinematics/batch-01-20261105/
+      - name: Verify exact candidate checkout
+        run: test "$(git rev-parse HEAD)" = "02c37f40daaa45ce139328c2b40dbaa4a3c6acac"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Include registered artwork for all destinations and the real developer hunt
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { existsSync, readFileSync } from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          import { build } from 'esbuild';
+          const compiled = await build({
+            stdin: { contents: `export { MISSIONS } from './app/game/data';
+              export { createPlanetArrival, planetArrivalAssets, planetArrivalLanding } from './app/game/systems/planetArrival';
+              export { createDevArrival, createDevSave, resolveDevDestination } from './app/dev/destinations';
+              export { environmentPropRuntimeUrlsForSector } from './app/game/environmentPropRegistry';
+              export { getWorldScreenAtX, worldScreensFor } from './app/game/worldScreens';
+              export { GAME_RESERVE_V66_ART } from './app/game/gameReserveV66Rendering';
+              export { defaultSave } from './app/game/save';
+              export { DEFAULT_SHIP_ID, isShipId, shipProfileAssetPath } from './app/game/shipCatalogue';`, resolveDir: process.cwd(), loader: 'ts' },
+            bundle: true, platform: 'node', format: 'esm', write: false, logLevel: 'silent',
+          });
+          const api = await import('data:text/javascript;base64,' + Buffer.from(compiled.outputFiles[0].text).toString('base64'));
+          const save = api.defaultSave('2026-11-05T00:00:00.000Z');
+          const arrivalPaths = api.MISSIONS.flatMap(mission => Object.values(api.planetArrivalAssets(api.createPlanetArrival({
+            ownerCreatedAt: save.createdAt, runId: 'spatial-fixture:' + mission.id, missionId: mission.id,
+            encounterRun: 1, personalShipId: api.DEFAULT_SHIP_ID, hunterPresetId: save.appearance.presetId,
+          }))).map(asset => 'public' + asset));
+          const representativeShipIds = [
+            'avp-predator-mothership', 'avpr-scout-ship', 'wolf-ship',
+            'fugitive-spaceship', 'upgrade-spaceship', 'feral-spaceship',
+          ];
+          assert.ok(representativeShipIds.every(shipId => api.isShipId(shipId)));
+          const carrierPaths = representativeShipIds.map(shipId => 'public' + api.shipProfileAssetPath(shipId));
+          // The /dev handoff starts encounter 1. The shared fixture misses some
+          // of its variants; derive this run's adjacent-sector streaming from
+          // the real registry instead of copying the entire V19 art catalogue.
+          const nativeDestination = api.resolveDevDestination('arrival-jungle-vey');
+          assert.equal(nativeDestination?.kind, 'arrival');
+          const nativeArrival = api.createDevArrival(nativeDestination, api.createDevSave(nativeDestination)).state;
+          const nativeLanding = api.planetArrivalLanding(nativeArrival);
+          const screens = api.worldScreensFor(nativeArrival.missionId).screens;
+          const activeId = api.getWorldScreenAtX(nativeArrival.missionId, nativeLanding.spawnX).id;
+          const activeIndex = screens.findIndex(screen => screen.id === activeId);
+          assert.ok(activeIndex >= 0, 'The native hunt must have a registered entry sector');
+          const streamedSectors = screens.slice(Math.max(0, activeIndex - 1), Math.min(screens.length, activeIndex + 2));
+          const nativePaths = [api.GAME_RESERVE_V66_ART.hunter, ...streamedSectors.flatMap(screen =>
+            api.environmentPropRuntimeUrlsForSector(nativeArrival.missionId, screen.id, nativeArrival.encounterRun),
+          )].map(asset => 'public' + asset);
+          const existingPaths = ['wolf-arrival-browser-assets.json', 'clan-ship-browser-assets.json'].flatMap(name => {
+            const { paths } = JSON.parse(readFileSync('tests/fixtures/' + name, 'utf8'));
+            assert.equal(new Set(paths).size, paths.length, name + ' duplicates asset paths');
+            return paths;
+          });
+          const paths = [...new Set([...existingPaths, ...arrivalPaths, ...carrierPaths, ...nativePaths])].sort();
+          for (const file of paths) {
+            assert.match(file, /^public\/game\/[A-Za-z0-9._/-]+$/);
+            assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));
+          }
+          execFileSync('git', ['sparse-checkout', 'add', '--stdin'], {
+            input: paths.map(file => '/' + file).join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'],
+          });
+          assert.deepEqual(paths.filter(file => !existsSync(file)), [], 'Every audited image must exist in the source commit');
+          console.log('Registered images materialized:', paths.length);
+          NODE
+      - name: Typecheck and strictly lint the actual scene and spatial audit
+        run: |
+          python3 -c "from pathlib import Path; p = Path('scripts/qa-planet-arrival-x11.py'); compile(p.read_bytes(), str(p), 'exec')"
+          node node_modules/next/dist/bin/next typegen
+          npm run typecheck
+          node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/PlanetArrivalCinematic.tsx app/game/InsertionPlanPanel.tsx app/game/systems/planetArrival*.ts app/game/systems/planetInsertion.ts app/game/systems/shipInsertionEnergy.ts app/game/systems/huntInsertion.ts scripts/qa-planet-arrival-spatial.mjs tests/planet-arrival*.test.mjs tests/planet-insertion.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs
+      - name: Geometry, timeline and audio regressions
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/planet-arrival*.test.mjs tests/planet-insertion.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs
+      - name: Build the production application used by the native route
+        shell: bash
+        run: |
+          mkdir -p outputs/qa-planet-arrival-spatial
+          npm run build:production 2>&1 | tee outputs/qa-planet-arrival-spatial/build.log
+      - name: Install pinned Chromium and its video support
+        run: node node_modules/playwright-core/cli.js install --with-deps chromium
+      - name: Measure real transforms, inspect every shot, and play the native sequence
+        run: xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-planet-arrival-spatial.mjs
+      - name: Expose the observed failure in readable check annotations
+        if: failure()
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path('outputs/qa-planet-arrival-spatial/report.json')
+          if path.is_file():
+            report = json.loads(path.read_text())
+            failure = report.get('failure') or report.get('errors') or 'Inspect the preserved report for the failed assertion.'
+            message = json.dumps(failure, ensure_ascii=False) if not isinstance(failure, str) else failure
+          else:
+            message = 'No native spatial report was produced; inspect the preceding setup or build step.'
+          message = message[:16000].replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+          print('::error title=Native arrival spatial diagnostic::' + message)
+          PY
+      - name: Preserve captures, motion measurements, video and failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: planet-arrival-spatial-02c37f40daaa45ce139328c2b40dbaa4a3c6acac
+          path: outputs/qa-planet-arrival-spatial/
+          include-hidden-files: false
+          if-no-files-found: warn
+          retention-days: 14
