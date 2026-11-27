@@ -47,6 +47,7 @@ try {
     if (!(await ready.count())) await service.click();
     await ready.waitFor();
     await ready.click();
+    await page.locator("[data-clan-general-war]:visible").click();
     await button(page, "L’éclaireur du canyon").click();
     await route.waitFor();
   }
