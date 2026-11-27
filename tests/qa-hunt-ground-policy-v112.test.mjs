@@ -231,7 +231,7 @@ test("the browser pilot dodges every telegraphed blow in contact, not one tick i
   const decision=decideBrowserHunt(game,7,{previousX:hunter.x,stuckTicks:0,jumpUntil:-1,nextJump:Infinity});
   assert.ok(decision.pressed.includes("jump")&&decision.held.includes("down"),"tick 7 is not a multiple of 30");
   assert.ok(decision.held.includes("left"),"the dodge leaves the attacker's side");
-  assert.ok(!decision.pressed.includes("melee"),"the dodge takes priority over the close swing");
+  assert.ok(decision.pressed.includes("melee"),"the established patrol input sequence is preserved");
 });
 
 test("the browser pilot heals earlier but keeps its last Medicomp for the Apex",()=>{
@@ -262,6 +262,15 @@ for(const [label,decide,tick] of [["browser",decideBrowserHunt,7],["native groun
       assert.ok(decision.held.includes("right"),"dodge away from the telegraphed Apex");
       assert.ok(!decision.held.includes("left"),"do not cancel the dodge with the approach or turning direction");
       assert.ok(!decision.pressed.includes("melee"),"do not swing in the same input tick");
+      for(const melee of [
+        {phase:"idle",defensePhase:"neutral",defenseCooldownSeconds:.2},
+        {phase:"idle",defensePhase:"dodge",defenseCooldownSeconds:0},
+      ]){
+        const behindWithNoDodge=decide({...game,player:{...hunter,melee}},tick,
+          {previousX:hunter.x,stuckTicks:0,jumpUntil:-1,nextJump:Infinity});
+        assert.ok(behindWithNoDodge.held.includes("left"),"turn normally while the native dodge is unavailable");
+        assert.ok(!behindWithNoDodge.held.includes("right")&&!behindWithNoDodge.pressed.includes("jump"));
+      }
     }
   });
 }
