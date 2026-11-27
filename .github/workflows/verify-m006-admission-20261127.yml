@@ -17,7 +17,7 @@ jobs:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '782ed8a0b9899c70a0b1f0e0bce716e7af2b2fd6'
+          ref: '107080e2e89db1b3bed09c7157d64f2f45a7f72b'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -86,7 +86,7 @@ jobs:
           node-version: '22'
       - name: Materialize official runtime inputs and install dependencies
         run: |
-          test "$(git rev-parse HEAD)" = '782ed8a0b9899c70a0b1f0e0bce716e7af2b2fd6'
+          test "$(git rev-parse HEAD)" = '107080e2e89db1b3bed09c7157d64f2f45a7f72b'
           node scripts/materialize-asset-raccords-20261120.mjs runtime
           npm ci --ignore-scripts --no-audit --no-fund
       - name: Verify the original rack waveform and audio inventory

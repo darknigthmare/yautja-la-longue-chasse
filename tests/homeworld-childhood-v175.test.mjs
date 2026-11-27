@@ -196,6 +196,12 @@ test("M006 binds each first workshop choice to the campaign checkpoint while pre
     const restoredView = game.childhoodViewV175(reopened.homeworld.childhoodV175, reopened.createdAt);
     assert.deepEqual(game.childhoodRackReceiptV175(restoredView), game.childhoodRackReceiptV175(p.view()));
     assert.equal(reopened.prologue.ceremonyM006, true);
+    const withoutRite = structuredClone(reopened);
+    withoutRite.prologue.chronicle.rites = [];
+    assert.equal(childhoodStorage.parseSaveImport(JSON.stringify(withoutRite)).failure, "invalid-save");
+    const falseRite = structuredClone(reopened);
+    falseRite.prologue.chronicle.rites[0].sourceId = game.CHILDHOOD_RACK_ACCESS_M006;
+    assert.equal(childhoodStorage.parseSaveImport(JSON.stringify(falseRite)).failure, "invalid-save");
     const altered = structuredClone(reopened);
     altered.youthTraining.checkpoint.firstWorkshopV176 = opening === "blades" ? "mask" : "blades";
     assert.equal(childhoodStorage.parseSaveImport(JSON.stringify(altered)).failure, "invalid-save");
