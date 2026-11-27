@@ -35,6 +35,9 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, typ
 import { controlActionShortcut } from "./controlBindingLabels";
 import { acknowledgeYouthCityStopV172, nextYouthCityStopV172, startYouthCityErrandV172, youthCityCarriesPieceV172, YOUTH_CITY_STOPS_V172, type YouthCityRouteV172, type YouthCityStopV172 } from "./systems/youthCityErrandV172";
 import { youthCampaignObjective, youthEquipmentSummary } from "./systems/youthCampaign";
+import HomeworldChildhoodV175 from "./HomeworldChildhoodV175";
+import { CHILDHOOD_POST_V175, actChildhoodV175, childhoodViewV175, hasChildhoodFoundationV175,
+  type ChildhoodCommandV175 } from "./systems/homeworldChildhoodV175";
 import { getChronicleRank } from "./systems/clanChronicle";
 import { matchesControlAction, type ControlActionId } from "./systems/controlBindings";
 import { shipForId, type ShipId } from "./shipCatalogue";
@@ -229,6 +232,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   const [wayfindingRequestV75, setWayfindingRequestV75] = useState<{ id: string; nonce: number } | null>(null);
   const [dialog, setDialog] = useState<{ point: HomeworldPoint | null; message?: string; navigation?: boolean; residentV110?: {id:string;owner:string}; recoveryV111?: {owner:string}; streetContactV100?:{id:string;owner:string}; archivePlaqueV109?:{owner:string}; cargoV108?:{owner:string}; archiveComparisonV107?:{owner:string;at:'post'|'table'}; archiveV106?:{owner:string}; cartographyV104?:{owner:string}; cartographyObservationV105?:{owner:string}; cntlipSiteId?:CntlipSiteIdV77 } | null>(null);
   const [announcement, setAnnouncement] = useState(initialLocationV77.cargoRecoveryMessage);
+  const [childhoodMessageV175, setChildhoodMessageV175] = useState("");
   const viewportRef = useRef<HTMLDivElement>(null);
   const rootRef = useRef<HTMLElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -1490,6 +1494,23 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
       nextYouthCityStopV172(next) ? "Repère consigné dans le journal." : "La pièce et les trois repères sont consignés.";
     setDialog(currentDialog => currentDialog ? { ...currentDialog, message } : currentDialog);
   };
+  const atChildhoodPostV175 = () => !suspendedRef.current && !pausedRef.current &&
+    interiorRef.current?.buildingId === CHILDHOOD_POST_V175.roomId &&
+    dialogStateRef.current?.point?.id === CHILDHOOD_POST_V175.pointId &&
+    pointInCurrentSpace(actorRef.current, interiorRef.current, levelRefV77.current)?.id === CHILDHOOD_POST_V175.pointId;
+  const childhoodView = useMemo(() => childhoodViewV175(progress.childhoodV175, save.createdAt), [progress.childhoodV175, save.createdAt]);
+  const submitChildhoodV175 = (event: ChildhoodCommandV175) => {
+    const current = saveRef.current;
+    if (current.createdAt !== save.createdAt || !atChildhoodPostV175()) return;
+    const proposal = actChildhoodV175(current, progressRef.current.childhoodV175, event, {
+      roomId: CHILDHOOD_POST_V175.roomId, pointId: CHILDHOOD_POST_V175.pointId, suspended: false,
+    });
+    if (proposal.state && !onProgress({ ...progressRef.current, childhoodV175: proposal.state })) {
+      setChildhoodMessageV175("Le geste attend une sauvegarde confirmée. Réessaie à ce poste.");
+      return;
+    }
+    setChildhoodMessageV175(proposal.message);
+  };
   const selectedNpc = HOMEWORLD_NPCS.find(npc => npc.id === selectedPoint?.npcId);
   const inquiryDialogue = homeworldInquiryDialogue(progress, selectedPoint?.npcId);
   const selectedRegion = HOMEWORLD_REGIONS.find(region => region.id === selectedPoint?.regionId);
@@ -1691,6 +1712,11 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
           </section>}
           {youthWelcome && youthCityStop === selectedPoint.id && <button type="button" data-r2-m003-stop={youthCityStop}
             disabled={suspended || paused || inactive} onClick={() => saveYouthCityErrand({ stop: youthCityStop })}>{YOUTH_CITY_STOPS_V172[youthCityStop].label}</button>}
+          {youthWelcome && childhoodView && hasChildhoodFoundationV175({ ...save, homeworld: progress }) &&
+            interior?.buildingId === CHILDHOOD_POST_V175.roomId && selectedPoint.id === CHILDHOOD_POST_V175.pointId &&
+            <HomeworldChildhoodV175 view={childhoodView} message={childhoodMessageV175}
+              paused={suspended || paused || inactive} mayEnter={!!onYouthTraining && youthChiefMet && youthMentorMet}
+              onAction={submitChildhoodV175} onEnter={() => { if (atChildhoodPostV175()) enterYouthTraining(); }} />}
           {selectedNpc && <p><YautjaTranslationV67 text={`« ${youthWelcome && youthGreeting[selectedNpc.id] ? youthGreeting[selectedNpc.id] : selectedNpc.greeting} »`} paused={suspended || paused || inactive} /></p>}
           {youthWelcome && ["hunt-king", "terrace-instructor"].includes(selectedNpc?.id ?? "") && <div className={styles.notice} data-unblooded-conversation={selectedNpc?.id}><p>{youthObjective}</p><p>Les exercices se jouent dans le dojo, puis au camp. Le maître attend ton retour pour reconnaître chaque épreuve.</p></div>}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && youthChiefMet && youthMentorMet && onYouthTraining && <button type="button" data-youth-enter-dojo disabled={suspended} onClick={enterYouthTraining}>{save.youthTraining?.status === "completed" ? save.youthTraining.checkpoint.phase === "cage-complete" ? "Revoir le bilan de la petite Fosse" : save.youthTraining.checkpoint.phase.startsWith("cage-") ? "Reprendre la petite Fosse de jeunesse" : save.youthTraining.checkpoint.phase === "patrol-complete" ? "Préparer le premier duel de la Fosse" : save.youthTraining.checkpoint.phase.startsWith("patrol-") ? "Reprendre la patrouille accompagnée" : save.youthTraining.checkpoint.phase === "desert-complete" ? "Préparer la patrouille avec le maître" : "Rejoindre le maître pour la sortie du désert" : save.youthTraining ? "Reprendre la formation Unblooded" : "Entrer dans le dojo avec le maître"}</button>}

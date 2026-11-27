@@ -29,6 +29,7 @@ import {normalizeHomeworldCargoV108} from './systems/homeworldCargoLedgerV108';
 import {normalizeHomeworldArchivePlaqueV109} from './systems/homeworldArchivePlaqueLedgerV109';
 import { normalizeYouthCampaign, youthCampaignMatchesSave } from "./systems/youthCampaign";
 import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
+import { hasChildhoodFoundationV175, isChildhoodSuccessorV175 } from "./systems/homeworldChildhoodV175";
 import { homeworldAdjutantMatchesSaveM029, isHomeworldAdjutantSuccessorM029 } from "./systems/homeworldAdjutantM029";
 import { archiveTransferPending } from "./systems/archiveTransferGuard";
 import { defaultJusticeProgress, normalizeJusticeProgress } from "./systems/justice";
@@ -2088,9 +2089,14 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (quatza.state && !quatzaCampaignMatchesSave(value as unknown as SaveGame)) {
     return { save: null, failure: "invalid-save" };
   }
+  const selectedChildhood = isRecord(value.homeworld) ? value.homeworld.childhoodV175 : undefined;
+  if (isRecord(selectedChildhood) && Number(selectedChildhood.version) > 1) return { save: null, failure: "future-version" };
   const selectedAdjutant = isRecord(value.homeworld) ? value.homeworld.adjutantM029 : undefined;
   if (isRecord(selectedAdjutant) && Number(selectedAdjutant.version) > 1) return { save: null, failure: "future-version" };
   const save = normalizeSave(value);
+  const childhood = save.homeworld.childhoodV175;
+  if (selectedChildhood !== undefined && (!childhood || childhood.ownerCreatedAt !== save.createdAt ||
+      !hasChildhoodFoundationV175(save))) return { save: null, failure: "invalid-save" };
   const adjutant = save.homeworld.adjutantM029;
   if ((selectedAdjutant != null && (!adjutant || bloodedTemple.view.stage !== "complete")) ||
       !homeworldAdjutantMatchesSaveM029(save) ||
@@ -2245,6 +2251,10 @@ function persistCampaign(
       if (JSON.stringify(previous.honorSourcesV169) !== JSON.stringify(requested.honorSourcesV169)) {
         return failed("save-conflict", previous);
       }
+      const previousChildhood = previous.homeworld.childhoodV175;
+      const nextChildhood = requested.homeworld.childhoodV175;
+      if (JSON.stringify(previousChildhood ?? null) !== JSON.stringify(nextChildhood ?? null) &&
+          !isChildhoodSuccessorV175(previousChildhood, nextChildhood)) return failed("save-conflict", previous);
       const previousAdjutant = previous.homeworld.adjutantM029;
       const nextAdjutant = requested.homeworld.adjutantM029;
       if (JSON.stringify(previousAdjutant ?? null) !== JSON.stringify(nextAdjutant ?? null) &&

@@ -1,4 +1,5 @@
 import { normalizeYouthCityErrandV172, type YouthCityErrandV172 } from "./youthCityErrandV172";
+import { normalizeChildhoodV175, type ChildhoodLedgerV175 } from "./homeworldChildhoodV175";
 import {normalizeHomeworldArrivalRecoveryV111,type HomeworldArrivalRecoveryV111} from './homeworldArrivalRecoveryLedgerV111';
 import {normalizeHomeworldArchiveContinuationV111,type HomeworldArchiveContinuationV111} from './homeworldArchiveContinuationLedgerV111';
 import {normalizeHomeworldCargoV108, type HomeworldCargoV108} from './homeworldCargoLedgerV108';
@@ -163,7 +164,7 @@ export const HOMEWORLD_POINTS: readonly HomeworldPoint[] = HOMEWORLD_POINT_BLUEP
   return { ...point, ...position };
 });
 
-export interface HomeworldProgress { version: 1; youthCityErrandV172?: YouthCityErrandV172; returnM039?: HomeworldReturnM039; coordinationM028?: HomeworldCoordinationM028; nextRouteM034?: HomeworldRouteM034; packTrialM029?: HomeworldPackTrialM029; adjutantM029?: HomeworldAdjutantM029; cntlipV77:CntlipLedgerV77; locationV77?:HomeworldCheckpointV77; bibleScenesV86?:BibleSceneLedgerV86; archiveV106?:HomeworldArchiveLedgerV106; archiveComparisonV107?:HomeworldArchiveComparisonV107; cargoV108?:HomeworldCargoV108; archivePlaqueV109?:HomeworldArchivePlaqueV109; archiveContinuationV111?:HomeworldArchiveContinuationV111; arrivalRecoveryV111?:HomeworldArrivalRecoveryV111; cartographyV104?:HomeworldCartographyLedgerV104; cartographyV105?:HomeworldCartographyLedgerV105; contractsV68: HomeworldContractsV68; sideStoryV66: HomeworldSideStoryV66Progress; npcMissionsV66: NpcMissionsV66; mausoleum: MausoleumProgress; inquiry: HomeworldInquiryProgress; expeditions: { "ash-marches": HomeworldExpeditionProof | null; "glass-desert": GlassDesertProof | null }; visitedDistrictIds: string[]; evidenceIds: HomeworldEvidenceId[]; greetedNpcIds: string[]; witnessChoice: HomeworldWitnessChoice | null; audienceOutcome: HomeworldAudienceOutcome | null; relations: Record<string, number> }
+export interface HomeworldProgress { version: 1; youthCityErrandV172?: YouthCityErrandV172; childhoodV175?: ChildhoodLedgerV175; returnM039?: HomeworldReturnM039; coordinationM028?: HomeworldCoordinationM028; nextRouteM034?: HomeworldRouteM034; packTrialM029?: HomeworldPackTrialM029; adjutantM029?: HomeworldAdjutantM029; cntlipV77:CntlipLedgerV77; locationV77?:HomeworldCheckpointV77; bibleScenesV86?:BibleSceneLedgerV86; archiveV106?:HomeworldArchiveLedgerV106; archiveComparisonV107?:HomeworldArchiveComparisonV107; cargoV108?:HomeworldCargoV108; archivePlaqueV109?:HomeworldArchivePlaqueV109; archiveContinuationV111?:HomeworldArchiveContinuationV111; arrivalRecoveryV111?:HomeworldArrivalRecoveryV111; cartographyV104?:HomeworldCartographyLedgerV104; cartographyV105?:HomeworldCartographyLedgerV105; contractsV68: HomeworldContractsV68; sideStoryV66: HomeworldSideStoryV66Progress; npcMissionsV66: NpcMissionsV66; mausoleum: MausoleumProgress; inquiry: HomeworldInquiryProgress; expeditions: { "ash-marches": HomeworldExpeditionProof | null; "glass-desert": GlassDesertProof | null }; visitedDistrictIds: string[]; evidenceIds: HomeworldEvidenceId[]; greetedNpcIds: string[]; witnessChoice: HomeworldWitnessChoice | null; audienceOutcome: HomeworldAudienceOutcome | null; relations: Record<string, number> }
 const record = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null && !Array.isArray(value);
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 const finite = (value: unknown, fallback = 0) => typeof value === "number" && Number.isFinite(value) ? value : fallback;
@@ -199,6 +200,10 @@ export function normalizeHomeworldProgress(value: unknown): HomeworldProgress {
   if (value.youthCityErrandV172 !== undefined) {
     const errand = normalizeYouthCityErrandV172(value.youthCityErrandV172);
     if (errand) clean.youthCityErrandV172 = errand;
+  }
+  if (value.childhoodV175 !== undefined) {
+    const childhood = normalizeChildhoodV175(value.childhoodV175);
+    if (childhood) clean.childhoodV175 = childhood;
   }
   clean.contractsV68 = normalizeHomeworldContractsV68(value.contractsV68);
   clean.mausoleum = normalizeMausoleumProgress(value.mausoleum);
