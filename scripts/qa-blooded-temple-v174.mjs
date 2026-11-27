@@ -59,7 +59,9 @@ try {
     assert.equal(await scene.getAttribute("data-blooded-room"), String(index));
     report.rooms.push(room.name);
     if (room.lane) await act("lane");
-    await act("right"); await act("right"); await act("interact"); await act("right");
+    await act("right"); await act("right"); await act("interact");
+    if (index === 0) { await act("interact"); await act("lane"); }
+    await act("right");
     if ("hunter" in room) {
       await act("guard"); await act("strike"); await act("guard"); await act("strike");
     } else if (index === 4) {

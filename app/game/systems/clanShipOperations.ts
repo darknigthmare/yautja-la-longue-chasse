@@ -16,6 +16,8 @@ import { applyOserisReturn, inspectOserisReturn, oserisReturnAvailable, oserisRe
 import { applySuccessorTrial, inspectSuccessorTrial, isSuccessorTerrain, successorTrialPlan,
   type SuccessorTrialOrder, type SuccessorTrialRecord } from './successorTrialR2M054';
 import type { PassagePoint } from './elderPassageJudgmentV168';
+import { applyLongMemory, inspectLongMemory, longMemoryEvidence,
+  type LongMemoryOrder, type LongMemoryRecord } from './longMemoryR2M055';
 
 export const CLAN_SHIP_OPERATIONS_VERSION = 1 as const;
 export const CLAN_SHIP_CONTRACT_IDS = [
@@ -186,11 +188,13 @@ export interface ClanShipOperationsState {
   war?: WarReturnRecord;
   legacy?: OserisReturnRecord;
   successorTrial?: SuccessorTrialRecord;
+  longMemory?: LongMemoryRecord;
 }
 export interface ClanShipCampaignEvidence extends OserisReturnCampaign {
   createdAt: string;
   prologue?: { status?: string; chronicle: unknown } | null;
   missionProgress: Partial<Record<MissionId, { status: string; attempts: number; completions: number }>>;
+  elderWorkshopV172?: unknown;
   clanHullProjectV171?: unknown;
   shipAcquisitionV89?: unknown;
   companionResidence?: { clanCapacity: 7 | 13 | 19 } | null;
@@ -220,6 +224,7 @@ export type ClanShipOperationsAction = { expectedRevision: number } & (
   | { type: 'war-return'; order: WarReturnOrder }
   | { type: 'oseris-return'; order: OserisReturnOrder }
   | { type: 'successor-trial'; order: SuccessorTrialOrder; position: PassagePoint }
+  | { type: 'long-memory'; order: LongMemoryOrder }
 );
 export interface ClanShipOperationsResult {
   accepted: boolean; changed: boolean; state: ClanShipOperationsState;
@@ -331,6 +336,7 @@ export function inspectClanShipOperations(raw: unknown, ownerCreatedAt: string):
   if (Object.hasOwn(raw, 'war')) fields.push('war');
   if (Object.hasOwn(raw, 'legacy')) fields.push('legacy');
   if (Object.hasOwn(raw, 'successorTrial')) fields.push('successorTrial');
+  if (Object.hasOwn(raw, 'longMemory')) fields.push('longMemory');
   if (!exact(raw, fields)) return invalid('invalid-fields');
   if (!identity(ownerCreatedAt) || raw.ownerCreatedAt !== ownerCreatedAt) return invalid('owner-mismatch');
   if (!integer(raw.revision) || !integer(raw.onboardingStep) || raw.onboardingStep > CLAN_SHIP_ONBOARDING_STEPS.length ||
@@ -376,6 +382,11 @@ export function inspectClanShipOperations(raw: unknown, ownerCreatedAt: string):
     if (!raw.mandateAccepted || !inspectOserisReturn(raw.legacy) || !raw.legacy.returnedWorldCompared ||
         !inspectSuccessorTrial(raw.successorTrial)) return invalid('invalid-successor-trial');
     minimumRevision += raw.successorTrial.orders.length;
+  }
+  if (Object.hasOwn(raw, 'longMemory')) {
+    if (!inspectSuccessorTrial(raw.successorTrial) || !raw.successorTrial.transmissionTrialObserved ||
+        !inspectLongMemory(raw.longMemory)) return invalid('invalid-long-memory');
+    minimumRevision += raw.longMemory.orders.length;
   }
   if (ids.has('welcome-aboard') !== (raw.onboardingStep === CLAN_SHIP_ONBOARDING_STEPS.length) ||
       raw.mandateAccepted && !ids.has('welcome-aboard')) return invalid('invalid-onboarding');
@@ -460,6 +471,9 @@ export function evaluateClanShipOperationsCampaign(state: ClanShipOperationsStat
     if (!plan || plan.route !== state.successorTrial.route || plan.side !== state.successorTrial.side) {
       return access(false, 'La transmission exige le novice formé, les témoignages Elder et le relevé d’Oseris-IV de cette campagne.');
     }
+  }
+  if (state.longMemory && !longMemoryEvidence(campaign.createdAt, campaign.elderWorkshopV172, state.legacy, state.successorTrial)) {
+    return access(false, 'Les dossiers du hangar, de l’armurerie et du successeur doivent appartenir à cette campagne.');
   }
   const progressFor = (missionId: MissionId) => {
     const progress = missionProgress[missionId];
@@ -548,7 +562,7 @@ function validAction(action: unknown): action is ClanShipOperationsAction {
   if (action.type === 'collective-role') return exact(action, [...base, 'role']) && collectiveRole(action.role);
   if (action.type === 'space-command') return exact(action, [...base, 'command']) && record(action.command);
   if (action.type === 'successor-trial') return exact(action, [...base, 'order', 'position']) && identity(action.order) && isSuccessorTerrain(action.position);
-  if (action.type === 'war-return' || action.type === 'oseris-return') return exact(action, [...base, 'order']) && identity(action.order);
+  if (action.type === 'war-return' || action.type === 'oseris-return' || action.type === 'long-memory') return exact(action, [...base, 'order']) && identity(action.order);
   return exact(action, base) && ['accept-mandate', 'cancel-contract', 'confirm-circle', 'collective-launch'].includes(String(action.type));
 }
 
@@ -565,6 +579,17 @@ export function actClanShipOperations(state: ClanShipOperationsState, action: Cl
   const at = (roomId: ClanShipRoomId) => context.docking?.roomId === roomId;
   const wrongRoom = () => refused(state, 'wrong-room', 'Rejoins le poste indiqué avant cette action.');
   switch (action.type) {
+    case 'long-memory': {
+      if (!state.mandateAccepted || !longMemoryEvidence(context.ownerCreatedAt, context.campaign.elderWorkshopV172, state.legacy, state.successorTrial) ||
+          !evaluateClanShipOperationsCampaign(state, context.campaign).allowed) {
+        return refused(state, 'long-memory-access', 'Consigne l’atelier Elder, le retour à Oseris-IV et la décision du successeur avant cette transmission.');
+      }
+      if (state.activeContract) return refused(state, 'operation-active', 'Termine l’opération active avant de te consacrer à la transmission.');
+      const longMemory = applyLongMemory(state.longMemory, action.order, context.docking.roomId);
+      if (!longMemory) return refused(state, 'long-memory-order', 'Rejoins le poste indiqué et suis l’ordre des comparaisons.');
+      return changed(state, { longMemory }, longMemory.longMemorySuccess
+        ? 'Le volontaire a reçu la transmission.' : 'Étape de longue mémoire confirmée.');
+    }
     case 'successor-trial': {
       if (!at('hangar')) return wrongRoom();
       const plan = successorTrialPlan(context.campaign, state.legacy);

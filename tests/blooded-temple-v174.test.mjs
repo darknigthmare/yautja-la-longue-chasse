@@ -47,7 +47,15 @@ test("six rooms, three hunter proofs and two matching marks produce one durable 
     if (room.lane) play("lane");
     play("right"); play("right");
     assert.equal(raw("right").ok, false);
-    play("interact"); play("right");
+    play("interact");
+    if (index === 0) {
+      assert.equal(raw("right").ok, false);
+      play("interact");
+      assert.equal(temple.templePassageLaneV174(view()), 0);
+      assert.equal(raw("right").ok, false);
+      play("lane");
+    }
+    play("right");
     if ("hunter" in room) {
       assert.equal(raw("next").ok, false);
       if (index === 1) { play("strike"); assert.equal(view().vitality, 2); }

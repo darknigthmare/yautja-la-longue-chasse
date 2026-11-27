@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { SaveGame } from "./types";
-import { BLOODED_ROOMS, inspectBloodedTempleV174, type TempleActionV174, type TempleCommandV174 } from "./systems/bloodedTempleV174";
+import { BLOODED_ROOMS, inspectBloodedTempleV174, templePassageLaneV174, type TempleActionV174, type TempleCommandV174 } from "./systems/bloodedTempleV174";
 import styles from "./BloodedTempleV174.module.css";
 
 type Props = {
@@ -58,7 +58,8 @@ export default function BloodedTempleV174({ save, suspended, onCommand, onClose 
         <h4>{room.name}</h4>
         <p>{view.room === 4 ? "La reine captive force la grille. Prépare la console puis déclenche la purge derrière le verrou."
           : view.room === 5 ? "Prends le blessé au mécanisme et atteins le sas avant sa fermeture."
-          : room.objective + ". La voie du mécanisme est marquée au sol."}</p>
+          : view.room === 0 && view.plate ? "La cloison a basculé. Le passage s’ouvre sur l’autre voie." :
+            room.objective + ". La voie du mécanisme est marquée au sol."}</p>
         <p className={styles.report}>
           <span>Preuves des chasseurs · {view.proofs.length}/3</span>
           <span>Endurance · {view.vitality}/3</span>
@@ -69,9 +70,10 @@ export default function BloodedTempleV174({ save, suspended, onCommand, onClose 
             const player = view.column === column && view.lane === lane;
             const mechanism = column === 2 && lane === room.lane;
             const threat = column === 4 && lane === room.lane && view.enemy > 0;
+            const passage = column === 3 && lane === templePassageLaneV174(view);
             return <div aria-hidden="true" key={lane + ":" + column} data-player={player} data-mechanism={mechanism}
-              data-exit={column === 5} data-threat={threat}>
-              {player ? "Trio" : mechanism ? "Levier" : threat ? "Garde" : column === 5 ? "Sas" : ""}
+              data-exit={column === 5} data-threat={threat} data-passage={passage}>
+              {player ? "Trio" : mechanism ? "Levier" : threat ? "Kainde" : passage ? "Passage" : column === 5 ? "Sas" : ""}
             </div>;
           }))}
         </div>
@@ -82,7 +84,8 @@ export default function BloodedTempleV174({ save, suspended, onCommand, onClose 
             {button("lane", "Changer de voie", view.column === 3 || view.column === 4)}
             {view.prepared && view.room === 4 && view.deadline === null && view.column === 3
               ? button("interact", "Fermer la grille et lancer la purge")
-              : !view.prepared && button("interact", room.objective)}
+              : view.room === 0 && view.prepared && !view.plate ? button("interact", "Déplacer la cloison") :
+                !view.prepared && button("interact", room.objective)}
             {canFight && "hunter" in room && <>
               {button("guard", "Tenir la garde", view.guarded)}
               {button("strike", room.hunter === "joueur" ? "Frapper dans l’ouverture" : "Donner le signal au " + room.hunter)}

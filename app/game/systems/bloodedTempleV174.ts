@@ -42,6 +42,11 @@ export interface TempleViewV174 {
   marks: number[][];
 }
 
+export function templePassageLaneV174(view: TempleViewV174): number {
+  const lane = BLOODED_ROOMS[view.room].lane;
+  return view.room === 0 && view.plate ? 1 - lane : lane;
+}
+
 const initial = (): TempleViewV174 => ({
   stage: "council", room: 0, column: 0, lane: 0, plate: false, prepared: false,
   guarded: false, enemy: 0, vitality: 3, proofs: [], deadline: null, carriesWounded: false, marks: [[]],
@@ -98,7 +103,7 @@ function step(view: TempleViewV174, event: Event) {
   if (action === "left" || action === "right") {
     const column = view.column + (action === "right" ? 1 : -1);
     if (column < 0 || column > 5) return reject("La salle se termine ici.");
-    if (view.column === 2 && column === 3 && (!view.prepared || view.lane !== place.lane)) {
+    if (view.column === 2 && column === 3 && (!view.prepared || (view.room === 0 && !view.plate) || view.lane !== templePassageLaneV174(view))) {
       return reject("Le passage est fermé. Travaille au mécanisme sur l’autre voie si nécessaire.");
     }
     if (view.column === 3 && column === 4 && view.enemy) return reject("La créature tient la traversée.");
@@ -106,9 +111,9 @@ function step(view: TempleViewV174, event: Event) {
   }
   if (action === "interact") {
     if (!view.prepared && atMechanism) {
-      return accepted({ ...view, prepared: true, plate: view.plate || view.room === 0,
-        carriesWounded: view.carriesWounded || view.room === 5 });
+      return accepted({ ...view, prepared: true, carriesWounded: view.carriesWounded || view.room === 5 });
     }
+    if (view.room === 0 && atMechanism && !view.plate) return accepted({ ...view, plate: true });
     if (view.room === 4 && atTension && view.prepared && view.proofs.length === 3 && view.deadline === null) {
       return accepted({ ...view, deadline: at + 60000 });
     }
