@@ -1,0 +1,20 @@
+.player { display: grid; gap: 0.85rem; }
+.player p, .player h2, .player h3 { margin: 0; }
+.chapter { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.4rem; }
+.chapter span { color: #b8cba8; }
+.field { border: 1px solid #787859; padding: clamp(0.36rem, 1.7vw, 0.9rem); background: #101d1d; }
+.route { display: grid; gap: 0.6rem; }
+.lane { display: grid; gap: 0.24rem; }
+.laneLabel, .legend { font-size: 0.78rem; color: #d3d4ae; }
+.cells { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 0.16rem; }
+.cell { display: grid; place-items: center; min-width: 0; min-height: 2.2rem; font-size: clamp(0.6rem, 1.75vw, 0.9rem); background: #49432e; border: 1px solid #726b53; color: #f2e9ba; }
+.lane[data-lane="ridge"] .cell { background: #2a4044; }
+.lane .cell[data-site="signal"], .lane .cell[data-site="mark"] { border-color: #f0b875; }
+.lane .cell[data-site="exit"] { border-color: #a7c7db; }
+.lane .cell[data-site="danger"] { background: repeating-linear-gradient(130deg, #8a4931 0 5px, #5c2e24 5px 10px); }
+.lane .cell[data-scout="true"] { background: #476558; }
+.lane .cell[data-player="true"] { background: #e1d9a2; color: #172521; border-color: #fff0bf; }
+.legend, .actions { display: flex; align-items: center; flex-wrap: wrap; gap: 0.45rem 0.75rem; }
+.legend { margin-top: 0.7rem; }
+.actions button { min-height: 2.75rem; }
+.player [tabindex="0"]:focus-visible { outline: 2px solid #efe0a0; outline-offset: 3px; }
