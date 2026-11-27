@@ -77,9 +77,10 @@ function describe(ownerCreatedAt: string, race: RaceWitnessO6, journal: TownBell
 
 function readRace(value: unknown): RaceWitnessO6 | null {
   if (!data(value) || (value.choice !== "lead" && value.choice !== "observe") || typeof value.success !== "boolean" ||
-      typeof value.roundsLost !== "number" || !Number.isSafeInteger(value.roundsLost) || value.roundsLost < 0 ||
-      value.connected !== (value.success ? value.choice === "lead" ? "yena" : "harek" : null)) return null;
-  return { choice: value.choice, success: value.success, roundsLost: value.roundsLost, connected: value.connected };
+      typeof value.roundsLost !== "number" || !Number.isSafeInteger(value.roundsLost) || value.roundsLost < 0) return null;
+  const connected = value.success ? value.choice === "lead" ? "yena" : "harek" : null;
+  if (value.connected !== connected) return null;
+  return { choice: value.choice, success: value.success, roundsLost: value.roundsLost, connected };
 }
 
 export function normalizeTownBellO6(raw: unknown): TownBellRecordO6 | null {
