@@ -1,0 +1,36 @@
+name: QA campaign coop guest rewards
+on:
+  push:
+    branches: [codex/qa-bible-campaign-coop-20261127]
+permissions:
+  contents: read
+jobs:
+  exact-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '6ccf1698b4455061f24772f601fa7c94107964e2'
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - run: test "$(git rev-parse HEAD)" = 6ccf1698b4455061f24772f601fa7c94107964e2
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node --experimental-strip-types --test --test-concurrency=1 tests/campaign-coop-rewards.test.mjs tests/mission-honor-rules.test.mjs
+      - run: npx eslint app/game/systems/campaignCoopRewards.ts app/game/systems/honorSourcesV169.ts app/game/save.ts tests/campaign-coop-rewards.test.mjs
+      - run: npx next typegen && npx tsc --noEmit --incremental false
