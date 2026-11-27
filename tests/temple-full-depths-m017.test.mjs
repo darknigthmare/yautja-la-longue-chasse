@@ -14,10 +14,13 @@ const quatza = runtime.load('app/game/systems/quatzaRij.ts');
 let completed;
 
 test('the fifteen-room route reaches four new physical doors and records each observation in order', () => {
-  let opened;
+  let opened, warned;
   completed = templeCampaignRoute({ origin: waiting, restoreEvery: 61, input(state) {
-    const gallery = state.depthsM017?.extension?.gallery;
+    const extension = state.depthsM017?.extension;
+    const gallery = extension?.gallery;
     if (gallery?.openedAt != null && !gallery.screened) opened ??= structuredClone(state);
+    if (state.room === p.SOLO_V70_ROYAL_M017.room && extension?.royal?.startedAt != null && !extension.royal.evade)
+      warned ??= structuredClone(state);
     return templeInput(state);
   } });
   assert(opened);
@@ -45,7 +48,8 @@ test('the fifteen-room route reaches four new physical doors and records each ob
   assert(state.visited.every(Boolean));
   assert.equal(state.visited.length, 15);
   assert.deepEqual(Object.keys(depth.extension.observations), p.SOLO_V70_DEPTH_POSTS_M017.map(post => post.id));
-  for (const post of p.SOLO_V70_DEPTH_POSTS_M017) {
+  for (const candidate of p.SOLO_V70_DEPTH_POSTS_M017) {
+    const post = p.soloV70DepthPostM017(candidate.room, true);
     const observation = depth.extension.observations[post.id];
     assert.equal(observation.configuration, 3);
     assert(Math.abs(observation.positions[0] - post.x) < 38);
@@ -73,6 +77,23 @@ test('the fifteen-room route reaches four new physical doors and records each ob
   const forged = structuredClone(save);
   forged.soloV70.checkpoint.depthsM017.extension.gallery.screened = null;
   assert.equal(saves.parseSaveImport(JSON.stringify(forged)).failure, 'invalid-save');
+  assert(warned);
+  let grounded = p.normalizeSoloV70State(JSON.parse(JSON.stringify(warned)));
+  const loge = p.SOLO_V70_ROYAL_M017;
+  const start = grounded.depthsM017.extension.royal.startedAt, startHealth = grounded.health;
+  assert.equal(p.soloV70RoyalStatusM017(grounded.depthsM017.extension, grounded.tick).stage, 'warning');
+  assert.equal(p.soloV70CanTravel(grounded, loge.room + 1), false);
+  for (let tick = 0; tick <= loge.warningTicks + loge.strikeTicks; tick++)
+    grounded = p.stepSoloV70(grounded, {}, templeEnvironment).state;
+  assert.equal(grounded.health, startHealth - 1);
+  assert.equal(grounded.depthsM017.extension.royal.evade, null);
+  const { evade } = depth.extension.royal;
+  assert.equal(p.soloV70RoyalSweepM017(start, evade.tick).stage, 'strike');
+  assert(evade.y <= loge.coverY && p.soloV70RoyalInSweepM017(evade.x));
+  assert(depth.extension.observations['royal-lock'].tick > evade.tick);
+  const erasedEvade = structuredClone(save);
+  erasedEvade.soloV70.checkpoint.depthsM017.extension.royal.evade = null;
+  assert.equal(saves.parseSaveImport(JSON.stringify(erasedEvade)).failure, 'invalid-save');
 });
 
 test('an expired purge can be opened again at the upstream valve without losing observations', () => {
@@ -141,5 +162,16 @@ test('an active fifteen-room archive without the Gallery encounter preserves its
   assert(crossing.before.depthsM017.extension.observations['eggs-observed']);
   assert.equal(crossing.before.depthsM017.extension.gallery, undefined);
   assert.equal(p.soloV70CanTravel(crossing.before, 11), true);
+  assert.equal(saves.parseSaveImport(saves.exportSave(archive.save)).failure, null);
+});
+
+test('the preceding Gallery archive keeps its open egg and original royal console', () => {
+  const archive = templeCampaignRoute({ origin: waiting, legacyGallery: true, restoreEvery: 317 });
+  const before = archive.transitions.find(t => t.before.room === 13 && t.after.room === 14).before;
+  const extension = before.depthsM017.extension;
+  assert(extension.gallery.screened);
+  assert(extension.observations['royal-lock']);
+  assert.equal(extension.royal, undefined);
+  assert.equal(p.soloV70DepthPostM017(before.room).plates, undefined);
   assert.equal(saves.parseSaveImport(saves.exportSave(archive.save)).failure, null);
 });

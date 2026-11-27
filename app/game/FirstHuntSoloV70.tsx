@@ -7,7 +7,7 @@ import { controlActionShortcut } from "./controlBindingLabels";
 import { type YouthArtBank } from "./youthTrainingRendering";
 import { GameAudio } from "./sound";
 import YautjaTranslationV67 from "./YautjaTranslationV67";
-import { SOLO_V70_GALLERY_M017, soloV70PurgeRemainingM017 } from "./systems/firstHuntSoloV70DepthsM017";
+import { SOLO_V70_GALLERY_M017, SOLO_V70_ROYAL_M017, soloV70RoyalStatusM017, soloV70PurgeRemainingM017 } from "./systems/firstHuntSoloV70DepthsM017";
 import { drawFirstHuntSoloV70, loadTempleArtV70 } from "./firstHuntSoloV70Rendering";
 import { normalizeSoloV70State, stepSoloV70, soloV70NeedsImmediateCheckpoint, soloV70Objective, soloV70Room, SOLO_V70_DEPTHS_M017, soloV70DepthDoorOpeningM017, type SoloV70State, type SoloV70Receipt, soloV70ReconnectionPreview, soloV70NefDeploymentM017 } from "./systems/firstHuntSoloV70";
 import styles from "./FirstHuntSoloV70.module.css";
@@ -70,7 +70,8 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
   useEffect(() => { audioRef.current?.setMix({ master: props.masterVolume ?? 1, effects: props.effectsVolume ?? 1, music: 0, muted: props.soundEnabled === false || !!props.externallyPaused || paused || pendingUi || !!artError || !bank }); }, [props.masterVolume, props.effectsVolume, props.soundEnabled, props.externallyPaused, paused, pendingUi, artError, bank]);
   useEffect(() => {
     let active = true;
-    loadTempleArtV70(Boolean(initial?.depthsM017?.extension), Boolean(initial?.depthsM017?.extension?.gallery)).then(result => { if (active) { setBank(result); setArtError(""); } }).catch(error => { if (active) { setBank(null); setArtError(error instanceof Error ? error.message : "Images indisponibles."); } });
+    loadTempleArtV70(Boolean(initial?.depthsM017?.extension), Boolean(initial?.depthsM017?.extension?.gallery),
+      Boolean(initial?.depthsM017?.extension?.royal)).then(result => { if (active) { setBank(result); setArtError(""); } }).catch(error => { if (active) { setBank(null); setArtError(error instanceof Error ? error.message : "Images indisponibles."); } });
     return () => { active = false; };
   }, [loadAttempt, initial]);
   useEffect(() => {
@@ -118,6 +119,9 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
           if (next.room !== prior.room || next.companionMode !== prior.companionMode || prior.liftTicks === 0 && next.liftTicks > 0 || next.valveTimer > prior.valveTimer || next.depthsM017?.relay !== prior.depthsM017?.relay || next.depthsM017?.huntThreshold !== prior.depthsM017?.huntThreshold) audio?.ui();
           if (prior.room === next.room && soloV70NefDeploymentM017(prior) !== null && soloV70NefDeploymentM017(next) === null) audio?.ui();
           if (next.drone.mode === "telegraph" && prior.drone.mode !== "telegraph") audio?.enemyAlert();
+          if (next.room === SOLO_V70_ROYAL_M017.room &&
+              soloV70RoyalStatusM017(next.depthsM017?.extension, next.tick)?.stage === "warning" &&
+              (prior.room !== next.room || soloV70RoyalStatusM017(prior.depthsM017?.extension, prior.tick)?.stage !== "warning")) audio?.enemyAlert();
           if (next.failedAt !== null && prior.failedAt === null) audio?.defeat();
           if (output.receipts.length) { pending.current = output; audio?.setMuted(true); setPendingUi(true); accumulated = 0; clear(); void submit(); break; }
           if (soloV70NeedsImmediateCheckpoint(prior, output.state)) {
@@ -149,7 +153,11 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
     finally { busy.current = false; if (mounted.current) setSaving(false); }
   };
   const objective = state ? soloV70Objective(state) : null;
-  const spoken = state?.phase === "briefing" ? "Saar et Vek entrent avec toi. Les outils ouvrent la route ; seules des chasses réelles et le retour des trois achèveront le rite." : state?.phase === "debrief" ? "Le drone de la vanne est tombé. Les profondeurs sont fermées, elles ne sont pas purgées. Nomme précisément ce qui reste." : state?.phase === "recognition" ? "Le clan reçoit votre ouverture. La reine et chaque chasse individuelle restent devant vous. Votre rang demeure Young Blood." : "";
+  const spoken = state?.phase === "briefing" ? "Saar et Vek entrent avec toi. Les outils ouvrent la route ; seules des chasses réelles et le retour des trois achèveront le rite." : state?.phase === "debrief" ? state.depthsM017?.extension?.royal && state.depthsM017.extension.observations["royal-lock"]
+    ? "La loge de la reine captive est isolée, la conduite est purgée et le seuil a été franchi ensemble. Nomme les chasses qui restent."
+    : "Le drone de la vanne est tombé. Les profondeurs sont fermées, elles ne sont pas purgées. Nomme précisément ce qui reste." : state?.phase === "recognition" ? state.depthsM017?.extension?.royal && state.depthsM017.extension.observations["royal-lock"]
+    ? "Le clan reçoit votre ouverture. La reine reste captive et chaque chasse individuelle reste à accomplir. Votre rang demeure Young Blood."
+    : "Le clan reçoit votre ouverture. La reine et chaque chasse individuelle restent devant vous. Votre rang demeure Young Blood." : "";
   const preview = state ? soloV70ReconnectionPreview(state) : null;
   const nefDeploying = state ? soloV70NefDeploymentM017(state) !== null : false;
   const modal = !state || !!artError || paused || pendingUi && !!saveError || state?.phase === "complete" && !pendingUi;
@@ -157,7 +165,10 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
   const depthOpening = state && state.room === SOLO_V70_DEPTHS_M017.descent.room ? soloV70DepthDoorOpeningM017(state) : null;
   const purgeRemaining = state && state.room === 14 ? soloV70PurgeRemainingM017(state) : 0;
   const extension = state?.depthsM017?.extension;
+  const royal = state?.room === SOLO_V70_ROYAL_M017.room ? soloV70RoyalStatusM017(extension, state.tick) : undefined;
   return <section className={styles.screen} data-solo-v70 data-solo-step={state?.phase ?? "invalid"}
+    data-temple-royal={royal?.stage}
+    data-temple-royal-remaining={royal && "remaining" in royal ? royal.remaining : undefined}
     data-temple-gallery={state?.room === SOLO_V70_GALLERY_M017.room && extension?.gallery
       ? extension.gallery.screened ? "screened" : extension.gallery.openedAt !== null ? "open"
         : extension.observations["eggs-observed"] ? "warning" : "dormant"
@@ -169,6 +180,8 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
     data-temple-nef={preview ? "warning" : nefDeploying ? "moving" : state?.reconnectionVariant && state.configuration >= 2 ? "deployed" : "off"} data-temple-threshold={state?.riteAdmission && (state.riteAdmission.threshold ? "triad-confirmed" : "pending")}>
     <header className={styles.header} inert={modal && !props.externallyPaused ? true : undefined}><strong>CAMPAGNE · TEMPLE DES TROIS OMBRES · ACTE I</strong><div><button type="button" onClick={pause} disabled={!state || pendingUi}>Pause</button><button type="button" onClick={() => setTouchUi(v => !v)} aria-pressed={touchUi}>Tactile</button></div></header>
     <div className={styles.objective}><h1>{objective?.title ?? "Checkpoint non pris en charge"}</h1><p>{objective?.instruction ?? "La partie est conservée. Aucun état neuf ne remplace ce checkpoint."}</p>{state && <div className={styles.measure}><span>{soloV70Room(state.room).name}</span><span>{soloV70Room(state.room).level} · Configuration {state.configuration}</span><span>Secteurs {state.visited.filter(Boolean).length}/{state.visited.length}</span><span>Vitalité {state.health}/6</span>{state.riteAdmission?.sealedEnergy && <span>3 émetteurs scellés</span>}{state.milestones['belvedere-serviced'] && <span>Belvédère · {state.belvedereLever ? 'mécanismes' : 'hauteurs'}</span>}{state.riteAdmission?.threshold && <span>{state.depthsM017 ? 'Vanne · 3/3' : 'Triade au seuil · 3/3'}</span>}{state.depthsM017?.huntThreshold && <span>Seuil de chasse · 3/3</span>}{saving && <span role="status">Enregistrement…</span>}</div>}</div>
+    {royal?.stage === "warning" && <p role="status">Le glyphe annonce un balayage au sol.</p>}
+    {royal?.stage === "strike" && <p role="status">Balayage. Gagne le couvert haut.</p>}
     {preview && <p data-temple-nef-countdown>Passerelles dans {Math.ceil(preview.remainingTicks / 60)} s.</p>}
     {!!purgeRemaining && <p role="status" data-temple-purge-countdown>Conduite ouverte · {Math.ceil(purgeRemaining / 60)} s.</p>}
     {!!depthOpening && <p role="status" data-temple-depth-countdown>Rotation du volet · {(depthOpening / 60).toFixed(1)} s.</p>}

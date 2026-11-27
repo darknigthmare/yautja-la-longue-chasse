@@ -1,5 +1,6 @@
 import { SOLO_V70_FULL_ROOMS_M017, SOLO_V70_DEPTH_POSTS_M017, SOLO_V70_PURGE_M017,
-  SOLO_V70_FINAL_THRESHOLD_M017, SOLO_V70_GALLERY_M017, soloV70GalleryThreatM017,
+  SOLO_V70_FINAL_THRESHOLD_M017, SOLO_V70_GALLERY_M017, SOLO_V70_ROYAL_M017,
+  soloV70GalleryThreatM017, soloV70RoyalInSweepM017, soloV70RoyalSweepM017,
   soloV70DepthPostM017, soloV70PurgeRemainingM017, soloV70DepthAppuisM017,
   type SoloV70DepthExtensionM017 } from './firstHuntSoloV70DepthsM017';
 
@@ -70,7 +71,7 @@ export const SOLO_V70_LOAN_RACK = { room: 3, x: 820 } as const;
 export const SOLO_V70_BELVEDERE = { room: 4, leverX: 680, exitX: 950, upperY: 270, lowerY: 430,
   plates: [530, 815], holdTicks: 36 } as const;
 export const soloV70PlateTargets = (s: Pick<SoloV70State, 'phase' | 'room' | 'depthsM017'>) =>
-  (s.depthsM017?.extension ? soloV70DepthPostM017(s.room)?.plates : undefined) ?? (
+  (s.depthsM017?.extension ? soloV70DepthPostM017(s.room, !!s.depthsM017.extension.royal)?.plates : undefined) ?? (
   s.room === SOLO_V70_DEPTHS_M017.descent.room ? SOLO_V70_DEPTHS_M017.descent.plates
   : s.phase === 'oath' ? [320, 730] as const
   : s.phase === 'belvedere' ? SOLO_V70_BELVEDERE.plates : [520, 920] as const);
@@ -144,7 +145,8 @@ function readTrioObservation(value: unknown, center: number, configuration: 1 | 
 export const soloV70ProofCount=(s:Pick<SoloV70State,'phase'>)=>SOLO_V70_PHASES.indexOf(s.phase);
 export const soloV70Receipts=(s:SoloV70State):SoloV70Receipt[]=>SOLO_V70_PROOFS.slice(0,soloV70ProofCount(s)).map(id=>({id,sourceId:'solo.temple-opening.v70',tick:s.milestones[id]!}));
 export function createSoloV70State(rooms: 9 | 11 | 15 = 9):SoloV70State {return {version:1,phase:'briefing',tick:0,phaseStartedAt:0,room:0,roomEnteredAt:0,walked:0,configuration:1,visited:Array.from({ length: rooms }, (_, index) => index === 0),player:{x:125,y:430,vx:0,vy:0,facing:1},companions:[{x:80},{x:65}],companionMode:'follow',signals:0,signs:0,scan:0,liftTicks:0,valveTimer:0,drone:{x:925,hp:5,mode:'watch',age:0,hits:0},health:6,hurtTimer:0,attackTimer:0,attackCooldown:0,acid:{x:925,ttl:0},failedAt:null,attempts:0,doorCrossings:0,lastDoor:null,inputArmed:false,previousJump:false,previousInteract:false,previousCommand:false,milestones:{},riteAdmission:{version:1,sealedEnergy:null,threshold:null},reconnectionVariant:2,...(rooms > 9 ? { depthsM017: { relay: null, huntThreshold: null,
-  ...(rooms === 15 ? { extension: { observations: {}, purgeStartedAt: null, gallery: { openedAt: null, screened: null } } } : {}) } } : {})};}
+  ...(rooms === 15 ? { extension: { observations: {}, purgeStartedAt: null,
+    gallery: { openedAt: null, screened: null }, royal: { startedAt: null, evade: null } } } : {}) } } : {})};}
 export function soloV70Platforms(s: SoloV70State): SoloV70Platform[] {
   const fixed: SoloV70Platform[] = soloV70Room(s.room).platforms.map(([x, y, width]) => ({
     x, y, width, ...(s.room >= SOLO_V70_DEPTHS_M017.descent.room ? { oneWay: true } : {}),
@@ -193,6 +195,8 @@ export function soloV70NeedsImmediateCheckpoint(a:SoloV70State,b:SoloV70State){r
   a.depthsM017?.extension?.purgeStartedAt!==b.depthsM017?.extension?.purgeStartedAt||
   a.depthsM017?.extension?.gallery?.openedAt!==b.depthsM017?.extension?.gallery?.openedAt||
   a.depthsM017?.extension?.gallery?.screened?.tick!==b.depthsM017?.extension?.gallery?.screened?.tick||
+  a.depthsM017?.extension?.royal?.startedAt!==b.depthsM017?.extension?.royal?.startedAt||
+  a.depthsM017?.extension?.royal?.evade?.tick!==b.depthsM017?.extension?.royal?.evade?.tick||
   SOLO_V70_DEPTH_POSTS_M017.some(({id})=>a.depthsM017?.extension?.observations[id]?.tick!==b.depthsM017?.extension?.observations[id]?.tick)||
   a.depthsM017?.relay?.tick!==b.depthsM017?.relay?.tick||a.depthsM017?.huntThreshold?.tick!==b.depthsM017?.huntThreshold?.tick||(a.room===b.room&&soloV70NefDeploymentM017(a)!==null&&soloV70NefDeploymentM017(b)===null);}
 export function normalizeSoloV70State(v:unknown):SoloV70State|null{
@@ -247,11 +251,13 @@ export function normalizeSoloV70State(v:unknown):SoloV70State|null{
     let extension: SoloV70DepthExtensionM017 | undefined;
     if (fullRoute) {
       const proof = raw.extension;
-      if (!record(proof) || Object.keys(proof).length !== (Object.hasOwn(proof, 'gallery') ? 3 : 2) ||
-          !record(proof.observations)) return null;
+      if (!record(proof) || !record(proof.observations)) return null;
+      const hasGallery = Object.hasOwn(proof, 'gallery'), hasRoyal = Object.hasOwn(proof, 'royal');
+      if (hasRoyal && !hasGallery || Object.keys(proof).length !== 2 + Number(hasGallery) + Number(hasRoyal)) return null;
       const observations: SoloV70DepthExtensionM017['observations'] = {};
       let elapsedFrom = relay ? relay.tick + descent.openingTicks : v.tick;
-      for (const post of SOLO_V70_DEPTH_POSTS_M017) {
+      for (const candidate of SOLO_V70_DEPTH_POSTS_M017) {
+        const post = soloV70DepthPostM017(candidate.room, hasRoyal)!;
         const value = proof.observations[post.id];
         if (value === undefined) {
           if (visited[post.room + 1]) return null;
@@ -288,10 +294,33 @@ export function normalizeSoloV70State(v:unknown):SoloV70State|null{
             resin && (!screened || resin.tick < screened.tick + SOLO_V70_DEPTH_POSTS_M017[1].holdTicks)) return null;
         gallery = { openedAt, screened };
       }
-      extension = { observations, purgeStartedAt, ...(gallery ? { gallery } : {}) };
+      let royal: SoloV70DepthExtensionM017['royal'];
+      if (hasRoyal) {
+        const rawRoyal = proof.royal, { room, coverY, warningTicks } = SOLO_V70_ROYAL_M017;
+        const screen = observations['containment-screen'];
+        if (!record(rawRoyal) || Object.keys(rawRoyal).length !== 2) return null;
+        let startedAt: number | null = null;
+        if (rawRoyal.startedAt !== null) {
+          if (!screen || !visited[room] || !int(rawRoyal.startedAt, screen.tick + 1, v.tick)) return null;
+          startedAt = rawRoyal.startedAt;
+        }
+        let evade: NonNullable<SoloV70DepthExtensionM017['royal']>['evade'] = null;
+        if (rawRoyal.evade !== null) {
+          const mark = rawRoyal.evade;
+          if (!record(mark) || Object.keys(mark).length !== 3 || startedAt === null ||
+              !int(mark.tick, startedAt + warningTicks, v.tick) || !finite(mark.x, 65, 1055) ||
+              !finite(mark.y, 130, coverY) || !soloV70RoyalInSweepM017(mark.x) ||
+              soloV70RoyalSweepM017(startedAt, mark.tick).stage !== 'strike') return null;
+          evade = { tick: mark.tick, x: mark.x, y: mark.y };
+        }
+        if (lock && (!evade || lock.tick < evade.tick + soloV70DepthPostM017(room)!.holdTicks)) return null;
+        royal = { startedAt, evade };
+      }
+      extension = { observations, purgeStartedAt, ...(gallery ? { gallery } : {}), ...(royal ? { royal } : {}) };
     }
-    const post = extension && soloV70DepthPostM017(v.room);
-    const plates = post && !extension?.observations[post.id] && post.plates;
+    const post = extension && soloV70DepthPostM017(v.room, !!extension.royal);
+    const royalPending = post?.id === 'royal-lock' && extension?.royal && !extension.royal.evade;
+    const plates = post && !royalPending && !extension?.observations[post.id] && post.plates;
     if (post && v.scan) {
       const purgeComplete = extension?.observations['vent-purge'];
       const valveAt = extension?.purgeStartedAt;
@@ -303,7 +332,7 @@ export function normalizeSoloV70State(v:unknown):SoloV70State|null{
         : screening ? SOLO_V70_GALLERY_M017 : post;
       const hold = post.id === 'vent-purge' || screening || !extension?.observations[post.id];
       const party = (v.companions as { x: number }[]).map(companion => companion.x);
-      if (!hold || huntThreshold || (v.scan as number) >= target.holdTicks || Math.abs((a.x as number) - target.x) >= 38 ||
+      if (!hold || royalPending || huntThreshold || (v.scan as number) >= target.holdTicks || Math.abs((a.x as number) - target.x) >= 38 ||
           a.vx !== 0 || a.y !== target.y || (plates
             ? v.companionMode !== 'plates' || !soloV70DepthAppuisM017(party, plates)
             : target !== SOLO_V70_PURGE_M017 && party.some(x => Math.abs(x - (a.x as number)) >= 185))) return null;
@@ -349,7 +378,8 @@ export function stepSoloV70(state:SoloV70State,input:SoloV70Input,env:SoloV70Env
  const s:SoloV70State={...state,...(state.depthsM017 ? { depthsM017: { ...state.depthsM017,
   ...(state.depthsM017.extension ? { extension: { ...state.depthsM017.extension,
     observations: { ...state.depthsM017.extension.observations },
-    ...(state.depthsM017.extension.gallery ? { gallery: { ...state.depthsM017.extension.gallery } } : {}) } } : {}) } } : {}),...(state.riteAdmission ? { riteAdmission: { ...state.riteAdmission } } : {}),player:{...state.player},companions:state.companions.map(c=>({...c})) as SoloV70State['companions'],drone:{...state.drone},acid:{...state.acid},visited:[...state.visited],milestones:{...state.milestones}},receipts:SoloV70Receipt[]=[];
+    ...(state.depthsM017.extension.gallery ? { gallery: { ...state.depthsM017.extension.gallery } } : {}),
+    ...(state.depthsM017.extension.royal ? { royal: { ...state.depthsM017.extension.royal } } : {}) } } : {}) } } : {}),...(state.riteAdmission ? { riteAdmission: { ...state.riteAdmission } } : {}),player:{...state.player},companions:state.companions.map(c=>({...c})) as SoloV70State['companions'],drone:{...state.drone},acid:{...state.acid},visited:[...state.visited],milestones:{...state.milestones}},receipts:SoloV70Receipt[]=[];
  if(!env.assetsReady||!env.pageVisible||env.paused||s.phase==='complete'){s.inputArmed=false;s.previousJump=s.previousInteract=s.previousCommand=false;return {state:s,receipts};}
  if(!s.inputArmed){if(!input.move&&!input.jump&&!input.interact&&!input.command)s.inputArmed=true;return {state:s,receipts};}
  const jump=!!input.jump&&!s.previousJump,interact=!!input.interact&&!s.previousInteract,command=!!input.command&&!s.previousCommand;s.previousJump=!!input.jump;s.previousInteract=!!input.interact;s.previousCommand=!!input.command;s.tick++;
@@ -373,8 +403,10 @@ export function stepSoloV70(state:SoloV70State,input:SoloV70Input,env:SoloV70Env
  const scan=(condition:boolean,ticks:number)=>{s.scan=condition?s.scan+1:0;return s.scan>=ticks;};
  const { descent } = SOLO_V70_DEPTHS_M017;
  const extension = s.depthsM017?.extension;
- const currentPost = extension && s.phase === 'return' ? soloV70DepthPostM017(s.room) : undefined;
- const pendingPost = currentPost && !extension?.observations[currentPost.id] ? currentPost : undefined;
+ const royal = extension?.royal;
+ const currentPost = extension && s.phase === 'return' ? soloV70DepthPostM017(s.room, !!royal) : undefined;
+ const royalPending = currentPost?.id === 'royal-lock' && royal && !royal.evade;
+ const pendingPost = currentPost && !royalPending && !extension?.observations[currentPost.id] ? currentPost : undefined;
  const atDepthRelay = s.phase === 'return' && s.room === descent.room && s.depthsM017 && !s.depthsM017.relay;
  if(command&&(atDepthRelay||pendingPost?.plates||s.phase==='oath'||s.phase==='separation'&&!s.nefRelayM017||s.phase==='belvedere'&&s.room===SOLO_V70_BELVEDERE.room&&!s.belvedereLever)){s.companionMode=s.companionMode==='follow'?'plates':'follow';s.signals++;}
  if(s.phase==='briefing'&&s.room===0&&near(160)&&interact)proof('briefed','ascent');
@@ -456,6 +488,18 @@ export function stepSoloV70(state:SoloV70State,input:SoloV70Input,env:SoloV70Env
       s.companionMode = 'follow';
       s.scan = 0;
     }
+  } else if (royalPending && royal) {
+    const { x, y, coverY } = SOLO_V70_ROYAL_M017;
+    if (royal.startedAt === null) {
+      if (interact && !a.vx && near(x, y) && soloV70TrioPresent(s)) royal.startedAt = s.tick;
+    } else if (soloV70RoyalSweepM017(royal.startedAt, s.tick).stage === 'strike' && soloV70RoyalInSweepM017(a.x)) {
+      if (a.y <= coverY) royal.evade = { tick: s.tick, x: a.x, y: a.y };
+      else if (!s.hurtTimer) {
+        s.health--;
+        s.hurtTimer = 75;
+        if (!s.health) s.failedAt = s.tick;
+      }
+    }
   } else if (pendingPost && extension) {
     const armed = soloV70PurgeRemainingM017(s);
     if (pendingPost.id === 'vent-purge' && !armed) {
@@ -509,7 +553,16 @@ export function soloV70Objective(s:SoloV70State):{title:string;instruction:strin
  const { descent } = SOLO_V70_DEPTHS_M017;
  const gateOpening = soloV70DepthDoorOpeningM017(s);
  const extension = s.depthsM017?.extension;
- const post = extension && SOLO_V70_DEPTH_POSTS_M017.find(candidate => !extension.observations[candidate.id]);
+ const firstPost = extension && SOLO_V70_DEPTH_POSTS_M017.find(candidate => !extension.observations[candidate.id]);
+ const post = firstPost && soloV70DepthPostM017(firstPost.room, !!extension?.royal);
+ const royal = extension?.royal;
+ const royalGoal: [string, string, number, number, number] | null =
+   royal && post?.id === 'royal-lock' && !royal.evade
+     ? ['Nef de la Reine · balayage',
+       royal.startedAt === null ? 'Réunis Saar et Vek au repère bas. Interagis pour provoquer le mouvement de la reine captive.'
+         : 'Quand le glyphe s’allume, saute ou prends le couvert haut au-dessus de la zone annoncée.',
+       SOLO_V70_ROYAL_M017.room, SOLO_V70_ROYAL_M017.x, SOLO_V70_ROYAL_M017.y]
+     : null;
  const valve: [string, string, number, number, number] | null = post?.id === 'vent-purge' && !soloV70PurgeRemainingM017(s)
    ? ['Ouvrir la conduite du sas', 'Maintiens Interaction à la commande amont. Le glyphe indique le temps avant fermeture.', post.room, SOLO_V70_PURGE_M017.x, SOLO_V70_PURGE_M017.y]
    : null;
@@ -527,7 +580,7 @@ export function soloV70Objective(s:SoloV70State):{title:string;instruction:strin
      ? ['Descente des Contrepoids', 'Donne le Signal pour placer Saar et Vek sur leurs plaques. Depuis la passerelle, maintiens Interaction au pupitre jusqu’au mouvement du volet.', descent.room, descent.x, descent.y]
      : gateOpening
        ? ['Volet de la Galerie', 'Le glyphe annonce la rotation du volet. Rassemble Saar et Vek près de la porte pendant son ouverture.', descent.room, 1040, 430]
-       : hatchGoal ?? valve ?? (post ? [post.label, post.instruction, post.room, post.x, post.y]
+       : hatchGoal ?? royalGoal ?? valve ?? (post ? [post.label, post.instruction, post.room, post.x, post.y]
          : [extension ? 'Sas de Purge · seuil de chasse' : 'Galerie des Coques · seuil de chasse',
            'Rejoins le glyphe aval avec Saar et Vek, puis maintiens Interaction pour inscrire vos trois présences.', threshold.room, threshold.x, 430]);
  const goals:Record<SoloV70Phase,[string,string,number,number,number]>={
