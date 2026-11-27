@@ -1,13 +1,13 @@
-name: Play the M029 Homeworld pack crossing and return
+name: Play the M029 Homeworld pack, quay and Leader appointment
 on:
   push:
-    branches: [codex/qa-bible-m029-pack-20261127]
+    branches: [codex/qa-bible-m029-leader-20261127]
 permissions:
   contents: read
 jobs:
   browser:
     runs-on: ubuntu-24.04
-    timeout-minutes: 23
+    timeout-minutes: 28
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
@@ -54,7 +54,7 @@ jobs:
           npm ci --ignore-scripts --no-audit --no-fund
           M029_ADMISSION_ONLY=1 node scripts/qa-homeworld-pack-m029.mjs
           node scripts/build-production-v94.mjs
-      - name: Use the native Homeworld to bring all 12 pupils out and back
+      - name: Use the native Homeworld to bring all 12 pupils back and qualify the Leader appointment
         run: |
           mkdir -p "$YAUTJA_M029_QA_OUTPUT"
           node node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 4398 > "$YAUTJA_M029_QA_OUTPUT"/server.log 2>&1 &

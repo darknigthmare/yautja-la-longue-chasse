@@ -5350,7 +5350,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   if (!change.ok) { setToast(kennelRefusalTextV147(change.reason)); return false; }
                   return persistSocialProgress({ houndsV147: change.state });
                 }}
-                onProgress={persistHomeworldProgress} onService={openHomeworldService} onYouthTraining={enterYouthTraining} onSoloV66={enterSoloV66} onSoloV67={enterSoloV67} onSoloV68={enterSoloV68} onSoloV69={enterSoloV69} onSoloV70={enterSoloV70} onSoloV90={enterSoloV90} onRegionV68={openHomeworldRegionV68} onMinorArcsV160={persistMinorArcsV160}
+                onProgress={persistHomeworldProgress} onAdjutantAppointment={(homeworld, prologue) => persistSocialProgress({ homeworld, prologue })} onService={openHomeworldService} onYouthTraining={enterYouthTraining} onSoloV66={enterSoloV66} onSoloV67={enterSoloV67} onSoloV68={enterSoloV68} onSoloV69={enterSoloV69} onSoloV70={enterSoloV70} onSoloV90={enterSoloV90} onRegionV68={openHomeworldRegionV68} onMinorArcsV160={persistMinorArcsV160}
                 onReturnShip={() => go("deck")} onExpedition={openHomeworldExpedition} onNotify={setToast} />
               </ClanPaletteContextV146.Provider>
             </div>

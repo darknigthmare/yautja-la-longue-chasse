@@ -207,6 +207,69 @@ async function boot() {
   indoorNav = homeworldNavigatorV77(page, api, { waypointTolerance: 3, driverTickMs: 26, pulseInputs: true });
   await nav.focus();
 }
+
+async function appointAtNativePosts() {
+  const initial = await disk();
+  const advance = async (station, name, phase) => {
+    const desk = page.locator("[data-adjutant-m029-station=" + station + "]");
+    await desk.getByRole("button", { name, exact: true }).press("Enter");
+    await nav.tick(120);
+    const state = await disk();
+    assert.equal(state.homeworld.adjutantM029?.phase, phase);
+    report.checks.push({ action: name, phase, room: await nav.room(), position: await nav.position() });
+    return state;
+  };
+
+  await openNativePoint("dock-officer-point");
+  await advance("dock", "Étudier le dossier du convoi", "dossier");
+  await capture("03-dock-record.png");
+  await nav.closeDialog();
+
+  const workshop = api.homeworldInteriorForBuildingV64("convoy-workshop");
+  await walkNativeTo(workshop, "support du relais", point => Math.hypot(point.x - 225, point.y - 205) <= 17);
+  await page.keyboard.press("KeyE");
+  await indoorNav.tick(160);
+  assert.equal((await disk()).homeworld.adjutantM029.phase, "relay");
+  report.checks.push({ action: "relay physically placed", room: await nav.room(), position: await nav.position() });
+  await nav.exitRoom();
+
+  const point = api.HOMEWORLD_POINTS_V77.find(candidate => candidate.id === "personal-ship");
+  assert.equal(await nav.floor(), point.levelId);
+  const start = await nav.position();
+  const candidates = [0, 40, 80, 115].flatMap(offset =>
+    [[0, offset], [offset, 0], [-offset, 0], [0, -offset]].map(([dx, dy]) => ({ x: point.x + dx, y: point.y + dy })));
+  const approach = candidates.find(candidate => api.homeworldWalkableV77(point.levelId, candidate) &&
+    !api.nearestHomeworldDoorV77(point.levelId, candidate) &&
+    !api.nearestHomeworldConnectorV77(point.levelId, candidate) &&
+    api.nearestHomeworldPointV77(point.levelId, candidate)?.id === point.id &&
+    api.homeworldWalkRouteV109(point.levelId, start, candidate).status === "reachable");
+  assert.ok(approach, "Existing way to the transfer sas");
+  await nav.reach({ levelId: point.levelId, point: approach });
+  await page.keyboard.press("KeyE");
+  await nav.tick(160);
+  await advance("sas", "Relayer le signal au convoi", "reported");
+  await nav.closeDialog();
+
+  await openNativePoint("audience-point");
+  const deferred = await advance("leader", "Différer la nomination", "deferred");
+  assert.deepEqual(deferred.prologue.chronicle, initial.prologue.chronicle);
+  await capture("04-leader-deferred.png");
+  report.routes.push(...nav.routes);
+  await boot();
+  await openNativePoint("audience-point");
+  const accepted = await advance("leader", "Accepter la fonction d’Adjutant", "appointed");
+  assert.equal(chronicles.getChronicleRank(accepted.prologue.chronicle), "blooded");
+  assert.deepEqual(chronicles.getChronicleFunctions(accepted.prologue.chronicle), ["adjutant"]);
+  assert.ok(accepted.prologue.chronicle.evidence.some(entry => entry.id === "team-extraction"));
+  assert.deepEqual(accepted.homeworld.packTrialM029, initial.homeworld.packTrialM029);
+  assert.equal(accepted.profile.honor, initial.profile.honor);
+  await capture("05-leader-accepted.png");
+  report.routes.push(...nav.routes);
+  await boot();
+  const reloaded = await disk();
+  assert.deepEqual(reloaded.homeworld.adjutantM029.events, ["study", "place-relay", "confirm-signal", "defer", "accept"]);
+  assert.deepEqual(chronicles.getChronicleFunctions(reloaded.prologue.chronicle), ["adjutant"]);
+}
 const scene = () => page.locator("[data-homeworld-pack-m029]");
 const button = command => scene().locator("[data-homeworld-pack-action-m029=" + command + "]");
 const act = async command => {
@@ -273,6 +336,7 @@ try {
   assert.deepEqual(final.prologue.chronicle, initial.prologue.chronicle);
   assert.deepEqual(final.inventory, initial.inventory);
   assert.equal(final.profile.honor, initial.profile.honor);
+  await appointAtNativePosts();
   assert.deepEqual(report.pageErrors, []);
   report.passed = true;
 } catch (error) {
