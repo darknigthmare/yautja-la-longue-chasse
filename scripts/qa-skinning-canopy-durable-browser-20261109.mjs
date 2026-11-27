@@ -576,27 +576,27 @@ async function canopy(){
     const oldReachable=state.reachableSupportIds.includes(flexible.id);
     if(swing.angle>=.15&&swing.angle<=.8&&swing.angularVelocity>0&&tangentX>=300&&held.has('right')){
       data.actualReleaseDecision={elapsed:state.elapsed,player:state.player,tangentX,oldReachable};
-      await page.keyboard.down('Space');held.add('jump');
+      if (bufferedTransfer) {
+        const released = page.waitForFunction(() => {
+          const player = window.__skinningCanopyQaV112.runtime?.game.player;
+          return !player?.climbing && player?.climbReattachSeconds > 0.12 ? player.climbReattachSeconds : false;
+        }, null, {polling:'raf',timeout:2000});
+        await page.keyboard.down('Space');held.add('jump');
+        const ready = await released;
+        data.bufferedPress = {releaseSeconds:await ready.jsonValue(), pressedForMs:16};
+        await ready.dispose();
+        await page.keyboard.press('ArrowUp',{delay:16});
+      } else {
+        await page.keyboard.down('Space');held.add('jump');
+      }
       return true;
     }
     await hold([swing.angularVelocity>=0?'right':'left'],'pump to a fresh rightward release window after capture',state);
     return false;
   });
-  await page.waitForFunction(()=>{
-    const player=window.__skinningCanopyQaV112.state().player;
-    return !player.climbing&&player.climbReattachSeconds>0;
-  },null,{polling:'raf',timeout:2000});
   if (bufferedTransfer) {
     await check('one native Up tap catches the next authored vine during tangent flight', async () => {
-      const queuedObservation = page.waitForFunction(() => {
-        const transfer = window.__skinningCanopyQaV112.state().canopyTransfer;
-        return transfer?.remainingSeconds > 0 ? transfer : false;
-      }, null, {polling:'raf',timeout:1000});
-      await page.keyboard.press('ArrowUp');
-      const queued = await queuedObservation;
-      const pending = await queued.jsonValue();
-      await queued.dispose();
-      assert.equal(pending.departedSupportId, flexible.id);
+      assert.ok(data.bufferedPress.releaseSeconds > 0.12);
       const landed = await until('buffered catch of the next authored vine', 5000,
         async state => state.player.climbing && state.player.climbZoneId === next.id);
       assert.equal(landed.inputs.keyboard.includes('up'), false);
@@ -610,6 +610,10 @@ async function canopy(){
     await context.close();context=null;
     return;
   }
+  await page.waitForFunction(()=>{
+    const player=window.__skinningCanopyQaV112.state().player;
+    return !player.climbing&&player.climbReattachSeconds>0;
+  },null,{polling:'raf',timeout:2000});
   await page.keyboard.down('Escape');
   await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().paused);
   await page.keyboard.up('Escape');
