@@ -45,6 +45,7 @@ import {
   tribunalVersionStatusV147, type RecordInfractionInputV147, type TribunalActionResultV147, type TribunalActionV147,
 } from "./systems/honorTribunalV147";
 import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/homeworld";
+import { triadCityMatchesSaveM016, triadCityMatchesWriteM016 } from "./systems/homeworldTriadM016";
 import {normalizeCntlipLedgerV77} from './systems/cntlipLedgerV77';
 import {homeworldCntlipEligibleV77} from './systems/homeworldCntlipPhysicalV77';
 import {inspectHomeworldCheckpointV77} from './systems/homeworldCheckpointV77';
@@ -2129,6 +2130,9 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const childhood = save.homeworld.childhoodV175;
   if (selectedChildhood !== undefined && (!childhood || childhood.ownerCreatedAt !== save.createdAt ||
       !hasChildhoodFoundationV175(save))) return { save: null, failure: "invalid-save" };
+  const triadCity = isRecord(value.homeworld) ? value.homeworld.triadCityM016 : undefined;
+  if (isRecord(triadCity) && Number(triadCity.version) > 1) return { save: null, failure: "future-version" };
+  if (triadCity !== undefined && !triadCityMatchesSaveM016(save)) return { save: null, failure: "invalid-save" };
   const regionalLoop = isRecord(value.homeworld) ? value.homeworld.regionalLoopM014 : undefined;
   if (isFutureRegionalLoopM014(regionalLoop)) return { save: null, failure: "future-version" };
   if (regionalLoop !== undefined && (!save.homeworld.regionalLoopM014 || !regionalLoopMatchesSaveM014(save))) {
@@ -2334,6 +2338,7 @@ function persistCampaign(
       const nextChildhood = requested.homeworld.childhoodV175;
       if (JSON.stringify(previousChildhood ?? null) !== JSON.stringify(nextChildhood ?? null) &&
           !isChildhoodSuccessorV175(previousChildhood, nextChildhood)) return failed("save-conflict", previous);
+      if (!triadCityMatchesWriteM016(previous, requested)) return failed("save-conflict", previous);
       if (!isRegionalLoopSuccessorM014(previous, requested)) {
         return failed("save-conflict", previous);
       }
