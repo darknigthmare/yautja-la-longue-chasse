@@ -12,7 +12,7 @@ function action(save, order) {
 const state = save => save.originV151.cohortRaceO6;
 const jump = (save, x, direction = 1) => action(save, { type: "jump", x, direction });
 function climb(save, choice = "lead") {
-  save = action(save, { type: "choose", x: n.COHORT_RALLY_X_O6, choice });
+  save = action(save, { type: "choose", x: n.COHORT_CHOICE_POSTS_O6[choice], choice });
   save = jump(save, p.start.launch);
   assert.equal(n.cohortRaceViewO6(state(save)).platform, "lower");
   save = jump(save, p.lower.launch);

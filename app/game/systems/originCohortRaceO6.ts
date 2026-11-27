@@ -3,7 +3,9 @@ import { firstShockDepartedO6, type FirstShockRecordO6 } from "./originFirstShoc
 import { atCohortPlatformO6, COHORT_COURSE_O6, COHORT_RALLY_X_O6, COHORT_SIGNAL_WAIT_O6,
   simulateCohortJumpO6, type CohortJumpO6, type CohortPlatformO6 } from "./cohortRaceCourseO6";
 
-type ChoiceO6 = "lead" | "observe";
+const posts = { lead: 188, observe: 124 } as const;
+type ChoiceO6 = keyof typeof posts;
+export const COHORT_CHOICE_POSTS_O6 = posts;
 type PartnerO6 = "yena" | "tov" | "harek";
 type OpeningO6 = Pick<FirstShockRecordO6, "choice" | "success" | "assisted">;
 type SignalO6 = { type: "signal"; x: number; elapsed: number };
@@ -126,6 +128,11 @@ export function mayWaitCohortSignalO6(record: CohortRaceRecordO6, x: number) {
   const view = cohortRaceViewO6(record);
   return view.stage === "upper" && !view.signalled && signalZone(x);
 }
+export function atCohortChoiceO6(x: number): ChoiceO6 | null {
+  if (!atCohortPlatformO6("start", x)) return null;
+  if (close(x, posts.lead, 16)) return "lead";
+  return close(x, posts.observe, 16) ? "observe" : null;
+}
 export function atCohortRallyO6(x: number) { return rallyZone(x); }
 export function atCohortHelpO6(x: number) { return finishZone(x); }
 
@@ -181,7 +188,7 @@ function play(record: CohortRaceRecordO6, order: CohortRaceOrderO6) {
   if (record.resolved || !Number.isInteger(order.x)) return null;
   const view = cohortRaceViewO6(record);
   if (order.type === "choose") {
-    return view.stage === "choice" && rallyZone(order.x) && (order.choice === "lead" || order.choice === "observe")
+    return view.stage === "choice" && atCohortChoiceO6(order.x) === order.choice
       ? derive({ ...record, choice: order.choice }) : null;
   }
   if (order.type === "retry" || order.type === "partial") {
@@ -209,7 +216,7 @@ export function keepsCohortRaceO6(previous: SaveGame, next: SaveGame) {
   if (!after || !cohortRaceMatchesSaveO6(next)) return false;
   if (identical(before, after)) return true;
   const meaningful = after.roundsLost > before.roundsLost ? after.lastFall?.at(-1) : after.round.at(-1);
-  const order = !before.choice && after.choice ? { type: "choose" as const, x: COHORT_RALLY_X_O6, choice: after.choice } :
+  const order = !before.choice && after.choice ? { type: "choose" as const, x: posts[after.choice], choice: after.choice } :
     before.rally ? { type: after.outcome === "partial" ? "partial" as const : "retry" as const, x: COHORT_RALLY_X_O6 } : meaningful;
   return !!order && identical(play(before, order), after);
 }

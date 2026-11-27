@@ -2,7 +2,7 @@ import { NURSERY_OPENING, nurseryOpeningNetX, nurseryOpeningWindow } from "./sys
 import { getNurseryPresentation, NURSERY_ARENA, type NurseryActorId, type NurseryPresentation, type NurseryState } from "./systems/nurseryPrologue";
 import { FIRST_SHOCK_HAREK_O6, firstShockCourtO6, type FirstShockRecordO6 } from "./systems/originFirstShockO6";
 import { COHORT_COURSE_O6, COHORT_RALLY_X_O6 } from "./systems/cohortRaceCourseO6";
-import { cohortRaceViewO6, type CohortRaceRecordO6 } from "./systems/originCohortRaceO6";
+import { COHORT_CHOICE_POSTS_O6, cohortRaceViewO6, type CohortRaceRecordO6 } from "./systems/originCohortRaceO6";
 import { NURSERY_COHORT_STOPS, NURSERY_COHORT_RADIUS } from "./systems/nurseryCohortV172";
 import { NURSERY_CONTINUITY_V72 } from "./systems/nurseryContinuityV72";
 import { YOUTH_ART_MANIFEST } from "./youthArtManifest";
@@ -547,7 +547,7 @@ export function drawCohortRaceO6(ctx: CanvasRenderingContext2D, checkpoint: Nurs
       ? { x: 779, y: finish.y } : (stage === "upper" && signalPartner === "yena" ? { x: 518, y: upper.y } : { x: 348, y: lower.y }),
     tov: group ? { x: 217, y: floor } : { x: signalPartner === "tov" ? 518 : 452, y: upper.y },
     harek: group ? { x: 137, y: floor } : stage === "finish" && helpPartner === "harek"
-      ? { x: 779, y: finish.y } : { x: record.opening.success ? 211 : 137, y: floor },
+      ? { x: 779, y: finish.y } : { x: record.opening.success && record.choice === "observe" ? 211 : 137, y: floor },
   };
   const roster = [
     { key: "yena", label: "Yena", id: "rival", tint: "sepia(.38) hue-rotate(13deg)" },
@@ -572,10 +572,17 @@ export function drawCohortRaceO6(ctx: CanvasRenderingContext2D, checkpoint: Nurs
     ctx.fillStyle = "#f5d59b";
     ctx.fillText(label, x, y);
   }
-  const markerX = group ? COHORT_RALLY_X_O6 : COHORT_COURSE_O6[platform].launch;
   const markerY = COHORT_COURSE_O6[platform].y;
+  const markers = stage === "choice" ? [COHORT_CHOICE_POSTS_O6.observe, COHORT_CHOICE_POSTS_O6.lead]
+    : [stage === "rally" ? COHORT_RALLY_X_O6 : COHORT_COURSE_O6[platform].launch];
   ctx.fillStyle = "#ffe6a1";
-  ctx.beginPath(); ctx.ellipse(markerX, markerY + 1, 8, 3, 0, 0, Math.PI * 2); ctx.fill();
+  for (const x of markers) {
+    ctx.beginPath(); ctx.ellipse(x, markerY + 1, 8, 3, 0, 0, Math.PI * 2); ctx.fill();
+  }
+  if (stage === "choice") {
+    ctx.fillText("Arrière", COHORT_CHOICE_POSTS_O6.observe, markerY + 18);
+    ctx.fillText("Tête", COHORT_CHOICE_POSTS_O6.lead, markerY + 18);
+  }
   ctx.restore();
 }
 

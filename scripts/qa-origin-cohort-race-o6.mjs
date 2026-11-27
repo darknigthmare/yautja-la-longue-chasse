@@ -107,7 +107,7 @@ try {
     });
     assert.ok(pixels > 100, "The native backdrop, bags and younglings are drawn.");
     if (legacy) assert.match(await course.innerText(), /corde de sécurité/);
-    await walk(course, n.COHORT_RALLY_X_O6);
+    await walk(course, n.COHORT_CHOICE_POSTS_O6[legacy ? "observe" : "lead"]);
     await named(course, legacy ? "Observer depuis l’arrière" : "Prendre la tête").click();
     await firstTwoJumps();
 

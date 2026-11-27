@@ -9,7 +9,7 @@ import { NURSERY_CONTROL_ACTIONS, sampleNurseryControls } from "./systems/nurser
 import { NURSERY_ARENA, type NurseryState } from "./systems/nurseryPrologue";
 import { COHORT_COURSE_O6, COHORT_SIGNAL_WAIT_O6, simulateCohortJumpO6, walkCohortPlatformO6,
   type CohortDirectionO6, type CohortJumpO6, type CohortPlatformO6 } from "./systems/cohortRaceCourseO6";
-import { atCohortHelpO6, atCohortRallyO6, cohortRaceViewO6, mayWaitCohortSignalO6,
+import { atCohortChoiceO6, atCohortHelpO6, atCohortRallyO6, cohortRaceViewO6, mayWaitCohortSignalO6,
   type CohortRaceOrderO6, type CohortRaceRecordO6 } from "./systems/originCohortRaceO6";
 import styles from "./OriginFirstShockO6.module.css";
 
@@ -17,11 +17,14 @@ const names = { yena: "Yena", tov: "Tov", harek: "Harek" } as const;
 
 function instructions(record: CohortRaceRecordO6, view: ReturnType<typeof cohortRaceViewO6>) {
   switch (view.stage) {
-    case "choice": return !record.opening.success
-      ? "Après le dernier appui manqué, Harek reste au rassemblement. Yena a posé une corde de sécurité pour la première manche."
-      : record.opening.choice === "listen-harek"
-        ? "Harek te montre le poste d’observation dont il t’a parlé au filet. Tov vérifiera l’atterrissage."
-        : "Le geste repris avec Saar sert à lire le balancement. Yena prend le premier sac et Tov surveille l’atterrissage.";
+    case "choice": {
+      const call = !record.opening.success
+        ? "Après le dernier appui manqué, Harek reste au rassemblement. Yena a posé une corde de sécurité."
+        : record.opening.choice === "listen-harek"
+          ? "Harek montre le poste d’observation décrit au filet. Tov surveille l’atterrissage."
+          : "Le geste repris avec Saar sert à lire le balancement. Yena prend le premier sac et Tov surveille l’atterrissage.";
+      return call + " Le repère avant mène la course. Le repère arrière permet d’observer.";
+    }
     case "start": return record.choice === "lead"
       ? "Yena · « Ouvre le passage. Prends ton élan au repère du premier sac. »"
       : "Harek · « Reste derrière moi. Depuis la marque, observe où le premier sac porte le poids. »";
@@ -62,7 +65,8 @@ export default function OriginCohortRaceO6({ checkpoint, record, bindings, pause
   const canWalk = ready && !flight;
   const canJump = view.stage === "start" || view.stage === "lower" || view.stage === "upper";
   const canWait = canWalk && mayWaitCohortSignalO6(record, x);
-  const canGather = atCohortRallyO6(x) && (view.stage === "choice" || view.stage === "rally");
+  const post = view.stage === "choice" ? atCohortChoiceO6(x) : null;
+  const canGather = view.stage === "rally" && atCohortRallyO6(x);
   const canHelp = view.stage === "finish" && atCohortHelpO6(x);
 
   useEffect(() => {
@@ -198,11 +202,11 @@ export default function OriginCohortRaceO6({ checkpoint, record, bindings, pause
         <button type="button" aria-label="Marcher à gauche" disabled={!canWalk} onClick={() => walk(-1)}>←</button>
         <button type="button" aria-label="Marcher à droite" disabled={!canWalk} onClick={() => walk(1)}>→</button>
         {canJump && <button type="button" disabled={!canWalk} onClick={() => launch()}>Sauter</button>}
-        {canGather && view.stage === "choice" && <>
-          <button type="button" disabled={!canWalk} onClick={() => onOrder({ type: "choose", choice: "lead", x })}>Prendre la tête</button>
-          <button type="button" disabled={!canWalk} onClick={() => onOrder({ type: "choose", choice: "observe", x })}>Observer depuis l’arrière</button>
-        </>}
-        {canGather && view.stage === "rally" && <>
+        {post === "lead" && <button type="button" disabled={!canWalk}
+          onClick={() => onOrder({ type: "choose", choice: "lead", x })}>Prendre la tête</button>}
+        {post === "observe" && <button type="button" disabled={!canWalk}
+          onClick={() => onOrder({ type: "choose", choice: "observe", x })}>Observer depuis l’arrière</button>}
+        {canGather && <>
           <button type="button" disabled={!canWalk} onClick={() => onOrder({ type: "retry", x })}>Reprendre avec la cohorte</button>
           <button type="button" disabled={!canWalk} onClick={() => onOrder({ type: "partial", x })}>Conclure après la chute</button>
         </>}
