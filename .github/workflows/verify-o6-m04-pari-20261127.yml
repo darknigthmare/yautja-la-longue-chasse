@@ -1,0 +1,74 @@
+name: Verify the native O6 rival race
+on:
+  push:
+    branches: [codex/verify-o6-m04-pari-20261127]
+permissions:
+  contents: read
+jobs:
+  rival-race:
+    name: Play Harek’s roof routes and recover from a fall
+    runs-on: ubuntu-24.04
+    timeout-minutes: 32
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+    steps:
+      - name: Checkout the exact candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 2
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /worker/
+            /scripts/
+            /tests/
+            /docs/
+            /desktop/
+            /build/
+            /content/the-pit/
+            /production/quetes-vivantes-20261109/
+            /production/quetes-vivantes-suite-20261109/
+            /.openai/hosting.json
+            /public/**/manifest.json
+            /public/game/prologue/v47/
+            /public/game/prologue/v72/
+            /public/game/youth/v48/
+            /public/game/homeworld/
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/sprites/v5/film-plates/
+            /public/game/backgrounds/swamp-depth-v8.png
+            /public/game/sprites/v8/ecology/naraka-delta/mire-shell-sheet.png
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Restore original registered runtime assets
+        run: node scripts/materialize-asset-raccords-20261120.mjs runtime
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Qualify O6 admission, physics and durable recovery
+        run: node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec tests/origin-rival-race-o6.test.mjs tests/origin-town-bell-o6.test.mjs tests/origin-cohort-race-o6.test.mjs tests/origin-first-shock-o6.test.mjs
+      - name: Verify the TypeScript entry and save contracts
+        if: ${{ !cancelled() }}
+        run: node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Lint the native rooftop and browser recipe
+        if: ${{ !cancelled() }}
+        run: node node_modules/eslint/bin/eslint.js app/game/OriginRivalRaceO6.tsx app/game/systems/originRivalRaceO6.ts app/game/systems/originRivalRacePlaceO6.ts app/game/systems/rivalRaceCourseO6.ts tests/origin-rival-race-o6.test.mjs tests/helpers/origin-rival-race-o6.mjs scripts/qa-origin-rival-race-o6.mjs
+      - name: Walk to Harek, win by the beam or bridges and recover from a fall in Chromium
+        if: ${{ !cancelled() }}
+        run: node scripts/qa-origin-rival-race-o6.mjs
+      - name: Preserve the screenshots and actually committed receipts
+        if: ${{ !cancelled() && hashFiles('outputs/qa-origin-rival-race-o6/report.json') != '' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: origin-rival-race-o6
+          path: outputs/qa-origin-rival-race-o6/
+          if-no-files-found: error
