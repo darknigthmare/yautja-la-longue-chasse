@@ -19,6 +19,7 @@ export const YOUTH_WORKSHOP_RANGES = [
   ["close", "long"], ["wait", "shift"], ["block", "detour"],
 ] as const;
 type Route = (typeof YOUTH_WORKSHOP_RANGES)[number][number];
+export type YouthWorkshopOpeningV176 = "mask" | "blades";
 type Notice = "calibration" | "certainty" | "reach" | "counter" | "water" | "stones" | "leaves" | "cloak" | "off-target" | "cover" | "miss" | "ally";
 
 interface WorkshopTool {
@@ -56,13 +57,18 @@ const notices: Notice[] = ["calibration", "certainty", "reach", "counter", "wate
 const near = (x: number, target: number, reach = 32) => Math.abs(x - target) <= reach;
 const clamp = (x: number, min: number, max: number) => Math.max(min, Math.min(max, x));
 export const workshopCanOpen = (state: YouthWorkshop | undefined) => !state?.active && (state?.reports.length ?? 0) < YOUTH_WORKSHOP_LESSONS.length;
-export function startYouthWorkshop(state: YouthWorkshop | undefined, tick: number): YouthWorkshop {
+function lessonAt(index: number, opening?: YouthWorkshopOpeningV176) {
+  return opening === "blades" && index < 2 ? 1 - index : index;
+}
+export const workshopHasMaskReport = (state: YouthWorkshop | undefined, opening?: YouthWorkshopOpeningV176) =>
+  (state?.reports.length ?? 0) > lessonAt(0, opening);
+export function startYouthWorkshop(state: YouthWorkshop | undefined, tick: number, opening?: YouthWorkshopOpeningV176): YouthWorkshop {
   const progress: YouthWorkshop = state ?? { version: 1, active: null, reports: [] };
-  return { ...progress, active: { lesson: progress.reports.length, stage: 0, stageAt: tick,
+  return { ...progress, active: { lesson: lessonAt(progress.reports.length, opening), stage: 0, stageAt: tick,
     failures: 0, route: null, equipped: false, notice: null, tool: null } };
 }
-export const youthWorkshopEquipment = (state: YouthWorkshop | undefined) => state ? {
-  maskCalibrated: state.reports.length >= 1, wristTiming: state.reports.length >= 2,
+export const youthWorkshopEquipment = (state: YouthWorkshop | undefined, opening?: YouthWorkshopOpeningV176) => state ? {
+  maskCalibrated: workshopHasMaskReport(state, opening), wristTiming: state.reports.length > lessonAt(1, opening),
   cloak: state.reports.length >= 3, combistick: state.reports.length >= 4,
   speargun: state.reports.length >= 5, minesAccess: state.reports.length >= 6,
   ...(state.maskProfile ? { maskProfile: state.maskProfile } : {}),
@@ -289,19 +295,19 @@ const finite = (value: unknown, min: number, max: number): value is number => ty
 function validRoute(lesson: number, value: unknown): value is Route {
   return (YOUTH_WORKSHOP_RANGES[lesson] as readonly unknown[]).includes(value);
 }
-export function normalizeYouthWorkshop(value: unknown, tick: number): YouthWorkshop | null {
+export function normalizeYouthWorkshop(value: unknown, tick: number, opening?: YouthWorkshopOpeningV176): YouthWorkshop | null {
   if (!record(value) || value.version !== 1 || !Array.isArray(value.reports) || value.reports.length > YOUTH_WORKSHOP_LESSONS.length) return null;
   const reports: WorkshopReport[] = [];
-  for (const [lesson, item] of value.reports.entries()) {
+  for (const [index, item] of value.reports.entries()) {
     if (!record(item) || !int(item.tick, (reports.at(-1)?.tick ?? 0) + 1, tick) ||
-        !int(item.failures, 0, item.tick) || !validRoute(lesson, item.route)) return null;
+        !int(item.failures, 0, item.tick) || !validRoute(lessonAt(index, opening), item.route)) return null;
     reports.push({ tick: item.tick, route: item.route, failures: item.failures });
   }
   const profile = value.maskProfile === "contrast" || value.maskProfile === "wide" ? value.maskProfile : undefined;
-  if (reports.length ? !profile : value.maskProfile !== undefined) return null;
+  if (reports.length > lessonAt(0, opening) ? !profile : value.maskProfile !== undefined) return null;
   if (value.active === null) return { version: 1, active: null, reports, ...(profile ? { maskProfile: profile } : {}) };
   const a = value.active;
-  if (!record(a) || !int(a.lesson, 0, 5) || a.lesson !== reports.length ||
+  if (!record(a) || !int(a.lesson, 0, 5) || a.lesson !== lessonAt(reports.length, opening) ||
       !int(a.stage, 0, YOUTH_WORKSHOP_LESSONS[a.lesson].last) || !int(a.stageAt, (reports.at(-1)?.tick ?? 0) + 1, tick) ||
       !int(a.failures, 0, tick) || typeof a.equipped !== "boolean" ||
       (a.notice !== null && !(notices as readonly unknown[]).includes(a.notice)) ||
