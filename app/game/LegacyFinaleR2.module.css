@@ -64,5 +64,5 @@
 .haltTable, .haltHost { position: absolute; bottom: 24%; pointer-events: none; }
 .haltHost { z-index: 2; }
 @media (prefers-reduced-motion: no-preference) {
-  .scene[data-legacy-cohort-arrival] .youth { transition: left 200ms ease-out; }
+  .scene[data-legacy-cohort-arrival] .youth, .haltHost { transition: left 200ms ease-out; }
 }

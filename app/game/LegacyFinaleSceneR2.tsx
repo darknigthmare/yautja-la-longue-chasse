@@ -62,6 +62,7 @@ export default function LegacyFinaleSceneR2({ scene, site, siteLabel, identity, 
     cohort.complete && cohort.path === "stay");
   const marker = isCohort ? cohortMarks : epilogue.choice
     ? [{ x: anchors[epilogue.choice], label: "Dernier geste" }] : epilogueMarks;
+  const hostAt = epilogue.choice === "welcome" || epilogue.choice === "transmit" ? anchors[epilogue.choice] : 11;
   const cohortPosition = (x: number, index: number) => {
     if (!isCohort || cohort.arrival === "inside") return x;
     const advance = cohort.arrival === "greeted" ? Math.max(0, Math.min(at, 8) - 3) : 0;
@@ -114,7 +115,7 @@ export default function LegacyFinaleSceneR2({ scene, site, siteLabel, identity, 
           <HomeworldNativePropV64 id="legacy-halt-table-r2" artId="table" art={HOMEWORLD_PROP_ART_V64.table}
             x={0} y={0} depth={1} heightWorld={47} />
         </span>
-        <span className={styles.haltHost} style={styleAt(11)} aria-hidden="true">
+        <span className={styles.haltHost} style={styleAt(hostAt)} aria-hidden="true">
           <HomeworldModularHunter morphId="classic" dreadStyleId="classic" appearance={haltHostAppearance}
             style={{ position: "absolute", top: "-4.47rem", left: "-1.6rem", width: "3.2rem", height: "4.8rem" }} />
         </span>
