@@ -26,6 +26,8 @@ import { firstShockActiveO6, type FirstShockOrderO6 } from "./systems/originFirs
 import { activeCohortRaceO6, advanceFirstShockIntoCohortO6, canStartCohortRaceO6, playCohortRaceO6, startCohortRaceO6, type CohortRaceOrderO6 } from "./systems/originCohortRaceO6";
 import type { TownBellRecordO6 } from "./systems/originTownBellO6";
 import { activeRivalRaceO6, playRivalRaceO6, type RivalRaceOrderO6, type RivalRaceRecordO6 } from "./systems/originRivalRaceO6";
+import { activeLittleTrailO6, playLittleTrailO6, type LittleTrailRecordO6 } from "./systems/originLittleTrailO6";
+import type { LittleTrailCueO6, LittleTrailOrderO6 } from "./systems/littleTrailRouteO6";
 import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
 import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -390,6 +392,7 @@ const NurseryPrologueScreen = React.lazy(() => import("./NurseryPrologueScreen")
 const OriginFirstShockO6 = React.lazy(() => import("./OriginFirstShockO6"));
 const OriginCohortRaceO6 = React.lazy(() => import("./OriginCohortRaceO6"));
 const OriginRivalRaceO6 = React.lazy(() => import("./OriginRivalRaceO6"));
+const OriginLittleTrailO6 = React.lazy(() => import("./OriginLittleTrailO6"));
 const YouthTrainingScreen = React.lazy(() => import("./YouthTrainingScreen"));
 const FirstTracksSoloV66 = React.lazy(() => import("./FirstTracksSoloV66"));
 const FirstHuntSoloV67 = React.lazy(() => import("./FirstHuntSoloV67"));
@@ -1334,7 +1337,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const firstShock = screen === "homeworld" && hydrated ? firstShockActiveO6(save) : null;
   const cohortRace = screen === "homeworld" && hydrated ? activeCohortRaceO6(save) : null;
   const rivalRace = screen === "homeworld" && hydrated ? activeRivalRaceO6(save) : null;
-  const homeworldMounted = !firstShock && !cohortRace && !rivalRace && (screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || (screen === "clan-chronicle" && chronicleReturnScreen === "homeworld") || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89")));
+  const littleTrail = screen === "homeworld" && hydrated ? activeLittleTrailO6(save) : null;
+  const homeworldMounted = !firstShock && !cohortRace && !rivalRace && !littleTrail && (screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || (screen === "clan-chronicle" && chronicleReturnScreen === "homeworld") || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89")));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
   );
@@ -2991,11 +2995,23 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return true;
   }, [persistSocialProgress]);
 
-  const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress, townBell?: TownBellRecordO6, rival?: RivalRaceRecordO6): boolean => {
+  const playLittleTrailCue = useCallback((cue: LittleTrailCueO6) => audioRef.current?.littleTrailCueO6(cue), []);
+  const advanceLittleTrail = useCallback((order: LittleTrailOrderO6) => {
     const current = saveRef.current;
-    if ((townBell || rival) && !current.originV151) return false;
-    const originV151 = current.originV151 && (townBell || rival) ? {
-      ...current.originV151, ...(townBell ? { townBellO6: townBell } : {}), ...(rival ? { rivalRaceO6: rival } : {}),
+    if (!sessionAliveRef.current || !current.originV151) return false;
+    const result = playLittleTrailO6(current, order);
+    if (!result || !persistSocialProgress({ originV151: { ...current.originV151, littleTrailO6: result } })) return false;
+    if (result.resolved) setToast(result.success ? "Saar a consigné ton relevé de piste." :
+      "Saar a consigné la recherche depuis les traces anciennes.");
+    return true;
+  }, [persistSocialProgress]);
+
+  const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress, townBell?: TownBellRecordO6, workshopTrial?: RivalRaceRecordO6 | LittleTrailRecordO6): boolean => {
+    const current = saveRef.current;
+    if ((townBell || workshopTrial) && !current.originV151) return false;
+    const originV151 = current.originV151 && (townBell || workshopTrial) ? {
+      ...current.originV151, ...(townBell ? { townBellO6: townBell } : {}),
+      ...(workshopTrial ? "rival" in workshopTrial ? { littleTrailO6: workshopTrial } : { rivalRaceO6: workshopTrial } : {}),
     } : undefined;
     const reward = Math.max(0, contractMarksV68(homeworld.contractsV68) - contractMarksV68(current.homeworld.contractsV68));
     // Completed orders pay once, in the same durable write as the signed report.
@@ -5630,6 +5646,19 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <Suspense fallback={<DeferredGameScreen />}>
             <OriginRivalRaceO6 key={save.createdAt} record={rivalRace} bindings={save.settings.controlBindings}
               paused={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy} onOrder={advanceRivalRace} />
+          </Suspense>
+        </div>
+      </section>}
+
+      {littleTrail && <section className="screen panel-screen" inert={settingsOpen} data-o6-little-trail>
+        <div className="screen-safe">
+          <div className="physical-deck-toolbar">
+            <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages et sauvegardes</button>
+            <button type="button" className="ghost-button" onClick={() => void returnToMainMenu()}>Menu principal</button>
+          </div>
+          <Suspense fallback={<DeferredGameScreen />}>
+            <OriginLittleTrailO6 key={save.createdAt} record={littleTrail} bindings={save.settings.controlBindings}
+              paused={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy} onOrder={advanceLittleTrail} onCue={playLittleTrailCue} />
           </Suspense>
         </div>
       </section>}

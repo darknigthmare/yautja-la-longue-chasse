@@ -1027,6 +1027,20 @@ export class GameAudio {
     this.tone(1_014, { at: now + .011, duration: .25, gain: .012, type: "sine" });
   }
 
+  /** Local clue: two stone transients or one longer scrape on dry bark. */
+  littleTrailCueO6(cue: "pebble" | "rub"): void {
+    const now = this.readyTime();
+    if (now === null) return;
+    if (cue === "pebble") {
+      this.noise({ at: now, duration: .037, gain: .06, filterType: "bandpass", filterFrequency: 2_450 });
+      this.tone(780, { at: now, duration: .08, gain: .025, type: "triangle" });
+      this.noise({ at: now + .115, duration: .048, gain: .041, filterType: "bandpass", filterFrequency: 1_860 });
+      return;
+    }
+    this.noise({ at: now, duration: .3, gain: .094, filterType: "bandpass", filterFrequency: 780 });
+    this.noise({ at: now + .12, duration: .25, gain: .054, filterType: "lowpass", filterFrequency: 420 });
+  }
+
   trophy(): void {
     if (this.fileAudio.playSfx("trophy")) return;
     const now = this.readyTime();

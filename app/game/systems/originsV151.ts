@@ -35,6 +35,7 @@ import { normalizeFirstShockO6, type FirstShockRecordO6 } from "./originFirstSho
 import { normalizeCohortRaceO6, type CohortRaceRecordO6 } from "./originCohortRaceO6";
 import { normalizeTownBellO6, type TownBellRecordO6 } from "./originTownBellO6";
 import { normalizeRivalRaceO6, type RivalRaceRecordO6 } from "./originRivalRaceO6";
+import { normalizeLittleTrailO6, type LittleTrailRecordO6 } from "./originLittleTrailO6";
 
 export const ORIGIN_IDS_V151 = ["O1", "O2", "O3", "O4", "O5", "O6"] as const;
 export type OriginIdV151 = (typeof ORIGIN_IDS_V151)[number];
@@ -158,6 +159,7 @@ export interface OriginStateV151 {
   cohortRaceO6?: CohortRaceRecordO6;
   townBellO6?: TownBellRecordO6;
   rivalRaceO6?: RivalRaceRecordO6;
+  littleTrailO6?: LittleTrailRecordO6;
 }
 /** V170 : Ox-M29 « Enregistrer la visite de sélection séparément de sa réussite » ; écrit une fois. */
 export interface OriginEndingStateV151 {
@@ -181,6 +183,7 @@ export const isFutureOriginV151 = (raw: unknown) => isRecord(raw) && ((typeof ra
   || (isRecord(raw.firstShockO6) && typeof raw.firstShockO6.version === "number" && raw.firstShockO6.version > 2)
   || (isRecord(raw.cohortRaceO6) && typeof raw.cohortRaceO6.version === "number" && raw.cohortRaceO6.version > 1)
   || (isRecord(raw.rivalRaceO6) && typeof raw.rivalRaceO6.version === "number" && raw.rivalRaceO6.version > 1)
+  || (isRecord(raw.littleTrailO6) && typeof raw.littleTrailO6.version === "number" && raw.littleTrailO6.version > 1)
   || (isRecord(raw.townBellO6) && typeof raw.townBellO6.version === "number" && raw.townBellO6.version > 1));
 /** V170 : identifiant de fin valide pour la voie (Ox-E1..Ox-E3, « Fins des six voies »). */
 export const isOriginEndingIdV151 = (originId: OriginIdV151, id: unknown): id is string =>
@@ -267,6 +270,11 @@ export function normalizeOriginV151(raw: unknown): OriginStateV151 | null {
     const rival = normalizeRivalRaceO6(raw.rivalRaceO6);
     if (state.originId !== "O6" || state.source !== "creation" || !state.townBellO6?.resolved || !rival) return null;
     state.rivalRaceO6 = rival;
+  }
+  if (Object.hasOwn(raw, "littleTrailO6")) {
+    const trail = normalizeLittleTrailO6(raw.littleTrailO6);
+    if (state.originId !== "O6" || state.source !== "creation" || !state.rivalRaceO6?.resolved || !trail) return null;
+    state.littleTrailO6 = trail;
   }
   if (Array.isArray(raw.consumed)) state.consumed = [...new Set(raw.consumed.filter((v): v is string => typeof v === "string"))].slice(-200);
   return state;
