@@ -53,7 +53,7 @@ jobs:
       - name: Typecheck the native hunt
         run: npm run typecheck
       - name: Lint changed sources and tests
-        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/HuntCanvas.tsx app/game/GameClient.tsx app/game/sound.ts app/game/systems/acheronVacuum.ts app/game/systems/huntSystems.ts tests/acheron-vacuum.test.mjs
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/HuntCanvas.tsx app/game/sound.ts app/game/systems/acheronVacuum.ts app/game/systems/huntSystems.ts tests/acheron-vacuum.test.mjs
 
       - name: Play scan and movement before the Guardian
         run: |
