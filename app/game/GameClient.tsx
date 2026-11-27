@@ -19,6 +19,7 @@ import OriginEndingPanelV170, { type OriginEndingActionV170 } from "./OriginEndi
 import { confirmEndingV170, examineEndingV170 } from "./systems/originEndingsV170";
 import { applyTrainingYardO6, type TrainingYardOrderO6 } from "./systems/originTrainingYardO6";
 import { applyContinuationO6, isContinuationOrderO6, type ContinuationOrderO6 } from "./systems/originContinuationO6";
+import { applySoloReturnO6, isSoloReturnOrderO6, type SoloReturnOrderO6 } from "./systems/originSoloReturnO6";
 import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
 import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -183,6 +184,7 @@ import {
   type PitSaveV5,
 } from "./systems/pitSave";
 import { PIT_FIRST_EDITION_FIGHTER_IDS } from "./systems/pitFirstEdition";
+import { normalizePitHonorRouteV1, type PitHonorRouteRequestV1 } from "./systems/pitHonorGalleryV1";
 import V6AtlasSprite from "./V6AtlasSprite";
 import {
   DEFAULT_SHIP_ID,
@@ -1229,6 +1231,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const [pitUnlockedCosmeticIds, setPitUnlockedCosmeticIds] = useState<string[]>([]);
   const [pitCircuitRuns, setPitCircuitRuns] = useState<PitStoredCircuitRuns>({});
   const [pitDescentRuns, setPitDescentRuns] = useState<PitStoredDescentRuns>({});
+  const [pitHonorRoute, setPitHonorRoute] = useState<PitHonorRouteRequestV1 | null>(null);
   const [resumableHunt, setResumableHunt] =
     useState<ActiveHuntSaveV1 | null>(null);
   const [huntResumePayload, setHuntResumePayload] =
@@ -3346,7 +3349,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       !canEnterHomeworldRegionV68(current, state.regionId).allowed || !canAdvanceHomeworldRegionV68(current.homeworldRegionV68, state)) return false;
     return persistSocialProgress({ homeworldRegionV68: state, ...settleResidenceLifeForRegionV150(current, state) });
   }, [entry.ownerCreatedAt, persistSocialProgress, settleResidenceLifeForRegionV150]);
-  const setupTrainingYardO6 = useCallback((order: TrainingYardOrderO6 | ContinuationOrderO6, region: HomeworldRegionStateV68): boolean => {
+  const setupTrainingYardO6 = useCallback((order: TrainingYardOrderO6 | ContinuationOrderO6 | SoloReturnOrderO6, region: HomeworldRegionStateV68): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "homeworld-region-v68" ||
         settingsOpen || archiveRecoveryIssue || archiveTransferBusy || campaignSaveBusy || !gameFocusedV89 ||
@@ -3355,8 +3358,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const origin = originOfSaveV151(current.originV151);
     const context = { rankId: current.profile.rankId,
       regionAllowed: (regionId: string) => canEnterHomeworldRegionV68(current, regionId).allowed };
-    const next = isContinuationOrderO6(order)
-      ? applyContinuationO6(current, origin, region, context, order)?.origin
+    const next = isSoloReturnOrderO6(order) ? applySoloReturnO6(current, region, order)
+      : isContinuationOrderO6(order) ? applyContinuationO6(current, origin, region, context, order)?.origin
       : applyTrainingYardO6(origin, current.residenceV149, region, context, order);
     return !!next && persistSocialProgress({ originV151: next, homeworldRegionV68: region,
       ...settleResidenceLifeForRegionV150(current, region) });
@@ -3601,11 +3604,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return { persisted, message: persisted ? undefined : "Rapport non confirmé. Reste à la navette et réessaie la sauvegarde." };
   }, [persistHomeworldProgress]);
 
-  const openPit = useCallback(() => {
+  const openPit = useCallback((request?: PitHonorRouteRequestV1) => {
     if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite avant de changer d’arène ou de progresser dans THE PIT."); return; }
     // Interaction hints belong to the hub that emitted them, not the duel menu.
     // Clear before loading so a new PIT storage diagnostic remains visible.
     setToast(null);
+    setPitHonorRoute(normalizePitHonorRouteV1(request));
     setPitReturnScreen(hubLocation === "clan-ship" ? "clan-ship" : screen === "homeworld" || (shipStationOpen && hubLocation === "homeworld") ? "homeworld" : "deck");
     const ownerSaveCreatedAt = saveRef.current.createdAt;
     const loaded = loadPitSave({
@@ -5827,7 +5831,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <button type="button" className="ghost-button" onClick={() => {
                   setJusticeJurisdiction("homeworld"); openStationScreen("justice", "deck");
                 }}>Mandats et alignement</button>
-                <button type="button" className="ghost-button" onClick={openPit}>
+                <button type="button" className="ghost-button" onClick={() => openPit()}>
                   THE PIT · combat
                 </button>
                 <button type="button" className="ghost-button" onClick={openShipAcquisitionV89}>
@@ -7289,7 +7293,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <PitCanvas
             key={save.createdAt}
             ownerSaveCreatedAt={save.createdAt}
-            onOpenNarrativeTrials={() => go("pit-narrative")}
+            bonusRecordOwnerCreatedAt={save.createdAt}
+            initialHonorRoute={pitHonorRoute ?? undefined}
+            onOpenNarrativeTrials={() => { setPitHonorRoute(null); go("pit-narrative"); }}
             controlBindings={save.settings.controlBindings}
             highContrast={save.settings.highContrastVision}
             lastReplay={lastPitReplay}

@@ -1,0 +1,1454 @@
+{
+  "schemaVersion": 1,
+  "scope": "Recovered common guides; all project implementation statuses require repository audit.",
+  "sourceKind": "user_design_guide_not_franchise_canon",
+  "requirementsTotal": 172,
+  "sections": [
+    {
+      "number": 30,
+      "section": "30",
+      "title": "PORTÉE ET RATTACHEMENT AU GUIDE GÉNÉRAL",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 46,
+      "endLine": 86,
+      "requirements": [
+        {
+          "id": "CG-30-01",
+          "requirement": "Rattacher chaque fonction à un mode, un périmètre, une priorité et ses dépendances.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-30-02",
+          "requirement": "Conserver les cinq statuts de fidélité et préciser œuvre, épisode, version et période.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-30-03",
+          "requirement": "Séparer assistance, vrai tag, super, finisher, fin dramatique, entité, clash, bonus et exploration.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-30-04",
+          "requirement": "Distinguer conçu, produit, intégré et testé ; respecter la phase de production.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 31,
+      "section": "31",
+      "title": "TAUNTS : PROVOCATIONS ET RÉACTIONS DE PERSONNALITÉ",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 87,
+      "endLine": 132,
+      "requirements": [
+        {
+          "id": "CG-31-01",
+          "requirement": "Définir au moins une provocation complète prioritaire par personnage concerné puis les variantes pertinentes.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-31-02",
+          "requirement": "Documenter commande, entrée, pose/boucle, sortie, vulnérabilité, interruption, reprise du contrôle et répétition des voix.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-31-03",
+          "requirement": "Séparer taunt de présentation et taunt à effet de jeu ; tout gain de ressource exige coût, risque et limites.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-31-04",
+          "requirement": "Ne pas suspendre l’adversaire ni voler les commandes pendant une provocation automatique.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 32,
+      "section": "32",
+      "title": "ANIMATIONS DE SÉLECTION, CONFIRMATION ET DÉSÉLECTION",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 133,
+      "endLine": 177,
+      "requirements": [
+        {
+          "id": "CG-32-01",
+          "requirement": "Définir survol, présélection, confirmation, attente confirmée, changement de costume, désélection, validation d’équipe et départ vers le combat.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-32-02",
+          "requirement": "Produire une désélection complète cohérente et une sortie abrégée ; ne pas attendre la fin de l’animation pour accepter le choix.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-32-03",
+          "requirement": "Nettoyer voix, particules, compagnons, ombres et éclairages de l’aperçu retiré.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-32-04",
+          "requirement": "Signaler actif, réserve et soutien, compatibilités, refus justifiés et retrait/remplacement de membre.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-32-05",
+          "requirement": "Tester navigation rapide, choix simultanés/identiques, costumes, aléatoire et mouvement réduit.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 33,
+      "section": "33",
+      "title": "PROFILS D'ÉQUIPE ET CATÉGORIES DE PARTENAIRES",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 178,
+      "endLine": 227,
+      "requirements": [
+        {
+          "id": "CG-33-01",
+          "requirement": "Choisir explicitement assistance, tag ou hybride pour chaque mode.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-33-02",
+          "requirement": "Fixer effectif, rôles, doublons, variantes, vie, ordre de départ et condition de défaite.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-33-03",
+          "requirement": "Séparer rôle actif/réserve et état engagé ; ne pas mobiliser deux fois un même partenaire.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-33-04",
+          "requirement": "Séparer budgets d’entités natives et partenaires du roster ; une entité du kit n’est pas automatiquement un troisième équipier.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-33-05",
+          "requirement": "Le profil hybride à deux avec relais KO gratuit est une proposition à valider, pas une règle canonique.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 34,
+      "section": "34",
+      "title": "COMMANDES, JAUGES ET DISPONIBILITÉ",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 228,
+      "endLine": 279,
+      "requirements": [
+        {
+          "id": "CG-34-01",
+          "requirement": "Définir des actions remappables distinctes : taunt, assistance, relais, super duo, finisher équipe, ordre entité.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-34-02",
+          "requirement": "Si appui court/maintien partagent une touche, préciser seuil, validation, priorité et raccourcis distincts.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-34-03",
+          "requirement": "Spécifier capacité, état initial, gain, coût, récupération et conservation de chaque jauge.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-34-04",
+          "requirement": "Distinguer ressource, récupération, charge et état du partenaire ; afficher les raisons de refus.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-34-05",
+          "requirement": "Définir prélèvement atomique, interruption/remboursement et horloge de récupération ; aucun rechargement gratuit par switch.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 35,
+      "section": "35",
+      "title": "ASSISTANCES PONCTUELLES",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 280,
+      "endLine": 315,
+      "requirements": [
+        {
+          "id": "CG-35-01",
+          "requirement": "Documenter le sous-ensemble de capacités d’assistance propre au personnage.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-35-02",
+          "requirement": "Implémenter cycle disponible, appel, arrivée, action, sortie, récupération et branches touché/interrompu/KO.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-35-03",
+          "requirement": "Définir points, orientation, avertissements, coûts, dégâts, vulnérabilités et interaction avec projections, murs, transitions et boss.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-35-04",
+          "requirement": "Traiter les impacts touchant actif et soutien sans double gain involontaire de jauge.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-35-05",
+          "requirement": "Ajouter entraînement et réponses aux assistances.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 36,
+      "section": "36",
+      "title": "TAG : CHANGEMENT RÉEL DE COMBATTANT",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 316,
+      "endLine": 358,
+      "requirements": [
+        {
+          "id": "CG-36-01",
+          "requirement": "Transférer réellement commandes, HUD et contrôle au moment défini.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-36-02",
+          "requirement": "Séparer relais volontaire, de combo, de secours, après KO et scénarisé avec coûts et restrictions propres.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-36-03",
+          "requirement": "Définir positions, collisions, vulnérabilités, entrée/sortie et effets en réserve.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-36-04",
+          "requirement": "Conserver munitions, ressources, récupérations et historique de combo après le relais.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-36-05",
+          "requirement": "Préserver propriété et règles de ciblage des menaces existantes ; prévoir intros/victoires et répliques prioritaires.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 37,
+      "section": "37",
+      "title": "TECHNIQUES COMBINÉES ET SUPERS D'ÉQUIPE",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 359,
+      "endLine": 408,
+      "requirements": [
+        {
+          "id": "CG-37-01",
+          "requirement": "Chaque participant contribue avec ses propres techniques et capacités.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-37-02",
+          "requirement": "Définir composition, versions, disponibilité, coût, commande, portée, cibles et résolution touche/garde/échec/interruption.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-37-03",
+          "requirement": "Déclencher les longues chorégraphies après une confirmation compatible, avec échec court.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-37-04",
+          "requirement": "Réserver les participants pendant la séquence et définir sortie, actif restant, positions et ressources.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-37-05",
+          "requirement": "Prioriser duos attestés/importants ; identifier les relais génériques et les créations originales.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 38,
+      "section": "38",
+      "title": "FINISHERS D'ÉQUIPE ET FINS DRAMATIQUES CONDITIONNELLES",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 409,
+      "endLine": 458,
+      "requirements": [
+        {
+          "id": "CG-38-01",
+          "requirement": "Séparer finisher collectif et fin dramatique conditionnelle.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-38-02",
+          "requirement": "Documenter participants, disponibilité, fenêtre, cible, résultat, versions, lieu, chapitre et dernière action pertinentes.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-38-03",
+          "requirement": "Ne pas faire participer implicitement un partenaire KO.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-38-04",
+          "requirement": "Définir une priorité stable entre fin dramatique, finisher équipe, individuel et victoire normale.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-38-05",
+          "requirement": "Prévoir remplacement, passage abrégé, indices et consultation ; ne pas modifier une victoire acquise par sa présentation.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 39,
+      "section": "39",
+      "title": "CLASHES ET CONFRONTATIONS AVEC QTE",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 459,
+      "endLine": 535,
+      "requirements": [
+        {
+          "id": "CG-39-01",
+          "requirement": "Séparer échange ordinaire, clash mécanique et clash cinématique.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-39-02",
+          "requirement": "Définir groupes d’attaques compatibles, simultanéité en simulation, contact, orientation, distance, coûts, fréquence et priorité.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-39-03",
+          "requirement": "Résoudre les collisions tierces de manière reproductible.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-39-04",
+          "requirement": "Définir réussite, échec, absence, égalité, double réussite, durée maximale et déconnexion du QTE.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-39-05",
+          "requirement": "Définir comportement du chrono, assistances, pièges et projectiles ; prévoir profils histoire, spectacle et compétition sans avantage caché.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 40,
+      "section": "40",
+      "title": "MOVESETS À ENTITÉS INDÉPENDANTES ET OBJETS PLACÉS",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 536,
+      "endLine": 599,
+      "requirements": [
+        {
+          "id": "CG-40-01",
+          "requirement": "Associer chaque entité à un propriétaire, une version, un kit et des capacités attestées ou adaptées.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-40-02",
+          "requirement": "Préciser destinataire des commandes et actions simultanées permises au propriétaire.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-40-03",
+          "requirement": "Définir placement, armement, durée de vie, limite, activation et moyens de réponse adverses.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-40-04",
+          "requirement": "Définir états disponible, envoyé, placé, armé, actif, retour, récupéré, interrompu et détruit selon le kit.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-40-05",
+          "requirement": "Gérer nouvelle pose à la limite et empêcher les boucles gratuites de rappel/redéploiement.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 41,
+      "section": "41",
+      "title": "PROJECTILES PERSISTANTS ET RÈGLES COMMUNES AUX ENTITÉS",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 600,
+      "endLine": 645,
+      "requirements": [
+        {
+          "id": "CG-41-01",
+          "requirement": "Définir propriétaire stable, création, coût, trajectoire, durée, cibles, impacts, collisions et fin de vie.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-41-02",
+          "requirement": "Spécifier destruction, traversée, réflexion, absorption ou clash entre projectiles avec attribution correcte.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-41-03",
+          "requirement": "Documenter propriétaire touché, projeté, en réserve, KO ou transformé, transition, manche, cinématique et correction réseau.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-41-04",
+          "requirement": "Préserver l’historique de combo partagé entre actif, soutien, entités et pièges.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-41-05",
+          "requirement": "Fixer budgets par personnage et équipe ; rendre visibles propriétaire et état utile sans retirer des menaces selon les options graphiques.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 42,
+      "section": "42",
+      "title": "STAGES BONUS ET ÉPREUVES INTÉGRÉES AUX HISTOIRES",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 646,
+      "endLine": 728,
+      "requirements": [
+        {
+          "id": "CG-42-01",
+          "requirement": "Intégrer les bonus à un endroit justifié des routes et de la campagne.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-42-02",
+          "requirement": "Choisir les familles pertinentes : destruction, horde, précision, défense, mobilité, protection, interaction, maîtrise d’entité, équipe et culture.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-42-03",
+          "requirement": "Documenter personnages admis, objectifs, durée, réussite/échec, état initial/final, score, récompenses, reprise et aides.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-42-04",
+          "requirement": "Ne pas rendre un ennemi redoutable fragile sans justification ou adaptation explicite.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-42-05",
+          "requirement": "Tester limites de présence, apparitions justes, ressources, performances et absence de double récompense.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 43,
+      "section": "43",
+      "title": "ESPACE D'EXPLORATION ET DE DÉBLOCAGE INSPIRÉ DE LA KRYPT",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 729,
+      "endLine": 784,
+      "requirements": [
+        {
+          "id": "CG-43-01",
+          "requirement": "Créer un lieu d’exploration propre au projet avec architecture, rôle et progression cohérents.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-43-02",
+          "requirement": "Relier zones, clés, indices, épreuves et récompenses aux histoires, bonus et boss.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-43-03",
+          "requirement": "Prévenir les cycles de prérequis, conserver ouvertures et attribuer les récompenses une fois.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-43-04",
+          "requirement": "Définir règles spécifiques de collection, entraînement, versus et compétition.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-43-05",
+          "requirement": "Conserver le statut de fidélité des contenus débloqués ; choisir format 2D, 2,5D/3D ou carte selon le moteur.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 44,
+      "section": "44",
+      "title": "COHÉRENCE NARRATIVE, RELATIONS ET COMPATIBILITÉS",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 785,
+      "endLine": 821,
+      "requirements": [
+        {
+          "id": "CG-44-01",
+          "requirement": "Étendre la matrice de relations : attestée, plausible, temporaire, alternative, crossover ou incompatible.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-44-02",
+          "requirement": "Fixer périodes, versions, motivations, connaissances et disponibilité réelle des partenaires.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-44-03",
+          "requirement": "Séparer compositions libres hypothétiques et récit principal.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-44-04",
+          "requirement": "Prioriser duos forts et chiffrer les paires ordonnées/non ordonnées plutôt que promettre une scène exclusive par paire.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-44-05",
+          "requirement": "Rattacher bonus et déblocages aux arcs narratifs et à leur urgence.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 45,
+      "section": "45",
+      "title": "ASSETS, ANIMATIONS, SONS ET MISE EN SCÈNE",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 822,
+      "endLine": 863,
+      "requirements": [
+        {
+          "id": "CG-45-01",
+          "requirement": "Inventorier les nouveaux assets par personnage, équipe, entité, bonus et lieu de déblocage.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-45-02",
+          "requirement": "Prévoir ancrages, points de contact, asymétries et placements compatibles.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-45-03",
+          "requirement": "Conserver un sujet exploitable par fichier source pour les sprites autonomes, distincts des atlases.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-45-04",
+          "requirement": "Définir synchronisation, voix, VFX/SFX, caméra, états et variantes nécessaires.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-45-05",
+          "requirement": "Distinguer poses clés, menu animé et animation de combat intégrée.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 46,
+      "section": "46",
+      "title": "INTERFACE, APPRENTISSAGE, ACCESSIBILITÉ ET RÉSEAU",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 864,
+      "endLine": 913,
+      "requirements": [
+        {
+          "id": "CG-46-01",
+          "requirement": "Afficher équipe, actif, réserve, jauge, récupération, ressources et motifs de refus.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-46-02",
+          "requirement": "Prévoir exercices et réglages d’entraînement pour assistance, relais, super, clash et entités.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-46-03",
+          "requirement": "Définir remappage, sous-titres, maintien alternatif, effets réduits et règles PvP partagées.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-46-04",
+          "requirement": "Rendre simulation, réseau et replays reproductibles ; empêcher doublons de coût, entité, récompense et voix.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-46-05",
+          "requirement": "Le passage abrégé conduit au même état final.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 47,
+      "section": "47",
+      "title": "VALIDATION, STATISTIQUES ET ORDRE D'INTÉGRATION",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 914,
+      "endLine": 972,
+      "requirements": [
+        {
+          "id": "CG-47-01",
+          "requirement": "Suivre prévu, documenté, produit, contrôlé, intégré, testé, restant et bloqué par catégorie et périmètre daté.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-47-02",
+          "requirement": "Compter séparément scène conçue, pose clé, animation et chorégraphie exclusive.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-47-03",
+          "requirement": "Appliquer les 18 cas prioritaires listés dans le fichier source.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-47-04",
+          "requirement": "Suivre un ordre de validation allant des états/ressources à une tranche représentative puis à l’extension du contenu.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 48,
+      "section": "48",
+      "title": "DIX FICHES DE PRODUCTION COMPLÉMENTAIRES",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 973,
+      "endLine": 1119,
+      "requirements": [
+        {
+          "id": "CG-48-01",
+          "requirement": "Remplir les dix fiches pertinentes : taunt ; sélection ; profil équipe ; assistance/relais ; super/finisher ; clash/QTE ; entité ; bonus ; lieu exploratoire ; récompense.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-48-02",
+          "requirement": "Chaque fiche conserve sources/statut, règles, assets, dépendances et preuve de validation.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 49,
+      "section": "49",
+      "title": "INSTRUCTION D'INTÉGRATION ET RÉFÉRENCES",
+      "fileName": "sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "startLine": 1120,
+      "endLine": 1233,
+      "requirements": [
+        {
+          "id": "CG-49-01",
+          "requirement": "Rattacher l’extension aux données, modes, personnages, stages, scènes et inventaires existants.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-49-02",
+          "requirement": "Conserver références officielles comme inspirations de mécanismes, sans attribuer tous les systèmes à toutes les séries.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-49-03",
+          "requirement": "Terminer chaque lot par bilan chiffré du périmètre, manquants et interactions à tester.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 50,
+      "section": "50",
+      "title": "PORTÉE, PRINCIPES ET RACCORDEMENT AUX GUIDES",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 47,
+      "endLine": 76,
+      "requirements": [
+        {
+          "id": "CG-50-01",
+          "requirement": "Déclarer chaque fonction retenue, adaptée, non retenue ou à décider, avec raison et priorité.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-50-02",
+          "requirement": "Appliquer les cinq statuts de fidélité aux contenus et cosmétiques abonnés.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-50-03",
+          "requirement": "Un verrou représente un accès ; il ne masque pas un asset absent, inachevé ou cassé.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-50-04",
+          "requirement": "Séparer prévu, conçu, produit, intégré, testé et livré.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 51,
+      "section": "51",
+      "title": "ÉTATS DE DÉCOUVERTE, DE DROIT ET DE DISPONIBILITÉ",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 77,
+      "endLine": 117,
+      "requirements": [
+        {
+          "id": "CG-51-01",
+          "requirement": "Modéliser séparément découverte, droit d’accès, disponibilité technique et compatibilité de partie.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-51-02",
+          "requirement": "Distinguer secret, indice et identité ; aucun droit, récupérable, permanent, temporaire, en attente et expiré ; installé, à installer et erreur.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-51-03",
+          "requirement": "Afficher la combinaison exacte, la prochaine action utile et les obstacles secondaires.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-51-04",
+          "requirement": "Ne pas qualifier permanent un droit temporaire.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 52,
+      "section": "52",
+      "title": "LANGAGE VISUEL ADAPTÉ AU LORE",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 118,
+      "endLine": 165,
+      "requirements": [
+        {
+          "id": "CG-52-01",
+          "requirement": "Utiliser silhouette noire lisible, symbole de verrou thématique, fond contrasté et focus visible.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-52-02",
+          "requirement": "Employer un emblème neutre quand une silhouette révélerait le secret.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-52-03",
+          "requirement": "Distinguer métaphore décorative d’interface et événement/objet réel du lore.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-52-04",
+          "requirement": "Prévoir repos, focus, refus, conditions remplies, déblocage, désélection et mouvement réduit.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 53,
+      "section": "53",
+      "title": "EMPLACEMENTS DE PERSONNAGES ET PARTENAIRES",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 166,
+      "endLine": 208,
+      "requirements": [
+        {
+          "id": "CG-53-01",
+          "requirement": "Prévoir identité autorisée, visuel, condition, progression et action utile pour chaque slot.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-53-02",
+          "requirement": "Laisser le focus possible mais refuser l’ajout interdit ; ouvrir la fiche informative, filtrer l’aléatoire.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-53-03",
+          "requirement": "Actualiser le slot après acquisition sans bloquer sur l’animation et montrer les dépendances/installations.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-53-04",
+          "requirement": "Séparer droits du personnage, de la variante, du soutien et de la combinaison ; garder les entités indispensables dans le kit.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-53-05",
+          "requirement": "Distinguer prêt scénarisé, acquisition de roster et présence narrative.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 54,
+      "section": "54",
+      "title": "COSTUMES, PALETTES ET ACCESSOIRES",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 209,
+      "endLine": 249,
+      "requirements": [
+        {
+          "id": "CG-54-01",
+          "requirement": "Définir aperçu complet, partiel ou caché par costume et provenance/voie d’acquisition.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-54-02",
+          "requirement": "Séparer aperçu et droit d’équiper ; conserver les récompenses obtenues avant leur personnage.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-54-03",
+          "requirement": "Documenter dépendances costume/palette/accessoire et incompatibilités de période.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-54-04",
+          "requirement": "Les cosmétiques conservent propriétés, collisions, timings, commandes et ressources ; un changement de kit devient une variante.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-54-05",
+          "requirement": "Gérer ensembles partiels et doublons sans perdre une acquisition permanente.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 55,
+      "section": "55",
+      "title": "STAGES, VARIANTES ET DESTINATIONS",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 250,
+      "endLine": 295,
+      "requirements": [
+        {
+          "id": "CG-55-01",
+          "requirement": "Séparer stage, ambiance, événements, transitions et destinations narratives.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-55-02",
+          "requirement": "Protéger les miniatures/noms à spoiler selon découverte.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-55-03",
+          "requirement": "Inclure les présentations statique/réduite utiles au confort dans la règle d’accès retenue.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-55-04",
+          "requirement": "Définir sélection, participation, entraînement et compétition pour les stages abonnés.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-55-05",
+          "requirement": "Charger les assets et destinations nécessaires ou proposer une configuration commune avant le match ; aucune transition vers une destination inaccessible.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 56,
+      "section": "56",
+      "title": "MODES DE JEU ET PARCOURS VERROUILLÉS",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 296,
+      "endLine": 327,
+      "requirements": [
+        {
+          "id": "CG-56-01",
+          "requirement": "Choisir explicitement modes verrouillés et conditions consultables.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-56-02",
+          "requirement": "Préserver réglages, accessibilité et apprentissage des mécaniques déjà jouables.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-56-03",
+          "requirement": "Éliminer cycles directs/indirects entre modes, personnages, stages et défis.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-56-04",
+          "requirement": "Documenter accès permanent/temporaire et progression des modes abonnés.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-56-05",
+          "requirement": "Présenter maintenance ou absence technique comme indisponibilité technique.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 57,
+      "section": "57",
+      "title": "CONDITIONS DE DÉBLOCAGE ET PROGRESSION",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 328,
+      "endLine": 372,
+      "requirements": [
+        {
+          "id": "CG-57-01",
+          "requirement": "Attribuer identifiants stables, événements, périmètre, contenus accordés et compteurs aux règles.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-57-02",
+          "requirement": "Exprimer explicitement ET/OU et alternatives ; conserver séparément les sources d’accès.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-57-03",
+          "requirement": "Définir objectif mesurable, modes/difficulté, reprise, abandon, cumul et période.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-57-04",
+          "requirement": "Détecter prérequis impossibles et prévoir remplacement d’une activité temporaire.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-57-05",
+          "requirement": "N’accorder de rétroactivité que sur des événements enregistrés et documenter migrations.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 58,
+      "section": "58",
+      "title": "EXPLORATION, RÉCOMPENSES ET SCÈNE DE RÉVÉLATION",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 373,
+      "endLine": 406,
+      "requirements": [
+        {
+          "id": "CG-58-01",
+          "requirement": "Employer le même catalogue pour les menus et les objets d’exploration.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-58-02",
+          "requirement": "Définir emplacement, accès, coût, découverte, récompense et état après ouverture.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-58-03",
+          "requirement": "Choisir attribution automatique, récupération ou découverte ; afficher prêt seulement si récupération réelle.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-58-04",
+          "requirement": "Sauvegarder l’attribution indépendamment de la scène et empêcher une deuxième facturation/récompense.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-58-05",
+          "requirement": "Identifier clairement la source externe d’un avantage sans inventer un abonnement moderne dans le lore.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 59,
+      "section": "59",
+      "title": "CONTENUS DÉDIÉS AUX ABONNÉS ET MODÈLES D'ACQUISITION",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 407,
+      "endLine": 454,
+      "requirements": [
+        {
+          "id": "CG-59-01",
+          "requirement": "Définir par avantage récompense permanente, catalogue temporaire ou livraison par période.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-59-02",
+          "requirement": "Préciser admissibilité, essais/cadeaux/gratuit, anciens lots, récupération et dépendances.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-59-03",
+          "requirement": "Annoncer exclusivité réelle, durée, autre voie, plateforme, permanence et règles en ligne.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-59-04",
+          "requirement": "Lier les offres à des identifiants d’avantages et versions stables ; préserver les acquisitions existantes.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 60,
+      "section": "60",
+      "title": "LIAISON AVEC PATREON OU UN SERVICE ÉQUIVALENT",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 455,
+      "endLine": 505,
+      "requirements": [
+        {
+          "id": "CG-60-01",
+          "requirement": "Prévoir liaison volontaire via autorisation officielle du fournisseur, sans demander son mot de passe.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-60-02",
+          "requirement": "Vérifier les droits auprès d’une autorité de confiance ; ni capture, ni email identique, ni booléen client ne constitue une preuve.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-60-03",
+          "requirement": "Conserver secrets et jetons hors client public et ne collecter que les données nécessaires.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-60-04",
+          "requirement": "Vérifier événements, dédoublonner, gérer ordre, réconcilier et resynchroniser.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-60-05",
+          "requirement": "Séparer compte lié, droit en attente et avantage confirmé ; documenter changement/déliaison/transfert.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-60-06",
+          "requirement": "Revérifier la documentation du fournisseur avant de déclarer l’adaptateur opérationnel.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 61,
+      "section": "61",
+      "title": "EXPIRATION, CHANGEMENTS D'ACCÈS ET FONCTIONNEMENT HORS LIGNE",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 506,
+      "endLine": 566,
+      "requirements": [
+        {
+          "id": "CG-61-01",
+          "requirement": "Retirer seulement la source temporaire réellement expirée et conserver acquisitions permanentes et autres sources valides.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-61-02",
+          "requirement": "Traiter annulation, baisse de niveau, attente, expiration, panne et remboursement séparément.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-61-03",
+          "requirement": "Définir justificatif local, validité et tolérance hors ligne sans inventer de nouveaux droits.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-61-04",
+          "requirement": "Garder la configuration d’un match autorisé jusqu’à son résultat selon la politique retenue.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-61-05",
+          "requirement": "Préserver préférences, progression et découvertes ; remplacer une sélection devenue inaccessible sans perte.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 62,
+      "section": "62",
+      "title": "SÉLECTION LOCALE, MULTIJOUEUR, ENTRAÎNEMENT ET REPLAYS",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 567,
+      "endLine": 602,
+      "requirements": [
+        {
+          "id": "CG-62-01",
+          "requirement": "Documenter profil principal, invité local et comptes distincts.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-62-02",
+          "requirement": "Séparer droits de consulter, sélectionner, participer et s’entraîner.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-62-03",
+          "requirement": "Valider droits, assets, versions, composition et stage avant lancement.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-62-04",
+          "requirement": "Préserver les règles compétitives, les équipes sauvegardées et les alternatives accessibles.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-62-05",
+          "requirement": "Versionner les replays et définir le rendu de contenus non possédés ou disparus sans dépendre du seul abonnement actuel.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 63,
+      "section": "63",
+      "title": "INTERFACE, TEXTES, ACCESSIBILITÉ ET PROTECTION DES SURPRISES",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 603,
+      "endLine": 652,
+      "requirements": [
+        {
+          "id": "CG-63-01",
+          "requirement": "Montrer identité autorisée, aperçu, état, conditions, progression, dépendances, durée et action suivante.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-63-02",
+          "requirement": "Afficher les voies alternatives autant que le soutien et ne pas déclarer un abonnement terminé sur erreur réseau.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-63-03",
+          "requirement": "Associer icône/forme/texte, contraste, focus, descriptions accessibles et mouvement réduit.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-63-04",
+          "requirement": "Appliquer l’anti-spoiler à nom, silhouette, voix, biographie, tooltip, notification et texte accessible.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-63-05",
+          "requirement": "Annoncer la portée du masquage dans les modes où un adversaire peut révéler le contenu.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 64,
+      "section": "64",
+      "title": "PRODUCTION, SAUVEGARDE ET CRITÈRES DE VALIDATION",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 653,
+      "endLine": 718,
+      "requirements": [
+        {
+          "id": "CG-64-01",
+          "requirement": "Conserver catalogue stable, versions, lore, dépendances, découverte et règles de sélection.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-64-02",
+          "requirement": "Enregistrer les sources d’accès avec origine, événement, permanence, validité, vérification et retrait.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-64-03",
+          "requirement": "Rendre les attributions idempotentes avec sauvegarde, migration et restauration.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-64-04",
+          "requirement": "Suivre les visuels de slots séparément de la complétude des combattants/stages et des acquisitions des joueurs.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-64-05",
+          "requirement": "Appliquer les 22 cas minimaux de validation du fichier source.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 65,
+      "section": "65",
+      "title": "SIX FICHES DE PRODUCTION À REMPLIR",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 719,
+      "endLine": 812,
+      "requirements": [
+        {
+          "id": "CG-65-01",
+          "requirement": "Remplir les six fiches pertinentes : slot ; règle ; avantage ; charte visuelle ; stage spécial ; matrice des droits.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-65-02",
+          "requirement": "Conserver sources, conditions, politique, preuves et statut constaté dans chaque fiche.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 66,
+      "section": "66",
+      "title": "INSTRUCTION PRÊTE À TRANSMETTRE À UN PROJET",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 813,
+      "endLine": 850,
+      "requirements": [
+        {
+          "id": "CG-66-01",
+          "requirement": "Intégrer ce module au guide et à l’extension 01 avec liens aux histoires, défis, bonus et exploration.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-66-02",
+          "requirement": "Documenter explicitement différé, adapté et non retenu au lieu de masquer les rubriques.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-66-03",
+          "requirement": "Ne déclarer offre d’abonnement ni intégration opérationnelle avant création, raccordement et vérification réelle.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    },
+    {
+      "number": 67,
+      "section": "67",
+      "title": "RÉFÉRENCES VÉRIFIÉES ET VOCABULAIRE",
+      "fileName": "sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "startLine": 851,
+      "endLine": 891,
+      "requirements": [
+        {
+          "id": "CG-67-01",
+          "requirement": "Conserver les références fournisseur et leur date de revue.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-67-02",
+          "requirement": "Les règles d’interface et d’acquisition sont des recommandations du projet, pas des règles imposées par le fournisseur.",
+          "projectAuditStatus": "not_assessed"
+        },
+        {
+          "id": "CG-67-03",
+          "requirement": "Revérifier les conditions et détails d’intégration lors de l’implémentation.",
+          "projectAuditStatus": "not_assessed"
+        }
+      ]
+    }
+  ],
+  "acceptanceCases": {
+    "extension01": [
+      {
+        "id": "CG-E01-QA-01",
+        "sourceText": "Navigation rapide puis confirmation et désélection sans effets résiduels.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-02",
+        "sourceText": "Taunt interrompu et retour au contrôle selon les fenêtres annoncées.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-03",
+        "sourceText": "Assistance et relais demandés au même instant pour un partenaire unique.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-04",
+        "sourceText": "Deux actions tentant de dépenser la dernière portion de jauge.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-05",
+        "sourceText": "Soutien touché ou KO pendant son arrivée ; état de l'équipe cohérent.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-06",
+        "sourceText": "Super duo demandée pendant la sortie d'une assistance.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-07",
+        "sourceText": "Attaque initiale du super bloquée ou ratée ; résolution correcte.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-08",
+        "sourceText": "Fin dramatique avec version, lieu ou partenaire incompatible ; remplacement.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-09",
+        "sourceText": "Clash simultané avec projectile tiers, piège ou assistance.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-10",
+        "sourceText": "Réussite, échec, égalité, absence de réponse et déconnexion pendant un QTE.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-11",
+        "sourceText": "Propriétaire en réserve ou KO avec une entité encore active.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-12",
+        "sourceText": "Transition d'arène pendant un combo utilisant un objet placé.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-13",
+        "sourceText": "Réflexion de projectile puis dégâts, attribution et éventuelle fin dramatique.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-14",
+        "sourceText": "Tentative de boucle infinie combinant pièges, relais et assistances.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-15",
+        "sourceText": "Horde à la limite de présence : performance, lisibilité et issues accessibles.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-16",
+        "sourceText": "Bonus réussi ou raté : bonne progression, ressources et récompenses.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-17",
+        "sourceText": "Déblocage, sauvegarde et rechargement : contenu conservé sans doublon.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E01-QA-18",
+        "sourceText": "Passage abrégé d'une scène et correction réseau : même état de combat.",
+        "projectStatus": "not_run"
+      }
+    ],
+    "extension02": [
+      {
+        "id": "CG-E02-QA-01",
+        "sourceText": "Personnage secret : nom, silhouette, voix et texte accessible ne le trahissent pas.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-02",
+        "sourceText": "Slot verrouillé : navigation et condition lisibles, confirmation non bloquante.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-03",
+        "sourceText": "Déblocage automatique ou à réclamer : bon état, bonne animation, bon contenu.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-04",
+        "sourceText": "Condition ET / OU : branches correctes, progression et alternatives explicites.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-05",
+        "sourceText": "Récompense réclamée deux fois ou sauvegarde interrompue : attribution unique.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-06",
+        "sourceText": "Costume acquis avant le personnage : récompense conservée, dépendance indiquée.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-07",
+        "sourceText": "Costume gagné définitivement puis abonnement expiré : accès permanent conservé.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-08",
+        "sourceText": "Catalogue temporaire expiré : source retirée, préférences et progression préservées.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-09",
+        "sourceText": "Annulation avec accès encore valide : aucune révocation anticipée injustifiée.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-10",
+        "sourceText": "Service indisponible : état inconnu et politique hors ligne correctement appliqués.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-11",
+        "sourceText": "Droit valide mais assets absents : message d'installation, pas faux verrou de paiement.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-12",
+        "sourceText": "Remboursement d'une source et seconde source valide : bon accès final.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-13",
+        "sourceText": "Stage abonné contre joueur non abonné : chargement, participation et choix conformes.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-14",
+        "sourceText": "Transition vers un stage lié : destination et assets disponibles pour la partie.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-15",
+        "sourceText": "Expiration pendant un match : résultat valide et changement au moment prévu.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-16",
+        "sourceText": "Costume ou partenaire équipé devenu inaccessible : remplacement sans perte de profil.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-17",
+        "sourceText": "Variante vivante ou statique : choix de confort disponible selon la règle annoncée.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-18",
+        "sourceText": "Mode verrouillé : aucune boucle de prérequis et progression récupérable.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-19",
+        "sourceText": "Compte invité, double liaison ou changement de niveau : droits attribués au bon profil.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-20",
+        "sourceText": "Événements externes doublés ou désordonnés : état final cohérent, pas de double lot.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-21",
+        "sourceText": "Clavier, manette, lecteur d'écran et mouvement réduit : états compréhensibles.",
+        "projectStatus": "not_run"
+      },
+      {
+        "id": "CG-E02-QA-22",
+        "sourceText": "Migration, resynchronisation et restauration : acquisitions et sources conservées.",
+        "projectStatus": "not_run"
+      }
+    ]
+  }
+}
