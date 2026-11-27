@@ -1,0 +1,45 @@
+name: Verify the new Acheron vacuum sensors
+on:
+  push:
+    branches: ['codex/verify-bible-acheron-vacuum-20261127']
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '0663352f5ae5ab44ab743ef041b65c8ce2bcfff9'
+          persist-credentials: false
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /build/
+            /docs/campagne/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues-index.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Test Acheron contacts, attack behavior, sound and resume
+        run: node --experimental-strip-types --test tests/acheron-vacuum.test.mjs tests/hunt-systems.test.mjs tests/sound-lifecycle.test.mjs tests/hunt-pod-recovery.test.mjs tests/active-hunt-save.test.mjs
+      - name: Typecheck the native hunt
+        run: npm run typecheck
+      - name: Lint changed sources and tests
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/HuntCanvas.tsx app/game/sound.ts app/game/systems/acheronVacuum.ts tests/acheron-vacuum.test.mjs
