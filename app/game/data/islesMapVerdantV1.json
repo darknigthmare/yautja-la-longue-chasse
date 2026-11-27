@@ -1,0 +1,245 @@
+{
+ "id": "isles-verdant-reverse-v1",
+ "name": "Verdant · Chasse inversée",
+ "seed": 7,
+ "legend": {
+  "~": {
+   "kind": "water",
+   "height": -1.2
+  },
+  "f": {
+   "kind": "ford",
+   "height": -0.35
+  },
+  ".": {
+   "kind": "sand",
+   "height": 0
+  },
+  ",": {
+   "kind": "grass",
+   "height": 0
+  },
+  "j": {
+   "kind": "jungle",
+   "height": 0
+  },
+  "m": {
+   "kind": "mud",
+   "height": 0
+  },
+  "=": {
+   "kind": "road",
+   "height": 0
+  },
+  "b": {
+   "kind": "bush",
+   "height": 0
+  },
+  "c": {
+   "kind": "crate",
+   "height": 1
+  },
+  "r": {
+   "kind": "rock",
+   "height": 3
+  },
+  "R": {
+   "kind": "rock",
+   "height": 6
+  },
+  "T": {
+   "kind": "tree",
+   "height": 7
+  },
+  "#": {
+   "kind": "wall",
+   "height": 5
+  },
+  "H": {
+   "kind": "roof",
+   "height": 3.5
+  },
+  "P": {
+   "kind": "pillar",
+   "height": 10
+  },
+  "p": {
+   "kind": "ruin",
+   "height": 2
+  },
+  "q": {
+   "kind": "ruin",
+   "height": 4
+  },
+  "^": {
+   "kind": "ruin",
+   "height": 6.5
+  }
+ },
+ "rows": [
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~..............~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~........................~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~...........jjjjjjjjTjjjjj......~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~........bjjjjTjjTjjjTjjTjjjbjjT.....~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~.......TjjTjTjjjTjjjjTjTbjjbbjTbjTjj....~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~.....bbTjTjjTTjTjjjbjjjTjjjjTjjjjbjjjjjb....~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~.....jjTjjjjjjjjjRRRRRjjjjbTjjbjTTTjjjjjTjTT...~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~....jjjTjTjRRRRRRRRRRRRjTjjjjjjTTTjjbjTjjjbTjj...~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~...bjjTR~RRRRRRRRRRRRRRRjjjTjTjTjbjjjjTjTTTjjjTj....~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~...jjRRR~~~RRRRRRRRRjjjTbTjTjTTjjjjjjjTjjjTTjjjbTpj...~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~...jRRRR~~~~~RTjjjjbjjjTrjTjTjTjTbTjTjjbTbjjTjjpppppp...~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~..RRRRRRRR~~~~TjjjrrrrrrrrrjjjbjTTjbjjjjjTjbjjbppppqppp...~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~RRRRRRRRRTj~~~~rrrrrrrrrrrrjbjTjTTjjTjTjjjjjjTTpppqqqqqpp...~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~RRRRRRjTTrr~~~~rrrrrbjjjjjjTjjjjjbTjTbjjTTjjbjjppqqq^qqqpp...~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~RRRRjjjrrrrrr~~~~bbTbTjjjjjjTjjjTTjjTjjjjbjjjjjjppqq^^^qqppb...~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~RRRjjrrrrrrrjb~~~~jjjjTTjjTjbTjjjTjjjjjjjTjTbjjjppqq^^^^^qqppj...~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~..rrrrrrrTbjTj~~~~TjTjjjjjTjTjjjTjjjjjjjjjTbjjjTjppqq^^^qqppjjT..~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~..rrrrrjTjjjjjj~~~~jjjjTjjjTTjjjjjjTjjjTjbTjjjjjbTppqqq^qqqppTTTj..~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~...rrjTjjjjjjjjjj~~~~TTjTjTjTTTTjTjTjjjjjjTjHHHjjjjpppqqqqqpppTTjj...~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~..TjjjTjjjjjTTbjj~~~~TjbjbjTjjjjjjjjjjjjjjjjHHHjjjjjppppqppppjjjjjj..~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~...jjjjjTjjjbjjjjT~~~~jjjjjjTjjjjjjjjjjjjjjjjjjjjjjjjjpppppppjTTjTTjb..~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~..TTbjTjjjjjjjjjjT~~~~~jjTjjjjj===================jmmmmmmpTjjjjjjTjTj...~~~~~~~~~~~",
+  "~~~~~~~~~~~~...jbjjjjjbjjjjjjjjj~~~~~jjjTbjj===================mmmmmmjjjjjjjjjjjjjj..~~~~~~~~~~~",
+  "~~~~~~~~~~~~..jTTbjjjjjjbTjjjjTjT~~~~~jjTjjj===================mmjTjjjTjbbjTjTTTjjT...~~~~~~~~~~",
+  "~~~~~~~~~~~..jTjTjjjTjjbjjjjTbTjjj~~fffjjjjjjjjjjjjmmmjjjjjjmjjjjjbTjjjTjjjbjjjjTjjb..~~~~~~~~~~",
+  "~~~~~~~~~~~..jTjjjjjjjjTjjjjjjjjjj~fffffjTjjjjjjjjjmmjjjjjjjjjjjjjjjjjjjjjjjbjjjbjjj..~~~~~~~~~~",
+  "~~~~~~~~~~..jjjbjTjTjjjTjjjjjjTjjbTfffff~TjjTTjjjjjmmjjjjjjjjjjjjTTjbjjjTTTjjjjjjTjjj..~~~~~~~~~",
+  "~~~~~~~~~~..jjTTjjjjjjjjjjjjjTjbjbTTffff~~jjjTTjjTjmmjjjTTjjbTjTjjjTjjjjjjjjTjTjjjjTj..~~~~~~~~~",
+  "~~~~~~~~~..TTbjjjjjjTjjjjTTjTTjjTjjjjff~~~jTjjjjjjjmmjjjTjjjjjTjTjTjTjjjjjjjTjjjjjTjjj..~~~~~~~~",
+  "~~~~~~~~~..jjjjbjjjjjjjjjTjjjjjjTjjjTb~~~~~TTjjjjjTmmjjTjjjTTjjjjjbTjjTjTjjjTTjjjjjTjj..~~~~~~~~",
+  "~~~~~~~~..TjjjjTjbjjjjTjjjjTjTTjjjjjjjj~~~~~~jTbbTmmjjjjjTjTTTbjbjbjjjbTjjjjTjjbjjTjjT..~~~~~~~~",
+  "~~~~~~~~..jjbjTTTTTjjjbTTjjjTjjbjjTjjjjj~~~~~~~jjjmmjjTTbTjjjjjTbjjjTTjjjjjjjjjjTjjjTjj..~~~~~~~",
+  "~~~~~~~...jjTTjjjjjjbjjTjTTjjjjjjjTjjjjjj~~~~~~~~TmmbjTjjjjjTbjjjjjbjjTTjTbjjjjTjjTjjjb..~~~~~~~",
+  "~~~~~~~..jjbjjjjjjjjjjjbjjTjTjTTbTjjjjjjjj~~~~~~~~~~jjbjjbjjjjjTjjjTjbjjjbjjjjjjTjTjTjj..~~~~~~~",
+  "~~~~~~~..TTjjjjjTjjjbjjjTjTTjjbjjjjjjjbjTjTj~~~~~fff~~jjjjbjTTTjjjTjjjjTjjjbjjjjjjTTjjjj..~~~~~~",
+  "~~~~~~...jjjjjTjjTjjjjjjjjjjjjjjjjjjjjjjjjjjjj~~fffff~~~jTjjb~~~~jjTjTjTbjjTjjjTjjjjTbjj..~~~~~~",
+  "~~~~~~..jjjTjjjjjjjTmTjjjTjjjjjTjjjjbjjjjjjjbjjjjffff~~~~~~~~~~~~~~~TjjTbjjjjjjTTjjbTjjj..~~~~~~",
+  "~~~~~~..TjTTjTjjmmmmmmmmmjTjjjbTjjTjTjTbjTjTTjTjbmmff~~~~~~~~~~~~~~~~~~TjjjjjjjjjjjTjjjjj..~~~~~",
+  "~~~~~~..jjjjjjjmmmmmmmmmmmjjjTTjjTjjTTjjjjjjjjTTjjmmj~~~~~~~~~~~~~~~~~~~~~jjjjTTbjjjjbjjj..~~~~~",
+  "~~~~~~..TTjTbjmmHHHHmmmmmmmbjjjjjjjjjjjjjjTjjjTjjjmmjjj~~~~~~~~~~~~~~~~~~~~jjbTjjjjjjTjbj..~~~~~",
+  "~~~~~..jTjjjjmmmHHHHmmmmmmmmTjjTjbjjjjTjjTjjjjTjjjmmTbjjjjjT~~~~~~~~~~~~~~~~jjbTbjjjjTjTjj..~~~~",
+  "~~~~~..jjjjTTmmmHHHHmccmmmmmjjjTTjTjbTTjTjjTjjjTjjmmjjjTTjTbj~~~~~~~~~~~~~~~~jjjTjjjjjjTjj..~~~~",
+  "~~~~~..jjjjjjmmmmmmmmmmmmcmmjjTjTjTjbbjjjjjjTjjjTjmmjTTbTjjjjjjT~~~~~~~~~~~~~~~TjjjjjTTjjj..~~~~",
+  "~~~~~..jjjbTmmmmmmmmmmmmmmmmmjjbjjjjjTjjbTbjjTTjbTmmmjjTjTTjjjTjbmm~~~~~~~~~~~~~~jjjjjjjjjj..~~~",
+  "~~~~~..jTjbjTmmmmmmmmmmmmmmmjTTjjjTjjjTTjbTjjTjTjjTmmjbjjjjjbTjTmmmjjT~~~~~~~~~~~~~~~~~jbjj..~~~",
+  "~~~~~..TjTbjjmmmmmmmmmmHHHHmbjTjjjjTjjjTjjjbTTjjjTbmmjjjTTTbTjmmmmjjjjjjjjTj~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~..TTjjjjmmmmmcmmmmHHHHmjjjjjTTjjjjjjTjjjTTjjjjmmjjjTjjjTmmmjjjjjTTjjjjjjj~~~~~~~~~~~~~~~~~~",
+  "~~~~~..jTbjjjTHHHmmmmmmHHHHTTjjjTjjTjjjjjjjjTTTjjjjmmTTjjbbjmmmTbTjTjbjTjjTjjjjj~~~~~~~~~~~~~~~~",
+  "~~~~~..jjjjjTTHHHmmmmmmmmmmmjTjjjjTbjjjjTjTjjjjjjjbmmTTjjbjmmmjTjjjjbjjjjjjjbTjTjbjTTTj~~~~~~~~~",
+  "~~~~~..jTjjjTjHHHmmmmmmmmjmmmmjjTbTTjjjTTjjjjTjjjjjmmmjjbmmmmjbjTjTjjjjTjTjjjjbbjjjbjjjjTjjj.~~~",
+  "~~~~~..jTjjjjTjjjjjbmTjTjjjjmmmmTTbTjjjjjbTjjjjTjTTmmTjbmmmjjjjjTjjbjjbjjjjjjjjjjjjjjTjTjjjj..~~",
+  "~~~~~..jjjjjjjTTjjbjTjTjjjbjTmmmmmjTjjbTjjTjjjjjTTjmmTjmmmjjbjjjjjbjjjjTjjjjjbjjjjjjTTjjjTjb..~~",
+  "~~~~~..jjjjjTjbbjjTjjjTbjjjjjjjmmmmTjjjjTjTjjjTjjTmmmjjTmbjjjjjTjjTjjjjTTbjjjjTjTjjjjbjjjjjj..~~",
+  "~~~~~..jTjjjbjTjjjjTjjjTTjTbjjjjjmmmmTjbjjjbjjbbjTmmjTTjjbTjjTjTTjTTjjjjjjjbjjjTjjjjbTTjbjjj..~~",
+  "~~~~~..TjjjjTbTjjbTTTjjjjjjjTjbjjjjmmmmTjjjjbjjTjjmmjTbjjTjTjTjTjjjbjjjjjjjTjjjjTjjjTjjjjTj..~~~",
+  "~~~~~..jjbjjjjjTTjTjTjjTTjjjjjbTjjjjTmmmjjTjjTjjjmmmjbjjjjjjjjjjjjTjjjjjTjjjjTjTjjjjjjTjjTT..~~~",
+  "~~~~~..jjbjjjjTbjjjjjjjjjjjjTjjjjjbjTjmmTTTTTjjTjmmbjjjjjjjjjTTjjjTjjTjjjjjbjTjjjTjjjjbjTjj..~~~",
+  "~~~~~..jjjjjjjTjjjjjjbTjjjjbjjjjjTjjjjjmmjjjjjjbjmmjjTTjjjTjjTjTjjTjjjjTTjjTTbjTTjjjjjTjjjj..~~~",
+  "~~~~~..jTjjjbjjjjjjjjjjTjTjjjjjjjjTTbjjmmmTjjjjTmmmjjjjjjbjjjjjjjTjjjjjjjjjbjjjjbjjTjjTjjj..~~~~",
+  "~~~~~~..jjjjjjTTTjTjjjTbjjjTjTjjbTbjjjjjmmjjbjTTmmTbTjbjbjjTTTTTjjjjTTjjjTjjjjTTTjjjTjjjjj..~~~~",
+  "~~~~~~..jjjjjjTjjjbjjjjjTjjjjjbjjjjTjjTjjmmjjjTjmmjjTjjTTjjTjTjjjjjjjTTjjTjjjjjjjTjjjjjjT...~~~~",
+  "~~~~~~..TjjjjjjjjjTTTjbjjjjTjTTTTjjjjbjTjmmmjjjmmmjjTjjjjTbTjjjTTjjTjTjjTbjjjjjjjjTjTjjbj..~~~~~",
+  "~~~~~~..jjjTjjjjTjjjbbTjjjjjjjjjjjjjjjjTjjmmjjjmmjjjjjjjjjjTjjTjjjTjjjjjTjjTjjjjTjTjjjbj..~~~~~~",
+  "~~~~~~~..jjTjjjTjjjjTjjTjTjTjjjjjjjTjjjjjjjmmTjmmTjjTjTTjjjTjjbjbTjjjjjjjTjjjjjjjjjjjjT...~~~~~~",
+  "~~~~~~~..jjjjjjjjjjTTjjjjjjjjjjTjjjjjjjjjjjmmmmmmjjjjjjTjjjjjTjjjbTTjjTbTTTjjjjjjjjjjjj..~~~~~~~",
+  "~~~~~~~...jTjjjjjjTjjjjTbjTjjjjTbjjjjjTTTjjTmmmmTjTTbjjjjTjjjjjjTjjbjTjjjjjjTjjjbTjjjj..~~~~~~~~",
+  "~~~~~~~~..jjjjjjjjjjjjjTbjjjjTjTjTbTjjTjTjbjjmmmjjjjjjbTjTTTTjTjjbTTjTjbTTjjjjjjjjjjj...~~~~~~~~",
+  "~~~~~~~~...jTjTjjTjjjTTjjjjTjTjTTjjjTjjjjjjjjmmmjjjTjjTjjTbTjTTjjTjjTTjTjjjjTjjbbjjj...~~~~~~~~~",
+  "~~~~~~~~~..jjTjTjjjjjjjbjbjjjbjTTjTbjTjTjbjjjmmmjTjjjjbTjTjjjjjbjjjjjjjjjbjTjjTjTjTj..~~~~~~~~~~",
+  "~~~~~~~~~~..jTjTTjTjjjjTjjjjTbjjTjTjjTjTjTjjbmmmjjjjTjjjbjjTjjjjbjjjTTjbjjjjjjjjTjj..~~~~~~~~~~~",
+  "~~~~~~~~~~~..jTTjjjjjTbjTTjjjjTjjTjjjTjjjTjjTmmmjjjjjjjjjjjjjjjTTjjTTjjjjjTjbjjjjj..~~~~~~~~~~~~",
+  "~~~~~~~~~~~...jjjTbjjjjjjjTTjjjjjjTTjjjbTjTTjmmmjjjjTjjjjjjjjjTjjTjbjjTjjTjjTjjTj...~~~~~~~~~~~~",
+  "~~~~~~~~~~~~...jjjjjTjjjjTjjjjjTbjTjTjjjTjjTjmmmbjjTjjjTjjTjTjjjjjbjjjjjjjjjjjTj...~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~...jjjTTTjjTjjjjjjTTbTjjjjjbjbjm,mjjTjTjjjTjjjjjjjTbjTTTjjTjjjjjT...~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~...TjjjTTjbjjjjbbjjjjjjTj,,,,,,,,,,,,,jjTTjjTjTTTjjjTjjTTjTjjjj...~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~....jjTTjjjjbjjjTTTjjT,,,,,,,,,,,,,,,,,jjjjbjjTjTjjjjTTTjbjjj...~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~....jjTjTjjjjjTjjjj,,,,,,,,,,,HHH,,,,,jjTjjjTTjjTjjjTTTjjT...~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~....jjjjTbjjjjjjj,,,,HHH,,,,,HHH,,,,,,jTjjjTjTjjTjjjjjjj...~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~....jjjjjjjjjjT,,,,HHH,,,,,HHH,,,,,,TjjjjjbjTjjjbjTj....~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~....jjTjbjjj,,,,,HHH,,,,,,,,,,,,,,,jjjjjjTjjjjjTj...~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~....bjbjjjT,,,,,,,,,,,,,,,,HHH,,jjbjjjTjjjTTT....~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~....jbjjj,,,,,,,,,,,,,,,,HHH,,TjjTjjjTjjj....~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~.....jjjb,,,,,,,,,,,,,,,HHH,TjTTjbjjj......~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.....jjj,,,,,,,,,,,,,,,,,jjjjbjj......~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.....Tjj,,,,,,,,,,,,,jjTjj........~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.......Tjjjm,mjjjj..........~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.....................~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~...........~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+ ],
+ "markers": {
+  "humanArrival": [
+   [
+    46,
+    88
+   ]
+  ],
+  "yautjaDrop": [
+   [
+    70,
+    25
+   ]
+  ],
+  "piece:radio": [
+   [
+    21,
+    45
+   ],
+   [
+    17,
+    47
+   ],
+   [
+    24,
+    43
+   ]
+  ],
+  "piece:battery": [
+   [
+    59,
+    23
+   ],
+   [
+    47,
+    25
+   ],
+   [
+    56,
+    27
+   ]
+  ],
+  "piece:flares": [
+   [
+    44,
+    81
+   ],
+   [
+    51,
+    82
+   ],
+   [
+    47,
+    85
+   ]
+  ],
+  "extraction": [
+   [
+    66,
+    46
+   ]
+  ],
+  "radioMast": [
+   [
+    24,
+    52
+   ]
+  ]
+ }
+}

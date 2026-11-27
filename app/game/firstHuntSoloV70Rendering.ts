@@ -2,7 +2,7 @@ import { loadYouthArt,youthClipFrame,type YouthArtBank,type YouthArtPose,type Yo
 import { YOUTH_ART_MANIFEST } from './youthArtManifest';
 import { drawActorContactShadow,getSpriteContact } from './spriteContact';
 import { TEMPLE_MODULAR_ATLAS_V70,drawTempleModuleV70 } from './templeModularArtV70';
-import { SOLO_V70_ROOMS,SOLO_V70_SIGNS,SOLO_V70_ENERGY_VAULT,SOLO_V70_QUARANTINE_THRESHOLD,SOLO_V70_BELVEDERE,SOLO_V70_RECONNECTION,soloV70ReconnectionPreview,soloV70Platforms,soloV70Support,soloV70CampaignPortal,soloV70CanTravel,soloV70Objective,soloV70PlateTargets,type SoloV70State } from './systems/firstHuntSoloV70';
+import { SOLO_V70_ROOMS,SOLO_V70_SIGNS,SOLO_V70_ENERGY_VAULT,SOLO_V70_QUARANTINE_THRESHOLD,SOLO_V70_BELVEDERE,SOLO_V70_RECONNECTION,SOLO_V70_NEF_RELAY_M017,soloV70ReconnectionPreview,soloV70Platforms,soloV70Support,soloV70CampaignPortal,soloV70CanTravel,soloV70Objective,soloV70PlateTargets,type SoloV70State } from './systems/firstHuntSoloV70';
 export const TEMPLE_DRONE_V70='/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png';
 export const TEMPLE_GUARD_V70='/game/sprites/v4/rifle-soldier.png';
 export async function loadTempleArtV70():Promise<YouthArtBank>{const bank=await loadYouthArt(YOUTH_ART_MANIFEST),images=new Map(bank.images);await Promise.all([TEMPLE_MODULAR_ATLAS_V70.src,TEMPLE_DRONE_V70,TEMPLE_GUARD_V70].map(src=>new Promise<void>((resolve,reject)=>{const image=new Image();image.onload=()=>{images.set(src,image);resolve();};image.onerror=()=>reject(new Error('Image native du temple indisponible : '+src));image.src=src;})));return {...bank,images};}
@@ -73,8 +73,20 @@ export function drawFirstHuntSoloV70(ctx:CanvasRenderingContext2D,s:SoloV70State
   drawActorContactShadow(ctx,840,430,18,0);ctx.drawImage(image,...rect,840-image.width*k/2,430-pivot*k,image.width*k,140);text('GARDE DES SURVIVANTS · TRÊVE',840,285);marker(740);}
  if(s.room===7){[300,520,920].forEach(x=>drawTempleModuleV70(ctx,modular,'console',x,430,65));text(`CONFIGURATION ${s.configuration===1?'I · OUVERTURE':s.configuration===2?'II · RECONNEXION':'III · ISOLEMENT LOCAL'}`,580,155);}
  if(s.room===8){[200,980].forEach(x=>drawTempleModuleV70(ctx,modular,'console',x,430,65));text('FOYER PROFOND FERMÉ · RITE INACHEVÉ',1020,230,'#d9b28b',11);if(s.riteAdmission)marker(SOLO_V70_QUARANTINE_THRESHOLD.x,430,s.riteAdmission.threshold?'TRIADE AU SEUIL · 3/3':'SEUIL DE QUARANTAINE');if(s.acid.ttl){ctx.fillStyle='#c9df5955';ctx.beginPath();ctx.ellipse(s.acid.x,428,40,7,0,0,Math.PI*2);ctx.fill();text('ACIDE',s.acid.x,407,'#d0de8d',10);}const d=s.drone,image=images.get(TEMPLE_DRONE_V70)!,cell=image.width/6,index=d.mode==='dead'?5:d.mode==='recover'?4:d.mode==='lunge'?2+Math.floor(d.age/6)%2:d.mode==='telegraph'?1:0,rect=[cell*index,0,cell,image.height] as const,k=125/(image.height-8),pivot=image.height-3,contact=getSpriteContact(image,rect,pivot);drawActorContactShadow(ctx,d.x,430,25,0);ctx.drawImage(image,...rect,d.x-cell*k/2,430-(pivot-(contact?.offsetY??0))*k,cell*k,image.height*k);text(d.mode==='dead'?'DRONE · NEUTRALISÉ':d.mode==='telegraph'?'CHARGE ANNONCÉE':`DRONE ${d.hp}/5`,d.x,270,d.mode==='telegraph'?'#f0a177':'#d1d2b6');}
+ if(s.phase==='separation' && s.room===SOLO_V70_NEF_RELAY_M017.room && s.reconnectionVariant){
+   const {leverX,upperY,regroupX}=SOLO_V70_NEF_RELAY_M017;
+   if(s.nefRelayM017) marker(regroupX,430,'RENDEZ-VOUS');
+   else {
+     drawTempleModuleV70(ctx,modular,'console',leverX,upperY,50);
+     marker(leverX,upperY,'COMMANDE HAUTE');
+     if(s.scan && Math.abs(s.player.y-upperY)<.01) {
+       ctx.fillStyle='#ead393';
+       ctx.fillRect(leverX-26,upperY+17,52*s.scan/SOLO_V70_NEF_RELAY_M017.holdTicks,4);
+     }
+   }
+ }
  const actor=(kind:'player'|'rival',x:number,y:number,facing:-1|1,height:number,pose:YouthArtPose,caption?:string)=>{const atlas=manifest.actors[kind][facing===1?'right':'left'],frame=youthClipFrame(atlas.clips[pose],reducedMotion&&pose==='idle'?0:s.tick),image=images.get(atlas.src)!,k=height/atlas.bodyHeight,contact=getSpriteContact(image,frame.rect,frame.pivot[1]);drawActorContactShadow(ctx,x,kind==='player'?soloV70Support(s):430,15,kind==='player'?soloV70Support(s)-y:0);ctx.drawImage(image,...frame.rect,x-frame.pivot[0]*k,y-(frame.pivot[1]-(contact?.offsetY??0))*k,frame.rect[2]*k,frame.rect[3]*k);if(caption)text(caption,x,y-height-12,'#d5cbaa',11);};
  s.companions.forEach((c,i)=>{const target=s.companionMode==='plates'?soloV70PlateTargets(s)[i]:Math.max(65,Math.min(1055,s.player.x-65*(i+1)));actor('rival',c.x,430,target<c.x?-1:1,102,Math.abs(c.x-target)>7?'walk':'idle',i===0?'SAAR':'VEK');});
  if(s.room===0)actor('rival',160,430,1,145,'idle','VÉTÉRAN');const a=s.player;actor('player',a.x,a.y,a.facing,112,s.health===0?'ko':s.hurtTimer>60?'hurt':s.attackTimer?'blade':a.vy?'jump':a.vx?'walk':'idle');
- const goal=soloV70Objective(s);ctx.strokeStyle='#ead393';ctx.setLineDash([6,5]);ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(goal.targetX-26,goal.targetY+4);ctx.lineTo(goal.targetX+26,goal.targetY+4);ctx.stroke();ctx.setLineDash([]);if(s.scan){ctx.fillStyle='#ead393';ctx.fillRect(goal.targetX-26,goal.targetY+17,52*s.scan/90,4);}ctx.restore();
+ const goal=soloV70Objective(s);ctx.strokeStyle='#ead393';ctx.setLineDash([6,5]);ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(goal.targetX-26,goal.targetY+4);ctx.lineTo(goal.targetX+26,goal.targetY+4);ctx.stroke();ctx.setLineDash([]);if(s.scan&&!(s.phase==='separation'&&s.player.y===SOLO_V70_NEF_RELAY_M017.upperY)){ctx.fillStyle='#ead393';ctx.fillRect(goal.targetX-26,goal.targetY+17,52*s.scan/90,4);}ctx.restore();
 }

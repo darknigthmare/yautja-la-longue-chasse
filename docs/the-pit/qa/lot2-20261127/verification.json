@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-27",
+  "scope": "The PIT lot2 behavior tests, browser source fingerprints and capture byte identities. No visual1:1 certification.",
+  "nodeTests": {
+    "total": 78,
+    "passed": 78,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0,
+    "output": "docs/the-pit/qa/lot2-20261127/tests.txt",
+    "command": "node --experimental-strip-types --test --test-concurrency=1 tests/pit-content-access-v1.test.mjs tests/pit-selection-presentation-v1.test.mjs tests/pitSelectionFlow.test.ts tests/pit-save.test.mjs tests/pitHonors.test.ts tests/pit-honor-gallery-v1.test.mjs tests/pit-honor-route-game-client.test.mjs tests/pit-bonus-trial-v1.test.mjs"
+  },
+  "browserScenarios": {
+    "gallery": 13,
+    "selectionReview": 9,
+    "bonus": 8
+  },
+  "artifacts": [
+    {
+      "path": "docs/the-pit/qa/honor-gallery-20261127/gallery-circuit-detail-desktop.png",
+      "bytes": 159764,
+      "sha256": "ce118660aad8fe94a1c4f5eafd7dc788e1b02ab80a5ce0e2a17f886fd58fad65"
+    },
+    {
+      "path": "docs/the-pit/qa/honor-gallery-20261127/gallery-earned-detail-desktop.png",
+      "bytes": 129902,
+      "sha256": "2e0b2206a484a01edce4c9435f3226d58850f0b0fdf6aea9ed146e7f027ff577"
+    },
+    {
+      "path": "docs/the-pit/qa/honor-gallery-20261127/gallery-earned-detail-mobile.png",
+      "bytes": 52299,
+      "sha256": "e066ec46f588e0a5358f135a1f4a1dc3b3bcbf769dc89339efe395da715183c1"
+    },
+    {
+      "path": "docs/the-pit/qa/honor-gallery-20261127/gallery-locked-desktop.png",
+      "bytes": 444164,
+      "sha256": "e5f375f64027724c1cdaba9ee80618dee3ff9d9190f2b822f5450a2b507e13c8"
+    },
+    {
+      "path": "docs/the-pit/qa/honor-gallery-20261127/report.json",
+      "bytes": 3261,
+      "sha256": "aab13d0e757b3016b5c2607c61b6a2a3c3347fcf4ccd2151500e98ae67d38343"
+    },
+    {
+      "path": "docs/the-pit/qa/selection-review-20261127/greyback-review-candidate-error.png",
+      "bytes": 26486,
+      "sha256": "4fe8603761a022c51993420bc4834b9d6371bbf5a57107c70413b8d95f8468a4"
+    },
+    {
+      "path": "docs/the-pit/qa/selection-review-20261127/greyback-review-desktop.png",
+      "bytes": 1396206,
+      "sha256": "8f76247f9d65cfdc08a917ab1b8a784037bd0ca1ed0343fbaeedfe730b8fa64e"
+    },
+    {
+      "path": "docs/the-pit/qa/selection-review-20261127/greyback-review-mobile.png",
+      "bytes": 383841,
+      "sha256": "79961730725022f19145d3cf5731345464e9e2558960d1d9a13d15426565cf6e"
+    },
+    {
+      "path": "docs/the-pit/qa/selection-review-20261127/greyback-review-overlay-light.png",
+      "bytes": 1377541,
+      "sha256": "1d59b5c06f0fd43a3b2e251d5dfdcb9ea48ef6d6b3bcd4966bb395c4c585b796"
+    },
+    {
+      "path": "docs/the-pit/qa/selection-review-20261127/report.json",
+      "bytes": 4017,
+      "sha256": "90b41bf993b982fcaeaf0a426a374fc52fa3ef46c7e416a221eb25ae3f4d9bda"
+    },
+    {
+      "path": "docs/the-pit/qa/bonus-trial-20261127/bonus-briefing-desktop.png",
+      "bytes": 1143180,
+      "sha256": "b4fefb50988ea6a32cbb06528b4d4b09ad98e26d406a3175493346b375e0362f"
+    },
+    {
+      "path": "docs/the-pit/qa/bonus-trial-20261127/bonus-briefing-mobile.png",
+      "bytes": 121598,
+      "sha256": "1f7799cf998846b3731ac78e695ac5698b6b72b5755a6df87022da72f426050e"
+    },
+    {
+      "path": "docs/the-pit/qa/bonus-trial-20261127/bonus-running-desktop.png",
+      "bytes": 1344009,
+      "sha256": "6198ad68fcc168726723531b93931f48b3e6ab8b04871800825f756e048f5e69"
+    },
+    {
+      "path": "docs/the-pit/qa/bonus-trial-20261127/bonus-success-desktop.png",
+      "bytes": 1175950,
+      "sha256": "82652c4e0857d7359a15febd5ae5e0146ab6d4df338a415499fe2c9faefeab81"
+    },
+    {
+      "path": "docs/the-pit/qa/bonus-trial-20261127/report.json",
+      "bytes": 7543,
+      "sha256": "88f4fc3e7bbdbdb01d86a563bb47befd7e35b52f53bfa6151e8878d1af66a34f"
+    }
+  ],
+  "notes": [
+    "Gallery victories are declared canonical fixtures.",
+    "Bonus success is earned by real keyboard input into PitCanvas and actual engine contacts.",
+    "Image failures in selection review are intentional injected cases.",
+    "Native controllers and physical mobile hardware were not tested.",
+    "Full typecheck/build for the new commit must be observed in CI separately."
+  ]
+}

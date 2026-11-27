@@ -1,0 +1,444 @@
+{
+  "schema": "the-pit-guide-extensions-component-qa-v1",
+  "status": "passed",
+  "startedAt": "2026-11-27T05:43:13.037Z",
+  "sourceCommit": "b2f000c82817bca1fa55f90c1f16677c7de17028",
+  "scope": "Real PitSelectionFlow, FighterCard and PitHonorsPanel component harness; fixture rewards are not played victories; no complete game claim.",
+  "method": "Bundled the real repository PitSelectionFlow, FighterCard, PitHonorsPanel and imported dependencies with esbuild. Only React state/handlers and canonical save fixtures belong to the harness. Local HTTP server serves original tracked asset bytes. Playwright controls an actual Chromium process.",
+  "runtime": {
+    "browser": "Chromium",
+    "version": "158.0.8127.0",
+    "delivery": "@sparticuz/chromium npm package, installed outside repository",
+    "automation": "Playwright from repository dependencies",
+    "headed": false,
+    "deviceScaleFactor": 1
+  },
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900,
+      "use": "desktop selection, stage, honors and fault handling"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "use": "mobile selection and earned honors"
+    }
+  ],
+  "motion": {
+    "normal": "no-preference browser setting; reducedMotion prop false",
+    "reduced": "component reducedMotion prop true; confirmation animation disabled and stage frame remains 0"
+  },
+  "summary": {
+    "passed": 24,
+    "failed": 0,
+    "pageErrors": 0,
+    "consoleErrors": 3,
+    "httpFailures": 0,
+    "unexpectedConsoleErrors": 0,
+    "intentionalNetworkFailureConsoleErrors": 3,
+    "visuallyInspectedCaptures": 8
+  },
+  "sourceFiles": [
+    {
+      "path": "app/game/PitSelectionFlow.tsx",
+      "sha256": "c1556fc712b0aac32371d24bd63ed3bb35c96599dd7f15244f076101eb06e970",
+      "matchesCommit": true
+    },
+    {
+      "path": "app/game/PitSelectionFlow.module.css",
+      "sha256": "4d508873c966ba01db63bcbb84e820b621ecdd103e2919a64621982e55417b44",
+      "matchesCommit": true
+    },
+    {
+      "path": "app/game/PitHonorsPanel.tsx",
+      "sha256": "4f16fbfa84d0ae4c8aef9acb2295ab5d74d4adfedca9dff3493659456d6d1af4",
+      "matchesCommit": true
+    },
+    {
+      "path": "app/game/PitHonorsPanel.module.css",
+      "sha256": "b32a0a83d5f8c92d39d8846c36eb78b4a04fa3bf6b371f362c92d7daecee83c0",
+      "matchesCommit": true
+    },
+    {
+      "path": "app/game/PitCanvas.tsx",
+      "sha256": "25d3f4b5a155242ef555f3a682935e42b5fb5c69e1af44afb43f17d2ea0bac5e",
+      "matchesCommit": true
+    },
+    {
+      "path": "app/game/systems/pitSelectionPresentationV1.ts",
+      "sha256": "7782a4e6564fde0ccfab64d667d77b3c8c3630fe21bec5a6724ba6ba1ddb3fb4",
+      "matchesCommit": true
+    },
+    {
+      "path": "app/game/systems/pitContentAccessV1.ts",
+      "sha256": "fac7a20f8a08bb4fa7d55373bef8ea753426c13e831160eedf8db0322780b7c7",
+      "matchesCommit": true
+    }
+  ],
+  "bundleSha256": "231fb637b4074219de3c5240c5a3965d47e4b50a0faf692ca70cc25a00ed1ab0",
+  "runner": {
+    "filename": "qa-pit-guide-extensions-v1.mjs",
+    "sha256": "75008acd9cccf9ecdba4dec6bc3cf0148bd546d3a93bdd38580970b41c9e516a",
+    "reproduction": "PIT_QA_REPO=/checkout PIT_QA_CHROMIUM=/path/to/chromium PIT_QA_OUTPUT=/tmp/pit-qa-results node /checkout/scripts/qa-pit-guide-extensions-v1.mjs",
+    "optionalEnvironment": [
+      "PIT_QA_ASSETS (public asset root, default checkout/public)",
+      "PIT_QA_CHROMIUM_ARGS_JSON (explicit JSON argument list)"
+    ],
+    "requirements": [
+      "repo dependencies including esbuild and playwright",
+      "a real Chromium executable",
+      "required original public assets present"
+    ]
+  },
+  "fixture": {
+    "owner": "synthetic timestamp; no user save used",
+    "empty": "createPitSave",
+    "earned": "createPitSave followed by 8 canonical applyPitResult Arcade victories for Jungle Hunter. Explicit fixture setup; no victories claimed as played. One reward acquired in fixture only.",
+    "corrupt": "invalid JSON fixture",
+    "wrongOwner": "canonical save owned by a different synthetic campaign",
+    "readOnlyProof": "localStorage serialized contents remain byte-identical before/after honors filter changes and reread actions"
+  },
+  "checks": [
+    {
+      "name": "desktop: native portraits and initial preview",
+      "status": "pass",
+      "details": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "portraits": "real native files",
+        "nativeSelectionAnimation": "unavailable"
+      }
+    },
+    {
+      "name": "desktop: hover then settled preview",
+      "status": "pass"
+    },
+    {
+      "name": "desktop: costume selection uses exact variant and settles",
+      "status": "pass",
+      "details": {
+        "chosen": "jungle-hunter-avec-casque-53f4eb349a"
+      }
+    },
+    {
+      "name": "desktop: rapid variants and identity changes cancel stale cues",
+      "status": "pass"
+    },
+    {
+      "name": "desktop: keyboard confirmation then waiting",
+      "status": "pass",
+      "details": {
+        "animation": "PitSelectionFlow_pitSelectionSeal"
+      }
+    },
+    {
+      "name": "desktop: back reopens choice with deselection",
+      "status": "pass"
+    },
+    {
+      "name": "desktop: keyboard variants and directional focus",
+      "status": "pass"
+    },
+    {
+      "name": "desktop: team and actual stage rendering",
+      "status": "pass",
+      "details": {
+        "planes": "P0,P1,P2,P3,P4,P5"
+      }
+    },
+    {
+      "name": "desktop: return from stage retains J1 confirmed and reopens J2",
+      "status": "pass"
+    },
+    {
+      "name": "desktop: departure follows real stage readiness",
+      "status": "pass",
+      "details": {
+        "launchMeaning": "harness callback only; no combat played"
+      }
+    },
+    {
+      "name": "reduced motion: confirmation settles and no animation",
+      "status": "pass"
+    },
+    {
+      "name": "reduced motion: stage fixed camera and frame",
+      "status": "pass"
+    },
+    {
+      "name": "mobile: layout bounded and controls reachable",
+      "status": "pass",
+      "details": {
+        "width": 390,
+        "doc": 390,
+        "body": 390
+      }
+    },
+    {
+      "name": "mobile: click variant, confirm and return",
+      "status": "pass"
+    },
+    {
+      "name": "honors: 18 sealed default slots with concealed palette",
+      "status": "pass",
+      "details": {
+        "cards": 18,
+        "paletteSwatches": 36,
+        "background": "rgb(5, 11, 7)"
+      }
+    },
+    {
+      "name": "honors: filter and conditions are read-only",
+      "status": "pass"
+    },
+    {
+      "name": "honors: canonical Arcade fixture reveals one earned reward only",
+      "status": "pass",
+      "details": {
+        "fixture": "createPitSave + 8 applyPitResult victories; explicit fixture, not gameplay",
+        "swatches": [
+          {
+            "title": "#d7b45b",
+            "style": "background-color: rgb(215, 180, 91);"
+          },
+          {
+            "title": "#66714f",
+            "style": "background-color: rgb(102, 113, 79);"
+          },
+          {
+            "title": "#f3e7b4",
+            "style": "background-color: rgb(243, 231, 180);"
+          }
+        ],
+        "layout": {
+          "width": 390,
+          "doc": 390
+        }
+      }
+    },
+    {
+      "name": "honors: corrupt remains private and unchanged",
+      "status": "pass"
+    },
+    {
+      "name": "honors: wrong-owner remains private and unchanged",
+      "status": "pass"
+    },
+    {
+      "name": "portrait: actual load failure is distinct from locked content, retry succeeds",
+      "status": "pass",
+      "details": {
+        "blockedPortrait": "/game/assets/v23/pit/fighters/jungle-hunter-key-art.webp"
+      }
+    },
+    {
+      "name": "stage: actual asset failure prevents launch, retry restores readiness",
+      "status": "pass"
+    },
+    {
+      "name": "runtime: no uncaught JavaScript exceptions",
+      "status": "pass"
+    },
+    {
+      "name": "runtime: all required requests served except intentional faults",
+      "status": "pass",
+      "details": {
+        "intentionalFaultRequests": 3
+      }
+    },
+    {
+      "name": "presentation: all eight distinct phases observed",
+      "status": "pass"
+    }
+  ],
+  "observedPresentationPhases": [
+    "confirm",
+    "costume",
+    "depart",
+    "deselect",
+    "hover",
+    "preview",
+    "team",
+    "waiting"
+  ],
+  "intentionalFailureRequests": [
+    {
+      "url": "/game/assets/v23/pit/fighters/jungle-hunter-key-art.webp",
+      "error": "net::ERR_FAILED",
+      "fault": "injected-portrait-failure"
+    },
+    {
+      "url": "/game/assets/v23/pit/fighters/jungle-hunter-key-art.webp",
+      "error": "net::ERR_FAILED",
+      "fault": "injected-portrait-failure"
+    },
+    {
+      "url": "/game/sprites/v33/pit-arenas/the-pit/p0-a-vault-depth.png",
+      "error": "net::ERR_FAILED",
+      "fault": "injected-stage-failure"
+    }
+  ],
+  "consoleEvents": [
+    {
+      "url": "/",
+      "message": "Failed to load resource: net::ERR_FAILED",
+      "fault": "injected-portrait-failure"
+    },
+    {
+      "url": "/",
+      "message": "Failed to load resource: net::ERR_FAILED",
+      "fault": "injected-portrait-failure"
+    },
+    {
+      "url": "/",
+      "message": "Failed to load resource: net::ERR_FAILED",
+      "fault": "injected-stage-failure"
+    }
+  ],
+  "httpFailures": [],
+  "uncaughtJavaScriptErrors": [],
+  "captures": [
+    {
+      "name": "desktop-selection.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "imageSize": [
+        1440,
+        900
+      ],
+      "sha256": "9a2bd3219d7b3bcc337644f54a95807c2e606b2f2eab0e97aa6cc56f3b7b62e3",
+      "visuallyInspected": true,
+      "finding": "Actual full-body native portraits, roster and confirmation controls visible; no overflow observed.",
+      "storage": "Internal QA capture; not included in repository report payload."
+    },
+    {
+      "name": "desktop-stage-ready.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "imageSize": [
+        1440,
+        900
+      ],
+      "sha256": "82af07da891a2bfd65ee92989075e85e57809bad6883a9c035152d3ced7b795d",
+      "visuallyInspected": true,
+      "finding": "Actual canvas displays P0–P5 arena artwork and enabled launch callback control.",
+      "storage": "Internal QA capture; not included in repository report payload."
+    },
+    {
+      "name": "desktop-reduced-motion.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "imageSize": [
+        1440,
+        900
+      ],
+      "sha256": "8eedcceeaee53fdd1059af3e496a8bd3bef314251124028c7cf7e521c0480704",
+      "visuallyInspected": true,
+      "finding": "J1 ready feedback is visible; automated assertion confirms no contender animation and fixed stage frame 0.",
+      "storage": "Internal QA capture; not included in repository report payload."
+    },
+    {
+      "name": "mobile-selection.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "imageSize": [
+        390,
+        844
+      ],
+      "sha256": "ebbf517d76a1d8882d7394d5bcd82317c3b693bb81547435ed19bbdbc9d1788b",
+      "visuallyInspected": true,
+      "finding": "390px layout fits viewport; real portraits and roster show no horizontal overflow; controls reachable.",
+      "storage": "Internal QA capture; not included in repository report payload."
+    },
+    {
+      "name": "honors-empty-desktop.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "imageSize": [
+        1440,
+        2515
+      ],
+      "sha256": "7c1f6edfc772c16e610f8d40b812a6adeaf743a859d989e8f477c74188a3d48d",
+      "visuallyInspected": true,
+      "finding": "All 18 locked slots, sealed emblems, explicit conditions and black palette swatches visible.",
+      "storage": "Internal QA capture; not included in repository report payload."
+    },
+    {
+      "name": "honors-earned-mobile.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "imageSize": [
+        390,
+        1049
+      ],
+      "sha256": "210d7b6cd455b090c9cad3e8d33b09ba49c183948d84b30215ebb55d1e1fd395",
+      "visuallyInspected": true,
+      "finding": "Filtered earned Jungle Hunter reward reveals 3 palette colors and open emblem; fixture explicitly labeled.",
+      "storage": "Internal QA capture; not included in repository report payload."
+    },
+    {
+      "name": "portrait-failure.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "imageSize": [
+        1440,
+        900
+      ],
+      "sha256": "33f7256dcbc8ba20ecc498b735bfe97e491acccf1b49047725026729c9e884c1",
+      "visuallyInspected": true,
+      "finding": "Actual injected WebP failure displays Portrait indisponible and retry; no progression lock substituted.",
+      "storage": "Internal QA capture; not included in repository report payload."
+    },
+    {
+      "name": "stage-failure.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "imageSize": [
+        1440,
+        900
+      ],
+      "sha256": "1ab9eec50aad9b31af61a7aa0f6b77220b4570f76001c18e04d44adec0945efe",
+      "visuallyInspected": true,
+      "finding": "Actual injected P0 failure displays unavailable notice and retry; launch remains disabled. Stage thumbnail failure is expected for the blocked source.",
+      "storage": "Internal QA capture; not included in repository report payload."
+    }
+  ],
+  "limits": [
+    "Component harness only; this is not a Next build, deployed application test or complete played fight.",
+    "Launch verifies the callback after real stage readiness, not gameplay combat/result progression.",
+    "Only the-pit full stage renderer and the first 24 roster entries/stage thumbnails are part of this targeted suite; no exhaustive 201-character / 187-stage certification.",
+    "Reduced-motion component prop is tested; the independent operating-system media-query path is not separately asserted.",
+    "Native selection/deselection drawings remain unavailable. Feedback states are interface behavior; no sprite or 1:1 lore/art certification is inferred.",
+    "Desktop and mobile refer to Chromium viewports, not physical device execution."
+  ],
+  "priorAttemptNotes": [
+    "Initial local Chromium launcher was incomplete and Playwright CDN download returned 403; a recognized npm Chromium package was used successfully.",
+    "Early fixture asset collection used an abbreviated Machiko ID; corrected to machiko-noguchi with original tracked assets before final run.",
+    "An early run opened multiple stage contexts concurrently and the browser exited under memory pressure; final runner closes each scenario context before the next.",
+    "Initial portrait failure injection targeted PNG while the actual source is WebP; final run blocks the exact WebP request and verifies recovery."
+  ],
+  "sourceCommitKind": "local-tested-commit; remote publication SHA is not asserted",
+  "sourceVerification": "The 7 SHA-256 source fingerprints are the primary proof. Every fingerprint matches the local tested commit; a connector publication may create a different commit SHA with identical file contents.",
+  "publishedApplicationCommit": "651125da75b76bacd2d59b66f18bb43ae30f2218",
+  "publishedApplicationTree": "0be13c3ceb3052fab8e26578fa20ef9a7dd4a29a",
+  "publicationProof": "Published tree equals the complete local tested tree; fetched branch and all seven SHA-256 fingerprints verified before adding this report."
+}

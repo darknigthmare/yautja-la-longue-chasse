@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "batchId": "pit-selection-jungle-hunter-20261127",
+  "createdOn": "2026-11-27",
+  "sourceBaseline": "2769b094862aea97f10fc0e5c4f1154489a8a8bc",
+  "fighterId": "jungle-hunter",
+  "variantId": "jungle-hunter-avec-casque-53f4eb349a",
+  "status": "blocked_generation",
+  "tool": "builtin-image_gen",
+  "requestedImageCount": 4,
+  "attemptedImageCount": 1,
+  "generatedImageCount": 0,
+  "admittedImageCount": 0,
+  "oneToOneCertified": false,
+  "fluidityCertified": false,
+  "reference": {
+    "path": "public/game/sprites/v44/user-hunters/53f4eb349aa8bf5a4584ae8fd6e62685f89ab46a624f182854dde48acdefc3f8.png",
+    "sha256": "53f4eb349aa8bf5a4584ae8fd6e62685f89ab46a624f182854dde48acdefc3f8",
+    "sizeBytes": 2341345,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "alphaOver2BBox": [
+      27,
+      60,
+      1018,
+      1494
+    ],
+    "nativeFacing": "right",
+    "inspection": "Original PNG visually inspected before generation. Identity, proportions and equipment used as invariants.",
+    "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+    "sourceEntry": "YAUTJA_NECA_84_PAIRES/01_FILMS/jungle_hunter/avec_casque.png"
+  },
+  "constraints": [
+    "One complete character per PNG",
+    "True native alpha; no pixel editing, crop, mirror or substitution",
+    "Same exact masked appearance and anatomical equipment ownership",
+    "Independent deselection drawings, never reversed selection",
+    "Keep source artwork unchanged",
+    "No candidate may be labelled validated or canon-certified",
+    "Measure each output before integration; no output exists for this attempt"
+  ],
+  "plannedAssets": [
+    {
+      "id": "selection-01-right",
+      "clip": "selection",
+      "order": 1,
+      "status": "blocked_generation",
+      "attemptStatus": "output-rejected",
+      "attempted": true,
+      "outputPath": null,
+      "promptPath": "selection-01-right.prompt.txt",
+      "intent": "Attention initiale : légère levée du masque et du torse, mains et appuis préservés."
+    },
+    {
+      "id": "selection-02-right",
+      "clip": "selection",
+      "order": 2,
+      "status": "blocked_generation",
+      "attemptStatus": "not-attempted",
+      "attempted": false,
+      "outputPath": null,
+      "intent": "Acquiescement silencieux et posture ferme, sans arme ni geste rituel ajouté."
+    },
+    {
+      "id": "deselection-01-right",
+      "clip": "deselection",
+      "order": 1,
+      "status": "blocked_generation",
+      "attemptStatus": "not-attempted",
+      "attempted": false,
+      "outputPath": null,
+      "intent": "Relâchement indépendant : main libre et épaule redescendent, sans inversion d’une pose de sélection."
+    },
+    {
+      "id": "deselection-02-right",
+      "clip": "deselection",
+      "order": 2,
+      "status": "blocked_generation",
+      "attemptStatus": "not-attempted",
+      "attempted": false,
+      "outputPath": null,
+      "intent": "Fin de relâchement vers la garde, dessin distinct conservant pieds, caméra et équipement."
+    }
+  ],
+  "failure": {
+    "asset": "selection-01-right",
+    "httpStatus": 400,
+    "code": "moderation_blocked",
+    "stage": "output",
+    "categories": [
+      "other"
+    ],
+    "requestId": "452ba807-f69d-4eaa-b28a-fc9e61addb4e",
+    "message": "Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 452ba807-f69d-4eaa-b28a-fc9e61addb4e.",
+    "action": "No rewritten request to bypass the filter, no CLI/API fallback, no substitute asset; remaining images were not attempted."
+  },
+  "runtimeRequirement": "Selection/deselection may use the existing static portrait as a declared fallback. No generated transition may be enabled from this manifest.",
+  "publicAssets": []
+}
