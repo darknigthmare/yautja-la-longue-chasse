@@ -89,6 +89,8 @@ try {
     await viewport.locator("[data-o6-town-saar]").waitFor();
     await act("begin");
     assert.equal((await receipt()).carriesPiece, true);
+    assert.equal(await viewport.locator("[data-o6-town-piece]").count(), 1);
+    assert.equal(await viewport.locator("[data-o6-town-cohort]").count(), partial ? 2 : 3);
     assert.equal((await receipt()).race.success, !partial);
     assert.match(await page.locator("body").innerText(), partial ? /La manche attendra/ : /Yena te montre comment porter/);
     await street("workshops");
@@ -112,6 +114,7 @@ try {
     await shot("02-grille-ouverte");
     await visitForge("deliver");
     assert.equal((await receipt()).carriesPiece, false);
+    assert.equal(await viewport.locator("[data-o6-town-piece]").count(), 0);
 
     const room = n.homeworldInteriorForBuildingV64("deep-forge");
     const exit = n.homeworldWayfindingInteriorRouteV75(room, await nav.position(), "exit");
