@@ -139,7 +139,8 @@ try {
   await runFrom(legacyCanonicalCohortFixture(), async page => {
     const enterHouse = async () => {
       const walk = await openWorld(page, "luminous-marshes");
-      await walk.walkTo(legacyRegions.HOMEWORLD_REGION_INTERIOR_V68.service);
+      const service = legacyRegions.HOMEWORLD_REGION_INTERIOR_V68.service;
+      await walk.walkTo({ x: service.x, y: service.y + 70 });
       await walk.interact();
       await page.locator("[data-open-legacy-cohort-r2]").click();
     };
@@ -147,6 +148,11 @@ try {
     const scene = page.locator('[data-legacy-finale="cohort"]');
     await scene.waitFor();
     assert.equal(await scene.getAttribute("data-legacy-cohort-arrival"), "waiting");
+    const youthCount = await scene.locator("img[data-speaker]").evaluateAll(async images => {
+      await Promise.all(images.map(image => image.decode()));
+      return images.filter(image => image.naturalWidth > 0).length;
+    });
+    assert.equal(youthCount, 4);
     await action(scene, "greet").click();
     assert(await action(scene, "lead").isDisabled());
     await capture(page, "m059-cohorte-au-seuil");
