@@ -1,0 +1,86 @@
+name: Audit reproducible Bible workbook
+on:
+  push:
+    branches: [codex/verify-bible-reine-piste-classeur-20261128]
+permissions:
+  contents: read
+jobs:
+  workbook:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 'cf5cff61087ef0196ce304f610fcdd15e9b832ea'
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/build-bible-inventory-workbook-20261122.mjs
+            /scripts/lib/workbook-ooxml.mjs
+            /production/INVENTAIRE_BIBLE_20261122.*
+            /production/INVENTAIRE_BIBLE_20261127.*
+            /docs/campagne/BIBLE_DE_CAMPAGNE.md
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Compare both workbooks against the canonical generator and inspect the five worksheets
+        run: |
+          node scripts/build-bible-inventory-workbook-20261122.mjs --check
+          node scripts/build-bible-inventory-workbook-20261122.mjs --date=20261127 --check
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from collections import Counter
+          from pathlib import Path
+          from xml.etree import ElementTree as ET
+          from zipfile import ZipFile
+
+          path = Path('production/INVENTAIRE_BIBLE_20261127')
+          data = json.loads(path.with_suffix('.json').read_text(encoding='utf-8'))
+          rows = data['missions']
+          assert len(rows) == len(set(item['id'] for item in rows)) == 68
+          assert Counter(data['stats']) == Counter(row['etatSurMain'] for row in rows)
+          assert data['refMain'] == '6f4cf9e5790327418a4097ddf26967d496a91dee'
+          assert data['stats'] == {'RACCORDE': 67, 'PARTIEL_MISSION': 1, 'VOISIN': 0, 'NON_COMMENCE_OBSERVE': 0}
+          assert data['bilanComposition']['projectionDuCandidat'] == {'RACCORDE': 67, 'PARTIEL_MISSION': 1, 'VOISIN': 0, 'NON_COMMENCE_OBSERVE': 0}
+          assert len(data['transverses']) == 22
+          assert all(item['etat'] != 'NON_COMMENCE_OBSERVE' for item in data['transverses'])
+          assert {p['pr'] for p in data['aventants'] if p['fusionnee']} >= {188, 189, 190, 191, 194, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207}
+          assert len({p['pr'] for p in data['aventants']}) == len(data['aventants'])
+          assert {r['id'] for r in rows if r['etatSurMain'] == 'PARTIEL_MISSION'} == {'R2-M017'}
+          assert any(row['id'] == 'O6_M01_PREMIER_CHOC' and row['etat'] == 'RACCORDE' for row in data['transverses'])
+          assert any(row['id'] == 'O6_M02_SACS_COHORTE' and row['etat'] == 'RACCORDE' for row in data['transverses'])
+          assert any(row['id'] == 'O6_M03_ATELIERS_COHORTE' and row['etat'] == 'RACCORDE' for row in data['transverses'])
+          assert any(row['id'] == 'O6_M04_RIVALITE' for row in data['transverses'])
+          source = data.get('sourceDocument', {})
+          bible_file = Path(source.get('path', data['source']))
+          bible_bytes = bible_file.read_bytes()
+          if 'blob' in source:
+              prefix = ('blob ' + str(len(bible_bytes)) + chr(0)).encode('ascii')
+              assert hashlib.sha1(prefix + bible_bytes).hexdigest() == source['blob']
+          assert data['source'].endswith('/blob/' + source['commit'] + '/' + source['path'])
+          bible = bible_bytes.decode('utf-8').splitlines()
+          for row in rows:
+              label = row['id']
+              assert bible[row['table']['ligne'] - 1].startswith(f"| {row['ordre']} | {label} | ")
+              heading = bible[row['fiche'] - 1]
+              if label == 'R2-M024':
+                  assert heading.startswith('## Acte V — La Longue Chasse')
+              else:
+                  assert heading.startswith(f'### {label} — ')
+          main = '{http://schemas.openxmlformats.org/spreadsheetml/2006/main}'
+          with ZipFile(path.with_suffix('.xlsx')) as archive:
+              assert archive.testzip() is None
+              assert len(set(archive.namelist())) == len(archive.namelist())
+              for name in archive.namelist():
+                  if name.endswith(('.xml', '.rels')):
+                      ET.fromstring(archive.read(name))
+              wb = ET.fromstring(archive.read('xl/workbook.xml'))
+              sheets = [n.attrib['name'] for n in wb.findall('.//' + main + 'sheet')]
+              assert sheets == ['Synthèse', 'Campagne', 'Transverses', 'Avenants', 'Preuves']
+              mission_sheet = ET.fromstring(archive.read('xl/worksheets/sheet2.xml'))
+              assert len([n for n in mission_sheet.findall('.//' + main + 'hyperlink') if n.attrib['ref'].startswith('D')]) == len(rows)
+              proof = ET.fromstring(archive.read('xl/worksheets/sheet5.xml'))
+              print('QUALIFIED', len(rows), len(data['transverses']), len(data['aventants']), len(proof.findall('.//' + main + 'hyperlink')), sheets)
+          PY
