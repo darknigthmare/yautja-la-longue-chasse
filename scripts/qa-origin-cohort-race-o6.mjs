@@ -65,18 +65,23 @@ try {
         return button instanceof HTMLButtonElement && !button.disabled;
       });
     }
+    async function towardNextBag(x) {
+      await walk(course, x - 12);
+      await named(course, "Marcher à droite").click();
+      assert.ok(Math.abs(Number(await course.getAttribute("data-position")) - x) <= 6);
+    }
     async function firstTwoJumps() {
       await stage("start");
-      await walk(course, n.COHORT_COURSE_O6.start.launch);
+      await towardNextBag(n.COHORT_COURSE_O6.start.launch);
       await named(course, "Sauter").click();
       await stage("lower");
-      await walk(course, n.COHORT_COURSE_O6.lower.launch);
+      await towardNextBag(n.COHORT_COURSE_O6.lower.launch);
       await named(course, "Sauter").click();
       await stage("upper");
       const steps = (await saved()).round;
       assert.equal(steps.length, 2);
       assert.equal(steps.every(step => step.type === "jump"), true);
-      await walk(course, n.COHORT_COURSE_O6.upper.launch);
+      await towardNextBag(n.COHORT_COURSE_O6.upper.launch);
     }
     async function capture(name) {
       await page.screenshot({ path: join(output, (legacy ? "mobile-" : "desktop-") + name + ".png"), animations: "disabled" });

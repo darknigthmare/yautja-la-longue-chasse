@@ -120,16 +120,23 @@ export default function OriginCohortRaceO6({ checkpoint, record, bindings, pause
   });
   useEffect(() => {
     if (!canWait) return;
-    const started = performance.now();
-    let timer = 0;
+    let started = 0, timer = 0;
     function listen() {
+      if (document.hidden) return;
       const elapsed = Math.floor(performance.now() - started);
       if (elapsed < COHORT_SIGNAL_WAIT_O6) {
         timer = window.setTimeout(listen, COHORT_SIGNAL_WAIT_O6 - elapsed + 10);
       } else confirmSignal(elapsed);
     }
-    timer = window.setTimeout(listen, COHORT_SIGNAL_WAIT_O6 + 20);
-    return () => window.clearTimeout(timer);
+    function watch() {
+      window.clearTimeout(timer);
+      if (document.hidden) return;
+      started = performance.now();
+      timer = window.setTimeout(listen, COHORT_SIGNAL_WAIT_O6 + 20);
+    }
+    watch();
+    document.addEventListener("visibilitychange", watch);
+    return () => { window.clearTimeout(timer); document.removeEventListener("visibilitychange", watch); };
   }, [canWait, x]);
 
   const walk = useCallback((direction: CohortDirectionO6) => {
