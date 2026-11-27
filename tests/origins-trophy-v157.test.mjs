@@ -145,3 +145,39 @@ test("an evicted workshop trophy can be replaced after repeating its gestures", 
   assert.equal(state.transitions["STORY5-TR-O2-02"].choice, 1);
   assert.equal(T.trophyTransitionStepV157(state, "claim-3", 0, ctx(["claim-3"])).ok, false);
 });
+
+test("O6 bench keeps the exact claim on its support and orders the factual cartel", () => {
+  const item = { id: "claim-1", label: "Vey", usage: "displayed", record: {
+    id: "claim-1", definitionId: "trophy-vey", targetName: "Vey", targetKind: "human", partId: "insignia",
+    condition: "intact", quality: "blooded", missionId: "jungle-vey", difficultyId: "normal", score: 75,
+    claimedAt: "2026-11-27T09:00:00.000Z", workshop: {
+      completedActions: ["clean", "prepare"], bestScore: 80, lastCompletedAt: "2026-11-27T10:00:00.000Z",
+    },
+  } };
+  const panel = "app/game/OriginTrophyTransitionPanelV157.tsx";
+  const render = (origin, trophies = [item]) => source.render(panel, {
+    origin, trophies, atWorkshop: true, disabled: false, onAction: () => ({ ok: true, message: "" }),
+  });
+  const idle = render(O.createOriginV151("O6"));
+  assert.match(idle, /data-o6-trophy-bench="claim-1"/);
+  assert.match(idle, /data-o6-trophy-turned="false"/);
+  assert.match(idle, /Relevé de la pièce exposée/);
+  assert.match(idle, /\/game\/assets\/v15\/trophies\/trophy-vey\.webp/);
+  assert.doesNotMatch(idle, /data-o6-trophy-condition|data-o6-trophy-cartel/);
+
+  const stored = play("O6", 1).state;
+  const receipt = render(stored);
+  assert.match(receipt, /data-o6-trophy-turned="true"/);
+  assert.match(receipt, /data-o6-trophy-condition="true">Intact/);
+  assert.match(receipt, /data-o6-trophy-cartel/);
+  assert.ok(receipt.indexOf("nettoyage, préparation") < receipt.indexOf("Provenance"));
+  const missing = render(stored, [{ ...item, id: "claim-2", record: { ...item.record, id: "claim-2" } }]);
+  assert.match(missing, /La pièce de ce cartel a quitté la réserve/);
+  assert.doesNotMatch(missing, /data-o6-trophy-bench="claim-2"/);
+  const emptyReserve = render(stored, []);
+  assert.match(emptyReserve, /data-origin-resolved="success"/);
+  assert.match(emptyReserve, /La pièce de ce cartel a quitté la réserve/);
+  assert.doesNotMatch(emptyReserve, /data-origin-trophy-locked/);
+  assert.deepEqual(stored.consumed, ["STORY5-TR-O6-02:resolved"]);
+  assert.equal(stored.ending, undefined);
+});

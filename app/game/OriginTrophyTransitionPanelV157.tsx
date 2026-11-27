@@ -6,6 +6,9 @@
  * `onAction`, qui n'actualise l'écran qu'après l'écriture confirmée.
  */
 import { useState } from "react";
+import type { TrophyRecord } from "./types";
+import type { TrophyUsageV147 } from "./systems/trophyUsagesV147";
+import OriginTrophyBenchO6 from "./OriginTrophyBenchO6";
 import { isFutureOriginV151, originOfSaveV151, originV151 } from "./systems/originsV151";
 import { trophyTransitionOpenV157, trophyTransitionRecordV157, trophyTransitionV157 } from "./systems/originTrophyV157";
 import styles from "./ResidencePanelV149.module.css";
@@ -19,7 +22,7 @@ export default function OriginTrophyTransitionPanelV157({ origin, trophies, atWo
   /** V158: voie originals really under the hunter's custody. */
   heldOriginalIds?: readonly string[];
   /** The player's own trophies (SaveGame.trophies), with a display label. */
-  trophies: readonly { id: string; label: string }[];
+  trophies: readonly { id: string; label: string; record?: TrophyRecord; usage?: TrophyUsageV147 | null }[];
   onAction(action: OriginTrophyActionV157): { ok: boolean; message: string };
 }) {
   const [message, setMessage] = useState("");
@@ -36,7 +39,7 @@ export default function OriginTrophyTransitionPanelV157({ origin, trophies, atWo
     <h3>{transition.title}</h3>
     <p className={styles.meta}>Voie {state.originId} · {originV151(state.originId)?.title}{state.source === "legacy-default" && " (origine par défaut d’une ancienne partie)"}</p>
   </header>;
-  if (!open) return (
+  if (!open && !(state.originId === "O6" && record?.resolved)) return (
     <section className={styles.panel} data-origin-trophy-v157={transition.id} data-origin-v151={state.originId} data-origin-trophy-locked="no-trophy">
       {header}
       <p className={styles.note}>Cette scène demande un trophée réellement en ta possession.</p>
@@ -46,17 +49,22 @@ export default function OriginTrophyTransitionPanelV157({ origin, trophies, atWo
   const trophyId = bound ?? (picked && ownedIds.includes(picked) ? picked : ownedIds[0]);
   const act = (action: OriginTrophyActionV157) => { const result = onAction(action); setMessage(result.message); };
   const done = record?.steps ?? 0;
+  const bench = state.originId === "O6" && trophies.find(trophy =>
+    trophy.id === (record?.resolved ? record.trophyId : trophyId));
 
   return (
     <section className={styles.panel} data-origin-trophy-v157={transition.id} data-origin-v151={state.originId}>
       {header}
-      <p>{transition.scene}</p>
+      <p>{state.originId === "O6" ? "Oriente la prise sur son support et relève les détails que son registre conserve." : transition.scene}</p>
+      {bench && bench.record && <OriginTrophyBenchO6 trophy={bench.record} usage={bench.usage} gestures={done} choice={record?.choice} />}
+      {state.originId === "O6" && record?.resolved && !bench &&
+        <p className={styles.note}>La pièce de ce cartel a quitté la réserve.</p>}
       {holdsOriginal ? <p className={styles.note} data-origin-trophy-original={transition.originalId}>Original sous ta garde : {transition.object.name}. Son propriétaire et son emplacement restent inchangés par l’exposition.</p>
         : !transition.object.inGame && <p className={styles.note} data-origin-trophy-absent>{transition.object.absence}</p>}
       {record?.resolved ? <div className={styles.block} data-origin-resolved={record.success ? "success" : "resolved"}>
         <p><b>{transition.options[record.choice!]}</b></p>
         <p>{transition.reactions[record.choice!]}</p>
-        <p className={styles.note}>{transition.consequence}</p>
+        <p className={styles.note}>{state.originId === "O6" ? "La pièce conserve sa provenance et son emplacement." : transition.consequence}</p>
       </div> : <>
         <label>
           Trophée posé au banc{" "}
@@ -74,7 +82,7 @@ export default function OriginTrophyTransitionPanelV157({ origin, trophies, atWo
           {transition.options.map((option, index) => <button key={option} disabled={disabled} data-origin-choice={index}
             onClick={() => act({ kind: "choose", trophyId, choice: index as 0 | 1 })}>{option}</button>)}
         </div>}
-        <p className={styles.note}>{transition.choices}</p>
+        {state.originId !== "O6" && <p className={styles.note}>{transition.choices}</p>}
       </>}
       {message && <p role="status" className={styles.message}>{message}</p>}
     </section>

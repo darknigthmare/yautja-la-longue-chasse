@@ -6973,8 +6973,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             <OriginTrophyTransitionPanelV157 origin={save.originV151} atWorkshop={!trophyWorkshop && pendingTrophyCommit === null}
               heldOriginalIds={heldPathOriginalIdsV158(normalizePathObjectsV158(save.pathObjectsV158))}
               disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
-              trophies={trophyRecords.map((trophy: { id: string; targetName: string; claimedAt: string }) =>
-                ({ id: trophy.id, label: `${trophy.targetName} · ${new Date(trophy.claimedAt).toLocaleDateString("fr-FR")}` }))}
+              trophies={trophyRecords.map(trophy => ({
+                id: trophy.id, label: `${trophy.targetName} · ${new Date(trophy.claimedAt).toLocaleDateString("fr-FR")}`,
+                record: trophy, usage: trophyAssignments?.[trophy.id]?.usage ?? "reserve",
+              }))}
               onAction={originTrophyActionV157} />
             <Suspense fallback={<p>Lecture des distinctions THE PIT…</p>}>
               <PitHonorsPanel owner={save.createdAt} onOpenPit={openPit} />
