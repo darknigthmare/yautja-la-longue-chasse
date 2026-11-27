@@ -9992,6 +9992,7 @@ function updateBoss(
       Math.abs(dx) < 900 &&
       bossCoverOcclusion < 0.72 &&
       !player.cloaked,
+    guardianHasSignal: !guardianContactLost,
     playerCloaked: player.cloaked,
     playerOnHighGround:
       player.y + player.height < state.world.floorY - 70,

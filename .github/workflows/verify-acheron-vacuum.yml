@@ -53,12 +53,13 @@ jobs:
       - name: Typecheck the native hunt
         run: npm run typecheck
       - name: Lint changed sources and tests
-        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/HuntCanvas.tsx app/game/sound.ts app/game/systems/acheronVacuum.ts tests/acheron-vacuum.test.mjs
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/HuntCanvas.tsx app/game/GameClient.tsx app/game/sound.ts app/game/systems/acheronVacuum.ts app/game/systems/huntSystems.ts tests/acheron-vacuum.test.mjs
 
       - name: Play scan and movement before the Guardian
         run: |
           node node_modules/playwright-core/cli.js install chromium
           node scripts/qa-acheron-vacuum.mjs
+          cat outputs/qa-acheron-vacuum/report.json
       - name: Save screenshots and tested receipts
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

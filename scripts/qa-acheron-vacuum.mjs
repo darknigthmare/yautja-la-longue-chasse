@@ -8,7 +8,7 @@ import { createServer } from "vite";
 
 const root = process.cwd();
 const canvasPath = "app/game/HuntCanvas.tsx";
-const revision = "2efeb34cf04a6d3062c4cdb2d6192d12521801ee";
+const revision = "54da653125d183a2395f3fc6799e36067b8b7513";
 const product = await readFile(canvasPath, "utf8");
 assert.equal(product, execFileSync("git", ["show", revision + ":" + canvasPath], { encoding: "utf8" }));
 const setup = `
@@ -31,7 +31,8 @@ const setup = `
     window.__observeAcheron = () => ({
       phase: game.phase, noise: game.noiseEvents.length, scent: game.scentNodes.length,
       playerX: game.player.x, grounded: game.player.grounded, bossX: game.boss.x,
-      telegraph: game.boss.telegraph, paused: game.paused, elapsed: game.elapsed,
+      telegraph: game.boss.telegraph, sequence: game.bossMechanics.sequence,
+      cooldown: game.bossMechanics.attackCooldownSeconds, paused: game.paused, elapsed: game.elapsed,
     });
 `;
 const anchor = "    const fixedStep = 1 / 60;";
@@ -86,17 +87,21 @@ try {
   const observe = () => page.evaluate(() => window.__observeAcheron());
   await page.waitForFunction(() => window.__observeAcheron?.().elapsed > 0.25);
   const idle = await observe();
-  await page.waitForFunction(() => window.__observeAcheron?.().elapsed > 0.90);
+  await page.waitForFunction(() => window.__observeAcheron?.().elapsed > 1.65);
   const quiet = await observe();
   assert.equal(quiet.bossX, idle.bossX, "idle hunter stays outside Guardian acquisition");
   assert.equal(await indicator.getAttribute("data-acheron-signal"), "clear");
+  assert.equal(quiet.sequence, 0, "the Guardian never spends an attack without a received signal");
+  assert.equal(quiet.cooldown, 0);
   assert.equal(quiet.noise, 0);
   assert.equal(quiet.scent, 0);
   report.events.push({ action: "quiet", ...quiet });
 
   await page.keyboard.press("v");
   await page.locator('[data-acheron-signal="energy"]').waitFor({ timeout: 8_000 });
+  await page.waitForFunction(() => window.__observeAcheron?.().telegraph > 0);
   const runningEnergy = await observe();
+  assert.equal(runningEnergy.sequence, 1);
   assert.equal(runningEnergy.noise, 0);
   assert.equal(runningEnergy.scent, 0);
   assert.ok(await page.evaluate(() => window.__acheronSfx?.includes("vacuum-energy")));
