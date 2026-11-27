@@ -56,6 +56,6 @@ test("each of the 15 original PNGs decodes to a registered, byte-identical study
 test("the native Pit only reports the first actual transition to a completed bonus trial", async () => {
   const source = (await read("app/game/PitCanvas.tsx")).toString("utf8");
   const flow = (await read("app/game/PitExperienceV79.tsx")).toString("utf8");
-  assert.match(source, /previousTrial\.status === "running" && frame\.trial\.status === "success"\) \{\s*masksBrokenPractice\?\.onRiposteComplete\(\)/);
+  assert.match(source, /!isPitPrecisionSessionV2\(previousTrial\) && previousTrial\.status === "running" && frame\.trial\.status === "success"\) \{\s*masksBrokenPractice\?\.onRiposteComplete\(\)/);
   assert.match(flow, /<PitMasksBrokenPrologue key=\{ownerSaveCreatedAt\}/);
 });

@@ -2,16 +2,19 @@
 
 import type { RefObject } from "react";
 import { PIT_FIGHTERS, PIT_TICK_RATE } from "./systems/pitCombat";
-import { PIT_BONUS_TARGET_V1, pitBonusResultV1, pitBonusRulesV1, type PitBonusDifficultyV1, type PitBonusTrialV1 } from "./systems/pitBonusTrialV1";
-import type { PitBonusRecordsReadV1 } from "./systems/pitBonusRecordsV1";
+import { PIT_BONUS_TARGET_V1, type PitBonusDifficultyV1 } from "./systems/pitBonusTrialV1";
+import { PIT_PRECISION_TARGET_V1 } from "./systems/pitPrecisionTrialV1";
+import { isPitPrecisionSessionV2, pitBonusSessionResultV2, pitBonusSessionRulesV2,
+  type PitBonusSessionV2, type loadPitBonusSessionRecordsV2 } from "./systems/pitBonusSessionV2";
 import styles from "./PitBonusTrialPanelV1.module.css";
 
 interface Props {
-  readonly trial: PitBonusTrialV1;
+  readonly trial: PitBonusSessionV2;
   readonly panelRef: RefObject<HTMLDivElement | null>;
   readonly controls: string;
   readonly assetsReady: boolean;
-  readonly records: PitBonusRecordsReadV1;
+  readonly precisionRangeReady?: boolean;
+  readonly records: ReturnType<typeof loadPitBonusSessionRecordsV2>;
   readonly recordNotice: string;
   readonly recordSaved: boolean;
   readonly inactive: boolean;
@@ -22,38 +25,49 @@ interface Props {
   readonly onRetryAssets: () => void;
 }
 
-export default function PitBonusTrialPanelV1({ trial, panelRef, controls, assetsReady, records,
+export default function PitBonusTrialPanelV1({ trial, panelRef, controls, assetsReady, precisionRangeReady, records,
   recordNotice, recordSaved, inactive, onBegin, onPrepare, onAbandon, onSave, onRetryAssets }: Props) {
-  const rules = pitBonusRulesV1(trial.difficulty), result = pitBonusResultV1(trial);
+  const precision = isPitPrecisionSessionV2(trial);
+  const target = precision ? PIT_PRECISION_TARGET_V1 : PIT_BONUS_TARGET_V1;
+  const rules = pitBonusSessionRulesV2(trial), result = pitBonusSessionResultV2(trial);
   const running = trial.status === "running", briefing = trial.status === "briefing";
   const best = records.records?.best[trial.difficulty];
-  const signal = trial.stage === "signal" ? "ASSAUT BAS ANNONCÉ" : trial.stage === "defend" ? "GARDE BASSE"
-    : trial.stage === "counter" ? "RIPOSTEZ" : "REPLACEMENT";
-  return <div ref={panelRef} tabIndex={-1} className={styles.panel} role="region" aria-label="Épreuve bonus de riposte"
+  const signal = precision ? trial.stage === "signal" ? "CIBLE ANNONCÉE" : trial.stage === "aim" ? "TIREZ"
+    : trial.stage === "flight" ? "PROJECTILE EN VOL" : "REPLACEMENT"
+    : trial.stage === "signal" ? "ASSAUT BAS ANNONCÉ" : trial.stage === "defend" ? "GARDE BASSE"
+      : trial.stage === "counter" ? "RIPOSTEZ" : "REPLACEMENT";
+  return <div ref={panelRef} tabIndex={-1} className={styles.panel} role="region" aria-label={precision ? "Épreuve bonus de précision" : "Épreuve bonus de riposte"}
     data-pit-bonus={trial.status} data-bonus-stage={trial.stage} data-bonus-ticks={trial.elapsedTicks}
     data-bonus-completed={trial.completed} data-bonus-errors={trial.mistakes} data-bonus-difficulty={trial.difficulty}
+    data-bonus-kind={precision ? "precision" : "riposte"}
     inert={inactive}>
     <div className={styles.heading}>
-      <div><span className={styles.eyebrow}>ÉPREUVE BONUS · SIMULATION PIT</span><h2>Épreuve de riposte</h2></div>
+      <div><span className={styles.eyebrow}>ÉPREUVE BONUS · SIMULATION PIT</span><h2>{precision ? "Épreuve de précision" : "Épreuve de riposte"}</h2></div>
       <strong className={styles.time} aria-label={`${Math.ceil(result.remainingTicks / PIT_TICK_RATE)} secondes restantes`}>
         {Math.ceil(result.remainingTicks / PIT_TICK_RATE)}<small> S</small>
       </strong>
     </div>
     {!running && <p>Préparation facultative avant un rival. Création originale de THE PIT, avec les gestes du kit standard et les visuels déjà disponibles. Le partenaire simulé est {PIT_FIGHTERS[trial.dummyId].name}.</p>}
     {briefing ? <>
-      <p className={styles.objective}><strong>Réussir {PIT_BONUS_TARGET_V1} gardes suivies d’une riposte.</strong> Attendez l’assaut bas annoncé, bloquez, puis relâchez la garde, approchez et touchez avec une frappe normale. Une technique ou une projection ne valide pas la riposte.</p>
+      <p className={styles.objective}>{precision
+        ? <><strong>Toucher {target} cibles avec un seul plasma par ouverture.</strong> Attendez TIREZ, lancez le plasma puis laissez son trajet se terminer. Gardez votre ligne de départ : un tir à bout portant, un tir prématuré, un second tir ou une frappe ne valide pas la cible. Les séquences alternent la distance et le côté de départ.</>
+        : <><strong>Réussir {target} gardes suivies d’une riposte.</strong> Attendez l’assaut bas annoncé, bloquez, puis relâchez la garde, approchez et touchez avec une frappe normale. Une technique ou une projection ne valide pas la riposte.</>}</p>
       <p>{controls}</p>
       <div className={styles.choices} role="group" aria-label="Niveau d’aide de l’épreuve">
-        <button type="button" aria-pressed={trial.difficulty === "standard"} onClick={() => onPrepare("standard")}>Standard · 40 s · 3 erreurs</button>
-        <button type="button" aria-pressed={trial.difficulty === "assisted"} onClick={() => onPrepare("assisted")}>Timing accompagné · 60 s · 5 erreurs</button>
+        <button type="button" aria-pressed={trial.difficulty === "standard"} onClick={() => onPrepare("standard")}>Standard · {precision ? 45 : 40} s · 3 erreurs</button>
+        <button type="button" aria-pressed={trial.difficulty === "assisted"} onClick={() => onPrepare("assisted")}>Timing accompagné · {precision ? 75 : 60} s · 5 erreurs</button>
       </div>
       <p>Vie, ressources et objets remis à leur état initial entre les séquences. Trois erreurs (cinq avec l’aide) ou la fin du chrono arrêtent la tentative. Le chrono attend votre départ.</p>
       <p role="status">{assetsReady ? "Visuels chargés. Prêt à commencer." : "Visuels requis en attente : l’épreuve et le chronomètre restent arrêtés."}</p>
       {!assetsReady && <button type="button" onClick={onRetryAssets}>Réessayer les visuels</button>}
     </> : <>
       <p className={styles.signal} role="status" aria-live="polite" aria-atomic="true">{running ? signal : trial.status === "success" ? "ÉPREUVE ACCOMPLIE" : "ÉPREUVE À REPRENDRE"}</p>
-      <div className={styles.metrics}><span>Ripostes <strong>{trial.completed}/{PIT_BONUS_TARGET_V1}</strong></span><span>Erreurs <strong>{trial.mistakes}/{rules.maxMistakes}</strong></span><span>Score <strong>{result.score}</strong></span></div>
+      <div className={styles.metrics}><span>{precision ? "Cibles" : "Ripostes"} <strong>{trial.completed}/{target}</strong></span><span>Erreurs <strong>{trial.mistakes}/{rules.maxMistakes}</strong></span><span>Score <strong>{result.score}</strong></span></div>
       <p className={styles.message}>{trial.message}</p>
+      {precision && running && (trial.stage === "signal" || trial.stage === "aim") &&
+        <p className={styles.range} data-precision-range={precisionRangeReady ? "ready" : "too-close"}>
+          {precisionRangeReady ? "Distance de tir respectée." : "Trop près : reculez avant de tirer."}
+        </p>}
       {!running && <p><strong>Rang : {result.rank}</strong> · {(trial.elapsedTicks / PIT_TICK_RATE).toFixed(2)} s de simulation. Score : 1 000 par séquence, −200 par erreur, puis bonus de temps en cas de réussite.</p>}
     </>}
     {!running && <>

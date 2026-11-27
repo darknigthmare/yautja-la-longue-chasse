@@ -25,3 +25,6 @@
 .panel[data-pit-bonus="running"] .actions button { padding: 5px 9px; font-size: .7rem; }
 @media (max-width:650px) { .panel { width: calc(100% - 18px); max-height: calc(100dvh - 20px); font-size: .8rem; } .panel[data-pit-bonus="running"] { top: 88px; padding: 8px; } .panel[data-pit-bonus="running"] .eyebrow { display: none; } .panel[data-pit-bonus="running"] .message { font-size: .72rem; } }
 @media (max-height:500px) { .panel[data-pit-bonus="running"] { top: 75px; left: 10px; transform: none; width: min(340px,55%); } .panel[data-pit-bonus="running"] .heading { display: none; } .panel[data-pit-bonus="running"] .message { font-size: .7rem; } }
+
+.range { margin: 0; color: #b3efd4; }
+.range[data-precision-range="too-close"] { color: #ffd0a0; }
