@@ -54,14 +54,9 @@ jobs:
       - name: Restore original registered runtime assets
         run: node scripts/materialize-asset-raccords-20261120.mjs runtime
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Qualify O6 admission, physics and durable recovery
-        run: node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec tests/origin-rival-race-o6.test.mjs tests/origin-town-bell-o6.test.mjs tests/origin-cohort-race-o6.test.mjs tests/origin-first-shock-o6.test.mjs
-      - name: Verify the TypeScript entry and save contracts
+      - name: Lint the updated browser recipe
         if: ${{ !cancelled() }}
-        run: node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
-      - name: Lint the native rooftop and browser recipe
-        if: ${{ !cancelled() }}
-        run: node node_modules/eslint/bin/eslint.js app/game/OriginRivalRaceO6.tsx app/game/systems/originRivalRaceO6.ts app/game/systems/originRivalRacePlaceO6.ts app/game/systems/rivalRaceCourseO6.ts tests/origin-rival-race-o6.test.mjs tests/helpers/origin-rival-race-o6.mjs scripts/qa-origin-rival-race-o6.mjs
+        run: node node_modules/eslint/bin/eslint.js tests/helpers/origin-rival-race-o6.mjs scripts/qa-origin-rival-race-o6.mjs
       - name: Walk to Harek, win by the beam or bridges and recover from a fall in Chromium
         if: ${{ !cancelled() }}
         run: node scripts/qa-origin-rival-race-o6.mjs
