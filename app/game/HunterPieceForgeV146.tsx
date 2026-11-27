@@ -13,6 +13,7 @@ import {
   type PieceColorsV146, type PieceZoneV146,
 } from "./hunterPiecesV146";
 import { CHROMATIC_PALETTE_PRESETS_V115 } from "./hunterChromaticsV113";
+import { ecologyV8EnemyForId } from "./ecologyV8";
 import {
   CUSTOMIZATION_MODES_V146, HUNTER_MARKS_V146, OUTFIT_SLOTS_V146, SKIN_PATTERN_IDS_V146,
   allowedMarksV146, allowedPiecesV148, allowedSkinPatternV146, assignModeOutfitV146, clanColorsForNpcV146, decodeOutfitShareCodeV146, deleteOutfitV146,
@@ -303,7 +304,7 @@ export default function HunterPieceForgeV146({
               <option value="">Sélection automatique dans la réserve</option>
               {selectedMaterialMissing && <option value={repairMaterial} disabled>Lot épuisé</option>}
               {repairArchive.map(entry => <option key={forgeMaterialKeyV146(entry)} value={forgeMaterialKeyV146(entry)}>
-                {entry.label} · {entry.speciesId} · {entry.count} · qualité {Math.round(entry.qualityTotal / entry.count)}
+                {entry.label} · {ecologyV8EnemyForId(entry.speciesId)?.name ?? entry.speciesId} · {entry.count} · qualité {Math.round(entry.qualityTotal / entry.count)}
               </option>)}
             </select>
           </label>}
