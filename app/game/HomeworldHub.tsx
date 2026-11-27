@@ -31,7 +31,7 @@ import HomeworldArchiveV106, {HomeworldArchiveJournalV106} from './HomeworldArch
 import {HOMEWORLD_ARCHIVE_V106} from './systems/homeworldArchiveDefinitionV106';
 import {defaultHomeworldArchiveV106,normalizeHomeworldArchiveV106} from './systems/homeworldArchiveLedgerV106';
 import {archiveActiveV106,archiveNearbyActionV106,archivePostReachedV106,createArchiveTransactionV106,sampleArchiveWalkV106,type ArchiveActionV106} from './systems/homeworldArchiveV106';
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent, type PointerEvent, type ReactNode } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent, type MouseEvent, type PointerEvent, type ReactNode } from "react";
 import { controlActionShortcut } from "./controlBindingLabels";
 import {
   acknowledgeYouthCityStopV172, actYouthCityStreetM003, advanceYouthCityGuideM003, completeYouthCityEncounterM003, nextYouthCityStopV172, startYouthCityErrandV172,
@@ -991,7 +991,9 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
         twilightInteractionO6(current, level, here, interiorId) !== order.action) return;
     const location = createHomeworldCheckpointV77(current.createdAt, level, here, interiorId, exteriorAnchorRef.current);
     const receipt = recordTwilightReturnO6(current, order, location);
-    let message = twilightReplyO6(current, order);
+    const reListening = current.originV151?.twilightReturnO6?.observations.some(id => id === order.action);
+    let message = !receipt && !reListening ? "Ce geste attend encore son poste ou le matériel précédent."
+      : twilightReplyO6(current, order);
     if (receipt) {
       clearInputs();
       const stopped = { ...here, vx: 0, vy: 0 };
@@ -1003,6 +1005,12 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     setAnnouncement(message);
     onNotify(message);
   }, [clearInputs, onNotify, onProgress, save.createdAt]);
+
+  const chooseTwilightReturnO6 = useCallback((event: MouseEvent<HTMLButtonElement>) => {
+    const value = event.currentTarget.dataset.o6TwilightChoice;
+    const choice = value === "defer" ? value : TWILIGHT_AMBITIONS_O6.find(option => option === value);
+    if (choice) submitTwilightReturnO6({ action: "declare", choice });
+  }, [submitTwilightReturnO6]);
 
   const startWorkshopTrialO6 = useCallback(() => {
     const current = saveRef.current;
@@ -1940,7 +1948,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
         <span data-o6-twilight-carry>Matériel porté.</span>}
       {twilightAction === "declare" && [...TWILIGHT_AMBITIONS_O6, "defer" as const].map(choice =>
         <button type="button" key={choice} data-o6-twilight-choice={choice} disabled={blocked}
-          onClick={() => submitTwilightReturnO6({ action: "declare", choice })}>{TWILIGHT_CHOICES_O6[choice]}</button>)}
+          onClick={chooseTwilightReturnO6}>{TWILIGHT_CHOICES_O6[choice]}</button>)}
     </section>}
     {!dialog && nextRouteM034 && (
       <HomeworldRouteJournalM034 route={nextRouteM034} disabled={blocked} onGuide={requestLandmarkV75} />
