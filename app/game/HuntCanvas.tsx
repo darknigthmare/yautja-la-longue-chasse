@@ -12092,13 +12092,25 @@ export default function HuntCanvas({
       });
     }
     const queuedEnemyTrophyIds = new Set<string>();
-    const queueEnemyTrophy = (enemyId: string) => {
+    const queueEnemyTrophy = (enemyId: string, initialLoad = true) => {
       const trophy = enemyTrophyGameplayForEnemyId(enemyId);
       if (!trophy || queuedEnemyTrophyIds.has(trophy.id)) return;
       queuedEnemyTrophyIds.add(trophy.id);
-      queueImage(trophy.runtimeUrl, (image) => {
-        assets.enemyTrophies[trophy.id] = image;
+      const task = loadImage(trophy.runtimeUrl).then((image) => {
+        if (alive) assets.enemyTrophies[trophy.id] = image;
       });
+      if (initialLoad) loadTasks.push(task);
+    };
+    let observedTrophyDrops: readonly RegularTrophyDrop[] | undefined;
+    let observedTrophyDropCount = 0;
+    const preloadFieldTrophyDrops = (initialLoad = false) => {
+      const drops = game.regularTrophyDrops;
+      if (drops === observedTrophyDrops && drops.length === observedTrophyDropCount) return;
+      observedTrophyDrops = drops;
+      observedTrophyDropCount = drops.length;
+      for (const drop of drops) {
+        if (!drop.collected) queueEnemyTrophy(drop.sourceEnemyId, initialLoad);
+      }
     };
     if (game.ecologyDeck.length === 0) {
       for (const enemyId of enemyV7IdsForMission(mission.id)) {
@@ -12127,6 +12139,7 @@ export default function HuntCanvas({
       });
       queueEnemyTrophy(enemy.id);
     }
+    preloadFieldTrophyDrops(true);
     Promise.all(loadTasks).then(() => {
       if (alive) {
         assetsLoaded = true;
@@ -12480,6 +12493,7 @@ export default function HuntCanvas({
         emitPersistence(persistHuntRef.current);
       }
       preloadEnvironmentAroundScreen(game.worldScreenId);
+      preloadFieldTrophyDrops();
       renderGame(
         context,
         game,

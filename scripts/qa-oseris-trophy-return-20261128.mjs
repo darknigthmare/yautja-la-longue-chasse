@@ -33,8 +33,12 @@ const observeRootDraw='\n      if (canopyRoot) window.__onCanopyRootDrawV112?.(p
 const boardingMarker='      finish(resultFor(state, mission, difficulty, "success"));';
 assert.equal(source.split(boardingMarker).length,2,'One native successful boarding boundary');
 const observeBoarding='      const result = resultFor(state, mission, difficulty, "success");\n      window.__onOserisReturnV112?.(result);\n      finish(result);';
+const trophyDrawMarker='      const trophySize = isActive ? 58 : 52;';
+assert.equal(source.split(trophyDrawMarker).length,2,'One native secondary trophy image draw boundary');
+const observeTrophyDraw='\n      window.__onOserisTrophyDrawV112?.(drop.claim.definitionId,image);';
 const instrumentedSource=source.replace(marker,observer+marker)
-  .replace(rootDrawMarker,rootDrawMarker+observeRootDraw).replace(boardingMarker,observeBoarding);
+  .replace(rootDrawMarker,rootDrawMarker+observeRootDraw).replace(boardingMarker,observeBoarding)
+  .replace(trophyDrawMarker,trophyDrawMarker+observeTrophyDraw);
 const bootstrap=await build({stdin:{contents:'export {defaultSave,SAVE_STORAGE_KEY} from "./app/game/save";export {GALAXY_NAVIGATION} from "./app/game/galaxyNavigation";',resolveDir:root,loader:'ts'},bundle:true,write:false,format:'cjs',platform:'node',logLevel:'silent'});
 const mod={exports:{}};
 runInNewContext(bootstrap.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url),structuredClone,TextEncoder});
@@ -61,9 +65,9 @@ for(const file of Object.keys(bundle.metafile.inputs).filter(name=>name.startsWi
 const report={
   schemaVersion:1,startedAt:new Date().toISOString(),sourceCommit:revision,workingTreeDirty:dirty.length>0,workingTreeOverlay:dirty,
   classification:'IN_PROGRESS',browserExecuted:false,passed:false,checks:[],captures:[],errors:[],cases:{},admissionArrivals:[],
-  sourceHashes,hookSha256:hash(observer),renderObserverSha256:hash(observeRootDraw),boardingObserverSha256:hash(observeBoarding),bundleSha256:hash(js.contents),cssBundleSha256:hash(css.contents),
+  sourceHashes,hookSha256:hash(observer),renderObserverSha256:hash(observeRootDraw),boardingObserverSha256:hash(observeBoarding),trophyObserverSha256:hash(observeTrophyDraw),bundleSha256:hash(js.contents),cssBundleSha256:hash(css.contents),
   inputTimestampSemantics:'Input logs use the nearest decision observation, not the exact browser event-dispatch clock. Native simulation continues while screenshots, DOM inspection and protocol messages are processed.',
-  instrumentation:['A declared Canvas mount hook observes native state, stages one dead local prey, and provides a single optional authored-arena Apex defeat setup without moving the player or claiming a trophy','A read-only observer records the native canvas image selected for each collision root','A passthrough Storage.prototype.setItem observer records the successful native platform call without changing bytes or acknowledgements','No production GameClient callback, ownership check, sidecar encoder, writer or claim is substituted'],
+  instrumentation:['A declared Canvas mount hook observes native state, stages one dead local prey, and provides a single optional authored-arena Apex defeat setup without moving the player or claiming a trophy','Read-only observers record the native canvas image painted for each collision root and available secondary trophy','A passthrough Storage.prototype.setItem observer records the successful native platform call without changing bytes or acknowledgements','No production GameClient callback, ownership check, sidecar encoder, writer or claim is substituted'],
   admission:{kind:'Declared initial campaign with field tool, 100 marks and condition 25',sha256:hash(admission),save:admission},
   scope:'Actual campaign navigation and GameClient admission, native harvest, charged canopy traversal, westward return through two real branches with sidecar persistence and recovery. The fixture creates one local Vineback Grazer corpse through the native damage function at the canonical spawn. Before the last ground leg a separate disclosed fixture resolves Apex combat and its prerequisites at its authored position. All movement, harvest, trophies, stashes, stamina, collisions, approach to boarding, and settlement use native controls.',
   limits:['Automated desktop Chromium','The initial Vineback Grazer kill and later Apex defeat are fixture setups. The trophies themselves are claimed through the real rites.','Proof applies to this Oseris-IV lower canopy route on desktop'],
@@ -270,6 +274,13 @@ async function canopy(){
     assert.ok(initial.world.hazards.some(hazard=>hazard.damagePerSecond>0));
     assert.equal(entry.kind,'tree');assert.equal(flexible.kind,'vine');assert.equal(next.kind,'vine');
     assert.ok(rests.every(rest=>rest.material==='root'&&rest.collision==='one-way'));
+    const art=await page.waitForFunction(()=>window.__skinningCanopyQaV112.trophyDraws.get('enemy-trophy-omoplate-vegetalisee'));
+    const paintedTrophy=await art.jsonValue();
+    await art.dispose();
+    assert.ok(paintedTrophy.src.endsWith('/enemy-trophy-omoplate-vegetalisee.webp'));
+    assert.equal(paintedTrophy.width,256);
+    assert.equal(paintedTrophy.height,256);
+    await capture('00a-native-secondary-trophy-art');
     await page.keyboard.press('KeyE');
     await page.waitForFunction(()=>Boolean(window.__skinningCanopyQaV112.runtime.game.regularTrophyDropId));
     const riteKeys=await performTrophyRite();
@@ -306,7 +317,7 @@ async function canopy(){
     assert.ok(loaded.fieldLoad.movementMultiplier<1);
     assert.ok(loaded.fieldLoad.climbStaminaMultiplier>1);
     await capture('01-oseris-native-hide');
-    return {cargo,secondary,riteKeys,empty:initial.fieldLoad,loaded:loaded.fieldLoad};
+    return {cargo,secondary,paintedTrophy,riteKeys,empty:initial.fieldLoad,loaded:loaded.fieldLoad};
   });
   const assertCargo=state=>{
     assert.deepEqual(state.rites.specimensV112,[cargo]);

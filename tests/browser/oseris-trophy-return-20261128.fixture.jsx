@@ -22,6 +22,7 @@ const audit={
   writes:[],
   setups:[],
   rootDraws:new Map(),
+  trophyDraws:new Map(),
   results:[],
   apexSetup:null,
 };
@@ -155,6 +156,11 @@ audit.prepareApex=()=>{
   native.damageEnemy(game,mission,game.boss,game.boss.health/game.bossVulnerabilityMultiplier,'melee');
   audit.apexSetup={kind:'DECLARED_PRIOR_OBJECTIVES_AND_NATIVE_APEX_DEFEAT_AT_AUTHORED_LOCATION',before,after:state()};
   return audit.apexSetup;
+};
+window.__onOserisTrophyDrawV112=(id,image)=>{
+  if(image?.complete&&image.naturalWidth>0&&image.naturalHeight>0&&!audit.trophyDraws.has(id)){
+    audit.trophyDraws.set(id,{src:image.src,width:image.naturalWidth,height:image.naturalHeight});
+  }
 };
 window.__onOserisReturnV112=result=>audit.results.push(clone(result));
 window.__skinningCanopyQaV112=audit;
