@@ -2099,6 +2099,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
         cradleBriefed: cradle.state !== null,
         crownReturned: cradle.state?.crownDelivered === true,
         adjutantVerified: adjutant?.phase === "appointed",
+        eliteRecognitionVerified: eliteRecognition.state?.recognized === true,
       })) return { save: null, failure: "invalid-save" };
   if (m035.state && !hasWarNarrativeCampaignR2M035(save)) return { save: null, failure: "invalid-save" };
   if (firstInterstellar.state && (shipReceiptV161(save).receipt?.instanceId !== firstInterstellar.state.hullInstanceId ||
@@ -2109,7 +2110,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       (bloodedTemple.state && !templeHasFoundationV174(save))) {
     return { save: null, failure: "invalid-save" };
   }
-  if (eliteRecognition.state && !eliteRecognitionMatchesSave(save)) return { save: null, failure: "invalid-save" };
+  if (!eliteRecognitionMatchesSave(save)) return { save: null, failure: "invalid-save" };
   if (elderWorkshop.state && !hasElderWorkshopFoundationV172(save)) {
     return { save: null, failure: "invalid-save" };
   }

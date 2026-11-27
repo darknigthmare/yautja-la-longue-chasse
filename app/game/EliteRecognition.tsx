@@ -2,11 +2,12 @@
 
 import { useMemo, useState } from "react";
 import {
-  canEnterEliteRecognition, canWalkEliteRecognition, ELITE_RECOGNITION_GROUND as GROUND,
+  canAffirmEliteRecognition, canEnterEliteRecognition, canWalkEliteRecognition, ELITE_RECOGNITION_GROUND as GROUND,
   ELITE_RECOGNITION_POSTS as POSTS, ELITE_RECOGNITION_PROOFS as PROOFS, eliteRecognitionEvidence,
   inspectEliteRecognition, sameEliteRecognitionPoint, type EliteRecognitionCommand,
   type EliteRecognitionPoint, type EliteRecognitionResponse, type EliteRecognitionSave,
 } from "./systems/eliteRecognitionV174";
+import { canEnterEliteClanRites, completedEliteClanRites } from "./systems/eliteClanRitesV175";
 import { MASTERY_LABELS } from "./systems/eliteMasteryV170";
 import styles from "./EliteRecognition.module.css";
 
@@ -23,16 +24,18 @@ const ICONS: Record<string, { icon: string; label: string }> = {
   r: { icon: "◆", label: "Témoin de l’assemblée" }, g: { icon: "◉", label: "Socle de reconnaissance" },
 };
 
-export default function EliteRecognition({ save, onCommand, onClose }: {
+export default function EliteRecognition({ save, onCommand, onClose, onOpenTrials }: {
   save: EliteRecognitionSave;
   onCommand: (command: EliteRecognitionCommand) => EliteRecognitionResponse;
   onClose: () => void;
+  onOpenTrials?: () => void;
 }) {
   const state = inspectEliteRecognition(save.eliteRecognitionV174, save.createdAt).state;
   const evidence = useMemo(() => eliteRecognitionEvidence(save), [save]);
   const [position, setPosition] = useState<EliteRecognitionPoint>(POSTS.entry);
   const [message, setMessage] = useState("");
   const ready = useMemo(() => canEnterEliteRecognition(save), [save]);
+  const canRecognize = canAffirmEliteRecognition(save, state);
   const at = (point: EliteRecognitionPoint) => sameEliteRecognitionPoint(position, point);
   const move = (step: EliteRecognitionPoint) => {
     const next = { column: position.column + step.column, row: position.row + step.row };
@@ -44,12 +47,15 @@ export default function EliteRecognition({ save, onCommand, onClose }: {
   const witness = state?.audience ? at(POSTS[state.audience]) : false;
   const completed = state?.proofs.length === PROOFS.length;
 
-  return <section className={styles.scene} aria-labelledby="elite-recognition-heading" data-elite-recognition-v174={state?.prepared ? "prepared" : "review"}>
+  return <section className={styles.scene} aria-labelledby="elite-recognition-heading" data-elite-recognition-v174={state?.recognized ? "recognized" : state?.prepared ? "prepared" : "review"}>
     <header className={styles.header}>
       <h3 id="elite-recognition-heading">Le retour devant les témoins</h3>
       <button type="button" onClick={onClose}>Fermer la salle</button>
     </header>
-    {state?.prepared ? <p data-elite-recognition-receipt>Le retour préparatoire a été consigné devant {state.audience === "public" ? "la cohorte" : "l’assemblée restreinte"}. Les rites du clan restent à vérifier.</p> :
+    {state?.prepared && <p data-elite-recognition-receipt>Le retour devant {state.audience === "public" ? "la cohorte" : "l’assemblée restreinte"} a été consigné. {state.recognized ? "Le rang Elite figure dans ta chronique." : canRecognize ? "Le chef et les témoins t’attendent au socle." : "Le registre conserve ta présentation."}</p>}
+    {state?.prepared && !completedEliteClanRites(state.trials) && canEnterEliteClanRites(save) && onOpenTrials &&
+      <button type="button" onClick={onOpenTrials}>Rejoindre les épreuves du clan</button>}
+    {(!state?.prepared || canRecognize) &&
       <div className={styles.layout}>
         <div>
           <div tabIndex={0} role="group" aria-label="Plan de la salle. Flèches pour marcher."
@@ -86,8 +92,10 @@ export default function EliteRecognition({ save, onCommand, onClose }: {
             onClick={() => submit({ type: "present", proof: station })}>Présenter · {LABELS[station]}</button>}
           {ready && witness && completed && !state?.witnessed && <button type="button" data-elite-witness
             onClick={() => submit({ type: "hear" })}>Écouter le témoin</button>}
-          {ready && state?.witnessed && at(POSTS.mark) && <button type="button" data-elite-mark
+          {ready && state?.witnessed && !state.prepared && at(POSTS.mark) && <button type="button" data-elite-mark
             onClick={() => submit({ type: "mark" })}>Orienter le socle de reconnaissance</button>}
+          {canRecognize && at(POSTS.mark) && <button type="button" data-elite-recognize
+            onClick={() => submit({ type: "recognize" })}>Recevoir la reconnaissance Elite</button>}
           <p role="status">{message || (!state?.audience ? "Choisis ton accueil au seuil." : !completed ? "Rejoins les trois postes qui portent tes preuves." :
             !state.witnessed ? state.audience === "public" ? "Rejoins le témoin de la cohorte à l’ouest." : "Rejoins le témoin de l’assemblée à l’est." :
               "Rejoins le socle central.")}</p>

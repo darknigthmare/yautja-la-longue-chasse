@@ -2358,9 +2358,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!elderRiteAvailable()) return { ok: false, message: "Rouvre la salle depuis le dossier de la campagne active." };
     const outcome = commitEliteRecognition(saveRef.current, command);
     if (!outcome.ok) return outcome;
-    return persistSocialProgress({ eliteRecognitionV174: outcome.state })
+    return persistSocialProgress({ eliteRecognitionV174: outcome.state, ...(outcome.prologue ? { prologue: outcome.prologue } : {}) })
       ? { ok: true, message: outcome.message }
-      : { ok: false, message: "La préparation attend la confirmation de sauvegarde." };
+      : { ok: false, retryable: true, message: "Le résultat attend la confirmation de sauvegarde." };
   }, [elderRiteAvailable, persistSocialProgress]);
 
   const onBloodedTempleCommandV174 = useCallback((command: TempleCommandV174) => {
