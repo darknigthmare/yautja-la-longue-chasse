@@ -125,3 +125,9 @@ Une fois l’environnement revenu : lire l’état Git et les preuves, terminer 
 Le catalogue original est conçu et quinze premières images existent. Restent les autres illustrations, les animations natives, les orientations, les armes et projectiles séparés, les plans de décor, les collisions, le raccordement des kits et rencontres, leur équilibrage et leur validation jouée.
 
 La reprise des manquants de la bible historique reste également ouverte : les refus de génération n’effacent pas la file de production ; tag, assistances, supers duo, finishers collectifs, clashes/QTE, autres bonus et autres parcours ne sont pas déclarés achevés par ce lot.
+
+## Copies exactes de secours publiées
+
+Quatre fichiers ont pu être récupérés depuis des patchs exacts conservés en mémoire, puis comparés aux SHA-256 observés pendant la QA de précision : les règles de précision, l’adaptateur des épreuves, le test de précision et le panneau de bonus. Ils sont conservés comme **copies inertes .txt** sous [recovery/precision-20261127](recovery/precision-20261127/).
+
+Le [manifeste de récupération](recovery/precision-20261127/manifest.json) donne les chemins originaux, tailles, SHA-256 et blobs Git, ainsi que les sources finales encore manquantes. Ces copies n’ajoutent pas un raccordement partiel au runtime. Elles permettent de reprendre les octets vérifiés même si le workspace doit être restauré.
