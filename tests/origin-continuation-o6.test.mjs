@@ -39,6 +39,7 @@ test('O6 receives a willing Yena, performs the cordage together, prepares three 
     copy => { copy.originV151.continuationO6.orders.splice(1, 1); },
     copy => { copy.originV151.continuationO6.helpedYena = false; },
     copy => { copy.originV151.ending.originEndingId = 'O6-E2'; },
+    copy => { copy.originV151.consumed = []; },
     copy => { delete copy.originV151.trainingYardO6.houses[HOUSE]; },
   ]) {
     const clone = structuredClone(save);

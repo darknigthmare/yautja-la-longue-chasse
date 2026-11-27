@@ -50,7 +50,7 @@ try {
     const artError = root.getByRole('button', { name: 'Recharger le décor' });
     await resume.or(artError).first().waitFor();
     if (await artError.isVisible()) throw new Error(await root.getByRole('dialog').innerText());
-    await page.clock.pauseAt(new Date(await page.evaluate(() => Date.now() + 100)));
+    await page.clock.pauseAt(new Date(await page.evaluate(() => Date.now() + 8000)));
     await ground.resume();
   }
 

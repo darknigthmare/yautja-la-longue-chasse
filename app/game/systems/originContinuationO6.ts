@@ -67,7 +67,8 @@ function helpedYenaInCourtyard(save: ContinuationSaveO6) {
 }
 
 function teachingChosen(origin: OriginStateV151) {
-  return origin.ending?.endingChoiceConfirmed === true && origin.ending.originEndingId === 'O6-E1';
+  return origin.ending?.endingChoiceConfirmed === true && origin.ending.originEndingId === 'O6-E1' &&
+    origin.consumed.includes('O6-M29:confirmed');
 }
 
 export function continuationMatchesSaveO6(save: ContinuationSaveO6): boolean {
