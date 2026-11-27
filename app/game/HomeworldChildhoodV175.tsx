@@ -1,7 +1,6 @@
 "use client";
 
 import type { KeyboardEvent } from "react";
-import Image from "next/image";
 import {
   CHILDHOOD_DRILLS_V175, CHILDHOOD_TRAIL_SIGNS_V175,
   childhoodLengthV175, childhoodOptionsV175, childhoodRingPositionV175, childhoodSpringOpenV175,
@@ -75,7 +74,8 @@ function TrainingSpace({ view }: { view: ChildhoodViewV175 }) {
         <span key={file} className={styles.cohortMember} style={{ gridColumn: index + 3 }}
           data-cohort-performing={view.cohortPresentations === index + 1}
           data-gesture={view.finished[index]}>
-          <Image unoptimized src={"/game/prologue/v47/" + file} width={38} height={52} alt="" />
+          {/* eslint-disable-next-line @next/next/no-img-element -- Static game sprite with fixed dimensions. */}
+          <img src={"/game/prologue/v47/" + file} width={38} height={52} alt="" />
         </span>
       ))}
       <span className={styles.demonstration} data-ready={view.demonstrated} style={{ gridColumn: 3 }} />
