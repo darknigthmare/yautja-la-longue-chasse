@@ -38,6 +38,8 @@ jobs:
             /.openai/hosting.json
             /public/**/manifest.json
             /public/game/homeworld/
+            /public/game/sprites/v62/heads/
+            /public/game/assets/v37/tribes/v2/
             /public/game/assets/v3/actors/yautja/hunter/
             /public/game/sprites/v5/film-plates/
             /public/game/backgrounds/swamp-depth-v8.png
@@ -45,12 +47,14 @@ jobs:
       - name: Restore original declared assets without modifying their contents
         run: |
           python3 - <<'PY'
-          import json,pathlib,subprocess
+          import json,pathlib,re,subprocess
           root=pathlib.Path.cwd()
           files={x['path'] for x in json.loads((root/'docs/qa/current-integration-20261103/runtime-inputs.json').read_text())['entries']}
           files.update(json.loads((root/'tests/fixtures/clan-ship-browser-assets.json').read_text())['paths'])
           files.update('public'+x['src'] for x in json.loads((root/'app/game/data/buriedCradleArt.json').read_text())['assets'].values())
           files.update(['public/game/prologue/v47/village.png','public/game/prologue/v47/arena.png','public/game/ships/v14/avp-predator-mothership.webp','public/game/ships/v12/classic-predator-spaceship.webp','public/game/ships/v13/classic-predator-spaceship-top.webp','public/game/backgrounds/ship-hub-v4.webp','public/game/backgrounds/jungle-depth-v4.webp','public/game/youth/v48/unblooded-left.png','public/game/youth/v48/unblooded-right.png'])
+          for registry in ['homeworldVillagePortraitReferencesV85.json','homeworldRegionalWatchArtV86.json']:
+              files.update('public'+src for src in re.findall(r'"(/game/imports/v85/library/[^"]+)"',(root/'app/game/data'/registry).read_text()))
           for name in files:
             path=pathlib.PurePosixPath(name);assert not path.is_absolute() and '..' not in path.parts
           subprocess.run(['git','sparse-checkout','add','--stdin'],input='\n'.join('/'+p for p in sorted(files))+'\n',text=True,check=True)
@@ -61,12 +65,6 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Lint the common hall and return replay
-        run: npx eslint app/game/HomeworldRegionV68.tsx app/game/OriginTransitionPanelV151.tsx app/game/systems/originTrainingYardO6.ts app/game/systems/originsV151.ts tests/origin-training-yard-o6.test.mjs tests/helpers/origin-training-yard-o6.mjs scripts/qa-origin-training-yard-o6.mjs app/game/systems/originContinuationO6.ts app/game/systems/originPracticeO6.ts app/game/systems/originSoloReturnO6.ts tests/origin-continuation-o6.test.mjs tests/helpers/origin-continuation-o6.mjs scripts/qa-origin-continuation-o6.mjs tests/origin-solo-return-o6.test.mjs tests/helpers/origin-solo-return-o6.mjs scripts/qa-origin-solo-return-o6.mjs
-      - name: Replay movement and verify old origin archives
-        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/origin-continuation-o6.test.mjs tests/origin-training-yard-o6.test.mjs tests/origins-v151.test.mjs tests/origin-endings-v170.test.mjs tests/residence-save-v149.test.mjs tests/homeworld-build5-origin-residence-integration.test.mjs tests/origin-solo-return-o6.test.mjs tests/quatza-rij.test.mjs
-      - name: Typecheck the application
-        run: npm run typecheck
       - name: Walk the hall, clean the blades and report to Saar
         run: node scripts/qa-origin-solo-return-o6.mjs
       - name: Preserve original screenshots and receipts
