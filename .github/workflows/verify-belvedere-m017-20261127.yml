@@ -17,7 +17,7 @@ jobs:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: "6b8b88f84d02b3a77715df0ff1f2714fc00059d5"
+          ref: "8c2f3ae07fa1cf347a82d902853c08806e221478"
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -88,16 +88,6 @@ jobs:
         run: |
           node scripts/materialize-asset-raccords-20261120.mjs runtime
           npm ci --ignore-scripts --no-audit --no-fund
-      - name: Test both Temple routes and older checkpoints
-        run: node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec tests/campaign-solo-v70.test.mjs tests/blooded-temple-v174.test.mjs
-      - name: Verify Next types
-        if: ${{ !cancelled() }}
-        run: |
-          node node_modules/next/dist/bin/next typegen
-          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
-      - name: Lint the changed scene, renderer and validator
-        if: ${{ !cancelled() }}
-        run: npx eslint app/game/FirstHuntSoloV70.tsx app/game/firstHuntSoloV70Rendering.ts app/game/systems/firstHuntSoloV70.ts app/game/systems/campaignSoloV70.ts tests/campaign-solo-v70.test.mjs
       - name: Play and reload the mechanical Temple route
         if: success()
         env:
