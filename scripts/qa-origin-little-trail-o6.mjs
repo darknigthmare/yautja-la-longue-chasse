@@ -35,6 +35,14 @@ try {
     await context.addInitScript(({ key, seed }) => {
       if (localStorage.getItem(key) === null) localStorage.setItem(key, JSON.stringify(seed));
     }, { key: town.SAVE_STORAGE_KEY, seed });
+    await context.addInitScript(() => {
+      window.littleTrailFrequencies = [];
+      const schedule = AudioParam.prototype.setValueAtTime;
+      AudioParam.prototype.setValueAtTime = function (value, time) {
+        if ([2450, 1860, 780, 420].includes(value)) window.littleTrailFrequencies.push(value);
+        return schedule.call(this, value, time);
+      };
+    });
     page = await context.newPage();
     page.setDefaultTimeout(48000);
     page.on("pageerror", error => report.errors.push(error.message));
@@ -103,6 +111,20 @@ try {
       assert.equal(view.stage, anticipatedStage);
       console.log("O6_M05_ACTION", JSON.stringify({ scenario: scenario.id, type, view, confirmed: state.lastConfirmed }));
     }
+    const audioSignatures = [];
+    async function hear(cue, pattern) {
+      const before = await page.evaluate(() => window.littleTrailFrequencies.length);
+      await press("KeyE");
+      await page.clock.resume();
+      await page.waitForFunction(({ before, pattern }) => {
+        const captured = window.littleTrailFrequencies.slice(before);
+        return pattern.every(frequency => captured.includes(frequency));
+      }, { before, pattern }, { timeout: 10000 });
+      await pauseClock();
+      await assertOrder("sample", "listen");
+      audioSignatures.push({ cue, frequencies: pattern });
+      console.log("O6_M05_CUE", JSON.stringify({ scenario: scenario.id, cue, frequencies: pattern }));
+    }
     async function cold(expectedStage, expectedPlane, expectedNote) {
       const before = await receipt();
       await page.clock.resume();
@@ -126,12 +148,10 @@ try {
     await assertOrder("observe", "listen");
 
     await walk(grounds.pebble);
-    await press("KeyE");
-    await assertOrder("sample", "listen");
+    await hear("pebble", [2450, 1860]);
     assert.deepEqual(trail.littleTrailViewO6(await receipt()).heard, ["pebble"]);
     await walk(grounds.rub);
-    await press("KeyE");
-    await assertOrder("sample", "listen");
+    await hear("rub", [780, 420]);
     assert.deepEqual(trail.littleTrailViewO6(await receipt()).heard, ["pebble", "rub"]);
     await snap("03-sons");
 
@@ -181,7 +201,7 @@ try {
     assert.deepEqual(final.originV151.rivalRaceO6, seed.originV151.rivalRaceO6);
     assert.deepEqual(final.homeworld.locationV77, result.at);
     assert.equal(town.parseSaveImport(JSON.stringify(final)).failure, null);
-    report.routes.push({ scenario: scenario.id, receipt: result });
+    report.routes.push({ scenario: scenario.id, audioSignatures, receipt: result });
     await context.close();
   }
   assert.deepEqual(report.errors, []);
