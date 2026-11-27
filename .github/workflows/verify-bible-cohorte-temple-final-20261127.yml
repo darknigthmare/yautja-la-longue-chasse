@@ -13,13 +13,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '3b3bccdfd82c9c23057f5feaecd234a416c2989f'
+      ASSET_RACCORDS_SOURCE_COMMIT: '020f8666393219d4530b04b1bc5c194f9594cc07'
       BASE_COMMIT: 'b6b0218cd58a528b454de7247307d067ef9e570f'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '3b3bccdfd82c9c23057f5feaecd234a416c2989f'
+          ref: '020f8666393219d4530b04b1bc5c194f9594cc07'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -190,13 +190,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '3b3bccdfd82c9c23057f5feaecd234a416c2989f'
+      ASSET_RACCORDS_SOURCE_COMMIT: '020f8666393219d4530b04b1bc5c194f9594cc07'
       BASE_COMMIT: 'b6b0218cd58a528b454de7247307d067ef9e570f'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '3b3bccdfd82c9c23057f5feaecd234a416c2989f'
+          ref: '020f8666393219d4530b04b1bc5c194f9594cc07'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
