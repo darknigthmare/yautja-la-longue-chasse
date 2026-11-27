@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '602d50150a5a77098b69fc0317e4c1820545cd12'
+          ref: 'cd4f6facc9e4bc6fe3ca742e6d2bdd836501a36e'
           fetch-depth: 2
           filter: blob:none
           persist-credentials: false

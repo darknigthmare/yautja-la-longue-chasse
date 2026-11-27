@@ -292,6 +292,8 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const { yard, continuation } = state.zone === 'interior' && props.onTrainingYardO6
     ? currentYard(save, state) : { yard: null, continuation: null };
   const yardAction = continuation?.next ? continuation : yard;
+  const cordage = continuation?.orders.includes('stow') ? 'folded' : continuation?.orders.includes('lift') ? 'raised'
+    : continuation?.orders.includes('anchor') ? 'taut' : continuation?.orders.includes('welcome') ? 'loose' : null;
   const localAllowed = !suspended && !error && ready && gate.allowed && state.status === 'walking' && !state.pendingFieldEvent;
   const playerPlacement = youthWelcome || hero.exactPreset ? homeworldPortraitPlacementV64(hero.plateId, hero.src, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.physicalHeight : 100) : homeworldModularPlacementV64(save.appearance.bodyMorphId, appearance.headStyleId, 100);
   const hazard = regionHazardPhaseV68(state.tick), fauna = REGION_FAUNA_ART_V68[regionId], f = state.fauna;
@@ -350,6 +352,9 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
           {yard?.orders.includes('rack') && <span className={yardStyles.rack} aria-label="Râtelier d’exercice mural" role="img"
             data-o6-yard-rack data-o6-rack-open={continuation?.rackOpen || undefined}
             style={{ left: 630, top: 390 * d, zIndex: 389 }}><i/><i/><i/></span>}
+          {cordage && <span className={yardStyles.cordage} data-o6-cordage={cordage} role="img"
+            aria-label={cordage === 'folded' ? 'Filet rangé' : 'Filet d’exercice'}
+            style={{ left: cordage === 'raised' ? 585 : 217, top: (cordage === 'raised' ? 381 : 479) * d, zIndex: 400 }} />}
           {continuation?.visitor && <span data-o6-yena-visit>
             {drawActor('origin-o6-yena', continuation.visitor.x, continuation.visitor.y, 'huntress', 'huntress')}
             <span className={styles.waypoint} style={{ left: continuation.visitor.x, top: continuation.visitor.y * d + 14 }}><b>Yena</b></span>

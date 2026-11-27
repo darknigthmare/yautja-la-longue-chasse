@@ -69,6 +69,7 @@ try {
     if (order === 'invite') await root.locator('[data-o6-yena-visit]').waitFor();
     if (order === 'lift') {
       await root.locator('[data-o6-yena-visit]').waitFor();
+      await root.locator('[data-o6-cordage="raised"]').waitFor();
       await page.screenshot({ path: join(out, 'yena-and-net.png'), animations: 'disabled' });
       await page.clock.resume();
       await page.reload({ waitUntil: 'domcontentloaded' });
@@ -81,6 +82,7 @@ try {
   assert.equal(await marker.getAttribute('data-o6-origin-stage'), 'ready');
   await root.locator('[data-o6-rack-open="true"]').waitFor();
   await root.locator('[data-o6-plan-transmission]').waitFor();
+  await root.locator('[data-o6-cordage="folded"]').waitFor();
   const current = await disk();
   assert.deepEqual(current.originV151.ending, admitted.originV151.ending);
   assert.deepEqual(current.originV151.relations, admitted.originV151.relations);
