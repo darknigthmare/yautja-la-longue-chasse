@@ -52,7 +52,7 @@ export function normalizeYouthCampaign(value: unknown): YouthCampaignProgress | 
   return { version: 1, status: value.status as YouthCampaignProgress["status"], checkpoint, receipts, equipment, startedAt: value.startedAt, completedAt: value.completedAt as string | null };
 }
 /** Reject mismatched narrative proof instead of falling back to an adult campaign. */
-export function youthCampaignMatchesSave(value: unknown, { bloodingVerified = false, cradleBriefed = false, crownReturned = false, adjutantVerified = false } = {}): boolean {
+export function youthCampaignMatchesSave(value: unknown, { bloodingVerified = false, cradleBriefed = false, crownReturned = false, adjutantVerified = false, warpVerified = false } = {}): boolean {
   if (!record(value)) return false;
   const prologue = normalizeNurseryCampaign(value.prologue);
   // Current youth chapters cannot import unplayed future hunts to gain ship/rank access.
@@ -69,6 +69,7 @@ export function youthCampaignMatchesSave(value: unknown, { bloodingVerified = fa
       if (cradleBriefed) evidence.push("queen-mission-briefing");
       if (crownReturned) evidence.push("first-queen-hunt");
       if (adjutantVerified) evidence.push("team-extraction", "multiple-world-hunts");
+      if (adjutantVerified && warpVerified) evidence.push("warp-module-quest");
     }
     if (prologue.chronicle.evidence.some(item => !evidence.includes(item.id)) ||
         prologue.chronicle.rites.some(item => item.id !== "nursery-recognition" &&

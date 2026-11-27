@@ -8,15 +8,18 @@ import { MISSIONS } from "./data";
 import {
   WARP_BRANCHES_V165, WARP_COMPONENTS_V165, WARP_PROTOTYPE_ARC_V165, WARP_W02_CONTRACTS_V165, WARP_W02_STEPS_V165,
   W02_HUNT_BASE_MISSION_ID_V165, WARP_W02_BONSHO_V165, WARP_W02_TERRACE_ALERT_V165,
-  actWarpVillageV165, applyW02HuntResultV165, branchVisitV165, canLaunchW02HuntV165, canReturnFromWarpV165,
+  actWarpVillageV165, advanceWarpCommonRouteV165, applyW02HuntResultV165, branchVisitV165, canLaunchW02HuntV165, canReturnFromWarpV165,
   createWarpEpochsV165, departWarpV165, evaluateWarpDepartureV165, installWarpModuleV165, normalizeWarpEpochsV165,
-  resolveW02StepV165, returnFromWarpV165, selectWarpBranchV165, startWarpCommonQuestV165, verifyWarpComponentV165,
+  resolveW02StepV165, returnFromWarpV165, selectWarpBranchV165, verifyWarpComponentV165,
   warpAccessContextFromSaveV165, warpConditionsV165, warpVillageRankAllowed, warpW02HuntMissionV165,
   type WarpEpochsStateV165, type WarpUpdateV165,
 } from "./systems/warpEpochsV165";
 import { mergeLegacyTantalusV167 } from "./systems/tantalusV164";
 import { warpVillageView, type WarpVillageOrder, type WarpVillageRecord } from "./systems/warpVillageR2M048";
 import TantalusPanelV164 from "./TantalusPanelV164";
+import { shipReceiptV161 } from "./systems/shipReceiptV161";
+import { warpCommonViewR2 } from "./systems/warpCommonRouteR2";
+import WarpCommonSceneR2 from "./WarpCommonSceneR2";
 import styles from "./WarpEpochsPanelV165.module.css";
 
 const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
@@ -97,6 +100,10 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
 
   const conditions = warpConditionsV165(state, ctx);
   const departure = evaluateWarpDepartureV165(state, ctx);
+  const spatialRoute = !!state.commonRouteR2 || state.warpQuestOutcome === "non_commence";
+  const commonView = warpCommonViewR2(state.commonRouteR2);
+  const hull = shipReceiptV161(save).receipt;
+  const canWork = !!hull && ctx.blooded && ctx.adjutant && !state.activeWarpTripId;
   const inW02 = state.activeTripBranchId === "W-02";
   const huntLaunch = canLaunchW02HuntV165(state);
   const conditionRows = [
@@ -129,14 +136,14 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
 
     <div className={styles.section} data-warp-common-quest>
       <h3>Quête commune (R2-M030 → R2-M032)</h3>
-      {state.warpQuestOutcome === "non_commence" && <>
-        <p>Le seuil du Warp : suivre les anomalies jusqu’à l’Observatoire des Seuils. Choix : stabilité ou énergie d’abord.</p>
-        <div className={styles.actions}>
-          <button type="button" onClick={() => apply(startWarpCommonQuestV165(state, ctx, "stabilite"))}>Stabilité d’abord</button>
-          <button type="button" onClick={() => apply(startWarpCommonQuestV165(state, ctx, "energie"))}>Énergie d’abord</button>
-        </div>
+      {spatialRoute && <>
+        {!canWork && commonView.section !== "ready" && <p className={styles.missing}>
+          L’accès à l’observatoire exige Blooded, le dossier Adjutant et la coque remise au chantier naval.
+        </p>}
+        <WarpCommonSceneR2 key={commonView.section} view={commonView} disabled={!canWork}
+          onCommand={command => apply(advanceWarpCommonRouteV165(state, ctx, hull?.instanceId, command))} />
       </>}
-      {state.warpQuestOutcome === "en_cours" && <>
+      {!spatialRoute && state.warpQuestOutcome === "en_cours" && <>
         <p>Les pièces d’un retour : chaque pièce est testée avant transport.</p>
         <ul className={styles.list}>{WARP_COMPONENTS_V165.map(component => <li key={component.id} data-warp-component={component.id}>
           {component.label} : {state.components[component.id] ? `testée (${state.components[component.id] === "reparer" ? "réparée" : "variante"})` : <>
@@ -148,7 +155,7 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
           <button type="button" onClick={() => apply(installWarpModuleV165(state, "fenetre-courte"))}>Installer : fenêtre courte</button>
         </div>
       </>}
-      {state.warpQuestOutcome === "reussi" && <p className={styles.ok}>Quête réussie ; module installé et calibré.</p>}
+      {!spatialRoute && state.warpQuestOutcome === "reussi" && <p className={styles.ok}>Quête réussie. Module installé et calibré.</p>}
     </div>
 
     <div className={styles.section}>

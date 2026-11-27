@@ -34,6 +34,10 @@ import {
   evaluateChronicleAccess, getChronicleFunctions, getChronicleRank, migrateV35ClanChronicle, type ChronicleAccessContext, type ClanChronicle,
 } from "./clanChronicle";
 import { shipAcquisitionOwnedHullV89 } from "./shipAcquisitionV89";
+import {
+  advanceWarpCommonR2, normalizeWarpCommonR2, warpCommonViewR2, WARP_COMMON_PARTS_R2,
+  type WarpCommonCommandR2, type WarpCommonRecordR2,
+} from "./warpCommonRouteR2";
 
 export const WARP_EPOCHS_V165_VERSION = 1 as const;
 
@@ -211,6 +215,7 @@ export interface WarpEpochsStateV165 {
   echoes: WarpEchoV165[];
   /** Événements consommés : un même événement ne s'applique pas deux fois. */
   consumedEventIds: string[];
+  commonRouteR2?: WarpCommonRecordR2;
 }
 
 export function createWarpEpochsV165(ownerCreatedAt: string): WarpEpochsStateV165 {
@@ -323,6 +328,18 @@ export function normalizeWarpEpochsV165(value: unknown, ownerCreatedAt: string):
   const tripActive = value.activeWarpTripId !== null;
   if (tripActive !== (value.warpReturnReservation === "reservee") || tripActive !== (value.activeTripBranchId !== null)) return null;
   if (value.warpModuleInstalled && value.warpQuestOutcome !== "reussi") return null;
+  const commonRouteR2 = value.commonRouteR2 === undefined ? undefined : normalizeWarpCommonR2(value.commonRouteR2, ownerCreatedAt);
+  if (commonRouteR2 === null) return null;
+  if (commonRouteR2) {
+    const played = warpCommonViewR2(commonRouteR2);
+    const intended = played.installed ? "reussi" : played.survey ? "en_cours" : "non_commence";
+    if (intended !== value.warpQuestOutcome || played.survey !== value.questStartChoice ||
+        played.installed !== value.installChoice || !!played.installed !== value.warpModuleInstalled ||
+        WARP_COMMON_PARTS_R2.some(part => components[part.id] !== (played.hauled ? played.parts[part.id]?.method : undefined)) ||
+        consumedEventIds.includes("quest:R2-M030") !== !!played.survey ||
+        consumedEventIds.includes("quest:R2-M032") !== !!played.installed ||
+        WARP_COMMON_PARTS_R2.some(part => consumedEventIds.includes("quest:R2-M031:" + part.id) !== played.hauled)) return null;
+  }
   return {
     version: WARP_EPOCHS_V165_VERSION, ownerCreatedAt,
     warpQuestOutcome: value.warpQuestOutcome, questStartChoice: value.questStartChoice as WarpEpochsStateV165["questStartChoice"],
@@ -330,7 +347,7 @@ export function normalizeWarpEpochsV165(value: unknown, ownerCreatedAt: string):
     warpModuleInstalled: value.warpModuleInstalled, warpBranchId: value.warpBranchId as WarpBranchIdV165 | null,
     activeWarpTripId: value.activeWarpTripId as string | null, activeTripBranchId: value.activeTripBranchId as WarpBranchIdV165 | null,
     warpReturnReservation: value.warpReturnReservation, tripCount: value.tripCount,
-    branchVisitState, echoes, consumedEventIds,
+    branchVisitState, echoes, consumedEventIds, ...(commonRouteR2 ? { commonRouteR2 } : {}),
   };
 }
 
@@ -342,6 +359,8 @@ export type WarpEpochsInspectionV165 =
 export function inspectWarpEpochsV165(value: unknown, ownerCreatedAt: string): WarpEpochsInspectionV165 {
   if (value === undefined || value === null) return { status: "absent", state: null };
   if (record(value) && typeof value.version === "number" && value.version > WARP_EPOCHS_V165_VERSION) return { status: "future-version", state: null };
+  if (record(value) && record(value.commonRouteR2) && typeof value.commonRouteR2.version === "number" &&
+      value.commonRouteR2.version > 1) return { status: "future-version", state: null };
   const state = normalizeWarpEpochsV165(value, ownerCreatedAt);
   return state ? { status: "valid", state } : { status: "invalid-save", state: null };
 }
@@ -435,6 +454,41 @@ export function installWarpModuleV165(state: WarpEpochsStateV165, choice: "marge
   if (!oneOf(choice, ["marge", "fenetre-courte"] as const)) return refuse(state, "Choix inconnu.");
   return commit(state, "quest:R2-M032", { ...state, installChoice: choice, warpModuleInstalled: true, warpQuestOutcome: "reussi" },
     "Module aligné et relié ; test de retour à vide réussi.");
+}
+
+/** New saves play the authored route. Existing component and reservation transitions remain authoritative. */
+export function advanceWarpCommonRouteV165(
+  state: WarpEpochsStateV165, ctx: WarpAccessContextV165, hullInstanceId: string | undefined, action: WarpCommonCommandR2,
+): WarpUpdateV165 {
+  if (!ctx.blooded || !ctx.adjutant || !ctx.personalShip || !hullInstanceId) {
+    return refuse(state, "L’observatoire demande le rite Blooded, la fonction Adjutant et la coque acquise.");
+  }
+  if (state.activeWarpTripId || (!state.commonRouteR2 && state.warpQuestOutcome !== "non_commence")) {
+    return refuse(state, "Un autre dossier de voyage est déjà ouvert.");
+  }
+  const accepted = advanceWarpCommonR2(state.commonRouteR2, state.ownerCreatedAt, hullInstanceId, action);
+  if (!accepted.record || !accepted.view) return refuse(state, accepted.message);
+  let next = state;
+  if (action.kind === "survey") {
+    const begun = startWarpCommonQuestV165(next, ctx, action.choice);
+    if (!begun.changed) return refuse(state, begun.message);
+    next = begun.state;
+  }
+  if (action.kind === "haul") {
+    for (const part of WARP_COMMON_PARTS_R2) {
+      const choice = accepted.view.parts[part.id]?.method;
+      if (!choice) return refuse(state, "Vérifie toutes les pièces avant de les transporter.");
+      const delivered = verifyWarpComponentV165(next, part.id, choice);
+      if (!delivered.changed) return refuse(state, delivered.message);
+      next = delivered.state;
+    }
+  }
+  if (action.kind === "dry-return") {
+    const installed = installWarpModuleV165(next, action.choice);
+    if (!installed.changed) return refuse(state, installed.message);
+    next = installed.state;
+  }
+  return { accepted: true, changed: true, state: { ...next, commonRouteR2: accepted.record }, message: accepted.message };
 }
 
 /** STATE5-27 — choix de destination ; pas de changement pendant un voyage. */

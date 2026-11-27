@@ -98,7 +98,7 @@ import { FIRST_INTERSTELLAR_V173, commitFirstInterstellarV173, firstInterstellar
 import { actShipAcquisitionV89, normalizeShipAcquisitionV89, shipAcquisitionEligibleV89, shipAcquisitionSceneFactsV89, type ShipAcquisitionContextV89, type ShipAcquisitionActionV89, type ShipAcquisitionResultV89 } from './systems/shipAcquisitionV89';
 import { withNurseryCheckpoint, withNurseryCompletion } from "./systems/nurseryCampaign";
 import type { NurseryState, NurseryCompletionReceipt } from "./systems/nurseryPrologue";
-import { getChronicleRank, CHRONICLE_RANK_LABELS } from "./systems/clanChronicle";
+import { getChronicleRank, CHRONICLE_RANK_LABELS, recordChronicleEvidence, CHRONICLE_EVIDENCE } from "./systems/clanChronicle";
 import campaignMenuStyles from "./CampaignMainMenu.module.css";
 import CampaignFrontEnd, { type CampaignSessionEntry } from "./CampaignFrontEnd";
 import { CampaignSavePanel } from "./CampaignMainMenu";
@@ -5335,7 +5335,19 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <div className="screen-safe">
             <Suspense fallback={<DeferredGameScreen />}>
               <WarpEpochsPanelV165 save={save} shipContext={mainMenuBrowserShipContextV81(save)}
-                onPersist={(state, clearLegacyTantalus) => persistSocialProgress(clearLegacyTantalus ? { warpEpochsV165: state, tantalusV164: null } : { warpEpochsV165: state })}
+                onPersist={(state, clearLegacyTantalus) => {
+                  const current = saveRef.current;
+                  const update: Partial<Pick<SaveGame, "warpEpochsV165" | "tantalusV164" | "prologue">> = {
+                    warpEpochsV165: state, ...(clearLegacyTantalus ? { tantalusV164: null } : {}),
+                  };
+                  if (state.commonRouteR2 && state.warpModuleInstalled && !current.warpEpochsV165?.warpModuleInstalled && current.prologue) {
+                    const proof = CHRONICLE_EVIDENCE.find(entry => entry.id === "warp-module-quest")!;
+                    const receipt = recordChronicleEvidence(current.prologue.chronicle, { id: proof.id, sourceId: proof.sourceId });
+                    if (!receipt.accepted || !receipt.changed) return false;
+                    update.prologue = { ...current.prologue, chronicle: receipt.state };
+                  }
+                  return persistSocialProgress(update);
+                }}
                 onClose={() => go("clan-chronicle")} />
             </Suspense>
           </div>

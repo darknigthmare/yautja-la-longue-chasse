@@ -97,7 +97,7 @@ function prepareAdmission() {
 const pack = qa.load("app/game/systems/homeworldPackTrialM029.ts");
 const appointment = qa.load("app/game/systems/homeworldAdjutantM029.ts");
 
-test("M029 commits both receipts atomically, preserves old saves and rejects skipped or detached nomination claims", () => {
+test("M029 and the common Warp route validate their atomic receipts, checkpoints and portable saves", () => {
   const legacy = saves.defaultSave("2026-11-27T00:00:00.000Z");
   assert.ok(saves.parseSaveImport(saves.exportSave(legacy)).save);
   let save = prepareAdmission();
@@ -157,4 +157,61 @@ test("M029 commits both receipts atomically, preserves old saves and rejects ski
   assert.equal(saves.parseSaveImport(JSON.stringify({ ...portable.save, homeworld: {
     ...portable.save.homeworld, adjutantM029: { ...portable.save.homeworld.adjutantM029, version: 2 },
   } })).failure, "future-version");
+
+
+  const warp = qa.load("app/game/systems/warpEpochsV165.ts");
+  const route = qa.load("app/game/systems/warpCommonRouteR2.ts");
+  const authority = qa.load("app/game/systems/shipReceiptV161.ts");
+  const ctx = warp.warpAccessContextFromSaveV165(save, {});
+  const hull = authority.shipReceiptV161(save).receipt;
+  assert.ok(hull && ctx.blooded && ctx.personalShip && ctx.adjutant);
+  const step = action => warp.advanceWarpCommonRouteV165(
+    save.warpEpochsV165 ?? warp.createWarpEpochsV165(save.createdAt), ctx, hull.instanceId, action,
+  );
+  const record = action => {
+    const result = step(action);
+    assert.ok(result.accepted, result.message);
+    persist({ ...save, warpEpochsV165: result.state });
+  };
+  assert.equal(step({ kind: "read", at: 0 }).accepted, false);
+  record({ kind: "read", at: 3 });
+  const beforeWarpSurvey = save;
+  record({ kind: "read", at: 8 });
+  assert.equal(saves.writeSaveWithStatus(beforeWarpSurvey, disk).failure, "save-conflict");
+  record({ kind: "read", at: 13 });
+  record({ kind: "survey", at: 13, choice: "energie" });
+  assert.equal(save.warpEpochsV165.warpQuestOutcome, "en_cours");
+  assert.equal(step({ kind: "haul", at: 16 }).accepted, false);
+  for (const [index, part] of route.WARP_COMMON_PARTS_R2.entries()) {
+    const method = index === 1 ? "variante" : "reparer";
+    record({ kind: "inspect", at: part.position, part: part.id });
+    const required = route.warpTestDialR2(part.id, method, "energie");
+    assert.equal(step({ kind: "bench", at: part.position, part: part.id, choice: method, dial: (required + 1) % 5 }).accepted, false);
+    record({ kind: "bench", at: part.position, part: part.id, choice: method, dial: required });
+  }
+  assert.deepEqual(save.warpEpochsV165.components, {});
+  record({ kind: "haul", at: 16 });
+  assert.equal(Object.keys(save.warpEpochsV165.components).length, 3);
+  record({ kind: "align", at: 3 });
+  assert.equal(step({ kind: "dry-return", at: 13, choice: "fenetre-courte", dial: 3 }).accepted, false);
+  record({ kind: "connect", at: 8 });
+  assert.equal(step({ kind: "dry-return", at: 13, choice: "fenetre-courte", dial: 4 }).accepted, false);
+  const installed = step({ kind: "dry-return", at: 13, choice: "fenetre-courte", dial: 3 });
+  assert.ok(installed.accepted, installed.message);
+  assert.equal(saves.writeSaveWithStatus({ ...save, warpEpochsV165: installed.state }, disk).failure, "invalid-save");
+  const proof = chronicles.CHRONICLE_EVIDENCE.find(entry => entry.id === "warp-module-quest");
+  const confirmedWarp = chronicles.recordChronicleEvidence(save.prologue.chronicle, { id: proof.id, sourceId: proof.sourceId });
+  assert.ok(confirmedWarp.accepted && confirmedWarp.changed);
+  const prologue = { ...save.prologue, chronicle: confirmedWarp.state };
+  assert.equal(saves.writeSaveWithStatus({ ...save, prologue }, disk).failure, "invalid-save");
+  persist({ ...save, warpEpochsV165: installed.state, prologue });
+  const recovered = saves.parseSaveImport(saves.exportSave(save)).save;
+  assert.equal(recovered.warpEpochsV165.warpModuleInstalled, true);
+  assert.equal(recovered.warpEpochsV165.commonRouteR2.hullInstanceId, hull.instanceId);
+  assert.equal(chronicles.getChronicleRank(recovered.prologue.chronicle), "blooded");
+  assert.equal(chronicles.evaluateChronicleAccess(recovered.prologue.chronicle, "warp-universe",
+    { personalShipAvailable: true, warpModuleInstalled: true }).allowed, true);
+  assert.equal(saves.parseSaveImport(JSON.stringify({ ...recovered, warpEpochsV165: {
+    ...recovered.warpEpochsV165, commonRouteR2: { ...recovered.warpEpochsV165.commonRouteR2, hullInstanceId: "wrong-hull" },
+  } })).failure, "invalid-save");
 });
