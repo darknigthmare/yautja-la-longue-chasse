@@ -20,6 +20,7 @@ import tailwind from '@tailwindcss/postcss';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const out=path.resolve(root,process.env.SKINNING_CANOPY_QA_OUTPUT??'outputs/qa-skinning-canopy-20261109');
 const only=process.env.SKINNING_CANOPY_QA_CASE??'both';
+const bufferedTransfer=process.env.SKINNING_CANOPY_QA_TRANSFER==='buffered';
 assert.ok(['both','field','canopy'].includes(only));
 await mkdir(out,{recursive:true});
 const hash=value=>createHash('sha256').update(typeof value==='string'||ArrayBuffer.isView(value)?value:JSON.stringify(value)).digest('hex');
@@ -585,6 +586,26 @@ async function canopy(){
     const player=window.__skinningCanopyQaV112.state().player;
     return !player.climbing&&player.climbReattachSeconds>0;
   },null,{polling:'raf',timeout:2000});
+  if (bufferedTransfer) {
+    await check('one native Up tap catches the next authored vine during tangent flight', async () => {
+      await page.keyboard.press('ArrowUp');
+      await page.waitForFunction(() => window.__skinningCanopyQaV112.state().canopyTransfer?.remainingSeconds > 0,
+        null, {polling:'raf',timeout:1000});
+      const pending = await observation();
+      assert.equal(pending.canopyTransfer.departedSupportId, flexible.id);
+      const landed = await until('buffered catch of the next authored vine', 5000,
+        async state => state.player.climbing && state.player.climbZoneId === next.id);
+      assert.equal(landed.inputs.keyboard.includes('up'), false);
+      assert.equal(landed.player.aerialBoostUsed, false);
+      assert.equal(landed.canopyTransfer, null);
+      await hold([], 'release steering after the buffered catch');
+      await capture('13-native-buffered-next-vine');
+      return {fromSupport:flexible.id, nextSupport:next.id, player:landed.player, tapReleased:true};
+    });
+    data.final=await observation();data.finalSidecar=await disk();
+    await context.close();context=null;
+    return;
+  }
   await page.keyboard.down('Escape');
   await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().paused);
   await page.keyboard.up('Escape');

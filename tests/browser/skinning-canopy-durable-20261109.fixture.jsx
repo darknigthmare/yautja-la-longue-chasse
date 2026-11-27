@@ -70,6 +70,7 @@ audit.state=()=>{
     message:game.message,
     camera:{x:game.cameraX,y:game.cameraY},
     canopyGripContact,
+    canopyTransfer:game.canopyTransfer?{...game.canopyTransfer}:null,
     player:game.player,
     rites:game.huntRites,
     riteToolInitialCondition:game.riteToolInitialConditionV112,
