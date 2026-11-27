@@ -1,0 +1,40 @@
+name: Read canonical O6-M06 cells
+on:
+  push:
+    branches: [codex/qa-o6-m06-bible-probe-20261128]
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '451d5c2208430f38901b9310a548d06a5922c688'
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx
+      - name: Read local fixture definitions
+        run: |
+          python - <<'PY'
+          import zipfile, re, json
+          from xml.etree import ElementTree as ET
+          xl=zipfile.ZipFile('docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx')
+          ns={'m':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+          def texts(parent):
+            return "".join(x.text or "" for x in parent.findall('.//m:t',ns))
+          strings=[texts(e) for e in ET.fromstring(xl.read('xl/sharedStrings.xml'))] if 'xl/sharedStrings.xml' in xl.namelist() else []
+          def value(c):
+            v=c.findtext('m:v',default='',namespaces=ns)
+            return strings[int(v)] if c.get('t')=='s' else texts(c) if c.get('t')=='inlineStr' else v
+          for f in xl.namelist():
+            if not re.fullmatch(r'xl/worksheets/sheet[0-9]+\.xml',f): continue
+            table=[]
+            for row in ET.fromstring(xl.read(f)).findall('.//m:row',ns):
+              cells={c.get('r'):value(c) for c in row.findall('m:c',ns)}
+              table.append((row.get('r'),cells))
+            for i,(n,row) in enumerate(table):
+              if any(re.search(r'O6[-– ]M0[567]\b',s,re.I) for s in row.values()):
+                print('O6_SOURCE '+json.dumps({'file':f,'row':n,'cells':row},ensure_ascii=False))
+          print('SHEETS '+xl.read('xl/workbook.xml').decode()[:10000])
+          PY
