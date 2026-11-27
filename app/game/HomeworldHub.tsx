@@ -110,6 +110,9 @@ import HomeworldReturnM039, { HomeworldReturnJournalM039 } from "./HomeworldRetu
 import HomeworldCoordinationM028, { HomeworldCoordinationJournalM028 } from "./HomeworldCoordinationM028";
 import { HomeworldRouteBoardingM034, HomeworldRouteJournalM034, HomeworldRouteOfficerM034 } from "./HomeworldRouteM034";
 import HomeworldPackTrialM029 from "./HomeworldPackTrialM029";
+import HomeworldAdjutantM029 from "./HomeworldAdjutantM029";
+import { actHomeworldAdjutantM029, homeworldAdjutantEligibilityM029, homeworldAdjutantViewM029,
+  ADJUTANT_DOCK_M029, ADJUTANT_LEADER_M029, ADJUTANT_SAS_M029, type HomeworldAdjutantActionM029 } from "./systems/homeworldAdjutantM029";
 import { actHomeworldPackTrialM029, homeworldPackAdmissionM029, homeworldPackViewM029,
   PACK_POST_M029, type HomeworldPackActionM029 } from "./systems/homeworldPackTrialM029";
 import { actHomeworldRouteM034, homeworldRouteChoicesM034, homeworldRouteStateM034,
@@ -143,6 +146,7 @@ export interface HomeworldHubProps {
   welcome?: ReactNode;
   /** Return false when durable saving failed; no local success is then announced. */
   onProgress(next: HomeworldProgress): boolean;
+  onAdjutantAppointment?(next: HomeworldProgress, prologue: NonNullable<SaveGame["prologue"]>): boolean;
   /** A controlled host can also own recovery backups, including memory-only playtests. */
   recoveryStorage?: Pick<Storage, 'getItem' | 'setItem'>;
   /** Keep the lift inside this scene instead of browser/session-wide memory. */
@@ -178,7 +182,7 @@ function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInt
   return original ? { ...original, ...target.position } : null;
 }
 
-export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, recoveryStorage, ephemeralSession = false, onService, onKennelActionV147, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
+export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onAdjutantAppointment, recoveryStorage, ephemeralSession = false, onService, onKennelActionV147, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
   const [initialLocationV77] = useState(() => resolveCargoArrivalV108(save.homeworld.locationV77,save.createdAt,save.homeworld.cargoV108,{cartographyV104:save.homeworld.cartographyV104,cartographyV105:save.homeworld.cartographyV105,archiveV106:save.homeworld.archiveV106,archiveComparisonV107:save.homeworld.archiveComparisonV107}));
   const [upgradeRecoveryPendingV112,setUpgradeRecoveryPendingV112]=useState(()=>!initialLocationV77.migrationBackup&&homeworldGeometryRecoveryRequiredV112(save.homeworld.locationV77,save.createdAt,homeworldGeometryRecoveryLedgersV112(save.homeworld)));
   const upgradeRecoveryPendingRefV112=useRef(upgradeRecoveryPendingV112);
@@ -415,7 +419,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   useEffect(() => { pausedRef.current = paused || inactive || spatialCodexOpen || wayfindingOpenV75 || !motionAssetsV74.ready || cargoMigrationPendingV108; }, [paused, inactive, spatialCodexOpen, wayfindingOpenV75, motionAssetsV74.ready,cargoMigrationPendingV108]);
   useEffect(() => { dialogStateRef.current = dialog; }, [dialog]);
 
-  const onProgress = useCallback((next: HomeworldProgress) => {
+  const onProgress = useCallback((next: HomeworldProgress, adjutantPrologue?: NonNullable<SaveGame["prologue"]>) => {
     if (!cargoMigrationWriteReadyRefV108.current || saveRef.current.createdAt !== save.createdAt || transitRefV77.current || skiffRefV77.current) return false;
     if(progressRef.current.arrivalRecoveryV111?.receipt&&JSON.stringify(next.arrivalRecoveryV111)!==JSON.stringify(progressRef.current.arrivalRecoveryV111))return false;
     if(next.arrivalRecoveryV111&&(!normalizeHomeworldArrivalRecoveryV111(next.arrivalRecoveryV111)||next.arrivalRecoveryV111.ownerCreatedAt!==save.createdAt))return false;
@@ -466,7 +470,8 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
       const receipt=next.arrivalRecoveryV111.receipt;
       if(receipt.originalCheckpointJson!==JSON.stringify(progressRef.current.locationV77)||receipt.originalLedgersJson!==JSON.stringify(homeworldArrivalRecoveryLedgersV111(durable))||JSON.stringify(receipt.restoredCheckpoint)!==JSON.stringify(locationV77))return false;
     }
-    if (!persistProgress(durable)) return false;
+    const saved = adjutantPrologue ? onAdjutantAppointment?.(durable, adjutantPrologue) : persistProgress(durable);
+    if (!saved) return false;
     progressRef.current = durable;
     if(archiveContinuationV111){continuationDraftRefV111.current=archiveContinuationV111;setContinuationViewV111(archiveContinuationV111);}
     if(archivePlaqueV109){plaqueDraftRefV109.current=archivePlaqueV109;setPlaqueViewV109(archivePlaqueV109);}
@@ -482,7 +487,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     cartographyWritePausedRefV104.current=false;setCartographyWritePausedV104(false);
     cartographyWritePausedRefV105.current=false;setCartographyWritePausedV105(false);
     return true;
-  }, [persistProgress, save.createdAt]);
+  }, [onAdjutantAppointment, persistProgress, save.createdAt]);
   const recordLocationV77 = useCallback(() => {
     if (transitRefV77.current || skiffRefV77.current || suspendedRef.current) return false;
     const ok = onProgress(progressRef.current);
@@ -887,6 +892,24 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true }));
   }, [clearInputs,leaveCntlipV77]);
 
+  const submitHomeworldAdjutantM029 = useCallback((action: HomeworldAdjutantActionM029) => {
+    const current = saveRef.current;
+    const room = interiorRef.current;
+    const currentActor = actorRef.current;
+    const near = pointInCurrentSpace(currentActor, room, levelRefV77.current);
+    if (current.createdAt !== save.createdAt ||
+        (action !== "place-relay" && (!near || near.id !== dialogStateRef.current?.point?.id))) return;
+    const result = actHomeworldAdjutantM029(progressRef.current.adjutantM029, current, action, {
+      roomId: room?.buildingId ?? null, pointId: near?.id ?? null, actor: currentActor,
+      suspended: suspendedRef.current || pausedRef.current || !!transitRefV77.current || !!skiffRefV77.current,
+    });
+    const message = result.state && !onProgress({ ...progressRef.current, adjutantM029: result.state }, result.prologue)
+      ? "Les preuves n’ont pas pu être inscrites. Reste au poste pour réessayer."
+      : result.message;
+    clearInputs();
+    setAnnouncement(message);
+    setDialog(current => current ? { ...current, message } : current);
+  }, [clearInputs, onProgress, save.createdAt]);
   const submitCoordinationM028 = useCallback((action: HomeworldCoordinationActionM028) => {
     const current = saveRef.current;
     const room = interiorRef.current;
@@ -977,6 +1000,11 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
       submitCoordinationM028({ kind: "clear" });
       return;
     }
+    if (progressRef.current.adjutantM029?.phase === "dossier" &&
+        homeworldCoordinationWorkshopReachedM028(room?.buildingId ?? null, actorRef.current)) {
+      submitHomeworldAdjutantM029("place-relay");
+      return;
+    }
     const socialHost=homeworldCntlipEligibleV77(saveRef.current)?homeworldCntlipReachedV77(room,actorRef.current):null;
     if(socialHost&&openCntlipV77(socialHost.siteId)){
       setActor(actorRef.current);const next={point:null,cntlipSiteId:socialHost.siteId};dialogStateRef.current=next;setDialog(next);return;
@@ -1014,7 +1042,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     }
     if (!youthWelcome && point.kind === "evidence" && point.evidenceId) message = persistAction({ type: "inspect", evidenceId: point.evidenceId }).message;
     setDialog({ point, message });
-  }, [clearInputs, enterInterior, exitInterior, persistAction, residentContextV110, youthWelcome, submitCoordinationM028,openCntlipV77,updateLiftStationV83,interruptCartographyV104,cartographyContextV104,cartographyContextV105,interruptCartographyV105,openObservationV105,archiveContextV106,submitArchiveV106,interruptArchiveV106,onProgress,archiveWriteRefusedV106,comparisonContextV107,submitComparisonV107,interruptComparisonV107,comparisonWriteRefusedV107,cargoContextV108,submitCargoV108,interruptCargoV108,cargoWriteRefusedV108,plaqueContextV109,submitPlaqueV109,submitEffectivePlaqueV111,interruptPlaqueV109,plaqueWriteRefusedV109]);
+  }, [clearInputs, enterInterior, exitInterior, persistAction, residentContextV110, youthWelcome, submitCoordinationM028,submitHomeworldAdjutantM029,openCntlipV77,updateLiftStationV83,interruptCartographyV104,cartographyContextV104,cartographyContextV105,interruptCartographyV105,openObservationV105,archiveContextV106,submitArchiveV106,interruptArchiveV106,onProgress,archiveWriteRefusedV106,comparisonContextV107,submitComparisonV107,interruptComparisonV107,comparisonWriteRefusedV107,cargoContextV108,submitCargoV108,interruptCargoV108,cargoWriteRefusedV108,plaqueContextV109,submitPlaqueV109,submitEffectivePlaqueV111,interruptPlaqueV109,plaqueWriteRefusedV109]);
 
   useEffect(() => {
     const element = viewportRef.current;
@@ -1350,6 +1378,11 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   };
   const packViewM029 = useMemo(() => homeworldPackViewM029(save.homeworld.packTrialM029, save.createdAt),
     [save.homeworld.packTrialM029, save.createdAt]);
+  const adjutantM029 = useMemo(() => homeworldAdjutantViewM029(save.homeworld.adjutantM029, save), [save]);
+  const canStudyAdjutantM029 = useMemo(() => !youthWelcome && homeworldAdjutantEligibilityM029(save) === null,
+    [save, youthWelcome]);
+  const atAdjutantWorkshopM029 = adjutantM029?.phase === "dossier" &&
+    homeworldCoordinationWorkshopReachedM028(interior?.buildingId ?? null, actor);
   const returnHuntsM039 = useMemo(() => homeworldReturnHuntsM039(save), [save]);
   const returnM039 = save.homeworld.returnM039?.ownerCreatedAt === save.createdAt ? save.homeworld.returnM039 : undefined;
   const returnContactM039 = homeworldReturnContactM039(interior?.buildingId ?? null, selectedPoint?.id ?? null);
@@ -1508,7 +1541,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
       ? 'Embarquer · Ascenseur des délégations'
       : liftStateV83.journey ? 'Cabine en déplacement · Ascenseur des délégations' : 'Appeler la cabine · Ascenseur des délégations'
     : nearbyConnectorV77?.connector.name;
-  const interactionLabel = nearbyPlaqueActionV109?nearbyPlaqueActionV109.label:nearbyPlaqueHostV109?'Archiviste · plaque K-17':nearbyCargoActionV108?nearbyCargoActionV108.label:nearbyCargoHostV108?'Intendante · répartir les lots':nearbyComparisonActionV107?nearbyComparisonActionV107.label:nearbyComparisonHostV107?'Archiviste · preuve située':nearbyArchiveActionV106?nearbyArchiveActionV106.label:nearbyArchivistV106?'Archiviste · dossiers séparés':nearbyConnectorV77 ? connectorLabelV83 : indoorTarget?.kind === "exit" ? "Sortir vers la cité" : atCoordinationGateM028 ? coordinationPromptM028 : highPointAvailableV105&&progress.cartographyV105?.receipt?.phase==='observing'?'Comparer les repères du viaduc':nearbyCntlipHostV77?`Halte · ${nearbyCntlipHostV77.name}` : nearbyCartographerV104?'Cartographe · liaison du port':nearestDoor ? `Entrer · ${nearestDoor.label}` : nearest?.label ?? (nearbyResidentV68 ? `Parler · ${nearbyResidentV68.role}` : nearbyStreetContactV100?`Parler · ${nearbyStreetContactV100.role}`:null);
+  const interactionLabel = nearbyPlaqueActionV109?nearbyPlaqueActionV109.label:nearbyPlaqueHostV109?'Archiviste · plaque K-17':nearbyCargoActionV108?nearbyCargoActionV108.label:nearbyCargoHostV108?'Intendante · répartir les lots':nearbyComparisonActionV107?nearbyComparisonActionV107.label:nearbyComparisonHostV107?'Archiviste · preuve située':nearbyArchiveActionV106?nearbyArchiveActionV106.label:nearbyArchivistV106?'Archiviste · dossiers séparés':nearbyConnectorV77 ? connectorLabelV83 : indoorTarget?.kind === "exit" ? "Sortir vers la cité" : atCoordinationGateM028 ? coordinationPromptM028 : atAdjutantWorkshopM029 ? "Poser le relais du convoi" : highPointAvailableV105&&progress.cartographyV105?.receipt?.phase==='observing'?'Comparer les repères du viaduc':nearbyCntlipHostV77?`Halte · ${nearbyCntlipHostV77.name}` : nearbyCartographerV104?'Cartographe · liaison du port':nearestDoor ? `Entrer · ${nearestDoor.label}` : nearest?.label ?? (nearbyResidentV68 ? `Parler · ${nearbyResidentV68.role}` : nearbyStreetContactV100?`Parler · ${nearbyStreetContactV100.role}`:null);
   const heroPlacement = !youthWelcome && heroPlate.status === "custom-modular-body"
     ? homeworldModularPlacementV64(save.appearance.bodyMorphId, save.appearance.headStyleId)
     : homeworldPortraitPlacementV64(heroPlate.plateId, heroPlate.src, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.physicalHeight : 100);
@@ -1740,6 +1773,20 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
             <HomeworldPackTrialM029 view={packViewM029} locked={homeworldPackAdmissionM029(save)}
               paused={suspended || paused || inactive} onAction={submitHomeworldPackM029} />
           )}
+          {(canStudyAdjutantM029 || adjutantM029) && interior?.buildingId === ADJUTANT_DOCK_M029.roomId &&
+            selectedPoint.id === ADJUTANT_DOCK_M029.pointId && (
+              <HomeworldAdjutantM029 station="dock" record={adjutantM029} disabled={suspended || paused || inactive}
+                mayAppoint={!!onAdjutantAppointment} onAction={submitHomeworldAdjutantM029} />
+            )}
+          {adjutantM029?.phase === "relay" && !interior && selectedPoint.id === ADJUTANT_SAS_M029.pointId && (
+            <HomeworldAdjutantM029 station="sas" record={adjutantM029} disabled={suspended || paused || inactive}
+              mayAppoint={!!onAdjutantAppointment} onAction={submitHomeworldAdjutantM029} />
+          )}
+          {adjutantM029 && ["reported", "deferred", "appointed"].includes(adjutantM029.phase) &&
+            interior?.buildingId === ADJUTANT_LEADER_M029.roomId && selectedPoint.id === ADJUTANT_LEADER_M029.pointId && (
+              <HomeworldAdjutantM029 station="leader" record={adjutantM029} disabled={suspended || paused || inactive}
+                mayAppoint={!!onAdjutantAppointment} onAction={submitHomeworldAdjutantM029} />
+            )}
           {routeBriefingM034 && interior?.buildingId === ROUTE_OFFICER_M034.roomId && selectedPoint.id === ROUTE_OFFICER_M034.pointId && (
             <HomeworldRouteOfficerM034 briefing={routeBriefingM034} route={nextRouteM034}
               disabled={suspended || paused || inactive} onAction={submitHomeworldRouteM034} />

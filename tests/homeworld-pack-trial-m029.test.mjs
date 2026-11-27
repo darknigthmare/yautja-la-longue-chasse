@@ -95,3 +95,72 @@ test("M029 brings back twelve individually tracked pupils after two sheltered cr
   assert.deepEqual(history.getChronicleFunctions(save.prologue.chronicle), []);
   assert.equal(save.prologue.chronicle.evidence.some(evidence => evidence.id === "team-extraction"), false);
 });
+
+const adjudicate = game.load("app/game/systems/homeworldAdjutantM029.ts");
+const at = (target, actor = { x: 1, y: 1 }) => ({ ...target, suspended: false, actor });
+const officer = at(adjudicate.ADJUTANT_DOCK_M029);
+const relay = at({ roomId: adjudicate.ADJUTANT_RELAY_M029.roomId, pointId: null }, adjudicate.ADJUTANT_RELAY_M029.position);
+const sas = at(adjudicate.ADJUTANT_SAS_M029);
+const leader = at(adjudicate.ADJUTANT_LEADER_M029);
+
+function readyPack(save) {
+  let result;
+  const act = action => {
+    result = pack.actHomeworldPackTrialM029(result?.state, save, action, post);
+    assert.ok(result.state, result.message);
+  };
+  const state = () => pack.homeworldPackViewM029(result.state, owner);
+  const reach = (target, direction) => {
+    while (state().player !== target) {
+      const actions = pack.homeworldPackActionsM029(state());
+      act(actions.includes(direction) ? direction : "regroup");
+    }
+    while (state().pupils.some(position => position !== target)) act("regroup");
+  };
+  act("start"); reach(6, "east"); act("shelter"); reach(16, "east"); act("turn");
+  reach(12, "west"); act("shelter"); reach(0, "west"); act("count");
+  return result.state;
+}
+
+test("M029 keeps nominations behind twelve returned pupils, two worlds, a working relay and the Leader's explicit offer", () => {
+  const save = saveAdmitted();
+  const verify = (raw, action, place) => adjudicate.actHomeworldAdjutantM029(raw, save, action, place);
+  const complete = id => Object.assign(save.missionProgress[id], { status: "completed", completions: 1, attempts: 1 });
+  complete("jungle-vey");
+  complete("ice-cryostalker");
+  assert.equal(verify(null, "study", officer).state, undefined);
+  save.homeworld.packTrialM029 = readyPack(save);
+  const withoutTwoWorlds = { ...save, missionProgress: { ...save.missionProgress, "ice-cryostalker": { status: "available", completions: 0 } } };
+  assert.equal(adjudicate.actHomeworldAdjutantM029(null, withoutTwoWorlds, "study", officer).state, undefined);
+
+  const start = verify(null, "study", officer).state;
+  assert.ok(start);
+  assert.equal(verify(start, "accept", leader).state, undefined);
+  assert.equal(verify(start, "place-relay", at(adjudicate.ADJUTANT_RELAY_M029)).state, undefined);
+  const routed = verify(start, "place-relay", relay).state;
+  assert.ok(routed);
+  assert.equal(verify(routed, "confirm-signal", officer).state, undefined);
+  const report = verify(routed, "confirm-signal", sas).state;
+  const defer = verify(report, "defer", leader);
+  assert.equal(defer.state.phase, "deferred");
+  assert.equal(defer.prologue, undefined);
+  assert.deepEqual(history.getChronicleFunctions(save.prologue.chronicle), []);
+  assert.equal(verify(defer.state, "accept", officer).state, undefined);
+
+  const deferred = normalizeHomeworldProgress(JSON.parse(JSON.stringify({ ...save.homeworld, adjutantM029: defer.state })));
+  assert.deepEqual(deferred.adjutantM029, defer.state);
+  const appointment = verify(deferred.adjutantM029, "accept", leader);
+  assert.ok(appointment.prologue, appointment.message);
+  assert.deepEqual(history.getChronicleFunctions(appointment.prologue.chronicle), ["adjutant"]);
+  assert.equal(history.getChronicleRank(appointment.prologue.chronicle), "blooded");
+  assert.deepEqual(appointment.state.witnessedWorlds, ["jungle-vey", "ice-cryostalker"]);
+  const finalSave = { ...save, homeworld: { ...save.homeworld, adjutantM029: appointment.state }, prologue: appointment.prologue };
+  assert.equal(adjudicate.homeworldAdjutantMatchesSaveM029(finalSave), true);
+  assert.equal(adjudicate.homeworldAdjutantMatchesSaveM029({ ...finalSave, profile: { ...finalSave.profile, honor: 2999 } }), true);
+  assert.equal(adjudicate.homeworldAdjutantMatchesSaveM029({ ...finalSave, homeworld: save.homeworld }), false);
+  assert.equal(adjudicate.homeworldAdjutantMatchesSaveM029({ ...finalSave, prologue: save.prologue }), false);
+  assert.equal(adjudicate.normalizeHomeworldAdjutantM029({ ...appointment.state, events: ["accept"] }), null);
+  assert.equal(adjudicate.homeworldAdjutantMatchesSaveM029({
+    ...finalSave, homeworld: { ...finalSave.homeworld, packTrialM029: undefined },
+  }), false);
+});
