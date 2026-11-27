@@ -1,0 +1,23 @@
+name: Audit baseline Adjutant evidence producers
+on:
+  push:
+    branches: [codex/audit-bible-m029-baseline-20261127]
+permissions:
+  contents: read
+jobs:
+  evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout: app
+      - name: List any baseline application writers
+        run: |
+          rg -n -g '*.ts' -g '*.tsx' -e 'team-extraction|multiple-world-hunts|adjutant-appointment' app
+          if rg -l -g '*.ts' -g '*.tsx' -g '!clanChronicle.ts' -e 'team-extraction|multiple-world-hunts|adjutant-appointment' app; then
+            echo 'Found another application reference; inspect the call sites.'
+            exit 2
+          fi
