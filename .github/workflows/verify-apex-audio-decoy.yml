@@ -16,7 +16,7 @@ jobs:
       - name: Checkout the exact source
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 69498bd54f3fbcb7963bb6bcdd2674873d1b8091
+          ref: c2f0ab318a54e7b69403214547305291f5dfe52f
           persist-credentials: false
           filter: blob:none
           sparse-checkout-cone-mode: false
@@ -36,7 +36,7 @@ jobs:
             /public/game/dialogues/v85/bible-dialogues-index.json
             /public/audio/
       - name: Read exact branch correction
-        run: test "$(git rev-parse HEAD)" = '69498bd54f3fbcb7963bb6bcdd2674873d1b8091'
+        run: test "$(git rev-parse HEAD)" = 'c2f0ab318a54e7b69403214547305291f5dfe52f'
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
@@ -47,3 +47,122 @@ jobs:
         run: node --experimental-strip-types --test tests/hunt-systems.test.mjs tests/hunt-level-coherence-v157.test.mjs tests/hunt-input-runtime.test.mjs tests/active-hunt-save.test.mjs
       - name: Typecheck
         run: npm run typecheck
+      - name: Play a native Cryostalker arena fixture and resume the archive
+        run: |
+          node --input-type=module <<'APEX_RUNTIME_FIXTURE'
+          import assert from "node:assert/strict";
+          import { createRequire } from "node:module";
+          import { mkdir, readFile, writeFile } from "node:fs/promises";
+          import { runInNewContext } from "node:vm";
+          import path from "node:path";
+          import { build } from "esbuild";
+          
+          const source = await readFile("app/game/HuntCanvas.tsx", "utf8");
+          const compiled = await build({
+            stdin: {
+              contents: source + '\nexport {makeGameState, stepGame, captureCheckpoint, serializeActiveHuntCheckpoint, deserializeActiveHuntCheckpoint, restoreCheckpoint};\nexport {defaultSave} from "./save";\nexport {MISSION_BY_ID} from "./data";\n',
+              resolveDir: path.resolve("app/game"),
+              sourcefile: path.resolve("app/game/HuntCanvas.tsx"),
+              loader: "tsx",
+            },
+            bundle: true,
+            write: false,
+            format: "cjs",
+            platform: "node",
+            jsx: "automatic",
+            loader: { ".module.css": "empty" },
+            external: ["react", "react/jsx-runtime", "react-dom"],
+          });
+          const moduleExports = { exports: {} };
+          runInNewContext(compiled.outputFiles[0].text, {
+            module: moduleExports,
+            exports: moduleExports.exports,
+            require: createRequire(path.resolve("package.json")),
+            TextEncoder,
+            TextDecoder,
+            document: { hidden: false, hasFocus: () => true },
+            navigator: { getGamepads: () => [] },
+          });
+          const game = moduleExports.exports;
+          const save = game.defaultSave("2026-11-27T00:00:00.000Z");
+          const mission = game.MISSION_BY_ID["ice-cryostalker"];
+          const loadout = { ...save.loadout, gearIds: ["audio-decoy", "snare"] };
+          const inventory = { ...save.inventory, unlockedGearIds: [...new Set([...save.inventory.unlockedGearIds, "audio-decoy", "snare"])] };
+          const fresh = () => game.makeGameState(
+            mission, loadout, inventory, save.settings.difficultyId, save.appearance,
+            save.settings.reducedGore, save.settings.screenShake, "apex-decoy-qa", save.exploration,
+          );
+          
+          // Admit one isolated encounter to the test bench. The fixture supplies arena placement
+          // and the purchased-gear configuration. Native input owns every action after admission.
+          let state = fresh();
+          state.phase = "target";
+          state.boss.active = true;
+          state.player.x = state.boss.x - 125;
+          state.player.y = state.world.floorY - state.player.height;
+          state.player.previousY = state.player.y;
+          state.player.grounded = true;
+          state.player.facing = 1;
+          
+          const input = {
+            keyboardHeld: new Set(),
+            touchHeld: new Set(),
+            gamepadHeld: new Set(),
+            pressed: new Set(),
+            previousGamepadButtons: [],
+            activeGamepadIndex: null,
+            gamepadNeedsNeutral: true,
+            gamepadDialogActions: [],
+            pointerScreen: null,
+          };
+          const step = (...pressed) => {
+            input.pressed.clear();
+            for (const control of pressed) input.pressed.add(control);
+            game.stepGame(state, mission, loadout, inventory, save.appearance, save.settings.difficultyId, input, 1 / 60, () => {});
+          };
+          step("scan");
+          assert.equal(state.boss.scanned, true);
+          const originalCharges = state.arsenal.slots[0].charges;
+          step("gearOne");
+          assert.equal(state.arsenal.slots[0].charges, originalCharges - 1);
+          assert.equal(state.traps.length, 1);
+          const placement = state.traps[0];
+          assert.ok(placement.x > state.boss.x + state.boss.width / 2 + 40,
+            `real trap at ${placement.x} must be beyond the Apex at ${state.boss.x + state.boss.width / 2}`);
+          for (let i = 0; i < 90 && !state.bossMechanics.audioDecoy?.target; i++) step();
+          const reaction = state.bossMechanics.audioDecoy;
+          assert.ok(reaction?.target, "a natural emitted pulse must reach the Apex");
+          assert.equal(reaction.target.x, placement.x);
+          assert.equal(reaction.heardDeviceIds[0], placement.id);
+          assert.ok(Math.abs(reaction.untilSeconds - state.elapsed - 4) < 1e-9);
+          assert.ok(state.boss.velocityX > 0, "the Apex moves toward the lure while the hunter is on the opposite side");
+          assert.equal(state.boss.pendingAttackId, null);
+          
+          for (let i = 0; i < 35; i++) step();
+          const archive = game.serializeActiveHuntCheckpoint(game.captureCheckpoint(state, "resume"), 0);
+          assert.ok(archive);
+          const decoded = game.deserializeActiveHuntCheckpoint(JSON.parse(JSON.stringify(archive)));
+          assert.ok(decoded);
+          state = game.restoreCheckpoint(fresh(), decoded.checkpoint, "resume");
+          assert.equal(state.bossMechanics.audioDecoy.untilSeconds, reaction.untilSeconds);
+          assert.equal(state.bossMechanics.audioDecoy.target.x, placement.x);
+          assert.equal(state.arsenal.slots[0].charges, originalCharges - 1);
+          const restoredAt = state.elapsed;
+          assert.equal(state.paused, false, state.message);
+          for (let i = 0; i < 280 && state.elapsed <= reaction.untilSeconds; i++) step();
+          assert.ok(state.elapsed >= reaction.untilSeconds);
+          assert.equal(state.bossMechanics.audioDecoy.target, null);
+          assert.ok(state.traps.some((trap) => trap.id === placement.id), "one emitter remains physically active after its distraction expires");
+          assert.equal(state.bossMechanics.audioDecoy.heardDeviceIds.length, 1);
+          await mkdir("outputs/apex-decoy", { recursive: true });
+          const report = { verdict: "PASS_NATIVE", scope: "isolated Cryostalker encounter fixture; native input, complete engine tick and production checkpoint; no whole campaign or browser", placement: placement.x, startedAt: reaction.untilSeconds - 4, restoredAt, expiredAt: state.elapsed, sameEmitterStillActive: true };
+          await writeFile("outputs/apex-decoy/report.json", JSON.stringify(report, null, 2));
+          process.stdout.write(JSON.stringify(report) + "\n");
+          APEX_RUNTIME_FIXTURE
+      - name: Preserve the native replay evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: apex-decoy-native
+          path: outputs/apex-decoy/
+          if-no-files-found: warn
