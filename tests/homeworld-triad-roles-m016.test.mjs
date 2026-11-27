@@ -3,7 +3,8 @@ import assert from "node:assert/strict";
 import { formationCampaignRoute, formationEnvironment, formationModel, stamp } from "./helpers/solo-v90-played-route.mjs";
 
 const p = formationModel;
-const admitted = formationCampaignRoute({ stop: "assemble" }).save;
+const atEntrance = formationCampaignRoute({ stop: "assemble" }).save;
+const admitted = formationCampaignRoute({ stop: "assemble", meetPartners: true }).save;
 
 function rehearsal(save = structuredClone(admitted)) {
   let state = save.soloV90.checkpoint;
@@ -79,4 +80,57 @@ test("M016 keeps older snapshots and validates the optional replayed role choice
     assert.equal(p.unpackSoloV90Input(p.packSoloV90Input({ rolePlan })).rolePlan, rolePlan);
   }
   assert.equal(p.packSoloV90Input({ move: 1, jump: true, command: true, dodge: true }), 54);
+});
+
+function walkTo(play, target) {
+  for (let i = 0; i < 950 && Math.abs(play.state.player.x - target) > 3.5; i++) {
+    play.act(play.state.inputArmed ? { move: Math.sign(target - play.state.player.x) } : {});
+  }
+  play.act({});
+  assert(Math.abs(play.state.player.x - target) <= 3.5);
+}
+
+test("M016 requires the two physical partner activities before the board, with checkpoint recovery", () => {
+  const play = rehearsal(structuredClone(atEntrance));
+  const [saar, vek] = p.SOLO_V90_PARTNER_ACTIVITIES;
+  walkTo(play, 2590);
+  play.act({ command: true, rolePlan: "complementary" });
+  assert.equal(p.soloV90RoleBoardReady(play.state), false);
+  assert.equal(play.state.roleMode, "follow");
+  assert.equal(play.state.formationPlan, undefined);
+  assert.deepEqual(play.state.partnerObservations, {});
+  // Partners may be met right-to-left. The replay and canonical archive must agree.
+  walkTo(play, vek.x);
+  for (let i = 0; i < 22; i++) play.act({ interact: true });
+  assert.equal(play.state.partnerObservations.vek, undefined);
+  play.commit();
+  assert.equal(play.state.scan, 22);
+  walkTo(play, vek.x - 60);
+  assert.equal(play.state.scan, 0);
+  walkTo(play, vek.x);
+  for (let i = 0; i < p.SOLO_V90_ACTIVITY_TICKS; i++) play.act({ interact: true });
+  assert.equal(typeof play.save.soloV90.checkpoint.partnerObservations.vek, "number");
+  assert.equal(play.state.partnerObservations.saar, undefined);
+  walkTo(play, saar.x);
+  for (let i = 0; i < p.SOLO_V90_ACTIVITY_TICKS; i++) play.act({ interact: true });
+  assert.deepEqual(Object.keys(play.save.soloV90.checkpoint.partnerObservations), ["saar", "vek"]);
+  walkTo(play, 2590);
+  assert(p.soloV90RoleBoardReady(play.state));
+  assert.equal(play.state.milestones["roles-positioned"], undefined);
+  assert.deepEqual(play.save.prologue.chronicle, atEntrance.prologue.chronicle);
+});
+
+test("M016 keeps legacy checkpoints, and the live writer refuses an invented observation", () => {
+  const play = rehearsal(structuredClone(atEntrance));
+  const current = play.save.soloV90;
+  const historical = structuredClone(current);
+  delete historical.checkpoint.partnerObservations;
+  assert(p.normalizeSoloV90Campaign(historical));
+  const legacyPlay = rehearsal({ ...play.save, soloV90: historical });
+  findBoard(legacyPlay);
+  assert.equal(legacyPlay.state.partnerObservations, undefined);
+  walkTo(play, 1180);
+  play.commit();
+  const forged = { ...play.state, partnerObservations: { saar: play.state.tick } };
+  assert.equal(p.withSoloV90Checkpoint(play.save, forged, stamp), null);
 });
