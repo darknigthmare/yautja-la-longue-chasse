@@ -122,6 +122,22 @@ Le lot part de `75bbc177`, avec la visite du mausolée et les chantiers transver
 - **COOP_DE_CAMPAGNE** · Le règlement des expéditions contrôle l’attribution des gains confirmés par un hôte et empêche leur réutilisation. L’invitation et la simulation partagée restent à raccorder. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46010949709)
 
 
+
+### Suite de campagne et intégration des PR
+
+Le lot part de `fa89bee` après #201. Le classeur réunit les parcours joués, les reçus préparés pour la recette et les étapes encore requises.
+
+- **R2-M003** · Le choix de départ change l’interlocuteur rencontré. L’escalier du Conseil, le poste de forge et la table du foyer conservent leurs preuves physiques. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46022566024)
+- **R2-M006** · Yena, Harek et Tov présentent le geste qui leur est associé dans les ateliers joués. Le journal garde chaque présentation avec le passage au coffre et au râtelier. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46026217008)
+- **R2-M016** · Une objection à la première répartition ouvre un choix réel. Le joueur peut accepter les postes complémentaires ou faire répéter le signal avec Saar et Vek, puis reproposer ses postes. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46023907804)
+- **R2-M017** · Le passage haut enregistre le relais sur la passerelle médiane et la réunion des deux compagnons au point aval. Les parcours historiques reprennent sur leur géométrie. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46025663830)
+- **FIN_DE_VOIE** · Le débrief solitaire lit le retour et l’équipement attestés. À l’atelier, le berceau affiche le trophée choisi, son état et son cartel. La clôture de la voie attend les missions antérieures. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46022829799)
+- **PIT_MASQUES_BRISES** · La sélection du Pit ouvre la Cour des Masques Brisés, les gardes-ripostes et une épreuve de précision. Le catalogue indique l’usage réel des quinze illustrations. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46022186592)
+- **TERRE_ISLES** · The Isles s’ouvre depuis le menu pour une île d’essai et la Chasse inversée solo. La salle reste un outil local de test. Terre conserve ses annexes et son prototype Okavango. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46020872850)
+- **Épreuves de rang** · Les archives du vaisseau reprennent le dossier des rites et distinguent le seuil, le registre en cours et la reconnaissance Blooded, Elite ou Elder consignée par les scènes de campagne. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46021281609)
+- **Pilote Apex** · Le pilote sépare la rotation et l’esquive et lit la reprise exacte du Deck. Le contact Sandmaw a été rejoué depuis son archive historique. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46021100220)
+- **R2-M060** · Le navire du clan donne un troisième lieu à l’épilogue. Le joueur rejoint son service des trophées et retrouve ses preuves d’amarrage et d’équipage. La recette prépare le reçu de fin d’origine. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46025889206)
+
 ## Vue d'ensemble
 
 La campagne comprend 60 fiches communes et 8 chasses planétaires qui réalisent R2-M024. Le tableau associe les fiches à leur parcours. Le classeur du 27 novembre précise les correspondances, les preuves et les étapes encore ouvertes.
@@ -132,10 +148,10 @@ La chaîne de jeunesse va de la nurserie à l’accueil Unblooded sur le Homewor
 | --- | --- | --- | --- | --- | --- |
 | 1 | R2-M001 | Pourquoi nous combattons | Youngling | Ouverture jouable | Outil, proie échappée, mise à l’abri et filet |
 | 2 | R2-M002 | Le filet et les visages | Youngling | Cour de la nurserie raccordée | Duel, outil, barrière et choix de cohorte |
-| 3 | R2-M003 | Le chemin vers la cité | Youngling | Détour et parvis joués · guidage à prolonger | Deux repères avec Saar, détour du chariot et remise de la pièce |
+| 3 | R2-M003 | Le chemin vers la cité | Youngling | Parvis, rencontres et foyer jouables | Détour du chariot, rendez-vous selon le choix et visite de la table du foyer |
 | 4 | R2-M004 | L’épreuve des trois gestes | Youngling | Exercices en salle raccordés | Anneau, poutre et cible dans l’ordre choisi |
 | 5 | R2-M005 | La piste avant la prise | Youngling | Piste et rapport raccordés | Indices, perchoir et retour par une autre voie |
-| 6 | R2-M006 | Entrer parmi les Unblooded | Youngling | Passation et premier atelier jouables | Le râtelier transmet le choix du masque ou des lames au dojo |
+| 6 | R2-M006 | Entrer parmi les Unblooded | Youngling | Passation, démonstrations et premier atelier | L’appui, les trois camarades, le coffre et le râtelier transmettent le choix au dojo |
 | 7 | R2-M007 | Le masque et ses lectures | Unblooded | Atelier Unblooded jouable | Calibrer et remettre le profil de masque |
 | 8 | R2-M008 | La distance des lames | Unblooded | Atelier Unblooded jouable | Comparer la portée et remettre le rapport de lames |
 | 9 | R2-M009 | Ce que le camouflage laisse voir | Unblooded | Atelier Unblooded jouable | Lire les traces et franchir la salle de camouflage |
@@ -556,6 +572,14 @@ La note parlait de « Glacier Moon » et « Swamp Moon » : elles deviennent des
 | --- | --- | --- |
 | **The Pit** | Le joueur y combat avec son personnage : petite Fosse de jeunesse (V53, déjà jouable) ; duels sanctionnés pour régler un différend (JUST-13) ; duels de rang ; défi du chef et défis des Élites dans les voies de clan Défi et Succession (L-08) | ouvert à Blooded : roster complet, arènes, tournois, et The Pit en ligne |
 | **Game Preserve** | Chasses d'entraînement du pack d'Unblooded ; contrats de trophées rares ; en fin de jeu, le joueur gère sa propre réserve sur le modèle de la planète-réserve des Super Predators (*Predators*, 2010), alimente ses arènes de Warlord et la défend contre les intrus | ouvert à Elite : grandes traques (V6), toutes les réserves, réglages libres |
+
+**Référence The PIT — 27 novembre 2026 :** la [bible de combat dédiée](../the-pit/BIBLE_THE_PIT.md)
+intègre le guide général et les deux extensions (personnalité/équipes/bonus, puis
+slots/déblocages/soutiens). Sa [matrice de traçabilité](../the-pit/TRACEABILITE_GUIDES_20261127.md)
+distingue les systèmes présents, les adaptations et les objectifs encore à produire.
+Les rangs, tournois et services en ligne proposés dans cette campagne gardent leur
+statut de cible tant que leur raccordement n'est pas vérifié ; les chroniques du
+roster et les distinctions de l'arène ne modifient pas automatiquement la campagne.
 
 ### Quatza-Rij, symbole de clan, ordre de production
 
