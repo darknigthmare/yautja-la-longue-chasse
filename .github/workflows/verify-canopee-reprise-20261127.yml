@@ -5,6 +5,50 @@ on:
 permissions:
   contents: read
 jobs:
+  source:
+    name: Runtime canopy, inventory, TypeScript and lint
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '791b49558f49ca9a03ff0885f7b14813a266ea97'
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /worker/
+            /desktop/
+            /scripts/
+            /build/
+            /tests/
+            /docs/
+            /production/INVENTAIRE_BIBLE_20261122.*
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify the live engine and existing harvest contracts
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec
+          tests/hunt-canopy-runtime-v112.test.mjs tests/hunt-canopy-resume-cooldown-20261109.test.mjs
+          tests/canopy-navigation-v112.test.mjs tests/canopy-traversal-v112.test.mjs
+          tests/harvest-inventory-v112.test.mjs tests/hunt-skinning-worksite-20261109.test.mjs
+      - name: Verify Next types
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Lint engine, guide and hunt recipe
+        run: node node_modules/eslint/bin/eslint.js app/game/HuntCanvas.tsx app/game/HuntCanopyHudV112.tsx app/game/systems/canopyNavigationV112.ts tests/hunt-canopy-runtime-v112.test.mjs
   durable-field:
     name: Native GameClient skinning, sidecar resume and canopy
     runs-on: ubuntu-24.04
@@ -60,31 +104,27 @@ jobs:
           }
           execFileSync('git',['sparse-checkout','add','--stdin'],{input:[...seen].sort().map(p=>'/'+p).join('\n')+'\n',stdio:['pipe','inherit','inherit']});
           let bytes=0;
+          const mismatches=[];
           for(const asset of index.assets){
             const info=lstatSync(asset.path);assert.ok(info.isFile()&&!info.isSymbolicLink());
             const raw=readFileSync(asset.path);bytes+=raw.length;
-            assert.equal(raw.length,asset.bytes,asset.path);
-            assert.equal(createHash('sha256').update(raw).digest('hex'),asset.sha256,asset.path);
-            assert.equal(execFileSync('git',['hash-object','--',asset.path],{encoding:'utf8'}).trim(),asset.gitBlob,asset.path);
+            const gitBlob=execFileSync('git',['hash-object','--',asset.path],{encoding:'utf8'}).trim();
+            if(asset.path==='public/audio/manifest.json'){
+              assert.equal(gitBlob,'4030c8eaf98dd830970ae5b99e6f02b5889d213f',asset.path);
+              JSON.parse(raw.toString('utf8'));
+              continue;
+            }
+            if(raw.length!==asset.bytes||createHash('sha256').update(raw).digest('hex')!==asset.sha256||gitBlob!==asset.gitBlob)
+              mismatches.push({path:asset.path,gitBlob});
+
           }
-          console.log(JSON.stringify({originalAssets:seen.size,bytes,substituteAssets:false}));
+          assert.deepEqual(mismatches,[],'Historical assets unexpectedly changed');
+          console.log(JSON.stringify({originalAssets:seen.size-1,currentAudioManifest:1,bytes,substituteAssets:false}));
           NODE
       - name: Install locked dependencies without lifecycle scripts
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Materialize current V19 sector bindings without rewriting the historical index
         run: node scripts/materialize-asset-raccords-20261120.mjs hunt-runtime
-      - name: Verify the live engine and existing harvest contracts
-        run: >-
-          node --experimental-strip-types --test --test-reporter=spec
-          tests/hunt-canopy-runtime-v112.test.mjs tests/hunt-canopy-resume-cooldown-20261109.test.mjs
-          tests/canopy-navigation-v112.test.mjs tests/canopy-traversal-v112.test.mjs
-          tests/harvest-inventory-v112.test.mjs tests/hunt-skinning-worksite-20261109.test.mjs
-      - name: Verify Next types
-        run: |
-          node node_modules/next/dist/bin/next typegen
-          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
-      - name: Lint engine, guide and hunt recipe
-        run: node node_modules/eslint/bin/eslint.js app/game/HuntCanvas.tsx app/game/HuntCanopyHudV112.tsx app/game/systems/canopyNavigationV112.ts tests/hunt-canopy-runtime-v112.test.mjs
       - name: Strict lint of the full GameClient browser recipe
         run: node node_modules/eslint/bin/eslint.js --max-warnings=0 scripts/qa-skinning-canopy-durable-browser-20261109.mjs tests/browser/skinning-canopy-durable-20261109.fixture.jsx
       - name: Verify exact bytes for Buffer and views
