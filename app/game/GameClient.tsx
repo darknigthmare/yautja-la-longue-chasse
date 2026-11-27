@@ -4,7 +4,8 @@ import ResidencePanelV149 from "./ResidencePanelV149";
 import { residenceTrophiesR2M038 } from "./systems/trophyIntroductionR2M038";
 import { originEndingV170 } from "./systems/originEndingsV170";
 import {
-  advanceLegacyFinaleR2, legacyClanShipReadoutR2, legacyClanShipSiteR2, legacyHaltReadoutR2, legacyHaltSiteR2,
+  advanceLegacyDepartureR2, advanceLegacyFinaleR2, legacyClanShipReadoutR2, legacyClanShipSiteR2,
+  legacyDepartureStatusR2, legacyHaltReadoutR2, legacyHaltSiteR2,
   legacyOriginEndingR2, legacyPersonalShipReadoutR2, legacyResidenceSiteR2,
   legacySceneRefusalR2, legacyShipSiteR2,
   type LegacyCommandR2, type LegacySceneR2, type LegacySiteR2,
@@ -21,6 +22,7 @@ import OriginEndingPanelV170, { type OriginEndingActionV170 } from "./OriginEndi
 import { confirmEndingV170, examineEndingV170 } from "./systems/originEndingsV170";
 import { applyTrainingYardO6, type TrainingYardOrderO6 } from "./systems/originTrainingYardO6";
 import { applyContinuationO6, isContinuationOrderO6, type ContinuationOrderO6 } from "./systems/originContinuationO6";
+import { isDepartureOrderO6, type DepartureOrderO6 } from "./systems/originDepartureO6";
 import { applySoloReturnO6, isSoloReturnOrderO6, type SoloReturnOrderO6 } from "./systems/originSoloReturnO6";
 import { firstShockActiveO6, type FirstShockOrderO6 } from "./systems/originFirstShockO6";
 import { activeCohortRaceO6, advanceFirstShockIntoCohortO6, canStartCohortRaceO6, playCohortRaceO6, startCohortRaceO6, type CohortRaceOrderO6 } from "./systems/originCohortRaceO6";
@@ -3245,6 +3247,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const legacyClanReadoutR2 = legacyClanShipReadoutR2(save.legacyFinaleR2);
   const legacyHaltReadout = legacyVisitR2?.site.kind === "halt" ? legacyHaltReadoutR2(save) : null;
   const legacyPersonalReadout = legacyVisitR2?.site.kind === "ship" ? legacyPersonalShipReadoutR2(save, legacyVisitR2.site) : null;
+  const noviceDeparture = legacyDepartureStatusR2(save);
   const legacySuspendedR2 = settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue ||
     campaignSaveBusy || !!resumableHunt || !gameFocusedV89;
   const openLegacyFinaleR2 = useCallback((scene: LegacySceneR2, site: LegacySiteR2, siteLabel: string) => {
@@ -3434,12 +3437,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return true;
   }, [checkpointHomeworldRegionV68, legacySuspendedR2, openLegacyFinaleR2, screen]);
 
-  const setupTrainingYardO6 = useCallback((order: TrainingYardOrderO6 | ContinuationOrderO6 | SoloReturnOrderO6, region: HomeworldRegionStateV68): boolean => {
+  const setupTrainingYardO6 = useCallback((order: TrainingYardOrderO6 | ContinuationOrderO6 | SoloReturnOrderO6 | DepartureOrderO6, region: HomeworldRegionStateV68): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "homeworld-region-v68" ||
         settingsOpen || archiveRecoveryIssue || archiveTransferBusy || campaignSaveBusy || !gameFocusedV89 ||
         !current.homeworldRegionV68 || !canAdvanceHomeworldRegionV68(current.homeworldRegionV68, region) ||
         !canEnterHomeworldRegionV68(current, region.regionId).allowed || isFutureOriginV151(current.originV151)) return false;
+    if (isDepartureOrderO6(order)) {
+      const next = advanceLegacyDepartureR2(current, region, order);
+      return !!next && persistSocialProgress({ legacyFinaleR2: next, homeworldRegionV68: region,
+        ...settleResidenceLifeForRegionV150(current, region) });
+    }
     const origin = originOfSaveV151(current.originV151);
     const context = { rankId: current.profile.rankId,
       regionAllowed: (regionId: string) => canEnterHomeworldRegionV68(current, regionId).allowed };
@@ -5726,6 +5734,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <Suspense fallback={<DeferredGameScreen />}>
             <LegacyFinaleSceneR2 key={save.createdAt + ":" + legacyVisitR2.scene + ":" + legacyVisitR2.site.id}
               scene={legacyVisitR2.scene} site={legacyVisitR2.site} siteLabel={legacyVisitR2.siteLabel}
+              noviceWaiting={legacyVisitR2.scene === "epilogue" && legacyVisitR2.site.kind === "residence" &&
+                noviceDeparture?.stage === "waiting"}
               identity={save} state={save.legacyFinaleR2} endingTitle={originEndingV170(legacyOriginEndingR2(save))?.title ?? ""}
               disabled={legacySuspendedR2} notice={legacyNoticeR2} onCommand={onLegacyCommandR2} onClose={closeLegacyFinaleR2}
               belongings={legacyHaltReadout ? legacyHaltReadout.belongings :
@@ -7149,7 +7159,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               place={{ atWorkshop: !trophyWorkshop && pendingTrophyCommit === null, region: null }}
               disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
               onAction={(action: PathMissionActionV158) => pathMissionActionV158(action, { atWorkshop: true, region: null })} />
-            <OriginEndingPanelV170 origin={save.originV151} rankId={save.profile.rankId} atWorkshop={!trophyWorkshop && pendingTrophyCommit === null}
+            <OriginEndingPanelV170 origin={save.originV151} rankId={save.profile.rankId} departure={noviceDeparture} atWorkshop={!trophyWorkshop && pendingTrophyCommit === null}
               disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
               onAction={originEndingActionV170} />
             <OriginTrophyTransitionPanelV157 origin={save.originV151} atWorkshop={!trophyWorkshop && pendingTrophyCommit === null}

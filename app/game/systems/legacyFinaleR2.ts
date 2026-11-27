@@ -3,7 +3,7 @@ import { getChronicleRank } from "./clanChronicle";
 import { canReadFirstLessonO6 } from "./originContinuationO6";
 import { firstLessonPlayedO6 } from "./originPracticeO6";
 import { normalizeOriginV151 } from "./originsV151";
-import { normalizeResidenceV149 } from "./residenceV149";
+import { houseV149, normalizeResidenceV149 } from "./residenceV149";
 import { shipReceiptV161 } from "./shipReceiptV161";
 import { SHIP_ACQUISITION_BINDING_V89 } from "./shipAcquisitionV89";
 import { shipForId } from "../shipCatalogue";
@@ -18,7 +18,9 @@ import { clanShipIncidentView, evaluateClanShipIncidentsCampaign, evaluateClanSh
 import {
   BIBLE_CULTURAL_BINDING_V86, bibleCulturalContextV86, normalizeBibleSceneLedgerV86,
 } from "./bibleSceneCulturalV86";
-import { normalizeHomeworldRegionV68 } from "./homeworldRegionsV68";
+import { normalizeHomeworldRegionV68, type HomeworldRegionStateV68 } from "./homeworldRegionsV68";
+import { advanceDepartureO6, departureProgressO6, departureViewO6, normalizeDepartureO6,
+  type DepartureJournalO6, type DepartureOrderO6 } from "./originDepartureO6";
 
 export type LegacySiteR2 = { kind: "residence" | "ship"; id: string } |
   { kind: "clan-ship"; id: typeof CLAN_SHIP_ID } |
@@ -75,6 +77,7 @@ export type LegacyFinaleR2 = {
   endingId: string;
   cohort?: Journal<CohortOrder>;
   epilogue?: Journal<StoredEpilogueOrder>;
+  departureO6?: DepartureJournalO6;
 };
 type LegacySave = CompanionCampaign & Pick<SaveGame, "originV151" | "residenceV149" | "shipAcquisitionV89" |
   "legacyFinaleR2" | "tribunalV147" | "clanShipIncidents" | "clanShipTrophyHearing" | "eliteRecognitionV174"> & LegacyHaltSave;
@@ -510,6 +513,12 @@ export function normalizeLegacyFinaleR2(raw: unknown, ownerCreatedAt: string): L
       events.push(event);
     }
   }
+  if (raw.departureO6 !== undefined) {
+    const departure = normalizeDepartureO6(raw.departureO6);
+    if (!departure || state.endingId !== "O6-E1" || state.epilogue?.site.kind !== "residence" ||
+        state.epilogue.site.id !== departure.houseId || !legacyEpilogueViewR2(state, state.epilogue.site).complete) return null;
+    state.departureO6 = departure;
+  }
   return state;
 }
 
@@ -535,9 +544,42 @@ function clanEpilogueMatchesSaveR2(save: LegacySave) {
   return crew.every(member => hired.includes(member.id));
 }
 
+function departureHouseR2(save: LegacySave) {
+  const state = save.legacyFinaleR2;
+  const site = state?.epilogue?.site;
+  const lesson = save.originV151?.continuationO6;
+  const rank = getChronicleRank(save.prologue?.chronicle);
+  if ((rank !== "elder" && rank !== "ancient") || state?.ownerCreatedAt !== save.createdAt ||
+      site?.kind !== "residence" || !firstLessonPlayedO6(lesson?.practice) || lesson?.houseId !== site.id ||
+      legacyOriginEndingR2(save) !== "O6-E1" || !save.residenceV149?.rights.includes(site.id) ||
+      !legacyEpilogueViewR2(state, site).complete) return null;
+  return houseV149(site.id);
+}
+
+export function legacyDepartureStatusR2(save: LegacySave) {
+  const house = departureHouseR2(save);
+  if (!house) return null;
+  const { stage } = departureProgressO6(save.legacyFinaleR2?.departureO6?.events);
+  return { houseTitle: house.title, stage, resolved: stage === "escorted" || stage === "stayed" };
+}
+
+export function legacyDepartureViewR2(save: LegacySave, region: HomeworldRegionStateV68) {
+  const house = departureHouseR2(save);
+  return house ? departureViewO6(house, region, save.legacyFinaleR2?.departureO6) : null;
+}
+
+export function advanceLegacyDepartureR2(save: LegacySave, region: HomeworldRegionStateV68, order: DepartureOrderO6) {
+  const journal = save.legacyFinaleR2;
+  const house = departureHouseR2(save);
+  if (!journal || !house || !legacyFinaleMatchesSaveR2(save)) return null;
+  const departure = advanceDepartureO6(house, region, journal.departureO6, order);
+  return departure ? { ...journal, departureO6: departure } : null;
+}
+
 export function legacyFinaleMatchesSaveR2(save: LegacySave): boolean {
   const state = save.legacyFinaleR2;
   return !state || (state.ownerCreatedAt === save.createdAt && state.endingId === legacyOriginEndingR2(save) &&
+    (!state.departureO6 || departureHouseR2(save)?.id === state.departureO6.houseId) &&
     (!state.cohort || !legacySceneRefusalR2(save, state.cohort.site, "cohort")) &&
     (!state.epilogue || (state.epilogue.site.kind === "clan-ship" ? clanEpilogueMatchesSaveR2(save) :
       state.epilogue.site.kind === "halt" ? haltEpilogueMatchesSaveR2(save) :
@@ -608,5 +650,11 @@ export function legacyFinaleSuccessorR2(previous: LegacyFinaleR2 | null | undefi
     if (known.length > changed.length || known.some((item, i) => JSON.stringify(item) !== JSON.stringify(changed[i]))) return false;
     added += changed.length - known.length;
   }
+  const lastDeparture = previous?.departureO6;
+  const departure = next.departureO6;
+  if (lastDeparture && (!departure || lastDeparture.houseId !== departure.houseId ||
+      (lastDeparture.crossing && JSON.stringify(lastDeparture.crossing) !== JSON.stringify(departure.crossing)) ||
+      !lastDeparture.events.every((event, index) => event === departure.events[index]))) return false;
+  added += (departure?.events.length ?? 0) - (lastDeparture?.events.length ?? 0);
   return added === 1;
 }

@@ -10,7 +10,7 @@ import { useState } from "react";
 import { isFutureOriginV151, originOfSaveV151, originV151 } from "./systems/originsV151";
 import {
   endingRealizationV170, endingSelectionRefusalV170, endingSelectionV170, originEndingIdV170, originEndingV170,
-  originEndingsV170, transmissionStatusV170,
+  originEndingsV170, transmissionStatusV170, type OriginDepartureStatusV170,
 } from "./systems/originEndingsV170";
 import styles from "./ResidencePanelV149.module.css";
 
@@ -18,8 +18,9 @@ export type OriginEndingActionV170 =
   | { kind: "examine"; endingId: string }
   | { kind: "confirm"; endingId: string; confirmation: string };
 
-export default function OriginEndingPanelV170({ origin, rankId, atWorkshop, disabled, onAction }: {
+export default function OriginEndingPanelV170({ origin, rankId, departure, atWorkshop, disabled, onAction }: {
   origin: unknown; rankId: string; atWorkshop: boolean; disabled: boolean;
+  departure?: OriginDepartureStatusV170 | null;
   onAction(action: OriginEndingActionV170): { ok: boolean; message: string };
 }) {
   const [message, setMessage] = useState("");
@@ -37,7 +38,7 @@ export default function OriginEndingPanelV170({ origin, rankId, atWorkshop, disa
   if (chosenId) {
     const ending = originEndingV170(chosenId)!;
     const realization = endingRealizationV170(state.originId);
-    const transmission = transmissionStatusV170(state, rankId);
+    const transmission = transmissionStatusV170(state, rankId, departure);
     return (
       <section className={styles.panel} data-origin-ending-v170={chosenId} data-origin-v151={state.originId}>
         {header}
@@ -52,7 +53,8 @@ export default function OriginEndingPanelV170({ origin, rankId, atWorkshop, disa
             chosenId === "O6-E1" ? "Rejoins la cour de ta demeure aménagée après la reconnaissance d’Elite. Le novice peut y choisir son outil et tenter son premier exercice." :
               "Clôture indisponible"}
         </p>
-        <p className={styles.note} data-origin-transmission={transmission.transmission.id} data-origin-transmission-unlocked={transmission.unlocked ? "true" : "false"}>
+        <p className={styles.note} data-origin-transmission={transmission.transmission.id} data-origin-transmission-unlocked={transmission.unlocked ? "true" : "false"}
+          data-origin-transmission-playable={transmission.scenePlayable}>
           {transmission.transmission.title} : {transmission.note}
         </p>
         {message && <p role="status" className={styles.message}>{message}</p>}
