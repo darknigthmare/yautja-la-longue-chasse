@@ -102,6 +102,15 @@ try {
       await first.waitFor({ state: "hidden" });
     }
     await stage("choice");
+    const onEntry = (await disk()).originV151.firstShockO6;
+    if (legacy) assert.deepEqual(onEntry, proof.returned.originV151.firstShockO6);
+    else {
+      const before = proof.before.originV151.firstShockO6;
+      assert.deepEqual(onEntry.journal.slice(0, -1), before.journal);
+      assert.equal(onEntry.version, 2);
+      assert.equal(onEntry.journal.at(-1).order, "return-weapon");
+      assert.ok(Math.abs(onEntry.journal.at(-1).x - before.netX) <= 28);
+    }
     assert.deepEqual((await saved()).round, []);
     assert.equal((await saved()).opening.success, !legacy);
     const pixels = await course.locator("canvas").evaluate(canvas => {
@@ -156,7 +165,7 @@ try {
     const receipt = final.originV151.cohortRaceO6;
     assert.deepEqual(final.prologue, seed.prologue);
     assert.deepEqual(final.inventory, seed.inventory);
-    assert.deepEqual(final.originV151.firstShockO6, (legacy ? proof.returned : proof.armed).originV151.firstShockO6);
+    assert.deepEqual(final.originV151.firstShockO6, onEntry);
     assert.ok(receipt.resolved && receipt.success);
     const partner = legacy ? "harek" : "yena";
     assert.equal(receipt.relation.partner, partner);

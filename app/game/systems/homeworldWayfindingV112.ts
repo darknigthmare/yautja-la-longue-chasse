@@ -56,11 +56,14 @@ function interiorGuidance(plan: HomeworldRoutePlanV109, origin: HomeworldRouteOr
     return {state: 'arrived' as const, direction: 'À portée', instruction: stage.instruction, remaining: laterDistance, stage};
   }
   let nearest = -1, nearestRatio = 0, nearestDistance = Infinity;
+  let nearestProjection = origin.actor;
   for (let n = 0; n < stage.points.length - 1; n++) {
     const a = stage.points[n], b = stage.points[n + 1], dx = b.x - a.x, dy = b.y - a.y;
     const ratio = Math.max(0, Math.min(1, ((origin.actor.x - a.x) * dx + (origin.actor.y - a.y) * dy) / (dx * dx + dy * dy || 1)));
     const projected = {x: a.x + dx * ratio, y: a.y + dy * ratio}, candidateDistance = distance(origin.actor, projected);
-    if (candidateDistance < nearestDistance) {nearest = n; nearestRatio = ratio; nearestDistance = candidateDistance;}
+    if (candidateDistance < nearestDistance) {
+      nearest = n; nearestRatio = ratio; nearestDistance = candidateDistance; nearestProjection = projected;
+    }
   }
   if (nearest < 0 || nearestDistance > 180) return lost();
   const candidates: {point: {x: number; y: number}; after: number}[] = [];
@@ -74,7 +77,9 @@ function interiorGuidance(plan: HomeworldRoutePlanV109, origin: HomeworldRouteOr
     if (walking >= 240) break;
   }
   const waypoint = candidates.reverse().find(candidate => distance(origin.actor, candidate.point) > .000001
-    && homeworldInteriorSegmentV112(room, origin.actor, candidate.point));
+    && homeworldInteriorSegmentV112(room, origin.actor, candidate.point))
+    ?? (nearestDistance > .001 && homeworldInteriorSegmentV112(room, origin.actor, nearestProjection)
+      ? { point: nearestProjection, after: nearest + 1 } : undefined);
   if (!waypoint) return lost();
   const angle = Math.atan2((waypoint.point.y - origin.actor.y) * HOMEWORLD_GEOMETRY_V64.depthScale, waypoint.point.x - origin.actor.x);
   const remaining = distance(origin.actor, waypoint.point) + stage.points.slice(waypoint.after).reduce((sum, point, n) => sum

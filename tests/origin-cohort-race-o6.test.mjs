@@ -115,7 +115,8 @@ test("new receipts are replayed and a cold write refuses forged, future or regre
     setItem: (key, value) => values.set(key, value), removeItem: key => values.delete(key) };
   assert.ok(n.loadSaveWithStatus(storage).loaded);
   assert.ok(n.writeSaveWithStatus(ready, storage).persisted);
-  const picked = action(ready, { type: "choose", choice: "lead", x: n.COHORT_RALLY_X_O6 });
+  assert.equal(n.playCohortRaceO6(ready, { type: "choose", x: n.COHORT_CHOICE_POSTS_O6.observe, choice: "lead" }), null);
+  const picked = action(ready, { type: "choose", choice: "lead", x: n.COHORT_CHOICE_POSTS_O6.lead });
   assert.ok(n.writeSaveWithStatus(picked, storage).persisted);
   const lower = jump(picked, p.start.launch);
   assert.ok(n.writeSaveWithStatus(lower, storage).persisted);
