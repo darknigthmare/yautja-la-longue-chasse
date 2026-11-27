@@ -3,6 +3,7 @@ import type { OriginStateV151 } from './originsV151';
 import type { HomeworldRegionStateV68 } from './homeworldRegionsV68';
 import { TRAINING_YARD_ORDERS_O6, TRAINING_YARD_POSTS_O6, trainingYardViewO6 } from './originTrainingYardO6';
 import { houseV149, type ResidenceContextV149 } from './residenceV149';
+import { PRACTICE_POSTS_O6, isPracticeOrderO6, normalizePracticeO6, practiceViewO6, type PracticeOrderO6 } from './originPracticeO6';
 
 const support = TRAINING_YARD_POSTS_O6.support;
 const aisle = TRAINING_YARD_POSTS_O6.aisle;
@@ -22,35 +23,40 @@ export const CONTINUATION_POSTS_O6 = {
   'open-rack': { ...rack, label: 'Ouvrir le râtelier de la première leçon', report: 'Les outils d’exercice sont accessibles. La leçon attend encore un élève volontaire.' },
 } as const;
 
-export type ContinuationOrderO6 = keyof typeof CONTINUATION_POSTS_O6;
+type PreparationOrderO6 = keyof typeof CONTINUATION_POSTS_O6;
+export type ContinuationOrderO6 = PreparationOrderO6 | PracticeOrderO6;
 
 const visit = ['invite', 'welcome', 'anchor', 'lift', 'stow', 'farewell'] as const;
 const plans = ['teaching', 'circle', 'transmission'] as const;
 
-export function continuationOrdersO6(helpedYena: boolean, teachingChosen: boolean): readonly ContinuationOrderO6[] {
+export function continuationOrdersO6(helpedYena: boolean, teachingChosen: boolean): readonly PreparationOrderO6[] {
   return [...(helpedYena ? visit : []), ...plans, ...(teachingChosen ? ['open-rack' as const] : [])];
 }
 
-export interface ContinuationRecordO6 {
-  version: 1;
+export type ContinuationRecordO6 = {
   ownerCreatedAt: string;
   houseId: string;
   helpedYena: boolean;
-  orders: ContinuationOrderO6[];
-}
+  orders: PreparationOrderO6[];
+} & ({ version: 1; practice?: never } | { version: 2; practice: PracticeOrderO6[] });
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   value !== null && typeof value === 'object' && !Array.isArray(value);
 
 export function normalizeContinuationO6(raw: unknown): ContinuationRecordO6 | null {
-  if (!isRecord(raw) || Object.keys(raw).length !== 5) return null;
+  if (!isRecord(raw)) return null;
   const { version, ownerCreatedAt, houseId, helpedYena, orders } = raw;
-  if (version !== 1 || typeof ownerCreatedAt !== 'string' || !Number.isFinite(Date.parse(ownerCreatedAt)) ||
+  if ((version !== 1 && version !== 2) || Object.keys(raw).length !== (version === 2 ? 6 : 5) ||
+      typeof ownerCreatedAt !== 'string' || !Number.isFinite(Date.parse(ownerCreatedAt)) ||
       typeof houseId !== 'string' || !houseV149(houseId) || typeof helpedYena !== 'boolean' || !Array.isArray(orders)) return null;
   const route = continuationOrdersO6(helpedYena, true);
   if (!orders.length || orders.length > route.length ||
       !Array.from(orders).every((order, index) => order === route[index])) return null;
-  return { version: 1, ownerCreatedAt, houseId, helpedYena, orders: [...orders] };
+  const record = { ownerCreatedAt, houseId, helpedYena, orders: [...orders] };
+  if (version === 1) return { ...record, version: 1 };
+  const practice = normalizePracticeO6(raw.practice);
+  if (!practice || !orders.includes('open-rack')) return null;
+  return { ...record, version: 2, practice };
 }
 
 type ContinuationSaveO6 = Pick<SaveGame, 'createdAt' | 'originV151' | 'prologue' | 'eliteRecognitionV174' | 'residenceV149'>;
@@ -83,11 +89,16 @@ export function continuationMatchesSaveO6(save: ContinuationSaveO6): boolean {
 }
 
 export function keepsContinuationO6(previous: ContinuationRecordO6 | undefined, next: ContinuationRecordO6 | undefined): boolean {
-  if (!previous) return !next || next.orders.length === 1;
-  return !!next && next.ownerCreatedAt === previous.ownerCreatedAt && next.houseId === previous.houseId &&
-    next.helpedYena === previous.helpedYena && next.orders.length >= previous.orders.length &&
-    next.orders.length <= previous.orders.length + 1 &&
-    previous.orders.every((order, index) => order === next.orders[index]);
+  if (!previous) return !next || (next.orders.length === 1 && !next.practice);
+  if (!next || next.ownerCreatedAt !== previous.ownerCreatedAt || next.houseId !== previous.houseId ||
+      next.helpedYena !== previous.helpedYena) return false;
+  const beforePractice = previous.practice ?? [];
+  const afterPractice = next.practice ?? [];
+  const prepared = next.orders.length - previous.orders.length;
+  const practiced = afterPractice.length - beforePractice.length;
+  return prepared >= 0 && practiced >= 0 && prepared + practiced <= 1 &&
+    previous.orders.every((order, index) => order === next.orders[index]) &&
+    beforePractice.every((order, index) => order === afterPractice[index]);
 }
 
 export function continuationViewO6(
@@ -108,8 +119,9 @@ export function continuationViewO6(
         : next === 'lift' ? { x: 543, y: 401 }
           : { x: 432, y: 425 }
   ) : null;
-  return { houseId: yard.houseId, helpedYena, orders, next, post, near, visitor,
-    rackOpen: orders.includes('open-rack') };
+  const rackOpen = orders.includes('open-rack');
+  const practice = rackOpen ? practiceViewO6(origin.continuationO6?.practice ?? [], region) : null;
+  return { houseId: yard.houseId, helpedYena, orders, next, post, near, visitor, rackOpen, practice };
 }
 
 export function applyContinuationO6(
@@ -117,6 +129,14 @@ export function applyContinuationO6(
   context: Pick<ResidenceContextV149, 'rankId' | 'regionAllowed'>, order: ContinuationOrderO6,
 ): { origin: OriginStateV151; report: string } | null {
   const view = continuationViewO6(save, origin, region, context);
+  if (isPracticeOrderO6(order)) {
+    const record = origin.continuationO6;
+    if (!record || !view?.practice?.near || view.practice.next !== order) return null;
+    return {
+      origin: { ...origin, continuationO6: { ...record, version: 2, practice: [...(record.practice ?? []), order] } },
+      report: PRACTICE_POSTS_O6[order].report,
+    };
+  }
   if (!view?.near || view.next !== order) return null;
   return {
     origin: { ...origin, continuationO6: { version: 1, ownerCreatedAt: save.createdAt,
@@ -126,5 +146,5 @@ export function applyContinuationO6(
 }
 
 export function isContinuationOrderO6(action: string): action is ContinuationOrderO6 {
-  return Object.hasOwn(CONTINUATION_POSTS_O6, action);
+  return Object.hasOwn(CONTINUATION_POSTS_O6, action) || isPracticeOrderO6(action);
 }

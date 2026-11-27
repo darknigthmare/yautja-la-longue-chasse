@@ -1,5 +1,5 @@
-/** Actual React/domain integration on a private Vite server. Artwork is NOT qualified:
- * /game images are transparent fixtures, no account or production save is used. */
+/** Actual React/domain integration on a private Vite server with an isolated save.
+ * Native mode exercises the existing V56 hall, pedestal and V62 mask images. */
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -10,6 +10,9 @@ import { chromium } from 'playwright-core';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const scratch = path.join(root, 'work-local');
+const destination = path.join(root, 'outputs', 'qa-audit-v94');
+const nativeArt = process.env.MAUSOLEUM_NATIVE_ART === '1';
+await fs.mkdir(destination, { recursive: true });
 await fs.mkdir(scratch, { recursive: true });
 const directory = await fs.mkdtemp(path.join(scratch, 'mausoleum-browser-v94-'));
 const route = '/' + path.relative(root, directory).split(path.sep).join('/') + '/';
@@ -29,6 +32,9 @@ try {
   await context.route('**/*', async intercepted => {
     const url = new URL(intercepted.request().url());
     if (url.origin !== origin) return intercepted.abort('blockedbyclient');
+    if (nativeArt && (
+      url.pathname.startsWith('/game/homeworld/v56/') || url.pathname.startsWith('/game/sprites/v62/masks/')
+    )) return intercepted.continue();
     if (url.pathname.startsWith('/game/')) return intercepted.fulfill({ status: 200, contentType: 'image/png', body: pixel });
     return intercepted.continue();
   });
@@ -182,6 +188,66 @@ try {
     assert.equal(await page.getByRole('button', { name: 'Inscrire la lecture au registre' }).isDisabled(), true);
     assert.equal((await events()).filter(e => e.kind === 'write').length, 0);
   });
+  await check('the Ancient walks to the Wall, files the alcove and finds it after cold reload', async () => {
+    const rootScene = page.locator('[data-mausoleum]');
+    const marker = page.getByRole('button', { name: 'Approcher le Mur des Chasses' });
+    assert.equal(await marker.count(), 0);
+    await page.evaluate(() => window.__mausoleumAuditV94.reset(false, true));
+    await marker.waitFor();
+    await scene.focus();
+    await page.keyboard.press('f');
+    assert.equal(await page.locator('[data-mausoleum-wall-open]').count(), 0);
+    assert.equal(await rootScene.getAttribute('data-mausoleum-visited'), 'false');
+    assert.equal(await marker.getAttribute('data-wall-registered'), 'false');
+    if (nativeArt) await page.waitForFunction(() =>
+      ['mausoleum-hall.png', 'mask-pedestal.png', 'feral.png'].every(name =>
+        Array.from(document.images).some(image => image.src.endsWith('/' + name) && image.naturalWidth > 1)));
+    await page.screenshot({ path: path.join(destination, 'm057-01-galerie-avant.png'), animations: 'disabled' });
+
+    async function openWall() {
+      await marker.click();
+      await page.waitForFunction(() => document.querySelector('[data-mausoleum-x]')?.getAttribute('data-mausoleum-x') === '315');
+      assert.equal(await page.locator('[data-mausoleum-light]').getAttribute('data-mausoleum-light'), 'true');
+      await scene.focus();
+      await page.keyboard.press('f');
+      await page.locator('[data-mausoleum-wall-open]').waitFor();
+    }
+    await openWall();
+    const ledger = page.locator('[data-mausoleum-wall-open]');
+    assert.equal(await ledger.locator('[data-wall-title]').count(), 3);
+    assert.equal(await ledger.locator('[data-wall-title][data-dlc-state="unavailable"]').count(), 3);
+    const fileVisit = ledger.getByRole('button', { name: 'Inscrire la visite' });
+    await page.evaluate(() => { window.__mausoleumAuditV94.failWrites = true; });
+    await fileVisit.click();
+    await ledger.getByText('Consultation non enregistrée', { exact: false }).waitFor();
+    assert.equal(await rootScene.getAttribute('data-mausoleum-visited'), 'false');
+    assert.equal(await fileVisit.isDisabled(), false);
+    await page.evaluate(() => { window.__mausoleumAuditV94.failWrites = false; });
+    await fileVisit.click();
+    await ledger.getByText('Visite inscrite au Mur des Chasses.', { exact: true }).waitFor();
+    const writes = (await events()).filter(event => event.kind === 'write');
+    assert.deepEqual(writes.map(event => event.value), [{
+      version: 1, examinedIds: [], consultedIds: [], visited: true, wallPages: [{ galleryId: 'first', page: 0 }],
+    }]);
+    await page.screenshot({ path: path.join(destination, 'm057-02-registre-inscrit.png'), animations: 'disabled' });
+    await ledger.getByRole('button', { name: 'Revenir à la galerie' }).click();
+    assert.equal(await x(), 315);
+    await page.reload();
+    await page.locator('[data-mausoleum][data-mausoleum-visited="true"]').waitFor();
+    assert.equal(await marker.getAttribute('data-wall-registered'), 'true');
+    await page.screenshot({ path: path.join(destination, 'm057-03-galerie-reprise.png'), animations: 'disabled' });
+    await openWall();
+    await ledger.getByText('Visite inscrite au Mur des Chasses.', { exact: true }).waitFor();
+    assert.equal(await fileVisit.isDisabled(), true);
+    assert.equal((await events()).filter(event => event.kind === 'write').length, 0);
+    await page.keyboard.press('p');
+    await ledger.waitFor({ state: 'hidden' });
+    await page.getByRole('button', { name: 'Alcôves →' }).click();
+    assert.equal(await marker.getAttribute('data-wall-registered'), 'false');
+    await openWall();
+    assert.equal(await ledger.locator('[data-wall-title="jim-hopper"]').count(), 1);
+    assert.equal(await fileVisit.isDisabled(), false);
+  });
   await check('missing mask remains unavailable rather than substituting another', async () => {
     await page.getByRole('button', { name: 'Alcôves →' }).click(); await approach('jim-hopper', 180);
     await page.keyboard.press('f'); await page.getByRole('dialog').waitFor();
@@ -280,8 +346,9 @@ try {
     assert.equal(await campaignBytes(), originalCampaign);
   });
   results.push({ name: 'No uncaught React/browser errors', status: pageErrors.length ? 'FAIL' : 'PASS', errors: pageErrors });
-  const report = { scope: 'Actual Mausoleum component and game domain. The browser fixture supplies the M058 entry rank. Artwork uses placeholder images.', browser: browser.version(), results };
-  const destination = path.join(root, 'outputs', 'qa-audit-v94'); await fs.mkdir(destination, { recursive: true });
+  const report = { scope: 'Actual Mausoleum component, game domain and save writer. Ancient rank is supplied by the browser fixture.',
+    artwork: nativeArt ? 'Native hall, pedestal and catalogue masks. Unrelated actor files use placeholders.' : 'Placeholder images.',
+    browser: browser.version(), results };
   await fs.writeFile(path.join(destination, 'mausoleum-browser.json'), JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify(report, null, 2));
   if (results.some(result => result.status !== 'PASS')) process.exitCode = 1;
