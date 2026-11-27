@@ -1,0 +1,26 @@
+name: Check the released public homepage and audio manifest
+on:
+  push:
+    branches: [codex/verify-live-bible-20261127]
+permissions: {}
+jobs:
+  public:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - name: Check the public domain and the three released sound cues
+        run: |
+          curl --silent --show-error --fail --location --max-time 30 --retry 3 --retry-delay 2 "https://yautja-la-longue-chasse.vercel.app/?qa=ac38e8d" -o /tmp/yautja-public-home.html
+          curl --silent --show-error --fail --location --max-time 30 --retry 3 --retry-delay 2 "https://yautja-la-longue-chasse.vercel.app/audio/manifest.json?qa=ac38e8d" -o /tmp/yautja-public-audio.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          home = Path('/tmp/yautja-public-home.html').read_text(encoding='utf-8')
+          assert 'Yautja' in home and 'Longue Chasse' in home
+          manifest = json.loads(Path('/tmp/yautja-public-audio.json').read_text(encoding='utf-8'))
+          assert manifest['version'] == 'dd62d59052d79a25217b5bd6346448869fb997d912de5cdc7316b5251bcf63f2'
+          ids = {e['id'] for e in manifest['entries'] if e['category'] == 'sfx' and e['fallback'] == 'procedural'}
+          assert {'vacuum-step', 'vacuum-impact', 'vacuum-energy'} <= ids
+          print('PASS live homepage and exact audio manifest for ac38e8dea7db20985a04d1d2f14e6354dc699360')
+          PY
