@@ -92,3 +92,24 @@
 .chest[data-ready="true"], .demonstration[data-ready="true"] { border-color: #ead38d; }
 .gate { height: 1.75rem; border: 2px solid #b79b65; border-block-end: 0; box-shadow: inset 0 0 0 6px #8d6d4f; }
 .gate[data-ready="true"] { box-shadow: inset 0 0 0 1px #b89a60; }
+
+.cohortMember {
+  grid-row: 1 / 3;
+  justify-self: center;
+  width: min(100%, 2rem);
+  filter: brightness(.78);
+  transform-origin: center bottom;
+}
+.cohortMember img { width: 100%; height: auto; display: block; }
+.cohortMember[data-cohort-performing="true"] {
+  filter: drop-shadow(0 0 .3rem #eccb78);
+  animation: cohortGesture .55s ease;
+}
+.cohortMember[data-cohort-performing="true"][data-gesture="beam"] { --gesture-tilt: 12deg; }
+.cohortMember[data-cohort-performing="true"][data-gesture="ring"] { --gesture-tilt: -12deg; }
+@keyframes cohortGesture {
+  50% { transform: translateY(-.35rem) rotate(var(--gesture-tilt, 6deg)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cohortMember[data-cohort-performing="true"] { animation: none; }
+}

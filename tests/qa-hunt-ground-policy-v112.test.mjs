@@ -231,6 +231,7 @@ test("the browser pilot dodges every telegraphed blow in contact, not one tick i
   const decision=decideBrowserHunt(game,7,{previousX:hunter.x,stuckTicks:0,jumpUntil:-1,nextJump:Infinity});
   assert.ok(decision.pressed.includes("jump")&&decision.held.includes("down"),"tick 7 is not a multiple of 30");
   assert.ok(decision.held.includes("left"),"the dodge leaves the attacker's side");
+  assert.ok(decision.pressed.includes("melee"),"the established patrol input sequence is preserved");
 });
 
 test("the browser pilot heals earlier but keeps its last Medicomp for the Apex",()=>{
@@ -245,3 +246,31 @@ test("the browser pilot heals earlier but keeps its last Medicomp for the Apex",
   const apex={...game({...base,health:128,medicomps:1}),boss:{id:"mission-boss",x:2100,y:482,width:157,height:142,alive:true,active:true}};
   assert.ok(decideBrowserHunt(apex,1,memory()).pressed.includes("heal"),"against the active Apex the last charge is used");
 });
+
+for(const [label,decide,tick] of [["browser",decideBrowserHunt,7],["native ground",decideHuntCampaignInputV112,30]]){
+  test("the "+label+" pilot dodges a wind-up from behind without opposite movement",()=>{
+    const apex={id:"mission-boss",x:6120,y:482,width:157,height:142,alive:true,active:true,scanned:true,telegraph:.3,boss:true};
+    for(const x of [6241,6347]){
+      const hunter={...player,x,y:508,width:72,height:116,facing:1,grounded:true,health:163,maxHealth:192,medicomps:0,
+        energy:0,stamina:80,scanCooldown:1,healCooldown:0,melee:{phase:"idle"}};
+      const game={...ocean,phase:"target",bossMechanics:{missionId:"desert-sandmaw"},energyWeaponsLocked:false,
+        player:hunter,boss:apex,enemies:[],world:{floorY:624,platforms:[]}};
+      const memory={previousX:hunter.x,stuckTicks:0,jumpUntil:-1,nextJump:Infinity};
+      const decision=decide(game,tick,memory);
+      assert.equal(decision.reason,"combat:mission-boss");
+      assert.ok(decision.held.includes("down")&&decision.pressed.includes("jump"));
+      assert.ok(decision.held.includes("right"),"dodge away from the telegraphed Apex");
+      assert.ok(!decision.held.includes("left"),"do not cancel the dodge with the approach or turning direction");
+      assert.ok(!decision.pressed.includes("melee"),"do not swing in the same input tick");
+      for(const melee of [
+        {phase:"idle",defensePhase:"neutral",defenseCooldownSeconds:.2},
+        {phase:"idle",defensePhase:"dodge",defenseCooldownSeconds:0},
+      ]){
+        const behindWithNoDodge=decide({...game,player:{...hunter,melee}},tick,
+          {previousX:hunter.x,stuckTicks:0,jumpUntil:-1,nextJump:Infinity});
+        assert.ok(behindWithNoDodge.held.includes("left"),"turn normally while the native dodge is unavailable");
+        assert.ok(!behindWithNoDodge.held.includes("right")&&!behindWithNoDodge.pressed.includes("jump"));
+      }
+    }
+  });
+}

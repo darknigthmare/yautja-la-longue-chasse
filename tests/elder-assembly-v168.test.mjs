@@ -6,6 +6,7 @@ import { adultElderTrialAdmission } from "../scripts/qa-elder-mentoring-v168.mjs
 const qa = homeworldSceneSsrV78();
 const saves = qa.load("app/game/save.ts");
 const assembly = qa.load("app/game/systems/elderAssemblyV168.ts");
+const { rankCampaignReceiptsV168: rankReceipts } = qa.load("app/game/systems/rankRiteDossierV168.ts");
 const mentoring = { version: 1, revision: 6, supports: ["west", "east"],
   attempt: { choice: "alone", observed: 2 }, resolved: true };
 const passage = { version: 1, revision: 5, traces: 3, anchors: 0, replayed: true,
@@ -59,6 +60,7 @@ for (const responsibility of ["council", "travel"]) {
     assert.ok(imported.save, imported.failure);
     assert.equal(imported.save.elderAssemblyV168.responsibility, responsibility);
     assert.equal(imported.save.prologue, null);
+    assert.equal(rankReceipts(imported.save)[2].status, "in-progress");
     assert.equal(saves.parseSaveImport(JSON.stringify({ ...settled, elderMentoringV168: null })).failure, "invalid-save");
     assert.equal(saves.parseSaveImport(JSON.stringify({ ...settled, elderAssemblyV168: {
       ...settled.elderAssemblyV168, ownerCreatedAt: "different-owner",

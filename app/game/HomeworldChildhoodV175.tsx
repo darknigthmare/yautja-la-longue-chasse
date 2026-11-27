@@ -4,7 +4,7 @@ import type { KeyboardEvent } from "react";
 import {
   CHILDHOOD_DRILLS_V175, CHILDHOOD_TRAIL_SIGNS_V175,
   childhoodLengthV175, childhoodOptionsV175, childhoodRingPositionV175, childhoodSpringOpenV175,
-  childhoodTrackSignV175, type ChildhoodCommandV175, type ChildhoodViewV175,
+  childhoodTrackSignV175, nextCohortGestureV175, type ChildhoodCommandV175, type ChildhoodViewV175,
 } from "./systems/homeworldChildhoodV175";
 import styles from "./HomeworldChildhoodV175.module.css";
 
@@ -38,10 +38,13 @@ const labels = {
   "show-map": "Rapporter la carte",
   "show-passage": "Indiquer le dernier passage",
   handoff: "Rejoindre Saar pour la passation",
+  "cohort-gesture": "Observer le geste du camarade",
   "first-mask": "Commencer par le masque",
   "first-blades": "Commencer par les lames",
   "reset-current": "Reprendre au dernier repère",
 } satisfies Record<ChildhoodCommandV175, string>;
+
+const cohortIllustrations = ["youngling-player-right.png", "youngling-rival-left.png", "youngling-player-left.png"];
 
 function TrainingSpace({ view }: { view: ChildhoodViewV175 }) {
   const length = childhoodLengthV175(view);
@@ -67,6 +70,14 @@ function TrainingSpace({ view }: { view: ChildhoodViewV175 }) {
       {view.track?.phase === "perched" && <span className={styles.prey} style={{ gridColumn: 11 }} />}
     </>}
     {view.trial === "handoff" && <>
+      {!view.passed && cohortIllustrations.map((file, index) => (
+        <span key={file} className={styles.cohortMember} style={{ gridColumn: index + 3 }}
+          data-cohort-performing={view.cohortPresentations === index + 1}
+          data-gesture={view.finished[index]}>
+          {/* eslint-disable-next-line @next/next/no-img-element -- Static game sprite with fixed dimensions. */}
+          <img src={"/game/prologue/v47/" + file} width={38} height={52} alt="" />
+        </span>
+      ))}
       <span className={styles.demonstration} data-ready={view.demonstrated} style={{ gridColumn: 3 }} />
       <span className={styles.chest} data-ready={view.stowed} style={{ gridColumn: 5 }} />
       <span className={styles.gate} data-ready={view.stowed} style={{ gridColumn: 8 }} />
@@ -83,6 +94,7 @@ export default function HomeworldChildhoodV175({ view, message, paused, mayEnter
     !trainingStarted || (action !== "first-mask" && action !== "first-blades"));
   const sign = childhoodTrackSignV175(view);
   const comparing = view.track?.comparing;
+  const performer = nextCohortGestureV175(view);
   const title = view.trial === "handoff" ? "La passation"
     : view.trial === "track" ? "La piste avant la prise" : "L’épreuve des trois gestes";
   const key = (event: KeyboardEvent<HTMLDivElement>) => {
@@ -109,11 +121,16 @@ export default function HomeworldChildhoodV175({ view, message, paused, mayEnter
     {view.trial === "spring" && <p>Cible {childhoodSpringOpenV175(view.beat) ? "ouverte" : "fermée"} · ligne de frappe à la dalle 5.</p>}
     {view.trial === "track" && <p>Indices confirmés · {view.track?.signs}/3. {view.track?.phase === "returning" && "Retour par le chemin bas."}</p>}
     {view.report && <p data-childhood-report={view.report}>{view.report === "map" ? "Carte remise." : "Dernier passage indiqué."}</p>}
+    {view.trial === "handoff" && <p data-childhood-cohort={view.cohortPresentations}>
+      Gestes des camarades consignés · {view.cohortPresentations}/3
+    </p>}
     {view.firstWorkshop && <p>Premier atelier · {view.firstWorkshop === "mask" ? "Le masque et ses lectures" : "La distance des lames"}</p>}
     <p role="status">{message || view.message}</p>
     <div className={styles.controls}>
       {options.map(action => {
-        const choiceLabel = action === "track-sign" ? sign?.actual : action === "track-decoy" ? sign?.decoy : undefined;
+        const choiceLabel = action === "track-sign" ? sign?.actual : action === "track-decoy" ? sign?.decoy
+          : action === "cohort-gesture" && performer ? "Observer " + performer.name + " · " + CHILDHOOD_DRILLS_V175[performer.drill].title
+          : undefined;
         return <button type="button" key={action} data-childhood-action={action} disabled={paused}
           onClick={() => onAction(action)}>{choiceLabel ?? (action === "use" ? interactionLabel(view) : labels[action])}</button>;
       })}

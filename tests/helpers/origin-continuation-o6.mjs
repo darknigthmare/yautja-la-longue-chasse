@@ -52,7 +52,7 @@ function playedCourtyard(choice) {
 }
 
 let earnedElite;
-function playedElite() {
+export function playedElite() {
   if (earnedElite) return structuredClone(earnedElite);
   let save = admitEliteCampaign();
   const posts = ceremony.ELITE_RECOGNITION_POSTS;

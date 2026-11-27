@@ -41,10 +41,11 @@ function navigateKeys(event:KeyboardEvent<HTMLElement>,root:HTMLElement|null,onB
  const next=menuFocusIndex(nodes.map(node=>{const r=node.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2};}),nodes.indexOf(active),direction as MenuDirection);
  nodes[next]?.focus();
 }
-export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreate,onContinue,onLoad,onRecover,onMausoleum,onReplace,onWorkspaceRecover,onRecoverNew,modeAccess,onOpenGameMode,onOpenClanWar,onOpenSprites,onPrepareImport,onImport,initialEntry}:{
+export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreate,onContinue,onLoad,onRecover,onMausoleum,onReplace,onWorkspaceRecover,onRecoverNew,modeAccess,onOpenGameMode,onOpenClanWar,onOpenIsles,onOpenSprites,onPrepareImport,onImport,initialEntry}:{
  initialEntry?:CampaignMenuEntry;
  onMausoleum?:()=>void;
  onOpenClanWar?:()=>void;
+ onOpenIsles?:()=>void;
  onOpenSprites?:()=>void;
  onPrepareImport?:(slotId:number,serialized:string)=>CampaignSlotImportPreparation;
  onImport?:(preview:CampaignSlotImportPreview)=>void;
@@ -163,7 +164,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
      {view==='main'?<>
       <div className={styles.sectionIntro}><p className={styles.eyebrow}>Menu principal</p><h2 id="menu-section-title">Choisissez votre voie</h2></div>
       <button className={styles.featured} type="button" disabled={busy} data-menu-section="campaign" onClick={()=>openSection('campaign')}><span className={styles.actionTitle}>Campagne</span><small>{current?`Reprendre ${current.hunterName??'votre chronique'} · gérer vos parties`:'Commencer votre histoire sur Yautja Prime'}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
-      <button type="button" disabled={busy||(!onOpenGameMode&&!onOpenClanWar)} data-menu-section="modes" onClick={()=>openSection('modes')}><span className={styles.actionTitle}>Modes de jeu</span><small>The Pit · Game Reserve Planet · Guerres des clans</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
+      <button type="button" disabled={busy||(!onOpenGameMode&&!onOpenClanWar&&!onOpenIsles)} data-menu-section="modes" onClick={()=>openSection('modes')}><span className={styles.actionTitle}>Modes de jeu</span><small>The Pit · Game Reserve Planet · Guerres des clans{onOpenIsles?' · The Isles':''}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
       <button type="button" disabled={busy||(!onOpenSprites&&!onMausoleum)} data-menu-section="archives" onClick={()=>openSection('archives')}><span className={styles.actionTitle}>Archives & chroniques</span><small>Collections visuelles et récits des Grandes Chasses</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
       <button type="button" disabled={busy} data-menu-section="system" onClick={()=>openSection('system')}><span className={styles.actionTitle}>Système</span><small>Compte, synchronisation et affichage</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
      </>:<>
@@ -180,6 +181,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
         <button className={styles.gameMode} type="button" disabled={busy} data-menu-action="game-reserve" data-main-menu-mode="game-reserve" data-story-unlocked={modeAccess?.['game-reserve']===true} onClick={event=>requestGameMode('game-reserve',event.currentTarget)}><span className={styles.actionTitle}>Game Reserve Planet</span><small>Expédition sur la réserve de Vharuun{!modeAccess?.['game-reserve']?' · avertissement spoilers':''}</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
        </>}
        {onOpenClanWar&&<button className={styles.gameMode} type="button" disabled={busy} data-menu-action="clan-war" onClick={event=>{if(busy)return;confirmationTriggerRef.current=event.currentTarget;setSpoilerMode('clan-war');}}><span className={styles.actionTitle}>Guerres des clans</span><small>30 planètes · conquêtes libres avec spoilers</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
+       {onOpenIsles&&<button className={styles.gameMode} type="button" disabled={busy} data-menu-action="the-isles" onClick={onOpenIsles}><span className={styles.actionTitle}>The Isles</span><small>Île de test et Chasse inversée sur Verdant · solo</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
       </>:view==='archives'?<>
        {onOpenSprites&&<button type="button" disabled={busy} data-menu-action="sprites" onClick={()=>{if(!busy)onOpenSprites();}}><span className={styles.actionTitle}>Archives visuelles</span><small>Clans, personnages, faune, vaisseaux et matériaux</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
        {onMausoleum&&<button type="button" disabled={busy} data-menu-action="mausoleum" onClick={()=>{if(!busy)onMausoleum();}}><span className={styles.actionTitle}>DLC / Chroniques de chasse</span><small>Visiter le Mausolée des Grandes Chasses</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
