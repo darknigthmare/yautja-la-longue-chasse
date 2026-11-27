@@ -721,3 +721,15 @@ Le trajet M016 part de la rue, franchit la porte de la forge, quitte l’atelier
 La liste V54 contrôle toujours l’empreinte des 22 sons historiques. La recette terrain vérifie le catalogue audio vivant par l’inventaire de publication et les autres ressources par leurs empreintes d’origine. Le checkout V94 inclut les deux JSON des Masques Brisés utilisés par le compilateur.
 
 Le repérage de l’Okavango commence après M023 et se termine au pont. Dans les épilogues, les rencontres, les précisions et la réponse du jeune ont été jouées après préparation du dossier d’admission. Les étapes restantes se trouvent dans le classeur de la Bible.
+
+## Cohorte, Temple, crue et canopée du 27 novembre 2026
+
+La recette commune qualifie l’arbre applicatif `020f8666393219d4530b04b1bc5c194f9594cc07`. Le suivi et l’inventaire rejoignent ce même arbre après leur vérification. [CI commune](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46058320361)
+
+La livraison O6 reprend une manche réellement résolue et conserve les deux règles de nurserie. Les nouveaux carnets M006 ajoutent la plaque à la reconnaissance déjà acquise, avec un ordre de découverte repris au dojo. Les anciens carnets restent importables. [O6](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46060526772) · [M006](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46057345428)
+
+La Descente des Contrepoids et la Galerie des Coques relient la Vanne au seuil du Quatza-Rij. Les nouvelles étapes exigent les deux positions de la triade et un retour avant la reprise de V90. Les sauvegardes déjà engagées à neuf salles gardent leur parcours. [Temple](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46057323082)
+
+Les recettes des épilogues utilisent un dossier de fin d’origine et de rang préparé. Le seuil de la demeure et le poste d’archives du vaisseau sont atteints avec les commandes du jeu. [Épilogues](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46058045593)
+
+La crue évolue au pas dans les nouveaux repérages de l’Okavango. Le trajet chargé du Marais utilise une dépouille initiale déclarée, les vrais prélèvements et une reprise en plein balancement. La recette de forge valide le premier niveau dans Chromium, puis les deux niveaux et le débit des lots dans les tests de sauvegarde. [Okavango](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46056761105) · [Canopée](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46057867272) · [Forge](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46056886021)

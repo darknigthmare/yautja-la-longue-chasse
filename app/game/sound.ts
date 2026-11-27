@@ -1017,6 +1017,16 @@ export class GameAudio {
     }
   }
 
+  /** Resonant local delivery cue through the shared sound-effects mix. */
+  townDeliveryBellO6(): void {
+    const now = this.readyTime();
+    if (now === null) return;
+    this.noise({ at: now, duration: .075, gain: .027, filterType: "bandpass", filterFrequency: 1_150 });
+    this.tone(312, { at: now, duration: .72, gain: .05, type: "sine" });
+    this.tone(703, { at: now, duration: .42, gain: .023, type: "sine" });
+    this.tone(1_014, { at: now + .011, duration: .25, gain: .012, type: "sine" });
+  }
+
   trophy(): void {
     if (this.fileAudio.playSfx("trophy")) return;
     const now = this.readyTime();

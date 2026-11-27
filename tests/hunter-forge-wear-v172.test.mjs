@@ -107,3 +107,69 @@ test("a displayed material quote spends the chosen lot only and refuses a stale 
   assert.deepEqual(stored.save.customizationV146.heavyWear, { shin: 2 });
   assert.deepEqual(ledger.archive, [plate, hide]);
 });
+
+test("forge purchases advance the same equipment tiers while proving both material debits", () => {
+  const arsenal = qa.load("app/game/systems/arsenal.ts");
+  const save = withDamagedPlate();
+  const armorId = save.loadout.armorId;
+  const bone = { speciesId: "oseris-iv--jungle-xeno-scout", partId: "bone", label: "Segment caudal", count: 5, qualityTotal: 401 };
+  const hide = { speciesId: "oseris-iv--mist-pouncer", partId: "hide", label: "Pelage", count: 3, qualityTotal: 227 };
+  const reserved = save.inventory.harvestV112.archive[0];
+  save.inventory.harvestV112.archive.push(bone, hide);
+  const selection = { bone: work.forgeMaterialKeyV146(bone), hide: work.forgeMaterialKeyV146(hide) };
+  const request = { domain: "armor", id: armorId };
+  save.profile.clanMarks = 0;
+  assert.equal(arsenal.quoteUpgrade(save, request).canPurchase, false);
+  assert.equal(work.planForgeArmorMaterialsV146(save, { bone: selection.hide, hide: selection.bone }), null);
+  const first = work.planForgeArmorMaterialsV146(save, selection);
+  assert.equal(first.quote.nextLevel, 1);
+  assert.deepEqual(first.quote.units, [{ ...bone, consumed: 2 }, { ...hide, consumed: 1 }]);
+
+  const changed = structuredClone(save);
+  changed.inventory.harvestV112.archive[2].qualityTotal++;
+  assert.equal(work.applyHunterForgeArmorUpgradeV146(changed, first.quote), null);
+  const locked = structuredClone(save);
+  locked.inventory.unlockedArmorIds = [];
+  assert.equal(work.forgeArmorRecipeV146(locked), null);
+  assert.equal(work.applyHunterForgeArmorUpgradeV146(locked, first.quote), null);
+  const switched = structuredClone(save);
+  switched.loadout.armorId = armorId === "scout" ? "hunter" : "scout";
+  assert.equal(work.applyHunterForgeArmorUpgradeV146(switched, first.quote), null);
+
+  const storage = memory();
+  assert(saves.writeSaveWithStatus(save, storage, key).persisted);
+  function commit(current, quote) {
+    return work.commitHunterCustomizationV146({
+      current,
+      expectedOwnerCreatedAt: owner,
+      apply: actual => work.applyHunterForgeArmorUpgradeV146(actual, quote),
+      write: next => saves.writeSaveWithStatus(next, storage, key),
+      reconcile: () => { throw new Error("No uncertain write in this scenario."); },
+    });
+  }
+  const paid = commit(saves.loadSaveWithStatus(storage, key).save, first.quote);
+  assert(paid.ok, paid.failure);
+  const restored = saves.loadSaveWithStatus(storage, key).save;
+  assert.equal(restored.inventory.armorUpgrades[armorId], 1);
+  assert.equal(arsenal.quoteUpgrade(restored, request).currentLevel, 1);
+  assert(arsenal.effectiveArmorStats(armorId, 1).maxHealth > arsenal.effectiveArmorStats(armorId, 0).maxHealth);
+  assert.deepEqual(restored.inventory.harvestV112.archive, [
+    reserved, { ...bone, count: 3, qualityTotal: 241 }, { ...hide, count: 2, qualityTotal: 151 },
+  ]);
+  assert.deepEqual(commit(restored, first.quote), { ok: false, failure: "refused" });
+  assert.deepEqual(restored.customizationV146.heavyWear, save.customizationV146.heavyWear);
+  assert.equal(restored.profile.clanMarks, 0);
+  assert.equal(restored.profile.honor, save.profile.honor);
+
+  const second = work.planForgeArmorMaterialsV146(restored, selection);
+  assert.equal(second.quote.nextLevel, 2);
+  assert.deepEqual(second.quote.units.map(unit => unit.consumed), [3, 2]);
+  const finished = commit(restored, second.quote);
+  assert(finished.ok, finished.failure);
+  const portable = saves.parseSaveImport(saves.exportSave(finished.save));
+  assert.equal(portable.failure, null);
+  assert.equal(portable.save.inventory.armorUpgrades[armorId], 2);
+  assert.deepEqual(portable.save.inventory.harvestV112.archive, [reserved]);
+  assert.equal(work.forgeArmorRecipeV146(portable.save), null);
+  assert.equal(work.applyHunterForgeArmorUpgradeV146(portable.save, second.quote), null);
+});

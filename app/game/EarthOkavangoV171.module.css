@@ -30,3 +30,7 @@
   .actions button { flex: 1 1 115px; }
 }
 .actorParts { position: relative; display: block; width: 100%; height: 100%; }
+
+.water[data-passable="true"] { opacity: .42; background: repeating-linear-gradient(179deg, #557c73, #7b9480 6px, #527771 10px); }
+.terrain[data-water="rising"] .water[data-passable="true"] { opacity: .86; }
+.waterNotice { color: #ffdf9d; font-weight: 700; }

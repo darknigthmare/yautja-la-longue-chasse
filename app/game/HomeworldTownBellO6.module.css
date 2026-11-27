@@ -1,0 +1,59 @@
+.marker { position: absolute; pointer-events: none; }
+.name, .sign {
+  position: absolute;
+  left: 0;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  border: 1px solid #98754b;
+  border-radius: .25rem;
+  padding: .12rem .36rem;
+  color: #f8dfae;
+  background: #23190ff0;
+  font-size: .75rem;
+}
+.name { bottom: 6.55rem; }
+.sign { top: .55rem; }
+.gate {
+  position: absolute;
+  left: -28px;
+  bottom: 3px;
+  width: 56px;
+  height: 53px;
+  border: 3px solid #947650;
+  background: repeating-linear-gradient(90deg, transparent 0 8px, #715635 8px 11px);
+  box-shadow: 0 3px 4px #1c140eaa;
+  transform-origin: left 50%;
+}
+.gate[data-open="true"] { transform: scaleX(.32) skewY(-12deg); border-color: #c29c68; }
+.bell {
+  position: absolute;
+  bottom: 30px;
+  left: -14px;
+  width: 28px;
+  height: 30px;
+  transform-origin: 50% 0;
+  clip-path: polygon(38% 0, 62% 0, 80% 16%, 86% 73%, 100% 91%, 100% 100%, 0 100%, 0 91%, 14% 73%, 20% 16%);
+  background: linear-gradient(90deg, #674827, #efbd70 50%, #785b31);
+}
+.bell[data-rung="true"] { animation: ring .55s ease-out 1; }
+.rope { position: absolute; bottom: 3px; left: -1px; height: 28px; width: 2px; background: #af8c64; }
+@keyframes ring {
+  25% { transform: rotate(15deg); }
+  60% { transform: rotate(-9deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bell[data-rung="true"] { animation: none; background: #f5bd62; }
+}
+
+.piece {
+  position: absolute;
+  left: -8px;
+  bottom: 52px;
+  width: 19px;
+  height: 10px;
+  border: 1px solid #e1a964;
+  border-radius: 4px 2px 3px 3px;
+  transform: rotate(-12deg);
+  background: linear-gradient(115deg, #714218 14%, #d29d57 42%, #8c5e2d 65%, #d9a863);
+  box-shadow: 0 1px 3px #20150c;
+}

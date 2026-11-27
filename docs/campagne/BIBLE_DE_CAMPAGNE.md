@@ -3193,3 +3193,19 @@ Ordre de production proposé, par lots jouables :
 
 - **Terre · Repérage de l’Okavango** · Après M023 et l’acquisition de la coque personnelle au rang Blooded, Sol ouvre un repérage de l’Okavango. Le joueur choisit un dépôt, lit trois traces au biomask et reprend au même endroit après rechargement. L’extraction ramène au pont et le relevé reste consultable dans Sol. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46051826288)
 
+## Suite du 27 novembre 2026 — cohorte, Temple et terrain chargé
+
+- **R2-M006 · Admission aux ateliers Unblooded** · Le joueur et les trois jeunes présentent leur geste, déposent leurs outils puis franchissent la porte avec Saar. La plaque d’accès survit à l’import et au rechargement. Le premier atelier choisi fixe l’ordre du dojo. Le rang Unblooded acquis à l’audience est conservé. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46057345428)
+
+- **R2-M017 · Profondeurs du Temple** · La Descente des Contrepoids et la Galerie des Coques prolongent le premier acte. La triade franchit le volet puis se regroupe réellement au seuil avant le retour. Le reçu, puis la reprise de V90, ouvrent le Quatza-Rij. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46057323082)
+
+- **R2-M059 · Accueil au seuil** · La scène de la cohorte s’ouvre en atteignant le vrai seuil de la demeure. Les interventions restent liées au registre des quatre voix et reprennent dans la même partie. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46058045593)
+
+- **R2-M060 · Archives du vaisseau personnel** · Le joueur rejoint le poste d’archives et peut transmettre le dossier de la coque réellement acquise. Le reçu distingue cette transmission du départ simple et garde le lien avec la même coque. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46058045593)
+
+- **Terre · Crue de l’Okavango** · Les déplacements font monter l’eau jusqu’à fermer le gué. La levée garde une issue et offre des ornières de remplacement si le relevé bas est submergé. Journal, position et régime de crue se retrouvent au rechargement. Les sauvegardes V1 gardent leur parcours. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46056761105)
+
+- **Forge et canopée · Armure et traversée chargée** · La forge permet d’améliorer l’armure équipée avec deux lots choisis d’os et de cuir. Le devis montre les statistiques réelles et l’arsenal retrouve le niveau confirmé. Dans les Marais acides, le cuir transporté ralentit la remontée et l’impulsion de la liane. Le pendule, les prises et les replis reprennent avec la charge. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46056886021)
+
+- **O6-M03 · La cloche de la ville** · Saar ouvre le trajet après la course des sacs. Le joueur rejoint la rue des ateliers, remet la pièce, sonne la cloche et retrouve sa cohorte. Le carnet durable enregistre les véritables postes joués et accepte les parcours éligibles de M02. Le premier détour entre l’établi de Yena et le chenil de Tov fixe le choix consigné. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46060526772)
+

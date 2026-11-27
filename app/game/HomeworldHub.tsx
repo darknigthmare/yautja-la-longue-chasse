@@ -40,6 +40,10 @@ import {
   type YouthCityDeliveryStepV176, type YouthCityRouteV172, type YouthCityStopV172,
 } from "./systems/youthCityErrandV172";
 import YouthCityForgeDetourV176 from "./YouthCityForgeDetourV176";
+import HomeworldTownBellO6 from "./HomeworldTownBellO6";
+import { recordTownBellOrderO6, townBellActionsO6, type TownBellActionO6, type TownBellRecordO6 } from "./systems/originTownBellO6";
+import { townBellActionAtO6, townBellAtSiteO6, townBellReplyO6, townBellSiteO6,
+  TOWN_BELL_LABELS_O6, TOWN_BELL_MARKS_O6 } from "./systems/originTownBellPlacesO6";
 import { saarGuideMarkM003, saarGuidePoseM003, saarGuidePoseOnPathM003 } from "./systems/youthCityGuideM003";
 import { youthCityStreetBearingM003, youthCityStreetContactM003, youthCityStreetPathM003 } from "./systems/youthCityStreetM003";
 import { YOUTH_CITY_HEARTH_M003, YOUTH_CITY_SAAR_LANDING_M003, youthCityCouncilGuideVisibleM003, youthCityPlaceActionM003 } from "./systems/youthCityPlacesM003";
@@ -163,7 +167,7 @@ export interface HomeworldHubProps {
   navigation?: ReactNode;
   welcome?: ReactNode;
   /** Return false when durable saving failed; no local success is then announced. */
-  onProgress(next: HomeworldProgress): boolean;
+  onProgress(next: HomeworldProgress, townBell?: TownBellRecordO6): boolean;
   onAdjutantAppointment?(next: HomeworldProgress, prologue: NonNullable<SaveGame["prologue"]>): boolean;
   /** A controlled host can also own recovery backups, including memory-only playtests. */
   recoveryStorage?: Pick<Storage, 'getItem' | 'setItem'>;
@@ -441,7 +445,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   useEffect(() => { pausedRef.current = paused || inactive || spatialCodexOpen || wayfindingOpenV75 || !motionAssetsV74.ready || cargoMigrationPendingV108; }, [paused, inactive, spatialCodexOpen, wayfindingOpenV75, motionAssetsV74.ready,cargoMigrationPendingV108]);
   useEffect(() => { dialogStateRef.current = dialog; }, [dialog]);
 
-  const onProgress = useCallback((next: HomeworldProgress, adjutantPrologue?: NonNullable<SaveGame["prologue"]>) => {
+  const onProgress = useCallback((next: HomeworldProgress, adjutantPrologue?: NonNullable<SaveGame["prologue"]>, townBell?: TownBellRecordO6) => {
     if (!cargoMigrationWriteReadyRefV108.current || saveRef.current.createdAt !== save.createdAt || transitRefV77.current || skiffRefV77.current) return false;
     if(progressRef.current.arrivalRecoveryV111?.receipt&&JSON.stringify(next.arrivalRecoveryV111)!==JSON.stringify(progressRef.current.arrivalRecoveryV111))return false;
     if(next.arrivalRecoveryV111&&(!normalizeHomeworldArrivalRecoveryV111(next.arrivalRecoveryV111)||next.arrivalRecoveryV111.ownerCreatedAt!==save.createdAt))return false;
@@ -492,7 +496,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
       const receipt=next.arrivalRecoveryV111.receipt;
       if(receipt.originalCheckpointJson!==JSON.stringify(progressRef.current.locationV77)||receipt.originalLedgersJson!==JSON.stringify(homeworldArrivalRecoveryLedgersV111(durable))||JSON.stringify(receipt.restoredCheckpoint)!==JSON.stringify(locationV77))return false;
     }
-    const saved = adjutantPrologue ? onAdjutantAppointment?.(durable, adjutantPrologue) : persistProgress(durable);
+    const saved = adjutantPrologue ? onAdjutantAppointment?.(durable, adjutantPrologue) : persistProgress(durable, townBell);
     if (!saved) return false;
     progressRef.current = durable;
     if(archiveContinuationV111){continuationDraftRefV111.current=archiveContinuationV111;setContinuationViewV111(archiveContinuationV111);}
@@ -952,11 +956,34 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     setAnnouncement(message);
     setDialog(current => current ? { ...current, message } : current);
   }, [clearInputs, onProgress, save.createdAt]);
+  const submitTownBellO6 = useCallback((action: TownBellActionO6) => {
+    const current = saveRef.current;
+    const room = interiorRef.current;
+    const level = levelRefV77.current;
+    const here = actorRef.current;
+    if (current.createdAt !== save.createdAt || suspendedRef.current || pausedRef.current ||
+        dialogStateRef.current || transitRefV77.current || skiffRefV77.current ||
+        !townBellAtSiteO6(action, level, here, room?.buildingId ?? null)) return;
+    const site = createHomeworldCheckpointV77(current.createdAt, level, here, room?.buildingId ?? null, exteriorAnchorRef.current);
+    const receipt = recordTownBellOrderO6(current, action, site);
+    if (!receipt) return;
+    clearInputs();
+    const stopped = { ...here, vx: 0, vy: 0 };
+    actorRef.current = stopped;
+    setActor(stopped);
+    const saved = onProgress(progressRef.current, undefined, receipt);
+    const note = saved ? townBellReplyO6(current, action) : "Le geste de la livraison n’a pas été enregistré. Réessaie au même poste.";
+    setAnnouncement(note);
+    onNotify(note);
+  }, [clearInputs, onNotify, onProgress, save.createdAt]);
+
   const interact = useCallback(() => {
     if (cargoMigrationPendingRefV108.current || suspendedRef.current || pausedRef.current || dialogStateRef.current || transitRefV77.current || skiffRefV77.current) return;
     viewportRef.current?.focus({preventScroll:true});
     const room = interiorRef.current;
     if(cartographyWritePausedRefV104.current||cartographyWritePausedRefV105.current||archiveWritePausedRefV106.current||comparisonWritePausedRefV107.current||cargoWritePausedRefV108.current||plaqueWritePausedRefV109.current)return;
+    const townOrder = townBellActionAtO6(saveRef.current, levelRefV77.current, actorRef.current, room?.buildingId ?? null);
+    if (townOrder) { submitTownBellO6(townOrder); return; }
     const city = progressRef.current.youthCityErrandV172;
     const activeCity = youthWelcome && city?.ownerCreatedAt === saveRef.current.createdAt ? city : undefined;
     const placeAction = youthCityPlaceActionM003(activeCity, levelRefV77.current, actorRef.current, room);
@@ -1094,7 +1121,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     }
     if (!youthWelcome && point.kind === "evidence" && point.evidenceId) message = persistAction({ type: "inspect", evidenceId: point.evidenceId }).message;
     setDialog({ point, message });
-  }, [clearInputs, enterInterior, exitInterior, persistAction, residentContextV110, youthWelcome, submitCoordinationM028,submitHomeworldAdjutantM029,openCntlipV77,updateLiftStationV83,interruptCartographyV104,cartographyContextV104,cartographyContextV105,interruptCartographyV105,openObservationV105,archiveContextV106,submitArchiveV106,interruptArchiveV106,onProgress,archiveWriteRefusedV106,comparisonContextV107,submitComparisonV107,interruptComparisonV107,comparisonWriteRefusedV107,cargoContextV108,submitCargoV108,interruptCargoV108,cargoWriteRefusedV108,plaqueContextV109,submitPlaqueV109,submitEffectivePlaqueV111,interruptPlaqueV109,plaqueWriteRefusedV109]);
+  }, [clearInputs, enterInterior, exitInterior, persistAction, residentContextV110, youthWelcome, submitTownBellO6, submitCoordinationM028,submitHomeworldAdjutantM029,openCntlipV77,updateLiftStationV83,interruptCartographyV104,cartographyContextV104,cartographyContextV105,interruptCartographyV105,openObservationV105,archiveContextV106,submitArchiveV106,interruptArchiveV106,onProgress,archiveWriteRefusedV106,comparisonContextV107,submitComparisonV107,interruptComparisonV107,comparisonWriteRefusedV107,cargoContextV108,submitCargoV108,interruptCargoV108,cargoWriteRefusedV108,plaqueContextV109,submitPlaqueV109,submitEffectivePlaqueV111,interruptPlaqueV109,plaqueWriteRefusedV109]);
 
   useEffect(() => {
     const element = viewportRef.current;
@@ -1679,7 +1706,12 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     ?? (saarAtLowerLanding ? { ...YOUTH_CITY_SAAR_LANDING_M003.point, facing: 1 as const, moving: false, waiting: true } : streetGuide) : null;
   const saarMark = saarGuidePending && saarPose ? saarGuideMarkM003(youthCityErrand, levelIdV77, actor, interiorId) : null;
   const saarProjected = saarPose ? projectHomeworldWorldV77(saarPose, levelIdV77) : null;
-  const interactionLabel = youthCityPlaceAction?.label ?? saarMark?.label ?? streetAction?.label ?? (nearbyPlaqueActionV109?nearbyPlaqueActionV109.label:nearbyPlaqueHostV109?'Archiviste · plaque K-17':nearbyCargoActionV108?nearbyCargoActionV108.label:nearbyCargoHostV108?'Intendante · répartir les lots':nearbyComparisonActionV107?nearbyComparisonActionV107.label:nearbyComparisonHostV107?'Archiviste · preuve située':nearbyArchiveActionV106?nearbyArchiveActionV106.label:nearbyArchivistV106?'Archiviste · dossiers séparés':nearbyConnectorV77 ? connectorLabelV83 : indoorTarget?.kind === "exit" ? "Sortir vers la cité" : atCoordinationGateM028 ? coordinationPromptM028 : atAdjutantWorkshopM029 ? "Poser le relais du convoi" : highPointAvailableV105&&progress.cartographyV105?.receipt?.phase==='observing'?'Comparer les repères du viaduc':nearbyCntlipHostV77?`Halte · ${nearbyCntlipHostV77.name}` : nearbyCartographerV104?'Cartographe · liaison du port':nearestDoor ? `Entrer · ${nearestDoor.label}` : nearest?.label ?? (nearbyResidentV68 ? `Parler · ${nearbyResidentV68.role}` : nearbyStreetContactV100?`Parler · ${nearbyStreetContactV100.role}`:null));
+  const townBellActions = townBellActionsO6(save);
+  const townBellAction = !transitV77 && !skiffV77 ? townBellActionAtO6(save, levelIdV77, actor, interiorId) : undefined;
+  const townBellAtRegroup = townBellActions.includes("postpone") && townBellAtSiteO6("postpone", levelIdV77, actor, interiorId);
+  const townBellTarget = townBellActions[0] && townBellSiteO6(townBellActions[0]);
+  const interactionLabel = (townBellAction ? TOWN_BELL_LABELS_O6[townBellAction] : undefined) ??
+    youthCityPlaceAction?.label ?? saarMark?.label ?? streetAction?.label ?? (nearbyPlaqueActionV109?nearbyPlaqueActionV109.label:nearbyPlaqueHostV109?'Archiviste · plaque K-17':nearbyCargoActionV108?nearbyCargoActionV108.label:nearbyCargoHostV108?'Intendante · répartir les lots':nearbyComparisonActionV107?nearbyComparisonActionV107.label:nearbyComparisonHostV107?'Archiviste · preuve située':nearbyArchiveActionV106?nearbyArchiveActionV106.label:nearbyArchivistV106?'Archiviste · dossiers séparés':nearbyConnectorV77 ? connectorLabelV83 : indoorTarget?.kind === "exit" ? "Sortir vers la cité" : atCoordinationGateM028 ? coordinationPromptM028 : atAdjutantWorkshopM029 ? "Poser le relais du convoi" : highPointAvailableV105&&progress.cartographyV105?.receipt?.phase==='observing'?'Comparer les repères du viaduc':nearbyCntlipHostV77?`Halte · ${nearbyCntlipHostV77.name}` : nearbyCartographerV104?'Cartographe · liaison du port':nearestDoor ? `Entrer · ${nearestDoor.label}` : nearest?.label ?? (nearbyResidentV68 ? `Parler · ${nearbyResidentV68.role}` : nearbyStreetContactV100?`Parler · ${nearbyStreetContactV100.role}`:null));
   const heroPlacement = !youthWelcome && heroPlate.status === "custom-modular-body"
     ? homeworldModularPlacementV64(save.appearance.bodyMorphId, save.appearance.headStyleId)
     : homeworldPortraitPlacementV64(heroPlate.plateId, heroPlate.src, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.physicalHeight : 100);
@@ -1709,6 +1741,8 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
       <div className={styles.world} aria-hidden="true" data-homeworld-camera-mode={camera.mode} data-homeworld-camera-zoom={zoom.toFixed(3)} style={{ pointerEvents: 'none', width: sceneWidth, height: sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale, transform: `translate(${-cameraX * zoom}px,${-cameraY * zoom}px) scale(${zoom})` }}>
         {interior ? <HomeworldInteriorSurface room={interior} actorPosition={actor} activePointId={nearest?.id ?? null} trophies={save.trophies} returnM039={returnM039} coordinationM028={coordinationM028} />
           : <HomeworldWorldSceneV77 archivistActiveV111={!!dialog?.archivePlaqueV109&&dialog.archivePlaqueV109.owner===save.createdAt&&nearbyPlaqueHostV109} archivistPausedV111={archivistPausedV111} archivistSequenceV111={archivistSequenceV111} archivePlaqueV109={progress.visitedDistrictIds.includes('port')&&motionAssetsV74.ready?plaqueEffectiveViewV111:undefined} cargoV108={cargoViewV108} comparisonV107={comparisonViewV107} archiveV106={archiveViewV106} archiveActiveV106={nearbyArchivistV106} actor={actor} levelId={levelIdV77} camera={camera} seconds={phase} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} activeCartographyV104={nearbyCartographerV104} cartographyHighPointV105={cartographyActiveV105(progress.cartographyV105)} activeStreetContactV100={!nearbyConnectorV77&&!nearestDoor&&!nearest&&!nearbyCntlipHostV77&&!nearbyCartographerV104?nearbyStreetContactV100?.id:null} youthWelcome={youthWelcome} skiffActive={!!skiffV77} reducedMotion={reducedMotionV77} transit={transitV77} liftStateV83={liftSessionOwnerV83 === save.createdAt ? liftStateV83 : null} />}
+        {!transitV77 && !skiffV77 && townBellActions.length > 0 && <HomeworldTownBellO6 save={save} actor={actor} level={levelIdV77}
+          interiorId={interiorId} elevation={elevationV77} seconds={phase} reducedMotion={reducedMotionV77} />}
         {streetInView && streetJunction && streetSignal && <>
           <div className={styles.saarGuideM003} data-r2-m003-companion="yena"
             style={{ left: streetJunction.x, top: streetJunction.y, zIndex: homeworldSceneDepthV78(streetInView.junction.y, elevationV77) }}>
@@ -1762,7 +1796,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
         {HOMEWORLD_DISTRICTS_V77.filter(entry => entry.levelId === levelIdV77).map(entry => <i key={entry.id} className={styles.mapDistrict} data-visited={progress.visitedDistrictIds.includes(entry.id)} style={{ left: `${entry.x / HOMEWORLD_WORLD_V77.width * 100}%`, top: `${entry.y / HOMEWORLD_WORLD_V77.height * 100}%`, width: `${entry.width / HOMEWORLD_WORLD_V77.width * 100}%`, height: `${entry.height / HOMEWORLD_WORLD_V77.height * 100}%` }} />)}
         <i className={styles.mapActor} style={{ left: `${actor.x / HOMEWORLD_WORLD_V77.width * 100}%`, top: `${actor.y / HOMEWORLD_WORLD_V77.height * 100}%` }} />
       </div>}
-      {interactionLabel && !blocked && <button className={styles.prompt} type="button" onClick={interact} data-homeworld-door-id={saarMark || youthCityPlaceAction || streetAction ? undefined : nearestDoor?.id} data-homeworld-saar-action={saarMark ? true : undefined} data-r2-m003-street-action={streetAction?.kind} data-r2-m003-place={youthCityPlaceAction?.kind} data-homeworld-interior-target={indoorTarget?.kind}><kbd>{controlActionShortcut("hunt.interact", bindings)} / A</kbd>{youthWelcome && nearest?.kind === "ship" && !nearestDoor ? "Quais du clan" : interactionLabel}</button>}
+      {interactionLabel && !blocked && <button className={styles.prompt} type="button" onClick={interact} data-homeworld-door-id={townBellAction || saarMark || youthCityPlaceAction || streetAction ? undefined : nearestDoor?.id} data-o6-town-action={townBellAction} data-homeworld-saar-action={saarMark ? true : undefined} data-r2-m003-street-action={streetAction?.kind} data-r2-m003-place={youthCityPlaceAction?.kind} data-homeworld-interior-target={indoorTarget?.kind}><kbd>{controlActionShortcut("hunt.interact", bindings)} / A</kbd>{!townBellAction && youthWelcome && nearest?.kind === "ship" && !nearestDoor ? "Quais du clan" : interactionLabel}</button>}
       {cntlipV77.effects.peripheralOpacity>0&&<div aria-hidden="true" data-cntlip-sensory-v77={cntlipV77.ledger.state.activeDoses}
         style={{position:'absolute',inset:0,pointerEvents:'none',zIndex:4,opacity:cntlipV77.effects.peripheralOpacity,background:'radial-gradient(ellipse at center,transparent 38%,#96714b 100%)'}}/>}
       {!motionAssetsV74.ready && <div className={styles.pause} data-homeworld-motion-loading-v74 role={motionAssetsV74.error ? "alert" : "status"} aria-live="polite">
@@ -1807,6 +1841,15 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
           ? <button type="button" disabled={blocked} onClick={() => requestLandmarkV75("point:forge-service")}>Indiquer l’atelier</button>
           : youthCityStop && youthCityStop !== "kennel" && !youthCityEncounterPending && !youthCityStreetPending &&
             <button type="button" disabled={blocked} onClick={() => requestLandmarkV75(`point:${youthCityStop}`)}>Indiquer le chemin</button>}
+    </section>}
+    {!dialog && townBellActions.length > 0 && townBellTarget && <section className={styles.youthHudV64}
+      aria-label="La cloche de la ville" data-o6-town-bell-quest={save.originV151?.townBellO6?.journal.length ?? 0}>
+      <strong>La cloche de la ville</strong>
+      <p>{townBellActions.filter(action => action !== "postpone").map(action => TOWN_BELL_MARKS_O6[action]).join(" ou ")}
+        {townBellActions.length === 1 && townBellTarget.levelId === levelIdV77 && townBellTarget.interiorId === interiorId
+          ? ` · ${youthCityStreetBearingM003(actor, townBellTarget.point)}` : ""}</p>
+      {save.originV151?.townBellO6?.carriesPiece && <span>Pièce de livraison portée.</span>}
+      {townBellAtRegroup && <button type="button" disabled={blocked} onClick={() => submitTownBellO6("postpone")}>{TOWN_BELL_LABELS_O6.postpone}</button>}
     </section>}
     {!dialog && nextRouteM034 && (
       <HomeworldRouteJournalM034 route={nextRouteM034} disabled={blocked} onGuide={requestLandmarkV75} />

@@ -1139,11 +1139,13 @@ function currentHuntFieldWorkV112(state: GameState, player: PlayerState = state.
 }
 
 function currentCanopyNavigationV112(state: GameState): CanopyNavigationV112 {
+  const fieldLoad = huntFieldLoadV112(state);
   return canopyNavigationV112({ player: state.player, climbables: state.world.climbables,
     platforms: state.world.platforms, hazards: state.world.hazards, floorY: state.world.floorY,
     minimumGripStamina: CLIMB_TRAVERSAL.minimumGripStamina,
     transferOriginId: state.canopyTransfer?.remainingSeconds ? state.canopyTransfer.departedSupportId : undefined,
-    staminaMultiplier: huntFieldLoadV112(state).climbStaminaMultiplier,
+    staminaMultiplier: fieldLoad.climbStaminaMultiplier,
+    movementMultiplier: fieldLoad.movementMultiplier,
     actionLocked: state.trophyExtracting || !!state.trophyVictory && !state.trophyVictory.complete ||
       state.phase === "dead" || state.phase === "finished" });
 }

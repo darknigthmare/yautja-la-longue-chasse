@@ -12,7 +12,8 @@
 }
 .room[data-site="ship"] {
   border-color: #507786;
-  background: linear-gradient(175deg, #101b25 0%, #243946 54%, #537486 77%, #253844 79%, #1c2832 100%);
+  background: linear-gradient(0deg, #121e28 0 22%, #151d2970 40%, #11191e26 72%),
+    var(--legacy-ship-wall) var(--legacy-pan, 50%) 68% / cover no-repeat, #263c48;
 }
 .room:focus-visible { outline: 3px solid #ffe4ad; outline-offset: 3px; }
 .light {
@@ -83,4 +84,15 @@
 @media (prefers-reduced-motion: no-preference) {
   .room { transition: background-position 520ms ease-out; }
   .light { transition: left 480ms ease-out; }
+}
+.personalTerminal {
+  position: absolute;
+  bottom: 22%;
+  width: clamp(38px, 10vw, 108px);
+  height: auto;
+  max-height: 64%;
+  object-fit: contain;
+  object-position: bottom;
+  transform: translateX(-50%);
+  pointer-events: none;
 }

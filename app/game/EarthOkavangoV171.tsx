@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
 import { drawEarthReferenceV147, EARTH_REFERENCE_SOURCE_V147, validEarthLandGeoJsonV147 } from "./earthGeoReferenceV147";
 import {
-  earthOkavangoCanExtractV171, earthOkavangoMoveV171, earthOkavangoTraceAtV171, earthOkavangoWalkableV171,
-  OKAVANGO_SECTORS_V171, OKAVANGO_TRACES_V171, OKAVANGO_ZONES_V171,
+  earthOkavangoCanExtractV171, earthOkavangoMoveV171, earthOkavangoTraceAtV171, earthOkavangoTraceLocationsV171,
+  earthOkavangoWalkableV171, earthOkavangoWaterV171, OKAVANGO_SECTORS_V171, OKAVANGO_ZONES_V171,
   type EarthOkavangoOrderV171, type EarthOkavangoViewV171,
 } from "./systems/earthOkavangoV171";
 import { homeworldHeroPlate } from "./systems/homeworldCity";
@@ -50,6 +50,11 @@ const moveLabels = {
 } as const;
 const directionKeys = { ArrowLeft: "west", ArrowRight: "east", ArrowUp: "north", ArrowDown: "south" } as const;
 const directionNames = Object.keys(moveLabels) as (keyof typeof moveLabels)[];
+const waterNotices = {
+  low: "Eau basse · le gué est ouvert.",
+  rising: "L’eau monte · termine la traversée ou monte sur la levée.",
+  high: "Gué submergé · la levée reste praticable entre les deux rives.",
+} as const;
 function coordinate(x: number, lane: number): CSSProperties {
   return { left: `${(x + .5) * 10}%`, top: lane === 0 ? "64%" : "81%" };
 }
@@ -67,6 +72,9 @@ export default function EarthOkavangoV171({ view, appearance, loadout, blocked, 
   const returned = view.phase === "returned";
   const sector = OKAVANGO_SECTORS_V171.find(row => view.x <= row.end);
   const site = view.zone ? OKAVANGO_ZONES_V171[view.zone] : null;
+  const water = earthOkavangoWaterV171(view);
+  const flooded = !earthOkavangoWalkableV171(view.x, view.lane, water);
+  const traceLocations = earthOkavangoTraceLocationsV171(view);
   const trace = earthOkavangoTraceAtV171(view);
   const canScan = !!trace && view.visor === "analyse" && !view.traces.includes(trace.id);
   const canExtract = earthOkavangoCanExtractV171(view);
@@ -85,7 +93,7 @@ export default function EarthOkavangoV171({ view, appearance, loadout, blocked, 
   };
   return <section className={styles.panel} aria-labelledby="earth-okavango-title"
     data-earth-okavango={view.phase} data-okavango-position={ground ? `${view.x}:${view.lane}` : undefined}
-    data-okavango-traces={view.traces.length}>
+    data-okavango-traces={view.traces.length} data-okavango-water={ground ? water : undefined}>
     <header>
       <div><p className="eyebrow">Sol · Terre</p><h1 id="earth-okavango-title">
         {ground ? "Delta de l’Okavango" : returned ? "Relevé de l’Okavango" : "Registre terrestre"}
@@ -102,6 +110,7 @@ export default function EarthOkavangoV171({ view, appearance, loadout, blocked, 
         <h2>Repérage · Okavango</h2>
         <p>La réserve terrestre est ouverte. Observe les traces des chenaux avant de désigner une proie.</p>
         <p>Relève trois indices et rejoins ton dépôt pour remonter avec le relevé.</p>
+        {water !== "historical" && <p>La montée des eaux modifie le gué pendant la marche. Repère la levée pour garder un retour.</p>}
         {Object.entries(OKAVANGO_ZONES_V171).map(([id, zone]) =>
           <button className="alien-button" type="button" key={id} data-okavango-zone={id}
             disabled={blocked || view.zone === id} aria-pressed={view.zone === id}
@@ -114,18 +123,19 @@ export default function EarthOkavangoV171({ view, appearance, loadout, blocked, 
       </div>
     </div>}
     {ground && <>
-      <div ref={terrain} className={styles.terrain} onKeyDown={onTerrainKey}
+      <div ref={terrain} className={styles.terrain} onKeyDown={onTerrainKey} data-water={water}
         tabIndex={blocked ? -1 : 0} role="group" aria-label="Terrain du delta, avancer au clavier">
         <div className={styles.sky} aria-hidden="true" />
         <div className={styles.piste} aria-hidden="true" />
         <div className={styles.berge} aria-hidden="true" />
-        {OKAVANGO_TRACES_V171.map(row =>
-          <span key={row.id} className={styles.marker} style={coordinate(row.x, row.lane)}
+        {traceLocations.filter(row => earthOkavangoWalkableV171(row.x, row.lane, water)).map(row =>
+          <span key={row.id} className={styles.marker} style={coordinate(row.x, row.lane)} data-okavango-marker={row.name}
             data-read={view.traces.includes(row.id)} aria-hidden="true">{view.traces.includes(row.id) ? "✓" : "◇"}</span>,
         )}
         {site && <span className={styles.extraction} aria-hidden="true" style={coordinate(site.x, site.lane)}>⌂</span>}
-        {[4, 5, 6].filter(x => !earthOkavangoWalkableV171(x, 1)).map(x =>
-          <i key={x} className={styles.water} aria-hidden="true" style={coordinate(x, 1)} />,
+        {[4, 5, 6].map(x =>
+          <i key={x} className={styles.water} aria-hidden="true" style={coordinate(x, 1)}
+            data-okavango-channel={x} data-passable={earthOkavangoWalkableV171(x, 1, water)} />,
         )}
         {plate.status === "custom-modular-body"
           ? <div className={styles.actor} style={coordinate(view.x, view.lane)}>
@@ -137,7 +147,11 @@ export default function EarthOkavangoV171({ view, appearance, loadout, blocked, 
         }
       </div>
       <div className={styles.groundInfo}>
-        <p><strong>{sector?.name}</strong> · {view.lane === 0 ? "Piste haute" : "Berge basse"}</p>
+        <p><strong>{sector?.name}</strong> · {view.lane === 0 ? water === "historical" ? "Piste haute" : "Levée" : "Berge basse"}</p>
+        {water !== "historical" && <p className={styles.waterNotice} data-okavango-water-notice role="status">
+          {flooded ? "L’eau a atteint cette berge. Monte sur la levée à ta hauteur." : waterNotices[water]}
+        </p>}
+        {water === "high" && !view.traces.includes("tyres") && <p>La trace basse est recouverte. Cherche les ornières sur la levée.</p>}
         <p>Flèches pour marcher, R pour passer en Analyse, E pour examiner ou remonter.</p>
         {trace && <p>{trace.name} · {view.traces.includes(trace.id) ? "consigné" : "à analyser"}</p>}
         {view.traces.length === 3 && <p>Les traces convergent vers l’île du Baobab mort. Reviens au dépôt de {site?.name}.</p>}
@@ -145,7 +159,7 @@ export default function EarthOkavangoV171({ view, appearance, loadout, blocked, 
       <div className={styles.actions}>
         {directionNames.map(direction => <button className="ghost-button" type="button" key={direction}
           data-okavango-move={direction} disabled={blocked || !earthOkavangoMoveV171(view, direction)}
-          onClick={() => onOrder({ kind: "move", direction })}>{moveLabels[direction]}</button>)}
+          onClick={() => onOrder({ kind: "move", direction })}>{direction === "north" && water !== "historical" ? "Monter sur la levée" : moveLabels[direction]}</button>)}
         <button className="ghost-button" type="button" data-okavango-analyse aria-pressed={view.visor === "analyse"}
           disabled={blocked} onClick={() => onOrder({ kind: "analyse" })}>Biomask · Analyse</button>
         <button className="alien-button" type="button" data-okavango-scan disabled={blocked || !canScan}
@@ -156,8 +170,8 @@ export default function EarthOkavangoV171({ view, appearance, loadout, blocked, 
     </>}
     {(ground || returned) && <section className={styles.log} aria-label="Relevé des indices">
       <h2>Indices consignés · {view.traces.length} / 3</h2>
-      <ul>{OKAVANGO_TRACES_V171.filter(row => view.traces.includes(row.id)).map(row =>
-        <li key={row.id}><strong>{row.name}</strong> · {row.detail}</li>,
+      <ul>{traceLocations.filter(row => view.traces.includes(row.id)).map(row =>
+        <li key={row.id} data-okavango-read={row.id}><strong>{row.name}</strong> · {row.detail}</li>,
       )}</ul>
       {returned && <p>Retour à bord consigné. Secteur probable : île du Baobab mort.</p>}
     </section>}

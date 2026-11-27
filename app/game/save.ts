@@ -15,6 +15,8 @@ import { continuationMatchesSaveO6, keepsContinuationO6 } from "./systems/origin
 import { keepsSoloReturnO6, soloReturnMatchesSaveO6 } from "./systems/originSoloReturnO6";
 import { firstShockMatchesSaveO6, keepsFirstShockO6 } from "./systems/originFirstShockO6";
 import { cohortRaceMatchesSaveO6, keepsCohortRaceO6 } from "./systems/originCohortRaceO6";
+import { keepsTownBellO6, townBellMatchesSaveO6 } from "./systems/originTownBellO6";
+import { townBellLocationsMatchO6 } from "./systems/originTownBellPlacesO6";
 import { isFuturePathObjectsV158, normalizePathObjectsV158 } from "./systems/pathObjectsV158";
 import { isFutureHeritageV152, normalizeHeritageV152 } from "./systems/heritageV152";
 import { hardcoreStatusV155, isFutureHardcoreV155, normalizeHardcoreV155, recordHardcoreDeathV155 } from "./systems/hardcoreV155";
@@ -2181,7 +2183,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       })) return { save: null, failure: "invalid-save" };
   if (m037.state && !conquestMatchesCampaignR2M037(save, m037.state)) return { save: null, failure: "invalid-save" };
   if (!continuationMatchesSaveO6(save) || !soloReturnMatchesSaveO6(save) || !firstShockMatchesSaveO6(save) ||
-      !cohortRaceMatchesSaveO6(save)) return { save: null, failure: "invalid-save" };
+      !cohortRaceMatchesSaveO6(save) || !townBellMatchesSaveO6(save) || !townBellLocationsMatchO6(save))
+    return { save: null, failure: "invalid-save" };
   if (save.originV151?.trainingYardO6 && Object.keys(save.originV151.trainingYardO6.houses).some(houseId =>
       !save.residenceV149?.rights.includes(houseId))) return { save: null, failure: "invalid-save" };
   if (m035.state && !hasWarNarrativeCampaignR2M035(save)) return { save: null, failure: "invalid-save" };
@@ -2440,7 +2443,8 @@ function persistCampaign(
       }
       if (!keepsContinuationO6(previous.originV151?.continuationO6, requested.originV151?.continuationO6) ||
           !keepsSoloReturnO6(previous.originV151?.soloReturnO6, requested.originV151?.soloReturnO6) ||
-          !keepsFirstShockO6(previous, requested) || !keepsCohortRaceO6(previous, requested)) {
+          !keepsFirstShockO6(previous, requested) || !keepsCohortRaceO6(previous, requested) ||
+          !keepsTownBellO6(previous, requested)) {
         return failed("save-conflict", previous);
       }
       const previousHullProject = previous.clanHullProjectV171;

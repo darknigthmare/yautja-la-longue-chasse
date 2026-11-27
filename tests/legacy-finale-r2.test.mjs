@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { finale, houseSite, legacyCanonicalCohortFixture, legacyClanFixture, legacyFixture, legacyHaltFixture, legacyPlayer, moveLegacyClanFixture, saves } from "./helpers/legacy-finale-r2.mjs";
+import { finale, houseSite, legacyCanonicalCohortFixture, legacyClanFixture, legacyFixture, legacyHaltFixture, legacyPersonalShipFixture, legacyPlayer, moveLegacyClanFixture, saves } from "./helpers/legacy-finale-r2.mjs";
 
 test("the new cohort requires Ancient, a realized ending receipt, and the actual fitted residence", () => {
   const command = { scene: "cohort", order: { kind: "greet", at: 2 } };
@@ -276,4 +276,52 @@ test("M060 keeps the delivered witness across reloading and requires that person
   const forged = structuredClone(closed.save.legacyFinaleR2);
   forged.epilogue.events[4].speaker = "piece";
   assert.equal(finale.normalizeLegacyFinaleR2(forged, before.createdAt), null);
+});
+
+test("M060 on the personal ship uses the received hull, its proved agreement, and the archive post", () => {
+  assert.equal(finale.legacyShipSiteR2(legacyPersonalShipFixture({ stopAt: "rights" })), null);
+  const starting = legacyPersonalShipFixture();
+  const site = finale.legacyShipSiteR2(starting);
+  assert.ok(site && site.kind === "ship");
+  const seen = { scene: "epilogue", order: { kind: "belongings", at: 6 } };
+  assert.equal(finale.advanceLegacyFinaleR2(legacyPersonalShipFixture({ realized: false }), site, seen).next, undefined);
+  const player = legacyPlayer(starting);
+  player.move("epilogue", "belongings", 6, {}, site);
+  assert.match(finale.legacyPersonalShipReadoutR2(player.save, site).belongings[0], /Coque remise/);
+  assert.deepEqual(finale.legacyPersonalShipReadoutR2(player.save, site).relations, []);
+  assert.deepEqual(finale.legacyEpilogueChoicesR2(player.save.legacyFinaleR2, site), ["depart"]);
+  player.move("epilogue", "relations", 11, {}, site);
+  const proof = player.save.legacyFinaleR2.epilogue.events[1].personalShipProof;
+  assert.equal(proof.sourceId, "R2-M021");
+  assert.match(finale.legacyPersonalShipReadoutR2(player.save, site).relations[0], /remise des droits et entrée/);
+  assert.deepEqual(finale.legacyEpilogueChoicesR2(player.save.legacyFinaleR2, site), ["depart", "transmit"]);
+  player.move("epilogue", "choose", 16, { choice: "transmit" }, site);
+  const ready = saves.parseSaveImport(saves.exportSave(player.save));
+  assert.ok(ready.save, ready.failure);
+  const wrong = finale.advanceLegacyFinaleR2(ready.save, site, { scene: "epilogue", order: { kind: "act", at: 14 } });
+  assert.equal(wrong.next, undefined);
+  const resumed = legacyPlayer(ready.save);
+  resumed.move("epilogue", "act", 21, {}, site);
+  const archived = saves.parseSaveImport(saves.exportSave(resumed.save));
+  assert.ok(archived.save, archived.failure);
+  assert.equal(finale.legacyEpilogueViewR2(archived.save.legacyFinaleR2, site).complete, true);
+  assert.deepEqual(archived.save.originV151, ready.save.originV151);
+  assert.deepEqual(archived.save.trophies, ready.save.trophies);
+  const wrongSource = structuredClone(archived.save);
+  wrongSource.legacyFinaleR2.epilogue.events[1].personalShipProof.sourceId = "other";
+  assert.equal(saves.parseSaveImport(JSON.stringify(wrongSource)).failure, "invalid-save");
+  const lostAcquisition = { ...archived.save, shipAcquisitionV89: null };
+  assert.equal(saves.parseSaveImport(JSON.stringify(lostAcquisition)).failure, "invalid-save");
+});
+
+test("a historical personal ship journal without an archive proof still retains its departure", () => {
+  const save = legacyPersonalShipFixture();
+  const site = finale.legacyShipSiteR2(save);
+  const old = { version: 1, ownerCreatedAt: save.createdAt, endingId: "O6-E1", epilogue: { site, events: [
+    { kind: "belongings", at: 6 }, { kind: "relations", at: 11 }, { kind: "choose", choice: "depart", at: 16 }, { kind: "act", at: 2 },
+  ] } };
+  const loaded = saves.parseSaveImport(saves.exportSave({ ...save, legacyFinaleR2: old }));
+  assert.ok(loaded.save, loaded.failure);
+  assert.deepEqual(loaded.save.legacyFinaleR2, old);
+  assert.equal(finale.legacyEpilogueViewR2(loaded.save.legacyFinaleR2, site).complete, true);
 });
