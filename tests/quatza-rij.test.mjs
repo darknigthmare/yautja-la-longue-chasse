@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { homeworldSceneSsrV78 } from './helpers/homeworld-scene-ssr-v78.mjs';
 import { playShipAcquisitionV161 } from './helpers/ship-receipt-v161.mjs';
 import { formationCampaignRoute } from './helpers/solo-v90-played-route.mjs';
-import { playQuatzaAbsence, playQuatzaRescue } from './helpers/quatza-triage-route.mjs';
+import { playQuatzaAbsence, playQuatzaHunt, playQuatzaRescue } from './helpers/quatza-triage-route.mjs';
 
 const qa = homeworldSceneSsrV78();
 const engine = qa.load('app/game/systems/quatzaRij.ts');
@@ -30,69 +30,8 @@ function commit(save, command) {
   return { ...save, quatzaRij: result.state };
 }
 
-function playing(mode, kit = 'mobility') {
-  let frame = engine.createQuatzaFrame(mode);
-  const input = [];
-  function step(code = 0) {
-    const next = engine.stepQuatza(mode, frame, code);
-    if (next !== frame) input.push(code);
-    frame = next;
-  }
-  const key = bit => { step(); step(bit); step(); };
-  function walk(target, tolerance = 4) {
-    for (let n = 0; n < 400 && Math.abs(frame.player.x - target) > tolerance; n++) {
-      step(frame.player.x < target ? I.right : I.left);
-    }
-    assert(Math.abs(frame.player.x - target) <= tolerance, 'ordinary movement arrived at ' + target);
-  }
-  function post(x) { walk(x); key(I.interact); }
-  function prepare() {
-    post(P.rack); post(P.map);
-    if (mode === 'solo') post(kit === 'care' ? P.care : P.mobility);
-    post(P.departure);
-    assert.equal(frame.phase, 'field');
-  }
-  function fight() {
-    post(P.trail);
-    walk(845);
-    const phases = new Set(), hits = [];
-    for (let n = 0; n < 3900 && frame.phase === 'field' && frame.beast.stage !== 'dead'; n++) {
-      const { beast, player, companions } = frame;
-      phases.add(beast.stage);
-      const distance = Math.abs(beast.x - player.x);
-      const ready = bit => !(frame.previous & bit);
-      if (mode === 'triad' && distance < 400 && ready(I.signal) &&
-          (!frame.approachCalled || companions[0].contribution && !frame.blockCalled)) {
-        step(I.signal);
-      } else if (beast.stage === 'recover' && player.y > 368 && distance <= 122 &&
-          player.cooldown === 0 && ready(I.strike) && companions.every(ally => ally.contribution)) {
-        step(I.strike);
-        hits.push(frame.beast.health);
-      } else if ((beast.stage === 'warning' && beast.remaining < 16 && distance < 190 ||
-          beast.stage === 'charge' && distance < 130) && player.vy === 0 && ready(I.jump)) {
-        step(I.jump);
-      } else {
-        step(beast.stage !== 'charge' && distance > 103 ? beast.x > player.x ? I.right : I.left : 0);
-      }
-    }
-    assert.equal(frame.beast.stage, 'dead');
-    assert(phases.has('warning') && phases.has('charge') && phases.has('recover'));
-    assert.equal(hits.at(-1), 0);
-  }
-  return { get frame() { return frame; }, input, step, key, walk, post, prepare, fight,
-    gatherAndReturn() {
-      walk(frame.beast.x, 35);
-      for (let n = 0; n < 100 && frame.player.y < 385; n++) step();
-      key(I.interact); assert.equal(frame.hide, true); assert.equal(frame.skull, false);
-      key(I.interact); assert.equal(frame.skull, true);
-      walk(P.refuge);
-      for (let n = 0; n < 100 && frame.player.y < 385; n++) step();
-      key(I.interact); assert.equal(frame.phase, 'return');
-      post(P.witness);
-      assert.equal(frame.phase, 'delivered');
-    },
-  };
-}
+const playing = (mode, kit) => playQuatzaHunt(engine, mode, kit);
+
 function persistInputs(save, mode, input) {
   for (let offset = 0; offset < input.length; offset += 64) {
     const command = { type: 'advance', mode, expectedAttempts: 1, expectedTick: offset, input: input.slice(offset, offset + 64) };

@@ -47,6 +47,8 @@ import { normalizeSoloV67Campaign, soloV67MatchesSave } from "./systems/campaign
 import { normalizeSoloV68Campaign, soloV68MatchesSave } from "./systems/campaignSoloV68";
 import { normalizeSoloV69Campaign, soloV69MatchesSave } from "./systems/campaignSoloV69";
 import { normalizeSoloV70Campaign, soloV70MatchesSave } from "./systems/campaignSoloV70";
+import { inspectBloodedTempleV174, templeAvailableV174, templeHasFoundationV174, templeJournalSuccessorV174 } from "./systems/bloodedTempleV174";
+import { eliteRecognitionMatchesSave, inspectEliteRecognition, isEliteRecognitionSuccessor } from "./systems/eliteRecognitionV174";
 import { normalizeSoloV90Campaign, soloV90MatchesSave } from "./systems/campaignSoloV90";
 import { normalizeHomeworldRegionV68, canEnterHomeworldRegionV68 } from "./systems/homeworldRegionsV68";
 import { normalizeHomeworldPassageV67, canEnterHomeworldPassageV67 } from "./systems/homeworldPassageV67";
@@ -57,7 +59,7 @@ import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/game
 import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
 import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
 import { inspectSpaceRoutesV159 } from "./systems/spaceRoutesV159";
-import { inspectFirstInterstellarV173, firstInterstellarInFlightV173, firstInterstellarReceiptV173 } from "./systems/firstInterstellarV173";
+import { inspectFirstInterstellarV173, firstInterstellarInFlightV173 } from "./systems/firstInterstellarV173";
 import { shipReceiptV161 } from "./systems/shipReceiptV161";
 import { inspectClanShipDocking } from "./systems/clanShipDocking";
 import { evaluateClanShipAccess, evaluateClanShipOperationsCampaign, inspectClanShipOperations } from "./systems/clanShipOperations";
@@ -1309,6 +1311,12 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.elderAssemblyV168 === undefined ? {} : {
       elderAssemblyV168: inspectElderAssembly(source.elderAssemblyV168, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
+    ...(source.eliteRecognitionV174 === undefined ? {} : {
+      eliteRecognitionV174: inspectEliteRecognition(source.eliteRecognitionV174, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
+    ...(source.bloodedTempleV174 === undefined ? {} : {
+      bloodedTempleV174: inspectBloodedTempleV174(source.bloodedTempleV174, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     ...(source.elderWorkshopV172 === undefined ? {} : {
       elderWorkshopV172: inspectElderWorkshopV172(source.elderWorkshopV172, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1672,10 +1680,12 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const elderMentoring = inspectElderMentoring(value.elderMentoringV168, owner);
   const elderAssembly = inspectElderAssembly(value.elderAssemblyV168, owner);
   const elderWorkshop = inspectElderWorkshopV172(value.elderWorkshopV172, owner);
+  const bloodedTemple = inspectBloodedTempleV174(value.bloodedTempleV174, owner);
+  const eliteRecognition = inspectEliteRecognition(value.eliteRecognitionV174, owner);
   const eliteMastery = inspectEliteMastery(value.eliteMasteryV170, owner);
   const hullProject = inspectClanHullProject(value.clanHullProjectV171, owner);
   const quatza = inspectQuatzaRij(value.quatzaRij, owner);
-  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides, elderPassage, elderMentoring, elderAssembly, elderWorkshop, eliteMastery, hullProject, quatza]) {
+  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides, elderPassage, elderMentoring, elderAssembly, elderWorkshop, bloodedTemple, eliteMastery, eliteRecognition, hullProject, quatza]) {
     if (inspection.status === "future-version" || inspection.status === "invalid-save") {
       return { save: null, failure: inspection.status };
     }
@@ -2034,7 +2044,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       isRecord(value.soloV70.checkpoint) && Number(value.soloV70.checkpoint.version) > 1)) return { save: null, failure: "future-version" };
   if (isRecord(value.soloV90) && (Number(value.soloV90.version) > 1 ||
       isRecord(value.soloV90.checkpoint) && Number(value.soloV90.checkpoint.version) > 1)) return { save: null, failure: "future-version" };
-  if (!youthCampaignMatchesSave(value) || !soloV67MatchesSave(value) || !soloV68MatchesSave(value) || !soloV69MatchesSave(value) || !soloV70MatchesSave(value) || !soloV90MatchesSave(value)) return { save: null, failure: "invalid-save" };
+  if (!youthCampaignMatchesSave(value, bloodedTemple.view.stage === "complete") || !soloV67MatchesSave(value) || !soloV68MatchesSave(value) || !soloV69MatchesSave(value) || !soloV70MatchesSave(value) || !soloV90MatchesSave(value)) return { save: null, failure: "invalid-save" };
   if (value.homeworldRegionV68 !== undefined && value.homeworldRegionV68 !== null) {
     const region = normalizeHomeworldRegionV68(value.homeworldRegionV68);
     if (!region || !canEnterHomeworldRegionV68({ prologue: normalizeNurseryCampaign(value.prologue), homeworld: normalizeHomeworldProgress(value.homeworld),
@@ -2074,6 +2084,12 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (firstInterstellar.state && (shipReceiptV161(save).receipt?.instanceId !== firstInterstellar.state.hullInstanceId ||
       (save.spaceRoutesV159?.trip && firstInterstellarInFlightV173(firstInterstellar.state, campaignOwner))))
     return { save: null, failure: "invalid-save" };
+  const recordedBlooding = save.prologue?.chronicle.rites.some(rite => rite.id === "blooding-mark") === true;
+  if (recordedBlooding !== (bloodedTemple.view.stage === "complete") ||
+      (bloodedTemple.state && !templeHasFoundationV174(save))) {
+    return { save: null, failure: "invalid-save" };
+  }
+  if (eliteRecognition.state && !eliteRecognitionMatchesSave(save)) return { save: null, failure: "invalid-save" };
   if (elderWorkshop.state && !hasElderWorkshopFoundationV172(save)) {
     return { save: null, failure: "invalid-save" };
   }
@@ -2237,6 +2253,19 @@ function persistCampaign(
         ? !requestedAssembly || (JSON.stringify(previousAssembly) !== JSON.stringify(requestedAssembly) &&
           !isElderAssemblySuccessor(previousAssembly, requestedAssembly))
         : requestedAssembly && requestedAssembly.revision !== 1) {
+        return failed("save-conflict", previous);
+      }
+      const previousEliteRecognition = previous.eliteRecognitionV174;
+      const requestedEliteRecognition = requested.eliteRecognitionV174;
+      if (JSON.stringify(previousEliteRecognition ?? null) !== JSON.stringify(requestedEliteRecognition ?? null) &&
+          (!requestedEliteRecognition || !isEliteRecognitionSuccessor(previousEliteRecognition, requestedEliteRecognition))) {
+        return failed("save-conflict", previous);
+      }
+      const previousTemple = previous.bloodedTempleV174;
+      const requestedTemple = requested.bloodedTempleV174;
+      if (JSON.stringify(previousTemple ?? null) !== JSON.stringify(requestedTemple ?? null) &&
+          (!requestedTemple || !templeJournalSuccessorV174(previousTemple, requestedTemple) ||
+            !templeAvailableV174(previous))) {
         return failed("save-conflict", previous);
       }
       const previousWorkshop = previous.elderWorkshopV172;
