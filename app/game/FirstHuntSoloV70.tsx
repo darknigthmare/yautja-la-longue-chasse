@@ -7,6 +7,7 @@ import { controlActionShortcut } from "./controlBindingLabels";
 import { type YouthArtBank } from "./youthTrainingRendering";
 import { GameAudio } from "./sound";
 import YautjaTranslationV67 from "./YautjaTranslationV67";
+import { soloV70PurgeRemainingM017 } from "./systems/firstHuntSoloV70DepthsM017";
 import { drawFirstHuntSoloV70, loadTempleArtV70 } from "./firstHuntSoloV70Rendering";
 import { normalizeSoloV70State, stepSoloV70, soloV70NeedsImmediateCheckpoint, soloV70Objective, soloV70Room, SOLO_V70_DEPTHS_M017, soloV70DepthDoorOpeningM017, type SoloV70State, type SoloV70Receipt, soloV70ReconnectionPreview, soloV70NefDeploymentM017 } from "./systems/firstHuntSoloV70";
 import styles from "./FirstHuntSoloV70.module.css";
@@ -69,9 +70,9 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
   useEffect(() => { audioRef.current?.setMix({ master: props.masterVolume ?? 1, effects: props.effectsVolume ?? 1, music: 0, muted: props.soundEnabled === false || !!props.externallyPaused || paused || pendingUi || !!artError || !bank }); }, [props.masterVolume, props.effectsVolume, props.soundEnabled, props.externallyPaused, paused, pendingUi, artError, bank]);
   useEffect(() => {
     let active = true;
-    loadTempleArtV70().then(result => { if (active) { setBank(result); setArtError(""); } }).catch(error => { if (active) { setBank(null); setArtError(error instanceof Error ? error.message : "Images indisponibles."); } });
+    loadTempleArtV70(Boolean(initial?.depthsM017?.extension)).then(result => { if (active) { setBank(result); setArtError(""); } }).catch(error => { if (active) { setBank(null); setArtError(error instanceof Error ? error.message : "Images indisponibles."); } });
     return () => { active = false; };
-  }, [loadAttempt]);
+  }, [loadAttempt, initial]);
   useEffect(() => {
     if (props.externallyPaused || paused || pendingUi || artError) clear();
     if ((paused || pendingUi || artError || state?.phase === "complete") && !props.externallyPaused) panelRef.current?.querySelector<HTMLButtonElement>("button:not(:disabled)")?.focus();
@@ -154,7 +155,10 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
   const modal = !state || !!artError || paused || pendingUi && !!saveError || state?.phase === "complete" && !pendingUi;
   const notice = state?.failedAt !== null && state?.failedAt !== undefined ? "La triade attend au point sûr. Relâche puis presse Interaction pour réessayer sans perdre les preuves." : state?.phase === "drone" && state.drone.mode === "telegraph" ? "CHARGE ANNONCÉE — saute ou écarte-toi avant de frapper pendant le retrait." : state?.phase === "quarantine" && state.valveTimer ? `VANNE OUVERTE · ${(state.valveTimer / 60).toFixed(1)} s pour atteindre la seconde.` : "";
   const depthOpening = state && state.room === SOLO_V70_DEPTHS_M017.descent.room ? soloV70DepthDoorOpeningM017(state) : null;
+  const purgeRemaining = state && state.room === 14 ? soloV70PurgeRemainingM017(state) : 0;
+  const extension = state?.depthsM017?.extension;
   return <section className={styles.screen} data-solo-v70 data-solo-step={state?.phase ?? "invalid"}
+    data-temple-purge={extension && (extension.observations['vent-purge'] ? "purged" : purgeRemaining ? "open" : "closed")}
     data-temple-hunt-threshold={state?.depthsM017 && (state.depthsM017.huntThreshold ? "triad-confirmed" : "pending")}
     data-temple-depth-gate={state?.depthsM017 && (depthOpening ? "moving" : state.depthsM017.relay ? "open" : "sealed")}
     data-temple-energy={state?.riteAdmission && (state.riteAdmission.sealedEnergy ? "sealed" : "carried")}
@@ -162,6 +166,7 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
     <header className={styles.header} inert={modal && !props.externallyPaused ? true : undefined}><strong>CAMPAGNE · TEMPLE DES TROIS OMBRES · ACTE I</strong><div><button type="button" onClick={pause} disabled={!state || pendingUi}>Pause</button><button type="button" onClick={() => setTouchUi(v => !v)} aria-pressed={touchUi}>Tactile</button></div></header>
     <div className={styles.objective}><h1>{objective?.title ?? "Checkpoint non pris en charge"}</h1><p>{objective?.instruction ?? "La partie est conservée. Aucun état neuf ne remplace ce checkpoint."}</p>{state && <div className={styles.measure}><span>{soloV70Room(state.room).name}</span><span>{soloV70Room(state.room).level} · Configuration {state.configuration}</span><span>Secteurs {state.visited.filter(Boolean).length}/{state.visited.length}</span><span>Vitalité {state.health}/6</span>{state.riteAdmission?.sealedEnergy && <span>3 émetteurs scellés</span>}{state.milestones['belvedere-serviced'] && <span>Belvédère · {state.belvedereLever ? 'mécanismes' : 'hauteurs'}</span>}{state.riteAdmission?.threshold && <span>{state.depthsM017 ? 'Vanne · 3/3' : 'Triade au seuil · 3/3'}</span>}{state.depthsM017?.huntThreshold && <span>Seuil de chasse · 3/3</span>}{saving && <span role="status">Enregistrement…</span>}</div>}</div>
     {preview && <p data-temple-nef-countdown>Passerelles dans {Math.ceil(preview.remainingTicks / 60)} s.</p>}
+    {!!purgeRemaining && <p role="status" data-temple-purge-countdown>Conduite ouverte · {Math.ceil(purgeRemaining / 60)} s.</p>}
     {!!depthOpening && <p role="status" data-temple-depth-countdown>Rotation du volet · {(depthOpening / 60).toFixed(1)} s.</p>}
     {nefDeploying && <p role="status">Passerelles en mouvement. Commande haute verrouillée.</p>}
     <div className={styles.view} inert={modal && !props.externallyPaused ? true : undefined}><canvas ref={canvasRef} width={960} height={540} tabIndex={0} aria-label="Terrain jouable du Temple des Trois Ombres. Déplacement, saut, plaques de triade, mécanismes, portes et combat physique." />{spoken && !modal && <p className={styles.spoken}><YautjaTranslationV67 text={spoken} paused={paused || !!props.externallyPaused || pendingUi} reducedMotion={props.reducedMotion} /></p>}{notice && !modal && <p className={styles.notice} role="status">{notice}</p>}</div>
