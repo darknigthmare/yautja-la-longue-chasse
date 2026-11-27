@@ -4,6 +4,7 @@
 .report span { border-bottom: 1px solid #57777b; padding: .2rem .4rem; }
 .floor { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .25rem; }
 .floor > div { display: grid; place-items: center; min-height: 2.8rem; background: #254148; border: 1px solid #44666a; font-size: clamp(.65rem, 3vw, .9rem); }
+.floor > [data-passage=true] { outline: 1px dashed #adc9b2; outline-offset: -4px; }
 .floor > [data-exit=true] { border-color: #bf9564; }
 .floor > [data-mechanism=true] { background: #443728; }
 .floor > [data-threat=true] { background: #6b2b2e; }
