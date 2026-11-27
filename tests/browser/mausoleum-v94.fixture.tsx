@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import Mausoleum from '../../app/game/Mausoleum';
-import { defaultSave } from '../../app/game/save';
+import { defaultSave, loadSaveWithStatus, replaceSaveWithStatus, writeSaveWithStatus } from '../../app/game/save';
 import type { MausoleumProgress } from '../../app/game/systems/mausoleum';
 
 type Event = { kind: 'write' | 'refused' | 'sound' | 'exit'; value?: unknown };
@@ -21,10 +21,15 @@ const fresh = () => {
     'hunt.interact': ['KeyF'], 'hunt.pause': ['KeyP'],
   } } };
 };
+const auditSaveKey = 'mausoleum-archive-playwright';
+const loadCampaign = () => {
+  const result = loadSaveWithStatus(window.localStorage, auditSaveKey);
+  return result.loaded ? result.save : fresh();
+};
 const idle = () => {};
 const audit: Audit = { events: [], failWrites: false, reset: idle, suspend: idle, rerender: idle };
 function Fixture() {
-  const [save, setSave] = useState(fresh), [epoch, setEpoch] = useState(0);
+  const [save, setSave] = useState(loadCampaign), [epoch, setEpoch] = useState(0);
   const [preview, setPreview] = useState(false), [suspended, setSuspended] = useState(false);
   const [, update] = useState(0);
   useLayoutEffect(() => {
@@ -33,7 +38,9 @@ function Fixture() {
     const controls: Pick<Audit, 'reset' | 'suspend' | 'rerender'> = {
       reset(nextPreview = false) {
         audit.events = []; audit.failWrites = false;
-        setSave(fresh()); setPreview(nextPreview); setSuspended(false); setEpoch(value => value + 1);
+        const result = replaceSaveWithStatus(fresh(), window.localStorage, auditSaveKey);
+        if (!result.persisted) throw new Error('Fixture save initialization refused');
+        setSave(result.save); setPreview(nextPreview); setSuspended(false); setEpoch(value => value + 1);
       },
       suspend: setSuspended,
       rerender: () => update(value => value + 1),
@@ -46,9 +53,12 @@ function Fixture() {
     };
   }, []);
   const persist = (progress: MausoleumProgress) => {
-    audit.events.push({ kind: audit.failWrites ? 'refused' : 'write', value: progress });
-    if (audit.failWrites) return false;
-    setSave(current => ({ ...current, homeworld: { ...current.homeworld, mausoleum: progress } }));
+    const result = audit.failWrites ? null : writeSaveWithStatus(
+      { ...save, homeworld: { ...save.homeworld, mausoleum: progress } }, window.localStorage, auditSaveKey,
+    );
+    audit.events.push({ kind: result?.persisted ? 'write' : 'refused', value: progress });
+    if (!result?.persisted) return false;
+    setSave(result.save);
     return true;
   };
   return <Mausoleum key={epoch} save={preview ? null : save} suspended={suspended} source="menu"

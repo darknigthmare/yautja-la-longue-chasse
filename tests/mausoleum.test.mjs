@@ -125,3 +125,24 @@ test("UI explicitly distinguishes mask visualization from missing full cinematic
   assert.match(ui, /Retirer le masque et revenir/);
   assert.doesNotMatch(ui, /private-dlc\//);
 });
+
+test("the archival cabinet saves only readings made at its own alcove with the campaign access", () => {
+  const old = museum.recordMausoleumVisit(undefined, "predator", "consulted", access());
+  assert.equal(old.cabinetReadIds, undefined);
+  const at = { galleryId: "first", page: 0, actorX: museum.MAUSOLEUM_CABINET_X };
+  for (const place of [{ ...at, actorX: 720 }, { ...at, page: 1 }, { ...at, actorX: Infinity }, { ...at, galleryId: "great" }]) {
+    assert.equal(museum.recordMausoleumCabinetReading(old, "prey", place, access()), null);
+  }
+  assert.equal(museum.recordMausoleumCabinetReading(old, "prey", at, access("blooded", false, true)), null);
+  assert.equal(museum.recordMausoleumCabinetReading(old, "prey", at, access("unblooded")), null);
+  const read = museum.recordMausoleumCabinetReading(old, "prey", at, access());
+  assert.deepEqual(read.consultedIds, ["predator", "prey"]);
+  assert.deepEqual(read.cabinetReadIds, ["prey"]);
+  assert.deepEqual(museum.recordMausoleumCabinetReading(read, "prey", at, access()), read);
+  const save = hw.defaultHomeworldProgress();
+  save.mausoleum = read;
+  assert.deepEqual(hw.normalizeHomeworldProgress(JSON.parse(JSON.stringify(save))).mausoleum, read);
+  const cleaned = museum.normalizeMausoleumProgress({ ...read, cabinetReadIds: ["avp", "prey", "prey", "forged"] });
+  assert.deepEqual(cleaned.cabinetReadIds, ["prey"]);
+  assert.equal(museum.mausoleumDlcState("prey"), "unavailable");
+});
