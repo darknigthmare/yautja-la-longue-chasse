@@ -1,5 +1,5 @@
 import type { SaveGame } from "../types";
-import { nextYouthCityStopV172 } from "./youthCityErrandV172";
+import { youthCityAdmissionReadyM003 } from "./youthCityErrandV172";
 import type { YouthWorkshopOpeningV176 } from "./youthWorkshopV174";
 
 export const CHILDHOOD_POST_V175 = { roomId: "training-hall", pointId: "training-service" } as const;
@@ -207,7 +207,7 @@ export function childhoodViewV175(raw: unknown, ownerCreatedAt: string) {
 export function hasChildhoodFoundationV175(save: ChildhoodSave) {
   const errand = save.homeworld.youthCityErrandV172;
   return save.prologue?.status === "completed" && save.prologue.checkpoint.cohortV172?.steps === 7 &&
-    errand?.ownerCreatedAt === save.createdAt && !nextYouthCityStopV172(errand);
+    errand?.ownerCreatedAt === save.createdAt && youthCityAdmissionReadyM003(errand);
 }
 
 export function childhoodOptionsV175(view: ChildhoodViewV175) {
