@@ -2100,6 +2100,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
         crownReturned: cradle.state?.crownDelivered === true,
         adjutantVerified: adjutant?.phase === "appointed",
       })) return { save: null, failure: "invalid-save" };
+  if (save.originV151?.trainingYardO6 && Object.keys(save.originV151.trainingYardO6.houses).some(houseId =>
+      !save.residenceV149?.rights.includes(houseId))) return { save: null, failure: "invalid-save" };
   if (m035.state && !hasWarNarrativeCampaignR2M035(save)) return { save: null, failure: "invalid-save" };
   if (firstInterstellar.state && (shipReceiptV161(save).receipt?.instanceId !== firstInterstellar.state.hullInstanceId ||
       (save.spaceRoutesV159?.trip && firstInterstellarInFlightV173(firstInterstellar.state, campaignOwner))))

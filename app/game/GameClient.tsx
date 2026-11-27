@@ -12,6 +12,7 @@ import PathMissionPanelV158 from "./PathMissionPanelV158";
 import HouseMaterialsPanelV158 from "./HouseMaterialsPanelV158";
 import OriginEndingPanelV170, { type OriginEndingActionV170 } from "./OriginEndingPanelV170";
 import { confirmEndingV170, examineEndingV170 } from "./systems/originEndingsV170";
+import { applyTrainingYardO6, type TrainingYardOrderO6 } from "./systems/originTrainingYardO6";
 import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
 import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -3235,6 +3236,19 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       !canEnterHomeworldRegionV68(current, state.regionId).allowed || !canAdvanceHomeworldRegionV68(current.homeworldRegionV68, state)) return false;
     return persistSocialProgress({ homeworldRegionV68: state, ...settleResidenceLifeForRegionV150(current, state) });
   }, [entry.ownerCreatedAt, persistSocialProgress, settleResidenceLifeForRegionV150]);
+  const setupTrainingYardO6 = useCallback((order: TrainingYardOrderO6, region: HomeworldRegionStateV68): boolean => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "homeworld-region-v68" ||
+        settingsOpen || archiveRecoveryIssue || archiveTransferBusy || campaignSaveBusy || !gameFocusedV89 ||
+        !current.homeworldRegionV68 || !canAdvanceHomeworldRegionV68(current.homeworldRegionV68, region) ||
+        !canEnterHomeworldRegionV68(current, region.regionId).allowed || isFutureOriginV151(current.originV151)) return false;
+    const origin = applyTrainingYardO6(originOfSaveV151(current.originV151), current.residenceV149, region, {
+      rankId: current.profile.rankId, regionAllowed: regionId => canEnterHomeworldRegionV68(current, regionId).allowed,
+    }, order);
+    return !!origin && persistSocialProgress({ originV151: origin, homeworldRegionV68: region,
+      ...settleResidenceLifeForRegionV150(current, region) });
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt,
+    gameFocusedV89, persistSocialProgress, screen, settingsOpen, settleResidenceLifeForRegionV150]);
   const fieldHomeworldRegionV68 = useCallback((event: RegionFieldEventV68, state: HomeworldRegionStateV68): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || !current.homeworldRegionV68 ||
@@ -5409,7 +5423,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         <Suspense fallback={<DeferredGameScreen />}>
           <HomeworldRegionV68 contractsValue={save.homeworld.contractsV68} key={save.createdAt+":"+save.homeworldRegionV68.runId} save={save} gauntletVariantId={hunterGauntlet.equippedId} regionId={save.homeworldRegionV68.regionId} checkpoint={save.homeworldRegionV68}
             suspended={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy} onCheckpoint={checkpointHomeworldRegionV68}
-            onFieldEvent={fieldHomeworldRegionV68} onBibleSceneAction={bibleActionHomeworldV86} onReachCity={reachCityHomeworldRegionV68} onOpenSettings={() => setSettingsOpen(true)}
+            onFieldEvent={fieldHomeworldRegionV68} onTrainingYardO6={setupTrainingYardO6} onBibleSceneAction={bibleActionHomeworldV86} onReachCity={reachCityHomeworldRegionV68} onOpenSettings={() => setSettingsOpen(true)}
             residenceV149={(buildingId: string, disabled: boolean, threshold = false) => {
               const house = houseForBuildingV149(save.homeworldRegionV68!.regionId, buildingId);
               if (!house) return null;
