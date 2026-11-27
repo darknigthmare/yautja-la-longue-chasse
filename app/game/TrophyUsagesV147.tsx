@@ -14,6 +14,11 @@ import {
   trophyUsageV147, wornTrophyEffectsV147,
   type TrophyExchangeClanIdV147, type TrophyUsageActionV147, type TrophyUsageStationV147,
 } from "./systems/trophyUsagesV147";
+import { houseV149 } from "./systems/residenceV149";
+import {
+  trophyIntroductionChoices, trophyIntroductionMission, trophyIntroductionResidence,
+  type TrophyIntroductionActionR2M038,
+} from "./systems/trophyIntroductionR2M038";
 import styles from "./TrophyUsagesV147.module.css";
 
 export type TrophyUsageApplyV147 = (action: TrophyUsageActionV147, confirmation: string) => boolean;
@@ -25,8 +30,16 @@ export function TrophyUsageSummaryV147({ save }: { save: SaveGame }) {
   const exchanges = save.trophyUsagesV147?.exchanges ?? [];
   const leads = openedRevelationLeadsV147(save);
   const studied = Object.keys(save.trophyUsagesV147?.studies ?? {}).length;
+  const introduction = save.trophyUsagesV147?.introduction;
+  const origin = introduction?.stage === "complete" ? trophyIntroductionMission(introduction.missionId) : null;
   return (
     <section className={styles.summary} aria-label="Usages des trophées">
+      {introduction?.stage === "complete" && origin && <div data-trophy-introduction-receipt>
+        <h3>L’histoire dans le meuble</h3>
+        <p>Provenance consignée · {origin.planetName} · {origin.title}</p>
+        <p>Première installation · {introduction.place.site === "ship" ? "Salle des trophées du vaisseau"
+          : houseV149(introduction.place.houseId)?.title}</p>
+      </div>}
       <div>
         <h3>Prestige</h3>
         <p>
@@ -74,6 +87,58 @@ export function TrophyUsageSummaryV147({ save }: { save: SaveGame }) {
 
 const USAGE_LABELS = { reserve: "En réserve", displayed: "Exposé", worn: "Porté", traded: "Échangé" } as const;
 
+function TrophyIntroductionControls({ save, trophy, disabled, station, onApply }: {
+  save: SaveGame;
+  trophy: TrophyRecord;
+  disabled: boolean;
+  station?: TrophyUsageStationV147;
+  onApply: TrophyUsageApplyV147;
+}) {
+  const [feedback, setFeedback] = useState("");
+  const intro = save.trophyUsagesV147?.introduction;
+  if (intro?.stage === "complete" || (intro && intro.trophyId !== trophy.id)) return null;
+  const origin = trophyIntroductionMission(trophy.missionId);
+  if (!origin) return null;
+  const residence = trophyIntroductionResidence(save.residenceV149);
+  const button = (step: { step: "inspect" | "support" | "abandon" } |
+      { step: "label"; missionId: TrophyRecord["missionId"] } | { step: "install"; site: "ship" | "home" },
+    label: string, confirmation: string, key?: string) => {
+    const action: TrophyIntroductionActionR2M038 = { kind: "introduce", trophyId: trophy.id, ...step };
+    const check = checkTrophyUsageV147(save, action, station);
+    return <button key={key} type="button" data-trophy-introduction-action={step.step}
+      title={check.ok || step.step === "label" ? undefined : check.reason}
+      disabled={disabled || (!check.ok && step.step !== "label")} onClick={() => {
+        if (!check.ok) setFeedback(check.reason);
+        else if (onApply(action, confirmation)) setFeedback("");
+      }}>{label}</button>;
+  };
+  if (!intro) return button({ step: "inspect" }, "Inspecter la prise au berceau", "Prise inspectée. Règle le support à l’atelier.");
+  return <section data-trophy-introduction={intro.stage} className={styles.controls} aria-label="L’histoire dans le meuble">
+    <h4>L’histoire dans le meuble</h4>
+    {intro.stage === "support" && <>
+      <p>La condition de la prise figure sur sa fiche. Utilise le geste « Préparer » pour monter la prise, puis vérifie l’appui.</p>
+      {button({ step: "support" }, "Vérifier le support", "Support vérifié. Rapproche la prise du rapport de chasse.")}
+    </>}
+    {intro.stage === "provenance" && <>
+      <p>Rapport {origin.title} · {trophy.targetName} · {new Date(trophy.claimedAt).toLocaleDateString("fr-FR")}. Associe le monde à l’étiquette.</p>
+      <div className={styles.row} aria-label="Monde de provenance">
+        {trophyIntroductionChoices(trophy).map(mission => button({ step: "label", missionId: mission.id },
+          mission.planetName, "Étiquette de provenance consignée.", mission.id))}
+      </div>
+    </>}
+    {intro.stage === "mount" && <>
+      <p>L’étiquette {origin.planetName} est prête. Choisis un seul meuble pour cet original.</p>
+      <div className={styles.row}>
+        {button({ step: "install", site: "ship" }, "Installer au vaisseau", "L’histoire dans le meuble · prise installée dans le vaisseau.")}
+        {button({ step: "install", site: "home" }, residence ? "Installer · " + residence.title : "Installer dans la résidence",
+          "L’histoire dans le meuble · prise installée dans la résidence.")}
+      </div>
+    </>}
+    {feedback && <p role="status">{feedback}</p>}
+    {button({ step: "abandon" }, "Rendre la prise à la réserve", "Parcours interrompu. La prise reste dans la collection.")}
+  </section>;
+}
+
 export function TrophyUsageControlsV147({ save, trophy, disabled, station, onApply }: {
   save: SaveGame;
   trophy: TrophyRecord;
@@ -107,6 +172,7 @@ export function TrophyUsageControlsV147({ save, trophy, disabled, station, onApp
         {assignment?.usage === "displayed" ? ` · ${TROPHY_DISPLAY_SITE_LABELS_V147[assignment.site]}` : ""}
         {study ? ` · étudié${study.leadIds.length ? ` (${study.leadIds.join(", ")})` : ", aucune piste"}` : ""}
       </p>
+      <TrophyIntroductionControls save={save} trophy={trophy} disabled={disabled} station={station} onApply={onApply} />
       <div className={styles.row}>
         {TROPHY_DISPLAY_SITES_V147.map(site => (
           <React.Fragment key={site}>

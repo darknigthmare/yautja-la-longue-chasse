@@ -32,7 +32,8 @@ export function soloV68MatchesSave(v: unknown): boolean {
   const recognized = chronicle?.rites.some(r => r.id === "unguided-hunt-recognition") ?? false;
   if (v.soloV68 === undefined || v.soloV68 === null) return !recognized;
   const progress = normalizeSoloV68Campaign(v.soloV68);
-  return !!progress && !!prerequisites(v) && recognized === (progress.status === "completed") && !!chronicle && chronicle.rites.length === (progress.status === "completed" ? 2 : 1) && chronicle.rites[0].id === "nursery-recognition";
+  return !!progress && !!prerequisites(v) && recognized === (progress.status === "completed") && !!chronicle && (progress.status === "completed" ? chronicle.rites.length === 2 || chronicle.rites.some(rite => rite.id === "blooding-mark")
+      : chronicle.rites.length === 1) && chronicle.rites[0].id === "nursery-recognition";
 }
 export const canStartSoloV68 = (v: unknown) => record(v) && !!prerequisites(v) && soloV68MatchesSave(v);
 export function startSoloV68Campaign(save: SoloV68Save, now = new Date().toISOString()): SoloV68Save | null {
