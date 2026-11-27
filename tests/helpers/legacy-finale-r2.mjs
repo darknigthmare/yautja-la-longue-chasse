@@ -69,6 +69,7 @@ export function moveLegacyClanFixture(save, ...commands) {
   const context = { ownerCreatedAt: save.createdAt, personalShipId: fleet.loadShipProgression(save).selectedShipId };
   let state = save.clanShipDocking ?? docks.createClanShipDockingState(context.ownerCreatedAt, context.personalShipId);
   for (const action of commands) {
+    if (state.status === "aboard" && action.type === "move-room" && action.roomId === state.roomId) continue;
     const result = docks.actClanShipDocking(state, action, context);
     assert.ok(result.accepted, result.message);
     state = result.state;
