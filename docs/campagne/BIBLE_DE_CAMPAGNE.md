@@ -2127,7 +2127,7 @@ La triade, le Temple des Trois Ombres et le Quatza-Rij mènent au rang Blooded. 
 - **Choix :** route de hauteur ou route de mécanismes.
 - **Échec et reprise :** une séparation ouvre des mécanismes de regroupement, sans réinitialiser le temple.
 - **Sauvegarde :** `rite.templeConfiguration ; rite.templeThresholdReached`
-- **Existant :** V69 (Seuils du Premier Sang), V70 acte I : Marches des Trois, Vestibule des Serments, Tribune des Signes, Arsenal des Épreuves, Belvédère Fracturé, Puits des Contrepoids, Camp des Intrus, Nef des Anneaux, Vanne de Quarantaine. Les nouvelles campagnes à triade préparée parcourent six salles profondes, observent les œufs, réamorcent la purge et rejoignent le seuil du Quatza-Rij. L’éclosion, la reine, le transport du blessé et les chasses qualifiantes restent ouverts.
+- **Existant :** V69 (Seuils du Premier Sang), V70 acte I : Marches des Trois, Vestibule des Serments, Tribune des Signes, Arsenal des Épreuves, Belvédère Fracturé, Puits des Contrepoids, Camp des Intrus, Nef des Anneaux, Vanne de Quarantaine. Les nouvelles campagnes à triade préparée parcourent six salles profondes, observent les œufs, réamorcent la purge et rejoignent le seuil du Quatza-Rij. Dans les nouvelles configurations à quinze salles, l’éclosion de la Galerie des Coques déclenche le bond d’un facehugger. La triade doit consigner le confinement avant de poursuivre. La rencontre royale, le transport du blessé et les chasses qualifiantes restent ouverts.
 
 *Production (proposé)* — **Props :** râtelier où déposer les armes énergétiques, passerelles mobiles, volets pivotants, chambres à configuration variable, glyphes annonçant le prochain mouvement, mécanismes de regroupement (leviers à deux mains). **VFX :** poussière qui tombe avant chaque déplacement, glyphe qui s'allume 2 s avant, secousse de caméra. **SFX :** `stone-grind`, `gear-tick`, `door-stone-close`, `glyph-hum`. **Musique :** MUS-13.
 
@@ -3245,3 +3245,6 @@ Ordre de production proposé, par lots jouables :
 
 - **Achéron · Alerte du champ et sauvegardes** · Les tests chargent la constante de mission réelle à la reprise. L’approche distingue le flash proche et le silence des patrouilles hors de portée, tout en conservant les tests des autres mondes. La vibration et le champ d’énergie restent les signaux établis. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46070279658)
 
+## Suite des recettes · Éclosion au Temple des Trois Ombres
+
+Dans les nouvelles configurations à quinze salles, le relevé déclenche l’éclosion d’un œuf de la Galerie des Coques. Le joueur peut éviter le bond du facehugger puis fermer la grille avec Saar et Vek. Le passage aval attend le confinement. Le carnet conserve l’éclosion et la grille lors d’une reprise. La rencontre royale, le transport d’un blessé et les chasses qualifiantes restent ouverts. Les configurations à 9, 11 ou 15 salles déjà engagées conservent leur parcours. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46075305867)
