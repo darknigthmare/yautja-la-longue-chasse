@@ -309,10 +309,10 @@ async function field(){
     await capture('03a-native-active-hide-work');
     const info=page.getByRole('button',{name:'Infos',exact:true});
     assert.equal(await info.getAttribute('aria-expanded'),'false');
-    await info.click();
+    await info.press('Enter');
     assert.equal(await page.locator('[data-rite-work-details-v112]').isVisible(),true,'Detailed field facts remain available during work');
     assert.match(await page.locator('[data-rite-tool-preview-v112]').innerText(),afterFlay);
-    await info.click();
+    await info.press('Enter');
     await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().rites.specimensV112.length===1);
     state=await observation();
     assert.equal(state.rites.completedEventIds.filter(id=>id.startsWith('flay:')).length,1);
