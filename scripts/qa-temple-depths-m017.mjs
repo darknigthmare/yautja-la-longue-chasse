@@ -276,17 +276,41 @@ try {
       await waitRoyal('strike');
       await shot('06b-balayage-au-sol');
       await waitRoyal('recover');
-      assert.equal((await live()).health, health - 1, 'Missing a ground sweep costs exactly one health point.');
-      await waitRoyal('warning');
-      await hold(jump, 805);
-      assert.equal((await live()).player.y, 370, 'The hunter must actually land on the old cover platform.');
+      const aftermath = await live();
+      assert.equal(aftermath.health, health - 1, 'Missing a ground sweep costs exactly one health point.');
+      if (aftermath.failedAt !== null) {
+        await page.clock.runFor(Math.max(0, aftermath.failedAt + 90 - aftermath.tick) * 1000 / 60 + 70);
+        await canvas.focus();
+        await hold(interact, 140);
+        const restarted = await live();
+        assert.equal(restarted.failedAt, null);
+        assert.equal(restarted.attempts, aftermath.attempts + 1);
+        assert.equal(restarted.health, 6);
+        assert.equal(restarted.player.x, 125);
+        assert.deepEqual(await readRoyal(), announced);
+        report.royalRetry = { restoredAt: restarted.tick, health: restarted.health,
+          attempts: restarted.attempts, retainedAnnouncement: true };
+        await approach(305, 1, 4);
+        await waitRoyal('recover');
+        await approach(410, 1, 4);
+      }
+      const beforeJump = await live();
+      report.royalBeforeJump = {
+        health: beforeJump.health, failedAt: beforeJump.failedAt, hurtTimer: beforeJump.hurtTimer,
+        armed: beforeJump.inputArmed, player: beforeJump.player,
+      };
+      assert.equal(beforeJump.failedAt, null);
+      assert(beforeJump.inputArmed && beforeJump.health > 0);
+      assert.equal(beforeJump.player.y, 430);
+      await canvas.focus();
+      await leap(445, 370);
       await waitRoyal('evaded');
       const evaded = await readRoyal();
       assert.equal(evaded.startedAt, announced.startedAt);
       assert(Number.isSafeInteger(evaded.evade?.tick));
       assert(evaded.evade.tick > announced.startedAt + 144);
       assert(evaded.evade.y <= 386);
-      assert.equal((await live()).health, health - 1, 'The second sweep must be avoided by taking cover.');
+      assert.equal((await live()).health, beforeJump.health, 'The next sweep must be avoided by taking cover.');
       await shot('06c-esquive-en-hauteur');
       await page.reload();
       await boot();
