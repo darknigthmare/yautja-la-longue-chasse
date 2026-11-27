@@ -3,7 +3,9 @@ import type { OriginStateV151 } from './originsV151';
 import type { HomeworldRegionStateV68 } from './homeworldRegionsV68';
 import { TRAINING_YARD_ORDERS_O6, TRAINING_YARD_POSTS_O6, trainingYardViewO6 } from './originTrainingYardO6';
 import { houseV149, type ResidenceContextV149 } from './residenceV149';
-import { PRACTICE_POSTS_O6, isPracticeOrderO6, normalizePracticeO6, practiceViewO6, type PracticeOrderO6 } from './originPracticeO6';
+import { O6_FIRST_LESSON_EVENT, PRACTICE_POSTS_O6, firstLessonPlayedO6, isPracticeOrderO6, normalizePracticeO6,
+  practiceViewO6, type PracticeOrderO6 } from './originPracticeO6';
+import { completedEliteClanRites } from './eliteClanRitesV175';
 
 const support = TRAINING_YARD_POSTS_O6.support;
 const aisle = TRAINING_YARD_POSTS_O6.aisle;
@@ -64,7 +66,9 @@ type ContinuationSaveO6 = Pick<SaveGame, 'createdAt' | 'originV151' | 'prologue'
 function eliteWitnessed(save: ContinuationSaveO6) {
   return save.prologue?.status === 'completed' &&
     save.prologue.chronicle.rites.some(rite => rite.id === 'elite-recognition') &&
-    save.eliteRecognitionV174?.recognized === true && save.eliteRecognitionV174.ownerCreatedAt === save.createdAt;
+    save.prologue.chronicle.evidence.some(receipt => receipt.id === 'solitary-trial') &&
+    save.eliteRecognitionV174?.recognized === true && save.eliteRecognitionV174.ownerCreatedAt === save.createdAt &&
+    completedEliteClanRites(save.eliteRecognitionV174.trials);
 }
 
 function helpedYenaInCourtyard(save: ContinuationSaveO6) {
@@ -86,6 +90,36 @@ export function continuationMatchesSaveO6(save: ContinuationSaveO6): boolean {
     save.residenceV149?.rights.includes(record.houseId) === true &&
     origin.trainingYardO6?.houses[record.houseId]?.length === TRAINING_YARD_ORDERS_O6.length &&
     (!record.orders.includes('open-rack') || teachingChosen(origin));
+}
+
+type FirstLessonSaveO6 = ContinuationSaveO6 & Pick<SaveGame, 'legacyFinaleR2'>;
+
+function recordedFirstLessonO6(origin: OriginStateV151) {
+  return origin.ending?.endingRealized === true && origin.consumed.includes(O6_FIRST_LESSON_EVENT);
+}
+
+export function canReadFirstLessonO6(save: FirstLessonSaveO6): boolean {
+  const origin = save.originV151;
+  if (!origin || !teachingChosen(origin) || !recordedFirstLessonO6(origin)) return false;
+  if (firstLessonPlayedO6(origin.continuationO6?.practice)) return continuationMatchesSaveO6(save);
+  // Earlier imported finales already carry their own journal, owner and location.
+  const archive = save.legacyFinaleR2;
+  return archive?.ownerCreatedAt === save.createdAt && archive.endingId === 'O6-E1' &&
+    !!(archive.cohort?.events.length || archive.epilogue?.events.length);
+}
+
+export function firstLessonMatchesSaveO6(save: FirstLessonSaveO6): boolean {
+  const origin = save.originV151;
+  if (!origin) return true;
+  const played = firstLessonPlayedO6(origin.continuationO6?.practice);
+  const declared = origin.ending?.originEndingId === 'O6-E1' &&
+    (origin.ending.endingRealized || origin.consumed.includes(O6_FIRST_LESSON_EVENT));
+  if (!played && !declared) return true;
+  return canReadFirstLessonO6(save);
+}
+
+export function keepsFirstLessonO6(previous: FirstLessonSaveO6, next: FirstLessonSaveO6): boolean {
+  return !canReadFirstLessonO6(previous) || canReadFirstLessonO6(next);
 }
 
 export function keepsContinuationO6(previous: ContinuationRecordO6 | undefined, next: ContinuationRecordO6 | undefined): boolean {
@@ -132,10 +166,14 @@ export function applyContinuationO6(
   if (isPracticeOrderO6(order)) {
     const record = origin.continuationO6;
     if (!record || !view?.practice?.near || view.practice.next !== order) return null;
-    return {
-      origin: { ...origin, continuationO6: { ...record, version: 2, practice: [...(record.practice ?? []), order] } },
-      report: PRACTICE_POSTS_O6[order].report,
-    };
+    const practice = [...(record.practice ?? []), order];
+    const next = { ...origin, continuationO6: { ...record, version: 2 as const, practice } };
+    if (firstLessonPlayedO6(practice)) {
+      if (!origin.ending || !teachingChosen(origin) || !continuationMatchesSaveO6({ ...save, originV151: origin })) return null;
+      next.ending = { ...origin.ending, endingRealized: true };
+      if (!next.consumed.includes(O6_FIRST_LESSON_EVENT)) next.consumed = [...next.consumed, O6_FIRST_LESSON_EVENT];
+    }
+    return { origin: next, report: PRACTICE_POSTS_O6[order].report };
   }
   if (!view?.near || view.next !== order) return null;
   return {

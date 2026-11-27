@@ -11,7 +11,7 @@ import { isFutureResidenceV149, normalizeResidenceV149 } from "./systems/residen
 import { isFutureResidenceLifeV150, normalizeResidenceLifeV150 } from "./systems/residenceLifeV150";
 import { isFutureResidenceScenesV154, normalizeResidenceScenesV154 } from "./systems/residenceScenesV154";
 import { isFutureOriginV151, normalizeOriginV151 } from "./systems/originsV151";
-import { continuationMatchesSaveO6, keepsContinuationO6 } from "./systems/originContinuationO6";
+import { continuationMatchesSaveO6, firstLessonMatchesSaveO6, keepsContinuationO6, keepsFirstLessonO6 } from "./systems/originContinuationO6";
 import { keepsSoloReturnO6, soloReturnMatchesSaveO6 } from "./systems/originSoloReturnO6";
 import { firstShockMatchesSaveO6, keepsFirstShockO6 } from "./systems/originFirstShockO6";
 import { cohortRaceMatchesSaveO6, keepsCohortRaceO6 } from "./systems/originCohortRaceO6";
@@ -2130,6 +2130,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (isRecord(value.legacyFinaleR2) && Number(value.legacyFinaleR2.version) > 1) {
     return { save: null, failure: "future-version" };
   }
+  if (!firstLessonMatchesSaveO6(save)) return { save: null, failure: "invalid-save" };
   if (value.legacyFinaleR2 != null && (!save.legacyFinaleR2 || !legacyFinaleMatchesSaveR2(save))) {
     return { save: null, failure: "invalid-save" };
   }
@@ -2341,7 +2342,8 @@ function persistCampaign(
       if (!isWarpSurveySuccessorR2(previous.warpEpochsV165, requested.warpEpochsV165)) {
         return failed("save-conflict", previous);
       }
-      if (!legacyFinaleSuccessorR2(previous.legacyFinaleR2, requested.legacyFinaleR2)) {
+      if (!keepsFirstLessonO6(previous, requested) ||
+          !legacyFinaleSuccessorR2(previous.legacyFinaleR2, requested.legacyFinaleR2)) {
         return failed("save-conflict", previous);
       }
       const previousWarp = previous.warpEpochsV165?.commonRouteR2;

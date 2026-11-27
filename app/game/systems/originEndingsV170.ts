@@ -26,10 +26,9 @@
  *     de Ox.endingId, des rangs communs ».
  *
  * Choix du jeu « proposé » :
- *   - condition d'accès : l'épreuve solitaire commune (STATE5-07) n'existe pas
- *     dans le jeu (la preuve « solitary-trial » de la chronique n'est écrite par
- *     aucune scène) ; l'accès lit le rang Elite acquis du profil
- *     (`profile.rankId` elite ou elder) ;
+ *   - la sélection lit le rang Elite acquis du profil. La première leçon O6-E1
+ *     vérifie le reçu d’Elite et la preuve « solitary-trial » désormais produits
+ *     par le parcours de reconnaissance commun ;
  *   - l'état d'entrée « Ox-M28 résolue » n'est pas lu (les missions 28 de voie
  *     n'existent pas dans le jeu), comme en V158 ;
  *   - O5 : la ligne O5-M29 exige « EXP10 réussie et Mara.departureConfirmed=true » ;
@@ -41,11 +40,11 @@
  *   - confirmation en deux temps : « Examiner » présente la fin complète
  *     (condition, sens, séquence, conséquences) et enregistre la visite ;
  *     « Confirmer définitivement » écrit la fin une fois ;
- *   - Ox-M30 (réalisation) n'est pas jouée : `endingRealized` reste faux ;
+ *   - le parcours de la demeure ferme O6-M30 pour O6-E1 après le bilan de la
+ *     première leçon ; les autres réalisations restent indisponibles ;
  *   - STORY5-TR-Ox-06 : seul l'état « déverrouillée » est calculé (fin
- *     confirmée et rang Elder) ; la scène n'est pas jouée, aucun successeur
- *     volontaire n'existe dans le jeu, et le rang Ancient n'est pas un rang du
- *     profil.
+ *     confirmée et rang Elder) ; le départ du successeur prévu par cette
+ *     transmission facultative reste à jouer.
  */
 import source from "../data/originEndingsV170.json" with { type: "json" };
 import { rankAtLeastV149 } from "./residenceV149";
@@ -103,7 +102,7 @@ export function endingSelectionRefusalV170(state: OriginStateV151, context: Endi
   if (originEndingIdV170(state)) return "Ta fin de voie est déjà choisie ; aucune mission ne la remplace.";
   const unplayable = UNPLAYABLE[state.originId];
   if (unplayable) return unplayable;
-  // Proposé: the common solitary trial (STATE5-07) is not in the game; the Elite rank acquired stands for it.
+  // The common rank unlocks the selection; each playable ending validates its own prerequisites.
   if (!rankAtLeastV149(context.rankId, "elite")) return "Rang minimal : Elite. La fin de voie se choisit après la reconnaissance d’Elite.";
   if (!context.atWorkshop) return "La sélection se tient à l’atelier de trophées.";
   return null;
@@ -163,7 +162,7 @@ export interface TransmissionStatusV170 {
   rankReached: boolean;
   /** Ending locked at Elite and Elder reached. */
   unlocked: boolean;
-  /** Always false: no volunteer successor exists in the game. */
+  /** The successor's departure is a separate optional scene. */
   scenePlayable: false;
   note: string;
 }
@@ -174,6 +173,6 @@ export function transmissionStatusV170(state: OriginStateV151, rankId: string): 
   const unlocked = endingLocked && rankReached;
   const note = !endingLocked ? "Transmission verrouillée : la fin de voie n’est pas encore choisie."
     : !rankReached ? "Transmission verrouillée : rang Elder requis."
-    : "Transmission déverrouillée. La scène n’est pas jouable dans ce jeu : aucun successeur volontaire n’y existe.";
+    : "Transmission déverrouillée. Le départ du successeur reste à jouer.";
   return { transmission, endingLocked, rankReached, unlocked, scenePlayable: false, note };
 }

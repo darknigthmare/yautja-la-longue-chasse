@@ -166,7 +166,7 @@ export interface OriginEndingStateV151 {
   originEndingId: string | null;
   /** Ox.endingChoiceConfirmed : vrai seulement après confirmation explicite. */
   endingChoiceConfirmed: boolean;
-  /** Ox.endingRealized : vrai seulement après la clôture Ox-M30 jouée (non jouée dans ce jeu). */
+  /** Ox.endingRealized : vrai seulement après la clôture Ox-M30 jouée. */
   endingRealized: boolean;
 }
 const isRecord = (v: unknown): v is Record<string, unknown> => typeof v === "object" && v !== null && !Array.isArray(v);
