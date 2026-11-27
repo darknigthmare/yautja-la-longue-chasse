@@ -12,6 +12,12 @@ export const TRAINING_DRILL_ACTIONS = [
 export type TrainingDrillAction =
   (typeof TRAINING_DRILL_ACTIONS)[number];
 
+export interface TrainingDrillTraceAction {
+  action: TrainingDrillAction;
+  elapsedSeconds: number;
+}
+export type TrainingDrillTrace = readonly (TrainingDrillTraceAction | null)[];
+
 export type TrainingDrillStatus =
   | "ready"
   | "playing"

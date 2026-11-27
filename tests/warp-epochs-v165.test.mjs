@@ -215,7 +215,7 @@ test("rendu SSR du panneau et intégration au client", () => {
   const client = readFileSync(new URL("../app/game/GameClient.tsx", import.meta.url), "utf8");
   assert.match(client, /const WarpEpochsPanelV165 = React\.lazy\(\(\) => import\("\.\/WarpEpochsPanelV165"\)\)/);
   // V167 : l'écriture efface aussi l'ancien dossier tantalusV164 une fois repris dans l'état Warp.
-  assert.match(client, /persistSocialProgress\(clearLegacyTantalus \? \{ warpEpochsV165: state, tantalusV164: null \} : \{ warpEpochsV165: state \}\)/);
+  assert.match(client, /warpEpochsV165: state, \.\.\.\(clearLegacyTantalus \? \{ tantalusV164: null \} : \{\}\)/);
 });
 
 test("R2-M048 garde l’aide bornée et l’observation dans W-02 après le retour", () => {

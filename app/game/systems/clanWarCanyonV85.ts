@@ -1,5 +1,6 @@
 import { warCompositionV85, warUnitV85 } from "./clanWarV85Data";
 import { warXpGainV85 } from "./clanWarV85";
+import { CANYON_GEOMETRY_V85 } from "./clanWarCanyonPathM037";
 
 export type CanyonOrderKindV85 = "hold" | "move" | "observe" | "cover" | "secure" | "rescue" | "adopt" | "extract";
 export interface CanyonFormationV85 {
@@ -18,7 +19,7 @@ export interface CanyonSimulationV85 {
 export const CANYON_STORAGE_KEY_V85 = "yautja.clan-war.v85.canyon.free.v1";
 export const CANYON_PRESET_V85: Record<string, number> = { "RTS-U01": 1, "RTS-U02": 1, "RTS-U03": 1, "RTS-U13": 1, "RTS-U14": 1, "RTS-U15": 1, "RTS-U18": 1 };
 export const CANYON_POSTS_V85 = [34, 52, 72];
-export const CANYON_GEOMETRY_V85 = { start: 6, finish: 96, westRamp: 20, eastStair: 86, bridgeWest: 48, bridgeEast: 56 } as const;
+export { CANYON_GEOMETRY_V85 };
 export function createCanyonV85(id = "free-canyon-1"): CanyonSimulationV85 {
   return { version: 1, context: "free", id, phase: "preparation", approach: "unselected", battery: "unselected", heroSite: "approche", seconds: 0, formations: [], observedPosts: [], suppressedPosts: [], bridgeSecured: false, porterRescued: false, cargoDelivered: false, abandonedCrates: 0, transitRecognized: false, committed: false, messages: ["Exercice EX-CANYON. Rejoindre la maintenance, préparer le refuge puis gagner le poste de transition."] };
 }
