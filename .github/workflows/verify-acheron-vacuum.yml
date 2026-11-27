@@ -1,4 +1,4 @@
-name: Verify the new Acheron vacuum sensors
+name: Verify Acheron and play its new signals in Chromium
 on:
   push:
     branches: ['codex/verify-bible-acheron-vacuum-20261127']
@@ -14,9 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '0663352f5ae5ab44ab743ef041b65c8ce2bcfff9'
           persist-credentials: false
-          fetch-depth: 1
+          fetch-depth: 3
           filter: blob:none
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -31,6 +30,17 @@ jobs:
             /worker/
             /build/
             /docs/campagne/
+            /public/game/backgrounds/ruins-depth-v8.png
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/sprites/v62/heads/
+            /public/game/sprites/v62/masks/
+            /public/game/assets/v139/rig-gauntlets/
+            /public/game/assets/v47/
+            /public/game/sprites/v7/enemies/
+            /public/game/sprites/v8/ecology/
+            /public/game/planet-arrival/
+            /public/game/ship/
+            /public/game/homeworld/v47/
             /public/**/manifest.json
             /public/game/dialogues/v85/bible-dialogues-index.json
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
@@ -43,3 +53,15 @@ jobs:
         run: npm run typecheck
       - name: Lint changed sources and tests
         run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/HuntCanvas.tsx app/game/sound.ts app/game/systems/acheronVacuum.ts tests/acheron-vacuum.test.mjs
+
+      - name: Play scan and movement before the Guardian
+        run: |
+          node node_modules/playwright-core/cli.js install chromium
+          node scripts/qa-acheron-vacuum.mjs
+      - name: Save screenshots and tested receipts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: acheron-vacuum-chromium
+          path: outputs/qa-acheron-vacuum/
+          if-no-files-found: warn
