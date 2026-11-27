@@ -31,7 +31,7 @@ function rivalWitness(save: SaveGame): RivalWitnessO6 | null {
   return { success: race.success, choice: race.choice, memory: race.harek };
 }
 
-function beforeLaterProgressO6(save: SaveGame) {
+export function beforeLaterProgressO6(save: SaveGame) {
   const origin = save.originV151;
   return !save.youthTraining && !origin?.ending?.selectionVisited && !origin?.continuationO6 && !origin?.soloReturnO6 &&
     !Object.values(origin?.transitions ?? {}).some(record => record.resolved);
