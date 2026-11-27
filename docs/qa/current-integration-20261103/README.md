@@ -747,3 +747,19 @@ Le Mur des trophées est utilisé par une première recette. La session continue
 Le renfort n’est confirmé qu’après vérification de la reprise active et des deux os annoncés. La recette terrain prépare une dépouille et utilise ensuite les vrais gestes, le stockage de reprise et la caisse de retour. [Forge](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46064400081) · [Chasse](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46064534925)
 
 Oseris conserve la peau prélevée pendant le retour de branche en branche et la descente. Le survol de Sol commence depuis un relevé déjà extrait. [Oseris](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46064550184) · [Sol](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46063557634)
+
+## Parcours de fin de journée du 27 novembre 2026
+
+La recette commune compile et qualifie le commit applicatif `93dbeb98b050bf3458a57ec61f5f00283d73f8a0`. [CI commune](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46072686987)
+
+À Oseris, le scénario prépare les deux défaites. Il joue ensuite l’Omoplate végétalisée, le prélèvement de la peau, son dépôt et sa reprise sur la racine, les lianes et la descente. Chromium dessine le WebP original, refuse l’embarquement en plein saut et livre une seule fois deux trophées et la peau à la soute. [Oseris](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46071724217)
+
+À l’établi, Chromium sélectionne les deux lots, subit un refus en présence d’une archive de chasse illisible, forge les deux niveaux du Combistick et relit l’inventaire après chacun. [Forge](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46071135542)
+
+Les trois dépôts d’outils de M006 jouent la réponse originale dans le mix. Le rechargement conserve les dépôts sans rejouer le son. [M006](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46071387359)
+
+Les trois parcours M05 démarrent à l’emplacement de Saar après un reçu M04 construit par ses réducteurs. La garde supplémentaire protège les archives où un carnet actif serait associé à une fin de voie. [M05](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46071650062) · [Reprise](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46072524722)
+
+Deux parties jouent M060 au foyer après la leçon E1 et l’audience préparées par les réducteurs. L’une rejoint le croisement, l’autre revient au banc. Les deux résultats survivent au rechargement. [Départ du novice](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46071736802)
+
+Les anciennes suites de reprise V94 et de perception d’Achéron rejouent leurs assertions sur les données et règles du moteur. [Achéron](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46070279658)
