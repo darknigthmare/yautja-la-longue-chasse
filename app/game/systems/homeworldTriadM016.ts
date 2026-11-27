@@ -202,6 +202,7 @@ export function selectTriadCityRosterM016(prior: TriadCityM016 | undefined, owne
 
 /** A durable write may add one observed gesture at its actual room checkpoint. */
 export function triadCityMatchesWriteM016(previous: Pick<SaveGame, "homeworld" | "soloV90">, requested: Pick<SaveGame, "homeworld" | "soloV90">) {
+  if (previous.soloV90 && !requested.soloV90) return false;
   const before = previous.homeworld.triadCityM016, after = requested.homeworld.triadCityM016;
   if (!after) return !before;
   if (before && before.ownerCreatedAt !== after.ownerCreatedAt) return false;

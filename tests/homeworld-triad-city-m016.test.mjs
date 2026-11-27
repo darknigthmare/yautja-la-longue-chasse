@@ -166,6 +166,7 @@ test("M016 recruits Yena and Tov at real posts and carries their identities thro
 
   const forged = { ...battle.save, homeworld: { ...battle.save.homeworld, triadCityM016: original } };
   assert(!campaign.soloV90MatchesSave(forged));
+  assert(!model.triadCityMatchesWriteM016(battle.save, { ...battle.save, soloV90: undefined }));
   const incompatible = { ...battle.save, prologue: { ...battle.save.prologue, templeTriadFirstM017: true } };
   assert(!model.triadCityAlternateAllowedM016(incompatible));
   assert(!campaign.soloV90MatchesSave(incompatible));
