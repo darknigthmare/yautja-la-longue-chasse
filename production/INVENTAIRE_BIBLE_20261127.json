@@ -2,7 +2,7 @@
   "date": "2026-11-27",
   "depot": "darknigthmare/yautja-la-longue-chasse",
   "refMain": "fa89beeb2177dc5173a3a52c0528c0a11c2f7245",
-  "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/920e7dcadba0d5cc7f354e273fe2696105105916/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+  "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/f68fd9fa85403d793b785592e69c647c51c31e7f/docs/campagne/BIBLE_DE_CAMPAGNE.md",
   "methode": "Le relevé part de main fa89bee après #200. La colonne État sur main conserve ce relevé. Le lot #202 est indiqué dans Livraison et ses limites figurent dans chaque ligne. Le lot intégral compte 62 fiches raccordées et 6 partielles.",
   "statuts": {
     "RACCORDE": "Boucle de la fiche jouée et persistée, ou chapitre que la Bible accepte expressément comme équivalent. Les écarts signalés restent ouverts.",
@@ -111,7 +111,9 @@
         "pull/200",
         "actions/runs/46020515957/job/140578645112",
         "actions/runs/46022566024",
-        "pull/202"
+        "pull/202",
+        "actions/runs/46027266327",
+        "actions/runs/46027266327/artifacts/15211389768"
       ],
       "raccordProjete": "PARTIEL_MISSION"
     },
@@ -500,7 +502,8 @@
         "actions/runs/46007580696/artifacts/15201833660",
         "actions/runs/46025663830",
         "actions/runs/46024264447/artifacts/15211552676",
-        "pull/202"
+        "pull/202",
+        "actions/runs/46025663830/artifacts/15210794907"
       ],
       "raccordProjete": "PARTIEL_MISSION"
     },
@@ -1758,8 +1761,8 @@
       "preuvesLivraison": [
         "actions/runs/46008004131",
         "actions/runs/46008004131/artifacts/15201839182",
-        "actions/runs/46025889206",
-        "pull/202"
+        "pull/202",
+        "actions/runs/46028391431"
       ],
       "raccordProjete": "PARTIEL_MISSION"
     }
@@ -2137,14 +2140,14 @@
       "pr": 202,
       "titre": "Résoudre les PR Terre, Isles et Pit et poursuivre la Bible de campagne",
       "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/202",
-      "commit": "f840f9dfb0e0e621515df38ccc95b6431bf7aee9",
+      "commit": "1bdb1ec808db0d8715e18b3fe0c9abf00e9a823b",
       "etat": "open",
       "fusionnee": false,
       "observation": "Candidat réunissant les résolutions Git, les scènes et les registres des modes. L’ascendance des contributions d’origine est conservée dans le lot publiable.",
       "controles": [
         {
           "nom": "Tests, inventaire et démarrage du candidat exact",
-          "lien": "actions/runs/46026449432"
+          "lien": "actions/runs/46028491632"
         },
         {
           "nom": "Prélude des Masques Brisés, précision et catalogue",
@@ -2480,12 +2483,12 @@
       "VOISIN": 0,
       "NON_COMMENCE_OBSERVE": 0
     },
-    "refComposition": "f840f9dfb0e0e621515df38ccc95b6431bf7aee9",
+    "refComposition": "1bdb1ec808db0d8715e18b3fe0c9abf00e9a823b",
     "prComposition": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/202",
     "controlesGroupes": {
-      "ref": "10adff51887a265490e3dac161649063574d7e24",
-      "tests": "actions/runs/46026449432",
-      "build": "actions/runs/46026449432"
+      "ref": "aeb8674f20b02bed238045d9388e58b5b197cdff",
+      "tests": "actions/runs/46028491632",
+      "build": "actions/runs/46028491632"
     }
   },
   "refHistorique": "65361bb4e2071ce7b61b81f17ab812e7ba299335",
@@ -2558,8 +2561,8 @@
   },
   "sourceDocument": {
     "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
-    "commit": "920e7dcadba0d5cc7f354e273fe2696105105916",
-    "blob": "532ef7ce54cda934e934f7a9557e9adc71eca0a9"
+    "commit": "f68fd9fa85403d793b785592e69c647c51c31e7f",
+    "blob": "5f49f1fddb54d5b1b1297e3d0dc5868d5b8b34f1"
   },
   "historiqueLot197": {
     "refMain": "9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404",
