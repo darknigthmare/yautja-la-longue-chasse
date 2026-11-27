@@ -108,6 +108,23 @@ test("return score falls back to the ship loop after ending or becoming unavaila
   assert.deepEqual(started.map(row => row.id), ["cradle-return", "ship", "ship", "cradle-return", "ship"]);
   audio.dispose();
 });
+test("M006 score finishes once per open ceremony", async () => {
+  const audio = new GameAudio();
+  audio.unlock = async () => {};
+  audio.readyTime = () => 0;
+  const started = [];
+  audio.fileAudio.startLoop = async (_category, id, _fade, _ready, _unavailable, ended) => {
+    started.push({ id, ended });
+  };
+  await audio.setMusicContext("ceremony-m006");
+  started[0].ended();
+  await audio.setMusicContext("ceremony-m006");
+  assert.deepEqual(started.map(row => row.id), ["ceremony-m006"]);
+  await audio.setMusicContext("homeworld");
+  await audio.setMusicContext("ceremony-m006");
+  assert.deepEqual(started.map(row => row.id), ["ceremony-m006", "homeworld", "ceremony-m006"]);
+  audio.dispose();
+});
 test("blocked autoplay is distinct from missing and resumes after a later unlock", async () => {
   const h = harness([entry("music", "combat", [source("/audio/combat.wav")])], { block: true });
   try { h.files.unlock(); await tick(); await h.files.startLoop("music", "combat", 0); assert.equal(h.files.diagnostics()[0].state, "blocked"); h.unblock(); h.files.unlock(); await tick(); await tick(); assert.equal(h.files.activeLoop("music"), "combat"); assert.equal(h.files.diagnostics(true)[0].state, "disabled"); } finally { h.restore(); }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "4d38e7111350e58c00a67fa377a5efe4eea8b71305d1ccb80f1d19b1f84ccc98",
+  "version": "18ae4cf61c57602566de9bf0028c809ee24502d8f89173ce55b96a7201578956",
   "entries": [
     {
       "id": "ui",
@@ -535,6 +535,20 @@
       "fallback": "procedural"
     },
     {
+      "id": "ceremony-brazier",
+      "category": "ambience",
+      "folder": "ambience/ceremony-brazier",
+      "sources": [
+        {
+          "url": "/audio/ambience/ceremony-brazier/embers.wav?v=5c33ee612d22d190",
+          "mime": "audio/wav",
+          "bytes": 192044,
+          "sha256": "5c33ee612d22d190853174a450838a57f840eb3f0eebdc80f10b58c32a8f8b4b"
+        }
+      ],
+      "fallback": "procedural"
+    },
+    {
       "id": "menu",
       "category": "music",
       "folder": "music/menu",
@@ -607,6 +621,20 @@
           "mime": "audio/mpeg",
           "bytes": 540288,
           "sha256": "4ed54892d66a86a6bbeafaeed58ec759a1447a1ad3f87b26c59704a45f8f8291"
+        }
+      ],
+      "fallback": "silence"
+    },
+    {
+      "id": "ceremony-m006",
+      "category": "music",
+      "folder": "music/ceremony-m006",
+      "sources": [
+        {
+          "url": "/audio/music/ceremony-m006/mus-06-clan-ceremonie.ogg?v=6c04950f3712a1f3",
+          "mime": "audio/ogg",
+          "bytes": 323294,
+          "sha256": "6c04950f3712a1f34c89a242466ef4ac66e6bb1b7f0395cb09985f8f6c9e3035"
         }
       ],
       "fallback": "silence"

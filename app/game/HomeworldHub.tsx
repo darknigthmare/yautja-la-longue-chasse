@@ -52,7 +52,7 @@ import { youthCityStreetBearingM003, youthCityStreetContactM003, youthCityStreet
 import { YOUTH_CITY_HEARTH_M003, YOUTH_CITY_SAAR_LANDING_M003, youthCityCouncilGuideVisibleM003, youthCityPlaceActionM003 } from "./systems/youthCityPlacesM003";
 import HomeworldCivilianV72 from "./HomeworldCivilianV72";
 import { youthCampaignObjective, youthEquipmentSummary } from "./systems/youthCampaign";
-import HomeworldChildhoodV175 from "./HomeworldChildhoodV175";
+import HomeworldChildhoodV175, { type ChildhoodCeremonyAudioV175 } from "./HomeworldChildhoodV175";
 import { CHILDHOOD_POST_V175, actChildhoodV175, canEnterYouthAfterChildhoodV175, childhoodViewV175, hasChildhoodFoundationV175,
   type ChildhoodCommandV175, type ChildhoodCueV175 } from "./systems/homeworldChildhoodV175";
 import { getChronicleRank } from "./systems/clanChronicle";
@@ -183,6 +183,7 @@ export interface HomeworldHubProps {
   /** Available only at the physically reached mentor after the chief. */
   onYouthTraining?(): boolean;
   onChildhoodSound?(cue: ChildhoodCueV175): void;
+  onChildhoodCeremonyAudio?(state: ChildhoodCeremonyAudioV175): void;
   onSoloV66?(): boolean;
   onSoloV67?(): boolean;
   onRegionalLoopM014?(): boolean;
@@ -210,7 +211,7 @@ function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInt
   return original ? { ...original, ...target.position } : null;
 }
 
-export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onAdjutantAppointment, recoveryStorage, ephemeralSession = false, onService, onKennelActionV147, onReturnShip, onExpedition, onNotify, onYouthTraining, onChildhoodSound, onSoloV66, onSoloV67, onRegionalLoopM014, regionalLoopM014Admission, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
+export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onAdjutantAppointment, recoveryStorage, ephemeralSession = false, onService, onKennelActionV147, onReturnShip, onExpedition, onNotify, onYouthTraining, onChildhoodSound, onChildhoodCeremonyAudio, onSoloV66, onSoloV67, onRegionalLoopM014, regionalLoopM014Admission, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
   const [initialLocationV77] = useState(() => resolveCargoArrivalV108(save.homeworld.locationV77,save.createdAt,save.homeworld.cargoV108,{cartographyV104:save.homeworld.cartographyV104,cartographyV105:save.homeworld.cartographyV105,archiveV106:save.homeworld.archiveV106,archiveComparisonV107:save.homeworld.archiveComparisonV107}));
   const [upgradeRecoveryPendingV112,setUpgradeRecoveryPendingV112]=useState(()=>!initialLocationV77.migrationBackup&&homeworldGeometryRecoveryRequiredV112(save.homeworld.locationV77,save.createdAt,homeworldGeometryRecoveryLedgersV112(save.homeworld)));
   const upgradeRecoveryPendingRefV112=useRef(upgradeRecoveryPendingV112);
@@ -1965,7 +1966,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
             interior?.buildingId === CHILDHOOD_POST_V175.roomId && selectedPoint.id === CHILDHOOD_POST_V175.pointId &&
             <HomeworldChildhoodV175 view={childhoodView} message={childhoodMessageV175}
               paused={suspended || paused || inactive} mayEnter={!!onYouthTraining && youthChiefMet && youthMentorMet && childhoodAdmission}
-              trainingStarted={!!save.youthTraining}
+              trainingStarted={!!save.youthTraining} onCeremonyAudio={onChildhoodCeremonyAudio}
               onAction={submitChildhoodV175} onEnter={() => { if (atChildhoodPostV175()) enterYouthTraining(); }} />}
           {selectedNpc && <p><YautjaTranslationV67 text={`« ${youthWelcome && youthGreeting[selectedNpc.id] ? youthGreeting[selectedNpc.id] : selectedNpc.greeting} »`} paused={suspended || paused || inactive} /></p>}
           {youthWelcome && ["hunt-king", "terrace-instructor"].includes(selectedNpc?.id ?? "") && <div className={styles.notice} data-unblooded-conversation={selectedNpc?.id}><p>{youthObjective}</p><p>Les exercices se jouent dans le dojo, puis au camp. Le maître attend ton retour pour reconnaître chaque épreuve.</p></div>}

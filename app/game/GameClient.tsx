@@ -1563,11 +1563,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     save.settings.musicVolume,
   ]);
 
+  const [ceremonyAudio, setCeremonyAudio] = useState<import("./HomeworldChildhoodV175").ChildhoodCeremonyAudioV175>("outside");
+  const ceremonyOpen = screen === "homeworld" && ceremonyAudio !== "outside";
+  const ceremonyPaused = ceremonyOpen && ceremonyAudio === "paused";
+
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    const ambience: GameAudioBiome | null =
-      screen === "mission" && selectedMission
+    const ambience: GameAudioBiome | null = ceremonyOpen ? "ceremony-brazier"
+      : screen === "mission" && selectedMission
         ? (selectedMission.id === "ruins-ancient-guardian" ? null : selectedMission.biome)
         : screen === 'buried-cradle' ? 'fungal'
         : screen === "glass-desert-expedition" ? "desert"
@@ -1579,13 +1583,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     } else {
       audio.stopAmbience(0.55);
     }
-  }, [screen, selectedMission, shipStationOpen, hubLocation]);
+  }, [screen, selectedMission, shipStationOpen, hubLocation, ceremonyOpen]);
 
   const cradleReturnPending = save.buriedCradle?.status === "extracted" &&
     Boolean(save.buriedCradle.returnVisit) && save.buriedCradle.personalShipId === selectedShipId;
   const cradleReturnOnDeck = screen === "deck" && hubLocation === "deck" && cradleReturnPending;
   useEffect(() => {
     const context: GameMusicContext | null = cradleReturnOnDeck ? "cradle-return"
+      : ceremonyOpen ? "ceremony-m006"
       : settingsOpen || littleTrailListening || (screen === "buried-cradle-briefing" && cradleReturnPending) || screen === "planet-arrival" || screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90" ? null
       : screen === "title" ? "menu"
       : screen === "mission" ? huntMusicContext
@@ -1596,19 +1601,19 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       : hubLocation === "homeworld" && (screen === "homeworld" || shipStationOpen) ? "homeworld"
       : "ship";
     const apply = () => {
-      void audioRef.current?.setMusicContext(document.hidden && context !== "cradle-return" ? null : context, { fadeSeconds: 0.5 });
+      void audioRef.current?.setMusicContext(document.hidden && context !== "cradle-return" && context !== "ceremony-m006" ? null : context, { fadeSeconds: 0.5 });
     };
     apply();
     document.addEventListener("visibilitychange", apply);
     return () => document.removeEventListener("visibilitychange", apply);
-  }, [screen, settingsOpen, huntMusicContext, hubLocation, shipStationOpen, cradleReturnOnDeck, cradleReturnPending, littleTrailListening]);
+  }, [screen, settingsOpen, huntMusicContext, hubLocation, shipStationOpen, cradleReturnOnDeck, cradleReturnPending, littleTrailListening, ceremonyOpen]);
 
   useEffect(() => {
-    const apply = () => audioRef.current?.setPaused(settingsOpen || document.hidden);
+    const apply = () => audioRef.current?.setPaused(settingsOpen || ceremonyPaused || document.hidden);
     apply();
     document.addEventListener("visibilitychange", apply);
     return () => document.removeEventListener("visibilitychange", apply);
-  }, [settingsOpen]);
+  }, [settingsOpen, ceremonyPaused]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -5723,7 +5728,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 onAdjutantAppointment={(homeworld, prologue) => persistSocialProgress({ homeworld, prologue })}
                 onRegionalLoopM014={openRegionalLoopM014}
                 regionalLoopM014Admission={showRegionalLoopM014}
-                onService={openHomeworldService} onYouthTraining={enterYouthTraining} onChildhoodSound={playGameplaySound} onSoloV66={enterSoloV66} onSoloV67={enterSoloV67} onSoloV68={enterSoloV68} onSoloV69={enterSoloV69} onSoloV70={enterSoloV70} onSoloV90={enterSoloV90} onRegionV68={openHomeworldRegionV68} onMinorArcsV160={persistMinorArcsV160}
+                onService={openHomeworldService} onYouthTraining={enterYouthTraining} onChildhoodSound={playGameplaySound} onChildhoodCeremonyAudio={setCeremonyAudio} onSoloV66={enterSoloV66} onSoloV67={enterSoloV67} onSoloV68={enterSoloV68} onSoloV69={enterSoloV69} onSoloV70={enterSoloV70} onSoloV90={enterSoloV90} onRegionV68={openHomeworldRegionV68} onMinorArcsV160={persistMinorArcsV160}
                 onReturnShip={() => go("deck")} onExpedition={openHomeworldExpedition} onNotify={setToast} />
               </ClanPaletteContextV146.Provider>
             </div>
