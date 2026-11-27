@@ -120,12 +120,13 @@ try {
     await walk(net);
     await saw("Rendre l’arme d’exercice").click();
     await root.waitFor({ state: "hidden" });
-    await page.locator('[data-homeworld-hub="true"]').waitFor();
-    await page.getByRole("heading", { name: "La Cité des Premiers Trophées", exact: true }).waitFor();
+    await page.locator('[data-o6-m02][data-stage="choice"]').waitFor();
     const final = await disk();
     assert.deepEqual(final.prologue, commonPrologue.prologue);
     assert.deepEqual(final.inventory, commonPrologue.inventory);
     assert.equal(final.originV151.firstShockO6.journal.at(-1).order, "return-weapon");
+    assert.equal(final.originV151.cohortRaceO6.resolved, false);
+    assert.deepEqual(final.originV151.cohortRaceO6.round, []);
     report.routes.push({ route, mobile, receipts: final.originV151.firstShockO6 });
     await context.close();
   }

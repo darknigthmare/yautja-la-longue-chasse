@@ -81,7 +81,7 @@ function trace(events: readonly RoundEvent[]) {
     if (fell || helped) return null;
     if (event.type === "signal") {
       if (platform !== "upper" || signalled || !signalZone(event.x) ||
-          !Number.isInteger(event.elapsed) || event.elapsed < COHORT_SIGNAL_WAIT_O6 || event.elapsed > 120_000) return null;
+          !Number.isSafeInteger(event.elapsed) || event.elapsed < COHORT_SIGNAL_WAIT_O6) return null;
       x = event.x;
       signalled = true;
     } else if (event.type === "help") {
@@ -90,7 +90,7 @@ function trace(events: readonly RoundEvent[]) {
       helped = true;
     } else {
       if (platform === "finish") return null;
-      const result = simulateCohortJumpO6(platform, event, signalled);
+      const result = simulateCohortJumpO6(platform, event, signalled, false);
       if (!result || result.outcome === "same") return null;
       x = result.x;
       platform = result.platform;
@@ -190,7 +190,7 @@ function play(record: CohortRaceRecordO6, order: CohortRaceOrderO6) {
   }
   if (view.stage === "choice" || view.stage === "rally") return null;
   if (order.type === "jump") {
-    const flight = simulateCohortJumpO6(view.platform, order, view.signalled);
+    const flight = simulateCohortJumpO6(view.platform, order, view.signalled, false);
     if (!flight || flight.outcome === "same" || view.stage === "finish") return null;
     if (flight.outcome === "fall") {
       return derive({ ...record, lastFall: [...record.round, order], roundsLost: record.roundsLost + 1, round: [], rally: true });

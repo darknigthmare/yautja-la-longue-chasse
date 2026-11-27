@@ -24,7 +24,7 @@ export function walkCohortPlatformO6(platform: CohortPlatformO6, x: number, dire
   return Math.min(right, Math.max(left, x + direction * 12));
 }
 
-export function simulateCohortJumpO6(platform: CohortPlatformO6, jump: CohortJumpO6, signalled: boolean) {
+export function simulateCohortJumpO6(platform: CohortPlatformO6, jump: CohortJumpO6, signalled: boolean, drawFrames = true) {
   if (!atCohortPlatformO6(platform, jump.x) || (jump.direction !== 1 && jump.direction !== -1)) return null;
   const source = COHORT_COURSE_O6[platform];
   const target = nextPlatform[platform];
@@ -40,19 +40,19 @@ export function simulateCohortJumpO6(platform: CohortPlatformO6, jump: CohortJum
       const lands = (row: (typeof COHORT_COURSE_O6)[CohortPlatformO6]) =>
         beforeY <= row.y && y >= row.y && x >= row.left && x <= row.right;
       if (target && (target !== "finish" || signalled) && lands(COHORT_COURSE_O6[target])) {
-        frames.push({ x, y: COHORT_COURSE_O6[target].y });
+        if (drawFrames) frames.push({ x, y: COHORT_COURSE_O6[target].y });
         return { outcome: "next" as const, platform: target, x, frames };
       }
       if (lands(source)) {
-        frames.push({ x, y: source.y });
+        if (drawFrames) frames.push({ x, y: source.y });
         return { outcome: "same" as const, platform, x, frames };
       }
       if (y >= floor) {
-        frames.push({ x, y: floor });
+        if (drawFrames) frames.push({ x, y: floor });
         return { outcome: "fall" as const, platform: "start" as const, x, frames };
       }
     }
-    frames.push({ x, y });
+    if (drawFrames) frames.push({ x, y });
   }
   return null;
 }

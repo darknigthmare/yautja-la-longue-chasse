@@ -8,7 +8,7 @@ import { controlKeyCodeFromInput, type ControlBindings } from "./systems/control
 import { NURSERY_CONTROL_ACTIONS, sampleNurseryControls } from "./systems/nurseryControls";
 import { NURSERY_ARENA, type NurseryState } from "./systems/nurseryPrologue";
 import { COHORT_COURSE_O6, COHORT_SIGNAL_WAIT_O6, simulateCohortJumpO6, walkCohortPlatformO6,
-  type CohortDirectionO6, type CohortJumpO6 } from "./systems/cohortRaceCourseO6";
+  type CohortDirectionO6, type CohortJumpO6, type CohortPlatformO6 } from "./systems/cohortRaceCourseO6";
 import { atCohortHelpO6, atCohortRallyO6, cohortRaceViewO6, mayWaitCohortSignalO6,
   type CohortRaceOrderO6, type CohortRaceRecordO6 } from "./systems/originCohortRaceO6";
 import styles from "./OriginFirstShockO6.module.css";
@@ -38,6 +38,7 @@ function instructions(record: CohortRaceRecordO6, view: ReturnType<typeof cohort
 }
 
 type Flight = NonNullable<ReturnType<typeof simulateCohortJumpO6>>;
+type Launch = { order: CohortJumpO6; sim: Flight; platform: CohortPlatformO6; signalled: boolean };
 interface Props {
   checkpoint: NurseryState;
   record: CohortRaceRecordO6;
@@ -54,7 +55,7 @@ export default function OriginCohortRaceO6({ checkpoint, record, bindings, pause
   const [assetAttempt, setAssetAttempt] = useState(0);
   const view = cohortRaceViewO6(record);
   const [pose, setPose] = useState(() => ({ x: view.resumeX, facing: 1 as CohortDirectionO6, ticks: 0 }));
-  const [flight, setFlight] = useState<{ order: CohortJumpO6; sim: Flight } | null>(null);
+  const [flight, setFlight] = useState<Launch | null>(null);
   const [frame, setFrame] = useState<{ x: number; y: number } | null>(null);
   const { x, facing, ticks } = pose;
   const ready = bank !== null && !paused;
@@ -83,9 +84,10 @@ export default function OriginCohortRaceO6({ checkpoint, record, bindings, pause
       air: frame !== null }, reduced);
   }, [bank, checkpoint, facing, flight, frame, record, ticks, view.platform, x]);
 
-  const finishFlight = useEffectEvent((launch: { order: CohortJumpO6; sim: Flight }) => {
+  const finishFlight = useEffectEvent((launch: Launch) => {
     const { sim, order } = launch;
-    if (sim.outcome === "same" || onOrder(order)) {
+    if (launch.platform === view.platform && launch.signalled === view.signalled &&
+        (sim.outcome === "same" || onOrder(order))) {
       setPose(previous => ({ ...previous, x: sim.outcome === "fall" ? COHORT_COURSE_O6.start.left + 12 : sim.x,
         facing: order.direction, ticks: previous.ticks + 5 }));
     }
@@ -138,7 +140,7 @@ export default function OriginCohortRaceO6({ checkpoint, record, bindings, pause
     if (!canWalk || !canJump) return;
     const order = { type: "jump", x, direction } as const;
     const sim = simulateCohortJumpO6(view.platform, order, view.signalled);
-    if (sim) setFlight({ order, sim });
+    if (sim) setFlight({ order, sim, platform: view.platform, signalled: view.signalled });
   }, [canJump, canWalk, facing, view.platform, view.signalled, x]);
 
   useEffect(() => {
