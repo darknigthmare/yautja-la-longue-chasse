@@ -41,6 +41,8 @@ try {
     if (await campaign.isVisible()) await campaign.click();
     await page.locator('[data-menu-action="continue"]').click();
     await page.locator("[data-campaign-session]").waitFor({ timeout: 90000 });
+    const navigation = page.getByRole("button", { name: "Navigation", exact: true });
+    if (await navigation.isVisible()) await navigation.click();
     const dossier = page.getByRole("button", { name: /^Dossier de campagne(?: · (?:Quatza-Rij|rites))?$/ });
     await dossier.first().click({ timeout: 60000 });
     await page.locator("[data-open-blooded-temple-v174]").click();
