@@ -153,7 +153,7 @@ export default function OriginFirstShockO6({ record, checkpoint, bindings, pause
         <button type="button" aria-label="Marcher à droite" disabled={!ready} onClick={() => walk(1)}>→</button>
         {actions.map(action => <button type="button" key={action} disabled={!ready} onClick={() => interact(action)}>{labels[action]}</button>)}
       </div>
-      <p className={styles.keys}>Marcher {controlActionShortcut(bindings, NURSERY_CONTROL_ACTIONS.left)} / {controlActionShortcut(bindings, NURSERY_CONTROL_ACTIONS.right)}. Entrée confirme un geste unique à portée.</p>
+      <p className={styles.keys}>Marcher {controlActionShortcut(NURSERY_CONTROL_ACTIONS.left, bindings)} / {controlActionShortcut(NURSERY_CONTROL_ACTIONS.right, bindings)}. Entrée confirme un geste unique à portée.</p>
     </div>
   </article>;
 }

@@ -131,7 +131,11 @@ try {
   assert.deepEqual(report.errors, []);
   report.passed = true;
 } finally {
-  if (!report.passed && page && !page.isClosed()) await page.screenshot({ path: join(output, "failure.png") }).catch(() => {});
+  if (!report.passed && page && !page.isClosed()) {
+    report.screen = await page.locator("body").innerText({ timeout: 3000 }).then(text => text.slice(0, 2200), () => "");
+    console.log("O6_BROWSER_FAILURE", JSON.stringify({ errors: report.errors, screen: report.screen }));
+    await page.screenshot({ path: join(output, "failure.png") }).catch(() => {});
+  }
   await writeFile(join(output, "report.json"), JSON.stringify(report, null, 2) + "\n");
   await browser?.close();
   await server?.close();
