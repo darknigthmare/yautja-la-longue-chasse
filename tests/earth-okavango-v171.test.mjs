@@ -73,7 +73,7 @@ test("A durable write cannot queue orders twice or adopt a survey from another h
   assert.equal(saves.parseSaveImport(JSON.stringify({ ...save, earthV171: foreign })).failure, "invalid-save");
   const forged = { ...ground, orders: [...ground.orders, { kind: "scan" }] };
   assert.equal(inspect(forged, OWNER).status, "invalid");
-  assert.equal(saves.parseSaveImport(JSON.stringify({ ...save, earthV171: { ...ground, version: 3 } })).failure, "future-version");
+  assert.equal(saves.parseSaveImport(JSON.stringify({ ...save, earthV171: { ...ground, version: 4 } })).failure, "future-version");
 });
 
 function pilot(zone) {
@@ -137,4 +137,106 @@ test("A flooded position survives reload and can reach the substitute track with
   assert.equal(run.view().waterSteps, 8);
   const stored = saves.parseSaveImport(saves.exportSave({ ...save, earthV171: run.state() })).save;
   assert.equal(inspect(stored.earthV171, OWNER).view.tyreReading, "levee");
+});
+
+function completedSurvey(version) {
+  let state = { version, owner: OWNER, hullInstanceId: access(save, SHIP).hullInstanceId,
+    orders: [{ kind: "choose-zone", zone: "papyrus" }] };
+  const step = order => {
+    const result = act(state, order, access(save, SHIP));
+    assert(result.accepted, JSON.stringify(order) + " " + result.reason);
+    state = result.state;
+    return result.view;
+  };
+  const east = () => step(move("east"));
+  const west = () => step(move("west"));
+  const scan = () => step({ kind: "scan" });
+  step({ kind: "insert" });
+  step({ kind: "analyse" });
+  if (version === 1) {
+    east(); east(); scan(); east(); step(move("north")); east(); east(); scan();
+    east(); east(); step(move("south")); east(); scan(); step(move("north"));
+  } else {
+    for (let i = 0; i < 4; i += 1) east();
+    scan();
+    for (let i = 0; i < 4; i += 1) east();
+    scan(); step(move("north"));
+    west(); west(); west(); scan();
+  }
+  const remaining = version === 1 ? 8 : 5;
+  for (let i = 0; i < remaining; i += 1) west();
+  step(move("south"));
+  assert.equal(step({ kind: "extract" }).phase, "returned");
+  return state;
+}
+
+test("A post-survey orbit starts from historic V1 and V2 reports without replaying them in another regime", () => {
+  const admitted = access(save, SHIP);
+  assert.equal(act(null, { kind: "begin-orbit" }, admitted).accepted, false);
+  for (const version of [1, 2]) {
+    const before = completedSurvey(version);
+    const ground = inspect(before, OWNER).view;
+    const start = act(before, { kind: "begin-orbit" }, admitted);
+    assert(start.accepted);
+    assert.equal(start.state.version, 3);
+    assert.equal(start.state.surveyVersion, version);
+    assert.equal(start.view.waterSteps, ground.waterSteps);
+    assert.equal(start.view.tyreReading, ground.tyreReading);
+    assert.deepEqual(start.view.traces, ground.traces);
+    assert(earth.earthOkavangoSuccessorV171(before, start.state));
+    assert.equal(earth.earthOkavangoSuccessorV171(before, { ...start.state, surveyVersion: version === 1 ? 2 : 1 }), false);
+    assert.equal(inspect({ ...start.state, version }, OWNER).status, "invalid");
+    assert.equal(inspect({ ...start.state, surveyVersion: 9 }, OWNER).status, "invalid");
+    assert.equal(act(start.state, { kind: "scan-orbit", zone: "bank" }, admitted).accepted, false);
+    assert.equal(act(start.state, { kind: "finish-orbit" }, admitted).accepted, false);
+  }
+});
+
+test("The orbital approach lowers speed after a recoverable failure and logs a separate piloted return", () => {
+  const previous = completedSurvey(2);
+  const memory = new Map();
+  const storage = { getItem: key => memory.get(key) ?? null, setItem: (key, value) => memory.set(key, value), removeItem: key => memory.delete(key) };
+  assert(saves.writeSaveWithStatus({ ...save, earthV171: previous }, storage).persisted);
+  let state = previous;
+  const step = order => {
+    const result = act(state, order, access(save, SHIP));
+    assert(result.accepted, JSON.stringify(order) + " " + result.reason);
+    assert(saves.writeSaveWithStatus({ ...save, earthV171: result.state }, storage).persisted);
+    state = result.state;
+    return result.view;
+  };
+  const pilot = action => step({ kind: "pilot-orbit", action });
+  const denied = order => assert.equal(act(state, order, access(save, SHIP)).accepted, false);
+  assert.equal(step({ kind: "begin-orbit" }).orbit.flight.lateral, 3);
+  denied({ kind: "pilot-orbit", action: { type: "align" } });
+  for (let i = 0; i < 3; i += 1) pilot({ type: "lateral", direction: -1 });
+  pilot({ type: "align" });
+  for (let i = 0; i < 4; i += 1) pilot({ type: "advance" });
+  const failed = inspect(state, OWNER).view.orbit.flight;
+  assert.deepEqual([failed.distance, failed.speed, failed.setbacks], [30, 0, 1]);
+  state = saves.loadSaveWithStatus(storage).save.earthV171;
+  assert.deepEqual(inspect(state, OWNER).view.orbit.flight, failed);
+  pilot({ type: "speed", direction: 1 });
+  for (let i = 0; i < 3; i += 1) pilot({ type: "advance" });
+  denied({ kind: "pilot-orbit", action: { type: "berth" } });
+  assert.equal(step({ kind: "scan-orbit", zone: "bank" }).orbit.stage, "observed");
+  denied({ kind: "scan-orbit", zone: "papyrus" });
+  assert.equal(step({ kind: "return-orbit" }).orbit.flight.lateral, -3);
+  denied({ kind: "finish-orbit" });
+  for (let i = 0; i < 3; i += 1) pilot({ type: "lateral", direction: 1 });
+  pilot({ type: "align" });
+  pilot({ type: "speed", direction: -1 });
+  pilot({ type: "speed", direction: -1 });
+  for (let i = 0; i < 10; i += 1) pilot({ type: "advance" });
+  const returned = step({ kind: "finish-orbit" });
+  assert.equal(returned.phase, "returned");
+  assert.equal(returned.orbit.stage, "complete");
+  assert.equal(returned.orbit.scannedZone, "bank");
+  assert.deepEqual(returned.traces, inspect(previous, OWNER).view.traces);
+  denied({ kind: "begin-orbit" });
+  const latest = saves.loadSaveWithStatus(storage).save;
+  assert.deepEqual(latest.firstInterstellarV173, save.firstInterstellarV173);
+  assert.deepEqual(latest.trophies, save.trophies);
+  assert.deepEqual(latest.missionProgress, save.missionProgress);
+  assert.deepEqual(saves.parseSaveImport(saves.exportSave(latest)).save.earthV171, state);
 });

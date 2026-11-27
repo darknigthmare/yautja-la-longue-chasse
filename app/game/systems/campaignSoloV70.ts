@@ -1,8 +1,10 @@
 import type { SaveGame } from '../types';
+import { SOLO_V70_DEPTH_POSTS_M017, SOLO_V70_PURGE_M017,
+  soloV70DepthPostM017, soloV70DepthAppuisM017, soloV70PurgeRemainingM017 } from './firstHuntSoloV70DepthsM017';
 import { normalizeSoloV69Campaign, soloV69MatchesSave, templeRankKeepsEarlierTrialV174 } from './campaignSoloV69';
 import { normalizeSoloV90Campaign, soloV90AtTempleHandoffM017 } from './campaignSoloV90Progress';
 import { createSoloV70State, normalizeSoloV70State, SOLO_V70_PHASES, SOLO_V70_SIGNS, SOLO_V70_ENERGY_VAULT, SOLO_V70_LOAN_RACK, SOLO_V70_QUARANTINE_THRESHOLD,
-  SOLO_V70_DEPTHS_M017, soloV70DepthPlatesReadyM017, SOLO_V70_BELVEDERE, SOLO_V70_RECONNECTION, SOLO_V70_NEF_RELAY_M017, soloV70NefDeploymentM017, soloV70NefPlatesReadyM017, soloV70BelvederePlatesReady, soloV70Receipts, soloV70CampaignPortal, soloV70CanTravel,
+  SOLO_V70_DEPTHS_M017, soloV70DepthPlatesReadyM017, soloV70HuntTargetM017, SOLO_V70_BELVEDERE, SOLO_V70_RECONNECTION, SOLO_V70_NEF_RELAY_M017, soloV70NefDeploymentM017, soloV70NefPlatesReadyM017, soloV70BelvederePlatesReady, soloV70Receipts, soloV70CampaignPortal, soloV70CanTravel,
   soloV70TrioPresent, soloV70TrioObservation, type SoloV70State, type SoloV70Receipt } from './firstHuntSoloV70';
 export interface SoloV70Campaign { version:1;status:'active'|'completed';checkpoint:SoloV70State;receipts:SoloV70Receipt[];startedAt:string;completedAt:string|null }
 export type SoloV70Save=SaveGame&{soloV70?:SoloV70Campaign|null};
@@ -22,12 +24,13 @@ function prerequisites(v: unknown, completed = false): v is SoloV70Save {
 const journey=(v:Record<string,unknown>)=>record(v.homeworldRegionV68)&&v.homeworldRegionV68.status!=='at-city'||record(v.homeworldPassageV67)&&v.homeworldPassageV67.status!=='at-city'||record(v.gameReserveV66)&&v.gameReserveV66.status==='active';
 export function soloV70MatchesSave(v:unknown){if(!record(v))return false;if(v.soloV70===undefined||v.soloV70===null)return true;const progress=normalizeSoloV70Campaign(v.soloV70);return !!progress&&(!progress.checkpoint.depthsM017||record(v.prologue)&&v.prologue.templeTriadFirstM017===true)&&prerequisites(v, progress.status==='completed')&&!(progress.status==='active'&&journey(v));}
 export const canStartSoloV70=(v:unknown)=>record(v)&&prerequisites(v)&&soloV70MatchesSave(v)&&!journey(v);
-export function startSoloV70Campaign(save:SoloV70Save,now=new Date().toISOString()):SoloV70Save|null{if(!canStartSoloV70(save)||!iso(now))return null;return save.soloV70?save:{...save,soloV70:{version:1,status:'active',checkpoint:createSoloV70State(save.prologue?.templeTriadFirstM017 === true),receipts:[],startedAt:now,completedAt:null}};}
+export function startSoloV70Campaign(save:SoloV70Save,now=new Date().toISOString()):SoloV70Save|null{if(!canStartSoloV70(save)||!iso(now))return null;return save.soloV70?save:{...save,soloV70:{version:1,status:'active',checkpoint:createSoloV70State(save.prologue?.templeTriadFirstM017 === true ? 15 : 9),receipts:[],startedAt:now,completedAt:null}};}
 function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Receipt[],now:string):SoloV70Save|null{
  const before=normalizeSoloV70Campaign(save.soloV70),next=normalizeSoloV70State(raw);if(!before||!next||!canStartSoloV70(save)||!iso(now)||Date.parse(now)<Date.parse(before.startedAt))return null;
  const old=before.checkpoint,delta=next.tick-old.tick,op=SOLO_V70_PHASES.indexOf(old.phase),np=SOLO_V70_PHASES.indexOf(next.phase),receipts=soloV70Receipts(next),fresh=receipts.slice(before.receipts.length);
  if(delta<0||np<op||np>op+1||next.phaseStartedAt<old.phaseStartedAt||next.walked<old.walked||next.walked-old.walked>delta*3.5+.1||next.signs<old.signs||next.signs>old.signs+1||next.signals<old.signals||next.signals-old.signals>delta||next.configuration<old.configuration||next.configuration>old.configuration+1||next.liftTicks<old.liftTicks||next.liftTicks-old.liftTicks>Math.max(1,delta)||next.attempts<old.attempts||next.attempts>old.attempts+1||next.drone.hits<old.drone.hits||next.drone.hits>old.drone.hits+1||next.doorCrossings<old.doorCrossings||next.doorCrossings>old.doorCrossings+1||old.visited.some((x,i)=>x&&!next.visited[i])||before.receipts.some((r,i)=>!same(r,receipts[i]))||fresh.length>1||fresh.some(r=>!incoming.some(i=>same(i,r)))||incoming.some(i=>!receipts.some(r=>same(i,r)))||new Set(incoming.map(i=>i.id)).size!==incoming.length||before.status==='completed'&&!same(old,next))return null;
- const { descent, hunt } = SOLO_V70_DEPTHS_M017;
+ const { descent } = SOLO_V70_DEPTHS_M017;
+ const hunt = soloV70HuntTargetM017(next);
  const near=(room:number,x:number,y=430,t=40)=>next.room===room&&Math.abs(next.player.x-x)<t&&Math.abs(next.player.y-y)<.01;
  if (old.reconnectionVariant !== next.reconnectionVariant) return null;
  if (old.reconnectionVariant && next.phase === 'configuration' && next.scan > 0 &&
@@ -55,6 +58,32 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
  }
  const oldDepths = old.depthsM017, nextDepths = next.depthsM017;
  const startedRelay = !oldDepths?.relay && !!nextDepths?.relay;
+ const previousExtension = oldDepths?.extension, nextExtension = nextDepths?.extension;
+ const pendingPost = previousExtension && soloV70DepthPostM017(old.room);
+ if (Boolean(previousExtension) !== Boolean(nextExtension)) return null;
+ if (previousExtension && nextExtension) {
+   const { purgeStartedAt } = nextExtension;
+   if (purgeStartedAt !== previousExtension.purgeStartedAt &&
+       (pendingPost?.id !== 'vent-purge' || nextExtension.observations['vent-purge'] || soloV70PurgeRemainingM017(next) !== SOLO_V70_PURGE_M017.duration ||
+        !near(pendingPost.room, SOLO_V70_PURGE_M017.x, SOLO_V70_PURGE_M017.y, 38) ||
+        previousExtension.purgeStartedAt !== null && next.tick - previousExtension.purgeStartedAt < SOLO_V70_PURGE_M017.duration ||
+        old.phase !== 'return' || next.player.vx !== 0 || old.scan + delta < SOLO_V70_PURGE_M017.holdTicks ||
+        next.scan !== 0 || purgeStartedAt !== next.tick)) return null;
+   for (const post of SOLO_V70_DEPTH_POSTS_M017) {
+     const prior = previousExtension.observations[post.id], recorded = nextExtension.observations[post.id];
+     if (prior) {
+       if (!same(prior, recorded)) return null;
+     } else if (recorded) {
+       const party = post.plates
+         ? old.companionMode === 'plates' && soloV70DepthAppuisM017(next.companions.map(c => c.x), post.plates)
+         : soloV70TrioPresent(next);
+       if (!party || old.phase !== 'return' || old.room !== post.room || !near(post.room, post.x, post.y, 38) ||
+           next.player.vx !== 0 || old.scan + delta < post.holdTicks || next.scan !== 0 || next.companionMode !== 'follow' ||
+           post.id === 'vent-purge' && (!previousExtension.purgeStartedAt || next.tick - previousExtension.purgeStartedAt >= SOLO_V70_PURGE_M017.duration) ||
+           !same(recorded, soloV70TrioObservation(next, 3))) return null;
+     }
+   }
+ }
  if (Boolean(oldDepths) !== Boolean(nextDepths)) return null;
  if (oldDepths && nextDepths) {
    if (next.room >= descent.room && next.scan > (old.room === next.room ? old.scan : 0) + delta) return null;
@@ -66,7 +95,8 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
      !same(nextDepths.relay, soloV70TrioObservation(next, 3)))) return null;
    if (oldDepths.huntThreshold) {
      if (!same(oldDepths.huntThreshold, nextDepths.huntThreshold)) return null;
-   } else if (nextDepths.huntThreshold && (!oldDepths.relay || old.phase !== 'return' || old.room !== hunt.room ||
+   } else if (nextDepths.huntThreshold && (!oldDepths.relay ||
+     previousExtension && !previousExtension.observations['vent-purge'] || old.phase !== 'return' || old.room !== hunt.room ||
      !near(hunt.room, hunt.x, 430, 38) || next.player.vx !== 0 || old.scan + delta < hunt.holdTicks || next.scan !== 0 ||
      !soloV70TrioPresent(next) || !same(nextDepths.huntThreshold, soloV70TrioObservation(next, 3)))) return null;
  }
@@ -104,7 +134,9 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
    (next.signals > old.signals || Boolean(next.belvedereLever));
  const depthSignal = old.phase === 'return' && old.room === descent.room && oldDepths && !oldDepths.relay &&
    (next.signals > old.signals || startedRelay);
- if(next.companionMode!==old.companionMode&&!['oath','separation'].includes(old.phase)&&!belvedereSignal&&!depthSignal&&!fresh.length)return null;
+ const postSignal = old.phase === 'return' && pendingPost?.plates && !previousExtension?.observations[pendingPost.id] &&
+   (next.signals > old.signals || !!nextExtension?.observations[pendingPost.id]);
+ if(next.companionMode!==old.companionMode&&!['oath','separation'].includes(old.phase)&&!belvedereSignal&&!depthSignal&&!postSignal&&!fresh.length)return null;
  if(old.liftTicks===0&&next.liftTicks>0&&(old.phase!=='counterweight'||!near(5,540)))return null;
  if(next.valveTimer>Math.max(0,old.valveTimer-delta)&&(old.phase!=='quarantine'||!near(8,200)||next.valveTimer!==600))return null;
  const retry=next.attempts===old.attempts+1;if(retry){if(old.failedAt===null||next.tick-old.failedAt<90||old.health!==0||next.failedAt!==null||next.health!==6||!near(old.room,125)||next.acid.ttl!==0||next.drone.hits!==old.drone.hits||next.drone.hp!==(old.phase==='drone'?5:old.drone.hp))return null;}

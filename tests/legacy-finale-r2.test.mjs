@@ -7,6 +7,8 @@ test("the new cohort requires Ancient, a realized ending receipt, and the actual
   const notPlayed = legacyFixture({ realized: false });
   assert.equal(finale.advanceLegacyFinaleR2(notPlayed, houseSite, command).next, undefined);
   notPlayed.originV151.ending.endingRealized = true;
+  notPlayed.originV151.consumed.push("O6-M30:realized");
+  assert.equal(saves.parseSaveImport(JSON.stringify(notPlayed)).failure, "invalid-save");
   assert.equal(finale.advanceLegacyFinaleR2(notPlayed, houseSite, command).next, undefined);
   assert.equal(finale.advanceLegacyFinaleR2(legacyFixture({ ancient: false }), houseSite, command).next, undefined);
   const absent = legacyFixture();
@@ -320,7 +322,9 @@ test("a historical personal ship journal without an archive proof still retains 
   const old = { version: 1, ownerCreatedAt: save.createdAt, endingId: "O6-E1", epilogue: { site, events: [
     { kind: "belongings", at: 6 }, { kind: "relations", at: 11 }, { kind: "choose", choice: "depart", at: 16 }, { kind: "act", at: 2 },
   ] } };
-  const loaded = saves.parseSaveImport(saves.exportSave({ ...save, legacyFinaleR2: old }));
+  const previousOrigin = { ...save.originV151 };
+  delete previousOrigin.continuationO6;
+  const loaded = saves.parseSaveImport(saves.exportSave({ ...save, originV151: previousOrigin, legacyFinaleR2: old }));
   assert.ok(loaded.save, loaded.failure);
   assert.deepEqual(loaded.save.legacyFinaleR2, old);
   assert.equal(finale.legacyEpilogueViewR2(loaded.save.legacyFinaleR2, site).complete, true);

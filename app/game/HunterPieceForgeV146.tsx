@@ -24,10 +24,11 @@ import {
   type CustomizationModeV146, type CustomizationV146, type HunterMarkIdV146, type SkinPatternIdV146,
 } from "./systems/hunterCustomizationV146";
 import { normalizeHunterAppearanceV146 } from "./save";
-import { harvestInventoryForV112 } from "./systems/harvestInventoryV112";
+import { fieldToolWearPerUseV112, harvestInventoryForV112 } from "./systems/harvestInventoryV112";
 import {
   applyHunterForgeArmorUpgradeV146, applyHunterForgeRepairV146, forgeArmorRecipeV146,
-  forgeMaterialKeyV146, planForgeArmorMaterialsV146, planForgeRepairMaterialsV146,
+  applyHunterForgeToolReinforcementV146, FORGE_FIELD_TOOL_BONE_COST_V146, forgeMaterialKeyV146,
+  planForgeArmorMaterialsV146, planForgeRepairMaterialsV146, planForgeToolReinforcementV146,
 } from "./systems/hunterCustomizationPersistenceV146";
 import styles from "./HunterPieceForgeV146.module.css";
 
@@ -52,7 +53,7 @@ function earnedForSave(save: SaveGame) {
 export type CustomizationApplyV146 = (save: SaveGame) => SaveGame | null;
 
 export default function HunterPieceForgeV146({
-  save, disabled = false, allowEquipmentUpgrades = false, onPreview, onCommit,
+  save, disabled = false, allowEquipmentUpgrades = false, onPreview, onCommit, onToolUpgrade,
 }: {
   save: SaveGame;
   disabled?: boolean;
@@ -61,6 +62,7 @@ export default function HunterPieceForgeV146({
   onPreview?: (appearance: HunterAppearance | null) => void;
   /** Durable change; returns true once the campaign write is confirmed. */
   onCommit: (apply: CustomizationApplyV146, confirmation: string) => boolean;
+  onToolUpgrade?: (apply: CustomizationApplyV146, confirmation: string) => boolean;
 }) {
   const savedAppearance = useMemo(() => normalizeHunterAppearanceV146(save.appearance), [save.appearance]);
   const [tab, setTab] = useState<Tab>("pieces");
@@ -333,6 +335,9 @@ export default function HunterPieceForgeV146({
           </ul>
         </>}
       {allowEquipmentUpgrades && <ArmorForgeMaterialsV146 save={save} disabled={disabled} onCommit={commit} />}
+      {onToolUpgrade && <FieldToolForgeV112 save={save} disabled={disabled} onUpgrade={(apply, confirmation) => {
+        setMessage(onToolUpgrade(apply, confirmation) ? confirmation : "Renfort non enregistré. Vérifie la réserve et la chasse en cours.");
+      }} />}
       <p className={styles.note}>Prépare puis archive les prises de chasse pour remplir la réserve de la forge.</p>
     </div>}
 
@@ -404,6 +409,46 @@ function ArmorForgeMaterialsV146({ save, disabled, onCommit }: {
       onClick={() => payment && onCommit(current => applyHunterForgeArmorUpgradeV146(current, payment.quote),
         `${name} améliorée au niveau ${recipe.nextLevel}.`)}>
       Forger le niveau {recipe.nextLevel}
+    </button>
+  </fieldset>;
+}
+
+function FieldToolForgeV112({ save, disabled, onUpgrade }: {
+  save: SaveGame;
+  disabled: boolean;
+  onUpgrade: (apply: CustomizationApplyV146, confirmation: string) => void;
+}) {
+  const [material, setMaterial] = useState("");
+  const harvest = harvestInventoryForV112(save.inventory);
+  if (!save.inventory.fieldToolIds.includes("flaying-tool")) return null;
+  if (harvest.reinforcedTool) return <p data-forge-tool-reinforced="true">
+    Outil de dépeçage renforcé · {fieldToolWearPerUseV112(true)} points d’usure par geste achevé.
+  </p>;
+  const stock = harvest.archive.filter(entry => entry.partId === "bone");
+  const payment = material ? planForgeToolReinforcementV146(save, material) : null;
+  return <fieldset className={styles.group}>
+    <legend>Renforcer l’outil de dépeçage</legend>
+    <p className={styles.note}>Usure par geste achevé {fieldToolWearPerUseV112()} → {fieldToolWearPerUseV112(true)} points.</p>
+    <label className={styles.repairSources}>
+      Os secondaire · {FORGE_FIELD_TOOL_BONE_COST_V146} unités
+      <select data-forge-tool-material value={material} disabled={disabled || !stock.length}
+        onChange={event => setMaterial(event.target.value)}>
+        <option value="">Choisir un lot</option>
+        {material && !stock.some(entry => forgeMaterialKeyV146(entry) === material) &&
+          <option value={material} disabled>Lot épuisé</option>}
+        {stock.map(entry => <option key={forgeMaterialKeyV146(entry)} value={forgeMaterialKeyV146(entry)}
+          disabled={entry.count < FORGE_FIELD_TOOL_BONE_COST_V146}>
+          {forgeMaterialLabelV146(entry)}
+        </option>)}
+      </select>
+    </label>
+    <small className={styles.note} aria-live="polite" data-forge-tool-quote>
+      {payment ? payment.quote.units.map(entry => entry.consumed + " × " + entry.label).join(" · ")
+        : "Choisis un lot contenant assez d’os."}
+    </small>
+    <button type="button" data-forge-tool-apply disabled={disabled || !payment}
+      onClick={() => payment && onUpgrade(current => applyHunterForgeToolReinforcementV146(current, payment.quote), "Outil de dépeçage renforcé.")}>
+      Poser le renfort
     </button>
   </fieldset>;
 }

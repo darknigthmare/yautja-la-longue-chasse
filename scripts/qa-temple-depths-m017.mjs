@@ -13,10 +13,12 @@ const modules = homeworldSceneSsrV78();
 const saves = modules.load('app/game/save.ts');
 const { YOUTH_CONTROL_ACTIONS: actions } = modules.load('app/game/systems/youthControls.ts');
 const { descent, hunt } = thresholdsTemple.SOLO_V70_DEPTHS_M017;
+const expanded = process.argv.includes('--complete-depths');
+const posts = thresholdsTemple.SOLO_V70_DEPTH_POSTS_M017;
 const previous = thresholdsCampaignRoute().save;
 const origin = { ...previous, prologue: { ...previous.prologue, templeTriadFirstM017: true } };
 const waiting = formationCampaignRoute({ origin, stop: 'observe' }).save;
-const seed = templeCampaignRoute({ origin: waiting, stop: 'return' }).save;
+const seed = templeCampaignRoute({ origin: waiting, stop: 'return', archiveRoomCount: expanded ? undefined : 11 }).save;
 seed.settings.masterVolume = 0;
 assert.equal(saves.parseSaveImport(saves.exportSave(seed)).failure, null);
 const key = saves.SAVE_STORAGE_KEY;
@@ -89,6 +91,19 @@ try {
     assert.equal(state.player.y, height, JSON.stringify(state.player));
     assert.equal(state.player.vy, 0);
   }
+  async function crossTo(room, direction = 1) {
+    await approach(direction > 0 ? 1040 : 80, direction);
+    await page.clock.runFor(350);
+    await hold(interact, 130);
+    assert.equal((await saved()).soloV70.checkpoint.room, room, 'Physical portal to ' + room);
+  }
+  async function observe(post) {
+    await page.clock.runFor(450);
+    await hold(interact, 1050);
+    const proof = (await saved()).soloV70.checkpoint.depthsM017.extension.observations[post.id];
+    assert(proof, post.id + ': ' + JSON.stringify(await live()));
+    return proof;
+  }
   await page.clock.install();
   await page.goto('http://127.0.0.1:4270');
   await boot();
@@ -128,19 +143,68 @@ try {
   await approach(hunt.x, 1);
   await page.clock.runFor(350);
   await hold(interact, 920);
+  if (expanded) {
+    const [eggs, resin, screen, royal, vent] = posts;
+    assert((await saved()).soloV70.checkpoint.depthsM017.extension.observations[eggs.id]);
+    assert.equal((await saved()).soloV70.checkpoint.depthsM017.huntThreshold, null);
+    await shot('03-galerie-des-oeufs');
+
+    await crossTo(resin.room);
+    await hold(signal, 80);
+    await approach(378, 1, 4);
+    await leap(500, 372);
+    await leap(resin.x, resin.y);
+    await observe(resin);
+    await shot('04-ancre');
+
+    await crossTo(screen.room);
+    await hold(signal, 80);
+    await approach(screen.x, 1);
+    await observe(screen);
+    await shot('05-grille');
+
+    await crossTo(royal.room);
+    await approach(321, 1, 4);
+    await leap(472, 370);
+    await leap(royal.x, royal.y);
+    await observe(royal);
+    await shot('06-verrou-royal');
+
+    await crossTo(vent.room);
+    const { x, duration } = thresholdsTemple.SOLO_V70_PURGE_M017;
+    await approach(x, 1);
+    await hold(interact, 655);
+    const first = (await saved()).soloV70.checkpoint.depthsM017.extension.purgeStartedAt;
+    assert(first);
+    await shot('07-conduite-ouverte');
+    await page.reload();
+    await boot();
+    assert.equal((await saved()).soloV70.checkpoint.depthsM017.extension.purgeStartedAt, first);
+    await page.clock.runFor((duration + 25) * 1000 / 60);
+    assert.equal(await page.locator('[data-solo-v70]').getAttribute('data-temple-purge'), 'closed');
+    await hold(interact, 660);
+    const second = (await saved()).soloV70.checkpoint.depthsM017.extension.purgeStartedAt;
+    assert(second >= first + duration);
+    await approach(vent.x, 1);
+    await observe(vent);
+    assert.equal(await page.locator('[data-solo-v70]').getAttribute('data-temple-purge'), 'purged');
+    await approach(thresholdsTemple.SOLO_V70_FINAL_THRESHOLD_M017.x, 1);
+    await hold(interact, 1000);
+    report.purgeTries = [first, second];
+  }
   const threshold = (await saved()).soloV70.checkpoint.depthsM017.huntThreshold;
   assert(threshold);
   assert(threshold.tick >= relay.tick + descent.openingTicks + hunt.holdTicks);
   assert.equal(await page.locator('[data-solo-v70]').getAttribute('data-temple-hunt-threshold'), 'triad-confirmed');
-  await shot('03-seuil-de-chasse');
+  await shot(expanded ? '08-seuil-de-chasse' : '03-seuil-de-chasse');
   await page.reload();
   await boot();
   assert.deepEqual((await saved()).soloV70.checkpoint.depthsM017.huntThreshold, threshold);
-  await approach(80, -1);
-  await hold(interact, 120);
-  assert.equal((await saved()).soloV70.checkpoint.room, descent.room);
-  await approach(80, -1);
-  await hold(interact, 120);
+  if (expanded) {
+    for (const room of [13, 12, 11, 10]) await crossTo(room, -1);
+  }
+  await crossTo(descent.room, -1);
+  await crossTo(thresholdsTemple.SOLO_V70_QUARANTINE_THRESHOLD.room, -1);
   const backAtVanne = await saved();
   assert.equal(backAtVanne.soloV70.checkpoint.room, thresholdsTemple.SOLO_V70_QUARANTINE_THRESHOLD.room);
   assert.deepEqual(backAtVanne.soloV90, waiting.soloV90);
@@ -150,6 +214,7 @@ try {
   assert.deepEqual(report.errors, []);
   report.relay = relay;
   report.threshold = threshold;
+  if (expanded) report.deepObservations = backAtVanne.soloV70.checkpoint.depthsM017.extension.observations;
   report.passed = true;
 } catch (error) {
   report.errors.push(error.stack);

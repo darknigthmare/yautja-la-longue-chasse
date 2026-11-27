@@ -48,7 +48,9 @@ export default function OriginEndingPanelV170({ origin, rankId, atWorkshop, disa
           <p className={styles.note}>Choix définitif ; il ne change aucun rang.</p>
         </div>
         <p className={styles.note} data-origin-ending-realized={state.ending?.endingRealized ? "true" : "false"}>
-          Réalisation ({realization.id} « {realization.title} ») : non jouée dans ce jeu.
+          {realization.id} · {realization.title} · {state.ending?.endingRealized ? "Clôture consignée" :
+            chosenId === "O6-E1" ? "Rejoins la cour de ta demeure aménagée après la reconnaissance d’Elite. Le novice peut y choisir son outil et tenter son premier exercice." :
+              "Clôture indisponible"}
         </p>
         <p className={styles.note} data-origin-transmission={transmission.transmission.id} data-origin-transmission-unlocked={transmission.unlocked ? "true" : "false"}>
           {transmission.transmission.title} : {transmission.note}

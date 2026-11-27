@@ -16,7 +16,7 @@ test("old inventory migrates empty without granting a field tool",()=>{
   assert.deepEqual(depot(n),api.emptyHarvestInventoryV112());
 });
 for(const mutation of [
-  x=>x.version=2,x=>x.toolCondition=NaN,x=>x.toolCondition=101,x=>x.toolCondition=4.5,
+  x=>x.version=2,x=>x.toolCondition=NaN,x=>x.toolCondition=101,x=>x.toolCondition=4.5,x=>x.reinforcedTool=false,
   x=>x.specimens=[{...item(),massKg:Infinity}],x=>x.specimens=[{...item(),stage:"invented"}],
   x=>x.specimens=[item(),item()],x=>x.jobs=[{id:"invented"}],x=>x.toolUseIds=["x","x"],
   x=>x.settledEncounterRuns={"unknown":0},x=>x.archive=[{speciesId:"x",partId:"bone",label:"Bone",count:0,qualityTotal:0}],
