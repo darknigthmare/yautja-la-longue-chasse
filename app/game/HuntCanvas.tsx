@@ -1030,6 +1030,7 @@ function isHeldKeyboardAction(action: Action): boolean {
 const DEFAULT_HUNT_ACCESSIBILITY_CANVAS_V112 = normalizeHuntAccessibilityV112(undefined);
 
 const EMPTY_UI: UiSnapshot = {
+  acheronSignal: null,
   canopyNavigationV112: null,
   houndV147: null,
   podRecovery: null,

@@ -8,7 +8,7 @@ import { createServer } from "vite";
 
 const root = process.cwd();
 const canvasPath = "app/game/HuntCanvas.tsx";
-const revision = "0663352f5ae5ab44ab743ef041b65c8ce2bcfff9";
+const revision = "2efeb34cf04a6d3062c4cdb2d6192d12521801ee";
 const product = await readFile(canvasPath, "utf8");
 assert.equal(product, execFileSync("git", ["show", revision + ":" + canvasPath], { encoding: "utf8" }));
 const setup = `
@@ -52,7 +52,7 @@ const mission = MISSIONS.find(item => item.id === "ruins-ancient-guardian");
 if (!mission) throw Error("Missing Achéron mission");
 createRoot(document.getElementById("root")).render(
   <HuntCanvas mission={mission} encounterRun={1} loadout={save.loadout} inventory={save.inventory}
-    appearance={save.appearance} difficulty="normal" reducedGore={true} screenShake={false}
+    appearance={save.appearance} difficulty="hunter" reducedGore={true} screenShake={false}
     highContrastVision={false} onFinish={() => {}} onAbort={() => {}}
     onSound={id => { (window.__acheronSfx ??= []).push(id); }}/>
 );
