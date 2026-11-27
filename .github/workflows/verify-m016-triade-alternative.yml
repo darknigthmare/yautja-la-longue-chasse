@@ -1,0 +1,119 @@
+name: Recruit the alternate M016 triad
+on:
+  push:
+    branches: [codex/verify-m016-triade-alternative-v3-20261127]
+permissions:
+  contents: read
+jobs:
+  native:
+    name: Verify city preparation in the actual Homeworld
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - name: Checkout the native candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /production/INVENTAIRE_BIBLE_20261122.*
+            /production/YAUTJA_LOTS_P0_P3_20261121.*
+            /production/YAUTJA_LOTS_P0_P3_LOT2_20261121.*
+            /public/game/xeno-prime/berceau-v1/
+            /public/game/homeworld/v70/temple-modules.png
+            /public/game/homeworld/v72/
+            /public/game/homeworld/v74/
+            /public/game/homeworld/v75/
+            /public/game/youth/
+            /public/audio/
+            /public/game/quatza-rij/
+            /public/game/assets/v37/tribes/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp
+            /public/game/assets/v37/tribes/v2/homeworld-forest-v2--8fdc633789dcd9c0.webp
+            /public/game/assets/v37/tribes/v2/homeworld-lava-v2--ecd85e06796799d2.webp
+            /public/game/backgrounds/ice-depth-v4.webp
+            /public/game/backgrounds/ocean-depth-v8.png
+            /public/game/backgrounds/ruins-depth-v8.png
+            /public/game/backgrounds/swamp-depth-v8.png
+            /public/game/homeworld/v67/ash-causeway-vista.png
+            /public/game/homeworld/v67/glass-processional-vista.png
+            /public/game/sprites/v8/ecology/cinder-12/basalt-ram-sheet.png
+            /public/game/sprites/v8/ecology/cinder-12/smoke-wyvern-sheet.png
+            /public/game/sprites/v8/ecology/naraka-delta/mire-shell-sheet.png
+            /public/game/sprites/v8/ecology/nivalis-k/snow-prowler-sheet.png
+            /public/game/sprites/v8/ecology/oseris-iv/amber-jaw-stalker-sheet.png
+            /public/game/sprites/v8/ecology/pelagos-m/shellback-sheet.png
+            /public/game/sprites/v8/ecology/serekh-9/burrow-snake-sheet.png
+            /public/game/assets/clan-field-20261103/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues-index.json
+            /public/game/assets/v139/rig-gauntlets/
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/assets/v133/concept-masks/
+            /public/game/assets/v133/decals/decal-atlas.webp
+            /public/game/sprites/v62/heads/
+            /public/game/sprites/v62/masks/
+            /public/game/homeworld/v56/
+            /public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png
+            /public/game/assets/v134/
+            /public/game/assets/v135/
+            /public/game/assets/v136/
+            /public/game/p0-sprites-20261113/warp/
+            /public/game/warp-universe/20261109/
+            /public/game/warp/w02/
+            /public/game/prologue/v47/
+            /content/the-pit/
+            /public/game/review/the-pit/
+            /art-source/the-pit/
+            /production/qa/evidence/isles-v1-20261123/
+            /public/game/clan-ship/interiors/trophees-v1.webp
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Exact native inputs and dependencies
+        run: |
+          test "$(git rev-parse HEAD^)" = 'e94e1bdfea097dadfe1543f51222777b0dc7e6a1'
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Replay records, imports and old gallery saves
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/homeworld-triad-city-m016.test.mjs tests/homeworld-triad-roles-m016.test.mjs
+      - name: TypeScript and targeted ESLint
+        if: ${{ !cancelled() }}
+        run: |
+          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+          npx eslint app/game/HomeworldTriadM016.tsx app/game/HomeworldHub.tsx app/game/FirstHuntSoloV90.tsx app/game/firstHuntSoloV90Rendering.ts app/game/systems/firstHuntSoloV90.ts app/game/systems/campaignSoloV90.ts app/game/systems/homeworldTriadM016.ts app/game/systems/homeworld.ts app/game/save.ts tests/homeworld-triad-city-m016.test.mjs scripts/qa-homeworld-triad-alt-gallery-m016.mjs
+      - name: Invite Yena and Tov then play their actual gallery posts
+        if: ${{ !cancelled() }}
+        run: |
+          node node_modules/playwright-core/cli.js install chromium
+          node scripts/qa-homeworld-triad-alt-gallery-m016.mjs
+      - name: Save native city evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: triad-alt-gallery-m016
+          path: outputs/qa-homeworld-triad-alt-gallery-m016/
+          if-no-files-found: warn
