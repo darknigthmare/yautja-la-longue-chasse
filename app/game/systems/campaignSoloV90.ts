@@ -1,6 +1,6 @@
 import type { SaveGame } from '../types';
 import source from '../data/campaignTrainingSourceV90.json';
-import { getChronicleRank } from './clanChronicle';
+import { templeRankKeepsEarlierTrialV174 } from './campaignSoloV69';
 import { normalizeSoloV70Campaign, soloV70MatchesSave } from './campaignSoloV70';
 import { createSoloV90State, normalizeSoloV90State, soloV90Receipts, stepSoloV90, unpackSoloV90Input, SOLO_V90_SOURCE_SHA, type SoloV90Receipt, type SoloV90State } from './firstHuntSoloV90';
 export const CAMPAIGN_TRAINING_SOURCE_V90 = source;
@@ -17,17 +17,17 @@ export function normalizeSoloV90Campaign(v: unknown): SoloV90Campaign | null {
   if ((v.status === 'completed') !== complete || (complete ? !iso(v.completedAt) || Date.parse(v.completedAt) < Date.parse(v.startedAt) : v.completedAt !== null)) return null;
   return { version: 1, ownerCreatedAt: v.ownerCreatedAt, sourceSha256: SOLO_V90_SOURCE_SHA, status: complete ? 'completed' : 'active', checkpoint, receipts: soloV90Receipts(checkpoint), startedAt: v.startedAt, completedAt: v.completedAt as string | null };
 }
-function prerequisites(v: Record<string, unknown>): v is Record<string, unknown> & SoloV90Save {
+function prerequisites(v: Record<string, unknown>, completed = false): v is Record<string, unknown> & SoloV90Save {
   if (!soloV70MatchesSave(v) || normalizeSoloV70Campaign(v.soloV70)?.status !== 'completed' || !iso(v.createdAt) || !record(v.prologue)) return false;
   const chronicle = v.prologue.chronicle;
-  return getChronicleRank(chronicle) === 'young-blood' && record(chronicle) && Array.isArray(chronicle.rites) && chronicle.rites.length === 2;
+  return templeRankKeepsEarlierTrialV174(chronicle, completed);
 }
 const journey = (v: Record<string, unknown>) => record(v.homeworldRegionV68) && v.homeworldRegionV68.status !== 'at-city' || record(v.homeworldPassageV67) && v.homeworldPassageV67.status !== 'at-city' || record(v.gameReserveV66) && v.gameReserveV66.status === 'active';
 export function soloV90MatchesSave(v: unknown): boolean {
   if (!record(v)) return false;
   if (v.soloV90 === undefined || v.soloV90 === null) return true;
   const state = normalizeSoloV90Campaign(v.soloV90);
-  return prerequisites(v) && !!state && state.ownerCreatedAt === v.createdAt && !(state.status === 'active' && journey(v));
+  return !!state && prerequisites(v, state.status === 'completed') && state.ownerCreatedAt === v.createdAt && !(state.status === 'active' && journey(v));
 }
 export const canStartSoloV90 = (v: unknown) => record(v) && prerequisites(v) && soloV90MatchesSave(v) && !journey(v);
 export function startSoloV90Campaign(save: SoloV90Save, now = new Date().toISOString()): SoloV90Save | null {

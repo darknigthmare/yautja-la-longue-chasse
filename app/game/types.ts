@@ -724,6 +724,7 @@ export interface SaveGame {
   soloV70?: SoloV70Campaign | null;
   /** Local preparation only; never substitutes for a Blooded rite. */
   soloV90?: SoloV90Campaign | null;
+  bloodedTempleV174?: import("./systems/bloodedTempleV174").BloodedTempleV174 | null;
   quatzaRij?: import("./systems/quatzaRij").QuatzaRijCampaign | null;
   homeworldRegionV68?: HomeworldRegionStateV68 | null;
   /** Physical city/biome connector; separate from expedition evidence. */

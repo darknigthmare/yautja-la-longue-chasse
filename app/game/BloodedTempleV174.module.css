@@ -1,0 +1,14 @@
+.temple { display: grid; gap: .9rem; padding: 1rem; background: #142327; border: 1px solid #527278; color: #eff7ed; }
+.temple header, .report, .controls { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; }
+.temple header { justify-content: space-between; }
+.report span { border-bottom: 1px solid #57777b; padding: .2rem .4rem; }
+.floor { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .25rem; }
+.floor > div { display: grid; place-items: center; min-height: 2.8rem; background: #254148; border: 1px solid #44666a; font-size: clamp(.65rem, 3vw, .9rem); }
+.floor > [data-exit=true] { border-color: #bf9564; }
+.floor > [data-mechanism=true] { background: #443728; }
+.floor > [data-threat=true] { background: #6b2b2e; }
+.floor > [data-player=true] { background: #afdbb6; color: #0d2318; border-color: #d8eed6; font-weight: 700; }
+.mark { display: grid; grid-template-columns: repeat(3, 2.9rem); gap: .45rem; }
+.mark button { min-height: 2.9rem; font: inherit; color: #eff7ed; background: #243c39; border: 1px solid #65877e; }
+.mark button[aria-pressed=true] { background: #b3d9a6; color: #192419; }
+.temple button:focus-visible { outline: 2px solid #efd7a3; outline-offset: 3px; }

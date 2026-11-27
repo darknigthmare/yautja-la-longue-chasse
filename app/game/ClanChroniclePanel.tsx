@@ -23,6 +23,8 @@ import { canJudgeElderPassage, type PassageCommand, type PassageResponse } from 
 import ElderMentoring from "./ElderMentoring";
 import { canMentorElderNovice, type MentoringCommand, type MentoringResponse } from "./systems/elderMentoringV168";
 import ElderAssembly from "./ElderAssembly";
+import BloodedTempleV174 from "./BloodedTempleV174";
+import { templeAvailableV174, type TempleCommandV174 } from "./systems/bloodedTempleV174";
 import { canConveneElderAssembly, elderAssemblyProofs, type AssemblyCommand, type AssemblyResponse } from "./systems/elderAssemblyV168";
 import EliteMastery from "./EliteMastery";
 import QuatzaRijScene from './QuatzaRijScene';
@@ -60,7 +62,7 @@ function HomeworldRegionArt({ name }: { name: string }) {
 
 /** The dossier presents receipts and delegates each playable rite to its campaign owner. */
 export default function ClanChroniclePanel({
-  save, onClose, onGameReserveV66, onOpenCradle, onPassageCommand, onMentoringCommand, onAssemblyCommand, onMasteryCommand, onQuatzaCommand, quatzaSuspended,
+  save, onClose, onGameReserveV66, onOpenCradle, onPassageCommand, onMentoringCommand, onAssemblyCommand, onMasteryCommand, onQuatzaCommand, quatzaSuspended, onBloodedTempleCommand,
 }: {
   save: SaveGame;
   onClose: () => void;
@@ -72,15 +74,16 @@ export default function ClanChroniclePanel({
   onMasteryCommand?: (command: MasteryCommand) => MasteryResponse;
   onQuatzaCommand?: (command: QuatzaCommand) => boolean;
   quatzaSuspended?: boolean;
+  onBloodedTempleCommand?: (command: TempleCommandV174) => { ok: boolean; notice: string };
 }) {
   const [section, setSection] = useState<"journey" | "worlds" | "humans" | "companions">("journey");
   const [query, setQuery] = useState("");
-  const [activeRite, setCampaignRite] = useState<"mentoring" | "passage" | "assembly" | "mastery" | "quatza-triad" | "quatza-solo" | null>(null);
+  const [activeRite, setCampaignRite] = useState<"mentoring" | "passage" | "assembly" | "mastery" | "quatza-triad" | "quatza-solo" | "blooded-temple" | null>(null);
   const proofs = elderAssemblyProofs(save);
   const triadAvailable = !!onQuatzaCommand && (!!save.quatzaRij?.expeditions.triad || canEnterQuatza(save, 'triad'));
   const soloAvailable = !!onQuatzaCommand && (!!save.quatzaRij?.expeditions.solo || canEnterQuatza(save, 'solo'));
   const closeCampaignRite = () => setCampaignRite(null);
-  const toggleCampaignRite = (rite: "mentoring" | "passage" | "assembly" | "mastery" | "quatza-triad" | "quatza-solo") =>
+  const toggleCampaignRite = (rite: "mentoring" | "passage" | "assembly" | "mastery" | "quatza-triad" | "quatza-solo" | "blooded-temple") =>
     setCampaignRite(current => current === rite ? null : rite);
   const chronicle = useMemo(() => save.prologue?.chronicle ?? migrateV35ClanChronicle(save), [save]);
   const rankDossier = useMemo(() => rankRiteDossierV168(save), [save]);
@@ -177,6 +180,13 @@ export default function ClanChroniclePanel({
           </li>
         </ol>
       </section>
+      {onBloodedTempleCommand && (save.bloodedTempleV174 || templeAvailableV174(save)) &&
+        <button type="button" className="ghost-button" data-open-blooded-temple-v174
+          aria-expanded={activeRite === "blooded-temple"} onClick={() => toggleCampaignRite("blooded-temple")}>
+          Le rite de la pyramide
+        </button>}
+      {activeRite === "blooded-temple" && onBloodedTempleCommand && <BloodedTempleV174 key={save.createdAt}
+        save={save} onCommand={onBloodedTempleCommand} onClose={closeCampaignRite} suspended={!!quatzaSuspended} />}
       {(activeRite === "quatza-triad" || activeRite === "quatza-solo") && onQuatzaCommand &&
         <QuatzaRijScene key={save.createdAt + ':' + activeRite} mode={activeRite === "quatza-triad" ? "triad" : "solo"}
           save={save} onCommand={onQuatzaCommand} suspended={quatzaSuspended} />}
