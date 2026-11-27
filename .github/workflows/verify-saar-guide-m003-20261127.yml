@@ -17,7 +17,7 @@ jobs:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '8f79c2fdc7ffa07a0cb85afcf1af067be077fa28'
+          ref: '718b9d7ba0be900cab11267984d7fd8883ccd404'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -108,7 +108,7 @@ jobs:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '8f79c2fdc7ffa07a0cb85afcf1af067be077fa28'
+          ref: '718b9d7ba0be900cab11267984d7fd8883ccd404'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
