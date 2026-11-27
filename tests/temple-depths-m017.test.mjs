@@ -15,7 +15,7 @@ const waiting = formationCampaignRoute({
   stop: 'observe',
 }).save;
 let opened;
-const completed = () => opened ??= templeCampaignRoute({ origin: waiting, restoreEvery: 53 });
+const completed = () => opened ??= templeCampaignRoute({ origin: waiting, archiveRoomCount: 11, restoreEvery: 53 });
 
 test('after the actual Vanne receipt, the Depths require a stationed relay and a physical triad hunt threshold', () => {
   const temple = completed();
