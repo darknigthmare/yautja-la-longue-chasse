@@ -11,7 +11,7 @@ const port = 4286, host = "http://127.0.0.1:" + port;
 const out = resolve("outputs/qa-origin-rival-race-o6");
 const report = {
   commit: execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim(),
-  admission: "O6-M01/M02/M03 and their prerequisites are replayed through their reducers. Chromium starts at the actual M03 saved landmark, then walks to Harek and plays all of M04 using public controls.",
+  admission: "O6-M01/M02/M03 and their prerequisites are replayed through their reducers. Chromium starts at the public regroup checkpoint recorded by the real M03 reducer, with its completed or deferred outcome preserved. It walks to Harek and plays all of M04 using public controls.",
   routes: [], errors: [], passed: false,
 };
 await mkdir(out, { recursive: true });
@@ -26,7 +26,10 @@ try {
     { id: "palier", route: "warn", partial: true, checkpoint: "lower", fall: true },
   ];
   for (const scenario of cases) {
-    const seed = rivalAdmissionO6({ partial: scenario.partial, nurseryPolicies: !scenario.partial });
+    const prior = rivalAdmissionO6({ partial: scenario.partial, nurseryPolicies: !scenario.partial });
+    const regroup = prior.originV151.townBellO6.journal.find(event => event.action === "regroup").at;
+    const seed = { ...prior, homeworld: { ...prior.homeworld, locationV77: regroup } };
+    assert.equal(town.parseSaveImport(JSON.stringify(seed)).failure, null);
     const context = await browser.newContext({ viewport: { width: 1360, height: 930 }, reducedMotion: "reduce" });
     await context.addInitScript(({ key, seed }) => {
       if (localStorage.getItem(key) === null) localStorage.setItem(key, JSON.stringify(seed));
@@ -57,18 +60,7 @@ try {
     }
     async function routeToRival() {
       await nav.focus();
-      const interiorId = await nav.room();
-      if (interiorId) {
-        const room = town.homeworldInteriorForBuildingV64(interiorId);
-        const path = town.homeworldInteriorRouteV112(room, await nav.position(), "exit");
-        assert.equal(path.status, "reachable");
-        await nav.follow(path.points);
-        assert.equal(town.nearestHomeworldInteriorTargetV64(room, await nav.position())?.kind, "exit");
-        await page.keyboard.press("KeyE");
-        await nav.tick(160);
-        assert.equal(await nav.room(), null);
-        await nav.focus();
-      }
+      assert.equal(await nav.room(), null);
       const site = rival.RIVAL_WORKSHOP_O6;
       assert.equal(await nav.floor(), site.levelId);
       const path = town.homeworldWalkRouteV109(site.levelId, await nav.position(), site.point);
@@ -79,11 +71,14 @@ try {
       await actual.waitFor();
       await page.keyboard.press("KeyE");
       await nav.tick(230);
-      await roof.waitFor();
       const saved = await disk();
       assert.deepEqual(saved.homeworld.locationV77, saved.originV151.rivalRaceO6.at);
       assert.deepEqual(saved.originV151.townBellO6, seed.originV151.townBellO6);
       assert.equal(saved.originV151.rivalRaceO6.journal.length, 0);
+      console.log("O6_M04_ADMISSION", JSON.stringify({ scenario: scenario.id, at: saved.originV151.rivalRaceO6.at }));
+      await page.clock.resume();
+      await roof.waitFor({ timeout: 120000 });
+      await page.clock.pauseAt(new Date(await page.evaluate(() => Date.now() + 800)));
     }
     const position = async () => Number(await roof.getAttribute("data-position"));
     const surface = () => roof.getAttribute("data-platform");
@@ -111,19 +106,22 @@ try {
       const platform = await surface();
       const startingBeat = Number(await roof.getAttribute("data-beat"));
       const start = await position();
-      const plan = findRivalLaunchO6(platform, scenario.route, start, kind, rival.RIVAL_SUPPORTS_O6[platform].right, startingBeat);
+      const direction = kind === "fall" ? -1 : 1;
+      const range = rival.RIVAL_SUPPORTS_O6[platform];
+      const preferred = direction === 1 ? range.right : range.left + 24;
+      const plan = findRivalLaunchO6(platform, scenario.route, start, kind, preferred, startingBeat, direction);
       if (plan.steps) await press(plan.steps > 0 ? "ArrowRight" : "ArrowLeft", Math.abs(plan.steps));
       const here = await position();
       assert.equal(here, plan.order.x);
-      if (await roof.getAttribute("data-facing") === "-1") {
-        await press("ArrowLeft");
-        await press("ArrowRight");
+      if (Number(await roof.getAttribute("data-facing")) !== direction) {
+        await press(direction === 1 ? "ArrowLeft" : "ArrowRight");
+        await press(direction === 1 ? "ArrowRight" : "ArrowLeft");
         assert.equal(await position(), here);
       }
       let ready = false;
       for (let ticks = 0; ticks <= rival.RIVAL_ROOF_O6.cycle; ticks++) {
         const beat = Number(await roof.getAttribute("data-beat"));
-        const flight = rival.simulateRivalJumpO6(platform, scenario.route, { type: "jump", x: here, direction: 1, beat }, false);
+        const flight = rival.simulateRivalJumpO6(platform, scenario.route, { type: "jump", x: here, direction, beat }, false);
         if (flight?.outcome === kind) { ready = true; break; }
         await page.clock.runFor(42);
       }
@@ -177,7 +175,8 @@ try {
     await snap(roof, "03-fanion");
     await press("KeyE");
     await checkOrder("finish", "flag");
-    await city.waitFor();
+    await page.clock.resume();
+    await city.waitFor({ timeout: 120000 });
     const result = await disk(), rivalResult = result.originV151.rivalRaceO6;
     assert.equal(rivalResult.resolved, true);
     assert.equal(rivalResult.success, !scenario.fall);

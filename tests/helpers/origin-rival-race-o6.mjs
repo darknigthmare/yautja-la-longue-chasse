@@ -36,15 +36,15 @@ export function applyRivalForTest(save, order) {
   return loaded.save;
 }
 
-export function findRivalLaunchO6(platform, choice, x, kind, preferred = x, atBeat = 0) {
+export function findRivalLaunchO6(platform, choice, x, kind, preferred = x, atBeat = 0, direction = 1) {
   const row = rival.RIVAL_SUPPORTS_O6[platform];
   const positions = new Map([[x, 0]]);
-  for (const direction of [-1, 1]) {
+  for (const walkDirection of [-1, 1]) {
     let next = x, steps = 0;
     for (;;) {
-      const spot = rival.rivalWalkO6(platform, next, direction);
+      const spot = rival.rivalWalkO6(platform, next, walkDirection);
       if (next === spot) break;
-      steps += direction;
+      steps += walkDirection;
       positions.set(spot, steps);
       next = spot;
     }
@@ -54,7 +54,7 @@ export function findRivalLaunchO6(platform, choice, x, kind, preferred = x, atBe
   for (const [x, steps] of nearby) {
     for (let n = 0; n < rival.RIVAL_ROOF_O6.cycle; n++) {
       const beat = (n + atBeat) % rival.RIVAL_ROOF_O6.cycle;
-      const order = { type: "jump", x, direction: 1, beat };
+      const order = { type: "jump", x, direction, beat };
       const result = rival.simulateRivalJumpO6(platform, choice, order, false);
       if (result?.outcome === kind) return { order, result, steps };
     }
