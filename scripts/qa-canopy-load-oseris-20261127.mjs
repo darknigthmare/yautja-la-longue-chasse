@@ -447,10 +447,22 @@ async function canopy(){
   });
   await check('the entry tree allows retreat below canopy with the harvest intact',async()=>{
     const first=rests[0];
-    await hold(['left'],'leave the western edge of the canopy without gripping');
-    const lower=await until('return to a lower surface via the western edge',6000,async state=>{
-      return state.player.grounded&&state.player.y+state.player.height>=first.y+32&&state.player.x+state.player.width/2<first.x;
+    const center=entry.x+entry.width/2;
+    await until('approach the native entry trunk for descent',3000,async state=>{
+      const dx=center-state.player.x-state.player.width/2;
+      if(Math.abs(dx)<15)return true;
+      await hold([dx>0?'right':'left'],'approach the entry trunk on the real root',state);
+      return false;
     });
+    await hold(['down'],'grip the trunk and descend below its one-way root');
+    const below=await until('descend using the real entry trunk',4500,async state=>
+      state.player.climbing&&state.player.climbZoneId===entry.id&&state.player.y+state.player.height>=first.y+65);
+    assertCargo(below);
+    await hold(['right'],'release the rigid entry trunk toward the interior');
+    await until('acknowledge voluntary trunk release',2000,async state=>!state.player.climbing);
+    await hold([],'land below the root with no boost');
+    const lower=await until('return to a lower surface below the canopy',5000,async state=>
+      state.player.grounded&&state.player.y+state.player.height>=first.y+60);
     await hold([],'stop moving on the lower surface');
     assertCargo(lower);
     assert.ok(lower.player.health>0);
@@ -460,7 +472,7 @@ async function canopy(){
     const platform=lower.world.platforms.find(item=>Math.abs(item.y-foot)<2&&lower.player.x+lower.player.width>item.x&&lower.player.x<item.x+item.width);
     assert.ok(platform||Math.abs(foot-lower.world.floorY)<2);
     await capture('16-native-western-recovery');
-    return {player:lower.player,reception:platform?.id??'floor',phase:lower.phase};
+    return {player:lower.player,reception:platform?.id??'floor',releaseFrom:entry.id,phase:lower.phase};
   });
   data.final=await observation();data.finalSidecar=await disk();
   await context.close();context=null;
