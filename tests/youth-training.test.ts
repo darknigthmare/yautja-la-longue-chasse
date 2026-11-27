@@ -316,3 +316,112 @@ test('R2-M013 requires physical shelter, spends one dose and resumes both routes
         assert.equal(api.normalizeYouthTraining(JSON.parse(JSON.stringify(s)))?.medicompV172?.stage, 'complete');
     }
 });
+
+test('M007 to M012 use the youth simulation, preserve recovery and require each physical hand-in', () => {
+    let s = reach('barracks').state;
+    const run = (input: YouthInput = {}) => {
+        s = tick(s, input);
+        assert.ok(api.normalizeYouthTraining(s), 'replayable checkpoint at ' + JSON.stringify(s.workshopV174?.active));
+    };
+    const wait = (frames: number) => { for (let frame = 0; frame < frames; frame++) run(); };
+    const act = (input: YouthInput) => { run(); run(input); run(); };
+    const walk = (target: number, { jump = true, quiet = false } = {}) => {
+        for (let frame = 0; frame < 700 && (Math.abs(s.player.x - target) > 5 || s.player.y < 429); frame++) {
+            const move = Math.abs(s.player.x - target) <= 5 ? 0 : dir(target - s.player.x);
+            const hurdle = jump && api.getYouthObstacles(s).some(item => move === 1
+                ? item.x - s.player.x >= 20 && item.x - s.player.x < 59
+                : move === -1 && s.player.x - item.x - item.width >= 20 && s.player.x - item.x - item.width < 59);
+            run({ move, jump: hurdle && s.player.vy === 0 && !s.previousButtons.jump, dodge: quiet });
+        }
+        assert.ok(Math.abs(s.player.x - target) <= 6 && s.player.y === 430, 'reachable ' + target + ' from ' + s.player.x);
+        run();
+    };
+    const state = () => {
+        const active = s.workshopV174?.active;
+        assert.ok(active);
+        return active;
+    };
+    const restore = () => {
+        const saved = JSON.parse(JSON.stringify(s));
+        const restored = api.normalizeYouthTraining(saved);
+        assert.ok(restored);
+        assert.deepEqual(restored.workshopV174, s.workshopV174);
+        s = restored;
+        const before = s.tick;
+        run({ interact: true });
+        assert.equal(s.tick, before);
+        run();
+    };
+    const open = (lesson: number) => {
+        walk(112);
+        act({ interact: true });
+        assert.equal(state().lesson, lesson);
+    };
+    const report = (reports: number) => {
+        walk(844);
+        act({ interact: true });
+        assert.equal(s.workshopV174?.reports.length, reports);
+        assert.equal(s.workshopV174.active, null);
+        restore();
+    };
+
+    // M007: fit, choose contrast, miss a moving target, recalibrate and read four real stations.
+    open(0); walk(196); act({ interact: true }); act({ light: true }); walk(315); act({ interact: true });
+    wait(15); act({ interact: true });
+    assert.equal(state().notice, 'calibration');
+    restore();
+    act({ interact: true }); act({ interact: true }); assert.equal(state().stage, 3);
+    for (const x of [384, 503, 624, 746]) { walk(x); act({ interact: true }); }
+    walk(844); act({ blade: true }); assert.equal(state().notice, 'certainty');
+    act({ light: true }); report(1);
+    act({ blade: true }); assert.equal(s.workshopV174?.maskProfile, 'wide');
+
+    // M008: right distance, telegraphed counter, physical barrier while blades are extended.
+    open(1); act({ blade: true }); act({ light: true }); assert.equal(state().notice, 'reach');
+    walk(484); act({ light: true }); wait(9); act({ dodge: true }); assert.equal(state().route, 'parry');
+    for (let frame = 0; frame < 95; frame++) run({ move: 1 });
+    assert.equal(s.player.x, 671); assert.equal(state().stage, 3);
+    act({ blade: true }); walk(789); report(2);
+
+    // M009: water reveals the cloak; reading the trail and patiently sneaking retains both attempts.
+    open(2); act({ blade: true }); walk(430); assert.equal(state().notice, 'water');
+    restore(); walk(464); act({ interact: true }); walk(527); act({ interact: true });
+    for (let frame = 0; frame < 9; frame++) run({ move: 1 });
+    assert.equal(state().notice, 'cloak'); assert.equal(state().stage, 2);
+    act({ interact: true }); wait(44); walk(793, { jump: false, quiet: true }); report(3);
+
+    // M010: a miss creates an actual recoverable object and the successful throw only counts after pickup.
+    open(3); walk(180); act({ interact: true }); act({ blade: true });
+    walk(292); act({ jump: true }); wait(12); act({ throw: true }); wait(85);
+    assert.equal(state().tool?.hit, false); assert.equal(state().notice, 'off-target');
+    restore();
+    const missed = state().tool; assert.ok(missed); walk(missed.x); act({ interact: true }); assert.equal(state().stage, 2);
+    walk(467); act({ light: true }); act({ throw: true }); wait(85);
+    const landed = state().tool; assert.ok(landed?.hit);
+    act({ interact: true }); assert.equal(state().stage, 4);
+    walk(landed.x); act({ interact: true }); report(4);
+
+    // M011: the first ray is stopped by the cover; recover each shot before the next target.
+    open(4); walk(412); act({ light: true });
+    assert.equal(state().notice, 'cover');
+    walk(499); act({ interact: true }); assert.equal(state().stage, 0);
+    for (let target = 0; target < 3; target++) {
+        walk(655); act({ move: 1 });
+        if (target === 2) {
+            for (let frame = 0; frame < 300 && Math.abs(356 - (345 + 45 * Math.sin((s.tick + 2 - state().stageAt) / 18))) > 12; frame++) run();
+        }
+        act({ light: true });
+        const spear = state().tool; assert.ok(spear?.hit, state().notice ?? 'target hit');
+        walk(spear.x); act({ interact: true });
+    }
+    report(5);
+
+    // M012: placing on the ally's strip visibly fails; reclaim and use the safe rail position.
+    open(5); walk(642); act({ interact: true }); assert.equal(state().notice, 'ally');
+    act({ interact: true }); walk(443); act({ interact: true }); act({ interact: true });
+    wait(70); assert.equal(state().tool?.hit, true);
+    walk(791); walk(443); act({ interact: true }); report(6);
+    assert.deepEqual(s.workshopV174?.reports.map(entry => entry.route), ['contrast', 'parry', 'wait', 'close', 'shift', 'block']);
+    walk(680); act({ interact: true }); assert.equal(s.phase, 'rest');
+    assert.equal(s.workshopV174?.reports.length, 6);
+});

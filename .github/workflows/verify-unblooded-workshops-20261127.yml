@@ -1,0 +1,39 @@
+name: Unblooded workshops M007 to M012
+on:
+  push:
+    branches: [codex/verify-bible-unblooded-workshops-20261127]
+permissions:
+  contents: read
+jobs:
+  simulation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /tests/
+            /scripts/
+            /docs/
+            /types/
+            /public/**/*.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node --experimental-strip-types --test --test-reporter=spec tests/youth-training.test.ts tests/youth-campaign.test.mjs tests/youth-cage-v53.test.mjs tests/youth-patrol-v52.test.mjs
+      - if: always()
+        run: npx eslint app/game/systems/youthWorkshopV174.ts app/game/systems/youthTraining.ts app/game/systems/youthCampaign.ts app/game/YouthTrainingScreen.tsx app/game/youthTrainingRendering.ts app/game/youthWorkshopRenderingV174.ts tests/youth-training.test.ts
+      - if: always()
+        run: |
+          npx next typegen
+          npx tsc --noEmit --incremental false
