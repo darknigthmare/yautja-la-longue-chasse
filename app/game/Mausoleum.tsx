@@ -12,10 +12,11 @@ import {
   CINEMA_GALLERY_M058, CINEMA_CRADLE_X_M058, CINEMA_MASK_X_M058, canHandleCinemaMaskM058,
 } from "./systems/mausoleumCinemaM058";
 import {
-  MAUSOLEUM_ALCOVE_PAGE_SIZE, MAUSOLEUM_CABINET_REACH, MAUSOLEUM_CABINET_X,
+  MAUSOLEUM_ALCOVE_PAGE_SIZE, MAUSOLEUM_CABINET_REACH, MAUSOLEUM_CABINET_X, MAUSOLEUM_WALL_X, MAUSOLEUM_DLC_LABELS,
   MAUSOLEUM_CHRONICLES, MAUSOLEUM_GALLERIES, MAUSOLEUM_PHASE_LABELS, MAUSOLEUM_RITUAL_PHASES,
   canConsultMausoleum, canVisitMausoleumGallery, defaultMausoleumProgress, mausoleumAccess, mausoleumAlcoveEntries,
-  mausoleumDlcState, recordMausoleumCabinetReading, recordMausoleumVisit,
+  atMausoleumWall, canReadMausoleumWall, hasReadMausoleumWall, mausoleumDlcState,
+  recordMausoleumCabinetReading, recordMausoleumVisit, recordMausoleumWallVisit,
   type MausoleumChronicle, type MausoleumProgress, type MausoleumRitualPhase,
 } from "./systems/mausoleum";
 import styles from "./Mausoleum.module.css";
@@ -84,7 +85,8 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
   const [selected, setSelected] = useState<MausoleumChronicle | null>(null), [maskIndex, setMaskIndex] = useState(0), [phase, setPhase] = useState<MausoleumRitualPhase | null>(null), [notice, setNotice] = useState("");
   const [cabinetOpen, setCabinetOpen] = useState(false), [cabinetId, setCabinetId] = useState<string | null>(null);
   const [cinemaMaskHeld, setCinemaMaskHeld] = useState(false), [cinemaOpen, setCinemaOpen] = useState(false);
-  const activeDialog = !!selected || cabinetOpen || cinemaOpen;
+  const [wallOpen, setWallOpen] = useState(false);
+  const activeDialog = !!selected || cabinetOpen || cinemaOpen || wallOpen;
   const root = useRef<HTMLElement>(null), scene = useRef<HTMLDivElement>(null), dialog = useRef<HTMLDivElement>(null), held = useRef(0), xRef = useRef(90), returnX = useRef(90), readArchive = useRef(false), trigger = useRef<HTMLElement | null>(null), progressRef = useRef(progress);
   useEffect(() => { progressRef.current = progress; }, [progress]);
   const stopMovement = useCallback(() => {
@@ -97,6 +99,9 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
   const entries = MAUSOLEUM_CHRONICLES.filter(entry => entry.gallery === gallery);
   const visible = mausoleumAlcoveEntries(gallery, page);
   const cabinetEntry = visible.find(entry => entry.id === cabinetId);
+  const alcove = { galleryId: gallery, page }, wallAccess = canReadMausoleumWall(alcove, access);
+  const wallRegistered = hasReadMausoleumWall(progress, alcove);
+  const nearWall = atMausoleumWall({ ...alcove, actorX: x }, access);
   const cinemaGallery = gallery === CINEMA_GALLERY_M058;
   const nearCinemaMask = cinemaGallery && canHandleCinemaMaskM058(access, x, "take");
   const nearCinemaCradle = cinemaGallery && cinemaMaskHeld && canHandleCinemaMaskM058(access, x, "place");
@@ -119,7 +124,7 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
   }, [persistVisit, save]);
   const close = useCallback(() => {
     ritualClock.current.reset(); resetPosition(returnX.current);
-    setSelected(null); setPhase(null); setCabinetOpen(false); setCabinetId(null); setCinemaOpen(false); setNotice("");
+    setSelected(null); setPhase(null); setCabinetOpen(false); setCabinetId(null); setCinemaOpen(false); setWallOpen(false); setNotice("");
     requestAnimationFrame(() => (trigger.current?.isConnected ? trigger.current : scene.current)?.focus());
   }, [resetPosition, setPhase]);
   const remove = useCallback(() => { if (paused || phase === "remove" || phase === "replace") return; if (phase) { ritualClock.current.pause(performance.now()); setPhase("remove"); } else close(); }, [phase, close, paused, setPhase]);
@@ -135,6 +140,18 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
     returnX.current = xRef.current;
     stopMovement(); setCabinetId(null); setNotice(""); setCabinetOpen(true);
     onSound?.("select");
+  };
+  const openWall = () => {
+    if (blocked || !atMausoleumWall({ ...alcove, actorX: xRef.current }, access)) return;
+    trigger.current = document.activeElement as HTMLElement;
+    returnX.current = xRef.current;
+    stopMovement(); setNotice(""); setWallOpen(true);
+    onSound?.("scan");
+  };
+  const fileWallVisit = () => {
+    if (paused || !wallOpen) return;
+    const visit = recordMausoleumWallVisit(progressRef.current, { ...alcove, actorX: xRef.current }, mausoleumAccess(save));
+    if (visit && persistVisit(visit)) setNotice("Visite inscrite au Mur des Chasses.");
   };
   const handleCinemaMask = () => {
     if (blocked || !cinemaGallery || !canHandleCinemaMaskM058(access, xRef.current, "take")) return;
@@ -220,6 +237,7 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
       if (!event.repeat) {
         if (cinemaPrompt) interactCinema();
         else if (nearCabinet) openCabinet();
+        else if (nearWall) openWall();
         else examine();
       }
     }
@@ -247,10 +265,10 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
     if (paused) return;
     if (activeDialog) remove(); else onExit();
   }, [activeDialog, remove, onExit, paused]);
-  useMenuGamepad(root, !paused, `${gallery}:${page}:${selected?.id}:${phase}:${cabinetOpen}:${cabinetId}:${cinemaOpen}`, gamepadBack);
+  useMenuGamepad(root, !paused, `${gallery}:${page}:${selected?.id}:${phase}:${cabinetOpen}:${cabinetId}:${cinemaOpen}:${wallOpen}`, gamepadBack);
   const galleryLabel = MAUSOLEUM_GALLERIES.find(entry => entry.id === gallery)?.name;
   const interactLabel = save ? controlActionShortcut("hunt.interact", save.settings.controlBindings) : "Entrée";
-  return <section className={styles.root} ref={root} data-mausoleum data-mausoleum-source={source} data-mausoleum-phase={phase ?? "visit"} aria-labelledby="mausoleum-title" onKeyDown={event => { if (isBack(event) && !event.defaultPrevented && !activeDialog && !paused) { event.preventDefault(); event.stopPropagation(); onExit(); } }}>
+  return <section className={styles.root} ref={root} data-mausoleum data-mausoleum-source={source} data-mausoleum-phase={phase ?? "visit"} data-mausoleum-visited={progress.visited === true} aria-labelledby="mausoleum-title" onKeyDown={event => { if (isBack(event) && !event.defaultPrevented && !activeDialog && !paused) { event.preventDefault(); event.stopPropagation(); onExit(); } }}>
     <header className={styles.header}><div><p>Archives du clan · reconstitutions</p><h1 id="mausoleum-title">Mausolée des Grandes Chasses</h1></div><button type="button" disabled={activeDialog || paused} onClick={onExit}>← {source === "menu" ? "Retour au menu" : "Retour à la cité"}</button></header>
     <nav className={styles.galleries} aria-label="Galeries du mausolée" inert={activeDialog || paused}>{MAUSOLEUM_GALLERIES.map(entry => {
       const allowed = canVisitMausoleumGallery(access, entry.id);
@@ -258,11 +276,15 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
     })}</nav>
     <div className={styles.scene} ref={scene} tabIndex={0} role="region" aria-label={`Galerie physique · ${galleryLabel}`} data-mausoleum-x={Math.round(x)} onKeyDown={onKeyDown} onKeyUp={onKeyUp} onBlur={event => { if (event.target === event.currentTarget || !event.currentTarget.contains(event.relatedTarget as Node | null)) stopMovement(); }} inert={activeDialog || paused}>
       <img className={styles.hall} src="/game/homeworld/v56/mausoleum-hall.png" alt="" draggable={false} />
+      {wallAccess && <div className={styles.museumLight} data-mausoleum-light={nearWall || wallOpen} aria-hidden="true" />}
       <div className={styles.wall}><span>LE MUR DES CHASSES</span><p>{cinemaGallery ? "L’éclaireur de Korthas" : entries.map(entry => entry.title).join(" · ") || "Archives temporelles · contenu à produire"}</p></div>
+      {wallAccess && <button type="button" className={styles.wallMarker} style={{ left: MAUSOLEUM_WALL_X / 9 + "%" }}
+        data-mausoleum-wall data-wall-registered={wallRegistered} aria-label="Approcher le Mur des Chasses"
+        onClick={() => approach(MAUSOLEUM_WALL_X)}>{wallRegistered ? "Visite inscrite" : "Registre de visite"}</button>}
       {visible.map((entry, index) => <button type="button" key={entry.id} className={styles.pedestal} style={{ left: `${positions[index] / 9}%` }} aria-label={`Approcher le piédestal ${entry.title}`} data-mausoleum-pedestal={entry.id} data-mausoleum-dlc={entry.id} data-dlc-state={mausoleumDlcState(entry.id)} onClick={() => approach(positions[index])}>
         <img className={styles.stone} src="/game/homeworld/v56/mask-pedestal.png" alt="" draggable={false} />
         <span className={styles.masks}>{entry.masks.map(item => item.src ? <img key={item.id} src={item.src} alt={item.name} draggable={false} data-mausoleum-mask={item.id} /> : <span className={styles.missingMask} key={item.id} title={item.note}>Archive scellée</span>)}</span>
-        <span className={styles.caption}><strong>{entry.title}</strong><small>Campagne à produire</small>{progress.consultedIds.includes(entry.id) && <em>Dossier étudié</em>}</span>
+        <span className={styles.caption}><strong>{entry.title}</strong><small>{MAUSOLEUM_DLC_LABELS[mausoleumDlcState(entry.id)]}</small>{progress.consultedIds.includes(entry.id) && <em>Dossier étudié</em>}</span>
       </button>)}
       {cinemaGallery && <>
         <button type="button" className={styles.pedestal} style={{ left: `${CINEMA_MASK_X_M058 / 9}%` }}
@@ -291,6 +313,7 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
         onClick={interactCinema}>{interactLabel} · {cinemaPrompt}</button>
         : cinemaGallery ? <p>{cinemaMaskHeld ? "Porte le masque jusqu’au socle." : "Approche le masque de chronique."}</p>
         : nearCabinet ? <button type="button" onClick={openCabinet}>{interactLabel} · Ouvrir le casier</button>
+        : nearWall ? <button type="button" onClick={openWall}>{interactLabel} · Lire le Mur des Chasses</button>
         : nearest ? <button type="button" onClick={examine}>{interactLabel} · Examiner {nearest.title}</button>
         : <p>Approche un piédestal · {save ? `${controlActionShortcut("hunt.moveLeft", save.settings.controlBindings)} / ${controlActionShortcut("hunt.moveRight", save.settings.controlBindings)}` : "flèches"} ou toucher</p>}</div>
     </div>
@@ -300,6 +323,27 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
       <div className={styles.dossier} role="dialog" aria-modal="true" aria-labelledby="mausoleum-cinema-title"
         ref={dialog} tabIndex={-1} onKeyDown={onDialogKey}>
         <MausoleumCinemaM058 save={save} access={access} paused={paused} onClose={close} />
+      </div>
+    </div>}
+    {wallOpen && <div className={styles.backdrop} inert={paused}>
+      <div className={styles.dossier} role="dialog" aria-modal="true" aria-labelledby="mausoleum-wall-title"
+        data-mausoleum-wall-open ref={dialog} tabIndex={-1} onKeyDown={onDialogKey}>
+        <h2 id="mausoleum-wall-title">Mur des Chasses</h2>
+        <p>{galleryLabel} · Alcôve {page + 1}</p>
+        <dl className={styles.wallLedger}>
+          {visible.map(entry => {
+            const state = mausoleumDlcState(entry.id);
+            return <div key={entry.id} data-wall-title={entry.id} data-dlc-state={state}>
+              <dt>{entry.title}</dt>
+              <dd>{MAUSOLEUM_DLC_LABELS[state]}{progress.consultedIds.includes(entry.id) && " · Dossier étudié"}</dd>
+            </div>;
+          })}
+        </dl>
+        <p role="status" aria-live="polite">{notice || (wallRegistered ? "Visite inscrite au Mur des Chasses." : "")}</p>
+        <div className={styles.actions}>
+          <button type="button" disabled={wallRegistered} onClick={fileWallVisit}>Inscrire la visite</button>
+          <button type="button" onClick={close}>Revenir à la galerie</button>
+        </div>
       </div>
     </div>}
     {cabinetOpen && <div className={styles.backdrop} inert={paused}>

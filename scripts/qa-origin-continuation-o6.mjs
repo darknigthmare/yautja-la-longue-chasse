@@ -5,14 +5,14 @@ import { join, resolve } from 'node:path';
 import { chromium } from 'playwright-core';
 import { createServer } from 'vite';
 import { homeworldRegionNavigatorV68 } from './homeworld-region-navigation-v68.mjs';
-import { HOUSE, continuation, continuationAdmissionO6, regions, saves } from '../tests/helpers/origin-continuation-o6.mjs';
+import { HOUSE, continuation, continuationAdmissionO6, practice, regions, saves } from '../tests/helpers/origin-continuation-o6.mjs';
 
 const url = 'http://127.0.0.1:4222/';
 const out = resolve('outputs/qa-origin-continuation-o6');
 const commit = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
 const admitted = continuationAdmissionO6();
 const report = {
-  commit, passed: false, orders: [], errors: [], routes: [],
+  commit, passed: false, orders: [], practice: [], errors: [], routes: [],
   admission: 'The fixture combines the played nursery help, authentic Elite rite and earned residence. Every continuation post is reached in the native interface.',
 };
 await mkdir(out, { recursive: true });
@@ -89,8 +89,38 @@ try {
   assert.deepEqual(current.originV151.relations, admitted.originV151.relations);
   assert.deepEqual(current.residenceV149, admitted.residenceV149);
   assert.equal(current.originV151.ending.endingRealized, false);
-  assert.deepEqual(report.errors, []);
   await page.screenshot({ path: join(out, 'ready.png'), animations: 'disabled' });
+  const participant = root.locator('[data-o6-practice-novice]');
+  const practiceMarker = root.locator('[data-o6-practice-stage]');
+  const staff = root.locator('[data-o6-practice-staff]');
+  await participant.waitFor();
+  for (const order of Object.keys(practice.PRACTICE_POSTS_O6)) {
+    assert.equal(await practiceMarker.getAttribute('data-o6-practice-stage'), order);
+    const participantX = () => participant.getAttribute('data-student-x').then(Number);
+    const from = order === 'steady-novice' ? await participantX() : null;
+    await ground.walkTo(practice.PRACTICE_POSTS_O6[order]);
+    if (from !== null) assert.ok(from - await participantX() > 150);
+    await ground.interact();
+    const snapshot = await disk();
+    assert.equal(snapshot.originV151.continuationO6.practice.at(-1), order);
+    assert.deepEqual(snapshot.originV151.ending, admitted.originV151.ending);
+    assert.deepEqual(snapshot.originV151.consumed, admitted.originV151.consumed);
+    report.practice.push(order);
+    if (order === 'show-footing') {
+      await staff.waitFor();
+      await page.screenshot({ path: join(out, 'novice-first-stance.png'), animations: 'disabled' });
+      await page.clock.resume();
+      await page.reload({ waitUntil: 'domcontentloaded' });
+      await enter();
+      assert.equal(await practiceMarker.getAttribute('data-o6-practice-stage'), 'steady-novice');
+      await staff.waitFor();
+    }
+  }
+  assert.equal(await practiceMarker.getAttribute('data-o6-practice-stage'), 'complete');
+  assert.equal(await participant.count(), 0);
+  assert.equal(await staff.count(), 0);
+  assert.deepEqual(report.errors, []);
+  await page.screenshot({ path: join(out, 'practice-complete.png'), animations: 'disabled' });
   report.passed = true;
 } finally {
   if (!report.passed && page) await page.screenshot({ path: join(out, 'failure.png') }).catch(() => {});
@@ -98,4 +128,4 @@ try {
   await browser?.close();
   await server?.close();
 }
-console.log(JSON.stringify({ passed: report.passed, commit, orders: report.orders }));
+console.log(JSON.stringify({ passed: report.passed, commit, orders: report.orders, practice: report.practice }));
