@@ -1,5 +1,5 @@
 import type { SaveGame } from "../types";
-import { nextYouthCityStopV172 } from "./youthCityErrandV172";
+import { youthCityAdmissionReadyM003 } from "./youthCityErrandV172";
 import type { YouthWorkshopOpeningV176 } from "./youthWorkshopV174";
 
 export const CHILDHOOD_POST_V175 = { roomId: "training-hall", pointId: "training-service" } as const;
@@ -20,13 +20,13 @@ export const CHILDHOOD_TRAIL_SIGNS_V175 = [
   { x: 8, name: "Sons", actual: "Un bref appel se répète au pied du perchoir.", decoy: "L’écho vient du mur à gauche, au-delà de la borne." },
 ] as const;
 const vocabulary = ["ring", "beam", "spring", "track", "east", "west", "observe", "use", "track-sign",
-  "track-decoy", "show-map", "show-passage", "handoff", "first-mask", "first-blades", "reset-current"] as const;
+  "track-decoy", "show-map", "show-passage", "handoff", "cohort-gesture", "first-mask", "first-blades", "reset-current"] as const;
 export type ChildhoodCommandV175 = typeof vocabulary[number];
 type ChildhoodEvent = Exclude<ChildhoodCommandV175, "reset-current">;
 type Drill = keyof typeof CHILDHOOD_DRILLS_V175;
 type Trial = keyof typeof ACTOR_END;
 type TrackPhase = "outward" | "perched" | "returning";
-export type ChildhoodLedgerV175 = { version: 1; ownerCreatedAt: string; revision: number; journal: ChildhoodEvent[] };
+export type ChildhoodLedgerV175 = { version: 1 | 2; ownerCreatedAt: string; revision: number; journal: ChildhoodEvent[] };
 type Observation = { phase: TrackPhase; signs: number; comparing: boolean };
 export type ChildhoodViewV175 = {
   trial: Trial | null;
@@ -38,6 +38,7 @@ export type ChildhoodViewV175 = {
   track: Observation | null;
   report: "map" | "passage" | null;
   demonstrated: boolean;
+  cohortPresentations: number;
   stowed: boolean;
   passed: boolean;
   firstWorkshop: YouthWorkshopOpeningV176 | null;
@@ -47,9 +48,16 @@ type ChildhoodSave = Pick<SaveGame, "createdAt" | "homeworld" | "prologue">;
 type ChildhoodPlace = { roomId: string | null; pointId: string | null; suspended: boolean };
 const initial = (): ChildhoodViewV175 => ({
   trial: null, position: 0, beat: 0, drift: 0, finished: [], companion: null, track: null,
-  report: null, demonstrated: false, stowed: false, passed: false, firstWorkshop: null,
+  report: null, demonstrated: false, cohortPresentations: 0, stowed: false, passed: false, firstWorkshop: null,
   message: "Choisis le premier atelier. Son camarade t’attendra à l’entrée.",
 });
+
+export function nextCohortGestureV175(view: ChildhoodViewV175) {
+  const index = view.cohortPresentations;
+  const name = COMPANIONS[index];
+  const drill = view.finished[index];
+  return name && drill ? { name, drill } : null;
+}
 
 export function childhoodTrackSignV175(view: ChildhoodViewV175) {
   return view.track ? CHILDHOOD_TRAIL_SIGNS_V175[view.track.signs] : undefined;
@@ -143,6 +151,12 @@ function advance(view: ChildhoodViewV175, event: ChildhoodEvent): ChildhoodViewV
   if (event === "east" || event === "west") return move(view, trial, event === "east" ? 1 : -1);
   if (trial === "track") return trackStep(view, event);
   if (trial === "handoff") {
+    if (event === "cohort-gesture") {
+      const performer = nextCohortGestureV175(view);
+      if (!performer || !view.demonstrated || view.stowed || view.position !== 2) return null;
+      return { ...view, cohortPresentations: view.cohortPresentations + 1,
+        message: performer.name + " présente son geste. " + CHILDHOOD_DRILLS_V175[performer.drill].title + " consignée." };
+    }
     if (event !== "use") return null;
     if (view.position === 2 && !view.demonstrated) return { ...view, demonstrated: true, message: "Tu montres ton appui et Saar le reprend." };
     if (view.position === 4 && view.demonstrated && !view.stowed) return { ...view, stowed: true, message: "L’outil d’enfance est rangé dans son coffre." };
@@ -165,6 +179,7 @@ function advance(view: ChildhoodViewV175, event: ChildhoodEvent): ChildhoodViewV
 
 function markCheckpoint(before: ChildhoodViewV175, after: ChildhoodViewV175) {
   return before.trial !== after.trial || before.track?.phase !== after.track?.phase || before.track?.signs !== after.track?.signs
+    || before.cohortPresentations !== after.cohortPresentations
     || before.demonstrated !== after.demonstrated || before.stowed !== after.stowed || before.passed !== after.passed;
 }
 
@@ -172,13 +187,13 @@ function markCheckpoint(before: ChildhoodViewV175, after: ChildhoodViewV175) {
 // retry indefinitely without filling the journal or losing a completed drill.
 function stateKey(view: ChildhoodViewV175) {
   return JSON.stringify([view.trial, view.position, view.beat, view.drift, view.finished, view.companion,
-    view.track, view.report, view.demonstrated, view.stowed, view.passed, view.firstWorkshop]);
+    view.track, view.report, view.demonstrated, view.cohortPresentations, view.stowed, view.passed, view.firstWorkshop]);
 }
 
 function inspect(raw: unknown) {
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null;
   const { version, ownerCreatedAt, revision, journal } = raw as Record<string, unknown>;
-  if (version !== 1 || typeof ownerCreatedAt !== "string" || !Number.isFinite(Date.parse(ownerCreatedAt)) ||
+  if ((version !== 1 && version !== 2) || typeof ownerCreatedAt !== "string" || !Number.isFinite(Date.parse(ownerCreatedAt)) ||
       typeof revision !== "number" || !Number.isSafeInteger(revision) || revision < 1 ||
       !Array.isArray(journal) || journal.length === 0 || journal.length > JOURNAL_LIMIT || revision < journal.length) return null;
   let view = initial();
@@ -186,7 +201,7 @@ function inspect(raw: unknown) {
   const verified: ChildhoodEvent[] = [];
   const visited = new Map([[stateKey(view), 0]]);
   for (const event of journal) {
-    if (!vocabulary.includes(event) || event === "reset-current") return null;
+    if (!vocabulary.includes(event) || event === "reset-current" || (event === "cohort-gesture" && version !== 2)) return null;
     const next = advance(view, event);
     if (!next) return null;
     verified.push(event);
@@ -195,6 +210,7 @@ function inspect(raw: unknown) {
     if (markCheckpoint(view, next)) recovery = verified.slice();
     view = next;
   }
+  if (version === 2 && view.cohortPresentations === 0) return null;
   return { ledger: { version, ownerCreatedAt, revision, journal: verified } as ChildhoodLedgerV175, view, recovery, visited };
 }
 export function normalizeChildhoodV175(raw: unknown) {
@@ -207,7 +223,7 @@ export function childhoodViewV175(raw: unknown, ownerCreatedAt: string) {
 export function hasChildhoodFoundationV175(save: ChildhoodSave) {
   const errand = save.homeworld.youthCityErrandV172;
   return save.prologue?.status === "completed" && save.prologue.checkpoint.cohortV172?.steps === 7 &&
-    errand?.ownerCreatedAt === save.createdAt && !nextYouthCityStopV172(errand);
+    errand?.ownerCreatedAt === save.createdAt && youthCityAdmissionReadyM003(errand);
 }
 
 export function childhoodOptionsV175(view: ChildhoodViewV175) {
@@ -246,12 +262,13 @@ export function actChildhoodV175(
   if (!next) return { message: "Rejoins le poste de ce geste." };
   const journal = selectJournal(result, event, next);
   if (journal.length > JOURNAL_LIMIT) return { message: "Reprends au dernier repère pour continuer." };
-  return { state: { version: 1, ownerCreatedAt: save.createdAt, revision, journal } satisfies ChildhoodLedgerV175, message: next.message };
+  const version = next.cohortPresentations > 0 ? 2 : 1;
+  return { state: { version, ownerCreatedAt: save.createdAt, revision, journal } satisfies ChildhoodLedgerV175, message: next.message };
 }
 
 export function isChildhoodSuccessorV175(prior: ChildhoodLedgerV175 | undefined, next: ChildhoodLedgerV175 | undefined) {
   if (!next || next.revision !== (prior?.revision ?? 0) + 1) return false;
-  if (!prior) return next.journal.length === 1;
+  if (!prior) return next.version === 1 && next.journal.length === 1;
   if (prior.ownerCreatedAt !== next.ownerCreatedAt) return false;
   const checked = inspect(prior);
   if (!checked) return false;
@@ -259,6 +276,7 @@ export function isChildhoodSuccessorV175(prior: ChildhoodLedgerV175 | undefined,
     const view = event === "reset-current" ? checked.view : advance(checked.view, event);
     if (!view) return false;
     const expected = selectJournal(checked, event, view);
-    return expected.length === next.journal.length && expected.every((entry, i) => entry === next.journal[i]);
+    const version = view.cohortPresentations > 0 ? 2 : 1;
+    return next.version === version && expected.length === next.journal.length && expected.every((entry, i) => entry === next.journal[i]);
   });
 }

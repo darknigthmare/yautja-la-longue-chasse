@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "source": "docs/campagne/MODE_THE_ISLES_20261121.md, section 13.3 (Chasse inversée)",
+  "durationSeconds": 900,
+  "phases": {"arrivalEnd": 30, "searchEnd": 300, "callFrom": 300, "lastStand": 720},
+  "teamSize": 5,
+  "teamSizeRange": [4, 6],
+  "roles": {
+    "tracker": {"name": "Pisteur", "weapon": "fusil de chasse", "color": "#a8742f", "damage": 16, "range": 22, "fireSeconds": 1.7, "accuracy": 0.5, "speed": 3.6, "traceSeconds": 8, "traceCooldown": 30, "traceRange": 40},
+    "marksman": {"name": "Tireur", "weapon": "fusil à lunette", "color": "#5f6f8a", "damage": 26, "range": 40, "fireSeconds": 2.6, "accuracy": 0.65, "speed": 3.4, "markSeconds": 6, "meleeWeak": true},
+    "demolition": {"name": "Démolisseur", "weapon": "fusil à pompe", "color": "#8a3f2f", "damage": 24, "range": 10, "fireSeconds": 1.5, "accuracy": 0.75, "speed": 3.0, "traps": 3, "trapDamage": 40, "trapRadius": 1.2},
+    "medic": {"name": "Médecin", "weapon": "pistolet", "color": "#e2e2d8", "damage": 7, "range": 16, "fireSeconds": 0.9, "accuracy": 0.5, "speed": 3.6, "reviveFactor": 2, "flares": 2, "flareSeconds": 12, "flareRadius": 22},
+    "radio": {"name": "Radio", "weapon": "fusil d'assaut", "color": "#4f7a4a", "damage": 9, "range": 24, "fireSeconds": 0.45, "accuracy": 0.35, "speed": 3.5, "callFactor": 2, "jamSeconds": 5, "jamRange": 15},
+    "warden": {"name": "Garde de la réserve", "weapon": "carabine", "color": "#6b8a3a", "damage": 13, "range": 26, "fireSeconds": 1.1, "accuracy": 0.55, "speed": 3.6, "repelRange": 14}
+  },
+  "roleOrder": ["tracker", "marksman", "demolition", "medic", "radio", "warden"],
+  "names": ["Okafor", "Lindqvist", "Ramos", "Mbeki", "Haddad", "Novak", "Tanaka", "Duarte"],
+  "humanHealth": 100,
+  "downed": {"bleedSeconds": 30, "reviveSeconds": 6, "reviveRadius": 1.6, "pistolDamage": 5, "pistolRange": 12, "pistolSeconds": 1.6},
+  "surrender": {"disarmSeconds": 90, "extractionWeight": 0.5, "healthBelow": 30, "chance": 0.5},
+  "trophy": {"minSeconds": 6, "maxSeconds": 12, "range": 2.2},
+  "selfDestruct": {"countdownSeconds": 10, "radius": 18, "offerSeconds": 6},
+  "duel": {"offerSeconds": 10, "humanDamage": 12, "humanStrikeSeconds": 1.0, "humanHealth": 100},
+  "yautja": {"health": 320, "strikeDamage": 45, "strikeRange": 2.6, "strikeArcDot": 0.3, "strikeSeconds": 0.7, "plasmaDamage": 55, "plasmaRange": 34, "plasmaConeDot": 0.85, "plasmaHeat": 34, "plasmaCoolPerSecond": 12, "plasmaOverheat": 100, "plasmaSeconds": 0.6},
+  "perception": {"coneDot": 0.34, "range": 26, "cloakedStillRange": 6, "cloakedMovingRange": 10, "revealedRange": 32, "nightFactor": 0.65, "rainCloakFactor": 1.6, "memorySeconds": 6, "eyeHeight": 1.6, "bushCover": 1.2, "shareRange": 20, "cloakedHitFactor": 0.35},
+  "extraction": {"callSeconds": 20, "arrivalSeconds": 120, "boardRadius": 5, "callRadius": 3, "piecesRadius": 6, "planeHits": 3},
+  "pieces": [
+    {"id": "radio", "name": "radio du camp de braconniers", "marker": "piece:radio"},
+    {"id": "battery", "name": "batterie du générateur", "marker": "piece:battery"},
+    {"id": "flares", "name": "fusées éclairantes", "marker": "piece:flares"}
+  ],
+  "pickupRadius": 1.8,
+  "wildlife": {"count": 2, "health": 60, "damage": 12, "attackSeconds": 1.3, "aggroRange": 8, "speed": 4.2, "fleeRange": 14},
+  "weather": {"nightChance": 0.5, "rainChance": 0.3},
+  "honor": {"armedKill": 10, "trophy": 15, "perfect": 25},
+  "score": {"escaped": 100, "held": 40}
+}

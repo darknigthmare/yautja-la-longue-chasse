@@ -155,7 +155,7 @@ test("the actual archive rejects foreign or impossible changes and refuses stale
   const settled = p.read().homeworld.childhoodV175;
   assert.equal(withRecord({ ...settled, ownerCreatedAt: "2025-01-01T00:00:00Z" }).failure, "invalid-save");
   assert.equal(withRecord({ ...settled, journal: ["show-map"] }).failure, "invalid-save");
-  assert.equal(withRecord({ ...settled, version: 2 }).failure, "future-version");
+  assert.equal(withRecord({ ...settled, version: 3 }).failure, "future-version");
   assert.equal(childhoodStorage.parseSaveImport(childhoodStorage.exportSave(seed)).save.homeworld.childhoodV175, undefined);
 });
 
@@ -166,4 +166,35 @@ test("repeated missed catches keep the run writable without filling the earned c
   assert.deepEqual(p.read().homeworld.childhoodV175.journal, ["ring"]);
   walk(p, 3); p.act("observe"); p.act("use");
   assert.deepEqual(p.view().finished, ["ring"]);
+});
+
+test("M006 observes the three actual cohort gestures at the demonstration station", () => {
+  const p = pilot(childhoodAdmissionV175({ withLocation: true }));
+  drills(p);
+  observeTrail(p);
+  p.act("show-map");
+  p.act("handoff");
+  const canObserve = () => game.childhoodOptionsV175(p.view()).includes("cohort-gesture");
+  assert.equal(canObserve(), false);
+  walk(p, 2);
+  p.act("use");
+  for (const name of ["Yena", "Harek", "Tov"]) {
+    assert.equal(game.nextCohortGestureV175(p.view()).name, name);
+    assert.equal(canObserve(), true);
+    p.act("cohort-gesture");
+  }
+  assert.equal(canObserve(), false);
+  const saved = p.read();
+  const copy = childhoodStorage.parseSaveImport(childhoodStorage.exportSave(saved)).save;
+  assert.equal(copy.homeworld.childhoodV175.version, 2);
+  assert.equal(game.childhoodViewV175(copy.homeworld.childhoodV175, copy.createdAt).cohortPresentations, 3);
+  const forged = structuredClone(saved);
+  forged.homeworld.childhoodV175.version = 1;
+  assert.equal(childhoodStorage.parseSaveImport(JSON.stringify(forged)).failure, "invalid-save");
+  walk(p, 4);
+  p.act("use");
+  walk(p, 7);
+  p.act("use");
+  p.act("first-mask");
+  assert.equal(youth.startYouthCampaign(p.read()).youthTraining.checkpoint.firstWorkshopV176, "mask");
 });

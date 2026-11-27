@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-27",
+  "kind": "exact-source-recovery-without-runtime-integration",
+  "sourceWorkspace": "/workspace/scratch/4a614cc94a38/yautja-the-pit",
+  "baselineRemote": "bb0e24d3e1daa652a8ce8bfaa847a765bca2f96a",
+  "method": "Exact stored Add File patches for three files; observed baseline Git blob plus eleven uniquely matching stored update hunks for the bonus panel. SHA256 of reconstructed bytes compared equal to values recorded during the completed precision QA. GitHub create_blob returned the Git blob IDs below.",
+  "files": [
+    {
+      "originalPath": "app/game/systems/pitPrecisionTrialV1.ts",
+      "recoveryPath": "docs/the-pit/recovery/precision-20261127/app/game/systems/pitPrecisionTrialV1.ts.txt",
+      "bytes": 11263,
+      "sha256": "79c5c102c1bfc8c59919c516fa2e37afa1915519adf63ff72dc579f90658f958",
+      "gitBlob": "3e72d0210d2a1309cd05bd770968ed60492b82cd",
+      "observedQaHashMatches": true
+    },
+    {
+      "originalPath": "app/game/systems/pitBonusSessionV2.ts",
+      "recoveryPath": "docs/the-pit/recovery/precision-20261127/app/game/systems/pitBonusSessionV2.ts.txt",
+      "bytes": 3117,
+      "sha256": "27af0f08e9d30941ccee253d74c67002d1e1178d4453a5f2c4f5f21651fd0bc2",
+      "gitBlob": "43fd18e1ca4bd9f060eb3cd5725dae247909ee6c",
+      "observedQaHashMatches": true
+    },
+    {
+      "originalPath": "tests/pit-precision-trial-v1.test.mjs",
+      "recoveryPath": "docs/the-pit/recovery/precision-20261127/tests/pit-precision-trial-v1.test.mjs.txt",
+      "bytes": 13253,
+      "sha256": "11436f653d6d96384ea544cb66c2d34048b5d8997bea4eff9830fc385e6447a5",
+      "gitBlob": "6e772795aa32b821d4df5cc99da928244e94475a",
+      "observedQaHashMatches": true
+    },
+    {
+      "originalPath": "app/game/PitBonusTrialPanelV1.tsx",
+      "recoveryPath": "docs/the-pit/recovery/precision-20261127/app/game/PitBonusTrialPanelV1.tsx.txt",
+      "bytes": 7364,
+      "sha256": "66068d9e445d22da5c16922dcc6eb5db63923f44a294a20710a9f824917733d8",
+      "gitBlob": "1bf4d05704000e25ecdf0a3591cad5f2944ee1a9",
+      "observedQaHashMatches": true
+    }
+  ],
+  "runtimeIntegrated": false,
+  "missingFinalSources": [
+    "app/game/PitCanvas.tsx",
+    "app/game/PitBonusTrialPanelV1.module.css",
+    "app/game/systems/pitPrecisionRecordsV1.ts",
+    "scripts/qa-pit-precision-trial-v1.mjs"
+  ],
+  "limitation": "Inert .txt copies preserve exact reviewed source bytes; this subset is not executable by itself and is not a published gameplay integration. Other final sources, reports and screenshots remain in the inaccessible workspace. No successful cumulative 89-test rerun or current runtime inventory is inferred."
+}

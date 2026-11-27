@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "batchId": "pit-greyback-unmasked-selection-lot3-20261127",
+  "recordedOn": "2026-11-27",
+  "fighterId": "greyback",
+  "variantId": "elder-greyback-sans-casque-7955bb66ac",
+  "status": "generation-blocked",
+  "sourceIdentityStatus": "source-labelled",
+  "oneToOneCertified": false,
+  "runtimeAdmitted": false,
+  "humanArtReview": "not-applicable-no-image-received",
+  "plannedImageCount": 4,
+  "attemptedImageCount": 1,
+  "generatedImageCount": 0,
+  "publicImageCount": 0,
+  "nativeAnimationClipsEnabled": 0,
+  "reference": {
+    "repositoryPath": "art-source/the-pit/continuation-20261127/greyback-unmasked/reference-original.png",
+    "sha256": "7955bb66ac7c438237fe99e58f1be69c506cbaa475c60e220b9291358148ea04",
+    "sourceRepositoryPath": "public/game/sprites/v44/user-hunters/7955bb66ac7c438237fe99e58f1be69c506cbaa475c60e220b9291358148ea04.png",
+    "sourceManifest": "app/game/data/pitUserHuntersV44.json",
+    "note": "Exact source-labelled project PNG viewed before generation. No independent canon certification.",
+    "bytes": 2483837,
+    "postExecutorRestartHashCheck": "match"
+  },
+  "entries": [
+    {
+      "id": "preview-guard-01-right",
+      "role": "selection preview calm guard",
+      "intendedFacing": "right",
+      "status": "moderation-blocked",
+      "generator": "builtin image_gen.imagegen",
+      "promptFile": "preview-guard-01-right.prompt.txt",
+      "promptSha256": "9920ba8f738bd6bbc2c5dab915a9cc0ae84e758c9d533b8eb19b4286a18de38b",
+      "transparentBackgroundRequested": true,
+      "file": null,
+      "receivedBytes": 0,
+      "failure": {
+        "httpStatus": 400,
+        "code": "moderation_blocked",
+        "stage": "output",
+        "categories": [
+          "other"
+        ],
+        "requestId": "f12e19cd-ab0e-47cc-aed7-67ccdad1800d",
+        "message": "Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID f12e19cd-ab0e-47cc-aed7-67ccdad1800d."
+      }
+    },
+    {
+      "id": "selection-acknowledge-02-right",
+      "role": "selection acknowledgement",
+      "intendedFacing": "right",
+      "status": "not-attempted-after-service-refusal",
+      "file": null
+    },
+    {
+      "id": "preview-guard-01-left",
+      "role": "selection preview calm guard",
+      "intendedFacing": "left",
+      "status": "not-attempted-after-service-refusal",
+      "file": null
+    },
+    {
+      "id": "deselection-rest-02-left",
+      "role": "deselection return",
+      "intendedFacing": "left",
+      "status": "not-attempted-after-service-refusal",
+      "file": null
+    }
+  ],
+  "preservation": {
+    "priorFiveCandidates": "unchanged",
+    "sourceReference": "unchanged",
+    "pixelEdits": "none",
+    "publicCopies": "none because no image was received",
+    "runtimeChanges": "none"
+  },
+  "nextWork": [
+    "All four requested slots remain visually undelivered.",
+    "Do not count a prompt as a generated asset.",
+    "Preserve previous five candidates and their recorded visual limitations."
+  ]
+}
