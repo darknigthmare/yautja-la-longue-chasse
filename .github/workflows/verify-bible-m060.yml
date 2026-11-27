@@ -1,0 +1,65 @@
+name: Play M060 aboard the clan ship
+on:
+  push:
+    branches: ['codex/verify-bible-m060-20261127']
+permissions:
+  contents: read
+jobs:
+  m060:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.openai/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /build/
+            /scripts/
+            /tests/
+            /public/game/clan-ship/
+            /public/game/ships/
+            /public/game/homeworld/v56/
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/assets/v139/rig-gauntlets/
+            /public/game/sprites/v62/
+            /public/game/prologue/v47/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues-index.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Validate exact source, old end archives and the new berth proof
+        run: |
+          git diff --exit-code 96cb7b53531fc35096419013eaade6e01e4c1c4c HEAD -- app tests
+          node --experimental-strip-types --test tests/legacy-finale-r2.test.mjs
+      - name: Typecheck the actual entry and saved proof
+        run: npm run typecheck
+      - name: Lint the changed dialogue scene and proof
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/systems/legacyFinaleR2.ts app/game/LegacyFinaleSceneR2.tsx tests/legacy-finale-r2.test.mjs tests/helpers/legacy-finale-r2.mjs
+      - name: Walk the native service and finish M060
+        run: |
+          node node_modules/playwright-core/cli.js install chromium
+          node scripts/qa-m060-clan-ship.mjs
+          cat outputs/qa-m060-clan-ship/report.json
+      - name: Store the served asset captures and observed receipts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: m060-clan-ship
+          path: outputs/qa-m060-clan-ship/
+          if-no-files-found: warn
