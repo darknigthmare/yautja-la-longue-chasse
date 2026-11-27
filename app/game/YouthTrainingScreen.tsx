@@ -220,12 +220,12 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
         {workshopFeedback(workshop, state.tick) && <p role="status">{workshopFeedback(workshop, state.tick)}</p>}
         <p>{([["light", "Frappe"], ["blade", "Lame"], ["throw", "Projection"], ["dodge", "Esquive"], ["jump", "Saut"]] as const).map(([action, label]) => label + " " + controlActionShortcut(YOUTH_CONTROL_ACTIONS[action], props.bindings)).join(" · ")}</p>
       </aside>}
-      {state.phase === "barracks" && !workshopActive && workshop?.reports.length && !effectivePaused ? <aside className={styles.fieldNotes} aria-label="Registre des ateliers">
+      {state.phase === "barracks" && !workshopActive && workshop?.reports.length && !state.medicompV172 && !effectivePaused ? <aside className={styles.fieldNotes} aria-label="Registre des ateliers">
         <strong>{workshop.reports.length} / {YOUTH_WORKSHOP_LESSONS.length} ateliers consignés</strong>
         <p>{workshopCanOpen(workshop) ? "La porte gauche ouvre l’atelier suivant. " : "Les exercices de cette série sont consignés. "}Auprès de la porte, Frappe règle le masque en contraste et Lame élargit la lecture.</p>
         <p>Profil du masque · {workshop.maskProfile === "wide" ? "lecture large" : "contraste"}</p>
       </aside> : null}
-      {state.phase === "barracks" && !workshopActive && !workshop?.reports.length && state.medicompV172 && !effectivePaused && <aside className={styles.fieldNotes} aria-label="Medicomp d’exercice" data-youth-medicomp-status>
+      {state.phase === "barracks" && !workshopActive && state.medicompV172 && !effectivePaused && <aside className={styles.fieldNotes} aria-label="Medicomp d’exercice" data-youth-medicomp-status>
         <strong>Charges restantes · {youthMedicompCharges(state.medicompV172)} / 3</strong>
         <progress max={YOUTH_MEDICOMP.duration} value={state.medicompV172.treatedTicks} aria-label="Soin de la plaie d’exercice" />
         {state.medicompV172.route !== "unchecked" && <p>{state.medicompV172.route === "prepared" ? "Sortie préparée avant le soin." : "Sortie vérifiée pendant l’alerte."}</p>}

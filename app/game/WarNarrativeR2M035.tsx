@@ -31,7 +31,10 @@ export default function WarNarrativeR2M035({ save, disabled, onCommand }: {
   return <section className={styles.panel} data-m035-stage={view.phase} data-m035-x={player.x} data-m035-scout={scout.x}
     aria-labelledby="war-narrative-m035-title" tabIndex={onField ? 0 : undefined} onKeyDown={event => {
       if (disabled || !onField || fieldKeyboardTargetBlocked(event.target) || event.repeat) return;
-      const routeAction = fieldKeyboardAction(event);
+      const routeAction = fieldKeyboardAction({
+        key: event.key, repeat: event.repeat, ctrlKey: event.ctrlKey, metaKey: event.metaKey,
+        altKey: event.altKey, isComposing: event.nativeEvent.isComposing, mode: "stealth",
+      });
       if (routeAction === "left" || routeAction === "right" || routeAction === "wait" ||
           routeAction === "up" || routeAction === "down") {
         event.preventDefault();
