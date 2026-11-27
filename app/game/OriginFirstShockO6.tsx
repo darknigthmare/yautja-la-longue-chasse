@@ -144,7 +144,7 @@ export default function OriginFirstShockO6({ record, checkpoint, bindings, pause
     {!bank && !artError && <p role="status">Chargement de la cour…</p>}
     <div className={styles.orders}>
       <p>{guidance(record, court.stage)}</p>
-      {feedback && <p role="status">{feedback}</p>}
+      {(feedback || court.stage === "drill" && court.missed) && <p role="status">{feedback || "Le dernier appui a glissé. Reprends depuis le filet."}</p>}
       {persistenceError && <p role="alert">{persistenceError}</p>}
       {ready && <span className={styles.direction} aria-live="polite">{actions.length ? "Geste à portée."
         : court.targetX < x ? "Le repère est à gauche." : "Le repère est à droite."}</span>}
