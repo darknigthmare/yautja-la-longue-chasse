@@ -69,8 +69,8 @@ jobs:
           const p = process.env.SKINNING_CANOPY_QA_OUTPUT + '/report.json';
           if (!existsSync(p)) console.log('The browser recipe did not produce a report');
           else {
-            const {classification, browserExecuted, passed, checks, cases, errors, captures} = JSON.parse(readFileSync(p, 'utf8'));
-            console.log(JSON.stringify({classification, browserExecuted, passed, checks: checks.map(({name, id, status, passed}) => ({name, id, status, passed})), cases: Object.keys(cases), errors, captures: captures.length}));
+            const {classification, browserExecuted, passed, checks, cases, errors, captures, failure, failureState, failureText, assets} = JSON.parse(readFileSync(p, 'utf8'));
+            console.log(JSON.stringify({classification, browserExecuted, passed, checks: checks.map(({name, id, status, passed}) => ({name, id, status, passed})), cases: Object.keys(cases), errors, captures: captures.length, assetCount: assets?.length, failure, failurePlayer: failureState?.player, visibleFailure: failureText?.slice(-1600), lastStage: Object.values(cases)[0]?.stageBudgets?.at(-1)}));
           }
           NODE
       - name: Preserve the actual browser report and original captures

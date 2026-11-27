@@ -186,6 +186,7 @@ async function canopy(){
   await newCase('loaded-swamp');
   const data=report.cases['loaded-swamp'],initial=await observation();
   assert.equal(initial.missionId,'swamp-hydra');
+  assert.equal((await campaign()).missionProgress['volcano-bad-blood'].completions,1);
   const rests=initial.world.platforms.filter(platform=>platform.id.startsWith('v112-canopy-swamp-hydra-0-')).sort((a,b)=>a.x-b.x);
   const entry=initial.world.climbables.find(support=>support.id===rests[0]?.id.replace('-rest','-grip'));
   const flexible=initial.world.climbables.find(support=>support.id===rests[1]?.id.replace('-rest','-grip'));
