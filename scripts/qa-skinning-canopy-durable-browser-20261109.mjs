@@ -588,11 +588,15 @@ async function canopy(){
   },null,{polling:'raf',timeout:2000});
   if (bufferedTransfer) {
     await check('one native Up tap catches the next authored vine during tangent flight', async () => {
+      const queuedObservation = page.waitForFunction(() => {
+        const transfer = window.__skinningCanopyQaV112.state().canopyTransfer;
+        return transfer?.remainingSeconds > 0 ? transfer : false;
+      }, null, {polling:'raf',timeout:1000});
       await page.keyboard.press('ArrowUp');
-      await page.waitForFunction(() => window.__skinningCanopyQaV112.state().canopyTransfer?.remainingSeconds > 0,
-        null, {polling:'raf',timeout:1000});
-      const pending = await observation();
-      assert.equal(pending.canopyTransfer.departedSupportId, flexible.id);
+      const queued = await queuedObservation;
+      const pending = await queued.jsonValue();
+      await queued.dispose();
+      assert.equal(pending.departedSupportId, flexible.id);
       const landed = await until('buffered catch of the next authored vine', 5000,
         async state => state.player.climbing && state.player.climbZoneId === next.id);
       assert.equal(landed.inputs.keyboard.includes('up'), false);
