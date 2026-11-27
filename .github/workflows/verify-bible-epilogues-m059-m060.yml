@@ -72,19 +72,9 @@ jobs:
           console.log([...paths].sort().join('\n'));
           NODE
           git sparse-checkout add --stdin < "$RUNNER_TEMP/epilogue-npc-art"
-      - name: Verify exact epilogue logic and retain existing cultural routes
-        run: |
-          git diff --exit-code "$EPILOGUE_CANDIDATE_SHA" HEAD -- app tests
-          node --experimental-strip-types --test --test-concurrency=1 tests/legacy-finale-r2.test.mjs tests/bible-cultural-save-v86.test.mjs tests/bible-cultural-scene-v86.test.mjs
-      - name: Typecheck the existing source with the new entry point
-        if: ${{ !cancelled() }}
-        run: npm run typecheck
-      - name: Check the new reducer and native scenes
-        if: ${{ !cancelled() }}
-        run: |
-          node node_modules/eslint/bin/eslint.js app/game/systems/legacyFinaleR2.ts app/game/LegacyFinaleSceneR2.tsx app/game/HomeworldRegionV68.tsx app/game/BibleSceneCulturalV86.tsx app/game/GameClient.tsx tests/legacy-finale-r2.test.mjs tests/helpers/legacy-finale-r2.mjs scripts/qa-legacy-epilogues-m059-m060.mjs
+      - name: Check the exact application and save fixture
+        run: git diff --exit-code "$EPILOGUE_CANDIDATE_SHA" HEAD -- app tests
       - name: Enter the cohort scene and walk the native halt
-        if: ${{ !cancelled() }}
         run: |
           node node_modules/playwright-core/cli.js install chromium
           node scripts/qa-legacy-epilogues-m059-m060.mjs

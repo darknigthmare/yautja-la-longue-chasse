@@ -43,7 +43,20 @@ async function openWorld(page, id) {
     await page.locator('[data-menu-action="continue"]').click();
   }
   await world.waitFor();
-  await world.locator("[data-region-resume]").waitFor();
+  try {
+    await world.locator("[data-region-resume]").waitFor({ timeout: 24_000 });
+  } catch (error) {
+    const state = await page.evaluate(() => ({
+      region: document.querySelector("[data-homeworld-region-v68]")?.getAttribute("data-zone"),
+      dialog: document.querySelector("[data-homeworld-region-v68] [role=dialog]")?.textContent?.slice(0, 1200),
+      focus: document.hasFocus(),
+      badImages: Array.from(document.images).filter(img => !img.complete || img.naturalWidth === 0)
+        .map(img => img.getAttribute("src")).slice(0, 30),
+    }));
+    console.log("WORLD START " + JSON.stringify(state));
+    await capture(page, id + "-entree-incomplete");
+    throw error;
+  }
   const walker = homeworldRegionNavigatorV68(page, legacyRegions);
   await walker.resume();
   return walker;
@@ -60,13 +73,17 @@ async function runFrom(save, check) {
   await page.clock.install();
   page.on("pageerror", error => { report.errors.push(error.message); console.log(error.stack); });
   page.on("response", response => {
-    if (response.status() >= 400 && /\/game\/homeworld\//.test(response.url())) {
+    if (response.status() >= 400 && response.url().includes("/game/")) {
       console.log("REGION ART " + response.status() + " " + response.url());
     }
   });
   try {
     await page.goto(url);
     await check(page);
+  } catch (error) {
+    report.errors.push(error.message);
+    console.log("ROUTE ERROR " + error.stack);
+    await capture(page, "parcours-interrompu-" + report.errors.length);
   } finally {
     await context.close();
   }
@@ -145,6 +162,7 @@ try {
     await capture(page, "m059-cohorte-et-support");
     report.sequences.push("M059 · arrivée au seuil, reprise, marche avec les quatre jeunes et préparation du support");
   });
+  console.log(JSON.stringify(report));
   assert.deepEqual(report.errors, []);
 } finally {
   await writeFile(path.join(output, "report.json"), JSON.stringify(report, null, 2));
