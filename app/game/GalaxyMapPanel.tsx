@@ -86,6 +86,8 @@ export interface GalaxyMapPanelProps {
   onChooseMission: (mission: MissionDefinition) => void;
   /** A social destination, separate from the eight campaign contracts. */
   onVisitHomeworld?: () => void;
+  onVisitEarth?: () => void;
+  earthRouteLabel?: string;
   justiceControlLabel?: string;
   onOpenJustice?: () => void;
   /** V159: poste de route typée, rendu sous la carte (état et écritures tenus par l’hôte). */
@@ -206,6 +208,8 @@ export default function GalaxyMapPanel({
   onBack,
   onChooseMission,
   onVisitHomeworld,
+  onVisitEarth,
+  earthRouteLabel,
   justiceControlLabel,
   onOpenJustice,
   routesPanel,
@@ -739,6 +743,10 @@ export default function GalaxyMapPanel({
             {onVisitHomeworld && <button type="button" className="galaxy-v10-text-button"
               disabled={suspended} onClick={() => { if (!suspendedRef.current) onVisitHomeworld(); }}>
               Yautja Prime · monde natal
+            </button>}
+            {onVisitEarth && <button type="button" className="galaxy-v10-text-button" data-galaxy-sol
+              disabled={suspended} onClick={() => { if (!suspendedRef.current) onVisitEarth(); }}>
+              {earthRouteLabel ?? "Sol · Terre"}
             </button>}
             <span title={selectedShip.name}>
               Vaisseau · {selectedShip.shortName}

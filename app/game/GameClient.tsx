@@ -108,6 +108,8 @@ import { advanceConquestR2M037, type ConquestCommandR2M037 } from "./systems/war
 import { shipAcquisitionAuthorityV161, shipReceiptV161 } from './systems/shipReceiptV161';
 import { FIRST_INTERSTELLAR_V173, commitFirstInterstellarV173, firstInterstellarAccessV173,
   firstInterstellarInFlightV173, firstInterstellarReceiptV173, type FirstInterstellarActionV173 } from './systems/firstInterstellarV173';
+import { commitEarthOkavangoV171, earthOkavangoAccessV171, inspectEarthOkavangoV171,
+  type EarthOkavangoOrderV171 } from "./systems/earthOkavangoV171";
 import { actShipAcquisitionV89, normalizeShipAcquisitionV89, shipAcquisitionEligibleV89, shipAcquisitionSceneFactsV89, type ShipAcquisitionContextV89, type ShipAcquisitionActionV89, type ShipAcquisitionResultV89 } from './systems/shipAcquisitionV89';
 import { withNurseryCheckpoint, withNurseryCompletion } from "./systems/nurseryCampaign";
 import type { NurseryState, NurseryCompletionReceipt } from "./systems/nurseryPrologue";
@@ -421,6 +423,7 @@ const CatalogueHunterBrowser = React.lazy(() =>
 );
 const HuntAccessibilityPanelV112 = React.lazy(() => import("./HuntAccessibilityPanelV112"));
 const FirstInterstellarV173 = React.lazy(() => import("./FirstInterstellarV173"));
+const EarthOkavangoV171 = React.lazy(() => import("./EarthOkavangoV171"));
 const ControlBindingsPanel = React.lazy(
   () => import("./ControlBindingsPanel"),
 );
@@ -443,6 +446,7 @@ type Screen =
   | "game-reserve"
   | "ship-acquisition-v89"
   | "first-interstellar-v173"
+  | "earth-okavango-v171"
   | "title"
   | "clan-chronicle"
   | "queen-hunt"
@@ -1217,6 +1221,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     useState<MissionDefinition | null>(null);
   const [galaxyNavigationState, setGalaxyNavigationState] =
     useState<GalaxyNavigationState>(createGalaxyNavigationState);
+  const [earthNoticeV171, setEarthNoticeV171] = useState("");
   const [selectedShipId, setSelectedShipId] =
     useState<ShipId>(DEFAULT_SHIP_ID);
   const [insertionPlan, setInsertionPlan] = useState<PlanetInsertionPlan>(() => ({ ...DEFAULT_PLAN }));
@@ -2330,7 +2335,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "quatzaRij" | "bloodedTempleV174" | "eliteRecognitionV174" | "buriedCradle" | "warNarrativeR2M035" | "warConquestR2M037" | "elderPassageJudgmentV168" | "elderMentoringV168" | "elderAssemblyV168" | "elderWorkshopV172" | "eliteMasteryV170" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "spaceRoutesV159" | "firstInterstellarV173" | "queenHuntV163" | "clanShipDocking" | "clanShipOperations" | "clanHullProjectV171" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "mountRidesV156" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "legacyFinaleR2" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155" | "blackGodV162" | "minorArcsV160" | "warpEpochsV165" | "tantalusV164">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "quatzaRij" | "bloodedTempleV174" | "eliteRecognitionV174" | "buriedCradle" | "warNarrativeR2M035" | "warConquestR2M037" | "elderPassageJudgmentV168" | "elderMentoringV168" | "elderAssemblyV168" | "elderWorkshopV172" | "eliteMasteryV170" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "spaceRoutesV159" | "firstInterstellarV173" | "earthV171" | "queenHuntV163" | "clanShipDocking" | "clanShipOperations" | "clanHullProjectV171" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "mountRidesV156" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "legacyFinaleR2" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155" | "blackGodV162" | "minorArcsV160" | "warpEpochsV165" | "tantalusV164">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2340,7 +2345,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, warNarrativeR2M035: update.warNarrativeR2M035, warConquestR2M037: update.warConquestR2M037, bloodedTempleV174: update.bloodedTempleV174, eliteRecognitionV174: update.eliteRecognitionV174, buriedCradle: update.buriedCradle, elderPassageJudgmentV168: update.elderPassageJudgmentV168, elderWorkshopV172: update.elderWorkshopV172, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, spaceRoutesV159: update.spaceRoutesV159, firstInterstellarV173: update.firstInterstellarV173, queenHuntV163: update.queenHuntV163, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, mountsV153: update.mountsV153, mountRidesV156: update.mountRidesV156, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149, residenceLifeV150: update.residenceLifeV150, originV151: update.originV151, legacyFinaleR2: update.legacyFinaleR2, residenceScenesV154: update.residenceScenesV154, pathObjectsV158: update.pathObjectsV158, heritageV152: update.heritageV152, hardcoreV155: update.hardcoreV155, blackGodV162: update.blackGodV162, minorArcsV160: update.minorArcsV160, warpEpochsV165: update.warpEpochsV165, tantalusV164: update.tantalusV164 });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, warNarrativeR2M035: update.warNarrativeR2M035, warConquestR2M037: update.warConquestR2M037, bloodedTempleV174: update.bloodedTempleV174, eliteRecognitionV174: update.eliteRecognitionV174, buriedCradle: update.buriedCradle, elderPassageJudgmentV168: update.elderPassageJudgmentV168, elderWorkshopV172: update.elderWorkshopV172, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, spaceRoutesV159: update.spaceRoutesV159, firstInterstellarV173: update.firstInterstellarV173, earthV171: update.earthV171, queenHuntV163: update.queenHuntV163, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, mountsV153: update.mountsV153, mountRidesV156: update.mountRidesV156, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149, residenceLifeV150: update.residenceLifeV150, originV151: update.originV151, legacyFinaleR2: update.legacyFinaleR2, residenceScenesV154: update.residenceScenesV154, pathObjectsV158: update.pathObjectsV158, heritageV152: update.heritageV152, hardcoreV155: update.hardcoreV155, blackGodV162: update.blackGodV162, minorArcsV160: update.minorArcsV160, warpEpochsV165: update.warpEpochsV165, tantalusV164: update.tantalusV164 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -3691,6 +3696,30 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     },
     [go],
   );
+
+  const earthAccessV171 = earthOkavangoAccessV171(save, selectedShipId);
+  const earthViewV171 = useMemo(() => inspectEarthOkavangoV171(save.earthV171, save.createdAt).view,
+    [save.earthV171, save.createdAt]);
+  const openEarthV171 = () => {
+    const current = saveRef.current;
+    if (screen !== "map" || !voyageContextAvailable(current)) return;
+    const access = earthOkavangoAccessV171(current, selectedShipId);
+    if (!access.allowed) { setToast(access.reason); return; }
+    setEarthNoticeV171("");
+    go("earth-okavango-v171");
+  };
+  const commandEarthV171 = (order: EarthOkavangoOrderV171) => {
+    const current = saveRef.current;
+    if (screen !== "earth-okavango-v171" || !voyageContextAvailable(current)) return false;
+    const result = commitEarthOkavangoV171(current.earthV171, order, earthOkavangoAccessV171(current, selectedShipId));
+    if (!result.accepted) { setEarthNoticeV171(result.reason); return false; }
+    if (!persistSocialProgress({ earthV171: result.state })) {
+      setEarthNoticeV171("Relevé non enregistré. Reprends le geste depuis le dernier point confirmé.");
+      return false;
+    }
+    setEarthNoticeV171("");
+    return true;
+  };
 
   const openStationScreen = useCallback(
     (next: StationScreen, returnScreen: StationReturnScreen, facility?: ChromaticFacilityV115, openedAtTrophyPost = false) => {
@@ -5197,7 +5226,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const topBar =
     screen !== 'wolf-castle' && screen !== 'planet-arrival' && screen !== 'buried-cradle' &&
-    screen !== 'first-interstellar-v173' &&
+    screen !== 'first-interstellar-v173' && screen !== "earth-okavango-v171" &&
     !newGamePhase && !clanShipVisible && screen !== "prologue" && screen !== "youth-training" && screen !== "solo-v66" && screen !== "solo-v67" && screen !== "solo-v68" && screen !== "solo-v69" && screen !== "solo-v70" && screen !== "solo-v90" && screen !== "homeworld-region-v68" && screen !== "homeworld-passage-v67" && screen !== "game-reserve" && screen !== "ship-acquisition-v89" && screen !== "title" && screen !== "clan-chronicle" && screen !== "warp-epochs" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" && screen !== "pit-narrative" ? (
       <TopBar
         save={save}
@@ -5581,6 +5610,16 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       )}
 
       {screen === "mausoleum" && (<Suspense fallback={<DeferredGameScreen />}><Mausoleum key={save.createdAt} save={save} suspended={settingsOpen} source={stationReturnScreen === "homeworld" ? "homeworld" : "menu"} onProgress={progress => persistHomeworldProgress({ ...saveRef.current.homeworld, mausoleum: progress })} onSound={playGameplaySound} onExit={() => go(stationReturnScreen)} heritage={<><HeritagePanelV152 save={save} disabled={settingsOpen} onAction={heritageActionV152} /><BlackGodPanelV162 save={save} disabled={settingsOpen || campaignSaveBusy} onTrialEnd={recordBlackGodTrialSession} onSacrifice={sacrificeBlackGodSession} /></>} /></Suspense>)}
+      {screen === "earth-okavango-v171" && <section className="screen panel-screen" inert={settingsOpen}>
+        <Suspense fallback={<DeferredGameScreen />}>
+          <EarthOkavangoV171 key={save.createdAt} view={earthViewV171} appearance={save.appearance} loadout={save.loadout}
+            blocked={settingsOpen || !earthAccessV171.allowed || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy}
+            notice={earthNoticeV171} onOrder={commandEarthV171}
+            onClose={() => go(earthViewV171.phase === "returned" ? "deck" : "map")}
+            onSettings={() => setSettingsOpen(true)} />
+        </Suspense>
+      </section>}
+
       {screen === 'first-interstellar-v173' && <section inert={settingsOpen}>
         <Suspense fallback={<DeferredGameScreen />}>
           <FirstInterstellarV173 key={save.createdAt} owner={save.createdAt} state={save.firstInterstellarV173 ?? null}
@@ -6042,6 +6081,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             onBack={() => go(mapReturnScreen)}
             onChooseMission={chooseMission}
             onVisitHomeworld={() => go("homeworld")}
+            onVisitEarth={earthAccessV171.allowed ? openEarthV171 : undefined}
+            earthRouteLabel={earthViewV171.phase === "ground" ? "Sol · Reprendre le repérage"
+              : earthViewV171.phase === "returned" ? "Sol · Consulter le relevé" : "Sol · Terre"}
             justiceControlLabel={getJusticeRouteControl(save.justice, "clan-core").label}
             onOpenJustice={() => { setJusticeJurisdiction("clan-core"); openStationScreen("justice", hubLocation); setJusticeReturnScreen("map"); }}
             routesPanel={
