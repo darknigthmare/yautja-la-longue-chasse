@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { homeworldSceneSsrV78 } from "./homeworld-scene-ssr-v78.mjs";
-import { withResidenceO6, HOUSE, yard } from "./origin-training-yard-o6.mjs";
+import { trainingYardAdmissionO6, withResidenceO6, HOUSE, yard } from "./origin-training-yard-o6.mjs";
 import { continuation, continuationAdmissionO6, regionContextO6, walkO6 } from "./origin-continuation-o6.mjs";
 import { narrativeLongMemoryAdmission } from "./senior-rite-campaign.mjs";
 import { playShipAcquisitionV161 } from "./ship-receipt-v161.mjs";
@@ -164,6 +164,7 @@ export function legacyCanonicalCohortFixture({ realized = true } = {}) {
 }
 
 export function legacyPersonalShipFixture({ realized = true, stopAt } = {}) {
-  const base = { ...legacyFixture({ realized, ancient: false }), homeworldRegionV68: null };
-  return playShipAcquisitionV161(qa, base, stopAt);
+  // The canonical Elite itinerary already boards the issued hull before returning the crown.
+  if (stopAt) return playShipAcquisitionV161(qa, trainingYardAdmissionO6(), stopAt);
+  return { ...legacyFixture({ realized, ancient: false }), homeworldRegionV68: null };
 }
