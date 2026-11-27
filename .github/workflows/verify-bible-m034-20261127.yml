@@ -1,0 +1,48 @@
+name: Verify M034 next Homeworld route
+on:
+  push:
+    branches: [codex/verify-bible-m034-20261127]
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /docs/
+            /public/**/manifest.json
+            /.github/workflows/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Prepare the repository runtime
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify the route comparison, transfer and saved manifests
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/homeworld-route-m034.test.mjs tests/homeworld-coordination-m028.test.mjs tests/first-interstellar-v173.test.mjs
+      - name: Verify types and lint
+        if: ${{ !cancelled() }}
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+          npx eslint app/game/systems/homeworldRouteM034.ts app/game/HomeworldRouteM034.tsx app/game/systems/homeworld.ts app/game/HomeworldHub.tsx tests/homeworld-route-m034.test.mjs
