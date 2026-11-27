@@ -62,7 +62,9 @@ try {
     async function act(action) {
       await viewport.locator(`[data-o6-town-action="${action}"]`).waitFor();
       const at = await nav.position(), prev = await receipt();
-      await nav.interact();
+      await nav.release();
+      await page.keyboard.press("KeyE");
+      await nav.tick(96);
       const next = await receipt();
       assert.equal(next.journal.length, (prev?.journal.length ?? 0) + 1, action);
       const event = next.journal.at(-1);
@@ -73,6 +75,7 @@ try {
       const current = await disk();
       assert.deepEqual(current.homeworld.locationV77, event.at);
       assert.deepEqual(current.originV151.cohortRaceO6, seed.originV151.cohortRaceO6);
+      console.log("O6_M03_ACTION", JSON.stringify({ partial, action, at: event.at }));
     }
     async function visitForge(action) {
       const room = n.homeworldInteriorForBuildingV64("deep-forge");
