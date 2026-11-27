@@ -47,7 +47,9 @@ try {
     if (!(await ready.count())) await service.click();
     await ready.waitFor();
     await ready.click();
-    await page.locator("[data-clan-general-war]:visible").click();
+    const operations = page.locator("[data-clan-operations]:visible");
+    await operations.locator('[data-clan-operations-tab="post"]').click();
+    await operations.locator("[data-clan-general-war]").click();
     await button(page, "L’éclaireur du canyon").click();
     await route.waitFor();
   }
@@ -81,7 +83,10 @@ try {
   report.passed = true;
 } catch (error) {
   report.errors.push(error.stack ?? String(error));
-  if (page) await page.screenshot({ path: resolve(output, "failure.png") }).catch(() => {});
+  if (page) {
+    report.visibleControls = await page.getByRole("button").allTextContents().catch(() => []);
+    await page.screenshot({ path: resolve(output, "failure.png") }).catch(() => {});
+  }
   throw error;
 } finally {
   await writeFile(resolve(output, "report.json"), JSON.stringify(report, null, 2) + "\n");
