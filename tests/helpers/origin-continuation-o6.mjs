@@ -4,6 +4,7 @@ import { HOUSE, regions, saves, withResidenceO6, yard } from './origin-training-
 
 export { HOUSE, regions, saves };
 export const continuation = qa.load('app/game/systems/originContinuationO6.ts');
+export const practice = qa.load('app/game/systems/originPracticeO6.ts');
 const endings = qa.load('app/game/systems/originEndingsV170.ts');
 const clan = qa.load('app/game/systems/clanChronicle.ts');
 const ceremony = qa.load('app/game/systems/eliteRecognitionV174.ts');

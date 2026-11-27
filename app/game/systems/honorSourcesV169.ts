@@ -13,7 +13,7 @@ const kinds = ["chronicle", "solo", "contract", "npc-mission", "side-story"] as 
 type HonorSourceKindV169 = typeof kinds[number];
 interface HonorSourceEventV169 { id: string; source: HonorSourceKindV169; label: string; delta: number }
 interface HonorSourceReceiptV169 extends Omit<HonorSourceEventV169, "source" | "label"> {
-  source: HonorSourceKindV169 | "justice" | "bad-blood";
+  source: HonorSourceKindV169 | "justice" | "bad-blood" | "campaign-coop";
   label?: string;
 }
 interface HonorSourceLedgerV169 {
@@ -98,7 +98,7 @@ function readHonorSources(raw: unknown): HonorSourceLedgerV169 | null {
   for (const entry of raw.entries) {
     if (!isRecord(entry) || typeof entry.id !== "string" || !entry.id || entry.id.length > 128 ||
         seen.has(entry.id) ||
-        (!kinds.includes(entry.source as HonorSourceKindV169) && entry.source !== "justice" && entry.source !== "bad-blood") ||
+        (!kinds.includes(entry.source as HonorSourceKindV169) && entry.source !== "justice" && entry.source !== "bad-blood" && entry.source !== "campaign-coop") ||
         (entry.label !== undefined && (typeof entry.label !== "string" || entry.label.length > 180)) ||
         typeof entry.delta !== "number" || !Number.isSafeInteger(entry.delta) || Math.abs(entry.delta) > 1_000_000) return null;
     seen.add(entry.id);
@@ -205,4 +205,26 @@ export function settleHonorSourcesV169(save: SaveGame, previous: SaveGame | null
   if (!added && !ledger) return save;
   if (ledger && entries.length === ledger.entries.length && outsideBalance === ledger.outsideBalance && save.honorSourcesV169 === raw) return save;
   return { ...save, profile: { ...save.profile, honor }, honorSourcesV169: { ...ledger, version: VERSION, entries, outsideBalance } };
+}
+
+/** Appends a verified guest settlement to the existing non-ranking honour
+ * balance. Zero-value entries still consume the physical reward receipt. */
+export function creditCampaignCoopHonorV169(save: SaveGame, id: string, delta: number): SaveGame | null {
+  const raw = save.honorSourcesV169;
+  const ledger = readHonorSources(raw);
+  if ((raw != null && !ledger) || !id.startsWith("campaign-coop:") || id.length > 128 ||
+      !Number.isSafeInteger(delta) || delta < 0 || delta > 100 ||
+      !Number.isSafeInteger(save.profile.honor) || save.profile.honor > Number.MAX_SAFE_INTEGER - delta) return null;
+  const entries = ledger?.entries ?? [];
+  if (entries.length >= MAX_RECEIPTS || entries.some(entry => entry.id === id)) return null;
+  const priorBalance = Math.min(save.profile.honor, ledger?.outsideBalance ?? totalCredited(entries));
+  return {
+    ...save,
+    profile: { ...save.profile, honor: save.profile.honor + delta },
+    honorSourcesV169: {
+      version: VERSION,
+      entries: [...entries, { id, source: "campaign-coop", delta }],
+      outsideBalance: priorBalance + delta,
+    } satisfies HonorSourceLedgerV169,
+  };
 }

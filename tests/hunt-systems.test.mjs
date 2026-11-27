@@ -1010,3 +1010,115 @@ test("HuntCanvas wires every biome, hunt signal, AI brain, boss loop and V4 prey
   assert.doesNotMatch(source, /const PLATFORMS\b/);
   assert.doesNotMatch(source, /JUNGLE_CLIMB_ZONES/);
 });
+
+const reactiveApex = [
+  "ice-cryostalker",
+  "swamp-hydra",
+  "desert-sandmaw",
+  "ocean-leviathan",
+];
+
+const firstBossDecoy = { deviceId: "first-emitter", x: 310, y: 610, strength: 0.75 };
+const secondBossDecoy = { deviceId: "second-emitter", x: 465, y: 610, strength: 0.91 };
+
+test("native audio decoy pulses identify their single physical emitter", async () => {
+  const hunt = await huntPromise;
+  const trap = hunt.createHuntTrap({
+    id: "placed-audio-decoy",
+    ownerId: "hunter",
+    kind: "audio-decoy",
+    position: { x: 310, y: 610 },
+    facing: 1,
+    concealment: 0.4,
+  });
+  const first = hunt.stepHuntTrap(trap, [], 0.1, 0.5);
+  const second = hunt.stepHuntTrap(first.trap, [], 0.1, 1);
+  assert.notEqual(first.noise.id, second.noise.id);
+  assert.equal(first.noise.decoyDeviceId, trap.id);
+  assert.equal(second.noise.decoyDeviceId, trap.id);
+  const nearby = {
+    position: { x: 390, y: 590 },
+    elapsedSeconds: 1,
+    hearingMultiplier: 1.28,
+    occlusion: 0,
+    wind: { x: 0, y: 0, magnitude: 0, gust: 0 },
+  };
+  assert.ok(hunt.perceivedNoise(second.noise, nearby));
+  assert.equal(hunt.perceivedNoise(second.noise, { ...nearby, position: { x: 1300, y: 590 } }), null);
+  assert.equal(hunt.perceivedNoise(second.noise, { ...nearby, elapsedSeconds: 2 }), null);
+});
+
+test("four wild Apex pursue the emitter for four seconds without rearming on repeated pulses", async () => {
+  const hunt = await huntPromise;
+  for (const missionId of reactiveApex) {
+    const state = { ...hunt.createBossMechanicState(missionId), attackCooldownSeconds: 0 };
+    const first = hunt.stepBossMechanics(state, bossInput({
+      elapsedSeconds: 1,
+      heardAudioDecoys: [firstBossDecoy],
+    }));
+    assert.deepEqual(first.decision.decoyTarget, { x: 310, y: 610 }, missionId);
+    assert.equal(first.decision.attackId, null, missionId);
+    assert.equal(first.decision.movement, "approach", missionId);
+    assert.equal(first.state.sequence, state.sequence, missionId);
+    assert.equal(first.state.audioDecoy.untilSeconds, 5, missionId);
+    assert.deepEqual(first.effects.at(-1), {
+      kind: "audio-decoy-pursuit",
+      value: 4,
+      id: firstBossDecoy.deviceId,
+    });
+    const restored = JSON.parse(JSON.stringify(first.state));
+    const beforeExpiry = hunt.stepBossMechanics(restored, bossInput({
+      elapsedSeconds: 4.99,
+      heardAudioDecoys: [firstBossDecoy, secondBossDecoy],
+    }));
+    assert.equal(beforeExpiry.state.audioDecoy.untilSeconds, 5, missionId);
+    assert.deepEqual(beforeExpiry.decision.decoyTarget, first.decision.decoyTarget, missionId);
+    assert.equal(beforeExpiry.effects.some(({ kind }) => kind === "audio-decoy-pursuit"), false);
+
+    const afterExpiry = hunt.stepBossMechanics(beforeExpiry.state, bossInput({
+      elapsedSeconds: 5,
+      heardAudioDecoys: [firstBossDecoy],
+    }));
+    assert.equal(afterExpiry.decision.decoyTarget, undefined, missionId);
+    assert.ok(afterExpiry.decision.attackId, missionId);
+    const distinct = hunt.stepBossMechanics(afterExpiry.state, bossInput({
+      elapsedSeconds: 6,
+      heardAudioDecoys: [firstBossDecoy, secondBossDecoy],
+    }));
+    assert.deepEqual(distinct.decision.decoyTarget, { x: 465, y: 610 }, missionId);
+  }
+});
+
+test("trained hunters, vacuum guardian and Hive Mind memory keep their Bible-specific rules", async () => {
+  const hunt = await huntPromise;
+  for (const missionId of ["jungle-vey", "volcano-bad-blood", "ruins-ancient-guardian"]) {
+    const state = hunt.createBossMechanicState(missionId);
+    const ordinary = hunt.stepBossMechanics(state, bossInput());
+    assert.deepEqual(hunt.stepBossMechanics(state, bossInput({
+      heardAudioDecoys: [firstBossDecoy],
+    })), ordinary, missionId);
+    assert.match(hunt.describeBossAudioDecoy(state), missionId === "ruins-ancient-guardian" ? /vide/ : /entraîné/);
+  }
+
+  const hive = hunt.createBossMechanicState("fungal-hivemind");
+  assert.match(hunt.describeBossAudioDecoy(hive), /premier/);
+  const first = hunt.stepBossMechanics(hive, bossInput({ heardAudioDecoys: [firstBossDecoy] }));
+  assert.ok(first.decision.decoyTarget);
+  const restored = JSON.parse(JSON.stringify(first.state));
+  const second = hunt.stepBossMechanics(restored, bossInput({ elapsedSeconds: 5, heardAudioDecoys: [secondBossDecoy] }));
+  assert.equal(second.decision.decoyTarget, undefined);
+  assert.deepEqual(second.state.audioDecoy.heardDeviceIds, [firstBossDecoy.deviceId]);
+  assert.match(hunt.describeBossAudioDecoy(restored), /reconnaît/);
+});
+
+test("the Canvas scan, normal gear update, encounter movement and checkpoints use the decoy rule", async () => {
+  const canvas = await huntCanvasPromise;
+  assert.match(canvas, /const targetEnemy = slot\.gearId === "audio-decoy"\s*\? null/);
+  assert.match(canvas, /stepHuntTrap\([\s\S]+if \(stepped\.noise\) state\.noiseEvents\.push\(stepped\.noise\)/);
+  assert.match(canvas, /updateHuntTraps\(state, delta\);[\s\S]+updateBoss\(state, mission, difficulty, delta\);/);
+  assert.match(canvas, /stepBossMechanics\(state\.bossMechanics, \{[\s\S]+heardAudioDecoys: heardBossAudioDecoys\(state, bossCenter\)/);
+  assert.match(canvas, /playerScan\([\s\S]+describeBossAudioDecoy\(state\.bossMechanics\)/);
+  assert.match(canvas, /const decoyTarget = mechanicStep\.decision\.decoyTarget;[\s\S]+const targetX = clamp\(decoyTarget\.x[\s\S]+boss\.x \+= movement;/);
+  assert.match(canvas, /cloneBossMechanics\([\s\S]+heardDeviceIds: \[\.\.\.mechanics\.audioDecoy\.heardDeviceIds\]/);
+  assert.match(canvas, /!isValidSerializedBossAudioDecoy\(checkpoint\.bossMechanics\.audioDecoy\)/);
+});

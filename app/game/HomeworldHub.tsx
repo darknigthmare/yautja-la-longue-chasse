@@ -34,11 +34,13 @@ import {archiveActiveV106,archiveNearbyActionV106,archivePostReachedV106,createA
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent, type PointerEvent, type ReactNode } from "react";
 import { controlActionShortcut } from "./controlBindingLabels";
 import {
-  acknowledgeYouthCityStopV172, nextYouthCityStopV172, startYouthCityErrandV172, youthCityCarriesPieceV172,
+  acknowledgeYouthCityStopV172, advanceYouthCityGuideM003, nextYouthCityStopV172, startYouthCityErrandV172, youthCityCarriesPieceV172, youthCityGuidePendingM003,
   youthCityDeliveryClearedV176, youthCityDeliveryPositionV176, walkYouthCityDeliveryV176, YOUTH_CITY_STOPS_V172,
   type YouthCityDeliveryStepV176, type YouthCityRouteV172, type YouthCityStopV172,
 } from "./systems/youthCityErrandV172";
 import YouthCityForgeDetourV176 from "./YouthCityForgeDetourV176";
+import { saarGuideMarkM003, saarGuidePoseM003 } from "./systems/youthCityGuideM003";
+import HomeworldCivilianV72 from "./HomeworldCivilianV72";
 import { youthCampaignObjective, youthEquipmentSummary } from "./systems/youthCampaign";
 import HomeworldChildhoodV175 from "./HomeworldChildhoodV175";
 import { CHILDHOOD_POST_V175, actChildhoodV175, childhoodViewV175, hasChildhoodFoundationV175,
@@ -946,6 +948,21 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     viewportRef.current?.focus({preventScroll:true});
     const room = interiorRef.current;
     if(cartographyWritePausedRefV104.current||cartographyWritePausedRefV105.current||archiveWritePausedRefV106.current||comparisonWritePausedRefV107.current||cargoWritePausedRefV108.current||plaqueWritePausedRefV109.current)return;
+    const city = progressRef.current.youthCityErrandV172;
+    if (youthWelcome && city && city.ownerCreatedAt === saveRef.current.createdAt &&
+        saarGuideMarkM003(city, levelRefV77.current, actorRef.current, room?.buildingId ?? null)) {
+      const proposal = advanceYouthCityGuideM003(city);
+      if (!proposal) return;
+      clearInputs();
+      const stopped = { ...actorRef.current, vx: 0, vy: 0 };
+      actorRef.current = stopped;
+      setActor(stopped);
+      const saved = onProgress({ ...progressRef.current, youthCityErrandV172: proposal });
+      setAnnouncement(!saved ? "Le repère n’a pas été enregistré. Réessaie auprès de Saar."
+        : proposal.guideM003 === 1 ? "Saar : suis-moi sur le parvis jusqu’au degré monumental."
+        : "Saar : retiens ce degré. En bas, porte la pièce à la maîtresse des parures.");
+      return;
+    }
     if(!room){
       const effectivePlaque=archiveContinuationViewV111(continuationDraftRefV111.current)??plaqueDraftRefV109.current;
       const plaqueAction=archivePlaqueNearbyV109(effectivePlaque,plaqueContextV109());
@@ -1478,7 +1495,8 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   };
   const youthCityErrand = progress.youthCityErrandV172?.ownerCreatedAt === save.createdAt ? progress.youthCityErrandV172 : undefined;
   const youthCityStop = youthCityErrand && nextYouthCityStopV172(youthCityErrand);
-  const youthCityDelivery = youthCityStop === "forge-service" && youthCityErrand ? youthCityDeliveryPositionV176(youthCityErrand) : null;
+  const saarGuidePending = youthCityGuidePendingM003(youthCityErrand);
+  const youthCityDelivery = youthCityStop === "forge-service" && youthCityErrand && !saarGuidePending ? youthCityDeliveryPositionV176(youthCityErrand) : null;
   const youthCityHandInLocked = !!youthCityDelivery && !!youthCityErrand && !youthCityDeliveryClearedV176(youthCityErrand);
   const canStartYouthCityErrand = youthWelcome && save.prologue?.checkpoint.cohortV172?.steps === 7 && !save.youthTraining && !progress.youthCityErrandV172;
   const saveYouthCityErrand = (action: { route: YouthCityRouteV172 } | { stop: YouthCityStopV172 } | { step: YouthCityDeliveryStepV176 }) => {
@@ -1490,7 +1508,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     let next;
     if ("route" in action) {
       if (old || current.youthTraining || current.prologue?.checkpoint.cohortV172?.steps !== 7 || nearOpenPoint !== "audience-point") return;
-      next = startYouthCityErrandV172(current.createdAt, action.route, true);
+      next = startYouthCityErrandV172(current.createdAt, action.route, true, true);
     } else if ("step" in action) {
       if (!old || old.ownerCreatedAt !== current.createdAt || nearOpenPoint !== "forge-service") return;
       next = walkYouthCityDeliveryV176(old, action.step);
@@ -1506,7 +1524,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     if (!next) return;
     const acknowledged = onProgress({ ...progressRef.current, youthCityErrandV172: next });
     const message = !acknowledged ? "La course n’a pas pu être enregistrée. Reste auprès de ton interlocuteur pour réessayer." :
-      "route" in action ? "Pièce confiée. La course commence à pied." :
+      "route" in action ? next.guideM003 === 0 ? "Pièce confiée. Saar t’attend dehors au seuil de l’audience." : "Pièce confiée. La course commence à pied." :
       "step" in action ? youthCityDeliveryClearedV176(next) ? "Comptoir atteint. La pièce est toujours entre tes mains." : "Passage consigné." :
       action.stop === "forge-service" ? "La maîtresse des parures reprend la même pièce. La remise est enregistrée." :
       nextYouthCityStopV172(next) ? "Repère consigné dans le journal." : "La pièce et les trois repères sont consignés.";
@@ -1580,7 +1598,10 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
       ? 'Embarquer · Ascenseur des délégations'
       : liftStateV83.journey ? 'Cabine en déplacement · Ascenseur des délégations' : 'Appeler la cabine · Ascenseur des délégations'
     : nearbyConnectorV77?.connector.name;
-  const interactionLabel = nearbyPlaqueActionV109?nearbyPlaqueActionV109.label:nearbyPlaqueHostV109?'Archiviste · plaque K-17':nearbyCargoActionV108?nearbyCargoActionV108.label:nearbyCargoHostV108?'Intendante · répartir les lots':nearbyComparisonActionV107?nearbyComparisonActionV107.label:nearbyComparisonHostV107?'Archiviste · preuve située':nearbyArchiveActionV106?nearbyArchiveActionV106.label:nearbyArchivistV106?'Archiviste · dossiers séparés':nearbyConnectorV77 ? connectorLabelV83 : indoorTarget?.kind === "exit" ? "Sortir vers la cité" : atCoordinationGateM028 ? coordinationPromptM028 : atAdjutantWorkshopM029 ? "Poser le relais du convoi" : highPointAvailableV105&&progress.cartographyV105?.receipt?.phase==='observing'?'Comparer les repères du viaduc':nearbyCntlipHostV77?`Halte · ${nearbyCntlipHostV77.name}` : nearbyCartographerV104?'Cartographe · liaison du port':nearestDoor ? `Entrer · ${nearestDoor.label}` : nearest?.label ?? (nearbyResidentV68 ? `Parler · ${nearbyResidentV68.role}` : nearbyStreetContactV100?`Parler · ${nearbyStreetContactV100.role}`:null);
+  const saarPose = youthWelcome && !transitV77 ? saarGuidePoseM003(youthCityErrand, actor, levelIdV77, interiorId) : null;
+  const saarMark = saarPose ? saarGuideMarkM003(youthCityErrand, levelIdV77, actor, interiorId) : null;
+  const saarProjected = saarPose ? projectHomeworldWorldV77(saarPose, levelIdV77) : null;
+  const interactionLabel = saarMark?.label ?? (nearbyPlaqueActionV109?nearbyPlaqueActionV109.label:nearbyPlaqueHostV109?'Archiviste · plaque K-17':nearbyCargoActionV108?nearbyCargoActionV108.label:nearbyCargoHostV108?'Intendante · répartir les lots':nearbyComparisonActionV107?nearbyComparisonActionV107.label:nearbyComparisonHostV107?'Archiviste · preuve située':nearbyArchiveActionV106?nearbyArchiveActionV106.label:nearbyArchivistV106?'Archiviste · dossiers séparés':nearbyConnectorV77 ? connectorLabelV83 : indoorTarget?.kind === "exit" ? "Sortir vers la cité" : atCoordinationGateM028 ? coordinationPromptM028 : atAdjutantWorkshopM029 ? "Poser le relais du convoi" : highPointAvailableV105&&progress.cartographyV105?.receipt?.phase==='observing'?'Comparer les repères du viaduc':nearbyCntlipHostV77?`Halte · ${nearbyCntlipHostV77.name}` : nearbyCartographerV104?'Cartographe · liaison du port':nearestDoor ? `Entrer · ${nearestDoor.label}` : nearest?.label ?? (nearbyResidentV68 ? `Parler · ${nearbyResidentV68.role}` : nearbyStreetContactV100?`Parler · ${nearbyStreetContactV100.role}`:null));
   const heroPlacement = !youthWelcome && heroPlate.status === "custom-modular-body"
     ? homeworldModularPlacementV64(save.appearance.bodyMorphId, save.appearance.headStyleId)
     : homeworldPortraitPlacementV64(heroPlate.plateId, heroPlate.src, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.physicalHeight : 100);
@@ -1610,6 +1631,12 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
       <div className={styles.world} aria-hidden="true" data-homeworld-camera-mode={camera.mode} data-homeworld-camera-zoom={zoom.toFixed(3)} style={{ pointerEvents: 'none', width: sceneWidth, height: sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale, transform: `translate(${-cameraX * zoom}px,${-cameraY * zoom}px) scale(${zoom})` }}>
         {interior ? <HomeworldInteriorSurface room={interior} actorPosition={actor} activePointId={nearest?.id ?? null} trophies={save.trophies} returnM039={returnM039} coordinationM028={coordinationM028} />
           : <HomeworldWorldSceneV77 archivistActiveV111={!!dialog?.archivePlaqueV109&&dialog.archivePlaqueV109.owner===save.createdAt&&nearbyPlaqueHostV109} archivistPausedV111={archivistPausedV111} archivistSequenceV111={archivistSequenceV111} archivePlaqueV109={progress.visitedDistrictIds.includes('port')&&motionAssetsV74.ready?plaqueEffectiveViewV111:undefined} cargoV108={cargoViewV108} comparisonV107={comparisonViewV107} archiveV106={archiveViewV106} archiveActiveV106={nearbyArchivistV106} actor={actor} levelId={levelIdV77} camera={camera} seconds={phase} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} activeCartographyV104={nearbyCartographerV104} cartographyHighPointV105={cartographyActiveV105(progress.cartographyV105)} activeStreetContactV100={!nearbyConnectorV77&&!nearestDoor&&!nearest&&!nearbyCntlipHostV77&&!nearbyCartographerV104?nearbyStreetContactV100?.id:null} youthWelcome={youthWelcome} skiffActive={!!skiffV77} reducedMotion={reducedMotionV77} transit={transitV77} liftStateV83={liftSessionOwnerV83 === save.createdAt ? liftStateV83 : null} />}
+        {saarPose && saarProjected && <div className={styles.saarGuideM003} data-homeworld-saar-m003 data-x={saarPose.x} data-y={saarPose.y}
+          data-moving={saarPose.moving} style={{ left: saarProjected.x, top: saarProjected.y, zIndex: homeworldSceneDepthV78(saarPose.y, elevationV77) }}>
+          <HomeworldCivilianV72 npcId="saar" role="instructor" facing={saarPose.facing} moving={saarPose.moving}
+            seconds={phase} reducedMotion={reducedMotionV77} />
+          <span className={styles.saarNameM003}>Saar</span>
+        </div>}
         <div className={styles.hero} data-homeworld-actor="true" data-homeworld-depth-layer-v81="1" data-homeworld-level-v77={levelIdV77} data-homeworld-elevation-v77={elevationV77.toFixed(3)} data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={(youthWelcome ? youthSpeedV74 : actorSpeed) > 5} data-homeworld-running-v81={!blocked && Math.hypot(actor.vx / HOMEWORLD_ACTOR.walkSpeed, actor.vy / HOMEWORLD_ACTOR.depthSpeed) > 1.01} data-facing={actor.facing} data-youth-distance-v74={youthWelcome ? youthMotionV74.distanceWorld.toFixed(3) : undefined} style={{ transform: `translate(${projectedActor.x}px,${projectedActor.y + heroBob}px)`, zIndex: interior ? Math.round(actor.y) : homeworldSceneDepthV78(actor.y,elevationV77) }}>
           <span className={styles.heroVisual} style={youthWelcome ? { transform: "none" } : undefined}>
           {youthWelcome ? (motionAssetsV74.ready ? <HomeworldYouthMotionV74 seconds={phase} moving={youthSpeedV74 > 5} velocity={youthMotionV74.velocity} lastDirection={youthMotionV74.direction} distanceWorld={youthMotionV74.distanceWorld} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} /> : <HomeworldYouthMotionV72 seconds={0} moving={false} facing={actor.facing} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} />) : heroPlate.status === "custom-modular-body" ? <HomeworldModularHunter className={styles.heroPlate}
@@ -1632,11 +1659,16 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
       </div>
       {!interior && <div className={styles.haze} aria-hidden="true" />}
       <div className={styles.location} data-homeworld-neighborhood-v80={interior?undefined:civicNeighborhoodV80.id}><strong>{levelIdV77} · {interior?district?.name??homeworldLevelV77(levelIdV77).name:civicNeighborhoodV80.label}</strong><span>{interior ? "Rejoins le seuil au sud pour ressortir. Les personnages et objets se rencontrent à pied." : youthWelcome && district?.id === "port" ? "Les convois et les navettes du clan animent les quais." : youthWelcome && district?.id === "forges" ? "Les artisans préparent les armes et les parures du clan." : civicNeighborhoodV80.detail}</span></div>
+      {saarGuidePending && <p className={styles.saarInstructionM003} data-homeworld-saar-stage={youthCityErrand?.guideM003}>
+        {youthCityErrand?.guideM003 === 0 ? "Saar t’attend dehors au seuil de l’audience."
+          : saarPose?.waiting ? "Reviens sur le parvis, près de Saar, pour rejoindre le degré monumental."
+            : "Suis Saar jusqu’au degré monumental de l’acropole."}
+      </p>}
       {!interior && <div className={styles.minimap} role="img" aria-label={`Plan de la cité : ${progress.visitedDistrictIds.length} quartiers visités sur ${HOMEWORLD_DISTRICTS.length}. Position : ${district?.name ?? "liaison"}.`}>
         {HOMEWORLD_DISTRICTS_V77.filter(entry => entry.levelId === levelIdV77).map(entry => <i key={entry.id} className={styles.mapDistrict} data-visited={progress.visitedDistrictIds.includes(entry.id)} style={{ left: `${entry.x / HOMEWORLD_WORLD_V77.width * 100}%`, top: `${entry.y / HOMEWORLD_WORLD_V77.height * 100}%`, width: `${entry.width / HOMEWORLD_WORLD_V77.width * 100}%`, height: `${entry.height / HOMEWORLD_WORLD_V77.height * 100}%` }} />)}
         <i className={styles.mapActor} style={{ left: `${actor.x / HOMEWORLD_WORLD_V77.width * 100}%`, top: `${actor.y / HOMEWORLD_WORLD_V77.height * 100}%` }} />
       </div>}
-      {interactionLabel && !blocked && <button className={styles.prompt} type="button" onClick={interact} data-homeworld-door-id={nearestDoor?.id} data-homeworld-interior-target={indoorTarget?.kind}><kbd>{controlActionShortcut("hunt.interact", bindings)} / A</kbd>{youthWelcome && nearest?.kind === "ship" && !nearestDoor ? "Quais du clan" : interactionLabel}</button>}
+      {interactionLabel && !blocked && <button className={styles.prompt} type="button" onClick={interact} data-homeworld-door-id={saarMark ? undefined : nearestDoor?.id} data-homeworld-saar-action={saarMark ? true : undefined} data-homeworld-interior-target={indoorTarget?.kind}><kbd>{controlActionShortcut("hunt.interact", bindings)} / A</kbd>{youthWelcome && nearest?.kind === "ship" && !nearestDoor ? "Quais du clan" : interactionLabel}</button>}
       {cntlipV77.effects.peripheralOpacity>0&&<div aria-hidden="true" data-cntlip-sensory-v77={cntlipV77.ledger.state.activeDoses}
         style={{position:'absolute',inset:0,pointerEvents:'none',zIndex:4,opacity:cntlipV77.effects.peripheralOpacity,background:'radial-gradient(ellipse at center,transparent 38%,#96714b 100%)'}}/>}
       {!motionAssetsV74.ready && <div className={styles.pause} data-homeworld-motion-loading-v74 role={motionAssetsV74.error ? "alert" : "status"} aria-live="polite">
@@ -1731,8 +1763,9 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
           {youthWelcome && youthCityStop === selectedPoint.id && <>
             {youthCityDelivery && <YouthCityForgeDetourV176 position={youthCityDelivery} disabled={suspended || paused || inactive}
               onStep={step => saveYouthCityErrand({ step })} />}
+            {saarGuidePending && <p>Saar attend sur le parvis de l’acropole. Rejoins-le avant la remise de la pièce.</p>}
             <button type="button" data-r2-m003-stop={youthCityStop}
-              disabled={suspended || paused || inactive || youthCityHandInLocked} onClick={() => saveYouthCityErrand({ stop: youthCityStop })}>{YOUTH_CITY_STOPS_V172[youthCityStop].label}</button>
+              disabled={suspended || paused || inactive || youthCityHandInLocked || saarGuidePending} onClick={() => saveYouthCityErrand({ stop: youthCityStop })}>{YOUTH_CITY_STOPS_V172[youthCityStop].label}</button>
           </>}
           {youthWelcome && childhoodView && hasChildhoodFoundationV175({ ...save, homeworld: progress }) &&
             interior?.buildingId === CHILDHOOD_POST_V175.roomId && selectedPoint.id === CHILDHOOD_POST_V175.pointId &&

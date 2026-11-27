@@ -4,6 +4,7 @@ import {
   missionHonorRewardV166,
   resolveAcquiredRankV166,
 } from "./systems/honorProgressionV166";
+import { applyCampaignCoopGuestReward, projectCampaignCoopGuestReward, type CampaignCoopGuestReward, type CommittedCampaignCoopHunt } from "./systems/campaignCoopRewards";
 import { honorForCampaignRankV169, honorSourcesStatusV169, settleHonorSourcesV169 } from "./systems/honorSourcesV169";
 import { inspectMobilityLedger } from "./systems/mobility/ledger";
 import { isFutureResidenceV149, normalizeResidenceV149 } from "./systems/residenceV149";
@@ -32,6 +33,7 @@ import { normalizeYouthCampaign, youthCampaignMatchesSave } from "./systems/yout
 import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
 import { hasChildhoodFoundationV175, isChildhoodSuccessorV175 } from "./systems/homeworldChildhoodV175";
 import { youthCityDeliveryMatchesWriteV176 } from "./systems/youthCityErrandV172";
+import { saarGuideLocationMatchesWriteM003 } from "./systems/youthCityGuideM003";
 import { homeworldAdjutantMatchesSaveM029, isHomeworldAdjutantSuccessorM029 } from "./systems/homeworldAdjutantM029";
 import { isFutureRegionalLoopM014, isRegionalLoopSuccessorM014, regionalLoopMatchesSaveM014 } from "./systems/homeworldRegionalLoopM014";
 import { archiveTransferPending } from "./systems/archiveTransferGuard";
@@ -2118,7 +2120,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   }
   const rawErrand = isRecord(value.homeworld) ? value.homeworld.youthCityErrandV172 : undefined;
   const errand = save.homeworld.youthCityErrandV172;
-  if (isRecord(rawErrand) && rawErrand.delivery !== undefined &&
+  if (isRecord(rawErrand) && (rawErrand.delivery !== undefined || rawErrand.guideM003 !== undefined) &&
       (!errand?.delivery || errand.ownerCreatedAt !== save.createdAt || save.prologue?.status !== "completed" ||
         save.prologue.checkpoint.cohortV172?.steps !== 7)) return { save: null, failure: "invalid-save" };
   const childhood = save.homeworld.childhoodV175;
@@ -2265,6 +2267,7 @@ function persistCampaign(
   storage: Storage | null,
   key: string,
   replaceExisting: boolean,
+  coopReward?: CampaignCoopGuestReward,
 ): SaveWriteResult {
   const validated = inspectSavePayload(save);
   const requested: SaveGame = {
@@ -2319,7 +2322,8 @@ function persistCampaign(
           !isWarpCommonSuccessorR2(previousWarp, nextWarp)) {
         return failed("save-conflict", previous);
       }
-      if (!youthCityDeliveryMatchesWriteV176(previous.homeworld.youthCityErrandV172, requested.homeworld.youthCityErrandV172)) {
+      if (!youthCityDeliveryMatchesWriteV176(previous.homeworld.youthCityErrandV172, requested.homeworld.youthCityErrandV172) ||
+          !saarGuideLocationMatchesWriteM003(previous.homeworld.youthCityErrandV172, requested.homeworld.youthCityErrandV172, requested.homeworld.locationV77)) {
         return failed("save-conflict", previous);
       }
       const previousChildhood = previous.homeworld.childhoodV175;
@@ -2428,7 +2432,15 @@ function persistCampaign(
     return failed("read-failed");
   }
 
-  const snapshot = replaceExisting ? requested : settleHonorSourcesV169(requested, previous);
+  let snapshot = replaceExisting ? requested : settleHonorSourcesV169(requested, previous);
+  if (coopReward) {
+    // Award only against the current, already persisted guest campaign.
+    if (!previous || previousPrimarySerialized === null || previousSerialized !== previousPrimarySerialized ||
+        JSON.stringify(previous) !== JSON.stringify(validated.save)) return failed("save-conflict", previous ?? requested);
+    const credited = applyCampaignCoopGuestReward(snapshot, coopReward, MAX_TROPHY_RECORDS);
+    if (!credited) return failed("save-conflict", previous);
+    snapshot = credited;
+  }
   const serialized = JSON.stringify(snapshot);
   if (new TextEncoder().encode(serialized).byteLength > SAVE_MAX_SERIALIZED_BYTES) return failed("invalid-save");
   const observedBefore = observedCampaigns.get(storage)?.get(key);
@@ -2478,6 +2490,27 @@ export function writeSaveWithStatus(
   key = SAVE_STORAGE_KEY,
 ): SaveWriteResult {
   return persistCampaign(save, storage, key, false);
+}
+
+/** Bind restoration to the trusted campaign authority at composition time.
+ * Guest inputs carry only an opaque receipt reference. A transport adapter
+ * must authenticate the guest and resolve it to a confirmed host terminal. */
+export function createCampaignCoopGuestRewardRestorer(
+  resolveConfirmedHunt: (reference: string, guestOwnerCreatedAt: string) => CommittedCampaignCoopHunt | null,
+) {
+  return function restoreCampaignCoopGuestReward(
+    guest: SaveGame,
+    reference: string,
+    storage: Storage | null = browserStorage(),
+    key = SAVE_STORAGE_KEY,
+  ): SaveWriteResult {
+    const refused = (): SaveWriteResult => ({ save: guest, persisted: false, failure: "save-conflict" });
+    if (typeof reference !== "string" || !reference || reference.length > 128) return refused();
+    const hunt = resolveConfirmedHunt(reference, guest.createdAt);
+    if (!hunt) return refused();
+    const reward = projectCampaignCoopGuestReward(hunt, guest.createdAt, applyMissionResult);
+    return reward ? persistCampaign(guest, storage, key, false, reward) : refused();
+  };
 }
 
 /** Only for an explicit, confirmed reset or replacement chosen by the player. */

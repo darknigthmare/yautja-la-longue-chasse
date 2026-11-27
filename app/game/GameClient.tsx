@@ -1538,7 +1538,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!audio) return;
     const ambience: GameAudioBiome | null =
       screen === "mission" && selectedMission
-        ? selectedMission.biome
+        ? (selectedMission.id === "ruins-ancient-guardian" ? null : selectedMission.biome)
         : screen === 'buried-cradle' ? 'fungal'
         : screen === "glass-desert-expedition" ? "desert"
         : screen === "homeworld-expedition" ? "volcano"
@@ -3169,6 +3169,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return true;
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, persistSocialProgress, resumableHunt, screen, settingsOpen]);
 
+  const legacyDeckSiteR2 = screen === "deck" && legacyOriginEndingR2(save) &&
+    shipReceiptV161(save).receipt?.shipId === selectedShipId ? legacyShipSiteR2(save) : null;
   const legacySuspendedR2 = settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue ||
     campaignSaveBusy || !!resumableHunt || !gameFocusedV89;
   const openLegacyFinaleR2 = useCallback((scene: LegacySceneR2, site: LegacySiteR2, siteLabel: string) => {
@@ -5810,13 +5812,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <button type="button" className="ghost-button" onClick={() => { setChronicleReturnScreen("deck"); go("clan-chronicle"); }}>
                   Dossier de campagne
                 </button>
-                {legacyOriginEndingR2(save) && (() => {
-                  const site = legacyShipSiteR2(save);
-                  return site && shipReceiptV161(save).receipt?.shipId === selectedShipId &&
-                    !legacySceneRefusalR2(save, site, "epilogue") && <button type="button" className="ghost-button"
-                      data-open-legacy-epilogue-r2 disabled={legacySuspendedR2}
-                      onClick={() => openLegacyFinaleR2("epilogue", site, "Vaisseau personnel")}>Revoir les traces du voyage</button>;
-                })()}
+                {legacyDeckSiteR2 && !legacySceneRefusalR2(save, legacyDeckSiteR2, "epilogue") &&
+                  <button type="button" className="ghost-button" data-open-legacy-epilogue-r2 disabled={legacySuspendedR2}
+                    onClick={() => openLegacyFinaleR2("epilogue", legacyDeckSiteR2, "Vaisseau personnel")}>Revoir les traces du voyage</button>}
                 <button type="button" className="ghost-button" data-open-queen-hunt-v163 disabled={queenHuntBusy} onClick={openQueenHunt}>
                   Queen Hunt · contrats de ruche{queenHuntAccess.allowed ? "" : " (fermé)"}
                 </button>
