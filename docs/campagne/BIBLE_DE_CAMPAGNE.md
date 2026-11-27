@@ -2007,6 +2007,8 @@ L'enfance dans la cour, la cité et les premiers ateliers ; l'acte se termine au
 - **Échec et reprise :** un apprentissage incomplet ouvre l’exercice manquant et reporte la cérémonie.
 - **Sauvegarde :** `rank.Unblooded=true`
 
+La passation joue une réponse sonore originale à chaque dépôt confirmé de la cohorte. Le carnet conserve les dépôts sans répétition après rechargement.
+
 *Production (proposé)* — **Props :** aire de formation, coffre où ranger l'outil d'enfance, porte du râtelier Unblooded (animée), râtelier d'armes d'exercice, braseros cérémoniels. **VFX :** flammes des braseros, halo chaud sur la porte qui s'ouvre. **SFX :** `door-heavy`, `brazier-fire`, `clan-chant-short`, objective (existe). **Musique :** MUS-06.
 
 ## Acte II — Unblooded (R2-M007 → M015)
@@ -2659,7 +2661,7 @@ Le parcours O6-E1 s’ouvre après le bilan de la première leçon et la reconna
 
 **Déroulé :** traverser son lieu actuel (maison, vaisseau, navire, halte) ; la caméra montre objets et relations acquis puis rend la main pour un dernier geste. **Choix :** partir, accueillir ou transmettre. **Sauvegarde :** `campaign.epilogueSeen`
 
-Le reçu joué d’O6-E1 ouvre les gestes de l’épilogue. Les autres fins de voie gardent leur suivi.
+Le reçu joué d’O6-E1 ouvre les gestes de l’épilogue. Au foyer, le novice peut recevoir un conseil, reporter son départ puis prendre l’initiative au seuil. Au croisement, il choisit sa route ou retrouve le banc. Les autres fins de voie gardent leur suivi.
 
 *Production (proposé)* — **Props :** lieu actuel du joueur (maison, vaisseau, navire ou halte) avec ses objets et trophées réels, PNJ liés. **VFX :** lumière de fin de journée, lent panoramique. **SFX :** ambiance du lieu. **Musique :** MUS-51.
 
@@ -3228,4 +3230,18 @@ Ordre de production proposé, par lots jouables :
 - **Terre · Survol de Sol** · Le relevé de l’Okavango ouvre un survol avec la coque personnelle. Le joueur aligne son approche, règle sa vitesse, reprend après un recul de sécurité, observe le dépôt et pilote le retour au pont. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46063557634)
 
 - **Forge et canopée · Renfort d’outil et route d’Oseris** · La forge consomme deux os du lot choisi pour renforcer l’outil de dépeçage. La reprise et le retour de chasse conservent le renfort et l’usure de quatre points par geste. À Oseris, la peau prélevée accompagne les deux lianes, le retour de branche en branche et la descente sur le tronc. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46064400081)
+
+## Suite des recettes · Origine O6, cérémonie et atelier
+
+- **R2-M006 · Réponse de la cohorte** · Le dépôt de chacun des trois outils reçoit une réponse vocale synthétisée et jouée par le mix natif. Une reprise relit la passation sans rejouer les réponses déjà reçues. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46071387359)
+
+- **O6-M05 · La petite piste** · Après le pari d’Harek, Saar ouvre une piste d’exercice. Le joueur entend le choc sec et le frottement, observe la proie intacte ou retrouve son tracé après une fuite, reprend au dernier arrêt puis revient par la hauteur. Deux comptes rendus sont possibles auprès de Saar. Chromium a vérifié les deux sons en jeu et trois parcours au clavier. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46072524722)
+
+- **STORY5-TR-O6-06 · Le départ du novice** · Après les derniers gestes de M060 au foyer et la reconnaissance Ancient, le mentor donne un conseil. Le départ peut être reporté et repris. Le novice franchit le seuil en premier. Le mentor peut l’accompagner jusqu’au croisement ou revenir au banc. Le dossier garde la décision après rechargement. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46071736802)
+
+- **Voie O6 · Des premières pistes au foyer** · Après les derniers gestes de M060 au foyer et la reconnaissance Ancient, le mentor donne un conseil. Le départ peut être reporté et repris. Le novice franchit le seuil en premier. Le mentor peut l’accompagner jusqu’au croisement ou revenir au banc. Le dossier garde la décision après rechargement. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46071736802)
+
+- **Forge et canopée · Armes et retour de trophées** · Les lames de poignet et le Combistick équipé peuvent être améliorés à l’établi avec un lot d’os secondaires et un lot de tissus préparés. Chromium a joué les deux paliers du Combistick, avec reprise après chaque paiement et refus si l’archive de chasse est illisible. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46071135542)
+
+- **Achéron · Alerte du champ et sauvegardes** · Les tests chargent la constante de mission réelle à la reprise. L’approche distingue le flash proche et le silence des patrouilles hors de portée, tout en conservant les tests des autres mondes. La vibration et le champ d’énergie restent les signaux établis. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46070279658)
 
