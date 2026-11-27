@@ -1,5 +1,5 @@
 import type { SaveGame } from '../types';
-import type { OriginStateV151 } from './originsV151';
+import { originOfSaveV151, type OriginStateV151 } from './originsV151';
 import { isHomeworldRegionIdV68, type HomeworldRegionIdV68, type HomeworldRegionStateV68 } from './homeworldRegionsV68';
 import { inspectEliteRecognition } from './eliteRecognitionV174';
 import { inspectQuatzaRij, QUATZA_INPUT, QUATZA_TICK_LIMIT, createQuatzaFrame, replayQuatzaAttempt, stepQuatza, quatzaCampaignMatchesSave } from './quatzaRij';
@@ -54,7 +54,8 @@ export function normalizeSoloReturnO6(raw: unknown): SoloReturnRecordO6 | null {
 }
 
 export function soloReturnEvidenceO6(save: SaveGame): SoloReturnEvidenceO6 | null {
-  if (save.originV151?.originId !== 'O6' || save.prologue?.status !== 'completed' ||
+  const origin = save.originV151 ?? originOfSaveV151(undefined);
+  if (origin.originId !== 'O6' || save.prologue?.status !== 'completed' ||
       !save.eliteRecognitionV174?.recognized ||
       !save.prologue.chronicle.rites.some(rite => rite.id === 'elite-recognition') ||
       !save.prologue.chronicle.evidence.some(receipt => receipt.id === 'solitary-trial') ||
@@ -145,8 +146,8 @@ export function soloReturnViewO6(save: SaveGame, region: HomeworldRegionStateV68
 
 export function applySoloReturnO6(save: SaveGame, region: HomeworldRegionStateV68, order: SoloReturnOrderO6): OriginStateV151 | null {
   const evidence = soloReturnEvidenceO6(save);
-  const origin = save.originV151;
-  if (!evidence || !origin || soloReturnViewO6(save, region, evidence)?.active?.order !== order) return null;
+  const origin = save.originV151 ?? originOfSaveV151(undefined);
+  if (!evidence || soloReturnViewO6(save, region, evidence)?.active?.order !== order) return null;
   const record: SoloReturnRecordO6 = {
     version: 1, ownerCreatedAt: save.createdAt, regionId: region.regionId, evidence,
     orders: [...(origin.soloReturnO6?.orders ?? []), order],

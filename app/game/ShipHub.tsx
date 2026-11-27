@@ -1217,6 +1217,7 @@ function RoomSummary({
   suspended: boolean;
   onInspectionActiveChange: (active: boolean) => void;
 }) {
+  const campaignReceipts = useMemo(() => roomId === "archives" ? rankCampaignReceiptsV168(save) : [], [roomId, save]);
   if (roomId === "bridge-map") {
     return (
       <>
@@ -1497,7 +1498,7 @@ function RoomSummary({
       />
       <section aria-label="Épreuves de rang de la campagne" data-ship-campaign-rank-archives>
         <div style={styles.cardList}>
-          {rankCampaignReceiptsV168(save).map(rite => (
+          {campaignReceipts.map(rite => (
             <article className="codex-card" key={rite.id} data-campaign-rank={rite.id} data-rite-status={rite.status}>
               <span className="codex-label">{CAMPAIGN_RITE_STATUS_V168[rite.status]}</span>
               <h3>{rite.label}</h3>

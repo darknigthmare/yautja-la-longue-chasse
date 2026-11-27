@@ -13,13 +13,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'dec3ceff54f54d0ad2418feee92cd71e0580a625'
+      ASSET_RACCORDS_SOURCE_COMMIT: '970dd63e50b34bf982de6a9a388eb0db21da581d'
       BASE_COMMIT: 'fa89beeb2177dc5173a3a52c0528c0a11c2f7245'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'dec3ceff54f54d0ad2418feee92cd71e0580a625'
+          ref: '970dd63e50b34bf982de6a9a388eb0db21da581d'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -78,6 +78,8 @@ jobs:
             /public/game/prologue/v47/
             /content/the-pit/
             /public/game/review/the-pit/
+            /art-source/the-pit/
+            /production/qa/evidence/isles-v1-20261123/
             /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
             /public/game/homeworld/v77/lava-transit-skiff.png
             /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
