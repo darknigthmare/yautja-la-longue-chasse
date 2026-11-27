@@ -36,6 +36,7 @@ test('the voluntary departure needs the played lesson, a completed home M060 and
   assert.equal(view(withEpilogue(ancient, false)), null);
   assert.equal(view(withEpilogue(legacyFixture({ ancient: false }))), null);
   const home = withEpilogue(ancient);
+  assert.equal(home.legacyFinaleR2.version, 1);
   assert.equal(finale.legacyDepartureStatusR2(home).stage, 'waiting');
   assert.equal(finale.advanceLegacyDepartureR2(home, home.homeworldRegionV68, 'departure-escort'), null);
   const oldOrigin = { ...home.originV151 };
@@ -62,6 +63,7 @@ test('a deferred departure keeps the advice, signs the threshold first and can r
     save = reloaded.save;
   };
   for (const order of ['departure-listen', 'departure-advise', 'departure-defer']) advance(order);
+  assert.equal(save.legacyFinaleR2.version, 2);
   assert.deepEqual([view(save).stage, view(save).resolved, view(save).success], ['deferred', false, false]);
   assert.deepEqual(view(save).actions.map(action => action.order), ['departure-resume']);
   assert.match(view(save).line, /garde ton conseil/);

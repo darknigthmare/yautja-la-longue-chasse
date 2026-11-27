@@ -2131,7 +2131,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const selectedAdjutant = isRecord(value.homeworld) ? value.homeworld.adjutantM029 : undefined;
   if (isRecord(selectedAdjutant) && Number(selectedAdjutant.version) > 1) return { save: null, failure: "future-version" };
   const save = normalizeSave(value);
-  if (isRecord(value.legacyFinaleR2) && Number(value.legacyFinaleR2.version) > 1) {
+  if (isRecord(value.legacyFinaleR2) && Number(value.legacyFinaleR2.version) > 2) {
     return { save: null, failure: "future-version" };
   }
   if (!firstLessonMatchesSaveO6(save)) return { save: null, failure: "invalid-save" };

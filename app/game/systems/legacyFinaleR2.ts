@@ -72,13 +72,11 @@ type StoredEpilogueOrder = EpilogueOrder |
   { kind: "relations"; at: number; personalShipProof: PersonalShipProofR2 };
 type Journal<Order> = { site: LegacySiteR2; events: Order[] };
 export type LegacyFinaleR2 = {
-  version: 1;
   ownerCreatedAt: string;
   endingId: string;
   cohort?: Journal<CohortOrder>;
   epilogue?: Journal<StoredEpilogueOrder>;
-  departureO6?: DepartureJournalO6;
-};
+} & ({ version: 1; departureO6?: never } | { version: 2; departureO6: DepartureJournalO6 });
 type LegacySave = CompanionCampaign & Pick<SaveGame, "originV151" | "residenceV149" | "shipAcquisitionV89" |
   "legacyFinaleR2" | "tribunalV147" | "clanShipIncidents" | "clanShipTrophyHearing" | "eliteRecognitionV174"> & LegacyHaltSave;
 type LegacyHaltSave = Pick<SaveGame, "createdAt" | "homeworld" | "homeworldRegionV68" | "profile" | "prologue">;
@@ -479,7 +477,8 @@ function parseStoredEpilogueOrderR2(raw: unknown, site: LegacySiteR2, owner: str
 }
 
 export function normalizeLegacyFinaleR2(raw: unknown, ownerCreatedAt: string): LegacyFinaleR2 | null {
-  if (!record(raw) || raw.version !== 1 || raw.ownerCreatedAt !== ownerCreatedAt || !Number.isFinite(Date.parse(ownerCreatedAt)) ||
+  if (!record(raw) || (raw.version !== 1 && raw.version !== 2) ||
+      raw.ownerCreatedAt !== ownerCreatedAt || !Number.isFinite(Date.parse(ownerCreatedAt)) ||
       typeof raw.endingId !== "string" || !/^O[1-6]-E[1-3]$/.test(raw.endingId) || (!raw.cohort && !raw.epilogue)) return null;
   const state: LegacyFinaleR2 = { version: 1, ownerCreatedAt, endingId: raw.endingId };
   if (raw.cohort !== undefined) {
@@ -513,13 +512,11 @@ export function normalizeLegacyFinaleR2(raw: unknown, ownerCreatedAt: string): L
       events.push(event);
     }
   }
-  if (raw.departureO6 !== undefined) {
-    const departure = normalizeDepartureO6(raw.departureO6);
-    if (!departure || state.endingId !== "O6-E1" || state.epilogue?.site.kind !== "residence" ||
-        state.epilogue.site.id !== departure.houseId || !legacyEpilogueViewR2(state, state.epilogue.site).complete) return null;
-    state.departureO6 = departure;
-  }
-  return state;
+  if (raw.version === 1) return Object.hasOwn(raw, "departureO6") ? null : state;
+  const departure = normalizeDepartureO6(raw.departureO6);
+  if (!departure || state.endingId !== "O6-E1" || state.epilogue?.site.kind !== "residence" ||
+      state.epilogue.site.id !== departure.houseId || !legacyEpilogueViewR2(state, state.epilogue.site).complete) return null;
+  return { ...state, version: 2, departureO6: departure };
 }
 
 function personalShipEpilogueMatchesSaveR2(save: LegacySave, site: LegacySiteR2) {
@@ -573,7 +570,8 @@ export function advanceLegacyDepartureR2(save: LegacySave, region: HomeworldRegi
   const house = departureHouseR2(save);
   if (!journal || !house || !legacyFinaleMatchesSaveR2(save)) return null;
   const departure = advanceDepartureO6(house, region, journal.departureO6, order);
-  return departure ? { ...journal, departureO6: departure } : null;
+  const next: LegacyFinaleR2 | null = departure ? { ...journal, version: 2, departureO6: departure } : null;
+  return next;
 }
 
 export function legacyFinaleMatchesSaveR2(save: LegacySave): boolean {
