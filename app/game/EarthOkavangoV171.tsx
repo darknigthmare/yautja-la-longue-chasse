@@ -7,6 +7,11 @@ import {
   earthOkavangoWalkableV171, earthOkavangoWaterV171, OKAVANGO_ORBIT_SITES_V171, OKAVANGO_SECTORS_V171, OKAVANGO_ZONES_V171,
   type EarthOkavangoOrderV171, type EarthOkavangoViewV171, type EarthOrbitManeuverV171, type EarthOrbitViewV171,
 } from "./systems/earthOkavangoV171";
+import {
+  LION_SURVEY_DEPOSIT_V174, LION_SURVEY_MARKERS_V174, LION_SURVEY_WIDTH_V174, LION_SURVEY_WINDOWS_V174,
+  lionSurveyCanExtractV174, lionSurveyCanObserveV174, lionSurveyFloodedV174, lionSurveyMarkerV174,
+  lionSurveyMoveV174, type LionSurveyOrderV174, type LionSurveyViewV174,
+} from "./systems/earthLionSurveyV174";
 import { homeworldHeroPlate } from "./systems/homeworldCity";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import { shipTopAssetPath } from "./shipCatalogue";
@@ -58,8 +63,20 @@ const waterNotices = {
   rising: "L’eau monte · termine la traversée ou monte sur la levée.",
   high: "Gué submergé · la levée reste praticable entre les deux rives.",
 } as const;
-function coordinate(x: number, lane: number): CSSProperties {
-  return { left: `${(x + .5) * 10}%`, top: lane === 0 ? "64%" : "81%" };
+function coordinate(x: number, lane: number, width = 10): CSSProperties {
+  return { left: `${(x + .5) * 100 / width}%`, top: lane === 0 ? "64%" : "81%" };
+}
+
+function EarthHunter({ point, appearance, loadout }: {
+  point: CSSProperties; appearance: SaveGame["appearance"]; loadout: SaveGame["loadout"];
+}) {
+  const plate = homeworldHeroPlate(appearance.presetId);
+  if (plate.status === "custom-modular-body") return <div className={styles.actor} style={point}>
+    <HomeworldModularHunter className={styles.actorParts} appearance={appearance} morphId={appearance.bodyMorphId}
+      dreadStyleId={appearance.dreadStyleId} showArmor armorId={loadout.armorId} hasWristblades={loadout.weaponIds.includes("wristblades")} />
+  </div>;
+  // eslint-disable-next-line @next/next/no-img-element -- Existing native game sprite projected at its ground contact.
+  return <img className={styles.actor} src={plate.src} alt="" draggable={false} style={point} />;
 }
 
 function EarthOrbitPanel({ orbit, blocked, onOrder }: {
@@ -138,16 +155,111 @@ function EarthOrbitPanel({ orbit, blocked, onOrder }: {
   </section>;
 }
 
+function LionSurveyPanel({ survey, appearance, loadout, blocked, onOrder }: {
+  survey: LionSurveyViewV174; appearance: SaveGame["appearance"]; loadout: SaveGame["loadout"]; blocked: boolean;
+  onOrder(order: LionSurveyOrderV174): boolean;
+}) {
+  const terrain = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (survey.stage === "survey" && !blocked) terrain.current?.focus({ preventScroll: true });
+  }, [survey.stage, blocked]);
+
+  const flooded = lionSurveyFloodedV174(survey);
+  const surveyPoint = (x: number, lane: number) => coordinate(x, lane, LION_SURVEY_WIDTH_V174);
+  const marker = lionSurveyMarkerV174(survey);
+  const canScan = lionSurveyCanObserveV174(survey);
+  const canExtract = lionSurveyCanExtractV174(survey);
+  const onTerrainKey = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (blocked || event.repeat || event.target !== event.currentTarget) return;
+    const direction = directionKeys[event.key as keyof typeof directionKeys];
+    const key = event.key.toLowerCase();
+    const order: LionSurveyOrderV174 | null = direction ? { kind: "lion-move", direction }
+      : key === "r" ? { kind: "lion-analyse" } : (key === "e" || key === "enter")
+        ? canScan ? { kind: "lion-observe" } : canExtract ? { kind: "lion-extract" } : null : null;
+    if (!order) return;
+    event.preventDefault();
+    event.stopPropagation();
+    onOrder(order);
+  };
+
+  return <section className={styles.lionSurvey} data-lion-survey={survey.stage} data-lion-window={survey.window ?? undefined}
+    data-lion-position={survey.stage === "survey" ? `${survey.x}:${survey.lane}` : undefined}
+    data-lion-readings={survey.readings.length}>
+    {survey.stage === "planning" && <section className={styles.registry} aria-label="Fenêtre de reconnaissance">
+      <EarthGlobe />
+      <div>
+        <h2>Choisir la fenêtre de descente</h2>
+        <p>Repère les empreintes et la troupe depuis le couvert de la plaine, puis reviens au dépôt.</p>
+        {(Object.keys(LION_SURVEY_WINDOWS_V174) as (keyof typeof LION_SURVEY_WINDOWS_V174)[]).map(window => {
+          const timing = LION_SURVEY_WINDOWS_V174[window];
+          return <button className="ghost-button" type="button" key={window} data-lion-choose={window}
+            disabled={blocked} aria-pressed={survey.window === window}
+            onClick={() => onOrder({ kind: "lion-window", window })}>{timing.label} · {timing.detail}</button>;
+        })}
+        <button className="alien-button" type="button" data-lion-land disabled={blocked || !survey.window}
+          onClick={() => onOrder({ kind: "lion-land" })}>Descendre au dépôt de la plaine</button>
+      </div>
+    </section>}
+    {survey.stage === "survey" && <>
+      <div ref={terrain} className={styles.terrain} onKeyDown={onTerrainKey} data-lion-terrain
+        data-lion-flooded={flooded} data-lion-night={survey.window === "night"}
+        tabIndex={blocked ? -1 : 0} role="group" aria-label="Plaine des lions, avancer au clavier">
+        <div className={styles.sky} aria-hidden="true" />
+        <div className={styles.piste} aria-hidden="true" />
+        <div className={styles.berge} aria-hidden="true" />
+        {[2, 3, 4].map(x => <i key={x} className={styles.water} style={surveyPoint(x, 1)}
+          data-passable={!flooded} aria-hidden="true" />)}
+        <span className={styles.extraction} aria-hidden="true" style={surveyPoint(LION_SURVEY_DEPOSIT_V174.x, LION_SURVEY_DEPOSIT_V174.lane)}>⌂</span>
+        {LION_SURVEY_MARKERS_V174.map(reading => <span key={reading.id} className={styles.marker}
+          style={surveyPoint(reading.x, reading.lane)} data-read={survey.readings.includes(reading.id)} aria-hidden="true">
+          {survey.readings.includes(reading.id) ? "✓" : "◇"}
+        </span>)}
+        <EarthHunter point={surveyPoint(survey.x, survey.lane)} appearance={appearance} loadout={loadout} />
+      </div>
+      <div className={styles.groundInfo}>
+        <p><strong>{survey.x >= 5 ? "Lisière de la troupe" : "Talus de la plaine"}</strong> · {survey.lane === 0 ? "Levée" : "Contrebas"}</p>
+        <p className={styles.waterNotice} role="status">
+          {flooded ? "Bras d’eau submergé · contourne-le par la levée." : "Bras d’eau praticable · la crue gagne le contrebas."}
+        </p>
+        <p>Flèches pour marcher, R pour passer en Analyse, E pour observer ou remonter.</p>
+        {marker && <p>{marker.name} · {survey.readings.includes(marker.id) ? "consigné" : "à observer"}</p>}
+        {survey.readings.length === LION_SURVEY_MARKERS_V174.length && <p>Reviens à la balise du dépôt pour transmettre le relevé.</p>}
+      </div>
+      <div className={styles.actions}>
+        {directionNames.map(direction => <button className="ghost-button" type="button" key={direction}
+          data-lion-move={direction} disabled={blocked || !lionSurveyMoveV174(survey, direction)}
+          onClick={() => onOrder({ kind: "lion-move", direction })}>
+          {direction === "east" ? "Longer la lisière" : direction === "south" ? "Rejoindre le contrebas"
+            : direction === "north" ? "Monter sur la levée" : moveLabels.west}
+        </button>)}
+        <button className="ghost-button" type="button" data-lion-analyse aria-pressed={survey.visor === "analyse"}
+          disabled={blocked} onClick={() => onOrder({ kind: "lion-analyse" })}>Biomask · Analyse</button>
+        <button className="alien-button" type="button" data-lion-observe disabled={blocked || !canScan}
+          onClick={() => onOrder({ kind: "lion-observe" })}>Consigner l’observation</button>
+        <button className="alien-button" type="button" data-lion-extract disabled={blocked || !canExtract}
+          onClick={() => onOrder({ kind: "lion-extract" })}>Revenir à bord depuis le dépôt</button>
+      </div>
+    </>}
+    {survey.stage !== "planning" && <section className={styles.log} aria-label="Relevé de la plaine">
+      <h2>Observations de la plaine · {survey.readings.length} / {LION_SURVEY_MARKERS_V174.length}</h2>
+      <ul>{LION_SURVEY_MARKERS_V174.filter(reading => survey.readings.includes(reading.id)).map(reading =>
+        <li key={reading.id} data-lion-reading={reading.id}><strong>{reading.name}</strong> · {reading.detail}</li>,
+      )}</ul>
+      {survey.stage === "complete" && <p data-lion-receipt>Reconnaissance de la Plaine des lions consignée. La coque est revenue au pont.</p>}
+    </section>}
+  </section>;
+}
+
 export default function EarthOkavangoV171({ view, appearance, loadout, blocked, notice, onOrder, onClose, onSettings }: {
   view: EarthOkavangoViewV171; appearance: SaveGame["appearance"]; loadout: SaveGame["loadout"]; blocked: boolean; notice: string;
   onOrder(order: EarthOkavangoOrderV171): boolean; onClose(): void; onSettings(): void;
 }) {
   const terrain = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (view.phase === "ground" && !blocked) terrain.current?.focus({ preventScroll: true });
-  }, [view.phase, blocked]);
-  const plate = homeworldHeroPlate(appearance.presetId);
-  const ground = view.phase === "ground";
+    if (view.phase === "ground" && !view.lionSurvey && !blocked) terrain.current?.focus({ preventScroll: true });
+  }, [view.phase, view.lionSurvey, blocked]);
+  const ground = view.phase === "ground" && !view.lionSurvey;
+  const walking = view.phase === "ground";
   const returned = view.phase === "returned";
   const sector = OKAVANGO_SECTORS_V171.find(row => view.x <= row.end);
   const site = view.zone ? OKAVANGO_ZONES_V171[view.zone] : null;
@@ -175,17 +287,19 @@ export default function EarthOkavangoV171({ view, appearance, loadout, blocked, 
     data-okavango-traces={view.traces.length} data-okavango-water={ground ? water : undefined}>
     <header>
       <div><p className="eyebrow">Sol · Terre</p><h1 id="earth-okavango-title">
-        {ground ? "Delta de l’Okavango" : returned ? "Relevé de l’Okavango" : view.orbit ? "Survol de Sol" : "Registre terrestre"}
+        {view.lionSurvey ? "Plaine des lions" : ground ? "Delta de l’Okavango" : returned ? "Relevé de l’Okavango" : view.orbit ? "Survol de Sol" : "Registre terrestre"}
       </h1></div>
       <div className={styles.actions}>
         <button type="button" className="ghost-button" onClick={onSettings}>Réglages et sauvegardes</button>
-        {!ground && <button type="button" className="ghost-button" disabled={blocked}
+        {!walking && <button type="button" className="ghost-button" disabled={blocked}
           data-okavango-return={returned ? "deck" : "map"} onClick={onClose}>
-          {returned ? "Retrouver le pont" : view.orbit ? "Suspendre le survol" : "Revenir à la carte"}
+          {returned ? "Retrouver le pont" : view.lionSurvey ? "Suspendre la reconnaissance" : view.orbit ? "Suspendre le survol" : "Revenir à la carte"}
         </button>}
       </div>
     </header>
-    {view.orbit && !returned && <EarthOrbitPanel orbit={view.orbit} blocked={blocked} onOrder={onOrder} />}
+    {view.lionSurvey && <LionSurveyPanel survey={view.lionSurvey} appearance={appearance} loadout={loadout}
+      blocked={blocked} onOrder={onOrder} />}
+    {view.orbit && !returned && !view.lionSurvey && <EarthOrbitPanel orbit={view.orbit} blocked={blocked} onOrder={onOrder} />}
     {!ground && !returned && !view.orbit && <div className={styles.registry}>
       <EarthGlobe />
       <div>
@@ -219,14 +333,7 @@ export default function EarthOkavangoV171({ view, appearance, loadout, blocked, 
           <i key={x} className={styles.water} aria-hidden="true" style={coordinate(x, 1)}
             data-okavango-channel={x} data-passable={earthOkavangoWalkableV171(x, 1, water)} />,
         )}
-        {plate.status === "custom-modular-body"
-          ? <div className={styles.actor} style={coordinate(view.x, view.lane)}>
-            <HomeworldModularHunter className={styles.actorParts} appearance={appearance} morphId={appearance.bodyMorphId}
-              dreadStyleId={appearance.dreadStyleId} showArmor armorId={loadout.armorId} hasWristblades={loadout.weaponIds.includes("wristblades")} />
-          </div>
-          // eslint-disable-next-line @next/next/no-img-element -- Existing native game sprite projected at its ground contact.
-          : <img className={styles.actor} src={plate.src} alt="" draggable={false} style={coordinate(view.x, view.lane)} />
-        }
+        <EarthHunter point={coordinate(view.x, view.lane)} appearance={appearance} loadout={loadout} />
       </div>
       <div className={styles.groundInfo}>
         <p><strong>{sector?.name}</strong> · {view.lane === 0 ? water === "historical" ? "Piste haute" : "Levée" : "Berge basse"}</p>
@@ -258,6 +365,9 @@ export default function EarthOkavangoV171({ view, appearance, loadout, blocked, 
       {returned && <p>Retour à bord consigné. Secteur probable : île du Baobab mort.</p>}
       {returned && !view.orbit && <button type="button" className="alien-button" data-okavango-orbit-start
         disabled={blocked} onClick={() => onOrder({ kind: "begin-orbit" })}>Préparer un survol orbital</button>}
+      {returned && view.orbit?.stage === "complete" && !view.lionSurvey &&
+        <button type="button" className="alien-button" data-lion-prepare disabled={blocked}
+          onClick={() => onOrder({ kind: "lion-prepare" })}>Préparer la reconnaissance · Plaine des lions</button>}
       {returned && view.orbit?.scannedZone && <p data-okavango-orbit-complete={view.orbit.scannedZone}>
         Survol consigné · {OKAVANGO_ZONES_V171[view.orbit.scannedZone].name}. {OKAVANGO_ORBIT_SITES_V171[view.orbit.scannedZone]}
       </p>}

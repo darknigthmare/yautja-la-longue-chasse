@@ -2,14 +2,17 @@ import { loadYouthArt,youthClipFrame,type YouthArtBank,type YouthArtPose,type Yo
 import { YOUTH_ART_MANIFEST } from './youthArtManifest';
 import { drawActorContactShadow,getSpriteContact } from './spriteContact';
 import { TEMPLE_MODULAR_ATLAS_V70,drawTempleModuleV70 } from './templeModularArtV70';
-import { SOLO_V70_PURGE_M017, SOLO_V70_GALLERY_M017, soloV70GalleryThreatM017, soloV70DepthPostM017, soloV70PurgeRemainingM017 } from './systems/firstHuntSoloV70DepthsM017';
+import { SOLO_V70_PURGE_M017, SOLO_V70_GALLERY_M017, SOLO_V70_ROYAL_M017,
+  soloV70GalleryThreatM017, soloV70RoyalStatusM017, soloV70DepthPostM017, soloV70PurgeRemainingM017 } from './systems/firstHuntSoloV70DepthsM017';
 import { soloV70HuntTargetM017,soloV70Room,SOLO_V70_DEPTHS_M017,soloV70DepthDoorOpeningM017,SOLO_V70_SIGNS,SOLO_V70_ENERGY_VAULT,SOLO_V70_QUARANTINE_THRESHOLD,SOLO_V70_BELVEDERE,SOLO_V70_RECONNECTION,SOLO_V70_NEF_RELAY_M017,soloV70ReconnectionPreview,soloV70NefDeploymentM017,soloV70Platforms,soloV70Support,soloV70CampaignPortal,soloV70CanTravel,soloV70Objective,soloV70PlateTargets,type SoloV70State } from './systems/firstHuntSoloV70';
 export const TEMPLE_DRONE_V70='/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png';
 export const TEMPLE_GUARD_V70='/game/sprites/v4/rifle-soldier.png';
 export const TEMPLE_EGG_M017 = '/game/xeno-prime/berceau-v1/sprites/ruche/025_oeuf_ferme.png';
 export const TEMPLE_OPEN_EGG_M017 = '/game/xeno-prime/berceau-v1/sprites/ruche/026_oeuf_ouvert.png';
 export const TEMPLE_FACEHUGGER_M017 = '/game/xeno-prime/berceau-v1/sprites/personnages/058_facehugger.png';
-export async function loadTempleArtV70(expanded = false, gallery = false):Promise<YouthArtBank>{const bank=await loadYouthArt(YOUTH_ART_MANIFEST),images=new Map(bank.images);await Promise.all([TEMPLE_MODULAR_ATLAS_V70.src,TEMPLE_DRONE_V70,TEMPLE_GUARD_V70,...(expanded ? [TEMPLE_EGG_M017] : []),...(gallery ? [TEMPLE_OPEN_EGG_M017, TEMPLE_FACEHUGGER_M017] : [])].map(src=>new Promise<void>((resolve,reject)=>{const image=new Image();image.onload=()=>{images.set(src,image);resolve();};image.onerror=()=>reject(new Error('Image native du temple indisponible : '+src));image.src=src;})));return {...bank,images};}
+// The temple uses a shaded view of the existing xenomorph artwork for its captive queen.
+export const TEMPLE_ROYAL_M017 = '/game/xeno-prime/berceau-v1/sprites/personnages/059_matriarche_intacte.png';
+export async function loadTempleArtV70(expanded = false, gallery = false, royal = false):Promise<YouthArtBank>{const bank=await loadYouthArt(YOUTH_ART_MANIFEST),images=new Map(bank.images);await Promise.all([TEMPLE_MODULAR_ATLAS_V70.src,TEMPLE_DRONE_V70,TEMPLE_GUARD_V70,...(expanded ? [TEMPLE_EGG_M017] : []),...(gallery ? [TEMPLE_OPEN_EGG_M017, TEMPLE_FACEHUGGER_M017] : []),...(royal ? [TEMPLE_ROYAL_M017] : [])].map(src=>new Promise<void>((resolve,reject)=>{const image=new Image();image.onload=()=>{images.set(src,image);resolve();};image.onerror=()=>reject(new Error('Image native du temple indisponible : '+src));image.src=src;})));return {...bank,images};}
 /** Separate rooms, native original architecture, actual support planes. Native
  * drone drawings are never mirrored: withdrawal keeps its left-facing guard. */
 export function drawFirstHuntSoloV70(ctx:CanvasRenderingContext2D,s:SoloV70State,bank:YouthArtBank|null,reducedMotion:boolean){
@@ -93,14 +96,15 @@ export function drawFirstHuntSoloV70(ctx:CanvasRenderingContext2D,s:SoloV70State
    descent.plates.forEach((x,index) => marker(x,430,index ? 'PLAQUE VEK' : 'PLAQUE SAAR'));
  }
  const extension = s.depthsM017?.extension;
- const post = extension && soloV70DepthPostM017(s.room);
+ const post = extension && soloV70DepthPostM017(s.room, !!extension.royal);
+ const royal = soloV70RoyalStatusM017(extension, s.tick);
  const remaining = soloV70PurgeRemainingM017(s);
  const final = soloV70HuntTargetM017(s);
  if (post) {
    const completed = extension?.observations[post.id];
    drawTempleModuleV70(ctx,modular,post.id==='resin-anchor'?'counterweight':'console',post.x,post.y,65);
    marker(post.x,post.y,completed?'MÉCANISME CONSIGNÉ':post.label.toUpperCase());
-   if (!completed) post.plates?.forEach((x,index) => marker(x,430,index?'PLAQUE VEK':'PLAQUE SAAR'));
+   if (!completed && (post.id !== 'royal-lock' || royal?.stage === 'evaded')) post.plates?.forEach((x,index) => marker(x,430,index?'PLAQUE VEK':'PLAQUE SAAR'));
    if (post.id === 'eggs-observed') {
      const gallery = extension?.gallery;
      const opened = gallery?.openedAt != null;
@@ -133,8 +137,32 @@ export function drawFirstHuntSoloV70(ctx:CanvasRenderingContext2D,s:SoloV70State
      drawTempleModuleV70(ctx,modular,completed?'gate':'arch',805,430,185);
      text(completed?'GRILLE DE SECOURS VERROUILLÉE':'GRILLE DE SECOURS',805,232);
    } else if (post.id === 'royal-lock') {
-     drawTempleModuleV70(ctx,modular,'gate',878,430,225);
-     text(completed?'LOGE ROYALE ISOLÉE':'LOGE ROYALE SOUS CONFINEMENT',878,190);
+     if (royal) {
+       const image = images.get(TEMPLE_ROYAL_M017)!;
+       const rect = [0,0,image.width,image.height] as const;
+       const scale = (royal.stage === 'strike' ? 224 : 205) / image.height;
+       const contact = getSpriteContact(image,rect,image.height), x = royal.stage === 'strike' ? 837 : 883;
+       ctx.save();
+       ctx.filter = 'sepia(.3) saturate(.65) hue-rotate(144deg)';
+       ctx.globalAlpha = royal.stage === 'contained' ? .56 : .96;
+       drawActorContactShadow(ctx,x,430,48,0);
+       ctx.drawImage(image,x-image.width*scale/2,430-(contact?.supportY??image.height)*scale,image.width*scale,image.height*scale);
+       ctx.restore();
+       const [left,right] = SOLO_V70_ROYAL_M017.sweep;
+       if (royal.stage === 'warning' || royal.stage === 'strike') {
+         ctx.fillStyle = royal.stage === 'strike' ? '#d65035ad' : '#e9a45169';
+         ctx.fillRect(left,421,right-left,9);
+         ctx.strokeStyle = royal.stage === 'strike' ? '#f59071' : '#f4bd71';
+         ctx.lineWidth = 2;
+         ctx.strokeRect(left,SOLO_V70_ROYAL_M017.coverY,right-left,44);
+         text(royal.stage === 'strike' ? 'BALAYAGE AU SOL' : 'BALAYAGE ANNONCÉ',440,392,'#ffcf94',11);
+       }
+       if (royal.stage === 'waiting') marker(SOLO_V70_ROYAL_M017.x,430,'REPÈRE BAS');
+       text(royal.stage === 'contained' ? 'REINE CAPTIVE · LOGE ISOLÉE' :
+         royal.stage === 'evaded' ? 'DEUX APPUIS AVANT LE VERROU' : 'REINE CAPTIVE',878,190);
+     }
+     drawTempleModuleV70(ctx,modular,royal && !completed ? 'arch' : 'gate',878,430,225);
+     if (!royal) text(completed?'LOGE ROYALE ISOLÉE':'LOGE ROYALE SOUS CONFINEMENT',878,190);
    } else if (post.id === 'vent-purge') {
      drawTempleModuleV70(ctx,modular,'console',SOLO_V70_PURGE_M017.x,430,72);
      marker(SOLO_V70_PURGE_M017.x,430,completed?'CONDUITE PURGÉE':remaining?'CONDUITE OUVERTE':'COMMANDE AMONT');

@@ -13,7 +13,11 @@ const modules = homeworldSceneSsrV78();
 const saves = modules.load('app/game/save.ts');
 const { YOUTH_CONTROL_ACTIONS: actions } = modules.load('app/game/systems/youthControls.ts');
 const { descent, hunt } = thresholdsTemple.SOLO_V70_DEPTHS_M017;
-const expanded = process.argv.includes('--complete-depths');
+const legacyGallery = process.argv.includes('--legacy-gallery');
+const expanded = legacyGallery || process.argv.includes('--complete-depths');
+const royalEncounter = expanded && !legacyGallery;
+const royalAsset = '/game/xeno-prime/berceau-v1/sprites/personnages/059_matriarche_intacte.png';
+let loadedRoyalAsset = false;
 const posts = thresholdsTemple.SOLO_V70_DEPTH_POSTS_M017;
 const galleryAssets = new Set([
   '/game/xeno-prime/berceau-v1/sprites/ruche/026_oeuf_ouvert.png',
@@ -23,7 +27,8 @@ const loadedGalleryAssets = new Set();
 const previous = thresholdsCampaignRoute().save;
 const origin = { ...previous, prologue: { ...previous.prologue, templeTriadFirstM017: true } };
 const waiting = formationCampaignRoute({ origin, stop: 'observe' }).save;
-const seed = templeCampaignRoute({ origin: waiting, stop: 'return', archiveRoomCount: expanded ? undefined : 11 }).save;
+const seed = templeCampaignRoute({ origin: waiting, stop: 'return',
+  archiveRoomCount: expanded ? undefined : 11, legacyGallery }).save;
 seed.settings.masterVolume = 0;
 assert.equal(saves.parseSaveImport(saves.exportSave(seed)).failure, null);
 const key = saves.SAVE_STORAGE_KEY;
@@ -31,6 +36,7 @@ const output = resolve(process.env.M017_OUTPUT ?? 'outputs/qa-temple-depths-m017
 const report = {
   commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   seed: 'V69, V90 roles and V70 Vanne reached through native reducers. Only Chromium keyboard input acts after the Vanne.',
+  route: legacyGallery ? 'historical-gallery' : royalEncounter ? 'royal' : 'historical-eleven-rooms',
   passed: false, errors: [],
 };
 const bindings = seed.settings.controlBindings;
@@ -57,6 +63,7 @@ try {
   page.on('response', response => {
     const path = new URL(response.url()).pathname;
     if (galleryAssets.has(path) && response.ok()) loadedGalleryAssets.add(path);
+    if (path === royalAsset && response.ok()) loadedRoyalAsset = true;
   });
   page.setDefaultTimeout(30000);
   const canvas = page.locator('[data-solo-v70] canvas[data-solo-assets="true"]');
@@ -233,8 +240,88 @@ try {
     await approach(321, 1, 4);
     await leap(472, 370);
     await leap(royal.x, royal.y);
-    await observe(royal);
-    await shot('06-verrou-royal');
+
+    const royalStage = () => page.locator('[data-solo-v70]').getAttribute('data-temple-royal');
+    const readRoyal = async () => (await saved()).soloV70.checkpoint.depthsM017.extension.royal;
+    const readRoyalLock = async () => (await saved()).soloV70.checkpoint.depthsM017.extension.observations[royal.id];
+    const waitRoyal = async expected => {
+      for (let i = 0; i < 95 && await royalStage() !== expected; i++) await page.clock.runFor(50);
+      assert.equal(await royalStage(), expected);
+    };
+    if (royalEncounter) {
+      await waitRoyal('waiting');
+      await hold(interact, 1080);
+      assert.equal(await readRoyalLock(), undefined, 'The old console shortcut must require an evasion first.');
+      assert.equal(await royalStage(), 'waiting');
+      await approach(1040, 1);
+      await page.clock.runFor(350);
+      await hold(interact, 130);
+      assert.equal((await live()).room, royal.room, 'The purge door must stay shut.');
+      assert.equal((await saved()).soloV70.checkpoint.room, royal.room);
+
+      await approach(410, -1, 4);
+      assert.equal((await live()).player.y, 430);
+      await hold(interact, 115);
+      await waitRoyal('warning');
+      const announced = await readRoyal();
+      assert(Number.isSafeInteger(announced?.startedAt));
+      assert.equal(announced.evade, null);
+      await shot('06a-attaque-annoncee');
+      await page.reload();
+      await boot();
+      await waitRoyal('warning');
+      assert.deepEqual(await readRoyal(), announced);
+
+      const health = (await live()).health;
+      await waitRoyal('strike');
+      await shot('06b-balayage-au-sol');
+      await waitRoyal('recover');
+      assert.equal((await live()).health, health - 1, 'Missing a ground sweep costs exactly one health point.');
+      await waitRoyal('warning');
+      await hold(jump, 805);
+      assert.equal((await live()).player.y, 370, 'The hunter must actually land on the old cover platform.');
+      await waitRoyal('evaded');
+      const evaded = await readRoyal();
+      assert.equal(evaded.startedAt, announced.startedAt);
+      assert(Number.isSafeInteger(evaded.evade?.tick));
+      assert(evaded.evade.tick > announced.startedAt + 144);
+      assert(evaded.evade.y <= 386);
+      assert.equal((await live()).health, health - 1, 'The second sweep must be avoided by taking cover.');
+      await shot('06c-esquive-en-hauteur');
+      await page.reload();
+      await boot();
+      await waitRoyal('evaded');
+      assert.deepEqual(await readRoyal(), evaded);
+
+      await approach(472, 1, 4);
+      await leap(royal.x, royal.y);
+      await hold(signal, 80);
+      const supportsReady = state => state.companionMode === 'plates' &&
+        thresholdsTemple.soloV70DepthAppuisM017(state.companions.map(companion => companion.x), [530, 815]);
+      for (let i = 0; i < 40 && !supportsReady(await live()); i++) await page.clock.runFor(100);
+      assert(supportsReady(await live()), 'Saar and Vek must physically reach their supports.');
+      const lock = await observe(royal);
+      await waitRoyal('contained');
+      assert(thresholdsTemple.soloV70DepthAppuisM017(lock.positions.slice(1), [530, 815]));
+      assert(lock.tick >= evaded.evade.tick + royal.holdTicks);
+      assert(loadedRoyalAsset, 'The original royal source sprite must load from its tracked URL.');
+      await shot('06d-loge-confinee');
+      await page.reload();
+      await boot();
+      await waitRoyal('contained');
+      assert.deepEqual(await readRoyal(), evaded);
+      assert.deepEqual(await readRoyalLock(), lock);
+      report.royal = { announced, evaded, lock, health, missedGroundSweepDamage: 1,
+        loadedNativeAsset: royalAsset, gateDeniedBeforeContainment: true, previousShortcutDenied: true,
+        warningEvasionAndConfinementSurviveReload: true };
+    } else {
+      assert.equal(await royalStage(), null);
+      assert.equal(await readRoyal(), undefined);
+      await observe(royal);
+      assert.equal(loadedRoyalAsset, false);
+      report.legacyGallery = { originalConsoleWithNoRoyalEncounter: true };
+      await shot('06-verrou-royal');
+    }
 
     await crossTo(vent.room);
     const { x, duration } = thresholdsTemple.SOLO_V70_PURGE_M017;
@@ -281,6 +368,11 @@ try {
   report.relay = relay;
   report.threshold = threshold;
   if (expanded) report.deepObservations = backAtVanne.soloV70.checkpoint.depthsM017.extension.observations;
+  if (royalEncounter) {
+    assert.deepEqual(backAtVanne.soloV70.checkpoint.depthsM017.extension.royal, report.royal.evaded);
+    assert.deepEqual(report.deepObservations['royal-lock'], report.royal.lock);
+  }
+  if (legacyGallery) assert.equal(backAtVanne.soloV70.checkpoint.depthsM017.extension.royal, undefined);
   report.passed = true;
 } catch (error) {
   report.errors.push(error.stack);

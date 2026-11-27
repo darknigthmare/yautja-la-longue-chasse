@@ -5541,8 +5541,7 @@ function renderGame(
       drawPilotPlatform(context, platform, pilotTexture);
       continue;
     }
-    const canopyRoot = mission.biome === "jungle" &&
-      platform.routeId === "canopy-transfer" && platform.material === "root";
+    const canopyRoot = platform.routeId === "canopy-transfer" && platform.material === "root";
     const assignment = canopyRoot ? null : environmentGameplayPropForGeometryId(
       mission.id,
       platform.id,
@@ -5558,7 +5557,7 @@ function renderGame(
         assignment.asset.role,
         platform,
       );
-    } else if (mission.biome === "jungle") {
+    } else if (mission.biome === "jungle" || canopyRoot) {
       const junglePlatformIndex =
         canopyRoot
           ? 0

@@ -30,6 +30,7 @@ import type { TownBellRecordO6 } from "./systems/originTownBellO6";
 import { activeRivalRaceO6, playRivalRaceO6, type RivalRaceOrderO6, type RivalRaceRecordO6 } from "./systems/originRivalRaceO6";
 import { activeLittleTrailO6, playLittleTrailO6, type LittleTrailRecordO6 } from "./systems/originLittleTrailO6";
 import type { LittleTrailCueO6, LittleTrailOrderO6 } from "./systems/littleTrailRouteO6";
+import type { TwilightReturnRecordO6 } from "./systems/originTwilightReturnO6";
 import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
 import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -1563,11 +1564,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     save.settings.musicVolume,
   ]);
 
+  const [ceremonyAudio, setCeremonyAudio] = useState<import("./HomeworldChildhoodV175").ChildhoodCeremonyAudioV175>("outside");
+  const ceremonyOpen = screen === "homeworld" && ceremonyAudio !== "outside";
+  const ceremonyPaused = ceremonyOpen && ceremonyAudio === "paused";
+
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    const ambience: GameAudioBiome | null =
-      screen === "mission" && selectedMission
+    const ambience: GameAudioBiome | null = ceremonyOpen ? "ceremony-brazier"
+      : screen === "mission" && selectedMission
         ? (selectedMission.id === "ruins-ancient-guardian" ? null : selectedMission.biome)
         : screen === 'buried-cradle' ? 'fungal'
         : screen === "glass-desert-expedition" ? "desert"
@@ -1579,13 +1584,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     } else {
       audio.stopAmbience(0.55);
     }
-  }, [screen, selectedMission, shipStationOpen, hubLocation]);
+  }, [screen, selectedMission, shipStationOpen, hubLocation, ceremonyOpen]);
 
   const cradleReturnPending = save.buriedCradle?.status === "extracted" &&
     Boolean(save.buriedCradle.returnVisit) && save.buriedCradle.personalShipId === selectedShipId;
   const cradleReturnOnDeck = screen === "deck" && hubLocation === "deck" && cradleReturnPending;
   useEffect(() => {
     const context: GameMusicContext | null = cradleReturnOnDeck ? "cradle-return"
+      : ceremonyOpen ? "ceremony-m006"
       : settingsOpen || littleTrailListening || (screen === "buried-cradle-briefing" && cradleReturnPending) || screen === "planet-arrival" || screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90" ? null
       : screen === "title" ? "menu"
       : screen === "mission" ? huntMusicContext
@@ -1596,19 +1602,19 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       : hubLocation === "homeworld" && (screen === "homeworld" || shipStationOpen) ? "homeworld"
       : "ship";
     const apply = () => {
-      void audioRef.current?.setMusicContext(document.hidden && context !== "cradle-return" ? null : context, { fadeSeconds: 0.5 });
+      void audioRef.current?.setMusicContext(document.hidden && context !== "cradle-return" && context !== "ceremony-m006" ? null : context, { fadeSeconds: 0.5 });
     };
     apply();
     document.addEventListener("visibilitychange", apply);
     return () => document.removeEventListener("visibilitychange", apply);
-  }, [screen, settingsOpen, huntMusicContext, hubLocation, shipStationOpen, cradleReturnOnDeck, cradleReturnPending, littleTrailListening]);
+  }, [screen, settingsOpen, huntMusicContext, hubLocation, shipStationOpen, cradleReturnOnDeck, cradleReturnPending, littleTrailListening, ceremonyOpen]);
 
   useEffect(() => {
-    const apply = () => audioRef.current?.setPaused(settingsOpen || document.hidden);
+    const apply = () => audioRef.current?.setPaused(settingsOpen || ceremonyPaused || document.hidden);
     apply();
     document.addEventListener("visibilitychange", apply);
     return () => document.removeEventListener("visibilitychange", apply);
-  }, [settingsOpen]);
+  }, [settingsOpen, ceremonyPaused]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -3016,12 +3022,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return true;
   }, [persistSocialProgress]);
 
-  const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress, townBell?: TownBellRecordO6, workshopTrial?: RivalRaceRecordO6 | LittleTrailRecordO6): boolean => {
+  const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress, townBell?: TownBellRecordO6, workshopTrial?: RivalRaceRecordO6 | LittleTrailRecordO6 | TwilightReturnRecordO6): boolean => {
     const current = saveRef.current;
     if ((townBell || workshopTrial) && !current.originV151) return false;
     const originV151 = current.originV151 && (townBell || workshopTrial) ? {
       ...current.originV151, ...(townBell ? { townBellO6: townBell } : {}),
-      ...(workshopTrial ? "rival" in workshopTrial ? { littleTrailO6: workshopTrial } : { rivalRaceO6: workshopTrial } : {}),
+      ...(workshopTrial ? "trail" in workshopTrial ? { twilightReturnO6: workshopTrial } :
+        "rival" in workshopTrial ? { littleTrailO6: workshopTrial } : { rivalRaceO6: workshopTrial } : {}),
     } : undefined;
     const reward = Math.max(0, contractMarksV68(homeworld.contractsV68) - contractMarksV68(current.homeworld.contractsV68));
     // Completed orders pay once, in the same durable write as the signed report.
@@ -5723,7 +5730,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 onAdjutantAppointment={(homeworld, prologue) => persistSocialProgress({ homeworld, prologue })}
                 onRegionalLoopM014={openRegionalLoopM014}
                 regionalLoopM014Admission={showRegionalLoopM014}
-                onService={openHomeworldService} onYouthTraining={enterYouthTraining} onChildhoodSound={playGameplaySound} onSoloV66={enterSoloV66} onSoloV67={enterSoloV67} onSoloV68={enterSoloV68} onSoloV69={enterSoloV69} onSoloV70={enterSoloV70} onSoloV90={enterSoloV90} onRegionV68={openHomeworldRegionV68} onMinorArcsV160={persistMinorArcsV160}
+                onService={openHomeworldService} onYouthTraining={enterYouthTraining} onChildhoodSound={playGameplaySound} onChildhoodCeremonyAudio={setCeremonyAudio} onSoloV66={enterSoloV66} onSoloV67={enterSoloV67} onSoloV68={enterSoloV68} onSoloV69={enterSoloV69} onSoloV70={enterSoloV70} onSoloV90={enterSoloV90} onRegionV68={openHomeworldRegionV68} onMinorArcsV160={persistMinorArcsV160}
                 onReturnShip={() => go("deck")} onExpedition={openHomeworldExpedition} onNotify={setToast} />
               </ClanPaletteContextV146.Provider>
             </div>

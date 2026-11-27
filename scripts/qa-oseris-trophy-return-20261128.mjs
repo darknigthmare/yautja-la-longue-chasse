@@ -18,7 +18,13 @@ import postcss from 'postcss';
 import tailwind from '@tailwindcss/postcss';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
-const out=path.resolve(root,process.env.SKINNING_CANOPY_QA_OUTPUT??'outputs/qa-oseris-trophy-return-20261128');
+const args=process.argv.slice(2);
+assert.ok(args.length===0||(args.length===1&&args[0]==='--naraka'),'Expected --naraka or the historical Oseris route');
+const naraka=args.includes('--naraka');
+const field=naraka
+  ? {name:'Naraka-Delta',caseId:'loaded-naraka',missionId:'swamp-hydra',prey:'naraka-delta--iron-croc',trophy:'enemy-trophy-plaque-nucale-ferrique',trophyName:'Plaque nucale ferrique',hide:'Cuir à plaques ferriques',massKg:4.4}
+  : {name:'Oseris-IV',caseId:'loaded-oseris',missionId:'jungle-vey',prey:'oseris-iv--vineback-grazer',trophy:'enemy-trophy-omoplate-vegetalisee',trophyName:'Omoplate végétalisée',hide:'Peau à fibres végétales',massKg:3.2};
+const out=path.resolve(root,process.env.SKINNING_CANOPY_QA_OUTPUT??(naraka?'outputs/qa-naraka-loaded-return':'outputs/qa-oseris-trophy-return-20261128'));
 await mkdir(out,{recursive:true});
 const hash=value=>createHash('sha256').update(typeof value==='string'||ArrayBuffer.isView(value)?value:JSON.stringify(value)).digest('hex');
 const revision=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
@@ -39,18 +45,28 @@ const observeTrophyDraw='\n      window.__onOserisTrophyDrawV112?.(drop.claim.de
 const instrumentedSource=source.replace(marker,observer+marker)
   .replace(rootDrawMarker,rootDrawMarker+observeRootDraw).replace(boardingMarker,observeBoarding)
   .replace(trophyDrawMarker,trophyDrawMarker+observeTrophyDraw);
-const bootstrap=await build({stdin:{contents:'export {defaultSave,SAVE_STORAGE_KEY} from "./app/game/save";export {GALAXY_NAVIGATION} from "./app/game/galaxyNavigation";',resolveDir:root,loader:'ts'},bundle:true,write:false,format:'cjs',platform:'node',logLevel:'silent'});
+const bootstrap=await build({stdin:{contents:'export {defaultSave,normalizeSave,SAVE_STORAGE_KEY} from "./app/game/save";export {GALAXY_NAVIGATION} from "./app/game/galaxyNavigation";export {purchaseFieldToolV111} from "./app/game/systems/fieldToolsV111";',resolveDir:root,loader:'ts'},bundle:true,write:false,format:'cjs',platform:'node',logLevel:'silent'});
 const mod={exports:{}};
 runInNewContext(bootstrap.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url),structuredClone,TextEncoder});
-const admission=mod.exports.defaultSave('2026-11-09T00:00:00.000Z');
-admission.profile.clanMarks=100;
-admission.inventory.fieldToolIds=['flaying-tool'];
-admission.inventory.harvestV112.toolCondition=25;
+const replaySource='docs/qa/v112-ground-campaign/campaign-origin-save.json';
+const replayBytes=naraka?await readFile(path.join(root,replaySource)):null;
+let admission=naraka?mod.exports.normalizeSave(JSON.parse(replayBytes)):mod.exports.defaultSave('2026-11-09T00:00:00.000Z');
+if(naraka){
+  assert.equal(admission.missionProgress[field.missionId].status,'completed');
+  const purchase=mod.exports.purchaseFieldToolV111(admission,'flaying-tool');
+  assert.equal(purchase.ok,true);
+  admission=purchase.save;
+}else{
+  admission.profile.clanMarks=100;
+  admission.inventory.fieldToolIds=['flaying-tool'];
+  admission.inventory.harvestV112.toolCondition=25;
+}
+const initialToolCondition=admission.inventory.harvestV112.toolCondition;
 admission.settings.masterVolume=0;
 admission.settings.reducedGore=true;
 admission.settings.screenShake=false;
 const storageKey=mod.exports.SAVE_STORAGE_KEY;
-const route=mod.exports.GALAXY_NAVIGATION.sectors.flatMap(sector=>sector.systems.flatMap(system=>system.bodies.flatMap(body=>body.missions.map(mission=>({sector,system,body,mission}))))).find(item=>item.mission.id==='jungle-vey');
+const route=mod.exports.GALAXY_NAVIGATION.sectors.flatMap(sector=>sector.systems.flatMap(system=>system.bodies.flatMap(body=>body.missions.map(mission=>({sector,system,body,mission}))))).find(item=>item.mission.id===field.missionId);
 assert.ok(route);
 const bundle=await build({absWorkingDir:root,entryPoints:['tests/browser/oseris-trophy-return-20261128.fixture.jsx'],bundle:true,write:false,format:'iife',platform:'browser',jsx:'automatic',outfile:'fixture.js',metafile:true,logLevel:'silent',external:['/game/*'],define:{'process.env.NODE_ENV':'"production"'},plugins:[{name:'native-gameclient-with-declared-observers',setup(builder){
   builder.onLoad({filter:/\/app\/globals\.css$/},async args=>({loader:'css',resolveDir:path.dirname(args.path),contents:(await postcss([tailwind({base:root})]).process(await readFile(args.path,'utf8'),{from:args.path})).css}));
@@ -68,9 +84,9 @@ const report={
   sourceHashes,hookSha256:hash(observer),renderObserverSha256:hash(observeRootDraw),boardingObserverSha256:hash(observeBoarding),trophyObserverSha256:hash(observeTrophyDraw),bundleSha256:hash(js.contents),cssBundleSha256:hash(css.contents),
   inputTimestampSemantics:'Input logs use the nearest decision observation, not the exact browser event-dispatch clock. Native simulation continues while screenshots, DOM inspection and protocol messages are processed.',
   instrumentation:['A declared Canvas mount hook observes native state, stages one dead local prey, and provides a single optional authored-arena Apex defeat setup without moving the player or claiming a trophy','Read-only observers record the native canvas image painted for each collision root and available secondary trophy','A passthrough Storage.prototype.setItem observer records the successful native platform call without changing bytes or acknowledgements','No production GameClient callback, ownership check, sidecar encoder, writer or claim is substituted'],
-  admission:{kind:'Declared initial campaign with field tool, 100 marks and condition 25',sha256:hash(admission),save:admission},
-  scope:'Actual campaign navigation and GameClient admission, native harvest, charged canopy traversal, westward return through two real branches with sidecar persistence and recovery. The fixture creates one local Vineback Grazer corpse through the native damage function at the canonical spawn. Before the last ground leg a separate disclosed fixture resolves Apex combat and its prerequisites at its authored position. All movement, harvest, trophies, stashes, stamina, collisions, approach to boarding, and settlement use native controls.',
-  limits:['Automated desktop Chromium','The initial Vineback Grazer kill and later Apex defeat are fixture setups. The trophies themselves are claimed through the real rites.','Proof applies to this Oseris-IV lower canopy route on desktop'],
+  admission:{kind:naraka?'Archived legitimate campaign replay and native field-tool purchase':'Declared initial campaign with field tool, 100 marks and condition 25',sha256:hash(admission),save:admission,...(replayBytes?{source:replaySource,sourceSha256:hash(replayBytes)}:{})},
+  scope:naraka?'Actual Naraka-Delta revisite, native skinning and trophy rite, ground and rest sidecars, recovery and definitive extraction. One local Iron Crocodile body and a separate Apex defeat are explicitly prepared through native damage without moving the hunter.':'Actual campaign navigation and GameClient admission, native harvest, charged canopy traversal, westward return through two real branches with sidecar persistence and recovery. The fixture creates one local Vineback Grazer corpse through the native damage function at the canonical spawn. Before the last ground leg a separate disclosed fixture resolves Apex combat and its prerequisites at its authored position. All movement, harvest, trophies, stashes, stamina, collisions, approach to boarding, and settlement use native controls.',
+  limits:['Automated desktop Chromium','The initial prey kill and later Apex defeat are fixture setups. The trophies themselves are claimed through the real rites.','Proof applies to the '+field.name+' route on desktop'],
 };
 const tracked=new Map(execFileSync('git',['ls-tree','-r',revision,'--','public'],{cwd:root,encoding:'utf8',maxBuffer:16*1024*1024}).trim().split('\n').filter(Boolean).map(line=>{const [meta,name]=line.split('\t');return[name,meta.split(' ')[2]];}));
 const requests=new Map(),pending=new Map();
@@ -210,11 +226,11 @@ async function performTrophyRite(){
   return inputs;
 }
 async function canopy(){
-  await newCase('loaded-oseris');
-  const data=report.cases['loaded-oseris'],initial=await observation();
-  assert.equal(initial.missionId,'jungle-vey');
-  assert.equal((await campaign()).missionProgress['jungle-vey'].completions,0);
-  const rests=initial.world.platforms.filter(platform=>platform.id.startsWith('v112-canopy-jungle-vey-0-')).sort((a,b)=>a.x-b.x);
+  await newCase(field.caseId);
+  const data=report.cases[field.caseId],initial=await observation();
+  assert.equal(initial.missionId,field.missionId);
+  assert.equal((await campaign()).missionProgress[field.missionId].completions,admission.missionProgress[field.missionId].completions);
+  const rests=initial.world.platforms.filter(platform=>platform.id.startsWith('v112-canopy-'+field.missionId+'-0-')).sort((a,b)=>a.x-b.x);
   const entry=initial.world.climbables.find(support=>support.id===rests[0]?.id.replace('-rest','-grip'));
   const flexible=initial.world.climbables.find(support=>support.id===rests[1]?.id.replace('-rest','-grip'));
   const next=initial.world.climbables.find(support=>support.id===rests[2]?.id.replace('-rest','-grip'));
@@ -263,34 +279,35 @@ async function canopy(){
   };
   await page.locator('canvas').last().focus();
   let cargo,secondary;
-  await check('the Oseris-IV forest route begins with a real harvest and original geometry at the canonical insertion',async()=>{
+  await check(field.name+' begins with a real harvest and original geometry at the canonical insertion',async()=>{
     assert.ok(Math.abs(initial.player.x-initial.world.spawn.x)<2);
     assert.equal(initial.fieldLoad.movementMultiplier,1);
     assert.equal(initial.fieldLoad.climbStaminaMultiplier,1);
     const setups=await page.evaluate(()=>window.__skinningCanopyQaV112.setups);
     assert.equal(setups.length,1);
-    assert.equal(setups[0].sourceEnemyId,'oseris-iv--vineback-grazer');
+    assert.equal(setups[0].sourceEnemyId,field.prey);
     assert.ok(setups[0].originalEnemyIds.every(id=>initial.enemies.some(enemy=>enemy.id===id)));
     assert.ok(initial.world.hazards.some(hazard=>hazard.damagePerSecond>0));
     assert.equal(entry.kind,'tree');assert.equal(flexible.kind,'vine');assert.equal(next.kind,'vine');
     assert.ok(rests.every(rest=>rest.material==='root'&&rest.collision==='one-way'));
-    const art=await page.waitForFunction(()=>window.__skinningCanopyQaV112.trophyDraws.get('enemy-trophy-omoplate-vegetalisee'));
+    const art=await page.waitForFunction(id=>window.__skinningCanopyQaV112.trophyDraws.get(id),field.trophy);
     const paintedTrophy=await art.jsonValue();
     await art.dispose();
-    assert.ok(paintedTrophy.src.endsWith('/enemy-trophy-omoplate-vegetalisee.webp'));
+    assert.ok(paintedTrophy.src.endsWith('/'+field.trophy+'.webp'));
     assert.equal(paintedTrophy.width,256);
     assert.equal(paintedTrophy.height,256);
+    const campaignTrophies=(await campaign()).trophies;
     await capture('00a-native-secondary-trophy-art');
     await page.keyboard.press('KeyE');
     await page.waitForFunction(()=>Boolean(window.__skinningCanopyQaV112.runtime.game.regularTrophyDropId));
     const riteKeys=await performTrophyRite();
     const claimed=await observation();
-    const drop=claimed.secondaryDrops.find(item=>item.sourceEnemyId==='oseris-iv--vineback-grazer');
+    const drop=claimed.secondaryDrops.find(item=>item.sourceEnemyId===field.prey);
     assert.equal(drop?.collected,true);
-    assert.equal(drop.name,'Omoplate végétalisée');
+    assert.equal(drop.name,field.trophyName);
     secondary=drop.claim;
     assert.equal(claimed.phase,'tracking');
-    assert.deepEqual((await campaign()).trophies,[]);
+    assert.deepEqual((await campaign()).trophies,campaignTrophies);
     await capture('00-native-secondary-trophy');
     await page.getByRole('button',{name:'Examiner la proie vaincue',exact:true}).click();
     const flay=page.locator('[data-rite-action-v112="flay"]');
@@ -311,12 +328,12 @@ async function canopy(){
     await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().rites.specimensV112.length===1);
     const loaded=await observation();
     [cargo]=loaded.rites.specimensV112;
-    assert.equal(cargo.label,'Peau à fibres végétales');
-    assert.equal(cargo.massKg,3.2);
+    assert.equal(cargo.label,field.hide);
+    assert.equal(cargo.massKg,field.massKg);
     assert.equal(cargo.volumeUnits,3);
     assert.ok(loaded.fieldLoad.movementMultiplier<1);
     assert.ok(loaded.fieldLoad.climbStaminaMultiplier>1);
-    await capture('01-oseris-native-hide');
+    await capture('01-native-hide');
     return {cargo,secondary,paintedTrophy,riteKeys,empty:initial.fieldLoad,loaded:loaded.fieldLoad};
   });
   const assertCargo=state=>{
@@ -325,12 +342,65 @@ async function canopy(){
     assert.equal(state.rites.carryingCorpseId,null);
     assert.ok(state.fieldLoad.movementMultiplier<1&&state.fieldLoad.climbStaminaMultiplier>1);
   };
+
+  if(naraka)await check('the loaded ground checkpoint reopens in a new campaign document',async()=>{
+    await pause();
+    const transition=await reloadHunt('02-charged-ground');
+    assertCargo(transition.after.state);
+    assert.equal(transition.after.state.player.grounded,true);
+    assert.equal(transition.after.state.player.climbing,false);
+    assert.equal(transition.after.state.player.x,transition.before.sidecar.snapshot.checkpoint.player.x);
+    await capture('02-charged-ground-restored');
+    await resume();
+    return {player:transition.after.state.player,load:transition.after.state.fieldLoad};
+  });
+  const stashAndResume=async(landed,rested)=>{
+    assertCargo(rested);
+    await pause();
+    const before=await campaign();
+    await page.getByRole('button',{name:'Déposer · '+field.hide,exact:false}).click();
+    const deposited=await observation();
+    const [stash]=deposited.rites.stashedSpecimensV112;
+    assert.equal(stash.specimenId,cargo.id);
+    assert.equal(stash.y,landed.y);
+    assert.ok(stash.x>=landed.x&&stash.x<=landed.x+landed.width);
+    assert.equal(deposited.fieldLoad.massKg,0);
+    assert.deepEqual(deposited.secondaryDrops.filter(item=>item.collected).map(item=>item.claim),[secondary]);
+    await capture('14a-native-deposit-on-root');
+    const transition=await reloadHunt('14-charged-rest');
+    assert.deepEqual(transition.after.state.rites.stashedSpecimensV112,[stash]);
+    assert.equal(transition.after.state.fieldLoad.massKg,0);
+    assert.deepEqual(await campaign(),before);
+    await page.getByRole('button',{name:'Reprendre · '+field.hide,exact:false}).click();
+    const recovered=await observation();
+    assertCargo(recovered);
+    assert.deepEqual(recovered.rites.stashedSpecimensV112,[]);
+    assert.deepEqual(recovered.rites.completedEventIds,deposited.rites.completedEventIds);
+    assert.deepEqual(await campaign(),before);
+    assert.equal(transition.after.state.player.grounded,true);
+    assert.equal(transition.after.state.player.climbing,false);
+    assert.equal(transition.after.state.player.y,transition.before.sidecar.snapshot.checkpoint.player.y);
+    await resume();
+    const recoveredRest=await until('stamina recovery on the real rest',2500,async state=>state.player.grounded&&
+      (state.player.stamina>transition.after.state.player.stamina||state.player.stamina===state.player.maxStamina));
+    await capture('14-native-loaded-rest');
+    return {rest:landed.id,stash,before:rested.player,after:recoveredRest.player};
+  };
   await page.locator('canvas').last().focus();
   await page.keyboard.press('KeyC');
-  await until('approach entry tree',20000,async state=>{
-    const dx=entry.x+entry.width/2-state.player.x-state.player.width/2;
+  let lastX=initial.player.x,lastMotion=0,hopUntil=0;
+  await until('approach entry tree',25000,async state=>{
+    const {player,elapsed}=state;
+    const dx=entry.x+entry.width/2-player.x-player.width/2;
     if(Math.abs(dx)<10){await hold(['up'],'grasp the authored entry tree',state);return true;}
-    await hold([dx>0?'right':'left'],'walk from canonical insertion',state);return false;
+    const direction=dx>0?'right':'left';
+    if(naraka){
+      if(Math.abs(player.x-lastX)>.8)lastMotion=elapsed;
+      lastX=player.x;
+      if(player.grounded&&Math.abs(dx)>55&&elapsed>=hopUntil&&elapsed-lastMotion>.6)hopUntil=elapsed+.25;
+      if(elapsed<hopUntil){await hold([direction,'jump'],'jump around a real shore obstacle',state);return false;}
+    }
+    await hold([direction],'walk from canonical insertion',state);return false;
   });
   await until('climb above first branch',18000,async state=>{
     await hold(['up'],'native ascent',state);
@@ -362,158 +432,139 @@ async function canopy(){
     await capture('09-first-native-rest');
     return{player:landed.player,hud:await page.locator('[data-canopy-hud-v112]').innerText()};
   });
-  await hold(['right','jump'],'jump from first branch toward the flexible support rest');
-  await until('second rest approach',4000,async state=>{
-    const center=state.player.x+state.player.width/2;
-    if(center>=rests[1].x+rests[1].width/2-20)await hold(['jump'],'release horizontal steering above the rest',state);
-    return state.player.grounded&&Math.abs(state.player.y+state.player.height-rests[1].y)<2;
-  });
-  await hold([],'acknowledge jump release at second rest');await frame();
-  await hold(['up'],'grasp and shorten the real flexible support');
-  await until('climb flexible support',15000,async state=>state.player.climbing&&state.player.climbZoneId===flexible.id&&state.player.y+state.player.height*.28-flexible.y<=120);
-  await hold(['right'],'activate the real pendulum');
-  await until('attach pendulum',3000,async state=>Boolean(state.player.canopySwing));
-  await hold([],'neutral pendulum before its durable checkpoint');
-  await check('actual pendulum snapshot survives sidecar claim and a new document without an extra impulse',async()=>{
-    await pause();
-    const transition=await reloadHunt('10-pendulum');
-    assert.deepEqual(transition.after.state.player.canopySwing,transition.before.sidecar.snapshot.checkpoint.player.canopySwing);
-    assert.equal(transition.after.state.player.velocityX,transition.before.sidecar.snapshot.checkpoint.player.velocityX);
-    assert.equal(transition.after.state.player.velocityY,transition.before.sidecar.snapshot.checkpoint.player.velocityY);
-    assert.equal(transition.after.state.player.climbZoneId,flexible.id);
-    assertCargo(transition.after.state);
-    contact(transition.after.state,'restored-pendulum-paused');
-    await capture('10-pendulum-restored-paused');
-    return{player:transition.after.state.player,runIdChanged:true};
-  });
-  await resume();await frame();
-  await check('alternating native direction pumps the restored pendulum with bounded energy and readable controls',async()=>{
-    const ready=await until('native pendulum pump',18000,async state=>{
-      const swing=state.player.canopySwing;assert.ok(swing,'The real support must remain held while pumping');
-      if(swing.angle>.5&&swing.angularVelocity>1.2)return true;
-      await hold([swing.angularVelocity>=0?'right':'left'],'pump in the actual angular direction',state);return false;
+  if(naraka){
+    await check('a Naraka root secures a deposited hide across a new document',async()=>{
+      const rested=await observation(),root=rests[0];
+      assert.equal(rested.player.grounded,true);
+      assert.equal(rested.player.climbing,false);
+      assert.ok(Math.abs(rested.player.y+rested.player.height-root.y)<2);
+      return stashAndResume(root,rested);
     });
-    assert.ok(ready.player.stamina>0&&ready.player.stamina<ready.player.maxStamina);
-    contact(ready,'pumped-pendulum-before-capture');
-    assertCargo(ready);
-    const pace=await page.locator('[data-canopy-loaded-pace-v112]').innerText();
-    assert.ok(pace.includes('réglage de la longueur'));
-    assert.ok(pace.includes(Math.round(ready.fieldLoad.movementMultiplier*100)+' %'));
-    data.beforeRelease=ready;
-    await capture('11-native-pumped-pendulum');
-    contact(await observation(),'pumped-pendulum-after-capture');
-    return{player:ready.player,cue:await page.locator('[data-canopy-cue-v112]').innerText()};
-  });
-  // Captures deliberately keep the simulation running. Choose a NEW physical
-  // release window afterwards, then send the trusted keydown immediately.
-  await until('choose a fresh positive release phase after capture',18000,async state=>{
-    const swing=state.player.canopySwing;
-    assert.ok(swing,'The original real support must remain held before release');
-    const tangentX=Math.cos(swing.angle)*swing.length*swing.angularVelocity;
-    const oldReachable=state.reachableSupportIds.includes(flexible.id);
-    if(swing.angle>=.15&&swing.angle<=.8&&swing.angularVelocity>0&&tangentX>=300&&held.has('right')){
-      data.actualReleaseDecision={elapsed:state.elapsed,player:state.player,tangentX,oldReachable};
-      {
-        const released = page.waitForFunction(() => {
-          const player = window.__skinningCanopyQaV112.runtime?.game.player;
-          return !player?.climbing && player?.climbReattachSeconds > 0.12 ? player.climbReattachSeconds : false;
-        }, null, {polling:'raf',timeout:2000});
-        await page.keyboard.down('Space');held.add('jump');
-        const ready = await released;
-        data.bufferedPress = {releaseSeconds:await ready.jsonValue(), pressedForMs:16};
-        await ready.dispose();
-        await page.keyboard.press('ArrowUp',{delay:16});
-      }
-      return true;
-    }
-    await hold([swing.angularVelocity>=0?'right':'left'],'pump to a fresh rightward release window after capture',state);
-    return false;
-  });
-  await check('a native Up tap catches the next Oseris-IV liana with the same cargo',async()=>{
-    assert.ok(data.bufferedPress.releaseSeconds>0.12);
-    const caught=await until('loaded next-vine catch',5000,
-      async state=>state.player.climbing&&state.player.climbZoneId===next.id);
-    assert.equal(caught.inputs.keyboard.includes('up'),false);
-    assert.equal(caught.player.aerialBoostUsed,false);
-    assert.equal(caught.canopyTransfer,null);
-    assertCargo(caught);
-    await hold([],'stop steering after the catch');
-    await capture('13-native-loaded-next-vine');
-    return {from:flexible.id,to:next.id,player:caught.player,load:caught.fieldLoad};
-  });
-  await check('the loaded hunter can disengage onto a real rest and recover there after reloading',async()=>{
-    await hold(['up'],'raise the hunter above the next root rest');
-    await until('raise over the third rest',5000,async state=>state.player.climbing&&state.player.climbZoneId===next.id&&state.player.y+state.player.height<rests[2].y-22);
-    await hold(['left'],'start a shallow swing for a voluntary dismount');
-    await until('shallow dismount swing',2000,async state=>Boolean(state.player.canopySwing));
-    await hold(['jump'],'release with the real tangent and no steering');
-    await until('release acknowledgement',2000,async state=>!state.player.climbing);
-    await hold([],'coast down to the root rest');
-    const rested=await until('native safe root rest',5000,async state=>state.player.grounded);
-    const feet=rested.player.y+rested.player.height;
-    const landed=rests.find(rest=>Math.abs(rest.y-feet)<2&&rested.player.x+rested.player.width>rest.x&&rested.player.x<rest.x+rest.width);
-    assert.equal(landed?.id,rests[2].id,'Native landing must be on the return junction');
-    assertCargo(rested);
-    await pause();
-    const campaignBeforeDrop=await campaign();
-    await page.getByRole('button',{name:/^Déposer · Peau à fibres végétales/}).click();
-    const deposited=await observation();
-    const [stash]=deposited.rites.stashedSpecimensV112;
-    assert.equal(stash.specimenId,cargo.id);
-    assert.equal(stash.y,landed.y);
-    assert.ok(stash.x>=landed.x&&stash.x<=landed.x+landed.width);
-    assert.equal(deposited.fieldLoad.massKg,0);
-    assert.deepEqual(deposited.secondaryDrops.filter(item=>item.collected).map(item=>item.claim),[secondary]);
-    await capture('14a-native-deposit-on-root');
-    const transition=await reloadHunt('14-charged-rest');
-    assert.deepEqual(transition.after.state.rites.stashedSpecimensV112,[stash]);
-    assert.equal(transition.after.state.fieldLoad.massKg,0);
-    assert.deepEqual(await campaign(),campaignBeforeDrop);
-    await page.getByRole('button',{name:/^Reprendre · Peau à fibres végétales/}).click();
-    const recovered=await observation();
-    assertCargo(recovered);
-    assert.deepEqual(recovered.rites.stashedSpecimensV112,[]);
-    assert.deepEqual(recovered.rites.completedEventIds,deposited.rites.completedEventIds);
-    assert.deepEqual(await campaign(),campaignBeforeDrop);
-    assert.equal(transition.after.state.player.grounded,true);
-    assert.equal(transition.after.state.player.climbing,false);
-    assert.equal(transition.after.state.player.y,transition.before.sidecar.snapshot.checkpoint.player.y);
-    await resume();
-    await until('stamina recovery on the real rest',2500,async state=>state.player.grounded&&
-      (state.player.stamina>transition.after.state.player.stamina||state.player.stamina===state.player.maxStamina));
-    await capture('14-native-loaded-rest');
-    return{rest:landed.id,stash,before:rested.player,after:(await observation()).player};
-  });
-  await check('Oseris-IV offers a westward return by branch jumps with the same specimen',async()=>{
-    const returnLegs=[];
-    for(const target of [rests[1],rests[0]]){
-      const before=await observation();
-      const center=target.x+target.width/2;
-      await hold(['left','jump'],'choose the western return by a physical jump, with Up released');
-      const landed=await until('westward branch jump to '+target.id,5000,async state=>{
-        const middle=state.player.x+state.player.width/2;
-        if(middle<=center+21)await hold(['jump'],'coast onto the western branch',state);
-        return state.player.grounded&&Math.abs(state.player.y+state.player.height-target.y)<2&&
-          state.player.x+state.player.width>target.x&&state.player.x<target.x+target.width;
+  }else{
+    await hold(['right','jump'],'jump from first branch toward the flexible support rest');
+    await until('second rest approach',4000,async state=>{
+      const center=state.player.x+state.player.width/2;
+      if(center>=rests[1].x+rests[1].width/2-20)await hold(['jump'],'release horizontal steering above the rest',state);
+      return state.player.grounded&&Math.abs(state.player.y+state.player.height-rests[1].y)<2;
+    });
+    await hold([],'acknowledge jump release at second rest');await frame();
+    await hold(['up'],'grasp and shorten the real flexible support');
+    await until('climb flexible support',15000,async state=>state.player.climbing&&state.player.climbZoneId===flexible.id&&state.player.y+state.player.height*.28-flexible.y<=120);
+    await hold(['right'],'activate the real pendulum');
+    await until('attach pendulum',3000,async state=>Boolean(state.player.canopySwing));
+    await hold([],'neutral pendulum before its durable checkpoint');
+    await check('actual pendulum snapshot survives sidecar claim and a new document without an extra impulse',async()=>{
+      await pause();
+      const transition=await reloadHunt('10-pendulum');
+      assert.deepEqual(transition.after.state.player.canopySwing,transition.before.sidecar.snapshot.checkpoint.player.canopySwing);
+      assert.equal(transition.after.state.player.velocityX,transition.before.sidecar.snapshot.checkpoint.player.velocityX);
+      assert.equal(transition.after.state.player.velocityY,transition.before.sidecar.snapshot.checkpoint.player.velocityY);
+      assert.equal(transition.after.state.player.climbZoneId,flexible.id);
+      assertCargo(transition.after.state);
+      contact(transition.after.state,'restored-pendulum-paused');
+      await capture('10-pendulum-restored-paused');
+      return{player:transition.after.state.player,runIdChanged:true};
+    });
+    await resume();await frame();
+    await check('alternating native direction pumps the restored pendulum with bounded energy and readable controls',async()=>{
+      const ready=await until('native pendulum pump',18000,async state=>{
+        const swing=state.player.canopySwing;assert.ok(swing,'The real support must remain held while pumping');
+        if(swing.angle>.5&&swing.angularVelocity>1.2)return true;
+        await hold([swing.angularVelocity>=0?'right':'left'],'pump in the actual angular direction',state);return false;
       });
-      await hold([],'release jump before choosing the following branch');
-      await frame();
-      assert.equal(landed.player.climbing,false);
-      assert.equal(landed.player.aerialBoostUsed,false);
-      assert.ok(landed.player.x<before.player.x);
-      assertCargo(landed);
-      returnLegs.push({rest:target.id,player:landed.player});
-    }
-    await pause();
-    const transition=await reloadHunt('15-oseris-return-west');
-    assertCargo(transition.after.state);
-    assert.equal(transition.after.state.player.grounded,true);
-    assert.equal(transition.after.state.player.climbing,false);
-    assert.ok(Math.abs(transition.after.state.player.y+transition.after.state.player.height-rests[0].y)<2);
-    await resume();
-    await capture('15-native-return-west');
-    return {returnLegs,checkpointRest:rests[0].id,player:(await observation()).player};
-  });
+      assert.ok(ready.player.stamina>0&&ready.player.stamina<ready.player.maxStamina);
+      contact(ready,'pumped-pendulum-before-capture');
+      assertCargo(ready);
+      const pace=await page.locator('[data-canopy-loaded-pace-v112]').innerText();
+      assert.ok(pace.includes('réglage de la longueur'));
+      assert.ok(pace.includes(Math.round(ready.fieldLoad.movementMultiplier*100)+' %'));
+      data.beforeRelease=ready;
+      await capture('11-native-pumped-pendulum');
+      contact(await observation(),'pumped-pendulum-after-capture');
+      return{player:ready.player,cue:await page.locator('[data-canopy-cue-v112]').innerText()};
+    });
+    // Captures deliberately keep the simulation running. Choose a NEW physical
+    // release window afterwards, then send the trusted keydown immediately.
+    await until('choose a fresh positive release phase after capture',18000,async state=>{
+      const swing=state.player.canopySwing;
+      assert.ok(swing,'The original real support must remain held before release');
+      const tangentX=Math.cos(swing.angle)*swing.length*swing.angularVelocity;
+      const oldReachable=state.reachableSupportIds.includes(flexible.id);
+      if(swing.angle>=.15&&swing.angle<=.8&&swing.angularVelocity>0&&tangentX>=300&&held.has('right')){
+        data.actualReleaseDecision={elapsed:state.elapsed,player:state.player,tangentX,oldReachable};
+        {
+          const released = page.waitForFunction(() => {
+            const player = window.__skinningCanopyQaV112.runtime?.game.player;
+            return !player?.climbing && player?.climbReattachSeconds > 0.12 ? player.climbReattachSeconds : false;
+          }, null, {polling:'raf',timeout:2000});
+          await page.keyboard.down('Space');held.add('jump');
+          const ready = await released;
+          data.bufferedPress = {releaseSeconds:await ready.jsonValue(), pressedForMs:16};
+          await ready.dispose();
+          await page.keyboard.press('ArrowUp',{delay:16});
+        }
+        return true;
+      }
+      await hold([swing.angularVelocity>=0?'right':'left'],'pump to a fresh rightward release window after capture',state);
+      return false;
+    });
+    await check('a native Up tap catches the next Oseris-IV liana with the same cargo',async()=>{
+      assert.ok(data.bufferedPress.releaseSeconds>0.12);
+      const caught=await until('loaded next-vine catch',5000,
+        async state=>state.player.climbing&&state.player.climbZoneId===next.id);
+      assert.equal(caught.inputs.keyboard.includes('up'),false);
+      assert.equal(caught.player.aerialBoostUsed,false);
+      assert.equal(caught.canopyTransfer,null);
+      assertCargo(caught);
+      await hold([],'stop steering after the catch');
+      await capture('13-native-loaded-next-vine');
+      return {from:flexible.id,to:next.id,player:caught.player,load:caught.fieldLoad};
+    });
+    await check('the loaded hunter can disengage onto a real rest and recover there after reloading',async()=>{
+      await hold(['up'],'raise the hunter above the next root rest');
+      await until('raise over the third rest',5000,async state=>state.player.climbing&&state.player.climbZoneId===next.id&&state.player.y+state.player.height<rests[2].y-22);
+      await hold(['left'],'start a shallow swing for a voluntary dismount');
+      await until('shallow dismount swing',2000,async state=>Boolean(state.player.canopySwing));
+      await hold(['jump'],'release with the real tangent and no steering');
+      await until('release acknowledgement',2000,async state=>!state.player.climbing);
+      await hold([],'coast down to the root rest');
+      const rested=await until('native safe root rest',5000,async state=>state.player.grounded);
+      const feet=rested.player.y+rested.player.height;
+      const landed=rests.find(rest=>Math.abs(rest.y-feet)<2&&rested.player.x+rested.player.width>rest.x&&rested.player.x<rest.x+rest.width);
+      assert.equal(landed?.id,rests[2].id,'Native landing must be on the return junction');
+      return stashAndResume(landed,rested);
+    });
+    await check('Oseris-IV offers a westward return by branch jumps with the same specimen',async()=>{
+      const returnLegs=[];
+      for(const target of [rests[1],rests[0]]){
+        const before=await observation();
+        const center=target.x+target.width/2;
+        await hold(['left','jump'],'choose the western return by a physical jump, with Up released');
+        const landed=await until('westward branch jump to '+target.id,5000,async state=>{
+          const middle=state.player.x+state.player.width/2;
+          if(middle<=center+21)await hold(['jump'],'coast onto the western branch',state);
+          return state.player.grounded&&Math.abs(state.player.y+state.player.height-target.y)<2&&
+            state.player.x+state.player.width>target.x&&state.player.x<target.x+target.width;
+        });
+        await hold([],'release jump before choosing the following branch');
+        await frame();
+        assert.equal(landed.player.climbing,false);
+        assert.equal(landed.player.aerialBoostUsed,false);
+        assert.ok(landed.player.x<before.player.x);
+        assertCargo(landed);
+        returnLegs.push({rest:target.id,player:landed.player});
+      }
+      await pause();
+      const transition=await reloadHunt('15-oseris-return-west');
+      assertCargo(transition.after.state);
+      assert.equal(transition.after.state.player.grounded,true);
+      assert.equal(transition.after.state.player.climbing,false);
+      assert.ok(Math.abs(transition.after.state.player.y+transition.after.state.player.height-rests[0].y)<2);
+      await resume();
+      await capture('15-native-return-west');
+      return {returnLegs,checkpointRest:rests[0].id,player:(await observation()).player};
+    });
+  }
   await check('the entry tree allows retreat below canopy with the harvest intact',async()=>{
     const first=rests[0];
     const center=entry.x+entry.width/2;
@@ -534,14 +585,24 @@ async function canopy(){
       state.player.grounded&&state.player.y+state.player.height>=first.y+60);
     await hold([],'stop moving on the lower surface');
     assertCargo(lower);
-    assert.ok(lower.player.health>0);
-    assert.equal(lower.player.climbing,false);
-    assert.equal(lower.player.aerialBoostUsed,false);
     const foot=lower.player.y+lower.player.height;
     const platform=lower.world.platforms.find(item=>Math.abs(item.y-foot)<2&&lower.player.x+lower.player.width>item.x&&lower.player.x<item.x+item.width);
     assert.ok(platform||Math.abs(foot-lower.world.floorY)<2);
+    let exit=lower;
+    if(naraka&&Math.abs(foot-lower.world.floorY)>=2){
+      await capture('16a-native-intermediate-branch');
+      await hold(['right'],'step off the shallower branch toward the eastern shore');
+      exit=await until('step off the lower branch onto the world floor',14000,async state=>
+        state.player.grounded&&Math.abs(state.player.y+state.player.height-state.world.floorY)<2);
+      await hold([],'stop at the foot of the canopy');
+      assertCargo(exit);
+    }
+    assert.ok(exit.player.health>0);
+    assert.equal(exit.player.climbing,false);
+    assert.equal(exit.player.aerialBoostUsed,false);
     await capture('16-native-western-recovery');
-    return {player:lower.player,reception:platform?.id??'floor',releaseFrom:entry.id,phase:lower.phase};
+    return {player:exit.player,reception:platform?.id??'floor',worldFloor:Math.abs(exit.player.y+exit.player.height-exit.world.floorY)<2,
+      releaseFrom:entry.id,phase:exit.phase};
   });
   await check('native canvas uses the exact root texture at the chosen collision platforms',async()=>{
     const draws=await page.evaluate(()=>[...window.__skinningCanopyQaV112.rootDraws.entries()]);
@@ -553,7 +614,7 @@ async function canopy(){
     }
     return {draws:rests.map(rest=>[rest.id,byId.get(rest.id)])};
   });
-  await check('the uninterrupted ground leg brings both local claims to a real Apex rite and the loaded beacon',async()=>{
+  await check('the uninterrupted ground leg brings the hide and local trophy to a real Apex rite and the loaded beacon',async()=>{
     const prepared=await page.evaluate(()=>window.__skinningCanopyQaV112.prepareApex());
     assert.deepEqual(prepared.before.player,prepared.after.player);
     assert.deepEqual(prepared.before.rites,prepared.after.rites);
@@ -630,8 +691,8 @@ async function canopy(){
     assert.deepEqual(result.trophyClaims.find(claim=>claim.id===secondary.id),secondary);
     assert.deepEqual(saved.inventory.harvestV112.specimens,[cargo]);
     assert.equal(saved.inventory.harvestV112.toolUseIds.length,2);
-    assert.equal(saved.inventory.harvestV112.toolCondition,15);
-    assert.equal(saved.missionProgress['jungle-vey'].completions,before.missionProgress['jungle-vey'].completions+1);
+    assert.equal(saved.inventory.harvestV112.toolCondition,initialToolCondition-10);
+    assert.equal(saved.missionProgress[field.missionId].completions,before.missionProgress[field.missionId].completions+1);
     assert.equal(saved.trophies.filter(trophy=>trophy.definitionId===secondary.definitionId).length,1);
     assert.equal(await disk(),null);
     await capture('19-native-trophies-and-hide-delivered');
@@ -647,7 +708,7 @@ try{
   await canopy();
   await check('all requested assets match this exact Git commit and include the authored root, trunk and vine',async()=>{
     const assets=[...requests.values()];
-    for (const suffix of ['/tree-trunk.png','/root-platform.png','/vine-ladder.webp','/ruin-platform.png','/enemy-trophy-omoplate-vegetalisee.webp']){
+    for (const suffix of ['/tree-trunk.png','/root-platform.png','/vine-ladder.webp','/ruin-platform.png','/'+field.trophy+'.webp']){
       assert.ok(assets.some(asset=>asset.url.endsWith(suffix)&&asset.status===200&&asset.matchesHead),suffix);
     }
     assert.ok(assets.every(asset=>asset.status===200&&asset.matchesHead));

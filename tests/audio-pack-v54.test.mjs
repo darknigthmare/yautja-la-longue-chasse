@@ -48,9 +48,11 @@ test("V54 delivered audio decodes as bounded PCM with exact source and manifest 
     { category: "ambience", id: "ocean", file: "/audio/ambience/ocean/surface-v173.ogg" },
     { category: "ambience", id: "fungal", file: "/audio/ambience/fungal/surface-v173.ogg" },
     { category: "ambience", id: "ruins", file: "/audio/ambience/ruins/surface-v173.ogg" },
+    { category: "ambience", id: "ceremony-brazier", file: "/audio/ambience/ceremony-brazier/embers.wav" },
     { category: "music", id: "menu", file: "/audio/music/menu/mus-01.ogg" },
     { category: "music", id: "ship", file: "/audio/music/ship/MUS-02-veille.mp3" },
     { category: "music", id: "cradle-return", file: "/audio/music/cradle-return/MUS-15-retour.mp3" },
+    { category: "music", id: "ceremony-m006", file: "/audio/music/ceremony-m006/mus-06-clan-ceremonie.ogg" },
   ]);
 });
 

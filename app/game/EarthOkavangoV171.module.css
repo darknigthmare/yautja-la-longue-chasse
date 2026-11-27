@@ -42,3 +42,11 @@
 .orbitShip { position: absolute; width: clamp(2.8rem, 8vw, 5rem); height: auto; transform: translate(-50%, -50%); filter: drop-shadow(0 0 .4rem #0009); pointer-events: none; }
 .orbitMeters { position: absolute; inset-inline: .6rem; top: .35rem; margin: 0; color: #faf0ce; }
 @media (max-width: 620px) { .orbit { grid-template-columns: 1fr; } }
+
+.lionSurvey { margin-top: 1rem; }
+.lionSurvey .sky { background-position: right 40%; filter: sepia(.22); }
+.lionSurvey .piste { background: linear-gradient(#565638d9, #81724bdf); }
+.lionSurvey .berge { background: linear-gradient(#616b43c9, #354939eb); }
+.lionSurvey .water { width: 14%; }
+.lionSurvey .terrain[data-lion-night="true"] .sky { filter: brightness(.54) saturate(.62); }
+.lionSurvey .terrain[data-lion-night="true"] .piste { background: linear-gradient(#30382beb, #434934ed); }
