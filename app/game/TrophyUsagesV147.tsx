@@ -116,7 +116,7 @@ function TrophyIntroductionControls({ save, trophy, disabled, station, onApply }
   return <section data-trophy-introduction={intro.stage} className={styles.controls} aria-label="L’histoire dans le meuble">
     <h4>L’histoire dans le meuble</h4>
     {intro.stage === "support" && <>
-      <p>La condition de la prise figure sur sa fiche. Utilise le geste « Monter » au poste de préparation, puis vérifie l’appui.</p>
+      <p>La condition de la prise figure sur sa fiche. Utilise le geste « Préparer » pour monter la prise, puis vérifie l’appui.</p>
       {button({ step: "support" }, "Vérifier le support", "Support vérifié. Rapproche la prise du rapport de chasse.")}
     </>}
     {intro.stage === "provenance" && <>

@@ -92,3 +92,14 @@ jobs:
         run: |
           node node_modules/next/dist/bin/next typegen
           node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Reach the physical hall, prepare the original and install it in Chrome
+        env:
+          CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+        run: node scripts/qa-trophy-introduction-r2-m038.mjs
+      - name: Preserve the workshop receipt and screenshots
+        if: ${{ !cancelled() && hashFiles('outputs/qa-trophy-introduction-r2-m038/report.json') != '' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: trophy-introduction-r2-m038
+          path: outputs/qa-trophy-introduction-r2-m038/
+          if-no-files-found: error

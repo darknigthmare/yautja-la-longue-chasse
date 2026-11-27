@@ -347,7 +347,7 @@ function checkIntroduction(save: UsageSave, trophy: TrophyRecord, action: Trophy
   if (state.assignments[trophy.id]) return refuse("Range d’abord la prise pour reprendre les gestes au berceau.");
   if (action.step === "support") {
     if (current.stage !== "support") return refuse("Le support est déjà réglé.");
-    return isPrepared(trophy) ? { ok: true } : refuse("Achève l’étape Monter dans l’atelier de préparation.");
+    return isPrepared(trophy) ? { ok: true } : refuse("Achève le geste Préparer dans l’atelier.");
   }
   if (action.step === "label") {
     if (current.stage !== "provenance") return refuse("Vérifie le support avant de consigner l’étiquette.");

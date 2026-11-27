@@ -135,7 +135,7 @@ export default function ResidencePanelV149({ house, residence, rankId, disabled,
             {RESIDENCE_SLOT_IDS_V149.filter(slot => RESIDENCE_SLOTS_V149[slot].room === room).map(slot => {
               const inSlot = here.filter(object => object.location.kind === "room" && object.location.slotId === slot);
               return <li key={slot} data-residence-slot={slot}>
-                <b>{RESIDENCE_SLOTS_V149[slot].label}</b>{RESIDENCE_SLOTS_V149[slot].right === "furnish" && ` (respect ${house.respect.furnish})`} : {inSlot.length ? inSlot.map(object => object.label).join(", ") : "libre"}
+                <b>{RESIDENCE_SLOTS_V149[slot].label}</b>{RESIDENCE_SLOTS_V149[slot].right === "furnish" && ` (respect ${house.respect.furnish})`} : {inSlot.length ? inSlot.map(object => object.label).join(", ") : slot === "display" && displayedTrophies.length ? "prise exposée" : "libre"}
                 {slot === "display" && displayedTrophies.length > 0 && <ul data-residence-trophy-shelf aria-label="Étagère des prises">
                   {displayedTrophies.map(trophy => <li key={trophy.id}>
                     {trophy.targetName} · {trophyIntroductionMission(trophy.missionId)?.planetName}
