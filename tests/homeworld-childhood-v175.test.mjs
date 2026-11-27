@@ -147,10 +147,25 @@ function playCeremony(p) {
   p.act("use");
   assert.equal(previewInteraction().cue, undefined);
   walk(p, 7);
-  assert.equal(previewInteraction().cue, "objective");
-  p.act("use");
   assert.equal(previewInteraction().cue, undefined);
+  p.act("use");
   assert.equal(p.view().position, 8);
+  assert.equal(p.view().rackAccess, "pending");
+  assert.equal(game.childhoodRackReceiptV175(p.view()), null);
+  assert.equal(game.childhoodOptionsV175(p.view()).includes("first-mask"), false);
+  const previewReceipt = (save = p.read()) => game.actChildhoodV175(save, save.homeworld.childhoodV175, "accept-rack-access", post);
+  const unrecognized = structuredClone(p.read());
+  unrecognized.prologue.chronicle.rites = [];
+  assert.equal(previewReceipt(unrecognized).state, undefined);
+  const imported = childhoodStorage.parseSaveImport(childhoodStorage.exportSave(p.read())).save;
+  assert.equal(game.childhoodViewV175(imported.homeworld.childhoodV175, imported.createdAt).rackAccess, "pending");
+  assert.equal(youth.startYouthCampaign(imported), null);
+  assert.equal(previewReceipt().cue, "objective");
+  p.act("accept-rack-access");
+  assert.equal(previewReceipt().cue, undefined);
+  assert.equal(previewReceipt().state, undefined);
+  assert.deepEqual(game.childhoodRackReceiptV175(p.view()),
+    { sourceId: game.CHILDHOOD_RACK_ACCESS_M006, instructor: "Saar", gestures: 3, tools: 4 });
 }
 
 test("M006 binds each first workshop choice to the campaign checkpoint while preserving the historical rank", () => {
@@ -177,7 +192,9 @@ test("M006 binds each first workshop choice to the campaign checkpoint while pre
     assert.equal(reopened.youthTraining.checkpoint.firstWorkshopV176, opening);
     assert.equal(ranks.getChronicleRank(reopened.prologue.chronicle), "unblooded");
     assert.deepEqual(reopened.prologue.chronicle, seed.prologue.chronicle);
-    assert.equal(reopened.homeworld.childhoodV175.version, 3);
+    assert.equal(reopened.homeworld.childhoodV175.version, 4);
+    const restoredView = game.childhoodViewV175(reopened.homeworld.childhoodV175, reopened.createdAt);
+    assert.deepEqual(game.childhoodRackReceiptV175(restoredView), game.childhoodRackReceiptV175(p.view()));
     assert.equal(reopened.prologue.ceremonyM006, true);
     const altered = structuredClone(reopened);
     altered.youthTraining.checkpoint.firstWorkshopV176 = opening === "blades" ? "mask" : "blades";
@@ -211,7 +228,7 @@ test("the actual archive rejects foreign or impossible changes and refuses stale
   const settled = p.read().homeworld.childhoodV175;
   assert.equal(withRecord({ ...settled, ownerCreatedAt: "2025-01-01T00:00:00Z" }).failure, "invalid-save");
   assert.equal(withRecord({ ...settled, journal: ["show-map"] }).failure, "invalid-save");
-  assert.equal(withRecord({ ...settled, version: 4 }).failure, "future-version");
+  assert.equal(withRecord({ ...settled, version: 5 }).failure, "future-version");
   assert.equal(childhoodStorage.parseSaveImport(childhoodStorage.exportSave(seed)).save.homeworld.childhoodV175, undefined);
 });
 
@@ -231,6 +248,7 @@ test("M006 saves three gestures and tools in order, then crosses the actual thre
   p.act("show-map");
   p.act("handoff");
   const canObserve = () => game.childhoodOptionsV175(p.view()).includes("cohort-gesture");
+  assert.equal(game.actChildhoodV175(p.read(), p.read().homeworld.childhoodV175, "accept-rack-access", post).state, undefined);
   assert.equal(canObserve(), false);
   walk(p, 2);
   p.act("use");
@@ -248,14 +266,14 @@ test("M006 saves three gestures and tools in order, then crosses the actual thre
   assert.equal(canObserve(), false);
   const saved = p.read();
   const copy = childhoodStorage.parseSaveImport(childhoodStorage.exportSave(saved)).save;
-  assert.equal(copy.homeworld.childhoodV175.version, 3);
+  assert.equal(copy.homeworld.childhoodV175.version, 4);
   const restored = game.childhoodViewV175(copy.homeworld.childhoodV175, copy.createdAt);
   assert.equal(restored.cohortPresentations, 3);
   assert.equal(restored.cohortStowed, 3);
   const forged = structuredClone(saved);
   forged.homeworld.childhoodV175.version = 2;
   assert.equal(childhoodStorage.parseSaveImport(JSON.stringify(forged)).failure, "invalid-save");
-  forged.homeworld.childhoodV175.version = 3;
+  forged.homeworld.childhoodV175.version = 4;
   forged.homeworld.childhoodV175.journal.splice(forged.homeworld.childhoodV175.journal.indexOf("cohort-stow"), 1);
   assert.equal(childhoodStorage.parseSaveImport(JSON.stringify(forged)).failure, "invalid-save");
   walk(p, 4);
@@ -264,9 +282,22 @@ test("M006 saves three gestures and tools in order, then crosses the actual thre
   assert.equal(p.view().passed, false);
   p.act("use");
   assert.equal(p.view().position, 8);
+  assert.equal(youth.startYouthCampaign(p.read()), null);
+  p.act("accept-rack-access");
   p.act("first-mask");
   assert.equal(youth.startYouthCampaign(p.read()).youthTraining.checkpoint.firstWorkshopV176, "mask");
-  const legacy = structuredClone(p.read());
+  const previousCeremony = structuredClone(p.read());
+  const v3 = previousCeremony.homeworld.childhoodV175;
+  v3.version = 3;
+  v3.journal = v3.journal.filter(event => event !== "accept-rack-access")
+    .map(event => event === "begin-rack-admission" ? "begin-ceremony" : event);
+  const v3Save = childhoodStorage.parseSaveImport(JSON.stringify(previousCeremony)).save;
+  assert(v3Save);
+  const v3View = game.childhoodViewV175(v3Save.homeworld.childhoodV175, v3Save.createdAt);
+  assert.equal(v3View.ceremony, true);
+  assert.equal(game.childhoodRackReceiptV175(v3View), null);
+  assert(youth.startYouthCampaign(v3Save));
+  const legacy = structuredClone(v3Save);
   const record = legacy.homeworld.childhoodV175;
   record.version = 2;
   record.journal = record.journal.filter(event => event !== "cohort-stow")
