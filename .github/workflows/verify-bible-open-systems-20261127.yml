@@ -13,13 +13,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '22ffad6745445255ffef78f553025a9a89991dbe'
+      ASSET_RACCORDS_SOURCE_COMMIT: '322171998c1ae90c78262fccbdf8ed524321ae4d'
       BASE_COMMIT: '75bbc1777eb1866515fcef718b086571d8aa379d'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '22ffad6745445255ffef78f553025a9a89991dbe'
+          ref: '322171998c1ae90c78262fccbdf8ed524321ae4d'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -125,7 +125,7 @@ jobs:
       - name: Lint the new epilogues and their companions
         if: ${{ !cancelled() }}
         run: >-
-          npx eslint app/game/LegacyFinaleSceneR2.tsx app/game/systems/legacyFinaleR2.ts app/game/systems/youthCityErrandV172.ts app/game/systems/youthCityGuideM003.ts app/game/systems/mausoleum.ts app/game/Mausoleum.tsx app/game/systems/originPracticeO6.ts app/game/systems/originContinuationO6.ts app/game/systems/huntSystems.ts app/game/systems/acheronVacuum.ts app/game/sound.ts app/game/systems/campaignCoopRewards.ts app/game/systems/honorSourcesV169.ts
+          npx eslint app/game/LegacyFinaleSceneR2.tsx app/game/systems/legacyFinaleR2.ts app/game/systems/youthCityErrandV172.ts app/game/systems/youthCityGuideM003.ts app/game/systems/mausoleum.ts app/game/Mausoleum.tsx app/game/systems/originPracticeO6.ts app/game/systems/originContinuationO6.ts app/game/systems/huntSystems.ts app/game/systems/acheronVacuum.ts app/game/sound.ts app/game/systems/campaignCoopRewards.ts app/game/systems/honorSourcesV169.ts app/game/GameClient.tsx
       - name: Report canonical inventory differences
         if: ${{ !cancelled() && hashFiles('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json') != '' }}
         run: |
