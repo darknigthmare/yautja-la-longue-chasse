@@ -38,12 +38,12 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npx eslint app/game/NurseryPrologueScreen.tsx app/game/nurseryRendering.ts app/game/systems/nursery{Opening,Prologue,Campaign,ContinuityV72}.ts tests/nursery-opening.test.mjs
       - run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/nursery-opening.test.mjs tests/nursery-cohort-v172.test.mjs tests/nursery-continuity-v72.test.mjs tests/nursery-campaign.test.mjs tests/nurseryPrologue.test.ts
+      - run: npx tsc --noEmit --incremental false 2>&1 | tee /tmp/opening-typescript.log
+      - run: |
+          if rg 'app/game/(ClanChroniclePanel|NurseryPrologueScreen|nurseryRendering|systems/nursery(CohortV172|Opening|Prologue|Campaign|ContinuityV72))' /tmp/opening-typescript.log; then exit 1; fi
       - run: node tests/qa-nursery-opening.playwright.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: captures-ouverture-r2-m001
           path: opening-*.png
-      - run: npx tsc --noEmit --incremental false 2>&1 | tee /tmp/courtyard-typescript.log
-      - run: |
-          if rg 'app/game/(ClanChroniclePanel|NurseryPrologueScreen|nurseryRendering|systems/nursery(CohortV172|Opening|Prologue|Campaign|ContinuityV72))' /tmp/courtyard-typescript.log; then exit 1; fi

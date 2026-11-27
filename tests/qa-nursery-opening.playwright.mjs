@@ -127,37 +127,6 @@ try {
   assert.deepEqual(errors, []);
   console.log("R2-M001: entrée fraîche, loquet, outil, Tov, reprise, appât, trois poussées, filet et passage au duel confirmés dans Chrome.");
 } finally {
-      await page.keyboard.up(key);
-    }
-  }
-  const step = async (x, ordinal) => {
-    await walk(x);
-    await page.locator("[data-nursery-cohort-interact]").click();
-    await page.waitForFunction(want => document.querySelector("canvas").dataset.nurseryCohort === want, String(ordinal));
-  };
-  await step(162, 1);
-  await step(278, 2);
-  await page.screenshot({ path: "cour-before-reload.png" });
-  await page.reload();
-  await ready();
-  assert.equal(await canvas.getAttribute("data-nursery-cohort"), "2");
-  await step(394, 3);
-  await step(510, 4);
-  await step(626, 5);
-  await step(741, 6);
-  await walk(510);
-  await page.getByRole("button", { name: "Aider Yena à ranger les cordes" }).click();
-  await page.waitForFunction(() => document.querySelector("canvas").dataset.nurseryCohortChoice === "help");
-  await page.screenshot({ path: "cour-yena-rangement.png" });
-  await walk(857);
-  await page.getByRole("button", { name: "Rendre l’outil et rejoindre le passage" }).click();
-  await page.waitForFunction(() => document.querySelector("canvas").dataset.nurseryPhase === "walkout");
-  const saved = await page.evaluate(() => JSON.parse(localStorage.getItem("opening-archive")));
-  assert.equal(saved.cohortV172.steps, 7);
-  assert.equal(saved.cohortV172.choice, "help");
-  assert.deepEqual(errors, []);
-  console.log("R2-M002: atlas décodés, marche, barrière, rechargement, cohorte, choix de Yena et sortie confirmés dans Chrome.");
-} finally {
   await browser?.close();
   server.close();
   await rm(temporary, { recursive: true, force: true });
