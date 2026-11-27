@@ -788,3 +788,7 @@
   .minimap { top:8px; right:8px; width:138px; height:70px; }
   .youthHudV64 { max-height:38px; padding-top:3px; padding-bottom:3px; }
 }
+
+.saarGuideM003 { position: absolute; pointer-events: none; }
+.saarNameM003 { position: absolute; bottom: 6.85rem; left: 0; transform: translateX(-50%); padding: 0.15rem 0.4rem; border-radius: 0.25rem; background: #211914; color: #f5dfac; white-space: nowrap; }
+.saarInstructionM003 { position: absolute; z-index: 8; top: 4.75rem; left: 1rem; max-width: min(34rem, calc(100% - 2rem)); margin: 0; padding: 0.4rem 0.6rem; border-radius: 0.25rem; background: #211914; color: #f5dfac; pointer-events: none; }
