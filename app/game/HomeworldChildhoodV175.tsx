@@ -8,7 +8,7 @@ import {
 } from "./systems/homeworldChildhoodV175";
 import styles from "./HomeworldChildhoodV175.module.css";
 
-function useLabel(view: ChildhoodViewV175) {
+function interactionLabel(view: ChildhoodViewV175) {
   if (view.trial === "ring") return "Attraper l’anneau";
   if (view.trial === "beam") return "Recentrer les appuis";
   if (view.trial === "spring") return "Frapper la cible";
@@ -110,7 +110,7 @@ export default function HomeworldChildhoodV175({ view, message, paused, mayEnter
       {options.map(action => {
         const choiceLabel = action === "track-sign" ? sign?.actual : action === "track-decoy" ? sign?.decoy : undefined;
         return <button type="button" key={action} data-childhood-action={action} disabled={paused}
-          onClick={() => onAction(action)}>{choiceLabel ?? (action === "use" ? useLabel(view) : labels[action])}</button>;
+          onClick={() => onAction(action)}>{choiceLabel ?? (action === "use" ? interactionLabel(view) : labels[action])}</button>;
       })}
       {view.passed && mayEnter && <button type="button" data-childhood-enter-dojo disabled={paused}
         onClick={onEnter}>Rejoindre le dojo des Unblooded</button>}
