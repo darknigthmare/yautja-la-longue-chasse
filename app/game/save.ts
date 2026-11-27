@@ -32,6 +32,7 @@ import { normalizeYouthCampaign, youthCampaignMatchesSave } from "./systems/yout
 import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
 import { hasChildhoodFoundationV175, isChildhoodSuccessorV175 } from "./systems/homeworldChildhoodV175";
 import { youthCityDeliveryMatchesWriteV176 } from "./systems/youthCityErrandV172";
+import { saarGuideLocationMatchesWriteM003 } from "./systems/youthCityGuideM003";
 import { homeworldAdjutantMatchesSaveM029, isHomeworldAdjutantSuccessorM029 } from "./systems/homeworldAdjutantM029";
 import { isFutureRegionalLoopM014, isRegionalLoopSuccessorM014, regionalLoopMatchesSaveM014 } from "./systems/homeworldRegionalLoopM014";
 import { archiveTransferPending } from "./systems/archiveTransferGuard";
@@ -2118,7 +2119,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   }
   const rawErrand = isRecord(value.homeworld) ? value.homeworld.youthCityErrandV172 : undefined;
   const errand = save.homeworld.youthCityErrandV172;
-  if (isRecord(rawErrand) && rawErrand.delivery !== undefined &&
+  if (isRecord(rawErrand) && (rawErrand.delivery !== undefined || rawErrand.guideM003 !== undefined) &&
       (!errand?.delivery || errand.ownerCreatedAt !== save.createdAt || save.prologue?.status !== "completed" ||
         save.prologue.checkpoint.cohortV172?.steps !== 7)) return { save: null, failure: "invalid-save" };
   const childhood = save.homeworld.childhoodV175;
@@ -2319,7 +2320,8 @@ function persistCampaign(
           !isWarpCommonSuccessorR2(previousWarp, nextWarp)) {
         return failed("save-conflict", previous);
       }
-      if (!youthCityDeliveryMatchesWriteV176(previous.homeworld.youthCityErrandV172, requested.homeworld.youthCityErrandV172)) {
+      if (!youthCityDeliveryMatchesWriteV176(previous.homeworld.youthCityErrandV172, requested.homeworld.youthCityErrandV172) ||
+          !saarGuideLocationMatchesWriteM003(previous.homeworld.youthCityErrandV172, requested.homeworld.youthCityErrandV172, requested.homeworld.locationV77)) {
         return failed("save-conflict", previous);
       }
       const previousChildhood = previous.homeworld.childhoodV175;
