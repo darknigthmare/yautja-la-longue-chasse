@@ -1,7 +1,7 @@
 import HomeworldCivilianV72 from "./HomeworldCivilianV72";
 import {
   triadCityAtlasTargetM016, triadCityInvitationReadyM016, triadCityRoutesM016,
-  type TriadCityM016, type TriadCityRouteM016, type TriadCityStationM016,
+  type TriadCityM016, type TriadCityRosterChoiceM016, type TriadCityRouteM016, type TriadCityStationM016,
 } from "./systems/homeworldTriadM016";
 import town from "./HomeworldCity.module.css";
 import styles from "./HomeworldTriadM016.module.css";
@@ -16,7 +16,8 @@ export function HomeworldTriadPartnerM016({ station, position, depth, reducedMot
     <div className={styles.actor} data-homeworld-m016-partner={station.partner}
       style={{ left: position.x, top: position.y, zIndex: depth }}>
       <HomeworldCivilianV72 npcId={station.partner} role={station.partner === "saar" ? "instructor" : "apprentice"}
-        facing={-1} reducedMotion={reducedMotion} />
+        facing={station.partner === "yena" || station.partner === "tov" ? 1 : -1}
+        height={station.partner === "tov" ? 98 : undefined} reducedMotion={reducedMotion} />
       <span className={styles.actorName}>{station.name}</span>
     </div>
   );
@@ -66,7 +67,7 @@ export default function HomeworldTriadM016({ station, step, disabled, onward, on
     <section className={town.notice} aria-label={station.name + " · " + station.lesson}
       data-homeworld-m016-station={station.partner} data-phase={step}>
       <h4>{station.name} · {station.lesson}</h4>
-      {station.partner === "saar" ? (
+      {station.partner === "saar" || station.partner === "tov" ? (
         <div className={styles.latch} data-state={seen} aria-hidden="true">
           <i className={styles.bar} /><i className={styles.slot} />
         </div>
@@ -87,6 +88,23 @@ export default function HomeworldTriadM016({ station, step, disabled, onward, on
           {station.demonstration[step] ?? "Proposer de former la triade"}
         </button>
       )}
+    </section>
+  );
+}
+
+export function HomeworldTriadRosterM016({ roster, disabled, onChoose }: {
+  roster?: "yena-tov";
+  disabled: boolean;
+  onChoose: (choice: TriadCityRosterChoiceM016) => void;
+}) {
+  return (
+    <section className={town.notice} aria-label="Choisir les deux partenaires de la galerie" data-homeworld-m016-roster={roster ?? "historic"}>
+      <h4>Composition de la triade</h4>
+      <p>Yena propose l’approche et Tov tient l’ouverture. Vous attribuerez les postes définitifs dans la galerie.</p>
+      <button type="button" disabled={disabled} aria-pressed={roster === "yena-tov"} data-homeworld-m016-roster-choice="yena-tov"
+        onClick={() => onChoose("yena-tov")}>Retenir Yena et Tov</button>
+      <button type="button" disabled={disabled} aria-pressed={roster !== "yena-tov"} data-homeworld-m016-roster-choice="historic"
+        onClick={() => onChoose("historic")}>Garder Saar et Vek</button>
     </section>
   );
 }
