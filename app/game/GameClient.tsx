@@ -6665,6 +6665,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               save={save}
               onPreview={setDraftAppearanceV146}
               disabled={settingsOpen || campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue}
+              allowEquipmentUpgrades={!newGamePhase && chromaticFacilityV115 !== "lab"}
               onCommit={commitCustomizationV146}
             />
             <div className="customization-layout">
