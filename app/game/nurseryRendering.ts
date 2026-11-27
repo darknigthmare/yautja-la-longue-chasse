@@ -1,5 +1,6 @@
 import { NURSERY_OPENING, nurseryOpeningNetX, nurseryOpeningWindow } from "./systems/nurseryOpening";
-import { NURSERY_ARENA, type NurseryActorId, type NurseryPresentation } from "./systems/nurseryPrologue";
+import { getNurseryPresentation, NURSERY_ARENA, type NurseryActorId, type NurseryPresentation, type NurseryState } from "./systems/nurseryPrologue";
+import { FIRST_SHOCK_HAREK_O6, firstShockCourtO6, type FirstShockRecordO6 } from "./systems/originFirstShockO6";
 import { NURSERY_COHORT_STOPS, NURSERY_COHORT_RADIUS } from "./systems/nurseryCohortV172";
 import { NURSERY_CONTINUITY_V72 } from "./systems/nurseryContinuityV72";
 import { YOUTH_ART_MANIFEST } from "./youthArtManifest";
@@ -210,6 +211,28 @@ function drawClanAudienceV72(ctx: CanvasRenderingContext2D, presentation: Nurser
     drawCeremonyCivilianV72(ctx, bank, role, x, y, 136, x > 430);
   }
 }
+function drawCohortNet(ctx: CanvasRenderingContext2D, center: number, floor: number) {
+  ctx.strokeStyle = "#8f6142";
+  ctx.lineWidth = 5;
+  ctx.beginPath();
+  ctx.moveTo(center - 34, floor + 3); ctx.lineTo(center - 34, floor - 66);
+  ctx.lineTo(center + 34, floor - 66); ctx.lineTo(center + 34, floor + 3);
+  ctx.stroke();
+
+  ctx.strokeStyle = "#be9065";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  for (let i = 0; i < 6; i++) {
+    const x = center - 30 + 12 * i;
+    ctx.moveTo(x, floor - 63); ctx.quadraticCurveTo(x + 6, floor - 29, x - 1, floor - 8);
+  }
+  for (let i = 1; i <= 4; i++) {
+    const y = floor - 66 + i * 11;
+    ctx.moveTo(center - 31, y); ctx.quadraticCurveTo(center, y + 9, center + 33, y);
+  }
+  ctx.stroke();
+}
+
 function drawNurseryCohort(ctx: CanvasRenderingContext2D, presentation: NurseryPresentation, bank: NurseryArtBank, reducedMotion: boolean) {
   const cohort = presentation.cohort;
   if (!cohort) return;
@@ -229,22 +252,8 @@ function drawNurseryCohort(ctx: CanvasRenderingContext2D, presentation: NurseryP
     ctx.moveTo(gate.x - 26, floor - h);
     ctx.lineTo(gate.x + (cohort.steps >= 2 ? 26 : -2), floor - h - (cohort.steps >= 2 ? 0 : 9));
   }
-  ctx.moveTo(yena.x - 34, floor + 3); ctx.lineTo(yena.x - 34, floor - 66);
-  ctx.lineTo(yena.x + 34, floor - 66); ctx.lineTo(yena.x + 34, floor + 3);
   ctx.stroke();
-
-  ctx.strokeStyle = "#be9065";
-  ctx.lineWidth = 1.5;
-  ctx.beginPath();
-  for (let i = 0; i < 6; i++) {
-    const x = yena.x - 30 + 12 * i;
-    ctx.moveTo(x, floor - 63); ctx.quadraticCurveTo(x + 6, floor - 29, x - 1, floor - 8);
-  }
-  for (let i = 1; i <= 4; i++) {
-    const y = floor - 66 + i * 11;
-    ctx.moveTo(yena.x - 31, y); ctx.quadraticCurveTo(yena.x, y + 9, yena.x + 33, y);
-  }
-  ctx.stroke();
+  drawCohortNet(ctx, yena.x, floor);
 
   ctx.fillStyle = "#573522";
   ctx.fillRect(tov.x + 16, floor - 23, 27, 23);
@@ -424,6 +433,36 @@ function drawNurseryOpening(ctx: CanvasRenderingContext2D, opening: NonNullable<
       opening.stage === "cover" ? [[shelters, "Abri de Tov"]] : [];
   ctx.font = "600 14px system-ui, sans-serif"; ctx.textAlign = "center"; ctx.fillStyle = "#fce4b9";
   for (const [x, label] of markers) ctx.fillText(label, x, floor + 30);
+  ctx.restore();
+}
+
+
+/** Draw the O6 courtyard with the same native ground, prop and youngling atlases as the prologue. */
+export function drawFirstShockCourtyardO6(ctx: CanvasRenderingContext2D, checkpoint: NurseryState, bank: NurseryArtBank,
+  record: FirstShockRecordO6, position: { x: number; facing: -1 | 1; ticks: number }, reducedMotion: boolean) {
+  const { x, facing, ticks } = position;
+  const floor = NURSERY_ARENA.groundY;
+  const court = firstShockCourtO6(record, x);
+  const base = getNurseryPresentation(checkpoint);
+  drawNurseryScene(ctx, { ...base, cohort: undefined, opening: undefined, camera: { shot: "arena", progress: 0, blur: 0 },
+    groundBlade: { visible: court.stage === "retrieve", x: record.netX + 12, y: floor },
+    actors: [
+      { id: "rival", actorKind: "youngling", x: FIRST_SHOCK_HAREK_O6, y: floor, facing: 1,
+        pose: "idle", poseTick: 0, holdsDetachedBlade: false },
+      { id: "player", actorKind: "youngling", x, y: floor, facing,
+        pose: reducedMotion || ticks === 0 ? "idle" : "walk", poseTick: reducedMotion ? 0 : ticks, holdsDetachedBlade: court.held },
+    ],
+  }, bank, reducedMotion);
+  drawCeremonyCivilianV72(ctx, bank, "instructor", court.saarX, floor, 122, court.stage === "escort");
+  ctx.save();
+  drawCohortNet(ctx, record.netX, floor);
+  ctx.font = "600 14px system-ui, sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#ffe5a1";
+  ctx.beginPath(); ctx.arc(court.targetX, floor + 14, 5, 0, Math.PI * 2); ctx.fill();
+  const marker = court.stage === "drill" ? "Appui" :
+    court.stage === "escort" || court.stage === "choice" ? "Harek" : "Filet";
+  ctx.fillText(marker, court.targetX, floor + 37);
   ctx.restore();
 }
 

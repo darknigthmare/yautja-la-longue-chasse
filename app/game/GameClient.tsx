@@ -21,6 +21,7 @@ import { confirmEndingV170, examineEndingV170 } from "./systems/originEndingsV17
 import { applyTrainingYardO6, type TrainingYardOrderO6 } from "./systems/originTrainingYardO6";
 import { applyContinuationO6, isContinuationOrderO6, type ContinuationOrderO6 } from "./systems/originContinuationO6";
 import { applySoloReturnO6, isSoloReturnOrderO6, type SoloReturnOrderO6 } from "./systems/originSoloReturnO6";
+import { applyFirstShockO6, firstShockActiveO6, type FirstShockOrderO6 } from "./systems/originFirstShockO6";
 import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
 import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -380,6 +381,7 @@ const RecentSpriteLibraryV85 = React.lazy(() => import("./RecentSpriteLibraryV85
 const Mausoleum = React.lazy(() => import("./Mausoleum"));
 const HomeworldHub = React.lazy(() => import("./HomeworldHub"));
 const NurseryPrologueScreen = React.lazy(() => import("./NurseryPrologueScreen"));
+const OriginFirstShockO6 = React.lazy(() => import("./OriginFirstShockO6"));
 const YouthTrainingScreen = React.lazy(() => import("./YouthTrainingScreen"));
 const FirstTracksSoloV66 = React.lazy(() => import("./FirstTracksSoloV66"));
 const FirstHuntSoloV67 = React.lazy(() => import("./FirstHuntSoloV67"));
@@ -1317,7 +1319,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const clanShipMounted = clanShipVisible ||
     (screen === "legacy-finale-r2" && legacyVisitR2?.site.kind === "clan-ship") ||
     (screen === "clan-war" && archiveReturnV85 === "clan-ship" && clanShipState?.status === "aboard");
-  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || (screen === "clan-chronicle" && chronicleReturnScreen === "homeworld") || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89"));
+  const firstShock = screen === "homeworld" && hydrated ? firstShockActiveO6(save) : null;
+  const homeworldMounted = !firstShock && (screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || (screen === "clan-chronicle" && chronicleReturnScreen === "homeworld") || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89")));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
   );
@@ -1874,6 +1877,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setToast("Prologue achevé et sauvegardé. Après la formation et le voyage, ton parcours Unblooded se poursuit dans la cité du clan.");
     return true;
   }, [nurseryNextChapterReady, persistNursery, reconcileNurseryAttempt]);
+
+  const advanceFirstShock = useCallback((order: FirstShockOrderO6, x: number) => {
+    if (!sessionAliveRef.current || !reconcileNurseryAttempt()) return null;
+    const outcome = applyFirstShockO6(saveRef.current, order, x);
+    if (!outcome || !persistNursery(outcome.save)) return null;
+    if (order === "return-weapon") setToast("Le geste joué dans la cour est consigné. La cité t’attend.");
+    return { retryAt: outcome.retryAt };
+  }, [persistNursery, reconcileNurseryAttempt]);
 
   const checkpointYouth = useCallback((state: YouthState): boolean => {
     if (!sessionAliveRef.current || !reconcileNurseryAttempt()) return false;
@@ -5495,6 +5506,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           </div>
         </section>
       )}
+
+      {firstShock && save.prologue && <section className="screen panel-screen" inert={settingsOpen} data-nursery-origin-episode>
+        <div className="screen-safe">
+          <div className="physical-deck-toolbar"><button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages et sauvegardes</button><button type="button" className="ghost-button" onClick={() => void returnToMainMenu()}>Menu principal</button></div>
+          <Suspense fallback={<DeferredGameScreen />}>
+            <OriginFirstShockO6 key={save.createdAt} record={firstShock} checkpoint={save.prologue.checkpoint}
+              bindings={save.settings.controlBindings} paused={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy}
+              persistenceError={nurseryPersistenceError} onOrder={advanceFirstShock} />
+          </Suspense>
+        </div>
+      </section>}
 
       {homeworldMounted && (
         <Suspense fallback={<DeferredGameScreen />}>

@@ -1,6 +1,7 @@
 import { createClanChronicle, normalizeClanChronicle, recordChronicleEvidence, performChronicleRite, type ClanChronicle } from "./clanChronicle";
 import { createNurseryPrologue, normalizeNurseryCheckpoint, type NurseryState, type NurseryCompletionReceipt } from "./nurseryPrologue";
 import { keepsNurseryOpening } from "./nurseryOpening";
+import { startFirstShockO6 } from "./originFirstShockO6";
 import type { SaveGame } from "../types";
 
 /** Embedded in the campaign so checkpoint, completion and rite commit in one key. */
@@ -61,5 +62,6 @@ export function withNurseryCompletion(save: SaveGame, receipt: NurseryCompletion
   const recognized = performChronicleRite(complete.state, { id: "nursery-recognition", sourceId: "chronicle.rite.nursery" });
   if (!begun.accepted || !complete.accepted || !recognized.accepted) return null;
   const playedSeconds = Math.max(0, Math.floor(checkpoint.tick / 60) - Math.floor(progress.checkpoint.tick / 60));
-  return { ...save, profile: { ...save.profile, playTimeSeconds: save.profile.playTimeSeconds + playedSeconds }, prologue: { version: 1, status: "completed", checkpoint, chronicle: recognized.state, completedAt: now } };
+  return startFirstShockO6({ ...save, profile: { ...save.profile, playTimeSeconds: save.profile.playTimeSeconds + playedSeconds },
+    prologue: { version: 1, status: "completed", checkpoint, chronicle: recognized.state, completedAt: now } });
 }
