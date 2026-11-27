@@ -71,11 +71,14 @@ try {
       await actual.waitFor();
       await page.keyboard.press("KeyE");
       await nav.tick(230);
-      await roof.waitFor();
       const saved = await disk();
       assert.deepEqual(saved.homeworld.locationV77, saved.originV151.rivalRaceO6.at);
       assert.deepEqual(saved.originV151.townBellO6, seed.originV151.townBellO6);
       assert.equal(saved.originV151.rivalRaceO6.journal.length, 0);
+      console.log("O6_M04_ADMISSION", JSON.stringify({ scenario: scenario.id, at: saved.originV151.rivalRaceO6.at }));
+      await page.clock.resume();
+      await roof.waitFor({ timeout: 120000 });
+      await page.clock.pauseAt(new Date(await page.evaluate(() => Date.now() + 800)));
     }
     const position = async () => Number(await roof.getAttribute("data-position"));
     const surface = () => roof.getAttribute("data-platform");
@@ -172,7 +175,8 @@ try {
     await snap(roof, "03-fanion");
     await press("KeyE");
     await checkOrder("finish", "flag");
-    await city.waitFor();
+    await page.clock.resume();
+    await city.waitFor({ timeout: 120000 });
     const result = await disk(), rivalResult = result.originV151.rivalRaceO6;
     assert.equal(rivalResult.resolved, true);
     assert.equal(rivalResult.success, !scenario.fall);
