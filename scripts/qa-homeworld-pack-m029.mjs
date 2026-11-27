@@ -12,7 +12,9 @@ import { createCradleReturnRoute } from "../tests/helpers/buried-cradle-return-r
 
 
 const url = process.env.YAUTJA_M029_QA_URL ?? "http://127.0.0.1:4398";
-assert.ok(["127.0.0.1", "localhost"].includes(new URL(url).hostname));
+const qaOrigin = new URL(url);
+assert.ok(["127.0.0.1", "localhost"].includes(qaOrigin.hostname) || 
+  qaOrigin.origin === "https://yautja-la-longue-chasse.vercel.app");
 const output = process.env.YAUTJA_M029_QA_OUTPUT ?? "outputs/qa-bible-m029";
 await mkdir(output, { recursive: true });
 const bootstrap = await build({ stdin: {
@@ -160,7 +162,7 @@ const browser = await chromium.launch({ channel: "chrome", headless: true });
 const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
 const page = await context.newPage();
 page.setDefaultTimeout(120000);
-const report = { passed: false, url, commit: process.env.GITHUB_SHA ?? null, checks: [], routes: [], captures: [], pageErrors: [], httpErrors: [],
+const report = { passed: false, url, commit: process.env.GITHUB_SHA ?? null, deployedCommit: process.env.YAUTJA_M029_DEPLOYED_COMMIT ?? null, checks: [], routes: [], captures: [], pageErrors: [], httpErrors: [],
   fixture: "Full V66–90 and Quatza follow reducers; six temple rooms and paired marks record Blooded. Honour, hunts and earlier Berceau/M028 are a declared fixture constructed by their actions. Spawn at the native practice room; no pack actions are injected." };
 page.on("pageerror", error => report.pageErrors.push(String(error)));
 page.on("response", response => {
@@ -326,15 +328,25 @@ async function decideAtAudience(initial, advance) {
   const accepted = await advance("leader", "Accepter la fonction d’Adjutant", "appointed");
   assert.equal(chronicles.getChronicleRank(accepted.prologue.chronicle), "blooded");
   assert.deepEqual(chronicles.getChronicleFunctions(accepted.prologue.chronicle), ["adjutant"]);
-  assert.ok(accepted.prologue.chronicle.evidence.some(entry => entry.id === "team-extraction"));
+  const evidence = ["multiple-world-hunts", "team-extraction"];
+  assert.ok(evidence.every(id => accepted.prologue.chronicle.evidence.some(entry => entry.id === id)));
   assert.deepEqual(accepted.homeworld.packTrialM029, initial.homeworld.packTrialM029);
-  assert.equal(accepted.profile.honor, initial.profile.honor);
+  const receipts = evidence.map(id => ({ id: "chronicle:" + id, delta: 50 }));
+  assert.equal(accepted.profile.honor, initial.profile.honor + 100);
+  for (const receipt of receipts) {
+    const credited = accepted.honorSourcesV169.entries.filter(entry => entry.id === receipt.id);
+    assert.deepEqual(credited.map(({ id, delta }) => ({ id, delta })), [receipt]);
+  }
   await capture("05-leader-accepted.png");
   report.routes.push(...nav.routes);
   await boot();
   const reloaded = await disk();
   assert.deepEqual(reloaded.homeworld.adjutantM029.events, ["study", "place-relay", "confirm-signal", "defer", "accept"]);
   assert.deepEqual(chronicles.getChronicleFunctions(reloaded.prologue.chronicle), ["adjutant"]);
+  assert.equal(chronicles.getChronicleRank(reloaded.prologue.chronicle), "blooded");
+  assert.equal(reloaded.profile.honor, accepted.profile.honor);
+  assert.deepEqual(reloaded.honorSourcesV169, accepted.honorSourcesV169);
+  report.checks.push({ action: "reload", role: "adjutant", rank: "blooded", honor: reloaded.profile.honor, awarded: receipts });
 }
 const scene = () => page.locator("[data-homeworld-pack-m029]");
 const button = command => scene().locator("[data-homeworld-pack-action-m029=" + command + "]");

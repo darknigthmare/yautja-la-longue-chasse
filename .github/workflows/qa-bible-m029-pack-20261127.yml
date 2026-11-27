@@ -11,7 +11,8 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      YAUTJA_M029_QA_URL: http://127.0.0.1:4398
+      YAUTJA_M029_QA_URL: https://yautja-la-longue-chasse.vercel.app
+      YAUTJA_M029_DEPLOYED_COMMIT: 9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404
       YAUTJA_M029_QA_OUTPUT: outputs/qa-bible-m029
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -53,18 +54,8 @@ jobs:
           node scripts/materialize-asset-raccords-20261120.mjs runtime
           npm ci --ignore-scripts --no-audit --no-fund
           M029_ADMISSION_ONLY=1 node scripts/qa-homeworld-pack-m029.mjs
-          node scripts/build-production-v94.mjs
-      - name: Use the native Homeworld to bring all 12 pupils back and qualify the Leader appointment
-        run: |
-          mkdir -p "$YAUTJA_M029_QA_OUTPUT"
-          node node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 4398 > "$YAUTJA_M029_QA_OUTPUT"/server.log 2>&1 &
-          server=$!
-          trap 'kill "$server" || true' EXIT
-          for attempt in {1..40}; do
-            if curl --silent --fail --output /dev/null "$YAUTJA_M029_QA_URL"; then break; fi
-            sleep 1
-          done
-          node scripts/qa-homeworld-pack-m029.mjs
+      - name: Play the Leader choice on the published game
+        run: node scripts/qa-homeworld-pack-m029.mjs
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: ${{ always() }}
         with:
