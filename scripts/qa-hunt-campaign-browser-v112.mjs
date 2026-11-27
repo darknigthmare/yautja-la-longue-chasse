@@ -39,6 +39,7 @@ assert.ok(!(requireComplete||requireResume||requireIceUnderpass||requireHarvestW
 assert.ok(budget>0&&budget<=7200);
 assert.ok(Number.isSafeInteger(maxRetries)&&maxRetries>=0&&maxRetries<=10);
 await mkdir(out,{recursive:true});
+// Byte views are hashed as bytes: a JSON spelling of the grown bundle exceeds V8's string limit.
 const hash=value=>createHash('sha256').update(typeof value==='string'||ArrayBuffer.isView(value)?value:JSON.stringify(value)).digest('hex');
 const source=await readFile(path.join(root,'app/game/HuntCanvas.tsx'),'utf8');
 const gameClientSource=await readFile(path.join(root,'app/game/GameClient.tsx'),'utf8');
@@ -83,12 +84,17 @@ const bundle=await build({stdin:{contents:entry,resolveDir:root,loader:'tsx'},bu
       const marker='    const fixedStep = 1 / 60;';
       assert.equal(source.split(marker).length,2,'exactly one native observation point');
       const observer=`
-    window.__observeCanonicalHuntV112 = () => {
+    window.__observeCanonicalHuntV112 = (slim = false) => {
       const target = game.phase === "trophy" && !game.trophyExtracting && !game.regularTrophyDropId
         ? activeTrophyHarvestTargetV111(game) : null;
-      return { alive, missionId: mission.id, encounterRun,
+      // A slim read leaves out heavy history the pilot never reads; evidence samples stay complete.
+      const heavy = slim ? new Set(["lastCheckpoint", "tracks", "ecologyDeck", "goreParticles", "scentNodes", "honorEvents", "regularTrophyDrops"]) : null;
+      return { alive, missionId: mission.id, encounterRun, slim,
         apexTrophy: target && { ...target, inReach: canContinueTrophyHarvestV111(game) },
-        state: JSON.parse(JSON.stringify(game, (_key, value) => value instanceof Set ? [...value] : value)) };
+        state: JSON.parse(JSON.stringify(game, function (key, value) {
+          if (heavy && this === game && heavy.has(key)) return undefined;
+          return value instanceof Set ? [...value] : value;
+        })) };
     };
 `;
       recordSource(path.join(root,'app/game/HuntCanvas.tsx'),source);
@@ -175,11 +181,17 @@ async function enterCampaignDeck(page){
 
 async function resumeCampaignHunt(page){
   await enterCampaign(page);
-  await page.waitForFunction(()=>window.__observeCanonicalHuntV112?.().alive||
-    [...document.querySelectorAll('button')].some(button=>button.textContent?.trim().startsWith('Reprendre la chasse')));
-  const alreadyMounted=await page.evaluate(()=>window.__observeCanonicalHuntV112?.().alive===true);
-  if(!alreadyMounted)await page.getByRole('button',{name:/^Reprendre la chasse/}).first().click();
-  await page.waitForFunction(()=>window.__observeCanonicalHuntV112?.().alive);
+  // The deck button and in-hunt pause control share a name. Only the deck starts a session.
+  await page.waitForFunction(()=>window.__observeCanonicalHuntV112?.(true)?.alive||
+    [...document.querySelectorAll('button:not(.hunt-pause-button)')]
+      .some(button=>button.getClientRects().length&&button.textContent?.trim().startsWith('Reprendre la chasse')));
+  const deckResume=page.locator('button:not(.hunt-pause-button)').filter({hasText:/^\s*Reprendre la chasse/}).first();
+  const mounted=()=>page.evaluate(()=>window.__observeCanonicalHuntV112?.(true)?.alive===true);
+  if(!await mounted()){
+    try{await deckResume.click({timeout:5000});}
+    catch(error){if(!await mounted())throw error;}
+  }
+  await page.waitForFunction(()=>window.__observeCanonicalHuntV112?.(true)?.alive);
 }
 
 try{
@@ -359,6 +371,10 @@ try{
       melee:'KeyJ',weapon:'KeyK',weaponOne:'Digit1',weaponTwo:'Digit2',weaponNext:'KeyR',scan:'KeyV',heal:'KeyH',
       interact:'KeyE',pause:'Escape',cloak:'KeyC',gearOne:'Digit3',gearTwo:'Digit4'};
     const samples=[],examined=new Set(),harvestTries=new Map(),discoveryChannels=new Set(),retryEvents=[];
+    // Sample the active simulation clock only within each continuous encounter segment.
+    const controlLoop={iterations:0,continuousIntervals:0,simulatedSeconds:0};
+    let lastElapsed=null;
+    const observeFull=()=>page.evaluate(()=>window.__observeCanonicalHuntV112?.(false));
     let final=null,lastSecond=-1,lastPhase='',resumed=false,resumeReceipt=null,lastDecision=null;
     let startedWestOfIceGate=false,seenIceUnderpass=false;
     let trophyApproachMemory={},previousApexReason=null;
@@ -366,13 +382,19 @@ try{
     while(!stopRequested&&Date.now()-start<budget*1000){
       const {observed,activeElement,bodyId}=await page.evaluate(()=>{
         const element=document.activeElement;
-        return {observed:window.__observeCanonicalHuntV112?.(),
+        return {observed:window.__observeCanonicalHuntV112?.(true),
           activeElement:{tag:element?.tagName,role:element?.getAttribute('role'),
             text:element?.textContent?.slice(0,120),isCanvas:element?.tagName==='CANVAS'},
           bodyId:document.querySelector('[data-hunt-rites-v77]')?.getAttribute('data-corpse-id')??null};
       });
-      if(!observed?.alive){final=observed;break;}
-      const game=observed.state;final=observed;
+      if(!observed?.alive){final=await observeFull()??final??observed;break;}
+      const game=observed.state;
+      controlLoop.iterations++;
+      if(lastElapsed!==null&&game.elapsed>=lastElapsed){
+        controlLoop.continuousIntervals++;
+        controlLoop.simulatedSeconds+=game.elapsed-lastElapsed;
+      }
+      lastElapsed=game.elapsed;
       if(missionId==='ice-cryostalker'&&!seenIceUnderpass){
         const gate=game.world.platforms.find(platform=>platform.id==='ice-region-thermal-return-gate'&&platform.collision==='solid');
         const player=game.player;
@@ -385,8 +407,12 @@ try{
           console.log(JSON.stringify({browserIceUnderpass:underpass}));
         }
       }
+      if(Math.floor(game.elapsed)!==lastSecond||game.phase==='dead'||game.phase==='finished'){
+        final=await observeFull()??final;
+      }
       if(Math.floor(game.elapsed)!==lastSecond){
-        samples.push(observed);lastSecond=Math.floor(game.elapsed);
+        if(final?.state)samples.push(final);
+        lastSecond=Math.floor(game.elapsed);
         await writeFile(path.join(out,'progress.json'),JSON.stringify({wallSeconds:(Date.now()-start)/1000,missionId:observed.missionId,
           elapsed:game.elapsed,phase:game.phase,paused:game.paused,player:game.player,scans:game.scans,kills:game.kills,
           scanNodes:game.scanNodes,activeElement,lastDecision,reason:'native browser observation'},null,2)+'\n');
@@ -422,13 +448,13 @@ try{
           report.inputs.push({missionId,elapsed:game.elapsed,type:'DOM retry unavailable',reason:String(error)});
           break;
         }
-        retryEvents.push({elapsed:game.elapsed,nativeDeath:observed,button:label});
+        retryEvents.push({elapsed:game.elapsed,nativeDeath:final,button:label});
         Object.assign(memory,{previousX:0,stuckTicks:0,jumpUntil:-1,nextJump:0,nextInteractTick:0});
         trophyApproachMemory={};previousApexReason=null;
         delete memory.dropDirection;delete memory.dropTargetX;delete memory.harvestEdge;delete memory.harvestDirection;
         examined.clear();harvestTries.clear();
         // The new live attempt needs its own observed save roundtrip.
-        resumed=false;resumeReceipt=null;
+        resumed=false;resumeReceipt=null;lastElapsed=null;lastSecond=-1;
         report.inputs.push({missionId,elapsed:game.elapsed,type:'DOM retry',label});continue;
       }
       if(game.phase==='finished')break;
@@ -573,7 +599,7 @@ try{
         assert.ok(restored?.alive&&restored.missionId===missionId&&restored.encounterRun===observed.encounterRun&&
           restored.state.elapsed>=sidecar.snapshot.checkpoint.elapsed&&restored.state.elapsed-sidecar.snapshot.checkpoint.elapsed<2,
           'the real mounted runtime must continue the persisted hunt at its observed encounter');
-        resumeReceipt={sidecar,restored};resumed=true;
+        resumeReceipt={sidecar,restored};resumed=true;lastElapsed=null;lastSecond=-1;
         const resume={missionId,encounterRun:restored.encounterRun,
           savedElapsed:sidecar.snapshot.checkpoint.elapsed,restoredElapsed:restored.state.elapsed,sidecarSha256:hash(sidecar)};
         report.resumeObservations.push(resume);
@@ -582,6 +608,8 @@ try{
       await page.waitForTimeout(35);
     }
     for(const action of held)await page.keyboard.up(keys[action]);
+    const terminal=await observeFull();
+    if(terminal?.state&&terminal.missionId===missionId)final=terminal;
     await captureHunt('04-attempt-terminal');
     const settled=await saved(),beforeProgress=currentSave.missionProgress[missionId],afterProgress=settled.missionProgress[missionId];
     const settlementConfirmed=final?.state.phase==='finished'&&afterProgress.completions===beforeProgress.completions+1&&
@@ -592,7 +620,9 @@ try{
     const delivered=settlementConfirmed?settled.inventory.harvestV112.specimens.filter(item=>
       !priorIds.has(item.id)&&(!harvestSpecies||item.speciesId===harvestSpecies)&&(!wantedPart||item.partId===wantedPart)&&
       field.some(source=>source.id===item.id&&source.sourceId===item.sourceId&&source.speciesId===item.speciesId&&source.partId===item.partId)):[];
-    report.attempts.push({missionId,final,retryEvents,suspendedAndReloaded:resumed,resumeReceipt,delivered,
+    controlLoop.simulatedSecondsPerTick=controlLoop.continuousIntervals
+      ?controlLoop.simulatedSeconds/controlLoop.continuousIntervals:null;
+    report.attempts.push({missionId,final,retryEvents,controlLoop,suspendedAndReloaded:resumed,resumeReceipt,delivered,
       settlement:{confirmed:settlementConfirmed,beforeProgress,afterProgress},wallSeconds:(Date.now()-start)/1000,
       status:settlementConfirmed?'BROWSER_HUNT_AND_SETTLEMENT_SUCCESS':final?.state.phase==='dead'?'CONTROLLER_DIED':'ATTEMPT_INCOMPLETE'});
     await writeFile(path.join(out,missionId+'-hunt-samples.json'),JSON.stringify(samples,null,2)+'\n');
