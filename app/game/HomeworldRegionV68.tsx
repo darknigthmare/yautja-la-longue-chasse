@@ -355,10 +355,11 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
           {cordage && <span className={yardStyles.cordage} data-o6-cordage={cordage} role="img"
             aria-label={cordage === 'folded' ? 'Filet rangé' : 'Filet d’exercice'}
             style={{ left: cordage === 'raised' ? 585 : 217, top: (cordage === 'raised' ? 381 : 479) * d, zIndex: 400 }} />}
-          {continuation?.visitor && <span data-o6-yena-visit>
+          {continuation?.visitor && <>
             {drawActor('origin-o6-yena', continuation.visitor.x, continuation.visitor.y, 'huntress', 'huntress')}
-            <span className={styles.waypoint} style={{ left: continuation.visitor.x, top: continuation.visitor.y * d + 14 }}><b>Yena</b></span>
-          </span>}
+            <span className={styles.waypoint} data-o6-yena-visit
+              style={{ left: continuation.visitor.x, top: continuation.visitor.y * d + 14 }}><b>Yena</b></span>
+          </>}
           {continuation?.orders.includes('transmission') && <span className={styles.waypoint}
             data-o6-plan-transmission style={{ left: 613, top: 511 * d }}><b>Place du coffre</b></span>}
           {continuation?.post && <span className={styles.waypoint} data-o6-continuation-post={continuation.next}
