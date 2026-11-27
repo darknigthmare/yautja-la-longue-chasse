@@ -17,7 +17,7 @@ jobs:
       - name: Checkout the exact candidate
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '357a41300cb814ce0af76de21819e8cd077ba9af'
+          ref: ${{ github.sha }}
           persist-credentials: false
           fetch-depth: 2
           filter: blob:none

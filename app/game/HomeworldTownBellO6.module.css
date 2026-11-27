@@ -44,3 +44,16 @@
 @media (prefers-reduced-motion: reduce) {
   .bell[data-rung="true"] { animation: none; background: #f5bd62; }
 }
+
+.piece {
+  position: absolute;
+  left: -8px;
+  bottom: 52px;
+  width: 19px;
+  height: 10px;
+  border: 1px solid #e1a964;
+  border-radius: 4px 2px 3px 3px;
+  transform: rotate(-12deg);
+  background: linear-gradient(115deg, #714218 14%, #d29d57 42%, #8c5e2d 65%, #d9a863);
+  box-shadow: 0 1px 3px #20150c;
+}

@@ -80,8 +80,10 @@ test("A real deferred M02 adjusts the delivery and a deferred visit does not inv
   assert.deepEqual(town.townBellActionsO6(recovered), ["workshop"]);
 });
 
-test("Import and writes reject wrong physical sites, fabricated effects, future records and rollback", () => {
-  const { ready } = townAdmissionO6();
+test("Import and writes preserve both nursery policies, reject wrong sites and refuse rollback", () => {
+  const { ready } = townAdmissionO6({ nurseryPolicies: true });
+  assert.equal(ready.prologue.ceremonyM006, true);
+  assert.equal(ready.prologue.templeTriadFirstM017, true);
   const first = playTownOrderO6(ready, "begin");
   const stepped = playTownOrderO6(first, "workshops");
   const bad = structuredClone(stepped);
@@ -99,5 +101,8 @@ test("Import and writes reject wrong physical sites, fabricated effects, future 
   assert.ok(town.loadSaveWithStatus(storage).loaded);
   assert.ok(town.writeSaveWithStatus(stepped, storage).persisted);
   assert.equal(town.writeSaveWithStatus(first, storage).persisted, false);
-  assert.deepEqual(town.loadSaveWithStatus(storage).save.homeworld.locationV77, receipt(stepped).journal.at(-1).at);
+  const reloaded = town.loadSaveWithStatus(storage).save;
+  assert.deepEqual(reloaded.homeworld.locationV77, receipt(stepped).journal.at(-1).at);
+  assert.equal(reloaded.prologue.ceremonyM006, true);
+  assert.equal(reloaded.prologue.templeTriadFirstM017, true);
 });
