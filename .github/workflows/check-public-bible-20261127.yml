@@ -1,0 +1,39 @@
+name: Verify public game release
+on:
+  push:
+    branches: [codex/check-public-bible-20261127]
+permissions: {}
+jobs:
+  browser-input:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - name: Fetch the public title and its executable asset
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import re
+          from urllib.parse import urljoin, urlsplit
+          from urllib.request import Request, urlopen
+
+          site = "https://yautja-la-longue-chasse.vercel.app/"
+          headers = {"User-Agent": "Yautja release verification", "Cache-Control": "no-cache"}
+          with urlopen(Request(site + "?release=9a98912", headers=headers), timeout=25) as response:
+              page = response.read(4_000_000).decode("utf-8")
+              assert response.status == 200
+              assert urlsplit(response.url).hostname == urlsplit(site).hostname
+              assert response.headers.get_content_type() == "text/html"
+              assert re.search(r"Yautja", page, re.IGNORECASE)
+              print(f"Public title: {response.status}, {len(page)} characters")
+
+          scripts = re.findall(r'src="(/_next/static/[^"]+\.js(?:\?[^"]*)?)"', page)
+          assert scripts, "Next.js executable asset absent from the public title"
+          chunk = urljoin(site, scripts[0].replace("&amp;", "&"))
+          assert urlsplit(chunk).hostname == urlsplit(site).hostname
+          with urlopen(Request(chunk, headers=headers), timeout=25) as response:
+              code = response.read(512)
+              assert response.status == 200
+              assert "javascript" in response.headers.get_content_type()
+              assert len(code) == 512
+              print(f"Public game script: {response.status}, {response.headers.get_content_type()}")
+          PY
