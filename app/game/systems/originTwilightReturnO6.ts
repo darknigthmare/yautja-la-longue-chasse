@@ -85,8 +85,16 @@ function witnessO6(save: SaveGame): TrailWitnessO6 | null {
 }
 
 const STORAGE = ["lift-marker", "stow-marker", "lift-rope", "stow-rope"] as const;
+function twilightSceneOpenO6(save: SaveGame) {
+  return !!witnessO6(save) && beforeLaterProgressO6(save);
+}
+
+export function twilightReplayOpenO6(save: SaveGame) {
+  return !!save.originV151?.twilightReturnO6?.resolved && twilightSceneOpenO6(save);
+}
+
 export function twilightActionsO6(save: SaveGame): TwilightActionO6[] {
-  if (!witnessO6(save) || !beforeLaterProgressO6(save)) return [];
+  if (!twilightSceneOpenO6(save)) return [];
   return nextActions(save.originV151?.twilightReturnO6?.journal ?? []);
 }
 
@@ -100,7 +108,7 @@ function nextActions(journal: TwilightEventO6[]): TwilightActionO6[] {
 export function twilightInteractionO6(save: SaveGame, level: HomeworldLevelV77, actor: Point, interiorId: string | null) {
   const actions = twilightActionsO6(save);
   const advance = actions.find(action => atTwilightSiteO6(action, level, actor, interiorId));
-  if (advance || !actions.length) return advance;
+  if (advance || (!actions.length && !twilightReplayOpenO6(save))) return advance;
   const heard = save.originV151?.twilightReturnO6?.observations ?? [];
   return heard.find(action => atTwilightSiteO6(action, level, actor, interiorId));
 }
@@ -182,10 +190,21 @@ export const TWILIGHT_CHOICES_O6: Record<TwilightChoiceO6, string> = {
   protection: "Parler de protection", defer: "Je préfère essayer avant de le promettre.",
 };
 
+const TWILIGHT_EXPECTATIONS_O6 = {
+  technique: { action: "saar", text: "Saar · Au prochain atelier, montre-moi un geste que tu veux apprendre à refaire." },
+  exploration: { action: "yena", text: "Yena · Au prochain essai, compare avec moi le passage et ce que les cartes en disent." },
+  power: { action: "harek", text: "Harek · Au prochain essai, nous comparerons d’abord nos appuis." },
+  protection: { action: "tov", text: "Tov · Au prochain essai, viens vérifier avec moi que tout le monde pourra passer." },
+  defer: { action: "harek", text: "Harek · Je te demanderai ce que tu en penses après la prochaine course." },
+} as const;
+
 export function twilightReplyO6(save: SaveGame, order: TwilightOrderO6) {
   if (order.action === "declare") return order.choice === "defer"
     ? "Harek · Bien. Je te demanderai après la prochaine course."
-    : "Saar · Alors nous regarderons comment elle grandit avec les essais.";
+    : "Saar · Alors nous regarderons comment elle grandit avec les essais. Yena · On se retrouvera ici après d’autres essais. Ce soir suffit déjà.";
+  const choice = save.originV151?.twilightReturnO6?.choice;
+  const expectation = choice && TWILIGHT_EXPECTATIONS_O6[choice];
+  if (expectation && expectation.action === order.action) return expectation.text;
   switch (order.action) {
     case "lift-marker": return save.originV151?.littleTrailO6?.success
       ? "Tu ramasses l’outil utilisé pour le relevé. Porte-le jusqu’à l’établi."

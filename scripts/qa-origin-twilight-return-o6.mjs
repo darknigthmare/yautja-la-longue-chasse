@@ -124,8 +124,20 @@ try {
     assert.deepEqual(after.originV151.littleTrailO6, seed.originV151.littleTrailO6);
     await reload(record);
     assert.equal(await city.locator("[data-o6-twilight-quest]").count(), 0);
+    const replayed = [];
+    for (const id of ["saar", "harek", "tov", "yena"]) {
+      await nav.reach(twilight.twilightSiteO6(id));
+      await city.locator('[data-o6-twilight-action="' + id + '"]').waitFor();
+      await nav.release();
+      await page.keyboard.press("KeyE");
+      await nav.tick(120);
+      const expected = twilight.twilightReplyO6(await disk(), { action: id });
+      assert.ok((await city.locator('[aria-live="polite"][aria-atomic="true"]').allTextContents()).includes(expected));
+      assert.deepEqual(await receipt(), record, "A conversation after the choice leaves the completed receipt intact.");
+      replayed.push(id);
+    }
     assert.deepEqual(missing, []);
-    report.routes.push({ routeId, record, navigation: nav.routes });
+    report.routes.push({ routeId, record, replayed, navigation: nav.routes });
     await context.close();
   }
   assert.deepEqual(report.errors, []);
