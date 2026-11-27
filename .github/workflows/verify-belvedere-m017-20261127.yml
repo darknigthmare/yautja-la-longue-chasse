@@ -17,7 +17,7 @@ jobs:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: "bd2b27729c030b2403faa3b3079d08bc97e221f2"
+          ref: "6b8b88f84d02b3a77715df0ff1f2714fc00059d5"
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
