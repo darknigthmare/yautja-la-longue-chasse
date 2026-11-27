@@ -11,6 +11,7 @@ const bundle = await build({
     export * from "./app/game/systems/nurseryOpening";
     export * from "./app/game/systems/originFirstShockO6";
     export { createOriginV151 } from "./app/game/systems/originsV151";
+    export { startYouthCampaign } from "./app/game/systems/youthCampaign";
   `, resolveDir: process.cwd(), loader: "ts" },
   bundle: true, write: false, format: "esm", platform: "node", logLevel: "silent",
 });

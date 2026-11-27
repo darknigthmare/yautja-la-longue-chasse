@@ -142,6 +142,7 @@ export function normalizeFirstShockO6(raw: unknown): FirstShockRecordO6 | null {
 export function firstShockMatchesSaveO6(save: SaveGame) {
   const record = save.originV151?.firstShockO6;
   if (!record) return true;
+  if (save.youthTraining && !firstShockDepartedO6(record)) return false;
   const foundation = firstShockFoundation(save);
   return foundation?.ownerCreatedAt === record.ownerCreatedAt && foundation.netX === record.netX &&
     foundation.assisted === record.assisted;
