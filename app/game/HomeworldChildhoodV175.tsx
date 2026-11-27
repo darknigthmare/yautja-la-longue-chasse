@@ -1,10 +1,13 @@
 "use client";
 
 import type { KeyboardEvent } from "react";
+import HomeworldCivilianV72 from "./HomeworldCivilianV72";
+import { NURSERY_ART_MANIFEST } from "./nurseryArtManifest";
 import {
   CHILDHOOD_DRILLS_V175, CHILDHOOD_TRAIL_SIGNS_V175,
   childhoodLengthV175, childhoodOptionsV175, childhoodRingPositionV175, childhoodSpringOpenV175,
-  childhoodTrackSignV175, nextCohortGestureV175, type ChildhoodCommandV175, type ChildhoodViewV175,
+  childhoodTrackSignV175, nextCohortGestureV175, nextCohortStowV175,
+  type ChildhoodCommandV175, type ChildhoodViewV175,
 } from "./systems/homeworldChildhoodV175";
 import styles from "./HomeworldChildhoodV175.module.css";
 
@@ -19,7 +22,7 @@ function interactionLabel(view: ChildhoodViewV175) {
   if (view.trial === "handoff") {
     if (!view.demonstrated) return "Montrer l’appui à Saar";
     if (!view.stowed) return "Ranger l’outil dans le coffre";
-    return "Franchir le râtelier avec Saar";
+    return view.ceremony ? "Passer la porte du râtelier avec Saar" : "Franchir le râtelier avec Saar";
   }
   return "Interagir";
 }
@@ -39,12 +42,41 @@ const labels = {
   "show-passage": "Indiquer le dernier passage",
   handoff: "Rejoindre Saar pour la passation",
   "cohort-gesture": "Observer le geste du camarade",
+  "cohort-stow": "Voir le camarade déposer son outil",
   "first-mask": "Commencer par le masque",
   "first-blades": "Commencer par les lames",
   "reset-current": "Reprendre au dernier repère",
 } satisfies Record<ChildhoodCommandV175, string>;
 
-const cohortIllustrations = ["youngling-player-right.png", "youngling-rival-left.png", "youngling-player-left.png"];
+const cohortArt = [
+  { name: "Yena", atlas: NURSERY_ART_MANIFEST.actors.rival.left },
+  { name: "Harek", atlas: NURSERY_ART_MANIFEST.actors.rival.right },
+  { name: "Tov", atlas: NURSERY_ART_MANIFEST.actors.player.left },
+] as const;
+const cohortPoses = { ring: "ready", beam: "dodge", spring: "jab" } as const;
+
+function CohortMember({ view, index }: { view: ChildhoodViewV175; index: number }) {
+  const { name, atlas } = cohortArt[index];
+  const drill = view.finished[index];
+  const stowing = view.ceremony && view.cohortStowed === index + 1 && view.cohortStowed === view.cohortPresentations &&
+    view.position === 2 && !view.stowed;
+  const performing = !stowing && view.cohortPresentations === index + 1 && view.position === 2;
+  const pose = performing && drill ? cohortPoses[drill] : "idle";
+  const { rect, pivot } = atlas.clips[pose].frames[0];
+  const scale = 32 / atlas.bodyHeight;
+  return <span className={styles.cohortMember} style={{ gridColumn: stowing ? 5 : index + 3 }}
+    data-childhood-companion={name} data-cohort-performing={performing} data-cohort-stowing={stowing}
+    data-gesture={drill}>
+    <span className={styles.cohortCrop} style={{
+      width: rect[2] * scale, height: rect[3] * scale, left: -pivot[0] * scale, top: -pivot[1] * scale,
+    }}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- The atlas is clipped to its measured game frame. */}
+      <img src={atlas.src} alt="" style={{
+        transform: "translate(" + (-rect[0] * scale) + "px, " + (-rect[1] * scale) + "px) scale(" + scale + ")",
+      }} />
+    </span>
+  </span>;
+}
 
 function TrainingSpace({ view }: { view: ChildhoodViewV175 }) {
   const length = childhoodLengthV175(view);
@@ -70,17 +102,18 @@ function TrainingSpace({ view }: { view: ChildhoodViewV175 }) {
       {view.track?.phase === "perched" && <span className={styles.prey} style={{ gridColumn: 11 }} />}
     </>}
     {view.trial === "handoff" && <>
-      {!view.passed && cohortIllustrations.map((file, index) => (
-        <span key={file} className={styles.cohortMember} style={{ gridColumn: index + 3 }}
-          data-cohort-performing={view.cohortPresentations === index + 1}
-          data-gesture={view.finished[index]}>
-          {/* eslint-disable-next-line @next/next/no-img-element -- Static game sprite with fixed dimensions. */}
-          <img src={"/game/prologue/v47/" + file} width={38} height={52} alt="" />
+      {!view.passed && cohortArt.map(({ name }, index) => <CohortMember key={name} index={index} view={view} />)}
+      {view.ceremony && <>
+        <span className={styles.brazier} style={{ gridColumn: 2 }} />
+        <span className={styles.brazier} style={{ gridColumn: 7 }} />
+        <span className={styles.saar} style={{ gridColumn: view.passed ? 9 : view.position >= 4 ? 8 : 4 }}
+          data-childhood-saar={view.passed ? "inside" : "hall"}>
+          <HomeworldCivilianV72 role="instructor" facing={view.passed ? 1 : -1} height={40} />
         </span>
-      ))}
+      </>}
       <span className={styles.demonstration} data-ready={view.demonstrated} style={{ gridColumn: 3 }} />
       <span className={styles.chest} data-ready={view.stowed} style={{ gridColumn: 5 }} />
-      <span className={styles.gate} data-ready={view.stowed} style={{ gridColumn: 8 }} />
+      <span className={styles.gate} data-ready={view.stowed} data-ceremony={view.ceremony} style={{ gridColumn: 8 }} />
     </>}
     <span className={styles.actor} style={{ gridColumn: view.position + 1 }} data-perched={view.track?.phase === "perched"} />
   </div>;
@@ -95,7 +128,8 @@ export default function HomeworldChildhoodV175({ view, message, paused, mayEnter
   const sign = childhoodTrackSignV175(view);
   const comparing = view.track?.comparing;
   const performer = nextCohortGestureV175(view);
-  const title = view.trial === "handoff" ? "La passation"
+  const stowingCompanion = nextCohortStowV175(view);
+  const title = view.trial === "handoff" ? view.ceremony ? "La passation Unblooded" : "La passation"
     : view.trial === "track" ? "La piste avant la prise" : "L’épreuve des trois gestes";
   const key = (event: KeyboardEvent<HTMLDivElement>) => {
     if (paused || event.repeat || event.target !== event.currentTarget) return;
@@ -109,7 +143,8 @@ export default function HomeworldChildhoodV175({ view, message, paused, mayEnter
   return <section className={styles.panel} data-homeworld-childhood-v175={view.trial ?? "yard"}
     data-childhood-position={view.position} data-childhood-drills={view.finished.length}
     data-childhood-track-phase={view.track?.phase} data-childhood-passed={view.passed}
-    data-childhood-first-workshop={view.firstWorkshop ?? undefined} aria-label={title}>
+    data-childhood-first-workshop={view.firstWorkshop ?? undefined}
+    data-childhood-ceremony={view.ceremony ? view.passed ? "complete" : "active" : undefined} aria-label={title}>
     <h4>{title}</h4>
     {view.companion && <p><strong>{view.companion}</strong> · {view.trial === "ring" || view.trial === "beam" || view.trial === "spring"
       ? CHILDHOOD_DRILLS_V175[view.trial].title : ""}</p>}
@@ -124,12 +159,14 @@ export default function HomeworldChildhoodV175({ view, message, paused, mayEnter
     {view.trial === "handoff" && <p data-childhood-cohort={view.cohortPresentations}>
       Gestes des camarades consignés · {view.cohortPresentations}/3
     </p>}
+    {view.ceremony && <p data-childhood-cohort-tools={view.cohortStowed}>Outils des camarades au coffre · {view.cohortStowed}/3</p>}
     {view.firstWorkshop && <p>Premier atelier · {view.firstWorkshop === "mask" ? "Le masque et ses lectures" : "La distance des lames"}</p>}
     <p role="status">{message || view.message}</p>
     <div className={styles.controls}>
       {options.map(action => {
         const choiceLabel = action === "track-sign" ? sign?.actual : action === "track-decoy" ? sign?.decoy
           : action === "cohort-gesture" && performer ? "Observer " + performer.name + " · " + CHILDHOOD_DRILLS_V175[performer.drill].title
+          : action === "cohort-stow" && stowingCompanion ? "Voir " + stowingCompanion.name + " ranger son outil"
           : undefined;
         return <button type="button" key={action} data-childhood-action={action} disabled={paused}
           onClick={() => onAction(action)}>{choiceLabel ?? (action === "use" ? interactionLabel(view) : labels[action])}</button>;

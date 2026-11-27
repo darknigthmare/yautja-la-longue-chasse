@@ -32,7 +32,7 @@ import {normalizeHomeworldCargoV108} from './systems/homeworldCargoLedgerV108';
 import {normalizeHomeworldArchivePlaqueV109} from './systems/homeworldArchivePlaqueLedgerV109';
 import { normalizeYouthCampaign, youthCampaignMatchesSave } from "./systems/youthCampaign";
 import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
-import { hasChildhoodFoundationV175, isChildhoodSuccessorV175 } from "./systems/homeworldChildhoodV175";
+import { CHILDHOOD_LEDGER_VERSION_V175, hasChildhoodFoundationV175, isChildhoodSuccessorV175 } from "./systems/homeworldChildhoodV175";
 import { youthCityDeliveryMatchesWriteV176 } from "./systems/youthCityErrandV172";
 import { saarGuideLocationMatchesWriteM003 } from "./systems/youthCityGuideM003";
 import { youthCityPlaceMatchesWriteM003 } from "./systems/youthCityPlacesM003";
@@ -2110,7 +2110,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     return { save: null, failure: "invalid-save" };
   }
   const selectedChildhood = isRecord(value.homeworld) ? value.homeworld.childhoodV175 : undefined;
-  if (isRecord(selectedChildhood) && Number(selectedChildhood.version) > 2) return { save: null, failure: "future-version" };
+  if (isRecord(selectedChildhood) && Number(selectedChildhood.version) > CHILDHOOD_LEDGER_VERSION_V175) return { save: null, failure: "future-version" };
   const selectedAdjutant = isRecord(value.homeworld) ? value.homeworld.adjutantM029 : undefined;
   if (isRecord(selectedAdjutant) && Number(selectedAdjutant.version) > 1) return { save: null, failure: "future-version" };
   const save = normalizeSave(value);
@@ -2308,6 +2308,7 @@ function persistCampaign(
     }
     if (!replaceExisting && previous) {
       if (previous.createdAt !== requested.createdAt) return failed("save-conflict");
+      if (previous.prologue?.ceremonyM006 !== requested.prologue?.ceremonyM006) return failed("save-conflict", previous);
       // This receipt ledger belongs to the confirmed campaign write. Refuse a
       // stale copy before it can lose points or convert them into a rank.
       if (JSON.stringify(previous.honorSourcesV169) !== JSON.stringify(requested.honorSourcesV169)) {
@@ -2333,7 +2334,7 @@ function persistCampaign(
       const previousChildhood = previous.homeworld.childhoodV175;
       const nextChildhood = requested.homeworld.childhoodV175;
       if (JSON.stringify(previousChildhood ?? null) !== JSON.stringify(nextChildhood ?? null) &&
-          !isChildhoodSuccessorV175(previousChildhood, nextChildhood)) return failed("save-conflict", previous);
+          !isChildhoodSuccessorV175(previousChildhood, nextChildhood, !!previous.youthTraining)) return failed("save-conflict", previous);
       if (!isRegionalLoopSuccessorM014(previous, requested)) {
         return failed("save-conflict", previous);
       }

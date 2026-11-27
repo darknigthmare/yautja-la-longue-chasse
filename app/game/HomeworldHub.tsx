@@ -45,7 +45,7 @@ import { YOUTH_CITY_HEARTH_M003, YOUTH_CITY_SAAR_LANDING_M003, youthCityCouncilG
 import HomeworldCivilianV72 from "./HomeworldCivilianV72";
 import { youthCampaignObjective, youthEquipmentSummary } from "./systems/youthCampaign";
 import HomeworldChildhoodV175 from "./HomeworldChildhoodV175";
-import { CHILDHOOD_POST_V175, actChildhoodV175, childhoodViewV175, hasChildhoodFoundationV175,
+import { CHILDHOOD_POST_V175, actChildhoodV175, canEnterYouthAfterChildhoodV175, childhoodViewV175, hasChildhoodFoundationV175,
   type ChildhoodCommandV175 } from "./systems/homeworldChildhoodV175";
 import { getChronicleRank } from "./systems/clanChronicle";
 import { matchesControlAction, type ControlActionId } from "./systems/controlBindings";
@@ -1571,6 +1571,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   const canChoose = progress.evidenceIds.length === HOMEWORLD_EVIDENCE.length && !progress.witnessChoice;
   const youthChiefMet = progress.greetedNpcIds.includes("hunt-king");
   const youthMentorMet = progress.greetedNpcIds.includes("terrace-instructor");
+  const childhoodAdmission = canEnterYouthAfterChildhoodV175({ ...save, homeworld: progress }, childhoodView);
   const youthObjective = !youthChiefMet ? "Rejoins le chef du clan à la Citadelle, au nord-est de la cité, et parle-lui."
     : !youthMentorMet ? "Rejoins l’instructeur des terrasses, au centre de la cité, et parle-lui."
     : save.soloV90?.status === "completed" ? "La préparation de triade est rapportée. Le clan conserve les observations et les blessures de cet entraînement ; l’épreuve Quatza-Rij et le rite Blooded restent à accomplir."
@@ -1579,6 +1580,10 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     : save.soloV68?.status === "completed" ? "Le clan a reconnu ta cohorte Young Blood. Rejoins le maître pour préparer Les Seuils du Premier Sang ; le rite Blooded reste distinct."
     : save.soloV67?.status === "completed" ? "La Piste sans guide est rapportée. Rejoins le maître pour rassembler la Cohorte des Aspirants."
     : save.soloV66?.status === "completed" ? "Les Premières Pistes sont rapportées. Rejoins le maître pour La Piste sans guide ; les villages ordinaires et leurs relevés sont aussi accessibles."
+    : !childhoodAdmission && save.prologue?.ceremonyM006 && !hasChildhoodFoundationV175({ ...save, homeworld: progress })
+      ? "Rejoins le parvis de l’acropole. Porte la pièce à la forge, relève les repères de Saar puis visite le foyer."
+    : !childhoodAdmission && save.prologue?.ceremonyM006
+      ? "Rejoins la salle des maîtres aux terrasses. Termine les exercices et la passation de Saar avant le dojo."
     : youthCampaignObjective(save.youthTraining);
   const youthProgressTitle = save.soloV90?.status === "completed" ? "Young Blood · Préparation de triade rapportée"
     : save.soloV70?.status === "completed" ? "Young Blood · Temple, acte I rapporté"
@@ -1801,14 +1806,14 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
           {youthWelcome && childhoodView && hasChildhoodFoundationV175({ ...save, homeworld: progress }) &&
             interior?.buildingId === CHILDHOOD_POST_V175.roomId && selectedPoint.id === CHILDHOOD_POST_V175.pointId &&
             <HomeworldChildhoodV175 view={childhoodView} message={childhoodMessageV175}
-              paused={suspended || paused || inactive} mayEnter={!!onYouthTraining && youthChiefMet && youthMentorMet}
+              paused={suspended || paused || inactive} mayEnter={!!onYouthTraining && youthChiefMet && youthMentorMet && childhoodAdmission}
               trainingStarted={!!save.youthTraining}
               onAction={submitChildhoodV175} onEnter={() => { if (atChildhoodPostV175()) enterYouthTraining(); }} />}
           {selectedNpc && <p><YautjaTranslationV67 text={`« ${youthWelcome && youthGreeting[selectedNpc.id] ? youthGreeting[selectedNpc.id] : selectedNpc.greeting} »`} paused={suspended || paused || inactive} /></p>}
           {youthWelcome && ["hunt-king", "terrace-instructor"].includes(selectedNpc?.id ?? "") && <div className={styles.notice} data-unblooded-conversation={selectedNpc?.id}><p>{youthObjective}</p><p>Les exercices se jouent dans le dojo, puis au camp. Le maître attend ton retour pour reconnaître chaque épreuve.</p></div>}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && youthChiefMet && youthMentorMet && onYouthTraining &&
             (!youthCityBlocksFirstTraining || save.youthTraining) &&
-            (!childhoodView?.passed || childhoodView.firstWorkshop || save.youthTraining) && <button type="button" data-youth-enter-dojo disabled={suspended} onClick={enterYouthTraining}>{save.youthTraining?.status === "completed" ? save.youthTraining.checkpoint.phase === "cage-complete" ? "Revoir le bilan de la petite Fosse" : save.youthTraining.checkpoint.phase.startsWith("cage-") ? "Reprendre la petite Fosse de jeunesse" : save.youthTraining.checkpoint.phase === "patrol-complete" ? "Préparer le premier duel de la Fosse" : save.youthTraining.checkpoint.phase.startsWith("patrol-") ? "Reprendre la patrouille accompagnée" : save.youthTraining.checkpoint.phase === "desert-complete" ? "Préparer la patrouille avec le maître" : "Rejoindre le maître pour la sortie du désert" : save.youthTraining ? "Reprendre la formation Unblooded" : "Entrer dans le dojo avec le maître"}</button>}
+            childhoodAdmission && <button type="button" data-youth-enter-dojo disabled={suspended} onClick={enterYouthTraining}>{save.youthTraining?.status === "completed" ? save.youthTraining.checkpoint.phase === "cage-complete" ? "Revoir le bilan de la petite Fosse" : save.youthTraining.checkpoint.phase.startsWith("cage-") ? "Reprendre la petite Fosse de jeunesse" : save.youthTraining.checkpoint.phase === "patrol-complete" ? "Préparer le premier duel de la Fosse" : save.youthTraining.checkpoint.phase.startsWith("patrol-") ? "Reprendre la patrouille accompagnée" : save.youthTraining.checkpoint.phase === "desert-complete" ? "Préparer la patrouille avec le maître" : "Rejoindre le maître pour la sortie du désert" : save.youthTraining ? "Reprendre la formation Unblooded" : "Entrer dans le dojo avec le maître"}</button>}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && onSoloV66 && canStartSoloV66(save) && save.soloV66?.status !== "completed" && <button type="button" data-solo-v66-enter disabled={suspended || paused || inactive} onClick={() => {
             if (suspendedRef.current || pausedRef.current || pendingVisitOwnerRef.current !== save.createdAt || saveRef.current.createdAt !== save.createdAt || pointInCurrentSpace(actorRef.current, interiorRef.current, levelRefV77.current)?.id !== "training-service") return;
             clearInputs();

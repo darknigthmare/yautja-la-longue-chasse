@@ -9,7 +9,7 @@ import { CHRONICLE_RITES, recordChronicleEvidence } from "./clanChronicle";
 import { createYouthTraining, YOUTH_PHASES, normalizeYouthTraining, normalizeYouthReceipt, getYouthReceipts, type YouthState, type YouthReceipt } from "./youthTraining";
 
 import { youthWorkshopEquipment, youthWorkshopProgressMatches } from "./youthWorkshopV174";
-import { childhoodViewV175 } from "./homeworldChildhoodV175";
+import { canEnterYouthAfterChildhoodV175, childhoodViewV175 } from "./homeworldChildhoodV175";
 import { youthCityAdmissionReadyM003 } from "./youthCityErrandV172";
 
 export interface YouthEquipment {
@@ -94,6 +94,8 @@ export function youthCampaignMatchesSave(value: unknown, { bloodingVerified = fa
   const greeted = value.homeworld.greetedNpcIds;
   if (!["hunt-king", "terrace-instructor"].every(id => greeted.includes(id)) || typeof value.createdAt !== "string") return false;
   const childhood = childhoodViewV175(value.homeworld.childhoodV175, value.createdAt);
+  if ((prologue.ceremonyM006 || childhood?.ceremony) &&
+      (!childhood?.ceremony || !childhood.passed || !childhood.firstWorkshop)) return false;
   if ((childhood?.firstWorkshop ?? undefined) !== youth.checkpoint.firstWorkshopV176) return false;
   return trainingEvidence === earned(youth.receipts, "youth-camp-duel");
 }
@@ -103,7 +105,7 @@ export function startYouthCampaign(save: SaveGame, now = new Date().toISOString(
   const city = save.homeworld.youthCityErrandV172;
   if (city?.encounterM003 !== undefined && !youthCityAdmissionReadyM003(city)) return null;
   const childhood = childhoodViewV175(save.homeworld.childhoodV175, save.createdAt);
-  if (childhood?.passed && !childhood.firstWorkshop) return null;
+  if (!canEnterYouthAfterChildhoodV175(save, childhood)) return null;
   const checkpoint = { ...createYouthTraining(), ...(childhood?.firstWorkshop ? { firstWorkshopV176: childhood.firstWorkshop } : {}) };
   return { ...save, youthTraining: { version: 1, status: "active", checkpoint, receipts: [], equipment: { wristblade: false, biomask: false, accent: null }, startedAt: now, completedAt: null } };
 }

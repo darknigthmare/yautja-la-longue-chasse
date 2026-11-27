@@ -2,6 +2,7 @@ import type { SaveGame } from "../types";
 import { youthCityAdmissionReadyM003 } from "./youthCityErrandV172";
 import type { YouthWorkshopOpeningV176 } from "./youthWorkshopV174";
 
+export const CHILDHOOD_LEDGER_VERSION_V175 = 3;
 export const CHILDHOOD_POST_V175 = { roomId: "training-hall", pointId: "training-service" } as const;
 export const CHILDHOOD_DRILLS_V175 = {
   ring: { title: "Prise de l’anneau", companionHint: "L’anneau traverse les deux dalles. Attrape-le lorsqu’il est à portée." },
@@ -13,20 +14,23 @@ export function childhoodSpringOpenV175(beat: number) { return beat % 5 === 2 ||
 
 const COMPANIONS = ["Yena", "Harek", "Tov"] as const;
 const JOURNAL_LIMIT = 384;
-const ACTOR_END = { ring: 5, beam: 7, spring: 6, track: 10, "handoff": 7 } as const;
+const GATE_POSITION = 7;
+const RACK_POSITION = 8;
+const ACTOR_END = { ring: 5, beam: 7, spring: 6, track: 10, handoff: RACK_POSITION } as const;
 export const CHILDHOOD_TRAIL_SIGNS_V175 = [
   { x: 3, name: "Empreintes", actual: "Deux traces légères s’enfoncent en direction du bois.", decoy: "Les grandes marques sèches traversent la piste." },
   { x: 6, name: "Branches", actual: "Un rameau bas vient de plier du côté du bosquet.", decoy: "Le haut de la souche est cassé depuis longtemps." },
   { x: 8, name: "Sons", actual: "Un bref appel se répète au pied du perchoir.", decoy: "L’écho vient du mur à gauche, au-delà de la borne." },
 ] as const;
 const vocabulary = ["ring", "beam", "spring", "track", "east", "west", "observe", "use", "track-sign",
-  "track-decoy", "show-map", "show-passage", "handoff", "cohort-gesture", "first-mask", "first-blades", "reset-current"] as const;
+  "track-decoy", "show-map", "show-passage", "handoff", "cohort-gesture", "cohort-stow",
+  "first-mask", "first-blades", "reset-current"] as const;
 export type ChildhoodCommandV175 = typeof vocabulary[number];
-type ChildhoodEvent = Exclude<ChildhoodCommandV175, "reset-current">;
+type ChildhoodEvent = Exclude<ChildhoodCommandV175, "reset-current"> | "begin-ceremony";
 type Drill = keyof typeof CHILDHOOD_DRILLS_V175;
 type Trial = keyof typeof ACTOR_END;
 type TrackPhase = "outward" | "perched" | "returning";
-export type ChildhoodLedgerV175 = { version: 1 | 2; ownerCreatedAt: string; revision: number; journal: ChildhoodEvent[] };
+export type ChildhoodLedgerV175 = { version: 1 | 2 | 3; ownerCreatedAt: string; revision: number; journal: ChildhoodEvent[] };
 type Observation = { phase: TrackPhase; signs: number; comparing: boolean };
 export type ChildhoodViewV175 = {
   trial: Trial | null;
@@ -39,6 +43,8 @@ export type ChildhoodViewV175 = {
   report: "map" | "passage" | null;
   demonstrated: boolean;
   cohortPresentations: number;
+  cohortStowed: number;
+  ceremony: boolean;
   stowed: boolean;
   passed: boolean;
   firstWorkshop: YouthWorkshopOpeningV176 | null;
@@ -48,22 +54,43 @@ type ChildhoodSave = Pick<SaveGame, "createdAt" | "homeworld" | "prologue">;
 type ChildhoodPlace = { roomId: string | null; pointId: string | null; suspended: boolean };
 const initial = (): ChildhoodViewV175 => ({
   trial: null, position: 0, beat: 0, drift: 0, finished: [], companion: null, track: null,
-  report: null, demonstrated: false, cohortPresentations: 0, stowed: false, passed: false, firstWorkshop: null,
+  report: null, demonstrated: false, cohortPresentations: 0, cohortStowed: 0, ceremony: false,
+  stowed: false, passed: false, firstWorkshop: null,
   message: "Choisis le premier atelier. Son camarade t’attendra à l’entrée.",
 });
 
-export function nextCohortGestureV175(view: ChildhoodViewV175) {
-  const index = view.cohortPresentations;
+function cohortGestureAt(view: ChildhoodViewV175, index: number) {
   const name = COMPANIONS[index];
   const drill = view.finished[index];
   return name && drill ? { name, drill } : null;
+}
+
+export function nextCohortGestureV175(view: ChildhoodViewV175) {
+  return cohortGestureAt(view, view.cohortPresentations);
+}
+
+export function nextCohortStowV175(view: ChildhoodViewV175) {
+  if (!view.ceremony || view.cohortStowed >= view.cohortPresentations) return null;
+  return cohortGestureAt(view, view.cohortStowed);
+}
+
+function ceremonyReady(view: ChildhoodViewV175) {
+  return !view.ceremony || view.cohortStowed === COMPANIONS.length;
+}
+
+function ledgerVersion(view: ChildhoodViewV175): ChildhoodLedgerV175["version"] {
+  return view.ceremony ? CHILDHOOD_LEDGER_VERSION_V175 : view.cohortPresentations > 0 ? 2 : 1;
+}
+
+function journeyEvent(event: ChildhoodCommandV175, trainingStarted: boolean) {
+  return event === "handoff" && !trainingStarted ? "begin-ceremony" : event;
 }
 
 export function childhoodTrackSignV175(view: ChildhoodViewV175) {
   return view.track ? CHILDHOOD_TRAIL_SIGNS_V175[view.track.signs] : undefined;
 }
 export function childhoodLengthV175(view: ChildhoodViewV175) {
-  return view.trial ? ACTOR_END[view.trial] + 1 : 0;
+  return view.trial === "handoff" && !view.ceremony ? GATE_POSITION + 1 : view.trial ? ACTOR_END[view.trial] + 1 : 0;
 }
 
 function begin(view: ChildhoodViewV175, trial: Trial, message: string): ChildhoodViewV175 {
@@ -88,7 +115,7 @@ function move(view: ChildhoodViewV175, trial: Trial, direction: number): Childho
       : position === 9 ? "Le dernier appel vient de la branche haute. Monte au perchoir." : "Lis les indices du passage." };
   }
   if (trial === "handoff") {
-    const limit = view.stowed ? 7 : view.demonstrated ? 4 : 2;
+    const limit = view.stowed ? GATE_POSITION : view.demonstrated && ceremonyReady(view) ? 4 : 2;
     return position > limit ? null : { ...view, position, message: "Rejoins le prochain poste de la passation." };
   }
   if (trial === "beam") {
@@ -138,11 +165,14 @@ function advance(view: ChildhoodViewV175, event: ChildhoodEvent): ChildhoodViewV
       return begin({ ...view, track: { phase: "outward", signs: 0, comparing: false } }, "track",
         "Entre dans la réserve et suis les indices. Reste en deçà de la borne.");
     }
-    if (event === "handoff" && view.report && !view.passed) return begin(view, "handoff", "Saar t’attend devant le poste de démonstration.");
+    if ((event === "handoff" || event === "begin-ceremony") && view.report && !view.passed) {
+      return begin({ ...view, ceremony: event === "begin-ceremony" }, "handoff", "Saar t’attend devant le poste de démonstration.");
+    }
     return null;
   }
   if (trial === "handoff" && view.passed) {
-    if (view.firstWorkshop || view.position !== ACTOR_END.handoff || (event !== "first-mask" && event !== "first-blades")) return null;
+    if (view.firstWorkshop || view.position !== (view.ceremony ? RACK_POSITION : GATE_POSITION) ||
+        (event !== "first-mask" && event !== "first-blades")) return null;
     const firstWorkshop = event === "first-mask" ? "mask" : "blades";
     return { ...view, firstWorkshop, message: firstWorkshop === "mask"
       ? "Le masque t’attend au premier atelier des baraquements."
@@ -153,14 +183,28 @@ function advance(view: ChildhoodViewV175, event: ChildhoodEvent): ChildhoodViewV
   if (trial === "handoff") {
     if (event === "cohort-gesture") {
       const performer = nextCohortGestureV175(view);
-      if (!performer || !view.demonstrated || view.stowed || view.position !== 2) return null;
+      if (!performer || !view.demonstrated || view.stowed || view.position !== 2 || nextCohortStowV175(view)) return null;
       return { ...view, cohortPresentations: view.cohortPresentations + 1,
         message: performer.name + " présente son geste. " + CHILDHOOD_DRILLS_V175[performer.drill].title + " consignée." };
     }
+    if (event === "cohort-stow") {
+      const companion = nextCohortStowV175(view);
+      if (!companion || view.position !== 2) return null;
+      const cohortStowed = view.cohortStowed + 1;
+      return { ...view, cohortStowed, message: companion.name + " dépose son outil dans le coffre. " +
+        (cohortStowed === COMPANIONS.length ? "Saar t’invite à y ranger le tien." : "Le jeune suivant approche du poste.") };
+    }
     if (event !== "use") return null;
-    if (view.position === 2 && !view.demonstrated) return { ...view, demonstrated: true, message: "Tu montres ton appui et Saar le reprend." };
-    if (view.position === 4 && view.demonstrated && !view.stowed) return { ...view, stowed: true, message: "L’outil d’enfance est rangé dans son coffre." };
-    if (view.position === 7 && view.stowed) return { ...view, passed: true, message: "Saar franchit le râtelier avec toi et te laisse choisir ton premier atelier." };
+    if (view.position === 2 && !view.demonstrated) return { ...view, demonstrated: true,
+      message: view.ceremony ? "Tu montres ton appui à Saar. Reste au poste pour la passation des trois camarades."
+        : "Tu montres ton appui et Saar le reprend." };
+    if (view.position === 4 && view.demonstrated && ceremonyReady(view) && !view.stowed) return { ...view, stowed: true,
+      message: view.ceremony ? "Tu ranges l’outil d’enfance. Saar déverrouille la porte du râtelier."
+        : "L’outil d’enfance est rangé dans son coffre." };
+    if (view.position === GATE_POSITION && view.stowed) return { ...view, passed: true,
+      position: view.ceremony ? RACK_POSITION : GATE_POSITION,
+      message: view.ceremony ? "Saar te rejoint de l’autre côté de la porte. La cohorte a accès aux ateliers Unblooded."
+        : "Saar franchit le râtelier avec toi et te laisse choisir ton premier atelier." };
     return null;
   }
   if (event === "observe" && trial !== "beam") return { ...view, beat: (view.beat + 1) % 20,
@@ -179,7 +223,7 @@ function advance(view: ChildhoodViewV175, event: ChildhoodEvent): ChildhoodViewV
 
 function markCheckpoint(before: ChildhoodViewV175, after: ChildhoodViewV175) {
   return before.trial !== after.trial || before.track?.phase !== after.track?.phase || before.track?.signs !== after.track?.signs
-    || before.cohortPresentations !== after.cohortPresentations
+    || before.cohortPresentations !== after.cohortPresentations || before.cohortStowed !== after.cohortStowed
     || before.demonstrated !== after.demonstrated || before.stowed !== after.stowed || before.passed !== after.passed;
 }
 
@@ -187,13 +231,15 @@ function markCheckpoint(before: ChildhoodViewV175, after: ChildhoodViewV175) {
 // retry indefinitely without filling the journal or losing a completed drill.
 function stateKey(view: ChildhoodViewV175) {
   return JSON.stringify([view.trial, view.position, view.beat, view.drift, view.finished, view.companion,
-    view.track, view.report, view.demonstrated, view.cohortPresentations, view.stowed, view.passed, view.firstWorkshop]);
+    view.track, view.report, view.demonstrated, view.ceremony, view.cohortPresentations, view.cohortStowed,
+    view.stowed, view.passed, view.firstWorkshop]);
 }
 
 function inspect(raw: unknown) {
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null;
   const { version, ownerCreatedAt, revision, journal } = raw as Record<string, unknown>;
-  if ((version !== 1 && version !== 2) || typeof ownerCreatedAt !== "string" || !Number.isFinite(Date.parse(ownerCreatedAt)) ||
+  if ((version !== 1 && version !== 2 && version !== CHILDHOOD_LEDGER_VERSION_V175) ||
+      typeof ownerCreatedAt !== "string" || !Number.isFinite(Date.parse(ownerCreatedAt)) ||
       typeof revision !== "number" || !Number.isSafeInteger(revision) || revision < 1 ||
       !Array.isArray(journal) || journal.length === 0 || journal.length > JOURNAL_LIMIT || revision < journal.length) return null;
   let view = initial();
@@ -201,7 +247,7 @@ function inspect(raw: unknown) {
   const verified: ChildhoodEvent[] = [];
   const visited = new Map([[stateKey(view), 0]]);
   for (const event of journal) {
-    if (!vocabulary.includes(event) || event === "reset-current" || (event === "cohort-gesture" && version !== 2)) return null;
+    if (event !== "begin-ceremony" && (!vocabulary.includes(event) || event === "reset-current")) return null;
     const next = advance(view, event);
     if (!next) return null;
     verified.push(event);
@@ -210,7 +256,7 @@ function inspect(raw: unknown) {
     if (markCheckpoint(view, next)) recovery = verified.slice();
     view = next;
   }
-  if (version === 2 && view.cohortPresentations === 0) return null;
+  if (version !== ledgerVersion(view)) return null;
   return { ledger: { version, ownerCreatedAt, revision, journal: verified } as ChildhoodLedgerV175, view, recovery, visited };
 }
 export function normalizeChildhoodV175(raw: unknown) {
@@ -226,10 +272,20 @@ export function hasChildhoodFoundationV175(save: ChildhoodSave) {
     errand?.ownerCreatedAt === save.createdAt && youthCityAdmissionReadyM003(errand);
 }
 
+export function canEnterYouthAfterChildhoodV175(
+  save: ChildhoodSave & Pick<SaveGame, "youthTraining">,
+  view = childhoodViewV175(save.homeworld.childhoodV175, save.createdAt),
+) {
+  if (save.youthTraining) return true;
+  if (!view || (save.prologue?.ceremonyM006 && !view.ceremony)) return false;
+  if (view.passed) return view.firstWorkshop !== null;
+  return !view.ceremony;
+}
+
 export function childhoodOptionsV175(view: ChildhoodViewV175) {
   return vocabulary.filter(event => event === "reset-current" ? !!view.trial && !view.passed : advance(view, event) !== null);
 }
-function selectJournal(result: ReturnType<typeof inspect>, event: ChildhoodCommandV175, next: ChildhoodViewV175) {
+function selectJournal(result: ReturnType<typeof inspect>, event: ChildhoodEvent | "reset-current", next: ChildhoodViewV175) {
   if (event === "reset-current") return result!.recovery;
   const previous = result?.ledger.journal ?? [];
   const equivalent = result?.visited.get(stateKey(next));
@@ -258,25 +314,28 @@ export function actChildhoodV175(
     return { state: { ...result.ledger, revision, journal: result.recovery },
       message: "Dernier repère repris. Les gestes et indices reconnus sont conservés." };
   }
-  const next = advance(result?.view ?? initial(), event);
+  const recordedEvent = journeyEvent(event, !!save.youthTraining);
+  const next = advance(result?.view ?? initial(), recordedEvent);
   if (!next) return { message: "Rejoins le poste de ce geste." };
-  const journal = selectJournal(result, event, next);
+  const journal = selectJournal(result, recordedEvent, next);
   if (journal.length > JOURNAL_LIMIT) return { message: "Reprends au dernier repère pour continuer." };
-  const version = next.cohortPresentations > 0 ? 2 : 1;
-  return { state: { version, ownerCreatedAt: save.createdAt, revision, journal } satisfies ChildhoodLedgerV175, message: next.message };
+  return { state: { version: ledgerVersion(next), ownerCreatedAt: save.createdAt, revision, journal } satisfies ChildhoodLedgerV175, message: next.message };
 }
 
-export function isChildhoodSuccessorV175(prior: ChildhoodLedgerV175 | undefined, next: ChildhoodLedgerV175 | undefined) {
+export function isChildhoodSuccessorV175(
+  prior: ChildhoodLedgerV175 | undefined, next: ChildhoodLedgerV175 | undefined, trainingStarted: boolean,
+) {
   if (!next || next.revision !== (prior?.revision ?? 0) + 1) return false;
   if (!prior) return next.version === 1 && next.journal.length === 1;
   if (prior.ownerCreatedAt !== next.ownerCreatedAt) return false;
   const checked = inspect(prior);
   if (!checked) return false;
-  return childhoodOptionsV175(checked.view).some(event => {
+  return childhoodOptionsV175(checked.view).some(command => {
+    const event = journeyEvent(command, trainingStarted);
     const view = event === "reset-current" ? checked.view : advance(checked.view, event);
     if (!view) return false;
     const expected = selectJournal(checked, event, view);
-    const version = view.cohortPresentations > 0 ? 2 : 1;
-    return next.version === version && expected.length === next.journal.length && expected.every((entry, i) => entry === next.journal[i]);
+    return next.version === ledgerVersion(view) && expected.length === next.journal.length &&
+      expected.every((entry, i) => entry === next.journal[i]);
   });
 }
