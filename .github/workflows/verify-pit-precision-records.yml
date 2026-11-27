@@ -1,0 +1,67 @@
+name: Verify restored Pit precision records
+on:
+  push:
+    branches: ['codex/verify-pit-precision-records-20261127']
+permissions:
+  contents: read
+jobs:
+  records:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.openai/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /build/
+            /content/the-pit/
+            /tests/
+            /scripts/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues-index.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify reconstruction and the real four-projectile trial records
+        run: |
+          test "$(git rev-parse HEAD:app/game/systems/pitPrecisionRecordsV1.ts)" = d952c3b30e063c983ad3476decc6e16dab2e3c1b
+          test "$(git rev-parse HEAD:tests/pit-precision-trial-v1.test.mjs)" = 6e772795aa32b821d4df5cc99da928244e94475a
+          node --experimental-strip-types --test tests/pit-precision-trial-v1.test.mjs tests/pit-bonus-trial-v1.test.mjs
+      - name: Exercise damaged scores and incomplete impact receipts
+        run: |
+          cat >> tests/pit-precision-trial-v1.test.mjs <<'EOF'
+
+          test("a missing projectile receipt and altered stored score are refused without writes", () => {
+            const memory = storage();
+            const result = play().trial;
+            assert.equal(pit.savePitPrecisionRecordV1(OWNER, { ...result, projectileSeen: false }, AT, memory).saved, false);
+            assert.equal(memory.writes.length, 0);
+            assert.equal(pit.savePitPrecisionRecordV1(OWNER, result, AT, memory).saved, true);
+            const key = pit.pitPrecisionRecordsStorageKeyV1(OWNER);
+            const stored = JSON.parse(memory.getItem(key));
+            stored.best.standard.score += 1000;
+            const tampered = JSON.stringify(stored);
+            memory.values.set(key, tampered);
+            assert.equal(pit.loadPitPrecisionRecordsV1(OWNER, memory).status, "invalid");
+            assert.equal(pit.savePitPrecisionRecordV1(OWNER, result, AT, memory).saved, false);
+            assert.equal(memory.getItem(key), tampered);
+            assert.equal(memory.writes.length, 1);
+          });
+          EOF
+          node --experimental-strip-types --test --test-name-pattern='altered stored score' tests/pit-precision-trial-v1.test.mjs
+      - name: Lint the record module
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/systems/pitPrecisionRecordsV1.ts
+      - name: Typecheck the restored record interfaces
+        run: npm run typecheck
