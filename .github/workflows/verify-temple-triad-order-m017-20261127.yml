@@ -1,4 +1,4 @@
-name: Jouer le seuil de triade puis la première salle M017
+name: Vérifier la triade avant le Temple M017
 on:
   push:
     branches: [codex/verify-temple-triad-order-m017-20261127]
@@ -13,13 +13,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'd94b4f99b605fea9b78c82ea4ba5fbb823772a47'
+      ASSET_RACCORDS_SOURCE_COMMIT: '53b736eae75af96a9be6fd16b0b4f4cd4dfd05be'
       BASE_COMMIT: 'ac38e8dea7db20985a04d1d2f14e6354dc699360'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'd94b4f99b605fea9b78c82ea4ba5fbb823772a47'
+          ref: '53b736eae75af96a9be6fd16b0b4f4cd4dfd05be'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -96,6 +96,23 @@ jobs:
         run: |
           node scripts/materialize-asset-raccords-20261120.mjs runtime
           npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify both play orders and the native progression callbacks
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec
+          tests/game-client-solo-v70-integration.test.mjs tests/game-client-solo-v90-integration.test.mjs
+          tests/campaign-solo-v70.test.mjs tests/nursery-campaign.test.mjs tests/campaign-slots.test.mjs
+          tests/homeworld-triad-roles-m016.test.mjs tests/homeworld-triad-city-m016.test.mjs tests/nef-rejoin-m017.test.mjs
+      - name: Typecheck all game routes
+        if: ${{ !cancelled() }}
+        run: npm run typecheck
+      - name: Lint the new handoff
+        if: ${{ !cancelled() }}
+        run: >-
+          npx eslint app/game/systems/campaignSoloV90Progress.ts app/game/systems/campaignSoloV90.ts 
+          app/game/systems/campaignSoloV70.ts app/game/systems/nurseryCampaign.ts app/game/systems/campaignSlots.ts
+          app/game/FirstHuntSoloV70.tsx app/game/FirstHuntSoloV90.tsx scripts/qa-triad-roles-m016.mjs
+          tests/game-client-solo-v70-integration.test.mjs tests/game-client-solo-v90-integration.test.mjs
+          app/game/systems/homeworldTriadM016.ts tests/homeworld-triad-city-m016.test.mjs
       - name: Place the triad in Chromium, open the Temple, and reload there
         if: ${{ !cancelled() }}
         env:

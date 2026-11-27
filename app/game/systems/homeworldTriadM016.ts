@@ -63,10 +63,11 @@ export function normalizeTriadCityM016(value: unknown): TriadCityM016 | null {
   return steps.saar || steps.vek ? { version: 1, ownerCreatedAt: value.ownerCreatedAt, steps } : null;
 }
 
-export function triadCityMatchesSaveM016(save: Pick<SaveGame, "createdAt" | "homeworld" | "soloV70" | "prologue">) {
+export function triadCityMatchesSaveM016(save: Pick<SaveGame, "createdAt" | "homeworld" | "soloV69" | "soloV70" | "prologue">) {
   const ledger = save.homeworld.triadCityM016;
+  const preparationChapter = save.prologue?.templeTriadFirstM017 ? save.soloV69 : save.soloV70;
   return !!ledger && ledger.ownerCreatedAt === save.createdAt &&
-    save.prologue?.status === "completed" && save.soloV70?.status === "completed";
+    save.prologue?.status === "completed" && preparationChapter?.status === "completed";
 }
 
 export function triadCityStationReachedM016(station: TriadCityStationM016, checkpoint?: HomeworldCheckpointV77) {
