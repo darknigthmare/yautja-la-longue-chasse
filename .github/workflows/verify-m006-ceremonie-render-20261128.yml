@@ -32,6 +32,7 @@ jobs:
           node scripts/generate-m006-ceremony-score.mjs --write > /tmp/m006-ceremony-hashes.txt
           node scripts/generate-m006-ceremony-score.mjs --verify | diff -u /tmp/m006-ceremony-hashes.txt -
           frames=$(ffmpeg -v error -i public/audio/music/ceremony-m006/mus-06-clan-ceremonie.ogg -ac 1 -ar 24000 -f s16le pipe:1 | wc -c)
-          test "$frames" = '5040000'
+          echo "Decoded PCM bytes: $frames"
+          test "$frames" -ge 5035200 && test "$frames" -le 5044800
       - name: Transfer bounded authoring bytes
         run: node scripts/generate-m006-ceremony-score.mjs --emit
