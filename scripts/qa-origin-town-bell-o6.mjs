@@ -86,7 +86,8 @@ try {
     await page.goto(host);
     await enter();
     assert.equal(await receipt(), undefined);
-    await viewport.locator("[data-o6-town-saar]").waitFor();
+    await viewport.locator("[data-o6-town-saar]").waitFor({ state: "attached" });
+    await viewport.locator('[data-o6-town-action="begin"]').waitFor();
     await act("begin");
     assert.equal((await receipt()).carriesPiece, true);
     assert.equal(await viewport.locator("[data-o6-town-piece]").count(), 1);
