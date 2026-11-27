@@ -24,6 +24,7 @@ import {
   trainingDrillScore,
   type TrainingDrillAction,
   type TrainingDrillFeedback,
+  type TrainingDrillTrace,
 } from "./systems/trainingDrill";
 import {
   TRAINING_LABELS,
@@ -41,7 +42,8 @@ export interface TrainingDrillProps {
   /** Parent persistence status; delivery alone is not confirmation. */
   saveIssue?: string | null;
   onRetrySave?: () => void;
-  onComplete: (score: number) => void;
+  onComplete?: (score: number) => void;
+  onTrace?: (trace: TrainingDrillTrace) => void;
   onCancel: () => void;
 }
 
@@ -85,6 +87,7 @@ function TrainingDrillSession({
   saveIssue = null,
   onRetrySave,
   onComplete,
+  onTrace,
   onCancel,
 }: TrainingDrillProps) {
   const backdropRef = useRef<HTMLDivElement | null>(null);
@@ -92,7 +95,7 @@ function TrainingDrillSession({
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
   const plasmaPractice = clanPlasma && disciplineId === "targeting";
   const { game, paused, resultSent, deliveryError, canAct, begin, submitAction, cancel, recordResult } = useTrainingDrillRuntimeV94({
-    disciplineId, seed, clanPlasma: plasmaPractice, rootRef: panelRef, suspended, gamepadEnabled, onComplete, onCancel,
+    disciplineId, seed, clanPlasma: plasmaPractice, rootRef: panelRef, suspended, gamepadEnabled, onComplete, onTrace, onCancel,
   });
   const config = plasmaPractice ? CLAN_PLASMA_DRILL : TRAINING_DRILL_CONFIGS[disciplineId];
   const huntCue = getClanHuntCue(game);
@@ -378,6 +381,7 @@ function TrainingDrillSession({
             <button
               key={action}
               type="button"
+              data-training-drill-action={action}
               className="hub-action"
               disabled={paused || game.status !== "playing"}
               aria-label={`${actionLabels[action]}. ${actionShortcuts[action]}`}
@@ -428,7 +432,7 @@ function TrainingDrillSession({
                 onClick={recordResult}
                 disabled={paused || resultSent}
               >
-                {deliveryError ? "Transmission non confirmée" : resultSent ? "Résultat transmis au vaisseau" : "Consigner le résultat"}
+                {deliveryError ? "Transmission non confirmée" : resultSent ? (onTrace ? "Résultat présenté au vétéran" : "Résultat transmis au vaisseau") : "Consigner le résultat"}
               </button>
             </div>
           </section>

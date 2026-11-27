@@ -2,20 +2,15 @@ import {
   warGarrisonV85, warSuppliedV85, warTerritoryForSimulationV96,
   type WarReportV85, type WarSimulationV85, type WarUpdateV85,
 } from "./clanWarV85";
-import { CANYON_GEOMETRY_V85 } from "./clanWarCanyonV85";
+import { canyonDecisionM037, initialCanyonPositionM037, type CanyonPositionM037 } from "./clanWarCanyonPathM037";
+export { canyonDecisionM037, changeCanyonLevelM037, checkCanyonSignM037, nearCanyonSignM037, walkCanyonM037,
+  type CanyonDecisionM037 } from "./clanWarCanyonPathM037";
 
 const SITE = "CON-T09";
 const SCENE = "RTS-MAP12";
 const MISSION = "R2-M037";
-const SIGNS = [34, 72] as const;
-type Level = 0 | 1;
-export type CanyonDecisionM037 = "consolider" | "pousser";
 interface AssignmentM037 { routeId: string; orderId: string; inspectorId: string }
-export interface CanyonPatrolM037 extends AssignmentM037 {
-  x: number;
-  level: Level;
-  checked: number[];
-}
+export type CanyonPatrolM037 = CanyonPositionM037 & AssignmentM037;
 
 export function canyonReportM037(state: WarSimulationV85): WarReportV85 | undefined {
   if ((state.planetId ?? "korthas") !== "korthas") return undefined;
@@ -57,39 +52,7 @@ export function canyonIssueM037(state: WarSimulationV85): string | null {
 export function startCanyonPatrolM037(state: WarSimulationV85): CanyonPatrolM037 | null {
   const assignment = available(state);
   return typeof assignment === "string" || canyonReportM037(state) ? null
-    : { ...assignment, x: CANYON_GEOMETRY_V85.start, level: 0, checked: [] };
-}
-
-export function walkCanyonM037(patrol: CanyonPatrolM037, direction: -1 | 1): CanyonPatrolM037 {
-  const { start, finish, bridgeWest, bridgeEast } = CANYON_GEOMETRY_V85;
-  const x = Math.max(start, Math.min(finish, patrol.x + direction * 4));
-  if (patrol.level === 1 && ((patrol.x <= bridgeWest && x > bridgeWest)
-    || (patrol.x >= bridgeEast && x < bridgeEast))) return patrol;
-  return { ...patrol, x };
-}
-
-export function changeCanyonLevelM037(patrol: CanyonPatrolM037): CanyonPatrolM037 {
-  const { westRamp, eastStair } = CANYON_GEOMETRY_V85;
-  return patrol.x <= westRamp || patrol.x >= eastStair
-    ? { ...patrol, level: patrol.level === 0 ? 1 : 0 } : patrol;
-}
-
-export function nearCanyonSignM037(patrol: CanyonPatrolM037): number | undefined {
-  return SIGNS.find(sign => Math.abs(sign - patrol.x) <= 2
-    && patrol.level === (sign === SIGNS[0] ? 1 : 0)
-    && !patrol.checked.includes(sign));
-}
-
-export function checkCanyonSignM037(patrol: CanyonPatrolM037): CanyonPatrolM037 {
-  const sign = nearCanyonSignM037(patrol);
-  return sign === undefined ? patrol : { ...patrol, checked: [...patrol.checked, sign] };
-}
-
-export function canyonDecisionM037(patrol: CanyonPatrolM037): CanyonDecisionM037 | null {
-  if (patrol.level !== 0 || !SIGNS.every(sign => patrol.checked.includes(sign))) return null;
-  if (patrol.x === CANYON_GEOMETRY_V85.start) return "consolider";
-  if (patrol.x === CANYON_GEOMETRY_V85.finish) return "pousser";
-  return null;
+    : { ...assignment, ...initialCanyonPositionM037() };
 }
 
 export function archiveCanyonPatrolM037(state: WarSimulationV85, patrol: CanyonPatrolM037): WarUpdateV85 {

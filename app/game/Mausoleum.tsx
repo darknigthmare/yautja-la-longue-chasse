@@ -6,11 +6,63 @@ import { controlKeyCodeFromInput, matchesControlAction } from "./systems/control
 import { controlActionShortcut } from "./controlBindingLabels";
 import { useMenuGamepad } from "./useMenuGamepad";
 import HomeworldModularHunter from "./HomeworldModularHunter";
-import { MAUSOLEUM_CHRONICLES, MAUSOLEUM_GALLERIES, MAUSOLEUM_PHASE_LABELS, MAUSOLEUM_RITUAL_PHASES, canConsultMausoleum, canVisitMausoleumGallery, defaultMausoleumProgress, mausoleumAccess, mausoleumDlcState, recordMausoleumVisit, type MausoleumChronicle, type MausoleumProgress, type MausoleumRitualPhase } from "./systems/mausoleum";
+import {
+  MAUSOLEUM_ALCOVE_PAGE_SIZE, MAUSOLEUM_CABINET_REACH, MAUSOLEUM_CABINET_X,
+  MAUSOLEUM_CHRONICLES, MAUSOLEUM_GALLERIES, MAUSOLEUM_PHASE_LABELS, MAUSOLEUM_RITUAL_PHASES,
+  canConsultMausoleum, canVisitMausoleumGallery, defaultMausoleumProgress, mausoleumAccess, mausoleumAlcoveEntries,
+  mausoleumDlcState, recordMausoleumCabinetReading, recordMausoleumVisit,
+  type MausoleumChronicle, type MausoleumProgress, type MausoleumRitualPhase,
+} from "./systems/mausoleum";
 import styles from "./Mausoleum.module.css";
 import { createHeldDirectionV94 } from "./systems/heldDirectionV94";
 import { createPhaseClockV94 } from "./systems/phaseClockV94";
 import { pageActivitySnapshotV94, serverPageActivityV94, subscribePageActivityV94 } from "./systems/pageActivityV94";
+
+function CabinetTranscript({ chronicle, paused }: { chronicle: MausoleumChronicle; paused: boolean }) {
+  const utterance = useRef<SpeechSynthesisUtterance | null>(null);
+  const [notice, setNotice] = useState("");
+  const stopVoice = useCallback(() => {
+    if (!utterance.current) return;
+    utterance.current = null;
+    window.speechSynthesis.cancel();
+  }, []);
+  useEffect(() => stopVoice, [stopVoice]);
+  useEffect(() => {
+    if (paused) stopVoice();
+  }, [paused, stopVoice]);
+  const speak = () => {
+    if (paused) return;
+    if (!window.speechSynthesis || typeof SpeechSynthesisUtterance !== "function") {
+      setNotice("La lecture vocale est indisponible sur cet appareil. La transcription reste accessible.");
+      return;
+    }
+    stopVoice();
+    const voice = new SpeechSynthesisUtterance([chronicle.title, chronicle.era, chronicle.summary, ...chronicle.archive].join(". "));
+    voice.lang = "fr-FR";
+    const finish = () => {
+      if (utterance.current === voice) utterance.current = null;
+    };
+    voice.onend = finish;
+    voice.onerror = () => {
+      if (utterance.current !== voice) return;
+      finish();
+      setNotice("La lecture vocale est indisponible sur cet appareil. La transcription reste accessible.");
+    };
+    utterance.current = voice;
+    setNotice("");
+    window.speechSynthesis.speak(voice);
+  };
+  return <>
+    <h3>{chronicle.title}</h3>
+    <p>{chronicle.era} · {chronicle.summary}</p>
+    <ul>{chronicle.archive.map(entry => <li key={entry}>{entry}</li>)}</ul>
+    <div className={styles.actions}>
+      <button type="button" onClick={speak}>Lire à voix haute</button>
+      <button type="button" onClick={stopVoice}>Arrêter la voix</button>
+    </div>
+    {notice && <p role="status">{notice}</p>}
+  </>;
+}
 
 export default function Mausoleum({ save, suspended = false, source = "homeworld", onProgress, onExit, onSound, heritage }: {
   save: SaveGame | null; suspended?: boolean; source?: "homeworld" | "menu";
@@ -25,6 +77,8 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
   const pageActive = useSyncExternalStore(subscribePageActivityV94, pageActivitySnapshotV94, serverPageActivityV94);
   const paused = suspended || !pageActive;
   const [selected, setSelected] = useState<MausoleumChronicle | null>(null), [maskIndex, setMaskIndex] = useState(0), [phase, setPhase] = useState<MausoleumRitualPhase | null>(null), [notice, setNotice] = useState("");
+  const [cabinetOpen, setCabinetOpen] = useState(false), [cabinetId, setCabinetId] = useState<string | null>(null);
+  const activeDialog = !!selected || cabinetOpen;
   const root = useRef<HTMLElement>(null), scene = useRef<HTMLDivElement>(null), dialog = useRef<HTMLDivElement>(null), held = useRef(0), xRef = useRef(90), returnX = useRef(90), readArchive = useRef(false), trigger = useRef<HTMLElement | null>(null), progressRef = useRef(progress);
   useEffect(() => { progressRef.current = progress; }, [progress]);
   const stopMovement = useCallback(() => {
@@ -33,23 +87,32 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
   const resetPosition = useCallback((position: number) => {
     heldKeys.current.reset(); held.current = 0; target.current = position; xRef.current = position; setX(position);
   }, []);
-  useEffect(() => { if (!paused && !selected) scene.current?.focus(); }, [paused, selected]);
-  const entries = MAUSOLEUM_CHRONICLES.filter(entry => entry.gallery === gallery), visible = entries.slice(page * 3, page * 3 + 3);
+  useEffect(() => { if (!paused && !activeDialog) scene.current?.focus(); }, [paused, activeDialog]);
+  const entries = MAUSOLEUM_CHRONICLES.filter(entry => entry.gallery === gallery);
+  const visible = mausoleumAlcoveEntries(gallery, page);
+  const cabinetEntry = visible.find(entry => entry.id === cabinetId);
+  const nearCabinet = visible.length > 0 && Math.abs(x - MAUSOLEUM_CABINET_X) <= MAUSOLEUM_CABINET_REACH;
   const positions = visible.map((_, index) => 180 + index * 270);
   const nearIndex = positions.findIndex(position => Math.abs(x - position) < 76), nearest = visible[nearIndex];
   const displayedMask = selected?.masks[maskIndex] ?? selected?.masks[0];
-  const blocked = paused || !!selected || !!phase;
-  const saveVisit = useCallback((id: string, kind: "examined" | "consulted") => {
-    const currentAccess = mausoleumAccess(save);
-    if (currentAccess.preview) return true;
-    const next = recordMausoleumVisit(progressRef.current, id, kind, currentAccess);
+  const blocked = paused || activeDialog || !!phase;
+  const persistVisit = useCallback((next: MausoleumProgress) => {
     if (JSON.stringify(next) === JSON.stringify(progressRef.current)) return true;
     let persisted = false;
     try { persisted = onProgress?.(next) === true; } catch { /* Preserve the visit for explicit retry. */ }
     if (!persisted) { setNotice("Consultation non enregistrée : sauvegarde indisponible. Aucun DLC ni trophée n’a été accordé."); return false; }
     progressRef.current = next; return true;
-  }, [save, onProgress]);
-  const close = useCallback(() => { ritualClock.current.reset(); resetPosition(returnX.current); setSelected(null); setPhase(null); requestAnimationFrame(() => (trigger.current?.isConnected ? trigger.current : scene.current)?.focus()); }, [resetPosition]);
+  }, [onProgress]);
+  const saveVisit = useCallback((id: string, kind: "examined" | "consulted") => {
+    const currentAccess = mausoleumAccess(save);
+    if (currentAccess.preview) return true;
+    return persistVisit(recordMausoleumVisit(progressRef.current, id, kind, currentAccess));
+  }, [persistVisit, save]);
+  const close = useCallback(() => {
+    ritualClock.current.reset(); resetPosition(returnX.current);
+    setSelected(null); setPhase(null); setCabinetOpen(false); setCabinetId(null); setNotice("");
+    requestAnimationFrame(() => (trigger.current?.isConnected ? trigger.current : scene.current)?.focus());
+  }, [resetPosition]);
   const remove = useCallback(() => { if (paused || phase === "remove" || phase === "replace") return; if (phase) { ritualClock.current.pause(performance.now()); setPhase("remove"); } else close(); }, [phase, close, paused]);
   const examine = () => {
     if (!nearest || blocked) return;
@@ -57,10 +120,28 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
     stopMovement(); setMaskIndex(0); setSelected(nearest); setNotice("");
     saveVisit(nearest.id, "examined"); onSound?.("select");
   };
+  const openCabinet = () => {
+    if (blocked || !nearCabinet) return;
+    trigger.current = document.activeElement as HTMLElement;
+    returnX.current = xRef.current;
+    stopMovement(); setCabinetId(null); setNotice(""); setCabinetOpen(true);
+    onSound?.("select");
+  };
+  const fileCabinetReading = () => {
+    if (paused || !cabinetOpen || !cabinetEntry) return;
+    const next = recordMausoleumCabinetReading(
+      progressRef.current, cabinetEntry.id, { galleryId: gallery, page, actorX: xRef.current }, mausoleumAccess(save),
+    );
+    if (!next) {
+      setNotice("La lecture ne peut pas être inscrite. Vérifie l’accès à la galerie et la position du chasseur.");
+      return;
+    }
+    if (persistVisit(next)) setNotice("Lecture inscrite au registre du mausolée.");
+  };
   useEffect(() => {
-    if (!selected || paused) return;
+    if (!activeDialog || paused) return;
     dialog.current?.focus();
-  }, [selected, paused]);
+  }, [activeDialog, paused]);
   useEffect(() => {
     if (blocked) return;
     let frame = 0, previous = 0;
@@ -108,7 +189,13 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
       if (held.current) target.current = xRef.current;
       return;
     }
-    if ((save ? matchesControlAction("hunt.interact", event.nativeEvent, save.settings.controlBindings) : event.key === "Enter")) { event.preventDefault(); if (!event.repeat) examine(); }
+    if (save ? matchesControlAction("hunt.interact", event.nativeEvent, save.settings.controlBindings) : event.key === "Enter") {
+      event.preventDefault();
+      if (!event.repeat) {
+        if (nearCabinet) openCabinet();
+        else examine();
+      }
+    }
   };
   const onKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
     const code = controlKeyCodeFromInput(event.nativeEvent);
@@ -129,16 +216,19 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
       else if (!event.shiftKey && (document.activeElement === last || document.activeElement === dialog.current)) { event.preventDefault(); first?.focus(); }
     }
   };
-  const gamepadBack = useCallback(() => { if (paused) return; if (selected) remove(); else onExit(); }, [selected, remove, onExit, paused]);
-  useMenuGamepad(root, !paused, `${gallery}:${page}:${selected?.id}:${phase}`, gamepadBack);
+  const gamepadBack = useCallback(() => {
+    if (paused) return;
+    if (activeDialog) remove(); else onExit();
+  }, [activeDialog, remove, onExit, paused]);
+  useMenuGamepad(root, !paused, `${gallery}:${page}:${selected?.id}:${phase}:${cabinetOpen}:${cabinetId}`, gamepadBack);
   const galleryLabel = MAUSOLEUM_GALLERIES.find(entry => entry.id === gallery)?.name;
-  return <section className={styles.root} ref={root} data-mausoleum data-mausoleum-source={source} data-mausoleum-phase={phase ?? "visit"} aria-labelledby="mausoleum-title" onKeyDown={event => { if (isBack(event) && !event.defaultPrevented && !selected && !paused) { event.preventDefault(); event.stopPropagation(); onExit(); } }}>
-    <header className={styles.header}><div><p>Archives du clan · reconstitutions</p><h1 id="mausoleum-title">Mausolée des Grandes Chasses</h1></div><button type="button" disabled={!!selected || paused} onClick={onExit}>← {source === "menu" ? "Retour au menu" : "Retour à la cité"}</button></header>
-    <nav className={styles.galleries} aria-label="Galeries du mausolée" inert={!!selected || paused}>{MAUSOLEUM_GALLERIES.map(entry => {
+  return <section className={styles.root} ref={root} data-mausoleum data-mausoleum-source={source} data-mausoleum-phase={phase ?? "visit"} aria-labelledby="mausoleum-title" onKeyDown={event => { if (isBack(event) && !event.defaultPrevented && !activeDialog && !paused) { event.preventDefault(); event.stopPropagation(); onExit(); } }}>
+    <header className={styles.header}><div><p>Archives du clan · reconstitutions</p><h1 id="mausoleum-title">Mausolée des Grandes Chasses</h1></div><button type="button" disabled={activeDialog || paused} onClick={onExit}>← {source === "menu" ? "Retour au menu" : "Retour à la cité"}</button></header>
+    <nav className={styles.galleries} aria-label="Galeries du mausolée" inert={activeDialog || paused}>{MAUSOLEUM_GALLERIES.map(entry => {
       const allowed = canVisitMausoleumGallery(access, entry.id);
       return <button key={entry.id} type="button" aria-pressed={gallery === entry.id} disabled={!allowed} title={allowed ? entry.description : `Accès requis : ${entry.requiredRank}`} onClick={() => { setGallery(entry.id); setPage(0); resetPosition(90); }}>{entry.name}{!allowed ? ` · ${entry.requiredRank}` : ""}</button>;
     })}</nav>
-    <div className={styles.scene} ref={scene} tabIndex={0} role="region" aria-label={`Galerie physique · ${galleryLabel}`} data-mausoleum-x={Math.round(x)} onKeyDown={onKeyDown} onKeyUp={onKeyUp} onBlur={event => { if (event.target === event.currentTarget || !event.currentTarget.contains(event.relatedTarget as Node | null)) stopMovement(); }} inert={!!selected || paused}>
+    <div className={styles.scene} ref={scene} tabIndex={0} role="region" aria-label={`Galerie physique · ${galleryLabel}`} data-mausoleum-x={Math.round(x)} onKeyDown={onKeyDown} onKeyUp={onKeyUp} onBlur={event => { if (event.target === event.currentTarget || !event.currentTarget.contains(event.relatedTarget as Node | null)) stopMovement(); }} inert={activeDialog || paused}>
       <img className={styles.hall} src="/game/homeworld/v56/mausoleum-hall.png" alt="" draggable={false} />
       <div className={styles.wall}><span>LE MUR DES CHASSES</span><p>{entries.map(entry => entry.title).join(" · ") || "Archives temporelles · contenu à produire"}</p></div>
       {visible.map((entry, index) => <button type="button" key={entry.id} className={styles.pedestal} style={{ left: `${positions[index] / 9}%` }} aria-label={`Approcher le piédestal ${entry.title}`} data-mausoleum-pedestal={entry.id} data-mausoleum-dlc={entry.id} data-dlc-state={mausoleumDlcState(entry.id)} onClick={() => { stopMovement(); target.current = positions[index]; scene.current?.focus(); }}>
@@ -146,11 +236,41 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
         <span className={styles.masks}>{entry.masks.map(item => item.src ? <img key={item.id} src={item.src} alt={item.name} draggable={false} data-mausoleum-mask={item.id} /> : <span className={styles.missingMask} key={item.id} title={item.note}>Archive scellée</span>)}</span>
         <span className={styles.caption}><strong>{entry.title}</strong><small>Campagne à produire</small>{progress.consultedIds.includes(entry.id) && <em>Dossier étudié</em>}</span>
       </button>)}
+      {visible.length > 0 && <button type="button" className={styles.cabinet}
+        style={{ left: `${MAUSOLEUM_CABINET_X / 9}%` }} data-mausoleum-cabinet
+        aria-label="Approcher le casier d’archives"
+        onClick={() => { stopMovement(); target.current = MAUSOLEUM_CABINET_X; scene.current?.focus(); }}>
+        <span aria-hidden="true" className={styles.drawers} /><span>Casier</span>
+      </button>}
       <span className={styles.actorAnchor} style={{ left: `${x / 9}%` }} data-mausoleum-actor><HomeworldModularHunter morphId={save?.appearance.bodyMorphId ?? "classic"} dreadStyleId={save?.appearance.dreadStyleId ?? "classic"} appearance={save?.appearance} className={styles.hunterBody} /></span>
-      <div className={styles.prompt}>{nearest ? <button type="button" onClick={examine}>{save ? controlActionShortcut("hunt.interact", save.settings.controlBindings) : "Entrée"} · Examiner {nearest.title}</button> : <p>Approche un piédestal · {save ? `${controlActionShortcut("hunt.moveLeft", save.settings.controlBindings)} / ${controlActionShortcut("hunt.moveRight", save.settings.controlBindings)}` : "flèches"} ou toucher</p>}</div>
+      <div className={styles.prompt}>{nearCabinet ? <button type="button" onClick={openCabinet}>
+        {save ? controlActionShortcut("hunt.interact", save.settings.controlBindings) : "Entrée"} · Ouvrir le casier
+      </button> : nearest ? <button type="button" onClick={examine}>{save ? controlActionShortcut("hunt.interact", save.settings.controlBindings) : "Entrée"} · Examiner {nearest.title}</button> : <p>Approche un piédestal · {save ? `${controlActionShortcut("hunt.moveLeft", save.settings.controlBindings)} / ${controlActionShortcut("hunt.moveRight", save.settings.controlBindings)}` : "flèches"} ou toucher</p>}</div>
     </div>
-    <footer className={styles.footer} inert={!!selected || paused}><div><button type="button" disabled={page === 0} onClick={() => { setPage(value => value - 1); resetPosition(90); }}>← Alcôves</button><span>{galleryLabel} · {page + 1}/{Math.max(1, Math.ceil(entries.length / 3))}</span><button type="button" disabled={(page + 1) * 3 >= entries.length} onClick={() => { setPage(value => value + 1); resetPosition(90); }}>Alcôves →</button></div><p>{access.preview ? "Visite du catalogue sans charger ni modifier une partie. Le rituel d’étude nécessite un chasseur Young Blood." : "Les études du dossier sont sauvegardées ; elles ne terminent jamais un DLC."}</p><small>Architecture et dispositif d’archives : interprétation originale du projet. Les reproductions visibles ne sont pas certifiées 1:1.</small></footer>
-    {heritage && <div inert={!!selected || paused}>{heritage}</div>}
+    <footer className={styles.footer} inert={activeDialog || paused}><div><button type="button" disabled={page === 0} onClick={() => { setPage(value => value - 1); resetPosition(90); }}>← Alcôves</button><span>{galleryLabel} · {page + 1}/{Math.max(1, Math.ceil(entries.length / MAUSOLEUM_ALCOVE_PAGE_SIZE))}</span><button type="button" disabled={(page + 1) * MAUSOLEUM_ALCOVE_PAGE_SIZE >= entries.length} onClick={() => { setPage(value => value + 1); resetPosition(90); }}>Alcôves →</button></div><p>{access.preview ? "Visite du catalogue sans charger ni modifier une partie. Le rituel d’étude nécessite un chasseur Young Blood." : "Les études du dossier sont sauvegardées ; elles ne terminent jamais un DLC."}</p><small>Architecture et dispositif d’archives : interprétation originale du projet. Les reproductions visibles ne sont pas certifiées 1:1.</small></footer>
+    {heritage && <div inert={activeDialog || paused}>{heritage}</div>}
+    {cabinetOpen && <div className={styles.backdrop} inert={paused}>
+      <div className={styles.dossier} role="dialog" aria-modal="true" aria-labelledby="mausoleum-cabinet-title"
+        data-mausoleum-cabinet-open ref={dialog} tabIndex={-1} onKeyDown={onDialogKey}>
+        <h2 id="mausoleum-cabinet-title">Casier d’archives</h2>
+        <div className={styles.maskChoices} role="group" aria-label="Chroniques de cette alcôve">
+          {visible.map(entry => <button type="button" key={entry.id} aria-pressed={cabinetId === entry.id}
+            onClick={() => { setCabinetId(entry.id); setNotice(""); }}>
+            {entry.title}{progress.cabinetReadIds?.includes(entry.id) && " · lecture inscrite"}
+          </button>)}
+        </div>
+        {cabinetEntry && <>
+          <CabinetTranscript key={cabinetEntry.id} chronicle={cabinetEntry} paused={paused} />
+          <p className={styles.unavailable}>{cabinetEntry.unavailableReason}</p>
+        </>}
+        <p role="status" aria-live="polite">{notice}</p>
+        <div className={styles.actions}>
+          {cabinetEntry && <button type="button" disabled={!canConsultMausoleum(access, cabinetEntry.id)}
+            onClick={fileCabinetReading}>Inscrire la lecture au registre</button>}
+          <button type="button" onClick={close}>Fermer le casier</button>
+        </div>
+      </div>
+    </div>}
     {selected && <div className={styles.backdrop} inert={paused}><div className={styles.dossier} role="dialog" aria-modal="true" aria-labelledby="mausoleum-dossier-title" ref={dialog} tabIndex={-1} onKeyDown={onDialogKey}>
       <p className={styles.eyebrow}>{phase ? MAUSOLEUM_PHASE_LABELS[phase] : "EXAMINER LA CHASSE"}</p><h2 id="mausoleum-dossier-title">{selected.title}</h2>
       <div className={styles.inspect} data-ritual-pose={phase ?? "inspect"}>{displayedMask?.src ? <img src={displayedMask.src} alt={`${displayedMask.name} · reproduction d’étude`} draggable={false} style={{ animationPlayState: paused ? "paused" : "running" }} /> : <p>{displayedMask?.note}</p>}</div>
