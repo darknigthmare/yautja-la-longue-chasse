@@ -5,7 +5,7 @@ import { isYouthCagePhase } from "./youthCage";
 import type { SaveGame } from "../types";
 import { isYouthPatrolPhase } from "./youthPatrol";
 import { normalizeNurseryCampaign } from "./nurseryCampaign";
-import { recordChronicleEvidence } from "./clanChronicle";
+import { CHRONICLE_RITES, recordChronicleEvidence } from "./clanChronicle";
 import { createYouthTraining, YOUTH_PHASES, normalizeYouthTraining, normalizeYouthReceipt, getYouthReceipts, type YouthState, type YouthReceipt } from "./youthTraining";
 
 export interface YouthEquipment {
@@ -47,7 +47,7 @@ export function normalizeYouthCampaign(value: unknown): YouthCampaignProgress | 
   return { version: 1, status: value.status as YouthCampaignProgress["status"], checkpoint, receipts, equipment, startedAt: value.startedAt, completedAt: value.completedAt as string | null };
 }
 /** Reject mismatched narrative proof instead of falling back to an adult campaign. */
-export function youthCampaignMatchesSave(value: unknown): boolean {
+export function youthCampaignMatchesSave(value: unknown, bloodingVerified = false): boolean {
   if (!record(value)) return false;
   const prologue = normalizeNurseryCampaign(value.prologue);
   // Current youth chapters cannot import unplayed future hunts to gain ship/rank access.
@@ -57,7 +57,13 @@ export function youthCampaignMatchesSave(value: unknown): boolean {
     const raw = value.prologue.chronicle;
     if (!Array.isArray(raw.evidence) || !Array.isArray(raw.rites) || raw.evidence.length !== prologue.chronicle.evidence.length || raw.rites.length !== prologue.chronicle.rites.length) return false;
     const cohortRecognized = normalizeSoloV68Campaign(value.soloV68)?.status === "completed" && soloV68MatchesSave(value);
-    if (prologue.chronicle.evidence.some(item => !["intro-begun", "intro-completed", "training-completed", ...(soloV66MatchesSave(value) ? ["first-tracks"] : []), ...(soloV67MatchesSave(value) ? ["unguided-hunt"] : [])].includes(item.id)) || prologue.chronicle.rites.some(item => item.id !== "nursery-recognition" && !(cohortRecognized && item.id === "unguided-hunt-recognition"))) return false;
+    const evidence = ["intro-begun", "intro-completed", "training-completed",
+      ...(soloV66MatchesSave(value) ? ["first-tracks"] : []), ...(soloV67MatchesSave(value) ? ["unguided-hunt"] : [])];
+    if (bloodingVerified) evidence.push(...CHRONICLE_RITES.find(rite => rite.id === "blooding-mark")!.requiredEvidenceIds);
+    if (prologue.chronicle.evidence.some(item => !evidence.includes(item.id)) ||
+        prologue.chronicle.rites.some(item => item.id !== "nursery-recognition" &&
+          !(cohortRecognized && item.id === "unguided-hunt-recognition") &&
+          !(bloodingVerified && item.id === "blooding-mark"))) return false;
     if (raw.evidence.some(item => !record(item) || !prologue.chronicle.evidence.some(expected => expected.id === item.id && expected.sourceId === item.sourceId)) ||
         raw.rites.some(item => !record(item) || !prologue.chronicle.rites.some(expected => expected.id === item.id && expected.sourceId === item.sourceId))) return false;
   }

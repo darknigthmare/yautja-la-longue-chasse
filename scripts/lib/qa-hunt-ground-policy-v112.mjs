@@ -31,7 +31,11 @@ export function decideHuntCampaignInputV112(game,tick,memory,strategy='mixed'){
       if(player.weaponChargeSeconds>=.8&&player.weaponCooldown<=0)pressed.push('weapon');
     }else{
       if(player.activeWeaponSlot!==0)pressed.push('weaponOne');
-      if(gap<95&&Math.abs(point.y-pc.y)<140&&player.melee.phase==='idle'&&player.stamina>=20){
+      // The native swing uses player.facing, which only turns on movement while melee is idle.
+      const behind=(point.x-pc.x)*(player.facing??1)<0&&Math.abs(point.x-pc.x)>8;
+      if(behind&&gap<95&&player.melee.phase==='idle'){
+        held.push(point.x>pc.x?'right':'left');
+      }else if(gap<95&&Math.abs(point.y-pc.y)<140&&player.melee.phase==='idle'&&player.stamina>=20){
         if(tick%3!==0)held.push('down');
         pressed.push('melee');
       }
