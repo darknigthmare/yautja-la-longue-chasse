@@ -8,6 +8,7 @@ const drill = qa.load("app/game/systems/trainingDrill.ts");
 const saves = qa.load("app/game/save.ts");
 const chronicle = qa.load("app/game/systems/clanChronicle.ts");
 const { ELITE_RECOGNITION_POSTS: POSTS } = ceremony;
+const { rankCampaignReceiptsV168: rankReceipts } = qa.load("app/game/systems/rankRiteDossierV168.ts");
 const owner = "2026-11-27T08:45:00.000Z";
 const admission = admitLegacyElitePreparation();
 
@@ -144,6 +145,8 @@ test("the real campaign records each exercise, rejects standalone promotion and 
   advance({ type: "recognize" }, POSTS.mark);
   assert.equal(chronicle.getChronicleRank(save.prologue.chronicle), "elite");
   assert(save.eliteRecognitionV174.recognized);
+  assert.equal(rankReceipts(save)[1].status, "recognized");
+  assert.notEqual(rankReceipts({ ...save, quatzaRij: null })[1].status, "recognized");
   assert.equal(saves.writeSaveWithStatus(stale, disk).failure, "save-conflict");
   assert(!command(save, { type: "recognize" }, POSTS.mark).ok);
 });

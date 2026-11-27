@@ -75,3 +75,32 @@
   transform: translateY(-50%) rotate(22deg);
   pointer-events: none;
 }
+
+.returnBlades,
+.returnWrap {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  transform: translate(-50%, -38px);
+}
+.returnBlades {
+  width: 52px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.returnBlades i {
+  width: 7px;
+  height: 31px;
+  background: linear-gradient(#a9aca5 0 64%, #604d38 65%);
+  border-radius: 60% 8% 2px 2px;
+  transform: rotate(54deg);
+  box-shadow: 1px 2px #3f372c;
+}
+.returnBlades[data-o6-return-blades="used"] i { background: linear-gradient(#737570 0 64%, #604d38 65%); }
+.returnWrap {
+  width: 43px;
+  height: 24px;
+  border-radius: 9px 9px 5px 5px;
+  background: repeating-linear-gradient(95deg, #533d24 0 14px, #c49a5d 14px 18px);
+  box-shadow: 1px 3px #20170e;
+}

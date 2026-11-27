@@ -109,7 +109,14 @@ try {
   assert.equal((await view()).report, "map");
   report.checks.push("Deux traces comparées à chaque indice, fausse piste, perchoir et retour par le chemin bas, carte rechargée");
   await act("handoff");
-  for (const station of [2, 4, 7]) { await walk(station); await act("use"); }
+  await walk(2); await act("use");
+  await act("cohort-gesture");
+  await page.reload(); await boot();
+  assert.equal((await view()).cohortPresentations, 1);
+  await act("cohort-gesture"); await act("cohort-gesture");
+  assert.equal((await view()).cohortPresentations, 3);
+  await shot("gestes-de-la-cohorte");
+  for (const station of [4, 7]) { await walk(station); await act("use"); }
   await shot("passation");
   assert.equal(await scene.locator("[data-childhood-enter-dojo]").count(), 0);
   await act("first-blades");

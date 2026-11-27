@@ -1,0 +1,296 @@
+<title>Verdant Prototype</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: plein écran 3D isométrique, HUD de biomask en surimpression (un seul thème sombre, choisi). */
+:root{
+  --bg:#0b100d; --ink:#e7efe9; --muted:#8fa39a; --glyph:#ff5a3c; --amber:#ffb547; --cloak:#7fe3ff;
+  --panel:rgba(10,16,13,.78); --line:rgba(231,239,233,.14);
+  --f-hud:"Chakra Petch","Segoe UI",system-ui,sans-serif; --f-body:"Inter",system-ui,sans-serif;
+  color-scheme:dark;
+}
+[hidden]{display:none!important}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);overflow:hidden}
+#stage{position:fixed;inset:0;touch-action:none}
+canvas{display:block}
+.hud{position:fixed;pointer-events:none;font-family:var(--f-hud);letter-spacing:.04em}
+#top{top:calc(env(safe-area-inset-top,0px) + 10px);left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start;justify-content:space-between}
+.chip{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:13px;display:flex;gap:8px;align-items:center}
+.chip b{font-size:15px}
+#alert span{display:inline-block;width:12px;height:12px;margin-left:3px;border:1px solid var(--glyph);transform:rotate(45deg)}
+#alert span.on{background:var(--glyph)}
+#hp{width:110px;height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden}
+#hp i{display:block;height:100%;background:var(--amber);width:100%}
+#log{position:fixed;left:max(12px,env(safe-area-inset-left,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 130px);max-width:min(360px,70vw);font-size:13px;display:flex;flex-direction:column;gap:4px;pointer-events:none}
+#log div{background:var(--panel);border-left:3px solid var(--amber);padding:4px 8px;border-radius:3px;animation:fade 5s forwards}
+@keyframes fade{0%,80%{opacity:1}100%{opacity:0}}
+#pad{position:fixed;right:max(12px,env(safe-area-inset-right,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 12px);left:max(12px,env(safe-area-inset-left,0px));display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+#pad button{font-family:var(--f-hud);font-size:14px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px;min-width:74px;cursor:pointer}
+#pad button.on{border-color:var(--cloak);color:var(--cloak)}
+#pad button:focus-visible{outline:2px solid var(--amber)}
+#pad button kbd{display:block;font-size:10px;color:var(--muted);font-family:var(--f-body)}
+#prompt{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 64px);transform:translateX(-50%);font-family:var(--f-hud);font-size:14px;background:var(--panel);border:1px solid var(--line);padding:6px 12px;border-radius:6px;pointer-events:none;white-space:nowrap}
+.tags{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.tag{position:absolute;transform:translate(-50%,-100%);font-family:var(--f-hud);font-size:11px;text-align:center;white-space:nowrap}
+.tag .mk{display:block;margin:0 auto 2px;width:12px;height:12px}
+.tag .bar{width:38px;height:4px;background:rgba(255,255,255,.15);margin:2px auto 0;border-radius:2px;overflow:hidden}
+.tag .bar i{display:block;height:100%;background:var(--glyph)}
+#overlay{position:fixed;inset:0;display:grid;place-items:center;background:rgba(5,8,6,.72);padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+#overlay .card{max-width:520px;background:#111a15;border:1px solid var(--line);border-radius:10px;padding:22px 22px 18px}
+#overlay h1{font-family:var(--f-hud);font-size:24px;margin:0 0 6px;text-wrap:balance}
+#overlay p,#overlay li{font-size:14px;line-height:1.5;color:#c9d6cf}
+#overlay ul{padding-left:18px;margin:8px 0 14px}
+#overlay table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;margin:8px 0 14px}
+#overlay td{padding:4px 0;border-bottom:1px solid var(--line)}
+#overlay td:last-child{text-align:right}
+#overlay button{font-family:var(--f-hud);font-size:15px;background:var(--glyph);color:#140805;border:0;border-radius:6px;padding:10px 16px;cursor:pointer}
+@media (prefers-reduced-motion:reduce){#log div{animation:none}}
+</style>
+
+<div id="stage"></div>
+<div class="tags" id="tags"></div>
+<div class="hud" id="top">
+  <div class="chip">Honneur <b id="honor">0</b></div>
+  <div class="chip" id="alert">Alerte <span></span><span></span><span></span><span></span><span></span></div>
+  <div class="chip">Santé <div id="hp"><i></i></div></div>
+  <div class="chip">Proies <b id="left">0</b></div>
+</div>
+<div class="hud" id="prompt" hidden></div>
+<div id="log"></div>
+<div id="pad">
+  <button id="bCloak" type="button">Camouflage<kbd>C</kbd></button>
+  <button id="bScan" type="button">Analyse<kbd>X</kbd></button>
+  <button id="bStrike" type="button">Frapper<kbd>E</kbd></button>
+  <button id="bPlasma" type="button">Plasma<kbd>F</kbd></button>
+  <button id="bTrophy" type="button">Trophée<kbd>T maintenu</kbd></button>
+  <button id="bRot" type="button">Tourner<kbd>R</kbd></button>
+</div>
+<div id="overlay">
+  <div class="card">
+    <h1>Verdant, nuit de chasse</h1>
+    <p>Prototype de la vue isométrique de The Isles. Un camp de braconniers, un village de pêcheurs, la jungle. Chasse selon le code, puis rejoins le faisceau d'extraction au nord.</p>
+    <ul>
+      <li>Toucher ou cliquer le sol pour se déplacer (ou ZQSD / WASD).</li>
+      <li>Analyse : marque rouge = armé, blanc = civil. Frapper un civil l'assomme ; le plasma le tue (faute).</li>
+      <li>Camouflé et immobile, on est presque invisible. Courir ou entrer dans l'eau te trahit.</li>
+      <li>Un civil qui te voit sort son téléphone : rattrape-le avant la fin de l'envoi.</li>
+      <li>Trophée : maintenir T près d'un corps. Le camouflage se coupe pendant le geste.</li>
+    </ul>
+    <button id="start" type="button">Commencer la chasse</button>
+  </div>
+</div>
+
+<script type="module">
+import * as THREE from "../../node_modules/three/build/three.module.js";
+(()=>{
+const N=48, T=1; // grille 48x48 tuiles
+const stage=document.getElementById('stage');
+const renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+stage.appendChild(renderer.domElement);
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x0b100d);
+scene.fog=new THREE.Fog(0x0b100d,60,120);
+let zoom=14, rotIdx=0;
+const cam=new THREE.OrthographicCamera(-1,1,1,-1,0.1,400);
+function resize(){const w=innerWidth,h=innerHeight;renderer.setSize(w,h);const a=w/h;cam.left=-zoom*a;cam.right=zoom*a;cam.top=zoom;cam.bottom=-zoom;cam.updateProjectionMatrix();}
+addEventListener('resize',resize);
+scene.add(new THREE.HemisphereLight(0x9fc6ff,0x1a2a18,0.55));
+const moon=new THREE.DirectionalLight(0xcfe0ff,0.75);moon.position.set(-30,50,20);scene.add(moon);
+
+// ---- terrain
+const H=[],TYPE=[]; // 0 eau,1 sable,2 herbe,3 jungle,4 camp,5 village,6 extraction
+function rnd(s){let x=Math.sin(s*12.9898)*43758.5453;return x-Math.floor(x);}
+for(let z=0;z<N;z++){H[z]=[];TYPE[z]=[];for(let x=0;x<N;x++){
+  const dx=(x-N/2)/(N/2),dz=(z-N/2)/(N/2);const d=Math.sqrt(dx*dx+dz*dz*1.1)+ (rnd(x*7+z*13)-.5)*.12;
+  let t= d>0.92?0: d>0.82?1: 2; let h= t===0?0: t===1?1: 1+Math.round((1-d)*3+rnd(x*3+z)*1);
+  if(t===2 && rnd(x*31+z*17)>.42) t=3;
+  H[z][x]=h;TYPE[z][x]=t;}}
+// rivière
+for(let z=6;z<N-6;z++){const x=Math.round(20+Math.sin(z/5)*3);for(let k=-1;k<=0;k++){if(TYPE[z][x+k]>0){TYPE[z][x+k]=0;H[z][x+k]=0;}}}
+function area(x0,z0,w,d,t,h){for(let z=z0;z<z0+d;z++)for(let x=x0;x<x0+w;x++){TYPE[z][x]=t;H[z][x]=h;}}
+area(29,20,9,8,4,2); // camp des braconniers
+area(9,31,8,7,5,2);  // village
+area(22,6,4,4,6,3);  // extraction au nord
+const COL={0:0x123c4a,1:0xc8b98a,2:0x3f6b3a,3:0x2d5230,4:0x6a5a3e,5:0x7b6a4c,6:0x3f6b3a};
+const box=new THREE.BoxGeometry(1,1,1);
+const counts={};for(let z=0;z<N;z++)for(let x=0;x<N;x++){const t=TYPE[z][x];counts[t]=(counts[t]||0)+1;}
+const meshes={};for(const t in counts){const m=new THREE.InstancedMesh(box,new THREE.MeshLambertMaterial({color:COL[t]}),counts[t]);meshes[t]=m;m.count=0;scene.add(m);}
+const M4=new THREE.Matrix4(), col=new THREE.Color();
+for(let z=0;z<N;z++)for(let x=0;x<N;x++){const t=TYPE[z][x],h=Math.max(H[z][x],0.4);const m=meshes[t];
+  M4.makeScale(1,h,1);M4.setPosition(x-N/2,h/2-1,z-N/2);m.setMatrixAt(m.count,M4);
+  col.setHex(COL[t]).offsetHSL(0,0,(rnd(x*5+z*9)-.5)*.05);m.setColorAt(m.count,col);m.count++;}
+for(const t in meshes){meshes[t].instanceMatrix.needsUpdate=true;if(meshes[t].instanceColor)meshes[t].instanceColor.needsUpdate=true;}
+const top=(x,z)=>{const xi=Math.round(x+N/2),zi=Math.round(z+N/2);if(xi<0||zi<0||xi>=N||zi>=N)return{t:0,h:0};return{t:TYPE[zi][xi],h:H[zi][xi]};};
+const groundY=(x,z)=>Math.max(top(x,z).h,0.4)-1;
+// arbres (couvert)
+const trunkG=new THREE.CylinderGeometry(.12,.16,1.4,5), crownG=new THREE.ConeGeometry(.9,2,6);
+const trunkM=new THREE.MeshLambertMaterial({color:0x4a3524}),crownM=new THREE.MeshLambertMaterial({color:0x1f4a2a,transparent:true});
+const trees=[];
+for(let z=0;z<N;z++)for(let x=0;x<N;x++) if(TYPE[z][x]===3 && rnd(x*11+z*29)>.55){
+  const g=new THREE.Group();const tr=new THREE.Mesh(trunkG,trunkM);tr.position.y=.7;const cr=new THREE.Mesh(crownG,crownM.clone());cr.position.y=2;g.add(tr,cr);
+  g.position.set(x-N/2,groundY(x-N/2,z-N/2),z-N/2);scene.add(g);trees.push(g);}
+// tentes, cabanes, feux
+function hut(x,z,c,s=1.4){const m=new THREE.Mesh(new THREE.ConeGeometry(s,1.4,4),new THREE.MeshLambertMaterial({color:c}));m.position.set(x-N/2,groundY(x-N/2,z-N/2)+.7,z-N/2);m.rotation.y=Math.PI/4;scene.add(m);}
+[[31,21],[35,22],[32,26]].forEach(p=>hut(p[0],p[1],0x55603a));
+[[10,32],[14,33],[11,36],[15,36]].forEach(p=>hut(p[0],p[1],0x8a6d47,1.2));
+const fire=new THREE.PointLight(0xff8a3c,1.6,9);fire.position.set(33-N/2,groundY(33-N/2,24-N/2)+.6,24-N/2);scene.add(fire);
+const ember=new THREE.Mesh(new THREE.SphereGeometry(.25,8,6),new THREE.MeshBasicMaterial({color:0xff8a3c}));ember.position.copy(fire.position);scene.add(ember);
+// faisceau d'extraction
+const beam=new THREE.Mesh(new THREE.CylinderGeometry(1.4,1.4,30,20,1,true),new THREE.MeshBasicMaterial({color:0x7fe3ff,transparent:true,opacity:.14,side:THREE.DoubleSide}));
+beam.position.set(24-N/2,14,8-N/2);scene.add(beam);
+const EX={x:24-N/2,z:8-N/2};
+
+// ---- personnages
+function figure(c,h=1.6){const g=new THREE.Group();const b=new THREE.Mesh(new THREE.BoxGeometry(.5,h,.35),new THREE.MeshLambertMaterial({color:c,transparent:true}));b.position.y=h/2;const hd=new THREE.Mesh(new THREE.BoxGeometry(.36,.36,.36),new THREE.MeshLambertMaterial({color:c,transparent:true}));hd.position.y=h+.2;g.add(b,hd);g.userData.mats=[b.material,hd.material];scene.add(g);return g;}
+const P={g:figure(0x6b5e45,2.1),x:8-N/2,z:12-N/2,tx:null,tz:null,hp:100,cloak:false,moving:false,inWater:false,reveal:0,carry:false,honor:0,faults:0,witnesses:0,trophies:0};
+const dread=new THREE.Mesh(new THREE.BoxGeometry(.5,.5,.12),new THREE.MeshLambertMaterial({color:0x2a2520}));dread.position.set(0,2.2,-.22);P.g.add(dread);
+const humans=[];
+function human(kind,x,z,route){const armed=kind==='armed';const g=figure(armed?0x6e6a3a:0xb9b2a2,1.55);
+  if(armed){const gun=new THREE.Mesh(new THREE.BoxGeometry(.08,.08,.9),new THREE.MeshLambertMaterial({color:0x222222}));gun.position.set(.3,1,.3);g.add(gun);}
+  const cone=new THREE.Mesh(new THREE.CircleGeometry(armed?7:5,18,-Math.PI/4.5,Math.PI/2.25),new THREE.MeshBasicMaterial({color:armed?0xff5a3c:0xffffff,transparent:true,opacity:.09,side:THREE.DoubleSide}));
+  cone.rotation.x=-Math.PI/2;scene.add(cone);
+  const h={kind,armed,g,cone,x:x-N/2,z:z-N/2,route:route.map(p=>({x:p[0]-N/2,z:p[1]-N/2})),ri:0,state:'calme',sus:0,face:0,alive:true,ko:false,cool:0,scanned:false,upload:0,body:false,trophy:false,flee:null,el:null};
+  humans.push(h);return h;}
+human('armed',30,19,[[30,19],[38,19],[38,28],[30,28]]);
+human('armed',34,24,[[34,24],[34,24]]);
+human('armed',27,24,[[27,22],[27,30],[24,30],[24,22]]);
+human('armed',36,30,[[36,30],[40,26],[36,30]]);
+human('armed',22,14,[[22,14],[30,14],[30,10]]);
+human('civil',11,34,[[11,34],[16,34],[16,37],[11,37]]);
+human('civil',13,31,[[13,31],[13,31]]);
+human('civil',9,36,[[9,36],[15,32]]);
+
+// ---- état et HUD
+let alertLvl=0, alertHeat=0, scanT=0, plasmaT=0, trophyHold=0, playing=false, over=false;
+const $=id=>document.getElementById(id);
+const logEl=$('log');
+function log(t){const d=document.createElement('div');d.textContent=t;logEl.prepend(d);setTimeout(()=>d.remove(),5200);}
+function addHonor(v,why){P.honor+=v;log((v>=0?'+':'')+Math.round(v)+' honneur · '+why);}
+function setAlert(){alertLvl=Math.min(5,Math.floor(alertHeat/20));document.querySelectorAll('#alert span').forEach((s,i)=>s.classList.toggle('on',i<alertLvl));}
+const tagsEl=$('tags');
+humans.forEach(h=>{const e=document.createElement('div');e.className='tag';tagsEl.appendChild(e);h.el=e;});
+
+// ---- contrôles
+const keys={};
+addEventListener('keydown',e=>{const k=e.key.toLowerCase();keys[k]=true;
+  if(k==='c')toggleCloak();if(k==='x')scan();if(k==='e'||k===' ')strike();if(k==='f')plasma();if(k==='r')rotate();});
+addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=false;});
+const ray=new THREE.Raycaster(),ndc=new THREE.Vector2(),plane=new THREE.Plane(new THREE.Vector3(0,1,0),-0.5);
+renderer.domElement.addEventListener('pointerdown',e=>{if(!playing)return;ndc.set(e.clientX/innerWidth*2-1,-(e.clientY/innerHeight)*2+1);ray.setFromCamera(ndc,cam);const p=new THREE.Vector3();if(ray.ray.intersectPlane(plane,p)){P.tx=p.x;P.tz=p.z;}});
+renderer.domElement.addEventListener('wheel',e=>{zoom=Math.min(22,Math.max(8,zoom+Math.sign(e.deltaY)));resize();},{passive:true});
+$('bCloak').onclick=toggleCloak;$('bScan').onclick=scan;$('bStrike').onclick=strike;$('bPlasma').onclick=plasma;$('bRot').onclick=rotate;
+const bT=$('bTrophy');let tHeld=false;
+bT.addEventListener('pointerdown',()=>tHeld=true);['pointerup','pointerleave','pointercancel'].forEach(ev=>bT.addEventListener(ev,()=>tHeld=false));
+function toggleCloak(){if(trophyHold>0)return;P.cloak=!P.cloak;$('bCloak').classList.toggle('on',P.cloak);log(P.cloak?'Camouflage actif':'Camouflage coupé');}
+function scan(){scanT=8;humans.forEach(h=>{if(h.alive&&dist(h)<16)h.scanned=true;});log('Analyse : cibles marquées à portée');}
+function rotate(){rotIdx=(rotIdx+1)%4;}
+const dist=h=>Math.hypot(h.x-P.x,h.z-P.z);
+function nearest(maxd,f=()=>true){let b=null,bd=maxd;humans.forEach(h=>{const d=dist(h);if(d<bd&&f(h)){bd=d;b=h;}});return b;}
+function seenBy(){return humans.some(h=>h.alive&&!h.ko&&h.state!=='calme'&&h.sus>0.6);}
+function kill(h,how){h.alive=false;h.body=true;h.g.rotation.z=Math.PI/2;h.g.position.y-=.3;h.cone.visible=false;
+  if(!h.armed){P.faults++;addHonor(-100,'faute grave : non-combattant tué');alertHeat+=20;return;}
+  let base=15,mult=1;if(how==='melee')mult*=1.5;if(!seenBy())mult*=1.25;addHonor(base*mult,how==='melee'?'humain armé, mêlée':'humain armé, plasma');
+  humans.forEach(o=>{if(o.alive&&o.armed&&Math.hypot(o.x-h.x,o.z-h.z)<9){o.state=o.state==='calme'?'recherche':o.state;o.sus=Math.max(o.sus,.5);}});}
+function strike(){if(!playing)return;const h=nearest(1.6,h=>h.alive&&!h.ko);if(!h){log('Personne à portée');return;}
+  if(!h.armed){h.ko=true;h.upload=0;h.state='assommé';h.g.rotation.z=Math.PI/2;h.g.position.y-=.3;h.cone.visible=false;log('Civil assommé : pas de témoin, pas de faute');return;}
+  kill(h,'melee');}
+function plasma(){if(!playing||plasmaT>0)return;const h=nearest(12,h=>h.alive&&!h.ko);if(!h){log('Aucune cible pour le plasma');return;}
+  plasmaT=1.2;P.reveal=3;const b=new THREE.Mesh(new THREE.SphereGeometry(.18,8,6),new THREE.MeshBasicMaterial({color:0x7fe3ff}));b.position.set(P.x,groundY(P.x,P.z)+2,P.z);scene.add(b);
+  const tgt=h;let t=0;const fly=()=>{t+=.08;b.position.lerp(new THREE.Vector3(tgt.x,groundY(tgt.x,tgt.z)+1,tgt.z),.35);if(t<1)requestAnimationFrame(fly);else{scene.remove(b);if(tgt.alive)kill(tgt,'plasma');}};fly();
+  if(!h.scanned&&!h.armed)log('Tir sans analyse sur une cible non marquée');}
+function endGame(win,why){if(over)return;over=true;playing=false;
+  const left=humans.filter(h=>h.armed&&h.alive).length;
+  $('overlay').hidden=false;$('overlay').querySelector('.card').innerHTML=`<h1>${win?'Extraction réussie':'Chasse perdue'}</h1><p>${why}</p>
+  <table><tr><td>Honneur</td><td>${Math.round(P.honor)}</td></tr><tr><td>Trophées rapportés</td><td>${P.trophies}</td></tr><tr><td>Fautes graves</td><td>${P.faults}</td></tr><tr><td>Témoins (images envoyées)</td><td>${P.witnesses}</td></tr><tr><td>Alerte finale</td><td>${alertLvl} / 5</td></tr><tr><td>Proies armées restantes</td><td>${left}</td></tr></table>
+  <p>${P.faults?'Le tribunal t\'attend au retour.':'Aucune infraction : la chasse est propre.'}</p><button id="again" type="button">Rejouer</button>`;
+  $('again').onclick=()=>location.reload();}
+$('start').onclick=()=>{$('overlay').hidden=true;playing=true;log('Insertion réussie. Le camp est à l\'est, le village au sud-ouest.');};
+
+// ---- boucle
+let last=performance.now();
+const tmp=new THREE.Vector3();
+function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;
+  if(playing)update(dt);
+  // caméra
+  const ang=Math.PI/4+rotIdx*Math.PI/2;const cx=P.x,cz=P.z;
+  cam.position.set(cx+Math.cos(ang)*40,40,cz+Math.sin(ang)*40);cam.lookAt(cx,0,cz);
+  // arbres transparents entre caméra et joueur
+  trees.forEach(t=>{const near=Math.hypot(t.position.x-P.x,t.position.z-P.z)<2.2;t.children[1].material.opacity=near?.28:1;});
+  beam.material.opacity=.1+Math.sin(now/300)*.04;ember.scale.setScalar(1+Math.sin(now/90)*.15);fire.intensity=1.4+Math.sin(now/70)*.3;
+  renderer.render(scene,cam);drawTags();requestAnimationFrame(frame);}
+function update(dt){
+  // déplacement
+  let mx=0,mz=0;const ang=Math.PI/4+rotIdx*Math.PI/2;
+  const fwd={x:-Math.cos(ang),z:-Math.sin(ang)},rgt={x:-Math.sin(ang),z:Math.cos(ang)};
+  if(keys['w']||keys['z']||keys['arrowup']){mx+=fwd.x;mz+=fwd.z;}if(keys['s']||keys['arrowdown']){mx-=fwd.x;mz-=fwd.z;}
+  if(keys['d']||keys['arrowright']){mx+=rgt.x;mz+=rgt.z;}if(keys['a']||keys['q']||keys['arrowleft']){mx-=rgt.x;mz-=rgt.z;}
+  if(mx||mz){P.tx=null;}else if(P.tx!==null){mx=P.tx-P.x;mz=P.tz-P.z;if(Math.hypot(mx,mz)<.2){P.tx=null;mx=mz=0;}}
+  const L=Math.hypot(mx,mz);P.moving=L>0&&trophyHold===0;
+  const here=top(P.x,P.z);P.inWater=here.t===0;
+  if(P.moving){const sp=(P.inWater?2.2:4.2)*dt;const nx=P.x+mx/L*sp,nz=P.z+mz/L*sp;if(Math.abs(nx)<N/2-1&&Math.abs(nz)<N/2-1){P.x=nx;P.z=nz;}P.g.rotation.y=Math.atan2(mx,mz);}
+  P.g.position.set(P.x,groundY(P.x,P.z),P.z);
+  const vis=P.cloak?(P.inWater?.9:P.moving?.35:.08):1;const shown=Math.max(vis,P.reveal>0?.9:0);
+  P.g.userData.mats.forEach(m=>{m.opacity=P.cloak&&P.reveal<=0?(P.inWater?.55:.18):1;m.color.setHex(P.cloak&&P.reveal<=0?0x7fe3ff:0x6b5e45);});
+  P.reveal=Math.max(0,P.reveal-dt);plasmaT=Math.max(0,plasmaT-dt);scanT=Math.max(0,scanT-dt);
+  if(scanT<=0)humans.forEach(h=>h.scanned=false);
+  // couvert
+  const cover=here.t===3?.55:1;
+  // humains
+  humans.forEach(h=>{if(!h.alive||h.ko)return;
+    const d=dist(h);const dirToP=Math.atan2(P.x-h.x,P.z-h.z);let da=Math.abs(((dirToP-h.face)+Math.PI*3)%(Math.PI*2)-Math.PI);
+    const range=(h.armed?7:5)*(alertLvl>=3?1.3:1);const inCone=d<range&&da<Math.PI/4.5;const close=d<1.6;
+    const seeRate=(inCone||close)?shown*cover*(1.2-d/range)*1.6:0;
+    h.sus=Math.max(0,Math.min(1.2,h.sus+(seeRate>0?seeRate*dt:-0.18*dt)));
+    if(h.armed){
+      if(h.sus>0.9&&h.state!=='combat'){h.state='combat';alertHeat+=8;log('Repéré ! Un braconnier ouvre le feu');}
+      else if(h.sus>0.35&&h.state==='calme'){h.state='suspicion';}
+      else if(h.sus<0.1&&h.state!=='calme'&&h.state!=='combat'){h.state='calme';}
+      if(h.state==='combat'){h.face=dirToP;if(h.sus<0.25){h.state='recherche';}
+        h.cool-=dt;if(h.cool<=0&&d<12){h.cool=1.3;if(Math.random()<.4*Math.max(.25,shown)){P.hp-=9;if(P.hp<=0){endGame(false,'Abattu par les braconniers. En mode normal, le vaisseau t\'aurait évacué de justesse.');}}}
+      }else if(h.state==='suspicion'||h.state==='recherche'){h.face=dirToP;moveToward(h,P.x,P.z,dt*1.2,h.state==='recherche');}
+      else patrol(h,dt);
+    }else{
+      if(h.sus>0.7&&!h.flee){h.flee=true;h.state='fuite';log('Un civil t\'a vu : il filme et s\'enfuit !');}
+      if(h.flee){const ex=h.x<0?-N/2+1:N/2-1;moveToward(h,ex,h.z+(h.z<0?-6:6),dt*1.6,true);h.upload+=dt/8;
+        if(h.upload>=1){h.flee=false;h.alive=false;h.g.visible=false;h.cone.visible=false;P.witnesses++;alertHeat+=25;log('Image envoyée : l\'alerte monte');}}
+      else patrol(h,dt);
+    }
+    h.g.position.set(h.x,groundY(h.x,h.z),h.z);h.g.rotation.y=h.face;
+    h.cone.position.set(h.x,groundY(h.x,h.z)+.05,h.z);h.cone.rotation.z=-h.face+Math.PI/2;
+    h.cone.material.opacity=h.state==='combat'?.2:h.state==='calme'?.07:.13;
+  });
+  alertHeat=Math.max(0,alertHeat-(seenBy()?0:1.2*dt));setAlert();
+  // trophée
+  const body=humans.find(h=>h.body&&!h.trophy&&dist(h)<1.6);
+  const holdT=keys['t']||tHeld;
+  if(body&&holdT){if(trophyHold===0&&P.cloak){P.cloak=false;$('bCloak').classList.remove('on');log('Camouflage coupé pendant le prélèvement');}
+    trophyHold+=dt;if(trophyHold>=3){body.trophy=true;trophyHold=0;P.carry=true;P.trophies++;log('Trophée prélevé : rapporte-le au faisceau');}}
+  else trophyHold=0;
+  const pr=$('prompt');
+  if(body&&trophyHold===0){pr.hidden=false;pr.textContent='Maintenir T (Trophée) pour prélever';}
+  else if(trophyHold>0){pr.hidden=false;pr.textContent='Prélèvement… '+Math.round(trophyHold/3*100)+' %';}
+  else if(Math.hypot(P.x-EX.x,P.z-EX.z)<2.4){pr.hidden=false;pr.textContent='Faisceau d\'extraction';}
+  else pr.hidden=true;
+  // extraction
+  if(Math.hypot(P.x-EX.x,P.z-EX.z)<1.6&&(P.trophies>0||humans.every(h=>!h.armed||!h.alive))){
+    if(P.trophies>0)addHonor(P.honor*.2,'trophées rapportés (+20 %)');
+    endGame(true,P.trophies?'Tu remontes à bord avec '+P.trophies+' trophée(s).':'Le camp est vide. Tu remontes à bord.');}
+  // HUD
+  $('honor').textContent=Math.round(P.honor);$('left').textContent=humans.filter(h=>h.armed&&h.alive).length;
+  document.querySelector('#hp i').style.width=Math.max(0,P.hp)+'%';
+}
+function patrol(h,dt){const p=h.route[h.ri];if(moveToward(h,p.x,p.z,dt*.9,false))h.ri=(h.ri+1)%h.route.length;}
+function moveToward(h,x,z,step,fast){const dx=x-h.x,dz=z-h.z,d=Math.hypot(dx,dz);if(d<.15)return true;const s=Math.min(d,step*(fast?2.2:1.4));const nx=h.x+dx/d*s,nz=h.z+dz/d*s;if(Math.abs(nx)<N/2-1&&Math.abs(nz)<N/2-1){h.x=nx;h.z=nz;}h.face=Math.atan2(dx,dz);return false;}
+function drawTags(){const w=innerWidth,hh=innerHeight;humans.forEach(h=>{const e=h.el;if(!h.g.visible){e.hidden=true;return;}
+  tmp.set(h.x,groundY(h.x,h.z)+2.3,h.z).project(cam);const sx=(tmp.x+1)/2*w,sy=(1-tmp.y)/2*hh;
+  const show=h.scanned||h.state!=='calme'||h.flee||h.ko;
+  if(!show||!h.alive&&!h.body){e.hidden=true;return;}e.hidden=false;e.style.left=sx+'px';e.style.top=sy+'px';
+  let mk='',txt='',bar='';
+  if(h.scanned){mk=h.armed?'<svg class="mk" viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" transform="rotate(45 6 6)" fill="#ff5a3c"/></svg>':'<svg class="mk" viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5" fill="none" stroke="#fff" stroke-width="2"/></svg>';txt=h.armed?'armé':'civil';}
+  if(h.ko)txt='assommé';else if(!h.alive)txt=h.trophy?'trophée pris':'corps';
+  else if(h.flee){txt='filme…';bar=`<div class="bar"><i style="width:${Math.round(h.upload*100)}%"></i></div>`;}
+  else if(h.state==='combat')txt='combat';else if(h.state==='suspicion'||h.state==='recherche')txt='?';
+  e.innerHTML=mk+'<span>'+txt+'</span>'+bar;});}
+resize();requestAnimationFrame(frame);
+})();
+</script>

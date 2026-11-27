@@ -1,11 +1,13 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- existing local bitmap portraits and stage panoramas */
-import { forwardRef, memo, useCallback, useEffect, useImperativeHandle, useMemo, useReducer, useRef, useState, type ReactNode } from "react";
+import { forwardRef, memo, useCallback, useEffect, useImperativeHandle, useMemo, useReducer, useRef, useState, type Dispatch, type ReactNode } from "react";
 import dynamic from "next/dynamic";
 import { PIT_ARENAS, PIT_ARENA_IDS, PIT_FIGHTERS, type PitArenaId, type PitFighterId } from "./systems/pitCombat";
 import { getPitFighterVariants, getPitUserVariant } from "./systems/pitUserRoster";
 import { PIT_VERSUS_FIGHTER_IDS, canPitFighterEnterMode, isPitExpansionFighterId, type PitVersusFighterId } from "./systems/pitRosterExpansion";
 import { createPitSelectionState, movePitSelectionIndex, reducePitSelection } from "./systems/pitSelectionFlow";
+import { createPitSelectionPresentationV1, currentPitSelectionCueV1, pitSelectionCueDurationV1, pitSelectionCueLabelV1, reducePitSelectionPresentationV1,
+  type PitPresentationSlotV1, type PitSelectionCueV1, type PitSelectionIdentityV1, type PitSelectionPresentationActionV1, type PitSelectionPresentationPhaseV1 } from "./systems/pitSelectionPresentationV1";
 import { getPitFighterKeyArt } from "./pitVisualAssets";
 import { getPitRosterIcon } from "./pitRosterIcons";
 import { getPitCombatBitmapArtDefinition } from "./pitCombatBitmapArt";
@@ -42,6 +44,15 @@ const ROSTER_PAGE_SIZE = 24;
 const PitWorkbookAnimationViewerV100 = dynamic(() => import('./PitWorkbookAnimationViewerV100'));
 const searchText = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
+function useSelectionCueTimer(cue: PitSelectionCueV1, slot: PitPresentationSlotV1, reducedMotion: boolean, dispatch: Dispatch<PitSelectionPresentationActionV1>) {
+  useEffect(() => {
+    const duration = pitSelectionCueDurationV1(cue.phase);
+    if (duration === null) return;
+    const timer = window.setTimeout(() => dispatch({ type: "settle", slot, generation: cue.generation }), reducedMotion ? 0 : duration);
+    return () => window.clearTimeout(timer);
+  }, [cue.phase, cue.generation, slot, reducedMotion, dispatch]);
+}
+
 const stageThumbnail = (id: PitArenaId) => resolvePitArenaProductionKit(id)?.planes.find(plane => plane.id === "P0")?.assets[0]?.frames[0]?.path ?? PIT_ARENA_ART_DEFINITIONS[id]?.backdrop;
 
 const ROSTER_SEARCH = new Map(PIT_VERSUS_FIGHTER_IDS.map(id => [id, searchText(`${PIT_FIGHTERS[id].name} ${id} ${getPitFighterVariants(id).map(variant => variant.label).join(" ")}`)]));
@@ -60,6 +71,15 @@ const RosterPortrait = memo(function RosterPortrait({ id }: { id: PitVersusFight
 const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitSelectionFlow(props, ref) {
   const { playerId, opponentId, arenaId, imposed, eventOnly, locked, mode } = props;
   const [state, dispatch] = useReducer(reducePitSelection, undefined, createPitSelectionState);
+  const playerIdentity: PitSelectionIdentityV1 = { fighterId: playerId, variantId: props.playerVariantId, personal: Boolean(props.personalOption?.selected) };
+  const opponentIdentity: PitSelectionIdentityV1 = { fighterId: opponentId, variantId: props.opponentVariantId, personal: false };
+  const [presentation, present] = useReducer(reducePitSelectionPresentationV1, undefined, () => createPitSelectionPresentationV1(playerIdentity, opponentIdentity));
+  useSelectionCueTimer(presentation.player, "player", props.reducedMotion, present);
+  useSelectionCueTimer(presentation.opponent, "opponent", props.reducedMotion, present);
+  const playerCue = currentPitSelectionCueV1(presentation.player, playerIdentity);
+  const opponentCue = currentPitSelectionCueV1(presentation.opponent, opponentIdentity);
+  const cue = (slot: PitPresentationSlotV1, phase: PitSelectionPresentationPhaseV1, identity?: PitSelectionIdentityV1) =>
+    present({ type: "present", slot, phase, identity: identity ?? (slot === "player" ? playerIdentity : opponentIdentity) });
   const [preview, setPreview] = useState<{ id: PitArenaId; status: PitStagePreviewStatus } | null>(null);
   const rootRef = useRef<HTMLDivElement>(null), gridRef = useRef<HTMLDivElement>(null), confirmRef = useRef<HTMLButtonElement>(null);
   const [rosterQuery, setRosterQuery] = useState("");
@@ -128,18 +148,22 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
   const pick = (id: PitVersusFighterId) => {
     if (locked || (state.slot === "opponent" && (imposed || id === playerId)) || (state.slot === "player" && !canPitFighterEnterMode(id, mode))) return;
     if (id === rosterSelected && !personalOnPlayer) return;
+    cue(state.slot, "preview", { fighterId: id, variantId: null, personal: false });
     if (state.slot === "player") props.onPlayerChange(id); else props.onOpponentChange(id);
     dispatch({ type: "pick", slot: state.slot });
   };
   const editSlot = (slot: "player" | "opponent", selectedOverride?: PitVersusFighterId) => {
     setRosterQuery("");
     const selected = selectedOverride ?? (slot === "player" ? playerId : opponentId);
+    cue(slot, "deselect", { ...(slot === "player" ? playerIdentity : opponentIdentity), fighterId: selected });
+    if (slot === "player") cue("opponent", "preview");
     setRequestedRosterPage(Math.floor(Math.max(0, PIT_VERSUS_FIGHTER_IDS.indexOf(selected as PitVersusFighterId)) / ROSTER_PAGE_SIZE));
     dispatch({ type: "edit", slot });
   };
   const changeVariant = (id: string | null) => {
     if (locked || state.step !== "fighters" || (state.slot === "opponent" && imposed)) return;
     if ((id ?? "") === variantValue) return;
+    cue(state.slot, "costume", { ...(state.slot === "player" ? playerIdentity : opponentIdentity), variantId: id });
     if (state.slot === "player") props.onPlayerVariantChange(id); else props.onOpponentVariantChange(id);
     dispatch({ type: "pick", slot: state.slot });
   };
@@ -151,6 +175,7 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
   };
   const pickPersonal = () => {
     if (locked || state.slot !== "player" || !personal?.available || personal.selected) return;
+    cue("player", "preview", { ...playerIdentity, personal: true });
     props.onPersonalSelect?.();
     dispatch({ type: "pick", slot: "player" });
   };
@@ -163,18 +188,26 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
   };
   const confirm = () => {
     if (props.launchDisabled) return;
-    if (state.step === "stage") { if (stageReady) props.onLaunch(); return; }
+    if (state.step === "stage") {
+      if (stageReady) { present({ type: "depart", player: playerIdentity, opponent: opponentIdentity }); props.onLaunch(); }
+      return;
+    }
     if (locked) return;
+    if (!eventOnly && playerId === opponentId) return;
     if (state.slot === "player") {
+      cue("player", "confirm");
       setRosterQuery("");
       setRequestedRosterPage(Math.floor(Math.max(0, PIT_VERSUS_FIGHTER_IDS.indexOf(opponentId as PitVersusFighterId)) / ROSTER_PAGE_SIZE));
-    }
+    } else if (state.confirmedPlayer === playerId) present({ type: "team", player: playerIdentity, opponent: opponentIdentity });
+    else cue("player", "confirm");
     dispatch({ type: "confirm", player: playerId, opponent: opponentId, eventOnly });
   };
   const back = () => {
     if (locked) return;
     if (state.step === "fighters" && state.slot === "player") props.onExit();
     else {
+      cue("opponent", "deselect");
+      if (state.step === "fighters") cue("player", "deselect");
       const selected = state.step === "stage" ? opponentId : playerId;
       setRosterQuery("");
       setRequestedRosterPage(Math.floor(Math.max(0, PIT_VERSUS_FIGHTER_IDS.indexOf(selected as PitVersusFighterId)) / ROSTER_PAGE_SIZE));
@@ -235,8 +268,8 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
     <ol className={styles.steps} aria-label="Étapes de sélection"><li aria-current={state.step === "fighters" ? "step" : undefined}>01 · Combattants</li><li aria-current={state.step === "stage" ? "step" : undefined}>02 · Stage</li><li>03 · Combat</li></ol>
     {state.step === "fighters" ? <>
       <div className={styles.fighterLayout}>
-        <aside className={styles.contender} data-selection-side="player" data-active={state.slot === "player"} data-confirmed={state.confirmedPlayer === playerId} aria-label="Combattant joueur 1">
-          <button type="button" className={styles.slotButton} disabled={locked} onClick={() => editSlot("player")}><span>J1</span><strong>{state.confirmedPlayer === playerId ? "PRÊT" : "SÉLECTION"}</strong></button>
+        <aside className={styles.contender} data-selection-side="player" data-active={state.slot === "player"} data-confirmed={state.confirmedPlayer === playerId} data-pit-selection-presentation={playerCue.phase} data-pit-native-selection-animation="unavailable" aria-label="Combattant joueur 1">
+          <button type="button" className={styles.slotButton} disabled={locked} onClick={() => editSlot("player")}><span>J1</span><strong>{pitSelectionCueLabelV1(playerCue.phase, state.confirmedPlayer === playerId)}</strong></button>
           {props.playerPreview}
         </aside>
         <section className={styles.rosterConsole} aria-labelledby="pit-roster-heading">
@@ -256,7 +289,7 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
         <div ref={gridRef} className={styles.roster} role="listbox" aria-label={state.slot === "player" ? "Combattant joueur" : "Adversaire"} data-pit-roster-total={PIT_VERSUS_FIGHTER_IDS.length} data-pit-roster-filtered={matchingFighterIds.length} data-pit-roster-page={rosterPage + 1}>
           {rosterChoices.map(id => {
             const variants = getPitFighterVariants(id);
-            return <button type="button" role="option" key={id} data-choice-id={id} aria-label={PIT_FIGHTERS[id].name} aria-selected={rosterSelected === id && !personalOnPlayer} disabled={isFighterUnavailable(id)} tabIndex={rosterTabStop === id ? 0 : -1} onClick={() => pick(id)} onFocus={() => { if (rosterSelected !== id) pick(id); }}><RosterPortrait id={id} /><strong>{PIT_FIGHTERS[id].name}</strong>{state.slot === "opponent" && id === playerId ? <small className={styles.rosterBadge}>{personal?.selected ? "BASE J1" : "J1"}</small> : (id === "kok-warlord" || id === "stone-heart") ? <small className={styles.rosterBadge}>BOSS</small> : !canPitFighterEnterMode(id, mode) ? <small className={styles.rosterBadge}>DUEL</small> : variants.length > 0 ? <small className={styles.rosterBadge} aria-label={`${variants.length} présentations fournies`}>{variants.length}</small> : null}</button>;
+            return <button type="button" role="option" key={id} data-choice-id={id} aria-label={PIT_FIGHTERS[id].name} aria-selected={rosterSelected === id && !personalOnPlayer} disabled={isFighterUnavailable(id)} tabIndex={rosterTabStop === id ? 0 : -1} onClick={() => pick(id)} onPointerEnter={() => { if (id === rosterSelected && !isFighterUnavailable(id)) cue(state.slot, "hover"); }} onFocus={() => { if (rosterSelected !== id) pick(id); }}><RosterPortrait id={id} /><strong>{PIT_FIGHTERS[id].name}</strong>{state.slot === "opponent" && id === playerId ? <small className={styles.rosterBadge}>{personal?.selected ? "BASE J1" : "J1"}</small> : (id === "kok-warlord" || id === "stone-heart") ? <small className={styles.rosterBadge}>BOSS</small> : !canPitFighterEnterMode(id, mode) ? <small className={styles.rosterBadge}>DUEL</small> : variants.length > 0 ? <small className={styles.rosterBadge} aria-label={`${variants.length} présentations fournies`}>{variants.length}</small> : null}</button>;
           })}
         </div>
         {!matchingFighterIds.length && <p className={styles.emptyRoster} role="status">Aucun chasseur trouvé. La sélection actuelle est conservée.</p>}
@@ -284,12 +317,12 @@ const PitSelectionFlow = forwardRef<PitSelectionFlowHandle, Props>(function PitS
         </details> : null}
       </>}
         </section>
-        <aside className={styles.contender} data-selection-side="opponent" data-active={state.slot === "opponent"} data-confirmed={state.confirmedOpponent === opponentId} aria-label={mode === "local" ? "Combattant joueur 2" : "Adversaire"}>
-          <button type="button" className={styles.slotButton} disabled={locked || state.confirmedPlayer !== playerId} onClick={() => editSlot("opponent")}><span>{mode === "local" ? "J2" : "RIVAL"}</span><strong>{imposed ? "PARCOURS" : state.confirmedOpponent === opponentId ? "PRÊT" : "SÉLECTION"}</strong></button>
+        <aside className={styles.contender} data-selection-side="opponent" data-active={state.slot === "opponent"} data-confirmed={state.confirmedOpponent === opponentId} data-pit-selection-presentation={opponentCue.phase} data-pit-native-selection-animation="unavailable" aria-label={mode === "local" ? "Combattant joueur 2" : "Adversaire"}>
+          <button type="button" className={styles.slotButton} disabled={locked || state.confirmedPlayer !== playerId} onClick={() => editSlot("opponent")}><span>{mode === "local" ? "J2" : "RIVAL"}</span><strong>{imposed ? "PARCOURS" : pitSelectionCueLabelV1(opponentCue.phase, state.confirmedOpponent === opponentId)}</strong></button>
           {props.opponentPreview}
         </aside>
       </div>
-    </> : <div className={styles.stageLayout}>
+    </> : <div className={styles.stageLayout} data-pit-selection-presentation={presentation.player.phase === "depart" ? "depart" : "team"}>
       <section className={styles.stageShowcase} aria-label="Arène sélectionnée">
       <div className={styles.stageHeading}><div><span>STAGE SELECT</span><h3>{PIT_ARENAS[arenaId].name}</h3><p>{playerName} {eventOnly ? "· branche de parcours" : `VS ${PIT_FIGHTERS[opponentId].name}`}</p></div><span>{imposed ? "IMPOSÉ PAR LE PARCOURS" : `${PIT_ARENA_IDS.length} STAGES JOUABLES`}</span></div>
       <PitStagePreview arenaId={arenaId} reducedMotion={props.reducedMotion} highContrast={props.highContrast} onStatus={onPreviewStatus} onRetry={props.onStageRetry} />
