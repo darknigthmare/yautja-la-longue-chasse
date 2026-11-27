@@ -42,7 +42,7 @@ const isAction = (value: unknown): value is Action => actions.some(action => val
 
 export function conquestAccessR2M037(save: ConquestSave) {
   const rank = save.prologue ? getChronicleRank(save.prologue.chronicle) : save.profile.rankId;
-  if (!["blooded", "elite", "elder", "ancient"].includes(rank)) {
+  if (!["blooded", "elite", "elder", "ancient"].includes(rank ?? "")) {
     return refused("Le conseil attend que le rite Blooded soit reconnu.");
   }
   const { receipt } = shipReceiptV161(save);

@@ -1,6 +1,9 @@
 "use client";
 
 import { useId, useState, type KeyboardEvent } from "react";
+import HunterRigPreview from "./HunterRigPreview";
+import { HUNTER_RIG_CANVAS } from "./hunterRig";
+import type { SaveGame } from "./types";
 import {
   WARP_COMMON_LIMIT_R2, WARP_COMMON_PARTS_R2, WARP_OBSERVATORY_R2, warpReturnDialR2, warpTestDialR2,
   type WarpBenchChoiceR2, type WarpCommonChoiceR2, type WarpCommonCommandR2, type WarpCommonViewR2,
@@ -21,6 +24,17 @@ const bayPosts = [
 ] as const;
 const withinReach = (x: number, target: number) => Math.abs(x - target) <= 1;
 const styleAt = (position: number) => ({ left: 6 + 88 * position / WARP_COMMON_LIMIT_R2 + "%" });
+
+type WarpHunter = Pick<SaveGame, "appearance" | "loadout">;
+function WarpWalker({ identity, position, facing }: { identity: WarpHunter; position: number; facing: -1 | 1 }) {
+  const size = 64;
+  const footY = HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.width * size;
+  return <span className={styles.actor} aria-hidden="true" style={styleAt(position)}>
+    <HunterRigPreview appearance={identity.appearance} armorId={identity.loadout.armorId} weaponIds={identity.loadout.weaponIds}
+      gearIds={identity.loadout.gearIds} size={size} facing={facing}
+      style={{ position: "absolute", top: -footY, left: -size / 2 }} />
+  </span>;
+}
 
 function TuningControls({ label, dialReference, disabled, onCheck }: {
   label: string;
@@ -98,20 +112,24 @@ function InstallationPanel({ at, disabled, view, onCommand }: {
   </>;
 }
 
-export default function WarpCommonSceneR2({ view, disabled, onCommand }: {
+export default function WarpCommonSceneR2({ view, identity, disabled, onCommand }: {
   view: WarpCommonViewR2;
+  identity: WarpHunter;
   disabled: boolean;
   onCommand: (command: WarpCommonCommandR2) => void;
 }) {
   const description = useId();
   const [at, setAt] = useState(view.x);
+  const [facing, setFacing] = useState<-1 | 1>(1);
   if (view.section === "ready") return <p className={styles.clear} data-warp-common-ready>Retour à vide confirmé. Le module est installé.</p>;
   const room = rooms[view.section];
   const marker = WARP_OBSERVATORY_R2[view.read];
   const posts = view.section === "observatory" ? WARP_OBSERVATORY_R2 : view.section === "workshops"
     ? [...WARP_COMMON_PARTS_R2, { title: "Chariot", position: 16 }] : bayPosts;
   const move = (distance: number) => {
-    if (!disabled) setAt(position => Math.max(0, Math.min(WARP_COMMON_LIMIT_R2, position + distance)));
+    if (disabled) return;
+    setFacing(distance < 0 ? -1 : 1);
+    setAt(position => Math.max(0, Math.min(WARP_COMMON_LIMIT_R2, position + distance)));
   };
   function onWalkKey(event: KeyboardEvent<HTMLElement>) {
     if (event.target !== event.currentTarget || disabled || event.altKey || event.ctrlKey || event.metaKey) return;
@@ -129,7 +147,7 @@ export default function WarpCommonSceneR2({ view, disabled, onCommand }: {
       role="group" aria-label="Passerelle du Warp" aria-describedby={description} onKeyDown={onWalkKey}>
       {posts.map(post => <span key={post.title} className={styles.post} style={styleAt(post.position)}
         data-near={withinReach(at, post.position)}>{post.title}</span>)}
-      <span className={styles.actor} aria-hidden="true" style={styleAt(at)} />
+      <WarpWalker identity={identity} position={at} facing={facing} />
     </div>
     <div className={styles.actions}>
       <button type="button" disabled={disabled || at === 0} data-warp-common-walk="left" onClick={() => move(-1)}>Marcher à gauche</button>
@@ -154,12 +172,17 @@ const landingPosts = [
   { title: "Fenêtre de retour", position: 0 }, { title: "Repère de terrain", position: 4 }, { title: "Alcôve", position: 11 },
 ] as const;
 
-export function WarpSurveySceneR2({ survey, onAction }: {
+export function WarpSurveySceneR2({ survey, identity, onAction }: {
   survey: WarpSurveyR2 | undefined;
+  identity: WarpHunter;
   onAction: (action: WarpSurveyActionR2) => void;
 }) {
   const [at, setAt] = useState(survey?.nicheVisited ? 11 : survey ? 4 : 0);
-  const move = (direction: number) => setAt(position => Math.max(0, Math.min(16, position + direction)));
+  const [facing, setFacing] = useState<-1 | 1>(1);
+  const move = (direction: number) => {
+    setFacing(direction < 0 ? -1 : 1);
+    setAt(position => Math.max(0, Math.min(16, position + direction)));
+  };
   const ready = (target: number) => withinReach(at, target);
   return <section className={styles.scene} data-warp-survey-r2 data-warp-survey-position={at}>
     <h4>M033 · Premier relevé au col des cèdres</h4>
@@ -173,7 +196,7 @@ export function WarpSurveySceneR2({ survey, onAction }: {
       }}>
       {landingPosts.map(post => <span key={post.title} className={styles.post} style={styleAt(post.position)}
         data-near={ready(post.position)}>{post.title}</span>)}
-      <span className={styles.actor} aria-hidden="true" style={styleAt(at)} />
+      <WarpWalker identity={identity} position={at} facing={facing} />
     </div>
     <div className={styles.actions}>
       <button type="button" disabled={at === 0} data-warp-survey-walk="left" onClick={() => move(-1)}>Marcher à gauche</button>

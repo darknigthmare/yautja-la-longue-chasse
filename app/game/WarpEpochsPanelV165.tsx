@@ -140,7 +140,7 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
         {!canWork && commonView.section !== "ready" && <p className={styles.missing}>
           L’accès à l’observatoire exige Blooded, le dossier Adjutant et la coque remise au chantier naval.
         </p>}
-        <WarpCommonSceneR2 key={commonView.section} view={commonView} disabled={!canWork}
+        <WarpCommonSceneR2 key={commonView.section} view={commonView} identity={save} disabled={!canWork}
           onCommand={command => apply(advanceWarpCommonRouteV165(state, ctx, hull?.instanceId, command))} />
       </>}
       {!spatialRoute && state.warpQuestOutcome === "en_cours" && <>
@@ -177,7 +177,7 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
       {state.activeWarpTripId && <p>Voyage {state.activeWarpTripId} engagé vers {state.activeTripBranchId}. Le retour reste réservé même si une condition de départ se perd.</p>}
       {state.firstSurveyR2?.stage === "complete" ? <p className={styles.ok} data-warp-survey-complete>
         Le relevé du col est archivé. {state.firstSurveyR2.nicheVisited ? "L’alcôve figure dans le rapport." : "Retour direct par la fenêtre."}
-      </p> : inW02 && <WarpSurveySceneR2 key={state.activeWarpTripId} survey={state.firstSurveyR2}
+      </p> : inW02 && <WarpSurveySceneR2 key={state.activeWarpTripId} survey={state.firstSurveyR2} identity={save}
         onAction={action => apply(advanceWarpSurveyR2(state, action))} />}
     </div>
 

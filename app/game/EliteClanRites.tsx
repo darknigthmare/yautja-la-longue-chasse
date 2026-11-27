@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import TrainingDrill from "./TrainingDrill";
 import {
   canEnterEliteClanRites, completedEliteClanRites, ELITE_CLAN_TRIALS, type EliteClanTrialId,
@@ -25,7 +25,8 @@ export default function EliteClanRites({ save, suspended, onCommand, onClose, on
   onClose: () => void;
   onOpenRecognition: () => void;
 }) {
-  const state = inspectEliteRecognition(save.eliteRecognitionV174, save.createdAt).state;
+  const state = useMemo(() => inspectEliteRecognition(save.eliteRecognitionV174, save.createdAt).state,
+    [save.eliteRecognitionV174, save.createdAt]);
   const [active, setActive] = useState<EliteClanTrialId | null>(null);
   const [pending, setPending] = useState<TrainingDrillTrace | null>(null);
   const [message, setMessage] = useState("");
@@ -68,7 +69,7 @@ export default function EliteClanRites({ save, suspended, onCommand, onClose, on
       <button type="button" onClick={onOpenRecognition}>Rejoindre les témoins</button>}
     {!trial && message && <p role="status">{message}</p>}
     {trial && <TrainingDrill disciplineId={trial.disciplineId} seed={trial.seed} clanPlasma={trial.clanPlasma}
-      suspended={suspended || !eligible} onTrace={recordTrial}
+      controlBindings={save.settings.controlBindings} suspended={suspended || !eligible} onTrace={recordTrial}
       saveIssue={pending ? message : null} onRetrySave={pending ? () => recordTrial(pending) : undefined}
       onCancel={() => { setPending(null); setActive(null); setMessage(""); }} />}
   </section>;

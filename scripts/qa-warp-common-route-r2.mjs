@@ -36,9 +36,14 @@ try {
     if (await campaign.isVisible()) await campaign.click();
     await page.locator('[data-menu-action="continue"]').click();
     await page.locator("[data-campaign-session]").waitFor({ timeout: 90000 });
-    await page.locator("[data-homeworld-viewport]").waitFor({ timeout: 90000 });
-    await page.getByRole("button", { name: "Navigation", exact: true }).click();
-    await page.locator("[data-open-quatza-homeworld]").click();
+    const deck = page.getByRole("button", { name: "Dossier de campagne", exact: true });
+    const navigation = page.getByRole("button", { name: "Navigation", exact: true });
+    await deck.or(navigation).first().waitFor({ timeout: 90000 });
+    if (await deck.isVisible()) await deck.click();
+    else {
+      await navigation.click();
+      await page.locator("[data-open-quatza-homeworld]").click();
+    }
     await page.locator("[data-warp-entry-v165]").click();
     await scene.waitFor();
   };

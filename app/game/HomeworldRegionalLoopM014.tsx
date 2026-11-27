@@ -41,7 +41,7 @@ export default function HomeworldRegionalLoopM014({ loop, suspended, notice, onC
   const canLeave = !passage || passage.position === 0;
   const heading = region ? region.name : "Les trois relevés sont inscrits";
 
-  return <main className={styles.page} data-regional-loop-m014={loop.phase}
+  return <section className={styles.page} data-regional-loop-m014={loop.phase}
     data-screen-focus tabIndex={0} aria-label="Circuit des régions proches"
     onKeyDown={event => {
       if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
@@ -72,7 +72,7 @@ export default function HomeworldRegionalLoopM014({ loop, suspended, notice, onC
       </div>
       <div className={styles.status}>
         <strong>{passage.position === 0 ? region.halt : passage.position === LOOP_M014_LAST ? "Poste d’observation" : lane?.barrier && passage.position === LOOP_M014_BARRIER ? lane.barrier : "Sentier"}</strong>
-        <span data-regional-position-m014={passage.position}>{passage.route ? "Repère " + (passage.position + 1) + " / " + (LOOP_M014_LAST + 1) : "Deux passages partent de la halte."}</span>
+        <span data-regional-position-m014={passage.position} aria-live="polite">{passage.route ? "Repère " + (passage.position + 1) + " / " + (LOOP_M014_LAST + 1) : "Deux passages partent de la halte."}</span>
       </div>
       <div className={styles.actions}>
         {!passage.route && loopRoutes.map(([route, label]) => <button key={route} type="button" disabled={suspended}
@@ -118,5 +118,5 @@ export default function HomeworldRegionalLoopM014({ loop, suspended, notice, onC
       <button type="button" className={styles.button} disabled={suspended || !canLeave} data-regional-action-m014="city"
         onClick={onCity}>Retour à la cité</button>
     </footer>
-  </main>;
+  </section>;
 }

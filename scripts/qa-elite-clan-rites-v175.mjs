@@ -13,7 +13,9 @@ const { SAVE_STORAGE_KEY, exportSave, parseSaveImport } = qa.load("app/game/save
 const { ELITE_CLAN_TRIALS } = qa.load("app/game/systems/eliteClanRitesV175.ts");
 const { createTrainingDrill } = qa.load("app/game/systems/trainingDrill.ts");
 const { getChronicleRank } = qa.load("app/game/systems/clanChronicle.ts");
-const admission = parseSaveImport(exportSave(admitEliteCampaign()));
+const candidate = admitEliteCampaign();
+candidate.settings.controlBindings = { ...candidate.settings.controlBindings, "training.primary": ["KeyP"] };
+const admission = parseSaveImport(exportSave(candidate));
 assert.ok(admission.save, admission.failure);
 const browser = await chromium.launch({
   executablePath: process.env.CHROMIUM_EXECUTABLE || process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || undefined,
@@ -40,7 +42,8 @@ const playTrial = async (trial, unsafe = false) => {
   const state = createTrainingDrill(trial.disciplineId, trial.seed, trial.clanPlasma);
   for (const [i, action] of state.sequence.entries()) {
     const command = unsafe && i === 3 ? "primary" : action;
-    await dialog.locator("[data-training-drill-action=" + command + "]").press("Enter", { timeout: 5000 });
+    if (command === "primary") await dialog.press("p", { timeout: 5000 });
+    else await dialog.locator("[data-training-drill-action=" + command + "]").press("Enter", { timeout: 5000 });
   }
   await dialog.getByRole("button", { name: "Consigner le résultat" }).click();
   await dialog.waitFor({ state: "hidden" });
