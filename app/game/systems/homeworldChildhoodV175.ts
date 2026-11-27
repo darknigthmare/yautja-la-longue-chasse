@@ -334,7 +334,8 @@ export function actChildhoodV175(
   if (raw != null && (!result || result.ledger.ownerCreatedAt !== save.createdAt)) {
     return { message: "Ce carnet d’exercice appartient à une autre jeunesse." };
   }
-  if (event === "accept-rack-access" && !save.prologue?.chronicle.rites.some(rite => rite.id === "nursery-recognition")) {
+  if (event === "accept-rack-access" && !save.prologue?.chronicle.rites.some(rite =>
+    rite.id === "nursery-recognition" && rite.sourceId === "chronicle.rite.nursery")) {
     return { message: "Saar attend la reconnaissance inscrite lors de l’audience." };
   }
   if ((event === "first-mask" || event === "first-blades") && save.youthTraining) {
