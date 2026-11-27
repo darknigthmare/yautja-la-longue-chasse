@@ -109,6 +109,7 @@ import { SKIN_PATTERN_IDS_V146, applyHeavyWearV146, earnedCosmeticsV146,
 import { isFutureTrophyUsagesV147, normalizeTrophyUsagesV147 } from "./systems/trophyUsagesV147";
 import { canStartWarNarrativeR2M035, hasWarNarrativeCampaignR2M035, inspectWarNarrativeR2M035,
   isWarNarrativeSuccessorR2M035 } from "./systems/warNarrativeR2M035";
+import { conquestMatchesCampaignR2M037, inspectConquestR2M037, isConquestSuccessorR2M037 } from "./systems/warConquestR2M037";
 import { applyHoundHuntReportV147, huntSessionIdV147, isFutureHuntingHoundsV147,
   normalizeHoundHuntReportV147, normalizeHuntingHoundsV147 } from "./systems/huntingHoundsV147";
 import {
@@ -1340,6 +1341,9 @@ export function normalizeSave(value: unknown): SaveGame {
     }),
     missionProgress,
     trophies,
+    ...(source.warConquestR2M037 == null ? {} : {
+      warConquestR2M037: inspectConquestR2M037(source.warConquestR2M037, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     ...(source.warNarrativeR2M035 == null ? {} : {
       warNarrativeR2M035: inspectWarNarrativeR2M035(source.warNarrativeR2M035, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1764,6 +1768,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   // A newer or cross-owner gauntlet receipt cannot be silently dropped during import/export.
   if (isRecord(value.customizationV146) && Number(value.customizationV146.version) > 1)
     return { save: null, failure: "future-version" };
+  const m037 = inspectConquestR2M037(value.warConquestR2M037, owner);
+  if (m037.status === "future-version" || m037.status === "invalid-save") return { save: null, failure: m037.status };
   const m035 = inspectWarNarrativeR2M035(value.warNarrativeR2M035, owner);
   if (m035.status === "future-version" || m035.status === "invalid-save") return { save: null, failure: m035.status };
   // V147 trophy usages hold the exchange ledger: a newer format is never dropped silently.
@@ -2100,6 +2106,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
         crownReturned: cradle.state?.crownDelivered === true,
         adjutantVerified: adjutant?.phase === "appointed",
       })) return { save: null, failure: "invalid-save" };
+  if (m037.state && !conquestMatchesCampaignR2M037(save, m037.state)) return { save: null, failure: "invalid-save" };
   if (m035.state && !hasWarNarrativeCampaignR2M035(save)) return { save: null, failure: "invalid-save" };
   if (firstInterstellar.state && (shipReceiptV161(save).receipt?.instanceId !== firstInterstellar.state.hullInstanceId ||
       (save.spaceRoutesV159?.trip && firstInterstellarInFlightV173(firstInterstellar.state, campaignOwner))))
@@ -2249,6 +2256,12 @@ function persistCampaign(
       const nextAdjutant = requested.homeworld.adjutantM029;
       if (JSON.stringify(previousAdjutant ?? null) !== JSON.stringify(nextAdjutant ?? null) &&
           !isHomeworldAdjutantSuccessorM029(previousAdjutant, nextAdjutant)) {
+        return failed("save-conflict", previous);
+      }
+      const previousM037 = previous.warConquestR2M037;
+      const requestedM037 = requested.warConquestR2M037;
+      if (JSON.stringify(previousM037 ?? null) !== JSON.stringify(requestedM037 ?? null) &&
+          (!requestedM037 || !isConquestSuccessorR2M037(previous, requestedM037))) {
         return failed("save-conflict", previous);
       }
       const previousM035 = previous.warNarrativeR2M035;
