@@ -52,8 +52,8 @@ jobs:
         with:
           node-version: '22'
           cache: npm
-      - name: Include only the actual pinned asset and workbook inputs
-        run: node scripts/include-p0p1-ci-inputs-20261109.mjs --include
+      - name: Verify pinned assets and regenerate the current audio inventory in memory
+        run: node scripts/include-p0p1-ci-inputs-20261109.mjs --include --current-audio
       - name: Install locked dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Run actual domain, SSR, save and compatibility cases

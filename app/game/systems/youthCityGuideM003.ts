@@ -51,9 +51,13 @@ export function saarGuidePoseM003(errand: YouthCityErrandV172 | undefined, actor
   if (!youthCityGuidePendingM003(errand) || interiorId || level !== SAAR_GUIDE_LEVEL_M003) return null;
   const route = saarGuidePathM003();
   if (route.status !== "reachable" || route.points.length < 2) return null;
-  const points = route.points;
+  return saarGuidePoseOnPathM003(route.points, actor, errand?.guideM003 === 0);
+}
+
+export function saarGuidePoseOnPathM003(points: readonly HomeworldVec2[], actor: HomeworldActor, waitingAtStart = false) {
+  if (points.length < 2) return null;
   const standing = { ...points[0], facing: points[1].x < points[0].x ? -1 as const : 1 as const, moving: false, waiting: true };
-  if (errand?.guideM003 === 0) return standing;
+  if (waitingAtStart) return standing;
   let walked = 0;
   let nearest = { distance: Infinity, along: 0 };
   for (let i = 1; i < points.length; i++) {

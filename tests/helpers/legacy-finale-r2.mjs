@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { homeworldSceneSsrV78 } from "./homeworld-scene-ssr-v78.mjs";
-import { trainingYardAdmissionO6, HOUSE } from "./origin-training-yard-o6.mjs";
+import { trainingYardAdmissionO6, withResidenceO6, HOUSE } from "./origin-training-yard-o6.mjs";
+import { narrativeLongMemoryAdmission } from "./senior-rite-campaign.mjs";
 
 const qa = homeworldSceneSsrV78();
 const history = qa.load("app/game/systems/clanChronicle.ts");
@@ -10,8 +11,7 @@ export const finale = qa.load("app/game/systems/legacyFinaleR2.ts");
 export const saves = qa.load("app/game/save.ts");
 export const houseSite = { kind: "residence", id: HOUSE };
 
-export function legacyFixture({ realized = true, ancient = true } = {}) {
-  let save = trainingYardAdmissionO6();
+function withLegacyO6Ending(save, realized) {
   const place = { rankId: "elite", atWorkshop: true };
   const shown = endings.examineEndingV170(save.originV151, "O6-E1", place);
   assert.ok(shown.ok, shown.reason);
@@ -24,6 +24,11 @@ export function legacyFixture({ realized = true, ancient = true } = {}) {
   // This fixture is never a source of a campaign receipt.
   if (realized) save.originV151 = { ...save.originV151, consumed: [...save.originV151.consumed, "O6-M30:realized"],
     ending: { ...save.originV151.ending, endingRealized: true } };
+  return save;
+}
+
+export function legacyFixture({ realized = true, ancient = true } = {}) {
+  const save = withLegacyO6Ending(trainingYardAdmissionO6(), realized);
   if (ancient) {
     const beginning = history.CHRONICLE_EVIDENCE.find(entry => entry.id === "intro-begun");
     assert.ok(beginning);
@@ -99,4 +104,55 @@ export function legacyClanFixture({ realized = true, recruit = true } = {}) {
     act("armurerie", { type: "recruit", npcId: "iron-claw" });
   }
   return moveLegacyClanFixture(save, { type: "move-room", roomId: "trophees" });
+}
+
+const cultural = qa.load("app/game/systems/bibleSceneCulturalV86.ts");
+const haltBinding = cultural.BIBLE_CULTURAL_BINDING_V86;
+export const legacyRegions = qa.load("app/game/systems/homeworldRegionsV68.ts");
+export const legacyHaltApproach = haltBinding.approach;
+
+export function legacyHaltFixture({ realized = true, walkthrough = true, approach = haltBinding.approach } = {}) {
+  const save = legacyFixture({ realized, ancient: false });
+  const region = legacyRegions.createHomeworldRegionV68(haltBinding.regionId, "legacy-epilogue-crests", true);
+  // Prepared regional return admission, matching the existing V86 fixture.
+  // Completing the halt below still uses the actual cultural reducer.
+  Object.assign(region, { tick: 3600, walked: 8000, greeted: ["guide"], traces: ["trail-1", "trail-2", "trail-3"],
+    observedTicks: 90, reported: true, eventReceipts: ["track", "report"], actor: { ...region.actor, ...approach } });
+  save.homeworldRegionV68 = region;
+  if (walkthrough) {
+    const context = cultural.bibleCulturalContextV86({ save, ownerSaveCreatedAt: save.createdAt, region,
+      sceneActive: true, focused: true, suspended: false, host: { id: haltBinding.npcId, present: true, alive: true, conscious: true },
+      table: { id: haltBinding.tableId, ...haltBinding.table } });
+    assert.ok(context.eligible, context.denial);
+    for (const type of ["open", "choose-b", "reply", "sit", "listen", "tidy"]) {
+      const result = cultural.applyBibleSceneActionV86(save.homeworld.bibleScenesV86, { type }, context);
+      assert.ok(result.ok, result.message);
+      save.homeworld.bibleScenesV86 = result.ledger;
+    }
+  }
+  return save;
+}
+
+export function legacyCanonicalCohortFixture() {
+  const ancient = qa.load("app/game/systems/ancientHearingR2M056.ts");
+  const residence = qa.load("app/game/systems/companionResidence.ts");
+  let save = narrativeLongMemoryAdmission();
+  const witnessOrders = [["open-register", "archives"], ["read-hunt", "hangar"], ["read-workshop", "armurerie"],
+    ["read-teaching", "archives"], ["choose-intimate", "archives"], ["reserve-post", "archives"]];
+  const relays = [...ancient.ANCIENT_DEBT_POSTS, ...ancient.ANCIENT_SERVICE_POSTS].map(post => [post.order, post.room]);
+  for (const [order, roomId] of [...witnessOrders, ...relays, ["recognize", "archives"]]) {
+    // Bring the operation to its authored station before issuing the native hearing command.
+    save = moveLegacyClanFixture(save, { type: "move-room", roomId });
+    const result = operations.actClanShipOperations(save.clanShipOperations, {
+      type: "ancient-hearing", order, expectedRevision: save.clanShipOperations.revision,
+    }, { ownerCreatedAt: save.createdAt, campaign: save, docking: save.clanShipDocking,
+      availableCrewIds: residence.availableClanResidenceCrew(save), crewPostRooms: residence.clanResidenceCrewPostRooms(save) });
+    assert.ok(result.accepted, result.message);
+    save = { ...save, clanShipOperations: result.state,
+      ...(result.ancientChronicle ? { prologue: { ...save.prologue, chronicle: result.ancientChronicle } } : {}) };
+  }
+  assert.equal(history.getChronicleRank(save.prologue.chronicle), "ancient");
+  assert.equal(ancient.ancientHearingRecognized(save.clanShipOperations.ancientHearing), true);
+  save = moveLegacyClanFixture(save, { type: "move-room", roomId: "hangar" }, { type: "return-to-personal" }, { type: "undock" });
+  return withLegacyO6Ending(withResidenceO6(save), true);
 }

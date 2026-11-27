@@ -701,3 +701,11 @@ Le relevé courant couvre les quêtes de campagne modifiées, les entrées de Th
 Le [relevé du Pit](../../the-pit/RUNTIME_INVENTAIRE_20261127.json) conserve les références du guide, des illustrations et de la vérification de reprise. Les illustrations de revue sont distinctes des sprites de combat à produire.
 
 La [recette d’intégration](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46028491632) régénère l’inventaire sur le commit exact. Les inventaires historiques gardent leurs propres preuves.
+
+## Reprise campagne du 27 novembre 2026
+
+La recette commune qualifie la composition `97f1fc15f7224bfbb929444a6e637f1e15035e86`. Le conflit de la fin de nurserie conserve le marqueur de cérémonie des nouveaux slots dans le même enregistrement que l’admission O6. Le test croisé valide les deux voies et le contrôle d’import exige le retour de l’arme avant un dojo commencé. [CI](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46044868043)
+
+Les recettes des fiches et leurs admissions sont liées dans la Bible. Le classement M003 s’appuie sur des segments complémentaires. Pour les épilogues, le dossier final d’origine est préparé avant les déplacements, les rencontres et les gestes réellement joués. [Recette des épilogues](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46045565609)
+
+Le circuit de prélèvement, rangement et conservation reste indépendant du nouveau tapotement de prise. La position et les prérequis du segment terminal de la chasse sont préparés dans cette recette. [Terrain et canopée](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46042982368)

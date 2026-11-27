@@ -3,6 +3,9 @@
 /* eslint-disable @next/next/no-img-element -- native transparent prologue cutouts */
 import { useId, useState, type KeyboardEvent } from "react";
 import HunterRigPreview from "./HunterRigPreview";
+import HomeworldModularHunter from "./HomeworldModularHunter";
+import HomeworldNativePropV64 from "./HomeworldNativePropV64";
+import { HOMEWORLD_PROP_ART_V64 } from "./systems/homeworldArtV64";
 import { HUNTER_RIG_CANVAS } from "./hunterRig";
 import type { SaveGame } from "./types";
 import {
@@ -33,6 +36,8 @@ const epilogueMarks = [
 ];
 const actionLabels = { depart: "Préparer le départ", welcome: "Accueillir ceux qui viennent", transmit: "Transmettre le relevé" } as const;
 const clanActionLabels = { depart: "Rejoindre ton amarrage", welcome: "Saluer l’équipage consigné", transmit: "Classer le relevé du trajet" } as const;
+const haltActionLabels = { depart: "Rejoindre le départ du refuge", welcome: "Saluer l’hôte", transmit: "Relire le relevé avec l’hôte" } as const;
+const haltHostAppearance = { skinId: "ochre-mottle", dreadTintId: "obsidian", headStyleId: "reference" } as const;
 const anchors = { depart: 2, welcome: 14, transmit: 21 } as const;
 const styleAt = (at: number) => ({ left: 8 + 84 * at / LEGACY_WALK_LIMIT_R2 + "%" });
 const youthSources = [
@@ -48,13 +53,21 @@ export default function LegacyFinaleSceneR2({ scene, site, siteLabel, identity, 
   const directionsId = useId();
   const isCohort = scene === "cohort";
   const clanShip = site.kind === "clan-ship";
-  const gestureLabels = clanShip ? clanActionLabels : actionLabels;
+  const halt = site.kind === "halt";
+  const gestureLabels = halt ? haltActionLabels : clanShip ? clanActionLabels : actionLabels;
   const complete = isCohort ? cohort.complete : epilogue.complete;
   const near = (target: number) => Math.abs(at - target) <= 1;
   const current = LEGACY_COHORT_R2[cohort.heard.length];
   const canShowCohort = isCohort || (site.kind === "residence" && state?.cohort?.site.id === site.id &&
     cohort.complete && cohort.path === "stay");
-  const marker = isCohort ? cohortMarks : epilogueMarks;
+  const marker = isCohort ? cohortMarks : epilogue.choice
+    ? [{ x: anchors[epilogue.choice], label: "Dernier geste" }] : epilogueMarks;
+  const hostAt = epilogue.choice === "welcome" || epilogue.choice === "transmit" ? anchors[epilogue.choice] : 11;
+  const cohortPosition = (x: number, index: number) => {
+    if (!isCohort || cohort.arrival === "inside") return x;
+    const advance = cohort.arrival === "greeted" ? Math.max(0, Math.min(at, 8) - 3) : 0;
+    return index * 1.5 + advance;
+  };
   const movement = (direction: number) => {
     if (disabled || complete) return;
     setFacing(direction < 0 ? -1 : 1);
@@ -68,7 +81,7 @@ export default function LegacyFinaleSceneR2({ scene, site, siteLabel, identity, 
   }
   const command = (action: LegacyCommandR2["order"]["kind"]) => {
     switch (action) {
-      case "unload": case "wall-foot": case "door-foot": case "test": case "unknown": case "close":
+      case "greet": case "lead": case "unload": case "wall-foot": case "door-foot": case "test": case "unknown": case "close":
         onCommand({ scene: "cohort", order: { kind: action, at } });
         break;
       case "belongings": case "relations": case "act":
@@ -81,19 +94,32 @@ export default function LegacyFinaleSceneR2({ scene, site, siteLabel, identity, 
   const size = 71;
   const footY = HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.width * size;
 
-  return <section className={styles.scene} data-legacy-finale={scene} data-legacy-at={at} data-legacy-complete={complete} data-legacy-site={site.kind}>
+  return <section className={styles.scene} data-legacy-finale={scene} data-legacy-at={at} data-legacy-complete={complete} data-legacy-site={site.kind}
+    data-legacy-cohort-arrival={isCohort ? cohort.arrival : undefined}>
     <header className={styles.header}>
       <div><p>{siteLabel}</p><h2>{isCohort ? "La nouvelle cohorte revient" : "La longue chasse demeure"}</h2></div>
       <button type="button" onClick={onClose}>Revenir au lieu</button>
     </header>
     {isCohort
-      ? <p>Nous avons préparé notre récit, mais le support penche. Peux-tu regarder l’appui avant notre présentation ?</p>
+      ? <p>{cohort.arrival === "waiting" ? "Quatre jeunes attendent devant le seuil." :
+        cohort.arrival === "greeted" ? "Emmène la cohorte jusqu’à la place libre près du support." :
+          "La cohorte a préparé son récit. Le support penche sous la pièce qu’elle a rapportée."}</p>
       : <p>Fin de voie · {endingTitle}</p>}
     {!complete && <p id={directionsId}>Avance avec les flèches sur le trajet, puis utilise les postes à portée.</p>}
     <div className={styles.room} data-site={site.kind} role="group" aria-label="Déplacement dans le lieu" aria-describedby={complete ? undefined : directionsId}
       tabIndex={complete ? -1 : 0} onKeyDown={keyboard}>
       <span className={styles.light} aria-hidden="true" />
       {marker.map(item => <span className={styles.mark} key={item.x} style={styleAt(item.x)} data-near={near(item.x)}>{item.label}</span>)}
+      {halt && <>
+        <span className={styles.haltTable} style={styleAt(6)} aria-hidden="true">
+          <HomeworldNativePropV64 id="legacy-halt-table-r2" artId="table" art={HOMEWORLD_PROP_ART_V64.table}
+            x={0} y={0} depth={1} heightWorld={47} />
+        </span>
+        <span className={styles.haltHost} style={styleAt(hostAt)} aria-hidden="true">
+          <HomeworldModularHunter morphId="classic" dreadStyleId="classic" appearance={haltHostAppearance}
+            style={{ position: "absolute", top: "-4.47rem", left: "-1.6rem", width: "3.2rem", height: "4.8rem" }} />
+        </span>
+      </>}
       {isCohort && <div className={styles.support} style={styleAt(11)} aria-hidden="true" data-loaded={cohort.loaded}
         data-wall={cohort.wallFoot} data-door={cohort.doorFoot} data-steady={cohort.steady}>
         <span className={styles.load} />
@@ -101,7 +127,7 @@ export default function LegacyFinaleSceneR2({ scene, site, siteLabel, identity, 
         <span className={styles.feet} />
       </div>}
       {canShowCohort && LEGACY_COHORT_R2.map((p, i) => <img key={p.id} aria-hidden="true" alt="" width={57} height={72}
-        className={styles.youth} data-speaker={p.id} data-heard={cohort.heard.includes(p.id)} style={styleAt(p.x)}
+        className={styles.youth} data-speaker={p.id} data-heard={cohort.heard.includes(p.id)} style={styleAt(cohortPosition(p.x, i))}
         src={youthSources[i]} draggable={false} />)}
       <div className={styles.actor} aria-hidden="true" style={styleAt(at)}>
         <HunterRigPreview appearance={identity.appearance} size={size} armorId={identity.loadout.armorId}
@@ -114,7 +140,9 @@ export default function LegacyFinaleSceneR2({ scene, site, siteLabel, identity, 
       <button type="button" disabled={disabled || at === LEGACY_WALK_LIMIT_R2} data-legacy-move="right" onClick={() => movement(1)}>Marcher à droite</button>
     </div>}
     {isCohort && !complete && <div className={styles.actions}>
-      {!cohort.steady && <>
+      {cohort.arrival === "waiting" && control("greet", "Recevoir la cohorte au seuil", 2)}
+      {cohort.arrival === "greeted" && control("lead", "Montrer la place près du support", 8)}
+      {cohort.arrival === "inside" && !cohort.steady && <>
         {cohort.loaded ? control("unload", "Retirer la charge", 11) : <>
           {!cohort.wallFoot && control("wall-foot", "Régler le pied du mur", 9)}
           {!cohort.doorFoot && control("door-foot", "Régler le pied de la porte", 13)}
@@ -134,18 +162,18 @@ export default function LegacyFinaleSceneR2({ scene, site, siteLabel, identity, 
       {cohort.path === "help" && control("close", "Repasse le seuil", 2)}
     </div>}
     {!isCohort && <div className={styles.actions}>
-      {!epilogue.belongings && control("belongings", "Regarder les objets gardés", 6)}
-      {epilogue.belongings && !epilogue.relations && control("relations", "Relire les liens de la voie", 11)}
+      {!epilogue.belongings && control("belongings", halt ? "Relire le carnet de terrain" : "Regarder les objets gardés", 6)}
+      {epilogue.belongings && !epilogue.relations && control("relations", halt ? "Retrouver l’hôte de la halte" : "Relire les liens de la voie", 11)}
       {epilogue.relations && !epilogue.choice && legacyEpilogueChoicesR2(state, site).map(choice => <button type="button" key={choice}
         disabled={disabled || !near(16)} data-legacy-action={choice}
         onClick={() => onCommand({ scene: "epilogue", order: { kind: "choose", at, choice } })}>{gestureLabels[choice]}</button>)}
       {epilogue.choice && !complete && control("act", gestureLabels[epilogue.choice], anchors[epilogue.choice])}
     </div>}
     {!isCohort && epilogue.belongings && <p data-legacy-belongings>
-      {clanShip ? "Relevés de la galerie" : "Objets exposés ici"} · {belongings.length ? belongings.join(", ") : "emplacement libre"}
+      {halt ? "Carnet de terrain" : clanShip ? "Relevés de la galerie" : "Objets exposés ici"} · {belongings.length ? belongings.join(", ") : "emplacement libre"}
     </p>}
     {!isCohort && epilogue.relations && <p data-legacy-relations>
-      {clanShip ? "Équipage consigné" : "Liens consignés"} · {relations.length ? relations.join(", ") : "aucun au registre de ce lieu"}
+      {halt ? "Rencontre consignée" : clanShip ? "Équipage consigné" : "Liens consignés"} · {relations.length ? relations.join(", ") : "aucun au registre de ce lieu"}
     </p>}
     <p role="status" aria-live="polite" className={styles.notice}>{notice || (complete ? "Le compte rendu est enregistré." : " ")}</p>
   </section>;

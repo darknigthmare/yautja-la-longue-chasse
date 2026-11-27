@@ -7,7 +7,8 @@ import { createServer } from "vite";
 import { p as archive } from "../tests/helpers/solo-v67-campaign-route.mjs";
 import { templeCampaignRoute, thresholdsTemple as temple } from "../tests/helpers/solo-v70-played-route.mjs";
 
-const initial = templeCampaignRoute({ stop: "separation" }).save;
+const initial = templeCampaignRoute({ stop: "configuration" }).save;
+const { x: deskX } = temple.SOLO_V70_RECONNECTION;
 const { leverX, upperY, regroupX, holdTicks } = temple.SOLO_V70_NEF_RELAY_M017;
 const key = "yautja-long-hunt.save";
 const fixture = new Map([[key, JSON.stringify(initial)]]);
@@ -26,7 +27,7 @@ try {
 const output = resolve("outputs/qa-v70-nef-m017");
 const report = {
   commit: execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim(),
-  fixture: "Prior chapters and the initial Nef configuration are played by the repository's existing motor.",
+  fixture: "Chapters preceding the Nef are played by the repository's campaign engine.",
   checks: [], errors: [], passed: false,
 };
 await mkdir(output, { recursive: true });
@@ -83,7 +84,32 @@ try {
   await page.goto("http://127.0.0.1:4279");
   await page.clock.install();
   await boot();
-  assert.equal((await read()).phase, "separation");
+  assert.equal((await read()).phase, "configuration");
+  await walk(1040);
+  await wait(680);
+  await hold("interact", 110);
+  assert.equal((await read()).room, temple.SOLO_V70_RECONNECTION.room);
+  await walk(deskX);
+
+  const templeScreen = page.locator("[data-solo-v70]");
+  await page.keyboard.down(controls.interact);
+  await wait(760);
+  assert.equal(await templeScreen.getAttribute("data-temple-nef"), "warning");
+  assert.equal(temple.soloV70Platforms(await read()).length, 0);
+  await canvas.screenshot({ path: resolve(output, "nef-glyphe.png"), animations: "disabled" });
+  for (let step = 0; step < 16 && (await read()).phase === "configuration"; step++) await wait(100);
+  await page.keyboard.up(controls.interact);
+  await wait(340);
+  const deployedPartly = await read();
+  assert.equal(deployedPartly.phase, "separation");
+  assert.equal(await templeScreen.getAttribute("data-temple-nef"), "moving");
+  assert(temple.soloV70Platforms(deployedPartly).some((bridge, index) => bridge.width < temple.SOLO_V70_RECONNECTION.platforms[index].width));
+  assert.equal((await saved()).receipts.at(-1).id, "second-configuration");
+  await canvas.screenshot({ path: resolve(output, "nef-passerelles-en-mouvement.png"), animations: "disabled" });
+  await wait(1300);
+  assert.equal(await templeScreen.getAttribute("data-temple-nef"), "deployed");
+  assert.deepEqual(temple.soloV70Platforms(await read()), temple.SOLO_V70_RECONNECTION.platforms);
+  report.checks.push("Le glyphe annonce les passerelles. Leurs appuis s'étendent puis se verrouillent avant le relais haut.");
   await hold("command", 90);
   await walk(leverX);
   await hold("interact", holdTicks * 17 + 100);

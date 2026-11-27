@@ -119,10 +119,12 @@ test("malformed or future explicit youth records are protected rather than conve
 Object.defineProperty(globalThis, "navigator", { configurable: true, value: { locks: { async request(_name, _options, callback) { return callback({}); } } } });
 test("new slots enter prologue, checkpoint resume retains it, and real completion resolves to Homeworld", async () => {
   const s = store(); s.data.clear();
-  let result = await p.createCampaignSlot(1, "Youngling QA", s); assert(result.ok, result.message); assert.equal(result.checkpoint.resumeLocation, "prologue");
+  let result = await p.createCampaignSlot(1, "Youngling QA", s, "O6"); assert(result.ok, result.message); assert.equal(result.checkpoint.resumeLocation, "prologue");
   result = await p.activateCampaignCheckpoint(1, result.checkpoint.id, { expectedRevision: result.catalog.slots[0].revision }, s); assert(result.ok, result.message);
   const active = p.loadSaveWithStatus(s).save;
   assert.equal(active.prologue.status, "active");
+  assert.equal(active.prologue.ceremonyM006, true);
+  assert.equal(active.originV151.originId, "O6");
   assert(p.writeSaveWithStatus(p.withNurseryCheckpoint(active, ending.before), s).persisted);
   result = await p.continueCampaignSlot(1, { expectedRevision: result.catalog.slots[0].revision, location: "deck" }, s);
   assert(result.ok, result.message); assert.equal(result.checkpoint.resumeLocation, "prologue", "a route hint cannot bypass the nursery");

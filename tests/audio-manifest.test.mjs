@@ -17,7 +17,8 @@ test("inventory covers every declared effect, biome and music context without re
     "pod-arm", "pod-cancel", "pod-detonate", "mask-on", "mask-off", "weapon-switch", "medicomp", "armor-repair",
     "netgun", "snare", "enemy-alert", "objective", "hit", "trophy", "field-work", "field-secure",
     "canopy-grab", "canopy-release", "victory", "defeat",
-  ].sort(), "the declared optional slots retain every native effect, including pod and field/canopy events");
+    "vacuum-step", "vacuum-impact", "vacuum-energy",
+  ].sort(), "the declared optional slots retain every native effect, including pod, field, canopy and vacuum events");
   assert.equal(expected.filter(slot => slot.category === "ambience").length, 9);
   assert.equal(expected.filter(slot => slot.category === "music").length, 8);
   await fixture(async root => {

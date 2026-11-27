@@ -5,13 +5,13 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2587,
-  "bytes": 1168691801,
+  "files": 2632,
+  "bytes": 1177153816,
   "entries": [
     {
       "path": ".github/workflows/p0-p1-coherence-20261109.yml",
-      "bytes": 2694,
-      "sha256": "ac5156daa86e8adcd389cb188ee793a9a36ab061bf0344f1b39ed3341f97d360"
+      "bytes": 2727,
+      "sha256": "7315659cfde0009f93e677e8ba69cd91c4aa07e5dcbdb1763ad42365aed4a350"
     },
     {
       "path": ".openai/hosting.json",
@@ -20,8 +20,8 @@
     },
     {
       "path": ".vercelignore",
-      "bytes": 1248,
-      "sha256": "fe27ada765cf5f32796396e7541ac3dc01f768b503314d79a36be1e694c35dd9"
+      "bytes": 1259,
+      "sha256": "060dba5a2edebc9f110346dc0a9df580cb40e2d9218a0324f0523febeeeaa214"
     },
     {
       "path": "app/chatgpt-auth.ts",
@@ -110,8 +110,8 @@
     },
     {
       "path": "app/game/BibleSceneCulturalV86.tsx",
-      "bytes": 7050,
-      "sha256": "df463fe45487a3d6a118027bf1668a0ba828a40f522ebaca68d1a3472bdbaa7c"
+      "bytes": 7318,
+      "sha256": "5da44a8c6a2556cf1a0bd614eddac1017658e2510c2c3818d76a3b287f8e636d"
     },
     {
       "path": "app/game/BlackGodPanelV162.tsx",
@@ -810,8 +810,8 @@
     },
     {
       "path": "app/game/FirstHuntSoloV70.tsx",
-      "bytes": 20126,
-      "sha256": "8b05289411206952e2f92d505a6c2f02b3f65864c966792f2ade67cd0e0a2d32"
+      "bytes": 20497,
+      "sha256": "86795895f3e9706c81956f5170cc026d9c62948b0df944749e64c620f007eb19"
     },
     {
       "path": "app/game/FirstHuntSoloV90.module.css",
@@ -855,8 +855,8 @@
     },
     {
       "path": "app/game/GameClient.tsx",
-      "bytes": 464989,
-      "sha256": "11d457b41c7f52864a84852739aa22874e4d9ed8a461fb5533dab39f1f1c3e71"
+      "bytes": 467871,
+      "sha256": "9504db0c4997d748b41030fa24688b622d11e34e430772a038404cc14bd19e9b"
     },
     {
       "path": "app/game/GameReserveEntryV104.module.css",
@@ -1110,18 +1110,18 @@
     },
     {
       "path": "app/game/HomeworldChildhoodV175.module.css",
-      "bytes": 4432,
-      "sha256": "1fd2217128fcc10cb8f9a9ac04cecb92d66797cb7c4c36d760420b3de6c8f595"
+      "bytes": 5766,
+      "sha256": "b90c144aae2c8381654419a528ae3059da213d093b9dc7bcc3dc3b59acbbf4e4"
     },
     {
       "path": "app/game/HomeworldChildhoodV175.tsx",
-      "bytes": 8345,
-      "sha256": "13c662b97a5fa83be0e4aec7c0884e98e91b3495046cc66d4951dac5be73e93b"
+      "bytes": 10618,
+      "sha256": "3fca69bc53638ede873c68b64d70c626eb0f9b84422e853e79ddda58a3412d15"
     },
     {
       "path": "app/game/HomeworldCity.module.css",
-      "bytes": 24280,
-      "sha256": "180eff12299fc89650e0f95faf75adf00ba0f0e855288105176f3056d01c0554"
+      "bytes": 24676,
+      "sha256": "6e75de5e47c9c508fb7c467ad43389958732a756f7aa7cf784e89b0e12d0ca81"
     },
     {
       "path": "app/game/HomeworldCityScene.tsx",
@@ -1230,8 +1230,8 @@
     },
     {
       "path": "app/game/HomeworldHub.tsx",
-      "bytes": 215283,
-      "sha256": "7acaa90051453fd0f3506d85a3c6334eb161bbe95cfc1bcfe05161a5d001af9e"
+      "bytes": 221582,
+      "sha256": "bd9ee666ef668767cfadef919cd476db727bb4e9aa93b2cd1ddd0ed8e624c949"
     },
     {
       "path": "app/game/HomeworldInteriorDecorV76.tsx",
@@ -1345,8 +1345,8 @@
     },
     {
       "path": "app/game/HomeworldRegionV68.tsx",
-      "bytes": 53901,
-      "sha256": "4913982ff1ddc19b96062227499829c2677d4c1111f0b36aade617a8e83bcbb6"
+      "bytes": 54326,
+      "sha256": "b5d6e0add4f51fdcdcb81c50cc1c2e014431d161a1d1dd29d0dd16b43f62b464"
     },
     {
       "path": "app/game/HomeworldRegionalLoopM014.module.css",
@@ -1452,6 +1452,16 @@
       "path": "app/game/HomeworldStreetConversationV100.tsx",
       "bytes": 1936,
       "sha256": "9217c8c7ca2e11429b44ac2e385c537c6f25d84f6db45346c48014bca6f9c02e"
+    },
+    {
+      "path": "app/game/HomeworldTriadM016.module.css",
+      "bytes": 1424,
+      "sha256": "29e9ce7d331e24d76766fb26b00d4043a895ec2a310dd001cda84333c5f115f3"
+    },
+    {
+      "path": "app/game/HomeworldTriadM016.tsx",
+      "bytes": 3153,
+      "sha256": "d83f3e1c0f1d40ee02daa738b1f4085778af3712da94fcb1784d4c9bc688aebb"
     },
     {
       "path": "app/game/HomeworldUpgradeRecoveryV112.module.css",
@@ -1570,8 +1580,8 @@
     },
     {
       "path": "app/game/HuntCanopyHudV112.tsx",
-      "bytes": 4384,
-      "sha256": "23d2b6ccf3f1d619aa3dd6831800bedaf981eb94b9910c2c14d4ccd9f715db18"
+      "bytes": 4637,
+      "sha256": "1de586db5e25bd583f3ffb953441ca9dc668246f89dccf09db6fd64ad5d43c38"
     },
     {
       "path": "app/game/HuntCanvas.module.css",
@@ -1580,8 +1590,8 @@
     },
     {
       "path": "app/game/HuntCanvas.tsx",
-      "bytes": 506098,
-      "sha256": "61383595081921b6320c2580d831a51f578b0177fd09d93951b04387a02c7868"
+      "bytes": 507628,
+      "sha256": "82125aac82b798886ad66c3d2b656de78b39cc1811131f4bd0773bb6bb1be61e"
     },
     {
       "path": "app/game/HuntFieldGuideV112.tsx",
@@ -1700,13 +1710,13 @@
     },
     {
       "path": "app/game/LegacyFinaleR2.module.css",
-      "bytes": 2649,
-      "sha256": "04ccb850d141ae7abc72a4ae659696ddd5810c18e24e97c61ce485e27eaac5a7"
+      "bytes": 3118,
+      "sha256": "5fb4dd460a5521d4eb8e3e5052f151b022a4bd62ae620587b03a307249f9365c"
     },
     {
       "path": "app/game/LegacyFinaleSceneR2.tsx",
-      "bytes": 9542,
-      "sha256": "2ac805a26e99379c76a6efa78c066eef61c9fae46753a2fa60bea344a19defd5"
+      "bytes": 11779,
+      "sha256": "0a0d1f2bd20d94b48ce0f39f3e6f421ee8e1f60d3b47a276df4084b3be255b3f"
     },
     {
       "path": "app/game/LongMemoryR2M055Panel.module.css",
@@ -1792,6 +1802,16 @@
       "path": "app/game/OriginEndingPanelV170.tsx",
       "bytes": 5133,
       "sha256": "eb73e7db44dbd3db7295e7b4a87a8424bbfc58a3917e5ada4c809a4bbda2139d"
+    },
+    {
+      "path": "app/game/OriginFirstShockO6.module.css",
+      "bytes": 1017,
+      "sha256": "d632c49998ed597331e2be1af2326f6f3605f767c934cbe9824c06e4c58af588"
+    },
+    {
+      "path": "app/game/OriginFirstShockO6.tsx",
+      "bytes": 8654,
+      "sha256": "a850216671cc074a2b4c2c0674a23d1d685e4e24a47130c31efa5ac9ff1869d9"
     },
     {
       "path": "app/game/OriginTrainingYardO6.module.css",
@@ -3430,8 +3450,8 @@
     },
     {
       "path": "app/game/firstHuntSoloV70Rendering.ts",
-      "bytes": 10409,
-      "sha256": "0e4838876856948d7a38f577043762db52b6880d99b2ecbc594288a973d4aa12"
+      "bytes": 10532,
+      "sha256": "9d9d9348804cefc60364ca265970efaa62ebc40fb999e7e24bb7e87ee54fa6f3"
     },
     {
       "path": "app/game/firstHuntSoloV90Rendering.ts",
@@ -3655,8 +3675,8 @@
     },
     {
       "path": "app/game/nurseryRendering.ts",
-      "bytes": 32349,
-      "sha256": "b81eb0e3d5c02fea9328e4532970dc1dabcf1309c9f67d029383c1f80e029ec9"
+      "bytes": 34398,
+      "sha256": "f11934905f5af6ecce507920a9769c6ade4f15f9c83fb21db634ad99b7dcfba8"
     },
     {
       "path": "app/game/phgBiomaskStudiesV132.ts",
@@ -4045,8 +4065,8 @@
     },
     {
       "path": "app/game/save.ts",
-      "bytes": 139734,
-      "sha256": "9eabbdfd31cfd42b292f6391c713dd59f8d18ef541da7640378fa9990d9d5464"
+      "bytes": 140635,
+      "sha256": "4fbf2de075bcf6f9564e38a5d878de7d53290aa56c4371bfe0796bdc1935d24f"
     },
     {
       "path": "app/game/ship-level.css",
@@ -4195,8 +4215,8 @@
     },
     {
       "path": "app/game/systems/campaignSlots.ts",
-      "bytes": 66078,
-      "sha256": "36083c1cb94d0e2f81c825a455ed26f9b13c46197f81562eed9772c74a6db071"
+      "bytes": 66082,
+      "sha256": "0bc0a6f37aacd7f910eaacb4eadfb7ecf73d94d10f816684f68945aa6b522dca"
     },
     {
       "path": "app/game/systems/campaignSoloV66.ts",
@@ -4220,8 +4240,8 @@
     },
     {
       "path": "app/game/systems/campaignSoloV70.ts",
-      "bytes": 12398,
-      "sha256": "aa9b00c9adb5707918384ba8a4e72ca7e3be6d571fe997538240ee35f68445bb"
+      "bytes": 12474,
+      "sha256": "3331819d18030d2437fdc0bb019adb0881564b8d7b349651630986e8689dcc46"
     },
     {
       "path": "app/game/systems/campaignSoloV90.ts",
@@ -4245,8 +4265,8 @@
     },
     {
       "path": "app/game/systems/canopyNavigationV112.ts",
-      "bytes": 9748,
-      "sha256": "62de82d587c450a31bb64ff97eb0f51991ffa90602c9d39a5d7a0c42bd0a0d90"
+      "bytes": 10119,
+      "sha256": "e1095698b66795c1cb529e420b80fba9bd40b2d1f2fbd502785796d1cd0bb5e5"
     },
     {
       "path": "app/game/systems/canopySupportRendererV112.ts",
@@ -5095,8 +5115,8 @@
     },
     {
       "path": "app/game/systems/firstHuntSoloV70.ts",
-      "bytes": 30175,
-      "sha256": "54c99b65d9aa06116e35f3b27069ab68aa1eadb37def9ba8ec326dddaa5b1ff6"
+      "bytes": 31933,
+      "sha256": "61298b355d98f8441998725578a16783e2e5f48581515a7bc938e35c3691eb66"
     },
     {
       "path": "app/game/systems/firstHuntSoloV90.ts",
@@ -5200,8 +5220,8 @@
     },
     {
       "path": "app/game/systems/homeworld.ts",
-      "bytes": 33710,
-      "sha256": "25f82c6171947a80e38e063764fb34bffac3d63d787f7edc640a3fbb7a6ed66c"
+      "bytes": 33951,
+      "sha256": "8d190b3b5ae42184c628ce816b428d4fa45baa568d5d3fd7030a3aec77205b34"
     },
     {
       "path": "app/game/systems/homeworldAccessV69.ts",
@@ -5455,8 +5475,8 @@
     },
     {
       "path": "app/game/systems/homeworldChildhoodV175.ts",
-      "bytes": 16949,
-      "sha256": "b2c30ef8bf1a83e87184790d30f52f5e3e68445525ca361c0969c7554e43c5fd"
+      "bytes": 19744,
+      "sha256": "d6208ff7996f7166ccf3d81068b0829518f1cf3bd2461916a99e14d4cf28bdec"
     },
     {
       "path": "app/game/systems/homeworldCity.ts",
@@ -6074,6 +6094,11 @@
       "sha256": "f4529545e004f66794b2df9c641bc5867a276a6f23c3a19a5a33a1d67866a599"
     },
     {
+      "path": "app/game/systems/homeworldTriadM016.ts",
+      "bytes": 5843,
+      "sha256": "b013a6245aae249b549f71ae4deaf3cf72787c79b2e86eee86c3e902f5bc2e75"
+    },
+    {
       "path": "app/game/systems/homeworldUrbanCodexV78.ts",
       "bytes": 6615,
       "sha256": "7cc5d97a95159623d3fa18dc33f28dc091ba7f22a7bee20807964b416c602d8b"
@@ -6310,8 +6335,8 @@
     },
     {
       "path": "app/game/systems/legacyFinaleR2.ts",
-      "bytes": 23175,
-      "sha256": "541a9a9349c2be0cfa845aea77aa5609a1daa3835ea380a4db1150c03189ba4f"
+      "bytes": 27980,
+      "sha256": "ee035ad5862e04a21ca98c79b0099bd809fffcea858d848a9bf5587135b3bb7d"
     },
     {
       "path": "app/game/systems/logisticsSpatialPlayback.ts",
@@ -6435,8 +6460,8 @@
     },
     {
       "path": "app/game/systems/nurseryCampaign.ts",
-      "bytes": 5527,
-      "sha256": "b95ead42d0dfa013160888c152a86edb6d3ddb02bfa30749b77f22a3e94a975c"
+      "bytes": 5839,
+      "sha256": "c013bd779c1d517a2ff3f0d2f773f21619eaa4cc3c1ec58af47849781126f020"
     },
     {
       "path": "app/game/systems/nurseryCohortV172.ts",
@@ -6479,6 +6504,11 @@
       "sha256": "9c36361c22459d72dcafeaec60ed6d37fbdbc68ae293d43bfaad7bf1cd25dbb8"
     },
     {
+      "path": "app/game/systems/originFirstShockO6.ts",
+      "bytes": 8769,
+      "sha256": "06bfdb3d4869b1cc4ea31d28d13b7c6909464dda13738c7439d5a2ba34941783"
+    },
+    {
       "path": "app/game/systems/originPracticeO6.ts",
       "bytes": 3050,
       "sha256": "3eead86bf7db02e6804d5eb5a22c92b7c4ea4f3be7e6a01362e84c7ef2cc2a7e"
@@ -6500,8 +6530,8 @@
     },
     {
       "path": "app/game/systems/originsV151.ts",
-      "bytes": 18819,
-      "sha256": "fb7ba844597ce1cea6e892235ae2013e0b568aaed30dd0b91d71584904b96f52"
+      "bytes": 19298,
+      "sha256": "e172f9c262204eb75a6d173e990705bb9926001ab6c417a5746afa97fa0e3ec2"
     },
     {
       "path": "app/game/systems/oserisLevelDesign.ts",
@@ -7320,23 +7350,28 @@
     },
     {
       "path": "app/game/systems/youthCampaign.ts",
-      "bytes": 18395,
-      "sha256": "7e552a32ac46fc981efc2eb00fd0fd22a31b427df0b824b4a0700d831150d737"
+      "bytes": 18581,
+      "sha256": "cfa2b20636873881b451504a41b2072e589fae26a5e13a2452243156f022f7a1"
     },
     {
       "path": "app/game/systems/youthCityErrandV172.ts",
-      "bytes": 9877,
-      "sha256": "567982c85928f34da44b26e5441bac75da94b0dc36b73661e08458e5c2c99400"
+      "bytes": 12646,
+      "sha256": "3e4b8fc595ed00dcbfdd851f91d0284b1e2959d0ea92e0449eee1e0ca2125891"
     },
     {
       "path": "app/game/systems/youthCityGuideM003.ts",
-      "bytes": 4814,
-      "sha256": "1452fe625331ed70b4b9489026f1f1ab152a615014552e5c6cf8d7cd6244edd8"
+      "bytes": 5018,
+      "sha256": "268df6415e4467965832145fb743a2ea493fd8325ba90ac56c3ddedc9f5855dc"
     },
     {
       "path": "app/game/systems/youthCityPlacesM003.ts",
-      "bytes": 4300,
-      "sha256": "434f2542c14915aea4c8ef42fffca9042e4b0b31844072590376a84569da6469"
+      "bytes": 4896,
+      "sha256": "82f1935afaa1902753c8c4fee52c634943744808faabb6e17d5f2c0f31447a31"
+    },
+    {
+      "path": "app/game/systems/youthCityStreetM003.ts",
+      "bytes": 4325,
+      "sha256": "7545468a53b57b989d98f6104a4ba32608d6f75cf43bdeb8bb7e0063be6bf3a1"
     },
     {
       "path": "app/game/systems/youthControls.ts",
@@ -9579,6 +9614,11 @@
       "sha256": "25ff327482e87e9fc5fa73edb223a74612290521a5d25842e4de89ea97a627d4"
     },
     {
+      "path": "public/game/imports/v85/library/60175f86b4e44625b8c24c592456756abcb6822a898308f719604f16735c6a96.png",
+      "bytes": 1826212,
+      "sha256": "60175f86b4e44625b8c24c592456756abcb6822a898308f719604f16735c6a96"
+    },
+    {
       "path": "public/game/p0-sprites-20261113/warp/warp-199-empty-bay.png",
       "bytes": 2544734,
       "sha256": "c0ebe3051c4badaee28f8db1673da0c2ce901d431d06d10e51866f2d02b03087"
@@ -10402,6 +10442,26 @@
       "path": "public/game/prologue/v47/village.png",
       "bytes": 2846184,
       "sha256": "6a5dfbd5de1f93271a0fb4b6670ab177934cd0ad606d19aa099f79bb6b9c5c60"
+    },
+    {
+      "path": "public/game/prologue/v47/youngling-player-left.png",
+      "bytes": 1190430,
+      "sha256": "6a8c93ecf5f602361ca410600c9b0a4bc068c676e6a8639d1ba7060b01350bef"
+    },
+    {
+      "path": "public/game/prologue/v47/youngling-player-right.png",
+      "bytes": 1052786,
+      "sha256": "1544d86ca88e82c035ac501fb564ca13015dce6d6ea6c14c7a6b050a725da104"
+    },
+    {
+      "path": "public/game/prologue/v47/youngling-rival-left.png",
+      "bytes": 1255628,
+      "sha256": "ebc832b7edb6a13ffb0a1ad6500ca7b71cf9b90db55db40fd0681f74c5d72a3e"
+    },
+    {
+      "path": "public/game/prologue/v47/youngling-rival-right.png",
+      "bytes": 1391510,
+      "sha256": "d8b5b55b042780d9680a09c0b57330cc23ad3cb3d3e8b19099f477a1fa906860"
     },
     {
       "path": "public/game/props/v4/expedition-platform.png",
@@ -11604,6 +11664,11 @@
       "sha256": "fd76dc521da920bdd9843242ae00ca1d062c4b85119c7eba967980a0d1ba6907"
     },
     {
+      "path": "public/game/sprites/v5/film-plates/jungle-hunter.png",
+      "bytes": 1408845,
+      "sha256": "af639ab27d298a99f993f6f328a8f0544cdc831bb0b2e55d9ada9624a6b0c44f"
+    },
+    {
       "path": "public/game/sprites/v52/pit/scar/scar-masked-defeat-v52.png",
       "bytes": 2468142,
       "sha256": "8d946288c60186538416f6773c963db7e6bdc32cdc3ec2cb18b92b1af5f6146a"
@@ -11875,8 +11940,8 @@
     },
     {
       "path": "scripts/include-p0p1-ci-inputs-20261109.mjs",
-      "bytes": 2323,
-      "sha256": "d94f7103af7cd4e2492ddaed1d3076c4c205dd501f49b08774c94ff5952ef8a4"
+      "bytes": 3288,
+      "sha256": "22d5fbb6c131aebb713d0f2adb5487fe18a2408bf22145e67428eea4c5f536a7"
     },
     {
       "path": "scripts/lib/excel-followup-evidence.mjs",
@@ -12049,6 +12114,16 @@
       "sha256": "880524c808ee32aa5544e4d3f8d119fd93ada92bc7e349fae49882f7be3c7cc9"
     },
     {
+      "path": "scripts/qa-homeworld-childhood-v175.mjs",
+      "bytes": 9835,
+      "sha256": "52171d8b5fb6e391359479a5b09e26251827757986c70df88c92df4c56d276a1"
+    },
+    {
+      "path": "scripts/qa-homeworld-city-street-m003.mjs",
+      "bytes": 8466,
+      "sha256": "1f2b45176083c495870cdc77b0e7af1049cf83840f2f2768ccc1319a7d7ffed3"
+    },
+    {
       "path": "scripts/qa-homeworld-coherence-v110.mjs",
       "bytes": 36381,
       "sha256": "1e9303b9c7fb06d8c06ec45a5a1c0178b3e85aedaf8e4aff287f9b53206c545f"
@@ -12119,6 +12194,11 @@
       "sha256": "e47bba0f9fe23672f4ff5df1befb6bc69389ab84ca30c6589b34019375a1e68e"
     },
     {
+      "path": "scripts/qa-origin-first-shock-o6.mjs",
+      "bytes": 7324,
+      "sha256": "fd40ed6569882ed68f20e3ba30212a5c035769fa64f5ff5876ea0630daa3a7e5"
+    },
+    {
       "path": "scripts/qa-outer-inspection-browser.mjs",
       "bytes": 5165,
       "sha256": "f85f3983dec52a06e11795a5c576a03841f823e2e92143ebe62e02858a7c8837"
@@ -12169,6 +12249,11 @@
       "sha256": "aa2f7ef7d973b8d06cd3210306b472d22f65c59adb00f00de413dcb16317f02a"
     },
     {
+      "path": "scripts/qa-skinning-canopy-durable-browser-20261109.mjs",
+      "bytes": 50084,
+      "sha256": "5e85b9ddb2a7b83f5dc107770261afd940e2b968bfd00233d133ebe7cd44e48b"
+    },
+    {
       "path": "scripts/qa-stealth-last-contact-browser.mjs",
       "bytes": 6249,
       "sha256": "00970875d5ef78c5d346fb58d1702dedbd4c09470bbc0b5f95cabcb6a5620ec3"
@@ -12189,6 +12274,11 @@
       "sha256": "7f5a9a6713221fe8aa0e2fcf44eb059cc59db6bea9e5801a6aa775a786e3576f"
     },
     {
+      "path": "scripts/qa-v70-nef-m017.mjs",
+      "bytes": 8392,
+      "sha256": "89315383afaf84d8ed361607ed30f95039a525458bcd62af8d9ec3fa034d3fb0"
+    },
+    {
       "path": "scripts/qa-warp-module-p0p1-20261109.mjs",
       "bytes": 8672,
       "sha256": "97a9e7877649bcf32378ac42fd77160d9c17234eb9074ce97b006616285819a0"
@@ -12205,8 +12295,8 @@
     },
     {
       "path": "scripts/runtime-v113-inputs.json",
-      "bytes": 11626,
-      "sha256": "799bf8951f2e41b5f387c4a3692c2282d16f27483fdfcddb0a1f42fd93a0ebc9"
+      "bytes": 12850,
+      "sha256": "20b9823ded62abe9ccf1c33ffee3d36b90008f913d31a778aceda3c9d825b3aa"
     },
     {
       "path": "scripts/snapshot-runtime-v107.mjs",
@@ -12269,9 +12359,19 @@
       "sha256": "60c7bfd0985cb7b2c4ff70fdb163265a6b70e74e946ae2d1c7c7b10314644eb0"
     },
     {
+      "path": "tests/browser/skinning-canopy-durable-20261109.fixture.jsx",
+      "bytes": 7655,
+      "sha256": "68c3d918601e74015a0b0a8bb407e3434c83111b422c3a6f84346834a5372102"
+    },
+    {
       "path": "tests/browser/trophy-tutorial-v6.fixture.tsx",
       "bytes": 2840,
       "sha256": "aaa23132177cae5b5f65918791957010e06e28ee41261e40b4a514ece0287c51"
+    },
+    {
+      "path": "tests/campaign-solo-v70.test.mjs",
+      "bytes": 14397,
+      "sha256": "decdddad996d1f7270ea2e1b6aaa591f46824767873ba32bfeb9054aa3a9fa6b"
     },
     {
       "path": "tests/canopy-traversal-v112.test.mjs",
@@ -12549,6 +12649,16 @@
       "sha256": "24df82a5d576eee1921f1d67842acf654828698f486c0e9529455adc8507360f"
     },
     {
+      "path": "tests/helpers/blooded-temple-fixture-v174.mjs",
+      "bytes": 1195,
+      "sha256": "9acd8dec11c25c78cf40bb840f4688e6ca75f75bc1160e6849bad6727c54c585"
+    },
+    {
+      "path": "tests/helpers/buried-cradle-return-route.mjs",
+      "bytes": 2569,
+      "sha256": "3a4fb2b7705bbdc07f6fd09f9c9bb768ac048a7bfd5cb26f9c10352d017dbcf0"
+    },
+    {
       "path": "tests/helpers/cargo-council-v110-route.mjs",
       "bytes": 2228,
       "sha256": "260b39c329604951797b4f429f5629388fde8be15c76301af050c14fe3a357b2"
@@ -12574,6 +12684,26 @@
       "sha256": "8cbbf45a4525d29c15e71aba9f3c7687f8d673dcd9074da544f19c3b8eb1b30a"
     },
     {
+      "path": "tests/helpers/elder-workshop-fixture-v172.mjs",
+      "bytes": 2473,
+      "sha256": "5bfbdbf9dfb626e780a73ef7281b600767a6c6ba4da526df5f926388e3864691"
+    },
+    {
+      "path": "tests/helpers/elite-recognition-played-v175.mjs",
+      "bytes": 6808,
+      "sha256": "7d4a28d72333ac3ec083b8fe92d393478a0e6737d9f427e4a36296681816d4f2"
+    },
+    {
+      "path": "tests/helpers/homeworld-childhood-v175.mjs",
+      "bytes": 4244,
+      "sha256": "c1763749b5e1693a5f0fe9fbec22279acee2f253e1858ed53ac34ba4a67289f1"
+    },
+    {
+      "path": "tests/helpers/homeworld-city-places-m003.mjs",
+      "bytes": 3393,
+      "sha256": "4dcb7f0b2c4cf34ab41b5e0845276c77e21d7a7e337e2f6a90380ddc6871b906"
+    },
+    {
       "path": "tests/helpers/homeworld-geometry-upgrade-v112-route.mjs",
       "bytes": 9140,
       "sha256": "3fa8ffbf14ad02aeebe8b6b15852ce80c822d701c798f84d1e8d132f68dcbc6b"
@@ -12584,6 +12714,26 @@
       "sha256": "3f584f4c7d49d5e39abc99488db144091b61d4c54ee6bde0b00c16e613ea935a"
     },
     {
+      "path": "tests/helpers/legacy-finale-r2.mjs",
+      "bytes": 9025,
+      "sha256": "bd018c29b8abdc2d75c5dbfa0bca577d043a85b734ac571a47d893911b4e7f22"
+    },
+    {
+      "path": "tests/helpers/long-memory-r2-m055.mjs",
+      "bytes": 3622,
+      "sha256": "92245a428a3476c9cdbc49a5b3a5927c63b6849ca2b7c28888d23dccbcc35936"
+    },
+    {
+      "path": "tests/helpers/origin-first-shock-o6.mjs",
+      "bytes": 4494,
+      "sha256": "3689f253aea82e12d9851e239341e1fb004c356ab785d53333ad73440e6086ac"
+    },
+    {
+      "path": "tests/helpers/origin-training-yard-o6.mjs",
+      "bytes": 2256,
+      "sha256": "b6924920fb4df8fba2a0f82c0d70543ffe4e0ff2868c5ed7370f70c37c265706"
+    },
+    {
       "path": "tests/helpers/preserve-historical-v6.mjs",
       "bytes": 980,
       "sha256": "dc24e01c6f1218518a5c15ab47f377b88b706b9517a7434b55022a10b94a92bb"
@@ -12592,6 +12742,21 @@
       "path": "tests/helpers/preserve-legacy-snapshot-v6.mjs",
       "bytes": 4559,
       "sha256": "24def611c47f38f270e07372f10fd4b6d04ea538e77fe69e4cb7e1446172761b"
+    },
+    {
+      "path": "tests/helpers/quatza-triage-route.mjs",
+      "bytes": 6455,
+      "sha256": "74870b1f5bddf59ed1317cd9a10c6ec3507f03b2b2b13e2d5bc185258597c848"
+    },
+    {
+      "path": "tests/helpers/senior-rite-campaign.mjs",
+      "bytes": 4558,
+      "sha256": "994f5ebc89a55d845f8c7488c1aa50fd29eb67b3200493f2c38b5cf035e54877"
+    },
+    {
+      "path": "tests/helpers/ship-receipt-v161.mjs",
+      "bytes": 1795,
+      "sha256": "fd9fa4de7a9a38da45196eeee19fc7b26ab3cd11a61623ee1cbcc540134f1245"
     },
     {
       "path": "tests/helpers/solo-v66-played-route.mjs",
@@ -12607,6 +12772,26 @@
       "path": "tests/helpers/solo-v67-played-route.mjs",
       "bytes": 3106,
       "sha256": "b6ce06284e573a7a24edb1fdea82a6789a54d18cf2b62b4fec72801987129b4b"
+    },
+    {
+      "path": "tests/helpers/solo-v68-played-route.mjs",
+      "bytes": 3167,
+      "sha256": "4f00bc5f93f162e40ce9ca59de4ecce294580301ca181c111b70ae83f74c9719"
+    },
+    {
+      "path": "tests/helpers/solo-v69-played-route.mjs",
+      "bytes": 3410,
+      "sha256": "205901d0e80bb7ba14805e4b4789a490f484afad74aa6ef046eb6750624e025d"
+    },
+    {
+      "path": "tests/helpers/solo-v70-played-route.mjs",
+      "bytes": 4543,
+      "sha256": "451e4087d652fde6ffc560d74bddb2f4b515ec0976ea323066dc57f3605ef71b"
+    },
+    {
+      "path": "tests/helpers/solo-v90-played-route.mjs",
+      "bytes": 3522,
+      "sha256": "8a3c5154a275df15eb06269a30e4f3e7ec20de97285cb84a5ee4ba693a2768f1"
     },
     {
       "path": "tests/helpers/youth-cage-played-route.mjs",
@@ -12632,6 +12817,16 @@
       "path": "tests/homeworld-art-inventory-v111.test.mjs",
       "bytes": 2638,
       "sha256": "34ea359f2de040706caf2453bae90206e5508e85f955a4c3bb4b332fab3266db"
+    },
+    {
+      "path": "tests/homeworld-childhood-v175.test.mjs",
+      "bytes": 11882,
+      "sha256": "80f3deadb66ea72a97fdcd6708ba8766b383d449b47a06e5d9dd7f672128078e"
+    },
+    {
+      "path": "tests/homeworld-city-street-m003.test.mjs",
+      "bytes": 5090,
+      "sha256": "d18a6a67f30c1b03b299f3bd4694b8d2bc078edfcc0fdcb6ad52e6b7e1ff008d"
     },
     {
       "path": "tests/homeworld-collision-cost-v113.test.mjs",
@@ -12764,6 +12959,11 @@
       "sha256": "826c4b5cf531c4812ccf3e7f4ed344af69b5f8b2fde3753afb37e64d27dc5e07"
     },
     {
+      "path": "tests/homeworld-triad-city-m016.test.mjs",
+      "bytes": 5558,
+      "sha256": "80806beb99dcb37278a8490911e10eec4796b6100dc572a0f930172a5b4d4dd9"
+    },
+    {
       "path": "tests/homeworld-world-checkpoint-v77.test.mjs",
       "bytes": 2053,
       "sha256": "5cfd30bc8402ea15b82cda082c7fb5bada148e522987cbc4fc9871d89eea9497"
@@ -12795,8 +12995,8 @@
     },
     {
       "path": "tests/hunt-canopy-runtime-v112.test.mjs",
-      "bytes": 24858,
-      "sha256": "b2bf26db2d30b634022904d883a0bcd2c4b031aef6a6968bcee9913ee8ca083b"
+      "bytes": 26850,
+      "sha256": "7cb8825279939ca59d0c06534b9ad76c6183b3746f814114c8d3e2de8efc64e5"
     },
     {
       "path": "tests/hunt-carcass-runtime-v112.test.mjs",
@@ -12862,6 +13062,26 @@
       "path": "tests/hunter-materials-v113.test.mjs",
       "bytes": 1409,
       "sha256": "23a5f0d4ddc0abb20905021c14b310a9065c9325f420d1d0d50e3f5869160784"
+    },
+    {
+      "path": "tests/legacy-finale-r2.test.mjs",
+      "bytes": 13037,
+      "sha256": "a13e6b0fe7644e1eae89ab82459ce1b97e5347a22ef6287686d7b0ded211ba73"
+    },
+    {
+      "path": "tests/nef-rejoin-m017.test.mjs",
+      "bytes": 3944,
+      "sha256": "72a63b6253a9f05b63ba4d1a4010b85bd5ad43d9f11f77187f6ce691a13bf2e2"
+    },
+    {
+      "path": "tests/nursery-campaign.test.mjs",
+      "bytes": 9752,
+      "sha256": "c7bbeb4d670684aa1fd9c0fca4b6dc0484e38ff768df8198167e357c5adcdbca"
+    },
+    {
+      "path": "tests/origin-first-shock-o6.test.mjs",
+      "bytes": 8150,
+      "sha256": "edc492a559bd7fb84c86fe7cbd59e4c2dd3e3854437a24d361b791e8a08e86fb"
     },
     {
       "path": "tests/pit-backward-art-provenance-v112.test.mjs",
@@ -12932,6 +13152,11 @@
       "path": "tests/warp-module-bay.test.mjs",
       "bytes": 8981,
       "sha256": "d477eb6541b9282b6222ec366ca01b57ac0f720b6880e400a19edd745175490d"
+    },
+    {
+      "path": "tests/youth-campaign.test.mjs",
+      "bytes": 31693,
+      "sha256": "bc292d911c0e2314000d1a7451f3d0b7eb775cf7dfc2b263b131020f250e324d"
     },
     {
       "path": "tsconfig.json",

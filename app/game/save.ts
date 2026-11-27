@@ -13,6 +13,7 @@ import { isFutureResidenceScenesV154, normalizeResidenceScenesV154 } from "./sys
 import { isFutureOriginV151, normalizeOriginV151 } from "./systems/originsV151";
 import { continuationMatchesSaveO6, keepsContinuationO6 } from "./systems/originContinuationO6";
 import { keepsSoloReturnO6, soloReturnMatchesSaveO6 } from "./systems/originSoloReturnO6";
+import { firstShockMatchesSaveO6, keepsFirstShockO6 } from "./systems/originFirstShockO6";
 import { isFuturePathObjectsV158, normalizePathObjectsV158 } from "./systems/pathObjectsV158";
 import { isFutureHeritageV152, normalizeHeritageV152 } from "./systems/heritageV152";
 import { hardcoreStatusV155, isFutureHardcoreV155, normalizeHardcoreV155, recordHardcoreDeathV155 } from "./systems/hardcoreV155";
@@ -32,7 +33,7 @@ import {normalizeHomeworldCargoV108} from './systems/homeworldCargoLedgerV108';
 import {normalizeHomeworldArchivePlaqueV109} from './systems/homeworldArchivePlaqueLedgerV109';
 import { normalizeYouthCampaign, youthCampaignMatchesSave } from "./systems/youthCampaign";
 import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
-import { hasChildhoodFoundationV175, isChildhoodSuccessorV175 } from "./systems/homeworldChildhoodV175";
+import { CHILDHOOD_LEDGER_VERSION_V175, hasChildhoodFoundationV175, isChildhoodSuccessorV175 } from "./systems/homeworldChildhoodV175";
 import { youthCityDeliveryMatchesWriteV176 } from "./systems/youthCityErrandV172";
 import { saarGuideLocationMatchesWriteM003 } from "./systems/youthCityGuideM003";
 import { youthCityPlaceMatchesWriteM003 } from "./systems/youthCityPlacesM003";
@@ -45,6 +46,7 @@ import {
   tribunalVersionStatusV147, type RecordInfractionInputV147, type TribunalActionResultV147, type TribunalActionV147,
 } from "./systems/honorTribunalV147";
 import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/homeworld";
+import { triadCityMatchesSaveM016, triadCityMatchesWriteM016 } from "./systems/homeworldTriadM016";
 import {normalizeCntlipLedgerV77} from './systems/cntlipLedgerV77';
 import {homeworldCntlipEligibleV77} from './systems/homeworldCntlipPhysicalV77';
 import {inspectHomeworldCheckpointV77} from './systems/homeworldCheckpointV77';
@@ -2110,7 +2112,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     return { save: null, failure: "invalid-save" };
   }
   const selectedChildhood = isRecord(value.homeworld) ? value.homeworld.childhoodV175 : undefined;
-  if (isRecord(selectedChildhood) && Number(selectedChildhood.version) > 2) return { save: null, failure: "future-version" };
+  if (isRecord(selectedChildhood) && Number(selectedChildhood.version) > CHILDHOOD_LEDGER_VERSION_V175) return { save: null, failure: "future-version" };
   const selectedAdjutant = isRecord(value.homeworld) ? value.homeworld.adjutantM029 : undefined;
   if (isRecord(selectedAdjutant) && Number(selectedAdjutant.version) > 1) return { save: null, failure: "future-version" };
   const save = normalizeSave(value);
@@ -2129,6 +2131,9 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const childhood = save.homeworld.childhoodV175;
   if (selectedChildhood !== undefined && (!childhood || childhood.ownerCreatedAt !== save.createdAt ||
       !hasChildhoodFoundationV175(save))) return { save: null, failure: "invalid-save" };
+  const triadCity = isRecord(value.homeworld) ? value.homeworld.triadCityM016 : undefined;
+  if (isRecord(triadCity) && Number(triadCity.version) > 1) return { save: null, failure: "future-version" };
+  if (triadCity !== undefined && !triadCityMatchesSaveM016(save)) return { save: null, failure: "invalid-save" };
   const regionalLoop = isRecord(value.homeworld) ? value.homeworld.regionalLoopM014 : undefined;
   if (isFutureRegionalLoopM014(regionalLoop)) return { save: null, failure: "future-version" };
   if (regionalLoop !== undefined && (!save.homeworld.regionalLoopM014 || !regionalLoopMatchesSaveM014(save))) {
@@ -2164,7 +2169,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
         ancientRecognitionVerified,
       })) return { save: null, failure: "invalid-save" };
   if (m037.state && !conquestMatchesCampaignR2M037(save, m037.state)) return { save: null, failure: "invalid-save" };
-  if (!continuationMatchesSaveO6(save) || !soloReturnMatchesSaveO6(save)) return { save: null, failure: "invalid-save" };
+  if (!continuationMatchesSaveO6(save) || !soloReturnMatchesSaveO6(save) || !firstShockMatchesSaveO6(save)) return { save: null, failure: "invalid-save" };
   if (save.originV151?.trainingYardO6 && Object.keys(save.originV151.trainingYardO6.houses).some(houseId =>
       !save.residenceV149?.rights.includes(houseId))) return { save: null, failure: "invalid-save" };
   if (m035.state && !hasWarNarrativeCampaignR2M035(save)) return { save: null, failure: "invalid-save" };
@@ -2308,6 +2313,7 @@ function persistCampaign(
     }
     if (!replaceExisting && previous) {
       if (previous.createdAt !== requested.createdAt) return failed("save-conflict");
+      if (previous.prologue?.ceremonyM006 !== requested.prologue?.ceremonyM006) return failed("save-conflict", previous);
       // This receipt ledger belongs to the confirmed campaign write. Refuse a
       // stale copy before it can lose points or convert them into a rank.
       if (JSON.stringify(previous.honorSourcesV169) !== JSON.stringify(requested.honorSourcesV169)) {
@@ -2333,7 +2339,8 @@ function persistCampaign(
       const previousChildhood = previous.homeworld.childhoodV175;
       const nextChildhood = requested.homeworld.childhoodV175;
       if (JSON.stringify(previousChildhood ?? null) !== JSON.stringify(nextChildhood ?? null) &&
-          !isChildhoodSuccessorV175(previousChildhood, nextChildhood)) return failed("save-conflict", previous);
+          !isChildhoodSuccessorV175(previousChildhood, nextChildhood, !!previous.youthTraining)) return failed("save-conflict", previous);
+      if (!triadCityMatchesWriteM016(previous, requested)) return failed("save-conflict", previous);
       if (!isRegionalLoopSuccessorM014(previous, requested)) {
         return failed("save-conflict", previous);
       }
@@ -2409,7 +2416,8 @@ function persistCampaign(
         return failed("save-conflict", previous);
       }
       if (!keepsContinuationO6(previous.originV151?.continuationO6, requested.originV151?.continuationO6) ||
-          !keepsSoloReturnO6(previous.originV151?.soloReturnO6, requested.originV151?.soloReturnO6)) {
+          !keepsSoloReturnO6(previous.originV151?.soloReturnO6, requested.originV151?.soloReturnO6) ||
+          !keepsFirstShockO6(previous, requested)) {
         return failed("save-conflict", previous);
       }
       const previousHullProject = previous.clanHullProjectV171;

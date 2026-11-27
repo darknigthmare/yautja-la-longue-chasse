@@ -30,6 +30,7 @@ export default function HuntCanopyHudV112({ navigation, bindings, gamepadButtons
     mode === "exhausted" ? "Prise épuisée : atterris avant de reprendre appui." :
     mode === "swinging" ? `Direction pour pomper · ${jump} / ${padJump} pour lâcher.` :
     mode === "climbing" ? `Direction + Saut (${jump} / ${padJump}) pour bondir.` :
+    navigation.transferBuffered ? "Prochaine prise préparée. Rejoins un support à portée." :
     availableGrip ? `${availableGrip.label} à portée : ${gripInput === "toggle" ? "presse" : "maintiens"} Haut (${up}).` :
     mode === "resting" ? rest?.reason ?? "Appui atteint : récupère avant de poursuivre." :
     nearbyGrip?.reason ?? nextGrip?.reason ?? "Choisis une vraie prise et une réception ; la route au sol reste possible.";
@@ -51,6 +52,7 @@ export default function HuntCanopyHudV112({ navigation, bindings, gamepadButtons
       <p>Clavier : gauche/droite {left} / {right}, Haut/Bas {up} / {down}, Saut {jump}. Manette : stick pour les directions, {padJump} pour Saut. Tactile : mêmes directions et Saut.</p>
       {heldGrip?.flexible && <p>Sur la liane, corde ou chaîne : direction pour pomper, Haut/Bas ({up} / {down}) pour régler la longueur, Saut ({jump} / {padJump}) pour lâcher avec l’élan.</p>}
       <p>{gripInput === "toggle" ? "Prise en bascule : une pression sur Haut l’active, une autre la relâche." : "Prise par maintien : Haut prend appui ; direction + Saut lâche le support."}</p>
+      {gripInput === "hold" && <p>Après un bond ou un lâcher avec Saut, presse Haut ({up}) pendant le relâchement pour préparer la prise suivante.</p>}
       {heldGrip && <p>Endurance de maintien : {heldGrip.staminaPerSecond.toFixed(1)} points/s avec ta charge actuelle{heldGrip.flexible ? " ; pomper et régler la longueur ajoutent leur effort" : ""}.</p>}
       <p>Les repères indiquent une géométrie réelle et une distance, sans garantir un saut. Seule une prise marquée « À portée » peut être saisie maintenant. Après un lâcher, laisse finir le délai de reprise ; après épuisement, une réception réelle est nécessaire.</p>
     </details>

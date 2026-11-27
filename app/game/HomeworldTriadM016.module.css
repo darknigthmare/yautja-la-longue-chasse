@@ -1,0 +1,80 @@
+.actor {
+  position: absolute;
+  pointer-events: none;
+}
+
+.actorName {
+  position: absolute;
+  left: 0;
+  bottom: 6.85rem;
+  transform: translateX(-50%);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  color: #f5dfac;
+  background: #211914;
+  white-space: nowrap;
+}
+
+.routes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0;
+  list-style: none;
+}
+
+.latch, .trail {
+  position: relative;
+  min-height: 3rem;
+  margin-block: 0.45rem;
+  border: 1px solid #9c7e51;
+  border-radius: 0.3rem;
+  background: #241a12;
+}
+
+.bar, .slot {
+  position: absolute;
+  top: 1.05rem;
+  height: 0.75rem;
+  border-radius: 0.2rem;
+}
+
+.bar {
+  left: 15%;
+  width: 46%;
+  border: 1px solid #dab477;
+  background: #926033;
+  transition: transform 180ms ease-out;
+}
+
+.slot {
+  left: 62%;
+  width: 23%;
+  border: 1px solid #c6a376;
+}
+
+.latch[data-state="1"] .bar { transform: translateX(35%); }
+.latch[data-state="2"] .bar { transform: translateX(-12%); }
+
+.trail {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.trail i {
+  display: block;
+  width: 0.95rem;
+  height: 1.35rem;
+  transform: rotate(22deg);
+  border: 1px solid #a28056;
+  border-radius: 55% 50% 40% 40%;
+  background: #38281d;
+}
+
+.trail i:nth-child(2) { transform: translateY(-0.4rem) rotate(45deg); }
+.trail i[data-observed="true"] { background: #c29252; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bar { transition: none; }
+}

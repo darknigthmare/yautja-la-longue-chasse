@@ -3156,3 +3156,22 @@ Ordre de production proposé, par lots jouables :
 8. **Lot Mémoire et épilogue** (M057 → M060) : mausolée existant, nouvelle cohorte, épilogue.
 
 **Sources :** classeur `Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx` (onglet Campagne commune, SHA256 87ad5d1a…), `app/game/data.ts`, `app/game/worldScreens.ts`, `app/game/systems/worldBlueprints.ts`, `app/game/ecologyV8.ts`, `app/game/environmentPropAvailabilityData.ts`, `app/game/HuntCanvas.tsx`, `public/audio/`, `docs/campaign-continuity-audit-2026-08-31.md`, `docs/v68`, `v69`, `v70`, `v90`, `v92` du dépôt [darknigthmare/yautja-la-longue-chasse](https://github.com/darknigthmare/yautja-la-longue-chasse).
+
+## Reprise du 27 novembre 2026 — cité, origines et canopée
+
+- **R2-M003 · Rue et place** · Saar accompagne deux haltes physiques dans la rue des ateliers et sur la place du Marché. Les signes et Yena au croisement ramènent le joueur à pied. Les deux choix, les repères, les haltes et la pièce de forge sont conservés. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46043159336)
+
+- **R2-M006 · Passation de la cohorte** · Chaque jeune montre un geste et range son outil. Le joueur présente puis range le sien, franchit le seuil avec Saar et choisit le premier atelier. Les nouveaux slots du menu suivent les critères du dojo commun. Les archives antérieures reprennent avec leurs règles. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46044193003)
+
+- **R2-M016 · Rencontres de la triade** · Saar montre le verrou à la forge et Vek la lecture de traces sur les terrasses. Les deux invitations et les gestes persistent au rechargement. La galerie conserve son entraînement et ses propres preuves. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46043576589)
+
+- **R2-M017 · Passerelles de la Nef** · Le glyphe avertit du mouvement des trois passerelles. Leurs appuis grandissent sur 72 ticks avant la commande haute. Le mouvement et le passage bas restent compatibles avec les anciens checkpoints. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46042513487)
+
+- **R2-M059 · Arrivée de la cohorte** · Les quatre jeunes accompagnent le joueur du seuil au support de récit. La progression et les anciennes reprises restent relues avec leurs preuves propres. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46045565609)
+
+- **R2-M060 · Halte des Trois Vents** · La table du Refuge des Trois Vents relit le carnet et l’hôte de la vraie halte. Le joueur rejoint le poste du dernier geste, revient à la région et conserve le témoignage après son départ. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46045565609)
+
+- **O6-M01 · Après le premier choc** · Le dossier O6 ouvre une nouvelle scène après le prologue commun. Le joueur ramasse l’arme au filet, suit Saar et choisit entre écouter Harek et revoir l’appui. Une erreur reprend au filet. La résolution, le succès et les gestes transmis sont distincts. Le retour matériel de l’arme rouvre la cité. L’import refuse un dojo commencé pendant que l’arme doit encore être rendue. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46044765492)
+
+- **Canopée · Prise suivante** · Après un saut ou un lâcher, un appui sur Haut pendant le délai prépare la prise suivante. Le moteur vérifie la portée, l’obstacle et l’endurance. Le modèle de l’affichage partage ces contraintes. Les contrôles de prélèvement et d’inventaire couvrent les systèmes de terrain existants. La recette de terrain relit la même pièce depuis sa collecte jusqu’à sa conservation. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46045520148)
+

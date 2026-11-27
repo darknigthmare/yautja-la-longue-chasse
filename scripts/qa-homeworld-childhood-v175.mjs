@@ -7,7 +7,7 @@ import { createServer } from "vite";
 import { childhoodAdmissionV175, childhoodStorage, qaChildhood } from "../tests/helpers/homeworld-childhood-v175.mjs";
 import { youthBarracksFromSave } from "../tests/helpers/youth-patrol-played-route.mjs";
 
-const seed = childhoodAdmissionV175({ withLocation: true });
+const seed = childhoodAdmissionV175({ withLocation: true, withCeremony: true });
 seed.settings.masterVolume = 0;
 const model = qaChildhood.load("app/game/systems/homeworldChildhoodV175.ts");
 const rank = qaChildhood.load("app/game/systems/clanChronicle.ts");
@@ -110,13 +110,28 @@ try {
   report.checks.push("Deux traces comparées à chaque indice, fausse piste, perchoir et retour par le chemin bas, carte rechargée");
   await act("handoff");
   await walk(2); await act("use");
+  assert.equal(await scene.locator("[data-childhood-enter-dojo]").count(), 0);
+  assert.equal(await scene.locator("[data-childhood-action=east]").count(), 0);
   await act("cohort-gesture");
+  await shot("geste-de-yena");
   await page.reload(); await boot();
   assert.equal((await view()).cohortPresentations, 1);
-  await act("cohort-gesture"); await act("cohort-gesture");
+  assert.equal((await view()).cohortStowed, 0);
+  await act("cohort-stow");
+  for (const name of ["Harek", "Tov"]) {
+    assert((await scene.locator("[data-childhood-action=cohort-gesture]").innerText()).includes(name));
+    await act("cohort-gesture");
+    await act("cohort-stow");
+  }
   assert.equal((await view()).cohortPresentations, 3);
-  await shot("gestes-de-la-cohorte");
-  for (const station of [4, 7]) { await walk(station); await act("use"); }
+  assert.equal((await view()).cohortStowed, 3);
+  await shot("outils-de-la-cohorte");
+  await walk(4); await act("use");
+  await walk(7);
+  assert.equal((await view()).passed, false);
+  await act("use");
+  assert.equal((await view()).position, 8);
+  assert.equal(await scene.locator("[data-childhood-saar=inside]").count(), 1);
   await shot("passation");
   assert.equal(await scene.locator("[data-childhood-enter-dojo]").count(), 0);
   await act("first-blades");
@@ -129,7 +144,7 @@ try {
   assert.equal(rank.getChronicleRank(played.prologue.chronicle), "unblooded");
   assert.equal(played.youthTraining?.checkpoint.firstWorkshopV176, "blades");
   assert(childhoodStorage.parseSaveImport(childhoodStorage.exportSave(played)).save);
-  report.checks.push("Choix des lames pris après le râtelier, conservé après reload et à l’entrée du dojo");
+  report.checks.push("Démonstrations et outils des trois camarades, passage avec Saar de la dalle 7 à 8, choix des lames conservé au dojo après rechargement");
   const barracks = youthBarracksFromSave(played);
   report.prerequisites += " The real training reducer plays the intervening dojo milestones and walks to the barracks door.";
   await page.evaluate(({ key, archive }) => localStorage.setItem(key, JSON.stringify(archive)), { key: storageKey, archive: barracks });

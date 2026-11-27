@@ -45,8 +45,10 @@ function completeCohort(save) {
 
 /** Play the nursery reducer and administrative part of the existing city
  * errand. The Chromium scenario begins at the next native service. */
-export function childhoodAdmissionV175({ route = "escort", withLocation = false } = {}) {
-  const save = completeCohort({ ...childhoodStorage.defaultSave(CHILDHOOD_OWNER), prologue: nurseryCampaign.createNurseryCampaign() });
+export function childhoodAdmissionV175({ route = "escort", withLocation = false, withCeremony = false } = {}) {
+  const save = completeCohort({
+    ...childhoodStorage.defaultSave(CHILDHOOD_OWNER), prologue: nurseryCampaign.createNurseryCampaign(withCeremony),
+  });
   let errand = city.startYouthCityErrandV172(CHILDHOOD_OWNER, route);
   for (const stop of city.YOUTH_CITY_ROUTES_V172[route]) {
     errand = city.acknowledgeYouthCityStopV172(errand, stop);

@@ -20,6 +20,7 @@ import tailwind from '@tailwindcss/postcss';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const out=path.resolve(root,process.env.SKINNING_CANOPY_QA_OUTPUT??'outputs/qa-skinning-canopy-20261109');
 const only=process.env.SKINNING_CANOPY_QA_CASE??'both';
+const bufferedTransfer=process.env.SKINNING_CANOPY_QA_TRANSFER==='buffered';
 assert.ok(['both','field','canopy'].includes(only));
 await mkdir(out,{recursive:true});
 const hash=value=>createHash('sha256').update(typeof value==='string'||ArrayBuffer.isView(value)?value:JSON.stringify(value)).digest('hex');
@@ -575,12 +576,40 @@ async function canopy(){
     const oldReachable=state.reachableSupportIds.includes(flexible.id);
     if(swing.angle>=.15&&swing.angle<=.8&&swing.angularVelocity>0&&tangentX>=300&&held.has('right')){
       data.actualReleaseDecision={elapsed:state.elapsed,player:state.player,tangentX,oldReachable};
-      await page.keyboard.down('Space');held.add('jump');
+      if (bufferedTransfer) {
+        const released = page.waitForFunction(() => {
+          const player = window.__skinningCanopyQaV112.runtime?.game.player;
+          return !player?.climbing && player?.climbReattachSeconds > 0.12 ? player.climbReattachSeconds : false;
+        }, null, {polling:'raf',timeout:2000});
+        await page.keyboard.down('Space');held.add('jump');
+        const ready = await released;
+        data.bufferedPress = {releaseSeconds:await ready.jsonValue(), pressedForMs:16};
+        await ready.dispose();
+        await page.keyboard.press('ArrowUp',{delay:16});
+      } else {
+        await page.keyboard.down('Space');held.add('jump');
+      }
       return true;
     }
     await hold([swing.angularVelocity>=0?'right':'left'],'pump to a fresh rightward release window after capture',state);
     return false;
   });
+  if (bufferedTransfer) {
+    await check('one native Up tap catches the next authored vine during tangent flight', async () => {
+      assert.ok(data.bufferedPress.releaseSeconds > 0.12);
+      const landed = await until('buffered catch of the next authored vine', 5000,
+        async state => state.player.climbing && state.player.climbZoneId === next.id);
+      assert.equal(landed.inputs.keyboard.includes('up'), false);
+      assert.equal(landed.player.aerialBoostUsed, false);
+      assert.equal(landed.canopyTransfer, null);
+      await hold([], 'release steering after the buffered catch');
+      await capture('13-native-buffered-next-vine');
+      return {fromSupport:flexible.id, nextSupport:next.id, player:landed.player, tapReleased:true};
+    });
+    data.final=await observation();data.finalSidecar=await disk();
+    await context.close();context=null;
+    return;
+  }
   await page.waitForFunction(()=>{
     const player=window.__skinningCanopyQaV112.state().player;
     return !player.climbing&&player.climbReattachSeconds>0;

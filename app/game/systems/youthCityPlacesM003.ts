@@ -2,7 +2,8 @@ import { HOMEWORLD_BUILDINGS_V77, HOMEWORLD_COUNCIL_STAIR_LANDINGS_V77, type Hom
 import { homeworldCivicWalkableV80 } from "./homeworldCivicWorldV80";
 import { homeworldInteriorForBuildingV64, isHomeworldInteriorWalkableV64, nearestHomeworldInteriorTargetV64,
   type HomeworldInteriorV64, type InteriorGroundPointV64 } from "./homeworldInteriorsV64";
-import { nextYouthCityStopV172, youthCityGuidePendingM003, type YouthCityErrandV172 } from "./youthCityErrandV172";
+import { actYouthCityStreetM003, nextYouthCityStopV172, youthCityGuidePendingM003, type YouthCityErrandV172 } from "./youthCityErrandV172";
+import { youthCityStreetContactM003 } from "./youthCityStreetM003";
 import type { HomeworldCheckpointV77 } from "./homeworldCheckpointV77";
 
 export const YOUTH_CITY_HEARTH_M003 = "residence-terraces-1";
@@ -54,11 +55,19 @@ export function youthCityPlaceMatchesWriteM003(before: YouthCityErrandV172 | und
   if (!before || !after) return true;
   const meeting = before.encounterM003 === "pending" && after.encounterM003 === "met";
   const visited = !before.hearthM003 && after.hearthM003;
-  if (!meeting && !visited) return true;
+  const street = before.streetM003?.leg !== after.streetM003?.leg ||
+    before.streetM003?.recovery !== after.streetM003?.recovery;
+  if (!meeting && !visited && !street) return true;
   if (!location || location.ownerCreatedAt !== before.ownerCreatedAt) return false;
   const room = location.interiorId ? homeworldInteriorForBuildingV64(location.interiorId) : null;
   const point = room ? location.local : location.exterior;
   if (!point || (location.interiorId && !room)) return false;
+  if (street) {
+    const contact = youthCityStreetContactM003(before, location.levelId, location.exterior, location.interiorId);
+    const expected = contact && actYouthCityStreetM003(before, contact.kind)?.streetM003;
+    const next = after.streetM003;
+    return !!expected && !!next && expected.leg === next.leg && expected.recovery === next.recovery;
+  }
   const action = youthCityPlaceActionM003(before, location.levelId, point, room);
   return visited ? action?.kind === "hearth" : action?.kind === (before.route === "escort" ? "council" : "forge");
 }
