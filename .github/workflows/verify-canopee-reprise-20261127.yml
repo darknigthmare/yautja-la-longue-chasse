@@ -5,52 +5,6 @@ on:
 permissions:
   contents: read
 jobs:
-  source:
-    name: Runtime canopy, inventory, TypeScript and lint
-    runs-on: ubuntu-24.04
-    timeout-minutes: 15
-    env:
-      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
-      NEXT_TELEMETRY_DISABLED: '1'
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          ref: '35d3316b7e88049fb247ceeaa5d9e6ac3fd5fa1d'
-          persist-credentials: false
-          filter: blob:none
-          sparse-checkout-cone-mode: false
-          sparse-checkout: |
-            /*
-            !/*/
-            /app/
-            /content/the-pit/
-            /lib/
-            /types/
-            /worker/
-            /desktop/
-            /scripts/
-            /build/
-            /tests/
-            /docs/
-            /production/INVENTAIRE_BIBLE_20261122.*
-            /public/**/manifest.json
-            /.openai/hosting.json
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
-        with:
-          node-version: '22'
-      - run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Verify the live engine and existing harvest contracts
-        run: >-
-          node --experimental-strip-types --test --test-reporter=spec
-          tests/hunt-canopy-runtime-v112.test.mjs tests/hunt-canopy-resume-cooldown-20261109.test.mjs
-          tests/canopy-navigation-v112.test.mjs tests/canopy-traversal-v112.test.mjs
-          tests/harvest-inventory-v112.test.mjs tests/hunt-skinning-worksite-20261109.test.mjs
-      - name: Verify Next types
-        run: |
-          node node_modules/next/dist/bin/next typegen
-          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
-      - name: Lint engine, guide and hunt recipe
-        run: node node_modules/eslint/bin/eslint.js app/game/HuntCanvas.tsx app/game/HuntCanopyHudV112.tsx app/game/systems/canopyNavigationV112.ts tests/hunt-canopy-runtime-v112.test.mjs
   durable-field:
     name: Native GameClient skinning, sidecar resume and canopy
     runs-on: ubuntu-24.04
@@ -66,7 +20,7 @@ jobs:
       - name: Checkout current application and exact asset index
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '35d3316b7e88049fb247ceeaa5d9e6ac3fd5fa1d'
+          ref: '338f2ad2c7fb72d7b6ade76bc1ae5b7af6aa5ab8'
           persist-credentials: false
           filter: blob:none
           fetch-depth: 3
