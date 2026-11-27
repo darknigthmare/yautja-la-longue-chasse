@@ -1601,8 +1601,14 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   const youthObjective = !youthChiefMet ? "Rejoins le chef du clan à la Citadelle, au nord-est de la cité, et parle-lui."
     : !youthMentorMet ? "Rejoins l’instructeur des terrasses, au centre de la cité, et parle-lui."
     : save.soloV90?.status === "completed" ? "La préparation de triade est rapportée. Le clan conserve les observations et les blessures de cet entraînement ; l’épreuve Quatza-Rij et le rite Blooded restent à accomplir."
-    : save.soloV70?.status === "completed" ? "Le premier acte du Temple des Trois Ombres est rapporté. Rejoins le maître pour une préparation de triade au combat de seuil ; elle ne remplace pas l’épreuve Quatza-Rij ni le rite Blooded."
-    : save.soloV69?.status === "completed" ? "Les Seuils du Premier Sang sont attestés. Rejoins le maître pour ouvrir le premier acte du Temple des Trois Ombres avec ta triade. Les villages et leurs contrats restent accessibles ; tu es encore Young Blood."
+    : save.soloV70?.status === "completed" ? save.prologue?.templeTriadFirstM017
+      ? "Le premier acte du Temple des Trois Ombres est rapporté. Reviens aux postes de triade pour l’exercice du seuil."
+      : "Le premier acte du Temple des Trois Ombres est rapporté. Rejoins le maître pour une préparation de triade au combat de seuil ; elle ne remplace pas l’épreuve Quatza-Rij ni le rite Blooded."
+    : save.prologue?.templeTriadFirstM017 && save.soloV90?.checkpoint.phase === "observe"
+      ? "Les trois postes sont consignés. Rejoins le maître pour entrer au Temple avec Saar et Vek."
+    : save.soloV69?.status === "completed" ? save.prologue?.templeTriadFirstM017
+      ? "Les Seuils du Premier Sang sont attestés. Rejoins Saar et Vek pour préparer les trois postes avant le Temple."
+      : "Les Seuils du Premier Sang sont attestés. Rejoins le maître pour ouvrir le premier acte du Temple des Trois Ombres avec ta triade. Les villages et leurs contrats restent accessibles ; tu es encore Young Blood."
     : save.soloV68?.status === "completed" ? "Le clan a reconnu ta cohorte Young Blood. Rejoins le maître pour préparer Les Seuils du Premier Sang ; le rite Blooded reste distinct."
     : save.soloV67?.status === "completed" ? "La Piste sans guide est rapportée. Rejoins le maître pour rassembler la Cohorte des Aspirants."
     : save.soloV66?.status === "completed" ? "Les Premières Pistes sont rapportées. Rejoins le maître pour La Piste sans guide ; les villages ordinaires et leurs relevés sont aussi accessibles."

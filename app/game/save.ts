@@ -2313,7 +2313,8 @@ function persistCampaign(
     }
     if (!replaceExisting && previous) {
       if (previous.createdAt !== requested.createdAt) return failed("save-conflict");
-      if (previous.prologue?.ceremonyM006 !== requested.prologue?.ceremonyM006) return failed("save-conflict", previous);
+      if (previous.prologue?.ceremonyM006 !== requested.prologue?.ceremonyM006 ||
+          previous.prologue?.templeTriadFirstM017 !== requested.prologue?.templeTriadFirstM017) return failed("save-conflict", previous);
       // This receipt ledger belongs to the confirmed campaign write. Refuse a
       // stale copy before it can lose points or convert them into a rank.
       if (JSON.stringify(previous.honorSourcesV169) !== JSON.stringify(requested.honorSourcesV169)) {

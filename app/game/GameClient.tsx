@@ -1358,8 +1358,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setSave(loadedSave);
       if (loadedSave.prologue?.status === "active") { setScreen("prologue"); setNewGamePhase(null); }
       else if (loadedSave.homeworld.regionalLoopM014?.passage?.position) { setScreen("homeworld-regional-loop-m014"); setNewGamePhase(null); setHubLocation("homeworld"); }
-      else if (soloV90NeedsScene(loadedSave.soloV90)) { setScreen("solo-v90"); setNewGamePhase(null); setHubLocation("homeworld"); }
       else if (soloV70NeedsScene(loadedSave.soloV70)) { setScreen("solo-v70"); setNewGamePhase(null); setHubLocation("homeworld"); }
+      else if (soloV90NeedsScene(loadedSave.soloV90)) { setScreen("solo-v90"); setNewGamePhase(null); setHubLocation("homeworld"); }
       else if (soloV69NeedsScene(loadedSave.soloV69)) { setScreen("solo-v69"); setNewGamePhase(null); setHubLocation("homeworld"); }
       else if (soloV68NeedsScene(loadedSave.soloV68)) { setScreen("solo-v68"); setNewGamePhase(null); setHubLocation("homeworld"); }
       else if (soloV67NeedsScene(loadedSave.soloV67)) { setScreen("solo-v67"); setNewGamePhase(null); setHubLocation("homeworld"); }
@@ -2010,7 +2010,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [persistNursery, reconcileNurseryAttempt]);
   const returnFromSoloV70 = useCallback(async (): Promise<boolean> => {
     if (!sessionAliveRef.current || !reconcileNurseryAttempt() || saveRef.current.soloV70?.status !== "completed" || !persistNursery(saveRef.current)) return false;
-    setHubLocation("homeworld"); setScreen("homeworld"); return true;
+    const current = saveRef.current;
+    setHubLocation("homeworld");
+    setScreen(current.prologue?.templeTriadFirstM017 && soloV90NeedsScene(current.soloV90) ? "solo-v90" : "homeworld");
+    return true;
   }, [persistNursery, reconcileNurseryAttempt]);
 
   const enterSoloV90 = useCallback((): boolean => {
@@ -5300,6 +5303,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         <Suspense fallback={<DeferredGameScreen />}>
           <FirstHuntSoloV90 key={save.createdAt} checkpoint={save.soloV90.checkpoint} bindings={save.settings.controlBindings}
             reducedMotion={reducedMotionV90}
+            templeBeforeCombat={save.prologue?.templeTriadFirstM017 === true && save.soloV70?.status !== "completed"}
+            onEnterTemple={enterSoloV70}
             soundEnabled={save.settings.masterVolume > 0 && save.settings.effectsVolume > 0}
             masterVolume={save.settings.masterVolume} effectsVolume={save.settings.effectsVolume}
             externallyPaused={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy} persistenceError={nurseryPersistenceError}
@@ -5311,6 +5316,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       {screen === "solo-v70" && hydrated && save.soloV70 && <section inert={settingsOpen} data-solo-v70-campaign>
         <Suspense fallback={<DeferredGameScreen />}>
           <FirstHuntSoloV70 key={save.createdAt} checkpoint={save.soloV70.checkpoint} bindings={save.settings.controlBindings}
+            continueTriad={save.prologue?.templeTriadFirstM017 === true && soloV90NeedsScene(save.soloV90)}
             soundEnabled={save.settings.masterVolume > 0 && save.settings.effectsVolume > 0}
             masterVolume={save.settings.masterVolume} effectsVolume={save.settings.effectsVolume}
             externallyPaused={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy} persistenceError={nurseryPersistenceError}
