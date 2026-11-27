@@ -4,6 +4,9 @@ import { YOUTH_ARENA, getYouthObstacles, getYouthObjective, YOUTH_DESERT_CLUES, 
 import { YOUTH_MEDICOMP } from "./systems/youthMedicompV172";
 import { drawActorContactShadow, getSpriteContact } from "./spriteContact";
 
+import { drawYouthWorkshopV174 } from "./youthWorkshopRenderingV174";
+import { YOUTH_WORKSHOP_GATE, workshopCanOpen } from "./systems/youthWorkshopV174";
+
 export const YOUTH_ART_POSES = ["idle", "walk", "jump", "jab", "blade", "throw", "dodge", "hurt", "thrown", "ko"] as const;
 export type YouthArtPose = typeof YOUTH_ART_POSES[number];
 export interface YouthArtFrame { rect: readonly [number, number, number, number]; pivot: readonly [number, number]; handAnchor: readonly [number, number]; durationTicks: number }
@@ -121,10 +124,11 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
   ctx.save(); ctx.clearRect(0, 0, width, height); ctx.fillStyle = "#090705"; ctx.fillRect(0, 0, width, height);
   if (!bank) { ctx.restore(); return; }
   const { manifest, images } = bank;
+  const workshop = state.workshopV174?.active;
   const cage = isYouthCagePhase(state.phase);
   const patrol = isYouthPatrolPhase(state.phase);
   const desert = state.phase.startsWith("desert-") || patrol;
-  const room = desert ? "desert" : state.phase.startsWith("camp") ? "camp" : ["armory", "barracks", "rest", "morning"].includes(state.phase) ? "quarters" : "dojo";
+  const room = workshop ? "dojo" : desert ? "desert" : state.phase.startsWith("camp") ? "camp" : ["armory", "barracks", "rest", "morning"].includes(state.phase) ? "quarters" : "dojo";
   const scene = cage ? manifest.cage?.background : manifest.scenes[room]; if (!scene) { ctx.restore(); return; }
   const backdrop = images.get(scene.src)!;
   const sceneGround = "groundY" in scene && typeof scene.groundY === "number" ? scene.groundY : undefined;
@@ -152,8 +156,13 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
   }
   if (state.phase === "blade-award") prop("bladeRack", 680, groundY, 108);
   if (state.phase === "armory") prop("maskPedestal", 680, groundY, 100);
-  if (["barracks", "rest", "morning"].includes(state.phase)) prop("cot", 680, groundY, 70);
-  if (state.phase === "barracks") {
+  if (!workshop && ["barracks", "rest", "morning"].includes(state.phase)) prop("cot", 680, groundY, 70);
+  if (state.phase === "barracks" && !workshop) {
+    if (workshopCanOpen(state.workshopV174)) {
+      ctx.fillStyle = "#f3cf89"; ctx.font = "bold 14px sans-serif"; ctx.textAlign = "center";
+      ctx.fillText("Ateliers", YOUTH_WORKSHOP_GATE, groundY - 162);
+      prop("marker", YOUTH_WORKSHOP_GATE, groundY, 24);
+    }
     const { kitX, exitX, screenX, alcoveX } = YOUTH_MEDICOMP;
     const medicomp = state.medicompV172;
     const closed = medicomp && medicomp.stage !== "cover";
@@ -200,6 +209,7 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
       }
     }
   }
+  if (workshop) drawYouthWorkshopV174(ctx, workshop, state.player, state.tick, reducedMotion, prop);
   const objective = getYouthObjective(state);
   if (objective.targetX !== null && state.phase !== "rest" && state.phase !== "morning") {
     if (["dojo-move", "dojo-jump", "camp-run"].includes(state.phase)) prop("marker", objective.targetX, groundY, 32);
@@ -270,7 +280,10 @@ export function drawYouthScene(ctx: CanvasRenderingContext2D, state: YouthState,
       ctx.fillStyle = "#ffe0a0"; ctx.font = "bold 16px sans-serif"; ctx.textAlign = "center"; ctx.fillText("!", grazer.x, groundY - art.displayHeight - 9);
     }
   }
+  ctx.save();
+  if (workshop?.lesson === 2 && workshop.equipped) ctx.globalAlpha = .47;
   drawActor("player", actorHeight);
+  ctx.restore();
   if (state.phase === "rest") { ctx.fillStyle = "#080506d9"; ctx.fillRect(0, 0, width, height); }
   ctx.restore();
 }

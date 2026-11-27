@@ -5,6 +5,8 @@ import { warTerritoriesForSimulationV96, type WarSimulationV85, type WarUpdateV8
 import { exportWarFrontV105, planWarConvoyV105, queueWarConvoyLegV105, readWarFrontV105, removeWarConvoyV105, warConvoyLegDraftV105, warConvoyPathV105, warConvoyRouteIssueV105 } from "./systems/clanWarConvoyRouteV105";
 import { warOrderPreviewV98 } from "./systems/clanWarCommandV98";
 import styles from "./ClanWarConvoyRouteV105.module.css";
+import ClanWarCanyonM037 from "./ClanWarCanyonM037";
+import { canyonReportM037 } from "./systems/clanWarM037";
 
 const short = (id: string) => id.replace("CON-", "");
 const resources = (stock: { s: number; m: number; i: number }) => `S${stock.s} · M${stock.m} · I${stock.i}`;
@@ -66,6 +68,9 @@ export default function ClanWarConvoyRouteV105({ simulation, fromId, disabled, o
       <button type="button" data-testid="war-convoy-plan-v105" disabled={disabled || !preview?.accepted} onClick={() => onUpdate(current => planWarConvoyV105(current, draft))}>Enregistrer ce trajet</button>
       <p className={styles.note}>L’enregistrement ne dépense aucun lot et ne réserve personne. La première étape vérifie les stocks et les créneaux ; chaque départ suivant sera vérifié de nouveau.</p>
     </div>}
+    {(simulation.planetId ?? "korthas") === "korthas"
+      && (fromId === "CON-T09" || route?.territoryIds.at(-1) === "CON-T09" || canyonReportM037(simulation))
+      && <ClanWarCanyonM037 simulation={simulation} disabled={disabled} onUpdate={onUpdate}/>}
     <details className={styles.archive} data-testid="war-front-archive-v105"><summary>Exporter ou reprendre ce front</summary><p>Le fichier contient uniquement l’exercice libre de cette planète, avec son convoi et ses ordres. Un import remplace le front affiché après vérification.</p><div className={styles.actions}><button type="button" disabled={disabled} onClick={exportFront}>Exporter le front</button><button type="button" disabled={disabled} onClick={() => fileInput.current?.click()}>Choisir un front à importer</button></div><input ref={fileInput} type="file" accept=".json,application/json" aria-label="Fichier du front libre" disabled={disabled} onChange={async event => {
       const token = ++importReadToken.current;
       const file = event.target.files?.[0]; event.target.value = ""; setImportPreview(null);
