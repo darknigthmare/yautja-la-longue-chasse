@@ -77,6 +77,7 @@ const pointOnScreen = (point: ShipInterior25dPoint) => {
 type CampaignVoyages = { prepare?: () => void; travel?: () => void };
 export default function ShipInterior25D(props: PhysicalShipDeckProps & {
   onOpenPersonalTrophyHall?: () => void;
+  onOpenLegacyArchive?: () => void;
   campaignVoyages?: CampaignVoyages;
 }) {
   const {
@@ -166,6 +167,15 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps & {
     };
     actions[id]?.();
   }, [stop]);
+
+  const openLegacyArchive = () => {
+    if (suspendedRef.current) return;
+    const { roomId, actor } = frameRef.current;
+    const site = nearbyShipInterior25dInteraction(roomId, actor);
+    if (site?.type !== "service" || site.station.id !== "clan-archives") return;
+    stop();
+    propsRef.current.onOpenLegacyArchive?.();
+  };
 
   const atCampaignVoyagePost = (command: keyof CampaignVoyages) => {
     if (suspendedRef.current) return;
@@ -504,6 +514,8 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps & {
           {props.campaignVoyages.travel && <button type="button" disabled={suspended} data-open-first-interstellar
             onClick={() => atCampaignVoyagePost("travel")}>Premier trajet interstellaire</button>}
         </div>}
+        {serviceNearby === "clan-archives" && props.onOpenLegacyArchive && <button type="button"
+          data-open-legacy-personal-archive-r2 disabled={suspended} onClick={openLegacyArchive}>Relire le dossier du voyage</button>}
         <button type="button" disabled={suspended || !nearby} className={styles.interact} data-ship-interact onClick={interact}><kbd>{interactionKey} / A</kbd>{interactLabel}</button>
         <div><button type="button" disabled={suspended} data-ship-approach-service onClick={stationRequest}>Rejoindre le poste</button>
           <button type="button" disabled={suspended || (!frame.path.length && !waypoint)} onClick={cancelGuidance}>Arrêter le trajet</button></div>

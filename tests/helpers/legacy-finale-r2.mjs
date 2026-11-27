@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { homeworldSceneSsrV78 } from "./homeworld-scene-ssr-v78.mjs";
 import { trainingYardAdmissionO6, withResidenceO6, HOUSE } from "./origin-training-yard-o6.mjs";
 import { narrativeLongMemoryAdmission } from "./senior-rite-campaign.mjs";
+import { playShipAcquisitionV161 } from "./ship-receipt-v161.mjs";
 
 const qa = homeworldSceneSsrV78();
 const history = qa.load("app/game/systems/clanChronicle.ts");
@@ -155,4 +156,9 @@ export function legacyCanonicalCohortFixture() {
   assert.equal(ancient.ancientHearingRecognized(save.clanShipOperations.ancientHearing), true);
   save = moveLegacyClanFixture(save, { type: "move-room", roomId: "hangar" }, { type: "return-to-personal" }, { type: "undock" });
   return withLegacyO6Ending(withResidenceO6(save), true);
+}
+
+export function legacyPersonalShipFixture({ realized = true, stopAt } = {}) {
+  const base = { ...legacyFixture({ realized, ancient: false }), homeworldRegionV68: null };
+  return playShipAcquisitionV161(qa, base, stopAt);
 }
