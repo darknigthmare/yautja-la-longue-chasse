@@ -44,7 +44,11 @@ test("no war reset, campaign save mutation or double sidecar is added by the tur
   assert.ok(!gate.includes("advanceWarTurnV85"));
   assert.ok(!gate.includes("Math.random"));
   const panel=read("app/game/ClanWarPanelV85.tsx");
-  assert.match(panel,/data-war-campaign-write="none"/);
+  const writeIndicator = panel.match(/data-war-campaign-write=\{([^}]+)\}/)?.[1];
+  assert.equal(writeIndicator, [
+    'tab === "m035" && onNarrativeCommand ? "narrative" :',
+    'tab === "m037" && onConquestCommand ? "conquest" : "none"',
+  ].join(" "));
   assert.match(panel,/const result=advanceWarTurnV85\(live\.simulation\)/);
   assert.ok(!panel.includes("onClick={() => { const result = advanceWarTurnV85(simulation)"));
 });
