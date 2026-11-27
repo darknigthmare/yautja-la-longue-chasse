@@ -39,7 +39,7 @@ export default function YouthCityForgeDetourV176({ position, disabled, onStep }:
         const isClosed = lane === "side" && (x < 2 || x > 5);
         return <span key={lane + x} data-cart={isCart} data-link={isLink} data-closed={isClosed}
           data-at={position.x === x && position.lane === lane} style={{ gridColumn: x + 1, gridRow: row + 1 }} aria-hidden="true">
-          {isCart ? "▰" : isLink ? "◈" : x === 7 && lane === "main" ? "◇" : ""}
+          {isCart ? "▰" : isLink ? "◈" : x === YOUTH_CITY_DELIVERY_END_V176 && lane === "main" ? "◇" : ""}
         </span>;
       }))}
     </div>

@@ -17,7 +17,7 @@ jobs:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '02ea99730d7cef1bf746ef179308f6e1277e003c'
+          ref: '17cf1df3dff4e03c094d7c9eea150179b14b0501'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -108,7 +108,7 @@ jobs:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '02ea99730d7cef1bf746ef179308f6e1277e003c'
+          ref: '17cf1df3dff4e03c094d7c9eea150179b14b0501'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -185,10 +185,9 @@ jobs:
         if: ${{ !cancelled() }}
         run: >-
           node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec
-          tests/homeworld-childhood-v175.test.mjs tests/youth-training.test.ts tests/youth-campaign.test.mjs tests/homeworld-regional-loop-m014.test.mjs
+          tests/homeworld-youth-city-delivery-v176.test.mjs tests/homeworld-childhood-v175.test.mjs tests/homeworld-regional-loop-m014.test.mjs
       - name: Lint the changed exercise and checkpoint files
         if: ${{ !cancelled() }}
         run: >-
-          npx eslint app/game/HomeworldChildhoodV175.tsx app/game/YouthTrainingScreen.tsx
-          app/game/systems/homeworldChildhoodV175.ts app/game/systems/youthWorkshopV174.ts app/game/systems/youthTraining.ts
-          app/game/systems/youthCampaign.ts scripts/qa-homeworld-youth-city-delivery-v176.mjs tests/homeworld-childhood-v175.test.mjs
+          npx eslint app/game/YouthCityForgeDetourV176.tsx app/game/systems/youthCityErrandV172.ts
+          scripts/qa-homeworld-youth-city-delivery-v176.mjs tests/homeworld-youth-city-delivery-v176.test.mjs

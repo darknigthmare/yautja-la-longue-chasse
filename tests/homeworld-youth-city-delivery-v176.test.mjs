@@ -11,6 +11,7 @@ const updated = (save, value) => ({ ...save, homeworld: { ...save.homeworld, you
 const walk = (save, direction) => updated(save, city.walkYouthCityDeliveryV176(errand(save), direction));
 const position = save => city.youthCityDeliveryPositionV176(errand(save));
 const readBack = save => childhoodStorage.parseSaveImport(childhoodStorage.exportSave(save));
+const inspect = save => childhoodStorage.parseSaveImport(JSON.stringify(save));
 
 for (const route of ["escort", "archives"]) test("M003 blocks the cart lane and resumes the " + route + " delivery at the saved detour", () => {
   const values = new Map();
@@ -29,8 +30,8 @@ for (const route of ["escort", "archives"]) test("M003 blocks the cart lane and 
     save = keep(updated(save, city.acknowledgeYouthCityStopV172(errand(save), "memory-service")));
   }
   assert.equal(city.acknowledgeYouthCityStopV172(errand(save), "forge-service"), null);
-  assert.equal(readBack(updated(save, { ...errand(save), reached: errand(save).reached + 1 })).save, null);
-  assert.equal(readBack(updated(save, { ...errand(save), ownerCreatedAt: "2026-11-18T08:00:00.000Z" })).save, null);
+  assert.equal(inspect(updated(save, { ...errand(save), reached: errand(save).reached + 1 })).save, null);
+  assert.equal(inspect(updated(save, { ...errand(save), ownerCreatedAt: "2026-11-18T08:00:00.000Z" })).save, null);
   save = keep(walk(save, "east"));
   const stale = save;
   save = keep(walk(save, "east"));
