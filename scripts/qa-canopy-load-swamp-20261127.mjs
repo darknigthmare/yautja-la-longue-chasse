@@ -266,7 +266,9 @@ async function canopy(){
     await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().rites.specimensV112.length===1);
     const loaded=await observation();
     [cargo]=loaded.rites.specimensV112;
-    assert.match(JSON.stringify(cargo),/Cuir à plaques ferriques/);
+    assert.equal(cargo.label,'Cuir à plaques ferriques');
+    assert.equal(cargo.massKg,4.4);
+    assert.equal(cargo.volumeUnits,3);
     assert.ok(loaded.fieldLoad.movementMultiplier<1);
     assert.ok(loaded.fieldLoad.climbStaminaMultiplier>1);
     await capture('01-swamp-native-hide');
@@ -349,6 +351,7 @@ async function canopy(){
     contact(ready,'pumped-pendulum-before-capture');
     assertCargo(ready);
     const pace=await page.locator('[data-canopy-loaded-pace-v112]').innerText();
+    assert.ok(pace.includes('réglage de la longueur'));
     assert.ok(pace.includes(Math.round(ready.fieldLoad.movementMultiplier*100)+' %'));
     data.beforeRelease=ready;
     await capture('11-native-pumped-pendulum');
