@@ -1,0 +1,100 @@
+name: Play the O6-E1 lesson and its epilogues
+on:
+  push:
+    branches: [codex/verify-o6-e1-first-lesson-20261127]
+permissions:
+  contents: read
+jobs:
+  epilogues:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      EPILOGUE_CANDIDATE_SHA: 'df06ca7b8d90d97d64e6f8f796d1a501894788dd'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 8
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.openai/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /build/
+            /scripts/
+            /tests/
+            /docs/qa/current-integration-20261103/runtime-inputs.json
+            /public/audio/
+            /public/game/ship-interior/
+            /public/game/homeworld/v56/
+            /public/game/imports/v85/library/60175f86b4e44625b8c24c592456756abcb6822a898308f719604f16735c6a96.png
+            /public/game/sprites/v5/film-plates/jungle-hunter.png
+            /public/game/homeworld/v64/
+            /public/game/homeworld/v67/
+            /public/game/homeworld/v69/
+            /public/game/homeworld/v72/
+            /public/game/homeworld/v74/
+            /public/game/homeworld/v77/
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/assets/v139/rig-gauntlets/
+            /public/game/sprites/v62/
+            /public/game/prologue/v47/
+            /public/game/backgrounds/ice-depth-v4.webp
+            /public/game/backgrounds/swamp-depth-v8.png
+            /public/game/sprites/v8/ecology/cinder-12/smoke-wyvern-sheet.png
+            /public/game/sprites/v8/ecology/naraka-delta/mire-shell-sheet.png
+            /public/game/dialogues/v85/bible-dialogues.json
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize original runtime inputs and install dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+          node --input-type=module > "$RUNNER_TEMP/epilogue-npc-art" <<'NODE'
+          import { homeworldSceneSsrV78 } from './tests/helpers/homeworld-scene-ssr-v78.mjs';
+          const qa = homeworldSceneSsrV78();
+          const variants = qa.load('app/game/systems/homeworldNpcVariantsV84.ts');
+          const catalogue = variants.HOMEWORLD_NPC_VARIANT_CATALOGUE_V84;
+          const paths = new Set();
+          for (const npc of catalogue.cast) {
+            if (!['region:storm-chain', 'region:luminous-marshes'].includes(npc.groupId)) continue;
+            const file = variants.homeworldNpcVariantV84(npc.id)?.src;
+            if (file) paths.add('/public' + file);
+          }
+          if (!paths.size) throw new Error('Missing local V84 cast');
+          console.log([...paths].sort().join('\n'));
+          NODE
+          git sparse-checkout add --stdin < "$RUNNER_TEMP/epilogue-npc-art"
+      - name: Check the exact application and save fixture
+        run: git diff --exit-code "$EPILOGUE_CANDIDATE_SHA" HEAD -- app tests
+      - name: Verify exact witness, archive and inheritance rules
+        run: |
+          node --experimental-strip-types --test --test-concurrency=1 tests/legacy-finale-r2.test.mjs tests/bible-cultural-save-v86.test.mjs tests/bible-cultural-scene-v86.test.mjs tests/ship-receipt-v161.test.mjs tests/origin-continuation-o6.test.mjs tests/origin-endings-v170.test.mjs tests/origin-training-yard-o6.test.mjs
+      - name: TypeScript and ESLint for the scenes
+        if: ${{ !cancelled() }}
+        run: |
+          npm run typecheck
+          node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/systems/originPracticeO6.ts app/game/systems/originContinuationO6.ts app/game/systems/legacyFinaleR2.ts app/game/save.ts app/game/OriginEndingPanelV170.tsx app/game/systems/originsV151.ts app/game/systems/originEndingsV170.ts tests/helpers/legacy-finale-r2.mjs tests/origin-continuation-o6.test.mjs tests/legacy-finale-r2.test.mjs
+      - name: Play the lesson, home transmission and physical ship archives
+        if: ${{ !cancelled() }}
+        run: |
+          node node_modules/playwright-core/cli.js install chromium
+          node scripts/qa-o6-e1-first-lesson-r2.mjs
+          cat outputs/qa-o6-e1-first-lesson-r2/report.json
+      - name: Store native captures and journey report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: o6-e1-first-lesson
+          path: outputs/qa-o6-e1-first-lesson-r2/
+          if-no-files-found: warn
