@@ -8,6 +8,7 @@ import type { HunterPieceIdV146 } from "../hunterPiecesV146";
 import { normalizeHarvestInventoryV112, type HarvestInventoryV112 } from "./harvestInventoryV112";
 import { payRepairFromArchiveV146, repairCostV146, repairPieceV146 } from "./hunterCustomizationV146";
 import { quoteUpgrade } from "./arsenal";
+import { ownsFieldToolV111 } from "./fieldToolsV111";
 
 type ArchivedMaterialV146 = HarvestInventoryV112["archive"][number];
 
@@ -125,6 +126,27 @@ export function applyHunterForgeArmorUpgradeV146(current: SaveGame, expected: Fo
       harvestV112: plan.harvest,
     },
   };
+}
+
+
+export const FORGE_FIELD_TOOL_BONE_COST_V146 = 2;
+
+/** A reinforced tool consumes secondary bone from one explicitly chosen archival lot. */
+export function planForgeToolReinforcementV146(current: SaveGame, materialKey: string | null):
+  { harvest: HarvestInventoryV112; quote: ForgeRepairQuoteV146 } | null {
+  const harvest = normalizeHarvestInventoryV112(current.inventory.harvestV112);
+  if (!harvest || harvest.reinforcedTool || !ownsFieldToolV111(current.inventory, "flaying-tool")) return null;
+  const lot = harvest.archive.find(entry => entry.partId === "bone" && forgeMaterialKeyV146(entry) === materialKey);
+  if (!lot) return null;
+  const payment = planForgeRepairMaterialsV146(harvest.archive, FORGE_FIELD_TOOL_BONE_COST_V146, materialKey);
+  if (!payment) return null;
+  return { harvest: { ...harvest, archive: payment.archive, reinforcedTool: true }, quote: payment.quote };
+}
+
+export function applyHunterForgeToolReinforcementV146(current: SaveGame, expected: ForgeRepairQuoteV146): SaveGame | null {
+  const plan = planForgeToolReinforcementV146(current, expected.materialKey);
+  if (!plan || JSON.stringify(plan.quote) !== JSON.stringify(expected)) return null;
+  return { ...current, inventory: { ...current.inventory, harvestV112: plan.harvest } };
 }
 
 export type HunterCustomizationCommitV146 =

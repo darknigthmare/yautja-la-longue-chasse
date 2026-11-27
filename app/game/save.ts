@@ -2112,7 +2112,10 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (isRecord(value.inventory) && value.inventory.harvestV112 !== undefined) {
     const raw=value.inventory.harvestV112;
     if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:"future-version"};
-    if(!normalizeHarvestInventoryV112(raw))return {save:null,failure:"invalid-save"};
+    const harvest=normalizeHarvestInventoryV112(raw);
+    if(!harvest || (harvest.reinforcedTool &&
+        (!Array.isArray(value.inventory.fieldToolIds) || !value.inventory.fieldToolIds.includes("flaying-tool"))))
+      return {save:null,failure:"invalid-save"};
   }
   // Partial fields inside a campaign are repairable. An arbitrary JSON object
   // is not a campaign and must never replace the player's existing progress.

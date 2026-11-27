@@ -12,6 +12,7 @@ export interface ConservationJobV112 {
 }
 export interface HarvestInventoryV112 {
   version: 1; specimens: FieldSpecimenV112[]; toolCondition: number;
+  reinforcedTool?: true;
   toolUseIds: string[]; jobs: ConservationJobV112[];
   settledEncounterRuns: Partial<Record<MissionId,number>>;
   archive: Array<{speciesId:string;partId:string;label:string;count:number;qualityTotal:number}>;
@@ -50,7 +51,8 @@ export function normalizeFieldSpecimenV112(raw:unknown): FieldSpecimenV112 | nul
 export function normalizeHarvestInventoryV112(raw:unknown): HarvestInventoryV112 | null {
   if (raw===undefined) return emptyHarvestInventoryV112();
   if (!object(raw) || raw.version!==1 || !Array.isArray(raw.specimens) || raw.specimens.length>HARVEST_DEPOT_LIMIT_V112 ||
-      !Number.isInteger(raw.toolCondition) || !bounded(raw.toolCondition,0,100) || !Array.isArray(raw.toolUseIds) ||
+      !Number.isInteger(raw.toolCondition) || !bounded(raw.toolCondition,0,100) ||
+      (raw.reinforcedTool!==undefined && raw.reinforcedTool!==true) || !Array.isArray(raw.toolUseIds) ||
       raw.toolUseIds.length>MAX_TOOL_RECEIPTS || raw.toolUseIds.some(x=>!id(x)) ||
       new Set(raw.toolUseIds).size!==raw.toolUseIds.length || !Array.isArray(raw.jobs) || raw.jobs.length>HARVEST_DEPOT_LIMIT_V112*4) return null;
   if(!object(raw.settledEncounterRuns)||Object.entries(raw.settledEncounterRuns).some(([key,value])=>
@@ -89,7 +91,9 @@ export function normalizeHarvestInventoryV112(raw:unknown): HarvestInventoryV112
     if(completed.length!==stages.indexOf(item.stage) ||
       completed.some(j=>!CONSERVATION_STEPS_V112.slice(0,stages.indexOf(item.stage)).some(s=>s.to===j.toStage))) return null;
   }
-  return {version:1,specimens:typed,toolCondition:raw.toolCondition,toolUseIds:[...raw.toolUseIds] as string[],jobs,settledEncounterRuns:{...raw.settledEncounterRuns} as Partial<Record<MissionId,number>>,archive};
+  return {version:1,specimens:typed,toolCondition:raw.toolCondition,
+    ...(raw.reinforcedTool===true?{reinforcedTool:true}:{}),
+    toolUseIds:[...raw.toolUseIds] as string[],jobs,settledEncounterRuns:{...raw.settledEncounterRuns} as Partial<Record<MissionId,number>>,archive};
 }
 export function harvestInventoryForV112(inventory: Pick<PlayerInventory,"harvestV112">):HarvestInventoryV112 {
   return normalizeHarvestInventoryV112(inventory.harvestV112) ?? emptyHarvestInventoryV112();
@@ -120,8 +124,11 @@ export function tryCarrySpecimenV112(items:readonly FieldSpecimenV112[],item:Fie
 export function flayingToolWorkMultiplierV112(condition:number):number {
   return 1+.65*(1-Math.min(100,Math.max(0,Number.isFinite(condition)?condition:100))/100);
 }
-export function toolConditionAfterUsesV112(condition:number,completedUses:number):number {
-  return Math.max(0,Math.min(100,condition)-Math.max(0,Math.floor(completedUses))*TOOL_WEAR_PER_COMPLETION_V112);
+export function fieldToolWearPerUseV112(reinforced = false): number {
+  return reinforced ? 4 : TOOL_WEAR_PER_COMPLETION_V112;
+}
+export function toolConditionAfterUsesV112(condition:number,completedUses:number,reinforced=false):number {
+  return Math.max(0,Math.min(100,condition)-Math.max(0,Math.floor(completedUses))*fieldToolWearPerUseV112(reinforced));
 }
 /** Each real, returned field extraction can credit its prey once. */
 function returnedRiteHonorV169(items: readonly FieldSpecimenV112[], toolUseIds: readonly string[], prefix: string): number {
@@ -172,7 +179,7 @@ export function deliverHarvestV112(save:SaveGame,rawItems:unknown,rawUseIds:unkn
   if(next.length>HARVEST_DEPOT_LIMIT_V112)return refuse("Dépôt plein : archivez des prises montées avant une nouvelle chasse.");
   const awarded = success ? returnedRiteHonorV169(items as FieldSpecimenV112[], uses as string[], prefix) : 0;
   return {ok:true,reason:"",...(awarded > 0 ? {returnedRiteHonor:awarded} : {}),inventory:{...save.inventory,harvestV112:{...ledger,specimens:next,
-    toolCondition:toolConditionAfterUsesV112(ledger.toolCondition,uses.length),
+    toolCondition:toolConditionAfterUsesV112(ledger.toolCondition,uses.length,ledger.reinforcedTool),
     toolUseIds:[...uses] as string[],settledEncounterRuns:{...ledger.settledEncounterRuns,[missionId]:run}}}};
 }
 export interface ConservationActionResultV112 {ok:boolean;save:SaveGame;message:string}

@@ -6671,6 +6671,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               onPreview={setDraftAppearanceV146}
               disabled={settingsOpen || campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue}
               allowEquipmentUpgrades={!newGamePhase && chromaticFacilityV115 !== "lab"}
+              onToolUpgrade={!newGamePhase && chromaticFacilityV115 !== "lab" && !resumableHunt ? (apply, confirmation) => {
+                const hunt = loadActiveHuntSave().save;
+                return !activeHuntSessionRef.current && hunt?.ownerSaveCreatedAt !== saveRef.current.createdAt &&
+                  commitCustomizationV146(apply, confirmation);
+              } : undefined}
               onCommit={commitCustomizationV146}
             />
             <div className="customization-layout">
