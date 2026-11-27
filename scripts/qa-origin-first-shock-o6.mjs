@@ -120,7 +120,8 @@ try {
     await walk(net);
     await saw("Rendre l’arme d’exercice").click();
     await root.waitFor({ state: "hidden" });
-    await page.locator("[data-unblooded-welcome]").waitFor();
+    await page.locator('[data-homeworld-hub="true"]').waitFor();
+    await page.getByRole("heading", { name: "La Cité des Premiers Trophées", exact: true }).waitFor();
     const final = await disk();
     assert.deepEqual(final.prologue, commonPrologue.prologue);
     assert.deepEqual(final.inventory, commonPrologue.inventory);
