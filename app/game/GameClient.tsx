@@ -1,6 +1,7 @@
 "use client";
 import { applyResidenceActionV149, emptyResidenceV149, houseForBuildingV149, houseV149, isFutureResidenceV149, normalizeResidenceV149, recordResidenceFieldEventV149, type ResidenceActionV149 } from "./systems/residenceV149";
 import ResidencePanelV149 from "./ResidencePanelV149";
+import { residenceTrophiesR2M038 } from "./systems/trophyIntroductionR2M038";
 import ResidenceLifePanelV150 from "./ResidenceLifePanelV150";
 import OriginTransitionPanelV151 from "./OriginTransitionPanelV151";
 import OriginTrophyTransitionPanelV157, { type OriginTrophyActionV157 } from "./OriginTrophyTransitionPanelV157";
@@ -5374,6 +5375,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               if (!house) return null;
               return <>
                 <ResidencePanelV149 house={house} residence={save.residenceV149} rankId={save.profile.rankId} disabled={disabled} threshold={threshold}
+                  displayedTrophies={residenceTrophiesR2M038(save, house.id)}
                   regionAllowed={regionId => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={action => residenceActionV149(house.id, action)} />
                 {!threshold && <>
                   <ResidenceLifePanelV150 house={house} residence={save.residenceV149} life={save.residenceLifeV150} rankId={save.profile.rankId} disabled={disabled}

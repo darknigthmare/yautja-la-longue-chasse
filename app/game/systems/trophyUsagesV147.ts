@@ -26,6 +26,11 @@
  */
 import type { SaveGame, TrophyQuality, TrophyRecord } from "../types";
 import { emptyHarvestInventoryV112 } from "./harvestInventoryV112";
+import { houseV149 } from "./residenceV149";
+import {
+  normalizeTrophyIntroductionR2M038, trophyIntroductionIdentity, trophyIntroductionMission,
+  trophyIntroductionResidence, type TrophyIntroductionActionR2M038, type TrophyIntroductionR2M038,
+} from "./trophyIntroductionR2M038";
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   value !== null && typeof value === "object" && !Array.isArray(value);
@@ -177,7 +182,7 @@ export function revelationLeadsForTrophyV147(
 // ---------------------------------------------------------------------------
 
 export type TrophyAssignmentV147 =
-  | { usage: "displayed"; site: TrophyDisplaySiteV147; since: string }
+  | { usage: "displayed"; site: TrophyDisplaySiteV147; since: string; residenceId?: string }
   | { usage: "worn"; since: string };
 
 export interface TrophyStudyV147 {
@@ -204,6 +209,7 @@ export interface TrophyUsagesV147 {
   assignments: Record<string, TrophyAssignmentV147>;
   studies: Record<string, TrophyStudyV147>;
   exchanges: TrophyExchangeV147[];
+  introduction?: TrophyIntroductionR2M038;
 }
 
 export function emptyTrophyUsagesV147(): TrophyUsagesV147 {
@@ -223,7 +229,7 @@ export function isFutureTrophyUsagesV147(source: unknown): boolean {
  */
 export function normalizeTrophyUsagesV147(
   source: unknown,
-  trophies: readonly Pick<TrophyRecord, "id">[],
+  trophies: readonly Pick<TrophyRecord, "id" | "missionId" | "claimedAt">[],
   normalizeTrophy: (raw: unknown) => TrophyRecord | null,
 ): TrophyUsagesV147 {
   const result = emptyTrophyUsagesV147();
@@ -254,6 +260,8 @@ export function normalizeTrophyUsagesV147(
       if (!owned.has(id) || !isRecord(raw) || !validIso(raw.since)) continue;
       if (raw.usage === "displayed" && (TROPHY_DISPLAY_SITES_V147 as readonly unknown[]).includes(raw.site)) {
         result.assignments[id] = { usage: "displayed", site: raw.site as TrophyDisplaySiteV147, since: raw.since };
+        if (raw.site === "home" && typeof raw.residenceId === "string" && houseV149(raw.residenceId))
+          result.assignments[id].residenceId = raw.residenceId;
       } else if (raw.usage === "worn") {
         worn.push([id, { usage: "worn", since: raw.since }]);
       }
@@ -273,6 +281,8 @@ export function normalizeTrophyUsagesV147(
       result.studies[id] = { studiedAt: raw.studiedAt, leadIds };
     }
   }
+  const introduction = normalizeTrophyIntroductionR2M038(source.introduction, trophies);
+  if (introduction) result.introduction = introduction;
   return result;
 }
 
@@ -283,6 +293,7 @@ export function normalizeTrophyUsagesV147(
 export type TrophyUsageV147 = "reserve" | "displayed" | "worn" | "traded";
 
 export type TrophyUsageActionV147 =
+  | TrophyIntroductionActionR2M038
   | { kind: "display"; trophyId: string; site: TrophyDisplaySiteV147 }
   | { kind: "wear"; trophyId: string }
   | { kind: "store"; trophyId: string }
@@ -296,7 +307,7 @@ export function isPersonalShipTrophyDisplayV147(assignment: TrophyAssignmentV147
   return assignment?.usage === "displayed" && assignment.site === "ship";
 }
 
-type UsageSave = Pick<SaveGame, "trophies" | "inventory"> & { trophyUsagesV147?: TrophyUsagesV147 | null };
+type UsageSave = Pick<SaveGame, "trophies" | "inventory" | "residenceV149"> & { trophyUsagesV147?: TrophyUsagesV147 | null };
 
 const stateOf = (save: UsageSave): TrophyUsagesV147 => save.trophyUsagesV147 ?? emptyTrophyUsagesV147();
 
@@ -318,6 +329,36 @@ function harvestArchiveAccepts(save: UsageSave, clanId: string): boolean {
     archive.length < HARVEST_ARCHIVE_LIMIT;
 }
 
+function checkIntroduction(save: UsageSave, trophy: TrophyRecord, action: TrophyIntroductionActionR2M038,
+  station: TrophyUsageStationV147 | undefined): TrophyUsageCheckV147 {
+  const state = stateOf(save);
+  const current = state.introduction;
+  const refuse = (reason: string): TrophyUsageCheckV147 => ({ ok: false, reason });
+  if (current?.stage === "complete") return refuse("La première installation est déjà consignée.");
+  if (action.step === "inspect") {
+    if (current) return refuse("Termine ou abandonne d’abord la prise en cours.");
+    if (state.assignments[trophy.id]) return refuse("Range d’abord la prise pour la remettre au berceau.");
+    if (!trophyIntroductionMission(trophy.missionId)) return refuse("Le lieu de chasse de cette prise est inconnu.");
+    return { ok: true };
+  }
+  if (!current || current.trophyId !== trophy.id || current.claimedAt !== trophy.claimedAt ||
+      current.missionId !== trophy.missionId) return refuse("Cette prise n’est pas celle du berceau.");
+  if (action.step === "abandon") return { ok: true };
+  if (state.assignments[trophy.id]) return refuse("Range d’abord la prise pour reprendre les gestes au berceau.");
+  if (action.step === "support") {
+    if (current.stage !== "support") return refuse("Le support est déjà réglé.");
+    return isPrepared(trophy) ? { ok: true } : refuse("Achève l’étape Monter dans l’atelier de préparation.");
+  }
+  if (action.step === "label") {
+    if (current.stage !== "provenance") return refuse("Vérifie le support avant de consigner l’étiquette.");
+    return action.missionId === current.missionId ? { ok: true } : refuse("Ce lieu ne correspond pas au rapport de chasse.");
+  }
+  if (action.step !== "install" || current.stage !== "mount") return refuse("Termine l’étiquette de provenance.");
+  if (action.site === "home" && !trophyIntroductionResidence(save.residenceV149))
+    return refuse("Une résidence active, sans déménagement en cours, est nécessaire.");
+  return checkTrophyUsageV147(save, { kind: "display", trophyId: trophy.id, site: action.site }, station);
+}
+
 /** Dit si une transition est permise, et sinon pourquoi (texte affichable). */
 export function checkTrophyUsageV147(
   save: UsageSave, action: TrophyUsageActionV147, station?: TrophyUsageStationV147,
@@ -332,6 +373,7 @@ export function checkTrophyUsageV147(
         : "Ce trophée a été échangé : l'original a quitté la collection.")
       : refuse("Trophée introuvable dans la collection.");
   }
+  if (action.kind === "introduce") return checkIntroduction(save, trophy, action, station);
   const current = state.assignments[trophy.id] ?? null;
   const touchesPersonalDisplay =
     (action.kind === "display" && action.site === "ship") ||
@@ -382,6 +424,30 @@ export function applyTrophyUsageV147<T extends UsageSave>(
   const trophy = save.trophies.find(entry => entry.id === action.trophyId)!;
   const assignments = { ...state.assignments };
   switch (action.kind) {
+    case "introduce": {
+      const identity = trophyIntroductionIdentity(trophy);
+      if (action.step === "abandon") {
+        const next = { ...state };
+        delete next.introduction;
+        return { ...save, trophyUsagesV147: next };
+      }
+      if (action.step === "install") {
+        const placed = applyTrophyUsageV147(save, { kind: "display", trophyId: trophy.id, site: action.site }, now, station);
+        if (!placed?.trophyUsagesV147) return null;
+        const next = placed.trophyUsagesV147;
+        const home = action.site === "home" ? trophyIntroductionResidence(save.residenceV149) : null;
+        if (action.site === "home" && !home) return null;
+        const assignment = next.assignments[trophy.id];
+        if (home && assignment.usage === "displayed") next.assignments[trophy.id] = { ...assignment, residenceId: home.id };
+        const introduction: TrophyIntroductionR2M038 = {
+          ...identity, stage: "complete", place: home ? { site: "home", houseId: home.id } : { site: "ship" },
+        };
+        return { ...placed, trophyUsagesV147: { ...next, introduction } };
+      }
+      const stage = action.step === "inspect" ? "support" : action.step === "support" ? "provenance" : "mount";
+      const introduction: TrophyIntroductionR2M038 = { ...identity, stage };
+      return { ...save, trophyUsagesV147: { ...state, introduction } };
+    }
     case "display":
       assignments[trophy.id] = { usage: "displayed", site: action.site, since: now };
       return { ...save, trophyUsagesV147: { ...state, assignments } } as T;
@@ -427,6 +493,8 @@ export function applyTrophyUsageV147<T extends UsageSave>(
         trophyUsagesV147: {
           ...state,
           assignments,
+          ...(state.introduction?.stage !== "complete" && state.introduction?.trophyId === trophy.id
+            ? { introduction: undefined } : {}),
           exchanges: [...state.exchanges, {
             trophy: structuredClone(trophy), clanId: action.clanId, exchangedAt: now, received,
           }].slice(-MAX_EXCHANGES),
