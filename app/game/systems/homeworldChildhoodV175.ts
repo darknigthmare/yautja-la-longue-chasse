@@ -13,6 +13,7 @@ export function childhoodRingPositionV175(beat: number) { return beat % 4 < 2 ? 
 export function childhoodSpringOpenV175(beat: number) { return beat % 5 === 2 || beat % 5 === 3; }
 
 const COMPANIONS = ["Yena", "Harek", "Tov"] as const;
+const DRILL_ORDER = ["ring", "beam", "spring"] as const;
 const JOURNAL_LIMIT = 384;
 const GATE_POSITION = 7;
 const RACK_POSITION = 8;
@@ -282,8 +283,17 @@ export function canEnterYouthAfterChildhoodV175(
   return !view.ceremony;
 }
 
+export function childhoodCeremonyRequirementV175(view: ChildhoodViewV175) {
+  if (view.trial === "handoff" || view.report) return null;
+  return view.trial ?? DRILL_ORDER.find(drill => !view.finished.includes(drill)) ?? "track";
+}
+
 export function childhoodOptionsV175(view: ChildhoodViewV175) {
-  return vocabulary.filter(event => event === "reset-current" ? !!view.trial && !view.passed : advance(view, event) !== null);
+  return vocabulary.filter(event => {
+    if (event === "reset-current") return !!view.trial && !view.passed;
+    if (event === "handoff" && childhoodCeremonyRequirementV175(view)) return true;
+    return advance(view, event) !== null;
+  });
 }
 function selectJournal(result: ReturnType<typeof inspect>, event: ChildhoodEvent | "reset-current", next: ChildhoodViewV175) {
   if (event === "reset-current") return result!.recovery;
@@ -314,12 +324,18 @@ export function actChildhoodV175(
     return { state: { ...result.ledger, revision, journal: result.recovery },
       message: "Dernier repère repris. Les gestes et indices reconnus sont conservés." };
   }
-  const recordedEvent = journeyEvent(event, !!save.youthTraining);
-  const next = advance(result?.view ?? initial(), recordedEvent);
+  const view = result?.view ?? initial();
+  const required = event === "handoff" ? childhoodCeremonyRequirementV175(view) : null;
+  if (required && view.trial) {
+    return { message: "Saar attend la fin de l’exercice. Reprends à ta position actuelle. " + view.message };
+  }
+  const recordedEvent = required ?? journeyEvent(event, !!save.youthTraining);
+  const next = advance(view, recordedEvent);
   if (!next) return { message: "Rejoins le poste de ce geste." };
   const journal = selectJournal(result, recordedEvent, next);
   if (journal.length > JOURNAL_LIMIT) return { message: "Reprends au dernier repère pour continuer." };
-  return { state: { version: ledgerVersion(next), ownerCreatedAt: save.createdAt, revision, journal } satisfies ChildhoodLedgerV175, message: next.message };
+  return { state: { version: ledgerVersion(next), ownerCreatedAt: save.createdAt, revision, journal } satisfies ChildhoodLedgerV175,
+    message: required ? "Saar reporte la passation le temps de cet exercice. " + next.message : next.message };
 }
 
 export function isChildhoodSuccessorV175(

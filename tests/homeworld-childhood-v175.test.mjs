@@ -92,6 +92,35 @@ test("M004 opens only after the real city errand and at the native training serv
   drills(pilot());
 });
 
+test("M006 opens the missing native exercise and keeps an interrupted checkpoint", () => {
+  const p = pilot(childhoodAdmissionV175({ withLocation: true, withCeremony: true }));
+  const ask = () => p.act("handoff");
+  assert.equal(youth.startYouthCampaign(p.read()), null);
+  ask();
+  assert.equal(p.view().trial, "ring");
+  assert.deepEqual(p.read().homeworld.childhoodV175.journal, ["ring"]);
+  walk(p, 3); p.act("observe"); p.act("use");
+  p.act("spring"); walk(p, 5); p.act("observe"); p.act("observe"); p.act("use");
+
+  ask();
+  assert.equal(p.view().trial, "beam");
+  walk(p, 3);
+  const reloaded = childhoodStorage.parseSaveImport(childhoodStorage.exportSave(p.read())).save;
+  const before = game.childhoodViewV175(reloaded.homeworld.childhoodV175, reloaded.createdAt);
+  const revisit = game.actChildhoodV175(reloaded, reloaded.homeworld.childhoodV175, "handoff", post);
+  assert.match(revisit.message, /Reprends à ta position actuelle/);
+  assert.equal(revisit.state, undefined, "The request cannot rewind or complete a live exercise");
+  const restored = pilot(reloaded);
+  assert.deepEqual(restored.view(), before);
+  assert.deepEqual(restored.view().finished, ["ring", "spring"]);
+  finishBeam(restored);
+  restored.act("handoff");
+  assert.equal(restored.view().trial, "track");
+  assert.equal(restored.view().track.signs, 0);
+  assert.equal(game.actChildhoodV175(restored.read(), restored.read().homeworld.childhoodV175, "use", post).state, undefined);
+  assert.equal(youth.startYouthCampaign(restored.read()), null);
+});
+
 test("M005 keeps real indices, a route under the perch and both ways of reporting", () => {
   for (const [action, report] of [["show-map", "map"], ["show-passage", "passage"]]) {
     const p = pilot();

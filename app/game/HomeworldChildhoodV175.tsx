@@ -5,7 +5,7 @@ import HomeworldCivilianV72 from "./HomeworldCivilianV72";
 import { NURSERY_ART_MANIFEST } from "./nurseryArtManifest";
 import {
   CHILDHOOD_DRILLS_V175, CHILDHOOD_TRAIL_SIGNS_V175,
-  childhoodLengthV175, childhoodOptionsV175, childhoodRingPositionV175, childhoodSpringOpenV175,
+  childhoodCeremonyRequirementV175, childhoodLengthV175, childhoodOptionsV175, childhoodRingPositionV175, childhoodSpringOpenV175,
   childhoodTrackSignV175, nextCohortGestureV175, nextCohortStowV175,
   type ChildhoodCommandV175, type ChildhoodViewV175,
 } from "./systems/homeworldChildhoodV175";
@@ -129,6 +129,7 @@ export default function HomeworldChildhoodV175({ view, message, paused, mayEnter
   const comparing = view.track?.comparing;
   const performer = nextCohortGestureV175(view);
   const stowingCompanion = nextCohortStowV175(view);
+  const pendingExercise = childhoodCeremonyRequirementV175(view);
   const title = view.trial === "handoff" ? view.ceremony ? "La passation Unblooded" : "La passation"
     : view.trial === "track" ? "La piste avant la prise" : "L’épreuve des trois gestes";
   const key = (event: KeyboardEvent<HTMLDivElement>) => {
@@ -167,6 +168,7 @@ export default function HomeworldChildhoodV175({ view, message, paused, mayEnter
         const choiceLabel = action === "track-sign" ? sign?.actual : action === "track-decoy" ? sign?.decoy
           : action === "cohort-gesture" && performer ? "Observer " + performer.name + " · " + CHILDHOOD_DRILLS_V175[performer.drill].title
           : action === "cohort-stow" && stowingCompanion ? "Voir " + stowingCompanion.name + " ranger son outil"
+          : action === "handoff" && pendingExercise ? view.trial ? "Reprendre avec Saar" : "Demander la passation"
           : undefined;
         return <button type="button" key={action} data-childhood-action={action} disabled={paused}
           onClick={() => onAction(action)}>{choiceLabel ?? (action === "use" ? interactionLabel(view) : labels[action])}</button>;
