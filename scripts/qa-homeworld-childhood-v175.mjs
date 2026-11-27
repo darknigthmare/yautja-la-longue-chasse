@@ -8,7 +8,8 @@ import { childhoodAdmissionV175, childhoodStorage, qaChildhood } from "../tests/
 import { youthBarracksFromSave } from "../tests/helpers/youth-patrol-played-route.mjs";
 
 const seed = childhoodAdmissionV175({ withLocation: true, withCeremony: true });
-seed.settings.masterVolume = 0;
+const verifyCohortAudio = process.env.CHILDHOOD_VERIFY_COHORT_AUDIO === "1";
+seed.settings.masterVolume = verifyCohortAudio ? .65 : 0;
 const model = qaChildhood.load("app/game/systems/homeworldChildhoodV175.ts");
 const rank = qaChildhood.load("app/game/systems/clanChronicle.ts");
 const storageKey = childhoodStorage.SAVE_STORAGE_KEY;
@@ -33,6 +34,27 @@ try {
     sessionStorage.setItem("childhoodV175Ready", "1");
     localStorage.setItem(key, JSON.stringify(campaign));
   }, { key: storageKey, campaign: seed });
+  if (verifyCohortAudio) await context.addInitScript(({ sampleBytes }) => {
+    const originalDecode = AudioContext.prototype.decodeAudioData;
+    const originalStart = AudioBufferSourceNode.prototype.start;
+    const recognized = new WeakSet();
+    const probe = window.__m006CohortResponse = { ready: false, starts: 0 };
+    AudioContext.prototype.decodeAudioData = function(bytes, ...callbacks) {
+      const watched = bytes.byteLength === sampleBytes;
+      return originalDecode.call(this, bytes, ...callbacks).then(buffer => {
+        if (watched && Math.abs(buffer.duration - 1.42) < .001) {
+          recognized.add(buffer);
+          probe.ready = true;
+        }
+        return buffer;
+      });
+    };
+    AudioBufferSourceNode.prototype.start = function(...args) {
+      const result = originalStart.apply(this, args);
+      if (recognized.has(this.buffer)) probe.starts++;
+      return result;
+    };
+  }, { sampleBytes: 62666 });
   page = await context.newPage();
   page.setDefaultTimeout(30000);
   page.on("pageerror", error => report.errors.push(error.message));
@@ -139,7 +161,12 @@ try {
   await page.reload(); await boot();
   assert.equal((await view()).cohortPresentations, 1);
   assert.equal((await view()).cohortStowed, 0);
+  if (verifyCohortAudio) {
+    await page.waitForFunction(() => window.__m006CohortResponse?.ready);
+    assert.equal(await page.evaluate(() => window.__m006CohortResponse?.starts), 0);
+  }
   await act("cohort-stow");
+  if (verifyCohortAudio) await page.waitForFunction(() => window.__m006CohortResponse?.starts === 1);
   for (const [name, prop] of [["Harek", "beam"], ["Tov", "spring"]]) {
     assert((await scene.locator("[data-childhood-action=cohort-gesture]").innerText()).includes(name));
     await act("cohort-gesture");
@@ -148,6 +175,14 @@ try {
   }
   assert.equal((await view()).cohortPresentations, 3);
   assert.equal((await view()).cohortStowed, 3);
+  if (verifyCohortAudio) {
+    await page.waitForFunction(() => window.__m006CohortResponse?.starts === 3);
+    await page.reload(); await boot();
+    assert.equal((await view()).cohortStowed, 3);
+    await page.waitForFunction(() => window.__m006CohortResponse?.ready);
+    assert.equal(await page.evaluate(() => window.__m006CohortResponse?.starts), 0);
+    report.checks.push("Three starts of the original cohort response, one per tool returned, and no replay after reloading.");
+  }
   await shot("outils-de-la-cohorte");
   await walk(4); await act("use");
   await walk(7);

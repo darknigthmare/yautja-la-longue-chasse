@@ -12,8 +12,10 @@ const source = await readFile(sourceUrl, 'utf8');
 const built = await build({ stdin: { contents: source.replace('export default function HuntCanvas', 'function HuntCanvas') + `
 export { makeGameState, makeEnemy, applyHuntInsertion, updateHuntInsertionCompanions, commandHuntCompanion,
   visibleHuntCompanionTarget, updateRegularEnemy, updateProjectiles, captureCheckpoint,
-  serializeActiveHuntCheckpoint, deserializeActiveHuntCheckpoint, restoreCheckpoint, resultFor, interact, updatePlayer, snapshot };
+  serializeActiveHuntCheckpoint, deserializeActiveHuntCheckpoint, restoreCheckpoint, resultFor, interact, updatePlayer, snapshot,
+  emitNoise };
 export * from './systems/huntInsertion';
+export { ACHERON_VACUUM_MISSION } from './systems/acheronVacuum';
 export { DEFAULT_PLAN, EXPEDITION_MEMBER_SIZE } from './systems/planetInsertion';
 export { WORLD_BLUEPRINTS_BY_MISSION, worldBlueprintFor } from './systems/worldBlueprints';
 export { applyExplorationWorld } from './systems/explorationRegions';
@@ -118,6 +120,7 @@ test('camouflaged approaches reduce real patrol bodies and awareness across the 
     let fewerPatrols = 0;
     for (const missionId of Object.keys(r.WORLD_BLUEPRINTS_BY_MISSION)) {
       const normal = fixture('ship', team, missionId), cloaked = fixture('ship', team, missionId, 'live-session', true);
+      const vacuum = missionId === r.ACHERON_VACUUM_MISSION;
       const ids = cloaked.state.insertion.patrolIds;
       assert.ok(ids.length <= (team === 'triad' ? 2 : 1), `${missionId}/${team}`);
       assert.ok(ids.every(id => normal.state.insertion.patrolIds.includes(id)), 'camouflage removes pressure, not unrelated world actors');
@@ -127,17 +130,49 @@ test('camouflaged approaches reduce real patrol bodies and awareness across the 
         const enemy = cloaked.state.enemies.find(entry => entry.id === id);
         assert.ok(enemy?.alive && enemy.active && enemy.health > 0, 'the advertised patrol is a living simulation body');
         assert.ok(enemy.x + enemy.width / 2 >= cloaked.state.world.spawn.x + 950);
-        close(cloaked.state.aiBrains[id].suspicion, team === 'triad' ? .40 : .32);
-        close(normal.state.aiBrains[id].suspicion, team === 'triad' ? .72 : .64);
+        if (!vacuum) {
+          close(cloaked.state.aiBrains[id].suspicion, team === 'triad' ? .40 : .32);
+          close(normal.state.aiBrains[id].suspicion, team === 'triad' ? .72 : .64);
+        }
       }
       assert.equal(cloaked.state.insertion.searchUntil, 18); assert.equal(normal.state.insertion.searchUntil, 35);
       assert.equal(cloaked.state.player.cloaked, false, 'ship camouflage does not grant player invisibility');
       assert.equal(cloaked.state.player.energy, normal.state.player.energy, 'ship auxiliary power is separate from hunter armor');
       assert.deepEqual(plain(cloaked.state.insertion.companions), plain(normal.state.insertion.companions));
-      assert.match(cloaked.state.message, /Approche camouflée terminée.*bruit des moteurs/);
-      assert.doesNotMatch(cloaked.state.message, /Vaisseau repéré/);
+      if (!vacuum) {
+        assert.match(cloaked.state.message, /Approche camouflée terminée.*bruit des moteurs/);
+        assert.doesNotMatch(cloaked.state.message, /Vaisseau repéré/);
+      }
     }
     assert.ok(fewerPatrols > 0, `the ${team} route must reduce actual patrol count, not only its UI ceiling`);
+  }
+});
+
+test('on Acheron, the landing flash alerts nearby sentinels without carrying sound', () => {
+  for (const [shipCloak, suspicion] of [[false, .64], [true, .32]]) {
+    const f = fixture('ship', 'solo', r.ACHERON_VACUUM_MISSION, 'live-session', shipCloak);
+    const { state, mission } = f;
+    // Keep the sightline clear so only the distance to the flash gates the two sentinels.
+    state.world = { ...state.world, platforms: [], covers: [] };
+    state.insertion.alertedIds = [];
+    const flash = { x: state.insertion.origin.x, y: state.insertion.origin.y - 60 };
+    const nearby = regular(f, { id: 'visible-sentinel', x: flash.x + 420 });
+    const far = regular(f, { id: 'distant-sentinel', x: flash.x + 1_150 });
+
+    r.applyHuntInsertion(state, mission, 'hunter');
+
+    assert.ok(state.insertion.alertedIds.includes(nearby.id));
+    close(state.aiBrains[nearby.id].suspicion, suspicion);
+    assert.equal(state.aiBrains[nearby.id].mode, 'search');
+    assert.deepEqual(plain(state.aiBrains[nearby.id].lastKnownTarget), flash);
+    assert.ok(!state.insertion.alertedIds.includes(far.id));
+    assert.equal(state.aiBrains[far.id].suspicion, 0);
+    assert.match(state.message, /sentinelles à portée.*lueur du moteur/);
+    assert.doesNotMatch(state.message, /bruit/);
+
+    const soundCount = state.noiseEvents.length;
+    r.emitNoise(state, 'landing', 1, 1_400, flash);
+    assert.equal(state.noiseEvents.length, soundCount, 'vacuum suppresses the landing sound inside the sound radius');
   }
 });
 

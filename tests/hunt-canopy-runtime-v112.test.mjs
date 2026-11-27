@@ -10,7 +10,7 @@ const url=new URL("../app/game/HuntCanvas.tsx",import.meta.url);
 const source=await readFile(url,"utf8");
 const bundle=await build({stdin:{contents:`${source.replace("export default function HuntCanvas","function HuntCanvas")}
 export {makeGameState,updatePlayer,captureCheckpoint,restoreCheckpoint,serializeActiveHuntCheckpoint,deserializeActiveHuntCheckpoint,currentCanopyNavigationV112,
- makeEnemy,damageEnemy,riteContextV77,startHuntRiteV77,updateHuntRitesV77,huntFieldLoadV112,canopySupportReachableV112};
+ makeEnemy,damageEnemy,riteContextV77,startHuntRiteV77,updateHuntRitesV77,huntFieldLoadV112,canopySupportReachableV112,createDropShipArrival,interact};
 export {defaultSave} from "./save"; export {MISSION_BY_ID} from "./data";`,
 resolveDir:fileURLToPath(new URL("../app/game/",import.meta.url)),sourcefile:fileURLToPath(url),loader:"tsx"},
 bundle:true,write:false,format:"cjs",platform:"node",jsx:"automatic",loader:{".module.css":"empty"},external:["react","react/jsx-runtime","react-dom"],logLevel:"silent"});
@@ -480,4 +480,26 @@ test("an abandoned or obstructed transfer never restores an input or snaps back 
  assert.equal(f.state.player.climbing,false);
  assert.equal(f.state.player.climbZoneId,null);
  assert.equal(f.state.canopyTransfer,undefined);
+});
+
+test("native boarding refuses flight, a grip and an upper platform before accepting the beacon footing", () => {
+ const {state,mission}=fixture();
+ const {player,world}=state;
+ state.phase="extraction";
+ state.dropShip={...runtime.createDropShipArrival(),phase:"hover"};
+ const x=world.extraction.x-player.width/2;
+ const nearFloorY=world.extraction.y-player.height;
+ for(const posture of [
+  {x,y:nearFloorY,grounded:false,climbing:false},
+  {x,y:nearFloorY,grounded:true,climbing:true},
+  {x,y:nearFloorY-90,grounded:true,climbing:false},
+ ]){
+  Object.assign(player,posture);
+  runtime.interact(state,mission);
+  assert.equal(state.dropShip.phase,"hover");
+  assert.match(state.message,/au pied de la balise/);
+ }
+ Object.assign(player,{x,y:nearFloorY,grounded:true,climbing:false});
+ runtime.interact(state,mission);
+ assert.equal(state.dropShip.phase,"boarding");
 });
