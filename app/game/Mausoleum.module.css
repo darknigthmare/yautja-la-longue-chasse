@@ -22,3 +22,47 @@
   border-radius: 2px;
   background: repeating-linear-gradient(to bottom, #253631 0 23%, #a99265 24% 25%, #141d21 26% 49%, #a99265 49% 51%);
 }
+
+.root .wallMarker {
+  position: absolute;
+  top: 24%;
+  transform: translateX(-50%);
+  z-index: 3;
+  max-width: 8rem;
+  padding: .35rem .6rem;
+  font-size: clamp(.58rem, 1.2vw, .8rem);
+  background: #172325ef;
+  border-color: #c8a663;
+}
+.root .wallMarker[data-wall-registered="true"] { border-color: #85b4a1; color: #c8e1d4; }
+.museumLight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: conic-gradient(from 156deg at 35% -20%, #e9c88214 0deg 37deg, transparent 38deg 360deg);
+  opacity: .5;
+}
+.museumLight[data-mausoleum-light="true"] { opacity: 1; }
+.museumLight::after {
+  content: "";
+  position: absolute;
+  inset: 10% 31% 24% 17%;
+  background: radial-gradient(circle at 19% 30%, #f3d9a57a 0 1px, transparent 2px),
+    radial-gradient(circle at 77% 19%, #f3d9a54d 0 1px, transparent 2px),
+    radial-gradient(circle at 41% 53%, #f3d9a55c 0 1px, transparent 2px),
+    radial-gradient(circle at 61% 72%, #f3d9a56b 0 1px, transparent 2px);
+  animation: wallDust 12s ease-in-out infinite alternate;
+}
+@keyframes wallDust { to { transform: translate(.9rem, -.6rem); opacity: .45; } }
+.wallLedger { margin: 1rem 0; }
+.wallLedger > div {
+  display: grid;
+  grid-template-columns: minmax(7rem, 1fr) minmax(8rem, 1fr);
+  align-items: center;
+  gap: .65rem;
+  padding: .65rem 0;
+  border-bottom: 1px solid #9d87624d;
+}
+.wallLedger dd { margin: 0; color: #d0b58e; font-size: .85rem; }
+@media (max-width: 600px) { .root .wallMarker { max-width: 5.5rem; } }
+@media (prefers-reduced-motion: reduce) { .museumLight::after { animation: none; } }
