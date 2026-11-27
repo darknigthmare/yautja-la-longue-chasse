@@ -64,6 +64,7 @@ export type GameSfxId =
   | "snare"
   | "enemy-alert"
   | "objective"
+  | "ceremony-rack"
   | "hit"
   | "trophy"
   | "field-work"
@@ -544,6 +545,9 @@ export class GameAudio {
       case "objective":
         this.objective();
         break;
+      case "ceremony-rack":
+        this.ceremonyRack();
+        break;
       case "hit":
         this.hit();
         break;
@@ -765,6 +769,17 @@ export class GameAudio {
         filterFrequency: 1_650,
       });
     });
+  }
+
+  private ceremonyRack(): void {
+    if (this.fileAudio.playSfx("ceremony-rack")) return;
+    const now = this.readyTime();
+    if (now === null) return;
+
+    this.tone(86, { at: now, endFrequency: 52, duration: .16, gain: .075, type: "sine" });
+    this.noise({ at: now + .08, duration: .45, gain: .045,
+      filterType: "lowpass", filterFrequency: 460, endFilterFrequency: 120 });
+    this.tone(70, { at: now + .50, endFrequency: 49, duration: .14, gain: .04, type: "triangle" });
   }
 
   objective(): void {

@@ -27,6 +27,7 @@ const vocabulary = ["ring", "beam", "spring", "track", "east", "west", "observe"
   "track-decoy", "show-map", "show-passage", "handoff", "cohort-gesture", "cohort-stow",
   "first-mask", "first-blades", "reset-current"] as const;
 export type ChildhoodCommandV175 = typeof vocabulary[number];
+export type ChildhoodCueV175 = "ceremony-rack" | "objective";
 type ChildhoodEvent = Exclude<ChildhoodCommandV175, "reset-current"> | "begin-ceremony";
 type Drill = keyof typeof CHILDHOOD_DRILLS_V175;
 type Trial = keyof typeof ACTOR_END;
@@ -334,7 +335,10 @@ export function actChildhoodV175(
   if (!next) return { message: "Rejoins le poste de ce geste." };
   const journal = selectJournal(result, recordedEvent, next);
   if (journal.length > JOURNAL_LIMIT) return { message: "Reprends au dernier repère pour continuer." };
-  return { state: { version: ledgerVersion(next), ownerCreatedAt: save.createdAt, revision, journal } satisfies ChildhoodLedgerV175,
+  const cue: ChildhoodCueV175 | undefined = !next.ceremony ? undefined
+    : next.stowed && !view.stowed ? "ceremony-rack"
+    : next.passed && !view.passed ? "objective" : undefined;
+  return { state: { version: ledgerVersion(next), ownerCreatedAt: save.createdAt, revision, journal } satisfies ChildhoodLedgerV175, cue,
     message: required ? "Saar reporte la passation le temps de cet exercice. " + next.message : next.message };
 }
 

@@ -117,7 +117,7 @@ test("disposal cancels streams and immediate cleanup also includes sources fadin
   try { h.files.unlock(); await tick(); await h.files.startLoop("music", "combat", 0); h.files.stopLoop("music", 3); h.files.dispose(); assert.ok(h.elements.every(element => element.paused && !element.src)); } finally { h.restore(); }
 });
 test("every legacy direct SFX method and playSfx use exactly one replacement dispatch", () => {
-  const cases = [["ui","ui"], ["select","select"], ["jump","jump"], ["footstep","footstep"], ["slash","slash"], ["plasma","plasma"], ["scan","scan"], ["cloak-on","cloak",true], ["cloak-off","cloak",false], ["mask-on","mask",true], ["mask-off","mask",false], ["weapon-switch","weaponSwitch"], ["medicomp","medicomp"], ["armor-repair","armorRepair"], ["netgun","netgun"], ["snare","snare"], ["enemy-alert","enemyAlert"], ["objective","objective"], ["hit","hit"], ["trophy","trophy"], ["victory","victory"], ["defeat","defeat"]];
+  const cases = [["ui","ui"], ["select","select"], ["jump","jump"], ["footstep","footstep"], ["slash","slash"], ["plasma","plasma"], ["scan","scan"], ["cloak-on","cloak",true], ["cloak-off","cloak",false], ["mask-on","mask",true], ["mask-off","mask",false], ["weapon-switch","weaponSwitch"], ["medicomp","medicomp"], ["armor-repair","armorRepair"], ["netgun","netgun"], ["snare","snare"], ["enemy-alert","enemyAlert"], ["objective","objective"], ["ceremony-rack","ceremonyRack"], ["hit","hit"], ["trophy","trophy"], ["victory","victory"], ["defeat","defeat"]];
   for (const [id, method, argument] of cases) {
     const audio = new GameAudio(); const calls = [];
     audio.fileAudio.playSfx = value => { calls.push(value); return true; };
