@@ -181,7 +181,8 @@ try {
   await act("handoff");
   if (verifyCeremonyAudio) {
     await waitForCeremonyAudio();
-    await page.keyboard.press("Escape");
+    await page.getByRole("dialog").filter({ has: scene })
+      .getByRole("button", { name: "Revenir dans la salle", exact: true }).click();
     await scene.waitFor({ state: "hidden" });
     await waitForCeremonySilence();
     const viewport = page.locator('[data-homeworld-hub] [data-homeworld-viewport]');
