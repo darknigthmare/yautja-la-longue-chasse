@@ -17,7 +17,7 @@ jobs:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'fd7d845561932937b61e18d956e5cf3948b9597d'
+          ref: '56452302d997a73811dd8810a7f30c330123afa1'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -86,7 +86,7 @@ jobs:
           node-version: '22'
       - name: Materialize official runtime inputs and install dependencies
         run: |
-          test "$(git rev-parse HEAD)" = 'fd7d845561932937b61e18d956e5cf3948b9597d'
+          test "$(git rev-parse HEAD)" = '56452302d997a73811dd8810a7f30c330123afa1'
           node scripts/materialize-asset-raccords-20261120.mjs runtime
           npm ci --ignore-scripts --no-audit --no-fund
       - name: Verify archive compatibility and both workshop orders
@@ -104,12 +104,13 @@ jobs:
         run: |
           npx eslint app/game/HomeworldChildhoodV175.tsx app/game/HomeworldHub.tsx app/game/save.ts app/game/systems/homeworldChildhoodV175.ts app/game/systems/youthCampaign.ts app/game/systems/nurseryCampaign.ts app/game/systems/campaignSlots.ts tests/homeworld-childhood-v175.test.mjs tests/helpers/homeworld-childhood-v175.mjs scripts/qa-homeworld-childhood-v175.mjs
       - name: Play through the Homeworld handoff and open the chosen workshop
+        id: browser
         if: ${{ !cancelled() && steps.behavior.outcome == 'success' && steps.types.outcome == 'success' }}
         env:
           CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
         run: node scripts/qa-homeworld-childhood-v175.mjs
       - name: Keep the gameplay proof
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && steps.browser.outcome != 'skipped' }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: m006-ceremony-native
