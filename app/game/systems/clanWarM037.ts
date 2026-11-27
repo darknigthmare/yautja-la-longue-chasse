@@ -102,7 +102,7 @@ export function archiveCanyonPatrolM037(state: WarSimulationV85, patrol: CanyonP
   }
   const decision = canyonDecisionM037(patrol);
   if (!decision) return reject("Vérifiez les deux balises puis rejoignez l’une des sorties.");
-  if (state.revision >= 1000000 || state.reports.length >= 100000) {
+  if (state.revision >= 999999 || state.reports.length >= 100000) {
     return reject("Cette archive ne peut plus ajouter de rapport.");
   }
   const choice = decision === "consolider" ? "Consolidation recommandée au poste de garde ouest."
