@@ -71,7 +71,10 @@ export type GameSfxId =
   | "canopy-grab"
   | "canopy-release"
   | "victory"
-  | "defeat";
+  | "defeat"
+  | "vacuum-step"
+  | "vacuum-impact"
+  | "vacuum-energy";
 
 export interface GameAudioOptions { manifestUrl?: string }
 
@@ -553,6 +556,11 @@ export class GameAudio {
       case "canopy-release":
         this.fieldAction(id);
         break;
+      case "vacuum-step":
+      case "vacuum-impact":
+      case "vacuum-energy":
+        this.vacuumSuitCue(id);
+        break;
       case "victory":
         this.victory();
         break;
@@ -560,6 +568,20 @@ export class GameAudio {
         this.defeat();
         break;
     }
+  }
+
+  /** Contact transmitted through the suit and signals generated inside its display. */
+  private vacuumSuitCue(id: "vacuum-step" | "vacuum-impact" | "vacuum-energy"): void {
+    const now = this.readyTime();
+    if (now === null) return;
+    if (id === "vacuum-energy") {
+      this.tone(340, { at: now, duration: 0.16, endFrequency: 175, gain: 0.035,
+        type: "sine", filterFrequency: 560 });
+      return;
+    }
+    const impact = id === "vacuum-impact";
+    this.noise({ at: now, duration: impact ? 0.19 : 0.085, gain: impact ? 0.075 : 0.035,
+      filterType: "lowpass", filterFrequency: impact ? 310 : 240, endFilterFrequency: 90 });
   }
 
   /** Remote pod events use the existing effects bus and pause/dispose lifecycle.

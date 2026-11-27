@@ -277,6 +277,13 @@ import {
   honorRuleEventId,
 } from "./honorRules";
 import type { GameSfxId, GameMusicContext } from "./sound";
+import {
+  ACHERON_SIGNAL_LABELS,
+  ACHERON_VACUUM_MISSION,
+  acheronReceivedSignal,
+  type AcheronSignal,
+  type AcheronSignalKind,
+} from "./systems/acheronVacuum";
 import { huntFieldWorkSoundsV112 } from "./systems/huntFieldFeedbackV112";
 import { shipProfileAssetPath, type ShipId } from "./shipCatalogue";
 import { ARRIVAL_COMPLETION_ART, ARRIVAL_SPRITES, carrierArtForShip } from "./systems/planetArrivalArt";
@@ -903,6 +910,7 @@ interface GameState {
 }
 
 interface UiSnapshot {
+  acheronSignal: AcheronSignalKind | null;
   canopyNavigationV112: CanopyNavigationV112 | null;
   houndV147: HoundUiV147 | null;
   podRecovery: (HuntPodSafety & { phase: 'ready' | 'countdown' | 'destroyed'; remainingSeconds: number; count: number }) | null;
@@ -1801,18 +1809,23 @@ function applyHuntInsertion(state: GameState, mission: MissionDefinition, diffic
   }
   state.insertion.patrolIds = actualPatrolIds;
   if (pressure.initialSuspicion <= 0) return;
+  const vacuum = mission.id === ACHERON_VACUUM_MISSION;
+  const arrival = { x: state.insertion.origin.x, y: state.insertion.origin.y - 60 };
   for (const enemy of state.enemies) {
     if (enemy.boss || state.insertion.alertedIds.includes(enemy.id) ||
         (!actualPatrolIds.includes(enemy.id) && Math.abs(enemy.x - state.insertion.origin.x) > 2_200)) continue;
+    if (vacuum && !canAcheronObserveFlash(state, enemy, arrival)) continue;
     const brain = state.aiBrains[enemy.id] ?? createAiBrain(enemy.id, enemy.kind);
     state.aiBrains[enemy.id] = { ...brain, mode: 'search', suspicion: Math.max(brain.suspicion, pressure.initialSuspicion),
       lastKnownTarget: { x: state.insertion.origin.x, y: state.insertion.origin.y - 60 }, timeInMode: 0 };
     state.insertion.alertedIds.push(enemy.id);
   }
   state.message = state.insertion.plan.method === 'ship'
-    ? state.insertion.plan.shipCloak
-      ? 'Approche camouflée terminée. Des patrouilles enquêtent sur le bruit des moteurs.'
-      : 'Vaisseau repéré. Des patrouilles cherchent le point d’atterrissage.'
+    ? vacuum
+      ? 'Les sentinelles à portée peuvent repérer la lueur du moteur.'
+      : state.insertion.plan.shipCloak
+        ? 'Approche camouflée terminée. Des patrouilles enquêtent sur le bruit des moteurs.'
+        : 'Vaisseau repéré. Des patrouilles cherchent le point d’atterrissage.'
     : 'La triade est au sol. Les chasseurs attendent tes ordres.';
   state.messageTimer = 5;
 }
@@ -1856,6 +1869,7 @@ function updateHuntPodRecovery(state: GameState, delta: number): void {
   }
   if (result.event !== 'detonated') return;
   const covers = state.world.covers.filter(cover => !state.brokenPillarIds.has(cover.id));
+  const vacuum = state.world.missionId === ACHERON_VACUUM_MISSION;
   for (const pod of anchors) {
     emitNoise(state, 'weapon', 1, HUNT_POD_RECOVERY.noiseRadius, pod, `pod-recovery:${pod.id}`);
   }
@@ -1863,12 +1877,14 @@ function updateHuntPodRecovery(state: GameState, delta: number): void {
   for (const enemy of state.enemies) {
     if (!enemy.alive || !enemy.active || enemy.boss) continue;
     const position = { x: enemy.x + enemy.width / 2, y: enemy.y + enemy.height / 2 };
-    const heard = noises.filter(noise => perceivedNoise(noise, { position, elapsedSeconds: state.elapsed,
-      hearingMultiplier: enemy.kind === 'beast' ? 1.28 : enemy.kind === 'yautja' ? 1.15 : 1,
-      occlusion: calculateLineOfSightOcclusion(position, noise, covers), wind: sampleWind(state.world.wind, state.elapsed, position.x) }));
-    if (!heard.length) continue;
+    const signals = vacuum
+      ? anchors.filter(pod => canAcheronObserveFlash(state, enemy, { x: pod.x, y: pod.y - 24 }))
+      : noises.filter(noise => perceivedNoise(noise, { position, elapsedSeconds: state.elapsed,
+        hearingMultiplier: enemy.kind === 'beast' ? 1.28 : enemy.kind === 'yautja' ? 1.15 : 1,
+        occlusion: calculateLineOfSightOcclusion(position, noise, covers), wind: sampleWind(state.world.wind, state.elapsed, position.x) }));
+    if (!signals.length) continue;
     recovery.alertedIds.push(enemy.id);
-    const nearest = heard.sort((a, b) => distance(a, position) - distance(b, position))[0];
+    const nearest = signals.sort((a, b) => distance(a, position) - distance(b, position))[0];
     const brain = state.aiBrains[enemy.id] ?? createAiBrain(enemy.id, enemy.kind);
     if (brain.mode !== 'engage' && brain.mode !== 'flee') state.aiBrains[enemy.id] = { ...brain, mode: 'search',
       suspicion: Math.max(brain.suspicion, .72), lastKnownTarget: { x: nearest.x, y: nearest.y - 60 }, timeInMode: 0 };
@@ -2628,11 +2644,11 @@ function restoreCheckpoint(
         : [],
     goreParticles: [],
     scentNodes:
-      mode === "resume"
+      mode === "resume" && state.world.missionId !== ACHERON_VACUUM_MISSION
         ? checkpoint.scentNodes.map((node) => ({ ...node }))
         : [],
     noiseEvents:
-      mode === "resume"
+      mode === "resume" && state.world.missionId !== ACHERON_VACUUM_MISSION
         ? checkpoint.noiseEvents.map((event) => ({ ...event }))
         : [],
     tracks:
@@ -2939,6 +2955,25 @@ function visibleHuntAnnouncementV78(state: GameState): string {
 }
 
 function queueSound(state: GameState, sound: GameSfxId): void {
+  if (state.world.missionId === ACHERON_VACUUM_MISSION) {
+    switch (sound) {
+      case "enemy-alert":
+      case "pod-detonate":
+        return;
+      case "jump":
+      case "footstep":
+        sound = "vacuum-step";
+        break;
+      case "plasma":
+      case "scan":
+        sound = "vacuum-energy";
+        break;
+      case "hit":
+      case "slash":
+        sound = "vacuum-impact";
+        break;
+    }
+  }
   if (state.soundEvents.length < 24) {
     state.soundEvents.push(sound);
   }
@@ -3175,6 +3210,7 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
   const actorAt={x:state.player.x+state.player.width/2,y:state.player.y+state.player.height/2};
   const icePrompt = mission.id === ICE_MISSION_ID ? iceExplorationHint(state.exploration, state.player) : null;
   return {
+    acheronSignal: acheronCues.get(state)?.detected?.kind ?? null,
     canopyNavigationV112: currentCanopyNavigationV112(state),
     houndV147: houndUiV147(state),
     podRecovery: state.insertion?.podRecovery ? {
@@ -6330,6 +6366,65 @@ function activeSurface(state: GameState, worldX: number): TrackSurface {
   return state.world.surfaces[0];
 }
 
+interface AcheronHuntCues {
+  impactUntil: number;
+  plasmaUntil: number;
+  detected: AcheronSignal | null;
+  contactedEnemy: string | null;
+  contactUntil: number;
+}
+
+const acheronCues = new WeakMap<GameState, AcheronHuntCues>();
+
+function activeAcheronCues(state: GameState): AcheronHuntCues {
+  const current = acheronCues.get(state);
+  if (current) return current;
+  const cues: AcheronHuntCues = {
+    impactUntil: 0,
+    plasmaUntil: 0,
+    detected: null,
+    contactedEnemy: null,
+    contactUntil: 0,
+  };
+  acheronCues.set(state, cues);
+  return cues;
+}
+
+function canAcheronObserveFlash(state: GameState, receiver: EnemyState, source: Vec2): boolean {
+  const center = { x: receiver.x + receiver.width / 2, y: receiver.y + receiver.height / 2 };
+  return distance(center, source) <= 920 &&
+    !huntStructuralBarrierV94(center, source, state.world.platforms) &&
+    calculateLineOfSightOcclusion(center, source,
+      state.world.covers.filter(cover => !state.brokenPillarIds.has(cover.id))) < 0.72;
+}
+
+function detectAcheronHunter(
+  state: GameState,
+  receiver: EnemyState,
+  energyObstructed: boolean,
+): AcheronSignal | null {
+  const cues = activeAcheronCues(state);
+  const player = state.player;
+  const plasmaEmission = Math.max(0, (cues.plasmaUntil - state.elapsed) / 2);
+  const scanEmission = state.scanPulse > 0 ? 0.86 : 0;
+  const signal = acheronReceivedSignal({
+    receiver,
+    hunter: player,
+    grounded: player.grounded,
+    speed: player.velocityX,
+    recentImpact: Math.max(0, (cues.impactUntil - state.elapsed) / 0.42),
+    directContact: cues.contactedEnemy === receiver.id && state.elapsed < cues.contactUntil,
+    energyEmission: Math.max(plasmaEmission, scanEmission),
+    energyObstructed,
+    floorY: state.world.floorY,
+    platforms: state.world.platforms,
+  });
+  if (signal && (!cues.detected || cues.detected.strength < signal.strength)) {
+    cues.detected = signal;
+  }
+  return signal;
+}
+
 function emitNoise(
   state: GameState,
   kind: NoiseEvent["kind"],
@@ -6338,6 +6433,7 @@ function emitNoise(
   position: Vec2,
   sourceId = "hunter",
 ): void {
+  if (state.world.missionId === ACHERON_VACUUM_MISSION) return;
   const loadNoise = sourceId === "hunter" && (kind === "footstep" || kind === "landing")
     ? (state.fieldLoadV112?.noiseMultiplier ?? 1) : 1;
   state.noiseEvents.push({
@@ -6627,26 +6723,30 @@ function updateHuntSignals(
     speedRatio: clamp(Math.abs(player.velocityX) / 300, 0, 1),
   });
 
-  state.scentNodes = [
-    ...advanceScentField(
-      state.scentNodes,
-      delta,
-      (x) => sampleWind(state.world.wind, state.elapsed, x),
-      surface.scentRetention,
-    ),
-  ].slice(-80);
+  const inVacuum = mission.id === ACHERON_VACUUM_MISSION;
+  if (inVacuum) {
+    state.scentNodes = [];
+    state.noiseEvents = [];
+    activeAcheronCues(state).detected = null;
+  } else {
+    state.scentNodes = [
+      ...advanceScentField(
+        state.scentNodes,
+        delta,
+        (x) => sampleWind(state.world.wind, state.elapsed, x),
+        surface.scentRetention,
+      ),
+    ].slice(-80);
+    state.noiseEvents = state.noiseEvents.filter(
+      (noise) => state.elapsed - noise.createdAtSeconds <= noise.durationSeconds,
+    ).slice(-48);
+  }
   state.tracks = [
     ...(ageTracks(
       state.tracks,
       state.elapsed,
     ) as readonly ObservedTrackMark[]),
   ].slice(-240);
-  state.noiseEvents = state.noiseEvents
-    .filter(
-      (noise) =>
-        state.elapsed - noise.createdAtSeconds <= noise.durationSeconds,
-    )
-    .slice(-48);
 
   if (
     player.grounded &&
@@ -6690,7 +6790,7 @@ function updateHuntSignals(
     state.lastTrackAt = state.elapsed;
   }
 
-  if (state.elapsed >= state.nextScentAt) {
+  if (!inVacuum && state.elapsed >= state.nextScentAt) {
     state.scentNodes.push(
       createScentNode({
         id: `scent-${state.nextSignalId++}`,
@@ -7623,6 +7723,11 @@ function updatePlayerMeleeCombat(
       ? Math.max(attack.damage, enemy.health)
       : attack.damage;
     damageEnemy(state, mission, enemy, resolvedDamage, "melee");
+    if (mission.id === ACHERON_VACUUM_MISSION && enemy.boss && enemy.alive) {
+      const cues = activeAcheronCues(state);
+      cues.contactedEnemy = enemy.id;
+      cues.contactUntil = state.elapsed + 0.75;
+    }
     player.melee = registerHuntMeleeTargetHit(player.melee, enemy.id);
     if (!enemy.alive) continue;
 
@@ -7832,6 +7937,9 @@ function playerWeapon(
   );
   state.playerUsedRangedWeapon = true;
   state.playerUsedEnergyWeapon = attack.energyCost > 0;
+  if (mission.id === ACHERON_VACUUM_MISSION && state.playerUsedEnergyWeapon) {
+    activeAcheronCues(state).plasmaUntil = state.elapsed + 2;
+  }
   emitNoise(
     state,
     "weapon",
@@ -9039,6 +9147,10 @@ function updatePlayer(
     player.climbReattachSeconds = 0;
   }
   if (!wasGrounded && player.grounded && impactVelocity > 180) {
+    if (mission.id === ACHERON_VACUUM_MISSION) {
+      activeAcheronCues(state).impactUntil = state.elapsed + 0.42;
+      queueSound(state, "vacuum-impact");
+    }
     emitNoise(
       state,
       "landing",
@@ -9295,6 +9407,9 @@ function updateRegularEnemy(
     (player.cloaked ? 1 : state.camouflageV146 ?? 1) *
     facingVisibility *
     (1 - coverOcclusion * 0.9) * (structuralOcclusion ? 0 : 1);
+  const vacuumSignal = mission.id === ACHERON_VACUUM_MISSION && !targetCompanion
+    ? detectAcheronHunter(state, enemy, structuralOcclusion || coverOcclusion >= 0.72)
+    : null;
   const thermalContact =
     enemy.kind === "human"
       ? 0
@@ -9398,7 +9513,7 @@ function updateRegularEnemy(
     self: selfPosition,
     target: targetPosition,
     healthRatio: enemy.health / enemy.maxHealth,
-    visualContact,
+    visualContact: Math.max(visualContact, vacuumSignal?.strength ?? 0),
     thermalContact,
     heardNoise,
     scentStrength: scent.strength,
@@ -9859,6 +9974,12 @@ function updateBoss(
       (cover) => !state.brokenPillarIds.has(cover.id),
     ),
   );
+  const inAcheronVacuum = mission.id === ACHERON_VACUUM_MISSION;
+  const guardianSignal = inAcheronVacuum
+    ? detectAcheronHunter(state, boss,
+      bossCoverOcclusion >= 0.72 || huntStructuralBarrierV94(bossCenter, playerCenter, state.world.platforms))
+    : null;
+  const guardianContactLost = inAcheronVacuum && !guardianSignal;
   const bossMechanicsBeforeStep = state.bossMechanics;
   const mechanicStep = stepBossMechanics(state.bossMechanics, {
     deltaSeconds: delta,
@@ -9866,6 +9987,7 @@ function updateBoss(
     healthRatio: boss.health / boss.maxHealth,
     distanceToPlayer: distance(bossCenter, playerCenter),
     lineOfSight:
+      !guardianContactLost &&
       Math.abs(dx) < 900 &&
       bossCoverOcclusion < 0.72 &&
       !player.cloaked,
@@ -10145,6 +10267,10 @@ function updateBoss(
     boss.velocityX = 0;
     return;
   }
+  if (guardianContactLost && boss.pendingAttackId) {
+    boss.pendingAttackId = null;
+    boss.telegraph = 0;
+  }
   const wasTelegraphing = boss.telegraph > 0;
   let executedAttackId: string | null = null;
   boss.telegraph = Math.max(0, boss.telegraph - delta);
@@ -10165,6 +10291,7 @@ function updateBoss(
   }
   if (
     mechanicStep.decision.attackId &&
+    !guardianContactLost &&
     boss.telegraph <= 0 &&
     !boss.pendingAttackId
   ) {
@@ -10177,6 +10304,10 @@ function updateBoss(
     }
   }
 
+  if (guardianContactLost) {
+    boss.velocityX = 0;
+    return;
+  }
   boss.facing = dx >= 0 ? 1 : -1;
   if (boss.telegraph > 0) {
     boss.velocityX *= 0.78;
@@ -12515,7 +12646,9 @@ export default function HuntCanvas({
             {' · '}{controlActionShortcut('hunt.podSelfDestruct', activeBindings)}
           </button>}
           {ui.podRecovery.phase !== 'destroyed' && <p>La télécommande annule la séquence si un chasseur revient en danger
-            ou si la liaison radio est perdue. Le souffle signale le site aux ennemis proches.</p>}
+            ou si la liaison radio est perdue. {mission.id === ACHERON_VACUUM_MISSION
+              ? "Les sentinelles peuvent repérer l’éclair de détonation."
+              : "Le souffle signale le site aux ennemis proches."}</p>}
         </div>}
       </details>}
 
@@ -12543,6 +12676,12 @@ export default function HuntCanvas({
             scan: `${controlActionShortcut("hunt.scan", activeBindings)} / LB`,
             interact: `${controlActionShortcut("hunt.interact", activeBindings)} / B`,
           })}</span>
+          {mission.id === ACHERON_VACUUM_MISSION && (
+            <span style={styles.objectiveDetail} data-acheron-signal={ui.acheronSignal ?? "clear"}>
+              {ui.acheronSignal ? ACHERON_SIGNAL_LABELS[ui.acheronSignal]
+                : "Vide d’Achéron · le sol transmet les appuis ; le scan et le plasma révèlent ta signature."}
+            </span>
+          )}
           {ui.pilotHint && <span style={{ ...styles.objectiveDetail, color: "#d9f1ad" }}>
             {ui.pilotHint}{ui.pilotHintInteractive && ` · Interaction ${controlActionShortcut("hunt.interact", activeBindings)}`}
           </span>}
