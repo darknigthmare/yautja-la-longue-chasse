@@ -40,18 +40,26 @@ export default function HomeworldTownBellO6({ save, actor, level, interiorId, el
   const rung = record?.journal.some(event => event.action === "ring");
   const point = remaining[0] && here(remaining[0]);
   const youth = remaining.filter(action => action === "workshop" || action === "kennel");
+  const cohort = record?.race.success
+    ? record.race.connected === "harek" ? ["harek", "yena", "tov"] as const : ["yena", "tov", "harek"] as const
+    : ["yena", "tov"] as const;
+  const names = { yena: "Yena", tov: "Tov", harek: "Harek" };
   return <>
     {guide && <div className={styles.marker} style={project(guide)} data-o6-town-saar>
       <HomeworldCivilianV72 npcId="saar" role="instructor" facing={guide.facing} moving={guide.moving}
         speed={Math.hypot(actor.vx, actor.vy)} seconds={seconds} reducedMotion={reducedMotion} />
       <span className={styles.name}>Saar</span>
     </div>}
-    {guide && record?.journal.length && remaining[0] !== "regroup" && <div className={styles.marker}
-      style={project({ x: guide.x + 38, y: guide.y + 20 })} data-o6-town-cohort>
-      <HomeworldCivilianV72 npcId={record.race.connected === "harek" ? "harek" : "yena"} role="apprentice"
-        height={92} facing={guide.facing} moving={guide.moving} speed={Math.hypot(actor.vx, actor.vy)}
-        seconds={seconds} reducedMotion={reducedMotion} />
-      <span className={styles.name}>{record.race.connected === "harek" ? "Harek" : "Yena"}</span>
+    {guide && record && remaining[0] !== "regroup" && cohort.map((who, i) => <div key={who} className={styles.marker}
+      style={project({ x: guide.x - (30 + i * 27) * guide.facing, y: guide.y + 18 + i * 7 })}
+      data-o6-town-cohort={who}>
+      <HomeworldCivilianV72 npcId={who} role="apprentice" height={92} facing={guide.facing} moving={guide.moving}
+        speed={Math.hypot(actor.vx, actor.vy)} seconds={seconds} reducedMotion={reducedMotion} />
+      <span className={styles.name}>{names[who]}</span>
+    </div>)}
+    {record?.carriesPiece && <div className={styles.marker} style={project({ x: actor.x + actor.facing * 15, y: actor.y + 1 })}
+      data-o6-town-piece>
+      <span className={styles.piece} />
     </div>}
     {forgeGate && <div className={styles.marker} style={project(forgeGate)} data-o6-town-gate={open ? "open" : "closed"}>
       <span className={styles.gate} data-open={open ? "true" : "false"} />
