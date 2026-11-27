@@ -121,8 +121,8 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
     ritualClock.current.reset(); resetPosition(returnX.current);
     setSelected(null); setPhase(null); setCabinetOpen(false); setCabinetId(null); setCinemaOpen(false); setNotice("");
     requestAnimationFrame(() => (trigger.current?.isConnected ? trigger.current : scene.current)?.focus());
-  }, [resetPosition]);
-  const remove = useCallback(() => { if (paused || phase === "remove" || phase === "replace") return; if (phase) { ritualClock.current.pause(performance.now()); setPhase("remove"); } else close(); }, [phase, close, paused]);
+  }, [resetPosition, setPhase]);
+  const remove = useCallback(() => { if (paused || phase === "remove" || phase === "replace") return; if (phase) { ritualClock.current.pause(performance.now()); setPhase("remove"); } else close(); }, [phase, close, paused, setPhase]);
   const examine = () => {
     if (!nearest || blocked) return;
     trigger.current = document.activeElement as HTMLElement; returnX.current = x;
@@ -147,9 +147,12 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
     stopMovement(); setCinemaMaskHeld(false); setCinemaOpen(true); onSound?.("select");
   };
   const approach = (position: number) => { stopMovement(); target.current = position; scene.current?.focus(); };
-  const cinemaPrompt = nearCinemaCradle ? { label: "Poser le masque au socle", activate: placeCinemaMask }
-    : nearCinemaMask ? { label: cinemaMaskHeld ? "Reposer le masque" : "Prendre le masque", activate: handleCinemaMask }
-    : null;
+  const cinemaPrompt = nearCinemaCradle ? "Poser le masque au socle"
+    : nearCinemaMask ? cinemaMaskHeld ? "Reposer le masque" : "Prendre le masque" : null;
+  const interactCinema = () => {
+    if (nearCinemaCradle) placeCinemaMask();
+    else handleCinemaMask();
+  };
   const fileCabinetReading = () => {
     if (paused || !cabinetOpen || !cabinetEntry) return;
     const next = recordMausoleumCabinetReading(
@@ -215,7 +218,7 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
     if (save ? matchesControlAction("hunt.interact", event.nativeEvent, save.settings.controlBindings) : event.key === "Enter") {
       event.preventDefault();
       if (!event.repeat) {
-        if (cinemaPrompt) cinemaPrompt.activate();
+        if (cinemaPrompt) interactCinema();
         else if (nearCabinet) openCabinet();
         else examine();
       }
@@ -285,7 +288,7 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
       </button>}
       <span className={styles.actorAnchor} style={{ left: `${x / 9}%` }} data-mausoleum-actor><HomeworldModularHunter morphId={save?.appearance.bodyMorphId ?? "classic"} dreadStyleId={save?.appearance.dreadStyleId ?? "classic"} appearance={save?.appearance} className={styles.hunterBody} /></span>
       <div className={styles.prompt}>{cinemaPrompt ? <button type="button" data-m058-item-action
-        onClick={cinemaPrompt.activate}>{interactLabel} · {cinemaPrompt.label}</button>
+        onClick={interactCinema}>{interactLabel} · {cinemaPrompt}</button>
         : cinemaGallery ? <p>{cinemaMaskHeld ? "Porte le masque jusqu’au socle." : "Approche le masque de chronique."}</p>
         : nearCabinet ? <button type="button" onClick={openCabinet}>{interactLabel} · Ouvrir le casier</button>
         : nearest ? <button type="button" onClick={examine}>{interactLabel} · Examiner {nearest.title}</button>

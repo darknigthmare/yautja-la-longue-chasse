@@ -280,7 +280,7 @@ try {
     assert.equal(await campaignBytes(), originalCampaign);
   });
   results.push({ name: 'No uncaught React/browser errors', status: pageErrors.length ? 'FAIL' : 'PASS', errors: pageErrors });
-  const report = { scope: 'Actual Mausoleum component and game domain; M058 supersedes only the fixture's visible rank; placeholder images; no visual-art qualification', browser: browser.version(), results };
+  const report = { scope: 'Actual Mausoleum component and game domain. The browser fixture supplies the M058 entry rank. Artwork uses placeholder images.', browser: browser.version(), results };
   const destination = path.join(root, 'outputs', 'qa-audit-v94'); await fs.mkdir(destination, { recursive: true });
   await fs.writeFile(path.join(destination, 'mausoleum-browser.json'), JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify(report, null, 2));

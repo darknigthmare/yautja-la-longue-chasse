@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
-          ref: 1256dfca17f2ddb01ed67c239880948e627f559d
+          ref: 294773fdfdd338caddeefa60200a513265c8d783
           filter: blob:none
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -38,6 +38,8 @@ jobs:
           node-version: '22'
       - name: Install locked dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Check the Chromium driver syntax
+        run: node --check scripts/qa-mausoleum-browser-v94.mjs
       - name: Test archive and old saves
         run: node --experimental-strip-types --test tests/mausoleum.test.mjs tests/mausoleum-cinema-m058.test.mjs
       - name: Typecheck Next and lint the interacting files
