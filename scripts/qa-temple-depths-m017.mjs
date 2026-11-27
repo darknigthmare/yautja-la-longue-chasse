@@ -103,7 +103,11 @@ try {
     await page.keyboard.up(jump);
     await page.keyboard.up(right);
     await page.clock.runFor(480);
-    const state = await live();
+    let state = await live();
+    for (let i = 0; i < 16 && state.player.vy !== 0; i++) {
+      await page.clock.runFor(30);
+      state = await live();
+    }
     assert.equal(state.player.y, height, JSON.stringify(state.player));
     assert.equal(state.player.vy, 0);
   }

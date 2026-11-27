@@ -44,7 +44,7 @@ import HomeworldTownBellO6 from "./HomeworldTownBellO6";
 import { beginRivalRaceO6, rivalRaceCanStartO6, type RivalRaceRecordO6 } from "./systems/originRivalRaceO6";
 import { beginLittleTrailO6, littleTrailCanStartO6, type LittleTrailRecordO6 } from "./systems/originLittleTrailO6";
 import { TWILIGHT_AMBITIONS_O6, TWILIGHT_CHOICES_O6, TWILIGHT_LABELS_O6, recordTwilightReturnO6, twilightActionsO6,
-  twilightInteractionO6, twilightReplyO6, twilightSiteO6, type TwilightOrderO6, type TwilightReturnRecordO6 } from "./systems/originTwilightReturnO6";
+  twilightInteractionO6, twilightReplayOpenO6, twilightReplyO6, twilightSiteO6, type TwilightOrderO6, type TwilightReturnRecordO6 } from "./systems/originTwilightReturnO6";
 import HomeworldTwilightReturnO6 from "./HomeworldTwilightReturnO6";
 import { atRivalWorkshopO6, RIVAL_WORKSHOP_O6 } from "./systems/originRivalRacePlaceO6";
 import { recordTownBellOrderO6, townBellActionsO6, type TownBellActionO6, type TownBellRecordO6 } from "./systems/originTownBellO6";
@@ -1778,6 +1778,8 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   const workshopLabel = workshopAtPost ? (littleTrailAvailable ? "Suivre Saar à la lisière" : "Rejoindre Harek sur les toits") : undefined;
   const twilightActions = twilightActionsO6(save);
   const twilightActive = twilightActions.length > 0;
+  const twilightReplays = twilightReplayOpenO6(save);
+  const twilightDusk = twilightActive || (twilightReplays && levelIdV77 === twilightSiteO6("saar").levelId);
   const twilightFirst = twilightActions[0];
   const twilightAction = !transitV77 && !skiffV77 ? twilightInteractionO6(save, levelIdV77, actor, interiorId) : undefined;
   const interactionLabel = (townBellAction ? TOWN_BELL_LABELS_O6[townBellAction]
@@ -1808,7 +1810,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
         disabled={cargoMigrationPendingV108 || suspended || paused || inactive || !!dialog || !!transitV77 || !motionAssetsV74.ready}
         onOpenChange={open => { clearInputs(); spatialCodexOpenRef.current = open; pausedRef.current = paused || inactive || open || !motionAssetsV74.ready; setSpatialCodexOpen(open);
           if (!open) requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true })); }} />
-      {!interior && <div className={styles.sky} aria-hidden="true" style={twilightActive ? {
+      {!interior && <div className={styles.sky} aria-hidden="true" style={twilightDusk ? {
         background: "radial-gradient(ellipse at 32% 5%, #8b4b4b66, transparent 58%), linear-gradient(#191832,#1c1829 42%,#100f17)"
       } : undefined} />}
       <div className={styles.world} aria-hidden="true" data-homeworld-camera-mode={camera.mode} data-homeworld-camera-zoom={zoom.toFixed(3)} style={{ pointerEvents: 'none', width: sceneWidth, height: sceneDepth * HOMEWORLD_GEOMETRY_V64.depthScale, transform: `translate(${-cameraX * zoom}px,${-cameraY * zoom}px) scale(${zoom})` }}>
@@ -1816,7 +1818,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
           : <HomeworldWorldSceneV77 archivistActiveV111={!!dialog?.archivePlaqueV109&&dialog.archivePlaqueV109.owner===save.createdAt&&nearbyPlaqueHostV109} archivistPausedV111={archivistPausedV111} archivistSequenceV111={archivistSequenceV111} archivePlaqueV109={progress.visitedDistrictIds.includes('port')&&motionAssetsV74.ready?plaqueEffectiveViewV111:undefined} cargoV108={cargoViewV108} comparisonV107={comparisonViewV107} archiveV106={archiveViewV106} archiveActiveV106={nearbyArchivistV106} actor={actor} levelId={levelIdV77} camera={camera} seconds={phase} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} activeCartographyV104={nearbyCartographerV104} cartographyHighPointV105={cartographyActiveV105(progress.cartographyV105)} activeStreetContactV100={!nearbyConnectorV77&&!nearestDoor&&!nearest&&!nearbyCntlipHostV77&&!nearbyCartographerV104?nearbyStreetContactV100?.id:null} youthWelcome={youthWelcome} skiffActive={!!skiffV77} reducedMotion={reducedMotionV77} transit={transitV77} liftStateV83={liftSessionOwnerV83 === save.createdAt ? liftStateV83 : null} />}
         {!transitV77 && !skiffV77 && townBellActions.length > 0 && <HomeworldTownBellO6 save={save} actor={actor} level={levelIdV77}
           interiorId={interiorId} elevation={elevationV77} seconds={phase} reducedMotion={reducedMotionV77} />}
-        {twilightActive && !interior && !transitV77 && !skiffV77 && <HomeworldTwilightReturnO6
+        {(twilightActive || twilightReplays) && !interior && !transitV77 && !skiffV77 && <HomeworldTwilightReturnO6
           level={levelIdV77} elevation={elevationV77} receipt={save.originV151?.twilightReturnO6} />}
         {workshopPost && <div className={styles.saarGuideM003} data-o6-rival-host={rivalRaceAvailable || undefined}
           data-o6-little-trail-host={littleTrailAvailable || undefined} style={{ left: workshopPost.x, top: workshopPost.y,

@@ -56,6 +56,13 @@ test("Each physical step survives a load, re-listening is non-mutating and the f
     for (const field of ["profile", "prologue", "youthTraining", "trophies", "loadout"]) assert.deepEqual(complete[field], full[field]);
     assert.deepEqual(complete.originV151.littleTrailO6, full.originV151.littleTrailO6);
     assert.deepEqual(twilight.twilightActionsO6(complete), []);
+    assert.equal(twilight.twilightReplayOpenO6(complete), true);
+    for (const id of listened) {
+      const site = twilight.twilightSiteO6(id);
+      assert.equal(twilight.twilightInteractionO6(complete, site.levelId, site.point, null), id);
+      assert.equal(twilight.recordTwilightReturnO6(complete, order(id), twilightCheckpointO6(complete, id)), null);
+    }
+    assert.match(twilight.twilightReplyO6(complete, order(partial ? "harek" : "yena")), partial ? /prochaine course/ : /cartes/);
   }
 });
 
@@ -80,6 +87,7 @@ test("A wrong site, altered evidence, or stale write cannot advance the receipt;
   assert.ok(chosen.ok);
   const late = { ...full, profile, originV151: chosen.state };
   assert.equal(twilight.keepsTwilightReturnO6(full, late), true);
+  assert.equal(twilight.twilightReplayOpenO6(late), false);
   const parsed = town.parseSaveImport(JSON.stringify(late));
   assert.equal(parsed.failure, null);
   assert.equal(parsed.save.originV151.ending.originEndingId, "O6-E1");
