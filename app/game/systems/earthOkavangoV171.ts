@@ -1,5 +1,7 @@
 import type { ShipId } from "../shipCatalogue";
 import type { SaveGame } from "../types";
+import { advanceLionSurveyV174, createLionSurveyV174, readLionSurveyOrderV174,
+  type LionSurveyOrderV174, type LionSurveyViewV174 } from "./earthLionSurveyV174";
 import { firstInterstellarReceiptV173 } from "./firstInterstellarV173";
 import { shipAcquisitionEligibleV89 } from "./shipAcquisitionV89";
 import { shipReceiptV161 } from "./shipReceiptV161";
@@ -54,10 +56,11 @@ export type EarthOkavangoOrderV171 =
   | { kind: "move"; direction: Direction }
   | { kind: "insert" | "analyse" | "scan" | "extract" | "begin-orbit" | "return-orbit" | "finish-orbit" }
   | { kind: "pilot-orbit"; action: EarthOrbitManeuverV171 }
-  | { kind: "scan-orbit"; zone: Zone };
+  | { kind: "scan-orbit"; zone: Zone }
+  | LionSurveyOrderV174;
 export type EarthOkavangoStateV171 = {
   owner: string; hullInstanceId: string; orders: EarthOkavangoOrderV171[];
-} & ({ version: EarthSurveyVersion } | { version: 3; surveyVersion: EarthSurveyVersion });
+} & ({ version: EarthSurveyVersion } | { version: 3 | 4; surveyVersion: EarthSurveyVersion });
 export type EarthOkavangoViewV171 = {
   phase: "registry" | "orbit" | "ground" | "returned";
   zone: Zone | null;
@@ -68,10 +71,11 @@ export type EarthOkavangoViewV171 = {
   waterSteps: number | null;
   tyreReading: TyreReading | null;
   orbit: EarthOrbitViewV171 | null;
+  lionSurvey: LionSurveyViewV174 | null;
 };
 const initialView = (version: EarthSurveyVersion = 2): EarthOkavangoViewV171 => ({
   phase: "registry", zone: null, x: 0, lane: 1, visor: "normal", traces: [],
-  waterSteps: version === 2 ? 0 : null, tyreReading: null, orbit: null,
+  waterSteps: version === 2 ? 0 : null, tyreReading: null, orbit: null, lionSurvey: null,
 });
 
 type EarthSave = Pick<SaveGame, "createdAt" | "profile" | "prologue" | "shipAcquisitionV89" |
@@ -145,6 +149,17 @@ function advanceOrbit(view: EarthOkavangoViewV171, orbit: EarthOrbitViewV171,
 }
 
 function advance(view: EarthOkavangoViewV171, order: EarthOkavangoOrderV171, owner: string): EarthOkavangoViewV171 | null {
+  if (lionSurveyOrder(order)) {
+    if (view.lionSurvey) {
+      const lionSurvey = advanceLionSurveyV174(view.lionSurvey, order);
+      if (!lionSurvey) return null;
+      const phase = lionSurvey.stage === "complete" ? "returned" : lionSurvey.stage === "survey" ? "ground" : "orbit";
+      return { ...view, phase, lionSurvey };
+    }
+    return order.kind === "lion-prepare" && view.phase === "returned" && view.orbit?.stage === "complete"
+      ? { ...view, phase: "orbit", lionSurvey: createLionSurveyV174() } : null;
+  }
+  if (view.lionSurvey) return null;
   if (view.orbit) return advanceOrbit(view, view.orbit, order, owner);
   if (order.kind === "begin-orbit" && view.phase === "returned") {
     const flight = createShipFlightV87(owner, "earth-okavango-orbit-outbound");
@@ -191,6 +206,7 @@ function orbitManeuverFrom(value: unknown): EarthOrbitManeuverV171 | null {
 }
 const orbitalOrder = (order: EarthOkavangoOrderV171) => order.kind === "begin-orbit" || order.kind === "pilot-orbit" ||
   order.kind === "scan-orbit" || order.kind === "return-orbit" || order.kind === "finish-orbit";
+const lionSurveyOrder = (order: EarthOkavangoOrderV171): order is LionSurveyOrderV174 => order.kind.startsWith("lion-");
 function orderFrom(value: unknown): EarthOkavangoOrderV171 | null {
   if (!record(value)) return null;
   if ((value.kind === "choose-zone" || value.kind === "scan-orbit") && (value.zone === "papyrus" || value.zone === "bank")) {
@@ -207,7 +223,7 @@ function orderFrom(value: unknown): EarthOkavangoOrderV171 | null {
       value.kind === "begin-orbit" || value.kind === "return-orbit" || value.kind === "finish-orbit") {
     return { kind: value.kind };
   }
-  return null;
+  return readLionSurveyOrderV174(value);
 }
 const maxOrders = 2048;
 type EarthInspectionV171 = {
@@ -219,28 +235,30 @@ export function inspectEarthOkavangoV171(value: unknown, owner: string): EarthIn
   const invalid = { state: null, view: initialView() };
   if (value === undefined || value === null) return { status: "absent", ...invalid };
   if (!record(value)) return { status: "invalid", ...invalid };
-  if (typeof value.version === "number" && value.version > 3) return { status: "future-version", ...invalid };
-  if ((value.version !== 1 && value.version !== 2 && value.version !== 3) || value.owner !== owner || !Number.isFinite(Date.parse(owner)) ||
+  if (typeof value.version === "number" && value.version > 4) return { status: "future-version", ...invalid };
+  if ((value.version !== 1 && value.version !== 2 && value.version !== 3 && value.version !== 4) || value.owner !== owner || !Number.isFinite(Date.parse(owner)) ||
       typeof value.hullInstanceId !== "string" || value.hullInstanceId.length < 1 || value.hullInstanceId.length > 160 ||
       !Array.isArray(value.orders) || value.orders.length < 1 || value.orders.length > maxOrders) {
     return { status: "invalid", ...invalid };
   }
   const orders: EarthOkavangoOrderV171[] = [];
   // The orbital addendum replays the earlier ground survey in its recorded regime.
-  const surveyVersion = value.version === 3 ? value.surveyVersion : value.version;
+  const hasOrbitJournal = value.version === 3 || value.version === 4;
+  const surveyVersion = hasOrbitJournal ? value.surveyVersion : value.version;
   if (surveyVersion !== 1 && surveyVersion !== 2) return { status: "invalid", ...invalid };
   let view = initialView(surveyVersion);
   for (const raw of value.orders) {
     const order = orderFrom(raw);
-    const next = order && (value.version === 3 || !orbitalOrder(order)) && advance(view, order, owner);
+    const next = order && (!orbitalOrder(order) || hasOrbitJournal)
+      && (!lionSurveyOrder(order) || value.version === 4) && advance(view, order, owner);
     if (!order || !next) return { status: "invalid", ...invalid };
     orders.push(order);
     view = next;
   }
-  if (value.version === 3 && !view.orbit) return { status: "invalid", ...invalid };
+  if ((hasOrbitJournal && !view.orbit) || (value.version === 4 && !view.lionSurvey)) return { status: "invalid", ...invalid };
   const binding = { owner, hullInstanceId: value.hullInstanceId, orders };
-  const state: EarthOkavangoStateV171 = value.version === 3
-    ? { version: 3, surveyVersion, ...binding } : { version: value.version, ...binding };
+  const state: EarthOkavangoStateV171 = value.version === 3 || value.version === 4
+    ? { version: value.version, surveyVersion, ...binding } : { version: value.version, ...binding };
   return { status: "valid", state, view };
 }
 export function commitEarthOkavangoV171(value: unknown, order: EarthOkavangoOrderV171, access: EarthOkavangoAccessV171) {
@@ -256,8 +274,8 @@ export function commitEarthOkavangoV171(value: unknown, order: EarthOkavangoOrde
     return { accepted: false as const, reason: "Geste indisponible à ce repère." };
   }
   const binding = { owner: access.owner, hullInstanceId: access.hullInstanceId, orders: [...(current?.orders ?? []), clean] };
-  const state: EarthOkavangoStateV171 = current?.version === 3
-    ? { version: 3, surveyVersion: current.surveyVersion, ...binding }
+  const state: EarthOkavangoStateV171 = current?.version === 3 || current?.version === 4
+    ? { version: clean.kind === "lion-prepare" ? 4 : current.version, surveyVersion: current.surveyVersion, ...binding }
     : clean.kind === "begin-orbit" && current ? { version: 3, surveyVersion: current.version, ...binding }
       : { version: current?.version ?? 2, ...binding };
   return { accepted: true as const, state, view };
@@ -269,9 +287,13 @@ export function earthOkavangoSuccessorV171(before: EarthOkavangoStateV171 | null
   const prior = before?.orders ?? [];
   if (after.orders.length !== prior.length + 1 || !prior.every((order, index) =>
     JSON.stringify(order) === JSON.stringify(after.orders[index]))) return false;
-  if (!before) return after.version !== 3;
+  if (!before) return after.version === 1 || after.version === 2;
   if (before.owner !== after.owner || before.hullInstanceId !== after.hullInstanceId) return false;
-  if (before.version === 3) return after.version === 3 && after.surveyVersion === before.surveyVersion;
+  if (before.version === 4) return after.version === 4 && after.surveyVersion === before.surveyVersion;
+  if (before.version === 3) {
+    if ((after.version !== 3 && after.version !== 4) || after.surveyVersion !== before.surveyVersion) return false;
+    return after.version === 3 || after.orders.at(-1)?.kind === "lion-prepare";
+  }
   if (after.version !== 3) return after.version === before.version;
   return after.surveyVersion === before.version && after.orders.at(-1)?.kind === "begin-orbit";
 }
