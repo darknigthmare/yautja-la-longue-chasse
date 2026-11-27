@@ -127,7 +127,7 @@ Le lot part de `75bbc177`, avec la visite du mausolée et les chantiers transver
 
 Le lot part de `fa89bee` après #201. Le classeur réunit les parcours joués, les reçus préparés pour la recette et les étapes encore requises.
 
-- **R2-M003** · Le choix de départ change l’interlocuteur rencontré. L’escalier du Conseil, le poste de forge et la table du foyer conservent leurs preuves physiques. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46022566024)
+- **R2-M003** · Le choix de départ change l’interlocuteur rencontré. L’escalier du Conseil, le poste de forge et la table du foyer conservent leurs preuves physiques. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46027266327)
 - **R2-M006** · Yena, Harek et Tov présentent le geste qui leur est associé dans les ateliers joués. Le journal garde chaque présentation avec le passage au coffre et au râtelier. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46026217008)
 - **R2-M016** · Une objection à la première répartition ouvre un choix réel. Le joueur peut accepter les postes complémentaires ou faire répéter le signal avec Saar et Vek, puis reproposer ses postes. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46023907804)
 - **R2-M017** · Le passage haut enregistre le relais sur la passerelle médiane et la réunion des deux compagnons au point aval. Les parcours historiques reprennent sur leur géométrie. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46025663830)
@@ -136,7 +136,7 @@ Le lot part de `fa89bee` après #201. Le classeur réunit les parcours joués, l
 - **TERRE_ISLES** · The Isles s’ouvre depuis le menu pour une île d’essai et la Chasse inversée solo. La salle reste un outil local de test. Terre conserve ses annexes et son prototype Okavango. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46020872850)
 - **Épreuves de rang** · Les archives du vaisseau reprennent le dossier des rites et distinguent le seuil, le registre en cours et la reconnaissance Blooded, Elite ou Elder consignée par les scènes de campagne. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46021281609)
 - **Pilote Apex** · Le pilote sépare la rotation et l’esquive et lit la reprise exacte du Deck. Le contact Sandmaw a été rejoué depuis son archive historique. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46021100220)
-- **R2-M060** · Le navire du clan donne un troisième lieu à l’épilogue. Le joueur rejoint son service des trophées et retrouve ses preuves d’amarrage et d’équipage. La recette prépare le reçu de fin d’origine. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46025889206)
+- **R2-M060** · Le navire du clan donne un troisième lieu à l’épilogue. Le joueur rejoint son service des trophées et retrouve ses preuves d’amarrage et d’équipage. La recette prépare le reçu de fin d’origine. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46028391431)
 
 ## Vue d'ensemble
 

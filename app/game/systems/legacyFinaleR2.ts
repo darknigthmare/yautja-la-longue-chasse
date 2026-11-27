@@ -131,7 +131,7 @@ export function legacyClanShipReadoutR2(state: LegacyFinaleR2 | null | undefined
   return {
     belongings: belongings ? [
       `Relevé d’amarrage · ${shipForId(belongings.berth.personalShipId).name}`,
-      ...(verdict ? [`${CLAN_SHIP_TROPHY_CASE.id} · ${verdict.plaque}`] : []),
+      ...(verdict && "plaque" in verdict ? [`${CLAN_SHIP_TROPHY_CASE.id} · ${verdict.plaque}`] : []),
     ] : [],
     relations: crew.map(entry => CLAN_SHIP_RECRUITS.find(candidate => candidate.id === entry.id)!.name),
   };
