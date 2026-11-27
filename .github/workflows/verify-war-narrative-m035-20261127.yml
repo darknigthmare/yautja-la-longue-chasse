@@ -92,3 +92,13 @@ jobs:
       - name: Lint the changed screens and reducer
         if: ${{ !cancelled() }}
         run: npx eslint app/game/WarNarrativeR2M035.tsx app/game/systems/warNarrativeR2M035.ts app/game/ClanWarPanelV85.tsx tests/war-narrative-r2-m035.test.mjs
+      - name: Drive the live campaign from the council to the changed canyon
+        if: ${{ !cancelled() }}
+        run: CHROMIUM_EXECUTABLE="$(command -v google-chrome)" node scripts/qa-war-narrative-r2-m035.mjs
+      - name: Archive visible scout and return evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: qa-war-narrative-r2-m035
+          path: outputs/qa-war-narrative-r2-m035/
+          if-no-files-found: error
