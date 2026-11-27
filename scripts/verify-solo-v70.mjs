@@ -5,7 +5,8 @@ import {homeworldQaModelV64} from './homeworld-qa-model-v64.mjs';
 import {homeworldNavigatorV66} from './homeworld-navigation-browser-v66.mjs';
 import {thresholdsCampaignRoute} from '../tests/helpers/solo-v69-played-route.mjs';
 import {p} from '../tests/helpers/solo-v67-campaign-route.mjs';
-import {templeInput} from '../tests/helpers/solo-v70-played-route.mjs';
+import {templeInput,templeMechanismInput} from '../tests/helpers/solo-v70-played-route.mjs';
+const mechanisms=process.env.V70_BELVEDERE_ROUTE==='mechanisms';
 
 const url=process.env.V70_QA_URL??'http://127.0.0.1:4187',output=process.env.V70_SOLO_QA_OUTPUT??'work-local/v70/qa/solo-local';
 const original=thresholdsCampaignRoute().save,key='yautja-long-hunt.save';
@@ -50,6 +51,13 @@ try{
    await capture('arsenal-three-emitters-sealed');energyChecked=true;
    checks.push({name:'three-emitters-sealed-at-physical-rack',...observed});
   }
+  if(mechanisms&&s.phase==='belvedere'&&s.room===4&&s.belvedereLever&&!checks.some(check=>check.name==='belvedere-counterweight-and-two-plates')){
+   const savedLever=(await saved()).soloV70.checkpoint.belvedereLever;
+   assert.deepEqual(savedLever,s.belvedereLever);
+   assert.equal(s.companionMode,'follow');
+   await capture('belvedere-lower-route-open');
+   checks.push({name:'belvedere-counterweight-and-two-plates',...savedLever});
+  }
   if(s.phase==='counterweight'&&s.room===5&&s.liftTicks>=60&&!resumed&&!s.paused){
    await capture('counterweight-mid-lift-native-contact');await apply(new Set());await page.getByRole('button',{name:'Pause',exact:true}).click();await page.clock.runFor(100);const frozen=await read();assert(frozen.liftTicks>=60);assert(frozen.liftTicks<100);await page.clock.runFor(1000);assert.equal((await read()).tick,frozen.tick);await capture('counterweight-mid-lift-frozen');await screen.getByRole('button',{name:'Sauvegarder et quitter',exact:true}).click();await page.clock.runFor(100);assert.equal((await saved()).soloV70.checkpoint.liftTicks,frozen.liftTicks);
    await page.clock.resume();await page.reload({waitUntil:'networkidle'});await page.getByRole('button',{name:/^Continuer/}).click();await canvas.waitFor();await page.waitForFunction(()=>document.querySelector('[data-solo-v70] canvas')?.dataset.soloAssets==='true',null,{timeout:120000});await page.clock.pauseAt(await page.evaluate(()=>Date.now()+1000));await page.clock.runFor(100);const cold=await read();assert.equal(cold.phase,'counterweight');assert.equal(cold.room,5);assert(cold.liftTicks>=frozen.liftTicks);assert.equal((await saved()).soloV70.receipts.length,6);await canvas.focus();resumed=true;checks.push({name:'moving-counterweight-cold-resume-and-six-prior-receipts',lift:frozen.liftTicks});continue;
@@ -61,9 +69,10 @@ try{
   if(s.phase==='quarantine'&&s.valveTimer>0&&!expired&&!s.paused){await apply(new Set());await page.clock.runFor(10300);const after=await read();assert.equal(after.valveTimer,0);assert.equal(after.phase,'quarantine');assert.equal(after.drone.hp,0);assert.equal((await saved()).soloV70.receipts.length,11);await capture('local-quarantine-window-expired-corpse-kept');expired=true;checks.push({name:'local-valve-expiration-retry-preserves-drone-and-prior-receipts'});continue;}
   if(s.paused&&await screen.getByRole('alert').isVisible())throw Error('Unexpected durable refusal: '+await screen.getByRole('alert').innerText());
   if(s.paused||!s.inputArmed){await apply(new Set());await canvas.focus();await page.clock.runFor(100);continue;}
-  const input=templeInput({...s,previousJump:keys.has(action.jump),previousInteract:keys.has(action.interact),previousCommand:keys.has(action.command)}),desired=new Set();if(input.move)desired.add(input.move<0?action.left:action.right);if(input.jump)desired.add(action.jump);if(input.command)desired.add(action.command);if(input.interact)desired.add(action.interact);await apply(desired);await page.clock.runFor(s.phase==='signs'&&s.signs===0&&s.scan>=20?15:50);
+  const input=(mechanisms?templeMechanismInput:templeInput)({...s,previousJump:keys.has(action.jump),previousInteract:keys.has(action.interact),previousCommand:keys.has(action.command)}),desired=new Set();if(input.move)desired.add(input.move<0?action.left:action.right);if(input.jump)desired.add(action.jump);if(input.command)desired.add(action.command);if(input.interact)desired.add(action.interact);await apply(desired);await page.clock.runFor(s.phase==='signs'&&s.signs===0&&s.scan>=20?15:50);
  }
  assert(i<8000,'actual playable temple completes');await apply(new Set());await page.clock.runFor(200);await page.waitForFunction(k=>JSON.parse(localStorage.getItem(k))?.soloV70?.status==='completed',key);const complete=await saved();assert.equal(complete.soloV70.receipts.length,15);assert.equal(p.getChronicleRank(complete.prologue.chronicle),'young-blood');assert.equal(complete.soloV70.checkpoint.configuration,3);assert(complete.soloV70.checkpoint.visited.every(Boolean));assert.equal(complete.soloV70.checkpoint.drone.hp,0);assert(complete.soloV70.checkpoint.drone.hits>=5);assert(complete.soloV70.checkpoint.walked>=18000);
+ if(mechanisms)assert.deepEqual(complete.soloV70.checkpoint.belvedereLever?.positions,checks.find(check=>check.name==='belvedere-counterweight-and-two-plates')?.positions);
  const admission=complete.soloV70.checkpoint.riteAdmission;
  assert.equal(admission.threshold.configuration,2);
  assert.equal(admission.threshold.tick,complete.soloV70.checkpoint.milestones['quarantine-valves']);

@@ -13,13 +13,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '647e279b9f2dab0277f08dd8f5af203113cedb8c'
+      ASSET_RACCORDS_SOURCE_COMMIT: '71b268fab6e561c2d799d1cbbbcd322f78880317'
       BASE_COMMIT: '9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '647e279b9f2dab0277f08dd8f5af203113cedb8c'
+          ref: '71b268fab6e561c2d799d1cbbbcd322f78880317'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -66,6 +66,9 @@ jobs:
             /public/game/assets/v133/concept-masks/
             /public/game/assets/v133/decals/decal-atlas.webp
             /public/game/sprites/v62/heads/
+            /public/game/sprites/v62/masks/
+            /public/game/homeworld/v56/
+            /public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png
             /public/game/assets/v134/
             /public/game/assets/v135/
             /public/game/assets/v136/
