@@ -227,6 +227,7 @@ jobs:
             /build/
             /.openai/hosting.json
             /public/**/manifest.json
+            /docs/qa/current-integration-20261103/runtime-inputs.json
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -241,8 +242,16 @@ jobs:
           const index=JSON.parse(readFileSync('tests/fixtures/skinning-canopy-browser-assets-20261109.json','utf8'));
           assert.equal(index.schemaVersion,1);
           assert.ok(index.assets.length>0);
+          const trackedCatalog = 'public/audio/manifest.json';
+          const current = JSON.parse(readFileSync('docs/qa/current-integration-20261103/runtime-inputs.json','utf8'));
+          // The live sound catalog can gain entries. Keep the historical pin for
+          // old snapshots and verify the live catalog against the release inventory.
+          const releaseCatalog = current.entries.find(asset => asset.path === trackedCatalog);
+          const assets = index.assets.map(asset => asset.path === trackedCatalog && releaseCatalog
+            ? {...releaseCatalog,gitBlob:execFileSync('git',['rev-parse','HEAD:'+trackedCatalog],{encoding:'utf8'}).trim()}
+            : asset);
           const seen=new Set();
-          for(const asset of index.assets){
+          for(const asset of assets){
             assert.ok(asset.path.startsWith('public/')&&!asset.path.includes('..')&&!asset.path.includes('\\'));
             assert.ok(!seen.has(asset.path));seen.add(asset.path);
             assert.match(asset.gitBlob,/^[a-f0-9]{40}$/);
@@ -250,7 +259,7 @@ jobs:
           }
           execFileSync('git',['sparse-checkout','add','--stdin'],{input:[...seen].sort().map(p=>'/'+p).join('\n')+'\n',stdio:['pipe','inherit','inherit']});
           let bytes=0;
-          for(const asset of index.assets){
+          for(const asset of assets){
             const info=lstatSync(asset.path);assert.ok(info.isFile()&&!info.isSymbolicLink());
             const raw=readFileSync(asset.path);bytes+=raw.length;
             assert.equal(raw.length,asset.bytes,asset.path);

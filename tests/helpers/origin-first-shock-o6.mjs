@@ -10,6 +10,7 @@ const bundle = await build({
     export * from "./app/game/systems/nurseryCohortV172";
     export * from "./app/game/systems/nurseryOpening";
     export * from "./app/game/systems/originFirstShockO6";
+    export { advanceFirstShockIntoCohortO6 } from "./app/game/systems/originCohortRaceO6";
     export { createOriginV151 } from "./app/game/systems/originsV151";
     export { startYouthCampaign } from "./app/game/systems/youthCampaign";
   `, resolveDir: process.cwd(), loader: "ts" },
@@ -42,7 +43,7 @@ function openingInput(n, state, assist) {
   }
 }
 
-export function admittedFirstShockO6({ originId = "O6", legacy = false, assist = false, ceremony = false } = {}) {
+export function admittedFirstShockO6({ originId = "O6", legacy = false, assist = false, ceremony = false, temple = false } = {}) {
   const n = firstShock;
   let state = n.enableNurseryOpening(n.enableNurseryCohort(n.enableNurseryContinuityV72(n.createNurseryPrologue({ readyMode: "press" }))));
   const step = input => {
@@ -79,7 +80,7 @@ export function admittedFirstShockO6({ originId = "O6", legacy = false, assist =
   }
   assert.equal(state.phase, "complete");
   assert.ok(receipt);
-  const start = { ...n.defaultSave(date), prologue: n.createNurseryCampaign(ceremony) };
+  const start = { ...n.defaultSave(date), prologue: { ...n.createNurseryCampaign(ceremony), ...(temple ? { templeTriadFirstM017: true } : {}) } };
   if (legacy) delete start.originV151;
   else start.originV151 = n.createOriginV151(originId);
   const waiting = n.withNurseryCheckpoint(start, before);

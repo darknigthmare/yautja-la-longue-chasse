@@ -4,8 +4,12 @@ import {test} from 'node:test';
 import {runInNewContext} from 'node:vm';
 import ts from 'typescript';
 import {templeCampaignRoute,thresholdsTemple} from './helpers/solo-v70-played-route.mjs';
+import {thresholdsCampaignRoute, stamp} from './helpers/solo-v69-played-route.mjs';
+import {formationCampaignRoute, formationEnvironment, formationModel} from './helpers/solo-v90-played-route.mjs';
 import {p} from './helpers/solo-v67-campaign-route.mjs';
 import {homeworldQaModelV64} from '../scripts/homeworld-qa-model-v64.mjs';
+
+const tribunal=homeworldQaModelV64(process.cwd(),['honorTribunalV147.ts']);
 
 const source=await readFile(new URL('../app/game/GameClient.tsx',import.meta.url),'utf8'),tree=ts.createSourceFile('GameClient.tsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
 function find(name){let found;function visit(n){if(ts.isVariableDeclaration(n)&&n.name.getText(tree)===name)found=n;ts.forEachChild(n,visit);}visit(tree);assert(found,'actual GameClient declaration '+name);return found;}
@@ -13,7 +17,7 @@ function implementation(name,environment){const decl=find(name),fn=decl.initiali
 let route;const played=()=>route??=templeCampaignRoute();let n=0;
 function fixture(save){const key='solo-runtime-v70-'+n++,values=new Map([[key,JSON.stringify(save)]]),screens=[],notices=[];let quota=false,afterWrite=false,badRead=false;
  const store={getItem(k){if(k===key&&badRead){badRead=false;throw Error('readback interrupted');}return values.get(k)??null;},setItem(k,v){if(k===key&&quota)throw new DOMException('quota','QuotaExceededError');values.set(k,v);if(k===key&&afterWrite){afterWrite=false;badRead=true;}},removeItem:k=>values.delete(k)};
- const initial=p.loadSaveWithStatus(store,key).save,env={...p,...thresholdsTemple,entry:{ownerCreatedAt:initial.createdAt},sessionAliveRef:{current:true},pendingTrophyCommitRef:{current:null},save:initial,saveRef:{current:initial},nurseryWriteAttemptRef:{current:null},nurseryPersistenceHealthyRef:{current:true},pendingSocialWriteRef:{current:null},pendingTerminalRunRef:{current:null},activeHuntSessionRef:{current:null},SAVE_STORAGE_KEY:key,window:{localStorage:store},
+ const initial=p.loadSaveWithStatus(store,key).save,env={...p,...thresholdsTemple,...tribunal,entry:{ownerCreatedAt:initial.createdAt},sessionAliveRef:{current:true},pendingTrophyCommitRef:{current:null},save:initial,saveRef:{current:initial},nurseryWriteAttemptRef:{current:null},nurseryPersistenceHealthyRef:{current:true},pendingSocialWriteRef:{current:null},pendingTerminalRunRef:{current:null},activeHuntSessionRef:{current:null},SAVE_STORAGE_KEY:key,window:{localStorage:store},
   setSave(s){env.save=s;},setSaveFailure(v){env.failure=v;},setNurseryPersistenceError(v){notices.push(v);},setHubLocation(){},setScreen(s){screens.push(s);},
   writeSaveWithStatus(s){return p.writeSaveWithStatus(s,store,key);},reconcileSaveWrite(a,o){return p.reconcileSaveWrite(a,o,store,key);}};
  for(const name of ['reconcileNurseryAttempt','persistNursery','enterSoloV70','checkpointSoloV70','progressSoloV70','returnFromSoloV70'])env[name]=implementation(name,env);
@@ -33,7 +37,7 @@ test('actual GameClient completed return navigates only after ownership and dura
 test('hydration keeps a valid active Temple ahead of a terminal at-city region retained by an older archive',async()=>{
  const extras=homeworldQaModelV64(process.cwd(),['campaignSoloV90.ts','homeworldRegionsV68.ts','campaignSoloV69.ts','campaignSoloV68.ts','campaignSoloV67.ts','campaignSoloV66.ts','youthCampaign.ts','clanChronicle.ts','campaignWorldResumeV70.ts']);
  const terminal=extras.stepHomeworldRegionV68(extras.createHomeworldRegionV68('ash-marches','hydration-audit'),{interact:true});assert.equal(terminal.status,'at-city');const active=thresholdsTemple.startSoloV70Campaign({...played().origin,homeworldRegionV68:terminal});assert(active);const parsed=p.parseSaveImport(JSON.stringify(active));assert.equal(parsed.failure,null);
- const screens=[],env={...extras,...thresholdsTemple,ARCHIVE_TRANSFER_JOURNAL_KEY:'not-present',hydrationCancelled:false,entry:{ownerCreatedAt:active.createdAt,location:'youth-training'},sessionAliveRef:{current:true},expeditionOwnerRef:{current:null},saveRef:{current:null},window:{localStorage:{getItem:()=>null}},loadSaveWithStatus:()=>({save:parsed.save,loaded:true,failure:null}),setSave(){},setScreen(s){screens.push(s);},setNewGamePhase(){},setHubLocation(){},setSaveLoadIssue(){},setSelectedShipId(){},loadShipProgression:()=>({selectedShipId:'none'}),hydratePitReplayForOwner:()=>({replay:null,diagnostic:null}),setLastPitReplay(){},loadActiveHuntSave:()=>({save:null}),setCampaignCatalog(){},loadCampaignSlots:()=>null,setHydrated(){}};
+ const screens=[],env={...extras,...thresholdsTemple,...tribunal,ARCHIVE_TRANSFER_JOURNAL_KEY:'not-present',hydrationCancelled:false,entry:{ownerCreatedAt:active.createdAt,location:'youth-training'},sessionAliveRef:{current:true},expeditionOwnerRef:{current:null},saveRef:{current:null},window:{localStorage:{getItem:()=>null}},loadSaveWithStatus:()=>({save:parsed.save,loaded:true,failure:null}),setSave(){},setScreen(s){screens.push(s);},setNewGamePhase(){},setHubLocation(){},setSaveLoadIssue(){},setSelectedShipId(){},loadShipProgression:()=>({selectedShipId:'none'}),hydratePitReplayForOwner:()=>({replay:null,diagnostic:null}),setLastPitReplay(){},loadActiveHuntSave:()=>({save:null}),setCampaignCatalog(){},loadCampaignSlots:()=>null,setHydrated(){}};
  await implementation('hydrationTask',env)();assert.equal(screens.at(-1),'solo-v70','terminal region must not replace the active chapter selected during hydration');
 });
 
@@ -58,4 +62,54 @@ test('actual V70 progression preserves a pending trophy receipt and resumes only
  assert.equal(f.values.get(f.key),before);assert.equal(f.env.saveRef.current,initial);assert.equal(f.env.pendingTrophyCommitRef.current,receipt);assert.deepEqual(f.screens,[]);
  f.env.pendingTrophyCommitRef.current=null;
  assert.equal(await f.env.progressSoloV70(commit.receipts,commit.state),true);assert.equal(f.env.saveRef.current.soloV70.receipts.length,1);
+});
+
+test('M017 orders new campaigns by the played V90 posts and resumes the same V90 checkpoint after V70', async () => {
+ const previous = thresholdsCampaignRoute().save;
+ assert(thresholdsTemple.startSoloV70Campaign(previous, stamp), 'An older save can still open V70 first');
+ assert.equal(formationModel.startSoloV90Campaign(previous, stamp), null);
+ const ordered = { ...previous, prologue: { ...previous.prologue, templeTriadFirstM017: true } };
+ assert.equal(p.parseSaveImport(JSON.stringify(ordered)).save.prologue.templeTriadFirstM017, true);
+ assert.equal(thresholdsTemple.startSoloV70Campaign(ordered, stamp), null);
+
+ const preparation = formationCampaignRoute({ origin: ordered, stop: 'observe', restoreEvery: 5 });
+ const waiting = preparation.save;
+ const posts = waiting.soloV90.receipts.at(-1);
+ assert.equal(posts.id, 'roles-positioned');
+ assert.equal(waiting.soloV90.checkpoint.tick, posts.tick);
+ assert.equal(waiting.soloV90.checkpoint.observedCycles, 0);
+ assert.equal(formationModel.startSoloV90Campaign(waiting, stamp), null);
+ assert.equal(p.parseSaveImport(JSON.stringify(waiting)).failure, null);
+ const played = preparation.commits.at(-1);
+ assert.equal(formationModel.withSoloV90Progress(waiting, played.receipts, played.state, stamp), waiting,
+   'The exact posted receipt remains idempotent after an uncertain acknowledgement');
+ let blocked = formationModel.stepSoloV90(waiting.soloV90.checkpoint, {}, formationEnvironment).state;
+ blocked = formationModel.stepSoloV90(blocked, { interact: true }, formationEnvironment).state;
+ assert.equal(formationModel.withSoloV90Checkpoint(waiting, blocked, stamp), null,
+   'A physically valid subsequent input cannot begin the observation before the Temple');
+ const displaced = structuredClone(waiting);
+ displaced.soloV90.checkpoint.companions[0].x = 2000;
+ assert.equal(thresholdsTemple.startSoloV70Campaign(displaced, stamp), null);
+ assert.equal(p.parseSaveImport(JSON.stringify(displaced)).failure, 'invalid-save');
+
+ const opened = fixture(waiting);
+ assert.equal(opened.env.enterSoloV70(), true);
+ assert.deepEqual(opened.screens, ['solo-v70']);
+ assert.deepEqual(opened.env.saveRef.current.soloV90, waiting.soloV90);
+ assert.equal(p.parseSaveImport(JSON.stringify(opened.env.saveRef.current)).failure, null);
+
+ const opening = templeCampaignRoute({ origin: waiting, restoreEvery: 27 });
+ assert.equal(opening.save.soloV70.status, 'completed');
+ assert.equal(opening.save.soloV70.receipts.length, 15);
+ assert.deepEqual(opening.save.soloV90, waiting.soloV90);
+ assert.deepEqual(opening.save.prologue.chronicle, ordered.prologue.chronicle);
+ const returned = fixture(opening.save);
+ returned.env.soloV90NeedsScene = formationModel.soloV90NeedsScene;
+ assert.equal(await returned.env.returnFromSoloV70(), true);
+ assert.deepEqual(returned.screens, ['solo-v90']);
+ const evaluated = formationCampaignRoute({ origin: opening.save, mode: 'retreated', restoreEvery: 5 }).save;
+ assert.equal(evaluated.soloV90.status, 'completed');
+ assert.equal(evaluated.soloV90.checkpoint.result, 'retreated');
+ assert.deepEqual(evaluated.soloV90.receipts.find(r => r.id === posts.id), posts);
+ assert.equal(p.parseSaveImport(JSON.stringify(evaluated)).failure, null);
 });

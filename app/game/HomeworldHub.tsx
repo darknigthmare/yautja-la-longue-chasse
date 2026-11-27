@@ -47,7 +47,7 @@ import HomeworldCivilianV72 from "./HomeworldCivilianV72";
 import { youthCampaignObjective, youthEquipmentSummary } from "./systems/youthCampaign";
 import HomeworldChildhoodV175 from "./HomeworldChildhoodV175";
 import { CHILDHOOD_POST_V175, actChildhoodV175, canEnterYouthAfterChildhoodV175, childhoodViewV175, hasChildhoodFoundationV175,
-  type ChildhoodCommandV175 } from "./systems/homeworldChildhoodV175";
+  type ChildhoodCommandV175, type ChildhoodCueV175 } from "./systems/homeworldChildhoodV175";
 import { getChronicleRank } from "./systems/clanChronicle";
 import { matchesControlAction, type ControlActionId } from "./systems/controlBindings";
 import { shipForId, type ShipId } from "./shipCatalogue";
@@ -102,8 +102,11 @@ import { canStartSoloV68 } from "./systems/campaignSoloV68";
 import { canStartSoloV69 } from "./systems/campaignSoloV69";
 import { canStartSoloV70 } from "./systems/campaignSoloV70";
 import { canStartSoloV90 } from "./systems/campaignSoloV90";
-import HomeworldTriadM016, { HomeworldTriadJournalM016, HomeworldTriadPartnerM016 } from "./HomeworldTriadM016";
-import { advanceTriadCityM016, triadCityRemainingM016, triadCityStationM016, type TriadCityStationM016 } from "./systems/homeworldTriadM016";
+import HomeworldTriadM016, { HomeworldTriadJournalM016, HomeworldTriadPartnerM016, HomeworldTriadRosterM016 } from "./HomeworldTriadM016";
+import { advanceTriadCityM016, selectTriadCityRosterM016, triadCityFollowupM016, triadCityMayChooseAlternateM016,
+  triadCityAlternateAllowedM016, triadCityRemainingM016, triadCityStationsM016, triadCityStepM016,
+  type TriadCityM016, type TriadCityRosterChoiceM016,
+  type TriadCityStationM016 } from "./systems/homeworldTriadM016";
 import { canVisitHomeworldVillagesV69, usesHomeworldYouthAppearanceV69, HOMEWORLD_YOUTH_PLATE_V69 } from "./systems/homeworldAccessV69";
 import { canEnterHomeworldRegionV68, isHomeworldRegionIdV68, type HomeworldRegionIdV68 } from "./systems/homeworldRegionsV68";
 import HomeworldResidentConversationV75 from "./HomeworldResidentConversationV75";
@@ -172,6 +175,7 @@ export interface HomeworldHubProps {
   onReturnShip(): void;
   /** Available only at the physically reached mentor after the chief. */
   onYouthTraining?(): boolean;
+  onChildhoodSound?(cue: ChildhoodCueV175): void;
   onSoloV66?(): boolean;
   onSoloV67?(): boolean;
   onRegionalLoopM014?(): boolean;
@@ -199,7 +203,7 @@ function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInt
   return original ? { ...original, ...target.position } : null;
 }
 
-export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onAdjutantAppointment, recoveryStorage, ephemeralSession = false, onService, onKennelActionV147, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onRegionalLoopM014, regionalLoopM014Admission, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
+export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onAdjutantAppointment, recoveryStorage, ephemeralSession = false, onService, onKennelActionV147, onReturnShip, onExpedition, onNotify, onYouthTraining, onChildhoodSound, onSoloV66, onSoloV67, onRegionalLoopM014, regionalLoopM014Admission, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
   const [initialLocationV77] = useState(() => resolveCargoArrivalV108(save.homeworld.locationV77,save.createdAt,save.homeworld.cargoV108,{cartographyV104:save.homeworld.cartographyV104,cartographyV105:save.homeworld.cartographyV105,archiveV106:save.homeworld.archiveV106,archiveComparisonV107:save.homeworld.archiveComparisonV107}));
   const [upgradeRecoveryPendingV112,setUpgradeRecoveryPendingV112]=useState(()=>!initialLocationV77.migrationBackup&&homeworldGeometryRecoveryRequiredV112(save.homeworld.locationV77,save.createdAt,homeworldGeometryRecoveryLedgersV112(save.homeworld)));
   const upgradeRecoveryPendingRefV112=useRef(upgradeRecoveryPendingV112);
@@ -1570,6 +1574,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
       setChildhoodMessageV175("Le geste attend une sauvegarde confirmée. Réessaie à ce poste.");
       return;
     }
+    if (proposal.cue) onChildhoodSound?.(proposal.cue);
     setChildhoodMessageV175(proposal.message);
   };
   const selectedNpc = HOMEWORLD_NPCS.find(npc => npc.id === selectedPoint?.npcId);
@@ -1578,22 +1583,30 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   const canChoose = progress.evidenceIds.length === HOMEWORLD_EVIDENCE.length && !progress.witnessChoice;
   const canPrepareTriadInCity = useMemo(() => !save.soloV90 && canStartSoloV90(save), [save]);
   const triadCity = progress.triadCityM016;
-  const triadCityStation = canPrepareTriadInCity ? triadCityStationM016(interior?.buildingId) : undefined;
-  const triadCityPoint = triadCityStation && interior?.points.find(point => point.pointId === triadCityStation.pointId);
-  const triadCityActor = triadCityPoint ? { x: triadCityPoint.x + 52, y: triadCityPoint.y + 16 } : undefined;
+  const canRecruitAlternateTriad = triadCityAlternateAllowedM016(save);
+  const cityStations = canPrepareTriadInCity ? triadCityStationsM016(interiorId, canRecruitAlternateTriad) : [];
+  const triadCityPoint = interior?.points.find(point => point.pointId === cityStations[0]?.pointId);
   const triadCityConfirmed = !!triadCity && triadCityRemainingM016(triadCity).length === 0;
-  const submitTriadCity = (station: TriadCityStationM016, step: number) => {
+  const triadCityCheckpoint = (pointId: string) => {
     const current = saveRef.current;
     if (suspendedRef.current || pausedRef.current || current.createdAt !== save.createdAt ||
-        current.soloV90 || !canStartSoloV90(current) || dialogStateRef.current?.point?.id !== station.pointId) return;
-    const location = createHomeworldCheckpointV77(current.createdAt, levelRefV77.current, actorRef.current,
+        current.soloV90 || !canStartSoloV90(current) || dialogStateRef.current?.point?.id !== pointId) return;
+    return createHomeworldCheckpointV77(current.createdAt, levelRefV77.current, actorRef.current,
       interiorRef.current?.buildingId ?? null, exteriorAnchorRef.current);
-    const next = advanceTriadCityM016(progressRef.current.triadCityM016, current.createdAt, station, step, location);
-    if (next && !onProgress({ ...progressRef.current, triadCityM016: next })) {
-      setDialog(dialog => dialog ? { ...dialog, message: "Le registre n’a pas été sauvegardé. Réessaie ce même geste." } : dialog);
-    } else if (next) {
-      setDialog(dialog => dialog ? { ...dialog, message: undefined } : dialog);
-    }
+  };
+  const persistTriadCity = (next: TriadCityM016 | null) => {
+    if (!next) return;
+    const saved = onProgress({ ...progressRef.current, triadCityM016: next });
+    setDialog(dialog => dialog ? { ...dialog, message: saved ? undefined :
+      "Le registre n’a pas été sauvegardé. Réessaie ce même geste." } : dialog);
+  };
+  const submitTriadCity = (station: TriadCityStationM016, step: number) => {
+    const location = triadCityCheckpoint(station.pointId);
+    if (location) persistTriadCity(advanceTriadCityM016(progressRef.current.triadCityM016, location.ownerCreatedAt, station, step, location));
+  };
+  const chooseTriadCity = (choice: TriadCityRosterChoiceM016) => {
+    const location = triadCityCheckpoint("training-service");
+    if (location) persistTriadCity(selectTriadCityRosterM016(progressRef.current.triadCityM016, location.ownerCreatedAt, choice, location));
   };
   const youthChiefMet = progress.greetedNpcIds.includes("hunt-king");
   const youthMentorMet = progress.greetedNpcIds.includes("terrace-instructor");
@@ -1601,8 +1614,14 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   const youthObjective = !youthChiefMet ? "Rejoins le chef du clan à la Citadelle, au nord-est de la cité, et parle-lui."
     : !youthMentorMet ? "Rejoins l’instructeur des terrasses, au centre de la cité, et parle-lui."
     : save.soloV90?.status === "completed" ? "La préparation de triade est rapportée. Le clan conserve les observations et les blessures de cet entraînement ; l’épreuve Quatza-Rij et le rite Blooded restent à accomplir."
-    : save.soloV70?.status === "completed" ? "Le premier acte du Temple des Trois Ombres est rapporté. Rejoins le maître pour une préparation de triade au combat de seuil ; elle ne remplace pas l’épreuve Quatza-Rij ni le rite Blooded."
-    : save.soloV69?.status === "completed" ? "Les Seuils du Premier Sang sont attestés. Rejoins le maître pour ouvrir le premier acte du Temple des Trois Ombres avec ta triade. Les villages et leurs contrats restent accessibles ; tu es encore Young Blood."
+    : save.soloV70?.status === "completed" ? save.prologue?.templeTriadFirstM017
+      ? "Le premier acte du Temple des Trois Ombres est rapporté. Reviens aux postes de triade pour l’exercice du seuil."
+      : "Le premier acte du Temple des Trois Ombres est rapporté. Rejoins le maître pour une préparation de triade au combat de seuil ; elle ne remplace pas l’épreuve Quatza-Rij ni le rite Blooded."
+    : save.prologue?.templeTriadFirstM017 && save.soloV90?.checkpoint.phase === "observe"
+      ? "Les trois postes sont consignés. Rejoins le maître pour entrer au Temple avec Saar et Vek."
+    : save.soloV69?.status === "completed" ? save.prologue?.templeTriadFirstM017
+      ? "Les Seuils du Premier Sang sont attestés. Rejoins Saar et Vek pour préparer les trois postes avant le Temple."
+      : "Les Seuils du Premier Sang sont attestés. Rejoins le maître pour ouvrir le premier acte du Temple des Trois Ombres avec ta triade. Les villages et leurs contrats restent accessibles ; tu es encore Young Blood."
     : save.soloV68?.status === "completed" ? "Le clan a reconnu ta cohorte Young Blood. Rejoins le maître pour préparer Les Seuils du Premier Sang ; le rite Blooded reste distinct."
     : save.soloV67?.status === "completed" ? "La Piste sans guide est rapportée. Rejoins le maître pour rassembler la Cohorte des Aspirants."
     : save.soloV66?.status === "completed" ? "Les Premières Pistes sont rapportées. Rejoins le maître pour La Piste sans guide ; les villages ordinaires et leurs relevés sont aussi accessibles."
@@ -1707,8 +1726,11 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
             speed={streetGuide?.moving ? actorSpeed : undefined} seconds={phase} reducedMotion={reducedMotionV77} />
           <span className={styles.saarNameM003}>Saar</span>
         </div>}
-        {triadCityStation && triadCityActor && <HomeworldTriadPartnerM016 station={triadCityStation}
-          position={homeworldProjectGroundV64(triadCityActor)} depth={Math.round(triadCityActor.y)} reducedMotion={reducedMotionV77} />}
+        {triadCityPoint && cityStations.map((station, i) => {
+          const partner = { x: triadCityPoint.x + (i === 0 ? 52 : -52), y: triadCityPoint.y + 16 };
+          return <HomeworldTriadPartnerM016 key={station.partner} station={station}
+            position={homeworldProjectGroundV64(partner)} depth={Math.round(partner.y)} reducedMotion={reducedMotionV77} />;
+        })}
         <div className={styles.hero} data-homeworld-actor="true" data-homeworld-depth-layer-v81="1" data-homeworld-level-v77={levelIdV77} data-homeworld-elevation-v77={elevationV77.toFixed(3)} data-x={Math.round(actor.x)} data-y={Math.round(actor.y)} data-moving={(youthWelcome ? youthSpeedV74 : actorSpeed) > 5} data-homeworld-running-v81={!blocked && Math.hypot(actor.vx / HOMEWORLD_ACTOR.walkSpeed, actor.vy / HOMEWORLD_ACTOR.depthSpeed) > 1.01} data-facing={actor.facing} data-youth-distance-v74={youthWelcome ? youthMotionV74.distanceWorld.toFixed(3) : undefined} style={{ transform: `translate(${projectedActor.x}px,${projectedActor.y + heroBob}px)`, zIndex: interior ? Math.round(actor.y) : homeworldSceneDepthV78(actor.y,elevationV77) }}>
           <span className={styles.heroVisual} style={youthWelcome ? { transform: "none" } : undefined}>
           {youthWelcome ? (motionAssetsV74.ready ? <HomeworldYouthMotionV74 seconds={phase} moving={youthSpeedV74 > 5} velocity={youthMotionV74.velocity} lastDirection={youthMotionV74.direction} distanceWorld={youthMotionV74.distanceWorld} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} /> : <HomeworldYouthMotionV72 seconds={0} moving={false} facing={actor.facing} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} />) : heroPlate.status === "custom-modular-body" ? <HomeworldModularHunter className={styles.heroPlate}
@@ -1804,7 +1826,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     <div className={styles.srOnly} aria-live="polite" aria-atomic="true">{announcement}</div>
     {cargoMigrationMessageV108&&<aside className={cargoStylesV108.migration} role={cargoMigrationPendingV108?'alert':'status'} data-cargo-arrival-recovery-v108><strong>Reprise du point d’arrivée</strong><p>{cargoMigrationMessageV108}</p>{cargoMigrationPendingV108&&<button onClick={()=>{viewportRef.current?.focus({preventScroll:true});commitCargoArrivalV108();}}>Réessayer la reprise du point d’arrivée</button>}</aside>}
     {!upgradeRecoveryPendingV112&&<>
-    {!dialog && canPrepareTriadInCity && <HomeworldTriadJournalM016 ledger={triadCity} disabled={blocked}
+    {!dialog && canPrepareTriadInCity && <HomeworldTriadJournalM016 ledger={triadCity} roomId={interiorId} disabled={blocked}
       onGuide={requestLandmarkV75} />}
     {!dialog&&deferredPlaqueV111&&<HomeworldArchiveContinuationJournalV111 ledger={continuationViewV111} base={plaqueViewV109} actor={actor} actorInStudySpace={levelIdV77==='0'&&!interiorId&&!transitV77&&!skiffV77} blocked={cargoMigrationPendingV108||suspended||paused||inactive||spatialCodexOpen||wayfindingOpenV75||!motionAssetsV74.ready} writePaused={plaqueWritePausedV109} message={plaqueMessageV109} onAction={actContinuationFromWorldV111} onRetry={retryPlaqueV109} onGuide={requestLandmarkV75}/>}
     {!dialog&&!deferredPlaqueV111&&<HomeworldArchivePlaqueJournalV109 ledger={plaqueViewV109} actor={actor} actorInStudySpace={levelIdV77==='0'&&!interiorId&&!transitV77&&!skiffV77} blocked={cargoMigrationPendingV108||suspended||paused||inactive||spatialCodexOpen||wayfindingOpenV75||!motionAssetsV74.ready} writePaused={plaqueWritePausedV109} message={plaqueMessageV109} onAction={actPlaqueFromWorldV109} onRetry={retryPlaqueV109} onGuide={requestLandmarkV75}/>}
@@ -1929,16 +1951,22 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
             if (!onSoloV70()) setDialog(current => current ? { ...current, message: "Départ non enregistré. Réessaie auprès du maître." } : current);
           }}>{save.soloV70 ? "Reprendre Le Temple des Trois Ombres · acte I" : "Le Temple des Trois Ombres · acte I"}</button>}
           {selectedNpc?.id === "terrace-instructor" && save.soloV70?.status === "completed" && <p data-solo-v70-complete>Le premier acte du temple est rapporté. Les salles profondes, la reine et le rite Blooded ne sont pas validés par cette ouverture.</p>}
-          {triadCityStation && selectedPoint.id === triadCityStation.pointId && <HomeworldTriadM016 station={triadCityStation}
-            step={triadCity?.steps[triadCityStation.partner] ?? 0} disabled={suspended || paused || inactive}
-            onAdvance={step => submitTriadCity(triadCityStation, step)} />}
+          {cityStations.filter(station => selectedPoint.id === station.pointId).map(station => (
+            <HomeworldTriadM016 key={station.partner} station={station}
+              step={triadCityStepM016(triadCity, station)} disabled={suspended || paused || inactive}
+              onward={triadCityFollowupM016(triadCity, station)}
+              onAdvance={step => submitTriadCity(station, step)} onGuide={requestLandmarkV75} />
+          ))}
+          {canPrepareTriadInCity && canRecruitAlternateTriad && selectedPoint.id === "training-service" && triadCityMayChooseAlternateM016(triadCity) &&
+            <HomeworldTriadRosterM016 roster={triadCity?.roster} disabled={suspended || paused || inactive} onChoose={chooseTriadCity} />}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && onSoloV90 && canStartSoloV90(save) && save.soloV90?.status !== "completed" && <button type="button" data-solo-v90-enter disabled={suspended || paused || inactive} onClick={() => {
             if (suspendedRef.current || pausedRef.current || saveRef.current.createdAt !== save.createdAt || pointInCurrentSpace(actorRef.current, interiorRef.current, levelRefV77.current)?.id !== "training-service") return;
             clearInputs();
             if (pendingVisitsRef.current.size > 0) { setDialog(current => current ? { ...current, message: "Enregistre les visites en attente avant de rejoindre la préparation de triade." } : current); return; }
             if (!onSoloV90()) setDialog(current => current ? { ...current, message: "Préparation non enregistrée. Réessaie auprès du maître." } : current);
-          }}>{save.soloV90 ? "Reprendre la préparation de triade" : triadCityConfirmed
-            ? "Rejoindre Saar et Vek dans la galerie" : "Préparation de triade · Combat de seuil"}</button>}
+          }}>{save.soloV90 ? "Reprendre la préparation de triade" : triadCity?.roster === "yena-tov"
+            ? "Rejoindre Yena et Tov dans la galerie" : triadCityConfirmed
+              ? "Rejoindre Saar et Vek dans la galerie" : "Préparation de triade · Combat de seuil"}</button>}
           {selectedNpc?.id === "terrace-instructor" && save.soloV90?.status === "completed" && <p data-solo-v90-complete>La triade a rapporté son entraînement et ses blessures. Cet exercice ne remplace ni l’épreuve Quatza-Rij, ni le marquage Blooded.</p>}
           {selectedNpc?.id === "terrace-instructor" && save.soloV69?.status === "completed" && <p data-solo-v69-complete>Les douze étapes de préparation sont attestées. Le jeune a rejoint le refuge et tu es revenu au maître. Ton rang reste Young Blood ; le Premier Sang attend sa propre expédition.</p>}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && <p data-youth-equipment>{youthEquipmentSummary(save.youthTraining)}</p>}

@@ -14,6 +14,7 @@ import { isFutureOriginV151, normalizeOriginV151 } from "./systems/originsV151";
 import { continuationMatchesSaveO6, keepsContinuationO6 } from "./systems/originContinuationO6";
 import { keepsSoloReturnO6, soloReturnMatchesSaveO6 } from "./systems/originSoloReturnO6";
 import { firstShockMatchesSaveO6, keepsFirstShockO6 } from "./systems/originFirstShockO6";
+import { cohortRaceMatchesSaveO6, keepsCohortRaceO6 } from "./systems/originCohortRaceO6";
 import { isFuturePathObjectsV158, normalizePathObjectsV158 } from "./systems/pathObjectsV158";
 import { isFutureHeritageV152, normalizeHeritageV152 } from "./systems/heritageV152";
 import { hardcoreStatusV155, isFutureHardcoreV155, normalizeHardcoreV155, recordHardcoreDeathV155 } from "./systems/hardcoreV155";
@@ -46,7 +47,7 @@ import {
   tribunalVersionStatusV147, type RecordInfractionInputV147, type TribunalActionResultV147, type TribunalActionV147,
 } from "./systems/honorTribunalV147";
 import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/homeworld";
-import { triadCityMatchesSaveM016, triadCityMatchesWriteM016 } from "./systems/homeworldTriadM016";
+import { triadCityHasNewTempleOrderM016, triadCityMatchesSaveM016, triadCityMatchesWriteM016 } from "./systems/homeworldTriadM016";
 import {normalizeCntlipLedgerV77} from './systems/cntlipLedgerV77';
 import {homeworldCntlipEligibleV77} from './systems/homeworldCntlipPhysicalV77';
 import {inspectHomeworldCheckpointV77} from './systems/homeworldCheckpointV77';
@@ -71,6 +72,8 @@ import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
 import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
 import { inspectSpaceRoutesV159 } from "./systems/spaceRoutesV159";
 import { inspectFirstInterstellarV173, firstInterstellarInFlightV173 } from "./systems/firstInterstellarV173";
+import { earthOkavangoAccessV171, earthOkavangoHistoryMatchesV171, earthOkavangoSuccessorV171,
+  inspectEarthOkavangoV171 } from "./systems/earthOkavangoV171";
 import { shipReceiptV161 } from "./systems/shipReceiptV161";
 import { inspectClanShipDocking } from "./systems/clanShipDocking";
 import { evaluateClanShipAccess, evaluateClanShipOperationsCampaign, inspectClanShipOperations } from "./systems/clanShipOperations";
@@ -1417,6 +1420,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.firstInterstellarV173 === undefined ? {} : {
       firstInterstellarV173: inspectFirstInterstellarV173(source.firstInterstellarV173, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
+    ...(source.earthV171 === undefined ? {} : {
+      earthV171: inspectEarthOkavangoV171(source.earthV171, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     // V160 : écrit seulement s'il existe déjà ; un registre illisible est retiré
     // ici, mais inspectSavePayload refuse avant tout import une version future.
     ...(source.minorArcsV160 === undefined || source.minorArcsV160 === null ? {} : {
@@ -1854,6 +1860,9 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     return { save: null, failure: "future-version" };
   if (firstInterstellar.status === "invalid")
     return { save: null, failure: "invalid-save" };
+  const earth = inspectEarthOkavangoV171(value.earthV171, campaignOwner);
+  if (earth.status === "future-version") return { save: null, failure: "future-version" };
+  if (earth.status === "invalid") return { save: null, failure: "invalid-save" };
   // V160 : un registre de mini-arcs plus récent ou d'un autre propriétaire n'est jamais effacé à l'import.
   if (value.minorArcsV160 !== undefined && value.minorArcsV160 !== null) {
     const arcs = inspectMinorArcsV160(value.minorArcsV160, typeof value.createdAt === "string" ? value.createdAt : "");
@@ -2133,6 +2142,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       !hasChildhoodFoundationV175(save))) return { save: null, failure: "invalid-save" };
   const triadCity = isRecord(value.homeworld) ? value.homeworld.triadCityM016 : undefined;
   if (isRecord(triadCity) && Number(triadCity.version) > 1) return { save: null, failure: "future-version" };
+  if (triadCityHasNewTempleOrderM016(value.prologue) && isRecord(triadCity) &&
+      (triadCity.alternates !== undefined || triadCity.roster !== undefined)) return { save: null, failure: "invalid-save" };
   if (triadCity !== undefined && !triadCityMatchesSaveM016(save)) return { save: null, failure: "invalid-save" };
   const regionalLoop = isRecord(value.homeworld) ? value.homeworld.regionalLoopM014 : undefined;
   if (isFutureRegionalLoopM014(regionalLoop)) return { save: null, failure: "future-version" };
@@ -2169,13 +2180,17 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
         ancientRecognitionVerified,
       })) return { save: null, failure: "invalid-save" };
   if (m037.state && !conquestMatchesCampaignR2M037(save, m037.state)) return { save: null, failure: "invalid-save" };
-  if (!continuationMatchesSaveO6(save) || !soloReturnMatchesSaveO6(save) || !firstShockMatchesSaveO6(save)) return { save: null, failure: "invalid-save" };
+  if (!continuationMatchesSaveO6(save) || !soloReturnMatchesSaveO6(save) || !firstShockMatchesSaveO6(save) ||
+      !cohortRaceMatchesSaveO6(save)) return { save: null, failure: "invalid-save" };
   if (save.originV151?.trainingYardO6 && Object.keys(save.originV151.trainingYardO6.houses).some(houseId =>
       !save.residenceV149?.rights.includes(houseId))) return { save: null, failure: "invalid-save" };
   if (m035.state && !hasWarNarrativeCampaignR2M035(save)) return { save: null, failure: "invalid-save" };
   if (firstInterstellar.state && (shipReceiptV161(save).receipt?.instanceId !== firstInterstellar.state.hullInstanceId ||
       (save.spaceRoutesV159?.trip && firstInterstellarInFlightV173(firstInterstellar.state, campaignOwner))))
     return { save: null, failure: "invalid-save" };
+  if (earth.state && !earthOkavangoHistoryMatchesV171(save, earth.state)) {
+    return { save: null, failure: "invalid-save" };
+  }
   const recordedBlooding = save.prologue?.chronicle.rites.some(rite => rite.id === "blooding-mark") === true;
   if (recordedBlooding !== (bloodedTemple.view.stage === "complete") ||
       (bloodedTemple.state && !templeHasFoundationV174(save))) {
@@ -2313,7 +2328,8 @@ function persistCampaign(
     }
     if (!replaceExisting && previous) {
       if (previous.createdAt !== requested.createdAt) return failed("save-conflict");
-      if (previous.prologue?.ceremonyM006 !== requested.prologue?.ceremonyM006) return failed("save-conflict", previous);
+      if (previous.prologue?.ceremonyM006 !== requested.prologue?.ceremonyM006 ||
+          previous.prologue?.templeTriadFirstM017 !== requested.prologue?.templeTriadFirstM017) return failed("save-conflict", previous);
       // This receipt ledger belongs to the confirmed campaign write. Refuse a
       // stale copy before it can lose points or convert them into a rank.
       if (JSON.stringify(previous.honorSourcesV169) !== JSON.stringify(requested.honorSourcesV169)) {
@@ -2369,6 +2385,13 @@ function persistCampaign(
             shipReceiptV161(previous).receipt?.instanceId !== requestedVoyage.hullInstanceId)) {
         return failed("save-conflict", previous);
       }
+      const previousEarth = previous.earthV171;
+      const requestedEarth = requested.earthV171;
+      if (JSON.stringify(previousEarth ?? null) !== JSON.stringify(requestedEarth ?? null)) {
+        const hull = shipReceiptV161(previous).receipt;
+        if (!requestedEarth || !hull || !earthOkavangoAccessV171(previous, hull.shipId).allowed ||
+            !earthOkavangoSuccessorV171(previousEarth, requestedEarth)) return failed("save-conflict", previous);
+      }
       const previousPassage = previous.elderPassageJudgmentV168;
       const requestedPassage = requested.elderPassageJudgmentV168;
       if (previousPassage && (!requestedPassage ||
@@ -2417,7 +2440,7 @@ function persistCampaign(
       }
       if (!keepsContinuationO6(previous.originV151?.continuationO6, requested.originV151?.continuationO6) ||
           !keepsSoloReturnO6(previous.originV151?.soloReturnO6, requested.originV151?.soloReturnO6) ||
-          !keepsFirstShockO6(previous, requested)) {
+          !keepsFirstShockO6(previous, requested) || !keepsCohortRaceO6(previous, requested)) {
         return failed("save-conflict", previous);
       }
       const previousHullProject = previous.clanHullProjectV171;

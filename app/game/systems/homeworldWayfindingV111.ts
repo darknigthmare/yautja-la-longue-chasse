@@ -142,7 +142,8 @@ function departureMetadataV111(stage:HomeworldRouteStageV109,actor:HomeworldVec2
 
 /** Read-only walking plan using the exact live floors, doors, furniture and
  * public connectors. A planned interaction never executes a world action. */
-export function homeworldRoutePlanV111(save: SaveGame, origin: HomeworldRouteOriginV109, destinationId: string): HomeworldRoutePlanV109 {
+export function homeworldRoutePlanV111(save: SaveGame, origin: HomeworldRouteOriginV109, destinationId: string,
+    interiorRoute = homeworldWayfindingInteriorRouteV75): HomeworldRoutePlanV109 {
   const target = homeworldAtlasTargetV83(homeworldAtlasLandmarksV111(save), destinationId);
   const geometryKey = homeworldCargoGeometryKeyV109(save.homeworld.cargoV108), destinationKey = homeworldDestinationKeyV109(target);
   const refusal = (status: 'unavailable' | 'locked', reason: string): HomeworldRoutePlanV109 => ({ ownerCreatedAt: save.createdAt, destinationId, geometryKey, destinationKey, status, reason, distance: 0, stages: [] });
@@ -155,7 +156,7 @@ export function homeworldRoutePlanV111(save: SaveGame, origin: HomeworldRouteOri
   if (currentRoom && !isHomeworldInteriorWalkableV64(currentRoom, origin.actor)) return refusal('unavailable', 'Position hors du passage intérieur. Aucun itinéraire supposé.');
   const stages: HomeworldRouteStageV109[] = [];
   const addInterior = (room: NonNullable<typeof currentRoom>, from: HomeworldVec2, pointId: string | 'exit', kind: 'interact' | 'exit') => {
-    const route = homeworldWayfindingInteriorRouteV75(room, from, pointId);
+    const route = interiorRoute(room, from, pointId);
     if (route.status !== 'reachable') return false;
     stages.push({ levelId: origin.levelId === currentBuilding?.levelId && room.buildingId === currentBuilding.id ? origin.levelId : target.levelId,
       interiorId: room.buildingId, points: route.points, distance: route.distance, kind, radius: kind === 'exit' ? 10 : 24,

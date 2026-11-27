@@ -709,3 +709,15 @@ La recette commune qualifie la composition `97f1fc15f7224bfbb929444a6e637f1e1503
 Les recettes des fiches et leurs admissions sont liées dans la Bible. Le classement M003 s’appuie sur des segments complémentaires. Pour les épilogues, le dossier final d’origine est préparé avant les déplacements, les rencontres et les gestes réellement joués. [Recette des épilogues](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46045565609)
 
 Le circuit de prélèvement, rangement et conservation reste indépendant du nouveau tapotement de prise. La position et les prérequis du segment terminal de la chasse sont préparés dans cette recette. [Terrain et canopée](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46042982368)
+
+## Intégration d’O6-M02, du Temple, de la Terre et de la forge
+
+La [recette commune](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46053955493) porte sur le commit source `1e46e42d3eed416abab2d8138a9258e3ef1c455e`. Les fichiers de suivi et l’inventaire d’exécution rejoignent ensuite ce même arbre applicatif.
+
+Le scénario de sauvegarde part de la fin jouée de la nurserie. La restitution de l’arme ouvre O6-M02 en un seul enregistrement et garde les deux règles de campagne, la cérémonie d’apprentissage et la triade avant le Temple. Les exports historiques conservent l’ordre V70 puis V90. La sélection de Yena et Tov n’est permise que dans cet ordre historique et avant le premier exercice V90.
+
+Le trajet M016 part de la rue, franchit la porte de la forge, quitte l’atelier puis reprend depuis la même position après rechargement. Le trajet et la variante de recrutement ont leurs propres [captures du trajet](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46053452003/artifacts/15224749994) et [captures de la variante](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46053250851/artifacts/15224659053).
+
+La liste V54 contrôle toujours l’empreinte des 22 sons historiques. La recette terrain vérifie le catalogue audio vivant par l’inventaire de publication et les autres ressources par leurs empreintes d’origine. Le checkout V94 inclut les deux JSON des Masques Brisés utilisés par le compilateur.
+
+Le repérage de l’Okavango commence après M023 et se termine au pont. Dans les épilogues, les rencontres, les précisions et la réponse du jeune ont été jouées après préparation du dossier d’admission. Les étapes restantes se trouvent dans le classeur de la Bible.

@@ -28,6 +28,8 @@ const motion = qa.load('app/game/systems/shipInterior25d.ts');
 const key = saves.SAVE_STORAGE_KEY;
 const owner = '2026-11-21T21:00:00.000Z';
 const species = 'oseris-iv--jungle-xeno-scout';
+const hideSpecies = 'oseris-iv--mist-pouncer';
+const selectMaterial = process.env.HUNTER_FORGE_QA_SELECT_MATERIAL === '1';
 const mission = MISSION_BY_ID['jungle-vey'];
 
 function fixture() {
@@ -42,9 +44,13 @@ function fixture() {
   const encounter = save.missionProgress[mission.id].attempts;
   const runId = mission.id + ':' + encounter;
   const corpses = ['forge-fixture-01', 'forge-fixture-02', 'forge-fixture-03'];
-  const specimens = corpses.map(id => anatomies.makeAnatomySpecimenV112(runId, id, species, 'harvest-bone', 82, true));
-  assert(specimens.every(item => item?.partId === 'bone' && item.quality === 90));
-  const used = corpses.map(id => runId + ':harvest-bone:' + id);
+  const plan = corpses.map(id => ({ id, species, action: 'harvest-bone' }));
+  if (selectMaterial) plan.push(...['forge-hide-01', 'forge-hide-02'].map(id => ({ id, species: hideSpecies, action: 'harvest-hide' })));
+  const specimens = plan.map(item => anatomies.makeAnatomySpecimenV112(runId, item.id, item.species, item.action, 82, true));
+  assert(specimens.every(Boolean));
+  assert(specimens.slice(0, 3).every(item => item.partId === 'bone' && item.quality === 90));
+  if (selectMaterial) assert(specimens.slice(3).every(item => item.partId === 'hide'));
+  const used = plan.map(item => runId + ':' + item.action + ':' + item.id);
   const delivery = harvest.deliverHarvestV112(save, specimens, used, true, mission.id, encounter);
   assert(delivery.ok, delivery.reason);
 
@@ -87,7 +93,7 @@ function fixture() {
   const depot = admitted.save.inventory.harvestV112;
   assert.equal(depot.specimens.length, 0);
   assert.equal(depot.jobs.length, 0);
-  assert.equal(depot.archive.length, 1);
+  assert.equal(depot.archive.length, selectMaterial ? 2 : 1);
   assert.equal(depot.archive[0].count, 3);
   assert.equal(depot.archive[0].qualityTotal, 270);
   return admitted.save;
@@ -101,7 +107,9 @@ let browser;
 try {
   const seed = fixture();
   const start = seed.inventory.harvestV112.archive[0];
-  report.initial = { wear: seed.customizationV146.heavyWear, stock: start, marks: seed.profile.clanMarks };
+  const chosen = selectMaterial ? seed.inventory.harvestV112.archive.find(row => row.speciesId === hideSpecies) : null;
+  if (selectMaterial) assert.equal(chosen?.count, 2);
+  report.initial = { wear: seed.customizationV146.heavyWear, stock: start, chosen, marks: seed.profile.clanMarks };
   browser = await chromium.launch({
     executablePath: process.env.CHROMIUM_EXECUTABLE || process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || undefined,
     headless: true,
@@ -206,16 +214,25 @@ try {
   assert.match(await confirm().innerText(), /2 matériaux/);
   await capture('chest-worn');
 
+  const quote = forge.locator('[data-forge-repair-quote="chest"]');
+  const automatic = await quote.innerText();
+  assert(automatic.includes(start.label));
+  if (selectMaterial) {
+    await forge.getByLabel('Matière à employer').selectOption(JSON.stringify([chosen.speciesId, chosen.partId]));
+    assert.equal(await quote.innerText(), '2 × ' + chosen.label);
+    assert.deepEqual((await disk()).inventory.harvestV112.archive, seed.inventory.harvestV112.archive);
+    report.materialChoice = { automatic, explicit: await quote.innerText() };
+  }
   await confirm().click();
-  await page.waitForFunction(saveKey => {
+  await page.waitForFunction(({ key: saveKey, expected }) => {
     const save = JSON.parse(localStorage.getItem(saveKey));
-    return save?.inventory.harvestV112.archive[0]?.count === 1 && !save.customizationV146?.heavyWear.chest;
-  }, key);
+    return save?.inventory.harvestV112.archive[0]?.count === expected && !save.customizationV146?.heavyWear.chest;
+  }, { key, expected: selectMaterial ? 3 : 1 });
   await wear.waitFor({ state: 'detached' });
   assert.equal(await rig.locator('[data-piece-wear]').count(), 0);
   assert.equal(await confirm().count(), 0);
   const repaired = await disk();
-  assert.deepEqual(repaired.inventory.harvestV112.archive, [{ ...start, count: 1, qualityTotal: 90 }]);
+  assert.deepEqual(repaired.inventory.harvestV112.archive, [selectMaterial ? start : { ...start, count: 1, qualityTotal: 90 }]);
   assert.equal(repaired.profile.clanMarks, seed.profile.clanMarks);
   assert.deepEqual(repaired.customizationV146.heavyWear, {});
   const canonical = saves.parseSaveImport(saves.exportSave(repaired));

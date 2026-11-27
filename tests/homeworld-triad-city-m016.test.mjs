@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { homeworldSceneSsrV78 } from "./helpers/homeworld-scene-ssr-v78.mjs";
 import { templeCampaignRoute, stamp } from "./helpers/solo-v70-played-route.mjs";
+import { formationCampaignRoute } from "./helpers/solo-v90-played-route.mjs";
+import { thresholdsCampaignRoute } from "./helpers/solo-v69-played-route.mjs";
 
 const browserModules = homeworldSceneSsrV78();
 const model = browserModules.load("app/game/systems/homeworldTriadM016.ts");
@@ -92,4 +94,115 @@ test("M016 rejects imported foreign ownership and write-time skipping or a dista
   assert.equal(saves.writeSaveWithStatus(jumped, storage).failure, "save-conflict");
   assert.equal(saves.writeSaveWithStatus(valid, storage).persisted, true);
   assert.deepEqual(saves.loadSaveWithStatus(storage).save.homeworld.triadCityM016, ledger);
+});
+
+test("M016 resumes the next contact from a single visited room and plans the real doors in both orders", () => {
+  const save = baseSave();
+  const routes = browserModules.load("app/game/systems/homeworldWayfindingV112.ts");
+  assert.deepEqual(model.triadCityRoutesM016().map(model.triadCityAtlasTargetM016), ["point:forge-service", "point:training-service"]);
+  for (const [first, second] of [[saar, vek], [vek, saar]]) {
+    const from = checkpoint(first, save);
+    const ledger = { version: 1, ownerCreatedAt: save.createdAt, steps: { saar: 0, vek: 0,
+      [first.partner]: first.demonstration.length + 1 } };
+    const candidate = { ...save, homeworld: { ...save.homeworld, triadCityM016: ledger, locationV77: from } };
+    const reloaded = saves.parseSaveImport(saves.exportSave(candidate)).save;
+    assert(reloaded);
+    const [next] = model.triadCityRoutesM016(reloaded.homeworld.triadCityM016, from.interiorId);
+    assert.equal(next.station.partner, second.partner);
+    assert.equal(next.purpose, "meeting");
+    const plan = routes.homeworldRoutePlanV112(reloaded, {
+      levelId: from.levelId, interiorId: from.interiorId, actor: from.local,
+    }, model.triadCityAtlasTargetM016(next));
+    assert.equal(plan.status, "reachable", first.partner + " to " + second.partner + ": " + plan.reason);
+    assert.equal(plan.stages[0]?.kind, "exit");
+    assert.equal(plan.stages[0]?.interiorId, first.roomId);
+    assert(plan.stages.some(stage => stage.kind === "enter" && stage.interiorId === null));
+    assert.equal(plan.stages.at(-1)?.kind, "interact");
+    assert.equal(plan.stages.at(-1)?.interiorId, second.roomId);
+    assert(plan.distance > 200, "The streets form an actual route between the two rooms");
+  }
+  const complete = { version: 1, ownerCreatedAt: save.createdAt, steps: { saar: 3, vek: 4 } };
+  assert.deepEqual(model.triadCityRoutesM016(complete, vek.roomId), []);
+  const [gallery] = model.triadCityRoutesM016(complete, saar.roomId);
+  assert.equal(gallery.purpose, "gallery");
+  assert.equal(model.triadCityAtlasTargetM016(gallery), "point:training-service");
+});
+
+test("M016 recruits Yena and Tov at real posts and carries their identities through the actual gallery", () => {
+  let save = baseSave();
+  const tov = model.triadCityStationsM016(saar.roomId).find(station => station.partner === "tov");
+  const yena = model.triadCityStationsM016(vek.roomId).find(station => station.partner === "yena");
+  assert(tov && yena);
+  assert.equal(model.selectTriadCityRosterM016(undefined, save.createdAt, "yena-tov", checkpoint(yena, save)), null);
+  for (const station of [tov, yena]) {
+    const at = checkpoint(station, save);
+    for (let step = 0; step <= station.demonstration.length; step++) {
+      const record = model.advanceTriadCityM016(save.homeworld.triadCityM016, save.createdAt, station, step, at);
+      const next = { ...save, homeworld: { ...save.homeworld, triadCityM016: record, locationV77: at } };
+      assert(model.triadCityMatchesWriteM016(save, next));
+      save = saves.parseSaveImport(saves.exportSave(next)).save;
+      assert(save);
+    }
+  }
+  const original = save.homeworld.triadCityM016;
+  assert.deepEqual(original.steps, { saar: 0, vek: 0 });
+  assert.deepEqual(original.alternates, { yena: 4, tov: 3 });
+  assert.equal(model.selectTriadCityRosterM016(original, save.createdAt, "yena-tov", checkpoint(tov, save)), null);
+  const atMentor = checkpoint(yena, save);
+  const chosen = model.selectTriadCityRosterM016(original, save.createdAt, "yena-tov", atMentor);
+  assert.equal(chosen.roster, "yena-tov");
+  const selected = { ...save, homeworld: { ...save.homeworld, triadCityM016: chosen, locationV77: atMentor } };
+  assert(model.triadCityMatchesWriteM016(save, selected));
+  assert(!model.triadCityMatchesWriteM016(baseSave(), selected));
+  const restored = saves.parseSaveImport(saves.exportSave(selected)).save;
+  assert(restored);
+  const battle = formationCampaignRoute({ origin: restored, restoreEvery: 4 });
+  assert.equal(battle.save.soloV90.status, "completed");
+  assert.equal(battle.state.result, "success");
+  assert.deepEqual(battle.state.companions.map(partner => partner.id), ["yena", "tov"]);
+  assert.deepEqual(Object.keys(battle.state.partnerObservations), ["yena", "tov"]);
+  assert.deepEqual(battle.state.contributions, { player: 8, yena: 8, tov: 8 });
+  assert.deepEqual(battle.save.prologue.chronicle, save.prologue.chronicle);
+  assert(saves.parseSaveImport(saves.exportSave(battle.save)).save);
+
+  const forged = { ...battle.save, homeworld: { ...battle.save.homeworld, triadCityM016: original } };
+  assert(!campaign.soloV90MatchesSave(forged));
+  assert(!model.triadCityMatchesWriteM016(battle.save, { ...battle.save, soloV90: undefined }));
+  const incompatible = { ...battle.save, prologue: { ...battle.save.prologue, templeTriadFirstM017: true } };
+  assert(!model.triadCityAlternateAllowedM016(incompatible));
+  assert(!campaign.soloV90MatchesSave(incompatible));
+  assert.equal(saves.parseSaveImport(JSON.stringify(incompatible)).failure, "invalid-save");
+  const partialIncompatible = { ...selected, prologue: { ...selected.prologue, templeTriadFirstM017: true } };
+  assert.equal(saves.parseSaveImport(JSON.stringify(partialIncompatible)).failure, "invalid-save");
+  const { soloV90SupportIndex, soloV90AcceptedPlan, soloV90CompanionTarget } =
+    browserModules.load("app/game/systems/firstHuntSoloV90.ts");
+  assert.equal(soloV90AcceptedPlan(battle.state), "preference");
+  assert.equal(soloV90SupportIndex(battle.state), 1);
+  assert.equal(soloV90CompanionTarget({ ...battle.state, health: 0, player: { ...battle.state.player, x: 400 } }, 1), 418);
+});
+
+test("M016 stores the real forge gesture after V69 for a new Temple order", () => {
+  const previous = thresholdsCampaignRoute().save;
+  assert.equal(previous.soloV69.status, "completed");
+  assert.equal(previous.soloV70 ?? null, null);
+  const ordered = { ...previous, prologue: { ...previous.prologue, templeTriadFirstM017: true } };
+  for (const [before, shouldPersist] of [[ordered, true], [previous, false]]) {
+    const at = checkpoint(saar, before);
+    const gesture = model.advanceTriadCityM016(undefined, before.createdAt, saar, 0, at);
+    assert(gesture);
+    const next = { ...before, homeworld: { ...before.homeworld, triadCityM016: gesture, locationV77: at } };
+    const raw = new Map([[saves.SAVE_STORAGE_KEY, JSON.stringify(before)]]);
+    const storage = {
+      getItem: key => raw.get(key) ?? null,
+      setItem: (key, value) => raw.set(key, value),
+      removeItem: key => raw.delete(key),
+    };
+    assert.equal(saves.loadSaveWithStatus(storage).loaded, true);
+    assert.equal(campaign.canStartSoloV90(before), shouldPersist);
+    assert.equal(saves.writeSaveWithStatus(next, storage).persisted, shouldPersist);
+    const resumed = saves.loadSaveWithStatus(storage).save;
+    assert.equal(resumed.soloV70 ?? null, null);
+    assert.deepEqual(resumed.homeworld.triadCityM016, shouldPersist ? gesture : undefined);
+    assert.deepEqual(resumed.prologue.chronicle, before.prologue.chronicle);
+  }
 });

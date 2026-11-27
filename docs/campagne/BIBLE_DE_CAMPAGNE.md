@@ -3175,3 +3175,21 @@ Ordre de production proposé, par lots jouables :
 
 - **Canopée · Prise suivante** · Après un saut ou un lâcher, un appui sur Haut pendant le délai prépare la prise suivante. Le moteur vérifie la portée, l’obstacle et l’endurance. Le modèle de l’affichage partage ces contraintes. Les contrôles de prélèvement et d’inventaire couvrent les systèmes de terrain existants. La recette de terrain relit la même pièce depuis sa collecte jusqu’à sa conservation. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46045520148)
 
+## Reprise du 27 novembre 2026 — route O6, sanctuaire et forge
+
+- **R2-M059 · Les quatre voix** · Le registre conserve les témoignages réellement entendus, les précisions demandées à chaque jeune et la ligne laissée libre. Une précision se retrouve au rechargement dans la demeure. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46050135518)
+
+- **R2-M060 · La transmission au foyer** · Au foyer, le joueur reprend un témoignage attesté au registre puis rejoint la personne concernée. La réponse et la reprise entre les deux gestes sont consignées. La halte V86 reste jouable. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46050135518)
+
+- **Forge · Choix de matière** · Dans la vraie forge du vaisseau, le joueur choisit un lot archivé ou la sélection automatique et voit les matières qui seront consommées. La réparation confirme la même usure et le même devis avec la sauvegarde active. Chromium répare le plastron avec le pelage choisi, recharge la partie et retrouve l’os intact. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46050207771)
+
+- **R2-M006 · Reprise de l’apprentissage** · Une demande anticipée de passation ouvre l’exercice manquant dans la salle de formation. La reprise conserve la position et les acquis. Un son original, généré de façon reproductible, accompagne l’ouverture du râtelier. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46051388544)
+
+- **R2-M016 · Former la triade** · Le guide relie la forge et les terrasses à pied. Le joueur rencontre Saar et Vek, quitte la forge par le seuil, reprend sa position après rechargement puis rejoint les terrasses et la préparation de la triade. Dans l’ordre historique, les rencontres de Yena et Tov ouvrent leur vrai recrutement et leur présence en galerie. Le refus, le changement de rôle et la reprise ont été joués dans Chromium. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46053452003)
+
+- **R2-M017 · Triade avant le Temple** · Les nouvelles campagnes jouent les rencontres et les postes V90 après V69, puis s’arrêtent au vrai seuil avant le Temple V70. Les reçus du Temple permettent de reprendre le même exercice V90. Les anciennes campagnes retrouvent leur ordre V70 puis V90. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46051646003)
+
+- **O6-M02 · Les sacs de la cohorte** · Après la restitution de l’arme en M01, les sacs suspendus forment deux paliers praticables. Le joueur choisit son poste, reprend une manche ratée et doit observer le signal avant le dernier saut. Le journal distingue résultats, gestes transmis et aide donnée. Le reçu d’admission est écrit avec la restitution. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46051955175)
+
+- **Terre · Repérage de l’Okavango** · Après M023 et l’acquisition de la coque personnelle au rang Blooded, Sol ouvre un repérage de l’Okavango. Le joueur choisit un dépôt, lit trois traces au biomask et reprend au même endroit après rechargement. L’extraction ramène au pont et le relevé reste consultable dans Sol. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46051826288)
+

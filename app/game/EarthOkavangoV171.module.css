@@ -1,0 +1,32 @@
+.panel { width: min(100%, 1040px); margin-inline: auto; padding: clamp(1rem, 3vw, 2rem); color: #f4edcf; }
+.panel > header { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.panel h1 { font-size: clamp(1.75rem, 4vw, 3rem); margin: .25rem 0 1rem; }
+.actions { display: flex; flex-wrap: wrap; align-content: start; align-items: stretch; gap: .45rem; }
+.actions button, .registry button { min-height: 44px; text-align: start; }
+.registry { display: grid; grid-template-columns: minmax(180px, 320px) minmax(0, 1fr); gap: clamp(1rem, 4vw, 2.5rem); align-items: center; padding: 1rem; background: #152429; }
+.registry button { display: block; margin-top: .55rem; }
+.globe { margin: 0; text-align: center; }
+.globe canvas { width: min(100%, 320px); height: auto; }
+.globe figcaption { margin-top: .5rem; color: #e0c992; }
+.terrain { position: relative; isolation: isolate; overflow: hidden; height: clamp(220px, 47vw, 425px); outline-offset: 3px; border: 1px solid #8ea584; background: #263c31; }
+.terrain:focus-visible { outline: 2px solid #ffe5a4; }
+.sky { position: absolute; inset: 0; z-index: -3; background: linear-gradient(180deg, #20281920, #112c24a0), url("/game/backgrounds/swamp-depth-v8.png") center / cover; }
+.piste, .berge { position: absolute; z-index: -2; inset-inline: 0; border-block: 1px solid #dccaa15c; }
+.piste { top: 59%; height: 10%; background: linear-gradient(#4c5c3ace, #77835bda); }
+.berge { top: 76%; height: 14%; background: linear-gradient(#54694cc2, #405e51e8); }
+.water { position: absolute; z-index: -1; width: 10%; min-height: 16%; transform: translate(-50%, -34%); background: repeating-linear-gradient(179deg, #315965, #47727e 6px, #366572 10px); }
+.actor { position: absolute; width: 10%; height: 24%; transform: translate(-50%, -97%); object-fit: contain; pointer-events: none; filter: drop-shadow(0 .2rem .23rem #0009); }
+.marker, .extraction { position: absolute; background: #101c19; border: 1px solid #c9d3ab; border-radius: 50%; padding: 0 .22rem; color: #fae9a7; transform: translate(-50%, -40%); font-weight: 700; }
+.marker[data-read="true"] { color: #8ef0b9; }
+.extraction { border-color: #efce90; }
+.groundInfo { display: flex; flex-wrap: wrap; gap: 0 1rem; margin-block: .3rem; }
+.groundInfo p { margin-block: .35rem; }
+.log { margin-top: 1rem; padding: .65rem .9rem; border-inline-start: 3px solid #c5ac78; background: #182525; }
+.log h2 { margin: 0; font-size: 1rem; }
+.log ul:empty { display: none; }
+@media (max-width: 600px) {
+  .registry { grid-template-columns: 1fr; }
+  .globe canvas { max-width: 215px; }
+  .actions button { flex: 1 1 115px; }
+}
+.actorParts { position: relative; display: block; width: 100%; height: 100%; }

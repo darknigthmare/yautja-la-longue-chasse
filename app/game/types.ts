@@ -781,6 +781,8 @@ export interface SaveGame {
   spaceRoutesV159?: import("./systems/spaceRoutesV159").SpaceRoutesStateV159 | null;
   /** Owner-bound journal of the independent first interstellar journey. */
   firstInterstellarV173?: import("./systems/firstInterstellarV173").FirstInterstellarStateV173 | null;
+  /** Optional survey journal tied to the registered hull and R2-M023 return. */
+  earthV171?: import("./systems/earthOkavangoV171").EarthOkavangoStateV171 | null;
   /** V160 : mini-arcs Lost Tribe / Serpent Clan, champ additif créé à la première épreuve acceptée. */
   minorArcsV160?: import("./systems/minorArcsV160").MinorArcsV160 | null;
   /** V163: contrats Queen Hunt et jalon firstQueenResolved ; champ additif, absent des anciennes sauvegardes. */

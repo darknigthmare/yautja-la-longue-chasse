@@ -74,27 +74,48 @@ try {
   }
   const shot = name => scene.screenshot({ path: resolve(output, name + ".png"), animations: "disabled" });
   await page.goto("http://127.0.0.1:4275");
+  const rackSound = await page.evaluate(async () => {
+    const response = await fetch("/audio/sfx/ceremony-rack/threshold-metal.wav");
+    if (!response.ok) return { status: response.status };
+    const context = new OfflineAudioContext(1, 1, 22050);
+    const decoded = await context.decodeAudioData(await response.arrayBuffer());
+    return { status: response.status, channels: decoded.numberOfChannels, frames: decoded.length };
+  });
+  assert.deepEqual(rackSound, { status: 200, channels: 1, frames: 26019 });
+  report.checks.push("Son de porte original décodé en PCM mono, 1,18 seconde.");
   await boot();
-  await act("ring");
+  await act("handoff");
+  assert.equal((await view()).trial, "ring");
   await walk(3, true);
   await act("use", "Space");
   assert.equal((await view()).position, 0);
   await walk(3, true); await act("observe", "r"); await act("use", "Space");
-  await act("beam");
+  await act("handoff");
+  assert.equal((await view()).trial, "beam");
   await walk(3);
   await page.reload(); await boot();
-  assert.equal((await view()).position, 3);
+  const interrupted = await view();
+  assert.equal(interrupted.position, 3);
+  const beforeReprise = (await read()).homeworld.childhoodV175;
+  await scene.locator("[data-childhood-action=handoff]").click();
+  await scene.getByRole("status").filter({ hasText: "Reprends à ta position actuelle" }).waitFor();
+  assert.deepEqual((await read()).homeworld.childhoodV175, beforeReprise);
+  assert.equal((await view()).drift, interrupted.drift);
+  await shot("passation-reprise-appuis");
   assert.deepEqual((await view()).finished, ["ring"]);
   while ((await view()).trial === "beam") {
     if ((await view()).drift) await act("use");
     await act("east");
   }
-  await act("spring"); await walk(5); await act("observe"); await act("observe");
+  await act("handoff");
+  assert.equal((await view()).trial, "spring");
+  await walk(5); await act("observe"); await act("observe");
   await shot("cible-ouverte");
   await act("use");
   assert.deepEqual((await view()).finished, ["ring", "beam", "spring"]);
-  report.checks.push("Anneau au clavier, échec et reprise, poutre reprise après reload, fenêtre de cible");
-  await act("track");
+  report.checks.push("Demande anticipée vers l’anneau, la poutre et la cible. Reprise après rechargement au même appui, sans réécriture du carnet.");
+  await act("handoff");
+  assert.equal((await view()).trial, "track");
   for (const position of [3, 6]) { await walk(position); await act("use"); await act("track-sign"); }
   await walk(8); await act("use"); await act("track-decoy");
   assert.equal((await view()).track.signs, 2);

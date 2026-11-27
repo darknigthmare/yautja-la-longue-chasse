@@ -1,6 +1,8 @@
 import { NURSERY_OPENING, nurseryOpeningNetX, nurseryOpeningWindow } from "./systems/nurseryOpening";
 import { getNurseryPresentation, NURSERY_ARENA, type NurseryActorId, type NurseryPresentation, type NurseryState } from "./systems/nurseryPrologue";
 import { FIRST_SHOCK_HAREK_O6, firstShockCourtO6, type FirstShockRecordO6 } from "./systems/originFirstShockO6";
+import { COHORT_COURSE_O6, COHORT_RALLY_X_O6 } from "./systems/cohortRaceCourseO6";
+import { COHORT_CHOICE_POSTS_O6, cohortRaceViewO6, type CohortRaceRecordO6 } from "./systems/originCohortRaceO6";
 import { NURSERY_COHORT_STOPS, NURSERY_COHORT_RADIUS } from "./systems/nurseryCohortV172";
 import { NURSERY_CONTINUITY_V72 } from "./systems/nurseryContinuityV72";
 import { YOUTH_ART_MANIFEST } from "./youthArtManifest";
@@ -463,6 +465,124 @@ export function drawFirstShockCourtyardO6(ctx: CanvasRenderingContext2D, checkpo
   const marker = court.stage === "drill" ? "Appui" :
     court.stage === "escort" || court.stage === "choice" ? "Harek" : "Filet";
   ctx.fillText(marker, court.targetX, floor + 37);
+  ctx.restore();
+}
+
+
+function drawCohortRaceYounglingO6(ctx: CanvasRenderingContext2D, bank: NurseryArtBank,
+  actor: { id: "player" | "rival"; x: number; y: number; facing: -1 | 1; pose: NurseryArtPose; ticks: number; tint?: string }) {
+  const atlas = bank.manifest.actors[actor.id][actor.facing === 1 ? "right" : "left"];
+  const frame = nurseryClipFrame(atlas.clips[actor.pose], actor.ticks);
+  const image = bank.images.get(atlas.src)!;
+  const contact = getSpriteContact(image, frame.rect, frame.pivot[1]);
+  const scale = NURSERY_ARENA.actorHeight / atlas.bodyHeight;
+  drawActorContactShadow(ctx, actor.x, actor.y, 12, 0);
+  ctx.save();
+  if (actor.tint) ctx.filter = actor.tint;
+  ctx.drawImage(image, ...frame.rect, actor.x - frame.pivot[0] * scale,
+    actor.y - (frame.pivot[1] - (contact?.offsetY ?? 0)) * scale, frame.rect[2] * scale, frame.rect[3] * scale);
+  ctx.restore();
+}
+
+function drawCohortBagO6(ctx: CanvasRenderingContext2D, bag: { left: number; right: number; y: number }, active: boolean) {
+  const { left, right, y } = bag;
+  const width = right - left;
+  ctx.save();
+  ctx.strokeStyle = active ? "#b99973" : "#77513a";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(left + 11, 156); ctx.lineTo(left + 11, y + 8);
+  ctx.moveTo(right - 11, 156); ctx.lineTo(right - 11, y + 8);
+  ctx.stroke();
+
+  const hide = ctx.createLinearGradient(0, y, 0, y + 29);
+  hide.addColorStop(0, active ? "#b8875d" : "#77523c");
+  hide.addColorStop(1, "#482918");
+  ctx.fillStyle = hide;
+  ctx.strokeStyle = "#2a170e";
+  ctx.beginPath();
+  ctx.moveTo(left, y); ctx.lineTo(right, y);
+  ctx.quadraticCurveTo(right + 3, y + 20, right - 13, y + 30);
+  ctx.quadraticCurveTo(left + width / 2, y + 37, left + 13, y + 30);
+  ctx.quadraticCurveTo(left - 3, y + 20, left, y);
+  ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = "#dec5a37f";
+  ctx.lineWidth = 1;
+  ctx.setLineDash([3, 4]);
+  ctx.beginPath();
+  ctx.moveTo(left + 12, y + 10); ctx.quadraticCurveTo(left + width / 2, y + 16, right - 12, y + 10);
+  ctx.stroke();
+  ctx.restore();
+}
+
+/** Native nursery art with two physical levels, leather bags and a secured final rope. */
+export function drawCohortRaceO6(ctx: CanvasRenderingContext2D, checkpoint: NurseryState, bank: NurseryArtBank,
+  record: CohortRaceRecordO6, player: { x: number; y: number; facing: -1 | 1; ticks: number; air: boolean }, reducedMotion: boolean) {
+  const floor = NURSERY_ARENA.groundY;
+  const arena = getNurseryPresentation(checkpoint);
+  drawNurseryScene(ctx, { ...arena, opening: undefined, cohort: undefined, actors: [],
+    groundBlade: { visible: false, x: 0, y: floor }, camera: { shot: "arena", progress: 0, blur: 0 },
+  }, bank, reducedMotion);
+
+  const { stage, platform, signalled, signalPartner, helpPartner } = cohortRaceViewO6(record);
+  const { lower, upper, finish } = COHORT_COURSE_O6;
+  const group = stage === "choice" || stage === "rally";
+  const tether = stage === "finish" || stage === "done" || signalled;
+  ctx.save();
+  ctx.strokeStyle = "#523321";
+  ctx.lineWidth = 10;
+  ctx.beginPath(); ctx.moveTo(245, 156); ctx.lineTo(829, 156); ctx.stroke();
+  ctx.fillStyle = "#ab83564d";
+  ctx.fillRect(97, floor + 2, 126, 8);
+  drawCohortBagO6(ctx, lower, true); drawCohortBagO6(ctx, upper, true);
+  drawCohortBagO6(ctx, tether ? finish : { ...finish, y: finish.y + 25 }, tether);
+  if (!record.opening.success) {
+    ctx.strokeStyle = "#f2bd75";
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(199, floor - 5); ctx.quadraticCurveTo(235, floor - 9, lower.left + 16, lower.y);
+    ctx.stroke();
+  }
+  const sides = {
+    yena: group ? { x: 180, y: floor } : stage === "finish" && helpPartner === "yena"
+      ? { x: 779, y: finish.y } : (stage === "upper" && signalPartner === "yena" ? { x: 518, y: upper.y } : { x: 348, y: lower.y }),
+    tov: group ? { x: 217, y: floor } : { x: signalPartner === "tov" ? 518 : 452, y: upper.y },
+    harek: group ? { x: 137, y: floor } : stage === "finish" && helpPartner === "harek"
+      ? { x: 779, y: finish.y } : { x: record.opening.success && record.choice === "observe" ? 211 : 137, y: floor },
+  };
+  const roster = [
+    { key: "yena", label: "Yena", id: "rival", tint: "sepia(.38) hue-rotate(13deg)" },
+    { key: "tov", label: "Tov", id: "player", tint: "saturate(.48) brightness(.84)" },
+    { key: "harek", label: "Harek", id: "rival", tint: "" },
+  ] as const;
+  ctx.font = "600 13px system-ui, sans-serif";
+  ctx.textAlign = "center";
+  for (const actor of roster) {
+    const at = sides[actor.key];
+    const givesSignal = stage === "upper" && actor.key === signalPartner;
+    drawCohortRaceYounglingO6(ctx, bank, { ...at, id: actor.id, facing: at.x < player.x ? 1 : -1,
+      pose: givesSignal && signalled ? "ready" : "idle", ticks: 0, tint: actor.tint });
+    ctx.fillStyle = givesSignal && signalled ? "#fff6b0" : "#f3cda4";
+    ctx.fillText(givesSignal && signalled ? actor.label + " · Signal" : actor.label, at.x, at.y - 97);
+  }
+  drawCohortRaceYounglingO6(ctx, bank, { ...player, id: "player",
+    pose: player.air ? "ready" : !reducedMotion && player.ticks ? "walk" : "idle",
+    ticks: reducedMotion ? 0 : player.ticks });
+  for (const [x, y, label] of [[155, floor + 35, "Protection"], [315, lower.y + 46, "Puissance"],
+      [467, upper.y + 46, "Technique"], [732, finish.y + 51, "Exploration"]] as const) {
+    ctx.fillStyle = "#f5d59b";
+    ctx.fillText(label, x, y);
+  }
+  const markerY = COHORT_COURSE_O6[platform].y;
+  const markers = stage === "choice" ? [COHORT_CHOICE_POSTS_O6.observe, COHORT_CHOICE_POSTS_O6.lead]
+    : [stage === "rally" ? COHORT_RALLY_X_O6 : COHORT_COURSE_O6[platform].launch];
+  ctx.fillStyle = "#ffe6a1";
+  for (const x of markers) {
+    ctx.beginPath(); ctx.ellipse(x, markerY + 1, 8, 3, 0, 0, Math.PI * 2); ctx.fill();
+  }
+  if (stage === "choice") {
+    ctx.fillText("Arrière", COHORT_CHOICE_POSTS_O6.observe, markerY + 18);
+    ctx.fillText("Tête", COHORT_CHOICE_POSTS_O6.lead, markerY + 18);
+  }
   ctx.restore();
 }
 
