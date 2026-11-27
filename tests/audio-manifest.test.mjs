@@ -15,7 +15,7 @@ test("inventory covers every declared effect, biome and music context without re
   assert.deepEqual(expected.filter(slot => slot.category === "sfx").map(slot => slot.id).sort(), [
     "ui", "select", "jump", "footstep", "slash", "plasma", "scan", "cloak-on", "cloak-off",
     "pod-arm", "pod-cancel", "pod-detonate", "mask-on", "mask-off", "weapon-switch", "medicomp", "armor-repair",
-    "netgun", "snare", "enemy-alert", "objective", "ceremony-rack", "hit", "trophy", "field-work", "field-secure",
+    "netgun", "snare", "enemy-alert", "objective", "ceremony-rack", "ceremony-cohort-response", "hit", "trophy", "field-work", "field-secure",
     "canopy-grab", "canopy-release", "victory", "defeat",
     "vacuum-step", "vacuum-impact", "vacuum-energy",
   ].sort(), "the declared optional slots retain every native effect, including pod, field, canopy and vacuum events");
