@@ -23,6 +23,10 @@ import ClanHullProjectPanel from './ClanHullProjectPanel';
 import ClanWarReturnR2M047Panel from './ClanWarReturnR2M047Panel';
 import { warReturnView } from './systems/warReturnR2M047';
 import OserisReturnR2M053Panel from './OserisReturnR2M053Panel';
+import SuccessorTrialR2M054Panel from './SuccessorTrialR2M054Panel';
+import LongMemoryR2M055Panel from './LongMemoryR2M055Panel';
+import { MEMORY_LABELS, longMemoryEvidence, longMemoryView } from './systems/longMemoryR2M055';
+import { SUCCESSOR_OUTCOMES, successorTrialPlan, successorTrialView } from './systems/successorTrialR2M054';
 import { oserisReturnAvailable, oserisReturnView } from './systems/oserisReturnR2M053';
 import { canReviewClanHullProject, type ClanHullProjectCommandV171, type ClanHullProjectResponseV171 } from './systems/clanHullProjectV171';
 import styles from './ClanShipOperationsPanel.module.css';
@@ -41,12 +45,14 @@ interface Props {
   onNavigate: (roomId: ClanShipRoomId) => void;
   onClanWar: () => void;
 }
-type Tab = 'post' | 'contracts' | 'crew' | 'journal' | 'project' | 'war-return' | 'oseris-return';
+type Tab = 'post' | 'contracts' | 'crew' | 'journal' | 'project' | 'war-return' | 'oseris-return' | 'successor-trial' | 'long-memory';
 const TABS: { id: Tab; label: string }[] = [
   { id: 'post', label: 'Poste & mandat' }, { id: 'contracts', label: 'Opérations' },
   { id: 'crew', label: 'Équipage' }, { id: 'journal', label: 'Chronique' },
   { id: 'project', label: 'Projet collectif' }, { id: 'war-return', label: 'Retour du front' },
   { id: 'oseris-return', label: 'Retour à Oseris-IV' },
+  { id: 'successor-trial', label: 'Décision du successeur' },
+  { id: 'long-memory', label: 'La longue mémoire' },
 ];
 const KINDS = { onboarding: 'Accueil du clan', interior: 'Mission à bord', field: 'Chasse de clan', space: 'Opération spatiale' };
 const PHASES = {
@@ -81,6 +87,12 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
   const completed = new Set(state.completedContracts.map(receipt => receipt.contractId));
   const warReturnAvailable = !temporarySession && completed.has(CLAN_SHIP_COLLECTIVE_ID);
   const oserisAvailable = !temporarySession && state.mandateAccepted && (oserisReturnAvailable(save) || !!state.legacy);
+  const successorPlan = !temporarySession && state.mandateAccepted ? successorTrialPlan(save, state.legacy) : null;
+  const successorOutcome = successorPlan && state.successorTrial
+    ? successorTrialView(successorPlan, state.successorTrial.orders).outcome : null;
+  const memory = !temporarySession && state.mandateAccepted
+    ? longMemoryEvidence(save.createdAt, save.elderWorkshopV172, state.legacy, state.successorTrial) : null;
+  const memoryChoice = memory && state.longMemory?.longMemorySuccess ? longMemoryView(state.longMemory.orders).choice : null;
   const availableCrew = availableClanResidenceCrew(save);
   const collectivePosts = collective ? clanResidenceCrewPostRooms(save) : null;
   useMenuGamepad(rootRef, !suspended, 'clan-ship-operations', onClose);
@@ -209,10 +221,20 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
       </header>
       <nav className={styles.tabs} aria-label="Dossiers du Clan Ship">
         {TABS.filter(entry => (entry.id !== 'project' || projectAvailable) &&
-          (entry.id !== 'war-return' || warReturnAvailable) && (entry.id !== 'oseris-return' || oserisAvailable)).map(entry => <button key={entry.id} type="button" aria-pressed={tab === entry.id} disabled={suspended}
+          (entry.id !== 'war-return' || warReturnAvailable) && (entry.id !== 'oseris-return' || oserisAvailable) &&
+          (entry.id !== 'successor-trial' || successorPlan !== null) && (entry.id !== 'long-memory' || memory !== null)).map(entry => <button key={entry.id} type="button" aria-pressed={tab === entry.id} disabled={suspended}
           data-clan-operations-tab={entry.id} onClick={() => { setTab(entry.id); setFeedback(''); }}>{entry.label}</button>)}
       </nav>
       <div className={styles.content}>
+        {tab === 'long-memory' && memory && <LongMemoryR2M055Panel
+          state={state.longMemory} evidence={memory} roomId={roomId} disabled={suspended || activeContract !== null}
+          onAction={order => { act({ type: 'long-memory', order, expectedRevision: state.revision }); }} onNavigate={route} />}
+        {tab === 'successor-trial' && successorPlan && (roomId === 'hangar' ? <SuccessorTrialR2M054Panel
+          save={save} plan={successorPlan} record={state.successorTrial} disabled={suspended || activeContract !== null}
+          onOrder={(order, position) => act({ type: 'successor-trial', order, position, expectedRevision: state.revision })} /> :
+          <section className={styles.step}><h3>La décision du successeur</h3>
+            <p>Rejoins le point de départ du successeur au hangar.</p>{routeButton('hangar')}
+          </section>)}
         {tab === 'oseris-return' && oserisAvailable && (roomId === 'hangar' ? <OserisReturnR2M053Panel
           save={save} record={state.legacy} disabled={suspended || activeContract !== null || !oserisReturnAvailable(save)}
           onOrder={order => { act({ type: 'oseris-return', order, expectedRevision: state.revision }); }} /> :
@@ -358,6 +380,8 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
                   ? <p data-collective-completed>{receipt.proof.collective.role === 'field' ? 'Terrain' : 'Coordination'} · Transport extrait · {receipt.proof.collective.checkedNpcIds.length + 1}/{receipt.proof.collective.capacity} postes affectés</p>
                   : <p>{KINDS[receipt.proof.kind]} · récompense déjà attribuée</p>}</div>
             </li>)}</ol> : <p>Aucun dossier achevé. L’accueil du bord ouvre le premier chapitre.</p>}
+            {memoryChoice && <p className={styles.notice} data-r2-m055-receipt>Longue mémoire · {MEMORY_LABELS[memoryChoice]}</p>}
+            {successorOutcome && <p className={styles.notice} data-r2-m054-receipt>{SUCCESSOR_OUTCOMES[successorOutcome]}</p>}
             {state.legacy?.returnedWorldCompared && <p className={styles.notice} data-oseris-return-receipt>
               Oseris-IV · {oserisReturnView(state.legacy.orders).choice === 'maintain' ? 'Passage de rive entretenu' : 'Canopée adoptée'}
             </p>}

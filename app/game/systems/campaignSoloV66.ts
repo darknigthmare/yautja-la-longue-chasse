@@ -24,13 +24,14 @@ export function normalizeSoloV66Campaign(value: unknown): SoloV66Campaign | null
   if ((value.status === "completed") !== completed || (completed ? !iso(value.completedAt) || Date.parse(value.completedAt) < Date.parse(value.startedAt) : value.completedAt !== null)) return null;
   return { version: 1, status: value.status as SoloV66Campaign["status"], checkpoint, receipts, startedAt: value.startedAt, completedAt: value.completedAt as string | null };
 }
-function prerequisites(value: Record<string, unknown>) {
+function prerequisites(value: Record<string, unknown>, completed = false) {
   const youth = normalizeYouthCampaign(value.youthTraining), prologue = normalizeNurseryCampaign(value.prologue);
   const greeted = record(value.homeworld) && Array.isArray(value.homeworld.greetedNpcIds) ? value.homeworld.greetedNpcIds : [];
   return prologue?.status === "completed" && youth?.checkpoint.phase === "cage-complete" && youth.receipts.length === 20 &&
     prologue.chronicle.evidence.some(e => e.id === "training-completed") &&
     prologue.chronicle.rites[0]?.id === "nursery-recognition" && (prologue.chronicle.rites.length === 1 ||
-      prologue.chronicle.rites.length === 2 && normalizeSoloV68Campaign(value.soloV68)?.status === "completed" && soloV68MatchesSave(value)) &&
+      (prologue.chronicle.rites.length === 2 || completed && prologue.chronicle.rites.some(rite => rite.id === "blooding-mark")) &&
+      normalizeSoloV68Campaign(value.soloV68)?.status === "completed" && soloV68MatchesSave(value)) &&
     ["hunt-king", "terrace-instructor"].every(id => greeted.includes(id));
 }
 /** Cross-field check: an isolated first-tracks claim is never accepted as a played chapter. */
@@ -40,7 +41,7 @@ export function soloV66MatchesSave(value: unknown): boolean {
   const hasProof = prologue?.chronicle.evidence.some(e => e.id === "first-tracks") ?? false;
   if (value.soloV66 === undefined || value.soloV66 === null) return !hasProof;
   const progress = normalizeSoloV66Campaign(value.soloV66);
-  return !!progress && !!prerequisites(value) && hasProof === (progress.status === "completed");
+  return !!progress && !!prerequisites(value, progress.status === "completed") && hasProof === (progress.status === "completed");
 }
 export function canStartSoloV66(save: unknown): boolean {
   return record(save) && !!prerequisites(save) && soloV66MatchesSave(save);
