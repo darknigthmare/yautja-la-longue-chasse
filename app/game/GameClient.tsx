@@ -5324,10 +5324,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <button type="button" className="ghost-button" onClick={() => {
                   setJusticeJurisdiction("homeworld"); openStationScreen("justice", "homeworld");
                 }}>Dossier · {getJusticeStatus(save.justice).label}</button>
-                {canEnterQuatza(save, "triad") && <button type="button" className="ghost-button" data-open-quatza-homeworld
+                {(canEnterQuatza(save, "triad") || !!save.bloodedTempleV174) && <button type="button" className="ghost-button" data-open-quatza-homeworld
                   disabled={settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !!resumableHunt}
                   onClick={() => { setChronicleReturnScreen("homeworld"); go("clan-chronicle"); }}>
-                  Dossier de campagne · Quatza-Rij
+                  {save.bloodedTempleV174 ? "Dossier de campagne · rites" : "Dossier de campagne · Quatza-Rij"}
                 </button>}
                 {!save.prologue && <button type="button" className="ghost-button" onClick={() => go("deck")}>Rejoindre le vaisseau</button>}
                 <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages</button>

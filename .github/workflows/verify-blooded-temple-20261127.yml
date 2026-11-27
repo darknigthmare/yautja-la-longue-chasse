@@ -92,3 +92,14 @@ jobs:
         run: |
           node node_modules/next/dist/bin/next typegen
           node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Play all six rooms, reload mid-journey and draw the two marks
+        env:
+          CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+        run: node scripts/qa-blooded-temple-v174.mjs
+      - name: Keep the gameplay proof
+        if: ${{ !cancelled() && hashFiles('outputs/qa-blooded-temple-v174/report.json') != '' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: temple-blooded-v174
+          path: outputs/qa-blooded-temple-v174/
+          if-no-files-found: error
