@@ -68,6 +68,28 @@ Le suivi utilise le `main` de départ `2769b09` et l’état des branches et PR 
 
 Le détail des vérifications indique les étapes jouées dans Chrome, les tests du moteur et les besoins d’habillage. R2-M059 attend une fin d’origine jouée et un prolongement Ancient compatible. Le choix de fin existant prépare ce chemin.
 
+### Suite du 27 novembre 2026
+
+La reprise part de `9a98912` et tient compte des têtes de branches relevées dans le suivi. Le classeur des 68 fiches associe chaque parcours à ses preuves et à son reste à produire. [Classeur mis à jour](../../production/INVENTAIRE_BIBLE_20261127.xlsx)
+
+- **R2-M004** · Après la forge, la Salle des maîtres reçoit les trois gestes. La poutre reprend au dernier passage validé. Le choix d’ordre donne le camarade de l’exercice. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45997179730)
+- **R2-M005** · Le joueur suit les empreintes, les branches et les sons jusqu’au perchoir. Il peut reprendre au dernier indice et remet la carte ou son dernier relevé. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45997179730)
+- **R2-M006** · La démonstration et le rangement ouvrent la porte du dojo. La cérémonie de rang et le choix du premier atelier restent à raccorder à cette passation historique. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45997179730)
+- **R2-M014** · Chaque région a une halte, deux routes et une observation liée aux ateliers. Le joueur peut se replier, reprendre et rendre la bourse au Maître des terrasses. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45997995198)
+- **R2-M016** · Au repère V90, le rôle choisi change les positions de Saar et Vek. Le jalon attend qu’ils rejoignent leurs postes, et le choix survit au rechargement. Les rencontres avant la répétition restent ouvertes. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45998557554)
+- **R2-M017** · Le signal fait prendre leurs appuis à Saar et Vek avant que le joueur tienne le contrepoids. La porte basse sert réellement d’issue. La voie haute conserve ses checkpoints. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45999084802)
+- **R2-M030** · Le chasseur Adjutant entre avec une coque acquise. Il relève les anomalies en marchant le long de la galerie et règle la priorité au dispositif. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45999376383)
+- **R2-M031** · À l’établi les alternatives donnent des lectures propres. Un mauvais réglage conserve le travail déjà validé. Les pièces sont chargées ensemble avant le montage. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45999376383)
+- **R2-M032** · Le joueur aligne les supports, relie les commandes et vérifie à vide la marge ou la fenêtre courte. Le module et la preuve de chronique sont écrits ensemble. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45999376383)
+- **R2-M033** · Le chasseur rejoint le col des cèdres, ancre le repère et revient, après l’alcôve s’il la choisit. Un retour immédiat reste disponible pour quitter le trajet. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45999376383)
+- **R2-M037** · Après le premier voyage, la garde et la livraison ouvrent le canyon de Korthas. Deux balises mènent au choix de consolidation ou de progression et à un rapport durable en campagne. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45997651308)
+- **R2-M043** · Les épreuves utilisent les vrais gestes du simulateur. Les témoins et le socle consignent la reconnaissance Elite une fois les preuves antérieures réunies. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45997710068)
+- **R2-M044** · La coque collective se visite depuis le projet du hangar. Les deux repères vérifiés reviennent au sas dans un relevé du propriétaire, avant ou après le choix déjà consigné. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45999104288)
+- **R2-M056** · Le joueur compare les actes et choisit une audience locale ou une préparation intime. Griffe de Fer témoigne au poste ou sa trace autorisée est consultée aux archives. L’ancienneté et les dettes restent à établir pour le rang. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45996508882)
+- **R2-M057** · La visite permet d’examiner les masques ou de rejoindre le casier pour y consulter leur chronique. La lecture et l’état d’accès par titre survivent à la reprise. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45996503862)
+
+La préparation O6 est jouable dans la demeure. Le joueur installe l’appui puis le râtelier, vérifie le passage et revient au seuil. R2-M059 attend toujours une vraie fin d’origine et la reconnaissance Ancient. R2-M058 attend un chapitre de chronique du projet et sa propre sauvegarde. [Recette de la demeure](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45998374522)
+
 ## Vue d'ensemble
 
 La campagne comprend 60 fiches communes et 8 chasses planétaires qui réalisent R2-M024. Le tableau associe les fiches à leur parcours. Le classeur du 27 novembre précise les correspondances, les preuves et les étapes encore ouvertes.
@@ -79,9 +101,9 @@ La chaîne de jeunesse va de la nurserie à l’accueil Unblooded sur le Homewor
 | 1 | R2-M001 | Pourquoi nous combattons | Youngling | Ouverture jouable | Outil, proie échappée, mise à l’abri et filet |
 | 2 | R2-M002 | Le filet et les visages | Youngling | Cour de la nurserie raccordée | Duel, outil, barrière et choix de cohorte |
 | 3 | R2-M003 | Le chemin vers la cité | Youngling | Course et forge raccordées, fiche partielle | Audience, remise à la forge et repères de cité |
-| 4 | R2-M004 | L’épreuve des trois gestes | Youngling | Texte seul | voisin : V48 dojo |
-| 5 | R2-M005 | La piste avant la prise | Youngling | Texte seul | voisin : V66 Premières Pistes |
-| 6 | R2-M006 | Entrer parmi les Unblooded | Youngling | Texte seul | voisin : V48 accueil |
+| 4 | R2-M004 | L’épreuve des trois gestes | Youngling | Exercices en salle raccordés | Anneau, poutre et cible dans l’ordre choisi |
+| 5 | R2-M005 | La piste avant la prise | Youngling | Piste et rapport raccordés | Indices, perchoir et retour par une autre voie |
+| 6 | R2-M006 | Entrer parmi les Unblooded | Youngling | Passation jouable · rang déjà acquis | Démontrer, ranger l’outil puis entrer au dojo |
 | 7 | R2-M007 | Le masque et ses lectures | Unblooded | Atelier Unblooded jouable | Calibrer et remettre le profil de masque |
 | 8 | R2-M008 | La distance des lames | Unblooded | Atelier Unblooded jouable | Comparer la portée et remettre le rapport de lames |
 | 9 | R2-M009 | Ce que le camouflage laisse voir | Unblooded | Atelier Unblooded jouable | Lire les traces et franchir la salle de camouflage |
@@ -89,10 +111,10 @@ La chaîne de jeunesse va de la nurserie à l’accueil Unblooded sur le Homewor
 | 11 | R2-M011 | Le tir qui demande une ligne | Unblooded | Atelier Unblooded jouable | Tirer au speargun et rendre le rapport |
 | 12 | R2-M012 | Le piège et le retour | Unblooded | Atelier Unblooded jouable | Poser et récupérer une mine d’exercice |
 | 13 | R2-M013 | Le soin dans un abri | Unblooded | Atelier de soin raccordé | Kit, écran, alerte, dépense et repos |
-| 14 | R2-M014 | La boucle des régions proches | Unblooded | Texte seul | voisin : V52 patrouille, V67 passages |
+| 14 | R2-M014 | La boucle des régions proches | Unblooded | Circuit supervisé raccordé | Désert, jungle et bordure avec retour au Maître |
 | 15 | R2-M015 | Recevoir la place de Young Blood | Unblooded | Partiel | V68 accorde Young Blood |
-| 16 | R2-M016 | Former la triade | Young Blood | Partiel | V68 cohorte, V90 entraînement |
-| 17 | R2-M017 | Le Temple des Trois Ombres | Young Blood | Partiel | V69 + V70 acte I (9 salles) |
+| 16 | R2-M016 | Former la triade | Young Blood | Répartition jouable · rencontres ouvertes | Préférence ou complémentarité, puis arrivée des deux partenaires |
+| 17 | R2-M017 | Le Temple des Trois Ombres | Young Blood | Deux routes au Belvédère | Corniche haute ou contrepoids et porte de service |
 | 18 | R2-M018 | Le Quatza-Rij à trois | Young Blood | Texte seul | V90 = entraînement, pas le rite |
 | 19 | R2-M019 | Revenir avec la triade | Young Blood | Texte seul | — |
 | 20 | R2-M020 | Porter la marque Blooded | Young Blood | Rite et rang raccordés | Pyramide, purge, marque sur le masque et le front |
@@ -113,21 +135,21 @@ La chaîne de jeunesse va de la nurserie à l’accueil Unblooded sur le Homewor
 | 35 | R2-M027 | Ce que la reine a changé | Blooded | Texte seul | — |
 | 36 | R2-M028 | L’essai de coordination | Blooded | Essai à deux équipes raccordé | Ordres au quai, verrou à l’atelier et reprise |
 | 37 | R2-M029 | La fonction Adjutant | Blooded | Parcours et fonction raccordés | Retour des élèves, service du quai et audience du Leader |
-| 38 | R2-M030 | Le seuil du Warp | Blooded | Texte seul | — |
-| 39 | R2-M031 | Les pièces d’un retour | Blooded | Texte seul | — |
-| 40 | R2-M032 | Installer le module du Warp | Blooded | Texte seul | — |
-| 41 | R2-M033 | Traverser et revenir | Blooded | Texte seul | — |
+| 38 | R2-M030 | Le seuil du Warp | Blooded | Observatoire jouable | Trois anomalies et choix au dispositif dormant |
+| 39 | R2-M031 | Les pièces d’un retour | Blooded | Essais et transport raccordés | Diagnostics, réglages et chariot des trois pièces |
+| 40 | R2-M032 | Installer le module du Warp | Blooded | Installation et preuve raccordées | Supports, câbles et retour à vide |
+| 41 | R2-M033 | Traverser et revenir | Blooded | Reconnaissance W-02 raccordée | Repère physique et retour par la fenêtre réservée |
 | 42 | R2-M034 | Choisir la prochaine route | Blooded | Choix et préparation raccordés | Officier du quai, route V159 et sas orbital |
 | 43 | R2-M035 | Un conflit de clan à hauteur de chasseur | Blooded | Introduction de campagne jouable | Mandat du Conseil, choix d’alliance et passage du canyon |
 | 44 | R2-M036 | Voir le champ depuis les hauteurs | Blooded | Introduction RTS jouable | Conseil, trois équipes et sortie sur W3-MAP01 |
-| 45 | R2-M037 | La carte a des chemins | Blooded | Partiel · Fronts libres | Convoi livré, deux balises et décision au canyon de Korthas |
+| 45 | R2-M037 | La carte a des chemins | Blooded | Introduction de conquête raccordée | Mandat Blooded, convoi, traversée et choix au poste |
 | 46 | R2-M038 | L’histoire dans le meuble | Blooded | Atelier et placement raccordés | Provenance, préparation et emplacement de la prise |
 | 47 | R2-M039 | Revenir chez les siens | Blooded | Retour civique raccordé | Quai, atelier, relais et témoin |
 | 48 | R2-M040 | Mon domaine de maîtrise | Blooded | Jouable dans le dossier | Quatre exercices et profil enregistré |
 | 49 | R2-M041 | Préparer la chasse solitaire | Blooded | Préparation raccordée au dossier du clan | `quatzaRij.expeditions.solo` |
 | 50 | R2-M042 | Le Quatza-Rij solitaire | Blooded | Combat, prélèvement et retour raccordés | `quatzaRij.expeditions.solo` |
-| 51 | R2-M043 | La reconnaissance Elite | Blooded | Partiel · préparation | Trois preuves, socle et témoin public ou restreint |
-| 52 | R2-M044 | La coque d’un groupe | Elite | Inspection à bord partielle | `clanHullProjectV171` |
+| 51 | R2-M043 | La reconnaissance Elite | Blooded | Reconnaissance Elite raccordée | Lames, plasma, chasse L-06 et remise au socle |
+| 52 | R2-M044 | La coque d’un groupe | Elite | Inspection extérieure raccordée | Passerelle, deux ponts scellés, relevé rendu au sas |
 | 53 | R2-M045 | Une porte, plusieurs haltes | Elite | Transfert entre seuils raccordé | `residenceV149.lastChoice` |
 | 54 | R2-M046 | Une mission vraiment collective | Elite | Escorte raccordée | `clanShipOperations` |
 | 55 | R2-M047 | Ce que la guerre laisse au retour | Elite | Retour de la Veille Partagée raccordé | Passe des Cendres et deux interventions |
@@ -139,8 +161,8 @@ La chaîne de jeunesse va de la nurserie à l’accueil Unblooded sur le Homewor
 | 61 | R2-M053 | Un ancien terrain a changé | Elder | Retour à Oseris-IV raccordé | Ancien relevé, rive ou canopée |
 | 62 | R2-M054 | La décision du successeur | Elder | Parcours du successeur jouable | Oseris-IV, postes, danger et retour |
 | 63 | R2-M055 | L’épreuve de la longue mémoire | Elder | Épreuve de mémoire jouable | Archives, hangar, armurerie et transmission |
-| 64 | R2-M056 | La reconnaissance Ancient | Elder | Texte seul | — |
-| 65 | R2-M057 | Le mausolée des chasses racontées | Ancient | Texte seul | voisin : mausolée |
+| 64 | R2-M056 | La reconnaissance Ancient | Elder | Témoignages et lieu raccordés · rite ouvert | Archives, hangar, armurerie et choix de cérémonie |
+| 65 | R2-M057 | Le mausolée des chasses racontées | Ancient | Consultation au casier raccordée | Piédestaux et chronique de titre au casier |
 | 66 | R2-M058 | Entrer dans une chronique cinéma | Ancient | Texte seul | — |
 | 67 | R2-M059 | La nouvelle cohorte revient | Ancient | Texte seul | — |
 | 68 | R2-M060 | La longue chasse demeure | Ancient, épilogue | Texte seul | — |

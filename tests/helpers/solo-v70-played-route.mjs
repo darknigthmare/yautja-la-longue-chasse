@@ -16,6 +16,16 @@ export function templeInput(s){
  const held=['oath','signs','arsenal','counterweight','humans','configuration','separation','quarantine','recognition'].includes(s.phase)&&s.room===goal.room;
  return {move,jump,command,interact:!move&&!jump&&(held||!s.previousInteract)};
 }
+export function templeMechanismInput(s) {
+ const {room,leverX,exitX}=thresholdsTemple.SOLO_V70_BELVEDERE;
+ if(s.phase!=='belvedere'||s.room!==room||s.failedAt!==null)return templeInput(s);
+ if(!s.inputArmed)return {};
+ const x=s.belvedereLever?exitX:leverX;
+ const move=Math.abs(x-s.player.x)>5?Math.sign(x-s.player.x):0;
+ if(s.belvedereLever)return {move,interact:!move&&!s.previousInteract};
+ return {move,command:!move&&s.companionMode==='follow'&&!s.previousCommand,
+  interact:!move&&s.companionMode==='plates'};
+}
 /** Normal controls, collisions, combat and room portals only. No fixtures inside the current chapter. */
 export function playTemple({initial=thresholdsTemple.createSoloV70State(),stop='complete',input=templeInput,restoreEvery=0,onStep=()=>{}}={}){let state=structuredClone(initial);const receipts=[],snapshots={},transitions=[];for(let i=0;i<100000&&state.phase!==stop;i++){if(restoreEvery&&i%restoreEvery===0){state=thresholdsTemple.normalizeSoloV70State(JSON.parse(JSON.stringify(state)));assert(state);}const before=state,out=thresholdsTemple.stepSoloV70(state,input(state),templeEnvironment);state=out.state;assert(thresholdsTemple.normalizeSoloV70State(state),'invalid '+JSON.stringify(state));if(out.receipts.length||before.room!==state.room)transitions.push({before:structuredClone(before),after:structuredClone(state),receipts:out.receipts});onStep(out,before);receipts.push(...out.receipts);snapshots[state.phase]??=structuredClone(state);}assert.equal(state.phase,stop,JSON.stringify(state));return {state,receipts,snapshots,transitions};}
 let cachedOrigin;

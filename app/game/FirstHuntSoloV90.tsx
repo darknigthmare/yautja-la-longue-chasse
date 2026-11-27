@@ -8,7 +8,7 @@ import { type YouthArtBank } from "./youthTrainingRendering";
 import { GameAudio } from "./sound";
 import YautjaTranslationV67 from "./YautjaTranslationV67";
 import { drawFirstHuntSoloV90, loadTrainingArtV90 } from "./firstHuntSoloV90Rendering";
-import { normalizeSoloV90State, stepSoloV90, soloV90NeedsImmediateCheckpoint, soloV90Objective, soloV90ObservationPostReady, soloV92Evaluation, SOLO_V92_EVASION, type SoloV90State, type SoloV90Receipt } from "./systems/firstHuntSoloV90";
+import { normalizeSoloV90State, stepSoloV90, soloV90NeedsImmediateCheckpoint, soloV90Objective, soloV90ObservationPostReady, soloV90RoleBoardReady, soloV92Evaluation, SOLO_V92_EVASION, type SoloV90State, type SoloV90Receipt, type SoloV90RolePlan } from "./systems/firstHuntSoloV90";
 import styles from "./FirstHuntSoloV90.module.css";
 
 export interface FirstHuntSoloV90Props {
@@ -25,14 +25,14 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
   const stateRef = useRef(initial), latest = useRef(props), canvasRef = useRef<HTMLCanvasElement>(null), panelRef = useRef<HTMLDivElement>(null);
   const codes = useRef(new Set<string>()), release = useRef(new Set<string>()), touch = useRef(new Set<YouthTouchAction>());
   const pausedRef = useRef(false), mounted = useRef(false), busy = useRef(false);
-  const neutralRequired = useRef(true);
+  const neutralRequired = useRef(true), roleSelection = useRef<SoloV90RolePlan | null>(null);
   const audioRef = useRef<GameAudio | null>(null);
   const pending = useRef<{ state: SoloV90State; receipts: readonly SoloV90Receipt[] } | null>(null);
   const [state, setState] = useState(initial), [bank, setBank] = useState<YouthArtBank | null>(null);
   const [artError, setArtError] = useState(""), [saveError, setSaveError] = useState(""), [loadAttempt, setLoadAttempt] = useState(0);
   const [paused, setPaused] = useState(false), [pendingUi, setPendingUi] = useState(false), [saving, setSaving] = useState(false), [touchUi, setTouchUi] = useState(false);
   useEffect(() => { latest.current = props; }, [props]);
-  const clear = useCallback(() => { neutralRequired.current = true; for (const code of codes.current) release.current.add(code); codes.current.clear(); touch.current.clear(); }, []);
+  const clear = useCallback(() => { neutralRequired.current = true; for (const code of codes.current) release.current.add(code); codes.current.clear(); touch.current.clear(); roleSelection.current = null; }, []);
   const checkpoint = useCallback(() => {
     if (pending.current || !stateRef.current) return false;
     try { if (latest.current.onCheckpoint(stateRef.current)) { stateRef.current = { ...stateRef.current, replay: [] }; setSaveError(""); return true; } } catch { /* Retain the current physical state and command trace for retry. */ }
@@ -107,7 +107,10 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
         accumulated += elapsed; let steps = 0;
         while (accumulated >= 1000 / 60 && steps++ < 6) {
           accumulated -= 1000 / 60; const prior = stateRef.current!;
-          const output = stepSoloV90(stateRef.current!, { move: sample.actions.move, jump: sample.actions.jump, dodge: sample.actions.dodge, interact: sample.actions.interact, command: sample.actions.blade }, { assetsReady: true, pageVisible: true, paused: false });
+          const rolePlan = roleSelection.current ?? undefined;
+          roleSelection.current = null;
+          const output = stepSoloV90(prior, { move: sample.actions.move, jump: sample.actions.jump, dodge: sample.actions.dodge,
+            interact: sample.actions.interact, command: sample.actions.blade, rolePlan }, { assetsReady: true, pageVisible: true, paused: false });
           stateRef.current = output.state; changed ||= output.state.phase !== prior.phase;
           // Existing sounds follow physical simulation events; a receipt's
           // objective/victory cue belongs to its durable confirmation above.
@@ -116,7 +119,7 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
           if (next.attackTimer === 18 && prior.attackTimer !== 18) audio?.slash();
           if (next.health < prior.health) audio?.hit();
           if (next.observedCycles > prior.observedCycles) audio?.scan();
-          if (next.roleMode !== prior.roleMode) audio?.ui();
+          if (next.roleMode !== prior.roleMode || next.formationPlan !== prior.formationPlan) audio?.ui();
           if (next.drone.mode === "telegraph" && prior.drone.mode !== "telegraph") audio?.enemyAlert();
           if (next.health === 0 && prior.health > 0) audio?.defeat();
           if (next.evasion?.ticks === SOLO_V92_EVASION.duration && !prior.evasion?.ticks) audio?.ui();
@@ -149,9 +152,15 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
     catch { setSaveError("Le départ a échoué. La scène reste disponible."); }
     finally { busy.current = false; if (mounted.current) setSaving(false); }
   };
+  const chooseRoles = (plan: SoloV90RolePlan) => {
+    if (!stateRef.current || !soloV90RoleBoardReady(stateRef.current) ||
+        pausedRef.current || pending.current || busy.current || props.externallyPaused) return;
+    roleSelection.current = plan;
+    canvasRef.current?.focus();
+  };
   const objective = state ? soloV90Objective(state) : null;
   const evaluation = state ? soloV92Evaluation(state) : null;
-  const spoken = state?.phase === "briefing" ? "Saar prépare l’approche. Vek tient l’ouverture. Tu choisis la frappe, ou le repli. Aucun exercice ne remplace le rite."
+  const spoken = state?.phase === "briefing" ? "Saar et Vek se préparent à leurs deux postes. Choisis leur répartition au repère central. Tu tiens la frappe et peux décider le repli."
     : state?.phase === "arsenal" ? "Le vétéran : vérifie chaque outil du prêt. Ces outils restent ceux de cette galerie ; leur contrôle ne devient pas une dotation personnelle."
     : state?.phase === "assemble" ? "Saar : donne le signal lorsque tu es prêt. Nous allons à nos postes à pied. Attends Vek avant de confirmer la formation."
     : state?.phase === "observe" ? "Vek : lis l’annonce, la charge puis le retrait. Regarde trois cycles depuis ce repère avant d’engager le combat."
@@ -162,6 +171,16 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
   return <section className={styles.screen} data-solo-v90 data-solo-step={state?.phase ?? "invalid"}>
     <header className={styles.header} inert={modal && !props.externallyPaused ? true : undefined}><strong>CAMPAGNE · PRÉPARATION DE TRIADE · COMBAT DE SEUIL</strong><div><button type="button" onClick={pause} disabled={!state || pendingUi}>Pause</button><button type="button" onClick={() => setTouchUi(v => !v)} aria-pressed={touchUi}>Tactile</button></div></header>
     <div className={styles.objective}><h1>{objective?.title ?? "Checkpoint non pris en charge"}</h1><p>{objective?.instruction ?? "La partie est conservée. Aucun état neuf ne remplace ce checkpoint."}</p>{state && <div className={styles.measure}><span>{state.player.x < 1200 ? "Vestibule du témoin" : state.player.x < 2200 ? "Galerie de préparation" : "Combat de seuil"}</span><span>{evaluation?.result ?? "Tentative en cours"}</span><span>Contributions {state.contributions.player} / {state.contributions.saar} / {state.contributions.vek}</span><span>Vitalité {state.health}/6</span>{saving && <span role="status">Enregistrement…</span>}</div>}</div>
+    {state && soloV90RoleBoardReady(state) && !modal && <div className={styles.rolePlan} role="group" aria-label="Répartition des trois postes">
+      <button type="button" data-solo-v90-plan="preference" aria-pressed={state.formationPlan === "preference"}
+        disabled={!!props.externallyPaused || pendingUi || !bank} onClick={() => chooseRoles("preference")}>
+        Par préférence · Saar approche, Vek ouvre
+      </button>
+      <button type="button" data-solo-v90-plan="complementary" aria-pressed={state.formationPlan === "complementary"}
+        disabled={!!props.externallyPaused || pendingUi || !bank} onClick={() => chooseRoles("complementary")}>
+        Par complémentarité · Vek approche, Saar ouvre
+      </button>
+    </div>}
     <div className={styles.view} inert={modal && !props.externallyPaused ? true : undefined}><canvas ref={canvasRef} width={960} height={540} tabIndex={0} aria-label="Galerie jouable de préparation : marche, saut, postes de triade, lecture du drone, combat, repli et retour réel." />{spoken && !modal && <p className={styles.spoken}><YautjaTranslationV67 text={spoken} paused={paused || !!props.externallyPaused || pendingUi} reducedMotion={props.reducedMotion} /></p>}{notice && !modal && <p className={styles.notice} role="status">{notice}</p>}</div>
     {touchUi && <div className={styles.controls} aria-label="Commandes tactiles de la préparation de triade">{BUTTONS.map(([action, label]) => <button type="button" key={action} data-solo-action={action} disabled={!!modal || !!props.externallyPaused || pendingUi} onPointerDown={e => setTouch(action, true, e)} onPointerUp={() => setTouch(action, false)} onPointerCancel={() => setTouch(action, false)} onLostPointerCapture={() => setTouch(action, false)} onBlur={() => setTouch(action, false)} onKeyDown={e => { if ((e.key === " " || e.key === "Enter") && !e.repeat) { e.preventDefault(); setTouch(action, true); } }} onKeyUp={e => { if (e.key === " " || e.key === "Enter") { e.preventDefault(); setTouch(action, false); } }}>{label}</button>)}</div>}
     <p className={styles.keys}>Marcher {controlActionShortcut(YOUTH_CONTROL_ACTIONS.left, props.bindings)} / {controlActionShortcut(YOUTH_CONTROL_ACTIONS.right, props.bindings)} · Saut {controlActionShortcut(YOUTH_CONTROL_ACTIONS.jump, props.bindings)} · Esquive {controlActionShortcut(YOUTH_CONTROL_ACTIONS.dodge, props.bindings)} · Lame / Signal {controlActionShortcut(YOUTH_CONTROL_ACTIONS.blade, props.bindings)} · Interagir {controlActionShortcut(YOUTH_CONTROL_ACTIONS.interact, props.bindings)} · Manette : croix/stick, A, B, Y, LB</p>

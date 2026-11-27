@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
-import {thresholdsTemple as p,templeCampaignRoute,templeInput,templeEnvironment as env,stamp} from './helpers/solo-v70-played-route.mjs';
+import {thresholdsTemple as p,templeCampaignRoute,templeInput,templeMechanismInput,templeEnvironment as env,stamp} from './helpers/solo-v70-played-route.mjs';
 import {homeworldQaModelV64} from '../scripts/homeworld-qa-model-v64.mjs';
 let route;const played=()=>route??=templeCampaignRoute();
 
@@ -77,4 +77,28 @@ test('a genuinely defeated chamber cannot be healed through an early retry or fa
  while(state.tick-state.failedAt<90)state=p.stepSoloV70(state,{},env).state;
  state=p.stepSoloV70(state,{interact:true},env).state;const accepted=p.withSoloV70Checkpoint(save,state,stamp);assert(accepted);assert.equal(accepted.soloV70.checkpoint.attempts,1);assert.deepEqual(accepted.soloV70.receipts,save.soloV70.receipts);
  const invented=structuredClone(state);invented.drone.hits++;assert.equal(p.withSoloV70Checkpoint(save,invented,stamp),null,'retry cannot manufacture additional hits');
+});
+
+test('the lower Belvedere route requires both companions, opens a physical portal and preserves the other rooms',()=>{
+ const run=templeCampaignRoute({origin:played().origin,input:templeMechanismInput});
+ const passage=run.commits.find(c=>c.receipts[0]?.id==='belvedere-serviced');
+ const legacy=played().commits.find(c=>c.receipts[0]?.id==='belvedere-serviced');
+ assert.equal(legacy.state.player.y,270);
+ assert.equal(legacy.state.belvedereLever,undefined);
+ assert(p.normalizeSoloV70Campaign(legacy.after.soloV70));
+ const lever=passage.before.soloV70.checkpoint.belvedereLever;
+ assert(lever);
+ assert.deepEqual(run.state.belvedereLever,lever);
+ assert(p.soloV70BelvederePlatesReady(lever.positions.slice(1)));
+ assert.equal(passage.state.player.y,430);
+ assert(run.transitions.some(t=>t.before.room===4&&t.after.room===5&&t.before.player.y===430));
+ assert.equal(run.save.soloV70.status,'completed');
+ assert.equal(run.save.soloV70.receipts.length,15);
+ assert.equal(run.state.configuration,3);
+ const removed=structuredClone(passage.state);delete removed.belvedereLever;
+ assert.equal(p.withSoloV70Progress(passage.before,passage.receipts,removed,stamp),null);
+ const misplaced=structuredClone(passage.state);misplaced.belvedereLever.positions[1]=680;
+ assert.equal(p.normalizeSoloV70State(misplaced),null);
+ const forcedUpper=structuredClone(passage.state);forcedUpper.player.y=270;
+ assert.equal(p.withSoloV70Progress(passage.before,passage.receipts,forcedUpper,stamp),null);
 });
