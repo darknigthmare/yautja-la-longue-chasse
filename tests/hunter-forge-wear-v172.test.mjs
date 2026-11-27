@@ -278,3 +278,41 @@ test("the equipped weapon advances across both native tiers with the exact selec
   assert.equal(restored.inventory.weaponUpgrades[weaponId], 2);
   assert.deepEqual(restored.inventory.harvestV112.archive, [reserve[0]]);
 });
+
+test("the material path for the bow respects admission, native ammunition and the unchanged blade recipe", () => {
+  const save = withDamagedPlate();
+  const bow = "yautja-bow";
+  const bone = { speciesId: "nivalis-k--glacier-ram", partId: "bone", label: "Côte renforcée", count: 3, qualityTotal: 268 };
+  const tissue = { speciesId: "oseris-iv--vineback-grazer", partId: "tissue", label: "Ligament dorsal", count: 5, qualityTotal: 401 };
+  save.inventory.harvestV112.archive = [bone, tissue];
+  const selection = { bone: work.forgeMaterialKeyV146(bone), tissue: work.forgeMaterialKeyV146(tissue) };
+  assert.equal(work.forgeWeaponRecipeV146(save, bow), null);
+  save.inventory.unlockedWeaponIds.push(bow);
+  assert.equal(work.forgeWeaponRecipeV146(save, bow), null);
+  save.loadout.weaponIds = [bow, "combistick"];
+
+  const tierOne = work.planForgeWeaponMaterialsV146(save, bow, selection);
+  assert(tierOne);
+  assert.deepEqual(tierOne.quote.requirements, { bone: 1, tissue: 2 });
+  assert.deepEqual(work.forgeWeaponRecipeV146(save, "combistick").requirements, { bone: 2, tissue: 1 });
+  const appliedOne = work.applyHunterForgeWeaponUpgradeV146(save, tierOne.quote);
+  assert(appliedOne);
+  assert.deepEqual(appliedOne.inventory.harvestV112.archive, [
+    { ...bone, count: 2, qualityTotal: 179 },
+    { ...tissue, count: 3, qualityTotal: 241 },
+  ]);
+  const tierTwo = work.planForgeWeaponMaterialsV146(appliedOne, bow, selection);
+  assert(tierTwo);
+  assert.deepEqual(tierTwo.quote.requirements, { bone: 2, tissue: 3 });
+  assert.equal(work.applyHunterForgeWeaponUpgradeV146(appliedOne, tierOne.quote), null);
+  const appliedTwo = work.applyHunterForgeWeaponUpgradeV146(appliedOne, tierTwo.quote);
+  assert(appliedTwo);
+  assert.deepEqual(appliedTwo.inventory.harvestV112.archive, []);
+  assert.equal(appliedTwo.inventory.weaponUpgrades.combistick, 0);
+  assert.equal(appliedTwo.profile.clanMarks, save.profile.clanMarks);
+  const restored = saves.parseSaveImport(saves.exportSave(appliedTwo)).save;
+  assert(restored);
+  const native = qa.load("app/game/systems/arsenal.ts");
+  assert.equal(native.effectiveWeaponStats(bow, restored.inventory.weaponUpgrades[bow]).ammo, 10);
+  assert.equal(work.forgeWeaponRecipeV146(restored, bow), null);
+});
