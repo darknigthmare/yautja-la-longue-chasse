@@ -83,3 +83,27 @@ test("the visual state follows only worn plates and keeps their real registered 
   assert.ok(render("hunter", false).includes('data-piece-wear="shin"'));
   assert.ok(render("hunter", false).includes('data-piece-wear="bracer"'));
 });
+
+test("a displayed material quote spends the chosen lot only and refuses a stale debit", () => {
+  const save = withDamagedPlate();
+  const ledger = save.inventory.harvestV112;
+  const plate = ledger.archive[0];
+  const hide = { speciesId: "oseris-iv--mist-pouncer", partId: "hide", label: "Pelage de bondisseur", count: 2, qualityTotal: 150 };
+  ledger.archive.push(hide);
+  const preferred = work.forgeMaterialKeyV146(hide);
+  const manual = work.planForgeRepairMaterialsV146(ledger.archive, 2, preferred);
+  assert.deepEqual(manual.quote.units, [{ ...hide, consumed: 2 }]);
+  assert.equal(work.planForgeRepairMaterialsV146(ledger.archive, 4, preferred), null);
+  const automatic = work.planForgeRepairMaterialsV146(ledger.archive, 4);
+  assert.deepEqual(automatic.quote.units, [{ ...plate, consumed: 3 }, { ...hide, consumed: 1 }]);
+  assert.deepEqual(automatic.archive, [{ ...hide, count: 1, qualityTotal: 75 }]);
+
+  const changed = { ...save, inventory: { ...save.inventory, harvestV112: { ...ledger, archive: [plate, { ...hide, qualityTotal: 151 }] } } };
+  assert.equal(work.applyHunterForgeRepairV146(changed, "chest", 1, manual.quote), null);
+  const next = work.applyHunterForgeRepairV146(save, "chest", 1, manual.quote);
+  const stored = saves.parseSaveImport(saves.exportSave(next));
+  assert.equal(stored.failure, null);
+  assert.deepEqual(stored.save.inventory.harvestV112.archive, [plate]);
+  assert.deepEqual(stored.save.customizationV146.heavyWear, { shin: 2 });
+  assert.deepEqual(ledger.archive, [plate, hide]);
+});

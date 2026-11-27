@@ -28,3 +28,6 @@
 .footer p { margin: 0; font-size: .85rem; }
 .visuallyHidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 @media (max-width: 640px) { .zone { grid-template-columns: 1fr auto; } }
+
+.repairSources { display: grid; gap: .3rem; max-width: 40rem; }
+.repairSources select { min-width: 0; width: 100%; padding: .4rem; color: inherit; background: #161b1a; border: 1px solid rgb(255 255 255 / .35); border-radius: 4px; }

@@ -22,7 +22,7 @@ import {
 } from "./systems/hunterCustomizationV146";
 import { normalizeHunterAppearanceV146 } from "./save";
 import { harvestInventoryForV112 } from "./systems/harvestInventoryV112";
-import { applyHunterForgeRepairV146 } from "./systems/hunterCustomizationPersistenceV146";
+import { applyHunterForgeRepairV146, forgeMaterialKeyV146, planForgeRepairMaterialsV146 } from "./systems/hunterCustomizationPersistenceV146";
 import styles from "./HunterPieceForgeV146.module.css";
 
 type Tab = "pieces" | "lights" | "body" | "outfits" | "clan" | "forge";
@@ -64,7 +64,10 @@ export default function HunterPieceForgeV146({
   const [outfitName, setOutfitName] = useState("");
   const [shareInput, setShareInput] = useState("");
   const customization: CustomizationV146 = save.customizationV146 ?? emptyCustomizationV146();
-  const repairStock = tab === "forge" ? harvestInventoryForV112(save.inventory).archive.reduce((total, entry) => total + entry.count, 0) : 0;
+  const [repairMaterial, setRepairMaterial] = useState("");
+  const repairArchive = tab === "forge" ? harvestInventoryForV112(save.inventory).archive : [];
+  const repairStock = repairArchive.reduce((total, entry) => total + entry.count, 0);
+  const selectedMaterialMissing = Boolean(repairMaterial) && !repairArchive.some(entry => forgeMaterialKeyV146(entry) === repairMaterial);
   const earned = useMemo(() => earnedForSave(save), [save]);
 
   // A mask, pigment or preset can be confirmed in a neighbouring editor.
@@ -293,18 +296,35 @@ export default function HunterPieceForgeV146({
       <p data-forge-repair-stock={repairStock}>{repairStock} unité(s) de matière disponibles dans l&apos;archive des prélèvements.</p>
       {Object.keys(customization.heavyWear).length === 0
         ? <p>Aucune pièce fissurée. Les éraflures de mission disparaissent au retour au navire.</p>
-        : <ul className={styles.slots}>
-          {(Object.entries(customization.heavyWear) as [HunterPieceIdV146, number][]).map(([id, level]) => {
-            const cost = repairCostV146(customization, id);
-            return <li key={id}>
-              <strong>{HUNTER_PIECES_V146.find(p => p.id === id)?.label} : usure {level}/3</strong>
-              <button type="button" data-forge-repair-piece={id} disabled={disabled || repairStock < cost}
-                onClick={() => commit(current => applyHunterForgeRepairV146(current, id, level), "Pièce réparée à la forge.")}>
-                Réparer ({cost} matériaux)
-              </button>
-            </li>;
-          })}
-        </ul>}
+        : <>
+          {repairStock > 0 && <label className={styles.repairSources}>
+            Matière à employer
+            <select data-forge-repair-material value={repairMaterial} disabled={disabled} onChange={event => setRepairMaterial(event.target.value)}>
+              <option value="">Sélection automatique dans la réserve</option>
+              {selectedMaterialMissing && <option value={repairMaterial} disabled>Lot épuisé</option>}
+              {repairArchive.map(entry => <option key={forgeMaterialKeyV146(entry)} value={forgeMaterialKeyV146(entry)}>
+                {entry.label} · {entry.speciesId} · {entry.count} · qualité {Math.round(entry.qualityTotal / entry.count)}
+              </option>)}
+            </select>
+          </label>}
+          <ul className={styles.slots}>
+            {(Object.entries(customization.heavyWear) as [HunterPieceIdV146, number][]).map(([id, level]) => {
+              const cost = repairCostV146(customization, id);
+              const payment = planForgeRepairMaterialsV146(repairArchive, cost, repairMaterial || null);
+              return <li key={id}>
+                <strong>{HUNTER_PIECES_V146.find(p => p.id === id)?.label} : usure {level}/3</strong>
+                <button type="button" data-forge-repair-piece={id} disabled={disabled || !payment}
+                  onClick={() => payment && commit(current => applyHunterForgeRepairV146(current, id, level, payment.quote), "Pièce réparée à la forge.")}>
+                  Réparer ({cost} matériaux)
+                </button>
+                <small className={styles.note} data-forge-repair-quote={id}>
+                  {payment ? payment.quote.units.map(entry => entry.consumed + " × " + entry.label).join(" · ")
+                    : repairMaterial ? "Lot trop petit ou épuisé. Choisis une autre matière." : "Matières insuffisantes pour cette pièce."}
+                </small>
+              </li>;
+            })}
+          </ul>
+        </>}
       <p className={styles.note}>Prépare puis archive les prises de chasse pour remplir la réserve de réparation.</p>
     </div>}
 
