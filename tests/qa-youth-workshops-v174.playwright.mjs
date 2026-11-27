@@ -78,6 +78,81 @@ function play(s: YouthState): YouthInput {
             checkpoint = api.stepYouthTraining(checkpoint, play(checkpoint), env).state;
           }
           if (checkpoint.phase !== "barracks") throw Error("Baraquements introuvables");
+          const assert = {
+  ok(value: unknown, message = "checkpoint attendu") { if (!value) throw Error(message); },
+  equal(actual: unknown, expected: unknown) { if (actual !== expected) throw Error(JSON.stringify({actual, expected})); },
+  deepEqual(actual: unknown, expected: unknown) { this.equal(JSON.stringify(actual), JSON.stringify(expected)); },
+};
+const tick = (state: YouthState, input: YouthInput) => api.stepYouthTraining(state, input, env).state;
+          
+    let s: YouthState = checkpoint;
+    const run = (input: YouthInput = {}) => {
+        s = tick(s, input);
+        assert.ok(api.normalizeYouthTraining(s), 'replayable checkpoint at ' + JSON.stringify(s.workshopV174?.active));
+    };
+    const wait = (frames: number) => { for (let frame = 0; frame < frames; frame++) run(); };
+    const act = (input: YouthInput) => { run(); run(input); run(); };
+    const walk = (target: number, { jump = true, quiet = false } = {}) => {
+        run();
+        for (let frame = 0; frame < 700 && (Math.abs(s.player.x - target) > 5 || s.player.y < 429); frame++) {
+            const move = Math.abs(s.player.x - target) <= 5 ? 0 : target < s.player.x ? -1 : 1;
+            const hurdle = jump && api.getYouthObstacles(s).some(item => move === 1
+                ? item.x - s.player.x >= 20 && item.x - s.player.x < 59
+                : move === -1 && s.player.x - item.x - item.width >= 20 && s.player.x - item.x - item.width < 59);
+            run({ move, jump: hurdle && s.player.vy === 0 && !s.previousButtons.jump, dodge: quiet });
+        }
+        assert.ok(Math.abs(s.player.x - target) <= 6 && s.player.y === 430, 'reachable ' + target + ' from ' + s.player.x);
+        run();
+    };
+    const state = () => {
+        const active = s.workshopV174?.active;
+        assert.ok(active);
+        return active;
+    };
+    const restore = () => {
+        const saved = JSON.parse(JSON.stringify(s));
+        const restored = api.normalizeYouthTraining(saved);
+        assert.ok(restored);
+        assert.deepEqual(restored.workshopV174, s.workshopV174);
+        s = restored;
+        const before = s.tick;
+        run({ interact: true });
+        assert.equal(s.tick, before);
+        run();
+    };
+    const open = (lesson: number) => {
+        walk(112);
+        act({ interact: true });
+        assert.equal(state().lesson, lesson);
+    };
+    const report = (reports: number) => {
+        walk(844);
+        act({ interact: true });
+        assert.equal(s.workshopV174?.reports.length, reports);
+        assert.equal(s.workshopV174.active, null);
+        restore();
+    };
+
+    // M007: fit, choose contrast, miss a moving target, recalibrate and read four real stations.
+    open(0); walk(196); act({ interact: true }); act({ light: true }); walk(315); act({ interact: true });
+    wait(15); act({ interact: true });
+    assert.equal(state().notice, 'calibration');
+    restore();
+    act({ interact: true }); act({ interact: true }); assert.equal(state().stage, 3);
+    for (const x of [384, 503, 624, 746]) { walk(x); act({ interact: true }); }
+    walk(844); act({ blade: true }); assert.equal(state().notice, 'certainty');
+    act({ light: true }); report(1);
+    act({ blade: true }); assert.equal(s.workshopV174?.maskProfile, 'wide');
+
+    // M008: right distance, telegraphed counter, physical barrier while blades are extended.
+    open(1); act({ blade: true }); act({ light: true }); assert.equal(state().notice, 'reach');
+    walk(484); act({ light: true }); wait(9); act({ dodge: true }); assert.equal(state().route, 'parry');
+    for (let frame = 0; frame < 95; frame++) run({ move: 1 });
+    assert.equal(s.player.x, 671); assert.equal(state().stage, 3);
+    act({ blade: true }); walk(789); report(2);
+
+
+          checkpoint = s;
         }
         const persist = state => {
           localStorage.setItem("workshop-archive", JSON.stringify(state));
@@ -118,8 +193,8 @@ function play(s: YouthState): YouthInput {
     await page.keyboard.up(key);
   }
   const press = async key => {
-    await page.keyboard.press(key, { delay: 26 });
-    await page.waitForTimeout(36);
+    await page.keyboard.press(key, { delay: 82 });
+    await page.waitForTimeout(46);
   };
   const interact = () => press("h");
   const state = () => canvas.evaluate(node => JSON.parse(node.dataset.youthWorkshop || "null"));
@@ -137,27 +212,7 @@ function play(s: YouthState): YouthInput {
     }, count);
   };
   await ready();
-  await walk(112); await interact(); await waitState(0, 0);
-  await walk(196); await interact(); await press("j"); await waitState(0, 1);
-  await walk(315); await interact(); await waitState(0, 2);
-  await page.waitForFunction(() => {
-    const c = document.querySelector("canvas[data-youth-stage]");
-    const a = JSON.parse(c.dataset.youthWorkshop)?.active;
-    return a?.stage === 2 && Math.abs(Math.sin((Number(c.dataset.youthTick) - a.stageAt) / 11)) < .22;
-  });
-  await interact(); await waitState(0, 3);
-  for (const [index, x] of [384, 503, 624, 746].entries()) { await walk(x); await interact(); await waitState(0, 4 + index); }
-  await page.screenshot({ path: "youth-workshop-material-reads.png" });
-  await walk(844); await press("j"); await waitState(0, 8);
-  await getOut(1);
-  await interact(); await waitState(1, 0);
-  await press("k"); await waitState(1, 1);
-  await walk(466); await press("j"); await waitState(1, 2);
-  await walk(396); await waitState(1, 3);
-  await press("k");
-  await walk(793); await waitState(1, 4);
-  await getOut(2);
-  await interact(); await waitState(2, 0);
+  await walk(112); await interact(); await waitState(2, 0);
   await press("k"); await walk(430); await waitState(2, 1);
   assert.equal((await state()).active.notice, "water");
   await page.screenshot({ path: "youth-workshop-cloak-trail.png" });
@@ -176,9 +231,9 @@ function play(s: YouthState): YouthInput {
   await page.keyboard.up("u");
   await waitState(2, 4); await getOut(3);
   const saved = await page.evaluate(() => JSON.parse(localStorage.getItem("workshop-archive")));
-  assert.deepEqual(saved.workshopV174.reports.map(r => r.route), ["contrast", "short", "wait"]);
+  assert.deepEqual(saved.workshopV174.reports.map(r => r.route), ["contrast", "parry", "wait"]);
   assert.deepEqual(errors, []);
-  console.log("R2-M007 à M009: entrées physiques, rapports et rechargement réel dans Chrome.");
+  console.log("R2-M009: l’eau révèle le joueur, reprise au couvert, trace lue sur l’écran, attente et déplacement discret, rapport conservé après vraie recharge.");
 } finally {
   await browser?.close();
   server.close();

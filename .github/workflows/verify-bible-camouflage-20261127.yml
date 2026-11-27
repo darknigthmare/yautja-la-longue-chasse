@@ -1,0 +1,43 @@
+name: Chrome cloak exercise and save recovery
+on:
+  push:
+    branches: [codex/verify-bible-camouflage-20261127]
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /tests/
+            /scripts/
+            /docs/
+            /types/
+            /.openai/
+            /build/
+            /public/game/youth/
+            /public/game/prologue/v47/detached-blade.png
+            /public/**/*.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node tests/qa-youth-workshops-v174.playwright.mjs
+      - if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: unblooded-workshop-chrome
+          path: youth-workshop-*.png
+          if-no-files-found: warn
