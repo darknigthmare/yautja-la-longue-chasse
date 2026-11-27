@@ -4,6 +4,7 @@ import {
   missionHonorRewardV166,
   resolveAcquiredRankV166,
 } from "./systems/honorProgressionV166";
+import { applyCampaignCoopGuestReward, projectCampaignCoopGuestReward, type CampaignCoopGuestReward, type CommittedCampaignCoopHunt } from "./systems/campaignCoopRewards";
 import { honorForCampaignRankV169, honorSourcesStatusV169, settleHonorSourcesV169 } from "./systems/honorSourcesV169";
 import { inspectMobilityLedger } from "./systems/mobility/ledger";
 import { isFutureResidenceV149, normalizeResidenceV149 } from "./systems/residenceV149";
@@ -2265,6 +2266,7 @@ function persistCampaign(
   storage: Storage | null,
   key: string,
   replaceExisting: boolean,
+  coopReward?: CampaignCoopGuestReward,
 ): SaveWriteResult {
   const validated = inspectSavePayload(save);
   const requested: SaveGame = {
@@ -2428,7 +2430,15 @@ function persistCampaign(
     return failed("read-failed");
   }
 
-  const snapshot = replaceExisting ? requested : settleHonorSourcesV169(requested, previous);
+  let snapshot = replaceExisting ? requested : settleHonorSourcesV169(requested, previous);
+  if (coopReward) {
+    // Award only against the current, already persisted guest campaign.
+    if (!previous || previousPrimarySerialized === null || previousSerialized !== previousPrimarySerialized ||
+        JSON.stringify(previous) !== JSON.stringify(validated.save)) return failed("save-conflict", previous ?? requested);
+    const credited = applyCampaignCoopGuestReward(snapshot, coopReward, MAX_TROPHY_RECORDS);
+    if (!credited) return failed("save-conflict", previous);
+    snapshot = credited;
+  }
   const serialized = JSON.stringify(snapshot);
   if (new TextEncoder().encode(serialized).byteLength > SAVE_MAX_SERIALIZED_BYTES) return failed("invalid-save");
   const observedBefore = observedCampaigns.get(storage)?.get(key);
@@ -2478,6 +2488,19 @@ export function writeSaveWithStatus(
   key = SAVE_STORAGE_KEY,
 ): SaveWriteResult {
   return persistCampaign(save, storage, key, false);
+}
+
+/** Internal terminal bridge for a campaign host simulation. The host save and
+ * its participant attribution must already have been confirmed by the authority. */
+export function restoreCampaignCoopGuestReward(
+  guest: SaveGame,
+  hunt: CommittedCampaignCoopHunt,
+  storage: Storage | null = browserStorage(),
+  key = SAVE_STORAGE_KEY,
+): SaveWriteResult {
+  const reward = projectCampaignCoopGuestReward(hunt, guest.createdAt, applyMissionResult);
+  if (!reward) return { save: guest, persisted: false, failure: "save-conflict" };
+  return persistCampaign(guest, storage, key, false, reward);
 }
 
 /** Only for an explicit, confirmed reset or replacement chosen by the player. */
