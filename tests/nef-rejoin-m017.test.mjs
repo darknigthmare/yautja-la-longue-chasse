@@ -56,6 +56,9 @@ test("M017 opens the existing high footplate and resumes the physical regrouping
   const forged = structuredClone(restored.checkpoint);
   forged.nefRelayM017.x = 895;
   assert.equal(temple.normalizeSoloV70State(forged), null);
+  const early = structuredClone(restored.checkpoint);
+  early.nefRelayM017.tick = early.milestones["second-configuration"] + holdTicks;
+  assert.equal(temple.normalizeSoloV70State(early), null, "The bridge must latch before the high hold can count");
   state = restored.checkpoint;
 
   act();

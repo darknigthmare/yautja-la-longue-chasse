@@ -1,7 +1,7 @@
 import type { SaveGame } from '../types';
 import { normalizeSoloV69Campaign, soloV69MatchesSave, templeRankKeepsEarlierTrialV174 } from './campaignSoloV69';
 import { createSoloV70State, normalizeSoloV70State, SOLO_V70_PHASES, SOLO_V70_SIGNS, SOLO_V70_ENERGY_VAULT, SOLO_V70_LOAN_RACK, SOLO_V70_QUARANTINE_THRESHOLD,
-  SOLO_V70_BELVEDERE, SOLO_V70_RECONNECTION, SOLO_V70_NEF_RELAY_M017, soloV70NefPlatesReadyM017, soloV70BelvederePlatesReady, soloV70Receipts, soloV70CampaignPortal, soloV70CanTravel,
+  SOLO_V70_BELVEDERE, SOLO_V70_RECONNECTION, SOLO_V70_NEF_RELAY_M017, soloV70NefDeploymentM017, soloV70NefPlatesReadyM017, soloV70BelvederePlatesReady, soloV70Receipts, soloV70CampaignPortal, soloV70CanTravel,
   soloV70TrioPresent, soloV70TrioObservation, type SoloV70State, type SoloV70Receipt } from './firstHuntSoloV70';
 export interface SoloV70Campaign { version:1;status:'active'|'completed';checkpoint:SoloV70State;receipts:SoloV70Receipt[];startedAt:string;completedAt:string|null }
 export type SoloV70Save=SaveGame&{soloV70?:SoloV70Campaign|null};
@@ -62,7 +62,8 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
    if (old.phase !== 'separation' || next.phase !== 'separation' || old.room !== room ||
        old.companionMode !== 'plates' || next.companionMode !== 'follow' || next.player.vx !== 0 ||
        !near(room, leverX, upperY, 38) || old.scan + delta < holdTicks || next.scan !== 0 ||
-       !soloV70NefPlatesReadyM017(next) || next.nefRelayM017.tick !== next.tick ||
+       soloV70NefDeploymentM017(next) !== null || !soloV70NefPlatesReadyM017(next) ||
+       next.nefRelayM017.tick !== next.tick ||
        next.nefRelayM017.x !== next.player.x) return null;
  }
  if (fresh[0]?.id === 'triad-rejoined' && next.nefRelayM017 &&
