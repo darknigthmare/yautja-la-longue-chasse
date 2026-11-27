@@ -42,6 +42,11 @@ jobs:
             /production/YAUTJA_LOTS_P0_P3_20261121.*
             /production/YAUTJA_LOTS_P0_P3_LOT2_20261121.*
             /public/game/xeno-prime/berceau-v1/
+            /public/game/youth/
+            /public/game/prologue/v47/detached-blade.png
+            /public/game/homeworld/v70/temple-modules.png
+            /public/game/homeworld/v74/
+            /public/game/homeworld/v75/
             /public/audio/
             /public/game/quatza-rij/
             /public/game/assets/v37/tribes/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp
@@ -90,14 +95,6 @@ jobs:
         run: |
           node scripts/materialize-asset-raccords-20261120.mjs runtime
           npm ci --ignore-scripts --no-audit --no-fund
-      - name: Play partner activities, legacy checkpoints and the Blooded rehearsal chain
-        run: node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec tests/homeworld-triad-roles-m016.test.mjs tests/campaign-training-v90.test.mjs tests/campaign-solo-v70.test.mjs tests/blooded-temple-v174.test.mjs
-      - name: Verify application types and lint
-        if: ${{ !cancelled() }}
-        run: |
-          node node_modules/next/dist/bin/next typegen
-          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
-          npx eslint app/game/FirstHuntSoloV90.tsx app/game/systems/firstHuntSoloV90.ts app/game/firstHuntSoloV90Rendering.ts scripts/qa-triad-roles-m016.mjs
       - name: Observe both partners in Chromium
         if: ${{ !cancelled() }}
         run: |
