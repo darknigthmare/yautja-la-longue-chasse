@@ -32,6 +32,11 @@ const bootstrap=await build({stdin:{contents:'export {defaultSave,SAVE_STORAGE_K
 const mod={exports:{}};
 runInNewContext(bootstrap.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url),structuredClone,TextEncoder});
 const admission=mod.exports.defaultSave('2026-11-09T00:00:00.000Z');
+// Later mission fixture. The existing save migration repairs the available
+// mission from these declared prior completions; this suite never awards them.
+for(const id of ['jungle-vey','ice-cryostalker','volcano-bad-blood']){
+  Object.assign(admission.missionProgress[id],{status:'completed',attempts:1,completions:1});
+}
 admission.profile.clanMarks=100;
 admission.inventory.fieldToolIds=['flaying-tool'];
 admission.inventory.harvestV112.toolCondition=25;
@@ -57,7 +62,7 @@ const report={
   sourceHashes,hookSha256:hash(observer),bundleSha256:hash(js.contents),cssBundleSha256:hash(css.contents),
   inputTimestampSemantics:'Input logs use the nearest decision observation, not the exact browser event-dispatch clock. Native simulation continues while screenshots, DOM inspection and protocol messages are processed.',
   instrumentation:['One declared Canvas mount hook exposes read-only state plus a single initial dead Naraka prey','A passthrough Storage.prototype.setItem observer records the successful native platform call without changing bytes or acknowledgements','No production GameClient callback, ownership check, sidecar encoder, writer or claim is substituted'],
-  admission:{kind:'Declared production defaultSave with field tool, 100 marks and condition25',sha256:hash(admission),save:admission},
+  admission:{kind:'Declared legacy campaign with the previous three hunts complete, field tool, 100 marks and condition 25',sha256:hash(admission),save:admission},
   scope:'Actual campaign navigation and GameClient admission, native harvest, charged canopy traversal, sidecar persistence and recovery. The fixture creates one local Iron Croc corpse through the native damage function at the canonical spawn. All movement, harvest, stamina, collisions and checkpoints after setup use live inputs.',
   limits:['Automated desktop Chromium','The initial Iron Croc kill is fixture setup only','No proof for the other regions or physical input devices'],
 };
