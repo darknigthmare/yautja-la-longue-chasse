@@ -5,7 +5,7 @@ export const RIVAL_SUPPORTS_O6 = {
   beam: { left: 320, right: 425, y: 199 },
   bridgeA: { left: 282, right: 437, y: 274 },
   bridgeB: { left: 475, right: 619, y: 255 },
-  flag: { left: 550, right: 845, y: 225 },
+  flag: { left: 630, right: 845, y: 225 },
   lower: { left: 74, right: 879, y: 370 },
 } as const;
 export const RIVAL_HAREK_POST_O6 = 210;

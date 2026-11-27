@@ -125,7 +125,7 @@ export function playRivalRaceO6(save: SaveGame, event: RivalRaceOrderO6): RivalR
 
 export function normalizeRivalRaceO6(raw: unknown): RivalRaceRecordO6 | null {
   if (!isData(raw) || raw.version !== 1 || typeof raw.ownerCreatedAt !== "string" ||
-      !Array.isArray(raw.journal) || raw.journal.length > 6 || !isData(raw.town)) return null;
+      !Array.isArray(raw.journal) || raw.journal.length > 7 || !isData(raw.town)) return null;
   const firstVisit = raw.town.firstVisit;
   const town: TownWitnessO6 | null = raw.town.outcome === "visit" && (firstVisit === "workshop" || firstVisit === "kennel")
     ? { outcome: "visit", firstVisit }

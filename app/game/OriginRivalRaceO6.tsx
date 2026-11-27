@@ -160,7 +160,7 @@ export default function OriginRivalRaceO6({ record, bindings, paused, onOrder }:
   const harekX = view.stage === "flag" ? RIVAL_FLAG_O6 + 27 : RIVAL_HAREK_POST_O6 + 31;
   const harekY = view.stage === "flag" ? RIVAL_SUPPORTS_O6.flag.y : RIVAL_SUPPORTS_O6.start.y;
   return <article ref={focus} tabIndex={0} className={styles.scene} aria-label="Le pari du rival" data-o6-m04
-    data-stage={view.stage} data-position={x} data-platform={view.platform} data-beat={beat} data-flight={!!flight}
+    data-stage={view.stage} data-position={x} data-facing={facing} data-platform={view.platform} data-beat={beat} data-flight={!!flight}
     onKeyDown={event => {
       if (!ready || event.altKey || event.ctrlKey || event.metaKey) return;
       const code = controlKeyCodeFromInput(event.nativeEvent);
