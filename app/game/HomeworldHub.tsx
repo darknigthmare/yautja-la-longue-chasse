@@ -109,6 +109,9 @@ import HomeworldInteriorSurface from "./HomeworldInteriorSurface";
 import HomeworldReturnM039, { HomeworldReturnJournalM039 } from "./HomeworldReturnM039";
 import HomeworldCoordinationM028, { HomeworldCoordinationJournalM028 } from "./HomeworldCoordinationM028";
 import { HomeworldRouteBoardingM034, HomeworldRouteJournalM034, HomeworldRouteOfficerM034 } from "./HomeworldRouteM034";
+import HomeworldPackTrialM029 from "./HomeworldPackTrialM029";
+import { actHomeworldPackTrialM029, homeworldPackAdmissionM029, homeworldPackViewM029,
+  PACK_POST_M029, type HomeworldPackActionM029 } from "./systems/homeworldPackTrialM029";
 import { actHomeworldRouteM034, homeworldRouteChoicesM034, homeworldRouteStateM034,
   ROUTE_BOARDING_M034, ROUTE_OFFICER_M034, type HomeworldRouteActionM034 } from "./systems/homeworldRouteM034";
 import { COORDINATION_OFFICER_M028, actHomeworldCoordinationM028, homeworldCoordinationOpenM028,
@@ -1329,6 +1332,24 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   };
   const routeBriefingM034 = useMemo(() => youthWelcome ? null : homeworldRouteChoicesM034(save), [save, youthWelcome]);
   const nextRouteM034 = useMemo(() => youthWelcome ? null : homeworldRouteStateM034(save.homeworld.nextRouteM034, save), [save, youthWelcome]);
+  const submitHomeworldPackM029 = (action: HomeworldPackActionM029) => {
+    const current = saveRef.current;
+    const room = interiorRef.current;
+    const point = pointInCurrentSpace(actorRef.current, room, levelRefV77.current);
+    if (save.createdAt !== current.createdAt || !point || dialogStateRef.current?.point?.id !== point.id) return;
+    const result = actHomeworldPackTrialM029(progressRef.current.packTrialM029, current, action, {
+      pointId: point.id, roomId: room?.buildingId ?? null,
+      suspended: suspendedRef.current || pausedRef.current || inactive || !!transitRefV77.current || !!skiffRefV77.current,
+    });
+    const message = result.state && !onProgress({ ...progressRef.current, packTrialM029: result.state })
+      ? "La position du pack n’a pas été enregistrée. Réessaie depuis le même repère."
+      : result.message;
+    clearInputs();
+    setAnnouncement(message);
+    setDialog(current => current ? { ...current, message } : current);
+  };
+  const packViewM029 = useMemo(() => homeworldPackViewM029(save.homeworld.packTrialM029, save.createdAt),
+    [save.homeworld.packTrialM029, save.createdAt]);
   const returnHuntsM039 = useMemo(() => homeworldReturnHuntsM039(save), [save]);
   const returnM039 = save.homeworld.returnM039?.ownerCreatedAt === save.createdAt ? save.homeworld.returnM039 : undefined;
   const returnContactM039 = homeworldReturnContactM039(interior?.buildingId ?? null, selectedPoint?.id ?? null);
@@ -1715,6 +1736,10 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
           </div></>}
           {!youthWelcome && selectedPoint.kind === "audience" && <p>Présente les trois preuves et prends position sur le sort du témoin avant l’audience. Cette première décision est conservée dans ta sauvegarde ; elle ne termine pas toute la campagne.</p>}
           {!youthWelcome && selectedPoint.evidenceId === "undercity-testimony" && canChoose && <><div className={styles.notice}>Les trois preuves sont réunies. Ta première position sur le témoin sera définitive pour cette introduction.</div>{HOMEWORLD_WITNESS_CHOICES.map(choice => <div key={choice.id}><p>{choice.description}</p><button type="button" onClick={() => chooseWitness(choice.id)}>{choice.label}</button></div>)}</>}
+          {!youthWelcome && interior?.buildingId === PACK_POST_M029.roomId && selectedPoint.id === PACK_POST_M029.pointId && (
+            <HomeworldPackTrialM029 view={packViewM029} locked={homeworldPackAdmissionM029(save)}
+              paused={suspended || paused || inactive} onAction={submitHomeworldPackM029} />
+          )}
           {routeBriefingM034 && interior?.buildingId === ROUTE_OFFICER_M034.roomId && selectedPoint.id === ROUTE_OFFICER_M034.pointId && (
             <HomeworldRouteOfficerM034 briefing={routeBriefingM034} route={nextRouteM034}
               disabled={suspended || paused || inactive} onAction={submitHomeworldRouteM034} />
