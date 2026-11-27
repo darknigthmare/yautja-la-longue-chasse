@@ -1,0 +1,37 @@
+name: Unblooded workshop route diagnostics
+on:
+  push:
+    branches: [codex/verify-bible-unblooded-quick-20261127]
+permissions:
+  contents: read
+jobs:
+  simulation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /tests/
+            /scripts/
+            /docs/
+            /types/
+            /.openai/
+            /build/
+            /public/game/youth/
+            /public/game/prologue/v47/detached-blade.png
+            /public/**/*.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node --experimental-strip-types --test --test-reporter=spec --test-name-pattern 'M007 to M012|workshop hand-in' tests/youth-training.test.ts tests/youth-campaign.test.mjs
