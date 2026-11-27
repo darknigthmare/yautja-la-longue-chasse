@@ -83,6 +83,7 @@ export function youthBarracksFromSave(started) {
     save = p.withYouthProgress(save, transition.receipts, transition.state, started.youthTraining.startedAt);
     assert(save);
   }
+  state = p.stepYouthTraining(state, {}, env).state;
   for (let tick = 0; tick < 300 && Math.abs(state.player.x - 112) > 8; tick++) {
     state = p.stepYouthTraining(state, { move: dir(112 - state.player.x) }, env).state;
   }

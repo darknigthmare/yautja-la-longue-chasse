@@ -135,7 +135,7 @@ try {
   await stage.waitFor({ timeout: 90000 });
   await stage.focus();
   await page.waitForFunction(() => document.querySelector("[data-youth-stage]")?.dataset.youthArmed === "true");
-  await page.keyboard.press("KeyE");
+  await page.keyboard.press("KeyH", { delay: 100 });
   const notes = page.locator("[data-youth-workshop-notes]");
   await notes.getByText("La distance des lames", { exact: true }).waitFor();
   await page.waitForFunction(key => JSON.parse(localStorage.getItem(key)).youthTraining.checkpoint.workshopV174?.active?.lesson === 1, storageKey);
@@ -143,6 +143,7 @@ try {
   report.checks.push("Porte des ateliers ouverte au clavier, M008 réellement active et enregistrée avant M007");
   assert.deepEqual(report.errors, []);
   report.passed = true;
+  console.log("CHILDHOOD_BROWSER", JSON.stringify(report));
 } finally {
   if (!report.passed && page) {
     report.screen = (await page.locator("body").innerText().catch(() => "")).slice(0, 2200);

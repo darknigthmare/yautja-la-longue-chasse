@@ -391,6 +391,7 @@ for (const firstWorkshop of [undefined, "blades"] as const) test(
         blades();
         act({ blade: true });
         assert.equal(s.workshopV174?.maskProfile, undefined);
+        wait(45); // The ordinary wristblade swing must recover before using the workshop door.
         mask();
     } else {
         mask();

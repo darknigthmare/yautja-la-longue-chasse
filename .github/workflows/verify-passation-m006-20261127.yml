@@ -17,7 +17,7 @@ jobs:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '9782e0edbb516a04943b76fabf7dbfa2838ad8fe'
+          ref: 'a71b4ad920a09ad4a1d0a984beeeec5bf1c6e14f'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -42,6 +42,7 @@ jobs:
             /public/game/xeno-prime/berceau-v1/
             /public/game/homeworld/v74/
             /public/game/homeworld/v75/
+            /public/game/youth/
             /public/audio/
             /public/game/quatza-rij/
             /public/game/assets/v37/tribes/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp
@@ -107,7 +108,7 @@ jobs:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '9782e0edbb516a04943b76fabf7dbfa2838ad8fe'
+          ref: 'a71b4ad920a09ad4a1d0a984beeeec5bf1c6e14f'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -132,6 +133,7 @@ jobs:
             /public/game/xeno-prime/berceau-v1/
             /public/game/homeworld/v74/
             /public/game/homeworld/v75/
+            /public/game/youth/
             /public/audio/
             /public/game/quatza-rij/
             /public/game/assets/v37/tribes/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp
