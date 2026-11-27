@@ -21,7 +21,7 @@ try {
   await server.listen();
   browser = await chromium.launch({ executablePath: process.env.CHROMIUM_EXECUTABLE, args: ["--no-sandbox"] });
   for (const partial of [false, true]) {
-    const { ready: seed } = townAdmissionO6({ partial });
+    const { ready: seed } = townAdmissionO6({ partial, nurseryPolicies: !partial });
     const context = await browser.newContext({ viewport: { width: 1440, height: 940 }, reducedMotion: "reduce" });
     await context.addInitScript(({ key, seed }) => {
       if (localStorage.getItem(key) === null) localStorage.setItem(key, JSON.stringify(seed));
@@ -148,6 +148,8 @@ try {
     assert.ok(saved.resolved && saved.success);
     assert.deepEqual(final.inventory, seed.inventory);
     assert.deepEqual(final.prologue, seed.prologue);
+    assert.equal(final.prologue.ceremonyM006, partial ? undefined : true);
+    assert.equal(final.prologue.templeTriadFirstM017, partial ? undefined : true);
     assert.deepEqual(final.originV151.firstShockO6, seed.originV151.firstShockO6);
     assert.equal(n.parseSaveImport(JSON.stringify(final)).failure, null);
     report.routes.push({ prior: partial ? "partial" : "success", receipt: saved, inputRoutes: nav.routes });

@@ -19,9 +19,9 @@ const bundle = await build({
 });
 export const town = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
-export function townAdmissionO6({ partial = false } = {}) {
+export function townAdmissionO6({ partial = false, nurseryPolicies = false } = {}) {
   const n = course, p = n.COHORT_COURSE_O6;
-  const seed = courtyardHandoffO6({ partial }).armed;
+  const seed = courtyardHandoffO6({ partial, nurseryPolicies }).armed;
   const choice = partial ? "observe" : "lead";
   function turn(save, order) {
     const next = n.playCohortRaceO6(save, order);
