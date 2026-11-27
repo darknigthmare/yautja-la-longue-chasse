@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'a13288f6865177d09d607354223b2f13653f9fd9'
+          ref: '325a46ed3caaa6ca1a53cd6427c70ff944aff894'
           fetch-depth: 2
           filter: blob:none
           persist-credentials: false
@@ -65,6 +65,12 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Lint the common hall and return replay
+        run: npx eslint app/game/HomeworldRegionV68.tsx app/game/OriginTransitionPanelV151.tsx app/game/systems/originTrainingYardO6.ts app/game/systems/originsV151.ts tests/origin-training-yard-o6.test.mjs tests/helpers/origin-training-yard-o6.mjs scripts/qa-origin-training-yard-o6.mjs app/game/systems/originContinuationO6.ts app/game/systems/originPracticeO6.ts app/game/systems/originSoloReturnO6.ts tests/origin-continuation-o6.test.mjs tests/helpers/origin-continuation-o6.mjs scripts/qa-origin-continuation-o6.mjs tests/origin-solo-return-o6.test.mjs tests/helpers/origin-solo-return-o6.mjs scripts/qa-origin-solo-return-o6.mjs
+      - name: Replay movement and verify old origin archives
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/origin-continuation-o6.test.mjs tests/origin-training-yard-o6.test.mjs tests/origins-v151.test.mjs tests/origin-endings-v170.test.mjs tests/residence-save-v149.test.mjs tests/homeworld-build5-origin-residence-integration.test.mjs tests/origin-solo-return-o6.test.mjs tests/quatza-rij.test.mjs
+      - name: Typecheck the application
+        run: npm run typecheck
       - name: Walk the hall, clean the blades and report to Saar
         run: node scripts/qa-origin-solo-return-o6.mjs
       - name: Preserve original screenshots and receipts

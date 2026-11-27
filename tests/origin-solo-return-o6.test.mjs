@@ -78,3 +78,16 @@ test('O6 requires the real Elite receipt and the solo replay, and handles missin
   assert.doesNotMatch(view(save).account, /Saar/);
   assert.equal(view(save).support, 'empty');
 });
+
+test('an authenticated Elite legacy campaign keeps the default O6 origin when its debrief starts', () => {
+  let save = enterHallO6(soloReturnAdmissionO6());
+  delete save.originV151;
+  assert.ok(rules.soloReturnEvidenceO6(save));
+  save = walkO6(save, rules.SOLO_RETURN_POSTS_O6.quiet);
+  const originV151 = act(save, 'quiet');
+  assert.equal(originV151?.source, 'legacy-default');
+  assert.deepEqual(originV151?.soloReturnO6?.orders, ['quiet']);
+  const archived = saves.parseSaveImport(saves.exportSave({ ...save, originV151 }));
+  assert.equal(archived.save?.originV151?.source, 'legacy-default');
+  assert.deepEqual(archived.save?.originV151?.soloReturnO6?.orders, ['quiet']);
+});
