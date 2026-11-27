@@ -1,0 +1,47 @@
+name: Lignes O6 du classeur canonique
+on:
+  push:
+    branches: [codex/verify-o6-canonical-source-20261127]
+permissions:
+  contents: read
+jobs:
+  read:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '75bbc1777eb1866515fcef718b086571d8aa379d'
+          fetch-depth: 1
+          filter: blob:none
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx
+      - name: Lire les données O6 à leur emplacement d’origine
+        run: |
+          python3 - <<'PY'
+          import json, posixpath, xml.etree.ElementTree as E, zipfile
+          with zipfile.ZipFile('docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx') as z:
+              workbook = E.fromstring(z.read('xl/workbook.xml'))
+              targets = {item.get('Id'):item.get('Target') for item in E.fromstring(z.read('xl/_rels/workbook.xml.rels'))}
+              ss = [''.join(node.itertext()) for node in E.fromstring(z.read('xl/sharedStrings.xml'))] if 'xl/sharedStrings.xml' in z.namelist() else []
+              def cell(c):
+                  value = c.find('{*}v')
+                  if c.get('t') == 'inlineStr':
+                      return ''.join(t.text or '' for t in c.iter('{*}t'))
+                  if value is None: return ''
+                  if c.get('t') == 's': return ss[int(value.text)]
+                  return value.text
+              for sheet in workbook.findall('.//{*}sheet'):
+                  name = sheet.get('name')
+                  if name not in ['Missions des six voies', 'Fins des six voies']: continue
+                  tid = next(v for k,v in sheet.attrib.items() if k.endswith('}id'))
+                  name_in_zip = targets[tid]
+                  name_in_zip = name_in_zip[1:] if name_in_zip.startswith('/') else posixpath.join('xl',name_in_zip)
+                  tree = E.fromstring(z.read(name_in_zip))
+                  for row in tree.findall('.//{*}row'):
+                      values = [cell(c) for c in row.findall('{*}c')]
+                      if any(str(v).startswith(('O6-M2','O6-M30','O6-E1')) for v in values):
+                          print(json.dumps([name, row.get('r'), values],ensure_ascii=False))
+          PY
