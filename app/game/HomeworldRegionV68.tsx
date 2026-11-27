@@ -34,6 +34,7 @@ import YautjaTranslationV67 from './YautjaTranslationV67';
 import { houseForBuildingV149 } from './systems/residenceV149';
 import { createOriginV151 } from './systems/originsV151';
 import { trainingYardViewO6, type TrainingYardOrderO6 } from './systems/originTrainingYardO6';
+import { continuationViewO6, type ContinuationOrderO6 } from './systems/originContinuationO6';
 import yardStyles from './OriginTrainingYardO6.module.css';
 import styles from './HomeworldRegionV68.module.css';
 
@@ -46,7 +47,7 @@ export interface HomeworldRegionV68Props {
   /** Atomically acknowledge this exact field event and store its pending checkpoint. */
   onFieldEvent?(event: RegionFieldEventV68, state: HomeworldRegionStateV68): boolean;
   onBibleSceneAction?(action: BibleSceneActionV86, state: HomeworldRegionStateV68): BibleSceneResultV86;
-  onTrainingYardO6?(order: TrainingYardOrderO6, state: HomeworldRegionStateV68): boolean;
+  onTrainingYardO6?(order: TrainingYardOrderO6 | ContinuationOrderO6, state: HomeworldRegionStateV68): boolean;
   onReachCity(state?: HomeworldRegionStateV68): boolean | void;
   onOpenSettings?(): void;
   /** V149: residence panel for a Demeure the player stands in (null when it holds no house). */
@@ -62,9 +63,10 @@ const actions = ['hunt.moveLeft', 'hunt.moveRight', 'hunt.moveUp', 'hunt.moveDow
 const project = homeworldProjectGroundV64;
 const defaultYardOrigin = createOriginV151('O6', 'legacy-default');
 function currentYard(save: SaveGame, state: HomeworldRegionStateV68) {
-  return trainingYardViewO6(save.originV151 ?? defaultYardOrigin, save.residenceV149, state, {
-    rankId: save.profile.rankId, regionAllowed: id => canEnterHomeworldRegionV68(save, id).allowed,
-  });
+  const origin = save.originV151 ?? defaultYardOrigin;
+  const context = { rankId: save.profile.rankId, regionAllowed: (id: string) => canEnterHomeworldRegionV68(save, id).allowed };
+  const yard = trainingYardViewO6(origin, save.residenceV149, state, context);
+  return { yard, continuation: yard && !yard.next ? continuationViewO6(save, origin, state, context, yard) : null };
 }
 
 export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
@@ -232,15 +234,17 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
           const before = current.current, interaction = confirm ? homeworldRegionInteractionV68(before, visitsAt(before)) : null;
           if ((confirm) && bibleCulturalNearbyV86(before) && latest.current.onBibleSceneAction) { openBible(); break; }
           if (confirm && before.zone === 'interior' && latest.current.onTrainingYardO6) {
-            const yard = currentYard(latest.current.save, before);
-            if (yard?.near && yard.next) {
+            const { yard, continuation } = currentYard(latest.current.save, before);
+            const active = continuation?.next ? continuation : yard;
+            if (active?.near && active.next) {
               const stopped = { ...before, actor: { ...before.actor, vx: 0, vy: 0 } };
               clear();
               current.current = stopped;
               setState(stopped);
-              setYardMessage(latest.current.onTrainingYardO6(yard.next, stopped)
-                ? yard.next === 'threshold' ? 'Le circuit d’exercice est prêt dans cette demeure.'
-                  : 'Geste confirmé. Rejoins le repère suivant.'
+              const done = latest.current.onTrainingYardO6(active.next, stopped);
+              setYardMessage(done ? continuation?.post?.report ??
+                (active.next === 'threshold' ? 'Le circuit d’exercice est prêt dans cette demeure.'
+                  : 'Geste confirmé. Rejoins le repère suivant.')
                 : 'Le geste attend une sauvegarde confirmée. Réessaie au même repère.');
               break;
             }
@@ -285,7 +289,9 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
     residence?.transfer?.toHouseId === thresholdHouse.id);
   const carriesResidence = residence?.transfer?.stage === 'in-transit' &&
     residence.objects.some(object => object.location.kind === 'transfer');
-  const yard = state.zone === 'interior' && props.onTrainingYardO6 ? currentYard(save, state) : null;
+  const { yard, continuation } = state.zone === 'interior' && props.onTrainingYardO6
+    ? currentYard(save, state) : { yard: null, continuation: null };
+  const yardAction = continuation?.next ? continuation : yard;
   const localAllowed = !suspended && !error && ready && gate.allowed && state.status === 'walking' && !state.pendingFieldEvent;
   const playerPlacement = youthWelcome || hero.exactPreset ? homeworldPortraitPlacementV64(hero.plateId, hero.src, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.physicalHeight : 100) : homeworldModularPlacementV64(save.appearance.bodyMorphId, appearance.headStyleId, 100);
   const hazard = regionHazardPhaseV68(state.tick), fauna = REGION_FAUNA_ART_V68[regionId], f = state.fauna;
@@ -342,7 +348,16 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
           {yard?.orders.includes('support') && <span className={yardStyles.support} aria-label="Appui d’exercice" role="img"
             data-o6-yard-support style={{ left: 145, top: 390 * d, zIndex: 391 }} />}
           {yard?.orders.includes('rack') && <span className={yardStyles.rack} aria-label="Râtelier d’exercice mural" role="img"
-            data-o6-yard-rack style={{ left: 630, top: 390 * d, zIndex: 389 }}><i/><i/><i/></span>}
+            data-o6-yard-rack data-o6-rack-open={continuation?.rackOpen || undefined}
+            style={{ left: 630, top: 390 * d, zIndex: 389 }}><i/><i/><i/></span>}
+          {continuation?.visitor && <span data-o6-yena-visit>
+            {drawActor('origin-o6-yena', continuation.visitor.x, continuation.visitor.y, 'huntress', 'huntress')}
+            <span className={styles.waypoint} style={{ left: continuation.visitor.x, top: continuation.visitor.y * d + 14 }}><b>Yena</b></span>
+          </span>}
+          {continuation?.orders.includes('transmission') && <span className={styles.waypoint}
+            data-o6-plan-transmission style={{ left: 613, top: 511 * d }}><b>Place du coffre</b></span>}
+          {continuation?.post && <span className={styles.waypoint} data-o6-continuation-post={continuation.next}
+            style={{ left: continuation.post.x, top: continuation.post.y * d }}><b>{continuation.post.label}</b></span>}
           {yard?.post && <span className={styles.waypoint} data-o6-yard-post={yard.next}
             style={{ left: yard.post.x, top: yard.post.y * d }}><b>{yard.post.label}</b></span>}
           <span className={styles.waypoint} style={{ left: 380, top: 620 * d }}><b>Sortie</b></span>
@@ -357,12 +372,17 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
       {regionId===b.regionId&&props.onBibleSceneAction&&state.zone==='village'&&<span>Halte des Crêtes : table de la place, après le relevé remis au guide.{bibleNearby?' Arrête-toi puis interagis.':''}</span>}
       {destination && routeProgress && <span data-village-route-instruction-v70>{destination.name} · {routeProgress.arrived ? 'Approche atteinte : interagir sur place' : routeProgress.offRoute ? 'Reviens aux repères tracés au sol' : `${routeProgress.metres} m à pied`}</span>}
       {yard && <span data-o6-training-yard={yard.houseId} data-o6-yard-stage={yard.next ?? 'ready'} role="status">
-        {yard.post ? yard.post.label : 'Circuit d’exercice prêt'}{yardMessage && ' · ' + yardMessage}
+        {yard.post ? yard.post.label : 'Circuit d’exercice prêt'}{!continuation && yardMessage && ' · ' + yardMessage}
+      </span>}
+      {continuation && <span data-o6-origin-continuation={continuation.houseId}
+        data-o6-origin-stage={continuation.next ?? 'ready'} role="status">
+        {yardMessage || continuation.post?.label ||
+          (continuation.rackOpen ? 'Le râtelier ouvert attend un élève volontaire.' : 'Les trois préparations sont repérées.')}
       </span>}
       {props.pathMissionV158 && <div style={{ pointerEvents: 'auto' }}>{props.pathMissionV158(!localAllowed)}</div>}
       <span>{state.zone === 'village' ? `${state.visitedBuildings.length}/12 lieux visités · ${state.greeted.length}/12 témoins rencontrés · ${definition.residents.length + HOMEWORLD_VILLAGE_LIFE_V69[regionId].residents.length} habitants` : state.zone === 'passage' ? `${Math.round(state.walked * .023)} m parcourus · ${state.routeVisited.length}/${definition.route.length} bornes` : serviceBuilding?.label}</span>
     </aside>
-    <footer className={styles.controls} inert={modal}><div>{axes.map(([id, label]) => <button key={id} aria-label={`Marcher ${id}`} onPointerDown={e => pointer(id, true, e)} onPointerUp={e => pointer(id, false, e)} onPointerCancel={e => pointer(id, false, e)} onLostPointerCapture={() => touch.current.delete(id)}>{label}</button>)}</div><button disabled={!yard?.near && !bibleNearby && !interaction && !activity && !villageResident} data-region-interact onPointerDown={e => { e.preventDefault(); interact.current = true; }}>{yard?.near && yard.post ? yard.post.label : bibleNearby ? 'Parler à l’hôte de la halte' : interaction?.label ?? (activity ? `Participer : ${activity.name}` : villageResident ? `Parler : ${villageResident.name}` : 'Approche un lieu ou un habitant')} <small>{controlActionShortcut('hunt.interact', save.settings.controlBindings)}</small></button>
+    <footer className={styles.controls} inert={modal}><div>{axes.map(([id, label]) => <button key={id} aria-label={`Marcher ${id}`} onPointerDown={e => pointer(id, true, e)} onPointerUp={e => pointer(id, false, e)} onPointerCancel={e => pointer(id, false, e)} onLostPointerCapture={() => touch.current.delete(id)}>{label}</button>)}</div><button disabled={!yardAction?.near && !bibleNearby && !interaction && !activity && !villageResident} data-region-interact onPointerDown={e => { e.preventDefault(); interact.current = true; }}>{yardAction?.near && yardAction.post ? yardAction.post.label : bibleNearby ? 'Parler à l’hôte de la halte' : interaction?.label ?? (activity ? `Participer : ${activity.name}` : villageResident ? `Parler : ${villageResident.name}` : 'Approche un lieu ou un habitant')} <small>{controlActionShortcut('hunt.interact', save.settings.controlBindings)}</small></button>
       {residenceThreshold && props.residenceV149 && <button type="button" data-residence-open-threshold
         disabled={!localAllowed} onClick={openResidenceThreshold}>Déménagement au seuil</button>}
       <small>{controlActionShortcut('hunt.pause', save.settings.controlBindings)} · Pause</small></footer>

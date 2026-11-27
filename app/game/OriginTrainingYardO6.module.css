@@ -36,3 +36,12 @@
   background: linear-gradient(#b28b5b 0 37%, #8b5e40 38% 46%, #ceac78 47% 74%, #674d32 75%);
   transform: rotate(8deg);
 }
+
+.rack[data-o6-rack-open="true"] {
+  border-top-color: #ad8459;
+  background: #4c3727;
+}
+
+.rack[data-o6-rack-open="true"] i:nth-child(1) { transform: rotate(-10deg); }
+.rack[data-o6-rack-open="true"] i:nth-child(2) { transform: rotate(0); }
+.rack[data-o6-rack-open="true"] i:nth-child(3) { transform: rotate(10deg); }

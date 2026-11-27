@@ -14,6 +14,10 @@ export function trainingYardAdmissionO6() {
   const save = saves.defaultSave('2026-11-27T10:30:00.000Z');
   save.profile = { ...save.profile, rankId: 'blooded', acquiredRankIdV166: 'blooded', honor: 2000 };
   save.settings.masterVolume = 0;
+  return withResidenceO6(save);
+}
+
+export function withResidenceO6(save) {
   save.originV151 = origins.createOriginV151('O6');
   const context = { rankId: save.profile.rankId, atHouseId: HOUSE,
     regionAllowed: id => regions.canEnterHomeworldRegionV68(save, id).allowed };
