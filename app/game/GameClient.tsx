@@ -6672,8 +6672,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               disabled={settingsOpen || campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue}
               allowEquipmentUpgrades={!newGamePhase && chromaticFacilityV115 !== "lab"}
               onToolUpgrade={!newGamePhase && chromaticFacilityV115 !== "lab" && !resumableHunt ? (apply, confirmation) => {
-                const hunt = loadActiveHuntSave().save;
-                return !activeHuntSessionRef.current && hunt?.ownerSaveCreatedAt !== saveRef.current.createdAt &&
+                const hunt = loadActiveHuntSave();
+                return !activeHuntSessionRef.current && !hunt.failure && hunt.save?.ownerSaveCreatedAt !== saveRef.current.createdAt &&
                   commitCustomizationV146(apply, confirmation);
               } : undefined}
               onCommit={commitCustomizationV146}
