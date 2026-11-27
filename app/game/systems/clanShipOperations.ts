@@ -18,6 +18,8 @@ import { applySuccessorTrial, inspectSuccessorTrial, isSuccessorTerrain, success
 import type { PassagePoint } from './elderPassageJudgmentV168';
 import { applyLongMemory, inspectLongMemory, longMemoryEvidence,
   type LongMemoryOrder, type LongMemoryRecord } from './longMemoryR2M055';
+import { applyAncientHearing, hasLongMemoryHandover, inspectAncientHearing,
+  type AncientHearingOrder, type AncientHearingRecord } from './ancientHearingR2M056';
 
 import { applyWarCommandIntro, inspectWarCommandIntro,
   type WarCommandIntroRecord, type WarCommandIntroOrder } from './warCommandIntroR2M036';
@@ -192,6 +194,7 @@ export interface ClanShipOperationsState {
   legacy?: OserisReturnRecord;
   successorTrial?: SuccessorTrialRecord;
   longMemory?: LongMemoryRecord;
+  ancientHearing?: AncientHearingRecord;
   warCommandIntro?: WarCommandIntroRecord;
 }
 export interface ClanShipCampaignEvidence extends OserisReturnCampaign {
@@ -229,6 +232,7 @@ export type ClanShipOperationsAction = { expectedRevision: number } & (
   | { type: 'oseris-return'; order: OserisReturnOrder }
   | { type: 'successor-trial'; order: SuccessorTrialOrder; position: PassagePoint }
   | { type: 'long-memory'; order: LongMemoryOrder }
+  | { type: 'ancient-hearing'; order: AncientHearingOrder }
   | { type: 'war-command-intro'; order: WarCommandIntroOrder }
 );
 export interface ClanShipOperationsResult {
@@ -342,6 +346,7 @@ export function inspectClanShipOperations(raw: unknown, ownerCreatedAt: string):
   if (Object.hasOwn(raw, 'legacy')) fields.push('legacy');
   if (Object.hasOwn(raw, 'successorTrial')) fields.push('successorTrial');
   if (Object.hasOwn(raw, 'longMemory')) fields.push('longMemory');
+  if (Object.hasOwn(raw, 'ancientHearing')) fields.push('ancientHearing');
   if (Object.hasOwn(raw, 'warCommandIntro')) fields.push('warCommandIntro');
   if (!exact(raw, fields)) return invalid('invalid-fields');
   if (!identity(ownerCreatedAt) || raw.ownerCreatedAt !== ownerCreatedAt) return invalid('owner-mismatch');
@@ -393,6 +398,13 @@ export function inspectClanShipOperations(raw: unknown, ownerCreatedAt: string):
     if (!inspectSuccessorTrial(raw.successorTrial) || !raw.successorTrial.transmissionTrialObserved ||
         !inspectLongMemory(raw.longMemory)) return invalid('invalid-long-memory');
     minimumRevision += raw.longMemory.orders.length;
+  }
+  if (Object.hasOwn(raw, 'ancientHearing')) {
+    if (!raw.mandateAccepted || !hasLongMemoryHandover(raw.longMemory) || !inspectAncientHearing(raw.ancientHearing) ||
+        (raw.ancientHearing.orders.includes('hear-armorer') && !raw.recruitedNpcIds.includes('iron-claw'))) {
+      return invalid('invalid-ancient-hearing');
+    }
+    minimumRevision += raw.ancientHearing.orders.length;
   }
   if (Object.hasOwn(raw, 'warCommandIntro')) {
     if (!raw.mandateAccepted || !inspectWarCommandIntro(raw.warCommandIntro)) return invalid('invalid-war-command-intro');
@@ -572,7 +584,8 @@ function validAction(action: unknown): action is ClanShipOperationsAction {
   if (action.type === 'collective-role') return exact(action, [...base, 'role']) && collectiveRole(action.role);
   if (action.type === 'space-command') return exact(action, [...base, 'command']) && record(action.command);
   if (action.type === 'successor-trial') return exact(action, [...base, 'order', 'position']) && identity(action.order) && isSuccessorTerrain(action.position);
-  if (action.type === 'war-return' || action.type === 'oseris-return' || action.type === 'long-memory' || action.type === 'war-command-intro') return exact(action, [...base, 'order']) && identity(action.order);
+  if (action.type === 'war-return' || action.type === 'oseris-return' || action.type === 'long-memory' ||
+      action.type === 'ancient-hearing' || action.type === 'war-command-intro') return exact(action, [...base, 'order']) && identity(action.order);
   return exact(action, base) && ['accept-mandate', 'cancel-contract', 'confirm-circle', 'collective-launch'].includes(String(action.type));
 }
 
@@ -597,6 +610,19 @@ export function actClanShipOperations(state: ClanShipOperationsState, action: Cl
       if (!warCommandIntro) return refused(state, 'war-command-intro-order', 'Attends le prochain ordre disponible pour les formations.');
       return changed(state, { warCommandIntro }, warCommandIntro.rtsIntroductionResolved
         ? 'Retour au commandement confirmé.' : 'Ordre de la corniche consigné.');
+    }
+    case 'ancient-hearing': {
+      if (!state.mandateAccepted || !hasLongMemoryHandover(state.longMemory) ||
+          !evaluateClanShipOperationsCampaign(state, context.campaign).allowed) {
+        return refused(state, 'ancient-hearing-access', 'Achève la transmission de la longue mémoire avant de réunir les témoignages.');
+      }
+      if (state.activeContract) return refused(state, 'operation-active', 'Termine l’opération active avant de réunir les témoignages.');
+      const armorerPresent = state.recruitedNpcIds.includes('iron-claw') &&
+        context.availableCrewIds?.includes('iron-claw') === true && context.crewPostRooms?.['iron-claw'] === 'armurerie';
+      const ancientHearing = applyAncientHearing(state.ancientHearing, action.order, context.docking.roomId, armorerPresent);
+      if (!ancientHearing) return refused(state, 'ancient-hearing-order', 'Rejoins le poste indiqué et vérifie les places disponibles.');
+      return changed(state, { ancientHearing }, action.order === 'reserve-post'
+        ? 'Les trois actes et le lieu choisi sont inscrits au registre.' : 'Préparation des témoignages consignée.');
     }
     case 'long-memory': {
       if (!state.mandateAccepted || !longMemoryEvidence(context.ownerCreatedAt, context.campaign.elderWorkshopV172, state.legacy, state.successorTrial) ||

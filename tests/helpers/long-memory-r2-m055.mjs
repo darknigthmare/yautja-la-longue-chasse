@@ -40,3 +40,27 @@ export function longMemoryAdmission() {
     parsed.save.clanShipOperations.legacy, parsed.save.clanShipOperations.successorTrial));
   return parsed.save;
 }
+
+export function completeLongMemoryAdmission() {
+  let save = longMemoryAdmission();
+  const path = [
+    ['begin', 'archives'], ['compare-hunt', 'hangar'], ['compare-collective', 'armurerie'],
+    ['compare-teaching', 'archives'], ['choose-collective', 'armurerie'],
+    ['prepare', 'armurerie'], ['handover', 'armurerie'],
+  ];
+  for (const [order, roomId] of path) {
+    if (save.clanShipDocking.roomId !== roomId) {
+      const moved = docking.actClanShipDocking(save.clanShipDocking, { type: 'move-room', roomId }, {
+        ownerCreatedAt: save.createdAt, personalShipId: save.clanShipDocking.personalShipId,
+      });
+      assert.ok(moved.accepted, moved.message);
+      save = { ...save, clanShipDocking: moved.state };
+    }
+    const result = ops.actClanShipOperations(save.clanShipOperations, {
+      type: 'long-memory', order, expectedRevision: save.clanShipOperations.revision,
+    }, { ownerCreatedAt: save.createdAt, campaign: save, docking: save.clanShipDocking });
+    assert.ok(result.accepted, result.message);
+    save = { ...save, clanShipOperations: result.state };
+  }
+  return save;
+}
