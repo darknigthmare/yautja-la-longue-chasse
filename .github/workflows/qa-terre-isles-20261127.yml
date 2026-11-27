@@ -1,0 +1,46 @@
+name: QA Terre and Isles native offline
+on:
+  push:
+    branches: [codex/qa-terre-isles-20261127]
+permissions:
+  contents: read
+jobs:
+  exact-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '36507bdf5b29e61f97d4aa0ef5c2253793555a93'
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /docs/campagne/
+            /docs/prototypes/
+            /public/**/manifest.json
+            /public/game/campaign-menu/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - run: test "$(git rev-parse HEAD)" = 36507bdf5b29e61f97d4aa0ef5c2253793555a93
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node --experimental-strip-types --test --test-concurrency=1 tests/isles-view-v1.test.mjs tests/isles-reverse-hunt-v1.test.mjs tests/campaign-menu-navigation.test.mjs tests/campaign-menu-ui.test.mjs
+      - run: npx eslint app/game/CampaignMainMenu.tsx app/game/CampaignFrontEnd.tsx app/game/IslesModeV1.tsx app/game/isles/*.ts scripts/qa-isles-browser-v1.mjs
+      - run: npx next typegen && npx tsc --noEmit --incremental false
+      - run: npx playwright-core install --with-deps chromium
+      - run: node scripts/qa-isles-browser-v1.mjs --output /tmp/qa-isles-terre-proof
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: terre-isles-offline-proof
+          path: /tmp/qa-isles-terre-proof
