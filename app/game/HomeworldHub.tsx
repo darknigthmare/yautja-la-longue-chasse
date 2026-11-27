@@ -159,6 +159,8 @@ export interface HomeworldHubProps {
   onYouthTraining?(): boolean;
   onSoloV66?(): boolean;
   onSoloV67?(): boolean;
+  onRegionalLoopM014?(): boolean;
+  regionalLoopM014Admission?: boolean;
   onSoloV68?(): boolean;
   onSoloV69?(): boolean;
   onSoloV70?(): boolean;
@@ -182,7 +184,7 @@ function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInt
   return original ? { ...original, ...target.position } : null;
 }
 
-export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onAdjutantAppointment, recoveryStorage, ephemeralSession = false, onService, onKennelActionV147, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
+export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onAdjutantAppointment, recoveryStorage, ephemeralSession = false, onService, onKennelActionV147, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onRegionalLoopM014, regionalLoopM014Admission, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
   const [initialLocationV77] = useState(() => resolveCargoArrivalV108(save.homeworld.locationV77,save.createdAt,save.homeworld.cargoV108,{cartographyV104:save.homeworld.cartographyV104,cartographyV105:save.homeworld.cartographyV105,archiveV106:save.homeworld.archiveV106,archiveComparisonV107:save.homeworld.archiveComparisonV107}));
   const [upgradeRecoveryPendingV112,setUpgradeRecoveryPendingV112]=useState(()=>!initialLocationV77.migrationBackup&&homeworldGeometryRecoveryRequiredV112(save.homeworld.locationV77,save.createdAt,homeworldGeometryRecoveryLedgersV112(save.homeworld)));
   const upgradeRecoveryPendingRefV112=useRef(upgradeRecoveryPendingV112);
@@ -1707,6 +1709,23 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
             if (!onSoloV66()) setDialog(current => current ? { ...current, message: "Départ non sauvegardé. Réessaie auprès du maître." } : current);
           }}>{save.soloV66 ? "Reprendre Les Premières Pistes" : "Préparer Les Premières Pistes avec le maître"}</button>}
           {save.soloV66?.status === "completed" && selectedNpc?.id === "terrace-instructor" && <p data-solo-v66-complete>Les Premières Pistes sont rapportées : ta lecture des traces et ton observation sont reconnues. Ton parcours se poursuit ; {save.soloV67?.status === "completed" ? "la Piste sans guide est également rapportée. La reconnaissance de la cohorte constitue l’étape suivante." : "la Piste sans guide est maintenant accessible auprès du maître."}</p>}
+          {regionalLoopM014Admission && selectedNpc?.id === "terrace-instructor" && onRegionalLoopM014 && (
+            save.homeworld.regionalLoopM014?.phase === "complete"
+              ? <p data-regional-loop-m014-complete>La bourse d’outils est rendue. Le maître garde les trois rapports.</p>
+              : <button type="button" data-homeworld-regional-loop-m014 disabled={suspended || paused || inactive} onClick={() => {
+                  if (suspendedRef.current || pausedRef.current || saveRef.current.createdAt !== save.createdAt ||
+                      pointInCurrentSpace(actorRef.current, interiorRef.current, levelRefV77.current)?.id !== "training-service") return;
+                  clearInputs();
+                  if (pendingVisitsRef.current.size > 0) {
+                    setDialog(current => current ? { ...current, message: "Enregistre les visites de quartier avant de prendre le circuit." } : current);
+                    return;
+                  }
+                  if (recordLocationV77() && !onRegionalLoopM014()) {
+                    setDialog(current => current ? { ...current, message: "Le registre du circuit n’a pas pu être sauvegardé. Réessaie au poste." } : current);
+                  }
+                }}>{save.homeworld.regionalLoopM014?.phase === "return-to-instructor" ? "Rendre la bourse au maître"
+                  : save.homeworld.regionalLoopM014 ? "Reprendre le circuit des régions" : "Prendre la bourse du circuit des régions"}</button>
+          )}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && onSoloV67 && canStartSoloV67(save) && save.soloV67?.status !== "completed" && <button type="button" data-solo-v67-enter disabled={suspended || paused || inactive} onClick={() => {
             if (suspendedRef.current || pausedRef.current || pendingVisitOwnerRef.current !== save.createdAt || saveRef.current.createdAt !== save.createdAt || pointInCurrentSpace(actorRef.current, interiorRef.current, levelRefV77.current)?.id !== "training-service") return;
             clearInputs();

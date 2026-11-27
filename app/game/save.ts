@@ -30,6 +30,7 @@ import {normalizeHomeworldArchivePlaqueV109} from './systems/homeworldArchivePla
 import { normalizeYouthCampaign, youthCampaignMatchesSave } from "./systems/youthCampaign";
 import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
 import { homeworldAdjutantMatchesSaveM029, isHomeworldAdjutantSuccessorM029 } from "./systems/homeworldAdjutantM029";
+import { isFutureRegionalLoopM014, isRegionalLoopSuccessorM014, regionalLoopMatchesSaveM014 } from "./systems/homeworldRegionalLoopM014";
 import { archiveTransferPending } from "./systems/archiveTransferGuard";
 import { defaultJusticeProgress, normalizeJusticeProgress } from "./systems/justice";
 import {
@@ -2091,6 +2092,11 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const selectedAdjutant = isRecord(value.homeworld) ? value.homeworld.adjutantM029 : undefined;
   if (isRecord(selectedAdjutant) && Number(selectedAdjutant.version) > 1) return { save: null, failure: "future-version" };
   const save = normalizeSave(value);
+  const regionalLoop = isRecord(value.homeworld) ? value.homeworld.regionalLoopM014 : undefined;
+  if (isFutureRegionalLoopM014(regionalLoop)) return { save: null, failure: "future-version" };
+  if (regionalLoop !== undefined && (!save.homeworld.regionalLoopM014 || !regionalLoopMatchesSaveM014(save))) {
+    return { save: null, failure: "invalid-save" };
+  }
   const adjutant = save.homeworld.adjutantM029;
   if ((selectedAdjutant != null && (!adjutant || bloodedTemple.view.stage !== "complete")) ||
       !homeworldAdjutantMatchesSaveM029(save) ||
@@ -2243,6 +2249,9 @@ function persistCampaign(
       // This receipt ledger belongs to the confirmed campaign write. Refuse a
       // stale copy before it can lose points or convert them into a rank.
       if (JSON.stringify(previous.honorSourcesV169) !== JSON.stringify(requested.honorSourcesV169)) {
+        return failed("save-conflict", previous);
+      }
+      if (!isRegionalLoopSuccessorM014(previous, requested)) {
         return failed("save-conflict", previous);
       }
       const previousAdjutant = previous.homeworld.adjutantM029;

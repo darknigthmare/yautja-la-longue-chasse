@@ -79,6 +79,7 @@ import type { SoloV69State, SoloV69Receipt } from "./systems/firstHuntSoloV69";
 import type { SoloV70State, SoloV70Receipt } from "./systems/firstHuntSoloV70";
 import { startSoloV90Campaign, withSoloV90Checkpoint, withSoloV90Progress, soloV90NeedsScene } from "./systems/campaignSoloV90";
 import type { SoloV90State, SoloV90Receipt } from "./systems/firstHuntSoloV90";
+import { advanceRegionalLoopM014, regionalLoopAdmissionM014, startRegionalLoopM014, type RegionalLoopCommandM014 } from "./systems/homeworldRegionalLoopM014";
 import { createHomeworldRegionV68, normalizeHomeworldRegionV68, homeworldRegionInteractionV68, canEnterHomeworldRegionV68, canAdvanceHomeworldRegionV68, acknowledgeHomeworldRegionEventV68, type HomeworldRegionStateV68, type HomeworldRegionIdV68, type RegionFieldEventV68 } from "./systems/homeworldRegionsV68";
 import {BIBLE_CULTURAL_BINDING_V86,bibleCulturalContextV86,createBibleSceneTransactionV86,defaultBibleSceneLedgerV86,normalizeBibleSceneLedgerV86,type BibleSceneActionV86,type BibleSceneResultV86} from './systems/bibleSceneCulturalV86';
 import { bindContractsVillageRunV68, recordContractsFieldEventV68, contractMarksV68 } from "./systems/homeworldContractsV68";
@@ -376,6 +377,7 @@ const FirstHuntSoloV69 = React.lazy(() => import("./FirstHuntSoloV69"));
 const FirstHuntSoloV70 = React.lazy(() => import("./FirstHuntSoloV70"));
 const FirstHuntSoloV90 = React.lazy(() => import("./FirstHuntSoloV90"));
 const HomeworldRegionV68 = React.lazy(() => import("./HomeworldRegionV68"));
+const HomeworldRegionalLoopM014 = React.lazy(() => import("./HomeworldRegionalLoopM014"));
 const HomeworldPassageV67 = React.lazy(() => import("./HomeworldPassageV67"));
 const GameReserveV66 = React.lazy(() => import("./GameReserveV66"));
 const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
@@ -420,6 +422,7 @@ type Screen =
   | "solo-v70"
   | "solo-v90"
   | "homeworld-region-v68"
+  | "homeworld-regional-loop-m014"
   | "homeworld-passage-v67"
   | "game-reserve"
   | "ship-acquisition-v89"
@@ -1330,6 +1333,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       saveRef.current = loadedSave;
       setSave(loadedSave);
       if (loadedSave.prologue?.status === "active") { setScreen("prologue"); setNewGamePhase(null); }
+      else if (loadedSave.homeworld.regionalLoopM014?.passage?.position) { setScreen("homeworld-regional-loop-m014"); setNewGamePhase(null); setHubLocation("homeworld"); }
       else if (soloV90NeedsScene(loadedSave.soloV90)) { setScreen("solo-v90"); setNewGamePhase(null); setHubLocation("homeworld"); }
       else if (soloV70NeedsScene(loadedSave.soloV70)) { setScreen("solo-v70"); setNewGamePhase(null); setHubLocation("homeworld"); }
       else if (soloV69NeedsScene(loadedSave.soloV69)) { setScreen("solo-v69"); setNewGamePhase(null); setHubLocation("homeworld"); }
@@ -1542,7 +1546,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       : screen === "title" ? "menu"
       : screen === "mission" ? huntMusicContext
       : screen === 'buried-cradle' ? 'exploration'
-      : screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "game-reserve" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" ? "exploration"
+      : screen === "homeworld-regional-loop-m014" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "game-reserve" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" ? "exploration"
       : screen === "map" ? "galaxy"
       : screen === "pit" || screen === "pit-narrative" ? "combat"
       : hubLocation === "homeworld" && (screen === "homeworld" || shipStationOpen) ? "homeworld"
@@ -3201,6 +3205,52 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     expeditionOwnerRef.current = current.createdAt; setHubLocation("homeworld");
     setScreen(passage.status === "at-biome" ? regionId === "ash-marches" ? "homeworld-expedition" : "glass-desert-expedition" : "homeworld-passage-v67");
   }, [entry.ownerCreatedAt, persistSocialProgress]);
+  const [regionalLoopNoticeM014, setRegionalLoopNoticeM014] = useState("");
+  const showRegionalLoopM014 = useMemo(() => regionalLoopAdmissionM014(save), [save]);
+  const regionalLoopSuspendedM014 = settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue ||
+    campaignSaveBusy || !!resumableHunt || !gameFocusedV89;
+  const openRegionalLoopM014 = useCallback((): boolean => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "homeworld" ||
+        regionalLoopSuspendedM014 || current.homeworldPassageV67 || current.homeworldRegionV68 ||
+        !tribunalAccessV147(current.tribunalV147).city) return false;
+    const loop = startRegionalLoopM014(current);
+    if (!loop || loop.phase === "complete") return false;
+    if (loop.phase === "return-to-instructor") {
+      const result = advanceRegionalLoopM014(loop, { type: "return-bag" });
+      if (!result.state || !persistHomeworldProgress({ ...current.homeworld, regionalLoopM014: result.state })) return false;
+      setToast(result.message);
+      return true;
+    }
+    if (!current.homeworld.regionalLoopM014 &&
+        !persistHomeworldProgress({ ...current.homeworld, regionalLoopM014: loop })) return false;
+    setRegionalLoopNoticeM014("");
+    setHubLocation("homeworld");
+    setScreen("homeworld-regional-loop-m014");
+    return true;
+  }, [entry.ownerCreatedAt, persistHomeworldProgress, regionalLoopSuspendedM014, screen]);
+  const commandRegionalLoopM014 = useCallback((command: RegionalLoopCommandM014) => {
+    const current = saveRef.current;
+    const loop = current.homeworld.regionalLoopM014;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt ||
+        screen !== "homeworld-regional-loop-m014" || regionalLoopSuspendedM014 || !loop ||
+        !regionalLoopAdmissionM014(current) || command.type === "return-bag") return;
+    const result = advanceRegionalLoopM014(loop, command);
+    if (result.state && !persistHomeworldProgress({ ...current.homeworld, regionalLoopM014: result.state })) {
+      setRegionalLoopNoticeM014("Action non sauvegardée. Réessaie depuis le dernier repère confirmé.");
+      return;
+    }
+    setRegionalLoopNoticeM014(result.message);
+  }, [entry.ownerCreatedAt, persistHomeworldProgress, regionalLoopSuspendedM014, screen]);
+  const reachCityRegionalLoopM014 = useCallback(() => {
+    const current = saveRef.current;
+    const loop = current.homeworld.regionalLoopM014;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt ||
+        screen !== "homeworld-regional-loop-m014" || regionalLoopSuspendedM014 || !loop || loop.passage?.position) return;
+    setHubLocation("homeworld");
+    setScreen("homeworld");
+  }, [entry.ownerCreatedAt, regionalLoopSuspendedM014, screen]);
+
   const openHomeworldRegionV68 = useCallback((regionId: HomeworldRegionIdV68): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || current.homeworldPassageV67) return false;
@@ -5381,6 +5431,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 }}
                 onProgress={persistHomeworldProgress}
                 onAdjutantAppointment={(homeworld, prologue) => persistSocialProgress({ homeworld, prologue })}
+                onRegionalLoopM014={openRegionalLoopM014}
+                regionalLoopM014Admission={showRegionalLoopM014}
                 onService={openHomeworldService} onYouthTraining={enterYouthTraining} onSoloV66={enterSoloV66} onSoloV67={enterSoloV67} onSoloV68={enterSoloV68} onSoloV69={enterSoloV69} onSoloV70={enterSoloV70} onSoloV90={enterSoloV90} onRegionV68={openHomeworldRegionV68} onMinorArcsV160={persistMinorArcsV160}
                 onReturnShip={() => go("deck")} onExpedition={openHomeworldExpedition} onNotify={setToast} />
               </ClanPaletteContextV146.Provider>
@@ -5405,6 +5457,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         </Suspense>
       </section>}
 
+      {screen === "homeworld-regional-loop-m014" && hydrated && save.homeworld.regionalLoopM014 && (
+        <section className="screen panel-screen" inert={settingsOpen}>
+          <Suspense fallback={<DeferredGameScreen />}>
+            <HomeworldRegionalLoopM014 loop={save.homeworld.regionalLoopM014} suspended={regionalLoopSuspendedM014}
+              notice={regionalLoopNoticeM014} onCommand={commandRegionalLoopM014} onCity={reachCityRegionalLoopM014}
+              onSettings={() => setSettingsOpen(true)} />
+          </Suspense>
+        </section>
+      )}
       {screen === "homeworld-region-v68" && hydrated && save.homeworldRegionV68 && <section inert={settingsOpen} data-homeworld-region-campaign>
         <Suspense fallback={<DeferredGameScreen />}>
           <HomeworldRegionV68 contractsValue={save.homeworld.contractsV68} key={save.createdAt+":"+save.homeworldRegionV68.runId} save={save} gauntletVariantId={hunterGauntlet.equippedId} regionId={save.homeworldRegionV68.regionId} checkpoint={save.homeworldRegionV68}

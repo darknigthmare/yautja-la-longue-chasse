@@ -9,6 +9,7 @@ import { HOMEWORLD_INTERIOR_POINT_IDS_V64 } from "./homeworldInteriorsV64";
 import { normalizeHomeworldReturnM039, type HomeworldReturnM039 } from "./homeworldReturnM039";
 import { normalizeHomeworldCoordinationM028, type HomeworldCoordinationM028 } from "./homeworldCoordinationM028";
 import { normalizeHomeworldRouteM034, type HomeworldRouteM034 } from "./homeworldRouteM034";
+import { normalizeRegionalLoopM014, type HomeworldRegionalLoopM014 } from "./homeworldRegionalLoopM014";
 import { normalizeHomeworldPackTrialM029, type HomeworldPackTrialM029 } from "./homeworldPackTrialM029";
 import { normalizeHomeworldAdjutantM029, type HomeworldAdjutantM029 } from "./homeworldAdjutantM029";
 import { defaultHomeworldSideStoryV66, normalizeHomeworldSideStoryV66, type HomeworldSideStoryV66Progress } from "./homeworldSideStoryV66";
@@ -163,7 +164,7 @@ export const HOMEWORLD_POINTS: readonly HomeworldPoint[] = HOMEWORLD_POINT_BLUEP
   return { ...point, ...position };
 });
 
-export interface HomeworldProgress { version: 1; youthCityErrandV172?: YouthCityErrandV172; returnM039?: HomeworldReturnM039; coordinationM028?: HomeworldCoordinationM028; nextRouteM034?: HomeworldRouteM034; packTrialM029?: HomeworldPackTrialM029; adjutantM029?: HomeworldAdjutantM029; cntlipV77:CntlipLedgerV77; locationV77?:HomeworldCheckpointV77; bibleScenesV86?:BibleSceneLedgerV86; archiveV106?:HomeworldArchiveLedgerV106; archiveComparisonV107?:HomeworldArchiveComparisonV107; cargoV108?:HomeworldCargoV108; archivePlaqueV109?:HomeworldArchivePlaqueV109; archiveContinuationV111?:HomeworldArchiveContinuationV111; arrivalRecoveryV111?:HomeworldArrivalRecoveryV111; cartographyV104?:HomeworldCartographyLedgerV104; cartographyV105?:HomeworldCartographyLedgerV105; contractsV68: HomeworldContractsV68; sideStoryV66: HomeworldSideStoryV66Progress; npcMissionsV66: NpcMissionsV66; mausoleum: MausoleumProgress; inquiry: HomeworldInquiryProgress; expeditions: { "ash-marches": HomeworldExpeditionProof | null; "glass-desert": GlassDesertProof | null }; visitedDistrictIds: string[]; evidenceIds: HomeworldEvidenceId[]; greetedNpcIds: string[]; witnessChoice: HomeworldWitnessChoice | null; audienceOutcome: HomeworldAudienceOutcome | null; relations: Record<string, number> }
+export interface HomeworldProgress { version: 1; youthCityErrandV172?: YouthCityErrandV172; returnM039?: HomeworldReturnM039; coordinationM028?: HomeworldCoordinationM028; nextRouteM034?: HomeworldRouteM034; regionalLoopM014?: HomeworldRegionalLoopM014; packTrialM029?: HomeworldPackTrialM029; adjutantM029?: HomeworldAdjutantM029; cntlipV77:CntlipLedgerV77; locationV77?:HomeworldCheckpointV77; bibleScenesV86?:BibleSceneLedgerV86; archiveV106?:HomeworldArchiveLedgerV106; archiveComparisonV107?:HomeworldArchiveComparisonV107; cargoV108?:HomeworldCargoV108; archivePlaqueV109?:HomeworldArchivePlaqueV109; archiveContinuationV111?:HomeworldArchiveContinuationV111; arrivalRecoveryV111?:HomeworldArrivalRecoveryV111; cartographyV104?:HomeworldCartographyLedgerV104; cartographyV105?:HomeworldCartographyLedgerV105; contractsV68: HomeworldContractsV68; sideStoryV66: HomeworldSideStoryV66Progress; npcMissionsV66: NpcMissionsV66; mausoleum: MausoleumProgress; inquiry: HomeworldInquiryProgress; expeditions: { "ash-marches": HomeworldExpeditionProof | null; "glass-desert": GlassDesertProof | null }; visitedDistrictIds: string[]; evidenceIds: HomeworldEvidenceId[]; greetedNpcIds: string[]; witnessChoice: HomeworldWitnessChoice | null; audienceOutcome: HomeworldAudienceOutcome | null; relations: Record<string, number> }
 const record = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null && !Array.isArray(value);
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 const finite = (value: unknown, fallback = 0) => typeof value === "number" && Number.isFinite(value) ? value : fallback;
@@ -192,6 +193,8 @@ export function normalizeHomeworldProgress(value: unknown): HomeworldProgress {
   if (coordinationM028) clean.coordinationM028 = coordinationM028;
   const nextRouteM034 = normalizeHomeworldRouteM034(value.nextRouteM034);
   if (nextRouteM034) clean.nextRouteM034 = nextRouteM034;
+  const regionalLoopM014 = normalizeRegionalLoopM014(value.regionalLoopM014);
+  if (regionalLoopM014) clean.regionalLoopM014 = regionalLoopM014;
   const packTrialM029 = normalizeHomeworldPackTrialM029(value.packTrialM029);
   if (packTrialM029) clean.packTrialM029 = packTrialM029;
   const adjutantM029 = normalizeHomeworldAdjutantM029(value.adjutantM029);

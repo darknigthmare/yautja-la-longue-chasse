@@ -1,0 +1,50 @@
+name: Check Homeworld regional course M014
+on:
+  push:
+    branches: [codex/qa-bible-m014-20261127]
+permissions:
+  contents: read
+jobs:
+  regional-course:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - name: Checkout source and asset manifests
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /docs/qa/current-integration-20261103/runtime-inputs.json
+            /public/**/manifest.json
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install pinned dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Test regional course, workshop and save compatibility
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/homeworld-regional-loop-m014.test.mjs tests/youth-training.test.ts tests/youth-campaign.test.mjs
+      - name: Verify new UI and campaign integration
+        if: ${{ !cancelled() }}
+        run: npx eslint app/game/systems/homeworldRegionalLoopM014.ts app/game/HomeworldRegionalLoopM014.tsx
+      - name: Verify application types
+        if: ${{ !cancelled() }}
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
