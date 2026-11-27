@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
-          ref: 8f5caccff6953ba618846f2ea29c575bca815646
+          ref: 18673c3cb7abe4ff149c8ec540d4ca2fe35d1d16
           filter: blob:none
           sparse-checkout-cone-mode: false
           sparse-checkout: |
