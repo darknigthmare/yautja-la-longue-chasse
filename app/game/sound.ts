@@ -65,6 +65,7 @@ export type GameSfxId =
   | "enemy-alert"
   | "objective"
   | "ceremony-rack"
+  | "ceremony-cohort-response"
   | "hit"
   | "trophy"
   | "field-work"
@@ -548,6 +549,9 @@ export class GameAudio {
       case "ceremony-rack":
         this.ceremonyRack();
         break;
+      case "ceremony-cohort-response":
+        this.ceremonyCohortResponse();
+        break;
       case "hit":
         this.hit();
         break;
@@ -780,6 +784,19 @@ export class GameAudio {
     this.noise({ at: now + .08, duration: .45, gain: .045,
       filterType: "lowpass", filterFrequency: 460, endFilterFrequency: 120 });
     this.tone(70, { at: now + .50, endFrequency: 49, duration: .14, gain: .04, type: "triangle" });
+  }
+
+  private ceremonyCohortResponse(): void {
+    if (this.fileAudio.playSfx("ceremony-cohort-response")) return;
+    const now = this.readyTime();
+    if (now === null) return;
+
+    [93, 111, 81].forEach((frequency, index) => {
+      this.tone(frequency, {
+        at: now + [0, .125, .425][index], endFrequency: frequency * .75,
+        duration: .48, gain: .038, type: "triangle", filterFrequency: 750,
+      });
+    });
   }
 
   objective(): void {
