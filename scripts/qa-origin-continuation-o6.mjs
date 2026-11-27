@@ -103,8 +103,11 @@ try {
     await ground.interact();
     const snapshot = await disk();
     assert.equal(snapshot.originV151.continuationO6.practice.at(-1), order);
-    assert.deepEqual(snapshot.originV151.ending, admitted.originV151.ending);
-    assert.deepEqual(snapshot.originV151.consumed, admitted.originV151.consumed);
+    const closed = order === 'hear-lesson-outcome';
+    assert.deepEqual(snapshot.originV151.ending, { ...admitted.originV151.ending, endingRealized: closed });
+    assert.deepEqual(snapshot.originV151.consumed, closed
+      ? [...admitted.originV151.consumed, practice.O6_FIRST_LESSON_EVENT]
+      : admitted.originV151.consumed);
     report.practice.push(order);
     if (order === 'show-footing') {
       await staff.waitFor();
