@@ -161,7 +161,10 @@ try {
         await ground.walkTo(interior.entry);
         await ground.interact();
         assert.equal(await region.getAttribute("data-zone"), "village");
-        await region.locator("[data-o6-departure-actor]").waitFor();
+        const novice = region.locator("[data-o6-departure-actor]");
+        await novice.getByText("Novice", { exact: true }).waitFor();
+        await novice.locator('[data-region-resident="origin-o6-departing-novice"]').waitFor({ state: "attached" });
+        await capture(page, "novice-guide-vers-le-croisement");
         await step("departure-escort", "escorted");
         await capture(page, "novice-au-croisement");
       } else {
