@@ -582,17 +582,27 @@ async function canopy(){
     await until('acknowledge voluntary trunk release',2000,async state=>!state.player.climbing);
     await hold([],'land below the root with no boost');
     const lower=await until('return to a lower surface below the canopy',5000,async state=>
-      state.player.grounded&&(naraka?Math.abs(state.player.y+state.player.height-state.world.floorY)<2:state.player.y+state.player.height>=first.y+60));
+      state.player.grounded&&state.player.y+state.player.height>=first.y+60);
     await hold([],'stop moving on the lower surface');
     assertCargo(lower);
-    assert.ok(lower.player.health>0);
-    assert.equal(lower.player.climbing,false);
-    assert.equal(lower.player.aerialBoostUsed,false);
     const foot=lower.player.y+lower.player.height;
     const platform=lower.world.platforms.find(item=>Math.abs(item.y-foot)<2&&lower.player.x+lower.player.width>item.x&&lower.player.x<item.x+item.width);
     assert.ok(platform||Math.abs(foot-lower.world.floorY)<2);
+    let exit=lower;
+    if(naraka&&Math.abs(foot-lower.world.floorY)>=2){
+      await capture('16a-native-intermediate-branch');
+      await hold(['right'],'step off the shallower branch toward the eastern shore');
+      exit=await until('step off the lower branch onto the world floor',14000,async state=>
+        state.player.grounded&&Math.abs(state.player.y+state.player.height-state.world.floorY)<2);
+      await hold([],'stop at the foot of the canopy');
+      assertCargo(exit);
+    }
+    assert.ok(exit.player.health>0);
+    assert.equal(exit.player.climbing,false);
+    assert.equal(exit.player.aerialBoostUsed,false);
     await capture('16-native-western-recovery');
-    return {player:lower.player,reception:platform?.id??'floor',releaseFrom:entry.id,phase:lower.phase};
+    return {player:exit.player,reception:platform?.id??'floor',worldFloor:Math.abs(exit.player.y+exit.player.height-exit.world.floorY)<2,
+      releaseFrom:entry.id,phase:exit.phase};
   });
   await check('native canvas uses the exact root texture at the chosen collision platforms',async()=>{
     const draws=await page.evaluate(()=>[...window.__skinningCanopyQaV112.rootDraws.entries()]);
