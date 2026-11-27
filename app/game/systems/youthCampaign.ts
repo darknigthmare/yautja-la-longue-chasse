@@ -8,10 +8,13 @@ import { normalizeNurseryCampaign } from "./nurseryCampaign";
 import { CHRONICLE_RITES, recordChronicleEvidence } from "./clanChronicle";
 import { createYouthTraining, YOUTH_PHASES, normalizeYouthTraining, normalizeYouthReceipt, getYouthReceipts, type YouthState, type YouthReceipt } from "./youthTraining";
 
+import { youthWorkshopEquipment, youthWorkshopProgressMatches } from "./youthWorkshopV174";
+
 export interface YouthEquipment {
   wristblade: boolean;
   biomask: boolean;
   accent: "ochre" | "ash" | "rust" | null;
+  workshop?: ReturnType<typeof youthWorkshopEquipment>;
 }
 /** One primary campaign write owns both the playable checkpoint and every earned item. */
 export interface YouthCampaignProgress {
@@ -28,7 +31,8 @@ const iso = (value: unknown): value is string => typeof value === "string" && va
 const same = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
 const earned = (receipts: readonly YouthReceipt[], id: YouthReceipt["id"]) => receipts.some(receipt => receipt.id === id);
 function equipmentFor(state: YouthState, receipts: readonly YouthReceipt[]): YouthEquipment {
-  return { wristblade: earned(receipts, "youth-first-blade"), biomask: earned(receipts, "youth-first-biomask"), accent: earned(receipts, "youth-first-biomask") ? state.cosmetic : null };
+  const workshop = youthWorkshopEquipment(state.workshopV174);
+  return { wristblade: earned(receipts, "youth-first-blade"), biomask: earned(receipts, "youth-first-biomask"), accent: earned(receipts, "youth-first-biomask") ? state.cosmetic : null, ...(workshop ? { workshop } : {}) };
 }
 export function normalizeYouthCampaign(value: unknown): YouthCampaignProgress | null {
   if (!record(value) || value.version !== 1 || !["active", "completed"].includes(String(value.status)) || !iso(value.startedAt)) return null;
@@ -41,7 +45,8 @@ export function normalizeYouthCampaign(value: unknown): YouthCampaignProgress | 
     if (!receipt || !receipts.some(expected => same(expected, receipt))) return null;
   }
   const equipment = equipmentFor(checkpoint, receipts);
-  if (!record(value.equipment) || value.equipment.wristblade !== equipment.wristblade || value.equipment.biomask !== equipment.biomask || value.equipment.accent !== equipment.accent) return null;
+  if (!record(value.equipment) || value.equipment.wristblade !== equipment.wristblade || value.equipment.biomask !== equipment.biomask || value.equipment.accent !== equipment.accent ||
+      !same(value.equipment.workshop, equipment.workshop)) return null;
   const complete = YOUTH_PHASES.indexOf(checkpoint.phase) >= YOUTH_PHASES.indexOf("morning");
   if ((value.status === "completed") !== complete || (complete ? !iso(value.completedAt) || Date.parse(value.completedAt) < Date.parse(value.startedAt) : value.completedAt !== null)) return null;
   return { version: 1, status: value.status as YouthCampaignProgress["status"], checkpoint, receipts, equipment, startedAt: value.startedAt, completedAt: value.completedAt as string | null };
@@ -85,6 +90,7 @@ function advance(save: SaveGame, incoming: readonly YouthReceipt[], state: Youth
   const progress = normalizeYouthCampaign(save.youthTraining), checkpoint = normalizeYouthTraining(state);
   if (!progress || !checkpoint || !youthCampaignMatchesSave(save) || !iso(now) || checkpoint.tick < progress.checkpoint.tick) return null;
   const previous = progress.checkpoint;
+  if (!youthWorkshopProgressMatches(previous.workshopV174, checkpoint.workshopV174)) return null;
   const retryingDuel = previous.phase === "camp-defeat" && checkpoint.phase === "camp-duel" && checkpoint.progress.duelAttempts > previous.progress.duelAttempts;
   const retryingPatrol = previous.phase === "patrol-defeat" && checkpoint.phase === "patrol-ambush" && checkpoint.patrol?.attempts === (previous.patrol?.attempts ?? 0) + 1;
   const retryingCage = previous.phase === "cage-defeat" && checkpoint.phase === "cage-intro" && checkpoint.cage?.attempts === (previous.cage?.attempts ?? 0) + 1;
