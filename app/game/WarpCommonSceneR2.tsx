@@ -29,11 +29,11 @@ type WarpHunter = Pick<SaveGame, "appearance" | "loadout">;
 function WarpWalker({ identity, position, facing }: { identity: WarpHunter; position: number; facing: -1 | 1 }) {
   const size = 64;
   const footY = HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.width * size;
-  return <span className={styles.actor} aria-hidden="true" style={styleAt(position)}>
+  return <div className={styles.actor} aria-hidden="true" style={styleAt(position)}>
     <HunterRigPreview appearance={identity.appearance} armorId={identity.loadout.armorId} weaponIds={identity.loadout.weaponIds}
       gearIds={identity.loadout.gearIds} size={size} facing={facing}
       style={{ position: "absolute", top: -footY, left: -size / 2 }} />
-  </span>;
+  </div>;
 }
 
 function TuningControls({ label, dialReference, disabled, onCheck }: {
@@ -59,9 +59,10 @@ function WorkshopPanel({ at, disabled, view, onCommand }: {
   view: WarpCommonViewR2;
   onCommand: (command: WarpCommonCommandR2) => void;
 }) {
-  const [method, setMethod] = useState<WarpBenchChoiceR2>("reparer");
+  const [selection, setSelection] = useState<{ partId: string; method: WarpBenchChoiceR2 } | null>(null);
   const nearby = WARP_COMMON_PARTS_R2.find(part => withinReach(at, part.position));
   const part = nearby ? view.parts[nearby.id] : undefined;
+  const method = selection && selection.partId === nearby?.id ? selection.method : "reparer";
   return <>
     <ul className={styles.checklist}>{WARP_COMMON_PARTS_R2.map(item => <li key={item.id}>
       {item.title} · {view.parts[item.id]?.method ? "testée" : view.parts[item.id] ? "examinée" : "à examiner"}
@@ -69,7 +70,7 @@ function WorkshopPanel({ at, disabled, view, onCommand }: {
     {nearby && !part && <button type="button" disabled={disabled} data-warp-common-action="inspect"
       onClick={() => onCommand({ kind: "inspect", part: nearby.id, at })}>Examiner · {nearby.title}</button>}
     {nearby && part && !part.method && <div className={styles.actions}>
-      <label>Pièce <select value={method} disabled={disabled} onChange={event => setMethod(event.currentTarget.value as WarpBenchChoiceR2)}
+      <label>Pièce <select value={method} disabled={disabled} onChange={event => setSelection({ partId: nearby.id, method: event.currentTarget.value as WarpBenchChoiceR2 })}
         data-warp-common-method>
         <option value="reparer">Réparer l’original</option>
         <option value="variante">Tester une variante</option>

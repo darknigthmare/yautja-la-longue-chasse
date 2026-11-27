@@ -10,3 +10,7 @@
 .overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#000b;z-index:3;padding:16px}.panel{width:min(570px,100%);max-height:100%;overflow:auto;padding:22px;border:1px solid #a78252;background:#1a150f;box-shadow:0 15px 80px #000}.panel h2{margin-top:0;font-size:23px}.panel p{line-height:1.45}.panel nav{display:flex;gap:10px;flex-wrap:wrap}.error{color:#ffd1b4}.caption{font-size:12px;color:#c0aa87}
 @media(max-width:600px){.header{padding:5px 9px;gap:5px}.header strong{font-size:11px}.header button{padding:7px}.objective{padding:8px 10px}.objective h1{font-size:16px}.objective p{font-size:12px}.measure{font-size:11px;gap:9px}.controls{gap:4px;padding:5px}.controls button{padding:6px 9px;font-size:12px}.keys{font-size:11px;padding:5px}.notice{font-size:12px}.panel{padding:16px}}
 @media(max-height:500px){.header{padding:3px 10px}.objective{padding:4px 12px}.objective h1{font-size:15px;display:inline;margin-right:10px}.objective p{font-size:11px;display:inline}.measure{display:inline-flex;margin-left:12px;margin-top:0;font-size:11px}.keys{display:none}.controls{padding:3px;position:absolute;bottom:0;right:0;max-width:58%;background:#17130fcc}.controls button{padding:4px 8px;font-size:11px}.notice{bottom:48px}.header strong{font-size:11px}}
+
+.rolePlan{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;padding:5px 12px;background:#17130f}
+.rolePlan button[aria-pressed="true"]{border-color:#e9c66f;background:#44321d}
+@media(max-width:600px){.rolePlan button{font-size:12px;padding:5px 9px}}
