@@ -1,0 +1,19 @@
+name: Canyon M037 QA
+on:
+  push:
+    branches: [codex-canyon-m037-qa]
+permissions:
+  contents: read
+jobs:
+  canyon:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx eslint app/game/ClanWarCanyonM037.tsx app/game/ClanWarConvoyRouteV105.tsx app/game/systems/clanWarM037.ts app/game/systems/clanWarCanyonV85.ts tests/clan-war-canyon-m037.test.mjs
+      - run: npm run typecheck
+      - run: node --experimental-strip-types --test --test-concurrency=1 tests/clan-war-canyon-m037.test.mjs tests/clan-war-convoy-route-v105.test.mjs tests/clan-war-garrison-v99.test.mjs
