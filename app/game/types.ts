@@ -751,6 +751,7 @@ export interface SaveGame {
   /** V146: outfits, mode outfits, clan palette, earned cosmetics, heavy wear. */
   customizationV146?: CustomizationV146 | null;
   /** V147: trophy usages (display, worn, exchange ledger, studies); written after a first usage. */
+  warNarrativeR2M035?: import("./systems/warNarrativeR2M035").WarNarrativeR2M035 | null;
   trophyUsagesV147?: import("./systems/trophyUsagesV147").TrophyUsagesV147 | null;
   /** V147: recruited hunting hounds, bond, wounds and permanent deaths. */
   houndsV147?: HuntingHoundsV147 | null;

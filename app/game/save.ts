@@ -104,6 +104,8 @@ import { HUNTER_PIECE_IDS_V146, hasCustomPiecesV146, normalizeLightsV146,
 import { SKIN_PATTERN_IDS_V146, applyHeavyWearV146, earnedCosmeticsV146,
   emptyCustomizationV146, normalizeCustomizationV146, normalizeMarksDisplayV146 } from "./systems/hunterCustomizationV146";
 import { isFutureTrophyUsagesV147, normalizeTrophyUsagesV147 } from "./systems/trophyUsagesV147";
+import { canStartWarNarrativeR2M035, hasWarNarrativeCampaignR2M035, inspectWarNarrativeR2M035,
+  isWarNarrativeSuccessorR2M035 } from "./systems/warNarrativeR2M035";
 import { applyHoundHuntReportV147, huntSessionIdV147, isFutureHuntingHoundsV147,
   normalizeHoundHuntReportV147, normalizeHuntingHoundsV147 } from "./systems/huntingHoundsV147";
 import {
@@ -1330,6 +1332,9 @@ export function normalizeSave(value: unknown): SaveGame {
     missionProgress,
     trophies,
     // V147 is written only after a first usage; it never removes a trophy.
+    ...(source.warNarrativeR2M035 == null ? {} : {
+      warNarrativeR2M035: inspectWarNarrativeR2M035(source.warNarrativeR2M035, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     ...(source.trophyUsagesV147 === undefined || source.trophyUsagesV147 === null ? {} : {
       trophyUsagesV147: normalizeTrophyUsagesV147(source.trophyUsagesV147, trophies,
         raw => normalizeTrophies([raw])[0] ?? null),
@@ -1749,6 +1754,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (isRecord(value.customizationV146) && Number(value.customizationV146.version) > 1)
     return { save: null, failure: "future-version" };
   // V147 trophy usages hold the exchange ledger: a newer format is never dropped silently.
+  const m035 = inspectWarNarrativeR2M035(value.warNarrativeR2M035, owner);
+  if (m035.status === "future-version" || m035.status === "invalid-save") return { save: null, failure: m035.status };
   if (isFutureTrophyUsagesV147(value.trophyUsagesV147)) return { save: null, failure: "future-version" };
   if (isFutureHuntingHoundsV147(value.houndsV147))
     return { save: null, failure: "future-version" };
@@ -2071,6 +2078,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     return { save: null, failure: "invalid-save" };
   }
   const save = normalizeSave(value);
+  if (m035.state && !hasWarNarrativeCampaignR2M035(save)) return { save: null, failure: "invalid-save" };
   if (firstInterstellar.state && (shipReceiptV161(save).receipt?.instanceId !== firstInterstellar.state.hullInstanceId ||
       (save.spaceRoutesV159?.trip && firstInterstellarInFlightV173(firstInterstellar.state, campaignOwner))))
     return { save: null, failure: "invalid-save" };
@@ -2207,6 +2215,12 @@ function persistCampaign(
       // This receipt ledger belongs to the confirmed campaign write. Refuse a
       // stale copy before it can lose points or convert them into a rank.
       if (JSON.stringify(previous.honorSourcesV169) !== JSON.stringify(requested.honorSourcesV169)) {
+        return failed("save-conflict", previous);
+      }
+      const previousM035 = previous.warNarrativeR2M035;
+      const requestedM035 = requested.warNarrativeR2M035;
+      if (JSON.stringify(previousM035 ?? null) !== JSON.stringify(requestedM035 ?? null) &&
+          (!requestedM035 || !isWarNarrativeSuccessorR2M035(previousM035, requestedM035) || !canStartWarNarrativeR2M035(previous))) {
         return failed("save-conflict", previous);
       }
       const previousVoyage = previous.firstInterstellarV173;
