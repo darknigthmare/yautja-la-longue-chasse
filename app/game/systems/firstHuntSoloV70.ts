@@ -285,7 +285,7 @@ export function soloV70Objective(s:SoloV70State):{title:string;instruction:strin
  separation:s.nefRelayM017
    ? ['Nef des Anneaux · rendez-vous aval', 'Redescends au rendez-vous. Attends Saar et Vek près de toi, puis presse Interaction.', SOLO_V70_NEF_RELAY_M017.room, SOLO_V70_NEF_RELAY_M017.regroupX, 430]
    : ['Les deux ailes', s.reconnectionVariant
-     ? 'Donne le Signal pour placer Saar et Vek. Maintiens Interaction au contrepoids bas, ou sur la commande de la passerelle médiane pour retrouver la triade en aval.'
+     ? 'Donne le Signal et attends Saar et Vek sur leurs plaques. Maintiens Interaction au contrepoids bas ou sur la commande de la passerelle médiane.'
      : 'Signal : Saar et Vek gagnent leurs plaques éloignées. Maintiens le contrepoids central jusqu’à rétablir la connexion.',
      SOLO_V70_RECONNECTION.room, SOLO_V70_RECONNECTION.x, 430],
  drone:['Un drone dans la vanne','Télégraphe → bond → retrait. Saute ou prends de la distance, puis Lame/Signal pendant le retrait à portée. L’acide reste au point d’impact. Interaction après une défaite reprend le point sûr.',8,740,430],

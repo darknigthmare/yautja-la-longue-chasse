@@ -35,6 +35,8 @@ test("M017 opens the existing high footplate and resumes the physical regrouping
   frames(55);
   assert.equal(state.player.y, upperY);
   assert.equal(temple.soloV70Support(state), upperY);
+  for (let frame = 0; frame < 180 && !temple.soloV70NefPlatesReadyM017(state); frame++) act();
+  assert(temple.soloV70NefPlatesReadyM017(state));
   frames(14, { interact: true });
   assert(state.scan > 0);
   act();
