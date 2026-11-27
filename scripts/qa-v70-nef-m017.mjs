@@ -91,6 +91,8 @@ try {
   await hold("jump", 80);
   await wait(950);
   assert.equal((await read()).player.y, upperY);
+  for (let cycle = 0; cycle < 18 && !temple.soloV70NefPlatesReadyM017(await read()); cycle++) await wait(180);
+  assert(temple.soloV70NefPlatesReadyM017(await read()));
   await canvas.screenshot({ path: resolve(output, "appui-superieur.png"), animations: "disabled" });
   await hold("interact", holdTicks * 17 + 150);
   const relay = (await saved()).checkpoint.nefRelayM017;
