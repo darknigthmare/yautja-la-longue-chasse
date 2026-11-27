@@ -28,31 +28,39 @@ export function homeworldInteriorRouteV112(room: HomeworldInteriorV64, from: Hom
       ? nearest?.kind === 'exit' && Math.hypot(point.x - room.exit.x, point.y - room.exit.y) < 12
       : nearest?.kind === 'point' && nearest.pointId === targetId && Math.hypot(point.x - nearest.position.x, point.y - nearest.position.y) < 48;
   };
-  const queue = [{point: {...from}, ix: 0, iy: 0}], previous = new Map<number, number>(), visited = new Set(['0,0']);
-  const budget = Math.ceil(room.width / 12 + 2) * Math.ceil(room.depth / 12 + 2);
-  for (let index = 0; index < queue.length && index < budget; index++) {
-    const {point, ix, iy} = queue[index];
-    if (goal(point)) {
-      const raw: HomeworldVec2[] = [];
-      let cursor: number | undefined = index;
-      while (cursor !== undefined) {raw.push(queue[cursor].point); cursor = previous.get(cursor);}
-      raw.reverse();
-      const points = [raw[0]];
-      for (let current = 1; current < raw.length; current++) {
-        let next = current;
-        while (next + 1 < raw.length && homeworldInteriorSegmentV112(room, points.at(-1)!, raw[next + 1])) next++;
-        points.push(raw[next]); current = next;
+  const search = (step: number): HomeworldSpatialRoute | null => {
+    const cardinal = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+    const directions = step === 12 ? cardinal : [...cardinal, [1, 1], [-1, 1], [1, -1], [-1, -1]];
+    const queue = [{point: {...from}, ix: 0, iy: 0}], previous = new Map<number, number>(), visited = new Set(['0,0']);
+    const budget = Math.ceil(room.width / step + 2) * Math.ceil(room.depth / step + 2);
+    for (let index = 0; index < queue.length && index < budget; index++) {
+      const {point, ix, iy} = queue[index];
+      if (goal(point)) {
+        const raw: HomeworldVec2[] = [];
+        let cursor: number | undefined = index;
+        while (cursor !== undefined) {raw.push(queue[cursor].point); cursor = previous.get(cursor);}
+        raw.reverse();
+        const points = [raw[0]];
+        for (let current = 1; current < raw.length; current++) {
+          let next = current;
+          while (next + 1 < raw.length && homeworldInteriorSegmentV112(room, points.at(-1)!, raw[next + 1])) next++;
+          points.push(raw[next]); current = next;
+        }
+        return {status: 'reachable', points, distance: points.slice(1).reduce((total, point, n) => total + Math.hypot(point.x - points[n].x, point.y - points[n].y), 0)};
       }
-      return {status: 'reachable', points, distance: points.slice(1).reduce((total, point, n) => total + Math.hypot(point.x - points[n].x, point.y - points[n].y), 0)};
+      for (const [dx, dy] of directions) {
+        const nx = ix + dx, ny = iy + dy, next = {x: from.x + nx * step, y: from.y + ny * step}, key = `${nx},${ny}`;
+        if (visited.has(key) || !homeworldInteriorSegmentV112(room, point, next)) continue;
+        // A refused edge does not prove that its endpoint is inaccessible from
+        // another corridor. Mark only the nodes actually admitted to the queue.
+        visited.add(key);
+        previous.set(queue.length, index); queue.push({point: next, ix: nx, iy: ny});
+      }
     }
-    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
-      const nx = ix + dx, ny = iy + dy, next = {x: from.x + nx * 12, y: from.y + ny * 12}, key = `${nx},${ny}`;
-      if (visited.has(key) || !homeworldInteriorSegmentV112(room, point, next)) continue;
-      // A refused edge does not prove that its endpoint is inaccessible from
-      // another corridor. Mark only the nodes actually admitted to the queue.
-      visited.add(key);
-      previous.set(queue.length, index); queue.push({point: next, ix: nx, iy: ny});
-    }
-  }
-  return unavailable;
+    return null;
+  };
+  // Subpixel approach offsets can miss a narrow, reachable turn on the
+  // coarse lattice. Refine only after a refusal and keep the same full-body
+  // clearance and actual interaction target at every resolution.
+  return search(12) ?? search(6) ?? search(3) ?? unavailable;
 }
