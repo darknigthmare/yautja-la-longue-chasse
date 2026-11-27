@@ -13,13 +13,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '23f0c950170be91299e7d6bf717e25911de01b84'
+      ASSET_RACCORDS_SOURCE_COMMIT: '7ca69392e7c28d0e47501ec61e33ffd81da92bb5'
       BASE_COMMIT: '42cd44605a5bf5b61cb87b9071e47acb20168695'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '23f0c950170be91299e7d6bf717e25911de01b84'
+          ref: '7ca69392e7c28d0e47501ec61e33ffd81da92bb5'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -108,7 +108,7 @@ jobs:
           tests/successor-trial-r2-m054.test.mjs tests/elite-recognition-v174.test.mjs
           tests/youth-training.test.ts tests/youth-campaign.test.mjs tests/nursery-opening.test.mjs tests/nursery-cohort-v172.test.mjs tests/homeworld-route-m034.test.mjs tests/homeworld-pack-trial-m029.test.mjs tests/homeworld-adjutant-save-m029.test.mjs tests/war-command-intro-r2-m036.test.mjs tests/war-narrative-r2-m035.test.mjs tests/clan-war-canyon-m037.test.mjs tests/trophy-introduction-r2-m038.test.mjs tests/long-memory-r2-m055.test.mjs
           tests/elder-workshop-v172.test.mjs tests/clan-ship-operations.test.mjs
-          tests/qa-hunt-ground-policy-v112.test.mjs tests/audio-pack-v54.test.mjs tests/warp-epochs-v165.test.mjs tests/tantalus-warp-v167.test.mjs tests/warp-module-bay.test.mjs tests/homeworld-childhood-v175.test.mjs tests/homeworld-regional-loop-m014.test.mjs tests/war-conquest-r2-m037.test.mjs tests/ancient-hearing-r2-m056.test.mjs tests/mausoleum.test.mjs tests/homeworld-triad-roles-m016.test.mjs tests/origin-training-yard-o6.test.mjs tests/campaign-training-v90.test.mjs tests/campaign-solo-v70.test.mjs tests/clan-hull-project-v171.test.mjs tests/legacy-finale-r2.test.mjs 
+          tests/qa-hunt-ground-policy-v112.test.mjs tests/audio-pack-v54.test.mjs tests/warp-epochs-v165.test.mjs tests/tantalus-warp-v167.test.mjs tests/warp-module-bay.test.mjs tests/homeworld-childhood-v175.test.mjs tests/homeworld-regional-loop-m014.test.mjs tests/war-conquest-r2-m037.test.mjs tests/ancient-hearing-r2-m056.test.mjs tests/mausoleum.test.mjs tests/homeworld-triad-roles-m016.test.mjs tests/origin-training-yard-o6.test.mjs tests/campaign-training-v90.test.mjs tests/campaign-solo-v70.test.mjs tests/clan-hull-project-v171.test.mjs tests/legacy-finale-r2.test.mjs tests/origin-continuation-o6.test.mjs tests/mausoleum-cinema-m058.test.mjs
       - name: Lint the new scenario screens, rules and pilots
         if: ${{ !cancelled() }}
         run: >-
@@ -125,7 +125,7 @@ jobs:
       - name: Lint the new epilogues and their companions
         if: ${{ !cancelled() }}
         run: >-
-          npx eslint app/game/LegacyFinaleSceneR2.tsx app/game/systems/legacyFinaleR2.ts 
+          npx eslint app/game/LegacyFinaleSceneR2.tsx app/game/systems/legacyFinaleR2.ts app/game/systems/originContinuationO6.ts app/game/MausoleumCinemaM058.tsx app/game/systems/mausoleumCinemaM058.ts app/game/ElderAssembly.tsx app/game/ClanChroniclePanel.tsx app/game/systems/elderNarrativeRank.ts scripts/qa-legacy-finale-r2.mjs
       - name: Report canonical inventory differences
         if: ${{ !cancelled() && hashFiles('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json') != '' }}
         run: |

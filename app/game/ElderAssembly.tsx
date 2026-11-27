@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { SaveGame } from "./types";
 import {
-  elderAssemblyProofs, ELDER_RESPONSIBILITY_LABELS,
+  canConfirmElderRelief, elderAssemblyProofs, ELDER_RELIEF_YEARS, ELDER_RESPONSIBILITY_LABELS,
   type AssemblyCommand, type AssemblyResponse,
 } from "./systems/elderAssemblyV168";
 import styles from "./ElderAssembly.module.css";
@@ -45,9 +45,15 @@ export default function ElderAssembly({ save, onCommand, onClose }: {
               onClick={() => submit({ type: "hear", act: "judgment" })}>Écouter la déposition du témoin</button>}
       </article>
     </div>
-    {complete ? <p className={styles.recognition} data-elder-assembly-complete>
-      <strong>Elder reconnu</strong> · {ELDER_RESPONSIBILITY_LABELS[complete]}.
-    </p> : <fieldset className={styles.choice} disabled={!reviewed}>
+    {complete ? <div className={styles.recognition} data-elder-assembly-complete>
+      <p><strong>{save.prologue && !assembly?.generationHandover ? "Engagement consigné" : "Elder reconnu"}</strong> · {ELDER_RESPONSIBILITY_LABELS[complete]}.</p>
+      {canConfirmElderRelief(save) && <>
+        <p>Après {ELDER_RELIEF_YEARS} ans d’engagement, le novice devenu chasseur te rejoint pour prendre la relève.</p>
+        <button type="button" data-elder-confirm-relief onClick={() => submit({ type: "confirm-relief" })}>
+          Revenir au conseil et remettre le registre à la relève
+        </button>
+      </>}
+    </div> : <fieldset className={styles.choice} disabled={!reviewed}>
       <legend>Engagement auprès du clan</legend>
       <button type="button" onClick={() => submit({ type: "accept", responsibility: "council" })}>
         {ELDER_RESPONSIBILITY_LABELS.council}

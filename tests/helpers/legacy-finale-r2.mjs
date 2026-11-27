@@ -25,7 +25,9 @@ export function legacyFixture({ realized = true, ancient = true } = {}) {
   if (realized) save.originV151 = { ...save.originV151, consumed: [...save.originV151.consumed, "O6-M30:realized"],
     ending: { ...save.originV151.ending, endingRealized: true } };
   if (ancient) {
-    let chronicle = history.createClanChronicle();
+    const beginning = history.CHRONICLE_EVIDENCE.find(entry => entry.id === "intro-begun");
+    assert.ok(beginning);
+    let chronicle = history.recordChronicleEvidence(history.createClanChronicle(), { id: beginning.id, sourceId: beginning.sourceId }).state;
     for (const rite of history.CHRONICLE_RITES.filter(entry => entry.grantsRankId !== null)) {
       for (const id of rite.requiredEvidenceIds) {
         const proof = history.CHRONICLE_EVIDENCE.find(entry => entry.id === id);
