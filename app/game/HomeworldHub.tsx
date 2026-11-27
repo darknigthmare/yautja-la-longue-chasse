@@ -33,7 +33,12 @@ import {defaultHomeworldArchiveV106,normalizeHomeworldArchiveV106} from './syste
 import {archiveActiveV106,archiveNearbyActionV106,archivePostReachedV106,createArchiveTransactionV106,sampleArchiveWalkV106,type ArchiveActionV106} from './systems/homeworldArchiveV106';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent, type PointerEvent, type ReactNode } from "react";
 import { controlActionShortcut } from "./controlBindingLabels";
-import { acknowledgeYouthCityStopV172, nextYouthCityStopV172, startYouthCityErrandV172, youthCityCarriesPieceV172, YOUTH_CITY_STOPS_V172, type YouthCityRouteV172, type YouthCityStopV172 } from "./systems/youthCityErrandV172";
+import {
+  acknowledgeYouthCityStopV172, nextYouthCityStopV172, startYouthCityErrandV172, youthCityCarriesPieceV172,
+  youthCityDeliveryClearedV176, youthCityDeliveryPositionV176, walkYouthCityDeliveryV176, YOUTH_CITY_STOPS_V172,
+  type YouthCityDeliveryStepV176, type YouthCityRouteV172, type YouthCityStopV172,
+} from "./systems/youthCityErrandV172";
+import YouthCityForgeDetourV176 from "./YouthCityForgeDetourV176";
 import { youthCampaignObjective, youthEquipmentSummary } from "./systems/youthCampaign";
 import HomeworldChildhoodV175 from "./HomeworldChildhoodV175";
 import { CHILDHOOD_POST_V175, actChildhoodV175, childhoodViewV175, hasChildhoodFoundationV175,
@@ -1473,8 +1478,10 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   };
   const youthCityErrand = progress.youthCityErrandV172?.ownerCreatedAt === save.createdAt ? progress.youthCityErrandV172 : undefined;
   const youthCityStop = youthCityErrand && nextYouthCityStopV172(youthCityErrand);
+  const youthCityDelivery = youthCityStop === "forge-service" && youthCityErrand ? youthCityDeliveryPositionV176(youthCityErrand) : null;
+  const youthCityHandInLocked = !!youthCityDelivery && !!youthCityErrand && !youthCityDeliveryClearedV176(youthCityErrand);
   const canStartYouthCityErrand = youthWelcome && save.prologue?.checkpoint.cohortV172?.steps === 7 && !save.youthTraining && !progress.youthCityErrandV172;
-  const saveYouthCityErrand = (action: { route: YouthCityRouteV172 } | { stop: YouthCityStopV172 }) => {
+  const saveYouthCityErrand = (action: { route: YouthCityRouteV172 } | { stop: YouthCityStopV172 } | { step: YouthCityDeliveryStepV176 }) => {
     const current = saveRef.current;
     if (!youthWelcome || current.createdAt !== save.createdAt || suspendedRef.current || pausedRef.current || inactive) return;
     const old = progressRef.current.youthCityErrandV172;
@@ -1483,7 +1490,15 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     let next;
     if ("route" in action) {
       if (old || current.youthTraining || current.prologue?.checkpoint.cohortV172?.steps !== 7 || nearOpenPoint !== "audience-point") return;
-      next = startYouthCityErrandV172(current.createdAt, action.route);
+      next = startYouthCityErrandV172(current.createdAt, action.route, true);
+    } else if ("step" in action) {
+      if (!old || old.ownerCreatedAt !== current.createdAt || nearOpenPoint !== "forge-service") return;
+      next = walkYouthCityDeliveryV176(old, action.step);
+      if (!next) {
+        setDialog(currentDialog => currentDialog ? { ...currentDialog,
+          message: "Le chariot ou le mur ferme ce pas. Change de voie à l’un des deux passages marqués." } : currentDialog);
+        return;
+      }
     } else {
       if (!old || old.ownerCreatedAt !== current.createdAt || (action.stop === "kennel" ? !atKennelV147() : nearOpenPoint !== action.stop)) return;
       next = acknowledgeYouthCityStopV172(old, action.stop);
@@ -1492,6 +1507,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     const acknowledged = onProgress({ ...progressRef.current, youthCityErrandV172: next });
     const message = !acknowledged ? "La course n’a pas pu être enregistrée. Reste auprès de ton interlocuteur pour réessayer." :
       "route" in action ? "Pièce confiée. La course commence à pied." :
+      "step" in action ? youthCityDeliveryClearedV176(next) ? "Comptoir atteint. La pièce est toujours entre tes mains." : "Passage consigné." :
       action.stop === "forge-service" ? "La maîtresse des parures reprend la même pièce. La remise est enregistrée." :
       nextYouthCityStopV172(next) ? "Repère consigné dans le journal." : "La pièce et les trois repères sont consignés.";
     setDialog(currentDialog => currentDialog ? { ...currentDialog, message } : currentDialog);
@@ -1712,16 +1728,22 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
             <button type="button" data-r2-m003-route="escort" disabled={suspended || paused || inactive} onClick={() => saveYouthCityErrand({ route: "escort" })}>Suivre les repères de Saar</button>
             <button type="button" data-r2-m003-route="archives" disabled={suspended || paused || inactive} onClick={() => saveYouthCityErrand({ route: "archives" })}>Regarder du côté des archives</button>
           </section>}
-          {youthWelcome && youthCityStop === selectedPoint.id && <button type="button" data-r2-m003-stop={youthCityStop}
-            disabled={suspended || paused || inactive} onClick={() => saveYouthCityErrand({ stop: youthCityStop })}>{YOUTH_CITY_STOPS_V172[youthCityStop].label}</button>}
+          {youthWelcome && youthCityStop === selectedPoint.id && <>
+            {youthCityDelivery && <YouthCityForgeDetourV176 position={youthCityDelivery} disabled={suspended || paused || inactive}
+              onStep={step => saveYouthCityErrand({ step })} />}
+            <button type="button" data-r2-m003-stop={youthCityStop}
+              disabled={suspended || paused || inactive || youthCityHandInLocked} onClick={() => saveYouthCityErrand({ stop: youthCityStop })}>{YOUTH_CITY_STOPS_V172[youthCityStop].label}</button>
+          </>}
           {youthWelcome && childhoodView && hasChildhoodFoundationV175({ ...save, homeworld: progress }) &&
             interior?.buildingId === CHILDHOOD_POST_V175.roomId && selectedPoint.id === CHILDHOOD_POST_V175.pointId &&
             <HomeworldChildhoodV175 view={childhoodView} message={childhoodMessageV175}
               paused={suspended || paused || inactive} mayEnter={!!onYouthTraining && youthChiefMet && youthMentorMet}
+              trainingStarted={!!save.youthTraining}
               onAction={submitChildhoodV175} onEnter={() => { if (atChildhoodPostV175()) enterYouthTraining(); }} />}
           {selectedNpc && <p><YautjaTranslationV67 text={`« ${youthWelcome && youthGreeting[selectedNpc.id] ? youthGreeting[selectedNpc.id] : selectedNpc.greeting} »`} paused={suspended || paused || inactive} /></p>}
           {youthWelcome && ["hunt-king", "terrace-instructor"].includes(selectedNpc?.id ?? "") && <div className={styles.notice} data-unblooded-conversation={selectedNpc?.id}><p>{youthObjective}</p><p>Les exercices se jouent dans le dojo, puis au camp. Le maître attend ton retour pour reconnaître chaque épreuve.</p></div>}
-          {youthWelcome && selectedNpc?.id === "terrace-instructor" && youthChiefMet && youthMentorMet && onYouthTraining && <button type="button" data-youth-enter-dojo disabled={suspended} onClick={enterYouthTraining}>{save.youthTraining?.status === "completed" ? save.youthTraining.checkpoint.phase === "cage-complete" ? "Revoir le bilan de la petite Fosse" : save.youthTraining.checkpoint.phase.startsWith("cage-") ? "Reprendre la petite Fosse de jeunesse" : save.youthTraining.checkpoint.phase === "patrol-complete" ? "Préparer le premier duel de la Fosse" : save.youthTraining.checkpoint.phase.startsWith("patrol-") ? "Reprendre la patrouille accompagnée" : save.youthTraining.checkpoint.phase === "desert-complete" ? "Préparer la patrouille avec le maître" : "Rejoindre le maître pour la sortie du désert" : save.youthTraining ? "Reprendre la formation Unblooded" : "Entrer dans le dojo avec le maître"}</button>}
+          {youthWelcome && selectedNpc?.id === "terrace-instructor" && youthChiefMet && youthMentorMet && onYouthTraining &&
+            (!childhoodView?.passed || childhoodView.firstWorkshop || save.youthTraining) && <button type="button" data-youth-enter-dojo disabled={suspended} onClick={enterYouthTraining}>{save.youthTraining?.status === "completed" ? save.youthTraining.checkpoint.phase === "cage-complete" ? "Revoir le bilan de la petite Fosse" : save.youthTraining.checkpoint.phase.startsWith("cage-") ? "Reprendre la petite Fosse de jeunesse" : save.youthTraining.checkpoint.phase === "patrol-complete" ? "Préparer le premier duel de la Fosse" : save.youthTraining.checkpoint.phase.startsWith("patrol-") ? "Reprendre la patrouille accompagnée" : save.youthTraining.checkpoint.phase === "desert-complete" ? "Préparer la patrouille avec le maître" : "Rejoindre le maître pour la sortie du désert" : save.youthTraining ? "Reprendre la formation Unblooded" : "Entrer dans le dojo avec le maître"}</button>}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && onSoloV66 && canStartSoloV66(save) && save.soloV66?.status !== "completed" && <button type="button" data-solo-v66-enter disabled={suspended || paused || inactive} onClick={() => {
             if (suspendedRef.current || pausedRef.current || pendingVisitOwnerRef.current !== save.createdAt || saveRef.current.createdAt !== save.createdAt || pointInCurrentSpace(actorRef.current, interiorRef.current, levelRefV77.current)?.id !== "training-service") return;
             clearInputs();

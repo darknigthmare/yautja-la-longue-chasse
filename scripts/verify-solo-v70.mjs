@@ -7,10 +7,12 @@ import {thresholdsCampaignRoute} from '../tests/helpers/solo-v69-played-route.mj
 import {p} from '../tests/helpers/solo-v67-campaign-route.mjs';
 import {templeCampaignRoute,templeInput,templeMechanismInput} from '../tests/helpers/solo-v70-played-route.mjs';
 const mechanisms=process.env.V70_BELVEDERE_ROUTE==='mechanisms';
+const reconnection=process.env.V70_QA_RECONNECTION==='1';
+const focused=mechanisms||reconnection;
 
 const url=process.env.V70_QA_URL??'http://127.0.0.1:4187',output=process.env.V70_SOLO_QA_OUTPUT??'work-local/v70/qa/solo-local';
 const thresholdSave=thresholdsCampaignRoute().save;
-const original=mechanisms?templeCampaignRoute({origin:thresholdSave,stop:'belvedere'}).save:thresholdSave;
+const original=focused?templeCampaignRoute({origin:thresholdSave,stop:reconnection?'configuration':'belvedere'}).save:thresholdSave;
 const key='yautja-long-hunt.save';
 const fixture=new Map([[key,JSON.stringify(original)]]),store={getItem:k=>fixture.get(k)??null,setItem:(k,v)=>fixture.set(k,v),removeItem:k=>fixture.delete(k)};
 const descriptor=Object.getOwnPropertyDescriptor(globalThis,'navigator');Object.defineProperty(globalThis,'navigator',{configurable:true,value:{locks:{request:async(_name,_options,cb)=>cb({})}}});
@@ -22,7 +24,7 @@ const read=async()=>canvas.evaluate(e=>({...JSON.parse(e.dataset.soloState),paus
 const capture=async name=>{const path=output+'/'+name+'.jpg';await page.screenshot({path,type:'jpeg',quality:88});captures.push(path);};
 async function apply(desired){for(const k of keys)if(!desired.has(k)){await page.keyboard.up(k);keys.delete(k);}for(const k of desired)if(!keys.has(k)){await page.keyboard.down(k);keys.add(k);}}
 const bindings=original.settings.controlBindings,action={left:bindings['pit.p1MoveLeft'][0],right:bindings['pit.p1MoveRight'][0],jump:bindings['pit.p1Jump'][0],command:bindings['pit.p1AttackMedium'][0],interact:bindings['pit.p1Resource'][0]};
-async function waitAssets(){for(let n=0;n<80&&await canvas.getAttribute('data-solo-assets')!=='true';n++){await page.waitForTimeout(100);await page.clock.runFor(100);}assert.equal(await canvas.getAttribute('data-solo-assets'),'true');}
+async function waitAssets(){for(let n=0;n<80&&await canvas.getAttribute('data-solo-assets')!=='true';n++){await page.waitForTimeout(100);await page.clock.runFor(100);}assert.equal(await canvas.getAttribute('data-solo-assets'),'true', (await screen.getByRole('alert').allTextContents()).join(' ') || JSON.stringify(failures));}
 async function resumeFromMenu(destination){
  const menu=page.locator('[data-campaign-menu]');
  await menu.waitFor({timeout:120000});
@@ -37,17 +39,25 @@ async function resumeFromMenu(destination){
 try{
  await page.goto(url,{waitUntil:'networkidle',timeout:120000});await page.evaluate(entries=>{if(localStorage.length)throw Error('Fresh isolated browser required');for(const[k,v]of entries)localStorage.setItem(k,v);},[...fixture]);await page.reload({waitUntil:'networkidle'});
  const hub=page.locator('[data-homeworld-hub]');
- await resumeFromMenu(mechanisms?canvas:hub);
+ await resumeFromMenu(focused?canvas:hub);
  await page.clock.install();await page.clock.pauseAt(await page.evaluate(()=>Date.now()+1000));await page.clock.runFor(200);
- if(!mechanisms){
+ if(!focused){
    const nav=homeworldNavigatorV66(page,homeworldQaModelV64());await nav.openPoint('training-service');await page.locator('[data-solo-v70-enter]').waitFor();await capture('01-physical-mentor-after-V69');await page.locator('[data-solo-v70-enter]').click();checks.push({name:'after-V69-model-fixture-only-physical-mentor-entry',routes:nav.routes});
  }
  await canvas.waitFor();await page.clock.runFor(200);await waitAssets();await canvas.focus();
  let previousPhase='',previousRoom=-1,quota=false,resumed=false,portrait=false,settings=false,expired=false,padChecked=false,energyChecked=false,i=0;
  for(;i<8000;i++){
-  let s=await read();if(s.phase==='complete'||mechanisms&&s.room===5)break;
+  let s=await read();if(s.phase==='complete'||mechanisms&&s.room===5||reconnection&&s.room===7&&s.phase==='separation')break;
   if(s.phase!==previousPhase){await apply(new Set());await page.clock.runFor(80);previousPhase=s.phase;await capture('phase-'+s.phase);s=await read();}
   if(s.room!==previousRoom){previousRoom=s.room;await page.clock.runFor(100);await capture('room-'+s.configuration+'-'+s.room);}
+  if(reconnection && s.phase === 'configuration' && s.room === 7 && s.scan >= 25 &&
+      !checks.some(check => check.name === 'nef-physical-preview')) {
+   assert.equal(await screen.getAttribute('data-temple-nef'), 'warning');
+   assert.equal(s.configuration, 1);
+   assert.match(await screen.locator('[data-temple-nef-countdown]').textContent(), /Passerelles dans 2 s/);
+   await capture('nef-glyph-before-deployment');
+   checks.push({name:'nef-physical-preview', scan:s.scan});
+  }
   if(s.phase==='signs'&&s.room===2&&s.signs===0&&s.scan>=27&&!quota&&!s.paused){
    await page.evaluate(k=>{window.__templeSetItem=Storage.prototype.setItem;Storage.prototype.setItem=function(name,value){if(name===k)throw new DOMException('QA isolated quota','QuotaExceededError');return window.__templeSetItem.call(this,name,value);};},key);
    await page.clock.runFor(120);await screen.getByRole('alert').waitFor();const frozen=await read(),old=await saved();assert.equal(frozen.signs,1,'first sign reaches immediate physical checkpoint');assert.equal(old.soloV70.checkpoint.signs,0);await page.clock.runFor(1200);const after=await read();for(const k of ['tick','player','companions','scan','signs'])assert.deepEqual(after[k],frozen[k]);
@@ -97,7 +107,46 @@ try{
   if(s.paused||!s.inputArmed){await apply(new Set());await canvas.focus();await page.clock.runFor(100);continue;}
   const input=(mechanisms?templeMechanismInput:templeInput)({...s,previousJump:keys.has(action.jump),previousInteract:keys.has(action.interact),previousCommand:keys.has(action.command)}),desired=new Set();if(input.move)desired.add(input.move<0?action.left:action.right);if(input.jump)desired.add(action.jump);if(input.command)desired.add(action.command);if(input.interact)desired.add(action.interact);await apply(desired);await page.clock.runFor(s.phase==='signs'&&s.signs===0&&s.scan>=20?15:50);
  }
- if(mechanisms){
+ if(reconnection){
+   assert(i<8000,'the Nef reconnects through the real console');
+   await apply(new Set());
+   await page.clock.runFor(120);
+   const next=await saved();
+   assert.equal(next.soloV70.checkpoint.configuration,2);
+   assert.equal(next.soloV70.receipts.at(-1).id,'second-configuration');
+   assert.equal(await screen.getAttribute('data-temple-nef'),'deployed');
+   await apply(new Set([action.right]));
+   for(let step=0;step<70&&(await read()).player.x<393;step++) await page.clock.runFor(16);
+   assert((await read()).player.x>=393 && (await read()).player.x<406);
+   await apply(new Set([action.right,action.jump]));
+   await page.clock.runFor(100);
+   await apply(new Set([action.right]));
+   for(let step=0;step<70&&(await read()).player.x<478;step++) await page.clock.runFor(16);
+   await apply(new Set());
+   await page.clock.runFor(480);
+   const supported=await read();
+   assert.equal(supported.player.y,367);
+   await capture('nef-physical-support-after-deployment');
+   await screen.getByRole('button',{name:'Pause',exact:true}).click();
+   await page.clock.runFor(120);
+   assert.equal((await saved()).soloV70.checkpoint.player.y,367);
+   await page.clock.resume();
+   await page.reload({waitUntil:'networkidle'});
+   await resumeFromMenu(canvas);
+   await page.clock.pauseAt(await page.evaluate(()=>Date.now()+1000));
+   await page.clock.runFor(160);
+   await waitAssets();
+   assert.equal((await read()).player.y,367);
+   assert.equal((await saved()).soloV70.checkpoint.configuration,2);
+   assert.equal(await screen.getAttribute('data-temple-nef'),'deployed');
+   assert.deepEqual((await saved()).prologue.chronicle, original.prologue.chronicle);
+   assert(checks.some(check=>check.name==='nef-physical-preview'));
+   assert.deepEqual(errors,[]);
+   await capture('nef-support-retained-after-cold-reload');
+   checks.push({name:'nef-support-retained-after-cold-reload', y:367});
+   await fs.writeFile(output+'/report.json',JSON.stringify({status:'PASS',url,checks,captures,errors,failures},null,2));
+   console.log(JSON.stringify({status:'PASS',checks:checks.length,captures:captures.length,output}));
+ }else if(mechanisms){
    assert(i<8000,'actual Belvedere crossing completes');
    await apply(new Set());await page.clock.runFor(150);
    const result=await saved(),state=result.soloV70.checkpoint;

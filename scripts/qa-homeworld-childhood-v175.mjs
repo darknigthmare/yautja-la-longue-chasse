@@ -5,6 +5,7 @@ import { resolve } from "node:path";
 import { chromium } from "playwright-core";
 import { createServer } from "vite";
 import { childhoodAdmissionV175, childhoodStorage, qaChildhood } from "../tests/helpers/homeworld-childhood-v175.mjs";
+import { youthBarracksFromSave } from "../tests/helpers/youth-patrol-played-route.mjs";
 
 const seed = childhoodAdmissionV175({ withLocation: true });
 seed.settings.masterVolume = 0;
@@ -110,15 +111,42 @@ try {
   await act("handoff");
   for (const station of [2, 4, 7]) { await walk(station); await act("use"); }
   await shot("passation");
+  assert.equal(await scene.locator("[data-childhood-enter-dojo]").count(), 0);
+  await act("first-blades");
+  await page.reload(); await boot();
+  assert.equal((await view()).firstWorkshop, "blades");
+  await shot("premier-atelier-choisi");
   await scene.locator("[data-childhood-enter-dojo]").click();
   await page.locator("[data-youth-training]").waitFor({ timeout: 90000 });
   const played = await read();
   assert.equal(rank.getChronicleRank(played.prologue.chronicle), "unblooded");
-  assert(played.youthTraining);
+  assert.equal(played.youthTraining?.checkpoint.firstWorkshopV176, "blades");
   assert(childhoodStorage.parseSaveImport(childhoodStorage.exportSave(played)).save);
-  report.checks.push("Démonstration et coffre à leurs postes, franchissement et entrée au vrai dojo avec rang historique conservé");
+  report.checks.push("Choix des lames pris après le râtelier, conservé après reload et à l’entrée du dojo");
+  const barracks = youthBarracksFromSave(played);
+  report.prerequisites += " The real training reducer plays the intervening dojo milestones and walks to the barracks door.";
+  await page.evaluate(({ key, archive }) => localStorage.setItem(key, JSON.stringify(archive)), { key: storageKey, archive: barracks });
+  await page.reload();
+  await page.locator("[data-campaign-menu]").waitFor({ timeout: 90000 });
+  const campaign = page.locator('[data-menu-section="campaign"]');
+  if (await campaign.isVisible()) await campaign.click();
+  await page.locator('[data-menu-action="continue"]').click();
+  const barracksScene = page.locator('[data-youth-training][data-youth-step="barracks"]');
+  const stage = barracksScene.locator("[data-youth-stage]");
+  await stage.waitFor({ timeout: 90000 });
+  await barracksScene.getByText("Chargement du dojo…").waitFor({ state: "hidden" });
+  assert.equal(await barracksScene.getByText("La formation attend ses images.").count(), 0);
+  await stage.focus();
+  await barracksScene.getByText("Relâchez les commandes pour reprendre la formation.").waitFor({ state: "hidden" });
+  await page.keyboard.press("KeyH", { delay: 100 });
+  const notes = page.locator("[data-youth-workshop-notes]");
+  await notes.getByText("La distance des lames", { exact: true }).waitFor();
+  await page.waitForFunction(key => JSON.parse(localStorage.getItem(key)).youthTraining.checkpoint.workshopV174?.active?.lesson === 1, storageKey);
+  await notes.screenshot({ path: resolve(output, "lames-dabord.png"), animations: "disabled" });
+  report.checks.push("Porte des ateliers ouverte au clavier, M008 réellement active et enregistrée avant M007");
   assert.deepEqual(report.errors, []);
   report.passed = true;
+  console.log("CHILDHOOD_BROWSER", JSON.stringify(report));
 } finally {
   if (!report.passed && page) {
     report.screen = (await page.locator("body").innerText().catch(() => "")).slice(0, 2200);

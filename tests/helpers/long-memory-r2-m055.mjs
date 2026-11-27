@@ -6,8 +6,8 @@ const workshop = qa.load('app/game/systems/elderWorkshopV172.ts');
 export const succession = qa.load('app/game/systems/successorTrialR2M054.ts');
 export const memory = qa.load('app/game/systems/longMemoryR2M055.ts');
 
-export function longMemoryAdmission() {
-  let save = elderWorkshopAdmissionV172();
+export function longMemoryAdmission(seed) {
+  let save = elderWorkshopAdmissionV172(seed);
   for (const action of ['observe', 'inspect', 'repair', 'align', 'align', 'align', 'fit', 'handover']) {
     const result = workshop.commitElderWorkshopV172(save, { action, expectedRevision: save.elderWorkshopV172?.history.length ?? 0 });
     assert.ok(result.ok, result.message);
@@ -41,8 +41,8 @@ export function longMemoryAdmission() {
   return parsed.save;
 }
 
-export function completeLongMemoryAdmission() {
-  let save = longMemoryAdmission();
+export function completeLongMemoryAdmission(seed) {
+  let save = longMemoryAdmission(seed);
   const path = [
     ['begin', 'archives'], ['compare-hunt', 'hangar'], ['compare-collective', 'armurerie'],
     ['compare-teaching', 'archives'], ['choose-collective', 'armurerie'],

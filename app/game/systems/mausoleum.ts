@@ -2,6 +2,7 @@
 import { referenceBiomaskPathV62 } from "../biomaskCatalogueV62";
 import type { BiomaskId, SaveGame } from "../types";
 import { getChronicleFunctions, getChronicleRank, type ChronicleRankId } from "./clanChronicle";
+import { CINEMA_GALLERY_M058, canEnterCinemaM058 } from "./mausoleumCinemaM058";
 
 export const MAUSOLEUM_SOURCE = "6abc3138-4254-83eb-aff2-19352afcb596";
 const mask = (id: string) => referenceBiomaskPathV62(id as BiomaskId);
@@ -29,6 +30,7 @@ export const MAUSOLEUM_GALLERIES = [
   { id: "great", name: "Grandes Chasses", requiredRank: "blooded", description: "Le véritable mausolée s’ouvre aux chasseurs reconnus." },
   { id: "forbidden", name: "Galerie interdite", requiredRank: "elite", description: "Archives adverses et réserves des Super Predators." },
   { id: "temporal", name: "Archives temporelles", requiredRank: "adjutant", description: "Extension Warp Universe à produire. Aucune campagne ni technologie canonique n’est affirmée ici." },
+  { id: CINEMA_GALLERY_M058, name: "Chroniques du clan", requiredRank: "ancient", description: "Masque du clan et lecture du récit de Korthas." },
 ] as const;
 const rankOrder: readonly ChronicleRankId[] = ["youngling", "unblooded", "young-blood", "blooded", "elite", "elder", "ancient"];
 export interface MausoleumAccess { rank: ChronicleRankId; adjutant: boolean; preview: boolean }
@@ -38,6 +40,7 @@ export function mausoleumAccess(save: SaveGame | null): MausoleumAccess {
 export function canVisitMausoleumGallery(access: MausoleumAccess, galleryId: string): boolean {
   const gallery = MAUSOLEUM_GALLERIES.find(value => value.id === galleryId);
   if (!gallery) return false;
+  if (gallery.id === CINEMA_GALLERY_M058) return canEnterCinemaM058(access);
   if (access.preview) return true;
   return gallery.requiredRank === "adjutant" ? access.adjutant : rankOrder.indexOf(access.rank) >= rankOrder.indexOf(gallery.requiredRank);
 }
