@@ -13,13 +13,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '27ba97f10ec344ff0915ef4789def143deb065b2'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'c0fb997750e07a62f5c158e7f72913bcb55ccf94'
       BASE_COMMIT: '2769b094862aea97f10fc0e5c4f1154489a8a8bc'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '27ba97f10ec344ff0915ef4789def143deb065b2'
+          ref: 'c0fb997750e07a62f5c158e7f72913bcb55ccf94'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -100,13 +100,13 @@ jobs:
           node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec
           tests/blooded-temple-v174.test.mjs tests/quatza-rij.test.mjs tests/ship-receipt-v161.test.mjs
           tests/successor-trial-r2-m054.test.mjs tests/elite-recognition-v174.test.mjs
-          tests/homeworld-route-m034.test.mjs tests/trophy-introduction-r2-m038.test.mjs tests/long-memory-r2-m055.test.mjs
+          tests/nursery-opening.test.mjs tests/nursery-cohort-v172.test.mjs tests/homeworld-route-m034.test.mjs tests/trophy-introduction-r2-m038.test.mjs tests/long-memory-r2-m055.test.mjs
           tests/elder-workshop-v172.test.mjs tests/clan-ship-operations.test.mjs
           tests/qa-hunt-ground-policy-v112.test.mjs tests/audio-pack-v54.test.mjs
       - name: Lint the new scenario screens, rules and pilots
         if: ${{ !cancelled() }}
         run: >-
-          npx eslint app/game/BloodedTempleV174.tsx app/game/ClanChroniclePanel.tsx
+          npx eslint app/game/BloodedTempleV174.tsx app/game/ClanChroniclePanel.tsx app/game/NurseryPrologueScreen.tsx app/game/systems/nurseryOpening.ts
           app/game/systems/bloodedTempleV174.ts app/game/EliteRecognition.tsx app/game/systems/eliteRecognitionV174.ts
           app/game/SuccessorTrialR2M054Panel.tsx app/game/systems/successorTrialR2M054.ts
           scripts/qa-blooded-temple-v174.mjs app/game/LongMemoryR2M055Panel.tsx

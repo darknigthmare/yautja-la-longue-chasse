@@ -96,7 +96,17 @@ export function nurseryStoryCardV72(state: NurseryState, hunterName = "Jeune du 
   if (story.recap) return { id: "legacy-resume-recap", chapter: "Reprendre l'épreuve", speaker: "Chronique du clan", title: "Le duel de la nurserie",
     text: "Tu incarnes un jeune du clan, dans un exercice surveillé et non létal. Le rival est un autre élève. La mise à terre met fin au duel ; le village et sa lune apparaissent ensuite. Ta reprise conserve exactement l'épreuve déjà jouée.",
     objective: state.winner === "player" ? "La victoire est acquise. Le débrief et le voyage vers la cité restent à suivre." : "Maîtriser le duel, puis écouter le maître avant de quitter le village.", button: "Reprendre la scène sauvegardée" };
-  if (state.phase === "prompt") return intro[story.introPage] ?? null;
+  if (state.phase === "prompt") {
+    const card = intro[story.introPage];
+    if (state.opening && card?.id === "born-in-clan") return {
+      ...card, objective: "Suis Saar au passage de service, puis retrouve les autres jeunes pour l’exercice surveillé.",
+    };
+    if (state.opening && card?.id === "duel-consent") return {
+      ...card, text: "« Accompagne d’abord la bête d’exercice jusqu’au filet. Pour le duel qui suivra, tu n’entreras dans le cercle qu’après avoir levé le bras. »",
+      objective: "Rejoins Saar et la cohorte près du passage de service.", button: "Rejoindre Saar dans la cour",
+    };
+    return card ?? null;
+  }
   if (state.phase === "debrief") {
     const card = debrief[story.debriefPage];
     if (state.cohortV172 && card?.id === "rival-recovery") return {
