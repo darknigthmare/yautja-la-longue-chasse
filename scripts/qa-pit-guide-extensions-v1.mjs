@@ -3,7 +3,7 @@
  * Uses real repo components, real assets and canonical save fixture reducers.
  * Run from any checkout: PIT_QA_REPO=/checkout PIT_QA_CHROMIUM=/path/to/chromium node scripts/qa-pit-guide-extensions-v1.mjs
  * Optional PIT_QA_OUTPUT, PIT_QA_ASSETS, PIT_QA_CHROMIUM_ARGS_JSON.
- * Needs installed repo esbuild and playwright; installs nothing and changes no repo sources.
+ * Needs installed repo esbuild and playwright-core; installs nothing and changes no repo sources.
  * Fixtures are explicit setup, not played wins. A launch assertion covers the callback, not a full game.
  */
 import {createRequire} from 'node:module';
@@ -17,7 +17,7 @@ import crypto from 'node:crypto';
 const repo=path.resolve(process.env.PIT_QA_REPO||path.join(path.dirname(fileURLToPath(import.meta.url)),'..'));
 const root=fs.mkdtempSync(path.join(os.tmpdir(),'pit-guide-extensions-qa-'));
 const require=createRequire(repo+'/package.json');
-const {chromium:playwright}=require('playwright');
+const {chromium:playwright}=require('playwright-core');
 const output=path.resolve(process.env.PIT_QA_OUTPUT||root+'/output');fs.mkdirSync(output,{recursive:true});
 const report={date:new Date().toISOString(),scope:'Real PitSelectionFlow, FighterCard and PitHonorsPanel component harness; fixture rewards are not played victories; no complete game claim.',browser:'Chromium launched by Playwright; executable path is configurable',checks:[],screenshots:[],pageErrors:[],consoleErrors:[],failedRequests:[],httpFailures:[],phaseHistory:[]};
 report.sourceHashes=Object.fromEntries(['app/game/PitSelectionFlow.tsx','app/game/PitSelectionFlow.module.css','app/game/PitHonorsPanel.tsx','app/game/PitHonorsPanel.module.css','app/game/PitCanvas.tsx','app/game/systems/pitSelectionPresentationV1.ts','app/game/systems/pitContentAccessV1.ts'].map(p=>[p,crypto.createHash('sha256').update(fs.readFileSync(repo+'/'+p)).digest('hex')]));

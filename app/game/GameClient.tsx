@@ -170,6 +170,7 @@ import {
   type PitSaveV5,
 } from "./systems/pitSave";
 import { PIT_FIRST_EDITION_FIGHTER_IDS } from "./systems/pitFirstEdition";
+import { normalizePitHonorRouteV1, type PitHonorRouteRequestV1 } from "./systems/pitHonorGalleryV1";
 import V6AtlasSprite from "./V6AtlasSprite";
 import {
   DEFAULT_SHIP_ID,
@@ -1208,6 +1209,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const [pitUnlockedCosmeticIds, setPitUnlockedCosmeticIds] = useState<string[]>([]);
   const [pitCircuitRuns, setPitCircuitRuns] = useState<PitStoredCircuitRuns>({});
   const [pitDescentRuns, setPitDescentRuns] = useState<PitStoredDescentRuns>({});
+  const [pitHonorRoute, setPitHonorRoute] = useState<PitHonorRouteRequestV1 | null>(null);
   const [resumableHunt, setResumableHunt] =
     useState<ActiveHuntSaveV1 | null>(null);
   const [huntResumePayload, setHuntResumePayload] =
@@ -3436,11 +3438,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return { persisted, message: persisted ? undefined : "Rapport non confirmé. Reste à la navette et réessaie la sauvegarde." };
   }, [persistHomeworldProgress]);
 
-  const openPit = useCallback(() => {
+  const openPit = useCallback((request?: PitHonorRouteRequestV1) => {
     if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite avant de changer d’arène ou de progresser dans THE PIT."); return; }
     // Interaction hints belong to the hub that emitted them, not the duel menu.
     // Clear before loading so a new PIT storage diagnostic remains visible.
     setToast(null);
+    setPitHonorRoute(normalizePitHonorRouteV1(request));
     setPitReturnScreen(hubLocation === "clan-ship" ? "clan-ship" : screen === "homeworld" || (shipStationOpen && hubLocation === "homeworld") ? "homeworld" : "deck");
     const ownerSaveCreatedAt = saveRef.current.createdAt;
     const loaded = loadPitSave({
@@ -5603,7 +5606,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <button type="button" className="ghost-button" onClick={() => {
                   setJusticeJurisdiction("homeworld"); openStationScreen("justice", "deck");
                 }}>Mandats et alignement</button>
-                <button type="button" className="ghost-button" onClick={openPit}>
+                <button type="button" className="ghost-button" onClick={() => openPit()}>
                   THE PIT · combat
                 </button>
                 <button type="button" className="ghost-button" onClick={openShipAcquisitionV89}>
@@ -7065,7 +7068,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <PitCanvas
             key={save.createdAt}
             ownerSaveCreatedAt={save.createdAt}
-            onOpenNarrativeTrials={() => go("pit-narrative")}
+            bonusRecordOwnerCreatedAt={save.createdAt}
+            initialHonorRoute={pitHonorRoute ?? undefined}
+            onOpenNarrativeTrials={() => { setPitHonorRoute(null); go("pit-narrative"); }}
             controlBindings={save.settings.controlBindings}
             highContrast={save.settings.highContrastVision}
             lastReplay={lastPitReplay}

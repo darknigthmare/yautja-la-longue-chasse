@@ -1,0 +1,93 @@
+name: The PIT guide extensions
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'app/game/**'
+      - 'app/pit-lab/**'
+      - 'tests/pit*'
+      - 'tests/fixtures/pit-honors-gallery-v1.ts'
+      - 'tests/browser/pit-*.fixture.tsx'
+      - 'scripts/qa-pit-*-v1.mjs'
+      - 'public/game/review/the-pit/**'
+      - 'art-source/the-pit/continuation-20261127/**'
+      - 'package*.json'
+      - '.github/workflows/the-pit-guide-extensions.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pit-guide-extensions-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pit-guide-contracts:
+    name: PIT routes, bonus and review surfaces
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /tsconfig.json
+            /eslint.config.*
+            /next-env.d.ts
+            /app/
+            /tests/
+            /scripts/
+            /docs/the-pit/
+            /public/game/review/the-pit/greyback-unmasked-20261127/
+            /art-source/the-pit/continuation-20261127/greyback-unmasked/
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Access, presentation, route and actual engine contracts
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          tests/pit-content-access-v1.test.mjs tests/pit-selection-presentation-v1.test.mjs
+          tests/pitSelectionFlow.test.ts tests/pit-save.test.mjs tests/pitHonors.test.ts
+          tests/pit-honor-gallery-v1.test.mjs tests/pit-honor-route-game-client.test.mjs
+          tests/pit-bonus-trial-v1.test.mjs
+      - name: Strict lint of delivered modules
+        run: >-
+          npx --no-install eslint --max-warnings 0
+          app/game/PitHonorsPanel.tsx app/game/PitHonorDetail.tsx
+          app/game/PitBonusTrialPanelV1.tsx app/game/PitExperienceV79.tsx
+          app/game/systems/pitHonorGalleryV1.ts app/game/systems/pitBonusTrialV1.ts
+          app/game/systems/pitBonusRecordsV1.ts app/pit-lab/selection
+          scripts/qa-pit-honors-gallery-v1.mjs scripts/qa-pit-selection-review-v1.mjs scripts/qa-pit-bonus-trial-v1.mjs
+          tests/pit-honor-gallery-v1.test.mjs tests/pit-honor-route-game-client.test.mjs
+          tests/pit-bonus-trial-v1.test.mjs
+      - name: Install Chromium
+        run: npx --no-install playwright-core install --with-deps chromium
+      - name: Gallery in Chromium
+        env:
+          PIT_QA_OUTPUT: qa-pit-current/gallery
+        run: node scripts/qa-pit-honors-gallery-v1.mjs
+      - name: Candidate image review in Chromium
+        env:
+          PIT_QA_OUTPUT: qa-pit-current/selection-review
+        run: node scripts/qa-pit-selection-review-v1.mjs
+      - name: Bonus played through real keyboard input in Chromium
+        env:
+          PIT_QA_OUTPUT: qa-pit-current/bonus
+          PIT_QA_MATERIALIZE_ASSETS: '1'
+        run: node scripts/qa-pit-bonus-trial-v1.mjs
+      - name: Preserve observed browser reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pit-guide-${{ github.sha }}-${{ github.run_attempt }}
+          path: qa-pit-current/
+          if-no-files-found: ignore

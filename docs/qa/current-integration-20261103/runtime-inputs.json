@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2454,
-  "bytes": 1117026872,
+  "files": 2465,
+  "bytes": 1117122731,
   "entries": [
     {
       "path": ".github/workflows/p0-p1-coherence-20261109.yml",
@@ -805,8 +805,8 @@
     },
     {
       "path": "app/game/GameClient.tsx",
-      "bytes": 446457,
-      "sha256": "f8a1a4c742d6f0ce20b2fa4b2b522e277dd890c677f28cbb21cd1b420f3058b1"
+      "bytes": 446889,
+      "sha256": "fa8bcb8aba348dfd1b5d842a1073eb0ab6e9081132f278770f5b850bcfff59cb"
     },
     {
       "path": "app/game/GameReserveEntryV104.module.css",
@@ -1704,14 +1704,24 @@
       "sha256": "91708f1939f432f838037d93ebeb55d5673f879fd881768f5613a17e118e6847"
     },
     {
+      "path": "app/game/PitBonusTrialPanelV1.module.css",
+      "bytes": 3018,
+      "sha256": "8f7a94ba955d79c20d5c1104f9199426f9c6a4336d3476e205cca9522c9a43fb"
+    },
+    {
+      "path": "app/game/PitBonusTrialPanelV1.tsx",
+      "bytes": 5977,
+      "sha256": "10b064b3eb820980546016d0570f39b3251526708a7728f176f222b6c1fdd456"
+    },
+    {
       "path": "app/game/PitCanvas.module.css",
       "bytes": 60565,
       "sha256": "5ea804a94df33a54d32edca63bc205a92e5df44522d01ae47639f687c4d29389"
     },
     {
       "path": "app/game/PitCanvas.tsx",
-      "bytes": 302535,
-      "sha256": "25d3f4b5a155242ef555f3a682935e42b5fb5c69e1af44afb43f17d2ea0bac5e"
+      "bytes": 312489,
+      "sha256": "fa71bf4e5241d8ccb0839c83d3fda543cbdeaf70374ae7fe5d8e17ef40252513"
     },
     {
       "path": "app/game/PitExperienceV79.module.css",
@@ -1720,8 +1730,8 @@
     },
     {
       "path": "app/game/PitExperienceV79.tsx",
-      "bytes": 24829,
-      "sha256": "2f938301d497eb58b826d3e941eb2496a821f2a04b2f138f1035053510e96074"
+      "bytes": 24992,
+      "sha256": "cb7b34a945eb2ef5ed1a9a43c662ce1f665b02cd4be373dd373d2abfada6a274"
     },
     {
       "path": "app/game/PitExtensionPortrait.tsx",
@@ -1744,14 +1754,19 @@
       "sha256": "fb069c88f491a03c2e362e609788bb71c62a0c6c137d4adca9128e8d9301f31c"
     },
     {
+      "path": "app/game/PitHonorDetail.tsx",
+      "bytes": 6211,
+      "sha256": "05525dc0359da93b1892864004ad64b3a7e7a052f9d5c2b3f4423af0e5cb0ca5"
+    },
+    {
       "path": "app/game/PitHonorsPanel.module.css",
-      "bytes": 1835,
-      "sha256": "02ef86b1f1f2497cc2386a1040b7163b5ef8420f17e32a64940ea83913a5c12d"
+      "bytes": 5500,
+      "sha256": "3dac101b4ebbf896f44bd83e626c1afc49947a05fa3b6781fac98cb42636112c"
     },
     {
       "path": "app/game/PitHonorsPanel.tsx",
-      "bytes": 5713,
-      "sha256": "775a0c463d1d4efc8c19ef11801d908db8203f2d94e0f6f815a6f2ad90834c69"
+      "bytes": 9279,
+      "sha256": "7ef8f410fedd9898fb085bbd823a41edc2b796a5f9659c0bd36577fb0a8eabde"
     },
     {
       "path": "app/game/PitNarrativeTrials.module.css",
@@ -1770,13 +1785,13 @@
     },
     {
       "path": "app/game/PitSelectionFlow.module.css",
-      "bytes": 27590,
-      "sha256": "d871bc5d8fc4dd234e8ebf6ff09eed2ecc53d2ba2dbbbd02f5eee53d88467a26"
+      "bytes": 28380,
+      "sha256": "4d508873c966ba01db63bcbb84e820b621ecdd103e2919a64621982e55417b44"
     },
     {
       "path": "app/game/PitSelectionFlow.tsx",
-      "bytes": 31046,
-      "sha256": "af2cbd9202b83ec15dcab6deb3642ce3e3504ef9e74b188837451c83b96f05ba"
+      "bytes": 34320,
+      "sha256": "c1556fc712b0aac32371d24bd63ed3bb35c96599dd7f15244f076101eb06e970"
     },
     {
       "path": "app/game/PitStagePreview.tsx",
@@ -3750,8 +3765,8 @@
     },
     {
       "path": "app/game/save.ts",
-      "bytes": 125802,
-      "sha256": "c9d9864b3d6c6ba60af5799dd6bee758a67a077d29fcff27338921709b716dca"
+      "bytes": 125772,
+      "sha256": "0e639e3fffce897bd0426d1ec33c96bcc08cf0f06da3b3a563c8859320eabf9d"
     },
     {
       "path": "app/game/ship-level.css",
@@ -6144,6 +6159,16 @@
       "sha256": "af95ed0c703bb90083433dfd7de4e3af317568ef0e9051c80cd5aba46d378bf7"
     },
     {
+      "path": "app/game/systems/pitBonusRecordsV1.ts",
+      "bytes": 8156,
+      "sha256": "419b630ee3a75a47e9f627888ab4172ffe3772575447b5d89c791a63b88f01a9"
+    },
+    {
+      "path": "app/game/systems/pitBonusTrialV1.ts",
+      "bytes": 9856,
+      "sha256": "d6b85e6f57dc5ceb5442de046cfa283a0557fa9b3f667df27d3ce2bb01e35395"
+    },
+    {
       "path": "app/game/systems/pitCamera.ts",
       "bytes": 11666,
       "sha256": "cf58681c97fec2eca33cefc7b8c1bb071536aa8d58c7e6a2d3a753f42d5d8068"
@@ -6177,6 +6202,11 @@
       "path": "app/game/systems/pitCompanion.ts",
       "bytes": 1844,
       "sha256": "9b18899e3404b93a32efc0dbf74d44771529105d2479b93e0841ae187c4f53bf"
+    },
+    {
+      "path": "app/game/systems/pitContentAccessV1.ts",
+      "bytes": 17340,
+      "sha256": "fac7a20f8a08bb4fa7d55373bef8ea753426c13e831160eedf8db0322780b7c7"
     },
     {
       "path": "app/game/systems/pitDescentCombat.ts",
@@ -6227,6 +6257,11 @@
       "path": "app/game/systems/pitGamepadAssignments.ts",
       "bytes": 2343,
       "sha256": "355c4065b0e347488dd60e193ec239e18d37e5b922f83232d9fd106d84981e9c"
+    },
+    {
+      "path": "app/game/systems/pitHonorGalleryV1.ts",
+      "bytes": 7346,
+      "sha256": "af4d1506a9dd1fa0844164ae5c3e7934312d449b1b2dba64e394042ddf0c5996"
     },
     {
       "path": "app/game/systems/pitHonors.ts",
@@ -6342,6 +6377,11 @@
       "path": "app/game/systems/pitSelectionFlow.ts",
       "bytes": 2536,
       "sha256": "ef50e32dc565714037b575812611d0cc9e7454b30441c889a57d27c1c8a456d5"
+    },
+    {
+      "path": "app/game/systems/pitSelectionPresentationV1.ts",
+      "bytes": 4484,
+      "sha256": "7782a4e6564fde0ccfab64d667d77b3c8c3630fe21bec5a6724ba6ba1ddb3fb4"
     },
     {
       "path": "app/game/systems/pitStageJourney.ts",
@@ -7035,8 +7075,8 @@
     },
     {
       "path": "app/pit-lab/PitProductionAnimationLab.tsx",
-      "bytes": 18802,
-      "sha256": "a615b69f993d1682f77caf9c64add13eb522e476ae84b050f4a032db0dd1ba7c"
+      "bytes": 19150,
+      "sha256": "b18ac5c72b5c8a28cd51dba1b1ca662e470b9dc95bd0c7b4c4171a56650d45a6"
     },
     {
       "path": "app/pit-lab/PitWorkbookAnimationLabV100.module.css",
@@ -7057,6 +7097,21 @@
       "path": "app/pit-lab/pitLabProduction.ts",
       "bytes": 7082,
       "sha256": "befa3b966ae5da6212ff8ded031f5c0d5f3328411d58ff538e80d0b1cd6aa532"
+    },
+    {
+      "path": "app/pit-lab/selection/GreybackSelectionReview.module.css",
+      "bytes": 3698,
+      "sha256": "64738e00655b510e8319807d5c3c48b82798308ad671d20c2f111d6e1a6d00e4"
+    },
+    {
+      "path": "app/pit-lab/selection/GreybackSelectionReview.tsx",
+      "bytes": 7331,
+      "sha256": "2306c58a686f0583ae05029d59c9db864feff85e42815011750592b8d28b0cb6"
+    },
+    {
+      "path": "app/pit-lab/selection/page.tsx",
+      "bytes": 280,
+      "sha256": "94222ea91525d9e835a0c0f7268fe800e7b0181cac914feff2d85a16496059b7"
     },
     {
       "path": "app/planet-generator-v102/page.tsx",

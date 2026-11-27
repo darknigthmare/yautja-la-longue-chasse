@@ -135,6 +135,8 @@ Les temporisations de présentation sont indépendantes de la simulation. Leurs 
 
 La tentative de production vise **quatre PNG de Jungle Hunter masqué, orientation droite**, deux poses de sélection et deux de désélection. La première sortie a été refusée par le générateur, HTTP 400 `moderation_blocked` ; les trois autres n’ont pas été tentées. Le [manifeste artistique](../../art-source/the-pit/selection-20261127/jungle-hunter/manifest.json) constate **zéro PNG reçu, zéro admis et zéro intégré**. Aucun nouveau clip ni statut 1:1 n’en découle. Même si deux poses étaient reçues ultérieurement, elles ne suffiraient pas à certifier une animation détaillée fluide ou les deux orientations ; aucun miroir automatique ne doit changer le côté de l’équipement.
 
+Le lot distinct **Greyback / Elder sans casque** a ensuite produit **cinq PNG individuels** : quatre poses orientées à droite et une correction d’équipement de la première pose. Les [sources, prompts et mesures](../../art-source/the-pit/continuation-20261127/greyback-unmasked/manifest.json) sont conservés, ainsi que la [revue des écarts](../../art-source/the-pit/continuation-20261127/greyback-unmasked/REVIEW.md). La correction suivante a été refusée ; les deux autres n’ont pas été tentées. La page `/pit-lab/selection` compare la référence, les quatre poses et la révision reçue, avec fond clair et superposition manuelle. **Cinq sorties réelles, zéro clip admis, aucune certification 1:1** : les lames de poignet des trois poses non corrigées, l’empattement et les petits détails restent notamment ouverts. Les copies publiques servent uniquement à cette revue et ne remplacent aucun sprite du combat.
+
 Les futurs groupes affichent actif, réserve et soutien, leur disponibilité et les raisons d’incompatibilité. La présentation d’un groupe n’active pas le tag dans le moteur.
 
 ## 6. Extension 01 — équipes, conclusions et clashes
@@ -189,6 +191,8 @@ La réflexion d’un projectile doit réattribuer correctement dégâts, ressour
 
 ### Bonus à produire par lots
 
+**Premier bonus de riposte ajouté et joué dans le moteur.** [L’épreuve V1](BONUS_RIPOSTE_V1.md) se lance depuis Entraînement : quatre gardes basses reconnues, chacune suivie d’une frappe normale en contact. Elle possède préparation, chrono de simulation, deux niveaux d’aide, score/rang, réussite/échec, pause, abandon, reprise et conservation volontaire d’un meilleur record local. Ce record est séparé des résultats de duel et de la progression, et n’est pas inclus dans les exports de campagne. L’épreuve est une création de jeu ; elle ne remplace pas les familles de précision ou destruction ci-dessous.
+
 Les exercices narratifs existants sont des bases utiles ; ils ne sont pas renommés en dix familles de bonus terminées. Les premiers ajouts proposés sont :
 
 | Bonus | Rôle et adaptation au lore | Résultat et dépendances |
@@ -203,7 +207,7 @@ Chaque bonus précise caractère facultatif ou obligatoire, héros, version, lie
 
 ### Galerie des distinctions
 
-**Concept original compatible, pas une pièce jouable déjà livrée.** La galerie prolonge l’actuel panneau des distinctions. Une entrée commune conduit à trois ensembles lisibles : Arcade, Circuit et Descente. Les vitrines ou consoles consultent le même catalogue de 18 distinctions que le menu ; elles ne dupliquent pas les récompenses.
+**Galerie de menu consultable ajoutée ; pièce exploratoire encore conçue.** Le [registre détaillé des distinctions V1](GALERIE_DISTINCTIONS_V1.md) prolonge le panneau existant : 18 fiches acquises ou verrouillées, filtres Arcade/Circuit/Descente, conditions par chasseur, préparation du parcours et retour du focus, sans écriture. La galerie physique reste un concept original compatible. Ses futures vitrines ou consoles consulteront le même catalogue ; elles ne dupliqueront pas les récompenses.
 
 La progression ne dépend pas d’une clé enfermée derrière sa propre récompense. Les accès permanents, conditions et ouvertures sont sauvegardés. L’intégration physique éventuelle au mausolée utilisera la topologie et les règles de [`mausoleum.ts`](../../app/game/systems/mausoleum.ts) ; aucun passage n’est ajouté au monde par cette fiche documentaire.
 
@@ -317,7 +321,7 @@ Les suites existantes à réutiliser selon le changement comprennent `pitHonors.
 | --- | --- | --- |
 | P0 | Conserver les trois guides complets et la traçabilité des 68 rubriques. | Empreintes, index, liens bible/campagne et liste des écarts vérifiés. |
 | P0 | Présenter les 18 distinctions avec états explicites et projection d’accès. | Sauvegarde existante préservée, contenu réellement acquis distingué d’un asset prêt, navigation accessible testée. |
-| P0 | Valider dans le navigateur le cycle de cadre sélection/désélection ajouté et obtenir un premier lot artistique admis. | Contrôle réactif et temporisations nettoyées ; aucun clip natif déclaré tant que la production reste bloquée à zéro PNG. |
+| P0 | Obtenir un premier lot artistique admis après le cycle d’interface déjà vérifié. | Corriger les écarts des cinq candidats Greyback reçus, produire les orientations et intervalles requis, puis revue artistique ; aucun clip natif déclaré sur la seule réception des PNG. |
 | P1 | Compléter les dessins de sélection et les taunts prioritaires des douze combattants historiques. | Variantes et deux orientations contrôlées ; un clip complet exige des poses distinctes et des transitions relues. |
 | P1 | Individualiser les kits fournis par source et incarnation. | Action, arme, limites, visuels et source propres ; ne plus emprunter automatiquement le profil partagé. |
 | P1 | Prototyper un profil hybride avec une paire cohérente et une entité native. | Transfert de contrôle, coûts, KO, combo, état des objets et sauvegarde/replay versionnés. |
@@ -329,4 +333,4 @@ Les suites existantes à réutiliser selon le changement comprennent `pitHonors.
 | P2 | Règles et adaptateur éventuel de soutien. | Offre explicite, fournisseur branché et vérifié, identité de compte et sources d’accès correctes. |
 | P2 | Tournois en ligne, matchmaking et compatibilité réseau. | Services réels, synchronisation, déconnexion et replays testés ; un menu seul ne suffit pas. |
 
-La reprise suivante doit lire le [dernier point de continuation](CONTINUATION_20261127.md), vérifier la branche et poursuivre les éléments encore ouverts. Les dénominateurs demeurent nommés : identités, variantes, clips, poses, scènes et règles d’accès ne sont pas additionnés dans un pourcentage artificiel.
+La reprise suivante doit lire le [dernier point de continuation](CONTINUATION_20261127_LOT2.md), vérifier la branche et poursuivre les éléments encore ouverts. Les dénominateurs demeurent nommés : identités, variantes, clips, poses, scènes et règles d’accès ne sont pas additionnés dans un pourcentage artificiel.

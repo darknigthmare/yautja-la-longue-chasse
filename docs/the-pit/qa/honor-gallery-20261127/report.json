@@ -1,0 +1,89 @@
+{
+  "generatedAt": "2026-11-27T08:00:56.249Z",
+  "scope": "Actual PitHonorsPanel and PitHonorDetail, canonical fixture saves. Route callbacks are observed; the full application and combat are not mounted. No physical gamepad or screen-reader certification.",
+  "sourceHashes": {
+    "app/game/PitHonorsPanel.tsx": "7ef8f410fedd9898fb085bbd823a41edc2b796a5f9659c0bd36577fb0a8eabde",
+    "app/game/PitHonorDetail.tsx": "05525dc0359da93b1892864004ad64b3a7e7a052f9d5c2b3f4423af0e5cb0ca5",
+    "app/game/PitHonorsPanel.module.css": "3dac101b4ebbf896f44bd83e626c1afc49947a05fa3b6781fac98cb42636112c",
+    "app/game/systems/pitHonorGalleryV1.ts": "af4d1506a9dd1fa0844164ae5c3e7934312d449b1b2dba64e394042ddf0c5996",
+    "app/game/systems/pitContentAccessV1.ts": "fac7a20f8a08bb4fa7d55373bef8ea753426c13e831160eedf8db0322780b7c7",
+    "app/game/useMenuGamepad.ts": "602879e33e5c0ecd1ceba063e28ce9c7c82e8a36e54d9d87f7f0e2f7d589cd35",
+    "app/game/systems/menuNavigation.ts": "0b51fd81acffe645a799a6247a0192a760b111e813733bfc38dc905a66a140cf"
+  },
+  "browser": "158.0.8127.0",
+  "checks": [
+    {
+      "name": "18 real cards remain inspectable; source filters show 12 / 5 / 1",
+      "status": "pass"
+    },
+    {
+      "name": "every locked card opens a named detail and returns focus without changing saves",
+      "status": "pass"
+    },
+    {
+      "name": "keyboard confirmation, modal tab focus, Escape and parent-key isolation",
+      "status": "pass"
+    },
+    {
+      "name": "Arcade, Circuit and Descente prepare exact routes without awards",
+      "status": "pass"
+    },
+    {
+      "name": "real menu gamepad hook opens with A; held B closes only the detail",
+      "status": "pass",
+      "details": {
+        "driver": "Actual useMenuGamepad, emulated navigator.getGamepads",
+        "heldBackLeavesParentOpen": true,
+        "separateBackAfterReleaseReachesParent": true
+      }
+    },
+    {
+      "name": "Circuit detail exposes all individual paths without adding progress across hunters",
+      "status": "pass"
+    },
+    {
+      "name": "earned palette remains revealed and inspectable through the earned filter",
+      "status": "pass"
+    },
+    {
+      "name": "changing campaign closes the old private detail and resets gallery filters",
+      "status": "pass"
+    },
+    {
+      "name": "corrupt archive exposes no card, detail or fabricated reward",
+      "status": "pass"
+    },
+    {
+      "name": "wrong-owner archive exposes no card, detail or fabricated reward",
+      "status": "pass"
+    },
+    {
+      "name": "a storage failure while a detail is open closes it without disclosing stale data",
+      "status": "pass"
+    },
+    {
+      "name": "touch-sized controls and reduced-motion mobile detail fit the viewport",
+      "status": "pass"
+    },
+    {
+      "name": "no uncaught errors, React warnings or failed local resources",
+      "status": "pass"
+    }
+  ],
+  "screenshots": [
+    "gallery-locked-desktop.png",
+    "gallery-circuit-detail-desktop.png",
+    "gallery-earned-detail-desktop.png",
+    "gallery-earned-detail-mobile.png"
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "httpFailures": [],
+  "summary": {
+    "passed": 13,
+    "failed": 0,
+    "pageErrors": 0,
+    "consoleErrors": 0,
+    "httpFailures": 0
+  }
+}

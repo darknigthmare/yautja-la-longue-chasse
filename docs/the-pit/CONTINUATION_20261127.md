@@ -1,5 +1,7 @@
 # The PIT — point de reprise du 27 novembre 2026
 
+**Suite à lire pour la reprise actuelle : [lot 2 — bonus de riposte, galerie et cinq sorties Greyback](CONTINUATION_20261127_LOT2.md).** Le présent document conserve les observations du premier lot, notamment la tentative Jungle Hunter bloquée.
+
 ## Base et objectif
 
 - Dépôt : `darknigthmare/yautja-la-longue-chasse`.

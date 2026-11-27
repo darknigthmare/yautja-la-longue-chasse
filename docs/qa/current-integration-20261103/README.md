@@ -693,3 +693,36 @@ comparées à leurs blobs Git et à leurs SHA-256. La proie de contrôle initial
 et le segment terminal préparé sont déclarés ; cette recette ne devient pas
 une campagne complète de huit missions. Les huit Restant V112 et les limites
 humaines, matérielles et artistiques conservent leurs statuts propres.
+
+## Actualisation The PIT — 27 novembre 2026
+
+Le relevé courant est reconstruit depuis `2769b094862aea97f10fc0e5c4f1154489a8a8bc`
+pour intégrer les modules d’accès, les fiches de distinctions, les routes,
+l’épreuve de riposte et la page de revue artistique du [lot 2](../../the-pit/CONTINUATION_20261127_LOT2.md).
+Le [reçu détaillé](../../the-pit/RUNTIME_INVENTAIRE_20261127.json) fixe la méthode
+et les empreintes ; les freezes V111, V112 et V113 ne changent pas.
+
+| Mesure | Valeur |
+| --- | --- |
+| Entrées courantes | 2 465 |
+| Sources applicatives exactes à l’index | 1 437 |
+| Sources applicatives ajoutées / modifiées depuis la base | 11 / 9 |
+| Fichiers de la base relus et vérifiés | 1 758 |
+| Entrées conservées sous identité Git mode/type/blob | 2 445 |
+| Entrées non matérialisées localement | 696, soit 1 069 207 661 octets |
+| Taille du manifeste courant | 454 882 octets |
+| SHA-256 du manifeste courant | `077a8af0d4f1de8170755c82339631a9d02bc2d0a72540c8f2ed0f91bdd06cd7` |
+
+La liste `app/` est comparée intégralement entre le disque et l’index. Les
+octets des ajouts et modifications produisent les blobs indexés. Les périmètres
+parcourus automatiquement hors application — fixtures de migration Homeworld
+et banque V112 — gardent leurs mêmes 40 entrées Git. Le graphe des recettes a
+également été relu séparément, sans nouvelle dépendance hors application.
+
+Cette reconstruction différentielle n’est pas présentée comme une exécution
+locale complète du générateur. Après publication, le workflow conserve son
+contrôle strict sur les octets réellement matérialisés :
+
+```sh
+node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json
+```

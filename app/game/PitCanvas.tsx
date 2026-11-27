@@ -11,6 +11,11 @@ import {
   useState,
 } from "react";
 
+import PitBonusTrialPanelV1 from "./PitBonusTrialPanelV1";
+import { beginPitBonusTrialV1, getPitBonusAvailabilityV1, preparePitBonusTrialV1, stepPitBonusTrialV1,
+  pitBonusResultV1, type PitBonusDifficultyV1, type PitBonusTrialV1 } from "./systems/pitBonusTrialV1";
+import { loadPitBonusRecordsV1, savePitBonusRecordV1 } from "./systems/pitBonusRecordsV1";
+import { normalizePitHonorRouteV1, type PitHonorRouteRequestV1 } from "./systems/pitHonorGalleryV1";
 import { applyPitWorkbookPresentationClockV105 } from './systems/pitWorkbookPresentationClockV105';
 import { PIT_WORKBOOK_COMBAT_RECIPE_V105 } from './systems/pitWorkbookCombatV105';
 import {PIT_WORKBOOK_COMBAT_RECIPE_V107} from './systems/pitWorkbookCombatV107';
@@ -302,6 +307,10 @@ interface PendingPitRunTransition {
 interface PitCanvasProps {
   /** Restore the visited hero only; this is not a durable versus checkpoint. */
   initialLeftId?: PitVersusFighterId;
+  /** Preselect only; existing confirmations and saved route order still own launch. */
+  initialHonorRoute?: PitHonorRouteRequestV1;
+  /** Separate, explicitly saved personal bonus records; never a campaign award. */
+  bonusRecordOwnerCreatedAt?: string;
   /** A pre-reviewed workbook extract. Remount with a new key for each attempt. */
   narrativeEncounter?: { readonly id: string; readonly leftId: PitVersusFighterId; readonly rightId: PitVersusFighterId; readonly arenaId: PitArenaId; readonly normalMoves?: 'workbook-v106'|'workbook-v107'; readonly workbookCarryV108?: PitWorkbookCarryV108 };
   onWorkbookExerciseFrameV107?: (frame: Readonly<PitCombatState>) => void;
@@ -1213,6 +1222,8 @@ function roundPresentationAnnouncement(presentation: PitRoundPresentationView, c
 
 export default function PitCanvas({
   initialLeftId,
+  initialHonorRoute,
+  bonusRecordOwnerCreatedAt,
   narrativeEncounter,
   narrativeStageCues,
   onWorkbookExerciseFrameV107,
@@ -1244,9 +1255,12 @@ export default function PitCanvas({
   const [fixedCamera, setFixedCamera] = useState(false);
   const presentationMotion = resolvePitPresentationMotion({ prefersReducedMotion, screenShake, fixedCamera });
   const reducedCameraMotion = presentationMotion.reducedMotion;
-  const [mode, setMode] = useState<PitMode>("cpu");
-  const [leftId, setLeftId] = useState<PitVersusFighterId>(() => narrativeEncounter?.leftId ?? (isPitVersusFighterId(initialLeftId) ? initialLeftId : "jungle-hunter"));
-  const [rightId, setRightId] = useState<PitVersusFighterId>(narrativeEncounter?.rightId ?? (initialLeftId === "berserker" ? "jungle-hunter" : "berserker"));
+  const [honorRoute] = useState(() => narrativeEncounter ? null : normalizePitHonorRouteV1(initialHonorRoute));
+  const [mode, setMode] = useState<PitMode>(() => honorRoute?.mode ?? "cpu");
+  const [leftId, setLeftId] = useState<PitVersusFighterId>(() => narrativeEncounter?.leftId ??
+    (isPitVersusFighterId(honorRoute?.fighterId) ? honorRoute.fighterId : isPitVersusFighterId(initialLeftId) &&
+      (!honorRoute || canPitFighterEnterMode(initialLeftId, honorRoute.mode)) ? initialLeftId : "jungle-hunter"));
+  const [rightId, setRightId] = useState<PitVersusFighterId>(() => narrativeEncounter?.rightId ?? (leftId === "berserker" ? "jungle-hunter" : "berserker"));
   const [leftVariantId, setLeftVariantId] = useState<string | null>(null);
   const [rightVariantId, setRightVariantId] = useState<string | null>(null);
   // V147: J1 plays the campaign Yautja over the base fighter (presentation only).
@@ -1388,6 +1402,14 @@ export default function PitCanvas({
   const trainingClockRef = useRef(createPitTrainingClock());
   const trainingClockRestartRef = useRef(false);
   const trainingLessonRef = useRef<PitTrainingLesson | null>(null);
+  const [bonusTrial, setBonusTrial] = useState<PitBonusTrialV1 | null>(null);
+  const bonusTrialRef = useRef<PitBonusTrialV1 | null>(null);
+  const bonusPanelRef = useRef<HTMLDivElement>(null);
+  const bonusAssetsReadyRef = useRef(false);
+  const bonusRecordOwnerRef = useRef<string | undefined>(bonusRecordOwnerCreatedAt);
+  const [bonusRecords, setBonusRecords] = useState(() => loadPitBonusRecordsV1(bonusRecordOwnerCreatedAt));
+  const [bonusRecordNotice, setBonusRecordNotice] = useState("");
+  const [bonusRecordSaved, setBonusRecordSaved] = useState(false);
   const [impact, setImpact] = useState<ImpactFlash | null>(null);
   const [descentCombatPresentation, setDescentCombatPresentation] =
     useState<PitDescentCombatPresentation | null>(null);
@@ -1692,6 +1714,7 @@ export default function PitCanvas({
   }, [resetLiveInputs, showHelp]);
 
   const toggleTrainingTools = useCallback(() => {
+    if (bonusTrialRef.current) return;
     if (menuOpen) resume();
     setShowTrainingTools(!showTrainingTools);
     if (showTrainingTools) { resetLiveInputs(); focusCombatRoot(); }
@@ -1713,6 +1736,8 @@ export default function PitCanvas({
   const clearTrainingLesson = useCallback(() => {
     trainingLessonRef.current = null;
     setTrainingLesson(null);
+    bonusTrialRef.current = null;
+    setBonusTrial(null);
     setTrainingBriefingTimedOut(false);
     trainingClockRestartRef.current = false;
     trainingClockRef.current = createPitTrainingClock();
@@ -1720,7 +1745,7 @@ export default function PitCanvas({
   }, []);
 
   const toggleTrainingPause = useCallback(() => {
-    if (combatRef.current?.rules.mode !== "training" ||
+    if (combatRef.current?.rules.mode !== "training" || bonusTrialRef.current ||
       (trainingLessonRef.current !== null && trainingLessonRef.current.status !== "running")) return;
     const paused = !trainingClockRef.current.paused;
     resetLiveInputs();
@@ -1731,7 +1756,7 @@ export default function PitCanvas({
   }, [focusCombatRoot, resetLiveInputs]);
 
   const advanceTrainingTick = useCallback(() => {
-    if (combatRef.current?.rules.mode !== "training" ||
+    if (combatRef.current?.rules.mode !== "training" || bonusTrialRef.current ||
       (trainingLessonRef.current !== null && trainingLessonRef.current.status !== "running")) return;
     trainingClockRef.current = requestPitTrainingTick(trainingClockRef.current);
   }, []);
@@ -1824,6 +1849,88 @@ export default function PitCanvas({
     changeCombat(resetPitTrainingPositions(current));
     focusCombatRoot();
   }, [setAnnouncement, changeCombat, clearTrainingActivity, focusCombatRoot, resetLiveInputs]);
+
+  const prepareBonusTrial = useCallback((difficulty: PitBonusDifficultyV1 = "standard") => {
+    const current = combatRef.current;
+    if (!current || !getPitBonusAvailabilityV1(current).available || playbackReplay) return;
+    const prepared = preparePitBonusTrialV1(current, difficulty);
+    clearTrainingActivity();
+    resetLiveInputs();
+    recorderRef.current = null;
+    bonusTrialRef.current = prepared.trial;
+    setBonusTrial(prepared.trial);
+    bonusRecordOwnerRef.current = bonusRecordOwnerCreatedAt;
+    setBonusRecords(loadPitBonusRecordsV1(bonusRecordOwnerCreatedAt));
+    setBonusRecordNotice("");
+    setBonusRecordSaved(false);
+    setShowTrainingTools(false);
+    trainingClockRef.current = createPitTrainingClock(true);
+    setTrainingPaused(true);
+    setImpact(null);
+    setAnnouncement("ÉPREUVE DE RIPOSTE");
+    setAriaAnnouncement(prepared.trial.message);
+    changeCombat(prepared.state);
+    window.requestAnimationFrame(() => bonusPanelRef.current?.focus({ preventScroll: true }));
+  }, [bonusRecordOwnerCreatedAt, playbackReplay, clearTrainingActivity, resetLiveInputs, setAnnouncement, changeCombat]);
+
+  const beginBonusTrial = useCallback(() => {
+    const current = combatRef.current, previous = bonusTrialRef.current;
+    if (!current || !previous || pausedRef.current || document.hidden) return;
+    const next = beginPitBonusTrialV1(previous, current, bonusAssetsReadyRef.current);
+    if (next === previous) return;
+    resetLiveInputs();
+    bonusTrialRef.current = next;
+    setBonusTrial(next);
+    trainingClockRef.current = createPitTrainingClock();
+    trainingClockRestartRef.current = true;
+    setTrainingPaused(false);
+    setAriaAnnouncement(next.message);
+    focusCombatRoot();
+  }, [pausedRef, resetLiveInputs, focusCombatRoot]);
+
+  const saveBonusRecord = useCallback(() => {
+    const trial = bonusTrialRef.current;
+    if (!trial || bonusRecordOwnerRef.current !== bonusRecordOwnerCreatedAt) {
+      setBonusRecordNotice("Le profil a changé. Recommencez une tentative avec le profil actuel pour conserver son record.");
+      return;
+    }
+    const saved = savePitBonusRecordV1(bonusRecordOwnerCreatedAt, trial, new Date().toISOString());
+    setBonusRecordNotice(saved.message);
+    setBonusRecordSaved(saved.saved);
+    setBonusRecords(loadPitBonusRecordsV1(bonusRecordOwnerCreatedAt));
+  }, [bonusRecordOwnerCreatedAt]);
+
+  useEffect(() => {
+    if (!bonusTrialRef.current || bonusTrialRef.current.status === "running" || menuOpen) return;
+    let request = 0, armed = false;
+    let previous = [false, false, false, false];
+    let revision: number | undefined;
+    const poll = () => {
+      const assigned = readAssignedGamepads(), pad = assigned.pads[0];
+      if (revision !== assigned.assignments[0]?.revision) armed = false;
+      revision = assigned.assignments[0]?.revision;
+      const current = pad ? [Boolean(pad.buttons[12]?.pressed) || (pad.axes[1] ?? 0) < -.65,
+        Boolean(pad.buttons[13]?.pressed) || (pad.axes[1] ?? 0) > .65,
+        Boolean(pad.buttons[0]?.pressed), Boolean(pad.buttons[1]?.pressed)] : [false, false, false, false];
+      if (!pad || document.hidden || pausedRef.current) armed = false;
+      else if (!armed) armed = pad.buttons.every(button => !button.pressed) && pad.axes.every(axis => Math.abs(axis) < .32);
+      else if (current[3] && !previous[3]) resetTraining();
+      else {
+        const buttons = Array.from(bonusPanelRef.current?.querySelectorAll<HTMLButtonElement>("button:not(:disabled)") ?? []);
+        const index = buttons.indexOf(document.activeElement as HTMLButtonElement);
+        if ((current[0] && !previous[0]) || (current[1] && !previous[1])) buttons[(index + (current[0] ? -1 : 1) + buttons.length) % buttons.length]?.focus();
+        if (current[2] && !previous[2]) {
+          if (index >= 0) buttons[index]?.click();
+          else if (bonusTrialRef.current?.status === "briefing") beginBonusTrial();
+          else bonusPanelRef.current?.querySelector<HTMLButtonElement>("[data-bonus-restart]")?.click();
+        }
+      }
+      previous = current;
+      request = requestAnimationFrame(poll);
+    };
+    request = requestAnimationFrame(poll);
+    return () => cancelAnimationFrame(request);
+  }, [bonusTrial?.status, menuOpen, pausedRef, beginBonusTrial, readAssignedGamepads, resetTraining]);
 
   const startTrainingLesson = useCallback((id: PitTrainingLessonId) => {
     const current = combatRef.current;
@@ -2628,7 +2735,7 @@ export default function PitCanvas({
   const requestPitTauntV93 = useCallback((slot: 0 | 1) => {
     const currentCombat = combatRef.current;
     if (!lifecycleInteractionReadyRefV93.current || pausedRef.current || document.hidden || playbackReplay ||
-        !currentCombat || (slot === 1 && mode !== 'local') || trainingLessonRef.current || trainingActivityRef.current !== 'idle') return;
+        !currentCombat || (slot === 1 && mode !== 'local') || trainingLessonRef.current || bonusTrialRef.current || trainingActivityRef.current !== 'idle') return;
     const variant = nextTauntVariantsRefV105.current[slot];
     const durationMs = pitNativePresentationDurationV105(fighterArt?.spriteSheets, currentCombat.fighters[slot], 'taunt', variant) ??
       pitNativeTauntDurationV93(fighterArt?.spriteSheets, currentCombat.fighters[slot]);
@@ -2699,6 +2806,15 @@ export default function PitCanvas({
         } else if (gameplayKeyCodes.has(event.code)) event.preventDefault();
         return;
       }
+      if (bonusTrialRef.current && bonusTrialRef.current.status !== "running" &&
+        (target === bonusPanelRef.current || target === rootRef.current)) {
+        if ((event.code === "Enter" || event.code === "Space") && !event.repeat) {
+          event.preventDefault();
+          if (bonusTrialRef.current.status === "briefing") beginBonusTrial();
+          else bonusPanelRef.current?.querySelector<HTMLButtonElement>("[data-bonus-restart]")?.click();
+        } else if (gameplayKeyCodes.has(event.code)) event.preventDefault();
+        return;
+      }
       if (
         target instanceof HTMLElement &&
         target.closest("button, input, select, textarea, a[href]")
@@ -2743,7 +2859,7 @@ export default function PitCanvas({
       window.removeEventListener("keyup", onKeyUp);
       window.removeEventListener("blur", onBlur);
     };
-  }, [beginPreparedTrainingLesson, closeSelectionOptions, controlBindings, gameplayKeyCodes, onExit, playbackReplay, openMenu, resume, pausedRef, requestPitTauntV93, tauntKeyCodesV93, chooseWorkbookConclusionV107]);
+  }, [beginPreparedTrainingLesson, beginBonusTrial, closeSelectionOptions, controlBindings, gameplayKeyCodes, onExit, playbackReplay, openMenu, resume, pausedRef, requestPitTauntV93, tauntKeyCodesV93, chooseWorkbookConclusionV107]);
 
   const viewPhase = combat === null
     ? "selection"
@@ -2917,14 +3033,18 @@ export default function PitCanvas({
       fighterArtStatuses?.[index] === "loading")
   );
   const simulationRunning = combat !== null && !menuOpen && !matchAssetsPending && !roundPresentation.blocksSimulation && combat.phase !== "match-over" &&
+    (!bonusTrial || bonusTrial.status === "running") &&
     (!playbackReplay || !replayEnded);
+  useEffect(() => {
+    bonusAssetsReadyRef.current = trainingBriefingAssetStatus === "ready" && !matchAssetsPending;
+  }, [trainingBriefingAssetStatus, matchAssetsPending]);
   useEffect(() => {
     lifecycleInteractionReadyRefV93.current = !matchAssetsPending && !menuOpen && !trainingPaused;
   }, [matchAssetsPending, menuOpen, trainingPaused]);
   const tauntAvailableV93 = nativeTauntDurationsV93.map((durationMs, index) => {
     const slot = index as 0 | 1;
     if (durationMs === null || !combat || playbackReplay || matchAssetsPending || menuOpen || trainingPaused ||
-        trainingLesson || trainingActivity !== 'idle' || (slot === 1 && mode !== 'local')) return false;
+        trainingLesson || bonusTrial || trainingActivity !== 'idle' || (slot === 1 && mode !== 'local')) return false;
     if (finisherV80.phase === 'window') return roundPresentation.resultVisible && !finisherV80.options.cpuWinner &&
       pitLifecycleWindowWinnerV93(combat, finisherV80) === slot && !lifecycleV93.taunt;
     return beginPitCombatTauntV93(lifecycleV93, combat, roundPresentation, slot, durationMs, true) !== lifecycleV93;
@@ -3086,7 +3206,9 @@ export default function PitCanvas({
         trainingClockRestartRef.current = false;
       }
       if (mode === "training" && !playbackReplay) {
-        const transport = advancePitTrainingSessionClock(trainingClockRef.current, elapsed, trainingLessonRef.current);
+        const transport = bonusTrialRef.current
+          ? advancePitTrainingSessionClock(trainingClockRef.current, elapsed, bonusTrialRef.current)
+          : advancePitTrainingSessionClock(trainingClockRef.current, elapsed, trainingLessonRef.current);
         trainingClockRef.current = transport.clock;
         accumulator = transport.ticks * fixedStep;
       } else {
@@ -3150,7 +3272,9 @@ export default function PitCanvas({
             secondInput = cpuInput(current);
           } else if (mode === "training") {
             const activity = trainingActivityRef.current;
-            if (trainingLessonRef.current) {
+            if (bonusTrialRef.current) {
+              secondInput = EMPTY_INPUT;
+            } else if (trainingLessonRef.current) {
               secondInput = resolvePitTrainingLessonInput(trainingLessonRef.current, current);
             } else if (activity === "recording") {
               secondInput = firstInput;
@@ -3214,7 +3338,23 @@ export default function PitCanvas({
         }
 
         const previousCombat = current;
-        if (mode === "descent" && descentCombatContextRef.current) {
+        if (mode === "training" && bonusTrialRef.current && !playbackReplay) {
+          const previousTrial = bonusTrialRef.current;
+          const frame = stepPitBonusTrialV1(previousTrial, current, inputs[0]);
+          current = frame.state;
+          bonusTrialRef.current = frame.trial;
+          setBonusTrial(frame.trial);
+          if (frame.trial.stage !== previousTrial.stage || frame.trial.status !== previousTrial.status) {
+            setAriaAnnouncement(frame.trial.message);
+          }
+          if (frame.trial.status !== "running") {
+            trainingClockRef.current = createPitTrainingClock(true);
+            setTrainingPaused(true);
+            resetLiveInputs();
+            accumulator = fixedStep;
+            window.requestAnimationFrame(() => bonusPanelRef.current?.focus({ preventScroll: true }));
+          }
+        } else if (mode === "descent" && descentCombatContextRef.current) {
           const descentFrame = stepPitDescentCombat(
             current,
             inputs,
@@ -3285,7 +3425,7 @@ export default function PitCanvas({
     };
     requestId = window.requestAnimationFrame(animate);
     return () => window.cancelAnimationFrame(requestId);
-  }, [setAnnouncement, changeTrainingActivity, controlBindings, finishTrainingRecording, mode, playbackReplay, readAssignedGamepads, replayEnded, simulationRunning, pausedRef, publishRoundPresentation]);
+  }, [setAnnouncement, changeTrainingActivity, controlBindings, finishTrainingRecording, mode, playbackReplay, readAssignedGamepads, replayEnded, simulationRunning, pausedRef, publishRoundPresentation, resetLiveInputs]);
 
   useEffect(() => {
     if (!combat || !canvasRef.current) return;
@@ -3326,7 +3466,7 @@ export default function PitCanvas({
   }, [arenaArt, combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, prefersReducedMotion, reducedGore, lifecyclePresentationV93, trainingSettings.showHitboxes, companionArt, falconerArt, playbackReplay, narrativeEncounter, narrativeStageCues, finisherV80, workbookConclusionV107, workbookConclusionArtV107, objectiveSessionV107, workbookDeviceArtV107, personalDrawV147]);
 
   useEffect(() => {
-    if (!combat || playbackReplay || combat.phase !== "match-over" ||
+    if (!combat || playbackReplay || combat.rules.mode === "training" || bonusTrialRef.current || combat.phase !== "match-over" ||
       reportedMatchFrameRef.current !== null) return;
     const playerId = combat.fighters[0].definitionId;
     reportedMatchFrameRef.current = combat.frame;
@@ -3645,7 +3785,7 @@ export default function PitCanvas({
           {([
             ["cpu", "Duel CPU", "Un chasseur contre un rival déterministe."],
             ["local", "Versus local", "Deux joueurs, deux manettes ou clavier partagé."],
-            ["training", "Entraînement", "Gel, avance d’un tick, cinq exercices guidés, mannequin et séquences d’entrées."],
+            ["training", "Entraînement", "Épreuve bonus de riposte, cinq exercices guidés, mannequin et laboratoire image par image."],
             ["arcade", "Arcade individuel", "Huit rencontres propres au combattant, rival puis Warlord."],
             ["circuit", "Circuit du clan", "Cinq chapitres et douze combats jusqu’au Jugement."],
             ["descent", "Descente", "Huit étages à branches, santé persistante, reliques, soins et boss."],
@@ -3665,6 +3805,10 @@ export default function PitCanvas({
           ))}
         </div>
 
+        {honorRoute?.chapterId && mode === "circuit" && <p className={styles.selectionNotice} data-pit-honor-route-goal>
+          Objectif de distinction : {PIT_CLAN_CIRCUITS["jungle-hunter"].chapters.find(entry => entry.chapter.id === honorRoute.chapterId)?.chapter.name}.
+          {" "}Le Circuit reprend à la prochaine rencontre autorisée de votre parcours. Confirmez le chasseur et l’adversaire pour continuer.
+        </p>}
         <PitSelectionFlow key={mode} ref={selectionFlowRef}
           onStageRetry={retrySceneArt}
           stageAssetsPending={(mode === "cpu" || mode === "local" || mode === "training") && !journeyAssetsReady}
@@ -4160,7 +4304,7 @@ export default function PitCanvas({
     <section
       ref={rootRef}
       className={`screen ${styles.root} ${styles.matchRoot} ${highContrast ? styles.highContrast : ""}`}
-      aria-label="Combat THE PIT"
+      aria-label={bonusTrial ? "Épreuve bonus THE PIT" : "Combat THE PIT"}
       tabIndex={-1}
       data-screen-focus
       data-pit-immersive="true"
@@ -4190,7 +4334,7 @@ export default function PitCanvas({
       data-pit-presentation-blocked={!canPitPresentationAcceptInput(roundPresentation)}
       data-pit-presentation-terminal-ready={terminal}
       data-pit-presentation-simulation-blocked={roundPresentation.blocksSimulation}
-      data-pit-simulation-blocked={roundPresentation.blocksSimulation || menuOpen || matchAssetsPending}
+      data-pit-simulation-blocked={roundPresentation.blocksSimulation || menuOpen || matchAssetsPending || Boolean(bonusTrial && bonusTrial.status !== "running")}
       data-pit-feral-native-art={feralNativeArtStatus}
     >
       <div className={styles.srOnly} role="status" aria-live="polite" aria-atomic="true">
@@ -4221,7 +4365,12 @@ export default function PitCanvas({
         {objectiveSessionV107 && <span data-pit-workbook-objective-status-v107 className={styles.stageLabel}>
           BALISE · {objectiveSessionV107.missionObject.state === 'ground' ? 'AU SOL' : 'RÉCUPÉRÉE PAR SCAR'} · DUEL ALTERNATIF
         </span>}
-        {trainingRules && !playbackReplay && <button type="button" className={styles.utilityButton} aria-expanded={showTrainingTools} onClick={toggleTrainingTools}>{showTrainingTools ? "Fermer le labo" : "Labo"}</button>}
+        {trainingRules && !playbackReplay && !bonusTrial && <>
+          <button type="button" className={styles.utilityButton} aria-expanded={showTrainingTools} onClick={toggleTrainingTools}>{showTrainingTools ? "Fermer le labo" : "Labo"}</button>
+          <button type="button" className={styles.utilityButton} data-bonus-launch
+            disabled={!getPitBonusAvailabilityV1(combat).available} title={getPitBonusAvailabilityV1(combat).reason ?? "Quatre gardes puis ripostes, avec chrono et résultat propres."}
+            onClick={() => prepareBonusTrial()}>Épreuve de riposte</button>
+        </>}
         {!playbackReplay && combat.phase === 'round' && nativeTauntDurationsV93.map((duration, slot) => duration !== null && (slot === 0 || mode === 'local')
           ? <button key={slot} type="button" className={styles.utilityButton} style={{ minHeight: 44 }} data-pit-taunt={slot}
             disabled={!tauntAvailableV93[slot]} onClick={() => requestPitTauntV93(slot as 0 | 1)}
@@ -4244,6 +4393,12 @@ export default function PitCanvas({
           </span> : null)}
         <button type="button" className={styles.utilityButton} data-pit-menu-button aria-label="Pause et menu du combat" onClick={() => openMenu()}>Ⅱ <span>MENU</span></button>
       </div>
+      {bonusTrial && <PitBonusTrialPanelV1 trial={bonusTrial} panelRef={bonusPanelRef}
+        controls={`${shortcuts.p1.guardLow} / LT / GARDE ↓ : bloquer ; ${shortcuts.p1.left}/${shortcuts.p1.right} / stick : approcher ; ${shortcuts.p1.light}/${shortcuts.p1.medium}/${shortcuts.p1.heavy} / X, Y, B : riposter.`}
+        assetsReady={trainingBriefingAssetStatus === "ready" && !matchAssetsPending}
+        records={bonusRecords} recordNotice={bonusRecordNotice} recordSaved={bonusRecordSaved} inactive={menuOpen}
+        onBegin={beginBonusTrial} onPrepare={prepareBonusTrial} onAbandon={resetTraining} onSave={saveBonusRecord}
+        onRetryAssets={() => { setFighterArtRetry(value => value + 1); retrySceneArt(); }} />}
       <div className={styles.hud} data-pit-hud inert={terminal || menuOpen}>
         <div className={styles.fighterHud}>
           <div><strong>{leftDefinition.name}</strong>{trainingRules && <span>{left.phase.toUpperCase()}</span>}</div>
@@ -4263,7 +4418,7 @@ export default function PitCanvas({
           </div>
           <div className={styles.roundPips} aria-label={`${left.roundsWon} manche gagnée`}><i className={left.roundsWon >= 1 ? styles.won : ""} /><i className={left.roundsWon >= 2 ? styles.won : ""} /></div>
         </div>
-        <div className={styles.timer}><small>{trainingRules ? "SESSION LIBRE" : mode === "descent" ? "MANCHE DÉCISIVE" : `MANCHE ${combat.round}`}</small><strong>{trainingRules ? "∞" : String(seconds).padStart(2, "0")}</strong></div>
+        <div className={styles.timer}><small>{bonusTrial ? "ÉPREUVE BONUS" : trainingRules ? "SESSION LIBRE" : mode === "descent" ? "MANCHE DÉCISIVE" : `MANCHE ${combat.round}`}</small><strong>{bonusTrial ? Math.ceil(pitBonusResultV1(bonusTrial).remainingTicks / PIT_TICK_RATE) : trainingRules ? "∞" : String(seconds).padStart(2, "0")}</strong></div>
         <div className={`${styles.fighterHud} ${styles.fighterHudRight}`}>
           <div><strong>{rightDefinition.name}</strong>{trainingRules && <span>{right.phase.toUpperCase()}</span>}</div>
           <div className={styles.healthTrack} role="progressbar" aria-label={`Vie de ${rightDefinition.name}`} aria-valuemin={0} aria-valuemax={rightDefinition.maxHealth} aria-valuenow={right.health}><i style={{ width: `${right.health / rightDefinition.maxHealth * 100}%` }} /></div>
@@ -4583,7 +4738,7 @@ export default function PitCanvas({
         ) : null}
       </div>
 
-      {touchAvailable && !playbackReplay && combat.phase !== "match-over" ? <div className={styles.touchRows} aria-label="Commandes tactiles" inert={terminal || menuOpen || trainingLesson?.status === "briefing" || !canPitPresentationAcceptInput(roundPresentation)}>
+      {touchAvailable && !playbackReplay && combat.phase !== "match-over" ? <div className={styles.touchRows} aria-label="Commandes tactiles" inert={terminal || menuOpen || trainingLesson?.status === "briefing" || Boolean(bonusTrial && bonusTrial.status !== "running") || !canPitPresentationAcceptInput(roundPresentation)}>
         <div className={styles.touchGroup}>
           <TouchButton label="◀" token={controlBindings["pit.p1MoveLeft"][0] ?? "KeyQ"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
           <TouchButton label="▼" token={controlBindings["pit.p1MoveDown"][0] ?? "KeyS"} onChange={(token, pressed) => setTouchToken(0, token, pressed)} />
@@ -4618,7 +4773,7 @@ export default function PitCanvas({
         ) : null}
       </div> : null}
 
-        {trainingRules && !playbackReplay && showTrainingTools ? (
+        {trainingRules && !playbackReplay && !bonusTrial && showTrainingTools ? (
           <aside className={styles.trainingTools} aria-label="Laboratoire d’entraînement" inert={terminal || menuOpen}>
             <div className={styles.labHeading}><strong>LABORATOIRE · {trainingPaused ? "SIMULATION GELÉE" : "60 TICKS / SECONDE"}</strong><button type="button" className={styles.utilityButton} onClick={toggleTrainingTools}>Fermer le laboratoire</button></div>
             <div className={styles.trainingActions}>
@@ -4769,7 +4924,7 @@ export default function PitCanvas({
           onClick={() => { setFixedCamera(value => !value); resetLiveInputs(); }}>
           {reducedCameraMotion ? "Caméra fixe" : "Caméra dynamique"}
         </button>
-        {trainingRules && !playbackReplay ? (
+        {trainingRules && !playbackReplay && !bonusTrial ? (
           <button type="button" className={styles.utilityButton} aria-expanded={showTrainingTools} onClick={toggleTrainingTools}>
             {showTrainingTools ? "Masquer le laboratoire" : "Laboratoire"}
           </button>

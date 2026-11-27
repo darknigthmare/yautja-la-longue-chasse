@@ -32,13 +32,14 @@ const desktopRosterSnapshot = () => false;
 
 /** The original versus controller is unmounted while reading. No combat input
  * listener or gamepad loop remains behind these menus or a second duel. */
-export default function PitExperienceV79({ ownerSaveCreatedAt, chronicleStorage, ...pitProps }: Props) {
+export default function PitExperienceV79({ ownerSaveCreatedAt, chronicleStorage, initialHonorRoute, ...pitProps }: Props) {
   const [selected, setSelected] = useState<PitVersusFighterId | null>(null);
   const [workbookExerciseV107, setWorkbookExerciseV107] = useState(false);
   const [lastFighter, setLastFighter] = useState<PitVersusFighterId | undefined>();
-  const choose = (id: PitVersusFighterId) => { setWorkbookExerciseV107(false); setLastFighter(id); setSelected(id); };
+  const [entryHonorRoute, setEntryHonorRoute] = useState(initialHonorRoute);
+  const choose = (id: PitVersusFighterId) => { setEntryHonorRoute(undefined); setWorkbookExerciseV107(false); setLastFighter(id); setSelected(id); };
   if (workbookExerciseV107 && (selected === 'feral-hunter' || selected === 'scar')) return <PitWorkbookCampaignV107 key={ownerSaveCreatedAt+selected} fighterId={selected} owner={ownerSaveCreatedAt} pitProps={pitProps} storage={chronicleStorage} onBack={() => setWorkbookExerciseV107(false)} />;
-  return selected === null ? <PitCanvas {...pitProps} initialLeftId={lastFighter ?? pitProps.initialLeftId} onOpenCharacterChronicle={choose} />
+  return selected === null ? <PitCanvas {...pitProps} initialHonorRoute={entryHonorRoute} initialLeftId={lastFighter ?? pitProps.initialLeftId} onOpenCharacterChronicle={choose} />
     : <PitCharacterChronicleControllerV79 key={ownerSaveCreatedAt} ownerSaveCreatedAt={ownerSaveCreatedAt}
       selectedId={selected} onOpenWorkbookExerciseV107={() => setWorkbookExerciseV107(true)} onChoose={choose} onBack={() => setSelected(null)} pitProps={pitProps} chronicleStorage={chronicleStorage} />;
 }
