@@ -42,6 +42,7 @@ import {
 import YouthCityForgeDetourV176 from "./YouthCityForgeDetourV176";
 import HomeworldTownBellO6 from "./HomeworldTownBellO6";
 import { beginRivalRaceO6, rivalRaceCanStartO6, type RivalRaceRecordO6 } from "./systems/originRivalRaceO6";
+import { beginLittleTrailO6, littleTrailCanStartO6, type LittleTrailRecordO6 } from "./systems/originLittleTrailO6";
 import { atRivalWorkshopO6, RIVAL_WORKSHOP_O6 } from "./systems/originRivalRacePlaceO6";
 import { recordTownBellOrderO6, townBellActionsO6, type TownBellActionO6, type TownBellRecordO6 } from "./systems/originTownBellO6";
 import { townBellActionAtO6, townBellAtSiteO6, townBellReplyO6, townBellSiteO6,
@@ -169,7 +170,7 @@ export interface HomeworldHubProps {
   navigation?: ReactNode;
   welcome?: ReactNode;
   /** Return false when durable saving failed; no local success is then announced. */
-  onProgress(next: HomeworldProgress, townBell?: TownBellRecordO6, rival?: RivalRaceRecordO6): boolean;
+  onProgress(next: HomeworldProgress, townBell?: TownBellRecordO6, workshopTrial?: RivalRaceRecordO6 | LittleTrailRecordO6): boolean;
   onAdjutantAppointment?(next: HomeworldProgress, prologue: NonNullable<SaveGame["prologue"]>): boolean;
   /** A controlled host can also own recovery backups, including memory-only playtests. */
   recoveryStorage?: Pick<Storage, 'getItem' | 'setItem'>;
@@ -447,7 +448,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   useEffect(() => { pausedRef.current = paused || inactive || spatialCodexOpen || wayfindingOpenV75 || !motionAssetsV74.ready || cargoMigrationPendingV108; }, [paused, inactive, spatialCodexOpen, wayfindingOpenV75, motionAssetsV74.ready,cargoMigrationPendingV108]);
   useEffect(() => { dialogStateRef.current = dialog; }, [dialog]);
 
-  const onProgress = useCallback((next: HomeworldProgress, adjutantPrologue?: NonNullable<SaveGame["prologue"]>, townBell?: TownBellRecordO6, rival?: RivalRaceRecordO6) => {
+  const onProgress = useCallback((next: HomeworldProgress, adjutantPrologue?: NonNullable<SaveGame["prologue"]>, townBell?: TownBellRecordO6, workshopTrial?: RivalRaceRecordO6 | LittleTrailRecordO6) => {
     if (!cargoMigrationWriteReadyRefV108.current || saveRef.current.createdAt !== save.createdAt || transitRefV77.current || skiffRefV77.current) return false;
     if(progressRef.current.arrivalRecoveryV111?.receipt&&JSON.stringify(next.arrivalRecoveryV111)!==JSON.stringify(progressRef.current.arrivalRecoveryV111))return false;
     if(next.arrivalRecoveryV111&&(!normalizeHomeworldArrivalRecoveryV111(next.arrivalRecoveryV111)||next.arrivalRecoveryV111.ownerCreatedAt!==save.createdAt))return false;
@@ -498,7 +499,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
       const receipt=next.arrivalRecoveryV111.receipt;
       if(receipt.originalCheckpointJson!==JSON.stringify(progressRef.current.locationV77)||receipt.originalLedgersJson!==JSON.stringify(homeworldArrivalRecoveryLedgersV111(durable))||JSON.stringify(receipt.restoredCheckpoint)!==JSON.stringify(locationV77))return false;
     }
-    const saved = adjutantPrologue ? onAdjutantAppointment?.(durable, adjutantPrologue) : persistProgress(durable, townBell, rival);
+    const saved = adjutantPrologue ? onAdjutantAppointment?.(durable, adjutantPrologue) : persistProgress(durable, townBell, workshopTrial);
     if (!saved) return false;
     progressRef.current = durable;
     if(archiveContinuationV111){continuationDraftRefV111.current=archiveContinuationV111;setContinuationViewV111(archiveContinuationV111);}
@@ -979,17 +980,18 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     onNotify(note);
   }, [clearInputs, onNotify, onProgress, save.createdAt]);
 
-  const startRivalRace = useCallback(() => {
+  const startWorkshopTrialO6 = useCallback(() => {
     const current = saveRef.current;
     const here = actorRef.current;
     const location = createHomeworldCheckpointV77(current.createdAt, levelRefV77.current, here, interiorRef.current?.buildingId ?? null, exteriorAnchorRef.current);
-    const rival = beginRivalRaceO6(current, location);
-    if (!rival) return;
+    const trial = littleTrailCanStartO6(current) ? beginLittleTrailO6(current, location) : beginRivalRaceO6(current, location);
+    if (!trial) return;
     clearInputs();
     const stopped = { ...here, vx: 0, vy: 0 };
     actorRef.current = stopped;
     setActor(stopped);
-    if (!onProgress(progressRef.current, undefined, undefined, rival)) onNotify("Le défi de Harek n’a pas été sauvegardé. Réessaie près de lui.");
+    if (!onProgress(progressRef.current, undefined, undefined, trial))
+      onNotify("Le départ depuis les Forges n’a pas été sauvegardé. Réessaie au même poste.");
   }, [clearInputs, onNotify, onProgress]);
 
   const interact = useCallback(() => {
@@ -999,7 +1001,8 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     if(cartographyWritePausedRefV104.current||cartographyWritePausedRefV105.current||archiveWritePausedRefV106.current||comparisonWritePausedRefV107.current||cargoWritePausedRefV108.current||plaqueWritePausedRefV109.current)return;
     const townOrder = townBellActionAtO6(saveRef.current, levelRefV77.current, actorRef.current, room?.buildingId ?? null);
     if (townOrder) { submitTownBellO6(townOrder); return; }
-    if (atRivalWorkshopO6(levelRefV77.current, actorRef.current, room?.buildingId ?? null) && rivalRaceCanStartO6(saveRef.current)) { startRivalRace(); return; }
+    if (atRivalWorkshopO6(levelRefV77.current, actorRef.current, room?.buildingId ?? null) &&
+        (rivalRaceCanStartO6(saveRef.current) || littleTrailCanStartO6(saveRef.current))) { startWorkshopTrialO6(); return; }
     const city = progressRef.current.youthCityErrandV172;
     const activeCity = youthWelcome && city?.ownerCreatedAt === saveRef.current.createdAt ? city : undefined;
     const placeAction = youthCityPlaceActionM003(activeCity, levelRefV77.current, actorRef.current, room);
@@ -1137,7 +1140,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     }
     if (!youthWelcome && point.kind === "evidence" && point.evidenceId) message = persistAction({ type: "inspect", evidenceId: point.evidenceId }).message;
     setDialog({ point, message });
-  }, [clearInputs, enterInterior, exitInterior, persistAction, residentContextV110, youthWelcome, submitTownBellO6, startRivalRace, submitCoordinationM028,submitHomeworldAdjutantM029,openCntlipV77,updateLiftStationV83,interruptCartographyV104,cartographyContextV104,cartographyContextV105,interruptCartographyV105,openObservationV105,archiveContextV106,submitArchiveV106,interruptArchiveV106,onProgress,archiveWriteRefusedV106,comparisonContextV107,submitComparisonV107,interruptComparisonV107,comparisonWriteRefusedV107,cargoContextV108,submitCargoV108,interruptCargoV108,cargoWriteRefusedV108,plaqueContextV109,submitPlaqueV109,submitEffectivePlaqueV111,interruptPlaqueV109,plaqueWriteRefusedV109]);
+  }, [clearInputs, enterInterior, exitInterior, persistAction, residentContextV110, youthWelcome, submitTownBellO6, startWorkshopTrialO6, submitCoordinationM028,submitHomeworldAdjutantM029,openCntlipV77,updateLiftStationV83,interruptCartographyV104,cartographyContextV104,cartographyContextV105,interruptCartographyV105,openObservationV105,archiveContextV106,submitArchiveV106,interruptArchiveV106,onProgress,archiveWriteRefusedV106,comparisonContextV107,submitComparisonV107,interruptComparisonV107,comparisonWriteRefusedV107,cargoContextV108,submitCargoV108,interruptCargoV108,cargoWriteRefusedV108,plaqueContextV109,submitPlaqueV109,submitEffectivePlaqueV111,interruptPlaqueV109,plaqueWriteRefusedV109]);
 
   useEffect(() => {
     const element = viewportRef.current;
@@ -1727,10 +1730,13 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   const townBellAtRegroup = townBellActions.includes("postpone") && townBellAtSiteO6("postpone", levelIdV77, actor, interiorId);
   const townBellTarget = townBellActions[0] && townBellSiteO6(townBellActions[0]);
   const rivalRaceAvailable = rivalRaceCanStartO6(save);
-  const rivalRaceAtPost = rivalRaceAvailable && !transitV77 && !skiffV77 && atRivalWorkshopO6(levelIdV77, actor, interiorId);
-  const rivalPost = rivalRaceAvailable && !interiorId && levelIdV77 === RIVAL_WORKSHOP_O6.levelId
+  const littleTrailAvailable = littleTrailCanStartO6(save);
+  const workshopAtPost = (rivalRaceAvailable || littleTrailAvailable) && !transitV77 && !skiffV77 &&
+    atRivalWorkshopO6(levelIdV77, actor, interiorId);
+  const workshopPost = (rivalRaceAvailable || littleTrailAvailable) && !interiorId && levelIdV77 === RIVAL_WORKSHOP_O6.levelId
     ? projectHomeworldWorldV77(RIVAL_WORKSHOP_O6.point, levelIdV77) : null;
-  const interactionLabel = (townBellAction ? TOWN_BELL_LABELS_O6[townBellAction] : rivalRaceAtPost ? "Rejoindre Harek sur les toits" : undefined) ??
+  const workshopLabel = workshopAtPost ? (littleTrailAvailable ? "Suivre Saar à la lisière" : "Rejoindre Harek sur les toits") : undefined;
+  const interactionLabel = (townBellAction ? TOWN_BELL_LABELS_O6[townBellAction] : workshopLabel) ??
     youthCityPlaceAction?.label ?? saarMark?.label ?? streetAction?.label ?? (nearbyPlaqueActionV109?nearbyPlaqueActionV109.label:nearbyPlaqueHostV109?'Archiviste · plaque K-17':nearbyCargoActionV108?nearbyCargoActionV108.label:nearbyCargoHostV108?'Intendante · répartir les lots':nearbyComparisonActionV107?nearbyComparisonActionV107.label:nearbyComparisonHostV107?'Archiviste · preuve située':nearbyArchiveActionV106?nearbyArchiveActionV106.label:nearbyArchivistV106?'Archiviste · dossiers séparés':nearbyConnectorV77 ? connectorLabelV83 : indoorTarget?.kind === "exit" ? "Sortir vers la cité" : atCoordinationGateM028 ? coordinationPromptM028 : atAdjutantWorkshopM029 ? "Poser le relais du convoi" : highPointAvailableV105&&progress.cartographyV105?.receipt?.phase==='observing'?'Comparer les repères du viaduc':nearbyCntlipHostV77?`Halte · ${nearbyCntlipHostV77.name}` : nearbyCartographerV104?'Cartographe · liaison du port':nearestDoor ? `Entrer · ${nearestDoor.label}` : nearest?.label ?? (nearbyResidentV68 ? `Parler · ${nearbyResidentV68.role}` : nearbyStreetContactV100?`Parler · ${nearbyStreetContactV100.role}`:null));
   const heroPlacement = !youthWelcome && heroPlate.status === "custom-modular-body"
     ? homeworldModularPlacementV64(save.appearance.bodyMorphId, save.appearance.headStyleId)
@@ -1763,10 +1769,12 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
           : <HomeworldWorldSceneV77 archivistActiveV111={!!dialog?.archivePlaqueV109&&dialog.archivePlaqueV109.owner===save.createdAt&&nearbyPlaqueHostV109} archivistPausedV111={archivistPausedV111} archivistSequenceV111={archivistSequenceV111} archivePlaqueV109={progress.visitedDistrictIds.includes('port')&&motionAssetsV74.ready?plaqueEffectiveViewV111:undefined} cargoV108={cargoViewV108} comparisonV107={comparisonViewV107} archiveV106={archiveViewV106} archiveActiveV106={nearbyArchivistV106} actor={actor} levelId={levelIdV77} camera={camera} seconds={phase} activeDoorId={activeDoorId} activePointId={nearest?.id ?? null} activeCartographyV104={nearbyCartographerV104} cartographyHighPointV105={cartographyActiveV105(progress.cartographyV105)} activeStreetContactV100={!nearbyConnectorV77&&!nearestDoor&&!nearest&&!nearbyCntlipHostV77&&!nearbyCartographerV104?nearbyStreetContactV100?.id:null} youthWelcome={youthWelcome} skiffActive={!!skiffV77} reducedMotion={reducedMotionV77} transit={transitV77} liftStateV83={liftSessionOwnerV83 === save.createdAt ? liftStateV83 : null} />}
         {!transitV77 && !skiffV77 && townBellActions.length > 0 && <HomeworldTownBellO6 save={save} actor={actor} level={levelIdV77}
           interiorId={interiorId} elevation={elevationV77} seconds={phase} reducedMotion={reducedMotionV77} />}
-        {rivalPost && <div className={styles.saarGuideM003} data-o6-rival-host style={{ left: rivalPost.x, top: rivalPost.y,
+        {workshopPost && <div className={styles.saarGuideM003} data-o6-rival-host={rivalRaceAvailable || undefined}
+          data-o6-little-trail-host={littleTrailAvailable || undefined} style={{ left: workshopPost.x, top: workshopPost.y,
           zIndex: homeworldSceneDepthV78(RIVAL_WORKSHOP_O6.point.y, elevationV77) }}>
-          <HomeworldCivilianV72 npcId="harek" role="apprentice" height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} />
-          <span>Harek</span>
+          <HomeworldCivilianV72 npcId={littleTrailAvailable ? "saar" : "harek"} role={littleTrailAvailable ? "instructor" : "apprentice"}
+            height={littleTrailAvailable ? 108 : HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} />
+          <span>{littleTrailAvailable ? "Saar" : "Harek"}</span>
         </div>}
         {streetInView && streetJunction && streetSignal && <>
           <div className={styles.saarGuideM003} data-r2-m003-companion="yena"
@@ -1821,7 +1829,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
         {HOMEWORLD_DISTRICTS_V77.filter(entry => entry.levelId === levelIdV77).map(entry => <i key={entry.id} className={styles.mapDistrict} data-visited={progress.visitedDistrictIds.includes(entry.id)} style={{ left: `${entry.x / HOMEWORLD_WORLD_V77.width * 100}%`, top: `${entry.y / HOMEWORLD_WORLD_V77.height * 100}%`, width: `${entry.width / HOMEWORLD_WORLD_V77.width * 100}%`, height: `${entry.height / HOMEWORLD_WORLD_V77.height * 100}%` }} />)}
         <i className={styles.mapActor} style={{ left: `${actor.x / HOMEWORLD_WORLD_V77.width * 100}%`, top: `${actor.y / HOMEWORLD_WORLD_V77.height * 100}%` }} />
       </div>}
-      {interactionLabel && !blocked && <button className={styles.prompt} type="button" onClick={interact} data-homeworld-door-id={townBellAction || rivalRaceAtPost || saarMark || youthCityPlaceAction || streetAction ? undefined : nearestDoor?.id} data-o6-town-action={townBellAction} data-o6-rival-admission={rivalRaceAtPost || undefined} data-homeworld-saar-action={saarMark ? true : undefined} data-r2-m003-street-action={streetAction?.kind} data-r2-m003-place={youthCityPlaceAction?.kind} data-homeworld-interior-target={indoorTarget?.kind}><kbd>{controlActionShortcut("hunt.interact", bindings)} / A</kbd>{!townBellAction && !rivalRaceAtPost && youthWelcome && nearest?.kind === "ship" && !nearestDoor ? "Quais du clan" : interactionLabel}</button>}
+      {interactionLabel && !blocked && <button className={styles.prompt} type="button" onClick={interact} data-homeworld-door-id={townBellAction || workshopAtPost || saarMark || youthCityPlaceAction || streetAction ? undefined : nearestDoor?.id} data-o6-town-action={townBellAction} data-o6-rival-admission={workshopAtPost && rivalRaceAvailable || undefined} data-o6-little-trail-admission={workshopAtPost && littleTrailAvailable || undefined} data-homeworld-saar-action={saarMark ? true : undefined} data-r2-m003-street-action={streetAction?.kind} data-r2-m003-place={youthCityPlaceAction?.kind} data-homeworld-interior-target={indoorTarget?.kind}><kbd>{controlActionShortcut("hunt.interact", bindings)} / A</kbd>{!townBellAction && !workshopAtPost && youthWelcome && nearest?.kind === "ship" && !nearestDoor ? "Quais du clan" : interactionLabel}</button>}
       {cntlipV77.effects.peripheralOpacity>0&&<div aria-hidden="true" data-cntlip-sensory-v77={cntlipV77.ledger.state.activeDoses}
         style={{position:'absolute',inset:0,pointerEvents:'none',zIndex:4,opacity:cntlipV77.effects.peripheralOpacity,background:'radial-gradient(ellipse at center,transparent 38%,#96714b 100%)'}}/>}
       {!motionAssetsV74.ready && <div className={styles.pause} data-homeworld-motion-loading-v74 role={motionAssetsV74.error ? "alert" : "status"} aria-live="polite">
@@ -1876,9 +1884,9 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
       {save.originV151?.townBellO6?.carriesPiece && <span>Pièce de livraison portée.</span>}
       {townBellAtRegroup && <button type="button" disabled={blocked} onClick={() => submitTownBellO6("postpone")}>{TOWN_BELL_LABELS_O6.postpone}</button>}
     </section>}
-    {!dialog && rivalRaceAvailable && <section className={styles.youthHudV64} aria-label="Le pari du rival">
-      <strong>Le pari du rival</strong>
-      <p>Retrouve Harek dans la rue des Forges Profondes{rivalPost ? ` · ${youthCityStreetBearingM003(actor, RIVAL_WORKSHOP_O6.point)}` : ""}.</p>
+    {!dialog && (rivalRaceAvailable || littleTrailAvailable) && <section className={styles.youthHudV64} aria-label={littleTrailAvailable ? "La petite piste" : "Le pari du rival"}>
+      <strong>{littleTrailAvailable ? "La petite piste" : "Le pari du rival"}</strong>
+      <p>Retrouve {littleTrailAvailable ? "Saar" : "Harek"} dans la rue des Forges Profondes{workshopPost ? ` · ${youthCityStreetBearingM003(actor, RIVAL_WORKSHOP_O6.point)}` : ""}.</p>
     </section>}
     {!dialog && nextRouteM034 && (
       <HomeworldRouteJournalM034 route={nextRouteM034} disabled={blocked} onGuide={requestLandmarkV75} />

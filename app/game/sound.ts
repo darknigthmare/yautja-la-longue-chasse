@@ -65,6 +65,7 @@ export type GameSfxId =
   | "enemy-alert"
   | "objective"
   | "ceremony-rack"
+  | "ceremony-cohort-response"
   | "hit"
   | "trophy"
   | "field-work"
@@ -548,6 +549,9 @@ export class GameAudio {
       case "ceremony-rack":
         this.ceremonyRack();
         break;
+      case "ceremony-cohort-response":
+        this.ceremonyCohortResponse();
+        break;
       case "hit":
         this.hit();
         break;
@@ -780,6 +784,19 @@ export class GameAudio {
     this.noise({ at: now + .08, duration: .45, gain: .045,
       filterType: "lowpass", filterFrequency: 460, endFilterFrequency: 120 });
     this.tone(70, { at: now + .50, endFrequency: 49, duration: .14, gain: .04, type: "triangle" });
+  }
+
+  private ceremonyCohortResponse(): void {
+    if (this.fileAudio.playSfx("ceremony-cohort-response")) return;
+    const now = this.readyTime();
+    if (now === null) return;
+
+    [93, 111, 81].forEach((frequency, index) => {
+      this.tone(frequency, {
+        at: now + [0, .125, .425][index], endFrequency: frequency * .75,
+        duration: .48, gain: .038, type: "triangle", filterFrequency: 750,
+      });
+    });
   }
 
   objective(): void {
@@ -1025,6 +1042,20 @@ export class GameAudio {
     this.tone(312, { at: now, duration: .72, gain: .05, type: "sine" });
     this.tone(703, { at: now, duration: .42, gain: .023, type: "sine" });
     this.tone(1_014, { at: now + .011, duration: .25, gain: .012, type: "sine" });
+  }
+
+  /** Local clue: two stone transients or one longer scrape on dry bark. */
+  littleTrailCueO6(cue: "pebble" | "rub"): void {
+    const now = this.readyTime();
+    if (now === null) return;
+    if (cue === "pebble") {
+      this.noise({ at: now, duration: .037, gain: .06, filterType: "bandpass", filterFrequency: 2_450 });
+      this.tone(780, { at: now, duration: .08, gain: .025, type: "triangle" });
+      this.noise({ at: now + .115, duration: .048, gain: .041, filterType: "bandpass", filterFrequency: 1_860 });
+      return;
+    }
+    this.noise({ at: now, duration: .3, gain: .094, filterType: "bandpass", filterFrequency: 780 });
+    this.noise({ at: now + .12, duration: .25, gain: .054, filterType: "lowpass", filterFrequency: 420 });
   }
 
   trophy(): void {

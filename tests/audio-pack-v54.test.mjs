@@ -38,6 +38,7 @@ test("V54 delivered audio decodes as bounded PCM with exact source and manifest 
   assert.deepEqual(recorded.filter(source => !v54Files.has(source.file)), [
     { category: "sfx", id: "armor-repair", file: "/audio/sfx/armor-repair/berceau.wav" },
     { category: "sfx", id: "ceremony-rack", file: "/audio/sfx/ceremony-rack/threshold-metal.wav" },
+    { category: "sfx", id: "ceremony-cohort-response", file: "/audio/sfx/ceremony-cohort-response/cohort-response.wav" },
     // V173 surface ambiences and the menu theme (#188) are original non-V54 deliveries.
     { category: "ambience", id: "jungle", file: "/audio/ambience/jungle/surface-v173.ogg" },
     { category: "ambience", id: "ice", file: "/audio/ambience/ice/surface-v173.ogg" },

@@ -139,7 +139,10 @@ function playCeremony(p) {
     assert.equal(game.nextCohortGestureV175(p.view()).name, name);
     p.act("cohort-gesture");
     assert.equal(game.nextCohortStowV175(p.view()).name, name);
+    const previewStow = () => game.actChildhoodV175(p.read(), p.read().homeworld.childhoodV175, "cohort-stow", post);
+    assert.equal(previewStow().cue, "ceremony-cohort-response");
     p.act("cohort-stow");
+    assert.equal(previewStow().cue, undefined);
   }
   walk(p, 4);
   const previewInteraction = () => game.actChildhoodV175(p.read(), p.read().homeworld.childhoodV175, "use", post);

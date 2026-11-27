@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "5c464a605d2e2d4cc552a98503e5f9e559758a2fbb49efe296a665ab99339253",
+  "version": "4d38e7111350e58c00a67fa377a5efe4eea8b71305d1ccb80f1d19b1f84ccc98",
   "entries": [
     {
       "id": "ui",
@@ -285,6 +285,20 @@
           "mime": "audio/wav",
           "bytes": 52082,
           "sha256": "6f01cdf4a4b69e330904dac05efd18a96a7f83e4fe8a581120673f2f4c330767"
+        }
+      ],
+      "fallback": "procedural"
+    },
+    {
+      "id": "ceremony-cohort-response",
+      "category": "sfx",
+      "folder": "sfx/ceremony-cohort-response",
+      "sources": [
+        {
+          "url": "/audio/sfx/ceremony-cohort-response/cohort-response.wav?v=58736e8a659cf8fe",
+          "mime": "audio/wav",
+          "bytes": 62666,
+          "sha256": "58736e8a659cf8fed348d95d8e7830aff92c02cb550ae3366d15259b1a1de97c"
         }
       ],
       "fallback": "procedural"
