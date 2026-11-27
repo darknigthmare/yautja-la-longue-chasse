@@ -57,7 +57,7 @@ jobs:
         run: node scripts/materialize-asset-raccords-20261120.mjs hunt-runtime
       - name: Lint and test the authored canopy mechanics
         run: |
-          node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/systems/canopyTraversalV112.ts app/game/systems/canopyNavigationV112.ts app/game/HuntCanopyHudV112.tsx scripts/qa-oseris-trophy-return-20261128.mjs tests/browser/canopy-load-oseris-20261127.fixture.jsx
+          node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/systems/canopyTraversalV112.ts app/game/systems/canopyNavigationV112.ts app/game/HuntCanopyHudV112.tsx scripts/qa-oseris-trophy-return-20261128.mjs tests/browser/oseris-trophy-return-20261128.fixture.jsx
           node --test tests/canopy-traversal-v112.test.mjs tests/hunt-canopy-runtime-v112.test.mjs
       - name: Play the loaded Oseris-IV route and restore from disk
         run: node scripts/qa-oseris-trophy-return-20261128.mjs
