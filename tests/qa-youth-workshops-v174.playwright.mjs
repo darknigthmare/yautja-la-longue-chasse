@@ -187,10 +187,19 @@ const tick = (state: YouthState, input: YouthInput) => api.stepYouthTraining(sta
   assert.equal(await canvas.getAttribute("data-youth-phase"), "barracks");
   async function walk(target) {
     await canvas.focus();
-    const key = await position() <= target ? "ArrowRight" : "ArrowLeft";
+    const initial = await position();
+    if (Math.abs(initial - target) <= 10) return;
+    const forward = initial < target;
+    const key = forward ? "ArrowRight" : "ArrowLeft";
     await page.keyboard.down(key);
-    await page.waitForFunction(want => Math.abs(Number(document.querySelector("canvas[data-youth-stage]").dataset.youthPositions.split(",")[0]) - want) <= 10, target);
-    await page.keyboard.up(key);
+    try {
+      await page.waitForFunction(({ want, forward }) => {
+        const x = Number(document.querySelector("canvas[data-youth-stage]").dataset.youthPositions.split(",")[0]);
+        return forward ? x >= want - 8 : x <= want + 8;
+      }, { want: target, forward }, { timeout: 8000 });
+    } finally {
+      await page.keyboard.up(key);
+    }
   }
   const press = async key => {
     await page.keyboard.press(key, { delay: 82 });
