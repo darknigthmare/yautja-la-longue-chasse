@@ -61,17 +61,36 @@ function welcome() {
   save.homeworld.greetedNpcIds = ["hunt-king", "terrace-instructor"];
   return save;
 }
-function route() {
-  let state = p.createYouthTraining(); const transitions = [], phases = {};
-  for (let i = 0; i < 20000 && state.phase !== "morning"; i++) {
+function route(initial = p.createYouthTraining(), stop = "morning") {
+  let state = initial; const transitions = [], phases = {};
+  for (let i = 0; i < 20000 && state.phase !== stop; i++) {
     const before = state, out = p.stepYouthTraining(state, play(state), env); state = out.state;
     if (!phases[state.phase]) phases[state.phase] = state;
     assert(p.normalizeYouthTraining(state), `${state.phase}:${state.tick}`);
     if (out.receipts.length) transitions.push({ before, state, receipts: out.receipts });
   }
-  assert.equal(state.phase, "morning"); assert.equal(transitions.length, 6); return { transitions, phases, state };
+  assert.equal(state.phase, stop); return { transitions, phases, state };
 }
 const path = route();
+assert.equal(path.transitions.length, 6);
+
+export function youthBarracksFromSave(started) {
+  assert.equal(started?.youthTraining?.checkpoint.phase, "dojo-move");
+  let save = started;
+  const routeToBarracks = route(save.youthTraining.checkpoint, "barracks");
+  let state = routeToBarracks.state;
+  for (const transition of routeToBarracks.transitions) {
+    save = p.withYouthProgress(save, transition.receipts, transition.state, started.youthTraining.startedAt);
+    assert(save);
+  }
+  for (let tick = 0; tick < 300 && Math.abs(state.player.x - 112) > 8; tick++) {
+    state = p.stepYouthTraining(state, { move: dir(112 - state.player.x) }, env).state;
+  }
+  assert(Math.abs(state.player.x - 112) <= 8);
+  const ready = p.withYouthCheckpoint(save, state);
+  assert(ready);
+  return ready;
+}
 const start = () => p.startYouthCampaign(welcome(), owner);
 function until(index) { let save = start(); for (const transition of path.transitions.slice(0, index)) { save = p.withYouthProgress(save, transition.receipts, transition.state, now); assert(save); } return save; }
 function store(save = start()) {
