@@ -19,6 +19,7 @@ import OriginEndingPanelV170, { type OriginEndingActionV170 } from "./OriginEndi
 import { confirmEndingV170, examineEndingV170 } from "./systems/originEndingsV170";
 import { applyTrainingYardO6, type TrainingYardOrderO6 } from "./systems/originTrainingYardO6";
 import { applyContinuationO6, isContinuationOrderO6, type ContinuationOrderO6 } from "./systems/originContinuationO6";
+import { applySoloReturnO6, isSoloReturnOrderO6, type SoloReturnOrderO6 } from "./systems/originSoloReturnO6";
 import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
 import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -3346,7 +3347,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       !canEnterHomeworldRegionV68(current, state.regionId).allowed || !canAdvanceHomeworldRegionV68(current.homeworldRegionV68, state)) return false;
     return persistSocialProgress({ homeworldRegionV68: state, ...settleResidenceLifeForRegionV150(current, state) });
   }, [entry.ownerCreatedAt, persistSocialProgress, settleResidenceLifeForRegionV150]);
-  const setupTrainingYardO6 = useCallback((order: TrainingYardOrderO6 | ContinuationOrderO6, region: HomeworldRegionStateV68): boolean => {
+  const setupTrainingYardO6 = useCallback((order: TrainingYardOrderO6 | ContinuationOrderO6 | SoloReturnOrderO6, region: HomeworldRegionStateV68): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "homeworld-region-v68" ||
         settingsOpen || archiveRecoveryIssue || archiveTransferBusy || campaignSaveBusy || !gameFocusedV89 ||
@@ -3355,8 +3356,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const origin = originOfSaveV151(current.originV151);
     const context = { rankId: current.profile.rankId,
       regionAllowed: (regionId: string) => canEnterHomeworldRegionV68(current, regionId).allowed };
-    const next = isContinuationOrderO6(order)
-      ? applyContinuationO6(current, origin, region, context, order)?.origin
+    const next = isSoloReturnOrderO6(order) ? applySoloReturnO6(current, region, order)
+      : isContinuationOrderO6(order) ? applyContinuationO6(current, origin, region, context, order)?.origin
       : applyTrainingYardO6(origin, current.residenceV149, region, context, order);
     return !!next && persistSocialProgress({ originV151: next, homeworldRegionV68: region,
       ...settleResidenceLifeForRegionV150(current, region) });
