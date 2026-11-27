@@ -2420,7 +2420,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!elderRiteAvailable()) return { ok: false, message: "Rouvre le dossier lorsque la campagne sera disponible." };
     const result = commitElderAssembly(saveRef.current, command);
     if (!result.ok) return result;
-    if (!persistSocialProgress({ elderAssemblyV168: result.state })) {
+    if (!persistSocialProgress({ elderAssemblyV168: result.state, ...(result.prologue ? { prologue: result.prologue } : {}) })) {
       return { ok: false, message: "Inscription en attente. Vérifie la sauvegarde puis reprends l’action." };
     }
     return { ok: true, message: result.message };
@@ -3181,7 +3181,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const recruitment = action.type === 'recruit' && result.changed
       ? registerCompanionResidenceRecruitment(current, { ...current, clanShipOperations: result.state }, action.npcId) : null;
     if (recruitment && !recruitment.accepted) { setToast(recruitment.message); return false; }
+    if (result.ancientChronicle && !current.prologue) return false;
     if (result.changed && !persistSocialProgress({ clanShipOperations: result.state,
+      ...(result.ancientChronicle && current.prologue ? { prologue: { ...current.prologue, chronicle: result.ancientChronicle } } : {}),
       ...(reward > 0 ? { profile: { ...current.profile, clanMarks: current.profile.clanMarks + reward } } : {}),
       ...(recruitment?.changed ? { companionResidence: recruitment.state } : {}),
     })) {

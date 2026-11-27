@@ -26,7 +26,7 @@ import OserisReturnR2M053Panel from './OserisReturnR2M053Panel';
 import SuccessorTrialR2M054Panel from './SuccessorTrialR2M054Panel';
 import LongMemoryR2M055Panel from './LongMemoryR2M055Panel';
 import AncientHearingR2M056Panel from './AncientHearingR2M056Panel';
-import { ANCIENT_HEARING_AUDIENCE, ancientHearingView, hasLongMemoryHandover } from './systems/ancientHearingR2M056';
+import { ANCIENT_HEARING_AUDIENCE, ancientHearingView, hasElderChronicleRank, hasLongMemoryHandover } from './systems/ancientHearingR2M056';
 import WarCommandIntroR2M036Panel from './WarCommandIntroR2M036Panel';
 import { MEMORY_LABELS, longMemoryEvidence, longMemoryView } from './systems/longMemoryR2M055';
 import { SUCCESSOR_OUTCOMES, successorTrialPlan, successorTrialView } from './systems/successorTrialR2M054';
@@ -246,6 +246,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
           </section>)}
         {tab === 'ancient-hearing' && hearingAvailable && memory && <AncientHearingR2M056Panel
           state={state.ancientHearing} roomId={roomId} evidence={memory} armorerPresent={armorerAtWorkshop}
+          narrativeElder={hasElderChronicleRank(save.prologue?.chronicle)}
           disabled={suspended || activeContract !== null}
           onOrder={order => { act({ type: 'ancient-hearing', order, expectedRevision: state.revision }); }} onNavigate={route} />}
         {tab === 'long-memory' && memory && <LongMemoryR2M055Panel

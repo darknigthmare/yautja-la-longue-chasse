@@ -66,13 +66,15 @@ import { inspectFirstInterstellarV173, firstInterstellarInFlightV173 } from "./s
 import { shipReceiptV161 } from "./systems/shipReceiptV161";
 import { inspectClanShipDocking } from "./systems/clanShipDocking";
 import { evaluateClanShipAccess, evaluateClanShipOperationsCampaign, inspectClanShipOperations } from "./systems/clanShipOperations";
+import { ancientHearingNeedsNarrativeElder, ancientHearingRecognized, ancientHearingSaveSuccessor } from "./systems/ancientHearingR2M056";
+import { seniorRiteMatchesRecord } from "./systems/elderNarrativeRank";
 import { clanHullProjectMatchesOwnedHull, inspectClanHullProject, isClanHullProjectSuccessor } from "./systems/clanHullProjectV171";
 import { inspectQuatzaRij, isQuatzaRijSuccessor, quatzaCampaignMatchesSave } from "./systems/quatzaRij";
 import { inspectWolfCastleVisit } from "./systems/wolfCastle";
 import { inspectBuriedCradleCampaign } from "./systems/buriedCradleCampaign";
 import { inspectElderPassageJudgment } from "./systems/elderPassageJudgmentV168";
 import { inspectElderMentoring, isElderMentoringSuccessor } from "./systems/elderMentoringV168";
-import { inspectElderAssembly, isElderAssemblySuccessor } from "./systems/elderAssemblyV168";
+import { elderReliefRecorded, inspectElderAssembly, isElderAssemblySuccessor } from "./systems/elderAssemblyV168";
 import { canWorkWithClanArmorerV172, hasElderWorkshopFoundationV172, inspectElderWorkshopV172, isElderWorkshopSuccessorV172 } from "./systems/elderWorkshopV172";
 import { inspectEliteMastery, isEliteMasterySuccessor } from "./systems/eliteMasteryV170";
 import { inspectCompanionResidence, evaluateCompanionResidenceCampaign } from "./systems/companionResidence";
@@ -2117,6 +2119,16 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (playedWarp && (shipReceiptV161(save).receipt?.instanceId !== playedWarp.hullInstanceId ||
       adjutant?.phase !== "appointed")) return { save: null, failure: "invalid-save" };
   if (chronicleWarp !== verifiedWarp) return { save: null, failure: "invalid-save" };
+  const elderReliefVerified = elderReliefRecorded(save);
+  const seniorAssemblyChronicle = save.prologue?.chronicle;
+  const ancientHearing = save.clanShipOperations?.ancientHearing;
+  const ancientRecognitionVerified = ancientHearingRecognized(ancientHearing);
+  if ((save.elderAssemblyV168?.generationHandover && !elderReliefVerified) ||
+      (ancientHearing && ancientHearingNeedsNarrativeElder(ancientHearing) && !elderReliefVerified) ||
+      !seniorRiteMatchesRecord(seniorAssemblyChronicle, "elder-recognition", elderReliefVerified) ||
+      !seniorRiteMatchesRecord(seniorAssemblyChronicle, "ancient-recognition", ancientRecognitionVerified)) {
+    return { save: null, failure: "invalid-save" };
+  }
   if ((selectedAdjutant != null && (!adjutant || bloodedTemple.view.stage !== "complete")) ||
       !homeworldAdjutantMatchesSaveM029(save) ||
       !youthCampaignMatchesSave(value, {
@@ -2126,6 +2138,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
         adjutantVerified: adjutant?.phase === "appointed",
         warpVerified: verifiedWarp,
         eliteRecognitionVerified: eliteRecognition.state?.recognized === true,
+        elderReliefVerified,
+        ancientRecognitionVerified,
       })) return { save: null, failure: "invalid-save" };
   if (m037.state && !conquestMatchesCampaignR2M037(save, m037.state)) return { save: null, failure: "invalid-save" };
   if (save.originV151?.trainingYardO6 && Object.keys(save.originV151.trainingYardO6.houses).some(houseId =>
@@ -2329,6 +2343,9 @@ function persistCampaign(
         ? !requestedMentoring || (JSON.stringify(previousMentoring) !== JSON.stringify(requestedMentoring) &&
           !isElderMentoringSuccessor(previousMentoring, requestedMentoring))
         : requestedMentoring && requestedMentoring.revision !== 1) {
+        return failed("save-conflict", previous);
+      }
+      if (!ancientHearingSaveSuccessor(previous.clanShipOperations?.ancientHearing, requested.clanShipOperations?.ancientHearing)) {
         return failed("save-conflict", previous);
       }
       const previousAssembly = previous.elderAssemblyV168;
