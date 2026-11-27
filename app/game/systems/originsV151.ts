@@ -28,6 +28,8 @@
  */
 import source from "../data/originsV151.json" with { type: "json" };
 import { residenceAccessV149, type ResidenceContextV149, type ResidenceStateV149 } from "./residenceV149";
+import { normalizeTrainingYardO6, type TrainingYardRecordO6 } from "./originTrainingYardO6";
+import { normalizeContinuationO6, type ContinuationRecordO6 } from "./originContinuationO6";
 
 export const ORIGIN_IDS_V151 = ["O1", "O2", "O3", "O4", "O5", "O6"] as const;
 export type OriginIdV151 = (typeof ORIGIN_IDS_V151)[number];
@@ -144,6 +146,8 @@ export interface OriginStateV151 {
    * Clé additive : absente tant que la sélection n'a pas été visitée.
    */
   ending?: OriginEndingStateV151;
+  trainingYardO6?: TrainingYardRecordO6;
+  continuationO6?: ContinuationRecordO6;
 }
 /** V170 : Ox-M29 « Enregistrer la visite de sélection séparément de sa réussite » ; écrit une fois. */
 export interface OriginEndingStateV151 {
@@ -160,7 +164,9 @@ export interface OriginEndingStateV151 {
 const isRecord = (v: unknown): v is Record<string, unknown> => typeof v === "object" && v !== null && !Array.isArray(v);
 export const isFutureOriginV151 = (raw: unknown) => isRecord(raw) && ((typeof raw.version === "number" && raw.version > 1)
   // V170: a future ending record makes the whole origin record future (never overwritten by an older game).
-  || (isRecord(raw.ending) && typeof raw.ending.version === "number" && raw.ending.version > 1));
+  || (isRecord(raw.ending) && typeof raw.ending.version === "number" && raw.ending.version > 1)
+  || (isRecord(raw.trainingYardO6) && typeof raw.trainingYardO6.version === "number" && raw.trainingYardO6.version > 1)
+  || (isRecord(raw.continuationO6) && typeof raw.continuationO6.version === "number" && raw.continuationO6.version > 2));
 /** V170 : identifiant de fin valide pour la voie (Ox-E1..Ox-E3, « Fins des six voies »). */
 export const isOriginEndingIdV151 = (originId: OriginIdV151, id: unknown): id is string =>
   typeof id === "string" && /^O[1-6]-E[1-3]$/.test(id) && id.startsWith(`${originId}-`);
@@ -211,6 +217,16 @@ export function normalizeOriginV151(raw: unknown): OriginStateV151 | null {
   }
   const ending = normalizeEnding(state.originId, raw.ending);
   if (ending) state.ending = ending;
+  if (Object.hasOwn(raw, "trainingYardO6")) {
+    const yard = normalizeTrainingYardO6(raw.trainingYardO6);
+    if (state.originId !== "O6" || !yard) return null;
+    state.trainingYardO6 = yard;
+  }
+  if (Object.hasOwn(raw, "continuationO6")) {
+    const continuation = normalizeContinuationO6(raw.continuationO6);
+    if (state.originId !== "O6" || !continuation) return null;
+    state.continuationO6 = continuation;
+  }
   if (Array.isArray(raw.consumed)) state.consumed = [...new Set(raw.consumed.filter((v): v is string => typeof v === "string"))].slice(-200);
   return state;
 }

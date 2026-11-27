@@ -1,0 +1,11 @@
+
+.panel { display: grid; gap: 0.55rem; border: 1px solid #8e7551; border-radius: 0.5rem; padding: 0.75rem; background: #241d19; }
+.panel h4, .panel p { margin: 0; }
+.plan { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0.15rem; }
+.plan:focus-visible { outline: 2px solid #fce1a9; outline-offset: 4px; }
+.plan > span { position: relative; display: grid; place-items: center; min-height: 1.45rem; border-radius: 0.2rem; color: #fbe6b4; background: #553d29; border: 1px solid #a2875f; }
+.plan > span[data-closed="true"] { background: transparent; border-color: transparent; }
+.plan > span[data-cart="true"] { background: #711e19; }
+.plan > span[data-link="true"] { background: #3d5363; }
+.plan > span[data-at="true"]::after { content: ""; position: absolute; width: 0.75rem; height: 0.75rem; border-radius: 50%; border: 2px solid #ffffff; background: #156165; }
+.controls { display: flex; flex-wrap: wrap; gap: 0.45rem; }

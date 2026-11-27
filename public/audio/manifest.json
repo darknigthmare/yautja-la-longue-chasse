@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "c5e5236b632540d530f60bd16e5bb9fc2aef4e180958636806b8c523456962b2",
+  "version": "dd62d59052d79a25217b5bd6346448869fb997d912de5cdc7316b5251bcf63f2",
   "entries": [
     {
       "id": "ui",
@@ -357,6 +357,27 @@
           "sha256": "e302f3ee18a421d1940a80a4f35bb61826c546dcade2359ad8822e38f989a35c"
         }
       ],
+      "fallback": "procedural"
+    },
+    {
+      "id": "vacuum-step",
+      "category": "sfx",
+      "folder": "sfx/vacuum-step",
+      "sources": [],
+      "fallback": "procedural"
+    },
+    {
+      "id": "vacuum-impact",
+      "category": "sfx",
+      "folder": "sfx/vacuum-impact",
+      "sources": [],
+      "fallback": "procedural"
+    },
+    {
+      "id": "vacuum-energy",
+      "category": "sfx",
+      "folder": "sfx/vacuum-energy",
+      "sources": [],
       "fallback": "procedural"
     },
     {

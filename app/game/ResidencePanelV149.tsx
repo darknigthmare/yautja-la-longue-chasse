@@ -5,6 +5,8 @@
  * `onAction`, qui ne met à jour l'écran qu'après l'écriture confirmée.
  */
 import { useState } from "react";
+import type { TrophyRecord } from "./types";
+import { trophyIntroductionMission } from "./systems/trophyIntroductionR2M038";
 import {
   RESIDENCE_HOUSES_V149, RESIDENCE_SLOTS_V149, RESIDENCE_SLOT_IDS_V149, houseMissionActionsV149,
   houseV149, normalizeResidenceV149, emptyResidenceV149, objectsInHouseV149, packedObjectsV149, residenceAccessV149,
@@ -23,12 +25,13 @@ const ACTION_LABELS: Record<ResidenceProofActionV149, string> = {
 };
 const RANK_LABELS: Record<string, string> = { unblooded: "Unblooded", "young-blood": "Young Blood", blooded: "Blooded", elite: "Elite" };
 
-export default function ResidencePanelV149({ house, residence, rankId, disabled, regionAllowed, onAction, threshold = false }: {
+export default function ResidencePanelV149({ house, residence, rankId, disabled, regionAllowed, onAction, threshold = false, displayedTrophies = [] }: {
   house: ResidenceHouseV149;
   residence: unknown;
   rankId: string;
   disabled: boolean;
   threshold?: boolean;
+  displayedTrophies?: readonly TrophyRecord[];
   regionAllowed(regionId: string): boolean;
   onAction(action: ResidenceActionV149): { ok: boolean; message: string };
 }) {
@@ -132,7 +135,12 @@ export default function ResidencePanelV149({ house, residence, rankId, disabled,
             {RESIDENCE_SLOT_IDS_V149.filter(slot => RESIDENCE_SLOTS_V149[slot].room === room).map(slot => {
               const inSlot = here.filter(object => object.location.kind === "room" && object.location.slotId === slot);
               return <li key={slot} data-residence-slot={slot}>
-                <b>{RESIDENCE_SLOTS_V149[slot].label}</b>{RESIDENCE_SLOTS_V149[slot].right === "furnish" && ` (respect ${house.respect.furnish})`} : {inSlot.length ? inSlot.map(object => object.label).join(", ") : "libre"}
+                <b>{RESIDENCE_SLOTS_V149[slot].label}</b>{RESIDENCE_SLOTS_V149[slot].right === "furnish" && ` (respect ${house.respect.furnish})`} : {inSlot.length ? inSlot.map(object => object.label).join(", ") : slot === "display" && displayedTrophies.length ? "prise exposée" : "libre"}
+                {slot === "display" && displayedTrophies.length > 0 && <ul data-residence-trophy-shelf aria-label="Étagère des prises">
+                  {displayedTrophies.map(trophy => <li key={trophy.id}>
+                    {trophy.targetName} · {trophyIntroductionMission(trophy.missionId)?.planetName}
+                  </li>)}
+                </ul>}
                 {!transfer && <span className={styles.moves}>{placeable.filter(object => object.location.kind !== "room" || object.location.slotId !== slot).map(object =>
                   <button key={object.id} disabled={disabled} data-residence-place={`${object.id}>${slot}`} onClick={() => act({ kind: "place", objectId: object.id, slotId: slot })}>Poser : {object.label}</button>)}</span>}
               </li>;

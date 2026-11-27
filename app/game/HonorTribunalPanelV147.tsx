@@ -49,7 +49,7 @@ export default function HonorTribunalPanelV147({ save, onCommit, onNotify }: Hon
   };
 
   return <section className={`${justiceStyles.group} ${styles.tribunal}`} aria-labelledby="tribunal-v147-heading" data-tribunal-v147={status.label}>
-    <p className={justiceStyles.eyebrow}>CODE D&apos;HONNEUR · TRIBUNAL DU CLAN</p>
+    <p className={justiceStyles.eyebrow}>CODE D'HONNEUR · TRIBUNAL DU CLAN</p>
     <h3 id="tribunal-v147-heading">Tribunal et sanctions</h3>
     <dl className={justiceStyles.metrics}>
       <div><dt>Statut</dt><dd>{status.label}</dd></div>
@@ -77,11 +77,11 @@ export default function HonorTribunalPanelV147({ save, onCommit, onNotify }: Hon
         <li key={step} aria-current={trial.step === step ? "step" : undefined}>{STEP_LABELS[step]}</li>)}</ol>
 
       {trial.step === "accusation" && <div className={justiceStyles.actions}>
-        <button type="button" onClick={() => perform({ type: "hear-accusation" })}>Entendre l&apos;accusation</button>
+        <button type="button" onClick={() => perform({ type: "hear-accusation" })}>Entendre l'accusation</button>
       </div>}
 
       {trial.step !== "accusation" && <div className={styles.columns}>
-        <div><h4>Pièces de l&apos;accusation</h4><ul>
+        <div><h4>Pièces de l'accusation</h4><ul>
           {accusationCaseV147(infraction).traces.map(t => <li key={t.id}>{TRACE_KIND_LABELS_V147[t.kind]} · {t.label}</li>)}
           {accusationCaseV147(infraction).witnesses.map(w => <li key={w.id}>Témoin à charge · {w.name}</li>)}
           {!accusationCaseV147(infraction).traces.length && !accusationCaseV147(infraction).witnesses.length && <li>Aucune pièce présentée.</li>}
@@ -100,21 +100,21 @@ export default function HonorTribunalPanelV147({ save, onCommit, onNotify }: Hon
       </div>}
 
       {trial.step === "defense" && <div className={justiceStyles.actions}><button type="button" onClick={() => perform({ type: "close-evidence" })}>Clore la présentation des preuves</button></div>}
-      {trial.step === "witnesses" && <div className={justiceStyles.actions}><button type="button" onClick={() => perform({ type: "close-witnesses" })}>Clore l&apos;audition des témoins</button></div>}
+      {trial.step === "witnesses" && <div className={justiceStyles.actions}><button type="button" onClick={() => perform({ type: "close-witnesses" })}>Clore l'audition des témoins</button></div>}
       {trial.step === "deliberation" && <div className={justiceStyles.actions}><button type="button" onClick={() => perform({ type: "hear-verdict" })}>Entendre le verdict</button></div>}
-      <p>Un procès bien mené (preuve d&apos;une contrainte et témoin qui confirme) peut faire descendre la peine d&apos;un cran. Une preuve contraire écarte l&apos;exil.</p>
+      <p>Un procès bien mené (preuve d'une contrainte et témoin qui confirme) peut faire descendre la peine d'un cran. Une preuve contraire écarte l'exil.</p>
     </section>}
 
     {tribunal?.reparation && <section className={justiceStyles.detention} aria-labelledby="tribunal-v147-reparation">
       <h4 id="tribunal-v147-reparation">{tribunal.reparation.kind === "imposed" ? "Épreuve imposée" : "Épreuve de réparation"}</h4>
       <p>{REPARATION_TRIAL_PLACEHOLDER_V147}</p>
       <p>Chasses terminées : {save.statistics.missionsCompleted} (au verdict : {tribunal.reparation.missionsCompletedAtSentence}).</p>
-      <button type="button" onClick={() => perform({ type: "complete-reparation" })}>Présenter l&apos;épreuve accomplie</button>
+      <button type="button" onClick={() => perform({ type: "complete-reparation" })}>Présenter l'épreuve accomplie</button>
     </section>}
 
     {tribunal?.exile && <section className={justiceStyles.detention} aria-labelledby="tribunal-v147-exile">
       <h4 id="tribunal-v147-exile">{tribunal.exile.definitive ? "Exil définitif" : "Exil · voie Bad Blood"}</h4>
-      <p>L&apos;accès à la cité et au navire de clan est fermé. Tes rangs restent écrits, mais tu ne peux plus en gagner dans le clan.</p>
+      <p>L'accès à la cité et au navire de clan est fermé. Tes rangs restent écrits, mais tu ne peux plus en gagner dans le clan.</p>
       {status.canSurrender && <button type="button" onClick={() => perform({ type: "surrender" })}>Se rendre au clan (seule seconde chance)</button>}
     </section>}
 
@@ -122,6 +122,6 @@ export default function HonorTribunalPanelV147({ save, onCommit, onNotify }: Hon
       {tribunal.verdicts.map(v => <li key={v.id}>{kindLabel(tribunal.infractions.find(i => i.id === v.infractionId)?.kind ?? "")} · {OUTCOME_LABELS[v.outcome]}{v.reduced ? " (peine descendue d'un cran)" : ""}{v.definitive ? " · définitif" : ""} · −{v.honorLost} honneur · {JUDGE_LABELS_V147[v.judge]}</li>)}
     </ul></details>}
 
-    <p className={justiceStyles.limit}>Restent à produire : l&apos;enregistrement des infractions par les chasses elles-mêmes (aucun système de jeu n&apos;en inscrit encore), les traques d&apos;Enforcers pendant les chasses de l&apos;exilé, le ralliement à la Rogue Space Tribe, et le rôle de juge du joueur au Level 8.</p>
+    <p className={justiceStyles.limit}>Restent à produire : l'enregistrement des infractions par les chasses elles-mêmes (aucun système de jeu n'en inscrit encore), les traques d'Enforcers pendant les chasses de l'exilé, le ralliement à la Rogue Space Tribe, et le rôle de juge du joueur au Level 8.</p>
   </section>;
 }

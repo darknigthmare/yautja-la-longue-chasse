@@ -724,6 +724,8 @@ export interface SaveGame {
   soloV70?: SoloV70Campaign | null;
   /** Local preparation only; never substitutes for a Blooded rite. */
   soloV90?: SoloV90Campaign | null;
+  bloodedTempleV174?: import("./systems/bloodedTempleV174").BloodedTempleV174 | null;
+  eliteRecognitionV174?: import("./systems/eliteRecognitionV174").EliteRecognitionV174 | null;
   quatzaRij?: import("./systems/quatzaRij").QuatzaRijCampaign | null;
   homeworldRegionV68?: HomeworldRegionStateV68 | null;
   /** Physical city/biome connector; separate from expedition evidence. */
@@ -750,6 +752,8 @@ export interface SaveGame {
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
   /** V146: outfits, mode outfits, clan palette, earned cosmetics, heavy wear. */
   customizationV146?: CustomizationV146 | null;
+  warNarrativeR2M035?: import("./systems/warNarrativeR2M035").WarNarrativeR2M035 | null;
+  warConquestR2M037?: import("./systems/warConquestR2M037").WarConquestR2M037 | null;
   /** V147: trophy usages (display, worn, exchange ledger, studies); written after a first usage. */
   trophyUsagesV147?: import("./systems/trophyUsagesV147").TrophyUsagesV147 | null;
   /** V147: recruited hunting hounds, bond, wounds and permanent deaths. */
@@ -762,6 +766,7 @@ export interface SaveGame {
   residenceLifeV150?: import("./systems/residenceLifeV150").ResidenceLifeV150 | null;
   /** V151 / STATE5-01: player origin O1..O6, set at character creation, plus origin transitions and relations. */
   originV151?: import("./systems/originsV151").OriginStateV151 | null;
+  legacyFinaleR2?: import("./systems/legacyFinaleR2").LegacyFinaleR2 | null;
   /** V154: residence scenes S1–S3 played (gestures, decision, material use inscribed). Absent until first used. */
   residenceScenesV154?: import("./systems/residenceScenesV154").ResidenceScenesV154 | null;
   /** V158: voie originals (owner, single location, provenance mission) and the house material reserve. Absent until first used. */

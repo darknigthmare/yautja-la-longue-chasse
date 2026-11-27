@@ -1,0 +1,12 @@
+.panel { display: grid; gap: 1rem; max-width: 78rem; padding: 1rem; color: #f4f4df; background: #1d2627; border: 1px solid #576b62; }
+.route { display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); gap: .22rem; padding: .35rem; }
+.route span { display: grid; place-items: center; min-height: 2rem; color: #e5e7bd; background: #443d33; border: 1px solid #655b48; }
+.route span:nth-child(-n+13) { background: #30394a; }
+.route span[data-ramp=true] { border-color: #c9b184; }
+.route span[data-threat=true] { background: #75362c; }
+.route span[data-trace=true] { background: #303a2c; color: #ffca90; }
+.route span[data-scout=true] { background: #465d50; }
+.route span[data-player=true] { background: #e0daa1; color: #172b26; }
+.controls { display: flex; gap: .6rem; flex-wrap: wrap; }
+.controls button { min-height: 2.65rem; }
+.panel button:focus-visible { outline: 2px solid #e5cea0; outline-offset: 2px; }

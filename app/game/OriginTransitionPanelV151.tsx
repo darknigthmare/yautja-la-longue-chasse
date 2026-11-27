@@ -34,6 +34,7 @@ export default function OriginTransitionPanelV151({ house, residence, origin, ra
         <p className={styles.meta}>Voie {state.originId} · {originV151(state.originId)?.title}{state.source === "legacy-default" && " (origine par défaut d’une ancienne partie)"}</p>
       </header>
       <p>{transition.scene}</p>
+      {state.originId === "O6" && <p>Reprends la marche pour aménager le circuit au banc latéral, au râtelier et au passage du seuil. Les droits d’aménagement de cette demeure sont requis.</p>}
       {record?.resolved ? <div className={styles.block} data-origin-resolved={record.success ? "success" : "resolved"}>
         <p><b>{transition.options[record.choice!]}</b></p>
         <p>{transition.reactions[record.choice!]}</p>

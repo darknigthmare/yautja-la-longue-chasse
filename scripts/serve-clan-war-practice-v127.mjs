@@ -262,10 +262,7 @@ export function createClanWarPracticeServer(game, {
   return createClanWarHttpServiceV127({identities, view, submit, tick: tickMatch, tickMs});
 }
 
-/** `authenticate(authorization)` may replace the token table with an async account check
- * (resolving to an identity or undefined); view, submit and tick may be async. */
-export function createClanWarHttpServiceV127({identities, view, submit, tick, tickMs, client, authenticate, allowedOrigins = []}) {
-  const origins = new Set(allowedOrigins);
+export function createClanWarHttpServiceV127({identities, view, submit, tick, tickMs, client}) {
   function identityFor(authorization) {
     const [, presented] = /^Bearer ([A-Za-z0-9_-]{43,128})$/i.exec(authorization ?? '') ?? [];
     if (!presented) return undefined;
@@ -278,18 +275,6 @@ export function createClanWarHttpServiceV127({identities, view, submit, tick, ti
     requestTimeout: 5000, headersTimeout: 5000, keepAliveTimeout: 2000, maxHeaderSize: 8192,
   }, async (request, response) => {
     try {
-      // Browsers may call the authority only from origins named by its operator.
-      const origin = request.headers.origin;
-      if (origin && origins.has(origin)) {
-        response.setHeader('Access-Control-Allow-Origin', origin);
-        response.setHeader('Vary', 'Origin');
-        if (request.method === 'OPTIONS' && (request.url === '/state' || request.url === '/order')) {
-          response.writeHead(204, {'Access-Control-Allow-Methods': 'GET, POST',
-            'Access-Control-Allow-Headers': 'Authorization, Content-Type', 'Access-Control-Max-Age': '600'});
-          response.end();
-          return;
-        }
-      }
       if (client && request.method === 'GET' && (request.url === '/' || request.url === '/client.js')) {
         const document = request.url === '/';
         response.writeHead(200, {
@@ -307,17 +292,17 @@ export function createClanWarHttpServiceV127({identities, view, submit, tick, ti
         responseJson(response, 404, {error: 'unknown-route'});
         return;
       }
-      const identity = authenticate ? await authenticate(request.headers.authorization) : identityFor(request.headers.authorization);
+      const identity = identityFor(request.headers.authorization);
       if (!identity) {
         responseJson(response, 401, {error: 'unauthorized'});
         return;
       }
       if (request.method === 'GET') {
-        responseJson(response, 200, await view(identity));
+        responseJson(response, 200, view(identity));
         return;
       }
       const parsed = await readOrder(request);
-      const {status, ...payload} = parsed.error ? parsed : await submit(identity, parsed.order);
+      const {status, ...payload} = parsed.error ? parsed : submit(identity, parsed.order);
       responseJson(response, status, payload);
     } catch {
       if (!response.destroyed) responseJson(response, 500, {error: 'practice-unavailable'});
@@ -327,12 +312,7 @@ export function createClanWarHttpServiceV127({identities, view, submit, tick, ti
   if (tick) {
     let timer;
     server.on('listening', () => {
-      let running = false;
-      timer = setInterval(() => {
-        if (running) return;
-        running = true;
-        Promise.resolve().then(tick).catch(() => {}).finally(() => { running = false; });
-      }, tickMs);
+      timer = setInterval(tick, tickMs);
       timer.unref();
     });
     server.on('close', () => clearInterval(timer));

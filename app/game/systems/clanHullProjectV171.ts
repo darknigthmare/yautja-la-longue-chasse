@@ -4,6 +4,7 @@ import { inspectClanShipDocking } from "./clanShipDocking";
 import type { ClanShipNpcId } from "./clanShipOperations";
 import { tribunalAccessV147 } from "./honorTribunalV147";
 import { shipAcquisitionOwnedHullV89 } from "./shipAcquisitionV89";
+import { inspectHullExteriorSurvey, type HullExteriorSurveyV172 } from "./clanHullExteriorV172";
 
 export type ClanHullPledgeV171 = "shared-watch" | "personal";
 export type ClanHullProjectV171 = {
@@ -14,9 +15,11 @@ export type ClanHullProjectV171 = {
   inspected: boolean;
   consultations: number;
   pledge: ClanHullPledgeV171 | null;
+  exteriorSurvey?: HullExteriorSurveyV172;
 };
 export type ClanHullProjectCommandV171 = { expectedRevision: number } & (
-  { type: "inspect" } | { type: "consult" } | { type: "pledge"; pledge: ClanHullPledgeV171 }
+  { type: "inspect" } | { type: "consult" } | { type: "pledge"; pledge: ClanHullPledgeV171 } |
+  { type: "exterior-survey"; survey: HullExteriorSurveyV172 }
 );
 export type ClanHullProjectResponseV171 = { ok: boolean; message: string };
 type Result = ({ ok: true; state: ClanHullProjectV171 } | { ok: false }) & { message: string };
@@ -45,15 +48,19 @@ export function inspectClanHullProject(raw: unknown, owner: string): Inspection 
   const invalid = { status: "invalid-save", state: null } as const;
   if (!record(raw) || !owner || raw.ownerCreatedAt !== owner) return invalid;
   if (typeof raw.version === "number" && Number.isInteger(raw.version) && raw.version > 1) return { status: "future-version", state: null };
-  if (raw.version !== 1 || Object.keys(raw).length !== 7 || typeof raw.hullInstanceId !== "string" ||
+  const hasExteriorSurvey = Object.hasOwn(raw, "exteriorSurvey");
+  const exteriorSurvey = hasExteriorSurvey ? inspectHullExteriorSurvey(raw.exteriorSurvey) : null;
+  if (hasExteriorSurvey && !exteriorSurvey) return invalid;
+  if (raw.version !== 1 || Object.keys(raw).length !== 7 + Number(hasExteriorSurvey) || typeof raw.hullInstanceId !== "string" ||
       raw.hullInstanceId.length === 0 || raw.hullInstanceId.length > 256 || raw.inspected !== true ||
       (raw.consultations !== 0 && raw.consultations !== 1 && raw.consultations !== 2 && raw.consultations !== 3) ||
       (raw.pledge !== null && (!pledge(raw.pledge) || raw.consultations !== 3))) return invalid;
   const { consultations } = raw;
-  const revision = 1 + Number((consultations & 1) !== 0) + Number((consultations & 2) !== 0) + Number(raw.pledge !== null);
+  const revision = 1 + Number((consultations & 1) !== 0) + Number((consultations & 2) !== 0) +
+    Number(raw.pledge !== null) + Number(hasExteriorSurvey);
   if (raw.revision !== revision) return invalid;
   return { status: "valid", state: { version: 1, ownerCreatedAt: owner, hullInstanceId: raw.hullInstanceId,
-    revision, inspected: true, consultations, pledge: raw.pledge } };
+    revision, inspected: true, consultations, pledge: raw.pledge, ...(exteriorSurvey ? { exteriorSurvey } : {}) } };
 }
 
 export function clanHullProjectMatchesOwnedHull(raw: ClanHullProjectV171 | null, shipAcquisition: unknown, owner: string): boolean {
@@ -61,8 +68,13 @@ export function clanHullProjectMatchesOwnedHull(raw: ClanHullProjectV171 | null,
 }
 
 export function isClanHullProjectSuccessor(before: ClanHullProjectV171, next: ClanHullProjectV171): boolean {
-  return before.ownerCreatedAt === next.ownerCreatedAt && before.hullInstanceId === next.hullInstanceId &&
-    next.revision === before.revision + 1 && !before.pledge && (next.consultations & before.consultations) === before.consultations;
+  if (before.ownerCreatedAt !== next.ownerCreatedAt || before.hullInstanceId !== next.hullInstanceId ||
+      next.revision !== before.revision + 1) return false;
+  if (!before.exteriorSurvey && next.exteriorSurvey) {
+    return next.pledge === before.pledge && next.consultations === before.consultations;
+  }
+  return !before.pledge && (next.consultations & before.consultations) === before.consultations &&
+    JSON.stringify(before.exteriorSurvey) === JSON.stringify(next.exteriorSurvey);
 }
 
 function currentHullAccess(save: HullSave) {
@@ -87,6 +99,13 @@ export function commitClanHullProject(save: HullSave, command: ClanHullProjectCo
   const before = inspected.state;
   if (command.expectedRevision !== (before?.revision ?? 0) || before && before.hullInstanceId !== access.instanceId) {
     return fail("Relis le dernier état du projet avant de reprendre.");
+  }
+  if (command.type === "exterior-survey") {
+    if (access.room !== "hangar" || !before || before.exteriorSurvey) return fail("La visite se consigne une fois, au sas du hangar.");
+    const exteriorSurvey = inspectHullExteriorSurvey(command.survey);
+    if (!exteriorSurvey) return fail("Reviens au sas avec le relevé des deux ponts.");
+    return { ok: true, message: "Les deux scellés restent en place. Le hangar a consigné ton relevé de la cale sèche.",
+      state: { ...before, exteriorSurvey, revision: before.revision + 1 } };
   }
   if (before?.pledge) return fail("L’intention a déjà été consignée.");
   if (command.type === "inspect") {

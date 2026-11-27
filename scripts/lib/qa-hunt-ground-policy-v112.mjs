@@ -25,7 +25,11 @@ export function decideHuntCampaignInputV112(game,tick,memory,strategy='mixed'){
   if(fight){
     const {enemy,point,range}=nearest;target=point;reason='combat:'+enemy.id;
     const gap=Math.abs(point.x-pc.x)-(player.width+enemy.width)/2;
-    if(strategy==='mixed'&&!game.energyWeaponsLocked&&(range>180||Math.abs(point.y-pc.y)>65)&&player.energy>=34){
+    const dodge=enemy.telegraph>0&&gap<100&&player.grounded&&player.stamina>25&&tick%30===0;
+    if(dodge){
+      held.push('down',point.x>pc.x?'left':'right');
+      pressed.push('jump');
+    }else if(strategy==='mixed'&&!game.energyWeaponsLocked&&(range>180||Math.abs(point.y-pc.y)>65)&&player.energy>=34){
       if(player.activeWeaponSlot!==1)pressed.push('weaponTwo');
       held.push('aim');pointer={x:point.x-game.cameraX,y:point.y-(game.cameraY??0)};
       if(player.weaponChargeSeconds>=.8&&player.weaponCooldown<=0)pressed.push('weapon');
@@ -40,12 +44,10 @@ export function decideHuntCampaignInputV112(game,tick,memory,strategy='mixed'){
         pressed.push('melee');
       }
     }
-    if(gap<55)target={...target,x:pc.x};
-    if(range<260&&player.grounded&&tick>=(memory.nextJump??0)){
+    // Do not add the approach direction to a committed dodge.
+    if(dodge||gap<55)target={...target,x:pc.x};
+    if(!dodge&&range<260&&player.grounded&&tick>=(memory.nextJump??0)){
       pressed.push('jump');held.push('jump');memory.nextJump=tick+66;memory.jumpUntil=tick+12;
-    }
-    if(enemy.telegraph>0&&gap<100&&player.grounded&&player.stamina>25&&tick%30===0){
-      held.push('down',point.x>pc.x?'left':'right');pressed.push('jump');
     }
   }
   if(reason==='technology'||reason==='purge console'||reason==='apex trophy'){

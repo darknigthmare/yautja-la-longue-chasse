@@ -11,6 +11,7 @@ import { sampleYouthControls, YOUTH_CONTROL_ACTIONS, type YouthTouchAction } fro
 import { createYouthTraining, normalizeYouthTraining, stepYouthTraining, getYouthObjective, YOUTH_DESERT_CLUES, YOUTH_DESERT_SCAN_TICKS, type YouthState, type YouthReceipt } from "./systems/youthTraining";
 import styles from "./YouthTrainingScreen.module.css";
 import { YOUTH_MEDICOMP, youthMedicompCharges } from "./systems/youthMedicompV172";
+import { YOUTH_WORKSHOP_LESSONS, workshopCanOpen, workshopFeedback } from "./systems/youthWorkshopV174";
 import { isYouthCagePhase, youthCageCountdown, YOUTH_CAGE_REWARD } from "./systems/youthCage";
 import { isYouthPatrolPhase, YOUTH_PATROL_HOLD_TICKS, youthPatrolAssessment } from "./systems/youthPatrol";
 import YautjaTranslationV67 from "./YautjaTranslationV67";
@@ -45,6 +46,7 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
   const [releaseRequired, setReleaseRequired] = useState(false), [pending, setPending] = useState(false);
   const effectivePaused = paused || props.externallyPaused === true, reducedMotion = props.reducedMotion === true || reducedByOs;
   const objective = getYouthObjective(state);
+  const workshop = state.workshopV174, workshopActive = workshop?.active;
   const lessonAction = state.phase === "dojo-jump" || state.phase === "camp-run" || state.phase === "desert-crossing" || state.phase === "patrol-ambush" ? "jump" : state.phase === "dojo-dodge" ? "dodge" : state.phase === "dojo-strike" || (state.phase === "camp-duel" || state.phase === "cage-duel") ? "light" : state.phase === "dojo-throw" ? "throw" : ["blade-award", "armory", "barracks", "desert-briefing", "desert-tracks", "desert-report", "desert-return", "patrol-briefing", "patrol-route", "patrol-assessment", "patrol-return", "cage-briefing", "cage-reward", "cage-return"].includes(state.phase) ? "interact" : null;
   const lessonLabel = lessonAction ? TOUCH_ACTIONS.find(([id]) => id === lessonAction)?.[1] : null;
   useEffect(() => { latestRef.current = props; }, [props]);
@@ -126,7 +128,7 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
       previousPadChoice = sample.choiceStep;
       const elapsed = previous ? Math.min(100, Math.max(0, timestamp - previous)) : 0; previous = timestamp;
       const pausedNow = blocked || !armedRef.current || bank === null || document.hidden;
-      let phaseChanged = false, medicompChanged = false;
+      let phaseChanged = false, medicompChanged = false, workshopChanged = false;
       if (pausedNow) { accumulated = 0; stateRef.current = stepYouthTraining(stateRef.current, {}, { assetsReady: bank !== null, pageVisible: !document.hidden, paused: true }).state; }
       else {
         accumulated += elapsed; let steps = 0;
@@ -138,6 +140,12 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
           for (const event of result.events) {
             if (event.type === "hit") audioRef.current?.hit();
             if (event.type === "milestone") audioRef.current?.weaponSwitch();
+            if (event.type === "workshop") {
+              workshopChanged = true;
+              if (event.signal === "warning") audioRef.current?.enemyAlert();
+              else if (event.signal === "earned") audioRef.current?.objective();
+              else audioRef.current?.select();
+            }
             if (event.type === "medicomp") {
               medicompChanged = true;
               if (event.signal === "dose") audioRef.current?.medicomp();
@@ -165,10 +173,11 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
       canvas.dataset.youthCage = stateRef.current.cage ? JSON.stringify(stateRef.current.cage) : "";
       canvas.dataset.youthPhaseTick = String(stateRef.current.phaseTick);
       canvas.dataset.youthMedicomp = stateRef.current.medicompV172 ? JSON.stringify(stateRef.current.medicompV172) : "";
+      canvas.dataset.youthWorkshop = stateRef.current.workshopV174 ? JSON.stringify(stateRef.current.workshopV174) : "";
       const patrol = stateRef.current.patrol;
       canvas.dataset.youthPatrol = patrol ? JSON.stringify({ halts: patrol.halts, holdTicks: patrol.holdTicks, attempts: patrol.attempts, evaded: patrol.evaded, hits: patrol.hits, totalHits: patrol.totalHits, grazer: patrol.grazer }) : "";
-      if (!pendingRef.current && !busyRef.current && !pausedNow && (phaseChanged || medicompChanged || stateRef.current.tick - lastCheckpointTick >= 120)) { lastCheckpointTick = stateRef.current.tick; checkpoint(); }
-      if (phaseChanged || medicompChanged || timestamp - lastUi >= 80) { lastUi = timestamp; setState(stateRef.current); setReleaseRequired(!blocked && (!armedRef.current || !stateRef.current.inputArmed)); }
+      if (!pendingRef.current && !busyRef.current && !pausedNow && (phaseChanged || medicompChanged || workshopChanged || stateRef.current.tick - lastCheckpointTick >= 120)) { lastCheckpointTick = stateRef.current.tick; checkpoint(); }
+      if (phaseChanged || medicompChanged || workshopChanged || timestamp - lastUi >= 80) { lastUi = timestamp; setState(stateRef.current); setReleaseRequired(!blocked && (!armedRef.current || !stateRef.current.inputArmed)); }
       frameId = requestAnimationFrame(render);
     };
     frameId = requestAnimationFrame(render); return () => cancelAnimationFrame(frameId);
@@ -204,9 +213,24 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
       </div>}
     </div>
     <div className={styles.stage}><canvas ref={canvasRef} data-youth-stage width={960} height={540} tabIndex={0} aria-label={isYouthCagePhase(state.phase) ? "La petite Fosse jouable. Duel de novices non létal, poings, esquive et projection, sans lame. Pause pour les commandes." : isYouthPatrolPhase(state.phase) ? "Patrouille jouable de l’Unblooded. Déplacement, saut, esquive et interaction. Évitez les charges sans attaquer l’animal. Pause pour les commandes." : "Formation jouable de l’Unblooded. Déplacement, saut, esquive, frappe et projection. Pause pour les commandes."}
-      onPointerDown={() => canvasRef.current?.focus()} onBlur={event => { const target = event.relatedTarget; if (bank !== null && ACTIVE(stateRef.current.phase) && !pausedRef.current && !latestRef.current.externallyPaused && !(target instanceof HTMLElement && (target.hasAttribute("data-youth-action") || target.hasAttribute("data-youth-control")))) pause(); }} />
+      onPointerDown={() => canvasRef.current?.focus()} onBlur={event => { const target = event.relatedTarget; if (bank !== null && (ACTIVE(stateRef.current.phase) || stateRef.current.workshopV174?.active) && !pausedRef.current && !latestRef.current.externallyPaused && !(target instanceof HTMLElement && (target.hasAttribute("data-youth-action") || target.hasAttribute("data-youth-control")))) pause(); }} />
       {!bank && <div className={styles.overlay} role="status"><p>{artError ? "La formation attend ses images." : isYouthCagePhase(state.phase) ? "Chargement de la petite Fosse…" : isYouthPatrolPhase(state.phase) ? "Chargement de la patrouille…" : "Chargement du dojo…"}</p>{artError && <><p className={styles.error}>{artError}</p><button type="button" data-youth-control onClick={() => { setArtError(""); setLoadAttempt(value => value + 1); }}>Réessayer le chargement</button><button type="button" onClick={() => void exit()}>Retour au menu</button></>}</div>}
-      {state.phase === "barracks" && state.medicompV172 && !effectivePaused && <aside className={styles.fieldNotes} aria-label="Medicomp d’exercice" data-youth-medicomp-status>
+      {workshopActive && workshop && !effectivePaused && <aside className={styles.fieldNotes} aria-label="Atelier Unblooded" data-youth-workshop-notes>
+        <strong>{YOUTH_WORKSHOP_LESSONS[workshopActive.lesson].title}</strong>
+        {workshopFeedback(workshop, state.tick) && <p role="status">{workshopFeedback(workshop, state.tick)}</p>}
+        <p>{([["light", "Frappe"], ["blade", "Lame"], ["throw", "Projection"], ["dodge", "Esquive"], ["jump", "Saut"]] as const).map(([action, label]) => label + " " + controlActionShortcut(YOUTH_CONTROL_ACTIONS[action], props.bindings)).join(" · ")}</p>
+      </aside>}
+      {state.phase === "barracks" && !workshopActive && (workshop?.reports.length || state.firstWorkshopV176) &&
+        !state.medicompV172 && !effectivePaused ? <aside className={styles.fieldNotes} aria-label="Registre des ateliers">
+        <strong>{workshop?.reports.length ?? 0} / {YOUTH_WORKSHOP_LESSONS.length} ateliers consignés</strong>
+        <p>{workshopCanOpen(workshop) ? "La porte gauche ouvre l’atelier suivant." : "Les exercices de cette série sont consignés."}</p>
+        {!workshop?.reports.length && state.firstWorkshopV176 && <p>Premier atelier · {YOUTH_WORKSHOP_LESSONS[state.firstWorkshopV176 === "blades" ? 1 : 0].title}</p>}
+        {workshop?.maskProfile && <>
+          <p>Auprès de la porte, Frappe règle le masque en contraste et Lame élargit la lecture.</p>
+          <p>Profil du masque · {workshop.maskProfile === "wide" ? "lecture large" : "contraste"}</p>
+        </>}
+      </aside> : null}
+      {state.phase === "barracks" && !workshopActive && state.medicompV172 && !effectivePaused && <aside className={styles.fieldNotes} aria-label="Medicomp d’exercice" data-youth-medicomp-status>
         <strong>Charges restantes · {youthMedicompCharges(state.medicompV172)} / 3</strong>
         <progress max={YOUTH_MEDICOMP.duration} value={state.medicompV172.treatedTicks} aria-label="Soin de la plaie d’exercice" />
         {state.medicompV172.route !== "unchecked" && <p>{state.medicompV172.route === "prepared" ? "Sortie préparée avant le soin." : "Sortie vérifiée pendant l’alerte."}</p>}
