@@ -1,0 +1,157 @@
+{
+  "schema": 1,
+  "date": "2026-11-23",
+  "renderer": "Chromium headless, WebGL2 via SwiftShader (software)",
+  "scope": "Real CampaignFrontEnd menu and IslesModeV1 bundled with esbuild and the game stylesheet; not the Next build.",
+  "steps": [
+    {
+      "step": "le menu Modes de jeu ouvre The Isles"
+    },
+    {
+      "step": "course : le chasseur avance et la caméra anticipe",
+      "metres": 4.54
+    },
+    {
+      "step": "escalade de la falaise jusqu’au plateau de 3 m",
+      "seconds": 3.326
+    },
+    {
+      "step": "4 rotations et 3 zooms",
+      "labels": [
+        "Vue N-E · course",
+        "Vue S-E · course",
+        "Vue S-O · course",
+        "Vue N-O · course"
+      ]
+    },
+    {
+      "step": "camouflage avec contour, la nage le coupe"
+    },
+    {
+      "step": "découpe : derrière le pilier, le décor s’ouvre devant le chasseur",
+      "meanColourDiff": 21.07
+    },
+    {
+      "step": "Chasse inversée : l’équipe débarque et cherche les pièces",
+      "simSeconds": 69,
+      "piecesFound": 2
+    },
+    {
+      "step": "frappe, humain à terre, trophée prélevé à la touche T"
+    },
+    {
+      "step": "partie menue jusqu’à son issue",
+      "winner": "humans",
+      "kind": "abattu",
+      "humanScore": 0,
+      "honor": 25,
+      "escaped": 0,
+      "alive": 4
+    },
+    {
+      "step": "réseau : 2 navigateurs, chacun voit l’autre bouger"
+    },
+    {
+      "step": "réseau : 6 navigateurs dans la même salle",
+      "players": 6
+    }
+  ],
+  "metrics": {
+    "testIsland": {
+      "zones": 4,
+      "terrainTriangles": 5528,
+      "instances": 114,
+      "drawCalls": 45
+    },
+    "cutawayMeanDiff": 21.07,
+    "viewFps": 9,
+    "verdant": {
+      "zones": 9,
+      "terrainTriangles": 20870,
+      "instances": 2165,
+      "drawCalls": 46
+    },
+    "reverseOutcome": {
+      "winner": "humans",
+      "kind": "abattu",
+      "humanScore": 0,
+      "honor": 25,
+      "escaped": 0,
+      "alive": 4
+    }
+  },
+  "captures": [
+    {
+      "file": "01-menu-modes.png",
+      "sha256": "0a9b926c6e1a9a7f21babc01aec58b985146b9f33b61546ff18c886b45041d2b"
+    },
+    {
+      "file": "02-hub.png",
+      "sha256": "b7eeae21f9f00c8f645f362ebfe942dd516d404b1c8352b22c4794be544835c7"
+    },
+    {
+      "file": "03-view-start.png",
+      "sha256": "868096e10970072f4c98dcfd6410fc04ac90149b8d61bd20a72e377bdfe0c857"
+    },
+    {
+      "file": "04-view-run-lead.png",
+      "sha256": "9c000ca35eaf3a634dc282b16fdcc271ae77124ea4a9dd3542ef12d07bd64a6a"
+    },
+    {
+      "file": "05-view-climb.png",
+      "sha256": "f99fcc92d8667e04fa51a900efdc030da757165138770b46a9efea709585d448"
+    },
+    {
+      "file": "06-view-plateau.png",
+      "sha256": "85440e2f26abcadbcd2f13d936cd3379f7e1d159e499f3c701d787376eb89d53"
+    },
+    {
+      "file": "07-view-zoom-far.png",
+      "sha256": "68046536770f959a22564d4c1456fbea5f159d11dfcc4347f9d730d25508dca1"
+    },
+    {
+      "file": "08-view-cloak-outline.png",
+      "sha256": "9903566eefafe2d63d83459ae915fbe147c86b9f5a6b3c751e07620c1ea960a1"
+    },
+    {
+      "file": "09-view-swim-revealed.png",
+      "sha256": "ccaa5f1164de64cc1a4fd4f2712e968eb8da65c509852e9be88a4d2089d5c100"
+    },
+    {
+      "file": "10-view-cutaway-on.png",
+      "sha256": "d11b01ef27d9fefa6a8254ee49f141a00cdc8cc0191ea5d290286e4456f3b54e"
+    },
+    {
+      "file": "11-view-cutaway-off.png",
+      "sha256": "1b886eb0da94a4693434ac8c1f221c1b817b54e072ac806cfd87540b4200b201"
+    },
+    {
+      "file": "12-reverse-start.png",
+      "sha256": "460f2f3bba1f1450b6e83ff79aaee1555077a27a66e57c5d50ebf1b027ecdc3e"
+    },
+    {
+      "file": "13-reverse-thermal.png",
+      "sha256": "26544c1cce7b4c278fab4be4b8e9750b68084fbba65ae3e81d8dafc34a466785"
+    },
+    {
+      "file": "14-reverse-team-search.png",
+      "sha256": "038be328e471f345798064c4ffe864dbdb32a4caca7867c2412083090c3ae5f5"
+    },
+    {
+      "file": "15-reverse-trophy.png",
+      "sha256": "2f8b70e209c45beb23a156dc43fcccd48b438afa3d5278fe0f0bf605840f88f6"
+    },
+    {
+      "file": "16-reverse-outcome.png",
+      "sha256": "84118abcc47841c508dafda9f4bc4a0f83df07bd23ce60140e2e19bf94872987"
+    },
+    {
+      "file": "17-online-two.png",
+      "sha256": "92e4f1ba09de7f9439136b8ee511ce31673329b1736fc8260bb031a2bb5f382e"
+    },
+    {
+      "file": "18-online-six.png",
+      "sha256": "5807eb901ba3777ce83aa37f25dc1e9747f1c7b56a06310b2203b6384e602bf0"
+    }
+  ]
+}

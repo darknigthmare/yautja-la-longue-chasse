@@ -49,6 +49,26 @@ test("M016 forms real posts for both choices and keeps the selected roles in V90
     assert.equal(play.state.formationPlan, undefined, "The role board is away from this actor");
     findBoard(play);
     play.act({ rolePlan: plan });
+    if (plan === "preference") {
+      play.commit();
+      const refused = play.state.formationRefusedAt;
+      assert.equal(typeof refused, "number");
+      assert.equal(play.state.formationPlan, undefined);
+      assert(p.soloV90RehearsalPending(play.state));
+      play.act({ command: true });
+      for (let i = 0; i < 70; i++) play.act({ interact: true });
+      assert.equal(play.state.roleMode, "follow", "The old signal cannot replace consent");
+      assert.equal(play.state.formationRehearsedAt, undefined, "The role board is away from the practice station");
+      walkTo(play, p.SOLO_V90_REHEARSAL.x);
+      for (let i = 0; i < 140 && play.state.formationRehearsedAt === undefined; i++) play.act({ interact: true });
+      play.commit();
+      assert(play.state.formationRehearsedAt >= refused + p.SOLO_V90_REHEARSAL.ticks);
+      assert.equal(play.state.formationRefusedAt, refused);
+      assert.equal(play.state.formationPlan, undefined, "Practice earns the opportunity, not a selected roster");
+      assert.deepEqual(play.state.partnerObservations, admitted.soloV90.checkpoint.partnerObservations);
+      findBoard(play);
+      play.act({ rolePlan: plan });
+    }
     play.commit();
     assert.equal(play.state.formationPlan, plan);
     assert.equal(play.state.milestones["roles-positioned"], undefined);
@@ -65,6 +85,26 @@ test("M016 forms real posts for both choices and keeps the selected roles in V90
     play.act({}); play.act({ rolePlan: plan === "preference" ? "complementary" : "preference" });
     assert.equal(play.state.formationPlan, plan, "The posts are locked for the remainder of this rehearsal");
   }
+});
+
+test("M016 a second choice resolves Vek's refusal without recording unplayed practice", () => {
+  const play = rehearsal();
+  findBoard(play);
+  play.act({ rolePlan: "preference" });
+  const refused = play.state.formationRefusedAt;
+  assert(p.soloV90RehearsalPending(play.state));
+  assert.equal(p.withSoloV90Checkpoint(play.save, { ...play.state, formationRefusedAt: undefined }, stamp), null);
+  assert.equal(p.normalizeSoloV90State({ ...play.state, formationRehearsedAt: refused }), null);
+  play.act({ rolePlan: "complementary" });
+  play.commit();
+  assert.equal(play.state.formationPlan, "complementary");
+  assert.equal(play.state.formationRefusedAt, refused);
+  assert.equal(play.state.formationRehearsedAt, undefined);
+  assert(!p.soloV90RehearsalPending(play.state));
+  play.act({ command: true });
+  for (let i = 0; i < 230 && play.state.phase === "assemble"; i++) play.act({ interact: true });
+  assert.equal(play.state.phase, "observe");
+  assert.equal(play.save.soloV90.checkpoint.formationRehearsedAt, undefined);
 });
 
 test("M016 keeps older snapshots and validates the optional replayed role choice", () => {

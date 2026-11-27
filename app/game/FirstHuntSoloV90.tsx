@@ -8,7 +8,7 @@ import { type YouthArtBank } from "./youthTrainingRendering";
 import { GameAudio } from "./sound";
 import YautjaTranslationV67 from "./YautjaTranslationV67";
 import { drawFirstHuntSoloV90, loadTrainingArtV90 } from "./firstHuntSoloV90Rendering";
-import { normalizeSoloV90State, stepSoloV90, soloV90NeedsImmediateCheckpoint, soloV90Objective, soloV90ObservationPostReady, soloV90RoleBoardReady, soloV90PartnerActivity, SOLO_V90_PARTNER_ACTIVITIES, soloV92Evaluation, SOLO_V92_EVASION, type SoloV90State, type SoloV90Receipt, type SoloV90RolePlan } from "./systems/firstHuntSoloV90";
+import { normalizeSoloV90State, stepSoloV90, soloV90NeedsImmediateCheckpoint, soloV90Objective, soloV90ObservationPostReady, soloV90RoleBoardReady, soloV90PartnerActivity, soloV90RehearsalPending, SOLO_V90_PARTNER_ACTIVITIES, SOLO_V90_REHEARSAL, soloV92Evaluation, SOLO_V92_EVASION, type SoloV90State, type SoloV90Receipt, type SoloV90RolePlan } from "./systems/firstHuntSoloV90";
 import styles from "./FirstHuntSoloV90.module.css";
 
 export interface FirstHuntSoloV90Props {
@@ -119,7 +119,9 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
           if (next.attackTimer === 18 && prior.attackTimer !== 18) audio?.slash();
           if (next.health < prior.health) audio?.hit();
           if (next.observedCycles > prior.observedCycles) audio?.scan();
-          if (next.roleMode !== prior.roleMode || next.formationPlan !== prior.formationPlan) audio?.ui();
+          if (next.roleMode !== prior.roleMode || next.formationPlan !== prior.formationPlan ||
+              next.formationRefusedAt !== prior.formationRefusedAt ||
+              next.formationRehearsedAt !== prior.formationRehearsedAt) audio?.ui();
           if (next.drone.mode === "telegraph" && prior.drone.mode !== "telegraph") audio?.enemyAlert();
           if (next.health === 0 && prior.health > 0) audio?.defeat();
           if (next.evasion?.ticks === SOLO_V92_EVASION.duration && !prior.evasion?.ticks) audio?.ui();
@@ -161,6 +163,7 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
   const objective = state ? soloV90Objective(state) : null;
   const evaluation = state ? soloV92Evaluation(state) : null;
   const partnerActivity = state ? soloV90PartnerActivity(state) : undefined;
+  const rehearsalPending = state ? soloV90RehearsalPending(state) : false;
   const spoken = state?.phase === "briefing" ? state.partnerObservations
     ? "Saar est au mécanisme et Vek lit la piste. Retrouve-les dans la galerie avant de rejoindre le repère central."
     : "Saar et Vek se préparent à leurs deux postes. Choisis leur répartition au repère central. Tu tiens la frappe et peux décider le repli."
@@ -169,7 +172,9 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
       ? "Saar : je montre quand retenir le verrou et quand l’ouvrir."
       : partnerActivity?.id === "vek"
         ? "Vek : compare la trace profonde, la déviation et le dernier appui."
-        : "Saar : donne le signal lorsque tu es prêt. Nous allons à nos postes à pied. Attends Vek avant de confirmer la formation."
+        : rehearsalPending
+          ? "Vek : je refuse de prendre le verrou sans avoir répété l’appel avec vous. Je peux prendre l’approche dès maintenant."
+          : "Saar : donne le signal lorsque tu es prêt. Nous allons à nos postes à pied. Attends Vek avant de confirmer la formation."
     : state?.phase === "observe" ? "Vek : lis l’annonce, la charge puis le retrait. Regarde trois cycles depuis ce repère avant d’engager le combat."
     : state?.phase === "return" ? state.result === "assisted" ? "Saar : reste là. Je viens à ton côté. Nous rentrons ensemble ; une blessure ne disparaît pas parce que l’exercice est fini." : "Le vétéran attend notre retour. Gardons le même résultat dans le rapport, qu’il s’agisse d’une réussite ou d’un repli."
     : state?.phase === "debrief" ? state.result === "success" ? "Les trois contributions sont reçues. Décris aussi tes blessures. Cette réussite prépare la chasse ; elle ne t’attribue aucune marque." : "Vous êtes revenus ensemble. Le repli est consigné, les blessures aussi. Personne ne transforme cette tentative en victoire." : "";
@@ -185,9 +190,14 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
         {activity.name} · {state.partnerObservations?.[activity.id] !== undefined ? "activité observée" : "rendez-vous à faire"}
       </span>)}
     </div>}
+    {state?.phase === "assemble" && state.formationRefusedAt !== undefined &&
+      <div className={styles.measure} data-solo-v90-rehearsal={state.formationRehearsedAt !== undefined ? "complete" : rehearsalPending ? "pending" : "alternate"}>
+        <span>{state.formationRehearsedAt !== undefined ? "Répétition commune terminée" : rehearsalPending ? "Préférence refusée par Vek" : "Poste d’approche accepté par Vek"}</span>
+        {rehearsalPending && state.scan > 0 && <span>Signaux joués {Math.floor(state.scan / (SOLO_V90_REHEARSAL.ticks / 3))}/3</span>}
+      </div>}
     {state && soloV90RoleBoardReady(state) && !modal && <div className={styles.rolePlan} role="group" aria-label="Répartition des trois postes">
       <button type="button" data-solo-v90-plan="preference" aria-pressed={state.formationPlan === "preference"}
-        disabled={!!props.externallyPaused || pendingUi || !bank} onClick={() => chooseRoles("preference")}>
+        disabled={!!props.externallyPaused || pendingUi || !bank || rehearsalPending} onClick={() => chooseRoles("preference")}>
         Par préférence · Saar approche, Vek ouvre
       </button>
       <button type="button" data-solo-v90-plan="complementary" aria-pressed={state.formationPlan === "complementary"}

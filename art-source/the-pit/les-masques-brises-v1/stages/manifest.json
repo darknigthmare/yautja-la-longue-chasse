@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "batchId": "pit-les-masques-brises-stage-concepts-v1-20261127",
+  "extensionId": "les-masques-brises",
+  "continuity": "original-compatible",
+  "officialReference": false,
+  "status": "scene-concepts-not-admitted",
+  "generatedImageCount": 4,
+  "uniqueImageBytes": 10906600,
+  "publicImageCount": 4,
+  "nativeParallaxLayerCount": 0,
+  "runtimeAdmitted": false,
+  "humanArtReview": "required",
+  "oneToOneCertified": false,
+  "generator": "builtin image_gen.imagegen",
+  "sourceImageInputs": [],
+  "transparentBackgroundRequested": false,
+  "preservation": "Native generated PNG bytes preserved; no resizing, recoloring, compositing, cropping, alpha rewrite or pixel editing.",
+  "entries": [
+    {
+      "id": "lmb-stage-01",
+      "stageId": "lmb-stage-01",
+      "name": "Cour des masques",
+      "file": "lmb-stage-01-cour-des-masques.png",
+      "promptFile": "lmb-stage-01-cour-des-masques.prompt.txt",
+      "kind": "flattened-stage-scene-concept",
+      "status": "candidate-not-admitted",
+      "publicPath": "/game/review/the-pit/les-masques-brises-v1/stages/lmb-stage-01-cour-des-masques.png",
+      "bytes": 2801620,
+      "sha256": "997867f3a17438d67e1c02f5f724964c350f4948b28d867384d8ff2843801ab8",
+      "gitBlobSha": "ee0b0794de7284322631d587a26648d1317ff8b7",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "landscape": true,
+      "alphaRange": null,
+      "alphaZeroPixels": 0,
+      "alphaBoundsAbove1": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "alphaBoundsAbove32": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "pixelEdits": "none; native output copied or data-URL decoded byte for byte",
+      "interpretation": "One flattened scene concept; no native parallax layers or collision proof.",
+      "generatorGitBlobSha": "ee0b0794de7284322631d587a26648d1317ff8b7",
+      "originalOutputBasename": "exec-1a2cc36f-8322-4587-b89c-215334f961d0.png",
+      "recoveryMethod": "Native file byte copy.",
+      "visualReview": "Cour de basalte, deux colonnes, râteliers de masques inertes et ciel rouge. Piste horizontale libre au premier plan. Les nombreux masques créent des détails derrière les silhouettes à vérifier à l'échelle de jeu.",
+      "nativeParallaxLayers": false,
+      "runtimeAdmitted": false,
+      "humanArtReview": "required",
+      "remaining": [
+        "Separate distant background, midground, floor, foreground and effects as native assets.",
+        "Calibrate floor line, scale and camera in the actual Pit renderer.",
+        "Implement and verify any stage-specific interaction, collision, hazard, ambience and accessibility options."
+      ],
+      "promptSha256": "944a847090827dd4bb250e6e88ce916a001ccec438c66e83e759140dff6b26c9"
+    },
+    {
+      "id": "lmb-stage-02",
+      "stageId": "lmb-stage-02",
+      "name": "Quai des chasseurs",
+      "file": "lmb-stage-02-quai-des-chasseurs.png",
+      "promptFile": "lmb-stage-02-quai-des-chasseurs.prompt.txt",
+      "kind": "flattened-stage-scene-concept",
+      "status": "candidate-not-admitted",
+      "publicPath": "/game/review/the-pit/les-masques-brises-v1/stages/lmb-stage-02-quai-des-chasseurs.png",
+      "bytes": 2879007,
+      "sha256": "f29a7e29e0938279217d3913e8f925d75f25b00a1170c859f08f532b9dfebbc0",
+      "gitBlobSha": "f99c5affa15af6389d78dc62106e5598c93d4ae9",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "landscape": true,
+      "alphaRange": null,
+      "alphaZeroPixels": 0,
+      "alphaBoundsAbove1": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "alphaBoundsAbove32": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "pixelEdits": "none; native output copied or data-URL decoded byte for byte",
+      "interpretation": "One flattened scene concept; no native parallax layers or collision proof.",
+      "generatorGitBlobSha": "f99c5affa15af6389d78dc62106e5598c93d4ae9",
+      "originalOutputBasename": "exec-aa0565f3-b970-423e-b402-bb47b19ba671.png",
+      "recoveryMethod": "Native file byte copy.",
+      "visualReview": "Hangar aux côtes métalliques, caisses en fond et vaisseau éloigné. Piste métallique horizontale dégagée. Les lumières et l'ouverture ne constituent pas des animations ni un déplacement de vaisseau.",
+      "nativeParallaxLayers": false,
+      "runtimeAdmitted": false,
+      "humanArtReview": "required",
+      "remaining": [
+        "Separate distant background, midground, floor, foreground and effects as native assets.",
+        "Calibrate floor line, scale and camera in the actual Pit renderer.",
+        "Implement and verify any stage-specific interaction, collision, hazard, ambience and accessibility options."
+      ],
+      "promptSha256": "1c222bc182118f0a69939e7f5938aa4a718d354172f7aa78e9786d79555c6d73"
+    },
+    {
+      "id": "lmb-stage-03",
+      "stageId": "lmb-stage-03",
+      "name": "Ravin de cendre",
+      "file": "lmb-stage-03-ravin-de-cendre.png",
+      "promptFile": "lmb-stage-03-ravin-de-cendre.prompt.txt",
+      "kind": "flattened-stage-scene-concept",
+      "status": "candidate-not-admitted",
+      "publicPath": "/game/review/the-pit/les-masques-brises-v1/stages/lmb-stage-03-ravin-de-cendre.png",
+      "bytes": 2581870,
+      "sha256": "ce534ff3c851e3e73934693eb11d42203662c09650d90d3ed031565370b506bc",
+      "gitBlobSha": "60e89487a52f6edae093ff2978bc8b01b4058a3d",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "landscape": true,
+      "alphaRange": null,
+      "alphaZeroPixels": 0,
+      "alphaBoundsAbove1": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "alphaBoundsAbove32": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "pixelEdits": "none; native output copied or data-URL decoded byte for byte",
+      "interpretation": "One flattened scene concept; no native parallax layers or collision proof.",
+      "generatorGitBlobSha": "60e89487a52f6edae093ff2978bc8b01b4058a3d",
+      "originalOutputBasename": null,
+      "recoveryMethod": "Native image data URL decoded byte for byte after executor outage; no image transformation.",
+      "visualReview": "Ravin volcanique, falaises en colonnes et deux petites balises. Terrasse libre devant le gouffre; aucune faille dans la piste représentée. Le relief lointain reste peint dans la même image.",
+      "nativeParallaxLayers": false,
+      "runtimeAdmitted": false,
+      "humanArtReview": "required",
+      "remaining": [
+        "Separate distant background, midground, floor, foreground and effects as native assets.",
+        "Calibrate floor line, scale and camera in the actual Pit renderer.",
+        "Implement and verify any stage-specific interaction, collision, hazard, ambience and accessibility options."
+      ],
+      "promptSha256": "4fe39ec727c157b7f610c941914ce7f61dc2620c49f0fc85ddb8df19f083888e"
+    },
+    {
+      "id": "lmb-stage-04",
+      "stageId": "lmb-stage-04",
+      "name": "Relais des pillards",
+      "file": "lmb-stage-04-relais-des-pillards.png",
+      "promptFile": "lmb-stage-04-relais-des-pillards.prompt.txt",
+      "kind": "flattened-stage-scene-concept",
+      "status": "candidate-not-admitted",
+      "publicPath": "/game/review/the-pit/les-masques-brises-v1/stages/lmb-stage-04-relais-des-pillards.png",
+      "bytes": 2644103,
+      "sha256": "b879a9fbfe5bc785ac73ac949d1a37b1ac7d4af751fc972ac1c7430d03dfe7be",
+      "gitBlobSha": "a21c0dbd455deb761d60f9b3e1584194fcd73349",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "landscape": true,
+      "alphaRange": null,
+      "alphaZeroPixels": 0,
+      "alphaBoundsAbove1": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "alphaBoundsAbove32": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "pixelEdits": "none; native output copied or data-URL decoded byte for byte",
+      "interpretation": "One flattened scene concept; no native parallax layers or collision proof.",
+      "generatorGitBlobSha": "a21c0dbd455deb761d60f9b3e1584194fcd73349",
+      "originalOutputBasename": "exec-37db01ba-71b2-4168-98da-0d830e9ac8e0.png",
+      "recoveryMethod": "Native file byte copy.",
+      "visualReview": "Relais de récupération, émetteur central et antenne derrière une large terrasse. La piste occupe davantage de hauteur d'image que dans les trois autres concepts; son cadrage doit être harmonisé au raccordement.",
+      "nativeParallaxLayers": false,
+      "runtimeAdmitted": false,
+      "humanArtReview": "required",
+      "remaining": [
+        "Separate distant background, midground, floor, foreground and effects as native assets.",
+        "Calibrate floor line, scale and camera in the actual Pit renderer.",
+        "Implement and verify any stage-specific interaction, collision, hazard, ambience and accessibility options."
+      ],
+      "promptSha256": "a4763cacc358b2c5af8b745440de1376431b1d1464f4a05d0be2f5a173d24085"
+    }
+  ],
+  "notes": [
+    "Four original scene concepts for stages 01–04, not twenty delivered stages.",
+    "A flattened background does not constitute a native parallax kit or a playable arena.",
+    "All four remote PNG blobs were created before publishing any branch; their Git identities are verified against local bytes."
+  ]
+}

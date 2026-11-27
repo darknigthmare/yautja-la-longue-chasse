@@ -1,0 +1,201 @@
+{
+  "schema": "pit-bonus-real-canvas-v1",
+  "startedAt": "2026-11-27T08:11:57.749Z",
+  "scope": "Real PitCanvas selection and combat, original assets; bonus progress is earned through keyboard input. Synthetic Gamepad snapshots only exercise real navigator polling and menu routing.",
+  "checks": [
+    {
+      "name": "actual selection confirms player, opponent and arena before training",
+      "status": "pass"
+    },
+    {
+      "name": "bonus briefing stays frozen and requires explicit keyboard start",
+      "status": "pass"
+    },
+    {
+      "name": "pause, blur and restart discard elapsed wall time and held inputs",
+      "status": "pass"
+    },
+    {
+      "name": "four real keyboard blocks and counters produce success with no duel callback",
+      "status": "pass",
+      "details": {
+        "status": "success",
+        "stage": "reset",
+        "ticks": 560,
+        "completed": 4,
+        "mistakes": 0
+      }
+    },
+    {
+      "name": "record opt-in, idempotence and reload preserve only the separate personal best",
+      "status": "pass"
+    },
+    {
+      "name": "honor route preselects the real circuit without launching or skipping to its goal",
+      "status": "pass"
+    },
+    {
+      "name": "mobile briefing remains within viewport with reachable native buttons",
+      "status": "pass"
+    },
+    {
+      "name": "neutral gamepad polling starts briefing with A and returns with B after restart",
+      "status": "pass"
+    }
+  ],
+  "pageErrors": [],
+  "httpFailures": [],
+  "assetsMaterialized": [
+    {
+      "path": "/game/sprites/v5/film-plates/jungle-hunter.png",
+      "bytes": 1408845,
+      "sha256": "af639ab27d298a99f993f6f328a8f0544cdc831bb0b2e55d9ada9624a6b0c44f"
+    },
+    {
+      "path": "/game/sprites/v5/film-plates/berserker.png",
+      "bytes": 1600658,
+      "sha256": "c0f07515c318dd0d99d3ac9aa771165109cac45b97dbf2dd8e077c5c901d214f"
+    },
+    {
+      "path": "/game/sprites/v5/film-plates/wolf.png",
+      "bytes": 975955,
+      "sha256": "80a36e62fa0c0595499dd3877f5a9d3e85cae1f3858f6843b09c3df281096296"
+    },
+    {
+      "path": "/game/sprites/v32/pit/jungle-hunter-idle.png",
+      "bytes": 1895251,
+      "sha256": "89d2bd9132cbe381e90ec08fd873d20e78d43e0fc88b0b79e84e2228893238ae"
+    },
+    {
+      "path": "/game/sprites/v32/pit/jungle-hunter-light.png",
+      "bytes": 1839985,
+      "sha256": "1f8b188b0efbcbadd12afd70003717eaab74ae64fac176eb2578a4a876c44867"
+    },
+    {
+      "path": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-hurt-v34.png",
+      "bytes": 2396886,
+      "sha256": "92d1487daffcb26ffbc570472202e6d3e9f9d6ecb0d8b8f6bc5b0b949286d712"
+    },
+    {
+      "path": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-walk-forward-alternation-v34.png",
+      "bytes": 2136880,
+      "sha256": "7f5e012aaf83713344e0bd46fbde6a7f21c17f00b9978cf8b1296cfeeb5457ac"
+    },
+    {
+      "path": "/game/sprites/v34/pit/jungle-hunter/jungle-hunter-repair-crouch-planted-v34.png",
+      "bytes": 2062019,
+      "sha256": "4a37c009da8e45e5cd48d9c47ca1aeefd47e0c508f43bb4238bcc9e61cedc898"
+    },
+    {
+      "path": "/game/sprites/v32/pit/city-hunter-idle.png",
+      "bytes": 2163987,
+      "sha256": "569f85110fa1b326732365d3bb9e5af0462597d49412ab9edf7c3a106679f2d0"
+    },
+    {
+      "path": "/game/sprites/v32/pit/city-hunter-light.png",
+      "bytes": 2059186,
+      "sha256": "703bfbc4fceb20af425f53301cbb50aef4ae0b0d964ddcdba5f8f00f59b3699d"
+    },
+    {
+      "path": "/game/sprites/v33/pit/berserker/berserker-idle-v33.png",
+      "bytes": 2476188,
+      "sha256": "b5428a52f4efde8877abb8d77b01d2e27f208c8f0c6241ce54a8373a763869ac"
+    },
+    {
+      "path": "/game/sprites/v33/pit/berserker/berserker-crouch-v33.png",
+      "bytes": 2485973,
+      "sha256": "64439e5650533ac0e2c84415dbc80cbed34bafea1e2b859b9a58cf2a1097a314"
+    },
+    {
+      "path": "/game/sprites/v33/pit/berserker/repairs/berserker-guard-repair-v33.png",
+      "bytes": 2012884,
+      "sha256": "3c40aa306cff4dbac44dec00fa4f5cad6e08b087976b9091f0ffacdc817f4d23"
+    },
+    {
+      "path": "/game/sprites/v33/pit/berserker/repairs/berserker-walk-backward-joints-repair-v33.png",
+      "bytes": 2310573,
+      "sha256": "e95a3ead046973dd703e862d4f329c9f3fe449bb8b7f450d33e8ed6b027c8b62"
+    },
+    {
+      "path": "/game/sprites/v33/pit/berserker/repairs/berserker-light-spacing-repair-v33.png",
+      "bytes": 1863602,
+      "sha256": "5dc30ecb07491d53accddabb07bfc1547630b9b00c383f8860143d8a539860f0"
+    },
+    {
+      "path": "/game/sprites/v33/pit/berserker/repairs/berserker-medium-repair-v33.png",
+      "bytes": 1818540,
+      "sha256": "fcb5c4df3390f9781dc2ce9047b8cf6f5031adc04dadd30ad7fb2d59b0d5669a"
+    },
+    {
+      "path": "/game/sprites/v33/pit/berserker/repairs/berserker-heavy-repair-v33.png",
+      "bytes": 1913983,
+      "sha256": "7e89d5388bf6e557036a008775d647aedc0764be1d165d9f1a84eac02b94f46c"
+    },
+    {
+      "path": "/game/sprites/v34/pit/wolf/wolf-repair-idle-cannons-v34.png",
+      "bytes": 2268960,
+      "sha256": "c8e870b7e8a38f4f7b3979767213e858355536ab95ec0c2a634dc72210f672ba"
+    },
+    {
+      "path": "/game/sprites/v34/pit/wolf/wolf-repair-crouch-cannons-v34.png",
+      "bytes": 2207423,
+      "sha256": "d17a6db3c672db2806583cebf0fe36638e85770dbf086b6f70b465e69a1d2cf2"
+    },
+    {
+      "path": "/game/sprites/v34/pit/wolf/wolf-repair-guard-blades-v34.png",
+      "bytes": 2187113,
+      "sha256": "dfa820e2f3cfa4438f5c7ab2b8f9dad6f37a2c169938aeb599afccb3acee409e"
+    },
+    {
+      "path": "/game/sprites/v34/pit/wolf/wolf-hurt-v34.png",
+      "bytes": 2303054,
+      "sha256": "0ea36a0bb1526899631eb52f9062aeb920172c895700aa08f0a87b4d0f492f2a"
+    },
+    {
+      "path": "/game/sprites/v34/pit/wolf/wolf-repair-light-spacing-v34.png",
+      "bytes": 1698307,
+      "sha256": "dcdeb3758969669423af2c451c08588fe918df637b31baf876783dd37f8329d6"
+    },
+    {
+      "path": "/game/sprites/v34/pit/wolf/wolf-repair-heavy-hand-v34.png",
+      "bytes": 2244957,
+      "sha256": "bf0d3242f2968b50d9c3c8454648a7213c5a916fee86b1bc68cfbeafb3735ea3"
+    },
+    {
+      "path": "/game/sprites/v37/pit/city-hunter/high-guard-right.png",
+      "bytes": 1768829,
+      "sha256": "3d1cfd804a182ccee1c89cd50ef42118390504adaf15b8792a701a020d3f626a"
+    },
+    {
+      "path": "/game/sprites/v33/pit/berserker/berserker-hurt-v33.png",
+      "bytes": 2416746,
+      "sha256": "f5430784fc4bd4ea40ded6095db75689b278a577a16be303a4c7cd64d4b0993b"
+    },
+    {
+      "path": "/game/sprites/v38/pit/city-hunter/high-guard-left.png",
+      "bytes": 1952849,
+      "sha256": "cb581407eb92306b4d1b3e9afec0b03f4f5960e6c6dd0736b2adaa52048666b6"
+    }
+  ],
+  "screenshots": [
+    "bonus-briefing-desktop.png",
+    "bonus-running-desktop.png",
+    "bonus-success-desktop.png",
+    "bonus-briefing-mobile.png"
+  ],
+  "sourceHashes": {
+    "app/game/PitCanvas.tsx": "fa71bf4e5241d8ccb0839c83d3fda543cbdeaf70374ae7fe5d8e17ef40252513",
+    "app/game/PitBonusTrialPanelV1.tsx": "10b064b3eb820980546016d0570f39b3251526708a7728f176f222b6c1fdd456",
+    "app/game/PitBonusTrialPanelV1.module.css": "8f7a94ba955d79c20d5c1104f9199426f9c6a4336d3476e205cca9522c9a43fb",
+    "app/game/systems/pitBonusTrialV1.ts": "d6b85e6f57dc5ceb5442de046cfa283a0557fa9b3f667df27d3ce2bb01e35395",
+    "app/game/systems/pitBonusRecordsV1.ts": "419b630ee3a75a47e9f627888ab4172ffe3772575447b5d89c791a63b88f01a9"
+  },
+  "browserVersion": "158.0.8127.0",
+  "finishedAt": "2026-11-27T08:13:03.160Z",
+  "summary": {
+    "passed": 8,
+    "failed": 0,
+    "pageErrors": 0,
+    "httpFailures": 0
+  }
+}
