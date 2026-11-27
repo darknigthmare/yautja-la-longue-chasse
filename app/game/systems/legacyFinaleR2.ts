@@ -12,9 +12,14 @@ import { CLAN_SHIP_TROPHY_CASE, clanShipTrophyConclusion, type ClanShipTrophyVer
 import { clanShipTrophyHearingView, inspectClanShipTrophyHearing } from "./clanShipTrophyHearing";
 import { clanShipIncidentView, evaluateClanShipIncidentsCampaign, evaluateClanShipTrophyHearingCampaign,
   inspectClanShipIncidents } from "./clanShipIncidents";
+import {
+  BIBLE_CULTURAL_BINDING_V86, bibleCulturalContextV86, normalizeBibleSceneLedgerV86,
+} from "./bibleSceneCulturalV86";
+import { normalizeHomeworldRegionV68 } from "./homeworldRegionsV68";
 
 export type LegacySiteR2 = { kind: "residence" | "ship"; id: string } |
-  { kind: "clan-ship"; id: typeof CLAN_SHIP_ID };
+  { kind: "clan-ship"; id: typeof CLAN_SHIP_ID } |
+  { kind: "halt"; id: typeof BIBLE_CULTURAL_BINDING_V86.siteId };
 export type LegacySceneR2 = "cohort" | "epilogue";
 export const LEGACY_WALK_LIMIT_R2 = 24;
 const cohortOptions = ["stay", "help"] as const;
@@ -30,7 +35,7 @@ export const LEGACY_COHORT_R2 = [
 ] as const;
 
 type CohortOrder =
-  | { kind: "unload" | "wall-foot" | "door-foot" | "test" | "unknown" | "close"; at: number }
+  | { kind: "greet" | "lead" | "unload" | "wall-foot" | "door-foot" | "test" | "unknown" | "close"; at: number }
   | { kind: "approach"; at: number; choice: CohortChoice }
   | { kind: "listen"; at: number; speaker: typeof LEGACY_COHORT_R2[number]["id"] };
 type EpilogueOrder =
@@ -45,7 +50,8 @@ type ClanBerthProofR2 = {
 type ClanCrewProofR2 = { id: ClanShipNpcId; room: ClanShipRoomId };
 type StoredEpilogueOrder = EpilogueOrder |
   { kind: "belongings"; at: number; clanProof: ClanBerthProofR2 } |
-  { kind: "relations"; at: number; clanProof: ClanCrewProofR2[] };
+  { kind: "relations"; at: number; clanProof: ClanCrewProofR2[] } |
+  { kind: "belongings"; at: number; haltOperationId: string };
 type Journal<Order> = { site: LegacySiteR2; events: Order[] };
 export type LegacyFinaleR2 = {
   version: 1;
@@ -55,7 +61,8 @@ export type LegacyFinaleR2 = {
   epilogue?: Journal<StoredEpilogueOrder>;
 };
 type LegacySave = CompanionCampaign & Pick<SaveGame, "originV151" | "residenceV149" | "shipAcquisitionV89" |
-  "legacyFinaleR2" | "tribunalV147" | "clanShipIncidents" | "clanShipTrophyHearing">;
+  "legacyFinaleR2" | "tribunalV147" | "clanShipIncidents" | "clanShipTrophyHearing"> & LegacyHaltSave;
+type LegacyHaltSave = Pick<SaveGame, "createdAt" | "homeworld" | "homeworldRegionV68" | "profile" | "prologue">;
 
 const record = (value: unknown): value is Record<string, unknown> => !!value && typeof value === "object" && !Array.isArray(value);
 const closeTo = (at: number, x: number) => Math.abs(at - x) <= 1;
@@ -77,6 +84,45 @@ export function legacyResidenceSiteR2(save: Pick<LegacySave, "residenceV149">, h
 export function legacyShipSiteR2(save: LegacySave): LegacySiteR2 | null {
   const hull = shipReceiptV161(save).receipt;
   return hull ? { kind: "ship", id: hull.instanceId } : null;
+}
+
+const halt = BIBLE_CULTURAL_BINDING_V86;
+const legacyHaltOperationPatternR2 = /^D6-W-CULT-25:[\w:-]{1,100}$/;
+
+function resolvedHaltReceiptR2(save: Pick<LegacyHaltSave, "createdAt" | "homeworld">, operationId: string) {
+  const ledger = normalizeBibleSceneLedgerV86(save.homeworld.bibleScenesV86);
+  if (ledger?.ownerSaveCreatedAt !== save.createdAt) return null;
+  return ledger.receipts.find(receipt => receipt.operationId === operationId && receipt.status === "resolved") ?? null;
+}
+
+function currentHaltReceiptR2(save: LegacyHaltSave, position = save.homeworldRegionV68) {
+  const region = normalizeHomeworldRegionV68(position);
+  if (!region || region.regionId !== halt.regionId || region.zone !== "village" || region.pendingFieldEvent) return null;
+  const context = bibleCulturalContextV86({
+    save, ownerSaveCreatedAt: save.createdAt, region, sceneActive: true, focused: true, suspended: false,
+    host: { id: halt.npcId, present: true, alive: true, conscious: true },
+    table: { id: halt.tableId, ...halt.table },
+  });
+  return context.eligible && context.operationId ? resolvedHaltReceiptR2(save, context.operationId) : null;
+}
+
+export function legacyHaltSiteR2(save: LegacyHaltSave, position?: LegacyHaltSave["homeworldRegionV68"]): LegacySiteR2 | null {
+  return currentHaltReceiptR2(save, position) ? { kind: "halt", id: halt.siteId } : null;
+}
+
+function haltEpilogueOperationR2(state: LegacyFinaleR2 | null | undefined): string | null {
+  if (state?.epilogue?.site.kind !== "halt") return null;
+  const first = state.epilogue.events[0];
+  return first && "haltOperationId" in first ? first.haltOperationId : null;
+}
+
+export function legacyHaltReadoutR2(save: Pick<LegacySave, "createdAt" | "homeworld" | "legacyFinaleR2">) {
+  const operation = haltEpilogueOperationR2(save.legacyFinaleR2);
+  const receipt = operation ? resolvedHaltReceiptR2(save, operation) : null;
+  return {
+    belongings: receipt ? [`Relevé des Crêtes · ${receipt.returnProof.trailCount} indices remis`] : [],
+    relations: receipt ? [halt.npcName] : [],
+  };
 }
 
 function clanBerthAtTrophiesR2(save: Pick<LegacySave, "createdAt" | "clanShipDocking">) {
@@ -139,6 +185,7 @@ export function legacyClanShipReadoutR2(state: LegacyFinaleR2 | null | undefined
 
 function siteHeld(save: LegacySave, site: LegacySiteR2): boolean {
   if (site.kind === "clan-ship") return legacyClanShipSiteR2(save)?.id === site.id;
+  if (site.kind === "halt") return legacyHaltSiteR2(save)?.id === site.id;
   return site.kind === "residence"
     ? legacyResidenceSiteR2(save, site.id) !== null : legacyShipSiteR2(save)?.id === site.id;
 }
@@ -146,7 +193,9 @@ function siteHeld(save: LegacySave, site: LegacySiteR2): boolean {
 export function legacySceneRefusalR2(save: LegacySave, site: LegacySiteR2, scene: LegacySceneR2): string | null {
   const endingId = legacyOriginEndingR2(save);
   if (!endingId) return "La clôture de la voie d’origine doit d’abord être jouée.";
-  if (!siteHeld(save, site)) return "Le lieu doit t’avoir été effectivement remis.";
+  if (!siteHeld(save, site)) return site.kind === "halt"
+    ? "Rejoins la table des Crêtes après avoir consigné ta halte."
+    : "Le lieu doit t’avoir été effectivement remis.";
   if (scene === "cohort") {
     if (site.kind !== "residence" || getChronicleRank(save.prologue?.chronicle) !== "ancient") {
       return "Le retour de la cohorte se joue au foyer après la reconnaissance Ancient.";
@@ -160,16 +209,20 @@ export function legacySceneRefusalR2(save: LegacySave, site: LegacySiteR2, scene
   return journal && !sameSite(journal.site, site) ? "Ce récit se reprend dans le lieu où il a commencé." : null;
 }
 
+type CohortArrivalR2 = "waiting" | "greeted" | "inside";
 export type LegacyCohortViewR2 = {
-  at: number; loaded: boolean; wallFoot: boolean; doorFoot: boolean; failedAt: number | null;
+  at: number; arrival: CohortArrivalR2; loaded: boolean; wallFoot: boolean; doorFoot: boolean; failedAt: number | null;
   steady: boolean; path: CohortChoice | null; heard: string[]; unknown: boolean; complete: boolean;
 };
 export type LegacyEpilogueViewR2 = {
   at: number; belongings: boolean; relations: boolean; choice: EpilogueChoice | null; complete: boolean;
 };
-const emptyCohort = (): LegacyCohortViewR2 => ({
-  at: 2, loaded: true, wallFoot: false, doorFoot: false, failedAt: null, steady: false, path: null, heard: [], unknown: false, complete: false,
+const emptyCohort = (arrival: CohortArrivalR2 = "waiting"): LegacyCohortViewR2 => ({
+  at: 2, arrival, loaded: true, wallFoot: false, doorFoot: false, failedAt: null, steady: false,
+  path: null, heard: [], unknown: false, complete: false,
 });
+// Older returns began directly at the support. Their existing actions replay in place.
+const cohortStart = (first?: unknown) => emptyCohort(record(first) && first.kind === "unload" ? "inside" : "waiting");
 const emptyEpilogue = (): LegacyEpilogueViewR2 => ({ at: 2, belongings: false, relations: false, choice: null, complete: false });
 
 function cohortStep(view: LegacyCohortViewR2, order: CohortOrder): { view?: LegacyCohortViewR2; message: string } {
@@ -177,6 +230,18 @@ function cohortStep(view: LegacyCohortViewR2, order: CohortOrder): { view?: Lega
   const next = { ...view, at };
   const feet = Number(view.wallFoot) + Number(view.doorFoot);
   if (view.complete) return { message: "Ce retour a déjà été consigné." };
+  if (view.arrival === "waiting") {
+    if (kind === "greet" && closeTo(at, 2)) {
+      return { view: { ...next, arrival: "greeted" }, message: "On peut te montrer notre récit ? Le support penche sous la pièce." };
+    }
+    return { message: "Rejoins les jeunes qui attendent au seuil." };
+  }
+  if (view.arrival === "greeted") {
+    if (kind === "lead" && closeTo(at, 8)) {
+      return { view: { ...next, arrival: "inside" }, message: "La cohorte a rejoint le support. Regarde d’abord ce qui le fait pencher." };
+    }
+    return { message: "Montre-leur la place libre près du support." };
+  }
   if (!view.steady) {
     if (kind === "unload" && view.loaded && closeTo(at, 11)) {
       return { view: { ...next, loaded: false }, message: "La charge est au sol. Tu peux toucher les pieds du support." };
@@ -234,8 +299,9 @@ function epilogueStep(view: LegacyEpilogueViewR2, order: EpilogueOrder, choices:
 }
 
 export function legacyCohortViewR2(state?: LegacyFinaleR2 | null): LegacyCohortViewR2 {
-  let result = emptyCohort();
-  for (const event of state?.cohort?.events ?? []) {
+  const events = state?.cohort?.events ?? [];
+  let result = cohortStart(events[0]);
+  for (const event of events) {
     const effect = cohortStep(result, event);
     if (!effect.view) return emptyCohort();
     result = effect.view;
@@ -248,6 +314,7 @@ export function legacyEpilogueChoicesR2(state: LegacyFinaleR2 | null | undefined
     const { belongings, crew } = clanEpilogueEvidenceR2(state);
     return belongings ? (crew.length ? ["depart", "welcome", "transmit"] : ["depart", "transmit"]) : ["depart"];
   }
+  if (site.kind === "halt") return haltEpilogueOperationR2(state) ? epilogueOptions : ["depart"];
   const visit = state?.cohort;
   const checked = legacyCohortViewR2(state);
   if (visit && sameSite(visit.site, site) && checked.complete) {
@@ -270,6 +337,7 @@ export function legacyEpilogueViewR2(state: LegacyFinaleR2 | null | undefined, s
 function validSite(raw: unknown): raw is LegacySiteR2 {
   if (!record(raw) || Object.keys(raw).length !== 2) return false;
   if (raw.kind === "clan-ship") return raw.id === CLAN_SHIP_ID;
+  if (raw.kind === "halt") return raw.id === halt.siteId;
   return (raw.kind === "residence" || raw.kind === "ship") &&
     typeof raw.id === "string" && /^[A-Za-z0-9:_-][A-Za-z0-9:._-]{0,119}$/.test(raw.id);
 }
@@ -278,7 +346,7 @@ function validCohortOrder(raw: unknown): raw is CohortOrder {
   const fields = Object.keys(raw).length;
   if (raw.kind === "approach") return fields === 3 && cohortOptions.some(x => x === raw.choice);
   if (raw.kind === "listen") return fields === 3 && LEGACY_COHORT_R2.some(x => x.id === raw.speaker);
-  return fields === 2 && ["unload", "wall-foot", "door-foot", "test", "unknown", "close"].some(x => x === raw.kind);
+  return fields === 2 && ["greet", "lead", "unload", "wall-foot", "door-foot", "test", "unknown", "close"].some(x => x === raw.kind);
 }
 function validEpilogueOrder(raw: unknown): raw is EpilogueOrder {
   if (!record(raw) || !position(raw.at)) return false;
@@ -287,6 +355,11 @@ function validEpilogueOrder(raw: unknown): raw is EpilogueOrder {
 }
 
 function parseStoredEpilogueOrderR2(raw: unknown, site: LegacySiteR2, owner: string): StoredEpilogueOrder | null {
+  if (site.kind === "halt" && record(raw) && raw.kind === "belongings") {
+    return Object.keys(raw).length === 3 && position(raw.at) && typeof raw.haltOperationId === "string" &&
+      legacyHaltOperationPatternR2.test(raw.haltOperationId)
+      ? { kind: raw.kind, at: raw.at, haltOperationId: raw.haltOperationId } : null;
+  }
   if (site.kind !== "clan-ship") return validEpilogueOrder(raw) ? raw : null;
   if (!record(raw) || !position(raw.at)) return null;
   if (raw.kind === "belongings") {
@@ -321,8 +394,8 @@ export function normalizeLegacyFinaleR2(raw: unknown, ownerCreatedAt: string): L
   if (raw.cohort !== undefined) {
     const part = raw.cohort;
     if (!record(part) || !validSite(part.site) || part.site.kind !== "residence" ||
-        !Array.isArray(part.events) || !part.events.length || part.events.length > 16) return null;
-    let view = emptyCohort();
+        !Array.isArray(part.events) || !part.events.length || part.events.length > 18) return null;
+    let view = cohortStart(part.events[0]);
     const events: CohortOrder[] = [];
     for (const event of part.events) {
       if (!validCohortOrder(event)) return null;
@@ -351,6 +424,11 @@ export function normalizeLegacyFinaleR2(raw: unknown, ownerCreatedAt: string): L
   return state;
 }
 
+function haltEpilogueMatchesSaveR2(save: LegacySave) {
+  const operation = haltEpilogueOperationR2(save.legacyFinaleR2);
+  return !!operation && resolvedHaltReceiptR2(save, operation) !== null;
+}
+
 function clanEpilogueMatchesSaveR2(save: LegacySave) {
   const { belongings, crew } = clanEpilogueEvidenceR2(save.legacyFinaleR2);
   // Docking and posts are historical evidence, so leaving the ship or changing
@@ -365,8 +443,9 @@ export function legacyFinaleMatchesSaveR2(save: LegacySave): boolean {
   const state = save.legacyFinaleR2;
   return !state || (state.ownerCreatedAt === save.createdAt && state.endingId === legacyOriginEndingR2(save) &&
     (!state.cohort || !legacySceneRefusalR2(save, state.cohort.site, "cohort")) &&
-    (!state.epilogue || (state.epilogue.site.kind === "clan-ship"
-      ? clanEpilogueMatchesSaveR2(save) : !legacySceneRefusalR2(save, state.epilogue.site, "epilogue"))));
+    (!state.epilogue || (state.epilogue.site.kind === "clan-ship" ? clanEpilogueMatchesSaveR2(save) :
+      state.epilogue.site.kind === "halt" ? haltEpilogueMatchesSaveR2(save) :
+        !legacySceneRefusalR2(save, state.epilogue.site, "epilogue"))));
 }
 
 export function advanceLegacyFinaleR2(save: LegacySave, site: LegacySiteR2, command: LegacyCommandR2) {
@@ -386,6 +465,11 @@ export function advanceLegacyFinaleR2(save: LegacySave, site: LegacySiteR2, comm
     const action = epilogueStep(legacyEpilogueViewR2(before, site), command.order, legacyEpilogueChoicesR2(before, site));
     if (!action.view) return { message: action.message };
     let stored: StoredEpilogueOrder = command.order;
+    if (site.kind === "halt" && command.order.kind === "belongings") {
+      const receipt = currentHaltReceiptR2(save);
+      if (!receipt) return { message: "Le relevé de cette halte doit d’abord être consigné." };
+      stored = { kind: "belongings", at: command.order.at, haltOperationId: receipt.operationId };
+    }
     if (site.kind === "clan-ship") {
       if (command.order.kind === "belongings") {
         const berth = clanBerthAtTrophiesR2(save);

@@ -100,3 +100,30 @@ export function legacyClanFixture({ realized = true, recruit = true } = {}) {
   }
   return moveLegacyClanFixture(save, { type: "move-room", roomId: "trophees" });
 }
+
+const cultural = qa.load("app/game/systems/bibleSceneCulturalV86.ts");
+const haltBinding = cultural.BIBLE_CULTURAL_BINDING_V86;
+export const legacyRegions = qa.load("app/game/systems/homeworldRegionsV68.ts");
+export const legacyHaltApproach = haltBinding.approach;
+
+export function legacyHaltFixture({ realized = true, walkthrough = true, approach = haltBinding.approach } = {}) {
+  const save = legacyFixture({ realized, ancient: false });
+  const region = legacyRegions.createHomeworldRegionV68(haltBinding.regionId, "legacy-epilogue-crests", true);
+  // Prepared regional return admission, matching the existing V86 fixture.
+  // Completing the halt below still uses the actual cultural reducer.
+  Object.assign(region, { tick: 3600, walked: 8000, greeted: ["guide"], traces: ["trail-1", "trail-2", "trail-3"],
+    observedTicks: 90, reported: true, eventReceipts: ["track", "report"], actor: { ...region.actor, ...approach } });
+  save.homeworldRegionV68 = region;
+  if (walkthrough) {
+    const context = cultural.bibleCulturalContextV86({ save, ownerSaveCreatedAt: save.createdAt, region,
+      sceneActive: true, focused: true, suspended: false, host: { id: haltBinding.npcId, present: true, alive: true, conscious: true },
+      table: { id: haltBinding.tableId, ...haltBinding.table } });
+    assert.ok(context.eligible, context.denial);
+    for (const type of ["open", "choose-b", "reply", "sit", "listen", "tidy"]) {
+      const result = cultural.applyBibleSceneActionV86(save.homeworld.bibleScenesV86, { type }, context);
+      assert.ok(result.ok, result.message);
+      save.homeworld.bibleScenesV86 = result.ledger;
+    }
+  }
+  return save;
+}

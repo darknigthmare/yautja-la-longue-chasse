@@ -48,6 +48,7 @@ export interface HomeworldRegionV68Props {
   /** Atomically acknowledge this exact field event and store its pending checkpoint. */
   onFieldEvent?(event: RegionFieldEventV68, state: HomeworldRegionStateV68): boolean;
   onBibleSceneAction?(action: BibleSceneActionV86, state: HomeworldRegionStateV68): BibleSceneResultV86;
+  onOpenHaltEpilogue?(state: HomeworldRegionStateV68): boolean;
   onTrainingYardO6?(order: TrainingYardOrderO6 | ContinuationOrderO6 | SoloReturnOrderO6, state: HomeworldRegionStateV68): boolean;
   onReachCity(state?: HomeworldRegionStateV68): boolean | void;
   onOpenSettings?(): void;
@@ -435,7 +436,15 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
       <small>{controlActionShortcut('hunt.pause', save.settings.controlBindings)} · Pause</small></footer>
     {modal && <div className={styles.backdrop}><div className={`${styles.dialog} ${localPanel === 'atlas' ? styles.atlasDialog : ''}`} role="dialog" aria-modal="true" aria-labelledby="region-v68-title" tabIndex={-1} ref={panel}>
       <span>{definition.name}</span><h2 id="region-v68-title">{error ? 'Reprise conservée' : localPanel === 'atlas' ? 'Chemins du village' : selectedActivity ? selectedActivity.name : localPanel === 'residence-threshold' ? 'Au seuil de la résidence' : localPanel === 'interior' ? serviceBuilding?.label : notice ? 'Paroles du clan' : !gate.allowed ? 'Départ accompagné requis' : state.status === 'at-city' ? 'La cité est devant toi' : state.zone === 'passage' ? definition.routeTitle : definition.village}</h2>
-      {error ? <p>{error}</p> : localPanel==='bible-v86'?<BibleSceneCulturalV86 ledger={save.homeworld.bibleScenesV86} context={bibleContext} onAction={bibleAction} message={bibleMessage} onClose={()=>{bibleOpenRef.current=false;resume();}} />:localPanel === 'atlas' ? <HomeworldVillageAtlasV70 regionId={regionId} actor={state.actor} disabled={!localAllowed} onChoose={chooseDestination} /> : selectedActivity ? <div data-village-service-v70={selectedActivity.id} data-service-progress={activityProgress}>
+      {error ? <p>{error}</p> : localPanel === 'bible-v86' ?
+        <BibleSceneCulturalV86 ledger={save.homeworld.bibleScenesV86} context={bibleContext} onAction={bibleAction}
+          message={bibleMessage} onClose={() => { bibleOpenRef.current = false; resume(); }}
+          onOpenHaltEpilogue={props.onOpenHaltEpilogue ? () => {
+            const live = current.current;
+            if (!live || !props.onOpenHaltEpilogue?.(structuredClone(live))) {
+              setBibleMessage("La position au refuge doit être confirmée avant de revoir le trajet.");
+            }
+          } : undefined} /> : localPanel === 'atlas' ? <HomeworldVillageAtlasV70 regionId={regionId} actor={state.actor} disabled={!localAllowed} onChoose={chooseDestination} /> : selectedActivity ? <div data-village-service-v70={selectedActivity.id} data-service-progress={activityProgress}>
         <p>{selectedActivity.description}</p><p className={styles.serviceInstruction}>{activityProgress >= 3 ? selectedActivity.completion : `${activityProgress + 1}/3 · ${selectedActivity.steps[activityProgress]}`}</p>
         {activityProgress < 3 && <div className={styles.serviceChoices}>{selectedActivity.choices.map((choice, i) => <button key={choice} data-village-activity-choice-v70={i} disabled={!localAllowed} onClick={() => setActivitySession(previous => stepVillageActivityV70(previous, current.current ?? state, selectedActivity.id, i, localAllowed))}>{choice}</button>)}</div>}
         {activityProgress < 3 && <p role="status">{activitySession.feedback[selectedActivity.id]}</p>}

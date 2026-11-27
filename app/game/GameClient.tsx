@@ -4,7 +4,8 @@ import ResidencePanelV149 from "./ResidencePanelV149";
 import { residenceTrophiesR2M038 } from "./systems/trophyIntroductionR2M038";
 import { originEndingV170 } from "./systems/originEndingsV170";
 import {
-  advanceLegacyFinaleR2, legacyClanShipReadoutR2, legacyClanShipSiteR2, legacyOriginEndingR2, legacyResidenceSiteR2,
+  advanceLegacyFinaleR2, legacyClanShipReadoutR2, legacyClanShipSiteR2, legacyHaltReadoutR2, legacyHaltSiteR2,
+  legacyOriginEndingR2, legacyResidenceSiteR2,
   legacySceneRefusalR2, legacyShipSiteR2,
   type LegacyCommandR2, type LegacySceneR2, type LegacySiteR2,
 } from "./systems/legacyFinaleR2";
@@ -3180,13 +3181,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const legacyClanTrophySiteR2 = screen === "trophies" && hubLocation === "clan-ship" &&
     stationReturnScreen === "clan-ship" ? legacyClanShipSiteR2(save) : null;
   const legacyClanReadoutR2 = legacyClanShipReadoutR2(save.legacyFinaleR2);
+  const legacyHaltReadout = legacyVisitR2?.site.kind === "halt" ? legacyHaltReadoutR2(save) : null;
   const legacySuspendedR2 = settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue ||
     campaignSaveBusy || !!resumableHunt || !gameFocusedV89;
   const openLegacyFinaleR2 = useCallback((scene: LegacySceneR2, site: LegacySiteR2, siteLabel: string) => {
     if (legacySuspendedR2 || (screen !== "deck" && screen !== "homeworld-region-v68" && screen !== "trophies")) return;
     if (site.kind === "clan-ship"
       ? screen !== "trophies" || !legacyClanTrophySiteR2 || Boolean(trophyWorkshop) || pendingTrophyCommitRef.current
-      : screen === "trophies") return;
+      : screen === "trophies" || (site.kind === "halt" && screen !== "homeworld-region-v68")) return;
     const current = saveRef.current;
     if (legacySceneRefusalR2(current, site, scene)) return;
     setLegacyVisitR2({ scene, site, siteLabel, from: screen });
@@ -3358,6 +3360,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       !canEnterHomeworldRegionV68(current, state.regionId).allowed || !canAdvanceHomeworldRegionV68(current.homeworldRegionV68, state)) return false;
     return persistSocialProgress({ homeworldRegionV68: state, ...settleResidenceLifeForRegionV150(current, state) });
   }, [entry.ownerCreatedAt, persistSocialProgress, settleResidenceLifeForRegionV150]);
+  const openLegacyHaltEpilogueR2 = useCallback((region: HomeworldRegionStateV68): boolean => {
+    const current = saveRef.current;
+    if (screen !== "homeworld-region-v68" || legacySuspendedR2) return false;
+    const site = legacyHaltSiteR2(current, region);
+    if (!site || !legacyOriginEndingR2(current) ||
+        (current.legacyFinaleR2?.epilogue && current.legacyFinaleR2.epilogue.site.kind !== "halt") ||
+        !checkpointHomeworldRegionV68(region)) return false;
+    openLegacyFinaleR2("epilogue", site, BIBLE_CULTURAL_BINDING_V86.villageName);
+    return true;
+  }, [checkpointHomeworldRegionV68, legacySuspendedR2, openLegacyFinaleR2, screen]);
+
   const setupTrainingYardO6 = useCallback((order: TrainingYardOrderO6 | ContinuationOrderO6 | SoloReturnOrderO6, region: HomeworldRegionStateV68): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "homeworld-region-v68" ||
@@ -5577,13 +5590,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               scene={legacyVisitR2.scene} site={legacyVisitR2.site} siteLabel={legacyVisitR2.siteLabel}
               identity={save} state={save.legacyFinaleR2} endingTitle={originEndingV170(legacyOriginEndingR2(save))?.title ?? ""}
               disabled={legacySuspendedR2} notice={legacyNoticeR2} onCommand={onLegacyCommandR2} onClose={closeLegacyFinaleR2}
-              belongings={legacyVisitR2.site.kind === "clan-ship" ? legacyClanReadoutR2.belongings :
+              belongings={legacyHaltReadout ? legacyHaltReadout.belongings :
+                legacyVisitR2.site.kind === "clan-ship" ? legacyClanReadoutR2.belongings :
                 (legacyVisitR2.site.kind === "residence" ? residenceTrophiesR2M038(save, legacyVisitR2.site.id) :
                   save.trophies.filter(item => {
                     const display = save.trophyUsagesV147?.assignments[item.id];
                     return display?.usage === "displayed" && display.site === "ship";
                   })).map(item => item.targetName)}
-              relations={legacyVisitR2.site.kind === "clan-ship" ? legacyClanReadoutR2.relations :
+              relations={legacyHaltReadout ? legacyHaltReadout.relations :
+                legacyVisitR2.site.kind === "clan-ship" ? legacyClanReadoutR2.relations :
                 Object.values(save.originV151?.relations ?? {}).map(item => item.name)} />
           </Suspense>
         </div>
@@ -5593,6 +5608,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <HomeworldRegionV68 contractsValue={save.homeworld.contractsV68} key={save.createdAt+":"+save.homeworldRegionV68.runId} save={save} gauntletVariantId={hunterGauntlet.equippedId} regionId={save.homeworldRegionV68.regionId} checkpoint={save.homeworldRegionV68}
             suspended={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy} onCheckpoint={checkpointHomeworldRegionV68}
             onFieldEvent={fieldHomeworldRegionV68} onTrainingYardO6={setupTrainingYardO6} onBibleSceneAction={bibleActionHomeworldV86} onReachCity={reachCityHomeworldRegionV68} onOpenSettings={() => setSettingsOpen(true)}
+            onOpenHaltEpilogue={legacyOriginEndingR2(save) && (!save.legacyFinaleR2?.epilogue ||
+              save.legacyFinaleR2.epilogue.site.kind === "halt") ? openLegacyHaltEpilogueR2 : undefined}
             residenceV149={(buildingId: string, disabled: boolean, threshold = false) => {
               const house = houseForBuildingV149(save.homeworldRegionV68!.regionId, buildingId);
               if (!house) return null;

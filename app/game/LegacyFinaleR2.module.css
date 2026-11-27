@@ -56,3 +56,13 @@
   border-color: #ac8961;
 }
 .room[data-site="clan-ship"] .mark[data-near="true"] { color: #f1d18d; }
+.room[data-site="halt"] {
+  border-color: #7d8fa4;
+  background: linear-gradient(0deg, #211e18 0 20%, #484136 23%, #26324066 76%),
+    url("/game/backgrounds/ice-depth-v4.webp") center 60% / cover no-repeat, #263240;
+}
+.haltTable, .haltHost { position: absolute; bottom: 24%; pointer-events: none; }
+.haltHost { z-index: 2; }
+@media (prefers-reduced-motion: no-preference) {
+  .scene[data-legacy-cohort-arrival] .youth { transition: left 200ms ease-out; }
+}
