@@ -693,3 +693,11 @@ comparées à leurs blobs Git et à leurs SHA-256. La proie de contrôle initial
 et le segment terminal préparé sont déclarés ; cette recette ne devient pas
 une campagne complète de huit missions. Les huit Restant V112 et les limites
 humaines, matérielles et artistiques conservent leurs statuts propres.
+
+## Intégration des modes et de la campagne du 27 novembre 2026
+
+Le relevé courant couvre les quêtes de campagne modifiées, les entrées de The Isles et les ressources servies du Pit. Les deux catalogues de contenu et les copies publiques utilisées par la sélection sont déclarés dans `scripts/runtime-v113-inputs.json`.
+
+Le [relevé du Pit](../../the-pit/RUNTIME_INVENTAIRE_20261127.json) conserve les références du guide, des illustrations et de la vérification de reprise. Les illustrations de revue sont distinctes des sprites de combat à produire.
+
+La [recette d’intégration](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46026449432) régénère l’inventaire sur le commit exact. Les inventaires historiques gardent leurs propres preuves.

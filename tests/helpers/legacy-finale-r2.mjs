@@ -60,3 +60,43 @@ export function legacyPlayer(save = legacyFixture()) {
     },
   };
 }
+
+const docks = qa.load("app/game/systems/clanShipDocking.ts");
+const operations = qa.load("app/game/systems/clanShipOperations.ts");
+const fleet = qa.load("app/game/systems/progression.ts");
+
+export function moveLegacyClanFixture(save, ...commands) {
+  const context = { ownerCreatedAt: save.createdAt, personalShipId: fleet.loadShipProgression(save).selectedShipId };
+  let state = save.clanShipDocking ?? docks.createClanShipDockingState(context.ownerCreatedAt, context.personalShipId);
+  for (const action of commands) {
+    if (state.status === "aboard" && action.type === "move-room" && action.roomId === state.roomId) continue;
+    const result = docks.actClanShipDocking(state, action, context);
+    assert.ok(result.accepted, result.message);
+    state = result.state;
+  }
+  return { ...save, clanShipDocking: state };
+}
+
+export function legacyClanFixture({ realized = true, recruit = true } = {}) {
+  let save = { ...legacyFixture({ realized, ancient: false }), homeworldRegionV68: null };
+  save = moveLegacyClanFixture(save, { type: "approach" }, { type: "dock" }, { type: "board" });
+  if (recruit) {
+    // The setup plays the existing berth, onboarding, audit and recruitment
+    // reducers. Only the separate M30 authoring prerequisite is test admission.
+    let state = operations.createClanShipOperations(save.createdAt);
+    const act = (room, order) => {
+      save = moveLegacyClanFixture(save, { type: "move-room", roomId: room });
+      const result = operations.actClanShipOperations(state, { ...order, expectedRevision: state.revision },
+        { ownerCreatedAt: save.createdAt, docking: save.clanShipDocking, campaign: save });
+      assert.ok(result.accepted, result.message);
+      state = result.state;
+      save.clanShipOperations = state;
+    };
+    for (const step of operations.CLAN_SHIP_ONBOARDING_STEPS) act(step.roomId, { type: "onboard-step", stepId: step.id });
+    act("conseil", { type: "accept-mandate" });
+    act("conseil", { type: "accept-contract", contractId: "ship-armory-audit" });
+    for (const step of operations.clanShipContract("ship-armory-audit").steps) act(step.roomId, { type: "interior-step", stepId: step.id });
+    act("armurerie", { type: "recruit", npcId: "iron-claw" });
+  }
+  return moveLegacyClanFixture(save, { type: "move-room", roomId: "trophees" });
+}
