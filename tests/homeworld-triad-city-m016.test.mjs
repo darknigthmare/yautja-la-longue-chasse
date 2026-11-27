@@ -93,3 +93,35 @@ test("M016 rejects imported foreign ownership and write-time skipping or a dista
   assert.equal(saves.writeSaveWithStatus(valid, storage).persisted, true);
   assert.deepEqual(saves.loadSaveWithStatus(storage).save.homeworld.triadCityM016, ledger);
 });
+
+test("M016 resumes the next contact from a single visited room and plans the real doors in both orders", () => {
+  const save = baseSave();
+  const routes = browserModules.load("app/game/systems/homeworldWayfindingV112.ts");
+  assert.deepEqual(model.triadCityRoutesM016().map(model.triadCityAtlasTargetM016), ["point:forge-service", "point:training-service"]);
+  for (const [first, second] of [[saar, vek], [vek, saar]]) {
+    const from = checkpoint(first, save);
+    const ledger = { version: 1, ownerCreatedAt: save.createdAt, steps: { saar: 0, vek: 0,
+      [first.partner]: first.demonstration.length + 1 } };
+    const candidate = { ...save, homeworld: { ...save.homeworld, triadCityM016: ledger, locationV77: from } };
+    const reloaded = saves.parseSaveImport(saves.exportSave(candidate)).save;
+    assert(reloaded);
+    const [next] = model.triadCityRoutesM016(reloaded.homeworld.triadCityM016, from.interiorId);
+    assert.equal(next.station.partner, second.partner);
+    assert.equal(next.purpose, "meeting");
+    const plan = routes.homeworldRoutePlanV112(reloaded, {
+      levelId: from.levelId, interiorId: from.interiorId, actor: from.local,
+    }, model.triadCityAtlasTargetM016(next));
+    assert.equal(plan.status, "reachable", first.partner + " to " + second.partner + ": " + plan.reason);
+    assert.equal(plan.stages[0]?.kind, "exit");
+    assert.equal(plan.stages[0]?.interiorId, first.roomId);
+    assert(plan.stages.some(stage => stage.kind === "enter" && stage.interiorId === null));
+    assert.equal(plan.stages.at(-1)?.kind, "interact");
+    assert.equal(plan.stages.at(-1)?.interiorId, second.roomId);
+    assert(plan.distance > 200, "The streets form an actual route between the two rooms");
+  }
+  const complete = { version: 1, ownerCreatedAt: save.createdAt, steps: { saar: 3, vek: 4 } };
+  assert.deepEqual(model.triadCityRoutesM016(complete, vek.roomId), []);
+  const [gallery] = model.triadCityRoutesM016(complete, saar.roomId);
+  assert.equal(gallery.purpose, "gallery");
+  assert.equal(model.triadCityAtlasTargetM016(gallery), "point:training-service");
+});

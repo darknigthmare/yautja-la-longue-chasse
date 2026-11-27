@@ -1,7 +1,7 @@
 import HomeworldCivilianV72 from "./HomeworldCivilianV72";
 import {
-  triadCityInvitationReadyM016, triadCityRemainingM016,
-  type TriadCityM016, type TriadCityStationM016,
+  triadCityAtlasTargetM016, triadCityInvitationReadyM016, triadCityRoutesM016,
+  type TriadCityM016, type TriadCityRouteM016, type TriadCityStationM016,
 } from "./systems/homeworldTriadM016";
 import town from "./HomeworldCity.module.css";
 import styles from "./HomeworldTriadM016.module.css";
@@ -22,34 +22,43 @@ export function HomeworldTriadPartnerM016({ station, position, depth, reducedMot
   );
 }
 
-export function HomeworldTriadJournalM016({ ledger, disabled, onGuide }: {
+function routeLabel(route: TriadCityRouteM016) {
+  return route.purpose === "gallery" ? "Rejoindre la galerie par les Terrasses"
+    : `Itinéraire vers ${route.station.name} · ${route.station.district}`;
+}
+
+export function HomeworldTriadJournalM016({ ledger, roomId, disabled, onGuide }: {
   ledger?: TriadCityM016;
+  roomId: string | null;
   disabled: boolean;
   onGuide: (point: string) => void;
 }) {
-  const remaining = triadCityRemainingM016(ledger);
+  const routes = triadCityRoutesM016(ledger, roomId);
   return (
     <section className={town.help} aria-label="Préparer les rencontres de triade" data-homeworld-m016-journal>
       <strong>Former la triade</strong>
-      {remaining.length ? (
+      {routes.length ? (
         <ul className={styles.routes}>
-          {remaining.map(station => (
-            <li key={station.partner}>
+          {routes.map(route => (
+            <li key={route.station.partner}>
               <button type="button" className="ghost-button small" disabled={disabled}
-                onClick={() => onGuide("point:" + station.pointId)}>{station.name} · {station.district}</button>
+                data-homeworld-m016-route={route.station.partner}
+                onClick={() => onGuide(triadCityAtlasTargetM016(route))}>{routeLabel(route)}</button>
             </li>
           ))}
         </ul>
-      ) : <p>Saar et Vek se donnent rendez-vous dans la galerie. Parle au maître des terrasses.</p>}
+      ) : <p>Saar et Vek t’attendent dans la galerie. Parle au maître des terrasses.</p>}
     </section>
   );
 }
 
-export default function HomeworldTriadM016({ station, step, disabled, onAdvance }: {
+export default function HomeworldTriadM016({ station, step, disabled, onward, onAdvance, onGuide }: {
   station: TriadCityStationM016;
   step: number;
   disabled: boolean;
+  onward?: TriadCityRouteM016;
   onAdvance: (step: number) => void;
+  onGuide: (point: string) => void;
 }) {
   const invited = triadCityInvitationReadyM016(station, step);
   const seen = Math.min(step, station.demonstration.length);
@@ -67,7 +76,13 @@ export default function HomeworldTriadM016({ station, step, disabled, onAdvance 
         </div>
       )}
       <p role="status">{station.cues[seen]} · {station.speech[step]}</p>
-      {invited ? <strong>Rendez-vous confirmé</strong> : (
+      {invited ? (
+        <>
+          <strong>Rendez-vous confirmé</strong>
+          {onward && <button type="button" data-homeworld-m016-onward={onward.station.partner} disabled={disabled}
+            onClick={() => onGuide(triadCityAtlasTargetM016(onward))}>{routeLabel(onward)}</button>}
+        </>
+      ) : (
         <button type="button" data-homeworld-m016-advance={station.partner} disabled={disabled} onClick={() => onAdvance(step)}>
           {station.demonstration[step] ?? "Proposer de former la triade"}
         </button>

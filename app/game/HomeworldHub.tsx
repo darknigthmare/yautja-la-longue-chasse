@@ -103,7 +103,7 @@ import { canStartSoloV69 } from "./systems/campaignSoloV69";
 import { canStartSoloV70 } from "./systems/campaignSoloV70";
 import { canStartSoloV90 } from "./systems/campaignSoloV90";
 import HomeworldTriadM016, { HomeworldTriadJournalM016, HomeworldTriadPartnerM016 } from "./HomeworldTriadM016";
-import { advanceTriadCityM016, triadCityRemainingM016, triadCityStationM016, type TriadCityStationM016 } from "./systems/homeworldTriadM016";
+import { advanceTriadCityM016, triadCityRemainingM016, triadCityRoutesM016, triadCityStationM016, type TriadCityStationM016 } from "./systems/homeworldTriadM016";
 import { canVisitHomeworldVillagesV69, usesHomeworldYouthAppearanceV69, HOMEWORLD_YOUTH_PLATE_V69 } from "./systems/homeworldAccessV69";
 import { canEnterHomeworldRegionV68, isHomeworldRegionIdV68, type HomeworldRegionIdV68 } from "./systems/homeworldRegionsV68";
 import HomeworldResidentConversationV75 from "./HomeworldResidentConversationV75";
@@ -1804,7 +1804,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     <div className={styles.srOnly} aria-live="polite" aria-atomic="true">{announcement}</div>
     {cargoMigrationMessageV108&&<aside className={cargoStylesV108.migration} role={cargoMigrationPendingV108?'alert':'status'} data-cargo-arrival-recovery-v108><strong>Reprise du point d’arrivée</strong><p>{cargoMigrationMessageV108}</p>{cargoMigrationPendingV108&&<button onClick={()=>{viewportRef.current?.focus({preventScroll:true});commitCargoArrivalV108();}}>Réessayer la reprise du point d’arrivée</button>}</aside>}
     {!upgradeRecoveryPendingV112&&<>
-    {!dialog && canPrepareTriadInCity && <HomeworldTriadJournalM016 ledger={triadCity} disabled={blocked}
+    {!dialog && canPrepareTriadInCity && <HomeworldTriadJournalM016 ledger={triadCity} roomId={interiorId} disabled={blocked}
       onGuide={requestLandmarkV75} />}
     {!dialog&&deferredPlaqueV111&&<HomeworldArchiveContinuationJournalV111 ledger={continuationViewV111} base={plaqueViewV109} actor={actor} actorInStudySpace={levelIdV77==='0'&&!interiorId&&!transitV77&&!skiffV77} blocked={cargoMigrationPendingV108||suspended||paused||inactive||spatialCodexOpen||wayfindingOpenV75||!motionAssetsV74.ready} writePaused={plaqueWritePausedV109} message={plaqueMessageV109} onAction={actContinuationFromWorldV111} onRetry={retryPlaqueV109} onGuide={requestLandmarkV75}/>}
     {!dialog&&!deferredPlaqueV111&&<HomeworldArchivePlaqueJournalV109 ledger={plaqueViewV109} actor={actor} actorInStudySpace={levelIdV77==='0'&&!interiorId&&!transitV77&&!skiffV77} blocked={cargoMigrationPendingV108||suspended||paused||inactive||spatialCodexOpen||wayfindingOpenV75||!motionAssetsV74.ready} writePaused={plaqueWritePausedV109} message={plaqueMessageV109} onAction={actPlaqueFromWorldV109} onRetry={retryPlaqueV109} onGuide={requestLandmarkV75}/>}
@@ -1931,7 +1931,8 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
           {selectedNpc?.id === "terrace-instructor" && save.soloV70?.status === "completed" && <p data-solo-v70-complete>Le premier acte du temple est rapporté. Les salles profondes, la reine et le rite Blooded ne sont pas validés par cette ouverture.</p>}
           {triadCityStation && selectedPoint.id === triadCityStation.pointId && <HomeworldTriadM016 station={triadCityStation}
             step={triadCity?.steps[triadCityStation.partner] ?? 0} disabled={suspended || paused || inactive}
-            onAdvance={step => submitTriadCity(triadCityStation, step)} />}
+            onward={triadCityRoutesM016(triadCity, interiorId).find(route => route.station.partner !== triadCityStation.partner)}
+            onAdvance={step => submitTriadCity(triadCityStation, step)} onGuide={requestLandmarkV75} />}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && onSoloV90 && canStartSoloV90(save) && save.soloV90?.status !== "completed" && <button type="button" data-solo-v90-enter disabled={suspended || paused || inactive} onClick={() => {
             if (suspendedRef.current || pausedRef.current || saveRef.current.createdAt !== save.createdAt || pointInCurrentSpace(actorRef.current, interiorRef.current, levelRefV77.current)?.id !== "training-service") return;
             clearInputs();

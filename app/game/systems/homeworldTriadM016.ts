@@ -49,6 +49,22 @@ export const triadCityInvitationReadyM016 = (station: TriadCityStationM016, step
 export const triadCityRemainingM016 = (ledger?: TriadCityM016) =>
   TRIAD_CITY_STATIONS_M016.filter(station => !triadCityInvitationReadyM016(station, ledger?.steps[station.partner] ?? 0));
 
+export interface TriadCityRouteM016 {
+  station: TriadCityStationM016;
+  purpose: "meeting" | "gallery";
+}
+
+/** The next stop follows the actual invitations and room, including a save
+ * made at the first doorway. The atlas still owns routing and physical entry. */
+export function triadCityRoutesM016(ledger?: TriadCityM016, roomId?: string | null): TriadCityRouteM016[] {
+  const next = triadCityRemainingM016(ledger);
+  if (next.length) return next.map(station => ({ station, purpose: "meeting" }));
+  const terraces = TRIAD_CITY_STATIONS_M016[1];
+  return roomId === terraces.roomId ? [] : [{ station: terraces, purpose: "gallery" }];
+}
+
+export const triadCityAtlasTargetM016 = (route: TriadCityRouteM016) => "point:" + route.station.pointId;
+
 export function normalizeTriadCityM016(value: unknown): TriadCityM016 | null {
   if (!isRecord(value) || value.version !== 1 || typeof value.ownerCreatedAt !== "string" ||
       !Number.isFinite(Date.parse(value.ownerCreatedAt)) || !isRecord(value.steps) ||
