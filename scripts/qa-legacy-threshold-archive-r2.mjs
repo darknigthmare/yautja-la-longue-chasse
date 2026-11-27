@@ -262,7 +262,8 @@ try {
     await walkScene(scene, 6); await action(scene, "belongings").click();
     assert.equal(await action(scene, "transmit").count(), 0);
     await walkScene(scene, 11); await action(scene, "relations").click();
-    assert.match(await scene.locator("[data-legacy-relations]").innerText(), /Coque remise.*droits et entrée à bord attestées/);
+    assert.match(await scene.locator("[data-legacy-belongings]").innerText(), /Coque remise/);
+    assert.match(await scene.locator("[data-legacy-relations]").innerText(), /remise des droits et entrée à bord attestées/);
     await walkScene(scene, 16); await action(scene, "transmit").click();
     assert.ok(await action(scene, "act").isDisabled());
     await capture(page, "m060-vaisseau-accord-du-chantier");
