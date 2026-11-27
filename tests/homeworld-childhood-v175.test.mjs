@@ -142,9 +142,14 @@ function playCeremony(p) {
     p.act("cohort-stow");
   }
   walk(p, 4);
+  const useAtPost = () => game.actChildhoodV175(p.read(), p.read().homeworld.childhoodV175, "use", post);
+  assert.equal(useAtPost().cue, "ceremony-rack");
   p.act("use");
+  assert.equal(useAtPost().cue, undefined);
   walk(p, 7);
+  assert.equal(useAtPost().cue, "objective");
   p.act("use");
+  assert.equal(useAtPost().cue, undefined);
   assert.equal(p.view().position, 8);
 }
 

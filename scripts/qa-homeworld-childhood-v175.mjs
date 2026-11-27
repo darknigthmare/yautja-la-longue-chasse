@@ -74,6 +74,15 @@ try {
   }
   const shot = name => scene.screenshot({ path: resolve(output, name + ".png"), animations: "disabled" });
   await page.goto("http://127.0.0.1:4275");
+  const rackSound = await page.evaluate(async () => {
+    const response = await fetch("/audio/sfx/ceremony-rack/threshold-metal.wav");
+    if (!response.ok) return { status: response.status };
+    const context = new OfflineAudioContext(1, 1, 22050);
+    const decoded = await context.decodeAudioData(await response.arrayBuffer());
+    return { status: response.status, channels: decoded.numberOfChannels, frames: decoded.length };
+  });
+  assert.deepEqual(rackSound, { status: 200, channels: 1, frames: 26019 });
+  report.checks.push("Son de porte original décodé en PCM mono, 1,18 seconde.");
   await boot();
   await act("handoff");
   assert.equal((await view()).trial, "ring");

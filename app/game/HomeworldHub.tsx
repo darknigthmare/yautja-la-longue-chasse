@@ -47,7 +47,7 @@ import HomeworldCivilianV72 from "./HomeworldCivilianV72";
 import { youthCampaignObjective, youthEquipmentSummary } from "./systems/youthCampaign";
 import HomeworldChildhoodV175 from "./HomeworldChildhoodV175";
 import { CHILDHOOD_POST_V175, actChildhoodV175, canEnterYouthAfterChildhoodV175, childhoodViewV175, hasChildhoodFoundationV175,
-  type ChildhoodCommandV175 } from "./systems/homeworldChildhoodV175";
+  type ChildhoodCommandV175, type ChildhoodCueV175 } from "./systems/homeworldChildhoodV175";
 import { getChronicleRank } from "./systems/clanChronicle";
 import { matchesControlAction, type ControlActionId } from "./systems/controlBindings";
 import { shipForId, type ShipId } from "./shipCatalogue";
@@ -172,6 +172,7 @@ export interface HomeworldHubProps {
   onReturnShip(): void;
   /** Available only at the physically reached mentor after the chief. */
   onYouthTraining?(): boolean;
+  onChildhoodSound?(cue: ChildhoodCueV175): void;
   onSoloV66?(): boolean;
   onSoloV67?(): boolean;
   onRegionalLoopM014?(): boolean;
@@ -199,7 +200,7 @@ function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInt
   return original ? { ...original, ...target.position } : null;
 }
 
-export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onAdjutantAppointment, recoveryStorage, ephemeralSession = false, onService, onKennelActionV147, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onRegionalLoopM014, regionalLoopM014Admission, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
+export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onAdjutantAppointment, recoveryStorage, ephemeralSession = false, onService, onKennelActionV147, onReturnShip, onExpedition, onNotify, onYouthTraining, onChildhoodSound, onSoloV66, onSoloV67, onRegionalLoopM014, regionalLoopM014Admission, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
   const [initialLocationV77] = useState(() => resolveCargoArrivalV108(save.homeworld.locationV77,save.createdAt,save.homeworld.cargoV108,{cartographyV104:save.homeworld.cartographyV104,cartographyV105:save.homeworld.cartographyV105,archiveV106:save.homeworld.archiveV106,archiveComparisonV107:save.homeworld.archiveComparisonV107}));
   const [upgradeRecoveryPendingV112,setUpgradeRecoveryPendingV112]=useState(()=>!initialLocationV77.migrationBackup&&homeworldGeometryRecoveryRequiredV112(save.homeworld.locationV77,save.createdAt,homeworldGeometryRecoveryLedgersV112(save.homeworld)));
   const upgradeRecoveryPendingRefV112=useRef(upgradeRecoveryPendingV112);
@@ -1570,6 +1571,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
       setChildhoodMessageV175("Le geste attend une sauvegarde confirmée. Réessaie à ce poste.");
       return;
     }
+    if (proposal.cue) onChildhoodSound?.(proposal.cue);
     setChildhoodMessageV175(proposal.message);
   };
   const selectedNpc = HOMEWORLD_NPCS.find(npc => npc.id === selectedPoint?.npcId);
