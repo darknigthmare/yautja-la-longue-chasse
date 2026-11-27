@@ -1,0 +1,79 @@
+name: Vérifier le manifeste audio courant et la cohérence P0 P1
+
+on:
+  push:
+    branches: [codex/verify-ambient-ci-20261127]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: p0-p1-coherence-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      P0P1_CI_SELECTION: production/clan-war-command-20261109/qa/ci/test-selection.json
+      P0P1_CI_MANIFEST: production/clan-war-command-20261109/qa/ci/runtime-file-inputs.json
+      P0P1_CI_OUTPUT: outputs/clan-war-command-coherence-20261109
+    steps:
+      - name: Checkout current source and portable qualification inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 'a4825664128158700866bea125bb09bd7e530161'
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /scripts/
+            /tests/
+            /desktop/
+            /build/
+            /.github/workflows/
+            /public/game/p0-sprites-20261113/warp/warp-199-empty-bay.png
+            /public/game/ship-interior/v21/console-navigation.webp
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/warp/w02/cedar-pass-1629.webp
+            /production/clan-war-command-20261109/qa/ci/test-selection.json
+            /production/clan-war-command-20261109/qa/ci/runtime-file-inputs.json
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Verify pinned assets and regenerate the current audio inventory in memory
+        run: node scripts/include-p0p1-ci-inputs-20261109.mjs --include --current-audio
+      - name: Keep the historical audio pin strict
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import {spawnSync} from 'node:child_process';
+          const result = spawnSync(process.execPath, ['scripts/include-p0p1-ci-inputs-20261109.mjs', '--check'], {encoding:'utf8'});
+          assert.equal(result.status, 1);
+          assert.match(result.stderr, /AssertionError .*public\/audio\/manifest\.json/);
+          assert.match(result.stderr, /15542 !== 15078/);
+          NODE
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Run actual domain, SSR, save and compatibility cases
+        run: node scripts/check-p0p1-coherence-20261109.mjs
+      - name: Verify the current Warp epoch and the original branch art
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/warp-epochs-v165.test.mjs
+      - name: Preserve individual TAP results and source fingerprints
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p0-p1-coherence-real-regressions
+          path: outputs/clan-war-command-coherence-20261109/
+          retention-days: 30
+          if-no-files-found: warn
