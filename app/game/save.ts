@@ -10,6 +10,7 @@ import { isFutureResidenceV149, normalizeResidenceV149 } from "./systems/residen
 import { isFutureResidenceLifeV150, normalizeResidenceLifeV150 } from "./systems/residenceLifeV150";
 import { isFutureResidenceScenesV154, normalizeResidenceScenesV154 } from "./systems/residenceScenesV154";
 import { isFutureOriginV151, normalizeOriginV151 } from "./systems/originsV151";
+import { continuationMatchesSaveO6, keepsContinuationO6 } from "./systems/originContinuationO6";
 import { isFuturePathObjectsV158, normalizePathObjectsV158 } from "./systems/pathObjectsV158";
 import { isFutureHeritageV152, normalizeHeritageV152 } from "./systems/heritageV152";
 import { hardcoreStatusV155, isFutureHardcoreV155, normalizeHardcoreV155, recordHardcoreDeathV155 } from "./systems/hardcoreV155";
@@ -2128,6 +2129,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
         eliteRecognitionVerified: eliteRecognition.state?.recognized === true,
       })) return { save: null, failure: "invalid-save" };
   if (m037.state && !conquestMatchesCampaignR2M037(save, m037.state)) return { save: null, failure: "invalid-save" };
+  if (!continuationMatchesSaveO6(save)) return { save: null, failure: "invalid-save" };
   if (save.originV151?.trainingYardO6 && Object.keys(save.originV151.trainingYardO6.houses).some(houseId =>
       !save.residenceV149?.rights.includes(houseId))) return { save: null, failure: "invalid-save" };
   if (m035.state && !hasWarNarrativeCampaignR2M035(save)) return { save: null, failure: "invalid-save" };
@@ -2357,6 +2359,9 @@ function persistCampaign(
       if (JSON.stringify(previousWorkshop ?? null) !== JSON.stringify(requestedWorkshop ?? null) &&
           (!requestedWorkshop || !isElderWorkshopSuccessorV172(previousWorkshop, requestedWorkshop) ||
             !canWorkWithClanArmorerV172(previous))) {
+        return failed("save-conflict", previous);
+      }
+      if (!keepsContinuationO6(previous.originV151?.continuationO6, requested.originV151?.continuationO6)) {
         return failed("save-conflict", previous);
       }
       const previousHullProject = previous.clanHullProjectV171;
