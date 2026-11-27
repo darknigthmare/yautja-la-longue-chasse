@@ -32,6 +32,7 @@ const epilogueMarks = [
   { x: 2, label: "Seuil" }, { x: 6, label: "Objets" }, { x: 11, label: "Liens" }, { x: 16, label: "Dernier geste" },
 ];
 const actionLabels = { depart: "Préparer le départ", welcome: "Accueillir ceux qui viennent", transmit: "Transmettre le relevé" } as const;
+const clanActionLabels = { depart: "Rejoindre ton amarrage", welcome: "Saluer l’équipage consigné", transmit: "Classer le relevé du trajet" } as const;
 const anchors = { depart: 2, welcome: 14, transmit: 21 } as const;
 const styleAt = (at: number) => ({ left: 8 + 84 * at / LEGACY_WALK_LIMIT_R2 + "%" });
 const youthSources = [
@@ -46,6 +47,8 @@ export default function LegacyFinaleSceneR2({ scene, site, siteLabel, identity, 
   const [facing, setFacing] = useState<-1 | 1>(1);
   const directionsId = useId();
   const isCohort = scene === "cohort";
+  const clanShip = site.kind === "clan-ship";
+  const gestureLabels = clanShip ? clanActionLabels : actionLabels;
   const complete = isCohort ? cohort.complete : epilogue.complete;
   const near = (target: number) => Math.abs(at - target) <= 1;
   const current = LEGACY_COHORT_R2[cohort.heard.length];
@@ -78,7 +81,7 @@ export default function LegacyFinaleSceneR2({ scene, site, siteLabel, identity, 
   const size = 71;
   const footY = HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.width * size;
 
-  return <section className={styles.scene} data-legacy-finale={scene} data-legacy-at={at} data-legacy-complete={complete}>
+  return <section className={styles.scene} data-legacy-finale={scene} data-legacy-at={at} data-legacy-complete={complete} data-legacy-site={site.kind}>
     <header className={styles.header}>
       <div><p>{siteLabel}</p><h2>{isCohort ? "La nouvelle cohorte revient" : "La longue chasse demeure"}</h2></div>
       <button type="button" onClick={onClose}>Revenir au lieu</button>
@@ -135,11 +138,15 @@ export default function LegacyFinaleSceneR2({ scene, site, siteLabel, identity, 
       {epilogue.belongings && !epilogue.relations && control("relations", "Relire les liens de la voie", 11)}
       {epilogue.relations && !epilogue.choice && legacyEpilogueChoicesR2(state, site).map(choice => <button type="button" key={choice}
         disabled={disabled || !near(16)} data-legacy-action={choice}
-        onClick={() => onCommand({ scene: "epilogue", order: { kind: "choose", at, choice } })}>{actionLabels[choice]}</button>)}
-      {epilogue.choice && !complete && control("act", actionLabels[epilogue.choice], anchors[epilogue.choice])}
+        onClick={() => onCommand({ scene: "epilogue", order: { kind: "choose", at, choice } })}>{gestureLabels[choice]}</button>)}
+      {epilogue.choice && !complete && control("act", gestureLabels[epilogue.choice], anchors[epilogue.choice])}
     </div>}
-    {!isCohort && epilogue.belongings && <p>Objets exposés ici · {belongings.length ? belongings.join(", ") : "emplacement libre"}</p>}
-    {!isCohort && epilogue.relations && <p>Liens consignés · {relations.length ? relations.join(", ") : "aucun au registre de ce lieu"}</p>}
+    {!isCohort && epilogue.belongings && <p data-legacy-belongings>
+      {clanShip ? "Relevés de la galerie" : "Objets exposés ici"} · {belongings.length ? belongings.join(", ") : "emplacement libre"}
+    </p>}
+    {!isCohort && epilogue.relations && <p data-legacy-relations>
+      {clanShip ? "Équipage consigné" : "Liens consignés"} · {relations.length ? relations.join(", ") : "aucun au registre de ce lieu"}
+    </p>}
     <p role="status" aria-live="polite" className={styles.notice}>{notice || (complete ? "Le compte rendu est enregistré." : " ")}</p>
   </section>;
 }
