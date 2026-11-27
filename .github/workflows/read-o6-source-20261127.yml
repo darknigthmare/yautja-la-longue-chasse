@@ -1,4 +1,4 @@
-name: Lignes O6 du classeur canonique
+name: Premier verrou de la voie O6 du classeur canonique
 on:
   push:
     branches: [codex/verify-o6-canonical-source-20261127]
@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '75bbc1777eb1866515fcef718b086571d8aa379d'
+          ref: 'fa89beeb2177dc5173a3a52c0528c0a11c2f7245'
           fetch-depth: 1
           filter: blob:none
           persist-credentials: false
@@ -42,6 +42,6 @@ jobs:
                   tree = E.fromstring(z.read(name_in_zip))
                   for row in tree.findall('.//{*}row'):
                       values = [cell(c) for c in row.findall('{*}c')]
-                      if any(str(v).startswith(('O6-M2','O6-M30','O6-E1')) for v in values):
+                      if any(v in [f'O6-M{i:02}' for i in range(1,7)] for v in values):
                           print(json.dumps([name, row.get('r'), values],ensure_ascii=False))
           PY
