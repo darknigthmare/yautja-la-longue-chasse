@@ -15,7 +15,15 @@
   background: linear-gradient(175deg, #101b25 0%, #243946 54%, #537486 77%, #253844 79%, #1c2832 100%);
 }
 .room:focus-visible { outline: 3px solid #ffe4ad; outline-offset: 3px; }
-.light { position: absolute; inset: 0; background: radial-gradient(ellipse at 33% 58%, #ffdd9050, transparent 58%); pointer-events: none; }
+.light {
+  position: absolute;
+  width: 68%;
+  inset-block: 0;
+  left: var(--legacy-focus, 33%);
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at 50% 56%, #ffdd9040, transparent 64%);
+  pointer-events: none;
+}
 .mark, .actor, .youth, .support { position: absolute; transform: translateX(-50%); }
 .mark {
   bottom: 11%;
@@ -52,17 +60,27 @@
 .notice { min-height: 1.6rem; color: #ffdf9d; }
 .room[data-site="clan-ship"] {
   background: linear-gradient(0deg, #18181fdd 0 23%, #1c1c2620 53%),
-    url("/game/clan-ship/interiors/trophees-v1.webp") center 58% / cover no-repeat, #201e25;
+    url("/game/clan-ship/interiors/trophees-v1.webp") var(--legacy-pan, 50%) 58% / cover no-repeat, #201e25;
   border-color: #ac8961;
 }
 .room[data-site="clan-ship"] .mark[data-near="true"] { color: #f1d18d; }
 .room[data-site="halt"] {
   border-color: #7d8fa4;
   background: linear-gradient(0deg, #211e18 0 20%, #484136 23%, #26324066 76%),
-    url("/game/backgrounds/ice-depth-v4.webp") center 60% / cover no-repeat, #263240;
+    url("/game/backgrounds/ice-depth-v4.webp") var(--legacy-pan, 50%) 60% / cover no-repeat, #263240;
 }
-.haltTable, .haltHost { position: absolute; bottom: 24%; pointer-events: none; }
+.roomProp, .haltHost { position: absolute; bottom: 24%; pointer-events: none; }
 .haltHost { z-index: 2; }
 @media (prefers-reduced-motion: no-preference) {
   .scene[data-legacy-cohort-arrival] .youth, .haltHost { transition: left 200ms ease-out; }
+}
+.youth[data-speaking="true"] { z-index: 2; filter: drop-shadow(0 0 6px #ffd486); }
+.record { border-left: 2px solid #b19061; padding: 0.55rem 0.8rem; background: #241d1b; color: #f5e5cd; }
+.record summary { cursor: pointer; }
+.record p + p, .record li + li { margin-top: 0.4rem; }
+.record ul { padding-left: 1.25rem; }
+.record [data-legacy-clarification], .record [data-legacy-answer] { color: #ffdf9d; }
+@media (prefers-reduced-motion: no-preference) {
+  .room { transition: background-position 520ms ease-out; }
+  .light { transition: left 480ms ease-out; }
 }

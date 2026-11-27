@@ -44,7 +44,8 @@ test("the O6 cohort checks both feet, keeps wrong attempts and hears four young 
   driver.move("epilogue", "belongings", 6);
   driver.move("epilogue", "relations", 11);
   driver.move("epilogue", "choose", 16, { choice: "transmit" });
-  driver.move("epilogue", "act", 21);
+  driver.move("epilogue", "offer", 21, { speaker: "crossing" });
+  driver.move("epilogue", "answer", 19, { speaker: "crossing" });
   assert.equal(finale.legacyEpilogueViewR2(driver.save.legacyFinaleR2, houseSite).complete, true);
   assert.equal(driver.save.originV151.ending.originEndingId, "O6-E1");
   assert.equal(finale.normalizeLegacyFinaleR2(driver.save.legacyFinaleR2, "2027-01-01T00:00:00.000Z"), null);
@@ -206,4 +207,73 @@ test("M060 records the actual halt report and host and keeps the ending after le
   const missing = structuredClone(left);
   delete missing.legacyFinaleR2.epilogue.events[0].haltOperationId;
   assert.equal(finale.normalizeLegacyFinaleR2(missing.legacyFinaleR2, missing.createdAt), null);
+});
+
+test("M059 keeps only the clarifications actually heard beside their witnesses", () => {
+  let player = legacyPlayer(legacyCanonicalCohortFixture());
+  loadSupport(player);
+  player.move("cohort", "approach", 15, { choice: "stay" });
+  const ask = (at, speaker) => finale.advanceLegacyFinaleR2(player.save, houseSite, {
+    scene: "cohort", order: { kind: "ask", at, speaker },
+  });
+  assert.equal(ask(15, "track").next, undefined);
+  player.move("cohort", "listen", 15, { speaker: "track" });
+  assert.equal(ask(18, "track").next, undefined);
+  player.move("cohort", "ask", 15, { speaker: "track" });
+  assert.equal(ask(15, "track").next, undefined);
+  const imported = saves.parseSaveImport(saves.exportSave(player.save));
+  assert.ok(imported.save, imported.failure);
+  player = legacyPlayer(imported.save);
+  assert.deepEqual(finale.legacyCohortViewR2(player.save.legacyFinaleR2).clarified, ["track"]);
+  for (const voice of finale.LEGACY_COHORT_R2.slice(1)) player.move("cohort", "listen", voice.x, { speaker: voice.id });
+  player.move("cohort", "unknown", 22);
+  assert.equal(ask(21, "piece").next, undefined);
+  player.move("cohort", "close", 22);
+  assert.equal(finale.legacyTransmissionWitnessesR2(player.save.legacyFinaleR2, houseSite).length, 4);
+  assert.equal(finale.legacyTransmissionWitnessesR2(player.save.legacyFinaleR2, { kind: "ship", id: "elsewhere" }).length, 0);
+});
+
+test("M060 keeps the delivered witness across reloading and requires that person's answer on site", () => {
+  let player = legacyPlayer(legacyCanonicalCohortFixture());
+  loadSupport(player);
+  player.move("cohort", "approach", 15, { choice: "stay" });
+  for (const voice of finale.LEGACY_COHORT_R2) player.move("cohort", "listen", voice.x, { speaker: voice.id });
+  player.move("cohort", "unknown", 22);
+  player.move("cohort", "close", 22);
+
+  player.move("epilogue", "belongings", 6);
+  player.move("epilogue", "relations", 11);
+  player.move("epilogue", "choose", 16, { choice: "transmit" });
+  const before = player.save;
+  const act = (kind, at, fields = {}) => finale.advanceLegacyFinaleR2(player.save, houseSite, {
+    scene: "epilogue", order: { kind, at, ...fields },
+  });
+  assert.equal(act("act", 21).next, undefined);
+  assert.equal(act("offer", 15, { speaker: "track" }).next, undefined);
+  assert.equal(act("answer", 15, { speaker: "track" }).next, undefined);
+
+  const historical = structuredClone(before);
+  historical.legacyFinaleR2.epilogue.events.push({ kind: "act", at: 21 });
+  const earlier = saves.parseSaveImport(saves.exportSave(historical));
+  assert.ok(earlier.save, earlier.failure);
+  assert.equal(finale.legacyEpilogueViewR2(earlier.save.legacyFinaleR2, houseSite).complete, true);
+
+  player.move("epilogue", "offer", 21, { speaker: "track" });
+  const read = saves.parseSaveImport(saves.exportSave(player.save));
+  assert.ok(read.save, read.failure);
+  player = legacyPlayer(read.save);
+  const resumed = finale.legacyEpilogueViewR2(player.save.legacyFinaleR2, houseSite);
+  assert.deepEqual([resumed.at, resumed.offered, resumed.answered, resumed.complete], [21, "track", false, false]);
+  assert.equal(act("answer", 21, { speaker: "track" }).next, undefined);
+  assert.equal(act("answer", 17, { speaker: "knot" }).next, undefined);
+  player.move("epilogue", "answer", 15, { speaker: "track" });
+  const closed = saves.parseSaveImport(saves.exportSave(player.save));
+  assert.ok(closed.save, closed.failure);
+  const view = finale.legacyEpilogueViewR2(closed.save.legacyFinaleR2, houseSite);
+  assert.deepEqual([view.offered, view.answered, view.complete], ["track", true, true]);
+  assert.deepEqual(closed.save.originV151, before.originV151);
+  assert.deepEqual(closed.save.trophies, before.trophies);
+  const forged = structuredClone(closed.save.legacyFinaleR2);
+  forged.epilogue.events[4].speaker = "piece";
+  assert.equal(finale.normalizeLegacyFinaleR2(forged, before.createdAt), null);
 });

@@ -28,19 +28,30 @@ type CohortChoice = typeof cohortOptions[number];
 type EpilogueChoice = typeof epilogueOptions[number];
 
 export const LEGACY_COHORT_R2 = [
-  { id: "track", x: 15, label: "Piste", line: "J’ai suivi les empreintes jusqu’à la pierre. Après, la pluie les a effacées." },
-  { id: "knot", x: 17, label: "Nœud", line: "J’ai repris le filet quand le premier nœud s’est défait." },
-  { id: "crossing", x: 19, label: "Passage", line: "J’ai attendu le signal avant de passer. Le chemin bas nous a laissé revenir ensemble." },
-  { id: "piece", x: 21, label: "Pièce", line: "J’ai rapporté la pièce pour qu’on puisse regarder les marques dessus." },
+  { id: "track", x: 15, label: "Piste", line: "J’ai suivi les empreintes jusqu’à la pierre. Après, la pluie les a effacées.",
+    question: "Qu’est-ce que la pluie a effacé ?", clarification: "Je sais où la piste s’arrête. Sa direction après la pierre reste inconnue.",
+    response: "Quand je transmettrai la piste, je montrerai la pierre où ma lecture s’arrête." },
+  { id: "knot", x: 17, label: "Nœud", line: "J’ai repris le filet quand le premier nœud s’est défait.",
+    question: "Qu’as-tu pu confirmer du nœud ?", clarification: "J’ai vu le premier nœud lâcher. Il faudrait refaire l’essai pour expliquer pourquoi.",
+    response: "Je garderai dans le récit le premier essai et la reprise du filet." },
+  { id: "crossing", x: 19, label: "Passage", line: "J’ai attendu le signal avant de passer. Le chemin bas nous a laissé revenir ensemble.",
+    question: "Quel passage as-tu parcouru ?", clarification: "Je peux décrire le chemin bas. Depuis là, je n’ai pas pu vérifier le passage haut.",
+    response: "Je donnerai le signal et le chemin réellement parcouru, ensemble." },
+  { id: "piece", x: 21, label: "Pièce", line: "J’ai rapporté la pièce pour qu’on puisse regarder les marques dessus.",
+    question: "Que disent les marques à elles seules ?", clarification: "On peut regarder les marques. Leur origine reste à établir.",
+    response: "Je montrerai les marques et je laisserai ouverte la question de leur origine." },
 ] as const;
+type CohortWitnessR2 = typeof LEGACY_COHORT_R2[number];
+type CohortSpeakerR2 = CohortWitnessR2["id"];
 
 type CohortOrder =
   | { kind: "greet" | "lead" | "unload" | "wall-foot" | "door-foot" | "test" | "unknown" | "close"; at: number }
   | { kind: "approach"; at: number; choice: CohortChoice }
-  | { kind: "listen"; at: number; speaker: typeof LEGACY_COHORT_R2[number]["id"] };
+  | { kind: "listen" | "ask"; at: number; speaker: CohortSpeakerR2 };
 type EpilogueOrder =
   | { kind: "belongings" | "relations" | "act"; at: number }
-  | { kind: "choose"; at: number; choice: EpilogueChoice };
+  | { kind: "choose"; at: number; choice: EpilogueChoice }
+  | { kind: "offer" | "answer"; at: number; speaker: CohortSpeakerR2 };
 export type LegacyCommandR2 = { scene: "cohort"; order: CohortOrder } | { scene: "epilogue"; order: EpilogueOrder };
 
 type ClanBerthProofR2 = {
@@ -212,18 +223,22 @@ export function legacySceneRefusalR2(save: LegacySave, site: LegacySiteR2, scene
 type CohortArrivalR2 = "waiting" | "greeted" | "inside";
 export type LegacyCohortViewR2 = {
   at: number; arrival: CohortArrivalR2; loaded: boolean; wallFoot: boolean; doorFoot: boolean; failedAt: number | null;
-  steady: boolean; path: CohortChoice | null; heard: string[]; unknown: boolean; complete: boolean;
+  steady: boolean; path: CohortChoice | null; heard: CohortSpeakerR2[]; clarified: CohortSpeakerR2[];
+  unknown: boolean; complete: boolean;
 };
 export type LegacyEpilogueViewR2 = {
-  at: number; belongings: boolean; relations: boolean; choice: EpilogueChoice | null; complete: boolean;
+  at: number; belongings: boolean; relations: boolean; choice: EpilogueChoice | null;
+  offered: CohortSpeakerR2 | null; answered: boolean; complete: boolean;
 };
 const emptyCohort = (arrival: CohortArrivalR2 = "waiting"): LegacyCohortViewR2 => ({
   at: 2, arrival, loaded: true, wallFoot: false, doorFoot: false, failedAt: null, steady: false,
-  path: null, heard: [], unknown: false, complete: false,
+  path: null, heard: [], clarified: [], unknown: false, complete: false,
 });
 // Older returns began directly at the support. Their existing actions replay in place.
 const cohortStart = (first?: unknown) => emptyCohort(record(first) && first.kind === "unload" ? "inside" : "waiting");
-const emptyEpilogue = (): LegacyEpilogueViewR2 => ({ at: 2, belongings: false, relations: false, choice: null, complete: false });
+const emptyEpilogue = (): LegacyEpilogueViewR2 => ({
+  at: 2, belongings: false, relations: false, choice: null, offered: null, answered: false, complete: false,
+});
 
 function cohortStep(view: LegacyCohortViewR2, order: CohortOrder): { view?: LegacyCohortViewR2; message: string } {
   const { at, kind } = order;
@@ -269,6 +284,13 @@ function cohortStep(view: LegacyCohortViewR2, order: CohortOrder): { view?: Lega
       return { view: { ...next, heard: [...view.heard, speaker.id] }, message: speaker.line };
     }
   }
+  if (kind === "ask" && view.path === "stay" && !view.unknown && view.heard.includes(order.speaker) &&
+      !view.clarified.includes(order.speaker)) {
+    const speaker = LEGACY_COHORT_R2.find(candidate => candidate.id === order.speaker);
+    if (speaker && closeTo(at, speaker.x)) {
+      return { view: { ...next, clarified: [...view.clarified, speaker.id] }, message: speaker.clarification };
+    }
+  }
   if (kind === "unknown" && view.path === "stay" && view.heard.length === LEGACY_COHORT_R2.length && !view.unknown && closeTo(at, 22)) {
     return { view: { ...next, unknown: true }, message: "Une ligne reste libre pour ce que la cohorte n’a pas pu observer." };
   }
@@ -278,7 +300,9 @@ function cohortStep(view: LegacyCohortViewR2, order: CohortOrder): { view?: Lega
   return { message: "Rejoins la cohorte ou la sortie selon l’aide que tu as proposée." };
 }
 
-function epilogueStep(view: LegacyEpilogueViewR2, order: EpilogueOrder, choices: readonly EpilogueChoice[]) {
+export const LEGACY_EPILOGUE_POSTS_R2 = { depart: 2, welcome: 14, transmit: 21 } as const;
+function epilogueStep(view: LegacyEpilogueViewR2, order: EpilogueOrder, choices: readonly EpilogueChoice[],
+  witnesses: readonly CohortWitnessR2[]) {
   const { at, kind } = order;
   const next = { ...view, at };
   if (view.complete) return { message: "Le geste final a déjà été consigné." };
@@ -291,8 +315,18 @@ function epilogueStep(view: LegacyEpilogueViewR2, order: EpilogueOrder, choices:
   if (kind === "choose" && view.relations && !view.choice && closeTo(at, 16) && choices.includes(order.choice)) {
     return { view: { ...next, choice: order.choice }, message: "Rejoins le lieu de ton dernier geste." };
   }
-  const targets: Record<EpilogueChoice, number> = { depart: 2, welcome: 14, transmit: 21 };
-  if (kind === "act" && view.choice && choices.includes(view.choice) && closeTo(at, targets[view.choice])) {
+  if ((kind === "offer" || kind === "answer") && view.choice === "transmit") {
+    const speaker = witnesses.find(candidate => candidate.id === order.speaker);
+    if (speaker && kind === "offer" && !view.offered && closeTo(at, LEGACY_EPILOGUE_POSTS_R2.transmit)) {
+      return { view: { ...next, offered: speaker.id }, message: "Rejoins le jeune dont tu viens de reprendre le témoignage." };
+    }
+    if (speaker && kind === "answer" && view.offered === speaker.id && closeTo(at, speaker.x)) {
+      return { view: { ...next, answered: true, complete: true }, message: speaker.response };
+    }
+  }
+  // Historically recorded final acts replay with their original four events.
+  if (kind === "act" && !view.offered && view.choice && choices.includes(view.choice) &&
+      closeTo(at, LEGACY_EPILOGUE_POSTS_R2[view.choice])) {
     return { view: { ...next, complete: true }, message: "Le geste est accompli. Ta chasse continue avec les choix déjà faits." };
   }
   return { message: "Suis les repères du lieu avant de confirmer ton geste." };
@@ -309,25 +343,31 @@ export function legacyCohortViewR2(state?: LegacyFinaleR2 | null): LegacyCohortV
   return result;
 }
 
+export function legacyTransmissionWitnessesR2(state: LegacyFinaleR2 | null | undefined, site: LegacySiteR2) {
+  const visit = state?.cohort;
+  if (site.kind !== "residence" || !visit || !sameSite(visit.site, site)) return [];
+  const view = legacyCohortViewR2(state);
+  return view.complete && view.path === "stay" && view.unknown
+    ? LEGACY_COHORT_R2.filter(speaker => view.heard.includes(speaker.id)) : [];
+}
+
 export function legacyEpilogueChoicesR2(state: LegacyFinaleR2 | null | undefined, site: LegacySiteR2): readonly EpilogueChoice[] {
   if (site.kind === "clan-ship") {
     const { belongings, crew } = clanEpilogueEvidenceR2(state);
     return belongings ? (crew.length ? ["depart", "welcome", "transmit"] : ["depart", "transmit"]) : ["depart"];
   }
   if (site.kind === "halt") return haltEpilogueOperationR2(state) ? epilogueOptions : ["depart"];
-  const visit = state?.cohort;
-  const checked = legacyCohortViewR2(state);
-  if (visit && sameSite(visit.site, site) && checked.complete) {
-    return checked.path === "stay" ? epilogueOptions : ["depart", "welcome"];
-  }
-  return site.kind === "residence" ? ["depart", "welcome"] : ["depart"];
+  if (site.kind !== "residence") return ["depart"];
+  return legacyTransmissionWitnessesR2(state, site).length ? epilogueOptions : ["depart", "welcome"];
 }
 
 export function legacyEpilogueViewR2(state: LegacyFinaleR2 | null | undefined, site: LegacySiteR2): LegacyEpilogueViewR2 {
   if (state?.epilogue && !sameSite(state.epilogue.site, site)) return emptyEpilogue();
   let result = emptyEpilogue();
+  const witnesses = legacyTransmissionWitnessesR2(state, site);
+  const choices = legacyEpilogueChoicesR2(state, site);
   for (const event of state?.epilogue?.events ?? []) {
-    const effect = epilogueStep(result, event, legacyEpilogueChoicesR2(state, site));
+    const effect = epilogueStep(result, event, choices, witnesses);
     if (!effect.view) return emptyEpilogue();
     result = effect.view;
   }
@@ -345,12 +385,15 @@ function validCohortOrder(raw: unknown): raw is CohortOrder {
   if (!record(raw) || !position(raw.at)) return false;
   const fields = Object.keys(raw).length;
   if (raw.kind === "approach") return fields === 3 && cohortOptions.some(x => x === raw.choice);
-  if (raw.kind === "listen") return fields === 3 && LEGACY_COHORT_R2.some(x => x.id === raw.speaker);
+  if (raw.kind === "listen" || raw.kind === "ask") return fields === 3 && LEGACY_COHORT_R2.some(x => x.id === raw.speaker);
   return fields === 2 && ["greet", "lead", "unload", "wall-foot", "door-foot", "test", "unknown", "close"].some(x => x === raw.kind);
 }
 function validEpilogueOrder(raw: unknown): raw is EpilogueOrder {
   if (!record(raw) || !position(raw.at)) return false;
   if (raw.kind === "choose") return Object.keys(raw).length === 3 && epilogueOptions.some(x => x === raw.choice);
+  if (raw.kind === "offer" || raw.kind === "answer") {
+    return Object.keys(raw).length === 3 && LEGACY_COHORT_R2.some(candidate => candidate.id === raw.speaker);
+  }
   return Object.keys(raw).length === 2 && ["belongings", "relations", "act"].some(x => x === raw.kind);
 }
 
@@ -394,7 +437,7 @@ export function normalizeLegacyFinaleR2(raw: unknown, ownerCreatedAt: string): L
   if (raw.cohort !== undefined) {
     const part = raw.cohort;
     if (!record(part) || !validSite(part.site) || part.site.kind !== "residence" ||
-        !Array.isArray(part.events) || !part.events.length || part.events.length > 18) return null;
+        !Array.isArray(part.events) || !part.events.length || part.events.length > 22) return null;
     let view = cohortStart(part.events[0]);
     const events: CohortOrder[] = [];
     for (const event of part.events) {
@@ -408,14 +451,15 @@ export function normalizeLegacyFinaleR2(raw: unknown, ownerCreatedAt: string): L
   }
   if (raw.epilogue !== undefined) {
     const part = raw.epilogue;
-    if (!record(part) || !validSite(part.site) || !Array.isArray(part.events) || !part.events.length || part.events.length > 4) return null;
+    if (!record(part) || !validSite(part.site) || !Array.isArray(part.events) || !part.events.length || part.events.length > 5) return null;
     let view = emptyEpilogue();
+    const witnesses = legacyTransmissionWitnessesR2(state, part.site);
     const events: StoredEpilogueOrder[] = [];
     state.epilogue = { site: part.site, events };
     for (const item of part.events) {
       const event = parseStoredEpilogueOrderR2(item, part.site, ownerCreatedAt);
       if (!event) return null;
-      const effect = epilogueStep(view, event, legacyEpilogueChoicesR2(state, part.site));
+      const effect = epilogueStep(view, event, legacyEpilogueChoicesR2(state, part.site), witnesses);
       if (!effect.view) return null;
       view = effect.view;
       events.push(event);
@@ -462,7 +506,12 @@ export function advanceLegacyFinaleR2(save: LegacySave, site: LegacySiteR2, comm
     return { next, message: action.message };
   }
   if (command.scene === "epilogue" && validEpilogueOrder(command.order)) {
-    const action = epilogueStep(legacyEpilogueViewR2(before, site), command.order, legacyEpilogueChoicesR2(before, site));
+    const view = legacyEpilogueViewR2(before, site);
+    const witnesses = legacyTransmissionWitnessesR2(before, site);
+    if (command.order.kind === "act" && view.choice === "transmit" && witnesses.length) {
+      return { message: "Choisis un témoignage au registre, puis rejoins le jeune concerné." };
+    }
+    const action = epilogueStep(view, command.order, legacyEpilogueChoicesR2(before, site), witnesses);
     if (!action.view) return { message: action.message };
     let stored: StoredEpilogueOrder = command.order;
     if (site.kind === "halt" && command.order.kind === "belongings") {
