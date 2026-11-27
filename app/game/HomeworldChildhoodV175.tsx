@@ -6,7 +6,7 @@ import { NURSERY_ART_MANIFEST } from "./nurseryArtManifest";
 import {
   CHILDHOOD_DRILLS_V175, CHILDHOOD_TRAIL_SIGNS_V175,
   childhoodCeremonyRequirementV175, childhoodLengthV175, childhoodOptionsV175, childhoodRingPositionV175, childhoodSpringOpenV175,
-  childhoodTrackSignV175, nextCohortGestureV175, nextCohortStowV175,
+  childhoodRackReceiptV175, childhoodTrackSignV175, nextCohortGestureV175, nextCohortStowV175,
   type ChildhoodCommandV175, type ChildhoodViewV175,
 } from "./systems/homeworldChildhoodV175";
 import styles from "./HomeworldChildhoodV175.module.css";
@@ -43,6 +43,7 @@ const labels = {
   handoff: "Rejoindre Saar pour la passation",
   "cohort-gesture": "Observer le geste du camarade",
   "cohort-stow": "Voir le camarade déposer son outil",
+  "accept-rack-access": "Recevoir la plaque d’accès des mains de Saar",
   "first-mask": "Commencer par le masque",
   "first-blades": "Commencer par les lames",
   "reset-current": "Reprendre au dernier repère",
@@ -67,6 +68,7 @@ function CohortMember({ view, index }: { view: ChildhoodViewV175; index: number 
   return <span className={styles.cohortMember} style={{ gridColumn: stowing ? 5 : index + 3 }}
     data-childhood-companion={name} data-cohort-performing={performing} data-cohort-stowing={stowing}
     data-gesture={drill}>
+    {performing && drill && <span className={styles.cohortProp} data-childhood-cohort-prop={drill} />}
     <span className={styles.cohortCrop} style={{
       width: rect[2] * scale, height: rect[3] * scale, left: -pivot[0] * scale, top: -pivot[1] * scale,
     }}>
@@ -130,6 +132,7 @@ export default function HomeworldChildhoodV175({ view, message, paused, mayEnter
   const performer = nextCohortGestureV175(view);
   const stowingCompanion = nextCohortStowV175(view);
   const pendingExercise = childhoodCeremonyRequirementV175(view);
+  const rackReceipt = childhoodRackReceiptV175(view);
   const title = view.trial === "handoff" ? view.ceremony ? "La passation Unblooded" : "La passation"
     : view.trial === "track" ? "La piste avant la prise" : "L’épreuve des trois gestes";
   const key = (event: KeyboardEvent<HTMLDivElement>) => {
@@ -145,7 +148,8 @@ export default function HomeworldChildhoodV175({ view, message, paused, mayEnter
     data-childhood-position={view.position} data-childhood-drills={view.finished.length}
     data-childhood-track-phase={view.track?.phase} data-childhood-passed={view.passed}
     data-childhood-first-workshop={view.firstWorkshop ?? undefined}
-    data-childhood-ceremony={view.ceremony ? view.passed ? "complete" : "active" : undefined} aria-label={title}>
+    data-childhood-ceremony={view.ceremony ? view.passed && view.rackAccess !== "pending" ? "complete" : "active" : undefined}
+    data-childhood-rack-access={view.passed ? view.rackAccess ?? undefined : undefined} aria-label={title}>
     <h4>{title}</h4>
     {view.companion && <p><strong>{view.companion}</strong> · {view.trial === "ring" || view.trial === "beam" || view.trial === "spring"
       ? CHILDHOOD_DRILLS_V175[view.trial].title : ""}</p>}
@@ -161,6 +165,11 @@ export default function HomeworldChildhoodV175({ view, message, paused, mayEnter
       Gestes des camarades consignés · {view.cohortPresentations}/3
     </p>}
     {view.ceremony && <p data-childhood-cohort-tools={view.cohortStowed}>Outils des camarades au coffre · {view.cohortStowed}/3</p>}
+    {rackReceipt && <div className={styles.rackReceipt} data-childhood-rack-receipt={rackReceipt.sourceId}>
+      <span className={styles.rackSeal} aria-hidden="true" />
+      <div><strong>Plaque d’admission aux ateliers Unblooded</strong>
+        <p>{rackReceipt.instructor} · {rackReceipt.gestures} gestes de cohorte · {rackReceipt.tools} outils au coffre</p></div>
+    </div>}
     {view.firstWorkshop && <p>Premier atelier · {view.firstWorkshop === "mask" ? "Le masque et ses lectures" : "La distance des lames"}</p>}
     <p role="status">{message || view.message}</p>
     <div className={styles.controls}>

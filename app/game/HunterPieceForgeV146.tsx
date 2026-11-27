@@ -14,6 +14,8 @@ import {
 } from "./hunterPiecesV146";
 import { CHROMATIC_PALETTE_PRESETS_V115 } from "./hunterChromaticsV113";
 import { ecologyV8EnemyForId } from "./ecologyV8";
+import { ARMOR_BY_ID } from "./data";
+import { effectiveArmorStats } from "./systems/arsenal";
 import {
   CUSTOMIZATION_MODES_V146, HUNTER_MARKS_V146, OUTFIT_SLOTS_V146, SKIN_PATTERN_IDS_V146,
   allowedMarksV146, allowedPiecesV148, allowedSkinPatternV146, assignModeOutfitV146, clanColorsForNpcV146, decodeOutfitShareCodeV146, deleteOutfitV146,
@@ -23,7 +25,10 @@ import {
 } from "./systems/hunterCustomizationV146";
 import { normalizeHunterAppearanceV146 } from "./save";
 import { harvestInventoryForV112 } from "./systems/harvestInventoryV112";
-import { applyHunterForgeRepairV146, forgeMaterialKeyV146, planForgeRepairMaterialsV146 } from "./systems/hunterCustomizationPersistenceV146";
+import {
+  applyHunterForgeArmorUpgradeV146, applyHunterForgeRepairV146, forgeArmorRecipeV146,
+  forgeMaterialKeyV146, planForgeArmorMaterialsV146, planForgeRepairMaterialsV146,
+} from "./systems/hunterCustomizationPersistenceV146";
 import styles from "./HunterPieceForgeV146.module.css";
 
 type Tab = "pieces" | "lights" | "body" | "outfits" | "clan" | "forge";
@@ -47,10 +52,11 @@ function earnedForSave(save: SaveGame) {
 export type CustomizationApplyV146 = (save: SaveGame) => SaveGame | null;
 
 export default function HunterPieceForgeV146({
-  save, disabled = false, onPreview, onCommit,
+  save, disabled = false, allowEquipmentUpgrades = false, onPreview, onCommit,
 }: {
   save: SaveGame;
   disabled?: boolean;
+  allowEquipmentUpgrades?: boolean;
   /** Draft appearance for the preview; null restores the saved one. */
   onPreview?: (appearance: HunterAppearance | null) => void;
   /** Durable change; returns true once the campaign write is confirmed. */
@@ -304,7 +310,7 @@ export default function HunterPieceForgeV146({
               <option value="">Sélection automatique dans la réserve</option>
               {selectedMaterialMissing && <option value={repairMaterial} disabled>Lot épuisé</option>}
               {repairArchive.map(entry => <option key={forgeMaterialKeyV146(entry)} value={forgeMaterialKeyV146(entry)}>
-                {entry.label} · {ecologyV8EnemyForId(entry.speciesId)?.name ?? entry.speciesId} · {entry.count} · qualité {Math.round(entry.qualityTotal / entry.count)}
+                {forgeMaterialLabelV146(entry)}
               </option>)}
             </select>
           </label>}
@@ -326,7 +332,8 @@ export default function HunterPieceForgeV146({
             })}
           </ul>
         </>}
-      <p className={styles.note}>Prépare puis archive les prises de chasse pour remplir la réserve de réparation.</p>
+      {allowEquipmentUpgrades && <ArmorForgeMaterialsV146 save={save} disabled={disabled} onCommit={commit} />}
+      <p className={styles.note}>Prépare puis archive les prises de chasse pour remplir la réserve de la forge.</p>
     </div>}
 
     <footer className={styles.footer}>
@@ -336,6 +343,69 @@ export default function HunterPieceForgeV146({
       <p role="status" aria-live="polite">{message}</p>
     </footer>
   </section>;
+}
+
+type ArchiveMaterialV146 = ReturnType<typeof harvestInventoryForV112>["archive"][number];
+
+function forgeMaterialLabelV146(entry: ArchiveMaterialV146): string {
+  const species = ecologyV8EnemyForId(entry.speciesId)?.name ?? entry.speciesId;
+  return `${entry.label} · ${species} · ${entry.count} · qualité ${Math.round(entry.qualityTotal / entry.count)}`;
+}
+
+function ArmorForgeMaterialsV146({ save, disabled, onCommit }: {
+  save: SaveGame;
+  disabled: boolean;
+  onCommit: (apply: CustomizationApplyV146, confirmation: string) => void;
+}) {
+  const [bone, setBone] = useState("");
+  const [hide, setHide] = useState("");
+  const recipe = forgeArmorRecipeV146(save);
+  const armorId = save.loadout.armorId;
+  const level = save.inventory.armorUpgrades[armorId] ?? 0;
+  const name = ARMOR_BY_ID[armorId].name;
+  if (!recipe) return <p data-forge-armor-level={level}>{name} · niveau {level}/2.</p>;
+
+  const archive = harvestInventoryForV112(save.inventory).archive;
+  const payment = planForgeArmorMaterialsV146(save, { bone, hide });
+  const from = effectiveArmorStats(armorId, recipe.currentLevel);
+  const to = effectiveArmorStats(armorId, recipe.nextLevel);
+  const sources = [
+    { partId: "bone", label: "Os", amount: recipe.requirements.bone, value: bone, change: setBone },
+    { partId: "hide", label: "Cuir", amount: recipe.requirements.hide, value: hide, change: setHide },
+  ] as const;
+
+  return <fieldset className={styles.group} data-forge-armor-level={level}>
+    <legend>Améliorer l’armure équipée</legend>
+    <strong>{name} · niveau {level} → {recipe.nextLevel}</strong>
+    <p className={styles.note} data-forge-armor-stats>
+      PV {Math.round(from.maxHealth)} → {Math.round(to.maxHealth)} · Énergie {Math.round(from.maxEnergy)} → {Math.round(to.maxEnergy)} · Capacité {from.carryingCapacity} → {to.carryingCapacity}
+    </p>
+    {sources.map(source => {
+      const options = archive.filter(entry => entry.partId === source.partId);
+      return <label key={source.partId} className={styles.repairSources}>
+        {source.label} · {source.amount} unité(s)
+        <select data-forge-armor-material={source.partId} value={source.value} disabled={disabled || !options.length}
+          onChange={event => source.change(event.target.value)}>
+          <option value="">Choisir un lot</option>
+          {source.value && !options.some(entry => forgeMaterialKeyV146(entry) === source.value) &&
+            <option value={source.value} disabled>Lot épuisé</option>}
+          {options.map(entry => <option key={forgeMaterialKeyV146(entry)} value={forgeMaterialKeyV146(entry)}
+            disabled={entry.count < source.amount}>
+            {forgeMaterialLabelV146(entry)}
+          </option>)}
+        </select>
+      </label>;
+    })}
+    <small className={styles.note} aria-live="polite" data-forge-armor-quote>
+      {payment ? payment.quote.units.map(entry => entry.consumed + " × " + entry.label).join(" · ")
+        : "Choisis un lot suffisant de chaque matière."}
+    </small>
+    <button type="button" data-forge-armor-apply disabled={disabled || !payment}
+      onClick={() => payment && onCommit(current => applyHunterForgeArmorUpgradeV146(current, payment.quote),
+        `${name} améliorée au niveau ${recipe.nextLevel}.`)}>
+      Forger le niveau {recipe.nextLevel}
+    </button>
+  </fieldset>;
 }
 
 function ClanPaletteEditor({ customization, disabled, onSave }: {

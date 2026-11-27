@@ -91,6 +91,23 @@ test("cargo slows reeling and the minimum and maximum stops charge only for hold
   close(partial.staminaCost,1.6+4*1.6/(80*.68));
 });
 
+test("cargo reduces pumping and raises effort while preserving passive momentum",()=>{
+  const swing=runtime.attachCanopySwingV112(body,support);
+  const powered={moveAxis:1,climbAxis:0};
+  const empty=runtime.stepCanopySwingV112(swing,body,support,powered,.1,[],624);
+  const loaded=runtime.stepCanopySwingV112(swing,body,support,powered,.1,[],624,1.6,.68);
+  assert.ok(loaded.swing.angle > 0 && loaded.swing.angle < empty.swing.angle);
+  assert.ok(loaded.body.velocityX > 0 && loaded.body.velocityX < empty.body.velocityX);
+  close(loaded.staminaCost,empty.staminaCost*1.6);
+
+  const neutral={moveAxis:0,climbAxis:0};
+  const emptyCoast=runtime.stepCanopySwingV112(loaded.swing,loaded.body,support,neutral,.1,[],624);
+  const loadedCoast=runtime.stepCanopySwingV112(loaded.swing,loaded.body,support,neutral,.1,[],624,1.6,.68);
+  assert.deepEqual(loadedCoast.swing,emptyCoast.swing);
+  assert.deepEqual(loadedCoast.body,emptyCoast.body);
+  close(loadedCoast.staminaCost,emptyCoast.staminaCost*1.6);
+});
+
 test("release exports tangent velocity, including downward motion, without adding a boost",()=>{
   for(const angle of [-.8,0,.8]){
     const swing={supportId:support.id,length:220,angle,angularVelocity:2};
@@ -106,9 +123,11 @@ test("swept swing stops at a thin solid wall and releases rather than crossing o
   const point=runtime.canopySwingPointV112(swing,support);
   const actor={...body,x:point.x-body.width/2,y:point.y-body.height*.28};
   const wall=platform(actor.x+body.width+12,200,3,220);
-  const next=runtime.stepCanopySwingV112(swing,actor,support,{moveAxis:1,climbAxis:0},.1,[wall],624);
-  assert.equal(next.detached,true);
-  assert.ok(next.body.x+body.width<=wall.x+1e-5);
+  for(const [staminaMultiplier,movementMultiplier] of [[1,1],[1.6,.68]]){
+    const next=runtime.stepCanopySwingV112(swing,actor,support,{moveAxis:1,climbAxis:0},.1,[wall],624,staminaMultiplier,movementMultiplier);
+    assert.equal(next.detached,true);
+    assert.ok(next.body.x+body.width<=wall.x+1e-5);
+  }
   assert.equal(runtime.canopySegmentClearV112({x:10,y:10},{x:200,y:10},[platform(90,0,2,40)]),false);
   assert.equal(runtime.canopySegmentClearV112({x:10,y:10},{x:200,y:10},[platform(90,0,2,40,"one-way")]),true);
 });

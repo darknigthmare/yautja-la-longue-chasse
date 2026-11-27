@@ -22,13 +22,23 @@ export const OKAVANGO_TRACES_V171 = [
   { id: "cases", name: "Douilles", x: 8, lane: 1, detail: "Les derniers départs convergent vers l’île du Baobab mort." },
 ] as const;
 type Trace = typeof OKAVANGO_TRACES_V171[number]["id"];
+type TyreReading = "ford" | "levee";
+type Water = "historical" | "low" | "rising" | "high";
+
+const tyreDetours = {
+  ford: { ...OKAVANGO_TRACES_V171[0], x: 4, detail: "Les roues suivent le gué en direction du camp." },
+  levee: { ...OKAVANGO_TRACES_V171[0], name: "Ornières sur la levée", x: 3, lane: 0,
+    detail: "Le gué recouvre la trace basse. Les ornières plus haut confirment la direction du camp." },
+} as const;
+const warningAfter = 5;
+const highAfter = 8;
 
 export type EarthOkavangoOrderV171 =
   | { kind: "choose-zone"; zone: Zone }
   | { kind: "move"; direction: Direction }
   | { kind: "insert" | "analyse" | "scan" | "extract" };
 export type EarthOkavangoStateV171 = {
-  version: 1; owner: string; hullInstanceId: string; orders: EarthOkavangoOrderV171[];
+  version: 1 | 2; owner: string; hullInstanceId: string; orders: EarthOkavangoOrderV171[];
 };
 export type EarthOkavangoViewV171 = {
   phase: "registry" | "orbit" | "ground" | "returned";
@@ -37,9 +47,12 @@ export type EarthOkavangoViewV171 = {
   lane: Lane;
   visor: "normal" | "analyse";
   traces: Trace[];
+  waterSteps: number | null;
+  tyreReading: TyreReading | null;
 };
-const initialView = (): EarthOkavangoViewV171 => ({
+const initialView = (version: EarthOkavangoStateV171["version"] = 2): EarthOkavangoViewV171 => ({
   phase: "registry", zone: null, x: 0, lane: 1, visor: "normal", traces: [],
+  waterSteps: version === 2 ? 0 : null, tyreReading: null,
 });
 
 type EarthSave = Pick<SaveGame, "createdAt" | "profile" | "prologue" | "shipAcquisitionV89" |
@@ -63,15 +76,28 @@ export function earthOkavangoAccessV171(save: EarthSave, selectedShip: ShipId): 
   return { allowed: true, owner: save.createdAt, hullInstanceId: hull.instanceId };
 }
 
-export const earthOkavangoWalkableV171 = (x: number, lane: Lane) =>
-  Number.isInteger(x) && x >= 0 && x <= 9 && (lane === 0 || (x < 4 || x > 6));
+export function earthOkavangoWaterV171(view: EarthOkavangoViewV171): Water {
+  if (view.waterSteps === null) return "historical";
+  if (view.waterSteps >= highAfter) return "high";
+  return view.waterSteps >= warningAfter ? "rising" : "low";
+}
+export const earthOkavangoWalkableV171 = (x: number, lane: Lane, water: Water = "historical") =>
+  Number.isInteger(x) && x >= 0 && x <= 9 &&
+  (lane === 0 || x < 4 || x > 6 || water === "low" || water === "rising");
 export function earthOkavangoMoveV171(view: EarthOkavangoViewV171, direction: Direction) {
+  const water = earthOkavangoWaterV171(view);
+  if (!earthOkavangoWalkableV171(view.x, view.lane, water) && direction !== "north") return null;
   const x = view.x + (direction === "east" ? 1 : direction === "west" ? -1 : 0);
   const lane = direction === "north" ? 0 : direction === "south" ? 1 : view.lane;
-  return earthOkavangoWalkableV171(x, lane) && (x !== view.x || lane !== view.lane) ? { x, lane } as const : null;
+  return earthOkavangoWalkableV171(x, lane, water) && (x !== view.x || lane !== view.lane) ? { x, lane } as const : null;
+}
+export function earthOkavangoTraceLocationsV171(view: EarthOkavangoViewV171) {
+  if (view.waterSteps === null) return OKAVANGO_TRACES_V171;
+  const reading = view.tyreReading ?? (earthOkavangoWaterV171(view) === "high" ? "levee" : "ford");
+  return [tyreDetours[reading], ...OKAVANGO_TRACES_V171.slice(1)];
 }
 export function earthOkavangoTraceAtV171(view: EarthOkavangoViewV171) {
-  return OKAVANGO_TRACES_V171.find(trace => trace.x === view.x && trace.lane === view.lane);
+  return earthOkavangoTraceLocationsV171(view).find(trace => trace.x === view.x && trace.lane === view.lane);
 }
 export function earthOkavangoCanExtractV171(view: EarthOkavangoViewV171) {
   if (view.phase !== "ground" || !view.zone || view.traces.length !== OKAVANGO_TRACES_V171.length) return false;
@@ -92,13 +118,17 @@ function advance(view: EarthOkavangoViewV171, order: EarthOkavangoOrderV171): Ea
   if (view.phase !== "ground") return null;
   if (order.kind === "move") {
     const point = earthOkavangoMoveV171(view, order.direction);
-    return point ? { ...view, ...point } : null;
+    return point ? { ...view, ...point,
+      waterSteps: view.waterSteps === null ? null : Math.min(highAfter, view.waterSteps + 1),
+    } : null;
   }
   if (order.kind === "analyse") return { ...view, visor: view.visor === "analyse" ? "normal" : "analyse" };
   if (order.kind === "scan") {
     const trace = earthOkavangoTraceAtV171(view);
     if (view.visor !== "analyse" || !trace || view.traces.includes(trace.id)) return null;
-    return { ...view, traces: [...view.traces, trace.id] };
+    const tyreReading = trace.id === "tyres" && view.waterSteps !== null
+      ? earthOkavangoWaterV171(view) === "high" ? "levee" : "ford" : view.tyreReading;
+    return { ...view, traces: [...view.traces, trace.id], tyreReading };
   }
   if (order.kind === "extract" && earthOkavangoCanExtractV171(view)) {
     return { ...view, phase: "returned" };
@@ -130,14 +160,15 @@ export function inspectEarthOkavangoV171(value: unknown, owner: string): EarthIn
   const invalid = { state: null, view: initialView() };
   if (value === undefined || value === null) return { status: "absent", ...invalid };
   if (!record(value)) return { status: "invalid", ...invalid };
-  if (typeof value.version === "number" && value.version > 1) return { status: "future-version", ...invalid };
-  if (value.version !== 1 || value.owner !== owner || !Number.isFinite(Date.parse(owner)) ||
+  if (typeof value.version === "number" && value.version > 2) return { status: "future-version", ...invalid };
+  if ((value.version !== 1 && value.version !== 2) || value.owner !== owner || !Number.isFinite(Date.parse(owner)) ||
       typeof value.hullInstanceId !== "string" || value.hullInstanceId.length < 1 || value.hullInstanceId.length > 160 ||
       !Array.isArray(value.orders) || value.orders.length < 1 || value.orders.length > maxOrders) {
     return { status: "invalid", ...invalid };
   }
   const orders: EarthOkavangoOrderV171[] = [];
-  let view = initialView();
+  // A V1 journal replays the original geometry and trace locations, even mid-survey.
+  let view = initialView(value.version);
   for (const raw of value.orders) {
     const order = orderFrom(raw);
     const next = order && advance(view, order);
@@ -145,7 +176,7 @@ export function inspectEarthOkavangoV171(value: unknown, owner: string): EarthIn
     orders.push(order);
     view = next;
   }
-  return { status: "valid", state: { version: 1, owner, hullInstanceId: value.hullInstanceId, orders }, view };
+  return { status: "valid", state: { version: value.version, owner, hullInstanceId: value.hullInstanceId, orders }, view };
 }
 export function commitEarthOkavangoV171(value: unknown, order: EarthOkavangoOrderV171, access: EarthOkavangoAccessV171) {
   if (!access.allowed) return { accepted: false as const, reason: access.reason };
@@ -160,7 +191,7 @@ export function commitEarthOkavangoV171(value: unknown, order: EarthOkavangoOrde
     return { accepted: false as const, reason: "Geste indisponible à ce repère." };
   }
   const state: EarthOkavangoStateV171 = {
-    version: 1, owner: access.owner, hullInstanceId: access.hullInstanceId, orders: [...(current?.orders ?? []), clean],
+    version: current?.version ?? 2, owner: access.owner, hullInstanceId: access.hullInstanceId, orders: [...(current?.orders ?? []), clean],
   };
   return { accepted: true as const, state, view };
 }
@@ -169,7 +200,7 @@ export function earthOkavangoHistoryMatchesV171(save: EarthSave, state: EarthOka
 }
 export function earthOkavangoSuccessorV171(before: EarthOkavangoStateV171 | null | undefined, after: EarthOkavangoStateV171) {
   const prior = before?.orders ?? [];
-  return (!before || (before.owner === after.owner && before.hullInstanceId === after.hullInstanceId)) &&
+  return (!before || (before.version === after.version && before.owner === after.owner && before.hullInstanceId === after.hullInstanceId)) &&
     after.orders.length === prior.length + 1 && prior.every((order, index) =>
       JSON.stringify(order) === JSON.stringify(after.orders[index]));
 }

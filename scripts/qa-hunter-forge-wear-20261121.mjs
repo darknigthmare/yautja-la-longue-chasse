@@ -29,7 +29,8 @@ const key = saves.SAVE_STORAGE_KEY;
 const owner = '2026-11-21T21:00:00.000Z';
 const species = 'oseris-iv--jungle-xeno-scout';
 const hideSpecies = 'oseris-iv--mist-pouncer';
-const selectMaterial = process.env.HUNTER_FORGE_QA_SELECT_MATERIAL === '1';
+const forgeArmor = process.env.HUNTER_FORGE_QA_ARMOR === '1';
+const selectMaterial = forgeArmor || process.env.HUNTER_FORGE_QA_SELECT_MATERIAL === '1';
 const mission = MISSION_BY_ID['jungle-vey'];
 
 function fixture() {
@@ -45,7 +46,10 @@ function fixture() {
   const runId = mission.id + ':' + encounter;
   const corpses = ['forge-fixture-01', 'forge-fixture-02', 'forge-fixture-03'];
   const plan = corpses.map(id => ({ id, species, action: 'harvest-bone' }));
-  if (selectMaterial) plan.push(...['forge-hide-01', 'forge-hide-02'].map(id => ({ id, species: hideSpecies, action: 'harvest-hide' })));
+  const hides = forgeArmor ? 3 : 2;
+  if (selectMaterial) plan.push(...Array.from({ length: hides }, (_, i) => ({
+    id: 'forge-hide-0' + (i + 1), species: hideSpecies, action: 'harvest-hide',
+  })));
   const specimens = plan.map(item => anatomies.makeAnatomySpecimenV112(runId, item.id, item.species, item.action, 82, true));
   assert(specimens.every(Boolean));
   assert(specimens.slice(0, 3).every(item => item.partId === 'bone' && item.quality === 90));
@@ -108,7 +112,8 @@ try {
   const seed = fixture();
   const start = seed.inventory.harvestV112.archive[0];
   const chosen = selectMaterial ? seed.inventory.harvestV112.archive.find(row => row.speciesId === hideSpecies) : null;
-  if (selectMaterial) assert.equal(chosen?.count, 2);
+  if (selectMaterial) assert.equal(chosen?.count, forgeArmor ? 3 : 2);
+  if (forgeArmor) report.admission += ' Le même navigateur forge ensuite le premier niveau avec le reste des lots archivés.';
   report.initial = { wear: seed.customizationV146.heavyWear, stock: start, chosen, marks: seed.profile.clanMarks };
   browser = await chromium.launch({
     executablePath: process.env.CHROMIUM_EXECUTABLE || process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || undefined,
@@ -232,7 +237,9 @@ try {
   assert.equal(await rig.locator('[data-piece-wear]').count(), 0);
   assert.equal(await confirm().count(), 0);
   const repaired = await disk();
-  assert.deepEqual(repaired.inventory.harvestV112.archive, [selectMaterial ? start : { ...start, count: 1, qualityTotal: 90 }]);
+  const afterRepair = [selectMaterial ? start : { ...start, count: 1, qualityTotal: 90 }];
+  if (forgeArmor) afterRepair.push({ ...chosen, count: 1, qualityTotal: Math.round(chosen.qualityTotal / 3) });
+  assert.deepEqual(repaired.inventory.harvestV112.archive, afterRepair);
   assert.equal(repaired.profile.clanMarks, seed.profile.clanMarks);
   assert.deepEqual(repaired.customizationV146.heavyWear, {});
   const canonical = saves.parseSaveImport(saves.exportSave(repaired));
@@ -271,6 +278,45 @@ try {
   assert.equal(received.appearance.skinPatternIdV146 ?? null, null);
   assert.deepEqual(received.inventory.harvestV112.archive, restored.inventory.harvestV112.archive);
   report.share = { fallback: lockedPattern, color: received.appearance.piecesV146.chest.primary };
+
+  if (forgeArmor) {
+    const arsenal = qa.load('app/game/systems/arsenal.ts');
+    const armorId = received.loadout.armorId;
+    const baseline = received.inventory.armorUpgrades[armorId];
+    assert.equal(baseline, 0);
+    await forge.getByRole('tab', { name: 'Réparations', exact: true }).click();
+    const upgrade = forge.locator('[data-forge-armor-apply]');
+    const armorQuote = forge.locator('[data-forge-armor-quote]');
+    assert.equal(await upgrade.isEnabled(), false);
+    const bonePick = forge.locator('[data-forge-armor-material="bone"]');
+    const hidePick = forge.locator('[data-forge-armor-material="hide"]');
+    await bonePick.selectOption(JSON.stringify([start.speciesId, start.partId]));
+    assert.equal(await upgrade.isEnabled(), false);
+    await hidePick.selectOption(JSON.stringify([chosen.speciesId, chosen.partId]));
+    assert.equal(await armorQuote.innerText(), '2 × ' + start.label + ' · 1 × ' + chosen.label);
+    const previous = arsenal.effectiveArmorStats(armorId, baseline);
+    const projected = arsenal.effectiveArmorStats(armorId, baseline + 1);
+    const stats = await forge.locator('[data-forge-armor-stats]').innerText();
+    assert(stats.includes('PV ' + Math.round(previous.maxHealth) + ' → ' + Math.round(projected.maxHealth)));
+    await forge.screenshot({ path: join(output, 'devis-niveau-armure.png'), animations: 'disabled' });
+    await upgrade.click();
+    await forge.locator('[data-forge-armor-level="1"]').waitFor();
+    const upgraded = await disk();
+    assert.equal(upgraded.inventory.armorUpgrades[armorId], 1);
+    assert.equal(upgraded.loadout.armorId, armorId);
+    assert.equal(upgraded.profile.clanMarks, received.profile.clanMarks);
+    assert.equal(upgraded.profile.honor, received.profile.honor);
+    assert.deepEqual(upgraded.inventory.harvestV112.archive, [{ ...start, count: 1, qualityTotal: 90 }]);
+    assert.equal(await upgrade.isEnabled(), false);
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await openForge();
+    await forge.locator('[data-forge-armor-level="1"]').waitFor();
+    const resumedArmor = await disk();
+    assert.deepEqual(resumedArmor.inventory, upgraded.inventory);
+    assert.equal(arsenal.quoteUpgrade(resumedArmor, { domain: 'armor', id: armorId }).currentLevel, 1);
+    report.armor = { armorId, level: 1, stats, remaining: resumedArmor.inventory.harvestV112.archive };
+  }
+
   assert.deepEqual(report.errors, []);
   report.result = { remaining: restored.inventory.harvestV112.archive[0], wear: restored.customizationV146.heavyWear, marks: restored.profile.clanMarks };
   report.passed = true;

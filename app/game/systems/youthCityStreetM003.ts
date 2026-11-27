@@ -15,7 +15,7 @@ const markerRadius = 62;
 const workshops = { x: forgeApproach.x, y: forgeApproach.y + 240 };
 const square = { x: marketApproach.x, y: marketApproach.y + 144 };
 
-const markers = [
+export const YOUTH_CITY_STREET_MARKERS_M003 = [
   { kind: "workshops", point: workshops, name: "Rue des ateliers", label: "Faire halte avec Saar dans la rue des ateliers",
     message: "Saar : la forge est repérée. Suis-moi à travers les étals jusqu’à la place du Marché des Clans." },
   { kind: "square", point: square, name: "Place du Marché des Clans", label: "Faire le point avec Saar sur la place",
@@ -31,7 +31,7 @@ let geometryRevision = -1;
 export function youthCityStreetPathM003(errand?: YouthCityErrandV172) {
   const leg = youthCityStreetLegM003(errand);
   if (!errand || leg === undefined) return null;
-  const marker = markers[leg];
+  const marker = YOUTH_CITY_STREET_MARKERS_M003[leg];
   const start = leg === 1 ? workshops : errand.route === "escort" ? lowerLanding.point : forgeApproach;
   const junction = junctions[leg];
   const nextRevision = homeworldNavigationRevisionV77();

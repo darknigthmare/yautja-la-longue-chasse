@@ -5,7 +5,7 @@ import { residenceTrophiesR2M038 } from "./systems/trophyIntroductionR2M038";
 import { originEndingV170 } from "./systems/originEndingsV170";
 import {
   advanceLegacyFinaleR2, legacyClanShipReadoutR2, legacyClanShipSiteR2, legacyHaltReadoutR2, legacyHaltSiteR2,
-  legacyOriginEndingR2, legacyResidenceSiteR2,
+  legacyOriginEndingR2, legacyPersonalShipReadoutR2, legacyResidenceSiteR2,
   legacySceneRefusalR2, legacyShipSiteR2,
   type LegacyCommandR2, type LegacySceneR2, type LegacySiteR2,
 } from "./systems/legacyFinaleR2";
@@ -24,6 +24,7 @@ import { applyContinuationO6, isContinuationOrderO6, type ContinuationOrderO6 } 
 import { applySoloReturnO6, isSoloReturnOrderO6, type SoloReturnOrderO6 } from "./systems/originSoloReturnO6";
 import { firstShockActiveO6, type FirstShockOrderO6 } from "./systems/originFirstShockO6";
 import { activeCohortRaceO6, advanceFirstShockIntoCohortO6, canStartCohortRaceO6, playCohortRaceO6, startCohortRaceO6, type CohortRaceOrderO6 } from "./systems/originCohortRaceO6";
+import type { TownBellRecordO6 } from "./systems/originTownBellO6";
 import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
 import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -1317,7 +1318,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     screen === "briefing" || screen === "armory" || screen === "customization" ||
     screen === "trophies" || screen === "codex" || screen === "medbay" ||
     screen === "training" || screen === "justice" || screen === "mobility";
-  const deckVisible = !newGamePhase && (screen === "deck" || (shipStationOpen && hubLocation === "deck"));
+  const personalLegacyOverlayR2 = screen === "legacy-finale-r2" && legacyVisitR2?.site.kind === "ship";
+  const deckVisible = !newGamePhase && (screen === "deck" || personalLegacyOverlayR2 || (shipStationOpen && hubLocation === "deck"));
   const clanShipState = normalizeClanShipDocking(save.clanShipDocking, save.createdAt, selectedShipId);
   const clanShipActiveContract = save.clanShipOperations?.activeContract
     ? clanShipContract(save.clanShipOperations.activeContract.contractId) : null;
@@ -1908,7 +1910,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!sessionAliveRef.current || !reconcileNurseryAttempt()) return false;
     const next = playCohortRaceO6(saveRef.current, order);
     if (!next || !persistNursery(next)) return false;
-    if (order.type === "help" || order.type === "partial") setToast("La manche et les gestes joués sont consignés. La cité t’attend.");
+    if (order.type === "help" || order.type === "partial") setToast("La manche est consignée. Saar t’attend au pied de l’escalier du Conseil pour la livraison.");
     return true;
   }, [persistNursery, reconcileNurseryAttempt]);
 
@@ -2976,12 +2978,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return { ...result, state: saveRef.current.spaceRoutesV159 ?? null };
   };
 
-  const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress): boolean => {
+  const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress, townBell?: TownBellRecordO6): boolean => {
     const current = saveRef.current;
+    if (townBell && !current.originV151) return false;
     const reward = Math.max(0, contractMarksV68(homeworld.contractsV68) - contractMarksV68(current.homeworld.contractsV68));
     // Completed orders pay once, in the same durable write as the signed report.
-    // The ledger remains cumulative; spending the wallet cannot replay a reward.
-    return persistSocialProgress({ homeworld, ...(reward ? {profile: {...current.profile, clanMarks: current.profile.clanMarks + reward}} : {}) });
+    const saved = persistSocialProgress({ homeworld,
+      ...(townBell && current.originV151 ? { originV151: { ...current.originV151, townBellO6: townBell } } : {}),
+      ...(reward ? {profile: {...current.profile, clanMarks: current.profile.clanMarks + reward}} : {}) });
+    if (saved && townBell?.journal.at(-1)?.action === "ring" &&
+        (current.originV151?.townBellO6?.journal.length ?? 0) < townBell.journal.length) audioRef.current?.townDeliveryBellO6();
+    return saved;
   }, [persistSocialProgress]);
   // V160 : l'écran n'annonce une épreuve acceptée ou remise qu'après écriture confirmée.
   const persistMinorArcsV160 = useCallback((minorArcsV160: MinorArcsV160): boolean =>
@@ -3221,6 +3228,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     stationReturnScreen === "clan-ship" ? legacyClanShipSiteR2(save) : null;
   const legacyClanReadoutR2 = legacyClanShipReadoutR2(save.legacyFinaleR2);
   const legacyHaltReadout = legacyVisitR2?.site.kind === "halt" ? legacyHaltReadoutR2(save) : null;
+  const legacyPersonalReadout = legacyVisitR2?.site.kind === "ship" ? legacyPersonalShipReadoutR2(save, legacyVisitR2.site) : null;
   const legacySuspendedR2 = settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue ||
     campaignSaveBusy || !!resumableHunt || !gameFocusedV89;
   const openLegacyFinaleR2 = useCallback((scene: LegacySceneR2, site: LegacySiteR2, siteLabel: string) => {
@@ -5693,12 +5701,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               disabled={legacySuspendedR2} notice={legacyNoticeR2} onCommand={onLegacyCommandR2} onClose={closeLegacyFinaleR2}
               belongings={legacyHaltReadout ? legacyHaltReadout.belongings :
                 legacyVisitR2.site.kind === "clan-ship" ? legacyClanReadoutR2.belongings :
-                (legacyVisitR2.site.kind === "residence" ? residenceTrophiesR2M038(save, legacyVisitR2.site.id) :
-                  save.trophies.filter(item => {
-                    const display = save.trophyUsagesV147?.assignments[item.id];
-                    return display?.usage === "displayed" && display.site === "ship";
-                  })).map(item => item.targetName)}
-              relations={legacyHaltReadout ? legacyHaltReadout.relations :
+                [...(legacyPersonalReadout?.belongings ?? []),
+                ...(legacyVisitR2.site.kind === "residence" ? residenceTrophiesR2M038(save, legacyVisitR2.site.id) :
+                  save.trophies.filter(item => isPersonalShipTrophyDisplayV147(save.trophyUsagesV147?.assignments[item.id])))
+                  .map(item => item.targetName)]}
+              relations={legacyPersonalReadout ? legacyPersonalReadout.relations : legacyHaltReadout ? legacyHaltReadout.relations :
                 legacyVisitR2.site.kind === "clan-ship" ? legacyClanReadoutR2.relations :
                 Object.values(save.originV151?.relations ?? {}).map(item => item.name)} />
           </Suspense>
@@ -5714,10 +5721,16 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             residenceV149={(buildingId: string, disabled: boolean, threshold = false) => {
               const house = houseForBuildingV149(save.homeworldRegionV68!.regionId, buildingId);
               if (!house) return null;
+              const legacySite = legacyOriginEndingR2(save) ? legacyResidenceSiteR2(save, house.id) : null;
               return <>
                 <ResidencePanelV149 house={house} residence={save.residenceV149} rankId={save.profile.rankId} disabled={disabled} threshold={threshold}
                   displayedTrophies={residenceTrophiesR2M038(save, house.id)}
                   regionAllowed={regionId => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={action => residenceActionV149(house.id, action)} />
+                {legacySite && !legacySceneRefusalR2(save, legacySite, "cohort") && <button type="button" className="ghost-button"
+                  data-open-legacy-cohort-r2 data-legacy-cohort-entry={threshold ? "threshold" : "service"}
+                  disabled={disabled || legacySuspendedR2} onClick={() => openLegacyFinaleR2("cohort", legacySite, house.title)}>
+                  {threshold ? "Recevoir la nouvelle cohorte au seuil" : "Accueillir la nouvelle cohorte"}
+                </button>}
                 {!threshold && <>
                   <ResidenceLifePanelV150 house={house} residence={save.residenceV149} life={save.residenceLifeV150} rankId={save.profile.rankId} disabled={disabled}
                     regionAllowed={regionId => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={residenceLifeActionV150} />
@@ -5727,17 +5740,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                     region={save.homeworldRegionV68 ? { runId: save.homeworldRegionV68.runId, tick: save.homeworldRegionV68.tick } : null} rankId={save.profile.rankId} disabled={disabled}
                     regionAllowed={(regionId: string) => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={residenceSceneActionV154}
                     stock={(() => { const objects = normalizePathObjectsV158(save.pathObjectsV158) ?? emptyPathObjectsV158(); return { materials: objects.materials, receipts: objects.receipts }; })()} />
-                  {legacyOriginEndingR2(save) && (() => {
-                    const site = legacyResidenceSiteR2(save, house.id);
-                    return site && <>
-                      {!legacySceneRefusalR2(save, site, "cohort") && <button type="button" className="ghost-button"
-                        data-open-legacy-cohort-r2 disabled={disabled || legacySuspendedR2}
-                        onClick={() => openLegacyFinaleR2("cohort", site, house.title)}>Accueillir la nouvelle cohorte</button>}
-                      {!legacySceneRefusalR2(save, site, "epilogue") && <button type="button" className="ghost-button"
-                        data-open-legacy-epilogue-r2 disabled={disabled || legacySuspendedR2}
-                        onClick={() => openLegacyFinaleR2("epilogue", site, house.title)}>Revoir les traces du foyer</button>}
-                    </>;
-                  })()}
+                  {legacySite && !legacySceneRefusalR2(save, legacySite, "epilogue") &&
+                    <button type="button" className="ghost-button" data-open-legacy-epilogue-r2 disabled={disabled || legacySuspendedR2}
+                      onClick={() => openLegacyFinaleR2("epilogue", legacySite, house.title)}>Revoir les traces du foyer</button>}
                   <HouseMaterialsPanelV158 house={house} objects={save.pathObjectsV158} clanMarks={save.profile.clanMarks} disabled={disabled} onBuy={buyMaterialActionV158} />
                 </>}
               </>;
@@ -5913,7 +5918,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
       {deckVisible && (
         <Suspense fallback={<DeferredGameScreen />}>
-          <section className="screen panel-screen physical-deck-screen" inert={shipStationOpen || settingsOpen}>
+          <section className="screen panel-screen physical-deck-screen" hidden={personalLegacyOverlayR2}
+            inert={shipStationOpen || settingsOpen || personalLegacyOverlayR2}>
             <div className="screen-safe">
               <div className="physical-deck-toolbar">
                 <button type="button" className="ghost-button" aria-expanded={quickAccessOpen}
@@ -5945,9 +5951,6 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <button type="button" className="ghost-button" onClick={() => { setChronicleReturnScreen("deck"); go("clan-chronicle"); }}>
                   Dossier de campagne
                 </button>
-                {legacyDeckSiteR2 && !legacySceneRefusalR2(save, legacyDeckSiteR2, "epilogue") &&
-                  <button type="button" className="ghost-button" data-open-legacy-epilogue-r2 disabled={legacySuspendedR2}
-                    onClick={() => openLegacyFinaleR2("epilogue", legacyDeckSiteR2, "Vaisseau personnel")}>Revoir les traces du voyage</button>}
                 <button type="button" className="ghost-button" data-open-queen-hunt-v163 disabled={queenHuntBusy} onClick={openQueenHunt}>
                   Queen Hunt · contrats de ruche{queenHuntAccess.allowed ? "" : " (fermé)"}
                 </button>
@@ -5981,7 +5984,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 selectedDestination={selectedMission?.planetName}
                 companions={{ save, selectedShipId, ownedShipIds: loadShipProgression(save).unlockedShipIds, onAction: commitCompanionResidence }}
               preflightV88={{ evaluation: shipPreparationEvaluationV88, onInspect: onInspectShipPreparationV88 }}
-                suspended={shipStationOpen || settingsOpen || trophyWorkshop !== null}
+                suspended={shipStationOpen || settingsOpen || trophyWorkshop !== null || personalLegacyOverlayR2}
                 showShortcuts={quickAccessOpen}
                 highContrast={save.settings.highContrastVision}
                 controlBindings={save.settings.controlBindings}
@@ -5998,6 +6001,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 onOpenTrophies={() => openStationScreen("trophies", "deck")}
                 onOpenPersonalTrophyHall={() => openStationScreen("trophies", "deck", undefined, true)}
                 onOpenArchives={() => openStationScreen("codex", "deck")}
+                onOpenLegacyArchive={legacyDeckSiteR2 && !legacySuspendedR2 && !legacySceneRefusalR2(save, legacyDeckSiteR2, "epilogue")
+                  ? () => openLegacyFinaleR2("epilogue", legacyDeckSiteR2, "Archives du vaisseau personnel") : undefined}
                 onOpenAppearanceForge={() => openStationScreen("customization", "deck")}
                 onOpenMedbay={() => openStationScreen("medbay", "deck")}
                 onOpenTraining={() => openStationScreen("training", "deck")}
@@ -6665,6 +6670,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               save={save}
               onPreview={setDraftAppearanceV146}
               disabled={settingsOpen || campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue}
+              allowEquipmentUpgrades={!newGamePhase && chromaticFacilityV115 !== "lab"}
               onCommit={commitCustomizationV146}
             />
             <div className="customization-layout">

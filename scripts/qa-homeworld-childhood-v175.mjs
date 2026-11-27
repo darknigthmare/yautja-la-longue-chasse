@@ -36,7 +36,7 @@ try {
   page = await context.newPage();
   page.setDefaultTimeout(30000);
   page.on("pageerror", error => report.errors.push(error.message));
-  const scene = page.locator("[data-homeworld-childhood-v175]");
+  let scene = page.locator("[data-homeworld-childhood-v175]");
   const read = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), storageKey);
   const view = async () => {
     const campaign = await read();
@@ -134,14 +134,16 @@ try {
   assert.equal(await scene.locator("[data-childhood-enter-dojo]").count(), 0);
   assert.equal(await scene.locator("[data-childhood-action=east]").count(), 0);
   await act("cohort-gesture");
+  assert.equal(await scene.locator("[data-childhood-cohort-prop=ring]").count(), 1);
   await shot("geste-de-yena");
   await page.reload(); await boot();
   assert.equal((await view()).cohortPresentations, 1);
   assert.equal((await view()).cohortStowed, 0);
   await act("cohort-stow");
-  for (const name of ["Harek", "Tov"]) {
+  for (const [name, prop] of [["Harek", "beam"], ["Tov", "spring"]]) {
     assert((await scene.locator("[data-childhood-action=cohort-gesture]").innerText()).includes(name));
     await act("cohort-gesture");
+    assert.equal(await scene.locator("[data-childhood-cohort-prop=" + prop + "]").count(), 1);
     await act("cohort-stow");
   }
   assert.equal((await view()).cohortPresentations, 3);
@@ -153,8 +155,40 @@ try {
   await act("use");
   assert.equal((await view()).position, 8);
   assert.equal(await scene.locator("[data-childhood-saar=inside]").count(), 1);
-  await shot("passation");
-  assert.equal(await scene.locator("[data-childhood-enter-dojo]").count(), 0);
+  assert.equal((await view()).rackAccess, "pending");
+  assert.equal(await scene.locator("[data-childhood-action=first-blades], [data-childhood-enter-dojo]").count(), 0);
+  await shot("seuil-avant-remise");
+  const pending = await read();
+  const exported = childhoodStorage.exportSave(pending);
+  const foreignContext = await browser.newContext({ viewport: { width: 1360, height: 980 }, reducedMotion: "reduce" });
+  page = await foreignContext.newPage();
+  page.setDefaultTimeout(30000);
+  page.on("pageerror", error => report.errors.push(error.message));
+  scene = page.locator("[data-homeworld-childhood-v175]");
+  await page.goto("http://127.0.0.1:4275");
+  await page.locator('[data-menu-section="campaign"]').click();
+  await page.locator('[data-menu-action="import"]').click();
+  await page.locator("#campaign-import-file").setInputFiles({
+    name: "passation-au-seuil.json", mimeType: "application/json", buffer: Buffer.from(exported),
+  });
+  await page.locator("[data-campaign-import-prepare]").click();
+  await page.locator("[data-campaign-import-confirm]").click();
+  await page.locator('[data-campaign-slot="1"][data-slot-state="ready"]').waitFor();
+  await page.getByRole("button", { name: "Retour à Campagne", exact: true }).click();
+  await boot();
+  const imported = await read();
+  assert.equal(imported.createdAt, pending.createdAt);
+  assert.deepEqual(imported.homeworld.childhoodV175, pending.homeworld.childhoodV175);
+  assert.equal((await view()).rackAccess, "pending");
+  assert.equal(await scene.locator("[data-childhood-action=first-blades], [data-childhood-enter-dojo]").count(), 0);
+  await act("accept-rack-access");
+  await scene.locator("[data-childhood-rack-receipt]").waitFor();
+  await shot("plaque-remise-apres-import");
+  await page.reload(); await boot();
+  await scene.locator("[data-childhood-rack-receipt]").waitFor();
+  assert.equal((await view()).rackAccess, "received");
+  assert.deepEqual((await read()).prologue.chronicle, pending.prologue.chronicle);
+  assert.equal(await scene.locator("[data-childhood-action=accept-rack-access]").count(), 0);
   await act("first-blades");
   await page.reload(); await boot();
   assert.equal((await view()).firstWorkshop, "blades");
@@ -165,7 +199,7 @@ try {
   assert.equal(rank.getChronicleRank(played.prologue.chronicle), "unblooded");
   assert.equal(played.youthTraining?.checkpoint.firstWorkshopV176, "blades");
   assert(childhoodStorage.parseSaveImport(childhoodStorage.exportSave(played)).save);
-  report.checks.push("Démonstrations et outils des trois camarades, passage avec Saar de la dalle 7 à 8, choix des lames conservé au dojo après rechargement");
+  report.checks.push("Trois gestes avec leur matériel, passage avec Saar, import JSON par le menu, remise de la plaque sans nouveau rang, reprise et choix des lames conservé au dojo.");
   const barracks = youthBarracksFromSave(played);
   report.prerequisites += " The real training reducer plays the intervening dojo milestones and walks to the barracks door.";
   await page.evaluate(({ key, archive }) => localStorage.setItem(key, JSON.stringify(archive)), { key: storageKey, archive: barracks });

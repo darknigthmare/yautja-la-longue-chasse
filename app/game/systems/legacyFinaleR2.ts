@@ -3,6 +3,7 @@ import { getChronicleRank } from "./clanChronicle";
 import { normalizeOriginV151 } from "./originsV151";
 import { normalizeResidenceV149 } from "./residenceV149";
 import { shipReceiptV161 } from "./shipReceiptV161";
+import { SHIP_ACQUISITION_BINDING_V89 } from "./shipAcquisitionV89";
 import { shipForId } from "../shipCatalogue";
 import { CLAN_SHIP_ID, inspectClanShipDocking, isClanShipRoomId, type ClanShipDockingState, type ClanShipRoomId } from "./clanShipDocking";
 import { CLAN_SHIP_RECRUITS, inspectClanShipOperations, type ClanShipNpcId } from "./clanShipOperations";
@@ -59,10 +60,12 @@ type ClanBerthProofR2 = {
   trophy: ClanShipTrophyVerdict | null;
 };
 type ClanCrewProofR2 = { id: ClanShipNpcId; room: ClanShipRoomId };
+type PersonalShipProofR2 = Pick<NonNullable<ReturnType<typeof shipReceiptV161>["receipt"]>, "shipId" | "sourceId" | "candidateId">;
 type StoredEpilogueOrder = EpilogueOrder |
   { kind: "belongings"; at: number; clanProof: ClanBerthProofR2 } |
   { kind: "relations"; at: number; clanProof: ClanCrewProofR2[] } |
-  { kind: "belongings"; at: number; haltOperationId: string };
+  { kind: "belongings"; at: number; haltOperationId: string } |
+  { kind: "relations"; at: number; personalShipProof: PersonalShipProofR2 };
 type Journal<Order> = { site: LegacySiteR2; events: Order[] };
 export type LegacyFinaleR2 = {
   version: 1;
@@ -95,6 +98,28 @@ export function legacyResidenceSiteR2(save: Pick<LegacySave, "residenceV149">, h
 export function legacyShipSiteR2(save: LegacySave): LegacySiteR2 | null {
   const hull = shipReceiptV161(save).receipt;
   return hull ? { kind: "ship", id: hull.instanceId } : null;
+}
+
+function personalShipProofR2(save: LegacySave, site: LegacySiteR2): PersonalShipProofR2 | null {
+  const hull = shipReceiptV161(save).receipt;
+  return site.kind === "ship" && hull?.instanceId === site.id
+    ? { shipId: hull.shipId, sourceId: hull.sourceId, candidateId: hull.candidateId } : null;
+}
+
+function recordedShipHandoverR2(state: LegacyFinaleR2 | null | undefined, site: LegacySiteR2) {
+  const journal = state?.epilogue;
+  if (site.kind !== "ship" || !journal || !sameSite(journal.site, site)) return null;
+  const checked = journal.events.find(event => "personalShipProof" in event);
+  return checked && "personalShipProof" in checked ? checked.personalShipProof : null;
+}
+
+export function legacyPersonalShipReadoutR2(save: LegacySave, site: LegacySiteR2) {
+  const hull = personalShipProofR2(save, site);
+  const checked = recordedShipHandoverR2(save.legacyFinaleR2, site);
+  return {
+    belongings: hull ? [`Coque remise · ${shipForId(hull.shipId).name}`] : [],
+    relations: hull && checked ? ["Chantier naval · remise des droits et entrée à bord attestées"] : [],
+  };
 }
 
 const halt = BIBLE_CULTURAL_BINDING_V86;
@@ -357,7 +382,7 @@ export function legacyEpilogueChoicesR2(state: LegacyFinaleR2 | null | undefined
     return belongings ? (crew.length ? ["depart", "welcome", "transmit"] : ["depart", "transmit"]) : ["depart"];
   }
   if (site.kind === "halt") return haltEpilogueOperationR2(state) ? epilogueOptions : ["depart"];
-  if (site.kind !== "residence") return ["depart"];
+  if (site.kind === "ship") return recordedShipHandoverR2(state, site) ? ["depart", "transmit"] : ["depart"];
   return legacyTransmissionWitnessesR2(state, site).length ? epilogueOptions : ["depart", "welcome"];
 }
 
@@ -402,6 +427,16 @@ function parseStoredEpilogueOrderR2(raw: unknown, site: LegacySiteR2, owner: str
     return Object.keys(raw).length === 3 && position(raw.at) && typeof raw.haltOperationId === "string" &&
       legacyHaltOperationPatternR2.test(raw.haltOperationId)
       ? { kind: raw.kind, at: raw.at, haltOperationId: raw.haltOperationId } : null;
+  }
+  if (site.kind === "ship" && record(raw) && raw.kind === "relations" && "personalShipProof" in raw) {
+    const proof = raw.personalShipProof;
+    const binding = SHIP_ACQUISITION_BINDING_V89;
+    return Object.keys(raw).length === 3 && position(raw.at) && record(proof) &&
+      Object.keys(proof).length === 3 && proof.shipId === binding.shipId &&
+      proof.sourceId === binding.missionId && proof.candidateId === binding.candidateId
+      ? { kind: raw.kind, at: raw.at, personalShipProof: {
+        shipId: proof.shipId, sourceId: proof.sourceId, candidateId: proof.candidateId,
+      } } : null;
   }
   if (site.kind !== "clan-ship") return validEpilogueOrder(raw) ? raw : null;
   if (!record(raw) || !position(raw.at)) return null;
@@ -468,6 +503,13 @@ export function normalizeLegacyFinaleR2(raw: unknown, ownerCreatedAt: string): L
   return state;
 }
 
+function personalShipEpilogueMatchesSaveR2(save: LegacySave, site: LegacySiteR2) {
+  const proof = recordedShipHandoverR2(save.legacyFinaleR2, site);
+  const held = personalShipProofR2(save, site);
+  return !!held && (!proof || (proof.shipId === held.shipId && proof.sourceId === held.sourceId &&
+    proof.candidateId === held.candidateId));
+}
+
 function haltEpilogueMatchesSaveR2(save: LegacySave) {
   const operation = haltEpilogueOperationR2(save.legacyFinaleR2);
   return !!operation && resolvedHaltReceiptR2(save, operation) !== null;
@@ -489,7 +531,8 @@ export function legacyFinaleMatchesSaveR2(save: LegacySave): boolean {
     (!state.cohort || !legacySceneRefusalR2(save, state.cohort.site, "cohort")) &&
     (!state.epilogue || (state.epilogue.site.kind === "clan-ship" ? clanEpilogueMatchesSaveR2(save) :
       state.epilogue.site.kind === "halt" ? haltEpilogueMatchesSaveR2(save) :
-        !legacySceneRefusalR2(save, state.epilogue.site, "epilogue"))));
+        state.epilogue.site.kind === "ship" ? personalShipEpilogueMatchesSaveR2(save, state.epilogue.site) :
+          !legacySceneRefusalR2(save, state.epilogue.site, "epilogue"))));
 }
 
 export function advanceLegacyFinaleR2(save: LegacySave, site: LegacySiteR2, command: LegacyCommandR2) {
@@ -519,6 +562,11 @@ export function advanceLegacyFinaleR2(save: LegacySave, site: LegacySiteR2, comm
       if (!receipt) return { message: "Le relevé de cette halte doit d’abord être consigné." };
       stored = { kind: "belongings", at: command.order.at, haltOperationId: receipt.operationId };
     }
+    if (site.kind === "ship" && command.order.kind === "relations") {
+      const proof = personalShipProofR2(save, site);
+      if (!proof) return { message: "La remise de cette coque doit être attestée avant l’archivage." };
+      stored = { kind: "relations", at: command.order.at, personalShipProof: proof };
+    }
     if (site.kind === "clan-ship") {
       if (command.order.kind === "belongings") {
         const berth = clanBerthAtTrophiesR2(save);
@@ -530,7 +578,10 @@ export function advanceLegacyFinaleR2(save: LegacySave, site: LegacySiteR2, comm
       }
     }
     next.epilogue = { site, events: [...(before?.epilogue?.events ?? []), stored] };
-    return { next, message: action.message };
+    const message = site.kind === "ship" && view.choice === "transmit" && command.order.kind === "act"
+      ? "Le dossier de remise et d’entrée est déposé aux archives du vaisseau."
+      : action.message;
+    return { next, message };
   }
   return { message: "Le geste n’appartient pas à cette scène." };
 }
