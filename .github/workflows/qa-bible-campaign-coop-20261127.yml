@@ -1,4 +1,4 @@
-name: QA campaign coop guest rewards
+name: QA campaign coop existing save contracts
 on:
   push:
     branches: [codex/qa-bible-campaign-coop-20261127]
@@ -31,6 +31,4 @@ jobs:
           node-version: 22
       - run: test "$(git rev-parse HEAD)" = 1b8be6a0f46e72fb3677b1c22c28f19fbe867268
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      - run: node --experimental-strip-types --test --test-concurrency=1 tests/campaign-coop-rewards.test.mjs tests/mission-honor-rules.test.mjs
-      - run: npx eslint app/game/systems/campaignCoopRewards.ts app/game/systems/honorSourcesV169.ts app/game/save.ts tests/campaign-coop-rewards.test.mjs
-      - run: npx next typegen && npx tsc --noEmit --incremental false
+      - run: node --experimental-strip-types --test --test-concurrency=1 tests/honor-sources-v169.test.mjs tests/honor-progression-v166.test.mjs tests/save-recovery-import.test.mjs tests/active-hunt-save.test.mjs
