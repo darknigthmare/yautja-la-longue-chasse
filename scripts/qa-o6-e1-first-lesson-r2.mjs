@@ -101,6 +101,53 @@ const action = (scene, id) => scene.locator(`[data-legacy-action="${id}"]`);
 try {
   await service.listen();
   browser = await chromium.launch({ args: ["--no-sandbox"] });
+  const academy = legacyCanonicalCohortFixture({ realized: false });
+  const { ending: _priorSelection, ...originBeforeChoice } = academy.originV151;
+  originBeforeChoice.consumed = originBeforeChoice.consumed.filter(event => !event.startsWith("O6-M29:"));
+  await runFrom({ ...academy, originV151: originBeforeChoice, homeworldRegionV68: null }, async page => {
+    const ship = page.locator('[data-ship-interior="2.5d"]');
+    const menu = page.locator("[data-campaign-menu]");
+    await ship.or(menu).first().waitFor();
+    if (await menu.isVisible()) {
+      const campaign = page.locator('[data-menu-section="campaign"]');
+      if (await campaign.isVisible()) await campaign.click();
+      await page.locator('[data-menu-action="continue"]').click();
+    }
+    await ship.waitFor();
+    const rooms = [await ship.getAttribute("data-ship-room")];
+    await ship.locator("[data-ship-plan-toggle]").click();
+    await ship.locator('[data-ship-guide="trophy-hall"]').click();
+    while (rooms.at(-1) !== "trophy-hall") {
+      assert.ok(rooms.length < 8, rooms.join(" → "));
+      await ship.and(page.locator('[data-ship-nearby="door"][data-ship-navigation="false"]')).waitFor();
+      await ship.locator("[data-ship-interact]").click();
+      const last = rooms.at(-1);
+      await page.waitForFunction(previous => document.querySelector("[data-ship-interior]")?.getAttribute("data-ship-room") !== previous, last);
+      rooms.push(await ship.getAttribute("data-ship-room"));
+    }
+    await ship.and(page.locator('[data-ship-nearby="trophy-hall"]')).waitFor();
+    await ship.locator("[data-ship-interact]").click();
+    await page.getByRole("heading", { name: "Mur des trophées" }).waitFor();
+    const choice = page.locator('[data-origin-ending-v170="open"]');
+    await choice.locator('[data-origin-ending-examine="O6-E1"]').click();
+    const recordedOrigin = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)).originV151, saves.SAVE_STORAGE_KEY);
+    let recorded = await recordedOrigin();
+    assert.equal(recorded.ending.endingChoiceConfirmed, false);
+    assert.ok(recorded.consumed.includes("O6-M29:visited"));
+    assert.ok(!recorded.consumed.includes("O6-M29:confirmed"));
+    await choice.locator("[data-origin-ending-back]").click();
+    assert.equal((await recordedOrigin()).ending.endingChoiceConfirmed, false);
+    await choice.locator('[data-origin-ending-examine="O6-E1"]').click();
+    await choice.locator('[data-origin-ending-confirm="O6-E1"]').click();
+    await page.locator('[data-origin-ending-v170="O6-E1"] [data-origin-ending-realized="false"]').waitFor();
+    recorded = await recordedOrigin();
+    assert.equal(recorded.ending.originEndingId, "O6-E1");
+    assert.equal(recorded.ending.endingChoiceConfirmed, true);
+    assert.equal(recorded.ending.endingRealized, false);
+    assert.ok(recorded.consumed.includes("O6-M29:confirmed"));
+    await capture(page, "o6-e1-choix-confirme-au-vrai-atelier");
+    report.sequences.push("O6-M29 · atelier rejoint par les portes, visite et sortie provisoire, puis confirmation E1 sans prévalider M30");
+  });
   await runFrom(legacyHaltFixture({ walkthrough: false, approach: { x: 1940, y: 2310 } }), async page => {
     const enterHalt = async () => {
       const walk = await openWorld(page, "storm-chain");
