@@ -1,6 +1,6 @@
 /** R2-M055. The witness uses three places of this campaign to teach one method. */
 import type { ClanShipRoomId } from './clanShipDocking';
-import { inspectElderWorkshopV172 } from './elderWorkshopV172';
+import { inspectElderWorkshopV172 } from './elderWorkshopRecordV172';
 import { inspectOserisReturn, oserisReturnView, type OserisReturnRecord } from './oserisReturnR2M053';
 import { inspectSuccessorTrial, successorTrialView, type SuccessorTrialRecord } from './successorTrialR2M054';
 
