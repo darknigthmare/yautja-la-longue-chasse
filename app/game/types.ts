@@ -724,6 +724,8 @@ export interface SaveGame {
   soloV70?: SoloV70Campaign | null;
   /** Local preparation only; never substitutes for a Blooded rite. */
   soloV90?: SoloV90Campaign | null;
+  bloodedTempleV174?: import("./systems/bloodedTempleV174").BloodedTempleV174 | null;
+  eliteRecognitionV174?: import("./systems/eliteRecognitionV174").EliteRecognitionV174 | null;
   quatzaRij?: import("./systems/quatzaRij").QuatzaRijCampaign | null;
   homeworldRegionV68?: HomeworldRegionStateV68 | null;
   /** Physical city/biome connector; separate from expedition evidence. */
@@ -750,6 +752,7 @@ export interface SaveGame {
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
   /** V146: outfits, mode outfits, clan palette, earned cosmetics, heavy wear. */
   customizationV146?: CustomizationV146 | null;
+  warNarrativeR2M035?: import("./systems/warNarrativeR2M035").WarNarrativeR2M035 | null;
   /** V147: trophy usages (display, worn, exchange ledger, studies); written after a first usage. */
   trophyUsagesV147?: import("./systems/trophyUsagesV147").TrophyUsagesV147 | null;
   /** V147: recruited hunting hounds, bond, wounds and permanent deaths. */
