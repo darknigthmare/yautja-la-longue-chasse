@@ -431,6 +431,7 @@ type ClimbZone = WorldClimbable;
 
 const CLIMB_TRAVERSAL = {
   releaseSeconds: 0.24,
+  transferBufferSeconds: 0.38,
   minimumGripStamina: 8,
   rigidLaunchSpeed: 360,
   flexibleLaunchSpeed: 420,
@@ -842,6 +843,7 @@ interface GameState {
   visitedScreenIds: string[];
   exploration: ExplorationProgress;
   jumpAssist: JumpAssistState;
+  canopyTransfer?: { departedSupportId: string; remainingSeconds: number };
   player: PlayerState;
   world: WorldBlueprint;
   arsenal: ArsenalRuntimeState;
@@ -1140,6 +1142,7 @@ function currentCanopyNavigationV112(state: GameState): CanopyNavigationV112 {
   return canopyNavigationV112({ player: state.player, climbables: state.world.climbables,
     platforms: state.world.platforms, hazards: state.world.hazards, floorY: state.world.floorY,
     minimumGripStamina: CLIMB_TRAVERSAL.minimumGripStamina,
+    transferOriginId: state.canopyTransfer?.remainingSeconds ? state.canopyTransfer.departedSupportId : undefined,
     staminaMultiplier: huntFieldLoadV112(state).climbStaminaMultiplier,
     actionLocked: state.trophyExtracting || !!state.trophyVictory && !state.trophyVictory.complete ||
       state.phase === "dead" || state.phase === "finished" });
@@ -2630,6 +2633,7 @@ function restoreCheckpoint(
     riteOperationDamageStart: checkpoint.riteOperationDamageStart ?? null,
     exploration,
     jumpAssist: freshJumpAssistState({ requireRelease: true }),
+    canopyTransfer: undefined,
     world,
     phase: checkpoint.phase,
     paused: mode === "resume",
@@ -8631,6 +8635,7 @@ function applyPlayerJump(state: GameState, result: JumpAssistResult, direction: 
     player.climbing = false;
     player.climbZoneId = null;
     player.climbReattachSeconds = CLIMB_TRAVERSAL.releaseSeconds;
+    state.canopyTransfer = support ? { departedSupportId: support.id, remainingSeconds: 0 } : undefined;
     if (player.canopySwing) {
       const release = releaseCanopySwingV112(player.canopySwing);
       player.velocityX = release.velocityX;
@@ -8898,6 +8903,23 @@ function updatePlayer(
         armor.moveSpeedMultiplier *
         surfaceMovementMultiplier *
         hazardMovementMultiplier * fieldLoad.movementMultiplier;
+  const transfer = state.canopyTransfer;
+  if (transfer) {
+    if (actionLocked || meleeInputQueued || player.grounded || player.climbGripExhausted ||
+        input.gripReleaseV112 || input.accessibility?.gripInput === "toggle" || state.riteMenuCorpseId) {
+      state.canopyTransfer = undefined;
+    } else {
+      transfer.remainingSeconds = Math.max(0, transfer.remainingSeconds - delta);
+      if (input.pressed.has("up") && (player.climbReattachSeconds ?? 0) > 0) {
+        transfer.remainingSeconds = CLIMB_TRAVERSAL.transferBufferSeconds;
+      }
+      if (transfer.remainingSeconds === 0 && (player.climbReattachSeconds ?? 0) <= 0) {
+        state.canopyTransfer = undefined;
+      }
+    }
+  }
+  const queuedApproach = state.canopyTransfer;
+  const transferOriginId = queuedApproach?.remainingSeconds ? queuedApproach.departedSupportId : undefined;
   player.climbReattachSeconds = Math.max(0,
     (Number.isFinite(player.climbReattachSeconds)
       ? Math.min(CLIMB_TRAVERSAL.releaseSeconds, player.climbReattachSeconds ?? 0)
@@ -8929,7 +8951,7 @@ function updatePlayer(
       canopySupportReachableV112(player, zone, state.world.platforms, player.canopySwing))
     : undefined;
   const currentClimbZone = activeClimbZone ?? selectCanopyEntrySupportV112(player, state.world.climbables,
-    zone => canopySupportReachableV112(player, zone, state.world.platforms));
+    zone => zone.id !== transferOriginId && canopySupportReachableV112(player, zone, state.world.platforms));
   if (player.climbing && (input.gripReleaseV112 || !activeClimbZone || player.stamina <= 0)) {
     if (input.gripReleaseV112) {
       player.climbReattachSeconds = CLIMB_TRAVERSAL.releaseSeconds;
@@ -8951,7 +8973,8 @@ function updatePlayer(
     !actionLocked &&
     !meleeInputQueued &&
     !dodgeRequested &&
-    (climbAxis !== 0 || input.accessibility?.gripInput==="toggle"&&input.holdTogglesV112?.upLatched) &&
+    (climbAxis !== 0 || transferOriginId ||
+      input.accessibility?.gripInput === "toggle" && input.holdTogglesV112?.upLatched) &&
     !input.gripReleaseV112 &&
     currentClimbZone &&
     !player.climbGripExhausted &&
@@ -8961,6 +8984,7 @@ function updatePlayer(
     player.climbing = true;
     player.climbZoneId = currentClimbZone.id;
     player.grounded = false;
+    state.canopyTransfer = undefined;
   }
   const climbJumpRequested = input.pressed.has("jump") ||
     (state.jumpAssist?.bufferSeconds ?? 0) > 0;
@@ -8974,6 +8998,7 @@ function updatePlayer(
     Math.abs(moveAxis) > 0.5 &&
     climbAxis === 0 &&
     !player.canopySwing &&
+    !transferOriginId &&
     !(input.accessibility?.gripInput==="toggle"&&input.holdTogglesV112?.upLatched) &&
     !climbJumpRequested
   ) {
@@ -9188,6 +9213,7 @@ function updatePlayer(
     player.aerialBoostUsed = false;
     player.climbGripExhausted = false;
     player.climbReattachSeconds = 0;
+    state.canopyTransfer = undefined;
   }
   if (!wasGrounded && player.grounded && impactVelocity > 180) {
     if (mission.id === ACHERON_VACUUM_MISSION) {
@@ -10873,7 +10899,7 @@ function pollGamepad(input: InputHub): "focus-lost" | "gamepad-disconnected" | n
   const setDirection = (action: Action, held: boolean) => {
     if (!held) return;
     input.gamepadHeld.add(action);
-    if ((action === "left" || action === "right") && !previousDirections.has(action)) {
+    if ((action === "left" || action === "right" || action === "up") && !previousDirections.has(action)) {
       pressFromGamepad(action);
     }
   };
@@ -11191,6 +11217,7 @@ function stepGame(
   }
   if (interruption) {
     state.paused = true;
+    state.canopyTransfer = undefined;
     state.jumpAssist = freshJumpAssistState({ requireRelease: true });
     input.pressed.clear();
     if (!wasPaused) announce(state, interruption === "gamepad-disconnected"
@@ -11203,6 +11230,7 @@ function stepGame(
     announce(state, state.paused ? "Chasse en pause." : "Chasse reprise.", 1.3);
   }
   if (state.paused) {
+    state.canopyTransfer = undefined;
     state.jumpAssist = freshJumpAssistState({ requireRelease: true });
     input.pressed.clear();
     if(input.gamepadRiteActionsV112)input.gamepadRiteActionsV112.length=0;
@@ -12289,7 +12317,7 @@ export default function HuntCanvas({
           input.keyboardHeld.add(action);
           if (
             !event.repeat &&
-            (action === "left" || action === "right" || action === "jump")
+            (action === "left" || action === "right" || action === "jump" || action === "up")
           ) {
             input.pressed.add(action);
           }
@@ -12522,7 +12550,7 @@ export default function HuntCanvas({
       onPointerDown: (event: ReactPointerEvent<HTMLButtonElement>) => {
         event.preventDefault();
         event.currentTarget.setPointerCapture(event.pointerId);
-        if (action === "left" || action === "right" || action === "jump") {
+        if (action === "left" || action === "right" || action === "jump" || action === "up") {
           pressAction(action);
         }
         setTouchHeld(action, true);
@@ -12537,7 +12565,7 @@ export default function HuntCanvas({
         if (event.key !== " " && event.key !== "Enter") return;
         event.preventDefault();
         if (event.repeat) return;
-        if (action === "left" || action === "right" || action === "jump") {
+        if (action === "left" || action === "right" || action === "jump" || action === "up") {
           pressAction(action);
         }
         setTouchHeld(action, true);

@@ -17,7 +17,7 @@ import type {
 } from "./worldBlueprints";
 
 export type CanopyGripStateV112 = "held" | "ready" | "out-of-reach" | "blocked" |
-  "exhausted" | "cooldown" | "low-stamina" | "locked";
+  "exhausted" | "cooldown" | "low-stamina" | "locked" | "release-first" | "departing";
 
 export interface CanopyNavigationMarkerV112 {
   id: string;
@@ -63,6 +63,7 @@ export interface CanopyNavigationV112 {
   stamina: number;
   minimumGripStamina: number;
   recoveryBlocked: boolean;
+  transferBuffered: boolean;
 }
 
 const SUPPORT_LABELS: Readonly<Record<ClimbableKind, string>> = {
@@ -87,6 +88,7 @@ export function canopyNavigationV112(options: {
   minimumGripStamina: number;
   staminaMultiplier?: number;
   actionLocked?: boolean;
+  transferOriginId?: string;
 }): CanopyNavigationV112 {
   const { player, climbables, platforms, floorY, minimumGripStamina } = options;
   if (!Number.isFinite(minimumGripStamina) || minimumGripStamina < 0)
@@ -120,6 +122,8 @@ export function canopyNavigationV112(options: {
     else if (stamina < minimumGripStamina) { state = "low-stamina"; reason = `Endurance insuffisante : ${minimumGripStamina} points requis`; }
     else if (!canopySegmentClearV112(center, nearest, platforms)) { state = "blocked"; reason = "Obstacle solide entre le chasseur et la prise"; }
     else if (!canopySupportReachableV112(player, support, platforms)) { state = "out-of-reach"; reason = "Hors de portée : rapproche-toi de la vraie prise"; }
+    else if (heldSupport) { state = "release-first"; reason = "Quitte la prise actuelle pour poursuivre"; }
+    else if (options.transferOriginId === support.id) { state = "departing"; reason = "Prise quittée pendant le transfert"; }
     else { state = "ready"; reason = "À portée : Haut pour prendre appui"; }
     return {
       id: support.id, kind: "grip", label: SUPPORT_LABELS[support.kind],
@@ -179,5 +183,5 @@ export function canopyNavigationV112(options: {
     heldGrip ? player.canopySwing ? "swinging" : "climbing" :
     rest?.state === "resting" && visible ? "resting" : availableGrip ? "ready" : visible ? "approach" : "distant";
   return { visible, mode, heldGrip, nearbyGrip, availableGrip, nextGrip, rest, markers: visible ? markers : [],
-    stamina, minimumGripStamina, recoveryBlocked };
+    stamina, minimumGripStamina, recoveryBlocked, transferBuffered: !!options.transferOriginId };
 }
