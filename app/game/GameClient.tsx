@@ -23,6 +23,7 @@ import { applyTrainingYardO6, type TrainingYardOrderO6 } from "./systems/originT
 import { applyContinuationO6, isContinuationOrderO6, type ContinuationOrderO6 } from "./systems/originContinuationO6";
 import { applySoloReturnO6, isSoloReturnOrderO6, type SoloReturnOrderO6 } from "./systems/originSoloReturnO6";
 import { applyFirstShockO6, firstShockActiveO6, type FirstShockOrderO6 } from "./systems/originFirstShockO6";
+import { activeCohortRaceO6, canStartCohortRaceO6, playCohortRaceO6, startCohortRaceO6, type CohortRaceOrderO6 } from "./systems/originCohortRaceO6";
 import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
 import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -383,6 +384,7 @@ const Mausoleum = React.lazy(() => import("./Mausoleum"));
 const HomeworldHub = React.lazy(() => import("./HomeworldHub"));
 const NurseryPrologueScreen = React.lazy(() => import("./NurseryPrologueScreen"));
 const OriginFirstShockO6 = React.lazy(() => import("./OriginFirstShockO6"));
+const OriginCohortRaceO6 = React.lazy(() => import("./OriginCohortRaceO6"));
 const YouthTrainingScreen = React.lazy(() => import("./YouthTrainingScreen"));
 const FirstTracksSoloV66 = React.lazy(() => import("./FirstTracksSoloV66"));
 const FirstHuntSoloV67 = React.lazy(() => import("./FirstHuntSoloV67"));
@@ -1321,7 +1323,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     (screen === "legacy-finale-r2" && legacyVisitR2?.site.kind === "clan-ship") ||
     (screen === "clan-war" && archiveReturnV85 === "clan-ship" && clanShipState?.status === "aboard");
   const firstShock = screen === "homeworld" && hydrated ? firstShockActiveO6(save) : null;
-  const homeworldMounted = !firstShock && (screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || (screen === "clan-chronicle" && chronicleReturnScreen === "homeworld") || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89")));
+  const cohortRace = screen === "homeworld" && hydrated ? activeCohortRaceO6(save) : null;
+  const homeworldMounted = !firstShock && !cohortRace && (screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || (screen === "clan-chronicle" && chronicleReturnScreen === "homeworld") || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89")));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
   );
@@ -1882,9 +1885,28 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const advanceFirstShock = useCallback((order: FirstShockOrderO6, x: number) => {
     if (!sessionAliveRef.current || !reconcileNurseryAttempt()) return null;
     const outcome = applyFirstShockO6(saveRef.current, order, x);
-    if (!outcome || !persistNursery(outcome.save)) return null;
-    if (order === "return-weapon") setToast("Le geste joué dans la cour est consigné. La cité t’attend.");
+    if (!outcome) return null;
+    const next = order === "return-weapon" ? startCohortRaceO6(outcome.save) : outcome.save;
+    if (!persistNursery(next)) return null;
+    if (order === "return-weapon") setToast(activeCohortRaceO6(next)
+      ? "Le geste joué est consigné. La cohorte t’attend pour la course des sacs."
+      : "Le geste joué dans la cour est consigné. La cité t’attend.");
     return { retryAt: outcome.retryAt };
+  }, [persistNursery, reconcileNurseryAttempt]);
+
+  const joinCohortRace = useCallback(() => {
+    if (!sessionAliveRef.current || !reconcileNurseryAttempt()) return;
+    const prior = saveRef.current;
+    const next = startCohortRaceO6(prior);
+    if (next !== prior) persistNursery(next);
+  }, [persistNursery, reconcileNurseryAttempt]);
+
+  const advanceCohortRace = useCallback((order: CohortRaceOrderO6) => {
+    if (!sessionAliveRef.current || !reconcileNurseryAttempt()) return false;
+    const next = playCohortRaceO6(saveRef.current, order);
+    if (!next || !persistNursery(next)) return false;
+    if (order.type === "help" || order.type === "partial") setToast("La manche et les gestes joués sont consignés. La cité t’attend.");
+    return true;
   }, [persistNursery, reconcileNurseryAttempt]);
 
   const checkpointYouth = useCallback((state: YouthState): boolean => {
@@ -5531,6 +5553,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         </div>
       </section>}
 
+      {cohortRace && save.prologue && <section className="screen panel-screen" inert={settingsOpen} data-nursery-origin-course>
+        <div className="screen-safe">
+          <div className="physical-deck-toolbar"><button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages et sauvegardes</button><button type="button" className="ghost-button" onClick={() => void returnToMainMenu()}>Menu principal</button></div>
+          <Suspense fallback={<DeferredGameScreen />}>
+            <OriginCohortRaceO6 key={save.createdAt} record={cohortRace} checkpoint={save.prologue.checkpoint}
+              bindings={save.settings.controlBindings} paused={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy}
+              persistenceError={nurseryPersistenceError} onOrder={advanceCohortRace} />
+          </Suspense>
+        </div>
+      </section>}
+
       {homeworldMounted && (
         <Suspense fallback={<DeferredGameScreen />}>
           <section className="screen panel-screen" hidden={screen !== "homeworld"} inert={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}>
@@ -5539,6 +5572,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               <HomeworldHub key={save.createdAt} save={save} gauntletVariantId={hunterGauntlet.equippedId} selectedShipId={selectedShipId} arrivalV67={homeworldArrivalV67}
                 navigation={<>
                 {!save.prologue && <button type="button" className="ghost-button" onClick={() => openMap("homeworld")}>Carte galactique</button>}
+                {canStartCohortRaceO6(save) && <button type="button" className="ghost-button" data-o6-cohort-entry
+                  disabled={settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy}
+                  onClick={joinCohortRace}>Retour à la cour · Course des sacs</button>}
                 <button type="button" className="ghost-button" onClick={() => {
                   setJusticeJurisdiction("homeworld"); openStationScreen("justice", "homeworld");
                 }}>Dossier · {getJusticeStatus(save.justice).label}</button>

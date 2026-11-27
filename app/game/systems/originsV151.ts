@@ -32,6 +32,7 @@ import { normalizeTrainingYardO6, type TrainingYardRecordO6 } from "./originTrai
 import { normalizeContinuationO6, type ContinuationRecordO6 } from "./originContinuationO6";
 import { normalizeSoloReturnO6, type SoloReturnRecordO6 } from "./originSoloReturnO6";
 import { normalizeFirstShockO6, type FirstShockRecordO6 } from "./originFirstShockO6";
+import { normalizeCohortRaceO6, type CohortRaceRecordO6 } from "./originCohortRaceO6";
 
 export const ORIGIN_IDS_V151 = ["O1", "O2", "O3", "O4", "O5", "O6"] as const;
 export type OriginIdV151 = (typeof ORIGIN_IDS_V151)[number];
@@ -152,6 +153,7 @@ export interface OriginStateV151 {
   continuationO6?: ContinuationRecordO6;
   soloReturnO6?: SoloReturnRecordO6;
   firstShockO6?: FirstShockRecordO6;
+  cohortRaceO6?: CohortRaceRecordO6;
 }
 /** V170 : Ox-M29 « Enregistrer la visite de sélection séparément de sa réussite » ; écrit une fois. */
 export interface OriginEndingStateV151 {
@@ -172,7 +174,8 @@ export const isFutureOriginV151 = (raw: unknown) => isRecord(raw) && ((typeof ra
   || (isRecord(raw.trainingYardO6) && typeof raw.trainingYardO6.version === "number" && raw.trainingYardO6.version > 1)
   || (isRecord(raw.continuationO6) && typeof raw.continuationO6.version === "number" && raw.continuationO6.version > 2)
   || (isRecord(raw.soloReturnO6) && typeof raw.soloReturnO6.version === "number" && raw.soloReturnO6.version > 1)
-  || (isRecord(raw.firstShockO6) && typeof raw.firstShockO6.version === "number" && raw.firstShockO6.version > 1));
+  || (isRecord(raw.firstShockO6) && typeof raw.firstShockO6.version === "number" && raw.firstShockO6.version > 1)
+  || (isRecord(raw.cohortRaceO6) && typeof raw.cohortRaceO6.version === "number" && raw.cohortRaceO6.version > 1));
 /** V170 : identifiant de fin valide pour la voie (Ox-E1..Ox-E3, « Fins des six voies »). */
 export const isOriginEndingIdV151 = (originId: OriginIdV151, id: unknown): id is string =>
   typeof id === "string" && /^O[1-6]-E[1-3]$/.test(id) && id.startsWith(`${originId}-`);
@@ -243,6 +246,11 @@ export function normalizeOriginV151(raw: unknown): OriginStateV151 | null {
     const firstShock = normalizeFirstShockO6(raw.firstShockO6);
     if (state.originId !== "O6" || state.source !== "creation" || !firstShock) return null;
     state.firstShockO6 = firstShock;
+  }
+  if (Object.hasOwn(raw, "cohortRaceO6")) {
+    const race = normalizeCohortRaceO6(raw.cohortRaceO6);
+    if (state.originId !== "O6" || state.source !== "creation" || !state.firstShockO6 || !race) return null;
+    state.cohortRaceO6 = race;
   }
   if (Array.isArray(raw.consumed)) state.consumed = [...new Set(raw.consumed.filter((v): v is string => typeof v === "string"))].slice(-200);
   return state;
