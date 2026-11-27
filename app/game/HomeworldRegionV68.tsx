@@ -35,6 +35,7 @@ import { houseForBuildingV149 } from './systems/residenceV149';
 import { createOriginV151 } from './systems/originsV151';
 import { trainingYardViewO6, type TrainingYardOrderO6 } from './systems/originTrainingYardO6';
 import { continuationViewO6, type ContinuationOrderO6 } from './systems/originContinuationO6';
+import { soloReturnEvidenceO6, soloReturnViewO6, type SoloReturnOrderO6 } from './systems/originSoloReturnO6';
 import yardStyles from './OriginTrainingYardO6.module.css';
 import styles from './HomeworldRegionV68.module.css';
 
@@ -47,7 +48,7 @@ export interface HomeworldRegionV68Props {
   /** Atomically acknowledge this exact field event and store its pending checkpoint. */
   onFieldEvent?(event: RegionFieldEventV68, state: HomeworldRegionStateV68): boolean;
   onBibleSceneAction?(action: BibleSceneActionV86, state: HomeworldRegionStateV68): BibleSceneResultV86;
-  onTrainingYardO6?(order: TrainingYardOrderO6 | ContinuationOrderO6, state: HomeworldRegionStateV68): boolean;
+  onTrainingYardO6?(order: TrainingYardOrderO6 | ContinuationOrderO6 | SoloReturnOrderO6, state: HomeworldRegionStateV68): boolean;
   onReachCity(state?: HomeworldRegionStateV68): boolean | void;
   onOpenSettings?(): void;
   /** V149: residence panel for a Demeure the player stands in (null when it holds no house). */
@@ -87,7 +88,9 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const narratives = useMemo(() => contractRegionNarrativesV70(props.contractsValue, { regionId, runId: state?.runId ?? '', suspended: suspended || !!error }), [props.contractsValue, regionId, state?.runId, suspended, error]);
   const viewport = useRef<HTMLDivElement>(null), scene = useRef<HTMLDivElement>(null), panel = useRef<HTMLDivElement>(null), exiting = useRef(false);
   const gate = canEnterHomeworldRegionV68(save, regionId), modal = paused || !ready || !!notice || !!error || !gate.allowed || state?.status === 'at-city';
-  useEffect(() => { latest.current = props; }, [props]);
+  const soloEvidence = useMemo(() => soloReturnEvidenceO6(save), [save]);
+  const soloEvidenceRef = useRef(soloEvidence);
+  useEffect(() => { latest.current = props; soloEvidenceRef.current = soloEvidence; }, [props, soloEvidence]);
   const clear = useCallback(() => { held.current.clear(); touch.current.clear(); interact.current = false; gamepad.current = createHomeworldGamepadState(); }, []);
   const freeze = useCallback(() => { clear(); pauseRef.current = true; setPaused(true); }, [clear]);
   const persist = useCallback((next: HomeworldRegionStateV68) => {
@@ -236,14 +239,16 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
           if (confirm && before.zone === 'interior' && latest.current.onTrainingYardO6) {
             const { yard, continuation } = currentYard(latest.current.save, before);
             const practice = continuation?.practice?.next ? continuation.practice : null;
-            const active = continuation?.next ? continuation : practice ?? yard;
+            const hall = soloReturnViewO6(latest.current.save, before, soloEvidenceRef.current)?.active;
+            const active = hall ? { next: hall.order, near: hall.near, post: hall }
+              : continuation?.next ? continuation : practice ?? yard;
             if (active?.near && active.next) {
               const stopped = { ...before, actor: { ...before.actor, vx: 0, vy: 0 } };
               clear();
               current.current = stopped;
               setState(stopped);
               const done = latest.current.onTrainingYardO6(active.next, stopped);
-              setYardMessage(done ? (continuation?.post ?? practice?.post)?.report ??
+              setYardMessage(done ? (hall ?? continuation?.post ?? practice?.post)?.report ??
                 (active.next === 'threshold' ? 'Le circuit d’exercice est prêt dans cette demeure.'
                   : 'Geste confirmé. Rejoins le repère suivant.')
                 : 'Le geste attend une sauvegarde confirmée. Réessaie au même repère.');
@@ -293,7 +298,9 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const { yard, continuation } = state.zone === 'interior' && props.onTrainingYardO6
     ? currentYard(save, state) : { yard: null, continuation: null };
   const practice = continuation?.practice;
-  const yardAction = continuation?.next ? continuation : practice?.next ? practice : yard;
+  const soloReturn = props.onTrainingYardO6 ? soloReturnViewO6(save, state, soloEvidence) : null;
+  const yardAction = soloReturn?.active ? { near: true, post: soloReturn.active } :
+    continuation?.next ? continuation : practice?.next ? practice : yard;
   const cordage = continuation?.orders.includes('stow') ? 'folded' : continuation?.orders.includes('lift') ? 'raised'
     : continuation?.orders.includes('anchor') ? 'taut' : continuation?.orders.includes('welcome') ? 'loose' : null;
   const localAllowed = !suspended && !error && ready && gate.allowed && state.status === 'walking' && !state.pendingFieldEvent;
@@ -349,6 +356,18 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
           {interiorShell?.groups.map(group => <span key={group.side} className={styles.interiorPanels} data-region-interior-panels={group.side} style={{ ...group.clip, left: group.clip.left + 25, top: group.clip.top + 35 * d }}>{group.panels.map(panel => <HomeworldNativePropV64 key={panel.id} id={panel.id} artId={panel.artId} art={panel.art} x={panel.localPaintPivot.x} y={panel.localPaintPivot.y} depth={group.side === 'north' ? 0 : panel.groundPivot.y} />)}</span>)}
           {homeworldRegionInteriorPropsV68(state.buildingId).map(prop => { const p = project(prop); return <HomeworldNativePropV64 key={prop.id} id={prop.id} artId={prop.artId} art={HOMEWORLD_PROP_ART_V64[prop.artId]} x={p.x} y={p.y} depth={prop.y} />; })}
           {guests.filter(g => g.inside).map(g => { const n = definition.residents.find(r => r.id === g.residentId); return n ? <span key={`guest-${g.residentId}`} data-residence-guest-v150={g.residentId} data-guest-inside>{drawActor(`guest-${n.id}`, g.x, g.y, n.morphId, n.dreadStyleId, false, n)}</span> : null; })}
+          {soloReturn && <>
+            {soloReturn.support !== 'empty' && <span className={yardStyles.returnBlades} data-o6-return-blades={soloReturn.support}
+              role="img" aria-label="Lames de la traque" style={{ left: 145, top: 390 * d, zIndex: 392 }}><i/><i/></span>}
+            {soloReturn.kitStowed && <span className={yardStyles.returnWrap} data-o6-return-kit
+              role="img" aria-label="Paquetage rangé" style={{ left: 630, top: 390 * d, zIndex: 391 }} />}
+            {soloReturn.saar && <>
+              {drawActor('origin-o6-saar', 380, 346, 'elder', 'elder')}
+              <span className={styles.waypoint} data-o6-return-saar style={{ left: 380, top: 346 * d + 14 }}><b>Saar</b></span>
+            </>}
+            {soloReturn.options.map(post => <span key={post.order} className={styles.waypoint} data-o6-return-post={post.order}
+              style={{ left: post.x, top: post.y * d }}><b>{post.label}</b></span>)}
+          </>}
           {yard?.orders.includes('support') && <span className={yardStyles.support} aria-label="Appui d’exercice" role="img"
             data-o6-yard-support style={{ left: 145, top: 390 * d, zIndex: 391 }} />}
           {yard?.orders.includes('rack') && <span className={yardStyles.rack} aria-label="Râtelier d’exercice mural" role="img"
@@ -389,6 +408,12 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
       <b>{narratives[0]?.instruction ?? regionObjectiveV68(state)}</b>
       {regionId===b.regionId&&props.onBibleSceneAction&&state.zone==='village'&&<span>Halte des Crêtes : table de la place, après le relevé remis au guide.{bibleNearby?' Arrête-toi puis interagis.':''}</span>}
       {destination && routeProgress && <span data-village-route-instruction-v70>{destination.name} · {routeProgress.arrived ? 'Approche atteinte : interagir sur place' : routeProgress.offRoute ? 'Reviens aux repères tracés au sol' : `${routeProgress.metres} m à pied`}</span>}
+      {soloReturn && <span data-o6-solo-return={soloReturn.final ?? soloReturn.options[0]?.order}
+        data-o6-return-support={soloReturn.support} role="status">
+        {soloReturn.account || yardMessage || (soloReturn.options.length === 2
+          ? 'Raconte une victoire ou une limite de la traque.'
+          : soloReturn.options[0]?.label)}
+      </span>}
       {yard && <span data-o6-training-yard={yard.houseId} data-o6-yard-stage={yard.next ?? 'ready'} role="status">
         {yard.post ? yard.post.label : 'Circuit d’exercice prêt'}{!continuation && yardMessage && ' · ' + yardMessage}
       </span>}

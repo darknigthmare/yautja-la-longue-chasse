@@ -17,14 +17,17 @@ export interface YouthCityErrandV172 {
   reached: number;
   delivery?: DeliveryDetour;
   guideM003?: 0 | 1 | 2;
+  encounterM003?: "pending" | "met";
+  hearthM003?: true;
 }
-export function startYouthCityErrandV172(ownerCreatedAt: string, route: YouthCityRouteV172, withDelivery = false, withGuide = false): YouthCityErrandV172 {
+export function startYouthCityErrandV172(ownerCreatedAt: string, route: YouthCityRouteV172, withDelivery = false, withGuide = false, withEncounter = false): YouthCityErrandV172 {
   return { version: 1, ownerCreatedAt, route, reached: 0, ...(withDelivery ? { delivery: { revision: 0, commands: [] } } : {}),
-    ...(withGuide && withDelivery && route === "escort" ? { guideM003: 0 } : {}) };
+    ...(withGuide && withDelivery && route === "escort" ? { guideM003: 0 } : {}),
+    ...(withDelivery && withEncounter ? { encounterM003: "pending" } : {}) };
 }
 export function normalizeYouthCityErrandV172(value: unknown): YouthCityErrandV172 | null {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
-  const { version, ownerCreatedAt, route, reached, delivery, guideM003 } = value as Partial<YouthCityErrandV172>;
+  const { version, ownerCreatedAt, route, reached, delivery, guideM003, encounterM003, hearthM003 } = value as Partial<YouthCityErrandV172>;
   if (version !== 1 || typeof ownerCreatedAt !== "string" || !Number.isFinite(Date.parse(ownerCreatedAt)) ||
       (route !== "escort" && route !== "archives") || typeof reached !== "number" || !Number.isInteger(reached) ||
       reached < 0 || reached > YOUTH_CITY_ROUTES_V172[route].length) return null;
@@ -32,8 +35,13 @@ export function normalizeYouthCityErrandV172(value: unknown): YouthCityErrandV17
   if (detour === null) return null;
   if (guideM003 !== undefined && (route !== "escort" || !detour || (guideM003 !== 0 && guideM003 !== 1 && guideM003 !== 2) ||
       (guideM003 < 2 && (reached > 0 || detour.revision > 0)))) return null;
+  if (encounterM003 !== undefined && (!detour || (encounterM003 !== "pending" && encounterM003 !== "met") ||
+      (encounterM003 === "pending" && (reached > 0 || detour.revision > 0)) ||
+      (encounterM003 === "met" && guideM003 !== undefined && guideM003 < 2))) return null;
+  if (hearthM003 !== undefined && (hearthM003 !== true || reached !== YOUTH_CITY_ROUTES_V172[route].length ||
+      encounterM003 === "pending")) return null;
   const clean: YouthCityErrandV172 = { version, ownerCreatedAt, route, reached, ...(detour ? { delivery: detour } : {}),
-    ...(guideM003 !== undefined ? { guideM003 } : {}) };
+    ...(guideM003 !== undefined ? { guideM003 } : {}), ...(encounterM003 ? { encounterM003 } : {}), ...(hearthM003 ? { hearthM003 } : {}) };
   if (detour?.revision && reached < YOUTH_CITY_ROUTES_V172[route].indexOf("forge-service")) return null;
   return clean.delivery && !youthCityCarriesPieceV172(clean) && !youthCityDeliveryClearedV176(clean) ? null : clean;
 }
@@ -44,7 +52,7 @@ export function youthCityCarriesPieceV172(errand: YouthCityErrandV172): boolean 
   return !YOUTH_CITY_ROUTES_V172[errand.route].slice(0, errand.reached).includes("forge-service");
 }
 export function acknowledgeYouthCityStopV172(errand: YouthCityErrandV172, stop: YouthCityStopV172): YouthCityErrandV172 | null {
-  if (nextYouthCityStopV172(errand) !== stop || youthCityGuidePendingM003(errand) ||
+  if (nextYouthCityStopV172(errand) !== stop || youthCityGuidePendingM003(errand) || errand.encounterM003 === "pending" ||
       (stop === "forge-service" && errand.delivery && !youthCityDeliveryClearedV176(errand))) return null;
   return { ...errand, reached: errand.reached + 1 };
 }
@@ -57,6 +65,19 @@ export function advanceYouthCityGuideM003(errand: YouthCityErrandV172): YouthCit
   if (errand.guideM003 === 0) return { ...errand, guideM003: 1 };
   if (errand.guideM003 === 1) return { ...errand, guideM003: 2 };
   return null;
+}
+
+export function completeYouthCityEncounterM003(errand: YouthCityErrandV172): YouthCityErrandV172 | null {
+  return errand.encounterM003 === "pending" && !youthCityGuidePendingM003(errand) ? { ...errand, encounterM003: "met" } : null;
+}
+
+export function visitYouthCityHearthM003(errand: YouthCityErrandV172): YouthCityErrandV172 | null {
+  return !errand.hearthM003 && errand.encounterM003 !== "pending" && !nextYouthCityStopV172(errand)
+    ? { ...errand, hearthM003: true } : null;
+}
+
+export function youthCityAdmissionReadyM003(errand: YouthCityErrandV172): boolean {
+  return !nextYouthCityStopV172(errand) && (errand.encounterM003 === undefined || errand.hearthM003 === true);
 }
 
 export const YOUTH_CITY_DELIVERY_END_V176 = 7;
@@ -108,7 +129,8 @@ export function youthCityDeliveryClearedV176(errand: YouthCityErrandV172): boole
 }
 
 export function walkYouthCityDeliveryV176(errand: YouthCityErrandV172, command: YouthCityDeliveryStepV176): YouthCityErrandV172 | null {
-  if (!errand.delivery || youthCityGuidePendingM003(errand) || nextYouthCityStopV172(errand) !== "forge-service" || !steps.includes(command)) return null;
+  if (!errand.delivery || youthCityGuidePendingM003(errand) || errand.encounterM003 === "pending" ||
+      nextYouthCityStopV172(errand) !== "forge-service" || !steps.includes(command)) return null;
   const history = deliveryHistory(errand.delivery.commands);
   if (!history) return null;
   const next = stepDelivery(history.at(-1)!, command);
@@ -120,11 +142,13 @@ export function walkYouthCityDeliveryV176(errand: YouthCityErrandV172, command: 
 
 /** A stale city write may neither erase the detour nor deliver the piece early. */
 export function youthCityDeliveryMatchesWriteV176(before: YouthCityErrandV172 | undefined, after: YouthCityErrandV172 | undefined): boolean {
-  if (!before?.delivery && !after?.delivery) return true;
-  if (!before) return after?.delivery?.revision === 0 && after.reached === 0 && (after.guideM003 === undefined || after.guideM003 === 0);
-  if (!before.delivery || !after?.delivery) return false;
+  if (!before?.delivery && !after?.delivery && !before?.hearthM003 && !after?.hearthM003) return true;
+  if (!before) return after?.delivery?.revision === 0 && after.reached === 0 && !after.hearthM003 &&
+    (after.guideM003 === undefined || after.guideM003 === 0) && (after.encounterM003 === undefined || after.encounterM003 === "pending");
+  if (!after || !!before.delivery !== !!after.delivery) return false;
   const same = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
-  if (same(before, after) || same(advanceYouthCityGuideM003(before), after)) return true;
+  if (same(before, after) || same(advanceYouthCityGuideM003(before), after) ||
+      same(completeYouthCityEncounterM003(before), after) || same(visitYouthCityHearthM003(before), after)) return true;
   if (steps.some(command => same(walkYouthCityDeliveryV176(before, command), after))) return true;
   const stop = nextYouthCityStopV172(before);
   return stop !== undefined && same(acknowledgeYouthCityStopV172(before, stop), after);

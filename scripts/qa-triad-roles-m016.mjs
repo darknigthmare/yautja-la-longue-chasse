@@ -14,6 +14,8 @@ const seed = formationCampaignRoute({ stop: "assemble" }).save;
 seed.settings.masterVolume = 0;
 assert(saves.parseSaveImport(saves.exportSave(seed)).save);
 const key = saves.SAVE_STORAGE_KEY;
+const playRefusal = process.argv.includes("--refusal-rehearsal");
+const plan = playRefusal ? "preference" : "complementary";
 const output = resolve(process.env.M016_OUTPUT ?? "outputs/qa-triad-roles-m016");
 const report = { commit: execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim(),
   seed: "The campaign reaches assembly through the existing real chapter reducers.", errors: [], passed: false };
@@ -34,7 +36,7 @@ try {
   page.on("pageerror", err => report.errors.push(err.message));
   page.setDefaultTimeout(30000);
   const canvas = page.locator("[data-solo-v90] canvas");
-  const roleButton = page.locator('[data-solo-v90-plan="complementary"]');
+  const roleButton = page.locator(`[data-solo-v90-plan="${plan}"]`);
   const saved = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), key);
   const live = () => canvas.evaluate(item => JSON.parse(item.dataset.soloState));
   async function boot() {
@@ -51,12 +53,15 @@ try {
   await boot();
   await page.clock.runFor(150);
   const right = seed.settings.controlBindings[controls.right].at(-1);
+  const left = seed.settings.controlBindings[controls.left].at(-1);
   const interaction = seed.settings.controlBindings[controls.interact][0];
-  assert(right && interaction);
+  assert(right && left && interaction);
   async function approach(x) {
-    await page.keyboard.down(right);
-    for (let i = 0; i < 150 && (await live()).player.x < x - 18; i++) await page.clock.runFor(80);
-    await page.keyboard.up(right);
+    const direction = (await live()).player.x < x ? 1 : -1;
+    const walking = direction === 1 ? right : left;
+    await page.keyboard.down(walking);
+    for (let i = 0; i < 150 && (x - (await live()).player.x) * direction > 18; i++) await page.clock.runFor(80);
+    await page.keyboard.up(walking);
     await page.clock.runFor(130);
     assert(Math.abs((await live()).player.x - x) < 35);
   }
@@ -86,9 +91,36 @@ try {
   report.observations = { saar: saarTick, vek: vekTick };
   await approach(2590);
   assert(formationModel.soloV90RoleBoardReady(await live()));
+  if (playRefusal) {
+    await roleButton.click();
+    await page.clock.runFor(180);
+    await page.locator('[data-solo-v90-rehearsal="pending"]').waitFor();
+    const refused = (await saved()).soloV90.checkpoint.formationRefusedAt;
+    assert.equal(typeof refused, "number");
+    assert.equal((await saved()).soloV90.checkpoint.formationPlan, undefined);
+    assert(await roleButton.isDisabled());
+    await page.screenshot({ path: resolve(output, "refus-vek.png"), animations: "disabled" });
+    await page.reload(); await boot(); await page.clock.runFor(160);
+    assert.equal((await saved()).soloV90.checkpoint.formationRefusedAt, refused);
+
+    await approach(formationModel.SOLO_V90_REHEARSAL.x);
+    assert.equal((await saved()).soloV90.checkpoint.formationRehearsedAt, undefined);
+    await page.keyboard.down(interaction);
+    for (let i = 0; i < 75 && !(await saved()).soloV90.checkpoint.formationRehearsedAt; i++) {
+      await page.clock.runFor(100);
+    }
+    await page.keyboard.up(interaction); await page.clock.runFor(160);
+    await page.locator('[data-solo-v90-rehearsal="complete"]').waitFor();
+    const rehearsed = (await saved()).soloV90.checkpoint.formationRehearsedAt;
+    assert(rehearsed >= refused + formationModel.SOLO_V90_REHEARSAL.ticks);
+    assert.equal((await saved()).soloV90.checkpoint.formationPlan, undefined);
+    await page.screenshot({ path: resolve(output, "repetition-trois-signaux.png"), animations: "disabled" });
+    report.rehearsal = { refused, rehearsed };
+    await approach(2590);
+  }
   await roleButton.click();
   await page.clock.runFor(180);
-  assert.equal((await saved()).soloV90.checkpoint.formationPlan, "complementary");
+  assert.equal((await saved()).soloV90.checkpoint.formationPlan, plan);
   await page.screenshot({ path: resolve(output, "repartition.png"), animations: "disabled" });
 
   await page.reload(); await boot();
@@ -105,7 +137,7 @@ try {
   const complete = await saved();
   assert.equal(complete.soloV90.checkpoint.phase, "observe");
   assert.deepEqual(complete.soloV90.checkpoint.companions.map(c => Math.abs(c.x - 2800) < 5 ? "opening" : "approach"),
-    ["opening", "approach"]);
+    playRefusal ? ["approach", "opening"] : ["opening", "approach"]);
   assert.deepEqual(complete.prologue.chronicle, seed.prologue.chronicle);
   assert(saves.parseSaveImport(saves.exportSave(complete)).save);
   await page.screenshot({ path: resolve(output, "postes-rejoins.png"), animations: "disabled" });

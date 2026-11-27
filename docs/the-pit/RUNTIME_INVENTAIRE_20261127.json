@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-27",
+  "kind": "controlled-differential-current-runtime-inventory",
+  "baselineCommit": "2769b094862aea97f10fc0e5c4f1154489a8a8bc",
+  "baselineTree": "f07234454072c02c024ca1030e253467bd98332d",
+  "baselineManifest": {
+    "path": "docs/qa/current-integration-20261103/runtime-inputs.json",
+    "bytes": 452969,
+    "sha256": "2a686aad23e7df315bb4c00db360f44062c865e152cc4f34f85d3aa5461bdd3f",
+    "files": 2454,
+    "inputBytes": 1117026872
+  },
+  "currentManifest": {
+    "path": "docs/qa/current-integration-20261103/runtime-inputs.json",
+    "bytes": 454882,
+    "sha256": "077a8af0d4f1de8170755c82339631a9d02bc2d0a72540c8f2ed0f91bdd06cd7",
+    "files": 2465,
+    "inputBytes": 1117122731
+  },
+  "indexApplicationFiles": 1437,
+  "baselineApplicationFiles": 1426,
+  "applicationPathSetExact": true,
+  "indexAndWorktreeChecked": true,
+  "baselineFilesRehashed": 1758,
+  "unchangedDiscoveryScopes": {
+    "paths": [
+      "tests/fixtures/homeworld-upgrade-v112/",
+      "public/game/**/v112/**"
+    ],
+    "files": 40,
+    "sha256": "2cc2644aaed258e7a35d83013ee4e119afbd1314bb55c8e603f0bc02d4ba9621"
+  },
+  "retainedGitIdentities": {
+    "count": 2445,
+    "sha256": "aec910e7441487668fc261fe7bf85e233db6b67d48ddcf647ebed8d9dc576ccc",
+    "comparison": "Identical Git mode, type and blob at baseline versus index for every retained row."
+  },
+  "inputsNotMaterialized": {
+    "count": 696,
+    "bytes": 1069207661,
+    "sha256": "59a54b054e10e0075c018d128af95b3fdf14d58860f6917a20fc97348f6f3cfc",
+    "claim": "Byte pins inherited only after identical Git identities; these files were not read locally."
+  },
+  "modified": [
+    {
+      "path": "app/game/GameClient.tsx",
+      "bytes": 446889,
+      "sha256": "fa8bcb8aba348dfd1b5d842a1073eb0ab6e9081132f278770f5b850bcfff59cb",
+      "previousSha256": "f8a1a4c742d6f0ce20b2fa4b2b522e277dd890c677f28cbb21cd1b420f3058b1",
+      "gitBlob": "6d46b3789966fa48f8a0215b3a526284278b40bf"
+    },
+    {
+      "path": "app/game/PitCanvas.tsx",
+      "bytes": 312489,
+      "sha256": "fa71bf4e5241d8ccb0839c83d3fda543cbdeaf70374ae7fe5d8e17ef40252513",
+      "previousSha256": "25d3f4b5a155242ef555f3a682935e42b5fb5c69e1af44afb43f17d2ea0bac5e",
+      "gitBlob": "dd0d2b32adedb2b8a2a49701c58d3cdf8a9b51c3"
+    },
+    {
+      "path": "app/game/PitExperienceV79.tsx",
+      "bytes": 24992,
+      "sha256": "cb7b34a945eb2ef5ed1a9a43c662ce1f665b02cd4be373dd373d2abfada6a274",
+      "previousSha256": "2f938301d497eb58b826d3e941eb2496a821f2a04b2f138f1035053510e96074",
+      "gitBlob": "b3203d46f74d0d443dbe1dc616dfa2a889af958f"
+    },
+    {
+      "path": "app/game/PitHonorsPanel.module.css",
+      "bytes": 5500,
+      "sha256": "3dac101b4ebbf896f44bd83e626c1afc49947a05fa3b6781fac98cb42636112c",
+      "previousSha256": "02ef86b1f1f2497cc2386a1040b7163b5ef8420f17e32a64940ea83913a5c12d",
+      "gitBlob": "ae3d0b0c92bc091174efe3885d1ba6e3178a61cf"
+    },
+    {
+      "path": "app/game/PitHonorsPanel.tsx",
+      "bytes": 9279,
+      "sha256": "7ef8f410fedd9898fb085bbd823a41edc2b796a5f9659c0bd36577fb0a8eabde",
+      "previousSha256": "775a0c463d1d4efc8c19ef11801d908db8203f2d94e0f6f815a6f2ad90834c69",
+      "gitBlob": "fc84c6b67bd9023df87515a9c69fe783659e4c32"
+    },
+    {
+      "path": "app/game/PitSelectionFlow.module.css",
+      "bytes": 28380,
+      "sha256": "4d508873c966ba01db63bcbb84e820b621ecdd103e2919a64621982e55417b44",
+      "previousSha256": "d871bc5d8fc4dd234e8ebf6ff09eed2ecc53d2ba2dbbbd02f5eee53d88467a26",
+      "gitBlob": "5387eb116457cc06d1f07d2b9ec11e8b5998b895"
+    },
+    {
+      "path": "app/game/PitSelectionFlow.tsx",
+      "bytes": 34320,
+      "sha256": "c1556fc712b0aac32371d24bd63ed3bb35c96599dd7f15244f076101eb06e970",
+      "previousSha256": "af2cbd9202b83ec15dcab6deb3642ce3e3504ef9e74b188837451c83b96f05ba",
+      "gitBlob": "26747e80ca1e56fc53d7584941227734dbe1f477"
+    },
+    {
+      "path": "app/game/save.ts",
+      "bytes": 125772,
+      "sha256": "0e639e3fffce897bd0426d1ec33c96bcc08cf0f06da3b3a563c8859320eabf9d",
+      "previousSha256": "c9d9864b3d6c6ba60af5799dd6bee758a67a077d29fcff27338921709b716dca",
+      "gitBlob": "f07f64a8a2ce3924299f751d4e1db54e47335535"
+    },
+    {
+      "path": "app/pit-lab/PitProductionAnimationLab.tsx",
+      "bytes": 19150,
+      "sha256": "b18ac5c72b5c8a28cd51dba1b1ca662e470b9dc95bd0c7b4c4171a56650d45a6",
+      "previousSha256": "a615b69f993d1682f77caf9c64add13eb522e476ae84b050f4a032db0dd1ba7c",
+      "gitBlob": "ccedeeb8eb2769f0696ffe856aa2d331921ba9cc"
+    }
+  ],
+  "added": [
+    {
+      "path": "app/game/PitBonusTrialPanelV1.module.css",
+      "bytes": 3018,
+      "sha256": "8f7a94ba955d79c20d5c1104f9199426f9c6a4336d3476e205cca9522c9a43fb",
+      "gitBlob": "bdad4bfa228803ca291ae680d5a5382a85956dfb"
+    },
+    {
+      "path": "app/game/PitBonusTrialPanelV1.tsx",
+      "bytes": 5977,
+      "sha256": "10b064b3eb820980546016d0570f39b3251526708a7728f176f222b6c1fdd456",
+      "gitBlob": "19eedf77384ff98f324484d1cb7a830178c8d627"
+    },
+    {
+      "path": "app/game/PitHonorDetail.tsx",
+      "bytes": 6211,
+      "sha256": "05525dc0359da93b1892864004ad64b3a7e7a052f9d5c2b3f4423af0e5cb0ca5",
+      "gitBlob": "f108d3bd9cdb6ba18b1675b5325c60b9082c5a87"
+    },
+    {
+      "path": "app/game/systems/pitBonusRecordsV1.ts",
+      "bytes": 8156,
+      "sha256": "419b630ee3a75a47e9f627888ab4172ffe3772575447b5d89c791a63b88f01a9",
+      "gitBlob": "4e67547502eb3e22fafb1f6e6a7d6cc35f9efc8c"
+    },
+    {
+      "path": "app/game/systems/pitBonusTrialV1.ts",
+      "bytes": 9856,
+      "sha256": "d6b85e6f57dc5ceb5442de046cfa283a0557fa9b3f667df27d3ce2bb01e35395",
+      "gitBlob": "7978a92420fc0f48537dc398d2403a5a433da246"
+    },
+    {
+      "path": "app/game/systems/pitContentAccessV1.ts",
+      "bytes": 17340,
+      "sha256": "fac7a20f8a08bb4fa7d55373bef8ea753426c13e831160eedf8db0322780b7c7",
+      "gitBlob": "7c5b6ea937bd69ae729cb05d3b5c615f15f2fb71"
+    },
+    {
+      "path": "app/game/systems/pitHonorGalleryV1.ts",
+      "bytes": 7346,
+      "sha256": "af4d1506a9dd1fa0844164ae5c3e7934312d449b1b2dba64e394042ddf0c5996",
+      "gitBlob": "38158082d00627c837fc58ec713ba961b822c84d"
+    },
+    {
+      "path": "app/game/systems/pitSelectionPresentationV1.ts",
+      "bytes": 4484,
+      "sha256": "7782a4e6564fde0ccfab64d667d77b3c8c3630fe21bec5a6724ba6ba1ddb3fb4",
+      "gitBlob": "577874a98ae761355cb7c7723e483f1b061ad4c7"
+    },
+    {
+      "path": "app/pit-lab/selection/GreybackSelectionReview.module.css",
+      "bytes": 3698,
+      "sha256": "64738e00655b510e8319807d5c3c48b82798308ad671d20c2f111d6e1a6d00e4",
+      "gitBlob": "3415754bee278736b603aabbfec4114624ec7c47"
+    },
+    {
+      "path": "app/pit-lab/selection/GreybackSelectionReview.tsx",
+      "bytes": 7331,
+      "sha256": "2306c58a686f0583ae05029d59c9db864feff85e42815011750592b8d28b0cb6",
+      "gitBlob": "fb0a79a03bd06e42257eaf307da77eaa09f91ce0"
+    },
+    {
+      "path": "app/pit-lab/selection/page.tsx",
+      "bytes": 280,
+      "sha256": "94222ea91525d9e835a0c0f7268fe800e7b0181cac914feff2d85a16496059b7",
+      "gitBlob": "8a37cf9f617d5e1846bc8566e5d43f948c4c8fe8"
+    }
+  ],
+  "removed": [],
+  "historicalFreezesUnchanged": [
+    {
+      "path": "docs/v111-runtime-freeze.json",
+      "gitBlob": "9d60b34636ec1aa8d343baccbdd1ba63fa68a5c4"
+    },
+    {
+      "path": "docs/v112-runtime-freeze.json",
+      "gitBlob": "66117020cc6fae89745efce0d52bdcd875f58e60"
+    },
+    {
+      "path": "docs/v113-runtime-freeze.json",
+      "gitBlob": "d07135907531f3ec79d267a733dacd1f4e24ea87"
+    }
+  ],
+  "strictGeneratorRunLocally": false,
+  "requiredRemoteCheck": "node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json",
+  "limitation": "The controlled differential verifies app scope, changed bytes and unchanged Git identities. It is not a successful full snapshot execution, browser review or 1:1 certification. Strict CI remains unchanged."
+}

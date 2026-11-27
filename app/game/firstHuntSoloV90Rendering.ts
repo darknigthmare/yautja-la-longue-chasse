@@ -2,7 +2,7 @@ import { YOUTH_ART_MANIFEST } from './youthArtManifest';
 import { TEMPLE_MODULAR_ATLAS_V70, drawTempleModuleV70 } from './templeModularArtV70';
 import { loadYouthArt, youthClipFrame, type YouthArtBank, type YouthArtPose, type YouthPropSprite } from './youthTrainingRendering';
 import { getSpriteContact, drawActorContactShadow } from './spriteContact';
-import { SOLO_V90_POSTS, SOLO_V90_WORLD_WIDTH, SOLO_V92_EVASION, soloV90Objective, soloV90ObservationPostReady, soloV90CompanionTarget, soloV90PartnerActivity, SOLO_V90_ACTIVITY_TICKS, SOLO_V90_PARTNER_ACTIVITIES, type SoloV90State } from './systems/firstHuntSoloV90';
+import { SOLO_V90_POSTS, SOLO_V90_WORLD_WIDTH, SOLO_V92_EVASION, soloV90Objective, soloV90ObservationPostReady, soloV90CompanionTarget, soloV90PartnerActivity, soloV90RehearsalPending, SOLO_V90_ACTIVITY_TICKS, SOLO_V90_PARTNER_ACTIVITIES, SOLO_V90_REHEARSAL, type SoloV90State } from './systems/firstHuntSoloV90';
 export const TRAINING_DRONE_V90 = '/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png';
 export async function loadTrainingArtV90(): Promise<YouthArtBank> {
   const bank = await loadYouthArt(YOUTH_ART_MANIFEST), images = new Map(bank.images);
@@ -68,6 +68,24 @@ export function drawFirstHuntSoloV90(ctx: CanvasRenderingContext2D, s: SoloV90St
           ctx.fillRect(x - 24 + index * 10, 423 - index * 2, 7, 3);
         }
       }
+    }
+  }
+  if (soloV90RehearsalPending(s) || s.phase === 'assemble' && s.formationRehearsedAt !== undefined) {
+    const { x, ticks, partners } = SOLO_V90_REHEARSAL;
+    const progress = s.formationRehearsedAt !== undefined ? ticks : s.scan;
+    prop(manifest.props.marker, x, 430, 28);
+    text('RÉPÉTITION DES TROIS SIGNAUX', x, 314, '#d4b777', 11);
+    const points = [partners[0], partners[1], x];
+    const colors = ['#e7bc6c', '#90dbeb', '#f2a092'];
+    const complete = Math.floor(progress * 3 / ticks);
+    for (let i = 0; i < points.length; i++) {
+      const point = points[i];
+      ctx.fillStyle = complete > i ? colors[i] : '#65726d';
+      ctx.fillRect(point - 9, 411, 18, 4);
+    }
+    if (complete === 3) {
+      ctx.strokeStyle = '#e5cb95'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(partners[0], 419); ctx.lineTo(partners[1], 419); ctx.stroke();
     }
   }
   [2220, ...SOLO_V90_POSTS, 2590].forEach(x => { prop(manifest.props.marker, x, 430, 28); ctx.strokeStyle = '#cead69'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x - 25, 432); ctx.lineTo(x + 25, 432); ctx.stroke(); });

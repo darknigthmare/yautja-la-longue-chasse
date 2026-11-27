@@ -10,6 +10,7 @@ import { createYouthTraining, YOUTH_PHASES, normalizeYouthTraining, normalizeYou
 
 import { youthWorkshopEquipment, youthWorkshopProgressMatches } from "./youthWorkshopV174";
 import { childhoodViewV175 } from "./homeworldChildhoodV175";
+import { youthCityAdmissionReadyM003 } from "./youthCityErrandV172";
 
 export interface YouthEquipment {
   wristblade: boolean;
@@ -99,6 +100,8 @@ export function youthCampaignMatchesSave(value: unknown, { bloodingVerified = fa
 export function startYouthCampaign(save: SaveGame, now = new Date().toISOString()): SaveGame | null {
   if (save.prologue?.status !== "completed" || !youthCampaignMatchesSave(save) || !iso(now) || !["hunt-king", "terrace-instructor"].every(id => save.homeworld.greetedNpcIds.includes(id))) return null;
   if (save.youthTraining) return normalizeYouthCampaign(save.youthTraining) && youthCampaignMatchesSave(save) ? save : null;
+  const city = save.homeworld.youthCityErrandV172;
+  if (city?.encounterM003 !== undefined && !youthCityAdmissionReadyM003(city)) return null;
   const childhood = childhoodViewV175(save.homeworld.childhoodV175, save.createdAt);
   if (childhood?.passed && !childhood.firstWorkshop) return null;
   const checkpoint = { ...createYouthTraining(), ...(childhood?.firstWorkshop ? { firstWorkshopV176: childhood.firstWorkshop } : {}) };

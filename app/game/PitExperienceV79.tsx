@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- preserve the native supplied character plates. */
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type ComponentProps } from 'react';
 import PitCanvas from './PitCanvas';
+import PitMasksBrokenPrologue from './PitMasksBrokenPrologue';
 import PitWorkbookCampaignV107 from './PitWorkbookCampaignV108';
 import PitExtensionPortrait from './PitExtensionPortrait';
 import PitStagePreview, { type PitStagePreviewStatus } from './PitStagePreview';
@@ -32,13 +33,18 @@ const desktopRosterSnapshot = () => false;
 
 /** The original versus controller is unmounted while reading. No combat input
  * listener or gamepad loop remains behind these menus or a second duel. */
-export default function PitExperienceV79({ ownerSaveCreatedAt, chronicleStorage, ...pitProps }: Props) {
+export default function PitExperienceV79({ ownerSaveCreatedAt, chronicleStorage, initialHonorRoute, ...pitProps }: Props) {
   const [selected, setSelected] = useState<PitVersusFighterId | null>(null);
   const [workbookExerciseV107, setWorkbookExerciseV107] = useState(false);
   const [lastFighter, setLastFighter] = useState<PitVersusFighterId | undefined>();
-  const choose = (id: PitVersusFighterId) => { setWorkbookExerciseV107(false); setLastFighter(id); setSelected(id); };
+  const [entryHonorRoute, setEntryHonorRoute] = useState(initialHonorRoute);
+  const [masksOpen, setMasksOpen] = useState(false);
+  const choose = (id: PitVersusFighterId) => { setEntryHonorRoute(undefined); setWorkbookExerciseV107(false); setLastFighter(id); setSelected(id); };
+  if (masksOpen) return <PitMasksBrokenPrologue key={ownerSaveCreatedAt}
+    owner={ownerSaveCreatedAt} pit={pitProps} onClose={() => setMasksOpen(false)} />;
   if (workbookExerciseV107 && (selected === 'feral-hunter' || selected === 'scar')) return <PitWorkbookCampaignV107 key={ownerSaveCreatedAt+selected} fighterId={selected} owner={ownerSaveCreatedAt} pitProps={pitProps} storage={chronicleStorage} onBack={() => setWorkbookExerciseV107(false)} />;
-  return selected === null ? <PitCanvas {...pitProps} initialLeftId={lastFighter ?? pitProps.initialLeftId} onOpenCharacterChronicle={choose} />
+  return selected === null ? <PitCanvas {...pitProps} initialHonorRoute={entryHonorRoute} initialLeftId={lastFighter ?? pitProps.initialLeftId} onOpenCharacterChronicle={choose}
+      onOpenMasksBrokenPrologue={() => { setEntryHonorRoute(undefined); setMasksOpen(true); }} />
     : <PitCharacterChronicleControllerV79 key={ownerSaveCreatedAt} ownerSaveCreatedAt={ownerSaveCreatedAt}
       selectedId={selected} onOpenWorkbookExerciseV107={() => setWorkbookExerciseV107(true)} onChoose={choose} onBack={() => setSelected(null)} pitProps={pitProps} chronicleStorage={chronicleStorage} />;
 }
