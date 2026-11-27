@@ -14,7 +14,17 @@ const quatza = runtime.load('app/game/systems/quatzaRij.ts');
 let completed;
 
 test('the fifteen-room route reaches four new physical doors and records each observation in order', () => {
-  completed = templeCampaignRoute({ origin: waiting, restoreEvery: 61 });
+  let opened;
+  completed = templeCampaignRoute({ origin: waiting, restoreEvery: 61, input(state) {
+    const gallery = state.depthsM017?.extension?.gallery;
+    if (gallery?.openedAt != null && !gallery.screened) opened ??= structuredClone(state);
+    return templeInput(state);
+  } });
+  assert(opened);
+  const restored = p.normalizeSoloV70State(JSON.parse(JSON.stringify(opened)));
+  assert.deepEqual(restored.depthsM017.extension.gallery, opened.depthsM017.extension.gallery);
+  assert(p.soloV70GalleryThreatM017(restored));
+  assert.equal(p.soloV70CanTravel(restored, 11), false);
   const { state, save, transitions } = completed;
   const depth = state.depthsM017;
   assert(state.visited.every(Boolean));
@@ -41,6 +51,13 @@ test('the fifteen-room route reaches four new physical doors and records each ob
   assert(depth.huntThreshold.tick < state.milestones.returned);
   assert.deepEqual(save.soloV90, waiting.soloV90);
   assert.equal(save.soloV70.receipts.length, 15);
+  const { openedAt, screened } = depth.extension.gallery;
+  assert(openedAt >= depth.extension.observations['eggs-observed'].tick + p.SOLO_V70_GALLERY_M017.hatchDelay);
+  assert(screened.tick >= openedAt + p.SOLO_V70_GALLERY_M017.holdTicks);
+  assert(p.soloV70CanTravel(transitions.find(t => t.before.room === 10 && t.after.room === 11).before, 11));
+  const forged = structuredClone(save);
+  forged.soloV70.checkpoint.depthsM017.extension.gallery.screened = null;
+  assert.equal(saves.parseSaveImport(JSON.stringify(forged)).failure, 'invalid-save');
 });
 
 test('an expired purge can be opened again at the upstream valve without losing observations', () => {
@@ -101,4 +118,13 @@ test('an active eleven-room checkpoint still reaches the Gallery threshold witho
   assert.equal(resumed.depthsM017.extension, undefined);
   assert.equal(p.soloV70HuntTargetM017(resumed).room, 10);
   assert.equal(p.soloV70CanTravel(resumed, 11), false);
+});
+
+test('an active fifteen-room archive without the Gallery encounter preserves its original gates', () => {
+  const archive = templeCampaignRoute({ origin: waiting, archiveRoomCount: 15, restoreEvery: 317 });
+  const crossing = archive.transitions.find(t => t.before.room === 10 && t.after.room === 11);
+  assert(crossing.before.depthsM017.extension.observations['eggs-observed']);
+  assert.equal(crossing.before.depthsM017.extension.gallery, undefined);
+  assert.equal(p.soloV70CanTravel(crossing.before, 11), true);
+  assert.equal(saves.parseSaveImport(saves.exportSave(archive.save)).failure, null);
 });

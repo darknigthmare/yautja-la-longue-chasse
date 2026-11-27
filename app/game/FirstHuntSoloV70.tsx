@@ -7,7 +7,7 @@ import { controlActionShortcut } from "./controlBindingLabels";
 import { type YouthArtBank } from "./youthTrainingRendering";
 import { GameAudio } from "./sound";
 import YautjaTranslationV67 from "./YautjaTranslationV67";
-import { soloV70PurgeRemainingM017 } from "./systems/firstHuntSoloV70DepthsM017";
+import { SOLO_V70_GALLERY_M017, soloV70PurgeRemainingM017 } from "./systems/firstHuntSoloV70DepthsM017";
 import { drawFirstHuntSoloV70, loadTempleArtV70 } from "./firstHuntSoloV70Rendering";
 import { normalizeSoloV70State, stepSoloV70, soloV70NeedsImmediateCheckpoint, soloV70Objective, soloV70Room, SOLO_V70_DEPTHS_M017, soloV70DepthDoorOpeningM017, type SoloV70State, type SoloV70Receipt, soloV70ReconnectionPreview, soloV70NefDeploymentM017 } from "./systems/firstHuntSoloV70";
 import styles from "./FirstHuntSoloV70.module.css";
@@ -70,7 +70,7 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
   useEffect(() => { audioRef.current?.setMix({ master: props.masterVolume ?? 1, effects: props.effectsVolume ?? 1, music: 0, muted: props.soundEnabled === false || !!props.externallyPaused || paused || pendingUi || !!artError || !bank }); }, [props.masterVolume, props.effectsVolume, props.soundEnabled, props.externallyPaused, paused, pendingUi, artError, bank]);
   useEffect(() => {
     let active = true;
-    loadTempleArtV70(Boolean(initial?.depthsM017?.extension)).then(result => { if (active) { setBank(result); setArtError(""); } }).catch(error => { if (active) { setBank(null); setArtError(error instanceof Error ? error.message : "Images indisponibles."); } });
+    loadTempleArtV70(Boolean(initial?.depthsM017?.extension), Boolean(initial?.depthsM017?.extension?.gallery)).then(result => { if (active) { setBank(result); setArtError(""); } }).catch(error => { if (active) { setBank(null); setArtError(error instanceof Error ? error.message : "Images indisponibles."); } });
     return () => { active = false; };
   }, [loadAttempt, initial]);
   useEffect(() => {
@@ -158,6 +158,10 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
   const purgeRemaining = state && state.room === 14 ? soloV70PurgeRemainingM017(state) : 0;
   const extension = state?.depthsM017?.extension;
   return <section className={styles.screen} data-solo-v70 data-solo-step={state?.phase ?? "invalid"}
+    data-temple-gallery={state?.room === SOLO_V70_GALLERY_M017.room && extension?.gallery
+      ? extension.gallery.screened ? "screened" : extension.gallery.openedAt !== null ? "open"
+        : extension.observations["eggs-observed"] ? "warning" : "dormant"
+      : undefined}
     data-temple-purge={extension && (extension.observations['vent-purge'] ? "purged" : purgeRemaining ? "open" : "closed")}
     data-temple-hunt-threshold={state?.depthsM017 && (state.depthsM017.huntThreshold ? "triad-confirmed" : "pending")}
     data-temple-depth-gate={state?.depthsM017 && (depthOpening ? "moving" : state.depthsM017.relay ? "open" : "sealed")}

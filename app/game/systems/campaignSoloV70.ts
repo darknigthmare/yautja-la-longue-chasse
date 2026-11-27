@@ -1,5 +1,5 @@
 import type { SaveGame } from '../types';
-import { SOLO_V70_DEPTH_POSTS_M017, SOLO_V70_PURGE_M017,
+import { SOLO_V70_DEPTH_POSTS_M017, SOLO_V70_PURGE_M017, SOLO_V70_GALLERY_M017,
   soloV70DepthPostM017, soloV70DepthAppuisM017, soloV70PurgeRemainingM017 } from './firstHuntSoloV70DepthsM017';
 import { normalizeSoloV69Campaign, soloV69MatchesSave, templeRankKeepsEarlierTrialV174 } from './campaignSoloV69';
 import { normalizeSoloV90Campaign, soloV90AtTempleHandoffM017 } from './campaignSoloV90Progress';
@@ -62,6 +62,19 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
  const pendingPost = previousExtension && soloV70DepthPostM017(old.room);
  if (Boolean(previousExtension) !== Boolean(nextExtension)) return null;
  if (previousExtension && nextExtension) {
+   const previousGallery = previousExtension.gallery, gallery = nextExtension.gallery;
+   if (Boolean(previousGallery) !== Boolean(gallery)) return null;
+   if (previousGallery && gallery) {
+     const { room, x, y, holdTicks } = SOLO_V70_GALLERY_M017;
+     if (previousGallery.openedAt !== gallery.openedAt &&
+         (previousGallery.openedAt !== null || gallery.openedAt !== next.tick ||
+          old.phase !== 'return' || old.room !== room || next.room !== room || !previousExtension.observations['eggs-observed'])) return null;
+     if (previousGallery.screened) {
+       if (!same(previousGallery.screened, gallery.screened)) return null;
+     } else if (gallery.screened && (previousGallery.openedAt === null || old.phase !== 'return' || old.room !== room ||
+         next.player.vx !== 0 || next.player.vy !== 0 || !near(room, x, y, 38) || old.scan + delta < holdTicks ||
+         next.scan !== 0 || !same(gallery.screened, soloV70TrioObservation(next, 3)))) return null;
+   }
    const { purgeStartedAt } = nextExtension;
    if (purgeStartedAt !== previousExtension.purgeStartedAt &&
        (pendingPost?.id !== 'vent-purge' || nextExtension.observations['vent-purge'] || soloV70PurgeRemainingM017(next) !== SOLO_V70_PURGE_M017.duration ||

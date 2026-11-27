@@ -2,12 +2,14 @@ import { loadYouthArt,youthClipFrame,type YouthArtBank,type YouthArtPose,type Yo
 import { YOUTH_ART_MANIFEST } from './youthArtManifest';
 import { drawActorContactShadow,getSpriteContact } from './spriteContact';
 import { TEMPLE_MODULAR_ATLAS_V70,drawTempleModuleV70 } from './templeModularArtV70';
-import { SOLO_V70_PURGE_M017, soloV70DepthPostM017, soloV70PurgeRemainingM017 } from './systems/firstHuntSoloV70DepthsM017';
+import { SOLO_V70_PURGE_M017, SOLO_V70_GALLERY_M017, soloV70GalleryThreatM017, soloV70DepthPostM017, soloV70PurgeRemainingM017 } from './systems/firstHuntSoloV70DepthsM017';
 import { soloV70HuntTargetM017,soloV70Room,SOLO_V70_DEPTHS_M017,soloV70DepthDoorOpeningM017,SOLO_V70_SIGNS,SOLO_V70_ENERGY_VAULT,SOLO_V70_QUARANTINE_THRESHOLD,SOLO_V70_BELVEDERE,SOLO_V70_RECONNECTION,SOLO_V70_NEF_RELAY_M017,soloV70ReconnectionPreview,soloV70NefDeploymentM017,soloV70Platforms,soloV70Support,soloV70CampaignPortal,soloV70CanTravel,soloV70Objective,soloV70PlateTargets,type SoloV70State } from './systems/firstHuntSoloV70';
 export const TEMPLE_DRONE_V70='/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png';
 export const TEMPLE_GUARD_V70='/game/sprites/v4/rifle-soldier.png';
 export const TEMPLE_EGG_M017 = '/game/xeno-prime/berceau-v1/sprites/ruche/025_oeuf_ferme.png';
-export async function loadTempleArtV70(expanded = false):Promise<YouthArtBank>{const bank=await loadYouthArt(YOUTH_ART_MANIFEST),images=new Map(bank.images);await Promise.all([TEMPLE_MODULAR_ATLAS_V70.src,TEMPLE_DRONE_V70,TEMPLE_GUARD_V70,...(expanded ? [TEMPLE_EGG_M017] : [])].map(src=>new Promise<void>((resolve,reject)=>{const image=new Image();image.onload=()=>{images.set(src,image);resolve();};image.onerror=()=>reject(new Error('Image native du temple indisponible : '+src));image.src=src;})));return {...bank,images};}
+export const TEMPLE_OPEN_EGG_M017 = '/game/xeno-prime/berceau-v1/sprites/ruche/026_oeuf_ouvert.png';
+export const TEMPLE_FACEHUGGER_M017 = '/game/xeno-prime/berceau-v1/sprites/personnages/058_facehugger.png';
+export async function loadTempleArtV70(expanded = false, gallery = false):Promise<YouthArtBank>{const bank=await loadYouthArt(YOUTH_ART_MANIFEST),images=new Map(bank.images);await Promise.all([TEMPLE_MODULAR_ATLAS_V70.src,TEMPLE_DRONE_V70,TEMPLE_GUARD_V70,...(expanded ? [TEMPLE_EGG_M017] : []),...(gallery ? [TEMPLE_OPEN_EGG_M017, TEMPLE_FACEHUGGER_M017] : [])].map(src=>new Promise<void>((resolve,reject)=>{const image=new Image();image.onload=()=>{images.set(src,image);resolve();};image.onerror=()=>reject(new Error('Image native du temple indisponible : '+src));image.src=src;})));return {...bank,images};}
 /** Separate rooms, native original architecture, actual support planes. Native
  * drone drawings are never mirrored: withdrawal keeps its left-facing guard. */
 export function drawFirstHuntSoloV70(ctx:CanvasRenderingContext2D,s:SoloV70State,bank:YouthArtBank|null,reducedMotion:boolean){
@@ -100,13 +102,27 @@ export function drawFirstHuntSoloV70(ctx:CanvasRenderingContext2D,s:SoloV70State
    marker(post.x,post.y,completed?'MÉCANISME CONSIGNÉ':post.label.toUpperCase());
    if (!completed) post.plates?.forEach((x,index) => marker(x,430,index?'PLAQUE VEK':'PLAQUE SAAR'));
    if (post.id === 'eggs-observed') {
-     const egg = images.get(TEMPLE_EGG_M017);
-     if (egg) {
-       const rect = [0,0,egg.width,egg.height] as const, contact = getSpriteContact(egg,rect,egg.height);
-       const scale = 92 / egg.height;
-       for (const [x, ratio] of [[753,.75],[805,1],[858,.85]]) {
-         const width = egg.width*scale*ratio, height = egg.height*scale*ratio;
-         ctx.drawImage(egg,x-width/2,430-(contact?.supportY??egg.height)*scale*ratio,width,height);
+     const gallery = extension?.gallery;
+     const opened = gallery?.openedAt != null;
+     const drawSprite = (image: HTMLImageElement, x: number, y: number, height: number) => {
+       const rect = [0,0,image.width,image.height] as const;
+       const contact = getSpriteContact(image,rect,image.height), scale = height/image.height;
+       ctx.drawImage(image,x-image.width*scale/2,y-(contact?.supportY??image.height)*scale,image.width*scale,height);
+     };
+     for (const [x, ratio] of [[753,.75],[805,1],[858,.85]]) {
+       const egg = images.get(opened && x === 858 ? TEMPLE_OPEN_EGG_M017 : TEMPLE_EGG_M017);
+       if (egg) drawSprite(egg,x,430,92*ratio);
+     }
+     if (gallery && completed) {
+       const {x,y} = SOLO_V70_GALLERY_M017;
+       drawTempleModuleV70(ctx,modular,'console',x,y,60);
+       marker(x,y,gallery.screened ? 'NID CONFINÉ' : 'COMMANDE OUEST');
+       if (gallery.screened) drawTempleModuleV70(ctx,modular,'gate',858,398,110);
+       else if (!opened) text('ÉCLOSION IMMINENTE',858,300,'#f0a177');
+       const threat = soloV70GalleryThreatM017(s), facehugger = images.get(TEMPLE_FACEHUGGER_M017);
+       if (threat && facehugger) {
+         drawActorContactShadow(ctx,threat.x,430,16,430-threat.y);
+         drawSprite(facehugger,threat.x,threat.y,62);
        }
      }
    } else if (post.id === 'resin-anchor') {
@@ -149,5 +165,7 @@ export function drawFirstHuntSoloV70(ctx:CanvasRenderingContext2D,s:SoloV70State
  s.companions.forEach((c,i)=>{const target=s.companionMode==='plates'?soloV70PlateTargets(s)[i]:Math.max(65,Math.min(1055,s.player.x-65*(i+1)));actor('rival',c.x,430,target<c.x?-1:1,102,Math.abs(c.x-target)>7?'walk':'idle',i===0?'SAAR':'VEK');});
  if(s.room===0)actor('rival',160,430,1,145,'idle','VÉTÉRAN');const a=s.player;actor('player',a.x,a.y,a.facing,112,s.health===0?'ko':s.hurtTimer>60?'hurt':s.attackTimer?'blade':a.vy?'jump':a.vx?'walk':'idle');
  const goal=soloV70Objective(s);ctx.strokeStyle='#ead393';ctx.setLineDash([6,5]);ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(goal.targetX-26,goal.targetY+4);ctx.lineTo(goal.targetX+26,goal.targetY+4);ctx.stroke();ctx.setLineDash([]);if(s.scan&&!(s.phase==='separation'&&s.player.y===SOLO_V70_NEF_RELAY_M017.upperY)){ctx.fillStyle='#ead393';ctx.fillRect(goal.targetX-26,goal.targetY+17,52*s.scan/(s.room===descent.room ? descent.holdTicks : post?.id==='vent-purge' && !extension?.observations['vent-purge'] && !remaining
-   ? SOLO_V70_PURGE_M017.holdTicks : post && !extension?.observations[post.id] ? post.holdTicks : s.room===final.room ? final.holdTicks : 90),4);}ctx.restore();
+   ? SOLO_V70_PURGE_M017.holdTicks
+   : post?.id==='eggs-observed' && extension?.observations['eggs-observed'] && extension.gallery ? SOLO_V70_GALLERY_M017.holdTicks
+   : post && !extension?.observations[post.id] ? post.holdTicks : s.room===final.room ? final.holdTicks : 90),4);}ctx.restore();
 }

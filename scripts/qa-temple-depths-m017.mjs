@@ -15,6 +15,11 @@ const { YOUTH_CONTROL_ACTIONS: actions } = modules.load('app/game/systems/youthC
 const { descent, hunt } = thresholdsTemple.SOLO_V70_DEPTHS_M017;
 const expanded = process.argv.includes('--complete-depths');
 const posts = thresholdsTemple.SOLO_V70_DEPTH_POSTS_M017;
+const galleryAssets = new Set([
+  '/game/xeno-prime/berceau-v1/sprites/ruche/026_oeuf_ouvert.png',
+  '/game/xeno-prime/berceau-v1/sprites/personnages/058_facehugger.png',
+]);
+const loadedGalleryAssets = new Set();
 const previous = thresholdsCampaignRoute().save;
 const origin = { ...previous, prologue: { ...previous.prologue, templeTriadFirstM017: true } };
 const waiting = formationCampaignRoute({ origin, stop: 'observe' }).save;
@@ -49,6 +54,10 @@ try {
   }, { key, seed });
   const page = await context.newPage();
   page.on('pageerror', error => report.errors.push(error.message));
+  page.on('response', response => {
+    const path = new URL(response.url()).pathname;
+    if (galleryAssets.has(path) && response.ok()) loadedGalleryAssets.add(path);
+  });
   page.setDefaultTimeout(30000);
   const canvas = page.locator('[data-solo-v70] canvas[data-solo-assets="true"]');
   const live = () => canvas.evaluate(element => JSON.parse(element.dataset.soloState));
@@ -146,14 +155,67 @@ try {
   assert.equal((await saved()).soloV70.checkpoint.room, hunt.room);
   await approach(hunt.x, 1);
   await page.clock.runFor(350);
-  await hold(interact, 920);
+  await hold(interact, expanded ? 800 : 920);
   if (expanded) {
     const [eggs, resin, screen, royal, vent] = posts;
+    const gallery = () => page.locator('[data-solo-v70]').getAttribute('data-temple-gallery');
+    const storedGallery = async () => (await saved()).soloV70.checkpoint.depthsM017.extension.gallery;
+    const waitForGallery = async expected => {
+      for (let i = 0; i < 20 && await gallery() !== expected; i++) await page.clock.runFor(50);
+      assert.equal(await gallery(), expected);
+    };
+    const crossBeforeContainment = async () => {
+      await approach(1040, 1);
+      await hold(interact, 130);
+      assert.equal((await live()).room, eggs.room);
+      assert.equal((await saved()).soloV70.checkpoint.room, eggs.room);
+    };
     assert((await saved()).soloV70.checkpoint.depthsM017.extension.observations[eggs.id]);
     assert.equal((await saved()).soloV70.checkpoint.depthsM017.huntThreshold, null);
+    assert.equal(await gallery(), 'warning', 'The physical observation must announce the hatching.');
     await shot('03-galerie-des-oeufs');
+    await waitForGallery('open');
+    await shot('03a-eclosion-et-facehugger');
+    await crossBeforeContainment();
+    const emerged = await storedGallery();
+    assert(Number.isSafeInteger(emerged?.openedAt));
+    assert.equal(emerged.screened, null);
+    await page.reload();
+    await boot();
+    await waitForGallery('open');
+    assert.deepEqual(await storedGallery(), emerged);
+    assert.equal((await live()).room, eggs.room);
+    await crossBeforeContainment();
 
+    const healthBefore = (await live()).health;
+    await approach(740, -1);
+    await page.clock.runFor(350);
+    await hold(interact, 300);
+    assert.equal(await gallery(), 'open', 'A tap cannot close the physical screen.');
+    await hold(interact, 820);
+    await waitForGallery('screened');
+    const screened = await storedGallery();
+    assert.equal(screened?.openedAt, emerged.openedAt);
+    assert(Number.isSafeInteger(screened.screened?.tick));
+    assert(screened.screened.tick >= emerged.openedAt + 40);
+    assert.equal(screened.screened.positions.length, 3);
+    assert((await live()).health >= healthBefore - 1);
+    assert.equal((await live()).failedAt, null);
+    await shot('03b-grille-de-la-galerie-tiree');
+    await page.reload();
+    await boot();
+    await waitForGallery('screened');
+    assert.deepEqual(await storedGallery(), screened);
     await crossTo(resin.room);
+    assert.deepEqual(await storedGallery(), screened);
+    assert.deepEqual([...galleryAssets].filter(path => !loadedGalleryAssets.has(path)), []);
+    report.gallery = {
+      closedDoorBeforeScreen: true,
+      openAndScreenedSurviveReload: true,
+      emerged,
+      screened,
+      nativeAssets: [...galleryAssets],
+    };
     await hold(signal, 80);
     await approach(378, 1, 4);
     await leap(500, 372);
