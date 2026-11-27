@@ -297,8 +297,8 @@ export function normalizeYouthWorkshop(value: unknown, tick: number): YouthWorks
         !int(item.failures, 0, item.tick) || !validRoute(lesson, item.route)) return null;
     reports.push({ tick: item.tick, route: item.route, failures: item.failures });
   }
-  const profile = value.maskProfile;
-  if (reports.length ? profile !== "contrast" && profile !== "wide" : profile !== undefined) return null;
+  const profile = value.maskProfile === "contrast" || value.maskProfile === "wide" ? value.maskProfile : undefined;
+  if (reports.length ? !profile : value.maskProfile !== undefined) return null;
   if (value.active === null) return { version: 1, active: null, reports, ...(profile ? { maskProfile: profile } : {}) };
   const a = value.active;
   if (!record(a) || !int(a.lesson, 0, 5) || a.lesson !== reports.length ||

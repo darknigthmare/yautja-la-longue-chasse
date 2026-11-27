@@ -365,3 +365,48 @@ test("the legacy nursery receipt is indexed and the real training chapter is cre
   ]);
   assert.equal(p.writeSaveWithStatus(reloaded, disk).save.profile.honor, 50);
 });
+
+test("the workshop hand-in atomically records calibrated youth equipment and accepts a prior-format barracks save", () => {
+  let save = until(5), state = save.youthTraining.checkpoint;
+  const storage = store(save);
+  assert.equal(save.youthTraining.equipment.workshop, undefined);
+  assert.ok(p.loadSaveWithStatus(storage).save);
+  const tick = (input = {}) => {
+    const result = p.stepYouthTraining(state, input, env);
+    state = result.state;
+    if (result.events.some(event => event.type === "workshop")) {
+      save = p.withYouthCheckpoint(save, state);
+      assert(save, "campaign accepts the played workshop transition " + JSON.stringify(state.workshopV174?.active));
+      assert.equal(p.writeSaveWithStatus(save, storage).persisted, true);
+    }
+  };
+  const walk = target => {
+    for (let frame = 0; frame < 260 && Math.abs(state.player.x - target) > 5; frame++) tick({ move: target < state.player.x ? -1 : 1 });
+    assert(Math.abs(state.player.x - target) <= 5);
+    tick();
+  };
+  const act = input => { tick(); tick(input); tick(); };
+  tick(); walk(112); act({ interact: true });
+  walk(196); act({ interact: true }); act({ blade: true });
+  walk(315); act({ interact: true });
+  state = p.loadSaveWithStatus(storage).save.youthTraining.checkpoint;
+  assert.equal(state.workshopV174.active.stage, 2);
+  assert.equal(state.inputArmed, false);
+  act({ interact: true });
+  for (const x of [384, 503, 624, 746]) { walk(x); act({ interact: true }); }
+  walk(844); act({ light: true });
+  assert.equal(save.youthTraining.equipment.workshop.maskCalibrated, false);
+  act({ interact: true });
+  const persisted = p.loadSaveWithStatus(storage).save;
+  assert.equal(persisted.youthTraining.equipment.workshop.maskCalibrated, true);
+  assert.equal(persisted.youthTraining.equipment.workshop.maskProfile, "wide");
+  assert.equal(persisted.youthTraining.equipment.workshop.cloak, false);
+  assert.equal(persisted.youthTraining.receipts.length, 5);
+  assert.equal(persisted.prologue.chronicle.rites.length, 1);
+  const stamped = clone(persisted);
+  stamped.youthTraining.equipment.workshop.cloak = true;
+  assert.equal(p.parseSaveImport(JSON.stringify(stamped)).failure, "invalid-save");
+  const erased = clone(persisted.youthTraining.checkpoint);
+  delete erased.workshopV174;
+  assert.equal(p.withYouthCheckpoint(persisted, erased), null);
+});

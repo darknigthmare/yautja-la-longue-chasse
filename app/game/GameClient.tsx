@@ -73,7 +73,7 @@ import { startSoloV68Campaign, withSoloV68Checkpoint, withSoloV68Progress, soloV
 import type { SoloV68State, SoloV68Receipt } from "./systems/firstHuntSoloV68";
 import { startSoloV69Campaign, withSoloV69Checkpoint, withSoloV69Progress, soloV69NeedsScene } from "./systems/campaignSoloV69";
 import { startSoloV70Campaign, withSoloV70Checkpoint, withSoloV70Progress, soloV70NeedsScene } from "./systems/campaignSoloV70";
-import { advanceBloodedTempleV174, type TempleCommandV174 } from "./systems/bloodedTempleV174";
+import { advanceBloodedTempleV174, templeAvailableV174, type TempleCommandV174 } from "./systems/bloodedTempleV174";
 import { commitEliteRecognition, type EliteRecognitionCommand } from "./systems/eliteRecognitionV174";
 import type { SoloV69State, SoloV69Receipt } from "./systems/firstHuntSoloV69";
 import type { SoloV70State, SoloV70Receipt } from "./systems/firstHuntSoloV70";
@@ -5335,7 +5335,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <button type="button" className="ghost-button" onClick={() => {
                   setJusticeJurisdiction("homeworld"); openStationScreen("justice", "homeworld");
                 }}>Dossier · {getJusticeStatus(save.justice).label}</button>
-                {(canEnterQuatza(save, "triad") || !!save.bloodedTempleV174) && <button type="button" className="ghost-button" data-open-quatza-homeworld
+                {(canEnterQuatza(save, "triad") || !!save.bloodedTempleV174 || templeAvailableV174(save)) && <button type="button" className="ghost-button" data-open-quatza-homeworld
                   disabled={settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !!resumableHunt}
                   onClick={() => { setChronicleReturnScreen("homeworld"); go("clan-chronicle"); }}>
                   {save.bloodedTempleV174 ? "Dossier de campagne · rites" : "Dossier de campagne · Quatza-Rij"}
