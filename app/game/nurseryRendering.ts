@@ -1,4 +1,5 @@
-import { NURSERY_ARENA, type NurseryPresentation } from "./systems/nurseryPrologue";
+import { NURSERY_OPENING, nurseryOpeningNetX, nurseryOpeningWindow } from "./systems/nurseryOpening";
+import { NURSERY_ARENA, type NurseryActorId, type NurseryPresentation } from "./systems/nurseryPrologue";
 import { NURSERY_COHORT_STOPS, NURSERY_COHORT_RADIUS } from "./systems/nurseryCohortV172";
 import { NURSERY_CONTINUITY_V72 } from "./systems/nurseryContinuityV72";
 import { YOUTH_ART_MANIFEST } from "./youthArtManifest";
@@ -295,6 +296,137 @@ function drawNurseryCohort(ctx: CanvasRenderingContext2D, presentation: NurseryP
   ctx.restore();
 }
 
+function drawOpeningAnimal(ctx: CanvasRenderingContext2D, opening: NonNullable<NurseryPresentation["opening"]>, floor: number, reducedMotion: boolean) {
+  const captured = opening.openingResolved;
+  const retreat = opening.motion === "recover";
+  const gait = reducedMotion ? 0 : Math.sin(opening.ticks * (opening.motion === "charge" ? .74 : .28));
+  const stride = captured ? 0 : (opening.motion === "charge" ? 9 : retreat || opening.stage === "latch" ? 5 : 2) * gait;
+  drawActorContactShadow(ctx, opening.beastX, floor, 31, 0);
+  ctx.save();
+  ctx.translate(opening.beastX, floor - (captured ? 11 : 26));
+  ctx.strokeStyle = "#211715"; ctx.lineWidth = 5; ctx.lineCap = "round";
+  for (let leg = 0; leg < 4; leg++) {
+    const x = (leg - 1.5) * 16;
+    const shift = stride * (leg % 2 === 0 ? 1 : -1);
+    ctx.beginPath(); ctx.moveTo(x, 3); ctx.lineTo(x + 4 - shift, 14);
+    ctx.lineTo(x - 5 + shift, captured ? 11 : 25); ctx.stroke();
+  }
+  ctx.fillStyle = "#322721";
+  ctx.beginPath();
+  ctx.moveTo(-35, -6); ctx.quadraticCurveTo(-10, -29, 26, -17);
+  ctx.quadraticCurveTo(48, -9, 44, 5); ctx.quadraticCurveTo(20, 16, -22, 9);
+  ctx.quadraticCurveTo(-47, 17, -46, 4); ctx.closePath(); ctx.fill();
+  for (let plate = 0; plate < 4; plate++) {
+    const x = plate * 11 - 23;
+    ctx.fillStyle = plate % 2 === 0 ? "#a57852" : "#725740";
+    ctx.beginPath(); ctx.ellipse(x, -13 - Math.sin(plate) * 4, 12, 6, -.15, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.fillStyle = "#d6ae7c";
+  ctx.beginPath(); ctx.moveTo(-34, -6); ctx.lineTo(-47, -16); ctx.lineTo(-43, 2); ctx.fill();
+  ctx.fillStyle = "#ffdd9f";
+  ctx.beginPath(); ctx.ellipse(-39, 0, 2.2, 1.4, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+
+function drawNurseryOpening(ctx: CanvasRenderingContext2D, opening: NonNullable<NurseryPresentation["opening"]>,
+  bank: NurseryArtBank, reducedMotion: boolean) {
+  const floor = NURSERY_ARENA.groundY;
+  const gateX = NURSERY_OPENING.gateX;
+  const broken = opening.stage !== "latch" || opening.ticks > NURSERY_OPENING.latchTicks - 24;
+  const netX = nurseryOpeningNetX(opening);
+  ctx.save();
+  ctx.fillStyle = "#130f11";
+  ctx.fillRect(gateX - 27, floor - 100, 85, 100);
+  ctx.lineWidth = 7; ctx.strokeStyle = "#79533b";
+  ctx.strokeRect(gateX - 29, floor - 101, 87, 100);
+  ctx.strokeStyle = "#483029"; ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.moveTo(gateX - 18, floor - 85);
+  ctx.lineTo(gateX + (broken ? 49 : -18), floor - 7);
+  ctx.moveTo(gateX + 25, floor - 87);
+  ctx.lineTo(gateX + 24, floor - 6);
+  ctx.stroke();
+  ctx.fillStyle = "#efae69";
+  if (!broken) ctx.fillRect(gateX - 19, floor - 42, 27, 7);
+  else for (let shard = 0; shard < 3; shard++) {
+    const distance = opening.stage === "latch" && !reducedMotion ? (opening.ticks - 48) * (shard + 1) * .46 : shard * 3;
+    ctx.fillRect(gateX - 17 - distance, floor - (opening.stage === "latch" && !reducedMotion ? 38 - distance : 4), 4, 3);
+  }
+
+  const shelters = NURSERY_OPENING.shelterX;
+  ctx.strokeStyle = "#664533"; ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.moveTo(shelters - 16, floor); ctx.lineTo(shelters - 16, floor - 96);
+  ctx.lineTo(shelters + 36, floor - 96); ctx.stroke();
+  if (opening.stage === "tactic") {
+    ctx.fillStyle = "#b1684a";
+    ctx.beginPath(); ctx.ellipse(NURSERY_OPENING.baitX, floor - 8, 14, 7, -.17, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = "#edc693"; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.ellipse(NURSERY_OPENING.ropeX, floor - 7, 17, 8, 0, 0, Math.PI * 2); ctx.stroke();
+  }
+
+  ctx.strokeStyle = "#896447"; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(netX - 31, floor); ctx.lineTo(netX - 31, floor - 66);
+  ctx.moveTo(netX + 31, floor); ctx.lineTo(netX + 31, floor - 66); ctx.stroke();
+  if (nurseryOpeningWindow(opening)) {
+    ctx.fillStyle = opening.motion === "charge" ? "#ac5031aa" : "#e59a4d69";
+    ctx.fillRect(Math.max(112, opening.beastX - 86), floor - 3, Math.min(86, opening.beastX - 112), 4);
+    if (!reducedMotion && opening.motion === "charge") {
+      ctx.fillStyle = "#dbb988ad";
+      for (let i = 0; i < 4; i++) {
+        ctx.beginPath();
+        ctx.arc(opening.beastX + (i + 2) * 7 + (opening.ticks * 3 + i * 8) % 14, floor - (i % 2 + 1) * 3, 2 + i * .5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+  drawOpeningAnimal(ctx, opening, floor, reducedMotion);
+  const pull = opening.openingResolved && !reducedMotion ? Math.sin(opening.ticks * .78) * Math.max(0, 6 - opening.ticks / 8) : 0;
+  ctx.strokeStyle = opening.openingResolved ? "#efd4a1" : "#b89a7dbb";
+  ctx.lineWidth = opening.openingResolved ? 1.6 : 1;
+  ctx.beginPath();
+  for (let n = 0; n <= 6; n++) {
+    const x = netX - 30 + n * 10, y = floor - 65 + n * 10;
+    ctx.moveTo(x, floor - 65); ctx.quadraticCurveTo(x + pull, floor - 31, x, floor - 5);
+    ctx.moveTo(netX - 30, y); ctx.quadraticCurveTo(netX, y + pull, netX + 30, y);
+  }
+  ctx.stroke();
+
+  const child = (id: NurseryActorId, x: number, facing: -1 | 1, pose: "idle" | "walk" | "ko") => {
+    const atlas = bank.manifest.actors[id][facing === 1 ? "right" : "left"];
+    const frame = nurseryClipFrame(atlas.clips[pose], reducedMotion ? 0 : opening.ticks);
+    const image = bank.images.get(atlas.src)!;
+    const contact = getSpriteContact(image, frame.rect, frame.pivot[1]);
+    const scale = NURSERY_ARENA.actorHeight / atlas.bodyHeight;
+    drawActorContactShadow(ctx, x, floor, 13, 0);
+    ctx.drawImage(image, ...frame.rect, x - frame.pivot[0] * scale,
+      floor - (frame.pivot[1] - (contact?.offsetY ?? 0)) * scale, frame.rect[2] * scale, frame.rect[3] * scale);
+  };
+  if (opening.coverTicks < NURSERY_OPENING.coverTicks) {
+    child("rival", NURSERY_OPENING.allyX - opening.coverTicks * 2.8, -1,
+      opening.coverTicks > 0 ? "walk" : "idle");
+  }
+  const rescue: number = opening.stage === "rescue" ? Math.min(1, opening.ticks / 42) : 0;
+  const saarX = opening.stage === "rescue"
+    ? NURSERY_OPENING.instructorX + (Math.max(116, opening.beastX - 24) - NURSERY_OPENING.instructorX) * rescue
+    : NURSERY_OPENING.instructorX;
+  drawCeremonyCivilianV72(ctx, bank, "instructor", saarX, floor, 122, false);
+  child("player", opening.x, opening.facing, opening.stage === "rescue" && opening.ticks < 54 ? "ko" : opening.walking ? "walk" : "idle");
+  if (opening.stage !== "latch") {
+    const held = opening.stage !== "tool";
+    ctx.save();
+    ctx.translate(held ? opening.x + opening.facing * 14 : NURSERY_OPENING.toolX, floor - (held ? 42 : 7));
+    ctx.rotate(held && opening.motion === "recover" ? -.42 * opening.facing : -.09);
+    ctx.fillStyle = "#c4905e"; ctx.fillRect(-14, -3, 28, 5);
+    ctx.fillStyle = "#694736"; ctx.fillRect(-6, -3, 8, 5); ctx.restore();
+  }
+  const markers: readonly (readonly [number, string])[] = opening.stage === "tactic" ? [[NURSERY_OPENING.baitX, "Appât"], [NURSERY_OPENING.ropeX, "Corde du filet"]] :
+    opening.stage === "tool" ? [[NURSERY_OPENING.toolX, "Outil en bois"]] :
+      opening.stage === "cover" ? [[shelters, "Abri de Tov"]] : [];
+  ctx.font = "600 14px system-ui, sans-serif"; ctx.textAlign = "center"; ctx.fillStyle = "#fce4b9";
+  for (const [x, label] of markers) ctx.fillText(label, x, floor + 30);
+  ctx.restore();
+}
+
 /** Younglings and the Unblooded have native directions. Original clan residents
  * may mirror their one facing; no adult rig substitutes the child fighters. */
 export function drawNurseryScene(ctx: CanvasRenderingContext2D, presentation: NurseryPresentation, bank: NurseryArtBank | null, reducedMotion: boolean) {
@@ -306,6 +438,12 @@ export function drawNurseryScene(ctx: CanvasRenderingContext2D, presentation: Nu
   if (presentation.camera.shot === "arena") {
     if (!reducedMotion) ctx.filter = `blur(${presentation.camera.blur * 12}px)`;
     backdrop(ctx, scene("arena"));
+    if (presentation.opening) {
+      ctx.filter = "none";
+      drawNurseryOpening(ctx, presentation.opening, bank, reducedMotion);
+      ctx.restore();
+      return;
+    }
     if (presentation.cohort) {
       ctx.filter = "none";
       drawNurseryCohort(ctx, presentation, bank, reducedMotion);

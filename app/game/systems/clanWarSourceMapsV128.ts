@@ -1,5 +1,7 @@
 import type {WarRulesV6} from "./clanWarBibleV6";
 
+type WarMapRulesV128 = Pick<WarRulesV6,"entries">;
+
 /**
  * 12 W3-MAP authoring exercises at their exact BIBLE V6 grid dimensions.
  * Geometry is generated from source dimensions, situation, alternate routes
@@ -96,7 +98,7 @@ const LANDMARKS:Record<MapIdV128,readonly [string,string,string]>={
 function isMapIdV128(id:string):id is MapIdV128 {
  return Object.prototype.hasOwnProperty.call(settings,id);
 }
-function sourceEntry(rules:WarRulesV6,id:string){
+function sourceEntry(rules:WarMapRulesV128,id:string){
  return rules.entries.find(e=>e.sheet==="Cartes des escarmouches"&&e.id===id);
 }
 function sourceValue(entry:NonNullable<ReturnType<typeof sourceEntry>>,col:string):string{
@@ -137,7 +139,7 @@ const EVENT_TYPES:Record<MapIdV128,string>={
 const POWERED_MAPS:ReadonlySet<MapIdV128>=new Set(["W3-MAP02","W3-MAP10","W3-MAP11","W3-MAP12"]);
 const noTrap=(routes:WarMapPointV128[][],pos:WarMapPointV128)=>
  routes.every(route=>!route.some(p=>key(p)===key(pos)));
-export function createWarSourceMapV128(id:string,rules:WarRulesV6):WarSourceMapV128 {
+export function createWarSourceMapV128(id:string,rules:WarMapRulesV128):WarSourceMapV128 {
  if(!isMapIdV128(id))throw new RangeError("Carte W3-MAP01..12 inconnue.");
  const entry=sourceEntry(rules,id);
  if(!entry)throw new Error("Cette carte n'existe pas dans la Bible V6 sélectionnée.");
@@ -291,7 +293,7 @@ function spawnEnemy(map:WarSourceMapV128,id:number){
   status:"active" as const,acknowledged:false,lastSeenTurn:-1,
  };
 }
-export function createWarMapPracticeV128(id:string,rules:WarRulesV6):WarMapPracticeV128{
+export function createWarMapPracticeV128(id:string,rules:WarMapRulesV128):WarMapPracticeV128{
  const map=createWarSourceMapV128(id,rules);
  const enemies=[spawnEnemy(map,0),spawnEnemy(map,1)];
  return {
@@ -420,7 +422,7 @@ export function commandWarMapPracticeV128(
   next=report(next,"victory","Dispositif vérifié et retour physique à l'extraction. Aucun effet sur la sauvegarde de campagne.");
  return ok(next,next.report?"Mission terminée : "+next.report.outcome+".":next.lastMessage);
 }
-export function auditWarSourceMapsV128(rules:WarRulesV6){
+export function auditWarSourceMapsV128(rules:WarMapRulesV128){
  const ids=Object.keys(settings),problems:string[]=[];
  for(const id of ids){
   let map:WarSourceMapV128;

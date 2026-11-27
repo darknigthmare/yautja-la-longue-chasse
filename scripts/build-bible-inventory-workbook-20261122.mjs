@@ -2,8 +2,7 @@
 /** Generate the Bible inventory from the reviewed JSON using the repository's OOXML engine. */
 import { renderWorkbook } from './lib/workbook-ooxml.mjs';
 
-const SOURCE = 'production/INVENTAIRE_BIBLE_20261122.json';
-const OUTPUT = 'production/INVENTAIRE_BIBLE_20261122.xlsx';
+const DEFAULT_DATE = '20261122';
 const REPOSITORY = 'darknigthmare/yautja-la-longue-chasse';
 const STATES = {
   RACCORDE: { label: 'Raccordé', style: 5 },
@@ -70,6 +69,10 @@ export function buildBibleInventoryWorkbook(input) {
   const bible = toLink(input.source, base, input.refMain);
   const commitUrl = base + '/commit/' + input.refMain;
   const current = input.actualiseLe ?? input.date;
+  const sourceLine = (key, fallback) => {
+    const position = input.lignesSource?.[key];
+    return line(position) ? position : fallback;
+  };
   if (!validDate(current)) throw new TypeError('Date d’actualisation invalide');
 
   const ids = new Set();
@@ -154,11 +157,11 @@ export function buildBibleInventoryWorkbook(input) {
   });
 
   const summary = [
-    { label: 'Table de campagne', count: campaign.length, detail: 'Filtrer Campagne par état observé ou par livraison.', source: 'Table de la Bible', sourceUrl: bible + '#L35' },
+    { label: 'Table de campagne', count: campaign.length, detail: 'Filtrer Campagne par état observé ou par livraison.', source: 'Table de la Bible', sourceUrl: bible + '#L' + sourceLine('table', 35) },
     ...Object.entries(STATES).map(([key, { label }]) => ({
       label, count: counts[key], detail: input.statuts?.[key] ?? '', source: 'Révision de référence', sourceUrl: commitUrl,
     })),
-    { label: 'Points transverses', count: cross.length, detail: 'Production et systèmes au-delà de la table de campagne.', source: 'Besoins transverses', sourceUrl: bible + '#L2539' },
+    { label: 'Points transverses', count: cross.length, detail: 'Production et systèmes au-delà de la table de campagne.', source: 'Besoins transverses', sourceUrl: bible + '#L' + sourceLine('transverses', 2539) },
     { label: 'Pull requests suivies', count: addenda.length, detail: 'Avenants, état Git, liens vers les contrôles et le déploiement.' },
     { label: 'Références vérifiables', count: proofRows.length, detail: 'Filtrer Preuves par identifiant. Chaque lien ouvre sa référence.' },
     { label: 'Périmètre de vérification', detail: joined(input.methode, ...(input.limites ?? [])) },
@@ -195,14 +198,18 @@ export function buildBibleInventoryWorkbook(input) {
 async function cli() {
   const { readFile, writeFile } = await import('node:fs/promises');
   const args = process.argv.slice(2);
-  if (args.length > 1 || (args.length === 1 && args[0] !== '--check')) {
-    throw new Error('Usage · node scripts/build-bible-inventory-workbook-20261122.mjs [--check]');
+  const dateOption = args.find(arg => /^--date=\d{8}$/.test(arg));
+  const check = args.includes('--check');
+  if (args.length !== Number(!!dateOption) + Number(check)) {
+    throw new Error('Usage · node scripts/build-bible-inventory-workbook-20261122.mjs [--date=YYYYMMDD] [--check]');
   }
+  const date = dateOption?.slice('--date='.length) ?? DEFAULT_DATE;
+  const path = 'production/INVENTAIRE_BIBLE_' + date;
   const root = new URL('../', import.meta.url);
-  const input = JSON.parse(await readFile(new URL(SOURCE, root), 'utf8'));
+  const input = JSON.parse(await readFile(new URL(path + '.json', root), 'utf8'));
   const workbook = buildBibleInventoryWorkbook(input);
-  const output = new URL(OUTPUT, root);
-  if (args[0] === '--check') {
+  const output = new URL(path + '.xlsx', root);
+  if (check) {
     const present = await readFile(output);
     if (present.length !== workbook.length || present.some((byte, index) => byte !== workbook[index])) {
       throw new Error('Le classeur diffère de son inventaire JSON.');
@@ -210,7 +217,7 @@ async function cli() {
   } else {
     await writeFile(output, workbook);
   }
-  console.log(JSON.stringify({ result: args[0] === '--check' ? 'PASS_REPRODUCIBLE_BYTES' : 'GENERATED', bytes: workbook.length }));
+  console.log(JSON.stringify({ result: check ? 'PASS_REPRODUCIBLE_BYTES' : 'GENERATED', bytes: workbook.length }));
 }
 
 if (typeof process !== 'undefined' && process.argv[1]) {

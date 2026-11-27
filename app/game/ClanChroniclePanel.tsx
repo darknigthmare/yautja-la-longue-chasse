@@ -23,6 +23,10 @@ import { canJudgeElderPassage, type PassageCommand, type PassageResponse } from 
 import ElderMentoring from "./ElderMentoring";
 import { canMentorElderNovice, type MentoringCommand, type MentoringResponse } from "./systems/elderMentoringV168";
 import ElderAssembly from "./ElderAssembly";
+import BloodedTempleV174 from "./BloodedTempleV174";
+import EliteRecognition from "./EliteRecognition";
+import { canEnterEliteRecognition, type EliteRecognitionCommand, type EliteRecognitionResponse } from "./systems/eliteRecognitionV174";
+import { templeAvailableV174, type TempleCommandV174 } from "./systems/bloodedTempleV174";
 import { canConveneElderAssembly, elderAssemblyProofs, type AssemblyCommand, type AssemblyResponse } from "./systems/elderAssemblyV168";
 import EliteMastery from "./EliteMastery";
 import QuatzaRijScene from './QuatzaRijScene';
@@ -60,7 +64,7 @@ function HomeworldRegionArt({ name }: { name: string }) {
 
 /** The dossier presents receipts and delegates each playable rite to its campaign owner. */
 export default function ClanChroniclePanel({
-  save, onClose, onGameReserveV66, onOpenCradle, onPassageCommand, onMentoringCommand, onAssemblyCommand, onMasteryCommand, onQuatzaCommand, quatzaSuspended,
+  save, onClose, onGameReserveV66, onOpenCradle, onPassageCommand, onMentoringCommand, onAssemblyCommand, onMasteryCommand, onQuatzaCommand, quatzaSuspended, onBloodedTempleCommand, onEliteRecognitionCommand,
 }: {
   save: SaveGame;
   onClose: () => void;
@@ -72,15 +76,17 @@ export default function ClanChroniclePanel({
   onMasteryCommand?: (command: MasteryCommand) => MasteryResponse;
   onQuatzaCommand?: (command: QuatzaCommand) => boolean;
   quatzaSuspended?: boolean;
+  onBloodedTempleCommand?: (command: TempleCommandV174) => { ok: boolean; notice: string };
+  onEliteRecognitionCommand?: (command: EliteRecognitionCommand) => EliteRecognitionResponse;
 }) {
   const [section, setSection] = useState<"journey" | "worlds" | "humans" | "companions">("journey");
   const [query, setQuery] = useState("");
-  const [activeRite, setCampaignRite] = useState<"mentoring" | "passage" | "assembly" | "mastery" | "quatza-triad" | "quatza-solo" | null>(null);
+  const [activeRite, setCampaignRite] = useState<"mentoring" | "passage" | "assembly" | "mastery" | "quatza-triad" | "quatza-solo" | "blooded-temple" | "elite-recognition" | null>(null);
   const proofs = elderAssemblyProofs(save);
   const triadAvailable = !!onQuatzaCommand && (!!save.quatzaRij?.expeditions.triad || canEnterQuatza(save, 'triad'));
   const soloAvailable = !!onQuatzaCommand && (!!save.quatzaRij?.expeditions.solo || canEnterQuatza(save, 'solo'));
   const closeCampaignRite = () => setCampaignRite(null);
-  const toggleCampaignRite = (rite: "mentoring" | "passage" | "assembly" | "mastery" | "quatza-triad" | "quatza-solo") =>
+  const toggleCampaignRite = (rite: "mentoring" | "passage" | "assembly" | "mastery" | "quatza-triad" | "quatza-solo" | "blooded-temple" | "elite-recognition") =>
     setCampaignRite(current => current === rite ? null : rite);
   const chronicle = useMemo(() => save.prologue?.chronicle ?? migrateV35ClanChronicle(save), [save]);
   const rankDossier = useMemo(() => rankRiteDossierV168(save), [save]);
@@ -134,7 +140,16 @@ export default function ClanChroniclePanel({
               {activeRite === "quatza-triad" ? "Replier la chasse en triade" : "Ouvrir la chasse en triade"}</button> :
               <p>Le départ s’ouvre après la répétition du trio, au rang Young Blood.</p>}
           </li>
-          <li><h4>Blooded · L-04</h4><p>Traverser la pyramide en triade, chacun avec sa prise, puis recevoir la marque à l’acide.</p><p>Épreuve à produire.</p></li>
+          <li>
+            <h4>Blooded · L-04</h4>
+            <p>Traverser la pyramide en triade, chacun avec sa prise, puis recevoir la marque à l’acide.</p>
+            {onBloodedTempleCommand && (save.bloodedTempleV174 || templeAvailableV174(save)) ?
+              <button type="button" data-open-blooded-temple-v174
+                aria-expanded={activeRite === "blooded-temple"} onClick={() => toggleCampaignRite("blooded-temple")}>
+                Le rite de la pyramide
+              </button> :
+              <p>Le temple s’ouvre après la Vanne de Quarantaine et le compte rendu complet du trio.</p>}
+          </li>
           {onMasteryCommand && (canEnterEliteMastery(save) || save.eliteMasteryV170) && <li>
             <h4>Mon domaine de maîtrise</h4>
             <button type="button" onClick={() => toggleCampaignRite("mastery")} aria-expanded={activeRite === "mastery"}>
@@ -154,6 +169,9 @@ export default function ClanChroniclePanel({
               <li>Crête de la Matriarche · {rankDossier.queen.label}.</li>
             </ul>
             {rankDossier.queen.canOpenExpedition && onOpenCradle && <button type="button" onClick={onOpenCradle}>Ouvrir le dossier du Berceau</button>}
+            {onEliteRecognitionCommand && (canEnterEliteRecognition(save) || save.eliteRecognitionV174) &&
+              <button type="button" data-open-elite-recognition-v174 aria-expanded={activeRite === "elite-recognition"}
+                onClick={() => toggleCampaignRite("elite-recognition")}>Ouvrir la préparation de la reconnaissance</button>}
           </li>
           <li>
             <h4>Elder · R2-M049 à R2-M051</h4>
@@ -177,6 +195,10 @@ export default function ClanChroniclePanel({
           </li>
         </ol>
       </section>
+      {activeRite === "elite-recognition" && onEliteRecognitionCommand && <EliteRecognition key={save.createdAt}
+        save={save} onCommand={onEliteRecognitionCommand} onClose={closeCampaignRite} />}
+      {activeRite === "blooded-temple" && onBloodedTempleCommand && <BloodedTempleV174 key={save.createdAt}
+        save={save} onCommand={onBloodedTempleCommand} onClose={closeCampaignRite} suspended={!!quatzaSuspended} />}
       {(activeRite === "quatza-triad" || activeRite === "quatza-solo") && onQuatzaCommand &&
         <QuatzaRijScene key={save.createdAt + ':' + activeRite} mode={activeRite === "quatza-triad" ? "triad" : "solo"}
           save={save} onCommand={onQuatzaCommand} suspended={quatzaSuspended} />}
