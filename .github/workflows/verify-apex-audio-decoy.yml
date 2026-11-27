@@ -148,6 +148,8 @@ jobs:
           assert.equal(state.bossMechanics.audioDecoy.target.x, placement.x);
           assert.equal(state.arsenal.slots[0].charges, originalCharges - 1);
           const restoredAt = state.elapsed;
+          assert.equal(state.paused, true, "resuming an archive initially pauses the encounter");
+          step("pause");
           assert.equal(state.paused, false, state.message);
           for (let i = 0; i < 280 && state.elapsed <= reaction.untilSeconds; i++) step();
           assert.ok(state.elapsed >= reaction.untilSeconds);
