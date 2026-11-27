@@ -23,7 +23,7 @@ createRoot(document.getElementById("root")).render(<GameClient />);
 
 const valid = legacyClanFixture();
 assert.ok(saves.parseSaveImport(saves.exportSave(valid)).save, "valid visited ship with an earned recruit");
-const report = { source: "96cb7b53531fc35096419013eaade6e01e4c1c4c", admission: "La fin d'origine O6‑M30 est préparée pour la recette. L'amarrage, l'accueil, le mandat, l'audit et le recrutement ont été établis par leurs réducteurs. Le point natif de la galerie et tous les gestes M060 sont joués dans GameClient.", scenes: [], errors: [] };
+const report = { source: "85b23dade19677249d67f30267f144154198eecf", admission: "La fin d'origine O6‑M30 est préparée pour la recette. L'amarrage, l'accueil, le mandat, l'audit et le recrutement ont été établis par leurs réducteurs. Le point natif de la galerie et tous les gestes M060 sont joués dans GameClient.", scenes: [], errors: [] };
 let service, browser;
 try {
   service = await createServer({ configFile: false, plugins: [react()],
@@ -59,6 +59,8 @@ try {
   await openNativeGallery();
   const scene = page.locator('[data-legacy-finale="epilogue"][data-legacy-site="clan-ship"]');
   await scene.waitFor();
+  const galleryArt = await page.request.get("http://127.0.0.1:4340/game/clan-ship/interiors/trophees-v1.webp");
+  assert.equal(galleryArt.status(), 200);
   const walk = async target => {
     const at = Number(await scene.getAttribute("data-legacy-at"));
     for (let i = 0; i < Math.abs(target-at); i++) {

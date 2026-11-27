@@ -10,6 +10,8 @@ import { clanResidenceCrewPostRooms, type CompanionCampaign } from "./companionR
 import { tribunalAccessV147 } from "./honorTribunalV147";
 import { CLAN_SHIP_TROPHY_CASE, clanShipTrophyConclusion, type ClanShipTrophyVerdict } from "./clanShipTrophyCase";
 import { clanShipTrophyHearingView, inspectClanShipTrophyHearing } from "./clanShipTrophyHearing";
+import { clanShipIncidentView, evaluateClanShipIncidentsCampaign, evaluateClanShipTrophyHearingCampaign,
+  inspectClanShipIncidents } from "./clanShipIncidents";
 
 export type LegacySiteR2 = { kind: "residence" | "ship"; id: string } |
   { kind: "clan-ship"; id: typeof CLAN_SHIP_ID };
@@ -53,7 +55,7 @@ export type LegacyFinaleR2 = {
   epilogue?: Journal<StoredEpilogueOrder>;
 };
 type LegacySave = CompanionCampaign & Pick<SaveGame, "originV151" | "residenceV149" | "shipAcquisitionV89" |
-  "legacyFinaleR2" | "tribunalV147" | "clanShipTrophyHearing">;
+  "legacyFinaleR2" | "tribunalV147" | "clanShipIncidents" | "clanShipTrophyHearing">;
 
 const record = (value: unknown): value is Record<string, unknown> => !!value && typeof value === "object" && !Array.isArray(value);
 const closeTo = (at: number, x: number) => Math.abs(at - x) <= 1;
@@ -87,8 +89,16 @@ export function legacyClanShipSiteR2(save: Pick<LegacySave, "createdAt" | "clanS
 }
 
 function clanTrophyVerdictR2(save: LegacySave): ClanShipTrophyVerdict | null {
-  const hearing = clanShipTrophyHearingView(inspectClanShipTrophyHearing(save.clanShipTrophyHearing, save.createdAt).state);
-  return hearing.completed ? hearing.conclusion : null;
+  if (save.clanShipTrophyHearing != null) {
+    const hearing = inspectClanShipTrophyHearing(save.clanShipTrophyHearing, save.createdAt).state;
+    if (!hearing || !evaluateClanShipTrophyHearingCampaign(hearing, save).allowed) return null;
+    const verdict = clanShipTrophyHearingView(hearing);
+    return verdict.completed ? verdict.conclusion : null;
+  }
+  const archive = inspectClanShipIncidents(save.clanShipIncidents, save.createdAt).state;
+  if (!archive || !evaluateClanShipIncidentsCampaign(archive, save).allowed) return null;
+  const caseFile = clanShipIncidentView(archive, "contested-trophy");
+  return caseFile.completedRevision === null ? null : caseFile.trophy?.conclusion ?? null;
 }
 
 function clanCrewR2(save: LegacySave): ClanCrewProofR2[] {
