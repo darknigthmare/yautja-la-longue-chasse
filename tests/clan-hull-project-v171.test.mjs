@@ -102,3 +102,62 @@ test('normal writes reject rollback, skipped consultations, foreign hull and fut
     assert.equal(saves.parseSaveImport(JSON.stringify(save)).failure, failure);
   }
 });
+
+const exterior = qa.load('app/game/systems/clanHullExteriorV172.ts');
+const exteriorJourney = [
+  ...Array(4).fill('east'), 'inspect',
+  'north', 'north', ...Array(5).fill('east'), ...Array(3).fill('north'), 'inspect',
+  ...Array(3).fill('south'), ...Array(5).fill('west'), ...Array(3).fill('north'), 'west', 'west', 'inspect',
+  'west', 'west', ...Array(5).fill('south'), 'report',
+];
+
+test('the exterior route needs both real scans, an open gantry and a return to the hangar', () => {
+  let view = exterior.createHullExteriorView();
+  for (const command of ['north', 'north', ...Array(4).fill('east')]) view = exterior.stepHullExterior(view, command);
+  assert.deepEqual(view.position, { column: 5, row: 4 });
+  assert.equal(exterior.stepHullExterior(view, 'east'), view);
+  assert.equal(exterior.inspectHullExteriorSurvey({ route: ['report'] }), null);
+  assert.equal(exterior.inspectHullExteriorSurvey({ route: exteriorJourney.slice(0, -1) }), null);
+  assert.equal(exterior.inspectHullExteriorSurvey({ route: [...exteriorJourney, 'inspect'] }), null);
+  const report = { type: 'exterior-survey', survey: { route: exteriorJourney } };
+  const initial = withOwnedHull();
+  assert.equal(project.commitClanHullProject(initial, { expectedRevision: 0, ...report }, null).ok, false);
+  const inspected = accept(initial, { type: 'inspect' });
+  assert.equal(project.commitClanHullProject(at(inspected, 'conseil'), { expectedRevision: 1, ...report }, null).ok, false);
+  const checked = accept(inspected, report);
+  assert.equal(checked.clanHullProjectV171.revision, 2);
+  assert.deepEqual(checked.clanHullProjectV171.exteriorSurvey, report.survey);
+  assert.equal(checked.clanHullProjectV171.consultations, 0);
+  assert.equal(checked.clanHullProjectV171.pledge, null);
+  assert.equal(checked.clanShipOperations, inspected.clanShipOperations);
+  assert.equal(project.commitClanHullProject(checked, { expectedRevision: 2, ...report }, null).ok, false);
+});
+
+test('the exterior proof writes and reloads against the old campaign hull without changing its choice', () => {
+  const base = accept(withOwnedHull(), { type: 'inspect' });
+  const guard = accept(base, { type: 'consult' }, 'threshold-guard');
+  const watch = accept(at(guard, 'conseil'), { type: 'consult' }, 'star-watch');
+  const oldChoice = at(accept(watch, { type: 'pledge', pledge: 'personal' }), 'hangar');
+  const data = new Map();
+  const memory = {
+    getItem: key => data.get(key) ?? null, setItem: (key, value) => data.set(key, value), removeItem: key => data.delete(key),
+  };
+  const started = saves.replaceSaveWithStatus(oldChoice, memory);
+  assert.ok(started.persisted, started.failure);
+  const played = accept(started.save, { type: 'exterior-survey', survey: { route: exteriorJourney } });
+  const wrote = saves.writeSaveWithStatus(played, memory);
+  assert.ok(wrote.persisted, wrote.failure);
+  const parsed = saves.parseSaveImport(saves.exportSave(wrote.save));
+  assert.ok(parsed.save, parsed.failure);
+  assert.equal(parsed.save.clanHullProjectV171.pledge, 'personal');
+  assert.equal(parsed.save.clanHullProjectV171.consultations, 3);
+  assert.equal(parsed.save.clanHullProjectV171.revision, 5);
+  assert.deepEqual(parsed.save.clanHullProjectV171.exteriorSurvey.route, exteriorJourney);
+  assert.equal(saves.writeSaveWithStatus(oldChoice, memory).failure, 'save-conflict');
+  for (const patch of [
+    { exteriorSurvey: { route: ['report'] } }, { hullInstanceId: 'another-hull' }, { ownerCreatedAt: '2026-11-12T10:01:00.000Z' },
+  ]) {
+    const altered = { ...parsed.save, clanHullProjectV171: { ...parsed.save.clanHullProjectV171, ...patch } };
+    assert.equal(saves.parseSaveImport(JSON.stringify(altered)).failure, 'invalid-save');
+  }
+});
