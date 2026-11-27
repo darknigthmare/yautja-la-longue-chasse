@@ -3146,7 +3146,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const result = actClanShipOperations(state, action, {
       ownerCreatedAt: current.createdAt, docking: current.clanShipDocking, campaign: current,
       availableCrewIds: availableClanResidenceCrew(current),
-      crewPostRooms: action.type === 'collective-check' ? clanResidenceCrewPostRooms(current) : undefined,
+      crewPostRooms: action.type === 'collective-check' || action.type === 'ancient-hearing' ? clanResidenceCrewPostRooms(current) : undefined,
     });
     if (!result.accepted) { setToast(result.message); return false; }
     const reward = result.clanMarksReward;
