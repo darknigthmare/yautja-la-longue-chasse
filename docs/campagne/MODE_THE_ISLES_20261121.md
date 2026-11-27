@@ -635,7 +635,7 @@ Un repaire principal (au choix du joueur) expose les trophées du mode, avec leu
 8. **Ironhook**, ARGOS, siège.
 9. **Autres modes en ligne** (course aux trophées, grand gibier).
 
-**Avancement du prototype intégré :** étapes 1 et 3 jouables hors ligne, avec l'île de test et la Chasse inversée en solo contre l'IA. L'étape 2 (salle réseau) reste séparée. [Prototype V1](ISLES_PROTOTYPE_V1_20261123.md).
+**Avancement du prototype intégré :** étapes 1 et 3 jouables hors ligne, avec l'île de test et la Chasse inversée en solo contre l'IA. L'étape 2 dispose d'une salle facultative de test local, séparée du menu et du build web. [Prototype V1](ISLES_PROTOTYPE_V1_20261123.md).
 
 ### 15.3 Tests
 - Caméra : aucun moment où le joueur est caché derrière un décor sans transparence.

@@ -36,9 +36,15 @@ Les suites `tests/isles-view-v1.test.mjs` et `tests/isles-reverse-hunt-v1.test.m
 - [L'ivoire rouge, Okavango](../prototypes/TERRE_PROTOTYPE_OKAVANGO_20261122.html) illustre la boucle donnée par l'avenant Terre. Il s'ouvre dans un navigateur et conserve sa partie dans la page.
 - [Verdant isométrique](../prototypes/ISLES_PROTOTYPE_ISOMETRIQUE_20261122.html) est l'esquisse autonome du mode. Après `npm ci`, ouvrez le fichier via un serveur HTTP local qui sert la racine du dépôt afin de charger le module Three.js installé. Le parcours natif reste accessible par le menu du jeu.
 
+## Salle de test locale
+
+Le module facultatif de la PR [#193](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/193) conserve le serveur de l'île de test et son client de référence, séparés du mode natif. Après `npm ci`, `node scripts/serve-isles-room-v1.mjs` écoute sur `ws://127.0.0.1:8795/isles`. Le port est réglable avec `ISLES_ROOM_PORT`. `ISLES_ALLOWED_ORIGINS` accepte les seules origines navigateur locales explicitement autorisées, séparées par des virgules.
+
+`node --test tests/isles-net-v1.test.mjs` vérifie la salle, les corrections de déplacement, la prise commune et deux puis six clients locaux. [Décision d'architecture](../architecture/adr-0001-isles-threejs-et-salle-reseau.md).
+
 ## Reste à produire
 
-- Salle réseau, identité et transport de session. Les propositions de la PR [#193](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/193) sur ce volet restent dans leur branche.
+- Salon public, identité des membres, transport de session et réconciliation complète des déplacements.
 - Humains jouables (le joueur ne peut être que le Yautja), Chasse inversée en ligne, voix de proximité et radio.
 - Cartes de partie des autres îles, carte de 12 × 12 km, streaming de zones, éditeur de tuiles, cycle jour et nuit, météo complète.
 - Sauvegarde `profile.islesV1`, réputation, progression des niveaux de chasseur et de survivant.

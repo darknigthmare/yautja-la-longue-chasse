@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '99d334cce4b80e8817bef9b1f2bc467b92974b01'
+          ref: '37af14ad556083a877df8fb9f674a62376bc2ed9'
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /*
@@ -32,10 +32,11 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
-      - run: test "$(git rev-parse HEAD)" = 99d334cce4b80e8817bef9b1f2bc467b92974b01
+      - run: test "$(git rev-parse HEAD)" = 37af14ad556083a877df8fb9f674a62376bc2ed9
+      - run: test "$(git rev-parse HEAD:docs/YAUTJA_TERRE_ISLES_SUIVI_20261122.xlsx)" = d5072072bf2443c5f758dfc956a604ba16383831
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      - run: node --experimental-strip-types --test --test-concurrency=1 tests/isles-view-v1.test.mjs tests/isles-reverse-hunt-v1.test.mjs tests/campaign-menu-navigation.test.mjs tests/campaign-menu-ui.test.mjs
-      - run: npx eslint app/game/CampaignMainMenu.tsx app/game/CampaignFrontEnd.tsx app/game/IslesModeV1.tsx app/game/isles/*.ts scripts/qa-isles-browser-v1.mjs
+      - run: node --experimental-strip-types --test --test-concurrency=1 tests/isles-view-v1.test.mjs tests/isles-reverse-hunt-v1.test.mjs tests/isles-net-v1.test.mjs tests/campaign-menu-navigation.test.mjs tests/campaign-menu-ui.test.mjs
+      - run: npx eslint app/game/CampaignMainMenu.tsx app/game/CampaignFrontEnd.tsx app/game/IslesModeV1.tsx app/game/isles/*.ts scripts/qa-isles-browser-v1.mjs scripts/serve-isles-room-v1.mjs tests/isles-net-v1.test.mjs
       - run: npx next typegen && npx tsc --noEmit --incremental false
       - run: npx playwright-core install --with-deps chromium
       - run: node scripts/qa-isles-browser-v1.mjs --output /tmp/qa-isles-terre-proof
