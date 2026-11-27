@@ -441,12 +441,15 @@ try{
           await retry.focus({timeout:4000});
           await page.keyboard.press('Enter');
           await page.waitForFunction(()=>{
-            const current=window.__observeCanonicalHuntV112?.();
+            const current=window.__observeCanonicalHuntV112?.(true);
             return current?.alive&&current.state.phase!=='dead';
-          },null,{timeout:8000});
+          },null,{timeout:20000,polling:80});
         }catch(error){
-          report.inputs.push({missionId,elapsed:game.elapsed,type:'DOM retry unavailable',reason:String(error)});
-          break;
+          const recovered=await observeFull();
+          if(!label||!recovered?.alive||recovered.missionId!==missionId||recovered.state.phase==='dead'){
+            report.inputs.push({missionId,elapsed:game.elapsed,type:'DOM retry unavailable',reason:String(error)});
+            break;
+          }
         }
         retryEvents.push({elapsed:game.elapsed,nativeDeath:final,button:label});
         Object.assign(memory,{previousX:0,stuckTicks:0,jumpUntil:-1,nextJump:0,nextInteractTick:0});
@@ -454,7 +457,7 @@ try{
         delete memory.dropDirection;delete memory.dropTargetX;delete memory.harvestEdge;delete memory.harvestDirection;
         examined.clear();harvestTries.clear();
         // The new live attempt needs its own observed save roundtrip.
-        resumed=false;resumeReceipt=null;lastElapsed=null;lastSecond=-1;
+        resumed=false;resumeReceipt=null;lastElapsed=null;lastSecond=-1;final=null;
         report.inputs.push({missionId,elapsed:game.elapsed,type:'DOM retry',label});continue;
       }
       if(game.phase==='finished')break;
@@ -609,7 +612,10 @@ try{
     }
     for(const action of held)await page.keyboard.up(keys[action]);
     const terminal=await observeFull();
-    if(terminal?.state&&terminal.missionId===missionId)final=terminal;
+    // The page can mount the next attempt even after a wait for the retry expired.
+    // Keep the actual death or completion recorded by this control segment.
+    const terminalRecorded=final?.state.phase==='dead'||final?.state.phase==='finished';
+    if(!terminalRecorded&&terminal?.state&&terminal.missionId===missionId)final=terminal;
     await captureHunt('04-attempt-terminal');
     const settled=await saved(),beforeProgress=currentSave.missionProgress[missionId],afterProgress=settled.missionProgress[missionId];
     const settlementConfirmed=final?.state.phase==='finished'&&afterProgress.completions===beforeProgress.completions+1&&
