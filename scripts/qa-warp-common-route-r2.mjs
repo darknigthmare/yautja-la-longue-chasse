@@ -80,7 +80,8 @@ try {
   assert.equal(await common.getAttribute("data-warp-common-position"), "3");
   await move(8); await act("inspect"); await expected("[data-warp-common-method]", "variante");
   await expected("[data-warp-common-dial]", 2); await checkDial();
-  await move(13); await act("inspect"); await expected("[data-warp-common-dial]", 2); await checkDial();
+  await move(13); await act("inspect"); await expected("[data-warp-common-method]", "reparer");
+  await expected("[data-warp-common-dial]", 2); await checkDial();
   await capture("pieces-verifiees", common);
   assert.deepEqual((await read()).warpEpochsV165.components, {});
   await move(16); await act("haul");
