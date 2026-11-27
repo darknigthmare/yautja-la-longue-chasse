@@ -473,6 +473,7 @@ export interface BossMechanicInput {
   healthRatio: number;
   distanceToPlayer: number;
   lineOfSight: boolean;
+  guardianHasSignal?: boolean;
   playerCloaked: boolean;
   playerOnHighGround: boolean;
   playerUsedRangedWeapon: boolean;
@@ -2201,8 +2202,10 @@ function stepExpansionBoss(
   );
   let sequence = previous.sequence;
   let attackId: string | null = null;
+  const mayAcquireAttack = previous.missionId !== "ruins-ancient-guardian" ||
+    input.guardianHasSignal !== false;
 
-  if (attackCooldownSeconds <= 0) {
+  if (attackCooldownSeconds <= 0 && mayAcquireAttack) {
     const selected =
       input.distanceToPlayer <= attacks.melee.rangePx * 1.2
         ? attacks.melee

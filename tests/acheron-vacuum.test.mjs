@@ -5,6 +5,7 @@ import {
   ACHERON_VACUUM_MISSION,
   acheronReceivedSignal,
 } from "../app/game/systems/acheronVacuum.ts";
+import { createBossMechanicState, stepBossMechanics } from "../app/game/systems/huntSystems.ts";
 
 const body = (x, footY) => ({ x, y: footY - 100, width: 68, height: 100 });
 const input = (overrides = {}) => ({
@@ -68,4 +69,36 @@ test("the registered hunt uses the vacuum sensing rule, checkpoint sanitation an
   assert.match(canvas, /if \(guardianContactLost\) \{\s*boss\.velocityX = 0;/);
   assert.match(canvas, /data-acheron-signal=\{ui\.acheronSignal/);
   assert.match(sound, /private vacuumSuitCue[\s\S]*?filterType: "lowpass"/);
+});
+
+test("the Guardian preserves its attack cadence across signal loss and immediate reacquisition", () => {
+  const state = createBossMechanicState(ACHERON_VACUUM_MISSION);
+  const contact = {
+    deltaSeconds: 2,
+    elapsedSeconds: 2,
+    healthRatio: 1,
+    distanceToPlayer: 250,
+    lineOfSight: false,
+    guardianHasSignal: false,
+    playerCloaked: true,
+    playerOnHighGround: false,
+    playerUsedRangedWeapon: false,
+    playerUsedEnergyWeapon: false,
+    bossHitPillar: false,
+    disabledConsoleId: null,
+    activeSupportCount: 0,
+  };
+  const lost = stepBossMechanics(state, contact);
+  assert.equal(lost.decision.attackId, null);
+  assert.equal(lost.state.attackCooldownSeconds, 0);
+  assert.equal(lost.state.sequence, 0);
+  assert.equal(lost.state.phaseElapsedSeconds, 2);
+  const resumed = stepBossMechanics(lost.state, { ...contact, deltaSeconds: 1 / 60, guardianHasSignal: true });
+  assert.ok(resumed.decision.attackId, "physical vibration is independent of optical line of sight and cloak");
+  assert.equal(resumed.state.sequence, 1);
+  assert.ok(resumed.state.attackCooldownSeconds > 0);
+  const impatient = stepBossMechanics(resumed.state, { ...contact, deltaSeconds: 1 / 60, guardianHasSignal: true });
+  assert.equal(impatient.decision.attackId, null);
+  const otherApex = stepBossMechanics(createBossMechanicState("swamp-hydra"), contact);
+  assert.ok(otherApex.decision.attackId);
 });

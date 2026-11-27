@@ -1538,7 +1538,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!audio) return;
     const ambience: GameAudioBiome | null =
       screen === "mission" && selectedMission
-        ? selectedMission.biome
+        ? (selectedMission.id === "ruins-ancient-guardian" ? null : selectedMission.biome)
         : screen === 'buried-cradle' ? 'fungal'
         : screen === "glass-desert-expedition" ? "desert"
         : screen === "homeworld-expedition" ? "volcano"
