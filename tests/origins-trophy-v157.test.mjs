@@ -116,7 +116,7 @@ test("SSR: the workshop panel follows the stored origin and the trophies owned",
   assert.equal(source.render(panel, props({ version: 2, originId: "O1" })), "");
   const resolved = source.render(panel, props(play("O6", 1).state));
   assert.match(resolved, /data-origin-resolved="success"/);
-  assert.match(resolved, /Présenter les gestes d’atelier/);
+  assert.match(resolved, /Mettre en avant les techniques complémentaires/);
 });
 
 test("save round trip through the real save module (normalizeSave / import)", async () => {
@@ -174,6 +174,10 @@ test("O6 bench keeps the exact claim on its support and orders the factual carte
   const missing = render(stored, [{ ...item, id: "claim-2", record: { ...item.record, id: "claim-2" } }]);
   assert.match(missing, /La pièce de ce cartel a quitté la réserve/);
   assert.doesNotMatch(missing, /data-o6-trophy-bench="claim-2"/);
+  const emptyReserve = render(stored, []);
+  assert.match(emptyReserve, /data-origin-resolved="success"/);
+  assert.match(emptyReserve, /La pièce de ce cartel a quitté la réserve/);
+  assert.doesNotMatch(emptyReserve, /data-origin-trophy-locked/);
   assert.deepEqual(stored.consumed, ["STORY5-TR-O6-02:resolved"]);
   assert.equal(stored.ending, undefined);
 });

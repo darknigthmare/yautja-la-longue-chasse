@@ -103,7 +103,7 @@ const PLAY: Record<OriginIdV151, TrophyScenePlayV157> = {
   O6: {
     originalId: null,
     steps: ["Tourner le berceau", "Observer l’état de la pièce", "Poser le cartel de provenance"],
-    options: ["Présenter le retour de la prise", "Présenter les gestes d’atelier"],
+    options: ["Mettre en avant la chronologie", "Mettre en avant les techniques complémentaires"],
     reactions: ["Le cartel s’ouvre sur le terrain d’origine et la date du retour.",
       "Le cartel s’ouvre sur les gestes d’atelier consignés."],
     object: { name: "trophée actuel", inGame: true, absence: null },

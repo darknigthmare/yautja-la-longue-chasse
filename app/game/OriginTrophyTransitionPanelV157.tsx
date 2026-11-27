@@ -39,7 +39,7 @@ export default function OriginTrophyTransitionPanelV157({ origin, trophies, atWo
     <h3>{transition.title}</h3>
     <p className={styles.meta}>Voie {state.originId} · {originV151(state.originId)?.title}{state.source === "legacy-default" && " (origine par défaut d’une ancienne partie)"}</p>
   </header>;
-  if (!open) return (
+  if (!open && !(state.originId === "O6" && record?.resolved)) return (
     <section className={styles.panel} data-origin-trophy-v157={transition.id} data-origin-v151={state.originId} data-origin-trophy-locked="no-trophy">
       {header}
       <p className={styles.note}>Cette scène demande un trophée réellement en ta possession.</p>
@@ -55,7 +55,7 @@ export default function OriginTrophyTransitionPanelV157({ origin, trophies, atWo
   return (
     <section className={styles.panel} data-origin-trophy-v157={transition.id} data-origin-v151={state.originId}>
       {header}
-      <p>{state.originId === "O6" ? "Oriente une prise de la réserve et relève les marques que son registre conserve." : transition.scene}</p>
+      <p>{state.originId === "O6" ? "Oriente la prise sur son support et relève les détails que son registre conserve." : transition.scene}</p>
       {bench && bench.record && <OriginTrophyBenchO6 trophy={bench.record} usage={bench.usage} gestures={done} choice={record?.choice} />}
       {state.originId === "O6" && record?.resolved && !bench &&
         <p className={styles.note}>La pièce de ce cartel a quitté la réserve.</p>}

@@ -69,7 +69,7 @@ import { normalizeHunterChromaticsV113, maskOriginForCustomizationV135, type Hun
 import { commitHunterChromaticsV116 } from "./systems/hunterChromaticPersistenceV116";
 import { commitHunterCustomizationV146 } from "./systems/hunterCustomizationPersistenceV146";
 import { TrophyUsageControlsV147, TrophyUsageSummaryV147 } from "./TrophyUsagesV147";
-import { applyTrophyUsageV147, isPersonalShipTrophyDisplayV147, trophyUsageV147, type TrophyUsageActionV147 } from "./systems/trophyUsagesV147";
+import { applyTrophyUsageV147, isPersonalShipTrophyDisplayV147, type TrophyUsageActionV147 } from "./systems/trophyUsagesV147";
 import CloudAccountV71, { openCloudAccountV71 } from "./CloudAccountV71";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import { startYouthCampaign, withYouthCheckpoint, withYouthProgress, youthCampaignNeedsScene, youthCampaignObjective } from "./systems/youthCampaign";
@@ -6996,7 +6996,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
               trophies={trophyRecords.map(trophy => ({
                 id: trophy.id, label: `${trophy.targetName} · ${new Date(trophy.claimedAt).toLocaleDateString("fr-FR")}`,
-                record: trophy, usage: trophyUsageV147(save, trophy.id),
+                record: trophy, usage: trophyAssignments?.[trophy.id]?.usage ?? "reserve",
               }))}
               onAction={originTrophyActionV157} />
             <Suspense fallback={<p>Lecture des distinctions THE PIT…</p>}>
