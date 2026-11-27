@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { thresholdsCampaignRoute } from './helpers/solo-v69-played-route.mjs';
-import { templeCampaignRoute, templeInput, thresholdsTemple as p, stamp } from './helpers/solo-v70-played-route.mjs';
+import { templeCampaignRoute, templeEnvironment, templeInput, thresholdsTemple as p, stamp } from './helpers/solo-v70-played-route.mjs';
 import { formationCampaignRoute } from './helpers/solo-v90-played-route.mjs';
 import { homeworldSceneSsrV78 } from './helpers/homeworld-scene-ssr-v78.mjs';
 
@@ -25,6 +25,21 @@ test('the fifteen-room route reaches four new physical doors and records each ob
   assert.deepEqual(restored.depthsM017.extension.gallery, opened.depthsM017.extension.gallery);
   assert(p.soloV70GalleryThreatM017(restored));
   assert.equal(p.soloV70CanTravel(restored, 11), false);
+
+  function passHatch(jump) {
+    let replay = structuredClone(restored);
+    replay.tick = replay.depthsM017.extension.gallery.openedAt + 30;
+    replay.player = { x: 832, y: 430, vx: 0, vy: 0, facing: -1 };
+    replay.hurtTimer = 0;
+    assert(p.normalizeSoloV70State(replay));
+    replay = p.stepSoloV70(replay, {}, templeEnvironment).state;
+    for (let tick = 0; tick < 9; tick++) {
+      replay = p.stepSoloV70(replay, { move: -1, jump: jump && tick === 0 }, templeEnvironment).state;
+    }
+    return replay;
+  }
+  assert.equal(passHatch(false).health, restored.health - 1);
+  assert.equal(passHatch(true).health, restored.health);
   const { state, save, transitions } = completed;
   const depth = state.depthsM017;
   assert(state.visited.every(Boolean));

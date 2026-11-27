@@ -483,7 +483,8 @@ export function stepSoloV70(state:SoloV70State,input:SoloV70Input,env:SoloV70Env
       s.scan = 0;
     }
     const threat = soloV70GalleryThreatM017(s);
-    if (threat && !s.hurtTimer && Math.abs(a.x - threat.x) < 25 && Math.abs(a.y - threat.y) < 34) {
+    if (threat && encounter.openedAt !== null && s.tick - encounter.openedAt >= 8 &&
+        !s.hurtTimer && Math.abs(a.x - threat.x) < 25 && Math.abs(a.y - threat.y) < 34) {
       s.health--;
       s.hurtTimer = 75;
       if (!s.health) {
@@ -516,7 +517,7 @@ export function soloV70Objective(s:SoloV70State):{title:string;instruction:strin
  const hatchGoal: [string, string, number, number, number] | null =
    gallery && extension?.observations['eggs-observed'] && !gallery.screened
      ? ['Galerie des Coques · confinement',
-       gallery.openedAt === null ? 'Une coque frémit. Replie-toi vers la commande ouest.'
+       gallery.openedAt === null ? 'Une coque frémit. Anticipe le bond et replie-toi vers la commande ouest.'
          : 'Saute hors de portée du facehugger, puis maintiens Interaction avec Saar et Vek près de la commande ouest.',
        SOLO_V70_GALLERY_M017.room, SOLO_V70_GALLERY_M017.x, SOLO_V70_GALLERY_M017.y]
      : null;
