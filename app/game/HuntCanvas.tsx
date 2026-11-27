@@ -3209,7 +3209,7 @@ function currentObjective(
   }
   return {
     title: extractObjective?.label ?? "Rejoindre l’extraction",
-    detail: "Atteins la balise à l’est puis embarque avec [E] lorsque le vaisseau est en stationnaire.",
+    detail: "Rejoins le sol au pied de la balise à l’est puis embarque avec [E] lorsque le vaisseau est en stationnaire.",
   };
 }
 
@@ -8265,6 +8265,14 @@ function finishTrophyExtraction(
   );
 }
 
+const EXTRACTION_BEACON_REACH = 115;
+
+function hasExtractionFootingV112(state: GameState): boolean {
+  const { player, world } = state;
+  return player.grounded && !player.climbing &&
+    Math.abs(player.y + player.height - world.extraction.y) <= 24;
+}
+
 function interact(
   state: GameState,
   mission: MissionDefinition,
@@ -8403,10 +8411,14 @@ function interact(
   }
   if (
     state.phase === "extraction" &&
-    Math.abs(playerCenter.x - state.world.extraction.x) <= 115
+    Math.abs(playerCenter.x - state.world.extraction.x) <= EXTRACTION_BEACON_REACH
   ) {
     if (state.trophyVictory && !state.trophyVictory.complete) {
       announce(state, "Achève le rite de victoire avant l’embarquement.", 1.8);
+      return;
+    }
+    if (!hasExtractionFootingV112(state)) {
+      announce(state, "Rejoins le sol au pied de la balise avant d’embarquer.", 2.6);
       return;
     }
     state.dropShip ??= createDropShipArrival();
@@ -8841,10 +8853,8 @@ function updatePlayer(
   }
 
   if (state.phase === "extraction" && state.dropShip) {
-    const playerAtBeacon =
-      Math.abs(
-        player.x + player.width / 2 - state.world.extraction.x,
-      ) <= 115;
+    const playerAtBeacon = hasExtractionFootingV112(state) &&
+      Math.abs(player.x + player.width / 2 - state.world.extraction.x) <= EXTRACTION_BEACON_REACH;
     const shipStep = stepDropShip(state.dropShip, {
       deltaSeconds: delta,
       playerAtBeacon,
