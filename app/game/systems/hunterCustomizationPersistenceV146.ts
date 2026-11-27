@@ -129,10 +129,15 @@ export function applyHunterForgeArmorUpgradeV146(current: SaveGame, expected: Fo
 }
 
 
-export type ForgeWeaponIdV146 = Extract<WeaponId, "wristblades" | "combistick">;
-const FORGE_WEAPON_RECIPES_V146 = {
+const FORGE_WEAPON_IDS_V146 = ["wristblades", "combistick", "yautja-bow"] as const satisfies readonly WeaponId[];
+export type ForgeWeaponIdV146 = typeof FORGE_WEAPON_IDS_V146[number];
+const FORGE_BLADE_RECIPES_V146 = {
   1: { bone: 2, tissue: 1 },
   2: { bone: 3, tissue: 2 },
+} as const;
+const FORGE_BOW_RECIPES_V146 = {
+  1: { bone: 1, tissue: 2 },
+  2: { bone: 2, tissue: 3 },
 } as const;
 
 type ForgeWeaponMaterialSelectionV146 = Readonly<{ bone: string; tissue: string }>;
@@ -151,14 +156,15 @@ export interface ForgeWeaponQuoteV146 extends ForgeWeaponRecipeV146 {
 
 export function equippedForgeWeaponsV146(save: SaveGame): ForgeWeaponIdV146[] {
   return [...new Set(save.loadout.weaponIds.filter((id): id is ForgeWeaponIdV146 =>
-    (id === "wristblades" || id === "combistick") && save.inventory.unlockedWeaponIds.includes(id)))];
+    FORGE_WEAPON_IDS_V146.some(forgeable => forgeable === id) && save.inventory.unlockedWeaponIds.includes(id)))];
 }
 
 export function forgeWeaponRecipeV146(save: SaveGame, weaponId: ForgeWeaponIdV146): ForgeWeaponRecipeV146 | null {
   if (!equippedForgeWeaponsV146(save).includes(weaponId)) return null;
   const { currentLevel, nextLevel } = quoteUpgrade(save, { domain: "weapon", id: weaponId });
   if (nextLevel !== 1 && nextLevel !== 2) return null;
-  return { weaponId, currentLevel, nextLevel, requirements: FORGE_WEAPON_RECIPES_V146[nextLevel] };
+  const recipes = weaponId === "yautja-bow" ? FORGE_BOW_RECIPES_V146 : FORGE_BLADE_RECIPES_V146;
+  return { weaponId, currentLevel, nextLevel, requirements: recipes[nextLevel] };
 }
 
 export function planForgeWeaponMaterialsV146(save: SaveGame, weaponId: ForgeWeaponIdV146, selection: ForgeWeaponMaterialSelectionV146):
