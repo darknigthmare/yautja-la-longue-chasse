@@ -17,7 +17,7 @@ jobs:
       - name: Checkout the exact candidate
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '7bbef09a91b249997906c5ebc6e2646db26d37b9'
+          ref: '77d40cedd18ab082283317ed89e24bf57fecb863'
           persist-credentials: false
           fetch-depth: 2
           filter: blob:none
