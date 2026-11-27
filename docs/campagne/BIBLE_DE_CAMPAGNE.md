@@ -111,12 +111,12 @@ Le prolongement O6 ajoute une invitation à Yena liée à l’aide portée au fi
 
 Le lot part de `75bbc177`, avec la visite du mausolée et les chantiers transverses ouverts. Le journal des recettes indique les prérequis préparés pour chaque scène.
 
-- **R2-M003** · Saar attend au seuil de l’audience, mène le joueur au degré monumental et transmet le relais à l’escalier de la ville. La reprise ramène au dernier repère. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46010361667)
+- **R2-M003** · Saar attend au seuil de l’audience, mène le joueur au degré monumental et transmet le relais à l’escalier de la ville. La reprise ramène au dernier repère. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46010910723)
 - **R2-M057** · Une visite du Mur des Chasses au rang Ancient inscrit l’alcôve dans le registre. Les supports lisent l’état réel de chaque DLC et le joueur garde l’accès aux masques et au casier. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46010465918)
-- **R2-M024.8** · Les capteurs du Gardien lisent les vibrations sur un support partagé et les émissions énergétiques dégagées. Le HUD signale la perception. Les sons filtrés de la combinaison accompagnent l’entrée et la réaction. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46011008133)
+- **R2-M024.8** · Les capteurs du Gardien lisent les vibrations sur un support partagé et les émissions énergétiques dégagées. Le HUD signale la perception. Les sons filtrés de la combinaison accompagnent l’entrée et la réaction. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46011834146)
 - **FIN_DE_VOIE** · Après ouverture du râtelier O6, le novice choisit son bâton, rejoint l’appui aux côtés du joueur et range l’outil. L’essai a son registre. La clôture de la fin O6 attend les scènes antérieures de la campagne. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46010416880)
 - **LEURRE_BOSS** · Quatre Apex suivent un émetteur audible pendant quatre secondes. Le Cœur-Mère apprend après la première diversion. Le scan explique aussi la réponse des chasseurs entraînés et du Gardien en vide. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46011193656)
-- **ACHERON_VIDE** · La chasse d’Acheron écarte les anciennes traces acoustiques et olfactives hors contact. Le Gardien réagit à la vibration et à l’énergie, avec retour de combinaison. 
+- **ACHERON_VIDE** · La chasse d’Acheron écarte les anciennes traces acoustiques et olfactives hors contact. Le Gardien réagit à la vibration et à l’énergie, avec retour de combinaison. La cadence d’une attaque s’engage à partir d’un signal effectivement reçu. 
 - **COOP_DE_CAMPAGNE** · Le règlement des expéditions contrôle l’attribution des gains confirmés par un hôte et empêche leur réutilisation. L’invitation et la simulation partagée restent à raccorder. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46010949709)
 
 
@@ -130,7 +130,7 @@ La chaîne de jeunesse va de la nurserie à l’accueil Unblooded sur le Homewor
 | --- | --- | --- | --- | --- | --- |
 | 1 | R2-M001 | Pourquoi nous combattons | Youngling | Ouverture jouable | Outil, proie échappée, mise à l’abri et filet |
 | 2 | R2-M002 | Le filet et les visages | Youngling | Cour de la nurserie raccordée | Duel, outil, barrière et choix de cohorte |
-| 3 | R2-M003 | Le chemin vers la cité | Youngling | Détour de la forge joué · guidage ouvert | Contournement de la livraison et remise de la pièce |
+| 3 | R2-M003 | Le chemin vers la cité | Youngling | Détour et parvis joués · guidage à prolonger | Deux repères avec Saar, détour du chariot et remise de la pièce |
 | 4 | R2-M004 | L’épreuve des trois gestes | Youngling | Exercices en salle raccordés | Anneau, poutre et cible dans l’ordre choisi |
 | 5 | R2-M005 | La piste avant la prise | Youngling | Piste et rapport raccordés | Indices, perchoir et retour par une autre voie |
 | 6 | R2-M006 | Entrer parmi les Unblooded | Youngling | Passation et premier atelier jouables | Le râtelier transmet le choix du masque ou des lames au dojo |
