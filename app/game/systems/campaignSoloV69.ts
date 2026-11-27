@@ -1,6 +1,6 @@
 import type { SaveGame } from '../types';
 import { normalizeSoloV68Campaign, soloV68MatchesSave } from './campaignSoloV68';
-import { getChronicleRank } from './clanChronicle';
+import { getChronicleRank, normalizeClanChronicle } from './clanChronicle';
 import { createSoloV69State, normalizeSoloV69State, soloV69Receipts, soloV69ProofCount, soloV69GateIndex, soloV69Hazard, SOLO_V69_GATES, SOLO_V69_POSTS, SOLO_V69_PHASES, type SoloV69State, type SoloV69Receipt } from './firstHuntSoloV69';
 
 export interface SoloV69Campaign { version: 1; status: 'active' | 'completed'; checkpoint: SoloV69State; receipts: SoloV69Receipt[]; startedAt: string; completedAt: string | null }
@@ -16,10 +16,16 @@ export function normalizeSoloV69Campaign(v: unknown): SoloV69Campaign | null {
   if ((v.status === 'completed') !== completed || (completed ? !iso(v.completedAt) || Date.parse(v.completedAt) < Date.parse(v.startedAt) : v.completedAt !== null)) return null;
   return { version: 1, status: v.status as SoloV69Campaign['status'], checkpoint, receipts: soloV69Receipts(checkpoint), startedAt: v.startedAt, completedAt: v.completedAt as string | null };
 }
-function prerequisites(v: unknown): v is SoloV69Save {
+/** Promotion preserves finished trial receipts. Starting or advancing a trial still requires Young Blood. */
+export function templeRankKeepsEarlierTrialV174(value: unknown, completed: boolean): boolean {
+  const { rites } = normalizeClanChronicle(value);
+  return (getChronicleRank(value) === 'young-blood' && rites.length === 2) ||
+    (completed && rites.some(rite => rite.id === 'blooding-mark'));
+}
+function prerequisites(v: unknown, completed = false): v is SoloV69Save {
   if (!record(v) || !soloV68MatchesSave(v) || normalizeSoloV68Campaign(v.soloV68)?.status !== 'completed') return false;
   const save = v as unknown as SoloV69Save;
-  return getChronicleRank(save.prologue!.chronicle) === 'young-blood' && save.prologue!.chronicle.rites.length === 2;
+  return templeRankKeepsEarlierTrialV174(save.prologue!.chronicle, completed);
 }
 function otherJourneyActive(v: Record<string, unknown>) {
   return record(v.homeworldRegionV68) && v.homeworldRegionV68.status !== 'at-city' || record(v.homeworldPassageV67) && v.homeworldPassageV67.status !== 'at-city' || record(v.gameReserveV66) && v.gameReserveV66.status === 'active';
@@ -28,7 +34,7 @@ export function soloV69MatchesSave(v: unknown): boolean {
   if (!record(v)) return false;
   if (v.soloV69 === undefined || v.soloV69 === null) return true;
   const progress = normalizeSoloV69Campaign(v.soloV69);
-  return prerequisites(v) && !!progress && !(progress.status === 'active' && otherJourneyActive(v));
+  return !!progress && prerequisites(v, progress.status === 'completed') && !(progress.status === 'active' && otherJourneyActive(v));
 }
 export const canStartSoloV69 = (v: unknown) => record(v) && prerequisites(v) && soloV69MatchesSave(v) && !otherJourneyActive(v);
 export function startSoloV69Campaign(save: SoloV69Save, now = new Date().toISOString()): SoloV69Save | null {
