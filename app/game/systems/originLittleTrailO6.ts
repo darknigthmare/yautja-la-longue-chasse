@@ -31,11 +31,14 @@ function rivalWitness(save: SaveGame): RivalWitnessO6 | null {
   return { success: race.success, choice: race.choice, memory: race.harek };
 }
 
-export function littleTrailCanStartO6(save: SaveGame) {
+function beforeLaterProgressO6(save: SaveGame) {
   const origin = save.originV151;
-  return Boolean(rivalWitness(save) && !origin?.littleTrailO6 && !save.youthTraining &&
-    !origin?.ending?.selectionVisited && !origin?.continuationO6 && !origin?.soloReturnO6 &&
-    !Object.values(origin?.transitions ?? {}).some(record => record.resolved));
+  return !save.youthTraining && !origin?.ending?.selectionVisited && !origin?.continuationO6 && !origin?.soloReturnO6 &&
+    !Object.values(origin?.transitions ?? {}).some(record => record.resolved);
+}
+
+export function littleTrailCanStartO6(save: SaveGame) {
+  return Boolean(rivalWitness(save) && !save.originV151?.littleTrailO6 && beforeLaterProgressO6(save));
 }
 
 function readOrder(raw: unknown): LittleTrailOrderO6 | null {
@@ -143,7 +146,7 @@ export function littleTrailMatchesSaveO6(save: SaveGame) {
   const record = save.originV151?.littleTrailO6;
   return !record || (record.ownerCreatedAt === save.createdAt && equal(record.rival, rivalWitness(save)) &&
     rivalWorkshopCheckpointO6(record.at, save.createdAt) &&
-    (record.resolved || (!save.youthTraining && equal(save.homeworld.locationV77, record.at))));
+    (record.resolved || (beforeLaterProgressO6(save) && equal(save.homeworld.locationV77, record.at))));
 }
 
 export function activeLittleTrailO6(save: SaveGame) {

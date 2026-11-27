@@ -4,7 +4,8 @@ import { applyRivalForTest, findRivalLaunchO6, rival, rivalAdmissionO6, town } f
 
 const bundle = await build({
   stdin: { contents: 'export * from "./app/game/systems/originLittleTrailO6";' +
-    'export * from "./app/game/systems/littleTrailRouteO6";',
+    'export * from "./app/game/systems/littleTrailRouteO6";' +
+    'export { examineEndingV170, confirmEndingV170 } from "./app/game/systems/originEndingsV170";',
   resolveDir: process.cwd(), loader: "ts" },
   bundle: true, write: false, format: "esm", platform: "node", logLevel: "silent",
 });
