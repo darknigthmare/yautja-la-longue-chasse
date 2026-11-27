@@ -40,7 +40,9 @@ try {
     const campaign = page.locator('[data-menu-section="campaign"]');
     if (await campaign.isVisible()) await campaign.click();
     await page.locator('[data-menu-action="continue"]').click();
-    await page.locator("[data-open-quatza-homeworld]").click();
+    await page.locator("[data-campaign-session]").waitFor({ timeout: 90000 });
+    const dossier = page.getByRole("button", { name: /^Dossier de campagne(?: · (?:Quatza-Rij|rites))?$/ });
+    await dossier.first().click({ timeout: 60000 });
     await page.locator("[data-open-blooded-temple-v174]").click();
     await scene.scrollIntoViewIfNeeded();
   }
@@ -85,6 +87,12 @@ try {
   assert.deepEqual(report.errors, []);
   report.passed = true;
 } finally {
+  const page = browser?.contexts()[0]?.pages()[0];
+  if (!report.passed && page) {
+    report.visibleText = (await page.locator("body").innerText().catch(() => "")).slice(0, 2400);
+    await page.screenshot({ path: resolve(output, "failure.png"), animations: "disabled" }).catch(() => {});
+    console.log("BLOODED_BROWSER_STATE", JSON.stringify(report));
+  }
   await browser?.close();
   await server?.close();
   await writeFile(resolve(output, "report.json"), JSON.stringify(report, null, 2) + "\n");

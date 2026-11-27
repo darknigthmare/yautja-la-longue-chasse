@@ -137,7 +137,16 @@ export default function ClanChroniclePanel({
               {activeRite === "quatza-triad" ? "Replier la chasse en triade" : "Ouvrir la chasse en triade"}</button> :
               <p>Le départ s’ouvre après la répétition du trio, au rang Young Blood.</p>}
           </li>
-          <li><h4>Blooded · L-04</h4><p>Traverser la pyramide en triade, chacun avec sa prise, puis recevoir la marque à l’acide.</p><p>Épreuve à produire.</p></li>
+          <li>
+            <h4>Blooded · L-04</h4>
+            <p>Traverser la pyramide en triade, chacun avec sa prise, puis recevoir la marque à l’acide.</p>
+            {onBloodedTempleCommand && (save.bloodedTempleV174 || templeAvailableV174(save)) ?
+              <button type="button" data-open-blooded-temple-v174
+                aria-expanded={activeRite === "blooded-temple"} onClick={() => toggleCampaignRite("blooded-temple")}>
+                Le rite de la pyramide
+              </button> :
+              <p>Le temple s’ouvre après la Vanne de Quarantaine et le compte rendu complet du trio.</p>}
+          </li>
           {onMasteryCommand && (canEnterEliteMastery(save) || save.eliteMasteryV170) && <li>
             <h4>Mon domaine de maîtrise</h4>
             <button type="button" onClick={() => toggleCampaignRite("mastery")} aria-expanded={activeRite === "mastery"}>
@@ -180,11 +189,6 @@ export default function ClanChroniclePanel({
           </li>
         </ol>
       </section>
-      {onBloodedTempleCommand && (save.bloodedTempleV174 || templeAvailableV174(save)) &&
-        <button type="button" className="ghost-button" data-open-blooded-temple-v174
-          aria-expanded={activeRite === "blooded-temple"} onClick={() => toggleCampaignRite("blooded-temple")}>
-          Le rite de la pyramide
-        </button>}
       {activeRite === "blooded-temple" && onBloodedTempleCommand && <BloodedTempleV174 key={save.createdAt}
         save={save} onCommand={onBloodedTempleCommand} onClose={closeCampaignRite} suspended={!!quatzaSuspended} />}
       {(activeRite === "quatza-triad" || activeRite === "quatza-solo") && onQuatzaCommand &&
