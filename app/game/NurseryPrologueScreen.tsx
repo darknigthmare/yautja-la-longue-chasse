@@ -9,8 +9,9 @@ import { GameAudio } from "./sound";
 import { NurseryCrowdAudio } from "./nurseryAudio";
 import type { ControlBindings } from "./systems/controlBindings";
 import { NURSERY_CONTROL_ACTIONS, sampleNurseryControls, type NurseryTouchAction } from "./systems/nurseryControls";
-import { advanceNurseryFrame, createNurseryFrameAdapter, createNurseryPrologue, enableNurseryCohort, getNurseryPresentation,
+import { advanceNurseryFrame, createNurseryFrameAdapter, createNurseryPrologue, enableNurseryCohort, enableNurseryOpening, getNurseryPresentation,
   normalizeNurseryCheckpoint, type NurseryCompletionReceipt, type NurseryState } from "./systems/nurseryPrologue";
+import { nurseryOpeningCue } from "./systems/nurseryOpening";
 import { NURSERY_COHORT_CHOICES, NURSERY_COHORT_STOPS, nurseryCohortInteraction } from "./systems/nurseryCohortV172";
 import styles from "./NurseryPrologueScreen.module.css";
 import YautjaTranslationV67 from "./YautjaTranslationV67";
@@ -34,6 +35,7 @@ export interface NurseryPrologueScreenProps {
 }
 const PHASE_LABELS: Record<NurseryState["phase"], string> = {
   loading: "Chargement de la nurserie.", prompt: "Le prologue commence avant la première chasse.", arrival: "Cinématique : le clan explique le sens du duel de jeunesse.",
+  opening: "Pourquoi nous combattons. Saar et la cohorte contiennent la bête d’exercice dans la cour.",
   ready: "Le maître de jeunesse attend votre geste d’acceptation.", duel: "Duel d’entraînement non létal. Vous êtes le Youngling à gauche au départ.",
   defeat: "Vous êtes à terre. Le duel est terminé. Vous pouvez réessayer.", ko: "Votre adversaire est à terre. Le duel est terminé.",
   "village-reveal": "Dans l’arène du village, le jeune victorieux lève le bras ; son rival reste au sol après le duel d’entraînement non létal.",
@@ -55,7 +57,9 @@ const SPOKEN_STORY_CARDS = new Set(["mentor-briefing", "rival-oath", "duel-conse
 
 /** The scene owns presentation/input only. Campaign proof and storage belong to the parent. */
 export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps) {
-  const [initial] = useState(() => enableNurseryCohort(enableNurseryContinuityV72(normalizeNurseryCheckpoint(props.checkpoint) ?? createNurseryPrologue({ readyMode: props.readyMode }))));
+  const [initial] = useState(() => enableNurseryOpening(enableNurseryCohort(enableNurseryContinuityV72(
+    normalizeNurseryCheckpoint(props.checkpoint) ?? createNurseryPrologue({ readyMode: props.readyMode }),
+  ))));
   const adapterRef = useRef(createNurseryFrameAdapter(initial));
   const latestRef = useRef(props);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -77,6 +81,8 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
   const [phase, setPhase] = useState(initial.phase);
   const [cohortCheckpoint, setCohortCheckpoint] = useState(initial.cohortV172);
   const cohort = phase === "cohort" ? cohortCheckpoint : undefined;
+  const [openingCue, setOpeningCue] = useState(() => initial.opening && nurseryOpeningCue(initial.opening));
+  const opening = phase === "opening" ? openingCue : undefined;
   const [readyProgress, setReadyProgress] = useState(0);
   const [paused, setPaused] = useState(false);
   const [pressReady, setPressReady] = useState(initial.readyMode === "press");
@@ -228,16 +234,25 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
       canvas.dataset.nurseryCohort = presentation.cohort ? String(presentation.cohort.steps) : "none";
       canvas.dataset.nurseryCohortX = presentation.cohort ? String(presentation.cohort.x) : "";
       canvas.dataset.nurseryCohortChoice = presentation.cohort?.choice ?? "";
+      canvas.dataset.nurseryOpening = presentation.opening?.stage ?? "none";
+      canvas.dataset.nurseryOpeningX = presentation.opening ? String(presentation.opening.x) : "";
+      canvas.dataset.nurseryOpeningMotion = presentation.opening?.motion ?? "none";
+      canvas.dataset.nurseryOpeningTactic = presentation.opening?.tactic ?? "";
+      canvas.dataset.nurseryOpeningPushes = presentation.opening ? String(presentation.opening.pushes) : "";
       canvas.dataset.nurseryWalkout = result.state.phase === "walkout" ? "native-younglings-walking-on-village-path" : "none";
       canvas.dataset.nurseryCeremony = presentation.camera.shot === "clan-hall" || presentation.camera.shot === "clan-corridor" ? "unblooded-after-ellipse" : "none";
       for (const event of result.events) {
         if (event.type === "phase" && event.phase === "arrival") crowdRef.current?.arrival();
         if (event.type === "hit") audioRef.current?.hit();
         if (event.type === "pickup") audioRef.current?.weaponSwitch();
+        if (event.type === "opening") {
+          if (event.cue === "tool") audioRef.current?.weaponSwitch();
+          else audioRef.current?.hit();
+        }
       }
       const phaseChanged = result.events.some(event => event.type === "phase");
       const storyChanged = result.events.some(event => event.type === "story");
-      if (phaseChanged && ["prompt", "arrival", "duel", "cohort"].includes(result.state.phase)) { touchRef.current.clear(); canvas.focus(); }
+      if (phaseChanged && ["prompt", "arrival", "opening", "duel", "cohort"].includes(result.state.phase)) { touchRef.current.clear(); canvas.focus(); }
       if (result.completion && !completionRef.current) {
         completionRef.current = { receipt: result.completion, state: result.state };
         void submitCompletion();
@@ -247,10 +262,13 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
       if (phaseChanged || storyChanged || timestamp - lastUi >= 80) {
         lastUi = timestamp; setPhase(result.state.phase); setReadyProgress(presentation.readyGestureProgress);
         setCohortCheckpoint(result.state.cohortV172);
+        const cue = presentation.opening && nurseryOpeningCue(presentation.opening);
+        setOpeningCue(previous => previous?.prompt === cue?.prompt && previous?.action === cue?.action &&
+          previous?.assisted === cue?.assisted ? previous : cue);
         setStoryCard(previous => previous?.id === card?.id ? previous : card);
         setStoryReady(result.state.continuityV72?.recap === true || result.state.phaseTick >= 24);
         setAwaitingChapter(presentation.awaitingNextChapter && !latestRef.current.nextChapterReady);
-        setReleaseRequired(!blocked && result.state.phase === "duel" && (!armedRef.current || !result.state.inputArmed));
+        setReleaseRequired(!blocked && (result.state.phase === "duel" || result.state.phase === "opening") && (!armedRef.current || !result.state.inputArmed));
       }
       frameId = requestAnimationFrame(render);
     };
@@ -300,12 +318,12 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
       <button type="button" aria-pressed={showTouch} onClick={() => setShowTouch(value => !value)}>Commandes tactiles</button>
     </div></header>
     <div className={styles.stage}>
-      <canvas ref={canvasRef} width={960} height={540} tabIndex={0} aria-label={cohort ? "La cour de la cohorte. Déplacez-vous jusqu’aux repères et interagissez avec Entrée." : "Duel d’enfance de la nurserie, sans barre de vie. Commandes disponibles dans Pause et commandes."}
+      <canvas ref={canvasRef} width={960} height={540} tabIndex={0} aria-label={opening ? "L’incident dans la cour. Déplace-toi et appuie sur Entrée pour agir." : cohort ? "La cour de la cohorte. Déplacez-vous jusqu’aux repères et interagissez avec Entrée." : "Duel d’enfance de la nurserie, sans barre de vie. Commandes disponibles dans Pause et commandes."}
         onPointerDown={() => canvasRef.current?.focus()}
         onBlur={event => {
           const target = event.relatedTarget;
           const gameControl = target instanceof HTMLElement && target.hasAttribute("data-nursery-action");
-          if (adapterRef.current.state.phase === "duel" && !pausedRef.current && !latestRef.current.externallyPaused && !gameControl) pause();
+          if ((adapterRef.current.state.phase === "duel" || adapterRef.current.state.phase === "opening") && !pausedRef.current && !latestRef.current.externallyPaused && !gameControl) pause();
         }} />
       {(!bank || phase === "loading") && <div className={styles.prompt} role="status"><p>{artError ? "Le prologue attend ses images." : "Chargement de la nurserie et de l'accueil du clan…"}</p>{artError && <><p className={styles.error}>{artError}</p><button type="button" onClick={() => setLoadAttempt(value => value + 1)}>Réessayer le chargement</button><button type="button" onClick={() => void exit()}>Retour au menu</button></>}</div>}
       {storyCard && bank && <div className={styles.story} hidden={effectivePaused} data-nursery-story-card={storyCard.id}>
@@ -355,6 +373,22 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
         <button type="button" onClick={() => void exit()}>Enregistrer et revenir au menu</button>
       </div></div>}
     </div>
+    {opening && bank && !effectivePaused && <div className={styles.cohort} data-nursery-opening-panel>
+      <div>
+        <h2>Pourquoi nous combattons</h2>
+        <p role="status">{opening.prompt}</p>
+        {opening.assisted && <p className={styles.cohortReply}>Saar a dû intervenir. L’exercice de reprise est réussi.</p>}
+      </div>
+      <div className={styles.cohortControls}>
+        {touchButton("left", "←", "Marcher vers la gauche")}
+        {touchButton("right", "→", "Marcher vers la droite")}
+        <button type="button" data-nursery-action="confirm" data-nursery-opening-interact disabled={!opening.action}
+          onClick={() => { pulseTouch("confirm"); canvasRef.current?.focus(); }}>{opening.action ?? "À portée au bon moment"}</button>
+      </div>
+      <p className={styles.cohortKeys}>
+        {controlActionShortcut(NURSERY_CONTROL_ACTIONS.left, props.bindings)} / {controlActionShortcut(NURSERY_CONTROL_ACTIONS.right, props.bindings)} ou stick · Entrée / A pour agir
+      </p>
+    </div>}
     {cohort && bank && !effectivePaused && <div className={styles.cohort} data-nursery-cohort-panel>
       <div>
         <h2>Le filet et les visages</h2>
@@ -372,7 +406,7 @@ export default function NurseryPrologueScreen(props: NurseryPrologueScreenProps)
       </p>
     </div>}
     <p className={styles.srOnly} aria-live="polite">{storyCard ? `${storyCard.speaker}. ${storyCard.title}. ${storyCard.text} ${storyCard.objective}` : PHASE_LABELS[phase]}</p>
-    {releaseRequired && <p className={styles.release} role="status">Relâchez les commandes pour commencer ou reprendre le duel.</p>}
+    {releaseRequired && <p className={styles.release} role="status">Relâchez les commandes pour commencer ou reprendre l’exercice.</p>}
     {(saveError || props.persistenceError) && <div role="alert" className={styles.saveError}><p>{props.persistenceError || saveError}</p>{phase === "complete" && <button type="button" disabled={saving} onClick={() => void submitCompletion()}>Réessayer l’enregistrement</button>}</div>}
     {showTouch && phase === "duel" && !effectivePaused && <div className={styles.touch} aria-label="Commandes tactiles du duel">{TOUCH_ACTIONS.map(([action, label, title]) => touchButton(action, label, title))}</div>}
   </section>;
