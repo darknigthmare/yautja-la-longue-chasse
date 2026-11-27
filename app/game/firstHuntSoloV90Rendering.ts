@@ -2,7 +2,7 @@ import { YOUTH_ART_MANIFEST } from './youthArtManifest';
 import { TEMPLE_MODULAR_ATLAS_V70, drawTempleModuleV70 } from './templeModularArtV70';
 import { loadYouthArt, youthClipFrame, type YouthArtBank, type YouthArtPose, type YouthPropSprite } from './youthTrainingRendering';
 import { getSpriteContact, drawActorContactShadow } from './spriteContact';
-import { SOLO_V90_POSTS, SOLO_V90_WORLD_WIDTH, SOLO_V92_EVASION, soloV90Objective, soloV90ObservationPostReady, soloV90CompanionTarget, soloV90PartnerActivity, soloV90RehearsalPending, SOLO_V90_ACTIVITY_TICKS, SOLO_V90_PARTNER_ACTIVITIES, SOLO_V90_REHEARSAL, type SoloV90State } from './systems/firstHuntSoloV90';
+import { SOLO_V90_POSTS, SOLO_V90_WORLD_WIDTH, SOLO_V92_EVASION, soloV90Objective, soloV90ObservationPostReady, soloV90CompanionTarget, soloV90PartnerActivity, soloV90PartnerActivities, soloV90SupportIndex, soloV90RehearsalPending, SOLO_V90_ACTIVITY_TICKS, SOLO_V90_REHEARSAL, type SoloV90State } from './systems/firstHuntSoloV90';
 export const TRAINING_DRONE_V90 = '/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png';
 export async function loadTrainingArtV90(): Promise<YouthArtBank> {
   const bank = await loadYouthArt(YOUTH_ART_MANIFEST), images = new Map(bank.images);
@@ -47,9 +47,9 @@ export function drawFirstHuntSoloV90(ctx: CanvasRenderingContext2D, s: SoloV90St
   prop(manifest.props.brazier, 270, 430, 60); prop(manifest.props.brazier, 1050, 430, 60);
   prop(manifest.props.bladeRack, 780, 430, 110); text('RÂTELIER DE PRÊT · OUTILS MÉCANIQUES', 780, 280, '#c5b18c', 11);
   text('GALERIE DE PRÉPARATION', 1690, 185, '#b7c6c3', 15);
-  const activity = soloV90PartnerActivity(s);
+  const activity = soloV90PartnerActivity(s), partners = soloV90PartnerActivities(s);
   if (s.phase === 'assemble' && s.partnerObservations) {
-    for (const station of SOLO_V90_PARTNER_ACTIVITIES) {
+    for (const station of partners) {
       const x = station.x - 24, progress = station.id === activity?.id ? s.scan : 0;
       const completed = s.partnerObservations[station.id] !== undefined;
       const color = completed ? '#9bd8a7' : '#e7bc6c';
@@ -57,7 +57,7 @@ export function drawFirstHuntSoloV90(ctx: CanvasRenderingContext2D, s: SoloV90St
       prop(manifest.props.marker, x, 430, 28);
       ctx.strokeStyle = color;
       ctx.lineWidth = 3;
-      if (station.id === 'saar') {
+      if (station.id === 'saar' || station.id === 'tov') {
         ctx.strokeRect(x - 26, 377, 41, 29);
         const lift = Math.min(14, 14 * progress / SOLO_V90_ACTIVITY_TICKS);
         ctx.fillStyle = color;
@@ -91,9 +91,9 @@ export function drawFirstHuntSoloV90(ctx: CanvasRenderingContext2D, s: SoloV90St
   [2220, ...SOLO_V90_POSTS, 2590].forEach(x => { prop(manifest.props.marker, x, 430, 28); ctx.strokeStyle = '#cead69'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x - 25, 432); ctx.lineTo(x + 25, 432); ctx.stroke(); });
   const swapsRoles = s.formationPlan === 'complementary';
   text('REPLI', 2220, 320, '#c5b18c', 11);
-  text((swapsRoles ? 'VEK' : 'SAAR') + ' · APPROCHE', 2360, 276, '#e7bc6c', 11);
+  text(partners[swapsRoles ? 1 : 0].name.toUpperCase() + ' · APPROCHE', 2360, 276, '#e7bc6c', 11);
   text('FRAPPE', 2590, 276, '#f2a092', 11);
-  text((swapsRoles ? 'SAAR' : 'VEK') + ' · OUVERTURE', 2800, 276, '#a1e8ed', 11);
+  text(partners[swapsRoles ? 0 : 1].name.toUpperCase() + ' · OUVERTURE', 2800, 276, '#a1e8ed', 11);
   text('COMBAT DE SEUIL · ENTRAÎNEMENT AVANT LE RITE', 2890, 80, '#f0d9a9', 14);
   if (s.acid.ttl > 0) { ctx.fillStyle = '#cce06d55'; ctx.beginPath(); ctx.ellipse(s.acid.x, 428, 42, 8, 0, 0, Math.PI * 2); ctx.fill(); text('ACIDE', s.acid.x, 405, '#dbea95', 10); }
   const d = s.drone, image = images.get(TRAINING_DRONE_V90)!, cell = image.width / 6;
@@ -109,12 +109,13 @@ export function drawFirstHuntSoloV90(ctx: CanvasRenderingContext2D, s: SoloV90St
   };
   actor('rival', 160, 430, 1, 145, 'idle', 'VÉTÉRAN');
   s.companions.forEach((c, i) => {
-    const target = soloV90CompanionTarget(s, i), station = SOLO_V90_PARTNER_ACTIVITIES[i];
-    const pose = Math.abs(c.x - target) > 3 ? 'walk' : activity?.id === station.id && s.scan > 0
-      ? station.id === 'saar' ? 'blade' : 'idle' : 'idle';
-    actor('rival', c.x, 430, target < c.x ? -1 : 1, 110, pose, station.name.toUpperCase());
+    const target = soloV90CompanionTarget(s, i), station = partners[i];
+    const mechanism = station.id === 'saar' || station.id === 'tov';
+    const pose = Math.abs(c.x - target) > 3 ? 'walk' : activity?.id === station.id && s.scan > 0 && mechanism ? 'blade' : 'idle';
+    actor(station.id === 'tov' ? 'player' : 'rival', c.x, 430, target < c.x ? -1 : 1,
+      station.id === 'tov' ? 118 : station.id === 'yena' ? 103 : 110, pose, station.name.toUpperCase());
   });
-  const a = s.player, carried = s.health === 0 && Math.abs(s.companions[0].x - a.x) <= 38;
+  const a = s.player, carried = s.health === 0 && Math.abs(s.companions[soloV90SupportIndex(s)].x - a.x) <= 38;
   actor('player', a.x, carried ? 370 : a.y, a.facing, 112, s.health === 0 ? 'ko' : s.hurtTimer > 65 ? 'hurt' : s.evasion?.ticks ? 'dodge' : s.attackTimer ? 'blade' : a.vy ? 'jump' : a.vx ? 'walk' : 'idle', carried ? 'EXTRACTION AIDÉE' : undefined, s.evasion?.ticks ? SOLO_V92_EVASION.duration - s.evasion.ticks : s.tick);
   const goal = soloV90Objective(s); ctx.strokeStyle = '#e4cf96'; ctx.setLineDash([6, 5]); ctx.beginPath(); ctx.moveTo(goal.targetX - 25, 442); ctx.lineTo(goal.targetX + 25, 442); ctx.stroke(); ctx.setLineDash([]);
   if (s.scan) { ctx.fillStyle = '#e4cf96'; ctx.fillRect(goal.targetX - 25, 450, 50 * s.scan / 60, 4); }

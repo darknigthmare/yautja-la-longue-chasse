@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { homeworldSceneSsrV78 } from "./helpers/homeworld-scene-ssr-v78.mjs";
 import { templeCampaignRoute, stamp } from "./helpers/solo-v70-played-route.mjs";
+import { formationCampaignRoute } from "./helpers/solo-v90-played-route.mjs";
 import { thresholdsCampaignRoute } from "./helpers/solo-v69-played-route.mjs";
 
 const browserModules = homeworldSceneSsrV78();
@@ -125,6 +126,59 @@ test("M016 resumes the next contact from a single visited room and plans the rea
   const [gallery] = model.triadCityRoutesM016(complete, saar.roomId);
   assert.equal(gallery.purpose, "gallery");
   assert.equal(model.triadCityAtlasTargetM016(gallery), "point:training-service");
+});
+
+test("M016 recruits Yena and Tov at real posts and carries their identities through the actual gallery", () => {
+  let save = baseSave();
+  const tov = model.triadCityStationsM016(saar.roomId).find(station => station.partner === "tov");
+  const yena = model.triadCityStationsM016(vek.roomId).find(station => station.partner === "yena");
+  assert(tov && yena);
+  assert.equal(model.selectTriadCityRosterM016(undefined, save.createdAt, "yena-tov", checkpoint(yena, save)), null);
+  for (const station of [tov, yena]) {
+    const at = checkpoint(station, save);
+    for (let step = 0; step <= station.demonstration.length; step++) {
+      const record = model.advanceTriadCityM016(save.homeworld.triadCityM016, save.createdAt, station, step, at);
+      const next = { ...save, homeworld: { ...save.homeworld, triadCityM016: record, locationV77: at } };
+      assert(model.triadCityMatchesWriteM016(save, next));
+      save = saves.parseSaveImport(saves.exportSave(next)).save;
+      assert(save);
+    }
+  }
+  const original = save.homeworld.triadCityM016;
+  assert.deepEqual(original.steps, { saar: 0, vek: 0 });
+  assert.deepEqual(original.alternates, { yena: 4, tov: 3 });
+  assert.equal(model.selectTriadCityRosterM016(original, save.createdAt, "yena-tov", checkpoint(tov, save)), null);
+  const atMentor = checkpoint(yena, save);
+  const chosen = model.selectTriadCityRosterM016(original, save.createdAt, "yena-tov", atMentor);
+  assert.equal(chosen.roster, "yena-tov");
+  const selected = { ...save, homeworld: { ...save.homeworld, triadCityM016: chosen, locationV77: atMentor } };
+  assert(model.triadCityMatchesWriteM016(save, selected));
+  assert(!model.triadCityMatchesWriteM016(baseSave(), selected));
+  const restored = saves.parseSaveImport(saves.exportSave(selected)).save;
+  assert(restored);
+  const battle = formationCampaignRoute({ origin: restored, restoreEvery: 4 });
+  assert.equal(battle.save.soloV90.status, "completed");
+  assert.equal(battle.state.result, "success");
+  assert.deepEqual(battle.state.companions.map(partner => partner.id), ["yena", "tov"]);
+  assert.deepEqual(Object.keys(battle.state.partnerObservations), ["yena", "tov"]);
+  assert.deepEqual(battle.state.contributions, { player: 8, yena: 8, tov: 8 });
+  assert.deepEqual(battle.save.prologue.chronicle, save.prologue.chronicle);
+  assert(saves.parseSaveImport(saves.exportSave(battle.save)).save);
+
+  const forged = { ...battle.save, homeworld: { ...battle.save.homeworld, triadCityM016: original } };
+  assert(!campaign.soloV90MatchesSave(forged));
+  assert(!model.triadCityMatchesWriteM016(battle.save, { ...battle.save, soloV90: undefined }));
+  const incompatible = { ...battle.save, prologue: { ...battle.save.prologue, templeTriadFirstM017: true } };
+  assert(!model.triadCityAlternateAllowedM016(incompatible));
+  assert(!campaign.soloV90MatchesSave(incompatible));
+  assert.equal(saves.parseSaveImport(JSON.stringify(incompatible)).failure, "invalid-save");
+  const partialIncompatible = { ...selected, prologue: { ...selected.prologue, templeTriadFirstM017: true } };
+  assert.equal(saves.parseSaveImport(JSON.stringify(partialIncompatible)).failure, "invalid-save");
+  const { soloV90SupportIndex, soloV90AcceptedPlan, soloV90CompanionTarget } =
+    browserModules.load("app/game/systems/firstHuntSoloV90.ts");
+  assert.equal(soloV90AcceptedPlan(battle.state), "preference");
+  assert.equal(soloV90SupportIndex(battle.state), 1);
+  assert.equal(soloV90CompanionTarget({ ...battle.state, health: 0, player: { ...battle.state.player, x: 400 } }, 1), 418);
 });
 
 test("M016 stores the real forge gesture after V69 for a new Temple order", () => {

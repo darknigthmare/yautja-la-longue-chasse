@@ -47,7 +47,7 @@ import {
   tribunalVersionStatusV147, type RecordInfractionInputV147, type TribunalActionResultV147, type TribunalActionV147,
 } from "./systems/honorTribunalV147";
 import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/homeworld";
-import { triadCityMatchesSaveM016, triadCityMatchesWriteM016 } from "./systems/homeworldTriadM016";
+import { triadCityHasNewTempleOrderM016, triadCityMatchesSaveM016, triadCityMatchesWriteM016 } from "./systems/homeworldTriadM016";
 import {normalizeCntlipLedgerV77} from './systems/cntlipLedgerV77';
 import {homeworldCntlipEligibleV77} from './systems/homeworldCntlipPhysicalV77';
 import {inspectHomeworldCheckpointV77} from './systems/homeworldCheckpointV77';
@@ -2142,6 +2142,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       !hasChildhoodFoundationV175(save))) return { save: null, failure: "invalid-save" };
   const triadCity = isRecord(value.homeworld) ? value.homeworld.triadCityM016 : undefined;
   if (isRecord(triadCity) && Number(triadCity.version) > 1) return { save: null, failure: "future-version" };
+  if (triadCityHasNewTempleOrderM016(value.prologue) && isRecord(triadCity) &&
+      (triadCity.alternates !== undefined || triadCity.roster !== undefined)) return { save: null, failure: "invalid-save" };
   if (triadCity !== undefined && !triadCityMatchesSaveM016(save)) return { save: null, failure: "invalid-save" };
   const regionalLoop = isRecord(value.homeworld) ? value.homeworld.regionalLoopM014 : undefined;
   if (isFutureRegionalLoopM014(regionalLoop)) return { save: null, failure: "future-version" };

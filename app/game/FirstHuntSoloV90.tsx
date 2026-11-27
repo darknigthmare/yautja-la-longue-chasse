@@ -8,7 +8,7 @@ import { type YouthArtBank } from "./youthTrainingRendering";
 import { GameAudio } from "./sound";
 import YautjaTranslationV67 from "./YautjaTranslationV67";
 import { drawFirstHuntSoloV90, loadTrainingArtV90 } from "./firstHuntSoloV90Rendering";
-import { normalizeSoloV90State, stepSoloV90, soloV90NeedsImmediateCheckpoint, soloV90Objective, soloV90ObservationPostReady, soloV90RoleBoardReady, soloV90PartnerActivity, soloV90RehearsalPending, SOLO_V90_PARTNER_ACTIVITIES, SOLO_V90_REHEARSAL, soloV92Evaluation, SOLO_V92_EVASION, type SoloV90State, type SoloV90Receipt, type SoloV90RolePlan } from "./systems/firstHuntSoloV90";
+import { normalizeSoloV90State, stepSoloV90, soloV90NeedsImmediateCheckpoint, soloV90Objective, soloV90ObservationPostReady, soloV90RoleBoardReady, soloV90PartnerActivity, soloV90PartnerActivities, soloV90RehearsalPending, soloV90AcceptedPlan, soloV90SupportIndex, SOLO_V90_REHEARSAL, soloV92Evaluation, SOLO_V92_EVASION, type SoloV90State, type SoloV90Receipt, type SoloV90RolePlan } from "./systems/firstHuntSoloV90";
 import styles from "./FirstHuntSoloV90.module.css";
 
 export interface FirstHuntSoloV90Props {
@@ -176,7 +176,20 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
   const evaluation = state ? soloV92Evaluation(state) : null;
   const partnerActivity = state ? soloV90PartnerActivity(state) : undefined;
   const rehearsalPending = state ? soloV90RehearsalPending(state) : false;
-  const spoken = state?.phase === "briefing" ? state.partnerObservations
+  const partners = soloV90PartnerActivities(state ?? {});
+  const [first, second] = partners;
+  const support = partners[soloV90SupportIndex(state ?? {})];
+  const acceptedPlan = soloV90AcceptedPlan(state ?? {});
+  const alternateSpeech = state?.roster ? (
+    state.phase === "briefing" ? "Yena lit les appuis, Tov éprouve le verrou. Retrouve-les dans la galerie." :
+    state.phase === "assemble" ? partnerActivity?.id === "yena" ? "Yena : regarde l’appui avant de demander l’ouverture."
+      : partnerActivity?.id === "tov" ? "Tov : j’attends que Yena soit à couvert avant de relâcher la charge."
+      : rehearsalPending ? "Yena : je préfère mener l’approche. Répétons si tu veux me faire tenir le verrou."
+      : "Tov : donne le signal et attends que nous soyons chacun à notre poste." :
+    state.phase === "observe" ? "Yena : observe les trois retraits au repère avant d’avancer." :
+    state.phase === "return" && state.result === "assisted" ? "Tov : je viens te chercher. Nous revenons ensemble." : ""
+  ) : "";
+  const spoken = alternateSpeech || (state?.phase === "briefing" ? state.partnerObservations
     ? "Saar est au mécanisme et Vek lit la piste. Retrouve-les dans la galerie avant de rejoindre le repère central."
     : "Saar et Vek se préparent à leurs deux postes. Choisis leur répartition au repère central. Tu tiens la frappe et peux décider le repli."
     : state?.phase === "arsenal" ? "Le vétéran : vérifie chaque outil du prêt. Ces outils restent ceux de cette galerie ; leur contrôle ne devient pas une dotation personnelle."
@@ -189,33 +202,35 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
           : "Saar : donne le signal lorsque tu es prêt. Nous allons à nos postes à pied. Attends Vek avant de confirmer la formation."
     : state?.phase === "observe" ? "Vek : lis l’annonce, la charge puis le retrait. Regarde trois cycles depuis ce repère avant d’engager le combat."
     : state?.phase === "return" ? state.result === "assisted" ? "Saar : reste là. Je viens à ton côté. Nous rentrons ensemble ; une blessure ne disparaît pas parce que l’exercice est fini." : "Le vétéran attend notre retour. Gardons le même résultat dans le rapport, qu’il s’agisse d’une réussite ou d’un repli."
-    : state?.phase === "debrief" ? state.result === "success" ? "Les trois contributions sont reçues. Décris aussi tes blessures. Cette réussite prépare la chasse ; elle ne t’attribue aucune marque." : "Vous êtes revenus ensemble. Le repli est consigné, les blessures aussi. Personne ne transforme cette tentative en victoire." : "";
+    : state?.phase === "debrief" ? state.result === "success" ? "Les trois contributions sont reçues. Décris aussi tes blessures. Cette réussite prépare la chasse ; elle ne t’attribue aucune marque." : "Vous êtes revenus ensemble. Le repli est consigné, les blessures aussi. Personne ne transforme cette tentative en victoire." : "");
   const modal = !state || !!artError || paused || templeHandoff || pendingUi && !!saveError || state?.phase === "complete" && !pendingUi;
   const dialogTitle = templeHandoff ? "La triade est prête" : state?.phase === "complete" ? "Évaluation terminée" : "Pause et sauvegarde";
-  const notice = state && soloV90ObservationPostReady(state) ? "VUE DE DÉMONSTRATION · Ta position reste au repère. Maintiens Interaction pour lire le cycle ; marcher reprend ta caméra." : state?.phase === "return" && state.result === "assisted" ? "EXTRACTION AIDÉE · Saar doit t’atteindre avant de marcher. Vitalité conservée à zéro." : state?.phase === "combat" && state.drone.mode === "telegraph" ? "CHARGE ANNONCÉE · saute, recule ou esquive au bon moment ; frappe pendant le retrait." : "";
+  const notice = state && soloV90ObservationPostReady(state) ? "VUE DE DÉMONSTRATION · Ta position reste au repère. Maintiens Interaction pour lire le cycle ; marcher reprend ta caméra." : state?.phase === "return" && state.result === "assisted" ? `EXTRACTION AIDÉE · ${support.name} doit t’atteindre avant de marcher. Vitalité conservée à zéro.` : state?.phase === "combat" && state.drone.mode === "telegraph" ? "CHARGE ANNONCÉE · saute, recule ou esquive au bon moment ; frappe pendant le retrait." : "";
   return <section className={styles.screen} data-solo-v90 data-solo-step={state?.phase ?? "invalid"}>
     <header className={styles.header} inert={modal && !props.externallyPaused ? true : undefined}><strong>CAMPAGNE · PRÉPARATION DE TRIADE · COMBAT DE SEUIL</strong><div><button type="button" onClick={pause} disabled={!state || pendingUi}>Pause</button><button type="button" onClick={() => setTouchUi(v => !v)} aria-pressed={touchUi}>Tactile</button></div></header>
-    <div className={styles.objective}><h1>{objective?.title ?? "Checkpoint non pris en charge"}</h1><p>{objective?.instruction ?? "La partie est conservée. Aucun état neuf ne remplace ce checkpoint."}</p>{state && <div className={styles.measure}><span>{state.player.x < 1200 ? "Vestibule du témoin" : state.player.x < 2200 ? "Galerie de préparation" : "Combat de seuil"}</span><span>{evaluation?.result ?? "Tentative en cours"}</span><span>Contributions {state.contributions.player} / {state.contributions.saar} / {state.contributions.vek}</span><span>Vitalité {state.health}/6</span>{saving && <span role="status">Enregistrement…</span>}</div>}</div>
+    <div className={styles.objective}><h1>{objective?.title ?? "Checkpoint non pris en charge"}</h1><p>{objective?.instruction ?? "La partie est conservée. Aucun état neuf ne remplace ce checkpoint."}</p>{state && <div className={styles.measure}><span>{state.player.x < 1200 ? "Vestibule du témoin" : state.player.x < 2200 ? "Galerie de préparation" : "Combat de seuil"}</span><span>{evaluation?.result ?? "Tentative en cours"}</span><span>Contributions {state.contributions.player} / {first.name} {state.contributions[first.id]} / {second.name} {state.contributions[second.id]}</span><span>Vitalité {state.health}/6</span>{saving && <span role="status">Enregistrement…</span>}</div>}</div>
     {state?.phase === "assemble" && state.partnerObservations && <div className={styles.measure}
       role="group" aria-label="Activités des partenaires">
-      {SOLO_V90_PARTNER_ACTIVITIES.map(activity => <span key={activity.id} data-solo-v90-activity={activity.id}
+      {partners.map(activity => <span key={activity.id} data-solo-v90-activity={activity.id}
         data-observed={state.partnerObservations?.[activity.id] !== undefined}>
         {activity.name} · {state.partnerObservations?.[activity.id] !== undefined ? "activité observée" : "rendez-vous à faire"}
       </span>)}
     </div>}
     {state?.phase === "assemble" && state.formationRefusedAt !== undefined &&
       <div className={styles.measure} data-solo-v90-rehearsal={state.formationRehearsedAt !== undefined ? "complete" : rehearsalPending ? "pending" : "alternate"}>
-        <span>{state.formationRehearsedAt !== undefined ? "Répétition commune terminée" : rehearsalPending ? "Préférence refusée par Vek" : "Poste d’approche accepté par Vek"}</span>
+        <span>{state.formationRehearsedAt !== undefined ? "Répétition commune terminée" : rehearsalPending
+          ? state.roster ? "Répartition refusée par Yena" : "Préférence refusée par Vek"
+          : state.roster ? "Poste d’approche accepté par Yena" : "Poste d’approche accepté par Vek"}</span>
         {rehearsalPending && state.scan > 0 && <span>Signaux joués {Math.floor(state.scan / (SOLO_V90_REHEARSAL.ticks / 3))}/3</span>}
       </div>}
     {state && soloV90RoleBoardReady(state) && !modal && <div className={styles.rolePlan} role="group" aria-label="Répartition des trois postes">
       <button type="button" data-solo-v90-plan="preference" aria-pressed={state.formationPlan === "preference"}
-        disabled={!!props.externallyPaused || pendingUi || !bank || rehearsalPending} onClick={() => chooseRoles("preference")}>
-        Par préférence · Saar approche, Vek ouvre
+        disabled={!!props.externallyPaused || pendingUi || !bank || rehearsalPending && acceptedPlan !== "preference"} onClick={() => chooseRoles("preference")}>
+        Par préférence · {first.name} approche, {second.name} ouvre
       </button>
       <button type="button" data-solo-v90-plan="complementary" aria-pressed={state.formationPlan === "complementary"}
-        disabled={!!props.externallyPaused || pendingUi || !bank} onClick={() => chooseRoles("complementary")}>
-        Par complémentarité · Vek approche, Saar ouvre
+        disabled={!!props.externallyPaused || pendingUi || !bank || rehearsalPending && acceptedPlan !== "complementary"} onClick={() => chooseRoles("complementary")}>
+        Par complémentarité · {second.name} approche, {first.name} ouvre
       </button>
     </div>}
     <div className={styles.view} inert={modal && !props.externallyPaused ? true : undefined}><canvas ref={canvasRef} width={960} height={540} tabIndex={0} aria-label="Galerie jouable de préparation : marche, saut, postes de triade, lecture du drone, combat, repli et retour réel." />{spoken && !modal && <p className={styles.spoken}><YautjaTranslationV67 text={spoken} paused={paused || !!props.externallyPaused || pendingUi} reducedMotion={props.reducedMotion} /></p>}{notice && !modal && <p className={styles.notice} role="status">{notice}</p>}</div>
@@ -227,7 +242,7 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
     }}><h2>{templeHandoff ? dialogTitle : state?.phase === "complete" ? "Évaluation conservée" : "Préparation de triade · Combat de seuil"}</h2>
       {!state ? <p>Le checkpoint est invalide ou appartient à une version non prise en charge. Reviens au menu pour consulter les sauvegardes ; il n’a pas été écrasé.</p> : state.phase === "complete" ? <p>Le vétéran reçoit uniquement le résultat observé de cet entraînement, les contributions et les blessures. Tu restes Young Blood : la vraie épreuve Quatza-Rij, le retour de reconnaissance et le marquage Blooded ne sont pas validés ici.</p> : templeHandoff ? <p>Les trois postes sont consignés. Rejoins le Temple avec Saar et Vek, puis reprends l’exercice du seuil au retour.</p>
         : <p>Les mécanismes, les compagnons et le combat sont arrêtés. Relâche les commandes avant la reprise.</p>}
-      {evaluation && !templeHandoff && <dl aria-label="Évaluation factuelle de la triade" data-solo-v92-evaluation><dt>Issue observée</dt><dd>{evaluation.result}</dd><dt>Coups portés par la formation</dt><dd>Jeune {evaluation.contributions.player} · Saar {evaluation.contributions.saar} · Vek {evaluation.contributions.vek}</dd><dt>Vitalité au retour</dt><dd>{evaluation.health}/6 · {evaluation.injury}</dd><dt>Remise au vétéran</dt><dd>{evaluation.reported ? "Rapport enregistré" : "Rapport à remettre en personne"}</dd></dl>}
+      {evaluation && !templeHandoff && <dl aria-label="Évaluation factuelle de la triade" data-solo-v92-evaluation><dt>Issue observée</dt><dd>{evaluation.result}</dd><dt>Coups portés par la formation</dt><dd>Jeune {evaluation.contributions.player} · {first.name} {evaluation.contributions[first.id]} · {second.name} {evaluation.contributions[second.id]}</dd><dt>Vitalité au retour</dt><dd>{evaluation.health}/6 · {evaluation.injury}</dd><dt>Remise au vétéran</dt><dd>{evaluation.reported ? "Rapport enregistré" : "Rapport à remettre en personne"}</dd></dl>}
       {(saveError || props.persistenceError) && <p className={styles.error} role="alert">{saveError || props.persistenceError}</p>}{artError && <p className={styles.error} role="alert">{artError}</p>}
       <nav>{!state ? <button type="button" onClick={() => void props.onExit()}>Retour au menu</button> : <>
         {artError && <button type="button" onClick={() => { setArtError(""); setLoadAttempt(a => a + 1); }}>Recharger les images</button>}
