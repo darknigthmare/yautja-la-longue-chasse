@@ -10,6 +10,7 @@ const bundle = await build({
     export * from "./app/game/systems/nurseryCohortV172";
     export * from "./app/game/systems/nurseryOpening";
     export * from "./app/game/systems/originFirstShockO6";
+    export { advanceFirstShockIntoCohortO6 } from "./app/game/systems/originCohortRaceO6";
     export { createOriginV151 } from "./app/game/systems/originsV151";
     export { startYouthCampaign } from "./app/game/systems/youthCampaign";
   `, resolveDir: process.cwd(), loader: "ts" },

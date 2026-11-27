@@ -42,5 +42,7 @@ export function courtyardHandoffO6({ partial = false } = {}) {
   const before = save;
   act("return-weapon", net);
   assert.equal(record, null);
-  return { common, before, returned: save };
+  const armed = course.advanceFirstShockIntoCohortO6(before, "return-weapon", x).save;
+  const returned = { ...save, originV151: { ...save.originV151, firstShockO6: { ...save.originV151.firstShockO6, version: 1 } } };
+  return { common, before, returned, armed, incomplete: save };
 }

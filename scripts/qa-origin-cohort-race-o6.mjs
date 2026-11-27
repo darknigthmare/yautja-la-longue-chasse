@@ -156,7 +156,7 @@ try {
     const receipt = final.originV151.cohortRaceO6;
     assert.deepEqual(final.prologue, seed.prologue);
     assert.deepEqual(final.inventory, seed.inventory);
-    assert.deepEqual(final.originV151.firstShockO6, proof.returned.originV151.firstShockO6);
+    assert.deepEqual(final.originV151.firstShockO6, (legacy ? proof.returned : proof.armed).originV151.firstShockO6);
     assert.ok(receipt.resolved && receipt.success);
     const partner = legacy ? "harek" : "yena";
     assert.equal(receipt.relation.partner, partner);

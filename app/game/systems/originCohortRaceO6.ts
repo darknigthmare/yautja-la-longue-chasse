@@ -1,5 +1,5 @@
 import type { SaveGame } from "../types";
-import { firstShockDepartedO6, type FirstShockRecordO6 } from "./originFirstShockO6";
+import { applyFirstShockO6, firstShockDepartedO6, type FirstShockOrderO6, type FirstShockRecordO6 } from "./originFirstShockO6";
 import { atCohortPlatformO6, COHORT_COURSE_O6, COHORT_RALLY_X_O6, COHORT_SIGNAL_WAIT_O6,
   simulateCohortJumpO6, type CohortJumpO6, type CohortPlatformO6 } from "./cohortRaceCourseO6";
 
@@ -64,6 +64,13 @@ export function startCohortRaceO6(save: SaveGame): SaveGame {
   const origin = save.originV151;
   if (!source || !origin || !canStartCohortRaceO6(save)) return save;
   return { ...save, originV151: { ...origin, cohortRaceO6: makeRecord(source) } };
+}
+/** The completed M01 return and the empty M02 record are committed in one save. */
+export function advanceFirstShockIntoCohortO6(save: SaveGame, order: FirstShockOrderO6, x: number) {
+  const result = applyFirstShockO6(save, order, x);
+  if (!result || order !== "return-weapon") return result;
+  const candidate = startCohortRaceO6(result.save);
+  return cohortRaceMatchesSaveO6(candidate) ? { ...result, save: candidate } : null;
 }
 export function activeCohortRaceO6(save: SaveGame) {
   const record = save.originV151?.cohortRaceO6;
@@ -178,7 +185,8 @@ export function normalizeCohortRaceO6(raw: unknown): CohortRaceRecordO6 | null {
 
 export function cohortRaceMatchesSaveO6(save: SaveGame) {
   const record = save.originV151?.cohortRaceO6;
-  if (!record) return true;
+  const firstShock = save.originV151?.firstShockO6;
+  if (!record) return firstShock?.version !== 2 || !firstShockDepartedO6(firstShock);
   const source = sourceOpening(save);
   return source?.ownerCreatedAt === record.ownerCreatedAt && identical(record.opening, source.opening) &&
     (record.resolved || !save.youthTraining);
