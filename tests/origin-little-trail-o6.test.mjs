@@ -104,3 +104,31 @@ test("Archives cannot swap the source, evidence or physical plane, and an active
   assert.equal(trail.keepsLittleTrailO6(active, replace({ choice: "map" })), false);
   assert.equal(trail.keepsLittleTrailO6(active, active), true);
 });
+
+test("A real later ending remains compatible with completed M05 and refuses an earlier active journal in the same archive", () => {
+  const early = littleTrailAdmissionO6();
+  const active = [null, first].reduce(applyLittleTrailO6, early);
+  const finished = [pebble, rub, identify, far, climb, compare, map].reduce(applyLittleTrailO6, active);
+  const profile = { ...finished.profile, rankId: "elite", acquiredRankIdV166: "elite" };
+  const workshop = { rankId: profile.rankId, atWorkshop: true };
+  const seen = trail.examineEndingV170(finished.originV151, "O6-E1", workshop);
+  assert.ok(seen.ok);
+  const chosen = trail.confirmEndingV170(seen.state, "O6-E1", "O6-E1", workshop);
+  assert.ok(chosen.ok);
+  const late = { ...finished, profile, originV151: chosen.state };
+  const loaded = town.parseSaveImport(JSON.stringify(late));
+  assert.equal(loaded.failure, null);
+  assert.equal(loaded.save.originV151.ending.originEndingId, "O6-E1");
+  assert.deepEqual(latest(loaded.save), latest(finished));
+  assert.equal(trail.keepsLittleTrailO6(finished, late), true);
+
+  const lateLegacy = { ...late, originV151: { ...late.originV151, littleTrailO6: undefined } };
+  assert.equal(town.parseSaveImport(JSON.stringify(lateLegacy)).failure, null);
+  assert.equal(trail.littleTrailCanStartO6(lateLegacy), false);
+  const mixed = { ...late, originV151: { ...late.originV151, littleTrailO6: latest(active) } };
+  assert.equal(mixed.youthTraining, early.youthTraining);
+  assert.deepEqual(mixed.homeworld.locationV77, latest(active).at);
+  assert.equal(trail.activeLittleTrailO6(mixed), null);
+  assert.equal(trail.keepsLittleTrailO6(active, mixed), false);
+  assert.equal(town.parseSaveImport(JSON.stringify(mixed)).failure, "invalid-save");
+});
