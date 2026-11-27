@@ -2,7 +2,7 @@
   "date": "2026-11-27",
   "depot": "darknigthmare/yautja-la-longue-chasse",
   "refMain": "75bbc1777eb1866515fcef718b086571d8aa379d",
-  "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/952c1932b13e4b74677af8d4b8008e074a16d74a/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+  "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/f1bdb319c2388fc9283c97a176f9b55b01e69924/docs/campagne/BIBLE_DE_CAMPAGNE.md",
   "methode": "Le relevé part de main 75bbc17 après #199. La colonne État sur main conserve ce relevé. Le lot #200 est indiqué dans Livraison et ses limites figurent dans chaque ligne. Le lot intégral compte 62 fiches raccordées et 6 partielles.",
   "statuts": {
     "RACCORDE": "Boucle de la fiche jouée et persistée, ou chapitre que la Bible accepte expressément comme équivalent. Les écarts signalés restent ouverts.",
@@ -800,9 +800,9 @@
       "preuvesLivraison": [
         "actions/runs/46011008133",
         "actions/runs/46011008133/artifacts/15203473706",
-        "actions/runs/46011834146",
         "actions/runs/46012258746",
-        "pull/200"
+        "pull/200",
+        "actions/runs/46012258746/artifacts/15203404680"
       ],
       "raccordProjete": "RACCORDE"
     },
@@ -2212,7 +2212,8 @@
         },
         {
           "nom": "Rejeu du retour de la cohorte et de l’épilogue",
-          "lien": "actions/runs/46012408325"
+          "lien": "actions/runs/46012408325",
+          "conclusion": "success"
         },
         {
           "nom": "Réponse des Apex et reprise du leurre sur le banc Cryostalker",
@@ -2222,7 +2223,7 @@
         {
           "nom": "Acheron, signaux du Gardien dans le navigateur",
           "conclusion": "success",
-          "lien": "actions/runs/46011008133"
+          "lien": "actions/runs/46012258746"
         }
       ]
     }
@@ -2384,9 +2385,9 @@
       "preuvesLivraison": [
         "actions/runs/46011008133",
         "actions/runs/46011008133/artifacts/15203473706",
-        "actions/runs/46011834146",
         "actions/runs/46012258746",
-        "pull/200"
+        "pull/200",
+        "actions/runs/46012258746/artifacts/15203404680"
       ]
     },
     {
@@ -2586,9 +2587,9 @@
     "controleProduction": "actions/runs/45984972437"
   },
   "sourceDocument": {
-    "commit": "952c1932b13e4b74677af8d4b8008e074a16d74a",
+    "commit": "f1bdb319c2388fc9283c97a176f9b55b01e69924",
     "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
-    "blob": "6d95b80f8c69c7155462d147e28c50396033e72b"
+    "blob": "3135b1accfc152da6bd01034ccf822db373c8c18"
   },
   "historiqueLot197": {
     "refMain": "9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404",
