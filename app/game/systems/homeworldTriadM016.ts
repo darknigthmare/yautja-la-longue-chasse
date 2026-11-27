@@ -152,10 +152,17 @@ export function normalizeTriadCityM016(value: unknown): TriadCityM016 | null {
   return ledger;
 }
 
+export const triadCityHasNewTempleOrderM016 = (prologue: unknown) =>
+  isRecord(prologue) && prologue.templeTriadFirstM017 === true;
+
+export const triadCityAlternateAllowedM016 = (save: Pick<SaveGame, "soloV70" | "prologue">) =>
+  save.soloV70?.status === "completed" && !triadCityHasNewTempleOrderM016(save.prologue);
+
 export function triadCityMatchesSaveM016(save: Pick<SaveGame, "createdAt" | "homeworld" | "soloV70" | "prologue">) {
   const ledger = save.homeworld.triadCityM016;
   return !!ledger && ledger.ownerCreatedAt === save.createdAt &&
-    save.prologue?.status === "completed" && save.soloV70?.status === "completed";
+    save.prologue?.status === "completed" && save.soloV70?.status === "completed" &&
+    (!ledger.alternates || triadCityAlternateAllowedM016(save));
 }
 
 export function triadCityStationReachedM016(station: TriadCityStationM016, checkpoint?: HomeworldCheckpointV77) {

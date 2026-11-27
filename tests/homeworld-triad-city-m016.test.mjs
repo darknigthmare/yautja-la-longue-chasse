@@ -166,6 +166,12 @@ test("M016 recruits Yena and Tov at real posts and carries their identities thro
 
   const forged = { ...battle.save, homeworld: { ...battle.save.homeworld, triadCityM016: original } };
   assert(!campaign.soloV90MatchesSave(forged));
+  const incompatible = { ...battle.save, prologue: { ...battle.save.prologue, templeTriadFirstM017: true } };
+  assert(!model.triadCityAlternateAllowedM016(incompatible));
+  assert(!campaign.soloV90MatchesSave(incompatible));
+  assert.equal(saves.parseSaveImport(JSON.stringify(incompatible)).failure, "invalid-save");
+  const partialIncompatible = { ...selected, prologue: { ...selected.prologue, templeTriadFirstM017: true } };
+  assert.equal(saves.parseSaveImport(JSON.stringify(partialIncompatible)).failure, "invalid-save");
   const { soloV90SupportIndex, soloV90AcceptedPlan, soloV90CompanionTarget } =
     browserModules.load("app/game/systems/firstHuntSoloV90.ts");
   assert.equal(soloV90AcceptedPlan(battle.state), "preference");

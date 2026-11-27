@@ -104,7 +104,8 @@ import { canStartSoloV70 } from "./systems/campaignSoloV70";
 import { canStartSoloV90 } from "./systems/campaignSoloV90";
 import HomeworldTriadM016, { HomeworldTriadJournalM016, HomeworldTriadPartnerM016, HomeworldTriadRosterM016 } from "./HomeworldTriadM016";
 import { advanceTriadCityM016, selectTriadCityRosterM016, triadCityFollowupM016, triadCityMayChooseAlternateM016,
-  triadCityRemainingM016, triadCityStationsM016, triadCityStepM016, type TriadCityM016, type TriadCityRosterChoiceM016,
+  triadCityAlternateAllowedM016, triadCityRemainingM016, triadCityStationsM016, triadCityStepM016,
+  type TriadCityM016, type TriadCityRosterChoiceM016,
   type TriadCityStationM016 } from "./systems/homeworldTriadM016";
 import { canVisitHomeworldVillagesV69, usesHomeworldYouthAppearanceV69, HOMEWORLD_YOUTH_PLATE_V69 } from "./systems/homeworldAccessV69";
 import { canEnterHomeworldRegionV68, isHomeworldRegionIdV68, type HomeworldRegionIdV68 } from "./systems/homeworldRegionsV68";
@@ -1580,7 +1581,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   const canChoose = progress.evidenceIds.length === HOMEWORLD_EVIDENCE.length && !progress.witnessChoice;
   const canPrepareTriadInCity = useMemo(() => !save.soloV90 && canStartSoloV90(save), [save]);
   const triadCity = progress.triadCityM016;
-  const canRecruitAlternateTriad = save.soloV70?.status === "completed";
+  const canRecruitAlternateTriad = triadCityAlternateAllowedM016(save);
   const cityStations = canPrepareTriadInCity ? triadCityStationsM016(interiorId, canRecruitAlternateTriad) : [];
   const triadCityPoint = interior?.points.find(point => point.pointId === cityStations[0]?.pointId);
   const triadCityConfirmed = !!triadCity && triadCityRemainingM016(triadCity).length === 0;
