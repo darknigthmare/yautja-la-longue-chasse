@@ -47,7 +47,7 @@ import HomeworldCivilianV72 from "./HomeworldCivilianV72";
 import { youthCampaignObjective, youthEquipmentSummary } from "./systems/youthCampaign";
 import HomeworldChildhoodV175 from "./HomeworldChildhoodV175";
 import { CHILDHOOD_POST_V175, actChildhoodV175, canEnterYouthAfterChildhoodV175, childhoodViewV175, hasChildhoodFoundationV175,
-  type ChildhoodCommandV175 } from "./systems/homeworldChildhoodV175";
+  type ChildhoodCommandV175, type ChildhoodCueV175 } from "./systems/homeworldChildhoodV175";
 import { getChronicleRank } from "./systems/clanChronicle";
 import { matchesControlAction, type ControlActionId } from "./systems/controlBindings";
 import { shipForId, type ShipId } from "./shipCatalogue";
@@ -103,7 +103,7 @@ import { canStartSoloV69 } from "./systems/campaignSoloV69";
 import { canStartSoloV70 } from "./systems/campaignSoloV70";
 import { canStartSoloV90 } from "./systems/campaignSoloV90";
 import HomeworldTriadM016, { HomeworldTriadJournalM016, HomeworldTriadPartnerM016 } from "./HomeworldTriadM016";
-import { advanceTriadCityM016, triadCityRemainingM016, triadCityStationM016, type TriadCityStationM016 } from "./systems/homeworldTriadM016";
+import { advanceTriadCityM016, triadCityRemainingM016, triadCityRoutesM016, triadCityStationM016, type TriadCityStationM016 } from "./systems/homeworldTriadM016";
 import { canVisitHomeworldVillagesV69, usesHomeworldYouthAppearanceV69, HOMEWORLD_YOUTH_PLATE_V69 } from "./systems/homeworldAccessV69";
 import { canEnterHomeworldRegionV68, isHomeworldRegionIdV68, type HomeworldRegionIdV68 } from "./systems/homeworldRegionsV68";
 import HomeworldResidentConversationV75 from "./HomeworldResidentConversationV75";
@@ -172,6 +172,7 @@ export interface HomeworldHubProps {
   onReturnShip(): void;
   /** Available only at the physically reached mentor after the chief. */
   onYouthTraining?(): boolean;
+  onChildhoodSound?(cue: ChildhoodCueV175): void;
   onSoloV66?(): boolean;
   onSoloV67?(): boolean;
   onRegionalLoopM014?(): boolean;
@@ -199,7 +200,7 @@ function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInt
   return original ? { ...original, ...target.position } : null;
 }
 
-export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onAdjutantAppointment, recoveryStorage, ephemeralSession = false, onService, onKennelActionV147, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onRegionalLoopM014, regionalLoopM014Admission, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
+export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onAdjutantAppointment, recoveryStorage, ephemeralSession = false, onService, onKennelActionV147, onReturnShip, onExpedition, onNotify, onYouthTraining, onChildhoodSound, onSoloV66, onSoloV67, onRegionalLoopM014, regionalLoopM014Admission, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
   const [initialLocationV77] = useState(() => resolveCargoArrivalV108(save.homeworld.locationV77,save.createdAt,save.homeworld.cargoV108,{cartographyV104:save.homeworld.cartographyV104,cartographyV105:save.homeworld.cartographyV105,archiveV106:save.homeworld.archiveV106,archiveComparisonV107:save.homeworld.archiveComparisonV107}));
   const [upgradeRecoveryPendingV112,setUpgradeRecoveryPendingV112]=useState(()=>!initialLocationV77.migrationBackup&&homeworldGeometryRecoveryRequiredV112(save.homeworld.locationV77,save.createdAt,homeworldGeometryRecoveryLedgersV112(save.homeworld)));
   const upgradeRecoveryPendingRefV112=useRef(upgradeRecoveryPendingV112);
@@ -1570,6 +1571,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
       setChildhoodMessageV175("Le geste attend une sauvegarde confirmée. Réessaie à ce poste.");
       return;
     }
+    if (proposal.cue) onChildhoodSound?.(proposal.cue);
     setChildhoodMessageV175(proposal.message);
   };
   const selectedNpc = HOMEWORLD_NPCS.find(npc => npc.id === selectedPoint?.npcId);
@@ -1601,8 +1603,14 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   const youthObjective = !youthChiefMet ? "Rejoins le chef du clan à la Citadelle, au nord-est de la cité, et parle-lui."
     : !youthMentorMet ? "Rejoins l’instructeur des terrasses, au centre de la cité, et parle-lui."
     : save.soloV90?.status === "completed" ? "La préparation de triade est rapportée. Le clan conserve les observations et les blessures de cet entraînement ; l’épreuve Quatza-Rij et le rite Blooded restent à accomplir."
-    : save.soloV70?.status === "completed" ? "Le premier acte du Temple des Trois Ombres est rapporté. Rejoins le maître pour une préparation de triade au combat de seuil ; elle ne remplace pas l’épreuve Quatza-Rij ni le rite Blooded."
-    : save.soloV69?.status === "completed" ? "Les Seuils du Premier Sang sont attestés. Rejoins le maître pour ouvrir le premier acte du Temple des Trois Ombres avec ta triade. Les villages et leurs contrats restent accessibles ; tu es encore Young Blood."
+    : save.soloV70?.status === "completed" ? save.prologue?.templeTriadFirstM017
+      ? "Le premier acte du Temple des Trois Ombres est rapporté. Reviens aux postes de triade pour l’exercice du seuil."
+      : "Le premier acte du Temple des Trois Ombres est rapporté. Rejoins le maître pour une préparation de triade au combat de seuil ; elle ne remplace pas l’épreuve Quatza-Rij ni le rite Blooded."
+    : save.prologue?.templeTriadFirstM017 && save.soloV90?.checkpoint.phase === "observe"
+      ? "Les trois postes sont consignés. Rejoins le maître pour entrer au Temple avec Saar et Vek."
+    : save.soloV69?.status === "completed" ? save.prologue?.templeTriadFirstM017
+      ? "Les Seuils du Premier Sang sont attestés. Rejoins Saar et Vek pour préparer les trois postes avant le Temple."
+      : "Les Seuils du Premier Sang sont attestés. Rejoins le maître pour ouvrir le premier acte du Temple des Trois Ombres avec ta triade. Les villages et leurs contrats restent accessibles ; tu es encore Young Blood."
     : save.soloV68?.status === "completed" ? "Le clan a reconnu ta cohorte Young Blood. Rejoins le maître pour préparer Les Seuils du Premier Sang ; le rite Blooded reste distinct."
     : save.soloV67?.status === "completed" ? "La Piste sans guide est rapportée. Rejoins le maître pour rassembler la Cohorte des Aspirants."
     : save.soloV66?.status === "completed" ? "Les Premières Pistes sont rapportées. Rejoins le maître pour La Piste sans guide ; les villages ordinaires et leurs relevés sont aussi accessibles."
@@ -1804,7 +1812,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     <div className={styles.srOnly} aria-live="polite" aria-atomic="true">{announcement}</div>
     {cargoMigrationMessageV108&&<aside className={cargoStylesV108.migration} role={cargoMigrationPendingV108?'alert':'status'} data-cargo-arrival-recovery-v108><strong>Reprise du point d’arrivée</strong><p>{cargoMigrationMessageV108}</p>{cargoMigrationPendingV108&&<button onClick={()=>{viewportRef.current?.focus({preventScroll:true});commitCargoArrivalV108();}}>Réessayer la reprise du point d’arrivée</button>}</aside>}
     {!upgradeRecoveryPendingV112&&<>
-    {!dialog && canPrepareTriadInCity && <HomeworldTriadJournalM016 ledger={triadCity} disabled={blocked}
+    {!dialog && canPrepareTriadInCity && <HomeworldTriadJournalM016 ledger={triadCity} roomId={interiorId} disabled={blocked}
       onGuide={requestLandmarkV75} />}
     {!dialog&&deferredPlaqueV111&&<HomeworldArchiveContinuationJournalV111 ledger={continuationViewV111} base={plaqueViewV109} actor={actor} actorInStudySpace={levelIdV77==='0'&&!interiorId&&!transitV77&&!skiffV77} blocked={cargoMigrationPendingV108||suspended||paused||inactive||spatialCodexOpen||wayfindingOpenV75||!motionAssetsV74.ready} writePaused={plaqueWritePausedV109} message={plaqueMessageV109} onAction={actContinuationFromWorldV111} onRetry={retryPlaqueV109} onGuide={requestLandmarkV75}/>}
     {!dialog&&!deferredPlaqueV111&&<HomeworldArchivePlaqueJournalV109 ledger={plaqueViewV109} actor={actor} actorInStudySpace={levelIdV77==='0'&&!interiorId&&!transitV77&&!skiffV77} blocked={cargoMigrationPendingV108||suspended||paused||inactive||spatialCodexOpen||wayfindingOpenV75||!motionAssetsV74.ready} writePaused={plaqueWritePausedV109} message={plaqueMessageV109} onAction={actPlaqueFromWorldV109} onRetry={retryPlaqueV109} onGuide={requestLandmarkV75}/>}
@@ -1931,7 +1939,8 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
           {selectedNpc?.id === "terrace-instructor" && save.soloV70?.status === "completed" && <p data-solo-v70-complete>Le premier acte du temple est rapporté. Les salles profondes, la reine et le rite Blooded ne sont pas validés par cette ouverture.</p>}
           {triadCityStation && selectedPoint.id === triadCityStation.pointId && <HomeworldTriadM016 station={triadCityStation}
             step={triadCity?.steps[triadCityStation.partner] ?? 0} disabled={suspended || paused || inactive}
-            onAdvance={step => submitTriadCity(triadCityStation, step)} />}
+            onward={triadCityRoutesM016(triadCity, interiorId).find(route => route.station.partner !== triadCityStation.partner)}
+            onAdvance={step => submitTriadCity(triadCityStation, step)} onGuide={requestLandmarkV75} />}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && onSoloV90 && canStartSoloV90(save) && save.soloV90?.status !== "completed" && <button type="button" data-solo-v90-enter disabled={suspended || paused || inactive} onClick={() => {
             if (suspendedRef.current || pausedRef.current || saveRef.current.createdAt !== save.createdAt || pointInCurrentSpace(actorRef.current, interiorRef.current, levelRefV77.current)?.id !== "training-service") return;
             clearInputs();

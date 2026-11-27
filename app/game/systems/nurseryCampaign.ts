@@ -12,6 +12,7 @@ export interface NurseryCampaignProgress {
   chronicle: ClanChronicle;
   completedAt: string | null;
   ceremonyM006?: true;
+  templeTriadFirstM017?: true;
 }
 const record = (value: unknown): value is Record<string, unknown> => !!value && typeof value === "object" && !Array.isArray(value);
 export function createNurseryCampaign(ceremonyM006 = false): NurseryCampaignProgress {
@@ -21,7 +22,8 @@ export function createNurseryCampaign(ceremonyM006 = false): NurseryCampaignProg
 /** Missing means legacy adult campaign; malformed explicit progress must be rejected by the save parser. */
 export function normalizeNurseryCampaign(value: unknown): NurseryCampaignProgress | null {
   if (!record(value) || value.version !== 1 || !["active", "completed"].includes(String(value.status)) ||
-      (value.ceremonyM006 !== undefined && value.ceremonyM006 !== true)) return null;
+      (value.ceremonyM006 !== undefined && value.ceremonyM006 !== true) ||
+      (value.templeTriadFirstM017 !== undefined && value.templeTriadFirstM017 !== true)) return null;
   const checkpoint = normalizeNurseryCheckpoint(value.checkpoint);
   if (!checkpoint || !record(value.chronicle) || value.chronicle.version !== 1) return null;
   const chronicle = normalizeClanChronicle(value.chronicle);
@@ -36,7 +38,8 @@ export function normalizeNurseryCampaign(value: unknown): NurseryCampaignProgres
     if (checkpoint.phase !== "complete" || !begun || !completed || !recognized || typeof value.completedAt !== "string" || !Number.isFinite(Date.parse(value.completedAt))) return null;
   }
   return { version: 1, status: value.status as NurseryCampaignProgress["status"], checkpoint, chronicle,
-    completedAt: value.completedAt as string | null, ...(value.ceremonyM006 ? { ceremonyM006: true } : {}) };
+    completedAt: value.completedAt as string | null, ...(value.ceremonyM006 ? { ceremonyM006: true } : {}),
+    ...(value.templeTriadFirstM017 ? { templeTriadFirstM017: true } : {}) };
 }
 function keepsCohortProgress(previous: NurseryState, next: NurseryState): boolean {
   const before = previous.cohortV172;

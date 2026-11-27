@@ -17,6 +17,8 @@ export interface FirstHuntSoloV90Props {
   onCheckpoint(state: SoloV90State): boolean;
   onProgress(receipts: readonly SoloV90Receipt[], state: SoloV90State): Promise<boolean>;
   onExit(): void | Promise<void>; onReturnToCity(): Promise<boolean>; onOpenSettings?(): void;
+  templeBeforeCombat?: boolean;
+  onEnterTemple?(): boolean;
 }
 const BUTTONS = [["left", "←"], ["right", "→"], ["jump", "Saut"], ["dodge", "Esquive"], ["blade", "Lame / Signal"], ["interact", "Interagir"]] as const;
 /** The owner commits every receipt before simulation resumes. A rejected checkpoint stays mounted. */
@@ -31,6 +33,7 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
   const [state, setState] = useState(initial), [bank, setBank] = useState<YouthArtBank | null>(null);
   const [artError, setArtError] = useState(""), [saveError, setSaveError] = useState(""), [loadAttempt, setLoadAttempt] = useState(0);
   const [paused, setPaused] = useState(false), [pendingUi, setPendingUi] = useState(false), [saving, setSaving] = useState(false), [touchUi, setTouchUi] = useState(false);
+  const templeHandoff = props.templeBeforeCombat === true && state?.phase === "observe" && !pendingUi;
   useEffect(() => { latest.current = props; }, [props]);
   const clear = useCallback(() => { neutralRequired.current = true; for (const code of codes.current) release.current.add(code); codes.current.clear(); touch.current.clear(); roleSelection.current = null; }, []);
   const checkpoint = useCallback(() => {
@@ -75,8 +78,10 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
   }, [loadAttempt]);
   useEffect(() => {
     if (props.externallyPaused || paused || pendingUi || artError) clear();
-    if ((paused || pendingUi || artError || state?.phase === "complete") && !props.externallyPaused) panelRef.current?.querySelector<HTMLButtonElement>("button:not(:disabled)")?.focus();
-  }, [props.externallyPaused, paused, pendingUi, saveError, artError, state?.phase, clear]);
+    if ((paused || pendingUi || artError || templeHandoff || state?.phase === "complete") && !props.externallyPaused) {
+      panelRef.current?.querySelector<HTMLButtonElement>("button:not(:disabled)")?.focus();
+    }
+  }, [props.externallyPaused, paused, pendingUi, saveError, artError, templeHandoff, state?.phase, clear]);
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (latest.current.externallyPaused || (e.target instanceof HTMLElement && e.target.closest("button,input,select,textarea"))) return;
@@ -98,7 +103,9 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
       if (sample.neutral && !latest.current.externallyPaused && !pausedRef.current && !pending.current) neutralRequired.current = false;
       if (pad && !sample.neutral && !padActive) void audioRef.current?.unlock(); padActive = !!pad && !sample.neutral;
       if (sample.pause && !padPause) { if (pausedRef.current) resume(); else pause(); } padPause = sample.pause;
-      const blocked = pausedRef.current || latest.current.externallyPaused === true || !!pending.current || busy.current || neutralRequired.current || release.current.size > 0 || document.hidden || !bank;
+      const awaitingTemple = latest.current.templeBeforeCombat && stateRef.current?.phase === "observe";
+      const blocked = pausedRef.current || latest.current.externallyPaused === true || awaitingTemple === true ||
+        !!pending.current || busy.current || neutralRequired.current || release.current.size > 0 || document.hidden || !bank;
       audioRef.current?.setMuted(blocked || latest.current.soundEnabled === false);
       const elapsed = previous ? Math.min(100, Math.max(0, time - previous)) : 0; previous = time;
       let changed = false;
@@ -154,6 +161,11 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
     catch { setSaveError("Le départ a échoué. La scène reste disponible."); }
     finally { busy.current = false; if (mounted.current) setSaving(false); }
   };
+  const enterTemple = () => {
+    if (busy.current || pending.current || latest.current.externallyPaused) return;
+    clear();
+    if (!latest.current.onEnterTemple?.()) setSaveError("Le départ attend une sauvegarde confirmée. Réessaie au seuil.");
+  };
   const chooseRoles = (plan: SoloV90RolePlan) => {
     if (!stateRef.current || !soloV90RoleBoardReady(stateRef.current) ||
         pausedRef.current || pending.current || busy.current || props.externallyPaused) return;
@@ -178,7 +190,8 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
     : state?.phase === "observe" ? "Vek : lis l’annonce, la charge puis le retrait. Regarde trois cycles depuis ce repère avant d’engager le combat."
     : state?.phase === "return" ? state.result === "assisted" ? "Saar : reste là. Je viens à ton côté. Nous rentrons ensemble ; une blessure ne disparaît pas parce que l’exercice est fini." : "Le vétéran attend notre retour. Gardons le même résultat dans le rapport, qu’il s’agisse d’une réussite ou d’un repli."
     : state?.phase === "debrief" ? state.result === "success" ? "Les trois contributions sont reçues. Décris aussi tes blessures. Cette réussite prépare la chasse ; elle ne t’attribue aucune marque." : "Vous êtes revenus ensemble. Le repli est consigné, les blessures aussi. Personne ne transforme cette tentative en victoire." : "";
-  const modal = !state || !!artError || paused || pendingUi && !!saveError || state?.phase === "complete" && !pendingUi;
+  const modal = !state || !!artError || paused || templeHandoff || pendingUi && !!saveError || state?.phase === "complete" && !pendingUi;
+  const dialogTitle = templeHandoff ? "La triade est prête" : state?.phase === "complete" ? "Évaluation terminée" : "Pause et sauvegarde";
   const notice = state && soloV90ObservationPostReady(state) ? "VUE DE DÉMONSTRATION · Ta position reste au repère. Maintiens Interaction pour lire le cycle ; marcher reprend ta caméra." : state?.phase === "return" && state.result === "assisted" ? "EXTRACTION AIDÉE · Saar doit t’atteindre avant de marcher. Vitalité conservée à zéro." : state?.phase === "combat" && state.drone.mode === "telegraph" ? "CHARGE ANNONCÉE · saute, recule ou esquive au bon moment ; frappe pendant le retrait." : "";
   return <section className={styles.screen} data-solo-v90 data-solo-step={state?.phase ?? "invalid"}>
     <header className={styles.header} inert={modal && !props.externallyPaused ? true : undefined}><strong>CAMPAGNE · PRÉPARATION DE TRIADE · COMBAT DE SEUIL</strong><div><button type="button" onClick={pause} disabled={!state || pendingUi}>Pause</button><button type="button" onClick={() => setTouchUi(v => !v)} aria-pressed={touchUi}>Tactile</button></div></header>
@@ -208,16 +221,19 @@ export default function FirstHuntSoloV90(props: FirstHuntSoloV90Props) {
     <div className={styles.view} inert={modal && !props.externallyPaused ? true : undefined}><canvas ref={canvasRef} width={960} height={540} tabIndex={0} aria-label="Galerie jouable de préparation : marche, saut, postes de triade, lecture du drone, combat, repli et retour réel." />{spoken && !modal && <p className={styles.spoken}><YautjaTranslationV67 text={spoken} paused={paused || !!props.externallyPaused || pendingUi} reducedMotion={props.reducedMotion} /></p>}{notice && !modal && <p className={styles.notice} role="status">{notice}</p>}</div>
     {touchUi && <div className={styles.controls} aria-label="Commandes tactiles de la préparation de triade">{BUTTONS.map(([action, label]) => <button type="button" key={action} data-solo-action={action} disabled={!!modal || !!props.externallyPaused || pendingUi} onPointerDown={e => setTouch(action, true, e)} onPointerUp={() => setTouch(action, false)} onPointerCancel={() => setTouch(action, false)} onLostPointerCapture={() => setTouch(action, false)} onBlur={() => setTouch(action, false)} onKeyDown={e => { if ((e.key === " " || e.key === "Enter") && !e.repeat) { e.preventDefault(); setTouch(action, true); } }} onKeyUp={e => { if (e.key === " " || e.key === "Enter") { e.preventDefault(); setTouch(action, false); } }}>{label}</button>)}</div>}
     <p className={styles.keys}>Marcher {controlActionShortcut(YOUTH_CONTROL_ACTIONS.left, props.bindings)} / {controlActionShortcut(YOUTH_CONTROL_ACTIONS.right, props.bindings)} · Saut {controlActionShortcut(YOUTH_CONTROL_ACTIONS.jump, props.bindings)} · Esquive {controlActionShortcut(YOUTH_CONTROL_ACTIONS.dodge, props.bindings)} · Lame / Signal {controlActionShortcut(YOUTH_CONTROL_ACTIONS.blade, props.bindings)} · Interagir {controlActionShortcut(YOUTH_CONTROL_ACTIONS.interact, props.bindings)} · Manette : croix/stick, A, B, Y, LB</p>
-    {modal && !props.externallyPaused && <div className={styles.overlay}><div ref={panelRef} className={styles.panel} role="dialog" aria-modal="true" aria-label={state?.phase === "complete" ? "Évaluation terminée" : "Pause et sauvegarde"} onKeyDown={e => {
+    {modal && !props.externallyPaused && <div className={styles.overlay}><div ref={panelRef} className={styles.panel} role="dialog" aria-modal="true" aria-label={dialogTitle} onKeyDown={e => {
       if (e.key === "Escape" && paused && !pendingUi) { e.preventDefault(); resume(); }
       if (e.key === "Tab") { const nodes = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>("button:not(:disabled)")); if (!nodes.length) return; const first = nodes[0], last = nodes[nodes.length - 1]; if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } }
-    }}><h2>{state?.phase === "complete" ? "Évaluation conservée" : "Préparation de triade · Combat de seuil"}</h2>
-      {!state ? <p>Le checkpoint est invalide ou appartient à une version non prise en charge. Reviens au menu pour consulter les sauvegardes ; il n’a pas été écrasé.</p> : state.phase === "complete" ? <p>Le vétéran reçoit uniquement le résultat observé de cet entraînement, les contributions et les blessures. Tu restes Young Blood : la vraie épreuve Quatza-Rij, le retour de reconnaissance et le marquage Blooded ne sont pas validés ici.</p> : <p>Les mécanismes, les compagnons et le combat sont arrêtés. Relâche les commandes avant la reprise.</p>}
-      {evaluation && <dl aria-label="Évaluation factuelle de la triade" data-solo-v92-evaluation><dt>Issue observée</dt><dd>{evaluation.result}</dd><dt>Coups portés par la formation</dt><dd>Jeune {evaluation.contributions.player} · Saar {evaluation.contributions.saar} · Vek {evaluation.contributions.vek}</dd><dt>Vitalité au retour</dt><dd>{evaluation.health}/6 · {evaluation.injury}</dd><dt>Remise au vétéran</dt><dd>{evaluation.reported ? "Rapport enregistré" : "Rapport à remettre en personne"}</dd></dl>}
+    }}><h2>{templeHandoff ? dialogTitle : state?.phase === "complete" ? "Évaluation conservée" : "Préparation de triade · Combat de seuil"}</h2>
+      {!state ? <p>Le checkpoint est invalide ou appartient à une version non prise en charge. Reviens au menu pour consulter les sauvegardes ; il n’a pas été écrasé.</p> : state.phase === "complete" ? <p>Le vétéran reçoit uniquement le résultat observé de cet entraînement, les contributions et les blessures. Tu restes Young Blood : la vraie épreuve Quatza-Rij, le retour de reconnaissance et le marquage Blooded ne sont pas validés ici.</p> : templeHandoff ? <p>Les trois postes sont consignés. Rejoins le Temple avec Saar et Vek, puis reprends l’exercice du seuil au retour.</p>
+        : <p>Les mécanismes, les compagnons et le combat sont arrêtés. Relâche les commandes avant la reprise.</p>}
+      {evaluation && !templeHandoff && <dl aria-label="Évaluation factuelle de la triade" data-solo-v92-evaluation><dt>Issue observée</dt><dd>{evaluation.result}</dd><dt>Coups portés par la formation</dt><dd>Jeune {evaluation.contributions.player} · Saar {evaluation.contributions.saar} · Vek {evaluation.contributions.vek}</dd><dt>Vitalité au retour</dt><dd>{evaluation.health}/6 · {evaluation.injury}</dd><dt>Remise au vétéran</dt><dd>{evaluation.reported ? "Rapport enregistré" : "Rapport à remettre en personne"}</dd></dl>}
       {(saveError || props.persistenceError) && <p className={styles.error} role="alert">{saveError || props.persistenceError}</p>}{artError && <p className={styles.error} role="alert">{artError}</p>}
       <nav>{!state ? <button type="button" onClick={() => void props.onExit()}>Retour au menu</button> : <>
         {artError && <button type="button" onClick={() => { setArtError(""); setLoadAttempt(a => a + 1); }}>Recharger les images</button>}
-        {pendingUi ? <button type="button" disabled={saving} onClick={() => void submit()}>Réessayer l’enregistrement</button> : state.phase === "complete" ? <button type="button" disabled={saving} data-solo-return onClick={() => void leave(true)}>Revenir dans la cité</button> : <button type="button" disabled={!!artError || saving} onClick={resume}>Reprendre</button>}
+        {pendingUi ? <button type="button" disabled={saving} onClick={() => void submit()}>Réessayer l’enregistrement</button> : state.phase === "complete" ? <button type="button" disabled={saving} data-solo-return onClick={() => void leave(true)}>Revenir dans la cité</button> : templeHandoff
+          ? <button type="button" data-solo-v90-enter-temple disabled={!!artError || saving || !props.onEnterTemple} onClick={enterTemple}>Entrer au Temple avec la triade</button>
+          : <button type="button" disabled={!!artError || saving} onClick={resume}>Reprendre</button>}
         {!pendingUi && <button type="button" disabled={saving} onClick={() => void leave(false)}>Sauvegarder et quitter</button>}
         {props.onOpenSettings && !pendingUi && <button type="button" onClick={() => { if (checkpoint()) props.onOpenSettings?.(); }}>Réglages</button>}
       </>}</nav>

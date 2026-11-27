@@ -5,21 +5,56 @@
 import type { SaveGame } from "../types";
 import type { SaveWriteFailure, SaveWriteResult, SaveWriteReconciliation } from "../save";
 import type { HunterPieceIdV146 } from "../hunterPiecesV146";
-import { normalizeHarvestInventoryV112 } from "./harvestInventoryV112";
+import { normalizeHarvestInventoryV112, type HarvestInventoryV112 } from "./harvestInventoryV112";
 import { payRepairFromArchiveV146, repairCostV146, repairPieceV146 } from "./hunterCustomizationV146";
 
-/** Confirm the exact quoted damage against the latest durable campaign. */
-export function applyHunterForgeRepairV146(current: SaveGame, piece: HunterPieceIdV146, expectedLevel: number): SaveGame | null {
+type ArchivedMaterialV146 = HarvestInventoryV112["archive"][number];
+
+export const forgeMaterialKeyV146 = ({ speciesId, partId }: ArchivedMaterialV146): string =>
+  JSON.stringify([speciesId, partId]);
+
+export interface ForgeRepairQuoteV146 {
+  materialKey: string | null;
+  cost: number;
+  units: ReadonlyArray<ArchivedMaterialV146 & { consumed: number }>;
+}
+
+/** Use the same debit and quality rounding for the preview and the write. */
+export function planForgeRepairMaterialsV146(
+  archive: readonly ArchivedMaterialV146[], cost: number, materialKey: string | null = null,
+): { archive: ArchivedMaterialV146[]; quote: ForgeRepairQuoteV146 } | null {
+  if (!Number.isSafeInteger(cost) || cost <= 0) return null;
+  const material = materialKey === null ? archive : archive.filter(entry => forgeMaterialKeyV146(entry) === materialKey);
+  const paid = payRepairFromArchiveV146(material, cost);
+  if (!paid) return null;
+
+  const remaining = new Map(paid.map(entry => [forgeMaterialKeyV146(entry), entry]));
+  const units: Array<ArchivedMaterialV146 & { consumed: number }> = [];
+  const retained = archive.flatMap(entry => {
+    const key = forgeMaterialKeyV146(entry);
+    if (materialKey !== null && key !== materialKey) return [entry];
+    const rest = remaining.get(key);
+    const consumed = entry.count - (rest?.count ?? 0);
+    if (consumed > 0) units.push({ ...entry, consumed });
+    return rest ? [rest] : [];
+  });
+  return { archive: retained, quote: { materialKey, cost, units } };
+}
+
+/** Confirm the damage, stock and exact notified debit against the durable campaign. */
+export function applyHunterForgeRepairV146(
+  current: SaveGame, piece: HunterPieceIdV146, expectedLevel: number, expectedQuote?: ForgeRepairQuoteV146,
+): SaveGame | null {
   const customization = current.customizationV146;
   if (!customization || !Number.isInteger(expectedLevel) || expectedLevel < 1 || expectedLevel > 3 ||
       customization.heavyWear[piece] !== expectedLevel) return null;
   const harvest = normalizeHarvestInventoryV112(current.inventory.harvestV112);
   if (!harvest) return null;
-  const archive = payRepairFromArchiveV146(harvest.archive, repairCostV146(customization, piece));
-  if (!archive) return null;
+  const payment = planForgeRepairMaterialsV146(harvest.archive, repairCostV146(customization, piece), expectedQuote?.materialKey);
+  if (!payment || (expectedQuote && JSON.stringify(payment.quote) !== JSON.stringify(expectedQuote))) return null;
   return {
     ...current,
-    inventory: { ...current.inventory, harvestV112: { ...harvest, archive } },
+    inventory: { ...current.inventory, harvestV112: { ...harvest, archive: payment.archive } },
     customizationV146: repairPieceV146(customization, piece),
   };
 }

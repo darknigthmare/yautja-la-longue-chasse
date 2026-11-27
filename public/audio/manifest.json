@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "dd62d59052d79a25217b5bd6346448869fb997d912de5cdc7316b5251bcf63f2",
+  "version": "5c464a605d2e2d4cc552a98503e5f9e559758a2fbb49efe296a665ab99339253",
   "entries": [
     {
       "id": "ui",
@@ -271,6 +271,20 @@
           "mime": "audio/wav",
           "bytes": 43298,
           "sha256": "371d585b2783406698c4a9e94cb1acc2a8c00e006a40ecae51d1e7b3a359e07e"
+        }
+      ],
+      "fallback": "procedural"
+    },
+    {
+      "id": "ceremony-rack",
+      "category": "sfx",
+      "folder": "sfx/ceremony-rack",
+      "sources": [
+        {
+          "url": "/audio/sfx/ceremony-rack/threshold-metal.wav?v=6f01cdf4a4b69e33",
+          "mime": "audio/wav",
+          "bytes": 52082,
+          "sha256": "6f01cdf4a4b69e330904dac05efd18a96a7f83e4fe8a581120673f2f4c330767"
         }
       ],
       "fallback": "procedural"

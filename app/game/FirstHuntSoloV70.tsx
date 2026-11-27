@@ -17,6 +17,7 @@ export interface FirstHuntSoloV70Props {
   onCheckpoint(state: SoloV70State): boolean;
   onProgress(receipts: readonly SoloV70Receipt[], state: SoloV70State): Promise<boolean>;
   onExit(): void | Promise<void>; onReturnToCity(): Promise<boolean>; onOpenSettings?(): void;
+  continueTriad?: boolean;
 }
 const BUTTONS = [["left", "←"], ["right", "→"], ["jump", "Saut"], ["blade", "Lame / Signal"], ["interact", "Interagir"]] as const;
 /** The owner commits every receipt before simulation resumes. A rejected checkpoint stays mounted. */
@@ -170,7 +171,7 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
       {(saveError || props.persistenceError) && <p className={styles.error} role="alert">{saveError || props.persistenceError}</p>}{artError && <p className={styles.error} role="alert">{artError}</p>}
       <nav>{!state ? <button type="button" onClick={() => void props.onExit()}>Retour au menu</button> : <>
         {artError && <button type="button" onClick={() => { setArtError(""); setLoadAttempt(a => a + 1); }}>Recharger les images</button>}
-        {pendingUi ? <button type="button" disabled={saving} onClick={() => void submit()}>Réessayer l’enregistrement</button> : state.phase === "complete" ? <button type="button" disabled={saving} data-solo-return onClick={() => void leave(true)}>Revenir dans la cité</button> : <button type="button" disabled={!!artError || saving} onClick={resume}>Reprendre</button>}
+        {pendingUi ? <button type="button" disabled={saving} onClick={() => void submit()}>Réessayer l’enregistrement</button> : state.phase === "complete" ? <button type="button" disabled={saving} data-solo-return onClick={() => void leave(true)}>{props.continueTriad ? "Reprendre l’exercice de triade" : "Revenir dans la cité"}</button> : <button type="button" disabled={!!artError || saving} onClick={resume}>Reprendre</button>}
         {!pendingUi && <button type="button" disabled={saving} onClick={() => void leave(false)}>Sauvegarder et quitter</button>}
         {props.onOpenSettings && !pendingUi && <button type="button" onClick={() => { if (checkpoint()) props.onOpenSettings?.(); }}>Réglages</button>}
       </>}</nav>

@@ -6,11 +6,15 @@ import { chromium } from "playwright-core";
 import { createServer } from "vite";
 import { formationCampaignRoute, formationModel } from "../tests/helpers/solo-v90-played-route.mjs";
 import { homeworldSceneSsrV78 } from "../tests/helpers/homeworld-scene-ssr-v78.mjs";
+import { thresholdsCampaignRoute } from "../tests/helpers/solo-v69-played-route.mjs";
 
 const modules = homeworldSceneSsrV78();
 const saves = modules.load("app/game/save.ts");
 const controls = modules.load("app/game/systems/youthControls.ts").YOUTH_CONTROL_ACTIONS;
-const seed = formationCampaignRoute({ stop: "assemble" }).save;
+const templeOrder = process.argv.includes("--temple-order");
+const thresholds = templeOrder ? thresholdsCampaignRoute().save : null;
+const origin = thresholds ? { ...thresholds, prologue: { ...thresholds.prologue, templeTriadFirstM017: true } } : undefined;
+const seed = formationCampaignRoute({ stop: "assemble", origin }).save;
 seed.settings.masterVolume = 0;
 assert(saves.parseSaveImport(saves.exportSave(seed)).save);
 const key = saves.SAVE_STORAGE_KEY;
@@ -39,13 +43,14 @@ try {
   const roleButton = page.locator(`[data-solo-v90-plan="${plan}"]`);
   const saved = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), key);
   const live = () => canvas.evaluate(item => JSON.parse(item.dataset.soloState));
-  async function boot() {
+  async function boot(chapter = "v90") {
     await page.locator("[data-campaign-menu]").waitFor({ timeout: 90000 });
     const campaign = page.locator('[data-menu-section="campaign"]');
     if (await campaign.isVisible()) await campaign.click();
     await page.locator('[data-menu-action="continue"]').click();
-    await page.locator('[data-solo-v90] canvas[data-solo-assets="true"]').waitFor({ timeout: 90000 });
-    await canvas.focus();
+    const active = page.locator(`[data-solo-${chapter}] canvas[data-solo-assets="true"]`);
+    await active.waitFor({ timeout: 90000 });
+    await active.focus();
   }
   // Initialize the clock before the game records its first animation frame.
   await page.clock.install();
@@ -141,6 +146,39 @@ try {
   assert.deepEqual(complete.prologue.chronicle, seed.prologue.chronicle);
   assert(saves.parseSaveImport(saves.exportSave(complete)).save);
   await page.screenshot({ path: resolve(output, "postes-rejoins.png"), animations: "disabled" });
+  if (templeOrder) {
+    const handoff = page.locator("[data-solo-v90-enter-temple]");
+    const preparedAt = complete.soloV90.checkpoint.milestones["roles-positioned"];
+    assert.equal(complete.soloV70 ?? null, null);
+    assert.equal(typeof preparedAt, "number");
+    await handoff.waitFor();
+    await page.clock.runFor(1800);
+    assert.equal((await live()).tick, preparedAt);
+    assert.equal((await live()).observedCycles, 0);
+    await page.reload();
+    await boot();
+    await handoff.waitFor();
+    assert.equal((await live()).tick, preparedAt);
+    await page.screenshot({ path: resolve(output, "triade-depart-temple.png"), animations: "disabled" });
+    await handoff.click();
+    const temple = page.locator('[data-solo-v70] canvas[data-solo-assets="true"]');
+    await temple.waitFor({ timeout: 90000 });
+    assert.equal((await saved()).soloV70.checkpoint.phase, "briefing");
+    await temple.focus();
+    await page.clock.runFor(180);
+    await page.keyboard.down(interaction);
+    await page.clock.runFor(120);
+    await page.keyboard.up(interaction);
+    await page.clock.runFor(240);
+    assert.equal((await saved()).soloV70.receipts.at(-1).id, "briefed");
+    assert.deepEqual((await saved()).soloV90, complete.soloV90);
+    await page.reload();
+    await boot("v70");
+    assert.equal((await saved()).soloV70.receipts.at(-1).id, "briefed");
+    assert.equal(await handoff.count(), 0);
+    await page.screenshot({ path: resolve(output, "temple-apres-rechargement.png"), animations: "disabled" });
+    report.templeOrder = { preparedAt, localOpening: "briefed", resumedScene: "v70" };
+  }
   assert.deepEqual(report.errors, []);
   report.passed = true;
 } finally {
