@@ -1,0 +1,104 @@
+name: Elite · rites L06 and recognition
+on:
+  push:
+    branches: [codex/qa-elite-l06-v175-20261127]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source:
+    name: Verify campaign proofs, workbook and runtime asset inventory
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ASSET_RACCORDS_SOURCE_COMMIT: '57e3bd0a2479a5d5a59f9f1d9e7affa757f48add'
+      BASE_COMMIT: '2769b094862aea97f10fc0e5c4f1154489a8a8bc'
+    steps:
+      - name: Checkout the exact candidate and bounded inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '57e3bd0a2479a5d5a59f9f1d9e7affa757f48add'
+          persist-credentials: false
+          fetch-depth: 12
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /production/INVENTAIRE_BIBLE_20261122.*
+            /production/YAUTJA_LOTS_P0_P3_20261121.*
+            /production/YAUTJA_LOTS_P0_P3_LOT2_20261121.*
+            /public/game/xeno-prime/berceau-v1/
+            /public/audio/
+            /public/game/quatza-rij/
+            /public/game/assets/v37/tribes/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp
+            /public/game/assets/v37/tribes/v2/homeworld-forest-v2--8fdc633789dcd9c0.webp
+            /public/game/assets/v37/tribes/v2/homeworld-lava-v2--ecd85e06796799d2.webp
+            /public/game/backgrounds/ice-depth-v4.webp
+            /public/game/backgrounds/ocean-depth-v8.png
+            /public/game/backgrounds/ruins-depth-v8.png
+            /public/game/backgrounds/swamp-depth-v8.png
+            /public/game/homeworld/v67/ash-causeway-vista.png
+            /public/game/homeworld/v67/glass-processional-vista.png
+            /public/game/sprites/v8/ecology/cinder-12/basalt-ram-sheet.png
+            /public/game/sprites/v8/ecology/cinder-12/smoke-wyvern-sheet.png
+            /public/game/sprites/v8/ecology/naraka-delta/mire-shell-sheet.png
+            /public/game/sprites/v8/ecology/nivalis-k/snow-prowler-sheet.png
+            /public/game/sprites/v8/ecology/oseris-iv/amber-jaw-stalker-sheet.png
+            /public/game/sprites/v8/ecology/pelagos-m/shellback-sheet.png
+            /public/game/sprites/v8/ecology/serekh-9/burrow-snake-sheet.png
+            /public/game/assets/clan-field-20261103/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues-index.json
+            /public/game/assets/v139/rig-gauntlets/
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/assets/v133/concept-masks/
+            /public/game/assets/v133/decals/decal-atlas.webp
+            /public/game/sprites/v62/heads/
+            /public/game/assets/v134/
+            /public/game/assets/v135/
+            /public/game/assets/v136/
+            /public/game/p0-sprites-20261113/warp/
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize official runtime inputs and install dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Test the campaign rites and existing simulator
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec
+          tests/elite-recognition-v174.test.mjs tests/elite-mastery-v170.test.mjs
+          tests/ship-training-receipt-v94.test.mjs tests/training-lifecycle-v94.test.mjs
+          tests/blooded-temple-v174.test.mjs tests/homeworld-adjutant-save-m029.test.mjs
+      - name: Verify Next types
+        if: ${{ !cancelled() }}
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Lint rites, recognition and simulator
+        if: ${{ !cancelled() }}
+        run: >-
+          npx eslint app/game/EliteRecognition.tsx app/game/EliteClanRites.tsx app/game/ClanChroniclePanel.tsx
+          app/game/TrainingDrill.tsx app/game/useTrainingDrillRuntimeV94.ts
+          app/game/systems/trainingDrill.ts app/game/systems/eliteClanRitesV175.ts app/game/systems/eliteRecognitionV174.ts
