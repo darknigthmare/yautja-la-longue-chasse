@@ -1,9 +1,9 @@
 {
   "date": "2026-11-27",
   "depot": "darknigthmare/yautja-la-longue-chasse",
-  "refMain": "a6f37902385f5f7854d28e900109bffab183130e",
-  "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/a6f37902385f5f7854d28e900109bffab183130e/docs/campagne/BIBLE_DE_CAMPAGNE.md",
-  "methode": "Le relevé part de main ddb540d. Les scènes jouées, leurs admissions et les tâches restantes sont documentées par fiche.",
+  "refMain": "98360a6c63a987f2cb346ec7454f18cb276c2ade",
+  "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/98360a6c63a987f2cb346ec7454f18cb276c2ade/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+  "methode": "Le relevé part de main c74d213. Le parcours de la Galerie, ses reprises et les étapes ouvertes sont rattachés à la fiche R2-M017.",
   "statuts": {
     "RACCORDE": "Boucle de la fiche jouée et persistée, ou chapitre que la Bible accepte expressément comme équivalent. Les écarts signalés restent ouverts.",
     "PARTIEL_MISSION": "Une partie propre à la fiche a un déclenchement ou une preuve jouable. Des étapes spécifiées restent ouvertes.",
@@ -518,14 +518,14 @@
       },
       "fiche": 2123,
       "etatSurMain": "PARTIEL_MISSION",
-      "observation": "Le Puits de Résine, la Chambre de Confinement, la loge de la Reine et le Sas de Purge prolongent la Descente et la Galerie. Le joueur observe les œufs, ouvre les dispositifs avec les deux partenaires et réamorce la purge depuis l’amont si elle expire. Le seuil d’admission au Quatza-Rij exige la traversée et le regroupement.",
+      "observation": "Dans les nouvelles configurations à quinze salles, le relevé déclenche l’éclosion d’un œuf de la Galerie des Coques. Le joueur peut éviter le bond du facehugger puis fermer la grille avec Saar et Vek. Le passage aval attend le confinement. Le carnet conserve l’éclosion et la grille lors d’une reprise.",
       "preuves": [
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/campaignSoloV70.ts#L22-L57",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L1998-L2005",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2989-L2994"
       ],
-      "etatDeLivraison": "Du Puits de Résine au Sas de Purge",
-      "reste": "L’éclosion, le combat contre la reine, le transport d’un blessé et les chasses qualifiantes restent ouverts. Les sauvegardes engagées à neuf ou onze salles gardent leur parcours.",
+      "etatDeLivraison": "Éclosion, grille de confinement et reprise du seuil",
+      "reste": "La rencontre royale, le transport d’un blessé et les chasses qualifiantes restent ouverts. Les configurations à 9, 11 ou 15 salles déjà engagées conservent leur parcours.",
       "preuvesLivraison": [
         "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/bd2b27729c030b2403faa3b3079d08bc97e221f2",
         "actions/runs/45999084802",
@@ -558,7 +558,18 @@
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/20babf7e74845427058cbdf53028b8e33de4f0ec/app/game/systems/campaignSoloV70.ts",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/20babf7e74845427058cbdf53028b8e33de4f0ec/tests/temple-full-depths-m017.test.mjs",
         "actions/runs/46064795563",
-        "actions/runs/46064795563/artifacts/15230342461"
+        "actions/runs/46064795563/artifacts/15230342461",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/98360a6c63a987f2cb346ec7454f18cb276c2ade/app/game/FirstHuntSoloV70.tsx",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/98360a6c63a987f2cb346ec7454f18cb276c2ade/app/game/firstHuntSoloV70Rendering.ts",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/98360a6c63a987f2cb346ec7454f18cb276c2ade/app/game/systems/campaignSoloV70.ts",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/98360a6c63a987f2cb346ec7454f18cb276c2ade/app/game/systems/firstHuntSoloV70.ts",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/98360a6c63a987f2cb346ec7454f18cb276c2ade/app/game/systems/firstHuntSoloV70DepthsM017.ts",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/98360a6c63a987f2cb346ec7454f18cb276c2ade/scripts/qa-temple-depths-m017.mjs",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/98360a6c63a987f2cb346ec7454f18cb276c2ade/tests/helpers/solo-v70-played-route.mjs",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/98360a6c63a987f2cb346ec7454f18cb276c2ade/tests/temple-full-depths-m017.test.mjs",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/98360a6c63a987f2cb346ec7454f18cb276c2ade/public/game/xeno-prime/berceau-v1/sprites/ruche/026_oeuf_ouvert.png",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/98360a6c63a987f2cb346ec7454f18cb276c2ade/public/game/xeno-prime/berceau-v1/sprites/personnages/058_facehugger.png",
+        "actions/runs/46075305867"
       ],
       "raccordProjete": "PARTIEL_MISSION"
     },
@@ -2359,14 +2370,37 @@
       "titre": "Piste et succession O6, atelier et retour chargé",
       "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/208",
       "commit": "a6f37902385f5f7854d28e900109bffab183130e",
-      "etat": "open",
-      "fusionnee": false,
+      "etat": "closed",
+      "fusionnee": true,
       "fusionGitPossible": true,
       "observation": "La recette commune et les preuves ciblées étayent les raccords. Les limites de chaque mission restent visibles.",
       "controles": [
         {
           "nom": "Tests, TypeScript, ESLint et build servi",
           "lien": "actions/runs/46072686987",
+          "conclusion": "réussite"
+        }
+      ],
+      "etatGit": "merged"
+    },
+    {
+      "pr": 209,
+      "titre": "Éclosion et reprise au Temple des Trois Ombres",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/209",
+      "commit": "98360a6c63a987f2cb346ec7454f18cb276c2ade",
+      "etat": "open",
+      "fusionnee": false,
+      "fusionGitPossible": true,
+      "observation": "Dans les nouvelles configurations à quinze salles, le relevé déclenche l’éclosion d’un œuf de la Galerie des Coques. Le joueur peut éviter le bond du facehugger puis fermer la grille avec Saar et Vek. Le passage aval attend le confinement. Le carnet conserve l’éclosion et la grille lors d’une reprise.",
+      "controles": [
+        {
+          "nom": "Recette Chromium",
+          "lien": "actions/runs/46075305867",
+          "conclusion": "réussite"
+        },
+        {
+          "nom": "Tests et build du lot assemblé",
+          "lien": "actions/runs/46075326922",
           "conclusion": "réussite"
         }
       ]
@@ -2819,15 +2853,9 @@
     "fichesVoisines": [],
     "fichesNonCommenceesObservees": [],
     "chantiersVérifiés": [
-      "R2-M006"
+      "R2-M017"
     ],
-    "transversesVerifies": [
-      "O6_M05_PETITE_PISTE",
-      "STORY5_TR_O6_06_DEPART",
-      "FIN_DE_VOIE",
-      "FORGE_CARTE_RECOLTE_CANOPEE",
-      "ACHERON_VIDE"
-    ],
+    "transversesVerifies": [],
     "projectionDuCandidat": {
       "RACCORDE": 67,
       "PARTIEL_MISSION": 1,
@@ -2840,15 +2868,15 @@
       "VOISIN": 0,
       "NON_COMMENCE_OBSERVE": 0
     },
-    "refComposition": "a6f37902385f5f7854d28e900109bffab183130e",
-    "prComposition": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/208",
+    "refComposition": "98360a6c63a987f2cb346ec7454f18cb276c2ade",
+    "prComposition": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/209",
     "controlesGroupes": {
-      "ref": "4b2b598e4d9f8cf3a815a3571f8230c22c6cee8f",
-      "tests": "actions/runs/46072686987",
-      "build": "actions/runs/46072686987"
+      "ref": "d87c1db791957a5e54f920af560b01d309aaf7db",
+      "tests": "actions/runs/46075326922",
+      "build": "actions/runs/46075326922"
     }
   },
-  "refHistorique": "ddb540dd3cb941fd20a4883cfaedc3c9291d9b9b",
+  "refHistorique": "c74d21310c011c8465f5b761962592b4c3bd2581",
   "historiqueLot188": {
     "fichesRaccordeesSurRef": 26,
     "fichesSansNouveauRaccordDansLeLot": [
@@ -2918,8 +2946,8 @@
   },
   "sourceDocument": {
     "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
-    "commit": "a6f37902385f5f7854d28e900109bffab183130e",
-    "blob": "b0eaec3d63d435376e1da64006a7477fe83cb4ee"
+    "commit": "98360a6c63a987f2cb346ec7454f18cb276c2ade",
+    "blob": "dc19280df66e750e53bbd12ef2ec8eca4da678a7"
   },
   "historiqueLot197": {
     "refMain": "9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404",
