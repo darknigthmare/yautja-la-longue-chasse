@@ -34,6 +34,7 @@ jobs:
             /docs/
             /production/INVENTAIRE_BIBLE_20261122.*
             /public/**/manifest.json
+            /.openai/hosting.json
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
@@ -59,6 +60,8 @@ jobs:
       NEXT_TELEMETRY_DISABLED: '1'
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       SKINNING_CANOPY_QA_OUTPUT: outputs/qa-skinning-canopy-20261109
+      SKINNING_CANOPY_QA_CASE: canopy
+      SKINNING_CANOPY_QA_TRANSFER: buffered
     steps:
       - name: Checkout current application and exact asset index
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -149,14 +152,7 @@ jobs:
           assert.equal(hash({replay: 1}), digest('{"replay":1}'));
           console.log('Verified exact buffer/view bounds, text, and JSON hashes.');
           NODE
-      - name: Play field work, durable reloads, extraction, workshop and canopy
-        run: node scripts/qa-skinning-canopy-durable-browser-20261109.mjs
-      - name: Tap Up after native tangent release and catch the next vine
-        if: ${{ !cancelled() }}
-        env:
-          SKINNING_CANOPY_QA_CASE: canopy
-          SKINNING_CANOPY_QA_TRANSFER: buffered
-          SKINNING_CANOPY_QA_OUTPUT: outputs/qa-canopy-buffered-transfer
+      - name: Catch the next authored vine using a single native Up press
         run: node scripts/qa-skinning-canopy-durable-browser-20261109.mjs
       - name: Print the result of the native browser recipe
         if: always()
@@ -177,7 +173,6 @@ jobs:
           name: skinning-canopy-durable-${{ github.sha }}
           path: |
             outputs/qa-skinning-canopy-20261109/
-            outputs/qa-canopy-buffered-transfer/
             outputs/qa-asset-raccords-20261120/materialization-hunt-runtime.json
           if-no-files-found: error
           retention-days: 30
