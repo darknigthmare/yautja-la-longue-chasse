@@ -1,0 +1,105 @@
+.panel {
+  padding: clamp(.8rem, 2.5vw, 1.4rem);
+  border: 1px solid #7f8060;
+  border-radius: .6rem;
+  background: #242b22;
+  color: #fff7df;
+}
+
+.panel h3 {
+  margin: 0;
+}
+
+.teams {
+  display: grid;
+  gap: .5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.teams li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem 1rem;
+  justify-content: space-between;
+  padding: .4rem .65rem;
+  border-inline-start: 3px solid #b3b988;
+  background: #394131;
+}
+
+.teams li[data-status="evacuated"] {
+  border-color: #9fbf96;
+}
+
+.map {
+  display: grid;
+  min-height: clamp(10rem, 28vw, 23rem);
+  aspect-ratio: 1.45;
+  overflow: hidden;
+  border: 1px solid #b19e79;
+  border-radius: .4rem;
+  color: #fff8d4;
+  font-weight: 700;
+}
+
+.map span {
+  display: grid;
+  place-items: center;
+  background: #544b36;
+  border: 1px solid #342e224f;
+}
+
+.map span[data-terrain="wall"] {
+  background: repeating-linear-gradient(140deg, #251e1b 0 .3rem, #332a21 .3rem .6rem);
+}
+
+.map span[data-terrain="cover"] {
+  background: #42503a;
+}
+
+.map span[data-terrain="bridge"],
+.map span[data-terrain="ladder"] {
+  background: #6b583a;
+}
+
+.map span[data-terrain="hazard"] {
+  background: #8d4832;
+}
+
+.map span[data-extraction],
+.map span[data-objective] {
+  box-shadow: inset 0 0 0 2px #e0be6a;
+}
+
+.map span[data-player] {
+  background: #315d53;
+}
+
+.legend {
+  color: #fff2c9;
+  font-size: .85rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+}
+
+.actions button {
+  min-height: 44px;
+  padding: .4rem .65rem;
+  border: 1px solid #b0ad82;
+  border-radius: .35rem;
+  background: #4c543a;
+  color: #fff7e0;
+}
+
+.actions button:disabled {
+  opacity: .6;
+}
+
+.panel :focus-visible {
+  outline: 2px solid #ffe18a;
+  outline-offset: 3px;
+}

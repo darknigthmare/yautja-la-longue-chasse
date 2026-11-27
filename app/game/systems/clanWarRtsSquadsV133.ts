@@ -8,6 +8,8 @@ import {
  type WarMapActorV128,type WarMapPointV128,type WarSourceMapV128,
 } from "./clanWarSourceMapsV128";
 
+type WarSquadRulesV133 = Pick<WarRulesV6,"metadata"|"entries"|"units">;
+
 /**
  * V133 is the FIRST multi-squad W3 field prototype. This module does not call
  * applyWarResultV6, WarSimulationV85 or write to any campaign storage.
@@ -78,7 +80,7 @@ const currentTask=(s:WarRtsSquadsStateV133):WarRtsTaskV129|null=>s.mission.tasks
 const poweredMap=(s:WarRtsSquadsStateV133)=>s.map.poweredDoors.length>0||["W3-MAP02","W3-MAP10","W3-MAP11","W3-MAP12"].includes(s.map.id);
 const activeSquads=(s:WarRtsSquadsStateV133)=>s.squads.filter(u=>u.status==="active"&&u.hp>0);
 const hazardsNow=(turn:number)=>turn%8>=3&&turn%8<=4;
-const unitById=(rules:WarRulesV6,id:string)=>rules.units.find(u=>u.id===id);
+const unitById=(rules:WarSquadRulesV133,id:string)=>rules.units.find(u=>u.id===id);
 
 function makeSquad(unit:WarUnitDefinitionV6,id:string):WarRtsSquadV133{
  const hp=clamp(5+Math.ceil(unit.defense/3)+unit.fullMembers,7,28);
@@ -105,7 +107,7 @@ function close(s:WarRtsSquadsStateV133,outcome:"victory"|"defeat"|"retreat",mess
 }
 /** Planning uses the V6 PC cap exactly. RAV are carried into the exercise,
  * not silently spent on fictional recruits or campaign purchases. */
-export function createWarRtsSquadsV133(id:string,rules:WarRulesV6):WarRtsSquadsStateV133{
+export function createWarRtsSquadsV133(id:string,rules:WarSquadRulesV133):WarRtsSquadsStateV133{
  const source=createWarRtsMissionStateV129(id,rules);
  const mission=source.mission;
  const prioritized=[...new Set([...mission.suggestedV6Units,
@@ -135,7 +137,7 @@ export function createWarRtsSquadsV133(id:string,rules:WarRulesV6):WarRtsSquadsS
   airlockStable:source.base.airlockStable,report:null,log:[],
   lastMessage:"Préparation de détachements W3. Aucun membre ni RAV de campagne n'est engagé."};
 }
-export function draftWarRtsSquadV133(s:WarRtsSquadsStateV133,unitId:string,rules:WarRulesV6):WarRtsSquadsUpdateV133{
+export function draftWarRtsSquadV133(s:WarRtsSquadsStateV133,unitId:string,rules:WarSquadRulesV133):WarRtsSquadsUpdateV133{
  if(s.phase!=="planning"||s.sourceSha!==rules.metadata.sha256)return fail(s,"Préparation ou source V6 incompatible.");
  if(s.squads.length>=4)return fail(s,"Maximum de quatre escouades pour cette carte d'exercice.");
  const unit=unitById(rules,unitId);
@@ -538,7 +540,7 @@ export function commandWarRtsReliefV144(
  * reviving the exercise pawn grants no territory, loot or XP.
  */
 export function commandWarRtsMedicV138(
- s:WarRtsSquadsStateV133,medicId:string,targetId:string,rules:WarRulesV6,
+ s:WarRtsSquadsStateV133,medicId:string,targetId:string,rules:WarSquadRulesV133,
 ):WarRtsSquadsUpdateV133 {
  if(s.phase!=="active"||s.report||s.sourceSha!==rules.metadata.sha256)
   return fail(s,"La séance médicale exige un théâtre actif et les vraies règles V6.");
@@ -920,7 +922,7 @@ export function commandWarRtsTrafficV140(
 
 /** QA guard: all 24 W3 scenarios must have at least two source-budgeted teams,
  * distinct deployment tiles and no automatic campaign award. */
-export function auditWarRtsSquadsV133(rules:WarRulesV6){
+export function auditWarRtsSquadsV133(rules:WarSquadRulesV133){
  const issues:string[]=[];let squads=0,steps=0;
  for(let n=1;n<=24;n++){
   const id="W3-RTS"+String(n).padStart(2,"0");

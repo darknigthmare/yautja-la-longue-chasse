@@ -1,6 +1,5 @@
 import type { SaveGame } from '../types';
-import { normalizeSoloV69Campaign, soloV69MatchesSave } from './campaignSoloV69';
-import { getChronicleRank } from './clanChronicle';
+import { normalizeSoloV69Campaign, soloV69MatchesSave, templeRankKeepsEarlierTrialV174 } from './campaignSoloV69';
 import { createSoloV70State, normalizeSoloV70State, SOLO_V70_PHASES, SOLO_V70_SIGNS, SOLO_V70_ENERGY_VAULT, SOLO_V70_LOAN_RACK, SOLO_V70_QUARANTINE_THRESHOLD,
   soloV70Receipts, soloV70Portal, soloV70CanTravel, soloV70TrioPresent, soloV70TrioObservation, type SoloV70State, type SoloV70Receipt } from './firstHuntSoloV70';
 export interface SoloV70Campaign { version:1;status:'active'|'completed';checkpoint:SoloV70State;receipts:SoloV70Receipt[];startedAt:string;completedAt:string|null }
@@ -9,9 +8,9 @@ const record=(v:unknown):v is Record<string,unknown>=>!!v&&typeof v==='object'&&
 const iso=(v:unknown):v is string=>typeof v==='string'&&v.length<=128&&Number.isFinite(Date.parse(v));
 const same=(a:unknown,b:unknown)=>JSON.stringify(a)===JSON.stringify(b);
 export function normalizeSoloV70Campaign(v:unknown):SoloV70Campaign|null{if(!record(v)||v.version!==1||!['active','completed'].includes(String(v.status))||!iso(v.startedAt))return null;const checkpoint=normalizeSoloV70State(v.checkpoint);if(!checkpoint||!Array.isArray(v.receipts)||!same(v.receipts,soloV70Receipts(checkpoint)))return null;const complete=checkpoint.phase==='complete';if((v.status==='completed')!==complete||(complete?!iso(v.completedAt)||Date.parse(v.completedAt)<Date.parse(v.startedAt):v.completedAt!==null))return null;return {version:1,status:v.status as SoloV70Campaign['status'],checkpoint,receipts:soloV70Receipts(checkpoint),startedAt:v.startedAt,completedAt:v.completedAt as string|null};}
-function prerequisites(v:unknown):v is SoloV70Save {return record(v)&&soloV69MatchesSave(v)&&normalizeSoloV69Campaign(v.soloV69)?.status==='completed'&&getChronicleRank((v as unknown as SoloV70Save).prologue!.chronicle)==='young-blood'&&(v as unknown as SoloV70Save).prologue!.chronicle.rites.length===2;}
+function prerequisites(v: unknown, completed = false): v is SoloV70Save {return record(v)&&soloV69MatchesSave(v)&&normalizeSoloV69Campaign(v.soloV69)?.status==='completed'&&templeRankKeepsEarlierTrialV174((v as unknown as SoloV70Save).prologue!.chronicle, completed);}
 const journey=(v:Record<string,unknown>)=>record(v.homeworldRegionV68)&&v.homeworldRegionV68.status!=='at-city'||record(v.homeworldPassageV67)&&v.homeworldPassageV67.status!=='at-city'||record(v.gameReserveV66)&&v.gameReserveV66.status==='active';
-export function soloV70MatchesSave(v:unknown){if(!record(v))return false;if(v.soloV70===undefined||v.soloV70===null)return true;const progress=normalizeSoloV70Campaign(v.soloV70);return prerequisites(v)&&!!progress&&!(progress.status==='active'&&journey(v));}
+export function soloV70MatchesSave(v:unknown){if(!record(v))return false;if(v.soloV70===undefined||v.soloV70===null)return true;const progress=normalizeSoloV70Campaign(v.soloV70);return !!progress&&prerequisites(v, progress.status==='completed')&&!(progress.status==='active'&&journey(v));}
 export const canStartSoloV70=(v:unknown)=>record(v)&&prerequisites(v)&&soloV70MatchesSave(v)&&!journey(v);
 export function startSoloV70Campaign(save:SoloV70Save,now=new Date().toISOString()):SoloV70Save|null{if(!canStartSoloV70(save)||!iso(now))return null;return save.soloV70?save:{...save,soloV70:{version:1,status:'active',checkpoint:createSoloV70State(),receipts:[],startedAt:now,completedAt:null}};}
 function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Receipt[],now:string):SoloV70Save|null{

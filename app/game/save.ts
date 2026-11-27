@@ -29,6 +29,7 @@ import {normalizeHomeworldCargoV108} from './systems/homeworldCargoLedgerV108';
 import {normalizeHomeworldArchivePlaqueV109} from './systems/homeworldArchivePlaqueLedgerV109';
 import { normalizeYouthCampaign, youthCampaignMatchesSave } from "./systems/youthCampaign";
 import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
+import { homeworldAdjutantMatchesSaveM029, isHomeworldAdjutantSuccessorM029 } from "./systems/homeworldAdjutantM029";
 import { archiveTransferPending } from "./systems/archiveTransferGuard";
 import { defaultJusticeProgress, normalizeJusticeProgress } from "./systems/justice";
 import {
@@ -47,6 +48,8 @@ import { normalizeSoloV67Campaign, soloV67MatchesSave } from "./systems/campaign
 import { normalizeSoloV68Campaign, soloV68MatchesSave } from "./systems/campaignSoloV68";
 import { normalizeSoloV69Campaign, soloV69MatchesSave } from "./systems/campaignSoloV69";
 import { normalizeSoloV70Campaign, soloV70MatchesSave } from "./systems/campaignSoloV70";
+import { inspectBloodedTempleV174, templeAvailableV174, templeHasFoundationV174, templeJournalSuccessorV174 } from "./systems/bloodedTempleV174";
+import { eliteRecognitionMatchesSave, inspectEliteRecognition, isEliteRecognitionSuccessor } from "./systems/eliteRecognitionV174";
 import { normalizeSoloV90Campaign, soloV90MatchesSave } from "./systems/campaignSoloV90";
 import { normalizeHomeworldRegionV68, canEnterHomeworldRegionV68 } from "./systems/homeworldRegionsV68";
 import { normalizeHomeworldPassageV67, canEnterHomeworldPassageV67 } from "./systems/homeworldPassageV67";
@@ -57,7 +60,7 @@ import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/game
 import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
 import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
 import { inspectSpaceRoutesV159 } from "./systems/spaceRoutesV159";
-import { inspectFirstInterstellarV173, firstInterstellarInFlightV173, firstInterstellarReceiptV173 } from "./systems/firstInterstellarV173";
+import { inspectFirstInterstellarV173, firstInterstellarInFlightV173 } from "./systems/firstInterstellarV173";
 import { shipReceiptV161 } from "./systems/shipReceiptV161";
 import { inspectClanShipDocking } from "./systems/clanShipDocking";
 import { evaluateClanShipAccess, evaluateClanShipOperationsCampaign, inspectClanShipOperations } from "./systems/clanShipOperations";
@@ -104,6 +107,8 @@ import { HUNTER_PIECE_IDS_V146, hasCustomPiecesV146, normalizeLightsV146,
 import { SKIN_PATTERN_IDS_V146, applyHeavyWearV146, earnedCosmeticsV146,
   emptyCustomizationV146, normalizeCustomizationV146, normalizeMarksDisplayV146 } from "./systems/hunterCustomizationV146";
 import { isFutureTrophyUsagesV147, normalizeTrophyUsagesV147 } from "./systems/trophyUsagesV147";
+import { canStartWarNarrativeR2M035, hasWarNarrativeCampaignR2M035, inspectWarNarrativeR2M035,
+  isWarNarrativeSuccessorR2M035 } from "./systems/warNarrativeR2M035";
 import { applyHoundHuntReportV147, huntSessionIdV147, isFutureHuntingHoundsV147,
   normalizeHoundHuntReportV147, normalizeHuntingHoundsV147 } from "./systems/huntingHoundsV147";
 import {
@@ -1309,6 +1314,12 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.elderAssemblyV168 === undefined ? {} : {
       elderAssemblyV168: inspectElderAssembly(source.elderAssemblyV168, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
+    ...(source.eliteRecognitionV174 === undefined ? {} : {
+      eliteRecognitionV174: inspectEliteRecognition(source.eliteRecognitionV174, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
+    ...(source.bloodedTempleV174 === undefined ? {} : {
+      bloodedTempleV174: inspectBloodedTempleV174(source.bloodedTempleV174, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     ...(source.elderWorkshopV172 === undefined ? {} : {
       elderWorkshopV172: inspectElderWorkshopV172(source.elderWorkshopV172, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1329,6 +1340,9 @@ export function normalizeSave(value: unknown): SaveGame {
     }),
     missionProgress,
     trophies,
+    ...(source.warNarrativeR2M035 == null ? {} : {
+      warNarrativeR2M035: inspectWarNarrativeR2M035(source.warNarrativeR2M035, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     // V147 is written only after a first usage; it never removes a trophy.
     ...(source.trophyUsagesV147 === undefined || source.trophyUsagesV147 === null ? {} : {
       trophyUsagesV147: normalizeTrophyUsagesV147(source.trophyUsagesV147, trophies,
@@ -1672,10 +1686,12 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const elderMentoring = inspectElderMentoring(value.elderMentoringV168, owner);
   const elderAssembly = inspectElderAssembly(value.elderAssemblyV168, owner);
   const elderWorkshop = inspectElderWorkshopV172(value.elderWorkshopV172, owner);
+  const bloodedTemple = inspectBloodedTempleV174(value.bloodedTempleV174, owner);
+  const eliteRecognition = inspectEliteRecognition(value.eliteRecognitionV174, owner);
   const eliteMastery = inspectEliteMastery(value.eliteMasteryV170, owner);
   const hullProject = inspectClanHullProject(value.clanHullProjectV171, owner);
   const quatza = inspectQuatzaRij(value.quatzaRij, owner);
-  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides, elderPassage, elderMentoring, elderAssembly, elderWorkshop, eliteMastery, hullProject, quatza]) {
+  for (const inspection of [castle, arrival, arrivalRun, expedition, shipEnergy, cradle, residence, incidents, trophyHearing, returnEscort, mobility, mounts, mountRides, elderPassage, elderMentoring, elderAssembly, elderWorkshop, bloodedTemple, eliteMastery, eliteRecognition, hullProject, quatza]) {
     if (inspection.status === "future-version" || inspection.status === "invalid-save") {
       return { save: null, failure: inspection.status };
     }
@@ -1748,6 +1764,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   // A newer or cross-owner gauntlet receipt cannot be silently dropped during import/export.
   if (isRecord(value.customizationV146) && Number(value.customizationV146.version) > 1)
     return { save: null, failure: "future-version" };
+  const m035 = inspectWarNarrativeR2M035(value.warNarrativeR2M035, owner);
+  if (m035.status === "future-version" || m035.status === "invalid-save") return { save: null, failure: m035.status };
   // V147 trophy usages hold the exchange ledger: a newer format is never dropped silently.
   if (isFutureTrophyUsagesV147(value.trophyUsagesV147)) return { save: null, failure: "future-version" };
   if (isFutureHuntingHoundsV147(value.houndsV147))
@@ -2034,7 +2052,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       isRecord(value.soloV70.checkpoint) && Number(value.soloV70.checkpoint.version) > 1)) return { save: null, failure: "future-version" };
   if (isRecord(value.soloV90) && (Number(value.soloV90.version) > 1 ||
       isRecord(value.soloV90.checkpoint) && Number(value.soloV90.checkpoint.version) > 1)) return { save: null, failure: "future-version" };
-  if (!youthCampaignMatchesSave(value) || !soloV67MatchesSave(value) || !soloV68MatchesSave(value) || !soloV69MatchesSave(value) || !soloV70MatchesSave(value) || !soloV90MatchesSave(value)) return { save: null, failure: "invalid-save" };
+  if (!soloV67MatchesSave(value) || !soloV68MatchesSave(value) || !soloV69MatchesSave(value) || !soloV70MatchesSave(value) || !soloV90MatchesSave(value)) return { save: null, failure: "invalid-save" };
   if (value.homeworldRegionV68 !== undefined && value.homeworldRegionV68 !== null) {
     const region = normalizeHomeworldRegionV68(value.homeworldRegionV68);
     if (!region || !canEnterHomeworldRegionV68({ prologue: normalizeNurseryCampaign(value.prologue), homeworld: normalizeHomeworldProgress(value.homeworld),
@@ -2070,10 +2088,28 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (quatza.state && !quatzaCampaignMatchesSave(value as unknown as SaveGame)) {
     return { save: null, failure: "invalid-save" };
   }
+  const selectedAdjutant = isRecord(value.homeworld) ? value.homeworld.adjutantM029 : undefined;
+  if (isRecord(selectedAdjutant) && Number(selectedAdjutant.version) > 1) return { save: null, failure: "future-version" };
   const save = normalizeSave(value);
+  const adjutant = save.homeworld.adjutantM029;
+  if ((selectedAdjutant != null && (!adjutant || bloodedTemple.view.stage !== "complete")) ||
+      !homeworldAdjutantMatchesSaveM029(save) ||
+      !youthCampaignMatchesSave(value, {
+        bloodingVerified: bloodedTemple.view.stage === "complete",
+        cradleBriefed: cradle.state !== null,
+        crownReturned: cradle.state?.crownDelivered === true,
+        adjutantVerified: adjutant?.phase === "appointed",
+      })) return { save: null, failure: "invalid-save" };
+  if (m035.state && !hasWarNarrativeCampaignR2M035(save)) return { save: null, failure: "invalid-save" };
   if (firstInterstellar.state && (shipReceiptV161(save).receipt?.instanceId !== firstInterstellar.state.hullInstanceId ||
       (save.spaceRoutesV159?.trip && firstInterstellarInFlightV173(firstInterstellar.state, campaignOwner))))
     return { save: null, failure: "invalid-save" };
+  const recordedBlooding = save.prologue?.chronicle.rites.some(rite => rite.id === "blooding-mark") === true;
+  if (recordedBlooding !== (bloodedTemple.view.stage === "complete") ||
+      (bloodedTemple.state && !templeHasFoundationV174(save))) {
+    return { save: null, failure: "invalid-save" };
+  }
+  if (eliteRecognition.state && !eliteRecognitionMatchesSave(save)) return { save: null, failure: "invalid-save" };
   if (elderWorkshop.state && !hasElderWorkshopFoundationV172(save)) {
     return { save: null, failure: "invalid-save" };
   }
@@ -2209,6 +2245,18 @@ function persistCampaign(
       if (JSON.stringify(previous.honorSourcesV169) !== JSON.stringify(requested.honorSourcesV169)) {
         return failed("save-conflict", previous);
       }
+      const previousAdjutant = previous.homeworld.adjutantM029;
+      const nextAdjutant = requested.homeworld.adjutantM029;
+      if (JSON.stringify(previousAdjutant ?? null) !== JSON.stringify(nextAdjutant ?? null) &&
+          !isHomeworldAdjutantSuccessorM029(previousAdjutant, nextAdjutant)) {
+        return failed("save-conflict", previous);
+      }
+      const previousM035 = previous.warNarrativeR2M035;
+      const requestedM035 = requested.warNarrativeR2M035;
+      if (JSON.stringify(previousM035 ?? null) !== JSON.stringify(requestedM035 ?? null) &&
+          (!requestedM035 || !isWarNarrativeSuccessorR2M035(previousM035, requestedM035) || !canStartWarNarrativeR2M035(previous))) {
+        return failed("save-conflict", previous);
+      }
       const previousVoyage = previous.firstInterstellarV173;
       const requestedVoyage = requested.firstInterstellarV173;
       if (JSON.stringify(previousVoyage ?? null) !== JSON.stringify(requestedVoyage ?? null) &&
@@ -2237,6 +2285,19 @@ function persistCampaign(
         ? !requestedAssembly || (JSON.stringify(previousAssembly) !== JSON.stringify(requestedAssembly) &&
           !isElderAssemblySuccessor(previousAssembly, requestedAssembly))
         : requestedAssembly && requestedAssembly.revision !== 1) {
+        return failed("save-conflict", previous);
+      }
+      const previousEliteRecognition = previous.eliteRecognitionV174;
+      const requestedEliteRecognition = requested.eliteRecognitionV174;
+      if (JSON.stringify(previousEliteRecognition ?? null) !== JSON.stringify(requestedEliteRecognition ?? null) &&
+          (!requestedEliteRecognition || !isEliteRecognitionSuccessor(previousEliteRecognition, requestedEliteRecognition))) {
+        return failed("save-conflict", previous);
+      }
+      const previousTemple = previous.bloodedTempleV174;
+      const requestedTemple = requested.bloodedTempleV174;
+      if (JSON.stringify(previousTemple ?? null) !== JSON.stringify(requestedTemple ?? null) &&
+          (!requestedTemple || !templeJournalSuccessorV174(previousTemple, requestedTemple) ||
+            !templeAvailableV174(previous))) {
         return failed("save-conflict", previous);
       }
       const previousWorkshop = previous.elderWorkshopV172;
