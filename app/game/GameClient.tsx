@@ -24,6 +24,7 @@ import { applyContinuationO6, isContinuationOrderO6, type ContinuationOrderO6 } 
 import { applySoloReturnO6, isSoloReturnOrderO6, type SoloReturnOrderO6 } from "./systems/originSoloReturnO6";
 import { firstShockActiveO6, type FirstShockOrderO6 } from "./systems/originFirstShockO6";
 import { activeCohortRaceO6, advanceFirstShockIntoCohortO6, canStartCohortRaceO6, playCohortRaceO6, startCohortRaceO6, type CohortRaceOrderO6 } from "./systems/originCohortRaceO6";
+import type { TownBellRecordO6 } from "./systems/originTownBellO6";
 import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
 import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -1908,7 +1909,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!sessionAliveRef.current || !reconcileNurseryAttempt()) return false;
     const next = playCohortRaceO6(saveRef.current, order);
     if (!next || !persistNursery(next)) return false;
-    if (order.type === "help" || order.type === "partial") setToast("La manche et les gestes joués sont consignés. La cité t’attend.");
+    if (order.type === "help" || order.type === "partial") setToast("La manche est consignée. Saar t’attend au pied de l’escalier du Conseil pour la livraison.");
     return true;
   }, [persistNursery, reconcileNurseryAttempt]);
 
@@ -2976,12 +2977,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return { ...result, state: saveRef.current.spaceRoutesV159 ?? null };
   };
 
-  const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress): boolean => {
+  const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress, townBell?: TownBellRecordO6): boolean => {
     const current = saveRef.current;
+    if (townBell && !current.originV151) return false;
     const reward = Math.max(0, contractMarksV68(homeworld.contractsV68) - contractMarksV68(current.homeworld.contractsV68));
     // Completed orders pay once, in the same durable write as the signed report.
-    // The ledger remains cumulative; spending the wallet cannot replay a reward.
-    return persistSocialProgress({ homeworld, ...(reward ? {profile: {...current.profile, clanMarks: current.profile.clanMarks + reward}} : {}) });
+    const saved = persistSocialProgress({ homeworld,
+      ...(townBell && current.originV151 ? { originV151: { ...current.originV151, townBellO6: townBell } } : {}),
+      ...(reward ? {profile: {...current.profile, clanMarks: current.profile.clanMarks + reward}} : {}) });
+    if (saved && townBell?.journal.at(-1)?.action === "ring" &&
+        (current.originV151?.townBellO6?.journal.length ?? 0) < townBell.journal.length) audioRef.current?.townDeliveryBellO6();
+    return saved;
   }, [persistSocialProgress]);
   // V160 : l'écran n'annonce une épreuve acceptée ou remise qu'après écriture confirmée.
   const persistMinorArcsV160 = useCallback((minorArcsV160: MinorArcsV160): boolean =>
