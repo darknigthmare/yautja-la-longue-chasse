@@ -1,0 +1,84 @@
+name: PIT and Masques Brisés prologue on the real selection and combat
+on:
+  push:
+    branches: ['codex/verify-bible-pit-masques-20261127']
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - &checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.openai/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /build/
+            /script*/
+            /tests/
+            /docs/the-pit/
+            /content/the-pit/
+            /public/game/review/the-pit/les-masques-brises-v1/
+            /art-source/the-pit/les-masques-brises-v1/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues-index.json
+      - &node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Test claims, the original images, combat receipts and save compatibility
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          tests/pit-content-access-v1.test.mjs tests/pit-selection-presentation-v1.test.mjs
+          tests/pitSelectionFlow.test.ts tests/pit-save.test.mjs tests/pitHonors.test.ts
+          tests/pit-honor-gallery-v1.test.mjs tests/pit-honor-route-game-client.test.mjs
+          tests/pit-bonus-trial-v1.test.mjs tests/pit-masks-broken-prologue.test.mjs
+      - name: Typecheck the live game
+        run: npm run typecheck
+      - name: Lint the Pit and masked prologue code
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/game/PitCanvas.tsx app/game/PitExperienceV79.tsx app/game/PitMasksBrokenPrologue.tsx
+          app/game/PitBonusTrialPanelV1.tsx app/game/PitHonorsPanel.tsx app/game/PitHonorDetail.tsx
+          app/game/systems/pitMasksBrokenPrologue.ts app/game/systems/pitBonusTrialV1.ts
+          tests/pit-masks-broken-prologue.test.mjs
+  chromium:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      PIT_QA_MATERIALIZE_ASSETS: '1'
+      PIT_QA_OUTPUT: outputs/qa-bible-pit-masques
+    steps:
+      - *checkout
+      - *node
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Confirm original candidate files and install Chromium
+        run: |
+          git diff --exit-code 6a277a4b7f567ad54eb1f11e388eb96859479848 HEAD -- app content public art-source
+          node node_modules/playwright-core/cli.js install chromium
+      - name: Play the actual Pit route, rack and four counters
+        run: node scripts/qa-pit-masks-broken.mjs
+      - name: Preserve the selection, act and combat captures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pit-masques-brises-browser
+          path: outputs/qa-bible-pit-masques/
+          if-no-files-found: warn
