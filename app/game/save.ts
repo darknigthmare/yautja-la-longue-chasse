@@ -87,6 +87,7 @@ import { emptyGauntletCampaignV134, normalizeGauntletCampaignV134 } from "./syst
 import { inspectMinorArcsV160, recordMinorArcsHuntResultV160 } from "./systems/minorArcsV160";
 import { inspectQueenHuntV163, normalizeQueenHuntV163, QUEEN_HUNT_VERSION_V163 } from "./systems/queenHuntV163";
 import { inspectWarpEpochsV165, isWarpSurveySuccessorR2 } from "./systems/warpEpochsV165";
+import { legacyFinaleMatchesSaveR2, legacyFinaleSuccessorR2, normalizeLegacyFinaleR2 } from "./systems/legacyFinaleR2";
 import { isWarpCommonSuccessorR2, warpCommonViewR2 } from "./systems/warpCommonRouteR2";
 import { inspectTantalusLedgerV164, normalizeTantalusLedgerV164 } from "./systems/tantalusV164";
 import {
@@ -1383,6 +1384,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.residenceScenesV154 === undefined ? {} : { residenceScenesV154: normalizeResidenceScenesV154(source.residenceScenesV154) }),
     // STATE5-01: never rewritten; an absent origin is read as the documented default and not written until used.
     ...(source.originV151 === undefined ? {} : { originV151: normalizeOriginV151(source.originV151) }),
+    ...(source.legacyFinaleR2 === undefined ? {} : {
+      legacyFinaleR2: normalizeLegacyFinaleR2(source.legacyFinaleR2, validIsoDate(source.createdAt, fallback.createdAt)),
+    }),
     // V158: absent until a voie mission or a material purchase writes it; old saves keep their shape.
     ...(source.pathObjectsV158 === undefined ? {} : { pathObjectsV158: normalizePathObjectsV158(source.pathObjectsV158) }),
     // V152: written only once a legacy is sealed or received; old saves keep their exact shape.
@@ -2102,6 +2106,12 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   const selectedAdjutant = isRecord(value.homeworld) ? value.homeworld.adjutantM029 : undefined;
   if (isRecord(selectedAdjutant) && Number(selectedAdjutant.version) > 1) return { save: null, failure: "future-version" };
   const save = normalizeSave(value);
+  if (isRecord(value.legacyFinaleR2) && Number(value.legacyFinaleR2.version) > 1) {
+    return { save: null, failure: "future-version" };
+  }
+  if (value.legacyFinaleR2 != null && (!save.legacyFinaleR2 || !legacyFinaleMatchesSaveR2(save))) {
+    return { save: null, failure: "invalid-save" };
+  }
   const childhood = save.homeworld.childhoodV175;
   if (selectedChildhood !== undefined && (!childhood || childhood.ownerCreatedAt !== save.createdAt ||
       !hasChildhoodFoundationV175(save))) return { save: null, failure: "invalid-save" };
@@ -2276,6 +2286,9 @@ function persistCampaign(
         return failed("save-conflict", previous);
       }
       if (!isWarpSurveySuccessorR2(previous.warpEpochsV165, requested.warpEpochsV165)) {
+        return failed("save-conflict", previous);
+      }
+      if (!legacyFinaleSuccessorR2(previous.legacyFinaleR2, requested.legacyFinaleR2)) {
         return failed("save-conflict", previous);
       }
       const previousWarp = previous.warpEpochsV165?.commonRouteR2;
