@@ -46,7 +46,7 @@ createRoot(document.getElementById('root')).render(params.has('catalog') ? <PitM
 fs.writeFileSync(temporary + "/App.tsx", fixture);
 await build({ entryPoints: [temporary + "/App.tsx"], bundle: true, platform: "browser", format: "iife", target: "es2022",
   outfile: temporary + "/app.js", jsx: "automatic", loader: { ".module.css": "local-css" },
-  external: ["/game/*"], nodePaths: [repo + "/node_modules"], define: { "process.env.NODE_ENV": '"production"' }, logLevel: "warning" });
+  external: ["/game/*"], nodePaths: [repo + "/node_modules"], define: { "process.env.NODE_ENV": '"production"', "process.env": '{}' }, logLevel: "warning" });
 fs.writeFileSync(temporary + "/index.html", '<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>THE PIT — bonus QA</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/app.css"><style>html,body,#root{margin:0;min-width:0;min-height:100%;background:#07100c;color:#e9e1ca;font-family:Arial,sans-serif}*{box-sizing:border-box}button{font:inherit}</style><div id="root"></div><script src="/app.js"></script></html>');
 const assetRoot = path.resolve(process.env.PIT_QA_ASSETS || repo + "/public");
 // Cold git blob retrieval is outside browser timeouts, never part of the image server.
@@ -106,7 +106,7 @@ try {
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: "reduce" });
   const page = await context.newPage(); page.setDefaultTimeout(15000);
   diagnosticPage = page;
-  page.on("pageerror", error => report.pageErrors.push(error.message));
+  page.on("pageerror", error => { report.pageErrors.push(error.message); console.log("BROWSER ERROR: " + error.stack); });
   page.on("response", response => { if (response.status() >= 400) report.httpFailures.push({ url: response.url(), status: response.status() }); });
   await page.goto(base, { waitUntil: "networkidle", timeout: 120000 });
   const panel = page.locator("[data-pit-bonus]");

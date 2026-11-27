@@ -4,6 +4,7 @@ on:
     branches: ['codex/verify-bible-pit-precision-20261127']
 permissions:
   contents: read
+  actions: read
 jobs:
   source:
     runs-on: ubuntu-latest
@@ -70,14 +71,28 @@ jobs:
       PIT_QA_OUTPUT: outputs/qa-bible-pit-masques
     steps:
       - *checkout
+      - name: Print the previous browser error observed before first selection
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        continue-on-error: true
+        with:
+          run-id: '46021493028'
+          name: pit-masques-brises-browser
+          path: outputs/qa-prior-pit
+          github-token: ${{ github.token }}
+      - run: if test -f outputs/qa-prior-pit/report.json; then cat outputs/qa-prior-pit/report.json; fi
       - *node
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Confirm original candidate files and install Chromium
         run: |
-          git diff --exit-code 2ed98671cb3af408a560360b8a4bc60ea8636750 HEAD -- app content public art-source
+          git diff --exit-code d7777a4ce891fab53eaaa5a19e100970016aa26c HEAD -- app content public art-source
           node node_modules/playwright-core/cli.js install chromium
       - name: Play the actual Pit route, rack and four counters
-        run: node scripts/qa-pit-masks-broken.mjs
+        run: |
+          node scripts/qa-pit-masks-broken.mjs || {
+            if test -f "$PIT_QA_OUTPUT/report.json"; then cat "$PIT_QA_OUTPUT/report.json"; fi
+            exit 1
+          }
+          cat "$PIT_QA_OUTPUT/report.json"
       - name: Preserve the selection, act and combat captures
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
