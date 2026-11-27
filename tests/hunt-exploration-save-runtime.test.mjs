@@ -30,6 +30,7 @@ export {restoredHoundFieldV147,updateHoundV147};
 export {cloneHuntInsertion,restoreHuntInsertion,samePlanetInsertion,insertionCheckpointConsistent,updateHuntInsertionCompanions,updateHuntPodRecovery};
 export {defaultSave} from "./save";
 export {MISSION_BY_ID} from "./data";
+export {ACHERON_VACUUM_MISSION} from "./systems/acheronVacuum";
 export * from "./systems/canopyTraversalV112";
 export * from "./systems/fieldStashV112";
 export * from "./systems/corpseDiscoveryV112";
