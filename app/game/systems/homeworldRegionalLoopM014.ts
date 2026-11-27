@@ -209,7 +209,7 @@ export function isRegionalLoopSuccessorM014(previous: CourseSave, next: CourseSa
   const prior = previous.homeworld.regionalLoopM014, candidate = next.homeworld.regionalLoopM014;
   if (JSON.stringify(prior) === JSON.stringify(candidate)) return true;
   if (!candidate || !regionalLoopMatchesSaveM014(next)) return false;
-  if (!prior) return JSON.stringify(candidate) === JSON.stringify(startRegionalLoopM014(previous));
+  if (!prior) return JSON.stringify(candidate) === JSON.stringify(normalizeRegionalLoopM014(startRegionalLoopM014(previous)));
   if (!candidate.lastCommand) return false;
   return JSON.stringify(candidate) === JSON.stringify(advanceRegionalLoopM014(prior, candidate.lastCommand).state);
 }
