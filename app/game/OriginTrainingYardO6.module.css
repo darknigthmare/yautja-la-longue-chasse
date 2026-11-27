@@ -63,3 +63,15 @@
 .cordage[data-o6-cordage="taut"] { width: 92px; height: 34px; border-radius: 4px; }
 .cordage[data-o6-cordage="raised"] { width: 55px; height: 55px; transform: translate(-50%, -95%); border-radius: 4px; }
 .cordage[data-o6-cordage="folded"] { width: 42px; height: 19px; background-color: #654c34; }
+
+.practiceStaff {
+  position: absolute;
+  display: block;
+  width: 5px;
+  height: 46px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #664631, #d3aa72 45%, #795236 90%);
+  box-shadow: 0 0 2px #211810;
+  transform: translateY(-50%) rotate(22deg);
+  pointer-events: none;
+}
