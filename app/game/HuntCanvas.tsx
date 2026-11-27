@@ -136,6 +136,7 @@ import {
   sampleWind,
   stepAiBrain,
   stepBossMechanics,
+  describeBossAudioDecoy,
   stepHuntTrap,
   stepMudState,
   stepRegularAttackTelegraph,
@@ -2016,7 +2017,7 @@ function cloneAiBrains(
 function cloneBossMechanics(
   mechanics: BossMechanicState,
 ): BossMechanicState {
-  return mechanics.missionId === "volcano-bad-blood"
+  const clone = mechanics.missionId === "volcano-bad-blood"
     ? {
         ...mechanics,
         disabledConsoleIds: [...mechanics.disabledConsoleIds],
@@ -2024,6 +2025,14 @@ function cloneBossMechanics(
     : mechanics.missionId === "ruins-ancient-guardian" && mechanics.guardianAdaptation
       ? { ...mechanics, guardianAdaptation: { ...mechanics.guardianAdaptation } }
       : { ...mechanics };
+  if (mechanics.audioDecoy) {
+    clone.audioDecoy = {
+      ...mechanics.audioDecoy,
+      heardDeviceIds: [...mechanics.audioDecoy.heardDeviceIds],
+      target: mechanics.audioDecoy.target ? { ...mechanics.audioDecoy.target } : null,
+    };
+  }
+  return clone;
 }
 
 function cloneArsenalRuntime(
@@ -2266,6 +2275,17 @@ function insertionCheckpointConsistent(checkpoint: MissionCheckpointPayload, ins
     member.velocityX === 0 && member.velocityY === 0 && !member.climbing);
 }
 
+function isValidSerializedBossAudioDecoy(value: unknown): boolean {
+  return isJsonObject(value) &&
+    isStringArray(value.heardDeviceIds) &&
+    isFiniteJsonNumber(value.untilSeconds) &&
+    value.untilSeconds >= 0 &&
+    (value.target === null ||
+      (isJsonObject(value.target) &&
+        hasFiniteFields(value.target, ["x", "y"]) &&
+        value.heardDeviceIds.length > 0));
+}
+
 function deserializeActiveHuntCheckpoint(
   snapshot: JsonObject | null | undefined,
 ): RestoredActiveHuntSnapshot | null {
@@ -2362,6 +2382,8 @@ function deserializeActiveHuntCheckpoint(
         !isStringArray(checkpoint.trophyRitual.sequence))) ||
     (checkpoint.bossMechanics.missionId === "volcano-bad-blood" &&
       !isStringArray(checkpoint.bossMechanics.disabledConsoleIds)) ||
+    (checkpoint.bossMechanics.audioDecoy !== undefined &&
+      !isValidSerializedBossAudioDecoy(checkpoint.bossMechanics.audioDecoy)) ||
     (checkpoint.bossMechanics.missionId === "ruins-ancient-guardian" &&
       checkpoint.bossMechanics.guardianAdaptation !== undefined &&
       (!isJsonObject(checkpoint.bossMechanics.guardianAdaptation) ||
@@ -5963,6 +5985,19 @@ function renderGame(
         enemy.facing,
       );
     }
+    const decoy = enemy.boss ? state.bossMechanics.audioDecoy : undefined;
+    if (enemy.alive && decoy?.target && decoy.untilSeconds > state.elapsed) {
+      context.save();
+      context.fillStyle = palette.accent;
+      context.font = "bold 12px monospace";
+      context.textAlign = "center";
+      context.fillText(
+        `LEURRE · ${Math.ceil(decoy.untilSeconds - state.elapsed)} s`,
+        enemy.x + enemy.width / 2,
+        enemy.y - 15,
+      );
+      context.restore();
+    }
     const discoverySignal=corpseDiscoveryReactionV112(state.ecosystem,enemy.id,state.elapsed);
     if(enemy.alive&&discoverySignal)drawDiscoverySignalV112(context,discoverySignal,
       enemy.x+enemy.width/2,enemy.y-23);
@@ -7910,15 +7945,19 @@ function playerScan(state: GameState, mission: MissionDefinition): void {
       }
     }
   }
+  const analyzedBoss = state.boss.active && state.boss.alive &&
+    distance(center, { x: state.boss.x + state.boss.width / 2, y: state.boss.y + state.boss.height / 2 }) <= 470;
   announce(
     state,
-    discovered > 0
-      ? `${discovered} signature${discovered > 1 ? "s" : ""} analysée${
-          discovered > 1 ? "s" : ""
-        }.`
-      : "Aucune nouvelle signature dans la portée du biomask.",
-    2,
-    "routine",
+    analyzedBoss
+      ? `${mission.targetName} · ${describeBossAudioDecoy(state.bossMechanics)}`
+      : discovered > 0
+        ? `${discovered} signature${discovered > 1 ? "s" : ""} analysée${
+            discovered > 1 ? "s" : ""
+          }.`
+        : "Aucune nouvelle signature dans la portée du biomask.",
+    analyzedBoss ? 3.5 : 2,
+    analyzedBoss ? "tactical" : "routine",
   );
 }
 
@@ -9783,6 +9822,26 @@ const BOSS_EFFECTS_PRESERVED_DURING_HIT_STUN = new Set<BossEffectKind>([
   "guardian-adaptive-field",
 ]);
 
+function heardBossAudioDecoys(state: GameState, position: { x: number; y: number }) {
+  const reaction = state.bossMechanics.audioDecoy;
+  if (reaction?.target && reaction.untilSeconds > state.elapsed) return [];
+  const pulses = state.noiseEvents.filter((noise) => noise.decoyDeviceId);
+  if (pulses.length === 0) return [];
+  const wind = sampleWind(state.world.wind, state.elapsed, position.x);
+  const covers = state.world.covers.filter((cover) => !state.brokenPillarIds.has(cover.id));
+  return pulses.flatMap((pulse) => {
+    if (!pulse.decoyDeviceId || huntStructuralBarrierV94(position, pulse, state.world.platforms)) return [];
+    const heard = perceivedNoise(pulse, {
+      position,
+      elapsedSeconds: state.elapsed,
+      hearingMultiplier: state.boss.kind === "beast" ? 1.28 : 1,
+      occlusion: calculateLineOfSightOcclusion(position, pulse, covers),
+      wind,
+    });
+    return heard ? [{ deviceId: pulse.decoyDeviceId, x: pulse.x, y: pulse.y, strength: heard.strength }] : [];
+  });
+}
+
 function updateBoss(
   state: GameState,
   mission: MissionDefinition,
@@ -9875,6 +9934,7 @@ function updateBoss(
     playerUsedRangedWeapon: state.playerUsedRangedWeapon,
     playerUsedEnergyWeapon: state.playerUsedEnergyWeapon,
     bossHitPillar: state.bossHitPillar,
+    heardAudioDecoys: heardBossAudioDecoys(state, bossCenter),
     disabledConsoleId: state.disabledConsoleId,
     activeSupportCount: state.enemies.filter(
       (enemy) => enemy.alive && enemy.active,
@@ -9905,6 +9965,9 @@ function updateBoss(
       continue;
     }
     switch (effect.kind) {
+      case "audio-decoy-pursuit":
+        announce(state, `${mission.targetName} suit le leurre audio · ${effect.value} s.`, 2.4, "tactical");
+        break;
       case "spawn-support":
         spawnBossSupport(
           state,
@@ -10143,6 +10206,20 @@ function updateBoss(
   if (bossReacting) return;
   if (bossRestrained) {
     boss.velocityX = 0;
+    return;
+  }
+  const decoyTarget = mechanicStep.decision.decoyTarget;
+  if (decoyTarget) {
+    boss.telegraph = 0;
+    boss.pendingAttackId = null;
+    const targetX = clamp(decoyTarget.x - boss.width / 2, boss.patrolLeft, boss.patrolRight);
+    const speed = boss.moveSpeed * mechanicStep.decision.speedMultiplier;
+    const offset = targetX - boss.x;
+    const movement = clamp(offset, -speed * delta, speed * delta);
+    if (Math.abs(offset) > 1) boss.facing = offset > 0 ? 1 : -1;
+    boss.velocityX = delta > 0 ? movement / delta : 0;
+    boss.x += movement;
+    emitEnemyFootprint(state, boss);
     return;
   }
   const wasTelegraphing = boss.telegraph > 0;
