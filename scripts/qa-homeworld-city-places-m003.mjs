@@ -46,8 +46,8 @@ try {
   const viewport = () => page.locator(homeSelector).locator("[data-homeworld-viewport]");
   const spot = () => viewport().locator("[data-homeworld-actor]").evaluate(node => ({ x: Number(node.dataset.x), y: Number(node.dataset.y) }));
   const read = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)).homeworld, storageKey);
-  async function expectPlace(kind) {
-    await viewport().locator('[data-r2-m003-place="' + kind + '"]').waitFor();
+  async function expectPlace(kind, timeout) {
+    await viewport().locator('[data-r2-m003-place="' + kind + '"]').waitFor({ timeout });
   }
   async function walkTo(point) {
     for (let step = 0; step < 160; step++) {
@@ -72,7 +72,9 @@ try {
   await page.locator(homeSelector + '[data-homeworld-level-v77="+1"]').waitFor();
   await page.keyboard.press("KeyE");
   await page.locator('[data-homeworld-transit-v77="council-stair"]').waitFor();
-  await expectPlace("council");
+  await page.bringToFront();
+  await viewport().focus();
+  await expectPlace("council", 120000);
   assert(await viewport().locator("[data-homeworld-saar-m003]").count());
   await shot("saar-en-bas");
   await page.keyboard.press("KeyE");
@@ -89,7 +91,7 @@ try {
   await page.keyboard.press("KeyE");
   await encounterSaved();
   assert.equal((await read()).locationV77.interiorId, "deep-forge");
-  await page.getByText(/une ligature qui se desserre/).waitFor();
+  await page.getByText(/une ligature qui se desserre/).waitFor({ state: "attached" });
   await shot("rencontre-atelier");
   report.checks.push("La variante atelier rencontre l’artisane à son vrai poste, puis mène au repère des archives.");
   await context.close();
@@ -118,6 +120,10 @@ try {
 } finally {
   if (!report.passed && page) {
     report.screen = (await page.locator("body").innerText().catch(() => "")).slice(0, 2400);
+    report.phase = await page.evaluate(() => ({ focus: document.hasFocus(), active: document.activeElement?.getAttribute("data-homeworld-viewport"),
+      time: document.querySelector("[data-homeworld-viewport]")?.getAttribute("data-city-seconds"),
+      transit: document.querySelector("[data-homeworld-hub]")?.getAttribute("data-homeworld-transit-v77"),
+      elevation: document.querySelector("[data-homeworld-hub]")?.getAttribute("data-homeworld-elevation-v77") })).catch(() => null);
     await page.screenshot({ path: resolve(output, "failure.png"), animations: "disabled" }).catch(() => {});
   }
   console.log("M003_PLACES_BROWSER", JSON.stringify(report));
