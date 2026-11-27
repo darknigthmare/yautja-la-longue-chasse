@@ -6,12 +6,15 @@ export type SoloV90Phase = typeof SOLO_V90_PHASES[number];
 export const SOLO_V90_PROOFS = ['training-briefed', 'loaned-tools-checked', 'roles-positioned', 'target-observed', 'training-resolved', 'triad-returned', 'training-reported'] as const;
 export type SoloV90Proof = typeof SOLO_V90_PROOFS[number];
 export interface SoloV90Receipt { id: SoloV90Proof; sourceId: 'solo.triad-training.v90'; tick: number }
-export interface SoloV90Input { move?: -1 | 0 | 1; jump?: boolean; interact?: boolean; command?: boolean; dodge?: boolean }
+export type SoloV90RolePlan = 'preference' | 'complementary';
+export interface SoloV90Input { move?: -1 | 0 | 1; jump?: boolean; interact?: boolean; command?: boolean; dodge?: boolean; rolePlan?: SoloV90RolePlan }
 export interface SoloV90Environment { assetsReady: boolean; pageVisible: boolean; paused: boolean }
 export interface SoloV90State {
   version: 1; phase: SoloV90Phase; tick: number; phaseStartedAt: number; walked: number;
   player: { x: number; y: number; vx: number; vy: number; facing: -1 | 1 };
   companions: [{ x: number }, { x: number }]; roleMode: 'follow' | 'posts';
+  /** Optional so historical preparations keep their Saar/Vek assignment. */
+  formationPlan?: SoloV90RolePlan;
   contributions: { player: number; saar: number; vek: number }; observedCycles: number;
   drone: { x: number; hp: number; mode: 'watch' | 'telegraph' | 'lunge' | 'recover' | 'dead'; age: number; cycles: number };
   health: number; hurtTimer: number; attackTimer: number; attackCooldown: number;
@@ -28,6 +31,12 @@ export const SOLO_V90_WORLD_WIDTH = 3440, SOLO_V90_GROUND = 430;
 /** Original combat tuning, borrowing the already learned dojo movement. */
 export const SOLO_V92_EVASION = { duration: 23, recovery: 60, speed: 5.2, safeFrom: 2, safeUntil: 13 } as const;
 export const SOLO_V90_POSTS = [2360, 2800] as const;
+export const soloV90RoleBoardReady = (s: SoloV90State) => s.phase === 'assemble' && s.inputArmed &&
+  Math.abs(s.player.x - 2590) < 38 && s.player.y === SOLO_V90_GROUND && s.player.vx === 0;
+export const soloV90CompanionPost = (s: SoloV90State, companion: number) =>
+  SOLO_V90_POSTS[s.formationPlan === 'complementary' ? 1 - companion : companion];
+const atAssignedPosts = (s: SoloV90State) =>
+  s.companions.every((companion, i) => Math.abs(companion.x - soloV90CompanionPost(s, i)) < 5);
 export const soloV90ObservationPostReady = (s: SoloV90State) => s.phase === 'observe' && Math.abs(s.player.x - 2590) < 65 && s.player.y === 430 && s.player.vx === 0;
 const record = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 'object' && !Array.isArray(v);
 const finite = (v: unknown, lo: number, hi: number): v is number => typeof v === 'number' && Number.isFinite(v) && v >= lo && v <= hi;
@@ -54,7 +63,10 @@ export function normalizeSoloV90State(raw: unknown): SoloV90State | null {
       !integer(raw.attackTimer, 0, 18) || !integer(raw.attackCooldown, 0, 45) || !record(raw.acid) || !finite(raw.acid.x, 2520, 3130) ||
       !integer(raw.acid.ttl, 0, 110) || !integer(raw.scan, 0, 89) || ![null, 'success', 'retreated', 'assisted'].includes(raw.result as null) ||
       !['inputArmed', 'previousJump', 'previousInteract', 'previousCommand'].every(k => typeof raw[k] === 'boolean') ||
-      !record(raw.milestones) || !Array.isArray(raw.replay) || raw.replay.length > 120 || !raw.replay.every(code => integer(code, 0, 62) && (code & 3) < 3)) return null;
+      !record(raw.milestones) || !Array.isArray(raw.replay) || raw.replay.length > 120 || !raw.replay.every(code => integer(code, 0, 190) && (code & 3) < 3 && (code & 192) !== 192)) return null;
+  if (raw.formationPlan !== undefined &&
+      (raw.formationPlan !== 'preference' && raw.formationPlan !== 'complementary' ||
+        raw.phase === 'briefing' || raw.phase === 'arsenal')) return null;
   if (raw.evasion !== undefined && (!record(raw.evasion) ||
       !integer(raw.evasion.ticks, 0, SOLO_V92_EVASION.duration) || !integer(raw.evasion.cooldown, 0, SOLO_V92_EVASION.recovery) ||
       ![-1, 1].includes(raw.evasion.direction as number) || typeof raw.evasion.previousDodge !== 'boolean' ||
@@ -79,15 +91,25 @@ export function normalizeSoloV90State(raw: unknown): SoloV90State | null {
   if (prior !== raw.phaseStartedAt) return null;
   return { ...raw, ...(record(raw.evasion) ? { evasion: { ...raw.evasion } } : {}), player: { ...a }, companions: raw.companions.map(c => ({ ...c })), contributions: { ...c }, drone: { ...d }, acid: { ...raw.acid }, milestones, replay: [...raw.replay] } as unknown as SoloV90State;
 }
-export function packSoloV90Input(input: SoloV90Input): number { return (input.move === -1 ? 0 : input.move === 1 ? 2 : 1) | (input.jump ? 4 : 0) | (input.interact ? 8 : 0) | (input.command ? 16 : 0) | (input.dodge ? 32 : 0); }
-export function unpackSoloV90Input(code: number): SoloV90Input { return { move: ((code & 3) - 1) as -1 | 0 | 1, jump: !!(code & 4), interact: !!(code & 8), command: !!(code & 16), dodge: !!(code & 32) }; }
+export function packSoloV90Input(input: SoloV90Input): number {
+  const formation = input.rolePlan === 'preference' ? 64 : input.rolePlan === 'complementary' ? 128 : 0;
+  return (input.move === -1 ? 0 : input.move === 1 ? 2 : 1) | (input.jump ? 4 : 0) | (input.interact ? 8 : 0) |
+    (input.command ? 16 : 0) | (input.dodge ? 32 : 0) | formation;
+}
+export function unpackSoloV90Input(code: number): SoloV90Input {
+  const rolePlan = (code & 64) !== 0 ? 'preference' : (code & 128) !== 0 ? 'complementary' : undefined;
+  return { move: ((code & 3) - 1) as -1 | 0 | 1, jump: !!(code & 4), interact: !!(code & 8),
+    command: !!(code & 16), dodge: !!(code & 32), ...(rolePlan ? { rolePlan } : {}) };
+}
 export function stepSoloV90(before: SoloV90State, input: SoloV90Input, env: SoloV90Environment): { state: SoloV90State; receipts: SoloV90Receipt[] } {
   const s: SoloV90State = { ...before, ...(before.evasion ? { evasion: { ...before.evasion } } : {}), player: { ...before.player }, companions: before.companions.map(c => ({ ...c })) as SoloV90State['companions'], contributions: { ...before.contributions }, drone: { ...before.drone }, acid: { ...before.acid }, milestones: { ...before.milestones }, replay: [...before.replay] }, receipts: SoloV90Receipt[] = [];
   if (!env.assetsReady || !env.pageVisible || env.paused || s.phase === 'complete' || s.replay.length >= 120) return { state: s, receipts };
   s.replay.push(packSoloV90Input(input));
-  if (!s.inputArmed) { if (!input.move && !input.jump && !input.interact && !input.command && !input.dodge) s.inputArmed = true; return { state: s, receipts }; }
+  if (!s.inputArmed) { if (!input.move && !input.jump && !input.interact && !input.command && !input.dodge && !input.rolePlan) s.inputArmed = true; return { state: s, receipts }; }
   const jump = !!input.jump && !s.previousJump, interact = !!input.interact && !s.previousInteract, command = !!input.command && !s.previousCommand;
   s.previousJump = !!input.jump; s.previousInteract = !!input.interact; s.previousCommand = !!input.command; s.tick++;
+  if ((input.rolePlan === 'preference' || input.rolePlan === 'complementary') &&
+      soloV90RoleBoardReady(before) && !input.move && !input.jump && !input.dodge) s.formationPlan = input.rolePlan;
   const a = s.player, oldX = a.x;
   if (s.evasion || input.dodge) {
     const action = s.evasion ?? { ticks: 0, cooldown: 0, direction: a.facing, previousDodge: false };
@@ -113,7 +135,7 @@ export function stepSoloV90(before: SoloV90State, input: SoloV90Input, env: Solo
   s.attackTimer = Math.max(0, s.attackTimer - 1); s.attackCooldown = Math.max(0, s.attackCooldown - 1);
   s.hurtTimer = Math.max(0, s.hurtTimer - 1); s.acid.ttl = Math.max(0, s.acid.ttl - 1);
   s.companions.forEach((c, i) => {
-    const target = s.health === 0 && i === 0 ? clamp(a.x + 18, 65, 3375) : s.roleMode === 'posts' ? SOLO_V90_POSTS[i] : clamp(a.x - 65 * (i + 1), 65, 3375);
+    const target = s.health === 0 && i === 0 ? clamp(a.x + 18, 65, 3375) : s.roleMode === 'posts' ? soloV90CompanionPost(s, i) : clamp(a.x - 65 * (i + 1), 65, 3375);
     if (Math.abs(c.x - target) > 2) c.x = clamp(c.x + Math.sign(target - c.x) * 3, 65, 3375);
   });
   const near = (x: number, range = 38) => Math.abs(a.x - x) < range && a.y === 430;
@@ -122,7 +144,7 @@ export function stepSoloV90(before: SoloV90State, input: SoloV90Input, env: Solo
   if (command && s.phase === 'assemble') s.roleMode = s.roleMode === 'follow' ? 'posts' : 'follow';
   if (s.phase === 'briefing' && near(160) && interact) proof('training-briefed', 'arsenal');
   else if (s.phase === 'arsenal' && hold(near(780) && !a.vx && !!input.interact, 45)) proof('loaned-tools-checked', 'assemble');
-  else if (s.phase === 'assemble' && hold(near(2590) && !a.vx && s.roleMode === 'posts' && s.companions.every((c, i) => Math.abs(c.x - SOLO_V90_POSTS[i]) < 5) && !!input.interact, 45)) proof('roles-positioned', 'observe');
+  else if (s.phase === 'assemble' && hold(near(2590) && !a.vx && s.roleMode === 'posts' && atAssignedPosts(s) && !!input.interact, 45)) proof('roles-positioned', 'observe');
   else if (s.phase === 'observe' || s.phase === 'combat') {
     const d = s.drone; d.age++;
     if (d.mode === 'watch' && d.age >= 60) { d.mode = 'telegraph'; d.age = 0; }
@@ -136,7 +158,7 @@ export function stepSoloV90(before: SoloV90State, input: SoloV90Input, env: Solo
     else if (s.phase === 'combat') {
       if (command && !s.evasion?.ticks && !s.attackCooldown && s.health > 0) {
         s.attackTimer = 18; s.attackCooldown = 45;
-        if (d.mode === 'recover' && Math.abs(a.x - d.x) < 100 && a.y > 335 && s.companions.every((c, i) => Math.abs(c.x - SOLO_V90_POSTS[i]) < 5)) {
+        if (d.mode === 'recover' && Math.abs(a.x - d.x) < 100 && a.y > 335 && atAssignedPosts(s)) {
           d.hp--; s.contributions.player++; s.contributions.saar++; s.contributions.vek++; s.acid = { x: d.x, ttl: 110 };
         }
       }
@@ -153,12 +175,12 @@ export function stepSoloV90(before: SoloV90State, input: SoloV90Input, env: Solo
   else if (s.phase === 'debrief' && hold(near(160) && !a.vx && !!input.interact, 60)) proof('training-reported', 'complete');
   return { state: s, receipts };
 }
-export const soloV90NeedsImmediateCheckpoint = (a: SoloV90State, b: SoloV90State) => a.phase !== b.phase || a.roleMode !== b.roleMode || a.health !== b.health || a.drone.hp !== b.drone.hp || a.observedCycles !== b.observedCycles || (a.evasion?.ticks ?? 0) === 0 && (b.evasion?.ticks ?? 0) > 0 || b.replay.length >= 120;
+export const soloV90NeedsImmediateCheckpoint = (a: SoloV90State, b: SoloV90State) => a.phase !== b.phase || a.roleMode !== b.roleMode || a.formationPlan !== b.formationPlan || a.health !== b.health || a.drone.hp !== b.drone.hp || a.observedCycles !== b.observedCycles || (a.evasion?.ticks ?? 0) === 0 && (b.evasion?.ticks ?? 0) > 0 || b.replay.length >= 120;
 export function soloV90Objective(s: SoloV90State) {
   const objectives: Record<SoloV90Phase, [string, string, number]> = {
     briefing: ['Trois rôles, une fenêtre', 'Écoute le vétéran. Cet entraînement prépare le rite ; il ne valide pas le Quatza-Rij ni Blooded.', 160],
     arsenal: ['Râtelier de prêt', 'Marche jusqu’au râtelier. Tiens Interaction pour contrôler les outils mécaniques du prêt ; aucune arme énergétique n’est engagée.', 780],
-    assemble: ['Approche · Ouverture · Frappe', 'Signal place Saar et Vek sur leurs postes. Gagne le repère central et tiens Interaction après leur arrivée physique.', 2590],
+    assemble: ['Approche · Ouverture · Frappe', 'Gagne le repère central pour choisir la répartition. Donne le signal puis tiens Interaction après l’arrivée de chacun à son poste.', 2590],
     observe: ['Lire avant de frapper', `Observe à distance depuis le repère : tiens Interaction pour trois cycles courts de démonstration, annonce, charge, retrait (${s.observedCycles}/3). Ensuite la cible emploie toute l’aire de combat.`, 2590],
     combat: ['Combat de seuil · Entraînement', 'La charge est annoncée : saute, recule ou utilise Esquive avec une direction (sans direction : recul). Son esquive brève ne protège pas de l’acide et doit récupérer. Frappe pendant le retrait, avec Saar et Vek aux postes. Repli : Interaction au jalon arrière (2220).', 2700],
     return: ['Retour des trois', s.result === 'assisted' ? 'Tu es blessé : attends Saar à ton côté puis reviens lentement, aidé par la triade. La vitalité reste à zéro et le résultat est un échec d’entraînement.' : 'Reviens à pied jusqu’au vétéran avec Saar et Vek. Les coups reçus, contributions et l’issue sont conservés ; aucun retour instantané.', 160],

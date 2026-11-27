@@ -25,6 +25,8 @@ import { canMentorElderNovice, type MentoringCommand, type MentoringResponse } f
 import ElderAssembly from "./ElderAssembly";
 import BloodedTempleV174 from "./BloodedTempleV174";
 import EliteRecognition from "./EliteRecognition";
+import EliteClanRites from "./EliteClanRites";
+import { canEnterEliteClanRites, completedEliteClanRites } from "./systems/eliteClanRitesV175";
 import { canEnterEliteRecognition, type EliteRecognitionCommand, type EliteRecognitionResponse } from "./systems/eliteRecognitionV174";
 import { templeAvailableV174, type TempleCommandV174 } from "./systems/bloodedTempleV174";
 import { canConveneElderAssembly, elderAssemblyProofs, type AssemblyCommand, type AssemblyResponse } from "./systems/elderAssemblyV168";
@@ -81,12 +83,12 @@ export default function ClanChroniclePanel({
 }) {
   const [section, setSection] = useState<"journey" | "worlds" | "humans" | "companions">("journey");
   const [query, setQuery] = useState("");
-  const [activeRite, setCampaignRite] = useState<"mentoring" | "passage" | "assembly" | "mastery" | "quatza-triad" | "quatza-solo" | "blooded-temple" | "elite-recognition" | null>(null);
+  const [activeRite, setCampaignRite] = useState<"mentoring" | "passage" | "assembly" | "mastery" | "quatza-triad" | "quatza-solo" | "blooded-temple" | "elite-recognition" | "elite-clan-rites" | null>(null);
   const proofs = elderAssemblyProofs(save);
   const triadAvailable = !!onQuatzaCommand && (!!save.quatzaRij?.expeditions.triad || canEnterQuatza(save, 'triad'));
   const soloAvailable = !!onQuatzaCommand && (!!save.quatzaRij?.expeditions.solo || canEnterQuatza(save, 'solo'));
   const closeCampaignRite = () => setCampaignRite(null);
-  const toggleCampaignRite = (rite: "mentoring" | "passage" | "assembly" | "mastery" | "quatza-triad" | "quatza-solo" | "blooded-temple" | "elite-recognition") =>
+  const toggleCampaignRite = (rite: "mentoring" | "passage" | "assembly" | "mastery" | "quatza-triad" | "quatza-solo" | "blooded-temple" | "elite-recognition" | "elite-clan-rites") =>
     setCampaignRite(current => current === rite ? null : rite);
   const chronicle = useMemo(() => save.prologue?.chronicle ?? migrateV35ClanChronicle(save), [save]);
   const rankDossier = useMemo(() => rankRiteDossierV168(save), [save]);
@@ -164,14 +166,20 @@ export default function ClanChroniclePanel({
           <li data-rank-queen-proof-v168>
             <h4>Elite · L-05, L-06 et L-07</h4>
             <ul>
-              <li>Chasse solitaire · Quatza-Rij adulte. Chapitre indisponible.</li>
-              <li>Rites d’initiation et d’ascension du clan. Après les huit chasses, la station d’entraînement propose une préparation au plasma.</li>
+              <li>Chasse solitaire · Quatza-Rij adulte.</li>
+              <li>{completedEliteClanRites(save.eliteRecognitionV174?.trials)
+                ? "Rites L‑06 consignés par le chef du clan."
+                : "Le vétéran ouvre les rites du clan après les huit retours de chasse."}</li>
               <li>Crête de la Matriarche · {rankDossier.queen.label}.</li>
             </ul>
             {rankDossier.queen.canOpenExpedition && onOpenCradle && <button type="button" onClick={onOpenCradle}>Ouvrir le dossier du Berceau</button>}
-            {onEliteRecognitionCommand && (canEnterEliteRecognition(save) || save.eliteRecognitionV174) &&
+            {onEliteRecognitionCommand && (canEnterEliteClanRites(save) || save.eliteRecognitionV174?.trials) &&
+              <button type="button" data-open-elite-clan-rites aria-expanded={activeRite === "elite-clan-rites"}
+                onClick={() => toggleCampaignRite("elite-clan-rites")}>Ouvrir les rites du clan</button>}
+            {onEliteRecognitionCommand && (canEnterEliteRecognition(save) || save.eliteRecognitionV174?.audience) &&
               <button type="button" data-open-elite-recognition-v174 aria-expanded={activeRite === "elite-recognition"}
-                onClick={() => toggleCampaignRite("elite-recognition")}>Ouvrir la préparation de la reconnaissance</button>}
+                onClick={() => toggleCampaignRite("elite-recognition")}>{save.eliteRecognitionV174?.recognized
+                  ? "Relire la reconnaissance Elite" : "Ouvrir la préparation de la reconnaissance"}</button>}
           </li>
           <li>
             <h4>Elder · R2-M049 à R2-M051</h4>
@@ -195,8 +203,12 @@ export default function ClanChroniclePanel({
           </li>
         </ol>
       </section>
+      {activeRite === "elite-clan-rites" && onEliteRecognitionCommand && <EliteClanRites key={save.createdAt}
+        save={save} suspended={!!quatzaSuspended} onCommand={onEliteRecognitionCommand} onClose={closeCampaignRite}
+        onOpenRecognition={() => setCampaignRite("elite-recognition")} />}
       {activeRite === "elite-recognition" && onEliteRecognitionCommand && <EliteRecognition key={save.createdAt}
-        save={save} onCommand={onEliteRecognitionCommand} onClose={closeCampaignRite} />}
+        save={save} onCommand={onEliteRecognitionCommand} onClose={closeCampaignRite}
+        onOpenTrials={() => setCampaignRite("elite-clan-rites")} />}
       {activeRite === "blooded-temple" && onBloodedTempleCommand && <BloodedTempleV174 key={save.createdAt}
         save={save} onCommand={onBloodedTempleCommand} onClose={closeCampaignRite} suspended={!!quatzaSuspended} />}
       {(activeRite === "quatza-triad" || activeRite === "quatza-solo") && onQuatzaCommand &&

@@ -25,6 +25,8 @@ import { warReturnView } from './systems/warReturnR2M047';
 import OserisReturnR2M053Panel from './OserisReturnR2M053Panel';
 import SuccessorTrialR2M054Panel from './SuccessorTrialR2M054Panel';
 import LongMemoryR2M055Panel from './LongMemoryR2M055Panel';
+import AncientHearingR2M056Panel from './AncientHearingR2M056Panel';
+import { ANCIENT_HEARING_AUDIENCE, ancientHearingView, hasLongMemoryHandover } from './systems/ancientHearingR2M056';
 import WarCommandIntroR2M036Panel from './WarCommandIntroR2M036Panel';
 import { MEMORY_LABELS, longMemoryEvidence, longMemoryView } from './systems/longMemoryR2M055';
 import { SUCCESSOR_OUTCOMES, successorTrialPlan, successorTrialView } from './systems/successorTrialR2M054';
@@ -46,7 +48,7 @@ interface Props {
   onNavigate: (roomId: ClanShipRoomId) => void;
   onClanWar: () => void;
 }
-type Tab = 'post' | 'contracts' | 'crew' | 'journal' | 'project' | 'war-return' | 'oseris-return' | 'successor-trial' | 'long-memory' | 'war-command-intro';
+type Tab = 'post' | 'contracts' | 'crew' | 'journal' | 'project' | 'war-return' | 'oseris-return' | 'successor-trial' | 'long-memory' | 'ancient-hearing' | 'war-command-intro';
 const TABS: { id: Tab; label: string }[] = [
   { id: 'post', label: 'Poste & mandat' }, { id: 'contracts', label: 'Opérations' },
   { id: 'crew', label: 'Équipage' }, { id: 'journal', label: 'Chronique' },
@@ -54,6 +56,7 @@ const TABS: { id: Tab; label: string }[] = [
   { id: 'oseris-return', label: 'Retour à Oseris-IV' },
   { id: 'successor-trial', label: 'Décision du successeur' },
   { id: 'long-memory', label: 'La longue mémoire' },
+  { id: 'ancient-hearing', label: 'Témoignages Ancient' },
   { id: 'war-command-intro', label: 'Commandement de la corniche' },
 ];
 const KINDS = { onboarding: 'Accueil du clan', interior: 'Mission à bord', field: 'Chasse de clan', space: 'Opération spatiale' };
@@ -96,6 +99,10 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
   const memory = !temporarySession && state.mandateAccepted
     ? longMemoryEvidence(save.createdAt, save.elderWorkshopV172, state.legacy, state.successorTrial) : null;
   const memoryChoice = memory && state.longMemory?.longMemorySuccess ? longMemoryView(state.longMemory.orders).choice : null;
+  const hearingAvailable = memory !== null && hasLongMemoryHandover(state.longMemory);
+  const hearing = state.ancientHearing ? ancientHearingView(state.ancientHearing.orders, false) : null;
+  const armorerAtWorkshop = tab === 'ancient-hearing' && hearingAvailable &&
+    clanResidenceCrewPostRooms(save)['iron-claw'] === 'armurerie';
   const availableCrew = availableClanResidenceCrew(save);
   const collectivePosts = collective ? clanResidenceCrewPostRooms(save) : null;
   useMenuGamepad(rootRef, !suspended, 'clan-ship-operations', onClose);
@@ -226,6 +233,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
         {TABS.filter(entry => (entry.id !== 'project' || projectAvailable) &&
           (entry.id !== 'war-return' || warReturnAvailable) && (entry.id !== 'oseris-return' || oserisAvailable) &&
           (entry.id !== 'successor-trial' || successorPlan !== null) && (entry.id !== 'long-memory' || memory !== null) &&
+          (entry.id !== 'ancient-hearing' || hearingAvailable) &&
           (entry.id !== 'war-command-intro' || warCommandIntroAvailable)).map(entry => <button key={entry.id} type="button" aria-pressed={tab === entry.id} disabled={suspended}
           data-clan-operations-tab={entry.id} onClick={() => { setTab(entry.id); setFeedback(''); }}>{entry.label}</button>)}
       </nav>
@@ -236,6 +244,10 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
           <section className={styles.step}><h3>Voir le champ depuis les hauteurs</h3>
             <p>Le poste de commandement de la corniche est accessible depuis le conseil.</p>{routeButton('conseil')}
           </section>)}
+        {tab === 'ancient-hearing' && hearingAvailable && memory && <AncientHearingR2M056Panel
+          state={state.ancientHearing} roomId={roomId} evidence={memory} armorerPresent={armorerAtWorkshop}
+          disabled={suspended || activeContract !== null}
+          onOrder={order => { act({ type: 'ancient-hearing', order, expectedRevision: state.revision }); }} onNavigate={route} />}
         {tab === 'long-memory' && memory && <LongMemoryR2M055Panel
           state={state.longMemory} evidence={memory} roomId={roomId} disabled={suspended || activeContract !== null}
           onAction={order => { act({ type: 'long-memory', order, expectedRevision: state.revision }); }} onNavigate={route} />}
@@ -394,6 +406,9 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
               Corniche · retour de la mission de commandement confirmé
             </p>}
             {memoryChoice && <p className={styles.notice} data-r2-m055-receipt>Longue mémoire · {MEMORY_LABELS[memoryChoice]}</p>}
+            {hearing?.ready && hearing.audience && <p className={styles.notice} data-r2-m056-receipt>
+              Registre de reconnaissance · {ANCIENT_HEARING_AUDIENCE[hearing.audience].label}
+            </p>}
             {successorOutcome && <p className={styles.notice} data-r2-m054-receipt>{SUCCESSOR_OUTCOMES[successorOutcome]}</p>}
             {state.legacy?.returnedWorldCompared && <p className={styles.notice} data-oseris-return-receipt>
               Oseris-IV · {oserisReturnView(state.legacy.orders).choice === 'maintain' ? 'Passage de rive entretenu' : 'Canopée adoptée'}
