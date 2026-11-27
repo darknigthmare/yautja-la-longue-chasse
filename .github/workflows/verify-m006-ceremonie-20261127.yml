@@ -17,7 +17,7 @@ jobs:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '3b3c8faa0ee198176e2c1a7f051c952b13e16541'
+          ref: 'fd7d845561932937b61e18d956e5cf3948b9597d'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -86,20 +86,25 @@ jobs:
           node-version: '22'
       - name: Materialize official runtime inputs and install dependencies
         run: |
-          test "$(git rev-parse HEAD)" = '3b3c8faa0ee198176e2c1a7f051c952b13e16541'
+          test "$(git rev-parse HEAD)" = 'fd7d845561932937b61e18d956e5cf3948b9597d'
           node scripts/materialize-asset-raccords-20261120.mjs runtime
           npm ci --ignore-scripts --no-audit --no-fund
       - name: Verify archive compatibility and both workshop orders
+        id: behavior
         run: >-
           node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec
           tests/homeworld-childhood-v175.test.mjs tests/youth-training.test.ts tests/youth-campaign.test.mjs
           tests/nursery-campaign.test.mjs tests/campaign-slots.test.mjs
-      - name: Check types and lint
+      - name: Check types
+        id: types
         run: |
           node node_modules/next/dist/bin/next typegen
           node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Lint the source and recipe
+        run: |
           npx eslint app/game/HomeworldChildhoodV175.tsx app/game/HomeworldHub.tsx app/game/save.ts app/game/systems/homeworldChildhoodV175.ts app/game/systems/youthCampaign.ts app/game/systems/nurseryCampaign.ts app/game/systems/campaignSlots.ts tests/homeworld-childhood-v175.test.mjs tests/helpers/homeworld-childhood-v175.mjs scripts/qa-homeworld-childhood-v175.mjs
       - name: Play through the Homeworld handoff and open the chosen workshop
+        if: ${{ !cancelled() && steps.behavior.outcome == 'success' && steps.types.outcome == 'success' }}
         env:
           CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
         run: node scripts/qa-homeworld-childhood-v175.mjs
