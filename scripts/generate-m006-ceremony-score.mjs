@@ -145,7 +145,7 @@ function renderScore() {
 function opus(wav) {
   const render = spawnSync("ffmpeg", [
     "-v", "error", "-fflags", "+bitexact", "-f", "wav", "-i", "pipe:0", "-map_metadata", "-1",
-    "-flags:a", "+bitexact", "-c:a", "libopus", "-ac", "1", "-ar", String(sampleRate),
+    "-fflags", "+bitexact", "-flags:a", "+bitexact", "-c:a", "libopus", "-ac", "1", "-ar", String(sampleRate),
     "-b:a", "24k", "-vbr", "off", "-f", "ogg", "pipe:1",
   ], { input: wav, maxBuffer: 2 * 1024 * 1024 });
   if (render.error) throw render.error;

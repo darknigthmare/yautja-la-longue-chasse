@@ -20,11 +20,18 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
+      - name: Install the pinned Linux Opus encoder
+        run: |
+          archive=$(npm pack @ffmpeg-installer/linux-x64@4.1.0 --pack-destination "$RUNNER_TEMP" --silent)
+          mkdir "$RUNNER_TEMP/m006-ffmpeg"
+          tar -xf "$RUNNER_TEMP/$archive" -C "$RUNNER_TEMP/m006-ffmpeg" package/ffmpeg
+          echo "$RUNNER_TEMP/m006-ffmpeg/package" >> "$GITHUB_PATH"
       - name: Check deterministic render and media envelope
         run: |
-          ffmpeg -version | head -1
+          ffmpeg -version | sed -n '1p'
           node scripts/generate-m006-ceremony-score.mjs --write > /tmp/m006-ceremony-hashes.txt
           node scripts/generate-m006-ceremony-score.mjs --verify | diff -u /tmp/m006-ceremony-hashes.txt -
-          ffprobe -v error -of json -show_entries format=duration,size public/audio/music/ceremony-m006/mus-06-clan-ceremonie.ogg
+          frames=$(ffmpeg -v error -i public/audio/music/ceremony-m006/mus-06-clan-ceremonie.ogg -ac 1 -ar 24000 -f s16le pipe:1 | wc -c)
+          test "$frames" = '5040000'
       - name: Transfer bounded authoring bytes
         run: node scripts/generate-m006-ceremony-score.mjs --emit
