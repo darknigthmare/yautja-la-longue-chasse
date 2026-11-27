@@ -131,10 +131,13 @@ try {
   const campaign = page.locator('[data-menu-section="campaign"]');
   if (await campaign.isVisible()) await campaign.click();
   await page.locator('[data-menu-action="continue"]').click();
-  const stage = page.locator('[data-youth-stage][data-youth-assets="true"][data-youth-phase="barracks"]');
+  const barracksScene = page.locator('[data-youth-training][data-youth-step="barracks"]');
+  const stage = barracksScene.locator("[data-youth-stage]");
   await stage.waitFor({ timeout: 90000 });
+  await barracksScene.getByText("Chargement du dojo…").waitFor({ state: "hidden" });
+  assert.equal(await barracksScene.getByText("La formation attend ses images.").count(), 0);
   await stage.focus();
-  await page.waitForFunction(() => document.querySelector("[data-youth-stage]")?.dataset.youthArmed === "true");
+  await barracksScene.getByText("Relâchez les commandes pour reprendre la formation.").waitFor({ state: "hidden" });
   await page.keyboard.press("KeyH", { delay: 100 });
   const notes = page.locator("[data-youth-workshop-notes]");
   await notes.getByText("La distance des lames", { exact: true }).waitFor();
