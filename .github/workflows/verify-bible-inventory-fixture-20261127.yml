@@ -1,0 +1,57 @@
+name: "Verify the campaign workbook fixture"
+on:
+  push:
+    branches: ["codex/verify-bible-inventory-20261127"]
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            scripts/build-bible-inventory-workbook-20261122.mjs
+            scripts/lib/workbook-ooxml.mjs
+            production/INVENTAIRE_BIBLE_20261122.json
+            production/INVENTAIRE_BIBLE_20261122.xlsx
+            production/INVENTAIRE_BIBLE_20261127.json
+            production/INVENTAIRE_BIBLE_20261127.xlsx
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "22"
+      - name: Reproduce both files with the repository generator
+        run: |
+          node scripts/build-bible-inventory-workbook-20261122.mjs --check
+          node scripts/build-bible-inventory-workbook-20261122.mjs --date=20261127 --check
+      - name: Inspect the OpenXML worksheets and evidence links
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          from xml.etree import ElementTree as ET
+          import json
+
+          data = json.loads(Path('production/INVENTAIRE_BIBLE_20261127.json').read_text())
+          namespace = '{http://schemas.openxmlformats.org/spreadsheetml/2006/main}'
+          with ZipFile('production/INVENTAIRE_BIBLE_20261127.xlsx') as archive:
+              assert archive.testzip() is None
+              assert len(archive.namelist()) == 17
+              entries = {name: ET.fromstring(archive.read(name)) for name in archive.namelist()}
+              workbook = entries['xl/workbook.xml']
+              assert [sheet.attrib['name'] for sheet in workbook.iter(namespace + 'sheet')] == [
+                  'Synthèse', 'Campagne', 'Transverses', 'Avenants', 'Preuves',
+              ]
+              enumerate_rows = lambda index: list(entries[f'xl/worksheets/sheet{index}.xml'].iter(namespace + 'row'))[4:]
+              assert len(enumerate_rows(2)) == len(data['missions']) == 68
+              assert len(enumerate_rows(3)) == len(data['transverses']) == 13
+              assert len(enumerate_rows(4)) == len(data['aventants']) == 12
+              assert all(link.attrib['Target'].startswith('https://') for name, root in entries.items()
+                         if name.startswith('xl/worksheets/_rels/') for link in root)
+              summary = archive.read('xl/worksheets/_rels/sheet1.xml.rels').decode()
+              assert '#L53' in summary and '#L2557' in summary
+              print('68 missions, 13 transversal entries, 12 reviewed pull requests; worksheets and links verified.')
+          PY
