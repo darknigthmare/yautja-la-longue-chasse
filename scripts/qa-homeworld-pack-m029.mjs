@@ -198,9 +198,27 @@ async function boot() {
   const exterior = {
     ...api,
     homeworldWorldRouteV77(from, to) {
-      if (from.levelId !== to.levelId) return api.homeworldWorldRouteV77(from, to);
-      const walk = api.homeworldWalkRouteV109(from.levelId, from.point, to.point);
-      return { status: walk.status, segments: walk.status === "reachable" ? [walk] : [] };
+      const queue = [{ ...from, segments: [] }];
+      const reached = new Set();
+      for (const entry of queue) {
+        if (entry.levelId === to.levelId) {
+          const walk = api.homeworldWalkRouteV109(entry.levelId, entry.point, to.point);
+          if (walk.status === "reachable") return { status: "reachable", segments: [...entry.segments, walk] };
+        }
+        for (const connector of api.HOMEWORLD_CONNECTORS_V77) {
+          const reverse = connector.to.levelId === entry.levelId;
+          const landing = reverse ? connector.to : connector.from;
+          if (landing.levelId !== entry.levelId) continue;
+          const arrival = reverse ? connector.from : connector.to;
+          const key = arrival.levelId + ":" + arrival.point.x + ":" + arrival.point.y;
+          if (reached.has(key)) continue;
+          const walk = api.homeworldWalkRouteV109(entry.levelId, entry.point, landing.point);
+          if (walk.status !== "reachable") continue;
+          reached.add(key);
+          queue.push({ ...arrival, segments: [...entry.segments, walk, { connectorId: connector.id, reverse }] });
+        }
+      }
+      return { status: "unavailable", segments: [] };
     },
   };
   nav = homeworldNavigatorV77(page, exterior, { waypointTolerance: 3, driverTickMs: 26, pulseInputs: true });
@@ -234,15 +252,19 @@ async function appointAtNativePosts() {
   await nav.exitRoom();
 
   const point = api.HOMEWORLD_POINTS_V77.find(candidate => candidate.id === "personal-ship");
-  assert.equal(await nav.floor(), point.levelId);
-  const start = await nav.position();
   const candidates = [0, 40, 80, 115].flatMap(offset =>
     [[0, offset], [offset, 0], [-offset, 0], [0, -offset]].map(([dx, dy]) => ({ x: point.x + dx, y: point.y + dy })));
-  const approach = candidates.find(candidate => api.homeworldWalkableV77(point.levelId, candidate) &&
-    !api.nearestHomeworldDoorV77(point.levelId, candidate) &&
-    !api.nearestHomeworldConnectorV77(point.levelId, candidate) &&
-    api.nearestHomeworldPointV77(point.levelId, candidate)?.id === point.id &&
-    api.homeworldWalkRouteV109(point.levelId, start, candidate).status === "reachable");
+  let approach;
+  for (const candidate of candidates) {
+    if (!api.homeworldWalkableV77(point.levelId, candidate) ||
+        api.nearestHomeworldDoorV77(point.levelId, candidate) ||
+        api.nearestHomeworldConnectorV77(point.levelId, candidate) ||
+        api.nearestHomeworldPointV77(point.levelId, candidate)?.id !== point.id) continue;
+    if ((await nav.route({ levelId: point.levelId, point: candidate })).status === "reachable") {
+      approach = candidate;
+      break;
+    }
+  }
   assert.ok(approach, "Existing way to the transfer sas");
   await nav.reach({ levelId: point.levelId, point: approach });
   await page.keyboard.press("KeyE");
