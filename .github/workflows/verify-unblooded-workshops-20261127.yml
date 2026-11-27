@@ -64,7 +64,7 @@ jobs:
         with:
           node-version: '22'
       - run: npm ci --ignore-scripts --no-audit --no-fund
-        run: npx eslint app/game/systems/youthWorkshopV174.ts app/game/systems/youthTraining.ts app/game/systems/youthCampaign.ts app/game/YouthTrainingScreen.tsx app/game/youthTrainingRendering.ts app/game/youthWorkshopRenderingV174.ts tests/youth-training.test.ts
+      - run: npx eslint app/game/systems/youthWorkshopV174.ts app/game/systems/youthTraining.ts app/game/systems/youthCampaign.ts app/game/YouthTrainingScreen.tsx app/game/youthTrainingRendering.ts app/game/youthWorkshopRenderingV174.ts tests/youth-training.test.ts
       - run: |
           npx next typegen
           npx tsc --noEmit --incremental false
