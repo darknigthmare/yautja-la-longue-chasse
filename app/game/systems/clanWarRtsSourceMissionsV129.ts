@@ -5,6 +5,8 @@ import {
  type WarMissionMapActionV128, type WarMapReportV128,
 } from "./clanWarSourceMapsV128";
 
+type WarRtsMissionRulesV129 = Pick<WarRulesV6,"entries"|"units">;
+
 /**
  * 24 RTS W3 source-brief adapted to the V128 interactive traversal prototype.
  * 24 different physical mission scripts are playable as a single-hunter
@@ -241,10 +243,10 @@ const succeeded=(state:WarRtsMissionStateV129,message:string):WarRtsMissionUpdat
  ({accepted:true,state,message});
 const field=(entry:WarRulesV6["entries"][number],column:string)=>
  String(entry.fields.find(f=>f.column===column)?.value??"").trim();
-const sourceRow=(rules:WarRulesV6,id:string)=>
+const sourceRow=(rules:WarRtsMissionRulesV129,id:string)=>
  rules.entries.find(e=>e.sheet==="Scénarios RTS"&&e.id===id&&/^W3-RTS\d{2}$/.test(e.id));
 
-export function buildWarRtsMissionV129(id:string,rules:WarRulesV6):WarRtsMissionV129{
+export function buildWarRtsMissionV129(id:string,rules:WarRtsMissionRulesV129):WarRtsMissionV129{
  if(!isId(id))throw new RangeError("Mission W3-RTS source inconnue.");
  const entry=sourceRow(rules,id);
  if(!entry)throw new Error("Mission absente de la Bible V6.");
@@ -289,7 +291,7 @@ export function buildWarRtsMissionV129(id:string,rules:WarRulesV6):WarRtsMission
 }
 function authoredEnemyPositions(
  mission:WarRtsMissionV129,base:WarMapPracticeV128,
- rules:WarRulesV6,
+ rules:WarRtsMissionRulesV129,
 ):WarMapActorV128[]{
  const taken=new Set<string>([
   key(base.map.start),key(base.map.goal),
@@ -315,7 +317,7 @@ function authoredEnemyPositions(
   };
  });
 }
-export function createWarRtsMissionStateV129(id:string,rules:WarRulesV6):WarRtsMissionStateV129{
+export function createWarRtsMissionStateV129(id:string,rules:WarRtsMissionRulesV129):WarRtsMissionStateV129{
  const mission=buildWarRtsMissionV129(id,rules);
  const base=createWarMapPracticeV128(mission.mapId,rules);
  const enemies=authoredEnemyPositions(mission,base,rules);
@@ -487,7 +489,7 @@ export function commandWarRtsSourceMissionV129(
  return processAfterCommand(state,advanced.state,state.tracked,[...state.completedTaskIds],hold,
   advanced.message);
 }
-export function auditWarRtsSourceMissionsV129(rules:WarRulesV6){
+export function auditWarRtsSourceMissionsV129(rules:WarRtsMissionRulesV129){
  const issues:string[]=[];
  const plans:WarRtsMissionV129[]=[];
  for(const id of WAR_SOURCE_RTS_IDS_V129){

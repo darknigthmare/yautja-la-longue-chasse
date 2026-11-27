@@ -3,6 +3,10 @@ import assert from 'node:assert/strict';
 import { aboard, fixture, ops, qa, saves } from './helpers/clan-ship-trophy-hearing-fixture.mjs';
 
 const command = qa.load('app/game/systems/warCommandIntroR2M036.ts');
+const { DEFAULT_WAR_RULES_V6: original } = qa.load('app/game/systems/clanWarBibleV6.ts');
+const rts = qa.load('app/game/systems/clanWarRtsSquadsV133.ts');
+const maps = qa.load('app/game/systems/clanWarSourceMapsV128.ts');
+const compact = qa.load('app/game/data/warCommandSourceR2M036.json');
 const directions = new Set(command.WAR_COMMAND_DIRECTIONS.map(item => item.id));
 
 function saveAtCouncil() {
@@ -25,6 +29,15 @@ function next(save, order) {
 
 const view = save => command.warCommandIntroView(save.clanShipOperations.warCommandIntro);
 
+test('the compact W3 source is identical to the corresponding versioned workbook rows', () => {
+  assert.deepEqual(compact.metadata, original.metadata);
+  assert.deepEqual(compact.units, original.units);
+  assert.equal(compact.entries.length, 3);
+  for (const row of compact.entries) {
+    assert.deepEqual(row, original.entries.find(item => item.sheet === row.sheet && item.id === row.id));
+  }
+});
+
 test('R2-M036 requires the active council and the full sequence, with a real survivor withdrawal', () => {
   let save = saveAtCouncil();
   assert.equal(act(save, 'deploy', 'hangar').reason, 'wrong-room');
@@ -32,6 +45,9 @@ test('R2-M036 requires the active council and the full sequence, with a real sur
   assert.equal(act(save, 'deploy', 'conseil', save.clanShipOperations.revision - 1).reason, 'stale-revision');
   save = next(save, 'deploy');
   const first = view(save);
+  const native = rts.launchWarRtsSquadsV133(rts.createWarRtsSquadsV133('W3-RTS01', original));
+  assert.ok(native.accepted);
+  assert.deepEqual(first.rts, native.state);
   assert.equal(first.rts.squads.length, 3);
   for (const squad of first.rts.squads) {
     assert.ok(squad.unitName);
@@ -65,6 +81,9 @@ test('R2-M036 covers, moves, extracts a third squad and plays each alternative o
     let current = next(save, choice);
     const field = view(current).field;
     assert.equal(field.map.id, 'W3-MAP01');
+    const native = maps.createWarMapPracticeV128('W3-MAP01', original);
+    assert.deepEqual(field, { ...native, scenarioId: field.scenarioId,
+      map: { ...native.map, observation: field.map.observation, goal: field.map.goal } });
     const board = field.map;
     goals.push(board.goal);
     assert.equal(act(current, 'interact').reason, 'war-command-intro-order');

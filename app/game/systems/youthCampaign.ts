@@ -52,7 +52,7 @@ export function normalizeYouthCampaign(value: unknown): YouthCampaignProgress | 
   return { version: 1, status: value.status as YouthCampaignProgress["status"], checkpoint, receipts, equipment, startedAt: value.startedAt, completedAt: value.completedAt as string | null };
 }
 /** Reject mismatched narrative proof instead of falling back to an adult campaign. */
-export function youthCampaignMatchesSave(value: unknown, bloodingVerified = false): boolean {
+export function youthCampaignMatchesSave(value: unknown, { bloodingVerified = false, cradleBriefed = false, crownReturned = false, adjutantVerified = false } = {}): boolean {
   if (!record(value)) return false;
   const prologue = normalizeNurseryCampaign(value.prologue);
   // Current youth chapters cannot import unplayed future hunts to gain ship/rank access.
@@ -64,11 +64,17 @@ export function youthCampaignMatchesSave(value: unknown, bloodingVerified = fals
     const cohortRecognized = normalizeSoloV68Campaign(value.soloV68)?.status === "completed" && soloV68MatchesSave(value);
     const evidence = ["intro-begun", "intro-completed", "training-completed",
       ...(soloV66MatchesSave(value) ? ["first-tracks"] : []), ...(soloV67MatchesSave(value) ? ["unguided-hunt"] : [])];
-    if (bloodingVerified) evidence.push(...CHRONICLE_RITES.find(rite => rite.id === "blooding-mark")!.requiredEvidenceIds);
+    if (bloodingVerified) {
+      evidence.push(...CHRONICLE_RITES.find(rite => rite.id === "blooding-mark")!.requiredEvidenceIds);
+      if (cradleBriefed) evidence.push("queen-mission-briefing");
+      if (crownReturned) evidence.push("first-queen-hunt");
+      if (adjutantVerified) evidence.push("team-extraction", "multiple-world-hunts");
+    }
     if (prologue.chronicle.evidence.some(item => !evidence.includes(item.id)) ||
         prologue.chronicle.rites.some(item => item.id !== "nursery-recognition" &&
           !(cohortRecognized && item.id === "unguided-hunt-recognition") &&
-          !(bloodingVerified && item.id === "blooding-mark"))) return false;
+          !(bloodingVerified && item.id === "blooding-mark") &&
+          !(bloodingVerified && adjutantVerified && item.id === "adjutant-appointment"))) return false;
     if (raw.evidence.some(item => !record(item) || !prologue.chronicle.evidence.some(expected => expected.id === item.id && expected.sourceId === item.sourceId)) ||
         raw.rites.some(item => !record(item) || !prologue.chronicle.rites.some(expected => expected.id === item.id && expected.sourceId === item.sourceId))) return false;
   }
