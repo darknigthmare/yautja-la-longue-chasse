@@ -1,5 +1,6 @@
 /** R2-M036. A guided W3 command sortie whose final report belongs to the clan ledger. */
-import { DEFAULT_WAR_RULES_V6 } from './clanWarBibleV6';
+// The native W3 sortie only needs its scenario, map, world, and unit records.
+import commandSource from '../data/warCommandSourceR2M036.json';
 import {
   commandWarRtsOverwatchV136, commandWarRtsSquadsV133, createWarRtsSquadsV133,
   evacuateWarRtsSquadV139, launchWarRtsSquadsV133, type WarRtsSquadsStateV133,
@@ -45,7 +46,7 @@ const distance = (a: WarMapPointV128, b: WarMapPointV128) => Math.abs(a.x - b.x)
 let battle: WarRtsSquadsStateV133 | undefined;
 function deploy() {
   if (battle) return battle;
-  const result = launchWarRtsSquadsV133(createWarRtsSquadsV133(MISSION, DEFAULT_WAR_RULES_V6));
+  const result = launchWarRtsSquadsV133(createWarRtsSquadsV133(MISSION, commandSource));
   if (!result.accepted || result.state.squads.length !== 3) throw new Error('Un départ W3 à trois formations est requis.');
   battle = result.state;
   return battle;
@@ -55,7 +56,7 @@ const missions = new Map<Decision, WarMapPracticeV128>();
 function descend(decision: Decision, rts: WarRtsSquadsStateV133) {
   const cached = missions.get(decision);
   if (cached) return cached;
-  const seed = createWarMapPracticeV128(rts.map.id, DEFAULT_WAR_RULES_V6);
+  const seed = createWarMapPracticeV128(rts.map.id, commandSource);
   const path = seed.map.mandatoryPaths[decision === 'resupply' ? 1 : 0];
   const target = path[decision === 'resupply' ? 5 : 7];
   const field = { ...seed, scenarioId: 'R2-M036-' + decision,

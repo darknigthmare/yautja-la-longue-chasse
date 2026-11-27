@@ -91,6 +91,7 @@ import { abandonQueenHuntContractV163, emptyQueenHuntV163, evaluateQueenHuntAcce
   QUEEN_HUNT_SUPPORT_MISSION_V163, settleQueenHuntMissionV163, syncFirstQueenFromCradleV163, takeQueenHuntContractV163 } from './systems/queenHuntV163';
 import { evaluateShipPreparationV88, inspectShipPreparationV88, readShipPreparationFleetV88, type ShipPreparationObservationV88, type ShipPreparationResultV88 } from './systems/shipPreparationV88';
 import { actSpaceRoutesV159, normalizeSpaceRoutesV159, spacePersonalShipV159, type SpaceRoutesActionV159, type SpaceRoutesResultV159 } from './systems/spaceRoutesV159';
+import { advanceWarNarrativeR2M035, type WarNarrativeCommandR2M035 } from "./systems/warNarrativeR2M035";
 import { shipAcquisitionAuthorityV161, shipReceiptV161 } from './systems/shipReceiptV161';
 import { FIRST_INTERSTELLAR_V173, commitFirstInterstellarV173, firstInterstellarAccessV173,
   firstInterstellarInFlightV173, firstInterstellarReceiptV173, type FirstInterstellarActionV173 } from './systems/firstInterstellarV173';
@@ -2293,7 +2294,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "quatzaRij" | "bloodedTempleV174" | "eliteRecognitionV174" | "buriedCradle" | "elderPassageJudgmentV168" | "elderMentoringV168" | "elderAssemblyV168" | "elderWorkshopV172" | "eliteMasteryV170" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "spaceRoutesV159" | "firstInterstellarV173" | "queenHuntV163" | "clanShipDocking" | "clanShipOperations" | "clanHullProjectV171" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "mountRidesV156" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155" | "blackGodV162" | "minorArcsV160" | "warpEpochsV165" | "tantalusV164">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "quatzaRij" | "bloodedTempleV174" | "eliteRecognitionV174" | "buriedCradle" | "warNarrativeR2M035" | "elderPassageJudgmentV168" | "elderMentoringV168" | "elderAssemblyV168" | "elderWorkshopV172" | "eliteMasteryV170" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "spaceRoutesV159" | "firstInterstellarV173" | "queenHuntV163" | "clanShipDocking" | "clanShipOperations" | "clanHullProjectV171" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "mountRidesV156" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155" | "blackGodV162" | "minorArcsV160" | "warpEpochsV165" | "tantalusV164">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2303,7 +2304,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, bloodedTempleV174: update.bloodedTempleV174, eliteRecognitionV174: update.eliteRecognitionV174, buriedCradle: update.buriedCradle, elderPassageJudgmentV168: update.elderPassageJudgmentV168, elderWorkshopV172: update.elderWorkshopV172, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, spaceRoutesV159: update.spaceRoutesV159, firstInterstellarV173: update.firstInterstellarV173, queenHuntV163: update.queenHuntV163, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, mountsV153: update.mountsV153, mountRidesV156: update.mountRidesV156, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149, residenceLifeV150: update.residenceLifeV150, originV151: update.originV151, residenceScenesV154: update.residenceScenesV154, pathObjectsV158: update.pathObjectsV158, heritageV152: update.heritageV152, hardcoreV155: update.hardcoreV155, blackGodV162: update.blackGodV162, minorArcsV160: update.minorArcsV160, warpEpochsV165: update.warpEpochsV165, tantalusV164: update.tantalusV164 });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, warNarrativeR2M035: update.warNarrativeR2M035, bloodedTempleV174: update.bloodedTempleV174, eliteRecognitionV174: update.eliteRecognitionV174, buriedCradle: update.buriedCradle, elderPassageJudgmentV168: update.elderPassageJudgmentV168, elderWorkshopV172: update.elderWorkshopV172, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, spaceRoutesV159: update.spaceRoutesV159, firstInterstellarV173: update.firstInterstellarV173, queenHuntV163: update.queenHuntV163, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, mountsV153: update.mountsV153, mountRidesV156: update.mountRidesV156, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149, residenceLifeV150: update.residenceLifeV150, originV151: update.originV151, residenceScenesV154: update.residenceScenesV154, pathObjectsV158: update.pathObjectsV158, heritageV152: update.heritageV152, hardcoreV155: update.hardcoreV155, blackGodV162: update.blackGodV162, minorArcsV160: update.minorArcsV160, warpEpochsV165: update.warpEpochsV165, tantalusV164: update.tantalusV164 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2858,6 +2859,22 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   };
 
   const spaceShipV159 = useMemo(() => screen === 'map' ? spacePersonalShipV159(save) : null, [save, screen]);
+  const onWarNarrativeCommandR2M035 = (command: WarNarrativeCommandR2M035) => {
+    const current = saveRef.current;
+    let transferPending = true;
+    try { transferPending = archiveTransferPending(window.localStorage); } catch { /* No attested archive state. */ }
+    if (!sessionAliveRef.current || screen !== "clan-war" || archiveReturnV85 !== "clan-ship" || current.createdAt !== entry.ownerCreatedAt ||
+        transferPending || campaignOperationRef.current || !gameFocusedV89 || settingsOpen || trophyWorkshop !== null ||
+        archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || resumableHunt || activeHuntSessionRef.current) {
+      return { ok: false, message: "Poste suspendu. Vérifie l’état de la campagne et de sa sauvegarde." };
+    }
+    const result = advanceWarNarrativeR2M035(current, command);
+    if (!result.ok) return result;
+    return persistSocialProgress({ warNarrativeR2M035: result.state })
+      ? { ok: true, message: result.message }
+      : { ok: false, message: "Le geste attend la confirmation de la sauvegarde." };
+  };
+
   // V159: routes typées. L’action est écrite avant d’être annoncée ; l’écran relit la sauvegarde confirmée.
   const onSpaceRouteActionV159 = (action: SpaceRoutesActionV159): SpaceRoutesResultV159 => {
     const current = saveRef.current;
@@ -5093,6 +5110,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         <Suspense fallback={<DeferredGameScreen />}>
           <ClanWarPanelV85 save={save} createSceneAudio={createSceneAudio} onClose={() => go(archiveReturnV85)}
             onGauntletSound={playGauntletSignal} onEquipGauntlet={equipGauntletCampaignV134} onClaimGauntletStudy={claimGauntletResearchV134}
+            onNarrativeCommand={archiveReturnV85 === "clan-ship" ? onWarNarrativeCommandR2M035 : undefined}
             campaignRoutesPanel={<SpaceRoutesPanelV159 ownerCreatedAt={save.createdAt}
               state={normalizeSpaceRoutesV159(save.spaceRoutesV159, save.createdAt)} ship={spacePersonalShipV159(save)}
               disabled={settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy}

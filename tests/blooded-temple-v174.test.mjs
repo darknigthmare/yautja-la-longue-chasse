@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import { playShipAcquisitionV161 } from "./helpers/ship-receipt-v161.mjs";
 import { bloodedTempleAdmissionV174, qa } from "./helpers/blooded-temple-fixture-v174.mjs";
 
 const temple = qa.load("app/game/systems/bloodedTempleV174.ts");
@@ -94,4 +95,23 @@ test("six rooms, three hunter proofs and two matching marks produce one durable 
   const portable = saves.parseSaveImport(saves.exportSave(save));
   assert.ok(portable.save, portable.failure);
   assert.equal(chronicles.getChronicleRank(portable.save.prologue.chronicle), "blooded");
+
+  const fake = chronicles.recordChronicleEvidence(save.prologue.chronicle, {
+    id: "queen-mission-briefing", sourceId: "chronicle.queen-briefing.completed",
+  });
+  assert.equal(saves.parseSaveImport(JSON.stringify({ ...save, prologue: { ...save.prologue, chronicle: fake.state } })).failure, "invalid-save");
+  const voyager = playShipAcquisitionV161(qa, structuredClone(save));
+  for (const mission of qa.load("app/game/data.ts").MISSIONS) {
+    Object.assign(voyager.missionProgress[mission.id], { status: "completed", attempts: 1, completions: 1 });
+  }
+  const cradle = qa.load("app/game/systems/buriedCradleCampaign.ts");
+  const result = cradle.actBuriedCradleCampaign(voyager, { type: "prepare" },
+    { personalShipId: "classic-predator-spaceship", ownedShipIds: ["classic-predator-spaceship"] });
+  assert.equal(result.accepted, true, result.message);
+  const prepared = { ...voyager, prologue: result.prologue, buriedCradle: result.state };
+  assert.ok(saves.parseSaveImport(saves.exportSave(prepared)).save);
+  const forgery = chronicles.recordChronicleEvidence(prepared.prologue.chronicle, {
+    id: "first-queen-hunt", sourceId: "chronicle.first-queen.completed",
+  });
+  assert.equal(saves.parseSaveImport(JSON.stringify({ ...prepared, prologue: { ...prepared.prologue, chronicle: forgery.state } })).failure, "invalid-save");
 });

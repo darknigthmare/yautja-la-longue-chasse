@@ -328,7 +328,7 @@ test('M007 to M012 use the youth simulation, preserve recovery and require each 
     const walk = (target: number, { jump = true, quiet = false } = {}) => {
         run();
         for (let frame = 0; frame < 700 && (Math.abs(s.player.x - target) > 5 || s.player.y < 429); frame++) {
-            const move = Math.abs(s.player.x - target) <= 5 ? 0 : dir(target - s.player.x);
+            const move = Math.abs(s.player.x - target) <= 5 ? 0 : target < s.player.x ? -1 : 1;
             const hurdle = jump && api.getYouthObstacles(s).some(item => move === 1
                 ? item.x - s.player.x >= 20 && item.x - s.player.x < 59
                 : move === -1 && s.player.x - item.x - item.width >= 20 && s.player.x - item.x - item.width < 59);
