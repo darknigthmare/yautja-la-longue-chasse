@@ -1,0 +1,267 @@
+name: Verify the assembled campaign and canopy
+on:
+  push:
+    branches: [codex/verify-bible-cite-o6-20261127]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source:
+    name: Verify campaign proofs, workbook and runtime asset inventory
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ASSET_RACCORDS_SOURCE_COMMIT: '97f1fc15f7224bfbb929444a6e637f1e15035e86'
+      BASE_COMMIT: '6b948ab218941614adf35fe046fa4a6e3b49bc4d'
+    steps:
+      - name: Checkout the exact candidate and bounded inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '97f1fc15f7224bfbb929444a6e637f1e15035e86'
+          persist-credentials: false
+          fetch-depth: 12
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /production/INVENTAIRE_BIBLE_20261122.*
+            /production/INVENTAIRE_BIBLE_20261127.*
+            /production/YAUTJA_LOTS_P0_P3_20261121.*
+            /production/YAUTJA_LOTS_P0_P3_LOT2_20261121.*
+            /public/game/xeno-prime/berceau-v1/
+            /public/audio/
+            /public/game/quatza-rij/
+            /public/game/assets/v37/tribes/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp
+            /public/game/assets/v37/tribes/v2/homeworld-forest-v2--8fdc633789dcd9c0.webp
+            /public/game/assets/v37/tribes/v2/homeworld-lava-v2--ecd85e06796799d2.webp
+            /public/game/backgrounds/ice-depth-v4.webp
+            /public/game/backgrounds/ocean-depth-v8.png
+            /public/game/backgrounds/ruins-depth-v8.png
+            /public/game/backgrounds/swamp-depth-v8.png
+            /public/game/homeworld/v67/ash-causeway-vista.png
+            /public/game/homeworld/v67/glass-processional-vista.png
+            /public/game/sprites/v8/ecology/cinder-12/basalt-ram-sheet.png
+            /public/game/sprites/v8/ecology/cinder-12/smoke-wyvern-sheet.png
+            /public/game/sprites/v8/ecology/naraka-delta/mire-shell-sheet.png
+            /public/game/sprites/v8/ecology/nivalis-k/snow-prowler-sheet.png
+            /public/game/sprites/v8/ecology/oseris-iv/amber-jaw-stalker-sheet.png
+            /public/game/sprites/v8/ecology/pelagos-m/shellback-sheet.png
+            /public/game/sprites/v8/ecology/serekh-9/burrow-snake-sheet.png
+            /public/game/assets/clan-field-20261103/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues-index.json
+            /public/game/assets/v139/rig-gauntlets/
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/assets/v133/concept-masks/
+            /public/game/assets/v133/decals/decal-atlas.webp
+            /public/game/sprites/v62/heads/
+            /public/game/sprites/v62/masks/
+            /public/game/homeworld/v56/
+            /public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png
+            /public/game/assets/v134/
+            /public/game/assets/v135/
+            /public/game/assets/v136/
+            /public/game/p0-sprites-20261113/warp/
+            /public/game/warp-universe/20261109/
+            /public/game/warp/w02/
+            /public/game/prologue/v47/
+            /content/the-pit/
+            /public/game/review/the-pit/
+            /art-source/the-pit/
+            /production/qa/evidence/isles-v1-20261123/
+            /public/game/clan-ship/interiors/trophees-v1.webp
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize official runtime inputs and install dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate canonical runtime evidence
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs candidate || { cat outputs/qa-asset-raccords-20261120/runtime-generator.log; exit 1; }
+          node scripts/check-hunt-integration-source-v112.mjs --current
+      - name: Verify Next types
+        if: ${{ !cancelled() }}
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Test the merged campaign paths and hunt transfers
+        if: ${{ !cancelled() }}
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec
+          tests/blooded-temple-v174.test.mjs tests/quatza-rij.test.mjs tests/ship-receipt-v161.test.mjs tests/successor-trial-r2-m054.test.mjs
+          tests/elite-recognition-v174.test.mjs tests/youth-training.test.ts tests/youth-campaign.test.mjs tests/nursery-opening.test.mjs
+          tests/nursery-cohort-v172.test.mjs tests/homeworld-route-m034.test.mjs tests/homeworld-pack-trial-m029.test.mjs tests/homeworld-adjutant-save-m029.test.mjs
+          tests/war-command-intro-r2-m036.test.mjs tests/war-narrative-r2-m035.test.mjs tests/clan-war-canyon-m037.test.mjs tests/trophy-introduction-r2-m038.test.mjs
+          tests/long-memory-r2-m055.test.mjs tests/elder-workshop-v172.test.mjs tests/clan-ship-operations.test.mjs tests/qa-hunt-ground-policy-v112.test.mjs
+          tests/audio-pack-v54.test.mjs tests/warp-epochs-v165.test.mjs tests/tantalus-warp-v167.test.mjs tests/warp-module-bay.test.mjs
+          tests/homeworld-childhood-v175.test.mjs tests/homeworld-regional-loop-m014.test.mjs tests/war-conquest-r2-m037.test.mjs tests/ancient-hearing-r2-m056.test.mjs
+          tests/mausoleum.test.mjs tests/homeworld-triad-roles-m016.test.mjs tests/origin-training-yard-o6.test.mjs tests/campaign-training-v90.test.mjs
+          tests/campaign-solo-v70.test.mjs tests/clan-hull-project-v171.test.mjs tests/legacy-finale-r2.test.mjs tests/homeworld-city-places-m003.test.mjs
+          tests/elder-assembly-v168.test.mjs tests/origin-solo-return-o6.test.mjs tests/origin-continuation-o6.test.mjs tests/isles-net-v1.test.mjs
+          tests/isles-reverse-hunt-v1.test.mjs tests/isles-view-v1.test.mjs tests/pit-bonus-trial-v1.test.mjs tests/pit-content-access-v1.test.mjs
+          tests/pit-honor-gallery-v1.test.mjs tests/pit-honor-route-game-client.test.mjs tests/pit-masks-broken-prologue.test.mjs tests/pit-precision-trial-v1.test.mjs
+          tests/pit-selection-presentation-v1.test.mjs tests/nef-rejoin-m017.test.mjs tests/origins-trophy-v157.test.mjs tests/hunt-canopy-runtime-v112.test.mjs
+          tests/homeworld-triad-city-m016.test.mjs tests/origin-first-shock-o6.test.mjs tests/nursery-campaign.test.mjs tests/homeworld-city-street-m003.test.mjs
+          tests/canopy-traversal-v112.test.mjs tests/canopy-navigation-v112.test.mjs tests/hunt-canopy-resume-cooldown-20261109.test.mjs tests/harvest-inventory-v112.test.mjs
+          tests/hunt-skinning-worksite-20261109.test.mjs
+      - name: Lint every changed gameplay source and recipe
+        if: ${{ !cancelled() }}
+        run: >-
+          node node_modules/eslint/bin/eslint.js
+          app/game/HuntCanopyHudV112.tsx app/game/HuntCanvas.tsx app/game/systems/canopyNavigationV112.ts scripts/qa-skinning-canopy-durable-browser-20261109.mjs
+          tests/browser/skinning-canopy-durable-20261109.fixture.jsx tests/hunt-canopy-runtime-v112.test.mjs app/game/HomeworldHub.tsx app/game/HomeworldTriadM016.tsx
+          app/game/save.ts app/game/systems/homeworld.ts app/game/systems/homeworldTriadM016.ts tests/homeworld-triad-city-m016.test.mjs
+          app/game/GameClient.tsx app/game/OriginFirstShockO6.tsx app/game/nurseryRendering.ts app/game/systems/originFirstShockO6.ts
+          app/game/systems/originsV151.ts scripts/qa-origin-first-shock-o6.mjs tests/helpers/origin-first-shock-o6.mjs tests/origin-first-shock-o6.test.mjs
+          app/game/FirstHuntSoloV70.tsx app/game/firstHuntSoloV70Rendering.ts app/game/systems/campaignSoloV70.ts app/game/systems/firstHuntSoloV70.ts
+          scripts/qa-v70-nef-m017.mjs tests/campaign-solo-v70.test.mjs tests/nef-rejoin-m017.test.mjs app/game/BibleSceneCulturalV86.tsx
+          app/game/HomeworldRegionV68.tsx app/game/LegacyFinaleSceneR2.tsx app/game/systems/legacyFinaleR2.ts tests/helpers/legacy-finale-r2.mjs
+          tests/legacy-finale-r2.test.mjs app/game/HomeworldChildhoodV175.tsx app/game/systems/campaignSlots.ts app/game/systems/homeworldChildhoodV175.ts
+          app/game/systems/youthCampaign.ts scripts/qa-homeworld-childhood-v175.mjs tests/helpers/homeworld-childhood-v175.mjs tests/homeworld-childhood-v175.test.mjs
+          tests/nursery-campaign.test.mjs tests/youth-campaign.test.mjs app/game/systems/youthCityErrandV172.ts app/game/systems/youthCityGuideM003.ts
+          app/game/systems/youthCityPlacesM003.ts app/game/systems/youthCityStreetM003.ts scripts/qa-homeworld-city-street-m003.mjs tests/homeworld-city-street-m003.test.mjs
+          app/game/systems/nurseryCampaign.ts
+      - name: Report canonical inventory differences
+        if: ${{ !cancelled() && hashFiles('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json') != '' }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs';
+          const prior = JSON.parse(readFileSync('docs/qa/current-integration-20261103/runtime-inputs.json'));
+          const next = JSON.parse(readFileSync('outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json'));
+          const old = new Map(prior.entries.map(item => [item.path, item]));
+          const paths = new Set(next.entries.map(item => item.path));
+          const changes = next.entries.filter(item => JSON.stringify(old.get(item.path)) !== JSON.stringify(item));
+          const removed = prior.entries.filter(item => !paths.has(item.path)).map(item => item.path);
+          console.log('V113_DELTA ' + JSON.stringify({ files: next.files, bytes: next.bytes, changes, removed }));
+          NODE
+  production:
+    name: Build and serve the same exact production tree
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ASSET_RACCORDS_SOURCE_COMMIT: '97f1fc15f7224bfbb929444a6e637f1e15035e86'
+      BASE_COMMIT: '6b948ab218941614adf35fe046fa4a6e3b49bc4d'
+    steps:
+      - name: Checkout the exact candidate and bounded inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '97f1fc15f7224bfbb929444a6e637f1e15035e86'
+          persist-credentials: false
+          fetch-depth: 12
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /production/INVENTAIRE_BIBLE_20261122.*
+            /production/INVENTAIRE_BIBLE_20261127.*
+            /production/YAUTJA_LOTS_P0_P3_20261121.*
+            /production/YAUTJA_LOTS_P0_P3_LOT2_20261121.*
+            /public/game/xeno-prime/berceau-v1/
+            /public/audio/
+            /public/game/quatza-rij/
+            /public/game/assets/v37/tribes/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp
+            /public/game/assets/v37/tribes/v2/homeworld-forest-v2--8fdc633789dcd9c0.webp
+            /public/game/assets/v37/tribes/v2/homeworld-lava-v2--ecd85e06796799d2.webp
+            /public/game/backgrounds/ice-depth-v4.webp
+            /public/game/backgrounds/ocean-depth-v8.png
+            /public/game/backgrounds/ruins-depth-v8.png
+            /public/game/backgrounds/swamp-depth-v8.png
+            /public/game/homeworld/v67/ash-causeway-vista.png
+            /public/game/homeworld/v67/glass-processional-vista.png
+            /public/game/sprites/v8/ecology/cinder-12/basalt-ram-sheet.png
+            /public/game/sprites/v8/ecology/cinder-12/smoke-wyvern-sheet.png
+            /public/game/sprites/v8/ecology/naraka-delta/mire-shell-sheet.png
+            /public/game/sprites/v8/ecology/nivalis-k/snow-prowler-sheet.png
+            /public/game/sprites/v8/ecology/oseris-iv/amber-jaw-stalker-sheet.png
+            /public/game/sprites/v8/ecology/pelagos-m/shellback-sheet.png
+            /public/game/sprites/v8/ecology/serekh-9/burrow-snake-sheet.png
+            /public/game/assets/clan-field-20261103/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues-index.json
+            /public/game/assets/v139/rig-gauntlets/
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/assets/v133/concept-masks/
+            /public/game/assets/v133/decals/decal-atlas.webp
+            /public/game/sprites/v62/heads/
+            /public/game/sprites/v62/masks/
+            /public/game/homeworld/v56/
+            /public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png
+            /public/game/assets/v134/
+            /public/game/assets/v135/
+            /public/game/assets/v136/
+            /public/game/p0-sprites-20261113/warp/
+            /public/game/warp-universe/20261109/
+            /public/game/warp/w02/
+            /public/game/prologue/v47/
+            /content/the-pit/
+            /public/game/review/the-pit/
+            /art-source/the-pit/
+            /production/qa/evidence/isles-v1-20261123/
+            /public/game/clan-ship/interiors/trophees-v1.webp
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize official runtime inputs and install dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Build with the command from vercel.json
+        run: node scripts/build-production-v94.mjs
+      - name: Serve the exact production build
+        run: |
+          set -eu
+          node node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 4219 > /tmp/yautja-lot7-next.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 25); do
+            if curl --fail --silent --show-error http://127.0.0.1:4219/ -o /tmp/yautja-lot7-index.html; then
+              test -s /tmp/yautja-lot7-index.html
+              printf 'PASS exact Next production build %s\n' "$(git rev-parse HEAD)"
+              exit 0
+            fi
+            sleep 2
+          done
+          cat /tmp/yautja-lot7-next.log
+          exit 1
