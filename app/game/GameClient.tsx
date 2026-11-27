@@ -4,7 +4,8 @@ import ResidencePanelV149 from "./ResidencePanelV149";
 import { residenceTrophiesR2M038 } from "./systems/trophyIntroductionR2M038";
 import { originEndingV170 } from "./systems/originEndingsV170";
 import {
-  advanceLegacyFinaleR2, legacyOriginEndingR2, legacyResidenceSiteR2, legacySceneRefusalR2, legacyShipSiteR2,
+  advanceLegacyFinaleR2, legacyClanShipReadoutR2, legacyClanShipSiteR2, legacyOriginEndingR2, legacyResidenceSiteR2,
+  legacySceneRefusalR2, legacyShipSiteR2,
   type LegacyCommandR2, type LegacySceneR2, type LegacySiteR2,
 } from "./systems/legacyFinaleR2";
 import ResidenceLifePanelV150 from "./ResidenceLifePanelV150";
@@ -19,6 +20,7 @@ import OriginEndingPanelV170, { type OriginEndingActionV170 } from "./OriginEndi
 import { confirmEndingV170, examineEndingV170 } from "./systems/originEndingsV170";
 import { applyTrainingYardO6, type TrainingYardOrderO6 } from "./systems/originTrainingYardO6";
 import { applyContinuationO6, isContinuationOrderO6, type ContinuationOrderO6 } from "./systems/originContinuationO6";
+import { applySoloReturnO6, isSoloReturnOrderO6, type SoloReturnOrderO6 } from "./systems/originSoloReturnO6";
 import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
 import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -183,6 +185,7 @@ import {
   type PitSaveV5,
 } from "./systems/pitSave";
 import { PIT_FIRST_EDITION_FIGHTER_IDS } from "./systems/pitFirstEdition";
+import { normalizePitHonorRouteV1, type PitHonorRouteRequestV1 } from "./systems/pitHonorGalleryV1";
 import V6AtlasSprite from "./V6AtlasSprite";
 import {
   DEFAULT_SHIP_ID,
@@ -1170,7 +1173,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const [screen, setScreen] = useState<Screen>(entry.location === "new-game" ? "customization" : entry.location === "mission" ? "title" : entry.location);
   const [chronicleReturnScreen, setChronicleReturnScreen] = useState<"deck" | "title" | "homeworld">("deck");
   const [legacyVisitR2, setLegacyVisitR2] = useState<{
-    scene: LegacySceneR2; site: LegacySiteR2; siteLabel: string; from: "deck" | "homeworld-region-v68";
+    scene: LegacySceneR2; site: LegacySiteR2; siteLabel: string; from: "deck" | "homeworld-region-v68" | "trophies";
   } | null>(null);
   const [legacyNoticeR2, setLegacyNoticeR2] = useState("");
   const [newGamePhase, setNewGamePhase] = useState<"identity" | "briefing" | null>(entry.location === "new-game" ? "identity" : null);
@@ -1229,6 +1232,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const [pitUnlockedCosmeticIds, setPitUnlockedCosmeticIds] = useState<string[]>([]);
   const [pitCircuitRuns, setPitCircuitRuns] = useState<PitStoredCircuitRuns>({});
   const [pitDescentRuns, setPitDescentRuns] = useState<PitStoredDescentRuns>({});
+  const [pitHonorRoute, setPitHonorRoute] = useState<PitHonorRouteRequestV1 | null>(null);
   const [resumableHunt, setResumableHunt] =
     useState<ActiveHuntSaveV1 | null>(null);
   const [huntResumePayload, setHuntResumePayload] =
@@ -1310,7 +1314,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const clanShipVisible = screen === "clan-ship" || (shipStationOpen && hubLocation === "clan-ship");
   // Keep the physical room and avatar alive while consulting any of its services,
   // including the council (which has its own full-screen panel).
-  const clanShipMounted = clanShipVisible || (screen === "clan-war" && archiveReturnV85 === "clan-ship" && clanShipState?.status === "aboard");
+  const clanShipMounted = clanShipVisible ||
+    (screen === "legacy-finale-r2" && legacyVisitR2?.site.kind === "clan-ship") ||
+    (screen === "clan-war" && archiveReturnV85 === "clan-ship" && clanShipState?.status === "aboard");
   const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || (screen === "clan-chronicle" && chronicleReturnScreen === "homeworld") || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89"));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
@@ -3171,16 +3177,22 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const legacyDeckSiteR2 = screen === "deck" && legacyOriginEndingR2(save) &&
     shipReceiptV161(save).receipt?.shipId === selectedShipId ? legacyShipSiteR2(save) : null;
+  const legacyClanTrophySiteR2 = screen === "trophies" && hubLocation === "clan-ship" &&
+    stationReturnScreen === "clan-ship" ? legacyClanShipSiteR2(save) : null;
+  const legacyClanReadoutR2 = legacyClanShipReadoutR2(save.legacyFinaleR2);
   const legacySuspendedR2 = settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue ||
     campaignSaveBusy || !!resumableHunt || !gameFocusedV89;
   const openLegacyFinaleR2 = useCallback((scene: LegacySceneR2, site: LegacySiteR2, siteLabel: string) => {
-    if (legacySuspendedR2 || (screen !== "deck" && screen !== "homeworld-region-v68")) return;
+    if (legacySuspendedR2 || (screen !== "deck" && screen !== "homeworld-region-v68" && screen !== "trophies")) return;
+    if (site.kind === "clan-ship"
+      ? screen !== "trophies" || !legacyClanTrophySiteR2 || Boolean(trophyWorkshop) || pendingTrophyCommitRef.current
+      : screen === "trophies") return;
     const current = saveRef.current;
     if (legacySceneRefusalR2(current, site, scene)) return;
     setLegacyVisitR2({ scene, site, siteLabel, from: screen });
     setLegacyNoticeR2("");
     go("legacy-finale-r2");
-  }, [go, legacySuspendedR2, screen]);
+  }, [go, legacyClanTrophySiteR2, legacySuspendedR2, screen, trophyWorkshop]);
 
   const closeLegacyFinaleR2 = useCallback(() => {
     if (legacyVisitR2) go(legacyVisitR2.from);
@@ -3346,7 +3358,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       !canEnterHomeworldRegionV68(current, state.regionId).allowed || !canAdvanceHomeworldRegionV68(current.homeworldRegionV68, state)) return false;
     return persistSocialProgress({ homeworldRegionV68: state, ...settleResidenceLifeForRegionV150(current, state) });
   }, [entry.ownerCreatedAt, persistSocialProgress, settleResidenceLifeForRegionV150]);
-  const setupTrainingYardO6 = useCallback((order: TrainingYardOrderO6 | ContinuationOrderO6, region: HomeworldRegionStateV68): boolean => {
+  const setupTrainingYardO6 = useCallback((order: TrainingYardOrderO6 | ContinuationOrderO6 | SoloReturnOrderO6, region: HomeworldRegionStateV68): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "homeworld-region-v68" ||
         settingsOpen || archiveRecoveryIssue || archiveTransferBusy || campaignSaveBusy || !gameFocusedV89 ||
@@ -3355,8 +3367,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const origin = originOfSaveV151(current.originV151);
     const context = { rankId: current.profile.rankId,
       regionAllowed: (regionId: string) => canEnterHomeworldRegionV68(current, regionId).allowed };
-    const next = isContinuationOrderO6(order)
-      ? applyContinuationO6(current, origin, region, context, order)?.origin
+    const next = isSoloReturnOrderO6(order) ? applySoloReturnO6(current, region, order)
+      : isContinuationOrderO6(order) ? applyContinuationO6(current, origin, region, context, order)?.origin
       : applyTrainingYardO6(origin, current.residenceV149, region, context, order);
     return !!next && persistSocialProgress({ originV151: next, homeworldRegionV68: region,
       ...settleResidenceLifeForRegionV150(current, region) });
@@ -3601,11 +3613,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return { persisted, message: persisted ? undefined : "Rapport non confirmé. Reste à la navette et réessaie la sauvegarde." };
   }, [persistHomeworldProgress]);
 
-  const openPit = useCallback(() => {
+  const openPit = useCallback((request?: PitHonorRouteRequestV1) => {
     if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite avant de changer d’arène ou de progresser dans THE PIT."); return; }
     // Interaction hints belong to the hub that emitted them, not the duel menu.
     // Clear before loading so a new PIT storage diagnostic remains visible.
     setToast(null);
+    setPitHonorRoute(normalizePitHonorRouteV1(request));
     setPitReturnScreen(hubLocation === "clan-ship" ? "clan-ship" : screen === "homeworld" || (shipStationOpen && hubLocation === "homeworld") ? "homeworld" : "deck");
     const ownerSaveCreatedAt = saveRef.current.createdAt;
     const loaded = loadPitSave({
@@ -5564,12 +5577,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               scene={legacyVisitR2.scene} site={legacyVisitR2.site} siteLabel={legacyVisitR2.siteLabel}
               identity={save} state={save.legacyFinaleR2} endingTitle={originEndingV170(legacyOriginEndingR2(save))?.title ?? ""}
               disabled={legacySuspendedR2} notice={legacyNoticeR2} onCommand={onLegacyCommandR2} onClose={closeLegacyFinaleR2}
-              belongings={(legacyVisitR2.site.kind === "residence" ? residenceTrophiesR2M038(save, legacyVisitR2.site.id) :
-                save.trophies.filter(item => {
-                  const display = save.trophyUsagesV147?.assignments[item.id];
-                  return display?.usage === "displayed" && display.site === "ship";
-                })).map(item => item.targetName)}
-              relations={Object.values(save.originV151?.relations ?? {}).map(item => item.name)} />
+              belongings={legacyVisitR2.site.kind === "clan-ship" ? legacyClanReadoutR2.belongings :
+                (legacyVisitR2.site.kind === "residence" ? residenceTrophiesR2M038(save, legacyVisitR2.site.id) :
+                  save.trophies.filter(item => {
+                    const display = save.trophyUsagesV147?.assignments[item.id];
+                    return display?.usage === "displayed" && display.site === "ship";
+                  })).map(item => item.targetName)}
+              relations={legacyVisitR2.site.kind === "clan-ship" ? legacyClanReadoutR2.relations :
+                Object.values(save.originV151?.relations ?? {}).map(item => item.name)} />
           </Suspense>
         </div>
       </section>}
@@ -5827,7 +5842,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <button type="button" className="ghost-button" onClick={() => {
                   setJusticeJurisdiction("homeworld"); openStationScreen("justice", "deck");
                 }}>Mandats et alignement</button>
-                <button type="button" className="ghost-button" onClick={openPit}>
+                <button type="button" className="ghost-button" onClick={() => openPit()}>
                   THE PIT · combat
                 </button>
                 <button type="button" className="ghost-button" onClick={openShipAcquisitionV89}>
@@ -6952,6 +6967,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               id="trophies-title"
               onBack={() => go(stationReturnScreen)}
             />
+            {legacyClanTrophySiteR2 && !legacySceneRefusalR2(save, legacyClanTrophySiteR2, "epilogue") &&
+              <button type="button" className="ghost-button" data-open-clan-legacy-epilogue-r2
+                disabled={legacySuspendedR2 || Boolean(trophyWorkshop) || Boolean(pendingTrophyCommit)}
+                onClick={() => openLegacyFinaleR2("epilogue", legacyClanTrophySiteR2, "Galerie du navire du clan")}>
+                Relire les traces du navire
+              </button>}
             <article className="trophy-card" aria-labelledby="trophy-tutorial-title">
               <h2 id="trophy-tutorial-title">L’atelier de transmission</h2>
               <p>Apprends les 18 gestes avec l’artisan, sur un modèle pédagogique à transporter entre les postes.</p>
@@ -6973,8 +6994,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             <OriginTrophyTransitionPanelV157 origin={save.originV151} atWorkshop={!trophyWorkshop && pendingTrophyCommit === null}
               heldOriginalIds={heldPathOriginalIdsV158(normalizePathObjectsV158(save.pathObjectsV158))}
               disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
-              trophies={trophyRecords.map((trophy: { id: string; targetName: string; claimedAt: string }) =>
-                ({ id: trophy.id, label: `${trophy.targetName} · ${new Date(trophy.claimedAt).toLocaleDateString("fr-FR")}` }))}
+              trophies={trophyRecords.map(trophy => ({
+                id: trophy.id, label: `${trophy.targetName} · ${new Date(trophy.claimedAt).toLocaleDateString("fr-FR")}`,
+                record: trophy, usage: trophyAssignments?.[trophy.id]?.usage ?? "reserve",
+              }))}
               onAction={originTrophyActionV157} />
             <Suspense fallback={<p>Lecture des distinctions THE PIT…</p>}>
               <PitHonorsPanel owner={save.createdAt} onOpenPit={openPit} />
@@ -7289,7 +7312,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <PitCanvas
             key={save.createdAt}
             ownerSaveCreatedAt={save.createdAt}
-            onOpenNarrativeTrials={() => go("pit-narrative")}
+            bonusRecordOwnerCreatedAt={save.createdAt}
+            initialHonorRoute={pitHonorRoute ?? undefined}
+            onOpenNarrativeTrials={() => { setPitHonorRoute(null); go("pit-narrative"); }}
             controlBindings={save.settings.controlBindings}
             highContrast={save.settings.highContrastVision}
             lastReplay={lastPitReplay}

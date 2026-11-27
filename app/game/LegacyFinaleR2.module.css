@@ -50,3 +50,9 @@
 .load { top: 7px; left: 38%; width: 25%; height: 12px; border-radius: 46%; background: #d6b17c; }
 .support[data-loaded="false"] .load { top: 40px; left: 102%; }
 .notice { min-height: 1.6rem; color: #ffdf9d; }
+.room[data-site="clan-ship"] {
+  background: linear-gradient(0deg, #18181fdd 0 23%, #1c1c2620 53%),
+    url("/game/clan-ship/interiors/trophees-v1.webp") center 58% / cover no-repeat, #201e25;
+  border-color: #ac8961;
+}
+.room[data-site="clan-ship"] .mark[data-near="true"] { color: #f1d18d; }

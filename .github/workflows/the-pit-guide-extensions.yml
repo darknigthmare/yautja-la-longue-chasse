@@ -1,0 +1,75 @@
+name: PIT riposte, precision and the Masques Brisés prologue
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'app/game/**'
+      - 'app/pit-lab/**'
+      - 'tests/pit*'
+      - 'tests/fixtures/pit-honors-gallery-v1.ts'
+      - 'tests/browser/pit-*.fixture.tsx'
+      - 'scripts/qa-pit-*-v1.mjs'
+      - 'public/game/review/the-pit/**'
+      - 'art-source/the-pit/continuation-20261127/**'
+      - 'package*.json'
+      - '.github/workflows/the-pit-guide-extensions.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.openai/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /build/
+            /script*/
+            /tests/
+            /docs/the-pit/
+            /public/game/review/the-pit/greyback-unmasked-20261127/
+            /art-source/the-pit/continuation-20261127/greyback-unmasked/
+            /content/the-pit/
+            /public/game/review/the-pit/les-masques-brises-v1/
+            /art-source/the-pit/les-masques-brises-v1/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues-index.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Test claims, the original images, combat receipts and save compatibility
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          tests/pit-content-access-v1.test.mjs tests/pit-selection-presentation-v1.test.mjs
+          tests/pitSelectionFlow.test.ts tests/pit-save.test.mjs tests/pitHonors.test.ts
+          tests/pit-honor-gallery-v1.test.mjs tests/pit-honor-route-game-client.test.mjs
+          tests/pit-bonus-trial-v1.test.mjs tests/pit-masks-broken-prologue.test.mjs tests/pit-precision-trial-v1.test.mjs
+      - name: Typecheck the live game
+        run: npm run typecheck
+      - name: Lint the Pit and masked prologue code
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/game/PitCanvas.tsx app/game/PitExperienceV79.tsx app/game/PitMasksBrokenPrologue.tsx
+          app/game/PitBonusTrialPanelV1.tsx app/game/PitHonorsPanel.tsx app/game/PitHonorDetail.tsx
+          app/game/systems/pitMasksBrokenPrologue.ts app/game/systems/pitBonusTrialV1.ts
+          app/game/systems/pitPrecisionTrialV1.ts app/game/systems/pitPrecisionRecordsV1.ts app/game/systems/pitBonusSessionV2.ts
+          tests/pit-masks-broken-prologue.test.mjs app/pit-lab/expansion app/pit-lab/selection

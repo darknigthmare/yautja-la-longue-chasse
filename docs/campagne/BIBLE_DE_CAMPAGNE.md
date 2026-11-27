@@ -4,6 +4,8 @@ Nov 5, 2026 · @darknigthmare
 
 ## Mode d'emploi
 
+**Avenant du 21 novembre 2026 :** [Terre — Le Terrain de Chasse](TERRE_TERRAIN_DE_CHASSE_20261121.md) ouvre la Terre après R2-M023 : 20 sites réels hors des films, en quatre paliers (Blooded, Adjutant, Elite, Elder), datés au présent du joueur, avec un Indice de Discrétion persistant et la Division ARGOS, antagoniste distincte de l'OWLF. Le déroulé jouable des missions, phase par phase, et la liste de ce qu'il faut produire sont dans [Terre — Gameplay des missions](TERRE_GAMEPLAY_MISSIONS_20261121.md). L'inventaire complet de production (musiques MUS-74 → MUS-94, sons, PNJ, faune, IA, zones, bâtiments, props, textures, scènes, 54 contrats, missions annexes) est dans [Terre — Inventaire complet de production](TERRE_PRODUCTION_COMPLETE_20261121.md). Les 54 contrats sont écrits en fiches jouables, et les 21 scènes avec leurs répliques, dans [Terre — Fiches de mission et scènes écrites](TERRE_FICHES_MISSIONS_20261122.md). Lore, chronologie, monde humain par époque, level design des 20 sites et kits modulaires (terrain, bâtiments, PNJ, météo, époques) : [Terre — Lore, monde, level design et modularité](TERRE_MONDE_LEVEL_DESIGN_20261122.md). Première mission guidée, apprentissage, difficulté, accessibilité, succès et codex : [Terre — Accueil, difficulté, succès](TERRE_ACCUEIL_DIFFICULTE_SUCCES_20261122.md). Prompts d'image (gabarits, personnages, faune, décors des 20 sites, props, images clés) : [Terre — Catalogue de prompts d'image](TERRE_PROMPTS_IMAGE_20261122.md).
+
 **Avenant du 9 novembre 2026 :** [Quêtes et voix du clan](QUETES_VIVANTES_20261109.md) précise la réécriture des opérations, les conversations contextuelles OPS-B05 et leurs limites. Les fiches historiques et leurs états de production sont conservés ci-dessous.
 
 Cette bible fusionne la « Campagne commune » du classeur V6 (60 fiches R2-M001 → R2-M060) et les 8 chasses de « La Longue Chasse », insérées à R2-M024. Chaque fiche sépare ce qui est écrit dans le projet de ce qui reste à produire.
@@ -120,6 +122,22 @@ Le lot part de `75bbc177`, avec la visite du mausolée et les chantiers transver
 - **COOP_DE_CAMPAGNE** · Le règlement des expéditions contrôle l’attribution des gains confirmés par un hôte et empêche leur réutilisation. L’invitation et la simulation partagée restent à raccorder. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46010949709)
 
 
+
+### Suite de campagne et intégration des PR
+
+Le lot part de `fa89bee` après #201. Le classeur réunit les parcours joués, les reçus préparés pour la recette et les étapes encore requises.
+
+- **R2-M003** · Le choix de départ change l’interlocuteur rencontré. L’escalier du Conseil, le poste de forge et la table du foyer conservent leurs preuves physiques. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46027266327)
+- **R2-M006** · Yena, Harek et Tov présentent le geste qui leur est associé dans les ateliers joués. Le journal garde chaque présentation avec le passage au coffre et au râtelier. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46026217008)
+- **R2-M016** · Une objection à la première répartition ouvre un choix réel. Le joueur peut accepter les postes complémentaires ou faire répéter le signal avec Saar et Vek, puis reproposer ses postes. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46023907804)
+- **R2-M017** · Le passage haut enregistre le relais sur la passerelle médiane et la réunion des deux compagnons au point aval. Les parcours historiques reprennent sur leur géométrie. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46025663830)
+- **FIN_DE_VOIE** · Le débrief solitaire lit le retour et l’équipement attestés. À l’atelier, le berceau affiche le trophée choisi, son état et son cartel. La clôture de la voie attend les missions antérieures. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46022829799)
+- **PIT_MASQUES_BRISES** · La sélection du Pit ouvre la Cour des Masques Brisés, les gardes-ripostes et une épreuve de précision. Le catalogue indique l’usage réel des quinze illustrations. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46022186592)
+- **TERRE_ISLES** · The Isles s’ouvre depuis le menu pour une île d’essai et la Chasse inversée solo. La salle reste un outil local de test. Terre conserve ses annexes et son prototype Okavango. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46020872850)
+- **Épreuves de rang** · Les archives du vaisseau reprennent le dossier des rites et distinguent le seuil, le registre en cours et la reconnaissance Blooded, Elite ou Elder consignée par les scènes de campagne. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46021281609)
+- **Pilote Apex** · Le pilote sépare la rotation et l’esquive et lit la reprise exacte du Deck. Le contact Sandmaw a été rejoué depuis son archive historique. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46021100220)
+- **R2-M060** · Le navire du clan donne un troisième lieu à l’épilogue. Le joueur rejoint son service des trophées et retrouve ses preuves d’amarrage et d’équipage. La recette prépare le reçu de fin d’origine. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46028391431)
+
 ## Vue d'ensemble
 
 La campagne comprend 60 fiches communes et 8 chasses planétaires qui réalisent R2-M024. Le tableau associe les fiches à leur parcours. Le classeur du 27 novembre précise les correspondances, les preuves et les étapes encore ouvertes.
@@ -130,10 +148,10 @@ La chaîne de jeunesse va de la nurserie à l’accueil Unblooded sur le Homewor
 | --- | --- | --- | --- | --- | --- |
 | 1 | R2-M001 | Pourquoi nous combattons | Youngling | Ouverture jouable | Outil, proie échappée, mise à l’abri et filet |
 | 2 | R2-M002 | Le filet et les visages | Youngling | Cour de la nurserie raccordée | Duel, outil, barrière et choix de cohorte |
-| 3 | R2-M003 | Le chemin vers la cité | Youngling | Détour et parvis joués · guidage à prolonger | Deux repères avec Saar, détour du chariot et remise de la pièce |
+| 3 | R2-M003 | Le chemin vers la cité | Youngling | Parvis, rencontres et foyer jouables | Détour du chariot, rendez-vous selon le choix et visite de la table du foyer |
 | 4 | R2-M004 | L’épreuve des trois gestes | Youngling | Exercices en salle raccordés | Anneau, poutre et cible dans l’ordre choisi |
 | 5 | R2-M005 | La piste avant la prise | Youngling | Piste et rapport raccordés | Indices, perchoir et retour par une autre voie |
-| 6 | R2-M006 | Entrer parmi les Unblooded | Youngling | Passation et premier atelier jouables | Le râtelier transmet le choix du masque ou des lames au dojo |
+| 6 | R2-M006 | Entrer parmi les Unblooded | Youngling | Passation, démonstrations et premier atelier | L’appui, les trois camarades, le coffre et le râtelier transmettent le choix au dojo |
 | 7 | R2-M007 | Le masque et ses lectures | Unblooded | Atelier Unblooded jouable | Calibrer et remettre le profil de masque |
 | 8 | R2-M008 | La distance des lames | Unblooded | Atelier Unblooded jouable | Comparer la portée et remettre le rapport de lames |
 | 9 | R2-M009 | Ce que le camouflage laisse voir | Unblooded | Atelier Unblooded jouable | Lire les traces et franchir la salle de camouflage |
@@ -542,6 +560,7 @@ La note parlait de « Glacier Moon » et « Swamp Moon » : elles deviennent des
 | Rogue Space Tribe | bios NECA | Warp, Bad Bloods, voie Enforcer |
 | Harek | rival du départ O6 | Bad Blood possible ou chef du clan rival |
 | OWLF, époque future | unité secrète de la CIA de *Predator 2* (Other Worldly Life Forms) | descendants de l'OWLF qui traquent les Yautja à l'époque du jeu |
+| Division ARGOS *(avenant du 21 novembre)* | aucun : création du projet | cellule internationale née des incidents terrestres, distincte de l'OWLF ; veut prouver et capturer ; montée selon l'Indice de Discrétion ; fin à Norilsk ([Terre — Le Terrain de Chasse](TERRE_TERRAIN_DE_CHASSE_20261121.md)) |
 | Chasseurs humains de Yautja | Project Stargazer et ses Reapers (*The Predator* ; roman *Hunters and Hunted*), Predator Hunters de Jaya Soames (comics), Spearhead (*Xenogenesis*) | contrats et embuscades contre le joueur, captures et évasions |
 | USS Tantalus (crossover) | ton jeu *Aliens: Tantalus Frontier* | *mission annexe « Le silence d'Asphodèle », détaillée ci-dessous* |
 
@@ -553,6 +572,14 @@ La note parlait de « Glacier Moon » et « Swamp Moon » : elles deviennent des
 | --- | --- | --- |
 | **The Pit** | Le joueur y combat avec son personnage : petite Fosse de jeunesse (V53, déjà jouable) ; duels sanctionnés pour régler un différend (JUST-13) ; duels de rang ; défi du chef et défis des Élites dans les voies de clan Défi et Succession (L-08) | ouvert à Blooded : roster complet, arènes, tournois, et The Pit en ligne |
 | **Game Preserve** | Chasses d'entraînement du pack d'Unblooded ; contrats de trophées rares ; en fin de jeu, le joueur gère sa propre réserve sur le modèle de la planète-réserve des Super Predators (*Predators*, 2010), alimente ses arènes de Warlord et la défend contre les intrus | ouvert à Elite : grandes traques (V6), toutes les réserves, réglages libres |
+
+**Référence The PIT — 27 novembre 2026 :** la [bible de combat dédiée](../the-pit/BIBLE_THE_PIT.md)
+intègre le guide général et les deux extensions (personnalité/équipes/bonus, puis
+slots/déblocages/soutiens). Sa [matrice de traçabilité](../the-pit/TRACEABILITE_GUIDES_20261127.md)
+distingue les systèmes présents, les adaptations et les objectifs encore à produire.
+Les rangs, tournois et services en ligne proposés dans cette campagne gardent leur
+statut de cible tant que leur raccordement n'est pas vérifié ; les chroniques du
+roster et les distinctions de l'arène ne modifient pas automatiquement la campagne.
 
 ### Quatza-Rij, symbole de clan, ordre de production
 
@@ -955,6 +982,8 @@ Les multiplicateurs se cumulent (mêlée sans être repéré : × 1,875). Repèr
 **The Pit — décision :** un mode à part, construit comme un jeu de combat (écran de sélection, roster, arènes, tournois). Le roster a une case de plus : le Yautja de sa campagne, avec son apparence et son équipement. *(proposé : en classé en ligne, ses statistiques sont ramenées à l'équilibre du roster ; en local et en partie libre, il garde celles de sa campagne.)*
 
 **Guerre des clans en multijoueur — décision :** toute la guerre des clans, avec tous ses sous-gameplays, se joue dans une partie dédiée en multijoueur : escarmouches en 2,5D, phases RTS, raids sur dépôt, sièges, duel des chefs dans The Pit, diplomatie et arbitrage des Matriarches. *(proposé : 2 à 4 clans de joueurs, de 1 à 3 joueurs par clan, sur la carte de Korthas du classeur V6 — 36 territoires et 70 passages ; une partie se joue en plusieurs sessions et se sauvegarde.)* Chaque joueur y entre avec son Yautja et son clan de campagne ; le résultat ne modifie pas sa campagne.
+
+**The Isles — avenant du 21 novembre 2026 :** un mode de chasse en monde ouvert, en 3D isométrique, sur un archipel fictif de la Terre où chaque île a son biome ; présent fixe (années 2020), carte de 12 × 12 km sous three.js avec Calder et Dustwater ; seul ou en ligne jusqu'à 8 joueurs ; sans effet sur la campagne ; mode phare **Chasse inversée** (1 Yautja contre 4 à 6 humains joués, qui gagnent en fuyant l'île ou en tenant). Détail dans [Mode The Isles](MODE_THE_ISLES_20261121.md). Inventaire complet de production (musiques MUS-95 → MUS-123, sons, PNJ, faune, IA, lieux, bâtiments, véhicules, tuiles, arc Hale, 30 annexes, Chasse inversée, saisons) : [The Isles — Inventaire complet de production](ISLES_PRODUCTION_COMPLETE_20261121.md). Arc Hale, annexes, cartes de Chasse inversée et scènes écrites : [The Isles — Fiches de mission et scènes écrites](ISLES_FICHES_MISSIONS_20261122.md). Histoire de l'archipel, factions, level design isométrique et modularité (tuiles, bâtiments, quartiers, PNJ, peuplement, météo) : [The Isles — Lore, monde, level design et modularité](ISLES_MONDE_LEVEL_DESIGN_20261122.md). **Révision du 22 novembre :** Calder devient une métropole type New York avec Eastbank (Maple Hollow, Bayview, stades, Gull Pier et sa fête foraine), métro à 4 lignes, autoroutes, tunnels, train régional ; Grayhaven, île en quarantaine ravagée par l'autodestruction d'un Yautja en 2003, ouverte après l'arc Hale ; biomes complétés. Détail : [Métropole, transports, zone de quarantaine](ISLES_EXTENSION_METROPOLE_QUARANTAINE_20261122.md) ; missions et récit de Grayhaven : [Grayhaven](ISLES_GRAYHAVEN_FICHES_20261122.md). Première heure, économie du mode, cosmétiques, difficulté, accessibilité, règles en ligne, succès et codex : [The Isles — Première heure, économie, succès](ISLES_ACCUEIL_ECONOMIE_SUCCES_20261122.md). Prompts d'image isométriques (rotations, îles, quartiers, kits de bâtiments, tuiles, véhicules, Grayhaven) : [The Isles — Catalogue de prompts d'image](ISLES_PROMPTS_IMAGE_20261122.md).
 
 **Invasion Enforcer ↔ Bad Blood — décision :** honneur et trophée, sans perte de progression. L'Enforcer vainqueur gagne de l'honneur et le masque rayé du Bad Blood en trophée ; le Bad Blood vainqueur gagne une pièce d'équipement d'Enforcer.
 

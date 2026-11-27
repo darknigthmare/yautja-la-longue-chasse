@@ -7,6 +7,7 @@ const temple = qa.load("app/game/systems/bloodedTempleV174.ts");
 const saves = qa.load("app/game/save.ts");
 const chronicles = qa.load("app/game/systems/clanChronicle.ts");
 const ship = qa.load("app/game/systems/shipReceiptV161.ts");
+const { rankCampaignReceiptsV168: rankReceipts } = qa.load("app/game/systems/rankRiteDossierV168.ts");
 
 function storage() {
   const memory = new Map();
@@ -40,7 +41,9 @@ test("six rooms, three hunter proofs and two matching marks produce one durable 
     assert.equal(saved.persisted, true, saved.failure);
     save = saved.save;
   }
+  assert.equal(rankReceipts(save)[0].status, "ready");
   play("present");
+  assert.equal(rankReceipts(save)[0].status, "in-progress");
   const old = save;
   assert.equal(temple.advanceBloodedTempleV174(save, { action: "right", expectedRevision: 0 }, time).ok, false);
   for (const [index, room] of temple.BLOODED_ROOMS.entries()) {
@@ -92,6 +95,10 @@ test("six rooms, three hunter proofs and two matching marks produce one durable 
   for (const key of ["soloV66", "soloV67", "soloV68", "soloV69", "soloV70", "soloV90"]) assert.deepEqual(save[key], old[key]);
   assert.equal(saves.writeSaveWithStatus(old, disk).failure, "save-conflict");
   assert.equal(saves.parseSaveImport(JSON.stringify({ ...save, bloodedTempleV174: null })).failure, "invalid-save");
+  const snapshot = JSON.stringify(save);
+  assert.equal(rankReceipts(save)[0].status, "recognized");
+  assert.equal(JSON.stringify(save), snapshot, "Reading the dossier cannot update the campaign");
+  assert.equal(rankReceipts({ ...save, soloV70: null })[0].status, "locked");
   const portable = saves.parseSaveImport(saves.exportSave(save));
   assert.ok(portable.save, portable.failure);
   assert.equal(chronicles.getChronicleRank(portable.save.prologue.chronicle), "blooded");
