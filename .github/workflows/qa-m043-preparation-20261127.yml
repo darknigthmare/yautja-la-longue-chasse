@@ -1,0 +1,40 @@
+name: Bible · retour préparatoire M043
+on:
+  push:
+    branches: [codex/qa-m043-preparation-20261127]
+permissions:
+  contents: read
+jobs:
+  elitereturn:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /types/
+            /lib/
+            /public/**/*.json
+            /.github/workflows/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Installer les dépendances épinglées
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Contrôler les sources du retour préparatoire
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/EliteRecognition.tsx app/game/systems/eliteRecognitionV174.ts tests/elite-recognition-v174.test.mjs
+      - name: Récits, témoins, conservation et préparation publique ou restreinte
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/elite-recognition-v174.test.mjs tests/elite-mastery-v170.test.mjs tests/buried-cradle-return.test.mjs tests/quatza-rij.test.mjs
+      - name: Contrôler les types
+        run: npm run typecheck
