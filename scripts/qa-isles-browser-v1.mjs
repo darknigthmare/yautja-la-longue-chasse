@@ -110,6 +110,12 @@ try {
   await page.locator('[data-isles-play-v1=view]').waitFor();
   await page.waitForFunction(() => window.__islesV1?.kind === 'view');
   await page.waitForTimeout(1200);
+  const canvas = page.locator('canvas[aria-label="Île de test, vue isométrique"]');
+  assert.equal(await canvas.evaluate(element => document.activeElement === element), true);
+  await page.keyboard.press('Tab');
+  assert.equal(await page.getByRole('button', {name: 'Quitter'}).evaluate(element => document.activeElement === element), true);
+  await canvas.focus();
+  step('le clavier rejoint les commandes du mode avec Tab');
   const stats = await hook(page, isles => isles.stats());
   report.metrics.testIsland = stats;
   assert.ok(stats.zones >= 4 && stats.instances > 40, JSON.stringify(stats));

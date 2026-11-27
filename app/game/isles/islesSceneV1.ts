@@ -15,11 +15,11 @@ export const ISLES_ZONE_TILES_V1 = 32;
 /** Something drawn on the map this frame. */
 export interface IslesViewEntityV1 {
   id: string;
-  kind: "yautja" | "remote" | "human" | "prey" | "plane" | "piece" | "beacon";
+  kind: "yautja" | "human" | "prey" | "plane" | "piece" | "beacon";
   x: number; y: number; z: number;
   facing: number;
   cloaked?: boolean;
-  /** Body colour for humans (role) and remote hunters. */
+  /** Body colour for a human role. */
   color?: string;
   downed?: boolean;
   surrendered?: boolean;
@@ -309,7 +309,7 @@ export function createIslesSceneV1(canvas: HTMLCanvasElement, map: IslesMapV1, c
   const pieceMaterial = new MeshBasicMaterial({color: "#ffb547"});
   const beaconMaterial = new MeshBasicMaterial({color: "#ff5a3c", transparent: true, opacity: 0.35, depthWrite: false});
   const make = (entity: IslesViewEntityV1) => {
-    if (entity.kind === "yautja" || entity.kind === "remote") {
+    if (entity.kind === "yautja") {
       const hunter = buildHunter(uniforms, entity.color ?? (entity.kind === "yautja" ? "#8c7f5a" : "#5a6f8c"));
       return {object: hunter.group, kind: entity.kind, hunter};
     }

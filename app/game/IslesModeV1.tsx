@@ -28,7 +28,7 @@ const clock = (seconds: number) => {
 const STATUS_LABELS: Record<string, string> = {active: "debout", downed: "à terre", dead: "mort", trophy: "trophée pris", escaped: "parti"};
 const OUTCOME_LABELS: Record<string, string> = {
   fuite: "Les humains ont fui l’île.", tenir: "Les humains ont tenu jusqu’à la fin.", abattu: "Le Yautja a été abattu.",
-  autodestruction: "L’autodestruction a emporté une partie de l’équipe.", "autodestruction-parfaite": "Tous les humains sont sortis du rayon.",
+  autodestruction: "L’autodestruction a emporté des membres de l’équipe.", "autodestruction-parfaite": "Tous les humains sont sortis du rayon.",
   chasse: "Aucun humain n’a quitté l’île.", "chasse-parfaite": "Chasse parfaite : tous les trophées pris.", faute: "Faute grave : un humain rendu a été frappé.",
   duel: "Le dernier humain a gagné le duel et s’enfuit.",
 };
@@ -271,7 +271,7 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
         {r.jammed ? <p className={styles.alert}>Biomask brouillé</p> : null}
         <ul className={styles.log}>{r.log.map((line, i) => <li key={i}>{line}</li>)}</ul>
       </div> : null}
-      <p className={styles.keys}><kbd>ZQSD</kbd>/<kbd>WASD</kbd> se déplacer · <kbd>Maj</kbd> courir · <kbd>Espace</kbd> sauter · pousser contre une paroi : grimper · <kbd>C</kbd> camouflage · <kbd>X</kbd> thermique · <kbd>R</kbd> tourner · <kbd>V</kbd>/molette zoom{kind !== "view" ? <> · <kbd>E</kbd> frapper</> : null}{kind === "reverse" ? <> · <kbd>F</kbd> plasma · <kbd>T</kbd> trophée</> : null}</p>
+      <p className={styles.keys}><kbd>ZQSD</kbd>/<kbd>WASD</kbd> se déplacer · <kbd>Maj</kbd> courir · <kbd>Espace</kbd> sauter · pousser contre une paroi : grimper · <kbd>C</kbd> camouflage · <kbd>X</kbd> thermique · <kbd>R</kbd> tourner · <kbd>V</kbd>/molette zoom{kind === "reverse" ? <> · <kbd>E</kbd> frapper · <kbd>F</kbd> plasma · <kbd>T</kbd> trophée</> : null}</p>
     </footer>
     {r?.outcome ? <div className={styles.outcome} role="dialog" aria-modal="true" aria-labelledby="isles-outcome-title" data-isles-outcome={r.outcome.kind}>
       <h2 id="isles-outcome-title">{r.outcome.winner === "humans" ? "Victoire des humains" : "Victoire du Yautja"}</h2>
