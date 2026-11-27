@@ -431,7 +431,7 @@ export function stepSoloV70(state:SoloV70State,input:SoloV70Input,env:SoloV70Env
   } else if (pendingPost && extension) {
     const armed = soloV70PurgeRemainingM017(s);
     if (pendingPost.id === 'vent-purge' && !armed) {
-      if (scan(near(SOLO_V70_PURGE_M017.x) && a.vx === 0 && !!input.interact, SOLO_V70_PURGE_M017.holdTicks)) {
+      if (scan(a.y === SOLO_V70_PURGE_M017.y && a.vy === 0 && near(SOLO_V70_PURGE_M017.x) && a.vx === 0 && !!input.interact, SOLO_V70_PURGE_M017.holdTicks)) {
         extension.purgeStartedAt = s.tick;
         s.scan = 0;
       }
@@ -439,7 +439,7 @@ export function stepSoloV70(state:SoloV70State,input:SoloV70Input,env:SoloV70Env
       const party = pendingPost.plates
         ? s.companionMode === 'plates' && soloV70DepthAppuisM017(s.companions.map(companion => companion.x), pendingPost.plates)
         : soloV70TrioPresent(s);
-      if (scan(party && near(pendingPost.x, pendingPost.y) && a.vx === 0 && !!input.interact, pendingPost.holdTicks)) {
+      if (scan(party && a.y === pendingPost.y && a.vy === 0 && near(pendingPost.x, pendingPost.y) && a.vx === 0 && !!input.interact, pendingPost.holdTicks)) {
         extension.observations[pendingPost.id] = soloV70TrioObservation(s, 3);
         s.companionMode = 'follow';
         s.scan = 0;
@@ -447,7 +447,7 @@ export function stepSoloV70(state:SoloV70State,input:SoloV70Input,env:SoloV70Env
     }
   } else if (s.phase === 'return' && s.room === soloV70HuntTargetM017(s).room && s.depthsM017 && !s.depthsM017.huntThreshold) {
     const threshold = soloV70HuntTargetM017(s);
-    if (scan(near(threshold.x) && a.vx === 0 && soloV70TrioPresent(s) && !!input.interact, threshold.holdTicks)) {
+    if (scan((!extension || a.y === SOLO_V70_GROUND && a.vy === 0) && near(threshold.x) && a.vx === 0 && soloV70TrioPresent(s) && !!input.interact, threshold.holdTicks)) {
       s.depthsM017.huntThreshold = soloV70TrioObservation(s, 3);
       s.scan = 0;
     }

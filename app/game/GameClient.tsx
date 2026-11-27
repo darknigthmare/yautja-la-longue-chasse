@@ -25,6 +25,7 @@ import { applySoloReturnO6, isSoloReturnOrderO6, type SoloReturnOrderO6 } from "
 import { firstShockActiveO6, type FirstShockOrderO6 } from "./systems/originFirstShockO6";
 import { activeCohortRaceO6, advanceFirstShockIntoCohortO6, canStartCohortRaceO6, playCohortRaceO6, startCohortRaceO6, type CohortRaceOrderO6 } from "./systems/originCohortRaceO6";
 import type { TownBellRecordO6 } from "./systems/originTownBellO6";
+import { activeRivalRaceO6, playRivalRaceO6, type RivalRaceOrderO6, type RivalRaceRecordO6 } from "./systems/originRivalRaceO6";
 import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
 import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -388,6 +389,7 @@ const HomeworldHub = React.lazy(() => import("./HomeworldHub"));
 const NurseryPrologueScreen = React.lazy(() => import("./NurseryPrologueScreen"));
 const OriginFirstShockO6 = React.lazy(() => import("./OriginFirstShockO6"));
 const OriginCohortRaceO6 = React.lazy(() => import("./OriginCohortRaceO6"));
+const OriginRivalRaceO6 = React.lazy(() => import("./OriginRivalRaceO6"));
 const YouthTrainingScreen = React.lazy(() => import("./YouthTrainingScreen"));
 const FirstTracksSoloV66 = React.lazy(() => import("./FirstTracksSoloV66"));
 const FirstHuntSoloV67 = React.lazy(() => import("./FirstHuntSoloV67"));
@@ -1331,7 +1333,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     (screen === "clan-war" && archiveReturnV85 === "clan-ship" && clanShipState?.status === "aboard");
   const firstShock = screen === "homeworld" && hydrated ? firstShockActiveO6(save) : null;
   const cohortRace = screen === "homeworld" && hydrated ? activeCohortRaceO6(save) : null;
-  const homeworldMounted = !firstShock && !cohortRace && (screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || (screen === "clan-chronicle" && chronicleReturnScreen === "homeworld") || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89")));
+  const rivalRace = screen === "homeworld" && hydrated ? activeRivalRaceO6(save) : null;
+  const homeworldMounted = !firstShock && !cohortRace && !rivalRace && (screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || (screen === "clan-chronicle" && chronicleReturnScreen === "homeworld") || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89")));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
   );
@@ -2978,13 +2981,26 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return { ...result, state: saveRef.current.spaceRoutesV159 ?? null };
   };
 
-  const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress, townBell?: TownBellRecordO6): boolean => {
+  const advanceRivalRace = useCallback((order: RivalRaceOrderO6) => {
     const current = saveRef.current;
-    if (townBell && !current.originV151) return false;
+    if (!sessionAliveRef.current || !current.originV151) return false;
+    const result = playRivalRaceO6(current, order);
+    if (!result || !persistSocialProgress({ originV151: { ...current.originV151, rivalRaceO6: result } })) return false;
+    if (result.resolved) setToast(result.success ? "Le fanion est atteint. Harek se souvient de la course." :
+      "Le fanion est atteint par le palier. Harek se souvient du retour.");
+    return true;
+  }, [persistSocialProgress]);
+
+  const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress, townBell?: TownBellRecordO6, rival?: RivalRaceRecordO6): boolean => {
+    const current = saveRef.current;
+    if ((townBell || rival) && !current.originV151) return false;
+    const originV151 = current.originV151 && (townBell || rival) ? {
+      ...current.originV151, ...(townBell ? { townBellO6: townBell } : {}), ...(rival ? { rivalRaceO6: rival } : {}),
+    } : undefined;
     const reward = Math.max(0, contractMarksV68(homeworld.contractsV68) - contractMarksV68(current.homeworld.contractsV68));
     // Completed orders pay once, in the same durable write as the signed report.
     const saved = persistSocialProgress({ homeworld,
-      ...(townBell && current.originV151 ? { originV151: { ...current.originV151, townBellO6: townBell } } : {}),
+      ...(originV151 ? { originV151 } : {}),
       ...(reward ? {profile: {...current.profile, clanMarks: current.profile.clanMarks + reward}} : {}) });
     if (saved && townBell?.journal.at(-1)?.action === "ring" &&
         (current.originV151?.townBellO6?.journal.length ?? 0) < townBell.journal.length) audioRef.current?.townDeliveryBellO6();
@@ -5605,6 +5621,19 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         </div>
       </section>}
 
+      {rivalRace && <section className="screen panel-screen" inert={settingsOpen} data-o6-rival-roofs>
+        <div className="screen-safe">
+          <div className="physical-deck-toolbar">
+            <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages et sauvegardes</button>
+            <button type="button" className="ghost-button" onClick={() => void returnToMainMenu()}>Menu principal</button>
+          </div>
+          <Suspense fallback={<DeferredGameScreen />}>
+            <OriginRivalRaceO6 key={save.createdAt} record={rivalRace} bindings={save.settings.controlBindings}
+              paused={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy} onOrder={advanceRivalRace} />
+          </Suspense>
+        </div>
+      </section>}
+
       {homeworldMounted && (
         <Suspense fallback={<DeferredGameScreen />}>
           <section className="screen panel-screen" hidden={screen !== "homeworld"} inert={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}>
@@ -6672,8 +6701,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               disabled={settingsOpen || campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue}
               allowEquipmentUpgrades={!newGamePhase && chromaticFacilityV115 !== "lab"}
               onToolUpgrade={!newGamePhase && chromaticFacilityV115 !== "lab" && !resumableHunt ? (apply, confirmation) => {
-                const hunt = loadActiveHuntSave().save;
-                return !activeHuntSessionRef.current && hunt?.ownerSaveCreatedAt !== saveRef.current.createdAt &&
+                const hunt = loadActiveHuntSave();
+                return !activeHuntSessionRef.current && !hunt.failure && hunt.save?.ownerSaveCreatedAt !== saveRef.current.createdAt &&
                   commitCustomizationV146(apply, confirmation);
               } : undefined}
               onCommit={commitCustomizationV146}

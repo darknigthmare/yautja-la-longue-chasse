@@ -5541,7 +5541,9 @@ function renderGame(
       drawPilotPlatform(context, platform, pilotTexture);
       continue;
     }
-    const assignment = environmentGameplayPropForGeometryId(
+    const canopyRoot = mission.biome === "jungle" &&
+      platform.routeId === "canopy-transfer" && platform.material === "root";
+    const assignment = canopyRoot ? null : environmentGameplayPropForGeometryId(
       mission.id,
       platform.id,
       encounterRun,
@@ -5558,11 +5560,13 @@ function renderGame(
       );
     } else if (mission.biome === "jungle") {
       const junglePlatformIndex =
-        platform.material === "stone"
-          ? 1
-          : platform.material === "metal"
-            ? 3
-            : index % junglePlatformImages.length;
+        canopyRoot
+          ? 0
+          : platform.material === "stone"
+            ? 1
+            : platform.material === "metal"
+              ? 3
+              : index % junglePlatformImages.length;
       drawJunglePlatform(
         context,
         platform,

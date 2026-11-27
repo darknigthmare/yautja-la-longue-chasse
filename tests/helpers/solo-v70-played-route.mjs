@@ -11,7 +11,7 @@ export function templeInput(s){
  const goal=p.soloV70Objective(s),move=Math.abs(goal.targetX-a.x)>5?Math.sign(goal.targetX-a.x):0,platforms=p.soloV70Platforms(s),ground=a.vy===0&&a.y===p.soloV70Support(s);
  const block=platforms.find(r=>move>0?r.x-17>=a.x&&r.x-17-a.x<48&&a.y>r.y+.01:r.x+r.width+17<=a.x&&a.x-r.x-r.width-17<48&&a.y>r.y+.01);
  const support=platforms.find(r=>a.y===r.y&&a.x>r.x-17&&a.x<r.x+r.width+17),gap=support&&move&&((move>0&&support.x+support.width-a.x<28&&platforms.some(r=>r.x>support.x+support.width&&r.x-a.x<160))||(move<0&&a.x-support.x<28&&platforms.some(r=>r.x+r.width<support.x&&a.x-r.x-r.width<160)));
- const jump=ground&&!s.previousJump&&!!(block||gap);
+ const jump=!!move&&ground&&!s.previousJump&&!!(block||gap);
  const depths=s.phase==='return'&&s.depthsM017;
  const {descent}=p.SOLO_V70_DEPTHS_M017;
  const depthRelay=depths&&s.room===descent.room&&!depths.relay;

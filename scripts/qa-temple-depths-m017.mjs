@@ -98,7 +98,11 @@ try {
     assert.equal((await saved()).soloV70.checkpoint.room, room, 'Physical portal to ' + room);
   }
   async function observe(post) {
-    await page.clock.runFor(450);
+    const ready = state => state.player.y === post.y && state.player.vx === 0 && state.player.vy === 0 &&
+      (post.plates ? thresholdsTemple.soloV70DepthAppuisM017(state.companions.map(companion => companion.x), post.plates)
+        : thresholdsTemple.soloV70TrioPresent(state));
+    for (let i = 0; i < 40 && !ready(await live()); i++) await page.clock.runFor(100);
+    assert(ready(await live()), 'Physical actors have not reached ' + post.id);
     await hold(interact, 1050);
     const proof = (await saved()).soloV70.checkpoint.depthsM017.extension.observations[post.id];
     assert(proof, post.id + ': ' + JSON.stringify(await live()));
