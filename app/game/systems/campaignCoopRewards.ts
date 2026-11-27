@@ -3,7 +3,7 @@ import type { MissionResult, SaveGame, TrophyRecord } from "../types";
 import { checkActiveHuntCompatibility, type ActiveHuntSaveV1 } from "./activeHuntSave";
 import { anatomyPartsV112 } from "./anatomyHarvestV112";
 import { normalizeHarvestInventoryV112, type FieldSpecimenV112 } from "./harvestInventoryV112";
-import { creditCampaignCoopHonorV169 } from "./honorSourcesV169";
+import { creditCampaignCoopHonorV169, honorForCampaignRankV169 } from "./honorSourcesV169";
 
 interface CampaignCoopParticipant {
   ownerCreatedAt: string;
@@ -79,8 +79,9 @@ export function projectCampaignCoopGuestReward(
 
   if (result.outcome !== "success" || !Object.hasOwn(MISSION_BY_ID, result.missionId) ||
       !Object.hasOwn(DIFFICULTY_BY_ID, result.difficultyId) ||
-      !canonicalOwner(result.completedAt) || result.completedAt < lease.startedAt ||
-      committed.createdAt !== before.createdAt || !lease.runId || lease.version !== 1 ||
+      !canonicalOwner(result.completedAt) || !canonicalOwner(lease.startedAt) || result.completedAt < lease.startedAt ||
+      committed.createdAt !== before.createdAt || !lease.runId || lease.runId.length > 128 || lease.version !== 1 ||
+      !Number.isSafeInteger(lease.encounterRun) || lease.encounterRun < 0 ||
       result.harvestEncounterRunV112 !== lease.encounterRun) return null;
   const progress = before.missionProgress[result.missionId];
   if (!progress || !checkActiveHuntCompatibility(lease, {
@@ -108,6 +109,18 @@ export function projectCampaignCoopGuestReward(
   const specimenOwners = assignItems(specimens, participants, member => member.specimenIds);
   if (!honorOwners || !trophyOwners || !specimenOwners) return null;
 
+  // The confirmed host write must settle only its own honour and physical
+  // harvest. Re-run the existing campaign reducer with the host's share.
+  const belongsToHost = (owners: ReadonlyMap<string, string>, id: string) =>
+    (owners.get(id) ?? before.createdAt) === before.createdAt;
+  const hostShare = settle(before, {
+    ...result,
+    honorEvents: result.honorEvents.filter(event => belongsToHost(honorOwners, event.id)),
+    specimensV112: result.specimensV112?.filter(specimen => belongsToHost(specimenOwners, specimen.id)),
+  });
+  const rankableHonor = (save: SaveGame) => honorForCampaignRankV169(save.profile.honor, save.honorSourcesV169);
+  if (rankableHonor(committed) !== rankableHonor(hostShare)) return null;
+
   const apex = trophies.filter(trophy => trophy.definitionId === MISSION_BY_ID[result.missionId].trophy.id);
   if (apex.length !== 1 || trophyOwners.get(apex[0].id) !== hunt.finalBlowOwnerCreatedAt) return null;
 
@@ -116,16 +129,24 @@ export function projectCampaignCoopGuestReward(
   const allocatedTrophies: TrophyRecord[] = [];
   for (const trophy of trophies) {
     const owner = trophyOwners.get(trophy.id);
-    if (!owner || owner === before.createdAt) continue;
-    if (committed.trophies.some(saved => saved.id === trophy.id && saved.claimedAt === result.completedAt)) return null;
+    const hasClaim = committed.trophies.some(saved => saved.id === trophy.id && saved.claimedAt === result.completedAt);
+    if (!owner || owner === before.createdAt) {
+      if (!hasClaim) return null;
+      continue;
+    }
+    if (hasClaim) return null;
     if (owner === ownerCreatedAt) allocatedTrophies.push({ ...trophy, id: `${receiptId}:t:${allocatedTrophies.length}` });
   }
 
   const allocatedSpecimens: FieldSpecimenV112[] = [];
   for (const specimen of specimens) {
     const owner = specimenOwners.get(specimen.id);
-    if (!owner || owner === before.createdAt) continue;
-    if (committed.inventory.harvestV112?.specimens.some(saved => saved.id === specimen.id)) return null;
+    const hasSpecimen = committed.inventory.harvestV112?.specimens.some(saved => saved.id === specimen.id) === true;
+    if (!owner || owner === before.createdAt) {
+      if (!hasSpecimen) return null;
+      continue;
+    }
+    if (hasSpecimen) return null;
     const part = anatomyPartsV112(specimen.speciesId).find(entry => entry.partId === specimen.partId);
     const prefix = `${result.missionId}:${lease.encounterRun}:`;
     const corpseId = specimen.sourceId.slice(prefix.length);

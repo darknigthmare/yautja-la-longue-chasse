@@ -11,7 +11,7 @@ const output = await build({
   bundle: true, write: false, format: "esm", platform: "node", logLevel: "silent",
 });
 const {
-  applyMissionResult, defaultSave, exportSave, loadSaveWithStatus, parseSaveImport, restoreCampaignCoopGuestReward,
+  applyMissionResult, defaultSave, exportSave, loadSaveWithStatus, parseSaveImport, createCampaignCoopGuestRewardRestorer,
   SAVE_STORAGE_KEY, writeSaveWithStatus, MISSION_BY_ID,
 } = await import("data:text/javascript;base64," + Buffer.from(output.outputFiles[0].text).toString("base64"));
 
@@ -82,10 +82,10 @@ function hostHunt() {
   assert.equal(projected.trophies.length, 1);
   assert.equal(projected.inventory.harvestV112.specimens.length, 1);
   // The test authority confirms the host's progress and routes each physical item once.
-  const hostBeforeWrite = {
-    ...projected, trophies: [],
-    inventory: { ...projected.inventory, harvestV112: { ...projected.inventory.harvestV112, specimens: [] } },
-  };
+  const hostShare = applyMissionResult(before, {
+    ...result, honorEvents: [result.honorEvents[0]], specimensV112: [],
+  });
+  const hostBeforeWrite = { ...hostShare, trophies: [] };
   const hostStorage = memoryStorage();
   const written = writeSaveWithStatus(hostBeforeWrite, hostStorage);
   assert.equal(written.persisted, true);
@@ -101,6 +101,27 @@ function hostHunt() {
   ];
   return { before, committed: written.save, lease, result, participants, finalBlowOwnerCreatedAt: guestOwner };
 }
+
+function restoreCampaignCoopGuestReward(save, hunt, storage) {
+  const restore = createCampaignCoopGuestRewardRestorer(reference => reference === "confirmed" ? hunt : null);
+  return restore(save, "confirmed", storage);
+}
+
+test("seule une référence résolue par l'autorité peut atteindre le règlement", () => {
+  const a = guest();
+  const hunt = hostHunt();
+  const seen = [];
+  const restore = createCampaignCoopGuestRewardRestorer((reference, owner) => {
+    seen.push([reference, owner]);
+    return reference === "confirmed" && owner === guestOwner ? hunt : null;
+  });
+  const before = a.storage.getItem(SAVE_STORAGE_KEY);
+  assert.equal(restore(a.save, hunt, a.storage).persisted, false);
+  assert.equal(restore(a.save, "unconfirmed", a.storage).persisted, false);
+  assert.deepEqual(seen, [["unconfirmed", guestOwner]]);
+  assert.equal(a.storage.getItem(SAVE_STORAGE_KEY), before);
+  assert.equal(restore(a.save, "confirmed", a.storage).persisted, true);
+});
 
 test("deux invités identifiés reçoivent seulement leurs gains, l'hôte conserve la progression", () => {
   const hunt = hostHunt();
@@ -127,11 +148,12 @@ test("deux invités identifiés reçoivent seulement leurs gains, l'hôte conser
 });
 
 test("l'honneur invité utilisable ne franchit aucun seuil de rang au rechargement ou à l'import", () => {
-  const a = guest(guestOwner, 499);
+  const a = guest(guestOwner, 1_499);
   const saved = restoreCampaignCoopGuestReward(a.save, hostHunt(), a.storage);
   assert.equal(saved.persisted, true);
   const loaded = loadSaveWithStatus(a.storage).save;
-  assert.equal(loaded.profile.honor, 529);
+  assert.equal(loaded.profile.honor, 1_529);
+  assert.equal(loaded.profile.rankId, "young-blood");
   assert.equal(loaded.profile.rankId, a.save.profile.rankId);
   assert.equal(loaded.profile.acquiredRankIdV166, a.save.profile.acquiredRankIdV166);
   const imported = parseSaveImport(exportSave(loaded)).save;
@@ -176,6 +198,9 @@ test("une prise inconnue, deux attributions ou un hôte gardant déjà la prise 
   assert.equal(restoreCampaignCoopGuestReward(a.save, { ...hunt, finalBlowOwnerCreatedAt: hostOwner }, a.storage).persisted, false);
   assert.equal(restoreCampaignCoopGuestReward(a.save, {
     ...hunt, committed: applyMissionResult(hunt.before, hunt.result),
+  }, a.storage).persisted, false);
+  assert.equal(restoreCampaignCoopGuestReward(a.save, {
+    ...hunt, committed: { ...hunt.committed, profile: { ...hunt.committed.profile, honor: hunt.committed.profile.honor + 30 } },
   }, a.storage).persisted, false);
   assert.equal(restoreCampaignCoopGuestReward(a.save, {
     ...hunt, result: { ...hunt.result, toolUseIdsV112: [] },
