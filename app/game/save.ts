@@ -31,6 +31,7 @@ import {normalizeHomeworldArchivePlaqueV109} from './systems/homeworldArchivePla
 import { normalizeYouthCampaign, youthCampaignMatchesSave } from "./systems/youthCampaign";
 import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
 import { hasChildhoodFoundationV175, isChildhoodSuccessorV175 } from "./systems/homeworldChildhoodV175";
+import { youthCityDeliveryMatchesWriteV176 } from "./systems/youthCityErrandV172";
 import { homeworldAdjutantMatchesSaveM029, isHomeworldAdjutantSuccessorM029 } from "./systems/homeworldAdjutantM029";
 import { isFutureRegionalLoopM014, isRegionalLoopSuccessorM014, regionalLoopMatchesSaveM014 } from "./systems/homeworldRegionalLoopM014";
 import { archiveTransferPending } from "./systems/archiveTransferGuard";
@@ -2115,6 +2116,11 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (value.legacyFinaleR2 != null && (!save.legacyFinaleR2 || !legacyFinaleMatchesSaveR2(save))) {
     return { save: null, failure: "invalid-save" };
   }
+  const rawErrand = isRecord(value.homeworld) ? value.homeworld.youthCityErrandV172 : undefined;
+  const errand = save.homeworld.youthCityErrandV172;
+  if (isRecord(rawErrand) && rawErrand.delivery !== undefined &&
+      (!errand?.delivery || errand.ownerCreatedAt !== save.createdAt || save.prologue?.status !== "completed" ||
+        save.prologue.checkpoint.cohortV172?.steps !== 7)) return { save: null, failure: "invalid-save" };
   const childhood = save.homeworld.childhoodV175;
   if (selectedChildhood !== undefined && (!childhood || childhood.ownerCreatedAt !== save.createdAt ||
       !hasChildhoodFoundationV175(save))) return { save: null, failure: "invalid-save" };
@@ -2311,6 +2317,9 @@ function persistCampaign(
       const nextWarp = requested.warpEpochsV165?.commonRouteR2;
       if (JSON.stringify(previousWarp ?? null) !== JSON.stringify(nextWarp ?? null) &&
           !isWarpCommonSuccessorR2(previousWarp, nextWarp)) {
+        return failed("save-conflict", previous);
+      }
+      if (!youthCityDeliveryMatchesWriteV176(previous.homeworld.youthCityErrandV172, requested.homeworld.youthCityErrandV172)) {
         return failed("save-conflict", previous);
       }
       const previousChildhood = previous.homeworld.childhoodV175;

@@ -31,6 +31,7 @@ try {
   await page.clock.install();
   const root = page.locator('[data-homeworld-region-v68]');
   const ground = homeworldRegionNavigatorV68(page, regions);
+  report.routes = ground.routes;
   const disk = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), saves.SAVE_STORAGE_KEY);
   const marker = root.locator('[data-o6-origin-continuation]');
   async function enter() {
@@ -89,7 +90,6 @@ try {
   assert.deepEqual(current.residenceV149, admitted.residenceV149);
   assert.equal(current.originV151.ending.endingRealized, false);
   assert.deepEqual(report.errors, []);
-  report.routes = ground.routes;
   await page.screenshot({ path: join(out, 'ready.png'), animations: 'disabled' });
   report.passed = true;
 } finally {

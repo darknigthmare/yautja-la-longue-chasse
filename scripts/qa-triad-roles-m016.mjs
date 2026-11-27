@@ -67,8 +67,11 @@ try {
       await page.clock.runFor(100);
     }
     await page.keyboard.up(interaction);
+    // Storage commits immediately, while the interface updates every 90 ms.
+    await page.clock.runFor(160);
     const stamp = (await saved()).soloV90.checkpoint.partnerObservations[activity.id];
     assert.equal(typeof stamp, "number");
+    assert.equal((await live()).partnerObservations[activity.id], stamp);
     assert.equal(await page.locator('[data-solo-v90-activity="' + activity.id + '"]').getAttribute('data-observed'), 'true');
     await page.screenshot({ path: resolve(output, "observation-" + activity.id + ".png"), animations: "disabled" });
     return stamp;

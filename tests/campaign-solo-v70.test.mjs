@@ -134,6 +134,9 @@ test('M017 announces the real Nef supports before deployment and keeps the legac
  const restored = p.normalizeSoloV70Campaign(JSON.parse(JSON.stringify(save.soloV70)));
  assert(restored);
  assert.deepEqual(p.soloV70Platforms(restored.checkpoint), platforms);
+ const forged = structuredClone(restored.checkpoint);
+ forged.phaseStartedAt = forged.milestones['second-configuration'] = forged.milestones['human-truce'] + 45;
+ assert.equal(p.normalizeSoloV70State(forged), null);
  const historical = structuredClone(restored.checkpoint);
  delete historical.reconnectionVariant;
  assert(p.normalizeSoloV70State(historical));
@@ -148,5 +151,12 @@ test('M017 announces the real Nef supports before deployment and keeps the legac
  for (let i = 0; i < 42 && (state.player.y !== 367 || state.player.vy); i++) act({});
  assert.equal(state.player.y, 367);
  assert.equal(p.soloV70Support(state), 367);
+ for (let i = 0; i < 45 && state.player.x < 581; i++) act({ move: 1 });
+ for (let i = 0; i < 45 && state.player.y !== 430; i++) act({});
+ for (let i = 0; i < 25 && state.player.x > 535; i++) act({ move: -1 });
+ assert.equal(state.player.y, 430);
+ act({ jump: true });
+ for (let i = 0; i < 53 && (state.player.y !== 367 || state.player.vy); i++) act({});
+ assert.equal(state.player.y, 367, 'jumping from directly underneath the Nef bridge lands on it');
  assert.deepEqual(save.prologue.chronicle, initial.prologue.chronicle);
 });

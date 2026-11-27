@@ -24,7 +24,7 @@ const read=async()=>canvas.evaluate(e=>({...JSON.parse(e.dataset.soloState),paus
 const capture=async name=>{const path=output+'/'+name+'.jpg';await page.screenshot({path,type:'jpeg',quality:88});captures.push(path);};
 async function apply(desired){for(const k of keys)if(!desired.has(k)){await page.keyboard.up(k);keys.delete(k);}for(const k of desired)if(!keys.has(k)){await page.keyboard.down(k);keys.add(k);}}
 const bindings=original.settings.controlBindings,action={left:bindings['pit.p1MoveLeft'][0],right:bindings['pit.p1MoveRight'][0],jump:bindings['pit.p1Jump'][0],command:bindings['pit.p1AttackMedium'][0],interact:bindings['pit.p1Resource'][0]};
-async function waitAssets(){for(let n=0;n<80&&await canvas.getAttribute('data-solo-assets')!=='true';n++){await page.waitForTimeout(100);await page.clock.runFor(100);}assert.equal(await canvas.getAttribute('data-solo-assets'),'true');}
+async function waitAssets(){for(let n=0;n<80&&await canvas.getAttribute('data-solo-assets')!=='true';n++){await page.waitForTimeout(100);await page.clock.runFor(100);}assert.equal(await canvas.getAttribute('data-solo-assets'),'true', (await screen.getByRole('alert').allTextContents()).join(' ') || JSON.stringify(failures));}
 async function resumeFromMenu(destination){
  const menu=page.locator('[data-campaign-menu]');
  await menu.waitFor({timeout:120000});
