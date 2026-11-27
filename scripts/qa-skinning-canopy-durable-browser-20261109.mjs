@@ -21,6 +21,10 @@ const root=fileURLToPath(new URL('../',import.meta.url));
 const out=path.resolve(root,process.env.SKINNING_CANOPY_QA_OUTPUT??'outputs/qa-skinning-canopy-20261109');
 const only=process.env.SKINNING_CANOPY_QA_CASE??'both';
 const bufferedTransfer=process.env.SKINNING_CANOPY_QA_TRANSFER==='buffered';
+const reinforceTool=process.env.SKINNING_CANOPY_QA_TOOL==='reinforced';
+const toolWear=reinforceTool?4:5;
+const afterFlay=new RegExp(String(25-toolWear)+'\\s*\\/\\s*100');
+const settledToolCondition=25-2*toolWear;
 assert.ok(['both','field','canopy'].includes(only));
 await mkdir(out,{recursive:true});
 const hash=value=>createHash('sha256').update(typeof value==='string'||ArrayBuffer.isView(value)?value:JSON.stringify(value)).digest('hex');
@@ -38,13 +42,22 @@ const boardingObserver=[
   '      finish(terminalResult);',
 ].join('\n');
 const instrumentedSource=source.replace(marker,observer+marker).replace(boardingMarker,boardingObserver);
-const bootstrap=await build({stdin:{contents:'export {applyMissionResult,defaultSave,SAVE_STORAGE_KEY} from "./app/game/save";export {GALAXY_NAVIGATION} from "./app/game/galaxyNavigation";',resolveDir:root,loader:'ts'},bundle:true,write:false,format:'cjs',platform:'node',logLevel:'silent'});
+const bootstrap=await build({stdin:{contents:'export {applyMissionResult,defaultSave,SAVE_STORAGE_KEY} from "./app/game/save";export {GALAXY_NAVIGATION} from "./app/game/galaxyNavigation";export {applyHunterForgeToolReinforcementV146,forgeMaterialKeyV146,planForgeToolReinforcementV146} from "./app/game/systems/hunterCustomizationPersistenceV146";',resolveDir:root,loader:'ts'},bundle:true,write:false,format:'cjs',platform:'node',logLevel:'silent'});
 const mod={exports:{}};
 runInNewContext(bootstrap.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url),structuredClone,TextEncoder});
-const admission=mod.exports.defaultSave('2026-11-09T00:00:00.000Z');
+let admission=mod.exports.defaultSave('2026-11-09T00:00:00.000Z');
 admission.profile.clanMarks=100;
 admission.inventory.fieldToolIds=['flaying-tool'];
 admission.inventory.harvestV112.toolCondition=25;
+if(reinforceTool){
+  const bone={speciesId:'oseris-iv--jungle-xeno-scout',partId:'bone',label:'Segment caudal',count:2,qualityTotal:180};
+  admission.inventory.harvestV112.archive.push(bone);
+  const plan=mod.exports.planForgeToolReinforcementV146(admission,mod.exports.forgeMaterialKeyV146(bone));
+  assert.ok(plan);
+  admission=mod.exports.applyHunterForgeToolReinforcementV146(admission,plan.quote);
+  assert.equal(admission.inventory.harvestV112.reinforcedTool,true);
+  assert.equal(admission.inventory.harvestV112.archive.length,0);
+}
 admission.settings.masterVolume=0;
 admission.settings.reducedGore=true;
 admission.settings.screenShake=false;
@@ -67,7 +80,7 @@ const report={
   sourceHashes,hookSha256:hash(observer),boardingObserverSha256:hash(boardingObserver),bundleSha256:hash(js.contents),cssBundleSha256:hash(css.contents),
   inputTimestampSemantics:'Input logs use the nearest decision observation, not the exact browser event-dispatch clock. Native simulation continues while screenshots, DOM inspection and protocol messages are processed.',
   instrumentation:['One declared Canvas mount hook exposes read-only state plus the disclosed initial/terminal fixture setup','A read-only Canvas observer copies the successful native result immediately before the existing finish callback','A passthrough Storage.prototype.setItem observer records the successful native platform call without changing bytes or acknowledgements','No production GameClient callback, ownership check, sidecar encoder, writer or claim is substituted'],
-  admission:{kind:'Declared production defaultSave with field tool, 100 marks and condition25',sha256:hash(admission),save:admission},
+  admission:{kind:'Declared saved field tool at 25/100'+(reinforceTool?', with the forge reducer applied to two archived bones':''),sha256:hash(admission),save:admission},
   scope:'Complete production GameClient, its actual campaign front end, admission/claim, active-hunt serializer and localStorage writer. Mounted HuntCanvas uses the native rAF, DOM controls and keyboard listeners. One initial physical prey is created through native damage for field work. A separate declared terminal segment prepares Apex prerequisites and initial position; outcome and settlement are native. Canopy starts at the canonical insertion with original geometry, enemies and hazards.',
   limits:['Automated desktop Chromium, not physical phone/controller or novice comprehension','No artistic or audio-listening qualification; audio is muted','No complete campaign or eight-mission ground fallback claim','The terminal extraction segment has a declared position/prerequisite fixture and does not prove intervening main-route traversal'],
 };
@@ -263,7 +276,7 @@ async function field(){
     const open=page.getByRole('button',{name:'Examiner la proie vaincue',exact:true});
     if(await open.count())await open.click();
     const tool=await page.locator('[data-rite-tool-preview-v112]').innerText();
-    assert.match(tool,/20\s*\/\s*100/);
+    assert.match(tool,afterFlay);
     // Reach the other work side through the same native movement controls.
     // This makes the second live contact image exercise the mirrored rig,
     // without moving the corpse or assigning actor coordinates.
@@ -296,10 +309,10 @@ async function field(){
     await capture('03a-native-active-hide-work');
     const info=page.getByRole('button',{name:'Infos',exact:true});
     assert.equal(await info.getAttribute('aria-expanded'),'false');
-    await info.click();
+    await info.press('Enter');
     assert.equal(await page.locator('[data-rite-work-details-v112]').isVisible(),true,'Detailed field facts remain available during work');
-    assert.match(await page.locator('[data-rite-tool-preview-v112]').innerText(),/20\s*\/\s*100/);
-    await info.click();
+    assert.match(await page.locator('[data-rite-tool-preview-v112]').innerText(),afterFlay);
+    await info.press('Enter');
     await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().rites.specimensV112.length===1);
     state=await observation();
     assert.equal(state.rites.completedEventIds.filter(id=>id.startsWith('flay:')).length,1);
@@ -385,7 +398,8 @@ async function field(){
     assert.equal(save.missionProgress[missionId].attempts,before.missionProgress[missionId].attempts+1);
     assert.equal(save.inventory.harvestV112.settledEncounterRuns[missionId],run);
     assert.deepEqual(save.inventory.harvestV112.specimens,[data.specimen]);
-    assert.equal(save.inventory.harvestV112.toolCondition,15);
+    assert.equal(save.inventory.harvestV112.toolCondition,settledToolCondition);
+    assert.equal(save.inventory.harvestV112.reinforcedTool,reinforceTool?true:undefined);
     assert.equal(save.inventory.harvestV112.toolUseIds.length,2);
     assert.equal(await disk(),null,'Terminal settlement clears the actual sidecar');
     data.delivered={
@@ -412,10 +426,10 @@ async function field(){
     assert.equal(after.profile.clanMarks,before-14);
     assert.deepEqual({...item,stage:'raw'},data.specimen);
     assert.equal(item.stage,'mounted');
-    assert.equal(after.inventory.harvestV112.toolCondition,15);
+    assert.equal(after.inventory.harvestV112.toolCondition,settledToolCondition);
     data.mounted=item;
     await capture('07-native-conserved-part');
-    return{item,marksPaid:14,toolCondition:15};
+    return{item,marksPaid:14,toolCondition:settledToolCondition};
   });
   await check('a fresh campaign document preserves the mounted part and does not pay harvest honor again',async()=>{
     const priorDocument=await page.evaluate(()=>window.__skinningCanopyQaV112.documentId);

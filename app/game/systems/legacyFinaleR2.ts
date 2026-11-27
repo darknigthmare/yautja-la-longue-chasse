@@ -1,5 +1,7 @@
 import type { SaveGame } from "../types";
 import { getChronicleRank } from "./clanChronicle";
+import { canReadFirstLessonO6 } from "./originContinuationO6";
+import { firstLessonPlayedO6 } from "./originPracticeO6";
 import { normalizeOriginV151 } from "./originsV151";
 import { normalizeResidenceV149 } from "./residenceV149";
 import { shipReceiptV161 } from "./shipReceiptV161";
@@ -75,7 +77,7 @@ export type LegacyFinaleR2 = {
   epilogue?: Journal<StoredEpilogueOrder>;
 };
 type LegacySave = CompanionCampaign & Pick<SaveGame, "originV151" | "residenceV149" | "shipAcquisitionV89" |
-  "legacyFinaleR2" | "tribunalV147" | "clanShipIncidents" | "clanShipTrophyHearing"> & LegacyHaltSave;
+  "legacyFinaleR2" | "tribunalV147" | "clanShipIncidents" | "clanShipTrophyHearing" | "eliteRecognitionV174"> & LegacyHaltSave;
 type LegacyHaltSave = Pick<SaveGame, "createdAt" | "homeworld" | "homeworldRegionV68" | "profile" | "prologue">;
 
 const record = (value: unknown): value is Record<string, unknown> => !!value && typeof value === "object" && !Array.isArray(value);
@@ -83,11 +85,13 @@ const closeTo = (at: number, x: number) => Math.abs(at - x) <= 1;
 const position = (n: unknown): n is number => typeof n === "number" && Number.isInteger(n) && n >= 0 && n <= LEGACY_WALK_LIMIT_R2;
 const sameSite = (a: LegacySiteR2, b: LegacySiteR2) => a.kind === b.kind && a.id === b.id;
 
-export function legacyOriginEndingR2(save: Pick<LegacySave, "originV151">): string | null {
+export function legacyOriginEndingR2(save: Pick<LegacySave, "originV151" | "createdAt" | "prologue" |
+  "eliteRecognitionV174" | "residenceV149" | "legacyFinaleR2">): string | null {
   const origin = normalizeOriginV151(save.originV151);
   if (!origin?.ending?.endingChoiceConfirmed || !origin.ending.endingRealized ||
       !origin.consumed.includes(origin.originId + "-M29:confirmed") ||
       !origin.consumed.includes(origin.originId + "-M30:realized")) return null;
+  if (origin.ending.originEndingId === "O6-E1" && !canReadFirstLessonO6({ ...save, originV151: origin })) return null;
   return origin.ending.originEndingId;
 }
 
@@ -229,6 +233,8 @@ function siteHeld(save: LegacySave, site: LegacySiteR2): boolean {
 export function legacySceneRefusalR2(save: LegacySave, site: LegacySiteR2, scene: LegacySceneR2): string | null {
   const endingId = legacyOriginEndingR2(save);
   if (!endingId) return "La clôture de la voie d’origine doit d’abord être jouée.";
+  if (endingId === "O6-E1" && !firstLessonPlayedO6(save.originV151?.continuationO6?.practice) && !save.legacyFinaleR2?.[scene])
+    return "Joue la première leçon avant d’ouvrir un nouveau récit.";
   if (!siteHeld(save, site)) return site.kind === "halt"
     ? "Rejoins la table des Crêtes après avoir consigné ta halte."
     : "Le lieu doit t’avoir été effectivement remis.";
@@ -236,8 +242,12 @@ export function legacySceneRefusalR2(save: LegacySave, site: LegacySiteR2, scene
     if (site.kind !== "residence" || getChronicleRank(save.prologue?.chronicle) !== "ancient") {
       return "Le retour de la cohorte se joue au foyer après la reconnaissance Ancient.";
     }
-    const setup = normalizeOriginV151(save.originV151)?.trainingYardO6?.houses[site.id];
-    if (endingId !== "O6-E1" || setup?.at(-1) !== "threshold") {
+    const origin = normalizeOriginV151(save.originV151);
+    const setup = origin?.trainingYardO6?.houses[site.id];
+    const lesson = origin?.continuationO6;
+    const archivedHere = save.legacyFinaleR2?.cohort?.site.id === site.id;
+    if (endingId !== "O6-E1" || setup?.at(-1) !== "threshold" ||
+        (firstLessonPlayedO6(lesson?.practice) && lesson?.houseId !== site.id && !archivedHere)) {
       return "Le prolongement jouable demande une maison d’enseignement aménagée et sa fin de voie réalisée.";
     }
   }

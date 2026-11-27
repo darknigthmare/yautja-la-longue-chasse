@@ -25,12 +25,14 @@ const anatomies = qa.load('app/game/systems/anatomyHarvestV112.ts');
 const harvest = qa.load('app/game/systems/harvestInventoryV112.ts');
 const customization = qa.load('app/game/systems/hunterCustomizationV146.ts');
 const motion = qa.load('app/game/systems/shipInterior25d.ts');
+const activeHunt = qa.load('app/game/systems/activeHuntSave.ts');
 const key = saves.SAVE_STORAGE_KEY;
 const owner = '2026-11-21T21:00:00.000Z';
 const species = 'oseris-iv--jungle-xeno-scout';
 const hideSpecies = 'oseris-iv--mist-pouncer';
-const forgeArmor = process.env.HUNTER_FORGE_QA_ARMOR === '1';
-const selectMaterial = forgeArmor || process.env.HUNTER_FORGE_QA_SELECT_MATERIAL === '1';
+const forgeTool = process.env.HUNTER_FORGE_QA_TOOL === '1';
+const forgeArmor = !forgeTool && process.env.HUNTER_FORGE_QA_ARMOR === '1';
+const selectMaterial = forgeArmor || forgeTool || process.env.HUNTER_FORGE_QA_SELECT_MATERIAL === '1';
 const mission = MISSION_BY_ID['jungle-vey'];
 
 function fixture() {
@@ -114,6 +116,7 @@ try {
   const chosen = selectMaterial ? seed.inventory.harvestV112.archive.find(row => row.speciesId === hideSpecies) : null;
   if (selectMaterial) assert.equal(chosen?.count, forgeArmor ? 3 : 2);
   if (forgeArmor) report.admission += ' Le même navigateur forge ensuite le premier niveau avec le reste des lots archivés.';
+  if (forgeTool) report.admission += ' Le même navigateur installe ensuite le renfort avec les os archivés par les réducteurs.';
   report.initial = { wear: seed.customizationV146.heavyWear, stock: start, chosen, marks: seed.profile.clanMarks };
   browser = await chromium.launch({
     executablePath: process.env.CHROMIUM_EXECUTABLE || process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || undefined,
@@ -315,6 +318,37 @@ try {
     assert.deepEqual(resumedArmor.inventory, upgraded.inventory);
     assert.equal(arsenal.quoteUpgrade(resumedArmor, { domain: 'armor', id: armorId }).currentLevel, 1);
     report.armor = { armorId, level: 1, stats, remaining: resumedArmor.inventory.harvestV112.archive };
+  }
+
+
+  if (forgeTool) {
+    await forge.getByRole('tab', { name: 'Réparations', exact: true }).click();
+    const install = forge.locator('[data-forge-tool-apply]');
+    assert.equal(await install.isEnabled(), false);
+    await forge.locator('[data-forge-tool-material]').selectOption(JSON.stringify([start.speciesId, start.partId]));
+    assert.equal(await forge.locator('[data-forge-tool-quote]').innerText(), '2 × ' + start.label);
+    await forge.screenshot({ path: join(output, 'devis-renfort-outil.png'), animations: 'disabled' });
+    const future = JSON.stringify({ version: activeHunt.ACTIVE_HUNT_SAVE_VERSION + 1 });
+    await page.evaluate(({ key, value }) => localStorage.setItem(key, value), { key: activeHunt.ACTIVE_HUNT_STORAGE_KEY, value: future });
+    await install.click();
+    await forge.getByText(/Renfort non enregistré/).waitFor();
+    assert.deepEqual((await disk()).inventory.harvestV112, received.inventory.harvestV112);
+    assert.equal(await page.evaluate(key => localStorage.getItem(key), activeHunt.ACTIVE_HUNT_STORAGE_KEY), future);
+    await page.evaluate(key => localStorage.removeItem(key), activeHunt.ACTIVE_HUNT_STORAGE_KEY);
+    await install.click();
+    const marker = forge.locator('[data-forge-tool-reinforced="true"]');
+    await marker.waitFor();
+    assert.match(await marker.innerText(), /4 points/);
+    const mounted = await disk();
+    assert.equal(mounted.inventory.harvestV112.reinforcedTool, true);
+    assert.equal(mounted.inventory.harvestV112.toolCondition, received.inventory.harvestV112.toolCondition);
+    assert.equal(mounted.profile.clanMarks, received.profile.clanMarks);
+    assert.deepEqual(mounted.inventory.harvestV112.archive, [{ ...start, count: 1, qualityTotal: 90 }]);
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await openForge();
+    await marker.waitFor();
+    assert.deepEqual((await disk()).inventory.harvestV112, mounted.inventory.harvestV112);
+    report.toolReinforcement = { archive: mounted.inventory.harvestV112.archive, wearPerUse: 4 };
   }
 
   assert.deepEqual(report.errors, []);

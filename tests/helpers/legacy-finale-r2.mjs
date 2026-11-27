@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { homeworldSceneSsrV78 } from "./homeworld-scene-ssr-v78.mjs";
-import { trainingYardAdmissionO6, withResidenceO6, HOUSE } from "./origin-training-yard-o6.mjs";
+import { trainingYardAdmissionO6, withResidenceO6, HOUSE, yard } from "./origin-training-yard-o6.mjs";
+import { continuation, continuationAdmissionO6, regionContextO6, walkO6 } from "./origin-continuation-o6.mjs";
 import { narrativeLongMemoryAdmission } from "./senior-rite-campaign.mjs";
 import { playShipAcquisitionV161 } from "./ship-receipt-v161.mjs";
 
@@ -12,44 +13,46 @@ export const finale = qa.load("app/game/systems/legacyFinaleR2.ts");
 export const saves = qa.load("app/game/save.ts");
 export const houseSite = { kind: "residence", id: HOUSE };
 
-function withLegacyO6Ending(save, realized) {
-  const place = { rankId: "elite", atWorkshop: true };
+function playYardO6(save) {
+  for (const order of yard.TRAINING_YARD_ORDERS_O6) {
+    save = walkO6(save, yard.TRAINING_YARD_POSTS_O6[order]);
+    const origin = yard.applyTrainingYardO6(save.originV151, save.residenceV149, save.homeworldRegionV68, regionContextO6(save), order);
+    assert.ok(origin, order);
+    save = { ...save, originV151: origin };
+  }
+  return save;
+}
+
+function chooseLegacyO6Ending(save) {
+  const place = { rankId: save.profile.rankId, atWorkshop: true };
   const shown = endings.examineEndingV170(save.originV151, "O6-E1", place);
   assert.ok(shown.ok, shown.reason);
   const selected = endings.confirmEndingV170(shown.state, "O6-E1", "O6-E1", place);
   assert.ok(selected.ok, selected.reason);
-  save = { ...save, originV151: { ...selected.state, trainingYardO6: {
-    version: 1, houses: { [HOUSE]: ["support", "rack", "aisle", "threshold"] },
-  } } };
-  // Test-only admission for the end of the separately authored O6 quest.
-  // This fixture is never a source of a campaign receipt.
-  if (realized) save.originV151 = { ...save.originV151, consumed: [...save.originV151.consumed, "O6-M30:realized"],
-    ending: { ...save.originV151.ending, endingRealized: true } };
-  return save;
+  return { ...save, originV151: selected.state };
+}
+
+export function playLegacyO6Lesson(save) {
+  for (let step = 0; step < 18; step++) {
+    const view = continuation.continuationViewO6(save, save.originV151, save.homeworldRegionV68, regionContextO6(save));
+    assert.ok(view);
+    const active = view.next ? view : view.practice;
+    if (!active?.next) {
+      assert.equal(save.originV151.ending.endingRealized, true);
+      return save;
+    }
+    save = walkO6(save, active.post);
+    const changed = continuation.applyContinuationO6(save, save.originV151, save.homeworldRegionV68, regionContextO6(save), active.next);
+    assert.ok(changed, active.next);
+    save = { ...save, originV151: changed.origin };
+  }
+  throw new Error("Leçon O6 incomplète");
 }
 
 export function legacyFixture({ realized = true, ancient = true } = {}) {
-  const save = withLegacyO6Ending(trainingYardAdmissionO6(), realized);
-  if (ancient) {
-    const beginning = history.CHRONICLE_EVIDENCE.find(entry => entry.id === "intro-begun");
-    assert.ok(beginning);
-    let chronicle = history.recordChronicleEvidence(history.createClanChronicle(), { id: beginning.id, sourceId: beginning.sourceId }).state;
-    for (const rite of history.CHRONICLE_RITES.filter(entry => entry.grantsRankId !== null)) {
-      for (const id of rite.requiredEvidenceIds) {
-        const proof = history.CHRONICLE_EVIDENCE.find(entry => entry.id === id);
-        assert.ok(proof);
-        const result = history.recordChronicleEvidence(chronicle, { id, sourceId: proof.sourceId });
-        assert.ok(result.accepted);
-        chronicle = result.state;
-      }
-      const result = history.performChronicleRite(chronicle, { id: rite.id, sourceId: rite.sourceId });
-      assert.ok(result.accepted, rite.id);
-      chronicle = result.state;
-    }
-    assert.equal(history.getChronicleRank(chronicle), "ancient");
-    save.prologue = { chronicle };
-  }
-  return save;
+  if (ancient) return legacyCanonicalCohortFixture({ realized });
+  const save = continuationAdmissionO6("review", "O6-E1");
+  return realized ? playLegacyO6Lesson(save) : save;
 }
 
 export function legacyPlayer(save = legacyFixture()) {
@@ -87,8 +90,7 @@ export function legacyClanFixture({ realized = true, recruit = true } = {}) {
   let save = { ...legacyFixture({ realized, ancient: false }), homeworldRegionV68: null };
   save = moveLegacyClanFixture(save, { type: "approach" }, { type: "dock" }, { type: "board" });
   if (recruit) {
-    // The setup plays the existing berth, onboarding, audit and recruitment
-    // reducers. Only the separate M30 authoring prerequisite is test admission.
+    // The setup plays the existing berth, onboarding, audit and recruitment reducers.
     let state = operations.createClanShipOperations(save.createdAt);
     const act = (room, order) => {
       save = moveLegacyClanFixture(save, { type: "move-room", roomId: room });
@@ -134,7 +136,9 @@ export function legacyHaltFixture({ realized = true, walkthrough = true, approac
   return save;
 }
 
-export function legacyCanonicalCohortFixture() {
+let ancientHouse;
+export function legacyCanonicalCohortFixture({ realized = true } = {}) {
+  if (ancientHouse) return realized ? playLegacyO6Lesson(structuredClone(ancientHouse)) : structuredClone(ancientHouse);
   const ancient = qa.load("app/game/systems/ancientHearingR2M056.ts");
   const residence = qa.load("app/game/systems/companionResidence.ts");
   let save = narrativeLongMemoryAdmission();
@@ -155,10 +159,12 @@ export function legacyCanonicalCohortFixture() {
   assert.equal(history.getChronicleRank(save.prologue.chronicle), "ancient");
   assert.equal(ancient.ancientHearingRecognized(save.clanShipOperations.ancientHearing), true);
   save = moveLegacyClanFixture(save, { type: "move-room", roomId: "hangar" }, { type: "return-to-personal" }, { type: "undock" });
-  return withLegacyO6Ending(withResidenceO6(save), true);
+  ancientHouse = chooseLegacyO6Ending(playYardO6(withResidenceO6(save)));
+  return realized ? playLegacyO6Lesson(structuredClone(ancientHouse)) : structuredClone(ancientHouse);
 }
 
 export function legacyPersonalShipFixture({ realized = true, stopAt } = {}) {
-  const base = { ...legacyFixture({ realized, ancient: false }), homeworldRegionV68: null };
-  return playShipAcquisitionV161(qa, base, stopAt);
+  // The canonical Elite itinerary already boards the issued hull before returning the crown.
+  if (stopAt) return playShipAcquisitionV161(qa, trainingYardAdmissionO6(), stopAt);
+  return { ...legacyFixture({ realized, ancient: false }), homeworldRegionV68: null };
 }

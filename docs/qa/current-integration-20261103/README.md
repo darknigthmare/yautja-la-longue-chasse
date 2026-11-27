@@ -733,3 +733,17 @@ La Descente des Contrepoids et la Galerie des Coques relient la Vanne au seuil d
 Les recettes des épilogues utilisent un dossier de fin d’origine et de rang préparé. Le seuil de la demeure et le poste d’archives du vaisseau sont atteints avec les commandes du jeu. [Épilogues](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46058045593)
 
 La crue évolue au pas dans les nouveaux repérages de l’Okavango. Le trajet chargé du Marais utilise une dépouille initiale déclarée, les vrais prélèvements et une reprise en plein balancement. La recette de forge valide le premier niveau dans Chromium, puis les deux niveaux et le débit des lots dans les tests de sauvegarde. [Okavango](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46056761105) · [Canopée](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46057867272) · [Forge](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46056886021)
+
+## Temple, enseignement, orbite et atelier du 27 novembre 2026
+
+La recette commune qualifie le commit applicatif `7d01f45c4b65fc7def5e401d573287a3dcc8e344`. Le classeur conserve ses références bibliques, ses recours historiques et ses preuves par fiche. [CI commune](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46065597614)
+
+Les parcours du Temple à 9, 11 et 15 salles sont rejoués. Les deux premières géométries conservent leur sauvegarde. Le nouveau sas comporte une purge qui peut expirer puis être réamorcée à la vanne amont. [Temple](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46064795563)
+
+Le pari d’Harek commence au rassemblement restitué par les réducteurs M03. Chromium joue les deux itinéraires et le retour après une chute, avec des reprises à froid. [O6-M04](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46064910635)
+
+Le Mur des trophées est utilisé par une première recette. La session continue de la demeure commence avec ce choix préparé par les réducteurs V170, puis joue M30, M059 et l’épilogue du foyer. Les autres jalons de l’origine gardent leur suivi. [Leçon et épilogues](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46064753099)
+
+Le renfort n’est confirmé qu’après vérification de la reprise active et des deux os annoncés. La recette terrain prépare une dépouille et utilise ensuite les vrais gestes, le stockage de reprise et la caisse de retour. [Forge](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46064400081) · [Chasse](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46064534925)
+
+Oseris conserve la peau prélevée pendant le retour de branche en branche et la descente. Le survol de Sol commence depuis un relevé déjà extrait. [Oseris](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46064550184) · [Sol](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46063557634)

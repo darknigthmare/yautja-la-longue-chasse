@@ -68,7 +68,7 @@ test('the unchosen childhood visit stays absent and the rack requires an authent
   assert.equal(save.originV151.ending.endingRealized, false);
 });
 
-test('a consenting novice chooses an exercise tool and walks with the mentor without closing a campaign ending', () => {
+test('a consenting novice chooses a tool, walks with the mentor and closes E1 by telling what to practice next', () => {
   let save = continuationAdmissionO6('review', 'O6-E1');
   assert.equal(view(save).practice, null);
   assert.equal(apply(save, 'listen-novice'), null);
@@ -101,17 +101,38 @@ test('a consenting novice chooses an exercise tool and walks with the mentor wit
     assert.ok(write.persisted, write.failure);
     save = saves.parseSaveImport(saves.exportSave(write.save)).save;
     assert.ok(save);
-    assert.equal(view(save).practice.hasStaff, order !== 'listen-novice' && order !== 'return-staff');
+    assert.equal(view(save).practice.hasStaff, ['present-tools', 'show-footing', 'steady-novice'].includes(order));
+    assert.equal(save.originV151.ending.endingRealized, order === 'hear-lesson-outcome');
+    if (order === 'return-staff') {
+      assert.ok(view(save).practice.student);
+      assert.equal(apply(save, 'hear-lesson-outcome'), null);
+      assert.equal(continuation.canReadFirstLessonO6(save), false);
+    }
   }
   assert.equal(view(save).practice.next, null);
   assert.equal(view(save).practice.student, null);
   assert.equal(save.originV151.continuationO6.version, 2);
   assert.deepEqual(save.originV151.continuationO6.practice, steps);
-  assert.deepEqual(save.originV151.ending, prepared.originV151.ending);
-  assert.deepEqual(save.originV151.consumed, prepared.originV151.consumed);
+  assert.deepEqual(save.originV151.ending, { ...prepared.originV151.ending, endingRealized: true });
+  assert.deepEqual(save.originV151.consumed, [...prepared.originV151.consumed, practice.O6_FIRST_LESSON_EVENT]);
+  assert.equal(continuation.canReadFirstLessonO6(save), true);
+  assert.deepEqual(save.trophies, prepared.trophies);
+  assert.deepEqual(save.residenceV149, prepared.residenceV149);
+  assert.deepEqual(save.originV151.relations, prepared.originV151.relations);
   assert.deepEqual(save.prologue.chronicle, prepared.prologue.chronicle);
   assert.equal(saves.writeSaveWithStatus(prepared, disk).failure, 'save-conflict');
   assert.equal(continuation.keepsContinuationO6(prepared.originV151.continuationO6, save.originV151.continuationO6), false);
+
+  for (const change of [
+    copy => { copy.originV151.ending.endingRealized = false; },
+    copy => { copy.originV151.consumed.pop(); },
+    copy => { copy.originV151.continuationO6.practice.pop(); },
+    copy => { delete copy.originV151.continuationO6; },
+  ]) {
+    const clone = structuredClone(save);
+    change(clone);
+    assert.equal(saves.parseSaveImport(JSON.stringify(clone)).failure, 'invalid-save');
+  }
 
   for (const damage of [
     record => { record.practice.splice(1, 1); },

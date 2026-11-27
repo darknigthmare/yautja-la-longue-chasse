@@ -2125,7 +2125,7 @@ La triade, le Temple des Trois Ombres et le Quatza-Rij mènent au rang Blooded. 
 - **Choix :** route de hauteur ou route de mécanismes.
 - **Échec et reprise :** une séparation ouvre des mécanismes de regroupement, sans réinitialiser le temple.
 - **Sauvegarde :** `rite.templeConfiguration ; rite.templeThresholdReached`
-- **Existant :** V69 (Seuils du Premier Sang), V70 acte I : Marches des Trois, Vestibule des Serments, Tribune des Signes, Arsenal des Épreuves, Belvédère Fracturé, Puits des Contrepoids, Camp des Intrus, Nef des Anneaux, Vanne de Quarantaine. **Manquant (notes V70) :** six salles profondes, reine, œufs, purge, chasses qualifiantes.
+- **Existant :** V69 (Seuils du Premier Sang), V70 acte I : Marches des Trois, Vestibule des Serments, Tribune des Signes, Arsenal des Épreuves, Belvédère Fracturé, Puits des Contrepoids, Camp des Intrus, Nef des Anneaux, Vanne de Quarantaine. Les nouvelles campagnes à triade préparée parcourent six salles profondes, observent les œufs, réamorcent la purge et rejoignent le seuil du Quatza-Rij. L’éclosion, la reine, le transport du blessé et les chasses qualifiantes restent ouverts.
 
 *Production (proposé)* — **Props :** râtelier où déposer les armes énergétiques, passerelles mobiles, volets pivotants, chambres à configuration variable, glyphes annonçant le prochain mouvement, mécanismes de regroupement (leviers à deux mains). **VFX :** poussière qui tombe avant chaque déplacement, glyphe qui s'allume 2 s avant, secousse de caméra. **SFX :** `stone-grind`, `gear-tick`, `door-stone-close`, `glyph-hum`. **Musique :** MUS-13.
 
@@ -2651,11 +2651,15 @@ Transmission, retour sur un ancien terrain, successeur, rang Ancient, mausolée,
 
 **Déroulé :** une nouvelle cohorte rentre et demande une place pour montrer son récit ; préparer un support, écouter, laisser de la place aux inconnues. **Sauvegarde :** `legacy.nextCohortReturn`
 
+Le parcours O6-E1 s’ouvre après le bilan de la première leçon et la reconnaissance Ancient. Le foyer reçoit les quatre témoignages et les inscrit au même registre.
+
 *Production (proposé)* — **Props :** nouvelle cohorte (quatre jeunes, sprites à produire), support de récit à installer, anciens camarades selon leur état. **VFX :** lanternes du soir. **SFX :** voix de cohorte, `crowd-cohort`. **Musique :** MUS-09 puis MUS-05.
 
 ### R2-M060 — La longue chasse demeure
 
 **Déroulé :** traverser son lieu actuel (maison, vaisseau, navire, halte) ; la caméra montre objets et relations acquis puis rend la main pour un dernier geste. **Choix :** partir, accueillir ou transmettre. **Sauvegarde :** `campaign.epilogueSeen`
+
+Le reçu joué d’O6-E1 ouvre les gestes de l’épilogue. Les autres fins de voie gardent leur suivi.
 
 *Production (proposé)* — **Props :** lieu actuel du joueur (maison, vaisseau, navire ou halte) avec ses objets et trophées réels, PNJ liés. **VFX :** lumière de fin de journée, lent panoramique. **SFX :** ambiance du lieu. **Musique :** MUS-51.
 
@@ -3208,4 +3212,20 @@ Ordre de production proposé, par lots jouables :
 - **Forge et canopée · Armure et traversée chargée** · La forge permet d’améliorer l’armure équipée avec deux lots choisis d’os et de cuir. Le devis montre les statistiques réelles et l’arsenal retrouve le niveau confirmé. Dans les Marais acides, le cuir transporté ralentit la remontée et l’impulsion de la liane. Le pendule, les prises et les replis reprennent avec la charge. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46056886021)
 
 - **O6-M03 · La cloche de la ville** · Saar ouvre le trajet après la course des sacs. Le joueur rejoint la rue des ateliers, remet la pièce, sonne la cloche et retrouve sa cohorte. Le carnet durable enregistre les véritables postes joués et accepte les parcours éligibles de M02. Le premier détour entre l’établi de Yena et le chenil de Tov fixe le choix consigné. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46060526772)
+
+## Suite du 27 novembre 2026 — Temple, leçon finale et forge
+
+- **R2-M017 · Les six salles profondes** · Le Puits de Résine, la Chambre de Confinement, la loge de la Reine et le Sas de Purge prolongent la Descente et la Galerie. Le joueur observe les œufs, ouvre les dispositifs avec les deux partenaires et réamorce la purge depuis l’amont si elle expire. Le seuil d’admission au Quatza-Rij exige la traversée et le regroupement. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46064795563)
+
+- **R2-M059 · Le retour de la cohorte** · Après la première leçon d’O6-E1 et la reconnaissance Ancient, le joueur ouvre la demeure, installe le support et écoute les quatre jeunes. Le registre conserve le choix et les observations après rechargement. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46064753099)
+
+- **R2-M060 · Le dernier geste** · Le reçu joué ouvre l’épilogue E1. Le joueur retrouve ses liens au foyer et peut y transmettre un témoignage. Les parcours de la halte et des archives du vaisseau relisent également les justificatifs de la partie. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46064753099)
+
+- **O6-M30 · La première leçon d’O6-E1** · Après le choix E1 au Mur, l’élève choisit son outil, joue la tentative avec le maître et rend le bâton. Le bilan final fixe la clôture de voie. La reprise après la restitution garde la leçon ouverte jusqu’au bilan. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46064753099)
+
+- **O6-M04 · Le pari du rival** · En revenant des Forges, le joueur retrouve Harek. Le pari propose le passage mobile ou le détour par les passerelles, avec une remontée par l’échelle après une chute. Le carnet garde les gestes réellement joués, le résultat et le lien de Harek. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46064910635)
+
+- **Terre · Survol de Sol** · Le relevé de l’Okavango ouvre un survol avec la coque personnelle. Le joueur aligne son approche, règle sa vitesse, reprend après un recul de sécurité, observe le dépôt et pilote le retour au pont. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46063557634)
+
+- **Forge et canopée · Renfort d’outil et route d’Oseris** · La forge consomme deux os du lot choisi pour renforcer l’outil de dépeçage. La reprise et le retour de chasse conservent le renfort et l’usure de quatre points par geste. À Oseris, la peau prélevée accompagne les deux lianes, le retour de branche en branche et la descente sur le tronc. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46064400081)
 

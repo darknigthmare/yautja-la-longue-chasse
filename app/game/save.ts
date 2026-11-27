@@ -11,12 +11,13 @@ import { isFutureResidenceV149, normalizeResidenceV149 } from "./systems/residen
 import { isFutureResidenceLifeV150, normalizeResidenceLifeV150 } from "./systems/residenceLifeV150";
 import { isFutureResidenceScenesV154, normalizeResidenceScenesV154 } from "./systems/residenceScenesV154";
 import { isFutureOriginV151, normalizeOriginV151 } from "./systems/originsV151";
-import { continuationMatchesSaveO6, keepsContinuationO6 } from "./systems/originContinuationO6";
+import { continuationMatchesSaveO6, firstLessonMatchesSaveO6, keepsContinuationO6, keepsFirstLessonO6 } from "./systems/originContinuationO6";
 import { keepsSoloReturnO6, soloReturnMatchesSaveO6 } from "./systems/originSoloReturnO6";
 import { firstShockMatchesSaveO6, keepsFirstShockO6 } from "./systems/originFirstShockO6";
 import { cohortRaceMatchesSaveO6, keepsCohortRaceO6 } from "./systems/originCohortRaceO6";
 import { keepsTownBellO6, townBellMatchesSaveO6 } from "./systems/originTownBellO6";
 import { townBellLocationsMatchO6 } from "./systems/originTownBellPlacesO6";
+import { keepsRivalRaceO6, rivalRaceMatchesSaveO6 } from "./systems/originRivalRaceO6";
 import { isFuturePathObjectsV158, normalizePathObjectsV158 } from "./systems/pathObjectsV158";
 import { isFutureHeritageV152, normalizeHeritageV152 } from "./systems/heritageV152";
 import { hardcoreStatusV155, isFutureHardcoreV155, normalizeHardcoreV155, recordHardcoreDeathV155 } from "./systems/hardcoreV155";
@@ -2112,7 +2113,10 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (isRecord(value.inventory) && value.inventory.harvestV112 !== undefined) {
     const raw=value.inventory.harvestV112;
     if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:"future-version"};
-    if(!normalizeHarvestInventoryV112(raw))return {save:null,failure:"invalid-save"};
+    const harvest=normalizeHarvestInventoryV112(raw);
+    if(!harvest || (harvest.reinforcedTool &&
+        (!Array.isArray(value.inventory.fieldToolIds) || !value.inventory.fieldToolIds.includes("flaying-tool"))))
+      return {save:null,failure:"invalid-save"};
   }
   // Partial fields inside a campaign are repairable. An arbitrary JSON object
   // is not a campaign and must never replace the player's existing progress.
@@ -2130,6 +2134,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (isRecord(value.legacyFinaleR2) && Number(value.legacyFinaleR2.version) > 1) {
     return { save: null, failure: "future-version" };
   }
+  if (!firstLessonMatchesSaveO6(save)) return { save: null, failure: "invalid-save" };
   if (value.legacyFinaleR2 != null && (!save.legacyFinaleR2 || !legacyFinaleMatchesSaveR2(save))) {
     return { save: null, failure: "invalid-save" };
   }
@@ -2183,7 +2188,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       })) return { save: null, failure: "invalid-save" };
   if (m037.state && !conquestMatchesCampaignR2M037(save, m037.state)) return { save: null, failure: "invalid-save" };
   if (!continuationMatchesSaveO6(save) || !soloReturnMatchesSaveO6(save) || !firstShockMatchesSaveO6(save) ||
-      !cohortRaceMatchesSaveO6(save) || !townBellMatchesSaveO6(save) || !townBellLocationsMatchO6(save))
+      !cohortRaceMatchesSaveO6(save) || !townBellMatchesSaveO6(save) || !townBellLocationsMatchO6(save) || !rivalRaceMatchesSaveO6(save))
     return { save: null, failure: "invalid-save" };
   if (save.originV151?.trainingYardO6 && Object.keys(save.originV151.trainingYardO6.houses).some(houseId =>
       !save.residenceV149?.rights.includes(houseId))) return { save: null, failure: "invalid-save" };
@@ -2341,7 +2346,8 @@ function persistCampaign(
       if (!isWarpSurveySuccessorR2(previous.warpEpochsV165, requested.warpEpochsV165)) {
         return failed("save-conflict", previous);
       }
-      if (!legacyFinaleSuccessorR2(previous.legacyFinaleR2, requested.legacyFinaleR2)) {
+      if (!keepsFirstLessonO6(previous, requested) ||
+          !legacyFinaleSuccessorR2(previous.legacyFinaleR2, requested.legacyFinaleR2)) {
         return failed("save-conflict", previous);
       }
       const previousWarp = previous.warpEpochsV165?.commonRouteR2;
@@ -2444,7 +2450,7 @@ function persistCampaign(
       if (!keepsContinuationO6(previous.originV151?.continuationO6, requested.originV151?.continuationO6) ||
           !keepsSoloReturnO6(previous.originV151?.soloReturnO6, requested.originV151?.soloReturnO6) ||
           !keepsFirstShockO6(previous, requested) || !keepsCohortRaceO6(previous, requested) ||
-          !keepsTownBellO6(previous, requested)) {
+          !keepsTownBellO6(previous, requested) || !keepsRivalRaceO6(previous, requested)) {
         return failed("save-conflict", previous);
       }
       const previousHullProject = previous.clanHullProjectV171;

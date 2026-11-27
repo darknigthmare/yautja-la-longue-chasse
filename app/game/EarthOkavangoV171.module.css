@@ -34,3 +34,11 @@
 .water[data-passable="true"] { opacity: .42; background: repeating-linear-gradient(179deg, #557c73, #7b9480 6px, #527771 10px); }
 .terrain[data-water="rising"] .water[data-passable="true"] { opacity: .86; }
 .waterNotice { color: #ffdf9d; font-weight: 700; }
+
+.orbit { display: grid; grid-template-columns: minmax(160px, 280px) minmax(0, 1fr); gap: 1rem; align-items: start; }
+.orbitConsole { position: relative; isolation: isolate; overflow: hidden; min-height: 215px; border: 1px solid #8ba6a9; background: radial-gradient(ellipse at 50% 42%, #233e45 0%, #0d171d 75%); outline-offset: 3px; }
+.orbitConsole:focus-visible { outline: 2px solid #ffe5a4; }
+.orbitBeacon { position: absolute; top: 41%; left: 50%; width: 5rem; height: 5rem; transform: translate(-50%, -50%); border: 2px dashed #a0d5bd; border-radius: 50%; }
+.orbitShip { position: absolute; width: clamp(2.8rem, 8vw, 5rem); height: auto; transform: translate(-50%, -50%); filter: drop-shadow(0 0 .4rem #0009); pointer-events: none; }
+.orbitMeters { position: absolute; inset-inline: .6rem; top: .35rem; margin: 0; color: #faf0ce; }
+@media (max-width: 620px) { .orbit { grid-template-columns: 1fr; } }

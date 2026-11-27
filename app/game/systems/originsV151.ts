@@ -34,6 +34,7 @@ import { normalizeSoloReturnO6, type SoloReturnRecordO6 } from "./originSoloRetu
 import { normalizeFirstShockO6, type FirstShockRecordO6 } from "./originFirstShockO6";
 import { normalizeCohortRaceO6, type CohortRaceRecordO6 } from "./originCohortRaceO6";
 import { normalizeTownBellO6, type TownBellRecordO6 } from "./originTownBellO6";
+import { normalizeRivalRaceO6, type RivalRaceRecordO6 } from "./originRivalRaceO6";
 
 export const ORIGIN_IDS_V151 = ["O1", "O2", "O3", "O4", "O5", "O6"] as const;
 export type OriginIdV151 = (typeof ORIGIN_IDS_V151)[number];
@@ -156,6 +157,7 @@ export interface OriginStateV151 {
   firstShockO6?: FirstShockRecordO6;
   cohortRaceO6?: CohortRaceRecordO6;
   townBellO6?: TownBellRecordO6;
+  rivalRaceO6?: RivalRaceRecordO6;
 }
 /** V170 : Ox-M29 « Enregistrer la visite de sélection séparément de sa réussite » ; écrit une fois. */
 export interface OriginEndingStateV151 {
@@ -166,7 +168,7 @@ export interface OriginEndingStateV151 {
   originEndingId: string | null;
   /** Ox.endingChoiceConfirmed : vrai seulement après confirmation explicite. */
   endingChoiceConfirmed: boolean;
-  /** Ox.endingRealized : vrai seulement après la clôture Ox-M30 jouée (non jouée dans ce jeu). */
+  /** Ox.endingRealized : vrai seulement après la clôture Ox-M30 jouée. */
   endingRealized: boolean;
 }
 const isRecord = (v: unknown): v is Record<string, unknown> => typeof v === "object" && v !== null && !Array.isArray(v);
@@ -178,6 +180,7 @@ export const isFutureOriginV151 = (raw: unknown) => isRecord(raw) && ((typeof ra
   || (isRecord(raw.soloReturnO6) && typeof raw.soloReturnO6.version === "number" && raw.soloReturnO6.version > 1)
   || (isRecord(raw.firstShockO6) && typeof raw.firstShockO6.version === "number" && raw.firstShockO6.version > 2)
   || (isRecord(raw.cohortRaceO6) && typeof raw.cohortRaceO6.version === "number" && raw.cohortRaceO6.version > 1)
+  || (isRecord(raw.rivalRaceO6) && typeof raw.rivalRaceO6.version === "number" && raw.rivalRaceO6.version > 1)
   || (isRecord(raw.townBellO6) && typeof raw.townBellO6.version === "number" && raw.townBellO6.version > 1));
 /** V170 : identifiant de fin valide pour la voie (Ox-E1..Ox-E3, « Fins des six voies »). */
 export const isOriginEndingIdV151 = (originId: OriginIdV151, id: unknown): id is string =>
@@ -259,6 +262,11 @@ export function normalizeOriginV151(raw: unknown): OriginStateV151 | null {
     const townBell = normalizeTownBellO6(raw.townBellO6);
     if (state.originId !== "O6" || state.source !== "creation" || !state.cohortRaceO6?.resolved || !townBell) return null;
     state.townBellO6 = townBell;
+  }
+  if (Object.hasOwn(raw, "rivalRaceO6")) {
+    const rival = normalizeRivalRaceO6(raw.rivalRaceO6);
+    if (state.originId !== "O6" || state.source !== "creation" || !state.townBellO6?.resolved || !rival) return null;
+    state.rivalRaceO6 = rival;
   }
   if (Array.isArray(raw.consumed)) state.consumed = [...new Set(raw.consumed.filter((v): v is string => typeof v === "string"))].slice(-200);
   return state;

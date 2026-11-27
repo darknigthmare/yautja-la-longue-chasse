@@ -11,7 +11,9 @@ export const PRACTICE_POSTS_O6 = {
   'steady-novice': { ...yardPosts.support, label: 'Tenir l’appui à l’arrivée du novice',
     report: 'Le novice traverse à ton rythme, pose le bâton un instant sur l’appui et reprend son équilibre.' },
   'return-staff': { ...yardPosts.rack, label: 'Raccompagner le novice pour ranger le bâton',
-    report: 'Le novice rend le bâton au râtelier. « Je veux reprendre le même appui la prochaine fois. »' },
+    report: 'Le novice rend le bâton au râtelier. Il rejoint le seuil pour te dire ce qu’il veut reprendre.' },
+  'hear-lesson-outcome': { ...yardPosts.threshold, label: 'Écouter le bilan du novice au seuil',
+    report: '« La prochaine fois, je veux reprendre ce même appui. » La première leçon est consignée dans la voie.' },
 } as const;
 
 export type PracticeOrderO6 = keyof typeof PRACTICE_POSTS_O6;
@@ -27,6 +29,12 @@ export function normalizePracticeO6(value: unknown): PracticeOrderO6[] | null {
   return [...value];
 }
 
+export const O6_FIRST_LESSON_EVENT = 'O6-M30:realized';
+
+export function firstLessonPlayedO6(orders: readonly PracticeOrderO6[] | undefined): boolean {
+  return orders?.at(-1) === 'hear-lesson-outcome';
+}
+
 const studentStart = { x: 424, y: 413 };
 const studentEnd = { x: 223, y: 407 };
 const studentAtRack = { x: 522, y: 415 };
@@ -39,7 +47,7 @@ export function practiceViewO6(orders: readonly PracticeOrderO6[], region: Homew
   const near = !!post && actor.grounded && Math.hypot(actor.x - post.x, actor.y - post.y) <= 39 &&
     (next !== 'steady-novice' || progress >= .83);
   let student: { x: number; y: number } | null = null;
-  if (next === 'listen-novice') student = { x: 433, y: 540 };
+  if (next === 'listen-novice' || next === 'hear-lesson-outcome') student = { x: 433, y: 540 };
   if (next === 'present-tools' || next === 'return-staff') student = studentAtRack;
   if (next === 'show-footing') student = studentStart;
   if (next === 'steady-novice') student = {

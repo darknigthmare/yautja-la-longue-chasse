@@ -831,6 +831,7 @@ interface GameState {
   fieldLoadV112?: ReturnType<typeof fieldLoadV112>;
   harvestDepotFreeV112: number;
   riteToolInitialConditionV112: number;
+  riteToolReinforcedV112?: boolean;
   huntRites: RitesOfHuntV77;
   riteMenuCorpseId: string | null;
   riteOperationDamageStart: number | null;
@@ -1130,7 +1131,7 @@ function currentHuntFieldWorkV112(state: GameState, player: PlayerState = state.
   const body = corpse && state.enemies.find(enemy => enemy.id === corpse.id && !enemy.alive && enemy.active);
   if (!corpse || !body) return null;
   const uses = state.huntRites.completedEventIds.filter(id => id.startsWith("flay:") || id.startsWith("harvest-")).length;
-  const multiplier = flayingToolWorkMultiplierV112(toolConditionAfterUsesV112(state.riteToolInitialConditionV112 ?? 100, uses));
+  const multiplier = flayingToolWorkMultiplierV112(toolConditionAfterUsesV112(state.riteToolInitialConditionV112 ?? 100, uses, state.riteToolReinforcedV112));
   const duration = riteOperationSecondsV77(operation.action, corpse.sourceEnemyId, multiplier);
   const baseDuration = riteOperationSecondsV77(operation.action, corpse.sourceEnemyId);
   if (baseDuration <= 0 || duration <= 0) return null;
@@ -1562,6 +1563,7 @@ function makeGameState(
   // V146: colours matching the biome lower visual detection a little (solo/coop only).
   const camouflageV146 = camouflageVisibilityV146(
     appearance, [mission.palette.ground, mission.palette.platform, mission.palette.haze], "solo");
+  const harvest = harvestInventoryForV112(inventory);
   const state: GameState = {
     insertion: createHuntInsertion(insertionPlan, huntRitesRunIdV77(mission.id, ecologyRunSeed), world),
     insertionRunId: insertionRunId ?? huntRitesRunIdV77(mission.id, ecologyRunSeed),
@@ -1572,8 +1574,9 @@ function makeGameState(
     ecosystem: createCorpseDiscoveryV112(huntRitesRunIdV77(mission.id, ecologyRunSeed)),
     flayingToolOwned: ownsFieldToolV111(inventory, "flaying-tool"),
     harvestArmorIdV112: loadout.armorId,
-    harvestDepotFreeV112: HARVEST_DEPOT_LIMIT_V112 - harvestInventoryForV112(inventory).specimens.length,
-    riteToolInitialConditionV112: harvestInventoryForV112(inventory).toolCondition,
+    harvestDepotFreeV112: HARVEST_DEPOT_LIMIT_V112 - harvest.specimens.length,
+    riteToolInitialConditionV112: harvest.toolCondition,
+    riteToolReinforcedV112: harvest.reinforcedTool,
     huntRites: createRitesOfHuntV77(huntRitesRunIdV77(mission.id, ecologyRunSeed), mission.id),
     riteMenuCorpseId: null,
     riteOperationDamageStart: null,
@@ -3273,7 +3276,8 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
     },
     fieldLoadV112: huntFieldLoadV112(state),
     toolConditionV112: toolConditionAfterUsesV112(state.riteToolInitialConditionV112 ?? 100,
-      state.huntRites.completedEventIds.filter(id => id.startsWith("flay:") || id.startsWith("harvest-")).length),
+      state.huntRites.completedEventIds.filter(id => id.startsWith("flay:") || id.startsWith("harvest-")).length,
+      state.riteToolReinforcedV112),
     huntRiteMenu: huntRiteMenuSnapshotV77(state.huntRites,
       {x:state.player.x+state.player.width/2,y:state.player.y+state.player.height},state.riteMenuCorpseId,
       !state.paused && (state.phase==='tracking'||state.phase==='target') && !state.trophyExtracting && state.player.health>0, riteRuntimeOptionsV112(state)),
@@ -5537,7 +5541,9 @@ function renderGame(
       drawPilotPlatform(context, platform, pilotTexture);
       continue;
     }
-    const assignment = environmentGameplayPropForGeometryId(
+    const canopyRoot = mission.biome === "jungle" &&
+      platform.routeId === "canopy-transfer" && platform.material === "root";
+    const assignment = canopyRoot ? null : environmentGameplayPropForGeometryId(
       mission.id,
       platform.id,
       encounterRun,
@@ -5554,11 +5560,13 @@ function renderGame(
       );
     } else if (mission.biome === "jungle") {
       const junglePlatformIndex =
-        platform.material === "stone"
-          ? 1
-          : platform.material === "metal"
-            ? 3
-            : index % junglePlatformImages.length;
+        canopyRoot
+          ? 0
+          : platform.material === "stone"
+            ? 1
+            : platform.material === "metal"
+              ? 3
+              : index % junglePlatformImages.length;
       drawJunglePlatform(
         context,
         platform,
@@ -7097,9 +7105,9 @@ function riteRuntimeOptionsV112(state:GameState) {
       !pickup.ok?(projectedLoad.overloaded?limitingDimension+' La partie reste sur la proie.':pickup.reason):'';
     return {accepted,reason,projectedLoad};
   };
+  const toolCondition = toolConditionAfterUsesV112(state.riteToolInitialConditionV112 ?? 100, uses, state.riteToolReinforcedV112);
   return {flayingToolOwned:state.flayingToolOwned,maximumSpecimens:state.harvestDepotFreeV112,world:state.world,
-    grounded:state.player.grounded,climbing:state.player.climbing,
-    toolCondition:toolConditionAfterUsesV112(state.riteToolInitialConditionV112??100,uses),
+    grounded:state.player.grounded,climbing:state.player.climbing,toolCondition,
     worksiteBlocked:(corpse:{x:number;y:number})=>Boolean(huntStructuralBarrierV94(
       {x:actor.x,y:actor.y-Math.min(48,state.player.height*.4)},
       {x:corpse.x,y:corpse.y-12},state.world.platforms)),
@@ -7109,7 +7117,7 @@ function riteRuntimeOptionsV112(state:GameState) {
       return !!body&&huntFieldWorkReachableV112({player:state.player,
         corpse:{...corpse,width:body.width,height:body.height}});
     },
-    toolWorkMultiplier:flayingToolWorkMultiplierV112(toolConditionAfterUsesV112(state.riteToolInitialConditionV112??100,uses)),
+    toolWorkMultiplier:flayingToolWorkMultiplierV112(toolCondition),
     supports:carcassSupportsForWorldV112(state.world).filter(s=>carcassSupportAccessibleV112(actor,s,state.world)&&(!carried||carcassFitsSocketV112(carried,s,state.world))),
     fieldLoad:()=>fieldLoadV112(carriedFieldSpecimensV112(state.huntRites),state.harvestArmorIdV112??'hunter'),
     specimenPreview,acceptSpecimen:(item:import("./systems/harvestInventoryV112").FieldSpecimenV112)=>specimenPreview(item).accepted};
