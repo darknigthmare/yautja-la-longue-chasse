@@ -116,14 +116,14 @@ export function releaseCanopySwingV112(swing: CanopySwingV112) {
 export function stepCanopySwingV112(
   initial: CanopySwingV112, body: PlatformMotionBody, support: WorldClimbable,
   input: {moveAxis:number;climbAxis:number}, deltaSeconds: number,
-  platforms: readonly WorldPlatform[], floorY: number, staminaMultiplier = 1, reelMovementMultiplier = 1,
+  platforms: readonly WorldPlatform[], floorY: number, staminaMultiplier = 1, movementMultiplier = 1,
 ) {
   if (!Number.isFinite(deltaSeconds) || deltaSeconds < 0 || deltaSeconds > 0.25)
     throw new RangeError("Canopy delta must be between zero and 0.25 seconds");
   if (!isCanopySwingSnapshotV112(initial) || initial.supportId !== support.id ||
     !isFlexibleCanopySupportV112(support) || initial.length > maximumLengthForSupportV112(support) ||
     !Number.isFinite(input.moveAxis) || !Number.isFinite(input.climbAxis) ||
-    !Number.isFinite(staminaMultiplier) || !Number.isFinite(reelMovementMultiplier))
+    !Number.isFinite(staminaMultiplier) || !Number.isFinite(movementMultiplier))
     throw new RangeError("Canopy step requires a real flexible support and finite controls");
   if (!canopySupportReachableV112(body,support,platforms,initial)) {
     return {swing:{...initial},body:{...body},detached:true,grounded:false,staminaCost:0,tensionPerKg:0};
@@ -135,7 +135,9 @@ export function stepCanopySwingV112(
   const anchor = {x:support.x+support.width/2,y:support.y};
   const steps = Math.max(1,Math.ceil(deltaSeconds/CANOPY_PHYSICS_V112.substepSeconds));
   const dt = deltaSeconds/steps;
-  const reelDistance = CANOPY_PHYSICS_V112.lengthSpeed * limit(reelMovementMultiplier, 0, 1) * dt;
+  const controlMultiplier = limit(movementMultiplier, 0, 1);
+  const reelDistance = CANOPY_PHYSICS_V112.lengthSpeed * controlMultiplier * dt;
+  const pumpAcceleration = CANOPY_PHYSICS_V112.pumpAcceleration * controlMultiplier;
   const maximumLength = maximumLengthForSupportV112(support);
   const staminaPerSecond = support.staminaPerSecond + Math.abs(moveAxis) * 3;
   const staminaScale = limit(staminaMultiplier, 1, 3) * dt;
@@ -145,7 +147,7 @@ export function stepCanopySwingV112(
     swing.length = limit(previousLength + climbAxis * reelDistance, CANOPY_PHYSICS_V112.minimumLength, maximumLength);
     swing.angularVelocity *= (previousLength/swing.length)**2;
     const acceleration = -CANOPY_PHYSICS_V112.gravity/swing.length*Math.sin(swing.angle) +
-      moveAxis*CANOPY_PHYSICS_V112.pumpAcceleration -
+      moveAxis * pumpAcceleration -
       CANOPY_PHYSICS_V112.damping*swing.angularVelocity;
     swing.angularVelocity = limit(swing.angularVelocity + acceleration*dt,
       -CANOPY_PHYSICS_V112.maximumSpeed/swing.length,CANOPY_PHYSICS_V112.maximumSpeed/swing.length);

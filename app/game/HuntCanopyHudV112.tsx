@@ -40,6 +40,9 @@ export default function HuntCanopyHudV112({ navigation, bindings, gamepadButtons
       <span data-canopy-stamina-v112 aria-label={`Endurance ${Math.floor(navigation.stamina)} ; nouvelle prise à partir de ${navigation.minimumGripStamina} points`}>Endurance {Math.floor(navigation.stamina)} · min. {navigation.minimumGripStamina}</span>
     </div>
     <p className={styles.cue} data-canopy-cue-v112 role="status" aria-live="polite" aria-atomic="true">{cue}</p>
+    {heldGrip?.flexible && navigation.movementMultiplier < 1 && <p className={styles.cue} data-canopy-loaded-pace-v112>
+      Charge embarquée · pompage et réglage de la liane à {Math.round(navigation.movementMultiplier * 100)} %.
+    </p>}
     <details className={styles.details}>
       <summary>Commandes et repères de traversée</summary>
       {nextGrip && <p className={styles.landmark} data-canopy-next-v112 data-canopy-grip-state={nextGrip.state}>

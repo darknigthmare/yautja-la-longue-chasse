@@ -64,6 +64,7 @@ export interface CanopyNavigationV112 {
   minimumGripStamina: number;
   recoveryBlocked: boolean;
   transferBuffered: boolean;
+  movementMultiplier: number;
 }
 
 const SUPPORT_LABELS: Readonly<Record<ClimbableKind, string>> = {
@@ -87,6 +88,7 @@ export function canopyNavigationV112(options: {
   floorY: number;
   minimumGripStamina: number;
   staminaMultiplier?: number;
+  movementMultiplier?: number;
   actionLocked?: boolean;
   transferOriginId?: string;
 }): CanopyNavigationV112 {
@@ -95,6 +97,7 @@ export function canopyNavigationV112(options: {
     throw new RangeError("Canopy navigation requires the runtime grip threshold");
   const stamina = Number.isFinite(player.stamina) ? Math.max(0, player.stamina) : 0;
   const multiplier = clamp(Number.isFinite(options.staminaMultiplier) ? options.staminaMultiplier ?? 1 : 1, 1, 3);
+  const movementMultiplier = clamp(Number.isFinite(options.movementMultiplier) ? options.movementMultiplier ?? 1 : 1, 0, 1);
   const center = { x: player.x + player.width / 2, y: player.y + player.height / 2 };
   const hand = { x: center.x, y: player.y + player.height * 0.28 };
   const feet = { x: center.x, y: player.y + player.height };
@@ -183,5 +186,5 @@ export function canopyNavigationV112(options: {
     heldGrip ? player.canopySwing ? "swinging" : "climbing" :
     rest?.state === "resting" && visible ? "resting" : availableGrip ? "ready" : visible ? "approach" : "distant";
   return { visible, mode, heldGrip, nearbyGrip, availableGrip, nextGrip, rest, markers: visible ? markers : [],
-    stamina, minimumGripStamina, recoveryBlocked, transferBuffered: !!options.transferOriginId };
+    stamina, minimumGripStamina, recoveryBlocked, transferBuffered: !!options.transferOriginId, movementMultiplier };
 }
