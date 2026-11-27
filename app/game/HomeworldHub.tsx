@@ -1887,7 +1887,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     {!dialog && (rivalRaceAvailable || littleTrailAvailable) && <section className={styles.youthHudV64} aria-label={littleTrailAvailable ? "La petite piste" : "Le pari du rival"}>
       <strong>{littleTrailAvailable ? "La petite piste" : "Le pari du rival"}</strong>
       <p>Retrouve {littleTrailAvailable ? "Saar" : "Harek"} dans la rue des Forges Profondes{workshopPost ? ` · ${youthCityStreetBearingM003(actor, RIVAL_WORKSHOP_O6.point)}` : ""}.</p>
-    </section>
+    </section>}
     {!dialog && nextRouteM034 && (
       <HomeworldRouteJournalM034 route={nextRouteM034} disabled={blocked} onGuide={requestLandmarkV75} />
     )}
