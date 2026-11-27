@@ -11,7 +11,9 @@ export function templeInput(s){
  const goal=p.soloV70Objective(s),move=Math.abs(goal.targetX-a.x)>5?Math.sign(goal.targetX-a.x):0,platforms=p.soloV70Platforms(s),ground=a.vy===0&&a.y===p.soloV70Support(s);
  const block=platforms.find(r=>move>0?r.x-17>=a.x&&r.x-17-a.x<48&&a.y>r.y+.01:r.x+r.width+17<=a.x&&a.x-r.x-r.width-17<48&&a.y>r.y+.01);
  const support=platforms.find(r=>a.y===r.y&&a.x>r.x-17&&a.x<r.x+r.width+17),gap=support&&move&&((move>0&&support.x+support.width-a.x<28&&platforms.some(r=>r.x>support.x+support.width&&r.x-a.x<160))||(move<0&&a.x-support.x<28&&platforms.some(r=>r.x+r.width<support.x&&a.x-r.x-r.width<160)));
- const jump=!!move&&ground&&!s.previousJump&&!!(block||gap);
+ const threat=p.soloV70GalleryThreatM017(s);
+ const jump=!!move&&ground&&!s.previousJump&&!!(block||gap||
+   threat&&Math.sign(threat.x-a.x)===move&&Math.abs(threat.x-a.x)<65);
  const depths=s.phase==='return'&&s.depthsM017;
  const {descent}=p.SOLO_V70_DEPTHS_M017;
  const depthRelay=depths&&s.room===descent.room&&!depths.relay;
@@ -19,8 +21,9 @@ export function templeInput(s){
  const post=extension&&p.soloV70DepthPostM017(s.room);
  const depthPost=post&&!extension.observations[post.id];
  const depthHunt=depths&&s.room===p.soloV70HuntTargetM017(s).room&&!depths.huntThreshold;
+ const gallery=post?.id==='eggs-observed'&&extension.gallery&&!extension.gallery.screened;
  const command=(depthRelay||depthPost&&post.plates||['oath','separation'].includes(s.phase)&&s.room===goal.room&&!move)&&s.companionMode==='follow'&&!s.previousCommand;
- const held=depthRelay||depthPost||depthHunt||['oath','signs','arsenal','counterweight','humans','configuration','separation','quarantine','recognition'].includes(s.phase)&&s.room===goal.room;
+ const held=depthRelay||depthPost||depthHunt||gallery||['oath','signs','arsenal','counterweight','humans','configuration','separation','quarantine','recognition'].includes(s.phase)&&s.room===goal.room;
  return {move,jump,command,interact:!move&&!jump&&(held||!s.previousInteract)};
 }
 export function templeMechanismInput(s) {
@@ -37,9 +40,10 @@ export function templeMechanismInput(s) {
 export function playTemple({initial=thresholdsTemple.createSoloV70State(),stop='complete',input=templeInput,restoreEvery=0,onStep=()=>{}}={}){let state=structuredClone(initial);const receipts=[],snapshots={},transitions=[];for(let i=0;i<100000&&state.phase!==stop;i++){if(restoreEvery&&i%restoreEvery===0){state=thresholdsTemple.normalizeSoloV70State(JSON.parse(JSON.stringify(state)));assert(state);}const before=state,out=thresholdsTemple.stepSoloV70(state,input(state),templeEnvironment);state=out.state;assert(thresholdsTemple.normalizeSoloV70State(state),'invalid '+JSON.stringify(state));if(out.receipts.length||before.room!==state.room)transitions.push({before:structuredClone(before),after:structuredClone(state),receipts:out.receipts});onStep(out,before);receipts.push(...out.receipts);snapshots[state.phase]??=structuredClone(state);}assert.equal(state.phase,stop,JSON.stringify(state));return {state,receipts,snapshots,transitions};}
 let cachedOrigin;
 export function templeCampaignRoute({origin=cachedOrigin??=thresholdsCampaignRoute().save,archiveRoomCount,...options}={}){let save=thresholdsTemple.startSoloV70Campaign(origin,stamp);assert(save);
- // Recreate the initial format of a V70 slot opened on #205. All its observations are played.
- if (archiveRoomCount === 11) {
+ // Recreate V70 slots opened before the Gallery encounter.
+ if (archiveRoomCount === 11 || archiveRoomCount === 15) {
    save.soloV70.checkpoint=thresholdsTemple.createSoloV70State(archiveRoomCount);
+   if (archiveRoomCount === 15) delete save.soloV70.checkpoint.depthsM017.extension.gallery;
    assert(thresholdsTemple.soloV70MatchesSave(save));
  }
  const commits=[];let lastWrite=0;const run=playTemple({initial:save.soloV70.checkpoint,...options,onStep(out,before){if(!out.receipts.length&&!thresholdsTemple.soloV70NeedsImmediateCheckpoint(before,out.state)&&out.state.tick-lastWrite<120)return;const previous=save;save=out.receipts.length?thresholdsTemple.withSoloV70Progress(save,out.receipts,out.state,stamp):thresholdsTemple.withSoloV70Checkpoint(save,out.state,stamp);assert(save,'save refused '+JSON.stringify(out.state));assert(thresholdsTemple.soloV70MatchesSave(save));lastWrite=out.state.tick;if(out.receipts.length)commits.push({before:previous,after:save,state:out.state,receipts:out.receipts});}});return {...run,save,commits,origin};}

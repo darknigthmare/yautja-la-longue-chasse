@@ -11,6 +11,19 @@ export type SoloV70DepthProofM017 = 'eggs-observed' | 'resin-anchor' | 'containm
 export interface SoloV70DepthExtensionM017 {
   observations: Partial<Record<SoloV70DepthProofM017, SoloV70TrioObservation>>;
   purgeStartedAt: number | null;
+  /** Les relevés à quinze salles déjà commencés n’ont pas cette rencontre. */
+  gallery?: { openedAt: number | null; screened: SoloV70TrioObservation | null };
+}
+
+export const SOLO_V70_GALLERY_M017 = { room: 10, x: 740, y: 430, holdTicks: 40, hatchDelay: 24 } as const;
+
+export function soloV70GalleryThreatM017(
+  state: Pick<SoloV70State, 'room' | 'tick' | 'depthsM017'>,
+): { x: number; y: number } | null {
+  const encounter = state.depthsM017?.extension?.gallery;
+  if (state.room !== SOLO_V70_GALLERY_M017.room || encounter?.openedAt == null || encounter.screened) return null;
+  const travel = Math.min(1, (state.tick - encounter.openedAt) / 30);
+  return { x: 858 - 72 * travel, y: 430 - 32 * Math.sin(travel * Math.PI) };
 }
 
 interface DepthPostM017 {

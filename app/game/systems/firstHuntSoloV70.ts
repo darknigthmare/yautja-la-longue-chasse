@@ -1,5 +1,6 @@
 import { SOLO_V70_FULL_ROOMS_M017, SOLO_V70_DEPTH_POSTS_M017, SOLO_V70_PURGE_M017,
-  SOLO_V70_FINAL_THRESHOLD_M017, soloV70DepthPostM017, soloV70PurgeRemainingM017, soloV70DepthAppuisM017,
+  SOLO_V70_FINAL_THRESHOLD_M017, SOLO_V70_GALLERY_M017, soloV70GalleryThreatM017,
+  soloV70DepthPostM017, soloV70PurgeRemainingM017, soloV70DepthAppuisM017,
   type SoloV70DepthExtensionM017 } from './firstHuntSoloV70DepthsM017';
 
 /** Act I of the clan's original Temple. No AVP replica or completed Blooded rite. */
@@ -143,7 +144,7 @@ function readTrioObservation(value: unknown, center: number, configuration: 1 | 
 export const soloV70ProofCount=(s:Pick<SoloV70State,'phase'>)=>SOLO_V70_PHASES.indexOf(s.phase);
 export const soloV70Receipts=(s:SoloV70State):SoloV70Receipt[]=>SOLO_V70_PROOFS.slice(0,soloV70ProofCount(s)).map(id=>({id,sourceId:'solo.temple-opening.v70',tick:s.milestones[id]!}));
 export function createSoloV70State(rooms: 9 | 11 | 15 = 9):SoloV70State {return {version:1,phase:'briefing',tick:0,phaseStartedAt:0,room:0,roomEnteredAt:0,walked:0,configuration:1,visited:Array.from({ length: rooms }, (_, index) => index === 0),player:{x:125,y:430,vx:0,vy:0,facing:1},companions:[{x:80},{x:65}],companionMode:'follow',signals:0,signs:0,scan:0,liftTicks:0,valveTimer:0,drone:{x:925,hp:5,mode:'watch',age:0,hits:0},health:6,hurtTimer:0,attackTimer:0,attackCooldown:0,acid:{x:925,ttl:0},failedAt:null,attempts:0,doorCrossings:0,lastDoor:null,inputArmed:false,previousJump:false,previousInteract:false,previousCommand:false,milestones:{},riteAdmission:{version:1,sealedEnergy:null,threshold:null},reconnectionVariant:2,...(rooms > 9 ? { depthsM017: { relay: null, huntThreshold: null,
-  ...(rooms === 15 ? { extension: { observations: {}, purgeStartedAt: null } } : {}) } } : {})};}
+  ...(rooms === 15 ? { extension: { observations: {}, purgeStartedAt: null, gallery: { openedAt: null, screened: null } } } : {}) } } : {})};}
 export function soloV70Platforms(s: SoloV70State): SoloV70Platform[] {
   const fixed: SoloV70Platform[] = soloV70Room(s.room).platforms.map(([x, y, width]) => ({
     x, y, width, ...(s.room >= SOLO_V70_DEPTHS_M017.descent.room ? { oneWay: true } : {}),
@@ -179,13 +180,19 @@ export function soloV70CanTravel(s: SoloV70State, to: number) {
     if (to === descent.room && to > s.room) return Boolean(s.riteAdmission?.threshold);
     if (to === hunt.room) return soloV70DepthDoorOpeningM017(s) === 0;
     const post = soloV70DepthPostM017(s.room);
-    if (post && to > s.room) return Boolean(s.depthsM017.extension?.observations[post.id]);
+    if (post && to > s.room) {
+      const extension = s.depthsM017.extension;
+      return Boolean(extension?.observations[post.id]) &&
+        (post.id !== 'eggs-observed' || !extension?.gallery || !!extension.gallery.screened);
+    }
   }
   if (to < s.room) return true;
   return to < descent.room && soloV70ProofCount(s) >= [0, 2, 3, 4, 5, 6, 7, 8, 10][to];
 }
 export function soloV70NeedsImmediateCheckpoint(a:SoloV70State,b:SoloV70State){return a.phase!==b.phase||a.room!==b.room||a.signs!==b.signs||a.companionMode!==b.companionMode||a.signals!==b.signals||a.liftTicks===0&&b.liftTicks>0||b.valveTimer>a.valveTimer||a.drone.hp!==b.drone.hp||a.health!==b.health||a.failedAt!==b.failedAt||a.attempts!==b.attempts||a.riteAdmission?.sealedEnergy?.tick!==b.riteAdmission?.sealedEnergy?.tick||a.belvedereLever?.tick!==b.belvedereLever?.tick||a.nefRelayM017?.tick!==b.nefRelayM017?.tick||
   a.depthsM017?.extension?.purgeStartedAt!==b.depthsM017?.extension?.purgeStartedAt||
+  a.depthsM017?.extension?.gallery?.openedAt!==b.depthsM017?.extension?.gallery?.openedAt||
+  a.depthsM017?.extension?.gallery?.screened?.tick!==b.depthsM017?.extension?.gallery?.screened?.tick||
   SOLO_V70_DEPTH_POSTS_M017.some(({id})=>a.depthsM017?.extension?.observations[id]?.tick!==b.depthsM017?.extension?.observations[id]?.tick)||
   a.depthsM017?.relay?.tick!==b.depthsM017?.relay?.tick||a.depthsM017?.huntThreshold?.tick!==b.depthsM017?.huntThreshold?.tick||(a.room===b.room&&soloV70NefDeploymentM017(a)!==null&&soloV70NefDeploymentM017(b)===null);}
 export function normalizeSoloV70State(v:unknown):SoloV70State|null{
@@ -240,7 +247,8 @@ export function normalizeSoloV70State(v:unknown):SoloV70State|null{
     let extension: SoloV70DepthExtensionM017 | undefined;
     if (fullRoute) {
       const proof = raw.extension;
-      if (!record(proof) || Object.keys(proof).length !== 2 || !record(proof.observations)) return null;
+      if (!record(proof) || Object.keys(proof).length !== (Object.hasOwn(proof, 'gallery') ? 3 : 2) ||
+          !record(proof.observations)) return null;
       const observations: SoloV70DepthExtensionM017['observations'] = {};
       let elapsedFrom = relay ? relay.tick + descent.openingTicks : v.tick;
       for (const post of SOLO_V70_DEPTH_POSTS_M017) {
@@ -263,7 +271,24 @@ export function normalizeSoloV70State(v:unknown):SoloV70State|null{
       if (purge && (purgeStartedAt === null || purge.tick < purgeStartedAt + 45 ||
           purge.tick >= purgeStartedAt + SOLO_V70_PURGE_M017.duration)) return null;
       if (huntThreshold && (!purge || huntThreshold.tick < purge.tick + final.holdTicks)) return null;
-      extension = { observations, purgeStartedAt };
+      let gallery: SoloV70DepthExtensionM017['gallery'];
+      if (Object.hasOwn(proof, 'gallery')) {
+        const rawGallery = proof.gallery, eggs = observations['eggs-observed'];
+        const galleryPost = SOLO_V70_GALLERY_M017;
+        if (!record(rawGallery) || Object.keys(rawGallery).length !== 2) return null;
+        let openedAt: number | null = null;
+        if (rawGallery.openedAt !== null) {
+          if (!eggs || !int(rawGallery.openedAt, eggs.tick + galleryPost.hatchDelay, v.tick)) return null;
+          openedAt = rawGallery.openedAt;
+        }
+        const screened = rawGallery.screened === null ? null : readTrioObservation(rawGallery.screened, galleryPost.x, 3, v.tick);
+        const resin = observations['resin-anchor'];
+        if (rawGallery.screened !== null && !screened || visited[galleryPost.room + 1] && !screened ||
+            screened && (openedAt === null || screened.tick - openedAt < galleryPost.holdTicks) ||
+            resin && (!screened || resin.tick < screened.tick + SOLO_V70_DEPTH_POSTS_M017[1].holdTicks)) return null;
+        gallery = { openedAt, screened };
+      }
+      extension = { observations, purgeStartedAt, ...(gallery ? { gallery } : {}) };
     }
     const post = extension && soloV70DepthPostM017(v.room);
     const plates = post && !extension?.observations[post.id] && post.plates;
@@ -271,10 +296,12 @@ export function normalizeSoloV70State(v:unknown):SoloV70State|null{
       const purgeComplete = extension?.observations['vent-purge'];
       const valveAt = extension?.purgeStartedAt;
       const purgeOpen = valveAt != null && v.tick - valveAt < SOLO_V70_PURGE_M017.duration;
+      const gallery = extension?.gallery;
+      const screening = post.id === 'eggs-observed' && gallery?.openedAt != null && !gallery.screened;
       const target = post.id === 'vent-purge'
         ? purgeComplete ? { ...final, y: SOLO_V70_GROUND } : purgeOpen ? post : SOLO_V70_PURGE_M017
-        : post;
-      const hold = post.id === 'vent-purge' || !extension?.observations[post.id];
+        : screening ? SOLO_V70_GALLERY_M017 : post;
+      const hold = post.id === 'vent-purge' || screening || !extension?.observations[post.id];
       const party = (v.companions as { x: number }[]).map(companion => companion.x);
       if (!hold || huntThreshold || (v.scan as number) >= target.holdTicks || Math.abs((a.x as number) - target.x) >= 38 ||
           a.vx !== 0 || a.y !== target.y || (plates
@@ -321,7 +348,8 @@ export function normalizeSoloV70State(v:unknown):SoloV70State|null{
 export function stepSoloV70(state:SoloV70State,input:SoloV70Input,env:SoloV70Environment):{state:SoloV70State;receipts:SoloV70Receipt[]}{
  const s:SoloV70State={...state,...(state.depthsM017 ? { depthsM017: { ...state.depthsM017,
   ...(state.depthsM017.extension ? { extension: { ...state.depthsM017.extension,
-    observations: { ...state.depthsM017.extension.observations } } } : {}) } } : {}),...(state.riteAdmission ? { riteAdmission: { ...state.riteAdmission } } : {}),player:{...state.player},companions:state.companions.map(c=>({...c})) as SoloV70State['companions'],drone:{...state.drone},acid:{...state.acid},visited:[...state.visited],milestones:{...state.milestones}},receipts:SoloV70Receipt[]=[];
+    observations: { ...state.depthsM017.extension.observations },
+    ...(state.depthsM017.extension.gallery ? { gallery: { ...state.depthsM017.extension.gallery } } : {}) } } : {}) } } : {}),...(state.riteAdmission ? { riteAdmission: { ...state.riteAdmission } } : {}),player:{...state.player},companions:state.companions.map(c=>({...c})) as SoloV70State['companions'],drone:{...state.drone},acid:{...state.acid},visited:[...state.visited],milestones:{...state.milestones}},receipts:SoloV70Receipt[]=[];
  if(!env.assetsReady||!env.pageVisible||env.paused||s.phase==='complete'){s.inputArmed=false;s.previousJump=s.previousInteract=s.previousCommand=false;return {state:s,receipts};}
  if(!s.inputArmed){if(!input.move&&!input.jump&&!input.interact&&!input.command)s.inputArmed=true;return {state:s,receipts};}
  const jump=!!input.jump&&!s.previousJump,interact=!!input.interact&&!s.previousInteract,command=!!input.command&&!s.previousCommand;s.previousJump=!!input.jump;s.previousInteract=!!input.interact;s.previousCommand=!!input.command;s.tick++;
@@ -445,6 +473,25 @@ export function stepSoloV70(state:SoloV70State,input:SoloV70Input,env:SoloV70Env
         s.scan = 0;
       }
     }
+  } else if (currentPost?.id === 'eggs-observed' && extension?.gallery && !extension.gallery.screened) {
+    const { x, y, holdTicks, hatchDelay } = SOLO_V70_GALLERY_M017;
+    const encounter = extension.gallery, observed = extension.observations['eggs-observed'];
+    if (encounter.openedAt === null) {
+      if (observed && s.tick - observed.tick >= hatchDelay) encounter.openedAt = s.tick;
+    } else if (scan(near(x, y) && a.vx === 0 && a.vy === 0 && soloV70TrioPresent(s) && !!input.interact, holdTicks)) {
+      encounter.screened = soloV70TrioObservation(s, 3);
+      s.scan = 0;
+    }
+    const threat = soloV70GalleryThreatM017(s);
+    if (threat && encounter.openedAt !== null && s.tick - encounter.openedAt >= 8 &&
+        !s.hurtTimer && Math.abs(a.x - threat.x) < 25 && Math.abs(a.y - threat.y) < 34) {
+      s.health--;
+      s.hurtTimer = 75;
+      if (!s.health) {
+        s.failedAt = s.tick;
+        s.scan = 0;
+      }
+    }
   } else if (s.phase === 'return' && s.room === soloV70HuntTargetM017(s).room && s.depthsM017 && !s.depthsM017.huntThreshold) {
     const threshold = soloV70HuntTargetM017(s);
     if (scan((!extension || a.y === SOLO_V70_GROUND && a.vy === 0) && near(threshold.x) && a.vx === 0 && soloV70TrioPresent(s) && !!input.interact, threshold.holdTicks)) {
@@ -466,13 +513,21 @@ export function soloV70Objective(s:SoloV70State):{title:string;instruction:strin
  const valve: [string, string, number, number, number] | null = post?.id === 'vent-purge' && !soloV70PurgeRemainingM017(s)
    ? ['Ouvrir la conduite du sas', 'Maintiens Interaction à la commande amont. Le glyphe indique le temps avant fermeture.', post.room, SOLO_V70_PURGE_M017.x, SOLO_V70_PURGE_M017.y]
    : null;
+ const gallery = extension?.gallery;
+ const hatchGoal: [string, string, number, number, number] | null =
+   gallery && extension?.observations['eggs-observed'] && !gallery.screened
+     ? ['Galerie des Coques · confinement',
+       gallery.openedAt === null ? 'Une coque frémit. Anticipe le bond et replie-toi vers la commande ouest.'
+         : 'Saute hors de portée du facehugger, puis maintiens Interaction avec Saar et Vek près de la commande ouest.',
+       SOLO_V70_GALLERY_M017.room, SOLO_V70_GALLERY_M017.x, SOLO_V70_GALLERY_M017.y]
+     : null;
  const threshold = soloV70HuntTargetM017(s);
  const depthGoal: [string, string, number, number, number] | null = !s.depthsM017 || s.depthsM017.huntThreshold ? null
    : !s.depthsM017.relay
      ? ['Descente des Contrepoids', 'Donne le Signal pour placer Saar et Vek sur leurs plaques. Depuis la passerelle, maintiens Interaction au pupitre jusqu’au mouvement du volet.', descent.room, descent.x, descent.y]
      : gateOpening
        ? ['Volet de la Galerie', 'Le glyphe annonce la rotation du volet. Rassemble Saar et Vek près de la porte pendant son ouverture.', descent.room, 1040, 430]
-       : valve ?? (post ? [post.label, post.instruction, post.room, post.x, post.y]
+       : hatchGoal ?? valve ?? (post ? [post.label, post.instruction, post.room, post.x, post.y]
          : [extension ? 'Sas de Purge · seuil de chasse' : 'Galerie des Coques · seuil de chasse',
            'Rejoins le glyphe aval avec Saar et Vek, puis maintiens Interaction pour inscrire vos trois présences.', threshold.room, threshold.x, 430]);
  const goals:Record<SoloV70Phase,[string,string,number,number,number]>={

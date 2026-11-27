@@ -763,3 +763,11 @@ Les trois parcours M05 démarrent à l’emplacement de Saar après un reçu M04
 Deux parties jouent M060 au foyer après la leçon E1 et l’audience préparées par les réducteurs. L’une rejoint le croisement, l’autre revient au banc. Les deux résultats survivent au rechargement. [Départ du novice](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46071736802)
 
 Les anciennes suites de reprise V94 et de perception d’Achéron rejouent leurs assertions sur les données et règles du moteur. [Achéron](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46070279658)
+
+## Éclosion de la Galerie des Coques
+
+Dans les nouvelles configurations à quinze salles, le relevé déclenche l’éclosion d’un œuf de la Galerie des Coques. Le joueur peut éviter le bond du facehugger puis fermer la grille avec Saar et Vek. Le passage aval attend le confinement. Le carnet conserve l’éclosion et la grille lors d’une reprise.
+
+Le parcours Chromium entre dans la Galerie depuis une Vanne préparée par les réducteurs. Le joueur effectue le relevé, joue la fermeture de la grille et poursuit jusqu’au seuil. Les sprites de l’œuf ouvert et du facehugger proviennent du dépôt.
+
+[Parcours et sauvegardes](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46075305867) · [Inventaire et build](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46075326922)
