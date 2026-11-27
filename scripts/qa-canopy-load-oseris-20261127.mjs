@@ -27,7 +27,10 @@ const source=await readFile(path.join(root,'app/game/HuntCanvas.tsx'),'utf8');
 const marker='    const fixedStep = 1 / 60;';
 assert.equal(source.split(marker).length,2,'One native lifecycle hook boundary');
 const observer='    window.__onSkinningCanopyMountV112?.({get game(){return game;},input,get alive(){return alive;},resumed:resumeSnapshot!=null,mission,encounterRun,native:{makeEnemy,damageEnemy,canopySupportReachableV112,solvePlayerRigFrame,huntFieldLoadV112}});\n';
-const instrumentedSource=source.replace(marker,observer+marker);
+const rootDrawMarker='      drawJunglePlatform(\n        context,\n        platform,\n        junglePlatformImages[junglePlatformIndex],\n        junglePlatformSurfaceRatios[junglePlatformIndex],\n      );';
+assert.equal(source.split(rootDrawMarker).length,2,'One native jungle platform paint boundary');
+const observeRootDraw='\n      if (canopyRoot) window.__onCanopyRootDrawV112?.(platform.id,junglePlatformImages[junglePlatformIndex]);';
+const instrumentedSource=source.replace(marker,observer+marker).replace(rootDrawMarker,rootDrawMarker+observeRootDraw);
 const bootstrap=await build({stdin:{contents:'export {defaultSave,SAVE_STORAGE_KEY} from "./app/game/save";export {GALAXY_NAVIGATION} from "./app/game/galaxyNavigation";',resolveDir:root,loader:'ts'},bundle:true,write:false,format:'cjs',platform:'node',logLevel:'silent'});
 const mod={exports:{}};
 runInNewContext(bootstrap.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url),structuredClone,TextEncoder});
@@ -54,9 +57,9 @@ for(const file of Object.keys(bundle.metafile.inputs).filter(name=>name.startsWi
 const report={
   schemaVersion:1,startedAt:new Date().toISOString(),sourceCommit:revision,workingTreeDirty:dirty.length>0,workingTreeOverlay:dirty,
   classification:'IN_PROGRESS',browserExecuted:false,passed:false,checks:[],captures:[],errors:[],cases:{},admissionArrivals:[],
-  sourceHashes,hookSha256:hash(observer),bundleSha256:hash(js.contents),cssBundleSha256:hash(css.contents),
+  sourceHashes,hookSha256:hash(observer),renderObserverSha256:hash(observeRootDraw),bundleSha256:hash(js.contents),cssBundleSha256:hash(css.contents),
   inputTimestampSemantics:'Input logs use the nearest decision observation, not the exact browser event-dispatch clock. Native simulation continues while screenshots, DOM inspection and protocol messages are processed.',
-  instrumentation:['One declared Canvas mount hook exposes read-only state plus a single initial dead Oseris prey','A passthrough Storage.prototype.setItem observer records the successful native platform call without changing bytes or acknowledgements','No production GameClient callback, ownership check, sidecar encoder, writer or claim is substituted'],
+  instrumentation:['One declared Canvas mount hook exposes read-only state plus a single initial dead Oseris prey','A read-only observer records the native canvas image selected for each collision root','A passthrough Storage.prototype.setItem observer records the successful native platform call without changing bytes or acknowledgements','No production GameClient callback, ownership check, sidecar encoder, writer or claim is substituted'],
   admission:{kind:'Declared initial campaign with field tool, 100 marks and condition 25',sha256:hash(admission),save:admission},
   scope:'Actual campaign navigation and GameClient admission, native harvest, charged canopy traversal, westward return through two real branches with sidecar persistence and recovery. The fixture creates one local Vineback Grazer corpse through the native damage function at the canonical spawn. All movement, harvest, stamina, collisions and checkpoints after setup use live inputs.',
   limits:['Automated desktop Chromium','The initial Vineback Grazer kill is fixture setup only','Proof applies to this Oseris-IV lower canopy route on desktop'],
@@ -474,6 +477,16 @@ async function canopy(){
     await capture('16-native-western-recovery');
     return {player:lower.player,reception:platform?.id??'floor',releaseFrom:entry.id,phase:lower.phase};
   });
+  await check('native canvas uses the exact root texture at the chosen collision platforms',async()=>{
+    const draws=await page.evaluate(()=>[...window.__skinningCanopyQaV112.rootDraws.entries()]);
+    const byId=new Map(draws);
+    for(const rest of rests){
+      const draw=byId.get(rest.id);
+      assert.ok(draw?.width>0&&draw?.height>0,rest.id);
+      assert.equal(new URL(draw.src).pathname,'/game/props/v4/root-platform.png');
+    }
+    return {draws:rests.map(rest=>[rest.id,byId.get(rest.id)])};
+  });
   data.final=await observation();data.finalSidecar=await disk();
   await context.close();context=null;
 }
@@ -484,7 +497,7 @@ try{
   await canopy();
   await check('all requested assets match this exact Git commit and include the authored root, trunk and vine',async()=>{
     const assets=[...requests.values()];
-    for (const suffix of ['/tree-trunk.png','/root-platform.png','/vine-ladder.webp']){
+    for (const suffix of ['/tree-trunk.png','/root-platform.png','/vine-ladder.webp','/ruin-platform.png']){
       assert.ok(assets.some(asset=>asset.url.endsWith(suffix)&&asset.status===200&&asset.matchesHead),suffix);
     }
     assert.ok(assets.every(asset=>asset.status===200&&asset.matchesHead));

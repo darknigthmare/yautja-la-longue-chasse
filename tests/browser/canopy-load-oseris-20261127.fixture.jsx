@@ -21,6 +21,7 @@ const audit={
   mounts:[],
   writes:[],
   setups:[],
+  rootDraws:new Map(),
 };
 const nativeSet=Storage.prototype.setItem;
 Storage.prototype.setItem=function(key,value){
@@ -125,6 +126,11 @@ window.__onSkinningCanopyMountV112=handle=>{
     playerInvulnerable:false,
     corpse:clone(game.huntRites.corpses.find(corpse=>corpse.id===prey.id)),
   });
+};
+window.__onCanopyRootDrawV112=(id,image)=>{
+  if(image?.complete&&image.naturalWidth>0&&image.naturalHeight>0&&!audit.rootDraws.has(id)){
+    audit.rootDraws.set(id,{src:image.src,width:image.naturalWidth,height:image.naturalHeight});
+  }
 };
 window.__skinningCanopyQaV112=audit;
 createRoot(document.getElementById('root')).render(<GameClient/>);
