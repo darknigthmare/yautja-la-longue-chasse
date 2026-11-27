@@ -12,6 +12,10 @@ Les fonctionnalités de campagne, du mausolée et de THE PIT ont des niveaux de
 complétude différents : un catalogue ou une fiche ne constitue pas une campagne
 jouable. Les validations automatisées ne remplacent pas une partie complète.
 
+La [bible dédiée à THE PIT](docs/the-pit/BIBLE_THE_PIT.md) rattache désormais le
+guide commun de combat et ses deux extensions aux systèmes existants, avec
+[leur traçabilité et les manquants](docs/the-pit/TRACEABILITE_GUIDES_20261127.md).
+
 La [PR de fiabilisation V94](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/4)
 et la [correction du catalogue de PNJ](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/3)
 sont fusionnées dans `main`. Une fusion ne confirme pas à elle seule la mise

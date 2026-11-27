@@ -478,6 +478,14 @@ La note parlait de « Glacier Moon » et « Swamp Moon » : elles deviennent des
 | **The Pit** | Le joueur y combat avec son personnage : petite Fosse de jeunesse (V53, déjà jouable) ; duels sanctionnés pour régler un différend (JUST-13) ; duels de rang ; défi du chef et défis des Élites dans les voies de clan Défi et Succession (L-08) | ouvert à Blooded : roster complet, arènes, tournois, et The Pit en ligne |
 | **Game Preserve** | Chasses d'entraînement du pack d'Unblooded ; contrats de trophées rares ; en fin de jeu, le joueur gère sa propre réserve sur le modèle de la planète-réserve des Super Predators (*Predators*, 2010), alimente ses arènes de Warlord et la défend contre les intrus | ouvert à Elite : grandes traques (V6), toutes les réserves, réglages libres |
 
+**Référence The PIT — 27 novembre 2026 :** la [bible de combat dédiée](../the-pit/BIBLE_THE_PIT.md)
+intègre le guide général et les deux extensions (personnalité/équipes/bonus, puis
+slots/déblocages/soutiens). Sa [matrice de traçabilité](../the-pit/TRACEABILITE_GUIDES_20261127.md)
+distingue les systèmes présents, les adaptations et les objectifs encore à produire.
+Les rangs, tournois et services en ligne proposés dans cette campagne gardent leur
+statut de cible tant que leur raccordement n'est pas vérifié ; les chroniques du
+roster et les distinctions de l'arène ne modifient pas automatiquement la campagne.
+
 ### Quatza-Rij, symbole de clan, ordre de production
 
 - **Design du Quatza-Rij :** silhouette déduite du masque cérémoniel de Steve Wang (forme du crâne, cornes, texture de peau), en grand quadrupède prédateur. Le masque des Anciens doit pouvoir être lu comme taillé dans sa tête.
