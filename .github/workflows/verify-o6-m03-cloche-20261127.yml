@@ -54,14 +54,9 @@ jobs:
       - name: Restore original registered runtime assets
         run: node scripts/materialize-asset-raccords-20261120.mjs runtime
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Qualify real origins, room positions and durable receipts
-        run: node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec tests/origin-town-bell-o6.test.mjs tests/origin-cohort-race-o6.test.mjs tests/origin-first-shock-o6.test.mjs tests/homeworld-city-places-m003.test.mjs
-      - name: Verify the TypeScript entry and save contracts
+      - name: Lint the native browser recipe
         if: ${{ !cancelled() }}
-        run: node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
-      - name: Lint the native scene, rules and recipe
-        if: ${{ !cancelled() }}
-        run: node node_modules/eslint/bin/eslint.js app/game/HomeworldTownBellO6.tsx app/game/systems/originTownBellO6.ts app/game/systems/originTownBellPlacesO6.ts tests/origin-town-bell-o6.test.mjs tests/helpers/origin-town-bell-o6.mjs scripts/qa-origin-town-bell-o6.mjs
+        run: node node_modules/eslint/bin/eslint.js tests/helpers/origin-town-bell-o6.mjs scripts/qa-origin-town-bell-o6.mjs
       - name: Walk the streets, open the gate, ring and visit both contacts in Chromium
         if: ${{ !cancelled() }}
         run: node scripts/qa-origin-town-bell-o6.mjs

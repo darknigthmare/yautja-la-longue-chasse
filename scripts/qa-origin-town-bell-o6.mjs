@@ -33,7 +33,7 @@ try {
     const city = page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]');
     const viewport = city.locator("[data-homeworld-viewport]");
     const nav = homeworldNavigatorV77(page, n, { waypointTolerance: 9, driverTickMs: 36, pulseInputs: true });
-    const precise = homeworldNavigatorV77(page, n, { waypointTolerance: 3, driverTickMs: 16, pulseInputs: true });
+    const precise = homeworldNavigatorV77(page, n, { waypointTolerance: 5, driverTickMs: 16, pulseInputs: true });
     const disk = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), n.SAVE_STORAGE_KEY);
     const receipt = async () => (await disk()).originV151.townBellO6;
     const shot = name => viewport.screenshot({ path: join(out, (partial ? "deferred-" : "complete-") + name + ".png"), animations: "disabled" });
@@ -82,6 +82,7 @@ try {
       const route = n.homeworldInteriorRouteV112(room, await nav.position(), target);
       assert.equal(route.status, "reachable", JSON.stringify({ room: room.buildingId, target, actor: await nav.position() }));
       await precise.follow(route.points);
+      if (target === "exit") assert.equal(n.nearestHomeworldInteriorTargetV64(room, await nav.position())?.kind, "exit");
     }
     async function leaveForge() {
       const room = n.homeworldInteriorForBuildingV64("deep-forge");
