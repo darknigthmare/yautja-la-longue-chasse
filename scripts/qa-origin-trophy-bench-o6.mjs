@@ -89,6 +89,7 @@ try {
   assert.equal(await bench.getAttribute("data-o6-trophy-bench"), trophyId);
   assert.equal(await bench.getAttribute("data-o6-trophy-turned"), "false");
   const img = bench.locator("img");
+  await bench.scrollIntoViewIfNeeded();
   await img.waitFor();
   assert(await img.evaluate(node => node.decode().then(() => node.naturalWidth > 0)));
   report.plate = await img.getAttribute("src");
