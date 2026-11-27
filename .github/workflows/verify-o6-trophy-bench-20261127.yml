@@ -1,0 +1,79 @@
+name: Verify the factual O6 trophy bench
+on:
+  push:
+    branches: [codex/verify-o6-trophy-bench-20261127]
+permissions:
+  contents: read
+jobs:
+  native:
+    name: Native factual trophy bench and provenance
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '24d6158c50c92aaf97f11b68b87f9e9548a752ef'
+          fetch-depth: 2
+          filter: blob:none
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /worker/
+            /scripts/
+            /tests/
+            /docs/
+            /desktop/
+            /build/
+            /production/quetes-vivantes-20261109/
+            /production/quetes-vivantes-suite-20261109/
+            /.openai/hosting.json
+            /public/**/manifest.json
+            /public/game/homeworld/
+            /public/game/assets/v15/trophies/trophy-vey.webp
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/sprites/v5/film-plates/
+            /public/game/backgrounds/swamp-depth-v8.png
+            /public/game/sprites/v8/ecology/naraka-delta/mire-shell-sheet.png
+      - name: Restore original declared assets without modifying their contents
+        run: |
+          python3 - <<'PY'
+          import json,pathlib,subprocess
+          root=pathlib.Path.cwd()
+          files={x['path'] for x in json.loads((root/'docs/qa/current-integration-20261103/runtime-inputs.json').read_text())['entries']}
+          files.update(json.loads((root/'tests/fixtures/clan-ship-browser-assets.json').read_text())['paths'])
+          files.update('public'+x['src'] for x in json.loads((root/'app/game/data/buriedCradleArt.json').read_text())['assets'].values())
+          files.update(['public/game/prologue/v47/village.png','public/game/prologue/v47/arena.png','public/game/ships/v14/avp-predator-mothership.webp','public/game/ships/v12/classic-predator-spaceship.webp','public/game/ships/v13/classic-predator-spaceship-top.webp','public/game/backgrounds/ship-hub-v4.webp','public/game/backgrounds/jungle-depth-v4.webp','public/game/youth/v48/unblooded-left.png','public/game/youth/v48/unblooded-right.png'])
+          for name in files:
+            path=pathlib.PurePosixPath(name);assert not path.is_absolute() and '..' not in path.parts
+          subprocess.run(['git','sparse-checkout','add','--stdin'],input='\n'.join('/'+p for p in sorted(files))+'\n',text=True,check=True)
+          assert all((root/p).is_file() for p in files)
+          PY
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Lint the modified bench and native route
+        run: npx eslint app/game/OriginTrophyBenchO6.tsx app/game/OriginTrophyTransitionPanelV157.tsx app/game/systems/originTrophyV157.ts tests/origins-trophy-v157.test.mjs scripts/qa-origin-trophy-bench-o6.mjs
+      - name: Replay the workshop origin and taxonomy contracts
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/origins-trophy-v157.test.mjs tests/trophy-usages-v147.test.mjs tests/trophy-workshop.test.mjs
+      - name: Typecheck the application
+        run: npm run typecheck
+      - name: Walk to the trophy workshop and operate the bench
+        run: node scripts/qa-origin-trophy-bench-o6.mjs
+      - name: Preserve original screenshots and receipts
+        if: ${{ !cancelled() && hashFiles('outputs/qa-origin-trophy-bench-o6/report.json') != '' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: origin-trophy-bench-o6
+          path: outputs/qa-origin-trophy-bench-o6/
+          if-no-files-found: error
