@@ -45,7 +45,7 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Validate exact source, old end archives and the new berth proof
         run: |
-          git diff --exit-code 5cb4575557301f206980e465ae30b39c75fe98f3 HEAD -- app tests
+          git diff --exit-code 3838bae2ab40e22ff8b58a99602f9a1fd8e294db HEAD -- app tests
           node --experimental-strip-types --test tests/legacy-finale-r2.test.mjs
       - name: Typecheck the actual entry and saved proof
         run: npm run typecheck
