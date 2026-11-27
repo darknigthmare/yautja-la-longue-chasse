@@ -106,6 +106,20 @@ Le lot part de `42cd446`, après #197 et #198. Le classeur suit les 68 fiches, l
 
 Le prolongement O6 ajoute une invitation à Yena liée à l’aide portée au filet durant l’enfance. La visite, le cordage et l’ouverture du râtelier préparent la maison d’enseignement. La première leçon volontaire reste à jouer pour réaliser O6-M30. [Recette O6](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46008135352)
 
+
+### Deuxième tranche sur #199
+
+Le lot part de `75bbc177`, avec la visite du mausolée et les chantiers transverses ouverts. Le journal des recettes indique les prérequis préparés pour chaque scène.
+
+- **R2-M003** · Saar attend au seuil de l’audience, mène le joueur au degré monumental et transmet le relais à l’escalier de la ville. La reprise ramène au dernier repère. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46010361667)
+- **R2-M057** · Une visite du Mur des Chasses au rang Ancient inscrit l’alcôve dans le registre. Les supports lisent l’état réel de chaque DLC et le joueur garde l’accès aux masques et au casier. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46010465918)
+- **R2-M024.8** · Les capteurs du Gardien lisent les vibrations sur un support partagé et les émissions énergétiques dégagées. Le HUD signale la perception. Les sons filtrés de la combinaison accompagnent l’entrée et la réaction. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46011008133)
+- **FIN_DE_VOIE** · Après ouverture du râtelier O6, le novice choisit son bâton, rejoint l’appui aux côtés du joueur et range l’outil. L’essai a son registre. La clôture de la fin O6 attend les scènes antérieures de la campagne. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46010416880)
+- **LEURRE_BOSS** · Quatre Apex suivent un émetteur audible pendant quatre secondes. Le Cœur-Mère apprend après la première diversion. Le scan explique aussi la réponse des chasseurs entraînés et du Gardien en vide. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46011193656)
+- **ACHERON_VIDE** · La chasse d’Acheron écarte les anciennes traces acoustiques et olfactives hors contact. Le Gardien réagit à la vibration et à l’énergie, avec retour de combinaison. 
+- **COOP_DE_CAMPAGNE** · Le règlement des expéditions contrôle l’attribution des gains confirmés par un hôte et empêche leur réutilisation. L’invitation et la simulation partagée restent à raccorder. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46010949709)
+
+
 ## Vue d'ensemble
 
 La campagne comprend 60 fiches communes et 8 chasses planétaires qui réalisent R2-M024. Le tableau associe les fiches à leur parcours. Le classeur du 27 novembre précise les correspondances, les preuves et les étapes encore ouvertes.
@@ -178,7 +192,7 @@ La chaîne de jeunesse va de la nurserie à l’accueil Unblooded sur le Homewor
 | 62 | R2-M054 | La décision du successeur | Elder | Parcours du successeur jouable | Oseris-IV, postes, danger et retour |
 | 63 | R2-M055 | L’épreuve de la longue mémoire | Elder | Épreuve de mémoire jouable | Archives, hangar, armurerie et transmission |
 | 64 | R2-M056 | La reconnaissance Ancient | Elder | Rite Ancient raccordé | Dette d’Oseris, trois relèves et audience locale ou intime |
-| 65 | R2-M057 | Le mausolée des chasses racontées | Ancient | Consultation au casier raccordée | Piédestaux et chronique de titre au casier |
+| 65 | R2-M057 | Le mausolée des chasses racontées | Ancient | Visite au Mur et casier jouables | Piédestaux, statuts des titres et trace de visite par alcôve |
 | 66 | R2-M058 | Entrer dans une chronique cinéma | Ancient | Première chronique originale jouable | Crâne du Ravin au socle, secours ou variante du sas fermé |
 | 67 | R2-M059 | La nouvelle cohorte revient | Ancient | Séquence jouée en recette · accès en attente | Support à deux pieds, écoute de quatre jeunes ou retour au seuil |
 | 68 | R2-M060 | La longue chasse demeure | Ancient, épilogue | Épilogue joué en recette · accès en attente | Objets, liens et geste final au foyer ou au vaisseau |
