@@ -1580,7 +1580,8 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   const canChoose = progress.evidenceIds.length === HOMEWORLD_EVIDENCE.length && !progress.witnessChoice;
   const canPrepareTriadInCity = useMemo(() => !save.soloV90 && canStartSoloV90(save), [save]);
   const triadCity = progress.triadCityM016;
-  const cityStations = canPrepareTriadInCity ? triadCityStationsM016(interiorId) : [];
+  const canRecruitAlternateTriad = save.soloV70?.status === "completed";
+  const cityStations = canPrepareTriadInCity ? triadCityStationsM016(interiorId, canRecruitAlternateTriad) : [];
   const triadCityPoint = interior?.points.find(point => point.pointId === cityStations[0]?.pointId);
   const triadCityConfirmed = !!triadCity && triadCityRemainingM016(triadCity).length === 0;
   const triadCityCheckpoint = (pointId: string) => {
@@ -1947,7 +1948,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
               onward={triadCityFollowupM016(triadCity, station)}
               onAdvance={step => submitTriadCity(station, step)} onGuide={requestLandmarkV75} />
           ))}
-          {canPrepareTriadInCity && selectedPoint.id === "training-service" && triadCityMayChooseAlternateM016(triadCity) &&
+          {canPrepareTriadInCity && canRecruitAlternateTriad && selectedPoint.id === "training-service" && triadCityMayChooseAlternateM016(triadCity) &&
             <HomeworldTriadRosterM016 roster={triadCity?.roster} disabled={suspended || paused || inactive} onChoose={chooseTriadCity} />}
           {youthWelcome && selectedNpc?.id === "terrace-instructor" && onSoloV90 && canStartSoloV90(save) && save.soloV90?.status !== "completed" && <button type="button" data-solo-v90-enter disabled={suspended || paused || inactive} onClick={() => {
             if (suspendedRef.current || pausedRef.current || saveRef.current.createdAt !== save.createdAt || pointInCurrentSpace(actorRef.current, interiorRef.current, levelRefV77.current)?.id !== "training-service") return;

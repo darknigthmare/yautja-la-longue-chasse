@@ -76,8 +76,8 @@ const isRecord = (value: unknown): value is Record<string, unknown> =>
 export const triadCityStationM016 = (roomId: string | null | undefined) =>
   TRIAD_CITY_STATIONS_M016.find(station => station.roomId === roomId);
 
-export const triadCityStationsM016 = (roomId: string | null | undefined) =>
-  allStations.filter(station => station.roomId === roomId);
+export const triadCityStationsM016 = (roomId: string | null | undefined, includeAlternates = true) =>
+  (includeAlternates ? allStations : TRIAD_CITY_STATIONS_M016).filter(station => station.roomId === roomId);
 
 export const triadCityStepM016 = (ledger: TriadCityM016 | undefined, station: TriadCityStationM016) =>
   station.partner === "saar" || station.partner === "vek"

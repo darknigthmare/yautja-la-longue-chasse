@@ -23,20 +23,23 @@ function prerequisites(v: Record<string, unknown>, completed = false): v is Reco
   const chronicle = v.prologue.chronicle;
   return templeRankKeepsEarlierTrialV174(chronicle, completed);
 }
-const selectedRoster = (homeworld: unknown) =>
-  record(homeworld) ? normalizeTriadCityM016(homeworld.triadCityM016)?.roster : undefined;
+const selectedRoster = (homeworld: unknown, owner: unknown, temple: unknown) => {
+  const ledger = record(homeworld) ? normalizeTriadCityM016(homeworld.triadCityM016) : null;
+  return ledger && ledger.ownerCreatedAt === owner && normalizeSoloV70Campaign(temple)?.status === 'completed'
+    ? ledger.roster : undefined;
+};
 const journey = (v: Record<string, unknown>) => record(v.homeworldRegionV68) && v.homeworldRegionV68.status !== 'at-city' || record(v.homeworldPassageV67) && v.homeworldPassageV67.status !== 'at-city' || record(v.gameReserveV66) && v.gameReserveV66.status === 'active';
 export function soloV90MatchesSave(v: unknown): boolean {
   if (!record(v)) return false;
   if (v.soloV90 === undefined || v.soloV90 === null) return true;
   const state = normalizeSoloV90Campaign(v.soloV90);
   return !!state && prerequisites(v, state.status === 'completed') && state.ownerCreatedAt === v.createdAt &&
-    state.checkpoint.roster === selectedRoster(v.homeworld) && !(state.status === 'active' && journey(v));
+    state.checkpoint.roster === selectedRoster(v.homeworld, v.createdAt, v.soloV70) && !(state.status === 'active' && journey(v));
 }
 export const canStartSoloV90 = (v: unknown) => record(v) && prerequisites(v) && soloV90MatchesSave(v) && !journey(v);
 export function startSoloV90Campaign(save: SoloV90Save, now = new Date().toISOString()): SoloV90Save | null {
   if (!canStartSoloV90(save) || !iso(now)) return null;
-  return save.soloV90 ? save : { ...save, soloV90: { version: 1, ownerCreatedAt: save.createdAt, sourceSha256: SOLO_V90_SOURCE_SHA, status: 'active', checkpoint: createSoloV90State(selectedRoster(save.homeworld)), receipts: [], startedAt: now, completedAt: null } };
+  return save.soloV90 ? save : { ...save, soloV90: { version: 1, ownerCreatedAt: save.createdAt, sourceSha256: SOLO_V90_SOURCE_SHA, status: 'active', checkpoint: createSoloV90State(selectedRoster(save.homeworld, save.createdAt, save.soloV70)), receipts: [], startedAt: now, completedAt: null } };
 }
 /** Exact replay of actual physical commands, not inferred from endpoints. A
  * forged kill, teleport, heal, role contribution or phase cannot be persisted. */
