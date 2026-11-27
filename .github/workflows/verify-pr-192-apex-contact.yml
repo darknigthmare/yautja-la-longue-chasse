@@ -1,0 +1,180 @@
+name: Reproduce the PR 192 Sandmaw contact in Chromium
+on:
+  push:
+    branches: [codex/resolve-192-apex-steering-20261127]
+    paths: [.github/workflows/verify-pr-192-apex-contact.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  contact:
+    name: Resume the unchanged 105.583 s combat checkpoint
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: e08a695147e22e225e14cf1b089f022a2b518378
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /scripts/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues.json
+            /public/game/dialogues/v85/bible-dialogues-index.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          run-id: 44957203591
+          artifact-ids: 14729095208
+          github-token: ${{ github.token }}
+          path: archived-desert
+      - name: Extract the unmodified played sidecar from the historical browser archive
+        run: |
+          test "$(git rev-parse HEAD)" = 'e08a695147e22e225e14cf1b089f022a2b518378'
+          node --input-type=module <<'CONTACT_ADMISSION'
+          import assert from "node:assert/strict";
+          import { createHash } from "node:crypto";
+          import { readFile, readdir, mkdir, writeFile } from "node:fs/promises";
+          import path from "node:path";
+          
+          const sha = (value) => createHash("sha256").update(value).digest("hex");
+          const files = await readdir("archived-desert", { recursive: true });
+          const reportFile = files.find((name) => path.basename(name) === "report.json");
+          assert.ok(reportFile);
+          const rawReport = await readFile(path.join("archived-desert", reportFile));
+          const reportSha256 = sha(rawReport);
+          assert.equal(reportSha256, "18b0c32cf9f26e4c8a8624de0245e6dab0d9966721b09ed13aca0dd63506b560");
+          const report = JSON.parse(rawReport);
+          const rawStorage = await readFile(path.join("archived-desert", path.dirname(reportFile), "browser-storage-state.json"));
+          const storage = JSON.parse(rawStorage);
+          const search = (value) => {
+            if (typeof value === "string") {
+              const text = value.trim();
+              if (text.startsWith("{") || text.startsWith("[")) {
+                try { return search(JSON.parse(text)); } catch (error) {
+                  if (!(error instanceof SyntaxError)) throw error;
+                }
+              }
+            }
+            if (!value || typeof value !== "object") return null;
+            const sidecar = value.attachments?.activeHunt;
+            const cp = sidecar?.snapshot?.checkpoint;
+            if (sidecar?.missionId === "desert-sandmaw" && cp?.phase === "target" &&
+              Math.abs(cp.elapsed - 105.58333333332862) < 1e-6 && cp.player.x > 6240 && cp.player.x < 6243) {
+              return { campaign: value.campaign, sidecar };
+            }
+            for (const child of Object.values(value)) {
+              const match = search(child);
+              if (match) return match;
+            }
+            return null;
+          };
+          const fixture = search(storage.origins);
+          assert.ok(fixture?.campaign, "find the unchanged played Sandmaw checkpoint and its campaign");
+          assert.equal(fixture.campaign.createdAt, report.finalSave.createdAt);
+          assert.equal(fixture.campaign.createdAt, fixture.sidecar.ownerSaveCreatedAt);
+          const cp = fixture.sidecar.snapshot.checkpoint;
+          assert.equal(cp.player.facing, 1);
+          assert.ok(cp.boss.x + cp.boss.width / 2 < cp.player.x + cp.player.width / 2 - 8);
+          assert.ok(cp.huntRites.specimensV112.some((item) => item.id === "desert-sandmaw:0:desert-sandmaw-foragers-4:bone"));
+          await mkdir("outputs/admission", { recursive: true });
+          await writeFile("outputs/admission/campaign.json", JSON.stringify(fixture.campaign));
+          await writeFile("outputs/admission/contact.json", JSON.stringify({ attempts: [{ resumeReceipt: { sidecar: fixture.sidecar } }] }));
+          await writeFile("outputs/admission/provenance.json", JSON.stringify({
+            sourceRun: 44957203591, sourceArtifact: 14729095208, reportSha256,
+            storageSha256: sha(rawStorage), sidecarSha256: sha(JSON.stringify(fixture.sidecar)),
+            elapsed: cp.elapsed, playerX: cp.player.x, bossX: cp.boss.x, bossHealth: cp.boss.health,
+          }, null, 2));
+          CONTACT_ADMISSION
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Open the actual saved encounter and drive the native keyboard controls
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          source = Path('scripts/qa-hunt-campaign-browser-v112.mjs').read_text()
+          anchor = "    report.qualification='PLAYED_SIDECAR_RESUME_AND_HUD_ONLY';"
+          assert source.count(anchor) == 1
+          probe = r'''
+          
+              // The historic contact checkpoint is admitted unchanged; only native input is sent.
+              const contactKeys={left:'ArrowLeft',right:'ArrowRight',up:'ArrowUp',down:'ArrowDown',jump:'Space',aim:'ShiftLeft',
+                melee:'KeyJ',weapon:'KeyK',weaponOne:'Digit1',weaponTwo:'Digit2',weaponNext:'KeyR',scan:'KeyV',heal:'KeyH',
+                interact:'KeyE',pause:'Escape',cloak:'KeyC',gearOne:'Digit3',gearTwo:'Digit4'};
+              const readHunt=(slim)=>page.evaluate(value=>window.__observeCanonicalHuntV112?.(value),slim);
+              const initial=await readHunt(false),brief=await readHunt(true);
+              assert.equal(initial.state.boss.active,true);
+              assert.equal(initial.state.boss.alive,true);
+              assert.equal(initial.slim,false);
+              assert.equal(brief.slim,true);
+              assert.ok(Array.isArray(initial.state.honorEvents)&&!('honorEvents' in brief.state));
+              const held=new Set(),memory={previousX:initial.state.player.x,stuckTicks:0,jumpUntil:-1,nextJump:Infinity};
+              const records=[];
+              let swing,turned,positiveHit,shot=false;
+              const started=Date.now();
+              for(let tick=1;Date.now()-started<130000&&tick<=450&&!positiveHit;tick++){
+                const observed=await readHunt(true),{state:game}=observed;
+                assert.equal(observed.missionId,played.missionId);
+                if(game.phase==='dead')break;
+                const {player,boss}=game;
+                if(swing&&!shot&&boss.health<swing.bossHealth){
+                  positiveHit={elapsed:game.elapsed,healthBefore:swing.bossHealth,healthAfter:boss.health,tick};
+                  break;
+                }
+                const pilot=decideHuntCampaignInputV112(game,tick,memory,'melee');
+                const dx=boss.x+boss.width/2-player.x-player.width/2;
+                const direction=dx>=0?'right':'left';
+                const inContact=Math.abs(dx)-(player.width+boss.width)/2<95;
+                if(inContact&&pilot.reason==='combat:mission-boss'){
+                  const record={tick,elapsed:game.elapsed,facing:player.facing,telegraph:boss.telegraph,dx,held:pilot.held,pressed:pilot.pressed,bossHealth:boss.health};
+                  records.push(record);
+                  if(dx*player.facing<-8&&boss.telegraph<=0&&pilot.held.includes(direction)&&!pilot.pressed.includes('melee')){
+                    turned??=record;
+                  }
+                  if(turned&&dx*player.facing>0&&pilot.pressed.includes('melee')){
+                    swing??=record;
+                  }
+                }
+                const wanted=new Set(pilot.held);
+                for(const action of held)if(!wanted.has(action)){await page.keyboard.up(contactKeys[action]);held.delete(action);}
+                for(const action of wanted)if(!held.has(action)){await page.keyboard.down(contactKeys[action]);held.add(action);}
+                if(pilot.pointer){
+                  const box=await page.locator('canvas').last().boundingBox();
+                  if(box)await page.mouse.move(box.x+pilot.pointer.x*box.width/1280,box.y+pilot.pointer.y*box.height/720);
+                }
+                for(const action of pilot.pressed){
+                  if(action==='weapon')shot=true;
+                  if(wanted.has(action)){await page.keyboard.up(contactKeys[action]);await page.keyboard.down(contactKeys[action]);}
+                  else await page.keyboard.press(contactKeys[action]);
+                }
+                await page.waitForTimeout(35);
+              }
+              for(const action of held)await page.keyboard.up(contactKeys[action]);
+              report.contactProbe={turned,swing,positiveHit,records};
+              await capture('apex-contact-after');
+              await writeFile(path.join(out,'contact-probe.json'),JSON.stringify(report.contactProbe,null,2));
+              assert.ok(turned&&swing&&positiveHit,'a distinct turning tick must lead to a real hit in the historical encounter');
+          '''
+          Path('scripts/.qa-apex-contact-v112.mjs').write_text(source.replace(anchor, probe + anchor))
+          PY
+          node scripts/.qa-apex-contact-v112.mjs \
+            --campaign-source outputs/admission/campaign.json \
+            --resume-hud-source outputs/admission/contact.json --missions desert-sandmaw \
+            --chromium /usr/bin/google-chrome --output outputs/contact --asset-cache outputs/source-cache
+      - if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pr-192-sandmaw-historic-contact
+          path: |
+            outputs/contact/
+            outputs/admission/provenance.json
