@@ -1113,6 +1113,7 @@ test("trained hunters, vacuum guardian and Hive Mind memory keep their Bible-spe
 
 test("the Canvas scan, normal gear update, encounter movement and checkpoints use the decoy rule", async () => {
   const canvas = await huntCanvasPromise;
+  assert.match(canvas, /const targetEnemy = slot\.gearId === "audio-decoy"\s*\? null/);
   assert.match(canvas, /stepHuntTrap\([\s\S]+if \(stepped\.noise\) state\.noiseEvents\.push\(stepped\.noise\)/);
   assert.match(canvas, /updateHuntTraps\(state, delta\);[\s\S]+updateBoss\(state, mission, difficulty, delta\);/);
   assert.match(canvas, /stepBossMechanics\(state\.bossMechanics, \{[\s\S]+heardAudioDecoys: heardBossAudioDecoys\(state, bossCenter\)/);

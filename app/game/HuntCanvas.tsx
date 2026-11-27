@@ -6512,11 +6512,14 @@ function activateGearSlot(
         y: state.world.floorY - 18,
       };
   const slot = state.arsenal.slots[slotIndex];
-  const targetEnemy = nearestActiveEnemy(
-    state,
-    requestedTarget,
-    Math.max(180, GEAR_BY_ID[slot.gearId].rangePx),
-  );
+  // A decoy uses the chosen point, including a point behind an Apex.
+  const targetEnemy = slot.gearId === "audio-decoy"
+    ? null
+    : nearestActiveEnemy(
+        state,
+        requestedTarget,
+        Math.max(180, GEAR_BY_ID[slot.gearId].rangePx),
+      );
   const result = activateArsenalGearSlot(state.arsenal, slotIndex, {
     origin,
     aim: targetEnemy
