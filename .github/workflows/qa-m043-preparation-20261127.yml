@@ -41,3 +41,9 @@ jobs:
         run: node --experimental-strip-types --test --test-concurrency=1 tests/elite-recognition-v174.test.mjs tests/elite-mastery-v170.test.mjs tests/buried-cradle-return.test.mjs tests/quatza-rij.test.mjs
       - name: Contrôler les types
         run: npm run typecheck
+      - name: Traverser la salle avec les deux choix et recharger dans Chromium
+        run: node --experimental-strip-types scripts/qa-m043-component-chromium-20261127.mjs
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: m043-component-proofs
+          path: outputs/qa-m043-preparation-20261127/
