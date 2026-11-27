@@ -1,5 +1,7 @@
 "use client";
 
+import { rankCampaignReceiptsV168 } from "./systems/rankRiteDossierV168";
+
 /* eslint-disable @next/next/no-img-element -- generated ship art has per-master dimensions */
 
 import {
@@ -131,6 +133,13 @@ export const SHIP_ROOMS: readonly ShipRoomDefinition[] = [
       "Relire le codex, les rites accomplis et les statistiques de chasse.",
   },
 ] as const;
+
+const CAMPAIGN_RITE_STATUS_V168 = {
+  locked: "Prérequis à jouer",
+  ready: "Épreuve accessible",
+  "in-progress": "Registre ouvert",
+  recognized: "Reconnaissance consignée",
+} as const;
 
 interface HubActionDefinition {
   id: string;
@@ -1486,6 +1495,17 @@ function RoomSummary({
         title="Rites et mémoire"
         detail={`${save.codex.unlockedEntryIds.length} archives décodées · ${clan.completedRites.length} rites accomplis.`}
       />
+      <section aria-label="Épreuves de rang de la campagne" data-ship-campaign-rank-archives>
+        <div style={styles.cardList}>
+          {rankCampaignReceiptsV168(save).map(rite => (
+            <article className="codex-card" key={rite.id} data-campaign-rank={rite.id} data-rite-status={rite.status}>
+              <span className="codex-label">{CAMPAIGN_RITE_STATUS_V168[rite.status]}</span>
+              <h3>{rite.label}</h3>
+              <p>{rite.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
       <div style={styles.cardList}>
         {[...clan.completedRites, ...clan.pendingRites].map((rite) => (
           <article className="codex-card" key={rite.id}>
