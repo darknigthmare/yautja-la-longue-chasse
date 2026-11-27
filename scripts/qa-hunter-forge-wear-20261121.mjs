@@ -237,7 +237,8 @@ try {
 
   const quote = forge.locator('[data-forge-repair-quote="chest"]');
   const automatic = await quote.innerText();
-  assert(automatic.includes(start.label));
+  const largestLot = seed.inventory.harvestV112.archive.reduce((largest, row) => row.count > largest.count ? row : largest);
+  assert.equal(automatic, '2 × ' + largestLot.label);
   if (selectMaterial) {
     await forge.getByLabel('Matière à employer').selectOption(JSON.stringify([chosen.speciesId, chosen.partId]));
     assert.equal(await quote.innerText(), '2 × ' + chosen.label);
