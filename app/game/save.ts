@@ -2108,7 +2108,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     return { save: null, failure: "invalid-save" };
   }
   const selectedChildhood = isRecord(value.homeworld) ? value.homeworld.childhoodV175 : undefined;
-  if (isRecord(selectedChildhood) && Number(selectedChildhood.version) > 1) return { save: null, failure: "future-version" };
+  if (isRecord(selectedChildhood) && Number(selectedChildhood.version) > 2) return { save: null, failure: "future-version" };
   const selectedAdjutant = isRecord(value.homeworld) ? value.homeworld.adjutantM029 : undefined;
   if (isRecord(selectedAdjutant) && Number(selectedAdjutant.version) > 1) return { save: null, failure: "future-version" };
   const save = normalizeSave(value);
