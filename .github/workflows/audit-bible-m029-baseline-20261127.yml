@@ -16,8 +16,8 @@ jobs:
           sparse-checkout: app
       - name: List any baseline application writers
         run: |
-          rg -n -g '*.ts' -g '*.tsx' -e 'team-extraction|multiple-world-hunts|adjutant-appointment' app
-          if rg -l -g '*.ts' -g '*.tsx' -g '!clanChronicle.ts' -e 'team-extraction|multiple-world-hunts|adjutant-appointment' app; then
+          git grep -n -E 'team-extraction|multiple-world-hunts|adjutant-appointment' HEAD -- app
+          if git grep -n -E 'team-extraction|multiple-world-hunts|adjutant-appointment' HEAD -- app ':(exclude)app/game/systems/clanChronicle.ts'; then
             echo 'Found another application reference; inspect the call sites.'
             exit 2
           fi
