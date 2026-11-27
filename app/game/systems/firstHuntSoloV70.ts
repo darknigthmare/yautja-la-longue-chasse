@@ -20,6 +20,8 @@ export interface SoloV70State {
  belvedereLever?: SoloV70TrioObservation;
  /** Runtime layout for new Temple visits. Older rooms keep their existing geometry. */
  reconnectionVariant?: 1;
+ /** Relay opened by a hold from the middle upper footplate. */
+ nefRelayM017?: { tick: number; x: number };
 }
 export interface SoloV70Input { move?:-1|0|1;jump?:boolean;interact?:boolean;command?:boolean }
 export interface SoloV70Environment { assetsReady:boolean;pageVisible:boolean;paused:boolean }
@@ -53,6 +55,16 @@ export const SOLO_V70_RECONNECTION = {
     { x: 835, y: 350, width: 112, oneWay: true },
   ],
 } as const;
+export const SOLO_V70_NEF_RELAY_M017 = {
+  room: SOLO_V70_RECONNECTION.room,
+  leverX: 690,
+  upperY: SOLO_V70_RECONNECTION.platforms[1].y,
+  regroupX: 895,
+  holdTicks: 42,
+  plates: [520, 920],
+} as const;
+export const soloV70NefPlatesReadyM017 = (s: Pick<SoloV70State, 'companions'>) =>
+  s.companions.every((companion, index) => Math.abs(companion.x - SOLO_V70_NEF_RELAY_M017.plates[index]) < 5);
 export function soloV70ReconnectionPreview(s: SoloV70State) {
   if (!s.reconnectionVariant || s.phase !== 'configuration' || s.room !== SOLO_V70_RECONNECTION.room || !s.scan) return null;
   return { remainingTicks: SOLO_V70_RECONNECTION.holdTicks - s.scan, platforms: SOLO_V70_RECONNECTION.platforms };
@@ -95,7 +107,7 @@ export function soloV70Portal(room:number,side:'left'|'right',configuration:numb
 export const soloV70CampaignPortal = (s: SoloV70State, room: number, side: 'left' | 'right') =>
   soloV70Portal(room, side, s.configuration, Boolean(s.belvedereLever));
 export function soloV70CanTravel(s:SoloV70State,to:number){if(to<0||to>8||Math.abs(to-s.room)!==1)return false;if(to<s.room)return true;return soloV70ProofCount(s)>=[0,2,3,4,5,6,7,8,10][to];}
-export function soloV70NeedsImmediateCheckpoint(a:SoloV70State,b:SoloV70State){return a.phase!==b.phase||a.room!==b.room||a.signs!==b.signs||a.companionMode!==b.companionMode||a.signals!==b.signals||a.liftTicks===0&&b.liftTicks>0||b.valveTimer>a.valveTimer||a.drone.hp!==b.drone.hp||a.health!==b.health||a.failedAt!==b.failedAt||a.attempts!==b.attempts||a.riteAdmission?.sealedEnergy?.tick!==b.riteAdmission?.sealedEnergy?.tick||a.belvedereLever?.tick!==b.belvedereLever?.tick;}
+export function soloV70NeedsImmediateCheckpoint(a:SoloV70State,b:SoloV70State){return a.phase!==b.phase||a.room!==b.room||a.signs!==b.signs||a.companionMode!==b.companionMode||a.signals!==b.signals||a.liftTicks===0&&b.liftTicks>0||b.valveTimer>a.valveTimer||a.drone.hp!==b.drone.hp||a.health!==b.health||a.failedAt!==b.failedAt||a.attempts!==b.attempts||a.riteAdmission?.sealedEnergy?.tick!==b.riteAdmission?.sealedEnergy?.tick||a.belvedereLever?.tick!==b.belvedereLever?.tick||a.nefRelayM017?.tick!==b.nefRelayM017?.tick;}
 export function normalizeSoloV70State(v:unknown):SoloV70State|null{
  if(!record(v)||v.version!==1||!SOLO_V70_PHASES.some(p=>p===v.phase)||!int(v.tick,0,5_184_000)||!int(v.phaseStartedAt,0,v.tick)||!int(v.room,0,8)||!int(v.roomEnteredAt,0,v.tick)||!finite(v.walked,0,v.tick*3.5+.1)||![1,2,3].includes(v.configuration as number)||!Array.isArray(v.visited)||v.visited.length!==9||!v.visited.every(x=>typeof x==='boolean')||!v.visited[0]||!v.visited[v.room]||!record(v.player)||!Array.isArray(v.companions)||v.companions.length!==2||!v.companions.every(c=>record(c)&&finite(c.x,65,1055))||!['follow','plates'].includes(String(v.companionMode))||!int(v.signals,0,99999)||!int(v.signs,0,3)||!int(v.scan,0,v.reconnectionVariant===1&&v.phase==='configuration'&&v.room===SOLO_V70_RECONNECTION.room?SOLO_V70_RECONNECTION.holdTicks-1:89)||!int(v.liftTicks,0,100)||!int(v.valveTimer,0,600)||!record(v.drone)||!finite(v.drone.x,650,970)||!int(v.drone.hp,0,5)||!['watch','telegraph','lunge','recover','dead'].includes(String(v.drone.mode))||!int(v.drone.age,0,89)||!int(v.drone.hits,0,9999)||!int(v.health,0,6)||!int(v.hurtTimer,0,75)||!int(v.attackTimer,0,18)||!int(v.attackCooldown,0,45)||!record(v.acid)||!finite(v.acid.x,650,970)||!int(v.acid.ttl,0,120)||!(v.failedAt===null||int(v.failedAt,0,v.tick))||!int(v.attempts,0,9999)||!int(v.doorCrossings,0,99999)||!record(v.milestones))return null;
  const a=v.player,count=soloV70ProofCount(v as unknown as SoloV70State),furthest=[0,0,1,2,3,4,5,6,7,7,8,8,8,8,8,8][count],visited=v.visited;
@@ -134,7 +146,18 @@ export function normalizeSoloV70State(v:unknown):SoloV70State|null{
        passed !== undefined && lever.tick >= passed || !soloV70BelvederePlatesReady(lever.positions.slice(1))) return null;
    belvedereLever = lever;
  }
+ let nefRelayM017: SoloV70State['nefRelayM017'];
+ if (Object.hasOwn(v, 'nefRelayM017')) {
+   const relay = v.nefRelayM017, { holdTicks, leverX, regroupX } = SOLO_V70_NEF_RELAY_M017;
+   const rejoined = milestones['triad-rejoined'];
+   if (v.reconnectionVariant !== 1 || reconnectedAt === undefined || !record(relay) || Object.keys(relay).length !== 2 ||
+       !int(relay.tick, reconnectedAt + holdTicks, v.tick) || !finite(relay.x, leverX - 38, leverX + 38) ||
+       (rejoined !== undefined && rejoined - relay.tick < (regroupX - 38 - relay.x) / 3.5) ||
+       (v.phase === 'separation' && v.companionMode !== 'follow')) return null;
+   nefRelayM017 = { tick: relay.tick, x: relay.x };
+ }
  return {...v,player:{...a},companions:v.companions.map(c=>({...c})),drone:{...v.drone},acid:{...v.acid},visited:[...v.visited],milestones,
+   ...(nefRelayM017 ? { nefRelayM017 } : {}),
    ...(belvedereLever ? { belvedereLever } : {}),
    ...(riteAdmission ? { riteAdmission } : {}),inputArmed:false,previousJump:false,previousInteract:false,previousCommand:false} as unknown as SoloV70State;
 }
@@ -161,7 +184,7 @@ export function stepSoloV70(state:SoloV70State,input:SoloV70Input,env:SoloV70Env
  const transition=(phase:SoloV70Phase)=>{s.phase=phase;s.phaseStartedAt=s.tick;s.scan=0;s.inputArmed=false;s.previousJump=s.previousInteract=s.previousCommand=false;s.companionMode='follow';};
  const proof=(id:SoloV70Proof,phase:SoloV70Phase)=>{s.milestones[id]=s.tick;receipts.push({id,sourceId:'solo.temple-opening.v70',tick:s.tick});transition(phase);};
  const scan=(condition:boolean,ticks:number)=>{s.scan=condition?s.scan+1:0;return s.scan>=ticks;};
- if(command&&(['oath','separation'].includes(s.phase)||s.phase==='belvedere'&&s.room===SOLO_V70_BELVEDERE.room&&!s.belvedereLever)){s.companionMode=s.companionMode==='follow'?'plates':'follow';s.signals++;}
+ if(command&&(s.phase==='oath'||s.phase==='separation'&&!s.nefRelayM017||s.phase==='belvedere'&&s.room===SOLO_V70_BELVEDERE.room&&!s.belvedereLever)){s.companionMode=s.companionMode==='follow'?'plates':'follow';s.signals++;}
  if(s.phase==='briefing'&&s.room===0&&near(160)&&interact)proof('briefed','ascent');
  else if(s.phase==='ascent'&&s.room===0&&near(900,270)&&interact)proof('upper-entry','oath');
  else if(s.phase==='oath'&&s.room===1&&scan(near(520)&&!a.vx&&s.companionMode==='plates'&&s.companions.every((c,i)=>Math.abs(c.x-plateTargets[i])<5)&&!!input.interact,45))proof('triad-oath','signs');
@@ -197,7 +220,22 @@ export function stepSoloV70(state:SoloV70State,input:SoloV70Input,env:SoloV70Env
    s.configuration = 2;
    proof('second-configuration','separation');
  }
- else if(s.phase==='separation'&&s.room===7&&scan(near(300)&&!a.vx&&s.companionMode==='plates'&&s.companions.every((c,i)=>Math.abs(c.x-plateTargets[i])<5)&&!!input.interact,75))proof('triad-rejoined','drone');
+ else if (s.phase === 'separation' && s.room === SOLO_V70_NEF_RELAY_M017.room) {
+   const { leverX, upperY, regroupX, holdTicks } = SOLO_V70_NEF_RELAY_M017;
+   if (s.nefRelayM017) {
+     if (near(regroupX) && !a.vx && soloV70TrioPresent(s) && interact) proof('triad-rejoined', 'drone');
+   } else {
+     const upper = s.reconnectionVariant === 1 && near(leverX, upperY);
+     const stationed = s.companionMode === 'plates' && soloV70NefPlatesReadyM017(s);
+     if (scan((upper || near(SOLO_V70_RECONNECTION.x)) && !a.vx && stationed && !!input.interact, upper ? holdTicks : 75)) {
+       if (upper) {
+         s.nefRelayM017 = { tick: s.tick, x: a.x };
+         s.companionMode = 'follow';
+         s.scan = 0;
+       } else proof('triad-rejoined', 'drone');
+     }
+   }
+ }
  else if(s.phase==='drone'&&s.room===8){
   const d=s.drone;d.age++;if(d.mode==='watch'&&d.age>=50){d.mode='telegraph';d.age=0;}else if(d.mode==='telegraph'&&d.age>=24){d.mode='lunge';d.age=0;}else if(d.mode==='lunge'&&d.age>=24){d.mode='recover';d.age=0;}else if(d.mode==='recover'&&d.age>=70){d.mode='watch';d.age=0;}
   if(d.mode==='lunge')d.x=Math.max(680,d.x-7);else if(d.mode==='recover')d.x=Math.min(925,d.x+3.5);
@@ -244,7 +282,12 @@ export function soloV70Objective(s:SoloV70State):{title:string;instruction:strin
    ? 'Maintiens Interaction au pupitre. Le glyphe annonce la position des passerelles deux secondes avant leur déploiement.'
    : 'Tiens Interaction au pupitre : les accès internes se réorientent, les sorties de service restent disponibles.',
    SOLO_V70_RECONNECTION.room, SOLO_V70_RECONNECTION.x, 430],
- separation:['Les deux ailes','Signal : Saar et Vek gagnent leurs plaques éloignées. Maintiens le contrepoids central jusqu’à rétablir la connexion.',7,300,430],
+ separation:s.nefRelayM017
+   ? ['Nef des Anneaux · rendez-vous aval', 'Redescends au rendez-vous. Attends Saar et Vek près de toi, puis presse Interaction.', SOLO_V70_NEF_RELAY_M017.room, SOLO_V70_NEF_RELAY_M017.regroupX, 430]
+   : ['Les deux ailes', s.reconnectionVariant
+     ? 'Donne le Signal pour placer Saar et Vek. Maintiens Interaction au contrepoids bas, ou sur la commande de la passerelle médiane pour retrouver la triade en aval.'
+     : 'Signal : Saar et Vek gagnent leurs plaques éloignées. Maintiens le contrepoids central jusqu’à rétablir la connexion.',
+     SOLO_V70_RECONNECTION.room, SOLO_V70_RECONNECTION.x, 430],
  drone:['Un drone dans la vanne','Télégraphe → bond → retrait. Saute ou prends de la distance, puis Lame/Signal pendant le retrait à portée. L’acide reste au point d’impact. Interaction après une défaite reprend le point sûr.',8,740,430],
  quarantine:['III · Isolement local', s.riteAdmission
    ? 'Ouvre la première vanne. Réunis la triade au seuil pendant l’ouverture, puis maintiens Interaction à la seconde vanne.'
