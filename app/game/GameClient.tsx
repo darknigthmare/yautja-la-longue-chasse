@@ -67,7 +67,7 @@ import { normalizeHunterChromaticsV113, maskOriginForCustomizationV135, type Hun
 import { commitHunterChromaticsV116 } from "./systems/hunterChromaticPersistenceV116";
 import { commitHunterCustomizationV146 } from "./systems/hunterCustomizationPersistenceV146";
 import { TrophyUsageControlsV147, TrophyUsageSummaryV147 } from "./TrophyUsagesV147";
-import { applyTrophyUsageV147, isPersonalShipTrophyDisplayV147, type TrophyUsageActionV147 } from "./systems/trophyUsagesV147";
+import { applyTrophyUsageV147, isPersonalShipTrophyDisplayV147, trophyUsageV147, type TrophyUsageActionV147 } from "./systems/trophyUsagesV147";
 import CloudAccountV71, { openCloudAccountV71 } from "./CloudAccountV71";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import { startYouthCampaign, withYouthCheckpoint, withYouthProgress, youthCampaignNeedsScene, youthCampaignObjective } from "./systems/youthCampaign";
@@ -6973,8 +6973,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             <OriginTrophyTransitionPanelV157 origin={save.originV151} atWorkshop={!trophyWorkshop && pendingTrophyCommit === null}
               heldOriginalIds={heldPathOriginalIdsV158(normalizePathObjectsV158(save.pathObjectsV158))}
               disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
-              trophies={trophyRecords.map((trophy: { id: string; targetName: string; claimedAt: string }) =>
-                ({ id: trophy.id, label: `${trophy.targetName} · ${new Date(trophy.claimedAt).toLocaleDateString("fr-FR")}` }))}
+              trophies={trophyRecords.map(trophy => ({
+                id: trophy.id, label: `${trophy.targetName} · ${new Date(trophy.claimedAt).toLocaleDateString("fr-FR")}`,
+                record: trophy, usage: trophyUsageV147(save, trophy.id),
+              }))}
               onAction={originTrophyActionV157} />
             <Suspense fallback={<p>Lecture des distinctions THE PIT…</p>}>
               <PitHonorsPanel owner={save.createdAt} onOpenPit={openPit} />
