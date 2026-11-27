@@ -2,7 +2,7 @@ import { loadYouthArt,youthClipFrame,type YouthArtBank,type YouthArtPose,type Yo
 import { YOUTH_ART_MANIFEST } from './youthArtManifest';
 import { drawActorContactShadow,getSpriteContact } from './spriteContact';
 import { TEMPLE_MODULAR_ATLAS_V70,drawTempleModuleV70 } from './templeModularArtV70';
-import { SOLO_V70_ROOMS,SOLO_V70_SIGNS,SOLO_V70_ENERGY_VAULT,SOLO_V70_QUARANTINE_THRESHOLD,SOLO_V70_BELVEDERE,soloV70Platforms,soloV70Support,soloV70CampaignPortal,soloV70CanTravel,soloV70Objective,soloV70PlateTargets,type SoloV70State } from './systems/firstHuntSoloV70';
+import { SOLO_V70_ROOMS,SOLO_V70_SIGNS,SOLO_V70_ENERGY_VAULT,SOLO_V70_QUARANTINE_THRESHOLD,SOLO_V70_BELVEDERE,SOLO_V70_RECONNECTION,soloV70ReconnectionPreview,soloV70Platforms,soloV70Support,soloV70CampaignPortal,soloV70CanTravel,soloV70Objective,soloV70PlateTargets,type SoloV70State } from './systems/firstHuntSoloV70';
 export const TEMPLE_DRONE_V70='/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png';
 export const TEMPLE_GUARD_V70='/game/sprites/v4/rifle-soldier.png';
 export async function loadTempleArtV70():Promise<YouthArtBank>{const bank=await loadYouthArt(YOUTH_ART_MANIFEST),images=new Map(bank.images);await Promise.all([TEMPLE_MODULAR_ATLAS_V70.src,TEMPLE_DRONE_V70,TEMPLE_GUARD_V70].map(src=>new Promise<void>((resolve,reject)=>{const image=new Image();image.onload=()=>{images.set(src,image);resolve();};image.onerror=()=>reject(new Error('Image native du temple indisponible : '+src));image.src=src;})));return {...bank,images};}
@@ -28,6 +28,16 @@ export function drawFirstHuntSoloV70(ctx:CanvasRenderingContext2D,s:SoloV70State
  const marker=(x:number,y=430,label?:string)=>{prop(manifest.props.marker,x,y,27);if(label)text(label,x,y-130);};
  drawTempleModuleV70(ctx,modular,'pillar',25,430,350);drawTempleModuleV70(ctx,modular,'pillar',1100,430,350);
  for(const p of soloV70Platforms(s)){const sprite=manifest.props.platform,image=images.get(sprite.src)!;ctx.drawImage(image,...sprite.rect,p.x,p.y,p.width,28);if(s.room===5&&p.x===440){drawTempleModuleV70(ctx,modular,'counterweight',550,430,220);text('CONTREPOIDS',550,p.y-18);}else{ctx.save();ctx.globalAlpha=.55;drawTempleModuleV70(ctx,modular,'arch',p.x+p.width/2,430,Math.max(60,430-p.y-12));ctx.restore();}}
+ const preview = soloV70ReconnectionPreview(s);
+ if (preview) {
+   ctx.save();
+   ctx.strokeStyle = '#ffd78b';
+   ctx.lineWidth = 2;
+   ctx.setLineDash([7, 6]);
+   for (const platform of preview.platforms) ctx.strokeRect(platform.x, platform.y, platform.width, 25);
+   ctx.restore();
+   text('GLYPHE · ' + Math.ceil(preview.remainingTicks / 60) + ' s', SOLO_V70_RECONNECTION.x, 320, '#ffd78b', 14);
+ }
  for(const side of ['left','right'] as const){const door=soloV70CampaignPortal(s,s.room,side),to=s.room+(side==='left'?-1:1);if(to<0||to>8)continue;const open=soloV70CanTravel(s,to);drawTempleModuleV70(ctx,modular,open?'arch':'gate',door.x,door.y,245);text(open?(s.configuration===3?'SERVICE · '+SOLO_V70_ROOMS[to].name:'VERS · '+SOLO_V70_ROOMS[to].name):'VERROU DU TEMPLE',door.x,Math.max(18,door.y-258),open?'#c6d6b7':'#cbad86',11);}
  if(s.room===0){prop(manifest.props.brazier,160,430,50);marker(900,270,'MARCHES HAUTES');}
  if(s.room===1){[320,520,730].forEach((x,i)=>{marker(x,430,i===1?'TA PLAQUE':i===0?'SAAR':'VEK');ctx.strokeStyle='#cbb27d';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(x-33,433);ctx.lineTo(x+33,433);ctx.stroke();});}

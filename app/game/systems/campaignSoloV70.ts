@@ -1,7 +1,7 @@
 import type { SaveGame } from '../types';
 import { normalizeSoloV69Campaign, soloV69MatchesSave, templeRankKeepsEarlierTrialV174 } from './campaignSoloV69';
 import { createSoloV70State, normalizeSoloV70State, SOLO_V70_PHASES, SOLO_V70_SIGNS, SOLO_V70_ENERGY_VAULT, SOLO_V70_LOAN_RACK, SOLO_V70_QUARANTINE_THRESHOLD,
-  SOLO_V70_BELVEDERE, soloV70BelvederePlatesReady, soloV70Receipts, soloV70CampaignPortal, soloV70CanTravel,
+  SOLO_V70_BELVEDERE, SOLO_V70_RECONNECTION, soloV70BelvederePlatesReady, soloV70Receipts, soloV70CampaignPortal, soloV70CanTravel,
   soloV70TrioPresent, soloV70TrioObservation, type SoloV70State, type SoloV70Receipt } from './firstHuntSoloV70';
 export interface SoloV70Campaign { version:1;status:'active'|'completed';checkpoint:SoloV70State;receipts:SoloV70Receipt[];startedAt:string;completedAt:string|null }
 export type SoloV70Save=SaveGame&{soloV70?:SoloV70Campaign|null};
@@ -19,6 +19,12 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
  const old=before.checkpoint,delta=next.tick-old.tick,op=SOLO_V70_PHASES.indexOf(old.phase),np=SOLO_V70_PHASES.indexOf(next.phase),receipts=soloV70Receipts(next),fresh=receipts.slice(before.receipts.length);
  if(delta<0||np<op||np>op+1||next.phaseStartedAt<old.phaseStartedAt||next.walked<old.walked||next.walked-old.walked>delta*3.5+.1||next.signs<old.signs||next.signs>old.signs+1||next.signals<old.signals||next.signals-old.signals>delta||next.configuration<old.configuration||next.configuration>old.configuration+1||next.liftTicks<old.liftTicks||next.liftTicks-old.liftTicks>Math.max(1,delta)||next.attempts<old.attempts||next.attempts>old.attempts+1||next.drone.hits<old.drone.hits||next.drone.hits>old.drone.hits+1||next.doorCrossings<old.doorCrossings||next.doorCrossings>old.doorCrossings+1||old.visited.some((x,i)=>x&&!next.visited[i])||before.receipts.some((r,i)=>!same(r,receipts[i]))||fresh.length>1||fresh.some(r=>!incoming.some(i=>same(i,r)))||incoming.some(i=>!receipts.some(r=>same(i,r)))||new Set(incoming.map(i=>i.id)).size!==incoming.length||before.status==='completed'&&!same(old,next))return null;
  const near=(room:number,x:number,y=430,t=40)=>next.room===room&&Math.abs(next.player.x-x)<t&&Math.abs(next.player.y-y)<.01;
+ if (old.reconnectionVariant !== next.reconnectionVariant) return null;
+ if (old.reconnectionVariant && next.phase === 'configuration' && next.scan > 0 &&
+     next.scan > (old.phase === 'configuration' ? old.scan : 0) + delta) return null;
+ if (old.reconnectionVariant && fresh[0]?.id === 'second-configuration' &&
+     (old.phase !== 'configuration' || old.room !== SOLO_V70_RECONNECTION.room ||
+       next.player.vx !== 0 || old.scan + delta < SOLO_V70_RECONNECTION.holdTicks)) return null;
  const previousAdmission = old.riteAdmission, admission = next.riteAdmission;
  if (Boolean(previousAdmission) !== Boolean(admission)) return null;
  if (previousAdmission && admission) {

@@ -64,8 +64,9 @@ function completeField(save, contractId) {
   assert.equal(result.accepted, true, result.message);
   return { ...progressed, clanShipOperations: result.state, profile: { ...progressed.profile, clanMarks: progressed.profile.clanMarks + result.clanMarksReward } };
 }
-export function fixture({ evidence = true, veteran = true, ruins = true } = {}) {
-  let save = saves.defaultSave(OWNER); save.profile.clanMarks = 1000;
+export function fixture({ evidence = true, veteran = true, ruins = true, seed } = {}) {
+  let save = seed ? { ...seed, profile: { ...seed.profile } } : saves.defaultSave(OWNER);
+  save.profile.clanMarks = 1000;
   for (const step of ops.CLAN_SHIP_ONBOARDING_STEPS) save = clanAct(save, { type: 'onboard-step', stepId: step.id }, step.roomId);
   save = clanAct(save, { type: 'accept-mandate' });
   if (veteran) save = completeInterior(save, 'ship-training-circuit');

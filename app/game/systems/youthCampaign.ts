@@ -9,6 +9,7 @@ import { CHRONICLE_RITES, recordChronicleEvidence } from "./clanChronicle";
 import { createYouthTraining, YOUTH_PHASES, normalizeYouthTraining, normalizeYouthReceipt, getYouthReceipts, type YouthState, type YouthReceipt } from "./youthTraining";
 
 import { youthWorkshopEquipment, youthWorkshopProgressMatches } from "./youthWorkshopV174";
+import { childhoodViewV175 } from "./homeworldChildhoodV175";
 
 export interface YouthEquipment {
   wristblade: boolean;
@@ -31,7 +32,7 @@ const iso = (value: unknown): value is string => typeof value === "string" && va
 const same = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
 const earned = (receipts: readonly YouthReceipt[], id: YouthReceipt["id"]) => receipts.some(receipt => receipt.id === id);
 function equipmentFor(state: YouthState, receipts: readonly YouthReceipt[]): YouthEquipment {
-  const workshop = youthWorkshopEquipment(state.workshopV174);
+  const workshop = youthWorkshopEquipment(state.workshopV174, state.firstWorkshopV176);
   return { wristblade: earned(receipts, "youth-first-blade"), biomask: earned(receipts, "youth-first-biomask"), accent: earned(receipts, "youth-first-biomask") ? state.cosmetic : null, ...(workshop ? { workshop } : {}) };
 }
 export function normalizeYouthCampaign(value: unknown): YouthCampaignProgress | null {
@@ -52,7 +53,7 @@ export function normalizeYouthCampaign(value: unknown): YouthCampaignProgress | 
   return { version: 1, status: value.status as YouthCampaignProgress["status"], checkpoint, receipts, equipment, startedAt: value.startedAt, completedAt: value.completedAt as string | null };
 }
 /** Reject mismatched narrative proof instead of falling back to an adult campaign. */
-export function youthCampaignMatchesSave(value: unknown, { bloodingVerified = false, cradleBriefed = false, crownReturned = false, adjutantVerified = false, warpVerified = false, eliteRecognitionVerified = false } = {}): boolean {
+export function youthCampaignMatchesSave(value: unknown, { bloodingVerified = false, cradleBriefed = false, crownReturned = false, adjutantVerified = false, warpVerified = false, eliteRecognitionVerified = false, elderReliefVerified = false, ancientRecognitionVerified = false } = {}): boolean {
   if (!record(value)) return false;
   const prologue = normalizeNurseryCampaign(value.prologue);
   // Current youth chapters cannot import unplayed future hunts to gain ship/rank access.
@@ -71,13 +72,17 @@ export function youthCampaignMatchesSave(value: unknown, { bloodingVerified = fa
       if (adjutantVerified) evidence.push("team-extraction", "multiple-world-hunts");
       if (adjutantVerified && warpVerified) evidence.push("warp-module-quest");
       if (eliteRecognitionVerified) evidence.push("diverse-mastery", "solitary-trial");
+      if (elderReliefVerified) evidence.push("long-hunt-history", "next-generation", "elder-time-passage");
+      if (ancientRecognitionVerified) evidence.push("ancient-time-passage", "lasting-legacy", "forgotten-debt");
     }
     if (prologue.chronicle.evidence.some(item => !evidence.includes(item.id)) ||
         prologue.chronicle.rites.some(item => item.id !== "nursery-recognition" &&
           !(cohortRecognized && item.id === "unguided-hunt-recognition") &&
           !(bloodingVerified && item.id === "blooding-mark") &&
           !(bloodingVerified && adjutantVerified && item.id === "adjutant-appointment") &&
-          !(bloodingVerified && eliteRecognitionVerified && item.id === "elite-recognition"))) return false;
+          !(bloodingVerified && eliteRecognitionVerified && item.id === "elite-recognition") &&
+          !(bloodingVerified && elderReliefVerified && item.id === "elder-recognition") &&
+          !(bloodingVerified && ancientRecognitionVerified && item.id === "ancient-recognition"))) return false;
     if (raw.evidence.some(item => !record(item) || !prologue.chronicle.evidence.some(expected => expected.id === item.id && expected.sourceId === item.sourceId)) ||
         raw.rites.some(item => !record(item) || !prologue.chronicle.rites.some(expected => expected.id === item.id && expected.sourceId === item.sourceId))) return false;
   }
@@ -86,20 +91,24 @@ export function youthCampaignMatchesSave(value: unknown, { bloodingVerified = fa
   const youth = normalizeYouthCampaign(value.youthTraining);
   if (!youth || prologue?.status !== "completed" || !record(value.homeworld) || !Array.isArray(value.homeworld.greetedNpcIds)) return false;
   const greeted = value.homeworld.greetedNpcIds;
-  if (!["hunt-king", "terrace-instructor"].every(id => greeted.includes(id))) return false;
+  if (!["hunt-king", "terrace-instructor"].every(id => greeted.includes(id)) || typeof value.createdAt !== "string") return false;
+  const childhood = childhoodViewV175(value.homeworld.childhoodV175, value.createdAt);
+  if ((childhood?.firstWorkshop ?? undefined) !== youth.checkpoint.firstWorkshopV176) return false;
   return trainingEvidence === earned(youth.receipts, "youth-camp-duel");
 }
 export function startYouthCampaign(save: SaveGame, now = new Date().toISOString()): SaveGame | null {
   if (save.prologue?.status !== "completed" || !youthCampaignMatchesSave(save) || !iso(now) || !["hunt-king", "terrace-instructor"].every(id => save.homeworld.greetedNpcIds.includes(id))) return null;
   if (save.youthTraining) return normalizeYouthCampaign(save.youthTraining) && youthCampaignMatchesSave(save) ? save : null;
-  const checkpoint = createYouthTraining();
+  const childhood = childhoodViewV175(save.homeworld.childhoodV175, save.createdAt);
+  if (childhood?.passed && !childhood.firstWorkshop) return null;
+  const checkpoint = { ...createYouthTraining(), ...(childhood?.firstWorkshop ? { firstWorkshopV176: childhood.firstWorkshop } : {}) };
   return { ...save, youthTraining: { version: 1, status: "active", checkpoint, receipts: [], equipment: { wristblade: false, biomask: false, accent: null }, startedAt: now, completedAt: null } };
 }
 function advance(save: SaveGame, incoming: readonly YouthReceipt[], state: YouthState, now: string): SaveGame | null {
   const progress = normalizeYouthCampaign(save.youthTraining), checkpoint = normalizeYouthTraining(state);
   if (!progress || !checkpoint || !youthCampaignMatchesSave(save) || !iso(now) || checkpoint.tick < progress.checkpoint.tick) return null;
   const previous = progress.checkpoint;
-  if (!youthWorkshopProgressMatches(previous.workshopV174, checkpoint.workshopV174)) return null;
+  if (checkpoint.firstWorkshopV176 !== previous.firstWorkshopV176 || !youthWorkshopProgressMatches(previous.workshopV174, checkpoint.workshopV174)) return null;
   const retryingDuel = previous.phase === "camp-defeat" && checkpoint.phase === "camp-duel" && checkpoint.progress.duelAttempts > previous.progress.duelAttempts;
   const retryingPatrol = previous.phase === "patrol-defeat" && checkpoint.phase === "patrol-ambush" && checkpoint.patrol?.attempts === (previous.patrol?.attempts ?? 0) + 1;
   const retryingCage = previous.phase === "cage-defeat" && checkpoint.phase === "cage-intro" && checkpoint.cage?.attempts === (previous.cage?.attempts ?? 0) + 1;

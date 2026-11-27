@@ -50,11 +50,40 @@ try {
   await page.clock.install();
   await page.clock.runFor(150);
   const right = seed.settings.controlBindings[controls.right].at(-1);
-  assert(right);
-  await page.keyboard.down(right);
-  for (let i = 0; i < 100 && (await live()).player.x < 2558; i++) await page.clock.runFor(120);
-  await page.keyboard.up(right);
-  await page.clock.runFor(130);
+  const interaction = seed.settings.controlBindings[controls.interact][0];
+  assert(right && interaction);
+  async function approach(x) {
+    await page.keyboard.down(right);
+    for (let i = 0; i < 150 && (await live()).player.x < x - 18; i++) await page.clock.runFor(80);
+    await page.keyboard.up(right);
+    await page.clock.runFor(130);
+    assert(Math.abs((await live()).player.x - x) < 35);
+  }
+  async function observe(activity) {
+    await approach(activity.x);
+    assert.equal(await roleButton.count(), 0);
+    await page.keyboard.down(interaction);
+    for (let i = 0; i < 75 && !(await saved()).soloV90.checkpoint.partnerObservations[activity.id]; i++) {
+      await page.clock.runFor(100);
+    }
+    await page.keyboard.up(interaction);
+    // Storage commits immediately, while the interface updates every 90 ms.
+    await page.clock.runFor(160);
+    const stamp = (await saved()).soloV90.checkpoint.partnerObservations[activity.id];
+    assert.equal(typeof stamp, "number");
+    assert.equal((await live()).partnerObservations[activity.id], stamp);
+    assert.equal(await page.locator('[data-solo-v90-activity="' + activity.id + '"]').getAttribute('data-observed'), 'true');
+    await page.screenshot({ path: resolve(output, "observation-" + activity.id + ".png"), animations: "disabled" });
+    return stamp;
+  }
+  const [saar, vek] = formationModel.SOLO_V90_PARTNER_ACTIVITIES;
+  const saarTick = await observe(saar);
+  await page.reload(); await boot(); await page.clock.runFor(160);
+  assert.equal((await saved()).soloV90.checkpoint.partnerObservations.saar, saarTick);
+  const vekTick = await observe(vek);
+  assert(vekTick > saarTick);
+  report.observations = { saar: saarTick, vek: vekTick };
+  await approach(2590);
   assert(formationModel.soloV90RoleBoardReady(await live()));
   await roleButton.click();
   await page.clock.runFor(180);

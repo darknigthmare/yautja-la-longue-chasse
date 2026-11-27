@@ -1,7 +1,7 @@
 import { createYouthMedicomp, nearYouthMedicomp, normalizeYouthMedicomp, stepYouthMedicomp, youthMedicompObjective, YOUTH_MEDICOMP, type YouthMedicomp } from "./youthMedicompV172";
 import { YOUTH_CAGE_PHASES, YOUTH_CAGE_MILESTONES, YOUTH_CAGE, createYouthCage, cloneYouthCage, normalizeYouthCage, retryYouthCage, youthCageProofCount, isYouthCagePhase, type YouthCageProgress } from "./youthCage";
 import { YOUTH_PATROL_PHASES, YOUTH_PATROL_MILESTONES, YOUTH_PATROL_HALTS, YOUTH_PATROL_HOLD_TICKS, createYouthPatrol, cloneYouthPatrol, normalizeYouthPatrol, retryYouthPatrol, stepYouthPatrolEncounter, isYouthPatrolPhase, type YouthPatrolProgress } from "./youthPatrol";
-import { normalizeYouthWorkshop, startYouthWorkshop, stepYouthWorkshop, workshopCanOpen, workshopObjective, youthWorkshopObstacles, YOUTH_WORKSHOP_GATE, type YouthWorkshop } from "./youthWorkshopV174";
+import { normalizeYouthWorkshop, startYouthWorkshop, stepYouthWorkshop, workshopCanOpen, workshopHasMaskReport, workshopObjective, youthWorkshopObstacles, YOUTH_WORKSHOP_GATE, type YouthWorkshop, type YouthWorkshopOpeningV176 } from "./youthWorkshopV174";
 /** Deterministic Unblooded training. Original playable adaptation; no rank, XP or adult equipment grant. */
 export const YOUTH_ARENA = { width: 960, height: 540, left: 70, right: 890, groundY: 430, actorHeight: 112, halfWidth: 20, gravity: .55, speed: 3.7 } as const;
 export const YOUTH_TIMING = { tickRate: 60, courseLimitTicks: 2100, restTicks: 180, practiceWindupTicks: 32 } as const;
@@ -76,6 +76,7 @@ export interface YouthState {
     cage: YouthCageProgress | null;
     medicompV172?: YouthMedicomp;
     workshopV174?: YouthWorkshop;
+    firstWorkshopV176?: YouthWorkshopOpeningV176;
     progress: {
         moveMarkers: number;
         jumps: number;
@@ -405,7 +406,7 @@ export function stepYouthTraining(previous: YouthState, input: YouthInput = {}, 
     if (s.phase === 'armory' && ['ochre', 'ash', 'rust'].includes(input.choice ?? ''))
         s.cosmetic = input.choice!;
     const a = s.player;
-    if (s.phase === 'barracks' && !s.workshopV174?.active && s.workshopV174?.reports.length
+    if (s.phase === 'barracks' && s.workshopV174 && !s.workshopV174.active && workshopHasMaskReport(s.workshopV174, s.firstWorkshopV176)
         && Math.abs(a.x - YOUTH_WORKSHOP_GATE) <= 28 && !move && canAct(a)
         && (!s.medicompV172 || s.medicompV172.stage === 'complete') && (pressed.light || pressed.blade)) {
         s.workshopV174 = { ...s.workshopV174, maskProfile: pressed.light ? 'contrast' : 'wide' };
@@ -589,7 +590,7 @@ export function stepYouthTraining(previous: YouthState, input: YouthInput = {}, 
             const stationary = !move && canAct(a) && a.y === YOUTH_ARENA.groundY;
             if ((!medicomp || medicomp.stage === 'complete') && stationary && Math.abs(a.x - YOUTH_WORKSHOP_GATE) <= 28) {
                 if (pressed.interact && workshopCanOpen(s.workshopV174)) {
-                    s.workshopV174 = startYouthWorkshop(s.workshopV174, s.tick);
+                    s.workshopV174 = startYouthWorkshop(s.workshopV174, s.tick, s.firstWorkshopV176);
                     s.player = actor(YOUTH_WORKSHOP_GATE);
                     out.events.push({ type: 'workshop', signal: 'step' });
                     break;
@@ -683,7 +684,9 @@ export function normalizeYouthTraining(v: unknown): YouthState | null {
     const phase = v.phase as YouthPhase, ordinal = YOUTH_PHASES.indexOf(phase);
     if (phase === 'rest' && v.phaseTick >= YOUTH_TIMING.restTicks) return null;
     if (ordinal < 1 && v.jumpCleared || ordinal >= 2 && !v.jumpCleared) return null;
-    const workshopV174 = v.workshopV174 === undefined ? undefined : normalizeYouthWorkshop(v.workshopV174, v.tick);
+    const firstWorkshopV176 = v.firstWorkshopV176;
+    if (firstWorkshopV176 !== undefined && firstWorkshopV176 !== 'mask' && firstWorkshopV176 !== 'blades') return null;
+    const workshopV174 = v.workshopV174 === undefined ? undefined : normalizeYouthWorkshop(v.workshopV174, v.tick, firstWorkshopV176);
     if (workshopV174 === null || workshopV174 && (ordinal < YOUTH_PHASES.indexOf('barracks') ||
         workshopV174.active !== null && phase !== 'barracks')) return null;
     if (getYouthObstacles({ phase, workshopV174 }).some(wall => player.y > wall.y + .01 && player.x + 18 > wall.x && player.x - 18 < wall.x + wall.width)) return null;
@@ -728,5 +731,5 @@ export function normalizeYouthTraining(v: unknown): YouthState | null {
         phase !== 'barracks' && medicompV172.stage !== 'complete')) return null;
     if (workshopV174?.active && medicompV172 && medicompV172.stage !== 'complete') return null;
     if (workshopV174 && workshopV174.reports.some(report => report.tick <= (milestones['youth-camp-duel'] ?? Number.POSITIVE_INFINITY))) return null;
-    return { version: 1, phase, desert, patrol, cage, ...(medicompV172 ? { medicompV172 } : {}), ...(workshopV174 ? { workshopV174 } : {}), tick: v.tick, phaseTick: v.phaseTick, phaseStartedAt: v.phaseStartedAt, inputArmed: false, previousButtons: noButtons(), player, rival, rivalDecisionTicks: v.rivalDecisionTicks, practiceThreatened: v.practiceThreatened, jumpCleared: v.jumpCleared, cosmetic: v.cosmetic as YouthCosmetic | null, milestones, progress: { moveMarkers: p.moveMarkers as number, jumps: p.jumps as number, dodges: p.dodges as number, strikes: p.strikes as number, throws: p.throws as number, courseMarkers: p.courseMarkers as number, courseElapsed: p.courseElapsed as number, courseAttempts: p.courseAttempts as number, duelAttempts: p.duelAttempts as number } };
+    return { version: 1, phase, desert, patrol, cage, ...(medicompV172 ? { medicompV172 } : {}), ...(workshopV174 ? { workshopV174 } : {}), ...(firstWorkshopV176 ? { firstWorkshopV176 } : {}), tick: v.tick, phaseTick: v.phaseTick, phaseStartedAt: v.phaseStartedAt, inputArmed: false, previousButtons: noButtons(), player, rival, rivalDecisionTicks: v.rivalDecisionTicks, practiceThreatened: v.practiceThreatened, jumpCleared: v.jumpCleared, cosmetic: v.cosmetic as YouthCosmetic | null, milestones, progress: { moveMarkers: p.moveMarkers as number, jumps: p.jumps as number, dodges: p.dodges as number, strikes: p.strikes as number, throws: p.throws as number, courseMarkers: p.courseMarkers as number, courseElapsed: p.courseElapsed as number, courseAttempts: p.courseAttempts as number, duelAttempts: p.duelAttempts as number } };
 }

@@ -1,5 +1,6 @@
 import type { SaveGame } from "../types";
 import { nextYouthCityStopV172 } from "./youthCityErrandV172";
+import type { YouthWorkshopOpeningV176 } from "./youthWorkshopV174";
 
 export const CHILDHOOD_POST_V175 = { roomId: "training-hall", pointId: "training-service" } as const;
 export const CHILDHOOD_DRILLS_V175 = {
@@ -19,7 +20,7 @@ export const CHILDHOOD_TRAIL_SIGNS_V175 = [
   { x: 8, name: "Sons", actual: "Un bref appel se répète au pied du perchoir.", decoy: "L’écho vient du mur à gauche, au-delà de la borne." },
 ] as const;
 const vocabulary = ["ring", "beam", "spring", "track", "east", "west", "observe", "use", "track-sign",
-  "track-decoy", "show-map", "show-passage", "handoff", "reset-current"] as const;
+  "track-decoy", "show-map", "show-passage", "handoff", "first-mask", "first-blades", "reset-current"] as const;
 export type ChildhoodCommandV175 = typeof vocabulary[number];
 type ChildhoodEvent = Exclude<ChildhoodCommandV175, "reset-current">;
 type Drill = keyof typeof CHILDHOOD_DRILLS_V175;
@@ -39,13 +40,14 @@ export type ChildhoodViewV175 = {
   demonstrated: boolean;
   stowed: boolean;
   passed: boolean;
+  firstWorkshop: YouthWorkshopOpeningV176 | null;
   message: string;
 };
 type ChildhoodSave = Pick<SaveGame, "createdAt" | "homeworld" | "prologue">;
 type ChildhoodPlace = { roomId: string | null; pointId: string | null; suspended: boolean };
 const initial = (): ChildhoodViewV175 => ({
   trial: null, position: 0, beat: 0, drift: 0, finished: [], companion: null, track: null,
-  report: null, demonstrated: false, stowed: false, passed: false,
+  report: null, demonstrated: false, stowed: false, passed: false, firstWorkshop: null,
   message: "Choisis le premier atelier. Son camarade t’attendra à l’entrée.",
 });
 
@@ -131,13 +133,20 @@ function advance(view: ChildhoodViewV175, event: ChildhoodEvent): ChildhoodViewV
     if (event === "handoff" && view.report && !view.passed) return begin(view, "handoff", "Saar t’attend devant le poste de démonstration.");
     return null;
   }
+  if (trial === "handoff" && view.passed) {
+    if (view.firstWorkshop || view.position !== ACTOR_END.handoff || (event !== "first-mask" && event !== "first-blades")) return null;
+    const firstWorkshop = event === "first-mask" ? "mask" : "blades";
+    return { ...view, firstWorkshop, message: firstWorkshop === "mask"
+      ? "Le masque t’attend au premier atelier des baraquements."
+      : "Les lames t’attendent au premier atelier des baraquements." };
+  }
   if (event === "east" || event === "west") return move(view, trial, event === "east" ? 1 : -1);
   if (trial === "track") return trackStep(view, event);
   if (trial === "handoff") {
-    if (event !== "use" || view.passed) return null;
+    if (event !== "use") return null;
     if (view.position === 2 && !view.demonstrated) return { ...view, demonstrated: true, message: "Tu montres ton appui et Saar le reprend." };
     if (view.position === 4 && view.demonstrated && !view.stowed) return { ...view, stowed: true, message: "L’outil d’enfance est rangé dans son coffre." };
-    if (view.position === 7 && view.stowed) return { ...view, passed: true, message: "Saar t’accompagne de l’autre côté du râtelier." };
+    if (view.position === 7 && view.stowed) return { ...view, passed: true, message: "Saar franchit le râtelier avec toi et te laisse choisir ton premier atelier." };
     return null;
   }
   if (event === "observe" && trial !== "beam") return { ...view, beat: (view.beat + 1) % 20,
@@ -163,7 +172,7 @@ function markCheckpoint(before: ChildhoodViewV175, after: ChildhoodViewV175) {
 // retry indefinitely without filling the journal or losing a completed drill.
 function stateKey(view: ChildhoodViewV175) {
   return JSON.stringify([view.trial, view.position, view.beat, view.drift, view.finished, view.companion,
-    view.track, view.report, view.demonstrated, view.stowed, view.passed]);
+    view.track, view.report, view.demonstrated, view.stowed, view.passed, view.firstWorkshop]);
 }
 
 function inspect(raw: unknown) {
@@ -211,7 +220,9 @@ function selectJournal(result: ReturnType<typeof inspect>, event: ChildhoodComma
   return equivalent !== undefined && equivalent > 0 ? previous.slice(0, equivalent) : [...previous, event];
 }
 
-export function actChildhoodV175(save: ChildhoodSave, raw: unknown, event: ChildhoodCommandV175, place: ChildhoodPlace) {
+export function actChildhoodV175(
+  save: ChildhoodSave & Pick<SaveGame, "youthTraining">, raw: unknown, event: ChildhoodCommandV175, place: ChildhoodPlace,
+) {
   const result = inspect(raw);
   if (!hasChildhoodFoundationV175(save) || place.suspended ||
       place.roomId !== CHILDHOOD_POST_V175.roomId || place.pointId !== CHILDHOOD_POST_V175.pointId) {
@@ -219,6 +230,9 @@ export function actChildhoodV175(save: ChildhoodSave, raw: unknown, event: Child
   }
   if (raw != null && (!result || result.ledger.ownerCreatedAt !== save.createdAt)) {
     return { message: "Ce carnet d’exercice appartient à une autre jeunesse." };
+  }
+  if ((event === "first-mask" || event === "first-blades") && save.youthTraining) {
+    return { message: "Ton ordre de formation est déjà établi." };
   }
   const revision = (result?.ledger.revision ?? 0) + 1;
   if (event === "reset-current") {

@@ -6,17 +6,21 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { chromium } from 'playwright-core';
 import { createServer } from 'vite';
-import { saves } from '../tests/helpers/clan-ship-trophy-hearing-fixture.mjs';
+import { qa, saves } from '../tests/helpers/clan-ship-trophy-hearing-fixture.mjs';
+import { narrativeLongMemoryAdmission } from '../tests/helpers/senior-rite-campaign.mjs';
 import { completeLongMemoryAdmission } from '../tests/helpers/long-memory-r2-m055.mjs';
 
 const choice = process.env.ANCIENT_HEARING_AUDIENCE ?? 'local';
 assert.ok(['local', 'intimate'].includes(choice));
 const out = resolve(process.env.ANCIENT_HEARING_OUTPUT ?? 'outputs/qa-ancient-hearing-r2-m056');
 const commit = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
-const admitted = completeLongMemoryAdmission();
+const fullRite = process.env.ANCIENT_HEARING_RITE === '1';
+const model = qa.load('app/game/systems/ancientHearingR2M056.ts');
+const chronicle = qa.load('app/game/systems/clanChronicle.ts');
+const admitted = fullRite ? narrativeLongMemoryAdmission() : completeLongMemoryAdmission();
 const key = saves.SAVE_STORAGE_KEY;
-const report = { commit, choice, passed: false, visits: [], errors: [], missing: [], captures: [],
-  admission: 'Earlier chapters including M055 are established through the original reducers. Native input collects the three records, sets the audience, and reserves the meeting.' };
+const report = { commit, choice, fullRite, passed: false, visits: [], errors: [], missing: [], captures: [],
+  admission: 'Earlier chapters including M055 are established through their reducers. The narrative fixture supplies career honor and receives Elder from the new assembly action. Native input plays M056.' };
 await mkdir(out, { recursive: true });
 let browser, server, page;
 try {
@@ -123,11 +127,39 @@ try {
   await hearingAt(meetingRoom);
   assert.equal(await field.getAttribute('data-r2-m056-prepared'), 'true');
   assert.equal(await field.getAttribute('data-r2-m056-audience'), choice);
+  if (fullRite) {
+    const stations = [...model.ANCIENT_DEBT_POSTS, ...model.ANCIENT_SERVICE_POSTS];
+    for (const post of stations) {
+      await hearingAt(post.room);
+      await durable(order(post.order));
+      if (post.order === 'deliver-aid') await capture('dette-reglee');
+      if (post.order === 'second-relief') {
+        await page.reload();
+        await enter();
+        await hearingAt(post.room);
+        assert.equal(await field.getAttribute('data-r2-m056-years'), '225');
+      }
+    }
+    assert.equal(await field.getAttribute('data-r2-m056-years'), '325');
+    assert.equal(chronicle.getChronicleRank((await read()).prologue.chronicle), 'elder');
+    await hearingAt(meetingRoom);
+    await durable(order('recognize'));
+    await capture('reconnaissance');
+    await page.reload();
+    await enter();
+    await hearingAt(meetingRoom);
+    assert.equal(await field.getAttribute('data-r2-m056-recognized'), 'true');
+  }
   const final = await read();
   assert.deepEqual(final.clanShipOperations.longMemory, admitted.clanShipOperations.longMemory);
   assert.deepEqual(final.missionProgress, admitted.missionProgress);
-  assert.deepEqual(final.profile, admitted.profile);
-  assert.deepEqual(final.prologue, admitted.prologue);
+  if (fullRite) {
+    assert.equal(chronicle.getChronicleRank(final.prologue.chronicle), 'ancient');
+    assert.ok(saves.parseSaveImport(saves.exportSave(final)).save);
+  } else {
+    assert.deepEqual(final.profile, admitted.profile);
+    assert.deepEqual(final.prologue, admitted.prologue);
+  }
   assert.deepEqual(final.originV151, admitted.originV151);
   assert.deepEqual(report.errors, []);
   assert.deepEqual(report.missing, []);
