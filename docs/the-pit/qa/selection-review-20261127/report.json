@@ -1,0 +1,118 @@
+{
+  "generatedAt": "2026-11-27T08:08:42.762Z",
+  "scope": "Actual GreybackSelectionReview and CSS with real PNGs; actual Next Image (unoptimized) and Link bundled. One CJS/ESM export shim selects next/dist/client/image-component.Image; it does not replace the image renderer. Production client environment defaults supplied. Component harness, not a full Next router/server. No combat animation, art admission or 1:1 certification.",
+  "sourceHashes": {
+    "app/pit-lab/selection/GreybackSelectionReview.tsx": "2306c58a686f0583ae05029d59c9db864feff85e42815011750592b8d28b0cb6",
+    "app/pit-lab/selection/GreybackSelectionReview.module.css": "64738e00655b510e8319807d5c3c48b82798308ad671d20c2f111d6e1a6d00e4",
+    "app/pit-lab/selection/page.tsx": "94222ea91525d9e835a0c0f7268fe800e7b0181cac914feff2d85a16496059b7"
+  },
+  "browser": "158.0.8127.0",
+  "checks": [
+    {
+      "name": "six public PNGs and five generated outputs match the provenance manifest",
+      "status": "pass",
+      "details": {
+        "publicPngs": 6,
+        "generatedOutputs": 5,
+        "distinctPoses": 4,
+        "admittedClips": 0
+      }
+    },
+    {
+      "name": "desktop shows the exact reference and first corrected candidate as unadmitted",
+      "status": "pass"
+    },
+    {
+      "name": "all four poses and the first revision toggle select only the requested static file",
+      "status": "pass"
+    },
+    {
+      "name": "overlay, light background and image proportions stay review-only without storage writes",
+      "status": "pass",
+      "details": {
+        "geometry": [
+          {
+            "fit": "contain",
+            "transform": "none",
+            "animation": "none",
+            "ratio": 0.6666666666666666,
+            "naturalRatio": 0.6666666666666666
+          },
+          {
+            "fit": "contain",
+            "transform": "none",
+            "animation": "none",
+            "ratio": 0.6666666666666666,
+            "naturalRatio": 0.6666666666666666
+          },
+          {
+            "fit": "contain",
+            "transform": "none",
+            "animation": "none",
+            "ratio": 0.6666666666666666,
+            "naturalRatio": 0.6666666666666666
+          }
+        ],
+        "noAutoplay": true,
+        "storageWrites": 0
+      }
+    },
+    {
+      "name": "keyboard activation selects a pose and retains a visible focus",
+      "status": "pass"
+    },
+    {
+      "name": "mobile touch controls, stacked comparison and reduced motion fit the viewport",
+      "status": "pass"
+    },
+    {
+      "name": "missing candidate shows a clear error and never substitutes the reference overlay",
+      "status": "pass"
+    },
+    {
+      "name": "missing source reports that comparison cannot be validated and suppresses its overlay",
+      "status": "pass"
+    },
+    {
+      "name": "no uncaught errors or resource failures beyond the two intentional image faults",
+      "status": "pass"
+    }
+  ],
+  "screenshots": [
+    "greyback-review-desktop.png",
+    "greyback-review-overlay-light.png",
+    "greyback-review-mobile.png",
+    "greyback-review-candidate-error.png"
+  ],
+  "pageErrors": [],
+  "consoleErrors": [
+    {
+      "fault": "preview-calm-01-right-equipment-v2.png",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "fault": "reference-original.png",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    }
+  ],
+  "httpFailures": [],
+  "failedRequests": [
+    {
+      "fault": "preview-calm-01-right-equipment-v2.png",
+      "url": "http://127.0.0.1:42861/game/review/the-pit/greyback-unmasked-20261127/preview-calm-01-right-equipment-v2.png",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "fault": "reference-original.png",
+      "url": "http://127.0.0.1:42861/game/review/the-pit/greyback-unmasked-20261127/reference-original.png",
+      "error": "net::ERR_FAILED"
+    }
+  ],
+  "summary": {
+    "passed": 9,
+    "failed": 0,
+    "pageErrors": 0,
+    "unexpectedHttpFailures": 0,
+    "intentionalImageFailures": 2
+  }
+}

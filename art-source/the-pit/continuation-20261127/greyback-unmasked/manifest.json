@@ -1,0 +1,666 @@
+{
+  "schemaVersion": 1,
+  "batchId": "pit-greyback-unmasked-selection-candidates-20261127",
+  "updatedAt": "2026-11-27T08:03:13.781496+00:00",
+  "fighterId": "greyback",
+  "variantId": "elder-greyback-sans-casque-7955bb66ac",
+  "status": "candidates-not-admitted",
+  "sourceIdentityStatus": "source-labelled",
+  "oneToOneCertified": false,
+  "runtimeAdmitted": false,
+  "humanArtReview": "required",
+  "generatedImageCount": 5,
+  "nativeAnimationClipsEnabled": 0,
+  "reference": {
+    "file": "reference-original.png",
+    "sourceRepositoryPath": "public/game/sprites/v44/user-hunters/7955bb66ac7c438237fe99e58f1be69c506cbaa475c60e220b9291358148ea04.png",
+    "sourceManifest": "app/game/data/pitUserHuntersV44.json",
+    "sha256": "7955bb66ac7c438237fe99e58f1be69c506cbaa475c60e220b9291358148ea04",
+    "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+    "sourceEntry": "YAUTJA_NECA_84_PAIRES/02_LOST_TRIBE/elder_greyback/sans_casque.png",
+    "sourceLabel": "Elder Greyback / Lost Tribe, unmasked supplied appearance",
+    "nativeFacing": "right",
+    "historicalPivot": [
+      516,
+      1507
+    ],
+    "size": [
+      1024,
+      1536
+    ],
+    "sourceUrls": [
+      "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/"
+    ],
+    "primaryPageCheck": {
+      "status": "unavailable-http-403",
+      "date": "2026-11-27",
+      "meaning": "The source-labelled project PNG is the visual reference; no new independent canon certification is claimed."
+    }
+  },
+  "missingSlotEvidence": [
+    "app/game/systems/pitSelectionPresentationV1.ts explicitly reports native select/deselect drawings unavailable.",
+    "app/game/data/pitLifecycleGreybackV94.json covers masked Greyback victory only, not selection/deselection for this unmasked variant."
+  ],
+  "constraints": [
+    "One new PNG per pose; no sprite sheet, montage, mirror or recolor.",
+    "No Python image edits, crop, re-alpha, resize or pixel rewrite. Only byte copies and read-only image measurements.",
+    "The previously refused Jungle Hunter generation remains untouched; this is a materially distinct calm Greyback request.",
+    "No admission registration, runtime replacement, timing, hitbox, combat or PitCanvas changes."
+  ],
+  "entries": [
+    {
+      "id": "preview-calm-01-right",
+      "file": "preview-calm-01-right.png",
+      "sha256": "b54137ef24c02d551fca4ef5e14df36bb7c5e4c02a2183198c7ba3474249806e",
+      "bytes": 2427362,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "intendedFacing": "right",
+      "role": "preview/selection candidate",
+      "status": "candidate-not-admitted",
+      "humanReview": "required",
+      "oneToOneCertified": false,
+      "runtimeAdmitted": false,
+      "promptFile": "preview-calm-01-right.prompt.txt",
+      "promptSha256": "e71a3d2885450fda4bf8d690f0021a22aaa5520ff794001695fd4ba43e43c609",
+      "generator": "builtin image_gen.imagegen",
+      "originalOutputBasename": "exec-5da42d76-43fc-4514-9396-78efce436184.png",
+      "inputImages": [
+        "reference-original.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "measurementsFile": "preview-calm-01-right.measurements.json",
+      "technicalSummary": {
+        "transparentAlpha": true,
+        "alphaZeroPercent": 61.37625376383463,
+        "maxEdgeAlpha": 1,
+        "noOpaqueBorderPixels": true,
+        "oneImageOnePose": true,
+        "footBand": {
+          "alphaThreshold": 127,
+          "band": [
+            0,
+            1380,
+            1024,
+            1536
+          ],
+          "leftBounds": [
+            101,
+            1380,
+            285,
+            1510
+          ],
+          "rightBounds": [
+            689,
+            1380,
+            921,
+            1490
+          ],
+          "lowestOpaqueY": 1509,
+          "footSpanPixels": 820,
+          "spanCenterX": 511.0
+        },
+        "footDeltaVsFirstCandidate": {
+          "left": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "right": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "lowestOpaqueY": 0,
+          "spanCenterX": 0.0
+        }
+      },
+      "visualReview": [
+        "Empty hand is open and lower than the reference; head inclination is less downward than requested.",
+        "Sword-side wrist blades are visibly shorter/more compact than the extended source assembly. The prompt required preservation, so this is an observed discrepancy, not an approved retraction.",
+        "Pistol and holster remain visible but their proportions and contours are not a verified 1:1 match to the supplied source.",
+        "Small skull ornaments, ring details, facial contours and armor surface patterns are redrawn; exact continuity is not established."
+      ],
+      "blockingFindings": [
+        "wrist-blade-deployment-mismatch",
+        "source-stance-width-not-preserved",
+        "equipment-and-small-detail-review-required"
+      ],
+      "derivativePixelOperations": []
+    },
+    {
+      "id": "preview-acknowledge-02-right",
+      "file": "preview-acknowledge-02-right.png",
+      "sha256": "c1093504138bfa5d7402fce8873b175ff05ff8c15802d4faef1b9e9867304086",
+      "bytes": 2411719,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "intendedFacing": "right",
+      "role": "selection acknowledgment candidate",
+      "status": "candidate-not-admitted",
+      "humanReview": "required",
+      "oneToOneCertified": false,
+      "runtimeAdmitted": false,
+      "promptFile": "preview-acknowledge-02-right.prompt.txt",
+      "promptSha256": "d56fb97ef32674fe9a22264ff1fac35d472bd049b10cd420b7b9352b93b109da",
+      "generator": "builtin image_gen.imagegen",
+      "originalOutputBasename": "exec-4135f77d-209c-4983-96e0-4451871cbc09.png",
+      "inputImages": [
+        "preview-calm-01-right.png",
+        "reference-original.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "measurementsFile": "preview-acknowledge-02-right.measurements.json",
+      "technicalSummary": {
+        "transparentAlpha": true,
+        "alphaZeroPercent": 61.54772440592448,
+        "maxEdgeAlpha": 1,
+        "noOpaqueBorderPixels": true,
+        "oneImageOnePose": true,
+        "footBand": {
+          "alphaThreshold": 127,
+          "band": [
+            0,
+            1380,
+            1024,
+            1536
+          ],
+          "leftBounds": [
+            101,
+            1380,
+            285,
+            1511
+          ],
+          "rightBounds": [
+            690,
+            1380,
+            921,
+            1490
+          ],
+          "lowestOpaqueY": 1510,
+          "footSpanPixels": 820,
+          "spanCenterX": 511.0
+        },
+        "footDeltaVsFirstCandidate": {
+          "left": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "right": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "lowestOpaqueY": 1,
+          "spanCenterX": 0.0
+        }
+      },
+      "visualReview": [
+        "Head inclines and empty hand lowers; the hand displacement is larger than the requested small adjustment.",
+        "The compact wrist-blade discrepancy from the first candidate remains.",
+        "Pistol and holster remain visible but their proportions and contours are not a verified 1:1 match to the supplied source.",
+        "Small skull ornaments, ring details, facial contours and armor surface patterns are redrawn; exact continuity is not established."
+      ],
+      "blockingFindings": [
+        "wrist-blade-deployment-mismatch",
+        "source-stance-width-not-preserved",
+        "equipment-and-small-detail-review-required"
+      ],
+      "derivativePixelOperations": []
+    },
+    {
+      "id": "deselection-rest-01-right",
+      "file": "deselection-rest-01-right.png",
+      "sha256": "20764f752990bea795e4e89ae7061d4b976d194afd38211c2dc9ed177efb9c13",
+      "bytes": 2417590,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "intendedFacing": "right",
+      "role": "independently generated deselection candidate",
+      "status": "candidate-not-admitted",
+      "humanReview": "required",
+      "oneToOneCertified": false,
+      "runtimeAdmitted": false,
+      "promptFile": "deselection-rest-01-right.prompt.txt",
+      "promptSha256": "ba89a7deeeb600e5cc5ad9f57de2ebeaee90726f0ccbb2d28d6e5492f9f94ecb",
+      "generator": "builtin image_gen.imagegen",
+      "originalOutputBasename": "exec-81c4195f-c753-4c9d-a84b-a8e98e8b1ac4.png",
+      "inputImages": [
+        "preview-calm-01-right.png",
+        "reference-original.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "measurementsFile": "deselection-rest-01-right.measurements.json",
+      "technicalSummary": {
+        "transparentAlpha": true,
+        "alphaZeroPercent": 61.5838368733724,
+        "maxEdgeAlpha": 1,
+        "noOpaqueBorderPixels": true,
+        "oneImageOnePose": true,
+        "footBand": {
+          "alphaThreshold": 127,
+          "band": [
+            0,
+            1380,
+            1024,
+            1536
+          ],
+          "leftBounds": [
+            101,
+            1380,
+            285,
+            1511
+          ],
+          "rightBounds": [
+            690,
+            1380,
+            921,
+            1490
+          ],
+          "lowestOpaqueY": 1510,
+          "footSpanPixels": 820,
+          "spanCenterX": 511.0
+        },
+        "footDeltaVsFirstCandidate": {
+          "left": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "right": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "lowestOpaqueY": 1,
+          "spanCenterX": 0.0
+        }
+      },
+      "visualReview": [
+        "Empty hand drops beside the thigh and head turns slightly toward viewer; this is an independently generated exit drawing.",
+        "The compact wrist-blade discrepancy remains; newly exposed wrist surfaces are reconstructed, not certified.",
+        "Pistol and holster remain visible but their proportions and contours are not a verified 1:1 match to the supplied source.",
+        "Small skull ornaments, ring details, facial contours and armor surface patterns are redrawn; exact continuity is not established."
+      ],
+      "blockingFindings": [
+        "wrist-blade-deployment-mismatch",
+        "source-stance-width-not-preserved",
+        "equipment-and-small-detail-review-required"
+      ],
+      "derivativePixelOperations": []
+    },
+    {
+      "id": "deselection-rest-02-right",
+      "file": "deselection-rest-02-right.png",
+      "sha256": "6bf64d4dc693ff7fcd77dad9d8b0584351c722e3e4b8341479932df54e2d0730",
+      "bytes": 2399253,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "intendedFacing": "right",
+      "role": "independently generated deselection settling candidate",
+      "status": "candidate-not-admitted",
+      "humanReview": "required",
+      "oneToOneCertified": false,
+      "runtimeAdmitted": false,
+      "promptFile": "deselection-rest-02-right.prompt.txt",
+      "promptSha256": "c2e17191f1c8e374ef8bee351aabce8724d5ff2bf018b7518b5a931cfa89bbd0",
+      "generator": "builtin image_gen.imagegen",
+      "originalOutputBasename": "exec-02b01c34-87f5-4a19-a2c8-a7fadb8dcde4.png",
+      "inputImages": [
+        "deselection-rest-01-right.png",
+        "reference-original.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "measurementsFile": "deselection-rest-02-right.measurements.json",
+      "technicalSummary": {
+        "transparentAlpha": true,
+        "alphaZeroPercent": 61.01538340250651,
+        "maxEdgeAlpha": 1,
+        "noOpaqueBorderPixels": true,
+        "oneImageOnePose": true,
+        "footBand": {
+          "alphaThreshold": 127,
+          "band": [
+            0,
+            1380,
+            1024,
+            1536
+          ],
+          "leftBounds": [
+            99,
+            1380,
+            285,
+            1512
+          ],
+          "rightBounds": [
+            688,
+            1380,
+            922,
+            1493
+          ],
+          "lowestOpaqueY": 1511,
+          "footSpanPixels": 823,
+          "spanCenterX": 510.5
+        },
+        "footDeltaVsFirstCandidate": {
+          "left": [
+            -2,
+            0,
+            0,
+            2
+          ],
+          "right": [
+            -1,
+            0,
+            1,
+            3
+          ],
+          "lowestOpaqueY": 2,
+          "spanCenterX": -0.5
+        }
+      },
+      "visualReview": [
+        "Head turns back toward screen right and mandibles relax slightly; this is an independently generated exit drawing.",
+        "The compact wrist-blade discrepancy remains. Skin highlights and cloth/armor microdetail appear warmer or altered relative to earlier candidates.",
+        "Pistol and holster remain visible but their proportions and contours are not a verified 1:1 match to the supplied source.",
+        "Small skull ornaments, ring details, facial contours and armor surface patterns are redrawn; exact continuity is not established."
+      ],
+      "blockingFindings": [
+        "wrist-blade-deployment-mismatch",
+        "source-stance-width-not-preserved",
+        "equipment-and-small-detail-review-required"
+      ],
+      "derivativePixelOperations": []
+    },
+    {
+      "id": "preview-calm-01-right-equipment-v2",
+      "file": "preview-calm-01-right-equipment-v2.png",
+      "sha256": "f1f20754d5dc213ea6470934525cc7770462a909f9d1ef96c06cc2ef0fa04e4e",
+      "bytes": 2465385,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "intendedFacing": "right",
+      "role": "equipment-corrected preview/selection candidate",
+      "status": "candidate-not-admitted",
+      "humanReview": "required",
+      "oneToOneCertified": false,
+      "runtimeAdmitted": false,
+      "promptFile": "preview-calm-01-right-equipment-v2.prompt.txt",
+      "promptSha256": "50326eac9ee9a132c0a5dc512ad27a74bdfc2195bb50428f9b6dc7d9d043af79",
+      "generator": "builtin image_gen.imagegen",
+      "originalOutputBasename": "exec-afd32cbf-6c01-4f0f-b4b0-6501944c74a5.png",
+      "inputImages": [
+        "preview-calm-01-right.png",
+        "reference-original.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "measurementsFile": "preview-calm-01-right-equipment-v2.measurements.json",
+      "technicalSummary": {
+        "transparentAlpha": true,
+        "alphaZeroPercent": 60.52697499593099,
+        "maxEdgeAlpha": 1,
+        "noOpaqueBorderPixels": true,
+        "oneImageOnePose": true,
+        "footBand": {
+          "alphaThreshold": 127,
+          "band": [
+            0,
+            1380,
+            1024,
+            1536
+          ],
+          "leftBounds": [
+            101,
+            1380,
+            288,
+            1511
+          ],
+          "rightBounds": [
+            690,
+            1380,
+            921,
+            1490
+          ],
+          "lowestOpaqueY": 1510,
+          "footSpanPixels": 820,
+          "spanCenterX": 511.0
+        },
+        "footDeltaVsFirstCandidate": {
+          "left": [
+            0,
+            0,
+            3,
+            1
+          ],
+          "right": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "lowestOpaqueY": 1,
+          "spanCenterX": 0.0
+        }
+      },
+      "visualReview": [
+        "Visible improvement: long curved wrist-blade assembly restored beyond the sword-side wrist.",
+        "Visible improvement: long pistol barrel and fittings restored in the holster. Exact contours and relative proportions still require reference comparison.",
+        "Original candidate pose and foot anchor remain close; occupied foot-band coordinates differ by at most 3 pixels.",
+        "Small ornament count/contours, facial details and surface patterns remain unverified.",
+        "The roughly18 percent narrower stance relative to the original source is preserved because this revision explicitly locked the candidate pose."
+      ],
+      "blockingFindings": [
+        "source-stance-width-not-preserved",
+        "exact-equipment-contours-unverified",
+        "small-detail-review-required"
+      ],
+      "derivativePixelOperations": [],
+      "revisionOf": "preview-calm-01-right"
+    }
+  ],
+  "comparison": {
+    "method": "Read-only alpha >127 foot band y1380..1535; half-open occupied-pixel bounds. These are display measurements, not certified anatomical sprite pivots.",
+    "referenceFootBand": {
+      "alphaThreshold": 127,
+      "band": [
+        0,
+        1380,
+        1024,
+        1536
+      ],
+      "leftBounds": [
+        15,
+        1380,
+        203,
+        1508
+      ],
+      "rightBounds": [
+        783,
+        1380,
+        1017,
+        1479
+      ],
+      "lowestOpaqueY": 1507,
+      "footSpanPixels": 1002,
+      "spanCenterX": 516.0
+    },
+    "candidateFootSpansPixels": {
+      "preview-calm-01-right": 820,
+      "preview-acknowledge-02-right": 820,
+      "deselection-rest-01-right": 820,
+      "deselection-rest-02-right": 823,
+      "preview-calm-01-right-equipment-v2": 820
+    },
+    "referenceFootSpanPixels": 1002,
+    "stanceWidthDifferencePercent": {
+      "preview-calm-01-right": -18.16367265469062,
+      "preview-acknowledge-02-right": -18.16367265469062,
+      "deselection-rest-01-right": -18.16367265469062,
+      "deselection-rest-02-right": -17.864271457085824,
+      "preview-calm-01-right-equipment-v2": -18.16367265469062
+    },
+    "maxCandidateFootBoxDriftPixels": 3,
+    "interpretation": "Candidates are mutually close in foot placement but stand about 18 percent narrower than the supplied reference. Matching an anchor does not prove matching equipment or canonical proportions."
+  },
+  "admissionDecision": {
+    "status": "not-eligible-for-automatic-runtime-admission",
+    "reasons": [
+      "The original four poses have visibly compact wrist blades compared with the source. The separate corrected preview01 visibly improves the long blade and pistol, but exact equipment contours remain unapproved.",
+      "The source-to-candidate stance width changed substantially, from 1002px to 820–823px in the measured foot band.",
+      "Pistol, ornaments, face and surface detail require direct human comparison.",
+      "Only the first pose received its equipment correction. The second correction was blocked by image generation; two related corrections were not attempted."
+    ],
+    "nextAction": "Stop related correction attempts after the recorded refusal. Present the original four candidates and the single received revision for comparison, with no game promotion. Any future production must retain the refusal and require new appropriate instructions/review."
+  },
+  "publicCopies": "Not created by this agent. Parent may copy the five candidates and the source reference byte-for-byte for the lab-only comparison page.",
+  "measurementsFile": "measurements.json",
+  "previewPagePurpose": "Human comparison only; any gallery display is not game admission or approval.",
+  "referenceImageCount": 1,
+  "successfulEquipmentRevisionCount": 1,
+  "blockedEquipmentRevisionCount": 1,
+  "summary": "Four original candidate poses plus one separate equipment correction of preview01. Five generated PNGs actually received; one source reference copy. No runtime admission or 1:1 certification.",
+  "generationAttempts": [
+    {
+      "assetId": "preview-calm-01-right",
+      "status": "generated",
+      "generator": "builtin image_gen.imagegen",
+      "outputBasename": "exec-5da42d76-43fc-4514-9396-78efce436184.png",
+      "outputFile": "preview-calm-01-right.png",
+      "outputSha256": "b54137ef24c02d551fca4ef5e14df36bb7c5e4c02a2183198c7ba3474249806e",
+      "promptFile": "preview-calm-01-right.prompt.txt",
+      "inputImages": [
+        "reference-original.png"
+      ]
+    },
+    {
+      "assetId": "preview-acknowledge-02-right",
+      "status": "generated",
+      "generator": "builtin image_gen.imagegen",
+      "outputBasename": "exec-4135f77d-209c-4983-96e0-4451871cbc09.png",
+      "outputFile": "preview-acknowledge-02-right.png",
+      "outputSha256": "c1093504138bfa5d7402fce8873b175ff05ff8c15802d4faef1b9e9867304086",
+      "promptFile": "preview-acknowledge-02-right.prompt.txt",
+      "inputImages": [
+        "preview-calm-01-right.png",
+        "reference-original.png"
+      ]
+    },
+    {
+      "assetId": "deselection-rest-01-right",
+      "status": "generated",
+      "generator": "builtin image_gen.imagegen",
+      "outputBasename": "exec-81c4195f-c753-4c9d-a84b-a8e98e8b1ac4.png",
+      "outputFile": "deselection-rest-01-right.png",
+      "outputSha256": "20764f752990bea795e4e89ae7061d4b976d194afd38211c2dc9ed177efb9c13",
+      "promptFile": "deselection-rest-01-right.prompt.txt",
+      "inputImages": [
+        "preview-calm-01-right.png",
+        "reference-original.png"
+      ]
+    },
+    {
+      "assetId": "deselection-rest-02-right",
+      "status": "generated",
+      "generator": "builtin image_gen.imagegen",
+      "outputBasename": "exec-02b01c34-87f5-4a19-a2c8-a7fadb8dcde4.png",
+      "outputFile": "deselection-rest-02-right.png",
+      "outputSha256": "6bf64d4dc693ff7fcd77dad9d8b0584351c722e3e4b8341479932df54e2d0730",
+      "promptFile": "deselection-rest-02-right.prompt.txt",
+      "inputImages": [
+        "deselection-rest-01-right.png",
+        "reference-original.png"
+      ]
+    },
+    {
+      "assetId": "preview-calm-01-right-equipment-v2",
+      "status": "generated",
+      "generator": "builtin image_gen.imagegen",
+      "outputBasename": "exec-afd32cbf-6c01-4f0f-b4b0-6501944c74a5.png",
+      "outputFile": "preview-calm-01-right-equipment-v2.png",
+      "outputSha256": "f1f20754d5dc213ea6470934525cc7770462a909f9d1ef96c06cc2ef0fa04e4e",
+      "promptFile": "preview-calm-01-right-equipment-v2.prompt.txt",
+      "inputImages": [
+        "preview-calm-01-right.png",
+        "reference-original.png"
+      ]
+    },
+    {
+      "assetId": "preview-acknowledge-02-right-equipment-v2",
+      "status": "blocked_generation",
+      "generator": "builtin image_gen.imagegen",
+      "promptFile": "preview-acknowledge-02-right-equipment-v2.prompt.txt",
+      "promptSha256": "8ea4b54688cc3c0169364eeaa1e15c6d8de39143fb39b9bd0b44121d50bf4aa2",
+      "inputImages": [
+        "preview-acknowledge-02-right.png",
+        "reference-original.png",
+        "preview-calm-01-right-equipment-v2.png"
+      ],
+      "outputFile": null,
+      "error": {
+        "httpStatus": 400,
+        "code": "moderation_blocked",
+        "stage": "output",
+        "categories": [
+          "other"
+        ],
+        "requestId": "e1aeabc0-a62a-4ae5-940c-a39de21d5878"
+      },
+      "followup": "No reformulation, retry, substitute model, CLI fallback or related equipment-correction generation attempted after this refusal."
+    }
+  ],
+  "remainingEquipmentRevisions": [
+    {
+      "assetId": "preview-acknowledge-02-right-equipment-v2",
+      "status": "blocked_generation",
+      "outputFile": null
+    },
+    {
+      "assetId": "deselection-rest-01-right-equipment-v2",
+      "status": "not_attempted_after_related_generation_block",
+      "outputFile": null
+    },
+    {
+      "assetId": "deselection-rest-02-right-equipment-v2",
+      "status": "not_attempted_after_related_generation_block",
+      "outputFile": null
+    }
+  ],
+  "fileTotals": {
+    "generatedPngFiles": 5,
+    "generatedPngBytes": 12121309,
+    "sourceReferencePngFiles": 1,
+    "sourceReferencePngBytes": 2483837,
+    "totalPngFilesInSourceFolder": 6
+  },
+  "verification": {
+    "allReferencedGeneratedFilesExist": true,
+    "allGeneratedSha256Match": true,
+    "allFive1024x1536RgbaWithTrueAlpha": true,
+    "allFiveHaveNoOpaquePixelsOnOuterBorder": true,
+    "allFiveRemainUnadmitted": true,
+    "imagePixelsModifiedAfterGeneration": false,
+    "pythonUsage": "Read-only measurements and byte-identical copies; only JSON reports are written."
+  }
+}
