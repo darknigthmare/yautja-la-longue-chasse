@@ -1,6 +1,6 @@
 "use client";
 
-import type { KeyboardEvent } from "react";
+import { useEffect, type KeyboardEvent } from "react";
 import HomeworldCivilianV72 from "./HomeworldCivilianV72";
 import { NURSERY_ART_MANIFEST } from "./nurseryArtManifest";
 import {
@@ -121,10 +121,17 @@ function TrainingSpace({ view }: { view: ChildhoodViewV175 }) {
   </div>;
 }
 
-export default function HomeworldChildhoodV175({ view, message, paused, mayEnter, trainingStarted, onAction, onEnter }: {
+export type ChildhoodCeremonyAudioV175 = "outside" | "active" | "paused";
+
+export default function HomeworldChildhoodV175({ view, message, paused, mayEnter, trainingStarted, onAction, onEnter, onCeremonyAudio }: {
   view: ChildhoodViewV175; message: string; paused: boolean; mayEnter: boolean; trainingStarted: boolean;
   onAction(action: ChildhoodCommandV175): void; onEnter(): void;
+  onCeremonyAudio?(state: ChildhoodCeremonyAudioV175): void;
 }) {
+  const inCeremony = view.trial === "handoff" && view.ceremony && (!view.passed || view.rackAccess === "pending");
+  const ceremonyAudio = !inCeremony ? "outside" : paused ? "paused" : "active";
+  useEffect(() => { onCeremonyAudio?.(ceremonyAudio); }, [ceremonyAudio, onCeremonyAudio]);
+  useEffect(() => () => onCeremonyAudio?.("outside"), [onCeremonyAudio]);
   const options = childhoodOptionsV175(view).filter(action =>
     !trainingStarted || (action !== "first-mask" && action !== "first-blades"));
   const sign = childhoodTrackSignV175(view);

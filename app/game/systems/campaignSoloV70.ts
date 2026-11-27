@@ -1,5 +1,5 @@
 import type { SaveGame } from '../types';
-import { SOLO_V70_DEPTH_POSTS_M017, SOLO_V70_PURGE_M017, SOLO_V70_GALLERY_M017,
+import { SOLO_V70_DEPTH_POSTS_M017, SOLO_V70_PURGE_M017, SOLO_V70_GALLERY_M017, SOLO_V70_ROYAL_M017,
   soloV70DepthPostM017, soloV70DepthAppuisM017, soloV70PurgeRemainingM017 } from './firstHuntSoloV70DepthsM017';
 import { normalizeSoloV69Campaign, soloV69MatchesSave, templeRankKeepsEarlierTrialV174 } from './campaignSoloV69';
 import { normalizeSoloV90Campaign, soloV90AtTempleHandoffM017 } from './campaignSoloV90Progress';
@@ -59,7 +59,7 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
  const oldDepths = old.depthsM017, nextDepths = next.depthsM017;
  const startedRelay = !oldDepths?.relay && !!nextDepths?.relay;
  const previousExtension = oldDepths?.extension, nextExtension = nextDepths?.extension;
- const pendingPost = previousExtension && soloV70DepthPostM017(old.room);
+ const pendingPost = previousExtension && soloV70DepthPostM017(old.room, !!previousExtension.royal);
  if (Boolean(previousExtension) !== Boolean(nextExtension)) return null;
  if (previousExtension && nextExtension) {
    const previousGallery = previousExtension.gallery, gallery = nextExtension.gallery;
@@ -75,6 +75,22 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
          next.player.vx !== 0 || next.player.vy !== 0 || !near(room, x, y, 38) || old.scan + delta < holdTicks ||
          next.scan !== 0 || !same(gallery.screened, soloV70TrioObservation(next, 3)))) return null;
    }
+   const previousRoyal = previousExtension.royal, royal = nextExtension.royal;
+   if (Boolean(previousRoyal) !== Boolean(royal)) return null;
+   if (previousRoyal && royal) {
+     const { room, x, y } = SOLO_V70_ROYAL_M017;
+     if (previousRoyal.startedAt !== royal.startedAt && (
+       previousRoyal.startedAt !== null || royal.startedAt !== next.tick || !previousExtension.observations['containment-screen'] ||
+       old.phase !== 'return' || old.room !== room || !near(room, x, y, 38) || next.player.vx !== 0 ||
+       !soloV70TrioPresent(next)
+     )) return null;
+     if (previousRoyal.evade) {
+       if (!same(previousRoyal.evade, royal.evade)) return null;
+     } else if (royal.evade && (
+       previousRoyal.startedAt === null || old.phase !== 'return' || old.room !== room || next.room !== room ||
+       !same(royal.evade, { tick: next.tick, x: next.player.x, y: next.player.y })
+     )) return null;
+   }
    const { purgeStartedAt } = nextExtension;
    if (purgeStartedAt !== previousExtension.purgeStartedAt &&
        (pendingPost?.id !== 'vent-purge' || nextExtension.observations['vent-purge'] || soloV70PurgeRemainingM017(next) !== SOLO_V70_PURGE_M017.duration ||
@@ -82,7 +98,8 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
         previousExtension.purgeStartedAt !== null && next.tick - previousExtension.purgeStartedAt < SOLO_V70_PURGE_M017.duration ||
         old.phase !== 'return' || next.player.vx !== 0 || old.scan + delta < SOLO_V70_PURGE_M017.holdTicks ||
         next.scan !== 0 || purgeStartedAt !== next.tick)) return null;
-   for (const post of SOLO_V70_DEPTH_POSTS_M017) {
+   for (const candidate of SOLO_V70_DEPTH_POSTS_M017) {
+     const post = soloV70DepthPostM017(candidate.room, !!royal)!;
      const prior = previousExtension.observations[post.id], recorded = nextExtension.observations[post.id];
      if (prior) {
        if (!same(prior, recorded)) return null;
@@ -92,6 +109,7 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
          : soloV70TrioPresent(next);
        if (!party || old.phase !== 'return' || old.room !== post.room || !near(post.room, post.x, post.y, 38) ||
            next.player.vx !== 0 || old.scan + delta < post.holdTicks || next.scan !== 0 || next.companionMode !== 'follow' ||
+           post.id === 'royal-lock' && previousRoyal && !previousRoyal.evade ||
            post.id === 'vent-purge' && (!previousExtension.purgeStartedAt || next.tick - previousExtension.purgeStartedAt >= SOLO_V70_PURGE_M017.duration) ||
            !same(recorded, soloV70TrioObservation(next, 3))) return null;
      }

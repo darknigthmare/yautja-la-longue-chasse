@@ -19,8 +19,8 @@ test("inventory covers every declared effect, biome and music context without re
     "canopy-grab", "canopy-release", "victory", "defeat",
     "vacuum-step", "vacuum-impact", "vacuum-energy",
   ].sort(), "the declared optional slots retain every native effect, including pod, field, canopy and vacuum events");
-  assert.equal(expected.filter(slot => slot.category === "ambience").length, 9);
-  assert.equal(expected.filter(slot => slot.category === "music").length, 8);
+  assert.equal(expected.filter(slot => slot.category === "ambience").length, 10);
+  assert.equal(expected.filter(slot => slot.category === "music").length, 9);
   await fixture(async root => {
     const result = await buildAudioManifest({ root: path.join(root, "absent"), slots, write: false });
     assert.equal(result.manifest.entries.length, 2);
