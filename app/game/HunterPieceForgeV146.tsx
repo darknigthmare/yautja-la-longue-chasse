@@ -459,6 +459,10 @@ function WeaponForgeMaterialsV146({ save, disabled, huntBlocksUpgrade, onUpgrade
         <p className={styles.note} data-forge-weapon-stats>
           Dégâts {currentStats.damage} → {nextStats.damage}
           {" · "}Délai {currentStats.cooldownSeconds} s → {nextStats.cooldownSeconds} s
+          {weapon === "yautja-bow" && <>
+            {" · "}Portée {currentStats.rangePx} → {nextStats.rangePx}
+            {" · "}Flèches {currentStats.ammo} → {nextStats.ammo}
+          </>}
         </p>
         {([
           { partId: "bone", label: "Os secondaire", value: bone, change: setBone },
@@ -489,7 +493,7 @@ function WeaponForgeMaterialsV146({ save, disabled, huntBlocksUpgrade, onUpgrade
           Forger le niveau {recipe.nextLevel}
         </button>
       </> : <p>Niveau {level}/2 atteint.</p>}
-    </> : <p>Équipe les lames de poignet ou le Combistick pour les améliorer ici.</p>}
+    </> : <p>Équipe les lames de poignet, le Combistick ou l’Arc Yautja pour les améliorer ici.</p>}
   </fieldset>;
 }
 

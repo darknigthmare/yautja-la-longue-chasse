@@ -2,7 +2,7 @@
 import { OptionalAudioFiles } from "./audioFiles.ts";
 import { GameSceneAudio } from "./systems/sceneAudio.ts";
 
-export type GameMusicContext = "menu" | "ship" | "galaxy" | "exploration" | "combat" | "boss" | "homeworld" | "cradle-return";
+export type GameMusicContext = "menu" | "ship" | "galaxy" | "exploration" | "combat" | "boss" | "homeworld" | "cradle-return" | "ceremony-m006";
 
 /** Original synth signatures for HUD variants; these are NOT film SFX recordings. */
 export type GameGauntletSoundProfileV133 = "classic" | "urban" | "elder" | "bronze" | "stealth" | "scar" | "wolf" | "brutal" | "feral" | "badlands";
@@ -40,7 +40,8 @@ export type GameAudioBiome =
   | "desert"
   | "ocean"
   | "fungal"
-  | "ruins";
+  | "ruins"
+  | "ceremony-brazier";
 
 export type GameSfxId =
   | "ui"
@@ -144,6 +145,7 @@ export class GameAudio {
   private requestedAmbience: GameAudioBiome | null = null;
   private musicRequest = 0;
   private requestedMusic: GameMusicContext | null = null;
+  private ceremonyMusicFinished = false;
   private cradleReturnMusicFinished = false;
   private cloakFileActive = false;
   private fileAudio: OptionalAudioFiles;
@@ -341,6 +343,7 @@ export class GameAudio {
     options: AmbienceOptions = {},
   ): Promise<void> {
     if (this.disposed) return;
+    if (this.requestedAmbience === "ceremony-brazier" && biome !== "ceremony-brazier") this.stopAmbience(0);
     // Navigation or stop may happen while autoplay unlock is still pending.
     // Only the latest requested location may install a persistent voice.
     const request = ++this.ambienceRequest;
@@ -369,6 +372,7 @@ export class GameAudio {
   }
 
   stopAmbience(fadeSeconds = 0.45): void {
+    if (this.requestedAmbience === "ceremony-brazier") fadeSeconds = 0;
     this.ambienceRequest += 1;
     this.requestedAmbience = null;
     this.fileAudio.stopLoop("ambience", fadeSeconds);
@@ -390,7 +394,10 @@ export class GameAudio {
     const request = ++this.musicRequest;
     const fade = Math.max(0, options.fadeSeconds ?? .6);
     if (context === null) { this.stopMusic(fade); return; }
-    if (context !== this.requestedMusic) this.fileAudio.stopLoop("music", fade);
+    if (context !== this.requestedMusic) {
+      this.fileAudio.stopLoop("music", this.requestedMusic === "ceremony-m006" ? 0 : fade);
+      if (context === "ceremony-m006") this.ceremonyMusicFinished = false;
+    }
     this.requestedMusic = context;
     await this.unlock();
     if (this.disposed || request !== this.musicRequest || context !== this.requestedMusic || this.readyTime() === null) return;
@@ -403,12 +410,21 @@ export class GameAudio {
       void this.fileAudio.startLoop("music", context, fade, undefined, continueOnShip, continueOnShip);
       return;
     }
+    if (context === "ceremony-m006") {
+      if (this.ceremonyMusicFinished) return;
+      const finishCeremony = () => {
+        if (this.requestedMusic === "ceremony-m006") this.ceremonyMusicFinished = true;
+      };
+      void this.fileAudio.startLoop("music", context, fade, undefined, undefined, finishCeremony);
+      return;
+    }
     void this.fileAudio.startLoop("music", context === "cradle-return" ? "ship" : context, fade);
   }
 
   resetCradleReturnMusic(): void { this.cradleReturnMusicFinished = false; }
 
   stopMusic(fadeSeconds = .4): void {
+    if (this.requestedMusic === "ceremony-m006") fadeSeconds = 0;
     this.musicRequest++; this.requestedMusic = null;
     this.fileAudio.stopLoop("music", fadeSeconds);
   }
@@ -1438,6 +1454,10 @@ export class GameAudio {
         addOscillator(54, "triangle", 0.045);
         addOscillator(216, "sine", 0.012);
         addNoise("bandpass", 730, 0.055, 0.7);
+        break;
+      case "ceremony-brazier":
+        addNoise("lowpass", 210, 0.11);
+        addNoise("bandpass", 1_380, 0.029, 0.63);
         break;
       case "ruins":
         addOscillator(31, "sine", 0.055);

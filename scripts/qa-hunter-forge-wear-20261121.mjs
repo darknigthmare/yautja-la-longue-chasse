@@ -30,7 +30,10 @@ const key = saves.SAVE_STORAGE_KEY;
 const owner = '2026-11-21T21:00:00.000Z';
 const species = 'oseris-iv--jungle-xeno-scout';
 const hideSpecies = 'oseris-iv--mist-pouncer';
-const forgeWeapon = process.env.HUNTER_FORGE_QA_WEAPON === '1';
+const forgeBow = process.env.HUNTER_FORGE_QA_BOW === '1';
+const forgeWeapon = forgeBow || process.env.HUNTER_FORGE_QA_WEAPON === '1';
+const forgeTarget = forgeBow ? 'yautja-bow' : 'combistick';
+const weaponCosts = forgeBow ? [[1, 2], [2, 3]] : [[2, 1], [3, 2]];
 const forgeTool = !forgeWeapon && process.env.HUNTER_FORGE_QA_TOOL === '1';
 const forgeArmor = !forgeWeapon && !forgeTool && process.env.HUNTER_FORGE_QA_ARMOR === '1';
 const selectMaterial = forgeArmor || forgeTool || forgeWeapon || process.env.HUNTER_FORGE_QA_SELECT_MATERIAL === '1';
@@ -43,7 +46,10 @@ function fixture() {
   save.profile.hunterName = 'QA forge · plastron';
   save.profile.clanMarks = forgeWeapon ? 600 : 200;
   save.settings.masterVolume = 0;
-  if (forgeWeapon) save.loadout.weaponIds = ['combistick', 'wristblades'];
+  if (forgeBow) {
+    save.profile.honor = 225;
+    assert(!save.inventory.unlockedWeaponIds.includes(forgeTarget));
+  } else if (forgeWeapon) save.loadout.weaponIds = [forgeTarget, 'wristblades'];
   const purchased = tools.purchaseFieldToolV111(save, 'flaying-tool');
   assert(purchased.ok);
   save = purchased.save;
@@ -57,10 +63,11 @@ function fixture() {
     id: 'forge-hide-0' + (i + 1), species: hideSpecies, action: 'harvest-hide',
   })));
   if (forgeWeapon) {
-    plan.push(...Array.from({ length: 5 }, (_, i) => ({
+    const [first, second] = weaponCosts;
+    plan.push(...Array.from({ length: first[0] + second[0] }, (_, i) => ({
       id: 'forge-weapon-bone-' + i, species: weaponBoneSpecies, action: 'harvest-bone',
     })));
-    plan.push(...Array.from({ length: 3 }, (_, i) => ({
+    plan.push(...Array.from({ length: first[1] + second[1] }, (_, i) => ({
       id: 'forge-weapon-tissue-' + i, species: weaponTissueSpecies, action: 'harvest-tissue',
     })));
   }
@@ -91,6 +98,10 @@ function fixture() {
   assert.deepEqual(settled.customizationV146.heavyWear, { chest: 1 });
   assert.deepEqual(settled.inventory.harvestV112, delivery.inventory.harvestV112);
   save = settled;
+  if (forgeBow) {
+    assert(save.inventory.unlockedWeaponIds.includes(forgeTarget), 'The actual mission result must admit the bow');
+    save.loadout.weaponIds = [forgeTarget, 'wristblades'];
+  }
   for (const specimen of specimens) {
     for (const step of harvest.CONSERVATION_STEPS_V112) {
       const started = harvest.startConservationV112(save, specimen.id);
@@ -129,7 +140,8 @@ try {
   if (selectMaterial) assert.equal(chosen?.count, forgeArmor ? 3 : 2);
   if (forgeArmor) report.admission += ' Le même navigateur forge ensuite le premier niveau avec le reste des lots archivés.';
   if (forgeTool) report.admission += ' Le même navigateur installe ensuite le renfort avec les os archivés par les réducteurs.';
-  if (forgeWeapon) report.admission += ' Le même navigateur sélectionne deux lots de la réserve et forge les deux niveaux du Combistick à la station.';
+  if (forgeWeapon) report.admission += ' Le même navigateur choisit deux lots de réserve et forge les deux niveaux de ' + forgeTarget + '.';
+  if (forgeBow) report.admission += ' Le résultat de la première chasse a débloqué l’arc avec l’honneur requis préparé dans la sauvegarde.';
   report.initial = { wear: seed.customizationV146.heavyWear, stock: start, chosen, marks: seed.profile.clanMarks };
   browser = await chromium.launch({
     executablePath: process.env.CHROMIUM_EXECUTABLE || process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || undefined,
@@ -368,7 +380,7 @@ try {
   }
 
   if (forgeWeapon) {
-    const weaponId = 'combistick';
+    const weaponId = forgeTarget;
     const arsenal = qa.load('app/game/systems/arsenal.ts');
     const bone = received.inventory.harvestV112.archive.find(row => row.speciesId === weaponBoneSpecies);
     const tissue = received.inventory.harvestV112.archive.find(row => row.speciesId === weaponTissueSpecies);
@@ -391,13 +403,19 @@ try {
     for (const level of [1, 2]) {
       assert.equal(await upgrade.isEnabled(), false);
       await chooseMaterials();
-      const quote = (level === 1 ? '2 × ' : '3 × ') + bone.label + (level === 1 ? ' · 1 × ' : ' · 2 × ') + tissue.label;
+      const [boneSpent, tissueSpent] = weaponCosts[level - 1];
+      const quote = boneSpent + ' × ' + bone.label + ' · ' + tissueSpent + ' × ' + tissue.label;
       assert.equal(await weaponQuote.innerText(), quote);
       const previous = arsenal.effectiveWeaponStats(weaponId, level - 1);
       const projected = arsenal.effectiveWeaponStats(weaponId, level);
-      assert.match(await forge.locator('[data-forge-weapon-stats]').innerText(), /Dégâts/);
-      assert((await forge.locator('[data-forge-weapon-stats]').innerText()).includes(previous.damage + ' → ' + projected.damage));
-      await forge.screenshot({ path: join(output, 'devis-combistick-niveau-' + level + '.png'), animations: 'disabled' });
+      const preview = await forge.locator('[data-forge-weapon-stats]').innerText();
+      assert.match(preview, /Dégâts/);
+      assert(preview.includes(previous.damage + ' → ' + projected.damage));
+      if (forgeBow) {
+        assert(preview.includes('Portée ' + previous.rangePx + ' → ' + projected.rangePx));
+        assert(preview.includes('Flèches ' + previous.ammo + ' → ' + projected.ammo));
+      }
+      await forge.screenshot({ path: join(output, 'devis-' + weaponId + '-niveau-' + level + '.png'), animations: 'disabled' });
 
       if (level === 1) {
         await page.evaluate(({ key, value }) => localStorage.setItem(key, value), { key: activeHunt.ACTIVE_HUNT_STORAGE_KEY, value: future });
@@ -418,8 +436,9 @@ try {
       assert.equal(mounted.profile.clanMarks, received.profile.clanMarks);
       assert.equal(mounted.profile.honor, received.profile.honor);
       const expected = level === 1
-        ? [start, { ...bone, count: 3, qualityTotal: Math.round(bone.qualityTotal * 3 / 5) },
-          { ...tissue, count: 2, qualityTotal: Math.round(tissue.qualityTotal * 2 / 3) }]
+        ? [start, ...[[bone, boneSpent], [tissue, tissueSpent]].map(([row, countSpent]) => ({
+          ...row, count: row.count - countSpent, qualityTotal: Math.round(row.qualityTotal * (row.count - countSpent) / row.count),
+        }))]
         : [start];
       assert.deepEqual(mounted.inventory.harvestV112.archive, expected);
 
@@ -427,7 +446,8 @@ try {
       await openForge();
       await marker.waitFor();
       assert.deepEqual((await disk()).inventory, mounted.inventory);
-      rounds.push({ level, quote, damage: projected.damage, cooldownSeconds: projected.cooldownSeconds, remaining: expected });
+      rounds.push({ level, quote, damage: projected.damage, cooldownSeconds: projected.cooldownSeconds,
+        arrows: forgeBow ? projected.ammo : null, rangePx: projected.rangePx, remaining: expected });
     }
     assert.equal(await upgrade.count(), 0);
     report.weaponForge = { weaponId, rounds, rejectedIncompatibleSidecar: true };

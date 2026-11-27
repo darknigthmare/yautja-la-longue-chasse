@@ -107,10 +107,11 @@ window.__onSkinningCanopyMountV112=handle=>{
   audit.runtime=handle;
   const game=handle.game;
   audit.mounts.push({resumed:handle.resumed,elapsed:game.elapsed,originalEnemyCount:game.enemies.length});
-  if(mode!=='loaded-oseris'||handle.resumed)return;
+  if(handle.resumed||(mode!=='loaded-oseris'&&mode!=='loaded-naraka'))return;
+  const sourceEnemyId = mode === 'loaded-naraka' ? 'naraka-delta--iron-croc' : 'oseris-iv--vineback-grazer';
   const originalEnemyIds=game.enemies.map(enemy=>enemy.id);
   const prey=handle.native.makeEnemy(
-    'qa-oseris-field-prey','oseris-iv--vineback-grazer',handle.mission.id,
+    'qa-field-prey',sourceEnemyId,handle.mission.id,
     game.player.x+40,game.world.width,80,10,0,1,1,
   );
   Object.assign(prey,{

@@ -771,3 +771,19 @@ Dans les nouvelles configurations à quinze salles, le relevé déclenche l’é
 Le parcours Chromium entre dans la Galerie depuis une Vanne préparée par les réducteurs. Le joueur effectue le relevé, joue la fermeture de la grille et poursuit jusqu’au seuil. Les sprites de l’œuf ouvert et du facehugger proviennent du dépôt.
 
 [Parcours et sauvegardes](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46075305867) · [Inventaire et build](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46075326922)
+
+## Campagne, arsenal et parcours de retour
+
+L’application et les entrées de ressources sont qualifiées sur `15231f05344deb202941bd2c83a02d8e5cb19697`. [CI commune](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46079519385)
+
+La loge montre une Reine captive distincte dans le récit. Le rendu réemploie une silhouette xéno native teintée pour cette salle. La recette vérifie le balayage au sol, la reprise après mise à terre, le couvert, le Signal et l’isolement. [Temple](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46079394030)
+
+Le rangement des outils et la montée de l’escalier sont joués après un reçu de la petite piste préparé. Le contrôle vérifie les deux ambitions, les quatre interlocuteurs et les reprises. [O6-M06](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46079466473)
+
+MUS-06 conserve un master PCM reproductible, un Opus publié épinglé et un contrôle du résultat décodé. Le brasero est une boucle indépendante. La recette joue les flux dans la vraie passation et vérifie leur sortie. [Cérémonie](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46079421007)
+
+À Naraka-Delta, l’accès de chasse, la carcasse et la victoire Apex sont préparés. Chromium joue les prélèvements, le dépôt sur la racine, la reprise, la descente et le retour. Le PNG racine d’origine est bien peint sur l’appui. [Naraka](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46078425387) · [Oseris](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46077850537)
+
+Les deux améliorations de l’Arc Yautja consomment les lots confirmés et affichent leur portée et leur capacité en flèches. Le prérequis d’honneur est préparé dans la sauvegarde et le règlement de la chasse déclenche le vrai déblocage avant le passage à l’établi. [Forge](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46077799888)
+
+L’Okavango V1/V2 et le survol V3 sont rejoués avant la reconnaissance V4 de la Plaine des lions. Le repli suit la levée et le reçu revient avec la coque jusqu’au pont. [Plaine des lions](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46077963937)

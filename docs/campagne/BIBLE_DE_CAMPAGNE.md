@@ -2007,7 +2007,7 @@ L'enfance dans la cour, la cité et les premiers ateliers ; l'acte se termine au
 - **Échec et reprise :** un apprentissage incomplet ouvre l’exercice manquant et reporte la cérémonie.
 - **Sauvegarde :** `rank.Unblooded=true`
 
-La passation joue une réponse sonore originale à chaque dépôt confirmé de la cohorte. Le carnet conserve les dépôts sans répétition après rechargement.
+La passation joue une réponse sonore originale à chaque dépôt confirmé de la cohorte. Le carnet conserve les dépôts sans répétition après rechargement. Le brasero sonore et MUS-06 accompagnent la passation visible et respectent la suspension du poste.
 
 *Production (proposé)* — **Props :** aire de formation, coffre où ranger l'outil d'enfance, porte du râtelier Unblooded (animée), râtelier d'armes d'exercice, braseros cérémoniels. **VFX :** flammes des braseros, halo chaud sur la porte qui s'ouvre. **SFX :** `door-heavy`, `brazier-fire`, `clan-chant-short`, objective (existe). **Musique :** MUS-06.
 
@@ -2127,7 +2127,7 @@ La triade, le Temple des Trois Ombres et le Quatza-Rij mènent au rang Blooded. 
 - **Choix :** route de hauteur ou route de mécanismes.
 - **Échec et reprise :** une séparation ouvre des mécanismes de regroupement, sans réinitialiser le temple.
 - **Sauvegarde :** `rite.templeConfiguration ; rite.templeThresholdReached`
-- **Existant :** V69 (Seuils du Premier Sang), V70 acte I : Marches des Trois, Vestibule des Serments, Tribune des Signes, Arsenal des Épreuves, Belvédère Fracturé, Puits des Contrepoids, Camp des Intrus, Nef des Anneaux, Vanne de Quarantaine. Les nouvelles campagnes à triade préparée parcourent six salles profondes, observent les œufs, réamorcent la purge et rejoignent le seuil du Quatza-Rij. Dans les nouvelles configurations à quinze salles, l’éclosion de la Galerie des Coques déclenche le bond d’un facehugger. La triade doit consigner le confinement avant de poursuivre. La rencontre royale, le transport du blessé et les chasses qualifiantes restent ouverts.
+- **Existant :** V69 (Seuils du Premier Sang), V70 acte I : Marches des Trois, Vestibule des Serments, Tribune des Signes, Arsenal des Épreuves, Belvédère Fracturé, Puits des Contrepoids, Camp des Intrus, Nef des Anneaux, Vanne de Quarantaine. Les nouvelles campagnes à triade préparée parcourent six salles profondes, observent les œufs, réamorcent la purge et rejoignent le seuil du Quatza-Rij. Dans les nouvelles configurations à quinze salles, l’éclosion de la Galerie des Coques déclenche le bond d’un facehugger. La triade doit consigner le confinement avant de poursuivre. La loge royale impose une esquive puis un Signal à deux appuis avant que la console isole la Reine captive. Le transport du blessé et les chasses qualifiantes restent ouverts.
 
 *Production (proposé)* — **Props :** râtelier où déposer les armes énergétiques, passerelles mobiles, volets pivotants, chambres à configuration variable, glyphes annonçant le prochain mouvement, mécanismes de regroupement (leviers à deux mains). **VFX :** poussière qui tombe avant chaque déplacement, glyphe qui s'allume 2 s avant, secousse de caméra. **SFX :** `stone-grind`, `gear-tick`, `door-stone-close`, `glyph-hum`. **Musique :** MUS-13.
 
@@ -3248,3 +3248,19 @@ Ordre de production proposé, par lots jouables :
 ## Suite des recettes · Éclosion au Temple des Trois Ombres
 
 Dans les nouvelles configurations à quinze salles, le relevé déclenche l’éclosion d’un œuf de la Galerie des Coques. Le joueur peut éviter le bond du facehugger puis fermer la grille avec Saar et Vek. Le passage aval attend le confinement. Le carnet conserve l’éclosion et la grille lors d’une reprise. La rencontre royale, le transport d’un blessé et les chasses qualifiantes restent ouverts. Les configurations à 9, 11 ou 15 salles déjà engagées conservent leur parcours. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46075305867)
+
+## Suite des recettes · Campagne, arsenal et parcours de retour
+
+- **R2-M017 · La loge de la Reine captive** · Dans les nouvelles configurations du Temple, un balayage est annoncé dans la loge de la Reine captive. Le joueur gagne le couvert, appelle le Signal sur deux appuis puis commande le confinement. Le carnet conserve l’alerte, l’esquive et l’isolement. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46079394030)
+
+- **R2-M006 · Brasero et thème de la passation** · Un brasero sonore et une composition originale de 1 min 45 accompagnent la passation visible. La musique et l’ambiance respectent la suspension et la sortie. Les trois réponses jouées lors du dépôt des outils sont conservées. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46079421007)
+
+- **Son et musiques · Passation M006** · Un brasero sonore et une composition originale de 1 min 45 accompagnent la passation visible. La musique et l’ambiance respectent la suspension et la sortie. Les trois réponses jouées lors du dépôt des outils sont conservées. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46079421007)
+
+- **O6-M06 · Quatre ombres au retour** · Au retour de la petite piste, le joueur range deux outils à la forge puis monte par l’escalier du Conseil. Quatre échanges lui permettent d’annoncer une ambition ou de laisser le choix ouvert. Il peut ensuite revenir écouter les compagnons et reprendre son dossier. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46079466473)
+
+- **Voie O6 · Retour et mémoire** · Au retour de la petite piste, le joueur range deux outils à la forge puis monte par l’escalier du Conseil. Quatre échanges lui permettent d’annoncer une ambition ou de laisser le choix ouvert. Il peut ensuite revenir écouter les compagnons et reprendre son dossier. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46079466473)
+
+- **Forge et canopée · Arc Yautja et reprises de terrain** · Sur Naraka-Delta, le cuir ferrique de 4,4 kg est déposé puis repris sur la racine d’origine. Le retour descend par deux appuis et se poursuit à pied vers la balise. La plaque nucale, le trophée de l’Hydre et le cuir sont livrés une seule fois depuis le sol. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46078425387)
+
+- **Terre · Reconnaissance de la Plaine des lions** · Après le survol de Sol, la reconnaissance de la Plaine des lions permet de choisir une fenêtre, descendre au dépôt, contourner une crue par la levée, relever les empreintes et la troupe au biomask puis revenir physiquement. Le journal de coque conserve la crue, les observations et la position. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46077963937)

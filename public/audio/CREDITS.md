@@ -24,3 +24,9 @@ Les pistes `music/cradle-return/MUS-15-retour.mp3` et `music/ship/MUS-02-veille.
 `music/menu/mus-01.ogg` est une composition originale de trois minutes à 72 BPM en ré mineur. Le motif descendant et la texture grave suivent la fiche MUS-01 de la Bible. La synthèse stéréo est régénérable avec `scripts/generate-menu-theme-mus01.mjs`.
 
 Les pistes `ambience/*/surface-v173.ogg` sont huit boucles originales de 18 secondes. Les paramètres de vent, de relief et de résonance sont définis par milieu dans `scripts/generate-planet-ambiences-v173.mjs`. Le programme encode en Vorbis stéréo à 24 kHz et vérifie les canaux, la durée et le raccord PCM. Les deux créations utilisent uniquement de la synthèse.
+
+## Passation Unblooded (R2-M006)
+
+`ambience/ceremony-brazier/embers.wav` est une boucle mono de quatre secondes. Le bruit de braise filtré et les crépitements sont synthétisés pour la scène. Le raccord recouvre les deux bordures sur un quart de seconde.
+
+`music/ceremony-m006/mus-06-clan-ceremonie.ogg` est une composition originale de 1 min 45, en ré mineur à 76 BPM. Le motif descendant D–C–A–F passe des cuivres aux cordes. Le sommet des percussions suit la fiche MUS-06, autour de 1 min 20. La synthèse et l’encodage de référence se régénèrent avec `node scripts/generate-m006-ceremony-score.mjs --write`, avec l’encodeur Linux `@ffmpeg-installer/linux-x64@4.1.0` sur le chemin d’exécution. La recette épingle les octets de l’Opus publié et du master PCM. Quand l’encodeur choisit un autre chemin CPU, elle compare aussi les formes d’onde décodées. La lecture est raccordée à R2-M006.

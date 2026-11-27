@@ -7,9 +7,25 @@ import { createServer } from "vite";
 import { childhoodAdmissionV175, childhoodStorage, qaChildhood } from "../tests/helpers/homeworld-childhood-v175.mjs";
 import { youthBarracksFromSave } from "../tests/helpers/youth-patrol-played-route.mjs";
 
+function observeCeremonyStreams() {
+  const streams = [];
+  const originalPlay = HTMLMediaElement.prototype.play;
+  HTMLMediaElement.prototype.play = function(...args) {
+    if (/\/(?:ceremony-brazier|ceremony-m006)\//.test(this.src) && !streams.includes(this)) streams.push(this);
+    return originalPlay.apply(this, args);
+  };
+  window.__m006CeremonyStreams = () => streams.map(media => ({
+    src: media.src,
+    playing: !media.paused && media.currentTime > 0,
+    duration: media.duration,
+    loop: media.loop,
+  }));
+}
+
 const seed = childhoodAdmissionV175({ withLocation: true, withCeremony: true });
 const verifyCohortAudio = process.env.CHILDHOOD_VERIFY_COHORT_AUDIO === "1";
-seed.settings.masterVolume = verifyCohortAudio ? .65 : 0;
+const verifyCeremonyAudio = process.env.CHILDHOOD_VERIFY_CEREMONY_AUDIO === "1";
+seed.settings.masterVolume = verifyCohortAudio || verifyCeremonyAudio ? .65 : 0;
 const model = qaChildhood.load("app/game/systems/homeworldChildhoodV175.ts");
 const rank = qaChildhood.load("app/game/systems/clanChronicle.ts");
 const storageKey = childhoodStorage.SAVE_STORAGE_KEY;
@@ -55,6 +71,7 @@ try {
       return result;
     };
   }, { sampleBytes: 62666 });
+  if (verifyCeremonyAudio) await context.addInitScript(observeCeremonyStreams);
   page = await context.newPage();
   page.setDefaultTimeout(30000);
   page.on("pageerror", error => report.errors.push(error.message));
@@ -95,7 +112,16 @@ try {
     assert.fail("Could not reach position " + destination);
   }
   const shot = name => scene.screenshot({ path: resolve(output, name + ".png"), animations: "disabled" });
+  const waitForCeremonyAudio = () => page.waitForFunction(() => {
+    const streams = window.__m006CeremonyStreams?.().filter(media => media.playing) ?? [];
+    return streams.length === 2 &&
+      streams.some(media => media.src.includes("ceremony-brazier") && media.loop && Math.abs(media.duration - 4) < .02) &&
+      streams.some(media => media.src.includes("ceremony-m006") && !media.loop && Math.abs(media.duration - 105) < .1);
+  });
+  const waitForCeremonySilence = () => page.waitForFunction(() =>
+    window.__m006CeremonyStreams?.().every(media => !media.playing));
   await page.goto("http://127.0.0.1:4275");
+  if (verifyCeremonyAudio) assert.equal(await page.evaluate(() => window.__m006CeremonyStreams?.().length), 0);
   const rackSound = await page.evaluate(async () => {
     const response = await fetch("/audio/sfx/ceremony-rack/threshold-metal.wav");
     if (!response.ok) return { status: response.status };
@@ -108,6 +134,7 @@ try {
   await boot();
   await act("handoff");
   assert.equal((await view()).trial, "ring");
+  if (verifyCeremonyAudio) assert.equal(await page.evaluate(() => window.__m006CeremonyStreams?.().length), 0);
   await walk(3, true);
   await act("use", "Space");
   assert.equal((await view()).position, 0);
@@ -152,6 +179,19 @@ try {
   assert.equal((await view()).report, "map");
   report.checks.push("Deux traces comparées à chaque indice, fausse piste, perchoir et retour par le chemin bas, carte rechargée");
   await act("handoff");
+  if (verifyCeremonyAudio) {
+    await waitForCeremonyAudio();
+    await page.getByRole("dialog").filter({ has: scene })
+      .getByRole("button", { name: "Revenir dans la salle", exact: true }).click();
+    await scene.waitFor({ state: "hidden" });
+    await waitForCeremonySilence();
+    const viewport = page.locator('[data-homeworld-hub] [data-homeworld-viewport]');
+    await viewport.focus();
+    await page.keyboard.press("KeyE");
+    await scene.waitFor();
+    await waitForCeremonyAudio();
+    report.checks.push("Les deux sources jouent à la passation seulement, se taisent en quittant le poste et reprennent quand il est rouvert.");
+  }
   await walk(2); await act("use");
   assert.equal(await scene.locator("[data-childhood-enter-dojo]").count(), 0);
   assert.equal(await scene.locator("[data-childhood-action=east]").count(), 0);
@@ -161,6 +201,7 @@ try {
   await page.reload(); await boot();
   assert.equal((await view()).cohortPresentations, 1);
   assert.equal((await view()).cohortStowed, 0);
+  if (verifyCeremonyAudio) await waitForCeremonyAudio();
   if (verifyCohortAudio) {
     await page.waitForFunction(() => window.__m006CohortResponse?.ready);
     assert.equal(await page.evaluate(() => window.__m006CohortResponse?.starts), 0);
@@ -196,6 +237,7 @@ try {
   const pending = await read();
   const exported = childhoodStorage.exportSave(pending);
   const foreignContext = await browser.newContext({ viewport: { width: 1360, height: 980 }, reducedMotion: "reduce" });
+  if (verifyCeremonyAudio) await foreignContext.addInitScript(observeCeremonyStreams);
   page = await foreignContext.newPage();
   page.setDefaultTimeout(30000);
   page.on("pageerror", error => report.errors.push(error.message));
@@ -216,8 +258,13 @@ try {
   assert.deepEqual(imported.homeworld.childhoodV175, pending.homeworld.childhoodV175);
   assert.equal((await view()).rackAccess, "pending");
   assert.equal(await scene.locator("[data-childhood-action=first-blades], [data-childhood-enter-dojo]").count(), 0);
+  if (verifyCeremonyAudio) await waitForCeremonyAudio();
   await act("accept-rack-access");
   await scene.locator("[data-childhood-rack-receipt]").waitFor();
+  if (verifyCeremonyAudio) {
+    await waitForCeremonySilence();
+    report.checks.push("L’épreuve rechargée retrouve sa bande-son. Les deux sources s’arrêtent après la remise de la plaque.");
+  }
   await shot("plaque-remise-apres-import");
   await page.reload(); await boot();
   await scene.locator("[data-childhood-rack-receipt]").waitFor();

@@ -73,7 +73,7 @@ test("A durable write cannot queue orders twice or adopt a survey from another h
   assert.equal(saves.parseSaveImport(JSON.stringify({ ...save, earthV171: foreign })).failure, "invalid-save");
   const forged = { ...ground, orders: [...ground.orders, { kind: "scan" }] };
   assert.equal(inspect(forged, OWNER).status, "invalid");
-  assert.equal(saves.parseSaveImport(JSON.stringify({ ...save, earthV171: { ...ground, version: 4 } })).failure, "future-version");
+  assert.equal(saves.parseSaveImport(JSON.stringify({ ...save, earthV171: { ...ground, version: 5 } })).failure, "future-version");
 });
 
 function pilot(zone) {
@@ -239,4 +239,95 @@ test("The orbital approach lowers speed after a recoverable failure and logs a s
   assert.deepEqual(latest.trophies, save.trophies);
   assert.deepEqual(latest.missionProgress, save.missionProgress);
   assert.deepEqual(saves.parseSaveImport(saves.exportSave(latest)).save.earthV171, state);
+});
+
+
+test("The overflow route is played from the completed orbit and keeps one owner-bound Okavango history", () => {
+  const admission = access(save, SHIP);
+  const original = completedSurvey(1);
+  const memory = new Map();
+  const storage = { getItem: key => memory.get(key) ?? null, setItem: (key, value) => memory.set(key, value),
+    removeItem: key => memory.delete(key) };
+  assert(saves.writeSaveWithStatus({ ...save, earthV171: original }, storage).persisted);
+  let state = original;
+  const step = order => {
+    const result = act(state, order, admission);
+    assert(result.accepted, JSON.stringify(order) + " " + result.reason);
+    assert(saves.writeSaveWithStatus({ ...save, earthV171: result.state }, storage).persisted);
+    state = result.state;
+    return result.view;
+  };
+  const denied = order => assert.equal(act(state, order, admission).accepted, false);
+  const fly = action => step({ kind: "pilot-orbit", action });
+  const lionMove = direction => step({ kind: "lion-move", direction }).lionSurvey;
+
+  denied({ kind: "lion-prepare" });
+  step({ kind: "begin-orbit" });
+  for (let i = 0; i < 3; i++) fly({ type: "lateral", direction: -1 });
+  fly({ type: "align" });
+  fly({ type: "speed", direction: -1 });
+  fly({ type: "speed", direction: -1 });
+  for (let i = 0; i < 10; i++) fly({ type: "advance" });
+  step({ kind: "scan-orbit", zone: "papyrus" });
+  denied({ kind: "lion-prepare" });
+  step({ kind: "return-orbit" });
+  for (let i = 0; i < 3; i++) fly({ type: "lateral", direction: 1 });
+  fly({ type: "align" });
+  fly({ type: "speed", direction: -1 });
+  fly({ type: "speed", direction: -1 });
+  for (let i = 0; i < 10; i++) fly({ type: "advance" });
+  assert.equal(step({ kind: "finish-orbit" }).phase, "returned");
+  const orbitState = state;
+  const orbitView = inspect(orbitState, OWNER).view.orbit;
+  assert.equal(inspect({ ...state, version: 4 }, OWNER).status, "invalid");
+
+  denied({ kind: "lion-land" });
+  assert.equal(step({ kind: "lion-prepare" }).lionSurvey.stage, "planning");
+  assert.equal(state.version, 4);
+  assert.equal(state.surveyVersion, 1);
+  assert(earth.earthOkavangoSuccessorV171(orbitState, state));
+  assert.equal(inspect({ ...state, version: 3 }, OWNER).status, "invalid");
+  assert.equal(act(state, { kind: "lion-window", window: "invalid" }, admission).accepted, false);
+  denied({ kind: "lion-land" });
+  step({ kind: "lion-window", window: "night" });
+  let remote = act(state, { kind: "lion-land" }, admission).state;
+  remote = act(remote, { kind: "lion-move", direction: "east" }, admission).state;
+  remote = act(remote, { kind: "lion-move", direction: "south" }, admission).state;
+  assert.equal(act(remote, { kind: "lion-move", direction: "east" }, admission).accepted, false);
+  assert(act(remote, { kind: "lion-move", direction: "north" }, admission).accepted);
+  step({ kind: "lion-window", window: "dusk" });
+  assert.equal(step({ kind: "lion-land" }).phase, "ground");
+  denied({ kind: "lion-extract" });
+  denied({ kind: "lion-window", window: "night" });
+  lionMove("east"); lionMove("south"); lionMove("east"); lionMove("east"); lionMove("east");
+  assert.deepEqual(lionMove("west"), { stage: "survey", window: "dusk", x: 3, lane: 1,
+    steps: 6, visor: "normal", readings: [] });
+  denied({ kind: "lion-move", direction: "east" });
+  denied({ kind: "lion-move", direction: "west" });
+  state = saves.loadSaveWithStatus(storage).save.earthV171;
+  assert.deepEqual(inspect(state, OWNER).view.lionSurvey, { stage: "survey", window: "dusk", x: 3, lane: 1,
+    steps: 6, visor: "normal", readings: [] });
+  lionMove("north"); lionMove("west");
+  denied({ kind: "lion-observe" });
+  step({ kind: "lion-analyse" });
+  assert.deepEqual(step({ kind: "lion-observe" }).lionSurvey.readings, ["tracks"]);
+  denied({ kind: "lion-observe" });
+  for (let i = 0; i < 3; i++) lionMove("east");
+  lionMove("south");
+  assert.deepEqual(step({ kind: "lion-observe" }).lionSurvey.readings, ["tracks", "pride"]);
+  denied({ kind: "lion-extract" });
+  lionMove("north");
+  for (let i = 0; i < 5; i++) lionMove("west");
+  const returned = step({ kind: "lion-extract" });
+  assert.equal(returned.phase, "returned");
+  assert.equal(returned.lionSurvey.stage, "complete");
+  assert.deepEqual(returned.orbit, orbitView);
+  assert.deepEqual(state.orders.slice(0, orbitState.orders.length), orbitState.orders);
+  denied({ kind: "lion-prepare" });
+  const portable = saves.parseSaveImport(saves.exportSave(saves.loadSaveWithStatus(storage).save)).save;
+  assert.deepEqual(portable.earthV171, state);
+  assert.deepEqual(portable.missionProgress, save.missionProgress);
+  assert.deepEqual(portable.trophies, save.trophies);
+  assert.deepEqual(portable.firstInterstellarV173, save.firstInterstellarV173);
+  assert.equal(inspect(state, "2027-01-01T00:00:00.000Z").status, "invalid");
 });
