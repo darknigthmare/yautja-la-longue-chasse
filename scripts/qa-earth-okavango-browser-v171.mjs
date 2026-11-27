@@ -4,13 +4,14 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { chromium } from "playwright-core";
 import { createServer } from "vite";
-import { okavangoAdmissionV171, saves } from "../tests/helpers/earth-okavango-fixture-v171.mjs";
+import { okavangoAdmissionV171, OWNER, qa, saves, SHIP } from "../tests/helpers/earth-okavango-fixture-v171.mjs";
 
 const output = resolve("outputs/qa-earth-okavango-v171");
 await mkdir(output, { recursive: true });
 const report = { commit: execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim(),
   admission: "The preexisting M021/M023 engines play the preparation fixture. All Earth commands are driven by the native application.",
   checks: [], errors: [], passed: false };
+const hydrology = qa.load("app/game/systems/earthOkavangoV171.ts");
 const storageKey = saves.SAVE_STORAGE_KEY;
 let server, browser, page;
 try {
@@ -56,6 +57,7 @@ try {
   }
   const awaitAt = (x, lane) => page.locator('[data-okavango-position="' + x + ':' + lane + '"]').waitFor();
   const awaitTraces = count => page.locator('[data-okavango-traces="' + count + '"]').waitFor();
+  const awaitWater = level => page.locator('[data-okavango-water="' + level + '"]').waitFor();
   const walk = async (key, count = 1) => {
     for (let i = 0; i < count; i += 1) await terrain().press(key);
   };
@@ -67,6 +69,29 @@ try {
   report.checks.push("Sol reste absent de la carte avec une coque acquise mais aucun retour de M023.");
 
   const onboard = okavangoAdmissionV171();
+  const access = hydrology.earthOkavangoAccessV171(onboard.save, SHIP);
+  assert(access.allowed);
+  let previousSurvey = { version: 1, owner: OWNER, hullInstanceId: access.hullInstanceId,
+    orders: [{ kind: "choose-zone", zone: "papyrus" }] };
+  for (const order of [
+    { kind: "insert" }, { kind: "move", direction: "east" }, { kind: "move", direction: "east" },
+    { kind: "analyse" }, { kind: "scan" }, { kind: "move", direction: "east" },
+  ]) {
+    const result = hydrology.commitEarthOkavangoV171(previousSurvey, order, access);
+    assert(result.accepted, result.reason);
+    previousSurvey = result.state;
+  }
+  context = await open({ ...onboard, save: { ...onboard.save, earthV171: previousSurvey } });
+  await openMap();
+  await page.locator("[data-galaxy-sol]").click();
+  await awaitAt(3, 1);
+  await awaitTraces(1);
+  await awaitWater("historical");
+  assert(await page.locator('[data-okavango-move="east"]').isDisabled());
+  assert.match((await page.locator('[data-okavango-read="tyres"]').textContent()) ?? "", /Traces de 4×4/);
+  await context.close();
+  report.checks.push("Un ancien relevé V1 reprend au bord du chenal avec son indice et la géométrie d’origine.");
+
   context = await open(onboard);
   await openMap();
   await page.locator("[data-galaxy-sol]").click();
@@ -76,30 +101,47 @@ try {
   await page.locator('[data-okavango-zone="papyrus"]').click();
   await page.locator("[data-okavango-insert]").click();
   await awaitAt(0, 1);
+  await awaitWater("low");
   assert(await page.locator("[data-okavango-extract]").isDisabled());
-  await walk("ArrowRight", 2);
-  await awaitAt(2, 1);
+  assert.equal((await read()).earthV171.version, 2);
+  await walk("ArrowRight");
+  await walk("ArrowLeft");
+  await walk("ArrowRight", 4);
+  await awaitAt(4, 1);
+  await awaitWater("rising");
+  assert(!(await page.locator('[data-okavango-move="east"]').isDisabled()));
   assert(await page.locator("[data-okavango-scan]").isDisabled());
   await terrain().press("KeyR");
-  await terrain().press("KeyE");
-  await awaitTraces(1);
-  await walk("ArrowRight");
-  await awaitAt(3, 1);
+  assert(!(await page.locator("[data-okavango-scan]").isDisabled()));
+  await shot("02-gue-praticable");
+  await walk("ArrowRight", 2);
+  await awaitAt(6, 1);
+  await awaitWater("high");
   assert(await page.locator('[data-okavango-move="east"]').isDisabled());
+  assert(await page.locator('[data-okavango-move="west"]').isDisabled());
+  assert(!(await page.locator('[data-okavango-move="north"]').isDisabled()));
   await walk("ArrowRight");
-  await awaitAt(3, 1);
-  await shot("02-chenal-et-trace");
+  await awaitAt(6, 1);
+  await shot("03-crue-au-chenal");
   await page.reload();
   await resumeOnDeck();
   await openMap();
   await page.locator("[data-galaxy-sol]").click();
-  await awaitAt(3, 1);
-  await awaitTraces(1);
+  await awaitAt(6, 1);
+  await awaitWater("high");
+  await awaitTraces(0);
   assert.equal(await page.locator("[data-okavango-analyse]").getAttribute("aria-pressed"), "true");
-  report.checks.push("Globe géographique, insertion côté papyrus, lecture au biomask et chenal bloquant. Rechargement au bord du chenal avec le même indice.");
   await walk("ArrowUp");
+  await awaitAt(6, 0);
+  await walk("ArrowLeft", 3);
+  await awaitAt(3, 0);
+  await terrain().press("KeyE");
+  await awaitTraces(1);
+  assert.match((await page.locator('[data-okavango-read="tyres"]').textContent()) ?? "", /Ornières sur la levée/);
+  report.checks.push("Gué réellement parcouru puis submergé, reprise au même pas après rechargement, remontée sur la levée et lecture des ornières qui remplacent la trace noyée.");
   await walk("ArrowRight", 2);
   await awaitAt(5, 0);
+  assert(await page.locator('[data-okavango-move="south"]').isDisabled());
   await terrain().press("KeyE");
   await awaitTraces(2);
   await walk("ArrowRight", 2);
@@ -115,7 +157,7 @@ try {
   await awaitAt(0, 1);
   await terrain().press("KeyE");
   await page.locator('[data-earth-okavango="returned"]').waitFor();
-  await shot("03-releve-terrestre");
+  await shot("04-releve-crue");
   const result = await read();
   assert.deepEqual(result.firstInterstellarV173, onboard.save.firstInterstellarV173);
   assert.deepEqual(result.trophies, onboard.save.trophies);
