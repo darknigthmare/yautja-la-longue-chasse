@@ -219,3 +219,62 @@ test("a forged tool brace spends only the quoted bone and stays aligned with phy
   assert.equal(repaired.save.inventory.harvestV112.reinforcedTool, true);
   assert.deepEqual(repaired.save.inventory.harvestV112.toolUseIds, uses);
 });
+
+test("the equipped weapon advances across both native tiers with the exact selected bone and tissue only", () => {
+  const current = withDamagedPlate();
+  const weaponId = "combistick";
+  assert(work.equippedForgeWeaponsV146(current).includes(weaponId));
+  const native = qa.load("app/game/systems/arsenal.ts");
+  const bone = { speciesId: "nivalis-k--glacier-ram", partId: "bone", label: "Côte renforcée", count: 5, qualityTotal: 453 };
+  const tissue = { speciesId: "oseris-iv--vineback-grazer", partId: "tissue", label: "Ligament dorsal", count: 3, qualityTotal: 221 };
+  const reserve = [current.inventory.harvestV112.archive[0], bone, tissue];
+  current.inventory.harvestV112.archive = reserve;
+  const selection = { bone: work.forgeMaterialKeyV146(bone), tissue: work.forgeMaterialKeyV146(tissue) };
+  const first = work.planForgeWeaponMaterialsV146(current, weaponId, selection);
+  assert(first);
+  assert.deepEqual(Array.from(first.quote.units, row => row.consumed), [2, 1]);
+  assert.equal(first.quote.currentLevel, 0);
+  assert.equal(first.quote.nextLevel, 1);
+  assert.deepEqual(first.harvest.archive[1], { ...bone, count: 3, qualityTotal: 272 });
+  assert.deepEqual(first.harvest.archive[2], { ...tissue, count: 2, qualityTotal: 147 });
+  assert.equal(work.planForgeWeaponMaterialsV146(current, weaponId, { bone: selection.tissue, tissue: selection.bone }), null);
+  assert.equal(work.planForgeWeaponMaterialsV146(current, "plasma-caster", selection), null);
+  const tampered = { ...first.quote, units: first.quote.units.map(row => ({ ...row, consumed: 1 })) };
+  assert.equal(work.applyHunterForgeWeaponUpgradeV146(current, tampered), null);
+  const changedLoadout = { ...current, loadout: { ...current.loadout, weaponIds: ["wristblades", "plasma-caster"] } };
+  assert.equal(work.applyHunterForgeWeaponUpgradeV146(changedLoadout, first.quote), null);
+  const changedReserve = { ...current, inventory: { ...current.inventory, harvestV112: {
+    ...current.inventory.harvestV112, archive: [reserve[0], { ...bone, qualityTotal: 450 }, tissue],
+  } } };
+  assert.equal(work.applyHunterForgeWeaponUpgradeV146(changedReserve, first.quote), null);
+
+  const storage = memory();
+  const persisted = saves.writeSaveWithStatus(current, storage, key);
+  assert(persisted.persisted, persisted.failure);
+  let save = persisted.save;
+  for (const level of [1, 2]) {
+    const plan = work.planForgeWeaponMaterialsV146(save, weaponId, selection);
+    assert(plan);
+    const result = work.commitHunterCustomizationV146({
+      current: save, expectedOwnerCreatedAt: owner,
+      apply: actual => work.applyHunterForgeWeaponUpgradeV146(actual, plan.quote),
+      write: next => saves.writeSaveWithStatus(next, storage, key),
+      reconcile: (attempt, expectedOwner) => saves.reconcileSaveWrite(attempt, expectedOwner, storage, key),
+    });
+    assert(result.ok, result.failure);
+    save = result.save;
+    assert.equal(save.inventory.weaponUpgrades[weaponId], level);
+    assert.equal(work.applyHunterForgeWeaponUpgradeV146(save, plan.quote), null);
+    assert(native.effectiveWeaponStats(weaponId, level).damage > native.effectiveWeaponStats(weaponId, level - 1).damage);
+  }
+  assert.equal(work.forgeWeaponRecipeV146(save, weaponId), null);
+  assert.equal(save.inventory.weaponUpgrades.wristblades, current.inventory.weaponUpgrades.wristblades);
+  assert.equal(save.profile.clanMarks, current.profile.clanMarks);
+  assert.equal(save.profile.honor, current.profile.honor);
+  assert.deepEqual(save.loadout, current.loadout);
+  assert.deepEqual(save.inventory.harvestV112.archive, [reserve[0]]);
+  const restored = saves.parseSaveImport(saves.exportSave(save)).save;
+  assert(restored);
+  assert.equal(restored.inventory.weaponUpgrades[weaponId], 2);
+  assert.deepEqual(restored.inventory.harvestV112.archive, [reserve[0]]);
+});

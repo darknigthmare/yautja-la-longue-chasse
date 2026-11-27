@@ -2,7 +2,7 @@
  * V146: owner-bound, durable customisation change (same contract as V116):
  * the caller updates React state only after this write is confirmed.
  */
-import type { ArmorId, SaveGame, UpgradeLevel } from "../types";
+import type { ArmorId, SaveGame, UpgradeLevel, WeaponId } from "../types";
 import type { SaveWriteFailure, SaveWriteResult, SaveWriteReconciliation } from "../save";
 import type { HunterPieceIdV146 } from "../hunterPiecesV146";
 import { normalizeHarvestInventoryV112, type HarvestInventoryV112 } from "./harvestInventoryV112";
@@ -128,6 +128,77 @@ export function applyHunterForgeArmorUpgradeV146(current: SaveGame, expected: Fo
   };
 }
 
+
+export type ForgeWeaponIdV146 = Extract<WeaponId, "wristblades" | "combistick">;
+const FORGE_WEAPON_RECIPES_V146 = {
+  1: { bone: 2, tissue: 1 },
+  2: { bone: 3, tissue: 2 },
+} as const;
+
+type ForgeWeaponMaterialSelectionV146 = Readonly<{ bone: string; tissue: string }>;
+
+interface ForgeWeaponRecipeV146 {
+  weaponId: ForgeWeaponIdV146;
+  currentLevel: UpgradeLevel;
+  nextLevel: 1 | 2;
+  requirements: Readonly<{ bone: number; tissue: number }>;
+}
+
+export interface ForgeWeaponQuoteV146 extends ForgeWeaponRecipeV146 {
+  selection: ForgeWeaponMaterialSelectionV146;
+  units: ForgeRepairQuoteV146["units"];
+}
+
+export function equippedForgeWeaponsV146(save: SaveGame): ForgeWeaponIdV146[] {
+  return [...new Set(save.loadout.weaponIds.filter((id): id is ForgeWeaponIdV146 =>
+    (id === "wristblades" || id === "combistick") && save.inventory.unlockedWeaponIds.includes(id)))];
+}
+
+export function forgeWeaponRecipeV146(save: SaveGame, weaponId: ForgeWeaponIdV146): ForgeWeaponRecipeV146 | null {
+  if (!equippedForgeWeaponsV146(save).includes(weaponId)) return null;
+  const { currentLevel, nextLevel } = quoteUpgrade(save, { domain: "weapon", id: weaponId });
+  if (nextLevel !== 1 && nextLevel !== 2) return null;
+  return { weaponId, currentLevel, nextLevel, requirements: FORGE_WEAPON_RECIPES_V146[nextLevel] };
+}
+
+export function planForgeWeaponMaterialsV146(save: SaveGame, weaponId: ForgeWeaponIdV146, selection: ForgeWeaponMaterialSelectionV146):
+  { harvest: HarvestInventoryV112; quote: ForgeWeaponQuoteV146 } | null {
+  const recipe = forgeWeaponRecipeV146(save, weaponId);
+  const harvest = normalizeHarvestInventoryV112(save.inventory.harvestV112);
+  if (!recipe || !harvest) return null;
+
+  const bone = harvest.archive.find(entry => entry.partId === "bone" && forgeMaterialKeyV146(entry) === selection.bone);
+  const tissue = harvest.archive.find(entry => entry.partId === "tissue" && forgeMaterialKeyV146(entry) === selection.tissue);
+  if (!bone || !tissue) return null;
+
+  const bonePayment = planForgeRepairMaterialsV146(harvest.archive, recipe.requirements.bone, selection.bone);
+  if (!bonePayment) return null;
+  const tissuePayment = planForgeRepairMaterialsV146(bonePayment.archive, recipe.requirements.tissue, selection.tissue);
+  if (!tissuePayment) return null;
+
+  return {
+    harvest: { ...harvest, archive: tissuePayment.archive },
+    quote: {
+      ...recipe,
+      selection: { bone: selection.bone, tissue: selection.tissue },
+      units: [...bonePayment.quote.units, ...tissuePayment.quote.units],
+    },
+  };
+}
+
+/** Agree on the equipped weapon, its next level and both archive debits at write time. */
+export function applyHunterForgeWeaponUpgradeV146(current: SaveGame, expected: ForgeWeaponQuoteV146): SaveGame | null {
+  const plan = planForgeWeaponMaterialsV146(current, expected.weaponId, expected.selection);
+  if (!plan || JSON.stringify(plan.quote) !== JSON.stringify(expected)) return null;
+  return {
+    ...current,
+    inventory: {
+      ...current.inventory,
+      weaponUpgrades: { ...current.inventory.weaponUpgrades, [plan.quote.weaponId]: plan.quote.nextLevel },
+      harvestV112: plan.harvest,
+    },
+  };
+}
 
 export const FORGE_FIELD_TOOL_BONE_COST_V146 = 2;
 
