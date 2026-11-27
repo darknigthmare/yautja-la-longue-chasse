@@ -1,7 +1,7 @@
 import type { SaveGame } from '../types';
 import { normalizeSoloV69Campaign, soloV69MatchesSave, templeRankKeepsEarlierTrialV174 } from './campaignSoloV69';
 import { createSoloV70State, normalizeSoloV70State, SOLO_V70_PHASES, SOLO_V70_SIGNS, SOLO_V70_ENERGY_VAULT, SOLO_V70_LOAN_RACK, SOLO_V70_QUARANTINE_THRESHOLD,
-  SOLO_V70_BELVEDERE, SOLO_V70_RECONNECTION, soloV70BelvederePlatesReady, soloV70Receipts, soloV70CampaignPortal, soloV70CanTravel,
+  SOLO_V70_BELVEDERE, SOLO_V70_RECONNECTION, SOLO_V70_NEF_RELAY_M017, soloV70NefPlatesReadyM017, soloV70BelvederePlatesReady, soloV70Receipts, soloV70CampaignPortal, soloV70CanTravel,
   soloV70TrioPresent, soloV70TrioObservation, type SoloV70State, type SoloV70Receipt } from './firstHuntSoloV70';
 export interface SoloV70Campaign { version:1;status:'active'|'completed';checkpoint:SoloV70State;receipts:SoloV70Receipt[];startedAt:string;completedAt:string|null }
 export type SoloV70Save=SaveGame&{soloV70?:SoloV70Campaign|null};
@@ -55,6 +55,18 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
  }
  if (fresh[0]?.id === 'belvedere-serviced' && next.belvedereLever &&
      (!old.belvedereLever || !soloV70TrioPresent(next))) return null;
+ if (old.nefRelayM017) {
+   if (!same(old.nefRelayM017, next.nefRelayM017)) return null;
+ } else if (next.nefRelayM017) {
+   const { room, leverX, upperY, holdTicks } = SOLO_V70_NEF_RELAY_M017;
+   if (old.phase !== 'separation' || next.phase !== 'separation' || old.room !== room ||
+       old.companionMode !== 'plates' || next.companionMode !== 'follow' || next.player.vx !== 0 ||
+       !near(room, leverX, upperY, 38) || old.scan + delta < holdTicks || next.scan !== 0 ||
+       !soloV70NefPlatesReadyM017(next) || next.nefRelayM017.tick !== next.tick ||
+       next.nefRelayM017.x !== next.player.x) return null;
+ }
+ if (fresh[0]?.id === 'triad-rejoined' && next.nefRelayM017 &&
+     (!old.nefRelayM017 || !soloV70TrioPresent(next) || next.player.vx !== 0)) return null;
  if(next.room!==old.room){const side=next.room>old.room?'right':'left',exit=soloV70CampaignPortal(old,old.room,side),entry=soloV70CampaignPortal(next,next.room,side==='right'?'left':'right');if(!soloV70CanTravel(old,next.room)||next.doorCrossings!==old.doorCrossings+1||next.lastDoor?.from!==old.room||next.lastDoor.to!==next.room||next.lastDoor.tick!==next.tick||next.roomEnteredAt!==next.tick||Math.abs(old.player.x-exit.x)>delta*3.5+42||!near(next.room,entry.x,entry.y,1)||next.player.vx!==0||next.player.vy!==0)return null;}
  else if(next.doorCrossings!==old.doorCrossings||!same(next.lastDoor,old.lastDoor)||next.attempts===old.attempts&&Math.abs(next.player.x-old.player.x)>delta*3.5+.1)return null;
  if(next.visited.some((x,i)=>x!==(old.visited[i]||i===next.room))||next.room===old.room&&next.companions.some((c,i)=>Math.abs(c.x-old.companions[i].x)>delta*2.9+.1))return null;
@@ -68,7 +80,7 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
  else if(next.health>old.health||next.drone.hp>old.drone.hp||next.health<old.health-1||next.drone.hp<old.drone.hp-1)return null;
  if(next.drone.hp<old.drone.hp&&(old.phase!=='drone'||next.room!==8||Math.abs(next.player.x-next.drone.x)>=100||next.player.y<=330||next.attackTimer!==18||next.attackCooldown!==45||next.drone.hits!==old.drone.hits+1))return null;
  if(next.configuration!==old.configuration&&!fresh.length)return null;
- if(fresh.length){const id=fresh[0].id;const endpoints:Partial<Record<SoloV70Receipt['id'],[number,number,number]>>={'briefed':[0,160,430],'upper-entry':[0,900,270],'triad-oath':[1,520,430],'signs-read':[2,850,360],'arsenal-opened':[3,820,430],'belvedere-serviced':[SOLO_V70_BELVEDERE.room,SOLO_V70_BELVEDERE.exitX,next.belvedereLever?SOLO_V70_BELVEDERE.lowerY:SOLO_V70_BELVEDERE.upperY],'counterweight-aligned':[5,950,300],'human-truce':[6,740,430],'second-configuration':[7,300,430],'triad-rejoined':[7,300,430],'quarantine-valves':[8,980,430],'returned':[0,160,430],'mentor-report':[0,160,430],'opening-attested':[0,160,430]};const target=endpoints[id];if(target&&!near(...target))return null;if(id==='returned'&&next.walked<10000||id==='drone-confined'&&(next.room!==8||next.drone.hp!==0||next.drone.hits<5)||id==='triad-oath'&&!next.companions.every((c,i)=>Math.abs(c.x-[320,730][i])<5)||id==='triad-rejoined'&&!next.companions.every((c,i)=>Math.abs(c.x-[520,920][i])<5))return null;}
+ if(fresh.length){const id=fresh[0].id;const endpoints:Partial<Record<SoloV70Receipt['id'],[number,number,number]>>={'briefed':[0,160,430],'upper-entry':[0,900,270],'triad-oath':[1,520,430],'signs-read':[2,850,360],'arsenal-opened':[3,820,430],'belvedere-serviced':[SOLO_V70_BELVEDERE.room,SOLO_V70_BELVEDERE.exitX,next.belvedereLever?SOLO_V70_BELVEDERE.lowerY:SOLO_V70_BELVEDERE.upperY],'counterweight-aligned':[5,950,300],'human-truce':[6,740,430],'second-configuration':[7,300,430],'triad-rejoined':[SOLO_V70_NEF_RELAY_M017.room,next.nefRelayM017?SOLO_V70_NEF_RELAY_M017.regroupX:SOLO_V70_RECONNECTION.x,430],'quarantine-valves':[8,980,430],'returned':[0,160,430],'mentor-report':[0,160,430],'opening-attested':[0,160,430]};const target=endpoints[id];if(target&&!near(...target))return null;if(id==='returned'&&next.walked<10000||id==='drone-confined'&&(next.room!==8||next.drone.hp!==0||next.drone.hits<5)||id==='triad-oath'&&!next.companions.every((c,i)=>Math.abs(c.x-[320,730][i])<5)||id==='triad-rejoined'&&!next.nefRelayM017&&!soloV70NefPlatesReadyM017(next))return null;}
  const complete=next.phase==='complete',soloV70:SoloV70Campaign={...before,checkpoint:next,receipts,status:complete?'completed':'active',completedAt:complete?before.completedAt??now:null};if(!normalizeSoloV70Campaign(soloV70))return null;
  // A real local drone combat is retained here, but is not an invented global
  // rite, Queen kill, triad blooding, permanent armament or personal ship grant.
