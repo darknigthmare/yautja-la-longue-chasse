@@ -1,0 +1,734 @@
+{
+  "metadata": {
+    "workbook": "Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+    "sha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+    "designedAt": "2026-10-07"
+  },
+  "entries": [
+    {
+      "id": "W3-RTS01",
+      "sheet": "Scénarios RTS",
+      "category": "Guerre V6",
+      "row": 6,
+      "title": "L’angle avant le pont",
+      "fields": [
+        {
+          "column": "C",
+          "label": "Carte ref",
+          "value": "W3-MAP01",
+          "cell": "C6"
+        },
+        {
+          "column": "D",
+          "label": "Rang minimal",
+          "value": "Blooded",
+          "cell": "D6"
+        },
+        {
+          "column": "E",
+          "label": "Objectif",
+          "value": "Repérer le guet principal et faire traverser une équipe de porteurs.",
+          "cell": "E6"
+        },
+        {
+          "column": "F",
+          "label": "Deploiement",
+          "value": "Passerelle centrale courte ; tunnel inférieur long ; prises hautes pour grimpeurs. Roche opaque au centre, deux refuges latéraux et vue dégagée sur le pont.",
+          "cell": "F6"
+        },
+        {
+          "column": "G",
+          "label": "Pc max",
+          "value": 12,
+          "cell": "G6"
+        },
+        {
+          "column": "H",
+          "label": "Rav depart",
+          "value": 48,
+          "cell": "H6"
+        },
+        {
+          "column": "I",
+          "label": "Actions",
+          "value": "Envoyer un éclaireur sur le chemin haut, arrêter les porteurs au dernier couvert et déplacer les lanciers vers le tunnel. Le joueur choisit quand révéler sa diversion ; le tireur adverse conserve son angle tant que personne ne l’a réellement déplacé. Une fois le pont atteint, un garde reste auprès de chaque extrémité.",
+          "cell": "I6"
+        },
+        {
+          "column": "J",
+          "label": "Plan adverse",
+          "value": "Le guet vise les porteurs exposés ; son escorte contourne par le tunnel si elle voit une diversion trop statique.",
+          "cell": "J6"
+        },
+        {
+          "column": "K",
+          "label": "Choix",
+          "value": "Récupérer le réflecteur ou tenir le point haut pour couvrir l’extraction.",
+          "cell": "K6"
+        },
+        {
+          "column": "L",
+          "label": "Réussite",
+          "value": "Une charge désignée et son porteur atteignent la sortie ; aucun quota de victimes n’est requis.",
+          "cell": "L6"
+        },
+        {
+          "column": "M",
+          "label": "Échec reprise",
+          "value": "Un repli rend les équipes survivantes disponibles à leur vraie sortie. Les blessés, morts, pièges consommés et charges abandonnées persistent. Une revanche est une nouvelle opération depuis cet état, jamais la répétition gratuite du combat initial.",
+          "cell": "M6"
+        },
+        {
+          "column": "N",
+          "label": "Lien campagne",
+          "value": "Résultat validé une fois avec objectif, survivants, pertes, XP, stocks et positions. La carte distingue prise militaire, présence et accord local ; le héros lit les mêmes données.",
+          "cell": "N6"
+        },
+        {
+          "column": "O",
+          "label": "Recompense XP",
+          "value": 8,
+          "cell": "O6"
+        },
+        {
+          "column": "P",
+          "label": "Provenance",
+          "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+          "cell": "P6"
+        }
+      ]
+    },
+    {
+      "id": "W3-MAP01",
+      "sheet": "Cartes des escarmouches",
+      "category": "Guerre V6",
+      "row": 6,
+      "title": "Les Corniches opposées",
+      "fields": [
+        {
+          "column": "C",
+          "label": "Monde concerné",
+          "value": "W3-P01",
+          "cell": "C6"
+        },
+        {
+          "column": "D",
+          "label": "Largeur cases",
+          "value": 32,
+          "cell": "D6"
+        },
+        {
+          "column": "E",
+          "label": "Hauteur cases",
+          "value": 24,
+          "cell": "E6"
+        },
+        {
+          "column": "F",
+          "label": "Deploiements",
+          "value": "Ouest bas : débarcadère ; est haut : nid adverse.",
+          "cell": "F6"
+        },
+        {
+          "column": "G",
+          "label": "Chemins",
+          "value": "Passerelle centrale courte ; tunnel inférieur long ; prises hautes pour grimpeurs.",
+          "cell": "G6"
+        },
+        {
+          "column": "H",
+          "label": "Couvert et visibilité",
+          "value": "Roche opaque au centre, deux refuges latéraux et vue dégagée sur le pont.",
+          "cell": "H6"
+        },
+        {
+          "column": "I",
+          "label": "Danger",
+          "value": "Une chute de pierres annoncée ferme alternativement deux cases du chemin haut.",
+          "cell": "I6"
+        },
+        {
+          "column": "J",
+          "label": "Objectifs",
+          "value": "Couper l’observation, traverser avec la charge puis tenir le seuil de sortie.",
+          "cell": "J6"
+        },
+        {
+          "column": "K",
+          "label": "Lecture 2D",
+          "value": "Chaque hauteur a son plan de marche, des occlusions cohérentes et des connexions visibles. Les pièces, portes et ascenseurs restent des objets physiques.",
+          "cell": "K6"
+        },
+        {
+          "column": "L",
+          "label": "Retour",
+          "value": "Au moins un chemin d’extraction reste identifiable ; il peut être disputé mais n’est pas remplacé par une téléportation de fin de mission.",
+          "cell": "L6"
+        },
+        {
+          "column": "M",
+          "label": "Provenance",
+          "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+          "cell": "M6"
+        }
+      ]
+    },
+    {
+      "id": "W3-P01",
+      "sheet": "Mondes en guerre",
+      "category": "Guerre V6",
+      "row": 6,
+      "title": "Korthas",
+      "fields": [
+        {
+          "column": "C",
+          "label": "Monde concerné",
+          "value": "PLAN19",
+          "cell": "C6"
+        },
+        {
+          "column": "D",
+          "label": "Biomes",
+          "value": "Fronts de roche, marais et vestiges",
+          "cell": "D6"
+        },
+        {
+          "column": "E",
+          "label": "Topologie",
+          "value": "Six régions de six zones ; trente-six territoires reliés par soixante-dix passages.",
+          "cell": "E6"
+        },
+        {
+          "column": "F",
+          "label": "Objectif strategique",
+          "value": "Ouvrir une boucle de ravitaillement, affronter les forces qui contrôlent les seuils et déterminer une issue avec chaque front.",
+          "cell": "F6"
+        },
+        {
+          "column": "G",
+          "label": "Limite",
+          "value": "La maîtrise militaire d’un passage ne donne aucune maison ni obéissance des habitants.",
+          "cell": "G6"
+        },
+        {
+          "column": "H",
+          "label": "Nombre zones cible",
+          "value": 36,
+          "cell": "H6"
+        },
+        {
+          "column": "I",
+          "label": "Nombre regions cible",
+          "value": 6,
+          "cell": "I6"
+        },
+        {
+          "column": "J",
+          "label": "Niveau détail",
+          "value": "36 zones, 70 liaisons et 12 tours détaillés",
+          "cell": "J6"
+        },
+        {
+          "column": "K",
+          "label": "Accès",
+          "value": "Blooded + vaisseau réellement acquis + trajet joué. Le statut de guerre est chargé seulement après arrivée dans ce même monde.",
+          "cell": "K6"
+        },
+        {
+          "column": "L",
+          "label": "Identité",
+          "value": "Profil militaire de la planète référencée ; même monde, mêmes personnages, mêmes stocks, aucun inventaire dupliqué.",
+          "cell": "L6"
+        },
+        {
+          "column": "M",
+          "label": "Provenance",
+          "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+          "cell": "M6"
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "W3-U01",
+      "name": "Pisteurs de lisière",
+      "role": "Reconnaissance",
+      "fullMembers": 2,
+      "commandPoints": 2,
+      "recruitmentRav": 8,
+      "upkeepRav": 1,
+      "delayTurns": 2,
+      "attack": 12,
+      "defense": 8,
+      "range": 3,
+      "mobility": 5,
+      "counter": "Équipes embusquées repérées par leurs déplacements",
+      "weakness": "Peu capables de tenir un seuil contre des spécialistes de mêlée."
+    },
+    {
+      "id": "W3-U02",
+      "name": "Éclaireur de crête",
+      "role": "Vision élevée",
+      "fullMembers": 1,
+      "commandPoints": 2,
+      "recruitmentRav": 9,
+      "upkeepRav": 1,
+      "delayTurns": 2,
+      "attack": 10,
+      "defense": 7,
+      "range": 5,
+      "mobility": 4,
+      "counter": "Lignes de tirs préparées révélées depuis un point haut",
+      "weakness": "Une corniche isolée sans voie de repli le piège."
+    },
+    {
+      "id": "W3-U03",
+      "name": "Veilleurs de marais",
+      "role": "Guet et traversée",
+      "fullMembers": 2,
+      "commandPoints": 2,
+      "recruitmentRav": 9,
+      "upkeepRav": 1,
+      "delayTurns": 2,
+      "attack": 11,
+      "defense": 11,
+      "range": 3,
+      "mobility": 4,
+      "counter": "Flancs proches des chenaux et silhouettes sur les pilotis",
+      "weakness": "Mobilité réduite dans les secteurs secs et ouverts."
+    },
+    {
+      "id": "W3-U04",
+      "name": "Traqueurs d’odeurs",
+      "role": "Suivi de piste",
+      "fullMembers": 2,
+      "commandPoints": 2,
+      "recruitmentRav": 10,
+      "upkeepRav": 1,
+      "delayTurns": 2,
+      "attack": 10,
+      "defense": 10,
+      "range": 2,
+      "mobility": 5,
+      "counter": "Fuites laissant une trace au sol malgré un camouflage visuel",
+      "weakness": "Les mélanges de pistes et courants interrompent la poursuite."
+    },
+    {
+      "id": "W3-U05",
+      "name": "Guetteur des ombres",
+      "role": "Observation discrète",
+      "fullMembers": 1,
+      "commandPoints": 2,
+      "recruitmentRav": 10,
+      "upkeepRav": 1,
+      "delayTurns": 2,
+      "attack": 9,
+      "defense": 8,
+      "range": 4,
+      "mobility": 5,
+      "counter": "Repositionnements répétés et caches de reconnaissance",
+      "weakness": "Seul, il évite la capture de poste frontal."
+    },
+    {
+      "id": "W3-U06",
+      "name": "Marqueurs de route",
+      "role": "Balisage d’équipe",
+      "fullMembers": 2,
+      "commandPoints": 2,
+      "recruitmentRav": 8,
+      "upkeepRav": 1,
+      "delayTurns": 2,
+      "attack": 9,
+      "defense": 12,
+      "range": 2,
+      "mobility": 4,
+      "counter": "Passages inconnus transformés en itinéraires de retour",
+      "weakness": "Leurs repères peuvent être vus et déplacés par l’ennemi."
+    },
+    {
+      "id": "W3-U07",
+      "name": "Lanciers de seuil",
+      "role": "Tenue de passage",
+      "fullMembers": 3,
+      "commandPoints": 3,
+      "recruitmentRav": 12,
+      "upkeepRav": 2,
+      "delayTurns": 2,
+      "attack": 16,
+      "defense": 20,
+      "range": 2,
+      "mobility": 3,
+      "counter": "Assauts directs dans un couloir et charges mal préparées",
+      "weakness": "Peu efficaces contre un tir plongeant ou une attaque arrière."
+    },
+    {
+      "id": "W3-U08",
+      "name": "Duelliste des braises",
+      "role": "Défi rapproché",
+      "fullMembers": 1,
+      "commandPoints": 3,
+      "recruitmentRav": 14,
+      "upkeepRav": 2,
+      "delayTurns": 3,
+      "attack": 24,
+      "defense": 14,
+      "range": 1,
+      "mobility": 5,
+      "counter": "Chef isolé acceptant ou subissant une confrontation rapprochée",
+      "weakness": "Ne détourne pas magiquement les tirs ni les autres unités."
+    },
+    {
+      "id": "W3-U09",
+      "name": "Gardiens à disque",
+      "role": "Interception",
+      "fullMembers": 2,
+      "commandPoints": 3,
+      "recruitmentRav": 13,
+      "upkeepRav": 2,
+      "delayTurns": 3,
+      "attack": 20,
+      "defense": 16,
+      "range": 4,
+      "mobility": 4,
+      "counter": "Traversées prévisibles et couverts étroits avec trajectoire dégagée",
+      "weakness": "Le retour du disque impose une fenêtre de prudence annoncée."
+    },
+    {
+      "id": "W3-U10",
+      "name": "Portes-boucliers de forge",
+      "role": "Protection mobile",
+      "fullMembers": 2,
+      "commandPoints": 3,
+      "recruitmentRav": 14,
+      "upkeepRav": 2,
+      "delayTurns": 3,
+      "attack": 12,
+      "defense": 25,
+      "range": 1,
+      "mobility": 3,
+      "counter": "Tirs frontaux identifiés et avance de porteurs",
+      "weakness": "Flancs, hauteur et contournement ; protection chargée et limitée."
+    },
+    {
+      "id": "W3-U11",
+      "name": "Chasseurs au combistick",
+      "role": "Mêlée polyvalente",
+      "fullMembers": 2,
+      "commandPoints": 3,
+      "recruitmentRav": 12,
+      "upkeepRav": 2,
+      "delayTurns": 2,
+      "attack": 20,
+      "defense": 17,
+      "range": 2,
+      "mobility": 4,
+      "counter": "Unités légères surprises hors de leur couvert",
+      "weakness": "Tenue moindre qu’un garde de seuil et portée moindre qu’un tireur."
+    },
+    {
+      "id": "W3-U12",
+      "name": "Grimpeurs de piliers",
+      "role": "Assaut vertical",
+      "fullMembers": 2,
+      "commandPoints": 3,
+      "recruitmentRav": 12,
+      "upkeepRav": 2,
+      "delayTurns": 2,
+      "attack": 18,
+      "defense": 12,
+      "range": 2,
+      "mobility": 5,
+      "counter": "Positions hautes reliées par des prises repérées",
+      "weakness": "Échouent si les ancrages sont coupés ou si la surface est lisse."
+    },
+    {
+      "id": "W3-U13",
+      "name": "Tireurs au speargun",
+      "role": "Précision cinétique",
+      "fullMembers": 2,
+      "commandPoints": 3,
+      "recruitmentRav": 13,
+      "upkeepRav": 2,
+      "delayTurns": 2,
+      "attack": 21,
+      "defense": 11,
+      "range": 5,
+      "mobility": 3,
+      "counter": "Cible identifiée qui reste dans un angle observé",
+      "weakness": "Temps de visée, munitions et protections opaques limitent les tirs."
+    },
+    {
+      "id": "W3-U14",
+      "name": "Tireur de plasma mesuré",
+      "role": "Appui énergétique",
+      "fullMembers": 1,
+      "commandPoints": 4,
+      "recruitmentRav": 18,
+      "upkeepRav": 3,
+      "delayTurns": 3,
+      "attack": 30,
+      "defense": 12,
+      "range": 5,
+      "mobility": 3,
+      "counter": "Protection lourde ou cible résistante clairement repérée",
+      "weakness": "Énergie, signature thermique et échauffement ; interdit dans les rites concernés."
+    },
+    {
+      "id": "W3-U15",
+      "name": "Poseurs de filets",
+      "role": "Immobilisation brève",
+      "fullMembers": 2,
+      "commandPoints": 3,
+      "recruitmentRav": 13,
+      "upkeepRav": 2,
+      "delayTurns": 3,
+      "attack": 14,
+      "defense": 13,
+      "range": 3,
+      "mobility": 4,
+      "counter": "Coureur ou bête moyenne sur trajectoire anticipée",
+      "weakness": "Les grandes proies déchirent le dispositif et les alliés doivent contourner la zone."
+    },
+    {
+      "id": "W3-U16",
+      "name": "Piégeurs de passage",
+      "role": "Contrôle préparé",
+      "fullMembers": 2,
+      "commandPoints": 3,
+      "recruitmentRav": 12,
+      "upkeepRav": 2,
+      "delayTurns": 2,
+      "attack": 18,
+      "defense": 15,
+      "range": 2,
+      "mobility": 3,
+      "counter": "Poursuite précipitée dans un passage reconnu",
+      "weakness": "Pièges visibles par observation, stock limité et pose interrompable."
+    },
+    {
+      "id": "W3-U17",
+      "name": "Équipe d’extraction",
+      "role": "Transport de blessés",
+      "fullMembers": 3,
+      "commandPoints": 3,
+      "recruitmentRav": 12,
+      "upkeepRav": 2,
+      "delayTurns": 2,
+      "attack": 8,
+      "defense": 18,
+      "range": 1,
+      "mobility": 4,
+      "counter": "Pertes aggravées par une évacuation tardive",
+      "weakness": "Porter réduit les mains disponibles et exige un itinéraire praticable."
+    },
+    {
+      "id": "W3-U18",
+      "name": "Soigneur de terrain",
+      "role": "Stabilisation",
+      "fullMembers": 1,
+      "commandPoints": 2,
+      "recruitmentRav": 10,
+      "upkeepRav": 2,
+      "delayTurns": 3,
+      "attack": 6,
+      "defense": 10,
+      "range": 1,
+      "mobility": 4,
+      "counter": "Aggravation des blessures dans une position couverte",
+      "weakness": "Ne ressuscite personne et n’efface pas une blessure majeure en combat."
+    },
+    {
+      "id": "W3-U19",
+      "name": "Récupérateurs de charges",
+      "role": "Logistique avancée",
+      "fullMembers": 3,
+      "commandPoints": 3,
+      "recruitmentRav": 10,
+      "upkeepRav": 2,
+      "delayTurns": 2,
+      "attack": 8,
+      "defense": 16,
+      "range": 1,
+      "mobility": 3,
+      "counter": "Pénurie de matériel dans un poste relié",
+      "weakness": "Vulnérables pendant un chargement, capacité de portage bornée."
+    },
+    {
+      "id": "W3-U20",
+      "name": "Artisans d’ancrage",
+      "role": "Installation",
+      "fullMembers": 2,
+      "commandPoints": 3,
+      "recruitmentRav": 13,
+      "upkeepRav": 2,
+      "delayTurns": 3,
+      "attack": 10,
+      "defense": 17,
+      "range": 2,
+      "mobility": 3,
+      "counter": "Obstacles mécaniques et postes endommagés",
+      "weakness": "Réparation exige pièces, interruption des tirs et temps sur place."
+    },
+    {
+      "id": "W3-U21",
+      "name": "Guides de monture",
+      "role": "Mobilité montée",
+      "fullMembers": 2,
+      "commandPoints": 4,
+      "recruitmentRav": 18,
+      "upkeepRav": 3,
+      "delayTurns": 3,
+      "attack": 19,
+      "defense": 15,
+      "range": 2,
+      "mobility": 6,
+      "counter": "Long détour terrestre et messagerie sous menace",
+      "weakness": "Montures vivantes avec fatigue ; falaises, sas et couloirs étroits bloquent le passage."
+    },
+    {
+      "id": "W3-U22",
+      "name": "Conduite de hound",
+      "role": "Traque accompagnée",
+      "fullMembers": 2,
+      "commandPoints": 4,
+      "recruitmentRav": 18,
+      "upkeepRav": 3,
+      "delayTurns": 3,
+      "attack": 22,
+      "defense": 13,
+      "range": 2,
+      "mobility": 6,
+      "counter": "Proie en fuite localisée par signes multiples",
+      "weakness": "Le lien et la fatigue de l’animal persistent ; rappel exige une voie de retour."
+    },
+    {
+      "id": "W3-U23",
+      "name": "Gardiens de réserve",
+      "role": "Faune et corridors",
+      "fullMembers": 2,
+      "commandPoints": 3,
+      "recruitmentRav": 12,
+      "upkeepRav": 2,
+      "delayTurns": 3,
+      "attack": 14,
+      "defense": 19,
+      "range": 3,
+      "mobility": 4,
+      "counter": "Déviation d’une bête vers un couloir dégagé",
+      "weakness": "Ne contrôlent pas toutes les créatures et doivent observer leurs réactions."
+    },
+    {
+      "id": "W3-U24",
+      "name": "Chasseurs du givre",
+      "role": "Endurance polaire",
+      "fullMembers": 2,
+      "commandPoints": 3,
+      "recruitmentRav": 13,
+      "upkeepRav": 2,
+      "delayTurns": 2,
+      "attack": 17,
+      "defense": 19,
+      "range": 3,
+      "mobility": 4,
+      "counter": "Escarmouche lente dans le froid avec repères de glace",
+      "weakness": "Équipement pesant hors de ce milieu et visibilité parfois trompeuse."
+    },
+    {
+      "id": "W3-U25",
+      "name": "Nageurs du rivage",
+      "role": "Approche aquatique",
+      "fullMembers": 2,
+      "commandPoints": 3,
+      "recruitmentRav": 13,
+      "upkeepRav": 2,
+      "delayTurns": 3,
+      "attack": 16,
+      "defense": 14,
+      "range": 2,
+      "mobility": 5,
+      "counter": "Quai surveillé uniquement depuis la terre",
+      "weakness": "Temps d’immersion, courant et matériel compatible limitent la profondeur."
+    },
+    {
+      "id": "W3-U26",
+      "name": "Briseurs de blocus",
+      "role": "Abordage limité",
+      "fullMembers": 3,
+      "commandPoints": 4,
+      "recruitmentRav": 18,
+      "upkeepRav": 3,
+      "delayTurns": 3,
+      "attack": 23,
+      "defense": 20,
+      "range": 2,
+      "mobility": 3,
+      "counter": "Sas et accès de coque après sécurisation des pressions",
+      "weakness": "Aucune téléportation ; doivent être transportés et gardent un sas de repli."
+    },
+    {
+      "id": "W3-U27",
+      "name": "Sentinelles de quarantaine",
+      "role": "Isolement de secteur",
+      "fullMembers": 2,
+      "commandPoints": 4,
+      "recruitmentRav": 17,
+      "upkeepRav": 3,
+      "delayTurns": 3,
+      "attack": 18,
+      "defense": 24,
+      "range": 3,
+      "mobility": 3,
+      "counter": "Propagation d’une menace par un couloir encore contrôlable",
+      "weakness": "Faible poursuite et équipements consommables après exposition."
+    },
+    {
+      "id": "W3-U28",
+      "name": "Messagers de coalition",
+      "role": "Liaison tactique",
+      "fullMembers": 2,
+      "commandPoints": 2,
+      "recruitmentRav": 10,
+      "upkeepRav": 1,
+      "delayTurns": 2,
+      "attack": 10,
+      "defense": 12,
+      "range": 2,
+      "mobility": 5,
+      "counter": "Désynchronisation des groupes séparés par un relais coupé",
+      "weakness": "Ne transmettent rien à travers une zone qu’ils n’ont pas réellement franchie."
+    },
+    {
+      "id": "W3-U29",
+      "name": "Gardiens de témoins",
+      "role": "Protection de personnes",
+      "fullMembers": 2,
+      "commandPoints": 3,
+      "recruitmentRav": 12,
+      "upkeepRav": 2,
+      "delayTurns": 2,
+      "attack": 12,
+      "defense": 21,
+      "range": 2,
+      "mobility": 4,
+      "counter": "Capture d’un guide ou d’un témoin en transit",
+      "weakness": "La personne accompagnée choisit son déplacement ; pas de téléportation forcée."
+    },
+    {
+      "id": "W3-U30",
+      "name": "Ancien coordinateur",
+      "role": "Commandement proche",
+      "fullMembers": 1,
+      "commandPoints": 5,
+      "recruitmentRav": 22,
+      "upkeepRav": 3,
+      "delayTurns": 3,
+      "attack": 20,
+      "defense": 24,
+      "range": 3,
+      "mobility": 3,
+      "counter": "Panique d’ordres et objectifs contradictoires dans son secteur",
+      "weakness": "Rare, volontaire et exposé ; sa perte affecte durablement l’équipe sans supprimer tous les contrôles."
+    }
+  ]
+}

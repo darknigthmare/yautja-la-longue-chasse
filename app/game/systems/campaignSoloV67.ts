@@ -22,14 +22,15 @@ export function normalizeSoloV67Campaign(v: unknown): SoloV67Campaign | null {
   if ((v.status === "completed") !== completed || (completed ? !iso(v.completedAt) || Date.parse(v.completedAt) < Date.parse(v.startedAt) : v.completedAt !== null)) return null;
   return { version: 1, status: v.status, checkpoint, receipts: soloV67Receipts(checkpoint), startedAt: v.startedAt, completedAt: v.completedAt as string | null };
 }
-function prerequisites(v: Record<string, unknown>) {
+function prerequisites(v: Record<string, unknown>, completed = false) {
   const nursery = normalizeNurseryCampaign(v.prologue), youth = normalizeYouthCampaign(v.youthTraining), firstTracks = normalizeSoloV66Campaign(v.soloV66);
   const greeted = record(v.homeworld) && Array.isArray(v.homeworld.greetedNpcIds) ? v.homeworld.greetedNpcIds : [];
   return nursery?.status === "completed" && youth?.checkpoint.phase === "cage-complete" && youth.receipts.length === 20 &&
     firstTracks?.status === "completed" && firstTracks.receipts.length === 7 &&
     ["first-tracks", "training-completed"].every(id => nursery.chronicle.evidence.some(e => e.id === id)) &&
     nursery.chronicle.rites[0]?.id === "nursery-recognition" && (nursery.chronicle.rites.length === 1 ||
-      nursery.chronicle.rites.length === 2 && normalizeSoloV68Campaign(v.soloV68)?.status === "completed" && soloV68MatchesSave(v)) &&
+      (nursery.chronicle.rites.length === 2 || completed && nursery.chronicle.rites.some(rite => rite.id === "blooding-mark")) &&
+      normalizeSoloV68Campaign(v.soloV68)?.status === "completed" && soloV68MatchesSave(v)) &&
     ["hunt-king", "terrace-instructor"].every(id => greeted.includes(id));
 }
 /** Missing old fields remain valid; a standalone claim or a rite must never manufacture this assessment. */
@@ -39,7 +40,7 @@ export function soloV67MatchesSave(v: unknown): boolean {
   const hasProof = chronicle?.evidence.some(e => e.id === "unguided-hunt") ?? false;
   if (v.soloV67 === undefined || v.soloV67 === null) return !hasProof;
   const state = normalizeSoloV67Campaign(v.soloV67);
-  return !!state && !!prerequisites(v) && hasProof === (state.status === "completed");
+  return !!state && !!prerequisites(v, state.status === "completed") && hasProof === (state.status === "completed");
 }
 export const canStartSoloV67 = (v: unknown) => record(v) && !!prerequisites(v) && soloV67MatchesSave(v);
 export function startSoloV67Campaign(save: SoloV67Save, now = new Date().toISOString()): SoloV67Save | null {

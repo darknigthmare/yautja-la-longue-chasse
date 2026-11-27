@@ -1,6 +1,7 @@
 "use client";
 import { applyResidenceActionV149, emptyResidenceV149, houseForBuildingV149, houseV149, isFutureResidenceV149, normalizeResidenceV149, recordResidenceFieldEventV149, type ResidenceActionV149 } from "./systems/residenceV149";
 import ResidencePanelV149 from "./ResidencePanelV149";
+import { residenceTrophiesR2M038 } from "./systems/trophyIntroductionR2M038";
 import ResidenceLifePanelV150 from "./ResidenceLifePanelV150";
 import OriginTransitionPanelV151 from "./OriginTransitionPanelV151";
 import OriginTrophyTransitionPanelV157, { type OriginTrophyActionV157 } from "./OriginTrophyTransitionPanelV157";
@@ -72,6 +73,8 @@ import { startSoloV68Campaign, withSoloV68Checkpoint, withSoloV68Progress, soloV
 import type { SoloV68State, SoloV68Receipt } from "./systems/firstHuntSoloV68";
 import { startSoloV69Campaign, withSoloV69Checkpoint, withSoloV69Progress, soloV69NeedsScene } from "./systems/campaignSoloV69";
 import { startSoloV70Campaign, withSoloV70Checkpoint, withSoloV70Progress, soloV70NeedsScene } from "./systems/campaignSoloV70";
+import { advanceBloodedTempleV174, templeAvailableV174, type TempleCommandV174 } from "./systems/bloodedTempleV174";
+import { commitEliteRecognition, type EliteRecognitionCommand } from "./systems/eliteRecognitionV174";
 import type { SoloV69State, SoloV69Receipt } from "./systems/firstHuntSoloV69";
 import type { SoloV70State, SoloV70Receipt } from "./systems/firstHuntSoloV70";
 import { startSoloV90Campaign, withSoloV90Checkpoint, withSoloV90Progress, soloV90NeedsScene } from "./systems/campaignSoloV90";
@@ -88,6 +91,7 @@ import { abandonQueenHuntContractV163, emptyQueenHuntV163, evaluateQueenHuntAcce
   QUEEN_HUNT_SUPPORT_MISSION_V163, settleQueenHuntMissionV163, syncFirstQueenFromCradleV163, takeQueenHuntContractV163 } from './systems/queenHuntV163';
 import { evaluateShipPreparationV88, inspectShipPreparationV88, readShipPreparationFleetV88, type ShipPreparationObservationV88, type ShipPreparationResultV88 } from './systems/shipPreparationV88';
 import { actSpaceRoutesV159, normalizeSpaceRoutesV159, spacePersonalShipV159, type SpaceRoutesActionV159, type SpaceRoutesResultV159 } from './systems/spaceRoutesV159';
+import { advanceWarNarrativeR2M035, type WarNarrativeCommandR2M035 } from "./systems/warNarrativeR2M035";
 import { shipAcquisitionAuthorityV161, shipReceiptV161 } from './systems/shipReceiptV161';
 import { FIRST_INTERSTELLAR_V173, commitFirstInterstellarV173, firstInterstellarAccessV173,
   firstInterstellarInFlightV173, firstInterstellarReceiptV173, type FirstInterstellarActionV173 } from './systems/firstInterstellarV173';
@@ -2290,7 +2294,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "quatzaRij" | "buriedCradle" | "elderPassageJudgmentV168" | "elderMentoringV168" | "elderAssemblyV168" | "elderWorkshopV172" | "eliteMasteryV170" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "spaceRoutesV159" | "firstInterstellarV173" | "queenHuntV163" | "clanShipDocking" | "clanShipOperations" | "clanHullProjectV171" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "mountRidesV156" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155" | "blackGodV162" | "minorArcsV160" | "warpEpochsV165" | "tantalusV164">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "quatzaRij" | "bloodedTempleV174" | "eliteRecognitionV174" | "buriedCradle" | "warNarrativeR2M035" | "elderPassageJudgmentV168" | "elderMentoringV168" | "elderAssemblyV168" | "elderWorkshopV172" | "eliteMasteryV170" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "spaceRoutesV159" | "firstInterstellarV173" | "queenHuntV163" | "clanShipDocking" | "clanShipOperations" | "clanHullProjectV171" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "mountRidesV156" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155" | "blackGodV162" | "minorArcsV160" | "warpEpochsV165" | "tantalusV164">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2300,7 +2304,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, elderPassageJudgmentV168: update.elderPassageJudgmentV168, elderWorkshopV172: update.elderWorkshopV172, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, spaceRoutesV159: update.spaceRoutesV159, firstInterstellarV173: update.firstInterstellarV173, queenHuntV163: update.queenHuntV163, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, mountsV153: update.mountsV153, mountRidesV156: update.mountRidesV156, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149, residenceLifeV150: update.residenceLifeV150, originV151: update.originV151, residenceScenesV154: update.residenceScenesV154, pathObjectsV158: update.pathObjectsV158, heritageV152: update.heritageV152, hardcoreV155: update.hardcoreV155, blackGodV162: update.blackGodV162, minorArcsV160: update.minorArcsV160, warpEpochsV165: update.warpEpochsV165, tantalusV164: update.tantalusV164 });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, warNarrativeR2M035: update.warNarrativeR2M035, bloodedTempleV174: update.bloodedTempleV174, eliteRecognitionV174: update.eliteRecognitionV174, buriedCradle: update.buriedCradle, elderPassageJudgmentV168: update.elderPassageJudgmentV168, elderWorkshopV172: update.elderWorkshopV172, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, spaceRoutesV159: update.spaceRoutesV159, firstInterstellarV173: update.firstInterstellarV173, queenHuntV163: update.queenHuntV163, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, mountsV153: update.mountsV153, mountRidesV156: update.mountRidesV156, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149, residenceLifeV150: update.residenceLifeV150, originV151: update.originV151, residenceScenesV154: update.residenceScenesV154, pathObjectsV158: update.pathObjectsV158, heritageV152: update.heritageV152, hardcoreV155: update.hardcoreV155, blackGodV162: update.blackGodV162, minorArcsV160: update.minorArcsV160, warpEpochsV165: update.warpEpochsV165, tantalusV164: update.tantalusV164 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2349,6 +2353,24 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     !resumableHunt && !activeHuntSessionRef.current,
   [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
     resumableHunt, screen, settingsOpen]);
+
+  const onEliteRecognitionCommandV174 = useCallback((command: EliteRecognitionCommand) => {
+    if (!elderRiteAvailable()) return { ok: false, message: "Rouvre la salle depuis le dossier de la campagne active." };
+    const outcome = commitEliteRecognition(saveRef.current, command);
+    if (!outcome.ok) return outcome;
+    return persistSocialProgress({ eliteRecognitionV174: outcome.state })
+      ? { ok: true, message: outcome.message }
+      : { ok: false, message: "La préparation attend la confirmation de sauvegarde." };
+  }, [elderRiteAvailable, persistSocialProgress]);
+
+  const onBloodedTempleCommandV174 = useCallback((command: TempleCommandV174) => {
+    if (!elderRiteAvailable()) return { ok: false, notice: "Rouvre le temple depuis le dossier de la campagne active." };
+    const outcome = advanceBloodedTempleV174(saveRef.current, command, Date.now());
+    if (!outcome.ok) return outcome;
+    return persistSocialProgress(outcome.update)
+      ? { ok: true, notice: outcome.notice }
+      : { ok: false, notice: "Le dernier geste reste en attente de sauvegarde." };
+  }, [elderRiteAvailable, persistSocialProgress]);
 
   const onQuatzaCommand = useCallback((command: QuatzaCommand): boolean => {
     if (!elderRiteAvailable()) return false;
@@ -2837,6 +2859,22 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   };
 
   const spaceShipV159 = useMemo(() => screen === 'map' ? spacePersonalShipV159(save) : null, [save, screen]);
+  const onWarNarrativeCommandR2M035 = (command: WarNarrativeCommandR2M035) => {
+    const current = saveRef.current;
+    let transferPending = true;
+    try { transferPending = archiveTransferPending(window.localStorage); } catch { /* No attested archive state. */ }
+    if (!sessionAliveRef.current || screen !== "clan-war" || archiveReturnV85 !== "clan-ship" || current.createdAt !== entry.ownerCreatedAt ||
+        transferPending || campaignOperationRef.current || !gameFocusedV89 || settingsOpen || trophyWorkshop !== null ||
+        archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || resumableHunt || activeHuntSessionRef.current) {
+      return { ok: false, message: "Poste suspendu. Vérifie l’état de la campagne et de sa sauvegarde." };
+    }
+    const result = advanceWarNarrativeR2M035(current, command);
+    if (!result.ok) return result;
+    return persistSocialProgress({ warNarrativeR2M035: result.state })
+      ? { ok: true, message: result.message }
+      : { ok: false, message: "Le geste attend la confirmation de la sauvegarde." };
+  };
+
   // V159: routes typées. L’action est écrite avant d’être annoncée ; l’écran relit la sauvegarde confirmée.
   const onSpaceRouteActionV159 = (action: SpaceRoutesActionV159): SpaceRoutesResultV159 => {
     const current = saveRef.current;
@@ -5072,6 +5110,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         <Suspense fallback={<DeferredGameScreen />}>
           <ClanWarPanelV85 save={save} createSceneAudio={createSceneAudio} onClose={() => go(archiveReturnV85)}
             onGauntletSound={playGauntletSignal} onEquipGauntlet={equipGauntletCampaignV134} onClaimGauntletStudy={claimGauntletResearchV134}
+            onNarrativeCommand={archiveReturnV85 === "clan-ship" ? onWarNarrativeCommandR2M035 : undefined}
             campaignRoutesPanel={<SpaceRoutesPanelV159 ownerCreatedAt={save.createdAt}
               state={normalizeSpaceRoutesV159(save.spaceRoutesV159, save.createdAt)} ship={spacePersonalShipV159(save)}
               disabled={settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy}
@@ -5276,7 +5315,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <div className="screen-safe">
             <Suspense fallback={<DeferredGameScreen />}>
               <ClanChroniclePanel save={save} onGameReserveV66={openGameReserveV66} onClose={() => go(chronicleReturnScreen)}
-                onQuatzaCommand={onQuatzaCommand}
+                onQuatzaCommand={onQuatzaCommand} onBloodedTempleCommand={onBloodedTempleCommandV174} onEliteRecognitionCommand={onEliteRecognitionCommandV174}
                 quatzaSuspended={settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !!resumableHunt || !gameFocusedV89}
                 onPassageCommand={onElderPassageCommand} onMentoringCommand={onElderMentoringCommand} onAssemblyCommand={onElderAssemblyCommand} onMasteryCommand={onEliteMasteryCommand}
                 onOpenCradle={campaignSaveBusy || archiveTransferBusy || archiveRecoveryIssue || resumableHunt
@@ -5314,10 +5353,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <button type="button" className="ghost-button" onClick={() => {
                   setJusticeJurisdiction("homeworld"); openStationScreen("justice", "homeworld");
                 }}>Dossier · {getJusticeStatus(save.justice).label}</button>
-                {canEnterQuatza(save, "triad") && <button type="button" className="ghost-button" data-open-quatza-homeworld
+                {(canEnterQuatza(save, "triad") || !!save.bloodedTempleV174 || templeAvailableV174(save)) && <button type="button" className="ghost-button" data-open-quatza-homeworld
                   disabled={settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !!resumableHunt}
                   onClick={() => { setChronicleReturnScreen("homeworld"); go("clan-chronicle"); }}>
-                  Dossier de campagne · Quatza-Rij
+                  {save.bloodedTempleV174 ? "Dossier de campagne · rites" : "Dossier de campagne · Quatza-Rij"}
                 </button>}
                 {!save.prologue && <button type="button" className="ghost-button" onClick={() => go("deck")}>Rejoindre le vaisseau</button>}
                 <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages</button>
@@ -5374,6 +5413,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               if (!house) return null;
               return <>
                 <ResidencePanelV149 house={house} residence={save.residenceV149} rankId={save.profile.rankId} disabled={disabled} threshold={threshold}
+                  displayedTrophies={residenceTrophiesR2M038(save, house.id)}
                   regionAllowed={regionId => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={action => residenceActionV149(house.id, action)} />
                 {!threshold && <>
                   <ResidenceLifePanelV150 house={house} residence={save.residenceV149} life={save.residenceLifeV150} rankId={save.profile.rankId} disabled={disabled}
