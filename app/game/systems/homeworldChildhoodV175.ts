@@ -31,7 +31,7 @@ const vocabulary = ["ring", "beam", "spring", "track", "east", "west", "observe"
   "track-decoy", "show-map", "show-passage", "handoff", "cohort-gesture", "cohort-stow",
   "accept-rack-access", "first-mask", "first-blades", "reset-current"] as const;
 export type ChildhoodCommandV175 = typeof vocabulary[number];
-export type ChildhoodCueV175 = "ceremony-rack" | "objective";
+export type ChildhoodCueV175 = "ceremony-rack" | "ceremony-cohort-response" | "objective";
 type ChildhoodEvent = Exclude<ChildhoodCommandV175, "reset-current"> | "begin-ceremony" | "begin-rack-admission";
 type Drill = keyof typeof CHILDHOOD_DRILLS_V175;
 type Trial = keyof typeof ACTOR_END;
@@ -360,6 +360,7 @@ export function actChildhoodV175(
   const journal = selectJournal(result, recordedEvent, next);
   if (journal.length > JOURNAL_LIMIT) return { message: "Reprends au dernier repère pour continuer." };
   const cue: ChildhoodCueV175 | undefined = !next.ceremony ? undefined
+    : next.cohortStowed > view.cohortStowed ? "ceremony-cohort-response"
     : next.stowed && !view.stowed ? "ceremony-rack"
     : (next.rackAccess === "received" && view.rackAccess !== "received") || (!next.rackAccess && next.passed && !view.passed)
       ? "objective" : undefined;

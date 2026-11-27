@@ -83,7 +83,7 @@ test("epilogue receipt survives the actual save writer, import, and stale write 
   assert.ok(parsed.save, parsed.failure);
   assert.deepEqual(parsed.save.legacyFinaleR2, driver.save.legacyFinaleR2);
   assert.equal(saves.writeSaveWithStatus(earlier, disk).failure, "save-conflict");
-  assert.equal(saves.parseSaveImport(JSON.stringify({ ...driver.save, legacyFinaleR2: { ...driver.save.legacyFinaleR2, version: 2 } })).failure, "future-version");
+  assert.equal(saves.parseSaveImport(JSON.stringify({ ...driver.save, legacyFinaleR2: { ...driver.save.legacyFinaleR2, version: 3 } })).failure, "future-version");
 });
 
 test("M060 clan entry requires the native trophy station and the realized origin receipt", () => {

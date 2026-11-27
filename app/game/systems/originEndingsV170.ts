@@ -43,8 +43,8 @@
  *   - le parcours de la demeure ferme O6-M30 pour O6-E1 après le bilan de la
  *     première leçon ; les autres réalisations restent indisponibles ;
  *   - STORY5-TR-Ox-06 : seul l'état « déverrouillée » est calculé (fin
- *     confirmée et rang Elder) ; le départ du successeur prévu par cette
- *     transmission facultative reste à jouer.
+ *     confirmée et rang Elder) ; O6-E1 peut mener au départ facultatif du novice
+ *     après le geste de l’épilogue dans la demeure.
  */
 import source from "../data/originEndingsV170.json" with { type: "json" };
 import { rankAtLeastV149 } from "./residenceV149";
@@ -154,7 +154,12 @@ export function confirmEndingV170(current: OriginStateV151, endingId: string, co
   return { ok: true, state, changed: true, message: `Fin choisie : ${ending.title}. Ce choix est définitif ; il ne change aucun rang.` };
 }
 
-/** STORY5-TR-Ox-06 entry, as far as the game can read it. The scene itself is not played. */
+/** STORY5-TR-Ox-06 status at the workshop. Only the E1 home departure is playable. */
+export interface OriginDepartureStatusV170 {
+  houseTitle: string;
+  stage: string;
+  resolved: boolean;
+}
 export interface TransmissionStatusV170 {
   transmission: TransmissionSourceV170;
   endingLocked: boolean;
@@ -162,17 +167,23 @@ export interface TransmissionStatusV170 {
   rankReached: boolean;
   /** Ending locked at Elite and Elder reached. */
   unlocked: boolean;
-  /** The successor's departure is a separate optional scene. */
-  scenePlayable: false;
+  scenePlayable: boolean;
   note: string;
 }
-export function transmissionStatusV170(state: OriginStateV151, rankId: string): TransmissionStatusV170 {
+export function transmissionStatusV170(state: OriginStateV151, rankId: string,
+  departure?: OriginDepartureStatusV170 | null): TransmissionStatusV170 {
   const transmission = transmissionV170(state.originId);
   const endingLocked = !!originEndingIdV170(state);
   const rankReached = rankId === "elder";
   const unlocked = endingLocked && rankReached;
-  const note = !endingLocked ? "Transmission verrouillée : la fin de voie n’est pas encore choisie."
-    : !rankReached ? "Transmission verrouillée : rang Elder requis."
-    : "Transmission déverrouillée. Le départ du successeur reste à jouer.";
-  return { transmission, endingLocked, rankReached, unlocked, scenePlayable: false, note };
+  const scenePlayable = unlocked && state.ending?.originEndingId === "O6-E1" && !!departure;
+  const note = !endingLocked ? "La fin de voie attend une confirmation."
+    : !rankReached ? "Rang Elder requis."
+    : scenePlayable && departure
+      ? departure.resolved ? "Le départ du novice est consigné." :
+        departure.stage === "deferred" ? `Le novice a reporté son départ. Tu peux le retrouver à ${departure.houseTitle}.` :
+          `Rejoins le novice à ${departure.houseTitle}.`
+      : state.ending?.originEndingId === "O6-E1" ? "Le novice peut se présenter après la première leçon et l’épilogue dans la demeure."
+        : "Transmission déverrouillée. Le départ du successeur reste à jouer.";
+  return { transmission, endingLocked, rankReached, unlocked, scenePlayable, note };
 }

@@ -14,8 +14,8 @@ import {
 } from "./hunterPiecesV146";
 import { CHROMATIC_PALETTE_PRESETS_V115 } from "./hunterChromaticsV113";
 import { ecologyV8EnemyForId } from "./ecologyV8";
-import { ARMOR_BY_ID } from "./data";
-import { effectiveArmorStats } from "./systems/arsenal";
+import { ARMOR_BY_ID, WEAPON_BY_ID } from "./data";
+import { effectiveArmorStats, effectiveWeaponStats } from "./systems/arsenal";
 import {
   CUSTOMIZATION_MODES_V146, HUNTER_MARKS_V146, OUTFIT_SLOTS_V146, SKIN_PATTERN_IDS_V146,
   allowedMarksV146, allowedPiecesV148, allowedSkinPatternV146, assignModeOutfitV146, clanColorsForNpcV146, decodeOutfitShareCodeV146, deleteOutfitV146,
@@ -29,6 +29,8 @@ import {
   applyHunterForgeArmorUpgradeV146, applyHunterForgeRepairV146, forgeArmorRecipeV146,
   applyHunterForgeToolReinforcementV146, FORGE_FIELD_TOOL_BONE_COST_V146, forgeMaterialKeyV146,
   planForgeArmorMaterialsV146, planForgeRepairMaterialsV146, planForgeToolReinforcementV146,
+  applyHunterForgeWeaponUpgradeV146, equippedForgeWeaponsV146, forgeWeaponRecipeV146, planForgeWeaponMaterialsV146,
+  type ForgeWeaponIdV146,
 } from "./systems/hunterCustomizationPersistenceV146";
 import styles from "./HunterPieceForgeV146.module.css";
 
@@ -334,7 +336,14 @@ export default function HunterPieceForgeV146({
             })}
           </ul>
         </>}
-      {allowEquipmentUpgrades && <ArmorForgeMaterialsV146 save={save} disabled={disabled} onCommit={commit} />}
+      {allowEquipmentUpgrades && <>
+        <ArmorForgeMaterialsV146 save={save} disabled={disabled} onCommit={commit} />
+        <WeaponForgeMaterialsV146 save={save} disabled={disabled} huntBlocksUpgrade={!onToolUpgrade}
+          onUpgrade={(apply, confirmation) => {
+            setMessage(onToolUpgrade?.(apply, confirmation) ? confirmation
+              : "Amélioration d’arme non enregistrée. Vérifie la réserve et la chasse en cours.");
+          }} />
+      </>}
       {onToolUpgrade && <FieldToolForgeV112 save={save} disabled={disabled} onUpgrade={(apply, confirmation) => {
         setMessage(onToolUpgrade(apply, confirmation) ? confirmation : "Renfort non enregistré. Vérifie la réserve et la chasse en cours.");
       }} />}
@@ -410,6 +419,77 @@ function ArmorForgeMaterialsV146({ save, disabled, onCommit }: {
         `${name} améliorée au niveau ${recipe.nextLevel}.`)}>
       Forger le niveau {recipe.nextLevel}
     </button>
+  </fieldset>;
+}
+
+
+function WeaponForgeMaterialsV146({ save, disabled, huntBlocksUpgrade, onUpgrade }: {
+  save: SaveGame;
+  disabled: boolean;
+  huntBlocksUpgrade: boolean;
+  onUpgrade: (apply: CustomizationApplyV146, confirmation: string) => void;
+}) {
+  const [selection, setSelection] = useState<ForgeWeaponIdV146 | "">("");
+  const [bone, setBone] = useState("");
+  const [tissue, setTissue] = useState("");
+  const weapons = equippedForgeWeaponsV146(save);
+  const weapon = weapons.find(id => id === selection) ?? weapons[0];
+  const level = weapon ? save.inventory.weaponUpgrades[weapon] ?? 0 : 0;
+  const recipe = weapon ? forgeWeaponRecipeV146(save, weapon) : null;
+  const payment = recipe ? planForgeWeaponMaterialsV146(save, recipe.weaponId, { bone, tissue }) : null;
+  const currentStats = recipe && effectiveWeaponStats(recipe.weaponId, recipe.currentLevel);
+  const nextStats = recipe && effectiveWeaponStats(recipe.weaponId, recipe.nextLevel);
+  const archive = harvestInventoryForV112(save.inventory).archive;
+
+  return <fieldset className={styles.group} data-forge-weapon-level={level} data-forge-weapon-id={weapon}>
+    <legend>Améliorer une arme équipée</legend>
+    {weapon ? <>
+      <label className={styles.repairSources}>
+        Arme
+        <select data-forge-weapon-select value={weapon} disabled={disabled} onChange={event => {
+          setSelection(weapons.find(id => id === event.target.value) ?? "");
+          setBone("");
+          setTissue("");
+        }}>
+          {weapons.map(id => <option key={id} value={id}>{WEAPON_BY_ID[id].name}</option>)}
+        </select>
+      </label>
+      {recipe && currentStats && nextStats ? <>
+        <strong>Niveau {level} → {recipe.nextLevel}</strong>
+        <p className={styles.note} data-forge-weapon-stats>
+          Dégâts {currentStats.damage} → {nextStats.damage}
+          {" · "}Délai {currentStats.cooldownSeconds} s → {nextStats.cooldownSeconds} s
+        </p>
+        {([
+          { partId: "bone", label: "Os secondaire", value: bone, change: setBone },
+          { partId: "tissue", label: "Tissu préparé", value: tissue, change: setTissue },
+        ] as const).map(source => {
+          const amount = recipe.requirements[source.partId];
+          const options = archive.filter(entry => entry.partId === source.partId);
+          return <label key={source.partId} className={styles.repairSources}>
+            {source.label} · {amount} unité(s)
+            <select data-forge-weapon-material={source.partId} value={source.value} disabled={disabled || !options.length}
+              onChange={event => source.change(event.target.value)}>
+              <option value="">Choisir un lot</option>
+              {source.value && !options.some(entry => forgeMaterialKeyV146(entry) === source.value) &&
+                <option value={source.value} disabled>Lot épuisé</option>}
+              {options.map(entry => <option key={forgeMaterialKeyV146(entry)} value={forgeMaterialKeyV146(entry)}
+                disabled={entry.count < amount}>{forgeMaterialLabelV146(entry)}</option>)}
+            </select>
+          </label>;
+        })}
+        <small className={styles.note} aria-live="polite" data-forge-weapon-quote>
+          {huntBlocksUpgrade ? "Termine la chasse en cours pour forger une arme."
+            : payment ? payment.quote.units.map(entry => entry.consumed + " × " + entry.label).join(" · ")
+              : "Choisis un lot suffisant de chaque matière."}
+        </small>
+        <button type="button" data-forge-weapon-apply disabled={disabled || huntBlocksUpgrade || !payment}
+          onClick={() => payment && onUpgrade(current => applyHunterForgeWeaponUpgradeV146(current, payment.quote),
+            `${WEAPON_BY_ID[weapon].name} · niveau ${recipe.nextLevel} forgé.`)}>
+          Forger le niveau {recipe.nextLevel}
+        </button>
+      </> : <p>Niveau {level}/2 atteint.</p>}
+    </> : <p>Équipe les lames de poignet ou le Combistick pour les améliorer ici.</p>}
   </fieldset>;
 }
 

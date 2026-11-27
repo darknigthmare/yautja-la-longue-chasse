@@ -4,7 +4,8 @@ import ResidencePanelV149 from "./ResidencePanelV149";
 import { residenceTrophiesR2M038 } from "./systems/trophyIntroductionR2M038";
 import { originEndingV170 } from "./systems/originEndingsV170";
 import {
-  advanceLegacyFinaleR2, legacyClanShipReadoutR2, legacyClanShipSiteR2, legacyHaltReadoutR2, legacyHaltSiteR2,
+  advanceLegacyDepartureR2, advanceLegacyFinaleR2, legacyClanShipReadoutR2, legacyClanShipSiteR2,
+  legacyDepartureStatusR2, legacyHaltReadoutR2, legacyHaltSiteR2,
   legacyOriginEndingR2, legacyPersonalShipReadoutR2, legacyResidenceSiteR2,
   legacySceneRefusalR2, legacyShipSiteR2,
   type LegacyCommandR2, type LegacySceneR2, type LegacySiteR2,
@@ -21,11 +22,14 @@ import OriginEndingPanelV170, { type OriginEndingActionV170 } from "./OriginEndi
 import { confirmEndingV170, examineEndingV170 } from "./systems/originEndingsV170";
 import { applyTrainingYardO6, type TrainingYardOrderO6 } from "./systems/originTrainingYardO6";
 import { applyContinuationO6, isContinuationOrderO6, type ContinuationOrderO6 } from "./systems/originContinuationO6";
+import { isDepartureOrderO6, type DepartureOrderO6 } from "./systems/originDepartureO6";
 import { applySoloReturnO6, isSoloReturnOrderO6, type SoloReturnOrderO6 } from "./systems/originSoloReturnO6";
 import { firstShockActiveO6, type FirstShockOrderO6 } from "./systems/originFirstShockO6";
 import { activeCohortRaceO6, advanceFirstShockIntoCohortO6, canStartCohortRaceO6, playCohortRaceO6, startCohortRaceO6, type CohortRaceOrderO6 } from "./systems/originCohortRaceO6";
 import type { TownBellRecordO6 } from "./systems/originTownBellO6";
 import { activeRivalRaceO6, playRivalRaceO6, type RivalRaceOrderO6, type RivalRaceRecordO6 } from "./systems/originRivalRaceO6";
+import { activeLittleTrailO6, playLittleTrailO6, type LittleTrailRecordO6 } from "./systems/originLittleTrailO6";
+import type { LittleTrailCueO6, LittleTrailOrderO6 } from "./systems/littleTrailRouteO6";
 import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
 import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -390,6 +394,7 @@ const NurseryPrologueScreen = React.lazy(() => import("./NurseryPrologueScreen")
 const OriginFirstShockO6 = React.lazy(() => import("./OriginFirstShockO6"));
 const OriginCohortRaceO6 = React.lazy(() => import("./OriginCohortRaceO6"));
 const OriginRivalRaceO6 = React.lazy(() => import("./OriginRivalRaceO6"));
+const OriginLittleTrailO6 = React.lazy(() => import("./OriginLittleTrailO6"));
 const YouthTrainingScreen = React.lazy(() => import("./YouthTrainingScreen"));
 const FirstTracksSoloV66 = React.lazy(() => import("./FirstTracksSoloV66"));
 const FirstHuntSoloV67 = React.lazy(() => import("./FirstHuntSoloV67"));
@@ -1334,7 +1339,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const firstShock = screen === "homeworld" && hydrated ? firstShockActiveO6(save) : null;
   const cohortRace = screen === "homeworld" && hydrated ? activeCohortRaceO6(save) : null;
   const rivalRace = screen === "homeworld" && hydrated ? activeRivalRaceO6(save) : null;
-  const homeworldMounted = !firstShock && !cohortRace && !rivalRace && (screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || (screen === "clan-chronicle" && chronicleReturnScreen === "homeworld") || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89")));
+  const littleTrail = screen === "homeworld" && hydrated ? activeLittleTrailO6(save) : null;
+  const littleTrailListening = littleTrail !== null;
+  const homeworldMounted = !firstShock && !cohortRace && !rivalRace && !littleTrail && (screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || (screen === "clan-chronicle" && chronicleReturnScreen === "homeworld") || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89")));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
   );
@@ -1579,7 +1586,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const cradleReturnOnDeck = screen === "deck" && hubLocation === "deck" && cradleReturnPending;
   useEffect(() => {
     const context: GameMusicContext | null = cradleReturnOnDeck ? "cradle-return"
-      : settingsOpen || (screen === "buried-cradle-briefing" && cradleReturnPending) || screen === "planet-arrival" || screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90" ? null
+      : settingsOpen || littleTrailListening || (screen === "buried-cradle-briefing" && cradleReturnPending) || screen === "planet-arrival" || screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90" ? null
       : screen === "title" ? "menu"
       : screen === "mission" ? huntMusicContext
       : screen === 'buried-cradle' ? 'exploration'
@@ -1594,7 +1601,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     apply();
     document.addEventListener("visibilitychange", apply);
     return () => document.removeEventListener("visibilitychange", apply);
-  }, [screen, settingsOpen, huntMusicContext, hubLocation, shipStationOpen, cradleReturnOnDeck, cradleReturnPending]);
+  }, [screen, settingsOpen, huntMusicContext, hubLocation, shipStationOpen, cradleReturnOnDeck, cradleReturnPending, littleTrailListening]);
 
   useEffect(() => {
     const apply = () => audioRef.current?.setPaused(settingsOpen || document.hidden);
@@ -2991,11 +2998,30 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return true;
   }, [persistSocialProgress]);
 
-  const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress, townBell?: TownBellRecordO6, rival?: RivalRaceRecordO6): boolean => {
+  const playLittleTrailCue = useCallback((cue: LittleTrailCueO6) => {
+    const audio = audioRef.current, journal = saveRef.current.originV151?.littleTrailO6?.journal.length;
+    if (!audio || journal === undefined) return;
+    void audio.unlock().then(() => {
+      const trail = saveRef.current.originV151?.littleTrailO6;
+      if (audioRef.current === audio && trail && !trail.resolved && trail.journal.length === journal) audio.littleTrailCueO6(cue);
+    });
+  }, []);
+  const advanceLittleTrail = useCallback((order: LittleTrailOrderO6) => {
     const current = saveRef.current;
-    if ((townBell || rival) && !current.originV151) return false;
-    const originV151 = current.originV151 && (townBell || rival) ? {
-      ...current.originV151, ...(townBell ? { townBellO6: townBell } : {}), ...(rival ? { rivalRaceO6: rival } : {}),
+    if (!sessionAliveRef.current || !current.originV151) return false;
+    const result = playLittleTrailO6(current, order);
+    if (!result || !persistSocialProgress({ originV151: { ...current.originV151, littleTrailO6: result } })) return false;
+    if (result.resolved) setToast(result.success ? "Saar a consigné ton relevé de piste." :
+      "Saar a consigné la recherche depuis les traces anciennes.");
+    return true;
+  }, [persistSocialProgress]);
+
+  const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress, townBell?: TownBellRecordO6, workshopTrial?: RivalRaceRecordO6 | LittleTrailRecordO6): boolean => {
+    const current = saveRef.current;
+    if ((townBell || workshopTrial) && !current.originV151) return false;
+    const originV151 = current.originV151 && (townBell || workshopTrial) ? {
+      ...current.originV151, ...(townBell ? { townBellO6: townBell } : {}),
+      ...(workshopTrial ? "rival" in workshopTrial ? { littleTrailO6: workshopTrial } : { rivalRaceO6: workshopTrial } : {}),
     } : undefined;
     const reward = Math.max(0, contractMarksV68(homeworld.contractsV68) - contractMarksV68(current.homeworld.contractsV68));
     // Completed orders pay once, in the same durable write as the signed report.
@@ -3245,6 +3271,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const legacyClanReadoutR2 = legacyClanShipReadoutR2(save.legacyFinaleR2);
   const legacyHaltReadout = legacyVisitR2?.site.kind === "halt" ? legacyHaltReadoutR2(save) : null;
   const legacyPersonalReadout = legacyVisitR2?.site.kind === "ship" ? legacyPersonalShipReadoutR2(save, legacyVisitR2.site) : null;
+  const noviceDeparture = legacyDepartureStatusR2(save);
   const legacySuspendedR2 = settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue ||
     campaignSaveBusy || !!resumableHunt || !gameFocusedV89;
   const openLegacyFinaleR2 = useCallback((scene: LegacySceneR2, site: LegacySiteR2, siteLabel: string) => {
@@ -3434,12 +3461,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return true;
   }, [checkpointHomeworldRegionV68, legacySuspendedR2, openLegacyFinaleR2, screen]);
 
-  const setupTrainingYardO6 = useCallback((order: TrainingYardOrderO6 | ContinuationOrderO6 | SoloReturnOrderO6, region: HomeworldRegionStateV68): boolean => {
+  const setupTrainingYardO6 = useCallback((order: TrainingYardOrderO6 | ContinuationOrderO6 | SoloReturnOrderO6 | DepartureOrderO6, region: HomeworldRegionStateV68): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "homeworld-region-v68" ||
         settingsOpen || archiveRecoveryIssue || archiveTransferBusy || campaignSaveBusy || !gameFocusedV89 ||
         !current.homeworldRegionV68 || !canAdvanceHomeworldRegionV68(current.homeworldRegionV68, region) ||
         !canEnterHomeworldRegionV68(current, region.regionId).allowed || isFutureOriginV151(current.originV151)) return false;
+    if (isDepartureOrderO6(order)) {
+      const next = advanceLegacyDepartureR2(current, region, order);
+      return !!next && persistSocialProgress({ legacyFinaleR2: next, homeworldRegionV68: region,
+        ...settleResidenceLifeForRegionV150(current, region) });
+    }
     const origin = originOfSaveV151(current.originV151);
     const context = { rankId: current.profile.rankId,
       regionAllowed: (regionId: string) => canEnterHomeworldRegionV68(current, regionId).allowed };
@@ -5634,6 +5666,19 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         </div>
       </section>}
 
+      {littleTrail && <section className="screen panel-screen" inert={settingsOpen} data-o6-little-trail>
+        <div className="screen-safe">
+          <div className="physical-deck-toolbar">
+            <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages et sauvegardes</button>
+            <button type="button" className="ghost-button" onClick={() => void returnToMainMenu()}>Menu principal</button>
+          </div>
+          <Suspense fallback={<DeferredGameScreen />}>
+            <OriginLittleTrailO6 key={save.createdAt} record={littleTrail} bindings={save.settings.controlBindings}
+              paused={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy} onOrder={advanceLittleTrail} onCue={playLittleTrailCue} />
+          </Suspense>
+        </div>
+      </section>}
+
       {homeworldMounted && (
         <Suspense fallback={<DeferredGameScreen />}>
           <section className="screen panel-screen" hidden={screen !== "homeworld"} inert={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}>
@@ -5726,6 +5771,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <Suspense fallback={<DeferredGameScreen />}>
             <LegacyFinaleSceneR2 key={save.createdAt + ":" + legacyVisitR2.scene + ":" + legacyVisitR2.site.id}
               scene={legacyVisitR2.scene} site={legacyVisitR2.site} siteLabel={legacyVisitR2.siteLabel}
+              noviceWaiting={legacyVisitR2.scene === "epilogue" && legacyVisitR2.site.kind === "residence" &&
+                noviceDeparture?.stage === "waiting"}
               identity={save} state={save.legacyFinaleR2} endingTitle={originEndingV170(legacyOriginEndingR2(save))?.title ?? ""}
               disabled={legacySuspendedR2} notice={legacyNoticeR2} onCommand={onLegacyCommandR2} onClose={closeLegacyFinaleR2}
               belongings={legacyHaltReadout ? legacyHaltReadout.belongings :
@@ -7149,7 +7196,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               place={{ atWorkshop: !trophyWorkshop && pendingTrophyCommit === null, region: null }}
               disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
               onAction={(action: PathMissionActionV158) => pathMissionActionV158(action, { atWorkshop: true, region: null })} />
-            <OriginEndingPanelV170 origin={save.originV151} rankId={save.profile.rankId} atWorkshop={!trophyWorkshop && pendingTrophyCommit === null}
+            <OriginEndingPanelV170 origin={save.originV151} rankId={save.profile.rankId} departure={noviceDeparture} atWorkshop={!trophyWorkshop && pendingTrophyCommit === null}
               disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
               onAction={originEndingActionV170} />
             <OriginTrophyTransitionPanelV157 origin={save.originV151} atWorkshop={!trophyWorkshop && pendingTrophyCommit === null}

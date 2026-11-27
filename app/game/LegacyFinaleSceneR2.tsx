@@ -22,6 +22,7 @@ type Props = {
   scene: LegacySceneR2;
   site: LegacySiteR2;
   siteLabel: string;
+  noviceWaiting?: boolean;
   identity: Identity;
   state: LegacyFinaleR2 | null | undefined;
   endingTitle: string;
@@ -48,7 +49,7 @@ const youthSources = [
   "youngling-player-right.png", "youngling-rival-right.png", "youngling-player-left.png", "youngling-rival-left.png",
 ].map(name => "/game/prologue/v47/" + name);
 
-export default function LegacyFinaleSceneR2({ scene, site, siteLabel, identity, state, endingTitle,
+export default function LegacyFinaleSceneR2({ scene, site, siteLabel, identity, state, endingTitle, noviceWaiting,
   belongings, relations, disabled = false, notice, onCommand, onClose }: Props) {
   const cohort = legacyCohortViewR2(state);
   const epilogue = legacyEpilogueViewR2(state, site);
@@ -121,6 +122,7 @@ export default function LegacyFinaleSceneR2({ scene, site, siteLabel, identity, 
           cohort.steady ? "Le support tient. La cohorte peut montrer son récit." :
             "La cohorte a préparé son récit. Le support penche sous la pièce qu’elle a rapportée."}</p>
       : <p>Fin de voie · {endingTitle}</p>}
+    {complete && noviceWaiting && <p data-o6-novice-at-threshold>Un novice t’attend au seuil de la demeure.</p>}
     {!complete && <p id={directionsId}>Avance avec les flèches sur le trajet, puis utilise les postes à portée.</p>}
     <div className={styles.room} data-site={site.kind} style={sceneLight} role="group" aria-label="Déplacement dans le lieu" aria-describedby={complete ? undefined : directionsId}
       tabIndex={complete ? -1 : 0} onKeyDown={keyboard}>
