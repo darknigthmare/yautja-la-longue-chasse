@@ -90,6 +90,22 @@ La reprise part de `9a98912` et tient compte des têtes de branches relevées da
 
 La préparation O6 est jouable dans la demeure. Le joueur installe l’appui puis le râtelier, vérifie le passage et revient au seuil. R2-M059 attend toujours une vraie fin d’origine et la reconnaissance Ancient. R2-M058 attend un chapitre de chronique du projet et sa propre sauvegarde. [Recette de la demeure](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45998374522)
 
+### Reprise des fiches ouvertes du 27 novembre 2026
+
+Le lot part de `42cd446`, après #197 et #198. Le classeur suit les 68 fiches, les références de branches et les traces de jeu. [Classeur de la Bible](../../production/INVENTAIRE_BIBLE_20261127.xlsx)
+
+- **R2-M003** · Le chariot ferme le chemin direct vers le comptoir. Le joueur marche par le côté, reprend au dernier passage et remet la pièce après avoir rejoint la forge. Les déplacements accompagnés de Saar entre les quartiers restent ouverts. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46007481856)
+- **R2-M006** · Le choix au râtelier fixe l’ordre des deux premières leçons. Le dojo conserve cet ordre au rechargement. La remise du rang garde son emplacement historique dans le prologue. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46007605788)
+- **R2-M016** · Chacun rejoint son poste dans la galerie. Le joueur observe les deux gestes présents avant de pouvoir signaler la répartition. Les rencontres dans la cité et les suites d’un refus restent ouvertes. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46008141091)
+- **R2-M017** · Le glyphe annonce l’ouverture. Le temps tenu au pupitre confirme de vrais appuis dans la Nef. Les anciens checkpoints conservent leur géométrie. L’ordre global de V70 et V90 reste en chantier. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46007580696)
+- **R2-M051** · Le conseil lit les actes vérifiés d’Elite, du mentorat et du passage puis le joueur joue sa relève. Le registre et le rang Elder sont sauvegardés ensemble. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46006711626)
+- **R2-M056** · Le joueur règle la dette aux postes du navire et transmet le passage d’une génération à l’autre. Les ellipses narratives totalisent 325 ans. L’audience choisie accorde Ancient et le rang reprend à froid. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46006377978)
+- **R2-M058** · Le mausolée ouvre cette chronique au rang Ancient. Le joueur pose le masque puis joue l’une des deux lectures du passage, chacune dans son propre registre local. L’habillage cinéma et les autres chroniques restent ouverts. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46007077359)
+- **R2-M059** · Les deux issues reprennent au dernier geste confirmé. La campagne attend encore le reçu de clôture joué d’O6-E1 dans sa demeure, avec Ancient réellement reconnu. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46007526012)
+- **R2-M060** · Le foyer et le vaisseau lisent les objets exposés et les liens existants. Les actes admis dépendent du lieu et du récit joué. La fin d’origine reste le prérequis d’accès en campagne. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46007526012)
+
+Le prolongement O6 ajoute une invitation à Yena liée à l’aide portée au filet durant l’enfance. La visite, le cordage et l’ouverture du râtelier préparent la maison d’enseignement. La première leçon volontaire reste à jouer pour réaliser O6-M30. [Recette O6](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46008135352)
+
 ## Vue d'ensemble
 
 La campagne comprend 60 fiches communes et 8 chasses planétaires qui réalisent R2-M024. Le tableau associe les fiches à leur parcours. Le classeur du 27 novembre précise les correspondances, les preuves et les étapes encore ouvertes.
@@ -100,10 +116,10 @@ La chaîne de jeunesse va de la nurserie à l’accueil Unblooded sur le Homewor
 | --- | --- | --- | --- | --- | --- |
 | 1 | R2-M001 | Pourquoi nous combattons | Youngling | Ouverture jouable | Outil, proie échappée, mise à l’abri et filet |
 | 2 | R2-M002 | Le filet et les visages | Youngling | Cour de la nurserie raccordée | Duel, outil, barrière et choix de cohorte |
-| 3 | R2-M003 | Le chemin vers la cité | Youngling | Course et forge raccordées, fiche partielle | Audience, remise à la forge et repères de cité |
+| 3 | R2-M003 | Le chemin vers la cité | Youngling | Détour de la forge joué · guidage ouvert | Contournement de la livraison et remise de la pièce |
 | 4 | R2-M004 | L’épreuve des trois gestes | Youngling | Exercices en salle raccordés | Anneau, poutre et cible dans l’ordre choisi |
 | 5 | R2-M005 | La piste avant la prise | Youngling | Piste et rapport raccordés | Indices, perchoir et retour par une autre voie |
-| 6 | R2-M006 | Entrer parmi les Unblooded | Youngling | Passation jouable · rang déjà acquis | Démontrer, ranger l’outil puis entrer au dojo |
+| 6 | R2-M006 | Entrer parmi les Unblooded | Youngling | Passation et premier atelier jouables | Le râtelier transmet le choix du masque ou des lames au dojo |
 | 7 | R2-M007 | Le masque et ses lectures | Unblooded | Atelier Unblooded jouable | Calibrer et remettre le profil de masque |
 | 8 | R2-M008 | La distance des lames | Unblooded | Atelier Unblooded jouable | Comparer la portée et remettre le rapport de lames |
 | 9 | R2-M009 | Ce que le camouflage laisse voir | Unblooded | Atelier Unblooded jouable | Lire les traces et franchir la salle de camouflage |
@@ -113,8 +129,8 @@ La chaîne de jeunesse va de la nurserie à l’accueil Unblooded sur le Homewor
 | 13 | R2-M013 | Le soin dans un abri | Unblooded | Atelier de soin raccordé | Kit, écran, alerte, dépense et repos |
 | 14 | R2-M014 | La boucle des régions proches | Unblooded | Circuit supervisé raccordé | Désert, jungle et bordure avec retour au Maître |
 | 15 | R2-M015 | Recevoir la place de Young Blood | Unblooded | Partiel | V68 accorde Young Blood |
-| 16 | R2-M016 | Former la triade | Young Blood | Répartition jouable · rencontres ouvertes | Préférence ou complémentarité, puis arrivée des deux partenaires |
-| 17 | R2-M017 | Le Temple des Trois Ombres | Young Blood | Deux routes au Belvédère | Corniche haute ou contrepoids et porte de service |
+| 16 | R2-M016 | Former la triade | Young Blood | Rencontres et postes jouables dans V90 | Observer Saar au verrou et Vek aux traces avant la répartition |
+| 17 | R2-M017 | Le Temple des Trois Ombres | Young Blood | Nef des Anneaux et Belvédère jouables | Glyphe annonciateur, passerelles et route basse du Belvédère |
 | 18 | R2-M018 | Le Quatza-Rij à trois | Young Blood | Texte seul | V90 = entraînement, pas le rite |
 | 19 | R2-M019 | Revenir avec la triade | Young Blood | Texte seul | — |
 | 20 | R2-M020 | Porter la marque Blooded | Young Blood | Rite et rang raccordés | Pyramide, purge, marque sur le masque et le front |
@@ -156,16 +172,16 @@ La chaîne de jeunesse va de la nurserie à l’accueil Unblooded sur le Homewor
 | 56 | R2-M048 | La branche qu’on ne possède pas | Elite | Hameau W‑02 raccordé | Crue, rassemblement et choix d’intervention |
 | 57 | R2-M049 | Former sans remplacer | Elite | Jouable dans le dossier adulte | Terrain, appuis et reçu de mentorat |
 | 58 | R2-M050 | Un désaccord à résoudre sur le terrain | Elite | Jouable dans le dossier adulte | Traces, horaires ou passerelle et témoin |
-| 59 | R2-M051 | Être reconnu Elder | Elite | Jouable dans le dossier adulte | Dépositions et engagement enregistré |
+| 59 | R2-M051 | Être reconnu Elder | Elite | Relève Elder narrative raccordée | Dépositions, engagement et remise au conseil |
 | 60 | R2-M052 | L’atelier qui fonctionne sans moi | Elder | Établi Elder raccordé | Armurerie et remise à Griffe de Fer |
 | 61 | R2-M053 | Un ancien terrain a changé | Elder | Retour à Oseris-IV raccordé | Ancien relevé, rive ou canopée |
 | 62 | R2-M054 | La décision du successeur | Elder | Parcours du successeur jouable | Oseris-IV, postes, danger et retour |
 | 63 | R2-M055 | L’épreuve de la longue mémoire | Elder | Épreuve de mémoire jouable | Archives, hangar, armurerie et transmission |
-| 64 | R2-M056 | La reconnaissance Ancient | Elder | Témoignages et lieu raccordés · rite ouvert | Archives, hangar, armurerie et choix de cérémonie |
+| 64 | R2-M056 | La reconnaissance Ancient | Elder | Rite Ancient raccordé | Dette d’Oseris, trois relèves et audience locale ou intime |
 | 65 | R2-M057 | Le mausolée des chasses racontées | Ancient | Consultation au casier raccordée | Piédestaux et chronique de titre au casier |
-| 66 | R2-M058 | Entrer dans une chronique cinéma | Ancient | Texte seul | — |
-| 67 | R2-M059 | La nouvelle cohorte revient | Ancient | Texte seul | — |
-| 68 | R2-M060 | La longue chasse demeure | Ancient, épilogue | Texte seul | — |
+| 66 | R2-M058 | Entrer dans une chronique cinéma | Ancient | Première chronique originale jouable | Crâne du Ravin au socle, secours ou variante du sas fermé |
+| 67 | R2-M059 | La nouvelle cohorte revient | Ancient | Séquence jouée en recette · accès en attente | Support à deux pieds, écoute de quatre jeunes ou retour au seuil |
+| 68 | R2-M060 | La longue chasse demeure | Ancient, épilogue | Épilogue joué en recette · accès en attente | Objets, liens et geste final au foyer ou au vaisseau |
 
 ## Référentiel lore 1:1
 
