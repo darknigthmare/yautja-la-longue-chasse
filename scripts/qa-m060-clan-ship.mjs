@@ -23,7 +23,7 @@ createRoot(document.getElementById("root")).render(<GameClient />);
 
 const valid = legacyClanFixture();
 assert.ok(saves.parseSaveImport(saves.exportSave(valid)).save, "valid visited ship with an earned recruit");
-const report = { source: "85b23dade19677249d67f30267f144154198eecf", admission: "La fin d'origine O6‑M30 est préparée pour la recette. L'amarrage, l'accueil, le mandat, l'audit et le recrutement ont été établis par leurs réducteurs. Le point natif de la galerie et tous les gestes M060 sont joués dans GameClient.", scenes: [], errors: [] };
+const report = { source: "5cb4575557301f206980e465ae30b39c75fe98f3", admission: "La fin d'origine O6‑M30 est préparée pour la recette. L'amarrage, l'accueil, le mandat, l'audit et le recrutement ont été établis par leurs réducteurs. Le point natif de la galerie et tous les gestes M060 sont joués dans GameClient.", scenes: [], errors: [] };
 let service, browser;
 try {
   service = await createServer({ configFile: false, plugins: [react()],
