@@ -790,5 +790,7 @@
 }
 
 .saarGuideM003 { position: absolute; pointer-events: none; }
+.streetSignM003 { position: absolute; bottom: 2rem; left: 0; transform: translateX(-50%); padding: 0.25rem 0.45rem; border: 1px solid #b58a4b; border-radius: 0.25rem; background: #211914; color: #f5dfac; font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+.streetSignM003::after { position: absolute; top: 100%; left: 50%; width: 1px; height: 1.4rem; background: #b58a4b; content: ""; }
 .saarNameM003 { position: absolute; bottom: 6.85rem; left: 0; transform: translateX(-50%); padding: 0.15rem 0.4rem; border-radius: 0.25rem; background: #211914; color: #f5dfac; white-space: nowrap; }
 .saarInstructionM003 { position: absolute; z-index: 8; top: 4.75rem; left: 1rem; max-width: min(34rem, calc(100% - 2rem)); margin: 0; padding: 0.4rem 0.6rem; border-radius: 0.25rem; background: #211914; color: #f5dfac; pointer-events: none; }
