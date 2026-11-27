@@ -19,7 +19,7 @@ function accepted(result) {
 }
 
 function deliver() {
-  const initial = api.createWarSimulationV85(10537);
+  const initial = api.createWarSimulationV85();
   const assigned = accepted(api.queueWarOrderV85(initial, {
     kind: "cession", fromId: origin, targetId: site, combatantIds: ["P07"], cargo: empty,
   }));
@@ -61,7 +61,7 @@ function inspect(state) {
 }
 
 test("a real cession, garrison and delivery open both endpoints of the authored canyon", () => {
-  const initial = api.createWarSimulationV85(10537);
+  const initial = api.createWarSimulationV85();
   assert.equal(api.startCanyonPatrolM037(initial), null);
   const state = deliver();
   assert.equal(state.stocks[site].m, 1);
@@ -87,6 +87,9 @@ test("a live inspection cannot file a receipt after the route or garrison is los
   const state = deliver();
   const patrol = inspect(state);
   const exit = Array.from({ length: 25 }).reduce(current => api.walkCanyonM037(current, 1), patrol);
+  const exhausted = { ...state, revision: 999999 };
+  assert.equal(api.archiveCanyonPatrolM037(exhausted, exit).accepted, false);
+  assert.equal(api.removeWarConvoyV105(exhausted).accepted, true);
   const moved = structuredClone(state);
   moved.combatants.find(person => person.id === "P07").status = "wounded";
   assert.equal(api.startCanyonPatrolM037(moved), null);
