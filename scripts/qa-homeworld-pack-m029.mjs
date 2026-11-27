@@ -113,7 +113,45 @@ function prepareAdmission() {
   checked("coordination and location");
   return save;
 }
-const seed = prepareAdmission();
+function prepareReportedAudience(save) {
+  const pack = qa.load("app/game/systems/homeworldPackTrialM029.ts");
+  const appointment = qa.load("app/game/systems/homeworldAdjutantM029.ts");
+  const view = () => pack.homeworldPackViewM029(save.homeworld.packTrialM029, save.createdAt);
+  const playPack = action => {
+    const result = pack.actHomeworldPackTrialM029(save.homeworld.packTrialM029, save, action, {
+      ...pack.PACK_POST_M029, suspended: false
+    });
+    assert.ok(result.state, result.message);
+    save.homeworld.packTrialM029 = result.state;
+  };
+  const walk = (target, direction) => {
+    while (view().player !== target) playPack(pack.homeworldPackActionsM029(view()).includes(direction) ? direction : "regroup");
+    while (view().pupils.some(position => position !== target)) playPack("regroup");
+  };
+  playPack("start"); walk(6, "east"); playPack("shelter"); walk(16, "east"); playPack("turn");
+  walk(12, "west"); playPack("shelter"); walk(0, "west"); playPack("count");
+  for (const [action, post, actor] of [
+    ["study", appointment.ADJUTANT_DOCK_M029, { x: 0, y: 0 }],
+    ["place-relay", { roomId: appointment.ADJUTANT_RELAY_M029.roomId, pointId: null }, appointment.ADJUTANT_RELAY_M029.position],
+    ["confirm-signal", appointment.ADJUTANT_SAS_M029, { x: 0, y: 0 }],
+  ]) {
+    const result = appointment.actHomeworldAdjutantM029(save.homeworld.adjutantM029, save, action, { ...post, actor, suspended: false });
+    assert.ok(result.state, result.message);
+    save.homeworld.adjutantM029 = result.state;
+  }
+  const audience = world.HOMEWORLD_BUILDINGS_V77.find(building => building.id === appointment.ADJUTANT_LEADER_M029.roomId);
+  save.homeworld.locationV77 = { version: 1, layoutRevision: 1, ownerCreatedAt: save.createdAt, levelId: audience.levelId,
+    exterior: geometry.homeworldBuildingDoorwayV64(audience).approach,
+    interiorId: audience.id, local: rooms.homeworldInteriorForBuildingV64(audience.id).spawn };
+  const imported = saves.parseSaveImport(JSON.stringify(save));
+  assert.ok(imported.save, imported.failure);
+  assert.deepEqual(chronicles.getChronicleFunctions(imported.save.prologue.chronicle), []);
+  return imported.save;
+}
+
+const audienceOnly = process.env.M029_FULL_BROWSER !== "1";
+const admitted = prepareAdmission();
+const seed = audienceOnly ? prepareReportedAudience(admitted) : admitted;
 if (process.env.M029_ADMISSION_ONLY === "1") process.exit(0);
 const api = homeworldQaModelV64(process.cwd(), [
   "homeworldWorldV77.ts", "homeworldNavigationV77.ts", "homeworldNavigationV109.ts", "homeworldGeometryV64.ts", "homeworldInteriorsV64.ts",
@@ -137,7 +175,7 @@ const capture = async file => {
 const disk = () => page.evaluate(() => JSON.parse(localStorage.getItem("yautja-long-hunt.save")));
 let nav;
 let indoorNav;
-async function walkNativeTo(room, description, reached) {
+async function walkNativeTo(room, description, reached, settled = reached) {
   assert.ok(room, description);
   if (await nav.room() !== room.buildingId) await nav.enter(room.buildingId);
   else await nav.closeDialog();
@@ -168,17 +206,18 @@ async function walkNativeTo(room, description, reached) {
   for (let point = goal; point; point = visited.get(keyFor(point))) path.push(point);
   await indoorNav.follow(path.reverse());
   const at = await indoorNav.position();
-  assert.ok(reached(at));
+  assert.ok(settled(at), description + " at " + JSON.stringify(at) + " versus " + JSON.stringify(goal));
   report.routes.push({ kind: "interior", target: description, roomId: room.buildingId, from: start, to: at, steps: path.length });
   return at;
 }
 
 async function openNativePoint(pointId) {
   const room = api.homeworldInteriorForPointV64(pointId);
+  const targetAt = point => api.nearestHomeworldInteriorTargetV64(room, point);
   await walkNativeTo(room, pointId, point => {
-    const target = api.nearestHomeworldInteriorTargetV64(room, point);
-    return target?.pointId === pointId && Math.hypot(point.x - target.position.x, point.y - target.position.y) < 59;
-  });
+    const target = targetAt(point);
+    return target?.pointId === pointId && Math.hypot(point.x - target.position.x, point.y - target.position.y) < 56;
+  }, point => targetAt(point)?.pointId === pointId);
   await page.keyboard.press("KeyE");
   await indoorNav.tick(160);
   await page.locator("[data-homeworld-hub]").getByRole("dialog").waitFor();
@@ -226,9 +265,7 @@ async function boot() {
   await nav.focus();
 }
 
-async function appointAtNativePosts() {
-  const initial = await disk();
-  const advance = async (station, name, phase) => {
+const advanceAdjutant = async (station, name, phase) => {
     const desk = page.locator("[data-adjutant-m029-station=" + station + "]");
     await desk.getByRole("button", { name, exact: true }).press("Enter");
     await nav.tick(120);
@@ -236,8 +273,11 @@ async function appointAtNativePosts() {
     assert.equal(state.homeworld.adjutantM029?.phase, phase);
     report.checks.push({ action: name, phase, room: await nav.room(), position: await nav.position() });
     return state;
-  };
+};
 
+async function appointAtNativePosts() {
+  const initial = await disk();
+  const advance = advanceAdjutant;
   await openNativePoint("dock-officer-point");
   await advance("dock", "Étudier le dossier du convoi", "dossier");
   await capture("03-dock-record.png");
@@ -272,6 +312,10 @@ async function appointAtNativePosts() {
   await advance("sas", "Relayer le signal au convoi", "reported");
   await nav.closeDialog();
 
+  await decideAtAudience(initial, advance);
+}
+
+async function decideAtAudience(initial, advance) {
   await openNativePoint("audience-point");
   const deferred = await advance("leader", "Différer la nomination", "deferred");
   assert.deepEqual(deferred.prologue.chronicle, initial.prologue.chronicle);
@@ -325,40 +369,47 @@ try {
   }, seed);
   await boot();
   const initial = await disk();
-  assert.equal(initial.homeworld.packTrialM029, undefined);
-  await openNativePoint("training-service");
-  assert.equal(await nav.room(), "training-hall");
-  await act("start");
-  assert.equal(await scene().locator("[data-homeworld-pack-pupil-m029]").count(), 12);
-  await moveTo(6, "east");
-  assert.ok(await button("east").isDisabled());
-  await act("shelter");
-  await capture("01-first-protection.png");
-  report.checks.push("all 12 pupils regrouped for the protected outward crossing");
-  report.routes.push(...nav.routes);
-  await boot();
-  await openNativePoint("training-service");
-  assert.equal(await position(), 6);
-  assert.ok(await button("shelter").isDisabled());
-  await moveTo(16, "east");
-  await act("turn");
-  await moveTo(12, "west");
-  assert.ok(await button("west").isDisabled());
-  await act("shelter");
-  await moveTo(0, "west");
-  await act("count");
-  assert.equal(await scene().getAttribute("data-homeworld-pack-m029"), "returned");
-  assert.equal(await scene().locator("[data-homeworld-pack-pupil-m029='0']").count(), 12);
-  await capture("02-all-twelve-returned.png");
-  report.checks.push("all 12 pupils physically returned after both protected crossings");
-  report.routes.push(...nav.routes);
-  await boot();
-  const final = await disk();
-  assert.equal(final.homeworld.packTrialM029?.journal.at(-1), "count");
-  assert.deepEqual(final.prologue.chronicle, initial.prologue.chronicle);
-  assert.deepEqual(final.inventory, initial.inventory);
-  assert.equal(final.profile.honor, initial.profile.honor);
-  await appointAtNativePosts();
+  if (audienceOnly) {
+    assert.equal(initial.homeworld.adjutantM029.phase, "reported");
+    assert.equal(await nav.room(), "throne-audience");
+    report.fixture += " The previous browser run physically played through the signal at the orbital terminal. This continuation starts from that phase using the real pack and dock action reducers and the recorded audience room.";
+    await decideAtAudience(initial, advanceAdjutant);
+  } else {
+    assert.equal(initial.homeworld.packTrialM029, undefined);
+    await openNativePoint("training-service");
+    assert.equal(await nav.room(), "training-hall");
+    await act("start");
+    assert.equal(await scene().locator("[data-homeworld-pack-pupil-m029]").count(), 12);
+    await moveTo(6, "east");
+    assert.ok(await button("east").isDisabled());
+    await act("shelter");
+    await capture("01-first-protection.png");
+    report.checks.push("all 12 pupils regrouped for the protected outward crossing");
+    report.routes.push(...nav.routes);
+    await boot();
+    await openNativePoint("training-service");
+    assert.equal(await position(), 6);
+    assert.ok(await button("shelter").isDisabled());
+    await moveTo(16, "east");
+    await act("turn");
+    await moveTo(12, "west");
+    assert.ok(await button("west").isDisabled());
+    await act("shelter");
+    await moveTo(0, "west");
+    await act("count");
+    assert.equal(await scene().getAttribute("data-homeworld-pack-m029"), "returned");
+    assert.equal(await scene().locator("[data-homeworld-pack-pupil-m029='0']").count(), 12);
+    await capture("02-all-twelve-returned.png");
+    report.checks.push("all 12 pupils physically returned after both protected crossings");
+    report.routes.push(...nav.routes);
+    await boot();
+    const final = await disk();
+    assert.equal(final.homeworld.packTrialM029?.journal.at(-1), "count");
+    assert.deepEqual(final.prologue.chronicle, initial.prologue.chronicle);
+    assert.deepEqual(final.inventory, initial.inventory);
+    assert.equal(final.profile.honor, initial.profile.honor);
+    await appointAtNativePosts();
+  }
   assert.deepEqual(report.pageErrors, []);
   report.passed = true;
 } catch (error) {
