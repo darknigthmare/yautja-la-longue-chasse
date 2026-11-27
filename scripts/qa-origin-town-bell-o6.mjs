@@ -33,6 +33,7 @@ try {
     const city = page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]');
     const viewport = city.locator("[data-homeworld-viewport]");
     const nav = homeworldNavigatorV77(page, n, { waypointTolerance: 9, driverTickMs: 36, pulseInputs: true });
+    const precise = homeworldNavigatorV77(page, n, { waypointTolerance: 5, driverTickMs: 16, pulseInputs: true });
     const disk = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), n.SAVE_STORAGE_KEY);
     const receipt = async () => (await disk()).originV151.townBellO6;
     const shot = name => viewport.screenshot({ path: join(out, (partial ? "deferred-" : "complete-") + name + ".png"), animations: "disabled" });
@@ -62,7 +63,9 @@ try {
     async function act(action) {
       await viewport.locator(`[data-o6-town-action="${action}"]`).waitFor();
       const at = await nav.position(), prev = await receipt();
-      await nav.interact();
+      await nav.release();
+      await page.keyboard.press("KeyE");
+      await nav.tick(96);
       const next = await receipt();
       assert.equal(next.journal.length, (prev?.journal.length ?? 0) + 1, action);
       const event = next.journal.at(-1);
@@ -73,13 +76,27 @@ try {
       const current = await disk();
       assert.deepEqual(current.homeworld.locationV77, event.at);
       assert.deepEqual(current.originV151.cohortRaceO6, seed.originV151.cohortRaceO6);
+      console.log("O6_M03_ACTION", JSON.stringify({ partial, action, at: event.at }));
+    }
+    async function indoors(room, target) {
+      const route = n.homeworldInteriorRouteV112(room, await nav.position(), target);
+      assert.equal(route.status, "reachable", JSON.stringify({ room: room.buildingId, target, actor: await nav.position() }));
+      await precise.follow(route.points);
+      if (target === "exit") assert.equal(n.nearestHomeworldInteriorTargetV64(room, await nav.position())?.kind, "exit");
+    }
+    async function leaveForge() {
+      const room = n.homeworldInteriorForBuildingV64("deep-forge");
+      await indoors(room, "exit");
+      await nav.release();
+      await page.keyboard.press("KeyE");
+      await nav.tick(96);
+      assert.equal(await nav.room(), null);
+      await nav.focus();
     }
     async function visitForge(action) {
       const room = n.homeworldInteriorForBuildingV64("deep-forge");
       if (await nav.room() !== room.buildingId) await nav.enter(room.buildingId);
-      const route = n.homeworldWayfindingInteriorRouteV75(room, await nav.position(), "forge-service");
-      assert.equal(route.status, "reachable");
-      await nav.follow(route.points);
+      await indoors(room, "forge-service");
       await act(action);
     }
 
@@ -118,22 +135,23 @@ try {
     assert.equal(await viewport.locator("[data-o6-town-piece]").count(), 0);
 
     const room = n.homeworldInteriorForBuildingV64("deep-forge");
-    const exit = n.homeworldWayfindingInteriorRouteV75(room, await nav.position(), "exit");
-    assert.equal(exit.status, "reachable");
-    await nav.follow(exit.points);
+    await indoors(room, "exit");
     const bell = townActorPositionO6("ring").point;
-    await nav.follow([await nav.position(), room.spawn, bell]);
+    const exit = await nav.position();
+    assert.ok(n.homeworldInteriorSegmentV112(room, exit, room.spawn), JSON.stringify({ exit, spawn: room.spawn }));
+    assert.ok(n.homeworldInteriorSegmentV112(room, room.spawn, bell));
+    await precise.follow([exit, room.spawn, bell]);
     await act("ring");
     assert.equal(await viewport.locator('[data-o6-town-bell="rung"]').count(), 1);
     await shot("03-cloche");
-    await nav.exitRoom();
+    await leaveForge();
     await street("regroup");
     await act("regroup");
 
     if (!partial) {
       await visitForge("workshop");
       await shot("04-yena-atelier");
-      await nav.exitRoom();
+      await leaveForge();
       await street("kennel");
       await act("kennel");
       assert.equal((await receipt()).choice, "workshop");

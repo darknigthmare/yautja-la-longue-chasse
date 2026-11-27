@@ -10,6 +10,7 @@ const bundle = await build({
     export * from "./app/game/systems/homeworldLocationV77";
     export * from "./app/game/systems/homeworldInteriorsV64";
     export * from "./app/game/systems/homeworldWayfindingV75";
+    export * from "./app/game/systems/homeworldInteriorNavigationV112";
     export * from "./app/game/systems/homeworldWorldV77";
     export * from "./app/game/systems/homeworldNavigationV77";
     export * from "./app/game/systems/homeworldNavigationV109";
