@@ -36,6 +36,7 @@ import {
   tribunalVersionStatusV147, type RecordInfractionInputV147, type TribunalActionResultV147, type TribunalActionV147,
 } from "./systems/honorTribunalV147";
 import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/homeworld";
+import { homeworldAdjutantMatchesSaveM029, isHomeworldAdjutantSuccessorM029 } from "./systems/homeworldAdjutantM029";
 import {normalizeCntlipLedgerV77} from './systems/cntlipLedgerV77';
 import {homeworldCntlipEligibleV77} from './systems/homeworldCntlipPhysicalV77';
 import {inspectHomeworldCheckpointV77} from './systems/homeworldCheckpointV77';
@@ -2039,8 +2040,16 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       isRecord(value.soloV70.checkpoint) && Number(value.soloV70.checkpoint.version) > 1)) return { save: null, failure: "future-version" };
   if (isRecord(value.soloV90) && (Number(value.soloV90.version) > 1 ||
       isRecord(value.soloV90.checkpoint) && Number(value.soloV90.checkpoint.version) > 1)) return { save: null, failure: "future-version" };
+  const selectedAdjutant = isRecord(value.homeworld) ? value.homeworld.adjutantM029 : undefined;
+  if (isRecord(selectedAdjutant) && typeof selectedAdjutant.version === "number" && selectedAdjutant.version > 1)
+    return { save: null, failure: "future-version" };
+  const save = normalizeSave(value);
+  const adjutant = save.homeworld.adjutantM029;
+  if ((selectedAdjutant != null && (!adjutant || bloodedTemple.view.stage !== "complete")) ||
+      !homeworldAdjutantMatchesSaveM029(save)) return { save: null, failure: "invalid-save" };
   if (!youthCampaignMatchesSave(value, {
     bloodingVerified: bloodedTemple.view.stage === "complete",
+    adjutantVerified: adjutant?.phase === "appointed",
     cradleBriefed: cradle.state !== null,
     crownReturned: cradle.state?.crownDelivered === true,
   }) || !soloV67MatchesSave(value) || !soloV68MatchesSave(value) || !soloV69MatchesSave(value) || !soloV70MatchesSave(value) || !soloV90MatchesSave(value)) return { save: null, failure: "invalid-save" };
@@ -2079,7 +2088,6 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (quatza.state && !quatzaCampaignMatchesSave(value as unknown as SaveGame)) {
     return { save: null, failure: "invalid-save" };
   }
-  const save = normalizeSave(value);
   if (firstInterstellar.state && (shipReceiptV161(save).receipt?.instanceId !== firstInterstellar.state.hullInstanceId ||
       (save.spaceRoutesV159?.trip && firstInterstellarInFlightV173(firstInterstellar.state, campaignOwner))))
     return { save: null, failure: "invalid-save" };
@@ -2223,6 +2231,10 @@ function persistCampaign(
       if (JSON.stringify(previous.honorSourcesV169) !== JSON.stringify(requested.honorSourcesV169)) {
         return failed("save-conflict", previous);
       }
+      const previousAdjutant = previous.homeworld.adjutantM029;
+      const nextAdjutant = requested.homeworld.adjutantM029;
+      if (JSON.stringify(previousAdjutant ?? null) !== JSON.stringify(nextAdjutant ?? null) &&
+          !isHomeworldAdjutantSuccessorM029(previousAdjutant, nextAdjutant)) return failed("save-conflict", previous);
       const previousVoyage = previous.firstInterstellarV173;
       const requestedVoyage = requested.firstInterstellarV173;
       if (JSON.stringify(previousVoyage ?? null) !== JSON.stringify(requestedVoyage ?? null) &&
