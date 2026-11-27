@@ -128,7 +128,7 @@ export function advanceRegionalLoopM014(state: HomeworldRegionalLoopM014, comman
     case "observe":
       if (passage.position !== LOOP_M014_LAST || passage.observation !== "none") return refuse("La proie doit être observée depuis le poste.");
       return passage.still < lane.quiet
-        ? commit({ passage: { ...passage, observation: "alert" } }, "La proie t’a repéré. Reviens à la halte.");
+        ? commit({ passage: { ...passage, observation: "alert" } }, "La proie t’a repéré. Reviens à la halte.")
         : commit({ passage: { ...passage, observation: "observed" } }, region.prey + " observé. Rapporte le relevé à la halte.");
     case "report": {
       if (passage.position !== 0 || passage.observation !== "observed") return refuse("Observe la proie puis retourne à la halte.");
