@@ -1,0 +1,52 @@
+.scene { display: grid; gap: 0.8rem; }
+.scene h2, .scene p { margin: 0; }
+.header, .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem; }
+.header { justify-content: space-between; }
+.room {
+  position: relative;
+  min-height: clamp(10rem, 28vw, 19rem);
+  border: 1px solid #7d6750;
+  border-radius: 0.7rem;
+  overflow: hidden;
+  background: linear-gradient(175deg, #261c1a 0%, #41342b 54%, #8a6545 77%, #392821 79%, #241d19 100%);
+}
+.room[data-site="ship"] {
+  border-color: #507786;
+  background: linear-gradient(175deg, #101b25 0%, #243946 54%, #537486 77%, #253844 79%, #1c2832 100%);
+}
+.room:focus-visible { outline: 3px solid #ffe4ad; outline-offset: 3px; }
+.light { position: absolute; inset: 0; background: radial-gradient(ellipse at 33% 58%, #ffdd9050, transparent 58%); pointer-events: none; }
+.mark, .actor, .youth, .support { position: absolute; transform: translateX(-50%); }
+.mark {
+  bottom: 11%;
+  padding: 0.18rem 0.32rem;
+  border-radius: 0.3rem;
+  color: #fff2e3;
+  background: #261e1c;
+  font-size: clamp(0.64rem, 2vw, 0.84rem);
+  text-align: center;
+}
+.mark[data-near="true"] { color: #261e1c; background: #ffe3b1; }
+.actor { bottom: 23%; z-index: 3; width: 0; height: 0; pointer-events: none; }
+.youth {
+  bottom: 23%;
+  z-index: 1;
+  width: clamp(25px, 6vw, 57px);
+  height: auto;
+  max-height: 57%;
+  object-fit: contain;
+  object-position: bottom;
+  pointer-events: none;
+}
+.youth[data-speaker="knot"], .youth[data-speaker="crossing"] { filter: sepia(0.24) saturate(0.86); }
+.youth[data-heard="true"] { filter: drop-shadow(0 0 3px #ffe1a7); }
+.support { bottom: 24%; width: 14%; min-width: 37px; height: 52px; pointer-events: none; }
+.board, .load, .feet { position: absolute; display: block; }
+.board { top: 19px; width: 100%; height: 8px; background: #ad7951; border: 1px solid #dfb07c; transform: rotate(-7deg); }
+.support[data-steady="true"] .board { transform: none; }
+.feet { inset: 26px 11% 0; border-left: 4px solid #815639; border-right: 4px solid #815639; }
+.support[data-wall="true"] .feet { border-left-color: #d3aa78; }
+.support[data-door="true"] .feet { border-right-color: #d3aa78; }
+.load { top: 7px; left: 38%; width: 25%; height: 12px; border-radius: 46%; background: #d6b17c; }
+.support[data-loaded="false"] .load { top: 40px; left: 102%; }
+.notice { min-height: 1.6rem; color: #ffdf9d; }

@@ -213,8 +213,74 @@ try {
     await page.getByRole('dialog').waitFor(); await page.getByRole('button', { name: 'Reposer / fermer' }).tap(); await waitPhase('visit');
     await page.setViewportSize({ width: 1440, height: 1000 });
   });
+  await check('M058 carries the clan mask and resumes two independent original readings', async () => {
+    const gallery = page.getByRole('button', { name: 'Chroniques du clan', exact: false });
+    assert.equal(await gallery.isDisabled(), true);
+    await page.evaluate(() => window.__mausoleumAuditV94.reset(false, true));
+    await gallery.click();
+    const owner = '2026-10-16T00:00:00.000Z';
+    const campaignBytes = () => page.evaluate(() => localStorage.getItem('mausoleum-archive-playwright'));
+    const originalCampaign = await campaignBytes();
+    const cinemaBytes = mode => page.evaluate(({ owner, mode }) =>
+      localStorage.getItem('yautja.mausoleum.r2-m058.v1:' + owner + ':' + mode), { owner, mode });
+    async function goTo(locator, position) {
+      await page.locator(locator).click();
+      await page.waitForFunction(value => document.querySelector('[data-mausoleum-x]')?.getAttribute('data-mausoleum-x') === value, String(position));
+    }
+    async function placeMask() {
+      await goTo('[data-m058-mask]', 230);
+      await page.keyboard.press('f');
+      await page.getByText('Masque porté', { exact: true }).waitFor();
+      await goTo('[data-m058-cradle]', 680);
+      await page.keyboard.press('f');
+      await page.locator('[data-m058-reader="select"]').waitFor();
+    }
+    async function order(name) { await page.locator('[data-m058-action="' + name + '"]').click(); }
+    async function reachScout(firstWithKeyboard = false) {
+      if (firstWithKeyboard) {
+        await page.locator('[aria-label="Déplacer le veilleur"]').focus();
+        await page.keyboard.press('e');
+        await page.locator('[data-m058-position="1"]').waitFor();
+      } else await order('right');
+      for (const name of ['right', 'read', 'right', 'right', 'aid']) await order(name);
+      await page.getByText('Éclaireur à couvert avec toi.', { exact: true }).waitFor();
+    }
+    await goTo('[data-m058-cradle]', 680);
+    await page.keyboard.press('f');
+    assert.equal(await page.locator('[data-m058-reader]').count(), 0);
+    await placeMask();
+    assert.equal(await cinemaBytes('faithful'), null);
+    await page.locator('[data-m058-mode="faithful"]').click();
+    await reachScout(true);
+    assert.equal(await page.locator('[data-m058-action="right"]').count(), 0);
+    for (const name of ['cover', 'right', 'right']) await order(name);
+    await page.locator('[data-m058-position="6"]').waitFor();
+    const faithfulCheckpoint = await cinemaBytes('faithful');
+    await page.getByRole('button', { name: 'Retirer le masque et revenir au socle', exact: true }).click();
+    await page.locator('[data-m058-reader]').waitFor({ state: 'hidden' });
+    assert.equal(await x(), 680);
+    await page.reload();
+    await page.locator('[data-mausoleum]').waitFor();
+    await gallery.click();
+    await placeMask();
+    await page.locator('[data-m058-mode="faithful"]').click();
+    await page.locator('[data-m058-position="6"]').waitFor();
+    assert.equal(await cinemaBytes('faithful'), faithfulCheckpoint);
+    for (const name of ['right', 'right', 'exit']) await order(name);
+    await page.locator('[data-m058-reader="complete"]').waitFor();
+    const faithfulResult = await cinemaBytes('faithful');
+    await page.getByRole('button', { name: 'Choisir un récit', exact: true }).click();
+    await page.locator('[data-m058-mode="ridge"]').click();
+    await page.locator('[data-m058-position="0"]').waitFor();
+    await reachScout();
+    for (const name of ['ridge', 'left', 'left', 'mark', 'left', 'left', 'exit']) await order(name);
+    await page.locator('[data-m058-reader="complete"]').waitFor();
+    assert.equal(await cinemaBytes('faithful'), faithfulResult);
+    assert.deepEqual(JSON.parse(await cinemaBytes('ridge')).orders.slice(-3), ['left', 'left', 'exit']);
+    assert.equal(await campaignBytes(), originalCampaign);
+  });
   results.push({ name: 'No uncaught React/browser errors', status: pageErrors.length ? 'FAIL' : 'PASS', errors: pageErrors });
-  const report = { scope: 'Actual Mausoleum React component and game domain; placeholder images; no full-game or visual-art qualification', browser: browser.version(), results };
+  const report = { scope: 'Actual Mausoleum component and game domain. The browser fixture supplies the M058 entry rank. Artwork uses placeholder images.', browser: browser.version(), results };
   const destination = path.join(root, 'outputs', 'qa-audit-v94'); await fs.mkdir(destination, { recursive: true });
   await fs.writeFile(path.join(destination, 'mausoleum-browser.json'), JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify(report, null, 2));

@@ -194,7 +194,11 @@ export default function ClanChroniclePanel({
                   {activeRite === "passage" ? "Replier le dossier du passage" : "Ouvrir le dossier du passage"}
                 </button>
               : <p>Les actes Elder s’ouvrent à Elite avec 8 000 points d’honneur de carrière.</p>}
-            <p>{save.elderAssemblyV168?.responsibility ? "L’assemblée a consigné la reconnaissance Elder." :
+            <p>{save.elderAssemblyV168?.responsibility
+              ? save.prologue && !save.elderAssemblyV168.generationHandover
+                ? "L’assemblée a consigné ton engagement. Remets le registre à la relève pour obtenir la reconnaissance Elder."
+                : "L’assemblée a consigné la reconnaissance Elder."
+              :
               "L’assemblée examine les deux actes avant de proposer un engagement."}</p>
             {(canConveneElderAssembly(save) || save.elderAssemblyV168?.responsibility) && onAssemblyCommand &&
               <button type="button" onClick={() => toggleCampaignRite("assembly")} aria-expanded={activeRite === "assembly"}>

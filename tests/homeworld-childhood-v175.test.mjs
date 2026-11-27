@@ -4,6 +4,7 @@ import { childhoodAdmissionV175, childhoodStorage, qaChildhood } from "./helpers
 
 const game = qaChildhood.load("app/game/systems/homeworldChildhoodV175.ts");
 const ranks = qaChildhood.load("app/game/systems/clanChronicle.ts");
+const youth = qaChildhood.load("app/game/systems/youthCampaign.ts");
 const rooms = qaChildhood.load("app/game/systems/homeworldInteriorsV64.ts");
 const post = { ...game.CHILDHOOD_POST_V175, suspended: false };
 const seed = childhoodAdmissionV175();
@@ -102,15 +103,45 @@ test("M005 keeps real indices, a route under the perch and both ways of reportin
   }
 });
 
-test("M006 preparatory transfer stows the tool before opening access, keeping the historical rank", () => {
-  const p = pilot();
+test("M006 binds each first workshop choice to the campaign checkpoint while preserving the historical rank", () => {
+  for (const opening of ["mask", "blades"]) {
+    // Both greeters must be met on the actual Homeworld entry path.
+    const p = pilot(childhoodAdmissionV175({ withLocation: true }));
+    drills(p); observeTrail(p); p.act("show-map"); p.act("handoff");
+    assert.equal(game.actChildhoodV175(p.read(), p.read().homeworld.childhoodV175, "first-blades", post).state, undefined);
+    assert.equal(game.actChildhoodV175(p.read(), p.read().homeworld.childhoodV175, "use", post).state, undefined);
+    for (const station of [2, 4, 7]) { walk(p, station); p.act("use"); }
+    assert(p.view().passed);
+    assert(p.view().stowed);
+    assert.equal(youth.startYouthCampaign(p.read()), null);
+    p.act("first-" + opening);
+    assert.equal(p.view().firstWorkshop, opening);
+    assert.equal(game.actChildhoodV175(p.read(), p.read().homeworld.childhoodV175, "first-blades", post).state, undefined);
+    const started = youth.startYouthCampaign(p.read());
+    assert(started);
+    const stored = p.write(started);
+    assert(stored.save, stored.failure);
+    const reopened = childhoodStorage.parseSaveImport(childhoodStorage.exportSave(stored.save)).save;
+    assert.equal(reopened.youthTraining.checkpoint.firstWorkshopV176, opening);
+    assert.equal(ranks.getChronicleRank(reopened.prologue.chronicle), "unblooded");
+    assert.deepEqual(reopened.prologue.chronicle, seed.prologue.chronicle);
+    const altered = structuredClone(reopened);
+    altered.youthTraining.checkpoint.firstWorkshopV176 = opening === "blades" ? "mask" : "blades";
+    assert.equal(childhoodStorage.parseSaveImport(JSON.stringify(altered)).failure, "invalid-save");
+    assert.equal(youth.withYouthCheckpoint(reopened, altered.youthTraining.checkpoint), null);
+  }
+});
+
+test("M006 preserves the old path for a youth campaign already in progress", () => {
+  const seed = childhoodAdmissionV175({ withLocation: true });
+  const legacyYouth = youth.startYouthCampaign(seed);
+  assert(legacyYouth);
+  const p = pilot(legacyYouth);
   drills(p); observeTrail(p); p.act("show-map"); p.act("handoff");
-  assert.equal(game.actChildhoodV175(p.read(), p.read().homeworld.childhoodV175, "use", post).state, undefined);
   for (const station of [2, 4, 7]) { walk(p, station); p.act("use"); }
-  assert(p.view().passed);
-  assert(p.view().stowed);
-  assert.equal(ranks.getChronicleRank(p.read().prologue.chronicle), "unblooded");
-  assert.deepEqual(p.read().prologue.chronicle, seed.prologue.chronicle);
+  const played = p.read();
+  assert.equal(game.actChildhoodV175(played, played.homeworld.childhoodV175, "first-blades", post).state, undefined);
+  assert.equal(youth.startYouthCampaign(played).youthTraining.checkpoint.firstWorkshopV176, undefined);
 });
 
 test("the actual archive rejects foreign or impossible changes and refuses stale writes", () => {

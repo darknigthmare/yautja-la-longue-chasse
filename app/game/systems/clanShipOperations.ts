@@ -1,4 +1,5 @@
-import { getChronicleRank } from './clanChronicle';
+import { getChronicleRank, type ClanChronicle } from './clanChronicle';
+import { completeNarrativeSeniorRite } from './elderNarrativeRank';
 import type { MissionId } from '../types';
 import type { ClanShipDockingState, ClanShipRoomId } from './clanShipDocking';
 import {
@@ -18,7 +19,7 @@ import { applySuccessorTrial, inspectSuccessorTrial, isSuccessorTerrain, success
 import type { PassagePoint } from './elderPassageJudgmentV168';
 import { applyLongMemory, inspectLongMemory, longMemoryEvidence,
   type LongMemoryOrder, type LongMemoryRecord } from './longMemoryR2M055';
-import { applyAncientHearing, hasLongMemoryHandover, inspectAncientHearing,
+import { applyAncientHearing, hasElderChronicleRank, hasLongMemoryHandover, inspectAncientHearing,
   type AncientHearingOrder, type AncientHearingRecord } from './ancientHearingR2M056';
 
 import { applyWarCommandIntro, inspectWarCommandIntro,
@@ -238,6 +239,7 @@ export type ClanShipOperationsAction = { expectedRevision: number } & (
 export interface ClanShipOperationsResult {
   accepted: boolean; changed: boolean; state: ClanShipOperationsState;
   reason: string | null; message: string; clanMarksReward: number;
+  ancientChronicle?: ClanChronicle;
 }
 export interface ClanShipOperationsInspection {
   status: 'absent' | 'valid' | 'future-version' | 'invalid-save';
@@ -619,10 +621,20 @@ export function actClanShipOperations(state: ClanShipOperationsState, action: Cl
       if (state.activeContract) return refused(state, 'operation-active', 'Termine l’opération active avant de réunir les témoignages.');
       const armorerPresent = state.recruitedNpcIds.includes('iron-claw') &&
         context.availableCrewIds?.includes('iron-claw') === true && context.crewPostRooms?.['iron-claw'] === 'armurerie';
-      const ancientHearing = applyAncientHearing(state.ancientHearing, action.order, context.docking.roomId, armorerPresent);
-      if (!ancientHearing) return refused(state, 'ancient-hearing-order', 'Rejoins le poste indiqué et vérifie les places disponibles.');
+      const chronicle = context.campaign.prologue?.chronicle;
+      const ancientHearing = applyAncientHearing(state.ancientHearing, action.order, context.docking.roomId,
+        armorerPresent, hasElderChronicleRank(chronicle));
+      if (!ancientHearing) return refused(state, 'ancient-hearing-order', 'Rejoins le poste indiqué et vérifie les étapes inscrites au registre.');
+      if (action.order === 'recognize') {
+        const ancientChronicle = completeNarrativeSeniorRite(chronicle, 'ancient-recognition');
+        if (!ancientChronicle) return refused(state, 'ancient-hearing-rank', 'Le rite Ancient exige la reconnaissance Elder et les preuves de la relève.');
+        const recognized = changed(state, { ancientHearing }, 'La reconnaissance Ancient figure dans ta chronique.');
+        return recognized.changed ? { ...recognized, ancientChronicle } : recognized;
+      }
       return changed(state, { ancientHearing }, action.order === 'reserve-post'
-        ? 'Les trois actes et le lieu choisi sont inscrits au registre.' : 'Préparation des témoignages consignée.');
+        ? 'Les trois actes et le lieu choisi sont inscrits au registre.'
+        : action.order === 'deliver-aid' ? 'La garde confirme la réception du matériel et du plan pour Oseris-IV.'
+          : 'La progression figure au registre des témoignages.');
     }
     case 'long-memory': {
       if (!state.mandateAccepted || !longMemoryEvidence(context.ownerCreatedAt, context.campaign.elderWorkshopV172, state.legacy, state.successorTrial) ||

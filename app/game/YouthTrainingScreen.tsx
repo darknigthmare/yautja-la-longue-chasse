@@ -220,10 +220,15 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
         {workshopFeedback(workshop, state.tick) && <p role="status">{workshopFeedback(workshop, state.tick)}</p>}
         <p>{([["light", "Frappe"], ["blade", "Lame"], ["throw", "Projection"], ["dodge", "Esquive"], ["jump", "Saut"]] as const).map(([action, label]) => label + " " + controlActionShortcut(YOUTH_CONTROL_ACTIONS[action], props.bindings)).join(" · ")}</p>
       </aside>}
-      {state.phase === "barracks" && !workshopActive && workshop?.reports.length && !state.medicompV172 && !effectivePaused ? <aside className={styles.fieldNotes} aria-label="Registre des ateliers">
-        <strong>{workshop.reports.length} / {YOUTH_WORKSHOP_LESSONS.length} ateliers consignés</strong>
-        <p>{workshopCanOpen(workshop) ? "La porte gauche ouvre l’atelier suivant. " : "Les exercices de cette série sont consignés. "}Auprès de la porte, Frappe règle le masque en contraste et Lame élargit la lecture.</p>
-        <p>Profil du masque · {workshop.maskProfile === "wide" ? "lecture large" : "contraste"}</p>
+      {state.phase === "barracks" && !workshopActive && (workshop?.reports.length || state.firstWorkshopV176) &&
+        !state.medicompV172 && !effectivePaused ? <aside className={styles.fieldNotes} aria-label="Registre des ateliers">
+        <strong>{workshop?.reports.length ?? 0} / {YOUTH_WORKSHOP_LESSONS.length} ateliers consignés</strong>
+        <p>{workshopCanOpen(workshop) ? "La porte gauche ouvre l’atelier suivant." : "Les exercices de cette série sont consignés."}</p>
+        {!workshop?.reports.length && state.firstWorkshopV176 && <p>Premier atelier · {YOUTH_WORKSHOP_LESSONS[state.firstWorkshopV176 === "blades" ? 1 : 0].title}</p>}
+        {workshop?.maskProfile && <>
+          <p>Auprès de la porte, Frappe règle le masque en contraste et Lame élargit la lecture.</p>
+          <p>Profil du masque · {workshop.maskProfile === "wide" ? "lecture large" : "contraste"}</p>
+        </>}
       </aside> : null}
       {state.phase === "barracks" && !workshopActive && state.medicompV172 && !effectivePaused && <aside className={styles.fieldNotes} aria-label="Medicomp d’exercice" data-youth-medicomp-status>
         <strong>Charges restantes · {youthMedicompCharges(state.medicompV172)} / 3</strong>

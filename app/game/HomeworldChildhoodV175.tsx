@@ -38,6 +38,8 @@ const labels = {
   "show-map": "Rapporter la carte",
   "show-passage": "Indiquer le dernier passage",
   handoff: "Rejoindre Saar pour la passation",
+  "first-mask": "Commencer par le masque",
+  "first-blades": "Commencer par les lames",
   "reset-current": "Reprendre au dernier repère",
 } satisfies Record<ChildhoodCommandV175, string>;
 
@@ -73,11 +75,12 @@ function TrainingSpace({ view }: { view: ChildhoodViewV175 }) {
   </div>;
 }
 
-export default function HomeworldChildhoodV175({ view, message, paused, mayEnter, onAction, onEnter }: {
-  view: ChildhoodViewV175; message: string; paused: boolean; mayEnter: boolean;
+export default function HomeworldChildhoodV175({ view, message, paused, mayEnter, trainingStarted, onAction, onEnter }: {
+  view: ChildhoodViewV175; message: string; paused: boolean; mayEnter: boolean; trainingStarted: boolean;
   onAction(action: ChildhoodCommandV175): void; onEnter(): void;
 }) {
-  const options = childhoodOptionsV175(view);
+  const options = childhoodOptionsV175(view).filter(action =>
+    !trainingStarted || (action !== "first-mask" && action !== "first-blades"));
   const sign = childhoodTrackSignV175(view);
   const comparing = view.track?.comparing;
   const title = view.trial === "handoff" ? "La passation"
@@ -93,7 +96,8 @@ export default function HomeworldChildhoodV175({ view, message, paused, mayEnter
   };
   return <section className={styles.panel} data-homeworld-childhood-v175={view.trial ?? "yard"}
     data-childhood-position={view.position} data-childhood-drills={view.finished.length}
-    data-childhood-track-phase={view.track?.phase} data-childhood-passed={view.passed} aria-label={title}>
+    data-childhood-track-phase={view.track?.phase} data-childhood-passed={view.passed}
+    data-childhood-first-workshop={view.firstWorkshop ?? undefined} aria-label={title}>
     <h4>{title}</h4>
     {view.companion && <p><strong>{view.companion}</strong> · {view.trial === "ring" || view.trial === "beam" || view.trial === "spring"
       ? CHILDHOOD_DRILLS_V175[view.trial].title : ""}</p>}
@@ -105,6 +109,7 @@ export default function HomeworldChildhoodV175({ view, message, paused, mayEnter
     {view.trial === "spring" && <p>Cible {childhoodSpringOpenV175(view.beat) ? "ouverte" : "fermée"} · ligne de frappe à la dalle 5.</p>}
     {view.trial === "track" && <p>Indices confirmés · {view.track?.signs}/3. {view.track?.phase === "returning" && "Retour par le chemin bas."}</p>}
     {view.report && <p data-childhood-report={view.report}>{view.report === "map" ? "Carte remise." : "Dernier passage indiqué."}</p>}
+    {view.firstWorkshop && <p>Premier atelier · {view.firstWorkshop === "mask" ? "Le masque et ses lectures" : "La distance des lames"}</p>}
     <p role="status">{message || view.message}</p>
     <div className={styles.controls}>
       {options.map(action => {
@@ -112,7 +117,7 @@ export default function HomeworldChildhoodV175({ view, message, paused, mayEnter
         return <button type="button" key={action} data-childhood-action={action} disabled={paused}
           onClick={() => onAction(action)}>{choiceLabel ?? (action === "use" ? interactionLabel(view) : labels[action])}</button>;
       })}
-      {view.passed && mayEnter && <button type="button" data-childhood-enter-dojo disabled={paused}
+      {view.passed && mayEnter && (view.firstWorkshop || trainingStarted) && <button type="button" data-childhood-enter-dojo disabled={paused}
         onClick={onEnter}>Rejoindre le dojo des Unblooded</button>}
     </div>
     {comparing && <p><small>Choisis le signe le plus récent dans la direction du perchoir.</small></p>}
