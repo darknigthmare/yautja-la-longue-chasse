@@ -5,6 +5,7 @@ import { childhoodAdmissionV175, childhoodStorage, qaChildhood } from "./helpers
 const city = qaChildhood.load("app/game/systems/youthCityErrandV172.ts");
 const guide = qaChildhood.load("app/game/systems/youthCityGuideM003.ts");
 const location = qaChildhood.load("app/game/systems/homeworldLocationV77.ts");
+const rooms = qaChildhood.load("app/game/systems/homeworldInteriorsV64.ts");
 const seed = childhoodAdmissionV175();
 delete seed.homeworld.youthCityErrandV172;
 const errand = city.startYouthCityErrandV172(seed.createdAt, "escort", true, true);
@@ -47,7 +48,10 @@ test("M003 archives the two real guide landmarks and preserves their order", () 
   const finished = city.advanceYouthCityGuideM003(start);
   assert.equal(write(archive(save, finished, checkpoint(stairs.position))).failure, "save-conflict");
   assert.equal(write(archive(save, start, checkpoint(audience.position, "+1"))).failure, "save-conflict");
-  assert.equal(write(archive(save, start, checkpoint(audience.position, level, "throne-audience"))).failure, "save-conflict");
+  const room = rooms.homeworldInteriorForBuildingV64("throne-audience");
+  const indoor = checkpoint(room.spawn, level, room.buildingId);
+  assert(location.resolveHomeworldLocationV77(indoor, seed.createdAt).restored);
+  assert.equal(write(archive(save, start, indoor)).failure, "save-conflict");
   const stale = save;
   save = keep(archive(save, start, checkpoint(audience.position)));
   const portable = childhoodStorage.parseSaveImport(childhoodStorage.exportSave(save));

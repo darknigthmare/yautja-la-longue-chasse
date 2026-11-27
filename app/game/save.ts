@@ -2492,17 +2492,25 @@ export function writeSaveWithStatus(
   return persistCampaign(save, storage, key, false);
 }
 
-/** Internal terminal bridge for a campaign host simulation. The host save and
- * its participant attribution must already have been confirmed by the authority. */
-export function restoreCampaignCoopGuestReward(
-  guest: SaveGame,
-  hunt: CommittedCampaignCoopHunt,
-  storage: Storage | null = browserStorage(),
-  key = SAVE_STORAGE_KEY,
-): SaveWriteResult {
-  const reward = projectCampaignCoopGuestReward(hunt, guest.createdAt, applyMissionResult);
-  if (!reward) return { save: guest, persisted: false, failure: "save-conflict" };
-  return persistCampaign(guest, storage, key, false, reward);
+/** Bind restoration to the trusted campaign authority at composition time.
+ * Guest inputs carry only an opaque receipt reference. A transport adapter
+ * must authenticate the guest and resolve it to a confirmed host terminal. */
+export function createCampaignCoopGuestRewardRestorer(
+  resolveConfirmedHunt: (reference: string, guestOwnerCreatedAt: string) => CommittedCampaignCoopHunt | null,
+) {
+  return function restoreCampaignCoopGuestReward(
+    guest: SaveGame,
+    reference: string,
+    storage: Storage | null = browserStorage(),
+    key = SAVE_STORAGE_KEY,
+  ): SaveWriteResult {
+    const refused = (): SaveWriteResult => ({ save: guest, persisted: false, failure: "save-conflict" });
+    if (typeof reference !== "string" || !reference || reference.length > 128) return refused();
+    const hunt = resolveConfirmedHunt(reference, guest.createdAt);
+    if (!hunt) return refused();
+    const reward = projectCampaignCoopGuestReward(hunt, guest.createdAt, applyMissionResult);
+    return reward ? persistCampaign(guest, storage, key, false, reward) : refused();
+  };
 }
 
 /** Only for an explicit, confirmed reset or replacement chosen by the player. */
