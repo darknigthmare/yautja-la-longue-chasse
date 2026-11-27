@@ -84,7 +84,8 @@ import { hasShipInsertionDebit, inspectShipInsertionEnergy } from "./systems/shi
 import { emptyGauntletCampaignV134, normalizeGauntletCampaignV134 } from "./systems/gauntletCampaignV134";
 import { inspectMinorArcsV160, recordMinorArcsHuntResultV160 } from "./systems/minorArcsV160";
 import { inspectQueenHuntV163, normalizeQueenHuntV163, QUEEN_HUNT_VERSION_V163 } from "./systems/queenHuntV163";
-import { inspectWarpEpochsV165 } from "./systems/warpEpochsV165";
+import { inspectWarpEpochsV165, isWarpSurveySuccessorR2 } from "./systems/warpEpochsV165";
+import { isWarpCommonSuccessorR2, warpCommonViewR2 } from "./systems/warpCommonRouteR2";
 import { inspectTantalusLedgerV164, normalizeTantalusLedgerV164 } from "./systems/tantalusV164";
 import {
   ARMORS,
@@ -2092,6 +2093,12 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (isRecord(selectedAdjutant) && Number(selectedAdjutant.version) > 1) return { save: null, failure: "future-version" };
   const save = normalizeSave(value);
   const adjutant = save.homeworld.adjutantM029;
+  const playedWarp = save.warpEpochsV165?.commonRouteR2;
+  const verifiedWarp = !!playedWarp && !!warpCommonViewR2(playedWarp).installed;
+  const chronicleWarp = save.prologue?.chronicle.evidence.some(proof => proof.id === "warp-module-quest") === true;
+  if (playedWarp && (shipReceiptV161(save).receipt?.instanceId !== playedWarp.hullInstanceId ||
+      adjutant?.phase !== "appointed")) return { save: null, failure: "invalid-save" };
+  if (chronicleWarp !== verifiedWarp) return { save: null, failure: "invalid-save" };
   if ((selectedAdjutant != null && (!adjutant || bloodedTemple.view.stage !== "complete")) ||
       !homeworldAdjutantMatchesSaveM029(save) ||
       !youthCampaignMatchesSave(value, {
@@ -2099,6 +2106,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
         cradleBriefed: cradle.state !== null,
         crownReturned: cradle.state?.crownDelivered === true,
         adjutantVerified: adjutant?.phase === "appointed",
+        warpVerified: verifiedWarp,
       })) return { save: null, failure: "invalid-save" };
   if (m035.state && !hasWarNarrativeCampaignR2M035(save)) return { save: null, failure: "invalid-save" };
   if (firstInterstellar.state && (shipReceiptV161(save).receipt?.instanceId !== firstInterstellar.state.hullInstanceId ||
@@ -2243,6 +2251,15 @@ function persistCampaign(
       // This receipt ledger belongs to the confirmed campaign write. Refuse a
       // stale copy before it can lose points or convert them into a rank.
       if (JSON.stringify(previous.honorSourcesV169) !== JSON.stringify(requested.honorSourcesV169)) {
+        return failed("save-conflict", previous);
+      }
+      if (!isWarpSurveySuccessorR2(previous.warpEpochsV165, requested.warpEpochsV165)) {
+        return failed("save-conflict", previous);
+      }
+      const previousWarp = previous.warpEpochsV165?.commonRouteR2;
+      const nextWarp = requested.warpEpochsV165?.commonRouteR2;
+      if (JSON.stringify(previousWarp ?? null) !== JSON.stringify(nextWarp ?? null) &&
+          !isWarpCommonSuccessorR2(previousWarp, nextWarp)) {
         return failed("save-conflict", previous);
       }
       const previousAdjutant = previous.homeworld.adjutantM029;
