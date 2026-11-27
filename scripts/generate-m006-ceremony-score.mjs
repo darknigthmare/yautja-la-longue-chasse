@@ -157,6 +157,45 @@ function sha(bytes) {
   return createHash("sha256").update(bytes).digest("hex");
 }
 
+function decodeScore(media) {
+  const decoded = spawnSync("ffmpeg", [
+    "-v", "error", "-f", "ogg", "-i", "pipe:0", "-ac", "1", "-ar", String(sampleRate), "-f", "s16le", "pipe:1",
+  ], { input: media, maxBuffer: 6 * 1024 * 1024 });
+  if (decoded.error) throw decoded.error;
+  if (decoded.status !== 0) throw new Error(decoded.stderr.toString());
+  return decoded.stdout;
+}
+
+function verifyScore(reference, recomposed, master) {
+  if (sha(master) !== "862d6afade480a11abad26a7a254023c5c591aff60427f70cf1c01faa21edc9b") {
+    throw new Error("M006 score master PCM differs from the authored synthesis: " + sha(master));
+  }
+  if (sha(reference) !== "6c04950f3712a1f34c89a242466ef4ac66e6bb1b7f0395cb09985f8f6c9e3035") {
+    throw new Error("M006 published Opus differs from the archived encoding");
+  }
+  const samples = decodeScore(reference);
+  if (Math.abs(samples.length / 2 - duration * sampleRate) > .04 * sampleRate) {
+    throw new Error("M006 Opus playback does not last 105 seconds");
+  }
+  if (reference.equals(recomposed)) return;
+  // The static encoder can select different CPU paths. Keep the published
+  // media's exact hash and compare decoded PCM when a runner encodes differently.
+  const actual = decodeScore(recomposed);
+  if (actual.length !== samples.length) throw new Error("M006 Opus decode lengths differ");
+  let energy = 0, difference = 0;
+  for (let offset = 0; offset < samples.length; offset += 2) {
+    const expected = samples.readInt16LE(offset);
+    const delta = expected - actual.readInt16LE(offset);
+    energy += expected * expected;
+    difference += delta * delta;
+  }
+  const relativeRms = Math.sqrt(difference / energy);
+  if (!Number.isFinite(relativeRms) || relativeRms > .08) {
+    throw new Error("M006 Opus decode differs materially from the score: " + relativeRms);
+  }
+  console.log("M006 Opus encoder variation, decoded relative RMS " + relativeRms.toFixed(6));
+}
+
 const mode = process.argv[2] ?? "--verify";
 if (process.argv.length > 3 || !["--write", "--verify", "--emit"].includes(mode)) {
   throw new Error("Usage: node scripts/generate-m006-ceremony-score.mjs [--write|--verify|--emit]");
@@ -167,10 +206,16 @@ for (const [name, media] of Object.entries({ fire, score: opus(wave) })) {
   if (mode === "--write") {
     await mkdir(new URL(".", paths[name]), { recursive: true });
     await writeFile(paths[name], media);
-  } else if (mode === "--verify" && !(await readFile(paths[name])).equals(media)) {
-    throw new Error("M006 asset differs from the bit-exact render: " + name);
   }
-  console.log("M006_AUDIO_META " + JSON.stringify({ name, bytes: media.length, sha256: sha(media), frames: name === "fire" ? sampleRate * 4 : sampleRate * duration }));
+  const reference = mode === "--verify" ? await readFile(paths[name]) : media;
+  if (mode === "--verify") {
+    if (name === "score") verifyScore(reference, media, wave);
+    else if (!reference.equals(media)) throw new Error("M006 brazier differs from its exact WAV render");
+  }
+  console.log("M006_AUDIO_META " + JSON.stringify({
+    name, bytes: reference.length, sha256: sha(reference), frames: name === "fire" ? sampleRate * 4 : sampleRate * duration,
+    ...(name === "score" ? { masterSha256: sha(wave) } : {}),
+  }));
   if (mode === "--emit") {
     const encoded = media.toString("base64");
     for (let offset = 0; offset < encoded.length; offset += 10000) {
