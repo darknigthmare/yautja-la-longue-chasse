@@ -1,6 +1,7 @@
 import { MISSIONS } from '../data';
 import type { SaveGame } from '../types';
 import { normalizeSoloV90Campaign, soloV90MatchesSave } from './campaignSoloV90';
+import { soloV70AllowsTriadHuntM017 } from './campaignSoloV70';
 import { getChronicleRank } from './clanChronicle';
 import { rankTrialsBlockedV147 } from './honorTribunalV147';
 import { shipAcquisitionOwnedHullV89 } from './shipAcquisitionV89';
@@ -292,7 +293,7 @@ export function canEnterQuatza(save: SaveGame, mode: QuatzaMode): boolean {
   if (rankTrialsBlockedV147(save.tribunalV147)) return false;
   const rank = save.prologue ? getChronicleRank(save.prologue.chronicle) : save.profile.rankId;
   if (mode === 'triad') return rank === 'young-blood' && save.youthTraining?.equipment.wristblade === true &&
-    normalizeSoloV90Campaign(save.soloV90)?.status === 'completed' && soloV90MatchesSave(save);
+    normalizeSoloV90Campaign(save.soloV90)?.status === 'completed' && soloV90MatchesSave(save) && soloV70AllowsTriadHuntM017(save);
   return (rank === 'blooded' || rank === 'elite' || rank === 'elder' || rank === 'ancient') &&
     save.inventory.unlockedWeaponIds.includes('wristblades') &&
     MISSIONS.every(mission => save.missionProgress[mission.id]?.status === 'completed') &&
@@ -353,7 +354,7 @@ export function quatzaCampaignMatchesSave(save: SaveGame): boolean {
   if (inspected.status === 'absent') return true;
   if (!inspected.state) return false;
   const { triad, solo } = inspected.state.expeditions;
-  return (!triad || normalizeSoloV90Campaign(save.soloV90)?.status === 'completed') &&
+  return (!triad || normalizeSoloV90Campaign(save.soloV90)?.status === 'completed' && soloV70AllowsTriadHuntM017(save)) &&
     (!solo || MISSIONS.every(mission => save.missionProgress?.[mission.id]?.status === 'completed') &&
       !!shipAcquisitionOwnedHullV89(save.shipAcquisitionV89, save.createdAt));
 }

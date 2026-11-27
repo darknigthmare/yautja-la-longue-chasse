@@ -1,0 +1,162 @@
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { chromium } from 'playwright-core';
+import { createServer } from 'vite';
+import { thresholdsCampaignRoute } from '../tests/helpers/solo-v69-played-route.mjs';
+import { formationCampaignRoute } from '../tests/helpers/solo-v90-played-route.mjs';
+import { templeCampaignRoute, thresholdsTemple } from '../tests/helpers/solo-v70-played-route.mjs';
+import { homeworldSceneSsrV78 } from '../tests/helpers/homeworld-scene-ssr-v78.mjs';
+
+const modules = homeworldSceneSsrV78();
+const saves = modules.load('app/game/save.ts');
+const { YOUTH_CONTROL_ACTIONS: actions } = modules.load('app/game/systems/youthControls.ts');
+const { descent, hunt } = thresholdsTemple.SOLO_V70_DEPTHS_M017;
+const previous = thresholdsCampaignRoute().save;
+const origin = { ...previous, prologue: { ...previous.prologue, templeTriadFirstM017: true } };
+const waiting = formationCampaignRoute({ origin, stop: 'observe' }).save;
+const seed = templeCampaignRoute({ origin: waiting, stop: 'return' }).save;
+seed.settings.masterVolume = 0;
+assert.equal(saves.parseSaveImport(saves.exportSave(seed)).failure, null);
+const key = saves.SAVE_STORAGE_KEY;
+const output = resolve(process.env.M017_OUTPUT ?? 'outputs/qa-temple-depths-m017');
+const report = {
+  commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+  seed: 'V69, V90 roles and V70 Vanne reached through native reducers. Only Chromium keyboard input acts after the Vanne.',
+  passed: false, errors: [],
+};
+const bindings = seed.settings.controlBindings;
+const right = bindings[actions.right].at(-1);
+const left = bindings[actions.left].at(-1);
+const interact = bindings[actions.interact][0];
+const jump = bindings[actions.jump][0];
+const signal = bindings[actions.blade][0];
+
+await mkdir(output, { recursive: true });
+let browser, server;
+try {
+  server = await createServer({ configFile: resolve('desktop/vite.config.ts'), server: { host: '127.0.0.1', port: 4270, strictPort: true } });
+  await server.listen();
+  browser = await chromium.launch({ executablePath: process.env.CHROMIUM_EXECUTABLE, args: ['--no-sandbox'] });
+  const context = await browser.newContext({ viewport: { width: 1340, height: 920 }, reducedMotion: 'reduce' });
+  await context.addInitScript(({ key, seed }) => {
+    if (sessionStorage.getItem('m017-depths-native')) return;
+    sessionStorage.setItem('m017-depths-native', 'yes');
+    localStorage.setItem(key, JSON.stringify(seed));
+  }, { key, seed });
+  const page = await context.newPage();
+  page.on('pageerror', error => report.errors.push(error.message));
+  page.setDefaultTimeout(30000);
+  const canvas = page.locator('[data-solo-v70] canvas[data-solo-assets="true"]');
+  const live = () => canvas.evaluate(element => JSON.parse(element.dataset.soloState));
+  const saved = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), key);
+  const shot = name => page.screenshot({ path: resolve(output, name + '.png'), animations: 'disabled' });
+  async function boot() {
+    await page.locator('[data-campaign-menu]').waitFor({ timeout: 90000 });
+    const campaign = page.locator('[data-menu-section="campaign"]');
+    if (await campaign.isVisible()) await campaign.click();
+    await page.locator('[data-menu-action="continue"]').click();
+    await canvas.waitFor({ timeout: 90000 });
+    await canvas.focus();
+    await page.clock.runFor(180);
+  }
+  async function approach(target, direction = (target >= 120 ? 1 : -1), tolerance = 10) {
+    const horizontal = direction > 0 ? right : left;
+    await page.keyboard.down(horizontal);
+    for (let i = 0; i < 220 && (target - (await live()).player.x) * direction > tolerance; i++) {
+      await page.clock.runFor(65);
+    }
+    await page.keyboard.up(horizontal);
+    await page.clock.runFor(100);
+    const state = await live();
+    assert(Math.abs(state.player.x - target) < tolerance + 20, JSON.stringify(state.player));
+  }
+  async function hold(key, time) {
+    await page.keyboard.down(key);
+    await page.clock.runFor(time);
+    await page.keyboard.up(key);
+    await page.clock.runFor(120);
+  }
+  async function leap(target, height) {
+    await page.keyboard.down(jump);
+    await page.keyboard.down(right);
+    for (let i = 0; i < 75 && (await live()).player.x < target - 4; i++) await page.clock.runFor(40);
+    await page.keyboard.up(jump);
+    await page.keyboard.up(right);
+    await page.clock.runFor(480);
+    const state = await live();
+    assert.equal(state.player.y, height, JSON.stringify(state.player));
+    assert.equal(state.player.vy, 0);
+  }
+  await page.clock.install();
+  await page.goto('http://127.0.0.1:4270');
+  await boot();
+  assert.equal((await live()).room, thresholdsTemple.SOLO_V70_QUARANTINE_THRESHOLD.room);
+  assert((await saved()).soloV70.checkpoint.riteAdmission.threshold);
+  await approach(1040, 1);
+  await hold(interact, 120);
+  assert.equal((await live()).room, descent.room);
+  assert.equal((await saved()).soloV70.checkpoint.room, descent.room);
+  await hold(signal, 80);
+  assert.equal((await saved()).soloV70.checkpoint.companionMode, 'plates');
+  await approach(378, 1, 4);
+  await leap(500, 372);
+  await leap(descent.x, descent.y);
+  await page.clock.runFor(700);
+  await shot('01-plaques-et-passerelle');
+  await page.keyboard.down(interact);
+  for (let i = 0; i < 18 && !(await saved()).soloV70.checkpoint.depthsM017.relay; i++) await page.clock.runFor(100);
+  await page.keyboard.up(interact);
+  const relay = (await saved()).soloV70.checkpoint.depthsM017.relay;
+  assert(relay);
+  assert(thresholdsTemple.soloV70DepthPlatesReadyM017(relay.positions.slice(1)));
+  await page.clock.runFor(100);
+  assert.equal(await page.locator('[data-solo-v70]').getAttribute('data-temple-depth-gate'), 'moving');
+  await shot('02-volet-en-mouvement');
+
+  await page.reload();
+  await boot();
+  const resumed = (await saved()).soloV70.checkpoint;
+  assert.equal(resumed.room, descent.room);
+  assert.deepEqual(resumed.depthsM017.relay, relay);
+  assert.equal(resumed.depthsM017.huntThreshold, null);
+  await approach(1040, 1);
+  await hold(interact, 120);
+  assert.equal((await live()).room, hunt.room);
+  assert.equal((await saved()).soloV70.checkpoint.room, hunt.room);
+  await approach(hunt.x, 1);
+  await page.clock.runFor(350);
+  await hold(interact, 920);
+  const threshold = (await saved()).soloV70.checkpoint.depthsM017.huntThreshold;
+  assert(threshold);
+  assert(threshold.tick >= relay.tick + descent.openingTicks + hunt.holdTicks);
+  assert.equal(await page.locator('[data-solo-v70]').getAttribute('data-temple-hunt-threshold'), 'triad-confirmed');
+  await shot('03-seuil-de-chasse');
+  await page.reload();
+  await boot();
+  assert.deepEqual((await saved()).soloV70.checkpoint.depthsM017.huntThreshold, threshold);
+  await approach(80, -1);
+  await hold(interact, 120);
+  assert.equal((await saved()).soloV70.checkpoint.room, descent.room);
+  await approach(80, -1);
+  await hold(interact, 120);
+  const backAtVanne = await saved();
+  assert.equal(backAtVanne.soloV70.checkpoint.room, thresholdsTemple.SOLO_V70_QUARANTINE_THRESHOLD.room);
+  assert.deepEqual(backAtVanne.soloV90, waiting.soloV90);
+  assert.deepEqual(backAtVanne.soloV70.checkpoint.depthsM017.huntThreshold, threshold);
+  assert.equal(saves.parseSaveImport(saves.exportSave(backAtVanne)).failure, null);
+  assert.equal(backAtVanne.quatzaRij, seed.quatzaRij);
+  assert.deepEqual(report.errors, []);
+  report.relay = relay;
+  report.threshold = threshold;
+  report.passed = true;
+} catch (error) {
+  report.errors.push(error.stack);
+  process.exitCode = 1;
+} finally {
+  await browser?.close();
+  await server?.close();
+  await writeFile(resolve(output, 'report.json'), JSON.stringify(report, null, 2) + '\n');
+  console.log(JSON.stringify(report, null, 2));
+}

@@ -2,7 +2,7 @@ import type { SaveGame } from '../types';
 import { normalizeSoloV69Campaign, soloV69MatchesSave, templeRankKeepsEarlierTrialV174 } from './campaignSoloV69';
 import { normalizeSoloV90Campaign, soloV90AtTempleHandoffM017 } from './campaignSoloV90Progress';
 import { createSoloV70State, normalizeSoloV70State, SOLO_V70_PHASES, SOLO_V70_SIGNS, SOLO_V70_ENERGY_VAULT, SOLO_V70_LOAN_RACK, SOLO_V70_QUARANTINE_THRESHOLD,
-  SOLO_V70_BELVEDERE, SOLO_V70_RECONNECTION, SOLO_V70_NEF_RELAY_M017, soloV70NefDeploymentM017, soloV70NefPlatesReadyM017, soloV70BelvederePlatesReady, soloV70Receipts, soloV70CampaignPortal, soloV70CanTravel,
+  SOLO_V70_DEPTHS_M017, soloV70DepthPlatesReadyM017, SOLO_V70_BELVEDERE, SOLO_V70_RECONNECTION, SOLO_V70_NEF_RELAY_M017, soloV70NefDeploymentM017, soloV70NefPlatesReadyM017, soloV70BelvederePlatesReady, soloV70Receipts, soloV70CampaignPortal, soloV70CanTravel,
   soloV70TrioPresent, soloV70TrioObservation, type SoloV70State, type SoloV70Receipt } from './firstHuntSoloV70';
 export interface SoloV70Campaign { version:1;status:'active'|'completed';checkpoint:SoloV70State;receipts:SoloV70Receipt[];startedAt:string;completedAt:string|null }
 export type SoloV70Save=SaveGame&{soloV70?:SoloV70Campaign|null};
@@ -20,13 +20,14 @@ function prerequisites(v: unknown, completed = false): v is SoloV70Save {
    (completed ? formation.checkpoint.milestones['roles-positioned'] !== undefined : soloV90AtTempleHandoffM017(formation));
 }
 const journey=(v:Record<string,unknown>)=>record(v.homeworldRegionV68)&&v.homeworldRegionV68.status!=='at-city'||record(v.homeworldPassageV67)&&v.homeworldPassageV67.status!=='at-city'||record(v.gameReserveV66)&&v.gameReserveV66.status==='active';
-export function soloV70MatchesSave(v:unknown){if(!record(v))return false;if(v.soloV70===undefined||v.soloV70===null)return true;const progress=normalizeSoloV70Campaign(v.soloV70);return !!progress&&prerequisites(v, progress.status==='completed')&&!(progress.status==='active'&&journey(v));}
+export function soloV70MatchesSave(v:unknown){if(!record(v))return false;if(v.soloV70===undefined||v.soloV70===null)return true;const progress=normalizeSoloV70Campaign(v.soloV70);return !!progress&&(!progress.checkpoint.depthsM017||record(v.prologue)&&v.prologue.templeTriadFirstM017===true)&&prerequisites(v, progress.status==='completed')&&!(progress.status==='active'&&journey(v));}
 export const canStartSoloV70=(v:unknown)=>record(v)&&prerequisites(v)&&soloV70MatchesSave(v)&&!journey(v);
-export function startSoloV70Campaign(save:SoloV70Save,now=new Date().toISOString()):SoloV70Save|null{if(!canStartSoloV70(save)||!iso(now))return null;return save.soloV70?save:{...save,soloV70:{version:1,status:'active',checkpoint:createSoloV70State(),receipts:[],startedAt:now,completedAt:null}};}
+export function startSoloV70Campaign(save:SoloV70Save,now=new Date().toISOString()):SoloV70Save|null{if(!canStartSoloV70(save)||!iso(now))return null;return save.soloV70?save:{...save,soloV70:{version:1,status:'active',checkpoint:createSoloV70State(save.prologue?.templeTriadFirstM017 === true),receipts:[],startedAt:now,completedAt:null}};}
 function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Receipt[],now:string):SoloV70Save|null{
  const before=normalizeSoloV70Campaign(save.soloV70),next=normalizeSoloV70State(raw);if(!before||!next||!canStartSoloV70(save)||!iso(now)||Date.parse(now)<Date.parse(before.startedAt))return null;
  const old=before.checkpoint,delta=next.tick-old.tick,op=SOLO_V70_PHASES.indexOf(old.phase),np=SOLO_V70_PHASES.indexOf(next.phase),receipts=soloV70Receipts(next),fresh=receipts.slice(before.receipts.length);
  if(delta<0||np<op||np>op+1||next.phaseStartedAt<old.phaseStartedAt||next.walked<old.walked||next.walked-old.walked>delta*3.5+.1||next.signs<old.signs||next.signs>old.signs+1||next.signals<old.signals||next.signals-old.signals>delta||next.configuration<old.configuration||next.configuration>old.configuration+1||next.liftTicks<old.liftTicks||next.liftTicks-old.liftTicks>Math.max(1,delta)||next.attempts<old.attempts||next.attempts>old.attempts+1||next.drone.hits<old.drone.hits||next.drone.hits>old.drone.hits+1||next.doorCrossings<old.doorCrossings||next.doorCrossings>old.doorCrossings+1||old.visited.some((x,i)=>x&&!next.visited[i])||before.receipts.some((r,i)=>!same(r,receipts[i]))||fresh.length>1||fresh.some(r=>!incoming.some(i=>same(i,r)))||incoming.some(i=>!receipts.some(r=>same(i,r)))||new Set(incoming.map(i=>i.id)).size!==incoming.length||before.status==='completed'&&!same(old,next))return null;
+ const { descent, hunt } = SOLO_V70_DEPTHS_M017;
  const near=(room:number,x:number,y=430,t=40)=>next.room===room&&Math.abs(next.player.x-x)<t&&Math.abs(next.player.y-y)<.01;
  if (old.reconnectionVariant !== next.reconnectionVariant) return null;
  if (old.reconnectionVariant && next.phase === 'configuration' && next.scan > 0 &&
@@ -51,6 +52,23 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
      fresh[0]?.id !== 'quarantine-valves' || old.valveTimer <= delta || old.scan + delta < 45 ||
      !near(SOLO_V70_QUARANTINE_THRESHOLD.room, SOLO_V70_QUARANTINE_THRESHOLD.x) || next.player.vx !== 0 ||
      !same(admission.threshold, soloV70TrioObservation(next, 2)))) return null;
+ }
+ const oldDepths = old.depthsM017, nextDepths = next.depthsM017;
+ const startedRelay = !oldDepths?.relay && !!nextDepths?.relay;
+ if (Boolean(oldDepths) !== Boolean(nextDepths)) return null;
+ if (oldDepths && nextDepths) {
+   if (next.room >= descent.room && next.scan > (old.room === next.room ? old.scan : 0) + delta) return null;
+   if (oldDepths.relay) {
+     if (!same(oldDepths.relay, nextDepths.relay)) return null;
+   } else if (nextDepths.relay && (old.phase !== 'return' || old.room !== descent.room || old.companionMode !== 'plates' ||
+     !near(descent.room, descent.x, descent.y, 38) || next.player.vx !== 0 || old.scan + delta < descent.holdTicks ||
+     next.scan !== 0 || next.companionMode !== 'follow' || !soloV70DepthPlatesReadyM017(next.companions.map(c => c.x)) ||
+     !same(nextDepths.relay, soloV70TrioObservation(next, 3)))) return null;
+   if (oldDepths.huntThreshold) {
+     if (!same(oldDepths.huntThreshold, nextDepths.huntThreshold)) return null;
+   } else if (nextDepths.huntThreshold && (!oldDepths.relay || old.phase !== 'return' || old.room !== hunt.room ||
+     !near(hunt.room, hunt.x, 430, 38) || next.player.vx !== 0 || old.scan + delta < hunt.holdTicks || next.scan !== 0 ||
+     !soloV70TrioPresent(next) || !same(nextDepths.huntThreshold, soloV70TrioObservation(next, 3)))) return null;
  }
  if (old.belvedereLever) {
    if (!same(old.belvedereLever, next.belvedereLever)) return null;
@@ -77,13 +95,16 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
  }
  if (fresh[0]?.id === 'triad-rejoined' && next.nefRelayM017 &&
      (!old.nefRelayM017 || !soloV70TrioPresent(next) || next.player.vx !== 0)) return null;
- if(next.room!==old.room){const side=next.room>old.room?'right':'left',exit=soloV70CampaignPortal(old,old.room,side),entry=soloV70CampaignPortal(next,next.room,side==='right'?'left':'right');if(!soloV70CanTravel(old,next.room)||next.doorCrossings!==old.doorCrossings+1||next.lastDoor?.from!==old.room||next.lastDoor.to!==next.room||next.lastDoor.tick!==next.tick||next.roomEnteredAt!==next.tick||Math.abs(old.player.x-exit.x)>delta*3.5+42||!near(next.room,entry.x,entry.y,1)||next.player.vx!==0||next.player.vy!==0)return null;}
+ if(next.room!==old.room){const side=next.room>old.room?'right':'left',exit=soloV70CampaignPortal(old,old.room,side),entry=soloV70CampaignPortal(next,next.room,side==='right'?'left':'right');if(!soloV70CanTravel(oldDepths ? {...old,tick:next.tick} : old,next.room)||
+   oldDepths&&Math.max(old.room,next.room)>=descent.room&&old.companions.some(c=>Math.abs(c.x-exit.x)>delta*2.9+227)||next.doorCrossings!==old.doorCrossings+1||next.lastDoor?.from!==old.room||next.lastDoor.to!==next.room||next.lastDoor.tick!==next.tick||next.roomEnteredAt!==next.tick||Math.abs(old.player.x-exit.x)>delta*3.5+42||!near(next.room,entry.x,entry.y,1)||next.player.vx!==0||next.player.vy!==0)return null;}
  else if(next.doorCrossings!==old.doorCrossings||!same(next.lastDoor,old.lastDoor)||next.attempts===old.attempts&&Math.abs(next.player.x-old.player.x)>delta*3.5+.1)return null;
  if(next.visited.some((x,i)=>x!==(old.visited[i]||i===next.room))||next.room===old.room&&next.companions.some((c,i)=>Math.abs(c.x-old.companions[i].x)>delta*2.9+.1))return null;
  if(next.signs>old.signs){const p=SOLO_V70_SIGNS[old.signs];if(old.phase!=='signs'||!p||!near(2,p.x,p.y)||next.scan!==0)return null;}
  const belvedereSignal = old.phase === 'belvedere' && old.room === SOLO_V70_BELVEDERE.room && !old.belvedereLever &&
    (next.signals > old.signals || Boolean(next.belvedereLever));
- if(next.companionMode!==old.companionMode&&!['oath','separation'].includes(old.phase)&&!belvedereSignal&&!fresh.length)return null;
+ const depthSignal = old.phase === 'return' && old.room === descent.room && oldDepths && !oldDepths.relay &&
+   (next.signals > old.signals || startedRelay);
+ if(next.companionMode!==old.companionMode&&!['oath','separation'].includes(old.phase)&&!belvedereSignal&&!depthSignal&&!fresh.length)return null;
  if(old.liftTicks===0&&next.liftTicks>0&&(old.phase!=='counterweight'||!near(5,540)))return null;
  if(next.valveTimer>Math.max(0,old.valveTimer-delta)&&(old.phase!=='quarantine'||!near(8,200)||next.valveTimer!==600))return null;
  const retry=next.attempts===old.attempts+1;if(retry){if(old.failedAt===null||next.tick-old.failedAt<90||old.health!==0||next.failedAt!==null||next.health!==6||!near(old.room,125)||next.acid.ttl!==0||next.drone.hits!==old.drone.hits||next.drone.hp!==(old.phase==='drone'?5:old.drone.hp))return null;}
@@ -99,3 +120,9 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
 export const withSoloV70Checkpoint=(save:SoloV70Save,state:SoloV70State,now=new Date().toISOString())=>advance(save,state,[],now);
 export const withSoloV70Progress=(save:SoloV70Save,receipts:readonly SoloV70Receipt[],state:SoloV70State,now=new Date().toISOString())=>advance(save,state,receipts,now);
 export const soloV70NeedsScene=(progress:SoloV70Campaign|null|undefined)=>progress?.status==='active';
+
+export function soloV70AllowsTriadHuntM017(save: SaveGame): boolean {
+  if (!save.soloV70?.checkpoint.depthsM017) return true;
+  const temple = normalizeSoloV70Campaign(save.soloV70);
+  return temple?.status === 'completed' && !!temple.checkpoint.depthsM017?.huntThreshold && soloV70MatchesSave(save);
+}
