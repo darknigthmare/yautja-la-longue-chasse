@@ -13,7 +13,7 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '76901aed7d6f037279036ce931af794389a08b3f'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'b0f2bcd3b63a0e18a9398f26cfd03f330ea1483b'
       HUNTER_FORGE_QA_SELECT_MATERIAL: '1'
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: /usr/bin/google-chrome
@@ -22,12 +22,12 @@ jobs:
       YAUTJA_QA_BASE_URL: http://127.0.0.1:3121
       YAUTJA_QA_MODE: compiled-app
       AUDIT_CHROME_EXECUTABLE: /usr/bin/google-chrome
-      YAUTJA_QA_RUNTIME_COMMIT: '76901aed7d6f037279036ce931af794389a08b3f'
+      YAUTJA_QA_RUNTIME_COMMIT: 'b0f2bcd3b63a0e18a9398f26cfd03f330ea1483b'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '76901aed7d6f037279036ce931af794389a08b3f'
+          ref: 'b0f2bcd3b63a0e18a9398f26cfd03f330ea1483b'
           persist-credentials: false
           fetch-depth: 3
           filter: blob:none
@@ -312,7 +312,7 @@ jobs:
       - name: Qualify the typed plate mask, repaired reserve and outfit admission
         if: ${{ !cancelled() && steps.server.conclusion == 'success' }}
         env:
-          HUNTER_FORGE_QA_COMMIT: '76901aed7d6f037279036ce931af794389a08b3f'
+          HUNTER_FORGE_QA_COMMIT: 'b0f2bcd3b63a0e18a9398f26cfd03f330ea1483b'
         run: node scripts/qa-hunter-forge-wear-20261121.mjs
       - name: Preserve the compiled browser evidence
         if: always()
