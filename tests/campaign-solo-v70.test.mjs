@@ -103,7 +103,7 @@ test('the lower Belvedere route requires both companions, opens a physical porta
  assert.equal(p.withSoloV70Progress(passage.before,passage.receipts,forcedUpper,stamp),null);
 });
 
-test('M017 announces the real Nef supports before deployment and keeps the legacy room geometry', () => {
+test('M017 announces, unfolds and resumes physical Nef supports while preserving legacy geometry', () => {
  const initial = templeCampaignRoute({ stop: 'configuration' }).save;
  let save = initial, state = save.soloV70.checkpoint;
  const { room, x, holdTicks, platforms } = p.SOLO_V70_RECONNECTION;
@@ -133,7 +133,27 @@ test('M017 announces the real Nef supports before deployment and keeps the legac
  assert.equal(save.soloV70.receipts.at(-1).id, 'second-configuration');
  const restored = p.normalizeSoloV70Campaign(JSON.parse(JSON.stringify(save.soloV70)));
  assert(restored);
- assert.deepEqual(p.soloV70Platforms(restored.checkpoint), platforms);
+ assert.equal(p.soloV70NefDeploymentM017(restored.checkpoint), 0);
+ assert.deepEqual(p.soloV70Platforms(restored.checkpoint), []);
+ // The geometry derives from the checkpoint clock, including after a pause and reload.
+ for (let i = 0; i < 28; i++) act({});
+ const elapsed = p.soloV70NefDeploymentM017(state);
+ const inMotion = p.soloV70Platforms(state);
+ assert(elapsed !== null && elapsed > 24);
+ assert.equal(inMotion.length, 3);
+ assert(inMotion.every((bridge, index) => bridge.width > 0 && bridge.width < platforms[index].width));
+ assert(inMotion[1].x > platforms[1].x);
+ const savedMidway = p.normalizeSoloV70Campaign(JSON.parse(JSON.stringify(save.soloV70))).checkpoint;
+ assert.equal(p.soloV70NefDeploymentM017(savedMidway), elapsed);
+ assert.deepEqual(p.soloV70Platforms(savedMidway), inMotion);
+ assert.equal(p.stepSoloV70(savedMidway, {}, { ...env, paused: true }).state.tick, savedMidway.tick);
+ state = savedMidway;
+ for (let i = 0; i < p.SOLO_V70_NEF_DEPLOYMENT_TICKS_M017 - elapsed + 1; i++) act({});
+ assert.equal(p.soloV70NefDeploymentM017(state), null);
+ assert.deepEqual(p.soloV70Platforms(state), platforms);
+ const variantOne = { ...restored.checkpoint, reconnectionVariant: 1 };
+ assert.deepEqual(p.soloV70Platforms(p.normalizeSoloV70State(variantOne)), platforms);
+ assert.equal(p.withSoloV70Checkpoint(save, { ...state, reconnectionVariant: 1 }, stamp), null);
  const forged = structuredClone(restored.checkpoint);
  forged.phaseStartedAt = forged.milestones['second-configuration'] = forged.milestones['human-truce'] + 45;
  assert.equal(p.normalizeSoloV70State(forged), null);

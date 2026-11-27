@@ -601,7 +601,7 @@ function newCampaignDocument(id: CampaignSlotId, name: string, catalog: Campaign
     const owners = new Set(catalog.slots.map(s => s.ownerCreatedAt));
     let timestamp = Date.now(); while (owners.has(new Date(timestamp).toISOString())) timestamp++;
     const save = defaultSave(new Date(timestamp).toISOString());
-    save.prologue = createNurseryCampaign();
+    save.prologue = createNurseryCampaign(true);
     if (name.trim()) save.profile.hunterName = name.trim();
     if (originId !== null && originId !== undefined) {
       if (!isOriginIdV151(originId)) fail("invalid-slot", "Origine inconnue.");

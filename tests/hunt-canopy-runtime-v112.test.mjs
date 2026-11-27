@@ -441,3 +441,43 @@ for(const [supportId,expectedHeight,gripLength] of [
     "a checksum cannot expand the shared physical domain");
  });
 }
+
+test("an Up tap during a real tree jump catches the next in-range support without returning to the original", () => {
+ for (const device of ["keyboardHeld", "touchHeld", "gamepadHeld"]) {
+  const f = fixture(device);
+  const {player} = f.state;
+  const tree = {...f.support, kind:"tree", height:390};
+  const next = {...tree, id:"next-grip", x:tree.x+126, kind:device==="touchHeld"?"vine":"tree"};
+  f.state.world = {...f.state.world, climbables:[tree,next], platforms:[]};
+  f.held.add("right");
+  f.input.pressed.add("jump");
+  f.frame();
+  assert.equal(player.climbing,false);
+  f.input.pressed.add("up");
+  f.frame();
+  f.input.pressed.delete("up");
+  if (device !== "keyboardHeld") f.held.delete("right");
+  assert.equal(runtime.currentCanopyNavigationV112(f.state).transferBuffered,true);
+  for(let i=0;i<60&&!player.climbing;i++)f.frame();
+  assert.equal(player.climbZoneId,next.id,device);
+  assert.equal(player.aerialBoostUsed,false);
+  assert.equal(runtime.currentCanopyNavigationV112(f.state).transferBuffered,false);
+ }
+});
+
+test("an abandoned or obstructed transfer never restores an input or snaps back to the departed support", () => {
+ const f = fixture();
+ const tree = {...f.support, kind:"tree", height:390};
+ const blocked = {...tree, id:"blocked-grip", x:tree.x+136};
+ const wall = {id:"transfer-wall",x:tree.x+101,y:0,width:5,height:650,collision:"solid",
+   material:"stone",noiseMultiplier:1,trackPersistence:1};
+ f.state.world = {...f.state.world, climbables:[tree,blocked], platforms:[wall]};
+ f.held.add("right");f.input.pressed.add("jump");f.frame();
+ f.input.pressed.add("up");f.frame();f.input.pressed.delete("up");f.held.clear();
+ const checkpoint=runtime.captureCheckpoint(f.state);
+ assert.equal(runtime.restoreCheckpoint(f.state,checkpoint,"resume").canopyTransfer,undefined);
+ for(let i=0;i<70;i++)f.frame();
+ assert.equal(f.state.player.climbing,false);
+ assert.equal(f.state.player.climbZoneId,null);
+ assert.equal(f.state.canopyTransfer,undefined);
+});

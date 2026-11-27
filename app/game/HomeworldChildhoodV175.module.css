@@ -93,18 +93,59 @@
 .gate { height: 1.75rem; border: 2px solid #b79b65; border-block-end: 0; box-shadow: inset 0 0 0 6px #8d6d4f; }
 .gate[data-ready="true"] { box-shadow: inset 0 0 0 1px #b89a60; }
 
-.cohortMember {
-  grid-row: 1 / 3;
+.cohortMember, .saar {
+  position: relative;
+  z-index: 1;
+  grid-row: 3;
   justify-self: center;
-  width: min(100%, 2rem);
-  filter: brightness(.78);
-  transform-origin: center bottom;
 }
-.cohortMember img { width: 100%; height: auto; display: block; }
+.cohortMember { filter: brightness(.88); }
+.cohortMember[data-childhood-companion="Yena"] { filter: sepia(.38) hue-rotate(13deg); }
+.cohortMember[data-childhood-companion="Tov"] { filter: saturate(.48) brightness(.84); }
+.cohortCrop { position: absolute; overflow: hidden; }
+.cohortCrop img {
+  position: absolute;
+  display: block;
+  width: auto;
+  max-width: none;
+  max-inline-size: none;
+  height: auto;
+  transform-origin: top left;
+}
 .cohortMember[data-cohort-performing="true"] {
   filter: drop-shadow(0 0 .3rem #eccb78);
   animation: cohortGesture .55s ease;
 }
+.cohortMember[data-cohort-stowing="true"] { z-index: 2; }
+.saar { z-index: 3; }
+.saar[data-childhood-saar="inside"] { transform: translateX(-.55rem); }
+
+.brazier {
+  grid-row: 3;
+  justify-self: center;
+  width: .45rem;
+  height: .85rem;
+  border-radius: 58% 42% 49% 41%;
+  background: linear-gradient(#fff1b8, #e67d3e 70%, #754729 72%);
+  box-shadow: 0 0 .78rem #f2ac5580;
+}
+
+.gate[data-ceremony="true"] { position: relative; background: #5d402c; }
+.gate[data-ceremony="true"]::after {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, #72543c 0 22%, #a17d52 23% 26%, #72543c 27% 33%);
+  border-bottom: 2px solid #b79b65;
+  transform-origin: top;
+  transition: transform .4s ease;
+  content: "";
+}
+.gate[data-ceremony="true"][data-ready="true"] {
+  background: #d8a75d33;
+  box-shadow: inset 0 0 0 1px #b89a60, 0 0 .8rem #e8b86445;
+}
+.gate[data-ceremony="true"][data-ready="true"]::after { transform: scaleY(.08); }
+
 .cohortMember[data-cohort-performing="true"][data-gesture="beam"] { --gesture-tilt: 12deg; }
 .cohortMember[data-cohort-performing="true"][data-gesture="ring"] { --gesture-tilt: -12deg; }
 @keyframes cohortGesture {
@@ -112,4 +153,5 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .cohortMember[data-cohort-performing="true"] { animation: none; }
+  .gate[data-ceremony="true"]::after { transition: none; }
 }

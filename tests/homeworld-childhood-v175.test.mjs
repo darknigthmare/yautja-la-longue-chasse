@@ -103,14 +103,32 @@ test("M005 keeps real indices, a route under the perch and both ways of reportin
   }
 });
 
+function playCeremony(p) {
+  walk(p, 2);
+  p.act("use");
+  for (const name of ["Yena", "Harek", "Tov"]) {
+    assert.equal(game.nextCohortGestureV175(p.view()).name, name);
+    p.act("cohort-gesture");
+    assert.equal(game.nextCohortStowV175(p.view()).name, name);
+    p.act("cohort-stow");
+  }
+  walk(p, 4);
+  p.act("use");
+  walk(p, 7);
+  p.act("use");
+  assert.equal(p.view().position, 8);
+}
+
 test("M006 binds each first workshop choice to the campaign checkpoint while preserving the historical rank", () => {
   for (const opening of ["mask", "blades"]) {
     // Both greeters must be met on the actual Homeworld entry path.
-    const p = pilot(childhoodAdmissionV175({ withLocation: true }));
+    const p = pilot(childhoodAdmissionV175({ withLocation: true, withCeremony: true }));
+    assert.equal(p.read().prologue.ceremonyM006, true);
+    assert.equal(youth.startYouthCampaign(p.read()), null);
     drills(p); observeTrail(p); p.act("show-map"); p.act("handoff");
     assert.equal(game.actChildhoodV175(p.read(), p.read().homeworld.childhoodV175, "first-blades", post).state, undefined);
     assert.equal(game.actChildhoodV175(p.read(), p.read().homeworld.childhoodV175, "use", post).state, undefined);
-    for (const station of [2, 4, 7]) { walk(p, station); p.act("use"); }
+    playCeremony(p);
     assert(p.view().passed);
     assert(p.view().stowed);
     assert.equal(youth.startYouthCampaign(p.read()), null);
@@ -125,6 +143,8 @@ test("M006 binds each first workshop choice to the campaign checkpoint while pre
     assert.equal(reopened.youthTraining.checkpoint.firstWorkshopV176, opening);
     assert.equal(ranks.getChronicleRank(reopened.prologue.chronicle), "unblooded");
     assert.deepEqual(reopened.prologue.chronicle, seed.prologue.chronicle);
+    assert.equal(reopened.homeworld.childhoodV175.version, 3);
+    assert.equal(reopened.prologue.ceremonyM006, true);
     const altered = structuredClone(reopened);
     altered.youthTraining.checkpoint.firstWorkshopV176 = opening === "blades" ? "mask" : "blades";
     assert.equal(childhoodStorage.parseSaveImport(JSON.stringify(altered)).failure, "invalid-save");
@@ -140,6 +160,8 @@ test("M006 preserves the old path for a youth campaign already in progress", () 
   drills(p); observeTrail(p); p.act("show-map"); p.act("handoff");
   for (const station of [2, 4, 7]) { walk(p, station); p.act("use"); }
   const played = p.read();
+  assert.equal(p.view().ceremony, false);
+  assert.equal(p.view().position, 7);
   assert.equal(game.actChildhoodV175(played, played.homeworld.childhoodV175, "first-blades", post).state, undefined);
   assert.equal(youth.startYouthCampaign(played).youthTraining.checkpoint.firstWorkshopV176, undefined);
 });
@@ -155,7 +177,7 @@ test("the actual archive rejects foreign or impossible changes and refuses stale
   const settled = p.read().homeworld.childhoodV175;
   assert.equal(withRecord({ ...settled, ownerCreatedAt: "2025-01-01T00:00:00Z" }).failure, "invalid-save");
   assert.equal(withRecord({ ...settled, journal: ["show-map"] }).failure, "invalid-save");
-  assert.equal(withRecord({ ...settled, version: 3 }).failure, "future-version");
+  assert.equal(withRecord({ ...settled, version: 4 }).failure, "future-version");
   assert.equal(childhoodStorage.parseSaveImport(childhoodStorage.exportSave(seed)).save.homeworld.childhoodV175, undefined);
 });
 
@@ -168,7 +190,7 @@ test("repeated missed catches keep the run writable without filling the earned c
   assert.deepEqual(p.view().finished, ["ring"]);
 });
 
-test("M006 observes the three actual cohort gestures at the demonstration station", () => {
+test("M006 saves three gestures and tools in order, then crosses the actual threshold", () => {
   const p = pilot(childhoodAdmissionV175({ withLocation: true }));
   drills(p);
   observeTrail(p);
@@ -178,23 +200,48 @@ test("M006 observes the three actual cohort gestures at the demonstration statio
   assert.equal(canObserve(), false);
   walk(p, 2);
   p.act("use");
+  assert.equal(game.childhoodOptionsV175(p.view()).includes("east"), false);
   for (const name of ["Yena", "Harek", "Tov"]) {
     assert.equal(game.nextCohortGestureV175(p.view()).name, name);
     assert.equal(canObserve(), true);
     p.act("cohort-gesture");
+    assert.equal(canObserve(), false);
+    assert.equal(game.nextCohortStowV175(p.view()).name, name);
+    const interrupted = childhoodStorage.parseSaveImport(childhoodStorage.exportSave(p.read())).save;
+    assert.equal(game.nextCohortStowV175(game.childhoodViewV175(interrupted.homeworld.childhoodV175, interrupted.createdAt)).name, name);
+    p.act("cohort-stow");
   }
   assert.equal(canObserve(), false);
   const saved = p.read();
   const copy = childhoodStorage.parseSaveImport(childhoodStorage.exportSave(saved)).save;
-  assert.equal(copy.homeworld.childhoodV175.version, 2);
-  assert.equal(game.childhoodViewV175(copy.homeworld.childhoodV175, copy.createdAt).cohortPresentations, 3);
+  assert.equal(copy.homeworld.childhoodV175.version, 3);
+  const restored = game.childhoodViewV175(copy.homeworld.childhoodV175, copy.createdAt);
+  assert.equal(restored.cohortPresentations, 3);
+  assert.equal(restored.cohortStowed, 3);
   const forged = structuredClone(saved);
-  forged.homeworld.childhoodV175.version = 1;
+  forged.homeworld.childhoodV175.version = 2;
+  assert.equal(childhoodStorage.parseSaveImport(JSON.stringify(forged)).failure, "invalid-save");
+  forged.homeworld.childhoodV175.version = 3;
+  forged.homeworld.childhoodV175.journal.splice(forged.homeworld.childhoodV175.journal.indexOf("cohort-stow"), 1);
   assert.equal(childhoodStorage.parseSaveImport(JSON.stringify(forged)).failure, "invalid-save");
   walk(p, 4);
   p.act("use");
   walk(p, 7);
+  assert.equal(p.view().passed, false);
   p.act("use");
+  assert.equal(p.view().position, 8);
   p.act("first-mask");
   assert.equal(youth.startYouthCampaign(p.read()).youthTraining.checkpoint.firstWorkshopV176, "mask");
+  const legacy = structuredClone(p.read());
+  const record = legacy.homeworld.childhoodV175;
+  record.version = 2;
+  record.journal = record.journal.filter(event => event !== "cohort-stow")
+    .map(event => event === "begin-ceremony" ? "handoff" : event);
+  const historic = childhoodStorage.parseSaveImport(JSON.stringify(legacy)).save;
+  const historicView = game.childhoodViewV175(historic?.homeworld.childhoodV175, historic?.createdAt);
+  assert.equal(historicView.cohortPresentations, 3);
+  assert.equal(historicView.position, 7);
+  assert.equal(historicView.passed, true);
+  assert.equal(historicView.ceremony, false);
+  assert(youth.startYouthCampaign(historic));
 });

@@ -228,10 +228,11 @@ test("real course timeout and real defeated-duel retry preserve acknowledged pro
 
 Object.defineProperty(globalThis, "navigator", { configurable: true, value: { locks: { async request(_name, _options, callback) { return callback({}); } } } });
 test("active training forces its own checkpoint resume while a real morning returns to Homeworld", async () => {
-  const s = store(); s.data.clear(); let result = await p.createCampaignSlot(1, "Youth QA", s); assert(result.ok, result.message);
+  const s = store(welcome());
+  let result = await p.migrateLegacyCampaignSlot(s); assert(result.ok, result.message);
   result = await p.activateCampaignCheckpoint(1, result.checkpoint.id, { expectedRevision: result.catalog.slots[0].revision }, s); assert(result.ok, result.message);
-  const initial = p.loadSaveWithStatus(s).save, completed = p.withNurseryCompletion(initial, ending.receipt, ending.state);
-  completed.homeworld.greetedNpcIds = ["hunt-king", "terrace-instructor"];
+  const completed = p.loadSaveWithStatus(s).save;
+  assert.equal(completed.prologue.ceremonyM006, undefined);
   const youth = p.startYouthCampaign(completed); assert(youth); assert(p.writeSaveWithStatus(youth, s).persisted);
   result = await p.continueCampaignSlot(1, { expectedRevision: result.catalog.slots[0].revision, location: "deck" }, s); assert(result.ok, result.message); assert.equal(result.checkpoint.resumeLocation, "youth-training");
   let current = p.loadSaveWithStatus(s).save; for (const step of path.transitions) current = p.withYouthProgress(current, step.receipts, step.state);

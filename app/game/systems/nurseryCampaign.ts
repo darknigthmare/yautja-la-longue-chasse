@@ -1,6 +1,7 @@
 import { createClanChronicle, normalizeClanChronicle, recordChronicleEvidence, performChronicleRite, type ClanChronicle } from "./clanChronicle";
 import { createNurseryPrologue, normalizeNurseryCheckpoint, type NurseryState, type NurseryCompletionReceipt } from "./nurseryPrologue";
 import { keepsNurseryOpening } from "./nurseryOpening";
+import { startFirstShockO6 } from "./originFirstShockO6";
 import type { SaveGame } from "../types";
 
 /** Embedded in the campaign so checkpoint, completion and rite commit in one key. */
@@ -10,14 +11,17 @@ export interface NurseryCampaignProgress {
   checkpoint: NurseryState;
   chronicle: ClanChronicle;
   completedAt: string | null;
+  ceremonyM006?: true;
 }
 const record = (value: unknown): value is Record<string, unknown> => !!value && typeof value === "object" && !Array.isArray(value);
-export function createNurseryCampaign(): NurseryCampaignProgress {
-  return { version: 1, status: "active", checkpoint: createNurseryPrologue(), chronicle: createClanChronicle(), completedAt: null };
+export function createNurseryCampaign(ceremonyM006 = false): NurseryCampaignProgress {
+  return { version: 1, status: "active", checkpoint: createNurseryPrologue(), chronicle: createClanChronicle(), completedAt: null,
+    ...(ceremonyM006 ? { ceremonyM006: true } : {}) };
 }
 /** Missing means legacy adult campaign; malformed explicit progress must be rejected by the save parser. */
 export function normalizeNurseryCampaign(value: unknown): NurseryCampaignProgress | null {
-  if (!record(value) || value.version !== 1 || !["active", "completed"].includes(String(value.status))) return null;
+  if (!record(value) || value.version !== 1 || !["active", "completed"].includes(String(value.status)) ||
+      (value.ceremonyM006 !== undefined && value.ceremonyM006 !== true)) return null;
   const checkpoint = normalizeNurseryCheckpoint(value.checkpoint);
   if (!checkpoint || !record(value.chronicle) || value.chronicle.version !== 1) return null;
   const chronicle = normalizeClanChronicle(value.chronicle);
@@ -31,7 +35,8 @@ export function normalizeNurseryCampaign(value: unknown): NurseryCampaignProgres
   } else {
     if (checkpoint.phase !== "complete" || !begun || !completed || !recognized || typeof value.completedAt !== "string" || !Number.isFinite(Date.parse(value.completedAt))) return null;
   }
-  return { version: 1, status: value.status as NurseryCampaignProgress["status"], checkpoint, chronicle, completedAt: value.completedAt as string | null };
+  return { version: 1, status: value.status as NurseryCampaignProgress["status"], checkpoint, chronicle,
+    completedAt: value.completedAt as string | null, ...(value.ceremonyM006 ? { ceremonyM006: true } : {}) };
 }
 function keepsCohortProgress(previous: NurseryState, next: NurseryState): boolean {
   const before = previous.cohortV172;
@@ -61,5 +66,6 @@ export function withNurseryCompletion(save: SaveGame, receipt: NurseryCompletion
   const recognized = performChronicleRite(complete.state, { id: "nursery-recognition", sourceId: "chronicle.rite.nursery" });
   if (!begun.accepted || !complete.accepted || !recognized.accepted) return null;
   const playedSeconds = Math.max(0, Math.floor(checkpoint.tick / 60) - Math.floor(progress.checkpoint.tick / 60));
-  return { ...save, profile: { ...save.profile, playTimeSeconds: save.profile.playTimeSeconds + playedSeconds }, prologue: { version: 1, status: "completed", checkpoint, chronicle: recognized.state, completedAt: now } };
+  return startFirstShockO6({ ...save, profile: { ...save.profile, playTimeSeconds: save.profile.playTimeSeconds + playedSeconds },
+    prologue: { ...progress, status: "completed", checkpoint, chronicle: recognized.state, completedAt: now } });
 }

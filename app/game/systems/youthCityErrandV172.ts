@@ -10,6 +10,9 @@ export const YOUTH_CITY_ROUTES_V172 = {
   archives: ["memory-service", "forge-service", "kennel", "training-service"],
 } as const satisfies Record<string, readonly YouthCityStopV172[]>;
 export type YouthCityRouteV172 = keyof typeof YOUTH_CITY_ROUTES_V172;
+type YouthCityStreetLegM003 = 0 | 1 | 2;
+type YouthCityStreetRecoveryM003 = 0 | 1 | 2 | 3;
+export type YouthCityStreetActionM003 = "workshops" | "square" | "directions";
 export interface YouthCityErrandV172 {
   version: 1;
   ownerCreatedAt: string;
@@ -19,15 +22,18 @@ export interface YouthCityErrandV172 {
   guideM003?: 0 | 1 | 2;
   encounterM003?: "pending" | "met";
   hearthM003?: true;
+  streetM003?: { leg: YouthCityStreetLegM003; recovery: YouthCityStreetRecoveryM003 };
 }
-export function startYouthCityErrandV172(ownerCreatedAt: string, route: YouthCityRouteV172, withDelivery = false, withGuide = false, withEncounter = false): YouthCityErrandV172 {
+export function startYouthCityErrandV172(ownerCreatedAt: string, route: YouthCityRouteV172, withDelivery = false,
+  withGuide = false, withEncounter = false, withStreet = false): YouthCityErrandV172 {
   return { version: 1, ownerCreatedAt, route, reached: 0, ...(withDelivery ? { delivery: { revision: 0, commands: [] } } : {}),
     ...(withGuide && withDelivery && route === "escort" ? { guideM003: 0 } : {}),
-    ...(withDelivery && withEncounter ? { encounterM003: "pending" } : {}) };
+    ...(withDelivery && withEncounter ? { encounterM003: "pending" } : {}),
+    ...(withDelivery && withEncounter && withStreet ? { streetM003: { leg: 0, recovery: 0 } } : {}) };
 }
 export function normalizeYouthCityErrandV172(value: unknown): YouthCityErrandV172 | null {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
-  const { version, ownerCreatedAt, route, reached, delivery, guideM003, encounterM003, hearthM003 } = value as Partial<YouthCityErrandV172>;
+  const { version, ownerCreatedAt, route, reached, delivery, guideM003, encounterM003, hearthM003, streetM003 } = value as Partial<YouthCityErrandV172>;
   if (version !== 1 || typeof ownerCreatedAt !== "string" || !Number.isFinite(Date.parse(ownerCreatedAt)) ||
       (route !== "escort" && route !== "archives") || typeof reached !== "number" || !Number.isInteger(reached) ||
       reached < 0 || reached > YOUTH_CITY_ROUTES_V172[route].length) return null;
@@ -40,8 +46,15 @@ export function normalizeYouthCityErrandV172(value: unknown): YouthCityErrandV17
       (encounterM003 === "met" && guideM003 !== undefined && guideM003 < 2))) return null;
   if (hearthM003 !== undefined && (hearthM003 !== true || reached !== YOUTH_CITY_ROUTES_V172[route].length ||
       encounterM003 === "pending")) return null;
+  if (streetM003 !== undefined && (!streetM003 || typeof streetM003 !== "object" || Array.isArray(streetM003) ||
+      (streetM003.leg !== 0 && streetM003.leg !== 1 && streetM003.leg !== 2) ||
+      (streetM003.recovery !== 0 && streetM003.recovery !== 1 && streetM003.recovery !== 2 && streetM003.recovery !== 3) ||
+      (streetM003.leg === 0 && streetM003.recovery > 1) || !encounterM003 ||
+      (encounterM003 === "pending" && (streetM003.leg !== 0 || streetM003.recovery !== 0)) ||
+      (streetM003.leg < 2 && (reached > 0 || !!detour?.revision || hearthM003 === true)))) return null;
   const clean: YouthCityErrandV172 = { version, ownerCreatedAt, route, reached, ...(detour ? { delivery: detour } : {}),
-    ...(guideM003 !== undefined ? { guideM003 } : {}), ...(encounterM003 ? { encounterM003 } : {}), ...(hearthM003 ? { hearthM003 } : {}) };
+    ...(guideM003 !== undefined ? { guideM003 } : {}), ...(encounterM003 ? { encounterM003 } : {}), ...(hearthM003 ? { hearthM003 } : {}),
+    ...(streetM003 ? { streetM003: { leg: streetM003.leg, recovery: streetM003.recovery } } : {}) };
   if (detour?.revision && reached < YOUTH_CITY_ROUTES_V172[route].indexOf("forge-service")) return null;
   return clean.delivery && !youthCityCarriesPieceV172(clean) && !youthCityDeliveryClearedV176(clean) ? null : clean;
 }
@@ -52,7 +65,7 @@ export function youthCityCarriesPieceV172(errand: YouthCityErrandV172): boolean 
   return !YOUTH_CITY_ROUTES_V172[errand.route].slice(0, errand.reached).includes("forge-service");
 }
 export function acknowledgeYouthCityStopV172(errand: YouthCityErrandV172, stop: YouthCityStopV172): YouthCityErrandV172 | null {
-  if (nextYouthCityStopV172(errand) !== stop || youthCityGuidePendingM003(errand) || errand.encounterM003 === "pending" ||
+  if (nextYouthCityStopV172(errand) !== stop || youthCityGuidePendingM003(errand) || errand.encounterM003 === "pending" || youthCityStreetPendingM003(errand) ||
       (stop === "forge-service" && errand.delivery && !youthCityDeliveryClearedV176(errand))) return null;
   return { ...errand, reached: errand.reached + 1 };
 }
@@ -71,8 +84,34 @@ export function completeYouthCityEncounterM003(errand: YouthCityErrandV172): You
   return errand.encounterM003 === "pending" && !youthCityGuidePendingM003(errand) ? { ...errand, encounterM003: "met" } : null;
 }
 
+export function youthCityStreetPendingM003(errand?: YouthCityErrandV172): boolean {
+  return errand?.streetM003?.leg === 0 || errand?.streetM003?.leg === 1;
+}
+
+export function youthCityStreetLegM003(errand?: YouthCityErrandV172) {
+  return errand?.encounterM003 === "met" && (errand.streetM003?.leg === 0 || errand.streetM003?.leg === 1)
+    ? errand.streetM003.leg : undefined;
+}
+
+export function youthCityStreetRecoveredM003(errand: YouthCityErrandV172): boolean {
+  const leg = youthCityStreetLegM003(errand);
+  return leg !== undefined && !!((errand.streetM003?.recovery ?? 0) & (1 << leg));
+}
+
+export function actYouthCityStreetM003(errand: YouthCityErrandV172, action: YouthCityStreetActionM003): YouthCityErrandV172 | null {
+  const leg = youthCityStreetLegM003(errand);
+  if (leg === undefined || !errand.streetM003) return null;
+  if (action === "directions") {
+    if (youthCityStreetRecoveredM003(errand)) return null;
+    const recovery: YouthCityStreetRecoveryM003 = leg === 0 ? 1 : errand.streetM003.recovery === 1 ? 3 : 2;
+    return { ...errand, streetM003: { leg, recovery } };
+  }
+  if ((leg === 0 ? "workshops" : "square") !== action) return null;
+  return { ...errand, streetM003: { ...errand.streetM003, leg: leg === 0 ? 1 : 2 } };
+}
+
 export function visitYouthCityHearthM003(errand: YouthCityErrandV172): YouthCityErrandV172 | null {
-  return !errand.hearthM003 && errand.encounterM003 !== "pending" && !nextYouthCityStopV172(errand)
+  return !errand.hearthM003 && errand.encounterM003 !== "pending" && !youthCityStreetPendingM003(errand) && !nextYouthCityStopV172(errand)
     ? { ...errand, hearthM003: true } : null;
 }
 
@@ -129,7 +168,7 @@ export function youthCityDeliveryClearedV176(errand: YouthCityErrandV172): boole
 }
 
 export function walkYouthCityDeliveryV176(errand: YouthCityErrandV172, command: YouthCityDeliveryStepV176): YouthCityErrandV172 | null {
-  if (!errand.delivery || youthCityGuidePendingM003(errand) || errand.encounterM003 === "pending" ||
+  if (!errand.delivery || youthCityGuidePendingM003(errand) || errand.encounterM003 === "pending" || youthCityStreetPendingM003(errand) ||
       nextYouthCityStopV172(errand) !== "forge-service" || !steps.includes(command)) return null;
   const history = deliveryHistory(errand.delivery.commands);
   if (!history) return null;
@@ -142,14 +181,17 @@ export function walkYouthCityDeliveryV176(errand: YouthCityErrandV172, command: 
 
 /** A stale city write may neither erase the detour nor deliver the piece early. */
 export function youthCityDeliveryMatchesWriteV176(before: YouthCityErrandV172 | undefined, after: YouthCityErrandV172 | undefined): boolean {
-  if (!before?.delivery && !after?.delivery && !before?.hearthM003 && !after?.hearthM003) return true;
+  if (!before?.delivery && !after?.delivery && !before?.hearthM003 && !after?.hearthM003 && !before?.streetM003 && !after?.streetM003) return true;
   if (!before) return after?.delivery?.revision === 0 && after.reached === 0 && !after.hearthM003 &&
-    (after.guideM003 === undefined || after.guideM003 === 0) && (after.encounterM003 === undefined || after.encounterM003 === "pending");
+    (after.guideM003 === undefined || after.guideM003 === 0) && (after.encounterM003 === undefined || after.encounterM003 === "pending") &&
+    (after.streetM003 === undefined || (after.streetM003.leg === 0 && after.streetM003.recovery === 0));
   if (!after || !!before.delivery !== !!after.delivery) return false;
   const same = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
   if (same(before, after) || same(advanceYouthCityGuideM003(before), after) ||
       same(completeYouthCityEncounterM003(before), after) || same(visitYouthCityHearthM003(before), after)) return true;
-  if (steps.some(command => same(walkYouthCityDeliveryV176(before, command), after))) return true;
+  const streetActions = ["workshops", "square", "directions"] as const;
+  if (streetActions.some(action => same(actYouthCityStreetM003(before, action), after)) ||
+      steps.some(command => same(walkYouthCityDeliveryV176(before, command), after))) return true;
   const stop = nextYouthCityStopV172(before);
   return stop !== undefined && same(acknowledgeYouthCityStopV172(before, stop), after);
 }

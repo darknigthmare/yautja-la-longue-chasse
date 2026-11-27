@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { finale, houseSite, legacyClanFixture, legacyFixture, legacyPlayer, moveLegacyClanFixture, saves } from "./helpers/legacy-finale-r2.mjs";
+import { finale, houseSite, legacyCanonicalCohortFixture, legacyClanFixture, legacyFixture, legacyHaltFixture, legacyPlayer, moveLegacyClanFixture, saves } from "./helpers/legacy-finale-r2.mjs";
 
 test("the new cohort requires Ancient, a realized ending receipt, and the actual fitted residence", () => {
-  const command = { scene: "cohort", order: { kind: "unload", at: 11 } };
+  const command = { scene: "cohort", order: { kind: "greet", at: 2 } };
   const notPlayed = legacyFixture({ realized: false });
   assert.equal(finale.advanceLegacyFinaleR2(notPlayed, houseSite, command).next, undefined);
   notPlayed.originV151.ending.endingRealized = true;
@@ -16,6 +16,8 @@ test("the new cohort requires Ancient, a realized ending receipt, and the actual
 });
 
 function loadSupport(player) {
+  player.move("cohort", "greet", 2);
+  player.move("cohort", "lead", 8);
   player.move("cohort", "unload", 11);
   player.move("cohort", "wall-foot", 9);
   player.move("cohort", "test", 11);
@@ -136,4 +138,72 @@ test("a clan archive rejects duplicate crew and a trace without a real instance"
   forged.epilogue.events[1].clanProof = [];
   forged.epilogue.events[0].clanProof.berth.personalShipId = "borrowed-placeholder";
   assert.equal(finale.normalizeLegacyFinaleR2(forged, docked.createdAt), null);
+});
+
+test("M059 requires the threshold and the actual lead to the support, with exact save continuation", () => {
+  const player = legacyPlayer(legacyCanonicalCohortFixture());
+  for (const [kind, at] of [["lead", 8], ["greet", 8], ["unload", 11]]) {
+    assert.equal(finale.advanceLegacyFinaleR2(player.save, houseSite, { scene: "cohort", order: { kind, at } }).next, undefined);
+  }
+  player.move("cohort", "greet", 2);
+  const resumed = saves.parseSaveImport(saves.exportSave(player.save));
+  assert.ok(resumed.save, resumed.failure);
+  const view = finale.legacyCohortViewR2(resumed.save.legacyFinaleR2);
+  assert.deepEqual([view.at, view.arrival, view.heard], [2, "greeted", []]);
+  assert.equal(finale.advanceLegacyFinaleR2(resumed.save, houseSite, { scene: "cohort", order: { kind: "lead", at: 2 } }).next, undefined);
+  const after = legacyPlayer(resumed.save);
+  after.move("cohort", "lead", 8);
+  after.move("cohort", "unload", 11);
+  assert.deepEqual([finale.legacyCohortViewR2(after.save.legacyFinaleR2).arrival, after.save.legacyFinaleR2.cohort.events.length], ["inside", 3]);
+});
+
+test("existing M059 journals that start at the support reopen without a second arrival", () => {
+  const save = legacyCanonicalCohortFixture();
+  save.legacyFinaleR2 = { version: 1, ownerCreatedAt: save.createdAt, endingId: "O6-E1",
+    cohort: { site: houseSite, events: [{ kind: "unload", at: 11 }] } };
+  const old = saves.parseSaveImport(saves.exportSave(save));
+  assert.ok(old.save, old.failure);
+  assert.deepEqual(old.save.legacyFinaleR2, save.legacyFinaleR2);
+  const view = finale.legacyCohortViewR2(old.save.legacyFinaleR2);
+  assert.deepEqual([view.at, view.arrival, view.loaded], [11, "inside", false]);
+  legacyPlayer(old.save).move("cohort", "wall-foot", 9);
+});
+
+test("M060 at the real halt requires an origin ending and that return's resolved table receipt", () => {
+  const valid = legacyHaltFixture();
+  const site = finale.legacyHaltSiteR2(valid);
+  assert.ok(site && site.kind === "halt");
+  const command = { scene: "epilogue", order: { kind: "belongings", at: 6 } };
+  assert.equal(finale.advanceLegacyFinaleR2(legacyHaltFixture({ realized: false }), site, command).next, undefined);
+  assert.equal(finale.advanceLegacyFinaleR2(legacyHaltFixture({ walkthrough: false }), site, command).next, undefined);
+  const remote = { ...valid.homeworldRegionV68, actor: { ...valid.homeworldRegionV68.actor, x: 520, y: 2800 } };
+  assert.equal(finale.legacyHaltSiteR2(valid, remote), null);
+  assert.equal(finale.legacyHaltSiteR2(valid, { ...valid.homeworldRegionV68, runId: "different-return" }), null);
+  assert.equal(finale.legacyHaltSiteR2({ ...valid, createdAt: "2027-01-01T00:00:00.000Z" }), null);
+  assert.equal(finale.advanceLegacyFinaleR2(valid, site, { scene: "cohort", order: { kind: "greet", at: 2 } }).next, undefined);
+});
+
+test("M060 records the actual halt report and host and keeps the ending after leaving", () => {
+  const original = legacyHaltFixture();
+  const site = finale.legacyHaltSiteR2(original);
+  const player = legacyPlayer(original);
+  player.move("epilogue", "belongings", 6, {}, site);
+  assert.deepEqual(finale.legacyHaltReadoutR2(player.save), {
+    belongings: ["Relevé des Crêtes · 3 indices remis"], relations: ["Hôte de la halte des Crêtes"],
+  });
+  player.move("epilogue", "relations", 11, {}, site);
+  player.move("epilogue", "choose", 16, { choice: "transmit" }, site);
+  player.move("epilogue", "act", 21, {}, site);
+  const left = { ...player.save, homeworldRegionV68: null };
+  const archive = saves.parseSaveImport(saves.exportSave(left));
+  assert.ok(archive.save, archive.failure);
+  assert.equal(finale.legacyEpilogueViewR2(archive.save.legacyFinaleR2, site).complete, true);
+  assert.deepEqual(archive.save.originV151, original.originV151);
+  assert.deepEqual(archive.save.trophies, original.trophies);
+  const invalid = structuredClone(left);
+  invalid.legacyFinaleR2.epilogue.events[0].haltOperationId = "D6-W-CULT-25:another-receipt";
+  assert.equal(saves.parseSaveImport(JSON.stringify(invalid)).failure, "invalid-save");
+  const missing = structuredClone(left);
+  delete missing.legacyFinaleR2.epilogue.events[0].haltOperationId;
+  assert.equal(finale.normalizeLegacyFinaleR2(missing.legacyFinaleR2, missing.createdAt), null);
 });

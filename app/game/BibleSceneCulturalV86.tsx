@@ -16,9 +16,13 @@ const progression = [
 
 /** Mounted inside the existing world dialog, never as a second modal. The
  * parent commits each action before updating the controlled ledger. */
-export default function BibleSceneCulturalV86({ ledger, context, onAction, onClose, message = '', reducedMotion = false }: {
+export default function BibleSceneCulturalV86({ ledger, context, onAction, onClose, onOpenHaltEpilogue, message = '', reducedMotion = false }: {
   ledger: BibleSceneLedgerV86 | null | undefined; context: BibleCulturalContextV86;
-  onAction: (action: BibleSceneActionV86) => BibleSceneResultV86; onClose: () => void; message?: string; reducedMotion?: boolean;
+  onAction: (action: BibleSceneActionV86) => BibleSceneResultV86;
+  onClose: () => void;
+  onOpenHaltEpilogue?: () => void;
+  message?: string;
+  reducedMotion?: boolean;
 }) {
   const [feedback, setFeedback] = useState<{ owner: string; operationId: string | null; text: string } | null>(null);
   const [showSource, setShowSource] = useState(false), [paused, setPaused] = useState(false);
@@ -53,7 +57,11 @@ export default function BibleSceneCulturalV86({ ledger, context, onAction, onClo
       : receipt.status === 'interrupted' ? <button type="button" className={styles.primary} disabled={busy} onClick={() => submit({ type: 'resume' })}>Reprendre la halte conservée</button>
       : receipt.status === 'active' && next && <div className={styles.action}><p>{next.detail}</p><button type="button" className={styles.primary} disabled={busy} onClick={() => submit({ type: next.type })}>{next.label}</button></div>}
     <p className={styles.limit}>Les gestes assis, de service et de rangement ne disposent pas de clips natifs. Cette halte joue ses deux répliques de choix/réponse et consigne des actions narrées. Elle n’accorde ni XP, objet, soin, trophée, stock ni réussite matérielle.</p>
-    {receipt?.status === 'resolved' && <p className={styles.complete}>Votre retour et votre choix sans boisson sont consignés. La réplique de réussite matérielle reste silencieuse.</p>}
+    {receipt?.status === 'resolved' && <>
+      <p className={styles.complete}>Votre retour et votre choix sans boisson sont consignés. La réplique de réussite matérielle reste silencieuse.</p>
+      {onOpenHaltEpilogue && <button type="button" disabled={busy || paused} data-open-legacy-halt-r2
+        onClick={onOpenHaltEpilogue}>Revoir le chemin parcouru à cette halte</button>}
+    </>}
     {status && <p className={styles.feedback} role="status">{status}</p>}
     <div className={styles.controls}><button type="button" disabled={!currentLine} onClick={() => setPaused(value => !value)}>{paused ? 'Reprendre la traduction' : 'Pause de la traduction'}</button>
       <button type="button" aria-expanded={showSource} onClick={() => setShowSource(value => !value)}>Conditions et source</button>
