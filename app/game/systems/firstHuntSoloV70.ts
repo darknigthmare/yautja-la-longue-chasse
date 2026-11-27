@@ -44,9 +44,14 @@ export const soloV70PlateTargets = (s: Pick<SoloV70State, 'phase'>) => s.phase =
   : s.phase === 'belvedere' ? SOLO_V70_BELVEDERE.plates : [520, 920] as const;
 export const soloV70BelvederePlatesReady = (positions: readonly number[]) =>
   positions.length === 2 && positions.every((x, index) => Math.abs(x - SOLO_V70_BELVEDERE.plates[index]) < 5);
+interface SoloV70Platform { x: number; y: number; width: number; oneWay?: true }
 export const SOLO_V70_RECONNECTION = {
   room: 7, x: 300, holdTicks: 120,
-  platforms: [{ x: 425, y: 367, width: 132 }, { x: 620, y: 314, width: 150 }, { x: 835, y: 350, width: 112 }],
+  platforms: [
+    { x: 425, y: 367, width: 132, oneWay: true },
+    { x: 620, y: 314, width: 150, oneWay: true },
+    { x: 835, y: 350, width: 112, oneWay: true },
+  ],
 } as const;
 export function soloV70ReconnectionPreview(s: SoloV70State) {
   if (!s.reconnectionVariant || s.phase !== 'configuration' || s.room !== SOLO_V70_RECONNECTION.room || !s.scan) return null;
@@ -74,8 +79,8 @@ function readTrioObservation(value: unknown, center: number, configuration: 1 | 
 export const soloV70ProofCount=(s:Pick<SoloV70State,'phase'>)=>SOLO_V70_PHASES.indexOf(s.phase);
 export const soloV70Receipts=(s:SoloV70State):SoloV70Receipt[]=>SOLO_V70_PROOFS.slice(0,soloV70ProofCount(s)).map(id=>({id,sourceId:'solo.temple-opening.v70',tick:s.milestones[id]!}));
 export function createSoloV70State():SoloV70State {return {version:1,phase:'briefing',tick:0,phaseStartedAt:0,room:0,roomEnteredAt:0,walked:0,configuration:1,visited:[true,false,false,false,false,false,false,false,false],player:{x:125,y:430,vx:0,vy:0,facing:1},companions:[{x:80},{x:65}],companionMode:'follow',signals:0,signs:0,scan:0,liftTicks:0,valveTimer:0,drone:{x:925,hp:5,mode:'watch',age:0,hits:0},health:6,hurtTimer:0,attackTimer:0,attackCooldown:0,acid:{x:925,ttl:0},failedAt:null,attempts:0,doorCrossings:0,lastDoor:null,inputArmed:false,previousJump:false,previousInteract:false,previousCommand:false,milestones:{},riteAdmission:{version:1,sealedEnergy:null,threshold:null},reconnectionVariant:1};}
-export function soloV70Platforms(s: SoloV70State): { x: number; y: number; width: number }[] {
-  const fixed: { x: number; y: number; width: number }[] = SOLO_V70_ROOMS[s.room].platforms.map(([x, y, width]) => ({ x, y, width }));
+export function soloV70Platforms(s: SoloV70State): SoloV70Platform[] {
+  const fixed: SoloV70Platform[] = SOLO_V70_ROOMS[s.room].platforms.map(([x, y, width]) => ({ x, y, width }));
   if (s.room === 5) fixed.push({ x: 440, y: 430 - Math.max(0, s.liftTicks - 1) * 170 / 99, width: 220 });
   if (s.reconnectionVariant && s.room === SOLO_V70_RECONNECTION.room && s.configuration >= 2) {
     fixed.push(...SOLO_V70_RECONNECTION.platforms);
@@ -102,6 +107,9 @@ export function normalizeSoloV70State(v:unknown):SoloV70State|null{
      (v.room !== SOLO_V70_RECONNECTION.room || Math.abs((a.x as number) - SOLO_V70_RECONNECTION.x) >= 38 ||
        a.y !== SOLO_V70_GROUND || a.vx !== 0)) return null;
  const milestones:SoloV70State['milestones']={};let prior=0;for(const id of SOLO_V70_PROOFS.slice(0,count)){const tick=v.milestones[id];if(!int(tick,1,v.tick)||tick<=prior)return null;milestones[id]=tick;prior=tick;}if(prior!==v.phaseStartedAt)return null;
+ const reconnectedAt = milestones['second-configuration'];
+ if (v.reconnectionVariant && reconnectedAt !== undefined &&
+     reconnectedAt - milestones['human-truce']! < SOLO_V70_RECONNECTION.holdTicks) return null;
  let riteAdmission: SoloV70RiteAdmission | undefined;
  if (Object.hasOwn(v, 'riteAdmission')) {
    const raw = v.riteAdmission;
@@ -144,7 +152,8 @@ export function stepSoloV70(state:SoloV70State,input:SoloV70Input,env:SoloV70Env
  a.x=clamp(a.x+a.vx,65,s.phase==='drone'&&s.room===8?820:1055);
  // Gallery slabs have a real upper contact plane and a thin side edge. Their
  // service passage remains usable below, including after configuration III.
- for(const p of soloV70Platforms(s))if(a.y>p.y+.01&&a.y<p.y+28&&a.x>p.x-17&&a.x<p.x+p.width+17){a.x=clamp(oldX<=p.x-17?p.x-17:p.x+p.width+17,65,1055);a.vx=0;}
+ // Nef bridges allow a jump through the underside without a lateral collision.
+ for(const p of soloV70Platforms(s))if(!p.oneWay&&a.y>p.y+.01&&a.y<p.y+28&&a.x>p.x-17&&a.x<p.x+p.width+17){a.x=clamp(oldX<=p.x-17?p.x-17:p.x+p.width+17,65,1055);a.vx=0;}
  a.vy=Math.min(16,a.vy+.52);let y=a.y+a.vy;for(const p of soloV70Platforms(s))if(a.vy>=0&&oldY<=p.y+.01&&y>=p.y&&a.x>p.x-17&&a.x<p.x+p.width+17){y=p.y;a.vy=0;}if(y>=430){y=430;a.vy=0;}a.y=y;s.walked+=Math.abs(a.x-oldX);
  s.valveTimer=Math.max(0,s.valveTimer-1);s.hurtTimer=Math.max(0,s.hurtTimer-1);s.attackTimer=Math.max(0,s.attackTimer-1);s.attackCooldown=Math.max(0,s.attackCooldown-1);s.acid.ttl=Math.max(0,s.acid.ttl-1);
  const plateTargets=soloV70PlateTargets(s);s.companions.forEach((c,i)=>{const target=s.companionMode==='plates'?plateTargets[i]:clamp(a.x-65*(i+1),65,1055);if(Math.abs(target-c.x)>3)c.x=clamp(c.x+Math.sign(target-c.x)*2.9,65,1055);});

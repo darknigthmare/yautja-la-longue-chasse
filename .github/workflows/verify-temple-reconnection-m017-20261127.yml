@@ -15,13 +15,13 @@ jobs:
       NEXT_TELEMETRY_DISABLED: '1'
       V70_QA_RECONNECTION: '1'
       V70_SOLO_QA_OUTPUT: 'outputs/qa-nef-m017'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'c70e76257c6636d5eb5a17cac8432f121c44d577'
+      ASSET_RACCORDS_SOURCE_COMMIT: '38aaecc9c3c8261ecc8f5a89aa40b5086b93d8e4'
       BASE_COMMIT: '42cd44605a5bf5b61cb87b9071e47acb20168695'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'c70e76257c6636d5eb5a17cac8432f121c44d577'
+          ref: '38aaecc9c3c8261ecc8f5a89aa40b5086b93d8e4'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -49,6 +49,7 @@ jobs:
             /public/game/homeworld/v70/temple-modules.png
             /public/game/homeworld/v74/
             /public/game/homeworld/v75/
+            /public/game/sprites/v4/rifle-soldier.png
             /public/audio/
             /public/game/quatza-rij/
             /public/game/assets/v37/tribes/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp
