@@ -26,7 +26,10 @@ export function decideHuntCampaignInputV112(game,tick,memory,strategy='mixed'){
     const {enemy,point,range}=nearest;target=point;reason='combat:'+enemy.id;
     const gap=Math.abs(point.x-pc.x)-(player.width+enemy.width)/2;
     const dodge=enemy.telegraph>0&&gap<100&&player.grounded&&player.stamina>25&&tick%30===0;
-    if(dodge){
+    const apexDodge=enemy.boss&&dodge&&player.melee.phase==='idle'&&
+      (player.melee.defensePhase??'neutral')==='neutral'&&
+      (player.melee.defenseCooldownSeconds??0)<=Number.EPSILON;
+    if(apexDodge){
       held.push('down',point.x>pc.x?'left':'right');
       pressed.push('jump');
     }else if(strategy==='mixed'&&!game.energyWeaponsLocked&&(range>180||Math.abs(point.y-pc.y)>65)&&player.energy>=34){
@@ -44,10 +47,13 @@ export function decideHuntCampaignInputV112(game,tick,memory,strategy='mixed'){
         pressed.push('melee');
       }
     }
-    // Do not add the approach direction to a committed dodge.
-    if(dodge||gap<55)target={...target,x:pc.x};
-    if(!dodge&&range<260&&player.grounded&&tick>=(memory.nextJump??0)){
+    // A valid Apex dodge owns this tick's movement. Keep the inherited patrol steering.
+    if(apexDodge||gap<55)target={...target,x:pc.x};
+    if(!apexDodge&&range<260&&player.grounded&&tick>=(memory.nextJump??0)){
       pressed.push('jump');held.push('jump');memory.nextJump=tick+66;memory.jumpUntil=tick+12;
+    }
+    if(dodge&&!enemy.boss){
+      held.push('down',point.x>pc.x?'left':'right');pressed.push('jump');
     }
   }
   if(reason==='technology'||reason==='purge console'||reason==='apex trophy'){
