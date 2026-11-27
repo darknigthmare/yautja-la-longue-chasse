@@ -93,6 +93,24 @@ test("infiltration: walls, interacting with relay and extracting all have concre
   assert.equal(starting.planted, false);
 });
 
+test("infiltration visible markers follow the same geometry and patrols as the playable map", () => {
+  const initial = api.createWarStealthV114();
+  const marker = (state, { x, y }) => api.warStealthVisibleCellV114(state, x, y);
+  assert.equal(marker(initial, api.WAR_STEALTH_EXIT_V114), "hero");
+  assert.equal(marker(initial, initial.guards[0]), "guard");
+  assert.equal(marker(initial, api.WAR_STEALTH_RELAY_V114), "relay");
+  assert.equal(marker(initial, { x: -1, y: 6 }), "wall");
+  const atWall = { ...initial, x: 3, y: 3 };
+  assert.equal(marker(atWall, { x: 4, y: 3 }), "wall");
+  assert.equal(api.actWarStealthV114(atWall, "right"), atWall);
+  const moved = api.actWarStealthV114(initial, "up");
+  assert.equal(marker(moved, moved), "hero");
+  assert.equal(marker(moved, api.WAR_STEALTH_EXIT_V114), "exit");
+  assert.notDeepEqual(moved.guards, initial.guards);
+  assert.equal(marker(moved, moved.guards[0]), "guard");
+  assert.equal(marker(moved, initial.guards[0]), "floor");
+});
+
 test("RTS: selectable allied squads, reinforcement, dual point capture, terminal victory", () => {
   const first = api.createWarRtsV114();
   const moved = api.orderWarRtsV114(first, "own-1", 7, 3);

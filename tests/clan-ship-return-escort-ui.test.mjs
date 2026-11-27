@@ -9,6 +9,7 @@ import { qa, escort, motion, docking, saves, clone, fixture, started, medicalApp
 // Real components in SSR and real GameClient callbacks/persistence below.
 // Hydration, movement inputs and pixels are covered by the separate browser recipe.
 const Scene = qa.load('app/game/ClanShipReturnEscortScene.tsx');
+const { tribunalAccessV147, tribunalClanShipDepartureV147 } = qa.load('app/game/systems/honorTribunalV147.ts');
 const count = (html, attr, value) => html.split(`${attr}="${value}"`).length - 1;
 const button = (html, key) => [...html.matchAll(/<button\b[^>]*>/g)].map(x => x[0]).find(tag => tag.includes(`data-return-escort-command="${key}"`));
 function controls(save, position, extra = {}) {
@@ -104,6 +105,7 @@ function client(initial) {
     archiveTransferBusy: false, archiveRecoveryIssue: null, campaignSaveBusy: false, resumableHunt: null,
     activeHuntSessionRef: { current: null }, pendingTrophyCommitRef: { current: null }, pendingTerminalRunRef: { current: null },
     pendingSocialWriteRef: { current: null }, actClanShipReturnEscort: escort.actClanShipReturnEscort,
+    tribunalAccessV147, tribunalClanShipDepartureV147,
     isExplorationMission: () => assert.fail('no hunt is active'), explorationWriteFailure: () => assert.fail('no exploration write'),
     reconcileHuntWrite: () => assert.fail('no hunt write'),
     writeSaveWithStatus: save => saves.writeSaveWithStatus(save, disk),

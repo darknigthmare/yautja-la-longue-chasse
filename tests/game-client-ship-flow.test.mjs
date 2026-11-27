@@ -34,6 +34,10 @@ const dependencies = await build({
     'export { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, evaluateClanShipAccess, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, CLAN_SHIP_ONBOARDING_STEPS } from "./app/game/systems/clanShipOperations.ts";',
     'export { actCompanionResidence, bindCompanionResidenceMission, settleCompanionResidenceMission, releaseCompanionResidenceMission, registerCompanionResidenceRecruitment, availableClanResidenceCrew, inspectCompanionResidence } from "./app/game/systems/companionResidence.ts";',
     'export { applyMissionResult as applyRealMissionResult } from "./app/game/save.ts";',
+    'export { blackGodStatusV162 } from "./app/game/systems/blackGodV162.ts";',
+    'export { tribunalBlocksChroniclePromotionV147 } from "./app/game/systems/honorTribunalV147.ts";',
+    'export { getChronicleRank } from "./app/game/systems/clanChronicle.ts";',
+    'export { settleQueenHuntMissionV163 } from "./app/game/systems/queenHuntV163.ts";',
   ].join('\n'), resolveDir: fileURLToPath(new URL('../', import.meta.url)), loader: 'ts' },
   bundle: true, write: false, format: 'iife', globalName: 'ShipFlowDependencies', platform: 'node', logLevel: 'silent',
 });
@@ -60,6 +64,12 @@ function namedFunction(name, environment) {
   }).outputText;
   return runInNewContext(`(() => { ${compiled}; return ${name}; })()`, environment);
 }
+function makeHuntResult(environment, outcome = "success") {
+  const session = environment.activeHuntSessionRef.current;
+  assert.ok(session, "the result is emitted by a mounted hunt");
+  return { missionId: session.missionId, harvestEncounterRunV112: session.encounterRun, outcome };
+}
+
 function fixture() {
   const observations = { writes: 0, clears: 0, rewards: 0, sidecars: [], screen: "deck", sequence: 0, events: [] };
   const environment = {
@@ -89,9 +99,14 @@ function fixture() {
     setNewGamePhase() {}, setSelectedShipId(value) { observations.selectedShipId = value; },
     setScreen(screen) { observations.screen = screen; environment.screen = screen; },
     persist(save) { environment.save = save; },
-    applyMissionResult(save) {
+    applyMissionResult(save, { missionId }) {
+      const previous = save.missionProgress[missionId];
       observations.rewards++;
-      return { ...save, profile: { ...save.profile, honor: save.profile.honor + 5, clanMarks: save.profile.clanMarks + 1 }, missionProgress: { ...save.missionProgress, [MISSION_ID]: { ...save.missionProgress[MISSION_ID], status: "completed", attempts: save.missionProgress[MISSION_ID].attempts + 1 } } };
+      return {
+        ...save,
+        profile: { ...save.profile, honor: save.profile.honor + 5, clanMarks: save.profile.clanMarks + 1 },
+        missionProgress: { ...save.missionProgress, [missionId]: { ...previous, status: "completed", attempts: previous.attempts + 1 } },
+      };
     },
     ACTIVE_HUNT_SAVE_VERSION: 1, ACTIVE_HUNT_RUNTIME_REVISION: 1,
     writeActiveHuntSave(value) { observations.currentHunt = value; observations.sidecars.push(value); return { persisted: true, save: value, failure: null }; },
@@ -602,14 +617,11 @@ test("first launch persists the campaign owner and each replay opens a fresh aut
   environment.hunterGauntlet.equippedId = "city-hunter";
   autosave({ elapsed: 12, snapshot: { health: 80 }, retryCheckpoint: null });
   assert.equal(observations.sidecars[0].configuration.gauntletVariantId, "jungle-hunter", "the running hunt keeps its launch equipment snapshot");
-  finish({ outcome: "failure" });
+  finish(makeHuntResult(environment, "failed"));
   assert.equal(observations.screen, "debrief");
   assert.equal(environment.activeHuntSessionRef.current, null);
   // This separate replay fixture has earned the catalogue's required rank.
   environment.save.profile.honor = environment.RANK_THRESHOLDS.blooded;
-  // V168 : l'honneur débloque seulement l'épreuve ; le rang Blooded est déclaré acquis.
-  environment.save.profile.rankId = "blooded";
-  environment.save.profile.acquiredRankIdV166 = "blooded";
   // Follow the real debrief button, not a separately reproduced replay routine.
   const replayButton = findNode((node) => ts.isJsxElement(node) && node.openingElement.tagName.getText(ast) === "button" && node.children.some((child) => ts.isJsxText(child) && child.text.includes("Rejouer la chasse")));
   const click = replayButton.openingElement.attributes.properties.find((attr) => attr.name?.getText(ast) === "onClick");
@@ -628,10 +640,16 @@ test("first launch persists the campaign owner and each replay opens a fresh aut
 
 test("duplicate terminal callbacks settle once; a deliberate next run can earn its own result", () => {
   const { environment, observations, launch, finish } = fixture();
-  launch(); finish({ outcome: "success" }); finish({ outcome: "success" });
+  launch();
+  const firstResult = makeHuntResult(environment);
+  finish(firstResult);
+  finish(firstResult);
   assert.equal(observations.rewards, 1);
   assert.equal(environment.save.profile.honor, 5);
-  launch(); finish({ outcome: "success" });
+  launch();
+  const nextResult = makeHuntResult(environment);
+  assert.equal(nextResult.harvestEncounterRunV112, firstResult.harvestEncounterRunV112 + 1);
+  finish(nextResult);
   assert.equal(observations.rewards, 2);
   assert.equal(environment.save.profile.honor, 10);
 });
@@ -925,12 +943,13 @@ test("terminal reward storage precedes hunt retirement and quota failure preserv
   const runId = environment.activeHuntSessionRef.current.runId;
   const clears = observations.clears;
   environment.writeSaveWithStatus = save => ({ save, persisted: false, failure: "write-failed" });
-  finish({ outcome: "success" });
+  const result = makeHuntResult(environment);
+  finish(result);
   assert.equal(observations.clears, clears, "failed reward storage must not erase a recoverable hunt");
   assert.equal(environment.save.profile.honor, 5, "earned result remains available to export in memory");
   assert.equal(environment.pendingTerminalRunRef.current, runId);
   assert.equal(environment.activeHuntSessionRef.current, null, "unmounted runtime cannot keep autosaving over recovery");
-  finish({ outcome: "success" });
+  finish(result);
   assert.equal(observations.rewards, 1, "failed storage does not cause duplicate rewards");
   environment.writeSaveWithStatus = save => ({ save, persisted: true, failure: null });
   callback("persist", environment)(environment.save);
@@ -943,8 +962,39 @@ test("a successful terminal write is followed by retirement of that run only", (
   launch();
   const runId = environment.activeHuntSessionRef.current.runId;
   observations.events.length = 0;
-  finish({ outcome: "success" });
+  finish(makeHuntResult(environment));
   assert.deepEqual(observations.events, ["write", ["clear", runId]]);
+});
+
+test("a result for another mission or without a new attempt cannot retire the active hunt", () => {
+  const { environment, observations, launch, finish, autosave } = fixture();
+  launch();
+  autosave({ elapsed: 12, snapshot: { health: 80 }, retryCheckpoint: null });
+  const result = makeHuntResult(environment);
+  const session = environment.activeHuntSessionRef.current;
+  const campaign = environment.save;
+  const sidecar = observations.currentHunt;
+  const writes = observations.writes, clears = observations.clears;
+  const otherMissionId = environment.MISSIONS.find(mission => mission.id !== result.missionId).id;
+
+  finish({ ...result, missionId: otherMissionId });
+  assert.equal(observations.rewards, 0, "a foreign mission never reaches the reducer");
+
+  const applyResult = environment.applyMissionResult;
+  environment.applyMissionResult = save => save;
+  finish(result);
+  assert.equal(observations.pendingResult.result, result, "a refused campaign result stays pending");
+  assert.equal(observations.screen, "mission");
+  assert.equal(environment.save, campaign);
+  assert.equal(environment.activeHuntSessionRef.current, session);
+  assert.equal(observations.currentHunt, sidecar);
+  assert.equal(observations.writes, writes);
+  assert.equal(observations.clears, clears);
+
+  environment.applyMissionResult = applyResult;
+  finish(result);
+  assert.equal(environment.save.missionProgress[result.missionId].attempts, result.harvestEncounterRunV112 + 1);
+  assert.deepEqual(observations.events.slice(-2), ["write", ["clear", session.runId]]);
 });
 
 test("a failed campaign bootstrap leaves a previous suspended hunt untouched", () => {
@@ -979,7 +1029,7 @@ test("a resumed or newer runtime cannot be settled by an obsolete tab", () => {
     const original = observations.currentHunt;
     observations.currentHunt = { ...original, runId: change === "run" ? "claimed-elsewhere" : original.runId, sequence: original.sequence + 1 };
     const clears = observations.clears, writes = observations.writes;
-    finish({ outcome: "success" });
+    finish(makeHuntResult(environment));
     assert.equal(observations.writes, writes, "obsolete result cannot write the campaign");
     assert.equal(observations.clears, clears, "newer recovery stays on disk");
     assert.equal(observations.rewards, 0);
@@ -1000,7 +1050,7 @@ test("a hunt write confirmed only later is not mistaken for a competing session"
     autosave({ elapsed: 12, snapshot: { health: 80 }, retryCheckpoint: null });
     assert.equal(environment.activeHuntSessionRef.current.sequence, 0);
     if (action === "finish") {
-      finish({ outcome: "success" });
+      finish(makeHuntResult(environment));
       assert.equal(observations.rewards, 1, "our exact confirmed attempt can settle");
       assert.equal(observations.screen, "debrief");
     } else {
@@ -1023,7 +1073,7 @@ test("unreadable hunt ownership defers results and retries after storage returns
     autosave({ elapsed: 12, snapshot: { health: 80 }, retryCheckpoint: null });
     const writes = observations.writes, clears = observations.clears;
     environment.loadActiveHuntSave = () => ({ save: null, failure: "read-failed" });
-    finish({ outcome: abort ? "failed" : "success" }, abort);
+    finish(makeHuntResult(environment, abort ? "failed" : "success"), abort);
     assert.equal(observations.rewards, 0);
     assert.equal(observations.writes, writes);
     assert.equal(observations.clears, clears);
@@ -1063,7 +1113,7 @@ test("a rejected retry cannot discard proof of a previous uncertain autosave", (
   autosave({ elapsed: 24, snapshot: { health: 70 }, retryCheckpoint: null });
   assert.equal(environment.activeHuntSessionRef.current.lastAttempted, uncertain);
   environment.loadActiveHuntSave = () => ({ save: uncertain, failure: null });
-  finish({ outcome: "success" });
+  finish(makeHuntResult(environment));
   assert.equal(observations.rewards, 1);
   assert.equal(observations.screen, "debrief");
 });
@@ -1075,7 +1125,7 @@ test("deferred reward retry cannot invalidate a hunt claimed elsewhere after quo
     launch();
     autosave({ elapsed: 12, snapshot: { health: 80 }, retryCheckpoint: null });
     environment.writeSaveWithStatus = save => ({ save, persisted: false, failure: "write-failed" });
-    finish({ outcome: "success" });
+    finish(makeHuntResult(environment));
     const pendingRun = environment.pendingTerminalRunRef.current;
     assert.ok(pendingRun);
     const clears = observations.clears;
@@ -1101,7 +1151,7 @@ test("unmounted campaign callbacks cannot launch, autosave, settle or clear a re
   environment.sessionAliveRef.current = false;
   launch();
   assert.equal(autosave({ elapsed: 4, snapshot: { health: 80 }, retryCheckpoint: null }), null);
-  finish({ outcome: "success" });
+  finish(makeHuntResult(environment));
   assert.equal(environment.clearHuntSession(), false);
   callback("persist", environment)(environment.save);
   assert.equal(JSON.stringify(observations), before);
@@ -1119,14 +1169,14 @@ test("a pending rite blocks hunt launch and terminal rewards until its receipt i
   launch();
   const session = environment.activeHuntSessionRef.current, writes = observations.writes, clears = observations.clears;
   environment.pendingTrophyCommitRef.current = receipt;
-  finish({ outcome: "success" });
+  finish(makeHuntResult(environment));
   assert.equal(observations.writes, writes);
   assert.equal(observations.clears, clears);
   assert.equal(observations.rewards, 0);
   assert.equal(environment.activeHuntSessionRef.current, session);
   assert.equal(environment.pendingTrophyCommitRef.current, receipt);
   environment.pendingTrophyCommitRef.current = null;
-  finish({ outcome: "success" });
+  finish(makeHuntResult(environment));
   assert.equal(observations.rewards, 1);
 });
 

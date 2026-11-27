@@ -1,0 +1,2666 @@
+{
+  "date": "2026-11-27",
+  "depot": "darknigthmare/yautja-la-longue-chasse",
+  "refMain": "75bbc1777eb1866515fcef718b086571d8aa379d",
+  "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/f1bdb319c2388fc9283c97a176f9b55b01e69924/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+  "methode": "Le relevé part de main 75bbc17 après #199. La colonne État sur main conserve ce relevé. Le lot #200 est indiqué dans Livraison et ses limites figurent dans chaque ligne. Le lot intégral compte 62 fiches raccordées et 6 partielles.",
+  "statuts": {
+    "RACCORDE": "Boucle de la fiche jouée et persistée, ou chapitre que la Bible accepte expressément comme équivalent. Les écarts signalés restent ouverts.",
+    "PARTIEL_MISSION": "Une partie propre à la fiche a un déclenchement ou une preuve jouable. Des étapes spécifiées restent ouvertes.",
+    "VOISIN": "Un mécanisme analogue est présent. La mission exacte n’a pas de raccord observé.",
+    "NON_COMMENCE_OBSERVE": "Aucune boucle propre observée dans le périmètre d’audit. Le statut décrit le ref, la fiche peut être en chantier."
+  },
+  "stats": {
+    "RACCORDE": 61,
+    "PARTIEL_MISSION": 7,
+    "VOISIN": 0,
+    "NON_COMMENCE_OBSERVE": 0
+  },
+  "missions": [
+    {
+      "ordre": 1,
+      "id": "R2-M001",
+      "titre": "Pourquoi nous combattons",
+      "rang": "Youngling",
+      "table": {
+        "ligne": 131,
+        "etat": "Ouverture jouable",
+        "lien": "Outil, proie échappée, mise à l’abri et filet"
+      },
+      "fiche": 1923,
+      "etatSurMain": "RACCORDE",
+      "observation": "Dans la nouvelle partie, le loquet cède et la proie d’exercice atteint la cour. Le joueur récupère l’outil, protège Tov, reprend après rechargement, place l’appât, repousse la proie trois fois avec Saar et termine au filet avant le duel. Chrome et 50 simulations valident le parcours du candidat.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/NurseryPrologueScreen.tsx#L31-L38",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2976-L2979",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/nurseryOpening.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #196 · Ouverture raccordée · parcours Chrome",
+      "reste": "La recette Chrome cible l’ouverture et sa transition vers le duel. La compilation et le lancement du jeu publié sont vérifiés.",
+      "preuvesLivraison": [
+        "actions/runs/45977790999",
+        "actions/runs/45977790999/artifacts/15188047223",
+        "pull/196"
+      ]
+    },
+    {
+      "ordre": 2,
+      "id": "R2-M002",
+      "titre": "Le filet et les visages",
+      "rang": "Youngling",
+      "table": {
+        "ligne": 132,
+        "etat": "Cour de la nurserie raccordée",
+        "lien": "Duel, outil, barrière et choix de cohorte"
+      },
+      "fiche": 1933,
+      "etatSurMain": "RACCORDE",
+      "observation": "Sur 65361bb · La boucle d’après-duel concernant barrière, filet et trois camarades reste à produire.\nRecette · Le Canvas natif de la cour valide le déplacement, la barrière et les gestes de Harek, Yena, Tov et Saar. La progression reprend au deuxième geste après rechargement. L’aide à Yena, le retour de l’outil et la sortie sont confirmés.\nCorrectif de composition · Le lint et 47 tests passent. Après une première exécution interrompue par le délai du harnais, la relance confirme Chrome et le contrôle TypeScript ciblé.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/NurseryPrologueScreen.tsx#L35-L52",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2976-L2979"
+      ],
+      "chantierActif": "actes_i_iii",
+      "etatDeLivraison": "Fusionnée dans #188 · recette Chrome",
+      "reste": "Accessoires et personnages réutilisent les atlas de la nurserie. Donner aux trois jeunes des poses propres et animer leurs gestes reste à produire. Le harnais Chrome joue le choix Yena avec le son désactivé.",
+      "preuvesLivraison": [
+        "actions/runs/44995203586",
+        "actions/runs/44995203586/artifacts/14743865686",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/d5f301b21ac0ac620a834000866b6b6f32559cc1/tests/qa-nursery-courtyard.playwright.mjs#L84-L121",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/d5f301b21ac0ac620a834000866b6b6f32559cc1/app/game/nurseryRendering.ts#L256-L282",
+        "actions/runs/44996020198",
+        "actions/runs/44996315371",
+        "actions/runs/44996315371/artifacts/14743683067",
+        "pull/188"
+      ]
+    },
+    {
+      "ordre": 3,
+      "id": "R2-M003",
+      "titre": "Le chemin vers la cité",
+      "rang": "Youngling",
+      "table": {
+        "ligne": 133,
+        "etat": "Détour et parvis joués · guidage à prolonger",
+        "lien": "Deux repères avec Saar, détour du chariot et remise de la pièce"
+      },
+      "fiche": 1943,
+      "etatSurMain": "PARTIEL_MISSION",
+      "observation": "Le choix de l’escorte fait attendre Saar au seuil de l’audience. Le joueur confirme le départ, suit son trajet sur le parvis et confirme le degré monumental. Le détour de la forge demeure jouable après le passage par l’escalier.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/youthCampaign.ts#L135-L148",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2976-L2984",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/42cd44605a5bf5b61cb87b9071e47acb20168695/app/game/systems/youthCityErrandV172.ts#L1",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/42cd44605a5bf5b61cb87b9071e47acb20168695/app/game/HomeworldHub.tsx#L1474"
+      ],
+      "etatDeLivraison": "Parvis accompagné par Saar · reprise vérifiée",
+      "reste": "Les autres quartiers, les rencontres selon le choix et la visite du foyer restent à scénariser.",
+      "preuvesLivraison": [
+        "actions/runs/44996220777",
+        "actions/runs/44996220777/artifacts/14744116870",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/376e29f838603879f610521b99917509b17c2251/app/game/systems/youthCityErrandV172.ts",
+        "actions/runs/44996896732",
+        "actions/runs/44997046720",
+        "actions/runs/44997046720/artifacts/14744342277",
+        "actions/runs/44997669001/artifacts/14744917376",
+        "pull/188",
+        "actions/runs/46007481856",
+        "actions/runs/46007481856/artifacts/15201758720",
+        "actions/runs/46010910723",
+        "actions/runs/46010910723/artifacts/15203199339",
+        "pull/200"
+      ],
+      "raccordProjete": "PARTIEL_MISSION"
+    },
+    {
+      "ordre": 4,
+      "id": "R2-M004",
+      "titre": "L’épreuve des trois gestes",
+      "rang": "Youngling",
+      "table": {
+        "ligne": 134,
+        "etat": "Exercices en salle raccordés",
+        "lien": "Anneau, poutre et cible dans l’ordre choisi"
+      },
+      "fiche": 1953,
+      "etatSurMain": "RACCORDE",
+      "observation": "L’épreuve de la Salle des maîtres fait saisir l’anneau, franchir la poutre et atteindre la cible ouverte. Le choix de l’ordre donne un compagnon et les échecs n’effacent pas les ateliers confirmés.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/youthTraining.ts#L39-L42",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2979-L2980"
+      ],
+      "etatDeLivraison": "Fusionnée dans #197 · Trois gestes jouables · échec et reprise dans Chrome natif",
+      "reste": "L’habillage et les bruitages dédiés restent à produire.",
+      "preuvesLivraison": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/334a8d142d39aced84a75aa7cef12ca391336684/app/game/systems/homeworldChildhoodV175.ts",
+        "actions/runs/45997179730",
+        "actions/runs/45997179730/artifacts/15195749699",
+        "actions/runs/45997497905",
+        "pull/197"
+      ]
+    },
+    {
+      "ordre": 5,
+      "id": "R2-M005",
+      "titre": "La piste avant la prise",
+      "rang": "Youngling",
+      "table": {
+        "ligne": 135,
+        "etat": "Piste et rapport raccordés",
+        "lien": "Indices, perchoir et retour par une autre voie"
+      },
+      "fiche": 1963,
+      "etatSurMain": "RACCORDE",
+      "observation": "La piste propre à la fiche s’ouvre après la Salle des maîtres. Le joueur vérifie trois indices, revient d’une fausse piste, observe depuis le point haut et accomplit le retour. Chrome suit la carte et son rechargement. Le moteur vérifie aussi l’autre remise.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/campaignSoloV66.ts#L29-L46",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/campaignSoloV66.ts#L59-L83",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2976-L2982"
+      ],
+      "etatDeLivraison": "Fusionnée dans #197 · Piste dédiée et rapport jouables · Chrome natif",
+      "reste": "L’habillage de la réserve et la seconde remise dans Chrome restent à vérifier.",
+      "preuvesLivraison": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/334a8d142d39aced84a75aa7cef12ca391336684/app/game/systems/homeworldChildhoodV175.ts",
+        "actions/runs/45997179730",
+        "actions/runs/45997179730/artifacts/15195749699",
+        "actions/runs/45997497905",
+        "pull/197"
+      ]
+    },
+    {
+      "ordre": 6,
+      "id": "R2-M006",
+      "titre": "Entrer parmi les Unblooded",
+      "rang": "Youngling",
+      "table": {
+        "ligne": 136,
+        "etat": "Passation et premier atelier jouables",
+        "lien": "Le râtelier transmet le choix du masque ou des lames au dojo"
+      },
+      "fiche": 1973,
+      "etatSurMain": "PARTIEL_MISSION",
+      "observation": "Au râtelier, le joueur choisit le masque ou les lames. Le dojo propose les deux leçons dans l’ordre retenu, y compris après rechargement. La remise du rang conserve sa place historique et les anciennes sauvegardes restent utilisables.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/nurseryCampaign.ts#L45-L56",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/ClanChroniclePanel.tsx#L109-L110",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2979-L2980"
+      ],
+      "etatDeLivraison": "Passation et deux ordres testés dans le dojo",
+      "reste": "Le retour accompagné avec Saar, le rangement de l’outil d’enfance et la cérémonie différée si un apprentissage manque restent ouverts.",
+      "preuvesLivraison": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/334a8d142d39aced84a75aa7cef12ca391336684/app/game/systems/homeworldChildhoodV175.ts",
+        "actions/runs/45997179730",
+        "actions/runs/45997179730/artifacts/15195749699",
+        "actions/runs/45997497905",
+        "pull/197",
+        "actions/runs/46007605788",
+        "actions/runs/46007605788/artifacts/15201808760"
+      ]
+    },
+    {
+      "ordre": 7,
+      "id": "R2-M007",
+      "titre": "Le masque et ses lectures",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 137,
+        "etat": "Atelier Unblooded jouable",
+        "lien": "Calibrer et remettre le profil de masque"
+      },
+      "fiche": 1987,
+      "etatSurMain": "RACCORDE",
+      "observation": "L’élève règle le masque, calibre les cibles, lit quatre surfaces et distingue une signature d’une identité avant de déposer son rapport. Le parcours a été joué jusqu’à la remise dans le banc Chrome. La simulation et le contrôle de types du candidat d’atelier passent.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/youthCampaign.ts#L29-L31",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/youthTraining.ts#L515-L524",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2979-L2982",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/youthWorkshopV174.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #196 · Geste du masque observé dans Chrome · simulation validée",
+      "reste": "La capture est issue d’un essai combiné arrêté après le rapport du masque. La qualification des trois ateliers dans le même parcours se poursuit.",
+      "preuvesLivraison": [
+        "actions/runs/45979197084",
+        "actions/runs/45978531023",
+        "actions/runs/45978531023/artifacts/15187259865",
+        "pull/196"
+      ]
+    },
+    {
+      "ordre": 8,
+      "id": "R2-M008",
+      "titre": "La distance des lames",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 138,
+        "etat": "Atelier Unblooded jouable",
+        "lien": "Comparer la portée et remettre le rapport de lames"
+      },
+      "fiche": 1997,
+      "etatSurMain": "RACCORDE",
+      "observation": "Dans l’aire, le joueur déploie les lames, règle sa portée, répond au bras mécanique en reculant ou en esquivant, puis range les lames avant le passage étroit et remet le rapport. Le parcours et sa reprise sont contrôlés en simulation.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/youthCampaign.ts#L29-L31",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/youthTraining.ts#L34-L41",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2979-L2982",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/youthWorkshopV174.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #196 · simulation validée",
+      "reste": "La suite de 61 tests couvre les six ateliers. La recette Chrome de cet atelier précis reste à faire.",
+      "preuvesLivraison": [
+        "actions/runs/45979197084",
+        "pull/196"
+      ]
+    },
+    {
+      "ordre": 9,
+      "id": "R2-M009",
+      "titre": "Ce que le camouflage laisse voir",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 139,
+        "etat": "Atelier Unblooded jouable",
+        "lien": "Lire les traces et franchir la salle de camouflage"
+      },
+      "fiche": 2007,
+      "etatSurMain": "RACCORDE",
+      "observation": "Dans le banc Chrome, l’eau révèle le joueur, la reprise se fait au couvert, l’élève consulte sa trace à l’écran puis attend le signal et franchit la zone discrètement. Le rapport survit au rechargement. Le détour vertical et les six ateliers sont couverts par la simulation.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/data.ts#L532",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/youthTraining.ts#L39-L41",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2983",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/youthWorkshopV174.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #196 · Flaque et camouflage joués · reprise Chrome",
+      "reste": "La preuve Chrome isole l’atelier de camouflage sur un checkpoint obtenu avec le moteur de jeu.",
+      "preuvesLivraison": [
+        "actions/runs/45979197084",
+        "actions/runs/45980520010",
+        "actions/runs/45980520010/artifacts/15188259968",
+        "pull/196"
+      ]
+    },
+    {
+      "ordre": 10,
+      "id": "R2-M010",
+      "titre": "Le combistick revient à la main",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 140,
+        "etat": "Atelier Unblooded jouable",
+        "lien": "Lancer, retrouver et restituer le combistick d’exercice"
+      },
+      "fiche": 2017,
+      "etatSurMain": "RACCORDE",
+      "observation": "Le joueur ajuste la portée du combistick, le lance sur la cible mobile, franchit la traverse et récupère l’original au sol avant de rendre compte. Les chemins de réussite et de reprise sont joués en simulation.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/data.ts#L75-L204",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/youthTraining.ts#L39-L41",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2983",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/youthWorkshopV174.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #196 · simulation validée",
+      "reste": "La suite de 61 tests couvre les six ateliers. La recette Chrome de cet atelier précis reste à faire.",
+      "preuvesLivraison": [
+        "actions/runs/45979197084",
+        "pull/196"
+      ]
+    },
+    {
+      "ordre": 11,
+      "id": "R2-M011",
+      "titre": "Le tir qui demande une ligne",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 141,
+        "etat": "Atelier Unblooded jouable",
+        "lien": "Tirer au speargun et rendre le rapport"
+      },
+      "fiche": 2027,
+      "etatSurMain": "RACCORDE",
+      "observation": "Le harpon rencontre la couverture, la récupération est physique et le niveau de la dernière cible varie. Le joueur ajuste sa ligne avant de récupérer l’équipement et déposer le rapport. Le parcours est contrôlé en simulation.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/data.ts#L75-L204",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/youthTraining.ts#L39-L41",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2983",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/youthWorkshopV174.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #196 · simulation validée",
+      "reste": "La suite de 61 tests couvre les six ateliers. La recette Chrome de cet atelier précis reste à faire.",
+      "preuvesLivraison": [
+        "actions/runs/45979197084",
+        "pull/196"
+      ]
+    },
+    {
+      "ordre": 12,
+      "id": "R2-M012",
+      "titre": "Le piège et le retour",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 142,
+        "etat": "Atelier Unblooded jouable",
+        "lien": "Poser et récupérer une mine d’exercice"
+      },
+      "fiche": 2037,
+      "etatSurMain": "RACCORDE",
+      "observation": "L’élève place la mine d’exercice, préserve le corridor de l’allié, fait passer la cible et récupère le dispositif. Le contrôle de la tentative et de la remise est joué en simulation.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/data.ts#L532-L558",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/youthTraining.ts#L39-L41",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2983",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/youthWorkshopV174.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #196 · simulation validée",
+      "reste": "La suite de 61 tests couvre les six ateliers. La recette Chrome de cet atelier précis reste à faire.",
+      "preuvesLivraison": [
+        "actions/runs/45979197084",
+        "pull/196"
+      ]
+    },
+    {
+      "ordre": 13,
+      "id": "R2-M013",
+      "titre": "Le soin dans un abri",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 143,
+        "etat": "Atelier de soin raccordé",
+        "lien": "Kit, écran, alerte, dépense et repos"
+      },
+      "fiche": 2047,
+      "etatSurMain": "RACCORDE",
+      "observation": "Sur 65361bb · La cohorte V68 récupère et emploie un medicomp. L’exercice propre avec écran de protection, interruption et reprise reste ouvert.\nRecette · Les deux ordres de soin maintiennent la dose unique et la reprise après interruption. Chrome a rejoué la voie réactive dans les baraquements, de l’atelier et de l’écran à l’alerte, au rechargement, au soin puis au repos.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/campaignSoloV68.ts#L55-L62",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2983"
+      ],
+      "etatDeLivraison": "Fusionnée dans #188 · recette Chrome",
+      "reste": "Le Canvas s’appuie sur les décors existants, un écran géométrique et des repères dessinés. Les tests couvrent les deux voies. La capture Chrome valide la voie réactive, avec le son désactivé.",
+      "preuvesLivraison": [
+        "actions/runs/44995515584",
+        "actions/runs/44995579576",
+        "actions/runs/44995579576/artifacts/14743577399",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/261e911f597e208e7abcc9dbf21c77aaee8db0cf/tests/qa-youth-medicomp.playwright.mjs#L107-L142",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/261e911f597e208e7abcc9dbf21c77aaee8db0cf/app/game/youthTrainingRendering.ts#L156-L188",
+        "pull/188"
+      ]
+    },
+    {
+      "ordre": 14,
+      "id": "R2-M014",
+      "titre": "La boucle des régions proches",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 144,
+        "etat": "Circuit supervisé raccordé",
+        "lien": "Désert, jungle et bordure avec retour au Maître"
+      },
+      "fiche": 2057,
+      "etatSurMain": "RACCORDE",
+      "observation": "Après les six rapports d’atelier et le soin M013, le Maître confie une bourse. Le jeune traverse Désert de Verre, Jungle des Piliers et Bordure. Chaque zone possède deux routes, un appui, une observation et un repli. La boucle finit par la remise des trois rapports et de la bourse au Maître.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/youthTraining.ts#L39-L42",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2976-L2985"
+      ],
+      "etatDeLivraison": "Fusionnée dans #197 · Boucle et bourse jouables · retour et rechargements dans Chrome",
+      "reste": "Chrome joue Désert abrité, Jungle haute après repli et Bordure abritée. Les six ateliers et le soin sont fournis par une fixture normalisée. Les autres variantes sont couvertes en test. Les décors existants sont réemployés.",
+      "preuvesLivraison": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/b45482b4e8dbdd00447dee4700c0d77a900884fe",
+        "actions/runs/45997774264/job/140501403179",
+        "actions/runs/45997995198",
+        "actions/runs/45997995198/artifacts/15196617630",
+        "pull/197"
+      ]
+    },
+    {
+      "ordre": 15,
+      "id": "R2-M015",
+      "titre": "Recevoir la place de Young Blood",
+      "rang": "Unblooded",
+      "table": {
+        "ligne": 145,
+        "etat": "Partiel",
+        "lien": "V68 accorde Young Blood"
+      },
+      "fiche": 2067,
+      "etatSurMain": "RACCORDE",
+      "observation": "La reconnaissance V68 produit réellement le rite Young Blood aux côtés de la cohorte. La Bible l’accepte pour M015 dans sa fusion. Position de la cérémonie L-03 encore à harmoniser.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/campaignSoloV68.ts#L52-L68",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2983-L2985"
+      ]
+    },
+    {
+      "ordre": 16,
+      "id": "R2-M016",
+      "titre": "Former la triade",
+      "rang": "Young Blood",
+      "table": {
+        "ligne": 146,
+        "etat": "Rencontres et postes jouables dans V90",
+        "lien": "Observer Saar au verrou et Vek aux traces avant la répartition"
+      },
+      "fiche": 2081,
+      "etatSurMain": "PARTIEL_MISSION",
+      "observation": "Dans la galerie, Saar rejoint le verrou et Vek les traces. Le joueur se déplace aux postes, observe les gestes et peut ensuite signaler la répartition. Le pilote de recette maîtrise seulement l’horloge.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/campaignSoloV90.ts#L26-L38",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/campaignSoloV90.ts#L59-L66",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L1987-L1994"
+      ],
+      "etatDeLivraison": "Activités et observation de la triade jouées dans V90",
+      "reste": "Les rencontres dans leurs lieux de la cité et les suites d’un refus, avec autre partenaire ou préparation, restent ouvertes.",
+      "preuvesLivraison": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/77592aa7b9280af73f407e9dfdc816b34f614caa",
+        "actions/runs/45998557554",
+        "actions/runs/45998557554/artifacts/15196978397",
+        "actions/runs/45999214275",
+        "pull/197",
+        "actions/runs/46008141091",
+        "actions/runs/46008141091/artifacts/15202860242"
+      ]
+    },
+    {
+      "ordre": 17,
+      "id": "R2-M017",
+      "titre": "Le Temple des Trois Ombres",
+      "rang": "Young Blood",
+      "table": {
+        "ligne": 147,
+        "etat": "Nef des Anneaux et Belvédère jouables",
+        "lien": "Glyphe annonciateur, passerelles et route basse du Belvédère"
+      },
+      "fiche": 2092,
+      "etatSurMain": "PARTIEL_MISSION",
+      "observation": "Le glyphe annonce l’ouverture. Le joueur confirme les appuis avec un maintien au pupitre. Les anciens checkpoints gardent leur géométrie. La route basse du Belvédère avait déjà un contrôle navigateur sur #198.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/campaignSoloV70.ts#L22-L57",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L1998-L2005",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2989-L2994"
+      ],
+      "etatDeLivraison": "Glyphe, appuis et protocole de la Nef joués",
+      "reste": "L’ordre d’ensemble V70/V90 et la couverture des variantes de séparation et de regroupement restent à compléter.",
+      "preuvesLivraison": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/bd2b27729c030b2403faa3b3079d08bc97e221f2",
+        "actions/runs/45999084802",
+        "pull/197",
+        "actions/runs/46000628691",
+        "actions/runs/46000628691/artifacts/15198231603",
+        "pull/198",
+        "actions/runs/46007580696",
+        "actions/runs/46007580696/artifacts/15201833660"
+      ]
+    },
+    {
+      "ordre": 18,
+      "id": "R2-M018",
+      "titre": "Le Quatza-Rij à trois",
+      "rang": "Young Blood",
+      "table": {
+        "ligne": 148,
+        "etat": "Texte seul",
+        "lien": "V90 = entraînement, pas le rite"
+      },
+      "fiche": 2103,
+      "etatSurMain": "RACCORDE",
+      "observation": "Combat natif triade après V90 avec Saar et Vek, équipement, vraies ouvertures et preuves rejouables. L-02 révisée impose le Homeworld. Le Temple Blooded L-04 demeure un chantier séparé.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/ClanChroniclePanel.tsx#L124-L131",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/quatzaRij.ts#L291-L299",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/quatzaRij.ts#L175-L224",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L153-L175",
+        "actions/runs/44955278445/artifacts/14727645258"
+      ]
+    },
+    {
+      "ordre": 19,
+      "id": "R2-M019",
+      "titre": "Revenir avec la triade",
+      "rang": "Young Blood",
+      "table": {
+        "ligne": 149,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2113,
+      "etatSurMain": "RACCORDE",
+      "observation": "Retour du Quatza aux témoins avec ordre de présentation, absence, repérage, stabilisation et portage observés après reprise. L-03 cérémonie du masque et le rite Blooded L-04 demeurent ouverts.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/quatzaRij.ts#L423-L461",
+        "actions/runs/44955278445/artifacts/14727645258",
+        "actions/runs/44957690748/artifacts/14727809549"
+      ]
+    },
+    {
+      "ordre": 20,
+      "id": "R2-M020",
+      "titre": "Porter la marque Blooded",
+      "rang": "Young Blood",
+      "table": {
+        "ligne": 150,
+        "etat": "Rite et rang raccordés",
+        "lien": "Pyramide, purge, marque sur le masque et le front"
+      },
+      "fiche": 2123,
+      "etatSurMain": "RACCORDE",
+      "observation": "Après la Vanne de Quarantaine et le compte rendu de Quatza-Rij, la présentation ouvre le rite. Le joueur déplace une cloison, traverse six salles, rassemble les trois prises, aide le blessé et grave le même motif sur le masque et le front. Chrome vérifie la reprise en salle 4, le rang Blooded et l’export/import. Les 19 tests du domaine vérifient aussi le temps de purge, la compatibilité des preuves jeunesse et le seuil du chantier V161.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/ClanChroniclePanel.tsx#L125-L131",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/clanChronicle.ts#L70-L75",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L169-L175",
+        "pull/171",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/bloodedTempleV174.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #196 · Rite Blooded raccordé · six salles jouées dans Chrome",
+      "reste": "La célébration de cohorte ou la visite calme en ville reste à produire. La sixième salle, le retour et les deux marques sont couverts par Chrome.",
+      "preuvesLivraison": [
+        "actions/runs/45978406278",
+        "actions/runs/45978406278/artifacts/15187264945",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/98e6961b454ee0f8d70bea9aaab1a66317f95927/app/game/systems/bloodedTempleV174.ts",
+        "actions/runs/45981382813",
+        "actions/runs/45981382812",
+        "pull/196"
+      ]
+    },
+    {
+      "ordre": 21,
+      "id": "R2-M021",
+      "titre": "Une coque vraiment acquise",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 151,
+        "etat": "Partiel",
+        "lien": "V87 → V89 vaisseau"
+      },
+      "fiche": 2137,
+      "etatSurMain": "RACCORDE",
+      "observation": "Reçu nominatif produit après inspection, panne, remise en état, droits et entrée physique attestée. V161 et les routes consomment ce reçu.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/shipAcquisitionV89.ts#L229-L261",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/shipAcquisitionV89.ts#L367-L394",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/shipReceiptV161.ts#L65-L88",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L2765-L2772"
+      ]
+    },
+    {
+      "ordre": 22,
+      "id": "R2-M022",
+      "titre": "Huit salles pour préparer la route",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 152,
+        "etat": "Partiel",
+        "lien": "V88 préparation"
+      },
+      "fiche": 2148,
+      "etatSurMain": "RACCORDE",
+      "observation": "Prévol physique V88, huit postes utiles, observations liées à la salle et à la coque, persistance. Le choix narratif court/escale reste à vérifier séparément.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/shipPreparationV88.ts#L127-L193",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/shipPreparationV88.ts#L193-L230",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L2712-L2734"
+      ]
+    },
+    {
+      "ordre": 23,
+      "id": "R2-M023",
+      "titre": "Le premier trajet entre les mondes",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 153,
+        "etat": "Quai interstellaire raccordé",
+        "lien": "Coque V161, sas, trois balises, amarrage et quai"
+      },
+      "fiche": 2159,
+      "etatSurMain": "RACCORDE",
+      "observation": "V173 relie les droits de coque V161, les huit contrôles du prévol V88, les balises, l’amarrage et le quai avant réembarquement. La recette Chrome vérifie la conservation du reçu. La reconnaissance Blooded de la campagne jeunesse est depuis jouable en M020.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/spaceRoutesV159.ts#L392-L408",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/spaceRoutesV159.ts#L450-L475",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/spaceRoutesV159.ts#L495-L515",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2996-L2998",
+        "pull/186",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/42cd44605a5bf5b61cb87b9071e47acb20168695/app/game/systems/firstInterstellarV173.ts#L61"
+      ],
+      "etatDeLivraison": "Fusionnée dans #188 · recette Chrome",
+      "reste": "Le quai emploie les médias existants. L’escale est testée dans le moteur. L’enchaînement Chrome complet depuis le rang Blooded de la jeunesse jusqu’au premier trajet reste à vérifier.",
+      "preuvesLivraison": [
+        "actions/runs/44997075667",
+        "actions/runs/44997075667/artifacts/14744880367",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/f633813010478e48742ba419810ed30a7f857214/app/game/systems/firstInterstellarV173.ts",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/f633813010478e48742ba419810ed30a7f857214/app/game/FirstInterstellarV173.tsx",
+        "pull/188",
+        "actions/runs/45978406278"
+      ]
+    },
+    {
+      "ordre": 24,
+      "id": "R2-M024",
+      "titre": "La première chasse d’un autre ciel",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 154,
+        "etat": "Jouable",
+        "lien": "réalisée par les 8 chasses"
+      },
+      "fiche": 2169,
+      "etatSurMain": "RACCORDE",
+      "observation": "Première des huit chasses, chaîne d’objectifs et extraction commune. Les variantes art, acoustique, boss et objectifs spécifiques sont suivies séparément.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/data.ts#L532-L1510",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L4052-L4056",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2075-L2081"
+      ]
+    },
+    {
+      "ordre": 25,
+      "id": "R2-M024.1",
+      "titre": "Sang dans la canopée — Oseris-IV",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 155,
+        "etat": "Jouable",
+        "lien": "`jungle-vey`"
+      },
+      "fiche": 2177,
+      "etatSurMain": "RACCORDE",
+      "observation": "Chasse native jungle-vey. Les besoins de variantes d’objectifs, de boss et les médias s’évaluent indépendamment.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/data.ts#L534-L555",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L4052-L4056"
+      ]
+    },
+    {
+      "ordre": 26,
+      "id": "R2-M024.2",
+      "titre": "Chaleur sous la glace — Nivalis-K",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 156,
+        "etat": "Jouable",
+        "lien": "`ice-cryostalker`"
+      },
+      "fiche": 2207,
+      "etatSurMain": "RACCORDE",
+      "observation": "Chasse native ice-cryostalker. Les besoins de variantes d’objectifs, de boss et les médias s’évaluent indépendamment.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/data.ts#L765-L786",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L4052-L4056"
+      ]
+    },
+    {
+      "ordre": 27,
+      "id": "R2-M024.3",
+      "titre": "Le dernier rite — Cinder-12",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 157,
+        "etat": "Jouable",
+        "lien": "`volcano-bad-blood`"
+      },
+      "fiche": 2236,
+      "etatSurMain": "RACCORDE",
+      "observation": "Chasse native volcano-bad-blood. Les besoins de variantes d’objectifs, de boss et les médias s’évaluent indépendamment.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/data.ts#L990-L1011",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L4052-L4056"
+      ]
+    },
+    {
+      "ordre": 28,
+      "id": "R2-M024.4",
+      "titre": "Les gueules du delta — Naraka-Delta",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 158,
+        "etat": "Jouable",
+        "lien": "`swamp-hydra`"
+      },
+      "fiche": 2267,
+      "etatSurMain": "RACCORDE",
+      "observation": "Chasse native swamp-hydra. Les besoins de variantes d’objectifs, de boss et les médias s’évaluent indépendamment.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/data.ts#L1226-L1247",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L4052-L4056"
+      ]
+    },
+    {
+      "ordre": 29,
+      "id": "R2-M024.5",
+      "titre": "Le chant sous les dunes — Serekh-9",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 159,
+        "etat": "Jouable",
+        "lien": "`desert-sandmaw`"
+      },
+      "fiche": 2291,
+      "etatSurMain": "RACCORDE",
+      "observation": "Chasse native desert-sandmaw. Les besoins de variantes d’objectifs, de boss et les médias s’évaluent indépendamment.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/data.ts#L1293-L1314",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L4052-L4056"
+      ]
+    },
+    {
+      "ordre": 30,
+      "id": "R2-M024.6",
+      "titre": "Sous l'œil de la tempête — Pelagos-M",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 160,
+        "etat": "Jouable",
+        "lien": "`ocean-leviathan`"
+      },
+      "fiche": 2315,
+      "etatSurMain": "RACCORDE",
+      "observation": "Chasse native ocean-leviathan. Les besoins de variantes d’objectifs, de boss et les médias s’évaluent indépendamment.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/data.ts#L1360-L1381",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L4052-L4056"
+      ]
+    },
+    {
+      "ordre": 31,
+      "id": "R2-M024.7",
+      "titre": "La forêt qui se souvient — Mycora-V",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 161,
+        "etat": "Jouable",
+        "lien": "`fungal-hivemind`"
+      },
+      "fiche": 2339,
+      "etatSurMain": "RACCORDE",
+      "observation": "Chasse native fungal-hivemind. Les besoins de variantes d’objectifs, de boss et les médias s’évaluent indépendamment.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/data.ts#L1427-L1448",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L4052-L4056"
+      ]
+    },
+    {
+      "ordre": 32,
+      "id": "R2-M024.8",
+      "titre": "Les chasseurs de pierre — Acheron-Sigma",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 162,
+        "etat": "Jouable",
+        "lien": "`ruins-ancient-guardian`"
+      },
+      "fiche": 2362,
+      "etatSurMain": "RACCORDE",
+      "observation": "La chasse ruins-ancient-guardian garde ses objectifs et ses assets. Le Gardien perçoit désormais une vibration sur un support partagé et une émission énergétique dégagée. Le biomask affiche le signal.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/data.ts#L1494-L1515",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L4052-L4056"
+      ],
+      "reste": "Les variantes de décors, les SFX restants et les différences avancées par phase restent en production.",
+      "etatDeLivraison": "Chasse native · perception du vide",
+      "preuvesLivraison": [
+        "actions/runs/46011008133",
+        "actions/runs/46011008133/artifacts/15203473706",
+        "actions/runs/46012258746",
+        "pull/200",
+        "actions/runs/46012258746/artifacts/15203404680"
+      ],
+      "raccordProjete": "RACCORDE"
+    },
+    {
+      "ordre": 33,
+      "id": "R2-M025",
+      "titre": "Préparer Xeno Prime",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 163,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2389,
+      "etatSurMain": "RACCORDE",
+      "observation": "Approche Xeno Prime réelle, repères de trajet, test et preuve des préparatifs. Le choix supplémentaire de reconnaissance en variante et l’habillage restent à valider.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L5353-L5380",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/buriedCradleCampaign.ts#L84-L97",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/buriedCradleCampaign.ts#L134-L159",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/buriedCradleApproach.ts"
+      ]
+    },
+    {
+      "ordre": 34,
+      "id": "R2-M026",
+      "titre": "La première reine",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 164,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2397,
+      "etatSurMain": "RACCORDE",
+      "observation": "Scène de combat Matriarche du Berceau, progression et état physique, repli/extraction, preuve de victoire ou absence de prise. Le mode Réserve V163 est distinct et reprend le résultat.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L5387-L5411",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/buriedCradleCampaign.ts#L166-L183",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/queenHuntV163.ts#L260-L270"
+      ]
+    },
+    {
+      "ordre": 35,
+      "id": "R2-M027",
+      "titre": "Ce que la reine a changé",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 165,
+        "etat": "Texte seul",
+        "lien": "—"
+      },
+      "fiche": 2405,
+      "etatSurMain": "RACCORDE",
+      "observation": "Retour physique à la coque de départ, soin, examen auprès du mentor et choix clan/atelier avec couronne ou preuve de retour persistée.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/buriedCradleReturn.ts#L3-L18",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/buriedCradleReturn.ts#L61-L79",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/buriedCradleCampaign.ts#L198-L211",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L5534",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/tests/buried-cradle-return.test.mjs"
+      ]
+    },
+    {
+      "ordre": 36,
+      "id": "R2-M028",
+      "titre": "L’essai de coordination",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 166,
+        "etat": "Essai à deux équipes raccordé",
+        "lien": "Ordres au quai, verrou à l’atelier et reprise"
+      },
+      "fiche": 2411,
+      "etatSurMain": "RACCORDE",
+      "observation": "Sur 65361bb · Les opérations collectives utilisent rôles et postes. Les Guerres fournissent ordres et terrain. Aucun raccord observé pour la récupération Adjutant à deux équipes et la résolution du blocage au sol.\nRecette · L’épreuve s’ouvre après le débrief du Berceau. Les tests valident les deux équipes, le choix terrain ou délégation, le verrou bloqué, le signal prématuré et la reprise locale jusqu’à la remise de la caisse.\nRecette Chrome · Le joueur confie le terrain, envoie le signal trop tôt, reprend l’exercice et rejoint physiquement l’atelier pour repérer le verrou. Il recharge sur place puis retourne donner l’ordre et le signal. Les deux équipes ramènent la caisse et le reçu survit au rechargement final.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/clanShipOperations.ts#L578-L615",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/clanWarMissionModesV114.ts#L233-L253",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2317-L2321"
+      ],
+      "etatDeLivraison": "Fusionnée dans #188 · recette Chrome",
+      "reste": "Le scénario terrain direct est couvert par les tests du moteur. La recette Chrome joue la délégation. La nomination Adjutant et la reconnaissance d’un rang relèvent d’autres fiches.",
+      "preuvesLivraison": [
+        "actions/runs/44995821505",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/5ac43fe31fac207ff4144049c872be70838f6c3a/tests/homeworld-coordination-m028.test.mjs#L43-L89",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/5ac43fe31fac207ff4144049c872be70838f6c3a/app/game/systems/homeworldCoordinationM028.ts#L37-L100",
+        "actions/runs/44996323416",
+        "actions/runs/44996869503",
+        "actions/runs/44996869503/artifacts/14744586857",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/faeec38a16ef7a1120a8b03d1187c8845aa63587/scripts/qa-homeworld-coordination-m028.mjs#L178-L212",
+        "pull/188"
+      ]
+    },
+    {
+      "ordre": 37,
+      "id": "R2-M029",
+      "titre": "La fonction Adjutant",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 167,
+        "etat": "Parcours et fonction raccordés",
+        "lien": "Retour des élèves, service du quai et audience du Leader"
+      },
+      "fiche": 2417,
+      "etatSurMain": "RACCORDE",
+      "observation": "Le quai et la nomination sont raccordés. Après le retour des douze jeunes, le chasseur remplit le service du quai et peut différer ou accepter la fonction devant le Leader. Le contrôle sur la production retrouve le dossier et l’unique attribution d’honneur après rechargement.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/clanChronicle.ts#L72-L76",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/clanChronicle.ts#L162-L166",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/warpEpochsV165.ts#L345-L370",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/ClanChroniclePanel.tsx#L187-L204",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/homeworldAdjutantM029.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #196 · décision et reprise vérifiées dans Chrome sur le jeu public",
+      "reste": "Les voix, hologrammes et musiques dédiés sont un chantier de production distinct.",
+      "preuvesLivraison": [
+        "actions/runs/45979878975",
+        "actions/runs/45979878975/artifacts/15189051925",
+        "actions/runs/45980234854",
+        "actions/runs/45980899671",
+        "actions/runs/45981382812",
+        "actions/runs/45981349613",
+        "pull/196",
+        "actions/runs/45985278912",
+        "actions/runs/45985278912/artifacts/15191307549"
+      ]
+    },
+    {
+      "ordre": 38,
+      "id": "R2-M030",
+      "titre": "Le seuil du Warp",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 168,
+        "etat": "Observatoire jouable",
+        "lien": "Trois anomalies et choix au dispositif dormant"
+      },
+      "fiche": 2423,
+      "etatSurMain": "RACCORDE",
+      "observation": "Le joueur suit trois balises d’anomalie et rejoint le dispositif de l’Observatoire. La décision de privilégier la stabilité ou l’énergie entre au registre de quête.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/warpEpochsV165.ts#L399-L405",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/WarpEpochsPanelV165.tsx#L101-L112",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L5218-L5224"
+      ],
+      "etatDeLivraison": "Fusionnée dans #197 · Observatoire jouable · trois balises et décision dans Chrome",
+      "reste": "Chrome confirme la voie énergie après les trois lectures. La voie stabilité garde son test dédié.",
+      "preuvesLivraison": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/71b268fab6e561c2d799d1cbbbcd322f78880317",
+        "actions/runs/45999376383",
+        "actions/runs/45999376383/artifacts/15197970553",
+        "pull/197"
+      ]
+    },
+    {
+      "ordre": 39,
+      "id": "R2-M031",
+      "titre": "Les pièces d’un retour",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 169,
+        "etat": "Essais et transport raccordés",
+        "lien": "Diagnostics, réglages et chariot des trois pièces"
+      },
+      "fiche": 2429,
+      "etatSurMain": "RACCORDE",
+      "observation": "Les trois composants passent par leurs établis. Les contrôles refusés ramènent la pièce à l’établi et la progression reprend. Le chariot transporte les composants retestés.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/warpEpochsV165.ts#L105-L110",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/warpEpochsV165.ts#L408-L414",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/WarpEpochsPanelV165.tsx#L113-L120"
+      ],
+      "etatDeLivraison": "Fusionnée dans #197 · Trois pièces et chariot jouables · test refusé et reprise Chrome",
+      "reste": "Chrome rejoue la reprise d’un établi, la variante de la seconde pièce et le transport. Les gestes et sons emploient les ressources du projet.",
+      "preuvesLivraison": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/71b268fab6e561c2d799d1cbbbcd322f78880317",
+        "actions/runs/45999376383",
+        "actions/runs/45999376383/artifacts/15197970553",
+        "pull/197"
+      ]
+    },
+    {
+      "ordre": 40,
+      "id": "R2-M032",
+      "titre": "Installer le module du Warp",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 170,
+        "etat": "Installation et preuve raccordées",
+        "lien": "Supports, câbles et retour à vide"
+      },
+      "fiche": 2435,
+      "etatSurMain": "RACCORDE",
+      "observation": "Le chasseur règle les supports, relie les câbles et effectue le test de retour à vide. Le module et la preuve de chronique s’inscrivent dans la même sauvegarde.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/warpEpochsV165.ts#L417-L423",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/WarpEpochsPanelV165.tsx#L122-L123",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/warpModuleBay.ts#L1-L2"
+      ],
+      "etatDeLivraison": "Fusionnée dans #197 · Montage et retour à vide jouables · reçu vérifié dans Chrome",
+      "reste": "La recette confirme le refus du premier retour, les travaux conservés et l’écriture du module et de la preuve de chronique.",
+      "preuvesLivraison": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/71b268fab6e561c2d799d1cbbbcd322f78880317",
+        "actions/runs/45999376383",
+        "actions/runs/45999376383/artifacts/15197970553",
+        "pull/197"
+      ]
+    },
+    {
+      "ordre": 41,
+      "id": "R2-M033",
+      "titre": "Traverser et revenir",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 171,
+        "etat": "Reconnaissance W-02 raccordée",
+        "lien": "Repère physique et retour par la fenêtre réservée"
+      },
+      "fiche": 2441,
+      "etatSurMain": "RACCORDE",
+      "observation": "Le premier aller-retour joue la reconnaissance physique W‑02, son repère, une alcôve facultative et la remise d’un rapport. Ce trajet garde sa preuve propre de campagne.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/warpEpochsV165.ts#L436-L456",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/WarpEpochsPanelV165.tsx#L57-L68",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/WarpEpochsPanelV165.tsx#L140-L168"
+      ],
+      "etatDeLivraison": "Fusionnée dans #197 · Reconnaissance W‑02 et retour jouables · rechargement dans Chrome",
+      "reste": "Chrome joue le repère, l’alcôve facultative et le retour avec rapport. Les autres époques ont leur ligne transverse.",
+      "preuvesLivraison": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/71b268fab6e561c2d799d1cbbbcd322f78880317",
+        "actions/runs/45999376383",
+        "actions/runs/45999376383/artifacts/15197970553",
+        "pull/197"
+      ]
+    },
+    {
+      "ordre": 42,
+      "id": "R2-M034",
+      "titre": "Choisir la prochaine route",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 172,
+        "etat": "Choix et préparation raccordés",
+        "lien": "Officier du quai, route V159 et sas orbital"
+      },
+      "fiche": 2447,
+      "etatSurMain": "RACCORDE",
+      "observation": "Depuis le quai du Homeworld, le joueur compare chasse, exploration et service, choisit l’exploration à Kaail-Prime, rejoint le sas à pied et confirme le manifeste. Chrome vérifie sa reprise en jeu. Aucun Warp ni arrivée simulée. Les autres options sont couvertes par les règles de comparaison et de transfert.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/spaceRoutesV159.ts#L170-L191",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L4995-L5003",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2353-L2357",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/homeworldRouteM034.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #196 · Préparation de route raccordée · parcours Chrome",
+      "reste": "Le scénario navigateur termine la préparation de l’exploration. Les itinéraires et leurs conditions de sélection sont testés en domaine.",
+      "preuvesLivraison": [
+        "actions/runs/45978146472",
+        "actions/runs/45978135116",
+        "actions/runs/45978135116/artifacts/15187958395",
+        "pull/196"
+      ]
+    },
+    {
+      "ordre": 43,
+      "id": "R2-M035",
+      "titre": "Un conflit de clan à hauteur de chasseur",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 173,
+        "etat": "Introduction de campagne jouable",
+        "lien": "Mandat du Conseil, choix d’alliance et passage du canyon"
+      },
+      "fiche": 2453,
+      "etatSurMain": "RACCORDE",
+      "observation": "Depuis le vrai Conseil, le joueur déclenche le secours, rejoint le passage, couvre l’éclaireur blessé, organise l’extraction puis revient à la balise dans le site transformé. Chrome valide le parcours et le rechargement. Le moteur couvre aussi l’autre choix et le retrait si l’escorte est exposée.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L4995-L5003",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L5249",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/clanWarMissionModesV114.ts#L126-L156",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/warNarrativeR2M035.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #196 · Passage et extraction raccordés · parcours Chrome",
+      "reste": "La recette Chrome joue le secours. Les cas de retrait et l’autre voie sont éprouvés en simulation. Des replis répétés peuvent atteindre la limite de 120 gestes.",
+      "preuvesLivraison": [
+        "actions/runs/45981259828",
+        "actions/runs/45981259828/artifacts/15189996468",
+        "pull/196"
+      ]
+    },
+    {
+      "ordre": 44,
+      "id": "R2-M036",
+      "titre": "Voir le champ depuis les hauteurs",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 174,
+        "etat": "Introduction RTS jouable",
+        "lien": "Conseil, trois équipes et sortie sur W3-MAP01"
+      },
+      "fiche": 2459,
+      "etatSurMain": "RACCORDE",
+      "observation": "Le candidat utilise trois formations RTS W3. Le joueur déploie, couvre, déplace et replie, puis descend sur la carte jouable pour ravitailler ou contourner. Chrome valide les deux choix, le repli des trois survivants, le rechargement au sol et le reçu final. Vingt et un tests passent.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/clanWarMissionModesV114.ts#L20-L22",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/clanWarMissionModesV114.ts#L233-L253",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2365-L2369",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/warCommandIntroR2M036.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #196 · Commandement raccordé · deux chemins Chrome",
+      "preuvesLivraison": [
+        "actions/runs/45979624340",
+        "actions/runs/45979624340/artifacts/15188463533",
+        "actions/runs/45979624340/artifacts/15189211125",
+        "pull/196"
+      ],
+      "reste": "Le mandat du conseil est préparé par les mécanismes existants pour atteindre la scène dans la recette."
+    },
+    {
+      "ordre": 45,
+      "id": "R2-M037",
+      "titre": "La carte a des chemins",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 175,
+        "etat": "Introduction de conquête raccordée",
+        "lien": "Mandat Blooded, convoi, traversée et choix au poste"
+      },
+      "fiche": 2465,
+      "etatSurMain": "RACCORDE",
+      "observation": "La campagne ouvre Korthas depuis le pont ou la carte avec Blooded, la coque V161 et le retour du trajet V173. Le joueur tient le passage avec une garde, y livre le convoi, examine les deux niveaux du canyon et rejoint le débouché choisi. La remise du rapport persiste avec ce front de campagne.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/clanWarExerciseV6.ts#L30-L51",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L4995-L5003",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2371-L2375",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/clanWarM037.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #197 · Conquête raccordée à la campagne · sortie est et double reprise dans Chrome",
+      "reste": "La sortie ouest est vérifiée en test. La sortie est prépare la progression après le rapport. Les trente mondes et les Fronts libres gardent leur registre.",
+      "preuvesLivraison": [
+        "actions/runs/45981505858",
+        "actions/runs/45981382812",
+        "pull/196",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/96a5a9fde36e68f49e0fe97a0d98ccc22c78fb78",
+        "actions/runs/45997045125",
+        "actions/runs/45997045125/artifacts/15196556792",
+        "actions/runs/45997651308",
+        "actions/runs/45997651308/artifacts/15197200992",
+        "pull/197"
+      ]
+    },
+    {
+      "ordre": 46,
+      "id": "R2-M038",
+      "titre": "L’histoire dans le meuble",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 176,
+        "etat": "Atelier et placement raccordés",
+        "lien": "Provenance, préparation et emplacement de la prise"
+      },
+      "fiche": 2471,
+      "etatSurMain": "RACCORDE",
+      "observation": "Le parcours passe par l’inspection du trophée d’origine, le support, le rapport de mission et son étiquette avant l’installation. Chrome vérifie la destination vaisseau, l’unicité de l’original, la chronologie et le reçu après rechargement. La destination résidence est couverte par le scénario métier avec le même trophée. 78 tests et le contrôle TypeScript passent.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L6840-L6868",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L7198-L7210",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/trophyUsagesV147.ts#L283-L306",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/trophyIntroductionR2M038.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #196 · Mise en exposition raccordée · parcours Chrome",
+      "reste": "La destination résidence est testée au niveau des règles et du rendu, la destination vaisseau dans Chrome.",
+      "preuvesLivraison": [
+        "actions/runs/45977579294",
+        "actions/runs/45977579294/artifacts/15187737788",
+        "pull/196"
+      ]
+    },
+    {
+      "ordre": 47,
+      "id": "R2-M039",
+      "titre": "Revenir chez les siens",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 177,
+        "etat": "Retour civique raccordé",
+        "lien": "Quai, atelier, relais et témoin"
+      },
+      "fiche": 2477,
+      "etatSurMain": "RACCORDE",
+      "observation": "Sur 65361bb · Les rues, missions et conversations des activités locales existent. Le retour dédié dont les réactions se fondent sur les chasses effectivement faites reste à raccorder.\nRecette · Le retour rattache les conversations aux chasses terminées. Les tests couvrent les deux contacts natifs, la réparation du même relais et le rapport persistant. Le signal du relais est rendu dans la scène d’origine.\nRecette Chrome · Le trajet de la ville, l’intervention au quai et la reprise après rechargement ont été joués dans Homeworld.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/HomeworldHub.tsx#L1254-L1259",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/HomeworldHub.tsx#L1596",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2383-L2387"
+      ],
+      "chantierActif": "actes_iv_vi",
+      "etatDeLivraison": "Fusionnée dans #188 · recette Chrome",
+      "reste": "La variante livrée suit la réparation du relais dans la scène existante. Escorte et piste locale restent des variantes à produire.",
+      "preuvesLivraison": [
+        "actions/runs/44995049646",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/a9bed649b9f6df5188be67225c0cd3dd35d4708b/app/game/HomeworldReturnM039.tsx#L36-L72",
+        "actions/runs/44996173113",
+        "actions/runs/44996173113/artifacts/14744470606",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/ee47b10c3d0ff45502f7e54e6a60d8b97035589f/scripts/qa-homeworld-return-m039.mjs",
+        "pull/188"
+      ]
+    },
+    {
+      "ordre": 48,
+      "id": "R2-M040",
+      "titre": "Mon domaine de maîtrise",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 178,
+        "etat": "Jouable dans le dossier",
+        "lien": "Quatre exercices et profil enregistré"
+      },
+      "fiche": 2483,
+      "etatSurMain": "RACCORDE",
+      "observation": "Terrain de maîtrise quatre disciplines et profil d’une ou deux disciplines démontrées, sauvegardé depuis le dossier.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/ClanChroniclePanel.tsx#L132-L137",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L2374-L2382",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2389-L2395",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/tests/elite-mastery-v170.test.mjs"
+      ]
+    },
+    {
+      "ordre": 49,
+      "id": "R2-M041",
+      "titre": "Préparer la chasse solitaire",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 179,
+        "etat": "Préparation raccordée au dossier du clan",
+        "lien": "`quatzaRij.expeditions.solo`"
+      },
+      "fiche": 2491,
+      "etatSurMain": "RACCORDE",
+      "observation": "Râtelier, plan, marge choisie et départ du solo. Le registre du Quatza lie les étapes et la coque réellement possédée.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/ClanChroniclePanel.tsx#L138-L142",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/quatzaRij.ts#L291-L299",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/quatzaRij.ts#L463-L468",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2403-L2409"
+      ]
+    },
+    {
+      "ordre": 50,
+      "id": "R2-M042",
+      "titre": "Le Quatza-Rij solitaire",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 180,
+        "etat": "Combat, prélèvement et retour raccordés",
+        "lien": "`quatzaRij.expeditions.solo`"
+      },
+      "fiche": 2497,
+      "etatSurMain": "RACCORDE",
+      "observation": "Combat solo, repli persistant, remise des deux pièces avec rejeu dans la sauvegarde. La reconnaissance et les sons dédiés restent à produire.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/ClanChroniclePanel.tsx#L138-L142",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/quatzaRij.ts#L175-L224",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/quatzaRij.ts#L470-L484",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/tests/quatza-rij.test.mjs"
+      ]
+    },
+    {
+      "ordre": 51,
+      "id": "R2-M043",
+      "titre": "La reconnaissance Elite",
+      "rang": "Blooded",
+      "table": {
+        "ligne": 181,
+        "etat": "Reconnaissance Elite raccordée",
+        "lien": "Lames, plasma, chasse L-06 et remise au socle"
+      },
+      "fiche": 2505,
+      "etatSurMain": "RACCORDE",
+      "observation": "Après huit chasses et les preuves du Berceau, du Quatza-Rij solitaire et de deux disciplines, le chasseur accomplit L‑06. Les lames, la recharge, les limites du plasma et le simulateur en trois phases produisent les preuves. Le rang narratif Elite requiert le geste au socle et la reconnaissance des témoins.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/ClanChroniclePanel.tsx#L138-L151",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/rankRiteDossierV168.ts",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L183-L193",
+        "pull/171",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/eliteRecognitionV174.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #197 · L‑06 et rang narratif Elite jouables · cérémonie et reprise dans Chrome",
+      "reste": "La recette finale joue le cercle restreint et la touche remappée. Le décor, les acteurs et les effets dédiés restent à produire.",
+      "preuvesLivraison": [
+        "actions/runs/45977281063",
+        "actions/runs/45977281063/artifacts/15187901935",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/1f51fc09d439e6ae6e97d7b53fc137a07bb6a5c0/app/game/systems/eliteRecognitionV174.ts",
+        "pull/196",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/94519e83c09c170b6c4da63af3d77f180269943e",
+        "actions/runs/45996932832",
+        "actions/runs/45997078318",
+        "actions/runs/45997078318/artifacts/15196567108",
+        "actions/runs/45997710068",
+        "actions/runs/45997710068/artifacts/15196164324",
+        "pull/197"
+      ]
+    },
+    {
+      "ordre": 52,
+      "id": "R2-M044",
+      "titre": "La coque d’un groupe",
+      "rang": "Elite",
+      "table": {
+        "ligne": 182,
+        "etat": "Inspection extérieure raccordée",
+        "lien": "Passerelle, deux ponts scellés, relevé rendu au sas"
+      },
+      "fiche": 2515,
+      "etatSurMain": "RACCORDE",
+      "observation": "Depuis le vrai dossier du hangar, la visite de la cale commence par le sas. Le chasseur sécurise la passerelle, rejoint deux scellés et revient physiquement déposer le relevé de sa coque. Ce relevé précède les décisions sur les droits.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/clanHullProjectV171.ts#L59-L104",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2421-L2427",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/tests/clan-hull-project-v171.test.mjs"
+      ],
+      "etatDeLivraison": "Fusionnée dans #197 · Cale et scellés jouables · reçu retrouvé dans Chrome",
+      "reste": "Chrome joue les postes et la remise, puis retrouve le reçu après rechargement et réimport. Les prérequis de coque, rang et amarrage sont préparés par les réducteurs. Le décor détaillé et le son restent un chantier de production.",
+      "preuvesLivraison": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/544fbec4dc7bd1c44d6c7a3c03e20198e5685b4d",
+        "actions/runs/45999104288",
+        "actions/runs/45999282391",
+        "actions/runs/45999282391/artifacts/15197302683",
+        "pull/197"
+      ]
+    },
+    {
+      "ordre": 53,
+      "id": "R2-M045",
+      "titre": "Une porte, plusieurs haltes",
+      "rang": "Elite",
+      "table": {
+        "ligne": 183,
+        "etat": "Transfert entre seuils raccordé",
+        "lien": "`residenceV149.lastChoice`"
+      },
+      "fiche": 2523,
+      "etatSurMain": "RACCORDE",
+      "observation": "Un même objet, décroché et emballé, traverse deux vrais seuils. La décision rester ou déménager se sauvegarde.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/residenceV149.ts#L169-L171",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/residenceV149.ts#L234-L252",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/residenceV149.ts#L616-L621",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2429-L2435"
+      ]
+    },
+    {
+      "ordre": 54,
+      "id": "R2-M046",
+      "titre": "Une mission vraiment collective",
+      "rang": "Elite",
+      "table": {
+        "ligne": 184,
+        "etat": "Escorte raccordée",
+        "lien": "`clanShipOperations`"
+      },
+      "fiche": 2531,
+      "etatSurMain": "RACCORDE",
+      "observation": "Deux rôles et postes vérifiés, escorte jouée jusqu’à la victoire et reçu relu après reprise. Les preuves navigateur fournies ouvrent sur la capacité de 7 personnes.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/clanShipOperations.ts#L578-L615",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2437-L2443",
+        "actions/runs/44957466066/artifacts/14727749518",
+        "actions/runs/44957466066/artifacts/14728191923"
+      ]
+    },
+    {
+      "ordre": 55,
+      "id": "R2-M047",
+      "titre": "Ce que la guerre laisse au retour",
+      "rang": "Elite",
+      "table": {
+        "ligne": 185,
+        "etat": "Retour de la Veille Partagée raccordé",
+        "lien": "Passe des Cendres et deux interventions"
+      },
+      "fiche": 2539,
+      "etatSurMain": "RACCORDE",
+      "observation": "Sur 65361bb · La visite du lieu transformé après bataille, avec un vétéran et la tâche de retour, n’a pas de raccord observé. Le reçu de M046 est un point d’entrée réel.\nRecette · Après l’escorte collective réglée, les deux visites de la Passe des Cendres confirment la relève des blessés ou la réouverture du pont, avec reprise et reçu.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2445-L2449",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/clanShipOperations.ts#L660",
+        "pull/187"
+      ],
+      "chantierActif": "actes_vii_ix",
+      "etatDeLivraison": "Fusionnée dans #188 · recette Chrome",
+      "reste": "La visite se déroule sur une carte de repères et des actions ordonnées. Un déplacement libre sur le terrain reconstruit, les animations d’accompagnement et un décor dédié restent à produire.",
+      "preuvesLivraison": [
+        "actions/runs/44994874573",
+        "actions/runs/44994874573/artifacts/14743582358",
+        "actions/runs/44994874573/artifacts/14743087478",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/eff9d96726fab162ad62cada9c12509222241be6/app/game/ClanWarReturnR2M047Panel.tsx#L35-L58",
+        "pull/188"
+      ]
+    },
+    {
+      "ordre": 56,
+      "id": "R2-M048",
+      "titre": "La branche qu’on ne possède pas",
+      "rang": "Elite",
+      "table": {
+        "ligne": 186,
+        "etat": "Hameau W‑02 raccordé",
+        "lien": "Crue, rassemblement et choix d’intervention"
+      },
+      "fiche": 2545,
+      "etatSurMain": "RACCORDE",
+      "observation": "Sur 65361bb · W-02 a trois étapes en branche distincte, dont observation ou duel réel et restituer/recevoir un objet. La mission d’aide à un groupe local de M048, son choix et son reçu restent ouverts.\nRecette · Le Hameau des Cèdres dans W‑02 valide aide limitée et observation. Les choix restent dans la branche et le départ de retour utilise la fenêtre réservée.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/warpEpochsV165.ts#L123-L145",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/warpEpochsV165.ts#L464-L495",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2451-L2455"
+      ],
+      "etatDeLivraison": "Fusionnée dans #188 · recette Chrome",
+      "reste": "Le hameau progresse par postes et actions du panneau Warp. La traversée incarnée du hameau et son habillage propre restent à produire.",
+      "preuvesLivraison": [
+        "actions/runs/44995209730",
+        "actions/runs/44995209730/artifacts/14743267437",
+        "actions/runs/44995209730/artifacts/14743129129",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/8d0c9512fc59bb9ea98a0c8054eed43fce750e4b/app/game/WarpEpochsPanelV165.tsx#L35-L59",
+        "pull/188"
+      ]
+    },
+    {
+      "ordre": 57,
+      "id": "R2-M049",
+      "titre": "Former sans remplacer",
+      "rang": "Elite",
+      "table": {
+        "ligne": 187,
+        "etat": "Jouable dans le dossier adulte",
+        "lien": "Terrain, appuis et reçu de mentorat"
+      },
+      "fiche": 2551,
+      "etatSurMain": "RACCORDE",
+      "observation": "Terrain du novice, soutien et décision observés par le mentor et conservés. Accès Elite et honneur de carrière.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/ClanChroniclePanel.tsx#L153-L157",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/elderMentoringV168.ts#L168-L216",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2457-L2461",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/tests/elder-mentoring-v168.test.mjs"
+      ]
+    },
+    {
+      "ordre": 58,
+      "id": "R2-M050",
+      "titre": "Un désaccord à résoudre sur le terrain",
+      "rang": "Elite",
+      "table": {
+        "ligne": 188,
+        "etat": "Jouable dans le dossier adulte",
+        "lien": "Traces, horaires ou passerelle et témoin"
+      },
+      "fiche": 2559,
+      "etatSurMain": "RACCORDE",
+      "observation": "Le décor enregistre les observations et les deux solutions, puis le témoin enregistre la décision.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/ClanChroniclePanel.tsx#L159-L164",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L2354-L2362",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2465-L2469"
+      ]
+    },
+    {
+      "ordre": 59,
+      "id": "R2-M051",
+      "titre": "Être reconnu Elder",
+      "rang": "Elite",
+      "table": {
+        "ligne": 189,
+        "etat": "Relève Elder narrative raccordée",
+        "lien": "Dépositions, engagement et remise au conseil"
+      },
+      "fiche": 2567,
+      "etatSurMain": "RACCORDE",
+      "observation": "Le conseil lit les actes d’Elite, de mentorat et du jugement du passage. Le joueur joue sa relève puis son engagement. Le rang Elder et le reçu du conseil sont sauvegardés avec le parcours narratif.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/elderAssemblyV168.ts#L54-L104",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L2384-L2391",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2473-L2477"
+      ],
+      "etatDeLivraison": "Relève Elder du prologue vérifiée en jeu",
+      "reste": "L’habillage audiovisuel du conseil et les missions propres aux engagements local et itinérant restent ouverts.",
+      "preuvesLivraison": [
+        "actions/runs/46006711626",
+        "actions/runs/46006711626/artifacts/15200613648"
+      ]
+    },
+    {
+      "ordre": 60,
+      "id": "R2-M052",
+      "titre": "L’atelier qui fonctionne sans moi",
+      "rang": "Elder",
+      "table": {
+        "ligne": 190,
+        "etat": "Établi Elder raccordé",
+        "lien": "Armurerie et remise à Griffe de Fer"
+      },
+      "fiche": 2579,
+      "etatSurMain": "RACCORDE",
+      "observation": "Sur 65361bb · Atelier déjà mené par un PNJ, aide bornée, conduite rendue et reçu absents du périmètre observé.\nRecette · Depuis l’armurerie du Clan Ship, Chrome a joué les deux choix de Griffe de Fer, réparation au guide ou montage à froid. Les alignements survivent à un rechargement. La pose puis la remise de l’atelier terminent le reçu, exporté et relu.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2485-L2489",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/ClanChroniclePanel.tsx#L153-L186"
+      ],
+      "chantierActif": "root",
+      "etatDeLivraison": "Fusionnée dans #188 · recette Chrome",
+      "reste": "L’établi passe par un panneau intégré et une jauge de crans. L’animation de montage, la bague visible en jeu et l’habillage dédié du poste restent à produire.",
+      "preuvesLivraison": [
+        "actions/runs/44995540968",
+        "actions/runs/44995540968/artifacts/14743513863",
+        "actions/runs/44995540968/artifacts/14743513818",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b315713983527deb8257c868ec4ecad356b62500/scripts/qa-elder-workshop-v172.mjs#L68-L85",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b315713983527deb8257c868ec4ecad356b62500/app/game/ElderWorkshopV172.tsx#L21-L51",
+        "pull/188"
+      ]
+    },
+    {
+      "ordre": 61,
+      "id": "R2-M053",
+      "titre": "Un ancien terrain a changé",
+      "rang": "Elder",
+      "table": {
+        "ligne": 191,
+        "etat": "Retour à Oseris-IV raccordé",
+        "lien": "Ancien relevé, rive ou canopée"
+      },
+      "fiche": 2585,
+      "etatSurMain": "RACCORDE",
+      "observation": "Sur 65361bb · Environnement et activités de retour existent. Aucun rapprochement jouable des anciens relevés du même terrain et des changements actuels attestés.\nRecette · L’entrée Elder franchit le contrôle de l’assemblée et vérifie la première chasse d’Oseris. Le terrain compare l’ancien relevé à la tranchée transformée. Les traversées rive entretenue et canopée adoptée, la reprise et le rapport sont validés dans GameClient.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/data.ts#L532-L1510",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2491-L2495"
+      ],
+      "etatDeLivraison": "Fusionnée dans #188 · recette Chrome",
+      "reste": "Le terrain 2D emploie le panorama existant d’Oseris et des repères propres à ce retour. La recette prépare l’accès avec les fonctions de campagne de chasse, de coque et d’assemblée. Les autres planètes et leurs changements restent à produire.",
+      "preuvesLivraison": [
+        "actions/runs/44996071556",
+        "actions/runs/44996071556/artifacts/14744115691",
+        "actions/runs/44996071556/artifacts/14743713967",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a3472449f16594a8d2c6d2df4716df83ef75a73/app/game/systems/oserisReturnR2M053.ts#L57-L88",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a3472449f16594a8d2c6d2df4716df83ef75a73/scripts/qa-oseris-return-r2-m053.mjs#L112-L141",
+        "pull/188"
+      ]
+    },
+    {
+      "ordre": 62,
+      "id": "R2-M054",
+      "titre": "La décision du successeur",
+      "rang": "Elder",
+      "table": {
+        "ligne": 192,
+        "etat": "Parcours du successeur jouable",
+        "lien": "Oseris-IV, postes, danger et retour"
+      },
+      "fiche": 2591,
+      "etatSurMain": "RACCORDE",
+      "observation": "Dans le parcours du successeur, la relève organise les postes, l’approche et l’extraction. Les trois issues déléguer, conseiller et intervenir face au danger sont jouées et reprises après rechargement. La preuve propre de cette épreuve reste distincte des rites Ancient.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/elderMentoringV168.ts#L159-L216",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2497-L2501",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/successorTrialR2M054.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #196 · Parcours raccordé · trois recettes Chrome",
+      "reste": "L’épreuve ne confère pas de rang. Les voix et l’habillage artistique propre du successeur restent à qualifier.",
+      "preuvesLivraison": [
+        "actions/runs/45975421414",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/3e8ad294f8f762064738f3d70a9dfa3cee377f12/app/game/systems/successorTrialR2M054.ts",
+        "pull/196"
+      ]
+    },
+    {
+      "ordre": 63,
+      "id": "R2-M055",
+      "titre": "L’épreuve de la longue mémoire",
+      "rang": "Elder",
+      "table": {
+        "ligne": 193,
+        "etat": "Épreuve de mémoire jouable",
+        "lien": "Archives, hangar, armurerie et transmission"
+      },
+      "fiche": 2597,
+      "etatSurMain": "RACCORDE",
+      "observation": "Le parcours de longue mémoire rassemble trois traces du parcours réellement accompli, confronte ancien souvenir et état présent, puis conserve le choix transmis. Les issues chasse, lieu collectif et enseignement passent dans Chrome avec rechargement.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2503-L2507",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/heritageV152.ts#L149-L170",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/longMemoryR2M055.ts"
+      ],
+      "etatDeLivraison": "Fusionnée dans #196 · Parcours raccordé · trois recettes Chrome",
+      "reste": "La reconnaissance Ancient a ses propres actes et preuves. L’habillage visuel et sonore dédié reste à qualifier.",
+      "preuvesLivraison": [
+        "actions/runs/45976677678",
+        "pull/196"
+      ]
+    },
+    {
+      "ordre": 64,
+      "id": "R2-M056",
+      "titre": "La reconnaissance Ancient",
+      "rang": "Elder",
+      "table": {
+        "ligne": 194,
+        "etat": "Rite Ancient raccordé",
+        "lien": "Dette d’Oseris, trois relèves et audience locale ou intime"
+      },
+      "fiche": 2603,
+      "etatSurMain": "RACCORDE",
+      "observation": "La dette d’Oseris passe par les postes du navire. Trois relèves totalisant 325 ans transmettent le passage. L’audience retenue reconnaît Ancient et la reconnaissance reprend à froid.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/clanChronicle.ts#L73-L76",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/heritageV152.ts#L149-L170",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2509-L2513"
+      ],
+      "etatDeLivraison": "Audiences locale et intime jouées et reprises",
+      "reste": "L’habillage audiovisuel des cérémonies et les variantes de lieu et de témoignages au-delà des deux audiences jouées restent ouverts.",
+      "preuvesLivraison": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/863467d94248aa68e2254e94410dd1072b141c45",
+        "actions/runs/45996508882",
+        "actions/runs/45996508882/artifacts/15196496536",
+        "actions/runs/45996508882/artifacts/15196580966",
+        "pull/197",
+        "actions/runs/46006377978",
+        "actions/runs/46006377978/artifacts/15202462368",
+        "actions/runs/46006377978/artifacts/15200673591"
+      ]
+    },
+    {
+      "ordre": 65,
+      "id": "R2-M057",
+      "titre": "Le mausolée des chasses racontées",
+      "rang": "Ancient",
+      "table": {
+        "ligne": 195,
+        "etat": "Visite au Mur et casier jouables",
+        "lien": "Piédestaux, statuts des titres et trace de visite par alcôve"
+      },
+      "fiche": 2609,
+      "etatSurMain": "PARTIEL_MISSION",
+      "observation": "Au mausolée, le joueur rejoint physiquement le Mur des Chasses. La lecture du statut réel d’une alcôve enregistre une visite qui reprend à froid. Les masques et le casier gardent leurs actions propres.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L5275",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/Mausoleum.tsx#L42-L98",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/Mausoleum.tsx#L135-L145",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/mausoleum.ts#L35-L76"
+      ],
+      "reste": "Les campagnes DLC supplémentaires, la piste MUS‑50 et les enregistrements vocaux restent ouverts.",
+      "etatDeLivraison": "Visite Ancient, Mur et casier",
+      "preuvesLivraison": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/0c82331f4267acdb7919ef37c3c85d84c20187bd/app/game/Mausoleum.tsx",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/0c82331f4267acdb7919ef37c3c85d84c20187bd/app/game/systems/mausoleum.ts",
+        "actions/runs/45996503862",
+        "actions/runs/45996503862/artifacts/15196481796",
+        "pull/197",
+        "actions/runs/46010465918",
+        "actions/runs/46010465918/artifacts/15203257934",
+        "pull/200"
+      ],
+      "raccordProjete": "RACCORDE"
+    },
+    {
+      "ordre": 66,
+      "id": "R2-M058",
+      "titre": "Entrer dans une chronique cinéma",
+      "rang": "Ancient",
+      "table": {
+        "ligne": 196,
+        "etat": "Première chronique originale jouable",
+        "lien": "Crâne du Ravin au socle, secours ou variante du sas fermé"
+      },
+      "fiche": 2615,
+      "etatSurMain": "RACCORDE",
+      "observation": "Au rang Ancient, le joueur prend le masque au mausolée et le pose sur le socle. La Relève des Passes et la Veille de la corniche se jouent avec deux sauvegardes locales indépendantes. Chrome couvre les composants dans le harnais dédié.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/mausoleum.ts#L68-L86",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2521-L2525",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/42cd44605a5bf5b61cb87b9071e47acb20168695/app/game/systems/mausoleum.ts#L121"
+      ],
+      "reste": "L’habillage de transition, les avatars propres et le raccord des autres chroniques du catalogue restent ouverts.",
+      "etatDeLivraison": "Deux lectures de la première chronique originale vérifiées",
+      "preuvesLivraison": [
+        "actions/runs/46007077359",
+        "actions/runs/46007077359/artifacts/15201963230"
+      ]
+    },
+    {
+      "ordre": 67,
+      "id": "R2-M059",
+      "titre": "La nouvelle cohorte revient",
+      "rang": "Ancient",
+      "table": {
+        "ligne": 197,
+        "etat": "Séquence jouée en recette · accès en attente",
+        "lien": "Support à deux pieds, écoute de quatre jeunes ou retour au seuil"
+      },
+      "fiche": 2621,
+      "etatSurMain": "PARTIEL_MISSION",
+      "observation": "Le joueur prépare un support à deux pieds. Un mauvais réglage persiste et peut être corrigé. Après l’essai, rester ouvre quatre témoignages et conserve une inconnue. Aider stabilise le support et rend la main au seuil.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2527-L2531",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/ClanChroniclePanel.tsx#L153-L186",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/42cd44605a5bf5b61cb87b9071e47acb20168695/app/game/systems/originEndingsV170.ts#L154",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/42cd44605a5bf5b61cb87b9071e47acb20168695/app/game/systems/ancientHearingR2M056.ts#L30"
+      ],
+      "reste": "Le harnais fournit un reçu O6-E1 réalisé. L’accès dans la campagne attend la réalisation jouée de cette fin dans une demeure avec Ancient reconnu.",
+      "preuvesLivraison": [
+        "actions/runs/45996508882",
+        "actions/runs/45997821189",
+        "actions/runs/45998374522",
+        "actions/runs/46008004131",
+        "actions/runs/46008004131/artifacts/15201839182"
+      ],
+      "etatDeLivraison": "Les deux issues de la cohorte sont jouées en harnais"
+    },
+    {
+      "ordre": 68,
+      "id": "R2-M060",
+      "titre": "La longue chasse demeure",
+      "rang": "Ancient, épilogue",
+      "table": {
+        "ligne": 198,
+        "etat": "Épilogue joué en recette · accès en attente",
+        "lien": "Objets, liens et geste final au foyer ou au vaisseau"
+      },
+      "fiche": 2627,
+      "etatSurMain": "PARTIEL_MISSION",
+      "observation": "Le joueur visite les objets et les liens présents, puis choisit un geste admis par son lieu et son récit. Le résultat est repris depuis la sauvegarde du scénario.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/originEndingsV170.ts#L39-L46",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/originEndingsV170.ts#L120-L155",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2533-L2537",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/42cd44605a5bf5b61cb87b9071e47acb20168695/app/game/systems/originEndingsV170.ts#L170"
+      ],
+      "reste": "L’accès normal à la fin d’origine, la chaîne après le contenu de fin de jeu, les autres lieux et l’habillage de l’épilogue restent ouverts.",
+      "etatDeLivraison": "Épilogue joué en harnais au foyer et au vaisseau",
+      "preuvesLivraison": [
+        "actions/runs/46008004131",
+        "actions/runs/46008004131/artifacts/15201839182"
+      ]
+    }
+  ],
+  "aventants": [
+    {
+      "pr": 171,
+      "titre": "Épreuves de rang Blooded, Elite, Elder (V168)",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/171",
+      "commit": "c904613de03b3e98146cd9ec8e114f9a579cf09a",
+      "etat": "open",
+      "fusionnee": false,
+      "fusionGitPossible": false,
+      "observation": "Branche historique en conflit. Blooded est proposé sur Cinder-12, Elite sur un substitut Cryostalker et Elder sur Acheron. La chasse Quatza-Rij et les actes Elder exacts déjà livrés gardent leurs preuves. Les substituts de rang restent hors de la campagne.",
+      "etatGit": "dirty"
+    },
+    {
+      "pr": 182,
+      "titre": "Bible : la Terre, terrain de chasse (20 sites, paliers, Indice de Discrétion, ARGOS)",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/182",
+      "commit": "ed4a2f80d8fbcc7b8116e67c692d13b886906f7e",
+      "etat": "open",
+      "fusionnee": false,
+      "fusionGitPossible": true,
+      "observation": "Avenant Terre, 20 sites et 54 fiches. La tête contient le prototype Okavango HTML trois dimensions, autonome. Le pilote du jeu reste sur une branche distincte, avec six tests ciblés et l’admission Blooded narrative à raccorder.",
+      "controles": [
+        {
+          "nom": "Dernière vague Actions, huit contrôles réussis",
+          "conclusion": "success",
+          "lien": "actions/runs/45041537907"
+        }
+      ],
+      "etatGit": "unstable"
+    },
+    {
+      "pr": 185,
+      "titre": "Bible : mode The Isles, chasse en monde ouvert isométrique",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/185",
+      "commit": "ae40e017df37c5f04dc638236d4d6127d260f4a6",
+      "etat": "open",
+      "fusionnee": false,
+      "fusionGitPossible": true,
+      "observation": "Avenant de conception The Isles, classeur et preuve HTML autonome. Neuf fichiers sont repris à l’identique par #193, qui complète aussi le document de mode. L’ancre de la Bible reste propre à #185.",
+      "controles": [
+        {
+          "nom": "P0 P1 current gameplay coherence",
+          "conclusion": "failure",
+          "lien": "actions/runs/45041535493"
+        }
+      ],
+      "etatGit": "unstable"
+    },
+    {
+      "pr": 188,
+      "titre": "Bible de campagne · raccorder les scènes encore ouvertes",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/188",
+      "commit": "2769b094862aea97f10fc0e5c4f1154489a8a8bc",
+      "etat": "closed",
+      "fusionnee": true,
+      "fusionGitPossible": true,
+      "observation": "Fusionnée dans main. Neuf parcours, un parcours de cité partiel et neuf fichiers audio. Les preuves de branche restent consultables par fiche.",
+      "controles": [
+        {
+          "nom": "Vérification groupée",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996205292"
+        },
+        {
+          "nom": "Contrôle du candidat élargi",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44997260025"
+        },
+        {
+          "nom": "Build et service de production du candidat",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44997259998"
+        }
+      ]
+    },
+    {
+      "pr": 189,
+      "titre": "chore(ai): CodeGraph avec les skills existants",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/189",
+      "commit": "b99dff9a3c8bd3564596d92639a0bef9fc8a5d1c",
+      "etat": "open",
+      "fusionnee": false,
+      "fusionGitPossible": true,
+      "observation": "Documentation d’outillage CodeGraph. Les deux adaptateurs guident l’installation locale et ne livrent aucune mission ni ressource.",
+      "etatGit": "unstable"
+    },
+    {
+      "pr": 190,
+      "titre": "chore(ai): intégrer Sand3D aux skills existants",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/190",
+      "commit": "6fc3258a4625a8df8f05a35a709b11499990f881",
+      "etat": "open",
+      "fusionnee": false,
+      "fusionGitPossible": true,
+      "observation": "Documentation d’outillage Sand3D. Les deux adaptateurs sont optionnels. Aucun asset ou dépendance du jeu livré.",
+      "etatGit": "unstable"
+    },
+    {
+      "pr": 191,
+      "titre": "chore(ai): uniformiser les skills IA réutilisables",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/191",
+      "commit": "8bd0568176ca86c7daedb48552180a008675453b",
+      "etat": "open",
+      "fusionnee": false,
+      "fusionGitPossible": true,
+      "observation": "Documentation d’outillage, points d’entrée et révisions externes des guides. Les changements portent sur les agents et leur environnement.",
+      "etatGit": "unstable"
+    },
+    {
+      "pr": 192,
+      "titre": "fix(qa): orienter le pilote navigateur vers l’Apex au contact",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/192",
+      "commit": "d757167b7b7a85d0d04e247a8ce420f4e3ab8772",
+      "etat": "open",
+      "fusionnee": false,
+      "fusionGitPossible": false,
+      "observation": "Deux correctifs audio et de recette du lot composite sont intégrés dans #196. Les ajouts Outer Ops, intro et armurerie restent des travaux distincts, et la tête de branche est en conflit avec le main de référence.",
+      "controles": [
+        {
+          "nom": "V94 regression tests",
+          "conclusion": "failure",
+          "lien": "actions/runs/45178654381"
+        },
+        {
+          "nom": "Portée reprise et testée sur branche · 24 tests et 157 empreintes",
+          "conclusion": "success",
+          "lien": "actions/runs/45974701421"
+        },
+        {
+          "nom": "Fusion des correctifs repris",
+          "conclusion": "success",
+          "lien": "pull/196"
+        }
+      ],
+      "etatGit": "dirty"
+    },
+    {
+      "pr": 193,
+      "titre": "The Isles : prototype des étapes 1 à 3 (vue three.js, salle réseau, Chasse inversée sur Verdant)",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/193",
+      "commit": "bb7211be89f9d1e1f202f96c8ad151bec84b643b",
+      "etat": "open",
+      "fusionnee": false,
+      "fusionGitPossible": false,
+      "observation": "Prototype The Isles accessible par Modes de jeu. Test Chromium de la vue et de la chasse inversée en solo, clients réseau simultanés jusqu’à six. Le harnais assemble les composants esbuild. Le mode campagne et ses sauvegardes restent indépendants. Plusieurs contrôles de dépôt sont rouges.",
+      "controles": [
+        {
+          "nom": "Pod atmosphere and remote recovery",
+          "conclusion": "failure",
+          "lien": "actions/runs/45194360079"
+        },
+        {
+          "nom": "Wolf castle and planetary arrival",
+          "conclusion": "failure",
+          "lien": "actions/runs/45194360033"
+        },
+        {
+          "nom": "V94 regression tests",
+          "conclusion": "failure",
+          "lien": "actions/runs/45194359837"
+        },
+        {
+          "nom": "P0 P1 current gameplay coherence",
+          "conclusion": "failure",
+          "lien": "actions/runs/45194359996"
+        },
+        {
+          "nom": "Clan Ship campaign, interior, crew and tactical operations",
+          "conclusion": "failure",
+          "lien": "actions/runs/45194359891"
+        },
+        {
+          "nom": "Scénarios Chromium esbuild de la branche",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bb7211be89f9d1e1f202f96c8ad151bec84b643b/production/qa/evidence/isles-v1-20261123/report.json"
+        }
+      ],
+      "etatGit": "dirty"
+    },
+    {
+      "pr": 194,
+      "titre": "chore(ai): intégrer SpriteCast aux skills existants",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/194",
+      "commit": "0d9e45e0387b3c48b2fdf4470ca69c4b1f3bf9ba",
+      "etat": "open",
+      "fusionnee": false,
+      "fusionGitPossible": true,
+      "observation": "Deux adaptateurs SpriteCast. Le guide s’adresse aux agents. Aucun sprite, commande d’API ni dépendance runtime livré.",
+      "etatGit": "unstable"
+    },
+    {
+      "pr": 195,
+      "titre": "The PIT : bible, riposte et extension originale Les Masques Brisés",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/195",
+      "commit": "22f178b0e8ea59e8fd183bf7a2fd8f3c080985bc",
+      "etat": "open",
+      "fusionnee": false,
+      "fusionGitPossible": false,
+      "observation": "La tête ajoute le catalogue de conception original « Les Masques Brisés », quinze PNG uniques et quatre fichiers de secours de précision conservés sous .txt. Les 78 tests versionnés portent sur bb0e24d. Une exécution cumulée de 89 tests a été interrompue avant lecture. Le catalogue indique une intégration runtime à venir et la branche reste en conflit.",
+      "controles": [
+        {
+          "nom": "Clan quest dialogue native regressions · tête précédente 5cee05b",
+          "conclusion": "failure",
+          "lien": "actions/runs/45963191492"
+        },
+        {
+          "nom": "P0 P1 current gameplay coherence · tête précédente 5cee05b",
+          "conclusion": "failure",
+          "lien": "actions/runs/45963191720"
+        },
+        {
+          "nom": "Current asset raccords - equipment and physical supports · tête précédente 5cee05b",
+          "conclusion": "failure",
+          "lien": "actions/runs/45963191525"
+        },
+        {
+          "nom": "V94 regression tests · tête précédente 5cee05b",
+          "conclusion": "failure",
+          "lien": "actions/runs/45963191658"
+        },
+        {
+          "nom": "24 vérifications ciblées du harnais Chromium",
+          "conclusion": "success",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/5cee05b27672af763f3a8dfaea9c8c64e6878633/docs/the-pit/QA_NAVIGATEUR_20261127.json"
+        },
+        {
+          "nom": "Lot 2 · 78 tests annoncés par le relevé versionné",
+          "conclusion": "réussi sur branche selon rapport",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bb0e24d3e1daa652a8ce8bfaa847a765bca2f96a/docs/the-pit/qa/lot2-20261127/verification.json"
+        },
+        {
+          "nom": "Riposte dans PitCanvas · 8 vérifications Chromium",
+          "conclusion": "réussi selon rapport",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bb0e24d3e1daa652a8ce8bfaa847a765bca2f96a/docs/the-pit/qa/bonus-trial-20261127/report.json"
+        },
+        {
+          "nom": "Galerie des distinctions · 13 vérifications Chromium",
+          "conclusion": "réussi selon rapport",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bb0e24d3e1daa652a8ce8bfaa847a765bca2f96a/docs/the-pit/qa/honor-gallery-20261127/report.json"
+        },
+        {
+          "nom": "Revue Greyback · 9 vérifications Chromium",
+          "conclusion": "réussi selon rapport",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/bb0e24d3e1daa652a8ce8bfaa847a765bca2f96a/docs/the-pit/qa/selection-review-20261127/report.json"
+        },
+        {
+          "nom": "Catalogue original Les Masques Brisés",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/22f178b0e8ea59e8fd183bf7a2fd8f3c080985bc/content/the-pit/les-masques-brises/extension.v1.json",
+          "conclusion": "conception structurée"
+        },
+        {
+          "nom": "Publication exacte et limites du lot 3",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/22f178b0e8ea59e8fd183bf7a2fd8f3c080985bc/docs/the-pit/CONTINUATION_20261127_LOT3.md",
+          "conclusion": "contrôle documentaire"
+        },
+        {
+          "nom": "Quatre sources inertes et empreintes de reprise",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/22f178b0e8ea59e8fd183bf7a2fd8f3c080985bc/docs/the-pit/recovery/precision-20261127/manifest.json",
+          "conclusion": "récupération partielle"
+        },
+        {
+          "nom": "Contrôles GitHub à cette tête",
+          "lien": "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/22f178b0e8ea59e8fd183bf7a2fd8f3c080985bc/checks",
+          "conclusion": "CodeRabbit ignoré"
+        }
+      ],
+      "etatGit": "dirty"
+    },
+    {
+      "pr": 196,
+      "titre": "Raccorder les missions ouvertes de la Bible, du rite Blooded aux épreuves Elder",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/196",
+      "etat": "closed",
+      "fusionnee": true,
+      "tete": "3f9a3cb83626d73f7dc9fd6ee9eda64277d5e356",
+      "observation": "Le lot de la nurserie aux épreuves Elder est fusionné. L’admission campagne du canyon et la reconnaissance Elite complète font partie des travaux encore ouverts. La recette de la nomination couvre le report, l’acceptation et le rechargement sur son véritable déploiement.",
+      "controles": [
+        {
+          "nom": "Recette groupée du candidat",
+          "conclusion": "réussi · tests, types, lint et inventaire",
+          "lien": "actions/runs/45981382812"
+        },
+        {
+          "nom": "Compilation de production du candidat",
+          "conclusion": "réussi · compilation et démarrage",
+          "lien": "actions/runs/45981382813"
+        },
+        {
+          "nom": "Recette groupée précédente",
+          "conclusion": "réussi",
+          "lien": "actions/runs/45980887196"
+        },
+        {
+          "nom": "Compilation de production précédente",
+          "conclusion": "réussi",
+          "lien": "actions/runs/45980887085"
+        },
+        {
+          "nom": "Classeur du lot reproduit octet pour octet",
+          "conclusion": "success",
+          "lien": "actions/runs/45982227203"
+        },
+        {
+          "nom": "Jeu public et script",
+          "conclusion": "success",
+          "lien": "actions/runs/45984972437"
+        },
+        {
+          "nom": "Nomination Adjutant et rechargement sur le jeu public",
+          "conclusion": "success",
+          "lien": "actions/runs/45985278912"
+        }
+      ],
+      "commit": "9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404",
+      "deploiement": [
+        {
+          "nom": "Jeu public au commit 9a98912",
+          "etat": "READY",
+          "lien": "https://yautja-la-longue-chasse.vercel.app/"
+        }
+      ]
+    },
+    {
+      "pr": 197,
+      "titre": "Prolonger 15 fiches de la Bible des terrasses au Warp et au rang Elite",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/197",
+      "commit": "a68bb7666710afe89ac66145c59961f0b65d9a34",
+      "tete": "cf0c0df646dba9de5c5b294e334dc4263b19153a",
+      "etat": "closed",
+      "fusionnee": true,
+      "fusionGitPossible": true,
+      "etatGit": "unknown",
+      "observation": "Le lot de 15 fiches, la préparation O6, la Bible et le classeur ont été fusionnés. Le candidat compte 220 tests réussis et un test préexistant ignoré. La mise en ligne de ce lot a été refusée par le quota Vercel au relevé de fusion.",
+      "controles": [
+        {
+          "nom": "Tests, TypeScript, ESLint et inventaire",
+          "lien": "actions/runs/45999376485",
+          "conclusion": "success"
+        },
+        {
+          "nom": "Warp joué dans Chrome",
+          "lien": "actions/runs/45999376383",
+          "conclusion": "success"
+        },
+        {
+          "nom": "Compilation et service du candidat",
+          "lien": "actions/runs/45999376473",
+          "conclusion": "success"
+        },
+        {
+          "nom": "Belvédère joué et rechargé dans Chrome",
+          "lien": "actions/runs/46000628691",
+          "conclusion": "success"
+        },
+        {
+          "nom": "Classeur reproduit octet pour octet",
+          "lien": "actions/runs/46000096534",
+          "conclusion": "success"
+        }
+      ],
+      "deploiement": [
+        {
+          "nom": "Jeu public du lot #196, relevé après #197",
+          "etat": "9a98912 selon le relevé de fusion #197",
+          "lien": "https://yautja-la-longue-chasse.vercel.app/"
+        }
+      ]
+    },
+    {
+      "pr": 198,
+      "titre": "Reprendre la recette du Belvédère depuis Homeworld",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/198",
+      "commit": "42cd44605a5bf5b61cb87b9071e47acb20168695",
+      "tete": "079452576842fe08643a7933deea56c32f82629f",
+      "etat": "closed",
+      "fusionnee": true,
+      "fusionGitPossible": true,
+      "etatGit": "unknown",
+      "observation": "Le seul fichier modifié corrige la reprise de la recette V70 depuis Homeworld. Chrome valide la porte basse et la reprise de la salle suivante.",
+      "controles": [
+        {
+          "nom": "Belvédère dans le jeu après rechargement",
+          "lien": "actions/runs/46000628691",
+          "conclusion": "success"
+        },
+        {
+          "nom": "Captures de la porte et de la sauvegarde",
+          "lien": "actions/runs/46000628691/artifacts/15198231603",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "pr": 199,
+      "titre": "Poursuivre neuf fiches ouvertes de la Bible et la demeure O6",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/199",
+      "commit": "75bbc1777eb1866515fcef718b086571d8aa379d",
+      "etat": "closed",
+      "fusionnee": true,
+      "observation": "Neuf fiches de campagne et la préparation O6 intégrées. Le joueur peut jouer M059 et M060 avec le reçu de fin prévu. Le reçu de clôture canonique est encore à atteindre en campagne.",
+      "controles": [
+        {
+          "nom": "Suite intégrée, 241 réussites et 1 source privée ignorée",
+          "conclusion": "success",
+          "lien": "actions/runs/46008004120"
+        },
+        {
+          "nom": "Version de production compilée et démarrée",
+          "conclusion": "success",
+          "lien": "actions/runs/46008004100"
+        },
+        {
+          "nom": "Les deux issues de M059 et le geste de M060 en navigateur",
+          "conclusion": "success",
+          "lien": "actions/runs/46008004131"
+        },
+        {
+          "nom": "Classeur reproduit octet pour octet",
+          "conclusion": "success",
+          "lien": "actions/runs/46008715597"
+        }
+      ]
+    },
+    {
+      "pr": 200,
+      "titre": "Poursuivre le mausolée, le guidage et les chantiers transverses de la Bible",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/200",
+      "commit": "e4d20ef0e6d76fae0df0e1c5ede40c7f4df41438",
+      "etat": "open",
+      "fusionnee": false,
+      "observation": "Guidage de Saar, visite Ancient du mausolée, essai local O6, réponse des Apex au leurre, perception du vide et registre coopératif. Le transport de campagne et la clôture O6 restent ouverts.",
+      "controles": [
+        {
+          "nom": "Source, tests d’intégration et inventaire",
+          "lien": "actions/runs/46013489212"
+        },
+        {
+          "nom": "Compilation et démarrage",
+          "lien": "actions/runs/46013489107"
+        },
+        {
+          "nom": "Visite Ancient et reprise au mausolée",
+          "conclusion": "success",
+          "lien": "actions/runs/46010465918"
+        },
+        {
+          "nom": "Trajet accompagné et reprise au parvis",
+          "lien": "actions/runs/46010910723",
+          "conclusion": "success"
+        },
+        {
+          "nom": "Essai volontaire et reprise O6",
+          "conclusion": "success",
+          "lien": "actions/runs/46010416880"
+        },
+        {
+          "nom": "Règlement des gains d’invité",
+          "conclusion": "success",
+          "lien": "actions/runs/46010949709"
+        },
+        {
+          "nom": "Rejeu du retour de la cohorte et de l’épilogue",
+          "lien": "actions/runs/46013489021"
+        },
+        {
+          "nom": "Réponse des Apex et reprise du leurre sur le banc Cryostalker",
+          "conclusion": "success",
+          "lien": "actions/runs/46011193656"
+        },
+        {
+          "nom": "Acheron, signaux du Gardien dans le navigateur",
+          "conclusion": "success",
+          "lien": "actions/runs/46012258746"
+        }
+      ]
+    }
+  ],
+  "transverses": [
+    {
+      "id": "L-02_L-03_L-04",
+      "etat": "PARTIEL_MISSION",
+      "observation": "Adjoint au raccord de Quatza-Rij, le dépôt du trio ouvre la reconnaissance locale et le Temple des Trois Ombres inférieur. La cloison mobile, les six salles, l’évacuation et la double marque passent en Chrome. La succession des anciennes épreuves et l’accès au chantier sont contrôlés en domaine.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L153-L175",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2958-L2962",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/quatzaRij.ts#L291-L299",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/campaignSoloV68.ts#L64-L68",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/2769b094862aea97f10fc0e5c4f1154489a8a8bc/docs/campagne/BIBLE_DE_CAMPAGNE.md#L171-L193"
+      ],
+      "etatDeLivraison": "Fusionnée dans #196 · Présentation de triade et rite L‑04 joués dans Chrome",
+      "preuvesLivraison": [
+        "actions/runs/45978406278",
+        "actions/runs/45978406278/artifacts/15187264945",
+        "pull/196"
+      ],
+      "reste": "La présentation locale réemploie le rang Young Blood acquis plus tôt. La cérémonie de L‑03 qui confère le rang selon la Bible, la version étendue de la pyramide, son scénario avec l’expédition humaine et l’habillage propre restent à qualifier."
+    },
+    {
+      "id": "SON_AMBIANCES_PLANETAIRES",
+      "etat": "RACCORDE",
+      "observation": "Les huit boucles Ogg stéréo sont présentes dans main avec leurs empreintes. L’écoute des transitions et l’équilibre du mix par chasse restent à qualifier.",
+      "manquants": [],
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/public/audio/manifest.json",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2543-L2549"
+      ],
+      "chantierActif": "bible_transversale",
+      "etatDeLivraison": "Fusionnées dans #188 · huit boucles vérifiées",
+      "reste": "La validation du niveau et des boucles de chaque paysage a été faite au rendu. L’écoute complète des transitions et le mixage par chasse restent à vérifier.",
+      "preuvesLivraison": [
+        "actions/runs/44996749682",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/c8975d82d57e2385fa57b42e7bcbe856fd3748d2/scripts/generate-planet-ambiences-v173.mjs",
+        "actions/runs/44996749682/artifacts/14743769833",
+        "actions/runs/44997260025",
+        "pull/188"
+      ],
+      "fichiersLivraison": [
+        "public/audio/ambience/jungle/surface-v173.ogg",
+        "public/audio/ambience/ice/surface-v173.ogg",
+        "public/audio/ambience/volcano/surface-v173.ogg",
+        "public/audio/ambience/swamp/surface-v173.ogg",
+        "public/audio/ambience/desert/surface-v173.ogg",
+        "public/audio/ambience/ocean/surface-v173.ogg",
+        "public/audio/ambience/fungal/surface-v173.ogg",
+        "public/audio/ambience/ruins/surface-v173.ogg"
+      ]
+    },
+    {
+      "id": "SON_MUSIQUES",
+      "etat": "PARTIEL_MISSION",
+      "observation": "MUS‑02 et MUS‑15 sont déjà des MP3 natifs. Les six autres contextes présents au manifeste et les autres morceaux de catalogue gardent leur propre chantier.\nLivraison · MUS‑01 est une piste d’accueil instrumentale originale de 180 secondes. Le fichier Ogg Vorbis stéréo et le générateur sont fournis. Le contrôle du rendu décode le média et vérifie les deux canaux et sa durée. Le contrôle composé vérifie le manifeste et la lecture audio.",
+      "presents": [
+        {
+          "contexte": "ship",
+          "source": "/audio/music/ship/MUS-02-veille.mp3?v=22782bef14c6127c"
+        },
+        {
+          "contexte": "cradle-return",
+          "source": "/audio/music/cradle-return/MUS-15-retour.mp3?v=4ed54892d66a86a6"
+        }
+      ],
+      "contextesSansSource": [
+        "menu",
+        "galaxy",
+        "exploration",
+        "combat",
+        "boss",
+        "homeworld"
+      ],
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/public/audio/manifest.json",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2543-L2549"
+      ],
+      "chantierActif": "bible_transversale / MUS-01 selon disponibilité",
+      "etatDeLivraison": "MUS‑01 · piste originale vérifiée",
+      "reste": "Galaxy, exploration, combat, boss et Homeworld gardent des contextes sans source. Les autres thèmes du catalogue ont leur propre suivi.",
+      "preuvesLivraison": [
+        "actions/runs/44996634637",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/7c2173343532f2ad10dcd5b02a4f61fadef21c8c/scripts/generate-menu-theme-mus01.mjs",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/7c2173343532f2ad10dcd5b02a4f61fadef21c8c/public/audio/music/menu/mus-01.ogg",
+        "actions/runs/44997260025"
+      ]
+    },
+    {
+      "id": "VFX_DANGERS",
+      "etat": "PARTIEL_MISSION",
+      "observation": "Les dangers ont une zone colorée avec anticipation, clignotement, contour et réaction. Les VFX distincts par biome listés par la Bible restent à qualifier ou réaliser.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2551-L2553",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/HuntCanvas.tsx#L5595-L5610"
+      ]
+    },
+    {
+      "id": "DECORS_V19",
+      "etat": "PARTIEL_MISSION",
+      "observation": "Les compteurs du registre sont encore exactement 464/800. La plupart des objets cités par la Bible ont des descriptions et IDs, sans support visuel natif admis.",
+      "presentsParBiome": {
+        "jungle": 100,
+        "ice": 100,
+        "volcano": 54,
+        "swamp": 51,
+        "desert": 42,
+        "ocean": 39,
+        "fungal": 38,
+        "ruins": 40
+      },
+      "manquants": 336,
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2555-L2568",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/environmentPropAvailabilityData.ts#L9",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/environmentPropCatalogue.ts#L388-L541"
+      ]
+    },
+    {
+      "id": "CHASSES_4_8_ENTREES_ET_BOSS",
+      "etat": "PARTIEL_MISSION",
+      "observation": "V157 donne des cartes et passages propres. Le Gardien a désormais une adaptation spécifique. Les autres extensions partagent le modèle 60/25 % avec effets distincts. Les boucles de traque et objectifs complets proposées par biome demeurent à qualifier ou raccorder.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/huntExpansionLayoutsV157.ts",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/huntSystems.ts#L2187-L2277",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L3000-L3012"
+      ]
+    },
+    {
+      "id": "LEURRE_BOSS",
+      "etat": "RACCORDE",
+      "observation": "Le Cryostalker, l’Hydre, Sandmaw et le Léviathan poursuivent un leurre audible quatre secondes. Le Cœur-Mère apprend au premier leurre. Le scan annonce l’immunité de Vey, du Paria et du Gardien dans le vide.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/huntSystems.ts#L1151-L1181",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/HuntCanvas.tsx#L9858-L9882",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L3014-L3016"
+      ],
+      "reste": "Les huit rencontres n’ont pas encore été rejouées de bout en bout à partir de la préparation de la campagne.",
+      "etatDeLivraison": "Réponse au leurre par Apex",
+      "preuvesLivraison": [
+        "actions/runs/46010821046",
+        "actions/runs/46011193656",
+        "actions/runs/46011193656/artifacts/15202818757",
+        "pull/200"
+      ]
+    },
+    {
+      "id": "ACHERON_VIDE",
+      "etat": "PARTIEL_MISSION",
+      "observation": "Bruit et odeur sont écartés de la perception à distance, y compris à la reprise. Le champ d’énergie et la vibration donnent au Gardien une modalité de détection claire. Trois sons de combinaison filtrés accompagnent les signaux.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/HuntCanvas.tsx#L6651-L6709",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L3018-L3020"
+      ],
+      "reste": "Les autres sons du casque et les effets d’arène proposés restent à produire. La chasse complète reste à rejouer avec le parcours de campagne.",
+      "etatDeLivraison": "Perception du vide active sur Acheron",
+      "preuvesLivraison": [
+        "actions/runs/46011008133",
+        "actions/runs/46011008133/artifacts/15203473706",
+        "actions/runs/46012258746",
+        "pull/200",
+        "actions/runs/46012258746/artifacts/15203404680"
+      ]
+    },
+    {
+      "id": "GLOSSAIRE_V147",
+      "etat": "RACCORDE",
+      "observation": "Codex natif et recherche, source par terme et catégories canon/proposé. Enregistrements des clics et voix de chaque race restent un chantier distinct.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/GameClient.tsx#L6937",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/YautjaGlossaryV147.tsx",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/yautjaLanguageV147.ts#L16-L43",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/yautjaLanguageV147.ts#L109-L127"
+      ]
+    },
+    {
+      "id": "WARP_AUTRES_EPOQUES_ET_PROTOTYPE",
+      "etat": "PARTIEL_MISSION",
+      "observation": "W-02 et Tantalus 2204 ont une boucle native. W-01, W-03 à W-05, W-GB et l’arc de vol du prototype ont un cadre explicitement documenté. Aucune boucle jouable intégrée n’a été trouvée pour elles.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/warpEpochsV165.ts#L64-L103",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/WarpEpochsPanelV165.tsx#L140-L171"
+      ]
+    },
+    {
+      "id": "FIN_DE_VOIE",
+      "etat": "PARTIEL_MISSION",
+      "observation": "Après ouverture du râtelier, un novice demande à essayer, prend son bâton et rejoint l’appui avec le joueur. Il rend l’outil et la trace de l’exercice reprend à froid.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/originEndingsV170.ts#L39-L50",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/originEndingsV170.ts#L138-L155",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L777-L804"
+      ],
+      "etatDeLivraison": "O6 · essai volontaire jouable",
+      "reste": "Le retour auprès de Saar, Harek M26, Tov M27 et la terrasse M28 restent requis avant la confirmation canonique et le reçu O6-M30. L’accès de campagne à M059 et M060 attend ce reçu.",
+      "preuvesLivraison": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/4b7f25486f7bd258c67b4b69bb5dc7fa7ce0722c",
+        "actions/runs/45997821189",
+        "actions/runs/45998374522",
+        "actions/runs/45998374522/artifacts/15197257541",
+        "pull/197",
+        "actions/runs/46007481245",
+        "actions/runs/46008135352",
+        "actions/runs/46010416880",
+        "actions/runs/46010416880/artifacts/15204281830",
+        "pull/200"
+      ]
+    },
+    {
+      "id": "COOP_DE_CAMPAGNE",
+      "etat": "PARTIEL_MISSION",
+      "observation": "Un raccord d’autorité résout une référence d’expédition. Le registre attribue les faits à l’invité, contrôle le coup final et prévient les doublons au rechargement. Le rang et le récit de l’invité restent ceux de sa campagne.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L816-L825",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/ClanWarMultiplayerPracticeV127.tsx",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/clanWarMultiplayerV126.ts"
+      ],
+      "reste": "Le salon de campagne, le transport en direct, la simulation de l’hôte et les épreuves de rang restent à livrer.",
+      "etatDeLivraison": "Registre et règlement durable des gains d’invité",
+      "preuvesLivraison": [
+        "actions/runs/46010949709",
+        "actions/runs/46011224099",
+        "pull/200"
+      ]
+    },
+    {
+      "id": "FORGE_CARTE_RECOLTE_CANOPEE",
+      "etat": "PARTIEL_MISSION",
+      "observation": "Forge d’apparence et usure V172, trajets sauvegardés V159, principes de prélèvement V112 et parcours de canopée V112 sont des systèmes dans main. Leur présence est indépendante des cours Unblooded M007–014, du premier trajet M023 et de la présentation M038.\nLe contrôle Chromium du prélèvement, de la reprise, du rangement et de la canopée est passé sur le candidat de #188.",
+      "preuves": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/hunterArmorWearV172.ts",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/spaceRoutesV159.ts#L495-L515",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/anatomyHarvestV112.ts",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/canopyTraversalV112.ts",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/AVENANT_SKINNING_CANOPEE_20261109.md"
+      ],
+      "preuvesLivraison": [
+        "actions/runs/44998117544"
+      ]
+    }
+  ],
+  "limites": [
+    "Une recette avec un prérequis préparé prouve les gestes testés. L’accès depuis les étapes antérieures de campagne demeure à vérifier quand il est indiqué.",
+    "La campagne coopérative est distincte de Clan Wars. Le règlement de récompenses ne prouve pas l’existence d’un transport coopératif.",
+    "Les dossiers et assets de branches extérieures gardent leur état d’intégration observé."
+  ],
+  "limitesActuelles": {
+    "raccordees": 61,
+    "partielles": 7,
+    "voisins": 0,
+    "sansRaccordObserve": 0
+  },
+  "actualiseLe": "2026-11-27",
+  "bilanComposition": {
+    "fichesRaccordeesSurRef": 61,
+    "fichesPartielles": [
+      "R2-M003",
+      "R2-M006",
+      "R2-M016",
+      "R2-M017",
+      "R2-M057",
+      "R2-M059",
+      "R2-M060"
+    ],
+    "fichesVoisines": [],
+    "fichesNonCommenceesObservees": [],
+    "chantiersVérifiés": [
+      "R2-M003",
+      "R2-M057",
+      "R2-M024.8"
+    ],
+    "transversesVerifies": [
+      "FIN_DE_VOIE",
+      "LEURRE_BOSS",
+      "ACHERON_VIDE",
+      "COOP_DE_CAMPAGNE"
+    ],
+    "projectionDuCandidat": {
+      "RACCORDE": 62,
+      "PARTIEL_MISSION": 6,
+      "VOISIN": 0,
+      "NON_COMMENCE_OBSERVE": 0
+    },
+    "refComposition": "e4d20ef0e6d76fae0df0e1c5ede40c7f4df41438",
+    "prComposition": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/200",
+    "controlesGroupes": {
+      "ref": "2f986b29dc55e6b504408525e8e7d5e03fcafce7",
+      "tests": "actions/runs/46013489212",
+      "build": "actions/runs/46013489107",
+      "navigateur": "actions/runs/46013489021"
+    }
+  },
+  "refHistorique": "65361bb4e2071ce7b61b81f17ab812e7ba299335",
+  "historiqueLot188": {
+    "fichesRaccordeesSurRef": 26,
+    "fichesSansNouveauRaccordDansLeLot": [
+      "R2-M001",
+      "R2-M004",
+      "R2-M006",
+      "R2-M007",
+      "R2-M008",
+      "R2-M009",
+      "R2-M010",
+      "R2-M011",
+      "R2-M012",
+      "R2-M014",
+      "R2-M016",
+      "R2-M017",
+      "R2-M020",
+      "R2-M029",
+      "R2-M030",
+      "R2-M031",
+      "R2-M032",
+      "R2-M033",
+      "R2-M034",
+      "R2-M035",
+      "R2-M036",
+      "R2-M037",
+      "R2-M038",
+      "R2-M043",
+      "R2-M044",
+      "R2-M054",
+      "R2-M055",
+      "R2-M056",
+      "R2-M057",
+      "R2-M058",
+      "R2-M059",
+      "R2-M060"
+    ],
+    "fichesAvecRecetteChrome": [
+      "R2-M002",
+      "R2-M013",
+      "R2-M023",
+      "R2-M028",
+      "R2-M039",
+      "R2-M047",
+      "R2-M048",
+      "R2-M052",
+      "R2-M053"
+    ],
+    "fichesPartiellesOuEnAttente": [
+      "R2-M003"
+    ],
+    "piloteTerre": "Tests ciblés 6/6 sur branche. Bloqué pour l’intégration au parcours narratif."
+  },
+  "lignesSource": {
+    "table": 129,
+    "transverses": 2633
+  },
+  "historiqueLot196": {
+    "refMain": "2769b094862aea97f10fc0e5c4f1154489a8a8bc",
+    "refFusion": "9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404",
+    "statsAvantFusion": {
+      "RACCORDE": 35,
+      "PARTIEL_MISSION": 9,
+      "VOISIN": 20,
+      "NON_COMMENCE_OBSERVE": 4
+    },
+    "controleProduction": "actions/runs/45984972437"
+  },
+  "sourceDocument": {
+    "commit": "f1bdb319c2388fc9283c97a176f9b55b01e69924",
+    "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+    "blob": "3135b1accfc152da6bd01034ccf822db373c8c18"
+  },
+  "historiqueLot197": {
+    "refMain": "9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404",
+    "refFusion": "a68bb7666710afe89ac66145c59961f0b65d9a34",
+    "refRecette": "4da2b5d704fadab55c96a86a0215155308ca1aa9",
+    "refCorrectifBelvedere": "42cd44605a5bf5b61cb87b9071e47acb20168695",
+    "statsAvantFusion": {
+      "RACCORDE": 50,
+      "PARTIEL_MISSION": 11,
+      "VOISIN": 6,
+      "NON_COMMENCE_OBSERVE": 1
+    },
+    "statsApresAudit": {
+      "RACCORDE": 59,
+      "PARTIEL_MISSION": 6,
+      "VOISIN": 2,
+      "NON_COMMENCE_OBSERVE": 1
+    },
+    "controleProduction": {
+      "nom": "Jeu public du lot #196, relevé après #197",
+      "etat": "9a98912 selon le relevé de fusion #197",
+      "lien": "https://yautja-la-longue-chasse.vercel.app/"
+    }
+  },
+  "historiqueLot199": {
+    "fichesRaccordeesSurRef": 59,
+    "fichesPartielles": [
+      "R2-M003",
+      "R2-M006",
+      "R2-M016",
+      "R2-M017",
+      "R2-M056",
+      "R2-M057"
+    ],
+    "fichesVoisines": [
+      "R2-M058",
+      "R2-M060"
+    ],
+    "fichesNonCommenceesObservees": [
+      "R2-M059"
+    ],
+    "porteeAvenants": "Révisions Git observées au relevé. Le candidat garde ses propres preuves et les étapes qui restent ouvertes.",
+    "chantiersVérifiés": [
+      "R2-M003",
+      "R2-M006",
+      "R2-M016",
+      "R2-M017",
+      "R2-M051",
+      "R2-M056",
+      "R2-M058",
+      "R2-M059",
+      "R2-M060"
+    ],
+    "transversesVerifies": [
+      "FIN_DE_VOIE"
+    ],
+    "projectionDuCandidat": {
+      "RACCORDE": 61,
+      "PARTIEL_MISSION": 7,
+      "VOISIN": 0,
+      "NON_COMMENCE_OBSERVE": 0
+    },
+    "refComposition": "f026c4e8c48f56301864e30f75b085bd47253849",
+    "refVerificationComposition": "46c277eb7b25787a9de559778a3a24e042d544e9",
+    "prComposition": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/199",
+    "controlesGroupes": {
+      "ref": "46c277eb7b25787a9de559778a3a24e042d544e9",
+      "build": "actions/runs/46008004100",
+      "tests": "actions/runs/46008004120",
+      "navigateur": "actions/runs/46008004131",
+      "qualifies": null,
+      "buildReussi": null
+    }
+  }
+}

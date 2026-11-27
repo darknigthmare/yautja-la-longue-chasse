@@ -1,0 +1,2958 @@
+{
+ "schemaVersion": 1,
+ "source": {
+  "workbook": "Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+  "sha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+  "totalWorkbookSheets": 139
+ },
+ "scope": "Extraction V159 : 36 incidents de route, 10 bases spatiales, états STATE5-17 à 20 et règle d’accès d’Atlas (PLAN02). Valeurs copiées sans réécriture.",
+ "sheets": [
+  {
+   "name": "Incidents des routes",
+   "rows": [
+    {
+     "number": 5,
+     "cells": [
+      {
+       "address": "A5",
+       "value": "Identifiant"
+      },
+      {
+       "address": "B5",
+       "value": "Titre"
+      },
+      {
+       "address": "C5",
+       "value": "Déclencheur"
+      },
+      {
+       "address": "D5",
+       "value": "Lieu"
+      },
+      {
+       "address": "E5",
+       "value": "Action"
+      },
+      {
+       "address": "F5",
+       "value": "Choix"
+      },
+      {
+       "address": "G5",
+       "value": "Entrée"
+      },
+      {
+       "address": "H5",
+       "value": "Deroulement"
+      },
+      {
+       "address": "I5",
+       "value": "Conséquence"
+      },
+      {
+       "address": "J5",
+       "value": "Échec"
+      },
+      {
+       "address": "K5",
+       "value": "Liaison"
+      },
+      {
+       "address": "L5",
+       "value": "Provenance"
+      }
+     ]
+    },
+    {
+     "number": 6,
+     "cells": [
+      {
+       "address": "A6",
+       "value": "SPACE-E01"
+      },
+      {
+       "address": "B6",
+       "value": "Trois balises, deux routes"
+      },
+      {
+       "address": "C6",
+       "value": "balise décalée"
+      },
+      {
+       "address": "D6",
+       "value": "SPACE-BASE-01"
+      },
+      {
+       "address": "E6",
+       "value": "comparer les distances visibles"
+      },
+      {
+       "address": "F6",
+       "value": "route courte coûteuse ou escale réparatrice"
+      },
+      {
+       "address": "G6",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H6",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I6",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J6",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K6",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L6",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 7,
+     "cells": [
+      {
+       "address": "A7",
+       "value": "SPACE-E02"
+      },
+      {
+       "address": "B7",
+       "value": "Le quai derrière les débris"
+      },
+      {
+       "address": "C7",
+       "value": "approche obstruée"
+      },
+      {
+       "address": "D7",
+       "value": "SPACE-BASE-02"
+      },
+      {
+       "address": "E7",
+       "value": "piloter entre deux couloirs de roches"
+      },
+      {
+       "address": "F7",
+       "value": "attendre le passage ou dépenser une balise"
+      },
+      {
+       "address": "G7",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H7",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I7",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J7",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K7",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L7",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 8,
+     "cells": [
+      {
+       "address": "A8",
+       "value": "SPACE-E03"
+      },
+      {
+       "address": "B8",
+       "value": "Le signal sans voix"
+      },
+      {
+       "address": "C8",
+       "value": "appel incomplet"
+      },
+      {
+       "address": "D8",
+       "value": "SPACE-BASE-03"
+      },
+      {
+       "address": "E8",
+       "value": "orienter l’antenne et relier trois fragments"
+      },
+      {
+       "address": "F8",
+       "value": "secourir maintenant ou obtenir une position sûre"
+      },
+      {
+       "address": "G8",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H8",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I8",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J8",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K8",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L8",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 9,
+     "cells": [
+      {
+       "address": "A9",
+       "value": "SPACE-E04"
+      },
+      {
+       "address": "B9",
+       "value": "Le berceau qui glisse"
+      },
+      {
+       "address": "C9",
+       "value": "charge mal fixée"
+      },
+      {
+       "address": "D9",
+       "value": "SPACE-BASE-04"
+      },
+      {
+       "address": "E9",
+       "value": "répartir les appuis d’une caisse"
+      },
+      {
+       "address": "F9",
+       "value": "ralentir le voyage ou libérer un emplacement"
+      },
+      {
+       "address": "G9",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H9",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I9",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J9",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K9",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L9",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 10,
+     "cells": [
+      {
+       "address": "A10",
+       "value": "SPACE-E05"
+      },
+      {
+       "address": "B10",
+       "value": "Une ombre dans le sillage"
+      },
+      {
+       "address": "C10",
+       "value": "appareil inconnu"
+      },
+      {
+       "address": "D10",
+       "value": "SPACE-BASE-05"
+      },
+      {
+       "address": "E10",
+       "value": "observer ses changements de distance"
+      },
+      {
+       "address": "F10",
+       "value": "rompre la ligne ou entrer dans une halte"
+      },
+      {
+       "address": "G10",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H10",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I10",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J10",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K10",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L10",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 11,
+     "cells": [
+      {
+       "address": "A11",
+       "value": "SPACE-E06"
+      },
+      {
+       "address": "B11",
+       "value": "La verrière aveugle"
+      },
+      {
+       "address": "C11",
+       "value": "capteur brouillé"
+      },
+      {
+       "address": "D11",
+       "value": "SPACE-BASE-06"
+      },
+      {
+       "address": "E11",
+       "value": "recouper signal et balise extérieure"
+      },
+      {
+       "address": "F11",
+       "value": "continuer à portée réduite ou réparer"
+      },
+      {
+       "address": "G11",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H11",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I11",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J11",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K11",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L11",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 12,
+     "cells": [
+      {
+       "address": "A12",
+       "value": "SPACE-E07"
+      },
+      {
+       "address": "B12",
+       "value": "Le rendez-vous manqué"
+      },
+      {
+       "address": "C12",
+       "value": "équipe en retard"
+      },
+      {
+       "address": "D12",
+       "value": "SPACE-BASE-07"
+      },
+      {
+       "address": "E12",
+       "value": "relever sa dernière route"
+      },
+      {
+       "address": "F12",
+       "value": "garder un point de retour ou partir à sa rencontre"
+      },
+      {
+       "address": "G12",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H12",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I12",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J12",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K12",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L12",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 13,
+     "cells": [
+      {
+       "address": "A13",
+       "value": "SPACE-E08"
+      },
+      {
+       "address": "B13",
+       "value": "Une prise trop grande"
+      },
+      {
+       "address": "C13",
+       "value": "trophée incompatible"
+      },
+      {
+       "address": "D13",
+       "value": "SPACE-BASE-08"
+      },
+      {
+       "address": "E13",
+       "value": "mesurer le contenant au quai"
+      },
+      {
+       "address": "F13",
+       "value": "acheminer un autre berceau ou revenir avec un relevé"
+      },
+      {
+       "address": "G13",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H13",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I13",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J13",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K13",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L13",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 14,
+     "cells": [
+      {
+       "address": "A14",
+       "value": "SPACE-E09"
+      },
+      {
+       "address": "B14",
+       "value": "Les deux pilotes"
+      },
+      {
+       "address": "C14",
+       "value": "choix d’approche"
+      },
+      {
+       "address": "D14",
+       "value": "SPACE-BASE-09"
+      },
+      {
+       "address": "E14",
+       "value": "tester deux routes sur un modèle"
+      },
+      {
+       "address": "F14",
+       "value": "priorité à la vitesse ou à la marge de manœuvre"
+      },
+      {
+       "address": "G14",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H14",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I14",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J14",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K14",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L14",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 15,
+     "cells": [
+      {
+       "address": "A15",
+       "value": "SPACE-E10"
+      },
+      {
+       "address": "B15",
+       "value": "La porte sourde"
+      },
+      {
+       "address": "C15",
+       "value": "sas bloqué"
+      },
+      {
+       "address": "D15",
+       "value": "SPACE-BASE-10"
+      },
+      {
+       "address": "E15",
+       "value": "suivre un circuit fictif de commande"
+      },
+      {
+       "address": "F15",
+       "value": "ouvrir l’accès secondaire ou réparer sur place"
+      },
+      {
+       "address": "G15",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H15",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I15",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J15",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K15",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L15",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 16,
+     "cells": [
+      {
+       "address": "A16",
+       "value": "SPACE-E11"
+      },
+      {
+       "address": "B16",
+       "value": "Une escale inconnue"
+      },
+      {
+       "address": "C16",
+       "value": "nouvelle halte"
+      },
+      {
+       "address": "D16",
+       "value": "SPACE-BASE-01"
+      },
+      {
+       "address": "E16",
+       "value": "reconnaître son signal de quai"
+      },
+      {
+       "address": "F16",
+       "value": "visite courte ou attente d’un guide"
+      },
+      {
+       "address": "G16",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H16",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I16",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J16",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K16",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L16",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 17,
+     "cells": [
+      {
+       "address": "A17",
+       "value": "SPACE-E12"
+      },
+      {
+       "address": "B17",
+       "value": "Le reflet du retour"
+      },
+      {
+       "address": "C17",
+       "value": "balise doublée"
+      },
+      {
+       "address": "D17",
+       "value": "SPACE-BASE-02"
+      },
+      {
+       "address": "E17",
+       "value": "identifier le vrai rythme de l’émetteur"
+      },
+      {
+       "address": "F17",
+       "value": "baliser l’erreur ou contourner le secteur"
+      },
+      {
+       "address": "G17",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H17",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I17",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J17",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K17",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L17",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 18,
+     "cells": [
+      {
+       "address": "A18",
+       "value": "SPACE-E13"
+      },
+      {
+       "address": "B18",
+       "value": "La sonde silencieuse"
+      },
+      {
+       "address": "C18",
+       "value": "sonde immobile"
+      },
+      {
+       "address": "D18",
+       "value": "SPACE-BASE-03"
+      },
+      {
+       "address": "E18",
+       "value": "retrouver ses repères successifs"
+      },
+      {
+       "address": "F18",
+       "value": "récupérer l’objet ou transmettre sa position"
+      },
+      {
+       "address": "G18",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H18",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I18",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J18",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K18",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L18",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 19,
+     "cells": [
+      {
+       "address": "A19",
+       "value": "SPACE-E14"
+      },
+      {
+       "address": "B19",
+       "value": "Les caisses du rival"
+      },
+      {
+       "address": "C19",
+       "value": "chargement croisé"
+      },
+      {
+       "address": "D19",
+       "value": "SPACE-BASE-04"
+      },
+      {
+       "address": "E19",
+       "value": "suivre les marques jusqu’au bon rack"
+      },
+      {
+       "address": "F19",
+       "value": "échange au quai ou transport vers la halte"
+      },
+      {
+       "address": "G19",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H19",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I19",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J19",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K19",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L19",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 20,
+     "cells": [
+      {
+       "address": "A20",
+       "value": "SPACE-E15"
+      },
+      {
+       "address": "B20",
+       "value": "La route du blessé"
+      },
+      {
+       "address": "C20",
+       "value": "repos nécessaire"
+      },
+      {
+       "address": "D20",
+       "value": "SPACE-BASE-05"
+      },
+      {
+       "address": "E20",
+       "value": "réaménager un poste et un trajet"
+      },
+      {
+       "address": "F20",
+       "value": "escale de soin ou retour au foyer"
+      },
+      {
+       "address": "G20",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H20",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I20",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J20",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K20",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L20",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 21,
+     "cells": [
+      {
+       "address": "A21",
+       "value": "SPACE-E16"
+      },
+      {
+       "address": "B21",
+       "value": "La fenêtre de marée orbitale"
+      },
+      {
+       "address": "C21",
+       "value": "passage limité"
+      },
+      {
+       "address": "D21",
+       "value": "SPACE-BASE-06"
+      },
+      {
+       "address": "E21",
+       "value": "observer un cycle de débris"
+      },
+      {
+       "address": "F21",
+       "value": "traversée courte ou détour connu"
+      },
+      {
+       "address": "G21",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H21",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I21",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J21",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K21",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L21",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 22,
+     "cells": [
+      {
+       "address": "A22",
+       "value": "SPACE-E17"
+      },
+      {
+       "address": "B22",
+       "value": "L’anneau endommagé"
+      },
+      {
+       "address": "C22",
+       "value": "module fictif en panne"
+      },
+      {
+       "address": "D22",
+       "value": "SPACE-BASE-07"
+      },
+      {
+       "address": "E22",
+       "value": "isoler l’élément marqué"
+      },
+      {
+       "address": "F22",
+       "value": "réparer au banc ou garder le module éteint"
+      },
+      {
+       "address": "G22",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H22",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I22",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J22",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K22",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L22",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 23,
+     "cells": [
+      {
+       "address": "A23",
+       "value": "SPACE-E18"
+      },
+      {
+       "address": "B23",
+       "value": "Le chasseur échoué"
+      },
+      {
+       "address": "C23",
+       "value": "appareil au sol"
+      },
+      {
+       "address": "D23",
+       "value": "SPACE-BASE-08"
+      },
+      {
+       "address": "E23",
+       "value": "rejoindre sa trace par la route haute"
+      },
+      {
+       "address": "F23",
+       "value": "extraire le pilote ou préparer une réparation"
+      },
+      {
+       "address": "G23",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H23",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I23",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J23",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K23",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L23",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 24,
+     "cells": [
+      {
+       "address": "A24",
+       "value": "SPACE-E19"
+      },
+      {
+       "address": "B24",
+       "value": "Les lumières de l’épave"
+      },
+      {
+       "address": "C24",
+       "value": "énergie intermittente"
+      },
+      {
+       "address": "D24",
+       "value": "SPACE-BASE-09"
+      },
+      {
+       "address": "E24",
+       "value": "suivre les zones allumées"
+      },
+      {
+       "address": "F24",
+       "value": "ramener un témoin ou relancer un signal"
+      },
+      {
+       "address": "G24",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H24",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I24",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J24",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K24",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L24",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 25,
+     "cells": [
+      {
+       "address": "A25",
+       "value": "SPACE-E20"
+      },
+      {
+       "address": "B25",
+       "value": "Une ombre à la vitre"
+      },
+      {
+       "address": "C25",
+       "value": "faune orbitale fictive"
+      },
+      {
+       "address": "D25",
+       "value": "SPACE-BASE-10"
+      },
+      {
+       "address": "E25",
+       "value": "comparer forme et déplacement"
+      },
+      {
+       "address": "F25",
+       "value": "observer à distance ou fermer le volet"
+      },
+      {
+       "address": "G25",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H25",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I25",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J25",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K25",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L25",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 26,
+     "cells": [
+      {
+       "address": "A26",
+       "value": "SPACE-E21"
+      },
+      {
+       "address": "B26",
+       "value": "Le relais oublié"
+      },
+      {
+       "address": "C26",
+       "value": "halte inactive"
+      },
+      {
+       "address": "D26",
+       "value": "SPACE-BASE-01"
+      },
+      {
+       "address": "E26",
+       "value": "réactiver un poste de signal"
+      },
+      {
+       "address": "F26",
+       "value": "faire une pause ou baliser pour plus tard"
+      },
+      {
+       "address": "G26",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H26",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I26",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J26",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K26",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L26",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 27,
+     "cells": [
+      {
+       "address": "A27",
+       "value": "SPACE-E22"
+      },
+      {
+       "address": "B27",
+       "value": "Le convoi séparé"
+      },
+      {
+       "address": "C27",
+       "value": "équipages dispersés"
+      },
+      {
+       "address": "D27",
+       "value": "SPACE-BASE-02"
+      },
+      {
+       "address": "E27",
+       "value": "retrouver deux points de rendez-vous"
+      },
+      {
+       "address": "F27",
+       "value": "regrouper les charges ou escorter les plus lents"
+      },
+      {
+       "address": "G27",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H27",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I27",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J27",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K27",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L27",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 28,
+     "cells": [
+      {
+       "address": "A28",
+       "value": "SPACE-E23"
+      },
+      {
+       "address": "B28",
+       "value": "La pièce sans origine"
+      },
+      {
+       "address": "C28",
+       "value": "composant trouvé"
+      },
+      {
+       "address": "D28",
+       "value": "SPACE-BASE-03"
+      },
+      {
+       "address": "E28",
+       "value": "examiner ses attaches et son usure"
+      },
+      {
+       "address": "F28",
+       "value": "essai de modèle ou conservation au dépôt"
+      },
+      {
+       "address": "G28",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H28",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I28",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J28",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K28",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L28",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 29,
+     "cells": [
+      {
+       "address": "A29",
+       "value": "SPACE-E24"
+      },
+      {
+       "address": "B29",
+       "value": "Un cap changé"
+      },
+      {
+       "address": "C29",
+       "value": "route interrompue"
+      },
+      {
+       "address": "D29",
+       "value": "SPACE-BASE-04"
+      },
+      {
+       "address": "E29",
+       "value": "recalculer à partir des balises connues"
+      },
+      {
+       "address": "F29",
+       "value": "détour de ressource ou route de retour"
+      },
+      {
+       "address": "G29",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H29",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I29",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J29",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K29",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L29",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 30,
+     "cells": [
+      {
+       "address": "A30",
+       "value": "SPACE-E25"
+      },
+      {
+       "address": "B30",
+       "value": "L’invitation à la chasse"
+      },
+      {
+       "address": "C30",
+       "value": "défi d’un clan"
+      },
+      {
+       "address": "D30",
+       "value": "SPACE-BASE-05"
+      },
+      {
+       "address": "E30",
+       "value": "lire terrain et conditions du duel"
+      },
+      {
+       "address": "F30",
+       "value": "accepter au bon lieu ou décliner sans combat immédiat"
+      },
+      {
+       "address": "G30",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H30",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I30",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J30",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K30",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L30",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 31,
+     "cells": [
+      {
+       "address": "A31",
+       "value": "SPACE-E26"
+      },
+      {
+       "address": "B31",
+       "value": "Une galerie vide"
+      },
+      {
+       "address": "C31",
+       "value": "objet absent"
+      },
+      {
+       "address": "D31",
+       "value": "SPACE-BASE-06"
+      },
+      {
+       "address": "E31",
+       "value": "suivre sa dernière manipulation"
+      },
+      {
+       "address": "F31",
+       "value": "retrouver son transfert ou documenter la perte"
+      },
+      {
+       "address": "G31",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H31",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I31",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J31",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K31",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L31",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 32,
+     "cells": [
+      {
+       "address": "A32",
+       "value": "SPACE-E27"
+      },
+      {
+       "address": "B32",
+       "value": "Le pont froid"
+      },
+      {
+       "address": "C32",
+       "value": "service indisponible"
+      },
+      {
+       "address": "D32",
+       "value": "SPACE-BASE-07"
+      },
+      {
+       "address": "E32",
+       "value": "repérer un circuit d’exercice rompu"
+      },
+      {
+       "address": "F32",
+       "value": "déplacer l’activité ou réparer"
+      },
+      {
+       "address": "G32",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H32",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I32",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J32",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K32",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L32",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 33,
+     "cells": [
+      {
+       "address": "A33",
+       "value": "SPACE-E28"
+      },
+      {
+       "address": "B33",
+       "value": "Les deux retours"
+      },
+      {
+       "address": "C33",
+       "value": "deux équipes arrivent"
+      },
+      {
+       "address": "D33",
+       "value": "SPACE-BASE-08"
+      },
+      {
+       "address": "E33",
+       "value": "préparer les sas et contenants"
+      },
+      {
+       "address": "F33",
+       "value": "priorité au blessé ou à une prise instable annoncée"
+      },
+      {
+       "address": "G33",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H33",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I33",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J33",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K33",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L33",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 34,
+     "cells": [
+      {
+       "address": "A34",
+       "value": "SPACE-E29"
+      },
+      {
+       "address": "B34",
+       "value": "Le témoin du passé"
+      },
+      {
+       "address": "C34",
+       "value": "objet Warp de retour"
+      },
+      {
+       "address": "D34",
+       "value": "SPACE-BASE-09"
+      },
+      {
+       "address": "E34",
+       "value": "rapprocher objet et branche d’origine"
+      },
+      {
+       "address": "F34",
+       "value": "exposer une copie ou conserver l’original au poste"
+      },
+      {
+       "address": "G34",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H34",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I34",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J34",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K34",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L34",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 35,
+     "cells": [
+      {
+       "address": "A35",
+       "value": "SPACE-E30"
+      },
+      {
+       "address": "B35",
+       "value": "Le voyage interrompu"
+      },
+      {
+       "address": "C35",
+       "value": "conditions Warp perdues"
+      },
+      {
+       "address": "D35",
+       "value": "SPACE-BASE-10"
+      },
+      {
+       "address": "E35",
+       "value": "utiliser le rappel du voyage engagé"
+      },
+      {
+       "address": "F35",
+       "value": "retour direct ou secours sur le même itinéraire"
+      },
+      {
+       "address": "G35",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H35",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I35",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J35",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K35",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L35",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 36,
+     "cells": [
+      {
+       "address": "A36",
+       "value": "SPACE-E31"
+      },
+      {
+       "address": "B36",
+       "value": "Le feu de la forge"
+      },
+      {
+       "address": "C36",
+       "value": "atelier fermé"
+      },
+      {
+       "address": "D36",
+       "value": "SPACE-BASE-01"
+      },
+      {
+       "address": "E36",
+       "value": "préparer une réparation externe"
+      },
+      {
+       "address": "F36",
+       "value": "reporter une amélioration ou changer l’équipement"
+      },
+      {
+       "address": "G36",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H36",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I36",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J36",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K36",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L36",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 37,
+     "cells": [
+      {
+       "address": "A37",
+       "value": "SPACE-E32"
+      },
+      {
+       "address": "B37",
+       "value": "Le repas des absents"
+      },
+      {
+       "address": "C37",
+       "value": "retour après une perte"
+      },
+      {
+       "address": "D37",
+       "value": "SPACE-BASE-02"
+      },
+      {
+       "address": "E37",
+       "value": "installer les objets laissés par l’équipe"
+      },
+      {
+       "address": "F37",
+       "value": "récit public ou moment de mémoire restreint"
+      },
+      {
+       "address": "G37",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H37",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I37",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J37",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K37",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L37",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 38,
+     "cells": [
+      {
+       "address": "A38",
+       "value": "SPACE-E33"
+      },
+      {
+       "address": "B38",
+       "value": "La relève volontaire"
+      },
+      {
+       "address": "C38",
+       "value": "poste à transmettre"
+      },
+      {
+       "address": "D38",
+       "value": "SPACE-BASE-03"
+      },
+      {
+       "address": "E38",
+       "value": "faire rejouer un exercice au remplaçant"
+      },
+      {
+       "address": "F38",
+       "value": "transfert maintenant ou apprentissage prolongé"
+      },
+      {
+       "address": "G38",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H38",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I38",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J38",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K38",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L38",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 39,
+     "cells": [
+      {
+       "address": "A39",
+       "value": "SPACE-E34"
+      },
+      {
+       "address": "B39",
+       "value": "Le passage revendiqué"
+      },
+      {
+       "address": "C39",
+       "value": "limite de conflit"
+      },
+      {
+       "address": "D39",
+       "value": "SPACE-BASE-04"
+      },
+      {
+       "address": "E39",
+       "value": "reconnaître les balises des deux clans"
+      },
+      {
+       "address": "F39",
+       "value": "négocier une traversée ou suivre un détour"
+      },
+      {
+       "address": "G39",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H39",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I39",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J39",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K39",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L39",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 40,
+     "cells": [
+      {
+       "address": "A40",
+       "value": "SPACE-E35"
+      },
+      {
+       "address": "B40",
+       "value": "La chasse qui attend"
+      },
+      {
+       "address": "C40",
+       "value": "proie déplacée"
+      },
+      {
+       "address": "D40",
+       "value": "SPACE-BASE-05"
+      },
+      {
+       "address": "E40",
+       "value": "relire météo et traces de mission"
+      },
+      {
+       "address": "F40",
+       "value": "modifier la préparation ou suspendre la chasse"
+      },
+      {
+       "address": "G40",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H40",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I40",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J40",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K40",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L40",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 41,
+     "cells": [
+      {
+       "address": "A41",
+       "value": "SPACE-E36"
+      },
+      {
+       "address": "B41",
+       "value": "Le dernier appel"
+      },
+      {
+       "address": "C41",
+       "value": "signal ancien retrouvé"
+      },
+      {
+       "address": "D41",
+       "value": "SPACE-BASE-06"
+      },
+      {
+       "address": "E41",
+       "value": "ordonner quatre fragments du journal"
+      },
+      {
+       "address": "F41",
+       "value": "ramener l’archive ou chercher encore un survivant"
+      },
+      {
+       "address": "G41",
+       "value": "Une route réellement engagée, l’équipement présent et un point de retour identifié."
+      },
+      {
+       "address": "H41",
+       "value": "Le joueur quitte le poste de route, rejoint le lieu de l’incident et manipule les objets indiqués. Un dialogue court confronte son interprétation à celle d’un équipier."
+      },
+      {
+       "address": "I41",
+       "value": "Le choix modifie le temps de jeu écoulé, la route, une ressource consommée ou une relation. Le résultat est attaché à l’incident pour ne pas redonner la même récompense."
+      },
+      {
+       "address": "J41",
+       "value": "L’échec conserve les traces déjà relevées et ouvre le repli annoncé. Une reprise n’efface pas une perte confirmée."
+      },
+      {
+       "address": "K41",
+       "value": "Les prises suivent le système de trophées; l’équipage suit le manifeste du navire; une guerre utilise le registre commun des opérations."
+      },
+      {
+       "address": "L41",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Les dix bases spatiales",
+   "rows": [
+    {
+     "number": 5,
+     "cells": [
+      {
+       "address": "A5",
+       "value": "Identifiant"
+      },
+      {
+       "address": "B5",
+       "value": "Titre"
+      },
+      {
+       "address": "C5",
+       "value": "Clan"
+      },
+      {
+       "address": "D5",
+       "value": "Nature"
+      },
+      {
+       "address": "E5",
+       "value": "Fonction"
+      },
+      {
+       "address": "F5",
+       "value": "Salles"
+      },
+      {
+       "address": "G5",
+       "value": "Intrigue"
+      },
+      {
+       "address": "H5",
+       "value": "Accès"
+      },
+      {
+       "address": "I5",
+       "value": "Arrivee 2D"
+      },
+      {
+       "address": "J5",
+       "value": "Limite"
+      },
+      {
+       "address": "K5",
+       "value": "Retour"
+      },
+      {
+       "address": "L5",
+       "value": "Lore"
+      },
+      {
+       "address": "M5",
+       "value": "Provenance"
+      }
+     ]
+    },
+    {
+     "number": 6,
+     "cells": [
+      {
+       "address": "A6",
+       "value": "SPACE-BASE-01"
+      },
+      {
+       "address": "B6",
+       "value": "Couronne des Départs"
+      },
+      {
+       "address": "C6",
+       "value": "CL11"
+      },
+      {
+       "address": "D6",
+       "value": "station orbitale"
+      },
+      {
+       "address": "E6",
+       "value": "routes de première expédition"
+      },
+      {
+       "address": "F6",
+       "value": "Quai des arrivées ; Salle des routes ; Atelier d’amarrage ; Repos des équipages ; Dépôt des départs ; Belvédère orbital"
+      },
+      {
+       "address": "G6",
+       "value": "un jeune équipage attend un signal de route fiable"
+      },
+      {
+       "address": "H6",
+       "value": "Blooded, vaisseau et trajet joué; conditions du relais ou du chantier au sas"
+      },
+      {
+       "address": "I6",
+       "value": "Aligner l’appareil avec le quai, lire les signaux, arrimer puis sortir au sas correspondant."
+      },
+      {
+       "address": "J6",
+       "value": "Les services appartiennent à leurs occupants. Une base ne remplace ni la maison active ni le vaisseau de clan."
+      },
+      {
+       "address": "K6",
+       "value": "Le quai et un point de sortie restent utilisables après une mission engagée, avec recours à une baie de secours si nécessaire."
+      },
+      {
+       "address": "L6",
+       "value": "Nom, organisation et intrigue créés pour le projet."
+      },
+      {
+       "address": "M6",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 7,
+     "cells": [
+      {
+       "address": "A7",
+       "value": "SPACE-BASE-02"
+      },
+      {
+       "address": "B7",
+       "value": "Halte des Trois Routes"
+      },
+      {
+       "address": "C7",
+       "value": "CL12"
+      },
+      {
+       "address": "D7",
+       "value": "relais de navigation"
+      },
+      {
+       "address": "E7",
+       "value": "croisement de trois secteurs"
+      },
+      {
+       "address": "F7",
+       "value": "Sas triple ; Table des escales ; Balises de trafic ; Atelier des sondes ; Salle des pactes ; Poste des retours"
+      },
+      {
+       "address": "G7",
+       "value": "deux routes sûres réclament des ressources différentes"
+      },
+      {
+       "address": "H7",
+       "value": "Blooded, vaisseau et trajet joué; conditions du relais ou du chantier au sas"
+      },
+      {
+       "address": "I7",
+       "value": "Aligner l’appareil avec le quai, lire les signaux, arrimer puis sortir au sas correspondant."
+      },
+      {
+       "address": "J7",
+       "value": "Les services appartiennent à leurs occupants. Une base ne remplace ni la maison active ni le vaisseau de clan."
+      },
+      {
+       "address": "K7",
+       "value": "Le quai et un point de sortie restent utilisables après une mission engagée, avec recours à une baie de secours si nécessaire."
+      },
+      {
+       "address": "L7",
+       "value": "Nom, organisation et intrigue créés pour le projet."
+      },
+      {
+       "address": "M7",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 8,
+     "cells": [
+      {
+       "address": "A8",
+       "value": "SPACE-BASE-03"
+      },
+      {
+       "address": "B8",
+       "value": "Chantier des Coques Ouvertes"
+      },
+      {
+       "address": "C8",
+       "value": "CL7"
+      },
+      {
+       "address": "D8",
+       "value": "chantier spatial"
+      },
+      {
+       "address": "E8",
+       "value": "inspection et remise en état de vaisseaux"
+      },
+      {
+       "address": "F8",
+       "value": "Quai de chantier ; Galerie des coques ; Atelier de structure ; Pont de propulsion ; Magasin des pièces ; Cabine des essais"
+      },
+      {
+       "address": "G8",
+       "value": "La Veille Partagée peut être remise en service par étapes"
+      },
+      {
+       "address": "H8",
+       "value": "Blooded, vaisseau et trajet joué; conditions du relais ou du chantier au sas"
+      },
+      {
+       "address": "I8",
+       "value": "Aligner l’appareil avec le quai, lire les signaux, arrimer puis sortir au sas correspondant."
+      },
+      {
+       "address": "J8",
+       "value": "Les services appartiennent à leurs occupants. Une base ne remplace ni la maison active ni le vaisseau de clan."
+      },
+      {
+       "address": "K8",
+       "value": "Le quai et un point de sortie restent utilisables après une mission engagée, avec recours à une baie de secours si nécessaire."
+      },
+      {
+       "address": "L8",
+       "value": "Nom, organisation et intrigue créés pour le projet."
+      },
+      {
+       "address": "M8",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 9,
+     "cells": [
+      {
+       "address": "A9",
+       "value": "SPACE-BASE-04"
+      },
+      {
+       "address": "B9",
+       "value": "Avant-poste de la Ceinture"
+      },
+      {
+       "address": "C9",
+       "value": "CL5"
+      },
+      {
+       "address": "D9",
+       "value": "poste d’astéroïde"
+      },
+      {
+       "address": "E9",
+       "value": "observation et protection des convois"
+      },
+      {
+       "address": "F9",
+       "value": "Sas de roche ; Tour des échos ; Racks de balises ; Atelier mobile ; Abri de relève ; Poste de veille"
+      },
+      {
+       "address": "G9",
+       "value": "des débris cachent un itinéraire d’approche rival"
+      },
+      {
+       "address": "H9",
+       "value": "Blooded, vaisseau et trajet joué; conditions du relais ou du chantier au sas"
+      },
+      {
+       "address": "I9",
+       "value": "Aligner l’appareil avec le quai, lire les signaux, arrimer puis sortir au sas correspondant."
+      },
+      {
+       "address": "J9",
+       "value": "Les services appartiennent à leurs occupants. Une base ne remplace ni la maison active ni le vaisseau de clan."
+      },
+      {
+       "address": "K9",
+       "value": "Le quai et un point de sortie restent utilisables après une mission engagée, avec recours à une baie de secours si nécessaire."
+      },
+      {
+       "address": "L9",
+       "value": "Nom, organisation et intrigue créés pour le projet."
+      },
+      {
+       "address": "M9",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 10,
+     "cells": [
+      {
+       "address": "A10",
+       "value": "SPACE-BASE-05"
+      },
+      {
+       "address": "B10",
+       "value": "Maison Errante"
+      },
+      {
+       "address": "C10",
+       "value": "CL14"
+      },
+      {
+       "address": "D10",
+       "value": "habitat orbital"
+      },
+      {
+       "address": "E10",
+       "value": "halte des équipages et survivants"
+      },
+      {
+       "address": "F10",
+       "value": "Quai du foyer ; Salle commune ; Atelier des voyageurs ; Archives des départs ; Infirmerie de halte ; Terrasse protégée"
+      },
+      {
+       "address": "G10",
+       "value": "des voyageurs souhaitent repartir sans perdre leurs objets confiés"
+      },
+      {
+       "address": "H10",
+       "value": "Blooded, vaisseau et trajet joué; conditions du relais ou du chantier au sas"
+      },
+      {
+       "address": "I10",
+       "value": "Aligner l’appareil avec le quai, lire les signaux, arrimer puis sortir au sas correspondant."
+      },
+      {
+       "address": "J10",
+       "value": "Les services appartiennent à leurs occupants. Une base ne remplace ni la maison active ni le vaisseau de clan."
+      },
+      {
+       "address": "K10",
+       "value": "Le quai et un point de sortie restent utilisables après une mission engagée, avec recours à une baie de secours si nécessaire."
+      },
+      {
+       "address": "L10",
+       "value": "Nom, organisation et intrigue créés pour le projet."
+      },
+      {
+       "address": "M10",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 11,
+     "cells": [
+      {
+       "address": "A11",
+       "value": "SPACE-BASE-06"
+      },
+      {
+       "address": "B11",
+       "value": "Relais des Mandats"
+      },
+      {
+       "address": "C11",
+       "value": "CL12"
+      },
+      {
+       "address": "D11",
+       "value": "station de coordination"
+      },
+      {
+       "address": "E11",
+       "value": "expéditions et engagements interclans"
+      },
+      {
+       "address": "F11",
+       "value": "Quai des émissaires ; Salle des objectifs ; Cabinet des preuves ; Atelier des signaux ; Logis de passage ; Observatoire des limites"
+      },
+      {
+       "address": "G11",
+       "value": "une mission annonce une victoire mais son objectif reste inachevé"
+      },
+      {
+       "address": "H11",
+       "value": "Blooded, vaisseau et trajet joué; conditions du relais ou du chantier au sas"
+      },
+      {
+       "address": "I11",
+       "value": "Aligner l’appareil avec le quai, lire les signaux, arrimer puis sortir au sas correspondant."
+      },
+      {
+       "address": "J11",
+       "value": "Les services appartiennent à leurs occupants. Une base ne remplace ni la maison active ni le vaisseau de clan."
+      },
+      {
+       "address": "K11",
+       "value": "Le quai et un point de sortie restent utilisables après une mission engagée, avec recours à une baie de secours si nécessaire."
+      },
+      {
+       "address": "L11",
+       "value": "Nom, organisation et intrigue créés pour le projet."
+      },
+      {
+       "address": "M11",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 12,
+     "cells": [
+      {
+       "address": "A12",
+       "value": "SPACE-BASE-07"
+      },
+      {
+       "address": "B12",
+       "value": "Annexe des Quarantaines"
+      },
+      {
+       "address": "C12",
+       "value": "CL10"
+      },
+      {
+       "address": "D12",
+       "value": "station de confinement"
+      },
+      {
+       "address": "E12",
+       "value": "transit des prises et observation"
+      },
+      {
+       "address": "F12",
+       "value": "Sas extérieur ; Baie des berceaux ; Poste des capteurs ; Atelier isolé ; Coursive d’observation ; Sortie de secours"
+      },
+      {
+       "address": "G12",
+       "value": "un signal de caisse doit être interprété avant son ouverture"
+      },
+      {
+       "address": "H12",
+       "value": "Blooded, vaisseau et trajet joué; conditions du relais ou du chantier au sas"
+      },
+      {
+       "address": "I12",
+       "value": "Aligner l’appareil avec le quai, lire les signaux, arrimer puis sortir au sas correspondant."
+      },
+      {
+       "address": "J12",
+       "value": "Les services appartiennent à leurs occupants. Une base ne remplace ni la maison active ni le vaisseau de clan."
+      },
+      {
+       "address": "K12",
+       "value": "Le quai et un point de sortie restent utilisables après une mission engagée, avec recours à une baie de secours si nécessaire."
+      },
+      {
+       "address": "L12",
+       "value": "Nom, organisation et intrigue créés pour le projet."
+      },
+      {
+       "address": "M12",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 13,
+     "cells": [
+      {
+       "address": "A13",
+       "value": "SPACE-BASE-08"
+      },
+      {
+       "address": "B13",
+       "value": "Observatoire des Seuils"
+      },
+      {
+       "address": "C13",
+       "value": "CL9"
+      },
+      {
+       "address": "D13",
+       "value": "station d’étude"
+      },
+      {
+       "address": "E13",
+       "value": "archives de routes et module Warp"
+      },
+      {
+       "address": "F13",
+       "value": "Quai des instruments ; Chambre des cartes ; Banc des anneaux ; Archives des branches ; Poste de rappel ; Salle des retours"
+      },
+      {
+       "address": "G13",
+       "value": "un relevé ancien désigne un seuil dont la route de retour manque"
+      },
+      {
+       "address": "H13",
+       "value": "Blooded, vaisseau et trajet joué; conditions du relais ou du chantier au sas"
+      },
+      {
+       "address": "I13",
+       "value": "Aligner l’appareil avec le quai, lire les signaux, arrimer puis sortir au sas correspondant."
+      },
+      {
+       "address": "J13",
+       "value": "Les services appartiennent à leurs occupants. Une base ne remplace ni la maison active ni le vaisseau de clan."
+      },
+      {
+       "address": "K13",
+       "value": "Le quai et un point de sortie restent utilisables après une mission engagée, avec recours à une baie de secours si nécessaire."
+      },
+      {
+       "address": "L13",
+       "value": "Nom, organisation et intrigue créés pour le projet."
+      },
+      {
+       "address": "M13",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 14,
+     "cells": [
+      {
+       "address": "A14",
+       "value": "SPACE-BASE-09"
+      },
+      {
+       "address": "B14",
+       "value": "Épave de la Dernière Veille"
+      },
+      {
+       "address": "C14",
+       "value": "CL13"
+      },
+      {
+       "address": "D14",
+       "value": "station abandonnée"
+      },
+      {
+       "address": "E14",
+       "value": "expédition de mémoire et récupération"
+      },
+      {
+       "address": "F14",
+       "value": "Brèche d’approche ; Coursive muette ; Atelier éteint ; Galerie des noms ; Soute effondrée ; Pont des signaux"
+      },
+      {
+       "address": "G14",
+       "value": "des marques de lutte et un journal incomplet contredisent la légende"
+      },
+      {
+       "address": "H14",
+       "value": "Blooded, vaisseau et trajet joué; conditions du relais ou du chantier au sas"
+      },
+      {
+       "address": "I14",
+       "value": "Aligner l’appareil avec le quai, lire les signaux, arrimer puis sortir au sas correspondant."
+      },
+      {
+       "address": "J14",
+       "value": "Les services appartiennent à leurs occupants. Une base ne remplace ni la maison active ni le vaisseau de clan."
+      },
+      {
+       "address": "K14",
+       "value": "Le quai et un point de sortie restent utilisables après une mission engagée, avec recours à une baie de secours si nécessaire."
+      },
+      {
+       "address": "L14",
+       "value": "Nom, organisation et intrigue créés pour le projet."
+      },
+      {
+       "address": "M14",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    },
+    {
+     "number": 15,
+     "cells": [
+      {
+       "address": "A15",
+       "value": "SPACE-BASE-10"
+      },
+      {
+       "address": "B15",
+       "value": "Ancrage du joueur"
+      },
+      {
+       "address": "C15",
+       "value": "CL11"
+      },
+      {
+       "address": "D15",
+       "value": "base à aménager"
+      },
+      {
+       "address": "E15",
+       "value": "port d’attache de fin de progression"
+      },
+      {
+       "address": "F15",
+       "value": "Quai du joueur ; Salle de préparation ; Atelier partagé ; Dépôt identifié ; Galerie de passage ; Baie de secours"
+      },
+      {
+       "address": "G15",
+       "value": "choisir les premiers services oblige à acheminer de vraies ressources"
+      },
+      {
+       "address": "H15",
+       "value": "Elite, expédition de repérage, ressources acheminées et équipe présente"
+      },
+      {
+       "address": "I15",
+       "value": "Aligner l’appareil avec le quai, lire les signaux, arrimer puis sortir au sas correspondant."
+      },
+      {
+       "address": "J15",
+       "value": "Les services appartiennent à leurs occupants. Une base ne remplace ni la maison active ni le vaisseau de clan."
+      },
+      {
+       "address": "K15",
+       "value": "Le quai et un point de sortie restent utilisables après une mission engagée, avec recours à une baie de secours si nécessaire."
+      },
+      {
+       "address": "L15",
+       "value": "Nom, organisation et intrigue créés pour le projet."
+      },
+      {
+       "address": "M15",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "V5 États communs",
+   "rows": [
+    {
+     "number": 5,
+     "cells": [
+      {
+       "address": "A5",
+       "value": "Identifiant"
+      },
+      {
+       "address": "B5",
+       "value": "Titre"
+      },
+      {
+       "address": "C5",
+       "value": "Proprietaire"
+      },
+      {
+       "address": "D5",
+       "value": "Valeurs"
+      },
+      {
+       "address": "E5",
+       "value": "Écriture"
+      },
+      {
+       "address": "F5",
+       "value": "Invariant"
+      },
+      {
+       "address": "G5",
+       "value": "Lecteurs"
+      },
+      {
+       "address": "H5",
+       "value": "Reprise"
+      },
+      {
+       "address": "I5",
+       "value": "Migration"
+      },
+      {
+       "address": "J5",
+       "value": "Provenance"
+      }
+     ]
+    },
+    {
+     "number": 22,
+     "cells": [
+      {
+       "address": "A22",
+       "value": "STATE5-17"
+      },
+      {
+       "address": "B22",
+       "value": "personalShipOwned"
+      },
+      {
+       "address": "C22",
+       "value": "Vaisseau personnel"
+      },
+      {
+       "address": "D22",
+       "value": "faux, vrai"
+      },
+      {
+       "address": "E22",
+       "value": "Mission d’obtention conclue"
+      },
+      {
+       "address": "F22",
+       "value": "Déverrouiller une carte ne suffit pas"
+      },
+      {
+       "address": "G22",
+       "value": "Voyage et salles"
+      },
+      {
+       "address": "H22",
+       "value": "Enregistrer l’événement et son identifiant avant d’annoncer sa conséquence. Un événement déjà consommé ne s’applique pas à nouveau."
+      },
+      {
+       "address": "I22",
+       "value": "Ajouter une valeur par défaut documentée pour une ancienne sauvegarde; garder les choix et les pertes déjà établis."
+      },
+      {
+       "address": "J22",
+       "value": "Extension V5"
+      }
+     ]
+    },
+    {
+     "number": 23,
+     "cells": [
+      {
+       "address": "A23",
+       "value": "STATE5-18"
+      },
+      {
+       "address": "B23",
+       "value": "personalShipLocation"
+      },
+      {
+       "address": "C23",
+       "value": "Voyage"
+      },
+      {
+       "address": "D23",
+       "value": "Monde, base et quai connus"
+      },
+      {
+       "address": "E23",
+       "value": "Arrivée ou départ du trajet"
+      },
+      {
+       "address": "F23",
+       "value": "Le navire conserve sa position pendant une sortie au sol"
+      },
+      {
+       "address": "G23",
+       "value": "Retour et inventaire"
+      },
+      {
+       "address": "H23",
+       "value": "Enregistrer l’événement et son identifiant avant d’annoncer sa conséquence. Un événement déjà consommé ne s’applique pas à nouveau."
+      },
+      {
+       "address": "I23",
+       "value": "Ajouter une valeur par défaut documentée pour une ancienne sauvegarde; garder les choix et les pertes déjà établis."
+      },
+      {
+       "address": "J23",
+       "value": "Extension V5"
+      }
+     ]
+    },
+    {
+     "number": 24,
+     "cells": [
+      {
+       "address": "A24",
+       "value": "STATE5-19"
+      },
+      {
+       "address": "B24",
+       "value": "currentWorldId"
+      },
+      {
+       "address": "C24",
+       "value": "Monde"
+      },
+      {
+       "address": "D24",
+       "value": "PLAN01..24 ou branche dédiée"
+      },
+      {
+       "address": "E24",
+       "value": "Transition physique achevée"
+      },
+      {
+       "address": "F24",
+       "value": "Les profils de guerre réutilisent les mêmes identifiants de monde"
+      },
+      {
+       "address": "G24",
+       "value": "Rencontres et météo"
+      },
+      {
+       "address": "H24",
+       "value": "Enregistrer l’événement et son identifiant avant d’annoncer sa conséquence. Un événement déjà consommé ne s’applique pas à nouveau."
+      },
+      {
+       "address": "I24",
+       "value": "Ajouter une valeur par défaut documentée pour une ancienne sauvegarde; garder les choix et les pertes déjà établis."
+      },
+      {
+       "address": "J24",
+       "value": "Extension V5"
+      }
+     ]
+    },
+    {
+     "number": 25,
+     "cells": [
+      {
+       "address": "A25",
+       "value": "STATE5-20"
+      },
+      {
+       "address": "B25",
+       "value": "travelManifest"
+      },
+      {
+       "address": "C25",
+       "value": "Voyage"
+      },
+      {
+       "address": "D25",
+       "value": "Personnes, objets et appareils embarqués"
+      },
+      {
+       "address": "E25",
+       "value": "Chargement puis départ"
+      },
+      {
+       "address": "F25",
+       "value": "Vérifier présence et capacité avant de quitter le quai"
+      },
+      {
+       "address": "G25",
+       "value": "MP, trophées et secours"
+      },
+      {
+       "address": "H25",
+       "value": "Enregistrer l’événement et son identifiant avant d’annoncer sa conséquence. Un événement déjà consommé ne s’applique pas à nouveau."
+      },
+      {
+       "address": "I25",
+       "value": "Ajouter une valeur par défaut documentée pour une ancienne sauvegarde; garder les choix et les pertes déjà établis."
+      },
+      {
+       "address": "J25",
+       "value": "Extension V5"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Atlas des mondes",
+   "rows": [
+    {
+     "number": 5,
+     "cells": [
+      {
+       "address": "A5",
+       "value": "Identifiant"
+      },
+      {
+       "address": "B5",
+       "value": "Titre"
+      },
+      {
+       "address": "C5",
+       "value": "Nature"
+      },
+      {
+       "address": "D5",
+       "value": "Géographie"
+      },
+      {
+       "address": "E5",
+       "value": "Promesse"
+      },
+      {
+       "address": "F5",
+       "value": "Cadre jouable"
+      },
+      {
+       "address": "G5",
+       "value": "Statut cartographie"
+      },
+      {
+       "address": "H5",
+       "value": "Accès"
+      },
+      {
+       "address": "I5",
+       "value": "Arrivee"
+      },
+      {
+       "address": "J5",
+       "value": "Proie et histoire"
+      },
+      {
+       "address": "K5",
+       "value": "État persistant"
+      },
+      {
+       "address": "L5",
+       "value": "Statut dans le lore"
+      },
+      {
+       "address": "M5",
+       "value": "Provenance"
+      }
+     ]
+    },
+    {
+     "number": 7,
+     "cells": [
+      {
+       "address": "A7",
+       "value": "PLAN02"
+      },
+      {
+       "address": "B7",
+       "value": "Kharuun"
+      },
+      {
+       "address": "C7",
+       "value": "Désert rocheux"
+      },
+      {
+       "address": "D7",
+       "value": "canyons, arches et dunes froides"
+      },
+      {
+       "address": "E7",
+       "value": "bête qui efface sa piste dans le vent"
+      },
+      {
+       "address": "F7",
+       "value": "Contrat de chasse"
+      },
+      {
+       "address": "G7",
+       "value": "Destination de conception avec fiche propre. Les secteurs et contrats ci-dessous définissent l’étendue prévue, sans prétendre à une planète entière déjà produite."
+      },
+      {
+       "address": "H7",
+       "value": "Blooded, vaisseau réellement acquis, route relevée puis trajet joué; contrat ou autorisation locale supplémentaire selon mission"
+      },
+      {
+       "address": "I7",
+       "value": "Approche, choix d’un point d’atterrissage connu, sas et première zone reliée au site de retour."
+      },
+      {
+       "address": "J7",
+       "value": "La présence d’une proie dépend de son habitat et de la mission. Une entrée de carte ne crée pas une nouvelle population à chaque visite."
+      },
+      {
+       "address": "K7",
+       "value": "Un identifiant de monde conserve météo de mission, raccourcis, prises, équipage et résultats. Les profils de réserve et de guerre réutilisent cette entité."
+      },
+      {
+       "address": "L7",
+       "value": "Géographies originales. Homeworld et xénomorphes sont des inspirations de franchise; aucune carte de planète canonique revendiquée."
+      },
+      {
+       "address": "M7",
+       "value": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

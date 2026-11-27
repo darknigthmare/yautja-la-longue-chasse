@@ -26,37 +26,131 @@ Cette bible fusionne la « Campagne commune » du classeur V6 (60 fiches R2-M001
 
 **Règle de lecture.** Les lignes « Production (proposé) » sont des propositions déduites de la scène écrite dans la fiche ; elles ne figurent pas dans le classeur et sont à valider. Il en va de même des blocs « Comblement » des chasses, du catalogue musical (MUS-01 → MUS-73) et de la section « Comblement des vides ». Les identifiants SFX en police technique (`rifle-burst`…) sont des noms de dossiers proposés pour `public/audio/sfx/`, sur le modèle des 21 existants. Pour les 8 chasses, « Existant » et « Manquant » sont vérifiés dans les fichiers du dépôt.
 
+
+### Raccords du 22 novembre 2026
+
+Le classeur décrit les 68 fiches au commit de référence. Il consigne les nouveaux parcours, leurs preuves et les étapes de production encore ouvertes. [Classeur Excel](../../production/INVENTAIRE_BIBLE_20261122.xlsx)
+
+- R2-M002 · Duel, outil, barrière et choix de cohorte. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996315371)
+- R2-M003 · Audience, remise à la forge et repères de cité. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996220777)
+- R2-M013 · Kit, écran, alerte, dépense et repos. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44995579576)
+- R2-M023 · Coque V161, sas, trois balises, amarrage et quai. La recette se déroule sur une campagne adulte avec le prévol V88 préparé. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44997075667)
+- R2-M028 · Ordres au quai, verrou à l’atelier et reprise. Le rôle de délégation a été joué dans Chrome. Le moteur couvre aussi le rôle terrain. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996869503)
+- R2-M039 · Quai, atelier, relais et témoin. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996173113)
+- R2-M047 · Passe des Cendres et deux interventions. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44994874573)
+- R2-M048 · Crue, rassemblement et choix d’intervention. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44995209730)
+- R2-M052 · Armurerie et remise à Griffe de Fer. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44995540968)
+- R2-M053 · Ancien relevé, rive ou canopée. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996071556)
+
+Les huit surfaces planétaires ont chacune une ambiance originale. Le menu d’accueil joue le thème MUS‑01. Les médias utilisent le manifeste audio du jeu. [Ambiances](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996749682) · [MUS‑01](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44996634637)
+
+### Raccords du 27 novembre 2026
+
+Le suivi utilise le `main` de départ `2769b09` et l’état des branches et PR observées. Le classeur associe les 68 missions à leurs preuves de jeu et aux points encore ouverts. [Classeur du 27 novembre](../../production/INVENTAIRE_BIBLE_20261127.xlsx)
+
+- **R2-M001** · La cour précède le duel. Chrome a vérifié la capture à l’appât et la reprise. Le moteur couvre aussi la tactique rapprochée et l’intervention de Saar. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45977790999)
+- **R2-M007** · La recrue règle les attaches et les lectures. Chrome suit la calibration jusqu’au rapport. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45978531023)
+- **R2-M008** · Les essais près et hors portée guident le réglage. Le compte rendu est validé au poste de remise. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45979197084)
+- **R2-M009** · Chrome vérifie la flaque, la reprise au couvert et le retour du rapport. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45980520010)
+- **R2-M010** · Le joueur vérifie l’ouverture du couloir, vise puis va récupérer l’outil. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45979197084)
+- **R2-M011** · Les tirs depuis les couvertures et le retour au râtelier sont joués par le moteur de formation. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45979197084)
+- **R2-M012** · La recrue doit sécuriser le poste et récupérer l’exercice avant d’en remettre le rapport. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45979197084)
+- **R2-M020** · Les trois chasseurs rapportent leurs propres preuves. Une cloison change de voie, puis la purge chronométrée impose le retour avec le blessé. Le tracé revient sur les deux supports avant reconnaissance Blooded. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45978406278)
+- **R2-M029** · Le joueur ramène les douze élèves, puis remplit un service au quai. La nomination exige deux mondes terminés et l’accord donné au Leader. Le retour du pack est vérifié dans le jeu. Les écritures du dossier et de la fonction sont testées ensemble, y compris après réimport. [Recette du pack](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45979878975) · [Preuves de nomination](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45980899671)
+- **R2-M034** · Le choix est enregistré au Contrôle d’amarrage. Le pilote vérifie le kit au sas. La recette Chrome suit la branche d’exploration jusqu’au retour du checkpoint. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45978135116)
+- **R2-M035** · Le Conseil confie un parcours attaché au vaisseau et à la Veille partagée. Le joueur peut couvrir une délégation ou organiser un secours, traverser le passage, puis rapporter les faits. Chrome suit le secours jusqu’au rapport retrouvé après rechargement. Les tests couvrent aussi la poursuite et le repli. Le journal accepte jusqu’à 120 gestes. Accumuler les replis peut atteindre cette limite. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45981259828)
+- **R2-M036** · Le commandement est suivi d’un trajet physique. La recette couvre les choix de ravitaillement et de contournement et la possibilité de repli. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45979624340)
+- **R2-M037** · Un convoi livré et une garde active autorisent la traversée. Le choix se fait en rejoignant une sortie. Le rapport reste attaché au front libre. L’admission par l’histoire Blooded reste ouverte. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45981505858)
+- **R2-M038** · Les gestes d’atelier suivent une vraie prise. La recette Chrome valide le placement au vaisseau et la reprise. Les tests de sauvegarde couvrent la résidence. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45977579294)
+- **R2-M043** · Les deux préparations et leur reçu sont jouables. Le rite dépend encore des entraînements L‑06 et n’est pas délivré par ce parcours. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45977281063)
+- **R2-M054** · Le joueur peut laisser mener, conseiller ou intervenir au poste de sécurité pendant le danger. Chrome couvre les trois issues. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45975421414)
+- **R2-M055** · Les actes de la partie guident la visite. Le joueur remet une méthode au volontaire après comparaison ou transmission. Chrome couvre les trois voies. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45976677678)
+
+Le détail des vérifications indique les étapes jouées dans Chrome, les tests du moteur et les besoins d’habillage. R2-M059 attend une fin d’origine jouée et un prolongement Ancient compatible. Le choix de fin existant prépare ce chemin.
+
+### Suite du 27 novembre 2026
+
+La reprise part de `9a98912` et tient compte des têtes de branches relevées dans le suivi. Le classeur des 68 fiches associe chaque parcours à ses preuves et à son reste à produire. [Classeur mis à jour](../../production/INVENTAIRE_BIBLE_20261127.xlsx)
+
+- **R2-M004** · Après la forge, la Salle des maîtres reçoit les trois gestes. La poutre reprend au dernier passage validé. Le choix d’ordre donne le camarade de l’exercice. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45997179730)
+- **R2-M005** · Le joueur suit les empreintes, les branches et les sons jusqu’au perchoir. Il peut reprendre au dernier indice et remet la carte ou son dernier relevé. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45997179730)
+- **R2-M006** · La démonstration et le rangement ouvrent la porte du dojo. La cérémonie de rang et le choix du premier atelier restent à raccorder à cette passation historique. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45997179730)
+- **R2-M014** · Chaque région a une halte, deux routes et une observation liée aux ateliers. Le joueur peut se replier, reprendre et rendre la bourse au Maître des terrasses. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45997995198)
+- **R2-M016** · Au repère V90, le rôle choisi change les positions de Saar et Vek. Le jalon attend qu’ils rejoignent leurs postes, et le choix survit au rechargement. Les rencontres avant la répétition restent ouvertes. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45998557554)
+- **R2-M017** · Le signal fait prendre leurs appuis à Saar et Vek avant que le joueur tienne le contrepoids. La porte basse sert réellement d’issue. La voie haute conserve ses checkpoints. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45999084802)
+- **R2-M030** · Le chasseur Adjutant entre avec une coque acquise. Il relève les anomalies en marchant le long de la galerie et règle la priorité au dispositif. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45999376383)
+- **R2-M031** · À l’établi les alternatives donnent des lectures propres. Un mauvais réglage conserve le travail déjà validé. Les pièces sont chargées ensemble avant le montage. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45999376383)
+- **R2-M032** · Le joueur aligne les supports, relie les commandes et vérifie à vide la marge ou la fenêtre courte. Le module et la preuve de chronique sont écrits ensemble. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45999376383)
+- **R2-M033** · Le chasseur rejoint le col des cèdres, ancre le repère et revient, après l’alcôve s’il la choisit. Un retour immédiat reste disponible pour quitter le trajet. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45999376383)
+- **R2-M037** · Après le premier voyage, la garde et la livraison ouvrent le canyon de Korthas. Deux balises mènent au choix de consolidation ou de progression et à un rapport durable en campagne. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45997651308)
+- **R2-M043** · Les épreuves utilisent les vrais gestes du simulateur. Les témoins et le socle consignent la reconnaissance Elite une fois les preuves antérieures réunies. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45997710068)
+- **R2-M044** · La coque collective se visite depuis le projet du hangar. Les deux repères vérifiés reviennent au sas dans un relevé du propriétaire, avant ou après le choix déjà consigné. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45999104288)
+- **R2-M056** · Le joueur compare les actes et choisit une audience locale ou une préparation intime. Griffe de Fer témoigne au poste ou sa trace autorisée est consultée aux archives. L’ancienneté et les dettes restent à établir pour le rang. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45996508882)
+- **R2-M057** · La visite permet d’examiner les masques ou de rejoindre le casier pour y consulter leur chronique. La lecture et l’état d’accès par titre survivent à la reprise. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45996503862)
+
+La préparation O6 est jouable dans la demeure. Le joueur installe l’appui puis le râtelier, vérifie le passage et revient au seuil. R2-M059 attend toujours une vraie fin d’origine et la reconnaissance Ancient. R2-M058 attend un chapitre de chronique du projet et sa propre sauvegarde. [Recette de la demeure](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/45998374522)
+
+### Reprise des fiches ouvertes du 27 novembre 2026
+
+Le lot part de `42cd446`, après #197 et #198. Le classeur suit les 68 fiches, les références de branches et les traces de jeu. [Classeur de la Bible](../../production/INVENTAIRE_BIBLE_20261127.xlsx)
+
+- **R2-M003** · Le chariot ferme le chemin direct vers le comptoir. Le joueur marche par le côté, reprend au dernier passage et remet la pièce après avoir rejoint la forge. Les déplacements accompagnés de Saar entre les quartiers restent ouverts. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46007481856)
+- **R2-M006** · Le choix au râtelier fixe l’ordre des deux premières leçons. Le dojo conserve cet ordre au rechargement. La remise du rang garde son emplacement historique dans le prologue. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46007605788)
+- **R2-M016** · Chacun rejoint son poste dans la galerie. Le joueur observe les deux gestes présents avant de pouvoir signaler la répartition. Les rencontres dans la cité et les suites d’un refus restent ouvertes. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46008141091)
+- **R2-M017** · Le glyphe annonce l’ouverture. Le temps tenu au pupitre confirme de vrais appuis dans la Nef. Les anciens checkpoints conservent leur géométrie. L’ordre global de V70 et V90 reste en chantier. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46007580696)
+- **R2-M051** · Le conseil lit les actes vérifiés d’Elite, du mentorat et du passage puis le joueur joue sa relève. Le registre et le rang Elder sont sauvegardés ensemble. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46006711626)
+- **R2-M056** · Le joueur règle la dette aux postes du navire et transmet le passage d’une génération à l’autre. Les ellipses narratives totalisent 325 ans. L’audience choisie accorde Ancient et le rang reprend à froid. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46006377978)
+- **R2-M058** · Le mausolée ouvre cette chronique au rang Ancient. Le joueur pose le masque puis joue l’une des deux lectures du passage, chacune dans son propre registre local. L’habillage cinéma et les autres chroniques restent ouverts. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46007077359)
+- **R2-M059** · Les deux issues reprennent au dernier geste confirmé. La campagne attend encore le reçu de clôture joué d’O6-E1 dans sa demeure, avec Ancient réellement reconnu. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46007526012)
+- **R2-M060** · Le foyer et le vaisseau lisent les objets exposés et les liens existants. Les actes admis dépendent du lieu et du récit joué. La fin d’origine reste le prérequis d’accès en campagne. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46007526012)
+
+Le prolongement O6 ajoute une invitation à Yena liée à l’aide portée au filet durant l’enfance. La visite, le cordage et l’ouverture du râtelier préparent la maison d’enseignement. La première leçon volontaire reste à jouer pour réaliser O6-M30. [Recette O6](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46008135352)
+
+
+### Deuxième tranche sur #199
+
+Le lot part de `75bbc177`, avec la visite du mausolée et les chantiers transverses ouverts. Le journal des recettes indique les prérequis préparés pour chaque scène.
+
+- **R2-M003** · Saar attend au seuil de l’audience, mène le joueur au degré monumental et transmet le relais à l’escalier de la ville. La reprise ramène au dernier repère. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46010910723)
+- **R2-M057** · Une visite du Mur des Chasses au rang Ancient inscrit l’alcôve dans le registre. Les supports lisent l’état réel de chaque DLC et le joueur garde l’accès aux masques et au casier. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46010465918)
+- **R2-M024.8** · Les capteurs du Gardien lisent les vibrations sur un support partagé et les émissions énergétiques dégagées. Le HUD signale la perception. Les sons filtrés de la combinaison accompagnent l’entrée et la réaction. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46012258746)
+- **FIN_DE_VOIE** · Après ouverture du râtelier O6, le novice choisit son bâton, rejoint l’appui aux côtés du joueur et range l’outil. L’essai a son registre. La clôture de la fin O6 attend les scènes antérieures de la campagne. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46010416880)
+- **LEURRE_BOSS** · Quatre Apex suivent un émetteur audible pendant quatre secondes. Le Cœur-Mère apprend après la première diversion. Le scan explique aussi la réponse des chasseurs entraînés et du Gardien en vide. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46011193656)
+- **ACHERON_VIDE** · La chasse d’Acheron écarte les anciennes traces acoustiques et olfactives hors contact. Le Gardien réagit à la vibration et à l’énergie, avec retour de combinaison. La cadence d’une attaque s’engage à partir d’un signal effectivement reçu. 
+- **COOP_DE_CAMPAGNE** · Le règlement des expéditions contrôle l’attribution des gains confirmés par un hôte et empêche leur réutilisation. L’invitation et la simulation partagée restent à raccorder. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46010949709)
+
+
 ## Vue d'ensemble
 
-La campagne compte 68 missions : 60 fiches communes, plus 8 chasses planétaires qui réalisent R2-M024. Les 8 chasses sont jouables, 6 fiches sont partielles, 53 n'existent qu'en texte et en dialogues.
+La campagne comprend 60 fiches communes et 8 chasses planétaires qui réalisent R2-M024. Le tableau associe les fiches à leur parcours. Le classeur du 27 novembre précise les correspondances, les preuves et les étapes encore ouvertes.
 
-Chaîne jouable actuelle, dans l'ordre du jeu : nurserie (V47) → accueil Unblooded, dojo, première lame, biomask, camp (V48) → reconnaissance du désert (V49) → patrouille (V52) → petite Fosse (V53) → Premières Pistes (V66) → passages du Homeworld (V67) → Cohorte des Aspirants, Young Blood (V68) → Seuils du Premier Sang (V69) → Temple des Trois Ombres, acte I (V70) → préparation de triade (V90, V92) → vaisseau (V87 → V89) → 8 chasses. Ces chapitres jeunesse couvrent des gestes proches des fiches M001 → M015 sans en suivre les scènes : ils sont notés « voisin ».
+La chaîne de jeunesse va de la nurserie à l’accueil Unblooded sur le Homeworld. Les six ateliers se rejoignent par les baraquements, où le soin reste disponible. Les passages et épreuves existants conduisent à la reconnaissance Young Blood, au Temple des Trois Ombres et à la préparation de la triade. Le retour de Quatza-Rij ouvre le choix de reprendre le rite Blooded dans le dossier de campagne. La reconnaissance ouvre les préparatifs du vaisseau et, avec une coque valide, le voyage et les chasses.
 
 | # | Fiche | Titre | Rang | État | Lien dans le jeu |
 | --- | --- | --- | --- | --- | --- |
-| 1 | R2-M001 | Pourquoi nous combattons | Youngling | Texte seul | voisin : V47 nurserie |
-| 2 | R2-M002 | Le filet et les visages | Youngling | Texte seul | — |
-| 3 | R2-M003 | Le chemin vers la cité | Youngling | Texte seul | voisin : V48 trajet dans la cité |
-| 4 | R2-M004 | L’épreuve des trois gestes | Youngling | Texte seul | voisin : V48 dojo |
-| 5 | R2-M005 | La piste avant la prise | Youngling | Texte seul | voisin : V66 Premières Pistes |
-| 6 | R2-M006 | Entrer parmi les Unblooded | Youngling | Texte seul | voisin : V48 accueil |
-| 7 | R2-M007 | Le masque et ses lectures | Unblooded | Texte seul | voisin : V48 premier biomask |
-| 8 | R2-M008 | La distance des lames | Unblooded | Texte seul | voisin : V48 première lame |
-| 9 | R2-M009 | Ce que le camouflage laisse voir | Unblooded | Texte seul | — |
-| 10 | R2-M010 | Le combistick revient à la main | Unblooded | Texte seul | — |
-| 11 | R2-M011 | Le tir qui demande une ligne | Unblooded | Texte seul | — |
-| 12 | R2-M012 | Le piège et le retour | Unblooded | Texte seul | — |
-| 13 | R2-M013 | Le soin dans un abri | Unblooded | Texte seul | — |
-| 14 | R2-M014 | La boucle des régions proches | Unblooded | Texte seul | voisin : V52 patrouille, V67 passages |
+| 1 | R2-M001 | Pourquoi nous combattons | Youngling | Ouverture jouable | Outil, proie échappée, mise à l’abri et filet |
+| 2 | R2-M002 | Le filet et les visages | Youngling | Cour de la nurserie raccordée | Duel, outil, barrière et choix de cohorte |
+| 3 | R2-M003 | Le chemin vers la cité | Youngling | Détour et parvis joués · guidage à prolonger | Deux repères avec Saar, détour du chariot et remise de la pièce |
+| 4 | R2-M004 | L’épreuve des trois gestes | Youngling | Exercices en salle raccordés | Anneau, poutre et cible dans l’ordre choisi |
+| 5 | R2-M005 | La piste avant la prise | Youngling | Piste et rapport raccordés | Indices, perchoir et retour par une autre voie |
+| 6 | R2-M006 | Entrer parmi les Unblooded | Youngling | Passation et premier atelier jouables | Le râtelier transmet le choix du masque ou des lames au dojo |
+| 7 | R2-M007 | Le masque et ses lectures | Unblooded | Atelier Unblooded jouable | Calibrer et remettre le profil de masque |
+| 8 | R2-M008 | La distance des lames | Unblooded | Atelier Unblooded jouable | Comparer la portée et remettre le rapport de lames |
+| 9 | R2-M009 | Ce que le camouflage laisse voir | Unblooded | Atelier Unblooded jouable | Lire les traces et franchir la salle de camouflage |
+| 10 | R2-M010 | Le combistick revient à la main | Unblooded | Atelier Unblooded jouable | Lancer, retrouver et restituer le combistick d’exercice |
+| 11 | R2-M011 | Le tir qui demande une ligne | Unblooded | Atelier Unblooded jouable | Tirer au speargun et rendre le rapport |
+| 12 | R2-M012 | Le piège et le retour | Unblooded | Atelier Unblooded jouable | Poser et récupérer une mine d’exercice |
+| 13 | R2-M013 | Le soin dans un abri | Unblooded | Atelier de soin raccordé | Kit, écran, alerte, dépense et repos |
+| 14 | R2-M014 | La boucle des régions proches | Unblooded | Circuit supervisé raccordé | Désert, jungle et bordure avec retour au Maître |
 | 15 | R2-M015 | Recevoir la place de Young Blood | Unblooded | Partiel | V68 accorde Young Blood |
-| 16 | R2-M016 | Former la triade | Young Blood | Partiel | V68 cohorte, V90 entraînement |
-| 17 | R2-M017 | Le Temple des Trois Ombres | Young Blood | Partiel | V69 + V70 acte I (9 salles) |
+| 16 | R2-M016 | Former la triade | Young Blood | Rencontres et postes jouables dans V90 | Observer Saar au verrou et Vek aux traces avant la répartition |
+| 17 | R2-M017 | Le Temple des Trois Ombres | Young Blood | Nef des Anneaux et Belvédère jouables | Glyphe annonciateur, passerelles et route basse du Belvédère |
 | 18 | R2-M018 | Le Quatza-Rij à trois | Young Blood | Texte seul | V90 = entraînement, pas le rite |
 | 19 | R2-M019 | Revenir avec la triade | Young Blood | Texte seul | — |
-| 20 | R2-M020 | Porter la marque Blooded | Young Blood | Texte seul | — |
+| 20 | R2-M020 | Porter la marque Blooded | Young Blood | Rite et rang raccordés | Pyramide, purge, marque sur le masque et le front |
 | 21 | R2-M021 | Une coque vraiment acquise | Blooded | Partiel | V87 → V89 vaisseau |
 | 22 | R2-M022 | Huit salles pour préparer la route | Blooded | Partiel | V88 préparation |
-| 23 | R2-M023 | Le premier trajet entre les mondes | Blooded | Partiel | V89, trajet non joué |
+| 23 | R2-M023 | Le premier trajet entre les mondes | Blooded | Quai interstellaire raccordé | Coque V161, sas, trois balises, amarrage et quai |
 | 24 | R2-M024 | La première chasse d’un autre ciel | Blooded | Jouable | réalisée par les 8 chasses |
 | 25 | R2-M024.1 | Sang dans la canopée — Oseris-IV | Blooded | Jouable | `jungle-vey` |
 | 26 | R2-M024.2 | Chaleur sous la glace — Nivalis-K | Blooded | Jouable | `ice-cryostalker` |
@@ -69,39 +163,39 @@ Chaîne jouable actuelle, dans l'ordre du jeu : nurserie (V47) → accueil Unblo
 | 33 | R2-M025 | Préparer Xeno Prime | Blooded | Texte seul | — |
 | 34 | R2-M026 | La première reine | Blooded | Texte seul | — |
 | 35 | R2-M027 | Ce que la reine a changé | Blooded | Texte seul | — |
-| 36 | R2-M028 | L’essai de coordination | Blooded | Texte seul | — |
-| 37 | R2-M029 | La fonction Adjutant | Blooded | Texte seul | — |
-| 38 | R2-M030 | Le seuil du Warp | Blooded | Texte seul | — |
-| 39 | R2-M031 | Les pièces d’un retour | Blooded | Texte seul | — |
-| 40 | R2-M032 | Installer le module du Warp | Blooded | Texte seul | — |
-| 41 | R2-M033 | Traverser et revenir | Blooded | Texte seul | — |
-| 42 | R2-M034 | Choisir la prochaine route | Blooded | Texte seul | — |
-| 43 | R2-M035 | Un conflit de clan à hauteur de chasseur | Blooded | Texte seul | voisin : Guerres des clans |
-| 44 | R2-M036 | Voir le champ depuis les hauteurs | Blooded | Texte seul | voisin : Guerres des clans |
-| 45 | R2-M037 | La carte a des chemins | Blooded | Texte seul | voisin : Guerres des clans |
-| 46 | R2-M038 | L’histoire dans le meuble | Blooded | Texte seul | voisin : atelier des trophées |
-| 47 | R2-M039 | Revenir chez les siens | Blooded | Texte seul | — |
-| 48 | R2-M040 | Mon domaine de maîtrise | Blooded | Texte seul | — |
-| 49 | R2-M041 | Préparer la chasse solitaire | Blooded | Texte seul | — |
-| 50 | R2-M042 | Le Quatza-Rij solitaire | Blooded | Texte seul | — |
-| 51 | R2-M043 | La reconnaissance Elite | Blooded | Texte seul | — |
-| 52 | R2-M044 | La coque d’un groupe | Elite | Texte seul | — |
-| 53 | R2-M045 | Une porte, plusieurs haltes | Elite | Texte seul | — |
-| 54 | R2-M046 | Une mission vraiment collective | Elite | Texte seul | — |
-| 55 | R2-M047 | Ce que la guerre laisse au retour | Elite | Texte seul | — |
-| 56 | R2-M048 | La branche qu’on ne possède pas | Elite | Texte seul | — |
-| 57 | R2-M049 | Former sans remplacer | Elite | Texte seul | — |
-| 58 | R2-M050 | Un désaccord à résoudre sur le terrain | Elite | Texte seul | — |
-| 59 | R2-M051 | Être reconnu Elder | Elite | Texte seul | — |
-| 60 | R2-M052 | L’atelier qui fonctionne sans moi | Elder | Texte seul | — |
-| 61 | R2-M053 | Un ancien terrain a changé | Elder | Texte seul | — |
-| 62 | R2-M054 | La décision du successeur | Elder | Texte seul | — |
-| 63 | R2-M055 | L’épreuve de la longue mémoire | Elder | Texte seul | — |
-| 64 | R2-M056 | La reconnaissance Ancient | Elder | Texte seul | — |
-| 65 | R2-M057 | Le mausolée des chasses racontées | Ancient | Texte seul | voisin : mausolée |
-| 66 | R2-M058 | Entrer dans une chronique cinéma | Ancient | Texte seul | — |
-| 67 | R2-M059 | La nouvelle cohorte revient | Ancient | Texte seul | — |
-| 68 | R2-M060 | La longue chasse demeure | Ancient, épilogue | Texte seul | — |
+| 36 | R2-M028 | L’essai de coordination | Blooded | Essai à deux équipes raccordé | Ordres au quai, verrou à l’atelier et reprise |
+| 37 | R2-M029 | La fonction Adjutant | Blooded | Parcours et fonction raccordés | Retour des élèves, service du quai et audience du Leader |
+| 38 | R2-M030 | Le seuil du Warp | Blooded | Observatoire jouable | Trois anomalies et choix au dispositif dormant |
+| 39 | R2-M031 | Les pièces d’un retour | Blooded | Essais et transport raccordés | Diagnostics, réglages et chariot des trois pièces |
+| 40 | R2-M032 | Installer le module du Warp | Blooded | Installation et preuve raccordées | Supports, câbles et retour à vide |
+| 41 | R2-M033 | Traverser et revenir | Blooded | Reconnaissance W-02 raccordée | Repère physique et retour par la fenêtre réservée |
+| 42 | R2-M034 | Choisir la prochaine route | Blooded | Choix et préparation raccordés | Officier du quai, route V159 et sas orbital |
+| 43 | R2-M035 | Un conflit de clan à hauteur de chasseur | Blooded | Introduction de campagne jouable | Mandat du Conseil, choix d’alliance et passage du canyon |
+| 44 | R2-M036 | Voir le champ depuis les hauteurs | Blooded | Introduction RTS jouable | Conseil, trois équipes et sortie sur W3-MAP01 |
+| 45 | R2-M037 | La carte a des chemins | Blooded | Introduction de conquête raccordée | Mandat Blooded, convoi, traversée et choix au poste |
+| 46 | R2-M038 | L’histoire dans le meuble | Blooded | Atelier et placement raccordés | Provenance, préparation et emplacement de la prise |
+| 47 | R2-M039 | Revenir chez les siens | Blooded | Retour civique raccordé | Quai, atelier, relais et témoin |
+| 48 | R2-M040 | Mon domaine de maîtrise | Blooded | Jouable dans le dossier | Quatre exercices et profil enregistré |
+| 49 | R2-M041 | Préparer la chasse solitaire | Blooded | Préparation raccordée au dossier du clan | `quatzaRij.expeditions.solo` |
+| 50 | R2-M042 | Le Quatza-Rij solitaire | Blooded | Combat, prélèvement et retour raccordés | `quatzaRij.expeditions.solo` |
+| 51 | R2-M043 | La reconnaissance Elite | Blooded | Reconnaissance Elite raccordée | Lames, plasma, chasse L-06 et remise au socle |
+| 52 | R2-M044 | La coque d’un groupe | Elite | Inspection extérieure raccordée | Passerelle, deux ponts scellés, relevé rendu au sas |
+| 53 | R2-M045 | Une porte, plusieurs haltes | Elite | Transfert entre seuils raccordé | `residenceV149.lastChoice` |
+| 54 | R2-M046 | Une mission vraiment collective | Elite | Escorte raccordée | `clanShipOperations` |
+| 55 | R2-M047 | Ce que la guerre laisse au retour | Elite | Retour de la Veille Partagée raccordé | Passe des Cendres et deux interventions |
+| 56 | R2-M048 | La branche qu’on ne possède pas | Elite | Hameau W‑02 raccordé | Crue, rassemblement et choix d’intervention |
+| 57 | R2-M049 | Former sans remplacer | Elite | Jouable dans le dossier adulte | Terrain, appuis et reçu de mentorat |
+| 58 | R2-M050 | Un désaccord à résoudre sur le terrain | Elite | Jouable dans le dossier adulte | Traces, horaires ou passerelle et témoin |
+| 59 | R2-M051 | Être reconnu Elder | Elite | Relève Elder narrative raccordée | Dépositions, engagement et remise au conseil |
+| 60 | R2-M052 | L’atelier qui fonctionne sans moi | Elder | Établi Elder raccordé | Armurerie et remise à Griffe de Fer |
+| 61 | R2-M053 | Un ancien terrain a changé | Elder | Retour à Oseris-IV raccordé | Ancien relevé, rive ou canopée |
+| 62 | R2-M054 | La décision du successeur | Elder | Parcours du successeur jouable | Oseris-IV, postes, danger et retour |
+| 63 | R2-M055 | L’épreuve de la longue mémoire | Elder | Épreuve de mémoire jouable | Archives, hangar, armurerie et transmission |
+| 64 | R2-M056 | La reconnaissance Ancient | Elder | Rite Ancient raccordé | Dette d’Oseris, trois relèves et audience locale ou intime |
+| 65 | R2-M057 | Le mausolée des chasses racontées | Ancient | Visite au Mur et casier jouables | Piédestaux, statuts des titres et trace de visite par alcôve |
+| 66 | R2-M058 | Entrer dans une chronique cinéma | Ancient | Première chronique originale jouable | Crâne du Ravin au socle, secours ou variante du sas fermé |
+| 67 | R2-M059 | La nouvelle cohorte revient | Ancient | Séquence jouée en recette · accès en attente | Support à deux pieds, écoute de quatre jeunes ou retour au seuil |
+| 68 | R2-M060 | La longue chasse demeure | Ancient, épilogue | Épilogue joué en recette · accès en attente | Objets, liens et geste final au foyer ou au vaisseau |
 
 ## Référentiel lore 1:1
 
@@ -157,6 +251,8 @@ Nouvelle chaîne : Youngling → Unblooded en pack → **Young Blood** par le Qu
 **Validation :** Quatza-Rij tué par le trio, les trois vivants ou ramenés. **Échec :** un trio décimé n'est pas validé ; les survivants retournent au pack.
 
 *Production (proposé)* — **Props :** territoire du Quatza-Rij sur le monde natal, carcasses, marquages, créature Quatza-Rij (la source ne décrit pas son apparence : design à créer en accord avec le masque Sideshow ; 10 animations). **VFX :** sang de la bête, poussière de charge. **SFX :** `quatza-roar`, `quatza-charge`, `quatza-bite`, `partner-call`. **Musique :** MUS-16 (à ajouter au catalogue).
+
+**Raccord jouable.** Depuis le dossier du clan après la formation de la tribu, le chasseur suit les traces, appelle Saar et Vek, puis exploite leurs ouvertures. Le même parcours permet de porter peau et crâne jusqu’aux témoins. Le registre rejoue les entrées pour vérifier le retour et les blessures. L-03 et le rite de la pyramide gardent leurs propres séquences.
 
 ### L-03 — La cérémonie du masque
 
@@ -466,7 +562,7 @@ La note parlait de « Glacier Moon » et « Swamp Moon » : elles deviennent des
 
 ### Époque, cités, Matriarches, races
 
-**Époque (révisée) :** la campagne suit toute la vie du Yautja, sur des siècles. Le joueur naît à l'époque des films (1987-2025) ; des ellipses de plusieurs décennies séparent les rangs. La fin de jeu (Elder et au-delà) atteint naturellement l'époque coloniale et 2204 (crossover *Tantalus*, Weyland-Yutani et ses synthétiques, OWLF héritière). Le Warp sert aux époques passées. Canon : Greyback vient sur Terre au XVIIIe siècle puis en 1997 (bio NECA), ce qui situe l'échelle d'une vie. *(Proposé : dates indicatives Youngling → Blooded 1990-2025 ; Elite vers 2050-2100 ; Clan Leader à Adjudicator 2100-2200 ; Philosopher et Black God après 2204.)*
+**Époque (révisée) :** la campagne suit toute la vie du Yautja, sur des siècles. Le joueur naît à l'époque des films (1987-2025) ; des ellipses de plusieurs décennies séparent les rangs. La fin de jeu (Elder et au-delà) atteint naturellement l'époque coloniale et 2204 (crossover *Tantalus*, Weyland-Yutani et ses synthétiques, OWLF héritière). Le Warp sert aux époques passées. Décision du 20 novembre 2026 : exception — le Warp peut aussi atteindre 2204 (Tantalus) ; 2204 est une branche du Warp ; le classeur V6 n'a pas d'époque 2204. Canon : Greyback vient sur Terre au XVIIIe siècle puis en 1997 (bio NECA), ce qui situe l'échelle d'une vie. *(Proposé : dates indicatives Youngling → Blooded 1990-2025 ; Elite vers 2050-2100 ; Clan Leader à Adjudicator 2100-2200 ; Philosopher et Black God après 2204.)*
 
 **Cités :** chaque clan a sa cité sur Yautja Prime. La cité déjà construite (12 quartiers) devient celle du clan d'origine du joueur ; les cités des clans alliés et rivaux se visitent par les régions et les skiffs. *(Proposé : 3 cités visitables au départ, plus la cité du clan fondé par le joueur.)*
 
@@ -1195,6 +1291,8 @@ Source : la bible de campagne d'*Aliens: Tantalus Frontier* (dépôt `darknigthm
 *Production (proposé)* — **Props :** anneau extérieur, pont de contrôle, laboratoire, berceaux QZ17, barricades de l'Echo-8 (réutiliser les assets de *Tantalus Frontier* si les licences des deux dépôts le permettent). **SFX :** alarme de quarantaine, voix de CASSIUS, détecteur de mouvement des Marines. **Musique :** MUS-41.
 
 **À décider :** rien. Décisions du 6 novembre : 2204 s'atteint par le Warp (époque future) ; le sort de l'Echo-8 est le choix du joueur (emporté pour l'honorer, ce qui colle à « plaque retrouvée, jamais le corps », ou laissé avec une marque gravée). À reporter dans le point ouvert n°5 de la bible *Tantalus* (« le fil Echo-8 est-il conservé ? »).
+
+Décision du 20 novembre 2026 : exception — le Warp peut aussi atteindre 2204 (Tantalus) ; 2204 est une branche du Warp ; le classeur V6 n'a pas d'époque 2204.
 
 ## Catalogue des variantes d'équipement : prompts d'image
 
@@ -2286,7 +2384,7 @@ Huit chasses jouables enchaînées : chacune exige la précédente, et la huiti�
 
 ## Acte VI — Blooded : Xeno Prime, Warp et guerre (R2-M025 → M043)
 
-Après les 8 chasses : première reine, fonction Adjutant, quête du Warp (facultative pour Elite), introduction aux trois modes de guerre, retour au Homeworld puis Quatza-Rij solitaire jusqu'au rang Elite. Toutes en texte seul ; les modes Guerres des clans existent à part.
+Après les 8 chasses : première reine, fonction Adjutant, quête du Warp (facultative pour Elite), introduction aux trois modes de guerre, retour au Homeworld puis Quatza-Rij solitaire jusqu'au rang Elite. Le Berceau, le Warp, l’essai de coordination et le retour au Homeworld ont des parcours propres. Les trois modes Guerres des clans existent à part.
 
 ### R2-M025 — Préparer Xeno Prime
 
@@ -2384,7 +2482,9 @@ Après les 8 chasses : première reine, fonction Adjutant, quête du Warp (facul
 
 ### R2-M040 — Mon domaine de maîtrise
 
-**Déroulé :** démonstration libre (piste, mobilité, piège, confrontation) sur un terrain à plusieurs solutions. **Choix :** spécialité ou combinaison. **Sauvegarde :** `elite.masteryProfileReady`
+**Déroulé :** démonstration libre (piste, mobilité, piège, confrontation) sur un terrain à plusieurs solutions. **Choix :** spécialité ou combinaison. **Sauvegarde :** `elite.masteryProfileReady`.
+
+Le terrain du dossier de campagne est accessible après la reconnaissance Blooded. Il propose de relever une piste, franchir un appui puis redescendre par une liane, préparer un piège ou esquiver et riposter. Le mentor consigne une spécialité ou deux disciplines effectivement démontrées dans `eliteMasteryV170`.
 
 *Production (proposé)* — **Props :** terrain de démonstration à quatre solutions (piste, mobilité, piège, confrontation), cibles et mannequins, mentor observateur. **VFX :** tracé de l'itinéraire choisi en fin d'épreuve. **SFX :** selon les outils employés, objective (existe). **Musique :** MUS-11.
 
@@ -2400,6 +2500,8 @@ Après les 8 chasses : première reine, fonction Adjutant, quête du Warp (facul
 
 *Production (proposé)* — **Props :** arène solitaire à trois niveaux, issue de repli, cible Quatza-Rij (même sprite que R2-M018, variante adulte plus grande), corps et trophée. **VFX :** sang acide, vapeur, marqueur de fenêtre ouverte par le joueur seul. **SFX :** `xeno-hiss`, `xeno-screech`, `acid-sizzle`, hit / slash (existe). **Musique :** MUS-14.
 
+**Raccord jouable.** Après les huit chasses et la remise de la coque personnelle, le dossier du clan ouvre la préparation et le terrain solo. Le râtelier, le plan et la marge choisie conditionnent la sortie. Le relevé de terrain conserve les attaques, les replis et la remise des deux pièces. La reconnaissance et les sons dédiés restent à produire.
+
 ### R2-M043 — La reconnaissance Elite
 
 **Déroulé :** retour devant les témoins, présentation de ce qui est rapporté, geste de reconnaissance. **Choix :** retour public ou restreint. **Sauvegarde :** `rank.Elite=true`
@@ -2408,7 +2510,7 @@ Après les 8 chasses : première reine, fonction Adjutant, quête du Warp (facul
 
 ## Acte VII — Elite (R2-M044 → M051)
 
-Navire de clan, résidence, opérations collectives, conséquences de guerre, mentorat et jugement jusqu'au rang Elder. Toutes en texte seul.
+Navire de clan, résidence, opérations collectives, conséquences de guerre, mentorat et jugement jusqu'au rang Elder. Les actes R2-M049 à R2-M051 se jouent dans le dossier des campagnes adultes admissibles.
 
 ### R2-M044 — La coque d’un groupe
 
@@ -2416,17 +2518,23 @@ Navire de clan, résidence, opérations collectives, conséquences de guerre, me
 
 *Production (proposé)* — **Props :** Chantier des Coques Ouvertes, coque collective en cale sèche, ponts fermés par des scellés, détenteurs des droits (PNJ). **VFX :** projecteurs de chantier, étincelles. **SFX :** `shipyard-ambience`, `weld-loop`, `seal-locked`. **Musique :** MUS-47. **Lien :** `production/clan-ship-20261104/`.
 
+**Raccord jouable.** À bord du Clan Ship, après la reconnaissance Elite et la remise de la coque personnelle, le poste du hangar conserve le relevé des deux ponts scellés. Le Garde du Seuil au hangar et la Veille des Astres au conseil éclairent les droits depuis leurs postes. Le conseil enregistre l’intention, puis le dossier ouvre les opérations du navire. Le registre `clanHullProjectV171` conserve ce choix avec le reçu de la coque personnelle. La visite extérieure en cale sèche et ses effets restent à produire.
+
 ### R2-M045 — Une porte, plusieurs haltes
 
 **Déroulé :** comparer ses droits de résidence, préparer des contenants, confirmer un déménagement au seuil ; un objet exposé doit être décroché et transporté. **Choix :** rester ou déménager. **Échec :** un transfert incomplet laisse les objets dans leurs contenants. **Sauvegarde :** `residence.activeChoiceConfirmed`
 
 *Production (proposé)* — **Props :** résidences éligibles, contenants de déménagement (vides / pleins), objet exposé à décrocher, seuil de la nouvelle maison, cabine de vaisseau en halte. **VFX :** surbrillance des objets à transporter. **SFX :** `crate-stow`, `trophy-mount`, `door-heavy`. **Musique :** MUS-04.
 
+**Raccord jouable.** Au panneau de résidence, le joueur compare les droits et peut confirmer qu’il reste. S’il prépare le transfert, l’objet exposé doit d’abord être décroché, puis rangé dans le contenant. Le départ se confirme au vrai seuil intérieur. À l’autre seuil, le dossier relit la même caisse et enregistre l’arrivée avec le même objet. Le registre `residenceV149.lastChoice` conserve la décision.
+
 ### R2-M046 — Une mission vraiment collective
 
 **Déroulé :** préparer une mission avec les personnes disponibles, vérifier les postes, traverser les ponts ; capacités de 7, 13 ou 19 personnes. **Choix :** terrain ou coordination. **Sauvegarde :** `clanship.firstCollectiveOperationResolved`
 
 *Production (proposé)* — **Props :** ponts du navire de clan, postes d'équipage (7, 13 ou 19), salle de briefing, rampe de départ, équipage incarné (sprites existants des gardes de clans). **VFX :** voyants de poste occupé / vide, lumières de départ. **SFX :** `briefing-room`, `ramp-lower`, `crew-chatter`. **Musique :** MUS-47.
+
+**Raccord jouable.** La Veille Partagée propose une première escorte après le choix du projet collectif. Vérifie les postes de chaque recrue disponible avant le départ. Le carnet distingue la capacité réellement acquise (7, 13 ou 19) et les postes occupés pour cette sortie. Le conducteur agit depuis le hangar. Le départ se confirme au hangar. Le poste de coordination au conseil dispose des ordres complets. Une victoire jouée inscrit le rôle, la capacité et les postes vérifiés au reçu de campagne.
 
 ### R2-M047 — Ce que la guerre laisse au retour
 
@@ -2442,25 +2550,31 @@ Navire de clan, résidence, opérations collectives, conséquences de guerre, me
 
 ### R2-M049 — Former sans remplacer
 
-**Déroulé :** accompagner un novice dans une chasse d’exercice, préparer ses appuis, lui laisser une décision réelle ; un mentor observe. **Choix :** donner un indice ou laisser la tentative complète. **Sauvegarde :** `elder.mentoringObserved`
+**Déroulé :** accompagner un novice dans une chasse d’exercice, préparer ses appuis, lui laisser une décision réelle ; un mentor observe. **Choix :** donner un indice ou laisser la tentative complète. **Sauvegarde :** `elder.mentoringObserved`.
+
+Le dossier ouvre le terrain à Elite et 8 000 d’honneur de carrière. Le registre `elderMentoringV168` conserve les appuis, le choix, les observations et la confirmation du mentor.
 
 *Production (proposé)* — **Props :** terrain d'exercice avec points d'appui à préparer, novice (sprite Unblooded existant recoloré), mentor observateur, proie d'exercice. **VFX :** marqueurs d'appui posés par le joueur. **SFX :** `partner-call`, footstep (existe). **Musique :** MUS-49.
 
 ### R2-M050 — Un désaccord à résoudre sur le terrain
 
-**Déroulé :** deux chasseurs contestent un passage ; inspecter les traces, rejouer leurs trajets, proposer une solution testée dans le décor. **Choix :** séparer les horaires ou ouvrir un second chemin. **Échec :** un refus laisse le conflit ouvert. **Sauvegarde :** `elder.judgmentObserved`
+**Déroulé :** deux chasseurs contestent un passage ; inspecter les traces, rejouer leurs trajets, proposer une solution testée dans le décor. **Choix :** séparer les horaires ou ouvrir un second chemin. **Échec :** un refus laisse le conflit ouvert. **Sauvegarde :** `elder.judgmentObserved`.
+
+Le dossier conserve la solution vérifiée et la décision du témoin dans `elderPassageJudgmentV168`.
 
 *Production (proposé)* — **Props :** passage disputé, traces des deux chasseurs (deux couleurs), deux PNJ chasseurs, second chemin constructible (échelle, pont de corde), panneau d'horaires. **VFX :** relecture fantôme des trajets. **SFX :** `rope-bridge`, scan (existe). **Musique :** MUS-49.
 
 ### R2-M051 — Être reconnu Elder
 
-**Déroulé :** une assemblée revient sur les actes observés ; le joueur choisit comment assumer les responsabilités proposées. **Choix :** fonction régulière ou engagement itinérant. **Sauvegarde :** `rank.Elder=true`
+**Déroulé :** une assemblée revient sur les actes observés ; le joueur choisit comment assumer les responsabilités proposées. **Choix :** fonction régulière ou engagement itinérant. **Sauvegarde :** `rank.Elder=true`.
+
+Dans une campagne adulte admissible, le joueur écoute les deux dépositions et choisit son engagement après le mentorat observé et le jugement du passage. Le registre `elderAssemblyV168` conserve la reconnaissance. Le raccord au parcours narratif du prologue dépend des rites d’initiation et de reconnaissance Elite. L’habillage audiovisuel et les missions propres à chaque engagement restent en production.
 
 *Production (proposé)* — **Props :** salle d'assemblée, sièges des anciens, insigne Elder (variante d'apparence). **VFX :** halo de cérémonie, braseros. **SFX :** `assembly-murmur`, `clan-chant-long`. **Musique :** MUS-08.
 
 ## Acte VIII — Elder et Ancient (R2-M052 → M060)
 
-Transmission, retour sur un ancien terrain, successeur, rang Ancient, mausolée, chroniques cinéma et épilogue. Toutes en texte seul ; le mausolée existe comme système séparé (`systems/mausoleum.ts`).
+Transmission, retour sur un ancien terrain, successeur, rang Ancient, mausolée, chroniques cinéma et épilogue. Les parcours M052 et M053 se jouent à partir du Clan Ship. Le mausolée existe indépendamment dans `systems/mausoleum.ts`. Les fiches de transmission qui suivent gardent leur état de production dans le classeur.
 
 ### R2-M052 — L’atelier qui fonctionne sans moi
 

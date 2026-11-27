@@ -168,7 +168,8 @@ test("v1 saves migrate to the current schema without losing legacy trophy data",
 
 test("keyboard bindings persist custom keys and repair malformed profiles", () => {
   const source = defaultSave("2026-01-01T00:00:00.000Z");
-  assert.equal(Object.keys(source.settings.controlBindings).length, 74);
+  assert.equal(Object.keys(source.settings.controlBindings).length, 75);
+  assert.deepEqual(source.settings.controlBindings["hunt.houndOrder"], ["KeyT"]);
   assert.deepEqual(source.settings.controlBindings["hunt.moveLeft"], [
     "KeyQ",
     "ArrowLeft",
@@ -727,7 +728,7 @@ test("perfect replays award renewable but bounded mastery honor", () => {
   );
   const withoutEventsReward =
     withoutEvents.profile.honor - firstCompletion.profile.honor;
-  assert.equal(withoutEventsReward, 17);
+  assert.equal(withoutEventsReward, 40);
 
   const withSecondaryTrophy = applyMissionResult(
     withoutEvents,
@@ -744,7 +745,7 @@ test("perfect replays award renewable but bounded mastery honor", () => {
   );
   const secondaryTrophyReward =
     withSecondaryTrophy.profile.honor - withoutEvents.profile.honor;
-  assert.equal(secondaryTrophyReward, 18);
+  assert.equal(secondaryTrophyReward, 41);
   assert.ok(secondaryTrophyReward > withoutEventsReward);
 
   const dishonorableReplay = applyMissionResult(
@@ -789,7 +790,7 @@ test("perfect replays award renewable but bounded mastery honor", () => {
       ],
     }),
   );
-  assert.equal(cappedReplay.profile.honor - elderReady.profile.honor, 64);
+  assert.equal(cappedReplay.profile.honor - elderReady.profile.honor, 128);
   assert.ok(
     cappedReplay.profile.honor - elderReady.profile.honor <
       firstCompletion.profile.honor,

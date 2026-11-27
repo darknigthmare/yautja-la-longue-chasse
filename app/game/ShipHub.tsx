@@ -1,5 +1,7 @@
 "use client";
 
+import { rankCampaignReceiptsV168 } from "./systems/rankRiteDossierV168";
+
 /* eslint-disable @next/next/no-img-element -- generated ship art has per-master dimensions */
 
 import {
@@ -13,6 +15,7 @@ import { controlActionShortcut } from "./controlBindingLabels";
 import { SAVE_STORAGE_KEY } from "./save";
 import HunterRigPreview from "./HunterRigPreview";
 import TrainingDrill from "./TrainingDrill";
+import { canPracticeClanPlasma } from "./systems/trainingDrill";
 import { useShipTrainingV94 } from "./useShipTrainingV94";
 import { useShipServiceCommitV94, observeShipNotificationV94 } from "./useShipServiceCommitV94";
 import type { ShipTrainingReceiverV94 } from "./systems/shipTrainingAcknowledgementV94";
@@ -37,6 +40,7 @@ import {
 } from "./systems/controlBindings";
 import {
   TRAINING_LABELS,
+  STANDARD_TRAINING_IDS,
   SHIP_PROGRESSION_STORAGE_KEY,
   TROPHY_METHOD_LABELS,
   TROPHY_SPECIES_LABELS,
@@ -49,6 +53,7 @@ import {
   resolveMedbayTreatment,
   saveLoadoutPreset,
   selectShip,
+  shipTrainingRecord,
   startMedbayTreatment,
   unlockAvailableShips,
   type ShipLoadoutSlotId,
@@ -128,6 +133,13 @@ export const SHIP_ROOMS: readonly ShipRoomDefinition[] = [
       "Relire le codex, les rites accomplis et les statistiques de chasse.",
   },
 ] as const;
+
+const CAMPAIGN_RITE_STATUS_V168 = {
+  locked: "Prérequis à jouer",
+  ready: "Épreuve accessible",
+  "in-progress": "Registre ouvert",
+  recognized: "Reconnaissance consignée",
+} as const;
 
 interface HubActionDefinition {
   id: string;
@@ -727,14 +739,13 @@ export default function ShipHub({
     }
 
     if (activeRoomId === "training") {
-      const drills = (
-        Object.keys(TRAINING_LABELS) as TrainingDisciplineId[]
-      ).map((disciplineId) => ({
+      const drills = STANDARD_TRAINING_IDS.map((disciplineId) => ({
         id: `train-${disciplineId}`,
         label: TRAINING_LABELS[disciplineId],
         detail: `Record ${progression.training[disciplineId].bestScore}/100 · ${progression.training[disciplineId].attempts} essai(s)`,
         run: () => { if (!hasPendingService()) return requestTraining(disciplineId); },
       }));
+      const clanHunt = shipTrainingRecord(progression, "clan-hunt");
       return [
         ...(onOpenPit
           ? [{
@@ -745,6 +756,17 @@ export default function ShipHub({
             }]
           : []),
         ...drills,
+        ...(canPracticeClanPlasma(save.missionProgress) ? [{
+          id: "train-clan-plasma",
+          label: "Préparation des rites · Plasma",
+          detail: "Cibles simulées et retenue du tir. Le score rejoint le registre de ciblage Biomask.",
+          run: () => { if (!hasPendingService()) return requestTraining("targeting", true); },
+        }, {
+          id: "train-clan-hunt",
+          label: TRAINING_LABELS["clan-hunt"],
+          detail: `Pistage, lames et plasma · Record ${clanHunt.bestScore}/100 · ${clanHunt.attempts} essai(s)`,
+          run: () => { if (!hasPendingService()) return requestTraining("clan-hunt"); },
+        }] : []),
       ];
     }
 
@@ -1164,6 +1186,7 @@ export default function ShipHub({
           key={trainingSession.id}
           disciplineId={trainingSession.disciplineId}
           seed={trainingSession.seed}
+          clanPlasma={trainingSession.clanPlasma}
           controlBindings={controlBindings}
           suspended={suspended}
           gamepadEnabled={gamepadEnabled}
@@ -1194,6 +1217,7 @@ function RoomSummary({
   suspended: boolean;
   onInspectionActiveChange: (active: boolean) => void;
 }) {
+  const campaignReceipts = useMemo(() => roomId === "archives" ? rankCampaignReceiptsV168(save) : [], [roomId, save]);
   if (roomId === "bridge-map") {
     return (
       <>
@@ -1201,7 +1225,7 @@ function RoomSummary({
           title="Route de la Longue Chasse"
           detail={
             clan.nextRankLabel
-              ? `Épreuve du rang ${clan.nextRankLabel} débloquée à ${clan.honorForNextRank} honneur ; seule l’épreuve réussie fait monter.`
+              ? `Prochain rang : ${clan.nextRankLabel} à ${clan.honorForNextRank} points d’honneur de chasse.`
               : clan.nextBibleTier
                 ? `Le rang d’Ancien est atteint ; prochain palier d’honneur de la bible : ${clan.nextBibleTier.bibleRank} à ${clan.nextBibleTier.threshold.toLocaleString("fr-FR")} honneur${clan.nextBibleTier.gameRankId ? "" : " (rang pas encore présent dans le jeu)"}.`
                 : "Le rang d’Ancien est atteint ; le seuil de Black God (40 000 honneur) est atteint."
@@ -1211,7 +1235,6 @@ function RoomSummary({
           label={`Progression ${clan.rankLabel}`}
           ratio={clan.rankProgress}
         />
-        <RankTrialSummaryV168 trials={clan.rankTrialsV168} />
         <StatGrid
           values={[
             ["Missions", save.statistics.missionsCompleted.toString()],
@@ -1473,6 +1496,17 @@ function RoomSummary({
         title="Rites et mémoire"
         detail={`${save.codex.unlockedEntryIds.length} archives décodées · ${clan.completedRites.length} rites accomplis.`}
       />
+      <section aria-label="Épreuves de rang de la campagne" data-ship-campaign-rank-archives>
+        <div style={styles.cardList}>
+          {campaignReceipts.map(rite => (
+            <article className="codex-card" key={rite.id} data-campaign-rank={rite.id} data-rite-status={rite.status}>
+              <span className="codex-label">{CAMPAIGN_RITE_STATUS_V168[rite.status]}</span>
+              <h3>{rite.label}</h3>
+              <p>{rite.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
       <div style={styles.cardList}>
         {[...clan.completedRites, ...clan.pendingRites].map((rite) => (
           <article className="codex-card" key={rite.id}>
@@ -1486,36 +1520,6 @@ function RoomSummary({
         ))}
       </div>
     </>
-  );
-}
-
-/** V168 : état des épreuves de rang ; les volets se jouent depuis le briefing de leur chasse. */
-function RankTrialSummaryV168({ trials }: { trials: ReturnType<typeof evaluateClanProgression>["rankTrialsV168"] }) {
-  return (
-    <section aria-label="Épreuves de rang" data-rank-trials-v168>
-      <p className="eyebrow">Épreuves de rang</p>
-      {trials.map((view) => (
-        <article className="equipment-card" key={view.trial.rankId} data-rank-trial-status={view.status}>
-          <p className="equipment-type">{view.trial.bibleRank} · bible : {view.trial.bibleTrial}</p>
-          <p>{view.statusLabel}</p>
-          {view.status !== "passed" && (
-            <ul>
-              {view.parts.map(({ part, done, attempts, lastFailureReasons, conditions, blockers }) => (
-                <li key={part.id}>
-                  <strong>{done ? "Réussi" : "À réussir"} · {part.label}</strong>
-                  {part.origin === "substitut proposé" ? " (substitut proposé)" : ""}
-                  <br />
-                  <small>{conditions.join(", ")}.{attempts > 0 ? ` Tentatives : ${attempts}.` : ""}</small>
-                  {lastFailureReasons.length > 0 && <><br /><small>Dernier échec : {lastFailureReasons.join(" ")} Nouvel essai possible.</small></>}
-                  {blockers.length > 0 && <><br /><small>Obstacle : {blockers.join(" ")}</small></>}
-                  {part.missingContent && <><br /><small>Contenu de la bible absent : {part.missingContent}</small></>}
-                </li>
-              ))}
-            </ul>
-          )}
-        </article>
-      ))}
-    </section>
   );
 }
 

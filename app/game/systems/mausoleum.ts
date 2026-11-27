@@ -2,6 +2,7 @@
 import { referenceBiomaskPathV62 } from "../biomaskCatalogueV62";
 import type { BiomaskId, SaveGame } from "../types";
 import { getChronicleFunctions, getChronicleRank, type ChronicleRankId } from "./clanChronicle";
+import { CINEMA_GALLERY_M058, canEnterCinemaM058 } from "./mausoleumCinemaM058";
 
 export const MAUSOLEUM_SOURCE = "6abc3138-4254-83eb-aff2-19352afcb596";
 const mask = (id: string) => referenceBiomaskPathV62(id as BiomaskId);
@@ -29,6 +30,7 @@ export const MAUSOLEUM_GALLERIES = [
   { id: "great", name: "Grandes Chasses", requiredRank: "blooded", description: "Le véritable mausolée s’ouvre aux chasseurs reconnus." },
   { id: "forbidden", name: "Galerie interdite", requiredRank: "elite", description: "Archives adverses et réserves des Super Predators." },
   { id: "temporal", name: "Archives temporelles", requiredRank: "adjutant", description: "Extension Warp Universe à produire. Aucune campagne ni technologie canonique n’est affirmée ici." },
+  { id: CINEMA_GALLERY_M058, name: "Chroniques du clan", requiredRank: "ancient", description: "Masque du clan et lecture du récit de Korthas." },
 ] as const;
 const rankOrder: readonly ChronicleRankId[] = ["youngling", "unblooded", "young-blood", "blooded", "elite", "elder", "ancient"];
 export interface MausoleumAccess { rank: ChronicleRankId; adjutant: boolean; preview: boolean }
@@ -38,6 +40,7 @@ export function mausoleumAccess(save: SaveGame | null): MausoleumAccess {
 export function canVisitMausoleumGallery(access: MausoleumAccess, galleryId: string): boolean {
   const gallery = MAUSOLEUM_GALLERIES.find(value => value.id === galleryId);
   if (!gallery) return false;
+  if (gallery.id === CINEMA_GALLERY_M058) return canEnterCinemaM058(access);
   if (access.preview) return true;
   return gallery.requiredRank === "adjutant" ? access.adjutant : rankOrder.indexOf(access.rank) >= rankOrder.indexOf(gallery.requiredRank);
 }
@@ -45,7 +48,20 @@ export function canConsultMausoleum(access: MausoleumAccess, entryId: string): b
   const chronicle = MAUSOLEUM_CHRONICLES.find(value => value.id === entryId);
   return !!chronicle && !access.preview && canVisitMausoleumGallery(access, chronicle.gallery) && rankOrder.indexOf(access.rank) >= rankOrder.indexOf("young-blood");
 }
-export interface MausoleumProgress { version: 1; examinedIds: string[]; consultedIds: string[] }
+interface MausoleumAlcove {
+  galleryId: string;
+  page: number;
+}
+
+export interface MausoleumProgress {
+  version: 1;
+  examinedIds: string[];
+  consultedIds: string[];
+  /** Absent from saves written before the archive cabinet was available. */
+  cabinetReadIds?: string[];
+  visited?: true;
+  wallPages?: MausoleumAlcove[];
+}
 export const defaultMausoleumProgress = (): MausoleumProgress => ({ version: 1, examinedIds: [], consultedIds: [] });
 export function normalizeMausoleumProgress(value: unknown): MausoleumProgress {
   const clean = defaultMausoleumProgress();
@@ -54,6 +70,25 @@ export function normalizeMausoleumProgress(value: unknown): MausoleumProgress {
   if (v.version !== 1) return clean;
   const ids = new Set(MAUSOLEUM_CHRONICLES.map(entry => entry.id));
   for (const key of ["examinedIds", "consultedIds"] as const) if (Array.isArray(v[key])) clean[key] = [...new Set(v[key].filter((id): id is string => typeof id === "string" && ids.has(id)))];
+  if (Array.isArray(v.cabinetReadIds)) {
+    const cabinetReads = [...new Set(v.cabinetReadIds.filter(
+      (id): id is string => typeof id === "string" && clean.consultedIds.includes(id),
+    ))];
+    if (cabinetReads.length) clean.cabinetReadIds = cabinetReads;
+  }
+  if (Array.isArray(v.wallPages)) {
+    const pages: MausoleumAlcove[] = [];
+    for (const position of v.wallPages) {
+      if (!position || typeof position !== "object" || typeof position.galleryId !== "string" ||
+          !mausoleumAlcoveEntries(position.galleryId, position.page).length ||
+          pages.some(page => page.galleryId === position.galleryId && page.page === position.page)) continue;
+      pages.push({ galleryId: position.galleryId, page: position.page });
+    }
+    if (pages.length) {
+      clean.visited = true;
+      clean.wallPages = pages;
+    }
+  }
   clean.examinedIds = [...new Set([...clean.examinedIds, ...clean.consultedIds])];
   return clean;
 }
@@ -65,6 +100,66 @@ export function recordMausoleumVisit(progress: unknown, id: string, kind: "exami
   return next;
 }
 
+
+export const MAUSOLEUM_CABINET_X = 834;
+export const MAUSOLEUM_CABINET_REACH = 36;
+export const MAUSOLEUM_ALCOVE_PAGE_SIZE = 3;
+
+export const MAUSOLEUM_WALL_X = 315;
+const MAUSOLEUM_WALL_REACH = 28;
+
+interface MausoleumPosition extends MausoleumAlcove {
+  actorX: number;
+}
+
+export function canReadMausoleumWall({ galleryId, page }: MausoleumAlcove, access: MausoleumAccess): boolean {
+  return !access.preview && access.rank === "ancient" &&
+    canVisitMausoleumGallery(access, galleryId) && mausoleumAlcoveEntries(galleryId, page).length > 0;
+}
+
+export function atMausoleumWall(position: MausoleumPosition, access: MausoleumAccess): boolean {
+  return Number.isFinite(position.actorX) && Math.abs(position.actorX - MAUSOLEUM_WALL_X) <= MAUSOLEUM_WALL_REACH &&
+    canReadMausoleumWall(position, access);
+}
+
+export function hasReadMausoleumWall(progress: MausoleumProgress, { galleryId, page }: MausoleumAlcove): boolean {
+  return progress.wallPages?.some(entry => entry.galleryId === galleryId && entry.page === page) ?? false;
+}
+
+export function recordMausoleumWallVisit(
+  progress: unknown, position: MausoleumPosition, access: MausoleumAccess,
+): MausoleumProgress | null {
+  if (!atMausoleumWall(position, access)) return null;
+  const next = normalizeMausoleumProgress(progress);
+  if (hasReadMausoleumWall(next, position)) return next;
+  const { galleryId, page } = position;
+  // The wall proves a walk to the alcove without granting a cabinet reading or DLC progress.
+  return { ...next, visited: true, wallPages: [...(next.wallPages ?? []), { galleryId, page }] };
+}
+
+export function mausoleumAlcoveEntries(galleryId: string, page: number): readonly MausoleumChronicle[] {
+  if (!Number.isSafeInteger(page) || page < 0) return [];
+  const start = page * MAUSOLEUM_ALCOVE_PAGE_SIZE;
+  return MAUSOLEUM_CHRONICLES.filter(chronicle => chronicle.gallery === galleryId)
+    .slice(start, start + MAUSOLEUM_ALCOVE_PAGE_SIZE);
+}
+
+export function recordMausoleumCabinetReading(
+  progress: unknown,
+  id: string,
+  position: MausoleumPosition,
+  access: MausoleumAccess,
+): MausoleumProgress | null {
+  if (!Number.isFinite(position.actorX) ||
+      Math.abs(position.actorX - MAUSOLEUM_CABINET_X) > MAUSOLEUM_CABINET_REACH ||
+      position.actorX < 40 || position.actorX > 860 ||
+      !mausoleumAlcoveEntries(position.galleryId, position.page).some(chronicle => chronicle.id === id) ||
+      !canConsultMausoleum(access, id)) return null;
+  const next = recordMausoleumVisit(progress, id, "consulted", access);
+  const cabinetReadIds = [...new Set([...(next.cabinetReadIds ?? []), id])];
+  return { ...next, cabinetReadIds };
+}
+
 /** Installed content must supply its own executable adapter and durable run; Pit duels never satisfy this contract. */
 export interface MausoleumDlcAdapter {
   chronicleId: string; installed: boolean; owned: boolean; campaignVersion: string;
@@ -73,6 +168,12 @@ export interface MausoleumDlcAdapter {
 }
 export interface MausoleumReturnTicket { ownerCreatedAt: string; chronicleId: string; galleryId: string; actorX: number; source: "homeworld" | "menu" }
 export const MAUSOLEUM_INSTALLED_CAMPAIGNS: readonly MausoleumDlcAdapter[] = [];
+export const MAUSOLEUM_DLC_LABELS = {
+  unavailable: "Campagne non installée",
+  ready: "Campagne accessible",
+  completed: "Campagne terminée",
+  mastered: "Campagne maîtrisée",
+} as const;
 export function mausoleumDlcState(id: string, adapters: readonly MausoleumDlcAdapter[] = MAUSOLEUM_INSTALLED_CAMPAIGNS): "unavailable" | "ready" | "completed" | "mastered" {
   const adapter = adapters.find(item => item.chronicleId === id);
   return MAUSOLEUM_CHRONICLES.some(item => item.id === id) && adapter?.installed && adapter.owned && adapter.campaignVersion.trim() && typeof adapter.start === "function" ? adapter.status : "unavailable";

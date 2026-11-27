@@ -1,6 +1,6 @@
 'use client';
 /* eslint-disable @next/next/no-img-element -- unmodified native ground, architectural modules and animation cells */
-import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent, type ReactNode } from 'react';
 import type { SaveGame } from './types';
 import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldBuildingSpritePlacementV64 } from './systems/homeworldGeometryV64';
 import { HOMEWORLD_BUILDING_ART_V64, HOMEWORLD_GROUND_ART_V64, HOMEWORLD_PROP_ART_V64, HOMEWORLD_INTERIOR_ART_V64 } from './systems/homeworldArtV64';
@@ -31,6 +31,11 @@ import { contractRegionNarrativesV70 } from './systems/homeworldContractNarrativ
 import HomeworldVillageAtlasV70 from './HomeworldVillageAtlasV70';
 import { villageFacadeFadedV70, villagePaintOccludedV70 } from './systems/homeworldVillageOcclusionV70';
 import YautjaTranslationV67 from './YautjaTranslationV67';
+import { houseForBuildingV149 } from './systems/residenceV149';
+import { createOriginV151 } from './systems/originsV151';
+import { trainingYardViewO6, type TrainingYardOrderO6 } from './systems/originTrainingYardO6';
+import { continuationViewO6, type ContinuationOrderO6 } from './systems/originContinuationO6';
+import yardStyles from './OriginTrainingYardO6.module.css';
 import styles from './HomeworldRegionV68.module.css';
 
 export interface HomeworldRegionV68Props {
@@ -42,13 +47,27 @@ export interface HomeworldRegionV68Props {
   /** Atomically acknowledge this exact field event and store its pending checkpoint. */
   onFieldEvent?(event: RegionFieldEventV68, state: HomeworldRegionStateV68): boolean;
   onBibleSceneAction?(action: BibleSceneActionV86, state: HomeworldRegionStateV68): BibleSceneResultV86;
+  onTrainingYardO6?(order: TrainingYardOrderO6 | ContinuationOrderO6, state: HomeworldRegionStateV68): boolean;
   onReachCity(state?: HomeworldRegionStateV68): boolean | void;
   onOpenSettings?(): void;
+  /** V149: residence panel for a Demeure the player stands in (null when it holds no house). */
+  residenceV149?(buildingId: string, disabled: boolean, threshold?: boolean): ReactNode;
+  /** V150: guests of the player's house at this tick (village walk or seated inside). */
+  guestsV150?(view: { regionId: string; runId: string; tick: number; zone: string; buildingId: string | null }): readonly { residentId: string; x: number; y: number; inside: boolean; moving: boolean; label: string }[];
+  /** V158: voie mission played on this route (null when none applies here). */
+  pathMissionV158?(disabled: boolean): ReactNode;
 }
 const axes = [['left', '←'], ['up', '↑'], ['down', '↓'], ['right', '→']] as const;
 type Move = typeof axes[number][0];
 const actions = ['hunt.moveLeft', 'hunt.moveRight', 'hunt.moveUp', 'hunt.moveDown'] as const;
 const project = homeworldProjectGroundV64;
+const defaultYardOrigin = createOriginV151('O6', 'legacy-default');
+function currentYard(save: SaveGame, state: HomeworldRegionStateV68) {
+  const origin = save.originV151 ?? defaultYardOrigin;
+  const context = { rankId: save.profile.rankId, regionAllowed: (id: string) => canEnterHomeworldRegionV68(save, id).allowed };
+  const yard = trainingYardViewO6(origin, save.residenceV149, state, context);
+  return { yard, continuation: yard && !yard.next ? continuationViewO6(save, origin, state, context, yard) : null };
+}
 
 export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const { regionId, save, suspended = false } = props, definition = HOMEWORLD_REGIONS_V68[regionId];
@@ -57,6 +76,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const current = useRef(state), latest = useRef(props), held = useRef(new Set<string>()), touch = useRef(new Set<Move>()), interact = useRef(false), gamepad = useRef(createHomeworldGamepadState());
   const [paused, setPaused] = useState(true), pauseRef = useRef(true), [ready, setReady] = useState(false), readyRef = useRef(false);
   const [notice, setNotice] = useState(''), noticeRef = useRef(''), [error, setError] = useState(''), [artError, setArtError] = useState(''), [artAttempt, setArtAttempt] = useState(0);
+  const [yardMessage, setYardMessage] = useState('');
   const [noticeFromGuide, setNoticeFromGuide] = useState(false);
   const [size, setSize] = useState({ width: 1200, height: 720 });
   const [localPanel, setLocalPanel] = useState<string | null>(null);
@@ -115,6 +135,16 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
     const s = current.current;
     if (!s || s.zone !== 'village' || s.status !== 'walking' || latest.current.suspended || !readyRef.current || s.pendingFieldEvent) return;
     freeze(); if (persist(s)) { noticeRef.current = ''; setNotice(''); setLocalPanel('atlas'); setNavigationError(''); }
+  }, [freeze, persist]);
+  const openResidenceThreshold = useCallback(() => {
+    const live = current.current;
+    if (!live || live.status !== 'walking' || live.pendingFieldEvent || latest.current.suspended ||
+        !readyRef.current || homeworldRegionInteractionV68(live)?.kind !== 'exit-interior') return;
+    const houseId = houseForBuildingV149(live.regionId, live.buildingId)?.id;
+    const residence = latest.current.save.residenceV149;
+    if (!houseId || (residence?.activeResidenceId !== houseId && residence?.transfer?.toHouseId !== houseId)) return;
+    freeze();
+    if (persist(live)) { noticeRef.current = ''; setNotice(''); setLocalPanel('residence-threshold'); }
   }, [freeze, persist]);
   const chooseDestination = useCallback((id: string) => {
     const s = current.current;
@@ -180,6 +210,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   }, [pause, resume, clear]);
   useEffect(() => {
     let frame = 0, last = 0, accumulator = 0;
+    const visitsAt = (checkpoint: HomeworldRegionStateV68) => latest.current.guestsV150?.(checkpoint) ?? [];
     const loop = (time: number) => {
       const delta = last ? Math.min(.05, (time - last) / 1000) : 0; last = time;
       const inactive = document.hidden || !document.hasFocus();
@@ -200,11 +231,28 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         while (accumulator >= 1 / 60 && !pauseRef.current && current.current) {
           accumulator -= 1 / 60;
           const confirm = interact.current; interact.current = false;
-          const before = current.current, interaction = confirm ? homeworldRegionInteractionV68(before) : null;
-          if((confirm)&&bibleCulturalNearbyV86(before)&&latest.current.onBibleSceneAction){openBible();break;}
+          const before = current.current, interaction = confirm ? homeworldRegionInteractionV68(before, visitsAt(before)) : null;
+          if ((confirm) && bibleCulturalNearbyV86(before) && latest.current.onBibleSceneAction) { openBible(); break; }
+          if (confirm && before.zone === 'interior' && latest.current.onTrainingYardO6) {
+            const { yard, continuation } = currentYard(latest.current.save, before);
+            const practice = continuation?.practice?.next ? continuation.practice : null;
+            const active = continuation?.next ? continuation : practice ?? yard;
+            if (active?.near && active.next) {
+              const stopped = { ...before, actor: { ...before.actor, vx: 0, vy: 0 } };
+              clear();
+              current.current = stopped;
+              setState(stopped);
+              const done = latest.current.onTrainingYardO6(active.next, stopped);
+              setYardMessage(done ? (continuation?.post ?? practice?.post)?.report ??
+                (active.next === 'threshold' ? 'Le circuit d’exercice est prêt dans cette demeure.'
+                  : 'Geste confirmé. Rejoins le repère suivant.')
+                : 'Le geste attend une sauvegarde confirmée. Réessaie au même repère.');
+              break;
+            }
+          }
           const activity = !interaction && before.zone === 'village' && (confirm) ? nearestVillageActivityV70(regionId, before.actor) : null;
           const villageResident = !interaction && !activity && before.zone === 'village' && (confirm) ? nearestHomeworldVillageResidentV69(regionId, before.tick, before.actor) : null;
-          const next = stepHomeworldRegionV68(before, { x: Number(active('hunt.moveRight') || touch.current.has('right') || sample.movement.right) - Number(active('hunt.moveLeft') || touch.current.has('left') || sample.movement.left), y: Number(active('hunt.moveDown') || touch.current.has('down') || sample.movement.down) - Number(active('hunt.moveUp') || touch.current.has('up') || sample.movement.up), interact: !activity && !villageResident && (confirm) });
+          const next = stepHomeworldRegionV68(before, { x: Number(active('hunt.moveRight') || touch.current.has('right') || sample.movement.right) - Number(active('hunt.moveLeft') || touch.current.has('left') || sample.movement.left), y: Number(active('hunt.moveDown') || touch.current.has('down') || sample.movement.down) - Number(active('hunt.moveUp') || touch.current.has('up') || sample.movement.up), interact: !activity && !villageResident && confirm }, false, visitsAt);
           current.current = next;
           if (next.tick % 2 === 0 || next.zone !== before.zone || next.pendingFieldEvent) setState(next);
           if (next.pendingFieldEvent) { if (!field(next)) break; }
@@ -221,13 +269,14 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
       frame = requestAnimationFrame(loop);
     };
     frame = requestAnimationFrame(loop); return () => cancelAnimationFrame(frame);
-  }, [regionId, freeze, field, leave, persist, pause, resume,openBible]);
+  }, [regionId, freeze, field, leave, persist, pause, resume, openBible, clear]);
 
   if (!state || state.regionId !== regionId) return <section className={styles.root}><div className={styles.dialog}><h2>Ce point de reprise ne correspond pas à cette route</h2><p>La sauvegarde est conservée. Reviens à la cité pour choisir ton trajet.</p><button onClick={() => props.onReachCity()}>Retour à la cité</button></div></section>;
   const d = HOMEWORLD_GEOMETRY_V64.depthScale, position = project(state.actor), zoom = Math.min(.98, Math.max(.6, size.height / 720));
   const world = state.zone === 'passage' ? { width: 18700, depth: 3300 } : state.zone === 'interior' ? HOMEWORLD_REGION_INTERIOR_V68 : HOMEWORLD_VILLAGE_WORLD_V68;
   const camera = { x: world.width * zoom < size.width ? -(size.width - world.width * zoom) / 2 : Math.max(0, Math.min(world.width * zoom - size.width, position.x * zoom - size.width / 2)), y: state.zone === 'interior' && world.depth * d * zoom < size.height - 240 ? -(size.height - world.depth * d * zoom) / 2 : Math.max(-180, Math.min(world.depth * d * zoom - size.height + 190, position.y * zoom - size.height * .66)) };
-  const interaction = homeworldRegionInteractionV68(state), activity = !interaction && state.zone === 'village' ? nearestVillageActivityV70(regionId, state.actor) : null, villageResident = !interaction && !activity && state.zone === 'village' ? nearestHomeworldVillageResidentV69(regionId, state.tick, state.actor) : null, appearance = save.appearance;
+  const guests = props.guestsV150?.(state) ?? [];
+  const interaction = homeworldRegionInteractionV68(state, guests), activity = !interaction && state.zone === 'village' ? nearestVillageActivityV70(regionId, state.actor) : null, villageResident = !interaction && !activity && state.zone === 'village' ? nearestHomeworldVillageResidentV69(regionId, state.tick, state.actor) : null, appearance = save.appearance;
   const bibleNearby=!!props.onBibleSceneAction&&bibleCulturalNearbyV86(state),b=BIBLE_CULTURAL_BINDING_V86;
   const bibleContext=bibleCulturalContextV86({save,ownerSaveCreatedAt:save.createdAt,region:state,sceneActive:localPanel==='bible-v86'&&ready&&!error,
     focused,suspended,host:regionId===b.regionId&&state.zone==='village'?{id:b.npcId,present:true,alive:true,conscious:true}:null,
@@ -235,6 +284,18 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const selectedActivity = HOMEWORLD_VILLAGE_ACTIVITIES_V70[regionId].find(a => a.id === localPanel), activityProgress = selectedActivity ? activitySession.progress[selectedActivity.id] ?? 0 : 0;
   const destination = navigation && villageDestinationsV70(regionId).find(d => d.id === navigation.id), routeProgress = navigation && state.zone === 'village' ? villageRouteRemainingV70(navigation.points, state.actor) : null;
   const serviceBuilding = definition.buildings.find(b => b.id === state.buildingId);
+  const thresholdHouse = interaction?.kind === 'exit-interior' ? houseForBuildingV149(regionId, state.buildingId) : null;
+  const residence = save.residenceV149;
+  const residenceThreshold = !!thresholdHouse && (residence?.activeResidenceId === thresholdHouse.id ||
+    residence?.transfer?.toHouseId === thresholdHouse.id);
+  const carriesResidence = residence?.transfer?.stage === 'in-transit' &&
+    residence.objects.some(object => object.location.kind === 'transfer');
+  const { yard, continuation } = state.zone === 'interior' && props.onTrainingYardO6
+    ? currentYard(save, state) : { yard: null, continuation: null };
+  const practice = continuation?.practice;
+  const yardAction = continuation?.next ? continuation : practice?.next ? practice : yard;
+  const cordage = continuation?.orders.includes('stow') ? 'folded' : continuation?.orders.includes('lift') ? 'raised'
+    : continuation?.orders.includes('anchor') ? 'taut' : continuation?.orders.includes('welcome') ? 'loose' : null;
   const localAllowed = !suspended && !error && ready && gate.allowed && state.status === 'walking' && !state.pendingFieldEvent;
   const playerPlacement = youthWelcome || hero.exactPreset ? homeworldPortraitPlacementV64(hero.plateId, hero.src, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.physicalHeight : 100) : homeworldModularPlacementV64(save.appearance.bodyMorphId, appearance.headStyleId, 100);
   const hazard = regionHazardPhaseV68(state.tick), fauna = REGION_FAUNA_ART_V68[regionId], f = state.fauna;
@@ -273,7 +334,8 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         {state.zone === 'village' && <>
           {definition.buildings.map(b => { const placement = homeworldBuildingSpritePlacementV64(b); return <span key={b.id} data-region-building={b.id} className={styles.building} style={{ ...placement, zIndex: Math.round(b.y), opacity: villageFacadeFadedV70(b, state.actor, youthWelcome ? 82 : 100) ? .42 : 1 }}><img alt="" draggable={false} src={b.art.src} /><span>{b.label}</span></span>; })}
           {definition.props.filter(p => !villagePaintOccludedV70(definition.buildings, p, state.actor, { actorHeight: youthWelcome ? 82 : 100 })).map(p => { const ground = project(p); return <HomeworldNativePropV64 key={p.id} id={`${regionId}-${p.id}`} artId={p.artId} art={HOMEWORLD_PROP_ART_V64[p.artId]} x={ground.x} y={ground.y} depth={p.y} />; })}
-          {definition.residents.map(n => { const p = regionResidentPositionV68(n, state.tick); return drawActor(n.id, p.x, p.y, n.morphId, n.dreadStyleId, n.route.length > 1, n); })}
+          {definition.residents.filter(n => !guests.some(g => g.residentId === n.id)).map(n => { const p = regionResidentPositionV68(n, state.tick); return drawActor(n.id, p.x, p.y, n.morphId, n.dreadStyleId, n.route.length > 1, n); })}
+          {guests.filter(g => !g.inside).map(g => { const n = definition.residents.find(r => r.id === g.residentId); return n ? <span key={`guest-${g.residentId}`} data-residence-guest-v150={g.residentId}>{drawActor(`guest-${n.id}`, g.x, g.y, n.morphId, n.dreadStyleId, g.moving, n)}</span> : null; })}
           {props.onBibleSceneAction&&<HomeworldBibleCultureHostV86 regionId={regionId} tick={state.tick} />}
           <HomeworldVillageLifeV69 regionId={regionId} tick={state.tick} actor={state.actor} actorHeight={youthWelcome ? 82 : 100} activityProgress={activitySession.progress} rect={{ left: camera.x / zoom, top: camera.y / zoom, right: (camera.x + size.width) / zoom, bottom: (camera.y + size.height) / zoom }} />
           {HOMEWORLD_REGION_TRACES_V68.map((p, n) => { const v = project(p); return <span key={p.id} className={`${styles.trace} ${state.traces.includes(p.id) ? styles.collected : ''}`} data-region-trace={p.id} style={{ left: v.x, top: v.y }}><i /><b>{p.label}</b><small>{definition.traceNotes[n]}</small></span>; })}
@@ -286,8 +348,40 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         {state.zone === 'interior' && <>
           {interiorShell?.groups.map(group => <span key={group.side} className={styles.interiorPanels} data-region-interior-panels={group.side} style={{ ...group.clip, left: group.clip.left + 25, top: group.clip.top + 35 * d }}>{group.panels.map(panel => <HomeworldNativePropV64 key={panel.id} id={panel.id} artId={panel.artId} art={panel.art} x={panel.localPaintPivot.x} y={panel.localPaintPivot.y} depth={group.side === 'north' ? 0 : panel.groundPivot.y} />)}</span>)}
           {homeworldRegionInteriorPropsV68(state.buildingId).map(prop => { const p = project(prop); return <HomeworldNativePropV64 key={prop.id} id={prop.id} artId={prop.artId} art={HOMEWORLD_PROP_ART_V64[prop.artId]} x={p.x} y={p.y} depth={prop.y} />; })}
+          {guests.filter(g => g.inside).map(g => { const n = definition.residents.find(r => r.id === g.residentId); return n ? <span key={`guest-${g.residentId}`} data-residence-guest-v150={g.residentId} data-guest-inside>{drawActor(`guest-${n.id}`, g.x, g.y, n.morphId, n.dreadStyleId, false, n)}</span> : null; })}
+          {yard?.orders.includes('support') && <span className={yardStyles.support} aria-label="Appui d’exercice" role="img"
+            data-o6-yard-support style={{ left: 145, top: 390 * d, zIndex: 391 }} />}
+          {yard?.orders.includes('rack') && <span className={yardStyles.rack} aria-label="Râtelier d’exercice mural" role="img"
+            data-o6-yard-rack data-o6-rack-open={continuation?.rackOpen || undefined}
+            style={{ left: 630, top: 390 * d, zIndex: 389 }}><i/><i/><i/></span>}
+          {cordage && <span className={yardStyles.cordage} data-o6-cordage={cordage} role="img"
+            aria-label={cordage === 'folded' ? 'Filet rangé' : 'Filet d’exercice'}
+            style={{ left: cordage === 'raised' ? 585 : 217, top: (cordage === 'raised' ? 381 : 479) * d, zIndex: 400 }} />}
+          {continuation?.visitor && <>
+            {drawActor('origin-o6-yena', continuation.visitor.x, continuation.visitor.y, 'huntress', 'huntress')}
+            <span className={styles.waypoint} data-o6-yena-visit
+              style={{ left: continuation.visitor.x, top: continuation.visitor.y * d + 14 }}><b>Yena</b></span>
+          </>}
+          {practice?.student && <>
+            {drawActor('origin-o6-novice', practice.student.x, practice.student.y, 'young', 'classic', practice.walking)}
+            <span className={styles.waypoint} data-o6-practice-novice data-student-x={Math.round(practice.student.x)}
+              style={{ left: practice.student.x, top: practice.student.y * d + 14 }}><b>Novice</b></span>
+            {practice.hasStaff && <span className={yardStyles.practiceStaff} data-o6-practice-staff
+              role="img" aria-label="Bâton court"
+              style={{ left: practice.student.x + 16, top: practice.student.y * d - 35, zIndex: Math.round(practice.student.y) + 1 }} />}
+          </>}
+          {practice?.post && <span className={styles.waypoint} data-o6-practice-post={practice.next}
+            style={{ left: practice.post.x, top: practice.post.y * d }}><b>{practice.post.label}</b></span>}
+          {continuation?.orders.includes('transmission') && <span className={styles.waypoint}
+            data-o6-plan-transmission style={{ left: 613, top: 511 * d }}><b>Place du coffre</b></span>}
+          {continuation?.post && <span className={styles.waypoint} data-o6-continuation-post={continuation.next}
+            style={{ left: continuation.post.x, top: continuation.post.y * d }}><b>{continuation.post.label}</b></span>}
+          {yard?.post && <span className={styles.waypoint} data-o6-yard-post={yard.next}
+            style={{ left: yard.post.x, top: yard.post.y * d }}><b>{yard.post.label}</b></span>}
           <span className={styles.waypoint} style={{ left: 380, top: 620 * d }}><b>Sortie</b></span>
         </>}
+        {carriesResidence && <span data-residence-cargo><HomeworldNativePropV64 id="residence-cargo" artId="chest"
+          art={HOMEWORLD_PROP_ART_V64.chest} x={position.x - 62} y={position.y + 6} depth={state.actor.y + 1} /></span>}
         <span className={styles.actor} data-region-player data-youth-appearance={youthWelcome} data-x={state.actor.x} data-y={state.actor.y} style={{ left: position.x, top: position.y, zIndex: Math.round(state.actor.y) }}><i className={styles.shadow} />{(youthWelcome || hero.exactPreset) && playerPlacement ? <img src={hero.src} alt="" draggable={false} style={{ ...playerPlacement, position: 'absolute', transform: `scaleX(${state.actor.facing})` }} /> : <HomeworldModularHunter morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={appearance} showArmor armorId={save.loadout.armorId} hasWristblades={save.loadout.weaponIds.includes("wristblades")} gauntletVariantId={props.gauntletVariantId} motionPhase={state.tick / 60} speed={Math.hypot(state.actor.vx, state.actor.vy)} style={{ ...(playerPlacement ?? { width: 100, height: 100, top: -100 }), position: 'absolute', transform: `scaleX(${state.actor.facing})` }} />}</span>
       </div>
     </div>
@@ -295,21 +389,39 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
       <b>{narratives[0]?.instruction ?? regionObjectiveV68(state)}</b>
       {regionId===b.regionId&&props.onBibleSceneAction&&state.zone==='village'&&<span>Halte des Crêtes : table de la place, après le relevé remis au guide.{bibleNearby?' Arrête-toi puis interagis.':''}</span>}
       {destination && routeProgress && <span data-village-route-instruction-v70>{destination.name} · {routeProgress.arrived ? 'Approche atteinte : interagir sur place' : routeProgress.offRoute ? 'Reviens aux repères tracés au sol' : `${routeProgress.metres} m à pied`}</span>}
+      {yard && <span data-o6-training-yard={yard.houseId} data-o6-yard-stage={yard.next ?? 'ready'} role="status">
+        {yard.post ? yard.post.label : 'Circuit d’exercice prêt'}{!continuation && yardMessage && ' · ' + yardMessage}
+      </span>}
+      {continuation && <span data-o6-origin-continuation={continuation.houseId}
+        data-o6-origin-stage={continuation.next ?? 'ready'} role="status">
+        {continuation.next ? yardMessage || continuation.post?.label :
+          continuation.rackOpen ? 'Râtelier ouvert' : 'Les trois préparations sont repérées.'}
+      </span>}
+      {practice && <span data-o6-practice-stage={practice.next ?? 'complete'} role="status">
+        {(practice.next === 'listen-novice' ? practice.post?.label : yardMessage || practice.post?.label) ||
+          'Le novice a terminé son essai.'}
+      </span>}
+      {props.pathMissionV158 && <div style={{ pointerEvents: 'auto' }}>{props.pathMissionV158(!localAllowed)}</div>}
       <span>{state.zone === 'village' ? `${state.visitedBuildings.length}/12 lieux visités · ${state.greeted.length}/12 témoins rencontrés · ${definition.residents.length + HOMEWORLD_VILLAGE_LIFE_V69[regionId].residents.length} habitants` : state.zone === 'passage' ? `${Math.round(state.walked * .023)} m parcourus · ${state.routeVisited.length}/${definition.route.length} bornes` : serviceBuilding?.label}</span>
     </aside>
-    <footer className={styles.controls} inert={modal}><div>{axes.map(([id, label]) => <button key={id} aria-label={`Marcher ${id}`} onPointerDown={e => pointer(id, true, e)} onPointerUp={e => pointer(id, false, e)} onPointerCancel={e => pointer(id, false, e)} onLostPointerCapture={() => touch.current.delete(id)}>{label}</button>)}</div><button disabled={!bibleNearby&&!interaction && !activity && !villageResident} data-region-interact onPointerDown={e => { e.preventDefault(); interact.current = true; }}>{bibleNearby?'Parler à l’hôte de la halte':interaction?.label ?? (activity ? `Participer : ${activity.name}` : villageResident ? `Parler : ${villageResident.name}` : 'Approche un lieu ou un habitant')} <small>{controlActionShortcut('hunt.interact', save.settings.controlBindings)}</small></button><small>{controlActionShortcut('hunt.pause', save.settings.controlBindings)} · Pause</small></footer>
+    <footer className={styles.controls} inert={modal}><div>{axes.map(([id, label]) => <button key={id} aria-label={`Marcher ${id}`} onPointerDown={e => pointer(id, true, e)} onPointerUp={e => pointer(id, false, e)} onPointerCancel={e => pointer(id, false, e)} onLostPointerCapture={() => touch.current.delete(id)}>{label}</button>)}</div><button disabled={!yardAction?.near && !bibleNearby && !interaction && !activity && !villageResident} data-region-interact onPointerDown={e => { e.preventDefault(); interact.current = true; }}>{yardAction?.near && yardAction.post ? yardAction.post.label : bibleNearby ? 'Parler à l’hôte de la halte' : interaction?.label ?? (activity ? `Participer : ${activity.name}` : villageResident ? `Parler : ${villageResident.name}` : 'Approche un lieu ou un habitant')} <small>{controlActionShortcut('hunt.interact', save.settings.controlBindings)}</small></button>
+      {residenceThreshold && props.residenceV149 && <button type="button" data-residence-open-threshold
+        disabled={!localAllowed} onClick={openResidenceThreshold}>Déménagement au seuil</button>}
+      <small>{controlActionShortcut('hunt.pause', save.settings.controlBindings)} · Pause</small></footer>
     {modal && <div className={styles.backdrop}><div className={`${styles.dialog} ${localPanel === 'atlas' ? styles.atlasDialog : ''}`} role="dialog" aria-modal="true" aria-labelledby="region-v68-title" tabIndex={-1} ref={panel}>
-      <span>{definition.name}</span><h2 id="region-v68-title">{error ? 'Reprise conservée' : localPanel === 'atlas' ? 'Chemins du village' : selectedActivity ? selectedActivity.name : localPanel === 'interior' ? serviceBuilding?.label : notice ? 'Paroles du clan' : !gate.allowed ? 'Départ accompagné requis' : state.status === 'at-city' ? 'La cité est devant toi' : state.zone === 'passage' ? definition.routeTitle : definition.village}</h2>
+      <span>{definition.name}</span><h2 id="region-v68-title">{error ? 'Reprise conservée' : localPanel === 'atlas' ? 'Chemins du village' : selectedActivity ? selectedActivity.name : localPanel === 'residence-threshold' ? 'Au seuil de la résidence' : localPanel === 'interior' ? serviceBuilding?.label : notice ? 'Paroles du clan' : !gate.allowed ? 'Départ accompagné requis' : state.status === 'at-city' ? 'La cité est devant toi' : state.zone === 'passage' ? definition.routeTitle : definition.village}</h2>
       {error ? <p>{error}</p> : localPanel==='bible-v86'?<BibleSceneCulturalV86 ledger={save.homeworld.bibleScenesV86} context={bibleContext} onAction={bibleAction} message={bibleMessage} onClose={()=>{bibleOpenRef.current=false;resume();}} />:localPanel === 'atlas' ? <HomeworldVillageAtlasV70 regionId={regionId} actor={state.actor} disabled={!localAllowed} onChoose={chooseDestination} /> : selectedActivity ? <div data-village-service-v70={selectedActivity.id} data-service-progress={activityProgress}>
         <p>{selectedActivity.description}</p><p className={styles.serviceInstruction}>{activityProgress >= 3 ? selectedActivity.completion : `${activityProgress + 1}/3 · ${selectedActivity.steps[activityProgress]}`}</p>
         {activityProgress < 3 && <div className={styles.serviceChoices}>{selectedActivity.choices.map((choice, i) => <button key={choice} data-village-activity-choice-v70={i} disabled={!localAllowed} onClick={() => setActivitySession(previous => stepVillageActivityV70(previous, current.current ?? state, selectedActivity.id, i, localAllowed))}>{choice}</button>)}</div>}
         {activityProgress < 3 && <p role="status">{activitySession.feedback[selectedActivity.id]}</p>}
         {activityProgress >= 3 && <button data-village-service-route-v70 disabled={!localAllowed} onClick={() => chooseDestination(selectedActivity.destinationId)}>Voir le chemin : {villageDestinationsV70(regionId).find(d => d.id === selectedActivity.destinationId)?.name}</button>}
         <small>Geste local pendant cette visite. Les relevés de terrain et les contrats se font séparément auprès du guide.</small>
-      </div> : localPanel === 'interior' ? <div data-village-interior-service-v70={state.buildingId}>
+      </div> : localPanel === 'residence-threshold' && state.buildingId ? props.residenceV149?.(state.buildingId, !localAllowed, true)
+        : localPanel === 'interior' ? <div data-village-interior-service-v70={state.buildingId}>
         <p>{serviceBuilding?.role === 'forge' ? 'Les balises et les outils demeurent aux ateliers. Le poste de calibration extérieur permet de comparer les lectures avant une sortie.' : serviceBuilding?.role === 'clinic' ? 'La maison des soins protège les retours. Observe les avertissements du territoire et interromps une sortie lorsque sa lecture devient incertaine.' : serviceBuilding?.role === 'archive' ? 'Les récits gardent leurs auteurs. Une préparation au village ne vaut ni trophée, ni preuve de terrain ; le guide ne confirme que les relevés réellement remis.' : serviceBuilding?.role === 'hall' ? 'La maison commune rassemble les chemins du clan. Les demeures, les ateliers et les soins ont chacun leur approche ; le poste extérieur reste séparé des rues.' : 'Cette demeure reste celle de ses habitants. Les coffrets et les outils ne sont pas des prises à emporter.'}</p>
         <p><b>Danger du territoire : {definition.hazard}.</b> Les avertissements concernent le poste extérieur, pas les services civils.</p>
         {narratives.map(n => <p key={n.id}><b>{n.title}</b><br />{n.instruction}{n.confirmedReport && <><br />{n.confirmedReport}</>}</p>)}
+        {serviceBuilding?.role === 'residence' && state.buildingId && props.residenceV149?.(state.buildingId, !localAllowed)}
         <p>Ressors par le seuil au sud, puis consulte le plan du village pour préparer ton chemin.</p>
       </div> : notice ? <><YautjaTranslationV67 text={notice} />{noticeFromGuide && narratives.map(n => <p key={n.id}>{n.instruction}{n.confirmedReport && <><br />{n.confirmedReport}</>}</p>)}</> : <p>{artError || (!gate.allowed ? gate.reason : !ready ? 'Les abords du territoire se dévoilent…' : state.zone === 'passage' ? `Suis les bornes jusqu’au village. La corniche mesure environ ${Math.round(homeworldRegionRouteMetresV68(regionId))} mètres ; tu peux revenir sur tes pas.` : definition.introduction)}</p>}
       {navigationError && <p role="alert">{navigationError}</p>}

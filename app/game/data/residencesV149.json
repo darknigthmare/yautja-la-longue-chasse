@@ -1,0 +1,1797 @@
+{
+ "source": {
+  "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+  "sheets": {
+   "houses": "Résidences des tribus",
+   "rooms": "Pièces des maisons",
+   "scenes": "V5 Scènes des résidences"
+  },
+  "note": "Texte copié du classeur V6 (reconstitution documentée V4, rédaction V5). Le champ choices découpe « Choix conséquence » sur « ou » (première lettre en capitale, clause après « ; » retirée) ; le texte complet reste dans choiceText."
+ },
+ "houses": [
+  {
+   "id": "HOME-CM01",
+   "title": "Maison du Vent de Cendre",
+   "communityId": "CM01",
+   "clanId": "CL1",
+   "regionId": "ash-marches",
+   "minimumRank": "unblooded",
+   "respect": {
+    "inhabit": 30,
+    "furnish": 50,
+    "receive": 75
+   },
+   "mission": {
+    "title": "Le seuil qui respire",
+    "actions": "Dégager trois prises d’air sous des auvents, rapporter un filtre céramique et replacer les plaques repérées.",
+    "choices": [
+     "Maintenir le couloir central frais",
+     "Réserver une alcôve mieux protégée aux visiteurs"
+    ],
+    "choiceText": "Maintenir le couloir central frais ou réserver une alcôve mieux protégée aux visiteurs."
+   },
+   "plan": "ruelle couverte → sas de cendre → pièce basse → atelier ventilé",
+   "witnesses": "gardienne des auvents",
+   "ownership": "Droit local de résidence ; gardienne des auvents constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 6
+  },
+  {
+   "id": "HOME-CM02",
+   "title": "Logis des Deux Brasiers",
+   "communityId": "CM02",
+   "clanId": "CL1",
+   "regionId": "ash-marches",
+   "minimumRank": "young-blood",
+   "respect": {
+    "inhabit": 35,
+    "furnish": 55,
+    "receive": 80
+   },
+   "mission": {
+    "title": "Deux chaleurs, une nuit",
+    "actions": "Suivre les conduites lumineuses, tester les clapets fictifs et porter deux pierres de réserve jusqu’au foyer commun.",
+    "choices": [
+     "Donner la réserve au foyer du quartier",
+     "Garder une seule pièce tempérée chez soi"
+    ],
+    "choiceText": "Donner la réserve au foyer du quartier ou garder une seule pièce tempérée chez soi."
+   },
+   "plan": "place des braises → seuil double → foyer → niche de repos",
+   "witnesses": "veilleur des foyers",
+   "ownership": "Droit local de résidence ; veilleur des foyers constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 7
+  },
+  {
+   "id": "HOME-CM03",
+   "title": "Refuge des Ombres de Verre",
+   "communityId": "CM03",
+   "clanId": "CL2",
+   "regionId": "glass-desert",
+   "minimumRank": "unblooded",
+   "respect": {
+    "inhabit": 30,
+    "furnish": 55,
+    "receive": 80
+   },
+   "mission": {
+    "title": "L’ombre à la bonne heure",
+    "actions": "Observer les ombres de trois mâts, déplacer un écran articulé et vérifier la traversée du porteur de citerne.",
+    "choices": [
+     "Allonger le passage ombragé",
+     "Protéger davantage le poste de repos"
+    ],
+    "choiceText": "Allonger le passage ombragé ou protéger davantage le poste de repos."
+   },
+   "plan": "chemin des citernes → écran d’entrée → chambre fraîche → atelier d’ombre",
+   "witnesses": "porteuse d’eau",
+   "ownership": "Droit local de résidence ; porteuse d’eau constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 8
+  },
+  {
+   "id": "HOME-CM04",
+   "title": "Chambre de la Citerne Haute",
+   "communityId": "CM04",
+   "clanId": "CL2",
+   "regionId": "glass-desert",
+   "minimumRank": "young-blood",
+   "respect": {
+    "inhabit": 40,
+    "furnish": 60,
+    "receive": 85
+   },
+   "mission": {
+    "title": "Le niveau juste",
+    "actions": "Lire des marques de niveau, retrouver un flotteur égaré et guider une charge depuis la citerne basse.",
+    "choices": [
+     "Aménager un palier de livraison",
+     "Conserver un large espace pour les cérémonies du quartier"
+    ],
+    "choiceText": "Aménager un palier de livraison ou conserver un large espace pour les cérémonies du quartier."
+   },
+   "plan": "rampe minérale → terrasse de jauge → chambre → remise",
+   "witnesses": "gardien des niveaux",
+   "ownership": "Droit local de résidence ; gardien des niveaux constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 9
+  },
+  {
+   "id": "HOME-CM05",
+   "title": "Maison des Passerelles Tressées",
+   "communityId": "CM05",
+   "clanId": "CL3",
+   "regionId": "pillar-jungle",
+   "minimumRank": "young-blood",
+   "respect": {
+    "inhabit": 35,
+    "furnish": 60,
+    "receive": 80
+   },
+   "mission": {
+    "title": "Le passage des porteurs",
+    "actions": "Inspecter les ligatures colorées d’une passerelle et poser les trois renforts apportés par la tresseuse.",
+    "choices": [
+     "Tracer un détour stable pour les charges",
+     "Garder le raccourci à usage léger"
+    ],
+    "choiceText": "Tracer un détour stable pour les charges ou garder le raccourci à usage léger."
+   },
+   "plan": "racine-escalier → passerelle → seuil suspendu → atelier ouvert",
+   "witnesses": "tresseuse des liens",
+   "ownership": "Droit local de résidence ; tresseuse des liens constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 10
+  },
+  {
+   "id": "HOME-CM06",
+   "title": "Nid du Pilier Creux",
+   "communityId": "CM06",
+   "clanId": "CL3",
+   "regionId": "pillar-jungle",
+   "minimumRank": "blooded",
+   "respect": {
+    "inhabit": 45,
+    "furnish": 65,
+    "receive": 85
+   },
+   "mission": {
+    "title": "Ce qui résonne dans le tronc",
+    "actions": "Suivre un écho sur trois niveaux, retirer un élément tombé dans une goulotte puis replacer les panneaux acoustiques.",
+    "choices": [
+     "Préserver le signal d’alerte ancien",
+     "Ajouter un appel distinct pour les voyageurs"
+    ],
+    "choiceText": "Préserver le signal d’alerte ancien ou ajouter un appel distinct pour les voyageurs."
+   },
+   "plan": "plateforme basse → escalier intérieur → chambre creuse → balcon-atelier",
+   "witnesses": "guetteur du pilier",
+   "ownership": "Droit local de résidence ; guetteur du pilier constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 11
+  },
+  {
+   "id": "HOME-CM07",
+   "title": "Maison des Pilotis Calmes",
+   "communityId": "CM07",
+   "clanId": "CL4",
+   "regionId": "luminous-marshes",
+   "minimumRank": "young-blood",
+   "respect": {
+    "inhabit": 40,
+    "furnish": 60,
+    "receive": 80
+   },
+   "mission": {
+    "title": "Trois appuis avant la crue",
+    "actions": "Inspecter trois pilotis marqués depuis les passerelles autorisées, porter des entretoises, faire vérifier leur pose et récupérer une lampe sur un îlot accessible.",
+    "choices": [
+     "Renforcer le passage principal",
+     "Ouvrir un détour sûr pour les charges"
+    ],
+    "choiceText": "Renforcer le passage principal ou ouvrir un détour sûr pour les charges ; le quartier conserve l’itinéraire choisi."
+   },
+   "plan": "route sur pilotis → seuil ; seuil ↔ chambre ; seuil ↔ atelier ; retour par ponton",
+   "witnesses": "charpentière et passeur",
+   "ownership": "Droit local de résidence ; charpentière et passeur constatent le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 12
+  },
+  {
+   "id": "HOME-CM08",
+   "title": "Logis des Lanternes Basses",
+   "communityId": "CM08",
+   "clanId": "CL4",
+   "regionId": "luminous-marshes",
+   "minimumRank": "blooded",
+   "respect": {
+    "inhabit": 45,
+    "furnish": 65,
+    "receive": 85
+   },
+   "mission": {
+    "title": "Les lumières sous la brume",
+    "actions": "Placer trois lanternes sur des repères terrestres, comparer leur reflet et guider le passeur jusqu’au quai avec ses signaux.",
+    "choices": [
+     "Éclairer une route discrète",
+     "Un accès large pour les arrivées collectives"
+    ],
+    "choiceText": "Éclairer une route discrète ou un accès large pour les arrivées collectives."
+   },
+   "plan": "quai couvert → galerie de lanternes → chambre → petite véranda",
+   "witnesses": "allumeuse des quais",
+   "ownership": "Droit local de résidence ; allumeuse des quais constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 13
+  },
+  {
+   "id": "HOME-CM09",
+   "title": "Abri du Col des Trois Vents",
+   "communityId": "CM09",
+   "clanId": "CL5",
+   "regionId": "storm-chain",
+   "minimumRank": "young-blood",
+   "respect": {
+    "inhabit": 40,
+    "furnish": 60,
+    "receive": 85
+   },
+   "mission": {
+    "title": "La charge au bon moment",
+    "actions": "Observer les rafales entre deux rochers, abaisser une voile de signal et porter une charge par étapes jusqu’au palier.",
+    "choices": [
+     "Installer un écran stable qui ralentit les passages",
+     "Une voile repliable plus exigeante à manœuvrer"
+    ],
+    "choiceText": "Installer un écran stable qui ralentit les passages ou une voile repliable plus exigeante à manœuvrer."
+   },
+   "plan": "sentier du col → sas rocheux → chambre → atelier abrité",
+   "witnesses": "guide des cols",
+   "ownership": "Droit local de résidence ; guide des cols constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 14
+  },
+  {
+   "id": "HOME-CM10",
+   "title": "Maison du Guet Fendu",
+   "communityId": "CM10",
+   "clanId": "CL5",
+   "regionId": "storm-chain",
+   "minimumRank": "blooded",
+   "respect": {
+    "inhabit": 50,
+    "furnish": 70,
+    "receive": 90
+   },
+   "mission": {
+    "title": "Le regard derrière la faille",
+    "actions": "Retrouver trois balises de guet, aligner leurs panneaux et ouvrir une fente d’observation encombrée.",
+    "choices": [
+     "Conserver la vue longue",
+     "Protéger mieux l’espace de rencontre"
+    ],
+    "choiceText": "Conserver la vue longue ou protéger mieux l’espace de rencontre."
+   },
+   "plan": "corniche → seuil dans la faille → poste de guet → chambre basse",
+   "witnesses": "veilleuse de la faille",
+   "ownership": "Droit local de résidence ; veilleuse de la faille constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 15
+  },
+  {
+   "id": "HOME-CM11",
+   "title": "Maison des Anneaux de Marée",
+   "communityId": "CM11",
+   "clanId": "CL6",
+   "regionId": "leviathan-coast",
+   "minimumRank": "young-blood",
+   "respect": {
+    "inhabit": 40,
+    "furnish": 65,
+    "receive": 85
+   },
+   "mission": {
+    "title": "Quand le quai se découvre",
+    "actions": "Lire les anneaux de marée, récupérer une attache sur l’estran accessible et remonter un filet de repérage.",
+    "choices": [
+     "Garder le quai disponible aux retours tardifs",
+     "Installer une rampe pour les charges lourdes"
+    ],
+    "choiceText": "Garder le quai disponible aux retours tardifs ou installer une rampe pour les charges lourdes."
+   },
+   "plan": "digue → porche salin → salle des retours → atelier sec",
+   "witnesses": "amarreur du rivage",
+   "ownership": "Droit local de résidence ; amarreur du rivage constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 16
+  },
+  {
+   "id": "HOME-CM12",
+   "title": "Refuge du Dos de Roche",
+   "communityId": "CM12",
+   "clanId": "CL6",
+   "regionId": "leviathan-coast",
+   "minimumRank": "blooded",
+   "respect": {
+    "inhabit": 45,
+    "furnish": 65,
+    "receive": 90
+   },
+   "mission": {
+    "title": "La voie des embruns",
+    "actions": "Suivre une ancienne route de portage, retourner trois écrans contre le sel et aider à déplacer un banc de veille.",
+    "choices": [
+     "Ouvrir une large vue sur le rivage",
+     "Préserver une cour protégée pour les visiteurs"
+    ],
+    "choiceText": "Ouvrir une large vue sur le rivage ou préserver une cour protégée pour les visiteurs."
+   },
+   "plan": "chemin haut → cour de roche → chambre → terrasse d’atelier",
+   "witnesses": "tailleuse des écrans",
+   "ownership": "Droit local de résidence ; tailleuse des écrans constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 17
+  },
+  {
+   "id": "HOME-CM13",
+   "title": "Logis des Veines Chaudes",
+   "communityId": "CM13",
+   "clanId": "CL7",
+   "regionId": "thermal-caves",
+   "minimumRank": "unblooded",
+   "respect": {
+    "inhabit": 30,
+    "furnish": 55,
+    "receive": 80
+   },
+   "mission": {
+    "title": "L’air entre les pierres",
+    "actions": "Suivre les repères d’aération, nettoyer les grilles stylisées et placer des déflecteurs avec le maître d’atelier.",
+    "choices": [
+     "Favoriser l’atelier",
+     "Le repos"
+    ],
+    "choiceText": "Favoriser l’atelier ou le repos ; un second réglage futur demande un nouvel aménagement."
+   },
+   "plan": "galerie tiède → sas de pierre → chambre → niche d’atelier",
+   "witnesses": "maître des galeries",
+   "ownership": "Droit local de résidence ; maître des galeries constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 18
+  },
+  {
+   "id": "HOME-CM14",
+   "title": "Chambre de l’Enclume Lointaine",
+   "communityId": "CM14",
+   "clanId": "CL7",
+   "regionId": "thermal-caves",
+   "minimumRank": "blooded",
+   "respect": {
+    "inhabit": 45,
+    "furnish": 65,
+    "receive": 85
+   },
+   "mission": {
+    "title": "Un bruit à rendre doux",
+    "actions": "Repérer la vibration d’un support, poser des cales fictives et comparer le son avant et après le déplacement de l’enclume.",
+    "choices": [
+     "Garder le poste proche des livraisons",
+     "Gagner une nuit plus calme en l’éloignant"
+    ],
+    "choiceText": "Garder le poste proche des livraisons ou gagner une nuit plus calme en l’éloignant."
+   },
+   "plan": "rampe d’atelier → vestibule sourd → chambre → établi",
+   "witnesses": "forgeronne des cales",
+   "ownership": "Droit local de résidence ; forgeronne des cales constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 19
+  },
+  {
+   "id": "HOME-CM15",
+   "title": "Maison du Givre Bleu",
+   "communityId": "CM15",
+   "clanId": "CL8",
+   "regionId": "cold-crown",
+   "minimumRank": "young-blood",
+   "respect": {
+    "inhabit": 40,
+    "furnish": 60,
+    "receive": 85
+   },
+   "mission": {
+    "title": "Le chemin des souffles",
+    "actions": "Retrouver les marqueurs sous une poudre stylisée, porter des panneaux isolants et ajuster les deux battants du sas.",
+    "choices": [
+     "Préserver une entrée large",
+     "Réduire la perte de chaleur avec un passage décalé"
+    ],
+    "choiceText": "Préserver une entrée large ou réduire la perte de chaleur avec un passage décalé."
+   },
+   "plan": "chemin balisé → double sas → chambre → réserve sèche",
+   "witnesses": "pisteur du givre",
+   "ownership": "Droit local de résidence ; pisteur du givre constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 20
+  },
+  {
+   "id": "HOME-CM16",
+   "title": "Refuge des Longues Veilles",
+   "communityId": "CM16",
+   "clanId": "CL8",
+   "regionId": "cold-crown",
+   "minimumRank": "blooded",
+   "respect": {
+    "inhabit": 45,
+    "furnish": 70,
+    "receive": 90
+   },
+   "mission": {
+    "title": "Une lumière au retour",
+    "actions": "Rétablir des repères lumineux au bord d’une pente, suivre leur ordre et rapporter une balise abandonnée.",
+    "choices": [
+     "Installer le feu visible de loin",
+     "Plusieurs lumières basses qui guident le dernier tronçon"
+    ],
+    "choiceText": "Installer le feu visible de loin ou plusieurs lumières basses qui guident le dernier tronçon."
+   },
+   "plan": "abri du sentier → porche bas → salle de veille → chambre",
+   "witnesses": "gardienne des retours",
+   "ownership": "Droit local de résidence ; gardienne des retours constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 21
+  },
+  {
+   "id": "HOME-CM17",
+   "title": "Maison des Marches Anciennes",
+   "communityId": "CM17",
+   "clanId": "CL9",
+   "regionId": "first-city-ruins",
+   "minimumRank": "young-blood",
+   "respect": {
+    "inhabit": 40,
+    "furnish": 65,
+    "receive": 85
+   },
+   "mission": {
+    "title": "La marche qui manquait",
+    "actions": "Comparer trois dalles anciennes, aménager un passage réversible et replacer les fragments dans leurs niches de conservation.",
+    "choices": [
+     "Utiliser une rampe neuve",
+     "Un escalier latéral, sans tailler le seuil ancien"
+    ],
+    "choiceText": "Utiliser une rampe neuve ou un escalier latéral, sans tailler le seuil ancien."
+   },
+   "plan": "rue ruinée → marches protégées → vestibule → chambre récente",
+   "witnesses": "conservateur des seuils",
+   "ownership": "Droit local de résidence ; conservateur des seuils constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 22
+  },
+  {
+   "id": "HOME-CM18",
+   "title": "Logis de la Cour des Échos",
+   "communityId": "CM18",
+   "clanId": "CL9",
+   "regionId": "first-city-ruins",
+   "minimumRank": "blooded",
+   "respect": {
+    "inhabit": 50,
+    "furnish": 70,
+    "receive": 90
+   },
+   "mission": {
+    "title": "Les voix dans la cour",
+    "actions": "Positionner des panneaux amovibles, suivre un appel d’un côté à l’autre et dégager les accès aux trois arches.",
+    "choices": [
+     "Préserver la résonance de récit",
+     "Faciliter les conversations simultanées"
+    ],
+    "choiceText": "Préserver la résonance de récit ou faciliter les conversations simultanées."
+   },
+   "plan": "arcade → cour commune → chambre → alcôve d’archives",
+   "witnesses": "conteuse des arches",
+   "ownership": "Droit local de résidence ; conteuse des arches constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 23
+  },
+  {
+   "id": "HOME-CM19",
+   "title": "Maison du Seuil Surveillé",
+   "communityId": "CM19",
+   "clanId": "CL10",
+   "regionId": "forbidden-reserve",
+   "minimumRank": "blooded",
+   "respect": {
+    "inhabit": 50,
+    "furnish": 70,
+    "receive": 90
+   },
+   "mission": {
+    "title": "La limite visible",
+    "actions": "Contrôler des repères extérieurs, réparer un portillon autorisé et rapporter les signes de faune sans pénétrer la zone fermée.",
+    "choices": [
+     "Renforcer la séparation du chemin",
+     "Aménager un poste d’observation en retrait"
+    ],
+    "choiceText": "Renforcer la séparation du chemin ou aménager un poste d’observation en retrait."
+   },
+   "plan": "chemin autorisé → sas d’observation → chambre → atelier fermé",
+   "witnesses": "garde des limites",
+   "ownership": "Droit local de résidence ; garde des limites constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 24
+  },
+  {
+   "id": "HOME-CM20",
+   "title": "Refuge des Traces Retenues",
+   "communityId": "CM20",
+   "clanId": "CL10",
+   "regionId": "forbidden-reserve",
+   "minimumRank": "elite",
+   "respect": {
+    "inhabit": 55,
+    "furnish": 75,
+    "receive": 95
+   },
+   "mission": {
+    "title": "Le détour de la bête",
+    "actions": "Relever des traces depuis les postes sûrs, déplacer les leurres de balisage fictifs et rouvrir un accès de maintenance.",
+    "choices": [
+     "Déplacer le sentier de service",
+     "Conserver le trajet avec des créneaux surveillés"
+    ],
+    "choiceText": "Déplacer le sentier de service ou conserver le trajet avec des créneaux surveillés."
+   },
+   "plan": "poste de garde → couloir couvert → chambre → baie d’examen",
+   "witnesses": "lectrice de pistes",
+   "ownership": "Droit local de résidence ; lectrice de pistes constate le résultat. Une seule résidence active globale ; les règles publiques du lieu restent applicables.",
+   "sourceRow": 25
+  }
+ ],
+ "rooms": [
+  {
+   "id": "HOME-CM01-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM01",
+   "location": "Entrée de Maison du Vent de Cendre",
+   "access": "Habiter à 30 respect ; modifier à 50 ; recevoir selon la pièce à 75.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Gardienne des auvents peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur cendre fine.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 6
+  },
+  {
+   "id": "HOME-CM01-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM01",
+   "location": "Espace intérieur de Maison du Vent de Cendre",
+   "access": "Habiter à 30 respect ; modifier à 50 ; recevoir selon la pièce à 75.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 01.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de cendre fine.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 7
+  },
+  {
+   "id": "HOME-CM01-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM01",
+   "location": "Poste relié au seuil de Maison du Vent de Cendre",
+   "access": "Habiter à 30 respect ; modifier à 50 ; recevoir selon la pièce à 75.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les claies d’air offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 8
+  },
+  {
+   "id": "HOME-CM02-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM02",
+   "location": "Entrée de Logis des Deux Brasiers",
+   "access": "Habiter à 35 respect ; modifier à 55 ; recevoir selon la pièce à 80.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Veilleur des foyers peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur vent brûlant.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 9
+  },
+  {
+   "id": "HOME-CM02-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM02",
+   "location": "Espace intérieur de Logis des Deux Brasiers",
+   "access": "Habiter à 35 respect ; modifier à 55 ; recevoir selon la pièce à 80.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 02.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de vent brûlant.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 10
+  },
+  {
+   "id": "HOME-CM02-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM02",
+   "location": "Poste relié au seuil de Logis des Deux Brasiers",
+   "access": "Habiter à 35 respect ; modifier à 55 ; recevoir selon la pièce à 80.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les pierres calorifiques offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 11
+  },
+  {
+   "id": "HOME-CM03-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM03",
+   "location": "Entrée de Refuge des Ombres de Verre",
+   "access": "Habiter à 30 respect ; modifier à 55 ; recevoir selon la pièce à 80.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Porteuse d’eau peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur lumière crue.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 12
+  },
+  {
+   "id": "HOME-CM03-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM03",
+   "location": "Espace intérieur de Refuge des Ombres de Verre",
+   "access": "Habiter à 30 respect ; modifier à 55 ; recevoir selon la pièce à 80.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 03.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de lumière crue.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 13
+  },
+  {
+   "id": "HOME-CM03-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM03",
+   "location": "Poste relié au seuil de Refuge des Ombres de Verre",
+   "access": "Habiter à 30 respect ; modifier à 55 ; recevoir selon la pièce à 80.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les écrans articulés offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 14
+  },
+  {
+   "id": "HOME-CM04-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM04",
+   "location": "Entrée de Chambre de la Citerne Haute",
+   "access": "Habiter à 40 respect ; modifier à 60 ; recevoir selon la pièce à 85.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Gardien des niveaux peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur résonance de cuve.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 15
+  },
+  {
+   "id": "HOME-CM04-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM04",
+   "location": "Espace intérieur de Chambre de la Citerne Haute",
+   "access": "Habiter à 40 respect ; modifier à 60 ; recevoir selon la pièce à 85.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 04.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de résonance de cuve.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 16
+  },
+  {
+   "id": "HOME-CM04-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM04",
+   "location": "Poste relié au seuil de Chambre de la Citerne Haute",
+   "access": "Habiter à 40 respect ; modifier à 60 ; recevoir selon la pièce à 85.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les flotteurs gravés offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 17
+  },
+  {
+   "id": "HOME-CM05-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM05",
+   "location": "Entrée de Maison des Passerelles Tressées",
+   "access": "Habiter à 35 respect ; modifier à 60 ; recevoir selon la pièce à 80.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Tresseuse des liens peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur frondaisons.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 18
+  },
+  {
+   "id": "HOME-CM05-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM05",
+   "location": "Espace intérieur de Maison des Passerelles Tressées",
+   "access": "Habiter à 35 respect ; modifier à 60 ; recevoir selon la pièce à 80.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 05.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de frondaisons.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 19
+  },
+  {
+   "id": "HOME-CM05-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM05",
+   "location": "Poste relié au seuil de Maison des Passerelles Tressées",
+   "access": "Habiter à 35 respect ; modifier à 60 ; recevoir selon la pièce à 80.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les ligatures végétales offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 20
+  },
+  {
+   "id": "HOME-CM06-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM06",
+   "location": "Entrée de Nid du Pilier Creux",
+   "access": "Habiter à 45 respect ; modifier à 65 ; recevoir selon la pièce à 85.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Guetteur du pilier peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur échos forestiers.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 21
+  },
+  {
+   "id": "HOME-CM06-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM06",
+   "location": "Espace intérieur de Nid du Pilier Creux",
+   "access": "Habiter à 45 respect ; modifier à 65 ; recevoir selon la pièce à 85.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 06.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de échos forestiers.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 22
+  },
+  {
+   "id": "HOME-CM06-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM06",
+   "location": "Poste relié au seuil de Nid du Pilier Creux",
+   "access": "Habiter à 45 respect ; modifier à 65 ; recevoir selon la pièce à 85.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les panneaux résonants offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 23
+  },
+  {
+   "id": "HOME-CM07-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM07",
+   "location": "Entrée de Maison des Pilotis Calmes",
+   "access": "Habiter à 40 respect ; modifier à 60 ; recevoir selon la pièce à 80.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Charpentière et passeur peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur lueur des eaux.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 24
+  },
+  {
+   "id": "HOME-CM07-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM07",
+   "location": "Espace intérieur de Maison des Pilotis Calmes",
+   "access": "Habiter à 40 respect ; modifier à 60 ; recevoir selon la pièce à 80.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 07.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de lueur des eaux.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 25
+  },
+  {
+   "id": "HOME-CM07-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM07",
+   "location": "Poste relié au seuil de Maison des Pilotis Calmes",
+   "access": "Habiter à 40 respect ; modifier à 60 ; recevoir selon la pièce à 80.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les entretoises de pilotis offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 26
+  },
+  {
+   "id": "HOME-CM08-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM08",
+   "location": "Entrée de Logis des Lanternes Basses",
+   "access": "Habiter à 45 respect ; modifier à 65 ; recevoir selon la pièce à 85.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Allumeuse des quais peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur brume bioluminescente.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 27
+  },
+  {
+   "id": "HOME-CM08-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM08",
+   "location": "Espace intérieur de Logis des Lanternes Basses",
+   "access": "Habiter à 45 respect ; modifier à 65 ; recevoir selon la pièce à 85.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 08.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de brume bioluminescente.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 28
+  },
+  {
+   "id": "HOME-CM08-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM08",
+   "location": "Poste relié au seuil de Logis des Lanternes Basses",
+   "access": "Habiter à 45 respect ; modifier à 65 ; recevoir selon la pièce à 85.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les lanternes basses offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 29
+  },
+  {
+   "id": "HOME-CM09-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM09",
+   "location": "Entrée de Abri du Col des Trois Vents",
+   "access": "Habiter à 40 respect ; modifier à 60 ; recevoir selon la pièce à 85.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Guide des cols peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur rafales.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 30
+  },
+  {
+   "id": "HOME-CM09-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM09",
+   "location": "Espace intérieur de Abri du Col des Trois Vents",
+   "access": "Habiter à 40 respect ; modifier à 60 ; recevoir selon la pièce à 85.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 09.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de rafales.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 31
+  },
+  {
+   "id": "HOME-CM09-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM09",
+   "location": "Poste relié au seuil de Abri du Col des Trois Vents",
+   "access": "Habiter à 40 respect ; modifier à 60 ; recevoir selon la pièce à 85.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les voiles de signal offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 32
+  },
+  {
+   "id": "HOME-CM10-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM10",
+   "location": "Entrée de Maison du Guet Fendu",
+   "access": "Habiter à 50 respect ; modifier à 70 ; recevoir selon la pièce à 90.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Veilleuse de la faille peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur orage lointain.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 33
+  },
+  {
+   "id": "HOME-CM10-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM10",
+   "location": "Espace intérieur de Maison du Guet Fendu",
+   "access": "Habiter à 50 respect ; modifier à 70 ; recevoir selon la pièce à 90.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 10.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de orage lointain.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 34
+  },
+  {
+   "id": "HOME-CM10-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM10",
+   "location": "Poste relié au seuil de Maison du Guet Fendu",
+   "access": "Habiter à 50 respect ; modifier à 70 ; recevoir selon la pièce à 90.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les balises fendues offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 35
+  },
+  {
+   "id": "HOME-CM11-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM11",
+   "location": "Entrée de Maison des Anneaux de Marée",
+   "access": "Habiter à 40 respect ; modifier à 65 ; recevoir selon la pièce à 85.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Amarreur du rivage peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur embruns.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 36
+  },
+  {
+   "id": "HOME-CM11-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM11",
+   "location": "Espace intérieur de Maison des Anneaux de Marée",
+   "access": "Habiter à 40 respect ; modifier à 65 ; recevoir selon la pièce à 85.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 11.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de embruns.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 37
+  },
+  {
+   "id": "HOME-CM11-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM11",
+   "location": "Poste relié au seuil de Maison des Anneaux de Marée",
+   "access": "Habiter à 40 respect ; modifier à 65 ; recevoir selon la pièce à 85.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les anneaux d’amarrage offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 38
+  },
+  {
+   "id": "HOME-CM12-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM12",
+   "location": "Entrée de Refuge du Dos de Roche",
+   "access": "Habiter à 45 respect ; modifier à 65 ; recevoir selon la pièce à 90.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Tailleuse des écrans peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur grondement côtier.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 39
+  },
+  {
+   "id": "HOME-CM12-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM12",
+   "location": "Espace intérieur de Refuge du Dos de Roche",
+   "access": "Habiter à 45 respect ; modifier à 65 ; recevoir selon la pièce à 90.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 12.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de grondement côtier.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 40
+  },
+  {
+   "id": "HOME-CM12-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM12",
+   "location": "Poste relié au seuil de Refuge du Dos de Roche",
+   "access": "Habiter à 45 respect ; modifier à 65 ; recevoir selon la pièce à 90.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les écrans salins offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 41
+  },
+  {
+   "id": "HOME-CM13-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM13",
+   "location": "Entrée de Logis des Veines Chaudes",
+   "access": "Habiter à 30 respect ; modifier à 55 ; recevoir selon la pièce à 80.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Maître des galeries peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur buée chaude.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 42
+  },
+  {
+   "id": "HOME-CM13-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM13",
+   "location": "Espace intérieur de Logis des Veines Chaudes",
+   "access": "Habiter à 30 respect ; modifier à 55 ; recevoir selon la pièce à 80.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 13.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de buée chaude.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 43
+  },
+  {
+   "id": "HOME-CM13-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM13",
+   "location": "Poste relié au seuil de Logis des Veines Chaudes",
+   "access": "Habiter à 30 respect ; modifier à 55 ; recevoir selon la pièce à 80.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les déflecteurs minéraux offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 44
+  },
+  {
+   "id": "HOME-CM14-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM14",
+   "location": "Entrée de Chambre de l’Enclume Lointaine",
+   "access": "Habiter à 45 respect ; modifier à 65 ; recevoir selon la pièce à 85.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Forgeronne des cales peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur pulsation de forge.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 45
+  },
+  {
+   "id": "HOME-CM14-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM14",
+   "location": "Espace intérieur de Chambre de l’Enclume Lointaine",
+   "access": "Habiter à 45 respect ; modifier à 65 ; recevoir selon la pièce à 85.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 14.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de pulsation de forge.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 46
+  },
+  {
+   "id": "HOME-CM14-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM14",
+   "location": "Poste relié au seuil de Chambre de l’Enclume Lointaine",
+   "access": "Habiter à 45 respect ; modifier à 65 ; recevoir selon la pièce à 85.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les cales résonantes offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 47
+  },
+  {
+   "id": "HOME-CM15-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM15",
+   "location": "Entrée de Maison du Givre Bleu",
+   "access": "Habiter à 40 respect ; modifier à 60 ; recevoir selon la pièce à 85.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Pisteur du givre peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur craquement froid.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 48
+  },
+  {
+   "id": "HOME-CM15-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM15",
+   "location": "Espace intérieur de Maison du Givre Bleu",
+   "access": "Habiter à 40 respect ; modifier à 60 ; recevoir selon la pièce à 85.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 15.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de craquement froid.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 49
+  },
+  {
+   "id": "HOME-CM15-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM15",
+   "location": "Poste relié au seuil de Maison du Givre Bleu",
+   "access": "Habiter à 40 respect ; modifier à 60 ; recevoir selon la pièce à 85.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les panneaux isolants offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 50
+  },
+  {
+   "id": "HOME-CM16-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM16",
+   "location": "Entrée de Refuge des Longues Veilles",
+   "access": "Habiter à 45 respect ; modifier à 70 ; recevoir selon la pièce à 90.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Gardienne des retours peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur nuit polaire.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 51
+  },
+  {
+   "id": "HOME-CM16-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM16",
+   "location": "Espace intérieur de Refuge des Longues Veilles",
+   "access": "Habiter à 45 respect ; modifier à 70 ; recevoir selon la pièce à 90.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 16.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de nuit polaire.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 52
+  },
+  {
+   "id": "HOME-CM16-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM16",
+   "location": "Poste relié au seuil de Refuge des Longues Veilles",
+   "access": "Habiter à 45 respect ; modifier à 70 ; recevoir selon la pièce à 90.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les balises de veille offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 53
+  },
+  {
+   "id": "HOME-CM17-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM17",
+   "location": "Entrée de Maison des Marches Anciennes",
+   "access": "Habiter à 40 respect ; modifier à 65 ; recevoir selon la pièce à 85.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Conservateur des seuils peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur ombres de ruines.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 54
+  },
+  {
+   "id": "HOME-CM17-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM17",
+   "location": "Espace intérieur de Maison des Marches Anciennes",
+   "access": "Habiter à 40 respect ; modifier à 65 ; recevoir selon la pièce à 85.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 17.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de ombres de ruines.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 55
+  },
+  {
+   "id": "HOME-CM17-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM17",
+   "location": "Poste relié au seuil de Maison des Marches Anciennes",
+   "access": "Habiter à 40 respect ; modifier à 65 ; recevoir selon la pièce à 85.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les dalles de passage offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 56
+  },
+  {
+   "id": "HOME-CM18-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM18",
+   "location": "Entrée de Logis de la Cour des Échos",
+   "access": "Habiter à 50 respect ; modifier à 70 ; recevoir selon la pièce à 90.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Conteuse des arches peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur réverbération.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 57
+  },
+  {
+   "id": "HOME-CM18-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM18",
+   "location": "Espace intérieur de Logis de la Cour des Échos",
+   "access": "Habiter à 50 respect ; modifier à 70 ; recevoir selon la pièce à 90.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 18.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de réverbération.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 58
+  },
+  {
+   "id": "HOME-CM18-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM18",
+   "location": "Poste relié au seuil de Logis de la Cour des Échos",
+   "access": "Habiter à 50 respect ; modifier à 70 ; recevoir selon la pièce à 90.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les panneaux d’écho offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 59
+  },
+  {
+   "id": "HOME-CM19-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM19",
+   "location": "Entrée de Maison du Seuil Surveillé",
+   "access": "Habiter à 50 respect ; modifier à 70 ; recevoir selon la pièce à 90.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Garde des limites peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur cris lointains.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 60
+  },
+  {
+   "id": "HOME-CM19-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM19",
+   "location": "Espace intérieur de Maison du Seuil Surveillé",
+   "access": "Habiter à 50 respect ; modifier à 70 ; recevoir selon la pièce à 90.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 19.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de cris lointains.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 61
+  },
+  {
+   "id": "HOME-CM19-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM19",
+   "location": "Poste relié au seuil de Maison du Seuil Surveillé",
+   "access": "Habiter à 50 respect ; modifier à 70 ; recevoir selon la pièce à 90.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les repères de frontière offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 62
+  },
+  {
+   "id": "HOME-CM20-P1",
+   "title": "Seuil et accueil",
+   "houseId": "HOME-CM20",
+   "location": "Entrée de Refuge des Traces Retenues",
+   "access": "Habiter à 55 respect ; modifier à 75 ; recevoir selon la pièce à 95.",
+   "interactions": "Ouvrir le battant, déposer le contenant arrivé et déplacer le repère de présence sans boucher le passage. Lectrice de pistes peut s’arrêter au repère extérieur.",
+   "equipment": "Patère adaptée, casier de retour et vue sur feuillage fermé.",
+   "constraint": "Les charges lourdes attendent à l’extérieur tant que leur berceau ne franchit pas le seuil.",
+   "sourceRow": 63
+  },
+  {
+   "id": "HOME-CM20-P2",
+   "title": "Pièce de repos et mémoire",
+   "houseId": "HOME-CM20",
+   "location": "Espace intérieur de Refuge des Traces Retenues",
+   "access": "Habiter à 55 respect ; modifier à 75 ; recevoir selon la pièce à 95.",
+   "interactions": "Choisir la place du couchage, examiner un souvenir et régler les écrans depuis deux positions fixes. Le décor conserve les marques de la communauté 20.",
+   "equipment": "Un coffre personnel et deux emplacements de mémoire, avec fond sonore de feuillage fermé.",
+   "constraint": "Les visiteurs utilisent une place libre ; le couchage et l’accès au coffre restent praticables.",
+   "sourceRow": 64
+  },
+  {
+   "id": "HOME-CM20-P3",
+   "title": "Atelier et présentation",
+   "houseId": "HOME-CM20",
+   "location": "Poste relié au seuil de Refuge des Traces Retenues",
+   "access": "Habiter à 55 respect ; modifier à 75 ; recevoir selon la pièce à 95.",
+   "interactions": "Poser une pièce sur l’établi, ajuster ses appuis et comparer son orientation à la lumière locale. Les balises de détour offrent une matière de mobilier propre au quartier.",
+   "equipment": "Établi local, support d’essai et meuble d’exposition de gabarit limité.",
+   "constraint": "Les opérations qui exigent un équipement de bord restent indisponibles ici ; un original déplacé quitte sa précédente vitrine.",
+   "sourceRow": 65
+  }
+ ],
+ "scenes": [
+  {
+   "id": "V5-HOME-CM01-S1",
+   "title": "La piste dans la cendre",
+   "houseId": "HOME-CM01",
+   "trigger": "Premier retour après une bourrasque",
+   "sequence": "Observer les traces devant le seuil ; distinguer celles du voisin d’une petite faune locale ; suivre la piste entre deux auvents ; déplacer la caisse qui a attiré l’animal ; refermer son accès au garde-manger.",
+   "choices": "Guider l’animal vers le dehors avec un leurre fictif ou demander au gardien de le récupérer pour l’éloigner.",
+   "consequence": "Le détour laisse le quartier calme mais prend du temps ; l’aide du gardien crée une conversation et une petite dette de service.",
+   "sourceRow": 6
+  },
+  {
+   "id": "V5-HOME-CM01-S2",
+   "title": "Un récit derrière l’écran",
+   "houseId": "HOME-CM01",
+   "trigger": "Premier visiteur après exposition d’un souvenir",
+   "sequence": "Régler l’écran pour laisser entrer une lumière oblique ; conduire le visiteur au siège libre ; tourner l’objet vers sa marque ; choisir le détail à raconter ; écouter ce qu’il reconnaît du quartier.",
+   "choices": "Montrer une réussite récente ou une erreur ancienne qui a changé la manière de chasser.",
+   "consequence": "Le visiteur retient le sujet choisi et le rappelle au prochain retour ; aucune victoire absente n’est créée.",
+   "sourceRow": 7
+  },
+  {
+   "id": "V5-HOME-CM01-S3",
+   "title": "La claie du jeune chasseur",
+   "houseId": "HOME-CM01",
+   "trigger": "Respect d’aménagement atteint",
+   "sequence": "Préparer trois morceaux de claie d’exercice ; montrer le sens de la circulation d’air ; laisser un jeune placer les pièces ; traverser le sas avec une charge témoin ; corriger ensemble le panneau qui gêne.",
+   "choices": "Laisser une tentative réversible ou faire une démonstration avant son essai.",
+   "consequence": "La claie installée porte son motif ; le jeune se souvient d’avoir appris par l’erreur ou par l’observation.",
+   "sourceRow": 8
+  },
+  {
+   "id": "V5-HOME-CM02-S1",
+   "title": "Deux foyers, deux attentes",
+   "houseId": "HOME-CM02",
+   "trigger": "Soir de froid fictionnel après une mission",
+   "sequence": "Porter les pierres de réserve jusqu’au foyer ; observer les places déjà occupées ; déplacer les écrans mobiles ; tester la chaleur fictive dans chambre et pièce commune.",
+   "choices": "Privilégier l’accueil d’un groupe revenu tard ou préparer le repos personnel avant une chasse.",
+   "consequence": "Une pièce reste plus fraîche cette nuit ; le groupe commente l’aide reçue ou le choix de partir reposé.",
+   "sourceRow": 9
+  },
+  {
+   "id": "V5-HOME-CM02-S2",
+   "title": "Le bruit du métal posé",
+   "houseId": "HOME-CM02",
+   "trigger": "Arme confiée en entretien",
+   "sequence": "Poser l’arme sur un support d’essai ; écouter la vibration de trois emplacements ; trouver celui qui ne réveille pas le voisin ; installer les cales puis vérifier l’ouverture du coffre.",
+   "choices": "Garder l’arme près du foyer avec un support neuf ou déplacer l’atelier dans l’alcôve étroite.",
+   "consequence": "Le premier choix consomme deux cales ; le second conserve les matériaux mais réduit une place décorative.",
+   "sourceRow": 10
+  },
+  {
+   "id": "V5-HOME-CM02-S3",
+   "title": "La braise du défi",
+   "houseId": "HOME-CM02",
+   "trigger": "Rival disponible et réception autorisée",
+   "sequence": "Préparer une cible d’exercice dans la cour ; placer les limites ; observer le rival choisir son angle ; réaliser un enchaînement court de déplacement et de frappe sur cible ; ranger ensemble le matériel.",
+   "choices": "Défi de précision à faible lumière ou parcours de vitesse autour du foyer.",
+   "consequence": "Le résultat produit une réplique de rivalité située ; il ne confère aucun rang et peut être rejoué sans récompense répétée.",
+   "sourceRow": 11
+  },
+  {
+   "id": "V5-HOME-CM03-S1",
+   "title": "L’ombre qui a bougé",
+   "houseId": "HOME-CM03",
+   "trigger": "Nouvel écran installé",
+   "sequence": "Observer le sol à deux moments fictionnels ; suivre la ligne d’ombre ; porter un récipient témoin ; déplacer un écran sans barrer la route des citernes.",
+   "choices": "Protéger le trajet des porteurs ou l’alcôve où l’on examine les trophées.",
+   "consequence": "Le quartier gagne un passage confortable ou la maison une meilleure lumière de travail ; l’autre usage reste possible à une autre heure.",
+   "sourceRow": 12
+  },
+  {
+   "id": "V5-HOME-CM03-S2",
+   "title": "La trace du verre noir",
+   "houseId": "HOME-CM03",
+   "trigger": "Objet trouvé lors d’une mission désertique",
+   "sequence": "Poser la pièce sous l’écran ; tourner son profil ; comparer un reflet réel à une fissure ; choisir un socle qui ne confond pas les deux ; montrer le résultat à la porteuse d’eau.",
+   "choices": "Exposer la fissure comme mémoire du voyage ou conserver la pièce au coffre avec sa provenance.",
+   "consequence": "La visite peut parler d’un retour difficile ; l’état cassé n’est pas remplacé par une version parfaite.",
+   "sourceRow": 13
+  },
+  {
+   "id": "V5-HOME-CM03-S3",
+   "title": "Le passage des charges longues",
+   "houseId": "HOME-CM03",
+   "trigger": "Livraison d’un meuble repliable",
+   "sequence": "Déplier le gabarit devant le seuil ; choisir l’ordre de passage de ses deux sections ; reculer un siège ; installer le meuble puis faire traverser un porteur témoin.",
+   "choices": "Installer la version longue contre le mur ou la version courte qui laisse une seconde place de visite.",
+   "consequence": "Le choix change l’emprise et la capacité d’exposition ; la section inutilisée reste un bien transportable.",
+   "sourceRow": 14
+  },
+  {
+   "id": "V5-HOME-CM04-S1",
+   "title": "Le flotteur sans sonnerie",
+   "houseId": "HOME-CM04",
+   "trigger": "Après la mission de la Citerne Haute",
+   "sequence": "Suivre la variation visuelle du flotteur ; retrouver le lien tombé dans la remise ; comparer trois attaches ; replacer celle compatible ; tester la lecture depuis le palier.",
+   "choices": "Conserver le signal discret ou ajouter un repère visible pour les visiteurs qui ne connaissent pas le bruit.",
+   "consequence": "Le second choix utilise une plaquette et facilite l’orientation des invités ; le premier conserve l’ambiance habituelle.",
+   "sourceRow": 15
+  },
+  {
+   "id": "V5-HOME-CM04-S2",
+   "title": "Une histoire résonne trop",
+   "houseId": "HOME-CM04",
+   "trigger": "Réception avec plusieurs personnes",
+   "sequence": "Faire parler deux invités depuis leurs places ; écouter la superposition des sons ; déplacer les panneaux ; essayer un autre ordre de récit ; laisser une zone calme près du seuil.",
+   "choices": "Préparer un cercle unique de récit ou deux conversations séparées.",
+   "consequence": "Les scènes de visite changent de composition et certains témoignages ne sont entendus qu’en petit groupe.",
+   "sourceRow": 16
+  },
+  {
+   "id": "V5-HOME-CM04-S3",
+   "title": "La charge du dernier palier",
+   "houseId": "HOME-CM04",
+   "trigger": "Retour d’un voisin fatigué",
+   "sequence": "Descendre jusqu’au palier inférieur ; inspecter la charge et son trajet ; prendre une partie du portage ; choisir le passage direct ou la rampe ; remettre les objets à leurs places.",
+   "choices": "Aider immédiatement ou installer d’abord un rail de jeu pour les prochaines livraisons.",
+   "consequence": "L’aide est rapide ; le rail coûte du matériau mais modifie durablement les scènes de transport locales.",
+   "sourceRow": 17
+  },
+  {
+   "id": "V5-HOME-CM05-S1",
+   "title": "Le nœud de la passerelle",
+   "houseId": "HOME-CM05",
+   "trigger": "Après un trajet sous forte pluie fictionnelle",
+   "sequence": "Observer trois ligatures depuis les plateformes ; relever celle qui porte une torsion ; poser une charge témoin ; installer un lien d’exercice ; demander à la tresseuse de vérifier le résultat visible.",
+   "choices": "Renforcer le passage léger ou réserver ce tronçon aux piétons et ouvrir le détour aux charges.",
+   "consequence": "Les PNJ changent d’itinéraire selon la solution ; la maison garde son accès sans passage incohérent.",
+   "sourceRow": 18
+  },
+  {
+   "id": "V5-HOME-CM05-S2",
+   "title": "Les yeux au-dessus du seuil",
+   "houseId": "HOME-CM05",
+   "trigger": "Faune locale aperçue dans la frondaison",
+   "sequence": "Suivre les mouvements par ombres ; déplacer la lampe pour identifier la silhouette ; retirer un objet brillant qui l’attire ; guider le visiteur sous un auvent.",
+   "choices": "Observer la faune à distance pour enrichir un relevé ou fermer la vue afin de recevoir dans le calme.",
+   "consequence": "Le relevé ajoute une observation de faune originale du projet ; la fermeture conserve la tranquillité de la scène.",
+   "sourceRow": 19
+  },
+  {
+   "id": "V5-HOME-CM05-S3",
+   "title": "Un souvenir suspendu",
+   "houseId": "HOME-CM05",
+   "trigger": "Petit trophée compatible disponible",
+   "sequence": "Choisir un support suspendu prévu ; tester son balancement stylisé ; régler la longueur par crans ; comparer la lecture depuis la passerelle ; installer la plaque.",
+   "choices": "Support mobile qui montre plusieurs faces ou niche fixe plus facile à lire.",
+   "consequence": "Le meuble change l’animation de visite ; l’objet conserve les mêmes indices et la même reconnaissance.",
+   "sourceRow": 20
+  },
+  {
+   "id": "V5-HOME-CM06-S1",
+   "title": "Le faux appel du pilier",
+   "houseId": "HOME-CM06",
+   "trigger": "Retour pendant une scène de vent",
+   "sequence": "Écouter trois niveaux du tronc ; suivre l’écho jusqu’à un panneau déplacé ; remettre la pièce dans ses rainures ; faire résonner un signal d’exercice depuis le balcon.",
+   "choices": "Rétablir l’appel ancien ou ajouter un signal différent pour les visiteurs.",
+   "consequence": "Les scènes d’arrivée utilisent le signal retenu ; les habitants apprennent le nouveau rythme si nécessaire.",
+   "sourceRow": 21
+  },
+  {
+   "id": "V5-HOME-CM06-S2",
+   "title": "La visite à trois hauteurs",
+   "houseId": "HOME-CM06",
+   "trigger": "Mentor disponible",
+   "sequence": "Attendre le mentor sur la plateforme basse ; monter avec lui ; lui montrer une marque à chaque niveau ; choisir le balcon ou la chambre pour la conclusion.",
+   "choices": "Raconter les étapes de maîtrise dans l’ordre ou commencer par la difficulté encore présente.",
+   "consequence": "Le mentor donne une réaction propre au choix et au rang ; aucun jalon commun n’est validé par cette visite.",
+   "sourceRow": 22
+  },
+  {
+   "id": "V5-HOME-CM06-S3",
+   "title": "La niche dans le creux",
+   "houseId": "HOME-CM06",
+   "trigger": "Aménagement autorisé",
+   "sequence": "Comparer le gabarit d’un meuble au tronc ; installer un cadre réversible ; faire passer une silhouette de portage ; régler la lampe vers le fond sans éblouir l’escalier.",
+   "choices": "Grande niche unique ou deux petites niches avec espace de lecture séparé.",
+   "consequence": "La capacité et le parcours de mémoire diffèrent ; aucune coupe du pilier structurel n’est nécessaire.",
+   "sourceRow": 23
+  },
+  {
+   "id": "V5-HOME-CM07-S1",
+   "title": "La crue sous les pilotis",
+   "houseId": "HOME-CM07",
+   "trigger": "HOME-CM07 active ; mission de seuil réussie",
+   "sequence": "Revenir aux trois appuis marqués ; observer le niveau de l’eau depuis les passerelles ; déplacer une charge légère ; vérifier le passage renforcé ou le détour réellement choisi lors du déverrouillage.",
+   "choices": "Consolider le trajet actuel avec une entretoise disponible ou déplacer temporairement les livraisons vers le ponton.",
+   "consequence": "La solution respecte l’aménagement déjà réalisé ; le premier choix consomme une entretoise, le second rallonge les trajets du quartier.",
+   "sourceRow": 24
+  },
+  {
+   "id": "V5-HOME-CM07-S2",
+   "title": "La lampe du passeur",
+   "houseId": "HOME-CM07",
+   "trigger": "Respect 60 atteint à HOME-CM07",
+   "sequence": "Prendre la lampe récupérée lors de Trois appuis avant la crue ; tester son reflet depuis seuil et ponton ; déplacer son support ; attendre le passeur et suivre ses signaux jusqu’au quai.",
+   "choices": "Éclairer le passage principal ou la route de charges du détour.",
+   "consequence": "Le passeur emploie l’itinéraire éclairé ; la lampe reste un objet unique dont l’emplacement se voit depuis la maison.",
+   "sourceRow": 25
+  },
+  {
+   "id": "V5-HOME-CM07-S3",
+   "title": "Une place au-dessus de l’eau",
+   "houseId": "HOME-CM07",
+   "trigger": "Respect 80 atteint à HOME-CM07",
+   "sequence": "Installer deux sièges hors du chenal ; déplacer un trophée compatible jusqu’au seuil ; accueillir la charpentière et le passeur ; montrer une trace à la lumière des eaux.",
+   "choices": "Raconter une chasse ou remercier le quartier pour la place obtenue, avec un souvenir de la mission locale.",
+   "consequence": "Les invités réagissent aux objets réels ; l’accueil cérémoniel ne donne aucun contrôle des stocks ou des voies publiques.",
+   "sourceRow": 26
+  },
+  {
+   "id": "V5-HOME-CM08-S1",
+   "title": "Les reflets qui se répondent",
+   "houseId": "HOME-CM08",
+   "trigger": "Brume fictionnelle et lanternes ouvertes",
+   "sequence": "Observer trois reflets depuis la véranda ; déplacer une lanterne sur ses points prévus ; comparer le rythme du quai ; suivre la route balisée jusqu’au retour.",
+   "choices": "Éclairage bas discret ou signal plus visible pour une arrivée collective.",
+   "consequence": "La route change de lecture sans supprimer les repères des autres habitants.",
+   "sourceRow": 27
+  },
+  {
+   "id": "V5-HOME-CM08-S2",
+   "title": "Le visiteur au mauvais quai",
+   "houseId": "HOME-CM08",
+   "trigger": "Invitation en cours",
+   "sequence": "Entendre un appel lointain ; rejoindre le quai visible ; reconnaître le visiteur ; déplacer une balise de bienvenue ; le guider par le passage accessible jusqu’au seuil.",
+   "choices": "Accompagner personnellement ou demander au passeur après lui avoir donné un repère précis.",
+   "consequence": "La première solution donne une conversation de trajet ; la seconde coûte un service et laisse préparer la réception.",
+   "sourceRow": 28
+  },
+  {
+   "id": "V5-HOME-CM08-S3",
+   "title": "Une plaque dans la buée",
+   "houseId": "HOME-CM08",
+   "trigger": "Trophée installé près de la véranda",
+   "sequence": "Comparer la lisibilité avant et après la buée stylisée ; déplacer le cadre ; choisir un écran protecteur fictif ; vérifier la lecture depuis le siège du visiteur.",
+   "choices": "Garder la vue sur l’eau avec une protection ou déplacer la présentation à l’intérieur.",
+   "consequence": "L’aménagement modifie lumière et ambiance ; les informations restent accessibles dans les deux cas.",
+   "sourceRow": 29
+  },
+  {
+   "id": "V5-HOME-CM09-S1",
+   "title": "Entre deux rafales",
+   "houseId": "HOME-CM09",
+   "trigger": "Retour avec une charge encombrante",
+   "sequence": "Observer le rythme des voiles ; atteindre le premier abri ; attendre la fenêtre fictionnelle ; porter la caisse jusqu’au sas ; vérifier ses attaches avant ouverture.",
+   "choices": "Faire deux trajets légers ou attendre une aide pour un trajet unique.",
+   "consequence": "Le premier coûte du temps ; le second crée une scène avec le guide et conserve la charge entière.",
+   "sourceRow": 30
+  },
+  {
+   "id": "V5-HOME-CM09-S2",
+   "title": "Le signal du rival",
+   "houseId": "HOME-CM09",
+   "trigger": "Rival en visite au col",
+   "sequence": "Repérer sa silhouette sur la corniche ; répondre par une voile ; choisir un terrain d’exercice abrité ; placer deux marques de départ ; réaliser un défi de lecture de vent.",
+   "choices": "Privilégier l’observation et l’esquive ou la vitesse dans une fenêtre courte.",
+   "consequence": "Le résultat nourrit la rivalité sans provoquer automatiquement une guerre ni modifier un rang.",
+   "sourceRow": 31
+  },
+  {
+   "id": "V5-HOME-CM09-S3",
+   "title": "L’écran qui s’efface",
+   "houseId": "HOME-CM09",
+   "trigger": "Aménagement autorisé",
+   "sequence": "Essayer un écran repliable devant l’atelier ; suivre son mouvement entre trois poses ; porter un objet témoin ; vérifier que l’écran ouvert ne barre pas le sas.",
+   "choices": "Écran fixe plus protecteur ou version repliable qui libère la vue.",
+   "consequence": "Les matériaux et l’usage diffèrent ; le joueur peut changer plus tard par un vrai chantier d’aménagement.",
+   "sourceRow": 32
+  },
+  {
+   "id": "V5-HOME-CM10-S1",
+   "title": "Trois balises dans l’orage",
+   "houseId": "HOME-CM10",
+   "trigger": "Après l’ouverture du guet",
+   "sequence": "Observer les balises depuis la faille ; comparer leurs intervalles de lumière ; rejoindre seulement les postes accessibles ; remettre un panneau dans sa pose correcte.",
+   "choices": "Conserver une lecture longue distance ou rendre plus claire l’approche finale du logis.",
+   "consequence": "Les visiteurs utilisent le repérage choisi ; aucune nouvelle route lointaine n’est connue sans exploration.",
+   "sourceRow": 33
+  },
+  {
+   "id": "V5-HOME-CM10-S2",
+   "title": "Le récit derrière la fente",
+   "houseId": "HOME-CM10",
+   "trigger": "Trophée portant une marque discrète",
+   "sequence": "Poser l’objet sur un support ; utiliser la fente de lumière comme éclairage ; tourner le profil ; comparer l’ombre à la vue initiale ; appeler la veilleuse au bon angle.",
+   "choices": "Garder la présentation dépendante de la lumière naturelle ou ajouter une lampe de lecture.",
+   "consequence": "Le premier crée un rendez-vous de visite ; le second consomme un module d’éclairage et reste disponible en permanence.",
+   "sourceRow": 34
+  },
+  {
+   "id": "V5-HOME-CM10-S3",
+   "title": "Une nuit de guet partagée",
+   "houseId": "HOME-CM10",
+   "trigger": "Réception autorisée ; allié disponible",
+   "sequence": "Installer deux places au poste ; répartir les zones à observer ; reconnaître trois mouvements du décor ; distinguer une faune locale d’un signal de retour.",
+   "choices": "Partager les observations ou proposer un petit concours sans récompense de rang.",
+   "consequence": "Les échanges révèlent les habitudes de l’allié ; les observations exactes enrichissent le relevé local.",
+   "sourceRow": 35
+  },
+  {
+   "id": "V5-HOME-CM11-S1",
+   "title": "Le quai de la dernière marée",
+   "houseId": "HOME-CM11",
+   "trigger": "Retour maritime fictionnel",
+   "sequence": "Lire les anneaux visibles ; déplacer les charges vers la partie sèche ; guider une personne sur la rampe ; récupérer le support resté au bord du quai.",
+   "choices": "Préserver un accès tardif ou mettre les biens à l’abri en fermant une partie du quai.",
+   "consequence": "Le choix modifie les arrivées possibles pendant cette marée, avec conséquence visible sur les PNJ.",
+   "sourceRow": 36
+  },
+  {
+   "id": "V5-HOME-CM11-S2",
+   "title": "L’objet qui sent le voyage",
+   "houseId": "HOME-CM11",
+   "trigger": "Souvenir côtier autorisé",
+   "sequence": "Poser le contenant dans l’atelier sec ; comparer la surface au relevé initial ; retirer uniquement la poussière stylisée prévue ; orienter la pièce vers les embruns lointains.",
+   "choices": "Exposition près du porche avec écran ou conservation intérieure plus sobre.",
+   "consequence": "La présentation raconte le voyage sans transformer les dépôts naturels en preuve de combat.",
+   "sourceRow": 37
+  },
+  {
+   "id": "V5-HOME-CM11-S3",
+   "title": "La table des retours",
+   "houseId": "HOME-CM11",
+   "trigger": "Réception au respect requis",
+   "sequence": "Installer des places selon les personnes présentes ; laisser un chemin vers le quai ; apporter les objets de récit ; accueillir une équipe revenue avec une absence.",
+   "choices": "Présenter d’abord les prises ou laisser une place vide raconter le membre manquant.",
+   "consequence": "La scène suit le résultat réel de mission et conserve les absences confirmées.",
+   "sourceRow": 38
+  },
+  {
+   "id": "V5-HOME-CM12-S1",
+   "title": "L’écran tourné vers le sel",
+   "houseId": "HOME-CM12",
+   "trigger": "Après une tempête fictionnelle",
+   "sequence": "Parcourir la cour ; inspecter les faces des écrans ; tourner les panneaux préparés ; comparer leur protection depuis le siège et le seuil ; ranger les pièces déplacées.",
+   "choices": "Protéger davantage l’atelier ou ouvrir la vue des visiteurs sur la côte.",
+   "consequence": "Une zone reste plus exposée aux effets visuels d’embruns ; aucun objet n’est détruit hors session.",
+   "sourceRow": 39
+  },
+  {
+   "id": "V5-HOME-CM12-S2",
+   "title": "Le banc des deux récits",
+   "houseId": "HOME-CM12",
+   "trigger": "Deux témoins disponibles",
+   "sequence": "Déplacer le banc de veille sur un point autorisé ; poser un objet entre les témoins ; orienter sa face vers chacun ; laisser les versions être racontées séparément.",
+   "choices": "Réunir les récits sur une plaque commune ou conserver deux voix attribuées.",
+   "consequence": "La présentation garde les divergences utiles sans inventer de vainqueur narratif.",
+   "sourceRow": 40
+  },
+  {
+   "id": "V5-HOME-CM12-S3",
+   "title": "Une charge par le chemin haut",
+   "houseId": "HOME-CM12",
+   "trigger": "Livraison de grand cadre",
+   "sequence": "Présenter le volume témoin ; choisir le point de prise ; emprunter la route de portage ; déposer la charge sur deux repos ; déplacer un écran pour franchir le seuil.",
+   "choices": "Transport lent par le chemin haut ou démontage prévu du cadre en deux parties.",
+   "consequence": "Le premier prend davantage de temps ; le second demande une remise en place à l’atelier.",
+   "sourceRow": 41
+  },
+  {
+   "id": "V5-HOME-CM13-S1",
+   "title": "La buée dans le mauvais couloir",
+   "houseId": "HOME-CM13",
+   "trigger": "Premier usage prolongé de l’atelier",
+   "sequence": "Observer les lueurs de ventilation fictive ; suivre la buée jusqu’au déflecteur déplacé ; régler trois positions ; comparer l’ambiance entre chambre et établi.",
+   "choices": "Favoriser le travail d’atelier ou le repos, en conservant un minimum dans l’autre pièce.",
+   "consequence": "Le réglage modifie les effets visuels et certains rendez-vous, sans bonus de combat cumulatif.",
+   "sourceRow": 42
+  },
+  {
+   "id": "V5-HOME-CM13-S2",
+   "title": "Le visiteur de la galerie froide",
+   "houseId": "HOME-CM13",
+   "trigger": "Invité venant d’une autre région",
+   "sequence": "Le recevoir au sas ; observer sa gêne dans la pièce chaude ; déplacer un écran ; installer un siège sur le palier ; choisir l’objet à montrer depuis cette nouvelle place.",
+   "choices": "Adapter la pièce pour cette visite ou proposer un parcours court vers une galerie plus fraîche.",
+   "consequence": "La réaction de l’invité montre une différence de milieu et de préférence, sans prétendre définir toute son espèce.",
+   "sourceRow": 43
+  },
+  {
+   "id": "V5-HOME-CM13-S3",
+   "title": "Le relief sous la vapeur",
+   "houseId": "HOME-CM13",
+   "trigger": "Objet minéral disponible",
+   "sequence": "Attendre une fenêtre de visibilité ; orienter l’objet sur ses poses ; déplacer la lampe ; poser un repère amovible sur la marque découverte.",
+   "choices": "Fixer un écran pour lire à toute heure ou garder le rituel de la fenêtre calme.",
+   "consequence": "La solution choisie change le parcours de visite et le coût d’aménagement.",
+   "sourceRow": 44
+  },
+  {
+   "id": "V5-HOME-CM14-S1",
+   "title": "La note de l’enclume",
+   "houseId": "HOME-CM14",
+   "trigger": "Atelier actif après un retour",
+   "sequence": "Déplacer une pièce d’exercice entre trois supports ; écouter la vibration ; retrouver la cale déplacée ; comparer deux placements de l’établi.",
+   "choices": "Garder le poste près des livraisons ou l’éloigner de la chambre.",
+   "consequence": "Le trajet ou l’ambiance sonore change ; aucune structure entière n’est téléportée.",
+   "sourceRow": 45
+  },
+  {
+   "id": "V5-HOME-CM14-S2",
+   "title": "Le forgeron regarde la marque",
+   "houseId": "HOME-CM14",
+   "trigger": "Objet réparé confié",
+   "sequence": "Poser l’objet sur le cadre ; éclairer les reprises ; laisser la forgeronne identifier ce qu’elle connaît ; ouvrir l’archive pour les zones non attribuées.",
+   "choices": "Mettre en avant la réparation utile ou l’aspect de la prise avant son retour.",
+   "consequence": "Le récit conserve les interventions réelles ; une restauration n’efface pas les cicatrices historiques.",
+   "sourceRow": 46
+  },
+  {
+   "id": "V5-HOME-CM14-S3",
+   "title": "Un défi de mains patientes",
+   "houseId": "HOME-CM14",
+   "trigger": "Apprenti ou rival disponible",
+   "sequence": "Préparer deux modèles identiques ; placer les pièces d’exercice ; réaliser une séquence de trois ajustements ; comparer les appuis et la lisibilité finale.",
+   "choices": "Défi chronométré facultatif ou exercice de précision sans temps.",
+   "consequence": "Les deux modes donnent la même information narrative et aucune pénalité de prestige pour l’assistance.",
+   "sourceRow": 47
+  },
+  {
+   "id": "V5-HOME-CM15-S1",
+   "title": "Les marques sous le givre",
+   "houseId": "HOME-CM15",
+   "trigger": "Retour après une scène de neige",
+   "sequence": "Suivre les balises visibles ; dégager les repères de jeu ; faire entrer les charges par le double sas ; vérifier l’ordre des battants et la place du coffre.",
+   "choices": "Maintenir une entrée large ou poser un écran décalé pour protéger la chambre.",
+   "consequence": "Le passage et l’apparence du sas changent ; les visiteurs utilisent la nouvelle trajectoire.",
+   "sourceRow": 48
+  },
+  {
+   "id": "V5-HOME-CM15-S2",
+   "title": "Une lumière pour les mains",
+   "houseId": "HOME-CM15",
+   "trigger": "Atelier mal éclairé pendant une visite",
+   "sequence": "Comparer trois angles de lampe ; observer la prise depuis le siège ; déplacer un écran clair ; ouvrir une niche sans masquer le couloir.",
+   "choices": "Lumière forte localisée ou éclairage doux réparti avec une loupe de lecture.",
+   "consequence": "Les mêmes indices restent lisibles ; la dépense de modules et l’ambiance diffèrent.",
+   "sourceRow": 49
+  },
+  {
+   "id": "V5-HOME-CM15-S3",
+   "title": "Le retour du pisteur",
+   "houseId": "HOME-CM15",
+   "trigger": "Pisteur du givre disponible",
+   "sequence": "Préparer une place sèche ; recevoir ses traces de terrain ; comparer un relevé à un objet de la galerie ; lui montrer le passage nouvellement aménagé.",
+   "choices": "Partager un souvenir de chasse ou demander une leçon sur la lecture des traces froides.",
+   "consequence": "La visite ouvre un exercice local d’observation, sans donner une compétence universelle instantanée.",
+   "sourceRow": 50
+  },
+  {
+   "id": "V5-HOME-CM16-S1",
+   "title": "Le dernier feu visible",
+   "houseId": "HOME-CM16",
+   "trigger": "Scène de nuit polaire",
+   "sequence": "Marcher jusqu’aux repères de retour ; comparer leur visibilité depuis deux creux ; déplacer une lumière basse ; suivre le chemin jusqu’au porche.",
+   "choices": "Grand repère lointain ou chapelet de repères proches.",
+   "consequence": "La gardienne emploie la route retenue ; le choix influe sur les arrivées fictionnelles suivantes.",
+   "sourceRow": 51
+  },
+  {
+   "id": "V5-HOME-CM16-S2",
+   "title": "Une veille sans parole",
+   "houseId": "HOME-CM16",
+   "trigger": "Proche présent après un retour difficile",
+   "sequence": "Installer deux places ; fermer le panneau qui coupe la vue ; poser un souvenir sans plaque nouvelle ; laisser une durée de scène avant de choisir un geste.",
+   "choices": "Offrir l’objet à regarder ou rester ensemble face au dehors.",
+   "consequence": "La relation avance par une présence consentie ; aucun témoignage forcé n’est attribué au proche.",
+   "sourceRow": 52
+  },
+  {
+   "id": "V5-HOME-CM16-S3",
+   "title": "La niche du prochain retour",
+   "houseId": "HOME-CM16",
+   "trigger": "Départ d’expédition préparé",
+   "sequence": "Choisir une place vide dans la galerie ; y poser une plaque de route prévue ; emballer les objets nécessaires ; préparer le banc de retour.",
+   "choices": "Réserver la niche à une future prise ou à un souvenir quel que soit le résultat.",
+   "consequence": "La plaque n’accorde aucun trophée avant le retour ; un échec peut être présenté honnêtement plus tard.",
+   "sourceRow": 53
+  },
+  {
+   "id": "V5-HOME-CM17-S1",
+   "title": "Les pas entre les dalles",
+   "houseId": "HOME-CM17",
+   "trigger": "Maison des Marches Anciennes active",
+   "sequence": "Observer la route des voisins ; placer un volume témoin sur la rampe réversible ; déplacer un siège récent ; vérifier les dalles conservées sans les modifier.",
+   "choices": "Rampe continue ou petit escalier latéral pour les usages quotidiens.",
+   "consequence": "Les passages restent cohérents avec le choix du seuil ; les pièces anciennes ne sont pas détruites pour décorer.",
+   "sourceRow": 54
+  },
+  {
+   "id": "V5-HOME-CM17-S2",
+   "title": "L’ombre d’une ancienne niche",
+   "houseId": "HOME-CM17",
+   "trigger": "Objet ancien autorisé à l’étude",
+   "sequence": "Aligner un calque du mur avec la niche actuelle ; présenter une réplique de volume ; éclairer les bords ; comparer les marques sans conclure à un usage certain.",
+   "choices": "Exposer l’hypothèse avec ses limites ou garder l’étude dans l’archive.",
+   "consequence": "Le jeu distingue découverte matérielle et interprétation ; aucune tradition canonique nouvelle n’est affirmée.",
+   "sourceRow": 55
+  },
+  {
+   "id": "V5-HOME-CM17-S3",
+   "title": "Le conservateur et le chasseur",
+   "houseId": "HOME-CM17",
+   "trigger": "Visite du conservateur",
+   "sequence": "Montrer une prise récente près d’un objet ancien ; laisser le conservateur déplacer la lampe autorisée ; comparer la lisibilité ; choisir l’ordre du récit.",
+   "choices": "Faire dialoguer passé et chasse actuelle ou séparer les deux espaces.",
+   "consequence": "Le meuble et les commentaires changent ; le rang du joueur ne dépend pas de l’accord esthétique du conservateur.",
+   "sourceRow": 56
+  },
+  {
+   "id": "V5-HOME-CM18-S1",
+   "title": "La voix sous la troisième arche",
+   "houseId": "HOME-CM18",
+   "trigger": "Cour accessible après installation",
+   "sequence": "Écouter un appel depuis trois points ; déplacer les panneaux amovibles ; faire marcher un visiteur entre les arches ; choisir la place d’où la voix reste claire.",
+   "choices": "Conserver la résonance cérémonielle ou créer deux zones de conversation.",
+   "consequence": "Les scènes de groupe utilisent le dispositif choisi et gardent les accès libres.",
+   "sourceRow": 57
+  },
+  {
+   "id": "V5-HOME-CM18-S2",
+   "title": "Deux versions d’un même retour",
+   "houseId": "HOME-CM18",
+   "trigger": "Témoins aux récits différents",
+   "sequence": "Installer un objet sur la table centrale ; ouvrir les deux plaques d’archive ; laisser chaque témoin regarder le détail qui le concerne ; déplacer le repère de question.",
+   "choices": "Conclusion commune limitée aux faits partagés ou exposition de deux récits attribués.",
+   "consequence": "L’incertitude reste visible ; la cour ne fabrique pas une vérité unique pour satisfaire le joueur.",
+   "sourceRow": 58
+  },
+  {
+   "id": "V5-HOME-CM18-S3",
+   "title": "Le jeune apprend à écouter",
+   "houseId": "HOME-CM18",
+   "trigger": "Transmission locale disponible",
+   "sequence": "Préparer trois objets sonores d’exercice ; les activer derrière des panneaux ; laisser le jeune repérer leur emplacement ; montrer ensuite le parcours réel.",
+   "choices": "Donner un indice après l’erreur ou laisser une seconde écoute complète.",
+   "consequence": "Le jeune acquiert une habitude d’observation située et sa future réplique rappelle la méthode reçue.",
+   "sourceRow": 59
+  },
+  {
+   "id": "V5-HOME-CM19-S1",
+   "title": "La marque au-delà du portillon",
+   "houseId": "HOME-CM19",
+   "trigger": "Après un relevé autorisé",
+   "sequence": "Observer les traces depuis le poste sûr ; comparer leur direction ; déplacer une balise extérieure ; prévenir la garde par le signal local ; refermer le portillon.",
+   "choices": "Déplacer temporairement le passage de service ou garder le poste avec surveillance annoncée.",
+   "consequence": "Le trajet des PNJ change ; aucune entrée interdite n’est nécessaire pour terminer la scène.",
+   "sourceRow": 60
+  },
+  {
+   "id": "V5-HOME-CM19-S2",
+   "title": "Le trophée derrière le vitrage",
+   "houseId": "HOME-CM19",
+   "trigger": "Objet inconnu en étude",
+   "sequence": "Amener le contenant fermé à la baie ; orienter sa fenêtre ; lire les signaux fictifs ; comparer le dossier d’admission ; choisir une représentation de visite.",
+   "choices": "Attendre l’examen complet ou utiliser un modèle marqué pour raconter le voyage.",
+   "consequence": "L’original reste localisé et l’inconnu demeure explicite ; la copie ne donne pas de prestige supplémentaire.",
+   "sourceRow": 61
+  },
+  {
+   "id": "V5-HOME-CM19-S3",
+   "title": "Le garde voit la maison",
+   "houseId": "HOME-CM19",
+   "trigger": "Respect de réception atteint",
+   "sequence": "Accueillir le garde au seuil ; lui montrer le trajet des charges ; ouvrir seulement les pièces préparées ; discuter d’une observation concrète autour d’un relevé.",
+   "choices": "Présenter une chasse ou une leçon de retenue face à une piste incertaine.",
+   "consequence": "La relation s’appuie sur l’expérience montrée, sans transformer la visite en pouvoir sur la réserve.",
+   "sourceRow": 62
+  },
+  {
+   "id": "V5-HOME-CM20-S1",
+   "title": "La bête a choisi le détour",
+   "houseId": "HOME-CM20",
+   "trigger": "Après la mission Le détour de la bête",
+   "sequence": "Comparer les nouvelles traces aux anciennes depuis les postes ouverts ; déplacer un repère de route ; observer la faune suivre ou ignorer le détour ; revenir par le couloir couvert.",
+   "choices": "Conserver le sentier déplacé ou demander un créneau de maintenance accompagné.",
+   "consequence": "Le choix modifie le passage disponible ; la faune ne devient pas une monture gratuitement.",
+   "sourceRow": 63
+  },
+  {
+   "id": "V5-HOME-CM20-S2",
+   "title": "Une preuve sans prise",
+   "houseId": "HOME-CM20",
+   "trigger": "Observation réussie sans affrontement",
+   "sequence": "Poser les relevés sur la baie d’examen ; aligner les traces ; construire une petite présentation de terrain ; inviter la lectrice de pistes à vérifier ce qui a été vu.",
+   "choices": "Exposer la découverte comme exploration ou la garder pour préparer une chasse future autorisée.",
+   "consequence": "La connaissance progresse sans récompense de mise à mort inventée.",
+   "sourceRow": 64
+  },
+  {
+   "id": "V5-HOME-CM20-S3",
+   "title": "La dernière pièce confiée",
+   "houseId": "HOME-CM20",
+   "trigger": "Elite avancé ou transmission locale",
+   "sequence": "Parcourir la chambre avec un volontaire ; distinguer les objets personnels et ceux liés au poste ; montrer un geste d’examen ; préparer un prêt d’usage limité.",
+   "choices": "Confier un outil d’observation ou un relevé commenté.",
+   "consequence": "Le volontaire garde son autonomie ; l’objet reste unique et la scène peut préparer Elder sans remplacer son dénouement.",
+   "sourceRow": 65
+  }
+ ]
+}

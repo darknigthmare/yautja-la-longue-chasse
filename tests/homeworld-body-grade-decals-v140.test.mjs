@@ -29,8 +29,10 @@ test("V140 original cloth, net, dreads and armor retain their existing independe
   assert.match(home,/data-homeworld-layer="clothing"/);
   assert.match(home,/hunterBodyPartColorV62\(morphId, "torso", HUNTER_SKIN_FILTERS_V114/);
   assert.match(home,/data-homeworld-layer="dread"/);
-  assert.match(home,/filter: HUNTER_DREAD_FILTERS_V114/);
+  assert.match(home,/const dreadFilter = HUNTER_DREAD_FILTERS_V114\[/);
+  assert.match(home,/channel="dreads"[^>]*baseFilter=\{dreadFilter\}[^>]*filter: dreadFilter/);
   assert.match(home,/data-homeworld-layer="armor"/);
-  assert.match(home,/filter: HUNTER_ARMOR_FILTERS_V114/);
+  assert.match(home,/const filter = HUNTER_ARMOR_FILTERS_V114\[/);
+  assert.match(home,/channel="armor"[^>]*baseFilter=\{filter\}[^>]*clipPath, filter \}\}/);
   assert.match(home,/data-homeworld-biomask-pigment-v131/);
 });

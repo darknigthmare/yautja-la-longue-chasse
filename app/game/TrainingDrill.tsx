@@ -14,6 +14,8 @@ import {
   type ControlBindings,
 } from "./systems/controlBindings";
 import {
+  CLAN_PLASMA_DRILL,
+  getClanHuntCue,
   TRAINING_DRILL_ACTIONS,
   TRAINING_DRILL_CONFIGS,
   trainingDrillAccuracy,
@@ -22,6 +24,7 @@ import {
   trainingDrillScore,
   type TrainingDrillAction,
   type TrainingDrillFeedback,
+  type TrainingDrillTrace,
 } from "./systems/trainingDrill";
 import {
   TRAINING_LABELS,
@@ -32,13 +35,15 @@ export interface TrainingDrillProps {
   disciplineId: TrainingDisciplineId;
   controlBindings?: ControlBindings;
   seed?: number;
+  clanPlasma?: boolean;
   autoFocus?: boolean;
   suspended?: boolean;
   gamepadEnabled?: boolean;
   /** Parent persistence status; delivery alone is not confirmation. */
   saveIssue?: string | null;
   onRetrySave?: () => void;
-  onComplete: (score: number) => void;
+  onComplete?: (score: number) => void;
+  onTrace?: (trace: TrainingDrillTrace) => void;
   onCancel: () => void;
 }
 
@@ -65,7 +70,7 @@ const FEEDBACK_LABELS: Readonly<
 export default function TrainingDrill(props: TrainingDrillProps) {
   return (
     <TrainingDrillSession
-      key={`${props.disciplineId}:${props.seed ?? 0}`}
+      key={`${props.disciplineId}:${props.seed ?? 0}:${props.clanPlasma === true}`}
       {...props}
     />
   );
@@ -75,21 +80,28 @@ function TrainingDrillSession({
   disciplineId,
   controlBindings = DEFAULT_CONTROL_BINDINGS,
   seed = 0,
+  clanPlasma = false,
   autoFocus = true,
   suspended = false,
   gamepadEnabled = true,
   saveIssue = null,
   onRetrySave,
   onComplete,
+  onTrace,
   onCancel,
 }: TrainingDrillProps) {
   const backdropRef = useRef<HTMLDivElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
+  const plasmaPractice = clanPlasma && disciplineId === "targeting";
   const { game, paused, resultSent, deliveryError, canAct, begin, submitAction, cancel, recordResult } = useTrainingDrillRuntimeV94({
-    disciplineId, seed, rootRef: panelRef, suspended, gamepadEnabled, onComplete, onCancel,
+    disciplineId, seed, clanPlasma: plasmaPractice, rootRef: panelRef, suspended, gamepadEnabled, onComplete, onTrace, onCancel,
   });
-  const config = TRAINING_DRILL_CONFIGS[disciplineId];
+  const config = plasmaPractice ? CLAN_PLASMA_DRILL : TRAINING_DRILL_CONFIGS[disciplineId];
+  const huntCue = getClanHuntCue(game);
+  const hidesSequence = plasmaPractice || disciplineId === "clan-hunt";
+  const cueLabels = plasmaPractice ? CLAN_PLASMA_DRILL.cueLabels : config.actionLabels;
+  const actionLabels = huntCue?.actionLabels ?? config.actionLabels;
   const actionShortcuts: Readonly<Record<TrainingDrillAction, string>> = {
     left: controlActionShortcut("training.left", controlBindings),
     right: controlActionShortcut("training.right", controlBindings),
@@ -241,7 +253,7 @@ function TrainingDrillSession({
         <header style={styles.header}>
           <div>
             <p className="eyebrow">
-              SALLE D’ENTRAÎNEMENT · {TRAINING_LABELS[disciplineId]}
+              SALLE D’ENTRAÎNEMENT · {hidesSequence ? "Préparation des rites du clan" : TRAINING_LABELS[disciplineId]}
             </p>
             <h2 id="training-drill-title">{config.title}</h2>
           </div>
@@ -279,7 +291,7 @@ function TrainingDrillSession({
           </button>
         ) : null}
 
-        <div style={styles.sequence} aria-label="Séquence d’entraînement">
+        {!hidesSequence && <div style={styles.sequence} aria-label="Séquence d’entraînement">
           {game.sequence.map((action, index) => (
             <span
               key={`${action}-${index}`}
@@ -297,16 +309,16 @@ function TrainingDrillSession({
               {ACTION_GLYPHS[action]}
             </span>
           ))}
-        </div>
+        </div>}
 
-        <section style={styles.workArea} aria-label="Commande actuelle">
-          <span className="eyebrow">SIGNAL ACTUEL</span>
+        <section style={styles.workArea} aria-label="Commande actuelle" data-clan-hunt-phase={huntCue?.phase}>
+          <span className="eyebrow">{huntCue?.title ?? "SIGNAL ACTUEL"}</span>
           <strong style={styles.currentGlyph} aria-hidden="true">
-            {currentAction ? ACTION_GLYPHS[currentAction] : "◆"}
+            {currentAction && !hidesSequence ? ACTION_GLYPHS[currentAction] : "◆"}
           </strong>
           <strong style={styles.currentLabel}>
             {currentAction
-              ? config.actionLabels[currentAction]
+              ? huntCue?.label ?? cueLabels[currentAction]
               : game.status === "complete"
                 ? "Séquence terminée"
                 : "Lance l’épreuve"}
@@ -340,6 +352,7 @@ function TrainingDrillSession({
           <span>
             Précision {Math.round(accuracy * 100)} % · score provisoire {score}
           </span>
+          {game.unsafeFire && <span>Tir interdit · score plafonné à 49.</span>}
         </div>
 
         <div
@@ -368,9 +381,10 @@ function TrainingDrillSession({
             <button
               key={action}
               type="button"
+              data-training-drill-action={action}
               className="hub-action"
               disabled={paused || game.status !== "playing"}
-              aria-label={`${config.actionLabels[action]}. ${actionShortcuts[action]}`}
+              aria-label={`${actionLabels[action]}. ${actionShortcuts[action]}`}
               onPointerDown={(event) => {
                 if (event.button !== 0 || event.isPrimary === false) return;
                 event.preventDefault();
@@ -385,7 +399,7 @@ function TrainingDrillSession({
                 {ACTION_GLYPHS[action]}
               </span>
               <span>
-                <strong>{config.actionLabels[action]}</strong>
+                <strong>{actionLabels[action]}</strong>
                 <small>{actionShortcuts[action]}</small>
               </span>
             </button>
@@ -418,7 +432,7 @@ function TrainingDrillSession({
                 onClick={recordResult}
                 disabled={paused || resultSent}
               >
-                {deliveryError ? "Transmission non confirmée" : resultSent ? "Résultat transmis au vaisseau" : "Consigner le résultat"}
+                {deliveryError ? "Transmission non confirmée" : resultSent ? (onTrace ? "Résultat présenté au vétéran" : "Résultat transmis au vaisseau") : "Consigner le résultat"}
               </button>
             </div>
           </section>

@@ -10,6 +10,8 @@ import type { ControlBindings } from "./systems/controlBindings";
 import { sampleYouthControls, YOUTH_CONTROL_ACTIONS, type YouthTouchAction } from "./systems/youthControls";
 import { createYouthTraining, normalizeYouthTraining, stepYouthTraining, getYouthObjective, YOUTH_DESERT_CLUES, YOUTH_DESERT_SCAN_TICKS, type YouthState, type YouthReceipt } from "./systems/youthTraining";
 import styles from "./YouthTrainingScreen.module.css";
+import { YOUTH_MEDICOMP, youthMedicompCharges } from "./systems/youthMedicompV172";
+import { YOUTH_WORKSHOP_LESSONS, workshopCanOpen, workshopFeedback } from "./systems/youthWorkshopV174";
 import { isYouthCagePhase, youthCageCountdown, YOUTH_CAGE_REWARD } from "./systems/youthCage";
 import { isYouthPatrolPhase, YOUTH_PATROL_HOLD_TICKS, youthPatrolAssessment } from "./systems/youthPatrol";
 import YautjaTranslationV67 from "./YautjaTranslationV67";
@@ -44,6 +46,7 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
   const [releaseRequired, setReleaseRequired] = useState(false), [pending, setPending] = useState(false);
   const effectivePaused = paused || props.externallyPaused === true, reducedMotion = props.reducedMotion === true || reducedByOs;
   const objective = getYouthObjective(state);
+  const workshop = state.workshopV174, workshopActive = workshop?.active;
   const lessonAction = state.phase === "dojo-jump" || state.phase === "camp-run" || state.phase === "desert-crossing" || state.phase === "patrol-ambush" ? "jump" : state.phase === "dojo-dodge" ? "dodge" : state.phase === "dojo-strike" || (state.phase === "camp-duel" || state.phase === "cage-duel") ? "light" : state.phase === "dojo-throw" ? "throw" : ["blade-award", "armory", "barracks", "desert-briefing", "desert-tracks", "desert-report", "desert-return", "patrol-briefing", "patrol-route", "patrol-assessment", "patrol-return", "cage-briefing", "cage-reward", "cage-return"].includes(state.phase) ? "interact" : null;
   const lessonLabel = lessonAction ? TOUCH_ACTIONS.find(([id]) => id === lessonAction)?.[1] : null;
   useEffect(() => { latestRef.current = props; }, [props]);
@@ -125,7 +128,7 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
       previousPadChoice = sample.choiceStep;
       const elapsed = previous ? Math.min(100, Math.max(0, timestamp - previous)) : 0; previous = timestamp;
       const pausedNow = blocked || !armedRef.current || bank === null || document.hidden;
-      let phaseChanged = false;
+      let phaseChanged = false, medicompChanged = false, workshopChanged = false;
       if (pausedNow) { accumulated = 0; stateRef.current = stepYouthTraining(stateRef.current, {}, { assetsReady: bank !== null, pageVisible: !document.hidden, paused: true }).state; }
       else {
         accumulated += elapsed; let steps = 0;
@@ -134,7 +137,22 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
           const prior = stateRef.current.phase;
           const result = stepYouthTraining(stateRef.current, { ...sample.actions, choice: choiceRef.current }, { assetsReady: true, pageVisible: true, paused: false });
           if (result.state.cosmetic === choiceRef.current) choiceRef.current = undefined; stateRef.current = result.state; phaseChanged ||= prior !== result.state.phase;
-          for (const event of result.events) { if (event.type === "hit") audioRef.current?.hit(); if (event.type === "milestone") audioRef.current?.weaponSwitch(); }
+          for (const event of result.events) {
+            if (event.type === "hit") audioRef.current?.hit();
+            if (event.type === "milestone") audioRef.current?.weaponSwitch();
+            if (event.type === "workshop") {
+              workshopChanged = true;
+              if (event.signal === "warning") audioRef.current?.enemyAlert();
+              else if (event.signal === "earned") audioRef.current?.objective();
+              else audioRef.current?.select();
+            }
+            if (event.type === "medicomp") {
+              medicompChanged = true;
+              if (event.signal === "dose") audioRef.current?.medicomp();
+              else if (event.signal === "alert") audioRef.current?.enemyAlert();
+              else audioRef.current?.select();
+            }
+          }
           if (result.receipts.length) { pendingRef.current = { receipts: result.receipts, state: result.state }; setPending(true); clearInput(); accumulated = 0; void submitProgress(); break; }
         }
       }
@@ -154,10 +172,12 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
       canvas.dataset.youthComposure = `${stateRef.current.player.composure},${stateRef.current.rival.composure}`;
       canvas.dataset.youthCage = stateRef.current.cage ? JSON.stringify(stateRef.current.cage) : "";
       canvas.dataset.youthPhaseTick = String(stateRef.current.phaseTick);
+      canvas.dataset.youthMedicomp = stateRef.current.medicompV172 ? JSON.stringify(stateRef.current.medicompV172) : "";
+      canvas.dataset.youthWorkshop = stateRef.current.workshopV174 ? JSON.stringify(stateRef.current.workshopV174) : "";
       const patrol = stateRef.current.patrol;
       canvas.dataset.youthPatrol = patrol ? JSON.stringify({ halts: patrol.halts, holdTicks: patrol.holdTicks, attempts: patrol.attempts, evaded: patrol.evaded, hits: patrol.hits, totalHits: patrol.totalHits, grazer: patrol.grazer }) : "";
-      if (!pendingRef.current && !busyRef.current && !pausedNow && (phaseChanged || stateRef.current.tick - lastCheckpointTick >= 120)) { lastCheckpointTick = stateRef.current.tick; checkpoint(); }
-      if (phaseChanged || timestamp - lastUi >= 80) { lastUi = timestamp; setState(stateRef.current); setReleaseRequired(!blocked && (!armedRef.current || !stateRef.current.inputArmed)); }
+      if (!pendingRef.current && !busyRef.current && !pausedNow && (phaseChanged || medicompChanged || workshopChanged || stateRef.current.tick - lastCheckpointTick >= 120)) { lastCheckpointTick = stateRef.current.tick; checkpoint(); }
+      if (phaseChanged || medicompChanged || workshopChanged || timestamp - lastUi >= 80) { lastUi = timestamp; setState(stateRef.current); setReleaseRequired(!blocked && (!armedRef.current || !stateRef.current.inputArmed)); }
       frameId = requestAnimationFrame(render);
     };
     frameId = requestAnimationFrame(render); return () => cancelAnimationFrame(frameId);
@@ -193,8 +213,28 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
       </div>}
     </div>
     <div className={styles.stage}><canvas ref={canvasRef} data-youth-stage width={960} height={540} tabIndex={0} aria-label={isYouthCagePhase(state.phase) ? "La petite Fosse jouable. Duel de novices non létal, poings, esquive et projection, sans lame. Pause pour les commandes." : isYouthPatrolPhase(state.phase) ? "Patrouille jouable de l’Unblooded. Déplacement, saut, esquive et interaction. Évitez les charges sans attaquer l’animal. Pause pour les commandes." : "Formation jouable de l’Unblooded. Déplacement, saut, esquive, frappe et projection. Pause pour les commandes."}
-      onPointerDown={() => canvasRef.current?.focus()} onBlur={event => { const target = event.relatedTarget; if (bank !== null && ACTIVE(stateRef.current.phase) && !pausedRef.current && !latestRef.current.externallyPaused && !(target instanceof HTMLElement && (target.hasAttribute("data-youth-action") || target.hasAttribute("data-youth-control")))) pause(); }} />
+      onPointerDown={() => canvasRef.current?.focus()} onBlur={event => { const target = event.relatedTarget; if (bank !== null && (ACTIVE(stateRef.current.phase) || stateRef.current.workshopV174?.active) && !pausedRef.current && !latestRef.current.externallyPaused && !(target instanceof HTMLElement && (target.hasAttribute("data-youth-action") || target.hasAttribute("data-youth-control")))) pause(); }} />
       {!bank && <div className={styles.overlay} role="status"><p>{artError ? "La formation attend ses images." : isYouthCagePhase(state.phase) ? "Chargement de la petite Fosse…" : isYouthPatrolPhase(state.phase) ? "Chargement de la patrouille…" : "Chargement du dojo…"}</p>{artError && <><p className={styles.error}>{artError}</p><button type="button" data-youth-control onClick={() => { setArtError(""); setLoadAttempt(value => value + 1); }}>Réessayer le chargement</button><button type="button" onClick={() => void exit()}>Retour au menu</button></>}</div>}
+      {workshopActive && workshop && !effectivePaused && <aside className={styles.fieldNotes} aria-label="Atelier Unblooded" data-youth-workshop-notes>
+        <strong>{YOUTH_WORKSHOP_LESSONS[workshopActive.lesson].title}</strong>
+        {workshopFeedback(workshop, state.tick) && <p role="status">{workshopFeedback(workshop, state.tick)}</p>}
+        <p>{([["light", "Frappe"], ["blade", "Lame"], ["throw", "Projection"], ["dodge", "Esquive"], ["jump", "Saut"]] as const).map(([action, label]) => label + " " + controlActionShortcut(YOUTH_CONTROL_ACTIONS[action], props.bindings)).join(" · ")}</p>
+      </aside>}
+      {state.phase === "barracks" && !workshopActive && (workshop?.reports.length || state.firstWorkshopV176) &&
+        !state.medicompV172 && !effectivePaused ? <aside className={styles.fieldNotes} aria-label="Registre des ateliers">
+        <strong>{workshop?.reports.length ?? 0} / {YOUTH_WORKSHOP_LESSONS.length} ateliers consignés</strong>
+        <p>{workshopCanOpen(workshop) ? "La porte gauche ouvre l’atelier suivant." : "Les exercices de cette série sont consignés."}</p>
+        {!workshop?.reports.length && state.firstWorkshopV176 && <p>Premier atelier · {YOUTH_WORKSHOP_LESSONS[state.firstWorkshopV176 === "blades" ? 1 : 0].title}</p>}
+        {workshop?.maskProfile && <>
+          <p>Auprès de la porte, Frappe règle le masque en contraste et Lame élargit la lecture.</p>
+          <p>Profil du masque · {workshop.maskProfile === "wide" ? "lecture large" : "contraste"}</p>
+        </>}
+      </aside> : null}
+      {state.phase === "barracks" && !workshopActive && state.medicompV172 && !effectivePaused && <aside className={styles.fieldNotes} aria-label="Medicomp d’exercice" data-youth-medicomp-status>
+        <strong>Charges restantes · {youthMedicompCharges(state.medicompV172)} / 3</strong>
+        <progress max={YOUTH_MEDICOMP.duration} value={state.medicompV172.treatedTicks} aria-label="Soin de la plaie d’exercice" />
+        {state.medicompV172.route !== "unchecked" && <p>{state.medicompV172.route === "prepared" ? "Sortie préparée avant le soin." : "Sortie vérifiée pendant l’alerte."}</p>}
+      </aside>}
       {state.phase === "desert-tracks" && <aside className={styles.fieldNotes} aria-label="Carnet de terrain" data-youth-field-notes>
         <strong>Observation : {state.desert?.clues ?? 0} / 3</strong>
         <progress max={YOUTH_DESERT_SCAN_TICKS} value={state.desert?.scanTicks ?? 0} aria-label="Examen de l’indice proche" />
@@ -226,7 +266,7 @@ export default function YouthTrainingScreen(props: YouthTrainingScreenProps) {
     {(saveError || props.persistenceError || pending) && <div className={styles.saveError} role={saveError || props.persistenceError ? "alert" : "status"}><p>{props.persistenceError || saveError || "Enregistrement de l’étape gagnée…"}</p>{pending && !saving && !paused && <button type="button" onClick={() => void submitProgress()}>Réessayer l’enregistrement</button>}</div>}
     {state.phase === "armory" && !effectivePaused && !pending && <div className={styles.choices}><p>Choisissez la teinte de votre lien, puis rejoignez le poste pour recevoir le biomask. Il sera conservé pour la sortie ; les exercices restent sans masque. Manette : croix haut/bas pour choisir.</p>{(["ochre", "ash", "rust"] as const).map((choice, index) => <button type="button" key={choice} data-youth-choice={choice} aria-pressed={state.cosmetic === choice} onClick={() => choose(choice)}>{["Ocre", "Cendre", "Rouille"][index]}</button>)}</div>}
     {state.phase === "camp-defeat" && !effectivePaused && !pending && <div className={styles.choices}><p>Entraînement non létal. Les exercices déjà réussis restent acquis.</p><button type="button" onClick={() => pulse("retry")}>Réessayer le combat du camp</button></div>}
-    {state.phase === "morning" && !pending && <div className={styles.choices}><p>La formation et le repos sont enregistrés. Le maître prépare une reconnaissance accompagnée du désert ; vous ne possédez pas encore de vaisseau.</p><button type="button" data-youth-departure disabled={saving || effectivePaused} onClick={() => { pulse("confirm"); canvasRef.current?.focus(); }}>Partir vers le désert avec le maître</button><button type="button" disabled={saving || !props.onReturnToCity} onClick={() => void returnToCity()}>Revenir dans la cité au matin</button></div>}
+    {state.phase === "morning" && !pending && <div className={styles.choices}><p>{state.medicompV172?.stage === "complete" ? "Le soin dans l’abri est consigné. " : ""}La formation et le repos sont enregistrés. Le maître prépare une reconnaissance accompagnée du désert ; vous ne possédez pas encore de vaisseau.</p><button type="button" data-youth-departure disabled={saving || effectivePaused} onClick={() => { pulse("confirm"); canvasRef.current?.focus(); }}>Partir vers le désert avec le maître</button><button type="button" disabled={saving || !props.onReturnToCity} onClick={() => void returnToCity()}>Revenir dans la cité au matin</button></div>}
     {state.phase === "desert-complete" && !pending && <div className={styles.choices}><p>Le maître a reçu les trois observations et vous êtes revenu au camp. Cette sortie ne valide aucune chasse autonome. La patrouille permet ensuite de choisir le premier duel de la petite Fosse.</p><button type="button" data-youth-patrol-departure disabled={saving || effectivePaused} onClick={() => { pulse("confirm"); canvasRef.current?.focus(); }}>Poursuivre la patrouille avec le maître</button><button type="button" disabled={saving || !props.onReturnToCity} onClick={() => void returnToCity()}>Revenir dans la cité après la sortie</button></div>}
     {state.phase === "patrol-defeat" && !effectivePaused && !pending && <div className={styles.choices}><p>Le maître a mis le groupe à l’abri. Les haltes et observations déjà enregistrées restent acquises.</p><button type="button" data-youth-patrol-retry onClick={() => { pulse("retry"); canvasRef.current?.focus(); }}>Réessayer la rencontre territoriale</button></div>}
     {state.phase === "patrol-complete" && !pending && <div className={styles.choices}><p>{state.patrol && youthPatrolAssessment(state.patrol)}</p><p>Patrouille et retour enregistrés. La petite Fosse du quartier pauvre propose un duel de novices ; ce départ reste ton choix.</p><button type="button" data-youth-cage-departure disabled={saving || effectivePaused} onClick={() => { pulse("confirm"); canvasRef.current?.focus(); }}>Découvrir la petite Fosse de jeunesse</button><button type="button" disabled={saving || !props.onReturnToCity} onClick={() => void returnToCity()}>Revenir dans la cité après la patrouille</button></div>}

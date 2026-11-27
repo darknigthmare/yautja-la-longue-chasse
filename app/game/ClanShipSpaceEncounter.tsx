@@ -25,6 +25,7 @@ import styles from './ClanShipSpaceEncounter.module.css';
 export interface ClanShipSpaceEncounterProps {
   encounter: Encounter;
   onCommand: (command: ClanShipSpaceCommand) => boolean;
+  allowedOrders?: readonly ClanShipSpaceOrder[];
   suspended?: boolean;
   onClose?: () => void;
   campaign?: ClanShipMaintenanceCampaign;
@@ -107,7 +108,7 @@ function TacticalProjection({ encounter }: { encounter: Encounter }) {
 }
 
 /** Controlled view only: the owning campaign confirms every accepted turn. */
-export default function ClanShipSpaceEncounter({ encounter, onCommand, suspended = false, onClose, campaign }: ClanShipSpaceEncounterProps) {
+export default function ClanShipSpaceEncounter({ encounter, onCommand, suspended = false, onClose, campaign, allowedOrders }: ClanShipSpaceEncounterProps) {
   const headingId = useId();
   const [failedCommand, setFailedCommand] = useState(false);
   const issuedSnapshot = useRef<Encounter | null>(null);
@@ -181,7 +182,7 @@ export default function ClanShipSpaceEncounter({ encounter, onCommand, suspended
     </details>}
     {active ? <fieldset className={styles.commands} disabled={suspended}>
       <legend>Ordres tactiques</legend>
-      {CLAN_SHIP_SPACE_ORDERS.map(order => {
+      {CLAN_SHIP_SPACE_ORDERS.filter(order => !allowedOrders || allowedOrders.includes(order)).map(order => {
         const availability = clanShipSpaceOrderAvailability(encounter, order);
         const preview = availability.available ? previewClanShipSpaceOrder(encounter, order) : null;
         const energyChange = preview?.energyChange ?? (order === 'brace' || order === 'recharge'

@@ -17,6 +17,7 @@ function menu(initialEntry){
   if(name.includes('useMenuGamepad'))return{useMenuGamepad(_root,_enabled,_key,back){padBack=back;}};
   if(name.includes('CloudAccount'))return{openCloudAccountV71:()=>calls.push(['account'])};
   if(name.includes('mainMenuModes'))return{MAIN_MENU_MODE_LABELS_V81:{'the-pit':'The Pit','game-reserve':'Game Reserve Planet'}};
+  if(name.includes('originsV151'))return{LEGACY_DEFAULT_ORIGIN_V151:'O6',ORIGINS_V151:['O1','O2','O3','O4','O5','O6'].map(id=>({id,title:id,promise:''}))};
   return{default:{}};
  }});
  const record=name=>(...args)=>calls.push([name,...args]);

@@ -1,7 +1,5 @@
 import { nextBibleTierV166, type BibleHonorTierV166 } from "./honorProgressionV166";
-import { rankTrialViewsV168, type RankTrialViewV168 } from "./rankTrialsV168";
-import { evaluateBuriedCradleAccess } from "./buriedCradleCampaign";
-import { evaluateClanShipAccess } from "./clanShipOperations";
+import { honorForCampaignRankV169 } from "./honorSourcesV169";
 import { archiveTransferPending } from "./archiveTransferGuard";
 import { normalizeSave, parseSaveImport, RANK_THRESHOLDS, SAVE_STORAGE_KEY } from "../save";
 import {
@@ -81,12 +79,14 @@ export type ShipLoadoutSlotId =
   | "hunt-3"
   | "hunt-4";
 
-export type TrainingDisciplineId =
+type StandardTrainingDisciplineId =
   | "targeting"
   | "wristblades"
   | "cloaking"
   | "mobility"
   | "honor-duel";
+
+export type TrainingDisciplineId = StandardTrainingDisciplineId | "clan-hunt";
 
 export type MedbayTreatmentId =
   | "minor-wounds"
@@ -152,7 +152,7 @@ export interface ShipProgressionState {
   trophies: TrophyWorkshopRecord[];
   displaySlots: TrophyDisplaySlot[];
   loadoutPresets: ShipLoadoutPreset[];
-  training: Record<TrainingDisciplineId, TrainingRecord>;
+  training: Record<StandardTrainingDisciplineId, TrainingRecord> & { "clan-hunt"?: TrainingRecord };
   medbay: MedbayProgress;
 }
 
@@ -180,11 +180,6 @@ export interface ClanProgressSnapshot {
    * jeu ou non), ou null après Black God (40 000).
    */
   nextBibleTier: BibleHonorTierV166 | null;
-  /**
-   * V168 : épreuves de rang (Blooded, Elite, Elder). Le seuil débloque
-   * l'épreuve ; seule l'épreuve réussie fait monter.
-   */
-  rankTrialsV168: RankTrialViewV168[];
   prestige: number;
   completedRites: RiteProgress[];
   pendingRites: RiteProgress[];
@@ -236,6 +231,7 @@ export const TRAINING_LABELS: Readonly<
   cloaking: "Approche camouflée",
   mobility: "Mobilité verticale",
   "honor-duel": "Duel d’honneur",
+  "clan-hunt": "Simulation de chasse du clan",
 };
 
 const LOADOUT_SLOT_IDS: readonly ShipLoadoutSlotId[] = [
@@ -245,7 +241,7 @@ const LOADOUT_SLOT_IDS: readonly ShipLoadoutSlotId[] = [
   "hunt-4",
 ];
 
-const TRAINING_IDS: readonly TrainingDisciplineId[] = [
+export const STANDARD_TRAINING_IDS: readonly StandardTrainingDisciplineId[] = [
   "targeting",
   "wristblades",
   "cloaking",
@@ -350,22 +346,18 @@ function cloneAppearance(appearance: HunterAppearance): HunterAppearance {
   return { ...appearance };
 }
 
-function defaultTraining(): Record<
-  TrainingDisciplineId,
-  TrainingRecord
-> {
+function emptyTrainingRecord(disciplineId: TrainingDisciplineId): TrainingRecord {
+  return { disciplineId, attempts: 0, bestScore: 0, lastScore: 0, lastCompletedAt: null };
+}
+
+function defaultTraining(): ShipProgressionState["training"] {
   return Object.fromEntries(
-    TRAINING_IDS.map((disciplineId) => [
-      disciplineId,
-      {
-        disciplineId,
-        attempts: 0,
-        bestScore: 0,
-        lastScore: 0,
-        lastCompletedAt: null,
-      },
-    ]),
-  ) as Record<TrainingDisciplineId, TrainingRecord>;
+    STANDARD_TRAINING_IDS.map(id => [id, emptyTrainingRecord(id)]),
+  ) as ShipProgressionState["training"];
+}
+
+export function shipTrainingRecord(state: ShipProgressionState, disciplineId: TrainingDisciplineId): TrainingRecord {
+  return state.training[disciplineId] ?? emptyTrainingRecord(disciplineId);
 }
 
 function defaultDisplaySlots(
@@ -847,30 +839,23 @@ function normalizeLoadoutPreset(
   };
 }
 
-function normalizeTraining(
-  source: unknown,
-): Record<TrainingDisciplineId, TrainingRecord> {
+function normalizeTraining(source: unknown): ShipProgressionState["training"] {
   const record = isRecord(source) ? source : {};
-  return Object.fromEntries(
-    TRAINING_IDS.map((disciplineId) => {
-      const raw = isRecord(record[disciplineId])
-        ? record[disciplineId]
-        : {};
-      return [
-        disciplineId,
-        {
-          disciplineId,
-          attempts: nonNegativeInteger(raw.attempts, 0),
-          bestScore: clamp(nonNegativeInteger(raw.bestScore, 0), 0, 100),
-          lastScore: clamp(nonNegativeInteger(raw.lastScore, 0), 0, 100),
-          lastCompletedAt:
-            raw.lastCompletedAt === null
-              ? null
-              : validIsoDate(raw.lastCompletedAt, "") || null,
-        },
-      ];
-    }),
-  ) as Record<TrainingDisciplineId, TrainingRecord>;
+  const ids: readonly TrainingDisciplineId[] = Object.hasOwn(record, "clan-hunt")
+    ? [...STANDARD_TRAINING_IDS, "clan-hunt"]
+    : STANDARD_TRAINING_IDS;
+
+  return Object.fromEntries(ids.map(disciplineId => {
+    const value = record[disciplineId];
+    const raw = isRecord(value) ? value : {};
+    return [disciplineId, {
+      disciplineId,
+      attempts: nonNegativeInteger(raw.attempts, 0),
+      bestScore: clamp(nonNegativeInteger(raw.bestScore, 0), 0, 100),
+      lastScore: clamp(nonNegativeInteger(raw.lastScore, 0), 0, 100),
+      lastCompletedAt: validIsoDate(raw.lastCompletedAt, "") || null,
+    }];
+  })) as ShipProgressionState["training"];
 }
 
 function normalizeMedbay(source: unknown, now: string): MedbayProgress {
@@ -1434,9 +1419,9 @@ export function recordTrainingResult(
   score: number,
   now = new Date().toISOString(),
 ): ShipProgressionState {
-  if (!TRAINING_IDS.includes(disciplineId)) return state;
+  if (!Object.hasOwn(TRAINING_LABELS, disciplineId)) return state;
   const normalizedScore = clamp(Math.round(finiteNumber(score, 0)), 0, 100);
-  const previous = state.training[disciplineId];
+  const previous = shipTrainingRecord(state, disciplineId);
   return {
     ...state,
     updatedAt: now,
@@ -1542,7 +1527,7 @@ export function evaluateClanProgression(
     nextThreshold === null
       ? 1
       : clamp(
-          (save.profile.honor - currentThreshold) /
+          (honorForCampaignRankV169(save.profile.honor, save.honorSourcesV169) - currentThreshold) /
             Math.max(1, nextThreshold - currentThreshold),
           0,
           1,
@@ -1561,8 +1546,8 @@ export function evaluateClanProgression(
   const displayedTrophies = state.trophies.filter(
     ({ stage }) => stage === "displayed",
   ).length;
-  const trainingMastery = Object.values(state.training).reduce(
-    (total, record) => total + record.bestScore,
+  const trainingMastery = STANDARD_TRAINING_IDS.reduce(
+    (total, id) => total + state.training[id].bestScore,
     0,
   );
 
@@ -1576,10 +1561,6 @@ export function evaluateClanProgression(
     honorForNextRank: nextThreshold,
     rankProgress,
     nextBibleTier: nextBibleTierV166(save.profile.honor),
-    rankTrialsV168: rankTrialViewsV168(save, {
-      cradleMissing: evaluateBuriedCradleAccess(save, state.selectedShipId, state.unlockedShipIds).missing,
-      triadAccess: evaluateClanShipAccess(save),
-    }),
     prestige: Math.round(
       save.profile.honor +
         save.profile.clanMarks * 0.25 +

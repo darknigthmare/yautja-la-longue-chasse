@@ -20,7 +20,7 @@ Les conditions climatiques sont appliquées avant les équipes : pas de neige na
 
 Le protocole V126 prévoit des salons coopératifs, PvP clans et missions asynchrones. La V127 ajoute un match de test local 9×6 pour deux joueurs sur le même appareil : commande propriétaire, mouvement légal d'une case, tir en ligne de vue, couvert, brouillard de guerre, numéro de séquence anti-rejeu et occupation réelle de l'objectif pendant trois ticks.
 
-Le local PvP est un entraînement sur figurants de simulation : pas de serveur public, de matchmaking, de 4 contre 4 complet, d'authentification distante, de synchronisation multi-appareils, ni de gains de la campagne. Le vrai multijoueur devra avoir un hôte autoritaire, des comptes, un canal WebSocket, la validation serveur des mouvements et des inventaires, la reprise des déconnexions et des reçus persistants.
+Le panneau PvP de la Bible reste un entraînement local sur figurants. Le salon HTTP ci-dessous réutilise son terrain et ses règles dans un processus indépendant.
 
 ## Livrables et validation
 
@@ -31,4 +31,51 @@ Le local PvP est un entraînement sur figurants de simulation : pas de serveur p
 - tests/clan-war-metric-encounters-v127.test.mjs et tests/clan-war-multiplayer-practice-v127.test.mjs.
 - scripts/export-clan-war-v127.mjs : CSV 6 000 profils et JSON complets par gameplay, plus ancrages Terre et audit.
 
-La CI GitHub de la PR #37 exécute les tests, le typage, le lint et publie l'archive. Le niveau 1:1 des bâtiments/films, l'IA générée réellement dans les cartes et le serveur multijoueur distant demeurent **à construire**, en respectant la chronologie, les sources géographiques et les droits sur les assets.
+La CI GitHub de la PR #37 exécute les tests, le typage, le lint et publie l'archive. Le niveau 1:1 des bâtiments/films, l'IA générée réellement dans les cartes et le multijoueur de campagne demeurent **à construire**, en respectant la chronologie, les sources géographiques et les droits sur les assets.
+
+## Salon HTTP d’exercice à deux joueurs
+
+Le salon V127 héberge un duel de figurants sur le plateau existant. Le serveur contrôle le plateau, décide des ordres, avance le tick toutes les cinq secondes et transmet à chaque joueur sa vue. La manche dure au plus 60 ticks. Trois ticks consécutifs sur l’objectif donnent la victoire. À l’échéance, le total des ticks de contrôle départage les camps et un total identique donne un nul. Un repli du seul pion d’un camp donne la victoire à l’autre. Les deux joueurs reçoivent le même résultat final. Deux connexions authentifiées peuvent jouer chacune pour son camp dans la même manche. Après une coupure du client, la même clé redonne accès à l’état conservé en mémoire par le processus.
+
+Depuis la racine du dépôt avec Node 22 et les dépendances installées, générez deux clés de session indépendantes et démarrez le salon.
+
+```sh
+export YAUTJA_CLAN_PRACTICE_HUNTER_TOKEN=$(node -p 'require("node:crypto").randomBytes(32).toString("base64url")')
+export YAUTJA_CLAN_PRACTICE_RIVAL_TOKEN=$(node -p 'require("node:crypto").randomBytes(32).toString("base64url")')
+node scripts/serve-clan-war-practice-v127.mjs
+```
+
+Transmettez à chaque joueur la clé de son camp par un canal privé. Dans son terminal, le joueur charge sa clé dans `YAUTJA_CLAN_PRACTICE_TOKEN`. Il peut ensuite lire le plateau et déplacer son pion sur une case adjacente.
+
+```sh
+node scripts/play-clan-war-practice-v127.mjs state
+node scripts/play-clan-war-practice-v127.mjs move 2 1
+```
+
+Pour un rival en position initiale, la case adjacente vers le centre est `6 1`. Le client accepte aussi `attack x y`, `hold` et `retreat`. Après un conflit de révision, relisez le plateau avant de confirmer un nouvel ordre.
+
+Le processus écoute sur `127.0.0.1:8787` (`YAUTJA_CLAN_PRACTICE_PORT` pour choisir un autre port). Si l’hébergeur configure un proxy HTTPS, les joueurs peuvent y accéder via `YAUTJA_CLAN_PRACTICE_URL`. `YAUTJA_CLAN_PRACTICE_TURN_LIMIT` permet de choisir une durée de 2 à 20 000 ticks. Le site et le panneau local ne démarrent aucun processus de salon.
+
+La recette est `node --test tests/clan-war-practice-server-v127.test.mjs`. Elle ouvre un socket TCP et vérifie le contrôle de deux identités, le masquage, le refus de requêtes invalides, les séquences, la concurrence, la lecture après réouverture de connexion et le tick serveur.
+
+Le salon V127 applique l’arbitrage de `CW130-NET-013` à son duel d’exercice. Les critères de coopération `CW130-NET-004` et `CW130-NET-005` restent ouverts. Le service WebSocket public, les comptes de campagne, la persistance SQL, les reçus et l’horloge signés, ainsi que la recette sur deux appareils restent à réaliser. Pour retrouver le duel et son règlement après un redémarrage, définis `YAUTJA_CLAN_PRACTICE_STATE_DIRECTORY` sur un dossier local privé conservé entre les relances et garde les mêmes clés configurées. Le premier tick après reprise repart du chronomètre du serveur. En l’absence de ce dossier, chaque démarrage ouvre une manche.
+
+## Assaut coopératif V115
+
+Le salon coopératif réutilise l’assaut V115 et les détachements réels de la Bible V6. Les deux à quatre joueurs disposent chacun de leur propre équipe et de la même réserve d’AP/RAV. Le premier jeton désigne le commandant, seul habilité à lancer l’assaut après la confirmation de tous et à acheter l’amélioration d’AP. Le moteur vérifie la route et le total des PC, débite les RAV au départ et traite les renforts un par un sur l’aire commune.
+
+Fournissez un tableau JSON de deux à quatre clés distinctes dans `YAUTJA_CLAN_COOP_TOKENS`. Le serveur écoute sur `127.0.0.1:8788`. `YAUTJA_CLAN_COOP_PORT` permet de changer le port et `YAUTJA_CLAN_COOP_TARGET` de sélectionner un territoire V6 praticable pour les équipes attribuées.
+
+```sh
+node scripts/serve-clan-war-assault-coop-v115.mjs
+```
+
+Dans chaque terminal joueur, utilisez la clé attribuée dans `YAUTJA_CLAN_PRACTICE_TOKEN`. Après la commande `ready` de chaque joueur, le commandant donne `launch`. Chaque joueur peut ensuite donner `deploy`, `cloak`, `hold` ou `withdraw` à son équipe.
+
+```sh
+export YAUTJA_CLAN_PRACTICE_URL=http://127.0.0.1:8788
+node scripts/play-clan-war-practice-v127.mjs state
+node scripts/play-clan-war-practice-v127.mjs ready
+```
+
+Si l’aire de départ est occupée, patientez jusqu’à son dégagement. Le refus conserve les AP. Le salon qualifie la boucle de `CW130-NET-003` en exercice hébergé. Les comptes de campagne, le matchmaking, la reprise après redémarrage du serveur et la validation sur appareils distincts restent à réaliser.

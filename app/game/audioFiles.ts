@@ -8,7 +8,7 @@ export interface AudioDiagnostic extends AudioManifestEntry { state: AudioFileSt
 type Graph = { context: AudioContext; effects: GainNode; music: GainNode };
 type CachedEffect = { state: AudioFileState; buffer?: AudioBuffer; source?: string; failedAt?: number; attempts: number; fallbackUsed: boolean };
 type Stream = { audio: HTMLAudioElement; source: MediaElementAudioSourceNode; gain: GainNode; dispose(): void };
-type Channel = { id: string | null; serial: number; pending: boolean; stream: Stream | null; controller: AbortController | null; onReady?: () => void; onUnavailable?: () => void; fade: number };
+type Channel = { id: string | null; serial: number; pending: boolean; stream: Stream | null; controller: AbortController | null; onReady?: () => void; onUnavailable?: () => void; onEnded?: () => void; fade: number };
 const TIMEOUT_MS = 8_000;
 const RETRY_MS = 60_000;
 const clamp = (n: number, low: number, high: number) => Math.min(high, Math.max(low, Number.isFinite(n) ? n : low));
@@ -71,7 +71,7 @@ export class OptionalAudioFiles {
     for (const category of ["ambience", "music"] as const) {
       const channel = this.channels[category];
       if (channel.id && this.loopStates.get(`${category}/${channel.id}`)?.state === "blocked") {
-        void this.startLoop(category, channel.id, channel.fade, channel.onReady, channel.onUnavailable);
+        void this.startLoop(category, channel.id, channel.fade, channel.onReady, channel.onUnavailable, channel.onEnded);
       }
     }
     if (process.env.NODE_ENV === "development" && !this.refreshTimer) {
@@ -107,7 +107,7 @@ export class OptionalAudioFiles {
           stream.dispose(); channel.stream = null;
         });
       } else if (channel.id) {
-        void this.startLoop(category, channel.id, channel.fade, channel.onReady, channel.onUnavailable);
+        void this.startLoop(category, channel.id, channel.fade, channel.onReady, channel.onUnavailable, channel.onEnded);
       }
     }
   }
@@ -136,7 +136,7 @@ export class OptionalAudioFiles {
           for (const category of ["ambience", "music"] as const) {
             const previous = { ...this.channels[category] };
             this.stopLoop(category, .2);
-            if (previous.id) void this.startLoop(category, previous.id, previous.fade, previous.onReady, previous.onUnavailable);
+            if (previous.id) void this.startLoop(category, previous.id, previous.fade, previous.onReady, previous.onUnavailable, previous.onEnded);
           }
         }
       } catch { /* Optional inventory cannot block a scene. */ }
@@ -200,6 +200,14 @@ export class OptionalAudioFiles {
     state.state = "unusable"; state.failedAt = Date.now();
   }
 
+  getRecordedSfx(id: string): AudioBuffer | null {
+    if (this.disposed || this.paused || this.graph()?.context.state !== "running") return null;
+    const state = this.effects.get(id);
+    if (state?.state === "ready" && state.buffer) return state.buffer;
+    void this.loadEffect(id);
+    return null;
+  }
+
   /** Synchronous dispatch: a loading source only benefits future events. */
   playSfx(id: string, intensity = 1): boolean {
     const graph = this.graph();
@@ -227,11 +235,13 @@ export class OptionalAudioFiles {
     const channel = this.channels[category]; return channel.stream ? channel.id : null;
   }
 
-  async startLoop(category: "ambience" | "music", id: string, fade = .6, onReady?: () => void, onUnavailable?: () => void): Promise<void> {
+  async startLoop(category: "ambience" | "music", id: string, fade = .6,
+    onReady?: () => void, onUnavailable?: () => void, onEnded?: () => void): Promise<void> {
     if (this.disposed) return;
     const channel = this.channels[category];
-    channel.onReady = onReady; channel.onUnavailable = onUnavailable;
-    if (channel.id === id && (channel.pending || channel.stream)) return;
+    const samePlayback = channel.id === id && Boolean(channel.onEnded) === Boolean(onEnded);
+    channel.onReady = onReady; channel.onUnavailable = onUnavailable; channel.onEnded = onEnded;
+    if (samePlayback && (channel.pending || channel.stream)) return;
     this.stopLoop(category, fade);
     channel.id = id; channel.fade = clamp(fade, 0, 5); channel.pending = true;
     if (this.paused) { channel.pending = false; return; }
@@ -246,7 +256,7 @@ export class OptionalAudioFiles {
     this.loopStates.set(key, state);
     for (const candidate of this.candidates(entry)) {
       const controller = new AbortController(); channel.controller = controller;
-      const audio = document.createElement("audio"); audio.preload = "auto"; audio.loop = true; audio.src = candidate.url;
+      const audio = document.createElement("audio"); audio.preload = "auto"; audio.loop = !onEnded; audio.src = candidate.url;
       const gain = graph.context.createGain(); gain.gain.value = 0;
       let source: MediaElementAudioSourceNode | null = null;
       const clean = () => { audio.pause(); audio.removeAttribute("src"); audio.load(); source?.disconnect(); gain.disconnect(); };
@@ -271,8 +281,19 @@ export class OptionalAudioFiles {
           if (channel.stream?.audio !== audio) return;
           state.state = "unusable"; state.failedAt = Date.now(); channel.stream.dispose(); channel.stream = null; channel.onUnavailable?.();
         };
+        const ended = () => {
+          if (channel.stream?.audio !== audio || !channel.onEnded) return;
+          const complete = channel.onEnded;
+          this.stopLoop(category, 0);
+          complete();
+        };
         audio.addEventListener("error", error);
-        channel.stream = { audio, source, gain, dispose: () => { audio.removeEventListener("error", error); clean(); } };
+        if (onEnded) audio.addEventListener("ended", ended);
+        channel.stream = { audio, source, gain, dispose: () => {
+          audio.removeEventListener("error", error);
+          audio.removeEventListener("ended", ended);
+          clean();
+        } };
         channel.pending = false; channel.controller = null; state.state = "ready"; state.source = candidate.url;
         gain.gain.setValueAtTime(0, graph.context.currentTime); gain.gain.linearRampToValueAtTime(1, graph.context.currentTime + channel.fade);
         channel.onReady?.(); return;

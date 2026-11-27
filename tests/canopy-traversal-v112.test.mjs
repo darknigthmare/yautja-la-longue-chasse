@@ -65,6 +65,32 @@ test("pumping and length adjustment remain finite, bounded and charge stamina on
   assert.throws(()=>runtime.stepCanopySwingV112(swing,actor,support,{moveAxis:0,climbAxis:0},.251,[],624),/delta/);
 });
 
+test("cargo slows reeling and the minimum and maximum stops charge only for holding",()=>{
+  const swing=runtime.attachCanopySwingV112(body,support);
+  const down={moveAxis:0,climbAxis:1};
+  const empty=runtime.stepCanopySwingV112(swing,body,support,down,.25,[],624);
+  const loaded=runtime.stepCanopySwingV112(swing,body,support,down,.25,[],624,1.6,.68);
+  close(empty.swing.length-swing.length,20);
+  close(loaded.swing.length-swing.length,13.6);
+  close(empty.staminaCost,2);
+  close(loaded.staminaCost,3.2);
+
+  for(const [length,axis] of [[runtime.CANOPY_PHYSICS_V112.minimumLength,-1],[support.height,1]]){
+    const atStop={...swing,length};
+    const point=runtime.canopySwingPointV112(atStop,support);
+    const actor={...body,y:point.y-body.height*.28};
+    const held=runtime.stepCanopySwingV112(atStop,actor,support,{moveAxis:0,climbAxis:axis},.25,[],624,1.6,.68);
+    close(held.swing.length,length);
+    close(held.staminaCost,1.6);
+  }
+
+  const nearStop={...swing,length:support.height-1};
+  const point=runtime.canopySwingPointV112(nearStop,support);
+  const partial=runtime.stepCanopySwingV112(nearStop,{...body,y:point.y-body.height*.28},support,down,.25,[],624,1.6,.68);
+  close(partial.swing.length,support.height);
+  close(partial.staminaCost,1.6+4*1.6/(80*.68));
+});
+
 test("release exports tangent velocity, including downward motion, without adding a boost",()=>{
   for(const angle of [-.8,0,.8]){
     const swing={supportId:support.id,length:220,angle,angularVelocity:2};
@@ -85,6 +111,35 @@ test("swept swing stops at a thin solid wall and releases rather than crossing o
   assert.ok(next.body.x+body.width<=wall.x+1e-5);
   assert.equal(runtime.canopySegmentClearV112({x:10,y:10},{x:200,y:10},[platform(90,0,2,40)]),false);
   assert.equal(runtime.canopySegmentClearV112({x:10,y:10},{x:200,y:10},[platform(90,0,2,40,"one-way")]),true);
+});
+
+test("grab and swing use the rope path as well as the actor's collision box",()=>{
+  const snag=platform(334,180,3,30);
+  const swing={supportId:support.id,length:220,angle:0,angularVelocity:3};
+  const grip=runtime.canopySwingPointV112(swing,support);
+  const actor={...body,x:grip.x-body.width/2,y:grip.y-body.height*.28};
+  const overhead=platform(grip.x-10,180,20,30);
+  assert.equal(runtime.canopySupportReachableV112(actor,support,[overhead]),true,
+    "the hunter can still climb beside the support");
+  assert.equal(runtime.attachCanopySwingV112(actor,support,[overhead]),null,
+    "a rope obstructed near its anchor cannot start a swing");
+
+  const next=runtime.stepCanopySwingV112(swing,actor,support,{moveAxis:1,climbAxis:0},.15,[snag],624);
+  assert.equal(next.detached,true);
+  assert.ok(next.body.x>actor.x && next.body.y>snag.y+snag.height,
+    "the obstacle touches the rope while the hunter is below it");
+  const lastGrip=runtime.canopySwingPointV112(next.swing,support);
+  assert.ok(runtime.canopySegmentClearV112({x:grip.x,y:support.y},lastGrip,[snag]));
+  close(next.body.x+body.width/2,lastGrip.x);
+  close(next.body.y+body.height*.28,lastGrip.y);
+  close(next.body.velocityX,runtime.releaseCanopySwingV112(next.swing).velocityX);
+});
+
+test("swing physics and stamina share the same bounded axes",()=>{
+  const swing=runtime.attachCanopySwingV112(body,support);
+  const normal=runtime.stepCanopySwingV112(swing,body,support,{moveAxis:1,climbAxis:-1},.05,[],624);
+  const saturated=runtime.stepCanopySwingV112(swing,body,support,{moveAxis:100,climbAxis:-100},.05,[],624);
+  assert.deepEqual(saturated,normal);
 });
 
 test("support reach checks reject remote or wall-separated grips and malformed suspended state",()=>{

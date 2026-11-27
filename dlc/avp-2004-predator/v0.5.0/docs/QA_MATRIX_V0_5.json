@@ -1,0 +1,45 @@
+{
+  "version": "0.5.0",
+  "generatedAt": "2026-09-30",
+  "automated": [
+    {
+      "name": "verify",
+      "status": "PASS",
+      "details": "structure, counts, required flags, standalone contract"
+    },
+    {
+      "name": "all-beats-smoke",
+      "status": "PASS",
+      "details": "106/106 beats loaded and render() invoked"
+    },
+    {
+      "name": "progression-smoke",
+      "status": "PASS",
+      "details": "106/106 campaign beats completed to campaign_complete"
+    },
+    {
+      "name": "migration-smoke",
+      "status": "PASS",
+      "details": "v0.4 profile migrates to v0.5"
+    },
+    {
+      "name": "runtime-smoke",
+      "status": "PASS",
+      "details": "Quinn, Stafford, Weyland, Grid, blooding, Lex ally, Queen weapon sequence, ending"
+    },
+    {
+      "name": "installer-smoke",
+      "status": "PASS",
+      "details": "install/update/remove on temporary Tantalus shell"
+    },
+    {
+      "name": "graph-smoke",
+      "status": "PASS",
+      "details": "95 rooms, 119 bidirectional edges, 105 story transitions"
+    }
+  ],
+  "browserVisual": {
+    "status": "BLOCKED_ENVIRONMENT",
+    "details": "Chromium headless timed out (exit 124) before producing a screenshot; report images are labeled static control renders."
+  }
+}

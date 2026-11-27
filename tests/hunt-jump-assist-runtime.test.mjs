@@ -64,6 +64,7 @@ function fixture({ boost = false, missionId = "jungle-vey" } = {}) {
   const environment = {
     ...runtime, input, game: state, mission, loadout: save.loadout, inventory: save.inventory,
     appearance: save.appearance, difficulty: "hunter", reducedGore: false, screenShake: false,
+    hardcoreHunt: false,
     ecologyRunSeed: "jump-retry", activeBindings: runtime.DEFAULT_CONTROL_BINDINGS,
     Element: class Element {}, lastObservedPaused: false, lastTime: 0, accumulator: 0,
     lastObservedPhase: state.phase, lastPersistedElapsed: 0, lastPersistedCheckpointIndex: 0,

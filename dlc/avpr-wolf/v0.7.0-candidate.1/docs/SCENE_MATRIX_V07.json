@@ -1,0 +1,970 @@
+{
+  "version": "0.7.0-candidate.1",
+  "roomCount": 47,
+  "cinemaCount": 45,
+  "unratedCount": 47,
+  "hunterProtocol": {
+    "chainWindow": 6.5,
+    "maxChainBonus": 0.75,
+    "chainStep": 0.06,
+    "bossTelegraphSeconds": 0.62,
+    "bossSpecialCooldown": 3.2,
+    "alertMemorySeconds": 4.2
+  },
+  "rooms": [
+    {
+      "index": 0,
+      "id": "homeworld_signal",
+      "chapter": 0,
+      "chapterTitle": "LE SIGNAL",
+      "name": "Monde Yautja — chambre des trophées",
+      "fidelity": "screen",
+      "action": "interact",
+      "objective": "Recevoir le signal de détresse et ouvrir le Cleaner case.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 2,
+      "lockedWeapon": null,
+      "next": "homeworld_gear",
+      "fx": [],
+      "canonRequired": true
+    },
+    {
+      "index": 1,
+      "id": "homeworld_gear",
+      "chapter": 0,
+      "chapterTitle": "LE SIGNAL",
+      "name": "Monde Yautja — armement de Wolf",
+      "fidelity": "screen",
+      "action": "loadout",
+      "objective": "Valider l’équipement de nettoyage de Wolf.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 2,
+      "lockedWeapon": null,
+      "next": "homeworld_launch",
+      "fx": [],
+      "canonRequired": true
+    },
+    {
+      "index": 2,
+      "id": "homeworld_launch",
+      "chapter": 0,
+      "chapterTitle": "LE SIGNAL",
+      "name": "Plateforme de départ",
+      "fidelity": "reconstruction",
+      "action": "exit",
+      "objective": "Rejoindre l’appareil personnel de Wolf.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 2,
+      "lockedWeapon": null,
+      "next": "craft_transit",
+      "fx": [],
+      "canonRequired": false
+    },
+    {
+      "index": 3,
+      "id": "craft_transit",
+      "chapter": 1,
+      "chapterTitle": "DESCENTE",
+      "name": "Appareil de Wolf — transit",
+      "fidelity": "reconstruction",
+      "action": "interact",
+      "objective": "Synchroniser les coordonnées du crash à Gunnison.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 1,
+      "lockedWeapon": null,
+      "next": "crash_perimeter",
+      "fx": [],
+      "canonRequired": false
+    },
+    {
+      "index": 4,
+      "id": "crash_perimeter",
+      "chapter": 2,
+      "chapterTitle": "LE VAISSEAU ÉCRASÉ",
+      "name": "Forêt — périmètre du crash",
+      "fidelity": "screen",
+      "action": "scan",
+      "objective": "Repérer l’épave et les traces biologiques avec le matériel Yautja.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "wreck_exterior",
+      "fx": [
+        "fog",
+        "foliage"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 5,
+      "id": "wreck_exterior",
+      "chapter": 2,
+      "chapterTitle": "LE VAISSEAU ÉCRASÉ",
+      "name": "Scout ship — coque éventrée",
+      "fidelity": "screen",
+      "action": "cleanup",
+      "objective": "Dissoudre les traces et dépouilles visibles autour de l’épave.",
+      "enemyGroups": [],
+      "evidence": 3,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "wreck_biomask",
+      "fx": [],
+      "canonRequired": true
+    },
+    {
+      "index": 6,
+      "id": "wreck_biomask",
+      "chapter": 2,
+      "chapterTitle": "LE VAISSEAU ÉCRASÉ",
+      "name": "Scout ship — compartiment des morts",
+      "fidelity": "unrated",
+      "action": "unrated_interact",
+      "objective": "Porter le biomask du Predator mort et consulter l’enregistrement.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 2,
+      "lockedWeapon": null,
+      "next": "wreck_trace",
+      "fx": [],
+      "canonRequired": true
+    },
+    {
+      "index": 7,
+      "id": "wreck_trace",
+      "chapter": 2,
+      "chapterTitle": "LE VAISSEAU ÉCRASÉ",
+      "name": "Scout ship — piste du facehugger",
+      "fidelity": "screen",
+      "action": "scan",
+      "objective": "Analyser la trace laissée par les facehuggers.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 2,
+      "lockedWeapon": null,
+      "next": "wreck_core",
+      "fx": [],
+      "canonRequired": true
+    },
+    {
+      "index": 8,
+      "id": "wreck_core",
+      "chapter": 2,
+      "chapterTitle": "LE VAISSEAU ÉCRASÉ",
+      "name": "Scout ship — noyau de destruction",
+      "fidelity": "screen",
+      "action": "interact",
+      "objective": "Armer la destruction de l’appareil avant de quitter le site.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 2,
+      "lockedWeapon": null,
+      "next": "forest_buddy",
+      "fx": [],
+      "canonRequired": true
+    },
+    {
+      "index": 9,
+      "id": "forest_buddy",
+      "chapter": 3,
+      "chapterTitle": "PREMIÈRES TRACES",
+      "name": "Forêt — zone de chasse",
+      "fidelity": "screen",
+      "action": "cleanup",
+      "objective": "Dissoudre Buddy, Sam et les Facehuggers morts avant l’arrivée de Ray.",
+      "enemyGroups": [],
+      "evidence": 4,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "forest_ray",
+      "fx": [
+        "fog",
+        "foliage"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 10,
+      "id": "forest_ray",
+      "chapter": 3,
+      "chapterTitle": "PREMIÈRES TRACES",
+      "name": "Forêt — Deputy Ray",
+      "fidelity": "screen",
+      "action": "human_script",
+      "objective": "Neutraliser le témoin qui surprend Wolf puis effacer sa présence.",
+      "enemyGroups": [],
+      "evidence": 1,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "sewer_access",
+      "fx": [
+        "fog",
+        "foliage"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 11,
+      "id": "sewer_access",
+      "chapter": 4,
+      "chapterTitle": "SOUS GUNNISON",
+      "name": "Égouts — accès de maintenance",
+      "fidelity": "screen",
+      "action": "scan",
+      "objective": "Tracer la contamination jusqu’au réseau souterrain.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "sewer_bodies",
+      "fx": [
+        "steam"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 12,
+      "id": "sewer_bodies",
+      "chapter": 4,
+      "chapterTitle": "SOUS GUNNISON",
+      "name": "Égouts — chambre des victimes",
+      "fidelity": "screen",
+      "action": "cleanup",
+      "objective": "Dissoudre les corps abandonnés par l’infestation.",
+      "enemyGroups": [],
+      "evidence": 5,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "sewer_traps",
+      "fx": [
+        "steam"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 13,
+      "id": "sewer_traps",
+      "chapter": 4,
+      "chapterTitle": "SOUS GUNNISON",
+      "name": "Égouts — corridor d’embuscade",
+      "fidelity": "screen",
+      "action": "mine_ambush",
+      "objective": "Tendre les mines laser et éliminer les deux Xénomorphes de l’embuscade.",
+      "enemyGroups": [
+        [
+          "xeno",
+          2
+        ]
+      ],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "sewer_wave",
+      "fx": [
+        "steam"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 14,
+      "id": "sewer_wave",
+      "chapter": 4,
+      "chapterTitle": "SOUS GUNNISON",
+      "name": "Égouts — mêlée de nettoyage",
+      "fidelity": "reconstruction",
+      "action": "exit",
+      "objective": "Traverser le collecteur jusqu’au point de contact avec le Predalien.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "sewer_predalien",
+      "fx": [
+        "steam"
+      ],
+      "canonRequired": false
+    },
+    {
+      "index": 15,
+      "id": "sewer_predalien",
+      "chapter": 4,
+      "chapterTitle": "SOUS GUNNISON",
+      "name": "Égouts — premier Predalien",
+      "fidelity": "screen",
+      "action": "predalien_retreat",
+      "objective": "Survivre au choc du Predalien et constater sa fuite.",
+      "enemyGroups": [
+        [
+          "predalien_shadow",
+          1
+        ]
+      ],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "sewer_breakout",
+      "fx": [
+        "steam"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 16,
+      "id": "sewer_breakout",
+      "chapter": 4,
+      "chapterTitle": "SOUS GUNNISON",
+      "name": "Égouts — rupture du collecteur",
+      "fidelity": "screen",
+      "action": "power_punch_exit",
+      "objective": "Utiliser le Power Punch Glove pour percer la chaussée et remonter en ville.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": "gauntlet",
+      "next": "power_roof",
+      "fx": [
+        "steam"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 17,
+      "id": "power_roof",
+      "chapter": 5,
+      "chapterTitle": "PANNE GÉNÉRALE",
+      "name": "Centrale — structures extérieures",
+      "fidelity": "reconstruction",
+      "action": "exit",
+      "objective": "Suivre la piste jusqu’à la zone d’interférences de la centrale.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "power_heat",
+      "fx": [
+        "sparks"
+      ],
+      "canonRequired": false
+    },
+    {
+      "index": 18,
+      "id": "power_heat",
+      "chapter": 5,
+      "chapterTitle": "PANNE GÉNÉRALE",
+      "name": "Centrale — zone d’interférences",
+      "fidelity": "screen",
+      "action": "power_interference",
+      "objective": "Maintenir la poursuite malgré les émissions thermiques qui perturbent la visée.",
+      "enemyGroups": [
+        [
+          "xeno",
+          1
+        ]
+      ],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "power_blackout",
+      "fx": [
+        "sparks"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 19,
+      "id": "power_blackout",
+      "chapter": 5,
+      "chapterTitle": "PANNE GÉNÉRALE",
+      "name": "Centrale — blackout",
+      "fidelity": "screen",
+      "action": "script",
+      "objective": "Survivre à la chute et accepter la panne générale comme conséquence canonique.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 2,
+      "lockedWeapon": null,
+      "next": "school_approach",
+      "fx": [
+        "sparks"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 20,
+      "id": "school_approach",
+      "chapter": 6,
+      "chapterTitle": "EAU NOIRE",
+      "name": "Lycée — approche nocturne",
+      "fidelity": "reconstruction",
+      "action": "exit",
+      "objective": "Suivre la piste jusqu’à la piscine.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "pool_fight",
+      "fx": [
+        "blackout"
+      ],
+      "canonRequired": false
+    },
+    {
+      "index": 21,
+      "id": "pool_fight",
+      "chapter": 6,
+      "chapterTitle": "EAU NOIRE",
+      "name": "Lycée — piscine",
+      "fidelity": "screen",
+      "action": "fight",
+      "objective": "Tuer le Xénomorphe de la piscine avec le Combistick.",
+      "enemyGroups": [
+        [
+          "xeno",
+          1
+        ]
+      ],
+      "evidence": 0,
+      "lanes": 2,
+      "lockedWeapon": "combistick",
+      "next": "pool_cleanup",
+      "fx": [
+        "water"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 22,
+      "id": "pool_cleanup",
+      "chapter": 6,
+      "chapterTitle": "EAU NOIRE",
+      "name": "Lycée — bassin contaminé",
+      "fidelity": "screen",
+      "action": "cleanup",
+      "objective": "Dissoudre le xénomorphe et les traces dans le bassin.",
+      "enemyGroups": [],
+      "evidence": 3,
+      "lanes": 2,
+      "lockedWeapon": null,
+      "next": "tree_medicomp",
+      "fx": [
+        "water"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 23,
+      "id": "tree_medicomp",
+      "chapter": 7,
+      "chapterTitle": "LA BLESSURE",
+      "name": "Forêt — perchoir de soin",
+      "fidelity": "screen",
+      "action": "medicomp",
+      "objective": "Utiliser le Medicomp jusqu’à fermeture de la blessure.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 2,
+      "lockedWeapon": null,
+      "next": "cemetery_karl",
+      "fx": [
+        "fog",
+        "foliage"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 24,
+      "id": "cemetery_karl",
+      "chapter": 7,
+      "chapterTitle": "LA BLESSURE",
+      "name": "Cimetière de Gunnison",
+      "fidelity": "unrated",
+      "action": "human_script",
+      "objective": "Neutraliser Karl lorsqu’il menace Kelly et Molly.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "street_blackout",
+      "fx": [
+        "fog",
+        "foliage"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 25,
+      "id": "street_blackout",
+      "chapter": 8,
+      "chapterTitle": "VILLE EN GUERRE",
+      "name": "Gunnison — rues sans courant",
+      "fidelity": "reconstruction",
+      "action": "exit",
+      "objective": "Traverser Gunnison plongée dans le noir en suivant la piste.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "guard_ruins",
+      "fx": [
+        "blackout"
+      ],
+      "canonRequired": false
+    },
+    {
+      "index": 26,
+      "id": "guard_ruins",
+      "chapter": 8,
+      "chapterTitle": "VILLE EN GUERRE",
+      "name": "Gunnison — position de la Garde nationale",
+      "fidelity": "parallel",
+      "action": "exit",
+      "objective": "Passer la position détruite de la Garde nationale sans détourner la chasse.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "store_roof",
+      "fx": [
+        "blackout"
+      ],
+      "canonRequired": false
+    },
+    {
+      "index": 27,
+      "id": "store_roof",
+      "chapter": 9,
+      "chapterTitle": "LE MAGASIN",
+      "name": "Magasin d’armes — accès supérieur",
+      "fidelity": "reconstruction",
+      "action": "exit",
+      "objective": "Entrer dans le magasin où les survivants se sont retranchés.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "store_dallas",
+      "fx": [
+        "blackout"
+      ],
+      "canonRequired": false
+    },
+    {
+      "index": 28,
+      "id": "store_dallas",
+      "chapter": 9,
+      "chapterTitle": "LE MAGASIN",
+      "name": "Magasin d’armes — Dallas",
+      "fidelity": "screen",
+      "action": "capture_bait",
+      "objective": "Suspendre Dallas comme appât pour attirer les xénomorphes.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "store_battle",
+      "fx": [
+        "blackout"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 29,
+      "id": "store_battle",
+      "chapter": 9,
+      "chapterTitle": "LE MAGASIN",
+      "name": "Magasin d’armes — siège",
+      "fidelity": "screen",
+      "action": "store_battle",
+      "objective": "Neutraliser Earl et Scotty, puis survivre à l’assaut des cinq Xénomorphes.",
+      "enemyGroups": [
+        [
+          "human_looter",
+          2
+        ]
+      ],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "store_conversion",
+      "fx": [
+        "blackout"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 30,
+      "id": "store_conversion",
+      "chapter": 9,
+      "chapterTitle": "LE MAGASIN",
+      "name": "Magasin d’armes — conversion",
+      "fidelity": "screen",
+      "action": "convert_pistol",
+      "objective": "Assembler les deux plasmacasters en Plasma Pistol de fortune.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 2,
+      "lockedWeapon": null,
+      "next": "hospital_approach",
+      "fx": [
+        "blackout"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 31,
+      "id": "hospital_approach",
+      "chapter": 10,
+      "chapterTitle": "LA RUCHE DE L’HÔPITAL",
+      "name": "Hôpital — parking et accès",
+      "fidelity": "reconstruction",
+      "action": "exit",
+      "objective": "Atteindre l’hôpital en suivant les signatures xénomorphes.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "hospital_corridor",
+      "fx": [
+        "blackout",
+        "steam"
+      ],
+      "canonRequired": false
+    },
+    {
+      "index": 32,
+      "id": "hospital_corridor",
+      "chapter": 10,
+      "chapterTitle": "LA RUCHE DE L’HÔPITAL",
+      "name": "Hôpital — couloirs",
+      "fidelity": "screen",
+      "action": "exit",
+      "objective": "Progresser dans les couloirs jusqu’à la maternité contaminée.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "hospital_predalien",
+      "fx": [
+        "blackout",
+        "steam"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 33,
+      "id": "hospital_predalien",
+      "chapter": 10,
+      "chapterTitle": "LA RUCHE DE L’HÔPITAL",
+      "name": "Hôpital — contact Predalien",
+      "fidelity": "screen",
+      "action": "predalien_retreat",
+      "objective": "Blesser le Predalien aux Wrist Blades et le forcer à se retirer.",
+      "enemyGroups": [
+        [
+          "predalien_shadow",
+          1
+        ]
+      ],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": "blades",
+      "next": "hospital_three",
+      "fx": [
+        "blackout",
+        "steam"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 34,
+      "id": "hospital_three",
+      "chapter": 10,
+      "chapterTitle": "LA RUCHE DE L’HÔPITAL",
+      "name": "Hôpital — trois guerriers",
+      "fidelity": "screen",
+      "action": "hospital_three",
+      "objective": "Éliminer les trois xénomorphes avec le Plasma Pistol et le liquide dissolvant.",
+      "enemyGroups": [
+        [
+          "xeno",
+          2
+        ]
+      ],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "maternity_hive",
+      "fx": [
+        "blackout",
+        "steam"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 35,
+      "id": "maternity_hive",
+      "chapter": 10,
+      "chapterTitle": "LA RUCHE DE L’HÔPITAL",
+      "name": "Hôpital — maternité",
+      "fidelity": "screen",
+      "action": "scan",
+      "objective": "Identifier la maternité transformée en ruche et confirmer la présence du Predalien.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "hospital_shuriken",
+      "fx": [
+        "blackout",
+        "steam"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 36,
+      "id": "hospital_shuriken",
+      "chapter": 11,
+      "chapterTitle": "CHUTE",
+      "name": "Hôpital — croisement avec les survivants",
+      "fidelity": "screen",
+      "action": "shuriken_crossfire",
+      "objective": "Abattre deux xénomorphes au shuriken ; la trajectoire de l’un d’eux déclenche l’accident canonique.",
+      "enemyGroups": [
+        [
+          "xeno",
+          2
+        ]
+      ],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": "shuriken",
+      "next": "hospital_ricky",
+      "fx": [
+        "blackout",
+        "steam"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 37,
+      "id": "hospital_ricky",
+      "chapter": 11,
+      "chapterTitle": "CHUTE",
+      "name": "Hôpital — Ricky ouvre le feu",
+      "fidelity": "screen",
+      "action": "script",
+      "objective": "Encaisser la fusillade jusqu’à l’intervention du Predalien.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "elevator_fall",
+      "fx": [
+        "blackout",
+        "steam"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 38,
+      "id": "elevator_fall",
+      "chapter": 11,
+      "chapterTitle": "CHUTE",
+      "name": "Hôpital — cage d’ascenseur",
+      "fidelity": "screen",
+      "action": "elevator_fall",
+      "objective": "Survivre à l’attaque qui précipite Wolf dans la cage d’ascenseur.",
+      "enemyGroups": [
+        [
+          "xeno",
+          1
+        ]
+      ],
+      "evidence": 0,
+      "lanes": 2,
+      "lockedWeapon": null,
+      "next": "shaft_bottom",
+      "fx": [
+        "blackout",
+        "steam"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 39,
+      "id": "shaft_bottom",
+      "chapter": 11,
+      "chapterTitle": "CHUTE",
+      "name": "Cage d’ascenseur — niveau inférieur",
+      "fidelity": "reconstruction",
+      "action": "fight",
+      "objective": "Achever le xénomorphe et retrouver un passage vers le toit.",
+      "enemyGroups": [
+        [
+          "xeno",
+          1
+        ]
+      ],
+      "evidence": 0,
+      "lanes": 2,
+      "lockedWeapon": null,
+      "next": "shaft_climb",
+      "fx": [
+        "blackout",
+        "steam"
+      ],
+      "canonRequired": false
+    },
+    {
+      "index": 40,
+      "id": "shaft_climb",
+      "chapter": 11,
+      "chapterTitle": "CHUTE",
+      "name": "Cage d’ascenseur — remontée",
+      "fidelity": "reconstruction",
+      "action": "exit",
+      "objective": "Remonter sans le Plasma Pistol, désormais récupéré par Dallas.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 2,
+      "lockedWeapon": null,
+      "next": "roof_access",
+      "fx": [
+        "blackout",
+        "steam"
+      ],
+      "canonRequired": false
+    },
+    {
+      "index": 41,
+      "id": "roof_access",
+      "chapter": 12,
+      "chapterTitle": "REQUIEM",
+      "name": "Hôpital — accès toiture",
+      "fidelity": "reconstruction",
+      "action": "exit",
+      "objective": "Rejoindre le toit après la remontée de la cage d’ascenseur.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "roof_wave",
+      "fx": [
+        "blackout",
+        "steam"
+      ],
+      "canonRequired": false
+    },
+    {
+      "index": 42,
+      "id": "roof_wave",
+      "chapter": 12,
+      "chapterTitle": "REQUIEM",
+      "name": "Hôpital — toit sous la pluie",
+      "fidelity": "screen",
+      "action": "fight",
+      "objective": "Exécuter le Xénomorphe qui menace Dallas avant le duel final.",
+      "enemyGroups": [
+        [
+          "xeno",
+          1
+        ]
+      ],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "roof_duel",
+      "fx": [
+        "rain",
+        "lightning"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 43,
+      "id": "roof_duel",
+      "chapter": 12,
+      "chapterTitle": "REQUIEM",
+      "name": "Hôpital — duel Wolf / Predalien",
+      "fidelity": "screen",
+      "action": "boss",
+      "objective": "Affronter le Predalien : gauntlet brisé, retrait volontaire du biomask, extraction de la mâchoire interne et échange mortel.",
+      "enemyGroups": [
+        [
+          "predalien",
+          1
+        ]
+      ],
+      "evidence": 0,
+      "lanes": 3,
+      "lockedWeapon": null,
+      "next": "strike_warning",
+      "fx": [
+        "rain",
+        "lightning"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 44,
+      "id": "strike_warning",
+      "chapter": 13,
+      "chapterTitle": "ZÉRO TRACE",
+      "name": "Gunnison — dernier verrouillage",
+      "fidelity": "screen",
+      "action": "finale",
+      "objective": "Wolf et le Predalien sont mortellement blessés ; aucune fuite n’est possible.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 1,
+      "lockedWeapon": null,
+      "next": "blast",
+      "fx": [
+        "rain",
+        "lightning"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 45,
+      "id": "blast",
+      "chapter": 13,
+      "chapterTitle": "ZÉRO TRACE",
+      "name": "Gunnison — frappe nucléaire",
+      "fidelity": "screen",
+      "action": "finale",
+      "objective": "Fin canonique de Wolf et du Predalien.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 1,
+      "lockedWeapon": null,
+      "next": "yutani",
+      "fx": [
+        "blast"
+      ],
+      "canonRequired": true
+    },
+    {
+      "index": 46,
+      "id": "yutani",
+      "chapter": 13,
+      "chapterTitle": "ZÉRO TRACE",
+      "name": "Épilogue — technologie récupérée",
+      "fidelity": "screen",
+      "action": "epilogue",
+      "objective": "Le Plasma Pistol saisi à Dallas est remis à Ms. Yutani.",
+      "enemyGroups": [],
+      "evidence": 0,
+      "lanes": 1,
+      "lockedWeapon": null,
+      "next": null,
+      "fx": [],
+      "canonRequired": true
+    }
+  ]
+}

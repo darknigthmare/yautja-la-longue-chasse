@@ -2,7 +2,7 @@
 import { OptionalAudioFiles } from "./audioFiles.ts";
 import { GameSceneAudio } from "./systems/sceneAudio.ts";
 
-export type GameMusicContext = "menu" | "ship" | "galaxy" | "exploration" | "combat" | "boss" | "homeworld";
+export type GameMusicContext = "menu" | "ship" | "galaxy" | "exploration" | "combat" | "boss" | "homeworld" | "cradle-return";
 
 /** Original synth signatures for HUD variants; these are NOT film SFX recordings. */
 export type GameGauntletSoundProfileV133 = "classic" | "urban" | "elder" | "bronze" | "stealth" | "scar" | "wolf" | "brutal" | "feral" | "badlands";
@@ -59,6 +59,7 @@ export type GameSfxId =
   | "mask-off"
   | "weapon-switch"
   | "medicomp"
+  | "armor-repair"
   | "netgun"
   | "snare"
   | "enemy-alert"
@@ -70,7 +71,10 @@ export type GameSfxId =
   | "canopy-grab"
   | "canopy-release"
   | "victory"
-  | "defeat";
+  | "defeat"
+  | "vacuum-step"
+  | "vacuum-impact"
+  | "vacuum-energy";
 
 export interface GameAudioOptions { manifestUrl?: string }
 
@@ -138,6 +142,7 @@ export class GameAudio {
   private requestedAmbience: GameAudioBiome | null = null;
   private musicRequest = 0;
   private requestedMusic: GameMusicContext | null = null;
+  private cradleReturnMusicFinished = false;
   private cloakFileActive = false;
   private fileAudio: OptionalAudioFiles;
   private readonly sceneVoices = new Set<GameSceneAudio>();
@@ -151,6 +156,7 @@ export class GameAudio {
     const voice = new GameSceneAudio({
       graph: () => this.readyTime() === null || !this.context || !this.effects ? null : { context: this.context, effects: this.effects },
       unlock: () => this.unlock(),
+      sample: id => this.fileAudio.getRecordedSfx(id),
       released: () => this.sceneVoices.delete(voice),
     });
     if (this.disposed) voice.dispose();
@@ -386,8 +392,19 @@ export class GameAudio {
     this.requestedMusic = context;
     await this.unlock();
     if (this.disposed || request !== this.musicRequest || context !== this.requestedMusic || this.readyTime() === null) return;
-    void this.fileAudio.startLoop("music", context, fade);
+    if (context === "cradle-return" && !this.cradleReturnMusicFinished) {
+      const continueOnShip = () => {
+        if (this.disposed || this.requestedMusic !== "cradle-return" || this.cradleReturnMusicFinished) return;
+        this.cradleReturnMusicFinished = true;
+        void this.setMusicContext("cradle-return", { fadeSeconds: fade });
+      };
+      void this.fileAudio.startLoop("music", context, fade, undefined, continueOnShip, continueOnShip);
+      return;
+    }
+    void this.fileAudio.startLoop("music", context === "cradle-return" ? "ship" : context, fade);
   }
+
+  resetCradleReturnMusic(): void { this.cradleReturnMusicFinished = false; }
 
   stopMusic(fadeSeconds = .4): void {
     this.musicRequest++; this.requestedMusic = null;
@@ -512,6 +529,9 @@ export class GameAudio {
       case "medicomp":
         this.medicomp();
         break;
+      case "armor-repair":
+        this.armorRepair();
+        break;
       case "netgun":
         this.netgun();
         break;
@@ -536,6 +556,11 @@ export class GameAudio {
       case "canopy-release":
         this.fieldAction(id);
         break;
+      case "vacuum-step":
+      case "vacuum-impact":
+      case "vacuum-energy":
+        this.vacuumSuitCue(id);
+        break;
       case "victory":
         this.victory();
         break;
@@ -543,6 +568,20 @@ export class GameAudio {
         this.defeat();
         break;
     }
+  }
+
+  /** Contact transmitted through the suit and signals generated inside its display. */
+  private vacuumSuitCue(id: "vacuum-step" | "vacuum-impact" | "vacuum-energy"): void {
+    const now = this.readyTime();
+    if (now === null) return;
+    if (id === "vacuum-energy") {
+      this.tone(340, { at: now, duration: 0.16, endFrequency: 175, gain: 0.035,
+        type: "sine", filterFrequency: 560 });
+      return;
+    }
+    const impact = id === "vacuum-impact";
+    this.noise({ at: now, duration: impact ? 0.19 : 0.085, gain: impact ? 0.075 : 0.035,
+      filterType: "lowpass", filterFrequency: impact ? 310 : 240, endFilterFrequency: 90 });
   }
 
   /** Remote pod events use the existing effects bus and pause/dispose lifecycle.
@@ -650,6 +689,19 @@ export class GameAudio {
         filterFrequency: 2_200,
       });
     });
+  }
+
+  armorRepair(): void {
+    if (this.fileAudio.playSfx("armor-repair")) return;
+    const now = this.readyTime();
+    if (now === null) return;
+
+    // Follow the Medicomp before the cleaner closes and vents.
+    const at = now + .36;
+    this.tone(245, { at, duration: .09, gain: .06, type: "triangle" });
+    this.noise({ at: at + .08, duration: .53, gain: .065, filterType: "bandpass", filterFrequency: 1_140, endFilterFrequency: 360 });
+    this.tone(115, { at: at + .09, duration: .48, endFrequency: 79, gain: .027, type: "sine" });
+    this.tone(283, { at: at + .61, duration: .065, gain: .045, type: "triangle" });
   }
 
   netgun(): void {

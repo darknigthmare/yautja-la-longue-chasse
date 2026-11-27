@@ -1,0 +1,166 @@
+{
+  "schema": 1,
+  "date": "2026-11-17",
+  "film": "The Predator (2018), montage cinéma",
+  "request": "Même prompt mais en fidélité 1:1 au film",
+  "pr": {
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/146",
+    "branch": "codex/project-archive-recovery-20261117",
+    "observedHead": "0ad5b914271b29165c67b5ef9ace9c1a5d8b2a8b",
+    "stateObserved": "open-draft",
+    "newPushPerformed": false,
+    "limitation": "Les actions GitHub exposées dans cette session sont en lecture seule. Aucun accès Git authentifié disponible dans le conteneur."
+  },
+  "attempts": 6,
+  "approvedSprites": 0,
+  "readyAnimations": 0,
+  "certifiedOneToOne": false,
+  "originalRuntimeModified": false,
+  "visualMethod": "Inspection visuelle des sorties et comparaison descriptive aux références ; pas de superposition haute résolution ou de contrôle de plans horodatés.",
+  "files": [
+    {
+      "path": "rejected/attempt-01-scene.png",
+      "sourceName": "a_detailed_pixel_art_16_bit_style_scene_a_cinemat.png",
+      "intendedTarget": "fugitive-intact",
+      "bytes": 2551697,
+      "sha256": "b3d08f2447751ac0db4fd3aab64327b996f197b3d3b2fec507b3ddeec2e76109",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGBA",
+      "alphaRange": [
+        130,
+        249
+      ],
+      "fullyTransparentPixels": 0,
+      "status": "rejected-for-film-fidelity",
+      "certifiedOneToOne": false,
+      "runtimeEligible": false,
+      "prPublished": false,
+      "reasons": [
+        "Fond et décor intégrés ; personnage cadré partiellement.",
+        "Arme à main ajoutée et design de casque/armure non conformes à la cible.",
+        "Aucun pixel complètement transparent."
+      ]
+    },
+    {
+      "path": "rejected/attempt-02-scene.png",
+      "sourceName": "a_detailed_pixel_art_scene_a_cinematic_16_bit_pix.png",
+      "intendedTarget": "fugitive-intact",
+      "bytes": 2499648,
+      "sha256": "c136dcd04938ea38c563308deee6d58eaac30b3c80d09abe6fc73e13918723c1",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGBA",
+      "alphaRange": [
+        192,
+        249
+      ],
+      "fullyTransparentPixels": 0,
+      "status": "rejected-for-film-fidelity",
+      "certifiedOneToOne": false,
+      "runtimeEligible": false,
+      "prPublished": false,
+      "reasons": [
+        "Scène illustrée et non sprite individuel en pied.",
+        "Arme ajoutée et formes d’armure non conformes à la cible.",
+        "Aucun pixel complètement transparent."
+      ]
+    },
+    {
+      "path": "rejected/attempt-03-alien-atlas.png",
+      "sourceName": "a_detailed_sprite_sheet_style_image_on_a_black_bac.png",
+      "intendedTarget": "alien-roster",
+      "bytes": 3095128,
+      "sha256": "40ac640781f18bbd02b18b66bcc6c3d5eb0823013986e62bf528d2b1330810a5",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "fullyTransparentPixels": 349369,
+      "status": "rejected-for-film-fidelity",
+      "certifiedOneToOne": false,
+      "runtimeEligible": false,
+      "prPublished": false,
+      "reasons": [
+        "Planche de multiples personnages et poses au lieu des deux fichiers individuels demandés.",
+        "Silhouettes et équipements conservent les dérives du lot précédent.",
+        "Aucun mapping image par image ni contrôle de continuité d’animation."
+      ]
+    },
+    {
+      "path": "rejected/attempt-04-human-atlas.png",
+      "sourceName": "a_detailed_pixel_art_sprite_sheet_on_a_black_trans.png",
+      "intendedTarget": "human-roster",
+      "bytes": 2863097,
+      "sha256": "9ae6a99332c6011ea08f12ee124d3a8388bb666bb369f419a4f9e0f01b1133b7",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "fullyTransparentPixels": 410080,
+      "status": "rejected-for-film-fidelity",
+      "certifiedOneToOne": false,
+      "runtimeEligible": false,
+      "prPublished": false,
+      "reasons": [
+        "Casting, costumes et armes ne sont pas démontrés conformes aux scènes du film.",
+        "Ligne de personnage enfant comportant des poses armées : incompatible avec le rôle non-combattant demandé.",
+        "Aucun atlas exploitable validé ou continuité d’animation contrôlée."
+      ]
+    },
+    {
+      "path": "rejected/attempt-05-fugitive-atlas.png",
+      "sourceName": "a_large_sprite_sheet_on_a_transparent_checkerboard.png",
+      "intendedTarget": "fugitive-intact",
+      "bytes": 3174944,
+      "sha256": "5e64733cc348975c14a3b1d8a1087050cac518de3be560f7085bd3c942ccc7ec",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaRange": [
+        61,
+        250
+      ],
+      "fullyTransparentPixels": 0,
+      "status": "rejected-for-film-fidelity",
+      "certifiedOneToOne": false,
+      "runtimeEligible": false,
+      "prPublished": false,
+      "reasons": [
+        "Planche et lignes de grille au lieu d’un personnage individuel en pied.",
+        "Formes d’armure/masque encore non conformes à la cible.",
+        "Aucun pixel complètement transparent ; le damier visible n’établit pas la transparence."
+      ]
+    },
+    {
+      "path": "rejected/attempt-06-upgrade-atlas.png",
+      "sourceName": "a_clean_transparent_background_spritesheet_a_grid.png",
+      "intendedTarget": "upgrade-armored",
+      "bytes": 2899170,
+      "sha256": "e45394d3fada3b0436a9296c067af3c3e1ba70cef80ecd59e955913ec3358dce",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "fullyTransparentPixels": 221632,
+      "status": "rejected-for-film-fidelity",
+      "certifiedOneToOne": false,
+      "runtimeEligible": false,
+      "prPublished": false,
+      "reasons": [
+        "Planche et éléments supplémentaires au lieu d’un personnage individuel.",
+        "Gantelets, morphologie et exopeau ne satisfont pas les corrections demandées.",
+        "Aucun mapping, calage des pivots ou animation validés."
+      ]
+    }
+  ]
+}

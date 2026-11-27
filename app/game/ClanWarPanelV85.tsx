@@ -1,8 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import Image from "next/image";
+import type { RecordedSceneAudioPort } from "./systems/sceneAudio";
 import type { SaveGame } from "./types";
+import WarNarrativePanelR2M035 from "./WarNarrativeR2M035";
+import WarConquestR2M037Panel from "./WarConquestR2M037Panel";
+import type { ConquestCommandR2M037 } from "./systems/warConquestR2M037";
+import type { WarNarrativeCommandR2M035 } from "./systems/warNarrativeR2M035";
 import {
   CLAN_WAR_ENTRIES_V85, CLAN_WAR_SECTIONS_V85, CLAN_WAR_WORKBOOK_V85,
   WAR_FACTIONS_V85, WAR_UNITS_V85,
@@ -60,7 +65,7 @@ import {
   type ClanWarPresentationV131,
 } from "./systems/clanWarViewV131";
 
-type WarPanelTab = "bible" | "canyon" | "composition" | "korthas" | "operations" | "dossier";
+type WarPanelTab = "bible" | "canyon" | "composition" | "korthas" | "operations" | "dossier" | "m035" | "m037";
 type CommandLayer = "worlds" | "settings" | "archives" | "help" | "territory" | "orders" | "forces" | "convoy" | "journal" | "sources";
 
 function CommandMark({ kind }: { kind: string }) {
@@ -93,8 +98,8 @@ function Entry({ entry }: { entry: ClanWarEntryV85 }) {
   </article>;
 }
 
-/** Autonomous exercises and source dossier. Main campaign progress is read only. */
-export default function ClanWarPanelV85({ save, onClose, suspended = false, initialPlanetId, onGauntletSound,onEquipGauntlet,onClaimGauntletStudy }: { save: SaveGame; onClose: () => void; suspended?: boolean; initialPlanetId?: string; onGauntletSound?: (theme: GauntletThemeV132) => void; onEquipGauntlet?: (id:string)=>boolean; onClaimGauntletStudy?: (id:string)=>boolean }) {
+/** Campaign mandates and independently stored autonomous exercises. */
+export default function ClanWarPanelV85({ save, onClose, suspended = false, initialPlanetId, onGauntletSound,onEquipGauntlet,onClaimGauntletStudy,createSceneAudio,campaignRoutesPanel,onNarrativeCommand,onConquestCommand }: { save: SaveGame; onClose: () => void; suspended?: boolean; initialPlanetId?: string; onGauntletSound?: (theme: GauntletThemeV132) => void; onEquipGauntlet?: (id:string)=>boolean; onClaimGauntletStudy?: (id:string)=>boolean; createSceneAudio?: () => RecordedSceneAudioPort | null; campaignRoutesPanel?: ReactNode; onNarrativeCommand?: (command: WarNarrativeCommandR2M035) => { ok: boolean; message: string }; onConquestCommand?: (command: ConquestCommandR2M037) => { ok: boolean; message: string } }) {
   const root = useRef<HTMLElement>(null);
   const focusPlanetSelection = useRef(Boolean(initialPlanetId));
   const pageActive = useSyncExternalStore(subscribePageActivityV94, pageActivitySnapshotV94, serverPageActivityV94);
@@ -507,7 +512,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
 
   if (!loaded) return <section className={styles.panel} aria-labelledby="clan-war-loading-title" data-clan-war-v85="loading" inert={suspended} ref={root}><h2 id="clan-war-loading-title">Archives des exercices</h2><p role="status">Vérification des archives et des écritures interrompues…</p><button type="button" onClick={onClose}>Retour</button></section>;
 
-  return <section className={`${styles.panel} ${styles.commandShell} ${presentation === "gauntlet" ? gauntletStyles.holoPanel : ""}`} aria-labelledby="clan-war-v85-title" data-clan-war-v85="free-profile" data-war-campaign-write="none" data-war-presentation={presentation} inert={suspended} ref={root}>
+  return <section className={`${styles.panel} ${styles.commandShell} ${presentation === "gauntlet" ? gauntletStyles.holoPanel : ""}`} aria-labelledby="clan-war-v85-title" data-clan-war-v85="free-profile" data-war-campaign-write={tab === "m035" && onNarrativeCommand ? "narrative" : tab === "m037" && onConquestCommand ? "conquest" : "none"} data-war-presentation={presentation} inert={suspended} ref={root}>
     <header className={styles.commandHeader}>
       <div className={styles.commandIdentity}><span className={styles.commandSigil} aria-hidden="true">╱╲<br/>╲╱</span><div><p className={styles.eyebrow}>CONSEIL DE GUERRE · LIAISON DU CLAN</p><h2 id="clan-war-v85-title">Guerres de territoire</h2></div></div>
       <div className={styles.commandOperator}><strong>{save.profile.hunterName}</strong><span>{save.profile.rankId} · {persistedWar ? "Archive locale confirmée" : pendingWrites > 0 ? "Transmission…" : "Front en mémoire"}</span></div>
@@ -521,6 +526,10 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
           ["bible", "Bible V6 · règles actuelles", "Mandats du clan", "02"],
           ["operations", "Opérations multi-modes V114", "Opérations", "03"],
         ] as const).map(([id, label, short, number]) => <button type="button" key={id} aria-label={label} aria-pressed={tab === id} data-command-section={id} onClick={() => navigateCommand(id)}><CommandMark kind={id}/><span><small>{number}</small>{short}</span></button>)}
+        {onNarrativeCommand && <button type="button" aria-pressed={tab === "m035"} data-command-section="m035"
+          onClick={() => navigateCommand("m035")}><CommandMark kind="korthas"/><span>L’éclaireur du canyon</span></button>}
+        {onConquestCommand && <button type="button" aria-pressed={tab === "m037"} data-command-section="m037"
+          onClick={() => navigateCommand("m037")}><CommandMark kind="korthas"/><span>Campagne · Passage des Lames Plates</span></button>}
         <div className={styles.railSecondary}>
           <button type="button" aria-expanded={commandLayer === "archives"} aria-pressed={["canyon", "composition", "dossier"].includes(tab)} data-command-open="archives" onClick={() => setCommandLayer("archives")}><CommandMark kind="archive"/><span>Archives du conseil<small>Exercices et anciennes fiches</small></span></button>
           <button type="button" aria-expanded={commandLayer === "settings"} data-command-open="settings" onClick={() => setCommandLayer("settings")}><span className={styles.railSettingIcon} aria-hidden="true">◈</span><span>Projection<small>Gauntlet et affichage</small></span></button>
@@ -538,9 +547,13 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
     {gauntletStorageWarning && <p className={styles.storage} role="status">{gauntletStorageWarning}</p>}
     {pendingWrites > 0 && <p className={styles.storage} role="status">Enregistrement des exercices en cours…</p>}
     {canRetryPersistence && <button type="button" disabled={pendingWrites > 0} onClick={() => { sessionStore.retryPersistence(); if (planetSession !== sessionStore) planetSession.retryPersistence(); }}>Réessayer la sauvegarde des exercices</button>}
-    <div hidden={tab !== "bible"}><ClanWarBibleV6Panel active={tab === "bible" && !suspended && pageActive && commandLayer === null} gauntletId={equippedGauntletId} holographic={presentation==="gauntlet"}/></div>
+    <div hidden={tab !== "bible"}><ClanWarBibleV6Panel active={tab === "bible" && !suspended && pageActive && commandLayer === null} gauntletId={equippedGauntletId} holographic={presentation==="gauntlet"} createSceneAudio={createSceneAudio} campaignRoutesPanel={campaignRoutesPanel} campaignOwnerCreatedAt={save.createdAt}/></div>
     {tab === "operations" && <ClanWarMissionsV114 key={planet.id} simulation={simulation} planetName={planet.name} active={!suspended && pageActive && commandLayer === null && pendingWrites === 0 && strategic.writableWar} onPrepareSite={(from, to, kind) => { setTab("korthas"); prepareSite(from, to, kind); }}/>}
 
+    {tab === "m035" && onNarrativeCommand && <WarNarrativePanelR2M035 save={save}
+      disabled={suspended || !pageActive || commandLayer !== null} onCommand={onNarrativeCommand}/>}
+    {tab === "m037" && onConquestCommand && <WarConquestR2M037Panel save={save}
+      disabled={suspended || !pageActive || commandLayer !== null} onCommand={onConquestCommand}/>}
     {tab === "composition" && <div>
       <div className={styles.sectionHeader}><div><h3>Formations et limites de composition</h3><p>Le commandement compte aussi les réserves et les groupes en transit.</p></div><button type="button" onClick={() => { setSelection({ ...CANYON_PRESET_V85 }); setMessage("Effectif d’exemple du classeur : 12 commandement, 112 matériaux et 60 énergie."); }}>Effectif du classeur</button></div>
       <div className={styles.metrics}><p>Commandement <strong>{composition.used.command}/{composition.limits.command}</strong></p><p>Matériaux tactiques <strong>{composition.used.materials}/{composition.limits.materials}</strong></p><p>Énergie tactique <strong>{composition.used.energy}/{composition.limits.energy}</strong></p></div>
@@ -593,7 +606,8 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
       </div>
       <div className={styles.metrics}><p>Stock consolidé <span className={styles.stockReadout}><span>S<strong>{budget.s}</strong></span><span>M<strong>{budget.m}</strong></span><span>I<strong>{budget.i}</strong></span></span></p><p>Contrôle <strong>{controlled.length}/{definitions.length}</strong></p><p>Aptes <strong>{warFitCombatantsV85(simulation).length}</strong></p><p>Entretien prévu <strong>S{warUpkeepV85(simulation)}</strong></p></div>
       {simulation.completedObjectives.includes("CON-O01") && <p className={styles.positive} role="status">{planet.name} maîtrisée · domination confirmée après deux fins de tour. {persistedWar ? "Victoire archivée sur cet appareil." : "Victoire en mémoire · sauvegarde à confirmer."}</p>}
-      <ClanWarGauntletV131 compactCommand view={presentation} planetName={planet.name} turn={simulation.turn}
+      <ClanWarGauntletV131 compactCommand view={presentation}
+        displayColor={save.appearance?.lightsV146?.display} hologramColor={save.appearance?.lightsV146?.hologram} planetName={planet.name} turn={simulation.turn}
         departure={territory.name} destination={warTerritoryForSimulationV96(simulation, targetId)?.name ?? targetId}
         controlled={controlled.length} territories={definitions.length} queuedOrders={simulation.orders.length}
         persisted={persistedWar} pending={pendingWrites > 0}

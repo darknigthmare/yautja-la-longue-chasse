@@ -18,6 +18,28 @@ test("deposit creates one physical position without freeing or copying the harve
   assert.deepEqual(dropped.stashedSpecimensV112,[{specimenId:item().id,x:100,y:100,fallSpeed:0}]);
   assert.equal(r.moveFieldSpecimenV112(dropped,"drop",item().id,actor,world,"hunter",options).accepted,false);
 });
+test("a stable branch-edge deposit stays on the same ledge and can be retrieved",()=>{
+  const player={...actor,x:ledge.x+ledge.width-2};
+  const deposited=r.moveFieldSpecimenV112(fixture(),"drop",item().id,player,world,"hunter",options);
+  assert.equal(deposited.accepted,true,deposited.message);
+  const [entry]=deposited.state.stashedSpecimensV112;
+  assert.ok(player.x+player.width/2>ledge.x+ledge.width,"the body centre hangs over the edge");
+  assert.ok(entry.x<ledge.x+ledge.width);
+  assert.equal(entry.y,ledge.y);
+  assert.equal(r.stepFieldStashesV112(deposited.state,world,1/60),deposited.state);
+  const picked=r.moveFieldSpecimenV112(deposited.state,"take",item().id,player,world,"hunter",options);
+  assert.equal(picked.accepted,true,picked.message);
+  assert.equal(r.carriedFieldSpecimensV112(picked.state)[0],deposited.state.specimensV112[0]);
+});
+
+test("a stale grounded flag cannot authorize an unsupported deposit",()=>{
+  const state=fixture();
+  const noSupport={...world,platforms:[]};
+  const dropped=r.moveFieldSpecimenV112(state,"drop",item().id,actor,noSupport,"hunter",options);
+  assert.equal(dropped.accepted,false);
+  assert.equal(dropped.state,state);
+});
+
 test("pick up returns the same item once without changing source or completion receipt",()=>{
   const dropped=put(),picked=r.moveFieldSpecimenV112(dropped,"take",item().id,actor,world,"hunter",options);
   assert.equal(picked.accepted,true);assert.deepEqual(picked.state.stashedSpecimensV112,[]);

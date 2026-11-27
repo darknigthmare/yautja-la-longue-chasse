@@ -341,3 +341,72 @@ test("quota and concurrent saves refuse desert proof while preserving the last d
   storage.setItem = original; const concurrent = JSON.stringify({ ...before.save, updatedAt: "2026-09-24T14:00:00.000Z" }); storage.data.set(p.SAVE_STORAGE_KEY, concurrent);
   assert.equal(p.writeSaveWithStatus(after, storage).failure, "save-conflict"); assert.equal(storage.getItem(p.SAVE_STORAGE_KEY), concurrent);
 });
+
+test("the legacy nursery receipt is indexed and the real training chapter is credited once", () => {
+  const disk = store(welcome());
+  const migrated = p.writeSaveWithStatus(p.loadSave(disk), disk);
+  assert.equal(migrated.persisted, true, migrated.failure);
+  assert.equal(migrated.save.profile.honor, 0);
+  const planned = p.startYouthCampaign(migrated.save, owner);
+  assert(planned);
+  let current = p.writeSaveWithStatus(planned, disk);
+  assert.equal(current.persisted, true, current.failure);
+  for (const step of path.transitions) {
+    const next = p.withYouthProgress(current.save, step.receipts, step.state, now);
+    assert(next);
+    current = p.writeSaveWithStatus(next, disk);
+    assert.equal(current.persisted, true, current.failure);
+  }
+  const reloaded = p.loadSave(disk);
+  assert.equal(reloaded.profile.honor, 50);
+  assert.deepEqual(reloaded.honorSourcesV169.entries.map(({ id, delta }) => [id, delta]), [
+    ["chronicle:intro-completed", 0],
+    ["chronicle:training-completed", 50],
+  ]);
+  assert.equal(p.writeSaveWithStatus(reloaded, disk).save.profile.honor, 50);
+});
+
+test("the workshop hand-in atomically records calibrated youth equipment and accepts a prior-format barracks save", () => {
+  let save = until(5), state = save.youthTraining.checkpoint;
+  const storage = store(save);
+  assert.equal(save.youthTraining.equipment.workshop, undefined);
+  assert.ok(p.loadSaveWithStatus(storage).save);
+  const tick = (input = {}) => {
+    const result = p.stepYouthTraining(state, input, env);
+    state = result.state;
+    if (result.events.some(event => event.type === "workshop")) {
+      save = p.withYouthCheckpoint(save, state);
+      assert(save, "campaign accepts the played workshop transition " + JSON.stringify(state.workshopV174?.active));
+      assert.equal(p.writeSaveWithStatus(save, storage).persisted, true);
+    }
+  };
+  const walk = target => {
+    for (let frame = 0; frame < 260 && Math.abs(state.player.x - target) > 5; frame++) tick({ move: target < state.player.x ? -1 : 1 });
+    assert(Math.abs(state.player.x - target) <= 5);
+    tick();
+  };
+  const act = input => { tick(); tick(input); tick(); };
+  tick(); walk(112); act({ interact: true });
+  walk(196); act({ interact: true }); act({ blade: true });
+  walk(315); act({ interact: true });
+  state = p.loadSaveWithStatus(storage).save.youthTraining.checkpoint;
+  assert.equal(state.workshopV174.active.stage, 2);
+  assert.equal(state.inputArmed, false);
+  act({ interact: true });
+  for (const x of [384, 503, 624, 746]) { walk(x); act({ interact: true }); }
+  walk(844); act({ light: true });
+  assert.equal(save.youthTraining.equipment.workshop.maskCalibrated, false);
+  act({ interact: true });
+  const persisted = p.loadSaveWithStatus(storage).save;
+  assert.equal(persisted.youthTraining.equipment.workshop.maskCalibrated, true);
+  assert.equal(persisted.youthTraining.equipment.workshop.maskProfile, "wide");
+  assert.equal(persisted.youthTraining.equipment.workshop.cloak, false);
+  assert.equal(persisted.youthTraining.receipts.length, 5);
+  assert.equal(persisted.prologue.chronicle.rites.length, 1);
+  const stamped = clone(persisted);
+  stamped.youthTraining.equipment.workshop.cloak = true;
+  assert.equal(p.parseSaveImport(JSON.stringify(stamped)).failure, "invalid-save");
+  const erased = clone(persisted.youthTraining.checkpoint);
+  delete erased.workshopV174;
+  assert.equal(p.withYouthCheckpoint(persisted, erased), null);
+});

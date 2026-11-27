@@ -1,5 +1,24 @@
 /** Read-only input policy, shared by native simulation and browser drivers. */
 const center=actor=>({x:actor.x+actor.width/2,y:actor.y+actor.height/2});
+
+/** The closed thermal gate only blocks the upper route. Walk off the platform
+ * and remain below the real gate until the body has fully crossed. */
+export function decideIceThermalBypassV112(game,target,memory){
+  const gate=game.world.platforms.find(platform=>platform.id==='ice-region-thermal-return-gate'&&platform.collision==='solid');
+  const player=game.player;
+  const end=gate&&gate.x+gate.width;
+  if(!gate||player.x>=end){delete memory.iceLowerPass;return null;}
+  const blockedAbove=player.y<gate.y+gate.height;
+  if(!memory.iceLowerPass&&!(target.x>=end&&player.x+player.width>=gate.x-12&&blockedAbove)){
+    return null;
+  }
+  memory.iceLowerPass=true;
+  const support=game.world.platforms.find(platform=>Math.abs(platform.y-player.y-player.height)<2&&
+    player.x+player.width>platform.x&&player.x<platform.x+platform.width);
+  const exitEdge=(support?.x??gate.x)-player.width-4;
+  return {direction:blockedAbove?'left':'right',target:{x:blockedAbove?exitEdge:end+player.width,y:game.world.floorY}};
+}
+
 export function decideHuntCampaignInputV112(game,tick,memory,strategy='mixed'){
   const held=[],pressed=[],player=game.player,pc=center(player);
   const ritual=game.trophyRitual;
@@ -7,7 +26,10 @@ export function decideHuntCampaignInputV112(game,tick,memory,strategy='mixed'){
     if(ritual.phase==='cue'&&ritual.cueElapsedSeconds>=.48)pressed.push(ritual.sequence[ritual.cueIndex]);
     return{held,pressed,reason:'native trophy glyph'};
   }
-  if(player.health<player.maxHealth*.58&&player.medicomps>0&&player.healCooldown<=0)pressed.push('heal');
+  // Browser control reacts in tenths of a second: heal earlier, but keep the last charge for the Apex.
+  const apexFight=game.boss.active&&game.boss.alive,ratio=player.health/player.maxHealth;
+  const reserve=!apexFight&&player.medicomps<=1&&ratio>=.35;
+  if(ratio<.7&&player.medicomps>0&&player.healCooldown<=0&&!reserve)pressed.push('heal');
   if(player.scanCooldown<=0&&game.scanNodes.some(node=>!node.scanned&&Math.hypot(node.x-pc.x,node.y-pc.y)<450))pressed.push('scan');
   let target=game.scanNodes.find(node=>!node.scanned),reason='trace';
   if(!target){target=game.recoveryNodes.find(node=>!node.recovered);reason='technology';}
@@ -31,7 +53,11 @@ export function decideHuntCampaignInputV112(game,tick,memory,strategy='mixed'){
       if(player.weaponChargeSeconds>=.8&&player.weaponCooldown<=0)pressed.push('weapon');
     }else{
       if(player.activeWeaponSlot!==0)pressed.push('weaponOne');
-      if(gap<95&&Math.abs(point.y-pc.y)<140&&player.melee.phase==='idle'&&player.stamina>=20){
+      // The native swing uses player.facing, which only turns on movement while melee is idle.
+      const behind=(point.x-pc.x)*(player.facing??1)<0&&Math.abs(point.x-pc.x)>8;
+      if(behind&&gap<95&&player.melee.phase==='idle'){
+        held.push(point.x>pc.x?'right':'left');
+      }else if(gap<95&&Math.abs(point.y-pc.y)<140&&player.melee.phase==='idle'&&player.stamina>=20){
         if(tick%3!==0)held.push('down');
         pressed.push('melee');
       }
@@ -40,7 +66,7 @@ export function decideHuntCampaignInputV112(game,tick,memory,strategy='mixed'){
     if(range<260&&player.grounded&&tick>=(memory.nextJump??0)){
       pressed.push('jump');held.push('jump');memory.nextJump=tick+66;memory.jumpUntil=tick+12;
     }
-    if(enemy.telegraph>0&&gap<100&&player.grounded&&player.stamina>25&&tick%30===0){
+    if(enemy.telegraph>0&&gap<100&&player.grounded&&player.stamina>25){
       held.push('down',point.x>pc.x?'left':'right');pressed.push('jump');
     }
   }
@@ -58,6 +84,14 @@ export function decideHuntCampaignInputV112(game,tick,memory,strategy='mixed'){
     }
     if(memory.dropTargetX!==undefined){target={...target,x:memory.dropTargetX};reason='descend by support edge';}
   }else{delete memory.dropTargetX;delete memory.dropDirection;}
+  const lowerPass=decideIceThermalBypassV112(game,target,memory);
+  if(lowerPass){
+    memory.jumpUntil=-1;
+    memory.stuckTicks=0;
+    memory.previousX=player.x;
+    return {held:[lowerPass.direction],pressed:pressed.filter(action=>action==='heal'||action==='scan'),
+      pointer:null,reason:'passage bas sous la grille cryothermique',target:lowerPass.target};
+  }
   const dx=target.x-pc.x;
   const stop=reason==='trace'?140:reason==='technology'?25:reason==='extraction'?45:reason==='apex trophy'?30:6;
   if(Math.abs(dx)>stop)held.push(dx>0?'right':'left');

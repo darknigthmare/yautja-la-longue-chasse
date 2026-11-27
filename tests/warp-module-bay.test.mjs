@@ -141,10 +141,28 @@ test('real component exposes accessible posts and the current closed door withou
   assert.match(html, /data-warp-module-bay/);
   assert.match(html, /data-warp-room="bay"/);
   assert.match(html, /data-warp-door-state="closed"/);
+  assert.match(html, /data-warp-background="bay" src="\/game\/p0-sprites-20261113\/warp\/warp-199-empty-bay\.png"/);
+  assert.match(html, /data-warp-prop="coordinate-console" src="\/game\/ship-interior\/v21\/console-navigation\.webp"/);
+  assert.doesNotMatch(html, /199_module_baie_warp_fond\.png/);
   for (const id of ['console','archive','archivist','door','cross','exit']) assert.ok(html.includes(`data-warp-action="${id}"`));
   assert.match(html, /role="status" aria-live="polite"/);
   assert.match(html, /Aucun rang, recrutement ou transit de campagne/);
   assert.equal(JSON.stringify(save), original);
+});
+
+test('the modular bay and independent console are anchored to the authored console station', () => {
+  const background = fs.readFileSync('public' + bay.WARP_BAY_ROOMS.bay.background);
+  assert.equal(createHash('sha256').update(background).digest('hex'),
+    'c0ebe3051c4badaee28f8db1673da0c2ce901d431d06d10e51866f2d02b03087');
+  const console = bay.WARP_BAY_COORDINATE_CONSOLE;
+  assert.equal(createHash('sha256').update(fs.readFileSync('public' + console.src)).digest('hex'),
+    '64091fd62bc94577fe85fe152bd64dba7cea9933eafc5a148042d1e763adbb2a');
+  const station = stations('bay').find(item => item.id === 'console');
+  assert(!walkable('bay', {x: station.point.x, y: station.point.y}, false));
+  assert(walkable('bay', station.approach, false));
+  assert.equal(act(initial(), 'console').accepted, false);
+  const approached = walk(initial(), station.approach);
+  assert.equal(act(approached, 'console').state.consoleRead, true);
 });
 
 test('runtime assets preserve three originals and declare two new unvalidated single images', () => {

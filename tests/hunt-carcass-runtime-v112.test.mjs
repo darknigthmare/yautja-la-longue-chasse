@@ -13,7 +13,9 @@ export {defaultSave} from "./save";
 export {MISSION_BY_ID} from "./data";
 export {startHuntRiteV77} from "./systems/ritesOfHuntV77";
 export {restoreRitesRuntimeV77,huntRiteMenuSnapshotV77} from "./systems/huntRitesRuntimeV77";
-export {carcassSupportsForWorldV112} from "./systems/carcassSupportsV112";`,resolveDir:fileURLToPath(new URL("../app/game/",import.meta.url)),sourcefile:fileURLToPath(canvasUrl),loader:"tsx"},
+export {carcassSupportsForWorldV112} from "./systems/carcassSupportsV112";
+export {carriedFieldSpecimensV112,moveFieldSpecimenV112} from "./systems/fieldStashV112";
+export {fieldLoadV112} from "./systems/harvestInventoryV112";`,resolveDir:fileURLToPath(new URL("../app/game/",import.meta.url)),sourcefile:fileURLToPath(canvasUrl),loader:"tsx"},
   bundle:true,write:false,format:"cjs",platform:"node",jsx:"automatic",loader:{".module.css":"empty"},external:["react","react/jsx-runtime","react-dom"],logLevel:"silent"});
 const mod={exports:{}};
 runInNewContext(compiled.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url),document:{hidden:false,hasFocus:()=>true},navigator:{getGamepads:()=>[]}});
@@ -29,9 +31,9 @@ function fixture({width=40,height=60}={}){
   state.enemies=[enemy];state.elapsed=1;r.damageEnemy(state,mission,enemy,80,"melee");
   assert.equal(state.huntRites.corpses.length,1);return {state,save,mission,enemy};
 }
-function act(f,action){
+function act(f,action,corpseId="body"){
   const options=r.riteRuntimeOptionsV112(f.state);
-  const started=r.startHuntRiteV77(f.state.huntRites,"body",action,r.riteContextV77(f.state),{supportId:options.supports[0]?.id});
+  const started=r.startHuntRiteV77(f.state.huntRites,corpseId,action,r.riteContextV77(f.state),{supportId:options.supports[0]?.id});
   assert.equal(started.accepted,true,started.message);f.state.huntRites=started.state;
   if(f.state.huntRites.operation)f.state.riteOperationDamageStart=f.state.damageTaken;
   for(let i=0;i<160&&f.state.huntRites.operation;i++){f.state.elapsed+=.05;r.updateHuntRitesV77(f.state,.05);}
@@ -192,4 +194,44 @@ test("native suspended corpse restore admits the real source and refuses the sam
   assert.equal(missingSource.length,checkpoint.enemies.length-1);
   assert.equal(restore(missingSource),null,"a surviving support cannot replace the missing real corpse actor");
   assert.equal(JSON.stringify(ledger),before,"neither admission nor rejection may rewrite the same input ledger");
+});
+
+test("resume admits the genuine bag at its armor limit and excludes ground stock",()=>{
+  const f=fixture();
+  f.state.harvestArmorIdV112="berserker";
+  const {state,mission}=f;
+  for(let index=0;index<7;index++){
+    const id=index===0?"body":"load-body-"+index;
+    if(index>0){
+      const enemy=r.makeEnemy(id,"hell-hound-stalker",mission.id,1120,state.world.width,80,10,0,1,1);
+      Object.assign(enemy,{x:1120,y:564,width:40,height:60,health:80,maxHealth:80,scanned:true});
+      state.enemies.push(enemy);
+      r.damageEnemy(state,mission,enemy,80,"melee");
+      assert.ok(state.huntRites.corpses.some(corpse=>corpse.id===id));
+    }
+    act(f,"flay",id);act(f,"harvest-hide",id);
+    if(index<4)act(f,"harvest-tissue",id);
+  }
+  const restore=(checkpoint,harvestArmorId)=>r.restoreRitesRuntimeV77(
+    checkpoint.huntRites,checkpoint.huntRites.runId,mission.id,checkpoint.enemies,checkpoint.elapsed,
+    r.riteSourceLabelV77,{...r.riteRuntimeOptionsV112(state),harvestArmorId},
+  );
+  const heavy=r.captureCheckpoint(state),before=JSON.stringify(heavy.huntRites);
+  assert.equal(r.fieldLoadV112(r.carriedFieldSpecimensV112(heavy.huntRites),"hunter").volumeUnits,25);
+  assert.ok(restore(heavy,"berserker"));
+  assert.ok(restore(heavy,undefined),"armor-independent structural validation can still inspect the ledger");
+  assert.equal(restore(heavy,"hunter"),null);
+  const rejected=r.restoreCheckpoint({...state,harvestArmorIdV112:"hunter"},heavy,"resume");
+  assert.match(rejected.message,/reprise refusée/);
+  assert.equal(JSON.stringify(heavy.huntRites),before,"admission never rewrites the checkpoint");
+  const item=state.huntRites.specimensV112.find(candidate=>candidate.partId==="tissue");
+  const drop=r.moveFieldSpecimenV112(state.huntRites,"drop",item.id,state.player,state.world,"berserker",
+    {suspended:false,operationActive:false});
+  assert.ok(drop.accepted);state.huntRites=drop.state;
+  const light=r.captureCheckpoint(state),admitted=restore(light,"hunter");
+  assert.ok(admitted);
+  assert.equal(r.fieldLoadV112(r.carriedFieldSpecimensV112(admitted),"hunter").ratio,1);
+  assert.equal(admitted.specimensV112.length,11,"deposited anatomy remains consumed");
+  assert.equal(admitted.stashedSpecimensV112.length,1,"deposited items are still available on the ground");
+  assert.equal(restore(light,"scout"),null);
 });

@@ -31,8 +31,25 @@ test("V54 delivered audio decodes as bounded PCM with exact source and manifest 
     assert.equal(inventory.entries.find(e => e.id === asset.id && e.category === asset.category).sources[0].sha256, asset.sha256);
     if (asset.source) { assert.equal(asset.source.license, "CC0-1.0"); assert.match(asset.source.sourcePage, /^https:\/\/kenney\.nl\/assets\//); assert.match(asset.source.sha256, /^[a-f0-9]{64}$/); }
   }
-  assert.equal(inventory.entries.filter(e => e.sources.length).length, 22);
-  assert.equal(inventory.entries.filter(e => e.category === "music" && e.sources.length).length, 0);
+  const v54Files = new Set(proof.assets.map(asset => `/audio/${asset.file}`));
+  const recorded = inventory.entries.flatMap(({ category, id, sources }) =>
+    sources.map(source => ({ category, id, file: source.url.split("?")[0] })));
+  assert.equal(recorded.filter(source => v54Files.has(source.file)).length, 22);
+  assert.deepEqual(recorded.filter(source => !v54Files.has(source.file)), [
+    { category: "sfx", id: "armor-repair", file: "/audio/sfx/armor-repair/berceau.wav" },
+    // V173 surface ambiences and the menu theme (#188) are original non-V54 deliveries.
+    { category: "ambience", id: "jungle", file: "/audio/ambience/jungle/surface-v173.ogg" },
+    { category: "ambience", id: "ice", file: "/audio/ambience/ice/surface-v173.ogg" },
+    { category: "ambience", id: "volcano", file: "/audio/ambience/volcano/surface-v173.ogg" },
+    { category: "ambience", id: "swamp", file: "/audio/ambience/swamp/surface-v173.ogg" },
+    { category: "ambience", id: "desert", file: "/audio/ambience/desert/surface-v173.ogg" },
+    { category: "ambience", id: "ocean", file: "/audio/ambience/ocean/surface-v173.ogg" },
+    { category: "ambience", id: "fungal", file: "/audio/ambience/fungal/surface-v173.ogg" },
+    { category: "ambience", id: "ruins", file: "/audio/ambience/ruins/surface-v173.ogg" },
+    { category: "music", id: "menu", file: "/audio/music/menu/mus-01.ogg" },
+    { category: "music", id: "ship", file: "/audio/music/ship/MUS-02-veille.mp3" },
+    { category: "music", id: "cradle-return", file: "/audio/music/cradle-return/MUS-15-retour.mp3" },
+  ]);
 });
 
 test("ship overlap loop has no impulsive boundary compared with its own adjacent samples", async () => {

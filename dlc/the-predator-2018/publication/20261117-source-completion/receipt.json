@@ -1,0 +1,479 @@
+{
+  "schema": 1,
+  "ok": true,
+  "operation": "preservation-only-no-generation",
+  "sourceInputsCovered": 45,
+  "sourceInputsExpected": 45,
+  "originalGeneratedPngsCovered": 13,
+  "artPngsDecoded": 15,
+  "archivesCRCVerified": 4,
+  "archiveMembersHashed": 140,
+  "originalV05FilesUnchanged": 51,
+  "scenes": 52,
+  "microZones": 183,
+  "visualFidelityCertified": false,
+  "runtimeActivationPerformed": false,
+  "unavailableOriginalArchives": [
+    "YAUTJA_DLC_THE_PREDATOR_2018_V0_1.zip",
+    "YAUTJA_DLC_THE_PREDATOR_2018_V0_4_CANDIDATE1.zip"
+  ],
+  "coverage": [
+    {
+      "source": "THE_PREDATOR_2018_CONTROLE_FIDELITE_20261117/README.md",
+      "bytes": 3271,
+      "sha256": "3734f542380fe0993e6924bb36895cf771bc86def801df62238c7512fb667f8e",
+      "locations": [
+        "production/art/archived-fidelity-attempts-20261117/README.md"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_CONTROLE_FIDELITE_20261117.zip",
+      "bytes": 16845218,
+      "sha256": "19e3103aae6f2bf1d9cf3ce65591f08b5cd3b6f368eaf24ca64f7674c12a0b41",
+      "locations": [
+        "history/THE_PREDATOR_2018_CONTROLE_FIDELITE_20261117.zip"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_2/JOUER_THE_PREDATOR_2018_V0_2.html",
+      "bytes": 66543,
+      "sha256": "4754fd63b96a64bd673b2737b299c00aac29337dba6b0f4a038ea35428fee3d2",
+      "locations": [
+        "history/YAUTJA_DLC_THE_PREDATOR_2018_V0_2_CANDIDATE2.zip!/THE_PREDATOR_2018_DLC_V0_2/JOUER_THE_PREDATOR_2018_V0_2.html"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_2/docs/CODEX_COMPLET.md",
+      "bytes": 24324,
+      "sha256": "9f5efc3527cdf7d8929c0ea0c6737128cf4b4611887476e27c6fa1e0a63ef848",
+      "locations": [
+        "history/YAUTJA_DLC_THE_PREDATOR_2018_V0_2_CANDIDATE2.zip!/THE_PREDATOR_2018_DLC_V0_2/docs/CODEX_COMPLET.md"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_2/docs/RAPPORT_VISUEL_QA_V0_2.html",
+      "bytes": 10303,
+      "sha256": "60ad82c6e87caae2cc6a5f91957466ebcd6716e8413fab6789497598eedc0285",
+      "locations": [
+        "history/YAUTJA_DLC_THE_PREDATOR_2018_V0_2_CANDIDATE2.zip!/THE_PREDATOR_2018_DLC_V0_2/docs/RAPPORT_VISUEL_QA_V0_2.html"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_3/JOUER_THE_PREDATOR_2018_V0_3.html",
+      "bytes": 111937,
+      "sha256": "479864202ad562c4d4a1e932fe60eb395f91fd5765cad966502177e672b0593a",
+      "locations": [
+        "history/YAUTJA_DLC_THE_PREDATOR_2018_V0_3_CANDIDATE1.zip!/THE_PREDATOR_2018_DLC_V0_3/JOUER_THE_PREDATOR_2018_V0_3.html"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_3/docs/CODEX_COMPLET_V0_3.md",
+      "bytes": 45525,
+      "sha256": "80c33cd71d16f0c0cc29d5c2e7072ceab7f175e462828055438d8ab6de56c8c9",
+      "locations": [
+        "history/YAUTJA_DLC_THE_PREDATOR_2018_V0_3_CANDIDATE1.zip!/THE_PREDATOR_2018_DLC_V0_3/docs/CODEX_COMPLET_V0_3.md",
+        "history/YAUTJA_DLC_THE_PREDATOR_2018_V0_3_CANDIDATE1.zip!/THE_PREDATOR_2018_DLC_V0_3/docs/CODEX_COMPLET.md"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_3/docs/INTEGRATION_V0_3.md",
+      "bytes": 1280,
+      "sha256": "44c2f7ee32c17693df392fbec35777d68d2f4da152ff8893610125893dec8d37",
+      "locations": [
+        "history/YAUTJA_DLC_THE_PREDATOR_2018_V0_3_CANDIDATE1.zip!/THE_PREDATOR_2018_DLC_V0_3/docs/INTEGRATION_V0_3.md",
+        "history/YAUTJA_DLC_THE_PREDATOR_2018_V0_3_CANDIDATE1.zip!/THE_PREDATOR_2018_DLC_V0_3/docs/INTEGRATION.md"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_3/docs/RAPPORT_VISUEL_QA_V0_3.html",
+      "bytes": 3760,
+      "sha256": "fdfea2c76091c2089769cf72236f725e84d873c465859007a234fdcdabdaedeb",
+      "locations": [
+        "history/YAUTJA_DLC_THE_PREDATOR_2018_V0_3_CANDIDATE1.zip!/THE_PREDATOR_2018_DLC_V0_3/docs/RAPPORT_VISUEL_QA_V0_3.html"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_4/JOUER_THE_PREDATOR_2018_V0_4.html",
+      "bytes": 147657,
+      "sha256": "d01ac8ba8f3702c83bd39f4a79dd1805bc53b2e5e4ebac122846efc108b5bf75",
+      "locations": [
+        "history/v0.4-recovered/JOUER_THE_PREDATOR_2018_V0_4.html"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_4/README.md",
+      "bytes": 3444,
+      "sha256": "67483b7171d231fd3f995067d79a2841e75fdb24ec3559dd81f2c2f2828fa17c",
+      "locations": [
+        "history/v0.4-recovered/README.md"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_4/docs/CODEX_COMPLET_V0_4.md",
+      "bytes": 62448,
+      "sha256": "7bf264e6e8a57409a65770bd546bba6ed0f2caebbb86999a7c886d72784c1829",
+      "locations": [
+        "history/v0.4-recovered/docs/CODEX_COMPLET_V0_4.md"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_4/docs/CONTINUITY_MATRIX_V0_4.md",
+      "bytes": 2251,
+      "sha256": "03090d0a5e1cf9f31c94bf0cd20ce3ca7e85ce7725219460a2cb3b156381b9ef",
+      "locations": [
+        "history/v0.4-recovered/docs/CONTINUITY_MATRIX_V0_4.md"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_4/docs/INTEGRATION_V0_4.md",
+      "bytes": 1324,
+      "sha256": "a9e71849e1782478af48d37d9f0c7de5f8dd5956b223375e78616e88740887fc",
+      "locations": [
+        "history/v0.4-recovered/docs/INTEGRATION_V0_4.md"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_4/docs/RAPPORT_VISUEL_QA_V0_4.html",
+      "bytes": 3679,
+      "sha256": "171a8c8bce2b2b642ef2bae7b5b431c4ee62456f011f093d078baec58bb37c78",
+      "locations": [
+        "history/v0.4-recovered/docs/RAPPORT_VISUEL_QA_V0_4.html"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_5/FILE_HASHES_SHA256.json",
+      "bytes": 5539,
+      "sha256": "af82c69e629cc481b9a597d77508ee13759fe518fccbc026b4fd6961b526a6ba",
+      "locations": [
+        "FILE_HASHES_SHA256.json"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_5/JOUER_THE_PREDATOR_2018_V0_5.html",
+      "bytes": 206264,
+      "sha256": "fbc63d4366499818b5a1372dfbab5945b40cefa443937c7d82f2a3b3ea6168b9",
+      "locations": [
+        "JOUER_THE_PREDATOR_2018_V0_5.html"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_5/docs/CAPTURE_CONTACT_SHEET_V0_5.jpg",
+      "bytes": 267687,
+      "sha256": "4e5337c3e9e6868b11c05cd98263f1f3da38d761f07a2e4a0a30821717cc0fb6",
+      "locations": [
+        "docs/CAPTURE_CONTACT_SHEET_V0_5.jpg"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_5/docs/CODEX_COMPLET_V0_5.md",
+      "bytes": 59224,
+      "sha256": "ad3f545973fe25b74e700f28df67a3f084f04f6ba0bc281ff2f85473c4c61b97",
+      "locations": [
+        "docs/CODEX_COMPLET.md",
+        "docs/CODEX_COMPLET_V0_5.md"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_5/docs/CONTINUITY_MATRIX_V0_5.md",
+      "bytes": 3545,
+      "sha256": "809a77ddb2be06e57a2a2d9e38181a4d2e28e414d2454045607a97aff32194bd",
+      "locations": [
+        "docs/CONTINUITY_MATRIX_V0_5.md"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_5/docs/FIDELITY_MATRIX_V0_5.csv",
+      "bytes": 15887,
+      "sha256": "bdd69242b29450d3bc88d43e0c0b3a5778c591bb20ed70f79093c455c6127646",
+      "locations": [
+        "docs/FIDELITY_MATRIX.csv",
+        "docs/FIDELITY_MATRIX_V0_5.csv"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_5/docs/INTEGRATION_V0_5.md",
+      "bytes": 1547,
+      "sha256": "bfe18de6b2622def3a3955e755068811867f8ac3468c6dc05f584eac5b5ab0be",
+      "locations": [
+        "docs/INTEGRATION.md",
+        "docs/INTEGRATION_V0_5.md"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_5/docs/MIGRATION_V0_4_TO_V0_5.md",
+      "bytes": 728,
+      "sha256": "69f359b8a6e693ec877d9a389e9029957e49213ef747b7dfd65448b3804ca866",
+      "locations": [
+        "docs/MIGRATION_V0_4_TO_V0_5.md"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_5/docs/RAPPORT_VISUEL_QA_V0_5.html",
+      "bytes": 3742,
+      "sha256": "0a0bc3c290eead666330cc1ba799199620618216233fefacab33f235e20959e4",
+      "locations": [
+        "docs/RAPPORT_VISUEL_QA_V0_5.html"
+      ]
+    },
+    {
+      "source": "THE_PREDATOR_2018_DLC_V0_5/docs/SYSTEMS_V0_5.md",
+      "bytes": 2224,
+      "sha256": "800e906957c16f0ed9ee7a55b08a7398cea47d922d43e5488f2c851d2d1c0605",
+      "locations": [
+        "docs/SYSTEMS_V0_5.md"
+      ]
+    },
+    {
+      "source": "YAUTJA_DLC_THE_PREDATOR_2018_V0_2_CANDIDATE2.zip",
+      "bytes": 1156492,
+      "sha256": "100c2277cfa463eb45f5a8db12ae04f630dbbd1840b373bab954bc8f3e5f0cdc",
+      "locations": [
+        "history/YAUTJA_DLC_THE_PREDATOR_2018_V0_2_CANDIDATE2.zip"
+      ]
+    },
+    {
+      "source": "YAUTJA_DLC_THE_PREDATOR_2018_V0_2_CANDIDATE2.zip.sha256",
+      "bytes": 115,
+      "sha256": "c1a6f46f3129655df5baa75509b79394d566261caffd44bd3f2536271531d3bc",
+      "locations": [
+        "history/YAUTJA_DLC_THE_PREDATOR_2018_V0_2_CANDIDATE2.zip.sha256"
+      ]
+    },
+    {
+      "source": "YAUTJA_DLC_THE_PREDATOR_2018_V0_3_CANDIDATE1.zip",
+      "bytes": 1968766,
+      "sha256": "3be249c4905e9aea0a3a1107bb9ed681d5edc24786c368b0459132b187536572",
+      "locations": [
+        "history/YAUTJA_DLC_THE_PREDATOR_2018_V0_3_CANDIDATE1.zip"
+      ]
+    },
+    {
+      "source": "YAUTJA_DLC_THE_PREDATOR_2018_V0_3_CANDIDATE1.zip.sha256",
+      "bytes": 115,
+      "sha256": "17527e027bade00b51e923e2bf466024c95fe27ccad1f4f8aa20e855e6d2b90e",
+      "locations": [
+        "history/YAUTJA_DLC_THE_PREDATOR_2018_V0_3_CANDIDATE1.zip.sha256"
+      ]
+    },
+    {
+      "source": "YAUTJA_DLC_THE_PREDATOR_2018_V0_4_CANDIDATE1.zip.sha256",
+      "bytes": 115,
+      "sha256": "63d352546b134326c73a42d75b55318b4e8f1a2d94a873a11177d4925a508d82",
+      "locations": [
+        "history/attachment-checksums/YAUTJA_DLC_THE_PREDATOR_2018_V0_4_CANDIDATE1.zip.sha256"
+      ]
+    },
+    {
+      "source": "YAUTJA_DLC_THE_PREDATOR_2018_V0_5_CANDIDATE1.zip",
+      "bytes": 1978603,
+      "sha256": "f58fba410784ee146d1b75355dd90f6e47f18dff7b8356eee0f7380c9e195c90",
+      "locations": [
+        "history/YAUTJA_DLC_THE_PREDATOR_2018_V0_5_CANDIDATE1.zip"
+      ]
+    },
+    {
+      "source": "YAUTJA_DLC_THE_PREDATOR_2018_V0_5_CANDIDATE1.zip.sha256",
+      "bytes": 125,
+      "sha256": "fdcfadf7041d3572dbbe368ae33a7ad75bfa9d8b12d8442773b0e73d71b811ca",
+      "locations": [
+        "history/attachment-checksums/YAUTJA_DLC_THE_PREDATOR_2018_V0_5_CANDIDATE1.zip.sha256"
+      ]
+    },
+    {
+      "source": "a_cinematic_photo_realistic_character_reference_c.png",
+      "bytes": 2860676,
+      "sha256": "4e8e8c4d074cf6db9b337f4d73cbb65ba08d882931944c100c2d00214c22ad31",
+      "locations": [
+        "production/art/lot-02-film-correction/rejected/infographic-attempt-03.png"
+      ]
+    },
+    {
+      "source": "a_clean_transparent_background_png_composite_with.png",
+      "bytes": 2472294,
+      "sha256": "52aa1525e1a0c63f79129077e79d5489a45266a5f70da303316c3feb2f78c299",
+      "locations": [
+        "production/art/lot-01/master-02.png"
+      ]
+    },
+    {
+      "source": "a_clean_transparent_background_png_like_composite.png",
+      "bytes": 2436998,
+      "sha256": "6dd35a42bda25a733bce36c6435297301510773244f87659d2c2824b2fd8b0f1",
+      "locations": [
+        "production/art/lot-01/master-01.png"
+      ]
+    },
+    {
+      "source": "a_clean_transparent_background_spritesheet_a_grid.png",
+      "bytes": 2899170,
+      "sha256": "e45394d3fada3b0436a9296c067af3c3e1ba70cef80ecd59e955913ec3358dce",
+      "locations": [
+        "production/art/archived-fidelity-attempts-20261117/rejected/attempt-06-upgrade-atlas.png"
+      ]
+    },
+    {
+      "source": "a_detailed_high_resolution_png_style_cutout_on_a.png",
+      "bytes": 1309040,
+      "sha256": "b829e4151274132c047f597b7c04f4554922df00dca419bdb69637f822a5b8a6",
+      "locations": [
+        "production/art/lot-02-film-correction/rejected/fugitive-attempt-02.png"
+      ]
+    },
+    {
+      "source": "a_detailed_pixel_art_16_bit_style_scene_a_cinemat.png",
+      "bytes": 2551697,
+      "sha256": "b3d08f2447751ac0db4fd3aab64327b996f197b3d3b2fec507b3ddeec2e76109",
+      "locations": [
+        "production/art/archived-fidelity-attempts-20261117/rejected/attempt-01-scene.png"
+      ]
+    },
+    {
+      "source": "a_detailed_pixel_art_scene_a_cinematic_16_bit_pix.png",
+      "bytes": 2499648,
+      "sha256": "c136dcd04938ea38c563308deee6d58eaac30b3c80d09abe6fc73e13918723c1",
+      "locations": [
+        "production/art/archived-fidelity-attempts-20261117/rejected/attempt-02-scene.png"
+      ]
+    },
+    {
+      "source": "a_detailed_pixel_art_sprite_sheet_on_a_black_trans.png",
+      "bytes": 2863097,
+      "sha256": "9ae6a99332c6011ea08f12ee124d3a8388bb666bb369f419a4f9e0f01b1133b7",
+      "locations": [
+        "production/art/archived-fidelity-attempts-20261117/rejected/attempt-04-human-atlas.png"
+      ]
+    },
+    {
+      "source": "a_detailed_sprite_sheet_image_on_a_black_backgroun.png",
+      "bytes": 3159626,
+      "sha256": "eae820abd97c26630cc3c915c8482ef7cbad5af7f9fd226ddc486e7db15a33bd",
+      "locations": [
+        "production/art/lot-02-film-correction/rejected/predator-sheet-attempt-05.png"
+      ]
+    },
+    {
+      "source": "a_detailed_sprite_sheet_style_image_on_a_black_bac.png",
+      "bytes": 3095128,
+      "sha256": "40ac640781f18bbd02b18b66bcc6c3d5eb0823013986e62bf528d2b1330810a5",
+      "locations": [
+        "production/art/archived-fidelity-attempts-20261117/rejected/attempt-03-alien-atlas.png"
+      ]
+    },
+    {
+      "source": "a_high_detail_cutout_png_on_a_transparent_checkerb.png",
+      "bytes": 1292981,
+      "sha256": "d3289adbe0682111c599c5b0581936f0f1902e6baa4995255908b000d36f13e5",
+      "locations": [
+        "production/art/lot-02-film-correction/rejected/fugitive-attempt-01.png"
+      ]
+    },
+    {
+      "source": "a_large_sprite_sheet_on_a_transparent_checkerboard.png",
+      "bytes": 3174944,
+      "sha256": "5e64733cc348975c14a3b1d8a1087050cac518de3be560f7085bd3c942ccc7ec",
+      "locations": [
+        "production/art/archived-fidelity-attempts-20261117/rejected/attempt-05-fugitive-atlas.png"
+      ]
+    },
+    {
+      "source": "a_wide_sprite_sheet_on_a_dark_black_background_mu.png",
+      "bytes": 2768789,
+      "sha256": "28bbcdc7cb46526f69c8d8fa42fec1c72acdd0e827073b9b0fbcc067008c1a3e",
+      "locations": [
+        "production/art/lot-02-film-correction/rejected/human-sheet-attempt-04.png"
+      ]
+    }
+  ],
+  "artPngs": [
+    {
+      "path": "production/art/archived-fidelity-attempts-20261117/rejected/attempt-01-scene.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGBA"
+    },
+    {
+      "path": "production/art/archived-fidelity-attempts-20261117/rejected/attempt-02-scene.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGBA"
+    },
+    {
+      "path": "production/art/archived-fidelity-attempts-20261117/rejected/attempt-03-alien-atlas.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    },
+    {
+      "path": "production/art/archived-fidelity-attempts-20261117/rejected/attempt-04-human-atlas.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    },
+    {
+      "path": "production/art/archived-fidelity-attempts-20261117/rejected/attempt-05-fugitive-atlas.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    },
+    {
+      "path": "production/art/archived-fidelity-attempts-20261117/rejected/attempt-06-upgrade-atlas.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    },
+    {
+      "path": "production/art/lot-01/fugitive-armored-idle-right-candidate.png",
+      "width": 663,
+      "height": 1028,
+      "mode": "RGBA"
+    },
+    {
+      "path": "production/art/lot-01/master-01.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    },
+    {
+      "path": "production/art/lot-01/master-02.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    },
+    {
+      "path": "production/art/lot-01/upgrade-armored-idle-right-candidate.png",
+      "width": 788,
+      "height": 1045,
+      "mode": "RGBA"
+    },
+    {
+      "path": "production/art/lot-02-film-correction/rejected/fugitive-attempt-01.png",
+      "width": 1199,
+      "height": 1312,
+      "mode": "RGBA"
+    },
+    {
+      "path": "production/art/lot-02-film-correction/rejected/fugitive-attempt-02.png",
+      "width": 1199,
+      "height": 1312,
+      "mode": "RGBA"
+    },
+    {
+      "path": "production/art/lot-02-film-correction/rejected/human-sheet-attempt-04.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA"
+    },
+    {
+      "path": "production/art/lot-02-film-correction/rejected/infographic-attempt-03.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    },
+    {
+      "path": "production/art/lot-02-film-correction/rejected/predator-sheet-attempt-05.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import type { DiscoveryReactionV112 } from "./systems/corpseDiscoveryV112";
 
 export const DISCOVERY_LABELS_V112 = {
-  visual:"CORPS REPÉRÉ", radio:"RADIO · CORPS", scent:"ODEUR · CORPS",
+  visual:"CORPS REPÉRÉ", staged:"MISE EN SCÈNE", radio:"RADIO · CORPS", scent:"ODEUR · CORPS",
   avoid:"ÉVITEMENT", inspect:"EXAMEN", guard:"GARDE",
 } as const;
 export const DISCOVERY_RESPONSE_LABELS_V112 = {

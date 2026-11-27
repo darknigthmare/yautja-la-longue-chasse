@@ -11,6 +11,11 @@ export * from './app/game/systems/homeworld';
 export * from './app/game/systems/homeworldWorldV77';
 export * from './app/game/systems/homeworldInteriorsV64';
 export * from './app/game/systems/homeworldContractsV68';
+export * from './app/game/systems/minorArcsV160';
+export { tribunalAccessV147, tribunalBlocksChroniclePromotionV147 } from './app/game/systems/honorTribunalV147';
+export { getChronicleRank } from './app/game/systems/clanChronicle';
+export { emptyResidenceV149, houseV149, isFutureResidenceV149, normalizeResidenceV149, recordResidenceFieldEventV149 } from './app/game/systems/residenceV149';
+export { emptyResidenceLifeV150, guestsInSceneV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, settleResidenceLifeV150 } from './app/game/systems/residenceLifeV150';
 export * from './app/game/systems/homeworldRegionsV68';
 export * from './app/game/systems/homeworldAccessV69';
 export {createNurseryCampaign} from './app/game/systems/nurseryCampaign';
@@ -61,7 +66,7 @@ function fixture(initialOverrides = {}) {
     writeSaveWithStatus(save) { const result = api.writeSaveWithStatus(save, storage, key); writes.push(result.persisted); return result; },
     reconcileSaveWrite(attempt, owner) { return api.reconcileSaveWrite(attempt, owner, storage, key); },
   };
-  for (const name of ['persistSocialProgress', 'persistHomeworldProgress', 'pointInCurrentSpace', 'openHomeworldRegionV68', 'checkpointHomeworldRegionV68', 'fieldHomeworldRegionV68', 'submitContractV68']) environment[name] = callback(name, environment);
+  for (const name of ['persistSocialProgress', 'persistHomeworldProgress', 'pointInCurrentSpace', 'openHomeworldRegionV68', 'settleResidenceLifeForRegionV150', 'checkpointHomeworldRegionV68', 'fieldHomeworldRegionV68', 'submitContractV68']) environment[name] = callback(name, environment);
   environment.onProgress = environment.persistHomeworldProgress;
   const select = pointId => {
     const room = api.homeworldInteriorForPointV64(pointId);
@@ -214,14 +219,17 @@ test('the real physical delivery callback credits the spendable wallet with the 
   assert.equal(f.environment.progressRef.current.contractsV68.entries[0].status, 'active');
   f.setRejected(false); f.environment.submitContractV68(action('deliver'));
   assert.equal(f.current.profile.clanMarks, before.profile.clanMarks + 18);
+  assert.equal(f.current.profile.honor, before.profile.honor + 18);
   assert.equal(f.current.homeworld.contractsV68.entries[0].status, 'completed');
-  for (const key of ['rankId', 'honor']) assert.equal(f.current.profile[key], before.profile[key]);
+  assert.equal(f.current.profile.rankId, before.profile.rankId);
   for (const key of ['inventory', 'trophies', 'prologue', 'youthTraining', 'soloV66', 'soloV67', 'soloV68']) assert.deepEqual(f.current[key], before[key]);
   const writes = f.writes.length;
   for (const kind of ['deliver', 'accept', 'resume']) f.environment.submitContractV68(action(kind));
   assert.equal(f.current.profile.clanMarks, 18); assert.equal(f.writes.length, writes);
   const loaded = api.loadSave(f.storage, 'contracts-v68');
   assert.equal(loaded.profile.clanMarks, 18); assert.deepEqual(loaded.homeworld.contractsV68, f.current.homeworld.contractsV68);
+  assert.equal(loaded.profile.honor, before.profile.honor + 18);
+  assert.deepEqual(loaded.honorSourcesV169.entries.map(({ id, delta }) => [id, delta]), [["contract:ash-marches-track", 18]]);
 });
 
 test('a committed reward with failed readback is reconciled together with its exact wallet, never paid twice', () => {
@@ -230,6 +238,7 @@ test('a committed reward with failed readback is reconciled together with its ex
   assert.deepEqual(f.current, before);
   const serialized = f.values.get('contracts-v68'), committed = JSON.parse(serialized), writes = f.writes.length;
   assert.equal(committed.profile.clanMarks, 18); assert.equal(committed.homeworld.contractsV68.entries[0].status, 'completed');
+  assert.equal(committed.profile.honor, before.profile.honor + 18);
   f.environment.submitContractV68(action('deliver'));
   assert.equal(f.current.profile.clanMarks, 18); assert.equal(f.current.homeworld.contractsV68.entries[0].status, 'completed');
   assert.equal(f.values.get('contracts-v68'), serialized); assert.equal(f.writes.length, writes);
@@ -268,13 +277,14 @@ test('a V69 chain upgrades the durable ledger only on acceptance, requires actua
   f.environment.submitContractV68({ kind: 'deliver', contractId: 'v69-return-1' }); assert.deepEqual(f.current, before);
   f.setRejected(false); f.environment.submitContractV68({ kind: 'deliver', contractId: 'v69-return-1' });
   assert.equal(f.current.profile.clanMarks, before.profile.clanMarks + 44);
+  assert.equal(f.current.profile.honor, before.profile.honor + 44);
   const completed = structuredClone(f.current.homeworld.contractsV68.entries[0]); f.select('medbay-service'); f.setRejected(true);
   f.environment.submitContractV68(acceptSecond); assert.equal(f.current.homeworld.contractsV68.entries.length, 1);
   f.setRejected(false); f.environment.submitContractV68(acceptSecond); assert.equal(f.current.homeworld.contractsV68.entries.length, 2);
   assert.deepEqual(f.current.homeworld.contractsV68.entries[0], completed); assert.equal(f.current.profile.clanMarks, 44);
   const writes = f.writes.length; f.environment.submitContractV68(acceptSecond); assert.equal(f.writes.length, writes);
   assert.deepEqual(api.loadSave(f.storage, 'contracts-v68').homeworld.contractsV68, f.current.homeworld.contractsV68);
-  for (const key of ['rankId', 'honor']) assert.equal(f.current.profile[key], before.profile[key]);
+  assert.equal(f.current.profile.rankId, before.profile.rankId);
   for (const key of ['inventory', 'trophies', 'justice', 'prologue', 'youthTraining', 'soloV66', 'soloV67', 'soloV68', 'soloV69']) assert.deepEqual(f.current[key], before[key]);
 });
 

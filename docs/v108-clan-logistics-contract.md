@@ -54,3 +54,19 @@ Aucune écriture dans SaveGame, aucun changement aux planètes, aucune migration
 `tests/clan-logistics-v108.test.mjs` couvre les sources/coûts, les identités et la conservation, le plafond PC, les délais, six constructions avec les mêmes porteurs, le retour d’un kit, la traversée, l’énergie conservée après retrait, les gabarits, l’expiration, le replay et les échecs/conflits de persistance. Les sondes de modèle ne remplacent pas la recette navigateur.
 
 `scripts/qa-clan-logistics-v108.mjs` joue les contrôles normaux, les déplacements et les fichiers audio sur une production compilée. La recette termine les six opérations, les retours physiques et une reprise à la septième étape d’un vol, puis vérifie les imports et le mobile. Les preuves finales doivent identifier exactement le commit, le BUILD_ID, les fichiers avant/après, les captures PNG et leurs SHA. Un rodage préflight n’est pas une validation publiée.
+
+
+## Reçus signés du duel W3-S14
+
+Le dossier s’ouvre dans Guerres des clans → Bible V6 → Forces et logistique → Convoi des six ouvrages → W3-S14 → Dossier de campagne. Il affiche l’identifiant du créneau courant que l’organisateur déclare à l’ouverture du salon. Cette association identifie un créneau de sauvegarde local.
+
+L’organisateur conserve une clé privée Ed25519 sur le serveur. Le jeu utilise la clé publique de ce serveur au format SPKI DER en base64url, sans remplissage. Elle se configure au build dans `NEXT_PUBLIC_YAUTJA_W3_S14_VERIFY_KEY`.
+
+```sh
+openssl genpkey -algorithm ED25519 -out arbitre-w3-s14.pem
+openssl pkey -in arbitre-w3-s14.pem -pubout -outform DER | openssl base64 -A | tr '+/' '-_' | tr -d '='
+```
+
+Pour créer le salon, `node scripts/serve-clan-war-w3-s14-duel.mjs` lit `YAUTJA_W3_S14_DATABASE`, `YAUTJA_W3_S14_CHECKPOINT` et `YAUTJA_W3_S14_TOKENS`. L’attestation exige également `YAUTJA_W3_S14_SIGNING_KEY` avec le chemin de la clé privée et `YAUTJA_W3_S14_CAMPAIGN_OWNERS` avec un tableau JSON des deux identifiants affichés, challenger puis rival. La reprise du même journal requiert les mêmes deux associations, les mêmes jetons et la même clé. L’export V109 de départ est requis lors de la création.
+
+Le verdict et les deux attestations sont écrits ensemble dans SQLite. Chaque joueur télécharge son reçu signé dans le salon puis l’importe dans son dossier. Le jeu vérifie le résultat, la signature, la source et le créneau à l’import et lors de la relecture. Chaque salon possède un emplacement dans le dossier du créneau. Le format portable de sauvegarde, les comptes distants et les récompenses de campagne gardent leurs propres registres.

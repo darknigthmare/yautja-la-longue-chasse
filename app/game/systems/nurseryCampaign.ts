@@ -1,5 +1,6 @@
 import { createClanChronicle, normalizeClanChronicle, recordChronicleEvidence, performChronicleRite, type ClanChronicle } from "./clanChronicle";
 import { createNurseryPrologue, normalizeNurseryCheckpoint, type NurseryState, type NurseryCompletionReceipt } from "./nurseryPrologue";
+import { keepsNurseryOpening } from "./nurseryOpening";
 import type { SaveGame } from "../types";
 
 /** Embedded in the campaign so checkpoint, completion and rite commit in one key. */
@@ -32,11 +33,18 @@ export function normalizeNurseryCampaign(value: unknown): NurseryCampaignProgres
   }
   return { version: 1, status: value.status as NurseryCampaignProgress["status"], checkpoint, chronicle, completedAt: value.completedAt as string | null };
 }
+function keepsCohortProgress(previous: NurseryState, next: NurseryState): boolean {
+  const before = previous.cohortV172;
+  const after = next.cohortV172;
+  return !before || Boolean(after && after.steps >= before.steps && (!before.choice || after.choice === before.choice));
+}
+
 /** Nonterminal observations cannot mint completion, rewards or adult statistics. */
 export function withNurseryCheckpoint(save: SaveGame, state: NurseryState): SaveGame | null {
   const progress = normalizeNurseryCampaign(save.prologue);
   const checkpoint = normalizeNurseryCheckpoint(state);
-  if (!progress || progress.status !== "active" || !checkpoint || checkpoint.phase === "complete" || checkpoint.tick < progress.checkpoint.tick || checkpoint.attempt < progress.checkpoint.attempt) return null;
+  if (!progress || progress.status !== "active" || !checkpoint || checkpoint.phase === "complete" || checkpoint.tick < progress.checkpoint.tick || checkpoint.attempt < progress.checkpoint.attempt || !keepsCohortProgress(progress.checkpoint, checkpoint) ||
+      !keepsNurseryOpening(progress.checkpoint.opening, checkpoint.opening)) return null;
   const chronicle = checkpoint.phase === "loading" ? progress.chronicle : recordChronicleEvidence(progress.chronicle, { id: "intro-begun", sourceId: "chronicle.intro.started" }).state;
   const playedSeconds = Math.max(0, Math.floor(checkpoint.tick / 60) - Math.floor(progress.checkpoint.tick / 60));
   return { ...save, profile: { ...save.profile, playTimeSeconds: save.profile.playTimeSeconds + playedSeconds }, prologue: { ...progress, checkpoint, chronicle } };
@@ -46,7 +54,8 @@ export function withNurseryCompletion(save: SaveGame, receipt: NurseryCompletion
   const progress = normalizeNurseryCampaign(save.prologue), checkpoint = normalizeNurseryCheckpoint(state);
   if (!progress || !checkpoint || checkpoint.phase !== "complete" || receipt?.id !== "intro-completed" || receipt.sourceId !== "chronicle.intro.completed" || receipt.sceneId !== "nursery-prologue" || receipt.attempt !== checkpoint.attempt || !Number.isFinite(Date.parse(now))) return null;
   if (progress.status === "completed") return progress.checkpoint.attempt === receipt.attempt ? save : null;
-  if (checkpoint.tick < progress.checkpoint.tick || checkpoint.attempt < progress.checkpoint.attempt) return null;
+  if (checkpoint.tick < progress.checkpoint.tick || checkpoint.attempt < progress.checkpoint.attempt || !keepsCohortProgress(progress.checkpoint, checkpoint) ||
+      !keepsNurseryOpening(progress.checkpoint.opening, checkpoint.opening)) return null;
   const begun = recordChronicleEvidence(progress.chronicle, { id: "intro-begun", sourceId: "chronicle.intro.started" });
   const complete = recordChronicleEvidence(begun.state, receipt);
   const recognized = performChronicleRite(complete.state, { id: "nursery-recognition", sourceId: "chronicle.rite.nursery" });

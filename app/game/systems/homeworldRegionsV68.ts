@@ -193,7 +193,10 @@ export function regionResidentPositionV68(resident: RegionResidentV68, tick: num
   const t = Math.min(phase, length * 2 - phase) / length;
   return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t };
 }
-export function regionCollisionV68(id: HomeworldRegionIdV68, point: HomeworldVec2, tick = 0): string | null {
+export interface RegionResidentVisitV68 extends HomeworldVec2 { residentId: string; inside: boolean; moving: boolean }
+type RegionVisitsAtV68 = (state: HomeworldRegionStateV68) => readonly RegionResidentVisitV68[];
+
+export function regionCollisionV68(id: HomeworldRegionIdV68, point: HomeworldVec2, tick = 0, visits: readonly RegionResidentVisitV68[] = []): string | null {
   const definition = HOMEWORLD_REGIONS_V68[id];
   for (const building of definition.buildings) {
     const f = homeworldBuildingFootprintV64(building);
@@ -208,13 +211,15 @@ export function regionCollisionV68(id: HomeworldRegionIdV68, point: HomeworldVec
     if (Math.abs(point.x - post.x) < f.width / 2 + 24 && point.y + 14 > post.y - f.depth && point.y - 14 < post.y) return post.id;
   }
   for (const npc of definition.residents) {
-    const p = regionResidentPositionV68(npc, tick);
+    const visit = visits.find(guest => guest.residentId === npc.id);
     // Moving residents yield to the hunter; fixed service NPCs have physical feet.
-    if (npc.route.length === 1 && Math.abs(point.x - p.x) < 40 && Math.abs(point.y - p.y) < 28) return npc.id;
+    if (visit ? visit.inside || visit.moving : npc.route.length !== 1) continue;
+    const p = visit ?? regionResidentPositionV68(npc, tick);
+    if (Math.abs(point.x - p.x) < 40 && Math.abs(point.y - p.y) < 28) return npc.id;
   }
   return null;
 }
-export function isHomeworldRegionWalkableV68(id: HomeworldRegionIdV68, zone: HomeworldRegionStateV68['zone'], point: HomeworldVec2, tick = 0, buildingId: string | null = null) {
+export function isHomeworldRegionWalkableV68(id: HomeworldRegionIdV68, zone: HomeworldRegionStateV68['zone'], point: HomeworldVec2, tick = 0, buildingId: string | null = null, visits: readonly RegionResidentVisitV68[] = []) {
   if (![point.x, point.y].every(Number.isFinite)) return false;
   if (zone === 'interior') return point.x >= 55 && point.x <= 705 && point.y >= 75 && point.y <= 660 && !homeworldRegionInteriorPropsV68(buildingId).some(prop => {
     const f = HOMEWORLD_PROP_ART_V64[prop.artId].footprintWorld;
@@ -222,7 +227,7 @@ export function isHomeworldRegionWalkableV68(id: HomeworldRegionIdV68, zone: Hom
   });
   const floor = zone === 'passage' ? (p: HomeworldVec2) => regionPassageFloorV68(id, p) : regionVillageFloorV68;
   return [[-24, -14], [-24, 14], [24, -14], [24, 14]].every(([x, y]) => floor({ x: point.x + x, y: point.y + y }))
-    && (zone === 'passage' || regionCollisionV68(id, point, tick) === null);
+    && (zone === 'passage' || regionCollisionV68(id, point, tick, visits) === null);
 }
 const actorAt = (point: HomeworldVec2, facing: -1 | 1 = 1): HomeworldActor => ({ ...point, vx: 0, vy: 0, grounded: true, facing });
 export function createHomeworldRegionV68(regionId: HomeworldRegionIdV68, runId = `${regionId}-journey`, startAtVillage = false): HomeworldRegionStateV68 {
@@ -234,7 +239,7 @@ export function regionHazardPhaseV68(tick: number) {
   return phase < h.warningTicks ? 'warning' : phase < h.warningTicks + h.activeTicks ? 'active' : 'calm';
 }
 export interface RegionInteractionV68 { kind: 'village' | 'city' | 'departure' | 'door' | 'exit-interior' | 'resident' | 'trace' | 'cache' | 'service' | 'fauna' | 'ward'; id: string; label: string }
-export function homeworldRegionInteractionV68(state: HomeworldRegionStateV68): RegionInteractionV68 | null {
+export function homeworldRegionInteractionV68(state: HomeworldRegionStateV68, visits: readonly RegionResidentVisitV68[] = []): RegionInteractionV68 | null {
   const a = state.actor, definition = HOMEWORLD_REGIONS_V68[state.regionId], near = (p: HomeworldVec2, d: number) => Math.hypot(a.x - p.x, a.y - p.y) <= d;
   if (state.zone === 'passage') {
     if (near(definition.route[0], 95) && (state.direction === 'outbound' || state.routeVisited.length === definition.route.length)) return { kind: 'city', id: 'city', label: 'Revenir à la cité' };
@@ -251,7 +256,10 @@ export function homeworldRegionInteractionV68(state: HomeworldRegionStateV68): R
     const door = homeworldBuildingDoorwayV64(building);
     if (Math.abs(a.x - building.x) < door.clearWidth / 2 - 20 && a.y > building.y + 14 && a.y < door.approach.y + 60) return { kind: 'door', id: building.id, label: `Entrer : ${building.label}` };
   }
-  for (const npc of definition.residents) if (near(regionResidentPositionV68(npc, state.tick), 130)) return { kind: 'resident', id: npc.id, label: `Parler : ${npc.name}` };
+  for (const npc of definition.residents) {
+    const visit = visits.find(guest => guest.residentId === npc.id);
+    if (!visit?.inside && near(visit ?? regionResidentPositionV68(npc, state.tick), 130)) return { kind: 'resident', id: npc.id, label: `Parler : ${npc.name}` };
+  }
   const trace = HOMEWORLD_REGION_TRACES_V68[state.traces.length];
   if (trace && near(trace, 100)) return { kind: 'trace', id: trace.id, label: `Inspecter : ${trace.label}` };
   if (REGION_WARD_IDS_V68.includes(state.regionId)) for (const post of REGION_WARD_POSTS_V68) if (near(post, 110)) return { kind: 'ward', id: post.id, label: state.protectedPosts.includes(post.id) ? 'Balise fixée' : 'Fixer la balise avant le danger' };
@@ -266,10 +274,11 @@ export function acknowledgeHomeworldRegionEventV68(state: HomeworldRegionStateV6
   if (!state.pendingFieldEvent) return state;
   return { ...state, pendingFieldEvent: null, eventReceipts: [...new Set([...state.eventReceipts, state.pendingFieldEvent.action])] };
 }
-export function stepHomeworldRegionV68(state: HomeworldRegionStateV68, input: { x?: number; y?: number; interact?: boolean } = {}, paused = false): HomeworldRegionStateV68 {
+export function stepHomeworldRegionV68(state: HomeworldRegionStateV68, input: { x?: number; y?: number; interact?: boolean } = {}, paused = false, visitsAt?: RegionVisitsAtV68): HomeworldRegionStateV68 {
   if (paused || state.pendingFieldEvent || state.status !== 'walking') return state;
+  const visits = visitsAt?.(state);
   const next = structuredClone(state);
-  next.actor = stepHomeworldActorOnFloor(state.actor, { moveX: input.x ?? 0, climb: input.y ?? 0, jumpPressed: false }, 1 / 60, point => isHomeworldRegionWalkableV68(state.regionId, state.zone, point, state.tick, state.buildingId), () => state.actor);
+  next.actor = stepHomeworldActorOnFloor(state.actor, { moveX: input.x ?? 0, climb: input.y ?? 0, jumpPressed: false }, 1 / 60, point => isHomeworldRegionWalkableV68(state.regionId, state.zone, point, state.tick, state.buildingId, visits), () => state.actor);
   next.tick++; next.walked += Math.hypot(next.actor.x - state.actor.x, next.actor.y - state.actor.y);
   const definition = HOMEWORLD_REGIONS_V68[state.regionId];
   if (next.zone === 'passage') {
@@ -301,7 +310,7 @@ export function stepHomeworldRegionV68(state: HomeworldRegionStateV68, input: { 
   }
   if (!next.pendingFieldEvent && REGION_WARD_IDS_V68.includes(next.regionId) && next.protectedPosts.length === 2 && next.evaded >= 1 && !next.eventReceipts.includes('ward')) next.pendingFieldEvent = fieldEvent(next, 'ward');
   if (next.pendingFieldEvent) return next;
-  const interaction = input.interact ? homeworldRegionInteractionV68(next) : null;
+  const interaction = input.interact ? homeworldRegionInteractionV68(next, visitsAt?.(next)) : null;
   if (!interaction) return next;
   switch (interaction.kind) {
     case 'city': next.status = 'at-city'; break;
@@ -361,16 +370,21 @@ export function regionObjectiveV68(state: HomeworldRegionStateV68) {
   if (!state.recovered && !state.eventReceipts.includes('challenge') && !state.eventReceipts.includes('ward')) return state.evaded < 1 ? 'Observer le danger, s’écarter puis relever le coffret' : 'Récupérer le coffret pendant l’accalmie';
   return state.reported ? 'Rapport remis — visiter le clan ou reprendre la corniche' : `Rapporter le relevé à ${d.guideName}`;
 }
-export function normalizeRegionFieldEventV68(value: unknown): RegionFieldEventV68 | null {
+/** A live report may use the guide position derived by the host from its durable visit ledger.
+ * Undefined keeps the fixed-post rule for old records, null means the guide is unavailable. */
+export function normalizeRegionFieldEventV68(value: unknown, reportAt?: HomeworldVec2 | null): RegionFieldEventV68 | null {
   if (!record(value) || value.version !== 1 || !isHomeworldRegionIdV68(value.regionId) || typeof value.runId !== 'string' || !/^[\w:-]{1,100}$/.test(value.runId) || !Number.isSafeInteger(value.tick) || (value.tick as number) < 1 || !['survey', 'recover', 'track', 'challenge', 'ward', 'report'].includes(String(value.action)) || typeof value.siteId !== 'string' || typeof value.targetId !== 'string' || !finite(value.walked) || value.walked < 400 || !record(value.actor) || ![value.actor.x, value.actor.y].every(finite) || value.trailCount !== 3 || ![value.evaded, value.observedTicks, value.touches, value.interventions].every(n => Number.isSafeInteger(n) && (n as number) >= 0) || value.armed !== false) return null;
   const action = value.action as RegionFieldActionV68, region = value.regionId;
   if (value.siteId !== `${region}-${action === 'survey' ? 'trail-3' : action === 'recover' ? 'cache' : action === 'report' ? 'guide' : action}` || value.targetId !== `${region}-${action === 'survey' ? 'trail' : action === 'track' || action === 'challenge' ? 'fauna' : action === 'report' ? 'guide' : 'relay'}`) return null;
   if (action === 'track' && (!REGION_TRACK_IDS_V68.includes(region) || (value.observedTicks as number) < 90) || action === 'challenge' && (!REGION_CHALLENGE_IDS_V68.includes(region) || (value.evaded as number) < 2 || (value.touches as number) < 3) || action === 'ward' && (!REGION_WARD_IDS_V68.includes(region) || (value.evaded as number) < 1 || value.interventions !== 2) || action === 'recover' && (value.evaded as number) < 1) return null;
-  const expected = action === 'survey' ? HOMEWORLD_REGION_TRACES_V68[2] : action === 'recover' ? { x: 7720, y: 2220 } : action === 'report' ? HOMEWORLD_REGIONS_V68[region].residents[0] : { x: 7450, y: 2050 };
-  if (Math.hypot((value.actor.x as number) - expected.x, (value.actor.y as number) - expected.y) > (action === 'survey' ? 110 : action === 'track' || action === 'challenge' || action === 'ward' ? 1100 : 150) || value.walked > (value.tick as number) * HOMEWORLD_ACTOR.walkSpeed / 60 + .1 || !isHomeworldRegionWalkableV68(region, 'village', value.actor as unknown as HomeworldVec2, value.tick as number)) return null;
+  const expected = action === 'survey' ? HOMEWORLD_REGION_TRACES_V68[2] : action === 'recover' ? { x: 7720, y: 2220 }
+    : action === 'report' ? (reportAt === undefined ? HOMEWORLD_REGIONS_V68[region].residents[0] : reportAt) : { x: 7450, y: 2050 };
+  const reach = action === 'survey' ? 110 : action === 'track' || action === 'challenge' || action === 'ward' ? 1100
+    : action === 'report' && reportAt ? 130 : 150;
+  if (!expected || Math.hypot((value.actor.x as number) - expected.x, (value.actor.y as number) - expected.y) > reach || value.walked > (value.tick as number) * HOMEWORLD_ACTOR.walkSpeed / 60 + .1 || !isHomeworldRegionWalkableV68(region, 'village', value.actor as unknown as HomeworldVec2, value.tick as number)) return null;
   return structuredClone(value) as unknown as RegionFieldEventV68;
 }
-export function normalizeHomeworldRegionV68(value: unknown): HomeworldRegionStateV68 | null {
+export function normalizeHomeworldRegionV68(value: unknown, reportAt?: HomeworldVec2 | null): HomeworldRegionStateV68 | null {
   if (!record(value) || value.version !== 1 || !isHomeworldRegionIdV68(value.regionId) || typeof value.runId !== 'string' || !/^[\w:-]{1,100}$/.test(value.runId) || !Number.isSafeInteger(value.tick) || (value.tick as number) < 0 || !finite(value.walked) || value.walked < 0 || value.walked > (value.tick as number) * HOMEWORLD_ACTOR.walkSpeed / 60 + .1 || !['passage', 'village', 'interior'].includes(String(value.zone)) || !['outbound', 'return'].includes(String(value.direction)) || !['walking', 'at-city'].includes(String(value.status)) || !record(value.actor)) return null;
   const a = value.actor, id = value.regionId, definition = HOMEWORLD_REGIONS_V68[id];
   if (![a.x, a.y, a.vx, a.vy].every(finite) || a.grounded !== true || (a.facing !== 1 && a.facing !== -1) || Math.abs(a.vx as number) > HOMEWORLD_ACTOR.walkSpeed + .1 || Math.abs(a.vy as number) > HOMEWORLD_ACTOR.depthSpeed + .1 || !isHomeworldRegionWalkableV68(id, value.zone as HomeworldRegionStateV68['zone'], a as unknown as HomeworldVec2, value.tick as number, typeof value.buildingId === 'string' ? value.buildingId : null)) return null;
@@ -391,14 +405,14 @@ export function normalizeHomeworldRegionV68(value: unknown): HomeworldRegionStat
   if (value.zone !== 'passage' && value.direction === 'outbound' && route.length !== definition.route.length) return null;
   if (value.status === 'at-city' && (value.zone !== 'passage' || Math.hypot((a.x as number) - definition.route[0].x, (a.y as number) - definition.route[0].y) > 100 || value.direction === 'return' && route.length !== definition.route.length)) return null;
   if (value.pendingFieldEvent !== null) {
-    const event = normalizeRegionFieldEventV68(value.pendingFieldEvent);
+    const event = normalizeRegionFieldEventV68(value.pendingFieldEvent, reportAt);
     if (!event || event.regionId !== id || event.runId !== value.runId || event.tick !== value.tick || event.walked !== value.walked || event.actor.x !== a.x || event.actor.y !== a.y || event.trailCount !== traces.length || event.evaded !== (event.action === 'challenge' ? f.evaded : value.evaded) || event.observedTicks !== value.observedTicks || event.touches !== f.touches || event.interventions !== (value.protectedPosts as string[]).length || event.action !== 'report' && receipts.includes(event.action)) return null;
   }
   return structuredClone(value) as unknown as HomeworldRegionStateV68;
 }
 /** Save ownership is enforced by GameClient; this guard protects movement/evidence against stale callbacks. */
-export function canAdvanceHomeworldRegionV68(previous: unknown, next: unknown): boolean {
-  const b = normalizeHomeworldRegionV68(next); if (!b) return false;
+export function canAdvanceHomeworldRegionV68(previous: unknown, next: unknown, reportAt?: HomeworldVec2 | null): boolean {
+  const b = normalizeHomeworldRegionV68(next, reportAt); if (!b) return false;
   if (previous == null) return b.tick === 0 && b.walked === 0 && !b.traces.length && !b.recovered && !b.reported;
   const a = normalizeHomeworldRegionV68(previous); if (!a || a.regionId !== b.regionId || a.runId !== b.runId || b.tick < a.tick || b.walked < a.walked || a.recovered && !b.recovered || a.reported && !b.reported || b.evaded < a.evaded || b.traces.length < a.traces.length || a.greeted.some(n => !b.greeted.includes(n)) || a.visitedBuildings.some(n => !b.visitedBuildings.includes(n)) || a.eventReceipts.some(n => !b.eventReceipts.includes(n))) return false;
   if (a.status === 'at-city') return JSON.stringify(a) === JSON.stringify(b);

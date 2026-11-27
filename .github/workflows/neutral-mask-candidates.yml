@@ -5,6 +5,7 @@ on:
   pull_request:
     paths:
       - '.github/workflows/neutral-mask-candidates.yml'
+      - '.github/scripts/materialize-historical-art-inputs-20261113.sh'
       - 'production/biomasks-neutral-20261113/**'
       - 'public/game/biomasks-neutral-20261113/**'
       - 'production/biomasks-expansion-20261113/**'
@@ -26,6 +27,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/neutral-mask-candidates.yml'
+      - '.github/scripts/materialize-historical-art-inputs-20261113.sh'
       - 'production/biomasks-neutral-20261113/**'
       - 'public/game/biomasks-neutral-20261113/**'
       - 'production/biomasks-expansion-20261113/**'
@@ -67,6 +69,7 @@ jobs:
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /.github/workflows/neutral-mask-candidates.yml
+            /.github/scripts/materialize-historical-art-inputs-20261113.sh
             /production/biomasks-neutral-20261113/tools/ci-neutral-mask-inputs.py
             /production/biomasks-neutral-20261113/suivi/source-protection.json
             /public/game/biomasks-neutral-20261113/manifest.json
@@ -76,12 +79,15 @@ jobs:
         with:
           python-version: '3.12'
       - name: Select exact historical and neutral inputs under 768 MiB
+        id: archived_inputs
         shell: bash
         run: |
           set -euo pipefail
           python3 production/biomasks-neutral-20261113/tools/ci-neutral-mask-inputs.py --check-git-tree
           python3 production/biomasks-neutral-20261113/tools/ci-neutral-mask-inputs.py --patterns > "$RUNNER_TEMP/neutral-mask-inputs.txt"
+          printf '%s\n' '/.github/scripts/materialize-historical-art-inputs-20261113.sh' >> "$RUNNER_TEMP/neutral-mask-inputs.txt"
           git sparse-checkout set --no-cone --stdin < "$RUNNER_TEMP/neutral-mask-inputs.txt"
+          bash .github/scripts/materialize-historical-art-inputs-20261113.sh archived
           python3 production/biomasks-neutral-20261113/tools/ci-neutral-mask-inputs.py --check
       - name: Install pinned read-only PNG reader
         run: python3 -m pip install --disable-pip-version-check --no-input 'Pillow==12.3.0'
@@ -94,3 +100,6 @@ jobs:
           --inventory production/biomasks-neutral-20261113/inputs/neutral-production-inventory.json
           --accepted-new-masks production/biomasks-neutral-20261113/inputs/accepted-new-masks.json
           --output ${{ runner.temp }}/neutral-independent-pixels.json
+      - name: Restore current source files after archive verification
+        if: ${{ always() && (steps.archived_inputs.outcome == 'success' || steps.archived_inputs.outcome == 'failure') }}
+        run: bash .github/scripts/materialize-historical-art-inputs-20261113.sh current

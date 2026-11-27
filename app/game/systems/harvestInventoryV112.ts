@@ -1,4 +1,5 @@
 import type { ArmorId, MissionId, PlayerInventory, SaveGame } from "../types";
+import { anatomyPartsV112 } from "./anatomyHarvestV112.ts";
 
 export type SpecimenStageV112 = "raw" | "cleaned" | "treated" | "dried" | "mounted";
 export interface FieldSpecimenV112 {
@@ -28,6 +29,8 @@ export const TOOL_WEAR_PER_COMPLETION_V112 = 5;
 export const HARVEST_DEPOT_LIMIT_V112 = 256;
 const MISSION_IDS: MissionId[]=["jungle-vey","ice-cryostalker","volcano-bad-blood","swamp-hydra","desert-sandmaw","ocean-leviathan","fungal-hivemind","ruins-ancient-guardian"];
 const MAX_TOOL_RECEIPTS = 256;
+const RETURN_HONOR_PER_PREY_V169 = 3;
+const RETURN_HONOR_CAP_V169 = 20;
 const object = (x: unknown): x is Record<string,unknown> => !!x && typeof x === "object" && !Array.isArray(x);
 const id = (x: unknown): x is string => typeof x === "string" && x.length > 0 && x.length <= 192 && !/[\u0000-\u001f]/.test(x);
 const bounded = (x:unknown,min:number,max:number): x is number => typeof x==="number" && Number.isFinite(x) && x>=min && x<=max;
@@ -120,11 +123,27 @@ export function flayingToolWorkMultiplierV112(condition:number):number {
 export function toolConditionAfterUsesV112(condition:number,completedUses:number):number {
   return Math.max(0,Math.min(100,condition)-Math.max(0,Math.floor(completedUses))*TOOL_WEAR_PER_COMPLETION_V112);
 }
+/** Each real, returned field extraction can credit its prey once. */
+function returnedRiteHonorV169(items: readonly FieldSpecimenV112[], toolUseIds: readonly string[], prefix: string): number {
+  const uses = new Set(toolUseIds);
+  const prey = new Set<string>();
+  for (const item of items) {
+    const corpseId = item.sourceId.slice(prefix.length);
+    const part = anatomyPartsV112(item.speciesId).find(entry => entry.partId === item.partId);
+    if (!corpseId || !part || item.label !== part.label ||
+        item.massKg !== part.massKg || item.volumeUnits !== part.volumeUnits ||
+        !uses.has(prefix + part.action + ":" + corpseId) ||
+        (part.requiresFlay && !uses.has(prefix + "flay:" + corpseId))) continue;
+    prey.add(item.sourceId);
+  }
+  return Math.min(RETURN_HONOR_CAP_V169, prey.size * RETURN_HONOR_PER_PREY_V169);
+}
+
 /** One terminal write atomically records the monotone mission encounter.
  * A per-mission watermark retains idempotence without an ever-growing ID list.
  * Existing GameClient session checks also reject stale terminal callbacks. */
 export function deliverHarvestV112(save:SaveGame,rawItems:unknown,rawUseIds:unknown,success:boolean,
-  missionId?:MissionId,encounterRun?:number):{ok:boolean;inventory:PlayerInventory;reason:string} {
+  missionId?:MissionId,encounterRun?:number):{ok:boolean;inventory:PlayerInventory;reason:string;returnedRiteHonor?:number} {
   const refuse=(reason:string)=>({ok:false,inventory:save.inventory,reason});
   const ledger=normalizeHarvestInventoryV112(save.inventory.harvestV112);
   if(!ledger)return refuse("Registre de conservation incompatible.");
@@ -151,7 +170,8 @@ export function deliverHarvestV112(save:SaveGame,rawItems:unknown,rawUseIds:unkn
     next.push(value);
   }
   if(next.length>HARVEST_DEPOT_LIMIT_V112)return refuse("Dépôt plein : archivez des prises montées avant une nouvelle chasse.");
-  return {ok:true,reason:"",inventory:{...save.inventory,harvestV112:{...ledger,specimens:next,
+  const awarded = success ? returnedRiteHonorV169(items as FieldSpecimenV112[], uses as string[], prefix) : 0;
+  return {ok:true,reason:"",...(awarded > 0 ? {returnedRiteHonor:awarded} : {}),inventory:{...save.inventory,harvestV112:{...ledger,specimens:next,
     toolCondition:toolConditionAfterUsesV112(ledger.toolCondition,uses.length),
     toolUseIds:[...uses] as string[],settledEncounterRuns:{...ledger.settledEncounterRuns,[missionId]:run}}}};
 }

@@ -37,7 +37,7 @@ export type LogisticsActionV108 =
  | {kind:'rav-load'|'rav-deposit';actor:string;location:'depot'|'boat'|SiteId;amount:number}
  | {kind:'load-object'|'install-object'|'recover-object'|'return-object';object:'water'|'cell'}
  | {kind:'lead'|'unlead'|'care';mount:string}
- | {kind:'boat-board'|'boat-depart'|'boat-step'|'boat-land'|'screen'|'probe-step'|'duel-start'|'duel-strike'|'duel-reply'|'duel-claim'|'duel-renegotiate'|'compare'|'recon'|'authorize'|'shuttle-board'|'shuttle-depart'|'shuttle-step'|'shuttle-land'}
+ | {kind:'boat-board'|'boat-depart'|'boat-step'|'boat-land'|'screen'|'probe-step'|'duel-start'|'duel-strike'|'duel-miss'|'duel-reply'|'duel-claim'|'duel-renegotiate'|'compare'|'recon'|'authorize'|'shuttle-board'|'shuttle-depart'|'shuttle-step'|'shuttle-land'}
  | {kind:'probe';route:'north'|'south'}
  | {kind:'sign';actor:string}
  | {kind:'record';sourceId:string;seconds:number};
@@ -67,7 +67,29 @@ export function createLogisticsV108(rules:WarRulesV6=DEFAULT_WAR_RULES_V6):Logis
 }
 export function logisticsCanStandV108(x:number,y:number,radius=9){return x>=radius&&x<=1000-radius&&y>=radius&&y<=600-radius&&!(x+radius>850&&y-radius<130)&&!(x+radius>430&&x-radius<540&&y-radius<410)&&!CLAN_LOGISTICS_WALLS_V108.some(w=>x+radius>w.x&&x-radius<w.x+w.w&&y+radius>w.y&&y-radius<w.y+w.h);}
 function clear(a:{x:number;y:number},b:{x:number;y:number},radius=9){const steps=Math.ceil(dist(a,b)/3);for(let i=1;i<=steps;i++)if(!logisticsCanStandV108(a.x+(b.x-a.x)*i/steps,a.y+(b.y-a.y)*i/steps,radius))return false;return true;}
-export function logisticsHearingV108(s:LogisticsStateV108,sourceId:string){const source=CLAN_LOGISTICS_AUDIO_V108.find(a=>a.id===sourceId),a=logisticsActorV108(s,actorId('W3-S15'))!;return !!source&&logisticsReadyV108(s,a)&&a.layer==='surface'&&dist(a,source)<=150&&clear(a,source,0);}
+const HEARING_RANGE_V108 = 150;
+export interface LogisticsAcousticsV108 {
+  status: 'audible' | 'range' | 'occluded' | 'unavailable';
+  distance: number | null;
+  gain: number;
+  pan: number;
+}
+
+/** Same range and wall test as the replay contract; gain and pan only affect live playback. */
+export function logisticsAcousticsV108(state:LogisticsStateV108,sourceId:string):LogisticsAcousticsV108 {
+ const source=CLAN_LOGISTICS_AUDIO_V108.find(item=>item.id===sourceId);
+ const listener=logisticsActorV108(state,actorId('W3-S15'));
+ if(!source||!listener||!logisticsReadyV108(state,listener)||listener.layer!=='surface')
+  return {status:'unavailable',distance:null,gain:0,pan:0};
+ const distance=dist(listener,source);
+ if(distance>HEARING_RANGE_V108)return {status:'range',distance,gain:0,pan:0};
+ if(!clear(listener,source,0))return {status:'occluded',distance,gain:0,pan:0};
+ const remaining=1-distance/HEARING_RANGE_V108;
+ return {status:'audible',distance,gain:.08+.72*remaining*remaining,pan:.85*(source.x-listener.x)/Math.max(24,distance)};
+}
+export function logisticsHearingV108(state:LogisticsStateV108,sourceId:string) {
+ return logisticsAcousticsV108(state,sourceId).status==='audible';
+}
 function pay(s:LogisticsStateV108,a:LogisticsActorV108,need:number){let paid=0;const take=(available:number)=>Math.min(available,need-paid);let n=take(a.rav);a.rav-=n;paid+=n;
  if(a.aboard){const hull=s[a.aboard];n=take(hull.cargo);hull.cargo-=n;paid+=n;}
  else if(near(a,CLAN_LOGISTICS_DEPOT_V108,70)){n=take(s.depot);s.depot-=n;paid+=n;}
@@ -79,7 +101,7 @@ function advanceTurn(s:LogisticsStateV108,rules:WarRulesV6){s.turn++;for(const a
 }
 export function logisticsCommandV108(s:LogisticsStateV108,a:LogisticsActionV108):LogisticsCommandV108{return {...a,operationId:`v108:${s.revision+1}`};}
 const actionFields:Record<string,string[]>={move:['actor','dx','dy'],hire:['actor'],contract:['actor'],release:['actor'],wait:[],reserve:['work'],'load-kit':['work'],'deliver-kit':['work'],'return-kit':['work'],'support-left':['work'],'support-right':['work'],work:['work'],staff:['work'],cancel:['work'],'rav-load':['actor','location','amount'],'rav-deposit':['actor','location','amount'],'load-object':['object'],'install-object':['object'],'recover-object':['object'],'return-object':['object'],lead:['mount'],unlead:['mount'],care:['mount'],probe:['route'],sign:['actor'],record:['sourceId','seconds']};
-for(const id of ['boat-board','boat-depart','boat-step','boat-land','screen','probe-step','duel-start','duel-strike','duel-reply','duel-claim','duel-renegotiate','compare','recon','authorize','shuttle-board','shuttle-depart','shuttle-step','shuttle-land'])actionFields[id]=[];
+for(const id of ['boat-board','boat-depart','boat-step','boat-land','screen','probe-step','duel-start','duel-strike','duel-miss','duel-reply','duel-claim','duel-renegotiate','compare','recon','authorize','shuttle-board','shuttle-depart','shuttle-step','shuttle-land'])actionFields[id]=[];
 function validAction(a:unknown):a is LogisticsCommandV108 {if(!a||typeof a!=='object'||Array.isArray(a))return false;const v=a as Record<string,unknown>;if(typeof v.kind!=='string'||!Object.hasOwn(actionFields,v.kind)||typeof v.operationId!=='string')return false;const keys=['kind','operationId',...actionFields[v.kind]];return Object.keys(v).length===keys.length&&keys.every(k=>Object.hasOwn(v,k))&&Object.entries(v).every(([k,v])=>k==='dx'||k==='dy'?typeof v==='number'&&Number.isFinite(v)&&Math.abs(v)<=24:k==='seconds'?typeof v==='number'&&Number.isFinite(v)&&v>=.25&&v<=30:k==='amount'?typeof v==='number'&&Number.isSafeInteger(v)&&v>0&&v<=120:typeof v==='string'&&v.length<=100);}
 export function applyLogisticsV108(current:LogisticsStateV108,action:LogisticsCommandV108,rules=DEFAULT_WAR_RULES_V6):LogisticsResultV108 {
  const no=(message:string):LogisticsResultV108=>({state:current,accepted:false,message});
@@ -141,7 +163,7 @@ export function applyLogisticsV108(current:LogisticsStateV108,action:LogisticsCo
   else if(action.kind==='duel-renegotiate'){if(duel.phase!=='interrupted'||!at(op,p)||!at(rival,p)||near(carrier,p,65))return no('Les deux partenaires doivent se retrouver seuls dans l’aire.');duel.phase='unsigned';duel.signatures=[];message='Nouvel accord à signer ; touches déjà reçues conservées.';}
   else if(action.kind==='duel-start'){if(!service('W3-S14')||duel.phase!=='accepted'||!at(rival,p)||near(carrier,p,65))return no('Accord, service, deux signataires et tiers hors de l’aire requis.');duel.phase='active';message='Duel engagé ; trois touches d’exercice.';}
   else if(action.kind==='duel-claim'){const winner=s.actors.find(a=>a.members.includes(duel.winner??''));if(!winner||!at(winner,p)||duel.chestHolder!=='site')return no('Seul le vainqueur présent peut retirer ce coffre unique.');duel.chestHolder=winner.members[0];s.receipts.push('duel:chest');message='Coffre transféré une seule fois au membre vainqueur.';}
-  else{if(duel.phase!=='active'||!at(op,p)||!at(rival,p))return no('Les signataires restent dans l’aire.');if(action.kind==='duel-strike'){if(duel.round%2||!near(op,rival,32))return no('Votre tour au contact requis.');duel.rival--;duel.round++;message='Touche au contact ; réponse adverse attendue.';}else{if(duel.round%2!==1)return no('Aucune réponse engagée.');if(near(op,rival,32))duel.player--;duel.round++;turn=true;message='Réponse évaluée à la distance physique actuelle.';}if(!duel.player||!duel.rival){duel.phase=duel.rival===0?'won':'lost';duel.winner=(duel.phase==='won'?op:rival).members[0];s.receipts.push('duel:result');}}
+  else{if(duel.phase!=='active'||!at(op,p)||!at(rival,p))return no('Les signataires restent dans l’aire.');if(action.kind==='duel-miss'){if(duel.round%2||near(op,rival,32))return no('Un tour d’attaque et une cible hors de portée sont requis.');duel.round++;message='L’attaque hors de portée laisse la riposte au rival.';}else if(action.kind==='duel-strike'){if(duel.round%2||!near(op,rival,32))return no('Votre tour au contact requis.');duel.rival--;duel.round++;message='Touche au contact ; réponse adverse attendue.';}else{if(duel.round%2!==1)return no('Aucune réponse engagée.');if(near(op,rival,32))duel.player--;duel.round++;turn=true;message='Réponse évaluée à la distance physique actuelle.';}if(!duel.player||!duel.rival){duel.phase=duel.rival===0?'won':'lost';duel.winner=(duel.phase==='won'?op:rival).members[0];s.receipts.push('duel:result');}}
  }else if(action.kind==='record'){const op=logisticsActorV108(s,actorId('W3-S15'))!;if(!logisticsHearingV108(s,action.sourceId)||s.recordings.length>=12)return no('Portée, paroi, opérateur ou carnet incompatible.');s.recordings.push({id:`record:${s.recordings.length+1}`,sourceId:action.sourceId,x:op.x,y:op.y,seconds:action.seconds,turn:s.turn});message='Prise située après lecture du vrai fichier ; aucune identité adverse déduite.';
  }else if(action.kind==='compare'){if(!service('W3-S15')||new Set(s.recordings.map(r=>r.sourceId)).size<2||s.compared)return no('Deux fichiers distincts puis retour à la station tenue requis.');s.compared=true;turn=true;s.receipts.push('audio:comparison');message='Machinerie et impulsion comparées ; faune et météo toujours non enregistrées.';
  }else if(action.kind==='recon'||action.kind==='authorize'||action.kind.startsWith('shuttle-')){

@@ -5,7 +5,7 @@ import type { HunterAppearance } from "./types";
 import {
   CHROMATIC_PALETTE_PRESETS_V115, PHG_CHROMATIC_MATERIALS_V113,
   PHG_DRIVE_CANDIDATES_V120, chromaticAtlasBackgroundV125,
-  normalizeHunterChromaticsV113,
+  maskOriginForCustomizationV135, normalizeHunterChromaticsV113,
   chromaticFacilityChannelsV115, resetChromaticFacilityV115,
   type ChromaticFacilityV115, type HunterChromaticsV113,
 } from "./hunterChromaticsV113";
@@ -46,13 +46,7 @@ export default function HunterChromaticForgeV113({
   const changeMask = (field: "maskHex" | "maskMaterialId", value: string | null) => {
     setDraft(current => normalizeHunterChromaticsV113({
       ...current, [field]: value,
-      // A saved Alpha palette will be named "custom". Keep its class lineage.
-      maskOriginId: appearance.biomaskId === "feral"
-        && (appearance.presetId === "alpha" || current.maskOriginId === "alpha")
-          ? "alpha"
-          : appearance.biomaskId === "celtic"
-            && (appearance.presetId === "samurai" || current.maskOriginId === "samurai")
-              ? "samurai" : null,
+      maskOriginId: maskOriginForCustomizationV135(appearance),
     }));
     setMessage("");
   };

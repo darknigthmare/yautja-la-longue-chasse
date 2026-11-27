@@ -32,3 +32,21 @@
 .research button:disabled{opacity:.65;cursor:not-allowed}
 .studyReady{color:#b6efce}
 .studyMissing{color:#f7c8a8}
+
+.studyRequirements {
+  list-style: none;
+  padding: 0;
+  margin: .5rem 0;
+  display: grid;
+  gap: .35rem;
+}
+
+.studyRequirements li {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: .35rem;
+}
+
+.studyRequirements span {
+  overflow-wrap: anywhere;
+}

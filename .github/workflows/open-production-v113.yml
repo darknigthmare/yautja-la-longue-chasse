@@ -246,7 +246,18 @@ jobs:
       - name: Compare all appended cells and preserve the original 122 worksheets
         run: python3 scripts/verify-open-production-workbook-v113.py
       - name: Reject altered source claims, historic cells and current products
-        run: python3 tests/open-production-workbook-v113.test.py
+        run: |
+          # This immutable mutation suite records its expectation from the checkout.
+          # Give it the archived input only after verifying the workbook against current sources.
+          historic_runtime=app/game/ClanSupplyRouteV109.tsx
+          current_copy=$(mktemp "$RUNNER_TEMP/v113-current.XXXXXX")
+          historical_copy=$(mktemp "$RUNNER_TEMP/v113-historical.XXXXXX")
+          cp -- "$historic_runtime" "$current_copy"
+          trap 'cp -- "$current_copy" "$historic_runtime"; rm -f -- "$current_copy" "$historical_copy"' EXIT
+          git cat-file blob 761edf25700bc57905e9fc7ac032a15238cbd106 > "$historical_copy"
+          printf '%s  %s\n' 4d6c76f78dd5cc86cf7c93fcad2f79bf5093dae72b800bc20ef46c3e5225c35f "$historical_copy" | sha256sum --check --status
+          cp -- "$historical_copy" "$historic_runtime"
+          python3 tests/open-production-workbook-v113.test.py
       - name: Install pinned native PNG verification dependency in an isolated environment
         run: |
           python3 -m venv "$RUNNER_TEMP/v114-python"

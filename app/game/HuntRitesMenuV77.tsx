@@ -41,8 +41,8 @@ function CompactRiteWorkV77({menu,operation,onClose,descriptionId}:{menu:HuntRit
     </div>
   </section>;
 }
-export default function HuntRitesMenuV77({menu,onOpen,onClose,onAction,gamepadButtons=DEFAULT_HUNT_GAMEPAD_V112}:{menu:HuntRiteMenuSnapshotV77|null;gamepadButtons?:HuntGamepadButtonsV112;
-  onOpen():void;onClose():void;onAction(action:HuntRiteActionV77):void}){
+export default function HuntRitesMenuV77({menu,onOpen,onClose,onAction,onNextCorpse,gamepadButtons=DEFAULT_HUNT_GAMEPAD_V112}:{menu:HuntRiteMenuSnapshotV77|null;gamepadButtons?:HuntGamepadButtonsV112;
+  onOpen():void;onClose():void;onAction(action:HuntRiteActionV77):void;onNextCorpse?():void}){
   const descriptionId=useId();
   const mobile=useSyncExternalStore(subscribeMobile,mobileSnapshot,serverMobileSnapshot);
   if(!menu)return null;
@@ -55,6 +55,7 @@ export default function HuntRitesMenuV77({menu,onOpen,onClose,onAction,gamepadBu
     <small>Manette : Bas + {HUNT_GAMEPAD_LABELS_V112[gamepadButtons.interact]} pour examiner. Haut/Bas pour choisir, {HUNT_GAMEPAD_LABELS_V112[gamepadButtons.jump]} pour activer, {HUNT_GAMEPAD_LABELS_V112[gamepadButtons.interact]} pour fermer. La chasse continue.</small>
     {!menu.open?<button type="button" onClick={onOpen}>Examiner la proie vaincue</button>:<>
       <header><strong>{menu.label}</strong><button type="button" onClick={onClose} aria-label="Fermer le menu rituel">×</button></header>
+      {menu.nextCorpseId&&onNextCorpse&&<button type="button" data-rite-next-corpse-v112 onClick={onNextCorpse}>Proie suivante</button>}
       <p className={styles.warning}>La chasse continue. Dégâts, action ou éloignement interrompent le geste. Intégrité : {menu.integrity}/100. Analyse avant le premier prélèvement pour éviter une perte de qualité de 12 points. Chaque partie est unique.</p>
       {menu.worksiteLockedReason&&<p className={styles.warning} data-rite-worksite-v112>{menu.worksiteLockedReason}</p>}
       {menu.tool&&<p className={styles.facts} id={descriptionId+'-tool'} data-rite-tool-preview-v112>

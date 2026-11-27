@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type RefObject } from "react";
 import { createTrainingDrill, startTrainingDrill, stepTrainingDrill, submitTrainingDrillAction,
-  trainingDrillScore, TRAINING_DRILL_ACTIONS, type TrainingDrillAction, type TrainingDrillState } from "./systems/trainingDrill";
+  trainingDrillScore, TRAINING_DRILL_ACTIONS, type TrainingDrillAction, type TrainingDrillState,
+  type TrainingDrillTrace, type TrainingDrillTraceAction } from "./systems/trainingDrill";
 import type { TrainingDisciplineId } from "./systems/progression";
 import { pageActivitySnapshotV94, serverPageActivityV94, subscribePageActivityV94 } from "./systems/pageActivityV94";
 
@@ -40,26 +41,29 @@ export function createTrainingPadV94() {
 interface TrainingRuntimeOptionsV94 {
   disciplineId: TrainingDisciplineId;
   seed: number;
+  clanPlasma?: boolean;
   rootRef: RefObject<HTMLDivElement | null>;
   suspended: boolean;
   gamepadEnabled: boolean;
-  onComplete(score: number): void;
+  onComplete?(score: number): void;
+  onTrace?(trace: TrainingDrillTrace): void;
   onCancel(): void;
 }
 
 /** Owns one exercise, not its campaign persistence. Recording is an explicit action. */
-export function useTrainingDrillRuntimeV94({ disciplineId, seed, rootRef, suspended, gamepadEnabled, onComplete, onCancel }: TrainingRuntimeOptionsV94) {
-  const [game, setGame] = useState(() => createTrainingDrill(disciplineId, seed));
+export function useTrainingDrillRuntimeV94({ disciplineId, seed, clanPlasma, rootRef, suspended, gamepadEnabled, onComplete, onTrace, onCancel }: TrainingRuntimeOptionsV94) {
+  const [game, setGame] = useState(() => createTrainingDrill(disciplineId, seed, clanPlasma));
   const [resultSent, setResultSent] = useState(false);
   const [deliveryError, setDeliveryError] = useState<string | null>(null);
   const pageActive = useSyncExternalStore(subscribePageActivityV94, pageActivitySnapshotV94, serverPageActivityV94);
   const paused = suspended || !pageActive;
   const gameRef = useRef(game);
-  const callbacks = useRef({ onComplete, onCancel, suspended });
+  const callbacks = useRef({ onComplete, onTrace, onCancel, suspended });
+  const trace = useRef<(TrainingDrillTraceAction | null)[]>([]);
   const alive = useRef(false), cancelled = useRef(false), delivered = useRef(false);
   const previousFrame = useRef<number | null>(null), focusFrame = useRef(0);
   const padState = useRef(createTrainingPadV94());
-  useEffect(() => { callbacks.current = { onComplete, onCancel, suspended }; }, [onComplete, onCancel, suspended]);
+  useEffect(() => { callbacks.current = { onComplete, onTrace, onCancel, suspended }; }, [onComplete, onTrace, onCancel, suspended]);
   useEffect(() => {
     alive.current = true;
     return () => { alive.current = false; window.cancelAnimationFrame(focusFrame.current); };
@@ -82,7 +86,12 @@ export function useTrainingDrillRuntimeV94({ disciplineId, seed, rootRef, suspen
   }, [canAct, replaceGame, rootRef]);
   const submitAction = useCallback((action: TrainingDrillAction) => {
     if (!canAct() || delivered.current || !TRAINING_DRILL_ACTIONS.includes(action)) return;
-    replaceGame(submitTrainingDrillAction(gameRef.current, action).state);
+    const current = gameRef.current;
+    const next = submitTrainingDrillAction(current, action).state;
+    if (callbacks.current.onTrace && current.cueIndex !== next.cueIndex) {
+      trace.current.push({ action, elapsedSeconds: current.cueElapsedSeconds });
+    }
+    replaceGame(next);
   }, [canAct, replaceGame]);
   const cancel = useCallback(() => {
     if (!canAct()) return;
@@ -95,7 +104,10 @@ export function useTrainingDrillRuntimeV94({ disciplineId, seed, rootRef, suspen
     // Claim before entering user code: double clicks/reentrant callbacks cannot
     // add a second attempt. An exception is not a confirmed persistent write.
     delivered.current = true; setResultSent(true); padState.current.reset();
-    try { callbacks.current.onComplete(trainingDrillScore(gameRef.current)); }
+    try {
+      if (callbacks.current.onTrace) callbacks.current.onTrace([...trace.current]);
+      else callbacks.current.onComplete?.(trainingDrillScore(gameRef.current));
+    }
     catch { setDeliveryError("Transmission du score non confirmée. Le résultat reste affiché ; aucune seconde transmission automatique."); }
   }, [canAct]);
 
@@ -117,8 +129,13 @@ export function useTrainingDrillRuntimeV94({ disciplineId, seed, rootRef, suspen
       }
       const command = padState.current.sample(pad);
       if (command.cancel) { cancel(); return; }
-      const previousStatus = gameRef.current.status;
-      replaceGame(stepTrainingDrill(gameRef.current, delta));
+      const current = gameRef.current;
+      const previousStatus = current.status;
+      const stepped = stepTrainingDrill(current, delta);
+      if (callbacks.current.onTrace) {
+        for (let cue = current.cueIndex; cue < stepped.cueIndex; cue++) trace.current.push(null);
+      }
+      replaceGame(stepped);
       // An expired final cue cannot consume A as a result confirmation this frame.
       if (previousStatus !== gameRef.current.status) return;
       if (!command.action) return;

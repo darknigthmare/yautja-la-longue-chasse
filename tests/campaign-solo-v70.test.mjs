@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
-import {thresholdsTemple as p,templeCampaignRoute,templeInput,templeEnvironment as env,stamp} from './helpers/solo-v70-played-route.mjs';
+import {thresholdsTemple as p,templeCampaignRoute,templeInput,templeMechanismInput,templeEnvironment as env,stamp} from './helpers/solo-v70-played-route.mjs';
 import {homeworldQaModelV64} from '../scripts/homeworld-qa-model-v64.mjs';
 let route;const played=()=>route??=templeCampaignRoute();
 
@@ -30,16 +30,39 @@ test('fabricated endpoints and door teleportation cannot certify receipts despit
  const forged=structuredClone(r.commits[3].state);forged.visited[8]=true;assert.equal(p.normalizeSoloV70State(forged),null);
 });
 
+test('new admission receipts are immutable and cannot be inserted into or removed from an acknowledged run',()=>{
+ const r=played(), arsenal=r.commits.find(c=>c.receipts[0]?.id==='arsenal-opened');
+ const sealed=arsenal.before.soloV70.checkpoint.riteAdmission.sealedEnergy;
+ assert(sealed);
+ assert.deepEqual(arsenal.after.soloV70.checkpoint.riteAdmission.sealedEnergy,sealed);
+ const stripped=structuredClone(arsenal.state);
+ delete stripped.riteAdmission;
+ assert.equal(p.withSoloV70Progress(arsenal.before,arsenal.receipts,stripped,stamp),null);
+ const altered=structuredClone(arsenal.state);
+ altered.riteAdmission.sealedEnergy.positions[1]+=1;
+ assert(p.normalizeSoloV70State(altered));
+ assert.equal(p.withSoloV70Progress(arsenal.before,arsenal.receipts,altered,stamp),null);
+
+ const threshold=r.commits.find(c=>c.receipts[0]?.id==='quarantine-valves');
+ const before=structuredClone(threshold.before);
+ delete before.soloV70.checkpoint.riteAdmission;
+ assert(p.normalizeSoloV70Campaign(before.soloV70));
+ assert.equal(p.withSoloV70Progress(before,threshold.receipts,threshold.state,stamp),null);
+ const falsePresence=structuredClone(threshold.state);
+ falsePresence.riteAdmission.threshold.positions[2]=80;
+ assert.equal(p.normalizeSoloV70State(falsePresence),null);
+});
+
 test('120-tick writes persist physical subobjectives immediately and exact refused arguments remain valid while all simulation freezes',()=>{
  let save=p.startSoloV70Campaign(played().origin,stamp),state=p.createSoloV70State(),last=0,writes=0;const refusals=new Set();
  for(let i=0;i<16000&&state.phase!=='complete';i++){
   const before=state,out=p.stepSoloV70(state,templeInput(state),env);state=out.state;if(!p.soloV70NeedsImmediateCheckpoint(before,state)&&state.tick-last<120)continue;
   const argument=state,serialized=JSON.stringify(argument),write=()=>out.receipts.length?p.withSoloV70Progress(save,out.receipts,argument,stamp):p.withSoloV70Checkpoint(save,argument,stamp),candidate=write();assert(candidate,'refused '+state.phase+' tick '+state.tick);
-  const kind=before.room!==state.room?'door':state.signs>before.signs?'sign':state.liftTicks>before.liftTicks&&before.liftTicks===0?'lift':state.valveTimer>before.valveTimer?'valve':state.drone.hp<before.drone.hp?'drone-hit':state.companionMode!==before.companionMode?'triad':'';
-  if(kind&&!refusals.has(kind)){refusals.add(kind);const durable=JSON.stringify(save);for(let j=0;j<180;j++)state=p.stepSoloV70(state,{move:1,jump:true,command:true,interact:true},{...env,paused:true}).state;for(const key of ['tick','player','companions','drone','health','scan','liftTicks','valveTimer','milestones'])assert.deepEqual(state[key],argument[key],kind+':'+key);assert.equal(JSON.stringify(save),durable);assert.equal(JSON.stringify(argument),serialized);assert.deepEqual(write(),candidate);}
+  const kind=before.room!==state.room?'door':state.signs>before.signs?'sign':state.liftTicks>before.liftTicks&&before.liftTicks===0?'lift':state.valveTimer>before.valveTimer?'valve':state.drone.hp<before.drone.hp?'drone-hit':state.companionMode!==before.companionMode?'triad':state.riteAdmission?.sealedEnergy&&!before.riteAdmission?.sealedEnergy?'energy-seal':'';
+  if(kind&&!refusals.has(kind)){refusals.add(kind);const durable=JSON.stringify(save);for(let j=0;j<180;j++)state=p.stepSoloV70(state,{move:1,jump:true,command:true,interact:true},{...env,paused:true}).state;for(const key of ['tick','player','companions','drone','health','scan','liftTicks','valveTimer','milestones','riteAdmission'])assert.deepEqual(state[key],argument[key],kind+':'+key);assert.equal(JSON.stringify(save),durable);assert.equal(JSON.stringify(argument),serialized);assert.deepEqual(write(),candidate);}
   save=candidate;last=argument.tick;writes++;
  }
- assert.equal(state.phase,'complete');assert.equal(save.soloV70.receipts.length,15);assert.deepEqual([...refusals].sort(),['door','drone-hit','lift','sign','triad','valve']);assert(writes<120,'periodic ordinary movement remains bounded '+writes);
+ assert.equal(state.phase,'complete');assert.equal(save.soloV70.receipts.length,15);assert.deepEqual([...refusals].sort(),['door','drone-hit','energy-seal','lift','sign','triad','valve']);assert(writes<120,'periodic ordinary movement remains bounded '+writes);
 });
 
 test('a genuinely defeated chamber cannot be healed through an early retry or fabricated extra combat hits',()=>{
@@ -54,4 +77,86 @@ test('a genuinely defeated chamber cannot be healed through an early retry or fa
  while(state.tick-state.failedAt<90)state=p.stepSoloV70(state,{},env).state;
  state=p.stepSoloV70(state,{interact:true},env).state;const accepted=p.withSoloV70Checkpoint(save,state,stamp);assert(accepted);assert.equal(accepted.soloV70.checkpoint.attempts,1);assert.deepEqual(accepted.soloV70.receipts,save.soloV70.receipts);
  const invented=structuredClone(state);invented.drone.hits++;assert.equal(p.withSoloV70Checkpoint(save,invented,stamp),null,'retry cannot manufacture additional hits');
+});
+
+test('the lower Belvedere route requires both companions, opens a physical portal and preserves the other rooms',()=>{
+ const run=templeCampaignRoute({origin:played().origin,input:templeMechanismInput});
+ const passage=run.commits.find(c=>c.receipts[0]?.id==='belvedere-serviced');
+ const legacy=played().commits.find(c=>c.receipts[0]?.id==='belvedere-serviced');
+ assert.equal(legacy.state.player.y,270);
+ assert.equal(legacy.state.belvedereLever,undefined);
+ assert(p.normalizeSoloV70Campaign(legacy.after.soloV70));
+ const lever=passage.before.soloV70.checkpoint.belvedereLever;
+ assert(lever);
+ assert.deepEqual(run.state.belvedereLever,lever);
+ assert(p.soloV70BelvederePlatesReady(lever.positions.slice(1)));
+ assert.equal(passage.state.player.y,430);
+ assert(run.transitions.some(t=>t.before.room===4&&t.after.room===5&&t.before.player.y===430));
+ assert.equal(run.save.soloV70.status,'completed');
+ assert.equal(run.save.soloV70.receipts.length,15);
+ assert.equal(run.state.configuration,3);
+ const removed=structuredClone(passage.state);delete removed.belvedereLever;
+ assert.equal(p.withSoloV70Progress(passage.before,passage.receipts,removed,stamp),null);
+ const misplaced=structuredClone(passage.state);misplaced.belvedereLever.positions[1]=680;
+ assert.equal(p.normalizeSoloV70State(misplaced),null);
+ const forcedUpper=structuredClone(passage.state);forcedUpper.player.y=270;
+ assert.equal(p.withSoloV70Progress(passage.before,passage.receipts,forcedUpper,stamp),null);
+});
+
+test('M017 announces the real Nef supports before deployment and keeps the legacy room geometry', () => {
+ const initial = templeCampaignRoute({ stop: 'configuration' }).save;
+ let save = initial, state = save.soloV70.checkpoint;
+ const { room, x, holdTicks, platforms } = p.SOLO_V70_RECONNECTION;
+ const act = input => {
+   const outcome = p.stepSoloV70(state, input, env);
+   state = outcome.state;
+   const after = outcome.receipts.length
+     ? p.withSoloV70Progress(save, outcome.receipts, state, stamp)
+     : p.withSoloV70Checkpoint(save, state, stamp);
+   assert(after, 'durable checkpoint rejected at ' + state.phase + ':' + state.tick);
+   save = after;
+ };
+ for (let step = 0; step < 1200 && !(state.room === room && Math.abs(state.player.x - x) <= 5); step++) act(templeInput(state));
+ assert.equal(state.room, room);
+ assert(Math.abs(state.player.x - x) <= 5);
+ for (let i = 0; i < 32; i++) act({ interact: true });
+ const warning = p.soloV70ReconnectionPreview(state);
+ assert(warning && warning.remainingTicks > 60);
+ assert.deepEqual(warning.platforms, platforms);
+ assert.deepEqual(p.soloV70Platforms(state), []);
+ assert.equal(state.milestones['second-configuration'], undefined);
+ act({ move: -1 });
+ assert.equal(p.soloV70ReconnectionPreview(state), null);
+ assert.equal(state.configuration, 1);
+ for (let i = 0; i < holdTicks && state.phase === 'configuration'; i++) act({ interact: true });
+ assert.equal(state.phase, 'separation');
+ assert.equal(save.soloV70.receipts.at(-1).id, 'second-configuration');
+ const restored = p.normalizeSoloV70Campaign(JSON.parse(JSON.stringify(save.soloV70)));
+ assert(restored);
+ assert.deepEqual(p.soloV70Platforms(restored.checkpoint), platforms);
+ const forged = structuredClone(restored.checkpoint);
+ forged.phaseStartedAt = forged.milestones['second-configuration'] = forged.milestones['human-truce'] + 45;
+ assert.equal(p.normalizeSoloV70State(forged), null);
+ const historical = structuredClone(restored.checkpoint);
+ delete historical.reconnectionVariant;
+ assert(p.normalizeSoloV70State(historical));
+ assert.deepEqual(p.soloV70Platforms(historical), []);
+ assert.equal(p.withSoloV70Checkpoint(save, historical, stamp), null);
+ // Land on the new physical support from the normal actor position.
+ act({});
+ for (let i = 0; i < 52 && state.player.x < 392; i++) act({ move: 1 });
+ assert(state.player.x >= 392 && state.player.x < 405);
+ act({ jump: true, move: 1 });
+ for (let i = 0; i < 27 && state.player.x < 478; i++) act({ move: 1 });
+ for (let i = 0; i < 42 && (state.player.y !== 367 || state.player.vy); i++) act({});
+ assert.equal(state.player.y, 367);
+ assert.equal(p.soloV70Support(state), 367);
+ for (let i = 0; i < 45 && state.player.x < 581; i++) act({ move: 1 });
+ for (let i = 0; i < 45 && state.player.y !== 430; i++) act({});
+ for (let i = 0; i < 25 && state.player.x > 535; i++) act({ move: -1 });
+ assert.equal(state.player.y, 430);
+ act({ jump: true });
+ for (let i = 0; i < 53 && (state.player.y !== 367 || state.player.vy); i++) act({});
+ assert.equal(state.player.y, 367, 'jumping from directly underneath the Nef bridge lands on it');
+ assert.deepEqual(save.prologue.chronicle, initial.prologue.chronicle);
 });

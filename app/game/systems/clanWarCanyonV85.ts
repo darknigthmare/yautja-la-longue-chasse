@@ -1,5 +1,6 @@
 import { warCompositionV85, warUnitV85 } from "./clanWarV85Data";
 import { warXpGainV85 } from "./clanWarV85";
+import { CANYON_GEOMETRY_V85 } from "./clanWarCanyonPathM037";
 
 export type CanyonOrderKindV85 = "hold" | "move" | "observe" | "cover" | "secure" | "rescue" | "adopt" | "extract";
 export interface CanyonFormationV85 {
@@ -18,6 +19,7 @@ export interface CanyonSimulationV85 {
 export const CANYON_STORAGE_KEY_V85 = "yautja.clan-war.v85.canyon.free.v1";
 export const CANYON_PRESET_V85: Record<string, number> = { "RTS-U01": 1, "RTS-U02": 1, "RTS-U03": 1, "RTS-U13": 1, "RTS-U14": 1, "RTS-U15": 1, "RTS-U18": 1 };
 export const CANYON_POSTS_V85 = [34, 52, 72];
+export { CANYON_GEOMETRY_V85 };
 export function createCanyonV85(id = "free-canyon-1"): CanyonSimulationV85 {
   return { version: 1, context: "free", id, phase: "preparation", approach: "unselected", battery: "unselected", heroSite: "approche", seconds: 0, formations: [], observedPosts: [], suppressedPosts: [], bridgeSecured: false, porterRescued: false, cargoDelivered: false, abandonedCrates: 0, transitRecognized: false, committed: false, messages: ["Exercice EX-CANYON. Rejoindre la maintenance, préparer le refuge puis gagner le poste de transition."] };
 }
@@ -53,7 +55,7 @@ export function engageCanyonV85(state: CanyonSimulationV85, selection: Record<st
   for (const [typeId, rawQuantity] of Object.entries(selection)) {
     if (!warUnitV85(typeId)) continue;
     const quantity = Math.max(0, Math.min(12, Math.floor(rawQuantity)));
-    const insertionX = next.battery === "borrow" ? 12 : 6;
+    const insertionX = next.battery === "borrow" ? 12 : CANYON_GEOMETRY_V85.start;
     for (let index = 0; index < quantity; index++) next.formations.push({ id: `${next.id}-${typeId}-${index + 1}`, typeId, x: insertionX, level: 0, order: "hold", targetX: insertionX, startingXp: typeId === "RTS-U02" ? 90 : 0, roleEvents: [], objectives: [], rescued: [], threats: [], extraction: false, adopted: false, adoptionSeconds: 0 });
   }
   next.messages.push(next.battery === "borrow" ? "Manifeste scellé : insertion avancée par la balise active ; la batterie demeure due au refuge." : "Manifeste scellé : insertion par le trajet long avec la réserve propre ; le refuge reste protégé.");
@@ -77,10 +79,10 @@ export function orderCanyonFormationV85(state: CanyonSimulationV85, id: string, 
   const issue = canyonOrderIssueV85(state, current, order, level);
   if (issue) return { state, message: issue };
   const next = copy(state), formation = next.formations.find(item => item.id === id)!;
-  formation.order = order; formation.targetX = Math.max(6, Math.min(96, Math.round(targetX))); formation.adoptionSeconds = 0;
+  formation.order = order; formation.targetX = Math.max(CANYON_GEOMETRY_V85.start, Math.min(CANYON_GEOMETRY_V85.finish, Math.round(targetX))); formation.adoptionSeconds = 0;
   // Changing levels uses an actual west ramp or east stair. No middle-of-platform teleport.
   if (formation.level !== level) {
-    if (formation.x <= 20 || formation.x >= 86) formation.level = level;
+    if (formation.x <= CANYON_GEOMETRY_V85.westRamp || formation.x >= CANYON_GEOMETRY_V85.eastStair) formation.level = level;
     else { formation.order = "move"; formation.targetX = formation.x < 53 ? 18 : 88; return { state: next, message: "Rejoindre d’abord la rampe ou l’escalier, puis choisir l’étage." }; }
   }
   return { state: next, message: `${warUnitV85(formation.typeId)?.name} : ordre ${order}, destination ${formation.targetX}, niveau ${formation.level}.` };
@@ -101,10 +103,11 @@ export function stepCanyonV85(state: CanyonSimulationV85, seconds = 1): CanyonSi
       continue;
     }
     if (formation.order === "move" || formation.order === "extract") {
-      const destination = formation.order === "extract" ? 96 : formation.targetX;
+      const destination = formation.order === "extract" ? CANYON_GEOMETRY_V85.finish : formation.targetX;
       const speed = formation.typeId === "RTS-U18" ? 4 : 7;
       const proposed = formation.x + Math.sign(destination - formation.x) * Math.min(Math.abs(destination - formation.x), elapsed * speed);
-      const bridgeBlocked = formation.level === 1 && !next.bridgeSecured && ((formation.x <= 48 && proposed > 48) || (formation.x >= 56 && proposed < 56));
+      const bridgeBlocked = formation.level === 1 && !next.bridgeSecured && ((formation.x <= CANYON_GEOMETRY_V85.bridgeWest && proposed > CANYON_GEOMETRY_V85.bridgeWest)
+      || (formation.x >= CANYON_GEOMETRY_V85.bridgeEast && proposed < CANYON_GEOMETRY_V85.bridgeEast));
       const exposedConvoy = formation.typeId === "RTS-U18" && !escorted && CANYON_POSTS_V85.some((post, index) => !next.suppressedPosts.includes(index) && Math.abs(post - proposed) < 12);
       if (!bridgeBlocked && !exposedConvoy) formation.x = proposed;
       if (formation.x >= 95 && formation.order === "extract") {

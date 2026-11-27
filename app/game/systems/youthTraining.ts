@@ -1,5 +1,7 @@
+import { createYouthMedicomp, nearYouthMedicomp, normalizeYouthMedicomp, stepYouthMedicomp, youthMedicompObjective, YOUTH_MEDICOMP, type YouthMedicomp } from "./youthMedicompV172";
 import { YOUTH_CAGE_PHASES, YOUTH_CAGE_MILESTONES, YOUTH_CAGE, createYouthCage, cloneYouthCage, normalizeYouthCage, retryYouthCage, youthCageProofCount, isYouthCagePhase, type YouthCageProgress } from "./youthCage";
 import { YOUTH_PATROL_PHASES, YOUTH_PATROL_MILESTONES, YOUTH_PATROL_HALTS, YOUTH_PATROL_HOLD_TICKS, createYouthPatrol, cloneYouthPatrol, normalizeYouthPatrol, retryYouthPatrol, stepYouthPatrolEncounter, isYouthPatrolPhase, type YouthPatrolProgress } from "./youthPatrol";
+import { normalizeYouthWorkshop, startYouthWorkshop, stepYouthWorkshop, workshopCanOpen, workshopHasMaskReport, workshopObjective, youthWorkshopObstacles, YOUTH_WORKSHOP_GATE, type YouthWorkshop, type YouthWorkshopOpeningV176 } from "./youthWorkshopV174";
 /** Deterministic Unblooded training. Original playable adaptation; no rank, XP or adult equipment grant. */
 export const YOUTH_ARENA = { width: 960, height: 540, left: 70, right: 890, groundY: 430, actorHeight: 112, halfWidth: 20, gravity: .55, speed: 3.7 } as const;
 export const YOUTH_TIMING = { tickRate: 60, courseLimitTicks: 2100, restTicks: 180, practiceWindupTicks: 32 } as const;
@@ -72,6 +74,9 @@ export interface YouthState {
     desert: YouthDesertProgress | null;
     patrol: YouthPatrolProgress | null;
     cage: YouthCageProgress | null;
+    medicompV172?: YouthMedicomp;
+    workshopV174?: YouthWorkshop;
+    firstWorkshopV176?: YouthWorkshopOpeningV176;
     progress: {
         moveMarkers: number;
         jumps: number;
@@ -103,6 +108,12 @@ export type YouthEvent = {
     type: 'course-retry';
 } | {
     type: 'dodge-success';
+} | {
+    type: 'medicomp';
+    signal: 'step' | 'dose' | 'alert';
+} | {
+    type: 'workshop';
+    signal: 'step' | 'warning' | 'earned';
 };
 export interface YouthStep {
     state: YouthState;
@@ -136,7 +147,9 @@ const integer = (v: unknown, min: number, max: number): v is number => typeof v 
 const finite = (v: unknown, min: number, max: number): v is number => typeof v === 'number' && Number.isFinite(v) && v >= min && v <= max;
 const clone = (s: YouthState): YouthState => ({ ...s, previousButtons: { ...s.previousButtons }, player: { ...s.player }, rival: { ...s.rival }, milestones: { ...s.milestones }, desert: s.desert ? { ...s.desert } : null, patrol: cloneYouthPatrol(s.patrol), cage: cloneYouthCage(s.cage), progress: { ...s.progress } });
 export function createYouthTraining(): YouthState { return { version: 1, phase: 'dojo-move', tick: 0, phaseTick: 0, phaseStartedAt: 0, inputArmed: false, previousButtons: noButtons(), player: actor(200), rival: actor(650, -1), rivalDecisionTicks: 60, practiceThreatened: false, jumpCleared: false, cosmetic: null, milestones: {}, desert: null, patrol: null, cage: null, progress: { moveMarkers: 0, jumps: 0, dodges: 0, strikes: 0, throws: 0, courseMarkers: 0, courseElapsed: 0, courseAttempts: 1, duelAttempts: 1 } }; }
-export function getYouthObstacles(s: Pick<YouthState, 'phase'>): YouthObstacle[] { return s.phase === 'dojo-jump' ? [{ x: 440, y: 380, width: 90, height: 50 }] : (s.phase === 'camp-run' || s.phase === 'desert-crossing' || s.phase === 'desert-return' || s.phase === 'patrol-route' || s.phase === 'patrol-return') ? [{ x: 350, y: 375, width: 70, height: 55 }, { x: 650, y: 350, width: 70, height: 80 }] : []; }
+export function getYouthObstacles(s: Pick<YouthState, 'phase' | 'workshopV174'>): YouthObstacle[] {
+    if (s.workshopV174?.active) return youthWorkshopObstacles(s.workshopV174.active);
+    return s.phase === 'dojo-jump' ? [{ x: 440, y: 380, width: 90, height: 50 }] : (s.phase === 'camp-run' || s.phase === 'desert-crossing' || s.phase === 'desert-return' || s.phase === 'patrol-route' || s.phase === 'patrol-return') ? [{ x: 350, y: 375, width: 70, height: 55 }, { x: 650, y: 350, width: 70, height: 80 }] : []; }
 function receiptFor(id: YouthMilestone, tick: number): YouthReceipt {
     const desert = YOUTH_DESERT_MILESTONES.includes(id as typeof YOUTH_DESERT_MILESTONES[number]);
     const patrol = YOUTH_PATROL_MILESTONES.includes(id as typeof YOUTH_PATROL_MILESTONES[number]);
@@ -377,9 +390,29 @@ export function stepYouthTraining(previous: YouthState, input: YouthInput = {}, 
         }
         return out;
     }
+    if (s.workshopV174?.active) {
+        const attempt = s.workshopV174.active;
+        const player = s.player;
+        player.vx = move * (attempt.lesson === 2 && buttons.dodge ? 1.8 : YOUTH_ARENA.speed);
+        if (move) player.facing = move;
+        if (pressed.jump && grounded(player)) player.vy = -11.7;
+        advanceActor(player, getYouthObstacles(s), false, s.phase);
+        const result = stepYouthWorkshop(s.workshopV174, player, { ...pressed, dodge: attempt.lesson === 2 ? buttons.dodge : pressed.dodge, moving: move !== 0 }, s.tick);
+        s.workshopV174 = result.state;
+        if (result.resetTo !== undefined) s.player = actor(result.resetTo);
+        if (result.signal) out.events.push({ type: 'workshop', signal: result.signal });
+        return out;
+    }
     if (s.phase === 'armory' && ['ochre', 'ash', 'rust'].includes(input.choice ?? ''))
         s.cosmetic = input.choice!;
     const a = s.player;
+    if (s.phase === 'barracks' && s.workshopV174 && !s.workshopV174.active && workshopHasMaskReport(s.workshopV174, s.firstWorkshopV176)
+        && Math.abs(a.x - YOUTH_WORKSHOP_GATE) <= 28 && !move && canAct(a)
+        && (!s.medicompV172 || s.medicompV172.stage === 'complete') && (pressed.light || pressed.blade)) {
+        s.workshopV174 = { ...s.workshopV174, maskProfile: pressed.light ? 'contrast' : 'wide' };
+        out.events.push({ type: 'workshop', signal: 'step' });
+        return out;
+    }
     if (canAct(a)) {
         a.vx = move * YOUTH_ARENA.speed;
         if (move)
@@ -552,15 +585,41 @@ export function stepYouthTraining(previous: YouthState, input: YouthInput = {}, 
                 transition(s, 'barracks', out.events);
             }
             break;
-        case 'barracks':
+        case 'barracks': {
+            const medicomp = s.medicompV172;
+            const stationary = !move && canAct(a) && a.y === YOUTH_ARENA.groundY;
+            if ((!medicomp || medicomp.stage === 'complete') && stationary && Math.abs(a.x - YOUTH_WORKSHOP_GATE) <= 28) {
+                if (pressed.interact && workshopCanOpen(s.workshopV174)) {
+                    s.workshopV174 = startYouthWorkshop(s.workshopV174, s.tick, s.firstWorkshopV176);
+                    s.player = actor(YOUTH_WORKSHOP_GATE);
+                    out.events.push({ type: 'workshop', signal: 'step' });
+                    break;
+                }
+            }
+            if (!medicomp && stationary && pressed.interact && nearYouthMedicomp(a.x, YOUTH_MEDICOMP.kitX)) {
+                s.medicompV172 = createYouthMedicomp();
+                out.events.push({ type: 'medicomp', signal: 'step' });
+                break;
+            }
+            if (medicomp && medicomp.stage !== 'complete') {
+                const updated = stepYouthMedicomp(medicomp, a.x, stationary, pressed.interact);
+                s.medicompV172 = updated;
+                if (updated.stage !== medicomp.stage || updated.route !== medicomp.route) {
+                    const signal = updated.stage === 'alert' ? 'alert' : updated.stage === 'treating' && medicomp.stage === 'ready' ? 'dose' : 'step';
+                    out.events.push({ type: 'medicomp', signal });
+                }
+                break;
+            }
             if (pressed.interact && Math.abs(a.x - 680) <= 48 && grounded(a))
                 transition(s, 'rest', out.events);
             break;
+        }
     }
     return out;
 }
 export function getYouthObjective(s: YouthState): YouthObjective {
     const base = { id: s.phase, counter: 0, required: 1, timerTicks: null as number | null };
+    if (s.workshopV174?.active) return { ...base, ...workshopObjective(s.workshopV174, s.player.x) };
     switch (s.phase) {
         case 'dojo-move': return { ...base, title: 'Écouter le maître — déplacement', instruction: 'Rejoins les deux balises au sol, dans l’ordre.', targetX: s.progress.moveMarkers === 0 ? 700 : 240, counter: s.progress.moveMarkers, required: 2 };
         case 'dojo-jump': return { ...base, title: 'Franchir l’obstacle', instruction: 'Saute par-dessus la traverse puis rejoins la balise.', targetX: 680 };
@@ -572,7 +631,9 @@ export function getYouthObjective(s: YouthState): YouthObjective {
         case 'camp-run': return { ...base, title: 'Parcours du camp', instruction: 'Franchis les traverses et rejoins les trois balises avant la fin du temps.', targetX: s.progress.courseMarkers % 2 === 0 ? 830 : 140, counter: s.progress.courseMarkers, required: 3, timerTicks: Math.max(0, YOUTH_TIMING.courseLimitTicks - s.progress.courseElapsed) };
         case 'camp-duel': return { ...base, title: 'Épreuve de combat', instruction: 'Remporte ce duel non létal. La lame d’entraînement et les projections sont autorisées.', targetX: s.rival.x };
         case 'camp-defeat': return { ...base, title: 'Le maître interrompt le duel', instruction: 'Reprends le combat quand tu es prêt. Le parcours réussi reste acquis.', targetX: null };
-        case 'barracks': return { ...base, title: 'Repos aux baraquements', instruction: 'Rejoins ta couche et interagis pour passer la nuit.', targetX: 680 };
+        case 'barracks': return s.medicompV172
+            ? { ...base, title: 'Le soin dans un abri', ...youthMedicompObjective(s.medicompV172) }
+            : { ...base, title: 'Baraquements', instruction: 'La porte gauche mène aux ateliers Unblooded. Tu peux aussi prendre le medicomp au poste d’exercice ou rejoindre ta couche.', targetX: 680 };
         case 'rest': return { ...base, title: 'La nuit passe', instruction: 'Le camp s’apaise. La formation de ce jour est terminée.', targetX: null };
         case 'morning': return { ...base, title: 'Le lendemain', instruction: 'La formation est acquise. Pars avec le maître vers le camp de chasse du désert quand tu es prêt.', targetX: null };
         case 'desert-briefing': return { ...base, title: 'Au-delà des murs — le rassemblement', instruction: 'Rejoins le maître et interagis. Les autres chasseurs se préparent au loin ; votre groupe part lire le terrain.', targetX: s.rival.x };
@@ -623,7 +684,12 @@ export function normalizeYouthTraining(v: unknown): YouthState | null {
     const phase = v.phase as YouthPhase, ordinal = YOUTH_PHASES.indexOf(phase);
     if (phase === 'rest' && v.phaseTick >= YOUTH_TIMING.restTicks) return null;
     if (ordinal < 1 && v.jumpCleared || ordinal >= 2 && !v.jumpCleared) return null;
-    if (getYouthObstacles({ phase }).some(wall => player.y > wall.y + .01 && player.x + 18 > wall.x && player.x - 18 < wall.x + wall.width)) return null;
+    const firstWorkshopV176 = v.firstWorkshopV176;
+    if (firstWorkshopV176 !== undefined && firstWorkshopV176 !== 'mask' && firstWorkshopV176 !== 'blades') return null;
+    const workshopV174 = v.workshopV174 === undefined ? undefined : normalizeYouthWorkshop(v.workshopV174, v.tick, firstWorkshopV176);
+    if (workshopV174 === null || workshopV174 && (ordinal < YOUTH_PHASES.indexOf('barracks') ||
+        workshopV174.active !== null && phase !== 'barracks')) return null;
+    if (getYouthObstacles({ phase, workshopV174 }).some(wall => player.y > wall.y + .01 && player.x + 18 > wall.x && player.x - 18 < wall.x + wall.width)) return null;
     if ((ordinal >= 1) !== (p.moveMarkers === 2) || (ordinal >= 2) !== (p.jumps === 1) || (ordinal >= 3) !== (p.dodges === 1) || (ordinal >= 4) !== (p.strikes === 3) || (ordinal >= 5 && p.throws !== 1))
         return null;
     if (ordinal < 3 && p.strikes !== 0 || ordinal < 7 && p.courseAttempts !== 1 || ordinal < 8 && p.duelAttempts !== 1)
@@ -660,5 +726,10 @@ export function normalizeYouthTraining(v: unknown): YouthState | null {
     if (phase === 'patrol-defeat' && player.composure !== 0 || phase === 'patrol-ambush' && patrol && player.composure !== Math.max(0, 100 - patrol.hits * 34)) return null;
     const cage = isYouthCagePhase(phase) ? normalizeYouthCage(v.cage, phase, player, rival, v.phaseTick) : null;
     if (isYouthCagePhase(phase) ? !cage : v.cage !== undefined && v.cage !== null) return null;
-    return { version: 1, phase, desert, patrol, cage, tick: v.tick, phaseTick: v.phaseTick, phaseStartedAt: v.phaseStartedAt, inputArmed: false, previousButtons: noButtons(), player, rival, rivalDecisionTicks: v.rivalDecisionTicks, practiceThreatened: v.practiceThreatened, jumpCleared: v.jumpCleared, cosmetic: v.cosmetic as YouthCosmetic | null, milestones, progress: { moveMarkers: p.moveMarkers as number, jumps: p.jumps as number, dodges: p.dodges as number, strikes: p.strikes as number, throws: p.throws as number, courseMarkers: p.courseMarkers as number, courseElapsed: p.courseElapsed as number, courseAttempts: p.courseAttempts as number, duelAttempts: p.duelAttempts as number } };
+    const medicompV172 = v.medicompV172 === undefined ? undefined : normalizeYouthMedicomp(v.medicompV172);
+    if (medicompV172 === null || medicompV172 && (ordinal < YOUTH_PHASES.indexOf('barracks') ||
+        phase !== 'barracks' && medicompV172.stage !== 'complete')) return null;
+    if (workshopV174?.active && medicompV172 && medicompV172.stage !== 'complete') return null;
+    if (workshopV174 && workshopV174.reports.some(report => report.tick <= (milestones['youth-camp-duel'] ?? Number.POSITIVE_INFINITY))) return null;
+    return { version: 1, phase, desert, patrol, cage, ...(medicompV172 ? { medicompV172 } : {}), ...(workshopV174 ? { workshopV174 } : {}), ...(firstWorkshopV176 ? { firstWorkshopV176 } : {}), tick: v.tick, phaseTick: v.phaseTick, phaseStartedAt: v.phaseStartedAt, inputArmed: false, previousButtons: noButtons(), player, rival, rivalDecisionTicks: v.rivalDecisionTicks, practiceThreatened: v.practiceThreatened, jumpCleared: v.jumpCleared, cosmetic: v.cosmetic as YouthCosmetic | null, milestones, progress: { moveMarkers: p.moveMarkers as number, jumps: p.jumps as number, dodges: p.dodges as number, strikes: p.strikes as number, throws: p.throws as number, courseMarkers: p.courseMarkers as number, courseElapsed: p.courseElapsed as number, courseAttempts: p.courseAttempts as number, duelAttempts: p.duelAttempts as number } };
 }

@@ -12,9 +12,12 @@ import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSight
 import { warRtsNextPathStepV118 } from "./clanWarTacticalNavigationV118";
 import {warStealthPatrolSpawnV140} from "./clanWarStealthPatrolV140";
 import {warStealthDecoyPatrolV141} from "./clanWarStealthDecoyV141";
+import {warStealthListenCueV115,type WarStealthListenCueV115} from "./clanWarStealthAcousticsV115";
 import {chooseStealthSupportGuard} from "./clanWarStealthGuardPlacement";
 import {warOuterRouteChoicesV142} from "./clanWarOuterChoicesV142";
-import {warAssaultContactV141} from "./clanWarAssaultContactV141";
+import {
+  WAR_ASSAULT_CLOAK_CAPACITY_V115, WAR_ASSAULT_CLOAK_RECHARGE_EDGE_V115, warAssaultContactV141,
+} from "./clanWarAssaultContactV141";
 
 /**
  * V115: self-contained V6 training theatre. This is NOT a CON-T/RTS-U campaign
@@ -31,7 +34,11 @@ export type WarMissionModeV115 = "assault" | "outer" | "stealth" | "rts";
 export type WarMissionOutcomeV115 = "victory" | "defeat" | "retreat";
 export type OuterFocusV115 = "recon" | "intercept" | "escort";
 type Side = "ally" | "rival";
-export interface WarMissionActorV115 { id: string; teamId: string | null; unitId: string; side: Side; x: number; hp: number }
+export interface WarMissionActorV115 {
+  id: string; teamId: string | null; unitId: string; side: Side; x: number; hp: number;
+  /** An assault-only device. Older actors have a full, inactive reserve. */
+  assaultCloak?: { active: boolean; energy: number };
+}
 export interface WarRtsActorV115 extends WarMissionActorV115 { y: number }
 export interface WarAssaultV115 {
   ap: number; ownBase: number; rivalBase: number;
@@ -139,7 +146,12 @@ export interface WarOperationsStateV115 {
   pendingRecruits?: WarRecruitmentV115[]; recruitedTeamIds?: string[];
   pendingTreatments?: WarTreatmentV116[]; treatmentReceipts?: string[];
 }
-export interface WarOperationsUpdateV115 { state: WarOperationsStateV115; accepted: boolean; message: string }
+export interface WarOperationsUpdateV115 { state: WarOperationsStateV115; accepted: boolean; message: string; listenCue?: WarStealthListenCueV115; assaultStep?: WarAssaultStepV115 }
+export interface WarAssaultStepV115 {
+  field: WarPlayableMissionV115;
+  shots: ReturnType<typeof warAssaultContactV141>["shots"];
+  defeated: WarMissionActorV115[];
+}
 const MAX_REPORTS = 120;
 
 const reject = (state: WarOperationsStateV115, message: string): WarOperationsUpdateV115 => ({ state, accepted: false, message });
@@ -148,7 +160,7 @@ const clamp = (number: number, min: number, max: number) => Math.max(min, Math.m
 const isTextId = (value: unknown) => typeof value === "string" && /^[A-Za-z0-9:_-]{1,150}$/.test(value);
 const coord = (x: number, y: number) => String(x) + "," + String(y);
 const distance = (a: {x:number;y:number}, b: {x:number;y:number}) => Math.abs(a.x-b.x) + Math.abs(a.y-b.y);
-function guardSeesHunter(terrain:WarMissionTerrainV116,guard:{x:number;y:number},
+export function guardSeesHunter(terrain:WarMissionTerrainV116,guard:{x:number;y:number},
  hunter:{x:number;y:number},cloaked:boolean,hidden:boolean):boolean{
  return !cloaked&&!hidden&&((hunter.y===guard.y&&Math.abs(hunter.x-guard.x)<=2)||
   (hunter.x===guard.x&&Math.abs(hunter.y-guard.y)<=1))&&
@@ -444,6 +456,26 @@ export function deployAssaultUnitV115(state:WarOperationsStateV115,teamId:string
   const active={...mission,assault:{...arena,ap:arena.ap-cost,launched:[...arena.launched,teamId],actors:[...arena.actors,actor]}};
   return accept({...state,active},"Renfort déployé : coût "+cost+" AP (valeur d'exercice, pas PC/RAV).");
 }
+export function toggleWarAssaultCloakV115(
+  state: WarOperationsStateV115, teamId: string, rules: WarRulesV6,
+): WarOperationsUpdateV115 {
+  const mission = state.active, arena = mission?.assault;
+  if (mission?.mode !== "assault" || !arena || state.sourceSha !== rules.metadata.sha256)
+    return reject(state, "Un assaut actif et sa source V6 sont requis.");
+  const actor = arena.actors.find(item => item.side === "ally" && item.teamId === teamId && item.hp > 0);
+  if (!mission.teamIds.includes(teamId) || !arena.launched.includes(teamId) || !actor)
+    return reject(state, "Le camouflage requiert un détachement vivant déjà déployé.");
+  const cloak = actor.assaultCloak ?? { active: false, energy: WAR_ASSAULT_CLOAK_CAPACITY_V115 };
+  if (!cloak.active && cloak.energy === 0)
+    return reject(state, "Réserve vide. Repliez le détachement au bastion pour la recharger.");
+  if (!cloak.active && (arena.focusOrders?.[teamId]?.expiresAtTick ?? 0) > mission.tick)
+    return reject(state, "Attendez le tir prioritaire déjà ordonné avant d’activer le camouflage.");
+  const active = !cloak.active;
+  const actors = arena.actors.map(item => item === actor ? { ...item, assaultCloak: { ...cloak, active } } : item);
+  return accept({ ...state, active: { ...mission, assault: { ...arena, actors } } },
+    active ? "Camouflage activé. Le détachement retient ses tirs." : "Camouflage désactivé.");
+}
+
 /** Inspired by the AP management loop in Metal Slug Attack, not by a Yautja
  * research tech. Source-defined command points and RAV remain unchanged. */
 export function upgradeWarAssaultApV117(state:WarOperationsStateV115):WarOperationsUpdateV115 {
@@ -470,6 +502,7 @@ export function issueWarAssaultSpecialV117(
   if(arena.ap<20) return reject(state,"Cette coordination exige 20 AP.");
   const actor=arena.actors.find(item=>item.side==="ally"&&item.teamId===teamId&&item.hp>0);
   if(!actor) return reject(state,"Cette équipe n'est plus en position pour concentrer son attaque.");
+  if(actor.assaultCloak?.active) return reject(state,"Désactivez le camouflage avant le feu concentré.");
   const unit=unitFor(rules,actor.unitId);
   if(!unit) return reject(state,"La fiche de cette équipe est manquante.");
   const range=clamp(unit.range*2+3,5,22);
@@ -490,7 +523,7 @@ export function issueWarAssaultSpecialV117(
  * franchise canonical spawn table. Four distinct unit roles when possible.
  */
 export interface WarAssaultWaveProfileV140{
- territoryId:string;regionId:string;unitIds:string[];maximumWaves:number;
+ territoryId:string;regionId:string;regionalSeed:number;unitIds:string[];maximumWaves:number;
 }
 export function warAssaultWaveProfileV140(targetId:string,rules:WarRulesV6):WarAssaultWaveProfileV140 {
  const territory=rules.territories.find(t=>t.id===targetId);
@@ -515,7 +548,7 @@ export function warAssaultWaveProfileV140(targetId:string,rules:WarRulesV6):WarA
   picked.push(u.id);taken.add(u.id);roles.add(u.role);
  }
  for(const u of rotated){if(picked.length>=4)break;if(!taken.has(u.id)){picked.push(u.id);taken.add(u.id);}}
- return {territoryId:territory.id,regionId:territory.region,unitIds:picked,
+ return {territoryId:territory.id,regionId:territory.region,regionalSeed:hash,unitIds:picked,
   maximumWaves:Math.min(9,6+Math.floor(Math.max(0,territory.terrainDefense)/12))};
 }
 
@@ -550,9 +583,18 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
   const rivalBase=arena.rivalBase-exchange.rivalBaseDamage;
   const wounds=unique([...arena.fallen,...exchange.actors
     .filter(actor=>actor.hp<=0&&actor.teamId).map(actor=>actor.teamId!)]);
+  const hits = new Set(exchange.shots.map(shot => shot.targetId));
+  const survivors = exchange.actors.filter(actor => actor.hp > 0).map(actor => {
+    const cloak = actor.assaultCloak;
+    if (!cloak) return actor;
+    const struck = hits.has(actor.id);
+    const recharge = !struck && actor.x <= WAR_ASSAULT_CLOAK_RECHARGE_EDGE_V115 ? 1 : 0;
+    const energy = clamp(cloak.energy + (cloak.active ? (struck ? -2 : -1) : recharge), 0, WAR_ASSAULT_CLOAK_CAPACITY_V115);
+    return { ...actor, assaultCloak: { energy, active: cloak.active && !struck && energy > 0 } };
+  });
   const level=arena.apLevel??1;
   const nextArena={...arena,ap:clamp(arena.ap+9+(level-1)*4,0,100+(level-1)*35),ownBase:Math.max(0,ownBase),rivalBase:Math.max(0,rivalBase),
-    actors:exchange.actors.filter(actor=>actor.hp>0),fallen:wounds,
+    actors:survivors,fallen:wounds,
     rivalRosterIds:[...roster],wavesIssued,spawnedWaves,
     ...(arena.baseScreen?{baseScreen:screen&&absorbed===0&&screen.expiresAtTick>tick?screen:undefined}:{}),
     bracedUntil:Object.fromEntries(Object.entries(arena.bracedUntil??{})
@@ -565,12 +607,14 @@ export function stepAssaultV115(state:WarOperationsStateV115,rules:WarRulesV6):W
         order.expiresAtTick>tick)),
     heldUntil:Object.fromEntries(Object.entries(arena.heldUntil??{}).filter(([,until])=>until>tick))};
   const advanced={...state,clock:state.clock+1,active:{...mission,tick,assault:nextArena}};
+  const assaultStep = {field:advanced.active,shots:exchange.shots,defeated:exchange.actors.filter(actor=>actor.hp<=0)};
   if(rivalBase<=0 || ownBase<=0 || tick>=95) {
     const outcome = rivalBase<=0 && ownBase>0 ? "victory" : "defeat";
-    return accept(recordOutcome(advanced,mission.id,"assault",null,mission.targetId,mission.teamIds,outcome,nextArena.fallen,rules,
+    const result = accept(recordOutcome(advanced,mission.id,"assault",null,mission.targetId,mission.teamIds,outcome,nextArena.fallen,rules,
       outcome==="victory"?"Bastion adverse neutralisé dans la simulation latérale.":"Sortie repoussée dans l'exercice."),"Bataille terminée : rapport consigné.");
+    return {...result, assaultStep};
   }
-  return accept(advanced,"La bataille latérale progresse.");
+  return {...accept(advanced,"La bataille latérale progresse."), assaultStep};
 }
 export type StealthCommandV115 = "up"|"down"|"left"|"right"|"cloak"|"interact"|"wait"|"decoy"|"hide"|"listen"|"quiet-sabotage"|"cut-grid"|"restore-grid"|"cover-up"|"cover-down"|"cover-left"|"cover-right";
 export function commandStealthV115(state:WarOperationsStateV115,command:StealthCommandV115,rules:WarRulesV6):WarOperationsUpdateV115 {
@@ -582,6 +626,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  if(!["up","down","left","right","cloak","interact","wait","decoy","hide","listen","quiet-sabotage","cut-grid","restore-grid","cover-up","cover-down","cover-left","cover-right"].includes(command))
   return reject(state,"Action inconnue.");
  const terrain=warMissionTerrainV116(mission.targetId,rules);
+ const listenCue=command==="listen"?warStealthListenCueV115(stealth,terrain):null;
  let {x,y,cloaked,energy,alarm,sabotaged,guardX,guardDirection}=stealth;
  let guardY=stealth.guardY??2;
  let supportGuard=stealth.supportGuard?{...stealth.supportGuard}:undefined;
@@ -604,9 +649,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   gridSwitches++;energy--;
  }
  if(command==="listen"){
-  if(!terrain.cover.includes(coord(x,y))||cloaked||energy<1||acousticUsed>=2||
-    Math.min(distance({x,y},{x:guardX,y:guardY}),
-      supportGuard?distance({x,y},supportGuard):Infinity)>5)
+  if(!terrain.cover.includes(coord(x,y))||cloaked||energy<1||acousticUsed>=2||!listenCue)
    return reject(state,"Écoute refusée : couvert réel, patrouille à portée acoustique, batterie et limite de deux usages.");
   acousticUsed++;energy--;
  }
@@ -718,12 +761,8 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   supportGuard=chooseStealthSupportGuard(terrain,{x:guardX,y:guardY},{x,y});
   if(supportGuard)reinforcementIssued=true;
  }
- if(command==="listen"){
-  // Direction is coarse relative bearing only. No guard x-coordinate,
-  // opponent ID, camera reveal or cross-planet information enters the record.
-  const acoustic=(supportGuard&&distance({x,y},supportGuard)<
-      distance({x,y},{x:guardX,y:guardY}))?supportGuard.x:guardX;
-  heardBearing=acoustic>x+1?"est":acoustic<x-1?"ouest":"proche";
+ if(listenCue){
+  heardBearing=listenCue.bearing;
   heardAtTick=mission.tick+1;
  }
  // Quiet waiting replenishes the existing cloak battery only while actually
@@ -746,7 +785,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
    "Relais désactivé et pisteur extrait ; renseignement et sabotage consignés."),"Extraction confirmée.");
  if(mission.tick>=65)return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"defeat",[],rules,
   "Fenêtre d'infiltration expirée."),"Mission interrompue par la durée de l'exercice.");
- return accept(advanced,switching?
+ const update=accept(advanced,switching?
    (gridPowered?"Réseau réalimenté : porte motorisée franchissable.":"Coupure locale : porte motorisée physiquement verrouillée."):
    command==="quiet-sabotage"?"Sabotage discret : 2 énergie engagées, sans alarme automatique.":
   command==="listen"?"Écoute locale : présence de la patrouille "+heardBearing+" ; aucune position exacte révélée.":
@@ -756,6 +795,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   command==="wait"?"Observation et attente : camouflage rechargé uniquement hors du regard adverse.":
   sabotaged?"Relais neutralisé : retournez au point d'extraction (1,4).":
   "Restez hors du champ de la patrouille et atteignez le relais (7,1).");
+ return listenCue?{...update,listenCue}:update;
 }
 function rtsEnemyTurn(actors:WarRtsActorV115[],rules:WarRulesV6,terrain:WarMissionTerrainV116,
   scripted?:WarRtsScriptedObjectiveV119) {
@@ -1284,6 +1324,11 @@ export function readWarOperationsV115(raw:string,rules:WarRulesV6):WarOperations
       (actor.side==="ally" ? typeof actor.teamId==="string"&&!!ownTeam(v,actor.teamId) : actor.side==="rival"&&actor.teamId===null)&&
       Number.isFinite(actor.x)&&actor.x>=0&&actor.x<=(mode==="assault"?100:8)&&
       Number.isFinite(actor.hp)&&actor.hp>=0&&actor.hp<=100&&
+      (actor.assaultCloak===undefined||(mode==="assault"&&actor.side==="ally"&&actor.hp>0&&
+        actor.assaultCloak&&typeof actor.assaultCloak.active==="boolean"&&
+        Number.isInteger(actor.assaultCloak.energy)&&actor.assaultCloak.energy>=0&&
+        actor.assaultCloak.energy<=WAR_ASSAULT_CLOAK_CAPACITY_V115&&
+        (!actor.assaultCloak.active||actor.assaultCloak.energy>0)))&&
       (mode==="assault"||Number.isInteger((actor as WarRtsActorV115).y)&&
        (actor as WarRtsActorV115).y>=0&&(actor as WarRtsActorV115).y<=5);
     const active=v.active;

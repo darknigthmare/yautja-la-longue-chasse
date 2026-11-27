@@ -183,6 +183,11 @@ const BIND_FRAME = solveHunterRig({ pose: "idle", phase: 0, facing: 1 });
 export interface PitFighterRenderOptions {
   highContrast?: boolean;
   accent?: string;
+  /**
+   * V147: optional recoloured source for a layer, already mapped into the
+   * 256x384 rig frame with the layer filter applied (null keeps the bitmap).
+   */
+  layerSource?: (layer: PitFighterArtLayer, image: HTMLImageElement) => CanvasImageSource | null;
 }
 
 /** Presentation only: no combat state writes, hitboxes or gameplay timings. */
@@ -221,7 +226,9 @@ export function drawPitModularFighter(
     context.transform(matrix.a, matrix.b, matrix.c, matrix.d, matrix.e, matrix.f);
     if (layer.fit && !dread) context.transform(layer.fit.a, layer.fit.b, layer.fit.c, layer.fit.d, layer.fit.e, layer.fit.f);
     context.globalAlpha *= layer.opacity ?? 1;
-    if (layer.filter) context.filter = layer.filter;
+    const image = bank.images.get(layer.src)!;
+    const source = options.layerSource?.(layer, image) ?? null;
+    if (layer.filter && !source) context.filter = layer.filter;
     if (!dread) context.translate(layer.offset?.[0] ?? 0, layer.offset?.[1] ?? 0);
     if (layer.pivot && !dread) {
       context.translate(...layer.pivot);
@@ -241,7 +248,8 @@ export function drawPitModularFighter(
       for (const [x, y, width, height] of layer.clip) context.rect(x, y, width, height);
       context.clip();
     }
-    context.drawImage(bank.images.get(layer.src)!, layer.placement?.x ?? 0, layer.placement?.y ?? 0,
+    if (source) context.drawImage(source, 0, 0, HUNTER_RIG_CANVAS.width, HUNTER_RIG_CANVAS.height);
+    else context.drawImage(image, layer.placement?.x ?? 0, layer.placement?.y ?? 0,
       layer.placement?.width ?? HUNTER_RIG_CANVAS.width, layer.placement?.height ?? HUNTER_RIG_CANVAS.height);
     context.restore();
   }

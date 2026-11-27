@@ -1,9 +1,12 @@
+import { createNurseryOpening, normalizeNurseryOpening, stepNurseryOpening,
+  type NurseryOpening, type NurseryOpeningStep } from "./nurseryOpening";
+import { createNurseryCohort, normalizeNurseryCohort, stepNurseryCohort, type NurseryCohortProgress } from "./nurseryCohortV172";
 import { NURSERY_CONTINUITY_V72, normalizeNurseryContinuityV72, nurseryContinuityMatchesPhaseV72,
   nurseryContinuityPhaseV72, type NurseryContinuityV72 } from "./nurseryContinuityV72";
 
 /**
  * Pure, fixed-step Youngling opening. No rendering, assets, adult rig or storage.
- * The source describes a non-lethal nursery duel, then a camera reveal and title.
+ * The opening contains a nursery incident, a non-lethal duel and the title reveal.
  * Tuning below is an original 2D adaptation, not a franchise combat specification.
  */
 export const NURSERY_SOURCE = {
@@ -31,8 +34,8 @@ export const NURSERY_ARENA = {
   halfWidth: 19, actorHeight: 88, gravity: 0.55,
   // Spectator spikes remain outside the safe duel ring; no lethal hazard exists.
 } as const;
-export type NurseryPhase = "loading" | "prompt" | "arrival" | "ready" | "duel" |
-  "defeat" | "ko" | "village-reveal" | "moon-title" | "debrief" | "walkout" | "journey" | "reception" | "clan-entry" | "clan-departure" | "complete";
+export type NurseryPhase = "loading" | "prompt" | "arrival" | "opening" | "ready" | "duel" |
+  "defeat" | "ko" | "village-reveal" | "moon-title" | "debrief" | "cohort" | "walkout" | "journey" | "reception" | "clan-entry" | "clan-departure" | "complete";
 export type NurseryActorId = "player" | "rival";
 export type NurseryAction = "idle" | "jab" | "blade" | "throw" | "dodge" | "hurt" | "thrown" | "ko";
 export interface NurseryActor {
@@ -68,6 +71,8 @@ export interface NurseryState {
   attempt: number;
   /** Optional connective-scene cursor; old v1 checkpoints remain valid. */
   continuityV72?: NurseryContinuityV72;
+  cohortV172?: NurseryCohortProgress;
+  opening?: NurseryOpening;
 }
 export type NurseryEvent =
   | { type: "phase"; phase: NurseryPhase }
@@ -76,6 +81,7 @@ export type NurseryEvent =
   | { type: "pickup"; actor: NurseryActorId }
   | { type: "knockout"; winner: NurseryActorId }
   | { type: "story" }
+  | { type: "opening"; cue: NonNullable<NurseryOpeningStep["cue"]> }
   | { type: "complete" };
 export interface NurseryCompletionReceipt {
   id: "intro-completed";
@@ -111,6 +117,20 @@ export function createNurseryPrologue(options: { readyMode?: "hold" | "press" } 
     tick: 0, phaseTick: 0, readyTicks: 0, inputArmed: false, previousButtons: noButtons(),
     player: idleActor("player"), rival: idleActor("rival"), blade: { holder: null, x: NURSERY_ARENA.bladeSpawnX },
     rivalDecisionTicks: 45, winner: null, duelStartedAt: null, knockoutAt: null, titleStartedAt: null, attempt: 1 };
+}
+
+/** Existing victories and duel resumes keep their original position. */
+export function enableNurseryOpening(state: NurseryState): NurseryState {
+  if (state.opening || state.attempt !== 1 || !state.continuityV72 || state.continuityV72.recap ||
+      (state.phase !== "loading" && state.phase !== "prompt")) return state;
+  return { ...state, opening: createNurseryOpening() };
+}
+
+/** Earlier saves can join the courtyard before departing. Completed travel is preserved. */
+export function enableNurseryCohort(state: NurseryState): NurseryState {
+  if (!state.continuityV72 || state.cohortV172 ||
+      (nurseryContinuityPhaseV72(state.phase) && state.phase !== "debrief") || state.phase === "complete") return state;
+  return { ...state, cohortV172: createNurseryCohort() };
 }
 
 const MOVES = {
@@ -253,7 +273,7 @@ export function stepNurseryPrologue(previous: NurseryState, rawInput: NurseryAct
   // Readiness and focus recovery require a full release, including movement axes.
   // Neither fighter gets a head start while the player cannot control the duel.
   // Preserve airborne momentum and do not replay this waiting time afterwards.
-  if (state.phase === "duel" && !usable) return result;
+  if ((state.phase === "duel" || state.phase === "opening") && !usable) return result;
   state.tick++; state.phaseTick++;
 
   switch (state.phase) {
@@ -272,9 +292,21 @@ export function stepNurseryPrologue(previous: NurseryState, rawInput: NurseryAct
       // director has already shown context at the player's reading pace.
       if (state.phaseTick >= (state.continuityV72 ? NURSERY_CONTINUITY_V72.arrivalTicks : NURSERY_TIMING.arrivalTicks) ||
           !state.continuityV72 && usable && pressed.confirm && state.phaseTick >= NURSERY_TIMING.arrivalSkipUnlockTicks) {
-        transition(state, "ready", events);
+        transition(state, state.opening ? "opening" : "ready", events);
       }
       break;
+    case "opening": {
+      if (!state.opening) break;
+      const previousOpening = state.opening;
+      const opening = stepNurseryOpening(previousOpening, input.move, pressed.confirm || pressed.pickup || pressed.light || pressed.retry);
+      state.opening = opening.state;
+      if (opening.cue) events.push({ type: "opening", cue: opening.cue });
+      if (opening.finished) transition(state, "ready", events);
+      else if (opening.state.stage !== previousOpening.stage || opening.state.pushes !== previousOpening.pushes) {
+        events.push({ type: "story" });
+      }
+      break;
+    }
     case "ready":
       if (state.readyMode === "press") {
         if (usable && pressed.ready) transition(state, "duel", events);
@@ -330,10 +362,21 @@ export function stepNurseryPrologue(previous: NurseryState, rawInput: NurseryAct
         state.continuityV72.debriefPage++; state.phaseTick = 0;
         state.inputArmed = false; state.previousButtons = noButtons(); events.push({ type: "story" });
         if (state.continuityV72.debriefPage >= NURSERY_CONTINUITY_V72.debriefPages) {
-          state.blade.holder = null; transition(state, "walkout", events);
+          state.blade.holder = null; transition(state, state.cohortV172 ? "cohort" : "walkout", events);
         }
       }
       break;
+    case "cohort": {
+      if (!state.cohortV172 || !usable) break;
+      const previousCohort = state.cohortV172;
+      state.cohortV172 = stepNurseryCohort(previousCohort, input.move, pressed.confirm || pressed.pickup);
+      state.player.vx = state.cohortV172.x === previousCohort.x ? 0 : input.move * 3;
+      if (state.cohortV172.steps === 7) transition(state, "walkout", events);
+      else if (state.cohortV172.steps !== previousCohort.steps || state.cohortV172.choice !== previousCohort.choice) {
+        events.push({ type: "story" });
+      }
+      break;
+    }
     case "walkout":
       if (state.phaseTick >= NURSERY_CONTINUITY_V72.walkoutTicks) transition(state, "journey", events);
       break;
@@ -378,6 +421,8 @@ export interface NurseryPresentation {
   showTitle: boolean;
   title: "Yautja: The Long Hunt";
   awaitingNextChapter: boolean;
+  cohort?: NurseryCohortProgress;
+  opening?: NurseryOpening;
   groundBlade: { visible: boolean; x: number; y: number };
   actors: readonly { id: NurseryActorId; actorKind: "youngling"; x: number; y: number;
     facing: -1 | 1; pose: NurseryAction | "ready" | "walk"; poseTick: number; holdsDetachedBlade: boolean }[];
@@ -404,7 +449,7 @@ export function getNurseryPresentation(state: NurseryState): NurseryPresentation
     phase === "arrival" && !story ? arrivalProgress :
     phase === "village-reveal" ? clamp(state.phaseTick / NURSERY_TIMING.villageRevealTicks, 0, 1) :
     phase === "moon-title" ? clamp(state.phaseTick / NURSERY_TIMING.moonTitleTicks, 0, 1) : phase === "complete" ? 1 : 0;
-  return { phase, hud: false, vision: "natural-red-orange-yellow", controlEnabled: phase === "duel" && state.inputArmed,
+  return { phase, hud: false, vision: "natural-red-orange-yellow", controlEnabled: (phase === "duel" || phase === "cohort" || phase === "opening") && state.inputArmed,
     readyGestureProgress: clamp(state.readyTicks / NURSERY_TIMING.readyHoldTicks, 0, 1),
     showStartPrompt: phase === "prompt", showReadyPrompt: phase === "ready",
     camera: { shot, progress, blur: phase === "arrival" ? story ?
@@ -413,6 +458,8 @@ export function getNurseryPresentation(state: NurseryState): NurseryPresentation
     showTitle: phase === "moon-title" || phase === "complete" && !story, title: NURSERY_SOURCE.title,
     awaitingNextChapter: (phase === "moon-title" && !story && state.phaseTick >= NURSERY_TIMING.moonTitleTicks) ||
       phase === "reception" && story?.receptionPage === 3 || phase === "clan-departure" && state.phaseTick >= NURSERY_CONTINUITY_V72.clanDepartureTicks,
+    ...(phase === "cohort" && state.cohortV172 ? { cohort: state.cohortV172 } : {}),
+    ...(phase === "opening" && state.opening ? { opening: state.opening } : {}),
     groundBlade: { visible: state.blade.holder === null && !nurseryContinuityPhaseV72(phase), x: state.blade.x, y: NURSERY_ARENA.groundY },
     actors: [state.player, state.rival].map(actor => ({ id: actor.id, actorKind: "youngling", x: actor.x, y: actor.y,
       facing: actor.facing, pose: phase === "debrief" && actor.id === "rival" && story?.debriefPage === 1 ? "idle" :
@@ -511,7 +558,7 @@ export function getNurseryNarrativeBeat(state: NurseryState): NurseryNarrativeBe
   return null;
 }
 
-const phases: readonly NurseryPhase[] = ["loading", "prompt", "arrival", "ready", "duel", "defeat", "ko", "village-reveal", "moon-title", "debrief", "walkout", "journey", "reception", "clan-entry", "clan-departure", "complete"];
+const phases: readonly NurseryPhase[] = ["loading", "prompt", "arrival", "opening", "ready", "duel", "defeat", "ko", "village-reveal", "moon-title", "debrief", "cohort", "walkout", "journey", "reception", "clan-entry", "clan-departure", "complete"];
 const actions: readonly NurseryAction[] = ["idle", "jab", "blade", "throw", "dodge", "hurt", "thrown", "ko"];
 const MAX_TICK = 3_600_000;
 const integer = (value: unknown, min: number, max: number): value is number => typeof value === "number" && Number.isSafeInteger(value) && value >= min && value <= max;
@@ -547,7 +594,21 @@ export function normalizeNurseryCheckpoint(raw: unknown): NurseryState | null {
   const continuityV72 = raw.continuityV72 === undefined ? undefined : normalizeNurseryContinuityV72(raw.continuityV72);
   if (continuityV72 === null || (continuityV72 && !nurseryContinuityMatchesPhaseV72(continuityV72, phase)) ||
     nurseryContinuityPhaseV72(phase) && !continuityV72) return null;
-  const beforeDuel = ["loading", "prompt", "arrival", "ready"].includes(phase);
+  const cohortV172 = raw.cohortV172 === undefined ? undefined : normalizeNurseryCohort(raw.cohortV172);
+  if (cohortV172 === null || phase === "cohort" && !cohortV172) return null;
+  if (cohortV172) {
+    if (!continuityV72) return null;
+    const afterCohort = phase === "complete" || nurseryContinuityPhaseV72(phase) && phase !== "debrief" && phase !== "cohort";
+    if (afterCohort ? cohortV172.steps !== 7 : phase === "cohort" ? cohortV172.steps >= 7 : cohortV172.steps !== 0) return null;
+  }
+  const opening = raw.opening === undefined ? undefined : normalizeNurseryOpening(raw.opening);
+  if (opening === null || phase === "opening" && !opening) return null;
+  if (opening) {
+    const beforeOpening = ["loading", "prompt", "arrival"].includes(phase);
+    if (!continuityV72 || (beforeOpening ? opening.stage !== "latch" || opening.ticks !== 0 :
+        phase !== "opening" && !opening.openingResolved)) return null;
+  }
+  const beforeDuel = ["loading", "prompt", "arrival", "opening", "ready"].includes(phase);
   if (beforeDuel && (raw.winner !== null || raw.duelStartedAt !== null || raw.knockoutAt !== null || raw.titleStartedAt !== null ||
     player.composure !== 100 || rival.composure !== 100 || player.action !== "idle" || rival.action !== "idle" || raw.blade.holder !== null ||
     player.x !== NURSERY_ARENA.playerSpawnX || rival.x !== NURSERY_ARENA.rivalSpawnX || player.vx !== 0 || rival.vx !== 0)) return null;
@@ -579,7 +640,7 @@ export function normalizeNurseryCheckpoint(raw: unknown): NurseryState | null {
     blade: { holder: raw.blade.holder as NurseryActorId | null, x: raw.blade.x }, rivalDecisionTicks: raw.rivalDecisionTicks,
     winner: raw.winner as NurseryActorId | null, duelStartedAt: raw.duelStartedAt as number | null,
     knockoutAt: raw.knockoutAt as number | null, titleStartedAt: raw.titleStartedAt as number | null, attempt: raw.attempt,
-    ...(continuityV72 ? { continuityV72 } : {}) };
+    ...(continuityV72 ? { continuityV72 } : {}), ...(cohortV172 ? { cohortV172 } : {}), ...(opening ? { opening } : {}) };
 }
 
 

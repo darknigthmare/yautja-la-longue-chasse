@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "performedAtUtc": "2026-11-17T03:25:12.025634+00:00",
+  "command": "python3 dlc/tools/verify_archive_recovery_20261117.py",
+  "readOnly": true,
+  "verifierSha256": "a9020261dd0e99b5c2ac750077bfb249de2554e69c66c15982b93c2aa2bde197",
+  "inventorySha256": "c613770fccce45f4b85bf621ab5562677bcc23e38644310d99ad026194d9bd2f",
+  "pack": "avpr-wolf",
+  "inventory": "dlc/avpr-wolf/qa/IMPORT_INVENTORY_20261117.json",
+  "status": "PASS",
+  "scope": "Byte preservation, archive structure, image decode and recorded checksums; no gameplay or artistic approval.",
+  "auditedBaseCommit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+  "files": 139,
+  "hashMatches": 139,
+  "bytes": 3413444,
+  "uniqueFileSha256": 133,
+  "jsonParsed": 31,
+  "pngDecoded": 23,
+  "svgParsed": 23,
+  "pngDetails": [
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/scene_previews_v04/01_crash_preview.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGBA",
+      "rgbaSha256": "8fcfbf1a5be6a8524394121c6dea72997ec18b417091305a6fa0aff7e0c13461"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/scene_previews_v04/02_sewer_preview.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGBA",
+      "rgbaSha256": "57d978d8614052f102c35c54d1e9fbd7269a912694004c28bf9c3d75593d513d"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/scene_previews_v04/03_hospital_preview.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGBA",
+      "rgbaSha256": "cd4b12b2553ca448cb9f583cff57b3530da6176a6ca645658bd63497ea8e08af"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/scene_previews_v04/04_roof_preview.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGBA",
+      "rgbaSha256": "1755a4785e42a523a36b5f066f6ecff7bf9ae59afd761cea8ef3e47ed457249d"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/scene_previews_v05/01_sewer_acid_preview.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGBA",
+      "rgbaSha256": "370bcfd3a8531bf0ff03790bea1f059319a52b9b4ac02bf531d4b9fd3cfc8158"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/scene_previews_v05/02_hospital_blackout_preview.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGBA",
+      "rgbaSha256": "f8248d3f0572ab4788a2112c46344356e4436c021d3d9d2b53a5394316ba01b4"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/scene_previews_v05/03_facehugger_preview.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGBA",
+      "rgbaSha256": "81b95127b711fe5ade2400b99f087359901139d978696f389b3fb41c7596552c"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/scene_previews_v05/04_roof_grapple_preview.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGBA",
+      "rgbaSha256": "feff83db82a1a1f149cca428b5212df83ce7097ede80f855c749560cd03048b2"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/scene_previews_v05/05_store_combat_preview.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGBA",
+      "rgbaSha256": "f0016b4abfe0e1feb61de6ec0a0ae23ee5bbe880317e52b2a501283766689a1c"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/screenshots/01_homeworld.png",
+      "width": 1440,
+      "height": 900,
+      "mode": "RGB",
+      "rgbaSha256": "ec59b98595f47e6a4f9f00a9c36c542a76892abdd900e78bcb3016c02fe5823e"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/screenshots/02_crash.png",
+      "width": 1440,
+      "height": 900,
+      "mode": "RGB",
+      "rgbaSha256": "eb4bcddba3bc3161aaef626d1b36ac46ea92236eace46a7d0e544ce0c9c38129"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/screenshots/03_sewer.png",
+      "width": 1440,
+      "height": 900,
+      "mode": "RGB",
+      "rgbaSha256": "8c69f5d0c48a09d61dcab286db3200f7de402d93bb90b6b43a2ff7f8e8f485b5"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/screenshots/04_power.png",
+      "width": 1440,
+      "height": 900,
+      "mode": "RGB",
+      "rgbaSha256": "2d202bf5024f0a37576c2a1837621c4669c32cc6fde677977ae55ca8fe19eec1"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/screenshots/05_pool.png",
+      "width": 1440,
+      "height": 900,
+      "mode": "RGB",
+      "rgbaSha256": "b49fe4b5576c2756d17e2056a412d16cb3f3109bcbd752b0b5c54b987d68ba5c"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/screenshots/06_store.png",
+      "width": 1440,
+      "height": 900,
+      "mode": "RGB",
+      "rgbaSha256": "33ddca1f9b46bd2f51753789f8c40fba92133050aea1535af562d4946d2bbb2d"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/screenshots/07_maternity.png",
+      "width": 1440,
+      "height": 900,
+      "mode": "RGB",
+      "rgbaSha256": "a67246eb48c31249903c83345529dbdc978150c0c7aeb6ff03ccb8ea9b3fdd59"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/screenshots/08_roof_duel.png",
+      "width": 1440,
+      "height": 900,
+      "mode": "RGB",
+      "rgbaSha256": "9570aa40239deb755e39a594c0d5012f87504bf4345f9e691c2be4cd89d7feea"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/sprite_previews/facehugger-sprite-sheet.png",
+      "width": 1152,
+      "height": 768,
+      "mode": "RGBA",
+      "rgbaSha256": "6251c821b98cd766a1595bd707af497c2574c92bf81ef97f350a140eb980fdd2"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/sprite_previews/human-looter-sprite-sheet.png",
+      "width": 576,
+      "height": 512,
+      "mode": "RGBA",
+      "rgbaSha256": "ef5f45e9e06411fa085898142ce75d91bfc968c7af85474f679f51ff109e1cd7"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/sprite_previews/predalien-sprite-sheet.png",
+      "width": 480,
+      "height": 360,
+      "mode": "RGBA",
+      "rgbaSha256": "812371a0d11a601a93f9a52bb570d1fe2d89cff071446a6171446f753c0a2979"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/sprite_previews/wolf-sprite-sheet.png",
+      "width": 512,
+      "height": 400,
+      "mode": "RGBA",
+      "rgbaSha256": "3a232682182252126688daff8bf36f746a72df466a6befe7b8a70d5242c3613c"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/sprite_previews/wolf-unmasked-sprite-sheet.png",
+      "width": 512,
+      "height": 400,
+      "mode": "RGBA",
+      "rgbaSha256": "699f71c17e655bd9f38e28887f858d5e3fd4ff73df9145675c501eb33e498f9a"
+    },
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/sprite_previews/xeno-sprite-sheet.png",
+      "width": 384,
+      "height": 320,
+      "mode": "RGBA",
+      "rgbaSha256": "f2302c281abc64f437dfa2b2e05b089552ab32254ffff77a709183a679abbe05"
+    }
+  ],
+  "archivesChecked": [
+    {
+      "path": "dlc/avpr-wolf/v0.7.0-candidate.1/docs/reference/AVPR_2007_Inventaire.xlsx",
+      "entries": 21,
+      "crc": "PASS"
+    }
+  ],
+  "preservedBaselineFilesChecked": 0,
+  "historicalChecksumManifests": [
+    {
+      "manifest": "dlc/avpr-wolf/v0.7.0-candidate.1/integrity.json",
+      "checkedEntries": 132,
+      "matchedEntries": 132,
+      "explicitPathRelocations": {},
+      "status": "PASS",
+      "issues": []
+    }
+  ],
+  "issues": [],
+  "notPerformed": [
+    "historical-runtime-tests",
+    "installers",
+    "rebuilding-historical-artifacts",
+    "browser-playthrough",
+    "Next-build",
+    "native-Yautja-integration",
+    "human-artistic-review",
+    "one-to-one-fidelity-certification"
+  ]
+}

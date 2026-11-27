@@ -8,7 +8,7 @@ export const CORPSE_DISCOVERY_V112 = Object.freeze({
   sightRadius: 480, scentRadius: 140, radioRadius: 480,
   radioDelaySeconds: .8, reactionSeconds: 7, zoneSeconds: 30, zoneRadius: 260,
 });
-export type DiscoveryChannelV112 = "visual" | "scent" | "radio";
+export type DiscoveryChannelV112 = "visual" | "staged" | "scent" | "radio";
 export type AnimalResponseV112 = "avoid" | "inspect" | "guard";
 export interface DiscoveryPointV112 { x:number; y:number }
 export interface DiscoveryActorV112 extends DiscoveryPointV112 {
@@ -18,7 +18,7 @@ export interface DiscoveryActorV112 extends DiscoveryPointV112 {
 }
 export interface DiscoveryCorpseV112 extends DiscoveryPointV112 {
   id:string; kind:DiscoveryActorV112["kind"]; erased:boolean; marked:boolean;
-  flayed:boolean; supportId:string|null; witnesses:readonly string[];
+  flayed:boolean; supportId:string|null; hung?:boolean; witnesses:readonly string[];
 }
 export interface DiscoveryReceiptV112 {
   id:string; corpseId:string; actorId:string; channel:DiscoveryChannelV112;
@@ -48,7 +48,8 @@ export interface DiscoveryStepV112 {
 }
 const pointDistance=(a:DiscoveryPointV112,b:DiscoveryPointV112)=>Math.hypot(a.x-b.x,a.y-b.y);
 const receiptId=(corpseId:string,actorId:string,channel:DiscoveryChannelV112)=>JSON.stringify([corpseId,actorId,channel]);
-const corpseFear=(c:DiscoveryCorpseV112)=>c.supportId?35:c.flayed?20:c.marked?8:4;
+const UNSTAGED_FEAR_V112 = 4;
+const corpseFear=(c:DiscoveryCorpseV112)=>c.supportId?35:c.flayed?20:c.marked?8:UNSTAGED_FEAR_V112;
 const active=(a:DiscoveryActorV112)=>a.alive&&a.active&&!a.boss;
 /** Ecology catalogue roles explicitly distinguish grazers, scavengers and guards.
  * Unclassified wildlife avoids a body; it never inherits a human terror score. */
@@ -72,25 +73,25 @@ export function stepCorpseDiscoveryV112(previous:CorpseDiscoveryStateV112,input:
     pendingRadios:previous.pendingRadios.filter(p=>input.corpses.some(c=>c.id===p.corpseId&&!c.erased))};
   if(input.now+1e-9<previous.nextScanAt)return {state,observations,metrics};
   state.nextScanAt=input.now+CORPSE_DISCOVERY_V112.scanSeconds;
-  const known=new Set(state.receipts.map(r=>r.id));
+  const known=new Map(state.receipts.map(r=>[r.id,r]));
   const addReceipt=(corpse:DiscoveryCorpseV112,actor:DiscoveryActorV112,channel:DiscoveryChannelV112,sourceActorId:string|null)=>{
     const id=receiptId(corpse.id,actor.id,channel);
     if(known.has(id)||state.receipts.length>=CORPSE_DISCOVERY_V112.maximumReceipts)return;
-    known.add(id);
     const fear=actor.kind==="beast"?0:corpseFear(corpse);
     const receipt:DiscoveryReceiptV112={id,corpseId:corpse.id,actorId:actor.id,channel,at:input.now,fear,sourceActorId};
-    state.receipts.push(receipt);observations.push(receipt);
+    known.set(id,receipt);state.receipts.push(receipt);observations.push(receipt);
     state.events.push(id);if(state.events.length>CORPSE_DISCOVERY_V112.maximumEvents)state.events.shift();
     const reaction:DiscoveryReactionV112={actorId:actor.id,corpseId:corpse.id,channel,
       response:actor.kind==="beast"?actor.animalResponse:"investigate",
       startedAt:input.now,until:input.now+CORPSE_DISCOVERY_V112.reactionSeconds};
     state.reactions=state.reactions.filter(r=>r.actorId!==actor.id);
     if(state.reactions.length<CORPSE_DISCOVERY_V112.maximumReactions)state.reactions.push(reaction);
-    if(actor.kind!=="beast"&&channel==="visual"){
-      const zone=state.zones.find(z=>z.corpseId===corpse.id&&z.factionId===actor.factionId);
-      if(!zone&&state.zones.length<CORPSE_DISCOVERY_V112.maximumZones)
-        state.zones.push({corpseId:corpse.id,factionId:actor.factionId,at:input.now,fear});
-      if(actor.radio&&state.pendingRadios.length<CORPSE_DISCOVERY_V112.maximumPendingRadios)
+    if(actor.kind!=="beast"&&(channel==="visual"||channel==="staged")){
+      const index=state.zones.findIndex(z=>z.corpseId===corpse.id&&z.factionId===actor.factionId);
+      const zone={corpseId:corpse.id,factionId:actor.factionId,at:input.now,fear};
+      if(index>=0&&state.zones[index].fear<fear)state.zones[index]=zone;
+      if(index<0&&state.zones.length<CORPSE_DISCOVERY_V112.maximumZones)state.zones.push(zone);
+      if(channel==="visual"&&actor.radio&&state.pendingRadios.length<CORPSE_DISCOVERY_V112.maximumPendingRadios)
         state.pendingRadios.push({corpseId:corpse.id,sourceActorId:actor.id,dueAt:input.now+CORPSE_DISCOVERY_V112.radioDelaySeconds});
     }
   };
@@ -118,18 +119,25 @@ export function stepCorpseDiscoveryV112(previous:CorpseDiscoveryStateV112,input:
     const corpse=corpses[Math.floor(index/actors.length)],actor=actors[index%actors.length];
     metrics.pairs++;
     if(corpse.id===actor.id)continue;
-    if(known.has(receiptId(corpse.id,actor.id,"visual"))||known.has(receiptId(corpse.id,actor.id,"scent")))continue;
-    // Legacy staged discoveries remain accounted once; a missing V112 ledger
-    // must not replay the old fear/morale/sound on resuming a V111 archive.
-    if(corpse.witnesses.includes(actor.id)){
-      const id=receiptId(corpse.id,actor.id,"visual");
+    const visualId=receiptId(corpse.id,actor.id,"visual");
+    const sight=known.get(visualId);
+    if(known.has(receiptId(corpse.id,actor.id,"scent")))continue;
+    // A witness can see a bare body, then see its first actual staging.
+    const alreadyWitnessed=corpse.witnesses.includes(actor.id);
+    const firstStaging=sight?.fear===UNSTAGED_FEAR_V112&&actor.kind!=="beast"&&
+      corpseFear(corpse)>UNSTAGED_FEAR_V112&&!alreadyWitnessed&&
+      !known.has(receiptId(corpse.id,actor.id,"staged"));
+    if(sight&&!firstStaging)continue;
+    // Legacy witnesses already reacted to the staging before ecosystem receipts existed.
+    if(alreadyWitnessed){
       if(state.receipts.length<CORPSE_DISCOVERY_V112.maximumReceipts){
-        state.receipts.push({id,corpseId:corpse.id,actorId:actor.id,channel:"visual",at:input.now,fear:corpseFear(corpse),sourceActorId:null});known.add(id);}
+        const receipt:DiscoveryReceiptV112={id:visualId,corpseId:corpse.id,actorId:actor.id,channel:"visual",at:input.now,fear:corpseFear(corpse),sourceActorId:null};
+        state.receipts.push(receipt);known.set(visualId,receipt);}
       continue;
     }
     const distance=pointDistance(corpse,actor);
     if(distance<=CORPSE_DISCOVERY_V112.sightRadius){
-      metrics.sightQueries++;if(input.canSee(actor,corpse)){addReceipt(corpse,actor,"visual",null);continue;}
+      metrics.sightQueries++;if(input.canSee(actor,corpse)){addReceipt(corpse,actor,firstStaging?"staged":"visual",null);continue;}
     }
     if(actor.kind==="beast"&&distance<=CORPSE_DISCOVERY_V112.scentRadius){
       metrics.scentQueries++;if(input.canSmell(actor,corpse))addReceipt(corpse,actor,"scent",null);
@@ -173,11 +181,13 @@ export function restoreCorpseDiscoveryV112(raw:unknown,runId:string,corpses:read
     s.events.some(id=>typeof id!=="string"))return null;
   const ids=new Set<string>();
   for(const r of s.receipts){
-    if(!r||!["visual","scent","radio"].includes(r.channel)||r.id!==receiptId(r.corpseId,r.actorId,r.channel)||ids.has(r.id)||
+    if(!r||!["visual","staged","scent","radio"].includes(r.channel)||r.id!==receiptId(r.corpseId,r.actorId,r.channel)||ids.has(r.id)||
       !finite(r.at)||r.at>s.elapsed||![0,4,8,20,35].includes(r.fear))return null;
     const c=corpses.find(c=>c.id===r.corpseId),a=actors.find(a=>a.id===r.actorId);
     if(!c||!a||a.boss||a.id===c.id||a.kind==="beast"&&r.fear!==0||a.kind!=="beast"&&r.fear===0||
       r.fear===20&&!c.flayed||r.channel==="scent"&&a.kind!=="beast")return null;
+    if(r.channel==="staged"&&(r.fear<=UNSTAGED_FEAR_V112||r.fear===8&&!c.marked||r.fear===35&&!c.supportId&&!c.hung||
+      !s.receipts.some(p=>p.actorId===r.actorId&&p.corpseId===r.corpseId&&p.channel==="visual"&&p.fear===UNSTAGED_FEAR_V112&&p.at<r.at)))return null;
     if(r.channel==="radio"){
       const source=actors.find(a=>a.id===r.sourceActorId);
       const proof=s.receipts.find(p=>p.actorId===r.sourceActorId&&p.corpseId===r.corpseId&&p.channel==="visual");
@@ -193,7 +203,7 @@ export function restoreCorpseDiscoveryV112(raw:unknown,runId:string,corpses:read
       r.response!==(a.kind==="beast"?a.animalResponse:"investigate"))return null;reactions.add(r.actorId);}
   if(new Set(s.zones.map(z=>JSON.stringify([z?.corpseId,z?.factionId]))).size!==s.zones.length||
     new Set(s.pendingRadios.map(p=>JSON.stringify([p?.corpseId,p?.sourceActorId]))).size!==s.pendingRadios.length)return null;
-  for(const z of s.zones){const proof=s.receipts.find(p=>p.corpseId===z?.corpseId&&p.channel==="visual"&&p.fear===z?.fear&&p.at===z?.at&&
+  for(const z of s.zones){const proof=s.receipts.find(p=>p.corpseId===z?.corpseId&&(p.channel==="visual"||p.channel==="staged")&&p.fear===z?.fear&&p.at===z?.at&&
     actors.some(a=>a.id===p.actorId&&a.kind!=="beast"&&a.factionId===z?.factionId));
     if(!z||!proof||!finite(z.at)||z.at!==proof.at)return null;}
   for(const p of s.pendingRadios){const source=actors.find(a=>a.id===p?.sourceActorId),proof=s.receipts.find(r=>

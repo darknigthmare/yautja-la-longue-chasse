@@ -1,7 +1,38 @@
 "use client";
+import { applyResidenceActionV149, emptyResidenceV149, houseForBuildingV149, houseV149, isFutureResidenceV149, normalizeResidenceV149, recordResidenceFieldEventV149, type ResidenceActionV149 } from "./systems/residenceV149";
+import ResidencePanelV149 from "./ResidencePanelV149";
+import { residenceTrophiesR2M038 } from "./systems/trophyIntroductionR2M038";
+import { originEndingV170 } from "./systems/originEndingsV170";
+import {
+  advanceLegacyFinaleR2, legacyOriginEndingR2, legacyResidenceSiteR2, legacySceneRefusalR2, legacyShipSiteR2,
+  type LegacyCommandR2, type LegacySceneR2, type LegacySiteR2,
+} from "./systems/legacyFinaleR2";
+import ResidenceLifePanelV150 from "./ResidenceLifePanelV150";
+import OriginTransitionPanelV151 from "./OriginTransitionPanelV151";
+import OriginTrophyTransitionPanelV157, { type OriginTrophyActionV157 } from "./OriginTrophyTransitionPanelV157";
+import { trophyTransitionStepV157 } from "./systems/originTrophyV157";
+import HouseScenesPanelV154 from "./HouseScenesPanelV154";
+import { emptyResidenceScenesV154, guestsAtHouseV154, isFutureResidenceScenesV154, normalizeResidenceScenesV154, type SceneActionV154 } from "./systems/residenceScenesV154";
+import PathMissionPanelV158 from "./PathMissionPanelV158";
+import HouseMaterialsPanelV158 from "./HouseMaterialsPanelV158";
+import OriginEndingPanelV170, { type OriginEndingActionV170 } from "./OriginEndingPanelV170";
+import { confirmEndingV170, examineEndingV170 } from "./systems/originEndingsV170";
+import { applyTrainingYardO6, type TrainingYardOrderO6 } from "./systems/originTrainingYardO6";
+import { applyContinuationO6, isContinuationOrderO6, type ContinuationOrderO6 } from "./systems/originContinuationO6";
+import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
+import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
+import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
 import { actMobility, type MobilityCommand } from "./systems/mobility/ledger";
+import { moveHeritageWeaponV152, sealHeritageTestamentV152 } from "./systems/heritageV152";
+import HeritagePanelV152, { type HeritageActionV152 } from "./HeritagePanelV152";
+import { closeHardcoreChronicleV155, hardcoreStatusV155, recordHardcoreDeathV155 } from "./systems/hardcoreV155";
+import HardcoreChroniclePanelV155, { type HardcoreCloseChoiceV155 } from "./HardcoreChroniclePanelV155";
+import { blackGodStatusV162, recordBlackGodTrialV162, sacrificeBlackGodV162, type BlackGodTrialRunV162 } from "./systems/blackGodV162";
+import BlackGodPanelV162, { BlackGodChronicleClosedV162, type BlackGodSacrificeChoiceV162 } from "./BlackGodPanelV162";
 import { atMobilityForge } from "./systems/mobility/access";
 import type { MobilityReceipt } from "./systems/mobility/controller";
+import { actMountsV153, type MountCommandV153, type MountReceiptV153 } from "./systems/mobility/mountsV153";
+import { actMountRideV156, type MountRideCommandV156, type MountRideReceiptV156 } from "./systems/mobility/mountRidingV156";
 import { acceptTrophyTutorialCheckpointV6, inspectTrophyTutorialV6, type TrophyTutorialStateV6 } from "./systems/trophyTutorialV6";
 import ConservationPanelV112, {type ConservationPanelActionV112} from "./ConservationPanelV112";
 import {startConservationV112,workConservationV112,pauseConservationV112,resumeConservationV112,repairFieldToolV112,archiveMountedSpecimenV112,deliverHarvestV112,harvestInventoryForV112,capacityForArmorV112} from "./systems/harvestInventoryV112";
@@ -24,8 +55,19 @@ import React, {
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
 import HunterChromaticForgeV113 from "./HunterChromaticForgeV113";
+import { HOUND_KENNEL_LOCATION_V147, activeHoundV147 } from "./systems/huntingHoundsV147";
+import { chooseAtKennelV147, healAtKennelV147, kennelRefusalTextV147, recruitAtKennelV147 } from "./systems/houndKennelV147";
+import HunterPieceForgeV146, { type CustomizationApplyV146 } from "./HunterPieceForgeV146";
+import { emptyCustomizationV146, outfitForModeV146 } from "./systems/hunterCustomizationV146";
+import { appearanceForModeV147 } from "./systems/hunterModeAppearanceV147";
+import { createPitPersonalFighterV147 } from "./systems/pitPersonalFighterV147";
+import type { PitPersonalFighterPropV147 } from "./PitPersonalFighterCardV147";
+import { ClanPaletteContextV146 } from "./clanPaletteContextV146";
 import { normalizeHunterChromaticsV113, maskOriginForCustomizationV135, type HunterChromaticsV113, type ChromaticFacilityV115 } from "./hunterChromaticsV113";
 import { commitHunterChromaticsV116 } from "./systems/hunterChromaticPersistenceV116";
+import { commitHunterCustomizationV146 } from "./systems/hunterCustomizationPersistenceV146";
+import { TrophyUsageControlsV147, TrophyUsageSummaryV147 } from "./TrophyUsagesV147";
+import { applyTrophyUsageV147, isPersonalShipTrophyDisplayV147, type TrophyUsageActionV147 } from "./systems/trophyUsagesV147";
 import CloudAccountV71, { openCloudAccountV71 } from "./CloudAccountV71";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import { startYouthCampaign, withYouthCheckpoint, withYouthProgress, youthCampaignNeedsScene, youthCampaignObjective } from "./systems/youthCampaign";
@@ -38,22 +80,34 @@ import { startSoloV68Campaign, withSoloV68Checkpoint, withSoloV68Progress, soloV
 import type { SoloV68State, SoloV68Receipt } from "./systems/firstHuntSoloV68";
 import { startSoloV69Campaign, withSoloV69Checkpoint, withSoloV69Progress, soloV69NeedsScene } from "./systems/campaignSoloV69";
 import { startSoloV70Campaign, withSoloV70Checkpoint, withSoloV70Progress, soloV70NeedsScene } from "./systems/campaignSoloV70";
+import { advanceBloodedTempleV174, templeAvailableV174, type TempleCommandV174 } from "./systems/bloodedTempleV174";
+import { commitEliteRecognition, type EliteRecognitionCommand } from "./systems/eliteRecognitionV174";
 import type { SoloV69State, SoloV69Receipt } from "./systems/firstHuntSoloV69";
 import type { SoloV70State, SoloV70Receipt } from "./systems/firstHuntSoloV70";
 import { startSoloV90Campaign, withSoloV90Checkpoint, withSoloV90Progress, soloV90NeedsScene } from "./systems/campaignSoloV90";
 import type { SoloV90State, SoloV90Receipt } from "./systems/firstHuntSoloV90";
-import { createHomeworldRegionV68, normalizeHomeworldRegionV68, canEnterHomeworldRegionV68, canAdvanceHomeworldRegionV68, acknowledgeHomeworldRegionEventV68, type HomeworldRegionStateV68, type HomeworldRegionIdV68, type RegionFieldEventV68 } from "./systems/homeworldRegionsV68";
+import { advanceRegionalLoopM014, regionalLoopAdmissionM014, startRegionalLoopM014, type RegionalLoopCommandM014 } from "./systems/homeworldRegionalLoopM014";
+import { createHomeworldRegionV68, normalizeHomeworldRegionV68, homeworldRegionInteractionV68, canEnterHomeworldRegionV68, canAdvanceHomeworldRegionV68, acknowledgeHomeworldRegionEventV68, type HomeworldRegionStateV68, type HomeworldRegionIdV68, type RegionFieldEventV68 } from "./systems/homeworldRegionsV68";
 import {BIBLE_CULTURAL_BINDING_V86,bibleCulturalContextV86,createBibleSceneTransactionV86,defaultBibleSceneLedgerV86,normalizeBibleSceneLedgerV86,type BibleSceneActionV86,type BibleSceneResultV86} from './systems/bibleSceneCulturalV86';
 import { bindContractsVillageRunV68, recordContractsFieldEventV68, contractMarksV68 } from "./systems/homeworldContractsV68";
+import { bindMinorArcsRunV160, recordMinorArcsFieldEventV160, type MinorArcsV160 } from "./systems/minorArcsV160";
 import { createHomeworldPassageV67, normalizeHomeworldPassageV67, canEnterHomeworldPassageV67, canAdvanceHomeworldPassageV67, beginReturnHomeworldPassageV67, type HomeworldPassageStateV67 } from "./systems/homeworldPassageV67";
 import { recordNpcMissionReportV66 } from "./systems/homeworldNpcMissionsV66";
 import { createGameReserveV66, createGameReserveV104, createGameReserveV107, createGameReserveV108, createGameReserveV109, canAdvanceGameReserveV66, type GameReserveV66State, type GameReserveChoiceV109 } from "./systems/gameReserveV66";
 import { mainMenuModeAccessV81, mainMenuBrowserShipContextV81 } from './systems/mainMenuModesV81';
+import { abandonQueenHuntContractV163, emptyQueenHuntV163, evaluateQueenHuntAccessV163, normalizeQueenHuntV163,
+  QUEEN_HUNT_SUPPORT_MISSION_V163, settleQueenHuntMissionV163, syncFirstQueenFromCradleV163, takeQueenHuntContractV163 } from './systems/queenHuntV163';
 import { evaluateShipPreparationV88, inspectShipPreparationV88, readShipPreparationFleetV88, type ShipPreparationObservationV88, type ShipPreparationResultV88 } from './systems/shipPreparationV88';
+import { actSpaceRoutesV159, normalizeSpaceRoutesV159, spacePersonalShipV159, type SpaceRoutesActionV159, type SpaceRoutesResultV159 } from './systems/spaceRoutesV159';
+import { advanceWarNarrativeR2M035, type WarNarrativeCommandR2M035 } from "./systems/warNarrativeR2M035";
+import { advanceConquestR2M037, type ConquestCommandR2M037 } from "./systems/warConquestR2M037";
+import { shipAcquisitionAuthorityV161, shipReceiptV161 } from './systems/shipReceiptV161';
+import { FIRST_INTERSTELLAR_V173, commitFirstInterstellarV173, firstInterstellarAccessV173,
+  firstInterstellarInFlightV173, firstInterstellarReceiptV173, type FirstInterstellarActionV173 } from './systems/firstInterstellarV173';
 import { actShipAcquisitionV89, normalizeShipAcquisitionV89, shipAcquisitionEligibleV89, shipAcquisitionSceneFactsV89, type ShipAcquisitionContextV89, type ShipAcquisitionActionV89, type ShipAcquisitionResultV89 } from './systems/shipAcquisitionV89';
 import { withNurseryCheckpoint, withNurseryCompletion } from "./systems/nurseryCampaign";
 import type { NurseryState, NurseryCompletionReceipt } from "./systems/nurseryPrologue";
-import { getChronicleRank, CHRONICLE_RANK_LABELS } from "./systems/clanChronicle";
+import { getChronicleRank, CHRONICLE_RANK_LABELS, recordChronicleEvidence, CHRONICLE_EVIDENCE } from "./systems/clanChronicle";
 import campaignMenuStyles from "./CampaignMainMenu.module.css";
 import CampaignFrontEnd, { type CampaignSessionEntry } from "./CampaignFrontEnd";
 import { CampaignSavePanel } from "./CampaignMainMenu";
@@ -64,15 +118,25 @@ import { campaignWelcomeV69 } from "./systems/campaignWelcomeV69";
 import { useHomeworldReducedMotionV77 } from "./useHomeworldReducedMotionV77";
 import { campaignWorldResumeV70 } from "./systems/campaignWorldResumeV70";
 import { actClanShipDocking, normalizeClanShipDocking, type ClanShipDockingAction } from "./systems/clanShipDocking";
-import { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, evaluateClanShipAccess, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, type ClanShipOperationsAction } from "./systems/clanShipOperations";
+import { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, evaluateClanShipAccess, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, type ClanShipNpcId, type ClanShipOperationsAction } from "./systems/clanShipOperations";
 import { actClanShipIncident, actClanShipTrophyHearing, type ClanShipIncidentAction, type ClanShipIncidentObservation } from './systems/clanShipIncidents';
 import type { ClanShipTrophyHearingAction } from './systems/clanShipTrophyHearing';
 import { actClanShipReturnEscort, type ClanShipReturnEscortAction, type ClanShipReturnEscortObservation } from './systems/clanShipReturnEscort';
 import type { ClanShipService } from "./ClanShipHub";
+import { canEnterQuatza, commitQuatzaRij, type QuatzaCommand } from "./systems/quatzaRij";
+import { commitClanHullProject, type ClanHullProjectCommandV171, type ClanHullProjectResponseV171 } from "./systems/clanHullProjectV171";
 import { actBuriedCradleCampaign, evaluateBuriedCradleAccess, type CradleCampaignAction } from './systems/buriedCradleCampaign';
 import type { CradleReturnOperation, CradleReturnObservation } from './systems/buriedCradleReturn';
+import { commitElderPassageJudgment, type PassageCommand, type PassageResponse } from './systems/elderPassageJudgmentV168';
+import { commitElderMentoring, type MentoringCommand, type MentoringResponse } from './systems/elderMentoringV168';
+import { commitElderAssembly, type AssemblyCommand, type AssemblyResponse } from './systems/elderAssemblyV168';
+import { canWorkWithClanArmorerV172, commitElderWorkshopV172, type ElderWorkshopCommandV172 } from './systems/elderWorkshopV172';
+import ElderWorkshopV172 from './ElderWorkshopV172';
+import { commitEliteMastery, type MasteryCommand, type MasteryResponse } from './systems/eliteMasteryV170';
+import { getCradleCrownCondition } from './systems/buriedCradle';
+import cradleArt from './data/buriedCradleArt.json';
 import { actCompanionResidence, bindCompanionResidenceMission, settleCompanionResidenceMission, releaseCompanionResidenceMission,
-  registerCompanionResidenceRecruitment, availableClanResidenceCrew, type CompanionResidenceAction, type CompanionResidenceObservation } from './systems/companionResidence';
+  registerCompanionResidenceRecruitment, availableClanResidenceCrew, clanResidenceCrewPostRooms, type CompanionResidenceAction, type CompanionResidenceObservation } from './systems/companionResidence';
 import { createWolfCastleVisit, inspectWolfCastleVisit, actWolfCastle, applyWolfCastleCheckpoint, type WolfCastleAction, type WolfCastleCheckpoint } from "./systems/wolfCastle";
 import { createPlanetArrival, inspectPlanetArrival, completePlanetArrivalHandoff, type PlanetArrivalState } from "./systems/planetArrival";
 import { inspectPlanetArrivalRun, type PlanetArrivalRun } from "./systems/planetArrivalRun";
@@ -227,6 +291,7 @@ import {
   normalizeSave,
   reconcileSaveWrite,
   writeSaveWithStatus,
+  normalizeHunterAppearanceV146,
 } from "./save";
 import {
   GameAudio,
@@ -290,6 +355,7 @@ import type {
 import { recordGlassDesertExpedition, type HomeworldProgress, type HomeworldService } from "./systems/homeworld";
 import type { GlassDesertProof } from "./systems/glassDesert";
 
+import { tribunalAccessV147, tribunalBlocksChroniclePromotionV147, tribunalClanShipDepartureV147 } from "./systems/honorTribunalV147";
 import { advanceJusticeTime, applyJusticeAction, getJusticeStatus, getJusticeRouteControl, type JusticeProgress, type JusticeJurisdictionId } from "./systems/justice";
 
 import { normalizeHomeworldExpeditionProof, type HomeworldExpeditionProof } from "./systems/homeworldExpedition";
@@ -297,15 +363,15 @@ import { useHunterGauntletV133 } from "./systems/useHunterGauntletV133";
 import { gauntletCampaignClaimV134,gauntletCampaignEquipV134 } from "./systems/gauntletCampaignV134";
 import { gauntletByIdV132, type GauntletThemeV132 } from "./systems/clanWarGauntletCatalogV132";
 import { captureHuntGauntletV142, resumeHuntGauntletV142 } from "./systems/huntGauntletIdentityV142";
-import { armRankTrialV168, disarmRankTrialV168, type RankTrialPartIdV168 } from "./systems/rankTrialsV168";
-import { RankTrialBriefingV168 } from "./RankTrialBriefingV168";
 
 const HomeworldExpedition = React.lazy(() => import("./HomeworldExpedition"));
 const GlassDesertExpedition = React.lazy(() => import("./GlassDesertExpedition"));
 const MobilityGarage = React.lazy(() => import("./MobilityGarage"));
 const JusticePanel = React.lazy(() => import("./JusticePanel"));
+const HonorTribunalPanelV147 = React.lazy(() => import("./HonorTribunalPanelV147"));
 const ClanChroniclePanel = React.lazy(() => import("./ClanChroniclePanel"));
 const ClanWarPanelV85 = React.lazy(() => import("./ClanWarPanelV85"));
+const WarpEpochsPanelV165 = React.lazy(() => import("./WarpEpochsPanelV165"));
 const ClanWarGauntletLockerV132 = React.lazy(() => import("./ClanWarGauntletLockerV132"));
 const RecentSpriteLibraryV85 = React.lazy(() => import("./RecentSpriteLibraryV85"));
 const Mausoleum = React.lazy(() => import("./Mausoleum"));
@@ -319,6 +385,8 @@ const FirstHuntSoloV69 = React.lazy(() => import("./FirstHuntSoloV69"));
 const FirstHuntSoloV70 = React.lazy(() => import("./FirstHuntSoloV70"));
 const FirstHuntSoloV90 = React.lazy(() => import("./FirstHuntSoloV90"));
 const HomeworldRegionV68 = React.lazy(() => import("./HomeworldRegionV68"));
+const LegacyFinaleSceneR2 = React.lazy(() => import("./LegacyFinaleSceneR2"));
+const HomeworldRegionalLoopM014 = React.lazy(() => import("./HomeworldRegionalLoopM014"));
 const HomeworldPassageV67 = React.lazy(() => import("./HomeworldPassageV67"));
 const GameReserveV66 = React.lazy(() => import("./GameReserveV66"));
 const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
@@ -326,22 +394,27 @@ const PitCanvas = React.lazy(() => import("./PitExperienceV79"));
 const PitNarrativeTrials = React.lazy(() => import("./PitNarrativeTrials"));
 const ShipHub = React.lazy(() => import("./ShipHub"));
 const BuriedCradleScene = React.lazy(() => import('./BuriedCradleScene'));
+const BuriedCradleApproach = React.lazy(() => import('./BuriedCradleApproach'));
 const ClanShipHub = React.lazy(() => import("./ClanShipHub"));
 const WolfCastleScene = React.lazy(() => import("./WolfCastleScene"));
 const PlanetArrivalCinematic = React.lazy(() => import("./PlanetArrivalCinematic"));
 const PitHonorsPanel = React.lazy(() => import("./PitHonorsPanel"));
 const GalaxyMapPanel = React.lazy(() => import("./GalaxyMapPanel"));
+const QueenHuntPanelV163 = React.lazy(() => import("./QueenHuntPanelV163"));
 const ShipInterior25D = React.lazy(() => import("./ShipInterior25D"));
 const ShipAcquisitionV89 = React.lazy(() => import("./ShipAcquisitionV89"));
+const SpaceRoutesPanelV159 = React.lazy(() => import("./SpaceRoutesPanelV159"));
 const TrophyWorkshop = React.lazy(() => import("./TrophyWorkshop"));
 const TrophyTutorialBay = React.lazy(() => import("./TrophyTutorialBay"));
 const EnemyBestiaryV8 = React.lazy(() => import("./EnemyBestiaryV8"));
+const YautjaGlossaryV147 = React.lazy(() => import("./YautjaGlossaryV147"));
 const CatalogueHunterBrowser = React.lazy(() =>
   import("./CatalogueHunterBrowser").then((module) => ({
     default: module.CatalogueHunterBrowser,
   })),
 );
 const HuntAccessibilityPanelV112 = React.lazy(() => import("./HuntAccessibilityPanelV112"));
+const FirstInterstellarV173 = React.lazy(() => import("./FirstInterstellarV173"));
 const ControlBindingsPanel = React.lazy(
   () => import("./ControlBindingsPanel"),
 );
@@ -358,11 +431,16 @@ type Screen =
   | "solo-v70"
   | "solo-v90"
   | "homeworld-region-v68"
+  | "legacy-finale-r2"
+  | "homeworld-regional-loop-m014"
   | "homeworld-passage-v67"
   | "game-reserve"
   | "ship-acquisition-v89"
+  | "first-interstellar-v173"
   | "title"
   | "clan-chronicle"
+  | "queen-hunt"
+  | "warp-epochs"
   | "clan-war"
   | "sprite-library"
   | "ship"
@@ -1061,6 +1139,27 @@ function withPitWriteLock({
   });
 }
 
+/** V146: the outfit assigned to campaign hunts, else the current appearance. */
+function campaignAppearanceV146(save: SaveGame): HunterAppearance {
+  const outfit = outfitForModeV146(save.customizationV146 ?? emptyCustomizationV146(), "campaign");
+  return outfit ? normalizeHunterAppearanceV146(outfit.appearance) : save.appearance;
+}
+
+/**
+ * V147: the campaign Yautja for THE PIT personal slot: its name, the outfit
+ * assigned to the Pit (else the campaign look) and its equipment. Read only.
+ */
+function pitPersonalFighterV147(save: SaveGame): PitPersonalFighterPropV147 {
+  const worn = appearanceForModeV147(save, "pit", normalizeHunterAppearanceV146);
+  return createPitPersonalFighterV147({
+    hunterName: save.profile.hunterName,
+    appearance: worn.appearance,
+    appearanceSource: worn.source,
+    outfitName: worn.outfitName,
+    loadout: save.loadout,
+  });
+}
+
 export default function GameClient() {
   return <CloudAccountV71><CampaignFrontEnd SessionComponent={GameSession} /></CloudAccountV71>;
 }
@@ -1069,7 +1168,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const gameFocusedV89 = useSyncExternalStore(subscribeGameFocusV89, readGameFocusV89, serverGameFocusV89);
   const reducedMotionV90 = useHomeworldReducedMotionV77();
   const [screen, setScreen] = useState<Screen>(entry.location === "new-game" ? "customization" : entry.location === "mission" ? "title" : entry.location);
-  const [chronicleReturnScreen, setChronicleReturnScreen] = useState<"deck" | "title">("deck");
+  const [chronicleReturnScreen, setChronicleReturnScreen] = useState<"deck" | "title" | "homeworld">("deck");
+  const [legacyVisitR2, setLegacyVisitR2] = useState<{
+    scene: LegacySceneR2; site: LegacySiteR2; siteLabel: string; from: "deck" | "homeworld-region-v68";
+  } | null>(null);
+  const [legacyNoticeR2, setLegacyNoticeR2] = useState("");
   const [newGamePhase, setNewGamePhase] = useState<"identity" | "briefing" | null>(entry.location === "new-game" ? "identity" : null);
   const [hydrated, setHydrated] = useState(false);
   const [nurseryPersistenceError, setNurseryPersistenceError] = useState<string | null>(null);
@@ -1103,6 +1206,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const hunterGauntlet = useHunterGauntletV133(save.createdAt,save.profile.rankId,save.gauntletV134);
   const expeditionOwnerRef = useRef<string | null>(null);
   const [homeworldArrivalV67, setHomeworldArrivalV67] = useState<{ pointId: string; requestId: string } | null>(null);
+  const [preparingFirstVoyage, setPreparingFirstVoyage] = useState(false);
   const [selectedMission, setSelectedMission] =
     useState<MissionDefinition | null>(null);
   const [galaxyNavigationState, setGalaxyNavigationState] =
@@ -1114,6 +1218,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     useState<MapReturnScreen>("deck");
   const [stationReturnScreen, setStationReturnScreen] =
     useState<StationReturnScreen>("deck");
+  const [openedTrophyHallAtPost, setOpenedTrophyHallAtPost] = useState(false);
+  const atPersonalTrophyHall = openedTrophyHallAtPost && hubLocation === "deck" && stationReturnScreen === "deck";
   const [chromaticFacilityV115, setChromaticFacilityV115] =
     useState<ChromaticFacilityV115>("ship");
   const [lastResult, setLastResult] = useState<MissionResult | null>(null);
@@ -1144,6 +1250,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const [pendingHuntResult, setPendingHuntResult] = useState<{ result: MissionResult; returnToDeck: boolean } | null>(null);
   const [previewMaskWorn, setPreviewMaskWorn] = useState(true);
   const [draftChromaticsV114, setDraftChromaticsV114] = useState<HunterChromaticsV113 | null>(null);
+  const [draftAppearanceV146, setDraftAppearanceV146] = useState<HunterAppearance | null>(null);
   const [previewGauntletOpen, setPreviewGauntletOpen] = useState(false);
   const [previewBladesExtended, setPreviewBladesExtended] = useState(false);
   const [previewAiming, setPreviewAiming] = useState(false);
@@ -1204,7 +1311,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   // Keep the physical room and avatar alive while consulting any of its services,
   // including the council (which has its own full-screen panel).
   const clanShipMounted = clanShipVisible || (screen === "clan-war" && archiveReturnV85 === "clan-ship" && clanShipState?.status === "aboard");
-  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89"));
+  const homeworldMounted = screen === "homeworld" || (hubLocation === "homeworld" && (shipStationOpen || (screen === "clan-chronicle" && chronicleReturnScreen === "homeworld") || screen === "clan-war" || screen === "sprite-library" || screen === "mausoleum" || screen === "pit" || screen === "pit-narrative" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" || screen === "ship-acquisition-v89"));
   const previousMasterVolumeRef = useRef(
     save.settings.masterVolume > 0 ? save.settings.masterVolume : 0.8,
   );
@@ -1240,6 +1347,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       saveRef.current = loadedSave;
       setSave(loadedSave);
       if (loadedSave.prologue?.status === "active") { setScreen("prologue"); setNewGamePhase(null); }
+      else if (loadedSave.homeworld.regionalLoopM014?.passage?.position) { setScreen("homeworld-regional-loop-m014"); setNewGamePhase(null); setHubLocation("homeworld"); }
       else if (soloV90NeedsScene(loadedSave.soloV90)) { setScreen("solo-v90"); setNewGamePhase(null); setHubLocation("homeworld"); }
       else if (soloV70NeedsScene(loadedSave.soloV70)) { setScreen("solo-v70"); setNewGamePhase(null); setHubLocation("homeworld"); }
       else if (soloV69NeedsScene(loadedSave.soloV69)) { setScreen("solo-v69"); setNewGamePhase(null); setHubLocation("homeworld"); }
@@ -1262,6 +1370,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           !youthCampaignNeedsScene(loadedSave.youthTraining) && !soloV66NeedsScene(loadedSave.soloV66) && !soloV67NeedsScene(loadedSave.soloV67) &&
           !soloV68NeedsScene(loadedSave.soloV68) && !soloV69NeedsScene(loadedSave.soloV69) && !soloV70NeedsScene(loadedSave.soloV70) && !soloV90NeedsScene(loadedSave.soloV90)) {
         setHubLocation("clan-ship"); setNewGamePhase(null); setScreen("clan-ship");
+      }
+      const exileDeparture = tribunalClanShipDepartureV147(loadedSave.clanShipDocking?.status);
+      if (!tribunalAccessV147(loadedSave.tribunalV147).city &&
+          entry.location !== "mission" && entry.location !== "new-game" &&
+          (exileDeparture || (worldResume && worldResume !== "game-reserve") ||
+            ["homeworld", "clan-ship", "prologue", "youth-training"].includes(entry.location))) {
+        const destination = exileDeparture ? "clan-ship" : "deck";
+        setHubLocation(destination); setNewGamePhase(null); setScreen(destination);
       }
       if ((!worldResume || worldResume === 'homeworld') && entry.location !== 'mission' && entry.location !== 'new-game' &&
           loadedSave.wolfCastle && loadedSave.wolfCastle.status !== 'departed' &&
@@ -1422,7 +1538,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!audio) return;
     const ambience: GameAudioBiome | null =
       screen === "mission" && selectedMission
-        ? selectedMission.biome
+        ? (selectedMission.id === "ruins-ancient-guardian" ? null : selectedMission.biome)
         : screen === 'buried-cradle' ? 'fungal'
         : screen === "glass-desert-expedition" ? "desert"
         : screen === "homeworld-expedition" ? "volcano"
@@ -1435,21 +1551,27 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     }
   }, [screen, selectedMission, shipStationOpen, hubLocation]);
 
+  const cradleReturnPending = save.buriedCradle?.status === "extracted" &&
+    Boolean(save.buriedCradle.returnVisit) && save.buriedCradle.personalShipId === selectedShipId;
+  const cradleReturnOnDeck = screen === "deck" && hubLocation === "deck" && cradleReturnPending;
   useEffect(() => {
-    const context: GameMusicContext | null = settingsOpen || screen === "planet-arrival" || screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90" ? null
+    const context: GameMusicContext | null = cradleReturnOnDeck ? "cradle-return"
+      : settingsOpen || (screen === "buried-cradle-briefing" && cradleReturnPending) || screen === "planet-arrival" || screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90" ? null
       : screen === "title" ? "menu"
       : screen === "mission" ? huntMusicContext
       : screen === 'buried-cradle' ? 'exploration'
-      : screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "game-reserve" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" ? "exploration"
+      : screen === "homeworld-regional-loop-m014" || screen === "homeworld-region-v68" || screen === "homeworld-passage-v67" || screen === "game-reserve" || screen === "homeworld-expedition" || screen === "glass-desert-expedition" ? "exploration"
       : screen === "map" ? "galaxy"
       : screen === "pit" || screen === "pit-narrative" ? "combat"
       : hubLocation === "homeworld" && (screen === "homeworld" || shipStationOpen) ? "homeworld"
       : "ship";
-    const apply = () => { void audioRef.current?.setMusicContext(document.hidden ? null : context, { fadeSeconds: 0.5 }); };
+    const apply = () => {
+      void audioRef.current?.setMusicContext(document.hidden && context !== "cradle-return" ? null : context, { fadeSeconds: 0.5 });
+    };
     apply();
     document.addEventListener("visibilitychange", apply);
     return () => document.removeEventListener("visibilitychange", apply);
-  }, [screen, settingsOpen, huntMusicContext, hubLocation, shipStationOpen]);
+  }, [screen, settingsOpen, huntMusicContext, hubLocation, shipStationOpen, cradleReturnOnDeck, cradleReturnPending]);
 
   useEffect(() => {
     const apply = () => audioRef.current?.setPaused(settingsOpen || document.hidden);
@@ -1700,7 +1822,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const persistNursery = useCallback((next: SaveGame): boolean => {
     if (pendingTrophyCommitRef.current) return false;
     if (!sessionAliveRef.current || next.createdAt !== entry.ownerCreatedAt) return false;
-    if (JSON.stringify(next) === JSON.stringify(saveRef.current)) {
+    const current = saveRef.current;
+    if (tribunalBlocksChroniclePromotionV147(current.tribunalV147,
+      getChronicleRank(current.prologue?.chronicle), getChronicleRank(next.prologue?.chronicle))) {
+      setNurseryPersistenceError("Le rang est gelé. Termine la réparation avant de valider ce rite."); return false;
+    }
+    if (JSON.stringify(next) === JSON.stringify(current)) {
       // A paused/no-op checkpoint still needs the same durable owner and bytes.
       // Parse without observing: reading another tab must not authorize overwriting it.
       try {
@@ -2185,7 +2312,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "quatzaRij" | "bloodedTempleV174" | "eliteRecognitionV174" | "buriedCradle" | "warNarrativeR2M035" | "warConquestR2M037" | "elderPassageJudgmentV168" | "elderMentoringV168" | "elderAssemblyV168" | "elderWorkshopV172" | "eliteMasteryV170" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "spaceRoutesV159" | "firstInterstellarV173" | "queenHuntV163" | "clanShipDocking" | "clanShipOperations" | "clanHullProjectV171" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "mountRidesV156" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "legacyFinaleR2" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155" | "blackGodV162" | "minorArcsV160" | "warpEpochsV165" | "tantalusV164">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2195,7 +2322,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6 });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, warNarrativeR2M035: update.warNarrativeR2M035, warConquestR2M037: update.warConquestR2M037, bloodedTempleV174: update.bloodedTempleV174, eliteRecognitionV174: update.eliteRecognitionV174, buriedCradle: update.buriedCradle, elderPassageJudgmentV168: update.elderPassageJudgmentV168, elderWorkshopV172: update.elderWorkshopV172, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, spaceRoutesV159: update.spaceRoutesV159, firstInterstellarV173: update.firstInterstellarV173, queenHuntV163: update.queenHuntV163, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, mountsV153: update.mountsV153, mountRidesV156: update.mountRidesV156, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149, residenceLifeV150: update.residenceLifeV150, originV151: update.originV151, legacyFinaleR2: update.legacyFinaleR2, residenceScenesV154: update.residenceScenesV154, pathObjectsV158: update.pathObjectsV158, heritageV152: update.heritageV152, hardcoreV155: update.hardcoreV155, blackGodV162: update.blackGodV162, minorArcsV160: update.minorArcsV160, warpEpochsV165: update.warpEpochsV165, tantalusV164: update.tantalusV164 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2218,6 +2345,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       }
     }
     const next = { ...current, ...update };
+    if (update.prologue && tribunalBlocksChroniclePromotionV147(current.tribunalV147,
+      getChronicleRank(current.prologue?.chronicle), getChronicleRank(update.prologue.chronicle))) {
+      setToast("Le rang est gelé. Termine la réparation avant de valider ce rite."); return false;
+    }
     const session = activeHuntSessionRef.current;
     if (session && isExplorationMission(session.missionId)) {
       const failure = explorationWriteFailure(session, next, reconcileHuntWrite());
@@ -2233,6 +2364,154 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setSave(result.save);
     return true;
   }, [reconcileHuntWrite]);
+
+  const elderRiteAvailable = useCallback(() => sessionAliveRef.current &&
+    saveRef.current.createdAt === entry.ownerCreatedAt && screen === "clan-chronicle" &&
+    gameFocusedV89 && !settingsOpen && !archiveTransferBusy && !archiveRecoveryIssue && !campaignSaveBusy &&
+    !resumableHunt && !activeHuntSessionRef.current,
+  [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
+    resumableHunt, screen, settingsOpen]);
+
+  const onEliteRecognitionCommandV174 = useCallback((command: EliteRecognitionCommand) => {
+    if (!elderRiteAvailable()) return { ok: false, message: "Rouvre la salle depuis le dossier de la campagne active." };
+    const outcome = commitEliteRecognition(saveRef.current, command);
+    if (!outcome.ok) return outcome;
+    return persistSocialProgress({ eliteRecognitionV174: outcome.state, ...(outcome.prologue ? { prologue: outcome.prologue } : {}) })
+      ? { ok: true, message: outcome.message }
+      : { ok: false, retryable: true, message: "Le résultat attend la confirmation de sauvegarde." };
+  }, [elderRiteAvailable, persistSocialProgress]);
+
+  const onBloodedTempleCommandV174 = useCallback((command: TempleCommandV174) => {
+    if (!elderRiteAvailable()) return { ok: false, notice: "Rouvre le temple depuis le dossier de la campagne active." };
+    const outcome = advanceBloodedTempleV174(saveRef.current, command, Date.now());
+    if (!outcome.ok) return outcome;
+    return persistSocialProgress(outcome.update)
+      ? { ok: true, notice: outcome.notice }
+      : { ok: false, notice: "Le dernier geste reste en attente de sauvegarde." };
+  }, [elderRiteAvailable, persistSocialProgress]);
+
+  const onQuatzaCommand = useCallback((command: QuatzaCommand): boolean => {
+    if (!elderRiteAvailable()) return false;
+    const result = commitQuatzaRij(saveRef.current, command);
+    if (!result.ok) return false;
+    return JSON.stringify(saveRef.current.quatzaRij) === JSON.stringify(result.state) ||
+      persistSocialProgress({ quatzaRij: result.state });
+  }, [elderRiteAvailable, persistSocialProgress]);
+
+  const onElderPassageCommand = useCallback((command: PassageCommand): PassageResponse => {
+    if (!elderRiteAvailable()) return { ok: false, message: "Rouvre le dossier lorsque la campagne sera disponible." };
+    const result = commitElderPassageJudgment(saveRef.current, command);
+    if (!result.ok) return result;
+    if (!persistSocialProgress({ elderPassageJudgmentV168: result.state })) {
+      return { ok: false, message: "Inscription en attente. Vérifie la sauvegarde puis reprends l’action." };
+    }
+    return { ok: true, message: result.message };
+  }, [elderRiteAvailable, persistSocialProgress]);
+
+  const onElderMentoringCommand = useCallback((command: MentoringCommand): MentoringResponse => {
+    if (!elderRiteAvailable()) return { ok: false, message: "Rouvre le dossier lorsque la campagne sera disponible." };
+    const result = commitElderMentoring(saveRef.current, command);
+    if (!result.ok) return result;
+    if (!persistSocialProgress({ elderMentoringV168: result.state })) {
+      return { ok: false, message: "Inscription en attente. Vérifie la sauvegarde puis reprends l’action." };
+    }
+    return { ok: true, message: result.message };
+  }, [elderRiteAvailable, persistSocialProgress]);
+
+  const onEliteMasteryCommand = useCallback((command: MasteryCommand): MasteryResponse => {
+    if (!elderRiteAvailable()) return { ok: false, message: "Rouvre le dossier lorsque la campagne sera disponible." };
+    const result = commitEliteMastery(saveRef.current, command);
+    if (!result.ok) return result;
+    if (!persistSocialProgress({ eliteMasteryV170: result.state })) {
+      return { ok: false, message: "Inscription en attente. Vérifie la sauvegarde puis reprends l’action." };
+    }
+    return { ok: true, message: result.message, destination: result.destination };
+  }, [elderRiteAvailable, persistSocialProgress]);
+
+  const onElderAssemblyCommand = useCallback((command: AssemblyCommand): AssemblyResponse => {
+    if (!elderRiteAvailable()) return { ok: false, message: "Rouvre le dossier lorsque la campagne sera disponible." };
+    const result = commitElderAssembly(saveRef.current, command);
+    if (!result.ok) return result;
+    if (!persistSocialProgress({ elderAssemblyV168: result.state, ...(result.prologue ? { prologue: result.prologue } : {}) })) {
+      return { ok: false, message: "Inscription en attente. Vérifie la sauvegarde puis reprends l’action." };
+    }
+    return { ok: true, message: result.message };
+  }, [elderRiteAvailable, persistSocialProgress]);
+
+  const onElderWorkshopCommandV172 = useCallback((command: ElderWorkshopCommandV172): AssemblyResponse => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "clan-ship" ||
+        !gameFocusedV89 || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy ||
+        resumableHunt || trophyWorkshop !== null || activeHuntSessionRef.current) {
+      return { ok: false, message: "Rouvre l’atelier depuis l’armurerie lorsque la campagne est disponible." };
+    }
+    const result = commitElderWorkshopV172(current, command);
+    if (!result.ok) return result;
+    return persistSocialProgress({ elderWorkshopV172: result.state })
+      ? { ok: true, message: result.message }
+      : { ok: false, message: "L’établi attend la confirmation de la sauvegarde. Vérifie-la puis reprends le geste." };
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
+    persistSocialProgress, resumableHunt, screen, settingsOpen, trophyWorkshop]);
+
+  /** V152: legacy sealing and the bequeathed original's single location, written before anything is announced. */
+  const heritageActionV152 = useCallback((action: HeritageActionV152): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    const change = action.kind === "seal"
+      ? sealHeritageTestamentV152(current, { trigger: "elder-retirement", weaponId: action.weaponId }, new Date().toISOString())
+      : moveHeritageWeaponV152(current, action.to);
+    if (!change.ok) return { ok: false, message: change.reason };
+    return persistSocialProgress({ heritageV152: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+  }, [entry.ownerCreatedAt, persistSocialProgress]);
+
+  /** V155: a Hardcore death is written at once (no retry exists); closure waits for the player's confirmation. */
+  const recordHardcoreDeathV155Session = useCallback(() => {
+    const current = saveRef.current, missionId = activeHuntSessionRef.current?.missionId;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || !missionId || hardcoreStatusV155(current) !== "alive") return;
+    const change = recordHardcoreDeathV155(current, missionId as MissionId, new Date().toISOString());
+    if (!change.ok || !persistSocialProgress({ hardcoreV155: change.hardcore })) setToast("Mort Hardcore non encore inscrite : elle le sera avec le rapport de mort.");
+  }, [entry.ownerCreatedAt, persistSocialProgress]);
+  const closeHardcoreChronicleSession = useCallback((choice: HardcoreCloseChoiceV155): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    const change = closeHardcoreChronicleV155(current, choice, new Date().toISOString());
+    if (!change.ok) return { ok: false, message: change.reason };
+    return persistSocialProgress({ hardcoreV155: change.hardcore, ...(change.heritage ? { heritageV152: change.heritage } : {}) })
+      ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; la chronique n’est pas close." };
+  }, [entry.ownerCreatedAt, persistSocialProgress]);
+
+  /** V162: Black God (hors canon). Trial outcome and sacrifice are written before anything is announced. */
+  const recordBlackGodTrialSession = useCallback((run: BlackGodTrialRunV162): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    const change = recordBlackGodTrialV162(current, run, new Date().toISOString());
+    if (!change.ok) return { ok: false, message: change.reason };
+    return persistSocialProgress({ blackGodV162: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a été inscrit." };
+  }, [entry.ownerCreatedAt, persistSocialProgress]);
+  const sacrificeBlackGodSession = useCallback((choice: BlackGodSacrificeChoiceV162): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    if (screen !== "mausoleum" || settingsOpen || campaignOperationRef.current || archiveTransferBusy || archiveRecoveryIssue) {
+      return { ok: false, message: "Le sacrifice doit être confirmé au mausolée, après les opérations de sauvegarde." };
+    }
+    if (activeHuntSessionRef.current || resumableHunt || current.planetArrival || current.planetArrivalRun ||
+        pendingHuntResult || pendingTerminalRunRef.current) {
+      return { ok: false, message: "Termine la chasse et confirme son résultat avant de clore cette chronique." };
+    }
+    // A sidecar may have appeared after hydration in another tab.
+    const latest = loadActiveHuntSave();
+    if (latest.failure) {
+      return { ok: false, message: "Les archives de chasse sont indisponibles. Vérifie-les avant de confirmer le sacrifice." };
+    }
+    if (latest.save?.ownerSaveCreatedAt === current.createdAt) {
+      return { ok: false, message: "Une chasse à reprendre appartient à cette chronique. Termine-la avant de te sacrifier." };
+    }
+    const change = sacrificeBlackGodV162(current, choice, new Date().toISOString());
+    if (!change.ok) return { ok: false, message: change.reason };
+    return persistSocialProgress({ blackGodV162: change.state, ...(change.heritage ? { heritageV152: change.heritage } : {}) })
+      ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; le sacrifice n’est pas accompli." };
+  }, [archiveRecoveryIssue, archiveTransferBusy, entry.ownerCreatedAt, pendingHuntResult, persistSocialProgress,
+    resumableHunt, screen, settingsOpen]);
 
   const commitTrophyTutorialCheckpoint = useCallback((candidate: TrophyTutorialStateV6): boolean => {
     const current = saveRef.current;
@@ -2254,6 +2533,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const commitCompanionResidence = useCallback((action: CompanionResidenceAction, observation: CompanionResidenceObservation): boolean => {
     const current = saveRef.current;
+    if (screen === "clan-ship" && !tribunalAccessV147(current.tribunalV147).clanShip) return false;
     const active = sessionAliveRef.current && current.createdAt === entry.ownerCreatedAt && gameFocusedV89 &&
       !settingsOpen && !archiveTransferBusy && !archiveRecoveryIssue && !campaignSaveBusy && !trophyWorkshop &&
       !activeHuntSessionRef.current && !resumableHunt && !current.planetArrival &&
@@ -2273,6 +2553,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const commitClanShipIncident = useCallback((action: ClanShipIncidentAction, observation: ClanShipIncidentObservation): boolean => {
     const current = saveRef.current;
+    if (!tribunalAccessV147(current.tribunalV147).clanShip) return false;
     const active = sessionAliveRef.current && current.createdAt === entry.ownerCreatedAt && screen === 'clan-ship' &&
       current.clanShipDocking?.status === 'aboard' && gameFocusedV89 && !settingsOpen && !trophyWorkshop &&
       !archiveTransferBusy && !archiveRecoveryIssue && !campaignSaveBusy && !activeHuntSessionRef.current &&
@@ -2297,6 +2578,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const commitClanShipTrophyHearing = useCallback((action: ClanShipTrophyHearingAction, observation: ClanShipIncidentObservation): boolean => {
     const current = saveRef.current;
+    if (!tribunalAccessV147(current.tribunalV147).clanShip) return false;
     const active = sessionAliveRef.current && current.createdAt === entry.ownerCreatedAt && screen === 'clan-ship' &&
       current.clanShipDocking?.status === 'aboard' && gameFocusedV89 && !settingsOpen && !trophyWorkshop &&
       !archiveTransferBusy && !archiveRecoveryIssue && !campaignSaveBusy && !activeHuntSessionRef.current &&
@@ -2312,6 +2594,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const commitClanShipReturnEscort = useCallback((action: ClanShipReturnEscortAction, observation: ClanShipReturnEscortObservation): boolean => {
     const current = saveRef.current;
+    if (!tribunalAccessV147(current.tribunalV147).clanShip) return false;
     const active = sessionAliveRef.current && current.createdAt === entry.ownerCreatedAt && screen === 'clan-ship' &&
       current.clanShipDocking?.status === 'aboard' && gameFocusedV89 && !settingsOpen && !trophyWorkshop &&
       !archiveTransferBusy && !archiveRecoveryIssue && !campaignSaveBusy && !activeHuntSessionRef.current &&
@@ -2330,6 +2613,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const retryClanShipReturnEscort = useCallback((): boolean => {
     const current = saveRef.current;
+    if (!tribunalAccessV147(current.tribunalV147).clanShip) return false;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== 'clan-ship' ||
         current.clanShipDocking?.status !== 'aboard' || !gameFocusedV89 || settingsOpen || trophyWorkshop ||
         archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || activeHuntSessionRef.current ||
@@ -2349,12 +2633,48 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
        stationReturnScreen!=="homeworld" || !atMobilityForge(current) || archiveTransferBusy || archiveRecoveryIssue ||
        campaignSaveBusy || resumableHunt || activeHuntSessionRef.current ||
        (command.type!=="drive" && (!gameFocusedV89 || settingsOpen))) return refused("Service suspendu ou présence au comptoir non confirmée.");
+    // V156 : l'aire est occupée pendant une chevauchée ; le registre mobilityV1 reste inchangé.
+    if(current.mountRidesV156?.active) return refused("Aire des convois occupée par une monture : reviens au sas d’abord.");
     const result=actMobility(current,command);
     if(!result.accepted||!result.state)return refused(result.message);
     if(!persistSocialProgress({mobilityV1:result.state,profile:{...current.profile,clanMarks:result.clanMarks}}))
       return refused("Écriture non confirmée : conduite suspendue, marques et commande à réconcilier avant toute suite.");
     if(command.type!=="drive")setToast(result.message);
     return {accepted:true,message:result.message,state:saveRef.current.mobilityV1??null};
+  },[entry.ownerCreatedAt,screen,stationReturnScreen,archiveTransferBusy,archiveRecoveryIssue,campaignSaveBusy,resumableHunt,gameFocusedV89,settingsOpen,persistSocialProgress]);
+
+  // MOB-012: same presence and write guards as commitMobility; the screen
+  // only reflects the mount register once persistSocialProgress confirms it.
+  const commitMounts = useCallback((command: MountCommandV153): MountReceiptV153 => {
+    const current=saveRef.current;
+    const refused=(message:string):MountReceiptV153=>({accepted:false,message,state:saveRef.current.mountsV153??null});
+    if(!sessionAliveRef.current || current.createdAt!==entry.ownerCreatedAt || screen!=="mobility" ||
+       stationReturnScreen!=="homeworld" || !atMobilityForge(current) || archiveTransferBusy || archiveRecoveryIssue ||
+       campaignSaveBusy || resumableHunt || activeHuntSessionRef.current || !gameFocusedV89 || settingsOpen)
+      return refused("Service suspendu ou présence au comptoir non confirmée.");
+    const result=actMountsV153(current,command);
+    if(!result.accepted||!result.state)return refused(result.message);
+    if(!persistSocialProgress({mountsV153:result.state,profile:{...current.profile,clanMarks:result.clanMarks}}))
+      return refused("Écriture non confirmée : action sur la monture à réconcilier avant toute suite.");
+    setToast(result.message);
+    return {accepted:true,message:result.message,state:saveRef.current.mountsV153??null};
+  },[entry.ownerCreatedAt,screen,stationReturnScreen,archiveTransferBusy,archiveRecoveryIssue,campaignSaveBusy,resumableHunt,gameFocusedV89,settingsOpen,persistSocialProgress]);
+
+  // V156 : chevauchée sur l'aire. Une seule écriture confirme à la fois le
+  // registre des chevauchées et, au retour, le registre des montures.
+  const commitMountRide = useCallback((command: MountRideCommandV156): MountRideReceiptV156 => {
+    const current=saveRef.current;
+    const refused=(message:string):MountRideReceiptV156=>({accepted:false,message,state:saveRef.current.mountRidesV156??null});
+    if(!sessionAliveRef.current || current.createdAt!==entry.ownerCreatedAt || screen!=="mobility" ||
+       stationReturnScreen!=="homeworld" || !atMobilityForge(current) || archiveTransferBusy || archiveRecoveryIssue ||
+       campaignSaveBusy || resumableHunt || activeHuntSessionRef.current ||
+       (command.type!=="ride" && (!gameFocusedV89 || settingsOpen))) return refused("Service suspendu ou présence au comptoir non confirmée.");
+    const result=actMountRideV156(current,command);
+    if(!result.accepted||!result.rides)return refused(result.message);
+    if(!persistSocialProgress(result.mounts?{mountRidesV156:result.rides,mountsV153:result.mounts}:{mountRidesV156:result.rides}))
+      return refused("Écriture non confirmée : chevauchée suspendue, à réconcilier avant toute suite.");
+    if(command.type!=="ride")setToast(result.message);
+    return {accepted:true,message:result.message,state:saveRef.current.mountRidesV156??null};
   },[entry.ownerCreatedAt,screen,stationReturnScreen,archiveTransferBusy,archiveRecoveryIssue,campaignSaveBusy,resumableHunt,gameFocusedV89,settingsOpen,persistSocialProgress]);
 
   const recruitExpeditionHunter = useCallback((id: ExpeditionMemberId) => {
@@ -2454,7 +2774,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const shipPreparationContextV88 = (current: SaveGame) => {
     let fleet: ReturnType<typeof readShipPreparationFleetV88> = null;
     try { fleet = readShipPreparationFleetV88(current, window.localStorage); } catch { /* Unavailable storage cannot attest a hull. */ }
-    return { save: current, shipId: selectedShipId, selectedMissionId: selectedMission?.id ?? null, fleet,
+    const firstDestination = (preparingFirstVoyage || !!current.firstInterstellarV173) &&
+      !firstInterstellarReceiptV173(current, current.firstInterstellarV173);
+    return { save: current, shipId: selectedShipId,
+      selectedMissionId: firstDestination ? FIRST_INTERSTELLAR_V173.missionId : selectedMission?.id ?? null, fleet,
       active: deckVisible && screen === 'deck' && current.createdAt === entry.ownerCreatedAt,
       focused: gameFocusedV89 && typeof document !== 'undefined' && readGameFocusV89(),
       suspended: shipStationOpen || settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy };
@@ -2476,10 +2799,50 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return result;
   };
 
+  const hasFirstInterstellarReceipt = (current: SaveGame) =>
+    Boolean(firstInterstellarReceiptV173(current, current.firstInterstellarV173));
+  const firstJourneyAccess = (current: SaveGame) => firstInterstellarAccessV173(current, selectedShipId,
+    evaluateShipPreparationV88(current.shipPreparationV88, shipPreparationContextV88(current)).ready,
+    current.firstInterstellarV173);
+  const voyageContextAvailable = (current: SaveGame) => {
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || !gameFocusedV89 ||
+        settingsOpen || trophyWorkshop !== null || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy ||
+        campaignOperationRef.current || resumableHunt || activeHuntSessionRef.current ||
+        (current.planetArrival && current.planetArrival.status !== 'complete') ||
+        (current.wolfCastle && current.wolfCastle.status !== 'departed') ||
+        (current.clanShipDocking && current.clanShipDocking.status !== 'free-flight')) return false;
+    try { return !archiveTransferPending(window.localStorage); }
+    catch { return false; }
+  };
+  const firstJourneyComplete = hasFirstInterstellarReceipt(save);
+  const firstJourneyAccessAtDeck = screen === 'deck' && firstJourneyAccess(save).allowed;
+  const firstJourneyPlannable = screen === 'deck' && shipReceiptV161(save).receipt?.shipId === selectedShipId &&
+    !firstJourneyComplete && !preparingFirstVoyage && !save.firstInterstellarV173;
+  const openCampaignVoyage = () => {
+    const current = saveRef.current;
+    if (screen !== 'deck' || !voyageContextAvailable(current)) return;
+    const access = firstJourneyAccess(current);
+    if (!access.allowed) { setToast(access.reason); return; }
+    go('first-interstellar-v173');
+  };
+  const onFirstInterstellarAction = (command: FirstInterstellarActionV173) => {
+    const current = saveRef.current;
+    const refuse = (message: string) => ({ accepted: false, state: current.firstInterstellarV173 ?? null, message });
+    if (screen !== 'first-interstellar-v173' || !voyageContextAvailable(current)) {
+      return refuse('Trajet suspendu : confirmez la campagne active.');
+    }
+    const result = commitFirstInterstellarV173(current.firstInterstellarV173, command, firstJourneyAccess(current));
+    if (!result.accepted) return result;
+    if (!persistSocialProgress({ firstInterstellarV173: result.state })) {
+      return refuse('Trajet non sauvegardé. Réessayez depuis le dernier repère confirmé.');
+    }
+    return { ...result, state: saveRef.current.firstInterstellarV173 ?? null };
+  };
   const shipAcquisitionContextV89 = (current: SaveGame): ShipAcquisitionContextV89 => {
     const mounted = screen === 'ship-acquisition-v89' && current.createdAt === entry.ownerCreatedAt;
     const scene = mounted ? shipAcquisitionSceneFactsV89() : { host: null, candidate: null };
-    return { save: current, active: mounted, ...scene, authority: null,
+    // V161 : attestation « moyens et accord » (proposée, voir shipReceiptV161.ts) ; null avant Blooded.
+    return { save: current, active: mounted, ...scene, authority: shipAcquisitionAuthorityV161(current),
       focused: gameFocusedV89 && typeof document !== 'undefined' && readGameFocusV89(),
       suspended: settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy };
   };
@@ -2513,6 +2876,60 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return { ...result, state: saveRef.current.shipAcquisitionV89 ?? null };
   };
 
+  const spaceShipV159 = useMemo(() => screen === 'map' ? spacePersonalShipV159(save) : null, [save, screen]);
+  const onWarNarrativeCommandR2M035 = (command: WarNarrativeCommandR2M035) => {
+    const current = saveRef.current;
+    let transferPending = true;
+    try { transferPending = archiveTransferPending(window.localStorage); } catch { /* No attested archive state. */ }
+    if (!sessionAliveRef.current || screen !== "clan-war" || archiveReturnV85 !== "clan-ship" || current.createdAt !== entry.ownerCreatedAt ||
+        transferPending || campaignOperationRef.current || !gameFocusedV89 || settingsOpen || trophyWorkshop !== null ||
+        archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || resumableHunt || activeHuntSessionRef.current) {
+      return { ok: false, message: "Poste suspendu. Vérifie l’état de la campagne et de sa sauvegarde." };
+    }
+    const result = advanceWarNarrativeR2M035(current, command);
+    if (!result.ok) return result;
+    return persistSocialProgress({ warNarrativeR2M035: result.state })
+      ? { ok: true, message: result.message }
+      : { ok: false, message: "Le geste attend la confirmation de la sauvegarde." };
+  };
+
+  const onConquestCommandR2M037 = (command: ConquestCommandR2M037) => {
+    const current = saveRef.current;
+    let transferPending = true;
+    try { transferPending = archiveTransferPending(window.localStorage); } catch { /* No attested archive state. */ }
+    if (!sessionAliveRef.current || screen !== "clan-war" || !["deck", "clan-ship"].includes(archiveReturnV85) ||
+        current.createdAt !== entry.ownerCreatedAt || transferPending || campaignOperationRef.current || !gameFocusedV89 ||
+        settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy ||
+        resumableHunt || activeHuntSessionRef.current) {
+      return { ok: false, message: "Le poste de commandement attend la campagne active et sa sauvegarde." };
+    }
+    const result = advanceConquestR2M037(current, command);
+    if (!result.ok) return result;
+    return persistSocialProgress({ warConquestR2M037: result.state })
+      ? { ok: true, message: result.message }
+      : { ok: false, message: "Le geste attend la confirmation de la sauvegarde." };
+  };
+
+  // V159: routes typées. L’action est écrite avant d’être annoncée ; l’écran relit la sauvegarde confirmée.
+  const onSpaceRouteActionV159 = (action: SpaceRoutesActionV159): SpaceRoutesResultV159 => {
+    const current = saveRef.current;
+    const refused = (message: string): SpaceRoutesResultV159 => ({ accepted: false, changed: false, state: current.spaceRoutesV159 ?? null, message });
+    let transferPending = true;
+    try { transferPending = archiveTransferPending(window.localStorage); } catch { /* Cannot attest a free archive transaction. */ }
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || transferPending || campaignOperationRef.current ||
+        settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy) {
+      return refused('Poste de route suspendu : confirme d’abord la campagne et ses sauvegardes.');
+    }
+    if (firstInterstellarInFlightV173(current.firstInterstellarV173, current.createdAt)) {
+      return refused('Regagnez le pont après le premier trajet avant d’engager une autre route.');
+    }
+    const result = actSpaceRoutesV159(current.spaceRoutesV159, action,
+      { ownerCreatedAt: current.createdAt, ship: spacePersonalShipV159(current) });
+    if (!result.accepted || !result.changed) return result;
+    if (!persistSocialProgress({ spaceRoutesV159: result.state })) return refused('Route non confirmée dans la sauvegarde. Le dernier relevé enregistré reste conservé ; réessaie.');
+    return { ...result, state: saveRef.current.spaceRoutesV159 ?? null };
+  };
+
   const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress): boolean => {
     const current = saveRef.current;
     const reward = Math.max(0, contractMarksV68(homeworld.contractsV68) - contractMarksV68(current.homeworld.contractsV68));
@@ -2520,8 +2937,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     // The ledger remains cumulative; spending the wallet cannot replay a reward.
     return persistSocialProgress({ homeworld, ...(reward ? {profile: {...current.profile, clanMarks: current.profile.clanMarks + reward}} : {}) });
   }, [persistSocialProgress]);
+  // V160 : l'écran n'annonce une épreuve acceptée ou remise qu'après écriture confirmée.
+  const persistMinorArcsV160 = useCallback((minorArcsV160: MinorArcsV160): boolean =>
+    persistSocialProgress({ minorArcsV160 }), [persistSocialProgress]);
   const persistJusticeProgress = useCallback((justice: JusticeProgress) =>
     persistSocialProgress({ justice }), [persistSocialProgress]);
+  // V147: honour, frozen rank, Bad Blood declaration and dossier change together.
+  const persistTribunalV147 = useCallback((update: Pick<SaveGame, "profile" | "justice" | "tribunalV147">) =>
+    persistSocialProgress(update), [persistSocialProgress]);
 
   const openGameReserveV66 = useCallback((fresh = false, version: GameReserveChoiceV109 = 1): boolean => {
     // The autonomous expedition cannot lend a ship or adult arsenal to a youth save.
@@ -2560,6 +2983,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     (next: Screen) => {
       if (screen === "mobility" && saveRef.current.mobilityV1?.active && next !== "mobility") { setToast("Remise au garage ou retour de sécurité requis avant de quitter l’aire."); return; }
       if (pendingTrophyCommitRef.current) { setToast("Confirmez la sauvegarde du rite ou exportez son résultat avant de changer de lieu."); return; }
+      const currentFirstTrip = saveRef.current;
+      if (["homeworld", "map", "mission", "briefing", "game-reserve", "clan-ship", "wolf-castle"].includes(next) &&
+          firstInterstellarInFlightV173(currentFirstTrip.firstInterstellarV173, currentFirstTrip.createdAt)) {
+        setScreen("first-interstellar-v173");
+        setToast("Terminez le retour à bord avant de choisir une autre destination.");
+        return;
+      }
       const cradle = saveRef.current.buriedCradle;
       if (cradle && ['active', 'suspended'].includes(cradle.status) && !['buried-cradle', 'buried-cradle-briefing'].includes(next)) {
         setScreen(cradle.status === 'active' ? 'buried-cradle' : 'buried-cradle-briefing');
@@ -2574,6 +3004,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         setScreen('wolf-castle'); setToast("Rejoins la baie royale pour repartir avec ton vaisseau."); return;
       }
       const docking = saveRef.current.clanShipDocking;
+      // V147: an exile loses access to the city and the clan ship (bible, voie Bad Blood).
+      const tribunalAccess = tribunalAccessV147(saveRef.current.tribunalV147);
+      if ((next === "homeworld" && !tribunalAccess.city) || (next === "clan-ship" && !tribunalAccess.clanShip && !tribunalClanShipDepartureV147(docking?.status))) {
+        setToast("Exil prononcé par le tribunal : la cité et le navire de clan te sont fermés. Le dossier de justice reste ouvert depuis le pont."); return;
+      }
       if (docking && docking.status !== "free-flight" && ["homeworld", "map", "briefing", "mission", "game-reserve", "ship-acquisition-v89", "wolf-castle", "planet-arrival"].includes(next)) {
         setToast("Désamarre le vaisseau personnel du Clan Ship avant de choisir une autre destination."); return;
       }
@@ -2601,6 +3036,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const openClanShip = useCallback(() => {
     const current = saveRef.current;
+    if (!tribunalAccessV147(current.tribunalV147).clanShip && !tribunalClanShipDepartureV147(current.clanShipDocking?.status)) {
+      setToast("Le navire de clan est fermé pendant l’exil."); return;
+    }
     if ((current.wolfCastle && current.wolfCastle.status !== 'departed') || current.planetArrival) return;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || !gameFocusedV89 || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || resumableHunt) return;
     if (current.prologue && !["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(current.prologue.chronicle) ?? "")) return;
@@ -2623,9 +3061,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       ownedShipIds: fleet.unlockedShipIds, returnActive: true, returnObservation: observation });
     if (!result.accepted) { setToast(result.message); return false; }
     if (result.changed && !persistSocialProgress({ buriedCradle: result.state, prologue: result.prologue })) return false;
+    if (result.changed && action.type === "treat-return") {
+      playGameplaySound("medicomp");
+      playGameplaySound("armor-repair");
+    }
     setToast(result.message); return true;
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
-    persistSocialProgress, resumableHunt, screen, settingsOpen, trophyWorkshop]);
+    persistSocialProgress, playGameplaySound, resumableHunt, screen, settingsOpen, trophyWorkshop]);
 
   const commitCradleAction = useCallback((action: CradleCampaignAction): boolean => {
     const current = saveRef.current;
@@ -2633,9 +3075,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || resumableHunt || activeHuntSessionRef.current ||
       !['buried-cradle', 'buried-cradle-briefing'].includes(screen)) return false;
     const fleet = loadShipProgression(current);
+    if (action.type === 'prepare' && !action.approach) return false;
     const result = actBuriedCradleCampaign(current, action, { personalShipId: fleet.selectedShipId, ownedShipIds: fleet.unlockedShipIds });
     if (!result.accepted) { setToast(result.message); return false; }
     if (result.changed && !persistSocialProgress({ buriedCradle: result.state, prologue: result.prologue })) return false;
+    if (result.changed && action.type === 'extract') audioRef.current?.resetCradleReturnMusic();
     if (action.type !== 'checkpoint') setToast(result.message);
     if (action.type === 'depart') { setHubLocation('deck'); setScreen('buried-cradle'); }
     return true;
@@ -2708,21 +3152,54 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const personalShipId = loadShipProgression(current).selectedShipId;
     const state = normalizeClanShipDocking(current.clanShipDocking, current.createdAt, personalShipId);
     if (!state) return false;
+    if (!tribunalAccessV147(current.tribunalV147).clanShip && action.type !== tribunalClanShipDepartureV147(state.status)) {
+      setToast("Le navire de clan est fermé pendant l’exil. Rejoins le pont personnel."); return false;
+    }
     const result = actClanShipDocking(state, action, { ownerCreatedAt: current.createdAt, personalShipId });
     if (!result.accepted) { setToast(result.message); return false; }
     if (result.changed && !persistSocialProgress({ clanShipDocking: result.state })) {
       setToast("Manœuvre non confirmée : l’escale reste à la dernière étape sauvegardée. Réessaie."); return false;
     }
     setSelectedShipId(personalShipId);
-    if (action.type === "return-to-personal" || action.type === "undock" || action.type === "cancel-approach") {
+    if (action.type === "undock" || action.type === "cancel-approach" ||
+        (action.type === "return-to-personal" && tribunalAccessV147(current.tribunalV147).clanShip)) {
       setHubLocation("deck"); setScreen("deck");
     }
     setToast(result.message);
     return true;
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, persistSocialProgress, resumableHunt, screen, settingsOpen]);
 
+  const legacyDeckSiteR2 = screen === "deck" && legacyOriginEndingR2(save) &&
+    shipReceiptV161(save).receipt?.shipId === selectedShipId ? legacyShipSiteR2(save) : null;
+  const legacySuspendedR2 = settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue ||
+    campaignSaveBusy || !!resumableHunt || !gameFocusedV89;
+  const openLegacyFinaleR2 = useCallback((scene: LegacySceneR2, site: LegacySiteR2, siteLabel: string) => {
+    if (legacySuspendedR2 || (screen !== "deck" && screen !== "homeworld-region-v68")) return;
+    const current = saveRef.current;
+    if (legacySceneRefusalR2(current, site, scene)) return;
+    setLegacyVisitR2({ scene, site, siteLabel, from: screen });
+    setLegacyNoticeR2("");
+    go("legacy-finale-r2");
+  }, [go, legacySuspendedR2, screen]);
+
+  const closeLegacyFinaleR2 = useCallback(() => {
+    if (legacyVisitR2) go(legacyVisitR2.from);
+    setLegacyVisitR2(null);
+  }, [go, legacyVisitR2]);
+
+  const onLegacyCommandR2 = useCallback((command: LegacyCommandR2) => {
+    if (legacySuspendedR2 || screen !== "legacy-finale-r2" || !legacyVisitR2 || command.scene !== legacyVisitR2.scene) return;
+    const outcome = advanceLegacyFinaleR2(saveRef.current, legacyVisitR2.site, command);
+    if (outcome.next && !persistSocialProgress({ legacyFinaleR2: outcome.next })) {
+      setLegacyNoticeR2("L’écriture est en attente. Le dernier geste n’a pas été consigné.");
+      return;
+    }
+    setLegacyNoticeR2(outcome.message);
+  }, [legacySuspendedR2, legacyVisitR2, persistSocialProgress, screen]);
+
   const commitClanShipOperations = useCallback((action: ClanShipOperationsAction): boolean => {
     const current = saveRef.current;
+    if (!tribunalAccessV147(current.tribunalV147).clanShip) return false;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "clan-ship" ||
         current.clanShipDocking?.status !== "aboard" || !gameFocusedV89 || settingsOpen ||
         archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || resumableHunt) return false;
@@ -2732,6 +3209,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const result = actClanShipOperations(state, action, {
       ownerCreatedAt: current.createdAt, docking: current.clanShipDocking, campaign: current,
       availableCrewIds: availableClanResidenceCrew(current),
+      crewPostRooms: action.type === 'collective-check' || action.type === 'ancient-hearing' ? clanResidenceCrewPostRooms(current) : undefined,
     });
     if (!result.accepted) { setToast(result.message); return false; }
     const reward = result.clanMarksReward;
@@ -2743,7 +3221,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const recruitment = action.type === 'recruit' && result.changed
       ? registerCompanionResidenceRecruitment(current, { ...current, clanShipOperations: result.state }, action.npcId) : null;
     if (recruitment && !recruitment.accepted) { setToast(recruitment.message); return false; }
+    if (result.ancientChronicle && !current.prologue) return false;
     if (result.changed && !persistSocialProgress({ clanShipOperations: result.state,
+      ...(result.ancientChronicle && current.prologue ? { prologue: { ...current.prologue, chronicle: result.ancientChronicle } } : {}),
       ...(reward > 0 ? { profile: { ...current.profile, clanMarks: current.profile.clanMarks + reward } } : {}),
       ...(recruitment?.changed ? { companionResidence: recruitment.state } : {}),
     })) {
@@ -2754,9 +3234,25 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return true;
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, persistSocialProgress, resumableHunt, screen, settingsOpen]);
 
+  const onClanHullProject = useCallback((command: ClanHullProjectCommandV171, contact: ClanShipNpcId | null): ClanHullProjectResponseV171 => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "clan-ship" ||
+        !gameFocusedV89 || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy ||
+        resumableHunt || activeHuntSessionRef.current || trophyWorkshop !== null) {
+      return { ok: false, message: "Rouvre le dossier lorsque le bord sera disponible." };
+    }
+    const result = commitClanHullProject(current, command, contact);
+    if (!result.ok) return result;
+    return persistSocialProgress({ clanHullProjectV171: result.state })
+      ? { ok: true, message: result.message }
+      : { ok: false, message: "La sauvegarde attend sa confirmation. Relis le dossier avant de reprendre." };
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
+    persistSocialProgress, resumableHunt, screen, settingsOpen, trophyWorkshop]);
+
   const openHomeworldExpedition = useCallback((regionId: "ash-marches" | "glass-desert" = "ash-marches") => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return;
+    if (!tribunalAccessV147(current.tribunalV147).city) { setToast("La cité est fermée pendant l’exil."); return; }
     const access = canEnterHomeworldPassageV67(current, regionId);
     if (!access.allowed) { setToast(access.reason); return; }
     if (current.homeworldRegionV68) { setToast("Reviens par le sentier du village avant de lancer une enquête."); return; }
@@ -2770,32 +3266,251 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     expeditionOwnerRef.current = current.createdAt; setHubLocation("homeworld");
     setScreen(passage.status === "at-biome" ? regionId === "ash-marches" ? "homeworld-expedition" : "glass-desert-expedition" : "homeworld-passage-v67");
   }, [entry.ownerCreatedAt, persistSocialProgress]);
+  const [regionalLoopNoticeM014, setRegionalLoopNoticeM014] = useState("");
+  const showRegionalLoopM014 = useMemo(() => regionalLoopAdmissionM014(save), [save]);
+  const regionalLoopSuspendedM014 = settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue ||
+    campaignSaveBusy || !!resumableHunt || !gameFocusedV89;
+  const openRegionalLoopM014 = useCallback((): boolean => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "homeworld" ||
+        regionalLoopSuspendedM014 || current.homeworldPassageV67 || current.homeworldRegionV68 ||
+        !tribunalAccessV147(current.tribunalV147).city) return false;
+    const loop = startRegionalLoopM014(current);
+    if (!loop || loop.phase === "complete") return false;
+    if (loop.phase === "return-to-instructor") {
+      const result = advanceRegionalLoopM014(loop, { type: "return-bag" });
+      if (!result.state || !persistHomeworldProgress({ ...current.homeworld, regionalLoopM014: result.state })) return false;
+      setToast(result.message);
+      return true;
+    }
+    if (!current.homeworld.regionalLoopM014 &&
+        !persistHomeworldProgress({ ...current.homeworld, regionalLoopM014: loop })) return false;
+    setRegionalLoopNoticeM014("");
+    setHubLocation("homeworld");
+    setScreen("homeworld-regional-loop-m014");
+    return true;
+  }, [entry.ownerCreatedAt, persistHomeworldProgress, regionalLoopSuspendedM014, screen]);
+  const commandRegionalLoopM014 = useCallback((command: RegionalLoopCommandM014) => {
+    const current = saveRef.current;
+    const loop = current.homeworld.regionalLoopM014;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt ||
+        screen !== "homeworld-regional-loop-m014" || regionalLoopSuspendedM014 || !loop ||
+        !regionalLoopAdmissionM014(current) || command.type === "return-bag") return;
+    const result = advanceRegionalLoopM014(loop, command);
+    if (result.state && !persistHomeworldProgress({ ...current.homeworld, regionalLoopM014: result.state })) {
+      setRegionalLoopNoticeM014("Action non sauvegardée. Réessaie depuis le dernier repère confirmé.");
+      return;
+    }
+    setRegionalLoopNoticeM014(result.message);
+  }, [entry.ownerCreatedAt, persistHomeworldProgress, regionalLoopSuspendedM014, screen]);
+  const reachCityRegionalLoopM014 = useCallback(() => {
+    const current = saveRef.current;
+    const loop = current.homeworld.regionalLoopM014;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt ||
+        screen !== "homeworld-regional-loop-m014" || regionalLoopSuspendedM014 || !loop || loop.passage?.position) return;
+    setHubLocation("homeworld");
+    setScreen("homeworld");
+  }, [entry.ownerCreatedAt, regionalLoopSuspendedM014, screen]);
+
   const openHomeworldRegionV68 = useCallback((regionId: HomeworldRegionIdV68): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || current.homeworldPassageV67) return false;
+    if (!tribunalAccessV147(current.tribunalV147).city) { setToast("La cité est fermée pendant l’exil."); return false; }
     const access = canEnterHomeworldRegionV68(current, regionId);
     if (!access.allowed) { setToast(access.reason); return false; }
     const previous = current.homeworldRegionV68;
     if (previous && previous.status !== "at-city" && previous.regionId !== regionId) { setToast("Reviens au seuil de la cité avant de changer de région."); return false; }
     const state = previous && previous.status !== "at-city" ? previous : createHomeworldRegionV68(regionId, globalThis.crypto.randomUUID());
     const binding = bindContractsVillageRunV68(current.homeworld.contractsV68, regionId, state.runId);
-    if (!binding.ok || !persistSocialProgress({ homeworldRegionV68: state, homeworld: { ...current.homeworld, contractsV68: binding.state } })) return false;
+    // V160 : la même sortie est liée aux épreuves de mini-arc suivies, dans la même écriture.
+    const arcsBinding = bindMinorArcsRunV160(current.minorArcsV160, current.createdAt, regionId, state.runId);
+    if (!binding.ok || !arcsBinding.ok || !persistSocialProgress({ homeworldRegionV68: state, homeworld: { ...current.homeworld, contractsV68: binding.state },
+      ...(arcsBinding.changed && arcsBinding.state ? { minorArcsV160: arcsBinding.state } : {}) })) return false;
     setHubLocation("homeworld"); setScreen("homeworld-region-v68"); return true;
   }, [entry.ownerCreatedAt, persistSocialProgress]);
+  /** V150: guests set out / go home and absence is counted with each region checkpoint (same write). */
+  const settleResidenceLifeForRegionV150 = useCallback((current: SaveGame, state: HomeworldRegionStateV68): { residenceLifeV150?: SaveGame["residenceLifeV150"] } => {
+    if (isFutureResidenceLifeV150(current.residenceLifeV150) || isFutureResidenceV149(current.residenceV149)) return {};
+    const residence = normalizeResidenceV149(current.residenceV149);
+    const before = normalizeResidenceLifeV150(current.residenceLifeV150);
+    if (!residence?.activeResidenceId && !before) return {};
+    const settled = settleResidenceLifeV150(before ?? emptyResidenceLifeV150(), residence ?? emptyResidenceV149(),
+      { regionId: state.regionId, runId: state.runId, tick: state.tick, zone: state.zone, buildingId: state.buildingId });
+    if (JSON.stringify(settled.state) === JSON.stringify(before)) return {};
+    if (settled.events.length) setToast(settled.events.join(" "));
+    return { residenceLifeV150: settled.state };
+  }, []);
   const checkpointHomeworldRegionV68 = useCallback((state: HomeworldRegionStateV68): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || !current.homeworldRegionV68 ||
       !canEnterHomeworldRegionV68(current, state.regionId).allowed || !canAdvanceHomeworldRegionV68(current.homeworldRegionV68, state)) return false;
-    return persistSocialProgress({ homeworldRegionV68: state });
-  }, [entry.ownerCreatedAt, persistSocialProgress]);
+    return persistSocialProgress({ homeworldRegionV68: state, ...settleResidenceLifeForRegionV150(current, state) });
+  }, [entry.ownerCreatedAt, persistSocialProgress, settleResidenceLifeForRegionV150]);
+  const setupTrainingYardO6 = useCallback((order: TrainingYardOrderO6 | ContinuationOrderO6, region: HomeworldRegionStateV68): boolean => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "homeworld-region-v68" ||
+        settingsOpen || archiveRecoveryIssue || archiveTransferBusy || campaignSaveBusy || !gameFocusedV89 ||
+        !current.homeworldRegionV68 || !canAdvanceHomeworldRegionV68(current.homeworldRegionV68, region) ||
+        !canEnterHomeworldRegionV68(current, region.regionId).allowed || isFutureOriginV151(current.originV151)) return false;
+    const origin = originOfSaveV151(current.originV151);
+    const context = { rankId: current.profile.rankId,
+      regionAllowed: (regionId: string) => canEnterHomeworldRegionV68(current, regionId).allowed };
+    const next = isContinuationOrderO6(order)
+      ? applyContinuationO6(current, origin, region, context, order)?.origin
+      : applyTrainingYardO6(origin, current.residenceV149, region, context, order);
+    return !!next && persistSocialProgress({ originV151: next, homeworldRegionV68: region,
+      ...settleResidenceLifeForRegionV150(current, region) });
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt,
+    gameFocusedV89, persistSocialProgress, screen, settingsOpen, settleResidenceLifeForRegionV150]);
   const fieldHomeworldRegionV68 = useCallback((event: RegionFieldEventV68, state: HomeworldRegionStateV68): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || !current.homeworldRegionV68 ||
-      !canAdvanceHomeworldRegionV68(current.homeworldRegionV68, state) || JSON.stringify(state.pendingFieldEvent) !== JSON.stringify(event) ||
-      !canEnterHomeworldRegionV68(current, event.regionId).allowed) return false;
-    const result = recordContractsFieldEventV68(current.homeworld.contractsV68, event, {regionId:state.regionId,runId:state.runId});
+      JSON.stringify(state.pendingFieldEvent) !== JSON.stringify(event) || !canEnterHomeworldRegionV68(current, event.regionId).allowed) return false;
+    // Use the same authoritative visit and tick as the rendered guide. The
+    // pending proof supplies no NPC coordinates and is erased on acceptance.
+    const visitingGuide = event.action === "report"
+      ? guestsInSceneV150(normalizeResidenceLifeV150(current.residenceLifeV150) ?? emptyResidenceLifeV150(), state)
+        .find(guest => guest.residentId === "guide")
+      : undefined;
+    const reportAt = state.zone !== "village" || visitingGuide?.inside ? null : visitingGuide;
+    if (!canAdvanceHomeworldRegionV68(current.homeworldRegionV68, state, reportAt)) return false;
+    const context = { regionId: state.regionId, runId: state.runId, reportAt };
+    const result = recordContractsFieldEventV68(current.homeworld.contractsV68, event, context);
     if (!result.ok) return false;
-    return persistSocialProgress({ homeworldRegionV68: acknowledgeHomeworldRegionEventV68(state), homeworld: {...current.homeworld, contractsV68:result.state} });
+    // V149: the same visible action raises local respect and advances threshold missions (one write).
+    const residence = isFutureResidenceV149(current.residenceV149) ? { state: current.residenceV149, completed: [] as string[] }
+      : recordResidenceFieldEventV149(normalizeResidenceV149(current.residenceV149) ?? emptyResidenceV149(),
+        { regionId: event.regionId, runId: event.runId, action: event.action });
+    const arcs = recordMinorArcsFieldEventV160(current.minorArcsV160, current.createdAt, event, context);
+    const saved = persistSocialProgress({ homeworldRegionV68: acknowledgeHomeworldRegionEventV68(state), homeworld: {...current.homeworld, contractsV68:result.state},
+      residenceV149: residence.state, ...settleResidenceLifeForRegionV150(current, state),
+      ...(arcs.changed && arcs.state ? { minorArcsV160: arcs.state } : {}) });
+    if (saved && residence.completed.length) setToast(`Mission de seuil vérifiée : ${residence.completed.map(id => houseV149(id)?.title ?? id).join(", ")}. Retourne à la demeure pour recevoir la clé.`);
+    return saved;
+  }, [entry.ownerCreatedAt, persistSocialProgress, settleResidenceLifeForRegionV150]);
+  const residenceActionV149 = useCallback((houseId: string, action: ResidenceActionV149): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    if (isFutureResidenceV149(current.residenceV149)) return { ok: false, message: "Registre de résidence d’une version plus récente : rien n’est modifié." };
+    const region = current.homeworldRegionV68;
+    const atHouseId = region && region.zone === "interior" ? houseForBuildingV149(region.regionId, region.buildingId)?.id ?? null : null;
+    const atThreshold = !!region && homeworldRegionInteractionV68(region)?.kind === "exit-interior";
+    const context = { rankId: current.profile.rankId, atHouseId, atThreshold,
+      regionAllowed: (regionId: string) => canEnterHomeworldRegionV68(current, regionId).allowed };
+    const change = applyResidenceActionV149(normalizeResidenceV149(current.residenceV149) ?? emptyResidenceV149(), houseId, action, context);
+    if (!change.ok) return { ok: false, message: change.reason };
+    return persistSocialProgress({ residenceV149: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+  }, [entry.ownerCreatedAt, persistSocialProgress]);
+  const residenceLifeActionV150 = useCallback((action: { kind: "invite"; guestId: string } | { kind: "inspect" } | { kind: "read"; id: string }): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    if (isFutureResidenceLifeV150(current.residenceLifeV150) || isFutureResidenceV149(current.residenceV149)) return { ok: false, message: "Registre d’une version plus récente : rien n’est modifié." };
+    const residence = normalizeResidenceV149(current.residenceV149) ?? emptyResidenceV149();
+    const life = normalizeResidenceLifeV150(current.residenceLifeV150) ?? emptyResidenceLifeV150();
+    const region = current.homeworldRegionV68;
+    const atHouseId = region && region.zone === "interior" ? houseForBuildingV149(region.regionId, region.buildingId)?.id ?? null : null;
+    const context = { rankId: current.profile.rankId, atHouseId, regionAllowed: (regionId: string) => canEnterHomeworldRegionV68(current, regionId).allowed };
+    if (action.kind === "read") return persistSocialProgress({ residenceLifeV150: readReminderV150(life, action.id) }) ? { ok: true, message: "" } : { ok: false, message: "Sauvegarde refusée." };
+    const change = action.kind === "invite" ? inviteGuestV150(life, residence, action.guestId, context) : inspectThresholdMarkV150(life, residence, context);
+    if (!change.ok) return { ok: false, message: change.reason };
+    return persistSocialProgress({ residenceLifeV150: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+  }, [entry.ownerCreatedAt, persistSocialProgress]);
+  const residenceSceneActionV154 = useCallback((action: SceneActionV154): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    if (isFutureResidenceScenesV154(current.residenceScenesV154) || isFutureResidenceV149(current.residenceV149) || isFutureResidenceLifeV150(current.residenceLifeV150) || isFuturePathObjectsV158(current.pathObjectsV158))
+      return { ok: false, message: "Registre d’une version plus récente : rien n’est modifié." };
+    const residence = normalizeResidenceV149(current.residenceV149) ?? emptyResidenceV149();
+    const region = current.homeworldRegionV68;
+    const atHouseId = region && region.zone === "interior" ? houseForBuildingV149(region.regionId, region.buildingId)?.id ?? null : null;
+    const guests = atHouseId ? guestsAtHouseV154(normalizeResidenceLifeV150(current.residenceLifeV150), atHouseId, region ? { runId: region.runId, tick: region.tick } : null) : { present: [], pending: false };
+    const context = { rankId: current.profile.rankId, atHouseId, regionAllowed: (regionId: string) => canEnterHomeworldRegionV68(current, regionId).allowed,
+      runId: region?.runId ?? null, guestsPresent: guests.present, invitationPending: guests.pending };
+    // V158: a confirmed option takes its materials from the real reserve, in the same write as the decision.
+    const objects = normalizePathObjectsV158(current.pathObjectsV158) ?? emptyPathObjectsV158();
+    const change = applySceneActionWithStockV158(normalizeResidenceScenesV154(current.residenceScenesV154) ?? emptyResidenceScenesV154(), objects, residence, action, context);
+    if (!change.ok) return { ok: false, message: change.reason };
+    const update = change.objects === objects ? { residenceScenesV154: change.scenes } : { residenceScenesV154: change.scenes, pathObjectsV158: change.objects };
+    return persistSocialProgress(update) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+  }, [entry.ownerCreatedAt, persistSocialProgress]);
+  const originActionV151 = useCallback((action: { kind: "step"; index: number } | { kind: "choose"; choice: 0 | 1 }): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    if (isFutureOriginV151(current.originV151) || isFutureResidenceV149(current.residenceV149)) return { ok: false, message: "Registre d’une version plus récente : rien n’est modifié." };
+    const region = current.homeworldRegionV68;
+    const atHouseId = region && region.zone === "interior" ? houseForBuildingV149(region.regionId, region.buildingId)?.id ?? null : null;
+    const context = { rankId: current.profile.rankId, atHouseId, regionAllowed: (regionId: string) => canEnterHomeworldRegionV68(current, regionId).allowed };
+    const residence = normalizeResidenceV149(current.residenceV149) ?? emptyResidenceV149();
+    // An older save is read with the documented default origin; it is written only now, once used.
+    const origin = originOfSaveV151(current.originV151);
+    const change = action.kind === "step" ? houseTransitionStepV151(origin, residence, action.index, context) : houseTransitionChooseV151(origin, residence, action.choice, context);
+    if (!change.ok) return { ok: false, message: change.reason };
+    return persistSocialProgress({ originV151: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+  }, [entry.ownerCreatedAt, persistSocialProgress]);
+  // V157: STORY5-TR-Ox-02, played at the trophy workshop (trophy wall) with a trophy the save really holds.
+  const originTrophyActionV157 = useCallback((action: OriginTrophyActionV157): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    if (isFutureOriginV151(current.originV151) || isFuturePathObjectsV158(current.pathObjectsV158)) return { ok: false, message: "Registre d’une version plus récente : rien n’est modifié." };
+    const objects = normalizePathObjectsV158(current.pathObjectsV158) ?? emptyPathObjectsV158();
+    const context = { atWorkshop: screen === "trophies" && !trophyTutorialOpen && !trophyWorkshop && pendingTrophyCommit === null,
+      ownedTrophyIds: current.trophies.map((trophy: { id: string }) => trophy.id), heldOriginalIds: heldPathOriginalIdsV158(objects) };
+    // An older save is read with the documented default origin; it is written only now, once used.
+    const origin = originOfSaveV151(current.originV151);
+    if (action.kind === "step") {
+      const step = trophyTransitionStepV157(origin, action.trophyId, action.index, context);
+      if (!step.ok) return { ok: false, message: step.reason };
+      return persistSocialProgress({ originV151: step.state }) ? { ok: true, message: step.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+    }
+    // V158: the voie original really held lets the scene succeed; O4 « archives » moves it in the same write.
+    const change = trophyChooseWithOriginalsV158(origin, objects, action.trophyId, action.choice, context);
+    if (!change.ok) return { ok: false, message: change.reason };
+    const update = change.objects === objects ? { originV151: change.origin } : { originV151: change.origin, pathObjectsV158: change.objects };
+    return persistSocialProgress(update) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+  }, [entry.ownerCreatedAt, persistSocialProgress, screen, trophyTutorialOpen, trophyWorkshop, pendingTrophyCommit]);
+  // V170: voie ending (Ox-M29), chosen once at Elite; only the origin record is written, never a common rank.
+  const originEndingActionV170 = useCallback((action: OriginEndingActionV170): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    if (isFutureOriginV151(current.originV151)) return { ok: false, message: "Registre d’une version plus récente : rien n’est modifié." };
+    const context = { rankId: current.profile.rankId,
+      atWorkshop: screen === "trophies" && !trophyTutorialOpen && !trophyWorkshop && pendingTrophyCommit === null };
+    // An older save is read with the documented default origin; it is written only now, once used.
+    const origin = originOfSaveV151(current.originV151);
+    const change = action.kind === "examine" ? examineEndingV170(origin, action.endingId, context)
+      : confirmEndingV170(origin, action.endingId, action.confirmation, context);
+    if (!change.ok) return { ok: false, message: change.reason };
+    if (!change.changed) return { ok: true, message: change.message };
+    return persistSocialProgress({ originV151: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+  }, [entry.ownerCreatedAt, persistSocialProgress, screen, trophyTutorialOpen, trophyWorkshop, pendingTrophyCommit]);
+  // V158: voie mission that puts the -02 object in play (provenance), at the workshop or on a region route.
+  const pathMissionActionV158 = useCallback((action: PathMissionActionV158, place: Omit<PathPlaceContextV158, "originId" | "rankId">): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    if (isFutureOriginV151(current.originV151) || isFuturePathObjectsV158(current.pathObjectsV158)) return { ok: false, message: "Registre d’une version plus récente : rien n’est modifié." };
+    const origin = originOfSaveV151(current.originV151);
+    const region = current.homeworldRegionV68;
+    // The place is re-read from the save: the workshop flag from the screen, the region from the last checkpoint.
+    const context: PathPlaceContextV158 = { originId: origin.originId, rankId: current.profile.rankId,
+      atWorkshop: place.atWorkshop && screen === "trophies" && !trophyTutorialOpen && !trophyWorkshop && pendingTrophyCommit === null,
+      region: !place.atWorkshop && region ? { regionId: region.regionId, runId: region.runId, zone: region.zone, eventReceipts: region.eventReceipts } : null };
+    const change = applyPathMissionActionV158(normalizePathObjectsV158(current.pathObjectsV158) ?? emptyPathObjectsV158(), action, context);
+    if (!change.ok) return { ok: false, message: change.reason };
+    return persistSocialProgress({ pathObjectsV158: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+  }, [entry.ownerCreatedAt, persistSocialProgress, screen, trophyTutorialOpen, trophyWorkshop, pendingTrophyCommit]);
+  // V158: one material unit bought at the quarter workshop; clan marks and reserve change in one write.
+  const buyMaterialActionV158 = useCallback((item: string): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    if (isFuturePathObjectsV158(current.pathObjectsV158) || isFutureResidenceV149(current.residenceV149)) return { ok: false, message: "Registre d’une version plus récente : rien n’est modifié." };
+    const region = current.homeworldRegionV68;
+    const atHouseId = region && region.zone === "interior" ? houseForBuildingV149(region.regionId, region.buildingId)?.id ?? null : null;
+    const context = { rankId: current.profile.rankId, atHouseId, regionAllowed: (regionId: string) => canEnterHomeworldRegionV68(current, regionId).allowed };
+    const residence = normalizeResidenceV149(current.residenceV149) ?? emptyResidenceV149();
+    const change = buyMaterialV158(normalizePathObjectsV158(current.pathObjectsV158) ?? emptyPathObjectsV158(), current.profile.clanMarks, item, residence, context);
+    if (!change.ok) return { ok: false, message: change.reason };
+    return persistSocialProgress({ pathObjectsV158: change.state, profile: { ...current.profile, clanMarks: change.clanMarks } })
+      ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
   }, [entry.ownerCreatedAt, persistSocialProgress]);
   const bibleActionHomeworldV86 = useCallback((action: BibleSceneActionV86, state: HomeworldRegionStateV68): BibleSceneResultV86 => {
     const previous=normalizeBibleSceneLedgerV86(saveRef.current.homeworld.bibleScenesV86)??defaultBibleSceneLedgerV86(entry.ownerCreatedAt);
@@ -2941,10 +3656,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   );
 
   const openStationScreen = useCallback(
-    (next: StationScreen, returnScreen: StationReturnScreen, facility?: ChromaticFacilityV115) => {
+    (next: StationScreen, returnScreen: StationReturnScreen, facility?: ChromaticFacilityV115, openedAtTrophyPost = false) => {
+      const access = tribunalAccessV147(saveRef.current.tribunalV147);
+      if ((returnScreen === "homeworld" && !access.city) || (returnScreen === "clan-ship" && !access.clanShip)) {
+        setToast("Les services du clan sont fermés pendant l’exil. Le dossier de justice est accessible depuis le pont."); return;
+      }
       if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de changer d’installation."); return; }
       setHubLocation(returnScreen === "homeworld" ? "homeworld" : returnScreen === "clan-ship" ? "clan-ship" : "deck");
       setStationReturnScreen(returnScreen);
+      setOpenedTrophyHallAtPost(next === "trophies" && returnScreen === "deck" && openedAtTrophyPost);
       if (next === "customization") setChromaticFacilityV115(facility ?? (returnScreen === "homeworld" ? "forge" : "ship"));
       if (next === "justice") setJusticeReturnScreen(returnScreen === "homeworld" ? "homeworld" : returnScreen === "clan-ship" ? "clan-ship" : "deck");
       go(next);
@@ -2954,6 +3674,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const openClanShipService = useCallback((service: ClanShipService) => {
     const current = saveRef.current;
+    if (!tribunalAccessV147(current.tribunalV147).clanShip) return;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "clan-ship" ||
         current.clanShipDocking?.status !== "aboard" || !gameFocusedV89 || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy) return;
     const roomForService = { armory: "armurerie", trophies: "trophees", medbay: "soins", training: "entrainement", codex: "archives", "clan-war": "conseil" } as const;
@@ -2963,6 +3684,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89, go, openStationScreen, screen, settingsOpen]);
 
   const openHomeworldService = useCallback((service: HomeworldService) => {
+    if (!tribunalAccessV147(saveRef.current.tribunalV147).city) { setToast("La cité est fermée pendant l’exil."); return; }
     if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant d’utiliser un autre service."); return; }
     const youth = saveRef.current.prologue;
     if (youth && !["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(youth.chronicle) ?? "") &&
@@ -2983,6 +3705,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const chooseMission = useCallback(
     (mission: MissionDefinition) => {
       if (save.missionProgress[mission.id].status === "locked") return;
+      if (normalizeSpaceRoutesV159(saveRef.current.spaceRoutesV159, saveRef.current.createdAt)?.trip) {
+        setToast("Le vaisseau personnel est en route : achève le trajet engagé avant de préparer une chasse."); return;
+      }
       const justice = saveRef.current.justice;
       const control = getJusticeRouteControl(justice, "clan-core");
       if (justice.intervention.stage !== "none" || justice.detention || control.kind === "identity-check" || control.kind === "summons") {
@@ -2998,12 +3723,45 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         return;
       }
       void playSound("select");
+      setPreparingFirstVoyage(false);
       setSelectedMission(mission);
       setBriefingAtAirlock(false);
       setScreen("briefing");
     },
     [playSound, save.missionProgress, persistJusticeProgress],
   );
+
+  // V163 — Queen Hunt : prise, abandon et départ d'un contrat de ruche.
+  const queenHuntBusy = campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue || !!resumableHunt || !!save.planetArrival;
+  const queenHuntAccess = evaluateQueenHuntAccessV163(save, mainMenuBrowserShipContextV81(save));
+  const openQueenHunt = useCallback(() => {
+    const current = saveRef.current;
+    const state = normalizeQueenHuntV163(current.queenHuntV163, current.createdAt) ?? (current.queenHuntV163 == null ? emptyQueenHuntV163(current.createdAt) : null);
+    if (state) {
+      const sync = syncFirstQueenFromCradleV163(state, current, new Date().toISOString());
+      if (sync.changed) persistSocialProgress({ queenHuntV163: sync.state });
+    }
+    setScreen("queen-hunt");
+  }, [persistSocialProgress]);
+  const takeQueenHunt = useCallback((contractId: string) => {
+    const current = saveRef.current;
+    const update = takeQueenHuntContractV163(current.queenHuntV163, current, mainMenuBrowserShipContextV81(current), contractId, new Date().toISOString());
+    if (update.accepted && update.changed && !persistSocialProgress({ queenHuntV163: update.state })) {
+      setToast("Contrat non confirmé par la sauvegarde."); return;
+    }
+    setToast(update.message);
+  }, [persistSocialProgress]);
+  const abandonQueenHunt = useCallback(() => {
+    const current = saveRef.current;
+    if (!current.queenHuntV163) return;
+    const update = abandonQueenHuntContractV163(current.queenHuntV163);
+    if (update.changed && !persistSocialProgress({ queenHuntV163: update.state })) { setToast("Abandon non confirmé par la sauvegarde."); return; }
+    setToast(update.message);
+  }, [persistSocialProgress]);
+  const launchQueenHunt = useCallback(() => {
+    const mission = MISSIONS.find(candidate => candidate.id === QUEEN_HUNT_SUPPORT_MISSION_V163);
+    if (mission && saveRef.current.queenHuntV163?.activeContract) chooseMission(mission);
+  }, [chooseMission]);
 
   const clearHuntSession = useCallback(() => {
     if (!sessionAliveRef.current) return false;
@@ -3129,6 +3887,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   );
 
   const mountArrivalHunt = useCallback((arrival: PlanetArrivalState, run: PlanetArrivalRun): boolean => {
+    if (blackGodStatusV162(saveRef.current) === "sacrificed") return false;
     if (!sessionAliveRef.current || arrivalMountedRunRef.current === arrival.runId) return arrivalMountedRunRef.current === arrival.runId;
     const current = saveRef.current;
     const mission = MISSIONS.find(item => item.id === arrival.missionId);
@@ -3192,19 +3951,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return mountArrivalHunt(completed, run);
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, mountArrivalHunt, persistSocialProgress, screen, settingsOpen]);
 
-  // V168 : engager ou retirer une épreuve de rang avant de partir en chasse.
-  const armRankTrial = useCallback((partId: RankTrialPartIdV168) => {
-    const update = armRankTrialV168(saveRef.current, partId, new Date().toISOString());
-    if (update.ok && !persistSocialProgress({ profile: update.profile })) return;
-    setToast(update.message);
-  }, [persistSocialProgress]);
-  const disarmRankTrial = useCallback(() => {
-    const update = disarmRankTrialV168(saveRef.current);
-    if (update.ok && !persistSocialProgress({ profile: update.profile })) return;
-    setToast(update.message);
-  }, [persistSocialProgress]);
-
   const launchMission = useCallback(() => {
+    if (blackGodStatusV162(saveRef.current) === "sacrificed") return;
     if(saveRef.current.mobilityV1?.active){setToast("Remise au garage requise avant une chasse : reprends la sortie depuis le comptoir des Forges.");return;}
     if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de lancer une chasse."); return; }
     if (!sessionAliveRef.current) return;
@@ -3313,7 +4061,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [hunterGauntlet.equippedId, insertionPlan, persistSocialProgress, playSound, save, selectedMission]);
 
   const resumeActiveHunt = useCallback(() => {
-    if (!sessionAliveRef.current) return;
+    if (!sessionAliveRef.current || blackGodStatusV162(saveRef.current) === "sacrificed") return;
     if (!resumableHunt) return;
     const latest = loadActiveHuntSave();
     if (!latest.save || latest.save.runId !== resumableHunt.runId || latest.save.sequence !== resumableHunt.sequence) {
@@ -3395,6 +4143,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       if (arrivalStartupRef.current || !sessionAliveRef.current) return;
       arrivalStartupRef.current = true;
       const current = saveRef.current;
+      if (blackGodStatusV162(current) === "sacrificed") return;
       const arrival = inspectPlanetArrival(current.planetArrival, current.createdAt).state;
       const run = inspectPlanetArrivalRun(current.planetArrivalRun, arrival).state;
       if (!arrival || !run) return;
@@ -3538,8 +4287,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         setPendingHuntResult({result,returnToDeck});setToast(delivery.reason);return;
       }
       const current = saveRef.current;
-      let next = { ...applyMissionResult(current, result), planetArrival: null, planetArrivalRun: null };
       const session = activeHuntSessionRef.current;
+      if (!session || session.missionId !== result.missionId) return;
+      const settled = applyMissionResult(current, result);
+      if (settled.missionProgress[result.missionId]?.attempts !== current.missionProgress[result.missionId]?.attempts + 1) {
+        setPendingHuntResult({ result, returnToDeck });
+        setToast("Le résultat ne correspond pas à la tentative active. La chasse et ses archives sont conservées.");
+        return;
+      }
+      let next = { ...settled, planetArrival: null, planetArrivalRun: null };
       const runInsertion = normalizePlanetInsertionPlan(session?.configuration.insertion);
       if (runInsertion?.team === 'triad' && session) {
         const shipId = session.configuration.insertionShipId;
@@ -3574,9 +4330,19 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             ...(reward > 0 ? { profile: { ...next.profile, clanMarks: next.profile.clanMarks + reward } } : {}) };
         }
       }
+      // V163 : règle une seule fois le contrat Queen Hunt lié à cette sortie (runId).
+      let queenHuntMessage: string | null = null;
+      if (current.queenHuntV163?.activeContract && session) {
+        const queen = settleQueenHuntMissionV163(current.queenHuntV163, result,
+          { runId: session.runId, missionId: session.missionId, encounterRun: session.encounterRun, ownerSaveCreatedAt: session.ownerSaveCreatedAt },
+          next.missionProgress[result.missionId]?.attempts ?? -1);
+        if (queen.changed) next = { ...next, queenHuntV163: queen.state };
+        if (queen.changed || !queen.accepted) queenHuntMessage = queen.message;
+      }
       setPendingHuntResult(null);
       missionSettlementRef.current = true;
       const written = writeSaveWithStatus(next);
+      if (queenHuntMessage) setToast(written.persisted ? queenHuntMessage : "Résultat du contrat de ruche non confirmé par la sauvegarde.");
       saveRef.current = written.save;
       setSave(written.save);
       setSaveFailure(written.failure);
@@ -3716,7 +4482,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const purchaseEquipmentUpgrade = useCallback(
     (request: UpgradePurchaseRequest) => {
-      const quote = quoteUpgrade(save, request);
+      const current = saveRef.current;
+      if (screen !== "armory" || settingsOpen || campaignSaveBusy ||
+          archiveTransferBusy || archiveRecoveryIssue || nurseryWriteAttemptRef.current ||
+          current.createdAt !== entry.ownerCreatedAt) return;
+
       const itemName =
         request.domain === "weapon"
           ? WEAPONS.find(({ id }) => id === request.id)?.name
@@ -3725,30 +4495,33 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             : ARMORS.find(({ id }) => id === request.id)?.name;
       const label = itemName ?? "Équipement";
 
-      if (!quote.canPurchase) {
-        const message =
-          quote.failure === "max-level"
-            ? `${label} est déjà au niveau maximum.`
-            : quote.failure === "insufficient-clan-marks"
-              ? `${label} requiert ${quote.cost ?? 0} marques du clan.`
-              : `${label} doit être déverrouillé avant son amélioration.`;
-        setToast(message);
+      const displayedQuote = quoteUpgrade(save, request);
+      const result = purchaseUpgrade(current, request);
+      if (result.quote.nextLevel !== displayedQuote.nextLevel || result.quote.cost !== displayedQuote.cost) {
+        setToast("Le devis de forge a changé. Vérifie le niveau et le prix avant de confirmer.");
         return;
       }
-
-      const result = purchaseUpgrade(save, request);
       if (!result.ok || result.newLevel === null) {
-        setToast(`La forge n’a pas pu améliorer ${label}.`);
+        const { failure, cost } = result.quote;
+        setToast(failure === "max-level"
+          ? `${label} est déjà au niveau maximum.`
+          : failure === "insufficient-clan-marks"
+            ? `${label} requiert ${cost ?? 0} marques du clan.`
+            : `${label} doit être déverrouillé avant son amélioration.`);
         return;
       }
 
-      persist(result.save);
+      if (!persistSocialProgress({ profile: result.save.profile, inventory: result.save.inventory })) {
+        setToast("Amélioration non confirmée. Vérifie la sauvegarde et réessaie le même achat.");
+        return;
+      }
       setToast(
         `${label} · niveau ${result.newLevel}/2 acquis pour ${result.spentClanMarks} marques.`,
       );
       void playSound("select");
     },
-    [persist, playSound, save],
+    [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt,
+      persistSocialProgress, playSound, save, screen, settingsOpen],
   );
 
   const updateAppearance = useCallback(
@@ -3816,6 +4589,83 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [screen, settingsOpen, campaignSaveBusy, archiveTransferBusy, archiveRecoveryIssue,
       entry.ownerCreatedAt, playSound]);
 
+  /** V146: per-piece colours, outfits, clan palette and repairs share one durable write path. */
+  const commitCustomizationV146 = useCallback((apply: CustomizationApplyV146, confirmation: string): boolean => {
+    if (!sessionAliveRef.current || screen !== "customization" || settingsOpen ||
+      campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue ||
+      !!pendingTrophyCommitRef.current || !!pendingSocialWriteRef.current ||
+      !!pendingTerminalRunRef.current) return false;
+    const result = commitHunterCustomizationV146({
+      current: saveRef.current,
+      expectedOwnerCreatedAt: entry.ownerCreatedAt,
+      apply,
+      write: next => writeSaveWithStatus(next),
+      reconcile: (attempt, owner) => reconcileSaveWrite(attempt, owner),
+    });
+    if (!result.ok) {
+      if (result.failure !== "refused") setSaveFailure(result.failure);
+      setToast(result.failure === "refused"
+        ? "Changement refusé (matériaux insuffisants ou tenue invalide)."
+        : "Personnalisation non confirmée (" + result.failure + "). Aucun changement permanent annoncé.");
+      return false;
+    }
+    saveRef.current = result.save;
+    setSave(result.save);
+    setSaveFailure(null);
+    setToast(confirmation);
+    void playSound("select");
+    return true;
+  }, [screen, settingsOpen, campaignSaveBusy, archiveTransferBusy, archiveRecoveryIssue,
+      entry.ownerCreatedAt, playSound]);
+
+
+  const equipBiomask = useCallback((biomaskId: BiomaskId | null) => {
+    if (nurseryWriteAttemptRef.current) return;
+    const committed = commitCustomizationV146(current => ({
+      ...current,
+      appearance: {
+        ...current.appearance,
+        presetId: "custom",
+        biomaskId,
+        chromaticsV113: {
+          ...normalizeHunterChromaticsV113(current.appearance.chromaticsV113),
+          maskOriginId: maskOriginForCustomizationV135(current.appearance),
+        },
+      },
+    }), biomaskId === null ? "Biomask retiré." : "Biomask équipé.");
+    if (!committed) return;
+    setSelectedCatalogueEntryId(null);
+    setPreviewMaskWorn(saveRef.current.appearance.biomaskId !== null);
+  }, [commitCustomizationV146]);
+
+  /** V147: trophy usages reuse the owner-bound durable write of V146 (nothing is announced before it is confirmed). */
+  const commitTrophyUsageV147 = useCallback((action: TrophyUsageActionV147, confirmation: string): boolean => {
+    if (!sessionAliveRef.current || screen !== "trophies" || settingsOpen ||
+      campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue ||
+      !!pendingTrophyCommitRef.current || !!pendingSocialWriteRef.current ||
+      !!pendingTerminalRunRef.current) return false;
+    const result = commitHunterCustomizationV146({
+      current: saveRef.current,
+      expectedOwnerCreatedAt: entry.ownerCreatedAt,
+      apply: current => applyTrophyUsageV147(current, action, undefined, { atPersonalTrophyHall }),
+      write: next => writeSaveWithStatus(next),
+      reconcile: (attempt, owner) => reconcileSaveWrite(attempt, owner),
+    });
+    if (!result.ok) {
+      if (result.failure !== "refused") setSaveFailure(result.failure);
+      setToast(result.failure === "refused"
+        ? "Usage refusé : vérifiez l’état du trophée."
+        : "Usage du trophée non confirmé (" + result.failure + "). Aucun changement permanent annoncé.");
+      return false;
+    }
+    saveRef.current = result.save;
+    setSave(result.save);
+    setSaveFailure(null);
+    setToast(confirmation);
+    void playSound("select");
+    return true;
+  }, [screen, settingsOpen, campaignSaveBusy, archiveTransferBusy, archiveRecoveryIssue,
+      entry.ownerCreatedAt, playSound, atPersonalTrophyHall]);
 
   const applyShipLoadout = useCallback(
     (loadout: Loadout, appearance: HunterAppearance) => {
@@ -4182,6 +5032,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     : newGamePhase ? "new-game" : save.planetArrival ? "planet-arrival"
     : screen === "wolf-castle" || (save.wolfCastle && save.wolfCastle.status !== 'departed') ? 'wolf-castle'
     : save.buriedCradle && ['active', 'suspended'].includes(save.buriedCradle.status) ? 'buried-cradle'
+    : !tribunalAccessV147(save.tribunalV147).city ? tribunalClanShipDepartureV147(save.clanShipDocking?.status) ? "clan-ship" : "deck"
     : screen === "clan-ship" || save.clanShipDocking?.status === "aboard" || save.clanShipDocking?.status === "approach" ? "clan-ship" : hubLocation === "homeworld" ? "homeworld" : "deck";
   const checkpointBlockedReason = pendingTrophyCommit ? "Un rite attend sa sauvegarde : réessayez ou exportez son résultat avant de quitter."
     : pendingHuntResult || saveFailure ? "La progression principale attend sa sauvegarde. Réessayez avant de créer un checkpoint."
@@ -4242,11 +5093,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     else if (trophyTutorialOpen) closeTrophyTutorial();
     else if (pendingHuntResult) setToast("Le résultat attend sa vérification. Réessayez avant de quitter cette chasse.");
     else if (screen === "clan-chronicle") go(chronicleReturnScreen);
+    else if (screen === "legacy-finale-r2") closeLegacyFinaleR2();
     else if (screen === "clan-war" || screen === "sprite-library") go(archiveReturnV85);
     else if (newGamePhase === "identity") void returnToMainMenu();
     else if (newGamePhase === "briefing") { setNewGamePhase("identity"); setScreen("customization"); }
     else if (screen !== "title") go(hubLocation);
-  }, [archiveRecoveryIssue, archiveTransferBusy, go, hubLocation, pendingHuntResult, trophyTutorialOpen, closeTrophyTutorial, screen, settingsOpen, newGamePhase, returnToMainMenu, chronicleReturnScreen, archiveReturnV85]);
+  }, [archiveRecoveryIssue, archiveTransferBusy, go, hubLocation, pendingHuntResult, trophyTutorialOpen, closeTrophyTutorial, screen, settingsOpen, newGamePhase, returnToMainMenu, chronicleReturnScreen, closeLegacyFinaleR2, archiveReturnV85]);
   useEffect(() => {
     if (!["clan-chronicle", "clan-war", "sprite-library"].includes(screen) || settingsOpen) return;
     const onBack = (event: KeyboardEvent) => {
@@ -4286,6 +5138,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const activeHunterKit = activeHunterPreset
     ? playableKitForPreset(activeHunterPreset.id)
     : null;
+  const pitPersonalV147 = useMemo(() => pitPersonalFighterV147(save), [save]);
   const trophyRecords = useMemo(
     () =>
       [...save.trophies].sort(
@@ -4293,22 +5146,30 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       ),
     [save.trophies],
   );
+  const trophyAssignments = save.trophyUsagesV147?.assignments;
   const deckTrophyDisplays = useMemo(() => trophyRecords.flatMap((trophy) => {
+    if (!isPersonalShipTrophyDisplayV147(trophyAssignments?.[trophy.id])) return [];
     const visual = trophyWallVisualForDefinitionId(trophy.definitionId) ??
       enemyTrophyGameplayForDefinitionId(trophy.definitionId);
     if (!visual) return [];
     return [{ id: trophy.id, label: visual.name, image: visual.runtimeUrl }];
-  }), [trophyRecords]);
+  }), [trophyAssignments, trophyRecords]);
   const resumableMission = resumableHunt
     ? MISSIONS.find(({ id }) => id === resumableHunt.missionId) ?? null
     : null;
 
   const topBar =
     screen !== 'wolf-castle' && screen !== 'planet-arrival' && screen !== 'buried-cradle' &&
-    !newGamePhase && !clanShipVisible && screen !== "prologue" && screen !== "youth-training" && screen !== "solo-v66" && screen !== "solo-v67" && screen !== "solo-v68" && screen !== "solo-v69" && screen !== "solo-v70" && screen !== "solo-v90" && screen !== "homeworld-region-v68" && screen !== "homeworld-passage-v67" && screen !== "game-reserve" && screen !== "ship-acquisition-v89" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" && screen !== "pit-narrative" ? (
+    screen !== 'first-interstellar-v173' &&
+    !newGamePhase && !clanShipVisible && screen !== "prologue" && screen !== "youth-training" && screen !== "solo-v66" && screen !== "solo-v67" && screen !== "solo-v68" && screen !== "solo-v69" && screen !== "solo-v70" && screen !== "solo-v90" && screen !== "homeworld-region-v68" && screen !== "homeworld-passage-v67" && screen !== "game-reserve" && screen !== "ship-acquisition-v89" && screen !== "title" && screen !== "clan-chronicle" && screen !== "warp-epochs" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" && screen !== "pit-narrative" ? (
       <TopBar
         save={save}
-        onShip={() => go(save.clanShipDocking?.status === "aboard" || save.clanShipDocking?.status === "approach" ? "clan-ship" : save.prologue ? "homeworld" : "deck")}
+        onShip={() => {
+          const docking = save.clanShipDocking?.status;
+          const access = tribunalAccessV147(save.tribunalV147);
+          go((docking === "aboard" || docking === "approach" || (!access.clanShip && tribunalClanShipDepartureV147(docking)))
+            ? "clan-ship" : save.prologue && access.city ? "homeworld" : "deck");
+        }}
         onSettings={() => {
           void playSound("ui");
           setSettingsOpen(true);
@@ -4338,6 +5199,23 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     </main>
   );
 
+  // V155: after a Hardcore death nothing else is played; the hunt screen stays until its death report.
+  const hardcoreStatus = hardcoreStatusV155(save);
+  if ((hardcoreStatus === "death-pending" || hardcoreStatus === "closed") && screen !== "mission") return (
+    <main className="game-shell" ref={gameShellRef} data-game-content-version={GAME_CONTENT_VERSION} data-campaign-session={entry.slotId} data-campaign-owner={entry.ownerCreatedAt}>
+      <HardcoreChroniclePanelV155 save={save} busy={campaignSaveBusy} onClose={closeHardcoreChronicleSession} onMainMenu={() => { void returnToMainMenu(); }} />
+      {campaignSaveMessage && <p role="status">{campaignSaveMessage}</p>}
+    </main>
+  );
+
+  // V162: a chronicle closed by the Black God sacrifice is read-only; nothing else is played.
+  if (blackGodStatusV162(save) === "sacrificed") return (
+    <main className="game-shell" ref={gameShellRef} data-game-content-version={GAME_CONTENT_VERSION} data-campaign-session={entry.slotId} data-campaign-owner={entry.ownerCreatedAt}>
+      <BlackGodChronicleClosedV162 save={save} busy={campaignSaveBusy} onMainMenu={() => { void returnToMainMenu(); }} />
+      {campaignSaveMessage && <p role="status">{campaignSaveMessage}</p>}
+    </main>
+  );
+
   return (
     <main
       ref={gameShellRef}
@@ -4357,7 +5235,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       <div hidden={screen === "homeworld" || screen === "sprite-library" || trophyTutorialOpen} inert={shipStationOpen || settingsOpen || screen === "sprite-library"}>{topBar}</div>
 
       {screen === "clan-war" && <section className="screen panel-screen" inert={settingsOpen}>
-        <Suspense fallback={<DeferredGameScreen />}><ClanWarPanelV85 save={save} onClose={() => go(archiveReturnV85)} onGauntletSound={playGauntletSignal} onEquipGauntlet={equipGauntletCampaignV134} onClaimGauntletStudy={claimGauntletResearchV134} /></Suspense>
+        <Suspense fallback={<DeferredGameScreen />}>
+          <ClanWarPanelV85 save={save} createSceneAudio={createSceneAudio} onClose={() => go(archiveReturnV85)}
+            onGauntletSound={playGauntletSignal} onEquipGauntlet={equipGauntletCampaignV134} onClaimGauntletStudy={claimGauntletResearchV134}
+            onNarrativeCommand={archiveReturnV85 === "clan-ship" ? onWarNarrativeCommandR2M035 : undefined}
+            onConquestCommand={["deck", "clan-ship"].includes(archiveReturnV85) ? onConquestCommandR2M037 : undefined}
+            campaignRoutesPanel={<SpaceRoutesPanelV159 ownerCreatedAt={save.createdAt}
+              state={normalizeSpaceRoutesV159(save.spaceRoutesV159, save.createdAt)} ship={spacePersonalShipV159(save)}
+              disabled={settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy}
+              onAction={onSpaceRouteActionV159} />}
+          />
+        </Suspense>
       </section>}
       {screen === "sprite-library" && <Suspense fallback={<DeferredGameScreen />}>
         <RecentSpriteLibraryV85 onClose={() => go(archiveReturnV85)} />
@@ -4541,11 +5429,55 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         </section>
       )}
 
+      {screen === "queen-hunt" && (
+        <Suspense fallback={<DeferredGameScreen />}>
+          <QueenHuntPanelV163 access={queenHuntAccess}
+            state={normalizeQueenHuntV163(save.queenHuntV163, save.createdAt)}
+            nextEncounterShowsXeno={isEnemyV7RosterEncounter(QUEEN_HUNT_SUPPORT_MISSION_V163, save.missionProgress[QUEEN_HUNT_SUPPORT_MISSION_V163].attempts)}
+            busy={queenHuntBusy} onTake={takeQueenHunt} onAbandon={abandonQueenHunt} onLaunch={launchQueenHunt}
+            onClose={() => go("deck")} />
+        </Suspense>
+      )}
+
       {screen === "clan-chronicle" && (
         <section className="screen panel-screen" inert={settingsOpen}>
           <div className="screen-safe">
             <Suspense fallback={<DeferredGameScreen />}>
-              <ClanChroniclePanel save={save} onGameReserveV66={openGameReserveV66} onClose={() => go(chronicleReturnScreen)} />
+              <ClanChroniclePanel save={save} onGameReserveV66={openGameReserveV66} onClose={() => go(chronicleReturnScreen)}
+                onQuatzaCommand={onQuatzaCommand} onBloodedTempleCommand={onBloodedTempleCommandV174} onEliteRecognitionCommand={onEliteRecognitionCommandV174}
+                quatzaSuspended={settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !!resumableHunt || !gameFocusedV89}
+                onPassageCommand={onElderPassageCommand} onMentoringCommand={onElderMentoringCommand} onAssemblyCommand={onElderAssemblyCommand} onMasteryCommand={onEliteMasteryCommand}
+                onOpenCradle={campaignSaveBusy || archiveTransferBusy || archiveRecoveryIssue || resumableHunt
+                  ? undefined : () => go("buried-cradle-briefing")} />
+            </Suspense>
+            <p className="source-badge">
+              <button type="button" className="ghost-button" data-warp-entry-v165 onClick={() => go("warp-epochs")}>
+                Warp · époques (1629 et 2204)
+              </button>
+            </p>
+          </div>
+        </section>
+      )}
+
+      {screen === "warp-epochs" && (
+        <section className="screen panel-screen" inert={settingsOpen}>
+          <div className="screen-safe">
+            <Suspense fallback={<DeferredGameScreen />}>
+              <WarpEpochsPanelV165 save={save} shipContext={mainMenuBrowserShipContextV81(save)}
+                onPersist={(state, clearLegacyTantalus) => {
+                  const current = saveRef.current;
+                  const update: Partial<Pick<SaveGame, "warpEpochsV165" | "tantalusV164" | "prologue">> = {
+                    warpEpochsV165: state, ...(clearLegacyTantalus ? { tantalusV164: null } : {}),
+                  };
+                  if (state.commonRouteR2 && state.warpModuleInstalled && !current.warpEpochsV165?.warpModuleInstalled && current.prologue) {
+                    const proof = CHRONICLE_EVIDENCE.find(entry => entry.id === "warp-module-quest")!;
+                    const receipt = recordChronicleEvidence(current.prologue.chronicle, { id: proof.id, sourceId: proof.sourceId });
+                    if (!receipt.accepted || !receipt.changed) return false;
+                    update.prologue = { ...current.prologue, chronicle: receipt.state };
+                  }
+                  return persistSocialProgress(update);
+                }}
+                onClose={() => go("clan-chronicle")} />
             </Suspense>
           </div>
         </section>
@@ -4555,12 +5487,18 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         <Suspense fallback={<DeferredGameScreen />}>
           <section className="screen panel-screen" hidden={screen !== "homeworld"} inert={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}>
             <div className="screen-safe">
+              <ClanPaletteContextV146.Provider value={save.customizationV146?.clanPalette ?? null}>
               <HomeworldHub key={save.createdAt} save={save} gauntletVariantId={hunterGauntlet.equippedId} selectedShipId={selectedShipId} arrivalV67={homeworldArrivalV67}
                 navigation={<>
                 {!save.prologue && <button type="button" className="ghost-button" onClick={() => openMap("homeworld")}>Carte galactique</button>}
                 <button type="button" className="ghost-button" onClick={() => {
                   setJusticeJurisdiction("homeworld"); openStationScreen("justice", "homeworld");
                 }}>Dossier · {getJusticeStatus(save.justice).label}</button>
+                {(canEnterQuatza(save, "triad") || !!save.bloodedTempleV174 || templeAvailableV174(save)) && <button type="button" className="ghost-button" data-open-quatza-homeworld
+                  disabled={settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !!resumableHunt}
+                  onClick={() => { setChronicleReturnScreen("homeworld"); go("clan-chronicle"); }}>
+                  {save.bloodedTempleV174 ? "Dossier de campagne · rites" : "Dossier de campagne · Quatza-Rij"}
+                </button>}
                 {!save.prologue && <button type="button" className="ghost-button" onClick={() => go("deck")}>Rejoindre le vaisseau</button>}
                 <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>Réglages</button>
                 <button type="button" className="ghost-button" onClick={openShipAcquisitionV89}>Chantier naval · inspection</button>
@@ -4573,14 +5511,35 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <p>{campaignWelcomeV69(save).next}</p>
               </section>}
                 suspended={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}
-                onProgress={persistHomeworldProgress} onService={openHomeworldService} onYouthTraining={enterYouthTraining} onSoloV66={enterSoloV66} onSoloV67={enterSoloV67} onSoloV68={enterSoloV68} onSoloV69={enterSoloV69} onSoloV70={enterSoloV70} onSoloV90={enterSoloV90} onRegionV68={openHomeworldRegionV68}
+                onKennelActionV147={action => {
+                  const current = saveRef.current.houndsV147;
+                  const change = action.type === "recruit"
+                    ? recruitAtKennelV147(current, { catalogueId: action.catalogueId, name: action.name, locationId: HOUND_KENNEL_LOCATION_V147 })
+                    : action.type === "choose" ? chooseAtKennelV147(current, action.houndId, HOUND_KENNEL_LOCATION_V147)
+                    : healAtKennelV147(current, action.houndId, HOUND_KENNEL_LOCATION_V147);
+                  if (!change.ok) { setToast(kennelRefusalTextV147(change.reason)); return false; }
+                  return persistSocialProgress({ houndsV147: change.state });
+                }}
+                onProgress={persistHomeworldProgress}
+                onAdjutantAppointment={(homeworld, prologue) => persistSocialProgress({ homeworld, prologue })}
+                onRegionalLoopM014={openRegionalLoopM014}
+                regionalLoopM014Admission={showRegionalLoopM014}
+                onService={openHomeworldService} onYouthTraining={enterYouthTraining} onSoloV66={enterSoloV66} onSoloV67={enterSoloV67} onSoloV68={enterSoloV68} onSoloV69={enterSoloV69} onSoloV70={enterSoloV70} onSoloV90={enterSoloV90} onRegionV68={openHomeworldRegionV68} onMinorArcsV160={persistMinorArcsV160}
                 onReturnShip={() => go("deck")} onExpedition={openHomeworldExpedition} onNotify={setToast} />
+              </ClanPaletteContextV146.Provider>
             </div>
           </section>
         </Suspense>
       )}
 
-      {screen === "mausoleum" && (<Suspense fallback={<DeferredGameScreen />}><Mausoleum key={save.createdAt} save={save} suspended={settingsOpen} source={stationReturnScreen === "homeworld" ? "homeworld" : "menu"} onProgress={progress => persistHomeworldProgress({ ...saveRef.current.homeworld, mausoleum: progress })} onSound={playGameplaySound} onExit={() => go(stationReturnScreen)} /></Suspense>)}
+      {screen === "mausoleum" && (<Suspense fallback={<DeferredGameScreen />}><Mausoleum key={save.createdAt} save={save} suspended={settingsOpen} source={stationReturnScreen === "homeworld" ? "homeworld" : "menu"} onProgress={progress => persistHomeworldProgress({ ...saveRef.current.homeworld, mausoleum: progress })} onSound={playGameplaySound} onExit={() => go(stationReturnScreen)} heritage={<><HeritagePanelV152 save={save} disabled={settingsOpen} onAction={heritageActionV152} /><BlackGodPanelV162 save={save} disabled={settingsOpen || campaignSaveBusy} onTrialEnd={recordBlackGodTrialSession} onSacrifice={sacrificeBlackGodSession} /></>} /></Suspense>)}
+      {screen === 'first-interstellar-v173' && <section inert={settingsOpen}>
+        <Suspense fallback={<DeferredGameScreen />}>
+          <FirstInterstellarV173 key={save.createdAt} owner={save.createdAt} state={save.firstInterstellarV173 ?? null}
+            access={firstJourneyAccess(save)} onAction={onFirstInterstellarAction} onExit={() => go('deck')}
+            onOpenSettings={() => setSettingsOpen(true)} />
+        </Suspense>
+      </section>}
       {screen === 'ship-acquisition-v89' && <section inert={settingsOpen} data-ship-acquisition-campaign>
         <Suspense fallback={<DeferredGameScreen />}>
           <ShipAcquisitionV89 key={save.createdAt} appearance={save.appearance} loadout={save.loadout}
@@ -4589,11 +5548,76 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         </Suspense>
       </section>}
 
+      {screen === "homeworld-regional-loop-m014" && hydrated && save.homeworld.regionalLoopM014 && (
+        <section className="screen panel-screen" inert={settingsOpen}>
+          <Suspense fallback={<DeferredGameScreen />}>
+            <HomeworldRegionalLoopM014 loop={save.homeworld.regionalLoopM014} suspended={regionalLoopSuspendedM014}
+              notice={regionalLoopNoticeM014} onCommand={commandRegionalLoopM014} onCity={reachCityRegionalLoopM014}
+              onSettings={() => setSettingsOpen(true)} />
+          </Suspense>
+        </section>
+      )}
+      {screen === "legacy-finale-r2" && legacyVisitR2 && <section className="screen panel-screen" inert={settingsOpen}>
+        <div className="screen-safe">
+          <Suspense fallback={<DeferredGameScreen />}>
+            <LegacyFinaleSceneR2 key={save.createdAt + ":" + legacyVisitR2.scene + ":" + legacyVisitR2.site.id}
+              scene={legacyVisitR2.scene} site={legacyVisitR2.site} siteLabel={legacyVisitR2.siteLabel}
+              identity={save} state={save.legacyFinaleR2} endingTitle={originEndingV170(legacyOriginEndingR2(save))?.title ?? ""}
+              disabled={legacySuspendedR2} notice={legacyNoticeR2} onCommand={onLegacyCommandR2} onClose={closeLegacyFinaleR2}
+              belongings={(legacyVisitR2.site.kind === "residence" ? residenceTrophiesR2M038(save, legacyVisitR2.site.id) :
+                save.trophies.filter(item => {
+                  const display = save.trophyUsagesV147?.assignments[item.id];
+                  return display?.usage === "displayed" && display.site === "ship";
+                })).map(item => item.targetName)}
+              relations={Object.values(save.originV151?.relations ?? {}).map(item => item.name)} />
+          </Suspense>
+        </div>
+      </section>}
       {screen === "homeworld-region-v68" && hydrated && save.homeworldRegionV68 && <section inert={settingsOpen} data-homeworld-region-campaign>
         <Suspense fallback={<DeferredGameScreen />}>
           <HomeworldRegionV68 contractsValue={save.homeworld.contractsV68} key={save.createdAt+":"+save.homeworldRegionV68.runId} save={save} gauntletVariantId={hunterGauntlet.equippedId} regionId={save.homeworldRegionV68.regionId} checkpoint={save.homeworldRegionV68}
             suspended={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy} onCheckpoint={checkpointHomeworldRegionV68}
-            onFieldEvent={fieldHomeworldRegionV68} onBibleSceneAction={bibleActionHomeworldV86} onReachCity={reachCityHomeworldRegionV68} onOpenSettings={() => setSettingsOpen(true)} />
+            onFieldEvent={fieldHomeworldRegionV68} onTrainingYardO6={setupTrainingYardO6} onBibleSceneAction={bibleActionHomeworldV86} onReachCity={reachCityHomeworldRegionV68} onOpenSettings={() => setSettingsOpen(true)}
+            residenceV149={(buildingId: string, disabled: boolean, threshold = false) => {
+              const house = houseForBuildingV149(save.homeworldRegionV68!.regionId, buildingId);
+              if (!house) return null;
+              return <>
+                <ResidencePanelV149 house={house} residence={save.residenceV149} rankId={save.profile.rankId} disabled={disabled} threshold={threshold}
+                  displayedTrophies={residenceTrophiesR2M038(save, house.id)}
+                  regionAllowed={regionId => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={action => residenceActionV149(house.id, action)} />
+                {!threshold && <>
+                  <ResidenceLifePanelV150 house={house} residence={save.residenceV149} life={save.residenceLifeV150} rankId={save.profile.rankId} disabled={disabled}
+                    regionAllowed={regionId => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={residenceLifeActionV150} />
+                  <OriginTransitionPanelV151 house={house} residence={save.residenceV149} origin={save.originV151} rankId={save.profile.rankId} disabled={disabled}
+                    regionAllowed={regionId => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={originActionV151} />
+                  <HouseScenesPanelV154 house={house} residence={save.residenceV149} life={save.residenceLifeV150} scenes={save.residenceScenesV154}
+                    region={save.homeworldRegionV68 ? { runId: save.homeworldRegionV68.runId, tick: save.homeworldRegionV68.tick } : null} rankId={save.profile.rankId} disabled={disabled}
+                    regionAllowed={(regionId: string) => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={residenceSceneActionV154}
+                    stock={(() => { const objects = normalizePathObjectsV158(save.pathObjectsV158) ?? emptyPathObjectsV158(); return { materials: objects.materials, receipts: objects.receipts }; })()} />
+                  {legacyOriginEndingR2(save) && (() => {
+                    const site = legacyResidenceSiteR2(save, house.id);
+                    return site && <>
+                      {!legacySceneRefusalR2(save, site, "cohort") && <button type="button" className="ghost-button"
+                        data-open-legacy-cohort-r2 disabled={disabled || legacySuspendedR2}
+                        onClick={() => openLegacyFinaleR2("cohort", site, house.title)}>Accueillir la nouvelle cohorte</button>}
+                      {!legacySceneRefusalR2(save, site, "epilogue") && <button type="button" className="ghost-button"
+                        data-open-legacy-epilogue-r2 disabled={disabled || legacySuspendedR2}
+                        onClick={() => openLegacyFinaleR2("epilogue", site, house.title)}>Revoir les traces du foyer</button>}
+                    </>;
+                  })()}
+                  <HouseMaterialsPanelV158 house={house} objects={save.pathObjectsV158} clanMarks={save.profile.clanMarks} disabled={disabled} onBuy={buyMaterialActionV158} />
+                </>}
+              </>;
+            }}
+            guestsV150={(view: { regionId: string; runId: string; tick: number; zone: string; buildingId: string | null }) => guestsInSceneV150(normalizeResidenceLifeV150(save.residenceLifeV150) ?? emptyResidenceLifeV150(), view)}
+            pathMissionV158={(disabled: boolean) => {
+              // Read from the last durable checkpoint, the same state the action handler checks.
+              const checkpoint = save.homeworldRegionV68;
+              if (!checkpoint) return null;
+              const place = { atWorkshop: false, region: { regionId: checkpoint.regionId, runId: checkpoint.runId, zone: checkpoint.zone, eventReceipts: checkpoint.eventReceipts } };
+              return <PathMissionPanelV158 origin={save.originV151} objects={save.pathObjectsV158} rankId={save.profile.rankId} disabled={disabled}
+                place={place} onAction={(action: PathMissionActionV158) => pathMissionActionV158(action, place)} />;
+            }} />
         </Suspense>
       </section>}
       {screen === "homeworld-passage-v67" && hydrated && save.homeworldPassageV67 && <section inert={settingsOpen} data-homeworld-passage-campaign>
@@ -4643,8 +5667,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               const access = evaluateBuriedCradleAccess(save, fleet.selectedShipId, fleet.unlockedShipIds);
               const state = save.buriedCradle;
               return <><ul>{access.missing.map(message => <li key={message}>{message}</li>)}</ul>
-                {!state && <button type="button" className="alien-button" disabled={!access.allowed || campaignSaveBusy || settingsOpen}
-                  onClick={() => commitCradleAction({ type: 'prepare' })}>Confirmer l’itinéraire et l’extraction</button>}
+                {!state && access.allowed && <Suspense fallback={<DeferredGameScreen />}>
+                  <BuriedCradleApproach appearance={save.appearance} loadout={save.loadout}
+                    disabled={campaignSaveBusy || settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue || !!resumableHunt || !gameFocusedV89}
+                    onComplete={approach => commitCradleAction({ type: 'prepare', approach })} />
+                </Suspense>}
+                {state?.approach && <p data-cradle-approach-receipt>{state.approach.route === 'reconnaissance'
+                  ? 'Reconnaissance consignée à la balise.' : 'Itinéraire direct consigné à la balise.'}</p>}
                 {state && (['prepared', 'suspended', 'active'].includes(state.status) || state.status === 'reported' && !state.crownDelivered) && <button type="button" className="alien-button"
                   disabled={!access.allowed || campaignSaveBusy || settingsOpen} onClick={() => commitCradleAction({ type: 'depart' })}>
                   {state.status === 'prepared' ? 'Rejoindre Xeno Prime' : state.status === 'reported' ? 'Repartir en expédition'
@@ -4663,9 +5692,16 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             <p>Raccourcis ouverts : {save.buriedCradle?.progress.shortcutIds.length ?? 0}/3</p>
             <p>Réservoir : {save.buriedCradle?.progress.drainageOpened ? 'drainé' : 'non drainé'}</p>
             <p>Matriarche : {save.buriedCradle?.progress.bossDefeated ? 'neutralisée' : 'chasse non résolue'}</p>
-            <p>Crête : {save.buriedCradle?.crownDelivered ? 'présentée au débrief' : save.buriedCradle?.progress.crownClaimed ? 'prélevée' : 'non prélevée'}</p>
-            {save.buriedCradle?.crownDelivered && <img src="/game/xeno-prime/berceau-v1/sprites/props_effets/100_trophee_couronne_socle.png"
-              alt="Crête de la Matriarche rapportée" style={{ width: '100%', maxHeight: 270, objectFit: 'contain' }} />}
+            {(() => {
+              const state = save.buriedCradle;
+              const condition = state ? getCradleCrownCondition(state.progress) : 'unclaimed';
+              const source = cradleArt.assets[condition === 'marked' ? 'A012' : '100'];
+              const status = condition === 'lost' ? 'détruite par l’acide' : condition === 'marked' ? 'marquée par l’acide' :
+                state?.crownDelivered ? 'présentée au débrief' : condition === 'intact' ? 'prélevée' : 'non prélevée';
+              return <><p>Crête : {status}</p>{state?.crownDelivered && <img src={source.src}
+                alt={condition === 'marked' ? 'Crête de la Matriarche marquée par l’acide' : 'Crête de la Matriarche rapportée'}
+                style={{ width: '100%', maxHeight: 270, objectFit: 'contain' }} />}</>;
+            })()}
           </article></div>
         </div>
       </section>}
@@ -4725,6 +5761,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 suspended={screen !== "clan-ship" || settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !gameFocusedV89}
                 onAction={commitClanShipAction}
                 onOperations={commitClanShipOperations}
+                onHullProject={onClanHullProject}
+                elderWorkshop={canWorkWithClanArmorerV172(save) ? (
+                  <ElderWorkshopV172 save={save} disabled={settingsOpen || trophyWorkshop !== null || archiveTransferBusy ||
+                    !!archiveRecoveryIssue || campaignSaveBusy || !gameFocusedV89} onCommand={onElderWorkshopCommandV172} />
+                ) : null}
                 companions={{ save, selectedShipId, ownedShipIds: loadShipProgression(save).unlockedShipIds, onAction: commitCompanionResidence }}
                 incidents={{ save, onAction: commitClanShipIncident, onHearingAction: commitClanShipTrophyHearing }}
                 returnEscort={{ save, onAction: commitClanShipReturnEscort, onRetry: retryClanShipReturnEscort, checkpointFailed: saveFailure !== null }}
@@ -4771,6 +5812,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <button type="button" className="ghost-button" onClick={() => { setChronicleReturnScreen("deck"); go("clan-chronicle"); }}>
                   Dossier de campagne
                 </button>
+                {legacyDeckSiteR2 && !legacySceneRefusalR2(save, legacyDeckSiteR2, "epilogue") &&
+                  <button type="button" className="ghost-button" data-open-legacy-epilogue-r2 disabled={legacySuspendedR2}
+                    onClick={() => openLegacyFinaleR2("epilogue", legacyDeckSiteR2, "Vaisseau personnel")}>Revoir les traces du voyage</button>}
+                <button type="button" className="ghost-button" data-open-queen-hunt-v163 disabled={queenHuntBusy} onClick={openQueenHunt}>
+                  Queen Hunt · contrats de ruche{queenHuntAccess.allowed ? "" : " (fermé)"}
+                </button>
                 <button type="button" className="ghost-button" data-open-buried-cradle
                   disabled={campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue || !!resumableHunt}
                   onClick={() => setScreen('buried-cradle-briefing')}>Xeno Prime · Le Berceau enfoui</button>
@@ -4786,7 +5833,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <button type="button" className="ghost-button" onClick={openShipAcquisitionV89}>
                   Chantier naval · inspection
                 </button>
-                <button type="button" className="ghost-button" onClick={() => { setArchiveReturnV85("deck"); setScreen("clan-war"); }}>Guerres des clans · exercices</button>
+                <button type="button" className="ghost-button" onClick={() => { setArchiveReturnV85("deck"); setScreen("clan-war"); }}>Guerres des clans · carte et mandats</button>
                 <button type="button" className="ghost-button" onClick={() => { setArchiveReturnV85("deck"); setScreen("sprite-library"); }}>Archives visuelles</button>
                 <button type="button" className="ghost-button" onClick={() => setSettingsOpen(true)}>
                   Pause / réglages
@@ -4806,8 +5853,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 highContrast={save.settings.highContrastVision}
                 controlBindings={save.settings.controlBindings}
                 onOpenMap={() => openMap("deck")}
+                campaignVoyages={{
+                  prepare: firstJourneyPlannable ? () => {
+                    if (!voyageContextAvailable(saveRef.current)) return;
+                    setPreparingFirstVoyage(true);
+                    setToast('Couronne des Départs : inspectez les huit postes de prévol.');
+                  } : undefined,
+                  travel: firstJourneyAccessAtDeck && !firstJourneyComplete ? openCampaignVoyage : undefined,
+                }}
                 onOpenArmory={() => openStationScreen("armory", "deck")}
                 onOpenTrophies={() => openStationScreen("trophies", "deck")}
+                onOpenPersonalTrophyHall={() => openStationScreen("trophies", "deck", undefined, true)}
                 onOpenArchives={() => openStationScreen("codex", "deck")}
                 onOpenAppearanceForge={() => openStationScreen("customization", "deck")}
                 onOpenMedbay={() => openStationScreen("medbay", "deck")}
@@ -4836,11 +5892,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               Réglages
             </button>
           </div>}
-      {screen === "mobility" && (<Suspense fallback={<DeferredGameScreen />}><MobilityGarage key={save.createdAt} save={save} suspended={settingsOpen || Boolean(trophyWorkshop) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy} onCommand={commitMobility} onClose={() => go("homeworld")} onSound={playGameplaySound} /></Suspense>)}
+      {screen === "mobility" && (<Suspense fallback={<DeferredGameScreen />}><MobilityGarage key={save.createdAt} save={save} suspended={settingsOpen || Boolean(trophyWorkshop) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy} onCommand={commitMobility} onMountCommand={commitMounts} onRideCommand={commitMountRide} onClose={() => go("homeworld")} onSound={playGameplaySound} createSceneAudio={createSceneAudio} /></Suspense>)}
       {screen === "justice" && (
         <Suspense fallback={<DeferredGameScreen />}>
           <JusticePanel progress={save.justice} jurisdictionId={justiceJurisdiction}
-            onProgress={persistJusticeProgress} onClose={() => go(justiceReturnScreen)} onNotify={setToast} embedded />
+            onProgress={persistJusticeProgress} onNotify={setToast} embedded
+            onClose={() => {
+              // An exile pronounced while in the city returns to the personal deck.
+              const access = tribunalAccessV147(saveRef.current.tribunalV147);
+              go((justiceReturnScreen === "homeworld" && !access.city) || (justiceReturnScreen === "clan-ship" && !access.clanShip && !tribunalClanShipDepartureV147(saveRef.current.clanShipDocking?.status)) ? "deck" : justiceReturnScreen);
+            }} />
+          <HonorTribunalPanelV147 save={save} onCommit={persistTribunalV147} onNotify={setToast} />
         </Suspense>
       )}
 
@@ -4928,6 +5990,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             onVisitHomeworld={() => go("homeworld")}
             justiceControlLabel={getJusticeRouteControl(save.justice, "clan-core").label}
             onOpenJustice={() => { setJusticeJurisdiction("clan-core"); openStationScreen("justice", hubLocation); setJusticeReturnScreen("map"); }}
+            routesPanel={
+              <SpaceRoutesPanelV159
+                ownerCreatedAt={save.createdAt}
+                state={normalizeSpaceRoutesV159(save.spaceRoutesV159, save.createdAt)}
+                ship={spaceShipV159 ?? spacePersonalShipV159(save)}
+                disabled={settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy}
+                onAction={onSpaceRouteActionV159}
+              />
+            }
           />
         </Suspense>
       )}
@@ -5083,10 +6154,6 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   busy={settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !!resumableHunt}
                   onChange={setInsertionPlan} onRecruit={recruitExpeditionHunter} onAssign={assignExpeditionHunter}
                   onReserve={reserveExpeditionHunter} onCare={careForExpeditionHunter} />
-                <RankTrialBriefingV168 save={save} missionId={selectedMission.id}
-                  context={{ triadAccess: { allowed: evaluateClanShipAccess(save).allowed, reason: evaluateClanShipAccess(save).reason } }}
-                  busy={settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !!resumableHunt}
-                  onArm={armRankTrial} onDisarm={disarmRankTrial} />
                 <div className="briefing-actions">
                   <button
                     type="button"
@@ -5457,12 +6524,20 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               disabled={settingsOpen || campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue}
               onCommit={commitChromaticsV113}
             />
+            <HunterPieceForgeV146
+              key={save.createdAt + ":pieces:" + JSON.stringify([save.appearance.piecesV146 ?? null, save.appearance.lightsV146 ?? null, save.appearance.marksV146 ?? null, save.appearance.skinPatternIdV146 ?? null])}
+              save={save}
+              onPreview={setDraftAppearanceV146}
+              disabled={settingsOpen || campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue}
+              onCommit={commitCustomizationV146}
+            />
             <div className="customization-layout">
               <aside className="customization-preview">
                 <div className="customization-rig-stage">
                   <HunterRigPreview
                     className="customization-rig"
-                    appearance={draftChromaticsV114 ? { ...save.appearance, chromaticsV113: draftChromaticsV114 } : save.appearance}
+                    heavyWearV146={save.customizationV146?.heavyWear}
+                    appearance={{ ...(draftAppearanceV146 ?? save.appearance), ...(draftChromaticsV114 ? { chromaticsV113: draftChromaticsV114 } : {}) }}
                     armorId={save.loadout.armorId}
                     weaponIds={save.loadout.weaponIds}
                     gearIds={save.loadout.gearIds}
@@ -5722,10 +6797,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                       }
                       glyph={option.id === null ? "◌" : undefined}
                       selected={save.appearance.biomaskId === option.id}
-                      onSelect={() => {
-                        updateAppearance("biomaskId", option.id);
-                        setPreviewMaskWorn(option.id !== null);
-                      }}
+                      onSelect={() => equipBiomask(option.id)}
                     />
                   ))}
                 </CustomizationSection>
@@ -5891,12 +6963,29 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </button>
               </div>
             </article>
+            <PathMissionPanelV158 origin={save.originV151} objects={save.pathObjectsV158} rankId={save.profile.rankId}
+              place={{ atWorkshop: !trophyWorkshop && pendingTrophyCommit === null, region: null }}
+              disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
+              onAction={(action: PathMissionActionV158) => pathMissionActionV158(action, { atWorkshop: true, region: null })} />
+            <OriginEndingPanelV170 origin={save.originV151} rankId={save.profile.rankId} atWorkshop={!trophyWorkshop && pendingTrophyCommit === null}
+              disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
+              onAction={originEndingActionV170} />
+            <OriginTrophyTransitionPanelV157 origin={save.originV151} atWorkshop={!trophyWorkshop && pendingTrophyCommit === null}
+              heldOriginalIds={heldPathOriginalIdsV158(normalizePathObjectsV158(save.pathObjectsV158))}
+              disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
+              trophies={trophyRecords.map((trophy: { id: string; targetName: string; claimedAt: string }) =>
+                ({ id: trophy.id, label: `${trophy.targetName} · ${new Date(trophy.claimedAt).toLocaleDateString("fr-FR")}` }))}
+              onAction={originTrophyActionV157} />
             <Suspense fallback={<p>Lecture des distinctions THE PIT…</p>}>
               <PitHonorsPanel owner={save.createdAt} onOpenPit={openPit} />
             </Suspense>
             <ConservationPanelV112 inventory={save.inventory} clanMarks={save.profile.clanMarks}
               gamepadButtons={conservationPadButtonsV112} onClose={menuBack}
               disabled={settingsOpen||archiveTransferBusy||!!archiveRecoveryIssue||campaignSaveBusy} onAction={performConservationActionV112}/>
+            <TrophyUsageSummaryV147 save={save} />
+            {trophyRecords.length > 0 && !atPersonalTrophyHall && (
+              <p>Pour déposer ou reprendre une prise à bord, rejoins le poste de la Salle des trophées du vaisseau personnel.</p>
+            )}
             <div className="trophy-grid">
               <details className="franchise-trophy-archive">
                 <summary>
@@ -6088,6 +7177,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                           );
                         })}
                       </div>
+                      <TrophyUsageControlsV147
+                        save={save}
+                        trophy={trophy}
+                        disabled={pendingTrophyCommit !== null || settingsOpen || campaignSaveBusy ||
+                          archiveTransferBusy || !!archiveRecoveryIssue}
+                        station={{ atPersonalTrophyHall }}
+                        onApply={commitTrophyUsageV147}
+                      />
                     </article>
                   );
                 })
@@ -6156,6 +7253,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </div>
               </article>
             </section>
+            <YautjaGlossaryV147 />
             <div className="codex-grid">
               {CODEX_ENTRIES.map((entry) => {
                 const unlocked =
@@ -6195,6 +7293,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             controlBindings={save.settings.controlBindings}
             highContrast={save.settings.highContrastVision}
             lastReplay={lastPitReplay}
+            personalFighterV147={pitPersonalV147}
             reducedGore={save.settings.reducedGore}
             screenShake={save.settings.screenShake}
             unlockedCosmeticIds={pitUnlockedCosmeticIds}
@@ -6220,6 +7319,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         <Suspense fallback={<DeferredGameScreen />}>
           <HuntCanvas
             mission={selectedMission}
+            houndV147={activeHoundV147(save.houndsV147)}
             firstHuntGuideEnabled={selectedMission.id === "jungle-vey" && save.missionProgress["jungle-vey"].status !== "completed"}
             encounterRun={save.missionProgress[selectedMission.id].attempts}
             insertionPlan={huntResumePayload?.insertionPlan}
@@ -6229,7 +7329,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             inventory={activeMissionSave.inventory}
             explorationProgress={activeMissionSave.exploration}
             onExplorationProgress={persistExplorationProgress}
-            appearance={activeMissionSave.appearance}
+            appearance={campaignAppearanceV146(activeMissionSave)}
+            heavyWearV146={activeMissionSave.customizationV146?.heavyWear}
             gauntletVariantId={huntResumePayload?.gauntletVariantId ?? hunterGauntlet.equippedId}
             difficulty={activeMissionSave.settings.difficultyId}
             controlBindings={activeMissionSave.settings.controlBindings}
@@ -6246,6 +7347,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             onPersistHunt={persistActiveHunt}
             onSuspendHunt={suspendActiveHunt}
             onInvalidateHunt={invalidateActiveHuntPersistence}
+            hardcore={hardcoreStatusV155(activeMissionSave) === "alive"}
+            onHardcoreDeath={recordHardcoreDeathV155Session}
             onResumeFailure={rejectActiveHuntResume}
             onSound={playGameplaySound}
             onMusicContext={setHuntMusicContext}
@@ -6665,7 +7768,7 @@ function TopBar({
         type="button"
         className="brand-lockup ghost-button"
         onClick={onShip}
-        aria-label={save.prologue ? "Retour à la cité" : "Retour au vaisseau"}
+        aria-label={save.prologue && tribunalAccessV147(save.tribunalV147).city ? "Retour à la cité" : "Retour au vaisseau"}
       >
         <span className="brand-rune" aria-hidden="true">
           <span>Y</span>
@@ -7008,11 +8111,12 @@ function RigStateControls({
   onBlades: () => void;
   onAim: () => void;
 }) {
+  const wearingMask = maskAvailable && maskWorn;
   const actions = [
     {
       id: "mask",
-      label: maskWorn ? "Retirer mask" : "Porter mask",
-      active: maskWorn,
+      label: wearingMask ? "Retirer mask" : "Porter mask",
+      active: wearingMask,
       disabled: !maskAvailable,
       onClick: onMask,
     },

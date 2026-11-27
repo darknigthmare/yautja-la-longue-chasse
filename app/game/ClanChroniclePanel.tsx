@@ -14,8 +14,26 @@ import styles from "./ClanChroniclePanel.module.css";
 import TribeArtGallery from "./TribeArtGallery";
 import tribeArt from "./tribeArtV37.json";
 import CompanionCataloguePanel from "./CompanionCataloguePanel";
+import HuntingHoundsPanelV147 from "./HuntingHoundsPanelV147";
 import GameReserveEntryV66 from "./GameReserveEntryV66";
 import type {GameReserveChoiceV109} from './systems/gameReserveV66';
+import { rankRiteDossierV168 } from "./systems/rankRiteDossierV168";
+import ElderPassageJudgment from "./ElderPassageJudgment";
+import { canJudgeElderPassage, type PassageCommand, type PassageResponse } from "./systems/elderPassageJudgmentV168";
+import ElderMentoring from "./ElderMentoring";
+import { canMentorElderNovice, type MentoringCommand, type MentoringResponse } from "./systems/elderMentoringV168";
+import ElderAssembly from "./ElderAssembly";
+import BloodedTempleV174 from "./BloodedTempleV174";
+import EliteRecognition from "./EliteRecognition";
+import EliteClanRites from "./EliteClanRites";
+import { canEnterEliteClanRites, completedEliteClanRites } from "./systems/eliteClanRitesV175";
+import { canEnterEliteRecognition, type EliteRecognitionCommand, type EliteRecognitionResponse } from "./systems/eliteRecognitionV174";
+import { templeAvailableV174, type TempleCommandV174 } from "./systems/bloodedTempleV174";
+import { canConveneElderAssembly, elderAssemblyProofs, type AssemblyCommand, type AssemblyResponse } from "./systems/elderAssemblyV168";
+import EliteMastery from "./EliteMastery";
+import QuatzaRijScene from './QuatzaRijScene';
+import { canEnterQuatza, type QuatzaCommand } from './systems/quatzaRij';
+import { canEnterEliteMastery, type MasteryCommand, type MasteryResponse } from "./systems/eliteMasteryV170";
 
 const regions = [
   ["Désert", "Unblooded", "Dunes, oueds, citerne tribale et canyons de chasse."],
@@ -46,11 +64,35 @@ function HomeworldRegionArt({ name }: { name: string }) {
   return art ? <Image unoptimized className={styles.regionArt} src={art.thumbnailSrc} alt={"Illustration de la tribu " + name + " · source V2, niveau non livré"} width={320} height={220} loading="lazy" decoding="async" /> : null;
 }
 
-/** Read-only design dossier. Never grants evidence, equipment, ownership or XP. */
-export default function ClanChroniclePanel({ save, onClose, onGameReserveV66 }: { save: SaveGame; onClose: () => void; onGameReserveV66?: (fresh: boolean, version?: GameReserveChoiceV109) => boolean }) {
+/** The dossier presents receipts and delegates each playable rite to its campaign owner. */
+export default function ClanChroniclePanel({
+  save, onClose, onGameReserveV66, onOpenCradle, onPassageCommand, onMentoringCommand, onAssemblyCommand, onMasteryCommand, onQuatzaCommand, quatzaSuspended, onBloodedTempleCommand, onEliteRecognitionCommand,
+}: {
+  save: SaveGame;
+  onClose: () => void;
+  onGameReserveV66?: (fresh: boolean, version?: GameReserveChoiceV109) => boolean;
+  onOpenCradle?: () => void;
+  onPassageCommand?: (command: PassageCommand) => PassageResponse;
+  onMentoringCommand?: (command: MentoringCommand) => MentoringResponse;
+  onAssemblyCommand?: (command: AssemblyCommand) => AssemblyResponse;
+  onMasteryCommand?: (command: MasteryCommand) => MasteryResponse;
+  onQuatzaCommand?: (command: QuatzaCommand) => boolean;
+  quatzaSuspended?: boolean;
+  onBloodedTempleCommand?: (command: TempleCommandV174) => { ok: boolean; notice: string };
+  onEliteRecognitionCommand?: (command: EliteRecognitionCommand) => EliteRecognitionResponse;
+}) {
   const [section, setSection] = useState<"journey" | "worlds" | "humans" | "companions">("journey");
   const [query, setQuery] = useState("");
+  const [activeRite, setCampaignRite] = useState<"mentoring" | "passage" | "assembly" | "mastery" | "quatza-triad" | "quatza-solo" | "blooded-temple" | "elite-recognition" | "elite-clan-rites" | null>(null);
+  const proofs = elderAssemblyProofs(save);
+  const triadAvailable = !!onQuatzaCommand && (!!save.quatzaRij?.expeditions.triad || canEnterQuatza(save, 'triad'));
+  const soloAvailable = !!onQuatzaCommand && (!!save.quatzaRij?.expeditions.solo || canEnterQuatza(save, 'solo'));
+  const closeCampaignRite = () => setCampaignRite(null);
+  const toggleCampaignRite = (rite: "mentoring" | "passage" | "assembly" | "mastery" | "quatza-triad" | "quatza-solo" | "blooded-temple" | "elite-recognition" | "elite-clan-rites") =>
+    setCampaignRite(current => current === rite ? null : rite);
   const chronicle = useMemo(() => save.prologue?.chronicle ?? migrateV35ClanChronicle(save), [save]);
+  const rankDossier = useMemo(() => rankRiteDossierV168(save), [save]);
+  const narrativeRank = getChronicleRank(chronicle) ?? "youngling";
   const results = useMemo(() => {
     const search = fold(query.trim());
     return concepts.entries.filter(entry => fold(`${entry.id} ${entry.profile} ${entry.weapon}`).includes(search));
@@ -65,30 +107,141 @@ export default function ClanChroniclePanel({ save, onClose, onGameReserveV66 }: 
       {([["journey", "Parcours et rites"], ["worlds", "Mondes et réserves"], ["humans", "100 proies · fiches de conception"], ["companions", "Compagnons · registre"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={section === id} onClick={() => setSection(id)}>{label}</button>)}
     </nav>
 
-    {section === "companions" && <CompanionCataloguePanel />}
+    {section === "companions" && <><CompanionCataloguePanel /><HuntingHoundsPanelV147 hounds={save.houndsV147} /></>}
 
     {section === "journey" && <div>
       <aside className={styles.legacy} data-chronicle-legacy-rank={chronicle.legacyRecognition?.rankId ?? "none"}>
         <h3>{save.prologue ? "Chronique de jeunesse" : "Campagne existante préservée"}</h3>
-        <p>{save.profile.hunterName} · {save.prologue ? CHRONICLE_RANK_LABELS[getChronicleRank(chronicle) ?? "youngling"] : CHRONICLE_RANK_LABELS[save.profile.rankId]} · {save.profile.honor} honneur · {save.statistics.missionsCompleted} mission(s) terminée(s).</p>
-        <p>{save.prologue ? "Le rang narratif vient du prologue et de ses rites réellement enregistrés. Aucun honneur adulte, biomask ou vaisseau n’est accordé par la nurserie." : "Cette reconnaissance historique ne valide pas rétroactivement les nouveaux rites. Le vaisseau, les trophées, les contrats et THE PIT restent accessibles comme auparavant."}</p>
+        <p>{save.profile.hunterName} · {save.prologue ? (narrativeRank === "young-blood" ? "Reconnaissance locale de la cohorte" : CHRONICLE_RANK_LABELS[narrativeRank]) : CHRONICLE_RANK_LABELS[save.profile.rankId]} · {save.profile.honor} honneur · {save.statistics.missionsCompleted} mission(s) terminée(s).</p>
+        <p>{save.prologue ? "Le rang narratif vient du prologue et de ses rites réellement enregistrés. Aucun honneur adulte, biomask ou vaisseau n’est accordé par la nurserie." : "Cette reconnaissance historique ne valide pas rétroactivement les nouveaux rites. Le grade affiché appartient à la carrière adulte. Les actes du parcours du clan figurent dans le registre ci-dessous."}</p>
       </aside>
       <div className={styles.opening}><p className={styles.eyebrow}>OUVERTURE · YOUNGLING</p><h3>L’Arène de la nurserie</h3><p>Duel d’enfance sans HUD, vision rouge, orange et jaune. Maintien « Prêt », poings, prises, petites lames détachées et victoire au KO. La caméra révèle ensuite la nurserie bâtie autour du squelette sec et évidé d’un scolopendre géant, puis la lune rouge.</p><p>Le titre reste <strong>Yautja: The Long Hunt</strong>. Le passage Unblooded précède l’arrivée à la cité, le dojo, le premier biomask, les baraquements et le premier réveil.</p></div>
+      {save.prologue?.checkpoint.cohortV172?.steps === 7 && <article className={styles.opening} data-r2-m002-cohort-receipt>
+        <h3>Le filet et les visages</h3>
+        <p>Outil rendu, barrière fermée et retour de la cohorte entendu. Les échanges avec Harek, Yena et Tov sont consignés.</p>
+        {save.prologue.checkpoint.cohortV172.choice === "review" && <p>Harek retient l’appui repris avec toi.</p>}
+        {save.prologue.checkpoint.cohortV172.choice === "help" && <p>Yena se souvient que tu es revenu l’aider à ranger le filet.</p>}
+      </article>}
       {save.prologue && <aside className={styles.legacy} data-youth-chronicle><h3>Formation auprès du clan</h3><p>{youthCampaignObjective(save.youthTraining)}</p><p>{youthEquipmentSummary(save.youthTraining)}</p><p>Les gestes du dojo, les remises d’équipement, le parcours chronométré, le duel, le repos et la reconnaissance accompagnée du désert gardent leurs propres preuves. Ils ne remplacent ni les Premières Pistes ni la chasse sans guide ; aucun rang supplémentaire ne vient d’une visite de menu.</p></aside>}
-      <h3 className={styles.subheading}>Les preuves précèdent les promotions</h3>
+      <section aria-labelledby="chronicle-campaign-rank-rites" data-campaign-rank-rites-v168>
+        <h3 id="chronicle-campaign-rank-rites" className={styles.subheading}>Épreuves de rang de la campagne</h3>
+        <p>Honneur pris en compte pour les seuils · {rankDossier.honor.toLocaleString("fr-FR")}</p>
+        <details>
+          <summary>Seuils d’honneur et épreuves</summary>
+          <ol>
+            {rankDossier.thresholds.map(tier => <li key={tier.level} data-rank-threshold-v168={tier.level}>
+              <strong>{tier.bibleRank}</strong> · {tier.threshold.toLocaleString("fr-FR")} · {tier.trial}.
+              {" "}{tier.remainingHonor > 0 ? `Il manque ${tier.remainingHonor.toLocaleString("fr-FR")} d’honneur.` : "Seuil atteint."}
+            </li>)}
+          </ol>
+        </details>
+        <ol className={styles.rites}>
+          <li><h4>Young Blood · L-02 et L-03</h4><p>Chasser le Quatza-Rij à trois et présenter la peau et le crâne.</p>
+            {triadAvailable ? <button type="button" data-quatza-open="triad" onClick={() => toggleCampaignRite("quatza-triad")}
+              aria-controls="quatza-expedition-triad" aria-expanded={activeRite === "quatza-triad"}>
+              {activeRite === "quatza-triad" ? "Replier la chasse en triade" : "Ouvrir la chasse en triade"}</button> :
+              <p>Le départ s’ouvre après la répétition du trio, au rang Young Blood.</p>}
+          </li>
+          <li>
+            <h4>Blooded · L-04</h4>
+            <p>Traverser la pyramide en triade, chacun avec sa prise, puis recevoir la marque à l’acide.</p>
+            {onBloodedTempleCommand && (save.bloodedTempleV174 || templeAvailableV174(save)) ?
+              <button type="button" data-open-blooded-temple-v174
+                aria-expanded={activeRite === "blooded-temple"} onClick={() => toggleCampaignRite("blooded-temple")}>
+                Le rite de la pyramide
+              </button> :
+              <p>Le temple s’ouvre après la Vanne de Quarantaine et le compte rendu complet du trio.</p>}
+          </li>
+          {onMasteryCommand && (canEnterEliteMastery(save) || save.eliteMasteryV170) && <li>
+            <h4>Mon domaine de maîtrise</h4>
+            <button type="button" onClick={() => toggleCampaignRite("mastery")} aria-expanded={activeRite === "mastery"}>
+              {activeRite === "mastery" ? "Replier le terrain de maîtrise" : "Ouvrir le terrain de maîtrise"}
+            </button>
+          </li>}
+          {soloAvailable && <li><h4>Le Quatza-Rij solitaire · L-05</h4>
+            <button type="button" data-quatza-open="solo" onClick={() => toggleCampaignRite("quatza-solo")}
+              aria-controls="quatza-expedition-solo" aria-expanded={activeRite === "quatza-solo"}>
+              {activeRite === "quatza-solo" ? "Replier la chasse solitaire" : "Ouvrir la chasse solitaire"}</button>
+          </li>}
+          <li data-rank-queen-proof-v168>
+            <h4>Elite · L-05, L-06 et L-07</h4>
+            <ul>
+              <li>Chasse solitaire · Quatza-Rij adulte.</li>
+              <li>{completedEliteClanRites(save.eliteRecognitionV174?.trials)
+                ? "Rites L‑06 consignés par le chef du clan."
+                : "Le vétéran ouvre les rites du clan après les huit retours de chasse."}</li>
+              <li>Crête de la Matriarche · {rankDossier.queen.label}.</li>
+            </ul>
+            {rankDossier.queen.canOpenExpedition && onOpenCradle && <button type="button" onClick={onOpenCradle}>Ouvrir le dossier du Berceau</button>}
+            {onEliteRecognitionCommand && (canEnterEliteClanRites(save) || save.eliteRecognitionV174?.trials) &&
+              <button type="button" data-open-elite-clan-rites aria-expanded={activeRite === "elite-clan-rites"}
+                onClick={() => toggleCampaignRite("elite-clan-rites")}>Ouvrir les rites du clan</button>}
+            {onEliteRecognitionCommand && (canEnterEliteRecognition(save) || save.eliteRecognitionV174?.audience) &&
+              <button type="button" data-open-elite-recognition-v174 aria-expanded={activeRite === "elite-recognition"}
+                onClick={() => toggleCampaignRite("elite-recognition")}>{save.eliteRecognitionV174?.recognized
+                  ? "Relire la reconnaissance Elite" : "Ouvrir la préparation de la reconnaissance"}</button>}
+          </li>
+          <li>
+            <h4>Elder · R2-M049 à R2-M051</h4>
+            <p>{proofs.mentoring ? "Le mentor a consigné la chasse du novice." : "Accompagner un novice dans sa chasse d’exercice."}</p>
+            {(canMentorElderNovice(save) || proofs.mentoring) && onMentoringCommand &&
+              <button type="button" onClick={() => toggleCampaignRite("mentoring")} aria-expanded={activeRite === "mentoring"}>
+                {activeRite === "mentoring" ? "Replier le mentorat" : "Ouvrir le terrain du novice"}
+              </button>}
+            <p>{proofs.judgment ? "Le témoin a consigné le règlement du passage." : "Régler le désaccord du passage devant un témoin."}</p>
+            {(canJudgeElderPassage(save) || proofs.judgment) && onPassageCommand
+              ? <button type="button" onClick={() => toggleCampaignRite("passage")} aria-expanded={activeRite === "passage"}>
+                  {activeRite === "passage" ? "Replier le dossier du passage" : "Ouvrir le dossier du passage"}
+                </button>
+              : <p>Les actes Elder s’ouvrent à Elite avec 8 000 points d’honneur de carrière.</p>}
+            <p>{save.elderAssemblyV168?.responsibility
+              ? save.prologue && !save.elderAssemblyV168.generationHandover
+                ? "L’assemblée a consigné ton engagement. Remets le registre à la relève pour obtenir la reconnaissance Elder."
+                : "L’assemblée a consigné la reconnaissance Elder."
+              :
+              "L’assemblée examine les deux actes avant de proposer un engagement."}</p>
+            {(canConveneElderAssembly(save) || save.elderAssemblyV168?.responsibility) && onAssemblyCommand &&
+              <button type="button" onClick={() => toggleCampaignRite("assembly")} aria-expanded={activeRite === "assembly"}>
+                {activeRite === "assembly" ? "Replier l’assemblée" : "Ouvrir l’assemblée des aînés"}
+              </button>}
+          </li>
+        </ol>
+      </section>
+      {activeRite === "elite-clan-rites" && onEliteRecognitionCommand && <EliteClanRites key={save.createdAt}
+        save={save} suspended={!!quatzaSuspended} onCommand={onEliteRecognitionCommand} onClose={closeCampaignRite}
+        onOpenRecognition={() => setCampaignRite("elite-recognition")} />}
+      {activeRite === "elite-recognition" && onEliteRecognitionCommand && <EliteRecognition key={save.createdAt}
+        save={save} onCommand={onEliteRecognitionCommand} onClose={closeCampaignRite}
+        onOpenTrials={() => setCampaignRite("elite-clan-rites")} />}
+      {activeRite === "blooded-temple" && onBloodedTempleCommand && <BloodedTempleV174 key={save.createdAt}
+        save={save} onCommand={onBloodedTempleCommand} onClose={closeCampaignRite} suspended={!!quatzaSuspended} />}
+      {(activeRite === "quatza-triad" || activeRite === "quatza-solo") && onQuatzaCommand &&
+        <QuatzaRijScene key={save.createdAt + ':' + activeRite} mode={activeRite === "quatza-triad" ? "triad" : "solo"}
+          save={save} onCommand={onQuatzaCommand} suspended={quatzaSuspended} />}
+      {activeRite === "mastery" && onMasteryCommand && <EliteMastery key={save.createdAt}
+        save={save} onCommand={onMasteryCommand} onClose={closeCampaignRite} />}
+      {activeRite === "mentoring" && onMentoringCommand && <ElderMentoring key={save.createdAt}
+        save={save} onCommand={onMentoringCommand} onClose={closeCampaignRite} />}
+      {activeRite === "passage" && onPassageCommand && <ElderPassageJudgment key={save.createdAt} owner={save.createdAt}
+        saved={save.elderPassageJudgmentV168} onCommand={onPassageCommand} onClose={closeCampaignRite} />}
+      {activeRite === "assembly" && onAssemblyCommand && <ElderAssembly key={save.createdAt}
+        save={save} onCommand={onAssemblyCommand} onClose={closeCampaignRite} />}
+      <h3 className={styles.subheading}>Reconnaissances enregistrées dans la chronique</h3>
       <ol className={styles.rites}>
-        {CHRONICLE_RITES.map(rite => {
+        {CHRONICLE_RITES.filter(rite => rite.id === "nursery-recognition" || rite.id === "unguided-hunt-recognition" ||
+          chronicle.rites.some(receipt => receipt.id === rite.id)).map(rite => {
           const evaluation = evaluateChroniclePromotion(chronicle, rite.id);
           return <li key={rite.id} data-chronicle-rite={rite.id}>
             <span className={styles.badge}>{chronicle.rites.some(receipt => receipt.id === rite.id) ? "Rite enregistré" : rite.id === "nursery-recognition" ? "Duel et titre à achever" : "Mission à produire"}</span>
-            <h4>{rite.grantsRankId ? CHRONICLE_RANK_LABELS[rite.grantsRankId] : "Adjutant · fonction de second de chasse"}</h4>
+            <h4>{rite.id === "unguided-hunt-recognition" ? "Reconnaissance locale de la cohorte" :
+              rite.grantsRankId ? CHRONICLE_RANK_LABELS[rite.grantsRankId] : "Adjutant · fonction de second de chasse"}</h4>
             <p>{rite.label}</p>
             <details><summary>Conditions du parcours narratif</summary><ul>{evaluation.missing.map(item => <li key={item.id}>{item.label}</li>)}</ul></details>
           </li>;
         })}
       </ol>
       <div className={styles.cards}>
-        <article tabIndex={0}><h3>Le premier vaisseau</h3><p>Remise après le rite Blooded. Avant cela, vie sur la planète mère et transports du clan. Quatza-Rij à trois, puis pyramide changeante à trois sans armes à énergie.</p></article>
+        <article tabIndex={0}><h3>Le premier vaisseau</h3><p>Remise après le rite Blooded. Avant cela, vie sur la planète mère et transports du clan. La triade retrouve ses armes à plasma dans la pyramide.</p></article>
         <article tabIndex={0}><h3>Warp Universe</h3><p>Expérience sur plusieurs mondes, nomination Adjutant, quête et installation du module. Les seuils chiffrés proposés restent à équilibrer ; l’honneur seul n’ouvre pas le portail.</p></article>
         <article tabIndex={0}><h3>Compagnons</h3><p>Rencontrer, recruter puis affecter. Aucun occupant ni compartiment gratuit à bord. Une affectation demande un vaisseau réel et un réaménagement au port ; un allié déployé n’est pas présent simultanément dans sa cabine.</p></article>
       </div>

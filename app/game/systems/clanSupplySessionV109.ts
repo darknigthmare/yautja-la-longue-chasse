@@ -1,5 +1,7 @@
 import {DEFAULT_WAR_RULES_V6, type WarRulesV6} from './clanWarBibleV6';
 import type {LogisticsLockV108, LogisticsStorageV108} from './clanLogisticsSessionV108';
+import {logisticsFunctionalV108} from './clanLogisticsV108';
+import {withW3S18RoutePost, type W3S18RoutePost} from './w3S18RoutePost';
 import {CLAN_SUPPLY_KEY_V109, CLAN_SUPPLY_MAX_BYTES_V109, applySupplyV109, createSupplyV109,
   exportSupplyV109, importSupplyV109, migrateSupplyArchiveV109, supplyCommandV109,
   type SupplyActionV109, type SupplyStateV109} from './clanSupplyRouteV109';
@@ -56,11 +58,36 @@ export function createSupplySessionV109(storage:LogisticsStorageV108|null,lock:L
     if(state.originalV108Archive!==null&&parsed.state.originalV108Archive!==state.originalV108Archive)throw Error('Ce carnet ne conserve pas la même archive V108 originale ; import refusé sans mutation.');
     await commit(parsed.state);message='Carnet de tournée repris exactement ; déplacements et médias arrêtés.';
   });}
+  function resume(){return queue(async()=>{
+    if(!loaded||!blocked||!storage||!lock)throw Error('Carnet non disponible pour la relecture.');
+    await lock(async()=>{
+      const bytes=storage.getItem(CLAN_SUPPLY_KEY_V109);
+      if(bytes===null)throw Error('Archive absente ; le dernier état confirmé reste conservé.');
+      const parsed=importSupplyV109(bytes,rules);
+      if(!parsed.state)throw Error(parsed.error??'Carnet incompatible.');
+      const original=state?.originalV108Archive;
+      if(original!=null&&parsed.state.originalV108Archive!==original)throw Error('L’archive V108 d’origine a changé ; dernier état confirmé conservé.');
+      observed=bytes;state=parsed.state;migrationPending=false;blocked=false;
+      message='Archive confirmée relue ; le trajet, les groupes et les stocks sont repris exactement.';
+    });
+  });}
+  async function withConfirmedW3S18Post<T>(operation:(post:W3S18RoutePost)=>T):Promise<T>{
+    if(!storage||!lock)throw Error('Le verrou du carnet n’est pas disponible.');
+    return lock(()=>{
+      if(!loaded||blocked||migrationPending||pending||!state||observed===null)
+        throw Error('Confirmez d’abord le carnet du convoi.');
+      if(storage.getItem(CLAN_SUPPLY_KEY_V109)!==observed)
+        throw Error('Le carnet a changé dans une autre session ; relisez-le avant le départ.');
+      if(!logisticsFunctionalV108(state.convoy,'W3-S18')||!state.convoy.shuttle.recon)
+        throw Error('Reconnaissez l’escale à pied et maintenez son opérateur ravitaillé au poste.');
+      return withW3S18RoutePost(state.convoy.sourceSha,state.revision,operation);
+    });
+  }
   function externalChange(){
     if(!loaded||!storage)return;
-    try{if(storage.getItem(CLAN_SUPPLY_KEY_V109)!==observed){blocked=true;message='Archive modifiée ailleurs : rechargez avant tout nouveau geste.';emit();}}
+    try{if(storage.getItem(CLAN_SUPPLY_KEY_V109)!==observed){blocked=true;message='Archive modifiée ailleurs : relisez le carnet confirmé avant de poursuivre.';emit();}}
     catch{blocked=true;message='Archive illisible ; checkpoint confirmé conservé.';emit();}
   }
-  return {hydrate,act,importText,retryMigration,externalChange,whenSettled:()=>serial,getObservedText:()=>observed,
+  return {hydrate,act,importText,retryMigration,resume,externalChange,withConfirmedW3S18Post,whenSettled:()=>serial,getObservedText:()=>observed,
     getSnapshot:()=>current,getServerSnapshot:()=>current,subscribe:(listener:()=>void)=>{listeners.add(listener);return()=>{listeners.delete(listener);};}};
 }

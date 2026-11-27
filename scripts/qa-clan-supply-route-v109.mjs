@@ -9,16 +9,18 @@ import {build} from 'esbuild';
 import {chromium} from 'playwright-core';
 import {prepareLegacySupplyFixtureV109} from '../tests/helpers/clan-supply-route-v109-fixture.mjs';
 const mode=process.env.YAUTJA_QA_MODE??'compiled-app',runtimeCommit=process.env.YAUTJA_QA_RUNTIME_COMMIT??null,buildId=process.env.YAUTJA_QA_BUILD_ID??null;
+const scenario=process.env.YAUTJA_LOGISTICS_V108_QA_SCENARIO??'full';
 assert.ok(['compiled-app','development','isolated-component'].includes(mode));
+assert.ok(['full','storage-recovery'].includes(scenario));
 if(mode==='compiled-app'){assert.match(runtimeCommit??'',/^[a-f0-9]{40}$/);assert.ok(buildId);}
 const output=path.resolve(process.env.YAUTJA_CLAN_SUPPLY_V109_OUTPUT??'outputs/qa-v109-clan-supply');await fs.mkdir(output,{recursive:true});
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const bundled=await build({stdin:{contents:"export * from './app/game/systems/clanLogisticsV108';export * from './app/game/systems/clanSupplyRouteV109';",resolveDir:process.cwd()},bundle:true,write:false,format:'esm',platform:'node',target:'es2022',logLevel:'silent'});
 const api=await import('data:text/javascript;base64,'+Buffer.from(bundled.outputFiles[0].text).toString('base64'));
-const fixture=prepareLegacySupplyFixtureV109(api,{overlappedMounts:true}),key=api.CLAN_SUPPLY_KEY_V109;
+const fixture=scenario==='full'?prepareLegacySupplyFixtureV109(api,{overlappedMounts:true}):null,key=api.CLAN_SUPPLY_KEY_V109;
 const paths=['scripts/qa-clan-supply-route-v109.mjs','tests/helpers/clan-supply-route-v109-fixture.mjs','app/game/ClanSupplyRouteV109.tsx','app/game/ClanSupplyRouteV109.module.css','app/game/ClanLogisticsV108.module.css','app/game/ClanWarBibleV6Panel.tsx','app/game/ClanWarSpecializedV107.tsx','app/game/systems/clanSupplyRouteV109.ts','app/game/systems/clanSupplySessionV109.ts','app/game/systems/clanLogisticsV108.ts','app/game/systems/clanLogisticsSessionV108.ts','app/game/systems/clanWarSpecializedV107.ts','app/game/systems/clanWarBibleV6.ts','app/game/clanWarBibleV6Source.json','public/game/homeworld/v77/lava-transit-skiff.png','public/game/homeworld/v77/fauna/yautja-horse-corrected.png','public/game/homeworld/v64/clan-shuttle.png','public/audio/ambience/ship/v54.wav','public/audio/sfx/scan/v54.wav',...(mode==='isolated-component'?['tests/browser/clan-supply-route-v109.fixture.tsx']:[])];
 const snapshot=()=>Promise.all(paths.map(async file=>{const bytes=await fs.readFile(file);return {file,sha256:sha(bytes),bytes:bytes.length};}));
-const sourceBefore=await snapshot(),checks=[],captures=[],errors=[],servedBuilds=[],fixtures=[{kind:'model-prepared-legacy-checkpoint',description:fixture.description,originalArchive:fixture.archive,sha256:sha(fixture.archive),bytes:Buffer.byteLength(fixture.archive),constructionsEarnedInThisBrowser:0}];
+const sourceBefore=await snapshot(),checks=[],captures=[],errors=[],servedBuilds=[],fixtures=fixture?[{kind:'model-prepared-legacy-checkpoint',description:fixture.description,originalArchive:fixture.archive,sha256:sha(fixture.archive),bytes:Buffer.byteLength(fixture.archive),constructionsEarnedInThisBrowser:0}]:[];
 let server,browser,failure,finalState,baseUrl=process.env.YAUTJA_QA_BASE_URL??'http://127.0.0.1:3101';
 if(mode==='isolated-component'){
  const compiled=await build({entryPoints:['tests/browser/clan-supply-route-v109.fixture.tsx'],bundle:true,write:false,outdir:'outputs/qa-v109-supply-component',format:'esm',platform:'browser',jsx:'automatic',define:{'process.env.NODE_ENV':'"production"'},logLevel:'silent'});
@@ -35,7 +37,7 @@ if(mode==='isolated-component'){
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));baseUrl='http://127.0.0.1:'+server.address().port;
 }
 assert.ok(['localhost','127.0.0.1'].includes(new URL(baseUrl).hostname));
-const check=(name,value,detail)=>{checks.push({name,status:value?'PASS':'FAIL',...(detail===undefined?{}:{detail})});console.log((value?'PASS ':'FAIL ')+name);assert.ok(value,name);};
+const check=(name,value,detail)=>{checks.push({name,status:value?'PASS':'FAIL',...(detail===undefined?{}:{detail})});console.log((value?'PASS ':'FAIL ')+name);if(!value&&detail!==undefined)console.error(JSON.stringify(detail));assert.ok(value,name);};
 const root=page=>page.locator('[data-logistics-v109]');
 const state=page=>page.evaluate(key=>{const text=localStorage.getItem(key);return text?JSON.parse(text):null;},key);
 async function settled(page){await page.waitForFunction(()=>{const root=document.querySelector('[data-logistics-v109]');return root&&!root.querySelector('[role="status"]')?.textContent.includes('Confirmation en cours');});}
@@ -43,7 +45,14 @@ async function click(page,label){await root(page).getByRole('button',{name:label
 async function send(page,label){const before=Number(await root(page).getAttribute('data-revision'));await click(page,label);const after=Number(await root(page).getAttribute('data-revision'));assert.ok(after>before,`${label}: ${await root(page).getByRole('status').innerText()}`);}
 async function enter(page){
  const response=await page.goto(baseUrl,{waitUntil:'domcontentloaded',timeout:120000});assert.ok(response?.ok());const html=await response.text();servedBuilds.push({status:response.status(),expectedBuildId:buildId,foundInHtml:buildId?html.includes(buildId):null,htmlSha256:sha(html)});if(buildId)check('Served compiled HTML identifies the common build',html.includes(buildId));
- if(mode!=='isolated-component'){await page.getByRole('button',{name:/^Guerres des clans/}).click();await page.getByRole('button',{name:'Accéder malgré les spoilers',exact:true}).click();await page.getByRole('button',{name:'Bible V6 · règles actuelles',exact:true}).click();await page.getByRole('button',{name:'Convoi des six ouvrages',exact:true}).click();}
+ if(mode!=='isolated-component'){
+  await page.locator('button[data-menu-section="modes"]').click();
+  await page.getByRole('button',{name:/^Guerres des clans/}).click();
+  await page.getByRole('button',{name:'Accéder malgré les spoilers',exact:true}).click();
+  await page.getByRole('button',{name:'Bible V6 · règles actuelles',exact:true}).click();
+  await page.locator('button[data-war-tool-group="forces"]').click();
+  await page.getByRole('button',{name:'Convoi des six ouvrages',exact:true}).click();
+ }
  await root(page).waitFor();await settled(page);
 }
 async function select(page,id){await root(page).getByRole('combobox',{name:/^Équipe contrôlée/}).selectOption(id);}
@@ -58,10 +67,119 @@ async function choose(page,id){await root(page).getByRole('button',{name:new Reg
 async function capture(page,file,locator=root(page).getByRole('group',{name:'Terrain logistique jouable'})){
  await locator.scrollIntoViewIfNeeded();await root(page).locator('svg').evaluate(async svg=>{await Promise.all([...svg.querySelectorAll('image')].map(node=>new Promise((resolve,reject)=>{const image=new Image();image.onload=resolve;image.onerror=reject;image.src=node.getAttribute('href');})));});await locator.screenshot({path:path.join(output,file)});const bytes=await fs.readFile(path.join(output,file));captures.push({file,sha256:sha(bytes),bytes:bytes.length});
 }
+async function playStorageRecovery(page,context){
+ await enter(page);
+ const campaignBefore=await page.evaluate(k=>JSON.stringify(Object.fromEntries(Object.entries(localStorage).filter(([name])=>name!==k))),key);
+ assert.equal(await state(page),null,'Start from the actual blank exercise, without an injected archive.');
+ const op='operator:W3-S09';
+ for(const id of ['carrier',op]){await select(page,id);await send(page,'Recruter cette équipe');}
+ for(let i=0;i<3;i++)await send(page,'Avancer un tour et payer l’entretien');
+ for(const [id,amount] of [[op,6],['carrier',20]]){
+  await select(page,id);
+  await root(page).getByRole('combobox',{name:/^Stock à rejoindre/}).selectOption('depot');
+  await send(page,`Prendre ${amount} RAV`);
+ }
+ await send(page,'Réserver le kit au dépôt');
+ await send(page,'Charger ce kit avec U19');
+ await click(page,'Marcher vers ce chantier');
+ await page.waitForFunction(()=>{const actor=document.querySelector('[data-logistics-actor="carrier"]');return Math.hypot(Number(actor.dataset.x)-350,Number(actor.dataset.y)-300)<4.5;});
+ await click(page,'Stopper le déplacement');
+ await send(page,'Livrer ce kit au chantier');
+ await root(page).getByRole('combobox',{name:/^Stock à rejoindre/}).selectOption('W3-S09');
+ await send(page,'Déposer la charge (20)');
+ await root(page).getByRole('combobox',{name:/^Stock à rejoindre/}).selectOption('boat');
+ await click(page,'Marcher vers ce stock');
+ await page.waitForFunction(()=>{const actor=document.querySelector('[data-logistics-actor="carrier"]');return Math.hypot(Number(actor.dataset.x)-362,Number(actor.dataset.y)-328)<4.5;});
+ await click(page,'Stopper le déplacement');
+ await walk(page,op,343,302);
+ const terrain=root(page).getByRole('group',{name:'Terrain logistique jouable'});
+ const terrainKeys=await terrain.getAttribute('aria-keyshortcuts');
+ const terrainHelp=await terrain.evaluate(node=>document.getElementById(node.getAttribute('aria-describedby'))?.textContent);
+ const pad=root(page).getByRole('group',{name:'Commandes de déplacement'});
+ const padButtons=await pad.getByRole('button').all();
+ const padRects=await Promise.all(padButtons.map(button=>button.boundingBox()));
+ check('The map exposes four keyboard shortcuts, focused instructions and five 44-pixel movement targets',
+  terrainKeys==='ArrowUp ArrowDown ArrowLeft ArrowRight'&&terrainHelp?.includes('focus clavier')&&
+  padRects.length===5&&padRects.every(rect=>rect&&rect.width>=44&&rect.height>=44)&&
+  await pad.getByRole('button',{name:'Arrêter le déplacement',exact:true}).count()===1);
+ const beforeKeys=await state(page);
+ for(const modifier of ['Control','Alt','Meta','Shift'])await terrain.press(`${modifier}+ArrowRight`);
+ await terrain.dispatchEvent('keydown',{key:'ArrowRight',code:'ArrowRight',isComposing:true});
+ await settled(page);
+ check('Modified arrows and composition leave the confirmed archive untouched',JSON.stringify(await state(page))===JSON.stringify(beforeKeys));
+ await terrain.press('ArrowRight');
+ await page.waitForFunction(revision=>Number(document.querySelector('[data-logistics-v109]')?.dataset.revision)>revision,beforeKeys.revision);
+ await settled(page);
+ const afterKey=await state(page),operatorBefore=api.logisticsActorV108(beforeKeys.convoy,op);
+ const operatorAfter=api.logisticsActorV108(afterKey.convoy,op);
+ check('One plain arrow moves only the focused selected team by one step',afterKey.revision===beforeKeys.revision+1&&
+  operatorAfter.x===operatorBefore.x+18&&operatorAfter.y===operatorBefore.y&&
+  await terrain.evaluate(node=>node===document.activeElement));
+ const westButton=pad.getByRole('button',{name:'Marcher ouest',exact:true});
+ await westButton.click();
+ await page.waitForFunction(revision=>Number(document.querySelector('[data-logistics-v109]')?.dataset.revision)>revision,afterKey.revision);
+ await settled(page);
+ const afterTap=await state(page);
+ check('A native pointer tap moves the selected team by exactly one step',afterTap.revision===afterKey.revision+1&&
+  api.logisticsActorV108(afterTap.convoy,op).x===operatorBefore.x);
+ await westButton.dispatchEvent('click',{detail:1});
+ await settled(page);
+ check('The pointer compatibility click cannot add a release step',JSON.stringify(await state(page))===JSON.stringify(afterTap));
+ await pad.getByRole('button',{name:'Marcher est',exact:true}).press('Enter');
+ await page.waitForFunction(revision=>Number(document.querySelector('[data-logistics-v109]')?.dataset.revision)>revision,afterTap.revision);
+ await settled(page);
+ check('The movement pad still activates on Enter with exactly one step',(await state(page)).revision===afterTap.revision+1&&
+  api.logisticsActorV108((await state(page)).convoy,op).x===operatorAfter.x);
+ await terrain.focus();
+ await send(page,'Poser l’appui gauche');
+ for(let i=0;i<3;i++){await terrain.press('ArrowRight');await settled(page);}
+ await send(page,'Poser l’appui droit');
+ for(let i=0;i<3;i++)await send(page,'Travailler un tour réel');
+ await send(page,'Prendre le service');
+ check('The W3-S09 quay is constructed with the delivered kit and the two physical supports',api.logisticsFunctionalV108((await state(page)).convoy,'W3-S09'));
+ await send(page,'Embarquer les mêmes U19');
+ while((await state(page)).convoy.turn%4>1)await send(page,'Avancer un tour et payer l’entretien');
+ await send(page,'Partir sur le chenal');
+ for(let i=0;i<6;i++)await send(page,'Avancer le skiff');
+ const before=await state(page),second=await context.newPage();
+ try{
+  second.setDefaultTimeout(30000);
+  second.on('pageerror',error=>errors.push(String(error)));
+  second.on('console',entry=>{if(entry.type()==='error')errors.push([entry.text(),entry.location().url].filter(Boolean).join(' · '));});second.on('response',response=>{if(response.status()>=400)errors.push('HTTP '+response.status()+' '+response.url());});
+  await enter(second);
+  check('The second tab opens the exact mid-channel revision',Number(await root(second).getAttribute('data-revision'))===before.revision&&before.convoy.boat.progress===6);
+  await click(second,'Débarquer les porteurs');
+  check('Disembarkation mid-channel refuses without changing the whole archive',/Arrivée effective/.test(await root(second).getByRole('status').innerText())&&JSON.stringify(await state(second))===JSON.stringify(before));
+  await send(second,'Avancer le skiff');
+  const winner=await state(second),bytes=await second.evaluate(k=>localStorage.getItem(k),key);
+  await root(page).getByRole('button',{name:'Relire le carnet confirmé',exact:true}).waitFor();
+  check('The stale tab keeps its original view and cannot issue another order',Number(await root(page).getAttribute('data-revision'))===before.revision&&await root(page).getByRole('button',{name:'Avancer le skiff',exact:true}).isDisabled());
+  await page.bringToFront();
+  const staleMessage=await root(page).getByRole('status').innerText();
+  await terrain.press('ArrowRight');
+  await settled(page);
+  check('An arrow in the stale tab keeps the durable bytes and reload instruction intact',
+   staleMessage===await root(page).getByRole('status').innerText()&&
+   bytes===await page.evaluate(k=>localStorage.getItem(k),key));
+  await click(page,'Relire le carnet confirmé');
+  check('The same confirmed position, manifest, and stock are reread without rewriting',winner.convoy.boat.progress===7&&Number(await root(page).getAttribute('data-revision'))===winner.revision&&await page.evaluate(k=>localStorage.getItem(k),key)===bytes);
+ }finally{await second.close();await page.bringToFront();}
+ for(let i=7;i<12;i++)await send(page,'Avancer le skiff');
+ await send(page,'Débarquer les porteurs');
+ const arrived=await state(page),a=arrived.convoy,b=before.convoy;
+ check('Same U19 members, hull and civil pilot reach the east bank with a conserved ledger',a.boat.id===b.boat.id&&a.boat.pilotId===b.boat.pilotId&&a.boat.phase==='east'&&a.boat.trip===b.boat.trip&&a.actors[0].x===590&&JSON.stringify(a.actors[0].members)===JSON.stringify(b.actors[0].members)&&a.boat.cargo<=b.boat.cargo&&api.supplyConservationV109(arrived));
+ check('Campaign and historical archive keys do not change',await page.evaluate(k=>JSON.stringify(Object.fromEntries(Object.entries(localStorage).filter(([name])=>name!==k))),key)===campaignBefore);
+ await capture(page,'same-skiff-confirmed-after-two-tabs.png');
+ return arrived;
+}
 try{
  browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE_PATH??process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH??'/usr/bin/chromium',args:['--no-sandbox','--autoplay-policy=no-user-gesture-required']});
  const legacyBundle=await build({stdin:{contents:"export {createLogisticsSessionV108} from './app/game/systems/clanLogisticsSessionV108';",resolveDir:process.cwd()},bundle:true,write:false,format:'iife',globalName:'__legacySupplyQaV109',platform:'browser',target:'es2022',logLevel:'silent'});
- const context=await browser.newContext({viewport:{width:1440,height:1080},reducedMotion:'reduce',acceptDownloads:true}),page=await context.newPage();page.setDefaultTimeout(30000);page.on('pageerror',error=>errors.push(String(error)));page.on('console',entry=>{if(entry.type()==='error')errors.push(entry.text());});
+ const context=await browser.newContext({viewport:{width:1440,height:1080},reducedMotion:'reduce',acceptDownloads:true}),page=await context.newPage();page.setDefaultTimeout(30000);page.on('pageerror',error=>errors.push(String(error)));page.on('console',entry=>{if(entry.type()==='error')errors.push([entry.text(),entry.location().url].filter(Boolean).join(' · '));});page.on('response',response=>{if(response.status()>=400)errors.push('HTTP '+response.status()+' '+response.url());});
+ if(scenario==='storage-recovery'){
+  finalState=await playStorageRecovery(page,context);
+  check('No JavaScript or console error occurred',errors.length===0,errors);
+ }else{
  await context.addInitScript(({key,archive})=>{if(window.name==='supply-v109-migration-confirmed')return;if(!localStorage.getItem(key))localStorage.setItem(key,archive);window.__supplyOriginalSetItem=Storage.prototype.setItem;Storage.prototype.setItem=function(k,value){if(k===key)throw new DOMException('V109 migration quota fixture','QuotaExceededError');return window.__supplyOriginalSetItem.call(this,k,value);};},{key,archive:fixture.archive});
  fixtures.push({kind:'migration-write-denial',scope:'Only the logistics setItem throws; the original accepted V108 fixture is unchanged. No route result or position is injected.'});
  await enter(page);const original=await page.evaluate(key=>localStorage.getItem(key),key),initialActor=await root(page).locator('[data-logistics-actor="carrier"]').getAttribute('data-x');
@@ -79,6 +197,25 @@ try{
  const campaignBefore=await page.evaluate(key=>JSON.stringify(Object.fromEntries(Object.entries(localStorage).filter(([k])=>k!==key))),key);
  const route=root(page).getByRole('region',{name:'Tournée de ravitaillement',exact:true});
  for(const id of ['W3-S09','W3-S10','W3-S13','W3-S14','W3-S15','W3-S18'])await route.locator(`[data-supply-plan-work="${id}"]`).check();
+ const draftStart=await state(page);
+ const draftOrder=route.getByRole('list',{name:'Ordre des livraisons',exact:true});
+ const firstDraftStop=draftOrder.locator('[data-supply-draft-stop="W3-S09"]');
+ const firstQuantity=route.getByRole('spinbutton').first();
+ const reserveButton=route.getByRole('button',{name:'Réserver la tournée dans ce stock',exact:true});
+ await firstQuantity.fill('');
+ check('An empty delivery amount disables reservation before any balance changes',await reserveButton.isDisabled());
+ await firstQuantity.fill('5');
+ await firstDraftStop.getByRole('button',{name:/^Descendre /}).press('Enter');
+ check('Keyboard reordering preserves delivery amount, focus and confirmed balances',
+  await draftOrder.getByRole('listitem').first().getAttribute('data-supply-draft-stop')==='W3-S10'&&
+  (await firstDraftStop.textContent())?.includes('5 RAV')&&
+  await firstDraftStop.getByRole('button',{name:/^Descendre /}).evaluate(button=>document.activeElement===button)&&
+  JSON.stringify(await state(page))===JSON.stringify(draftStart));
+ await firstDraftStop.getByRole('button',{name:/^Monter /}).press('Enter');
+ check('Moving to the route start keeps focus on the remaining available direction',
+  await draftOrder.getByRole('listitem').first().getAttribute('data-supply-draft-stop')==='W3-S09'&&
+  await firstDraftStop.getByRole('button',{name:/^Descendre /}).evaluate(button=>document.activeElement===button));
+ await firstQuantity.fill('2');
  const boatBefore=(await state(page)).convoy.boat.cargo;await send(page,'Réserver la tournée dans ce stock');check('Six stops reserve16 existing RAV without creating another stock',(await state(page)).route.stops.length===6&&api.supplyReservationV109((await state(page)).route)===16&&(await state(page)).convoy.boat.cargo===boatBefore);await capture(page,'02-reservation-in-existing-source.png');
  await root(page).getByRole('combobox',{name:/^Stock à rejoindre/}).selectOption('boat');await click(page,'Marcher vers ce stock');await page.waitForFunction(()=>{const n=document.querySelector('[data-logistics-actor="carrier"]');return Math.hypot(Number(n.dataset.x)-362,Number(n.dataset.y)-328)<3;});await click(page,'Stopper le déplacement');await send(page,'Charger ou reprendre le même lot');const loaded=await state(page);check('The native U19 physically load the exact lot and its four provisions',loaded.convoy.actors[0].rav===16&&loaded.convoy.boat.cargo===boatBefore-16&&loaded.route.holder==='carrier');await send(page,'Déposer la prochaine étape');
  await choose(page,'W3-S09');await send(page,'Embarquer les mêmes U19');while((await state(page)).convoy.turn%4>1)await send(page,'Avancer un tour et payer l’entretien');await send(page,'Partir sur le chenal');for(let i=0;i<7;i++)await send(page,'Avancer le skiff');
@@ -106,10 +243,11 @@ try{
  check('Mobile component has no page overflow and its actor selection targets reach44px',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)&&await root(page).locator('button').evaluateAll(buttons=>buttons.every(button=>button.getBoundingClientRect().height>=43.9)));
  check('Campaign and other historical storage bytes remain unchanged',await page.evaluate(key=>JSON.stringify(Object.fromEntries(Object.entries(localStorage).filter(([k])=>k!==key))),key)===campaignBefore);
  finalState=await state(page);check('Every native RAV remains accounted for and the old archive is still byte-exact',api.supplyConservationV109(finalState)&&finalState.originalV108Archive===fixture.archive);check('No JavaScript or console error occurred',errors.length===0,errors);
+ }
 }catch(error){failure=error;console.error(error?.stack??error);const page=browser?.contexts()[0]?.pages()[0];if(page){await page.screenshot({path:path.join(output,'failure.png'),fullPage:true}).catch(()=>{});await fs.writeFile(path.join(output,'failure-state.json'),JSON.stringify(await state(page).catch(()=>null),null,2));}}
 finally{
  const sourceAfter=await snapshot();if(JSON.stringify(sourceBefore)!==JSON.stringify(sourceAfter)){failure??=Error('Sources changed during the recipe');checks.push({name:'Source, driver and public bytes unchanged',status:'FAIL'});}else checks.push({name:'Source, driver and public bytes unchanged',status:'PASS'});
- const report={schemaVersion:1,status:failure?'FAIL':mode==='compiled-app'?'PASS':'PASS_EXPLORATORY',mode,runtimeCommit,buildId,baseUrl,production:{mode,runtimeCommit,buildId,browserErrors:errors.length,checksPassed:checks.filter(c=>c.status==='PASS').length,checksFailed:checks.filter(c=>c.status==='FAIL').length,servedBuilds},scope:'V109 physical supply route from an explicitly model-prepared V108 legacy front. The six constructions and prior mount care belong to that declared fixture. This browser earns the six ordered supply deliveries, same-hull water travel/reload, physical return, and separation of both legacy mounts; no campaign hull, territory mapping, resources, XP or new native art is awarded.',invocation:{command:'node scripts/qa-clan-supply-route-v109.mjs',nodeExecutable:process.execPath,nodeVersion:process.version,environment:{YAUTJA_QA_MODE:mode,YAUTJA_QA_BASE_URL:baseUrl,YAUTJA_QA_BUILD_ID:buildId,YAUTJA_QA_RUNTIME_COMMIT:runtimeCommit,YAUTJA_CLAN_SUPPLY_V109_OUTPUT:output}},servedBuilds,sourceBefore,sourceAfter,fixtures,checks,captures,errors,finalState:finalState?{revision:finalState.revision,turn:finalState.convoy.turn,route:finalState.route,completedRoutes:finalState.completedRoutes,mounts:finalState.convoy.mounts,conserved:api.supplyConservationV109(finalState)}:null,failure:failure?String(failure):null};
+ const report={schemaVersion:1,status:failure?'FAIL':mode==='compiled-app'?'PASS':'PASS_EXPLORATORY',mode,scenario,runtimeCommit,buildId,baseUrl,production:{mode,runtimeCommit,buildId,browserErrors:errors.length,checksPassed:checks.filter(c=>c.status==='PASS').length,checksFailed:checks.filter(c=>c.status==='FAIL').length,servedBuilds},scope:scenario==='storage-recovery'?'V109 live W3-S09 construction and same-hull trip: no starting archive, premature disembarkation refuted, and confirmed competing tab resumed without rewriting its archive.':'V109 physical supply route from an explicitly model-prepared V108 legacy front. The six constructions and prior mount care belong to that declared fixture. This browser earns the six ordered supply deliveries, same-hull water travel/reload, physical return, and separation of both legacy mounts; no campaign hull, territory mapping, resources, XP or new native art is awarded.',invocation:{command:'node scripts/qa-clan-supply-route-v109.mjs',nodeExecutable:process.execPath,nodeVersion:process.version,environment:{YAUTJA_QA_MODE:mode,YAUTJA_QA_BASE_URL:baseUrl,YAUTJA_QA_BUILD_ID:buildId,YAUTJA_QA_RUNTIME_COMMIT:runtimeCommit,YAUTJA_CLAN_SUPPLY_V109_OUTPUT:output}},servedBuilds,sourceBefore,sourceAfter,fixtures,checks,captures,errors,finalState:finalState?{revision:finalState.revision,turn:finalState.convoy.turn,route:finalState.route,completedRoutes:finalState.completedRoutes,mounts:finalState.convoy.mounts,conserved:api.supplyConservationV109(finalState)}:null,failure:failure?String(failure):null};
  await fs.writeFile(path.join(output,'result.json'),JSON.stringify(report,null,2)+'\n');await browser?.close();if(server)await new Promise(resolve=>server.close(resolve));
 }
 if(failure)process.exitCode=1;else console.log(JSON.stringify({status:mode==='compiled-app'?'PASS':'PASS_EXPLORATORY',checks:checks.length,captures:captures.length,output}));

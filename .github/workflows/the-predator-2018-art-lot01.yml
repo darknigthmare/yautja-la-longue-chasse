@@ -1,0 +1,82 @@
+name: The Predator 2018 candidate sprite integrity
+
+# Binary intake completed at 0eb53b308ce49c662258bb97f48b987c34b81f26.
+# Read-only: no remote art downloads, auto-commit, push or runtime activation.
+on:
+  pull_request:
+    paths:
+      - 'dlc/the-predator-2018/**'
+      - '.github/workflows/the-predator-2018-art-lot01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          lfs: false
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /dlc/the-predator-2018/
+            /docs/qa/current-integration-20261103/runtime-inputs.json
+            /.vercelignore
+            /tsconfig.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check 'Pillow==12.0.0'
+      - name: Verify original 63 files and 51 original v0.5 members
+        run: python dlc/the-predator-2018/tools/verify_recovery.py
+      - name: Verify four actual PNGs, two individual sprites and honest approval status
+        shell: python
+        run: |
+          import ast, hashlib, json, pathlib
+          from PIL import Image
+          root = pathlib.Path('dlc/the-predator-2018')
+          lot = root / 'production/art/lot-01'
+          manifest = json.loads((lot/'manifest.json').read_text())
+          assert len(manifest['files']) == 4
+          assert manifest['masterCount'] == manifest['individualSpriteCount'] == manifest['uniqueCharacters'] == 2
+          assert manifest['certifiedOneToOne'] is False
+          assert manifest['animationSetComplete'] is False
+          assert manifest['nativeIntegration'] is False
+          for name, expected in manifest['files'].items():
+              assert pathlib.Path(name).name == name
+              path = lot / name; assert path.is_file() and not path.is_symlink()
+              raw = path.read_bytes()
+              assert len(raw) == expected['bytes']
+              assert hashlib.sha256(raw).hexdigest() == expected['sha256']
+              assert hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest() == expected['gitBlobSha1']
+              with Image.open(path) as image:
+                  image.load()
+                  assert image.format == 'PNG' and image.mode == expected['mode'] == 'RGBA'
+                  assert list(image.size) == [expected['width'],expected['height']]
+                  assert list(image.getchannel('A').getextrema()) == expected['alphaRange']
+                  if expected['role'] == 'individual-candidate-sprite':
+                      assert image.getchannel('A').getbbox() == (24,24,image.width-24,image.height-24)
+          for sprite in manifest['sprites']:
+              assert sprite['frames'] == 1 and sprite['facing'] == 'right'
+              assert sprite['visualMatchApproved'] is False and sprite['runtimeIntegrated'] is False
+              assert sprite['productionStatus'] == 'draft-generated-not-approved'
+              assert sprite['file'] in manifest['files'] and sprite['source'] in manifest['files']
+          missing = json.loads((root/'production/missing-assets.json').read_text())
+          assert len(missing['priorityLot']) == 2
+          for asset in missing['priorityLot']:
+              assert asset['status'] == 'draft-generated-not-approved'
+              assert (root/'production'/asset['file']).is_file()
+          pinned = json.loads(pathlib.Path('docs/qa/current-integration-20261103/runtime-inputs.json').read_text())
+          by_path = {entry['path']: entry for entry in pinned['entries']}
+          assert len(by_path) == len(pinned['entries']) == pinned['files'], 'Runtime input inventory count or path uniqueness mismatch'
+          for name in ('.vercelignore','tsconfig.json'):
+              assert name in by_path, f'Runtime input absent from inventory: {name}'
+              entry = by_path[name]
+              raw = pathlib.Path(name).read_bytes()
+              assert entry['bytes'] == len(raw) and entry['sha256'] == hashlib.sha256(raw).hexdigest(), f'Runtime input pin mismatch: {name}'
+          for name in ('verify_recovery.py','run_recovery_qa.py'):
+              ast.parse((root/'tools'/name).read_text(),filename=name)
+          print('PASS: 63 recovered files, 51 unchanged v0.5 members, 4 decoded PNGs, 2 individual candidate sprites, 2 updated config inventory entries. No 1:1 or runtime integration certification.')

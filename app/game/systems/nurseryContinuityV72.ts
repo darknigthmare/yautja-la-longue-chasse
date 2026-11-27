@@ -78,13 +78,13 @@ export function enableNurseryContinuityV72(state: NurseryState): NurseryState {
   return { ...state, continuityV72: { version: 1, introPage: fresh ? 0 : 5, debriefPage: 0, journeyPage: 0, receptionPage: 0, recap: !fresh } };
 }
 export function nurseryContinuityPhaseV72(phase: NurseryPhase): boolean {
-  return phase === "debrief" || phase === "walkout" || phase === "journey" || phase === "reception" || phase === "clan-entry" || phase === "clan-departure";
+  return phase === "debrief" || phase === "cohort" || phase === "walkout" || phase === "journey" || phase === "reception" || phase === "clan-entry" || phase === "clan-departure";
 }
 export function nurseryContinuityMatchesPhaseV72(story: NurseryContinuityV72, phase: NurseryPhase): boolean {
   if (phase === "loading" || phase === "prompt") return story.introPage < 5 && story.debriefPage === 0 && story.journeyPage === 0 && story.receptionPage === 0;
   if (story.introPage !== 5) return false;
   if (phase === "debrief") return story.debriefPage < 2 && story.journeyPage === 0 && story.receptionPage === 0;
-  if (phase === "walkout") return story.debriefPage === 2 && story.journeyPage === 0 && story.receptionPage === 0 && !story.recap;
+  if (phase === "cohort" || phase === "walkout") return story.debriefPage === 2 && story.journeyPage === 0 && story.receptionPage === 0 && !story.recap;
   if (phase === "journey") return story.debriefPage === 2 && story.journeyPage < 2 && story.receptionPage === 0 && !story.recap;
   if (phase === "reception" || phase === "complete" || phase === "clan-entry" || phase === "clan-departure") return story.debriefPage === 2 && story.journeyPage === 2 && !story.recap &&
     (phase === "reception" ? story.receptionPage < 4 : phase === "clan-entry" ? story.receptionPage === 1 : story.receptionPage === 4);
@@ -96,8 +96,27 @@ export function nurseryStoryCardV72(state: NurseryState, hunterName = "Jeune du 
   if (story.recap) return { id: "legacy-resume-recap", chapter: "Reprendre l'épreuve", speaker: "Chronique du clan", title: "Le duel de la nurserie",
     text: "Tu incarnes un jeune du clan, dans un exercice surveillé et non létal. Le rival est un autre élève. La mise à terre met fin au duel ; le village et sa lune apparaissent ensuite. Ta reprise conserve exactement l'épreuve déjà jouée.",
     objective: state.winner === "player" ? "La victoire est acquise. Le débrief et le voyage vers la cité restent à suivre." : "Maîtriser le duel, puis écouter le maître avant de quitter le village.", button: "Reprendre la scène sauvegardée" };
-  if (state.phase === "prompt") return intro[story.introPage] ?? null;
-  if (state.phase === "debrief") return debrief[story.debriefPage] ?? null;
+  if (state.phase === "prompt") {
+    const card = intro[story.introPage];
+    if (state.opening && card?.id === "born-in-clan") return {
+      ...card, objective: "Suis Saar au passage de service, puis retrouve les autres jeunes pour l’exercice surveillé.",
+    };
+    if (state.opening && card?.id === "duel-consent") return {
+      ...card, text: "« Accompagne d’abord la bête d’exercice jusqu’au filet. Pour le duel qui suivra, tu n’entreras dans le cercle qu’après avoir levé le bras. »",
+      objective: "Rejoins Saar et la cohorte près du passage de service.", button: "Rejoindre Saar dans la cour",
+    };
+    return card ?? null;
+  }
+  if (state.phase === "debrief") {
+    const card = debrief[story.debriefPage];
+    if (state.cohortV172 && card?.id === "rival-recovery") return {
+      ...card, chapter: "Retour vers la cour",
+      text: "« Tu m’as pris mes appuis. Je retiendrai la leçon. » Le rival a repris ses forces sous la surveillance du maître. Dehors, Saar a réuni la cohorte autour du filet.",
+      objective: "Rejoindre les autres et remettre la cour en ordre.",
+      button: "Rejoindre la cour",
+    };
+    return card ?? null;
+  }
   if (state.phase === "journey") return journey[story.journeyPage] ?? null;
   if (state.phase === "reception") {
     const name = hunterName.trim().slice(0, 40) || "Jeune du clan";

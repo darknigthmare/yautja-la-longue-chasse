@@ -15,15 +15,15 @@ const server=createServer((req,res)=>{
  if(req.url==='/fixture.js'){res.writeHead(200,{'Content-Type':'text/javascript; charset=utf-8'});res.end(js);}
  else if(req.url==='/fixture.css'){res.writeHead(200,{'Content-Type':'text/css; charset=utf-8'});res.end(css);}
  else if(req.url.startsWith('/game/')){res.writeHead(200,{'Content-Type':'image/png'});res.end(pixel);}
- else if(req.url==='/'){res.writeHead(200,{'Content-Type':'text/html; charset=utf-8'});res.end('<!doctype html><html lang="fr"><meta charset="utf-8"><title>Ship training QA</title><link rel="stylesheet" href="/fixture.css"><body><div id="root"></div><script type="module" src="/fixture.js"></script></body></html>');}
+ else if(req.url==='/'||req.url==='/?clan-plasma=1'){res.writeHead(200,{'Content-Type':'text/html; charset=utf-8'});res.end('<!doctype html><html lang="fr"><meta charset="utf-8"><title>Ship training QA</title><link rel="stylesheet" href="/fixture.css"><body><div id="root"></div><script type="module" src="/fixture.js"></script></body></html>');}
  else{res.writeHead(404);res.end();}
 });
 let browser;const results=[],errors=[];
 try{
  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});const origin=`http://127.0.0.1:${server.address().port}`;
  browser=await chromium.launch({...process.env.AUDIT_CHROME_EXECUTABLE?{executablePath:process.env.AUDIT_CHROME_EXECUTABLE}:process.env.AUDIT_CHROME_CHANNEL?{channel:process.env.AUDIT_CHROME_CHANNEL}:{},headless:true});
- async function scenario(name,run){const context=await browser.newContext({viewport:{width:1100,height:1000}});await context.route('**/*',r=>new URL(r.request().url()).origin===origin?r.continue():r.abort());const page=await context.newPage();page.setDefaultTimeout(7000);page.on('pageerror',e=>errors.push(e.message));
-  try{await page.goto(origin);await page.bringToFront();await page.waitForFunction(()=>window.__shipQa?.adopted.length>0);await page.getByRole('button',{name:/Ciblage/}).waitFor();await page.waitForFunction(()=>![...document.querySelectorAll("button")].find(b=>b.textContent.includes("Ciblage"))?.disabled);await run(page);results.push({name,status:'PASS'});console.log('PASS '+name);}
+ async function scenario(name,run,search=''){const context=await browser.newContext({viewport:{width:1100,height:1000}});await context.route('**/*',r=>new URL(r.request().url()).origin===origin?r.continue():r.abort());const page=await context.newPage();page.setDefaultTimeout(7000);page.on('pageerror',e=>errors.push(e.message));
+  try{await page.goto(origin+search);await page.bringToFront();await page.waitForFunction(()=>window.__shipQa?.adopted.length>0);await page.getByRole('button',{name:/Ciblage/}).waitFor();await page.waitForFunction(()=>![...document.querySelectorAll("button")].find(b=>b.textContent.includes("Ciblage"))?.disabled);await run(page);results.push({name,status:'PASS'});console.log('PASS '+name);}
   catch(e){results.push({name,status:'FAIL',error:String(e)});console.error('FAIL '+name+': '+e);}
   finally{await context.close();}}
  const paint=page=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
@@ -89,6 +89,84 @@ try{
 
  const backup=page=>page.evaluate(()=>window.__shipQa.recovery().read(window.__shipQa.owner));
  const waitBackup=async page=>{await page.locator('[data-training-recovery]').filter({hasText:'Copie de secours du score confirmée'}).waitFor();assert.ok(await backup(page));};
+ await scenario('post-campaign plasma restraint records one ordinary training score after native recovery',async page=>{
+  const campaign=()=>page.evaluate(()=>localStorage.getItem(window.__shipQa.campaignKey));
+  const primary=await campaign(),before=await disk(page);
+  await open(page,'Préparation des rites · Plasma');
+  await page.getByRole('heading',{name:'Maîtrise du plasma',exact:true}).waitFor();
+  const answers={
+   'Cible d’exercice à gauche':'Recentrer à gauche',
+   'Cible d’exercice à droite':'Recentrer à droite',
+   'Cible d’exercice alignée':'Tirer au plasma',
+   'Silhouette protégée en ligne de tir':'Retenir le tir',
+  };
+  const controls=page.getByRole('group',{name:'Commandes tactiles'});
+  const cueLabel=page.locator('[aria-label="Commande actuelle"] strong').last();
+  let protectedCues=0;
+  for(let index=0;index<10;index++){
+   const cue=(await cueLabel.innerText()).trim(),answer=answers[cue];
+   assert.ok(answer,cue);
+   if(answer==='Retenir le tir')protectedCues++;
+   await controls.getByRole('button',{name:new RegExp('^'+answer)}).click();
+   await page.waitForFunction(percent=>Number(document.querySelector('[aria-label="Progression de l’épreuve"]')?.getAttribute('aria-valuenow'))>=percent,(index+1)*10);
+  }
+  assert.ok(protectedCues>0);
+  assert.match(await page.locator('.training-drill-panel').textContent(),/10\/10 réponses correctes/);
+  await page.evaluate(()=>window.__shipQa.fault('drop'));
+  await page.getByRole('button',{name:'Consigner le résultat',exact:true}).click();
+  await waitBackup(page);
+  const receipt=JSON.parse(await backup(page));
+  assert.equal(receipt.disciplineId,'targeting');
+  assert.equal((await disk(page)).training.targeting.attempts,before.training.targeting.attempts);
+  await page.reload();
+  await page.getByRole('button',{name:'Réessayer la sauvegarde du score',exact:true}).click();
+  await page.waitForFunction(attempts=>JSON.parse(localStorage.getItem(window.__shipQa.sidecarKey)).training.targeting.attempts===attempts,
+   before.training.targeting.attempts+1);
+  const after=await disk(page);
+  assert.equal(after.training.targeting.lastScore,receipt.score);
+  assert.equal(after.training.targeting.lastCompletedAt,receipt.completedAt);
+  assert.deepEqual(after.completedRiteIds,before.completedRiteIds);
+  assert.equal(await campaign(),primary);
+  assert.equal(await writes(page),1);
+ },'?clan-plasma=1');
+ await scenario('the clan hunt plays track, blades and plasma, then stores a dedicated record', async page => {
+  const before = await disk(page);
+  const campaign = () => page.evaluate(() => localStorage.getItem(window.__shipQa.campaignKey));
+  const primary = await campaign();
+  assert.equal(Object.hasOwn(before.training, 'clan-hunt'), false);
+  await open(page, 'Simulation de chasse du clan');
+  await page.getByRole('heading', {name: 'Simulation de chasse du clan', exact: true}).waitFor();
+
+  const phases = ['track', 'blades', 'plasma'];
+  const answers = [
+    'Suivre la piste à gauche', 'Écarter la trace', 'Marquer la trace', 'Suivre la piste à droite',
+    'Parer', 'Esquiver à gauche', 'Frapper aux lames', 'Parer',
+    'Recentrer à droite', 'Retenir le tir', 'Recentrer à gauche', 'Tirer au plasma',
+  ];
+  const panel = page.locator('.training-drill-panel');
+  const controls = page.getByRole('group', {name: 'Commandes tactiles'});
+  const cue = panel.locator('[data-clan-hunt-phase]');
+  for (const [index, name] of answers.entries()) {
+   assert.equal(await cue.getAttribute('data-clan-hunt-phase'), phases[Math.floor(index / 4)]);
+   await controls.getByRole('button', {name: new RegExp('^' + name)}).click();
+   const threshold = Math.round((index + 1) / answers.length * 100);
+   await page.waitForFunction(value => Number(document.querySelector('[aria-label="Progression de l’épreuve"]')?.getAttribute('aria-valuenow')) >= value, threshold);
+  }
+  assert.match(await panel.textContent(), /12\/12 réponses correctes/);
+  assert.equal(Object.hasOwn((await disk(page)).training, 'clan-hunt'), false);
+  await page.getByRole('button', {name: 'Consigner le résultat', exact: true}).click();
+  await page.waitForFunction(() => JSON.parse(localStorage.getItem(window.__shipQa.sidecarKey)).training['clan-hunt']?.attempts === 1);
+  const after = await disk(page);
+  assert.ok(after.training['clan-hunt'].lastScore >= 85);
+  assert.deepEqual(after.training.targeting, before.training.targeting);
+  assert.deepEqual(after.completedRiteIds, before.completedRiteIds);
+  assert.equal(await campaign(), primary);
+  assert.equal(await writes(page), 1);
+  await page.reload();
+  await page.getByRole('button', {name: /Simulation de chasse du clan/}).waitFor();
+  assert.deepEqual((await disk(page)).training['clan-hunt'], after.training['clan-hunt']);
+  assert.equal(await writes(page), 0);
+ }, '?clan-plasma=1');
  await scenario('a played pending score survives a full reload and saves exactly once on explicit recovery',async page=>{
   await open(page);await page.evaluate(()=>window.__shipQa.fault('drop'));await finish(page);await waitBackup(page);
   const saved=JSON.parse(await backup(page));assert.equal((await disk(page)).training.targeting.attempts,0);

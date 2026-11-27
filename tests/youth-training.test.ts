@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { build } from 'esbuild';
 import { fileURLToPath } from 'node:url';
+import { YOUTH_MEDICOMP, youthMedicompCharges } from '../app/game/systems/youthMedicompV172.ts';
 import type { YouthState, YouthInput, YouthEnvironment, YouthReceipt } from '../app/game/systems/youthTraining';
 const bundle = await build({ entryPoints: [fileURLToPath(new URL('../app/game/systems/youthTraining.ts', import.meta.url))], bundle: true, write: false, format: 'esm', platform: 'node', target: 'es2022' });
 const api = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].text).toString('base64')) as typeof import('../app/game/systems/youthTraining');
@@ -266,4 +267,177 @@ test('corrupted KO and embedded-wall checkpoints are rejected instead of loading
     const jump = reach('dojo-jump').state;
     jump.player.x = 470;
     assert.equal(api.normalizeYouthTraining(jump), null);
+});
+
+test('R2-M013 requires physical shelter, spends one dose and resumes both routes across reloading', () => {
+    const original = reach('barracks').state;
+    const walk = (s: YouthState, x: number) => {
+        s = tick(s);
+        for (let k = 0; k < 300 && Math.abs(s.player.x - x) >= 8; k++) s = tick(s, { move: dir(x - s.player.x) });
+        assert.ok(Math.abs(s.player.x - x) < 8);
+        return s;
+    };
+    const interact = (s: YouthState) => tick(tick(s), { interact: true });
+    const entered = interact(walk(original, YOUTH_MEDICOMP.kitX));
+    assert.equal(entered.medicompV172?.stage, 'cover');
+    assert.equal(youthMedicompCharges(entered.medicompV172!), 3);
+    assert.equal(interact(walk(entered, YOUTH_MEDICOMP.alcoveX)).medicompV172?.stage, 'cover', 'Cannot use the kit before closing the screen');
+    for (const prepare of [false, true]) {
+        let s = entered;
+        if (prepare) s = interact(walk(s, YOUTH_MEDICOMP.exitX));
+        s = interact(walk(s, YOUTH_MEDICOMP.screenX));
+        assert.equal(s.medicompV172?.stage, 'ready');
+        s = interact(walk(s, YOUTH_MEDICOMP.alcoveX));
+        assert.equal(s.medicompV172?.stage, 'treating');
+        assert.equal(youthMedicompCharges(s.medicompV172!), 2);
+        s = advance(s, 10);
+        s = tick(s, { move: -1 });
+        assert.equal(s.medicompV172?.stage, 'resume');
+        assert.equal(s.medicompV172?.treatedTicks, 10);
+        s = api.normalizeYouthTraining(JSON.parse(JSON.stringify(s)))!;
+        assert.equal(youthMedicompCharges(s.medicompV172!), 2);
+        s = interact(walk(s, YOUTH_MEDICOMP.alcoveX));
+        s = advance(s, YOUTH_MEDICOMP.alertTick - 10);
+        assert.equal(s.medicompV172?.stage, 'alert');
+        s = api.normalizeYouthTraining(JSON.parse(JSON.stringify(s)))!;
+        if (!prepare) {
+            assert.equal(interact(s).medicompV172?.stage, 'alert', 'An unchecked exit must be visited');
+            s = interact(walk(s, YOUTH_MEDICOMP.exitX));
+        } else {
+            s = interact(s);
+        }
+        assert.equal(s.medicompV172?.route, prepare ? 'prepared' : 'reactive');
+        s = interact(walk(s, YOUTH_MEDICOMP.alcoveX));
+        s = advance(s, YOUTH_MEDICOMP.duration - YOUTH_MEDICOMP.alertTick);
+        assert.equal(s.medicompV172?.stage, 'complete');
+        assert.equal(youthMedicompCharges(s.medicompV172!), 2);
+        s = interact(walk(s, 680));
+        assert.equal(s.phase, 'rest');
+        assert.equal(api.normalizeYouthTraining(JSON.parse(JSON.stringify(s)))?.medicompV172?.stage, 'complete');
+    }
+});
+
+for (const firstWorkshop of [undefined, "blades"] as const) test(
+    'M007 to M012 preserve physical hand-ins and checkpoints with ' + (firstWorkshop ?? 'legacy mask') + ' first',
+    () => {
+    let s = reach('barracks').state;
+    if (firstWorkshop) s = { ...s, firstWorkshopV176: firstWorkshop };
+    const run = (input: YouthInput = {}) => {
+        s = tick(s, input);
+        assert.ok(api.normalizeYouthTraining(s), 'replayable checkpoint at ' + JSON.stringify(s.workshopV174?.active));
+    };
+    const wait = (frames: number) => { for (let frame = 0; frame < frames; frame++) run(); };
+    const act = (input: YouthInput) => { run(); run(input); run(); };
+    const walk = (target: number, { jump = true, quiet = false } = {}) => {
+        run();
+        for (let frame = 0; frame < 700 && (Math.abs(s.player.x - target) > 5 || s.player.y < 429); frame++) {
+            const move = Math.abs(s.player.x - target) <= 5 ? 0 : target < s.player.x ? -1 : 1;
+            const hurdle = jump && api.getYouthObstacles(s).some(item => move === 1
+                ? item.x - s.player.x >= 20 && item.x - s.player.x < 59
+                : move === -1 && s.player.x - item.x - item.width >= 20 && s.player.x - item.x - item.width < 59);
+            run({ move, jump: hurdle && s.player.vy === 0 && !s.previousButtons.jump, dodge: quiet });
+        }
+        assert.ok(Math.abs(s.player.x - target) <= 6 && s.player.y === 430, 'reachable ' + target + ' from ' + s.player.x);
+        run();
+    };
+    const state = () => {
+        const active = s.workshopV174?.active;
+        assert.ok(active);
+        return active;
+    };
+    const restore = () => {
+        const saved = JSON.parse(JSON.stringify(s));
+        const restored = api.normalizeYouthTraining(saved);
+        assert.ok(restored);
+        assert.deepEqual(restored.workshopV174, s.workshopV174);
+        s = restored;
+        const before = s.tick;
+        run({ interact: true });
+        assert.equal(s.tick, before);
+        run();
+    };
+    const open = (lesson: number) => {
+        walk(112);
+        act({ interact: true });
+        assert.equal(state().lesson, lesson);
+    };
+    const report = (reports: number) => {
+        walk(844);
+        act({ interact: true });
+        assert.equal(s.workshopV174?.reports.length, reports);
+        assert.equal(s.workshopV174.active, null);
+        restore();
+    };
+
+    function mask() {
+        open(0); walk(196); act({ interact: true }); act({ light: true }); walk(315); act({ interact: true });
+        wait(15); act({ interact: true });
+        assert.equal(state().notice, 'calibration');
+        restore();
+        act({ interact: true }); act({ interact: true }); assert.equal(state().stage, 3);
+        for (const x of [384, 503, 624, 746]) { walk(x); act({ interact: true }); }
+        walk(844); act({ blade: true }); assert.equal(state().notice, 'certainty');
+        act({ light: true }); report(firstWorkshop === "blades" ? 2 : 1);
+        act({ blade: true }); assert.equal(s.workshopV174?.maskProfile, 'wide');
+    }
+    function blades() {
+        open(1); act({ blade: true }); act({ light: true }); assert.equal(state().notice, 'reach');
+        walk(484); act({ light: true }); wait(9); act({ dodge: true }); assert.equal(state().route, 'parry');
+        for (let frame = 0; frame < 95; frame++) run({ move: 1 });
+        assert.equal(s.player.x, 671); assert.equal(state().stage, 3);
+        act({ blade: true }); walk(789); report(firstWorkshop === "blades" ? 1 : 2);
+    }
+    if (firstWorkshop === "blades") {
+        blades();
+        act({ blade: true });
+        assert.equal(s.workshopV174?.maskProfile, undefined);
+        wait(45); // The ordinary wristblade swing must recover before using the workshop door.
+        mask();
+    } else {
+        mask();
+        blades();
+    }
+
+    // M009: water reveals the cloak; reading the trail and patiently sneaking retains both attempts.
+    open(2); act({ blade: true }); walk(430); assert.equal(state().notice, 'water');
+    restore(); walk(464); act({ interact: true }); walk(527); act({ interact: true });
+    for (let frame = 0; frame < 9; frame++) run({ move: 1 });
+    assert.equal(state().notice, 'cloak'); assert.equal(state().stage, 2);
+    act({ interact: true }); wait(44); walk(793, { jump: false, quiet: true }); report(3);
+
+    // M010: a miss creates an actual recoverable object and the successful throw only counts after pickup.
+    open(3); walk(180); act({ interact: true }); act({ blade: true });
+    walk(292); act({ jump: true }); wait(12); act({ throw: true }); wait(85);
+    assert.equal(state().tool?.hit, false); assert.equal(state().notice, 'off-target');
+    restore();
+    const missed = state().tool; assert.ok(missed); walk(missed.x); act({ interact: true }); assert.equal(state().stage, 2);
+    walk(467); act({ light: true }); act({ throw: true }); wait(85);
+    const landed = state().tool; assert.ok(landed?.hit);
+    act({ interact: true }); assert.equal(state().stage, 4);
+    walk(landed.x); act({ interact: true }); report(4);
+
+    // M011: the first ray is stopped by the cover; recover each shot before the next target.
+    open(4); walk(412); act({ light: true });
+    assert.equal(state().notice, 'cover');
+    walk(499); act({ interact: true }); assert.equal(state().stage, 0);
+    for (let target = 0; target < 3; target++) {
+        walk(655); act({ move: 1 });
+        if (target === 2) {
+            for (let frame = 0; frame < 300 && Math.abs(356 - (345 + 45 * Math.sin((s.tick + 2 - state().stageAt) / 18))) > 12; frame++) run();
+        }
+        act({ light: true });
+        const spear = state().tool; assert.ok(spear?.hit, state().notice ?? 'target hit');
+        walk(spear.x); act({ interact: true });
+    }
+    report(5);
+
+    // M012: placing on the ally's strip visibly fails; reclaim and use the safe rail position.
+    open(5); walk(642); act({ interact: true }); assert.equal(state().notice, 'ally');
+    act({ interact: true }); walk(443); act({ interact: true }); act({ interact: true });
+    wait(70); assert.equal(state().tool?.hit, true);
+    walk(791); walk(443); act({ interact: true }); report(6);
+    const firstReports = firstWorkshop === "blades" ? ['parry', 'contrast'] : ['contrast', 'parry'];
+    assert.deepEqual(s.workshopV174?.reports.map(entry => entry.route), [...firstReports, 'wait', 'close', 'shift', 'block']);
+    walk(680); act({ interact: true }); assert.equal(s.phase, 'rest');
+    assert.equal(s.workshopV174?.reports.length, 6);
 });

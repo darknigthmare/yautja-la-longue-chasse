@@ -1,26 +1,61 @@
 "use client";
 import type {ControlBindings} from "./systems/controlBindings";
+import type {CanopyNavigationV112} from "./systems/canopyNavigationV112";
+import type {HuntRiteMenuSnapshotV77} from "./systems/huntRitesRuntimeV77";
 import {controlActionShortcut} from "./controlBindingLabels";
 import {DEFAULT_HUNT_GAMEPAD_V112,HUNT_GAMEPAD_LABELS_V112,type HuntGamepadButtonsV112} from "./systems/huntAccessibilityV112";
 import {flayingToolWorkMultiplierV112,type fieldLoadV112} from "./systems/harvestInventoryV112";
 import styles from "./HuntAccessibilityV112.module.css";
 
 type GuideFieldLoadV112=Pick<ReturnType<typeof fieldLoadV112>,"massKg"|"volumeUnits"|"capacityMassKg"|"capacityVolumeUnits">;
-export default function HuntFieldGuideV112({bindings,gamepadButtons=DEFAULT_HUNT_GAMEPAD_V112,phase,climbing,grounded,stamina,corpseNearby,gripExhausted=false,toolOwned,toolCondition,fieldLoad}:{
+export default function HuntFieldGuideV112({bindings,gamepadButtons=DEFAULT_HUNT_GAMEPAD_V112,phase,climbing,grounded,stamina,corpseNearby,gripExhausted=false,toolOwned,toolCondition,fieldLoad,navigation,gripInput="hold",rite}:{
   bindings:ControlBindings;gamepadButtons?:HuntGamepadButtonsV112;phase:string;climbing:boolean;grounded:boolean;stamina:number;corpseNearby:boolean;gripExhausted?:boolean;
   toolOwned?:boolean;toolCondition?:number;fieldLoad?:GuideFieldLoadV112;
+  navigation?:CanopyNavigationV112|null;gripInput?:"hold"|"toggle";
+  rite?:Pick<HuntRiteMenuSnapshotV77,"open"|"operation"|"canAnalyze"|"canFlay"|"parts"|"worksiteLockedReason">|null;
 }){
   const jump=controlActionShortcut("hunt.jump",bindings),up=controlActionShortcut("hunt.moveUp",bindings),down=controlActionShortcut("hunt.moveDown",bindings),interact=controlActionShortcut("hunt.interact",bindings);
   const padJump=HUNT_GAMEPAD_LABELS_V112[gamepadButtons.jump],padInteract=HUNT_GAMEPAD_LABELS_V112[gamepadButtons.interact];
   const bodyAccess=`Corps réel : active « Examiner la proie vaincue » au clavier ou au toucher ; à la manette, Bas + ${padInteract}. Interagir seul (${interact}) conserve le prélèvement de la prise.`;
-  const cue=gripExhausted&&!grounded?"■ Prise épuisée : atterris au sol ou sur une plateforme.":
-    !grounded&&!climbing?`↓ En vol : Haut (${up}) vers une vraie prise ; vise une réception.`:
-    phase==="extraction"?`▲ Extraction : rejoins la balise, interagis (${interact} / ${padInteract}) puis embarque.`:
-    phase==="trophy"?`◆ Trophée Apex : appui dégagé, puis interagis (${interact} / ${padInteract}).`:
-    corpseNearby?"◇ Corps réel : « Examiner la proie vaincue ».":
-    climbing?`↔ Canopée : sur une liane, direction pour pomper, Haut/Bas (${up} / ${down}) pour la longueur, Saut (${jump} / ${padJump}) pour lâcher.`:
-    stamina<15?"■ Endurance basse : repose-toi au sol ou sur une plateforme avant une traversée.":
-    `↟ Choisis une prise et un point de repos, puis Haut (${up}) pour monter. La route au sol reste possible.`;
+  const availableGrip=navigation?.availableGrip;
+  const heldGrip=navigation?.heldGrip;
+  const rest=navigation?.rest;
+  const takeGrip=availableGrip
+    ? `${availableGrip.label} à portée : ${gripInput==="toggle"?"presse":"maintiens"} Haut (${up}).`
+    : null;
+  let cue:string;
+  if(gripExhausted&&!grounded){
+    cue="■ Prise épuisée : atterris au sol ou sur une plateforme.";
+  }else if(!grounded&&!climbing){
+    cue=takeGrip ? `↓ En vol : ${takeGrip}` : navigation
+      ? "↓ En vol : vise une réception au sol ou sur une plateforme."
+      : `↓ En vol : Haut (${up}) vers une vraie prise ; vise une réception.`;
+  }else if(phase==="extraction"){
+    cue=`▲ Extraction : rejoins la balise, interagis (${interact} / ${padInteract}) puis embarque.`;
+  }else if(phase==="trophy"){
+    cue=`◆ Trophée Apex : appui dégagé, puis interagis (${interact} / ${padInteract}).`;
+  }else if(climbing){
+    cue=heldGrip&&!heldGrip.flexible
+      ? `↔ ${heldGrip.label} : direction + Saut (${jump} / ${padJump}) pour changer de prise. Vise une réception.`
+      : `↔ ${heldGrip?.label??"Canopée"} : direction pour pomper, Haut/Bas (${up} / ${down}) pour la longueur, Saut (${jump} / ${padJump}) pour lâcher.`;
+  }else if(corpseNearby){
+    if(rite?.operation)cue=`◇ ${rite.operation.label??"Geste rituel"} en cours. Reste sur l’appui jusqu’à la fin du geste.`;
+    else if(!rite?.open)cue="◇ Corps réel : « Examiner la proie vaincue ».";
+    else if(rite.worksiteLockedReason)cue=`◇ ${rite.worksiteLockedReason}`;
+    else if(rite.canAnalyze)cue="◇ Analyse la proie avant le premier prélèvement pour préserver la qualité.";
+    else if(rite.parts.some(part=>part.available))cue="◇ Choisis une partie disponible et vérifie l’emport prévu.";
+    else if(rite.canFlay)cue="◇ Dépèce la carcasse pour accéder aux parties qui le demandent.";
+    else if(rite.parts.some(part=>!part.harvested))cue="◇ Vérifie le motif de refus indiqué sous la partie voulue.";
+    else cue="◇ Consulte les gestes disponibles sur cette carcasse.";
+  }else if(rest?.state==="resting"&&stamina<(navigation?.minimumGripStamina??15)){
+    cue=`■ Appui atteint : ${rest.label}. Récupère avant de reprendre une prise.`;
+  }else if(stamina<15){
+    cue="■ Endurance basse : repose-toi au sol ou sur une plateforme avant une traversée.";
+  }else{
+    cue=takeGrip ? `↟ ${takeGrip} La route au sol reste possible.`
+      : navigation ? "↟ Approche un support réel et repère une réception. La route au sol reste possible."
+      : `↟ Choisis une prise et un point de repos, puis Haut (${up}) pour monter. La route au sol reste possible.`;
+  }
   const condition=toolCondition===undefined?undefined:Math.round(Math.min(100,Math.max(0,Number.isFinite(toolCondition)?toolCondition:100)));
   const full=fieldLoad&&(fieldLoad.massKg>=fieldLoad.capacityMassKg||fieldLoad.volumeUnits>=fieldLoad.capacityVolumeUnits);
   const toolSummary=toolOwned===false?"Flaying Tool absent":toolOwned===true?`Outil${condition===undefined?" possédé":` ${condition}/100`}`:"Outil à vérifier";

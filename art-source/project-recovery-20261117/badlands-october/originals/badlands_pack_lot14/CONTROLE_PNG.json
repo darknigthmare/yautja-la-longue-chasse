@@ -1,0 +1,288 @@
+{
+  "version": "14.0",
+  "nombre_png": 7,
+  "resultat": "OK",
+  "note": "Canal alpha natif conservé. Boîte du contenu visible mesurée avec alpha > 8 ; les pixels quasi transparents hors silhouette ne sont pas supprimés.",
+  "checks": [
+    {
+      "id": 160,
+      "fichier": "sprites/faune/160_vulture_pose_ailes_repliees.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "largeur_px": 1536,
+      "hauteur_px": 1024,
+      "taille_octets": 1741479,
+      "sha256": "d09735241c8d3bee1de691ba7d4836d275d9933826271c9708c7a2a4174d7346",
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "pixels_entierement_transparents": 1241945,
+        "pourcentage_entierement_transparent": 78.9607,
+        "coins": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "boite_contenu_alpha_superieur_8_px": [
+        16,
+        34,
+        1520,
+        1006
+      ],
+      "marges_contenu_px": {
+        "gauche": 16,
+        "haut": 34,
+        "droite": 16,
+        "bas": 18
+      },
+      "ancrage_geometrique_indicatif": {
+        "x": 0.5,
+        "y": 0.982422,
+        "type": "centre_bas_de_la_boite_contenu",
+        "a_ajuster_dans_le_moteur": true
+      }
+    },
+    {
+      "id": 161,
+      "fichier": "sprites/faune/161_vulture_attaque_frontale.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "largeur_px": 1536,
+      "hauteur_px": 1024,
+      "taille_octets": 2340103,
+      "sha256": "0a1085996c0dd271ecaa1024e9075bbb3d46f1e5163f22d6957d77a69a291652",
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "pixels_entierement_transparents": 958585,
+        "pourcentage_entierement_transparent": 60.9452,
+        "coins": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "boite_contenu_alpha_superieur_8_px": [
+        11,
+        42,
+        1529,
+        988
+      ],
+      "marges_contenu_px": {
+        "gauche": 11,
+        "haut": 42,
+        "droite": 7,
+        "bas": 36
+      },
+      "ancrage_geometrique_indicatif": {
+        "x": 0.501302,
+        "y": 0.964844,
+        "type": "centre_bas_de_la_boite_contenu",
+        "a_ajuster_dans_le_moteur": true
+      }
+    },
+    {
+      "id": 162,
+      "fichier": "sprites/flore/162_plante_feuilles_coupe_sans_ver.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "largeur_px": 1024,
+      "hauteur_px": 1536,
+      "taille_octets": 2417456,
+      "sha256": "0031e7592f3d1972313682847c5b19c18d15877964a174c011d4e4c6feb91486",
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "pixels_entierement_transparents": 949475,
+        "pourcentage_entierement_transparent": 60.366,
+        "coins": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "boite_contenu_alpha_superieur_8_px": [
+        18,
+        46,
+        1007,
+        1447
+      ],
+      "marges_contenu_px": {
+        "gauche": 18,
+        "haut": 46,
+        "droite": 17,
+        "bas": 89
+      },
+      "ancrage_geometrique_indicatif": {
+        "x": 0.500488,
+        "y": 0.942057,
+        "type": "centre_bas_de_la_boite_contenu",
+        "a_ajuster_dans_le_moteur": true
+      }
+    },
+    {
+      "id": 163,
+      "fichier": "sprites/flore/163_plante_antidote_apres_cueillette.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "largeur_px": 1262,
+      "hauteur_px": 1246,
+      "taille_octets": 937969,
+      "sha256": "3bb7a02f3892734a57fef9944e62eb8026b73e4464629ad9e1fd569631cff3eb",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "pixels_entierement_transparents": 1234374,
+        "pourcentage_entierement_transparent": 78.4999,
+        "coins": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "boite_contenu_alpha_superieur_8_px": [
+        25,
+        223,
+        1255,
+        1231
+      ],
+      "marges_contenu_px": {
+        "gauche": 25,
+        "haut": 223,
+        "droite": 7,
+        "bas": 15
+      },
+      "ancrage_geometrique_indicatif": {
+        "x": 0.507132,
+        "y": 0.987961,
+        "type": "centre_bas_de_la_boite_contenu",
+        "a_ajuster_dans_le_moteur": true
+      }
+    },
+    {
+      "id": 164,
+      "fichier": "sprites/synthetiques/164_sas_lab04_ouvert.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "largeur_px": 1536,
+      "hauteur_px": 1024,
+      "taille_octets": 1873448,
+      "sha256": "18b905ffe7628cecbe7d604fcef5dfa4dbe25fca527b7f52a8da80180155c5cf",
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "pixels_entierement_transparents": 770243,
+        "pourcentage_entierement_transparent": 48.9707,
+        "coins": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "boite_contenu_alpha_superieur_8_px": [
+        197,
+        47,
+        1375,
+        1001
+      ],
+      "marges_contenu_px": {
+        "gauche": 197,
+        "haut": 47,
+        "droite": 161,
+        "bas": 23
+      },
+      "ancrage_geometrique_indicatif": {
+        "x": 0.511719,
+        "y": 0.977539,
+        "type": "centre_bas_de_la_boite_contenu",
+        "a_ajuster_dans_le_moteur": true
+      }
+    },
+    {
+      "id": 165,
+      "fichier": "sprites/synthetiques/165_meuble_modules_wy.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "largeur_px": 1536,
+      "hauteur_px": 1024,
+      "taille_octets": 2071699,
+      "sha256": "b1019354e944dbd2d908443a80c86ca2fe37482584dd8e5a319d848de0accaff",
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "pixels_entierement_transparents": 580845,
+        "pourcentage_entierement_transparent": 36.9291,
+        "coins": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "boite_contenu_alpha_superieur_8_px": [
+        67,
+        83,
+        1488,
+        996
+      ],
+      "marges_contenu_px": {
+        "gauche": 67,
+        "haut": 83,
+        "droite": 48,
+        "bas": 28
+      },
+      "ancrage_geometrique_indicatif": {
+        "x": 0.506185,
+        "y": 0.972656,
+        "type": "centre_bas_de_la_boite_contenu",
+        "a_ajuster_dans_le_moteur": true
+      }
+    },
+    {
+      "id": 166,
+      "fichier": "sprites/yautja/166_ceinture_tablier_pans_rouges_kwei.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "largeur_px": 1254,
+      "hauteur_px": 1254,
+      "taille_octets": 1494233,
+      "sha256": "1ce359e34401ce39a9344dc06b7885c77b123e52def7bb29aa23b0c7610e7e1a",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "pixels_entierement_transparents": 1029864,
+        "pourcentage_entierement_transparent": 65.4915,
+        "coins": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "boite_contenu_alpha_superieur_8_px": [
+        280,
+        131,
+        972,
+        1215
+      ],
+      "marges_contenu_px": {
+        "gauche": 280,
+        "haut": 131,
+        "droite": 282,
+        "bas": 39
+      },
+      "ancrage_geometrique_indicatif": {
+        "x": 0.499203,
+        "y": 0.9689,
+        "type": "centre_bas_de_la_boite_contenu",
+        "a_ajuster_dans_le_moteur": true
+      }
+    }
+  ]
+}

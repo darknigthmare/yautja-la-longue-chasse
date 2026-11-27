@@ -1,0 +1,27 @@
+.panel { display: grid; gap: .6rem; margin: .75rem 0; padding: .8rem; border: 1px solid rgb(255 255 255 / .16); border-radius: 8px; background: rgb(8 14 13 / .78); }
+.panel h3 { margin: 0; font-size: 1.05rem; }
+.panel h4 { margin: 0 0 .3rem; font-size: .95rem; }
+.panel p { margin: 0; }
+.meta, .note { font-size: .82rem; opacity: .78; }
+.gauges { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .4rem; margin: 0; }
+.gauges div { padding: .35rem; border: 1px solid rgb(255 255 255 / .12); border-radius: 4px; text-align: center; }
+.gauges dt { font-size: .72rem; opacity: .75; }
+.gauges dd { margin: 0; font-weight: 700; }
+.status { font-size: .88rem; }
+.block { display: grid; gap: .35rem; padding: .55rem; border: 1px solid rgb(255 255 255 / .1); border-radius: 6px; }
+.choices, .rooms, .moves { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; }
+.slots { display: grid; gap: .3rem; margin: 0; padding-left: 1.1rem; }
+.panel button { padding: .3rem .6rem; border: 1px solid rgb(255 255 255 / .25); border-radius: 4px; background: transparent; color: inherit; cursor: pointer; }
+.panel button:disabled { opacity: .45; cursor: default; }
+.panel button[aria-pressed="true"] { border-color: #6cd3b3; background: rgb(108 211 179 / .15); }
+.message { font-size: .88rem; color: #f2d48a; }
+@media (max-width: 640px) { .gauges { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.residenceComparison { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: .85rem; }
+.residenceComparison caption { padding: .2rem 0 .5rem; text-align: left; color: #c9e9d9; }
+.residenceComparison th, .residenceComparison td { padding: .4rem .28rem; border-bottom: 1px solid rgb(255 255 255 / .16); text-align: left; overflow-wrap: anywhere; }
+.residenceComparison button { min-height: 2.75rem; }
+@media (max-width: 480px) {
+  .residenceComparison { font-size: .76rem; }
+  .residenceComparison th, .residenceComparison td { padding-inline: .15rem; }
+}

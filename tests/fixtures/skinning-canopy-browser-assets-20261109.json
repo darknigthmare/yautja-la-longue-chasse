@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "sourceRef": "1f9b009b20fa2e3354d4d511380e900e98e0cd4b",
+  "sourceRef": "306b026d45ebf458f1776fa8476dc5dfe61425ab",
   "observedAt": "2026-11-09T08:22:45.550Z",
   "recipe": "scripts/qa-skinning-canopy-durable-browser-20261109.mjs",
   "fixture": "tests/browser/skinning-canopy-durable-20261109.fixture.jsx",
   "reportSha256": "fb8e89853a0dda0a50ce69294c5f80743328cd591aa3b984f530eb78fb8128c4",
-  "scope": "Exact asset path set observed by the successful BOTH native GameClient run at assetSetObservationSourceRef; bytes repinned to sourceRef after the official four-slot procedural audio manifest regeneration. Only public/audio/manifest.json changed. Repinning is not a new browser execution; no placeholder or alternative image.",
+  "scope": "Exact asset paths observed by the successful native GameClient field and canopy recipe. The generated audio manifest follows the original campaign soundtrack. Historical captures and asset-set observation retain their identity.",
   "assets": [
     {
       "path": "public/audio/ambience/ship/v54.wav",
@@ -15,9 +15,9 @@
     },
     {
       "path": "public/audio/manifest.json",
-      "bytes": 11771,
-      "sha256": "35aef355056250b8ad9ec220b5d2efe3dd542549e49b5e9150226e2d65d86b78",
-      "gitBlob": "be4e8bcc62b0239d22766b9020c3fb1e66936a00"
+      "bytes": 15078,
+      "sha256": "64f3eda471fc891aef6d5e208e55288a0217eb5d00e0e1dc8e7ae0e04a7db573",
+      "gitBlob": "ebe3dfc3b2c317e06a5410ffbfb4232e0273cc80"
     },
     {
       "path": "public/audio/sfx/cloak-off/v54.wav",
@@ -1743,22 +1743,39 @@
     }
   ],
   "assetSetObservationSourceRef": "ce82e2b742c2243e524e23aee4efe26cd5c6a644",
-  "repinnedAt": "2026-11-09T09:33:33.204833+00:00",
-  "repinnedFromManifestSha256": "9e6561299a7dcd1876ef13490c0ccd43cada1a706bbf8fd34d23bfaadc8a8a54",
+  "repinnedAt": "2026-11-22T07:24:08Z",
+  "repinnedFromManifestSha256": "b0e136b082fd6af63552273a9ac24ff582e8a90a6db6302e2b0479e16a2f609d",
   "repinnedChanges": [
     {
       "before": {
         "path": "public/audio/manifest.json",
-        "bytes": 11157,
-        "sha256": "33f6d2b4d2c7393343fae12732866d44a50971ce4e7094a1ec3114b8a9ce83d0",
-        "gitBlob": "d0e60887f96b9666d183cad53d7d04c66d8da054"
+        "bytes": 12171,
+        "sha256": "0e94b5bd64383b3fc80137d74f45c4727b633939749d189e3f6a49b03dfe0672",
+        "gitBlob": "bd6d5480e99718b702dbeff795ca98ec81d649b9"
       },
       "after": {
         "path": "public/audio/manifest.json",
-        "bytes": 11771,
-        "sha256": "35aef355056250b8ad9ec220b5d2efe3dd542549e49b5e9150226e2d65d86b78",
-        "gitBlob": "be4e8bcc62b0239d22766b9020c3fb1e66936a00"
-      }
+        "bytes": 12834,
+        "sha256": "40fea9056d515c86520180c4b5e1959b9bcf1c1788795520eab01815ae1ce9b6",
+        "gitBlob": "27b2416db1b450ea8d17966192935601c0135b9b"
+      },
+      "repinnedAt": "2026-11-20T23:32:35.136Z"
+    },
+    {
+      "before": {
+        "path": "public/audio/manifest.json",
+        "bytes": 12834,
+        "sha256": "40fea9056d515c86520180c4b5e1959b9bcf1c1788795520eab01815ae1ce9b6",
+        "gitBlob": "27b2416db1b450ea8d17966192935601c0135b9b"
+      },
+      "after": {
+        "path": "public/audio/manifest.json",
+        "bytes": 15078,
+        "sha256": "64f3eda471fc891aef6d5e208e55288a0217eb5d00e0e1dc8e7ae0e04a7db573",
+        "gitBlob": "ebe3dfc3b2c317e06a5410ffbfb4232e0273cc80"
+      },
+      "repinnedAt": "2026-11-22T07:24:08Z",
+      "sourceRef": "66e9da0125bb4b930b588a54409519bce9bd24df"
     }
   ]
 }

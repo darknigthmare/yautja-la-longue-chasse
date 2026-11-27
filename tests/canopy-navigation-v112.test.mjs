@@ -43,6 +43,23 @@ test("a nearby real tree is ready exactly when the native support predicate admi
   }
 });
 
+test("when two supports are in range, the ready marker follows native entry priority", () => {
+  const centeredTree = { ...tree, y: 578, height: 46 };
+  const nearbyVine = { ...vine, x: 310, y: 494, width: 84, height: 130 };
+  const view = navigate({ climbables: [nearbyVine, centeredTree], platforms: [] });
+  assert.equal(view.nearbyGrip?.id, nearbyVine.id);
+  assert.equal(view.availableGrip?.id, centeredTree.id);
+  assert.equal(view.availableGrip?.supportKind, "tree");
+});
+
+test("equal entry offsets keep blueprint order even when marker ids sort differently", () => {
+  const first = { ...tree, id: "z-first" };
+  const second = { ...first, id: "a-second" };
+  const view = navigate({ climbables: [first, second], platforms: [] });
+  assert.equal(view.nearbyGrip?.id, second.id);
+  assert.equal(view.availableGrip?.id, first.id);
+});
+
 test("an actual intervening wall is shown as an obstacle and never as a ready grasp", () => {
   const wall = platform("thin-wall", 240, 200, 3, "solid");
   wall.height = 424;

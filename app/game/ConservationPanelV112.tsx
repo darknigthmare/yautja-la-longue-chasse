@@ -57,7 +57,7 @@ export default function ConservationPanelV112({inventory,clanMarks,disabled=fals
       <div className={styles.grid}>{ledger.specimens.map(item=>{
         const job=ledger.jobs.find(j=>j.specimenId===item.id&&j.status!=="completed");
         const next=CONSERVATION_STEPS_V112.find(s=>s.from===item.stage);
-        return <article className={styles.card} key={item.id} aria-label={item.label}>
+        return <article className={styles.card} key={item.id} aria-label={item.label} data-specimen-id-v112={item.id}>
           <SpecimenGlyphV112 item={item}/>
           <div><h3>{item.label}</h3><p>{speciesLabelV112(item.speciesId)} · qualité {item.quality}/100</p>
             <p>{item.massKg.toFixed(1)} kg · {item.volumeUnits.toFixed(1)} volumes · <strong>{SPECIMEN_STAGE_LABELS_V112[item.stage]}</strong></p>

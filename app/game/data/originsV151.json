@@ -1,0 +1,239 @@
+{
+ "source": {
+  "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+  "sheets": {
+   "origins": "Les six voies",
+   "transitions": "V5 Transitions des voies (lignes -01, système Maison ; lignes -02, système Trophée)",
+   "flags": "V5 États communs (STATE5-01, 09-13)"
+  },
+  "note": "Texte copié du classeur V6. Sont reprises les transitions « Maison » (-01) et « Trophée » (-02)."
+ },
+ "origins": [
+  {
+   "id": "O1",
+   "title": "Rejeté du clan",
+   "promise": "La force que personne ne voulait voir",
+   "story": "Un jeune Yautja jugé faible survit à l’hostilité de son père. Cette violence appartient à cette famille et à ses alliés ; elle ne définit pas les parents yautja en général.",
+   "characters": "Varek, père obsédé par la réputation de sa maison ; Dhera, instructrice qui refuse le meurtre ; Ruun, frère partagé entre peur et loyauté.",
+   "playStyle": "Observer, détourner une proie, choisir ses appuis et accepter une coopération avant de gagner la puissance.",
+   "endings": "L’indépendance ; une confrontation légitime ; une réconciliation strictement conditionnée par des actes.",
+   "coherence": "Un père hostile reste un personnage responsable de ses choix. Le joueur ne doit ni lui pardonner ni le tuer pour être reconnu.",
+   "sourceRow": 6
+  },
+  {
+   "id": "O2",
+   "title": "Héritier du masque",
+   "promise": "Un nom peut porter plusieurs voix",
+   "story": "L’ancêtre a accompli une chasse réellement remarquable. Des aides, des pisteurs et des sauveteurs ont disparu de sa transmission ; l’enquête élargit la mémoire sans annuler son mérite.",
+   "characters": "Sael, gardienne du masque ; Khor, descendant d’un pisteur oublié ; Orha, artisane des vieux supports.",
+   "playStyle": "Lire les empreintes matérielles, restituer une manœuvre et partager un récit fondé sur des traces.",
+   "endings": "Conserver le masque avec une histoire complète ; créer une exposition collective ; transmettre le masque et chasser sous son propre nom.",
+   "coherence": "Les preuves ne révèlent pas soudain un imposteur. Le trophée de la chasse partagée conserve le succès réel de l’ancêtre.",
+   "sourceRow": 7
+  },
+  {
+   "id": "O3",
+   "title": "Porteur des derniers noms",
+   "promise": "Survivre sans décider pour les autres",
+   "story": "Une catastrophe naturelle a dispersé la communauté. Les rescapés peuvent reconstruire sur place, partir ou refuser de rejoindre le joueur ; le deuil n’impose pas une seule manière de vivre.",
+   "characters": "Tava, passeuse survivante ; Orem, jeune compagnon de cohorte ; Vesha, artisane qui a déjà commencé une autre vie.",
+   "playStyle": "Lire un terrain instable, secourir, transporter des objets choisis et relier des personnes libres.",
+   "endings": "Réinstaller un foyer ; fonder un réseau de haltes ; confier les archives et repartir.",
+   "coherence": "Aucune révélation ne transforme le désastre en complot de clan. Les décisions des survivants restent autonomes.",
+   "sourceRow": 8
+  },
+  {
+   "id": "O4",
+   "title": "Nom entaché",
+   "promise": "Répondre de ses propres gestes",
+   "story": "Un ancêtre a réellement commis une faute de chasse contre des adversaires privés de moyens de se défendre. Le joueur peut établir les faits, réparer ce qu’il peut et construire sa propre réputation.",
+   "characters": "Drek, parent qui voudrait taire les faits ; Isha, descendante d’une personne lésée ; Evar, Enforcer chargé du dossier actuel.",
+   "playStyle": "Reconnaître une trace compromettante, protéger une preuve et choisir une chasse dont les conditions peuvent être racontées honnêtement.",
+   "endings": "Garder le nom en rendant les faits publics ; adopter un autre nom ; rejoindre une fonction de réparation limitée.",
+   "coherence": "La faute ancienne est réelle. Le personnage joueur ne reçoit ni culpabilité automatique ni absolution par simple duel.",
+   "sourceRow": 9
+  },
+  {
+   "id": "O5",
+   "title": "Dette envers l’Étranger",
+   "promise": "Deux chasseurs ne possèdent pas la route de l’autre",
+   "story": "Après Blooded, acquisition réelle du vaisseau et trajet joué, le joueur rencontre Mara Venn, humaine adulte pisteuse, sur Namarra PLAN13. Leur coopération a une fin choisie par Mara.",
+   "characters": "Mara Venn, pisteuse humaine autonome ; Esha, réparatrice du port de Namarra ; Keth, chasseur qui sous-estime l’humaine.",
+   "playStyle": "Reconnaître une intelligence étrangère, lire un signal partagé et coopérer sans transformer l’autre en outil ou trophée.",
+   "endings": "Entretenir une alliance volontaire ; solder la dette et se séparer ; devenir un relais ponctuel entre partenaires indépendants.",
+   "coherence": "Première rencontre personnelle O5-M19 ; départ EXP10 dans O5-M24. Aucun compagnon humain pré-Blooded, recrutement permanent forcé ou retour imposé.",
+   "sourceRow": 10
+  },
+  {
+   "id": "O6",
+   "title": "La Longue Chasse",
+   "promise": "De la cohorte à la transmission",
+   "story": "Histoire originale de l’utilisateur : enfance, formation dans une cohorte, rivalité, maîtrise des chasses et transmission. Les cinq autres voies sont des alternatives de départ.",
+   "characters": "Saar, instructeur de la cohorte ; Harek, rival qui progresse aussi ; Yena et Tov, partenaires dont les styles changent.",
+   "playStyle": "Apprendre les outils, faire des choix dans la triade, développer sa chasse personnelle puis enseigner sans effacer les élèves.",
+   "endings": "Ouvrir une maison d’enseignement ; poursuivre la chasse avec un cercle choisi ; transmettre ses outils et devenir explorateur.",
+   "coherence": "Aucun père hostile, ancêtre frauduleux ou désastre obligatoire n’est ajouté à l’histoire originale par défaut.",
+   "sourceRow": 11
+  }
+ ],
+ "houseTransitions": [
+  {
+   "id": "STORY5-TR-O1-01",
+   "title": "Une poignée à ma hauteur",
+   "originId": "O1",
+   "system": "Maison",
+   "entry": "Résidence réellement déverrouillée et active ; mission et respect locaux acquis ; transports effectués. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "Le joueur arrive avec une caisse dans sa résidence réellement déverrouillée. La poignée intérieure rappelle le seuil familial trop haut ; il peut la déplacer, tester le passage chargé puis installer un appui pour un visiteur plus petit. Dhera attend dehors si elle a accepté l’invitation, sans choisir l’aménagement à sa place.",
+   "choices": "Conserver un rappel de l’ancienne maison ou créer une entrée entièrement personnelle change les commentaires et l’objet de mémoire.",
+   "consequence": "L’aménagement matérialise l’autonomie ; activeResidenceId reste inchangé et les autres maisons n’ajoutent aucun bonus.",
+   "failure": "Une poignée mal placée bloque le test de charge et se corrige avant validation, sans perdre le droit de résidence.",
+   "exit": "STORY5-TR-O1-01.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O1.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 6
+  },
+  {
+   "id": "STORY5-TR-O2-01",
+   "title": "Un mur pour plusieurs gestes",
+   "originId": "O2",
+   "system": "Maison",
+   "entry": "Résidence réellement déverrouillée et active ; mission et respect locaux acquis ; transports effectués. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "Dans sa résidence active, le joueur prépare un mur de mémoire. Il déplace les supports, vérifie les lignes de vue et place le masque ou sa reproduction autorisée avec les traces de piste, de combat et de secours. La circulation permet de comprendre la chronologie en marchant.",
+   "choices": "Créer une ligne chronologique ou trois stations reliées change la manière dont les visiteurs découvrent les contributions.",
+   "consequence": "La maison porte une histoire plus complète ; le mérite final de l’ancêtre reste clairement nommé.",
+   "failure": "Un objet prêté absent laisse une station de relevé identifiée, sans original recréé pour remplir le mur.",
+   "exit": "STORY5-TR-O2-01.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O2.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 12
+  },
+  {
+   "id": "STORY5-TR-O3-01",
+   "title": "La pièce que personne ne doit remplir",
+   "originId": "O3",
+   "system": "Maison",
+   "entry": "Résidence réellement déverrouillée et active ; mission et respect locaux acquis ; transports effectués. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "Dans la résidence active, le joueur déballe les objets réellement sauvés. Une étagère peut garder un vide pour une perte ou accueillir un objet nouveau de sa vie actuelle. Tava, si invitée, propose une aide d’installation mais ne décide pas à la place du joueur.",
+   "choices": "Conserver un espace de mémoire ou lui donner un nouvel usage change les scènes domestiques sans effacer le deuil.",
+   "consequence": "La maison devient un lieu habité ; les survivants n’y emménagent que s’ils le choisissent et si la capacité existe.",
+   "failure": "Un objet encore en dépôt reste à son lieu réel ; son emplacement domestique peut attendre le transport.",
+   "exit": "STORY5-TR-O3-01.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O3.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 18
+  },
+  {
+   "id": "STORY5-TR-O4-01",
+   "title": "Le nom au seuil habité",
+   "originId": "O4",
+   "system": "Maison",
+   "entry": "Résidence réellement déverrouillée et active ; mission et respect locaux acquis ; transports effectués. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "Dans la résidence réellement obtenue, le joueur prépare sa plaque d’entrée. Des voisins connaissent des versions différentes de son histoire. Il fixe un support, choisit les informations qu’il veut rendre publiques et répond à une question pendant une tâche domestique concrète.",
+   "choices": "Garder le nom accompagné de contexte ou employer le signe provisoire choisi dans la voie change les salutations.",
+   "consequence": "Le logement dépend du respect et de sa mission propre ; l’origine n’impose ni expulsion automatique ni absolution.",
+   "failure": "Une inscription provisoire peut être corrigée ; le futur choix exclusif de fin reste ouvert tant qu’O4-M29 n’est pas confirmé.",
+   "exit": "STORY5-TR-O4-01.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O4.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 24
+  },
+  {
+   "id": "STORY5-TR-O5-01",
+   "title": "Une place pour un visiteur libre",
+   "originId": "O5",
+   "system": "Maison",
+   "entry": "Résidence réellement déverrouillée et active ; mission et respect locaux acquis ; transports effectués. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "Après le départ EXP10, la résidence active peut recevoir Mara seulement si une invitation est acceptée et un trajet compatible existe. Le joueur prépare un couchage de visite, règle des accès et laisse ses objets personnels dans une garde séparée. Si elle n’est pas disponible, la pièce reste une préparation générale d’accueil.",
+   "choices": "Proposer une halte courte ou une simple rencontre dehors respecte sa préférence.",
+   "consequence": "Mara ne devient ni résidente permanente ni second propriétaire de la maison par une seule visite.",
+   "failure": "Une invitation sans réponse ne remplit pas la chambre avec sa présence ; la scène conserve une variante d’attente non bloquante.",
+   "exit": "STORY5-TR-O5-01.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O5.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 30
+  },
+  {
+   "id": "STORY5-TR-O6-01",
+   "title": "La cour après l’enfance",
+   "originId": "O6",
+   "system": "Maison",
+   "entry": "Résidence réellement déverrouillée et active ; mission et respect locaux acquis ; transports effectués. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "Dans sa maison active, le joueur prépare un petit espace d’exercice adapté aux dimensions réelles du lieu. Il installe un appui, un râtelier et une zone libre, puis invite un ancien camarade disponible. Le parcours rappelle la cohorte sans reproduire exactement la cour commune.",
+   "choices": "Conserver un exercice ancien ou créer une nouvelle séquence change la première visite.",
+   "consequence": "La maison devient une étape de l’histoire originale ; l’école éventuelle reste un choix de fin futur.",
+   "failure": "Un meuble qui gêne la circulation doit être déplacé avant validation, sans bonus domestique cumulable ailleurs.",
+   "exit": "STORY5-TR-O6-01.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O6.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 36
+  }
+ ],
+ "trophyTransitions": [
+  {
+   "id": "STORY5-TR-O1-02",
+   "title": "La lame n’est pas ma victoire",
+   "originId": "O1",
+   "system": "Trophée",
+   "entry": "Atelier accessible ; objet réel, prêt autorisé ou relevé explicitement identifié ; propriété vérifiée. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "À l’atelier, la lame de Varek ne peut être présentée que si le joueur en a encore la garde. Il l’oriente, montre la trace de l’agression et choisit un support de preuve ou un compartiment privé. Si elle a été rendue, la scène utilise le relevé réellement conservé et explique l’absence.",
+   "choices": "Exposer une preuve contextualisée ou garder l’histoire privée change les visites et le récit public.",
+   "consequence": "Le mini-jeu n’accorde aucun mérite de chasse pour l’arme d’un père hostile ; propriétaire et emplacement restent uniques.",
+   "failure": "Un relevé insuffisant laisse une plaque limitée aux faits connus, pas une reconstitution présentée comme certaine.",
+   "exit": "STORY5-TR-O1-02.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O1.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 7
+  },
+  {
+   "id": "STORY5-TR-O2-02",
+   "title": "Une marque, deux témoins",
+   "originId": "O2",
+   "system": "Trophée",
+   "entry": "Atelier accessible ; objet réel, prêt autorisé ou relevé explicitement identifié ; propriété vérifiée. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "Le joueur reçoit deux commentaires différents sur une marque du crâne partagé. Au banc des traces, il règle la lampe, tourne le berceau et compare les angles décrits par les témoins. Une marque peut confirmer le coup final tandis qu’une autre témoigne de l’extraction ; les hypothèses restent séparées.",
+   "choices": "Conserver les deux lectures compatibles ou demander une comparaison supplémentaire change la précision de la plaque.",
+   "consequence": "Qualité, authenticité et reconnaissance évoluent séparément ; aucun succès ancestral n’est annulé par une aide retrouvée.",
+   "failure": "Une face encore non observée maintient l’étape ouverte et laisse les autres observations validées.",
+   "exit": "STORY5-TR-O2-02.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O2.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 13
+  },
+  {
+   "id": "STORY5-TR-O3-02",
+   "title": "Le fragment et la nouvelle chasse",
+   "originId": "O3",
+   "system": "Trophée",
+   "entry": "Atelier accessible ; objet réel, prêt autorisé ou relevé explicitement identifié ; propriété vérifiée. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "À l’atelier, le joueur place un fragment ancien près d’un trophée actuel, avec deux berceaux distincts. Il observe les traces, choisit des supports et construit une présentation qui montre perte et vie nouvelle sans prétendre que l’une compense l’autre.",
+   "choices": "Relier les objets par un récit personnel ou les exposer séparément change l’interprétation des visiteurs.",
+   "consequence": "Chaque pièce garde sa provenance et sa valeur propre ; aucune chasse actuelle ne ressuscite une personne perdue.",
+   "failure": "Une pièce fragile peut rester en réserve avec relevé visible ; l’absence d’original ne bloque pas toute l’exposition.",
+   "exit": "STORY5-TR-O3-02.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O3.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 19
+  },
+  {
+   "id": "STORY5-TR-O4-02",
+   "title": "Le trophée qui ne célèbre pas",
+   "originId": "O4",
+   "system": "Trophée",
+   "entry": "Atelier accessible ; objet réel, prêt autorisé ou relevé explicitement identifié ; propriété vérifiée. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "Le joueur inspecte l’arme fautive de l’ancêtre sur un banc distinct de sa propre prise de chasse. Il choisit lumière, support et plaque pour expliquer la différence. La préparation du meuble ne rend pas honorable ce qui ne l’était pas.",
+   "choices": "Déposer l’arme aux archives ou l’exposer avec la faute explicitée change les interactions de galerie.",
+   "consequence": "La qualité du support et la vérité du récit restent distinctes du mérite ; propriétaire et garde sont conservés.",
+   "failure": "Une preuve manquante limite la formulation, sans inventer une innocence ou une culpabilité supplémentaire.",
+   "exit": "STORY5-TR-O4-02.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O4.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 25
+  },
+  {
+   "id": "STORY5-TR-O5-02",
+   "title": "Le câble prêté et son absence",
+   "originId": "O5",
+   "system": "Trophée",
+   "entry": "Atelier accessible ; objet réel, prêt autorisé ou relevé explicitement identifié ; propriété vérifiée. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "Le joueur veut exposer le souvenir du secours. Il vérifie si Mara a donné, prêté ou gardé le câble, puis choisit original autorisé, relevé ou modèle d’exercice marqué. Le mini-jeu consiste à placer les deux appuis de la falaise sur une table et montrer le geste de traction.",
+   "choices": "Exposer la coordination technique ou le récit de gratitude change la visite.",
+   "consequence": "La dette n’accorde aucun droit sur les biens de Mara ; une copie ne reçoit pas le statut d’original.",
+   "failure": "Un prêt arrivé à échéance retire physiquement l’objet de l’exposition et laisse la place au relevé autorisé.",
+   "exit": "STORY5-TR-O5-02.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O5.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 31
+  },
+  {
+   "id": "STORY5-TR-O6-02",
+   "title": "Le premier trophée à quatre regards",
+   "originId": "O6",
+   "system": "Trophée",
+   "entry": "Atelier accessible ; objet réel, prêt autorisé ou relevé explicitement identifié ; propriété vérifiée. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "Un trophée actuel est examiné par les partenaires réellement impliqués. Le joueur tourne le berceau, montre les marques de leurs gestes et place des plaques distinctes. Un camarade absent peut fournir un relevé autorisé, mais sa voix n’est pas inventée.",
+   "choices": "Mettre en avant la chronologie ou les techniques complémentaires change la galerie.",
+   "consequence": "La prise raconte la progression de cette cohorte et conserve les contributions réelles.",
+   "failure": "Une attribution contestée reste ouverte jusqu’à comparaison, sans effacer toute la chasse ou créer une seconde pièce.",
+   "exit": "STORY5-TR-O6-02.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O6.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 37
+  }
+ ]
+}

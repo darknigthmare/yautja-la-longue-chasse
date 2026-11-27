@@ -15,19 +15,20 @@ export function formationInput(s, mode = 'success') {
     return { move, jump: a.y === 430 && !s.previousJump && (d.mode === 'telegraph' && d.age > 23 || d.mode === 'lunge' || s.acid.ttl > 0 && Math.abs(s.acid.x - a.x) < 80), command: d.mode === 'recover' && s.attackCooldown === 0 && !s.previousCommand && Math.abs(a.x - d.x) < 100 && a.y > 335 };
   }
   const objective = formationModel.soloV90Objective(s), move = Math.abs(objective.targetX - a.x) > 4 ? Math.sign(objective.targetX - a.x) : 0;
-  const command = s.phase === 'assemble' && s.roleMode !== 'posts' && !move && !s.previousCommand;
+  const command = s.phase === 'assemble' && formationModel.soloV90RoleBoardReady(s) && s.roleMode !== 'posts' && !move && !s.previousCommand;
   const held = ['arsenal', 'assemble', 'observe', 'debrief'].includes(s.phase);
   return { move, command, interact: !move && (held || !s.previousInteract) };
 }
 let cachedOrigin;
 /** New chapter uses ordinary inputs and real command replay only. Previous
  * chapter comes from its existing played-route helper, never a rank fixture. */
-export function formationCampaignRoute({ origin = cachedOrigin ??= templeCampaignRoute().save, mode = 'success', stop = 'complete', restoreEvery = 0, onCommit = () => {} } = {}) {
+export function formationCampaignRoute({ origin = cachedOrigin ??= templeCampaignRoute().save, mode = 'success', stop = 'complete', meetPartners = false, restoreEvery = 0, onCommit = () => {} } = {}) {
   const p = formationModel;
   let save = p.startSoloV90Campaign(origin, stamp); assert(save);
   let state = structuredClone(save.soloV90.checkpoint);
   const commits = [], snapshots = {};
-  for (let i = 0; i < 50_000 && state.phase !== stop; i++) {
+  const reachedStop = () => state.phase === stop && (!meetPartners || p.soloV90PartnerMeetingsComplete(state));
+  for (let i = 0; i < 50_000 && !reachedStop(); i++) {
     const before = state, output = p.stepSoloV90(state, formationInput(state, mode), formationEnvironment);
     state = output.state; assert(p.normalizeSoloV90State(state), 'Invalid physical state: ' + JSON.stringify(state));
     if (output.receipts.length || p.soloV90NeedsImmediateCheckpoint(before, state)) {
@@ -42,6 +43,6 @@ export function formationCampaignRoute({ origin = cachedOrigin ??= templeCampaig
     }
     snapshots[state.phase] ??= structuredClone(state);
   }
-  assert.equal(state.phase, stop, JSON.stringify(state));
+  assert(reachedStop(), JSON.stringify(state));
   return { state, save, commits, snapshots, origin };
 }

@@ -1,0 +1,93 @@
+{
+  "assets": [
+    "wolf-mask.svg",
+    "wolf-unmasked.svg",
+    "predalien.svg",
+    "xeno.svg",
+    "facehugger.svg",
+    "cleaner-fluid.svg",
+    "plasma-pistol.svg",
+    "dual-casters.svg",
+    "combistick.svg",
+    "razor-whip.svg",
+    "shuriken.svg",
+    "laser-mine.svg",
+    "medicomp.svg",
+    "tracking-syringe.svg",
+    "biomask.svg",
+    "cleaner-case.svg",
+    "wolf-sprite-sheet.svg",
+    "wolf-unmasked-sprite-sheet.svg",
+    "xeno-sprite-sheet.svg",
+    "predalien-sprite-sheet.svg",
+    "facehugger-sprite-sheet.svg",
+    "fx-sheet.svg",
+    "human-looter-sprite-sheet.svg"
+  ],
+  "note": "Original vector fan-art interpretations created for this prototype; no official film frames or ripped assets.",
+  "spriteSheets": {
+    "wolf-sprite-sheet.svg": {
+      "frame": "128x160",
+      "grid": "8x5",
+      "rows": [
+        "idle",
+        "walk",
+        "melee",
+        "plasma",
+        "hurt"
+      ]
+    },
+    "wolf-unmasked-sprite-sheet.svg": {
+      "frame": "128x160",
+      "grid": "8x5",
+      "rows": [
+        "idle",
+        "walk",
+        "melee",
+        "plasma",
+        "hurt"
+      ]
+    },
+    "xeno-sprite-sheet.svg": {
+      "frame": "128x160",
+      "grid": "6x4",
+      "rows": [
+        "idle",
+        "walk",
+        "attack",
+        "hurt"
+      ]
+    },
+    "predalien-sprite-sheet.svg": {
+      "frame": "160x180",
+      "grid": "6x4",
+      "rows": [
+        "idle",
+        "walk",
+        "attack",
+        "hurt"
+      ]
+    },
+    "facehugger-sprite-sheet.svg": {
+      "frame": "96x96",
+      "grid": "6x4",
+      "rows": [
+        "idle",
+        "scuttle",
+        "leap",
+        "hurt/death"
+      ]
+    },
+    "human-looter-sprite-sheet.svg": {
+      "frame": "96x128",
+      "grid": "6x4",
+      "rows": [
+        "idle",
+        "walk",
+        "fire",
+        "hurt"
+      ]
+    }
+  },
+  "version": "v0.6"
+}

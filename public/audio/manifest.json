@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "06ecd451449c503580196939a631b49343a224c325775eda18c8068e5e7fcf8e",
+  "version": "dd62d59052d79a25217b5bd6346448869fb997d912de5cdc7316b5251bcf63f2",
   "entries": [
     {
       "id": "ui",
@@ -206,6 +206,20 @@
       "fallback": "procedural"
     },
     {
+      "id": "armor-repair",
+      "category": "sfx",
+      "folder": "sfx/armor-repair",
+      "sources": [
+        {
+          "url": "/audio/sfx/armor-repair/berceau.wav?v=3cc5a366f816f310",
+          "mime": "audio/wav",
+          "bytes": 60044,
+          "sha256": "3cc5a366f816f310e2ce0317a119f38defcbb790489615f7e40baa79ce141f23"
+        }
+      ],
+      "fallback": "procedural"
+    },
+    {
       "id": "netgun",
       "category": "sfx",
       "folder": "sfx/netgun",
@@ -346,6 +360,27 @@
       "fallback": "procedural"
     },
     {
+      "id": "vacuum-step",
+      "category": "sfx",
+      "folder": "sfx/vacuum-step",
+      "sources": [],
+      "fallback": "procedural"
+    },
+    {
+      "id": "vacuum-impact",
+      "category": "sfx",
+      "folder": "sfx/vacuum-impact",
+      "sources": [],
+      "fallback": "procedural"
+    },
+    {
+      "id": "vacuum-energy",
+      "category": "sfx",
+      "folder": "sfx/vacuum-energy",
+      "sources": [],
+      "fallback": "procedural"
+    },
+    {
       "id": "ship",
       "category": "ambience",
       "folder": "ambience/ship",
@@ -363,70 +398,140 @@
       "id": "jungle",
       "category": "ambience",
       "folder": "ambience/jungle",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/ambience/jungle/surface-v173.ogg?v=4e15beac4a1ccc4b",
+          "mime": "audio/ogg",
+          "bytes": 121544,
+          "sha256": "4e15beac4a1ccc4b082d4a151a743d94a4a6b5f499339ce224ec09a12e920760"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "ice",
       "category": "ambience",
       "folder": "ambience/ice",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/ambience/ice/surface-v173.ogg?v=809465ecc03f37db",
+          "mime": "audio/ogg",
+          "bytes": 120163,
+          "sha256": "809465ecc03f37db989135e95c04811dd8fdfd749d9a212a7139fcc09fcb756c"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "volcano",
       "category": "ambience",
       "folder": "ambience/volcano",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/ambience/volcano/surface-v173.ogg?v=b066b0410616e507",
+          "mime": "audio/ogg",
+          "bytes": 119395,
+          "sha256": "b066b0410616e50746208fa772565ff3ceef2159d45d37a90ce5386efbbc2993"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "swamp",
       "category": "ambience",
       "folder": "ambience/swamp",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/ambience/swamp/surface-v173.ogg?v=011f54359798f06f",
+          "mime": "audio/ogg",
+          "bytes": 120382,
+          "sha256": "011f54359798f06f64e6de6ce92c338dda5cd635adf78fe2916fbc552d867059"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "desert",
       "category": "ambience",
       "folder": "ambience/desert",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/ambience/desert/surface-v173.ogg?v=12a201acd4107b3f",
+          "mime": "audio/ogg",
+          "bytes": 128163,
+          "sha256": "12a201acd4107b3f3b781303b8cee9e9a2090840a8225994a2ec96efded1abf1"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "ocean",
       "category": "ambience",
       "folder": "ambience/ocean",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/ambience/ocean/surface-v173.ogg?v=400009765739ee3f",
+          "mime": "audio/ogg",
+          "bytes": 128519,
+          "sha256": "400009765739ee3fc01aff7e896ecbba93be689dac79d77f0602c8428b492ad7"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "fungal",
       "category": "ambience",
       "folder": "ambience/fungal",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/ambience/fungal/surface-v173.ogg?v=bcc43dac95899a09",
+          "mime": "audio/ogg",
+          "bytes": 121046,
+          "sha256": "bcc43dac95899a09254d6d9ea5420eddd916e97748f2b9078e7d2a605c834616"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "ruins",
       "category": "ambience",
       "folder": "ambience/ruins",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/ambience/ruins/surface-v173.ogg?v=bc83ec4d2861e234",
+          "mime": "audio/ogg",
+          "bytes": 111819,
+          "sha256": "bc83ec4d2861e234fbc709cec52ecef4227e6534a36581bda540266b35dd94e9"
+        }
+      ],
       "fallback": "procedural"
     },
     {
       "id": "menu",
       "category": "music",
       "folder": "music/menu",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/music/menu/mus-01.ogg?v=767b69508a2f0096",
+          "mime": "audio/ogg",
+          "bytes": 1364078,
+          "sha256": "767b69508a2f00967627027113d9c2f18072665dace201977fb00438dfc48da0"
+        }
+      ],
       "fallback": "silence"
     },
     {
       "id": "ship",
       "category": "music",
       "folder": "music/ship",
-      "sources": [],
+      "sources": [
+        {
+          "url": "/audio/music/ship/MUS-02-veille.mp3?v=22782bef14c6127c",
+          "mime": "audio/mpeg",
+          "bytes": 1080288,
+          "sha256": "22782bef14c6127cb2b4b8569ba9a6cb48120d8c64a3b64ed2be719f150f9980"
+        }
+      ],
       "fallback": "silence"
     },
     {
@@ -462,6 +567,20 @@
       "category": "music",
       "folder": "music/homeworld",
       "sources": [],
+      "fallback": "silence"
+    },
+    {
+      "id": "cradle-return",
+      "category": "music",
+      "folder": "music/cradle-return",
+      "sources": [
+        {
+          "url": "/audio/music/cradle-return/MUS-15-retour.mp3?v=4ed54892d66a86a6",
+          "mime": "audio/mpeg",
+          "bytes": 540288,
+          "sha256": "4ed54892d66a86a6bbeafaeed58ec759a1447a1ad3f87b26c59704a45f8f8291"
+        }
+      ],
       "fallback": "silence"
     }
   ]

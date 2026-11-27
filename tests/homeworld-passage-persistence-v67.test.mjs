@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import { runInNewContext } from 'node:vm';
 import ts from 'typescript';
 import { homeworldQaModelV64 } from '../scripts/homeworld-qa-model-v64.mjs';
-const api=homeworldQaModelV64(process.cwd(),['homeworldPassageV67.ts','homeworldArrivalV67.ts','homeworldCity.ts','../save.ts']);
+const api=homeworldQaModelV64(process.cwd(),['homeworldPassageV67.ts','homeworldArrivalV67.ts','homeworldCity.ts','honorTribunalV147.ts','../save.ts']);
 const source=readFileSync('app/game/GameClient.tsx','utf8'),tree=ts.createSourceFile('GameClient.tsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
 function callback(name,env){let fn;function visit(node){if(ts.isVariableDeclaration(node)&&node.name.getText(tree)===name)fn=node.initializer.arguments[0];ts.forEachChild(node,visit);}visit(tree);assert(fn);const js=ts.transpileModule(`const handler=${fn.getText(tree)};`,{compilerOptions:{target:ts.ScriptTarget.ES2022}}).outputText;return runInNewContext(`(()=>{${js};return handler;})()`,env);}
 function fixture(){

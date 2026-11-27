@@ -6,6 +6,7 @@ const compiled=await build({stdin:{contents:[
  "export * from './app/game/systems/clanWarParallelModesV138';",
  "export * from './app/game/systems/clanWarParallelModesV137';",
  "export * from './app/game/systems/clanWarOperationsV115';",
+ "export * from './app/game/systems/clanWarStealthAcousticsV115';",
  "export * from './app/game/systems/clanWarRtsSquadsV133';",
  "export * from './app/game/systems/clanWarRtsSourceMissionsV129';",
  "export * from './app/game/systems/clanWarMissionTerrainV116';",
@@ -182,12 +183,42 @@ test("Stealth: acoustic contact is available only from a real W3 covered locatio
  assert.equal(hunter.acousticUsed,1);
  assert.ok(["est","ouest","proche"].includes(hunter.heardBearing));
  assert.equal(hunter.heardAtTick,listen.state.active.tick);
+ assert.equal(listen.listenCue?.bearing,hunter.heardBearing);
+ assert.deepEqual(Object.keys(listen.listenCue).sort(),["bearing","gain","lowpassHz","pan"]);
+ assert.ok(!JSON.stringify(listen.state).includes("listenCue"));
  assert.equal(listen.state.clock,staged.clock+1);
  assert.equal(listen.state.rav,staged.rav);
  assert.ok(api.readWarOperationsV115(JSON.stringify(listen.state),rules));
  assert.equal(api.warStealthSoundBearingV138(hunter,listen.state.active.tick),hunter.heardBearing);
  assert.equal(api.warStealthSoundBearingV138(hunter,listen.state.active.tick+3),null);
  assert.ok(!listen.message.includes("("+hunter.guardX+",2)"),"no exact source position in acoustic report");
+});
+
+test("Stealth: the recorded patrol cue respects range, nearest guard, wall and powered gate",()=>{
+ const {state,siteId}=open("stealth");
+ const terrain={...api.warMissionTerrainV116(siteId,rules),walls:[]};
+ const listener={...state.active.stealth,x:3,y:2,guardX:5,guardY:2};
+ const cue=(stealth,map=terrain)=>api.warStealthListenCueV115(stealth,map);
+
+ const clear=cue(listener);
+ assert.equal(clear.bearing,"est");
+ assert.ok(clear.pan>0);
+ const moreDistant=cue({...listener,guardX:8});
+ assert.ok(moreDistant.gain>0 && moreDistant.gain<clear.gain);
+ assert.equal(cue({...listener,guardX:8,guardY:3}),null);
+ const west=cue({...listener,guardX:0,supportGuard:{x:1,y:2,direction:1}});
+ assert.equal(west.bearing,"ouest");
+ assert.ok(west.pan<0);
+ const nearerSupport=cue({...listener,guardX:8,supportGuard:{x:3,y:3,direction:1}});
+ assert.equal(nearerSupport.bearing,"proche");
+ assert.equal(nearerSupport.pan,0);
+
+ const walled=cue(listener,{...terrain,walls:["4,2"]});
+ assert.ok(walled.gain<clear.gain && walled.lowpassHz<clear.lowpassHz);
+ assert.equal(walled.pan,clear.pan);
+ const acrossGate={...listener,x:6,guardX:8};
+ assert.deepEqual(cue(acrossGate),clear);
+ assert.deepEqual(cue({...acrossGate,gridPowered:false}),walled);
 });
 
 test("Stealth: fog of war hides an unobservable guard, and hearing has no permanent omniscience",()=>{
@@ -198,7 +229,7 @@ test("Stealth: fog of war hides an unobservable guard, and hearing has no perman
  const clear={...far,x:7,y:2};
  assert.equal(api.warStealthGuardVisibleV138(clear,map),true);
  const noCover=api.commandStealthV115(state,"listen",rules);
- assert.equal(noCover.accepted,false);assert.equal(noCover.state,state);
+ assert.equal(noCover.accepted,false);assert.equal(noCover.state,state);assert.equal(noCover.listenCue,undefined);
  const inCover=map.cover[0].split(",").map(Number);
  const capped={...state,active:{...state.active,
   stealth:{...state.active.stealth,x:inCover[0],y:inCover[1],energy:5,acousticUsed:2}}};

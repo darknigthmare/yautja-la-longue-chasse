@@ -13,6 +13,9 @@ import ShipPreparationPanelV88 from "./ShipPreparationPanelV88";
 import CompanionResidencePanel from "./CompanionResidencePanel";
 import CompanionQuartersScene from "./CompanionQuartersScene";
 import BuriedCradleReturnPanel from './BuriedCradleReturnPanel';
+import { getCradleCrownCondition } from './systems/buriedCradle';
+import { CRADLE_RETURN_MENTOR } from './systems/buriedCradleReturn';
+import type { HunterAppearance } from './types';
 import cradleArt from './data/buriedCradleArt.json';
 import type { CompanionResidenceObservation } from "./systems/companionResidence";
 import { SHIP_LEVEL_ART } from "./shipInteriorKit";
@@ -48,10 +51,19 @@ const FIXTURE_ART = {
   ...SHIP_INTERIOR_25D_ART,
   archiveTerminal: SHIP_LEVEL_ART_V22.archiveTerminal,
 } satisfies Record<ShipInterior25dArtKey, NativeArt>;
-const crownSource = cradleArt.assets['100'];
-const CRADLE_CROWN_ART: NativeArt = { src: crownSource.src, sourceWidth: crownSource.width, sourceHeight: crownSource.height,
-  alphaBounds: { x: crownSource.bounds[0], y: crownSource.bounds[1],
-    width: crownSource.bounds[2] - crownSource.bounds[0], height: crownSource.bounds[3] - crownSource.bounds[1] } };
+function cradleCrownArt({ src, width, height, bounds }: typeof cradleArt.assets['100']): NativeArt {
+  const [left, top, right, bottom] = bounds;
+  return { src, sourceWidth: width, sourceHeight: height,
+    alphaBounds: { x: left, y: top, width: right - left, height: bottom - top } };
+}
+const CRADLE_CROWN_ART = cradleCrownArt(cradleArt.assets['100']);
+const CRADLE_MARKED_CROWN_ART = cradleCrownArt(cradleArt.assets.A012);
+
+const RETURN_MENTOR_APPEARANCE: HunterAppearance = {
+  presetId: 'custom', bodyMorphId: 'classic', headStyleId: 'legacy-clan',
+  skinId: 'ashen-mottle', biomaskId: null, dreadStyleId: 'braided', dreadTintId: 'obsidian',
+  armorStyleId: 'classic', armorTintId: 'bronze', trophyAdornmentId: 'none',
+};
 
 const freshControls = (): Record<Direction, boolean> => ({ up: false, down: false, left: false, right: false });
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
@@ -62,7 +74,11 @@ const pointOnScreen = (point: ShipInterior25dPoint) => {
 
 /** The same eight services, on a real ground plane. All coordinates below are
  * physical floor coordinates until the one projection in the renderer. */
-export default function ShipInterior25D(props: PhysicalShipDeckProps) {
+type CampaignVoyages = { prepare?: () => void; travel?: () => void };
+export default function ShipInterior25D(props: PhysicalShipDeckProps & {
+  onOpenPersonalTrophyHall?: () => void;
+  campaignVoyages?: CampaignVoyages;
+}) {
   const {
     appearance, loadout, trophyDisplays = [], rankLabel = "Chasseur",
     selectedDestination = "Choisis une chasse à la carte galactique",
@@ -86,6 +102,7 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
   const waypointRef = useRef(waypoint);
   const [status, setStatus] = useState("Pont prêt. Clique sur le sol pour marcher, ou utilise les commandes de déplacement.");
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [returnCleaning, setReturnCleaning] = useState(false);
   const helpId = useId();
   const planId = useId();
   const room = ROOMS[frame.roomId];
@@ -135,19 +152,29 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
     return actual?.type === 'service' ? { site: 'personal', roomId: current.roomId, x: current.actor.x, y: current.actor.y } : null;
   }, []);
 
-  const openService = useCallback((id: PhysicalShipStationId) => {
+  const openService = useCallback((id: PhysicalShipStationId, atFixture = false) => {
     if (suspendedRef.current) return;
     stop();
     const active = propsRef.current;
     active.onInteract?.(id);
     const actions: Record<PhysicalShipStationId, (() => void) | undefined> = {
       "galaxy-map": active.onOpenMap, "wall-armory": active.onOpenArmory,
-      "trophy-hall": active.onOpenTrophies, "clan-archives": active.onOpenArchives,
+      "trophy-hall": atFixture ? (active.onOpenPersonalTrophyHall ?? active.onOpenTrophies) : active.onOpenTrophies,
+      "clan-archives": active.onOpenArchives,
       "appearance-forge": active.onOpenAppearanceForge, "medical-bay": active.onOpenMedbay,
       "training-arena": active.onOpenTraining, "launch-airlock": active.onOpenAirlock,
     };
     actions[id]?.();
   }, [stop]);
+
+  const atCampaignVoyagePost = (command: keyof CampaignVoyages) => {
+    if (suspendedRef.current) return;
+    const { roomId, actor } = frameRef.current;
+    const site = nearbyShipInterior25dInteraction(roomId, actor);
+    if (site?.type !== "service" || site.station.id !== "galaxy-map") return;
+    stop();
+    propsRef.current.campaignVoyages?.[command]?.();
+  };
 
   const walkTo = useCallback((point: ShipInterior25dPoint) => {
     if (suspendedRef.current) return;
@@ -181,7 +208,7 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
     const current = frameRef.current;
     const actual = nearbyShipInterior25dInteraction(current.roomId, current.actor);
     if (!actual) { notify("Approche-toi d’une installation ou d’un passage."); return; }
-    if (actual.type === "service") { openService(actual.station.id); return; }
+    if (actual.type === "service") { openService(actual.station.id, true); return; }
     const destination = shipInterior25dTransition(current.roomId, actual.door.id, current.actor);
     if (!destination) { notify("Le seuil doit être libre et à portée pour passer."); return; }
     stop();
@@ -365,6 +392,23 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
   const cradleState = cradleReturn?.save.buriedCradle;
   const cradleInstalled = !!cradleState && ['extracted', 'reported'].includes(cradleState.status) &&
     cradleState.personalShipId === cradleReturn?.selectedShipId && (cradleState.returnVisit?.revision ?? 0) >= 2;
+  const cradleCrown = cradleState && getCradleCrownCondition(cradleState.progress);
+  const cradleReturnArt = cradleCrown === 'intact' ? CRADLE_CROWN_ART :
+    cradleCrown === 'marked' ? CRADLE_MARKED_CROWN_ART : FIXTURE_ART.archiveTerminal;
+  const cradleReturnLabel = cradleCrown === 'intact' ? 'Crête de la Matriarche rapportée' :
+    cradleCrown === 'marked' ? 'Crête de la Matriarche marquée par l’acide' : 'Relevés du Berceau sans trophée';
+  const cradleMentorHere = frame.roomId === CRADLE_RETURN_MENTOR.roomId &&
+    cradleState?.status === 'extracted' && cradleState.personalShipId === cradleReturn?.selectedShipId &&
+    cradleState.returnVisit?.revision === 1;
+  const cradleMentorPosition = CRADLE_RETURN_MENTOR.position;
+  const cradleMentorScreen = pointOnScreen(cradleMentorPosition);
+  const visitCradleMentor = () => {
+    const current = frameRef.current;
+    if (suspendedRef.current || current.roomId !== CRADLE_RETURN_MENTOR.roomId) return;
+    const interaction = nearbyShipInterior25dInteraction(current.roomId, current.actor);
+    if (interaction?.type === 'service') focusCradleReturn();
+    else walkTo(ROOMS[current.roomId].station.approach);
+  };
 
   return <section ref={rootRef} className={styles.interior + " physical-ship-deck"} role="region"
     aria-label="Intérieur du vaisseau Yautja en 2,5D, huit salles reliées sur deux ponts" aria-describedby={helpId}
@@ -389,8 +433,17 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
         <div className={styles.floorRim} style={{ top: roomHeight - 26 }} aria-hidden="true" />
         <div className={styles.roomGlyph} aria-hidden="true">{String(ROOM_ORDER.indexOf(frame.roomId) + 1).padStart(2, "0")}</div>
         {room.fixtures.map(fixture => <Fixture key={fixture.id} fixture={fixture} actor={frame.actor}
-          artOverride={cradleInstalled && fixture.id === 'trophy-workbench' ? cradleState?.progress.crownClaimed ? CRADLE_CROWN_ART : FIXTURE_ART.archiveTerminal : undefined}
-          label={cradleInstalled && fixture.id === 'trophy-workbench' ? cradleState?.progress.crownClaimed ? 'Crête de la Matriarche rapportée' : 'Relevés du Berceau sans trophée' : undefined} />)}
+          artOverride={cradleInstalled && fixture.id === 'trophy-workbench' ? cradleReturnArt : undefined}
+          label={cradleInstalled && fixture.id === 'trophy-workbench' ? cradleReturnLabel : undefined} />)}
+        {cradleMentorHere && <div className={styles.actor} data-cradle-return-mentor={CRADLE_RETURN_MENTOR.id}
+          style={{ left: cradleMentorScreen.x, top: cradleMentorScreen.y, zIndex: 20 + Math.round(cradleMentorPosition.y) }}>
+          <span className={styles.actorShadow} />
+          <HunterRigPreview appearance={RETURN_MENTOR_APPEARANCE} armorId="scout" weaponIds={[]} gearIds={[]}
+            size={ACTOR_WIDTH} pose="idle" label="Mentor du retour du Berceau"
+            style={{ position: "absolute", left: -ACTOR_WIDTH / 2, top: -ACTOR_FOOT }} />
+          <button type="button" className={styles.returnMentorAction} data-cradle-return-mentor-action
+            disabled={suspended} tabIndex={inView(cradleMentorPosition, 80) ? 0 : -1} onClick={visitCradleMentor}>Parler au mentor</button>
+        </div>}
         {companions && <CompanionQuartersScene save={companions.save} site="personal" shipId={companions.selectedShipId} roomId={frame.roomId} />}
         {frame.roomId === "trophy-hall" && trophyDisplays.slice(0, 4).map((trophy, index) => <div className={styles.trophy} key={trophy.id} style={{ left: 260 + index * 185, top: 50 }}>
           <img src={trophy.image} alt={trophy.label} draggable={false} /><span>{trophy.label}</span>
@@ -419,6 +472,8 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
             size={ACTOR_WIDTH} pose={frame.moving && !suspended && !reducedMotion ? "run" : "idle"} phase={reducedMotion ? 0 : frame.phase}
             speed={frame.moving && !suspended ? METRICS.speed : 0} facing={frame.actor.facing} label="Ton chasseur équipé dans le vaisseau"
             style={{ position: "absolute", left: -ACTOR_WIDTH / 2, top: -ACTOR_FOOT }} />
+          {returnCleaning && frame.roomId === 'medical-bay' && <span aria-hidden="true" data-cradle-return-cleaning
+            className={styles.returnCleaning} />}
         </div>
       </div>
       <div className={styles.vignette} aria-hidden="true" />
@@ -443,13 +498,30 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
       <div className={styles.actions}>
         {cradleState?.returnVisit && ['extracted', 'reported'].includes(cradleState.status) && <button type="button"
           disabled={suspended} onClick={focusCradleReturn}>Retour du Berceau · Y / Triangle</button>}
+        {serviceNearby === "galaxy-map" && props.campaignVoyages && <div aria-label="Routes de campagne">
+          {props.campaignVoyages.prepare && <button type="button" disabled={suspended} data-prepare-first-interstellar
+            onClick={() => atCampaignVoyagePost("prepare")}>Préparer le premier trajet</button>}
+          {props.campaignVoyages.travel && <button type="button" disabled={suspended} data-open-first-interstellar
+            onClick={() => atCampaignVoyagePost("travel")}>Premier trajet interstellaire</button>}
+        </div>}
         <button type="button" disabled={suspended || !nearby} className={styles.interact} data-ship-interact onClick={interact}><kbd>{interactionKey} / A</kbd>{interactLabel}</button>
         <div><button type="button" disabled={suspended} data-ship-approach-service onClick={stationRequest}>Rejoindre le poste</button>
           <button type="button" disabled={suspended || (!frame.path.length && !waypoint)} onClick={cancelGuidance}>Arrêter le trajet</button></div>
       </div>
     </div>
     <p className={styles.status} role="status" aria-live="polite">{status}</p>
-    {cradleReturn && <BuriedCradleReturnPanel controlled={cradleReturn} stationId={serviceNearby} suspended={suspended}
+    {cradleReturn && <BuriedCradleReturnPanel controlled={{ ...cradleReturn, onAction(action, observation) {
+      const accepted = cradleReturn.onAction(action, observation);
+      if (accepted && action.type === 'treat-return') {
+        setReturnCleaning(true);
+        const timer = window.setTimeout(() => {
+          setReturnCleaning(false);
+          timersRef.current.delete(timer);
+        }, 1600);
+        timersRef.current.add(timer);
+      }
+      return accepted;
+    } }} stationId={serviceNearby} suspended={suspended}
       observe={() => {
         if (suspendedRef.current) return null;
         const current = frameRef.current;
@@ -484,7 +556,7 @@ function Fixture({ fixture, actor, artOverride, label }: { fixture: ShipInterior
   artOverride?: NativeArt; label?: string }) {
   const point = pointOnScreen(fixture);
   const actorPoint = pointOnScreen(actor);
-  const displayHeight = artOverride === CRADLE_CROWN_ART ? 230 : fixture.height;
+  const displayHeight = artOverride === CRADLE_CROWN_ART || artOverride === CRADLE_MARKED_CROWN_ART ? 230 : fixture.height;
   const occludes = actor.y < fixture.y && Math.abs(actor.x - fixture.x) < fixture.width / 2 + 22 && actorPoint.y > point.y - displayHeight && actorPoint.y - ACTOR_FOOT < point.y;
   return <div className={styles.fixture} data-ship-fixture={fixture.id} data-occluding={occludes} data-fixture-depth={Math.round(fixture.y)}
     data-cradle-return-object={label ? 'installed' : undefined} role={label ? 'img' : undefined} aria-label={label}

@@ -5,7 +5,9 @@ import { useId, useLayoutEffect, useRef, useState } from 'react';
 import { useMenuGamepad } from './useMenuGamepad';
 import type { SaveGame } from './types';
 import { shipForId, type ShipId } from './shipCatalogue';
-import { CRADLE_RETURN_STATIONS, cradleReturnChoice, type CradleReturnObservation, type CradleReturnOperation } from './systems/buriedCradleReturn';
+import { CRADLE_RETURN_MENTOR, CRADLE_RETURN_STATIONS, cradleReturnChoice, type CradleReturnObservation, type CradleReturnOperation } from './systems/buriedCradleReturn';
+import { getCradleCrownCondition, hasCradleCrownForReturn } from './systems/buriedCradle';
+import cradleArt from './data/buriedCradleArt.json';
 import type { PhysicalShipStationId } from './systems/shipLevelLayout';
 import styles from './BuriedCradleReturnPanel.module.css';
 
@@ -45,7 +47,10 @@ export default function BuriedCradleReturnPanel({ controlled, stationId, suspend
   const correctHull = controlled.selectedShipId === state.personalShipId;
   const ready = correctHull && !suspended && state.status === 'extracted';
   const examined = visit.revision >= 2;
-  const crown = state.progress.crownClaimed;
+  const witnessed = visit.events[1]?.witness === CRADLE_RETURN_MENTOR.id;
+  const crownCondition = getCradleCrownCondition(state.progress);
+  const crown = hasCradleCrownForReturn(state.progress);
+  const crownArt = cradleArt.assets[crownCondition === 'marked' ? 'A012' : '100'];
   const act = (type: CradleReturnOperation) => {
     const observation = observe();
     if (!observation || !ready) { setFeedback('Rejoins le poste dans le vaisseau de retour pour confirmer cette étape.'); return; }
@@ -68,7 +73,9 @@ export default function BuriedCradleReturnPanel({ controlled, stationId, suspend
       <h3 id={titleId}>Ce que la reine a changé</h3></div><span className={styles.badge}>{choice ? 'Retour consigné' : `${visit.revision} / 3 étapes`}</span>
       {onExit && <button type="button" disabled={suspended} onClick={() => { setFocused(false); onExit(); }}>Reprendre le déplacement · B / Échap</button>}</header>
     {!correctHull && <p className={styles.notice}>Le contenu de cette expédition est à bord de {shipForId(state.personalShipId).name}. Reprends cette coque pour poursuivre le retour.</p>}
-    <p className={styles.intro}>{crown ? 'La crête est revenue avec toi. Avant de l’exposer, passe aux soins et examine ce que tu as retiré de la ruche.' :
+    <p className={styles.intro}>{crownCondition === 'lost' ? 'L’acide a détruit la crête pendant le transport. Tu peux conserver les relevés de ta victoire sur la Matriarche ; le support restera vide.' :
+      crownCondition === 'marked' ? 'La crête a survécu au transport et garde des marques d’acide. Après les soins, examine-la avec le mentor.' :
+      crown ? 'La crête est revenue avec toi. Avant de l’exposer, passe aux soins et examine ce que tu as retiré de la ruche.' :
       state.progress.bossDefeated ? 'La Matriarche est tombée, mais tu es revenu sans sa crête. Tu peux raconter l’affrontement et conserver tes relevés ; le support restera vide.' :
       'La ruche garde encore sa Matriarche. Tu es revenu avec ce que tu as appris de ses passages et de ses défenses. Reprends ces relevés avant d’y retourner.'}</p>
     <div className={styles.steps}>
@@ -81,12 +88,15 @@ export default function BuriedCradleReturnPanel({ controlled, stationId, suspend
       </article>
       <article className={styles.step} data-return-step="inspection"><span className={styles.number}>02</span><h4>{crown ? 'Examiner la crête' : 'Installer les relevés'}</h4>
         <p>{examined ? crown ? 'La crête repose sur le support. Les relevés de cette expédition restent à côté : ils racontent comment tu l’as obtenue.' :
-          'Les relevés d’expédition sont installés. Le support de trophée reste vide.' : 'Rejoins la galerie des trophées et examine ce qui a réellement été rapporté.'}</p>
-        {examined && correctHull && crown && <img className={styles.crown} src="/game/xeno-prime/berceau-v1/sprites/props_effets/100_trophee_couronne_socle.png" alt="Crête de la Matriarche sur son support" width={1254} height={1254} />}
+          'Les relevés d’expédition sont installés. Le support de trophée reste vide.' : 'Le mentor te rejoint à l’établi de la galerie des trophées après les soins. Examine avec lui ce qui est revenu à bord.'}</p>
+        {witnessed && <p className={styles.detail} data-cradle-return-witness>Examen observé par le mentor du retour.</p>}
+        {examined && correctHull && crown && <img className={styles.crown} src={crownArt.src}
+          alt={crownCondition === 'marked' ? 'Crête de la Matriarche marquée par l’acide' : 'Crête de la Matriarche sur son support'}
+          width={crownArt.width} height={crownArt.height} />}
         {examined && <dl className={styles.readings}><div><dt>Lieux relevés</dt><dd>{state.progress.visitedRoomIds.length} / 12</dd></div>
           <div><dt>Raccourcis ouverts</dt><dd>{state.progress.shortcutIds.length} / 3</dd></div>
           <div><dt>Matriarche</dt><dd>{state.progress.bossDefeated ? 'Vaincue' : 'Non vaincue'}</dd></div>
-          <div><dt>Crête prélevée</dt><dd>{crown ? 'Oui' : 'Non'}</dd></div></dl>}
+          <div><dt>État de la crête</dt><dd>{crownCondition === 'marked' ? 'Marquée par l’acide' : crownCondition === 'lost' ? 'Détruite par l’acide' : crown ? 'Rapportée intacte' : 'Non prélevée'}</dd></div></dl>}
         {!choice && <><button type="button" data-cradle-return-guide="trophy-hall" disabled={!correctHull || suspended} onClick={() => navigate('trophy-hall')}>Guider vers l’atelier</button>
           {stepButton('inspect-return', examined ? 'Examen effectué' : crown ? 'Installer et examiner la crête' : 'Installer et examiner les relevés', visit.revision === 1)}</>}
       </article>

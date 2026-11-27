@@ -1,0 +1,169 @@
+{
+  "version": 1,
+  "date": "2026-11-21",
+  "baseCommit": "d5e95fba7358924108e425cf7056a5a38fe2b944",
+  "lots": [
+    {
+      "priority": "P0",
+      "limit": 10,
+      "entries": [
+        {
+          "id": "V144-Q11",
+          "source": "docs/Yautja_Gauntlets_V144_Controle_Campagne.xlsx",
+          "sourceDetail": "03_QA_V144!A15:G15 · P0 ouvert dans le classeur source",
+          "criterion": "Transitions complet GameClient titres/armurerie/mission · E2E complet · sans trophées synthétiques.",
+          "status": "VÉRIFIÉ",
+          "result": "Deux vraies campagnes. Dossiers Chopper au Volcan et Lost Warrior en Glace, refus d’une autre étude, équipement, dessin en mission, suspension et reprise depuis les titres. Les trophées gagnés sont préservés.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44953968965/artifacts/14726927150",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44953968965/artifacts/14727410310"
+          ]
+        },
+        {
+          "id": "REM112-06",
+          "source": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+          "sourceDetail": "Restant!A10:F10 · lot chasse priorisé pour cette reprise",
+          "criterion": "Huit chasses avec combat, canopée optionnelle, prélèvements, extraction, sauvegarde/reprise et atelier par les entrées du produit. Jouer chaque chasse sans retirer ennemis, téléporter ni forcer un résultat ; conserver armure, charge, profil d'accessibilité, parcours, morts/reprises et stock final. Les scénarios automatisés bornés restent explicitement bornés.",
+          "status": "PARTIEL",
+          "result": "Au Marais, la peau du sauteur de qualité 61 a survécu à la reprise à 143,65 s. Extraction au score 85, puis 15 gestes et 14 marques jusqu’à son entrée en réserve. Au Désert, l’os du chacal de qualité 68 est prélevé. Son règlement et son atelier restent ouverts, de même que la qualification complète des huit chasses.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44955740956/artifacts/14727084602",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44953627451/artifacts/14727332367",
+            "docs/qa/v112-ground-campaign/README.md",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44955535929/job/137002663254",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44954090127/artifacts/14727580723",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44954090127/artifacts/14727750637"
+          ]
+        }
+      ]
+    },
+    {
+      "priority": "P1",
+      "limit": 10,
+      "entries": [
+        {
+          "id": "W3-S18",
+          "source": "docs/YAUTJA_REPRISE_CHANTIERS_20261101.xlsx",
+          "sourceDetail": "OuvertsSource!A23:J23 · Structures de guerre!C23:K23 · P1 ouvert source",
+          "criterion": "Mêmes objets, stocks finis, trajet réel, refus/reprise persistants ; acquisition et accord de campagne restent distincts des exercices.",
+          "status": "PARTIEL",
+          "result": "Le poste ouvre un accord explicite rattaché au reçu de propriété V161 et à la liaison. Le manifeste et le relevé d’arrivée gardent cet accord. Le stock V109 demeure acquis à l’exercice et l’embarquement de cargaison de campagne reste à raccorder.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44954064509/artifacts/14725959402",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44954064509",
+            "docs/v112-open-workstreams-audit.json"
+          ]
+        }
+      ]
+    },
+    {
+      "priority": "P2",
+      "limit": 10,
+      "entries": [
+        {
+          "id": "R2-M019",
+          "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sourceDetail": "Acte III · Revenir avec la triade",
+          "criterion": "Effectuer le retour avec les trois chasseurs et remettre la même preuve.",
+          "status": "PARTIEL",
+          "result": "Le dossier s’ouvre sur Homeworld après V90 et revient au même point. Une chasse complète enregistre les contributions de la triade, la peau et le crâne. Le témoin enregistre l’ordre choisi, repris après rechargement. Secours, civière et absence restent ouverts.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44955278445/artifacts/14727645258",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44955278445",
+            "docs/campagne/BIBLE_DE_CAMPAGNE.md"
+          ]
+        },
+        {
+          "id": "VAR-feral-hunter.lost-or-stowed-equipment",
+          "source": "docs/v112-open-workstreams-audit.json",
+          "sourceDetail": "14_VARIANTES!F10 · P2 ouvert source",
+          "criterion": "Deux sens natifs, armes/masque/armure réels et transitions persistantes ; pas de clôture par miroir ou pose statique.",
+          "status": "PARTIEL",
+          "result": "Le nul s’arrête à la manche unique du parcours. La reprise conserve le kit d’entrée, y compris les dispositifs dépensés dans une étape précédente. Les variantes et sens natifs restent ouverts.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44955345705"
+          ]
+        },
+        {
+          "id": "VAR-scar.lost-or-stowed-equipment",
+          "source": "docs/v112-open-workstreams-audit.json",
+          "sourceDetail": "14_VARIANTES!F7 · P2 ouvert source",
+          "criterion": "Deux sens natifs, armes/masque/armure réels et transitions persistantes ; pas de clôture par miroir ou pose statique.",
+          "status": "PARTIEL",
+          "result": "Le nul s’arrête à la manche unique du parcours. La reprise conserve le kit d’entrée, y compris les dispositifs dépensés dans une étape précédente. Les variantes et sens natifs restent ouverts.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44955345705"
+          ]
+        }
+      ]
+    },
+    {
+      "priority": "P3",
+      "limit": 10,
+      "entries": [
+        {
+          "id": "ENFORCERS-V613-RECEIPTS",
+          "source": "docs/YAUTJA_REPRISE_CHANTIERS_20261101.xlsx",
+          "sourceDetail": "OuvertsSource!A27 · V6.13 production-manifest.json / summary",
+          "criterion": "21 prompts/reçus finaux non récupérés ; 15 retrouvés. Les prompts planifiés ne sont pas des soumissions attestées. Récupérer les reçus/traces historiques authentiques ; un nouveau dessin ou reçu ne répare pas leur absence.",
+          "status": "PARTIEL",
+          "result": "Les 36 PNG finaux, dont les 21 sans reçu, sont liés à des signatures C2PA validées hors réseau par la liste d’autorités épinglée. Horodatages non approuvés. Vérification OCSP non effectuée. Les 21 reçus historiques restent manquants.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44954155066/artifacts/14726602172",
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44953849844/artifacts/14726642765"
+          ]
+        },
+        {
+          "id": "ENFORCERS-V610-TRACES",
+          "source": "docs/YAUTJA_REPRISE_CHANTIERS_20261101.xlsx",
+          "sourceDetail": "OuvertsSource!A28 · Attestation de réconciliation d71e995ae886df69c4165a1a153291449e8f22f6",
+          "criterion": "36 traces historiques V6.10 sans PNG récupéré ; zéro fichier produit ajouté à ce titre. Récupérer les reçus/traces historiques authentiques ; un nouveau dessin ou reçu ne répare pas leur absence.",
+          "status": "BLOQUÉ",
+          "result": "Les recherches de corpus, d’archives et d’exports de conversation n’ont livré aucun des 36 PNG V6.10. La qualification C2PA porte uniquement sur les fichiers V6.13 effectivement présents.",
+          "evidence": [
+            "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44954155066",
+            "docs/suivi-production/enforcers-recherche-sources-20261121.tsv"
+          ]
+        }
+      ]
+    }
+  ],
+  "deliveries": [
+    {
+      "id": "HOMEWORLD-CONTEXTE-HISTORIQUE",
+      "source": "docs/YAUTJA_V112_SUIVI.xlsx",
+      "sourceDetail": "ChantiersV112!A6:H6 et A8:H8 · mobilité et reprise",
+      "criterion": "Rejouer la trajectoire du marché et la reprise de la cargaison large avec le contexte historique V111 intact.",
+      "status": "VÉRIFIÉ",
+      "result": "63 tests rétablis sur V111 et 27 sur le contexte V112 conservé par V113. La vérification V110 retrouve ses 56 assertions et son classeur exact. Le moteur quitte physiquement le point bloqué. Les archives et les documents modernes restent intacts.",
+      "evidence": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44953612696/artifacts/14726099940",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44954219581/artifacts/14727505075",
+        "docs/YAUTJA_V111_SUIVI.xlsx",
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44954648949/artifacts/14726782538"
+      ]
+    },
+    {
+      "id": "DIALOGUE-VEILLE-PARTAGEE",
+      "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md#L2443",
+      "sourceDetail": "Veille Partagée et reçu de campagne",
+      "criterion": "Afficher le rôle joué, les postes contrôlés et la capacité provenant du reçu gagné après le retour.",
+      "status": "VÉRIFIÉ",
+      "result": "76 tests sur le dialogue, les contrats d’origine, l’escorte et le reçu sauvegardé. Le récit demande le vrai reçu de victoire avant d’afficher le détail collectif.",
+      "evidence": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44953739844"
+      ]
+    },
+    {
+      "id": "TRIADE-PARCOURS-NATIF",
+      "source": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+      "sourceDetail": "R2-M019 · retour de la triade",
+      "criterion": "Accès de la campagne depuis Homeworld, retour au point conservé et présentation ordonnée de la même preuve.",
+      "status": "VÉRIFIÉ",
+      "result": "Chromium confirme le verrou pré-V90, la position conservée et le parcours après V90. 816 ticks de jeu concordent avec le rejeu. Saar et Vek contribuent à la chasse. La peau, le crâne et l’ordre des gestes sont préservés après rechargement.",
+      "evidence": [
+        "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44955278445/artifacts/14727645258"
+      ]
+    }
+  ]
+}

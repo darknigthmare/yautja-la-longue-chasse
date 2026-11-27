@@ -108,3 +108,43 @@ test('two simultaneous migrations share one FIFO lock and only the first may rep
 test('migration size limits preserve an otherwise valid legacy archive instead of dropping its original',async()=>{
  const base=api.exportLogisticsV108(api.createLogisticsV108()),original=' '.repeat(api.CLAN_SUPPLY_MAX_BYTES_V109-new TextEncoder().encode(base).length-4)+base;assert.ok(api.importLogisticsV108(original).state);let raw=original;const storage={getItem:()=>raw,setItem:(_,value)=>{raw=value;}},current=api.createSupplySessionV109(storage,async fn=>fn());current.hydrate();await current.whenSettled();assert.equal(raw,original);assert.equal(current.getSnapshot().migrationPending,true);assert.match(current.getSnapshot().message,/4 Mo/);
 });
+
+test('a blocked V109 tab reads the winning full envelope without altering its exact legacy archive', async () => {
+ const original='\n '+api.exportLogisticsV108(api.createLogisticsV108())+'\n';
+ let raw=original,writes=0,locks=0;
+ const storage={getItem:()=>raw,setItem:(_,value)=>{raw=value;writes++;}};
+ const lock=async operation=>{locks++;return operation();};
+ const first=api.createSupplySessionV109(storage,lock);
+ first.hydrate();
+ await first.whenSettled();
+ const initial=first.getSnapshot().state;
+ const second=api.createSupplySessionV109(storage,lock);
+ second.hydrate();
+ await second.act({kind:'hire',actor:'carrier'});
+ const winner=raw,confirmedWrites=writes;
+ first.externalChange();
+ assert.equal(first.getSnapshot().state,initial);
+ assert.equal(first.getSnapshot().blocked,true);
+ await first.act({kind:'wait'});
+ assert.equal(raw,winner);
+ const differentOriginal=api.exportSupplyV109(api.createSupplyV109(original.trim()));
+ for(const unavailable of [null,'{"version":9}',differentOriginal]){
+  raw=unavailable;
+  await first.resume();
+  assert.equal(first.getSnapshot().blocked,true);
+  assert.equal(first.getSnapshot().state,initial);
+  assert.equal(raw,unavailable);
+ }
+ raw=winner;
+ const precedingLocks=locks;
+ await first.resume();
+ assert.equal(locks,precedingLocks+1);
+ assert.equal(first.getSnapshot().blocked,false);
+ assert.deepEqual(first.getSnapshot().state,second.getSnapshot().state);
+ assert.equal(first.getSnapshot().state.originalV108Archive,original);
+ assert.equal(raw,winner);
+ assert.equal(writes,confirmedWrites);
+ await first.act({kind:'wait'});
+ assert.equal(first.getSnapshot().state.convoy.turn,second.getSnapshot().state.convoy.turn+1);
+ assert.equal(writes,confirmedWrites+1);
+});

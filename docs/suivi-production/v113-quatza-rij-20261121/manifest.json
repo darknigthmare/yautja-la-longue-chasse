@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "generatedOn": "2026-11-21",
+  "scope": "Quatza-Rij sur le monde natal et chasse solitaire",
+  "origin": "Deux générations d’images originales réalisées pour le dépôt, recadrées puis exportées en PNG avec transparence. Aucune planche d’un jeu existant n’a été fournie comme source.",
+  "usage": "Intégration et réutilisation dans ce projet demandées pour ce lot. Aucun statut de licence de tiers n’a été fourni.",
+  "bible": "docs/campagne/BIBLE_DE_CAMPAGNE.md#l-02--le-quatza-rij-à-trois",
+  "assets": [
+    {
+      "filename": "poses.png",
+      "url": "/game/quatza-rij/poses.png",
+      "destination": "Créature en triade et en solo",
+      "poses": [
+        "veille",
+        "marche",
+        "alerte",
+        "charge",
+        "griffe",
+        "recul",
+        "au sol",
+        "récupération"
+      ],
+      "width": 1104,
+      "height": 336,
+      "bytes": 116961,
+      "sha256": "5299f3228c1ad96fd2c40ca1fe4f3849958ca29bc81b3a18471ae068b2965633",
+      "gitBlob": "e295f5812b1c3a6ea3f783368376f1ae4b80cea6"
+    },
+    {
+      "filename": "skull.png",
+      "url": "/game/quatza-rij/skull.png",
+      "destination": "Crâne prélevé, porté et remis",
+      "poses": [
+        "crâne"
+      ],
+      "width": 164,
+      "height": 120,
+      "bytes": 8358,
+      "sha256": "965dc1980d2213af7c5b7df2562bb1db2c3447b3ccd51b1ed272362f3c94dffd",
+      "gitBlob": "4257aa3e4c189ba0c1365b8e3beaf4f5889e071b"
+    },
+    {
+      "filename": "hide.png",
+      "url": "/game/quatza-rij/hide.png",
+      "destination": "Peau prélevée, portée et remise",
+      "poses": [
+        "rouleau de peau"
+      ],
+      "width": 164,
+      "height": 120,
+      "bytes": 10153,
+      "sha256": "826df71b7646950aee05e8cc08feabd831ac488563d73e29537086fa6c80df7a",
+      "gitBlob": "17b094ad45e14dbda43b7bdda3b73750e643b29f"
+    }
+  ],
+  "limits": [
+    "La bible ne fixe pas l’apparence de la créature. Les huit poses sont des images de référence, reliées aux états joués. La variante adulte utilise une autre taille de rendu avec cette planche.",
+    "Les effets et musiques dédiés au Quatza-Rij et à la préparation restent à fournir."
+  ]
+}

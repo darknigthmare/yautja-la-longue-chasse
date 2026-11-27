@@ -1,0 +1,142 @@
+.panel {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0.75rem 0 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(123, 224, 141, 0.35);
+  border-radius: 6px;
+  background: rgba(6, 12, 10, 0.88);
+  color: #e6efe8;
+}
+
+.header h2 {
+  margin: 0.15rem 0;
+  font-size: 1.1rem;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9ccfa8;
+}
+
+.ship {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.ship[data-ship-owned="false"] {
+  color: #f0b07a;
+}
+
+.itinerary {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(123, 224, 141, 0.25);
+}
+
+.itinerary h3,
+.itinerary p {
+  margin: 0;
+}
+
+.itinerary h3 {
+  font-size: 0.9rem;
+}
+
+.destination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.destination select {
+  max-width: 100%;
+  color: inherit;
+  background: #14241b;
+  border: 1px solid #789780;
+  border-radius: 4px;
+  padding: 0.35rem 0.45rem;
+}
+
+.routes {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.route {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  border-left: 3px solid #7be08d;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.route[data-route-type="humaine"] { border-left-color: #d6b35e; }
+.route[data-route-type="sauvage"] { border-left-color: #e08a4f; }
+.route[data-route-type="interdite"] { border-left-color: #d0566b; }
+
+.route div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.route span,
+.route small {
+  font-size: 0.8rem;
+  color: #b7c8bb;
+}
+
+.trip {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.trip p {
+  margin: 0;
+}
+
+.trip progress {
+  width: 100%;
+}
+
+.incident {
+  display: grid;
+  gap: 0.4rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(240, 176, 122, 0.5);
+  background: rgba(40, 22, 10, 0.7);
+}
+
+.incident h3,
+.incident p {
+  margin: 0;
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.note {
+  font-size: 0.8rem;
+  color: #b7c8bb;
+}
+
+.resolved,
+.message {
+  margin: 0;
+  font-size: 0.85rem;
+}

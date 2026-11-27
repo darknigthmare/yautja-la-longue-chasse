@@ -1,6 +1,9 @@
 import type {FieldSpecimenV112,HarvestInventoryV112} from "./systems/harvestInventoryV112";
 import type { HuntAccessibilityV112 } from "./systems/huntAccessibilityV112";
 import type { HunterChromaticsV113 } from "./hunterChromaticsV113";
+import type { HunterPieceColorsV146, HunterLightsV146, HunterPieceIdV146 } from "./hunterPiecesV146";
+import type { HunterMarksDisplayV146, SkinPatternIdV146, CustomizationV146 } from "./systems/hunterCustomizationV146";
+import type { HoundHuntReportV147, HuntingHoundsV147 } from "./systems/huntingHoundsV147";
 /**
  * Shared game contracts.
  *
@@ -283,6 +286,14 @@ export interface HunterAppearance {
   laserColorId?: LaserColorId;
   /** Optional for legacy V1-V112 saves; normalized by save.ts. */
   chromaticsV113?: HunterChromaticsV113;
+  /** V146: per-piece colours in three zones plus light; absent = channel colours. */
+  piecesV146?: HunterPieceColorsV146;
+  /** V146: recoloured glowing effects (laser, plasma, display...). */
+  lightsV146?: HunterLightsV146;
+  /** V146: earned marks the player chose to show, with their colour. */
+  marksV146?: HunterMarksDisplayV146;
+  /** V146: skin pattern layer (earned), null = none. */
+  skinPatternIdV146?: SkinPatternIdV146 | null;
 }
 
 export interface ContentUnlock {
@@ -510,6 +521,11 @@ export interface MissionDefinition {
   targetKind: "human" | "beast" | "yautja";
   briefing: string;
   debrief: MissionDebriefDefinition;
+  presentation?: {
+    backgroundPath: string;
+    backgroundLayout: "single";
+    revealAnnouncement?: string;
+  };
   threatLevel: 1 | 2 | 3 | 4;
   prerequisiteMissionId: MissionId | null;
   recommendedArmorId: ArmorId;
@@ -577,6 +593,10 @@ export interface MissionResult {
   /** Permanent discoveries survive success, death and voluntary extraction. */
   exploration?: ExplorationProgress;
   secondWindUsed: boolean;
+  /** V146: armour pieces cracked by heavy hits; applied once to the campaign. */
+  wearV146?: { heavyPieces: HunterPieceIdV146[] };
+  /** V147: the hound that joined this hunt (orders carried out, wound, death). */
+  houndV147?: HoundHuntReportV147;
   completedAt: string;
 }
 
@@ -616,11 +636,8 @@ export interface PlayerProfile {
    * d'une sauvegarde antérieure : la migration garde le rang qu'elle affichait.
    */
   acquiredRankIdV166?: RankId;
-  /**
-   * V168 : épreuves de rang (systems/rankTrialsV168.ts). Absent d'une
-   * sauvegarde antérieure : les rangs acquis sont réputés épreuve réussie.
-   */
-  rankTrialsV168?: import("./systems/rankTrialsV168").RankTrialsStateV168;
+  /** Preserved pilot receipts pending support for their narrative rites. */
+  rankTrialsV168?: unknown;
   honor: number;
   clanMarks: number;
   playTimeSeconds: number;
@@ -675,6 +692,11 @@ export interface SaveGame {
   trophyTutorialV6?: import("./systems/trophyTutorialV6").TrophyTutorialStateV6 | null;
   /** Physical PLAN08 expedition, with distinct victory, crest and debrief receipts. */
   buriedCradle?: import("./systems/buriedCradleCampaign").BuriedCradleCampaign | null;
+  elderPassageJudgmentV168?: import("./systems/elderPassageJudgmentV168").ElderPassageJudgmentV168 | null;
+  elderMentoringV168?: import("./systems/elderMentoringV168").ElderMentoringV168 | null;
+  elderAssemblyV168?: import("./systems/elderAssemblyV168").ElderAssemblyV168 | null;
+  elderWorkshopV172?: import("./systems/elderWorkshopV172").ElderWorkshopV172 | null;
+  eliteMasteryV170?: import("./systems/eliteMasteryV170").EliteMasteryV170 | null;
   /** Explicit residence, installed quarters and physical presence of recruited companions. */
   companionResidence?: import("./systems/companionResidence").CompanionResidenceState | null;
   /** Replayed physical incidents at the existing clan terminals, OPS-B01/B02/B03. */
@@ -685,6 +707,10 @@ export interface SaveGame {
   clanShipReturnEscort?: import("./systems/clanShipReturnEscort").ClanShipReturnEscortState | null;
   /** Optional owner-bound mobility register; legacy saves receive no property or permit. */
   mobilityV1?: import("./systems/mobility/ledger").MobilityLedger | null;
+  /** Optional MOB-012 mount register (V153), separate from mobilityV1; written only once a mount action is confirmed. */
+  mountsV153?: import("./systems/mobility/mountsV153").MountsV153 | null;
+  /** Optional V156 mounted rides on the convoy yard, separate from mobilityV1; mountsV153 changes only on return. */
+  mountRidesV156?: import("./systems/mobility/mountRidingV156").MountRidesV156 | null;
   /** Null preserves pre-prologue adult campaigns without retroactive narrative proof. */
   prologue: NurseryCampaignProgress | null;
   /** Actual Unblooded exercises and equipment; never the adult starter loadout. */
@@ -698,6 +724,9 @@ export interface SaveGame {
   soloV70?: SoloV70Campaign | null;
   /** Local preparation only; never substitutes for a Blooded rite. */
   soloV90?: SoloV90Campaign | null;
+  bloodedTempleV174?: import("./systems/bloodedTempleV174").BloodedTempleV174 | null;
+  eliteRecognitionV174?: import("./systems/eliteRecognitionV174").EliteRecognitionV174 | null;
+  quatzaRij?: import("./systems/quatzaRij").QuatzaRijCampaign | null;
   homeworldRegionV68?: HomeworldRegionStateV68 | null;
   /** Physical city/biome connector; separate from expedition evidence. */
   homeworldPassageV67?: HomeworldPassageStateV67 | null;
@@ -710,6 +739,7 @@ export interface SaveGame {
   clanShipDocking?: import("./systems/clanShipDocking").ClanShipDockingState | null;
   /** Clan mandate, accepted contracts and recruited crew share the campaign transaction. */
   clanShipOperations?: import("./systems/clanShipOperations").ClanShipOperationsState | null;
+  clanHullProjectV171?: import("./systems/clanHullProjectV171").ClanHullProjectV171 | null;
   /** Separate orbital castle visit, bound to this campaign and its personal hull. */
   wolfCastle?: import("./systems/wolfCastle").WolfCastleVisit | null;
   /** Arrival and frozen start configuration are written in one campaign transaction. */
@@ -720,6 +750,45 @@ export interface SaveGame {
   shipInsertionEnergy?: import("./systems/shipInsertionEnergy").ShipInsertionEnergy | null;
   /** V134: versioned cosmetic gauntlet, research claims and owner binding; older saves may omit. */
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
+  /** V146: outfits, mode outfits, clan palette, earned cosmetics, heavy wear. */
+  customizationV146?: CustomizationV146 | null;
+  warNarrativeR2M035?: import("./systems/warNarrativeR2M035").WarNarrativeR2M035 | null;
+  warConquestR2M037?: import("./systems/warConquestR2M037").WarConquestR2M037 | null;
+  /** V147: trophy usages (display, worn, exchange ledger, studies); written after a first usage. */
+  trophyUsagesV147?: import("./systems/trophyUsagesV147").TrophyUsagesV147 | null;
+  /** V147: recruited hunting hounds, bond, wounds and permanent deaths. */
+  houndsV147?: HuntingHoundsV147 | null;
+  /** V147: infractions, played trials, verdicts, rank freeze and exile; older saves may omit. */
+  tribunalV147?: import("./systems/honorTribunalV147").HonorTribunalV147 | null;
+  /** V149: first residence, local respect, moves (BUILD5-07). Absent until first used. */
+  residenceV149?: import("./systems/residenceV149").ResidenceStateV149 | null;
+  /** V150: guests, room states and reminders of the residence (BUILD5-08). Absent until first used. */
+  residenceLifeV150?: import("./systems/residenceLifeV150").ResidenceLifeV150 | null;
+  /** V151 / STATE5-01: player origin O1..O6, set at character creation, plus origin transitions and relations. */
+  originV151?: import("./systems/originsV151").OriginStateV151 | null;
+  legacyFinaleR2?: import("./systems/legacyFinaleR2").LegacyFinaleR2 | null;
+  /** V154: residence scenes S1–S3 played (gestures, decision, material use inscribed). Absent until first used. */
+  residenceScenesV154?: import("./systems/residenceScenesV154").ResidenceScenesV154 | null;
+  /** V158: voie originals (owner, single location, provenance mission) and the house material reserve. Absent until first used. */
+  pathObjectsV158?: import("./systems/pathObjectsV158").PathObjectsV158 | null;
+  /** V152: legs scellé (partie qui transmet) et héritage reçu (nouvelle partie). Absent tant qu'il n'est pas utilisé. */
+  heritageV152?: import("./systems/heritageV152").HeritageStateV152 | null;
+  /** V155: mode Hardcore choisi à la création (fixé) et mort définitive. Absent sur une partie normale. */
+  hardcoreV155?: import("./systems/hardcoreV155").HardcoreStateV155 | null;
+  /** V162: épreuve finale Black God (hors canon), victoire et sacrifice qui clôt la chronique. Absent tant qu'il n'est pas utilisé. */
+  blackGodV162?: import("./systems/blackGodV162").BlackGodStateV162 | null;
+  /** V159: routes spatiales typées, voyage engagé et position du vaisseau (STATE5-18/19); absent des anciennes sauvegardes. */
+  spaceRoutesV159?: import("./systems/spaceRoutesV159").SpaceRoutesStateV159 | null;
+  /** Owner-bound journal of the independent first interstellar journey. */
+  firstInterstellarV173?: import("./systems/firstInterstellarV173").FirstInterstellarStateV173 | null;
+  /** V160 : mini-arcs Lost Tribe / Serpent Clan, champ additif créé à la première épreuve acceptée. */
+  minorArcsV160?: import("./systems/minorArcsV160").MinorArcsV160 | null;
+  /** V163: contrats Queen Hunt et jalon firstQueenResolved ; champ additif, absent des anciennes sauvegardes. */
+  queenHuntV163?: import("./systems/queenHuntV163").QueenHuntStateV163 | null;
+  /** V165 : quête commune, module, branches Warp, voyage engagé et état de branche ; absent sur les anciennes sauvegardes. */
+  warpEpochsV165?: import("./systems/warpEpochsV165").WarpEpochsStateV165 | null;
+  /** V164 : branche Warp Tantalus 2204 (voyage, retour réservé, choix Echo-8) ; absente des anciennes sauvegardes. */
+  tantalusV164?: import("./systems/tantalusV164").TantalusLedgerV164 | null;
   version: number;
   createdAt: string;
   updatedAt: string;
@@ -738,4 +807,6 @@ export interface SaveGame {
   homeworld: HomeworldProgress;
   /** Evidence and warrants are independent of honor and versus matches. */
   justice: JusticeProgress;
+  /** Receipts for honour settled with its owning campaign. Unknown archives stay intact until inspected. */
+  honorSourcesV169?: unknown;
 }

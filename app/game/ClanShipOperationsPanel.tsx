@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
+import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import type { SaveGame } from './types';
 import type { ClanShipRoomId } from './systems/clanShipDocking';
 import { CLAN_SHIP_INTERIOR_ROOMS } from './systems/clanShipInterior';
 import {
-  CLAN_SHIP_CONTRACTS, CLAN_SHIP_ONBOARDING_STEPS, CLAN_SHIP_RECRUITS,
+  CLAN_SHIP_CONTRACTS, CLAN_SHIP_ONBOARDING_STEPS, CLAN_SHIP_RECRUITS, CLAN_SHIP_COLLECTIVE_ID, CLAN_SHIP_COLLECTIVE_FIELD_ORDERS,
+  clanShipCollectiveStation,
   clanShipContract, evaluateClanShipContract, evaluateClanShipOperationsPhase,
   evaluateClanShipRecruit, getClanShipActiveStep,
   type ClanShipNpcId, type ClanShipOperationsAction, type ClanShipOperationsState,
@@ -14,10 +15,23 @@ import ClanShipSpaceEncounter from './ClanShipSpaceEncounter';
 import ClanShipCrewDialogue from './ClanShipCrewDialogue';
 import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
 import { CLAN_SHIP_CREW_ART_ROLES, clanShipCrewArtIdentity } from './clanShipCrew';
-import { availableClanResidenceCrew, companionHostLabel } from './systems/companionResidence';
+import { availableClanResidenceCrew, clanResidenceCrewPostRooms, companionHostLabel } from './systems/companionResidence';
 import { selectClanShipCrewDialogue, type ClanShipCrewDialogueContext } from './systems/clanShipCrewDialogue';
 import { clanShipDialogue } from './systems/clanShipDialogue';
 import { useMenuGamepad } from './useMenuGamepad';
+import ClanHullProjectPanel from './ClanHullProjectPanel';
+import ClanWarReturnR2M047Panel from './ClanWarReturnR2M047Panel';
+import { warReturnView } from './systems/warReturnR2M047';
+import OserisReturnR2M053Panel from './OserisReturnR2M053Panel';
+import SuccessorTrialR2M054Panel from './SuccessorTrialR2M054Panel';
+import LongMemoryR2M055Panel from './LongMemoryR2M055Panel';
+import AncientHearingR2M056Panel from './AncientHearingR2M056Panel';
+import { ANCIENT_HEARING_AUDIENCE, ancientHearingView, hasElderChronicleRank, hasLongMemoryHandover } from './systems/ancientHearingR2M056';
+import WarCommandIntroR2M036Panel from './WarCommandIntroR2M036Panel';
+import { MEMORY_LABELS, longMemoryEvidence, longMemoryView } from './systems/longMemoryR2M055';
+import { SUCCESSOR_OUTCOMES, successorTrialPlan, successorTrialView } from './systems/successorTrialR2M054';
+import { oserisReturnAvailable, oserisReturnView } from './systems/oserisReturnR2M053';
+import { canReviewClanHullProject, type ClanHullProjectCommandV171, type ClanHullProjectResponseV171 } from './systems/clanHullProjectV171';
 import styles from './ClanShipOperationsPanel.module.css';
 
 interface Props {
@@ -27,15 +41,23 @@ interface Props {
   suspended: boolean;
   temporarySession?: boolean;
   crewFocus?: ClanShipNpcId | null;
+  elderWorkshop?: ReactNode;
   onAction: (action: ClanShipOperationsAction) => boolean;
+  onHullProject?: (command: ClanHullProjectCommandV171) => ClanHullProjectResponseV171;
   onClose: () => void;
   onNavigate: (roomId: ClanShipRoomId) => void;
   onClanWar: () => void;
 }
-type Tab = 'post' | 'contracts' | 'crew' | 'journal';
+type Tab = 'post' | 'contracts' | 'crew' | 'journal' | 'project' | 'war-return' | 'oseris-return' | 'successor-trial' | 'long-memory' | 'ancient-hearing' | 'war-command-intro';
 const TABS: { id: Tab; label: string }[] = [
   { id: 'post', label: 'Poste & mandat' }, { id: 'contracts', label: 'Opérations' },
   { id: 'crew', label: 'Équipage' }, { id: 'journal', label: 'Chronique' },
+  { id: 'project', label: 'Projet collectif' }, { id: 'war-return', label: 'Retour du front' },
+  { id: 'oseris-return', label: 'Retour à Oseris-IV' },
+  { id: 'successor-trial', label: 'Décision du successeur' },
+  { id: 'long-memory', label: 'La longue mémoire' },
+  { id: 'ancient-hearing', label: 'Témoignages Ancient' },
+  { id: 'war-command-intro', label: 'Commandement de la corniche' },
 ];
 const KINDS = { onboarding: 'Accueil du clan', interior: 'Mission à bord', field: 'Chasse de clan', space: 'Opération spatiale' };
 const PHASES = {
@@ -50,7 +72,8 @@ const CREW_DIALOGUE_CONTEXTS: Record<ClanShipCrewDialogueContext, string> = {
 
 /** Controlled campaign terminal. Only the parent can acknowledge a durable
  * command; closing, tabbing or looking at a card never grants progression. */
-export default function ClanShipOperationsPanel({ state, save, roomId, suspended, crewFocus, temporarySession = false, onAction, onClose, onNavigate, onClanWar }: Props) {
+export default function ClanShipOperationsPanel({ state, save, roomId, suspended, crewFocus, temporarySession = false, elderWorkshop, onAction, onHullProject, onClose, onNavigate, onClanWar }: Props) {
+  const projectAvailable = !!onHullProject && !temporarySession && canReviewClanHullProject(save);
   const rootRef = useRef<HTMLElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const [tab, setTab] = useState<Tab>(crewFocus ? 'crew' : roomId === 'conseil' && state.mandateAccepted ? 'contracts' : 'post');
@@ -61,11 +84,27 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
   const currentOnboarding = CLAN_SHIP_ONBOARDING_STEPS[state.onboardingStep];
   const activeContract = state.activeContract ? clanShipContract(state.activeContract.contractId) : null;
   const activeStep = getClanShipActiveStep(state);
+  const collective = state.activeContract?.collective;
+  const collectiveStation = collective?.role ? clanShipCollectiveStation(collective.role) : 'conseil';
   const selection = clanShipContract(selectedId);
   const selectionAccess = selection ? evaluateClanShipContract(state, selection.id, save) : null;
   const atCouncil = roomId === 'conseil';
+  const warCommandIntroAvailable = !temporarySession && state.mandateAccepted;
   const completed = new Set(state.completedContracts.map(receipt => receipt.contractId));
+  const warReturnAvailable = !temporarySession && completed.has(CLAN_SHIP_COLLECTIVE_ID);
+  const oserisAvailable = !temporarySession && state.mandateAccepted && (oserisReturnAvailable(save) || !!state.legacy);
+  const successorPlan = !temporarySession && state.mandateAccepted ? successorTrialPlan(save, state.legacy) : null;
+  const successorOutcome = successorPlan && state.successorTrial
+    ? successorTrialView(successorPlan, state.successorTrial.orders).outcome : null;
+  const memory = !temporarySession && state.mandateAccepted
+    ? longMemoryEvidence(save.createdAt, save.elderWorkshopV172, state.legacy, state.successorTrial) : null;
+  const memoryChoice = memory && state.longMemory?.longMemorySuccess ? longMemoryView(state.longMemory.orders).choice : null;
+  const hearingAvailable = memory !== null && hasLongMemoryHandover(state.longMemory);
+  const hearing = state.ancientHearing ? ancientHearingView(state.ancientHearing.orders, false) : null;
+  const armorerAtWorkshop = tab === 'ancient-hearing' && hearingAvailable &&
+    clanResidenceCrewPostRooms(save)['iron-claw'] === 'armurerie';
   const availableCrew = availableClanResidenceCrew(save);
+  const collectivePosts = collective ? clanResidenceCrewPostRooms(save) : null;
   useMenuGamepad(rootRef, !suspended, 'clan-ship-operations', onClose);
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
@@ -129,16 +168,52 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
       <p>Rejoins le hangar, embarque sur ton vaisseau puis désamarre. Le bouton « Contrat du clan » du pont ouvre le briefing de la chasse. Le rapport sera reconnu après une réussite répondant aux objectifs.</p>
       {routeButton('hangar', 'Rejoindre le hangar pour préparer le départ')}
     </div>}
-    {state.spaceEncounter && (atCouncil ? <ClanShipSpaceEncounter encounter={state.spaceEncounter} suspended={suspended} campaign={save}
+    {collective && !state.spaceEncounter && <section className={styles.step} aria-label="Préparation de l’escorte">
+      <h4>Équipage et postes</h4>
+      <p data-collective-capacity={collective.capacity}>{availableCrew.length + 1} disponibles sur {collective.capacity}, joueur compris.
+        {collective.capacity > 7 && ` ${collective.capacity - 7} places supplémentaires sans spécialiste affecté à cette escorte.`}</p>
+      {collective.role ? <p>Ton poste : {collective.role === 'field' ? 'terrain, au hangar' : 'coordination, au conseil'}.</p>
+        : atCouncil ? <div className={styles.missionSteps} role="group" aria-label="Ton rôle pour l’escorte">
+          <button type="button" disabled={suspended} className={styles.secondary} data-collective-role="field"
+            onClick={() => act({ type: 'collective-role', role: 'field', expectedRevision: state.revision })}>Conduire l’escorte sur le terrain</button>
+          <button type="button" disabled={suspended} className={styles.secondary} data-collective-role="coordination"
+            onClick={() => act({ type: 'collective-role', role: 'coordination', expectedRevision: state.revision })}>Coordonner depuis le conseil</button>
+        </div> : routeButton('conseil', 'Choisir ton rôle au conseil')}
+      <ul className={styles.missionSteps}>{CLAN_SHIP_RECRUITS.map(member => {
+        const checked = collective.checkedNpcIds.includes(member.id);
+        const station = collectivePosts?.[member.id];
+        return <li key={member.id}>
+          <strong>{member.name} · {member.role}</strong><span>{CLAN_SHIP_INTERIOR_ROOMS[station ?? member.roomId].label} · {
+            !station ? 'Indisponible' : checked ? 'Poste vérifié' : 'À vérifier'}</span>
+          {station && !checked && (roomId === station ? <button type="button" className={styles.secondary}
+            data-collective-check={member.id} disabled={suspended}
+            onClick={() => act({ type: 'collective-check', npcId: member.id, expectedRevision: state.revision })}>Vérifier ce poste</button>
+            : routeButton(station, `Rejoindre ${member.name}`))}
+        </li>;
+      })}</ul>
+      {collective.role && collective.checkedNpcIds.length === CLAN_SHIP_RECRUITS.length && availableCrew.length === CLAN_SHIP_RECRUITS.length &&
+        (roomId === 'hangar' ? <button type="button" className={styles.primary} data-collective-launch disabled={suspended}
+          onClick={() => act({ type: 'collective-launch', expectedRevision: state.revision })}>Donner le départ de l’escorte</button>
+          : routeButton('hangar', 'Gagner le hangar pour le départ'))}
+    </section>}
+    {state.spaceEncounter && (roomId === collectiveStation ? <ClanShipSpaceEncounter encounter={state.spaceEncounter} suspended={suspended} campaign={save}
+      allowedOrders={collective?.role === 'field' ? CLAN_SHIP_COLLECTIVE_FIELD_ORDERS : undefined}
       onCommand={command => act({ type: 'space-command', command, expectedRevision: state.revision })} />
-      : <div className={styles.step}><p>L’engagement reste à son dernier ordre enregistré. Reprends son commandement à la table du conseil.</p>{routeButton('conseil')}</div>)}
+      : <div className={styles.step}><p>L’engagement reste à son dernier ordre enregistré.</p>{routeButton(collectiveStation, 'Rejoindre le poste de commandement')}</div>)}
     {atCouncil && <button type="button" className={styles.quiet} disabled={suspended}
       data-clan-cancel-contract onClick={() => act({ type: 'cancel-contract', expectedRevision: state.revision })}>
       Clore ce départ sans récompense
     </button>}
   </article>;
-  const spaceReport = !activeContract && state.spaceEncounter && atCouncil && <article className={styles.activeContract} data-clan-space-report>
+  const lastReceipt = state.completedContracts.at(-1);
+  const collectiveReturn = state.spaceEncounter?.status === 'victory' &&
+    lastReceipt?.contractId === CLAN_SHIP_COLLECTIVE_ID && lastReceipt.proof.kind === 'space'
+    ? lastReceipt.proof.collective : undefined;
+  const atReportPost = atCouncil || (collectiveReturn?.role != null && roomId === clanShipCollectiveStation(collectiveReturn.role));
+  const spaceReport = !activeContract && state.spaceEncounter && atReportPost && <article className={styles.activeContract}
+    data-clan-space-report data-collective-report-role={collectiveReturn?.role}>
     <span className={styles.eyebrow}>DERNIER RAPPORT TACTIQUE</span>
+    {collectiveReturn && <h3>{clanShipContract(CLAN_SHIP_COLLECTIVE_ID)?.name}</h3>}
     <ClanShipSpaceEncounter encounter={state.spaceEncounter} suspended={suspended} campaign={save}
       onCommand={command => act({ type: 'space-command', command, expectedRevision: state.revision })} />
   </article>;
@@ -155,10 +230,51 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
         <button ref={closeRef} type="button" className={styles.close} disabled={suspended} data-clan-operations-close onClick={onClose}>Retour au pont <span aria-hidden="true">×</span></button>
       </header>
       <nav className={styles.tabs} aria-label="Dossiers du Clan Ship">
-        {TABS.map(entry => <button key={entry.id} type="button" aria-pressed={tab === entry.id} disabled={suspended}
+        {TABS.filter(entry => (entry.id !== 'project' || projectAvailable) &&
+          (entry.id !== 'war-return' || warReturnAvailable) && (entry.id !== 'oseris-return' || oserisAvailable) &&
+          (entry.id !== 'successor-trial' || successorPlan !== null) && (entry.id !== 'long-memory' || memory !== null) &&
+          (entry.id !== 'ancient-hearing' || hearingAvailable) &&
+          (entry.id !== 'war-command-intro' || warCommandIntroAvailable)).map(entry => <button key={entry.id} type="button" aria-pressed={tab === entry.id} disabled={suspended}
           data-clan-operations-tab={entry.id} onClick={() => { setTab(entry.id); setFeedback(''); }}>{entry.label}</button>)}
       </nav>
       <div className={styles.content}>
+        {tab === 'war-command-intro' && warCommandIntroAvailable && (atCouncil ? <WarCommandIntroR2M036Panel
+          record={state.warCommandIntro} disabled={suspended || activeContract !== null}
+          onOrder={order => { act({ type: 'war-command-intro', order, expectedRevision: state.revision }); }} /> :
+          <section className={styles.step}><h3>Voir le champ depuis les hauteurs</h3>
+            <p>Le poste de commandement de la corniche est accessible depuis le conseil.</p>{routeButton('conseil')}
+          </section>)}
+        {tab === 'ancient-hearing' && hearingAvailable && memory && <AncientHearingR2M056Panel
+          state={state.ancientHearing} roomId={roomId} evidence={memory} armorerPresent={armorerAtWorkshop}
+          narrativeElder={hasElderChronicleRank(save.prologue?.chronicle)}
+          disabled={suspended || activeContract !== null}
+          onOrder={order => { act({ type: 'ancient-hearing', order, expectedRevision: state.revision }); }} onNavigate={route} />}
+        {tab === 'long-memory' && memory && <LongMemoryR2M055Panel
+          state={state.longMemory} evidence={memory} roomId={roomId} disabled={suspended || activeContract !== null}
+          onAction={order => { act({ type: 'long-memory', order, expectedRevision: state.revision }); }} onNavigate={route} />}
+        {tab === 'successor-trial' && successorPlan && (roomId === 'hangar' ? <SuccessorTrialR2M054Panel
+          save={save} plan={successorPlan} record={state.successorTrial} disabled={suspended || activeContract !== null}
+          onOrder={(order, position) => act({ type: 'successor-trial', order, position, expectedRevision: state.revision })} /> :
+          <section className={styles.step}><h3>La décision du successeur</h3>
+            <p>Rejoins le point de départ du successeur au hangar.</p>{routeButton('hangar')}
+          </section>)}
+        {tab === 'oseris-return' && oserisAvailable && (roomId === 'hangar' ? <OserisReturnR2M053Panel
+          save={save} record={state.legacy} disabled={suspended || activeContract !== null || !oserisReturnAvailable(save)}
+          onOrder={order => { act({ type: 'oseris-return', order, expectedRevision: state.revision }); }} /> :
+          <section className={styles.step}><h3>Un ancien terrain a changé</h3>
+            <p>Le départ vers Oseris-IV se prépare au hangar.</p>{routeButton('hangar')}
+          </section>)}
+        {tab === 'war-return' && warReturnAvailable && (roomId === 'hangar' ? <ClanWarReturnR2M047Panel
+          war={state.war} blocked={activeContract !== null} disabled={suspended}
+          onOrder={order => { act({ type: 'war-return', order, expectedRevision: state.revision }); }} /> :
+          <section className={styles.step}><h3>Ce que la guerre laisse au retour</h3>
+            <p>La navette et le relevé de la Passe des Cendres se trouvent au hangar.</p>
+            {routeButton('hangar', 'Rejoindre la navette au hangar')}
+          </section>)}
+        {tab === 'project' && projectAvailable && onHullProject && <ClanHullProjectPanel
+          save={save} roomId={roomId} crewFocus={crewFocus} onAction={onHullProject}
+          onNavigate={onNavigate} onContracts={() => setTab('contracts')} onClose={onClose}
+        />}
         {tab === 'post' && <div className={styles.postLayout}>
           <section className={styles.introduction}>
             <span className={styles.eyebrow}>DU RITE AU MANDAT</span><h3>Une place dans le clan se gagne.</h3>
@@ -183,7 +299,8 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
                 <button type="button" className={styles.primary} disabled={suspended} onClick={() => setTab('contracts')}>Consulter les opérations</button>
               </div>}
           </section>
-          <section className={styles.postAside}>{activeSection || spaceReport || <div className={styles.empty}><span aria-hidden="true">◈</span><h3>Le bord est à l’écoute</h3><p>Les contrats acceptés, leur prochaine étape et les membres attendus apparaissent ici. Tu peux préparer ton équipement et visiter les salles entre deux opérations.</p></div>}
+          <section className={styles.postAside}>{elderWorkshop}
+            {activeSection || spaceReport || <div className={styles.empty}><span aria-hidden="true">◈</span><h3>Le bord est à l’écoute</h3><p>Les contrats acceptés, leur prochaine étape et les membres attendus apparaissent ici. Tu peux préparer ton équipement et visiter les salles entre deux opérations.</p></div>}
             {atCouncil && <div className={styles.generalWar}><h3>Guerre des clans</h3><p>Le conseil conserve l’accès aux campagnes stratégiques générales du clan.</p>
               <button type="button" className={styles.secondary} disabled={suspended} data-clan-general-war onClick={onClanWar}>Ouvrir la guerre des clans</button>
             </div>}
@@ -206,7 +323,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
             </section>
             {selection && <article className={styles.briefing} data-clan-contract-detail={selection.id}>
               <span className={styles.eyebrow}>{KINDS[selection.kind]}</span><h3>{selection.name}</h3><p>{selection.briefing}</p>
-              <dl><div><dt>Récompense unique</dt><dd>{selection.clanMarksReward} marques de clan</dd></div>
+              <dl>{selection.id !== CLAN_SHIP_COLLECTIVE_ID && <div><dt>Récompense unique</dt><dd>{selection.clanMarksReward} marques de clan</dd></div>}
                 <div><dt>Attribution</dt><dd>{selection.kind === 'field' ? 'Après une chasse réussie et reconnue' : selection.kind === 'space' ? 'Après l’objectif tactique accompli' : 'Après la dernière intervention enregistrée'}</dd></div>
               </dl>
               {selection.steps.length > 0 && <ol className={styles.missionSteps}>{selection.steps.map(step => <li key={step.id}><strong>{step.label}</strong><span>{CLAN_SHIP_INTERIOR_ROOMS[step.roomId].label}</span></li>)}</ol>}
@@ -281,8 +398,25 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
         {tab === 'journal' && <div className={styles.postLayout}>
           <section><span className={styles.eyebrow}>CHRONIQUE DE SERVICE</span><h3>Les preuves du clan</h3>
             {state.completedContracts.length ? <ol className={styles.receipts}>{state.completedContracts.map(receipt => <li key={receipt.contractId}>
-              <span aria-hidden="true">✓</span><div><strong>{clanShipContract(receipt.contractId)?.name}</strong><p>{KINDS[receipt.proof.kind]} · récompense déjà attribuée</p></div>
+              <span aria-hidden="true">✓</span><div><strong>{clanShipContract(receipt.contractId)?.name}</strong>
+                {receipt.proof.kind === 'space' && receipt.proof.collective
+                  ? <p data-collective-completed>{receipt.proof.collective.role === 'field' ? 'Terrain' : 'Coordination'} · Transport extrait · {receipt.proof.collective.checkedNpcIds.length + 1}/{receipt.proof.collective.capacity} postes affectés</p>
+                  : <p>{KINDS[receipt.proof.kind]} · récompense déjà attribuée</p>}</div>
             </li>)}</ol> : <p>Aucun dossier achevé. L’accueil du bord ouvre le premier chapitre.</p>}
+            {state.warCommandIntro?.rtsIntroductionResolved && <p className={styles.notice} data-r2-m036-receipt>
+              Corniche · retour de la mission de commandement confirmé
+            </p>}
+            {memoryChoice && <p className={styles.notice} data-r2-m055-receipt>Longue mémoire · {MEMORY_LABELS[memoryChoice]}</p>}
+            {hearing?.ready && hearing.audience && <p className={styles.notice} data-r2-m056-receipt>
+              Registre de reconnaissance · {ANCIENT_HEARING_AUDIENCE[hearing.audience].label}
+            </p>}
+            {successorOutcome && <p className={styles.notice} data-r2-m054-receipt>{SUCCESSOR_OUTCOMES[successorOutcome]}</p>}
+            {state.legacy?.returnedWorldCompared && <p className={styles.notice} data-oseris-return-receipt>
+              Oseris-IV · {oserisReturnView(state.legacy.orders).choice === 'maintain' ? 'Passage de rive entretenu' : 'Canopée adoptée'}
+            </p>}
+            {state.war?.returnConsequenceSeen && <p className={styles.notice} data-war-return-receipt>
+              Passe des Cendres · {warReturnView(state.war.orders).choice === 'reconstruct' ? 'Passage rouvert' : 'Blessés remis à la relève'}
+            </p>}
           </section>
           <section className={styles.lore}><span className={styles.eyebrow}>REPÈRES DE LORE</span><h3>La doctrine de ce clan</h3>
             <p>Le rite initiatique, le rôle d’un Ancien et les projections à bord s’appuient sur <cite>Alien vs. Predator</cite>. Les affrontements entre vaisseaux apparaissent aussi dans <cite>The Predator</cite>.</p>

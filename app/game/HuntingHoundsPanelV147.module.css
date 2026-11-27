@@ -1,0 +1,17 @@
+.hounds { margin: 1.4rem 0 0; color: #dfd8c3; }
+.eyebrow { color: #b9b889; font-size: .7rem; letter-spacing: .2em; margin: 0 0 .4rem; }
+.hounds h3 { margin: 0 0 .6rem; font-size: clamp(1.2rem, 2.2vw, 1.7rem); }
+.notice { color: #b5bcaf; max-width: 90ch; line-height: 1.6; font-size: .86rem; }
+.empty { color: #a9b0a7; font-size: .82rem; padding: .8rem 1rem; border-left: 3px solid #8c9262; background: #26302166; }
+.list { display: grid; gap: .7rem; margin: .8rem 0 0; padding: 0; list-style: none; }
+.hound { padding: .8rem 1rem; border: 1px solid #56645178; background: #151d18; }
+.hound[data-condition="dead"] { opacity: .65; }
+.row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; font-size: .85rem; }
+.bond { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin: .5rem 0; font-size: .78rem; color: #b8c0ae; }
+.bond progress { width: min(16rem, 100%); accent-color: #c9a24a; }
+.orders { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: .4rem; margin: 0; padding: 0; list-style: none; }
+.orders li { display: grid; gap: .2rem; padding: .45rem .55rem; border: 1px solid #6b73574d; font-size: .8rem; }
+.orders li[data-locked="true"] { opacity: .55; }
+.orders small { color: #a9b0a7; font-size: .7rem; line-height: 1.4; }
+.heal { margin-top: .6rem; padding: .4rem .8rem; border: 1px solid #c9a24a; background: transparent; color: inherit; cursor: pointer; }
+.heal:focus-visible { outline: 3px solid #d4d49b; outline-offset: 3px; }

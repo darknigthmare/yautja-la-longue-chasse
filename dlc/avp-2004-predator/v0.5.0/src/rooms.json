@@ -1,0 +1,1488 @@
+[
+  {
+    "id": "mothership_observation",
+    "name": "Vaisseau-mère · observatoire",
+    "env": "ship",
+    "canon": "gameplay_connector",
+    "lanes": 2,
+    "tags": [
+      "yautja",
+      "orbital"
+    ],
+    "links": [
+      "mothership_ritual_gallery",
+      "mothership_arming_bay"
+    ]
+  },
+  {
+    "id": "mothership_ritual_gallery",
+    "name": "Vaisseau-mère · galerie du rite",
+    "env": "ship",
+    "canon": "gameplay_connector",
+    "lanes": 3,
+    "tags": [
+      "yautja",
+      "ritual"
+    ],
+    "links": [
+      "mothership_arming_bay",
+      "mothership_observation"
+    ]
+  },
+  {
+    "id": "mothership_arming_bay",
+    "name": "Vaisseau-mère · armurerie rituelle",
+    "env": "ship",
+    "canon": "gameplay_connector",
+    "lanes": 3,
+    "tags": [
+      "yautja",
+      "gear"
+    ],
+    "links": [
+      "drop_capsules",
+      "mothership_observation",
+      "mothership_ritual_gallery"
+    ]
+  },
+  {
+    "id": "drop_capsules",
+    "name": "Vaisseau-mère · baie des capsules",
+    "env": "ship",
+    "canon": "gameplay_connector",
+    "lanes": 2,
+    "tags": [
+      "yautja",
+      "deployment"
+    ],
+    "links": [
+      "drop_zone",
+      "mothership_arming_bay"
+    ]
+  },
+  {
+    "id": "drop_zone",
+    "name": "Bouvetøya · zone d’atterrissage",
+    "env": "ice",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "ice",
+      "stealth"
+    ],
+    "links": [
+      "ice_ridge",
+      "drop_capsules"
+    ]
+  },
+  {
+    "id": "ice_ridge",
+    "name": "Bouvetøya · crête de glace",
+    "env": "ice",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "ice",
+      "stealth"
+    ],
+    "links": [
+      "whaling_outskirts",
+      "drop_zone"
+    ]
+  },
+  {
+    "id": "whaling_outskirts",
+    "name": "Station baleinière · périphérie",
+    "env": "station",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "surface",
+      "station"
+    ],
+    "links": [
+      "whaling_rooftops",
+      "ice_ridge",
+      "whaling_overlook"
+    ]
+  },
+  {
+    "id": "whaling_rooftops",
+    "name": "Station baleinière · toits",
+    "env": "station",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "surface",
+      "vertical"
+    ],
+    "links": [
+      "whaling_catwalk",
+      "whaling_overlook",
+      "whaling_outskirts"
+    ]
+  },
+  {
+    "id": "whaling_catwalk",
+    "name": "Station baleinière · passerelle",
+    "env": "station",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "surface",
+      "vertical"
+    ],
+    "links": [
+      "whaling_yard",
+      "whaling_rooftops"
+    ]
+  },
+  {
+    "id": "whaling_yard",
+    "name": "Station baleinière · cour du forage",
+    "env": "station",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "surface",
+      "combat"
+    ],
+    "links": [
+      "drill_control",
+      "whaling_catwalk",
+      "quinn_confrontation"
+    ]
+  },
+  {
+    "id": "drill_control",
+    "name": "Station baleinière · contrôle du forage",
+    "env": "station",
+    "canon": "transition_inferred",
+    "lanes": 2,
+    "tags": [
+      "surface",
+      "machinery"
+    ],
+    "links": [
+      "borehole_lip",
+      "wrist_hologram",
+      "whaling_yard",
+      "quinn_confrontation"
+    ]
+  },
+  {
+    "id": "borehole_lip",
+    "name": "Puits thermique · bord du forage",
+    "env": "ice_tunnel",
+    "canon": "screen_or_implied",
+    "lanes": 2,
+    "tags": [
+      "borehole",
+      "vertical"
+    ],
+    "links": [
+      "borehole_upper",
+      "drill_control"
+    ]
+  },
+  {
+    "id": "borehole_upper",
+    "name": "Puits thermique · section haute",
+    "env": "ice_tunnel",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "borehole",
+      "vertical"
+    ],
+    "links": [
+      "borehole_mid",
+      "borehole_lip"
+    ]
+  },
+  {
+    "id": "borehole_mid",
+    "name": "Puits thermique · section médiane",
+    "env": "ice_tunnel",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "borehole",
+      "vertical"
+    ],
+    "links": [
+      "borehole_lower",
+      "borehole_upper"
+    ]
+  },
+  {
+    "id": "borehole_lower",
+    "name": "Puits thermique · section basse",
+    "env": "ice_tunnel",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "borehole",
+      "vertical"
+    ],
+    "links": [
+      "pyramid_exterior",
+      "borehole_mid",
+      "quinn_bottom"
+    ]
+  },
+  {
+    "id": "pyramid_exterior",
+    "name": "Pyramide · façade enfouie",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "pyramid",
+      "threshold"
+    ],
+    "links": [
+      "entrance_chamber",
+      "quinn_bottom",
+      "borehole_lower"
+    ]
+  },
+  {
+    "id": "entrance_chamber",
+    "name": "Pyramide · hall d’entrée",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "pyramid"
+    ],
+    "links": [
+      "stone_descent",
+      "central_shaft",
+      "pyramid_exterior"
+    ]
+  },
+  {
+    "id": "stone_descent",
+    "name": "Pyramide · descente monumentale",
+    "env": "pyramid",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "pyramid",
+      "vertical"
+    ],
+    "links": [
+      "central_shaft",
+      "entrance_chamber",
+      "weapons_antechamber"
+    ]
+  },
+  {
+    "id": "central_shaft",
+    "name": "Pyramide · puits central",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "pyramid",
+      "vertical"
+    ],
+    "links": [
+      "weapons_antechamber",
+      "entrance_chamber",
+      "glyph_corridor",
+      "stone_descent"
+    ]
+  },
+  {
+    "id": "weapons_antechamber",
+    "name": "Pyramide · antichambre des armes",
+    "env": "pyramid",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "pyramid",
+      "weapons"
+    ],
+    "links": [
+      "weapons_chamber",
+      "stone_descent",
+      "central_shaft"
+    ]
+  },
+  {
+    "id": "weapons_chamber",
+    "name": "Pyramide · chambre des plasmacasters",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "pyramid",
+      "weapons"
+    ],
+    "links": [
+      "weapons_exit",
+      "weapons_antechamber"
+    ]
+  },
+  {
+    "id": "weapons_exit",
+    "name": "Pyramide · galerie de séparation",
+    "env": "pyramid_shift",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "pyramid",
+      "shift"
+    ],
+    "links": [
+      "pyramid_staircase_top",
+      "weapons_chamber",
+      "hunter_split_gallery"
+    ]
+  },
+  {
+    "id": "pyramid_staircase_top",
+    "name": "Grand escalier · palier haut",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "staircase",
+      "humans"
+    ],
+    "links": [
+      "pyramid_staircase",
+      "hunter_split_gallery",
+      "stafford_net_lane",
+      "weapons_exit"
+    ]
+  },
+  {
+    "id": "pyramid_staircase",
+    "name": "Grand escalier · travée centrale",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "staircase",
+      "grid"
+    ],
+    "links": [
+      "pyramid_staircase_mid",
+      "pyramid_staircase_top"
+    ]
+  },
+  {
+    "id": "pyramid_staircase_low",
+    "name": "Grand escalier · palier bas",
+    "env": "pyramid",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "staircase",
+      "grid"
+    ],
+    "links": [
+      "net_chamber",
+      "pyramid_staircase_mid",
+      "grid_clash"
+    ]
+  },
+  {
+    "id": "net_chamber",
+    "name": "Salle du duel · entrée",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "grid",
+      "boss"
+    ],
+    "links": [
+      "net_chamber_center",
+      "grid_column",
+      "pyramid_staircase_low"
+    ]
+  },
+  {
+    "id": "net_chamber_center",
+    "name": "Salle du duel · fosse centrale",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "grid",
+      "boss"
+    ],
+    "links": [
+      "net_chamber_exit",
+      "net_chamber"
+    ]
+  },
+  {
+    "id": "net_chamber_exit",
+    "name": "Salle du duel · issue",
+    "env": "pyramid_shift",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "grid",
+      "shift"
+    ],
+    "links": [
+      "labyrinth_hunt",
+      "net_chamber_center"
+    ]
+  },
+  {
+    "id": "labyrinth_hunt",
+    "name": "Labyrinthe · poursuite",
+    "env": "pyramid_shift",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "scar",
+      "shift"
+    ],
+    "links": [
+      "glyph_corridor",
+      "net_chamber_exit"
+    ]
+  },
+  {
+    "id": "glyph_corridor",
+    "name": "Galerie des glyphes",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "scar",
+      "glyphs"
+    ],
+    "links": [
+      "weyland_stand",
+      "central_shaft",
+      "moving_wall",
+      "labyrinth_hunt",
+      "weyland_scan"
+    ]
+  },
+  {
+    "id": "weyland_stand",
+    "name": "Galerie · dernier arrêt de Weyland",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "scar",
+      "weyland"
+    ],
+    "links": [
+      "moving_wall",
+      "glyph_corridor"
+    ]
+  },
+  {
+    "id": "moving_wall",
+    "name": "Labyrinthe · mur mobile",
+    "env": "pyramid_shift",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "shift",
+      "separation"
+    ],
+    "links": [
+      "pillar_hall_entry",
+      "glyph_corridor",
+      "weyland_retaliation",
+      "weyland_stand"
+    ]
+  },
+  {
+    "id": "pillar_hall_entry",
+    "name": "Salle des piliers · entrée",
+    "env": "pyramid",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "scar",
+      "xeno"
+    ],
+    "links": [
+      "pillar_hall_facehugger",
+      "moving_wall"
+    ]
+  },
+  {
+    "id": "pillar_hall",
+    "name": "Salle des piliers",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "scar",
+      "xeno"
+    ],
+    "links": [
+      "trophy_cut_floor",
+      "pillar_hall_facehugger"
+    ]
+  },
+  {
+    "id": "blooding_niche",
+    "name": "Salle des piliers · niche du rite",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 2,
+    "tags": [
+      "scar",
+      "blooding"
+    ],
+    "links": [
+      "chasm_approach",
+      "trophy_cut_floor",
+      "blooding_exit"
+    ]
+  },
+  {
+    "id": "chasm_approach",
+    "name": "Gouffre · approche",
+    "env": "pyramid_shift",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "chasm"
+    ],
+    "links": [
+      "chasm_crossing",
+      "blooding_exit",
+      "blooding_niche"
+    ]
+  },
+  {
+    "id": "chasm_crossing",
+    "name": "Gouffre · franchissement",
+    "env": "pyramid_shift",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "chasm",
+      "sebastian"
+    ],
+    "links": [
+      "lower_chasm",
+      "chasm_approach"
+    ]
+  },
+  {
+    "id": "lower_chasm",
+    "name": "Gouffre · niveau inférieur",
+    "env": "pyramid_shift",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "chasm"
+    ],
+    "links": [
+      "reunion_corridor",
+      "chasm_crossing"
+    ]
+  },
+  {
+    "id": "reunion_corridor",
+    "name": "Galerie · retrouvailles avec Lex",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "lex",
+      "scar"
+    ],
+    "links": [
+      "shooting_gallery",
+      "lower_chasm",
+      "plasma_calibration"
+    ]
+  },
+  {
+    "id": "shooting_gallery",
+    "name": "Galerie de combat",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "lex",
+      "scar",
+      "combat"
+    ],
+    "links": [
+      "shooting_gallery_end",
+      "plasma_calibration",
+      "shooting_gallery_lex",
+      "reunion_corridor"
+    ]
+  },
+  {
+    "id": "shooting_gallery_end",
+    "name": "Galerie de combat · repli",
+    "env": "pyramid",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "lex",
+      "scar"
+    ],
+    "links": [
+      "armor_crafting",
+      "shooting_gallery",
+      "queen_call_retreat"
+    ]
+  },
+  {
+    "id": "armor_crafting",
+    "name": "Galerie · halte rituelle",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 2,
+    "tags": [
+      "lex",
+      "craft"
+    ],
+    "links": [
+      "hive_entry",
+      "queen_call_retreat",
+      "lex_armed_ready",
+      "shooting_gallery_end"
+    ]
+  },
+  {
+    "id": "hive_entry",
+    "name": "Ruche · seuil résineux",
+    "env": "hive",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "hive"
+    ],
+    "links": [
+      "hive_resin",
+      "lex_armed_ready",
+      "armor_crafting"
+    ]
+  },
+  {
+    "id": "hive_resin",
+    "name": "Ruche · galeries résineuses",
+    "env": "hive",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "hive"
+    ],
+    "links": [
+      "hive_lower",
+      "host_gallery",
+      "hive_entry"
+    ]
+  },
+  {
+    "id": "hive_lower",
+    "name": "Ruche · niveau inférieur",
+    "env": "hive",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "hive",
+      "depth"
+    ],
+    "links": [
+      "host_gallery",
+      "hive_resin"
+    ]
+  },
+  {
+    "id": "host_gallery",
+    "name": "Ruche · galerie des hôtes",
+    "env": "hive",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "hive",
+      "sebastian"
+    ],
+    "links": [
+      "egg_chamber_entry",
+      "hive_resin",
+      "hive_lower"
+    ]
+  },
+  {
+    "id": "egg_chamber_entry",
+    "name": "Chambre des œufs · accès",
+    "env": "hive",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "eggs"
+    ],
+    "links": [
+      "egg_chamber",
+      "host_gallery"
+    ]
+  },
+  {
+    "id": "egg_chamber",
+    "name": "Chambre des œufs",
+    "env": "hive",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "eggs",
+      "nuke"
+    ],
+    "links": [
+      "egg_chamber_exit",
+      "egg_chamber_entry"
+    ]
+  },
+  {
+    "id": "egg_chamber_exit",
+    "name": "Ruche · corridor de fuite",
+    "env": "hive",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "escape"
+    ],
+    "links": [
+      "escape_lower",
+      "egg_chamber",
+      "nuke_exit_gallery"
+    ]
+  },
+  {
+    "id": "escape_lower",
+    "name": "Pyramide · fuite basse",
+    "env": "pyramid_shift",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "escape",
+      "shift"
+    ],
+    "links": [
+      "escape_gallery",
+      "nuke_exit_gallery",
+      "egg_chamber_exit"
+    ]
+  },
+  {
+    "id": "escape_gallery",
+    "name": "Pyramide · galerie de fuite",
+    "env": "pyramid_shift",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "escape",
+      "xeno"
+    ],
+    "links": [
+      "escape_sled",
+      "escape_lower",
+      "escape_gallery_rescue"
+    ]
+  },
+  {
+    "id": "escape_sled",
+    "name": "Puits thermique · traîneau",
+    "env": "ice_tunnel",
+    "canon": "screen_or_implied",
+    "lanes": 2,
+    "tags": [
+      "escape",
+      "sled"
+    ],
+    "links": [
+      "borehole_escape",
+      "escape_gallery_rescue",
+      "escape_gallery"
+    ]
+  },
+  {
+    "id": "borehole_escape",
+    "name": "Puits thermique · remontée",
+    "env": "ice_tunnel",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "escape",
+      "blast"
+    ],
+    "links": [
+      "surface_tunnel_exit",
+      "escape_sled"
+    ]
+  },
+  {
+    "id": "whaling_collapse",
+    "name": "Station baleinière · effondrement",
+    "env": "ice_night",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "surface",
+      "blast"
+    ],
+    "links": [
+      "surface_ruins",
+      "surface_tunnel_exit",
+      "collapse_runoff"
+    ]
+  },
+  {
+    "id": "surface_ruins",
+    "name": "Station effondrée",
+    "env": "ice_night",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "surface",
+      "blooding"
+    ],
+    "links": [
+      "ice_field_final",
+      "separator_yard",
+      "collapse_runoff",
+      "warrior_pause",
+      "whaling_collapse"
+    ]
+  },
+  {
+    "id": "ice_field_final",
+    "name": "Champ de glace · affrontement final",
+    "env": "ice_night",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "queen",
+      "boss"
+    ],
+    "links": [
+      "queen_shuriken_lane",
+      "warrior_pause",
+      "surface_ruins"
+    ]
+  },
+  {
+    "id": "separator_yard",
+    "name": "Champ de glace · séparateur",
+    "env": "ice_night",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "queen",
+      "chain"
+    ],
+    "links": [
+      "coastal_edge",
+      "surface_ruins",
+      "water_tank_yard"
+    ]
+  },
+  {
+    "id": "coastal_edge",
+    "name": "Bord de mer · glace fracturée",
+    "env": "ice_night",
+    "canon": "screen_or_implied",
+    "lanes": 2,
+    "tags": [
+      "queen",
+      "water"
+    ],
+    "links": [
+      "recovery_landing",
+      "separator_yard",
+      "water_tank_yard"
+    ]
+  },
+  {
+    "id": "recovery_landing",
+    "name": "Zone de récupération Yautja",
+    "env": "ice_night",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "elder",
+      "epilogue"
+    ],
+    "links": [
+      "mothership_procession",
+      "coastal_edge",
+      "elder_circle"
+    ]
+  },
+  {
+    "id": "mothership_procession",
+    "name": "Vaisseau-mère · procession funéraire",
+    "env": "ship",
+    "canon": "transition_inferred",
+    "lanes": 2,
+    "tags": [
+      "elder",
+      "mortuary"
+    ],
+    "links": [
+      "mothership_mortuary",
+      "elder_circle",
+      "recovery_landing"
+    ]
+  },
+  {
+    "id": "mothership_mortuary",
+    "name": "Vaisseau-mère · chambre mortuaire",
+    "env": "ship",
+    "canon": "screen_or_implied",
+    "lanes": 2,
+    "tags": [
+      "predalien",
+      "ending"
+    ],
+    "links": [
+      "mothership_procession",
+      "mortuary_seal"
+    ]
+  },
+  {
+    "id": "pyramid_staircase_mid",
+    "name": "Pyramide · escalier intermédiaire",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "pyramid",
+      "chopper",
+      "lex"
+    ],
+    "links": [
+      "pyramid_staircase_low",
+      "stafford_pillar",
+      "pyramid_staircase"
+    ]
+  },
+  {
+    "id": "grid_clash",
+    "name": "Pyramide · salle du premier choc",
+    "env": "pyramid_shift",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "pyramid",
+      "grid",
+      "combat"
+    ],
+    "links": [
+      "grid_tail_cut",
+      "pyramid_staircase_low"
+    ]
+  },
+  {
+    "id": "grid_tail_cut",
+    "name": "Pyramide · dalle acide",
+    "env": "pyramid_shift",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "pyramid",
+      "grid",
+      "acid"
+    ],
+    "links": [
+      "grid_column",
+      "grid_clash"
+    ]
+  },
+  {
+    "id": "grid_column",
+    "name": "Pyramide · colonne brisée",
+    "env": "pyramid_shift",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "pyramid",
+      "grid",
+      "column"
+    ],
+    "links": [
+      "net_chamber",
+      "grid_tail_cut"
+    ]
+  },
+  {
+    "id": "pillar_hall_facehugger",
+    "name": "Salle des piliers · attaque du Facehugger",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "pyramid",
+      "facehugger",
+      "pillars"
+    ],
+    "links": [
+      "pillar_hall",
+      "pillar_hall_entry"
+    ]
+  },
+  {
+    "id": "shooting_gallery_lex",
+    "name": "Galerie · contre-attaque de Lex",
+    "env": "pyramid_shift",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "pyramid",
+      "alliance",
+      "lex"
+    ],
+    "links": [
+      "shooting_gallery"
+    ]
+  },
+  {
+    "id": "surface_tunnel_exit",
+    "name": "Puits thermique · sortie sous le souffle",
+    "env": "ice_tunnel",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "borehole",
+      "escape",
+      "blast"
+    ],
+    "links": [
+      "whaling_collapse",
+      "borehole_escape"
+    ]
+  },
+  {
+    "id": "water_tank_yard",
+    "name": "Station baleinière · cour du réservoir",
+    "env": "ice_night",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "surface",
+      "queen",
+      "water_tank",
+      "chain"
+    ],
+    "links": [
+      "coastal_edge",
+      "queen_wristblade_lane",
+      "separator_yard"
+    ]
+  },
+  {
+    "id": "whaling_overlook",
+    "name": "Station baleinière · point d’observation",
+    "env": "station",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "surface",
+      "recon"
+    ],
+    "links": [
+      "whaling_rooftops",
+      "whaling_outskirts"
+    ]
+  },
+  {
+    "id": "quinn_confrontation",
+    "name": "Station baleinière · bord du forage",
+    "env": "station",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "surface",
+      "quinn",
+      "duel"
+    ],
+    "links": [
+      "quinn_fall",
+      "drill_control",
+      "whaling_yard"
+    ]
+  },
+  {
+    "id": "quinn_fall",
+    "name": "Puits thermique · lèvre après le duel",
+    "env": "ice_tunnel",
+    "canon": "screen_or_implied",
+    "lanes": 2,
+    "tags": [
+      "quinn",
+      "borehole"
+    ],
+    "links": [
+      "predator_regroup",
+      "quinn_confrontation"
+    ]
+  },
+  {
+    "id": "predator_regroup",
+    "name": "Station baleinière · rassemblement du trio",
+    "env": "station",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "trio",
+      "hologram"
+    ],
+    "links": [
+      "wrist_hologram",
+      "quinn_fall"
+    ]
+  },
+  {
+    "id": "wrist_hologram",
+    "name": "Station baleinière · projection du wrist computer",
+    "env": "station",
+    "canon": "screen_or_implied",
+    "lanes": 2,
+    "tags": [
+      "hologram",
+      "wrist_computer"
+    ],
+    "links": [
+      "drill_control",
+      "predator_regroup"
+    ]
+  },
+  {
+    "id": "quinn_bottom",
+    "name": "Puits thermique · point d’impact",
+    "env": "ice_tunnel",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "quinn",
+      "scar"
+    ],
+    "links": [
+      "pyramid_exterior",
+      "borehole_lower"
+    ]
+  },
+  {
+    "id": "hunter_split_gallery",
+    "name": "Pyramide · embranchement des chasseurs",
+    "env": "pyramid_shift",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "split",
+      "hunt"
+    ],
+    "links": [
+      "pyramid_staircase_top",
+      "weapons_exit"
+    ]
+  },
+  {
+    "id": "stafford_net_lane",
+    "name": "Grand escalier · axe du filet",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "stafford",
+      "netgun"
+    ],
+    "links": [
+      "stafford_pillar",
+      "pyramid_staircase_top"
+    ]
+  },
+  {
+    "id": "stafford_pillar",
+    "name": "Grand escalier · pilier de Stafford",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "stafford",
+      "combistick"
+    ],
+    "links": [
+      "pyramid_staircase_mid",
+      "stafford_net_lane"
+    ]
+  },
+  {
+    "id": "weyland_scan",
+    "name": "Galerie · lecture thermique de Weyland",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "weyland",
+      "honor"
+    ],
+    "links": [
+      "weyland_flame",
+      "glyph_corridor"
+    ]
+  },
+  {
+    "id": "weyland_flame",
+    "name": "Galerie · attaque improvisée de Weyland",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "weyland",
+      "flame"
+    ],
+    "links": [
+      "weyland_retaliation",
+      "weyland_scan"
+    ]
+  },
+  {
+    "id": "weyland_retaliation",
+    "name": "Galerie · riposte de Scar",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "weyland",
+      "scar"
+    ],
+    "links": [
+      "moving_wall",
+      "weyland_flame"
+    ]
+  },
+  {
+    "id": "blooding_exit",
+    "name": "Salle des piliers · sortie",
+    "env": "pyramid",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "blooding",
+      "connector"
+    ],
+    "links": [
+      "chasm_approach",
+      "blooding_niche"
+    ]
+  },
+  {
+    "id": "plasma_calibration",
+    "name": "Galerie · réarmement du plasmacaster",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 2,
+    "tags": [
+      "plasmacaster",
+      "lex",
+      "scar"
+    ],
+    "links": [
+      "shooting_gallery",
+      "reunion_corridor"
+    ]
+  },
+  {
+    "id": "queen_call_retreat",
+    "name": "Galerie · repli après le cri de la Reine",
+    "env": "pyramid_shift",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "queen_call",
+      "retreat"
+    ],
+    "links": [
+      "armor_crafting",
+      "shooting_gallery_end"
+    ]
+  },
+  {
+    "id": "lex_armed_ready",
+    "name": "Galerie · Lex équipée",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 2,
+    "tags": [
+      "lex",
+      "xeno_armor"
+    ],
+    "links": [
+      "hive_entry",
+      "armor_crafting"
+    ]
+  },
+  {
+    "id": "nuke_exit_gallery",
+    "name": "Ruche · galerie du compte à rebours",
+    "env": "hive",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "nuke",
+      "escape"
+    ],
+    "links": [
+      "escape_lower",
+      "egg_chamber_exit"
+    ]
+  },
+  {
+    "id": "escape_gallery_rescue",
+    "name": "Pyramide · sauvetage de Scar",
+    "env": "pyramid_shift",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "scar",
+      "lex",
+      "xeno"
+    ],
+    "links": [
+      "escape_sled",
+      "escape_gallery"
+    ]
+  },
+  {
+    "id": "collapse_runoff",
+    "name": "Station baleinière · débris après explosion",
+    "env": "ice_night",
+    "canon": "transition_inferred",
+    "lanes": 3,
+    "tags": [
+      "surface",
+      "collapse"
+    ],
+    "links": [
+      "surface_ruins",
+      "whaling_collapse"
+    ]
+  },
+  {
+    "id": "warrior_pause",
+    "name": "Champ de glace · reconnaissance",
+    "env": "ice_night",
+    "canon": "screen_or_implied",
+    "lanes": 2,
+    "tags": [
+      "scar",
+      "lex",
+      "blooding"
+    ],
+    "links": [
+      "ice_field_final",
+      "surface_ruins"
+    ]
+  },
+  {
+    "id": "elder_circle",
+    "name": "Zone de récupération · cercle du clan",
+    "env": "ice_night",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "elder",
+      "lex",
+      "clan"
+    ],
+    "links": [
+      "mothership_procession",
+      "recovery_landing"
+    ]
+  },
+  {
+    "id": "mortuary_seal",
+    "name": "Vaisseau-mère · sas mortuaire",
+    "env": "ship",
+    "canon": "transition_inferred",
+    "lanes": 2,
+    "tags": [
+      "mortuary",
+      "seal"
+    ],
+    "links": [
+      "mothership_mortuary"
+    ]
+  },
+  {
+    "id": "trophy_cut_floor",
+    "name": "Salle des piliers · prise xéno",
+    "env": "pyramid",
+    "canon": "screen_or_implied",
+    "lanes": 2,
+    "tags": [
+      "scar",
+      "xeno",
+      "trophy",
+      "dagger"
+    ],
+    "links": [
+      "blooding_niche",
+      "pillar_hall"
+    ]
+  },
+  {
+    "id": "queen_shuriken_lane",
+    "name": "Champ de glace · trajectoire du shuriken",
+    "env": "ice_night",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "queen",
+      "scar",
+      "shuriken"
+    ],
+    "links": [
+      "queen_combistick_arc",
+      "ice_field_final"
+    ]
+  },
+  {
+    "id": "queen_combistick_arc",
+    "name": "Champ de glace · assaut au combistick",
+    "env": "ice_night",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "queen",
+      "scar",
+      "combistick"
+    ],
+    "links": [
+      "queen_wristblade_lane",
+      "queen_shuriken_lane"
+    ]
+  },
+  {
+    "id": "queen_wristblade_lane",
+    "name": "Champ de glace · dernier projectile",
+    "env": "ice_night",
+    "canon": "screen_or_implied",
+    "lanes": 3,
+    "tags": [
+      "queen",
+      "scar",
+      "wrist_blade_projectile"
+    ],
+    "links": [
+      "water_tank_yard",
+      "queen_combistick_arc"
+    ]
+  }
+]

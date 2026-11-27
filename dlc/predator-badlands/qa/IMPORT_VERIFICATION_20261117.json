@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "performedAtUtc": "2026-11-17T03:25:12.025634+00:00",
+  "command": "python3 dlc/tools/verify_archive_recovery_20261117.py",
+  "readOnly": true,
+  "verifierSha256": "a9020261dd0e99b5c2ac750077bfb249de2554e69c66c15982b93c2aa2bde197",
+  "inventorySha256": "a99bff29320d0a5a91bd3b85c60bd363f3406aefb771bd8875412f976a932ce6",
+  "pack": "predator-badlands",
+  "inventory": "dlc/predator-badlands/qa/RECOVERY_INVENTORY_20261117.json",
+  "status": "PASS",
+  "scope": "Byte preservation, archive structure, image decode and recorded checksums; no gameplay or artistic approval.",
+  "auditedBaseCommit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+  "files": 79,
+  "hashMatches": 79,
+  "bytes": 5629570,
+  "uniqueFileSha256": 79,
+  "jsonParsed": 13,
+  "pngDecoded": 13,
+  "svgParsed": 18,
+  "pngDetails": [
+    {
+      "path": "dlc/predator-badlands/v0.1.0/screenshots/00_title.png",
+      "width": 1440,
+      "height": 900,
+      "mode": "RGB",
+      "rgbaSha256": "89649d0e001e2337354458e9a1c1beeb3951b94946398e673021d1f3221691d1"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/screenshots/01_wy_cockpit.png",
+      "width": 1440,
+      "height": 900,
+      "mode": "RGB",
+      "rgbaSha256": "118d1b8b7d45504e282ff68d7666e4321261ef5a2a1c1cb234f2345d4c744a99"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/screenshots/02_wy_finale.png",
+      "width": 1440,
+      "height": 900,
+      "mode": "RGB",
+      "rgbaSha256": "aa55402d14dd81d7a5af1067c741f93ffa4b5f9e1648c14212a018ac811c62d4"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/screenshots/03_pred_vines.png",
+      "width": 1440,
+      "height": 900,
+      "mode": "RGB",
+      "rgbaSha256": "f9dc4336f0e80ae9e325b968dc6cf9b6b64a4a0bfb2cf6d782cc37f4f7434db9"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/screenshots/04_pred_kalisk.png",
+      "width": 1440,
+      "height": 900,
+      "mode": "RGB",
+      "rgbaSha256": "437a9c7e6ad62cd7393bfbb6a57825d1069f797943117984b92858d43d8bafb1"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/screenshots/05_pred_organic.png",
+      "width": 1440,
+      "height": 900,
+      "mode": "RGB",
+      "rgbaSha256": "669353978e1e03c307e1d884cba91e87b6b814226d5df29830416120b5b9e35b"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.1.0/screenshots/06_pred_njohrr.png",
+      "width": 1440,
+      "height": 900,
+      "mode": "RGB",
+      "rgbaSha256": "32b95e4d42cca0fc825bb2172940f209cdfe731e3a9cc4521f47ecad65cdf599"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/qa/01_menu.png",
+      "width": 1440,
+      "height": 960,
+      "mode": "RGB",
+      "rgbaSha256": "417a1fc057d439debd626f7e1a1b44d8160fdf475fc5ff586c030d4222bbe756"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/qa/02_puzzle.png",
+      "width": 1440,
+      "height": 960,
+      "mode": "RGB",
+      "rgbaSha256": "56ff63e15f2e66ab97a8a9e2eeb4dcb1c3fcb3b94fd47a5cf4b829a0cb4fa6d4"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/qa/03_combat.png",
+      "width": 1440,
+      "height": 960,
+      "mode": "RGB",
+      "rgbaSha256": "754bf73bf198fd6c86abc03600d77995a08dee3d76a584355d4696153bc54138"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/qa/04_meute.png",
+      "width": 1440,
+      "height": 960,
+      "mode": "RGB",
+      "rgbaSha256": "32decdf28faa9ae49f6b818730b7f19b9f944ceb95251f833ad57a5cd6e2568d"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/qa/05_codex.png",
+      "width": 1440,
+      "height": 960,
+      "mode": "RGB",
+      "rgbaSha256": "14a635620d24de59b785aee2275721f6908059c4bf550ea73bef81cdf2cc5ddb"
+    },
+    {
+      "path": "dlc/predator-badlands/v0.2.0/qa/06_mobile.png",
+      "width": 390,
+      "height": 844,
+      "mode": "RGB",
+      "rgbaSha256": "34e63ac1639a85cf62d18b2c49bf19b39b7e7bb5c78579af55ff99bb52c4abdf"
+    }
+  ],
+  "archivesChecked": [
+    {
+      "path": "dlc/predator-badlands/releases/ALIENS_TANTALUS_DLC_PREDATOR_BADLANDS_v0.1.0.zip",
+      "entries": 43,
+      "crc": "PASS"
+    }
+  ],
+  "preservedBaselineFilesChecked": 55,
+  "historicalChecksumManifests": [
+    {
+      "manifest": "dlc/predator-badlands/PACKAGE_SHA256SUMS.txt",
+      "checkedEntries": 78,
+      "matchedEntries": 78,
+      "explicitPathRelocations": {
+        "IMPORT_STATUS.json": "historical/import-package-20261106/IMPORT_STATUS.json"
+      },
+      "status": "PASS",
+      "issues": []
+    },
+    {
+      "manifest": "dlc/predator-badlands/v0.1.0/SHA256SUMS.txt",
+      "checkedEntries": 42,
+      "matchedEntries": 42,
+      "explicitPathRelocations": {},
+      "status": "PASS",
+      "issues": []
+    }
+  ],
+  "issues": [],
+  "notPerformed": [
+    "historical-runtime-tests",
+    "installers",
+    "rebuilding-historical-artifacts",
+    "browser-playthrough",
+    "Next-build",
+    "native-Yautja-integration",
+    "human-artistic-review",
+    "one-to-one-fidelity-certification"
+  ]
+}

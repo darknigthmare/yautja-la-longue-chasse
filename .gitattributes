@@ -17,3 +17,6 @@ art-source/xeno-prime/berceau-enfoui/v2.3/INVENTAIRE.csv -text whitespace=blank-
 .worktreeinclude text eol=lf
 *.tsv text eol=lf
 .claude/**/*.md text eol=lf
+
+# Recovered source packs retain their original bytes, including historical CRLF.
+art-source/project-recovery-20261117/corpus/** -text -whitespace
