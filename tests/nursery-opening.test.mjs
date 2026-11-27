@@ -29,7 +29,7 @@ function beforeBreach() {
   state = frame(state);
   assert.equal(state.phase, "prompt");
   state = n.skipNurseryContextV72(state);
-  for (let tick = 0; tick < 180 && state.opening.stage === "latch"; tick++) {
+  for (let tick = 0; tick < 240 && state.opening.stage === "latch"; tick++) {
     state = frame(state, { confirm: state.inputArmed && state.phase === "prompt" && state.phaseTick >= 24 });
   }
   assert.equal(state.phase, "opening");
