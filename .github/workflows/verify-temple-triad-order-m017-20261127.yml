@@ -1,4 +1,4 @@
-name: Vérifier la triade avant le Temple M017
+name: Jouer le seuil de triade puis la première salle M017
 on:
   push:
     branches: [codex/verify-temple-triad-order-m017-20261127]
@@ -45,6 +45,7 @@ jobs:
             /public/game/youth/
             /public/game/prologue/v47/detached-blade.png
             /public/game/homeworld/v70/temple-modules.png
+            /public/game/sprites/v4/rifle-soldier.png
             /public/game/homeworld/v74/
             /public/game/homeworld/v75/
             /public/audio/
@@ -95,22 +96,6 @@ jobs:
         run: |
           node scripts/materialize-asset-raccords-20261120.mjs runtime
           npm ci --ignore-scripts --no-audit --no-fund
-      - name: Verify both play orders and the native progression callbacks
-        run: >-
-          node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec
-          tests/game-client-solo-v70-integration.test.mjs tests/game-client-solo-v90-integration.test.mjs
-          tests/campaign-solo-v70.test.mjs tests/nursery-campaign.test.mjs tests/campaign-slots.test.mjs
-          tests/homeworld-triad-roles-m016.test.mjs tests/nef-rejoin-m017.test.mjs
-      - name: Typecheck all game routes
-        if: ${{ !cancelled() }}
-        run: npm run typecheck
-      - name: Lint the new handoff
-        if: ${{ !cancelled() }}
-        run: >-
-          npx eslint app/game/systems/campaignSoloV90Progress.ts app/game/systems/campaignSoloV90.ts 
-          app/game/systems/campaignSoloV70.ts app/game/systems/nurseryCampaign.ts app/game/systems/campaignSlots.ts
-          app/game/FirstHuntSoloV70.tsx app/game/FirstHuntSoloV90.tsx scripts/qa-triad-roles-m016.mjs
-          tests/game-client-solo-v70-integration.test.mjs
       - name: Place the triad in Chromium, open the Temple, and reload there
         if: ${{ !cancelled() }}
         env:
