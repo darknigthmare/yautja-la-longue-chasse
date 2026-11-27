@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { finale, houseSite, legacyClanFixture, legacyFixture, legacyHaltFixture, legacyPlayer, moveLegacyClanFixture, saves } from "./helpers/legacy-finale-r2.mjs";
+import { finale, houseSite, legacyCanonicalCohortFixture, legacyClanFixture, legacyFixture, legacyHaltFixture, legacyPlayer, moveLegacyClanFixture, saves } from "./helpers/legacy-finale-r2.mjs";
 
 test("the new cohort requires Ancient, a realized ending receipt, and the actual fitted residence", () => {
   const command = { scene: "cohort", order: { kind: "greet", at: 2 } };
@@ -141,7 +141,7 @@ test("a clan archive rejects duplicate crew and a trace without a real instance"
 });
 
 test("M059 requires the threshold and the actual lead to the support, with exact save continuation", () => {
-  const player = legacyPlayer();
+  const player = legacyPlayer(legacyCanonicalCohortFixture());
   for (const [kind, at] of [["lead", 8], ["greet", 8], ["unload", 11]]) {
     assert.equal(finale.advanceLegacyFinaleR2(player.save, houseSite, { scene: "cohort", order: { kind, at } }).next, undefined);
   }
@@ -158,7 +158,7 @@ test("M059 requires the threshold and the actual lead to the support, with exact
 });
 
 test("existing M059 journals that start at the support reopen without a second arrival", () => {
-  const save = legacyFixture();
+  const save = legacyCanonicalCohortFixture();
   save.legacyFinaleR2 = { version: 1, ownerCreatedAt: save.createdAt, endingId: "O6-E1",
     cohort: { site: houseSite, events: [{ kind: "unload", at: 11 }] } };
   const old = saves.parseSaveImport(saves.exportSave(save));

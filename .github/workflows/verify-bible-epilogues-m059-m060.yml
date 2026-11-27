@@ -11,7 +11,7 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      EPILOGUE_CANDIDATE_SHA: 'dd89f1c1c09599b0b0486ae54dcb591d40d88cfc'
+      EPILOGUE_CANDIDATE_SHA: '9c66c3b58a5b6d93dce74a50ed16e8f7bb781e85'
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -37,6 +37,8 @@ jobs:
             /public/game/homeworld/v64/
             /public/game/homeworld/v67/
             /public/game/homeworld/v69/
+            /public/game/homeworld/v72/
+            /public/game/homeworld/v74/
             /public/game/homeworld/v77/
             /public/game/assets/v3/actors/yautja/hunter/
             /public/game/assets/v139/rig-gauntlets/
@@ -55,6 +57,21 @@ jobs:
         run: |
           node scripts/materialize-asset-raccords-20261120.mjs runtime
           npm ci --ignore-scripts --no-audit --no-fund
+          node --input-type=module > "$RUNNER_TEMP/epilogue-npc-art" <<'NODE'
+          import { homeworldSceneSsrV78 } from './tests/helpers/homeworld-scene-ssr-v78.mjs';
+          const qa = homeworldSceneSsrV78();
+          const variants = qa.load('app/game/systems/homeworldNpcVariantsV84.ts');
+          const catalogue = variants.HOMEWORLD_NPC_VARIANT_CATALOGUE_V84;
+          const paths = new Set();
+          for (const npc of catalogue.cast) {
+            if (!['region:storm-chain', 'region:luminous-marshes'].includes(npc.groupId)) continue;
+            const file = variants.homeworldNpcVariantV84(npc.id)?.src;
+            if (file) paths.add('/public' + file);
+          }
+          if (!paths.size) throw new Error('Missing local V84 cast');
+          console.log([...paths].sort().join('\n'));
+          NODE
+          git sparse-checkout add --stdin < "$RUNNER_TEMP/epilogue-npc-art"
       - name: Verify exact epilogue logic and retain existing cultural routes
         run: |
           git diff --exit-code "$EPILOGUE_CANDIDATE_SHA" HEAD -- app tests

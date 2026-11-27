@@ -5,7 +5,7 @@ import path from "node:path";
 import { chromium } from "playwright-core";
 import react from "@vitejs/plugin-react";
 import { createServer } from "vite";
-import { legacyFixture, legacyHaltApproach, legacyHaltFixture, legacyRegions, saves } from "../tests/helpers/legacy-finale-r2.mjs";
+import { legacyCanonicalCohortFixture, legacyHaltApproach, legacyHaltFixture, legacyRegions, saves } from "../tests/helpers/legacy-finale-r2.mjs";
 import { homeworldRegionNavigatorV68 } from "./homeworld-region-navigation-v68.mjs";
 
 const output = path.resolve("outputs/qa-legacy-epilogues-m059-m060");
@@ -25,7 +25,7 @@ createRoot(document.getElementById("root")).render(<GameClient />);
 
 const report = {
   source: process.env.EPILOGUE_CANDIDATE_SHA ?? execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim(),
-  admission: "La fin O6 et le dossier adulte sont préparés pour la recette. Le navigateur joue le déplacement à pied, la halte V86, l’arrivée de la cohorte et les gestes d’épilogue. Le rapport régional requis pour la halte est la seule autre préparation de cette recette.",
+  admission: "La fin O6 et le seuil de carrière sont préparés. Le dossier Ancient du second parcours est établi par les réducteurs Elder/M056. Le navigateur joue le déplacement à pied, la halte V86, l’arrivée de la cohorte et les gestes d’épilogue. Le rapport régional requis pour la halte est la seule autre préparation de cette recette.",
   sequences: [], errors: [],
 };
 const service = await createServer({ configFile: false, plugins: [react()],
@@ -119,7 +119,7 @@ try {
     report.sequences.push("M060 · marche native vers la table V86, reçu et hôte relus, reprise et transmission");
   });
 
-  await runFrom(legacyFixture(), async page => {
+  await runFrom(legacyCanonicalCohortFixture(), async page => {
     const enterHouse = async () => {
       const walk = await openWorld(page, "luminous-marshes");
       await walk.walkTo(legacyRegions.HOMEWORLD_REGION_INTERIOR_V68.service);
