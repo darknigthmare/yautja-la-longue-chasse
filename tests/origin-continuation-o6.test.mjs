@@ -47,7 +47,7 @@ test('O6 receives a willing Yena, performs the cordage together, prepares three 
     assert.equal(saves.parseSaveImport(JSON.stringify(clone)).failure, 'invalid-save');
   }
   const future = structuredClone(save);
-  future.originV151.continuationO6.version = 2;
+  future.originV151.continuationO6.version = 3;
   assert.equal(saves.parseSaveImport(JSON.stringify(future)).failure, 'future-version');
 });
 
@@ -105,6 +105,7 @@ test('a consenting novice chooses an exercise tool and walks with the mentor wit
   }
   assert.equal(view(save).practice.next, null);
   assert.equal(view(save).practice.student, null);
+  assert.equal(save.originV151.continuationO6.version, 2);
   assert.deepEqual(save.originV151.continuationO6.practice, steps);
   assert.deepEqual(save.originV151.ending, prepared.originV151.ending);
   assert.deepEqual(save.originV151.consumed, prepared.originV151.consumed);
@@ -115,6 +116,7 @@ test('a consenting novice chooses an exercise tool and walks with the mentor wit
   for (const damage of [
     record => { record.practice.splice(1, 1); },
     record => { record.orders.pop(); },
+    record => { record.version = 1; },
   ]) {
     const clone = structuredClone(save);
     damage(clone.originV151.continuationO6);

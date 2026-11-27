@@ -33,35 +33,30 @@ export function continuationOrdersO6(helpedYena: boolean, teachingChosen: boolea
   return [...(helpedYena ? visit : []), ...plans, ...(teachingChosen ? ['open-rack' as const] : [])];
 }
 
-export interface ContinuationRecordO6 {
-  version: 1;
+export type ContinuationRecordO6 = {
   ownerCreatedAt: string;
   houseId: string;
   helpedYena: boolean;
   orders: PreparationOrderO6[];
-  practice?: PracticeOrderO6[];
-}
+} & ({ version: 1; practice?: never } | { version: 2; practice: PracticeOrderO6[] });
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   value !== null && typeof value === 'object' && !Array.isArray(value);
 
 export function normalizeContinuationO6(raw: unknown): ContinuationRecordO6 | null {
   if (!isRecord(raw)) return null;
-  const practicing = Object.hasOwn(raw, 'practice');
-  if (Object.keys(raw).length !== (practicing ? 6 : 5)) return null;
   const { version, ownerCreatedAt, houseId, helpedYena, orders } = raw;
-  if (version !== 1 || typeof ownerCreatedAt !== 'string' || !Number.isFinite(Date.parse(ownerCreatedAt)) ||
+  if ((version !== 1 && version !== 2) || Object.keys(raw).length !== (version === 2 ? 6 : 5) ||
+      typeof ownerCreatedAt !== 'string' || !Number.isFinite(Date.parse(ownerCreatedAt)) ||
       typeof houseId !== 'string' || !houseV149(houseId) || typeof helpedYena !== 'boolean' || !Array.isArray(orders)) return null;
   const route = continuationOrdersO6(helpedYena, true);
   if (!orders.length || orders.length > route.length ||
       !Array.from(orders).every((order, index) => order === route[index])) return null;
-  const record: ContinuationRecordO6 = { version: 1, ownerCreatedAt, houseId, helpedYena, orders: [...orders] };
-  if (practicing) {
-    const practice = normalizePracticeO6(raw.practice);
-    if (!practice || !orders.includes('open-rack')) return null;
-    record.practice = practice;
-  }
-  return record;
+  const record = { ownerCreatedAt, houseId, helpedYena, orders: [...orders] };
+  if (version === 1) return { ...record, version: 1 };
+  const practice = normalizePracticeO6(raw.practice);
+  if (!practice || !orders.includes('open-rack')) return null;
+  return { ...record, version: 2, practice };
 }
 
 type ContinuationSaveO6 = Pick<SaveGame, 'createdAt' | 'originV151' | 'prologue' | 'eliteRecognitionV174' | 'residenceV149'>;
@@ -138,7 +133,7 @@ export function applyContinuationO6(
     const record = origin.continuationO6;
     if (!record || !view?.practice?.near || view.practice.next !== order) return null;
     return {
-      origin: { ...origin, continuationO6: { ...record, practice: [...(record.practice ?? []), order] } },
+      origin: { ...origin, continuationO6: { ...record, version: 2, practice: [...(record.practice ?? []), order] } },
       report: PRACTICE_POSTS_O6[order].report,
     };
   }
