@@ -45,9 +45,10 @@ try {
     await page.locator('[data-solo-v90] canvas[data-solo-assets="true"]').waitFor({ timeout: 90000 });
     await canvas.focus();
   }
+  // Initialize the clock before the game records its first animation frame.
+  await page.clock.install();
   await page.goto("http://127.0.0.1:4269");
   await boot();
-  await page.clock.install();
   await page.clock.runFor(150);
   const right = seed.settings.controlBindings[controls.right].at(-1);
   const interaction = seed.settings.controlBindings[controls.interact][0];
@@ -72,7 +73,7 @@ try {
     const stamp = (await saved()).soloV90.checkpoint.partnerObservations[activity.id];
     assert.equal(typeof stamp, "number");
     assert.equal((await live()).partnerObservations[activity.id], stamp);
-    assert.equal(await page.locator('[data-solo-v90-activity="' + activity.id + '"]').getAttribute('data-observed'), 'true');
+    await page.locator(`[data-solo-v90-activity="${activity.id}"][data-observed="true"]`).waitFor({ timeout: 5000 });
     await page.screenshot({ path: resolve(output, "observation-" + activity.id + ".png"), animations: "disabled" });
     return stamp;
   }
