@@ -13,9 +13,9 @@ const bundle = await build({
 });
 export const course = await import("data:text/javascript;base64," + Buffer.from(bundle.outputFiles[0].text).toString("base64"));
 
-export function courtyardHandoffO6({ partial = false } = {}) {
+export function courtyardHandoffO6({ partial = false, nurseryPolicies = false } = {}) {
   const n = firstShock;
-  const common = admittedFirstShockO6().completed;
+  const common = admittedFirstShockO6({ ceremony: nurseryPolicies, temple: nurseryPolicies }).completed;
   let save = common;
   let record = n.firstShockActiveO6(save);
   let x = n.firstShockResumeX(record);
@@ -42,5 +42,7 @@ export function courtyardHandoffO6({ partial = false } = {}) {
   const before = save;
   act("return-weapon", net);
   assert.equal(record, null);
-  return { common, before, returned: save };
+  const armed = course.advanceFirstShockIntoCohortO6(before, "return-weapon", x).save;
+  const returned = { ...save, originV151: { ...save.originV151, firstShockO6: { ...save.originV151.firstShockO6, version: 1 } } };
+  return { common, before, returned, armed, incomplete: save };
 }

@@ -13,6 +13,7 @@ import { homeworldInteriorForBuildingV64, nearestHomeworldInteriorTargetV64 } fr
 import { HOMEWORLD_ARCHIVE_V106 } from './homeworldArchiveDefinitionV106';
 import { archivePostReachedV106 } from './homeworldArchiveV106';
 import { homeworldInteriorRouteV112, homeworldInteriorSegmentV112 } from './homeworldInteriorNavigationV112';
+import { homeworldWayfindingInteriorRouteV75 } from './homeworldWayfindingV75';
 import { homeworldCargoGeometryKeyV109 } from './homeworldNavigationV109';
 import { HOMEWORLD_GEOMETRY_V64 } from './homeworldGeometryV64';
 
@@ -23,23 +24,15 @@ export type {
   HomeworldRouteRequestV109,
 } from './homeworldWayfindingV111';
 export { homeworldDestinationKeyV109 };
-/** Keep every exterior path, door anchor and action endpoint. Only unsafe
- * simplified interior legs are replaced by an independently verified route. */
+/** A coarse refusal or unsafe leg must give the fine sampler a chance before
+ * the world plan fails. The exterior path and interaction authority stay V111. */
 export function homeworldRoutePlanV112(save: SaveGame, origin: HomeworldRouteOriginV109, destinationId: string): HomeworldRoutePlanV109 {
-  const plan = homeworldRoutePlanV111(save, origin, destinationId);
-  if (plan.status !== 'reachable') return plan;
-  const target = homeworldAtlasTargetV83(homeworldAtlasLandmarksV111(save), plan.destinationId);
-  const stages = [];
-  for (const stage of plan.stages) {
-    const room = stage.interiorId && homeworldInteriorForBuildingV64(stage.interiorId);
-    if (!room || !['interact', 'exit'].includes(stage.kind)
-      || stage.points.slice(1).every((point, index) => homeworldInteriorSegmentV112(room, stage.points[index], point))) {stages.push(stage); continue;}
-    const pointId = stage.kind === 'exit' ? 'exit' : target?.pointId;
-    const route = pointId && homeworldInteriorRouteV112(room, stage.points[0], pointId);
-    if (!route || route.status !== 'reachable') return {...plan, status: 'unavailable', reason: 'Aucun passage intérieur sûr calculé. Rejoins le couloir et recalcule.', stages: [], distance: 0};
-    stages.push({...stage, points: route.points, distance: route.distance});
-  }
-  return {...plan, stages, distance: stages.reduce((distance, stage) => distance + stage.distance, 0)};
+  return homeworldRoutePlanV111(save, origin, destinationId, (room, from, pointId) => {
+    const route = homeworldWayfindingInteriorRouteV75(room, from, pointId);
+    return route.status === 'reachable' &&
+      route.points.slice(1).every((point, i) => homeworldInteriorSegmentV112(room, route.points[i], point))
+      ? route : homeworldInteriorRouteV112(room, from, pointId);
+  });
 }
 export const homeworldRouteResponseCurrentV112 = homeworldRouteResponseCurrentV111;
 

@@ -123,7 +123,7 @@ try {
   await page.locator('[data-okavango-return="deck"]').click();
   await deck().locator("[data-ship-interior]").waitFor();
   await openMap();
-  assert.match(await page.locator("[data-galaxy-sol]").innerText(), /Consulter le relevé/);
+  assert.match((await page.locator("[data-galaxy-sol]").textContent()) ?? "", /Consulter le relevé/);
   await page.locator("[data-galaxy-sol]").click();
   await page.locator('[data-earth-okavango="returned"][data-okavango-traces="3"]').waitFor();
   report.checks.push("Trois traces, traversée physique retour et extraction au dépôt. Le pont et le relevé se rouvrent, sans gains ni mutation de M023.");

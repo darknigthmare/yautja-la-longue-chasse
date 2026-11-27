@@ -174,7 +174,7 @@ export const isFutureOriginV151 = (raw: unknown) => isRecord(raw) && ((typeof ra
   || (isRecord(raw.trainingYardO6) && typeof raw.trainingYardO6.version === "number" && raw.trainingYardO6.version > 1)
   || (isRecord(raw.continuationO6) && typeof raw.continuationO6.version === "number" && raw.continuationO6.version > 2)
   || (isRecord(raw.soloReturnO6) && typeof raw.soloReturnO6.version === "number" && raw.soloReturnO6.version > 1)
-  || (isRecord(raw.firstShockO6) && typeof raw.firstShockO6.version === "number" && raw.firstShockO6.version > 1)
+  || (isRecord(raw.firstShockO6) && typeof raw.firstShockO6.version === "number" && raw.firstShockO6.version > 2)
   || (isRecord(raw.cohortRaceO6) && typeof raw.cohortRaceO6.version === "number" && raw.cohortRaceO6.version > 1));
 /** V170 : identifiant de fin valide pour la voie (Ox-E1..Ox-E3, « Fins des six voies »). */
 export const isOriginEndingIdV151 = (originId: OriginIdV151, id: unknown): id is string =>

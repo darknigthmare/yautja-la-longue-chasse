@@ -22,8 +22,8 @@ import { confirmEndingV170, examineEndingV170 } from "./systems/originEndingsV17
 import { applyTrainingYardO6, type TrainingYardOrderO6 } from "./systems/originTrainingYardO6";
 import { applyContinuationO6, isContinuationOrderO6, type ContinuationOrderO6 } from "./systems/originContinuationO6";
 import { applySoloReturnO6, isSoloReturnOrderO6, type SoloReturnOrderO6 } from "./systems/originSoloReturnO6";
-import { applyFirstShockO6, firstShockActiveO6, type FirstShockOrderO6 } from "./systems/originFirstShockO6";
-import { activeCohortRaceO6, canStartCohortRaceO6, playCohortRaceO6, startCohortRaceO6, type CohortRaceOrderO6 } from "./systems/originCohortRaceO6";
+import { firstShockActiveO6, type FirstShockOrderO6 } from "./systems/originFirstShockO6";
+import { activeCohortRaceO6, advanceFirstShockIntoCohortO6, canStartCohortRaceO6, playCohortRaceO6, startCohortRaceO6, type CohortRaceOrderO6 } from "./systems/originCohortRaceO6";
 import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
 import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -1889,11 +1889,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const advanceFirstShock = useCallback((order: FirstShockOrderO6, x: number) => {
     if (!sessionAliveRef.current || !reconcileNurseryAttempt()) return null;
-    const outcome = applyFirstShockO6(saveRef.current, order, x);
-    if (!outcome) return null;
-    const next = order === "return-weapon" ? startCohortRaceO6(outcome.save) : outcome.save;
-    if (!persistNursery(next)) return null;
-    if (order === "return-weapon") setToast(activeCohortRaceO6(next)
+    const outcome = advanceFirstShockIntoCohortO6(saveRef.current, order, x);
+    if (!outcome || !persistNursery(outcome.save)) return null;
+    if (order === "return-weapon") setToast(activeCohortRaceO6(outcome.save)
       ? "Le geste joué est consigné. La cohorte t’attend pour la course des sacs."
       : "Le geste joué dans la cour est consigné. La cité t’attend.");
     return { retryAt: outcome.retryAt };

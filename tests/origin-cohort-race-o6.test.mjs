@@ -109,8 +109,7 @@ test("a real fallen round can close as partial without inventing a signal, trans
 });
 
 test("new receipts are replayed and a cold write refuses forged, future or regressive O6 records", () => {
-  const { before, returned } = courtyardHandoffO6();
-  const ready = n.startCohortRaceO6(returned);
+  const { before, armed: ready } = courtyardHandoffO6();
   const values = new Map([[n.SAVE_STORAGE_KEY, JSON.stringify(before)]]);
   const storage = { getItem: key => values.get(key) ?? null,
     setItem: (key, value) => values.set(key, value), removeItem: key => values.delete(key) };
@@ -130,4 +129,41 @@ test("new receipts are replayed and a cold write refuses forged, future or regre
   forged.originV151.cohortRaceO6 = { ...state(lower), version: 2 };
   assert.equal(n.parseSaveImport(JSON.stringify(forged)).failure, "future-version");
   assert.equal(n.keepsCohortRaceO6(ready, lower), false);
+});
+
+test("new first-shock v2 commits the second admission atomically and cannot shed it at the dojo", () => {
+  const { before, armed, incomplete, returned } = courtyardHandoffO6();
+  assert.equal(before.originV151.firstShockO6.version, 2);
+  assert.equal(armed.originV151.firstShockO6.version, 2);
+  assert.ok(read(before));
+  assert.equal(n.parseSaveImport(JSON.stringify(incomplete)).failure, "invalid-save");
+  assert.deepEqual(read(armed).originV151.cohortRaceO6.round, []);
+  assert.ok(read(returned));
+  const completed = seal(acceptSignal(climb(armed)));
+  const youth = n.startYouthCampaign({ ...completed, homeworld: { ...completed.homeworld,
+    greetedNpcIds: ["hunt-king", "terrace-instructor"] } });
+  assert.ok(read(youth).youthTraining);
+  const missing = structuredClone(youth);
+  delete missing.originV151.cohortRaceO6;
+  assert.equal(n.parseSaveImport(JSON.stringify(missing)).failure, "invalid-save");
+  const downgraded = { ...missing, originV151: { ...missing.originV151,
+    firstShockO6: { ...missing.originV151.firstShockO6, version: 1 } } };
+  assert.ok(read(downgraded).youthTraining, "The archived v1 shape remains readable.");
+  const values = new Map([[n.SAVE_STORAGE_KEY, JSON.stringify(youth)]]);
+  const storage = { getItem: key => values.get(key) ?? null, setItem: (key, value) => values.set(key, value),
+    removeItem: key => values.delete(key) };
+  assert.ok(n.loadSaveWithStatus(storage).loaded);
+  assert.equal(n.writeSaveWithStatus(downgraded, storage).persisted, false);
+});
+
+test("the native O6 handoff preserves both campaign policies through the exact save", () => {
+  const { common, before, armed, incomplete } = courtyardHandoffO6({ nurseryPolicies: true });
+  for (const value of [common, before, armed]) {
+    const reloaded = read(value);
+    assert.equal(reloaded.prologue.ceremonyM006, true);
+    assert.equal(reloaded.prologue.templeTriadFirstM017, true);
+  }
+  assert.equal(read(armed).originV151.firstShockO6.version, 2);
+  assert.deepEqual(read(armed).originV151.cohortRaceO6.round, []);
+  assert.equal(n.parseSaveImport(JSON.stringify(incomplete)).failure, "invalid-save");
 });

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { homeworldSceneSsrV78 } from "./helpers/homeworld-scene-ssr-v78.mjs";
 import { templeCampaignRoute, stamp } from "./helpers/solo-v70-played-route.mjs";
+import { thresholdsCampaignRoute } from "./helpers/solo-v69-played-route.mjs";
 
 const browserModules = homeworldSceneSsrV78();
 const model = browserModules.load("app/game/systems/homeworldTriadM016.ts");
@@ -124,4 +125,30 @@ test("M016 resumes the next contact from a single visited room and plans the rea
   const [gallery] = model.triadCityRoutesM016(complete, saar.roomId);
   assert.equal(gallery.purpose, "gallery");
   assert.equal(model.triadCityAtlasTargetM016(gallery), "point:training-service");
+});
+
+test("M016 stores the real forge gesture after V69 for a new Temple order", () => {
+  const previous = thresholdsCampaignRoute().save;
+  assert.equal(previous.soloV69.status, "completed");
+  assert.equal(previous.soloV70 ?? null, null);
+  const ordered = { ...previous, prologue: { ...previous.prologue, templeTriadFirstM017: true } };
+  for (const [before, shouldPersist] of [[ordered, true], [previous, false]]) {
+    const at = checkpoint(saar, before);
+    const gesture = model.advanceTriadCityM016(undefined, before.createdAt, saar, 0, at);
+    assert(gesture);
+    const next = { ...before, homeworld: { ...before.homeworld, triadCityM016: gesture, locationV77: at } };
+    const raw = new Map([[saves.SAVE_STORAGE_KEY, JSON.stringify(before)]]);
+    const storage = {
+      getItem: key => raw.get(key) ?? null,
+      setItem: (key, value) => raw.set(key, value),
+      removeItem: key => raw.delete(key),
+    };
+    assert.equal(saves.loadSaveWithStatus(storage).loaded, true);
+    assert.equal(campaign.canStartSoloV90(before), shouldPersist);
+    assert.equal(saves.writeSaveWithStatus(next, storage).persisted, shouldPersist);
+    const resumed = saves.loadSaveWithStatus(storage).save;
+    assert.equal(resumed.soloV70 ?? null, null);
+    assert.deepEqual(resumed.homeworld.triadCityM016, shouldPersist ? gesture : undefined);
+    assert.deepEqual(resumed.prologue.chronicle, before.prologue.chronicle);
+  }
 });

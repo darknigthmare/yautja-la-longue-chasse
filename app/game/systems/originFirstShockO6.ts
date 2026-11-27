@@ -9,7 +9,7 @@ type ChoiceO6 = "listen-harek" | "review-saar";
 type ObservationO6 = "harek-cohort" | "harek-assistance";
 type TransferO6 = "harek-lesson" | "saar-brace";
 export interface FirstShockRecordO6 {
-  version: 1;
+  version: 1 | 2;
   ownerCreatedAt: string;
   netX: number;
   assisted: boolean;
@@ -38,8 +38,8 @@ function firstShockFoundation(save: SaveGame) {
   return { ownerCreatedAt: save.createdAt, netX: nurseryOpeningNetX(opening), assisted: !opening.openingSuccess };
 }
 
-function initialRecord(foundation: NonNullable<ReturnType<typeof firstShockFoundation>>): FirstShockRecordO6 {
-  return { version: 1, ...foundation, journal: [], resolved: false, success: false, choice: null, observations: [], transfers: [] };
+function initialRecord(foundation: NonNullable<ReturnType<typeof firstShockFoundation>>, version: FirstShockRecordO6["version"] = 2): FirstShockRecordO6 {
+  return { version, ...foundation, journal: [], resolved: false, success: false, choice: null, observations: [], transfers: [] };
 }
 function seen(record: FirstShockRecordO6, order: FirstShockOrderO6) {
   return record.journal.some(event => event.order === order);
@@ -123,10 +123,10 @@ function applyEvent(record: FirstShockRecordO6, event: EventO6) {
 }
 
 export function normalizeFirstShockO6(raw: unknown): FirstShockRecordO6 | null {
-  if (!isRecord(raw) || raw.version !== 1 || typeof raw.ownerCreatedAt !== "string" || !raw.ownerCreatedAt ||
+  if (!isRecord(raw) || (raw.version !== 1 && raw.version !== 2) || typeof raw.ownerCreatedAt !== "string" || !raw.ownerCreatedAt ||
       !position(raw.netX) || typeof raw.assisted !== "boolean" ||
       !Array.isArray(raw.journal) || raw.journal.length > 6) return null;
-  let record = initialRecord({ ownerCreatedAt: raw.ownerCreatedAt, netX: raw.netX, assisted: raw.assisted });
+  let record = initialRecord({ ownerCreatedAt: raw.ownerCreatedAt, netX: raw.netX, assisted: raw.assisted }, raw.version);
   for (const event of raw.journal) {
     if (!isRecord(event) || !isOrder(event.order) || !position(event.x)) return null;
     const next = applyEvent(record, { order: event.order, x: event.x });
@@ -154,9 +154,9 @@ export function keepsFirstShockO6(previous: SaveGame, requested: SaveGame) {
   if (!before) {
     if (!after) return true;
     const completed = previous.prologue?.status === "active" && requested.prologue?.status === "completed";
-    return completed && firstShockMatchesSaveO6(requested) && after.journal.length === 0;
+    return completed && firstShockMatchesSaveO6(requested) && after.version === 2 && after.journal.length === 0;
   }
-  if (!after || !firstShockMatchesSaveO6(requested) || before.ownerCreatedAt !== after.ownerCreatedAt ||
+  if (!after || !firstShockMatchesSaveO6(requested) || before.version !== after.version || before.ownerCreatedAt !== after.ownerCreatedAt ||
       before.netX !== after.netX || before.assisted !== after.assisted ||
       after.journal.length < before.journal.length || after.journal.length > before.journal.length + 1) return false;
   return before.journal.every((event, i) => after.journal[i].order === event.order && after.journal[i].x === event.x);

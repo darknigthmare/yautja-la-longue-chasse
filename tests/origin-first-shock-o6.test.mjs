@@ -44,7 +44,7 @@ test("Harek hears the played reading and keeps only the learned transfer", () =>
   assert.equal(active.success, true);
   assert.deepEqual(active.transfers, ["harek-lesson"]);
   const net = walkFirstShockToO6(harek, active.netX);
-  const returned = saved(n.applyFirstShockO6(heard, "return-weapon", net).save);
+  const returned = saved(n.advanceFirstShockIntoCohortO6(heard, "return-weapon", net).save);
   assert.equal(n.firstShockActiveO6(returned), null);
   assert.deepEqual(returned.prologue, completed.prologue);
   assert.deepEqual(returned.inventory, completed.inventory);
@@ -84,7 +84,7 @@ test("foreign owners, future or fabricated receipts and lost progress are reject
   assert.equal(n.parseSaveImport(JSON.stringify(forged)).failure, "invalid-save");
   forged.originV151.firstShockO6 = { ...heard.originV151.firstShockO6, ownerCreatedAt: "2020-07-12T00:00:00.000Z" };
   assert.equal(n.parseSaveImport(JSON.stringify(forged)).failure, "invalid-save");
-  forged.originV151.firstShockO6 = { ...heard.originV151.firstShockO6, version: 2 };
+  forged.originV151.firstShockO6 = { ...heard.originV151.firstShockO6, version: 3 };
   assert.equal(n.parseSaveImport(JSON.stringify(forged)).failure, "future-version");
   assert.equal(n.keepsFirstShockO6(heard, save), false);
   assert.equal(n.keepsFirstShockO6(completed, heard), false);
@@ -131,7 +131,8 @@ test("an imported city or dojo save can only keep a completed courtyard departur
   const state = n.firstShockActiveO6(heard);
   assert.equal(n.parseSaveImport(JSON.stringify({ ...youth, originV151: heard.originV151 })).failure, "invalid-save");
   const departed = n.applyFirstShockO6(heard, "return-weapon", state.netX).save;
-  assert.ok(saved({ ...youth, originV151: departed.originV151 }).youthTraining);
+  const historicOrigin = { ...departed.originV151, firstShockO6: { ...departed.originV151.firstShockO6, version: 1 } };
+  assert.ok(saved({ ...youth, originV151: historicOrigin }).youthTraining);
 });
 
 test("the completed native nursery preserves M006 admission and starts only the explicit O6 episode", () => {
