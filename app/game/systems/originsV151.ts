@@ -166,7 +166,7 @@ export const isFutureOriginV151 = (raw: unknown) => isRecord(raw) && ((typeof ra
   // V170: a future ending record makes the whole origin record future (never overwritten by an older game).
   || (isRecord(raw.ending) && typeof raw.ending.version === "number" && raw.ending.version > 1)
   || (isRecord(raw.trainingYardO6) && typeof raw.trainingYardO6.version === "number" && raw.trainingYardO6.version > 1)
-  || (isRecord(raw.continuationO6) && typeof raw.continuationO6.version === "number" && raw.continuationO6.version > 1));
+  || (isRecord(raw.continuationO6) && typeof raw.continuationO6.version === "number" && raw.continuationO6.version > 2));
 /** V170 : identifiant de fin valide pour la voie (Ox-E1..Ox-E3, « Fins des six voies »). */
 export const isOriginEndingIdV151 = (originId: OriginIdV151, id: unknown): id is string =>
   typeof id === "string" && /^O[1-6]-E[1-3]$/.test(id) && id.startsWith(`${originId}-`);

@@ -146,3 +146,32 @@ test("the archival cabinet saves only readings made at its own alcove with the c
   assert.deepEqual(cleaned.cabinetReadIds, ["prey"]);
   assert.equal(museum.mausoleumDlcState("prey"), "unavailable");
 });
+
+test("the physical Ancient visit at the Wall retains the exact alcove without reading the cabinet", () => {
+  const cabinet = museum.recordMausoleumCabinetReading(undefined, "prey",
+    { galleryId: "first", page: 0, actorX: museum.MAUSOLEUM_CABINET_X }, access());
+  const at = { galleryId: "first", page: 0, actorX: museum.MAUSOLEUM_WALL_X };
+  const ancient = access("ancient");
+  assert.equal(cabinet.visited, undefined);
+  for (const position of [{ ...at, actorX: 90 }, { ...at, actorX: Infinity }, { ...at, page: 2 },
+    { ...at, galleryId: "chroniques-clan" }, { ...at, galleryId: "temporal" }]) {
+    assert.equal(museum.recordMausoleumWallVisit(cabinet, position, ancient), null);
+  }
+  assert.equal(museum.recordMausoleumWallVisit(cabinet, at, access("elder")), null);
+  assert.equal(museum.recordMausoleumWallVisit(cabinet, at, access("ancient", false, true)), null);
+  const wall = museum.recordMausoleumWallVisit(cabinet, at, ancient);
+  assert.deepEqual(wall, { ...cabinet, visited: true, wallPages: [{ galleryId: "first", page: 0 }] });
+  assert.deepEqual(museum.recordMausoleumWallVisit(wall, at, ancient), wall);
+  const second = museum.recordMausoleumWallVisit(wall, { ...at, page: 1 }, ancient);
+  assert.deepEqual(second.wallPages, [{ galleryId: "first", page: 0 }, { galleryId: "first", page: 1 }]);
+  assert.deepEqual(second.consultedIds, ["prey"]);
+  assert.deepEqual(second.cabinetReadIds, ["prey"]);
+  assert.equal(museum.mausoleumDlcState("prey"), "unavailable");
+  const save = hw.defaultHomeworldProgress();
+  save.mausoleum = second;
+  assert.deepEqual(hw.normalizeHomeworldProgress(JSON.parse(JSON.stringify(save))).mausoleum, second);
+  assert.equal(museum.normalizeMausoleumProgress({
+    ...wall, wallPages: [null, { galleryId: "unknown", page: 0 }, { galleryId: "first", page: "1" }],
+  }).visited, undefined);
+  assert.deepEqual(museum.normalizeMausoleumProgress({ ...wall, wallPages: [...wall.wallPages, ...wall.wallPages] }), wall);
+});

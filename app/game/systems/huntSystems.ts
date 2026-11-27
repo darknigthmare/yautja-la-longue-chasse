@@ -59,6 +59,7 @@ export interface NoiseEvent extends WorldPoint {
   createdAtSeconds: number;
   durationSeconds: number;
   highFrequency: number;
+  decoyDeviceId?: string;
 }
 
 export interface NoiseProbe {
@@ -480,6 +481,46 @@ export interface BossMechanicInput {
   bossHitPillar: boolean;
   disabledConsoleId: string | null;
   activeSupportCount: number;
+  heardAudioDecoys?: readonly HeardBossAudioDecoy[];
+}
+
+interface HeardBossAudioDecoy extends WorldPoint {
+  deviceId: string;
+  strength: number;
+}
+
+interface BossAudioDecoyState {
+  heardDeviceIds: readonly string[];
+  target: WorldPoint | null;
+  untilSeconds: number;
+}
+
+export const BOSS_AUDIO_DECOY_SECONDS = 4;
+
+const BOSS_AUDIO_DECOY_RULES = {
+  "jungle-vey": "trained",
+  "ice-cryostalker": "pursue",
+  "volcano-bad-blood": "trained",
+  "swamp-hydra": "pursue",
+  "desert-sandmaw": "pursue",
+  "ocean-leviathan": "pursue",
+  "fungal-hivemind": "learn",
+  "ruins-ancient-guardian": "vacuum",
+} as const satisfies Record<MissionId, "trained" | "pursue" | "learn" | "vacuum">;
+
+export function describeBossAudioDecoy(state: BossMechanicState): string {
+  switch (BOSS_AUDIO_DECOY_RULES[state.missionId]) {
+    case "trained":
+      return "Leurre audio ignoré par ce chasseur entraîné.";
+    case "vacuum":
+      return "Leurre audio sans effet dans le vide.";
+    case "learn":
+      return state.audioDecoy?.heardDeviceIds.length
+        ? "Le Cœur-Mère reconnaît désormais le leurre audio."
+        : "Le Cœur-Mère suit le premier leurre entendu pendant 4 s.";
+    case "pursue":
+      return "Poursuit chaque nouveau leurre audio entendu pendant 4 s.";
+  }
 }
 
 export type BossEffectKind =
@@ -502,7 +543,8 @@ export type BossEffectKind =
   | "hivemind-spore-pulse"
   | "guardian-adaptive-field"
   | "guardian-adaptive-warning"
-  | "guardian-adaptive-evaded";
+  | "guardian-adaptive-evaded"
+  | "audio-decoy-pursuit";
 
 export interface BossEffect {
   kind: BossEffectKind;
@@ -520,6 +562,7 @@ export interface BossDecision {
   thermalVisibility: number;
   energyWeaponsLocked: boolean;
   trophyAtRisk: boolean;
+  decoyTarget?: WorldPoint;
 }
 
 interface BossCommonState {
@@ -529,6 +572,8 @@ interface BossCommonState {
   phaseElapsedSeconds: number;
   attackCooldownSeconds: number;
   sequence: number;
+  /** Additive encounter state. Older hunt checkpoints have no decoy memory. */
+  audioDecoy?: BossAudioDecoyState;
 }
 
 export interface VeyBossState extends BossCommonState {
@@ -1167,6 +1212,7 @@ export function stepHuntTrap(
       noise: pulse
         ? {
             id: `${trap.id}-pulse-${pulseIndex}`,
+            decoyDeviceId: trap.id,
             sourceId: trap.ownerId,
             kind: "vocalization",
             x: trap.x,
@@ -1885,6 +1931,7 @@ function stepVey(
 function stepCryostalker(
   previous: CryostalkerBossState,
   input: BossMechanicInput,
+  pursuingDecoy: boolean,
 ): BossMechanicStep {
   const delta = Math.max(0, input.deltaSeconds);
   const phaseId =
@@ -1920,7 +1967,7 @@ function stepCryostalker(
   );
   let attackId: string | null = null;
   let sequence = previous.sequence;
-  if (attackCooldownSeconds <= 0) {
+  if (attackCooldownSeconds <= 0 && !pursuingDecoy) {
     const selector = sequence % 4;
     if (
       input.distanceToPlayer > 190 &&
@@ -2187,6 +2234,7 @@ export function stepGuardianAdaptation(
 function stepExpansionBoss(
   previous: ExpansionBossState,
   input: BossMechanicInput,
+  pursuingDecoy: boolean,
 ): BossMechanicStep {
   const attacks = EXPANSION_BOSS_ATTACKS[previous.missionId];
   const delta = Math.max(0, input.deltaSeconds);
@@ -2202,7 +2250,7 @@ function stepExpansionBoss(
   let sequence = previous.sequence;
   let attackId: string | null = null;
 
-  if (attackCooldownSeconds <= 0) {
+  if (attackCooldownSeconds <= 0 && !pursuingDecoy) {
     const selected =
       input.distanceToPlayer <= attacks.melee.rangePx * 1.2
         ? attacks.melee
@@ -2261,18 +2309,66 @@ function stepExpansionBoss(
   };
 }
 
+function stepBossAudioDecoy(
+  previous: BossMechanicState,
+  input: BossMechanicInput,
+): { state?: BossAudioDecoyState; startedDeviceId?: string } {
+  const rule = BOSS_AUDIO_DECOY_RULES[previous.missionId];
+  if (rule === "trained" || rule === "vacuum") return {};
+  const memory = previous.audioDecoy;
+  if (memory?.target && input.elapsedSeconds < memory.untilSeconds) {
+    return { state: memory };
+  }
+  const heardDeviceIds = memory?.heardDeviceIds ?? [];
+  const candidates = rule === "learn" && heardDeviceIds.length
+    ? []
+    : input.heardAudioDecoys ?? [];
+  const pulse = candidates.reduce<HeardBossAudioDecoy | undefined>(
+    (strongest, candidate) => (
+      !heardDeviceIds.includes(candidate.deviceId) &&
+      candidate.strength > (strongest?.strength ?? 0)
+        ? candidate
+        : strongest
+    ),
+    undefined,
+  );
+  if (pulse) {
+    return {
+      state: {
+        heardDeviceIds: [...heardDeviceIds, pulse.deviceId],
+        target: { x: pulse.x, y: pulse.y },
+        untilSeconds: input.elapsedSeconds + BOSS_AUDIO_DECOY_SECONDS,
+      },
+      startedDeviceId: pulse.deviceId,
+    };
+  }
+  return memory ? { state: { ...memory, target: null } } : {};
+}
+
 export function stepBossMechanics(
   previous: BossMechanicState,
   input: BossMechanicInput,
 ): BossMechanicStep {
-  if (previous.missionId === "jungle-vey") {
-    return stepVey(previous, input);
-  }
-  if (previous.missionId === "ice-cryostalker") {
-    return stepCryostalker(previous, input);
-  }
-  if (previous.missionId === "volcano-bad-blood") {
-    return stepBadBlood(previous, input);
-  }
-  return stepExpansionBoss(previous, input);
+  if (previous.missionId === "jungle-vey") return stepVey(previous, input);
+  if (previous.missionId === "volcano-bad-blood") return stepBadBlood(previous, input);
+
+  const decoy = stepBossAudioDecoy(previous, input);
+  const target = decoy.state?.target;
+  const step = previous.missionId === "ice-cryostalker"
+    ? stepCryostalker(previous, input, Boolean(target))
+    : stepExpansionBoss(previous, input, Boolean(target));
+  if (!decoy.state) return step;
+  return {
+    state: { ...step.state, audioDecoy: decoy.state },
+    decision: target
+      ? { ...step.decision, decoyTarget: target, movement: "approach" }
+      : step.decision,
+    effects: decoy.startedDeviceId
+      ? [...step.effects, {
+          kind: "audio-decoy-pursuit",
+          value: BOSS_AUDIO_DECOY_SECONDS,
+          id: decoy.startedDeviceId,
+        }]
+      : step.effects,
+  };
 }

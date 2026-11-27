@@ -235,14 +235,15 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
           if ((confirm) && bibleCulturalNearbyV86(before) && latest.current.onBibleSceneAction) { openBible(); break; }
           if (confirm && before.zone === 'interior' && latest.current.onTrainingYardO6) {
             const { yard, continuation } = currentYard(latest.current.save, before);
-            const active = continuation?.next ? continuation : yard;
+            const practice = continuation?.practice?.next ? continuation.practice : null;
+            const active = continuation?.next ? continuation : practice ?? yard;
             if (active?.near && active.next) {
               const stopped = { ...before, actor: { ...before.actor, vx: 0, vy: 0 } };
               clear();
               current.current = stopped;
               setState(stopped);
               const done = latest.current.onTrainingYardO6(active.next, stopped);
-              setYardMessage(done ? continuation?.post?.report ??
+              setYardMessage(done ? (continuation?.post ?? practice?.post)?.report ??
                 (active.next === 'threshold' ? 'Le circuit d’exercice est prêt dans cette demeure.'
                   : 'Geste confirmé. Rejoins le repère suivant.')
                 : 'Le geste attend une sauvegarde confirmée. Réessaie au même repère.');
@@ -291,7 +292,8 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
     residence.objects.some(object => object.location.kind === 'transfer');
   const { yard, continuation } = state.zone === 'interior' && props.onTrainingYardO6
     ? currentYard(save, state) : { yard: null, continuation: null };
-  const yardAction = continuation?.next ? continuation : yard;
+  const practice = continuation?.practice;
+  const yardAction = continuation?.next ? continuation : practice?.next ? practice : yard;
   const cordage = continuation?.orders.includes('stow') ? 'folded' : continuation?.orders.includes('lift') ? 'raised'
     : continuation?.orders.includes('anchor') ? 'taut' : continuation?.orders.includes('welcome') ? 'loose' : null;
   const localAllowed = !suspended && !error && ready && gate.allowed && state.status === 'walking' && !state.pendingFieldEvent;
@@ -360,6 +362,16 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
             <span className={styles.waypoint} data-o6-yena-visit
               style={{ left: continuation.visitor.x, top: continuation.visitor.y * d + 14 }}><b>Yena</b></span>
           </>}
+          {practice?.student && <>
+            {drawActor('origin-o6-novice', practice.student.x, practice.student.y, 'young', 'classic', practice.walking)}
+            <span className={styles.waypoint} data-o6-practice-novice data-student-x={Math.round(practice.student.x)}
+              style={{ left: practice.student.x, top: practice.student.y * d + 14 }}><b>Novice</b></span>
+            {practice.hasStaff && <span className={yardStyles.practiceStaff} data-o6-practice-staff
+              role="img" aria-label="Bâton court"
+              style={{ left: practice.student.x + 16, top: practice.student.y * d - 35, zIndex: Math.round(practice.student.y) + 1 }} />}
+          </>}
+          {practice?.post && <span className={styles.waypoint} data-o6-practice-post={practice.next}
+            style={{ left: practice.post.x, top: practice.post.y * d }}><b>{practice.post.label}</b></span>}
           {continuation?.orders.includes('transmission') && <span className={styles.waypoint}
             data-o6-plan-transmission style={{ left: 613, top: 511 * d }}><b>Place du coffre</b></span>}
           {continuation?.post && <span className={styles.waypoint} data-o6-continuation-post={continuation.next}
@@ -382,8 +394,12 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
       </span>}
       {continuation && <span data-o6-origin-continuation={continuation.houseId}
         data-o6-origin-stage={continuation.next ?? 'ready'} role="status">
-        {yardMessage || continuation.post?.label ||
-          (continuation.rackOpen ? 'Le râtelier ouvert attend un élève volontaire.' : 'Les trois préparations sont repérées.')}
+        {continuation.next ? yardMessage || continuation.post?.label :
+          continuation.rackOpen ? 'Râtelier ouvert' : 'Les trois préparations sont repérées.'}
+      </span>}
+      {practice && <span data-o6-practice-stage={practice.next ?? 'complete'} role="status">
+        {(practice.next === 'listen-novice' ? practice.post?.label : yardMessage || practice.post?.label) ||
+          'Le novice a terminé son essai.'}
       </span>}
       {props.pathMissionV158 && <div style={{ pointerEvents: 'auto' }}>{props.pathMissionV158(!localAllowed)}</div>}
       <span>{state.zone === 'village' ? `${state.visitedBuildings.length}/12 lieux visités · ${state.greeted.length}/12 témoins rencontrés · ${definition.residents.length + HOMEWORLD_VILLAGE_LIFE_V69[regionId].residents.length} habitants` : state.zone === 'passage' ? `${Math.round(state.walked * .023)} m parcourus · ${state.routeVisited.length}/${definition.route.length} bornes` : serviceBuilding?.label}</span>
