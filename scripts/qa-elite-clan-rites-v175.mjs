@@ -7,6 +7,8 @@ import { openCampaignDossier } from "./qa-elder-mentoring-v168.mjs";
 
 const url = new URL(process.env.ELITE_L06_QA_URL ?? "http://127.0.0.1:4396/");
 assert.equal(url.origin, "http://127.0.0.1:4396");
+const audience = process.env.ELITE_M043_QA_AUDIENCE ?? "restricted";
+assert.ok(audience === "restricted" || audience === "public");
 const output = resolve(process.env.ELITE_L06_QA_OUTPUT ?? "outputs/qa-elite-l06-v175");
 await mkdir(output, { recursive: true });
 const { SAVE_STORAGE_KEY, exportSave, parseSaveImport } = qa.load("app/game/save.ts");
@@ -25,7 +27,7 @@ const page = await browser.newPage({
   storageState: { cookies: [], origins: [{ origin: url.origin,
     localStorage: [{ name: SAVE_STORAGE_KEY, value: JSON.stringify(admission.save) }] }] },
 });
-const report = { checkpoints: [], pageErrors: [] };
+const report = { audience, checkpoints: [], pageErrors: [] };
 page.on("pageerror", error => report.pageErrors.push(error.message));
 const disk = () => page.evaluate(key => JSON.parse(localStorage.getItem(key) ?? "null"), SAVE_STORAGE_KEY);
 const boot = async () => {
@@ -72,7 +74,7 @@ try {
 
   await page.getByRole("button", { name: "Rejoindre les témoins" }).click();
   const ceremony = page.locator("[data-elite-recognition-v174]");
-  await ceremony.locator("[data-elite-audience=restricted]").click();
+  await ceremony.locator("[data-elite-audience=" + audience + "]").click();
   const board = ceremony.locator("[data-elite-recognition-board]");
   const move = async (...arrows) => { for (const arrow of arrows) await board.press("Arrow" + arrow); };
   await move("Up");
@@ -93,6 +95,7 @@ try {
   await page.locator("[data-elite-recognition-v174=recognized]").waitFor();
   const recognized = await disk();
   assert(recognized.eliteRecognitionV174.recognized);
+  assert.equal(recognized.eliteRecognitionV174.audience, audience);
   assert.equal(getChronicleRank(recognized.prologue.chronicle), "elite");
   assert(parseSaveImport(exportSave(recognized)).save);
   assert.equal(recognized.eliteRecognitionV174.revision, 10);
