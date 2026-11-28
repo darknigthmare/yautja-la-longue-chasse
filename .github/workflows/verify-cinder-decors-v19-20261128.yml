@@ -15,7 +15,7 @@ jobs:
       - name: Checkout exact app and original Cinder inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '2e3108b08e5947999701c393900551d31e9c62b9'
+          ref: '3dbea29b53cc87c53c1e12cdae02c552a44ec2ea'
           filter: blob:none
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -43,7 +43,7 @@ jobs:
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Compare original bytes and play production scan in Chromium
         run: |
-          test "$(git rev-parse HEAD)" = '2e3108b08e5947999701c393900551d31e9c62b9'
+          test "$(git rev-parse HEAD)" = '3dbea29b53cc87c53c1e12cdae02c552a44ec2ea'
           node scripts/qa-cinder-decors-v19-20261128.mjs
       - name: Check catalogue and TypeScript
         if: ${{ !cancelled() }}
@@ -55,7 +55,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: cinder-decors-v19-2e3108b08e5947999701c393900551d31e9c62b9
+          name: cinder-decors-v19-3dbea29b53cc87c53c1e12cdae02c552a44ec2ea
           path: outputs/qa-cinder-decors-v19-20261128/
           if-no-files-found: warn
           retention-days: 30
