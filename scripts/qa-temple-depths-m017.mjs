@@ -322,7 +322,7 @@ try {
       await waitRoyal('evaded');
       assert.deepEqual(await readRoyal(), evaded);
 
-      await approach(472, 1, 4);
+      await approach(472, (await live()).player.x <= 472 ? 1 : -1, 12);
       await leap(royal.x, royal.y);
       await hold(signal, 80);
       const supportsReady = state => state.companionMode === 'plates' &&
