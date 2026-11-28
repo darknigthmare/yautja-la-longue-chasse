@@ -1,0 +1,55 @@
+name: Qualify world hazard effects in Chromium
+on:
+  push:
+    branches: ['codex/verify-dangers-biomes-20261128']
+permissions:
+  contents: read
+jobs:
+  biome-hazards:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+    steps:
+      - name: Checkout the exact application revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 'f91a35e0c271ad824680c0c5d33b967990002861'
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /content/the-pit/
+            /lib/
+            /types/
+            /worker/
+            /desktop/
+            /docs/
+            /tests/
+            /scripts/
+            /build/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Run behavior tests and type checks
+        run: |
+          test "$(git rev-parse HEAD)" = 'f91a35e0c271ad824680c0c5d33b967990002861'
+          node --experimental-strip-types --test tests/world-hazard-rendering-20261128.test.mjs tests/world-blueprint-validation.test.mjs
+          npm run typecheck
+          node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/worldHazardRendering.ts tests/world-hazard-rendering-20261128.test.mjs scripts/qa-world-hazard-vfx-20261128.mjs
+      - name: Draw the production hunt in Chromium
+        run: node scripts/qa-world-hazard-vfx-20261128.mjs
+      - name: Preserve report and pixels
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: dangers-biomes-f91a35e0c271ad824680c0c5d33b967990002861
+          path: outputs/qa-world-hazard-vfx-20261128/
+          if-no-files-found: warn
+          retention-days: 30
