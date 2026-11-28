@@ -16,7 +16,7 @@ export const BLOODED_ROOMS = [
 type Hunter = "joueur" | "pisteur" | "garde";
 export type TempleStage = "council" | "temple" | "mark" | "complete";
 const ACTIONS = ["present", "left", "right", "lane", "interact", "guard", "strike",
-  "next", "retry", "clear-mark", "seal-mark", "return-tools"] as const;
+  "next", "retry", "clear-mark", "seal-mark", "return-tools", "celebrate-cohort", "visit-quietly", "greet-witness"] as const;
 type ActionKind = (typeof ACTIONS)[number];
 export type TempleActionV174 = ActionKind | { mark: number };
 export type TempleCommandV174 = { action: TempleActionV174; expectedRevision: number };
@@ -40,6 +40,9 @@ export interface TempleViewV174 {
   deadline: number | null;
   carriesWounded: boolean;
   marks: number[][];
+  ceremony: "cohort" | "quiet" | null;
+  witnessGreeted: boolean;
+  courtPosition: number;
 }
 
 export function templePassageLaneV174(view: TempleViewV174): number {
@@ -50,6 +53,7 @@ export function templePassageLaneV174(view: TempleViewV174): number {
 const initial = (): TempleViewV174 => ({
   stage: "council", room: 0, column: 0, lane: 0, plate: false, prepared: false,
   guarded: false, enemy: 0, vitality: 3, proofs: [], deadline: null, carriesWounded: false, marks: [[]],
+  ceremony: null, witnessGreeted: false, courtPosition: 0,
 });
 const reject = (notice: string) => ({ ok: false as const, notice });
 const accepted = (view: TempleViewV174) => ({ ok: true as const, view });
@@ -63,7 +67,18 @@ function enterRoom(view: TempleViewV174, room: number): TempleViewV174 {
 
 function step(view: TempleViewV174, event: Event) {
   const { action, at } = event;
-  if (view.stage === "complete") return reject("La reconnaissance est déjà consignée.");
+  if (view.stage === "complete") {
+    if (!view.ceremony && (action === "celebrate-cohort" || action === "visit-quietly")) {
+      return accepted({ ...view, ceremony: action === "celebrate-cohort" ? "cohort" : "quiet" });
+    }
+    if (view.ceremony && !view.witnessGreeted && action === "right" && view.courtPosition < 2) {
+      return accepted({ ...view, courtPosition: view.courtPosition + 1 });
+    }
+    if (view.ceremony && view.courtPosition === 2 && !view.witnessGreeted && action === "greet-witness") {
+      return accepted({ ...view, witnessGreeted: true });
+    }
+    return reject("La reconnaissance est déjà consignée.");
+  }
   if (view.stage === "council") {
     return action === "present" ? accepted({ ...view, stage: "temple" }) : reject("Présente le crâne rapporté par le trio.");
   }
@@ -195,8 +210,12 @@ const proofIds = ["quatza-rij-triad-hunt", "temple-three-shadows-triad", "temple
   "temple-three-shadows-no-energy", "initiation-return"] as const;
 
 export function advanceBloodedTempleV174(save: SaveGame, command: TempleCommandV174, at: number) {
-  if (!templeAvailableV174(save) || !save.prologue) return reject("Le compte rendu complet du trio et la Vanne de Quarantaine doivent être validés.");
   const current = inspectBloodedTempleV174(save.bloodedTempleV174, save.createdAt);
+  const returned = current.view.stage === "complete" && templeHasFoundationV174(save) &&
+    save.prologue?.chronicle.rites.some(rite => rite.id === "blooding-mark");
+  if (!save.prologue || (!returned && !templeAvailableV174(save))) {
+    return reject("Le compte rendu complet du trio et la Vanne de Quarantaine doivent être validés.");
+  }
   if (current.status !== "valid" && current.status !== "absent") return reject("Le registre du temple est incompatible.");
   const events = current.state?.events ?? [];
   const action = canonicalAction(command.action);
@@ -209,7 +228,7 @@ export function advanceBloodedTempleV174(save: SaveGame, command: TempleCommandV
   if (!result.ok) return result;
   const bloodedTempleV174: BloodedTempleV174 = { version: 1, owner: save.createdAt, events: [...events, event] };
   let prologue = save.prologue;
-  if (result.view.stage === "complete") {
+  if (current.view.stage !== "complete" && result.view.stage === "complete") {
     let chronicle = prologue.chronicle;
     for (const id of proofIds) {
       if (chronicle.evidence.some(e => e.id === id)) continue;
@@ -223,5 +242,5 @@ export function advanceBloodedTempleV174(save: SaveGame, command: TempleCommandV
     prologue = { ...prologue, chronicle: rite.state };
   }
   return { ok: true as const, update: { bloodedTempleV174, prologue },
-    notice: result.view.stage === "complete" ? "Les témoins reconnaissent ta marque Blooded." : "Geste consigné." };
+    notice: action === "return-tools" ? "Les témoins reconnaissent ta marque Blooded." : "Geste consigné." };
 }
