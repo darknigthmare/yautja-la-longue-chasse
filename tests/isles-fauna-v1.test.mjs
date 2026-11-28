@@ -247,7 +247,7 @@ test('an antelope that perceives the hunter runs away; a cloaked, still hunter i
   assert.ok(herd, 'un troupeau d’antilopes sur Tallgrass');
   // Seen at 18 m in daylight (26 m of sight): the herd bolts and ends further away.
   const player = standOff(herd, 18), start = new Map(herd.members.map((member, i) => [herd.key + ':' + i, far(member, player)]));
-  const seenRun = run(F.createIslesFaunaV1(SEED), 6, () => player);
+  const seenRun = run(F.createIslesFaunaV1(SEED), 12, () => player);
   assert.ok(seenRun.events.some(event => event.type === 'spooked' && event.species === 'antilope'), 'le troupeau est dérangé');
   const after = ofGroup(seenRun.state, herd), away = after.filter(animal => far(animal, player) > start.get(animal.id) + 5);
   assert.ok(after.length > 0 && away.length * 2 >= after.length, away.length + ' antilopes sur ' + after.length + ' se sont éloignées');

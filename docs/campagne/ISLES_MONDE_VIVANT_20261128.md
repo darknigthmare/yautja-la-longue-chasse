@@ -334,7 +334,7 @@ Ces règles décrivent ce qui se passe dans le monde. Les valeurs de jeu (fenêt
 
 ## 7. Faune
 
-### 7.1 Les quarante-trois espèces
+### 7.1 Les cinquante-trois espèces
 
 Lecture des colonnes :
 - **Honneur** : ce que la mise à mort rapporte. À 0, la tuer n'apporte rien.
@@ -376,6 +376,16 @@ Lecture des colonnes :
 | antilope | gros gibier | 4 | 55 | 0 | 9,5 | fuit | 5 à 15 | jour | Tallgrass | — |
 | rhinocéros | apex | 30 | 320 | 30 | 6 | charge s'il est blessé | 1 à 2 | jour | Tallgrass | — |
 | requin de récif | apex | 22 | 150 | 24 | 6 | chasseur | 1 à 2 | jour et nuit | Halcyon Cay, The Shallows | dans l'eau seulement |
+| guépard | prédateur | 16 | 80 | 14 | 11 | chasseur | 1 à 2 | jour | Tallgrass | le plus rapide de l'archipel ; canon du mode, section 9.2 |
+| python | prédateur | 12 | 100 | 16 | 2 | embuscade | 1 à 1 | nuit | Saltmarsh | canon du mode, section 9.2 |
+| panthère des marais | prédateur | 18 | 100 | 16 | 7 | embuscade | 1 à 1 | nuit | Saltmarsh | canon du mode, section 9.2 |
+| élan | gros gibier | 8 | 160 | 16 | 7 | charge s'il est blessé | 1 à 3 | aube et crépuscule | Hollowpine | canon du mode, section 9.2 |
+| crocodile marin | apex | 24 | 200 | 28 | 2,8 | embuscade | 1 à 2 | jour et nuit | The Shallows | apex de The Shallows ; canon du mode, section 9.2 |
+| raie | petit gibier | 2 | 30 | 8 | 4 | fuite | 1 à 4 | jour | The Shallows | dans l'eau peu profonde ; son dard blesse si on marche dessus |
+| barracudas | prédateur | 6 | 35 | 10 | 8 | meute | 4 à 9 | jour | The Shallows | dans l'eau seulement ; autour de l'avion échoué |
+| harpie féroce | oiseau | 4 | 25 | 6 | 12 | fuite | 1 à 1 | jour | Verdant | rapace de la canopée de Verdant |
+| chevaux sauvages | gros gibier | 0 | 120 | 8 | 10 | fuite | 4 à 9 | jour | Redmesa | dans les canyons de Redmesa ; leur fuite soulève la poussière et se voit de loin |
+| renard | petit gibier | 1 | 20 | 0 | 7 | fuite | 1 à 2 | nuit | Grayhaven | faune revenue sur le plateau de Grayhaven |
 | tortue marine | petit gibier | 0 | 60 | 0 | 2 | fuit | 1 à 3 | nuit | Halcyon Cay, The Shallows | espèce protégée : la tuer n'apporte rien |
 | chèvres | bétail | 0 | 30 | 0 | 5 | fuit | 4 à 10 | jour | Solana | — |
 | vipère | venimeux | 3 | 12 | 10 | 2 | embuscade | 1 | jour | Solana | — |
@@ -386,6 +396,8 @@ Lecture des colonnes :
 | fauve échappé du zoo | apex | 25 | 160 | 22 | 7,5 | chasseur | 1 | nuit | Eastbank | seulement si un enclos a été ouvert |
 | lézard des laves | petit gibier | 2 | 25 | 4 | 5 | fuit | 1 à 4 | jour | Ember | — |
 | chèvre sauvage | gros gibier | 4 | 45 | 6 | 7,5 | fuit | 3 à 7 | jour | Ember | — |
+
+**Révision du 28 novembre (décision du propriétaire : l'ancien texte gagne).** Dix espèces déjà écrites dans le [mode](MODE_THE_ISLES_20261121.md), section 9.2, et dans la [fiche des zones](ISLES_ARCHIPEL_ZONES_20261128.md) rejoignent les données : guépard, python, panthère des marais, élan, crocodile marin, raie, barracudas, harpie féroce, chevaux sauvages, renard. Le puma redevient l'apex de Redmesa, l'ours brun et le renard reviennent sur le plateau de Grayhaven, le loup sur Solana. Le métro noyé d'Ashgrove reste une ruine sans rame : la règle « pas de métro hors de Calder » vise le métro en service.
 
 ### 7.2 Un apex par climat
 
