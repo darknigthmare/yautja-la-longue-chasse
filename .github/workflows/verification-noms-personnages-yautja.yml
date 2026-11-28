@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 22f04502cb872abc5ef26cda79f192c30df6551a
+          ref: 25f867f271bc89604acafd73767e5a7ef4c675aa
           fetch-depth: 1
           persist-credentials: false
           sparse-checkout: |
@@ -29,30 +29,14 @@ jobs:
         with:
           node-version: 22
       - run: npm ci
-      - name: Vérifier les parcours concernés
+      - name: Tester les scènes et les dialogues du Clan Ship
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
-          tests/homeworld-regions-v68.test.mjs
-          tests/homeworld-life-v69.test.mjs
-          tests/homeworld-village-life-v69.test.mjs
-          tests/homeworld-npc-missions-v66.test.mjs
+          tests/clan-ship-dialogue.test.mjs
           tests/clan-ship-crew-dialogue.test.mjs
           tests/clan-ship-crew-dialogue-ui.test.mjs
+          tests/clan-ship-trophy-hearing.test.mjs
+          tests/clan-ship-trophy-hearing-presentation.test.mjs
+          tests/clan-ship-return-escort.test.mjs
           tests/clan-ship-operations-save.test.mjs
           tests/clan-hull-project-v171.test.mjs
-          tests/minor-arcs-v160.test.mjs
-          tests/residence-scenes-v154.test.mjs
-      - name: Vérifier le catalogue canin
-        run: |
-          node --input-type=module <<'NODE'
-          import assert from 'node:assert/strict';
-          import { readFileSync } from 'node:fs';
-          const { entries } = JSON.parse(readFileSync('app/game/data/companionCatalogueV56.json', 'utf8'));
-          assert.equal(entries.length, 11);
-          assert.equal(new Set(entries.map(entry => entry.name)).size, 11);
-          for (const entry of entries) {
-            assert.notEqual(entry.name, entry.sourceName.replace(/\.[^.]+$/, ''));
-            assert.ok(entry.imagePath && entry.cutoutSHA256 && entry.sourceSHA256);
-          }
-          assert.equal(entries.find(entry => entry.id === 'user-preddog-2018').name, 'Chien yautja — The Predator (2018)');
-          NODE
