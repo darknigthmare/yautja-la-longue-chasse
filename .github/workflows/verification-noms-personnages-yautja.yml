@@ -1,0 +1,24 @@
+name: Audit des noms de personnages
+on:
+  push:
+    branches: [codex/verification-noms-personnages-yautja]
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+          sparse-checkout: |
+            app
+            scripts
+            tests
+            docs/campagne
+      - name: Inventorier les références actives
+        run: |
+          git grep -nE "Ka’resh [0-9]|Kha’len [0-9]|Nesh’ta [0-9]|Yautja-Compagnion|Balafre de Cendre|Veille des Astres|Griffe de Fer|Trace Froide|Suture Noire|Garde du Seuil|Nhal['’]vesh|Kyr['’]adhen|Thes['’]ka|Ssik['’]thar|Vhar['’]nesh" -- 'app/**/*.ts' 'app/**/*.tsx' 'app/game/data/*.json' 'scripts/*.mjs' 'tests/*.mjs' docs/campagne | cut -c1-270 | head -260
+          git grep -lE "name: .+\b(Chasseur|Artisan|Instructeur|Apprenti)|Nom du chasseur|Par défaut.*Yautja" -- 'app/**/*.ts' 'app/**/*.tsx' | head -80
