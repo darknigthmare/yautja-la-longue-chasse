@@ -1,0 +1,330 @@
+name: Jouer le retour et la remise du Quatza-Rij M019
+on:
+  push:
+    branches: [codex/verify-quatza-return-m019-20261128]
+    paths: ['.github/workflows/verify-quatza-return-m019-20261128.yml']
+permissions:
+  contents: read
+jobs:
+  browser:
+    name: Reach the witnesses, pick an order and resume the same triad
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'bfc11802bad31703311fa7fb5f8bb9c52d465008'
+      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+      PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: /usr/bin/google-chrome
+      AUDIT_CHROME_CHANNEL: chrome
+      PHG_QA_URL: http://127.0.0.1:3121
+      YAUTJA_QA_BASE_URL: http://127.0.0.1:3121
+      YAUTJA_QA_MODE: compiled-app
+      AUDIT_CHROME_EXECUTABLE: /usr/bin/google-chrome
+      YAUTJA_QA_RUNTIME_COMMIT: 'bfc11802bad31703311fa7fb5f8bb9c52d465008'
+    steps:
+      - name: Checkout the exact candidate and bounded inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 'bfc11802bad31703311fa7fb5f8bb9c52d465008'
+          persist-credentials: false
+          fetch-depth: 3
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+            /content/the-pit/
+            /public/game/homeworld/v84/npcs/guard/
+            /docs/
+            /public/**/manifest.json
+            /public/game/p0-sprites-20261113/warp/
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+            /public/game/assets/clan-field-20261103/
+            /public/game/assets/v134/gauntlets/jungle-hunter/01-arm.svg
+            /public/game/assets/v134/gauntlets/jungle-hunter/02-housing.svg
+            /public/game/assets/v134/gauntlets/jungle-hunter/03-display-glyphs.svg
+            /public/game/assets/v134/gauntlets/jungle-hunter/04-hinge.svg
+            /public/game/assets/v134/gauntlets/jungle-hunter/05-lid.svg
+            /public/game/assets/v134/gauntlets/jungle-hunter/06-emitter.svg
+            /public/game/assets/v134/gauntlets/jungle-hunter/07-beam.svg
+            /public/game/planets/v101/runtime/clouds-cirrus.webp
+            /public/game/planets/v101/runtime/clouds-low.webp
+            /public/game/assets/v133/concept-masks/glypic.webp
+            /public/game/assets/v133/concept-masks/instinct.webp
+            /public/game/assets/v133/concept-masks/nova.webp
+            /public/game/assets/v133/concept-masks/paroxysm.webp
+            /public/game/assets/v133/concept-masks/requiem.webp
+            /public/game/assets/v133/concept-masks/tyrant.webp
+            /public/game/assets/v133/concept-masks/warlord.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/berserker.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/celtic.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/chopper.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/city.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/dek.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/enforcer.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/feral.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/fugitive.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/jungle.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/scar.webp
+            /public/game/assets/v3/actors/yautja/hunter/masks/wolf.webp
+            /public/game/sprites/v5/film-plates/youngblood.png
+            /public/game/sprites/v6/ranks-lasers-atlas.png
+            /public/game/sprites/v62/masks/berserker.png
+            /public/game/sprites/v62/masks/dek.png
+            /public/game/sprites/v62/masks/falconer.png
+            /public/game/sprites/v62/masks/feral.png
+            /public/game/sprites/v62/masks/fugitive.png
+            /public/game/sprites/v62/masks/wolf.png
+            /public/game/assets/v3/actors/yautja/hunter/dreads/registered/
+            /public/game/assets/v3/actors/yautja/hunter/body/*/net/
+            /public/game/xeno-prime/berceau-v1/
+            /public/game/quatza-rij/
+            /public/audio/
+            /public/game/youth/v48/
+            /public/game/youth/v52/
+            /public/game/assets/v139/rig-gauntlets/jungle-hunter/base.svg
+            /public/game/assets/v139/rig-gauntlets/jungle-hunter/lid.svg
+            /public/game/planets/v101/runtime/land-temperate.webp
+            /public/game/planets/v101/runtime/surface-water.webp
+            /public/game/assets/v133/decals/decal-atlas.webp
+            /public/game/ships/v13/classic-predator-spaceship-top.webp
+            /public/game/backgrounds/ship-hub-v4.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp
+            /public/game/sprites/v62/heads/elder-head.png
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/foot-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/foot-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/net/full.webp
+            /public/game/sprites/v62/heads/super-head.png
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/foot-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/foot-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/net/full.webp
+            /public/game/sprites/v62/heads/feral-head.png
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/foot-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/foot-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/net/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/foot-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/foot-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/net/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/foot-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/foot-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/net/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/full.webp
+            /public/game/sprites/v5/film-plates/jungle-hunter.png
+            /public/game/sprites/v5/film-plates/city-hunter.png
+            /public/game/sprites/v5/film-plates/greyback.png
+            /public/game/sprites/v5/film-plates/boar.png
+            /public/game/sprites/v5/film-plates/shaman.png
+            /public/game/sprites/v5/film-plates/lost-borg.png
+            /public/game/sprites/v5/film-plates/snake.png
+            /public/game/sprites/v5/film-plates/warrior.png
+            /public/game/sprites/v5/film-plates/guardian.png
+            /public/game/sprites/v5/film-plates/lost-scout.png
+            /public/game/sprites/v5/film-plates/lost-stalker.png
+            /public/game/sprites/v5/film-plates/scar.png
+            /public/game/sprites/v5/film-plates/celtic.png
+            /public/game/sprites/v5/film-plates/chopper.png
+            /public/game/sprites/v5/film-plates/avp-elder.png
+            /public/game/sprites/v5/film-plates/ancient-warrior.png
+            /public/game/sprites/v5/film-plates/temple-guard.png
+            /public/game/sprites/v62/masks/city.png
+            /public/game/assets/v3/actors/yautja/hunter/masks/elder.webp
+            /public/game/sprites/v62/masks/boar.png
+            /public/game/sprites/v62/masks/snake.png
+            /public/game/sprites/v62/masks/enforcer.png
+            /public/game/sprites/v62/masks/scar.png
+            /public/game/sprites/v62/masks/celtic.png
+            /public/game/sprites/v62/masks/chopper.png
+            /public/game/homeworld/v64/
+            /public/game/homeworld/v67/
+            /public/game/homeworld/v68/
+            /public/game/homeworld/v69/
+            /public/game/homeworld/v70/
+            /public/game/homeworld/v77/
+            /public/game/clan-ship/
+            /public/game/ship-interior/
+            /public/game/ships/v14/avp-predator-mothership.webp
+            /public/game/ships/v12/classic-predator-spaceship.webp
+            /public/game/homeworld/v84/npcs/apprentice/13.png
+            /public/game/homeworld/v84/npcs/apprentice/14.png
+            /public/game/homeworld/v84/npcs/apprentice/15.png
+            /public/game/homeworld/v84/npcs/apprentice/16.png
+            /public/game/homeworld/v84/npcs/archivist/05.png
+            /public/game/homeworld/v84/npcs/archivist/06.png
+            /public/game/homeworld/v84/npcs/archivist/07.png
+            /public/game/homeworld/v84/npcs/artisan/08.png
+            /public/game/homeworld/v84/npcs/artisan/09.png
+            /public/game/homeworld/v84/npcs/artisan/10.png
+            /public/game/homeworld/v84/npcs/guard/01.png
+            /public/game/homeworld/v84/npcs/guard/02.png
+            /public/game/homeworld/v84/npcs/guard/03.png
+            /public/game/homeworld/v84/npcs/guard/04.png
+            /public/game/homeworld/v84/npcs/guide/18.png
+            /public/game/homeworld/v84/npcs/healer/15.png
+            /public/game/homeworld/v84/npcs/hunter/18.png
+            /public/game/homeworld/v84/npcs/hunter/19.png
+            /public/game/homeworld/v84/npcs/instructor/09.png
+            /public/game/homeworld/v84/npcs/instructor/10.png
+            /public/game/homeworld/v84/npcs/porter/08.png
+            /public/game/homeworld/v84/npcs/porter/09.png
+            /public/game/homeworld/v84/npcs/porter/10.png
+            /public/game/homeworld/v84/npcs/porter/11.png
+            /public/game/homeworld/v84/npcs/resident/08.png
+            /public/game/homeworld/v84/npcs/resident/09.png
+            /public/game/homeworld/v84/npcs/resident/10.png
+            /public/game/homeworld/v84/npcs/resident/11.png
+            /public/game/homeworld/v84/npcs/resident/12.png
+            /public/game/homeworld/v84/npcs/resident/13.png
+            /public/game/imports/v85/library/89459c8c16b2c60b06c109913f8aaede3cedf3d799d11642aa13d13bf5c92bd3.png
+            /public/game/imports/v85/library/99d1175afdb9d368692c902b138a462bb6db44908986cfafa8193c610e78594d.png
+            /public/game/assets/v37/tribes/v2/
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/backgrounds/
+            /public/game/sprites/v8/ecology/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize official runtime inputs and install dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Include the interior artwork and shared ship services
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { existsSync, readFileSync } from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          const { paths } = JSON.parse(readFileSync('tests/fixtures/clan-ship-browser-assets.json', 'utf8'));
+          assert.equal(new Set(paths).size, paths.length);
+          for (const file of paths) {
+            assert.match(file, /^public\/game\/[A-Za-z0-9._/-]+$/);
+            assert.ok(file.split('/').every(part => part && part !== '.' && part !== '..'));
+          }
+          execFileSync('git', ['sparse-checkout', 'add', '--stdin'], { input: paths.map(file => '/' + file).join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'] });
+          assert.deepEqual(paths.filter(file => !existsSync(file)), [], 'Every declared route asset must exist in this exact checkout');
+          console.log('Interior and shared service assets included:', paths.length);
+          NODE
+      - name: Materialize source assets actually used by the scenes
+        id: inputs
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs catalogue
+          ASSET_RACCORDS_PREPARE_ONLY=1 node scripts/qa-asset-raccords-browser-20261120.mjs
+      - name: Test both real presentation orders, older saves and current exports
+        run: |
+          set -o pipefail
+          mkdir -p outputs/p0-p3-20261121
+          node --experimental-strip-types --test --test-reporter=spec tests/quatza-rij.test.mjs 2>&1 | tee outputs/p0-p3-20261121/quatza-witness-node.log
+      - name: Strict lint for the witnessed return
+        if: ${{ !cancelled() && steps.inputs.conclusion == 'success' }}
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/systems/quatzaRij.ts app/game/QuatzaRijScene.tsx tests/quatza-rij.test.mjs scripts/qa-quatza-triad-return-20261121.mjs
+      - name: Build and start the production application
+        id: server
+        if: ${{ !cancelled() && steps.inputs.conclusion == 'success' }}
+        run: |
+          mkdir -p outputs/p0-p3-20261121
+          set -o pipefail
+          npm run build:production 2>&1 | tee outputs/p0-p3-20261121/build.log
+          npm run start:production -- --hostname 127.0.0.1 --port 3121 > outputs/p0-p3-20261121/next-server.log 2>&1 &
+          for attempt in {1..70}; do
+            if curl --fail --silent http://127.0.0.1:3121/ > /dev/null; then break; fi
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:3121/ > /dev/null
+          printf 'YAUTJA_QA_BUILD_ID=%s\n' "$(cat .next/BUILD_ID)" >> "$GITHUB_ENV"
+      - name: Walk the original field and confirm the two witness gestures across reloads
+        if: ${{ !cancelled() && steps.server.conclusion == 'success' }}
+        env:
+          QUATZA_QA_COMMIT: 'bfc11802bad31703311fa7fb5f8bb9c52d465008'
+          QUATZA_QA_URL: 'http://127.0.0.1:3121/'
+        run: |
+          node scripts/qa-quatza-triad-return-20261121.mjs
+          node scripts/qa-quatza-rescue-20261121.mjs
+      - name: Preserve the original scoped evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: quatza-retour-m019-bfc11802bad3
+          path: |
+            outputs/p0-p3-20261121/
+            outputs/qa-quatza-triad-return/
+            outputs/qa-quatza-rescue/
+          if-no-files-found: error
