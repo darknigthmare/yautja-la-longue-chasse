@@ -4,6 +4,9 @@ on:
     branches: [codex/qa-lore-lieux-20261128]
 permissions:
   contents: read
+concurrency:
+  group: codex-qa-lore-lieux-20261128
+  cancel-in-progress: true
 jobs:
   lore:
     runs-on: ubuntu-24.04
@@ -30,6 +33,7 @@ jobs:
             /content/the-pit/les-masques-brises/
             /docs/campagne/BIBLE_DE_CAMPAGNE.md
             /public/**/manifest.json
+            /public/game/dialogues/v85/
             /public/game/homeworld/v67/
             /public/game/assets/v37/tribes/v2/
             /public/game/backgrounds/
