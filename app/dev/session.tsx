@@ -84,6 +84,13 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
   const [recoveryStorage] = useState(createMemoryStorage);
   const [service, setService] = useState<DevService | null>(null);
   const serviceRef = useRef<DevService | null>(null);
+  const [recognitionAudio, setRecognitionAudio] = useState<SoloV68RecognitionAudio>("outside");
+  const recognitionPaused = recognitionAudio === "paused";
+  const recognitionPausedRef = useRef(false);
+  const receiveRecognitionAudio = useCallback((state: SoloV68RecognitionAudio) => {
+    recognitionPausedRef.current = state === "paused";
+    setRecognitionAudio(state);
+  }, []);
   const subscribeFocus = useCallback((notify: () => void) => subscribeGameFocus(() => {
     if (!sessionAliveRef.current) return;
     // Resume the shared bus before React lets a child request its room loop.
@@ -108,9 +115,6 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
   const arrivalRef = useRef(arrival);
   const [huntRunning, setHuntRunning] = useState(true);
   const [exerciseHunt, setExerciseHunt] = useState<MissionId | null>(null);
-  const [recognitionAudio, setRecognitionAudio] = useState<SoloV68RecognitionAudio>("outside");
-  const recognitionPaused = recognitionAudio === "paused";
-  const recognitionPausedRef = useRef(false);
   // HuntCanvas creates its simulation from these props. A discovery is reported
   // back to the owner, but must not replace the active simulation's inputs.
   const [huntGeneration, setHuntGeneration] = useState(() => ({
@@ -154,10 +158,6 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
   const setHuntMusic = useCallback((context: GameMusicContext | null) => {
     void ensureAudio()?.setMusicContext(context);
   }, [ensureAudio]);
-  const receiveRecognitionAudio = useCallback((state: SoloV68RecognitionAudio) => {
-    recognitionPausedRef.current = state === "paused";
-    setRecognitionAudio(state);
-  }, []);
   useEffect(() => {
     if (destination.kind !== "exercise" || destination.exercise !== "recognition") return;
     const audio = ensureAudio();
