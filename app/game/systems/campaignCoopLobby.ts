@@ -1,3 +1,8 @@
+import {
+  campaignCoopExerciseActive, playCampaignCoopExercise, validCampaignCoopExercise,
+  type CampaignCoopExercise, type CampaignCoopExerciseCommand, type CampaignCoopExerciseFailure,
+} from "./campaignCoopExercise.ts";
+
 const FORMAT = "yautja-campaign-coop-lobby" as const;
 const VERSION = 1 as const;
 const LIFETIME_MS = 24 * 60 * 60 * 1000;
@@ -31,6 +36,7 @@ export interface CampaignCoopLobby {
   guests: GuestSeat[];
   invitationHash: string | null;
   closed: boolean;
+  exercise?: CampaignCoopExercise;
 }
 
 export type CampaignCoopLobbyCommand =
@@ -38,10 +44,12 @@ export type CampaignCoopLobbyCommand =
   | { type: "invite"; roomId: string; invitationHash: string }
   | { type: "request"; roomId: string; owner: CampaignCoopIdentity; invitationHash: string }
   | { type: "admit" | "decline"; roomId: string; guest: CampaignCoopIdentity & { ticket: string } }
-  | { type: "leave" | "close"; roomId: string };
+  | { type: "leave" | "close"; roomId: string }
+  | CampaignCoopExerciseCommand;
 
 export type CampaignCoopLobbyFailure =
-  | "invalid" | "unavailable" | "occupied" | "stale" | "owner" | "host" | "guest" | "invitation" | "full" | "already";
+  | "invalid" | "unavailable" | "occupied" | "stale" | "owner" | "host" | "guest" | "invitation" | "full" | "already"
+  | CampaignCoopExerciseFailure;
 
 export type CampaignCoopLobbyResult =
   | { ok: true; room: CampaignCoopLobby }
@@ -89,10 +97,19 @@ export function parseCampaignCoopLobby(raw: string): CampaignCoopLobby | null {
     if (new Set(seats.map(seat => seat.ownerCreatedAt)).size !== seats.length ||
         new Set(seats.map(seat => seat.slotId)).size !== seats.length ||
         new Set(seats.map(seat => seat.proof)).size !== seats.length) return null;
+    if (value.exercise !== undefined) {
+      if (!validCampaignCoopExercise(value.exercise) || value.exercise.roster[0] !== value.host.proof ||
+          value.exercise.id > value.revision || (campaignCoopExerciseActive(value.exercise) &&
+            (value.closed || !exerciseRosterAvailable(value.exercise, [value.host, ...value.guests])))) return null;
+    }
     return value as unknown as CampaignCoopLobby;
   } catch {
     return null;
   }
+}
+
+export function exerciseRosterAvailable(exercise: CampaignCoopExercise, seats: readonly { proof: string }[]): boolean {
+  return exercise.roster.every(proof => seats.some(seat => seat.proof === proof));
 }
 
 export function campaignCoopLobbyIsOpen(
@@ -124,11 +141,33 @@ export function advanceCampaignCoopLobby(
   }
   if (!campaignCoopLobbyIsOpen(room, owners, now) || command.roomId !== room.id) return refuse("stale");
 
+  if (room.revision === Number.MAX_SAFE_INTEGER) return refuse("invalid");
   const pending = room.pending.filter(exists);
   const guests = room.guests.filter(exists);
-  const update = (patch: Partial<Pick<CampaignCoopLobby, "pending" | "guests" | "invitationHash" | "closed">>): CampaignCoopLobbyResult => ({
-    ok: true, room: { ...room, pending, guests, ...patch, revision: room.revision + 1 },
-  });
+  const update = (patch: Partial<Pick<CampaignCoopLobby, "pending" | "guests" | "invitationHash" | "closed" | "exercise">>): CampaignCoopLobbyResult => {
+    const next = { ...room, pending, guests, ...patch, revision: room.revision + 1 };
+    if (next.exercise && campaignCoopExerciseActive(next.exercise) &&
+        (next.closed || !exerciseRosterAvailable(next.exercise, [next.host, ...next.guests]))) {
+      next.exercise = { ...next.exercise, abandoned: true };
+    }
+    return { ok: true, room: next };
+  };
+  const exercise = room.exercise;
+  const roster = [room.host, ...guests];
+  const running = Boolean(exercise && campaignCoopExerciseActive(exercise) && exerciseRosterAvailable(exercise, roster));
+  if (command.type === "exercise-start") {
+    if (room.host.proof !== actorProof) return refuse("host");
+    if (running || roster.length < 2) return refuse("exercise");
+    return update({ exercise: { id: room.revision + 1, roster: roster.map(seat => seat.proof), journal: [], abandoned: false } });
+  }
+  if (command.type === "exercise-move" || command.type === "exercise-abandon") {
+    if (!exercise || !running || command.exerciseId !== exercise.id) return refuse("exercise");
+    if (command.type === "exercise-abandon") {
+      return room.host.proof === actorProof ? update({ exercise: { ...exercise, abandoned: true } }) : refuse("host");
+    }
+    const move = playCampaignCoopExercise(exercise, actorProof, command.passage, command.move);
+    return move.ok ? update({ exercise: move.exercise }) : refuse(move.reason);
+  }
   const full = pending.length + guests.length + 1 >= CAMPAIGN_COOP_MAX_PLAYERS;
   if (command.type === "request") {
     if (!exists(command.owner) || !validOwner(command.owner.ownerCreatedAt)) return refuse("owner");

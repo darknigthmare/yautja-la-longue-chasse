@@ -1,5 +1,6 @@
 import { withArchiveTransferLock } from "./archiveTransaction";
 import { loadCampaignSlots } from "./campaignSlots";
+import type { CampaignCoopExerciseCommand } from "./campaignCoopExercise";
 import {
   advanceCampaignCoopLobby, CAMPAIGN_COOP_LOBBY_KEY, parseCampaignCoopLobby,
   type CampaignCoopIdentity, type CampaignCoopLobby, type CampaignCoopLobbyCommand, type CampaignCoopLobbyResult,
@@ -70,7 +71,8 @@ export type BrowserCampaignCoopAction =
   | { type: "open"; owner: CampaignCoopIdentity }
   | { type: "issue"; roomId: string }
   | { type: "join"; roomId: string; owner: CampaignCoopIdentity; code: string }
-  | Extract<CampaignCoopLobbyCommand, { type: "admit" | "decline" | "leave" | "close" }>;
+  | Extract<CampaignCoopLobbyCommand, { type: "admit" | "decline" | "leave" | "close" }>
+  | CampaignCoopExerciseCommand;
 
 type BrowserLobbyResult = CampaignCoopLobbyResult & { inviteCode?: string; actorProof?: string };
 

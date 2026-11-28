@@ -209,6 +209,9 @@ test("M029 and the common Warp route validate their atomic receipts, checkpoints
   const prologue = { ...save.prologue, chronicle: confirmedWarp.state };
   assert.equal(saves.writeSaveWithStatus({ ...save, prologue }, disk).failure, "invalid-save");
   persist({ ...save, warpEpochsV165: installed.state, prologue });
+  if (process.env.WARP_FORTRESS_BROWSER_FIXTURE) {
+    writeFileSync(process.env.WARP_FORTRESS_BROWSER_FIXTURE, JSON.stringify({ key: saves.SAVE_STORAGE_KEY, save }));
+  }
   const recovered = saves.parseSaveImport(saves.exportSave(save)).save;
   assert.equal(recovered.warpEpochsV165.warpModuleInstalled, true);
   assert.equal(recovered.warpEpochsV165.commonRouteR2.hullInstanceId, hull.instanceId);

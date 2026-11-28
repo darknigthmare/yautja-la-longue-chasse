@@ -2,7 +2,7 @@
  * V146: owner-bound, durable customisation change (same contract as V116):
  * the caller updates React state only after this write is confirmed.
  */
-import type { ArmorId, SaveGame, UpgradeLevel, WeaponId } from "../types";
+import type { ArmorId, SaveGame, UpgradeLevel } from "../types";
 import type { SaveWriteFailure, SaveWriteResult, SaveWriteReconciliation } from "../save";
 import type { HunterPieceIdV146 } from "../hunterPiecesV146";
 import { normalizeHarvestInventoryV112, type HarvestInventoryV112 } from "./harvestInventoryV112";
@@ -129,16 +129,28 @@ export function applyHunterForgeArmorUpgradeV146(current: SaveGame, expected: Fo
 }
 
 
-const FORGE_WEAPON_IDS_V146 = ["wristblades", "combistick", "yautja-bow"] as const satisfies readonly WeaponId[];
-export type ForgeWeaponIdV146 = typeof FORGE_WEAPON_IDS_V146[number];
 const FORGE_BLADE_RECIPES_V146 = {
   1: { bone: 2, tissue: 1 },
   2: { bone: 3, tissue: 2 },
 } as const;
-const FORGE_BOW_RECIPES_V146 = {
-  1: { bone: 1, tissue: 2 },
-  2: { bone: 2, tissue: 3 },
+const FORGE_WEAPON_RECIPES_V146 = {
+  wristblades: FORGE_BLADE_RECIPES_V146,
+  combistick: FORGE_BLADE_RECIPES_V146,
+  "yautja-bow": {
+    1: { bone: 1, tissue: 2 },
+    2: { bone: 2, tissue: 3 },
+  },
+  "plasma-caster": {
+    1: { bone: 2, tissue: 2 },
+    2: { bone: 3, tissue: 3 },
+  },
+  "smart-disc": {
+    1: { bone: 3, tissue: 1 },
+    2: { bone: 4, tissue: 2 },
+  },
 } as const;
+
+export type ForgeWeaponIdV146 = keyof typeof FORGE_WEAPON_RECIPES_V146;
 
 type ForgeWeaponMaterialSelectionV146 = Readonly<{ bone: string; tissue: string }>;
 
@@ -156,15 +168,14 @@ export interface ForgeWeaponQuoteV146 extends ForgeWeaponRecipeV146 {
 
 export function equippedForgeWeaponsV146(save: SaveGame): ForgeWeaponIdV146[] {
   return [...new Set(save.loadout.weaponIds.filter((id): id is ForgeWeaponIdV146 =>
-    FORGE_WEAPON_IDS_V146.some(forgeable => forgeable === id) && save.inventory.unlockedWeaponIds.includes(id)))];
+    Object.hasOwn(FORGE_WEAPON_RECIPES_V146, id) && save.inventory.unlockedWeaponIds.includes(id)))];
 }
 
 export function forgeWeaponRecipeV146(save: SaveGame, weaponId: ForgeWeaponIdV146): ForgeWeaponRecipeV146 | null {
   if (!equippedForgeWeaponsV146(save).includes(weaponId)) return null;
   const { currentLevel, nextLevel } = quoteUpgrade(save, { domain: "weapon", id: weaponId });
   if (nextLevel !== 1 && nextLevel !== 2) return null;
-  const recipes = weaponId === "yautja-bow" ? FORGE_BOW_RECIPES_V146 : FORGE_BLADE_RECIPES_V146;
-  return { weaponId, currentLevel, nextLevel, requirements: recipes[nextLevel] };
+  return { weaponId, currentLevel, nextLevel, requirements: FORGE_WEAPON_RECIPES_V146[weaponId][nextLevel] };
 }
 
 export function planForgeWeaponMaterialsV146(save: SaveGame, weaponId: ForgeWeaponIdV146, selection: ForgeWeaponMaterialSelectionV146):

@@ -2,7 +2,7 @@ import type { SaveGame } from "../types";
 import { inspectBuriedCradleCampaign } from "./buriedCradleCampaign";
 import { CHRONICLE_EVIDENCE, CHRONICLE_RITES, getChronicleRank, performChronicleRite, recordChronicleEvidence } from "./clanChronicle";
 import {
-  canEnterEliteClanRites, completedEliteClanRites, ELITE_CLAN_TRIALS, hasEliteClanHuntHistory,
+  canEnterEliteClanRites, canWalkEliteClanRites, completedEliteClanRites, ELITE_CLAN_RITES_POSTS, ELITE_CLAN_TRIALS, hasEliteClanHuntHistory,
   inspectEliteClanRites, verifyEliteClanTrial, type EliteClanTrialId, type EliteClanTrialReceipt,
 } from "./eliteClanRitesV175";
 import type { TrainingDrillTrace } from "./trainingDrill";
@@ -46,6 +46,7 @@ export type EliteRecognitionV174 = {
   witnessed: boolean;
   prepared: boolean;
   trials?: EliteClanTrialReceipt[];
+  queenMandate?: true;
   recognized?: true;
 };
 
@@ -59,6 +60,7 @@ export type EliteRecognitionCommand = {
     | { type: "hear" }
     | { type: "mark" }
     | { type: "trial"; id: EliteClanTrialId; trace: TrainingDrillTrace }
+    | { type: "queen-mandate" }
     | { type: "recognize" };
 };
 export type EliteRecognitionResponse = { ok: boolean; message: string; retryable?: boolean };
@@ -96,23 +98,25 @@ export function inspectEliteRecognition(raw: unknown, owner: string): Inspection
   if (typeof raw.version === "number" && Number.isInteger(raw.version) && raw.version > 1) {
     return { status: "future-version", state: null };
   }
-  const { proofs, audience, witnessed, prepared, revision, recognized } = raw;
+  const { proofs, audience, witnessed, prepared, revision, recognized, queenMandate } = raw;
   const trials = inspectEliteClanRites(raw.trials);
-  const expectedKeys = 7 + Number(Object.hasOwn(raw, "trials")) + Number(Object.hasOwn(raw, "recognized"));
+  const expectedKeys = 7 + Number(Object.hasOwn(raw, "trials")) + Number(Object.hasOwn(raw, "recognized")) +
+    Number(Object.hasOwn(raw, "queenMandate"));
   if (raw.version !== 1 || Object.keys(raw).length !== expectedKeys || !Array.isArray(proofs) ||
       !Array.from(proofs).every(isProof) || new Set(proofs).size !== proofs.length ||
       !(audience === null || isAudience(audience)) || typeof witnessed !== "boolean" ||
       typeof prepared !== "boolean") return invalid;
   if (!trials || (Object.hasOwn(raw, "trials") && trials.length === 0) ||
       (Object.hasOwn(raw, "recognized") && recognized !== true) ||
+      (Object.hasOwn(raw, "queenMandate") && (queenMandate !== true || !completedEliteClanRites(trials))) ||
       (recognized && (!prepared || !completedEliteClanRites(trials))) ||
       revision !== proofs.length + Number(audience !== null) + Number(witnessed) + Number(prepared) +
-        trials.length + Number(recognized === true) ||
+        trials.length + Number(recognized === true) + Number(queenMandate === true) ||
       revision < 1 || (proofs.length > 0 && audience === null) ||
       (witnessed && proofs.length !== ELITE_RECOGNITION_PROOFS.length) || (prepared && !witnessed)) return invalid;
   return { status: "valid", state: { version: 1, ownerCreatedAt: owner, revision,
     proofs: [...proofs], audience, witnessed, prepared, ...(trials.length ? { trials } : {}),
-    ...(recognized === true ? { recognized: true } : {}) } };
+    ...(recognized === true ? { recognized: true } : {}), ...(queenMandate === true ? { queenMandate: true } : {}) } };
 }
 
 export function eliteRecognitionEvidence(save: SaveGame) {
@@ -164,7 +168,9 @@ export function eliteRecognitionMatchesSave(save: EliteRecognitionSave): boolean
 export function isEliteRecognitionSuccessor(previous: EliteRecognitionV174 | null | undefined, next: EliteRecognitionV174): boolean {
   if (!inspectEliteRecognition(next, next.ownerCreatedAt).state) return false;
   if (!previous) return next.revision === 1;
-  return previous.ownerCreatedAt === next.ownerCreatedAt && !previous.recognized &&
+  const briefingAfterRecognition = previous.recognized && !previous.queenMandate && next.recognized && next.queenMandate;
+  return previous.ownerCreatedAt === next.ownerCreatedAt && (!previous.recognized || briefingAfterRecognition) &&
+    (!previous.queenMandate || next.queenMandate === true) &&
     next.revision === previous.revision + 1 && (!previous.audience || previous.audience === next.audience) &&
     (!previous.witnessed || next.witnessed) && (!previous.prepared || next.prepared) &&
     previous.proofs.every((proof, index) => next.proofs[index] === proof) &&
@@ -187,13 +193,17 @@ export function commitEliteRecognition(save: EliteRecognitionSave, command: Elit
     proofs: [], audience: null, witnessed: false, prepared: false,
   };
   const { operation, position, expectedRevision } = command;
-  if (state.revision !== expectedRevision || !canWalkEliteRecognition(position)) return refuse("Rejoins le poste et vérifie le registre avant de reprendre.");
+  const atArena = operation.type === "trial" || operation.type === "queen-mandate";
+  if (state.revision !== expectedRevision || !(atArena ? canWalkEliteClanRites(position) : canWalkEliteRecognition(position))) {
+    return refuse("Rejoins le poste et vérifie le registre avant de reprendre.");
+  }
   const at = (point: EliteRecognitionPoint) => sameEliteRecognitionPoint(position, point);
   const accept = (patch: Partial<EliteRecognitionV174>, message: string): Result => ({
     ok: true, message, state: { ...state, ...patch, revision: state.revision + 1 },
   });
 
-  if (operation.type === "trial" && at(ELITE_RECOGNITION_POSTS.entry)) {
+  if (operation.type === "trial" && (at(ELITE_CLAN_RITES_POSTS.entry) ||
+      (ELITE_CLAN_TRIALS.some(trial => trial.id === operation.id) && at(ELITE_CLAN_RITES_POSTS[operation.id])))) {
     if (!canEnterEliteClanRites(save)) return refuse("Le vétéran attend la reconnaissance Blooded et les huit retours de chasse.");
     const trials = state.trials ?? [];
     if (ELITE_CLAN_TRIALS[trials.length]?.id !== operation.id) return refuse("Termine l’épreuve précédente avec le vétéran.");
@@ -202,6 +212,14 @@ export function commitEliteRecognition(save: EliteRecognitionSave, command: Elit
     return accept({ trials: [...trials, receipt] }, operation.id === "hunt"
       ? "Le chef du clan consigne les trois épreuves du rite L‑06."
       : "Le vétéran a inscrit ce résultat au registre du clan.");
+  }
+  if (operation.type === "queen-mandate") {
+    if (!at(ELITE_CLAN_RITES_POSTS.hunt)) return refuse("Rejoins le chef au seuil du cercle holographique.");
+    if (!canEnterEliteClanRites(save) || !completedEliteClanRites(state.trials)) {
+      return refuse("Le chef attend les trois relevés du vétéran.");
+    }
+    if (state.queenMandate) return refuse("Le mandat du Berceau est déjà consigné.");
+    return accept({ queenMandate: true }, "Le chef te confie Xeno Prime. Ouvre le dossier du Berceau.");
   }
   if (operation.type === "recognize" && at(ELITE_RECOGNITION_POSTS.mark) && save.prologue &&
       canAffirmEliteRecognition(save, state)) {
