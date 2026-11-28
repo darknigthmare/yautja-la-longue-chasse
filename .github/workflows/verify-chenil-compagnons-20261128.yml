@@ -12,12 +12,12 @@ jobs:
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'c58a683d562762dadd78fb75e2361a7ba19c73db'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'f36d9263361aa61817086608dea2bef1644d750a'
     steps:
       - name: Checkout the game under test
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'c58a683d562762dadd78fb75e2361a7ba19c73db'
+          ref: 'f36d9263361aa61817086608dea2bef1644d750a'
           persist-credentials: false
           fetch-depth: 1
           filter: blob:none
