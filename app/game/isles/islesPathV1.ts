@@ -82,3 +82,63 @@ export function nearestWalkableV1(map: IslesMapV1, tx: number, tz: number, radiu
   }
   return null;
 }
+
+/** A* restricted to the rectangle around both ends plus `margin` tiles, for large maps (Verdant
+ * is 1000 × 1000): memory and time scale with the window, not with the whole island. */
+export function findPathWindowV1(map: IslesMapV1, from: [number, number], to: [number, number], margin = 24, maxSide = 260): [number, number][] | null {
+  const x0 = Math.max(0, Math.min(from[0], to[0]) - margin), z0 = Math.max(0, Math.min(from[1], to[1]) - margin);
+  const x1 = Math.min(map.width - 1, Math.max(from[0], to[0]) + margin), z1 = Math.min(map.depth - 1, Math.max(from[1], to[1]) + margin);
+  const w = x1 - x0 + 1, d = z1 - z0 + 1;
+  if (w > maxSide || d > maxSide) return null;
+  const walkable = (x: number, z: number) => x >= x0 && x <= x1 && z >= z0 && z <= z1 && isWalkableV1(map, x, z);
+  if (!walkable(from[0], from[1]) || !walkable(to[0], to[1])) return null;
+  const total = w * d, local = (x: number, z: number) => (z - z0) * w + (x - x0);
+  const g = new Float32Array(total).fill(Infinity), came = new Int32Array(total).fill(-1), closed = new Uint8Array(total);
+  const heap: number[] = [], f: number[] = [];
+  const push = (node: number, score: number) => {
+    heap.push(node); f.push(score);
+    for (let i = heap.length - 1; i > 0;) {
+      const parent = (i - 1) >> 1;
+      if (f[parent] <= f[i]) break;
+      [heap[parent], heap[i]] = [heap[i], heap[parent]]; [f[parent], f[i]] = [f[i], f[parent]]; i = parent;
+    }
+  };
+  const pop = () => {
+    const top = heap[0], lastNode = heap.pop()!, lastScore = f.pop()!;
+    if (heap.length) {
+      heap[0] = lastNode; f[0] = lastScore;
+      for (let i = 0; ;) {
+        const l = 2 * i + 1, r = l + 1;
+        let m = i;
+        if (l < heap.length && f[l] < f[m]) m = l;
+        if (r < heap.length && f[r] < f[m]) m = r;
+        if (m === i) break;
+        [heap[m], heap[i]] = [heap[i], heap[m]]; [f[m], f[i]] = [f[i], f[m]]; i = m;
+      }
+    }
+    return top;
+  };
+  const h = (x: number, z: number) => { const dx = Math.abs(x - to[0]), dz = Math.abs(z - to[1]); return Math.max(dx, dz) + 0.414 * Math.min(dx, dz); };
+  const start = local(from[0], from[1]), goal = local(to[0], to[1]);
+  g[start] = 0; push(start, h(from[0], from[1]));
+  while (heap.length) {
+    const node = pop();
+    if (closed[node]) continue;
+    closed[node] = 1;
+    if (node === goal) break;
+    const x = node % w + x0, z = Math.floor(node / w) + z0;
+    for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++) {
+      if (!dx && !dz) continue;
+      const nx = x + dx, nz = z + dz;
+      if (!walkable(nx, nz) || (dx && dz && (!walkable(x + dx, z) || !walkable(x, z + dz)))) continue;
+      const next = local(nx, nz);
+      if (closed[next]) continue;
+      const cost = g[node] + (dx && dz ? 1.414 : 1) * tileCost(map, nx, nz);
+      if (cost < g[next]) { g[next] = cost; came[next] = node; push(next, cost + h(nx, nz)); }
+    }
+  }
+  if (!closed[goal]) return null;
+  const path: [number, number][] = [];
+  for (let node = goal; node !== -1; node = came[node]) path.push([node % w + x0, Math.floor(node / w) + z0]);
+  return path.reverse();
+}

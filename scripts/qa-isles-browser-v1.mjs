@@ -100,7 +100,7 @@ try {
   await shot(page, '01-menu-modes');
   await islesButton.click();
   await page.locator('[data-isles-hub-v1]').waitFor();
-  assert.equal(await page.locator('[data-isles-start]').count(), 2);
+  assert.equal(await page.locator('[data-isles-start]').count(), 3, 'vue, Chasse inversée et chasse libre de Verdant');
   assert.equal(await page.getByLabel('Serveur').count(), 0);
   await shot(page, '02-hub');
   step('le menu Modes de jeu ouvre The Isles');

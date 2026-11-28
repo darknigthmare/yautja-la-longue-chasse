@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "date": "2026-11-28",
+  "renderer": "Chromium headless, WebGL2 via SwiftShader (software)",
+  "scope": "Real CampaignFrontEnd menu and IslesModeV1 bundled with esbuild and the game stylesheet; not the Next build.",
+  "steps": [
+    {
+      "step": "Verdant généré (1000 × 1000 tuiles) et chargé par zones autour de l’autel",
+      "zones": 49,
+      "terrainTriangles": 103046,
+      "instances": 25175,
+      "drawCalls": 112,
+      "modelsReady": 3
+    },
+    {
+      "step": "contrats de l’autel lus à la touche G"
+    },
+    {
+      "step": "le camp se peuple de braconniers (modèles Meshy animés)"
+    },
+    {
+      "step": "braconnier armé abattu à la lame, trophée pris à la touche T"
+    },
+    {
+      "step": "carte de l’île (touche M)"
+    },
+    {
+      "step": "trophée rapporté au repaire derrière les chutes (+ 20 %)"
+    },
+    {
+      "step": "un braconnier donne l’alerte : marques et renforts"
+    },
+    {
+      "step": "le Roi-de-Verdant apparaît une nuit sans lune"
+    },
+    {
+      "step": "progression des Îles gardée après rechargement (profil séparé)"
+    }
+  ],
+  "metrics": {
+    "world": {
+      "tiles": 1000,
+      "sites": 9
+    },
+    "atAltar": {
+      "zones": 49,
+      "terrainTriangles": 103046,
+      "instances": 25175,
+      "drawCalls": 112,
+      "modelsReady": 3
+    },
+    "fps": null
+  },
+  "captures": [
+    {
+      "file": "01-hub.png",
+      "sha256": "72580fb97aa9dcb1f994b66cd6b04a5a86465e634262f7bbc50b75a4529761ae"
+    },
+    {
+      "file": "02-autel-et-soeur-de-pierre.png",
+      "sha256": "68a4683474dbef9d3ade04e56d5f2977ee9d451225c131ee1830329771ff988e"
+    },
+    {
+      "file": "03-contrats-de-l-autel.png",
+      "sha256": "a157c67234d2f598354b1e57cf0e59d68fb4a12648cf305adaa08a248b34985b"
+    },
+    {
+      "file": "04-camp-des-braconniers.png",
+      "sha256": "4d56d726fcbb893f93be44cbbfac6453f5e2d37f3428f1a28e6f93cc4609ce61"
+    },
+    {
+      "file": "05-trophee-preleve.png",
+      "sha256": "7a33be2ce40a63b9cac8f1c5cf88342d2b2ff28027cbb2ca3f61f904be00f252"
+    },
+    {
+      "file": "06-carte-de-verdant.png",
+      "sha256": "a8e8d8ecd420517d14a47805ffc8f30c0ebddd7118d3349599749eea2f34d7ca"
+    },
+    {
+      "file": "07-repaire-trophee-rapporte.png",
+      "sha256": "e4c79a1de81c5d21c4b25c4abc4d0e8bb3b4221176e59d8cb089b433b6410513"
+    },
+    {
+      "file": "08-alerte.png",
+      "sha256": "0d0c8038a8f26aa80261518e820480b310e3632d7f30c6dbe29d2f3fb83ee6f6"
+    },
+    {
+      "file": "09-roi-de-verdant-nuit-sans-lune.png",
+      "sha256": "4e7054fdc1114e4e974908d1af6b6d37431dabb79559cf583d8ec6b97637344d"
+    },
+    {
+      "file": "10-hub-progression-gardee.png",
+      "sha256": "c6f2cf347daabd5bc16aef9d7721b6fd66768a4faba7e2bdc45cb7e5b45c0e9c"
+    }
+  ],
+  "errors": []
+}

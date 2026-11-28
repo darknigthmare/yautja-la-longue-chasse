@@ -1,0 +1,44 @@
+{
+  "id": "01a22213-799b-721e-b249-0b858665893c",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 2669270180,
+  "prompt": "Low-poly stylized-realistic game character, jungle poacher man in his forties, worn olive cargo trousers, faded khaki shirt, canvas vest with ammunition pouches, battered bush hat, leather boots, empty hands, A-pose, full body, original design, no logos, no text",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795868033666,
+  "progress": 100,
+  "started_at": 1795868033675,
+  "finished_at": 1795868077779,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-799b-721e-b249-0b858665893c/output/model.glb?Expires=4949424000&Signature=ONp-nrF~Pz-70fHZfrdUzKtU9TJfe3KFEM7PZms2nR0y2u8yQGvUVj3zZ5gGct2xhakXyY-JS~O7lN1NuaCPwKWlVVUZ2bzC7nbUX3UJVbaegNBSjXyXBdBywc~9BE-Av4Qie71hKXGyOTuCP1RvCjccUwElZd9nxWriEvL71UdORmaUf0vZyHFrxF4ayWqYVvjBDzaxbqhFR~hYkEG8vjVHRVdhu~NKRno2aPyLmPAAv4qSm8lQkgq0RGTmOfjU8iubPSLYzaREC5Ql-kKpDum7cVNFnPBc~cxdaida0h6yDitOgB-9ip3ylw7eYR~K9cEM2IXS74-HcwXQ-6yJ0Q__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-799b-721e-b249-0b858665893c/output/preview.png?Expires=4949424000&Signature=fKT~1-zwAUE-G1Xt-URSgNF4s5kWHdxVongD7pc~jQNLfPjJczwSwjcNhOXOvH8wKc04e1cE1rSL8JCnl7OulUo3UidRDp41D3yXN2DhbQOIIG9ydrj6ED8xedV2JrGEi~hb0T8M7yH8JtHwqEApKM0l7exqo6Ps75m1flxXsapZuchQQIx4aSzsdukPxIfA7-sEWTh146bnSzLRQp-6OqSxu1wlG09lvT9qr3mt-GbTQPTkreYwLDuxGBmkjGvR-ZsXkNY0nacJ49g1DIMOnSZZvVOvhC6uCB0r~HOYUdgS6-qt~A1fJ7fG26L4JsD6ZFupunwseku8aTueBtPRHQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "pose_mode": "a-pose",
+    "prompt": "Low-poly stylized-realistic game character, jungle poacher man in his forties, worn olive cargo trousers, faded khaki shirt, canvas vest with ammunition pouches, battered bush hat, leather boots, empty hands, A-pose, full body, original design, no logos, no text",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 2669270180,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-799b-721e-b249-0b858665893c/output/model.glb?Expires=4949424000&Signature=ONp-nrF~Pz-70fHZfrdUzKtU9TJfe3KFEM7PZms2nR0y2u8yQGvUVj3zZ5gGct2xhakXyY-JS~O7lN1NuaCPwKWlVVUZ2bzC7nbUX3UJVbaegNBSjXyXBdBywc~9BE-Av4Qie71hKXGyOTuCP1RvCjccUwElZd9nxWriEvL71UdORmaUf0vZyHFrxF4ayWqYVvjBDzaxbqhFR~hYkEG8vjVHRVdhu~NKRno2aPyLmPAAv4qSm8lQkgq0RGTmOfjU8iubPSLYzaREC5Ql-kKpDum7cVNFnPBc~cxdaida0h6yDitOgB-9ip3ylw7eYR~K9cEM2IXS74-HcwXQ-6yJ0Q__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-799b-721e-b249-0b858665893c/output/preview.png?Expires=4949424000&Signature=fKT~1-zwAUE-G1Xt-URSgNF4s5kWHdxVongD7pc~jQNLfPjJczwSwjcNhOXOvH8wKc04e1cE1rSL8JCnl7OulUo3UidRDp41D3yXN2DhbQOIIG9ydrj6ED8xedV2JrGEi~hb0T8M7yH8JtHwqEApKM0l7exqo6Ps75m1flxXsapZuchQQIx4aSzsdukPxIfA7-sEWTh146bnSzLRQp-6OqSxu1wlG09lvT9qr3mt-GbTQPTkreYwLDuxGBmkjGvR-ZsXkNY0nacJ49g1DIMOnSZZvVOvhC6uCB0r~HOYUdgS6-qt~A1fJ7fG26L4JsD6ZFupunwseku8aTueBtPRHQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

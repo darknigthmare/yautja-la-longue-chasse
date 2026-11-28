@@ -1,0 +1,44 @@
+{
+  "id": "01a22213-793b-746f-a79d-0313768f2491",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 449469361,
+  "prompt": "Low-poly stylized-realistic game character, female field archaeologist in her fifties, sun-faded khaki shirt with rolled sleeves, wide-brim canvas hat, leather satchel, work trousers, dusty boots, empty hands, A-pose, full body, original design, no logos, no text",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795868033043,
+  "progress": 100,
+  "started_at": 1795868033051,
+  "finished_at": 1795868071053,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-793b-746f-a79d-0313768f2491/output/model.glb?Expires=4949424000&Signature=hI~YAWiXG49~mywrYnD3KJEXq4n5FVBIDPwwgUvncdugJDcpWCvRAxTZ6Uwappw~LAOOXFwFrLMqwQBcyJyiiqqn1k3wXyrbLrQiapSqGnaU-uqR-EdKNjiTrJAJpfl00s2gU7fN2aZG82avsMWB9lNoZB5WG9DgCRShkElMBL12AaCrOG9iSU4OqG4lfKThaltWjy0dUjbInON9nmX8PSF6NBSB~a5asLOXHkgBL9KRfQKLY02Le~5RwjVCmByGr0Qc-qENHjUGuyjTKsT55bVH1p1I~~hKKO0fNQXO1ZQGKlsf7QzAMu61ysctO7bZEF-vjGSa3OqBCDrgkQj4lQ__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-793b-746f-a79d-0313768f2491/output/preview.png?Expires=4949424000&Signature=a~lhm6NPK1J0EV6ubeg-gsfaH72ah2Jy8Z3H956pg1oXS502-EMxhCWhLykrR0lhaqmqyvRQHrNV4NTStmp232r~0FxgiD-caPqs4Z5SXFnVOR34l1P~iHLpTU0it7Go-yjfAn6nxy-kRkF8gbHp1yk7ZQ-MIGi5P50lqCvA8P7JFdb1VOHP~Ri2dRXXGs4g~Au7PApmOkh-EiRXaLe89PujPDWEYDW9asIccWbt9NtDO8YIKJLsjfhnoMj6NgZUDHhOGb1wcZ9u6-~mWxBThoT5uo4tdEa2cH~egKeTvgOcfOXUmEDPufLi5yMAUEeDFuThVrvsWl-oRhD~AbXmWg__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "pose_mode": "a-pose",
+    "prompt": "Low-poly stylized-realistic game character, female field archaeologist in her fifties, sun-faded khaki shirt with rolled sleeves, wide-brim canvas hat, leather satchel, work trousers, dusty boots, empty hands, A-pose, full body, original design, no logos, no text",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 449469361,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-793b-746f-a79d-0313768f2491/output/model.glb?Expires=4949424000&Signature=hI~YAWiXG49~mywrYnD3KJEXq4n5FVBIDPwwgUvncdugJDcpWCvRAxTZ6Uwappw~LAOOXFwFrLMqwQBcyJyiiqqn1k3wXyrbLrQiapSqGnaU-uqR-EdKNjiTrJAJpfl00s2gU7fN2aZG82avsMWB9lNoZB5WG9DgCRShkElMBL12AaCrOG9iSU4OqG4lfKThaltWjy0dUjbInON9nmX8PSF6NBSB~a5asLOXHkgBL9KRfQKLY02Le~5RwjVCmByGr0Qc-qENHjUGuyjTKsT55bVH1p1I~~hKKO0fNQXO1ZQGKlsf7QzAMu61ysctO7bZEF-vjGSa3OqBCDrgkQj4lQ__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-793b-746f-a79d-0313768f2491/output/preview.png?Expires=4949424000&Signature=a~lhm6NPK1J0EV6ubeg-gsfaH72ah2Jy8Z3H956pg1oXS502-EMxhCWhLykrR0lhaqmqyvRQHrNV4NTStmp232r~0FxgiD-caPqs4Z5SXFnVOR34l1P~iHLpTU0it7Go-yjfAn6nxy-kRkF8gbHp1yk7ZQ-MIGi5P50lqCvA8P7JFdb1VOHP~Ri2dRXXGs4g~Au7PApmOkh-EiRXaLe89PujPDWEYDW9asIccWbt9NtDO8YIKJLsjfhnoMj6NgZUDHhOGb1wcZ9u6-~mWxBThoT5uo4tdEa2cH~egKeTvgOcfOXUmEDPufLi5yMAUEeDFuThVrvsWl-oRhD~AbXmWg__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

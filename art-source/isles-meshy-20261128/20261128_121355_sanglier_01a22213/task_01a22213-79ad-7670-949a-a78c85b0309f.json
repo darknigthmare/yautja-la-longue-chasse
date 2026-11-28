@@ -1,0 +1,43 @@
+{
+  "id": "01a22213-79ad-7670-949a-a78c85b0309f",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 1748702379,
+  "prompt": "Low-poly stylized-realistic game creature, wild boar standing on all four legs, coarse dark brown bristly coat, curved tusks, neutral stance, full body",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795868033663,
+  "progress": 100,
+  "started_at": 1795868033671,
+  "finished_at": 1795868073070,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-79ad-7670-949a-a78c85b0309f/output/model.glb?Expires=4949424000&Signature=BliuMDGcgq2EdRVcfT37cLaUUannP-P9dU0hYq-pM0YbZwIJD0RVHi9a6PpbnXpu8r8aSb859D8mhG6P4w0O7ewE5e9jAjvzRpudl9kLOc2yyOQeV~uowI4~JhxPIHiqM36rLqK2DvH~LtQIXB65XhCSsQwNfW~S64fn-v1LesB~R0U2RtHbWYq75jFnSRpoQ5UQ84PYcIKtUB-J8~PGk1I1U74Had5QT34C0bBE1MIpmhAJNDN6EzmovUJTw6xwbY400oiNBvdaKa8L09tCq0OmXOO~GIaUUxyjm337tUboHPMst0eymGBgz38h5SPcvD7OD~lZ4XOArQ2KnNvo~g__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-79ad-7670-949a-a78c85b0309f/output/preview.png?Expires=4949424000&Signature=UhKE9Qdz3FfqzlNCTOTga4oYOgKh3p4UuLLKKg3t7THgDILFhdjU0szxJs1r6rA8KlUms1jcvobW~7eJuvhHqBnSawVCY4Hxzc6Wku7jCcZkh9-GJez~5bf1AOlky0OE2~ILlUClEKBIgxwapEb360tbcgoRkJE9F1VQYKMcv~Qj8RJiK7Sty-bBZ-dEvmQRwdgzuRuKLMvhrKsgIpL-Bwo6yARVPqRvJ0w0L7Vs6JKxP68lCaGK2u98V0JnH0w1HVP65DOdo4LyUQwwK3TA1v6p770iAEmiA1BHd5J6Yc0JuU88YfzLXUx4g1M9XjeKMj71a~4lg2JtPnHk4ESvnA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game creature, wild boar standing on all four legs, coarse dark brown bristly coat, curved tusks, neutral stance, full body",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 1748702379,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-79ad-7670-949a-a78c85b0309f/output/model.glb?Expires=4949424000&Signature=BliuMDGcgq2EdRVcfT37cLaUUannP-P9dU0hYq-pM0YbZwIJD0RVHi9a6PpbnXpu8r8aSb859D8mhG6P4w0O7ewE5e9jAjvzRpudl9kLOc2yyOQeV~uowI4~JhxPIHiqM36rLqK2DvH~LtQIXB65XhCSsQwNfW~S64fn-v1LesB~R0U2RtHbWYq75jFnSRpoQ5UQ84PYcIKtUB-J8~PGk1I1U74Had5QT34C0bBE1MIpmhAJNDN6EzmovUJTw6xwbY400oiNBvdaKa8L09tCq0OmXOO~GIaUUxyjm337tUboHPMst0eymGBgz38h5SPcvD7OD~lZ4XOArQ2KnNvo~g__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-79ad-7670-949a-a78c85b0309f/output/preview.png?Expires=4949424000&Signature=UhKE9Qdz3FfqzlNCTOTga4oYOgKh3p4UuLLKKg3t7THgDILFhdjU0szxJs1r6rA8KlUms1jcvobW~7eJuvhHqBnSawVCY4Hxzc6Wku7jCcZkh9-GJez~5bf1AOlky0OE2~ILlUClEKBIgxwapEb360tbcgoRkJE9F1VQYKMcv~Qj8RJiK7Sty-bBZ-dEvmQRwdgzuRuKLMvhrKsgIpL-Bwo6yARVPqRvJ0w0L7Vs6JKxP68lCaGK2u98V0JnH0w1HVP65DOdo4LyUQwwK3TA1v6p770iAEmiA1BHd5J6Yc0JuU88YfzLXUx4g1M9XjeKMj71a~4lg2JtPnHk4ESvnA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

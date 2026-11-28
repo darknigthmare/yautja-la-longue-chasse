@@ -1,0 +1,43 @@
+{
+  "id": "01a22213-796c-7295-a3ba-8ac961f03a6e",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 4277196950,
+  "prompt": "Low-poly stylized-realistic game creature, river crocodile lying flat on the ground with legs spread, olive-grey armoured scales, long jaw closed, tail straight, full body",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795868033682,
+  "progress": 100,
+  "started_at": 1795868033690,
+  "finished_at": 1795868060849,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-796c-7295-a3ba-8ac961f03a6e/output/model.glb?Expires=4949424000&Signature=cmJzazJ6eNVpMGfwBCNLcsge~T~H6j1tYZ4ujPmXEc8Hz95jVbLKc6BbAhRG-1l00V7M420Jy~sEjecyi-lghbBfdkSLPKQrPfDM-GQW~OAe126qmaKbO0~wgRVvbf5tD1WpDw1ymb-kD8BKY0WItJTPf~VsD6AIpoX~FHHmts418ofYfphMwITgHxnx1AOsRhqkolnacTbeq0LyvA3JeyVi3tSQtojViW3qEz4wstESFMHT-257ogxJnKxt7P7bCKW~NAWtwXPWweVIHL9B8pgj6uvWbtx83eANF5DuA5eoS~Tyngx1FlU~wwkBN7VXoZvV9fsk6Ljdy3Y2i1jehA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-796c-7295-a3ba-8ac961f03a6e/output/preview.png?Expires=4949424000&Signature=W89OSfnH7PV5AUNjHf5X4b5o3qeK1A-pUCerDKsIfOcsYiAf9hrJuuAdCSKxyw4-PFEuROy8AZM3EAw7YaYPiKELYDrL4ObQrNly9~h7Y4QtQhv0TrD6RjMCYvFdEZ8kwshjYk7Hs7WwHfvz22rGQPB2AhG9gKYhIGnqT~1Lhp7CygvISWRfdG3Pr0feVBVAHYgEQMW6h8BgqWus39oHU1YLbFTctgoyc1ZdpNN9yYOiNyX21W7lQA6MZ24zEiP1LR2GpCCm4sB0OUluQkBm0Tk9sL92Csfgf0KvG~Bf8j1QSuQglAo62K2NH6crFIWbPkx4IHCMUYZRVhhicm9Stg__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game creature, river crocodile lying flat on the ground with legs spread, olive-grey armoured scales, long jaw closed, tail straight, full body",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 4277196950,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-796c-7295-a3ba-8ac961f03a6e/output/model.glb?Expires=4949424000&Signature=cmJzazJ6eNVpMGfwBCNLcsge~T~H6j1tYZ4ujPmXEc8Hz95jVbLKc6BbAhRG-1l00V7M420Jy~sEjecyi-lghbBfdkSLPKQrPfDM-GQW~OAe126qmaKbO0~wgRVvbf5tD1WpDw1ymb-kD8BKY0WItJTPf~VsD6AIpoX~FHHmts418ofYfphMwITgHxnx1AOsRhqkolnacTbeq0LyvA3JeyVi3tSQtojViW3qEz4wstESFMHT-257ogxJnKxt7P7bCKW~NAWtwXPWweVIHL9B8pgj6uvWbtx83eANF5DuA5eoS~Tyngx1FlU~wwkBN7VXoZvV9fsk6Ljdy3Y2i1jehA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-796c-7295-a3ba-8ac961f03a6e/output/preview.png?Expires=4949424000&Signature=W89OSfnH7PV5AUNjHf5X4b5o3qeK1A-pUCerDKsIfOcsYiAf9hrJuuAdCSKxyw4-PFEuROy8AZM3EAw7YaYPiKELYDrL4ObQrNly9~h7Y4QtQhv0TrD6RjMCYvFdEZ8kwshjYk7Hs7WwHfvz22rGQPB2AhG9gKYhIGnqT~1Lhp7CygvISWRfdG3Pr0feVBVAHYgEQMW6h8BgqWus39oHU1YLbFTctgoyc1ZdpNN9yYOiNyX21W7lQA6MZ24zEiP1LR2GpCCm4sB0OUluQkBm0Tk9sL92Csfgf0KvG~Bf8j1QSuQglAo62K2NH6crFIWbPkx4IHCMUYZRVhhicm9Stg__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

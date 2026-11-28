@@ -1,0 +1,41 @@
+{
+  "schema_version": 2,
+  "project_name": "autel",
+  "folder": "20261128_121354_autel_01a22213",
+  "root_task_id": "01a22213-795d-74ed-843e-f1d4c149f2b7",
+  "created_at": "2026-11-28T12:13:54.106Z",
+  "updated_at": "2026-11-28T12:17:18.003Z",
+  "tasks": [
+    {
+      "task_id": "01a22213-795d-74ed-843e-f1d4c149f2b7",
+      "task_type": "text-to-3d-preview",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "preview",
+      "parent_task_id": null,
+      "status": "SUCCEEDED",
+      "files": [],
+      "task_json": "task_01a22213-795d-74ed-843e-f1d4c149f2b7.json",
+      "operation_id": null,
+      "created_at": "2026-11-28T12:14:56.829Z",
+      "updated_at": "2026-11-28T12:14:56.829Z"
+    },
+    {
+      "task_id": "01a22214-7c6c-7772-960f-4bdae052fc30",
+      "task_type": "text-to-3d-refine",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "refine",
+      "parent_task_id": "01a22213-795d-74ed-843e-f1d4c149f2b7",
+      "status": "SUCCEEDED",
+      "files": [
+        "model.glb",
+        "preview.png"
+      ],
+      "task_json": "task_01a22214-7c6c-7772-960f-4bdae052fc30.json",
+      "operation_id": "5a1caab2-1f16-4f3a-b642-6aac6313cbeb",
+      "created_at": "2026-11-28T12:14:57.727Z",
+      "updated_at": "2026-11-28T12:17:18.003Z"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "source": "MODE_THE_ISLES_20261121.md §9, §11, §12 ; ISLES_ACCUEIL_ECONOMIE_SUCCES_20261122.md §1 et §3 ; ISLES_FICHES_MISSIONS_20261122.md §2 (I-MP-01) et §4 ; ISLES_MONDE_LEVEL_DESIGN_20261122.md §7",
+  "clock": {"realSecondsPerHour": 60, "startHour": 6, "nightFrom": 20, "nightTo": 5, "dawn": [5, 7], "dusk": [18, 20], "moonlessEvery": 3},
+  "reputation": [0, 500, 1500, 3000, 5000, 8000, 12000, 17000, 23000, 30000],
+  "honor": {
+    "armedHuman": 15, "specialist": 30, "deliveredBonus": 0.2,
+    "animals": {"sanglier": 5, "crocodile": 10, "jaguar": 20, "chien": 0},
+    "bladeFactor": 1.25, "unseenFactor": 1.2,
+    "fault": -100
+  },
+  "player": {"health": 240, "regenPerSecond": 2, "regenDelay": 8, "strikeDamage": 45, "strikeRange": 2.6, "strikeArcDot": 0.3, "strikeSeconds": 0.7,
+    "plasmaDamage": 55, "plasmaRange": 34, "plasmaConeDot": 0.85, "plasmaHeat": 34, "plasmaCoolPerSecond": 12, "plasmaOverheat": 100, "plasmaSeconds": 0.6,
+    "interactRange": 3, "respawnSeconds": 3},
+  "trophy": {"seconds": 4, "range": 2.2, "dropSeconds": 600},
+  "population": {"cellTiles": 64, "activeRadius": 150, "despawnRadius": 220, "maxActive": 28, "minSpawnDistance": 40, "slotHours": 6},
+  "humans": {
+    "braconnier": {"label": "braconnier", "model": "braconnier", "armed": true, "health": 100, "damage": 11, "range": 24, "fireSeconds": 1.4, "accuracy": 0.45, "speed": 3.2, "color": "#6b5a3a"},
+    "garde": {"label": "garde de l’expédition", "model": "braconnier", "armed": true, "health": 100, "damage": 10, "range": 22, "fireSeconds": 1.2, "accuracy": 0.4, "speed": 3.3, "color": "#4f5a4a"},
+    "garde-forestier": {"label": "garde forestier", "model": "braconnier", "armed": true, "health": 110, "damage": 12, "range": 26, "fireSeconds": 1.3, "accuracy": 0.45, "speed": 3.6, "color": "#3e5f3a"},
+    "unite-tactique": {"label": "unité tactique", "model": "unite-tactique", "armed": true, "specialist": true, "health": 150, "damage": 14, "range": 30, "fireSeconds": 0.8, "accuracy": 0.5, "speed": 3.8, "thermal": true, "color": "#25304a"},
+    "archeologue": {"label": "archéologue", "model": "archeologue", "armed": false, "health": 60, "speed": 3.4, "color": "#c9b48a"},
+    "villageois": {"label": "villageois", "model": "archeologue", "armed": false, "health": 60, "speed": 3.4, "color": "#a0785a"}
+  },
+  "animals": {
+    "sanglier": {"label": "sanglier", "model": "sanglier", "health": 70, "damage": 10, "speed": 4.6, "temper": "charge-when-hurt", "aggroRange": 0},
+    "jaguar": {"label": "jaguar", "model": "jaguar", "health": 110, "damage": 16, "speed": 6.2, "temper": "hunter", "aggroRange": 12},
+    "crocodile": {"label": "crocodile", "model": "crocodile", "health": 140, "damage": 22, "speed": 2.4, "temper": "ambush", "aggroRange": 5},
+    "chien": {"label": "chien de pistage", "model": "chien", "health": 50, "damage": 8, "speed": 6.5, "temper": "tracker", "aggroRange": 16}
+  },
+  "perception": {"dayRange": 24, "nightRange": 12, "cloakedStill": 5, "cloakedMoving": 9, "revealed": 30, "coneDot": 0.3, "eyeHeight": 1.6, "bushCover": 1.2, "reportSeconds": 3, "hearPlasma": 40, "thermalCloaked": 14, "dogScent": 14},
+  "alert": {
+    "searchRadius": [0, 80, 140, 200], "decaySeconds": 25, "stillCloakedFactor": 2, "max": 3,
+    "responders": {"1": {"garde-forestier": 3}, "2": {"garde-forestier": 4, "helicoptere": 1}, "3": {"unite-tactique": 4, "chien": 2}},
+    "helicopter": {"orbit": 18, "speed": 9, "spotRadius": 16}
+  },
+  "spawns": {
+    "camp": {"radius": 60, "always": {"braconnier": 4}},
+    "fouilles": {"radius": 55, "day": {"archeologue": 2, "garde": 2}, "night": {"garde": 2}},
+    "village": {"radius": 70, "day": {"villageois": 4}, "night": {"villageois": 1}},
+    "piste": {"radius": 70, "always": {"braconnier": 2}},
+    "river": {"chance": {"crocodile": 0.55}},
+    "jungle": {"chance": {"sanglier": 0.45, "jaguar": 0.14}, "dawnDusk": {"braconnier": 0.4}, "otherwise": {"braconnier": 0.08}}
+  },
+  "contracts": {
+    "perDay": 3,
+    "templates": [
+      {"id": "jaguar-lame", "target": "jaguar", "condition": "blade", "reward": 150, "text": "Abattre un jaguar à la lame."},
+      {"id": "jaguar-nuit", "target": "jaguar", "condition": "night", "reward": 120, "text": "Prendre un jaguar de nuit."},
+      {"id": "crocodile", "target": "crocodile", "condition": "any", "reward": 100, "text": "Prendre un crocodile du fleuve."},
+      {"id": "sanglier-invisible", "target": "sanglier", "condition": "unseen", "reward": 50, "text": "Abattre un sanglier sans être vu."},
+      {"id": "braconnier-lame", "target": "braconnier", "condition": "blade", "reward": 120, "text": "Tuer un braconnier armé à la lame."},
+      {"id": "braconnier-aube", "target": "braconnier", "condition": "dawnDusk", "reward": 100, "text": "Tuer un braconnier armé à l’aube ou au crépuscule."},
+      {"id": "braconniers-trois", "target": "braconnier", "condition": "any", "count": 3, "reward": 200, "text": "Tuer trois braconniers armés."}
+    ]
+  },
+  "bounty": {"id": "predicateur", "name": "Le Prédicateur", "type": "braconnier", "health": 180, "damage": 14, "escorts": 2, "reward": 300, "color": "#8a2f2a",
+    "radio": ["« Le Seigneur a mis des bêtes sur cette île pour que l’homme les compte. Comptez-les, mes frères. »", "« La jungle a des yeux. Gardez vos lampes allumées et vos cartouches au sec. »"]},
+  "legendary": {"id": "roi-de-verdant", "name": "Roi-de-Verdant", "species": "jaguar", "health": 320, "damage": 26, "scale": 1.6, "reward": 500, "radius": 60},
+  "trial": {"id": "canopee-verdant", "ringRadius": 3.2, "minHeight": 6, "failBelow": 4, "medals": [{"name": "or", "seconds": 40, "honor": 150}, {"name": "argent", "seconds": 55, "honor": 100}, {"name": "bronze", "seconds": 75, "honor": 50}]},
+  "fragments": [
+    {"id": "F01", "text": "La gravure montre des pirogues qui reviennent de la pêche. Au-dessus des arbres, trois lumières descendent sans bruit."},
+    {"id": "F02", "text": "Les pêcheurs posent leurs filets devant des silhouettes plus grandes que leurs maisons. Aucun ne lève sa lance."},
+    {"id": "F03", "text": "Le peuple taille des marches dans la colline. À chaque palier, un crâne de jaguar est déposé."},
+    {"id": "F04", "text": "Les chasseurs du ciel reviennent avec la saison des pluies. Le peuple les appelle ceux-qui-marchent-dans-l’ombre."},
+    {"id": "F05", "text": "La pyramide est achevée. Sur la dernière pierre, une main yautja et une main humaine se touchent."}
+  ],
+  "mission": {
+    "id": "I-MP-01", "title": "L’appât", "minReputation": 1, "reward": 400, "carcassBonus": 50,
+    "brief": "Sœur-de-Pierre : « Des Oomans chassent sur Verdant avec des armes qu’ils ne savent pas porter. Quelqu’un les paie. Trouve qui. »",
+    "traces": ["Caisses neuves : des fusils militaires, trop chers pour des braconniers.", "Un reçu de paiement plié dans une gamelle.", "Des empreintes de bottes de luxe, pointure étrangère au camp."],
+    "radio": "« Le vieux veut qu’on fasse du bruit. Beaucoup de bruit. Il dit que ça les attire. »",
+    "radioSeconds": 6, "radioRange": 10,
+    "chief": {"name": "Okonkwo, chef du camp", "health": 160, "damage": 13, "color": "#5a2f22"},
+    "codex": "Le contrat de H. — Un contrat signé « H. » paie le camp pour attirer les chasseurs venus du ciel. La somme dépasse ce que rapportent dix ans de braconnage."
+  }
+}

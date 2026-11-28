@@ -1,0 +1,56 @@
+{
+  "id": "01a22213-f33d-7097-b7d5-6348a5c63001",
+  "type": "text-to-3d-refine",
+  "mode": "refine",
+  "name": "",
+  "model_type": "standard",
+  "seed": 1093480492,
+  "prompt": "Low-poly stylized-realistic game creature, police tracking dog of a large shepherd breed, tan and black coat, plain dark harness without text, standing on all four legs in a neutral stance, full body",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795868062546,
+  "progress": 100,
+  "started_at": 1795868062555,
+  "finished_at": 1795868079534,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-f33d-7097-b7d5-6348a5c63001/output/model.glb?Expires=4949424000&Signature=neyF3R6zlEv7BU4v~BqpQZo4sfIhA7L8BtHbMMWdBsU5KRNl3ZxBPAMjyRWi4ZpkjDT2ue5IZe-IrMi~XF4nNaF-O1p~1dUt571-t15fl~1LpPhYEfsY5mjgOrftiSYbcRFugg9Yd9oIpLMoWaE-gt-WCqAd6hYaf5zhGrxspp56o9v1~WGzbrCaEo-9QJtm82AWnhdjzy3uW6vd-vyik8IoX6VvXDq~YiRy3OBzzLbsqSDivg19ljIgZxuuStQjieGS1qedX~5j9wYfsnQ7VF0KZu3A6b2X~ep-B4NWMFgeHId36As9yRz9kRDiMItDAyY0IxMDxAkg-mMvqmSh4Q__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-f33d-7097-b7d5-6348a5c63001/output/preview.png?Expires=4949424000&Signature=BDOnPwmr33eAY-GhFekLhZJO9Pc~Pk73DBZUC-DonT8W4SNMTzYyJUAEf5FNFfHZKyKml4EF1z4v~WzzTaL1m~yysgk0dnTr~6gbOgwGxGw6Eve29apKKIL2LwWqXWMHN~~E0zGW0tkWBYAgFkk9fokW9TI~7zmw93aIV37q2Kxw56GOqzKRnz2bCXixgVY-djpJtz7Xiol-TLUwajWtUjdDCZmfSAb1KdACWLNNJ0-tX4rjATChCpG62T~L5nQogGQV8GwqaakToaUoZTKMhrtPX~l2wuBAyRH3eRDR5SxZ4jCHdiyXPA-vpEG4~9eOEmJGv3i0o6FYTR~Omz0Y5Q__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [
+    {
+      "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-f33d-7097-b7d5-6348a5c63001/output/texture_0.png?Expires=4949424000&Signature=X0ut7EUVZQlvGrqDO2isXmWclt16-gl9xiF65Oy9t-bpT0Sjv-XUAvy4UcTe4ukGOYARjPiuVOvet0F5AsARKUUDKIA9l3EdG9rFshb3bdoTjf3Cf5R4GKZQ3s92dcui6SYkp1E7IgErSG1ncfNdeLwx86Bmlb6EqUErsmMAru9aGf6oRsclZklEH9QP7exXYN9H7DE-6QXuXxnNeYLOWLMQPnE4OjLDwkPQRaXRh1JgxET63lQ~KcuAFsSJ4uRXHA~~EYr1OWlrYnFm6aELjgQUarapPiSUHexQBRo9TYI1oY-hgD05UYoMtr-b-~tcNNwokDwrIdHmAEk0w8jXog__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    }
+  ],
+  "consumed_credits": 10,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "enable_pbr": false,
+    "mode": "refine",
+    "preview_task_id": "01a22213-7824-7056-92f4-a58b5a1c6ffa",
+    "remove_lighting": true,
+    "target_formats": [
+      "glb"
+    ],
+    "texture_resolution": "2k"
+  },
+  "output": {
+    "seed": 1093480492,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-f33d-7097-b7d5-6348a5c63001/output/model.glb?Expires=4949424000&Signature=neyF3R6zlEv7BU4v~BqpQZo4sfIhA7L8BtHbMMWdBsU5KRNl3ZxBPAMjyRWi4ZpkjDT2ue5IZe-IrMi~XF4nNaF-O1p~1dUt571-t15fl~1LpPhYEfsY5mjgOrftiSYbcRFugg9Yd9oIpLMoWaE-gt-WCqAd6hYaf5zhGrxspp56o9v1~WGzbrCaEo-9QJtm82AWnhdjzy3uW6vd-vyik8IoX6VvXDq~YiRy3OBzzLbsqSDivg19ljIgZxuuStQjieGS1qedX~5j9wYfsnQ7VF0KZu3A6b2X~ep-B4NWMFgeHId36As9yRz9kRDiMItDAyY0IxMDxAkg-mMvqmSh4Q__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-f33d-7097-b7d5-6348a5c63001/output/preview.png?Expires=4949424000&Signature=BDOnPwmr33eAY-GhFekLhZJO9Pc~Pk73DBZUC-DonT8W4SNMTzYyJUAEf5FNFfHZKyKml4EF1z4v~WzzTaL1m~yysgk0dnTr~6gbOgwGxGw6Eve29apKKIL2LwWqXWMHN~~E0zGW0tkWBYAgFkk9fokW9TI~7zmw93aIV37q2Kxw56GOqzKRnz2bCXixgVY-djpJtz7Xiol-TLUwajWtUjdDCZmfSAb1KdACWLNNJ0-tX4rjATChCpG62T~L5nQogGQV8GwqaakToaUoZTKMhrtPX~l2wuBAyRH3eRDR5SxZ4jCHdiyXPA-vpEG4~9eOEmJGv3i0o6FYTR~Omz0Y5Q__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": [
+      {
+        "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-f33d-7097-b7d5-6348a5c63001/output/texture_0.png?Expires=4949424000&Signature=X0ut7EUVZQlvGrqDO2isXmWclt16-gl9xiF65Oy9t-bpT0Sjv-XUAvy4UcTe4ukGOYARjPiuVOvet0F5AsARKUUDKIA9l3EdG9rFshb3bdoTjf3Cf5R4GKZQ3s92dcui6SYkp1E7IgErSG1ncfNdeLwx86Bmlb6EqUErsmMAru9aGf6oRsclZklEH9QP7exXYN9H7DE-6QXuXxnNeYLOWLMQPnE4OjLDwkPQRaXRh1JgxET63lQ~KcuAFsSJ4uRXHA~~EYr1OWlrYnFm6aELjgQUarapPiSUHexQBRo9TYI1oY-hgD05UYoMtr-b-~tcNNwokDwrIdHmAEk0w8jXog__&Key-Pair-Id=K1VGYTHIYLM9UM",
+        "metallic": null,
+        "roughness": null,
+        "normal": null,
+        "metallic_roughness": null,
+        "emission": null
+      }
+    ]
+  }
+}

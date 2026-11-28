@@ -637,6 +637,8 @@ Un repaire principal (au choix du joueur) expose les trophées du mode, avec leu
 
 **Avancement du prototype intégré :** étapes 1 et 3 jouables hors ligne, avec l'île de test et la Chasse inversée en solo contre l'IA. L'étape 2 dispose d'une salle facultative de test local, séparée du menu et du build web. [Prototype V1](ISLES_PROTOTYPE_V1_20261123.md).
 
+**Étape 4 (28 novembre 2026) :** Verdant en chasse libre, sur une île de 2 km générée à partir de données, avec un profil `islesV1` séparé de la campagne et des modèles Meshy. [Verdant en chasse libre](ISLES_VERDANT_CHASSE_LIBRE_20261128.md).
+
 ### 15.3 Tests
 - Caméra : aucun moment où le joueur est caché derrière un décor sans transparence.
 - Code : un non-combattant n'est jamais une cible valide ; une faute fait baisser la réputation.

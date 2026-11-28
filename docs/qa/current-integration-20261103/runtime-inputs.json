@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2810,
-  "bytes": 1246167315,
+  "files": 2816,
+  "bytes": 1246274716,
   "entries": [
     {
       "path": ".github/workflows/gameplay-cloud-v94.yml",
@@ -1740,13 +1740,13 @@
     },
     {
       "path": "app/game/IslesModeV1.module.css",
-      "bytes": 5407,
-      "sha256": "ad5b544962800eb7adffa22ef7876ce076e792da2b598ebcf4c368f43762ec22"
+      "bytes": 6527,
+      "sha256": "0b33a42898028216a46820911365a99ffc7df85d6ae9ca013a61882ed4d164c4"
     },
     {
       "path": "app/game/IslesModeV1.tsx",
-      "bytes": 20965,
-      "sha256": "594965333813e6662ddee016dab06f7749596c8dd3d70f24f9cc9e9ec28597f4"
+      "bytes": 36221,
+      "sha256": "6901220cf29b1b6e56366fab22c43203117515ea738c647c86ce47fec023ea2e"
     },
     {
       "path": "app/game/JungleHunterLayeredV134.module.css",
@@ -3094,6 +3094,11 @@
       "sha256": "e57a24dfcb29ae9b19417c69951846ca938d0398331b9e2c816491832d88b14a"
     },
     {
+      "path": "app/game/data/islesFreeHuntV1.json",
+      "bytes": 7400,
+      "sha256": "370969d5a7c351dc50419d2049ee51d5181eb063243f259f1d30c549fa9590ea"
+    },
+    {
       "path": "app/game/data/islesMapTestV1.json",
       "bytes": 3909,
       "sha256": "cccdf1674f438a505634e0fce8685e65ae8056f9b24a7cbbea4d87f9abcb7eac"
@@ -3102,6 +3107,11 @@
       "path": "app/game/data/islesMapVerdantV1.json",
       "bytes": 11310,
       "sha256": "b62cd118252f9ffa8e8789937b98aeddab4fe9412af892eb932b3583d737b1e5"
+    },
+    {
+      "path": "app/game/data/islesModelsV1.json",
+      "bytes": 922,
+      "sha256": "ed000ac60b09bbf4a37421b429d439b4fdbf8a023bb702786be96ded01e6a876"
     },
     {
       "path": "app/game/data/islesNetConfigV1.json",
@@ -3117,6 +3127,11 @@
       "path": "app/game/data/islesTuningV1.json",
       "bytes": 1063,
       "sha256": "53dffbb848bff432c18fe5e962b5f40469ee993c69bab5f80ec02f184e081557"
+    },
+    {
+      "path": "app/game/data/islesVerdantWorldV1.json",
+      "bytes": 3726,
+      "sha256": "33e7b78186f893baad2d0cfa204b32fcc67ecd5257248461ca5fe2b23ab9dab2"
     },
     {
       "path": "app/game/data/npcProductionV615.json",
@@ -3724,6 +3739,11 @@
       "sha256": "d729fa4050af0195df5cdc4931464a1d46a5c2171e3f812a520d4b0971c9802b"
     },
     {
+      "path": "app/game/isles/islesFreeHuntV1.ts",
+      "bytes": 48745,
+      "sha256": "9326cb90eba2b277cbcbf6ab919b59f32f20c7d69b15cebb5ea2a4ec0792dc26"
+    },
+    {
       "path": "app/game/isles/islesMapV1.ts",
       "bytes": 4438,
       "sha256": "7560ff3e96983bcd1813316ba04605c77760a1f86dca07662a7d36aec20b1022"
@@ -3740,8 +3760,8 @@
     },
     {
       "path": "app/game/isles/islesPathV1.ts",
-      "bytes": 3587,
-      "sha256": "2f41a522c266bd0b38fbb4f8c736b05034471f220c1c0975c14f4e25557413d0"
+      "bytes": 6696,
+      "sha256": "20d1d049772e60d73dbb043e7a283d7b84b749928a4dff3596a3c1883b63744e"
     },
     {
       "path": "app/game/isles/islesReverseHuntV1.ts",
@@ -3754,9 +3774,19 @@
       "sha256": "19cea0a290c3eafd42d1a408d75f0ac8ef4d4e2b87730a700bb368ef42b2fde5"
     },
     {
+      "path": "app/game/isles/islesSaveV1.ts",
+      "bytes": 5700,
+      "sha256": "585093046e0c6c2108f672ec65fb074bd2327f3f2f0c410356140e5d6fcd45ee"
+    },
+    {
       "path": "app/game/isles/islesSceneV1.ts",
-      "bytes": 22918,
-      "sha256": "6f447799aa1f17f88c781e718e369b1c7760d15f4af8d43150e55c17ce1f1b6a"
+      "bytes": 31589,
+      "sha256": "6c6a95c790ac6f3f8f8897e9feb014fcf7c362c43aa40159c34abeee40f2253f"
+    },
+    {
+      "path": "app/game/isles/islesWorldGenV1.ts",
+      "bytes": 12752,
+      "sha256": "b7de5f5de80eed847e0b47cdaeb02ece9697859a204b7ca2a4c39d5964953286"
     },
     {
       "path": "app/game/littleTrailArtO6.ts",

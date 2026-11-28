@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "project_name": "unite-tactique",
+  "folder": "20261128_121355_unite-tactique_01a22213",
+  "root_task_id": "01a22213-78cc-7488-9e5e-2a8dfd8e1381",
+  "created_at": "2026-11-28T12:13:55.845Z",
+  "updated_at": "2026-11-28T12:17:00.606Z",
+  "tasks": [
+    {
+      "task_id": "01a22213-78cc-7488-9e5e-2a8dfd8e1381",
+      "task_type": "text-to-3d-preview",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "preview",
+      "parent_task_id": null,
+      "status": "SUCCEEDED",
+      "files": [],
+      "task_json": "task_01a22213-78cc-7488-9e5e-2a8dfd8e1381.json",
+      "operation_id": null,
+      "created_at": "2026-11-28T12:14:38.079Z",
+      "updated_at": "2026-11-28T12:14:38.079Z"
+    },
+    {
+      "task_id": "01a22214-3515-754a-b083-580339e8d04e",
+      "task_type": "text-to-3d-refine",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "refine",
+      "parent_task_id": "01a22213-78cc-7488-9e5e-2a8dfd8e1381",
+      "status": "SUCCEEDED",
+      "files": [
+        "model.glb",
+        "preview.png"
+      ],
+      "task_json": "task_01a22214-3515-754a-b083-580339e8d04e.json",
+      "operation_id": "e20af598-8b2f-4102-9aff-ad5c6031ae09",
+      "created_at": "2026-11-28T12:14:39.464Z",
+      "updated_at": "2026-11-28T12:17:00.606Z"
+    },
+    {
+      "task_id": "01a22214-a02a-71c1-b045-b1d678aca3af",
+      "task_type": "rig",
+      "resource": "rigging",
+      "endpoint": "/openapi/v1/rigging",
+      "stage": "rigging",
+      "parent_task_id": "01a22214-3515-754a-b083-580339e8d04e",
+      "status": "SUCCEEDED",
+      "files": [
+        "walking_glb.glb",
+        "running_armature_glb.glb",
+        "rigged.glb"
+      ],
+      "task_json": "task_01a22214-a02a-71c1-b045-b1d678aca3af.json",
+      "operation_id": "9c599989-0efc-4dbd-8e6a-bdcc48c74e71",
+      "created_at": "2026-11-28T12:15:10.702Z",
+      "updated_at": "2026-11-28T12:16:34.419Z"
+    }
+  ]
+}

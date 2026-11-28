@@ -1,0 +1,41 @@
+{
+  "schema_version": 2,
+  "project_name": "sanglier",
+  "folder": "20261128_121355_sanglier_01a22213",
+  "root_task_id": "01a22213-79ad-7670-949a-a78c85b0309f",
+  "created_at": "2026-11-28T12:13:55.227Z",
+  "updated_at": "2026-11-28T12:17:12.204Z",
+  "tasks": [
+    {
+      "task_id": "01a22213-79ad-7670-949a-a78c85b0309f",
+      "task_type": "text-to-3d-preview",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "preview",
+      "parent_task_id": null,
+      "status": "SUCCEEDED",
+      "files": [],
+      "task_json": "task_01a22213-79ad-7670-949a-a78c85b0309f.json",
+      "operation_id": null,
+      "created_at": "2026-11-28T12:14:37.736Z",
+      "updated_at": "2026-11-28T12:14:37.736Z"
+    },
+    {
+      "task_id": "01a22214-32f4-7741-9572-80055023034c",
+      "task_type": "text-to-3d-refine",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "refine",
+      "parent_task_id": "01a22213-79ad-7670-949a-a78c85b0309f",
+      "status": "SUCCEEDED",
+      "files": [
+        "model.glb",
+        "preview.png"
+      ],
+      "task_json": "task_01a22214-32f4-7741-9572-80055023034c.json",
+      "operation_id": "a45b23f3-4801-45a7-bfb3-1db8fd3641d4",
+      "created_at": "2026-11-28T12:14:38.959Z",
+      "updated_at": "2026-11-28T12:17:12.204Z"
+    }
+  ]
+}

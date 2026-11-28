@@ -1,0 +1,56 @@
+{
+  "id": "01a22214-34af-7308-b701-dafc26bcddb3",
+  "type": "text-to-3d-refine",
+  "mode": "refine",
+  "name": "",
+  "model_type": "standard",
+  "seed": 3052293937,
+  "prompt": "Low-poly stylized-realistic game character, jungle poacher man in his forties, worn olive cargo trousers, faded khaki shirt, canvas vest with ammunition pouches, battered bush hat, leather boots, empty hands, A-pose, full body, original design, no logos, no text",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795868079289,
+  "progress": 100,
+  "started_at": 1795868079297,
+  "finished_at": 1795868096846,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22214-34af-7308-b701-dafc26bcddb3/output/model.glb?Expires=4949424000&Signature=GG9wX53IO9Qnsh-zlppZsUxTE2eEAbAb4S0SC5Zra-VZ-zPHuawnANq8mPJWf~LTMBcxDd3jfrQ7a~M-JmM2ajsVdnak2fi45ttAfRY7O0VZDhpF5SXBUb63iw01Nbb-etY3eHcv-7tbLCBw9yRgNnpxVhS5vYxW9IKaI7SdI~Bu~gwtHOwTlaJMoXbn49w6lz7VZBNJpers5a5QWjNGjP2zcZfzQ71a5qAy6S9AHZF1bD6WYZgD6HlYce3cDQnOL~LGt9-KmSPyhAk~KBC2u~JZxOy1Y~maat1t6P~YMHBWWwZeihOsWVPcsriGRi1m84ejnyHdO~kMcFIXciGbBA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22214-34af-7308-b701-dafc26bcddb3/output/preview.png?Expires=4949424000&Signature=AaSVIx~geE2iq~gF0-Q2pHrlYTPuzh7-XYCLkEmjey~52TwJVZRFil52kEdphbQvYS8g3f4BVg~ulP0xf2T9gHzW8~k06v7ptj-lhuf35U2SEfJT~JJdBtwsib2ooJXfKht~AQcF8fnsjCjhRPZaARx0Ni34V1kO2HBBNZgfCs-NWerUpWjfKGBWUHvkBqvPio8m~NAB2ALt6zJxJQcvexqJgqOwWoQz~bALRYaO14rEpV~cHsQ0PN2mxWU7BAQuKnsLxC~T3eFyk1~OfwDR3GgjQmRx2u~J93srjs8anHaV~F7-4vl7FIHF4bWqmJhPH~les-fSXqpiIrhlrDATcQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [
+    {
+      "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22214-34af-7308-b701-dafc26bcddb3/output/texture_0.png?Expires=4949424000&Signature=AihbwP1iT~C7hFHzehAiBCrksh9Q8MlJ~JEF~zfSTs2p1~AazDNhN1lNNZKg0eeA6-Zo~VHae4vaL-P9irozkPB8amFavkd7xkZ0KRIcEVtGxheKSOE3bXCnVXnA9qsumAFPHRjd2XyX58eTJaUq5tYib8mXuxby786oRX3rTjsgsfkMP2~t2exVOEL76TpzQ9VMwb~dI8A07nWTNi2g1Sg~L3q4wWc6jkOfbFvH68C6HlccNxdqetSsBGOcy65YcR26ImAirqfAYN4EbUYOHnY9oX1RobIute~PLxfltahO9GN9wFAweJYvM6qYtj~pUM5FtF7e75RWk8yAbUG5uA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    }
+  ],
+  "consumed_credits": 10,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "enable_pbr": false,
+    "mode": "refine",
+    "preview_task_id": "01a22213-799b-721e-b249-0b858665893c",
+    "remove_lighting": true,
+    "target_formats": [
+      "glb"
+    ],
+    "texture_resolution": "2k"
+  },
+  "output": {
+    "seed": 3052293937,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22214-34af-7308-b701-dafc26bcddb3/output/model.glb?Expires=4949424000&Signature=GG9wX53IO9Qnsh-zlppZsUxTE2eEAbAb4S0SC5Zra-VZ-zPHuawnANq8mPJWf~LTMBcxDd3jfrQ7a~M-JmM2ajsVdnak2fi45ttAfRY7O0VZDhpF5SXBUb63iw01Nbb-etY3eHcv-7tbLCBw9yRgNnpxVhS5vYxW9IKaI7SdI~Bu~gwtHOwTlaJMoXbn49w6lz7VZBNJpers5a5QWjNGjP2zcZfzQ71a5qAy6S9AHZF1bD6WYZgD6HlYce3cDQnOL~LGt9-KmSPyhAk~KBC2u~JZxOy1Y~maat1t6P~YMHBWWwZeihOsWVPcsriGRi1m84ejnyHdO~kMcFIXciGbBA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22214-34af-7308-b701-dafc26bcddb3/output/preview.png?Expires=4949424000&Signature=AaSVIx~geE2iq~gF0-Q2pHrlYTPuzh7-XYCLkEmjey~52TwJVZRFil52kEdphbQvYS8g3f4BVg~ulP0xf2T9gHzW8~k06v7ptj-lhuf35U2SEfJT~JJdBtwsib2ooJXfKht~AQcF8fnsjCjhRPZaARx0Ni34V1kO2HBBNZgfCs-NWerUpWjfKGBWUHvkBqvPio8m~NAB2ALt6zJxJQcvexqJgqOwWoQz~bALRYaO14rEpV~cHsQ0PN2mxWU7BAQuKnsLxC~T3eFyk1~OfwDR3GgjQmRx2u~J93srjs8anHaV~F7-4vl7FIHF4bWqmJhPH~les-fSXqpiIrhlrDATcQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": [
+      {
+        "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22214-34af-7308-b701-dafc26bcddb3/output/texture_0.png?Expires=4949424000&Signature=AihbwP1iT~C7hFHzehAiBCrksh9Q8MlJ~JEF~zfSTs2p1~AazDNhN1lNNZKg0eeA6-Zo~VHae4vaL-P9irozkPB8amFavkd7xkZ0KRIcEVtGxheKSOE3bXCnVXnA9qsumAFPHRjd2XyX58eTJaUq5tYib8mXuxby786oRX3rTjsgsfkMP2~t2exVOEL76TpzQ9VMwb~dI8A07nWTNi2g1Sg~L3q4wWc6jkOfbFvH68C6HlccNxdqetSsBGOcy65YcR26ImAirqfAYN4EbUYOHnY9oX1RobIute~PLxfltahO9GN9wFAweJYvM6qYtj~pUM5FtF7e75RWk8yAbUG5uA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+        "metallic": null,
+        "roughness": null,
+        "normal": null,
+        "metallic_roughness": null,
+        "emission": null
+      }
+    ]
+  }
+}

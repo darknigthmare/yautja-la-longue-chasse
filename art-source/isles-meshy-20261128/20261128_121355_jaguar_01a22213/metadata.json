@@ -1,0 +1,41 @@
+{
+  "schema_version": 2,
+  "project_name": "jaguar",
+  "folder": "20261128_121355_jaguar_01a22213",
+  "root_task_id": "01a22213-78c2-731c-92ce-86e2fbd5266f",
+  "created_at": "2026-11-28T12:13:55.004Z",
+  "updated_at": "2026-11-28T12:17:06.526Z",
+  "tasks": [
+    {
+      "task_id": "01a22213-78c2-731c-92ce-86e2fbd5266f",
+      "task_type": "text-to-3d-preview",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "preview",
+      "parent_task_id": null,
+      "status": "SUCCEEDED",
+      "files": [],
+      "task_json": "task_01a22213-78c2-731c-92ce-86e2fbd5266f.json",
+      "operation_id": null,
+      "created_at": "2026-11-28T12:14:37.466Z",
+      "updated_at": "2026-11-28T12:14:37.466Z"
+    },
+    {
+      "task_id": "01a22214-31c9-737b-a57e-7c7deb382eab",
+      "task_type": "text-to-3d-refine",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "refine",
+      "parent_task_id": "01a22213-78c2-731c-92ce-86e2fbd5266f",
+      "status": "SUCCEEDED",
+      "files": [
+        "model.glb",
+        "preview.png"
+      ],
+      "task_json": "task_01a22214-31c9-737b-a57e-7c7deb382eab.json",
+      "operation_id": "debaf06c-cf52-40dd-827a-32ebc7c5b1aa",
+      "created_at": "2026-11-28T12:14:38.629Z",
+      "updated_at": "2026-11-28T12:17:06.526Z"
+    }
+  ]
+}
