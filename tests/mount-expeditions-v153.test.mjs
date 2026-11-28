@@ -124,7 +124,7 @@ test('every new species takes actual riding inputs and resumes the same mount an
     for (let block = 0; block < 2; block++) {
       const driving = riding.actMountRideV156(save, {
         type: 'ride', rideId: start.rides.active.id, ownerCreatedAt: owner, expectedRevision: save.mountRidesV156.revision,
-        inputs: Array.from({ length: 60 }, () => ({ throttle: 1, steer: 0, brake: false, boost: false })),
+        inputs: Array.from({ length: 60 }, () => ({ throttle: 1, steer: 0, brake: false, boost: false, interact: false })),
       });
       assert.ok(driving.accepted, driving.message);
       save = { ...save, mountRidesV156: driving.rides };
