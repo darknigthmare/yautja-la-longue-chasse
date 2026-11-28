@@ -57,6 +57,15 @@ export default function NativePaths({ onSelect }: { onSelect: (id: string) => vo
         description="Dans Archives &amp; chroniques, ouvre DLC / Chroniques de chasse pour examiner les trophées et les traces de campagne disponibles.">
         <Link href="/" prefetch={false}>Ouvrir le menu des chroniques</Link>
       </NativePath>
+
+      <NativePath label="Campagne · Skimmer des dunes et Porteur de trophées"
+        description="Sur Serekh‑9, extrais les mandibules de la Sandmaw et présente-les au comptoir des Forges. Pour le Porteur, expose un trophée à bord avant de demander le prêt.">
+        <Link href="/" prefetch={false}>Reprendre une campagne pour les véhicules</Link>
+      </NativePath>
+      <NativePath label="Campagne · Équipiers de la triade et Brèche"
+        description="Recrute l’équipage du vaisseau de clan, équipe ses quartiers et compose la triade au briefing. Pour Brèche, retrouve son habitat à bord et sélectionne-le au chenil.">
+        <Link href="/" prefetch={false}>Reprendre une campagne pour les compagnons</Link>
+      </NativePath>
       <NativePath label="The Pit · Atelier d’animation"
         description="Contrôle les animations et les poses des Masques brisés dans l’atelier. Le menu du jeu donne accès au scénario jouable selon ta progression.">
         <Link href="/pit-lab" prefetch={false}>Ouvrir l’atelier The Pit</Link>
