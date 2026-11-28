@@ -135,7 +135,7 @@ import {HOMEWORLD_CARTOGRAPHY_V104} from './systems/homeworldCartographyDefiniti
 import {defaultHomeworldCartographyV104,normalizeHomeworldCartographyV104} from './systems/homeworldCartographyLedgerV104';
 import {createCartographyTransactionV104,cartographyPostReachedV104,sampleCartographyWalkV104,type CartographyActionV104} from './systems/homeworldCartographyV104';
 import {homeworldStreetContactReachedV100,nearestHomeworldStreetContactV100,homeworldStreetPlacesV100} from './systems/homeworldStreetContactsV100';
-import {isHoundKennelContactV147} from './systems/houndKennelV147';
+import {brecheAdmittedV147,isHoundKennelContactV147} from './systems/houndKennelV147';
 import HoundKennelPanelV147, {type HoundKennelActionV147} from './HoundKennelPanelV147';
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import HomeworldInteriorSurface from "./HomeworldInteriorSurface";
@@ -2262,7 +2262,8 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
             <button type="button" data-r2-m003-stop="kennel" disabled={suspended || paused || inactive}
               onClick={() => saveYouthCityErrand({ stop: "kennel" })}>{YOUTH_CITY_STOPS_V172.kennel.label}</button>}
           {onKennelActionV147 && isHoundKennelContactV147(selectedStreetContactV100.id) &&
-            <HoundKennelPanelV147 hounds={save.houndsV147} clanMarks={save.profile.clanMarks} disabled={cargoMigrationPendingV108||suspended||paused||inactive}
+            <HoundKennelPanelV147 hounds={save.houndsV147} clanMarks={save.profile.clanMarks}
+              brecheAdmitted={brecheAdmittedV147(save, selectedShipId)} disabled={cargoMigrationPendingV108||suspended||paused||inactive}
               onAction={handleKennelActionV147} />}
         </> : dialog.streetContactV100 ? <p role="status">La conversation est interrompue. Rejoins cet habitant sur son passage.</p> : selectedResidentV68 ? <>
           <p data-homeworld-civilian-routine-v84={selectedResidentPoseV84?.phase} data-homeworld-civilian-group-v84={selectedResidentRoutineV84?.groupId ?? undefined}>

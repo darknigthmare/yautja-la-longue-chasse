@@ -252,7 +252,7 @@ export function inspectCompanionResidence(raw: unknown, ownerCreatedAt: string):
 }
 
 export type CompanionCampaign = Pick<SaveGame, 'createdAt' | 'prologue' | 'missionProgress' | 'profile' | 'expeditionRoster' |
-  'clanShipOperations' | 'clanShipDocking' | 'planetArrival' | 'companionResidence'>;
+  'clanShipOperations' | 'clanShipDocking' | 'planetArrival' | 'companionResidence' | 'houndsV147'>;
 
 export function companionHasRecruitment(save: CompanionCampaign, id: CompanionResidentId): boolean {
   const definition = companionResidenceDefinition(id);
@@ -330,7 +330,10 @@ export function companionAtRefit(context: CompanionResidenceContext): boolean {
     docking?.ownerCreatedAt === context.save.createdAt && ['docked', 'aboard'].includes(docking.status) && docking.personalShipId === context.selectedShipId;
 }
 export function companionResidenceAvailability(save: CompanionCampaign, member: CompanionResident): CompanionAvailability {
+  const kennelRecord = member.id === 'breche' ? save.houndsV147?.hounds.find(hound => hound.catalogueId === member.id) : undefined;
+  if (kennelRecord?.condition === 'dead') return 'dead';
   if (member.relation === 'suspended') return 'suspended';
+  if (kennelRecord?.condition === 'wounded') return 'recovering';
   if (companionResidenceDefinition(member.id)?.source === 'triad') {
     return inspectExpeditionRoster(save.expeditionRoster, save.createdAt).state?.members.find(entry => entry.id === member.id)?.availability ?? 'missing';
   }
@@ -451,6 +454,8 @@ export function actCompanionResidence(action: CompanionResidenceAction, context:
   let member = next.members.find(entry => entry.id === id);
   if (!member) { member = blankMember(id, definition.source === 'clan'); next.members.push(member); }
   const availability = companionResidenceAvailability(save, member);
+  if (id === 'breche' && availability === 'dead' && action.type !== 'cancel-refit' && action.type !== 'reserve')
+    return refuse('Brèche est tombé. Son accord reste au registre, sans nouvel aménagement.');
   const oldRoster = inspectExpeditionRoster(save.expeditionRoster, save.createdAt).state;
   const rosterWith = (target: CompanionHost | null): ExpeditionRoster | undefined => definition.source === 'triad' && oldRoster
     ? { ...oldRoster, members: oldRoster.members.map(entry => entry.id === id ? { ...entry, assignedShipId: target?.kind === 'personal' ? target.shipId : null } : entry) } : undefined;
@@ -531,11 +536,13 @@ export function companionResidencePresence(save: CompanionCampaign, target: Comp
     const deployed = !!member.deployment || definition.fieldReady && target.kind === 'personal' && save.planetArrival?.personalShipId === target.shipId &&
       save.planetArrival.insertion?.team === 'triad';
     const roomId = companionBerthRoom(target, member.installation.berth);
-    const location = member.relation === 'suspended' ? 'closed' : deployed ? 'mission' : availability === 'missing' ? 'missing' : availability === 'recovering' ? 'medical' : 'aboard';
+    const location = member.relation === 'suspended' || availability === 'dead' ? 'closed' :
+      deployed ? 'mission' : availability === 'missing' ? 'missing' : availability === 'recovering' ? 'medical' : 'aboard';
     const quarterVisible = location !== 'closed';
     return [{ id: member.id, definition, assignment: member.assignment, installation: member.installation,
       quarterVisible, avatarVisible: quarterVisible && ['aboard', 'medical'].includes(location), serviceAvailable: location === 'aboard' && availability === 'ready',
-      availability, location, roomId, avatarRoomId: location === 'medical' ? target.kind === 'personal' ? 'medical-bay' : 'soins' : roomId } as CompanionPresence];
+      availability, location, roomId, avatarRoomId: location === 'medical' && member.id !== 'breche'
+        ? target.kind === 'personal' ? 'medical-bay' : 'soins' : roomId } as CompanionPresence];
   });
 }
 /** Historical clan appointments remain valid until explicitly managed here.

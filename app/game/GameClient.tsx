@@ -68,8 +68,8 @@ import React, {
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
 import HunterChromaticForgeV113 from "./HunterChromaticForgeV113";
-import { HOUND_KENNEL_LOCATION_V147, activeHoundV147 } from "./systems/huntingHoundsV147";
-import { applyKennelActionV147, kennelRefusalTextV147 } from "./systems/houndKennelV147";
+import { HOUND_KENNEL_LOCATION_V147 } from "./systems/huntingHoundsV147";
+import { activeKennelHoundV147, applyKennelActionV147, brecheAdmittedV147, kennelRefusalTextV147 } from "./systems/houndKennelV147";
 import HunterPieceForgeV146, { type CustomizationApplyV146 } from "./HunterPieceForgeV146";
 import { emptyCustomizationV146, outfitForModeV146 } from "./systems/hunterCustomizationV146";
 import { appearanceForModeV147 } from "./systems/hunterModeAppearanceV147";
@@ -5740,7 +5740,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 suspended={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}
                 onKennelActionV147={action => {
                   const current = saveRef.current;
-                  const change = applyKennelActionV147(current, action, HOUND_KENNEL_LOCATION_V147);
+                  const admitted = brecheAdmittedV147(current, loadShipProgression(current).selectedShipId);
+                  const change = applyKennelActionV147(current, action, HOUND_KENNEL_LOCATION_V147, admitted);
                   if (!change.ok) { setToast(kennelRefusalTextV147(change.reason)); return false; }
                   const persisted = persistSocialProgress({
                     houndsV147: change.houndsV147,
@@ -7590,7 +7591,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         <Suspense fallback={<DeferredGameScreen />}>
           <HuntCanvas
             mission={selectedMission}
-            houndV147={activeHoundV147(save.houndsV147)}
+            houndV147={activeKennelHoundV147(save, huntResumePayload?.insertionShipId ?? selectedShipId)}
             firstHuntGuideEnabled={selectedMission.id === "jungle-vey" && save.missionProgress["jungle-vey"].status !== "completed"}
             encounterRun={save.missionProgress[selectedMission.id].attempts}
             insertionPlan={huntResumePayload?.insertionPlan}

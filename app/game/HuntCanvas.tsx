@@ -315,11 +315,12 @@ import { camouflageVisibilityV146, heavyHitPieceV146, missionWearV146, wearFilte
 import { armorWearCanvasV172, armorWearPieceIsWornV172, type ArmorWearV172 } from "./hunterArmorWearV172";
 import { markColorV146, markLayerV146, markStrokesV146 } from "./hunterMarksArtV146";
 import {
-  HOUND_ORDERS_V147, createHoundFieldV147, damageHoundFieldV147, houndHuntReportFromFieldV147, isOrderUnlockedV147, issueHoundOrderV147,
+  createHoundFieldV147, damageHoundFieldV147, houndHuntReportFromFieldV147, houndOrderModeV147, houndOrdersV147, issueHoundOrderV147,
   houndStickOrderV147, nextHoundOrderV147, pickHoundTargetV147, restoreHoundFieldV147, snapshotHoundFieldV147,
-  stepHoundFieldV147, type FieldPreyV147, type HoundOrderIdV147, type HoundFieldSnapshotV147, type HoundFieldV147, type HoundV147,
+  stepHoundFieldV147, type FieldPreyV147, type HoundAptitudeV147, type HoundOrderIdV147,
+  type HoundFieldSnapshotV147, type HoundFieldV147, type HoundV147,
 } from "./systems/huntingHoundsV147";
-import { houndCatalogueEntryV147, type HoundCatalogueEntryV147 } from "./systems/houndKennelV147";
+import { BRECHE_HOUND_ID_V147, houndCatalogueEntryV147, type HoundCatalogueEntryV147 } from "./systems/houndKennelV147";
 import { pieceCanvasSourceV148, pieceZoneColorsV148 } from "./hunterPieceZonesV148";
 import type {
   DifficultyId,
@@ -11060,6 +11061,7 @@ function flushCorpseRiteGamepadV112(state:GameState,input:InputHub,root:HTMLElem
 interface HoundUiV147 {
   name: string;
   bond: number;
+  aptitude?: HoundAptitudeV147;
   order: HoundOrderIdV147;
   orderDone: boolean;
   ordersCompleted: number;
@@ -11081,7 +11083,10 @@ function restoredHoundFieldV147(state: GameState, checkpoint: MissionCheckpointP
   if (!state.houndFieldV147) return undefined;
   if (!checkpoint.houndFieldV147) return state.houndFieldV147;
   const field = restoreHoundFieldV147(checkpoint.houndFieldV147);
-  return field && field.houndId === state.houndFieldV147.houndId ? field : state.houndFieldV147;
+  const original = state.houndFieldV147;
+  if (!field || field.houndId !== original.houndId || (field.aptitude && field.aptitude !== original.aptitude)) return original;
+  if (!field.aptitude && original.aptitude) field.aptitude = original.aptitude;
+  return field;
 }
 
 /** Height above the floor a hound can still reach with a bite or a push (proposé). */
@@ -11104,8 +11109,8 @@ function houndPreyV147(state: GameState, tracking: boolean, attackTargetId: stri
       trailAge: Math.max(0, state.elapsed - enemy.lastTrackAt) }));
 }
 
-const houndOrderLabelV147 = (order: HoundFieldV147["order"]) =>
-  HOUND_ORDERS_V147.find(entry => entry.id === order)?.label ?? order;
+const houndOrderDefinitionV147 = (order: HoundOrderIdV147, aptitude?: HoundAptitudeV147) =>
+  houndOrdersV147(aptitude).find(entry => entry.id === order);
 
 function updateHoundV147(
   state: GameState, mission: MissionDefinition, input: InputHub, delta: number,
@@ -11120,22 +11125,25 @@ function updateHoundV147(
   if (cycled || directOrder) {
     const target = pickHoundTargetV147(
       { x: player.x, y: player.y, facing: state.player.facing }, houndPreyV147(state, false));
-    const next = directOrder ?? nextHoundOrderV147(field.order, hound.bond, !!target);
-    const issued = issueHoundOrderV147(field, next, hound.bond, next === "attack" ? target?.id ?? null : null);
+    const next = directOrder ?? nextHoundOrderV147(field.order, hound.bond, !!target, field.aptitude);
+    const definition = houndOrderDefinitionV147(next, field.aptitude);
+    const needsPrey = houndOrderModeV147(next, field.aptitude) === "attack";
+    const issued = issueHoundOrderV147(field, next, hound.bond, needsPrey ? target?.id ?? null : null);
     if (issued.ok) {
       field = issued.field;
-      announce(state, `${hound.name} : ${houndOrderLabelV147(next)}.`, 1.6);
+      announce(state, `${hound.name} : ${definition?.label ?? next}.`, 1.6);
     } else {
       announce(state, issued.reason === "dead" ? `${hound.name} est mort.`
         : issued.reason === "wounded" ? `${hound.name} est blessé : il ne répond qu’au rappel.`
         : issued.reason === "locked"
-          ? `${houndOrderLabelV147(next)} : lien ${HOUND_ORDERS_V147.find(entry => entry.id === next)?.bond ?? "?"} requis (${hound.bond}).`
+          ? `${definition?.label ?? next} : lien ${definition?.bond ?? "?"} requis (${hound.bond}).`
         : issued.reason === "no-target" ? `${hound.name} : aucune proie au sol à portée.`
         : `${hound.name} ne peut pas exécuter cet ordre.`, 1.8);
     }
   }
   const wasWounded = field.wounded, wasDead = field.dead, fromX = field.x;
-  const prey = houndPreyV147(state, field.order === "track", field.order === "attack" ? field.targetId : null);
+  const mode = houndOrderModeV147(field.order, field.aptitude);
+  const prey = houndPreyV147(state, mode === "track", mode === "attack" ? field.targetId : null);
   const step = stepHoundFieldV147(field, { dt: delta, player, prey });
   field = step.field;
   for (const event of step.events) {
@@ -11147,7 +11155,7 @@ function updateHoundV147(
       // The prey fights back while it stands (provisional value, proposé).
       if (enemy.alive) field = damageHoundFieldV147(field, Math.max(1, enemy.damage * 0.35));
     } else if (event.type === "marked" && enemy) {
-      state.houndMarkV147 = { preyId: enemy.id, until: state.elapsed + 6 };
+      state.houndMarkV147 = { preyId: enemy.id, until: state.elapsed + (event.visibleSeconds ?? 6) };
       announce(state, `${hound.name} marque une proie.`, 1.6);
     } else if (event.type === "driven") {
       announce(state, `${hound.name} a rabattu la proie vers toi.`, 1.6);
@@ -11169,7 +11177,7 @@ function updateHoundV147(
 function houndUiV147(state: GameState): HoundUiV147 | null {
   const field = state.houndFieldV147, hound = state.houndV147;
   if (!field || !hound) return null;
-  return { name: hound.name, bond: hound.bond, order: field.order, orderDone: field.orderDone,
+  return { name: hound.name, bond: hound.bond, aptitude: field.aptitude, order: field.order, orderDone: field.orderDone,
     ordersCompleted: field.ordersCompleted, healthShare: field.health / field.maxHealth,
     wounded: field.wounded, dead: field.dead };
 }
@@ -11415,8 +11423,12 @@ export default function HuntCanvas({
   // update must not restart the same simulation or replace assets mid-combat.
   const [gauntletVisualId]=useState(()=>gauntletVariantId ?? "jungle-hunter");
   const [frozenHeavyWear] = useState(() => ({ ...heavyWearV146 }));
-  const [frozenHound] = useState(() => houndV147 && houndV147.condition === "ready" ? houndV147 : null);
   const [frozenInsertion] = useState(() => normalizePlanetInsertionPlan(insertionPlan) ?? { ...DEFAULT_PLAN });
+  const [frozenHound] = useState(() => {
+    if (!houndV147 || houndV147.condition !== "ready") return null;
+    if (houndV147.catalogueId !== BRECHE_HOUND_ID_V147) return houndV147;
+    return frozenInsertion.team !== "triad" && mission.id !== ACHERON_VACUUM_MISSION ? houndV147 : null;
+  });
   const [frozenInsertionShipId] = useState(insertionShipId);
   const activeBindings = controlBindings ?? DEFAULT_CONTROL_BINDINGS;
   const activeAccessibility = huntAccessibility ?? DEFAULT_HUNT_ACCESSIBILITY_CANVAS_V112;
@@ -11849,7 +11861,8 @@ export default function HuntCanvas({
 
     if (frozenHound) {
       queueImage(FIELD_HOUND_SPRITE_V147, image => { assets.houndPortraitV147 ??= image; });
-      const visual = houndCatalogueEntryV147(frozenHound.catalogueId ?? frozenHound.id);
+      const catalogueId = frozenHound.catalogueId ?? (frozenHound.id === BRECHE_HOUND_ID_V147 ? null : frozenHound.id);
+      const visual = houndCatalogueEntryV147(catalogueId);
       if (visual) queueImage(visual.imagePath, image => {
         if (image?.naturalWidth === visual.width && image.naturalHeight === visual.height) {
           assets.houndPortraitV147 = image;
@@ -13430,7 +13443,8 @@ function HoundOrdersV147({ hound, disabled, shortcut, onOrder }: {
   shortcut: string;
   onOrder(order: HoundOrderIdV147): void;
 }) {
-  const condition = hound.dead ? "Mort" : hound.wounded ? "Blessé" : houndOrderLabelV147(hound.order);
+  const condition = hound.dead ? "Mort" : hound.wounded ? "Blessé" :
+    houndOrderDefinitionV147(hound.order, hound.aptitude)?.label ?? hound.order;
   return <section className={presentationStyles.houndOrdersV147} aria-label={`Ordres de ${hound.name}`}
     data-hound-current-order={hound.order} data-hound-orders-completed={hound.ordersCompleted}>
     <div className={presentationStyles.houndStatusV147}>
@@ -13439,8 +13453,8 @@ function HoundOrdersV147({ hound, disabled, shortcut, onOrder }: {
       <meter min={0} max={1} value={hound.healthShare} aria-label={`Santé de ${hound.name}`} />
     </div>
     {!hound.dead && <div className={presentationStyles.houndButtonsV147} role="group" aria-label="Ordres du chien">
-      {HOUND_ORDERS_V147.filter(order => order.defined).map(order => {
-        const unlocked = isOrderUnlockedV147(order.id, hound.bond);
+      {houndOrdersV147(hound.aptitude).filter(order => order.defined).map(order => {
+        const unlocked = hound.bond >= order.bond;
         return <button type="button" key={order.id} data-hound-field-order={order.id}
           aria-pressed={hound.order === order.id} title={order.effect}
           disabled={disabled || !unlocked || hound.wounded && order.id !== "recall"} onClick={() => onOrder(order.id)}>
