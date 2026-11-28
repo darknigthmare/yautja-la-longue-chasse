@@ -7,6 +7,10 @@ import {defaultSave,loadSaveWithStatus,writeSaveWithStatus,reconcileSaveWrite} f
 import type {SaveWriteResult} from '../../app/game/save';
 import {actMobility,type MobilityCommand} from '../../app/game/systems/mobility/ledger';
 import type {MobilityReceipt} from '../../app/game/systems/mobility/controller';
+
+import {actMountsV153,type MountCommandV153,type MountReceiptV153} from '../../app/game/systems/mobility/mountsV153';
+import {actMountRideV156,type MountRideCommandV156,type MountRideReceiptV156} from '../../app/game/systems/mobility/mountRidingV156';
+
 const OWNER='2026-11-08T10:00:00.000Z';
 function initial(){
  if(!localStorage.getItem('yautja-long-hunt.save')){
@@ -35,6 +39,29 @@ function App(){
   if(!w.persisted){if(w.failure==='write-failed')pending.current={attempt:w,command:JSON.stringify(command)};return {accepted:false,state:current.current.mobilityV1??null,message:'Écriture non confirmée'};}
   current.current=w.save;setSave(w.save);return {accepted:true,state:w.save.mobilityV1??null,message:r.message};
  };
- return <><div style={{color:'#cdd4d1',padding:12}}>Recette native du composant · sauvegarde de test distincte · aucun son généré</div>{closed?<button onClick={()=>setClosed(false)}>Rouvrir</button>:<Garage save={save} onCommand={order} onClose={()=>setClosed(true)}/>}</>;
+
+ const mountOrder=(command:MountCommandV153):MountReceiptV153=>{
+  const value=current.current;
+  const result=actMountsV153(value,command);
+  if(!result.accepted||!result.state) return {...result,state:value.mountsV153??null};
+  const written=writeSaveWithStatus({...value,mountsV153:result.state,profile:{...value.profile,clanMarks:result.clanMarks}});
+  if(!written.persisted)return {accepted:false,state:value.mountsV153??null,message:written.failure??'write rejected'};
+  current.current=written.save;
+  setSave(written.save);
+  return {accepted:true,state:written.save.mountsV153??null,message:result.message};
+ };
+ const rideOrder=(command:MountRideCommandV156):MountRideReceiptV156=>{
+  const value=current.current;
+  const result=actMountRideV156(value,command);
+  if(!result.accepted||!result.rides)return {accepted:false,state:value.mountRidesV156??null,message:result.message};
+  const next={...value,mountRidesV156:result.rides,...(result.mounts?{mountsV153:result.mounts}:{})};
+  const written=writeSaveWithStatus(next);
+  if(!written.persisted)return {accepted:false,state:value.mountRidesV156??null,message:written.failure??'write rejected'};
+  current.current=written.save;
+  setSave(written.save);
+  return {accepted:true,state:written.save.mountRidesV156??null,message:result.message};
+ };
+
+ return <><div style={{color:'#cdd4d1',padding:12}}>Recette native du composant · sauvegarde de test distincte · aucun son généré</div>{closed?<button onClick={()=>setClosed(false)}>Rouvrir</button>:<Garage save={save} onCommand={order} onMountCommand={mountOrder} onRideCommand={rideOrder} onClose={()=>setClosed(true)}/>}</>;
 }
 createRoot(document.getElementById('root')!).render(<App/>);

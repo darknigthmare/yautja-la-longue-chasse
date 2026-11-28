@@ -1,0 +1,124 @@
+name: Vérifier l’adoption et la chevauchée d’un Kha’Rha
+on:
+  push:
+    branches: [codex/qa-adoption-monture-20261128]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source:
+    name: Monture adoptée, dressée, pilotée et rechargée
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ASSET_RACCORDS_SOURCE_COMMIT: ${{ github.sha }}
+      MOBILITY_QA_COMMIT: 'cfa2abf463c608200bda49a6a056c68f6dd1fc8e'
+
+    steps:
+      - name: Checkout the exact candidate and bounded inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 12
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /content/the-pit/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /production/INVENTAIRE_BIBLE_20261122.*
+            /production/YAUTJA_LOTS_P0_P3_20261121.*
+            /production/YAUTJA_LOTS_P0_P3_LOT2_20261121.*
+            /public/game/xeno-prime/berceau-v1/
+            /public/game/youth/
+            /public/game/mobility/v1/
+            /public/game/prologue/v47/detached-blade.png
+            /public/game/homeworld/v70/temple-modules.png
+            /public/game/sprites/v4/rifle-soldier.png
+            /public/game/homeworld/v74/
+            /public/game/homeworld/v75/
+            /public/audio/
+            /public/game/quatza-rij/
+            /public/game/assets/v37/tribes/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp
+            /public/game/assets/v37/tribes/v2/homeworld-forest-v2--8fdc633789dcd9c0.webp
+            /public/game/assets/v37/tribes/v2/homeworld-lava-v2--ecd85e06796799d2.webp
+            /public/game/backgrounds/ice-depth-v4.webp
+            /public/game/backgrounds/ocean-depth-v8.png
+            /public/game/backgrounds/ruins-depth-v8.png
+            /public/game/backgrounds/swamp-depth-v8.png
+            /public/game/homeworld/v67/ash-causeway-vista.png
+            /public/game/homeworld/v67/glass-processional-vista.png
+            /public/game/sprites/v8/ecology/cinder-12/basalt-ram-sheet.png
+            /public/game/sprites/v8/ecology/cinder-12/smoke-wyvern-sheet.png
+            /public/game/sprites/v8/ecology/naraka-delta/mire-shell-sheet.png
+            /public/game/sprites/v8/ecology/nivalis-k/snow-prowler-sheet.png
+            /public/game/sprites/v8/ecology/oseris-iv/amber-jaw-stalker-sheet.png
+            /public/game/sprites/v8/ecology/pelagos-m/shellback-sheet.png
+            /public/game/sprites/v8/ecology/serekh-9/burrow-snake-sheet.png
+            /public/game/assets/clan-field-20261103/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues-index.json
+            /public/game/assets/v139/rig-gauntlets/
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/assets/v133/concept-masks/
+            /public/game/assets/v133/decals/decal-atlas.webp
+            /public/game/sprites/v62/heads/
+            /public/game/sprites/v62/masks/
+            /public/game/homeworld/v56/
+            /public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png
+            /public/game/assets/v134/
+            /public/game/assets/v135/
+            /public/game/assets/v136/
+            /public/game/p0-sprites-20261113/warp/
+            /public/game/warp-universe/20261109/
+            /public/game/warp/w02/
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Installe les entrées et dépendances verrouillées
+        run: |
+          test "$(git rev-parse HEAD^1)" = "$MOBILITY_QA_COMMIT"
+          test -z "$(git diff --name-only HEAD^1 HEAD -- app public)"
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Types et règles de l’application
+        run: |
+          npx tsc --noEmit
+          npx eslint app/game/MobilityMountsV153.tsx app/game/systems/mobility/mountsV153.ts tests/mounts-v153.test.mjs tests/mount-riding-v156.test.mjs
+      - name: Prix, preuves, migration et chevauchée
+        if: ${{ !cancelled() }}
+        run: node --test tests/mounts-v153.test.mjs tests/mount-riding-v156.test.mjs tests/clan-war-w3-s10-campaign-mount.test.mjs
+      - name: Exercer les composants de jeu en Chromium
+        if: ${{ !cancelled() }}
+        run: |
+          node scripts/build-mobility-browser-fixture.mjs
+          node scripts/qa-mobility-adoption-20261128.mjs
+      - name: Conserver captures et compte rendu
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: preuve-monture-adoptee
+          path: |
+            outputs/qa-mobility-native/*.png
+            outputs/qa-mobility-native/adoption-report.json
+          if-no-files-found: error
