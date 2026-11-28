@@ -1,0 +1,44 @@
+name: Verify the finite W3-S13 power circuit
+on:
+  push:
+    branches: ['codex/verify-w3s13-alimentation-20261128']
+permissions:
+  contents: read
+jobs:
+  biome-hazards:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+    steps:
+      - name: Checkout the exact application revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 'b405cb40a48194293922fb354c9d73b8cf372e44'
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /content/the-pit/
+            /lib/
+            /types/
+            /worker/
+            /desktop/
+            /docs/
+            /tests/
+            /scripts/
+            /build/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Test the native logistic circuit and campaign types
+        run: |
+          test "$(git rev-parse HEAD)" = 'b405cb40a48194293922fb354c9d73b8cf372e44'
+          node --experimental-strip-types --test tests/clan-logistics-v108.test.mjs tests/clan-war-w3-s14-duel.test.mjs
+          npm run typecheck
