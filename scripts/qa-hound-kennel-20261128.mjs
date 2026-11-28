@@ -185,8 +185,9 @@ try {
   await screenshot("03-rappel");
   await page.getByRole("button", { name: "Mettre en pause, consulter la carte et le sac", exact: true }).click();
   const checkpoint = await page.evaluate(key => JSON.parse(sessionStorage.getItem(key)), statusKey);
-  assert.equal(checkpoint.snapshot.houndFieldV147.ordersCompleted, 1);
-  assert.equal(checkpoint.snapshot.houndFieldV147.houndId, candidates[0].id);
+  const field = checkpoint.snapshot.checkpoint.houndFieldV147;
+  assert.equal(field.ordersCompleted, 1);
+  assert.equal(field.houndId, candidates[0].id);
   await page.reload();
   const resume = page.getByRole("button", { name: "Reprendre la chasse", exact: true }).first();
   await resume.or(commands).first().waitFor();
