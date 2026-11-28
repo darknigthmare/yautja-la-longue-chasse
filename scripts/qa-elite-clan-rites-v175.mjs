@@ -15,7 +15,8 @@ const { SAVE_STORAGE_KEY, exportSave, parseSaveImport } = qa.load("app/game/save
 const { ELITE_CLAN_TRIALS } = qa.load("app/game/systems/eliteClanRitesV175.ts");
 const { createTrainingDrill } = qa.load("app/game/systems/trainingDrill.ts");
 const { getChronicleRank } = qa.load("app/game/systems/clanChronicle.ts");
-const candidate = admitEliteCampaign();
+const mandateRoute = process.env.ELITE_L06_QA_MODE === "mandate";
+const candidate = admitEliteCampaign({ returnCrown: !mandateRoute });
 candidate.settings.controlBindings = { ...candidate.settings.controlBindings, "training.primary": ["KeyP"] };
 const admission = parseSaveImport(exportSave(candidate));
 assert.ok(admission.save, admission.failure);
@@ -27,7 +28,7 @@ const page = await browser.newPage({
   storageState: { cookies: [], origins: [{ origin: url.origin,
     localStorage: [{ name: SAVE_STORAGE_KEY, value: JSON.stringify(admission.save) }] }] },
 });
-const report = { audience, checkpoints: [], pageErrors: [] };
+const report = { audience, mandateRoute, checkpoints: [], pageErrors: [] };
 page.on("pageerror", error => report.pageErrors.push(error.message));
 const disk = () => page.evaluate(key => JSON.parse(localStorage.getItem(key) ?? "null"), SAVE_STORAGE_KEY);
 const boot = async () => {
@@ -35,6 +36,8 @@ const boot = async () => {
   await openCampaignDossier(page);
 };
 const openTrials = () => page.locator("[data-open-elite-clan-rites]").click();
+const arena = page.locator("[data-elite-clan-arena]");
+const walk = async (...arrows) => { for (const arrow of arrows) await arena.press("Arrow" + arrow); };
 const snap = (name) => page.screenshot({ path: resolve(output, name), animations: "disabled" });
 const playTrial = async (trial, unsafe = false) => {
   await page.locator("[data-elite-clan-trial=" + trial.id + "]").click();
@@ -53,6 +56,16 @@ const playTrial = async (trial, unsafe = false) => {
 try {
   await boot();
   await openTrials();
+  assert.equal(await page.locator("[data-elite-clan-trial=blades]").isEnabled(), false);
+  await walk("Up", "Up");
+  assert.equal(await arena.getAttribute("data-column"), "4");
+  assert.equal(await arena.getAttribute("data-row"), "4", "Le piédestal du vétéran bloque le passage");
+  await walk("Left", "Left", "Up");
+  await page.waitForFunction(async () => {
+    const roles = [...document.querySelectorAll("[data-elite-clan-actor] img")];
+    return roles.length === 2 && roles.every(image => image.complete && image.naturalWidth > 0);
+  });
+  await snap("00-chef-et-veteran.png");
   await playTrial(ELITE_CLAN_TRIALS[0]);
   const blades = await disk();
   assert.deepEqual(blades.eliteRecognitionV174.trials.map(trial => trial.id), ["blades"]);
@@ -60,11 +73,13 @@ try {
   await boot();
   await openTrials();
   assert.deepEqual((await disk()).eliteRecognitionV174.trials, blades.eliteRecognitionV174.trials);
+  await walk("Right", "Right", "Up", "Up");
   await playTrial(ELITE_CLAN_TRIALS[1], true);
   await page.getByText("Épreuve à reprendre.", { exact: false }).waitFor();
   assert.equal((await disk()).eliteRecognitionV174.trials.length, 1);
   report.checkpoints.push("tir devant une silhouette refusé après rechargement");
   await playTrial(ELITE_CLAN_TRIALS[1]);
+  await walk("Up", "Left", "Left");
   await playTrial(ELITE_CLAN_TRIALS[2]);
   await page.locator("[data-elite-clan-rites=complete]").waitFor();
   const complete = await disk();
@@ -72,36 +87,69 @@ try {
   assert.equal(complete.eliteRecognitionV174.trials.length, 3);
   await snap("01-rites-du-clan.png");
 
-  await page.getByRole("button", { name: "Rejoindre les témoins" }).click();
-  const ceremony = page.locator("[data-elite-recognition-v174]");
-  await ceremony.locator("[data-elite-audience=" + audience + "]").click();
-  const board = ceremony.locator("[data-elite-recognition-board]");
-  const move = async (...arrows) => { for (const arrow of arrows) await board.press("Arrow" + arrow); };
-  await move("Up");
-  await ceremony.locator("[data-elite-present=mastery]").click();
-  await move("Up", "Left");
-  await ceremony.locator("[data-elite-present=crown]").click();
-  await move("Right", "Right");
-  await ceremony.locator("[data-elite-present=hunt]").click();
-  if (audience === "public") await move("Left", "Left");
-  await move("Up", "Up");
-  await ceremony.locator("[data-elite-witness]").click();
-  await move("Down", audience === "public" ? "Right" : "Left");
-  await ceremony.locator("[data-elite-mark]").click();
-  await ceremony.locator("[data-elite-recognize]").click();
-  await page.locator("[data-elite-recognition-v174=recognized]").waitFor();
-  await snap("02-reconnaissance-elite.png");
-  await boot();
-  await page.locator("[data-open-elite-recognition-v174]").click();
-  await page.locator("[data-elite-recognition-v174=recognized]").waitFor();
-  const recognized = await disk();
-  assert(recognized.eliteRecognitionV174.recognized);
-  assert.equal(recognized.eliteRecognitionV174.audience, audience);
-  assert.equal(getChronicleRank(recognized.prologue.chronicle), "elite");
-  assert(parseSaveImport(exportSave(recognized)).save);
-  assert.equal(recognized.eliteRecognitionV174.revision, 10);
-  assert.deepEqual(report.pageErrors, []);
-  report.checkpoints.push("reconnaissance au socle, chronique Elite et rechargement confirmé");
+  if (mandateRoute) {
+    assert.equal(complete.buriedCradle ?? null, null);
+    await page.locator("[data-elite-queen-mandate]").click();
+    await page.locator("[data-elite-queen-mandate-recorded]").waitFor();
+    const issued = await disk();
+    assert.equal(issued.eliteRecognitionV174.queenMandate, true);
+    assert.deepEqual(issued.prologue.chronicle, complete.prologue.chronicle);
+    assert.equal(issued.buriedCradle ?? null, null);
+    await boot();
+    await openTrials();
+    await page.locator("[data-elite-queen-mandate-recorded]").waitFor();
+    assert.equal((await disk()).eliteRecognitionV174.revision, issued.eliteRecognitionV174.revision);
+    await page.locator("[data-elite-open-queen-mission]").click();
+    await page.locator("#buried-cradle-heading").waitFor();
+    const approach = page.locator("[data-cradle-approach]");
+    await approach.waitFor();
+    const right = approach.locator("[data-cradle-approach-move=right]");
+    for (const [id, steps] of [["risks", 2], ["container", 5], ["beacon", 5]]) {
+      for (let step = 0; step < steps; step++) await right.click();
+      await approach.locator("[data-cradle-approach-station=" + id + "]").click();
+    }
+    await approach.locator("[data-cradle-approach-choice=direct]").click();
+    await page.getByRole("button", { name: "Rejoindre Xeno Prime" }).waitFor();
+    const prepared = await disk();
+    assert.equal(prepared.buriedCradle.status, "prepared");
+    assert.equal(prepared.buriedCradle.approach.route, "direct");
+    assert(prepared.eliteRecognitionV174.queenMandate);
+    assert(parseSaveImport(exportSave(prepared)).save);
+    assert.deepEqual(report.pageErrors, []);
+    report.checkpoints.push("mandat du chef repris, dossier natif ouvert et itinéraire du Berceau préparé");
+    await snap("02-mandat-et-expedition.png");
+  } else {
+    await page.getByRole("button", { name: "Rejoindre les témoins" }).click();
+    const ceremony = page.locator("[data-elite-recognition-v174]");
+    await ceremony.locator("[data-elite-audience=" + audience + "]").click();
+    const board = ceremony.locator("[data-elite-recognition-board]");
+    const move = async (...arrows) => { for (const arrow of arrows) await board.press("Arrow" + arrow); };
+    await move("Up");
+    await ceremony.locator("[data-elite-present=mastery]").click();
+    await move("Up", "Left");
+    await ceremony.locator("[data-elite-present=crown]").click();
+    await move("Right", "Right");
+    await ceremony.locator("[data-elite-present=hunt]").click();
+    if (audience === "public") await move("Left", "Left");
+    await move("Up", "Up");
+    await ceremony.locator("[data-elite-witness]").click();
+    await move("Down", audience === "public" ? "Right" : "Left");
+    await ceremony.locator("[data-elite-mark]").click();
+    await ceremony.locator("[data-elite-recognize]").click();
+    await page.locator("[data-elite-recognition-v174=recognized]").waitFor();
+    await snap("02-reconnaissance-elite.png");
+    await boot();
+    await page.locator("[data-open-elite-recognition-v174]").click();
+    await page.locator("[data-elite-recognition-v174=recognized]").waitFor();
+    const recognized = await disk();
+    assert(recognized.eliteRecognitionV174.recognized);
+    assert.equal(recognized.eliteRecognitionV174.audience, audience);
+    assert.equal(getChronicleRank(recognized.prologue.chronicle), "elite");
+    assert(parseSaveImport(exportSave(recognized)).save);
+    assert.equal(recognized.eliteRecognitionV174.revision, 10);
+    assert.deepEqual(report.pageErrors, []);
+    report.checkpoints.push("reconnaissance au socle, chronique Elite et rechargement confirmé");
+  }
 } finally {
   await writeFile(resolve(output, "parcours.json"), JSON.stringify(report, null, 2));
   await browser.close();
