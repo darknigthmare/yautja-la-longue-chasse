@@ -165,20 +165,23 @@ export default function DevExerciseScene({
             ...(outcome.prologue ? { prologue: outcome.prologue } : {}) });
           return outcome;
         }} />}
-      {exercise === "recognition" && recognition.checkpoint && <>
-        <div className={styles.actions}><button type="button" onClick={enableSound}>Activer le son de l’essai</button></div>
-        <FirstHuntSoloV68 key={recognition.revision} checkpoint={recognition.checkpoint} bindings={save.settings.controlBindings}
-          externallyPaused={suspended} onOpenSettings={onOpenSettings}
-          onCheckpoint={state => { lastRecognitionRef.current = structuredClone(state); return true; }}
-          onProgress={async (_receipts, state) => { lastRecognitionRef.current = structuredClone(state); return true; }}
-          onExit={onClose} onReturnToCity={async () => { onClose(); return true; }}
-          onRecognitionAudio={onRecognitionAudio} />
-        <div className={styles.actions}><button type="button" disabled={suspended}
-          onClick={() => {
+      {exercise === "recognition" && recognition.checkpoint && <div className={styles.recognitionExercise}>
+        <div className={styles.recognitionControls}>
+          <button type="button" onClick={enableSound}>Activer le son de l’essai</button>
+          <button type="button" disabled={suspended} onClick={() => {
             const checkpoint = lastRecognitionRef.current;
             setRecognition(previous => ({ revision: previous.revision + 1, checkpoint }));
-          }}>Reprendre du point conservé</button></div>
-      </>}
+          }}>Reprendre du point conservé</button>
+        </div>
+        <div className={styles.recognitionStage}>
+          <FirstHuntSoloV68 key={recognition.revision} checkpoint={recognition.checkpoint} bindings={save.settings.controlBindings}
+            externallyPaused={suspended} onOpenSettings={onOpenSettings}
+            onCheckpoint={state => { lastRecognitionRef.current = structuredClone(state); return true; }}
+            onProgress={async (_receipts, state) => { lastRecognitionRef.current = structuredClone(state); return true; }}
+            onExit={onClose} onReturnToCity={async () => { onClose(); return true; }}
+            onRecognitionAudio={onRecognitionAudio} />
+        </div>
+      </div>}
       {exercise === "temple" && temple && <FirstHuntSoloV70 checkpoint={temple} bindings={save.settings.controlBindings} continueTriad
         externallyPaused={suspended} soundEnabled={save.settings.masterVolume > 0}
         masterVolume={save.settings.masterVolume} effectsVolume={save.settings.effectsVolume}
