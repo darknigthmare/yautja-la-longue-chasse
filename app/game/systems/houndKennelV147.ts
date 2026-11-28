@@ -1,18 +1,9 @@
 /**
- * V147 Chenil des Pisteurs (CITY-28): recruitment, choice of the hound for the
- * next hunt and care of a wounded hound.
+ * V147 Chenil des Pisteurs (CITY-28): adoption, choice of the next hunting
+ * hound and care of a wounded hound. Identities come from the companion
+ * catalogue and a fallen identity is never offered again (CORE-R17).
  *
- * - No hound exists by default; each one is recruited explicitly here.
- * - Identities come only from the existing companion catalogue
- *   (`companionCatalogueV56.json`): one hound per catalogue entry, the hound id
- *   is the catalogue id. No breed, statistic or price is invented: the bible
- *   defines none, so recruitment and care cost nothing.
- * - A fallen identity is never offered again (CORE-R17).
- * - In the city, the kennel is reached by speaking with one of the two kennel
- *   handlers already present in the streets (`urban-v84:kennel-*`).
- *
- * Pure module: the caller persists the returned state and announces success
- * only once the save confirmed the write.
+ * The campaign caller saves the roster and the clan-mark balance together.
  */
 import catalogue from "../data/companionCatalogueV56.json";
 import {
@@ -61,12 +52,23 @@ export interface KennelCandidateV147 extends HoundCatalogueEntryV147 {
 export function kennelCandidatesV147(state: HuntingHoundsV147 | null | undefined): KennelCandidateV147[] {
   const hounds = state?.hounds ?? [];
   return HOUND_CATALOGUE_V147.map(entry => {
-    const hound = hounds.find(candidate => candidate.id === entry.id);
+    const hound = hounds.find(candidate => candidate.id === entry.id || candidate.catalogueId === entry.id);
     return { ...entry, status: !hound ? "available" : hound.condition === "dead" ? "fallen" : "recruited" };
   });
 }
 
-export type KennelRefusalV147 = HoundRefusalV147 | "unknown-identity" | "invalid-name";
+export type KennelRefusalV147 = HoundRefusalV147 | "unknown-identity" | "invalid-name" | "insufficient-clan-marks";
+
+export type HoundKennelActionV147 =
+  | { type: "recruit"; catalogueId: string; name: string }
+  | { type: "choose"; houndId: string | null }
+  | { type: "heal"; houndId: string };
+
+type KennelSaveChangeV147 =
+  | { ok: true; houndsV147: HuntingHoundsV147; clanMarks: number; message: string }
+  | { ok: false; reason: KennelRefusalV147 };
+
+export const HOUND_KENNEL_ADOPTION_PRICE_V147 = 12;
 
 export type KennelChangeV147 =
   | { readonly ok: true; readonly state: HuntingHoundsV147 }
@@ -95,6 +97,8 @@ export function recruitAtKennelV147(
   const name = input.name === undefined || input.name === null || input.name === "" ? entry.name : normalizeHoundNameV147(input.name);
   if (!name) return { ok: false, reason: "invalid-name" };
   const base = state ?? emptyHuntingHoundsV147();
+  const existing = base.hounds.find(hound => hound.id === entry.id || hound.catalogueId === entry.id);
+  if (existing) return { ok: false, reason: existing.condition === "dead" ? "fallen-identity" : "already-recruited" };
   const recruited = recruitHoundV147(base, { id: entry.id, name, catalogueId: entry.id });
   if (!recruited.ok) return recruited;
   if (recruited.state.activeHoundId !== undefined) return recruited;
@@ -117,11 +121,43 @@ export function healAtKennelV147(
   return healHoundAtKennelV147(state ?? emptyHuntingHoundsV147(), houndId, locationId);
 }
 
+/** Calculate the complete change before the caller attempts a campaign write. */
+export function applyKennelActionV147(
+  save: { houndsV147?: HuntingHoundsV147 | null; profile: { clanMarks: number } },
+  action: HoundKennelActionV147,
+  locationId: string,
+): KennelSaveChangeV147 {
+  const current = save.houndsV147;
+  const balance = save.profile.clanMarks;
+  const change = action.type === "recruit"
+    ? recruitAtKennelV147(current, { ...action, locationId })
+    : action.type === "choose"
+      ? chooseAtKennelV147(current, action.houndId, locationId)
+      : healAtKennelV147(current, action.houndId, locationId);
+  if (!change.ok) return change;
+
+  if (action.type === "recruit" && (!Number.isSafeInteger(balance) || balance < HOUND_KENNEL_ADOPTION_PRICE_V147))
+    return { ok: false, reason: "insufficient-clan-marks" };
+
+  const houndsV147 = change.state;
+  const houndId = action.type === "recruit" ? action.catalogueId : action.houndId;
+  const hound = houndsV147.hounds.find(entry => entry.id === houndId);
+  if (action.type === "recruit") return {
+    ok: true, houndsV147, clanMarks: balance - HOUND_KENNEL_ADOPTION_PRICE_V147,
+    message: `Adoption de ${hound!.name} confirmée. ${HOUND_KENNEL_ADOPTION_PRICE_V147} Marques de clan versées.`,
+  };
+
+  const message = action.type === "heal" ? `${hound!.name} est rétabli.`
+    : hound ? `${hound.name} t’accompagnera à la prochaine chasse.` : "Aucun chien choisi pour la prochaine chasse.";
+  return { ok: true, houndsV147, clanMarks: balance, message };
+}
+
 export function kennelRefusalTextV147(reason: KennelRefusalV147): string {
   switch (reason) {
     case "not-at-kennel": return "Rejoins le Chenil des Pisteurs pour cette demande.";
     case "unknown-identity": return "Cette créature ne figure pas au registre du chenil.";
     case "invalid-name": return "Donne un nom lisible à ton chien.";
+    case "insufficient-clan-marks": return `Cette adoption demande ${HOUND_KENNEL_ADOPTION_PRICE_V147} Marques de clan.`;
     case "already-recruited": return "Ce chien marche déjà avec toi.";
     case "fallen-identity": return "Ce chien est mort. Il ne revient pas.";
     case "roster-full": return `Le chenil ne te confie pas plus de ${HOUNDS_MAX_V147} chiens.`;
