@@ -119,7 +119,7 @@ export default function DevExerciseScene({
         createSceneAudio={createSceneAudio} onSound={onSound}
         onCommand={command => {
           const current = readSave();
-          if (suspended || current.mountRidesV156?.active) {
+          if ((suspended && command.type !== "drive") || current.mountRidesV156?.active) {
             return { accepted: false, state: current.mobilityV1 ?? null, message: "L’aire de test n’est pas disponible." };
           }
           const update = actMobility(current, command);
@@ -141,7 +141,7 @@ export default function DevExerciseScene({
         }}
         onRideCommand={command => {
           const current = readSave();
-          if (suspended || current.mobilityV1?.active) {
+          if ((suspended && command.type !== "ride") || current.mobilityV1?.active) {
             return { accepted: false, state: current.mountRidesV156 ?? null, message: "L’aire de test n’est pas disponible." };
           }
           const update = actMountRideV156(current, command);
@@ -152,7 +152,6 @@ export default function DevExerciseScene({
         }} />}
       {exercise === "warp" && <WarpEpochsPanelV165 save={save} shipContext={{ personalShipAvailable: true }}
         onPersist={(warpEpochsV165, clearLegacyTantalus) => {
-          if (suspended) return false;
           replaceSave({ ...readSave(), warpEpochsV165, ...(clearLegacyTantalus ? { tantalusV164: null } : {}) });
           return true;
         }} onClose={onClose} />}
