@@ -43,7 +43,7 @@ export function warpFjordWithinReach(at: number, target: number): boolean {
 
 export function normalizeWarpFjordRecord(value: unknown): WarpFjordRecord | null {
   if (!value || typeof value !== "object" || Array.isArray(value) || Object.keys(value).length !== 3 ||
-      !("tripId" in value) || typeof value.tripId !== "string" || !/^warp-trip-[1-9]\d{0,5}$/.test(value.tripId) ||
+      !("tripId" in value) || typeof value.tripId !== "string" || !/^warp-trip-[1-9]\d{0,6}$/.test(value.tripId) ||
       !("route" in value) || !isWarpFjordRoute(value.route) ||
       !("returned" in value) || typeof value.returned !== "boolean") return null;
   return { tripId: value.tripId, route: value.route, returned: value.returned };
