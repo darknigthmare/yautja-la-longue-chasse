@@ -113,3 +113,31 @@ par le même audit ZIP à partir de leurs octets Git. Les sept résultats
 contiennent zéro PNG original et zéro checkpoint V6.13.
 [Rapport de vérification des sept classeurs](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44887329571/artifacts/14700561366)
 [Inventaire des fichiers publiés](https://github.com/darknigthmare/yautja-la-longue-chasse/blob/842bc7e69ab5aed086d0fbbfcafd1d86a14e9f38/scripts/package-enforcer-production-v612.py)
+
+## Six sorties intermédiaires du checkpoint V6.13
+
+Le checkpoint du 22 octobre conserve les six PNG intermédiaires sous les
+mêmes chemins que les sorties livrées. Le contrôle lit les blobs aux deux
+commits, vérifie les signatures PNG, puis recalcule la taille et le SHA‑256
+de chaque exemplaire. Le reçu de l’essai accepté est rapproché du PNG
+intermédiaire par son empreinte, sa taille et son nom natif.
+[Checkpoint et PNG intermédiaires](https://github.com/darknigthmare/yautja-la-longue-chasse/tree/2d1d006628e7e657cda66470ed06f5055f4919c5/public/game/production/enforcers-v613) · [Livraison finale](https://github.com/darknigthmare/yautja-la-longue-chasse/tree/d71e995ae886df69c4165a1a153291449e8f22f6/public/game/production/enforcers-v613)
+
+| Identifiant | Essai accepté du PNG intermédiaire | Essai cité par le champ `promptExact` du checkpoint |
+| --- | ---: | ---: |
+| `super-predators--enforcers-comics-08` | 2 | 1 |
+| `super-predators--enforcers-comics-09` | 2 | 1 |
+| `feral--enforcers-comics-09` | 1 | 1 |
+| `augmentes-assassin--enforcers-comics-08` | 1 | 1 |
+| `augmentes-assassin--enforcers-comics-09` | 1 | 1 |
+| `sha-rhess--enforcers-comics-08` | 2 | 2 |
+
+Pour les deux Super Predators, le champ de synthèse reprend le prompt de
+l’essai rejeté. Le rapport identifie l’essai 2 accepté dans `attempts` et
+conserve les empreintes des deux PNG, l’intermédiaire et celui livré.
+Le manifeste final décompte toujours 21 reçus à retrouver.
+[Recette et rapport JSON](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46127452728)
+
+```sh
+node scripts/audit-enforcer-replaced-v613.mjs
+```
