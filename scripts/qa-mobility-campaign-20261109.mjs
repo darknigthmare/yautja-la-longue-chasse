@@ -139,6 +139,26 @@ try{
     return shell.left>=Math.max(0,parent.left)-2&&shell.right<=Math.min(innerWidth,parent.right)+2&&
       visible.every(item=>{const box=item.getBoundingClientRect();return box.left>=shell.left-2&&box.right<=Math.min(shell.right,innerWidth)+2;});
   });
+  const fitAt=async(width,height)=>{
+    await page.setViewportSize({width,height});
+    await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+    const widths=await page.locator('[data-mobility-garage]').evaluate(element=>{
+      const rect=item=>{
+        const {left,right,width}=item.getBoundingClientRect();
+        return {left,right,width};
+      };
+      const shell=rect(element),parent=rect(element.parentElement);
+      const rightLimit=Math.min(shell.right,innerWidth);
+      const outside=[...element.querySelectorAll('header strong,button,select,svg')].filter(item=>item.getClientRects().length)
+        .map(item=>({tag:item.tagName,label:item.getAttribute('aria-label')??item.textContent?.trim().slice(0,70),...rect(item)}))
+        .filter(item=>item.left<shell.left-2||item.right>rightLimit+2);
+      return {shell,parent,outside,viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,
+        stationWidth:element.parentElement.clientWidth,stationScrollWidth:element.parentElement.scrollWidth};
+    });
+    const passed=await fittedGarage()&&widths.documentWidth<=widths.viewport+2;
+    if(!passed)console.log('FIT DIAGNOSTIC',width,JSON.stringify(widths));
+    return {width,passed,...widths};
+  };
   async function continueCampaign(){
     await page.locator('[data-campaign-menu]').waitFor();
     const campaign=page.locator('[data-menu-section="campaign"]');if(await campaign.isVisible())await campaign.click();
@@ -284,12 +304,11 @@ try{
     check('ordinary Continue and physical counter reopen the exact sortie paused',JSON.stringify((await stored()).mobilityV1)===frozen&&await yard.getAttribute('data-paused')==='true');
     const continuedSlot=await managedSlot(),continuedCheckpoint=continuedSlot.checkpoints.find(item=>item.id===continuedSlot.lastCheckpointId);
     check('ordinary Continue transfers the live canonical drive into the managed checkpoint',JSON.stringify(continuedCheckpoint.archive.campaign.mobilityV1)===frozen);
-    await page.setViewportSize({width:390,height:844});
-    check('native campaign driving controls and wallet fit the 390px station',await fittedGarage()&&await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2));
+    const mobile390=await fitAt(390,844);
     await shot('08-paused-sortie-after-continue-mobile');
-    await page.setViewportSize({width:320,height:780});
-    check('native campaign driving controls and wallet fit the 320px station',await fittedGarage()&&await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2));
+    const mobile320=await fitAt(320,780);
     await shot('08b-paused-sortie-after-continue-320');
+    report.mobilityMobileFits=[mobile390,mobile320];
     await page.setViewportSize({width:390,height:844});
     if(forgeDelivery){
       await page.setViewportSize({width:1440,height:1000});
@@ -344,6 +363,8 @@ try{
     check('mobility preserves the hunter, rank, honor and every other profile field',JSON.stringify(report.finalSave.profile)===JSON.stringify(expectedProfile));
     check('mobility grants no unrelated mission, trophy or inventory progress',
       ['missionProgress','trophies','inventory'].every(field=>JSON.stringify(report.finalSave[field])===JSON.stringify(campaignBaseline[field])));
+    for(const fit of report.mobilityMobileFits)
+      check(`native campaign driving controls and wallet fit the ${fit.width}px station`,fit.passed,fit);
     report.qualification='PENDING_VISUAL_INSPECTION';report.passed=true;
   }
 }catch(error){
