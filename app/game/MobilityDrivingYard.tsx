@@ -5,7 +5,7 @@ import {matchingControlActions} from './systems/controlBindings';
 import {MobilityHeldControls,MobilityPadGate,type MobilityControl} from './systems/mobility/controls';
 import {controlActionShortcut} from './controlBindingLabels';
 import {mobilityDefinition} from './systems/mobility/catalogue';
-import {COURSE_STEP,COURSE_MAX_TICKS,MOBILITY_YARD,mobilityYardNpcs,parkedAtDepot,type MobilityInput} from './systems/mobility/course';
+import {COURSE_STEP,COURSE_MAX_TICKS,MOBILITY_YARD,mobilityCourseLayout,mobilityYardNpcs,parkedAtDepot,type MobilityInput} from './systems/mobility/course';
 import {MobilityDriveController,type MobilityWriter} from './systems/mobility/controller';
 import type {MobilityLedger} from './systems/mobility/ledger';
 import type {GameSfxId} from './sound';
@@ -21,7 +21,10 @@ export default function MobilityDrivingYard(props:Props){
  const [controller]=useState(()=>new MobilityDriveController(props.state));
  const [course,setCourse]=useState(controller.predicted),[paused,setPaused]=useState(true),[notice,setNotice]=useState(controller.message),[recovery,setRecovery]=useState(false),[padNeutral,setPadNeutral]=useState(false);
  const latest=useRef(props),pauseRef=useRef(true),held=useRef(new MobilityHeldControls()),padGate=useRef(new MobilityPadGate()),neutralRef=useRef(false),canvasRef=useRef<SVGSVGElement|null>(null);
- const model=mobilityDefinition(props.state.active!.modelId)!;
+ const active=props.state.active!;
+ const model=mobilityDefinition(active.modelId)!;
+ const delivery=active.route==='forge-delivery';
+ const layout=mobilityCourseLayout(active.route);
  const sceneAudio=useRef<ReturnType<typeof createMobilityAudio>|null>(null);
  useEffect(()=>{latest.current=props;},[props]);
  const clear=()=>{held.current.clear();padGate.current.reset();neutralRef.current=false;setPadNeutral(false);};
@@ -104,14 +107,14 @@ export default function MobilityDrivingYard(props:Props){
    onPointerCancel={e=>held.current.release(`pointer:${e.pointerId}`)}
    onLostPointerCapture={e=>held.current.release(`pointer:${e.pointerId}`)}>{label}</button>;
  const npcs=mobilityYardNpcs(course.npcTicks,course);
- return <section className={styles.yard} data-mobility-yard data-run-id={props.state.active!.id} data-x={course.x.toFixed(4)} data-y={course.y.toFixed(4)} data-heading={course.heading.toFixed(5)} data-speed={course.speed.toFixed(3)} data-tick={course.tick} data-paused={paused} data-checkpoint={course.checkpoint} data-cargo={course.cargoKg}>
-  <div className={styles.heading}><div><small>AIRE DES CONVOIS · SORTIE ENREGISTRÉE</small><h3>{model.name}{props.state.active!.loaned?' · prêt de formation':''}</h3></div><strong>{paused?'EN PAUSE':'EN CONDUITE'}</strong></div>
+ return <section className={styles.yard} data-mobility-yard data-run-id={active.id} data-route={active.route??'yard'} data-x={course.x.toFixed(4)} data-y={course.y.toFixed(4)} data-heading={course.heading.toFixed(5)} data-speed={course.speed.toFixed(3)} data-tick={course.tick} data-paused={paused} data-checkpoint={course.checkpoint} data-cargo={course.cargoKg}>
+  <div className={styles.heading}><div><small>{delivery?'LIVRAISON DES FORGES':'AIRE DES CONVOIS'} · SORTIE ENREGISTRÉE</small><h3>{model.name}{active.loaned?' · prêt de formation':''}</h3></div><strong>{paused?'EN PAUSE':'EN CONDUITE'}</strong></div>
   <div className={styles.metrics}>
    <span>État <b>{course.condition.toFixed(1)} %</b></span><span>Énergie <b>{course.energy.toFixed(1)} %</b></span>
    <span>Chaleur <b>{course.heat.toFixed(0)} %{course.overheated?' · boost coupé':''}</b></span><span>Charge <b>{course.cargoKg} kg</b></span>
    <span>Balises <b>{course.checkpoint}/3</b></span><span>Retour cargo <b>{course.cargoDelivered?'effectué':'à faire'}</b></span>
   </div>
-  <svg ref={canvasRef} viewBox="0 0 1000 620" role="img" tabIndex={0} aria-label="Aire de conduite : sas en bas à gauche, trois balises ordonnées, chargement en haut à droite, trafic de deux convoyeurs" className={styles.track}>
+  <svg ref={canvasRef} viewBox="0 0 1000 620" role="img" tabIndex={0} aria-label={delivery?'Livraison des Forges, sas au sud-ouest, quai de chargement au nord-ouest et trois balises':'Aire de conduite, sas en bas à gauche, trois balises ordonnées et chargement en haut à droite'} className={styles.track}>
    <rect x="0" y="0" width="1000" height="620" rx="18" fill="#171b1d"/>
    <path d="M140 490 H820 V130 H140 Z" fill="none" stroke="#394247" strokeWidth="110"/>
    <path d="M140 490 H820 V130 H140 Z" fill="none" stroke="#76818a" strokeWidth="2" strokeDasharray="10 14"/>
@@ -119,8 +122,8 @@ export default function MobilityDrivingYard(props:Props){
    {MOBILITY_YARD.obstacles.map((o,i)=><rect key={i} x={o.x} y={o.y} width={o.w} height={o.h} rx="12" fill="#29292a" stroke="#a17d42" strokeWidth="4"/>)}
    <text x="395" y="305" fill="#c8b17e">ATELIERS · ACCÈS INTERDIT</text>
    <circle cx="140" cy="490" r="50" fill="#254d45" stroke="#8ed9bd" strokeWidth="3"/><text x="82" y="586" fill="#b3e6cf">SAS DU GARAGE</text>
-   {MOBILITY_YARD.checkpoints.map((p,i)=><g key={i}><circle cx={p.x} cy={p.y} r="38" fill="none" stroke={i<course.checkpoint?'#83d1ae':'#dfbd78'} strokeWidth="4"/><text x={p.x-6} y={p.y+7} fill="#fff" fontSize="24">{i+1}</text></g>)}
-   {!course.cargoDelivered&&course.cargoKg===0&&<rect x="805" y="112" width="30" height="32" fill="#aa7e44" stroke="#ebc789"/>}
+   {layout.checkpoints.map((p,i)=><g key={i}><circle cx={p.x} cy={p.y} r="38" fill="none" stroke={i<course.checkpoint?'#83d1ae':'#dfbd78'} strokeWidth="4"/><text x={p.x-6} y={p.y+7} fill="#fff" fontSize="24">{i+1}</text></g>)}
+   {!course.cargoDelivered&&course.cargoKg===0&&<rect data-mobility-loading-bay x={layout.cargo.x-15} y={layout.cargo.y-18} width="30" height="32" fill="#aa7e44" stroke="#ebc789"/>}
    {npcs.map(n=><g key={n.id} data-mobility-npc={n.state} transform={`translate(${n.x} ${n.y})`}><circle r="34" fill="none" stroke={n.state==='yielding'?'#e9bc73':'#537777'}/><image href={mobilityDefinition(n.modelId)?.previewPath??''} x="-48" y="-36" width="96" height="64"/><text y="-39" textAnchor="middle" fill="#c9dbdb" fontSize="12">{n.state==='yielding'?'CÈDE LE PASSAGE':'CONVOI'}</text></g>)}
    <g transform={`translate(${course.x} ${course.y})`}><ellipse cy="12" rx="37" ry="14" fill="#000" opacity=".5"/>
     {Math.abs(course.speed)>20&&<path d={`M${-Math.cos(course.heading)*35} ${-Math.sin(course.heading)*35} l${-Math.cos(course.heading)*Math.min(55,Math.abs(course.speed)/2)} ${-Math.sin(course.heading)*Math.min(55,Math.abs(course.speed)/2)}`} stroke="#caa66c" strokeWidth="7" opacity=".35"/>}
@@ -129,7 +132,7 @@ export default function MobilityDrivingYard(props:Props){
     {course.cargoKg>0&&<rect x="-8" y="18" width="16" height="12" fill="#c19859"/>}
    </g>
   </svg>
-  <p className={styles.hint}>Passe les balises dans l’ordre. À la deuxième, freine et charge la caisse ; rapporte-la au sas, à l’arrêt. Les deux convois circulent seulement sur leur voie logistique. Les silhouettes utilisées sont statiques, non des animations finalisées.</p>
+  <p className={styles.hint}>{delivery?'Prends les deux premières balises à l’ouest. Charge la caisse à l’arrêt au quai nord-ouest, valide la balise est puis décharge au sas. Remise la moto pour faire consigner la livraison.':'Passe les balises dans l’ordre. À la deuxième, freine et charge la caisse. Rapporte-la au sas, à l’arrêt.'} Les convois circulent sur leur voie logistique.</p>
   <div className={styles.actions}><button onClick={paused?resume:pause} disabled={props.suspended||controller.blocked}>{paused?'Reprendre la conduite':'Pause et enregistrer'}</button>
    <button onClick={()=>finish('return')} disabled={props.suspended||!parkedAtDepot(course)||controller.blocked}>Remiser au garage</button>
    <button onClick={()=>{pause();setRecovery(true);}} disabled={props.suspended||controller.blocked}>Retour de sécurité</button>

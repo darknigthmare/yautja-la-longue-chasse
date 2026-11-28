@@ -33,7 +33,7 @@ export default function HuntingHoundsPanelV147({ hounds, onHealAtKennel }: Props
       Un chien blessé ne part pas en chasse avant d’être soigné au {HOUND_KENNEL_NAME_V147} ({HOUND_KENNEL_LOCATION_V147}).
       Un chien mort ne revient pas. Une mise à mort faite par le chien compte comme la vôtre pour le code d’honneur.</p>
     {roster.length === 0
-      ? <p className={styles.empty}>Aucun chien recruté. La mission de recrutement n’est pas encore produite.</p>
+      ? <p className={styles.empty}>Aucun chien recruté. Parle à un dresseur au {HOUND_KENNEL_NAME_V147} ({HOUND_KENNEL_LOCATION_V147}).</p>
       : <ul className={styles.list}>
         {roster.map(hound => {
           const next = nextBondThresholdV147(hound.bond);

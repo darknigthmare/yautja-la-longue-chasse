@@ -315,10 +315,11 @@ import { camouflageVisibilityV146, heavyHitPieceV146, missionWearV146, wearFilte
 import { armorWearCanvasV172, armorWearPieceIsWornV172, type ArmorWearV172 } from "./hunterArmorWearV172";
 import { markColorV146, markLayerV146, markStrokesV146 } from "./hunterMarksArtV146";
 import {
-  HOUND_ORDERS_V147, createHoundFieldV147, damageHoundFieldV147, houndHuntReportFromFieldV147, issueHoundOrderV147,
+  HOUND_ORDERS_V147, createHoundFieldV147, damageHoundFieldV147, houndHuntReportFromFieldV147, isOrderUnlockedV147, issueHoundOrderV147,
   houndStickOrderV147, nextHoundOrderV147, pickHoundTargetV147, restoreHoundFieldV147, snapshotHoundFieldV147,
   stepHoundFieldV147, type FieldPreyV147, type HoundOrderIdV147, type HoundFieldSnapshotV147, type HoundFieldV147, type HoundV147,
 } from "./systems/huntingHoundsV147";
+import { houndCatalogueEntryV147, type HoundCatalogueEntryV147 } from "./systems/houndKennelV147";
 import { pieceCanvasSourceV148, pieceZoneColorsV148 } from "./hunterPieceZonesV148";
 import type {
   DifficultyId,
@@ -731,6 +732,7 @@ function selectedHandWeapon(
 
 interface AssetBank {
   houndPortraitV147?: HTMLImageElement | null;
+  houndPortraitEntryV147?: HoundCatalogueEntryV147;
   insertionShip?: HTMLImageElement | null;
   insertionPod?: { hull: HTMLImageElement | null; hatchInterior: HTMLImageElement | null;
     core: HTMLImageElement | null; pressure: HTMLImageElement | null; scorch: HTMLImageElement | null;
@@ -790,8 +792,8 @@ interface InputHub {
   gamepadHeld: Set<Action>;
   pressed: Set<Action>;
   previousGamepadButtons: boolean[];
-  /** V147: right-stick hound order (edge) and the direction currently held. */
-  houndStickOrderV147?: HoundOrderIdV147 | null;
+  /** V147: explicit order from a HUD button or a right-stick edge. */
+  houndDirectOrderV147?: HoundOrderIdV147 | null;
   houndStickHeldV147?: HoundOrderIdV147 | null;
   activeGamepadIndex: number | null;
   gamepadNeedsNeutral: boolean;
@@ -6255,7 +6257,7 @@ function renderGame(
     drawCanopyNavigationMarkersV112(context, currentCanopyNavigationV112(state).markers);
   }
   drawHuntCompanions(context, state, assets);
-  drawHoundV147(context, state, assets.houndPortraitV147);
+  drawHoundV147(context, state, assets.houndPortraitV147, assets.houndPortraitEntryV147);
   const hunterAlpha = state.player.cloaked
     ? 0.24 + Math.sin(state.elapsed * 8) * 0.07
     : 1;
@@ -10942,7 +10944,7 @@ function pollGamepad(input: InputHub): "focus-lost" | "gamepad-disconnected" | n
   setDirection("up", up);
   setDirection("down", down);
   const houndStick = houndStickOrderV147(gamepad.axes[2], gamepad.axes[3]);
-  if (houndStick && houndStick !== input.houndStickHeldV147) input.houndStickOrderV147 = houndStick;
+  if (houndStick && houndStick !== input.houndStickHeldV147) input.houndDirectOrderV147 = houndStick;
   input.houndStickHeldV147 = houndStick;
   if (aiming) input.gamepadHeld.add("aim");
   if (current[buttons.jump]) input.gamepadHeld.add("jump");
@@ -11057,7 +11059,10 @@ function flushCorpseRiteGamepadV112(state:GameState,input:InputHub,root:HTMLElem
 
 interface HoundUiV147 {
   name: string;
-  orderLabel: string;
+  bond: number;
+  order: HoundOrderIdV147;
+  orderDone: boolean;
+  ordersCompleted: number;
   healthShare: number;
   wounded: boolean;
   dead: boolean;
@@ -11089,12 +11094,13 @@ const HOUND_REACH_ABOVE_FLOOR_V147 = 60;
  * target (boss) can be tracked but never driven or attacked: the duel belongs
  * to the hunter (proposé).
  */
-function houndPreyV147(state: GameState, tracking: boolean): FieldPreyV147[] {
+function houndPreyV147(state: GameState, tracking: boolean, attackTargetId: string | null = null): FieldPreyV147[] {
   const floor = state.world.floorY;
   return state.enemies
-    .filter(enemy => enemy.active && enemy.alive && (tracking ||
-      !enemy.boss && floor - (enemy.y + enemy.height) <= HOUND_REACH_ABOVE_FLOOR_V147))
-    .map(enemy => ({ id: enemy.id, x: enemy.x + enemy.width / 2, y: floor, alive: true,
+    .filter(enemy => enemy.id === attackTargetId && !enemy.alive ||
+      enemy.active && enemy.alive && (tracking ||
+        !enemy.boss && floor - (enemy.y + enemy.height) <= HOUND_REACH_ABOVE_FLOOR_V147))
+    .map(enemy => ({ id: enemy.id, x: enemy.x + enemy.width / 2, y: floor, alive: enemy.alive,
       trailAge: Math.max(0, state.elapsed - enemy.lastTrackAt) }));
 }
 
@@ -11103,7 +11109,7 @@ const houndOrderLabelV147 = (order: HoundFieldV147["order"]) =>
 
 function updateHoundV147(
   state: GameState, mission: MissionDefinition, input: InputHub, delta: number,
-  /** Order chosen directly with the right stick, if any. */
+  /** Order chosen directly in the HUD or with the right stick. */
   directOrder: HoundOrderIdV147 | null = null,
 ): void {
   let field = state.houndFieldV147;
@@ -11129,7 +11135,8 @@ function updateHoundV147(
     }
   }
   const wasWounded = field.wounded, wasDead = field.dead, fromX = field.x;
-  const step = stepHoundFieldV147(field, { dt: delta, player, prey: houndPreyV147(state, field.order === "track") });
+  const prey = houndPreyV147(state, field.order === "track", field.order === "attack" ? field.targetId : null);
+  const step = stepHoundFieldV147(field, { dt: delta, player, prey });
   field = step.field;
   for (const event of step.events) {
     const enemy = "preyId" in event ? state.enemies.find(entry => entry.id === event.preyId) : undefined;
@@ -11144,6 +11151,12 @@ function updateHoundV147(
       announce(state, `${hound.name} marque une proie.`, 1.6);
     } else if (event.type === "driven") {
       announce(state, `${hound.name} a rabattu la proie vers toi.`, 1.6);
+    } else if (event.type === "returned") {
+      announce(state, `${hound.name} est au pied.`, 1.6);
+    } else if (event.type === "attack-done") {
+      announce(state, "Proie neutralisée.", 1.6);
+    } else if (event.type === "target-lost") {
+      announce(state, `${hound.name} a perdu la proie.`, 1.6);
     }
   }
   if (field.dead && !wasDead) announce(state, `${hound.name} est mort. Il ne reviendra pas.`, 4);
@@ -11156,13 +11169,17 @@ function updateHoundV147(
 function houndUiV147(state: GameState): HoundUiV147 | null {
   const field = state.houndFieldV147, hound = state.houndV147;
   if (!field || !hound) return null;
-  return { name: hound.name, orderLabel: houndOrderLabelV147(field.order),
-    healthShare: field.maxHealth > 0 ? field.health / field.maxHealth : 0, wounded: field.wounded, dead: field.dead };
+  return { name: hound.name, bond: hound.bond, order: field.order, orderDone: field.orderDone,
+    ordersCompleted: field.ordersCompleted, healthShare: field.health / field.maxHealth,
+    wounded: field.wounded, dead: field.dead };
 }
 
 const FIELD_HOUND_SPRITE_V147 = "/game/hounds/v147/field-hound.webp";
 
-function drawHoundV147(context: CanvasRenderingContext2D, state: GameState, portrait?: HTMLImageElement | null): void {
+function drawHoundV147(
+  context: CanvasRenderingContext2D, state: GameState,
+  portrait?: HTMLImageElement | null, entry?: HoundCatalogueEntryV147,
+): void {
   const field = state.houndFieldV147;
   if (!field) return;
   const mark = state.houndMarkV147;
@@ -11182,11 +11199,14 @@ function drawHoundV147(context: CanvasRenderingContext2D, state: GameState, port
   context.save();
   context.translate(field.x, groundY);
   if (field.dead) { context.rotate(facing * Math.PI / 2.4); context.globalAlpha = 0.7; }
-  context.scale(facing, 1);
+  context.scale(entry?.facing === "left" ? -facing : facing, 1);
   if (portrait?.naturalWidth && portrait.naturalHeight) {
+    const [left, top, right, bottom] = entry?.alphaBounds ?? [0, 0, portrait.naturalWidth, portrait.naturalHeight];
+    const sourceWidth = right - left;
+    const sourceHeight = bottom - top;
     const height = 54;
-    const width = height * portrait.naturalWidth / portrait.naturalHeight;
-    context.drawImage(portrait, -width * 0.59, -height, width, height);
+    const width = height * sourceWidth / sourceHeight;
+    context.drawImage(portrait, left, top, sourceWidth, sourceHeight, -width / 2, -height, width, height);
   } else {
     context.fillStyle = "#2a1d17";
     context.strokeStyle = "#0d0907";
@@ -11304,9 +11324,9 @@ function stepGame(
   for (const enemy of state.enemies) {
     updateRegularEnemy(state, enemy, mission, delta);
   }
-  const houndStickOrder = state.riteMenuCorpseId ? null : input.houndStickOrderV147 ?? null;
-  input.houndStickOrderV147 = null;
-  updateHoundV147(state, mission, playerInput, delta, houndStickOrder);
+  const directHoundOrder = state.riteMenuCorpseId ? null : input.houndDirectOrderV147 ?? null;
+  input.houndDirectOrderV147 = null;
+  updateHoundV147(state, mission, playerInput, delta, directHoundOrder);
   updateBoss(state, mission, difficulty, delta);
   state.playerUsedRangedWeapon = false;
   state.playerUsedEnergyWeapon = false;
@@ -11748,6 +11768,7 @@ export default function HuntCanvas({
     input.touchHeld.clear();
     input.gamepadHeld.clear();
     input.pressed.clear();
+    input.houndDirectOrderV147 = null;
     input.previousGamepadButtons = [];
     input.activeGamepadIndex = null;
     input.gamepadNeedsNeutral = true;
@@ -11827,7 +11848,14 @@ export default function HuntCanvas({
     }
 
     if (frozenHound) {
-      queueImage(FIELD_HOUND_SPRITE_V147, image => { assets.houndPortraitV147 = image; });
+      queueImage(FIELD_HOUND_SPRITE_V147, image => { assets.houndPortraitV147 ??= image; });
+      const visual = houndCatalogueEntryV147(frozenHound.catalogueId ?? frozenHound.id);
+      if (visual) queueImage(visual.imagePath, image => {
+        if (image?.naturalWidth === visual.width && image.naturalHeight === visual.height) {
+          assets.houndPortraitV147 = image;
+          assets.houndPortraitEntryV147 = visual;
+        }
+      });
     }
 
     queueImage(backgroundPath(mission), (image) => {
@@ -12207,6 +12235,7 @@ export default function HuntCanvas({
       lastTime = performance.now();
       accumulator = 0;
       input.pressed.clear();
+      input.houndDirectOrderV147 = null;
       input.keyboardHeld.clear();
       input.touchHeld.clear();
       input.gamepadHeld.clear();
@@ -12240,6 +12269,7 @@ export default function HuntCanvas({
     togglePauseRef.current = () => {
       if (game.phase === "dead" || game.phase === "finished") return;
       input.pressed.clear();
+      input.houndDirectOrderV147 = null;
       game.paused = !game.paused;
       game.jumpAssist = freshJumpAssistState({ requireRelease: true });
       lastObservedPaused = game.paused;
@@ -12357,7 +12387,7 @@ export default function HuntCanvas({
       }
       if (
         isInteractiveControl(event.target) &&
-        !(event.target instanceof Element && event.target.closest('[data-hunt-rites-v77]')) &&
+        !(event.target instanceof Element && event.target.closest("[data-hunt-rites-v77], [data-hound-current-order]")) &&
         !actions.includes("pause")
       ) {
         return;
@@ -12400,6 +12430,7 @@ export default function HuntCanvas({
       input.gamepadHeld.clear();
       input.touchHeld.clear();
       input.pressed.clear();
+      input.houndDirectOrderV147 = null;
       if(input.accessibility){
         input.holdTogglesV112=stepHoldTogglesV112(input.holdTogglesV112,{up:false,aim:false},true);
         input.ritualAssistEventV112=null;game.ritualAssistV112=freshRitualAssistV112();
@@ -13124,6 +13155,11 @@ export default function HuntCanvas({
           navigation={ui.canopyNavigationV112} bindings={activeBindings}
           gamepadButtons={activeAccessibility.gamepadButtons} gripInput={activeAccessibility.gripInput}/>}
 
+      {assetsReady && ui.houndV147 && !missionOpeningOpen && !huntDialogOpen && !ui.huntRiteMenu?.open && <HoundOrdersV147
+        hound={ui.houndV147} disabled={ui.paused || ui.phase === "dead" || ui.phase === "finished"}
+        shortcut={controlActionShortcut("hunt.houndOrder", activeBindings)}
+        onOrder={order => { inputRef.current.houndDirectOrderV147 = order; }} />}
+
       {/* Bloc : contrôles tactiles et aide clavier/manette. */}
       <div className={presentationStyles.controls}>
         <div className={presentationStyles.moveControls} style={styles.moveControls} role="group" aria-label="Déplacement tactile">
@@ -13265,14 +13301,6 @@ export default function HuntCanvas({
             shortcut={controlActionShortcut("hunt.heal", activeBindings)}
             onPress={() => pressAction("heal")}
           />
-          {ui.houndV147 && (
-            <ActionButton
-              label={`${ui.houndV147.name} : ${ui.houndV147.dead ? "mort" : ui.houndV147.orderLabel}${ui.houndV147.wounded && !ui.houndV147.dead ? " (blessé)" : ""}`}
-              shortcut={controlActionShortcut("hunt.houndOrder", activeBindings)}
-              disabled={ui.houndV147.dead}
-              onPress={() => pressAction("houndOrder")}
-            />
-          )}
           </div>
         </details>
       </div>
@@ -13394,6 +13422,34 @@ function ActionButton({
       <kbd style={styles.kbd}>{shortcut}</kbd>
     </button>
   );
+}
+
+function HoundOrdersV147({ hound, disabled, shortcut, onOrder }: {
+  hound: HoundUiV147;
+  disabled: boolean;
+  shortcut: string;
+  onOrder(order: HoundOrderIdV147): void;
+}) {
+  const condition = hound.dead ? "Mort" : hound.wounded ? "Blessé" : houndOrderLabelV147(hound.order);
+  return <section className={presentationStyles.houndOrdersV147} aria-label={`Ordres de ${hound.name}`}
+    data-hound-current-order={hound.order} data-hound-orders-completed={hound.ordersCompleted}>
+    <div className={presentationStyles.houndStatusV147}>
+      <strong>{hound.name}</strong>
+      <span role="status">{condition}{!hound.dead && !hound.orderDone ? " · en cours" : ""}</span>
+      <meter min={0} max={1} value={hound.healthShare} aria-label={`Santé de ${hound.name}`} />
+    </div>
+    {!hound.dead && <div className={presentationStyles.houndButtonsV147} role="group" aria-label="Ordres du chien">
+      {HOUND_ORDERS_V147.filter(order => order.defined).map(order => {
+        const unlocked = isOrderUnlockedV147(order.id, hound.bond);
+        return <button type="button" key={order.id} data-hound-field-order={order.id}
+          aria-pressed={hound.order === order.id} title={order.effect}
+          disabled={disabled || !unlocked || hound.wounded && order.id !== "recall"} onClick={() => onOrder(order.id)}>
+          {order.label}{!unlocked && <small>Lien {order.bond}</small>}
+        </button>;
+      })}
+      <small>{shortcut} · ordre suivant · Stick droit</small>
+    </div>}
+  </section>;
 }
 
 function formatTime(seconds: number): string {

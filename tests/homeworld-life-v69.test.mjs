@@ -11,6 +11,11 @@ const residents = api.HOMEWORLD_RESIDENTS_V69.map(original => {
   return current;
 });
 const additions = residents.filter(resident => api.HOMEWORLD_NEW_RESIDENTS_V69.some(original => original.id === resident.id));
+
+test('new city residents keep distinct authored names', () => {
+  assert.equal(new Set(additions.map(resident => resident.name)).size, additions.length);
+  for (const resident of additions) assert.match(resident.name, /^[\p{L}’]+$/u);
+});
 test('V69 adds safe distinct residents in every district without replacing old residents', () => {
   assert.equal(api.HOMEWORLD_RESIDENTS_V69.length,98);
   assert.equal(api.HOMEWORLD_NEW_RESIDENTS_V69.length,42);
