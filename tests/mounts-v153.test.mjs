@@ -34,7 +34,7 @@ test('profils : seize montures du catalogue, faiblesses citées exactement',()=>
  assert.deepEqual(mt.MOUNT_PROFILES_V153.map(p=>p.id),cat.MOBILITY_CATALOGUE.filter(d=>d.kind==='mount').map(d=>d.id));
  for(const r of mt.MOUNT_REACTION_SOURCES_V153)assert(cat.MOBILITY_CATALOGUE.some(d=>d.weaknesses.includes(r.source)),r.source);
  assert.deepEqual(mt.mountProfileV153('kha_rha').reactions.map(r=>r.trigger),['fire','toxic']);
- assert.deepEqual(mt.MOUNT_PROFILES_V153.filter(p=>p.recruitment).map(p=>p.id),['kha_rha']);
+ assert.deepEqual(mt.MOUNT_PROFILES_V153.filter(p=>p.recruitment).map(p=>p.id),['kha_rha','forest_stalker_mount','sand_mauler','ice_fang']);
 });
 
 test('aucun animal par défaut : état neuf vide, ancienne sauvegarde sans monture',()=>{
@@ -67,7 +67,7 @@ test('recrutement explicite : refus sans preuve complète',()=>{
 
 test('recrutement : rang, monture sans voie et preuve falsifiée refusés',()=>{
  const low=seed();low.profile.rankId='young-blood';act(low,{type:'begin-trial',mountId:'kha_rha'},false);
- for(const id of ['war_kha_rha','forest_stalker_mount','elder_great_beast'])act(seed(),{type:'begin-trial',mountId:id},false);
+ for(const id of ['war_kha_rha','stoneback','elder_great_beast'])act(seed(),{type:'begin-trial',mountId:id},false);
  // Monture ajoutée sans essai complet : sauvegarde invalide.
  const forged=seed();forged.mountsV153=mt.createMountsV153(OWNER);forged.mountsV153.revision=1;
  forged.mountsV153.mounts.push({id:'kha_rha',recruitedRevision:1,proof:{kind:'trust-exercises',trialId:TRIAL,eventIds:[]},bond:0,fatigue:0,injury:0,sessions:0});
