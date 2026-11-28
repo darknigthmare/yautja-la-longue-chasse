@@ -156,6 +156,8 @@ try {
   assert.equal(adopted.profile.clanMarks, 0);
   assert.equal(adopted.houndsV147.activeHoundId, candidates[0].id);
   assert.equal(adopted.houndsV147.hounds.find(item => item.id === candidates[0].id).name, "Trace-de-Cendre");
+  assert.equal(await kennel.locator('[data-hound-kennel-action="recruit"]').count(), 0);
+  await kennel.locator("[data-hound-kennel-candidate]").first().click();
   assert(await kennel.locator('[data-hound-kennel-action="recruit"]').isDisabled());
   await kennel.locator('[data-hound-id="ancien-pisteur"] [data-hound-kennel-action="heal"]').click();
   const cared = await saved();
