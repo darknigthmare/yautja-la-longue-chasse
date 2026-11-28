@@ -133,7 +133,8 @@ try {
   await page.locator('[data-clan-ship-room-target="conseil"]').click();
   const council = page.locator('[data-clan-interior][data-interior-room="conseil"][data-interior-moving="false"]');
   await council.waitFor();
-  await page.waitForFunction(() => !document.querySelector("[data-interior-target-room]"));
+  await page.waitForFunction(() =>
+    !document.querySelector("[data-clan-interior]")?.getAttribute("data-interior-target-room"));
   await talkTo("conseil", "star-watch");
   await button("Écouter Veille des Astres sur les droits").click();
   const shared = button("Viser la Veille Partagée");
