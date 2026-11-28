@@ -1,0 +1,256 @@
+name: Jouer le passage de la Kha’Rha dans l’atelier W3-S10
+on:
+  push:
+    branches: [codex/qa-w3-s10-campaign-mount-keys-20261128]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source:
+    name: Admettre, mener et reprendre la monture en Chromium
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ASSET_RACCORDS_SOURCE_COMMIT: ${{ github.sha }}
+      W3_S10_APPLICATION_COMMIT: '2565d7eb21592f39ad146adfe35917edcc3b73fb'
+
+    steps:
+      - name: Checkout the exact candidate and bounded inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 12
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /content/the-pit/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /production/INVENTAIRE_BIBLE_20261122.*
+            /production/YAUTJA_LOTS_P0_P3_20261121.*
+            /production/YAUTJA_LOTS_P0_P3_LOT2_20261121.*
+            /public/game/xeno-prime/berceau-v1/
+            /public/game/youth/
+            /public/game/prologue/v47/detached-blade.png
+            /public/game/homeworld/v70/temple-modules.png
+            /public/game/sprites/v4/rifle-soldier.png
+            /public/game/homeworld/v74/
+            /public/game/homeworld/v75/
+            /public/audio/
+            /public/game/quatza-rij/
+            /public/game/assets/v37/tribes/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp
+            /public/game/assets/v37/tribes/v2/homeworld-forest-v2--8fdc633789dcd9c0.webp
+            /public/game/assets/v37/tribes/v2/homeworld-lava-v2--ecd85e06796799d2.webp
+            /public/game/backgrounds/ice-depth-v4.webp
+            /public/game/backgrounds/ocean-depth-v8.png
+            /public/game/backgrounds/ruins-depth-v8.png
+            /public/game/backgrounds/swamp-depth-v8.png
+            /public/game/homeworld/v67/ash-causeway-vista.png
+            /public/game/homeworld/v67/glass-processional-vista.png
+            /public/game/sprites/v8/ecology/cinder-12/basalt-ram-sheet.png
+            /public/game/sprites/v8/ecology/cinder-12/smoke-wyvern-sheet.png
+            /public/game/sprites/v8/ecology/naraka-delta/mire-shell-sheet.png
+            /public/game/sprites/v8/ecology/nivalis-k/snow-prowler-sheet.png
+            /public/game/sprites/v8/ecology/oseris-iv/amber-jaw-stalker-sheet.png
+            /public/game/sprites/v8/ecology/pelagos-m/shellback-sheet.png
+            /public/game/sprites/v8/ecology/serekh-9/burrow-snake-sheet.png
+            /public/game/assets/clan-field-20261103/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues-index.json
+            /public/game/assets/v139/rig-gauntlets/
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/assets/v133/concept-masks/
+            /public/game/assets/v133/decals/decal-atlas.webp
+            /public/game/sprites/v62/heads/
+            /public/game/sprites/v62/masks/
+            /public/game/homeworld/v56/
+            /public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png
+            /public/game/assets/v134/
+            /public/game/assets/v135/
+            /public/game/assets/v136/
+            /public/game/p0-sprites-20261113/warp/
+            /public/game/warp-universe/20261109/
+            /public/game/warp/w02/
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize official runtime inputs and install dependencies
+        run: |
+          test "$(git rev-parse HEAD^1)" = "$W3_S10_APPLICATION_COMMIT"
+          test -z "$(git diff --name-only HEAD^1 HEAD -- app public tests)"
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Piloter le passage et l’import en Chromium
+        run: |
+          cat > scripts/qa-w3-s10-owned-live.mjs <<'W3_PILOT_JS'
+          import assert from 'node:assert/strict';
+          import { homeworldSceneSsrV78 } from '../tests/helpers/homeworld-scene-ssr-v78.mjs';
+          
+          const runtime = homeworldSceneSsrV78();
+          const mounts = runtime.load('app/game/systems/mobility/mountsV153.ts');
+          const war = runtime.load('app/game/systems/clanWarSpecializedV107.ts');
+          const { defaultSave, SAVE_STORAGE_KEY } = runtime.load('app/game/save.ts');
+          const owner = '2026-11-28T10:00:00.000Z';
+          const mountId = 'kha_rha';
+          const trialId = 'trial-kha-rha';
+          
+          function trainedMount() {
+            let save = defaultSave(owner);
+            save.profile = { ...save.profile, rankId: 'blooded', honor: 300, clanMarks: 10000 };
+            const perform = command => {
+              const result = mounts.actMountsV153(save, {
+                ownerCreatedAt: owner, expectedRevision: save.mountsV153?.revision ?? 0, ...command,
+              });
+              assert(result.accepted, result.message);
+              save = { ...save, mountsV153: result.state, profile: { ...save.profile, clanMarks: result.clanMarks } };
+            };
+            perform({ type: 'begin-trial', mountId });
+            const trial = [['approach-without-fire', 'no-fire'], ['shared-scent', 'scent-first'], ['short-circuit', 'stop-return']];
+            let event = 1;
+            for (const [exerciseId, optionId] of trial)
+              perform({ type: 'trust-exercise', trialId, exerciseId, optionId, eventId: 'w3-s10-' + event++ });
+            perform({ type: 'recruit', mountId, trialId });
+            assert.equal(war.createSpecializedMountW3S10(save).state, null);
+            for (let i = 0; i < 5; i++) {
+              perform({ type: 'open-session', mountId });
+              const { id: sessionId } = save.mountsV153.session;
+              for (let j = 0; j < 3; j++)
+                perform({ type: 'exercise', sessionId, exerciseId: 'groundwork', condition: 'calm', eventId: 'w3-s10-' + event++ });
+              perform({ type: 'close-session', sessionId });
+              if (i < 4) perform({ type: 'care', mountId, expectedCost: mounts.mountCareQuoteV153(save.mountsV153, mountId) });
+            }
+            return save;
+          }
+          
+          import { mkdir, writeFile } from 'node:fs/promises';
+          import { resolve } from 'node:path';
+          import { chromium } from 'playwright-core';
+          import { createServer } from 'vite';
+          const root=page=>page.getByRole('region',{name:'Ateliers physiques V107',exact:true});
+          const click=(page,name)=>root(page).getByRole('button',{name,exact:true}).click();
+          const status=page=>root(page).getByRole('status');
+          async function sectionDetails(page,starts){const details=root(page).locator('details').filter({has:page.locator('summary').filter({hasText:starts})}).first();if(await details.getAttribute('open')===null)await details.locator('summary').click();return details}
+          async function checkpoint(page){const details=await sectionDetails(page,'Carnet transportable');await click(page,'Préparer l’export vérifié');const text=await root(page).getByLabel(/^Export JSON vérifié/).inputValue();await details.locator('summary').click();return JSON.parse(text)}
+          async function choose(page,id,name){if(await root(page).getAttribute('data-specialized-scenario')===id)return;await root(page).getByRole('button',{name:new RegExp(`^${id}`)}).click();await click(page,`Commencer ${name}`);await page.waitForFunction(id=>document.querySelector('[data-specialized-scenario]')?.getAttribute('data-specialized-scenario')===id,id)}
+          async function select(page,actor){await root(page).getByRole('button',{name:new RegExp(`^${actor==='operator'?'Opérateurs':actor==='carrier'?'Porteurs':'Rival signataire'}`)}).click()}
+          async function aim(page,x,y){const svg=root(page).locator('svg').first();await svg.scrollIntoViewIfNeeded();const projection=await svg.evaluate((svg,{x,y})=>{const point=svg.createSVGPoint();point.x=x;point.y=y;const screen=point.matrixTransform(svg.getScreenCTM()),box=svg.getBoundingClientRect();return {x:screen.x-box.left,y:screen.y-box.top,width:box.width,height:box.height,expectedX:(screen.x-box.left)/box.width*720,expectedY:(screen.y-box.top)/box.height*440}},{x,y});await svg.click({position:{x:projection.x,y:projection.y}});const marker=await svg.locator('path[stroke="white"]').getAttribute('d').catch(()=>null);if(!marker)return null;const match=marker.match(/^M([-\d.e+]+) ([-\d.e+]+)h16/i);assert.ok(match,'A normal map click exposes its actual destination cross');const goal={x:Number(match[1])+8,y:Number(match[2])};assert.ok(Math.hypot(goal.x-projection.expectedX,goal.y-projection.expectedY)<=Math.hypot(720/projection.width,440/projection.height)+.01,'Actual pointer destination stays within one browser pixel of the projected input');return goal}
+          async function walk(page,actor,x,y){await select(page,actor);const current=await root(page).locator(`[data-specialized-actor="${actor}"]`).evaluate(node=>({x:Number(node.dataset.x),y:Number(node.dataset.y)}));if(Math.hypot(current.x-x,current.y-y)<3.1)return;if(Math.hypot(current.x-x,current.y-y)<16){const board=root(page).getByRole('group',{name:/^Terrain jouable/});await board.focus();await board.press('ArrowLeft');await page.waitForFunction(({actor,before})=>Number(document.querySelector(`[data-specialized-actor="${actor}"]`)?.dataset.x)!==before,{actor,before:current.x})}const actualGoal=await aim(page,x,y);assert.ok(actualGoal,'The real map click must create a movement destination, rather than select another person');await page.waitForFunction(({actor,x,y})=>{const node=document.querySelector(`[data-specialized-actor="${actor}"]`);return node&&Math.hypot(Number(node.dataset.x)-x,Number(node.dataset.y)-y)<3.1},{actor,...actualGoal});await click(page,'Stop')}
+          const seed = trainedMount(), reports = { passed: false, errors: [], source: process.env.W3_S10_APPLICATION_COMMIT };
+          await mkdir('outputs/qa-w3-s10-owned', { recursive: true });
+          let browser, server;
+          try {
+            server = await createServer({ configFile: resolve('desktop/vite.config.ts'), server: { host: '127.0.0.1', port: 4282, strictPort: true } });
+            await server.listen();
+            browser = await chromium.launch({ executablePath: '/usr/bin/google-chrome', headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
+            const context = await browser.newContext({ viewport: { width: 1440, height: 1080 }, reducedMotion: 'reduce' });
+            await context.addInitScript(({ seed, key }) => {
+              if (sessionStorage.getItem('w3-s10-native-seed')) return;
+              sessionStorage.setItem('w3-s10-native-seed', 'yes');
+              localStorage.setItem(key, JSON.stringify(seed));
+            }, { seed, key: SAVE_STORAGE_KEY });
+            const page = await context.newPage();
+            page.on('pageerror', error => reports.errors.push(error.message));
+            page.setDefaultTimeout(40000);
+            const enter = async () => {
+              await page.locator('[data-campaign-menu]').waitFor({ timeout: 90000 });
+            const campaign = page.locator('[data-menu-section="campaign"]');
+            if (await campaign.isVisible()) await campaign.click();
+            await page.locator('[data-menu-action="continue"]').click();
+            const clanWar = page.getByRole('button', { name: /^Guerres des clans/ });
+            await clanWar.or(page.getByRole('button', { name: 'Accès rapide aux installations' })).first().waitFor();
+            if (!await clanWar.first().isVisible()) await page.getByRole('button', { name: 'Accès rapide aux installations' }).click();
+            await clanWar.first().click();
+              const spoilers = page.getByRole('button', { name: 'Accéder malgré les spoilers', exact: true });
+              if (await spoilers.isVisible()) await spoilers.click();
+              await page.locator('[data-command-section="bible"]').click();
+              await page.locator('[data-war-tool-group="forces"]').click();
+              await page.locator('[data-war-tool-id="specialized"]').click();
+              await root(page).waitFor();
+            };
+            await page.goto('http://127.0.0.1:4282');
+            await enter();
+            await choose(page, 'W3-S10', 'Aire de montures');
+            await click(page, 'Présenter ma Kha’Rha');
+            const initial = await checkpoint(page);
+            assert.deepEqual(initial.mounts.map(m => m.id), [mountId]);
+            assert.equal(initial.mountAdmission.trialId, trialId);
+            assert.equal(initial.mounts[0].fatigue, seed.mountsV153.mounts[0].fatigue);
+            for (let i = 0; i < initial.actors[0].readyAt; i++) await click(page, 'Attendre 1 tour / payer l’entretien');
+            await walk(page, 'operator', 190, 100);
+            await click(page, 'Prendre en longe · U21');
+            await walk(page, 'operator', 360, 227);
+            await aim(page, 450, 227);
+            await status(page).filter({ hasText: 'gabarit' }).waitFor();
+            const blocked = await checkpoint(page);
+            assert(blocked.actors[0].x < 390 && blocked.mounts[0].leadBy === 'operator');
+            const board = () => root(page).getByRole('group', { name: /^Terrain jouable/ });
+            await select(page, 'operator');
+            for (let i = 0; i < 9; i++) await board().press('ArrowDown');
+            for (let i = 0; i < 5; i++) await board().press('ArrowRight');
+            const middle = await checkpoint(page);
+            assert(middle.mounts[0].x > 420);
+            assert.equal(middle.mounts[0].x, middle.actors[0].x);
+            await root(page).screenshot({ path: 'outputs/qa-w3-s10-owned/01-monture-en-longe.png' });
+          
+            await page.reload();
+            await enter();
+            await sectionDetails(page, 'Carnet transportable');
+            await root(page).getByLabel(/^Importer un carnet V107/).fill(JSON.stringify(middle));
+            await click(page, 'Vérifier puis reprendre ce carnet');
+            assert.deepEqual(await checkpoint(page), middle);
+            await select(page, 'operator');
+            for (let i = 0; i < 2; i++) await board().press('ArrowRight');
+            await click(page, 'Libérer la longe');
+            const released = await checkpoint(page);
+            assert.equal(released.mounts[0].leadBy, null);
+            assert.equal(released.mounts[0].id, mountId);
+            assert(released.mounts[0].x > middle.mounts[0].x);
+            assert.deepEqual(released.actors[0].team.members, initial.actors[0].team.members);
+            const saved = await page.evaluate(key => JSON.parse(localStorage.getItem(key)), SAVE_STORAGE_KEY);
+            assert.deepEqual(saved.mountsV153, seed.mountsV153);
+            assert.deepEqual(reports.errors, []);
+            await root(page).screenshot({ path: 'outputs/qa-w3-s10-owned/02-monture-reprise.png' });
+            Object.assign(reports, { passed: true, mount: mountId, blocked: blocked.mounts[0], middle: middle.mounts[0], released: released.mounts[0] });
+          } catch (error) {
+            reports.errors.push(error.stack);
+            const page = browser?.contexts()[0]?.pages()[0];
+            if (page) {
+              reports.visibleControls = await page.getByRole('button').allTextContents().catch(() => []);
+              await page.screenshot({ path: 'outputs/qa-w3-s10-owned/error.png' }).catch(() => {});
+            }
+            process.exitCode = 1;
+          } finally {
+            await browser?.close();
+            await server?.close();
+            await writeFile('outputs/qa-w3-s10-owned/report.json', JSON.stringify(reports, null, 2));
+            console.log(JSON.stringify(reports, null, 2));
+          }
+          W3_PILOT_JS
+          node scripts/qa-w3-s10-owned-live.mjs
+      - name: Conserver les captures du trajet
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: w3-s10-native-mount
+          path: outputs/qa-w3-s10-owned/
+          if-no-files-found: error
