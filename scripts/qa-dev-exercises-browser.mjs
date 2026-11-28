@@ -62,13 +62,14 @@ try {
       console.log("DEV_EXERCISES", name);
     } catch (error) {
       report.failures.push({ name, message: error.stack });
-      console.error(error);
+      const scene = await page.locator("[data-dev-session]").innerText({ timeout: 250 }).catch(() => "");
+      console.error(error, scene.slice(0, 3200));
       await page.screenshot({ path: resolve(output, name + ".png") }).catch(() => {});
     }
   };
   const open = async id => {
     await page.goto(new URL("/dev?lieu=" + id, origin).href, { waitUntil: "domcontentloaded" });
-    await page.locator('[data-dev-session="' + id + '"]').waitFor({ timeout: 100000 });
+    await page.locator('[data-dev-session="' + id + '"][data-dev-interactive="true"]').waitFor({ timeout: 100000 });
   };
   async function walkWarp(field, tag, target) {
     const at = Number(await field.getAttribute("data-" + tag + "-position"));
@@ -104,6 +105,8 @@ try {
     await (available ? delivery : garage.getByRole("button", { name: "Sortir sur l’aire", exact: true })).click();
     const yard = garage.locator(available ? '[data-mobility-yard][data-route="forge-delivery"]' : "[data-mobility-yard]");
     await yard.waitFor();
+    await yard.getByRole("button", { name: "Reprendre la conduite", exact: true }).click();
+    await yard.and(page.locator('[data-paused="false"]')).waitFor();
     const before = Number(await yard.getAttribute("data-x"));
     await yard.getByRole("img").focus();
     await page.keyboard.down("ArrowUp");
@@ -120,7 +123,7 @@ try {
   });
   await run("forge-deux-armes-deux-paliers", async () => {
     await open("dev-forge");
-    await page.getByRole("button", { name: "Réparations", exact: true }).click();
+    await page.getByRole("tab", { name: "Réparations", exact: true }).click();
     const stock = page.locator("[data-forge-repair-stock]");
     const started = Number(await stock.getAttribute("data-forge-repair-stock"));
     for (const [id, cost] of [["plasma-caster", 10], ["smart-disc", 10]]) {
@@ -135,15 +138,17 @@ try {
       }
       assert.equal(Number(await stock.getAttribute("data-forge-repair-stock")), before - cost);
     }
+    await page.locator("[data-dev-forge-hunt]").click();
+    await page.locator('[data-dev-stage="hunt"] canvas').first().waitFor();
     await page.locator("[data-dev-reset]").click();
-    await page.getByRole("button", { name: "Réparations", exact: true }).click();
+    await page.getByRole("tab", { name: "Réparations", exact: true }).click();
     assert.equal(Number(await stock.getAttribute("data-forge-repair-stock")), started);
   });
   await run("fjord-et-second-voyage-forteresse", async () => {
     await open("dev-warp");
     const depart = page.getByRole("button", { name: "Engager le voyage", exact: true });
     await depart.click();
-    const fjord = page.locator("[data-fjord-position]");
+    const fjord = page.locator("[data-warp-fjord]");
     await walkWarp(fjord, "fjord", 4);
     await fjord.locator('[data-fjord-enter="quai"]').click();
     await walkWarp(fjord, "fjord", 11);
@@ -154,7 +159,7 @@ try {
     await fjord.locator("[data-fjord-report]").click();
     await page.locator("[data-warp-fjord-register]").waitFor();
     await depart.click();
-    const fortress = page.locator("[data-fortress-position]");
+    const fortress = page.locator("[data-warp-fortress]");
     await fortress.waitFor();
     await walkWarp(fortress, "fortress", 4);
     await fortress.locator('[data-fortress-act="sounded"]').click();
@@ -180,7 +185,7 @@ try {
     const canvas = scene.locator("canvas");
     await scene.and(page.locator('[data-solo-step="debrief"]')).waitFor();
     await canvas.focus();
-    await scene.locator("h1").waitFor();
+    await scene.locator('canvas[data-solo-assets="true"][data-solo-armed="true"]').waitFor();
     await page.keyboard.press("KeyE", { delay: 150 });
     await scene.and(page.locator('[data-solo-step="recognition"]')).waitFor();
     await page.keyboard.press("Escape");
@@ -188,6 +193,7 @@ try {
     await page.getByRole("button", { name: "Reprendre du point conservé" }).click();
     await scene.and(page.locator('[data-solo-step="recognition"]')).waitFor();
     await canvas.focus();
+    await scene.locator('canvas[data-solo-assets="true"][data-solo-armed="true"]').waitFor();
     await page.keyboard.down("KeyE");
     try {
       await scene.and(page.locator('[data-solo-step="complete"]')).waitFor();
