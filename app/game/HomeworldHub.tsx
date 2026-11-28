@@ -2256,7 +2256,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
             <button type="button" data-r2-m003-stop="kennel" disabled={suspended || paused || inactive}
               onClick={() => saveYouthCityErrand({ stop: "kennel" })}>{YOUTH_CITY_STOPS_V172.kennel.label}</button>}
           {onKennelActionV147 && isHoundKennelContactV147(selectedStreetContactV100.id) &&
-            <HoundKennelPanelV147 hounds={save.houndsV147} disabled={cargoMigrationPendingV108||suspended||paused||inactive}
+            <HoundKennelPanelV147 hounds={save.houndsV147} clanMarks={save.profile.clanMarks} disabled={cargoMigrationPendingV108||suspended||paused||inactive}
               onAction={handleKennelActionV147} />}
         </> : dialog.streetContactV100 ? <p role="status">La conversation est interrompue. Rejoins cet habitant sur son passage.</p> : selectedResidentV68 ? <>
           <p data-homeworld-civilian-routine-v84={selectedResidentPoseV84?.phase} data-homeworld-civilian-group-v84={selectedResidentRoutineV84?.groupId ?? undefined}>
