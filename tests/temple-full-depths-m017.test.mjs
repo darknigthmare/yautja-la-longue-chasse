@@ -11,7 +11,7 @@ const waiting = formationCampaignRoute({ origin: ordered, stop: 'observe' }).sav
 const runtime = homeworldSceneSsrV78();
 const saves = runtime.load('app/game/save.ts');
 const quatza = runtime.load('app/game/systems/quatzaRij.ts');
-let completed;
+let completed, carrying;
 
 test('the fifteen-room route reaches four new physical doors and records each observation in order', () => {
   let opened, warned;
@@ -21,6 +21,8 @@ test('the fifteen-room route reaches four new physical doors and records each ob
     if (gallery?.openedAt != null && !gallery.screened) opened ??= structuredClone(state);
     if (state.room === p.SOLO_V70_ROYAL_M017.room && extension?.royal?.startedAt != null && !extension.royal.evade)
       warned ??= structuredClone(state);
+    if (state.room === p.SOLO_V70_RESCUE_M017.room && extension?.rescue?.pickedUp && !extension.rescue.delivered &&
+        state.player.x > p.SOLO_V70_RESCUE_M017.pickup.x + 100) carrying ??= structuredClone(state);
     return templeInput(state);
   } });
   assert(opened);
@@ -94,6 +96,45 @@ test('the fifteen-room route reaches four new physical doors and records each ob
   const erasedEvade = structuredClone(save);
   erasedEvade.soloV70.checkpoint.depthsM017.extension.royal.evade = null;
   assert.equal(saves.parseSaveImport(JSON.stringify(erasedEvade)).failure, 'invalid-save');
+});
+
+test('Saar is physically carried to the refuge and the position survives a cold import', () => {
+  const temple = completed ?? templeCampaignRoute({ origin: waiting });
+  const { room, pickup, relief, carrySpeed } = p.SOLO_V70_RESCUE_M017;
+  const arrival = temple.transitions.find(({ before, after }) => before.room === room - 1 && after.room === room);
+  assert(arrival);
+  const wounded = arrival.after;
+  assert.equal(wounded.companions[0].x, pickup.x);
+  assert.equal(p.soloV70CanTravel(wounded, room - 1), false);
+  const route = temple.state.depthsM017.extension;
+  const { pickedUp, delivered } = route.rescue;
+  assert(pickedUp.tick > route.observations['royal-lock'].tick);
+  assert(delivered.tick > pickedUp.tick + relief.holdTicks);
+  assert(delivered.tick < route.purgeStartedAt);
+  assert(p.soloV70RescuePartyM017(pickedUp.positions));
+  assert(p.soloV70RescuePartyM017(delivered.positions));
+
+  assert(carrying);
+  const archive = structuredClone(temple.save);
+  archive.soloV70 = { ...archive.soloV70, status: 'active', completedAt: null,
+    checkpoint: carrying, receipts: p.soloV70Receipts(carrying) };
+  const imported = saves.parseSaveImport(saves.exportSave(archive));
+  assert.equal(imported.failure, null);
+  const restored = imported.save.soloV70.checkpoint;
+  assert.deepEqual(restored, carrying);
+  assert.equal(restored.companions[0].x, p.soloV70SaarCarryX(restored.player.x));
+
+  const stepped = p.stepSoloV70(restored, { move: 1, jump: true }, templeEnvironment).state;
+  assert.equal(stepped.player.y, relief.y);
+  assert(Math.abs(stepped.player.x - restored.player.x - carrySpeed) < .01);
+  assert(p.withSoloV70Checkpoint(imported.save, stepped, stamp));
+  stepped.player.x += .5;
+  stepped.companions[0].x = p.soloV70SaarCarryX(stepped.player.x);
+  assert.equal(p.withSoloV70Checkpoint(imported.save, stepped, stamp), null);
+
+  const erased = structuredClone(temple.save);
+  erased.soloV70.checkpoint.depthsM017.extension.rescue.delivered = null;
+  assert.equal(saves.parseSaveImport(JSON.stringify(erased)).failure, 'invalid-save');
 });
 
 test('an expired purge can be opened again at the upstream valve without losing observations', () => {
@@ -173,5 +214,14 @@ test('the preceding Gallery archive keeps its open egg and original royal consol
   assert(extension.observations['royal-lock']);
   assert.equal(extension.royal, undefined);
   assert.equal(p.soloV70DepthPostM017(before.room).plates, undefined);
+  assert.equal(saves.parseSaveImport(saves.exportSave(archive.save)).failure, null);
+});
+
+test('a fifteen-room royal archive can finish its original route without acquiring the wounded transport', () => {
+  const archive = templeCampaignRoute({ origin: waiting, legacyRoyal: true, restoreEvery: 117 });
+  const extension = archive.state.depthsM017.extension;
+  assert(extension.royal.evade);
+  assert(extension.observations['vent-purge']);
+  assert.equal(extension.rescue, undefined);
   assert.equal(saves.parseSaveImport(saves.exportSave(archive.save)).failure, null);
 });
