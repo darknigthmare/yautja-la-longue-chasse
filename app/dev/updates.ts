@@ -59,7 +59,7 @@ export const DEV_EXERCISES: readonly DevDestination[] = [
     id: "dev-forge", category: "exercises", kind: "exercise", exercise: "forge",
     label: "Forge · Plasmacaster et Smart Disc",
     description: "Les deux armes sont équipées au niveau de départ. Des lots de matériaux issus du catalogue d’anatomie sont préparés pour les deux paliers.",
-    walkthrough: ["Ouvre Réparations, choisis les lots d’os et de tissu pour une arme et confirme le palier.", "Vérifie le stock, répète au deuxième palier et essaye la seconde arme. Les autres onglets permettent d’essayer parures, marques et tenues."],
+    walkthrough: ["Ouvre Réparations, choisis les lots d’os et de tissu pour une arme et confirme le palier.", "Vérifie le stock, répète au deuxième palier et essaye la seconde arme. Essaie les armes améliorées en chasse ou utilise les onglets de parures, marques et tenues."],
   },
   {
     id: "dev-coop-relief", category: "exercises", kind: "exercise", exercise: "coop",
@@ -86,7 +86,7 @@ export const DEV_EXERCISES: readonly DevDestination[] = [
     walkthrough: ["Prélève une partie après une vraie rencontre et relève le poids emporté.", "Grimpe sur le premier arbre, traverse l’appui de liane et redescends avec la charge. Suspends et reprends l’essai pour relire l’état."],
   },
   {
-    id: "dev-kennel", category: "exercises", kind: "homeworld", levelId: "0", point: { x: 7450, y: 5520 },
+    id: "dev-kennel", category: "exercises", kind: "homeworld", levelId: "0", point: { x: 7440, y: 5500 },
     label: "Chenil · Adoption, soins et ordres",
     description: "Essai près des responsables du chenil avec des marques et un chien blessé pour tester les soins. L’essai peut se prolonger en chasse avec le compagnon choisi.",
     walkthrough: ["Parle au personnel du chenil. Adopte un pisteur ou soigne le chien blessé, puis choisis ton compagnon.", "Ouvre Chasser avec ce compagnon et teste les ordres, leurs refus et les commandes de terrain."],
