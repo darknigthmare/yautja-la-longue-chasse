@@ -83,9 +83,10 @@ try {
   await ceremony.locator("[data-elite-present=crown]").click();
   await move("Right", "Right");
   await ceremony.locator("[data-elite-present=hunt]").click();
+  if (audience === "public") await move("Left", "Left");
   await move("Up", "Up");
   await ceremony.locator("[data-elite-witness]").click();
-  await move("Down", "Left");
+  await move("Down", audience === "public" ? "Right" : "Left");
   await ceremony.locator("[data-elite-mark]").click();
   await ceremony.locator("[data-elite-recognize]").click();
   await page.locator("[data-elite-recognition-v174=recognized]").waitFor();
