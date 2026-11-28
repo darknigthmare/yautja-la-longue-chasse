@@ -147,6 +147,7 @@ try {
   await lobby(other).getByLabel("Code d’invitation").fill(renewed);
   await button(other, "Demander à rejoindre").click();
   await button(host, "Admettre " + otherName).click();
+  await lobby(other).getByText("Votre chronique a été admise dans le trio.").waitFor();
   await lobby(fourth).getByText("Les trois places du trio sont réservées.").waitFor();
   assert.equal((await snapshot(host)).guests.length, 2);
   assert.equal(await button(fourth, "Demander à rejoindre").isDisabled(), true);
