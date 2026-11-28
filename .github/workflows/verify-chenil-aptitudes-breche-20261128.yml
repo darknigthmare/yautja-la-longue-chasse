@@ -1,0 +1,70 @@
+name: Verify canine roles and Breche rescue admission
+on:
+  push:
+    branches: [codex/verify-chenil-aptitudes-breche-20261128]
+permissions:
+  contents: read
+jobs:
+  kennel:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    env:
+      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'd9da6cfa0d5819d1bb10b43335fe55e854d2e452'
+    steps:
+      - name: Checkout the game under test
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 'd9da6cfa0d5819d1bb10b43335fe55e854d2e452'
+          persist-credentials: false
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /docs/
+            /content/the-pit/les-masques-brises/*.json
+            /.openai/
+            /public/**/manifest.json
+            /public/game/user-pack/v56/cutouts/companion-*.png
+            /public/game/user-pack/v56/cutouts/preddog.png
+            /public/game/companions/actors-v1/breche.png
+            /public/game/companions/actors-v1/manifest.json
+            /public/game/homeworld/
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/sprites/v62/heads/
+      - name: Use Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Exercise the prices, legacy roster and order simulation
+        run: node --test --test-reporter=spec tests/hunting-hounds-v147.test.mjs tests/companion-residence.test.mjs tests/mobility-market-cross-services.test.mjs
+      - name: Materialize pinned runtime assets
+        run: node scripts/materialize-asset-raccords-20261120.mjs runtime
+      - name: Play the kennel and field orders in Chromium
+        run: node scripts/qa-hound-kennel-20261128.mjs
+      - name: Verify types and targeted lint
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+          node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/HoundKennelPanelV147.tsx app/game/HuntingHoundsPanelV147.tsx app/game/systems/huntingHoundsV147.ts app/game/systems/houndKennelV147.ts app/game/systems/companionResidence.ts scripts/qa-hound-kennel-20261128.mjs tests/hunting-hounds-v147.test.mjs
+      - name: Upload the native receipts
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: kennel-and-field-orders
+          path: outputs/qa-hound-kennel/
+          if-no-files-found: warn
