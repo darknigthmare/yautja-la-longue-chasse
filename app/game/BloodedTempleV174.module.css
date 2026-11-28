@@ -13,3 +13,40 @@
 .mark button { min-height: 2.9rem; font: inherit; color: #eff7ed; background: #243c39; border: 1px solid #65877e; }
 .mark button[aria-pressed=true] { background: #b3d9a6; color: #192419; }
 .temple button:focus-visible { outline: 2px solid #efd7a3; outline-offset: 3px; }
+
+.returnCourt {
+  display: grid;
+  gap: 0.45rem;
+  padding: 1rem;
+  border: 1px solid rgba(212, 172, 102, 0.4);
+  border-radius: 0.6rem;
+  background: linear-gradient(125deg, #2b1916, #171b1b 72%);
+}
+
+.returnCourt[data-blooded-ceremony="quiet"] {
+  background: linear-gradient(125deg, #24312c, #171b1b 72%);
+}
+
+.returnCourt h4, .returnCourt p {
+  margin: 0;
+}
+
+.courtRoute {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.2rem 0;
+}
+
+.courtRoute li {
+  padding: 0.35rem 0.55rem;
+  border: 1px solid transparent;
+}
+
+.courtRoute li[aria-current="step"] {
+  border-color: #d4ac66;
+  border-radius: 0.35rem;
+  background: #151a1b;
+  font-weight: 700;
+}
