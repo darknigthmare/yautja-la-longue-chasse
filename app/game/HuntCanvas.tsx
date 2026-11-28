@@ -211,7 +211,7 @@ import {
   type TrophyRitualState,
   type TrophyVictoryState,
 } from "./systems/trophyRitual";
-import { drawWorldHazard } from "./worldHazardRendering";
+import { drawMudFootstep, drawWorldHazard } from "./worldHazardRendering";
 import {
   hazardPhaseAt,
   isHazardActive,
@@ -5706,9 +5706,16 @@ function renderGame(
     context.restore();
   }
 
-  if (state.player.maskOn || state.scanPulse > 0) {
+  const showTracks = state.player.maskOn || state.scanPulse > 0;
+  if (showTracks || !reducedMotion) {
     for (const track of state.tracks) {
-      drawObservedTrack(context, state, track, palette.accent);
+      if (showTracks) drawObservedTrack(context, state, track, palette.accent);
+      if (
+        !reducedMotion && track.ownerId === "hunter" && track.material === "mud" &&
+        track.x >= cameraX - 24 && track.x <= cameraX + VIEW_WIDTH + 24
+      ) {
+        drawMudFootstep(context, track.x, track.y, track.directionX, state.elapsed - track.createdAtSeconds);
+      }
     }
   }
   if (state.scanPulse > 0) {

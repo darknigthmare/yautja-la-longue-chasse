@@ -183,7 +183,7 @@ function drift(ctx: CanvasRenderingContext2D, p: Paint): void {
   const glass = kind === "glass-storm";
   const direction = p.windX < 0 ? -1 : 1;
   const speed = direction * (0.4 + Math.min(0.36, Math.abs(p.windX) / 160));
-  const haze = ctx.createLinearGradient(0, 0, direction * width, height * 0.35);
+  const haze = ctx.createLinearGradient(direction < 0 ? width : 0, 0, direction < 0 ? 0 : width, height * 0.35);
   haze.addColorStop(0, p.tint);
   haze.addColorStop(1, "transparent");
   ctx.globalAlpha = active ? (snow ? 0.70 : 0.47) : 0.11 + p.warning * 0.17;
@@ -368,5 +368,31 @@ export function drawWorldHazard(
   ctx.lineTo(width - 1, active ? Math.max(1, height - 10) : 1);
   if (!active) ctx.closePath();
   ctx.stroke();
+  ctx.restore();
+}
+
+/** Each spray belongs to an already-issued hunter footprint, so replay cannot emit extra particles. */
+export function drawMudFootstep(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  directionX: number,
+  age: number,
+): void {
+  const duration = 0.36;
+  if (age < 0 || age >= duration) return;
+  const progress = age / duration;
+  ctx.save();
+  ctx.fillStyle = "#b88a5c";
+  ctx.globalAlpha = (1 - progress) * 0.75;
+  ctx.beginPath();
+  for (let i = 0; i < 6; i++) {
+    const radius = 1.3 + (i % 3) * 0.49;
+    const spread = (i - 2.5) * (4 + progress * 7) - directionX * progress * 8;
+    const lift = 4 + Math.sin(progress * Math.PI) * (8 + i % 3 * 6);
+    ctx.moveTo(x + spread + radius, y - lift);
+    ctx.arc(x + spread, y - lift, radius, 0, TURN);
+  }
+  ctx.fill();
   ctx.restore();
 }
