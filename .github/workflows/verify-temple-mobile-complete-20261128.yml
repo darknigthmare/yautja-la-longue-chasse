@@ -1,0 +1,169 @@
+name: Verify native temple touch campaign
+on:
+  push:
+    branches: [codex/verify-temple-mobile-complete-20261128]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source:
+    name: Verify campaign proofs, workbook and runtime asset inventory
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ASSET_RACCORDS_SOURCE_COMMIT: '10a8a9482007c0413348ca482096d4adc2313721'
+      BASE_COMMIT: '8112718ecfc2a856b93ed5dff3a3d7d34110d93a'
+    steps:
+      - name: Checkout the exact candidate and bounded inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '10a8a9482007c0413348ca482096d4adc2313721'
+          persist-credentials: false
+          fetch-depth: 12
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /production/INVENTAIRE_BIBLE_20261122.*
+            /production/INVENTAIRE_BIBLE_20261127.*
+            /production/YAUTJA_LOTS_P0_P3_20261121.*
+            /production/YAUTJA_LOTS_P0_P3_LOT2_20261121.*
+            /public/game/xeno-prime/berceau-v1/
+            /public/audio/
+            /public/game/quatza-rij/
+            /public/game/assets/v37/tribes/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp
+            /public/game/assets/v37/tribes/v2/homeworld-forest-v2--8fdc633789dcd9c0.webp
+            /public/game/assets/v37/tribes/v2/homeworld-lava-v2--ecd85e06796799d2.webp
+            /public/game/backgrounds/ice-depth-v4.webp
+            /public/game/backgrounds/ocean-depth-v8.png
+            /public/game/backgrounds/ruins-depth-v8.png
+            /public/game/backgrounds/swamp-depth-v8.png
+            /public/game/homeworld/v67/ash-causeway-vista.png
+            /public/game/homeworld/v67/glass-processional-vista.png
+            /public/game/sprites/v8/ecology/cinder-12/basalt-ram-sheet.png
+            /public/game/sprites/v8/ecology/cinder-12/smoke-wyvern-sheet.png
+            /public/game/sprites/v8/ecology/naraka-delta/mire-shell-sheet.png
+            /public/game/sprites/v8/ecology/nivalis-k/snow-prowler-sheet.png
+            /public/game/sprites/v8/ecology/oseris-iv/amber-jaw-stalker-sheet.png
+            /public/game/sprites/v8/ecology/pelagos-m/shellback-sheet.png
+            /public/game/sprites/v8/ecology/serekh-9/burrow-snake-sheet.png
+            /public/game/assets/clan-field-20261103/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues-index.json
+            /public/game/assets/v139/rig-gauntlets/
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/assets/v133/concept-masks/
+            /public/game/assets/v133/decals/decal-atlas.webp
+            /public/game/sprites/v62/heads/
+            /public/game/sprites/v62/masks/
+            /public/game/homeworld/v56/
+            /public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png
+            /public/game/assets/v134/
+            /public/game/assets/v135/
+            /public/game/assets/v136/
+            /public/game/p0-sprites-20261113/warp/
+            /public/game/warp-universe/20261109/
+            /public/game/warp/w02/
+            /public/game/prologue/v47/
+            /public/audio/sfx/ceremony-rack/threshold-metal.wav
+            /public/game/assets/v15/trophies/trophy-cryostalker.webp
+            /public/game/assets/v15/trophies/trophy-ruins-ancient-guardian.webp
+            /public/game/assets/v15/trophies/trophy-vey.webp
+            /public/game/assets/v2/environments/jungle/climbables/vine-ladder.webp
+            /public/game/backgrounds/swamp-depth-v8.png
+            /public/game/homeworld/v70/temple-modules.png
+            /public/game/planets/earth/ne_110m_land.geojson
+            /public/game/prologue/v47/detached-blade.png
+            /public/game/props/v4/root-platform.png
+            /public/game/props/v4/ruin-platform.png
+            /public/game/props/v4/tree-trunk.png
+            /public/game/ships/v13/classic-predator-spaceship-top.webp
+            /public/game/sprites/v4/rifle-soldier.png
+            /public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png
+            /public/game/xeno-prime/berceau-v1/sprites/props_effets/100_trophee_couronne_socle.png
+            /public/game/xeno-prime/berceau-v1/sprites/ruche/025_oeuf_ferme.png
+            /public/game/youth/v48/camp.png
+            /public/game/youth/v48/dojo.png
+            /public/game/youth/v48/mentor-left.png
+            /public/game/youth/v48/mentor-right.png
+            /public/game/youth/v48/props.png
+            /public/game/youth/v48/quarters.png
+            /public/game/youth/v48/unblooded-left.png
+            /public/game/youth/v48/unblooded-right.png
+            /public/game/youth/v49/desert-clues.png
+            /public/game/youth/v49/desert.png
+            /public/game/youth/v52/grazer-native.png
+            /public/game/youth/v53/cage-background.png
+            /public/game/youth/v53/cage-floor.png
+            /public/game/youth/v53/cage-structure.png
+            /public/game/youth/v53/fosse-insignia.png
+            /public/game/youth/v53/novice-left.png
+            /public/game/youth/v53/novice-right.png
+            /content/the-pit/
+            /public/game/review/the-pit/
+            /art-source/the-pit/
+            /art-source/v19/
+            /public/game/assets/v19/biome-decor/
+            /production/qa/evidence/isles-v1-20261123/
+            /public/game/clan-ship/interiors/trophees-v1.webp
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+            /public/audio/manifest.json
+            /public/audio/sfx/ceremony-cohort-response/cohort-response.wav
+            /public/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-omoplate-vegetalisee.webp
+            /public/game/homeworld/v72/civilian-roles-atlas.png
+            /public/game/homeworld/v84/npcs/apprentice/11.png
+            /public/game/homeworld/v84/npcs/apprentice/17.png
+            /public/game/homeworld/v84/npcs/instructor/03.png
+            /public/game/imports/v85/library/99d1175afdb9d368692c902b138a462bb6db44908986cfafa8193c610e78594d.png
+            /public/audio/CREDITS.md
+            /public/audio/ambience/ceremony-brazier/embers.wav
+            /public/audio/music/ceremony-m006/mus-06-clan-ceremonie.ogg
+            /public/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-plaque-nucale-ferrique.webp
+            /public/game/homeworld/v64/props-atlas.png
+            /public/game/xeno-prime/berceau-v1/sprites/personnages/059_matriarche_intacte.png
+            /public/game/sprites/v60/pit-arenas/arena-186-snow-hunt/p0-depth.png
+            /public/game/warp-universe/20261109-p1/191_viking_treuil.png
+            /public/game/homeworld/v84/npcs/rite-keeper/10.png
+            /public/game/warp-universe/20261109-p1/179_viking_halle_fond.png
+            /public/game/homeworld/v84/npcs/chief/16.png
+            /public/game/homeworld/v84/npcs/instructor/18.png
+            /public/game/assets/v19/biome-decor/volcano/orn/orn-fallen-hunter-marker-01-single.webp
+            /public/game/assets/v19/biome-decor/volcano/orn/orn-profaned-trophy-rack-04-fallen.webp
+            /art-source/v19/biome-decor/batches/2026-08-31-volcano-01/manifest.json
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize official runtime inputs and install dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Play M017 with native Chromium touch
+        env:
+          CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+        run: node scripts/qa-temple-mobile-m017.mjs
+      - name: Preserve mobile screenshots and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: temple-touch-evidence
+          path: outputs/qa-temple-mobile-m017/
+          if-no-files-found: ignore
