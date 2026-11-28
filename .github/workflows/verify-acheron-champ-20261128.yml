@@ -1,0 +1,58 @@
+name: Verify Acheron field optics and suit feedback
+on:
+  push:
+    branches: [codex/verify-acheron-champ-20261128]
+permissions:
+  contents: read
+jobs:
+  biome-hazards:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+    steps:
+      - name: Checkout the exact application revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '4ca902c0066d08206098d0b5259844bcec6f2399'
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /content/the-pit/
+            /lib/
+            /types/
+            /worker/
+            /desktop/
+            /docs/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/hosting.json
+            /public/**/manifest.json
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Run behavior tests and type checks
+        run: |
+          test "$(git rev-parse HEAD)" = '4ca902c0066d08206098d0b5259844bcec6f2399'
+          node --experimental-strip-types --test tests/acheron-vacuum.test.mjs tests/world-hazard-rendering-20261128.test.mjs tests/sound-lifecycle.test.mjs
+          npm run typecheck
+          node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/acheronRefraction.ts app/game/sound.ts scripts/qa-acheron-field-20261128.mjs
+      - name: Draw the production hunt in Chromium
+        if: ${{ !cancelled() }}
+        run: node scripts/qa-acheron-field-20261128.mjs
+      - name: Preserve report and pixels
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: dangers-biomes-4ca902c0066d08206098d0b5259844bcec6f2399
+          path: outputs/qa-acheron-field/
+          if-no-files-found: warn
+          retention-days: 30
