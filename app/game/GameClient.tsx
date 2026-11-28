@@ -31,6 +31,7 @@ import { activeRivalRaceO6, playRivalRaceO6, type RivalRaceOrderO6, type RivalRa
 import { activeLittleTrailO6, playLittleTrailO6, type LittleTrailRecordO6 } from "./systems/originLittleTrailO6";
 import type { LittleTrailCueO6, LittleTrailOrderO6 } from "./systems/littleTrailRouteO6";
 import type { TwilightReturnRecordO6 } from "./systems/originTwilightReturnO6";
+import type { HorizonsRecordO6 } from "./systems/originHorizonsO6";
 import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
 import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -3024,11 +3025,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return true;
   }, [persistSocialProgress]);
 
-  const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress, townBell?: TownBellRecordO6, workshopTrial?: RivalRaceRecordO6 | LittleTrailRecordO6 | TwilightReturnRecordO6): boolean => {
+  const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress, townBell?: TownBellRecordO6,
+    workshopTrial?: RivalRaceRecordO6 | LittleTrailRecordO6 | TwilightReturnRecordO6, horizons?: HorizonsRecordO6): boolean => {
     const current = saveRef.current;
-    if ((townBell || workshopTrial) && !current.originV151) return false;
-    const originV151 = current.originV151 && (townBell || workshopTrial) ? {
+    const originProgress = townBell || workshopTrial || horizons;
+    if (originProgress && !current.originV151) return false;
+    const originV151 = current.originV151 && originProgress ? {
       ...current.originV151, ...(townBell ? { townBellO6: townBell } : {}),
+      ...(horizons ? { horizonsO6: horizons } : {}),
       ...(workshopTrial ? "trail" in workshopTrial ? { twilightReturnO6: workshopTrial } :
         "rival" in workshopTrial ? { littleTrailO6: workshopTrial } : { rivalRaceO6: workshopTrial } : {}),
     } : undefined;
