@@ -34,7 +34,9 @@ assert.ok(harvestAction===null||['harvest-hide','harvest-tissue','harvest-bone']
 const resumeHudSource=option('--resume-hud-source',null);
 const requireComplete=argv.includes('--require-complete'),requireResume=argv.includes('--require-resume');
 const requireIceUnderpass=argv.includes('--require-ice-underpass');
-assert.ok(!(requireComplete||requireResume||requireIceUnderpass||requireHarvestWorkshop)||!inspectOnly&&!resumeHudSource,
+const requireGroundExtraction=argv.includes('--require-ground-extraction');
+assert.ok(!requireGroundExtraction||!skipHarvest,'the ground extraction proof needs a field specimen');
+assert.ok(!(requireComplete||requireResume||requireIceUnderpass||requireHarvestWorkshop||requireGroundExtraction)||!inspectOnly&&!resumeHudSource,
   'campaign checks require the playable GameClient path');
 assert.ok(budget>0&&budget<=7200);
 assert.ok(Number.isSafeInteger(maxRetries)&&maxRetries>=0&&maxRetries<=10);
@@ -375,7 +377,7 @@ try{
     const controlLoop={iterations:0,continuousIntervals:0,simulatedSeconds:0};
     let lastElapsed=null;
     const observeFull=()=>page.evaluate(()=>window.__observeCanonicalHuntV112?.(false));
-    let final=null,lastSecond=-1,lastPhase='',resumed=false,resumeReceipt=null,lastDecision=null;
+    let final=null,lastSecond=-1,lastPhase='',resumed=false,resumeReceipt=null,lastDecision=null,groundApproach=null;
     let startedWestOfIceGate=false,seenIceUnderpass=false;
     let trophyApproachMemory={},previousApexReason=null;
     const releaseKeys=async()=>{for(const action of held)await page.keyboard.up(keys[action]);held.clear();};
@@ -389,6 +391,14 @@ try{
       });
       if(!observed?.alive){final=await observeFull()??final??observed;break;}
       const game=observed.state;
+      const {player,world}=game;
+      if(game.phase==='extraction'&&player.grounded&&!player.climbing&&
+        Math.abs(player.y+player.height-world.floorY)<2.5&&Math.abs(player.x+player.width/2-world.extraction.x)<110&&
+        game.huntRites.specimensV112.length){
+        groundApproach={elapsed:game.elapsed,x:player.x,feet:player.y+player.height,
+          floorY:world.floorY,beaconX:world.extraction.x,sceneLoad:game.fieldLoadV112,
+          specimenIds:game.huntRites.specimensV112.map(item=>item.id)};
+      }
       controlLoop.iterations++;
       if(lastElapsed!==null&&game.elapsed>=lastElapsed){
         controlLoop.continuousIntervals++;
@@ -457,7 +467,7 @@ try{
         delete memory.dropDirection;delete memory.dropTargetX;delete memory.harvestEdge;delete memory.harvestDirection;
         examined.clear();harvestTries.clear();
         // The new live attempt needs its own observed save roundtrip.
-        resumed=false;resumeReceipt=null;lastElapsed=null;lastSecond=-1;final=null;
+        resumed=false;resumeReceipt=null;lastElapsed=null;lastSecond=-1;final=null;groundApproach=null;
         report.inputs.push({missionId,elapsed:game.elapsed,type:'DOM retry',label});continue;
       }
       if(game.phase==='finished')break;
@@ -628,7 +638,7 @@ try{
       field.some(source=>source.id===item.id&&source.sourceId===item.sourceId&&source.speciesId===item.speciesId&&source.partId===item.partId)):[];
     controlLoop.simulatedSecondsPerTick=controlLoop.continuousIntervals
       ?controlLoop.simulatedSeconds/controlLoop.continuousIntervals:null;
-    report.attempts.push({missionId,final,retryEvents,controlLoop,suspendedAndReloaded:resumed,resumeReceipt,delivered,
+    report.attempts.push({missionId,final,retryEvents,controlLoop,suspendedAndReloaded:resumed,resumeReceipt,groundApproach,delivered,
       settlement:{confirmed:settlementConfirmed,beforeProgress,afterProgress},wallSeconds:(Date.now()-start)/1000,
       status:settlementConfirmed?'BROWSER_HUNT_AND_SETTLEMENT_SUCCESS':final?.state.phase==='dead'?'CONTROLLER_DIED':'ATTEMPT_INCOMPLETE'});
     await writeFile(path.join(out,missionId+'-hunt-samples.json'),JSON.stringify(samples,null,2)+'\n');
@@ -658,7 +668,11 @@ finally{
       return report.workshop.some(entry=>entry.missionId===id&&entry.pausedAndReloaded&&
         attempt.delivered.some(item=>item.id===entry.specimen.id&&item.sourceId===entry.specimen.sourceId));
     });
-    report.coverage={requested,durable,resumed,observedResumes,harvestedAndArchived,
+    const groundExtracted=durable.filter(id=>{
+      const attempt=attempted.get(id);
+      return attempt.delivered.some(item=>attempt.groundApproach?.specimenIds.includes(item.id));
+    });
+    report.coverage={requested,durable,resumed,observedResumes,harvestedAndArchived,groundExtracted,
       incomplete:requested.filter(id=>!durable.includes(id)),
       missingResume:requested.filter(id=>!resumed.includes(id))};
     if(durable.length===requested.length)report.qualification='BROWSER_HUNTS_AND_DURABLE_SETTLEMENT';
@@ -674,6 +688,11 @@ finally{
     }
     if(requireHarvestWorkshop&&harvestedAndArchived.length===requested.length)
       report.qualification='BROWSER_HUNTS_HARVEST_AND_WORKSHOP';
+    if(requireGroundExtraction&&groundExtracted.length!==requested.length){
+      const problem='Contracts without a delivered specimen observed at the floor near the extraction beacon: '+
+        requested.filter(id=>!groundExtracted.includes(id)).join(', ');
+      report.requiredCoverageFailure=[report.requiredCoverageFailure,problem].filter(Boolean).join('\n');
+    }
     if(requireIceUnderpass&&!report.routeObservations.some(row=>row.missionId==='ice-cryostalker')){
       const problem='The closed thermal gate has no observed lower-route crossing';
       report.requiredCoverageFailure=[report.requiredCoverageFailure,problem].filter(Boolean).join('\n');
