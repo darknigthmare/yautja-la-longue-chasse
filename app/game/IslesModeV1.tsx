@@ -11,8 +11,11 @@ import rulesJson from "./data/islesReverseHuntV1.json";
 import freeRulesJson from "./data/islesFreeHuntV1.json";
 import verdantWorldJson from "./data/islesVerdantWorldV1.json";
 import modelsJson from "./data/islesModelsV1.json";
+import archipelagoJson from "./data/islesArchipelagoV1.json";
+import {createArchipelagoWorldV1, type IslesArchipelagoSourceV1, type IslesArchipelagoWorldV1} from "./isles/islesArchipelagoGenV1";
+import {nearestWalkableV1} from "./isles/islesPathV1";
 import {screenToWorldMoveV1, stepCameraLeadV1, viewBasisV1, type IslesCameraTuningV1} from "./isles/islesCameraV1";
-import {markerV1, parseIslesMapV1, tileCenterV1, type IslesMapSourceV1, type IslesMapV1} from "./isles/islesMapV1";
+import {kindAtV1, markerV1, parseIslesMapV1, tileAtV1, tileCenterV1, type IslesMapSourceV1, type IslesMapV1} from "./isles/islesMapV1";
 import {createIslesActorV1, stepIslesActorV1, type IslesActorV1, type IslesCloakTuningV1, type IslesMovementTuningV1} from "./isles/islesMovementV1";
 import {createReverseHuntV1, reversePhaseLabelV1, stepReverseHuntV1, type ReverseHuntRulesV1, type ReverseHuntStateV1} from "./isles/islesReverseHuntV1";
 import {createFreeHuntV1, freeHuntClockV1, freeHuntReputationV1, stepFreeHuntV1, type FreeHuntRulesV1, type FreeHuntStateV1, type FreeHuntWorldV1} from "./isles/islesFreeHuntV1";
@@ -21,7 +24,7 @@ import {generateIslesWorldV1, type IslesWorldSourceV1} from "./isles/islesWorldG
 import {createIslesSceneV1, type IslesModelSpecV1, type IslesSceneV1, type IslesViewEntityV1} from "./isles/islesSceneV1";
 import styles from "./IslesModeV1.module.css";
 
-type PlayKind = "view" | "reverse" | "free";
+type PlayKind = "view" | "reverse" | "free" | "world";
 const movement = tuningJson.movement as IslesMovementTuningV1;
 const cloak = tuningJson.cloak as IslesCloakTuningV1;
 const cameraTuning = tuningJson.camera as IslesCameraTuningV1;
@@ -72,6 +75,7 @@ interface HudV1 {
     extraction: string; eta: number; log: string[]; outcome: ReverseHuntStateV1["outcome"]; seed: number;
   };
   free?: FreeHudV1;
+  world?: {island: string; biome: string; zone: string | null; east: number; south: number; sizeKm: [number, number]; cached: number};
 }
 
 declare global {
@@ -81,18 +85,18 @@ declare global {
 const MAP_COLORS: Record<string, [number, number, number]> = {
   water: [36, 84, 112], ford: [86, 126, 108], sand: [210, 190, 132], grass: [104, 146, 70], jungle: [58, 100, 48], mud: [118, 96, 66], road: [134, 124, 110],
   bush: [70, 116, 52], crate: [134, 102, 56], rock: [134, 132, 122], tree: [32, 66, 28], wall: [180, 168, 146], roof: [150, 76, 50], pillar: [164, 158, 146], ruin: [196, 186, 146],
+  snow: [238, 244, 248], lava: [226, 84, 32], savanna: [194, 178, 100], pine: [28, 68, 52], palm: [84, 150, 74], building: [112, 116, 128],
 };
 
 /** The island seen from above, for the map key (M). */
-function drawIslandMap(canvas: HTMLCanvasElement, map: IslesMapV1, step: number) {
+function drawIslandMap(canvas: HTMLCanvasElement, map: IslesMapV1, step: number, sampleKind: (tx: number, tz: number) => string = (tx, tz) => kindAtV1(map, tx, tz)) {
   const size = Math.ceil(map.width / step);
   canvas.width = size; canvas.height = size;
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
   const image = ctx.createImageData(size, size);
   for (let z = 0; z < size; z++) for (let x = 0; x < size; x++) {
-    const i = Math.min(map.depth - 1, z * step) * map.width + Math.min(map.width - 1, x * step);
-    const c = MAP_COLORS[map.kinds[i]] ?? [0, 0, 0], o = (z * size + x) * 4;
+    const c = MAP_COLORS[sampleKind(Math.min(map.width - 1, x * step), Math.min(map.depth - 1, z * step))] ?? [0, 0, 0], o = (z * size + x) * 4;
     image.data[o] = c[0]; image.data[o + 1] = c[1]; image.data[o + 2] = c[2]; image.data[o + 3] = 255;
   }
   ctx.putImageData(image, 0, 0);
@@ -107,20 +111,37 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
   const [restart, setRestart] = useState(0);
   const [mapOpen, setMapOpen] = useState(false);
   const [mapMarks, setMapMarks] = useState<{x: number; z: number; label: string; tone: string}[]>([]);
+  const [worldMeters, setWorldMeters] = useState(verdantWorldJson.size * tuningJson.tileMeters);
+  const travelRef = useRef<(x: number, z: number) => void>(() => undefined);
 
   useEffect(() => {
     const canvas = canvasRef.current, labelLayer = labelsRef.current;
     if (!canvas || !labelLayer) return;
     let world: FreeHuntWorldV1 | null = null;
     if (kind === "free") world = generateIslesWorldV1(verdantWorldJson as unknown as IslesWorldSourceV1, tuningJson.tileMeters);
-    const map = world?.map ?? parseIslesMapV1((kind === "reverse" ? verdantMapJson : testMapJson) as unknown as IslesMapSourceV1, tuningJson.tileMeters);
+    const archipelago: IslesArchipelagoWorldV1 | null = kind === "world" ? createArchipelagoWorldV1(archipelagoJson as unknown as IslesArchipelagoSourceV1) : null;
+    const map = archipelago?.map ?? world?.map ?? parseIslesMapV1((kind === "reverse" ? verdantMapJson : testMapJson) as unknown as IslesMapSourceV1, tuningJson.tileMeters);
+    queueMicrotask(() => setWorldMeters(map.width * map.tileMeters));
     let scene: IslesSceneV1;
     try { scene = createIslesSceneV1(canvas, map, cameraTuning, {models, streamRadius: 3}); } catch {
       queueMicrotask(() => setFailure("WebGL indisponible : le mode The Isles demande WebGL2."));
       return;
     }
-    const spawn = markerV1(map, "spawn" in map.markers ? "spawn" : "yautjaDrop");
+    /** Dry, walkable spot nearest to a world point (the archipelago's anchors may sit on a roof or a tree). */
+    const landing = (x: number, z: number) => {
+      const [tx, tz] = tileAtV1(map, x, z);
+      const spot = nearestWalkableV1(map, tx, tz, 40);
+      return spot ? tileCenterV1(map, spot[0], spot[1]) : {x, z};
+    };
+    const spawn = archipelago ? landing(markerV1(map, "spawn").x, markerV1(map, "spawn").z) : markerV1(map, "spawn" in map.markers ? "spawn" : "yautjaDrop");
     let actor = createIslesActorV1(map, spawn.x, spawn.z, cloak);
+    travelRef.current = (x, z) => {
+      if (!archipelago) return;
+      const site = [...archipelago.sites].sort((a, b) => Math.hypot(a.x - x, a.z - z) - Math.hypot(b.x - x, b.z - z))[0];
+      const to = landing(site.x, site.z);
+      actor = createIslesActorV1(map, to.x, to.z, cloak);
+      setMapOpen(false);
+    };
     const match = kind === "reverse" ? createReverseHuntV1(map, rules, {movement, cloak}, seed) : null;
     if (match) actor = match.yautja.actor;
     const loaded = kind === "free" ? loadIslesProfileV1(storage()) : null;
@@ -135,6 +156,8 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
       free.dirty = false; lastSave = performance.now();
     };
     if (world && mapRef.current) drawIslandMap(mapRef.current, map, 2);
+    // The whole archipelago is drawn once, from one tile in forty (about 600 × 615 points).
+    const mapTimer = archipelago && mapRef.current ? window.setTimeout(() => { if (mapRef.current) drawIslandMap(mapRef.current, map, 40, (tx, tz) => archipelago.tileAt(tx, tz).kind); }, 300) : 0;
     const keys = new Set<string>(), pressed = new Set<string>();
     let rotation = 0, zoom = cameraTuning.defaultZoom, yaw = viewBasisV1(0, cameraTuning).yaw, zoomShown = cameraTuning.zoomHalfHeights[zoom];
     let lead = {x: 0, z: 0}, thermal = false, frames = 0, fps = 0, fpsAt = performance.now(), lastHud = 0;
@@ -148,7 +171,7 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
       if (event.code === "KeyR") rotation = (rotation + (event.shiftKey ? 3 : 1)) % 4;
       if (event.code === "KeyV") zoom = (zoom + 1) % cameraTuning.zoomHalfHeights.length;
       if (event.code === "KeyX" && !(match && match.yautja.jammedFor > 0)) thermal = !thermal;
-      if (event.code === "KeyM" && world) setMapOpen(open => !open);
+      if (event.code === "KeyM" && (world || archipelago)) setMapOpen(open => !open);
     };
     const up = (event: KeyboardEvent) => keys.delete(event.code);
     const wheel = (event: WheelEvent) => {
@@ -313,7 +336,17 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
         };
       })() : undefined;
       setHud({fps, actor: {cloaked: actor.cloaked, cloakEnergy: actor.cloakEnergy, climbing: actor.climbing, swimming: actor.swimming,
-        wading: actor.wading, running: actor.running, y: actor.y}, rotation, zoom, thermal, stats: scene.stats(), reverse, free: freeHud});
+        wading: actor.wading, running: actor.running, y: actor.y}, rotation, zoom, thermal, stats: scene.stats(), reverse, free: freeHud,
+        world: archipelago ? (() => {
+          const place = archipelago.placeAt(actor.x, actor.z);
+          return {island: place?.island ?? "En mer", biome: place?.biome ?? "", zone: place?.zone ?? null, east: actor.x / 1000, south: actor.z / 1000,
+            sizeKm: [map.width * map.tileMeters / 1000, map.depth * map.tileMeters / 1000] as [number, number], cached: archipelago.cachedZones()};
+        })() : undefined});
+      if (archipelago) {
+        const names = new Map<string, {x: number; z: number; n: number}>();
+        for (const site of archipelago.sites) { const e = names.get(site.island) ?? {x: 0, z: 0, n: 0}; e.x += site.x; e.z += site.z; e.n++; names.set(site.island, e); }
+        setMapMarks([...[...names].map(([label, e]) => ({x: e.x / e.n, z: e.z / e.n, label, tone: "site"})), {x: actor.x, z: actor.z, label: "Vous", tone: "player"}]);
+      }
       if (free && world) {
         const marks = world.sites.filter(site => site.id !== "chutes").map(site => ({x: site.x, z: site.z, label: site.label, tone: site.id === "repaire" ? "lair" : "site"}));
         marks.push({x: actor.x, z: actor.z, label: "Vous", tone: "player"});
@@ -352,6 +385,8 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
       // Browser QA hooks (scripts/qa-isles-browser-v1.mjs); absent for players.
       window.__islesV1 = {
         kind, actor: () => actor, match: () => match, free: () => free, world: () => world, stats: () => scene.stats(), rotation: () => rotation,
+        archipelago: () => archipelago && {sites: archipelago.sites, cached: archipelago.cachedZones(), width: map.width, depth: map.depth},
+        travel: (x: number, z: number) => travelRef.current(x, z),
         cutaway: (enabled: boolean) => scene.setCutaway(enabled), project: (x: number, y: number, z: number) => scene.project(x, y, z),
         place: (x: number, z: number, y = 0) => {
           actor = {...actor, x, y, z, vx: 0, vy: 0, vz: 0};
@@ -364,6 +399,7 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
     }
     return () => {
       stopped = true;
+      window.clearTimeout(mapTimer);
       cancelAnimationFrame(raf);
       observer.disconnect();
       window.removeEventListener("keydown", down);
@@ -376,15 +412,15 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
     };
   }, [kind, seed, restart]);
 
-  const r = hud?.reverse, f = hud?.free;
-  const ariaLabel = kind === "reverse" ? "Verdant, vue isométrique de la Chasse inversée" : kind === "free" ? "Verdant en chasse libre, vue isométrique" : "Île de test, vue isométrique";
+  const r = hud?.reverse, f = hud?.free, w = hud?.world;
+  const ariaLabel = kind === "reverse" ? "Verdant, vue isométrique de la Chasse inversée" : kind === "free" ? "Verdant en chasse libre, vue isométrique" : kind === "world" ? "Archipel entier, vue isométrique" : "Île de test, vue isométrique";
   return <div className={styles.play} data-isles-play-v1={kind} data-isles-thermal={hud?.thermal ? "on" : "off"}>
     <canvas ref={canvasRef} className={styles.canvas} tabIndex={0} aria-label={ariaLabel} />
     <div ref={labelsRef} className={styles.labels} aria-hidden="true" />
     {r?.rain ? <div className={styles.rain} aria-hidden="true" /> : null}
     {r?.jammed ? <div className={styles.jam} aria-hidden="true" /> : null}
     {failure ? <p role="alert" className={styles.failure}>{failure}</p> : null}
-    {!hud && !failure ? <p role="status" className={styles.loading}>{kind === "free" ? "Génération de Verdant…" : "Chargement…"}</p> : null}
+    {!hud && !failure ? <p role="status" className={styles.loading}>{kind === "free" ? "Génération de Verdant…" : kind === "world" ? "Ouverture de l’archipel…" : "Chargement…"}</p> : null}
     <header className={styles.topbar}>
       <button type="button" className={styles.quit} onClick={onQuit}>Quitter</button>
       {r ? <>
@@ -397,6 +433,10 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
         <span className={styles.chip} data-isles-alert={f.alert} aria-label={"Alerte " + f.alert}>Alerte <span className={styles.glyphs}>{[1, 2, 3].map(level => <i key={level} data-on={f.alert >= level} />)}</span></span>
         <span className={styles.chip}>Réputation <b data-isles-reputation>{f.reputation}</b> · honneur {f.honor}</span>
       </> : null}
+      {w ? <>
+        <span className={styles.chip} data-isles-place><b>{w.island}</b>{w.biome ? " · " + w.biome : ""}{w.zone ? " · " + w.zone : ""}</span>
+        <span className={styles.chip} data-isles-position>{w.east.toFixed(2)} km est · {w.south.toFixed(2)} km sud · carte de {w.sizeKm[0].toFixed(0)} × {w.sizeKm[1].toFixed(0)} km</span>
+      </> : null}
       {hud ? <span className={styles.chip} data-isles-camera>Vue {["N-E", "S-E", "S-O", "N-O"][hud.rotation]} · {cameraTuning.zoomNames[hud.zoom]}{hud.thermal ? " · thermique" : ""}</span> : null}
     </header>
     {hud ? <aside className={styles.status} aria-label="État du chasseur">
@@ -407,6 +447,7 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
       <label>Camouflage{hud.actor.cloaked ? " actif" : ""}<meter min={0} max={cloak.capacity} value={hud.actor.cloakEnergy} /></label>
       <p className={styles.motion}>{hud.actor.climbing ? "Escalade" : hud.actor.swimming ? "Nage (camouflage impossible)" : hud.actor.wading ? "Dans l’eau" : hud.actor.running ? "Course" : "Marche"} · hauteur {hud.actor.y.toFixed(1)} m</p>
       {f ? <p className={styles.motion} data-isles-carried={f.carried.length}>Trophées portés : {f.carried.length ? f.carried.join(", ") : "aucun"}{f.lair ? "" : " · repaire à découvrir derrière les chutes"}</p> : null}
+      {w ? <p className={styles.motion}>Zones calculées en mémoire : {w.cached} · <kbd>M</kbd> carte et voyage</p> : null}
       {kind !== "reverse" ? <p className={styles.tech} data-isles-stats>{hud.stats.zones} zones chargées · {hud.stats.terrainTriangles} triangles · {hud.stats.instances} objets instanciés · {hud.stats.modelsReady} modèles · {hud.stats.drawCalls} appels · {hud.fps} i/s</p> : null}
     </aside> : null}
     {r ? <aside className={styles.team} aria-label="Équipe humaine">
@@ -440,13 +481,17 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
         {f.saved ? <p className={styles.alert}>{f.saved}</p> : null}
         <ul className={styles.log}>{f.log.map((line, i) => <li key={i}>{line}</li>)}</ul>
       </div> : null}
-      <p className={styles.keys}><kbd>ZQSD</kbd>/<kbd>WASD</kbd> se déplacer · <kbd>Maj</kbd> courir · <kbd>Espace</kbd> sauter · pousser contre une paroi : grimper · <kbd>C</kbd> camouflage · <kbd>X</kbd> thermique · <kbd>R</kbd> tourner · <kbd>V</kbd>/molette zoom{kind !== "view" ? <> · <kbd>E</kbd> frapper · <kbd>F</kbd> plasma · <kbd>T</kbd> trophée</> : null}{kind === "free" ? <> · <kbd>G</kbd> interagir · <kbd>M</kbd> carte</> : null}</p>
+      <p className={styles.keys}><kbd>ZQSD</kbd>/<kbd>WASD</kbd> se déplacer · <kbd>Maj</kbd> courir · <kbd>Espace</kbd> sauter · pousser contre une paroi : grimper · <kbd>C</kbd> camouflage · <kbd>X</kbd> thermique · <kbd>R</kbd> tourner · <kbd>V</kbd>/molette zoom{kind !== "view" ? <> · <kbd>E</kbd> frapper · <kbd>F</kbd> plasma · <kbd>T</kbd> trophée</> : null}{kind === "free" ? <> · <kbd>G</kbd> interagir · <kbd>M</kbd> carte</> : null}{kind === "world" ? <> · <kbd>M</kbd> carte et voyage</> : null}</p>
     </footer>
-    <div className={styles.mapOverlay} hidden={!mapOpen} role="dialog" aria-label="Carte de Verdant" data-isles-map={mapOpen ? "open" : "closed"}>
-      <div className={styles.mapFrame}>
+    <div className={styles.mapOverlay} hidden={!mapOpen} role="dialog" aria-label={kind === "world" ? "Carte de l’archipel" : "Carte de Verdant"} data-isles-map={mapOpen ? "open" : "closed"}>
+      {kind === "world" ? <p className={styles.mapHint}>Cliquez sur la carte pour poser le vaisseau au lieu le plus proche.</p> : null}
+      <div className={styles.mapFrame} data-isles-map-frame onClick={kind === "world" ? event => {
+        const box = event.currentTarget.getBoundingClientRect();
+        travelRef.current((event.clientX - box.left) / box.width * worldMeters, (event.clientY - box.top) / box.height * worldMeters);
+      } : undefined}>
         <canvas ref={mapRef} className={styles.mapCanvas} />
         {mapMarks.map((mark, i) => <span key={i} className={styles.mapMark} data-tone={mark.tone}
-          style={{left: (mark.x / (verdantWorldJson.size * tuningJson.tileMeters) * 100) + "%", top: (mark.z / (verdantWorldJson.size * tuningJson.tileMeters) * 100) + "%"}}>{mark.label}</span>)}
+          style={{left: (mark.x / worldMeters * 100) + "%", top: (mark.z / worldMeters * 100) + "%"}}>{mark.label}</span>)}
       </div>
       <button type="button" onClick={() => setMapOpen(false)}>Fermer la carte <kbd>M</kbd></button>
     </div>
@@ -490,6 +535,11 @@ export default function IslesModeV1({onExit}: {onExit: () => void}) {
         <p>Une île de 2 km : autel, fleuve et chutes, camp des braconniers, fouilles, piste cachée, village. Contrats de l’autel, prime du Prédicateur, Roi-de-Verdant les nuits sans lune, mission « L’appât », épreuve de la canopée, fragments. Rapportez vos trophées au repaire.</p>
         <p className={styles.warning} data-isles-profile>{summary}</p>
         <button type="button" data-isles-start="free" onClick={() => setPlay({kind: "free", seed})}>Partir sur Verdant</button>
+      </article>
+      <article>
+        <h3>L’archipel entier</h3>
+        <p>Les quatorze îles à l’échelle réelle : 48 × 49 km, chargés en continu autour du chasseur. Côtes naturelles, climats du nord polaire au sud tropical, métropole de Calder, volcan d’Ember, atolls des Shallows. Carte et voyage en vaisseau avec <kbd>M</kbd>.</p>
+        <button type="button" data-isles-start="world" onClick={() => setPlay({kind: "world", seed})}>Explorer l’archipel</button>
       </article>
       <article>
         <h3>Prototype de vue</h3>

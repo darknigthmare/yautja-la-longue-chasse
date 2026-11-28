@@ -1,0 +1,114 @@
+{
+  "schema": 1,
+  "date": "2026-11-28",
+  "renderer": "Chromium headless, WebGL2 via SwiftShader (software)",
+  "steps": [
+    {
+      "step": "l’archipel de 48 × 49 km s’ouvre sur Verdant, sans carte stockée",
+      "zones": 49,
+      "terrainTriangles": 103568,
+      "instances": 17468,
+      "drawCalls": 49,
+      "modelsReady": 0,
+      "cached": 77
+    },
+    {
+      "step": "le chasseur court sur le monde chargé en continu"
+    },
+    {
+      "step": "carte de tout l’archipel (touche M)"
+    },
+    {
+      "step": "voyage en vaisseau par un clic sur la carte : Calder, Downtown"
+    },
+    {
+      "step": "voyage : Frost Isle · Le glacier"
+    },
+    {
+      "step": "voyage : Ember · Le volcan"
+    },
+    {
+      "step": "voyage : Redmesa · Désert ouvert et canyons"
+    },
+    {
+      "step": "voyage : The Shallows · Les mangroves et les passes"
+    },
+    {
+      "step": "voyage : Hollowpine · Montagne et lac"
+    },
+    {
+      "step": "voyage : Saltmarsh · Les bayous"
+    },
+    {
+      "step": "après sept voyages, le monde en mémoire reste borné",
+      "zones": 49,
+      "terrainTriangles": 103352,
+      "instances": 12227,
+      "drawCalls": 110,
+      "modelsReady": 0,
+      "cached": 633
+    }
+  ],
+  "metrics": {
+    "world": {
+      "tilesWide": 24000,
+      "tilesDeep": 24600,
+      "sites": 81
+    },
+    "start": {
+      "zones": 49,
+      "terrainTriangles": 103568,
+      "instances": 17468,
+      "drawCalls": 49,
+      "modelsReady": 0,
+      "cached": 77
+    },
+    "end": {
+      "zones": 49,
+      "terrainTriangles": 103352,
+      "instances": 12227,
+      "drawCalls": 110,
+      "modelsReady": 0,
+      "cached": 633
+    }
+  },
+  "captures": [
+    {
+      "file": "01-verdant-autel.png",
+      "sha256": "b38a833954c2f99a72248127cfe686872a3e71cdc65171788bef063ca47780cd"
+    },
+    {
+      "file": "02-carte-de-l-archipel.png",
+      "sha256": "7838870ab657ab051eac727ed378735fb97744262324368aeb9953f8cfdbf545"
+    },
+    {
+      "file": "03-calder-downtown.png",
+      "sha256": "badd320e3b784e29bd2090405607d41fe6945269a60e1c20fa3db7e9fc178825"
+    },
+    {
+      "file": "04-frost-isle-glacier.png",
+      "sha256": "4074d74562aaeec64002b31880bb2d3fd74c2d0f20c1a6a12eb7e227f1fb0833"
+    },
+    {
+      "file": "05-ember-volcan.png",
+      "sha256": "e84bfd67302bbe9a2b4442596b5534ccfb1af024e0b9929414d95b95dd3f7a0a"
+    },
+    {
+      "file": "06-redmesa-desert.png",
+      "sha256": "f55d165e4c26d38360f38c26dd298129cd4b9625c285362ca9f0753d529bdecf"
+    },
+    {
+      "file": "07-shallows-atoll.png",
+      "sha256": "2c5d5f9986e961f9f337b68285fbf21f93b6038e445d7c333ab8ce2c8b552dc6"
+    },
+    {
+      "file": "08-hollowpine-montagne.png",
+      "sha256": "dcfcde5c67a154839b3798bef2785433982175a57f5eda4832d54d5247aa0733"
+    },
+    {
+      "file": "09-saltmarsh-bayous.png",
+      "sha256": "d1c7bb8ce97658c51c9d8edf07836eb9b005e8ef9a4914e21664772a79a3c221"
+    }
+  ],
+  "errors": []
+}

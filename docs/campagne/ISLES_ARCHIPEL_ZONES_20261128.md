@@ -23,30 +23,44 @@ Les noms d'îles absents des notes sont *(proposés)*. Les notes citaient des pa
 
 ## 1. La forme de l'archipel
 
-**Décision :** l'archipel suit le **Plan 2**. Ce n'est plus une grille de dix grandes îles reliées par des ponts, mais une multitude d'îles de tailles très différentes : trois grandes terres à l'ouest et au nord, la métropole à l'est, et un semis d'îles moyennes et petites au centre et au sud.
+**Décision :** l'archipel suit le **Plan 2**. Ce n'est plus une grille de dix grandes îles reliées par des ponts, mais une multitude d'îles de tailles très différentes. Depuis le 28 novembre, la carte est à **taille réelle** : 48 km d'ouest en est et 49 km du nord au sud, jouable d'un seul tenant dans le mode « L'archipel entier » (section 1.4).
 
-![Plan de l'archipel d'après le Plan 2](assets/isles-archipel-plan-20261128.svg)
+![Plan de l'archipel, tiré du monde généré](assets/isles-archipel-plan-20261128.png)
 
-Le tracé est dans `app/game/data/islesArchipelagoV1.json` (contours en kilomètres, zones, liaisons). Le plan ci-dessus est produit à partir de ce fichier par `scripts/build-isles-archipelago-map-v1.mjs`. Le tracé a été relevé à la main sur le Plan 2 : il donne les positions et les proportions, pas un rivage définitif.
+Le plan ci-dessus n'est pas un dessin : `scripts/build-isles-archipelago-map-v1.mjs` interroge le vrai générateur (`app/game/isles/islesArchipelagoGenV1.ts`) une tuile sur vingt et colorie ce qu'il répond. Les données sont dans `app/game/data/islesArchipelagoV1.json` : contours relevés sur le Plan 2, climat de chaque île, ancre et type de chaque zone, liaisons. Le générateur déforme ces contours pour en faire des côtes naturelles (section 1.4) ; aucune île n'est un carré ni un rond.
+
+**Placement par climat.** Le Plan 2 donnait les voisinages ; la latitude de chaque île suit maintenant la logique d'un archipel terrestre de l'hémisphère nord, froid en haut, tropical en bas.
+
+| Bande | Îles | Modèle terrestre |
+| --- | --- | --- |
+| extrême nord, polaire | Frost Isle | une île arctique basse, glacier et toundra, du côté du courant froid |
+| nord, tempéré froid et océanique | Hollowpine, Highland Isle | forêt de conifères et montagne de la côte pacifique nord ; lande et falaises des îles atlantiques |
+| milieu, tempéré et méditerranéen | Grayhaven, Calder, Solana | ville de baie sur un estuaire abrité ; île sèche à maquis sous le vent des reliefs |
+| ouest, aride | Redmesa | désert côtier de façade ouest, là où un courant froid assèche la côte |
+| sud-ouest, tropical sec | Tallgrass | savane entre le désert et la zone humide |
+| sud, subtropical et tropical humide | Saltmarsh, Eastbank, Steelwater, Ember, Halcyon Cay, Verdant | marais de delta, arc volcanique, jungle au vent |
+| extrême sud, récifs | The Shallows | chapelet de cayes, mangroves côté abrité, récif frangeant et lagons |
+
+Ember, Petite Ember et Les Cendres sont alignées : c'est un **arc volcanique**, comme en produit une zone de subduction. Les îlots et écueils se serrent près des grandes côtes, là où le socle est peu profond ; la pleine mer est à l'est, où sont les plateformes.
 
 | N° du Plan 2 | Note d'origine | Île | Biome | Place sur la carte |
 | --- | --- | --- | --- | --- |
 | 1 (nord) | partie haute, forêt brûlée / aftermath | **Grayhaven** | zone de quarantaine | ouest |
 | 1 (sud) | désert | **Redmesa** | désert et canyons | sud-ouest |
-| 2 | forêt de pin, neighborhood | **Hollowpine** | forêt de pins et montagne, avec Maple Hollow | tout le nord |
-| 3 | volcan, port | **Ember** | volcan | centre |
+| 2 | forêt de pin, neighborhood | **Hollowpine** | forêt de pins et montagne, avec Maple Hollow | nord et nord-ouest |
+| 3 | volcan, port | **Ember** | volcan | centre-sud |
 | 4 | big city | **Calder** | métropole | est |
 | 5 | zone industrielle | **Steelwater** *(proposé)* | industrie et port | sud-est |
 | 6 | zone commerciale | **Eastbank** | commerces et loisirs | est, sous Calder |
-| 7 | Highland Isle | **Highland Isle** | lande et falaises | centre-sud |
-| 8 | tropical island | **Halcyon Cay** | île tropicale privée | centre-sud |
+| 7 | Highland Isle | **Highland Isle** | lande et falaises | nord-est |
+| 8 | tropical island | **Halcyon Cay** | île tropicale privée | sud |
 | 9 | tropical island | **Verdant** | jungle | sud |
-| 10 | chain of islands | **The Shallows** | chapelet de mangroves et de récifs | tout le sud |
-| 11 | Mediterranean | **Solana** *(proposé)* | île méditerranéenne | centre-nord |
-| 12 | swamp | **Saltmarsh** | marais | centre-ouest |
-| 13 | Northern island 2 | **Frost Isle** | toundra | centre, à l'est d'Ember |
+| 10 | chain of islands | **The Shallows** | chapelet de mangroves et de récifs | extrême sud |
+| 11 | Mediterranean | **Solana** *(proposé)* | île méditerranéenne | centre |
+| 12 | swamp | **Saltmarsh** | marais | centre-sud-ouest |
+| 13 | Northern island 2 | **Frost Isle** | toundra et glacier | extrême nord |
 | 14 | savanna | **Tallgrass** | savane | sud-ouest, contre Redmesa |
-| îlots | petits contours autour des îles 4, 5 et 6 | Ironhook, Blackrock, les Jumelles, îlot du Navigateur, les Brisants, Rocher aux Mouettes | — | est |
+| îlots | petits contours autour des îles 4, 5 et 6 | Ironhook, Blackrock, les Jumelles, îlot du Navigateur, les Brisants, Rocher aux Mouettes, Les Cendres, Petite Ember | — | est et arc d'Ember |
 | zone de mer | oil rigs, tentacle branch, variant | plateformes Sable-7, Sable-9 et Sable-4 | pleine mer | à l'est de Steelwater |
 | bonus | Nihon, Méditerranée | **Nihon** (hors carte) ; la Méditerranée est devenue l'île 11 | — | plus tard |
 
@@ -59,26 +73,33 @@ Le tracé est dans `app/game/data/islesArchipelagoV1.json` (contours en kilomèt
 | Maple Hollow et Harvest Flats | sur Eastbank et sur Tallgrass | sur Hollowpine, au sud de la forêt de pins | proposé, d'après la « Neighborhood zone » de l'île 2 |
 | Zone industrielle et port de conteneurs | sur Eastbank | sur leur propre île, Steelwater | décision (île 5) |
 | Aéroport international | sur Eastbank | au nord de Steelwater | proposé |
-| Frost Isle | grande île du nord | petite île du centre, près d'Ember | décision (île 13) ; sa taille réduite est à confirmer |
+| Frost Isle | grande île du nord | île longue et basse de l'extrême nord, 12,8 km | décision (île 13) ; déplacée au nord le 28 novembre pour la cohérence du climat, à confirmer |
 | Ironhook | île moyenne | îlot fortifié au nord-est de Calder | proposé |
 | Halcyon Cay | îlot | île tropicale n° 8 | proposé |
-| Highland Isle, Solana | absentes | nouvelles îles 7 et 11 | décision pour les îles, noms et contenus proposés |
+| Highland Isle, Solana | absentes | nouvelles îles 7 et 11 ; Highland Isle au nord-est, sous le vent froid | décision pour les îles, noms, contenus et place de Highland Isle proposés |
+| Les Cendres, Petite Ember | absentes | deux îlots volcaniques dans l'alignement d'Ember | proposé |
 
 ### 1.2 Tailles
 
-La carte fait environ 12 km d'ouest en est et 10,6 km du nord au sud. Une tuile vaut 2 m.
+La carte fait **48 km d'ouest en est et 49,2 km du nord au sud**, soit 24 000 × 24 600 tuiles de 2 m. Le relevé du Plan 2 (12 × 12,3 km) est multiplié par 4 (`scale` dans les données) : c'est l'échelle à laquelle Calder a la taille d'une vraie ville de baie et Hollowpine celle d'une vraie île de montagne.
 
-| Île | Largeur approximative | Remarque |
+| Île | Largeur × hauteur | Remarque |
 | --- | --- | --- |
-| Hollowpine | 8 km | la plus grande ; moitié forêt, moitié habitée |
-| Redmesa | 3,2 km | |
-| Grayhaven | 3,3 km | |
-| Calder | 3 km | grille de rues au centre, collines au nord |
-| Solana | 3,8 km | |
-| Steelwater | 2,4 km | étirée du nord-ouest au sud-est |
-| Verdant | 1,7 km | l'île jouable de l'[étape 4](ISLES_VERDANT_CHASSE_LIBRE_20261128.md) fait 2 km |
-| Tallgrass, Ember, Eastbank, Saltmarsh | 1,2 à 1,7 km | |
-| Halcyon Cay, Highland Isle, Frost Isle | 0,5 à 1,2 km | |
+| Hollowpine | 32,6 × 15,5 km | la plus grande ; montagne et pins au nord, Maple Hollow et les champs au sud |
+| Calder | 12,4 × 15,2 km | grille de rues au centre, tours jusqu'à 130 m, collines au nord |
+| Solana | 15,5 × 7,8 km | |
+| Grayhaven | 13,3 × 9,5 km | |
+| Redmesa | 12,7 × 17,1 km | |
+| Frost Isle | 12,8 × 4,2 km | |
+| Steelwater | 9,5 × 9,3 km | étirée du nord-ouest au sud-est |
+| Tallgrass | 7,0 × 11,6 km | |
+| Verdant | 6,9 × 3,2 km | l'île de l'[étape 4](ISLES_VERDANT_CHASSE_LIBRE_20261128.md) reste sa carte à part de 2 km, voir section 1.4 |
+| Ember | 6,4 × 5,7 km | cône et cratère de lave |
+| Highland Isle, Eastbank | 6 × 4 à 5 km | |
+| Saltmarsh, Halcyon Cay | 4,7 à 4,8 km | |
+| îlots | 0,7 à 1,8 km | |
+
+À pied (4,4 m/s en marche, 8,6 m/s en course), traverser la carte prend plus d'une heure et demie de course : le voyage par la carte (touche M) et, plus tard, le vaisseau sont nécessaires.
 
 ### 1.3 Liaisons
 
@@ -91,16 +112,40 @@ La carte fait environ 12 km d'ouest en est et 10,6 km du nord au sud. Une tuile 
 | Tallgrass | Saltmarsh | gué |
 | Solana | Calder | pont suspendu |
 | Saltmarsh | Ember | ferry |
-| Ember | Frost Isle, Highland Isle | ferries |
 | Calder | les Jumelles, puis Eastbank | ponts et métro |
 | Eastbank | Steelwater | pont routier et voie ferrée |
 | Calder | Ironhook | digue fermée |
-| Highland Isle | Verdant | ferry |
+| Hollowpine | Frost Isle | ferry du nord |
+| Calder | Highland Isle | ferry |
+| Highland Isle | Frost Isle | ferry |
 | Halcyon Cay | Verdant | bateau privé |
 | Verdant | The Shallows | gué à marée basse |
 | Steelwater | plateformes | navettes et hélicoptères |
 
 Le vaisseau personnel garde sa règle : voyage rapide entre repaires découverts, jamais à Calder ni à Ironhook.
+
+### 1.4 Le monde en taille réelle : génération et chargement
+
+**Ce qui est fait (code).** Le mode « L'archipel entier » de l'écran The Isles ouvre toute la carte d'un seul tenant.
+
+| Sujet | Règle |
+| --- | --- |
+| Stockage | aucun : 590 millions de tuiles ne tiennent pas en mémoire. Chaque tuile est **calculée à la demande** à partir des données et d'une graine ; le même point donne toujours la même tuile |
+| Chargement | par zones de 32 × 32 tuiles (64 m) autour du Predator, rayon de 3 zones, 4 zones construites par image ; les zones lointaines sont libérées. Le cache du générateur est borné à 900 zones |
+| Côtes | contour du Plan 2 déformé par un bruit à grande échelle (caps et baies), puis par un bruit fin (criques) ; écueils au large des pointes, récif frangeant et lagons au sud, détroits gardés entre deux îles voisines |
+| Relief | montagne et lac sur Hollowpine, glacier sur Frost Isle, falaises sur Highland Isle, mesas et canyons sur Redmesa, cône de 60 m et cratère de lave sur Ember, chenaux sur Saltmarsh |
+| Végétation | pins au nord, feuillus au centre, maquis sur Solana, palmiers et jungle au sud, palétuviers dans The Shallows, arbres brûlés sur Grayhaven |
+| Zones bâties | chaque zone a une ancre et un type (camp, village, ville, industrie, ruines, métropole) : rues, murs, toits, tours. Calder a une grille d'avenues, un parc central et des tours de 20 à 130 m |
+| Carte | touche M : l'archipel entier, le nom des îles, la position ; un clic sur une terre y transporte le Predator (outil de repérage de cette étape, il deviendra le voyage par vaisseau) |
+| Affichage | île, biome, zone, position en kilomètres |
+
+**Ce qui n'est pas encore fait.**
+
+- La chasse libre (gibier, primes, honneur, missions) tourne toujours sur la carte à part de Verdant (2 km). Dans l'archipel entier on se déplace, on grimpe, on nage et on se camoufle, mais le monde n'est pas encore peuplé.
+- Les zones sont des gabarits génériques par type : les lieux nommés des sections 3 à 18 (lycée, stade, aéroport, prison…) ne sont pas encore construits un par un.
+- Le relief est comprimé : le plus haut sommet fait environ 70 m, contre 130 m pour les tours de Calder.
+- Ponts, digues et gués des liaisons ne sont pas tracés ; on passe d'une île à l'autre à la nage ou par la carte.
+- Pas de niveau de détail lointain : on voit 3 zones (192 m) autour de soi. Les performances n'ont été mesurées que sur le rendu logiciel de la recette, pas sur une vraie carte graphique.
 
 ---
 
@@ -635,7 +680,7 @@ Note d'origine : « Old farwest town ».
 
 ## 16. Île 13 — Frost Isle, l'île du nord
 
-**Note d'origine :** « Northen island 2 ». Petite île froide au centre de l'archipel : un courant glacé et l'altitude la gardent sous la neige.
+**Note d'origine :** « Northen island 2 ». Île longue et basse à l'extrême nord de l'archipel, au-dessus de Hollowpine : c'est la latitude et le courant froid qui la gardent sous la neige.
 
 - **Repère :** le front du glacier.
 - **Faction :** sécurité de la station polaire, chasseurs de fourrure.
@@ -682,6 +727,8 @@ Note d'origine : « Old farwest town ».
 | **Îlot du Navigateur** | statue, esplanade, petit musée | touristes (civils) | point de vue sur la baie | Bible |
 | **Les Brisants** | rochers entre Eastbank et Steelwater, balise | — | passage à la nage ; cache | proposé |
 | **Rocher aux Mouettes** | îlot nu, cabane de pêcheur | contrebandiers | rendez-vous en canot | proposé |
+| **Les Cendres** | îlot de scories noires au sud-est d'Ember, fumerolles | oiseaux de mer | cache ; prélèvements d'ARGOS | proposé |
+| **Petite Ember** | cône éteint au nord-ouest d'Ember, cratère envahi de végétation | — | point de vue sur le volcan ; repaire possible | proposé |
 
 **Île bonus Nihon** *(hors carte, plus tard)* : île d'inspiration japonaise citée dans les notes. Contenu proposé : village de pêcheurs, sanctuaire, forêt de bambous, château en ruine, rizières en terrasses. Elle peut servir de carte de saison.
 
@@ -734,9 +781,11 @@ Les trois modes avec des xénomorphes touchent à la décision « présent fixe,
 1. **Noms proposés** : Steelwater (île 5) et Solana (île 11).
 2. **Grayhaven à l'ouest**, à la place de l'îlot de l'est, avec le site de l'incident des notes.
 3. **Maple Hollow et Harvest Flats sur Hollowpine**, d'après la « Neighborhood zone » de l'île 2.
-4. **Frost Isle petite** (île 13) : confirmer cette taille, ou placer une grande île du nord hors du Plan 2.
+4. **Frost Isle à l'extrême nord et Highland Isle au nord-est** : le Plan 2 les plaçait au centre ; elles ont été déplacées pour que le climat soit cohérent. À confirmer.
 5. **Ironhook en îlot** au nord-est de Calder, et **Halcyon Cay en île 8**.
 6. **Aéroport international sur Steelwater.**
 7. **Contenu de Solana et de Highland Isle**, presque entièrement proposé.
 8. **Modes avec xénomorphes** (Infection Control, Xeno invasion) et **BR Mode** : à garder ou non.
-9. **Ordre d'ouverture des îles** : le cordon d'ARGOS ([mode](MODE_THE_ISLES_20261121.md), section 14.1) cite des groupes d'îles de l'ancienne carte ; il faudra le redessiner sur ce plan.
+9. **Échelle ×4** (48 × 49 km) : à confirmer, ou choisir plus petit (×2, 24 km) ou plus grand.
+10. **Les Cendres et Petite Ember**, îlots ajoutés pour former l'arc volcanique.
+11. **Ordre d'ouverture des îles** : le cordon d'ARGOS ([mode](MODE_THE_ISLES_20261121.md), section 14.1) cite des groupes d'îles de l'ancienne carte ; il faudra le redessiner sur ce plan.

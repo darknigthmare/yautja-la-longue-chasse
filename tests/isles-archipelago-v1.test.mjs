@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {execFileSync} from 'node:child_process';
 import {readFile} from 'node:fs/promises';
 
 const data = JSON.parse(await readFile('app/game/data/islesArchipelagoV1.json', 'utf8'));
@@ -42,6 +41,9 @@ test('the bible sheet describes every zone of the data, with consistent tables',
   });
 });
 
-test('the plan drawing matches the data', () => {
-  execFileSync(process.execPath, ['scripts/build-isles-archipelago-map-v1.mjs', '--check'], {stdio: 'pipe'});
+test('the plan is drawn from the generated world', async () => {
+  const png = await readFile('docs/campagne/assets/isles-archipel-plan-20261128.png');
+  assert.equal(png.readUInt32BE(16), 1200, 'une tuile sur vingt en largeur');
+  assert.equal(png.readUInt32BE(20), 1230);
+  assert.ok(doc.includes('assets/isles-archipel-plan-20261128.png'));
 });

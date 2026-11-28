@@ -70,3 +70,5 @@
 .mapMark[data-tone=player]{color:var(--cloak);border:1px solid var(--cloak);font-weight:700}
 .mapMark[data-tone=lair]{color:#b48cff}
 .mapMark[data-tone=alert]{color:var(--glyph);border:1px dashed var(--glyph)}
+.mapHint{margin:0;text-align:center;color:#c3d0c9}
+.mapFrame[data-isles-map-frame]{cursor:crosshair}

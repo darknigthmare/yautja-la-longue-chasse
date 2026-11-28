@@ -1,8 +1,7 @@
 {
- "version": 1,
- "source": "Plan 2 du propriétaire (17 mai 2023), croquis « The Isle » (21 juin 2022) et vues de travail « Plan » (8 février 2023) ; tracé relevé à la main, à affiner.",
- "sizeKm": [12, 10.6],
- "tilesPerKm": 500,
+ "version": 2,
+ "source": "Plan 2 du propriétaire (17 mai 2023), croquis « The Isle » (21 juin 2022) et vues de travail « Plan » (8 février 2023) ; tracé relevé à la main, à affiner. Version 2 : échelle réelle (× 4), côtes naturelles et placement par climat.",
+ "sizeKm": [12, 12.3],
  "islands": [
   {
    "number": "1N",
@@ -10,15 +9,16 @@
    "name": "Grayhaven",
    "planLabel": "Île 1 · partie haute, forêt brûlée / aftermath",
    "biome": "quarantaine",
-   "outline": [[0.41, 4.02], [0.62, 3.9], [3.2, 3.94], [3.66, 4.74], [3.3, 5.57], [1.86, 6.13], [0.82, 6.27], [0.41, 5.46], [0.33, 4.54]],
+   "outline": [[0.41, 5.37], [0.62, 5.25], [3.2, 5.29], [3.66, 6.09], [3.3, 6.92], [1.86, 7.48], [0.82, 7.62], [0.41, 6.81], [0.33, 5.89]],
    "zones": [
-    {"id": "1N.1", "name": "Les Hauts"},
-    {"id": "1N.2", "name": "Le mur"},
-    {"id": "1N.3", "name": "Site de l’incident"},
-    {"id": "1N.4", "name": "Ashgrove, ville abandonnée"},
-    {"id": "1N.5", "name": "Banlieue figée"},
-    {"id": "1N.6", "name": "Port d’Ashgrove"}
-   ]
+    {"id": "1N.1", "name": "Les Hauts", "at": [1.865, 6.99], "stamp": "none"},
+    {"id": "1N.2", "name": "Le mur", "at": [2.46, 6.175], "stamp": "ruins"},
+    {"id": "1N.3", "name": "Site de l’incident", "at": [0.962, 5.886], "stamp": "ruins"},
+    {"id": "1N.4", "name": "Ashgrove, ville abandonnée", "at": [0.855, 7.023], "stamp": "town"},
+    {"id": "1N.5", "name": "Banlieue figée", "at": [1.797, 5.527], "stamp": "village"},
+    {"id": "1N.6", "name": "Port d’Ashgrove", "at": [3.044, 5.417], "stamp": "town"}
+   ],
+   "climate": "tempéré"
   },
   {
    "number": "1S",
@@ -26,15 +26,16 @@
    "name": "Redmesa",
    "planLabel": "Île 1 · désert",
    "biome": "désert",
-   "outline": [[0.46, 6.37], [1.86, 6.27], [3.22, 5.71], [3.59, 6.6], [3.56, 8.35], [2.63, 9.18], [2.58, 9.64], [2.06, 9.98], [1.39, 9.88], [0.62, 8.92], [0.41, 7.63]],
+   "outline": [[0.46, 7.72], [1.86, 7.62], [3.22, 7.06], [3.59, 7.95], [3.56, 9.7], [2.63, 10.53], [2.58, 10.99], [2.06, 11.33], [1.39, 11.23], [0.62, 10.27], [0.41, 8.98]],
    "zones": [
-    {"id": "1S.1", "name": "Désert ouvert et canyons"},
-    {"id": "1S.2", "name": "La Route 9"},
-    {"id": "1S.3", "name": "Dustwater"},
-    {"id": "1S.4", "name": "Mine et Speedway"},
-    {"id": "1S.5", "name": "Zone militaire cachée"},
-    {"id": "1S.6", "name": "Sous-sols du désert"}
-   ]
+    {"id": "1S.1", "name": "Désert ouvert et canyons", "at": [1.444, 8.049], "stamp": "none"},
+    {"id": "1S.2", "name": "La Route 9", "at": [2.285, 10.199], "stamp": "none"},
+    {"id": "1S.3", "name": "Dustwater", "at": [2.255, 8.81], "stamp": "town"},
+    {"id": "1S.4", "name": "Mine et Speedway", "at": [2.935, 7.815], "stamp": "industrial"},
+    {"id": "1S.5", "name": "Zone militaire cachée", "at": [1.203, 9.403], "stamp": "industrial"},
+    {"id": "1S.6", "name": "Sous-sols du désert", "at": [1.79, 11.067], "stamp": "none"}
+   ],
+   "climate": "aride"
   },
   {
    "number": "2",
@@ -42,16 +43,17 @@
    "name": "Hollowpine",
    "planLabel": "Île 2 · forêt de pin, neighborhood",
    "biome": "forêt de pins",
-   "outline": [[0.05, 1.13], [0.52, 0.41], [1.44, 0.0], [3.09, 0.46], [5.05, 0.41], [8.2, 0.43], [8.04, 1.55], [7.58, 2.78], [6.91, 3.14], [4.02, 3.04], [3.87, 3.87], [0.31, 3.84], [0.31, 2.68], [0.05, 2.22]],
+   "outline": [[0.05, 2.48], [0.52, 1.76], [1.44, 1.35], [3.09, 1.81], [5.05, 1.76], [8.2, 1.78], [8.04, 2.9], [7.58, 4.13], [6.91, 4.49], [4.02, 4.39], [3.87, 5.22], [0.31, 5.19], [0.31, 4.03], [0.05, 3.57]],
    "zones": [
-    {"id": "2.1", "name": "Forêt de pins"},
-    {"id": "2.2", "name": "Montagne et lac"},
-    {"id": "2.3", "name": "Maple Hollow, zone résidentielle"},
-    {"id": "2.4", "name": "Petite ville de Maple Hollow"},
-    {"id": "2.5", "name": "Zone du lycée"},
-    {"id": "2.6", "name": "Parc de Maple Hollow"},
-    {"id": "2.7", "name": "Harvest Flats, zone agricole"}
-   ]
+    {"id": "2.1", "name": "Forêt de pins", "at": [2.2, 2.0], "stamp": "none"},
+    {"id": "2.2", "name": "Montagne et lac", "at": [5.4, 2.1], "stamp": "none"},
+    {"id": "2.3", "name": "Maple Hollow, zone résidentielle", "at": [4.3, 4.3], "stamp": "village"},
+    {"id": "2.4", "name": "Petite ville de Maple Hollow", "at": [5.3, 4.25], "stamp": "town"},
+    {"id": "2.5", "name": "Zone du lycée", "at": [4.8, 3.85], "stamp": "village"},
+    {"id": "2.6", "name": "Parc de Maple Hollow", "at": [4.75, 4.55], "stamp": "none"},
+    {"id": "2.7", "name": "Harvest Flats, zone agricole", "at": [2.4, 4.4], "stamp": "village"}
+   ],
+   "climate": "tempéré froid"
   },
   {
    "number": "3",
@@ -59,12 +61,13 @@
    "name": "Ember",
    "planLabel": "Île 3 · volcan, port",
    "biome": "volcan",
-   "outline": [[5.98, 7.11], [6.24, 6.65], [6.7, 6.44], [7.32, 6.7], [7.58, 7.22], [7.56, 7.78], [6.7, 7.86], [6.19, 7.68]],
+   "outline": [[5.98, 8.46], [6.24, 8.0], [6.7, 7.79], [7.32, 8.05], [7.58, 8.57], [7.56, 9.13], [6.7, 9.21], [6.19, 9.03]],
    "zones": [
-    {"id": "3.1", "name": "Le volcan"},
-    {"id": "3.2", "name": "Sulfur Springs et la géothermie"},
-    {"id": "3.3", "name": "Le Vieux Port"}
-   ]
+    {"id": "3.1", "name": "Le volcan", "at": [6.784, 8.53], "stamp": "none"},
+    {"id": "3.2", "name": "Sulfur Springs et la géothermie", "at": [7.321, 8.92], "stamp": "village"},
+    {"id": "3.3", "name": "Le Vieux Port", "at": [7.132, 8.036], "stamp": "none"}
+   ],
+   "climate": "tropical d’altitude"
   },
   {
    "number": "4",
@@ -72,19 +75,20 @@
    "name": "Calder",
    "planLabel": "Île 4 · big city",
    "biome": "métropole",
-   "outline": [[7.63, 2.89], [8.14, 2.42], [8.56, 2.37], [9.74, 2.56], [10.0, 3.3], [10.41, 3.71], [10.39, 4.33], [10.1, 5.26], [9.9, 5.98], [9.59, 6.16], [9.07, 5.57], [8.25, 5.67], [8.2, 5.26], [7.94, 4.85], [7.58, 4.33], [7.78, 4.02], [7.32, 3.97], [7.3, 3.61], [7.84, 3.35], [8.04, 3.2]],
+   "outline": [[7.63, 4.24], [8.14, 3.77], [8.56, 3.72], [9.74, 3.91], [10.0, 4.65], [10.41, 5.06], [10.39, 5.68], [10.1, 6.61], [9.9, 7.33], [9.59, 7.51], [9.07, 6.92], [8.25, 7.02], [8.2, 6.61], [7.94, 6.2], [7.58, 5.68], [7.78, 5.37], [7.32, 5.32], [7.3, 4.96], [7.84, 4.7], [8.04, 4.55]],
    "zones": [
-    {"id": "4.1", "name": "Downtown"},
-    {"id": "4.2", "name": "Old Harbor"},
-    {"id": "4.3", "name": "Midtown"},
-    {"id": "4.4", "name": "Commons Park"},
-    {"id": "4.5", "name": "Uptown"},
-    {"id": "4.6", "name": "The Heights"},
-    {"id": "4.7", "name": "Little Harbor"},
-    {"id": "4.8", "name": "Riverside"},
-    {"id": "4.9", "name": "Les collines du nord"},
-    {"id": "4.10", "name": "Le dessous de Calder"}
-   ]
+    {"id": "4.1", "name": "Downtown", "at": [9.15, 6.3], "stamp": "city"},
+    {"id": "4.2", "name": "Old Harbor", "at": [9.75, 6.2], "stamp": "city"},
+    {"id": "4.3", "name": "Midtown", "at": [9.05, 5.75], "stamp": "city"},
+    {"id": "4.4", "name": "Commons Park", "at": [9.05, 5.35], "stamp": "none"},
+    {"id": "4.5", "name": "Uptown", "at": [9.0, 4.95], "stamp": "city"},
+    {"id": "4.6", "name": "The Heights", "at": [8.9, 4.45], "stamp": "city"},
+    {"id": "4.7", "name": "Little Harbor", "at": [8.45, 5.3], "stamp": "city"},
+    {"id": "4.8", "name": "Riverside", "at": [8.35, 5.95], "stamp": "city"},
+    {"id": "4.9", "name": "Les collines du nord", "at": [9.0, 3.75], "stamp": "none"},
+    {"id": "4.10", "name": "Le dessous de Calder", "at": [9.1, 5.0], "stamp": "none"}
+   ],
+   "climate": "tempéré"
   },
   {
    "number": "5",
@@ -92,15 +96,16 @@
    "name": "Steelwater",
    "planLabel": "Île 5 · zone industrielle",
    "biome": "industriel",
-   "outline": [[8.45, 8.04], [8.97, 8.09], [9.48, 8.45], [10.62, 8.45], [10.46, 8.92], [10.31, 9.12], [10.72, 9.43], [10.82, 9.9], [10.7, 10.36], [10.31, 10.26], [9.69, 9.79], [9.28, 9.12], [8.87, 8.56], [8.45, 8.35]],
+   "outline": [[8.45, 9.39], [8.97, 9.44], [9.48, 9.8], [10.62, 9.8], [10.46, 10.27], [10.31, 10.47], [10.72, 10.78], [10.82, 11.25], [10.7, 11.71], [10.31, 11.61], [9.69, 11.14], [9.28, 10.47], [8.87, 9.91], [8.45, 9.7]],
    "zones": [
-    {"id": "5.1", "name": "Zone des entrepôts"},
-    {"id": "5.2", "name": "Zone portuaire"},
-    {"id": "5.3", "name": "Quartier des usines"},
-    {"id": "5.4", "name": "Zone d’usine"},
-    {"id": "5.5", "name": "Aéroport international"},
-    {"id": "5.6", "name": "Îles-barrières"}
-   ]
+    {"id": "5.1", "name": "Zone des entrepôts", "at": [9.995, 10.67], "stamp": "industrial"},
+    {"id": "5.2", "name": "Zone portuaire", "at": [9.053, 10.068], "stamp": "industrial"},
+    {"id": "5.3", "name": "Quartier des usines", "at": [10.504, 11.412], "stamp": "industrial"},
+    {"id": "5.4", "name": "Zone d’usine", "at": [10.272, 10.025], "stamp": "industrial"},
+    {"id": "5.5", "name": "Aéroport international", "at": [8.503, 9.487], "stamp": "industrial"},
+    {"id": "5.6", "name": "Îles-barrières", "at": [10.628, 10.782], "stamp": "none"}
+   ],
+   "climate": "subtropical"
   },
   {
    "number": "6",
@@ -108,14 +113,15 @@
    "name": "Eastbank",
    "planLabel": "Île 6 · zone commerciale",
    "biome": "commercial",
-   "outline": [[8.51, 6.86], [8.97, 6.75], [9.48, 7.06], [9.9, 7.27], [9.79, 7.63], [9.38, 7.94], [8.87, 7.94], [8.56, 7.63], [8.45, 7.16]],
+   "outline": [[8.51, 8.21], [8.97, 8.1], [9.48, 8.41], [9.9, 8.62], [9.79, 8.98], [9.38, 9.29], [8.87, 9.29], [8.56, 8.98], [8.45, 8.51]],
    "zones": [
-    {"id": "6.1", "name": "Bayview, centre commercial"},
-    {"id": "6.2", "name": "Le grand parc"},
-    {"id": "6.3", "name": "Parc d’attractions et Gull Pier"},
-    {"id": "6.4", "name": "Ville commerçante"},
-    {"id": "6.5", "name": "Les stades"}
-   ]
+    {"id": "6.1", "name": "Bayview, centre commercial", "at": [8.935, 8.363], "stamp": "town"},
+    {"id": "6.2", "name": "Le grand parc", "at": [9.578, 8.859], "stamp": "none"},
+    {"id": "6.3", "name": "Parc d’attractions et Gull Pier", "at": [8.845, 9.188], "stamp": "none"},
+    {"id": "6.4", "name": "Ville commerçante", "at": [9.107, 8.81], "stamp": "town"},
+    {"id": "6.5", "name": "Les stades", "at": [8.729, 8.71], "stamp": "industrial"}
+   ],
+   "climate": "tempéré chaud"
   },
   {
    "number": "7",
@@ -123,13 +129,14 @@
    "name": "Highland Isle",
    "planLabel": "Île 7 · Highland Isle",
    "biome": "lande",
-   "outline": [[7.16, 8.37], [7.37, 8.23], [7.63, 8.25], [7.63, 8.56], [7.27, 8.61]],
+   "outline": [[9.3, 1.75], [9.9, 1.6], [10.5, 1.75], [10.7, 2.2], [10.3, 2.6], [9.6, 2.65], [9.2, 2.25]],
    "zones": [
-    {"id": "7.1", "name": "La lande"},
-    {"id": "7.2", "name": "Les falaises"},
-    {"id": "7.3", "name": "L’église et le cimetière"},
-    {"id": "7.4", "name": "Le phare"}
-   ]
+    {"id": "7.1", "name": "La lande", "at": [9.487, 2.061], "stamp": "none"},
+    {"id": "7.2", "name": "Les falaises", "at": [10.554, 2.214], "stamp": "none"},
+    {"id": "7.3", "name": "L’église et le cimetière", "at": [9.983, 2.398], "stamp": "ruins"},
+    {"id": "7.4", "name": "Le phare", "at": [10.084, 1.711], "stamp": "camp"}
+   ],
+   "climate": "océanique frais"
   },
   {
    "number": "8",
@@ -137,13 +144,14 @@
    "name": "Halcyon Cay",
    "planLabel": "Île 8 · tropical island",
    "biome": "tropical",
-   "outline": [[5.75, 8.4], [5.98, 8.2], [6.34, 8.2], [6.96, 8.56], [6.8, 8.71], [6.08, 8.73], [5.77, 8.61]],
+   "outline": [[5.75, 9.75], [5.98, 9.55], [6.34, 9.55], [6.96, 9.91], [6.8, 10.06], [6.08, 10.08], [5.77, 9.96]],
    "zones": [
-    {"id": "8.1", "name": "Le manoir"},
-    {"id": "8.2", "name": "Les jardins et la plage"},
-    {"id": "8.3", "name": "La jungle privée"},
-    {"id": "8.4", "name": "L’embarcadère"}
-   ]
+    {"id": "8.1", "name": "Le manoir", "at": [6.194, 9.838], "stamp": "village"},
+    {"id": "8.2", "name": "Les jardins et la plage", "at": [6.864, 9.92], "stamp": "none"},
+    {"id": "8.3", "name": "La jungle privée", "at": [6.388, 9.843], "stamp": "none"},
+    {"id": "8.4", "name": "L’embarcadère", "at": [5.812, 9.778], "stamp": "none"}
+   ],
+   "climate": "tropical humide"
   },
   {
    "number": "9",
@@ -151,17 +159,18 @@
    "name": "Verdant",
    "planLabel": "Île 9 · tropical island",
    "biome": "jungle",
-   "outline": [[6.89, 9.12], [7.32, 8.95], [8.25, 8.99], [8.61, 9.38], [8.35, 9.74], [7.63, 9.76], [7.01, 9.48]],
+   "outline": [[6.89, 10.47], [7.32, 10.3], [8.25, 10.34], [8.61, 10.73], [8.35, 11.09], [7.63, 11.11], [7.01, 10.83]],
    "zones": [
-    {"id": "9.1", "name": "L’autel yautja"},
-    {"id": "9.2", "name": "Les chutes et le repaire"},
-    {"id": "9.3", "name": "Le fleuve"},
-    {"id": "9.4", "name": "Camp des braconniers"},
-    {"id": "9.5", "name": "Fouilles archéologiques"},
-    {"id": "9.6", "name": "Piste cachée"},
-    {"id": "9.7", "name": "Port-Tahren"},
-    {"id": "9.8", "name": "La canopée"}
-   ]
+    {"id": "9.1", "name": "L’autel yautja", "at": [8.013, 10.804], "stamp": "camp"},
+    {"id": "9.2", "name": "Les chutes et le repaire", "at": [7.187, 10.594], "stamp": "camp"},
+    {"id": "9.3", "name": "Le fleuve", "at": [7.632, 10.555], "stamp": "none"},
+    {"id": "9.4", "name": "Camp des braconniers", "at": [7.694, 10.883], "stamp": "camp"},
+    {"id": "9.5", "name": "Fouilles archéologiques", "at": [8.3, 10.737], "stamp": "camp"},
+    {"id": "9.6", "name": "Piste cachée", "at": [7.424, 10.771], "stamp": "camp"},
+    {"id": "9.7", "name": "Port-Tahren", "at": [8.047, 10.385], "stamp": "village"},
+    {"id": "9.8", "name": "La canopée", "at": [7.885, 10.584], "stamp": "none"}
+   ],
+   "climate": "tropical humide"
   },
   {
    "number": "11",
@@ -169,14 +178,15 @@
    "name": "Solana",
    "planLabel": "Île 11 · Mediterranean",
    "biome": "méditerranéen",
-   "outline": [[4.18, 3.32], [6.8, 3.34], [7.01, 3.71], [7.84, 4.54], [7.22, 5.15], [6.44, 5.1], [5.41, 5.26], [4.33, 5.0], [3.97, 4.33]],
+   "outline": [[4.18, 4.67], [6.8, 4.69], [7.01, 5.06], [7.84, 5.89], [7.22, 6.5], [6.44, 6.45], [5.41, 6.61], [4.33, 6.35], [3.97, 5.68]],
    "zones": [
-    {"id": "11.1", "name": "Porto Solana"},
-    {"id": "11.2", "name": "Les terrasses"},
-    {"id": "11.3", "name": "La garrigue"},
-    {"id": "11.4", "name": "Les ruines antiques"},
-    {"id": "11.5", "name": "Les calanques"}
-   ]
+    {"id": "11.1", "name": "Porto Solana", "at": [5.168, 4.818], "stamp": "village"},
+    {"id": "11.2", "name": "Les terrasses", "at": [7.409, 5.897], "stamp": "none"},
+    {"id": "11.3", "name": "La garrigue", "at": [6.526, 6.191], "stamp": "none"},
+    {"id": "11.4", "name": "Les ruines antiques", "at": [5.218, 5.991], "stamp": "ruins"},
+    {"id": "11.5", "name": "Les calanques", "at": [6.4, 4.781], "stamp": "none"}
+   ],
+   "climate": "méditerranéen"
   },
   {
    "number": "12",
@@ -184,13 +194,14 @@
    "name": "Saltmarsh",
    "planLabel": "Île 12 · swamp",
    "biome": "marais",
-   "outline": [[4.54, 6.8], [4.95, 6.6], [5.69, 6.55], [5.72, 7.53], [5.36, 7.96], [4.95, 7.94], [4.64, 7.32]],
+   "outline": [[4.54, 8.15], [4.95, 7.95], [5.69, 7.9], [5.72, 8.88], [5.36, 9.31], [4.95, 9.29], [4.64, 8.67]],
    "zones": [
-    {"id": "12.1", "name": "Les bayous"},
-    {"id": "12.2", "name": "Bayou Cross"},
-    {"id": "12.3", "name": "La raffinerie"},
-    {"id": "12.4", "name": "Le delta"}
-   ]
+    {"id": "12.1", "name": "Les bayous", "at": [4.884, 8.898], "stamp": "none"},
+    {"id": "12.2", "name": "Bayou Cross", "at": [5.629, 8.193], "stamp": "village"},
+    {"id": "12.3", "name": "La raffinerie", "at": [4.835, 8.092], "stamp": "industrial"},
+    {"id": "12.4", "name": "Le delta", "at": [5.621, 8.917], "stamp": "none"}
+   ],
+   "climate": "subtropical humide"
   },
   {
    "number": "13",
@@ -198,12 +209,13 @@
    "name": "Frost Isle",
    "planLabel": "Île 13 · Northern island 2",
    "biome": "toundra",
-   "outline": [[7.6, 7.73], [7.78, 7.55], [8.07, 7.58], [7.94, 7.86], [7.68, 7.99]],
+   "outline": [[3.9, 0.25], [4.8, 0.08], [5.9, 0.12], [6.7, 0.35], [6.9, 0.75], [6.2, 1.05], [5.1, 1.12], [4.2, 0.95], [3.7, 0.6]],
    "zones": [
-    {"id": "13.1", "name": "Northwick"},
-    {"id": "13.2", "name": "La station polaire"},
-    {"id": "13.3", "name": "Le glacier"}
-   ]
+    {"id": "13.1", "name": "Northwick", "at": [5.176, 0.992], "stamp": "village"},
+    {"id": "13.2", "name": "La station polaire", "at": [5.991, 0.418], "stamp": "industrial"},
+    {"id": "13.3", "name": "Le glacier", "at": [4.173, 0.506], "stamp": "none"}
+   ],
+   "climate": "polaire"
   },
   {
    "number": "14",
@@ -211,14 +223,15 @@
    "name": "Tallgrass",
    "planLabel": "Île 14 · savanna",
    "biome": "savane",
-   "outline": [[4.02, 7.06], [4.48, 7.73], [4.79, 8.56], [4.74, 8.92], [3.87, 9.07], [3.51, 9.64], [3.3, 9.95], [3.04, 9.18], [3.3, 8.35], [3.76, 7.16]],
+   "outline": [[4.02, 8.41], [4.48, 9.08], [4.79, 9.91], [4.74, 10.27], [3.87, 10.42], [3.51, 10.99], [3.3, 11.3], [3.04, 10.53], [3.3, 9.7], [3.76, 8.51]],
    "zones": [
-    {"id": "14.1", "name": "La savane"},
-    {"id": "14.2", "name": "Le lodge Halcyon"},
-    {"id": "14.3", "name": "Le ranch et le safari-camp"},
-    {"id": "14.4", "name": "Le point d’eau"},
-    {"id": "14.5", "name": "L’aérodrome de brousse"}
-   ]
+    {"id": "14.1", "name": "La savane", "at": [4.26, 9.968], "stamp": "none"},
+    {"id": "14.2", "name": "Le lodge Halcyon", "at": [3.777, 9.192], "stamp": "ruins"},
+    {"id": "14.3", "name": "Le ranch et le safari-camp", "at": [3.352, 10.541], "stamp": "camp"},
+    {"id": "14.4", "name": "Le point d’eau", "at": [3.549, 9.855], "stamp": "none"},
+    {"id": "14.5", "name": "L’aérodrome de brousse", "at": [4.354, 9.375], "stamp": "camp"}
+   ],
+   "climate": "tropical sec"
   }
  ],
  "chain": {
@@ -228,115 +241,45 @@
   "planLabel": "Île 10 · chain of islands",
   "biome": "mangroves et récifs",
   "islets": [
-   {
-    "name": "Coral Key",
-    "center": [4.38, 9.64],
-    "radiusKm": 0.42
-   },
-   {
-    "name": "Îlot des Palétuviers",
-    "center": [5.15, 9.54],
-    "radiusKm": 0.34
-   },
-   {
-    "name": "Récif du Meridian",
-    "center": [5.98, 9.9],
-    "radiusKm": 0.4
-   },
-   {
-    "name": "Le Ponton",
-    "center": [6.8, 10.1],
-    "radiusKm": 0.3
-   },
-   {
-    "name": "Îlot du Phare",
-    "center": [7.63, 10.21],
-    "radiusKm": 0.26
-   },
-   {
-    "name": "La Queue",
-    "center": [8.3, 10.21],
-    "radiusKm": 0.2
-   }
+   {"name": "Coral Key", "center": [4.38, 10.99], "radiusKm": 0.42},
+   {"name": "Îlot des Palétuviers", "center": [5.15, 10.89], "radiusKm": 0.34},
+   {"name": "Récif du Meridian", "center": [5.98, 11.25], "radiusKm": 0.4},
+   {"name": "Le Ponton", "center": [6.8, 11.45], "radiusKm": 0.3},
+   {"name": "Îlot du Phare", "center": [7.63, 11.56], "radiusKm": 0.26},
+   {"name": "La Queue", "center": [8.3, 11.56], "radiusKm": 0.2}
   ],
   "zones": [
-   {"id": "10.1", "name": "Coral Key"},
-   {"id": "10.2", "name": "Les mangroves et les passes"},
-   {"id": "10.3", "name": "L’épave du Meridian"},
-   {"id": "10.4", "name": "Le ponton des trafiquants"},
-   {"id": "10.5", "name": "Le phare des Shallows"}
+   {"id": "10.1", "name": "Coral Key", "at": [4.38, 10.99], "stamp": "village"},
+   {"id": "10.2", "name": "Les mangroves et les passes", "at": [5.15, 10.89], "stamp": "none"},
+   {"id": "10.3", "name": "L’épave du Meridian", "at": [5.98, 11.25], "stamp": "ruins"},
+   {"id": "10.4", "name": "Le ponton des trafiquants", "at": [6.8, 11.45], "stamp": "camp"},
+   {"id": "10.5", "name": "Le phare des Shallows", "at": [7.63, 11.56], "stamp": "camp"}
   ]
  },
  "islets": [
-  {
-   "id": "ironhook",
-   "name": "Ironhook",
-   "center": [10.82, 2.84],
-   "radiusKm": 0.42,
-   "note": "base militaire et ARGOS, au nord-est de Calder"
-  },
-  {
-   "id": "blackrock",
-   "name": "Blackrock",
-   "center": [10.46, 5.52],
-   "radiusKm": 0.22,
-   "note": "prison fédérale"
-  },
-  {
-   "id": "twin-keys",
-   "name": "Les Jumelles",
-   "center": [8.71, 6.34],
-   "radiusKm": 0.45,
-   "note": "deux îlots et leur lagon entre Calder et Eastbank"
-  },
-  {
-   "id": "navigator",
-   "name": "Îlot du Navigateur",
-   "center": [10.15, 6.37],
-   "radiusKm": 0.2,
-   "note": "statue et point de vue"
-  },
-  {
-   "id": "breakwater",
-   "name": "Les Brisants",
-   "center": [8.16, 8.23],
-   "radiusKm": 0.2,
-   "note": "rochers entre Eastbank et Steelwater"
-  },
-  {
-   "id": "gull-rock",
-   "name": "Rocher aux Mouettes",
-   "center": [10.21, 7.96],
-   "radiusKm": 0.17,
-   "note": "îlot à l’est d’Eastbank"
-  }
+  {"id": "ironhook", "name": "Ironhook", "center": [10.82, 4.19], "radiusKm": 0.42, "note": "base militaire et ARGOS, au nord-est de Calder"},
+  {"id": "blackrock", "name": "Blackrock", "center": [10.46, 6.87], "radiusKm": 0.22, "note": "prison fédérale"},
+  {"id": "twin-keys", "name": "Les Jumelles", "center": [8.71, 7.69], "radiusKm": 0.45, "note": "deux îlots et leur lagon entre Calder et Eastbank"},
+  {"id": "navigator", "name": "Îlot du Navigateur", "center": [10.15, 7.72], "radiusKm": 0.2, "note": "statue et point de vue"},
+  {"id": "breakwater", "name": "Les Brisants", "center": [8.16, 9.58], "radiusKm": 0.2, "note": "rochers entre Eastbank et Steelwater"},
+  {"id": "gull-rock", "name": "Rocher aux Mouettes", "center": [10.21, 9.31], "radiusKm": 0.17, "note": "îlot à l’est d’Eastbank"},
+  {"id": "cinder-rocks", "name": "Les Cendres", "center": [7.6, 9.55], "radiusKm": 0.2, "note": "îlot volcanique de l’arc d’Ember"},
+  {"id": "little-ember", "name": "Petite Ember", "center": [6.05, 7.45], "radiusKm": 0.24, "note": "cône éteint, au nord-ouest d’Ember, sur le même arc"}
  ],
  "seaZone": {
   "id": "sea",
   "name": "Zone de mer",
   "rigs": [
-   {
-    "id": "sable-7",
-    "name": "Plateforme Sable-7",
-    "center": [11.73, 8.73],
-    "kind": "plateforme pétrolière"
-   },
-   {
-    "id": "sable-9",
-    "name": "Plateforme Sable-9 « la Pieuvre »",
-    "center": [11.72, 9.52],
-    "kind": "plateforme à bras et conduites (tentacle branch)"
-   },
-   {
-    "id": "sable-4",
-    "name": "Plateforme Sable-4",
-    "center": [11.34, 10.31],
-    "kind": "variante désaffectée"
-   }
+   {"id": "sable-7", "name": "Plateforme Sable-7", "center": [11.73, 10.08], "kind": "plateforme pétrolière"},
+   {"id": "sable-9", "name": "Plateforme Sable-9 « la Pieuvre »", "center": [11.72, 10.87], "kind": "plateforme à bras et conduites (tentacle branch)"},
+   {"id": "sable-4", "name": "Plateforme Sable-4", "center": [11.34, 11.66], "kind": "variante désaffectée"}
   ]
  },
  "bonus": [
   {"id": "nihon", "name": "Nihon", "note": "île bonus hors carte, à produire après l’archipel"}
  ],
- "links": [["hollowpine", "grayhaven", "pont gardé"], ["hollowpine", "solana", "pont"], ["grayhaven", "redmesa", "poste du mur"], ["redmesa", "tallgrass", "gué"], ["solana", "calder", "pont suspendu"], ["tallgrass", "saltmarsh", "gué"], ["saltmarsh", "ember", "ferry"], ["ember", "frost-isle", "ferry"], ["ember", "highland", "ferry"], ["calder", "twin-keys", "pont et métro"], ["twin-keys", "eastbank", "pont"], ["eastbank", "steelwater", "pont et rail"], ["calder", "ironhook", "digue"], ["highland", "verdant", "ferry"], ["halcyon-cay", "verdant", "bateau privé"], ["verdant", "shallows", "gué à marée basse"], ["steelwater", "sea", "navettes des plateformes"]]
+ "links": [["hollowpine", "grayhaven", "pont gardé"], ["hollowpine", "solana", "pont"], ["grayhaven", "redmesa", "poste du mur"], ["redmesa", "tallgrass", "gué"], ["solana", "calder", "pont suspendu"], ["tallgrass", "saltmarsh", "gué"], ["saltmarsh", "ember", "ferry"], ["calder", "twin-keys", "pont et métro"], ["twin-keys", "eastbank", "pont"], ["eastbank", "steelwater", "pont et rail"], ["calder", "ironhook", "digue"], ["halcyon-cay", "verdant", "bateau privé"], ["verdant", "shallows", "gué à marée basse"], ["steelwater", "sea", "navettes des plateformes"], ["hollowpine", "frost-isle", "ferry du nord"], ["calder", "highland", "ferry"], ["highland", "frost-isle", "ferry"]],
+ "scale": 4,
+ "tileMeters": 2,
+ "seed": 20261128
 }

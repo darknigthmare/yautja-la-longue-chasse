@@ -11,7 +11,7 @@ import {
 import {GLTFLoader, type GLTF} from "three/examples/jsm/loaders/GLTFLoader.js";
 import {clone as cloneSkinned} from "three/examples/jsm/utils/SkeletonUtils.js";
 import {BODY_ABOVE_CHEST_V1, BODY_BELOW_CHEST_V1, type IslesCameraTuningV1} from "./islesCameraV1";
-import {heightAtV1, kindAtV1, type IslesMapV1, type IslesTileKindV1} from "./islesMapV1";
+import {heightAtV1, isTreeKindV1, kindAtV1, type IslesMapV1, type IslesTileKindV1} from "./islesMapV1";
 
 export const ISLES_ZONE_TILES_V1 = 32;
 
@@ -65,6 +65,7 @@ const KIND_COLORS: Record<IslesTileKindV1, string> = {
   water: "#3a5a52", ford: "#5d7a5e", sand: "#d8c48a", grass: "#6f9a4a", jungle: "#3f6b34", mud: "#7a6345",
   road: "#8b8072", bush: "#3f6b34", crate: "#8a6a3a", rock: "#8c8a80", tree: "#3f6b34", wall: "#b9ad97",
   roof: "#9b4f35", pillar: "#a8a397", ruin: "#a39a7c",
+  snow: "#eef3f6", lava: "#e2531f", savanna: "#c2b062", pine: "#2c5a44", palm: "#5f9a52", building: "#8d929c",
 };
 
 function hash(x: number, z: number): number {
@@ -130,6 +131,18 @@ function withCutaway<T extends Material>(material: T, uniforms: Uniforms, hot = 
   return material;
 }
 
+/** Trees, bushes and crates are instanced; their tile shows the ground they stand on. */
+function groundOfV1(map: IslesMapV1, tx: number, tz: number): {kind: IslesTileKindV1; top: number} {
+  if (map.sample && tx >= 0 && tz >= 0 && tx < map.width && tz < map.depth) {
+    const t = map.sample(tx, tz) as {kind: IslesTileKindV1; height: number; base?: number; ground?: IslesTileKindV1};
+    return isTreeKindV1(t.kind) || t.kind === "bush" || t.kind === "crate" ? {kind: t.ground ?? "grass", top: t.base ?? 0} : {kind: t.kind, top: t.height};
+  }
+  const kind = kindAtV1(map, tx, tz);
+  if (isTreeKindV1(kind) || kind === "bush") return {kind: map.id.includes("verdant") ? "jungle" : "grass", top: 0};
+  if (kind === "crate") return {kind: "grass", top: 0};
+  return {kind, top: heightAtV1(map, tx, tz)};
+}
+
 /** Merged columns of one zone, with faces only where the neighbour is lower. */
 function buildZoneGeometry(map: IslesMapV1, x0: number, z0: number): BufferGeometry | null {
   const t = map.tileMeters;
@@ -138,17 +151,11 @@ function buildZoneGeometry(map: IslesMapV1, x0: number, z0: number): BufferGeome
   const quad = (a: number[], b: number[], c: number[], d: number[], n: number[], shade: number) => {
     for (const p of [a, b, c, a, c, d]) { positions.push(p[0], p[1], p[2]); normals.push(n[0], n[1], n[2]); colors.push(color.r * shade, color.g * shade, color.b * shade); }
   };
-  const columnTop = (tx: number, tz: number) => {
-    const kind = kindAtV1(map, tx, tz);
-    // Trees are drawn as instanced trunks and crowns; their tile is ground underneath.
-    if (kind === "tree" || kind === "crate" || kind === "bush") return 0;
-    return heightAtV1(map, tx, tz);
-  };
+  const groundOf = (tx: number, tz: number) => groundOfV1(map, tx, tz);
+  const columnTop = (tx: number, tz: number) => groundOf(tx, tz).top;
   for (let tz = z0; tz < Math.min(map.depth, z0 + ISLES_ZONE_TILES_V1); tz++) {
     for (let tx = x0; tx < Math.min(map.width, x0 + ISLES_ZONE_TILES_V1); tx++) {
-      const kind = kindAtV1(map, tx, tz);
-      const top = columnTop(tx, tz);
-      const groundKind: IslesTileKindV1 = kind === "tree" || kind === "bush" ? (map.id.includes("verdant") ? "jungle" : "grass") : kind === "crate" ? "grass" : kind;
+      const {kind: groundKind, top} = groundOf(tx, tz);
       color.set(KIND_COLORS[groundKind]);
       const jitter = 0.92 + hash(tx, tz) * 0.12;
       const x = tx * t, z = tz * t;
@@ -156,7 +163,7 @@ function buildZoneGeometry(map: IslesMapV1, x0: number, z0: number): BufferGeome
       if (top > 0.6) {
         // Ground inside a tall column, seen only through the cut-away.
         const inner = color.clone();
-        color.set(KIND_COLORS[map.id.includes("verdant") ? "jungle" : "grass"]);
+        color.set(KIND_COLORS[map.sample ? "road" : map.id.includes("verdant") ? "jungle" : "grass"]);
         quad([x, 0.01, z], [x, 0.01, z + t], [x + t, 0.01, z + t], [x + t, 0.01, z], [0, 1, 0], jitter * 0.7);
         color.copy(inner);
       }
@@ -288,6 +295,7 @@ export function createIslesSceneV1(canvas: HTMLCanvasElement, map: IslesMapV1, c
   // Crowns open around a hunter on the ground (§4.1: the camera follows the three levels of Verdant).
   const crownMaterial = withCutaway(new MeshLambertMaterial({color: "#ffffff"}), uniforms, false, true, true);
   const matrix = new Matrix4(), q = new Quaternion(), s = new Vector3(), p = new Vector3(), up = new Vector3(0, 1, 0);
+  const pineColors = [new Color("#1f4a3a"), new Color("#28584a")], palmColor = new Color("#5f9a52");
   const crownColors = [new Color("#2f5d2a"), new Color("#3b6e30"), new Color("#28502a")], bushColors = [new Color("#4c7a37"), new Color("#3e6a30")];
   interface ZoneV1 { objects: Mesh[]; triangles: number; instances: number }
   const loaded = new Map<string, ZoneV1>();
@@ -305,7 +313,7 @@ export function createIslesSceneV1(canvas: HTMLCanvasElement, map: IslesMapV1, c
     const cells: Record<"tree" | "bush" | "crate", [number, number][]> = {tree: [], bush: [], crate: []};
     for (let tz = z0; tz < Math.min(map.depth, z0 + ISLES_ZONE_TILES_V1); tz++) for (let tx = x0; tx < Math.min(map.width, x0 + ISLES_ZONE_TILES_V1); tx++) {
       const kind = kindAtV1(map, tx, tz);
-      if (kind === "tree" || kind === "bush" || kind === "crate") cells[kind].push([tx, tz]);
+      if (isTreeKindV1(kind)) cells.tree.push([tx, tz]); else if (kind === "bush" || kind === "crate") cells[kind].push([tx, tz]);
     }
     const instance = (shape: BufferGeometry, material: MeshLambertMaterial, list: [number, number][],
       place: (tx: number, tz: number) => [number, number, number, number, number, number, number], tint?: (tx: number, tz: number) => Color) => {
@@ -318,13 +326,19 @@ export function createIslesSceneV1(canvas: HTMLCanvasElement, map: IslesMapV1, c
       });
       mesh.castShadow = true; mesh.receiveShadow = true; zone.objects.push(mesh); zone.instances += list.length;
     };
-    const treeHeight = (tx: number, tz: number) => heightAtV1(map, tx, tz);
-    instance(trunkGeometry, trunkMaterial, cells.tree, (tx, tz) => [(tx + .5) * t, treeHeight(tx, tz) * 0.3, (tz + .5) * t, 1, treeHeight(tx, tz) * 0.6, 1, 0]);
-    instance(crownGeometry, crownMaterial, cells.tree, (tx, tz) => [(tx + .5) * t, treeHeight(tx, tz) - 1.7, (tz + .5) * t, 1.15, 1.7, 1.15, hash(tx, tz) * 6],
-      (tx, tz) => crownColors[Math.floor(hash(tz, tx) * 3)]);
-    instance(bushGeometry, leafMaterial, cells.bush, (tx, tz) => [(tx + .5) * t, 0.35, (tz + .5) * t, 1.3, 0.8, 1.3, hash(tx, tz) * 6],
+    const base = (tx: number, tz: number) => groundOfV1(map, tx, tz).top;
+    const tall = (tx: number, tz: number) => heightAtV1(map, tx, tz) - base(tx, tz);
+    instance(trunkGeometry, trunkMaterial, cells.tree, (tx, tz) => [(tx + .5) * t, base(tx, tz) + tall(tx, tz) * 0.3, (tz + .5) * t, 1, tall(tx, tz) * 0.6, 1, 0]);
+    instance(crownGeometry, crownMaterial, cells.tree, (tx, tz) => {
+      const kind = kindAtV1(map, tx, tz), h = tall(tx, tz);
+      // Pines are narrow and tall, palms a small tuft, broadleaves a wide crown.
+      return kind === "pine" ? [(tx + .5) * t, base(tx, tz) + h - 3, (tz + .5) * t, 0.85, 3, 0.85, hash(tx, tz) * 6]
+        : kind === "palm" ? [(tx + .5) * t, base(tx, tz) + h - 0.8, (tz + .5) * t, 1.25, 0.8, 1.25, hash(tx, tz) * 6]
+        : [(tx + .5) * t, base(tx, tz) + h - 1.7, (tz + .5) * t, 1.15, 1.7, 1.15, hash(tx, tz) * 6];
+    }, (tx, tz) => { const kind = kindAtV1(map, tx, tz); return kind === "pine" ? pineColors[Math.floor(hash(tz, tx) * 2)] : kind === "palm" ? palmColor : crownColors[Math.floor(hash(tz, tx) * 3)]; });
+    instance(bushGeometry, leafMaterial, cells.bush, (tx, tz) => [(tx + .5) * t, base(tx, tz) + 0.35, (tz + .5) * t, 1.3, 0.8, 1.3, hash(tx, tz) * 6],
       (tx, tz) => bushColors[Math.floor(hash(tz, tx) * 2)]);
-    instance(crateGeometry, crateMaterial, cells.crate, (tx, tz) => [(tx + .5) * t, 0.5, (tz + .5) * t, 1, 1, 1, hash(tx, tz) * 0.6]);
+    instance(crateGeometry, crateMaterial, cells.crate, (tx, tz) => [(tx + .5) * t, base(tx, tz) + 0.5, (tz + .5) * t, 1, 1, 1, hash(tx, tz) * 0.6]);
     for (const object of zone.objects) scene.add(object);
     return zone;
   }

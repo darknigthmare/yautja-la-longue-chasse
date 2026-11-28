@@ -24,7 +24,7 @@ export interface IslesWorldSiteV1 { id: string; label: string; x: number; z: num
 
 const HEIGHT: Record<IslesTileKindV1, number> = {
   water: -1.2, ford: -0.35, sand: 0, grass: 0, jungle: 0, mud: 0, road: 0, bush: 0, crate: 1,
-  rock: 3, tree: 7, wall: 5, roof: 3.5, pillar: 10, ruin: 2,
+  rock: 3, tree: 7, wall: 5, roof: 3.5, pillar: 10, ruin: 2, snow: 0, lava: 0, savanna: 0, pine: 9, palm: 6, building: 9,
 };
 
 function hash2(x: number, z: number, seed: number): number {
