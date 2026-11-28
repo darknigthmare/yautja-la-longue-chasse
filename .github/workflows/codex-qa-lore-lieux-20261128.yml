@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 8ad683789346ed8e02db3f0f717c742a74cd6cfb
+          ref: cba39784e9b04a134b93cfbb384766052b3f7fb5
           persist-credentials: false
           filter: blob:none
           sparse-checkout-cone-mode: false
@@ -39,6 +39,6 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
-      - run: node --experimental-strip-types --test --test-concurrency=1 tests/yautja-place-names.test.mjs tests/homeworld-regions-v68.test.mjs tests/homeworld-world-checkpoint-v77.test.mjs
+      - run: node --experimental-strip-types --test --test-concurrency=1 tests/yautja-place-names.test.mjs tests/homeworld-regions-v68.test.mjs tests/homeworld-world-checkpoint-v77.test.mjs tests/ship-acquisition-v89.test.mjs tests/ship-acquisition-save-v89.test.mjs
       - if: success() || failure()
         run: npm run typecheck
