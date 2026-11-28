@@ -159,6 +159,8 @@ Thermique, électromagnétique, mouvement et analyse fonctionnent comme sur Terr
 ## 6. La carte de l'archipel
 
 > **Révision du 22 novembre :** la carte passe à 12 × 12 km avec Eastbank et Grayhaven. La carte à jour est dans [Métropole, transports, zone de quarantaine](ISLES_EXTENSION_METROPOLE_QUARANTAINE_20261122.md), section 2. Le schéma ci-dessous est la première version.
+>
+> **Révision du 28 novembre :** la forme de l'archipel suit désormais le Plan 2 du propriétaire : quatorze îles, un chapelet, des îlots et trois plateformes en mer. Le plan, la correspondance des îles et le contenu de chaque zone et sous-zone sont dans [L'archipel, île par île](ISLES_ARCHIPEL_ZONES_20261128.md). Cette fiche prévaut sur les schémas en grille pour la position et la liste des îles.
 
 ```text
                                   N
