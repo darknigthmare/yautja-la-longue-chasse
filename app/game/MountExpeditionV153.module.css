@@ -1,0 +1,37 @@
+.portrait {
+  display: block;
+  width: min(100%, 24rem);
+  height: auto;
+  margin: .75rem 0;
+  border-radius: .65rem;
+  border: 1px solid rgb(189 162 109 / 50%);
+}
+
+.route { margin-block: .85rem; }
+.terrain { color: #e1c08e; overflow-wrap: anywhere; }
+
+.track {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .2rem;
+  padding: .6rem;
+  border: 1px solid #635b48;
+  border-radius: .5rem;
+  background: #151917;
+}
+
+.track span {
+  min-width: 1rem;
+  padding: .15rem .25rem;
+  text-align: center;
+  border-radius: .25rem;
+  color: #c8c4b9;
+}
+.track span[data-stage='true'] { color: #ffdf9c; background: #353126; }
+.track span[data-current='true'] { color: #13251d; background: #91d9b0; font-weight: 700; outline: 1px solid #e1ffed; }
+
+.actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-block: .55rem; }
+.stages { display: grid; gap: .6rem; padding-inline-start: 1.45rem; }
+.stages li[data-trust-state='passed'] > span { color: #9de5bc; }
+.stages li > p { margin: .2rem 0; }

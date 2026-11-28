@@ -1,4 +1,4 @@
-import { TRIO_INSERTION_OFFSETS, type PlanetInsertionPlan } from './planetInsertion';
+import { EXPEDITION_SLOT_OFFSETS, expeditionMember, expeditionMemberIds, type ExpeditionMemberId, type PlanetInsertionPlan } from './planetInsertion';
 import type { WorldBlueprint, WorldRect } from './worldBlueprints';
 
 /** Game-world units, not a claim about a film prop's dimensions or yield. */
@@ -12,7 +12,7 @@ export const HUNT_POD_RECOVERY = Object.freeze({
   effectSeconds: 3.6,
 });
 
-export interface HuntPodAnchor { id: 'hunter' | 'karhek' | 'saketh'; x: number; y: number }
+export interface HuntPodAnchor { id: 'hunter' | ExpeditionMemberId; x: number; y: number }
 export interface HuntPodRecovery {
   version: 1;
   phase: 'ready' | 'countdown' | 'destroyed';
@@ -45,8 +45,9 @@ const finiteBody = (body: WorldRect) => [body.x, body.y, body.width, body.height
 export function huntPodAnchors(plan: PlanetInsertionPlan, world: Pick<WorldBlueprint, 'spawn' | 'floorY'>): HuntPodAnchor[] {
   if (plan.method !== 'pod') return [];
   const origin = { x: Math.max(22, world.spawn.x - 96), y: world.floorY };
-  return [{ id: 'hunter', ...origin }, ...(plan.team === 'triad'
-    ? (['karhek', 'saketh'] as const).map(id => ({ id, x: origin.x + TRIO_INSERTION_OFFSETS[id], y: origin.y })) : [])];
+  return [{ id: 'hunter', ...origin }, ...expeditionMemberIds(plan).map((id, index) => ({
+    id, x: origin.x + EXPEDITION_SLOT_OFFSETS[index], y: origin.y,
+  }))];
 }
 
 export function createHuntPodRecovery(plan: PlanetInsertionPlan): HuntPodRecovery | undefined {
@@ -135,7 +136,7 @@ export function huntPodSafetyText(reason: HuntPodSafetyReason, blockedMemberId: 
   switch (reason) {
     case 'ready': return 'Liaison établie · chasseurs à distance sûre.';
     case 'unsafe-player': return 'Sécurité active · éloigne-toi de toutes les capsules.';
-    case 'unsafe-companion': return `${blockedMemberId === 'karhek' ? 'Ka’rhek' : blockedMemberId === 'saketh' ? 'Sa’keth' : 'Un allié'} est encore près d’une capsule. Éloigne toute la triade.`;
+    case 'unsafe-companion': return `${expeditionMember(blockedMemberId)?.name ?? 'Un allié'} est encore près d’une capsule. Éloigne toute la triade.`;
     case 'out-of-range': return 'Hors portée de la télécommande · rapproche-toi du site d’insertion.';
     case 'destroyed': return 'Capsules détruites · aucune technologie récupérable.';
     default: return 'Télécommande indisponible pendant cette action.';

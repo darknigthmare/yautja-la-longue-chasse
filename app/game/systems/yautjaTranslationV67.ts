@@ -1,34 +1,87 @@
-/** Decorative reading effect only. These strokes are not a canonical alphabet,
- * transliteration table or a claim about the spoken Yautja language. */
-export const YAUTJA_DECORATIVE_STROKES_V67 = [
-  'M3 3V17M3 3L12 7M3 10L10 14M11 3V5',
-  'M3 4H12L8 9H3M8 9V17M11 13H13',
-  'M3 3L11 6V16L4 12M3 9V17',
-  'M3 5H12M5 3V17M9 8L12 11L9 15',
-  'M4 3L11 7L4 11V17M8 14H13',
-  'M3 3V14L11 17V7M6 5H13M5 10H8',
-  'M3 4L8 8L12 4M8 8V17M3 13H5',
-  'M4 3H11V8H4V16M8 12L12 17',
-] as const;
+type Evidence = "creator" | "screen-transcription" | "classic-reference";
 
-export interface TranslationWordV67 { space: boolean; plain: boolean; text: string; units: { text: string; index: number | null; glyph: number }[] }
-export function translationWordsV67(text: string): { words: TranslationWordV67[]; symbols: number } {
-  const segmenter = new Intl.Segmenter('fr', { granularity: 'grapheme' });
-  let index = 0;
-  const words = text.split(/(\s+)/u).filter(Boolean).map(word => {
-    const graphemes = [...segmenter.segment(word)].map(unit => unit.segment);
-    const space = /^\s+$/u.test(word), plain = space || graphemes.length > 32;
-    const units = graphemes.map(unit => {
-      const eligible = !plain && index < 360 && /[\p{L}\p{N}]/u.test(unit);
-      const position = eligible ? index++ : null;
-      return { text: unit, index: position, glyph: ((unit.codePointAt(0) ?? 0) + (position ?? 0) * 3) % YAUTJA_DECORATIVE_STROKES_V67.length };
-    });
-    return { text: word, space, plain, units };
-  });
-  return { words, symbols: index };
+interface LexicalSource {
+  readonly evidence: Evidence;
+  readonly label: string;
+  readonly url: string;
 }
-export function translationDurationV67(symbols: number): number { return symbols === 0 ? 0 : Math.min(1600, Math.max(480, 180 + symbols * 12)); }
-export function advanceTranslationV67(elapsed: number, delta: number, duration: number, paused: boolean): number {
-  if (paused || !Number.isFinite(delta) || delta <= 0) return elapsed;
-  return Math.min(duration, elapsed + Math.min(delta, 100));
+
+const WATKINS = {
+  evidence: "creator",
+  label: "Britton Watkins · entretien au Los Angeles Times",
+  url: "https://www.latimes.com/entertainment-arts/movies/story/2025-11-10/predator-badlands-yautja-alien-language-dan-trachtenberg-britton-watkins",
+} as const satisfies LexicalSource;
+
+const SCREEN = {
+  evidence: "screen-transcription",
+  label: "AvP Central · transcriptions des répliques des films",
+  url: "https://www.avpcentral.com/yautja-dictionary-vocabulary-of-predators",
+} as const satisfies LexicalSource;
+
+const CLASSIC = {
+  evidence: "classic-reference",
+  label: "AvP Central · vocabulaire classique repris par la Bible",
+  url: "https://www.avpcentral.com/yautja-dictionary-vocabulary-of-predators",
+} as const satisfies LexicalSource;
+
+interface LexicalEntry {
+  readonly form: string;
+  readonly french: string;
+  readonly source: LexicalSource;
+}
+
+export const YAUTJA_LEXICON_V67 = {
+  chish: { form: "chish", french: "je, moi", source: WATKINS },
+  ngai: { form: "ngai", french: "non", source: WATKINS },
+  dau: { form: "dau", french: "tu ou vous, avec respect", source: WATKINS },
+  kai: { form: "kai", french: "tu, adressé à un proche", source: WATKINS },
+  wul: { form: "wul", french: "tu, adressé avec mépris", source: WATKINS },
+  "ngu-djei-chish": { form: "Ngu djei chish", french: "Je ne suis la proie de personne", source: SCREEN },
+  "yauhwaq-yi-ai": { form: "Yauhwaq yi'ai", french: "Tueur de tueurs", source: SCREEN },
+  "kainde-amedha": { form: "Kainde Amedha", french: "Xénomorphe, littéralement viande dure", source: CLASSIC },
+  "kainde-amedha-chiva": { form: "Kainde Amedha Chiva", french: "Épreuve de la viande dure", source: CLASSIC },
+  chiva: { form: "Chiva", french: "Épreuve ou rite de passage", source: CLASSIC },
+  kehrite: { form: "Kehrite", french: "Aire de combat ou d’entraînement", source: CLASSIC },
+  "ic-jit": { form: "Ic'jit", french: "Bad Blood, hors-la-loi yautja", source: CLASSIC },
+  "yin-tekai": { form: "Yin'tekai", french: "Honneur", source: CLASSIC },
+  thwei: { form: "Thwei", french: "Sang", source: CLASSIC },
+} as const satisfies Record<string, LexicalEntry>;
+
+export type YautjaLexemeV67 = keyof typeof YAUTJA_LEXICON_V67;
+
+export const YAUTJA_EVIDENCE_LABELS_V67: Readonly<Record<Evidence, string>> = {
+  creator: "Badlands · expliqué par Britton Watkins",
+  "screen-transcription": "Badlands · transcription recensée",
+  "classic-reference": "Univers étendu · lexique classique",
+};
+
+function fold(text: string) {
+  return text.normalize("NFD").replace(/\p{M}/gu, "").replace(/[’‘ʼ]/gu, "'").toLowerCase();
+}
+
+export function searchYautjaLexiconV67(query: string) {
+  const needle = fold(query.trim());
+  return Object.entries(YAUTJA_LEXICON_V67).filter(([, entry]) =>
+    [entry.form, entry.french, YAUTJA_EVIDENCE_LABELS_V67[entry.source.evidence]].some(value => fold(value).includes(needle)),
+  );
+}
+
+const FILM_LINES: readonly YautjaLexemeV67[] = ["ngu-djei-chish", "yauhwaq-yi-ai"];
+const CLASSIC_MATCHES: readonly [YautjaLexemeV67, RegExp][] = [
+  ["kainde-amedha-chiva", /(?<![\p{L}\p{N}_-])epreuve de la viande dure(?![\p{L}\p{N}_-])/u],
+  ["kainde-amedha", /(?<![\p{L}\p{N}_-])xenomorphes?(?![\p{L}\p{N}_-])/u],
+  ["kehrite", /(?<![\p{L}\p{N}_-])(?:aires? d'entrainement|aires? de combat)(?![\p{L}\p{N}_-])/u],
+  ["chiva", /(?<![\p{L}\p{N}_-])rites? de passage(?![\p{L}\p{N}_-])/u],
+  ["ic-jit", /(?<![\p{L}\p{N}_-])bad bloods?(?![\p{L}\p{N}_-])/u],
+  ["yin-tekai", /(?<![\p{L}\p{N}_-])honneur(?![\p{L}\p{N}_-])/u],
+  ["thwei", /(?<![\p{L}\p{N}_-])sang(?![\p{L}\p{N}_-])/u],
+];
+
+/** Returns an exact recorded line or lexical notes alongside the original French. */
+export function readYautjaV67(text: string): { kind: "line" | "terms"; ids: readonly YautjaLexemeV67[] } {
+  const folded = fold(text);
+  const sentence = folded.trim().replace(/^[«“"' ]+|[.!?…»”"' ]+$/gu, "").replace(/\s+/gu, " ");
+  const line = FILM_LINES.find(id => sentence === fold(YAUTJA_LEXICON_V67[id].french));
+  if (line) return { kind: "line", ids: [line] };
+  return { kind: "terms", ids: CLASSIC_MATCHES.filter(([, pattern]) => pattern.test(folded)).map(([id]) => id) };
 }

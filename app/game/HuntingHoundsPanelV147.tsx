@@ -2,8 +2,8 @@
 
 import { useId } from "react";
 import {
-  HOUND_BOND_MAX_V147, HOUND_KENNEL_LOCATION_V147, HOUND_KENNEL_NAME_V147, HOUND_ORDERS_V147,
-  HOUND_SESSION_GAIN_CAP_V147, isOrderUnlockedV147, nextBondThresholdV147,
+  HOUND_APTITUDES_V147, HOUND_BOND_MAX_V147, HOUND_KENNEL_LOCATION_V147, HOUND_KENNEL_NAME_V147,
+  HOUND_SESSION_GAIN_CAP_V147, houndAptitudeV147, houndOrdersV147, nextBondThresholdV147,
   type HoundV147, type HuntingHoundsV147,
 } from "./systems/huntingHoundsV147";
 import styles from "./HuntingHoundsPanelV147.module.css";
@@ -27,7 +27,7 @@ export default function HuntingHoundsPanelV147({ hounds, onHealAtKennel }: Props
   return <section className={styles.hounds} aria-labelledby={titleId} data-hunting-hounds="v147">
     <header>
       <p className={styles.eyebrow}>CHIENS DE CHASSE · ORDRES ET LIEN</p>
-      <h3 id={titleId}>Le lien et les quatre ordres</h3>
+      <h3 id={titleId}>Le lien et les ordres de chasse</h3>
     </header>
     <p className={styles.notice}>Le lien va de 0 à {HOUND_BOND_MAX_V147} et monte d’au plus {HOUND_SESSION_GAIN_CAP_V147} par chasse.
       Un chien blessé ne part pas en chasse avant d’être soigné au {HOUND_KENNEL_NAME_V147} ({HOUND_KENNEL_LOCATION_V147}).
@@ -37,9 +37,10 @@ export default function HuntingHoundsPanelV147({ hounds, onHealAtKennel }: Props
       : <ul className={styles.list}>
         {roster.map(hound => {
           const next = nextBondThresholdV147(hound.bond);
+          const aptitude = houndAptitudeV147(hound.catalogueId);
           return <li key={hound.id} className={styles.hound} data-hound-id={hound.id} data-condition={hound.condition}>
             <div className={styles.row}>
-              <strong>{hound.name}</strong>
+              <strong>{hound.name}{aptitude ? ` · ${HOUND_APTITUDES_V147[aptitude].label}` : ""}</strong>
               <span>{CONDITION_LABEL[hound.condition]}</span>
             </div>
             <div className={styles.bond}>
@@ -47,8 +48,8 @@ export default function HuntingHoundsPanelV147({ hounds, onHealAtKennel }: Props
               <span>Lien {hound.bond} / {HOUND_BOND_MAX_V147}{next !== null ? ` · prochain seuil ${next}` : ""}</span>
             </div>
             <ul className={styles.orders}>
-              {HOUND_ORDERS_V147.map(order => {
-                const unlocked = isOrderUnlockedV147(order.id, hound.bond);
+              {houndOrdersV147(aptitude).map(order => {
+                const unlocked = order.defined && hound.bond >= order.bond;
                 return <li key={order.id} data-order={order.id} data-locked={!unlocked}>
                   <span>{order.label}</span>
                   <small>{!order.defined ? `Verrouillé · à définir (lien ${order.bond})`

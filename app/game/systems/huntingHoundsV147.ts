@@ -5,9 +5,9 @@
  * - Bond 0..100 on the model of the V6 mount bond: thresholds 25 / 50 / 75 /
  *   100 and at most +5 per session (one hunt = one session, keyed by the
  *   mission id and its completion time so a replayed result never adds more).
- * - Orders: Revenir (0), Pister (25), Rabattre (50), Attaquer (75). The
- *   signature order at 100 is not defined by the bible yet: it stays locked
- *   with the label "à définir", whatever the bond.
+ * - Orders: Revenir (0), Pister (25), Rabattre (50), Attaquer (75). A role
+ *   signature unlocks at 100 for known catalogue aptitudes. Unidentified
+ *   historical animals keep the four established commands.
  * - A wounded hound cannot join a hunt until healed at the Chenil des
  *   Pisteurs (CITY-28). A dead hound never comes back (rule CORE-R17): no
  *   heal, no bond, no recruitment under the same identity.
@@ -40,7 +40,7 @@ export interface HoundOrderDefinitionV147 {
   readonly label: string;
   readonly bond: number;
   readonly effect: string;
-  /** False while the bible leaves the order undefined: never usable. */
+  /** False for an old entry whose signature has not been identified. */
   readonly defined: boolean;
 }
 
@@ -52,18 +52,84 @@ export const HOUND_ORDERS_V147: readonly HoundOrderDefinitionV147[] = Object.fre
   { id: "signature", label: "Ordre signature (à définir)", bond: 100, effect: "Propre à la race du chien ; à définir.", defined: false },
 ] as const);
 
+/** Playable roles assigned to the original catalogue art. They are gameplay roles. */
+export const HOUND_APTITUDES_V147 = {
+  tracker: {
+    label: "Pisteur", description: "Se déplace vite et marque les traces de plus loin.",
+    health: 52, speed: 304, markDistance: 175, pushSpeed: 60,
+    mode: "track", signatureLabel: "Piste tenace",
+    signatureEffect: "Marque la trace la plus fraîche de plus loin et garde le repère douze secondes.",
+  },
+  driver: {
+    label: "Rabatteur", description: "Pousse plus vite les petites proies vers le chasseur.",
+    health: 64, speed: 266, markDistance: 126, pushSpeed: 96,
+    mode: "drive", signatureLabel: "Rabattage serré",
+    signatureEffect: "Rabats une proie au sol plus près de toi que lors d’un rabattage ordinaire.",
+  },
+  guard: {
+    label: "Gardien", description: "Encaisse davantage de dégâts et se déplace plus lentement.",
+    health: 78, speed: 222, markDistance: 130, pushSpeed: 76,
+    mode: "attack", signatureLabel: "Charge courte",
+    signatureEffect: "Porte une seule attaque renforcée sur la proie au sol que tu désignes, puis revient.",
+  },
+} as const;
+
+export type HoundAptitudeV147 = keyof typeof HOUND_APTITUDES_V147;
+
+const CATALOGUE_APTITUDES: Readonly<Partial<Record<string, HoundAptitudeV147>>> = {
+  "original-companion-01": "guard",
+  "original-companion-02": "driver",
+  "original-companion-03": "guard",
+  "original-companion-04": "guard",
+  "original-companion-05": "tracker",
+  "original-companion-06": "tracker",
+  "original-companion-07": "driver",
+  "original-companion-08": "tracker",
+  "original-companion-09": "driver",
+  "original-companion-10": "driver",
+  "user-preddog-2018": "guard",
+  breche: "tracker",
+};
+
+export function houndAptitudeV147(catalogueId: string | null | undefined): HoundAptitudeV147 | undefined {
+  return catalogueId && Object.hasOwn(CATALOGUE_APTITUDES, catalogueId) ? CATALOGUE_APTITUDES[catalogueId] : undefined;
+}
+
+function supportedOrdersV147(role: (typeof HOUND_APTITUDES_V147)[HoundAptitudeV147]): readonly HoundOrderDefinitionV147[] {
+  return HOUND_ORDERS_V147.map(order => order.id === "signature"
+    ? { ...order, defined: true, label: role.signatureLabel, effect: role.signatureEffect }
+    : order);
+}
+
+const ordersByAptitude = {
+  tracker: supportedOrdersV147(HOUND_APTITUDES_V147.tracker),
+  driver: supportedOrdersV147(HOUND_APTITUDES_V147.driver),
+  guard: supportedOrdersV147(HOUND_APTITUDES_V147.guard),
+} satisfies Record<HoundAptitudeV147, readonly HoundOrderDefinitionV147[]>;
+
+export function houndOrdersV147(aptitude?: HoundAptitudeV147): readonly HoundOrderDefinitionV147[] {
+  return aptitude ? ordersByAptitude[aptitude] : HOUND_ORDERS_V147;
+}
+
+export function houndOrderModeV147(
+  order: HoundOrderIdV147, aptitude?: HoundAptitudeV147,
+): Exclude<HoundOrderIdV147, "signature"> | null {
+  if (order !== "signature") return order;
+  return aptitude ? HOUND_APTITUDES_V147[aptitude].mode : null;
+}
+
 export function clampBondV147(value: unknown): number {
   const n = typeof value === "number" && Number.isFinite(value) ? value : 0;
   return Math.max(0, Math.min(HOUND_BOND_MAX_V147, Math.floor(n)));
 }
 
-export function isOrderUnlockedV147(order: HoundOrderIdV147, bond: number): boolean {
-  const definition = HOUND_ORDERS_V147.find(entry => entry.id === order);
+export function isOrderUnlockedV147(order: HoundOrderIdV147, bond: number, aptitude?: HoundAptitudeV147): boolean {
+  const definition = houndOrdersV147(aptitude).find(entry => entry.id === order);
   return !!definition && definition.defined && clampBondV147(bond) >= definition.bond;
 }
 
-export function unlockedOrdersV147(bond: number): HoundOrderIdV147[] {
-  return HOUND_ORDERS_V147.filter(entry => isOrderUnlockedV147(entry.id, bond)).map(entry => entry.id);
+export function unlockedOrdersV147(bond: number, aptitude?: HoundAptitudeV147): HoundOrderIdV147[] {
+  return houndOrdersV147(aptitude).filter(entry => entry.defined && clampBondV147(bond) >= entry.bond).map(entry => entry.id);
 }
 
 /** Next threshold still to reach, or null at 100. */
@@ -371,6 +437,7 @@ export interface FieldPreyV147 {
 
 export interface HoundFieldV147 {
   houndId: string;
+  aptitude?: HoundAptitudeV147;
   x: number;
   y: number;
   health: number;
@@ -388,7 +455,7 @@ export interface HoundFieldV147 {
 
 export type HoundFieldEventV147 =
   | { type: "returned" }
-  | { type: "marked"; preyId: string }
+  | { type: "marked"; preyId: string; visibleSeconds?: number }
   | { type: "push"; preyId: string; dx: number; dy: number }
   | { type: "driven"; preyId: string }
   | { type: "bite"; preyId: string; damage: number }
@@ -402,8 +469,11 @@ export const HOUND_FIELD_V147 = Object.freeze({
   woundedShare: 0.4,
 });
 
-export function createHoundFieldV147(hound: HoundV147, at: { x: number; y: number }, maxHealth = 60): HoundFieldV147 {
-  return { houndId: hound.id, x: at.x, y: at.y, health: maxHealth, maxHealth, order: "recall", targetId: null,
+export function createHoundFieldV147(hound: HoundV147, at: { x: number; y: number }, maxHealth?: number): HoundFieldV147 {
+  const aptitude = houndAptitudeV147(hound.catalogueId);
+  const health = maxHealth ?? (aptitude ? HOUND_APTITUDES_V147[aptitude].health : 60);
+  return { houndId: hound.id, ...(aptitude ? { aptitude } : {}), x: at.x, y: at.y,
+    health, maxHealth: health, order: "recall", targetId: null,
     biteCooldown: 0, orderDone: true, ordersCompleted: 0, markedIds: [], wounded: false, dead: false };
 }
 
@@ -413,11 +483,11 @@ export function issueHoundOrderV147(
   field: HoundFieldV147, order: HoundOrderIdV147, bond: number, targetId: string | null = null,
 ): { ok: true; field: HoundFieldV147 } | { ok: false; reason: HoundOrderRefusalV147 } {
   if (field.dead) return { ok: false, reason: "dead" };
-  const definition = HOUND_ORDERS_V147.find(entry => entry.id === order);
-  if (!definition || !definition.defined) return { ok: false, reason: "undefined-order" };
-  if (!isOrderUnlockedV147(order, bond)) return { ok: false, reason: "locked" };
+  const mode = houndOrderModeV147(order, field.aptitude);
+  if (!mode || !HOUND_ORDER_IDS_V147.includes(order)) return { ok: false, reason: "undefined-order" };
+  if (!isOrderUnlockedV147(order, bond, field.aptitude)) return { ok: false, reason: "locked" };
   if (field.wounded && order !== "recall") return { ok: false, reason: "wounded" };
-  if (order === "attack" && !targetId) return { ok: false, reason: "no-target" };
+  if (mode === "attack" && !targetId) return { ok: false, reason: "no-target" };
   return { ok: true, field: { ...field, order, targetId, orderDone: false, markedIds: [...field.markedIds] } };
 }
 
@@ -433,7 +503,8 @@ export function damageHoundFieldV147(field: HoundFieldV147, amount: number): Hou
 
 function moveToward(field: HoundFieldV147, x: number, y: number, dt: number): number {
   const dx = x - field.x, dy = y - field.y, distance = Math.hypot(dx, dy);
-  const step = Math.min(distance, HOUND_FIELD_V147.speed * dt);
+  const speed = field.aptitude ? HOUND_APTITUDES_V147[field.aptitude].speed : HOUND_FIELD_V147.speed;
+  const step = Math.min(distance, speed * dt);
   if (distance > 0) { field.x += dx / distance * step; field.y += dy / distance * step; }
   return distance - step;
 }
@@ -459,7 +530,11 @@ export function stepHoundFieldV147(
   const target = () => input.prey.find(entry => entry.id === field.targetId && entry.alive) ?? null;
   const heel = () => moveToward(field, input.player.x, input.player.y, dt) <= HOUND_FIELD_V147.heelDistance;
 
-  switch (field.order) {
+  const mode = houndOrderModeV147(field.order, field.aptitude);
+  const role = field.aptitude ? HOUND_APTITUDES_V147[field.aptitude] : null;
+  const signature = field.order === "signature";
+
+  switch (mode) {
     case "recall": {
       const wasAway = Math.hypot(field.x - input.player.x, field.y - input.player.y) > HOUND_FIELD_V147.heelDistance;
       if (heel() && !field.orderDone) {
@@ -475,8 +550,11 @@ export function stepHoundFieldV147(
       let prey = target();
       if (!prey) { prey = freshestPrey(input.prey, field, field.markedIds); field.targetId = prey?.id ?? null; }
       if (!prey) { heel(); break; }
-      if (moveToward(field, prey.x, prey.y, dt) <= HOUND_FIELD_V147.markDistance) {
-        field.markedIds.push(prey.id); complete(); events.push({ type: "marked", preyId: prey.id });
+      const markDistance = (role?.markDistance ?? HOUND_FIELD_V147.markDistance) + (signature ? 65 : 0);
+      if (moveToward(field, prey.x, prey.y, dt) <= markDistance) {
+        field.markedIds.push(prey.id);
+        complete();
+        events.push({ type: "marked", preyId: prey.id, ...(signature ? { visibleSeconds: 12 } : {}) });
       }
       break;
     }
@@ -489,9 +567,10 @@ export function stepHoundFieldV147(
       const flankX = prey.x + away * HOUND_FIELD_V147.flankOffset;
       if (moveToward(field, flankX, prey.y, dt) <= 20) {
         const dx = input.player.x - prey.x, dy = input.player.y - prey.y, distance = Math.hypot(dx, dy);
-        if (distance <= HOUND_FIELD_V147.drivenDistance) { complete(); events.push({ type: "driven", preyId: prey.id }); }
+        const drivenDistance = signature ? 105 : HOUND_FIELD_V147.drivenDistance;
+        if (distance <= drivenDistance) { complete(); events.push({ type: "driven", preyId: prey.id }); }
         else {
-          const step = HOUND_FIELD_V147.pushSpeed * dt;
+          const step = (role?.pushSpeed ?? HOUND_FIELD_V147.pushSpeed) * dt;
           events.push({ type: "push", preyId: prey.id, dx: dx / distance * step, dy: dy / distance * step });
         }
       }
@@ -515,11 +594,13 @@ export function stepHoundFieldV147(
       if (field.orderDone) { heel(); break; }
       if (moveToward(field, prey.x, prey.y, dt) <= HOUND_FIELD_V147.biteDistance && field.biteCooldown === 0) {
         field.biteCooldown = HOUND_FIELD_V147.biteInterval;
-        events.push({ type: "bite", preyId: prey.id, damage: HOUND_FIELD_V147.biteDamage });
+        const damage = HOUND_FIELD_V147.biteDamage + (signature ? 8 : 0);
+        events.push({ type: "bite", preyId: prey.id, damage });
+        if (signature) complete();
       }
       break;
     }
-    case "signature":
+    case null:
       break;
   }
   return { field, events };
@@ -535,14 +616,17 @@ export function houndHuntReportFromFieldV147(field: HoundFieldV147): HoundHuntRe
 // ---------------------------------------------------------------------------
 
 /** Orders that can be given by cycling, in bible order. */
-const CYCLE_ORDERS_V147: readonly HoundOrderIdV147[] = ["recall", "track", "drive", "attack"];
+const CYCLE_ORDERS_V147: readonly HoundOrderIdV147[] = HOUND_ORDER_IDS_V147;
 
 /**
  * Next usable order after `current` for the "next order" key. Attack is
  * skipped without a designated prey, so the cycle never stalls on it.
  */
-export function nextHoundOrderV147(current: HoundOrderIdV147, bond: number, hasTarget: boolean): HoundOrderIdV147 {
-  const usable = CYCLE_ORDERS_V147.filter(order => isOrderUnlockedV147(order, bond) && (order !== "attack" || hasTarget));
+export function nextHoundOrderV147(
+  current: HoundOrderIdV147, bond: number, hasTarget: boolean, aptitude?: HoundAptitudeV147,
+): HoundOrderIdV147 {
+  const usable = CYCLE_ORDERS_V147.filter(order => isOrderUnlockedV147(order, bond, aptitude) &&
+    (houndOrderModeV147(order, aptitude) !== "attack" || hasTarget));
   if (usable.length === 0) return "recall";
   const index = usable.indexOf(current);
   return usable[(index + 1) % usable.length];
@@ -582,7 +666,7 @@ export function pickHoundTargetV147(
   return closestTo(ahead.length ? ahead : near, hunter.x, hunter.y);
 }
 
-export const HOUND_FIELD_SNAPSHOT_VERSION_V147 = 1 as const;
+export const HOUND_FIELD_SNAPSHOT_VERSION_V147 = 2 as const;
 
 export interface HoundFieldSnapshotV147 extends HoundFieldV147 {
   version: typeof HOUND_FIELD_SNAPSHOT_VERSION_V147;
@@ -600,16 +684,21 @@ export function isFutureHoundFieldV147(raw: unknown): boolean {
 
 /**
  * Strict reader for a checkpointed hound. Returns null for anything that is
- * not a coherent version-1 field (including a future version).
+ * not a coherent supported field (including a future version).
  */
 export function restoreHoundFieldV147(raw: unknown): HoundFieldV147 | null {
-  if (!isRecord(raw) || raw.version !== HOUND_FIELD_SNAPSHOT_VERSION_V147) return null;
+  if (!isRecord(raw) || (raw.version !== 1 && raw.version !== HOUND_FIELD_SNAPSHOT_VERSION_V147)) return null;
+  const aptitude = raw.aptitude;
+  if (aptitude !== undefined && (
+    raw.version === 1 || typeof aptitude !== "string" || !Object.hasOwn(HOUND_APTITUDES_V147, aptitude)
+  )) return null;
   const finite = (v: unknown): v is number => typeof v === "number" && Number.isFinite(v);
   if (typeof raw.houndId !== "string" || !ID_PATTERN.test(raw.houndId)) return null;
   if (![raw.x, raw.y, raw.health, raw.maxHealth, raw.biteCooldown, raw.ordersCompleted].every(finite)) return null;
   const maxHealth = raw.maxHealth as number, health = raw.health as number;
   if (maxHealth <= 0 || maxHealth > 10_000 || health < 0 || health > maxHealth) return null;
-  if (typeof raw.order !== "string" || !(HOUND_ORDER_IDS_V147 as readonly string[]).includes(raw.order) || raw.order === "signature") return null;
+  if (typeof raw.order !== "string" || !(HOUND_ORDER_IDS_V147 as readonly string[]).includes(raw.order) ||
+      (raw.order === "signature" && aptitude === undefined)) return null;
   if (raw.targetId !== null && (typeof raw.targetId !== "string" || raw.targetId.length > 160)) return null;
   if (!Array.isArray(raw.markedIds) || raw.markedIds.length > 512 ||
       raw.markedIds.some(id => typeof id !== "string" || id.length > 160)) return null;
@@ -619,7 +708,8 @@ export function restoreHoundFieldV147(raw: unknown): HoundFieldV147 | null {
   const dead = raw.dead as boolean;
   if (dead !== (health <= 0)) return null;
   return {
-    houndId: raw.houndId, x: raw.x as number, y: raw.y as number, health, maxHealth,
+    houndId: raw.houndId, ...(aptitude === undefined ? {} : { aptitude: aptitude as HoundAptitudeV147 }),
+    x: raw.x as number, y: raw.y as number, health, maxHealth,
     order: raw.order as HoundOrderIdV147, targetId: raw.targetId as string | null,
     biteCooldown: Math.max(0, Math.min(HOUND_FIELD_V147.biteInterval, raw.biteCooldown as number)),
     orderDone: raw.orderDone, ordersCompleted: orders, markedIds: [...raw.markedIds as string[]],

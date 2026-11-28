@@ -1,5 +1,6 @@
 import {
-  DEFAULT_PLAN, TRIO_MEMBERS, TRIO_INSERTION_OFFSETS, EXPEDITION_MEMBER_SIZE, EXPEDITION_MEMBER_HEALTH, normalizePlanetInsertionPlan, planetInsertionPressure,
+  DEFAULT_PLAN, EXPEDITION_SLOT_OFFSETS, EXPEDITION_MEMBER_SIZE, EXPEDITION_MEMBER_HEALTH, EXPEDITION_MEMBER_ATTACK,
+  expeditionMemberIds, normalizePlanetInsertionPlan, planetInsertionPressure,
   type ExpeditionMemberId, type PlanetInsertionPlan,
 } from './planetInsertion';
 import { overlapsSolidPlatform, resolvePlatformMotion } from './platformCollision';
@@ -86,8 +87,8 @@ export function createHuntInsertion(plan: PlanetInsertionPlan, runId: string, wo
   const normalized = normalizePlanetInsertionPlan(plan);
   if (!normalized) throw new TypeError('Plan d’insertion invalide.');
   const origin = { x: world.spawn.x + 36, y: world.floorY };
-  const companions = normalized.team === 'triad' ? TRIO_MEMBERS.map(({ id }): HuntCompanion => {
-    const x = origin.x + TRIO_INSERTION_OFFSETS[id] - WIDTH / 2;
+  const companions = expeditionMemberIds(normalized).map((id, index): HuntCompanion => {
+    const x = origin.x + EXPEDITION_SLOT_OFFSETS[index] - WIDTH / 2;
     const body = { x, y: world.floorY - HEIGHT, width: WIDTH, height: HEIGHT };
     if (x < 0 || x + WIDTH > world.width || overlapsSolidPlatform(body, world.platforms) ||
         world.hazards.some(hazard => hazard.damagePerSecond > 0 && body.x < hazard.x + hazard.width &&
@@ -97,7 +98,7 @@ export function createHuntInsertion(plan: PlanetInsertionPlan, runId: string, wo
     return { id, ...body, health: MEMBER_HEALTH[id], maxHealth: MEMBER_HEALTH[id], velocityX: 0, velocityY: 0,
       facing: 1, grounded: true, climbing: false, order: 'follow', status: 'active', attackCooldown: .7,
       attackFlash: 0, invulnerability: 0, blockedSeconds: 0, jumpTargetX: null };
-  }) : [];
+  });
   return { version: 1, runId, plan: normalized, origin, searchUntil: planetInsertionPressure(normalized).searchSeconds,
     patrolIds: huntInsertionPatrols(normalized, world, runId).map(item => item.id), alertedIds: [], companions,
     ...(normalized.method === 'pod' ? { podRecovery: createHuntPodRecovery(normalized) } : {}) };
@@ -124,10 +125,11 @@ export function restoreHuntInsertion(raw: unknown, runId: string, world: WorldBl
       !Array.isArray(raw.companions) || raw.companions.length !== (plan.team === 'triad' ? 2 : 0)) return null;
   const podRecovery = restoreHuntPodRecovery(raw.podRecovery, plan);
   if (podRecovery === null) return null;
+  const selected = expeditionMemberIds(plan);
   const companions: HuntCompanion[] = [];
-  for (const member of raw.companions) {
-    if (!record(member) || !TRIO_MEMBERS.some(item => item.id === member.id) || companions.some(item => item.id === member.id)) return null;
-    const id = member.id as ExpeditionMemberId;
+  for (const [index, member] of raw.companions.entries()) {
+    const id = selected[index];
+    if (!record(member) || member.id !== id) return null;
     if (member.width !== WIDTH || member.height !== HEIGHT || member.maxHealth !== MEMBER_HEALTH[id] ||
         !['x', 'y', 'health', 'velocityX', 'velocityY', 'attackCooldown', 'attackFlash', 'invulnerability', 'blockedSeconds'].every(key => finite(member[key])) ||
         typeof member.grounded !== 'boolean' || typeof member.climbing !== 'boolean' || ![-1, 1].includes(member.facing as number) ||
@@ -384,9 +386,10 @@ export function stepHuntCompanions(state: HuntInsertionState, input: CompanionSt
         Math.hypot(point(target).x - point(member).x, point(target).y - point(member).y) <= 108 &&
         huntInsertionLineOfSight(point(member), point(target), input.world, input.covers)) {
       member.facing = point(target).x < point(member).x ? -1 : 1;
-      member.attackCooldown = member.id === 'karhek' ? 1.55 : 1.8;
+      const attack = EXPEDITION_MEMBER_ATTACK[member.id];
+      member.attackCooldown = attack.cooldown;
       member.attackFlash = .18;
-      strikes.push({ memberId: member.id, enemyId: target.id, damage: member.id === 'karhek' ? 9 : 12 });
+      strikes.push({ memberId: member.id, enemyId: target.id, damage: attack.damage });
     }
   }
   return strikes;
