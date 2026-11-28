@@ -1,6 +1,7 @@
 import { MISSIONS } from '../data';
 import type { SaveGame } from '../types';
 import { normalizeSoloV90Campaign, soloV90MatchesSave } from './campaignSoloV90';
+import type { SoloV90Roster } from './firstHuntSoloV90';
 import { soloV70AllowsTriadHuntM017 } from './campaignSoloV70';
 import { getChronicleRank } from './clanChronicle';
 import { rankTrialsBlockedV147 } from './honorTribunalV147';
@@ -24,14 +25,17 @@ export const QUATZA_POSTS = {
 } as const;
 type QuatzaCreatureStage = 'idle' | 'stalk' | 'warning' | 'charge' | 'recover' | 'dead';
 interface Body { x: number; y: number; vy: number; facing: -1 | 1 }
-interface Companion { id: 'saar' | 'vek'; x: number; health: number; contribution: boolean }
+export const QUATZA_COMPANION_NAMES = { saar: 'Saar', vek: 'Vek', yena: 'Yena', tov: 'Tov' } as const;
+type QuatzaCompanionId = keyof typeof QUATZA_COMPANION_NAMES;
+interface Companion { id: QuatzaCompanionId; x: number; health: number; contribution: boolean }
 export interface QuatzaFrame {
   tick: number; phase: QuatzaPhase; checked: boolean; route: boolean; kit: QuatzaKit | null;
   player: Body & { health: number; cooldown: number; careSpent: boolean };
   companions: Companion[];
-  beast: { x: number; health: number; stage: QuatzaCreatureStage; remaining: number; direction: -1 | 1; hit: boolean; allyHit: 'saar' | 'vek' | null; exposed: boolean };
+  beast: { x: number; health: number; stage: QuatzaCreatureStage; remaining: number; direction: -1 | 1; hit: boolean; allyHit: QuatzaCompanionId | null; exposed: boolean };
   trail: boolean; approachCalled: boolean; blockCalled: boolean;
   hide: boolean; skull: boolean; previous: number;
+  returnAid?: { patient: Companion['id']; ticks: number };
 }
 export const QUATZA_RESCUE_TICKS = 7200;
 const QUATZA_RESCUE_HOLD = 24;
@@ -56,8 +60,12 @@ export interface QuatzaAttempt {
   input: number[];
   phase: QuatzaPhase;
   rescueRules?: 1;
+  returnRules?: 1;
+  roster?: SoloV90Roster;
   rescue?: QuatzaRescue;
 }
+export const QUATZA_RETURN_WITNESS = { id: 'clan-witness', name: 'Témoin du clan' } as const;
+export const QUATZA_RETURN_AID_TICKS = 24;
 export const QUATZA_RETURN_SUBJECTS = ['companions', 'trophy'] as const;
 export type QuatzaReturnSubject = typeof QUATZA_RETURN_SUBJECTS[number];
 export interface QuatzaExpedition {
@@ -85,12 +93,14 @@ const finished = (phase: QuatzaPhase) => phase === 'retreated' || phase === 'del
 const returnSubject = (value: unknown): value is QuatzaReturnSubject => QUATZA_RETURN_SUBJECTS.some(subject => subject === value);
 const partyAt = (frame: QuatzaFrame, x: number) => frame.companions.every(ally => ally.health > 0 && near(ally.x, x, 158));
 
-export function createQuatzaFrame(mode: QuatzaMode): QuatzaFrame {
+export function createQuatzaFrame(mode: QuatzaMode, roster?: SoloV90Roster): QuatzaFrame {
+  const companions: readonly QuatzaCompanionId[] = roster === 'yena-tov' ? ['yena', 'tov'] : ['saar', 'vek'];
   return {
     tick: 0, phase: 'preparation', checked: false, route: false, kit: null,
     player: { x: 76, y: QUATZA_FLOOR, vy: 0, facing: 1, health: 5, cooldown: 0, careSpent: false },
-    companions: mode === 'triad' ? [{ id: 'saar', x: 48, health: 3, contribution: false },
-      { id: 'vek', x: 34, health: 3, contribution: false }] : [],
+    companions: mode === 'triad' ? companions.map((id, index) => ({
+      id, x: 48 - index * 14, health: 3, contribution: false,
+    })) : [],
     beast: { x: 1130, health: mode === 'solo' ? 8 : 6, stage: 'idle', remaining: 0, direction: -1, hit: false, allyHit: null, exposed: false },
     trail: false, approachCalled: false, blockCalled: false, hide: false, skull: false, previous: 0,
   };
@@ -114,23 +124,23 @@ function approachPlayer(frame: QuatzaFrame, code: number) {
 
 function progressCompanions(frame: QuatzaFrame) {
   const { player, beast, companions } = frame;
-  const [saar, vek] = companions;
-  if (!saar || !vek) return;
+  const [approach, blocker] = companions;
+  if (!approach || !blocker) return;
   for (const [index, ally] of companions.entries()) {
     if (ally.health <= 0) continue;
     let target = player.x - 44 - 46 * index;
     if (frame.phase === 'field' && beast.stage !== 'dead') {
-      if (ally.id === 'saar' && frame.approachCalled && !saar.contribution) target = beast.x + 85;
-      if (ally.id === 'vek' && frame.blockCalled && !vek.contribution) target = beast.x - 95;
+      if (ally === approach && frame.approachCalled && !approach.contribution) target = beast.x + 85;
+      if (ally === blocker && frame.blockCalled && !blocker.contribution) target = beast.x - 95;
     }
     const speed = ally.health === 1 ? 4.5 : 6.5;
     ally.x = clamp(ally.x + clamp(target - ally.x, -speed, speed), 30, QUATZA_WIDTH - 30);
   }
   if (frame.phase !== 'field' || beast.stage === 'dead') return;
-  if (saar.health > 0 && frame.approachCalled && near(saar.x, beast.x + 85, 16) && near(player.x, beast.x, 400))
-    saar.contribution = true;
-  if (vek.health > 0 && frame.blockCalled && saar.contribution && near(vek.x, beast.x - 95, 17)) {
-    vek.contribution = true;
+  if (approach.health > 0 && frame.approachCalled && near(approach.x, beast.x + 85, 16) && near(player.x, beast.x, 400))
+    approach.contribution = true;
+  if (blocker.health > 0 && frame.blockCalled && approach.contribution && near(blocker.x, beast.x - 95, 17)) {
+    blocker.contribution = true;
     if (!beast.exposed) { beast.exposed = true; beast.stage = 'recover'; beast.remaining = 95; }
   }
 }
@@ -172,8 +182,18 @@ function advanceBeast(frame: QuatzaFrame, strike: boolean) {
   else { beast.stage = 'stalk'; beast.remaining = hard ? 26 : 34; }
 }
 
+export function quatzaReturnAidPatient(frame: QuatzaFrame) {
+  return frame.companions.find(ally => ally.health > 0 && ally.health < 3 && near(ally.x, frame.player.x, 100));
+}
+
+/** Both pieces belong to the single source attempt, even while a witness examines them. */
+export function quatzaReturnProof(owner: string, attemptNumber: number, frame: QuatzaFrame) {
+  if (!frame.hide || !frame.skull || (frame.phase !== 'return' && frame.phase !== 'delivered')) return null;
+  return `${owner}/quatza-triad/${attemptNumber}`;
+}
+
 /** The browser and the durable validator run the same fixed-tick inputs. */
-export function stepQuatza(mode: QuatzaMode, current: QuatzaFrame, code: number): QuatzaFrame {
+export function stepQuatza(mode: QuatzaMode, current: QuatzaFrame, code: number, returnRules?: 1): QuatzaFrame {
   if (!validInput(code) || finished(current.phase)) return current;
   const frame: QuatzaFrame = { ...current, tick: current.tick + 1, player: { ...current.player },
     companions: current.companions.map(ally => ({ ...ally })), beast: { ...current.beast } };
@@ -211,18 +231,33 @@ export function stepQuatza(mode: QuatzaMode, current: QuatzaFrame, code: number)
         } else if (frame.hide && frame.skull && partyAt(frame, player.x)) {
           frame.phase = 'return'; player.x = 95;
           frame.companions.forEach((ally, index) => { ally.x = 60 - index * 22; });
-        } else frame.phase = 'retreated';
+        } else if (!returnRules || !frame.hide || !frame.skull) frame.phase = 'retreated';
       }
     }
-  } else if (frame.phase === 'return' && pressed(QUATZA_INPUT.interact) &&
-      near(player.x, QUATZA_POSTS.witness) && partyAt(frame, player.x)) frame.phase = 'delivered';
+  } else if (frame.phase === 'return') {
+    if (near(player.x, QUATZA_POSTS.witness) && partyAt(frame, player.x)) {
+      if (pressed(QUATZA_INPUT.interact)) frame.phase = 'delivered';
+    } else if (returnRules) {
+      const patient = (code & QUATZA_INPUT.interact) && !(code & (QUATZA_INPUT.left | QUATZA_INPUT.right))
+        ? quatzaReturnAidPatient(frame) : undefined;
+      if (!patient) delete frame.returnAid;
+      else {
+        const previous = frame.returnAid?.patient === patient.id ? frame.returnAid.ticks : 0;
+        frame.returnAid = { patient: patient.id, ticks: previous + 1 };
+        if (frame.returnAid.ticks === QUATZA_RETURN_AID_TICKS) {
+          patient.health++;
+          delete frame.returnAid;
+        }
+      }
+    }
+  }
   if (frame.tick >= QUATZA_TICK_LIMIT && !finished(frame.phase)) frame.phase = 'retreated';
   frame.previous = code;
   return frame;
 }
 
-export function replayQuatzaAttempt(mode: QuatzaMode, input: readonly number[]): QuatzaFrame {
-  return input.reduce((frame, code) => stepQuatza(mode, frame, code), createQuatzaFrame(mode));
+export function replayQuatzaAttempt(mode: QuatzaMode, input: readonly number[], returnRules?: 1, roster?: SoloV90Roster): QuatzaFrame {
+  return input.reduce((frame, code) => stepQuatza(mode, frame, code, returnRules), createQuatzaFrame(mode, roster));
 }
 
 export function quatzaMissingCompanion(frame: QuatzaFrame): Companion | undefined {
@@ -286,7 +321,7 @@ export function canRetryQuatza(mode: QuatzaMode, attempt?: QuatzaAttempt) {
   if (attempt.phase !== 'retreated') return false;
   if (attempt.rescue) return quatzaRescueFinished(attempt.rescue.phase);
   return mode !== 'triad' || attempt.rescueRules !== 1 ||
-    !quatzaMissingCompanion(replayQuatzaAttempt(mode, attempt.input));
+    !quatzaMissingCompanion(replayQuatzaAttempt(mode, attempt.input, attempt.returnRules, attempt.roster));
 }
 
 export function canEnterQuatza(save: SaveGame, mode: QuatzaMode): boolean {
@@ -327,9 +362,18 @@ export function inspectQuatzaRij(value: unknown, owner: string) {
         if (mode !== 'triad' || attempt.rescueRules !== 1) return invalid;
         fields.push('rescueRules');
       }
+      if (Object.hasOwn(attempt, 'returnRules')) {
+        if (mode !== 'triad' || attempt.returnRules !== 1 || attempt.rescueRules !== 1) return invalid;
+        fields.push('returnRules');
+      }
+      if (Object.hasOwn(attempt, 'roster')) {
+        if (attempt.returnRules !== 1 || attempt.roster !== 'yena-tov') return invalid;
+        fields.push('roster');
+      }
       if (Object.hasOwn(attempt, 'rescue')) fields.push('rescue');
       if (!exact(attempt, fields)) return invalid;
-      const replay = replayQuatzaAttempt(mode, attempt.input);
+      const replay = replayQuatzaAttempt(mode, attempt.input, attempt.returnRules === 1 ? 1 : undefined,
+        attempt.roster === 'yena-tov' ? attempt.roster : undefined);
       if (Object.hasOwn(attempt, 'rescue')) {
         const rescue = attempt.rescue;
         if (mode !== 'triad' || !record(rescue) || !exact(rescue, ['id', 'input', 'phase']) ||
@@ -354,7 +398,9 @@ export function quatzaCampaignMatchesSave(save: SaveGame): boolean {
   if (inspected.status === 'absent') return true;
   if (!inspected.state) return false;
   const { triad, solo } = inspected.state.expeditions;
-  return (!triad || normalizeSoloV90Campaign(save.soloV90)?.status === 'completed' && soloV70AllowsTriadHuntM017(save)) &&
+  const formation = triad ? normalizeSoloV90Campaign(save.soloV90) : null;
+  return (!triad || formation?.status === 'completed' && soloV70AllowsTriadHuntM017(save) &&
+    triad.attempts.every(attempt => !attempt.returnRules || attempt.roster === formation.checkpoint.roster)) &&
     (!solo || MISSIONS.every(mission => save.missionProgress?.[mission.id]?.status === 'completed') &&
       !!shipAcquisitionOwnedHullV89(save.shipAcquisitionV89, save.createdAt));
 }
@@ -387,12 +433,14 @@ export function isQuatzaRijSuccessor(before: QuatzaRijCampaign | null | undefine
   if (!current) return false;
   if (attempts.length === oldAttempts.length + 1) {
     return canRetryQuatza(mode, previous) && current.input.length === 0 && current.phase === 'preparation' &&
-      current.rescueRules === (mode === 'triad' ? 1 : undefined) && !current.rescue &&
+      current.rescueRules === (mode === 'triad' ? 1 : undefined) &&
+      current.returnRules === (mode === 'triad' ? 1 : undefined) && !current.rescue &&
       JSON.stringify(attempts.slice(0, -1)) === JSON.stringify(oldAttempts);
   }
   if (!previous || attempts.length !== oldAttempts.length ||
       JSON.stringify(attempts.slice(0, -1)) !== JSON.stringify(oldAttempts.slice(0, -1)) ||
-      previous.rescueRules !== current.rescueRules) return false;
+      previous.rescueRules !== current.rescueRules || previous.returnRules !== current.returnRules ||
+      previous.roster !== current.roster) return false;
   if (current.rescue) {
     const prior = previous.rescue;
     const nextRescue = current.rescue;
@@ -400,7 +448,7 @@ export function isQuatzaRijSuccessor(before: QuatzaRijCampaign | null | undefine
         JSON.stringify(current.input) !== JSON.stringify(previous.input) ||
         nextRescue.id !== quatzaRescueId(next.ownerCreatedAt, attempts.length)) return false;
     if (!prior) return nextRescue.phase === 'report' && nextRescue.input.length === 0 &&
-      !!quatzaMissingCompanion(replayQuatzaAttempt(mode, previous.input));
+      !!quatzaMissingCompanion(replayQuatzaAttempt(mode, previous.input, previous.returnRules, previous.roster));
     return prior.id === nextRescue.id && !quatzaRescueFinished(prior.phase) &&
       nextRescue.input.length > prior.input.length && nextRescue.input.length <= prior.input.length + 180 &&
       prior.input.every((input, index) => nextRescue.input[index] === input);
@@ -429,13 +477,13 @@ export function commitQuatzaRij(save: SaveGame, command: QuatzaCommand): QuatzaR
       return refuse('La présentation vient de changer. Relis ce que les témoins ont entendu.');
     expedition.presentations = [...presented, command.subject];
     return { ok: true, state, message: command.subject === 'companions'
-      ? 'Les témoins ont entendu le retour de Saar et Vek.'
-      : 'Les témoins ont examiné la peau et le crâne rapportés.' };
+      ? 'Le témoin a entendu le retour des deux partenaires.'
+      : 'Le témoin a examiné la peau et le crâne rapportés.' };
   }
   if (command.type === 'begin-rescue' || command.type === 'advance-rescue') {
     if (expedition.mode !== 'triad' || !current || current.phase !== 'retreated')
       return refuse('Aucune absence ne permet d’ouvrir un secours.');
-    const hunt = replayQuatzaAttempt('triad', current.input);
+    const hunt = replayQuatzaAttempt('triad', current.input, current.returnRules, current.roster);
     const origin = createQuatzaRescueFrame(hunt);
     if (!origin) return refuse('Aucune absence ne permet d’ouvrir un secours.');
     const id = quatzaRescueId(save.createdAt, expedition.attempts.length);
@@ -464,7 +512,14 @@ export function commitQuatzaRij(save: SaveGame, command: QuatzaCommand): QuatzaR
   if (command.type === 'begin') {
     if (!canRetryQuatza(command.mode, current)) return refuse('Termine la tentative ou le secours ouvert avant de repartir.');
     if (expedition.attempts.length >= 16) return refuse('Le registre a atteint sa capacité de tentatives.');
-    expedition.attempts.push({ input: [], phase: 'preparation', ...(command.mode === 'triad' ? { rescueRules: 1 } : {}) });
+    const attempt: QuatzaAttempt = { input: [], phase: 'preparation' };
+    if (command.mode === 'triad') {
+      attempt.rescueRules = 1;
+      attempt.returnRules = 1;
+      const roster = save.soloV90?.checkpoint.roster;
+      if (roster) attempt.roster = roster;
+    }
+    expedition.attempts.push(attempt);
     state.expeditions[command.mode] = expedition;
     return { ok: true, state, message: 'Préparation ouverte au râtelier.' };
   }
@@ -477,7 +532,7 @@ export function commitQuatzaRij(save: SaveGame, command: QuatzaCommand): QuatzaR
   if (finished(current.phase) || current.input.length !== command.expectedTick ||
       current.input.length + command.input.length > QUATZA_TICK_LIMIT) return refuse('La séquence ne suit plus le terrain enregistré.');
   const input = [...current.input, ...command.input];
-  const resulting = replayQuatzaAttempt(command.mode, input);
+  const resulting = replayQuatzaAttempt(command.mode, input, current.returnRules, current.roster);
   if (resulting.tick !== input.length) return refuse('La séquence dépasse la fin de la chasse.');
   current.input = input; current.phase = resulting.phase;
   return { ok: true, state, message: resulting.phase === 'delivered'

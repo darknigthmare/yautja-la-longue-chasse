@@ -5,6 +5,8 @@ import { HOMEWORLD_BUILDING_ART_V64, HOMEWORLD_PROP_ART_V64 } from './homeworldA
 import { homeworldBuildingFootprintV64, homeworldBuildingDoorwayV64, HOMEWORLD_GEOMETRY_V64 } from './homeworldGeometryV64';
 import { HOMEWORLD_PASSAGE_BRIDGE_V67, homeworldPassageBridgeDepthV67 } from './homeworldPassageV67';
 
+import { normalizeSkiffReceiptW3S09, type HomeworldSkiffReceiptW3S09 } from './homeworldSkiffProofW3S09';
+
 export const HOMEWORLD_REGION_IDS_V68 = ['ash-marches', 'glass-desert', 'pillar-jungle', 'luminous-marshes', 'storm-chain', 'leviathan-coast', 'thermal-caves', 'cold-crown', 'first-city-ruins', 'forbidden-reserve'] as const;
 export type HomeworldRegionIdV68 = typeof HOMEWORLD_REGION_IDS_V68[number];
 export type RegionFieldActionV68 = 'survey' | 'recover' | 'track' | 'challenge' | 'ward' | 'report';
@@ -16,6 +18,7 @@ export interface RegionFieldEventV68 {
 }
 export interface HomeworldRegionStateV68 {
   version: 1; regionId: HomeworldRegionIdV68; runId: string; tick: number; walked: number;
+  skiffArrivalW3S09?: HomeworldSkiffReceiptW3S09;
   zone: 'passage' | 'village' | 'interior'; direction: 'outbound' | 'return'; actor: HomeworldActor;
   routeVisited: number[]; villageEntered: boolean; buildingId: string | null;
   visitedBuildings: string[]; greeted: string[]; traces: string[];
@@ -230,9 +233,9 @@ export function isHomeworldRegionWalkableV68(id: HomeworldRegionIdV68, zone: Hom
     && (zone === 'passage' || regionCollisionV68(id, point, tick, visits) === null);
 }
 const actorAt = (point: HomeworldVec2, facing: -1 | 1 = 1): HomeworldActor => ({ ...point, vx: 0, vy: 0, grounded: true, facing });
-export function createHomeworldRegionV68(regionId: HomeworldRegionIdV68, runId = `${regionId}-journey`, startAtVillage = false): HomeworldRegionStateV68 {
+export function createHomeworldRegionV68(regionId: HomeworldRegionIdV68, runId = `${regionId}-journey`, startAtVillage = false, skiffArrivalW3S09?: HomeworldSkiffReceiptW3S09): HomeworldRegionStateV68 {
   const definition = HOMEWORLD_REGIONS_V68[regionId];
-  return { version: 1, regionId, runId, tick: 0, walked: 0, zone: startAtVillage ? 'village' : 'passage', direction: 'outbound', actor: actorAt(startAtVillage ? { x: 520, y: 2800 } : definition.route[0]), routeVisited: startAtVillage ? definition.route.map((_, n) => n) : [0], villageEntered: startAtVillage, buildingId: null, visitedBuildings: [], greeted: [], traces: [], recovered: false, reported: false, evaded: 0, hazardArmed: false, observedTicks: 0, protectedPosts: [], fauna: { x: 7450, y: 1940, phase: 'quiet', ticks: 0, targetY: 1940, evaded: 0, touches: 0, touchedThisRecovery: false, hitThisCharge: false }, pendingFieldEvent: null, eventReceipts: [], status: 'walking' };
+  return { version: 1, regionId, runId, tick: 0, walked: 0, ...(skiffArrivalW3S09 ? { skiffArrivalW3S09 } : {}), zone: startAtVillage ? 'village' : 'passage', direction: 'outbound', actor: actorAt(startAtVillage ? { x: 520, y: 2800 } : definition.route[0]), routeVisited: startAtVillage ? definition.route.map((_, n) => n) : [0], villageEntered: startAtVillage, buildingId: null, visitedBuildings: [], greeted: [], traces: [], recovered: false, reported: false, evaded: 0, hazardArmed: false, observedTicks: 0, protectedPosts: [], fauna: { x: 7450, y: 1940, phase: 'quiet', ticks: 0, targetY: 1940, evaded: 0, touches: 0, touchedThisRecovery: false, hitThisCharge: false }, pendingFieldEvent: null, eventReceipts: [], status: 'walking' };
 }
 export function regionHazardPhaseV68(tick: number) {
   const h = HOMEWORLD_REGION_HAZARD_V68, phase = tick % (h.warningTicks + h.activeTicks + h.calmTicks);
@@ -387,6 +390,8 @@ export function normalizeRegionFieldEventV68(value: unknown, reportAt?: Homeworl
 export function normalizeHomeworldRegionV68(value: unknown, reportAt?: HomeworldVec2 | null): HomeworldRegionStateV68 | null {
   if (!record(value) || value.version !== 1 || !isHomeworldRegionIdV68(value.regionId) || typeof value.runId !== 'string' || !/^[\w:-]{1,100}$/.test(value.runId) || !Number.isSafeInteger(value.tick) || (value.tick as number) < 0 || !finite(value.walked) || value.walked < 0 || value.walked > (value.tick as number) * HOMEWORLD_ACTOR.walkSpeed / 60 + .1 || !['passage', 'village', 'interior'].includes(String(value.zone)) || !['outbound', 'return'].includes(String(value.direction)) || !['walking', 'at-city'].includes(String(value.status)) || !record(value.actor)) return null;
   const a = value.actor, id = value.regionId, definition = HOMEWORLD_REGIONS_V68[id];
+  if (Object.hasOwn(value, 'skiffArrivalW3S09') &&
+      (id !== 'thermal-caves' || !normalizeSkiffReceiptW3S09(value.skiffArrivalW3S09, value.runId))) return null;
   if (![a.x, a.y, a.vx, a.vy].every(finite) || a.grounded !== true || (a.facing !== 1 && a.facing !== -1) || Math.abs(a.vx as number) > HOMEWORLD_ACTOR.walkSpeed + .1 || Math.abs(a.vy as number) > HOMEWORLD_ACTOR.depthSpeed + .1 || !isHomeworldRegionWalkableV68(id, value.zone as HomeworldRegionStateV68['zone'], a as unknown as HomeworldVec2, value.tick as number, typeof value.buildingId === 'string' ? value.buildingId : null)) return null;
   if (![value.routeVisited, value.visitedBuildings, value.greeted, value.traces, value.eventReceipts, value.protectedPosts].every(Array.isArray) || typeof value.villageEntered !== 'boolean' || typeof value.recovered !== 'boolean' || typeof value.reported !== 'boolean' || typeof value.hazardArmed !== 'boolean' || !Number.isSafeInteger(value.evaded) || (value.evaded as number) < 0 || (value.evaded as number) > (value.tick as number) / 360 + 1 || !Number.isSafeInteger(value.observedTicks) || (value.observedTicks as number) < 0 || (value.observedTicks as number) > Math.min(3600, value.tick as number) || !record(value.fauna)) return null;
   const route = value.routeVisited as unknown[];
@@ -415,6 +420,7 @@ export function canAdvanceHomeworldRegionV68(previous: unknown, next: unknown, r
   const b = normalizeHomeworldRegionV68(next, reportAt); if (!b) return false;
   if (previous == null) return b.tick === 0 && b.walked === 0 && !b.traces.length && !b.recovered && !b.reported;
   const a = normalizeHomeworldRegionV68(previous); if (!a || a.regionId !== b.regionId || a.runId !== b.runId || b.tick < a.tick || b.walked < a.walked || a.recovered && !b.recovered || a.reported && !b.reported || b.evaded < a.evaded || b.traces.length < a.traces.length || a.greeted.some(n => !b.greeted.includes(n)) || a.visitedBuildings.some(n => !b.visitedBuildings.includes(n)) || a.eventReceipts.some(n => !b.eventReceipts.includes(n))) return false;
+  if (JSON.stringify(a.skiffArrivalW3S09) !== JSON.stringify(b.skiffArrivalW3S09)) return false;
   if (a.status === 'at-city') return JSON.stringify(a) === JSON.stringify(b);
   const maximum = (b.tick - a.tick) * HOMEWORLD_ACTOR.walkSpeed / 60 + .1;
   if (b.walked - a.walked > maximum || b.evaded - a.evaded > Math.ceil((b.tick - a.tick) / 360)) return false;

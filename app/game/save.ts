@@ -64,7 +64,7 @@ import { normalizeSoloV67Campaign, soloV67MatchesSave } from "./systems/campaign
 import { normalizeSoloV68Campaign, soloV68MatchesSave } from "./systems/campaignSoloV68";
 import { normalizeSoloV69Campaign, soloV69MatchesSave } from "./systems/campaignSoloV69";
 import { normalizeSoloV70Campaign, soloV70MatchesSave } from "./systems/campaignSoloV70";
-import { inspectBloodedTempleV174, templeAvailableV174, templeHasFoundationV174, templeJournalSuccessorV174 } from "./systems/bloodedTempleV174";
+import { bloodedTempleSessionAvailableV174, inspectBloodedTempleV174, templeHasFoundationV174, templeJournalSuccessorV174 } from "./systems/bloodedTempleV174";
 import { eliteRecognitionMatchesSave, inspectEliteRecognition, isEliteRecognitionSuccessor } from "./systems/eliteRecognitionV174";
 import { normalizeSoloV90Campaign, soloV90MatchesSave } from "./systems/campaignSoloV90";
 import { normalizeHomeworldRegionV68, canEnterHomeworldRegionV68 } from "./systems/homeworldRegionsV68";
@@ -104,7 +104,7 @@ import { hasShipInsertionDebit, inspectShipInsertionEnergy } from "./systems/shi
 import { emptyGauntletCampaignV134, normalizeGauntletCampaignV134 } from "./systems/gauntletCampaignV134";
 import { inspectMinorArcsV160, recordMinorArcsHuntResultV160 } from "./systems/minorArcsV160";
 import { inspectQueenHuntV163, normalizeQueenHuntV163, QUEEN_HUNT_VERSION_V163 } from "./systems/queenHuntV163";
-import { inspectWarpEpochsV165, isWarpSurveySuccessorR2 } from "./systems/warpEpochsV165";
+import { inspectWarpEpochsV165, isWarpFjordSuccessorW01, isWarpSurveySuccessorR2 } from "./systems/warpEpochsV165";
 import { legacyFinaleMatchesSaveR2, legacyFinaleSuccessorR2, normalizeLegacyFinaleR2 } from "./systems/legacyFinaleR2";
 import { isWarpCommonSuccessorR2, warpCommonViewR2 } from "./systems/warpCommonRouteR2";
 import { inspectTantalusLedgerV164, normalizeTantalusLedgerV164 } from "./systems/tantalusV164";
@@ -2346,7 +2346,8 @@ function persistCampaign(
       if (JSON.stringify(previous.honorSourcesV169) !== JSON.stringify(requested.honorSourcesV169)) {
         return failed("save-conflict", previous);
       }
-      if (!isWarpSurveySuccessorR2(previous.warpEpochsV165, requested.warpEpochsV165)) {
+      if (!isWarpSurveySuccessorR2(previous.warpEpochsV165, requested.warpEpochsV165) ||
+          !isWarpFjordSuccessorW01(previous.warpEpochsV165, requested.warpEpochsV165)) {
         return failed("save-conflict", previous);
       }
       if (!keepsFirstLessonO6(previous, requested) ||
@@ -2440,7 +2441,7 @@ function persistCampaign(
       const requestedTemple = requested.bloodedTempleV174;
       if (JSON.stringify(previousTemple ?? null) !== JSON.stringify(requestedTemple ?? null) &&
           (!requestedTemple || !templeJournalSuccessorV174(previousTemple, requestedTemple) ||
-            !templeAvailableV174(previous))) {
+            !bloodedTempleSessionAvailableV174(previous))) {
         return failed("save-conflict", previous);
       }
       const previousWorkshop = previous.elderWorkshopV172;

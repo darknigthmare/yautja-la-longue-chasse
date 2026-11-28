@@ -313,7 +313,7 @@ test("same-plane geometry uses available V19 props and otherwise stays procedura
 
 test("available decoration assets become deterministic non-colliding sector decor", () => {
   const availableDecor = registry.ENVIRONMENT_PROP_AVAILABLE_RUNTIME_ASSETS.filter(
-    ({ role }) => role === "decoration",
+    ({ id, role }) => role === "decoration" && id !== registry.CINDER_FALLEN_HUNTER_MARKER_V19?.id,
   );
   assert.equal(
     registry.ENVIRONMENT_DECOR_PROP_PLACEMENTS.length,
@@ -380,6 +380,7 @@ test("available decoration assets become deterministic non-colliding sector deco
       }
       return placements.length;
     });
+    if (layout.biome === "volcano") continue;
     assert.deepEqual(
       [...sectorCounts].sort((left, right) => left - right),
       Array.from({ length: 6 }, (_, screenIndex) =>
@@ -388,6 +389,28 @@ test("available decoration assets become deterministic non-colliding sector deco
       ).sort((left, right) => left - right),
       `${layout.missionId}: uneven six-sector distribution`,
     );
+  }
+});
+
+test("Cinder's original memorial is reserved for the scan and its rack streams only to the profaned sanctum", () => {
+  const missionId = "volcano-bad-blood";
+  const marker = registry.CINDER_FALLEN_HUNTER_MARKER_V19;
+  assert.ok(marker?.id.endsWith("fallen-hunter-marker-01-single"));
+  assert.equal(marker.role, "decoration");
+  assert.ok(registry.isEnvironmentPropRuntimeAvailable(marker));
+  const placements = registry.ENVIRONMENT_DECOR_PROP_PLACEMENTS;
+  assert.equal(placements.some(({ asset }) => asset.id === marker.id), false);
+  const racks = placements.filter(({ asset }) => asset.id.endsWith("profaned-trophy-rack-04-fallen"));
+  assert.equal(racks.length, 1);
+  const [rack] = racks;
+  assert.equal(rack.missionId, missionId);
+  assert.equal(rack.screenId, "volcano-sanctum");
+  assert.equal(rack.renderPass, "world-back");
+  assert.equal(rack.collision, "none");
+  for (const { id } of registry.WORLD_SCREENS_BY_MISSION[missionId].screens) {
+    const urls = registry.environmentPropRuntimeUrlsForSector(missionId, id);
+    assert.equal(urls.includes(marker.runtimeUrl), false);
+    assert.equal(urls.includes(rack.asset.runtimeUrl), id === "volcano-sanctum");
   }
 });
 

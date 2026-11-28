@@ -316,6 +316,14 @@ export function isEnvironmentPropRuntimeAvailable(
   return availableRuntimeAssetIds.has(asset.id);
 }
 
+const CINDER_MARKER_ID = "environment-prop-v19-volcano-orn-fallen-hunter-marker-01-single";
+const CINDER_RACK_ID = "environment-prop-v19-volcano-orn-profaned-trophy-rack-04-fallen";
+
+export const CINDER_FALLEN_HUNTER_MARKER_V19 =
+  ENVIRONMENT_PROP_AVAILABLE_RUNTIME_ASSETS.find((asset) => asset.id === CINDER_MARKER_ID);
+const cinderRackV19 =
+  ENVIRONMENT_PROP_AVAILABLE_RUNTIME_ASSETS.find((asset) => asset.id === CINDER_RACK_ID);
+
 const availableRuntimeAssetsByBiome = new Map<
   EnvironmentPropBiomeId,
   readonly EnvironmentPropRuntimeAsset[]
@@ -783,9 +791,29 @@ function createDecorPlacements(): readonly EnvironmentDecorPropPlacement[] {
       leftovers.filter((__, assetIndex) => assetIndex % 6 === screenIndex),
     );
     layout.screens.forEach((screen, screenIndex) => {
+      if (screen.id === "volcano-sanctum" && cinderRackV19) {
+        placements.push(Object.freeze({
+          id: "environment-decor-placement-v19-volcano-sanctum-profaned-rack",
+          missionId: layout.missionId,
+          biomeId,
+          screenId: screen.id,
+          asset: cinderRackV19,
+          x: round(screen.startX + (screen.endX - screen.startX) * 0.61),
+          anchorY: WORLD_FLOOR_Y,
+          anchor: "floor",
+          scale: 0.72,
+          opacity: 0.86,
+          mirrored: false,
+          estimatedWidth: round(estimatedBaseWidth(cinderRackV19.role) * 0.72),
+          renderPass: "world-back",
+          collision: "none",
+        }));
+      }
       const screenAssets = assetsByScreen[screenIndex];
 
       screenAssets.forEach((asset, slotIndex) => {
+        // Reserve the original scatter slots so other decorations keep their placement.
+        if (asset.id === CINDER_MARKER_ID || asset.id === CINDER_RACK_ID) return;
         const hash = stableHash(`${layout.missionId}:${screen.id}:${asset.id}`);
         const evenFraction = (slotIndex + 1) / (screenAssets.length + 1);
         const anchor = usesCeilingAnchor(asset) ? "ceiling" : "floor";

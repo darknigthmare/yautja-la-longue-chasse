@@ -438,6 +438,10 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
     </div>
     <aside className={styles.objective} inert={modal}>
       <b>{narratives[0]?.instruction ?? regionObjectiveV68(state)}</b>
+      {state.skiffArrivalW3S09 && <span data-w3-s09-arrival={state.skiffArrivalW3S09.runId}
+        data-w3-s09-vessel={state.skiffArrivalW3S09.vessel} data-w3-s09-pilot={state.skiffArrivalW3S09.pilot}>
+        Passeur du canyon volcanique · arrivée aux Grottes consignée.
+      </span>}
       {regionId===b.regionId&&props.onBibleSceneAction&&state.zone==='village'&&<span>Halte des Crêtes : table de la place, après le relevé remis au guide.{bibleNearby?' Arrête-toi puis interagis.':''}</span>}
       {destination && routeProgress && <span data-village-route-instruction-v70>{destination.name} · {routeProgress.arrived ? 'Approche atteinte : interagir sur place' : routeProgress.offRoute ? 'Reviens aux repères tracés au sol' : `${routeProgress.metres} m à pied`}</span>}
       {soloReturn && <span data-o6-solo-return={soloReturn.final ?? soloReturn.options[0]?.order}

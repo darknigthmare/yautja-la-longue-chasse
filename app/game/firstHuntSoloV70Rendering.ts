@@ -2,8 +2,8 @@ import { loadYouthArt,youthClipFrame,type YouthArtBank,type YouthArtPose,type Yo
 import { YOUTH_ART_MANIFEST } from './youthArtManifest';
 import { drawActorContactShadow,getSpriteContact } from './spriteContact';
 import { TEMPLE_MODULAR_ATLAS_V70,drawTempleModuleV70 } from './templeModularArtV70';
-import { SOLO_V70_PURGE_M017, SOLO_V70_GALLERY_M017, SOLO_V70_ROYAL_M017,
-  soloV70GalleryThreatM017, soloV70RoyalStatusM017, soloV70DepthPostM017, soloV70PurgeRemainingM017 } from './systems/firstHuntSoloV70DepthsM017';
+import { SOLO_V70_PURGE_M017, SOLO_V70_GALLERY_M017, SOLO_V70_ROYAL_M017, SOLO_V70_RESCUE_M017,
+  soloV70RescueTargetM017, soloV70GalleryThreatM017, soloV70RoyalStatusM017, soloV70DepthPostM017, soloV70PurgeRemainingM017 } from './systems/firstHuntSoloV70DepthsM017';
 import { soloV70HuntTargetM017,soloV70Room,SOLO_V70_DEPTHS_M017,soloV70DepthDoorOpeningM017,SOLO_V70_SIGNS,SOLO_V70_ENERGY_VAULT,SOLO_V70_QUARANTINE_THRESHOLD,SOLO_V70_BELVEDERE,SOLO_V70_RECONNECTION,SOLO_V70_NEF_RELAY_M017,soloV70ReconnectionPreview,soloV70NefDeploymentM017,soloV70Platforms,soloV70Support,soloV70CampaignPortal,soloV70CanTravel,soloV70Objective,soloV70PlateTargets,type SoloV70State } from './systems/firstHuntSoloV70';
 export const TEMPLE_DRONE_V70='/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png';
 export const TEMPLE_GUARD_V70='/game/sprites/v4/rifle-soldier.png';
@@ -98,6 +98,8 @@ export function drawFirstHuntSoloV70(ctx:CanvasRenderingContext2D,s:SoloV70State
  const extension = s.depthsM017?.extension;
  const post = extension && soloV70DepthPostM017(s.room, !!extension.royal);
  const royal = soloV70RoyalStatusM017(extension, s.tick);
+ const rescueTarget = s.room === SOLO_V70_RESCUE_M017.room ? soloV70RescueTargetM017(extension) : undefined;
+ const carryingSaar = !!rescueTarget && !!extension?.rescue?.pickedUp;
  const remaining = soloV70PurgeRemainingM017(s);
  const final = soloV70HuntTargetM017(s);
  if (post) {
@@ -165,7 +167,12 @@ export function drawFirstHuntSoloV70(ctx:CanvasRenderingContext2D,s:SoloV70State
      if (!royal) text(completed?'LOGE ROYALE ISOLÉE':'LOGE ROYALE SOUS CONFINEMENT',878,190);
    } else if (post.id === 'vent-purge') {
      drawTempleModuleV70(ctx,modular,'console',SOLO_V70_PURGE_M017.x,430,72);
-     marker(SOLO_V70_PURGE_M017.x,430,completed?'CONDUITE PURGÉE':remaining?'CONDUITE OUVERTE':'COMMANDE AMONT');
+     if (extension?.rescue) {
+       const { relief } = SOLO_V70_RESCUE_M017;
+       drawTempleModuleV70(ctx,modular,'arch',relief.x,430,114);
+       marker(relief.x,430,extension.rescue.delivered?'SAAR EN SÛRETÉ':'REFUGE');
+     }
+     marker(SOLO_V70_PURGE_M017.x,430,rescueTarget?'SECOURS AVANT LA PURGE':completed?'CONDUITE PURGÉE':remaining?'CONDUITE OUVERTE':'COMMANDE AMONT');
      if (remaining) {
        ctx.fillStyle='#9bc8b788';
        ctx.fillRect(post.x-52,444,104*remaining/SOLO_V70_PURGE_M017.duration,3);
@@ -189,11 +196,37 @@ export function drawFirstHuntSoloV70(ctx:CanvasRenderingContext2D,s:SoloV70State
      }
    }
  }
- const actor=(kind:'player'|'rival',x:number,y:number,facing:-1|1,height:number,pose:YouthArtPose,caption?:string)=>{const atlas=manifest.actors[kind][facing===1?'right':'left'],frame=youthClipFrame(atlas.clips[pose],reducedMotion&&pose==='idle'?0:s.tick),image=images.get(atlas.src)!,k=height/atlas.bodyHeight,contact=getSpriteContact(image,frame.rect,frame.pivot[1]);drawActorContactShadow(ctx,x,kind==='player'?soloV70Support(s):430,15,kind==='player'?soloV70Support(s)-y:0);ctx.drawImage(image,...frame.rect,x-frame.pivot[0]*k,y-(frame.pivot[1]-(contact?.offsetY??0))*k,frame.rect[2]*k,frame.rect[3]*k);if(caption)text(caption,x,y-height-12,'#d5cbaa',11);};
- s.companions.forEach((c,i)=>{const target=s.companionMode==='plates'?soloV70PlateTargets(s)[i]:Math.max(65,Math.min(1055,s.player.x-65*(i+1)));actor('rival',c.x,430,target<c.x?-1:1,102,Math.abs(c.x-target)>7?'walk':'idle',i===0?'SAAR':'VEK');});
- if(s.room===0)actor('rival',160,430,1,145,'idle','VÉTÉRAN');const a=s.player;actor('player',a.x,a.y,a.facing,112,s.health===0?'ko':s.hurtTimer>60?'hurt':s.attackTimer?'blade':a.vy?'jump':a.vx?'walk':'idle');
- const goal=soloV70Objective(s);ctx.strokeStyle='#ead393';ctx.setLineDash([6,5]);ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(goal.targetX-26,goal.targetY+4);ctx.lineTo(goal.targetX+26,goal.targetY+4);ctx.stroke();ctx.setLineDash([]);if(s.scan&&!(s.phase==='separation'&&s.player.y===SOLO_V70_NEF_RELAY_M017.upperY)){ctx.fillStyle='#ead393';ctx.fillRect(goal.targetX-26,goal.targetY+17,52*s.scan/(s.room===descent.room ? descent.holdTicks : post?.id==='vent-purge' && !extension?.observations['vent-purge'] && !remaining
+ const actor = (kind: 'player' | 'rival', x: number, y: number, facing: -1 | 1, height: number,
+   pose: YouthArtPose, caption?: string, carried = false) => {
+   const atlas = manifest.actors[kind][facing === 1 ? 'right' : 'left'];
+   const frame = youthClipFrame(atlas.clips[pose], reducedMotion && pose === 'idle' ? 0 : s.tick);
+   const image = images.get(atlas.src)!, k = height / atlas.bodyHeight;
+   const contact = getSpriteContact(image, frame.rect, frame.pivot[1]);
+   const support = kind === 'player' ? soloV70Support(s) : 430;
+   if (!carried) drawActorContactShadow(ctx, x, support, 15, support - y);
+   ctx.save();
+   ctx.translate(x, y);
+   if (carried) ctx.rotate(facing * .8);
+   ctx.drawImage(image, ...frame.rect, -frame.pivot[0] * k,
+     -(frame.pivot[1] - (contact?.offsetY ?? 0)) * k, frame.rect[2] * k, frame.rect[3] * k);
+   ctx.restore();
+   if (caption) text(caption, x, y - height + (carried ? 17 : -12), '#d5cbaa', 11);
+ };
+ s.companions.forEach((c, i) => {
+   if (i === 0 && rescueTarget) {
+     if (!carryingSaar) actor('rival', c.x, 430, 1, 102, 'ko', 'SAAR · BLESSÉ');
+     return;
+   }
+   const target = s.companionMode === 'plates' ? soloV70PlateTargets(s)[i] :
+     Math.max(65, Math.min(1055, s.player.x - 65 * (i + 1)));
+   actor('rival', c.x, 430, target < c.x ? -1 : 1, 102, Math.abs(c.x-target) > 7 ? 'walk' : 'idle', i === 0 ? 'SAAR' : 'VEK');
+ });
+ if (s.room === 0) actor('rival', 160, 430, 1, 145, 'idle', 'VÉTÉRAN');
+ const a = s.player;
+ actor('player',a.x,a.y,a.facing,112,s.health===0?'ko':s.hurtTimer>60?'hurt':s.attackTimer?'blade':a.vy?'jump':a.vx?'walk':'idle');
+ if (carryingSaar) actor('rival', s.companions[0].x + 24, a.y - 35, a.facing, 86, 'hurt', 'SAAR · PORTÉ', true);
+ const goal=soloV70Objective(s);ctx.strokeStyle='#ead393';ctx.setLineDash([6,5]);ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(goal.targetX-26,goal.targetY+4);ctx.lineTo(goal.targetX+26,goal.targetY+4);ctx.stroke();ctx.setLineDash([]);if(s.scan&&!(s.phase==='separation'&&s.player.y===SOLO_V70_NEF_RELAY_M017.upperY)){ctx.fillStyle='#ead393';ctx.fillRect(goal.targetX-26,goal.targetY+17,52*s.scan/(rescueTarget?.holdTicks ?? (s.room===descent.room ? descent.holdTicks : post?.id==='vent-purge' && !extension?.observations['vent-purge'] && !remaining
    ? SOLO_V70_PURGE_M017.holdTicks
    : post?.id==='eggs-observed' && extension?.observations['eggs-observed'] && extension.gallery ? SOLO_V70_GALLERY_M017.holdTicks
-   : post && !extension?.observations[post.id] ? post.holdTicks : s.room===final.room ? final.holdTicks : 90),4);}ctx.restore();
+   : post && !extension?.observations[post.id] ? post.holdTicks : s.room===final.room ? final.holdTicks : 90)),4);}ctx.restore();
 }

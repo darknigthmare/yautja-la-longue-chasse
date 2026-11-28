@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import crypto from 'node:crypto';import fs from 'node:fs';
 import {homeworldQaModelV64} from '../scripts/homeworld-qa-model-v64.mjs';
-const api=homeworldQaModelV64(process.cwd(),['homeworldCity.ts','homeworldWorldV77.ts','homeworldGeometryV64.ts','homeworldConnectorArtV77.ts','homeworldLavaPlacementV77.ts']);
+const api=homeworldQaModelV64(process.cwd(),['homeworldCity.ts','homeworldWorldV77.ts','homeworldGeometryV64.ts','homeworldConnectorArtV77.ts','homeworldLavaPlacementV77.ts','homeworldSkiffProofW3S09.ts','homeworldRegionsV68.ts']);
 test('Council stair native SHA and both flat sockets align through one uniform scale with no source mutation',()=>{
  const c=api.HOMEWORLD_CONNECTORS_V77.find(c=>c.id==='council-stair'),art=api.HOMEWORLD_COUNCIL_STAIR_ART_V77,p=api.homeworldCouncilStairPlacementV77({...c.from,elevation:0},{...c.to,elevation:520});
  for(const [socket,actual]of[[art.lowerSocket,p.lower],[art.upperSocket,p.upper]]){assert(Math.abs(p.left+socket.x*p.scale-actual.x)<1e-7);assert(Math.abs(p.top+socket.y*p.scale-actual.y)<1e-7);}
@@ -28,6 +28,16 @@ test('skiff needs the actual permitted dock, travels continuously for12seconds a
  const scale=art.heightWorld/art.alphaBounds.height,passeur={x:actor.x+(art.ferrymanSource.x-art.pivot.x)*scale,y:actor.y+(art.ferrymanSource.y-art.pivot.y)*scale/api.HOMEWORLD_GEOMETRY_V64.depthScale};
  assert(api.homeworldSkiffFootOnDeckV77(passeur,actor,api.HOMEWORLD_ACTOR),'entire ferryman support remains inside the measured painted deck');
  assert(Math.abs(passeur.x-actor.x)>api.HOMEWORLD_ACTOR.halfWidth*2||Math.abs(passeur.y-actor.y)>api.HOMEWORLD_ACTOR.halfDepth*2,'adult passenger and ferryman do not overlap physical support boxes');
- while(ride){result=api.stepHomeworldSkiffV77(ride,current,1/60);assert(Math.hypot(current.x-result.actor.x,current.y-result.actor.y)<1);current=result.actor;if(ride.elapsed>4&&ride.elapsed<4.02){const frozen=api.stepHomeworldSkiffV77(result.ride,current,10,true);assert.equal(frozen.ride,result.ride);assert.equal(frozen.actor,current);}ride=result.ride;}
+ while(ride){result=api.stepHomeworldSkiffV77(ride,current,1/60);assert(Math.hypot(current.x-result.actor.x,current.y-result.actor.y)<1);current=result.actor;if(ride.elapsed>4&&ride.elapsed<4.02){const frozen=api.stepHomeworldSkiffV77(result.ride,current,10,true);assert.equal(frozen.ride,result.ride);assert.equal(frozen.actor,current);}if(!result.done)assert.equal(result.arrival,undefined);ride=result.ride;}
+ const runId='b087fa7a-f8ee-41ea-a19d-a7b868a1910c';
+ assert.equal(api.skiffArrivalReceiptW3S09({...result.arrival},runId),null);
+ const receipt=api.skiffArrivalReceiptW3S09(result.arrival,runId);
+ assert.deepEqual(receipt,{...api.HOMEWORLD_SKIFF_W3_S09,runId});
+ const route=api.createHomeworldRegionV68('thermal-caves',runId,false,receipt);
+ assert.deepEqual(api.normalizeHomeworldRegionV68(JSON.parse(JSON.stringify(route))),route);
+ assert.equal(api.canAdvanceHomeworldRegionV68(route,api.createHomeworldRegionV68('thermal-caves',runId)),false);
+ assert.equal(api.normalizeHomeworldRegionV68({...route,skiffArrivalW3S09:{...receipt,pilot:'other-pilot'}}),null);
+ api.acknowledgeSkiffReceiptW3S09(result.arrival);
+ assert.equal(api.skiffArrivalReceiptW3S09(result.arrival,runId),null);
  assert(result.done);assert.deepEqual({x:current.x,y:current.y},{x:260,y:3850});assert.equal(result.actor.vx,0);assert.equal(result.actor.vy,0);
 });
