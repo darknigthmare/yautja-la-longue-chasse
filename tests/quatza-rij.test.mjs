@@ -127,6 +127,37 @@ test('witnesses record either triad presentation order once and preserve the com
   assert.equal(saves.parseSaveImport(JSON.stringify(premature)).failure, 'invalid-save');
 });
 
+test('a wounded walking companion can be helped without losing the original evidence', () => {
+  const run = playing('triad');
+  run.prepare(); run.fight(); run.gatherAndReturn();
+  let inputs = [...run.input];
+  let hunt = engine.createQuatzaFrame('triad');
+  for (const code of inputs) {
+    hunt = engine.stepQuatza('triad', hunt, code);
+    if (hunt.phase === 'return') break;
+  }
+  assert.equal(hunt.phase, 'return');
+  const returnTick = hunt.tick;
+  assert(returnTick > 0);
+  let frame = engine.replayQuatzaAttempt('triad', inputs.slice(0, returnTick), 1);
+  const proof = engine.quatzaReturnProof(owner, 1, frame);
+  assert(proof);
+  assert.equal(engine.quatzaReturnAidPatient(frame).id, 'saar');
+  frame = engine.stepQuatza('triad', frame, I.interact, 1);
+  assert.equal(frame.returnAid.ticks, 1);
+  assert.equal(engine.stepQuatza('triad', frame, I.right | I.interact, 1).returnAid, undefined);
+  inputs = [...inputs.slice(0, returnTick),
+    ...Array(engine.QUATZA_RETURN_AID_TICKS).fill(I.interact), ...inputs.slice(returnTick)];
+  const treated = engine.replayQuatzaAttempt('triad', inputs, 1);
+  const historical = engine.replayQuatzaAttempt('triad', inputs);
+  assert.equal(treated.phase, 'delivered');
+  assert.equal(historical.phase, 'delivered');
+  assert.equal(treated.companions[0].health, 3);
+  assert.equal(historical.companions[0].health, 2);
+  assert.equal(engine.quatzaReturnProof(owner, 1, treated), proof);
+  assert.notEqual(engine.quatzaReturnProof(owner, 2, treated), proof);
+});
+
 test('solo returns the same trophies after independent attack cycles and rejects receipt tampering', () => {
   const owned = playShipAcquisitionV161(qa, adult());
   const run = playing('solo');
@@ -188,6 +219,7 @@ test('an actual missing companion opens a separate, resumable rescue with no tro
   }).ok, false);
   const legacy = structuredClone(retreated);
   delete last(legacy).rescueRules;
+  delete last(legacy).returnRules;
   assert(engine.canRetryQuatza('triad', last(legacy)));
   const restoredLegacy = saves.parseSaveImport(saves.exportSave(legacy));
   assert(restoredLegacy.save, restoredLegacy.failure);

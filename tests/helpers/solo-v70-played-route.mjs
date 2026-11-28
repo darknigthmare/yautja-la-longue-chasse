@@ -45,14 +45,15 @@ export function templeMechanismInput(s) {
 /** Normal controls, collisions, combat and room portals only. No fixtures inside the current chapter. */
 export function playTemple({initial=thresholdsTemple.createSoloV70State(),stop='complete',input=templeInput,restoreEvery=0,onStep=()=>{}}={}){let state=structuredClone(initial);const receipts=[],snapshots={},transitions=[];for(let i=0;i<100000&&state.phase!==stop;i++){if(restoreEvery&&i%restoreEvery===0){state=thresholdsTemple.normalizeSoloV70State(JSON.parse(JSON.stringify(state)));assert(state);}const before=state,out=thresholdsTemple.stepSoloV70(state,input(state),templeEnvironment);state=out.state;assert(thresholdsTemple.normalizeSoloV70State(state),'invalid '+JSON.stringify(state));if(out.receipts.length||before.room!==state.room)transitions.push({before:structuredClone(before),after:structuredClone(state),receipts:out.receipts});onStep(out,before);receipts.push(...out.receipts);snapshots[state.phase]??=structuredClone(state);}assert.equal(state.phase,stop,JSON.stringify(state));return {state,receipts,snapshots,transitions};}
 let cachedOrigin;
-export function templeCampaignRoute({origin=cachedOrigin??=thresholdsCampaignRoute().save,archiveRoomCount,legacyGallery=false,...options}={}){let save=thresholdsTemple.startSoloV70Campaign(origin,stamp);assert(save);
+export function templeCampaignRoute({origin=cachedOrigin??=thresholdsCampaignRoute().save,archiveRoomCount,legacyGallery=false,legacyRoyal=false,...options}={}){let save=thresholdsTemple.startSoloV70Campaign(origin,stamp);assert(save);
  // Recreate the earlier 11- and 15-room journals from their first checkpoints.
- if (archiveRoomCount === 11 || archiveRoomCount === 15 || legacyGallery) {
+ if (archiveRoomCount === 11 || archiveRoomCount === 15 || legacyGallery || legacyRoyal) {
    const rooms = archiveRoomCount ?? 15;
    const checkpoint = thresholdsTemple.createSoloV70State(rooms);
    if (rooms === 15) {
-     delete checkpoint.depthsM017.extension.royal;
-     if (!legacyGallery) delete checkpoint.depthsM017.extension.gallery;
+     delete checkpoint.depthsM017.extension.rescue;
+     if (!legacyRoyal) delete checkpoint.depthsM017.extension.royal;
+     if (!legacyGallery && !legacyRoyal) delete checkpoint.depthsM017.extension.gallery;
    }
    save.soloV70.checkpoint=checkpoint;
    assert(thresholdsTemple.soloV70MatchesSave(save));

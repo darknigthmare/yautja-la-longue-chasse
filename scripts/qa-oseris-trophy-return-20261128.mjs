@@ -16,15 +16,17 @@ import {build} from 'esbuild';
 import {chromium} from 'playwright-core';
 import postcss from 'postcss';
 import tailwind from '@tailwindcss/postcss';
+import {playNativeOseris} from './qa-oseris-authored-hunt-v112.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const args=process.argv.slice(2);
-assert.ok(args.length===0||(args.length===1&&args[0]==='--naraka'),'Expected --naraka or the historical Oseris route');
+assert.ok(args.length===0||(args.length===1&&['--naraka','--native-oseris'].includes(args[0])),'Expected --naraka, --native-oseris or the historical route');
 const naraka=args.includes('--naraka');
+const native=args.includes('--native-oseris');
 const field=naraka
   ? {name:'Naraka-Delta',caseId:'loaded-naraka',missionId:'swamp-hydra',prey:'naraka-delta--iron-croc',trophy:'enemy-trophy-plaque-nucale-ferrique',trophyName:'Plaque nucale ferrique',hide:'Cuir à plaques ferriques',massKg:4.4}
   : {name:'Oseris-IV',caseId:'loaded-oseris',missionId:'jungle-vey',prey:'oseris-iv--vineback-grazer',trophy:'enemy-trophy-omoplate-vegetalisee',trophyName:'Omoplate végétalisée',hide:'Peau à fibres végétales',massKg:3.2};
-const out=path.resolve(root,process.env.SKINNING_CANOPY_QA_OUTPUT??(naraka?'outputs/qa-naraka-loaded-return':'outputs/qa-oseris-trophy-return-20261128'));
+const out=path.resolve(root,process.env.SKINNING_CANOPY_QA_OUTPUT??(native?'outputs/qa-oseris-authored-hunt':naraka?'outputs/qa-naraka-loaded-return':'outputs/qa-oseris-trophy-return-20261128'));
 await mkdir(out,{recursive:true});
 const hash=value=>createHash('sha256').update(typeof value==='string'||ArrayBuffer.isView(value)?value:JSON.stringify(value)).digest('hex');
 const revision=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
@@ -32,7 +34,7 @@ const dirty=execFileSync('git',['status','--porcelain'],{cwd:root,encoding:'utf8
 const source=await readFile(path.join(root,'app/game/HuntCanvas.tsx'),'utf8');
 const marker='    const fixedStep = 1 / 60;';
 assert.equal(source.split(marker).length,2,'One native lifecycle hook boundary');
-const observer='    window.__onSkinningCanopyMountV112?.({get game(){return game;},input,get alive(){return alive;},resumed:resumeSnapshot!=null,mission,encounterRun,native:{makeEnemy,damageEnemy,canopySupportReachableV112,solvePlayerRigFrame,huntFieldLoadV112,trophyHarvestPoint,trophyHarvestInReach,APEX_TROPHY_REACH}});\n';
+const observer='    window.__onSkinningCanopyMountV112?.({get game(){return game;},input,get alive(){return alive;},resumed:resumeSnapshot!=null,mission,encounterRun,native:{'+(native?'':'makeEnemy,damageEnemy,')+'canopySupportReachableV112,solvePlayerRigFrame,huntFieldLoadV112,trophyHarvestPoint,trophyHarvestInReach,APEX_TROPHY_REACH}});\n';
 const rootDrawMarker='      drawJunglePlatform(\n        context,\n        platform,\n        junglePlatformImages[junglePlatformIndex],\n        junglePlatformSurfaceRatios[junglePlatformIndex],\n      );';
 assert.equal(source.split(rootDrawMarker).length,2,'One native jungle platform paint boundary');
 const observeRootDraw='\n      if (canopyRoot) window.__onCanopyRootDrawV112?.(platform.id,junglePlatformImages[junglePlatformIndex]);';
@@ -61,6 +63,11 @@ if(naraka){
   admission.inventory.fieldToolIds=['flaying-tool'];
   admission.inventory.harvestV112.toolCondition=25;
 }
+if(native){
+  admission.settings.difficultyId='young-blood';
+  admission.loadout.weaponIds=['combistick','plasma-caster'];
+  admission.inventory.harvestV112.toolCondition=100;
+}
 const initialToolCondition=admission.inventory.harvestV112.toolCondition;
 admission.settings.masterVolume=0;
 admission.settings.reducedGore=true;
@@ -83,10 +90,10 @@ const report={
   classification:'IN_PROGRESS',browserExecuted:false,passed:false,checks:[],captures:[],errors:[],cases:{},admissionArrivals:[],
   sourceHashes,hookSha256:hash(observer),renderObserverSha256:hash(observeRootDraw),boardingObserverSha256:hash(observeBoarding),trophyObserverSha256:hash(observeTrophyDraw),bundleSha256:hash(js.contents),cssBundleSha256:hash(css.contents),
   inputTimestampSemantics:'Input logs use the nearest decision observation, not the exact browser event-dispatch clock. Native simulation continues while screenshots, DOM inspection and protocol messages are processed.',
-  instrumentation:['A declared Canvas mount hook observes native state, stages one dead local prey, and provides a single optional authored-arena Apex defeat setup without moving the player or claiming a trophy','Read-only observers record the native canvas image painted for each collision root and available secondary trophy','A passthrough Storage.prototype.setItem observer records the successful native platform call without changing bytes or acknowledgements','No production GameClient callback, ownership check, sidecar encoder, writer or claim is substituted'],
-  admission:{kind:naraka?'Archived legitimate campaign replay and native field-tool purchase':'Declared initial campaign with field tool, 100 marks and condition 25',sha256:hash(admission),save:admission,...(replayBytes?{source:replaySource,sourceSha256:hash(replayBytes)}:{})},
-  scope:naraka?'Actual Naraka-Delta revisite, native skinning and trophy rite, ground and rest sidecars, recovery and definitive extraction. One local Iron Crocodile body and a separate Apex defeat are explicitly prepared through native damage without moving the hunter.':'Actual campaign navigation and GameClient admission, native harvest, charged canopy traversal, westward return through two real branches with sidecar persistence and recovery. The fixture creates one local Vineback Grazer corpse through the native damage function at the canonical spawn. Before the last ground leg a separate disclosed fixture resolves Apex combat and its prerequisites at its authored position. All movement, harvest, trophies, stashes, stamina, collisions, approach to boarding, and settlement use native controls.',
-  limits:['Automated desktop Chromium','The initial prey kill and later Apex defeat are fixture setups. The trophies themselves are claimed through the real rites.','Proof applies to the '+field.name+' route on desktop'],
+  instrumentation:native?['Read-only Canvas observations for the authored actors, map, drops, objectives and result.','Passthrough browser storage observations, with the native writer and claim.','A real save is initialized before admission. Once the Canvas opens the recipe only reads state and sends public DOM or keyboard and pointer controls.']:[ 'A declared Canvas mount hook observes native state, stages one dead local prey, and provides a single optional authored-arena Apex defeat setup without moving the player or claiming a trophy','Read-only observers record the native canvas image painted for each collision root and available secondary trophy','A passthrough Storage.prototype.setItem observer records the successful native platform call without changing bytes or acknowledgements','No production GameClient callback, ownership check, sidecar encoder, writer or claim is substituted'],
+  admission:{kind:native?'Declared Oseris campaign with Hunter armor, 100 marks, full field tool and the Young Blood setting':naraka?'Archived legitimate campaign replay and native field-tool purchase':'Declared initial campaign with field tool, 100 marks and condition 25',sha256:hash(admission),save:admission,...(replayBytes?{source:replaySource,sourceSha256:hash(replayBytes)}:{})},
+  scope:native?'Complete authored Oseris hunt from live prey and native objectives through the real Apex, field cargo recovery after a new browser document, extraction, and armory. Automated assisted aiming uses observed target coordinates.':naraka?'Actual Naraka-Delta revisite, native skinning and trophy rite, ground and rest sidecars, recovery and definitive extraction. One local Iron Crocodile body and a separate Apex defeat are explicitly prepared through native damage without moving the hunter.':'Actual campaign navigation and GameClient admission, native harvest, charged canopy traversal, westward return through two real branches with sidecar persistence and recovery. The fixture creates one local Vineback Grazer corpse through the native damage function at the canonical spawn. Before the last ground leg a separate disclosed fixture resolves Apex combat and its prerequisites at its authored position. All movement, harvest, trophies, stashes, stamina, collisions, approach to boarding, and settlement use native controls.',
+  limits:native?['One automated desktop Chromium hunt.','The admission save is declared and the arrival cinematic is skipped.','The ground route does not certify a full pack, canopée, other terrain or hardware.']:['Automated desktop Chromium','The initial prey kill and later Apex defeat are fixture setups. The trophies themselves are claimed through the real rites.','Proof applies to the '+field.name+' route on desktop'],
 };
 const tracked=new Map(execFileSync('git',['ls-tree','-r',revision,'--','public'],{cwd:root,encoding:'utf8',maxBuffer:16*1024*1024}).trim().split('\n').filter(Boolean).map(line=>{const [meta,name]=line.split('\t');return[name,meta.split(' ')[2]];}));
 const requests=new Map(),pending=new Map();
@@ -705,17 +712,20 @@ try{
   await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
   browser=await chromium.launch({executablePath:process.env.CHROMIUM_EXECUTABLE??'/usr/bin/chromium',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
   report.browserExecuted=true;report.browserVersion=browser.version();
-  await canopy();
+  if(native){
+    await newCase('native-oseris');
+    await playNativeOseris({page,data:report.cases['native-oseris'],check,observe:observation,campaign,disk,capture,pause,resume,reloadHunt,performTrophyRite});
+  }else await canopy();
   await check('all requested assets match this exact Git commit and include the authored root, trunk and vine',async()=>{
     const assets=[...requests.values()];
-    for (const suffix of ['/tree-trunk.png','/root-platform.png','/vine-ladder.webp','/ruin-platform.png','/'+field.trophy+'.webp']){
+    for (const suffix of native?['/tree-trunk.png']:['/tree-trunk.png','/root-platform.png','/vine-ladder.webp','/ruin-platform.png','/'+field.trophy+'.webp']){
       assert.ok(assets.some(asset=>asset.url.endsWith(suffix)&&asset.status===200&&asset.matchesHead),suffix);
     }
     assert.ok(assets.every(asset=>asset.status===200&&asset.matchesHead));
     return {assets:assets.length};
   });
   report.passed=report.errors.length===0&&report.checks.every(item=>item.status==='PASS');
-  report.classification=report.passed?'BOUNDED_NATIVE_DURABLE_PASS':'FAILED_ATTEMPT';
+  report.classification=report.passed?(native?'AUTHORED_OSERIS_COMBAT_TO_WORKSHOP_PASS':'BOUNDED_NATIVE_DURABLE_PASS'):'FAILED_ATTEMPT';
 }catch(error){
   report.failure=String(error.stack??error);report.classification='FAILED_ATTEMPT';
   if(page&&!page.isClosed()){
