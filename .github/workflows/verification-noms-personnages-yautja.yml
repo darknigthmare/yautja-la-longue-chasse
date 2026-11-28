@@ -1,24 +1,40 @@
-name: Audit des noms de personnages
+name: Vérification des noms de personnages
 on:
   push:
     branches: [codex/verification-noms-personnages-yautja]
 permissions:
   contents: read
 jobs:
-  inventory:
+  names:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: 9e100b77c782e84c466f142a50337d984cbd7986
           fetch-depth: 1
           persist-credentials: false
           sparse-checkout: |
             app
             scripts
             tests
-            docs/campagne
-      - name: Inventorier les références actives
-        run: |
-          git grep -nE "Ka’resh [0-9]|Kha’len [0-9]|Nesh’ta [0-9]|Yautja-Compagnion|Balafre de Cendre|Veille des Astres|Griffe de Fer|Trace Froide|Suture Noire|Garde du Seuil|Nhal['’]vesh|Kyr['’]adhen|Thes['’]ka|Ssik['’]thar|Vhar['’]nesh" -- 'app/**/*.ts' 'app/**/*.tsx' 'app/game/data/*.json' 'scripts/*.mjs' 'tests/*.mjs' docs/campagne | cut -c1-270 | head -260
-          git grep -lE "name: .+\b(Chasseur|Artisan|Instructeur|Apprenti)|Nom du chasseur|Par défaut.*Yautja" -- 'app/**/*.ts' 'app/**/*.tsx' | head -80
+            public/game/homeworld/v64
+            public/game/homeworld/v67
+            public/game/assets/v37/tribes
+            public/game/backgrounds
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Vérifier les parcours concernés
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          tests/homeworld-regions-v68.test.mjs
+          tests/homeworld-life-v69.test.mjs
+          tests/homeworld-village-life-v69.test.mjs
+          tests/homeworld-npc-missions-v66.test.mjs
+          tests/clan-ship-crew-dialogue.test.mjs
+          tests/clan-ship-crew-dialogue-ui.test.mjs
+          tests/clan-ship-operations-save.test.mjs
+          tests/minor-arcs-v160.test.mjs
+          tests/residence-scenes-v154.test.mjs
