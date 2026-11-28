@@ -17,6 +17,10 @@ interface Seat extends CampaignCoopIdentity {
   proof: string;
 }
 
+interface GuestSeat extends Seat {
+  ticket: string;
+}
+
 export interface CampaignCoopLobby {
   format: typeof FORMAT;
   version: typeof VERSION;
@@ -24,8 +28,8 @@ export interface CampaignCoopLobby {
   revision: number;
   expiresAt: number;
   host: Seat;
-  pending: Seat[];
-  guests: Seat[];
+  pending: GuestSeat[];
+  guests: GuestSeat[];
   invitationHash: string | null;
   closed: boolean;
 }
@@ -34,7 +38,7 @@ export type CampaignCoopLobbyCommand =
   | { type: "open"; roomId: string; owner: CampaignCoopIdentity }
   | { type: "invite"; roomId: string; invitationHash: string }
   | { type: "request"; roomId: string; owner: CampaignCoopIdentity; invitationHash: string }
-  | { type: "admit" | "decline"; roomId: string; guest: CampaignCoopIdentity }
+  | { type: "admit" | "decline"; roomId: string; guest: CampaignCoopIdentity & { ticket: string } }
   | { type: "leave" | "close"; roomId: string };
 
 export type CampaignCoopLobbyFailure =
@@ -61,6 +65,12 @@ function isSeat(value: unknown): value is Seat {
     typeof value.proof === "string" && PROOF.test(value.proof);
 }
 
+function isGuestSeat(value: unknown): value is GuestSeat {
+  if (!isSeat(value)) return false;
+  const ticket: unknown = Reflect.get(value, "ticket");
+  return typeof ticket === "string" && PROOF.test(ticket);
+}
+
 export function parseCampaignCoopLobby(raw: string): CampaignCoopLobby | null {
   if (raw.length > 4096) return null;
   try {
@@ -74,8 +84,10 @@ export function parseCampaignCoopLobby(raw: string): CampaignCoopLobby | null {
         typeof value.closed !== "boolean" ||
         (value.invitationHash !== null && (typeof value.invitationHash !== "string" || !PROOF.test(value.invitationHash))) ||
         (value.closed && (value.invitationHash !== null || value.pending.length !== 0))) return null;
-    const seats = [value.host, ...value.pending, ...value.guests];
-    if (!seats.every(isSeat) || new Set(seats.map(seat => seat.ownerCreatedAt)).size !== seats.length ||
+    const guests = [...value.pending, ...value.guests];
+    if (!guests.every(isGuestSeat) || new Set(guests.map(seat => seat.ticket)).size !== guests.length) return null;
+    const seats = [value.host, ...guests];
+    if (new Set(seats.map(seat => seat.ownerCreatedAt)).size !== seats.length ||
         new Set(seats.map(seat => seat.slotId)).size !== seats.length ||
         new Set(seats.map(seat => seat.proof)).size !== seats.length) return null;
     return value as unknown as CampaignCoopLobby;
@@ -125,7 +137,7 @@ export function advanceCampaignCoopLobby(
     if (seats.some(seat => seat.proof === actorProof || seat.ownerCreatedAt === command.owner.ownerCreatedAt)) return refuse("already");
     if (full) return refuse("full");
     if (room.invitationHash === null || room.invitationHash !== command.invitationHash) return refuse("invitation");
-    return update({ pending: [...pending, { ...command.owner, proof: actorProof }], invitationHash: null });
+    return update({ pending: [...pending, { ...command.owner, proof: actorProof, ticket: room.invitationHash }], invitationHash: null });
   }
   if (command.type === "leave") {
     if (![...pending, ...guests].some(seat => seat.proof === actorProof)) return refuse("guest");
@@ -138,12 +150,12 @@ export function advanceCampaignCoopLobby(
       if (full) return refuse("full");
       return update({ invitationHash: command.invitationHash });
     case "admit": {
-      const seat = pending.find(member => sameCampaignCoopOwner(member, command.guest));
+      const seat = pending.find(member => sameCampaignCoopOwner(member, command.guest) && member.ticket === command.guest.ticket);
       if (!seat) return refuse("guest");
       return update({ pending: pending.filter(member => member !== seat), guests: [...guests, seat] });
     }
     case "decline": {
-      const matches = (seat: Seat) => sameCampaignCoopOwner(seat, command.guest);
+      const matches = (seat: GuestSeat) => sameCampaignCoopOwner(seat, command.guest) && seat.ticket === command.guest.ticket;
       if (![...pending, ...guests].some(matches)) return refuse("guest");
       return update({ pending: pending.filter(seat => !matches(seat)), guests: guests.filter(seat => !matches(seat)) });
     }

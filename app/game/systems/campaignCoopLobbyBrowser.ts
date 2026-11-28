@@ -46,9 +46,10 @@ const hex = (bytes: Uint8Array) => Array.from(bytes, byte => byte.toString(16).p
 const randomHex = (length: number) => hex(window.crypto.getRandomValues(new Uint8Array(length)));
 const hash = async (value: string) => hex(new Uint8Array(await window.crypto.subtle.digest("SHA-256", new TextEncoder().encode(value))));
 
-export const browserCampaignCoopAvailable = () => Boolean(
-  window.isSecureContext && window.crypto?.subtle && window.navigator.locks?.request,
-);
+export function browserCampaignCoopAvailable(): boolean {
+  try { return Boolean(window.isSecureContext && window.crypto?.subtle && window.navigator.locks?.request); }
+  catch { return false; }
+}
 
 export async function browserCampaignCoopActor(prepare = false): Promise<string | null> {
   try {
