@@ -10,7 +10,7 @@ const root = process.cwd();
 const output = resolve(process.env.KENNEL_QA_OUTPUT ?? "outputs/qa-hound-kennel");
 await mkdir(output, { recursive: true });
 const sources = [
-  "save.ts", "systems/campaignSlots.ts", "systems/homeworldStreetContactsV100.ts",
+  "save.ts", "systems/homeworldStreetContactsV100.ts",
   "systems/homeworldResidentContactsV110.ts", "systems/homeworldWorldV77.ts",
   "systems/homeworldLocationV77.ts", "systems/houndKennelV147.ts", "systems/huntingHoundsV147.ts",
 ];
@@ -19,6 +19,10 @@ const fixture = await build({
   bundle: true, format: "esm", platform: "node", write: false, logLevel: "silent",
 });
 const api = await import("data:text/javascript;base64," + Buffer.from(fixture.outputFiles[0].text).toString("base64"));
+const campaignSetup = await build({
+  stdin: { contents: 'export * from "./app/game/systems/campaignSlots.ts";', resolveDir: root },
+  bundle: true, format: "iife", platform: "browser", globalName: "__houndProofCampaign", write: false, logLevel: "silent",
+});
 const seed = api.defaultSave("2026-11-28T10:00:00.000Z");
 seed.profile.clanMarks = api.HOUND_KENNEL_ADOPTION_PRICE_V147;
 seed.settings.masterVolume = 0;
@@ -49,20 +53,10 @@ const start = possibleStarts.find(({ x, y, levelId }) => {
   }) && api.resolveHomeworldLocationV77(api.createHomeworldCheckpointV77(owner, levelId, actor, null, actor), owner).restored;
 });
 assert(start, "Find a walkable, unobstructed starting checkpoint in speaking range of a native kennel handler");
+console.log("HOUND_KENNEL_START", JSON.stringify(start));
 const actor = { ...api.createHomeworldWorldActorV77(), ...start };
 seed.homeworld.locationV77 = api.createHomeworldCheckpointV77(owner, start.levelId, actor, null, actor);
 const campaignKey = api.SAVE_STORAGE_KEY;
-const values = new Map([[campaignKey, JSON.stringify(seed)]]);
-const storage = {
-  getItem: key => values.get(key) ?? null,
-  setItem: (key, value) => values.set(key, value),
-  removeItem: key => values.delete(key),
-};
-const migration = await api.migrateLegacyCampaignSlot(storage);
-assert(migration.ok, migration.message);
-const slot = api.loadCampaignSlots(storage).slots.find(item => item.id === migration.slotId);
-const prepared = await api.saveCampaignCheckpoint(slot.id, { kind: "manual", index: 1, location: "homeworld", expectedRevision: slot.revision }, storage);
-assert(prepared.ok, prepared.message);
 
 const harnessPath = "/__hound-proof";
 const harnessId = "virtual:hound-proof";
@@ -120,10 +114,7 @@ try {
     server: { host: "127.0.0.1", port: 4291, strictPort: true } });
   await server.listen();
   browser = await chromium.launch({ executablePath: process.env.CHROMIUM_EXECUTABLE, args: ["--no-sandbox"] });
-  const context = await browser.newContext({
-    viewport: { width: 1440, height: 1000 }, reducedMotion: "reduce",
-    storageState: { cookies: [], origins: [{ origin: url, localStorage: [...values].map(([name, value]) => ({ name, value })) }] },
-  });
+  const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, reducedMotion: "reduce" });
   page = await context.newPage();
   page.setDefaultTimeout(40_000);
   page.on("pageerror", error => report.errors.push(error.message));
@@ -141,7 +132,18 @@ try {
     await page.keyboard.press("KeyE");
     await kennel.waitFor();
   }
-  await page.goto(url);
+  await page.goto(url, { waitUntil: "networkidle" });
+  await page.addScriptTag({ content: campaignSetup.outputFiles[0].text });
+  await page.evaluate(async ({ key, initial }) => {
+    const setup = window.__houndProofCampaign;
+    localStorage.setItem(key, JSON.stringify(initial));
+    const migration = await setup.migrateLegacyCampaignSlot();
+    if (!migration.ok) throw new Error(migration.message);
+    const slot = setup.loadCampaignSlots().slots.find(entry => entry.id === migration.slotId);
+    const prepared = await setup.saveCampaignCheckpoint(slot.id, { kind: "manual", index: 1, location: "homeworld", expectedRevision: slot.revision });
+    if (!prepared.ok) throw new Error(prepared.message);
+  }, { key: campaignKey, initial: seed });
+  await page.reload();
   await openKennel();
   assert.equal(await kennel.locator('[data-hound-kennel-candidate="' + candidates[2].id + '"]').count(), 0);
   await kennel.locator("[data-hound-kennel-archive] > summary").click();
