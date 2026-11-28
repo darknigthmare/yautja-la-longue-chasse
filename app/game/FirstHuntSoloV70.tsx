@@ -29,7 +29,7 @@ function TempleReport({ state }: { state: SoloV70State }) {
   const sectors = state.visited.filter(Boolean).length;
   const extension = state.depthsM017?.extension;
   return <>
-    <p>Le vétéran reçoit le relevé de {sectors} secteurs et de {state.configuration} configurations.</p>
+    <p>{`Le vétéran reçoit le relevé de ${sectors} secteurs et de ${state.configuration} configurations.`}</p>
     <ul aria-label="Preuves rapportées au vétéran" data-temple-report>
       <li>Drone neutralisé et vanne locale isolée.</li>
       {state.riteAdmission?.sealedEnergy && <li>Trois émetteurs scellés.</li>}
