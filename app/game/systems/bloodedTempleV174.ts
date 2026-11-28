@@ -200,6 +200,13 @@ export function templeAvailableV174(save: SaveGame): boolean {
     !rankTrialsBlockedV147(save.tribunalV147);
 }
 
+export function bloodedTempleSessionAvailableV174(
+  save: SaveGame, view = inspectBloodedTempleV174(save.bloodedTempleV174, save.createdAt).view,
+): boolean {
+  if (view.stage !== "complete") return templeAvailableV174(save);
+  return templeHasFoundationV174(save) && save.prologue?.chronicle.rites.some(rite => rite.id === "blooding-mark") === true;
+}
+
 export function templeJournalSuccessorV174(before: BloodedTempleV174 | null | undefined, next: BloodedTempleV174): boolean {
   const events = before?.events ?? [];
   return (!before || before.owner === next.owner) && next.events.length === events.length + 1 &&
@@ -211,9 +218,7 @@ const proofIds = ["quatza-rij-triad-hunt", "temple-three-shadows-triad", "temple
 
 export function advanceBloodedTempleV174(save: SaveGame, command: TempleCommandV174, at: number) {
   const current = inspectBloodedTempleV174(save.bloodedTempleV174, save.createdAt);
-  const returned = current.view.stage === "complete" && templeHasFoundationV174(save) &&
-    save.prologue?.chronicle.rites.some(rite => rite.id === "blooding-mark");
-  if (!save.prologue || (!returned && !templeAvailableV174(save))) {
+  if (!save.prologue || !bloodedTempleSessionAvailableV174(save, current.view)) {
     return reject("Le compte rendu complet du trio et la Vanne de Quarantaine doivent être validés.");
   }
   if (current.status !== "valid" && current.status !== "absent") return reject("Le registre du temple est incompatible.");
