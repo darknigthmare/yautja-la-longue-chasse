@@ -26,7 +26,7 @@ function observe() {
       return (...args) => commands.push([property, ...args]);
     },
     set(_target, property, value) {
-      commands.push([property, value]);
+      commands.push([property, typeof value === "object" && value?.addColorStop ? "gradient" : value]);
       return true;
     },
   });
