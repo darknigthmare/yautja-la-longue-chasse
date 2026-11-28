@@ -38,9 +38,9 @@ export default function HoundKennelPanelV147({ hounds, clanMarks, disabled = fal
   const living = roster.filter(hound => hound.condition !== "dead");
   const fallen = roster.filter(hound => hound.condition === "dead");
   const available = candidates.filter(candidate => candidate.status === "available");
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(() => available[0]?.id ?? null);
   const [name, setName] = useState("");
-  const selected = available.find(candidate => candidate.id === selectedId) ?? available[0] ?? null;
+  const selected = available.find(candidate => candidate.id === selectedId);
   const full = roster.length >= HOUNDS_MAX_V147;
   const canAfford = clanMarks >= HOUND_KENNEL_ADOPTION_PRICE_V147;
   const activeId = hounds?.activeHoundId ?? null;
@@ -94,33 +94,35 @@ export default function HoundKennelPanelV147({ hounds, clanMarks, disabled = fal
 
     <h4 className={styles.subtitle}>Adoption au chenil</h4>
     <p className={styles.notice} data-hound-kennel-balance>Solde {clanMarks} Marques de clan · Adoption {HOUND_KENNEL_ADOPTION_PRICE_V147} Marques</p>
-    {available.length === 0 || !selected
+    {available.length === 0
       ? <p className={styles.empty}>Le registre n’a plus de chien à te confier.</p>
       : <div className={styles.recruit}>
         <div className={styles.choices} role="group" aria-label="Chiens du registre">
           {available.map(candidate => <button key={candidate.id} type="button" disabled={disabled}
-            aria-pressed={candidate.id === selected.id} data-hound-kennel-candidate={candidate.id}
+            aria-pressed={candidate.id === selectedId} data-hound-kennel-candidate={candidate.id}
             onClick={() => { setSelectedId(candidate.id); setName(""); }}>{candidate.name}</button>)}
         </div>
-        <figure className={styles.portrait}>
-          <img key={selected.id} src={selected.imagePath} alt={selected.description}
-            width={selected.width} height={selected.height} decoding="async" />
-          <figcaption>{selected.description}</figcaption>
-        </figure>
-        <form className={styles.form} onSubmit={event => {
-          event.preventDefault();
-          if (disabled || full || !canAfford) return;
-          if (onAction({ type: "recruit", catalogueId: selected.id, name })) { setSelectedId(null); setName(""); }
-        }}>
-          <label htmlFor={nameId}>Nom du chien (facultatif)</label>
-          <input id={nameId} type="text" value={name} maxLength={HOUND_NAME_MAX_V147} disabled={disabled}
-            placeholder={selected.name} autoComplete="off" onChange={event => setName(event.target.value)} />
-          <button type="submit" disabled={disabled || full || !canAfford} data-hound-kennel-action="recruit">
-            Adopter {name.trim() || selected.name} · {HOUND_KENNEL_ADOPTION_PRICE_V147} Marques
-          </button>
-          {full && <p role="status">Le chenil ne te confie pas plus de {HOUNDS_MAX_V147} chiens.</p>}
-          {!canAfford && <p role="status">Il te manque {HOUND_KENNEL_ADOPTION_PRICE_V147 - clanMarks} Marques de clan.</p>}
-        </form>
+        {selected ? <>
+          <figure className={styles.portrait}>
+            <img key={selected.id} src={selected.imagePath} alt={selected.description}
+              width={selected.width} height={selected.height} decoding="async" />
+            <figcaption>{selected.description}</figcaption>
+          </figure>
+          <form className={styles.form} onSubmit={event => {
+            event.preventDefault();
+            if (disabled || full || !canAfford) return;
+            if (onAction({ type: "recruit", catalogueId: selected.id, name: name.trim() })) { setSelectedId(null); setName(""); }
+          }}>
+            <label htmlFor={nameId}>Nom du chien (facultatif)</label>
+            <input id={nameId} type="text" value={name} maxLength={HOUND_NAME_MAX_V147} disabled={disabled}
+              placeholder={selected.name} autoComplete="off" onChange={event => setName(event.target.value)} />
+            <button type="submit" disabled={disabled || full || !canAfford} data-hound-kennel-action="recruit">
+              Adopter {name.trim() || selected.name} · {HOUND_KENNEL_ADOPTION_PRICE_V147} Marques
+            </button>
+          </form>
+        </> : <p className={styles.notice}>Sélectionne un chien pour ouvrir sa fiche.</p>}
+        {full && <p role="status">Le chenil ne te confie pas plus de {HOUNDS_MAX_V147} chiens.</p>}
+        {!canAfford && <p role="status">Il te manque {HOUND_KENNEL_ADOPTION_PRICE_V147 - clanMarks} Marques de clan.</p>}
       </div>}
   </section>;
 }
