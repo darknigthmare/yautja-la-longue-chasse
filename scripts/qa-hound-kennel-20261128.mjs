@@ -182,10 +182,11 @@ try {
   assert.equal(checkpoint.snapshot.houndFieldV147.houndId, candidates[0].id);
   await page.reload();
   const resume = page.getByRole("button", { name: "Reprendre la chasse", exact: true }).first();
+  await resume.or(commands).first().waitFor();
   if (await resume.isVisible()) await resume.click();
   await page.locator('[data-hound-current-order="recall"][data-hound-orders-completed="1"]').waitFor();
   assert.equal(await page.locator('[data-hound-proof-resume="failed"]').count(), 0);
-  report.checks.push("Le chien adopté rejoint HuntCanvas. Le bouton de rappel exécute l’ordre, le pistage baisse au seuil prévu et le rappel revient après rechargement du checkpoint.");
+  report.checks.push("Le chien adopté rejoint HuntCanvas. Le bouton de rappel exécute l’ordre, le pistage attend le lien requis et le rappel revient après rechargement du checkpoint.");
   assert.deepEqual(report.errors, []);
   report.passed = true;
 } finally {
