@@ -29,7 +29,7 @@ function inputRoute() {
   let frame = engine.createQuatzaFrame(mode);
   const input = [];
   const step = (code = 0) => {
-    const next = engine.stepQuatza(mode, frame, code);
+    const next = engine.stepQuatza(mode, frame, code, 1);
     if (next === frame) return;
     input.push(code);
     frame = next;
@@ -77,9 +77,19 @@ function inputRoute() {
   descend();
   touch();
   assert.equal(frame.phase, 'return');
+  assert.equal(engine.quatzaReturnAidPatient(frame)?.id, 'saar');
+  assert.equal(frame.companions[0].health, 2);
+  const returnTick = frame.tick;
+  for (let n = 0; n < 12; n++) step(I.interact);
+  const aidTick = frame.tick;
+  assert.equal(frame.returnAid?.ticks, 12);
+  for (let n = 12; n < engine.QUATZA_RETURN_AID_TICKS; n++) step(I.interact);
+  assert.equal(frame.companions[0].health, 3);
+  assert.equal(frame.returnAid, undefined);
+  const careEndTick = frame.tick;
   post(P.witness);
   assert.equal(frame.phase, 'delivered');
-  return { input, frame };
+  return { input, frame, returnTick, aidTick, careEndTick };
 }
 
 const report = {
@@ -187,31 +197,75 @@ try {
   const clockBase = Date.now();
   await page.clock.install({ time: clockBase });
   await page.clock.pauseAt(clockBase + 1000);
-  await resume.click();
-  assert.equal(await tick(), 0);
-
-  let pressed = null;
-  for (let start = 0; start < expected.input.length;) {
-    const code = expected.input[start];
-    let end = start + 1;
-    while (end < expected.input.length && expected.input[end] === code) end++;
-    const wanted = keys[code] ?? null;
-    if (pressed !== wanted) {
-      if (pressed) await page.keyboard.up(pressed);
-      if (wanted) await page.keyboard.down(wanted);
-      pressed = wanted;
+  async function play(startTick, lastTick) {
+    assert.equal(await tick(), startTick);
+    let pressed = null;
+    for (let start = startTick; start < lastTick;) {
+      const code = expected.input[start];
+      let end = start + 1;
+      while (end < lastTick && expected.input[end] === code) end++;
+      const wanted = keys[code] ?? null;
+      if (pressed !== wanted) {
+        if (pressed) await page.keyboard.up(pressed);
+        if (wanted) await page.keyboard.down(wanted);
+        pressed = wanted;
+      }
+      for (let attempts = 0; ; attempts++) {
+        const observed = await tick();
+        assert(observed <= end, 'no animation step may cross an input boundary');
+        if (observed === end) break;
+        assert(attempts < 200, 'native animation is stalled at ' + observed);
+        await page.clock.runFor(16 * Math.min(24, Math.max(1, end - observed - 2)));
+      }
+      start = end;
     }
-    for (let attempts = 0; ; attempts++) {
-      const observed = await tick();
-      assert(observed <= end, 'no animation step may cross an input boundary');
-      if (observed === end) break;
-      assert(attempts < 200, 'native animation is stalled at ' + observed);
-      await page.clock.runFor(16 * Math.min(24, Math.max(1, end - observed - 2)));
-    }
-    start = end;
+    if (pressed) await page.keyboard.up(pressed);
   }
-  if (pressed) await page.keyboard.up(pressed);
+
+  const proofAttr = 'data-quatza-return-proof';
+  const carried = expedition.locator('[data-quatza-carried]');
+  const witnessId = engine.QUATZA_RETURN_WITNESS.id;
+  const witness = expedition.locator('[data-quatza-witness-actor="' + witnessId + '"]');
+  const saar = expedition.locator('[data-quatza-companion="saar"]');
+  const care = expedition.getByRole('progressbar', { name: 'Soins de Saar' });
+  await resume.click();
+  await play(0, expected.returnTick);
+  assert.equal(await expedition.getAttribute('data-phase'), 'return');
+  assert.equal(await saar.getAttribute('data-health'), '2');
+  assert.equal(await action('trophy').count(), 0);
+  const proof = await carried.getAttribute(proofAttr);
+  assert.equal(proof, engine.quatzaReturnProof(imported.save.createdAt, 1, expected.frame));
+  assert(proof);
+  await play(expected.returnTick, expected.aidTick);
+  assert.equal(await care.getAttribute('value'), '12');
+  await expedition.getByRole('button', { name: 'Pause', exact: true }).click();
+  const checkpoint = await disk();
+  assert.equal(progress(checkpoint).attempts[0].input.length, expected.aidTick);
   await page.clock.resume();
+  await root.screenshot({ path: join(output, '00-aid-before-reload.png') });
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  await navigate();
+  assert.equal(await carried.getAttribute(proofAttr), proof);
+  assert.equal(await care.getAttribute('value'), '12');
+  assert.deepEqual(progress(await disk()), progress(checkpoint));
+  await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 1000);
+  await resume.click();
+  await play(expected.aidTick, expected.careEndTick);
+  assert.equal(await care.count(), 0);
+  assert.equal(await saar.getAttribute('data-health'), '3');
+  await play(expected.careEndTick, expected.input.length);
+  await page.clock.resume();
+  await witness.waitFor({ state: 'attached' });
+  const nativeWitness = await witness.locator('img[data-homeworld-npc-role-v84="guard"]').evaluate(async image => {
+    await image.decode();
+    return { src: image.getAttribute('src'), width: image.naturalWidth, height: image.naturalHeight };
+  });
+  assert(nativeWitness.width > 0 && nativeWitness.height > 0);
+  assert.equal(await expedition.locator('[data-quatza-actor]').count(), 1);
+  assert.deepEqual(await expedition.locator('[data-quatza-companion]').evaluateAll(nodes =>
+    nodes.map(node => node.dataset.quatzaCompanion)), ['saar', 'vek']);
+  assert.equal(await carried.getAttribute(proofAttr), proof);
+  assert.equal(await expedition.locator('[data-quatza-witness]').getAttribute('data-quatza-witness'), witnessId);
   assert.equal(await expedition.getAttribute('data-phase'), 'delivered');
   assert.equal(await expedition.getAttribute('data-saar-ready'), 'true');
   assert.equal(await expedition.getAttribute('data-vek-ready'), 'true');
@@ -222,7 +276,7 @@ try {
   const attempt = progress(delivered).attempts[0];
   assert.deepEqual(attempt.input, expected.input);
   assert.equal(attempt.phase, 'delivered');
-  assert.deepEqual(engine.replayQuatzaAttempt(mode, attempt.input), expected.frame);
+  assert.deepEqual(engine.replayQuatzaAttempt(mode, attempt.input, attempt.returnRules), expected.frame);
 
   await action('companions').click();
   const first = await awaitPresentations(1);
@@ -233,7 +287,13 @@ try {
   await navigate();
   assert.equal(await expedition.getAttribute('data-phase'), 'delivered');
   assert.deepEqual(progress(await disk()).presentations, ['companions']);
+  assert.equal(await carried.getAttribute(proofAttr), proof);
   await action('trophy').click();
+  assert.equal(await carried.count(), 0);
+  for (const piece of ['hide', 'skull']) {
+    const received = expedition.locator('[data-quatza-handover="' + piece + '"]');
+    assert.equal(await received.getAttribute(proofAttr), proof);
+  }
   const second = await awaitPresentations(2);
   assert.deepEqual(progress(second).presentations, ['companions', 'trophy']);
   assert.deepEqual(stable(second), stable(delivered));
@@ -241,6 +301,7 @@ try {
   assert(parsed.save, parsed.failure);
   assert.deepEqual(progress(parsed.save), progress(second));
   await root.screenshot({ path: join(output, '02-trophy.png') });
+  await writeFile(join(output, 'witnessed-campaign-save.json'), saves.exportSave(second));
 
   await page.reload({ waitUntil: 'domcontentloaded' });
   await navigate();
@@ -249,6 +310,7 @@ try {
   assert.deepEqual(report.errors, []);
   report.result = { ticks: attempt.input.length, health: expected.frame.player.health,
     companions: expected.frame.companions, hide: expected.frame.hide, skull: expected.frame.skull,
+    proof, witness: { id: witnessId, ...nativeWitness }, aidResumedAt: expected.aidTick,
     presentations: progress(second).presentations };
   report.passed = true;
 } catch (error) {
