@@ -149,6 +149,10 @@ test("the real campaign records each exercise, rejects standalone promotion and 
   assert.notEqual(rankReceipts({ ...save, quatzaRij: null })[1].status, "recognized");
   assert.equal(saves.writeSaveWithStatus(stale, disk).failure, "save-conflict");
   assert(!command(save, { type: "recognize" }, POSTS.mark).ok);
+  assert.equal(save.eliteRecognitionV174.queenMandate, undefined, "Recognition saves from before the arena stay eligible");
+  advance({ type: "queen-mandate" }, trialRules.ELITE_CLAN_RITES_POSTS.hunt);
+  assert.equal(chronicle.getChronicleRank(save.prologue.chronicle), "elite");
+  assert(save.eliteRecognitionV174.recognized && save.eliteRecognitionV174.queenMandate);
 });
 
 test("the chief writes one owner-bound mandate after trials reached on the arena floor", () => {
