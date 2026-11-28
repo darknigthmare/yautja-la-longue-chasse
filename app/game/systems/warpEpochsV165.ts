@@ -621,7 +621,7 @@ export function isWarpFjordSuccessorW01(previous: WarpEpochsStateV165 | null | u
   const after = next?.branchVisitState[W01_FJORD_BRANCH]?.fjordW01;
   if (JSON.stringify(before ?? null) === JSON.stringify(after ?? null)) return true;
   const tripId = previous?.activeWarpTripId;
-  if (!tripId || previous.activeTripBranchId !== W01_FJORD_BRANCH || !next || before?.returned ||
+  if (!previous || !tripId || previous.activeTripBranchId !== W01_FJORD_BRANCH || !next || before?.returned ||
       !normalizeWarpEpochsV165(next, previous.ownerCreatedAt)) return false;
   if (!before) return !!after && !after.returned && after.tripId === tripId && next.activeWarpTripId === tripId;
   if (next.activeWarpTripId !== null || !next.consumedEventIds.includes("trip:" + tripId + ":return")) return false;
