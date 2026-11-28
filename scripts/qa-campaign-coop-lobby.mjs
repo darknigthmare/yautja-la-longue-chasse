@@ -48,8 +48,14 @@ async function enterLobby(page) {
 }
 
 async function issue(page, renewal = false) {
+  const output = lobby(page).locator("output");
+  const previous = renewal ? await output.innerText() : null;
   await button(page, renewal ? "Renouveler le code" : "Créer un code d’invitation").click();
-  const code = await lobby(page).locator("output").innerText();
+  await page.waitForFunction(oldCode => {
+    const nextCode = document.querySelector("[data-campaign-coop-lobby] output")?.textContent;
+    return nextCode && nextCode !== oldCode;
+  }, previous);
+  const code = await output.innerText();
   assert.match(code, /^[0-9a-f]{6}(?:-[0-9a-f]{6}){3}$/);
   return code;
 }
