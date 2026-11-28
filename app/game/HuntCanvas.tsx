@@ -5075,10 +5075,15 @@ function drawCinderFallenMarks(
     if (node.x + width / 2 < cameraX || node.x - width / 2 > cameraX + VIEW_WIDTH) continue;
     // A freestanding memorial uses the first actual surface below its trace.
     // Persisted trace coordinates continue to own the scan and its signal.
-    const floor = state.world.platforms.reduce((bottom, platform) =>
-      platform.x + width / 2 <= node.x && platform.x + platform.width - width / 2 >= node.x &&
-        platform.y >= node.y && platform.y < bottom ? platform.y : bottom,
-    state.world.floorY);
+    let floor: number = state.world.floorY;
+    for (const platform of state.world.platforms) {
+      if (
+        platform.x + width / 2 <= node.x && platform.x + platform.width - width / 2 >= node.x &&
+        platform.y >= node.y && platform.y < floor
+      ) {
+        floor = platform.y;
+      }
+    }
     drawEnvironmentGameplayProp(context, image, "decoration", {
       x: node.x - width / 2, y: floor - height, width, height,
     });
