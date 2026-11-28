@@ -75,9 +75,3 @@ Restent ouverts : quêtes des autres véhicules, dressage / BOND / écuries, cha
 ## Extension V1.2 — remise du Grav-Sled
 
 La formation réussie peut désormais produire un reçu de remise pour un Blooded. Le permis ne donne toujours pas de propriété automatique : une confirmation distincte aux Forges remet le châssis avec son usure et sa réserve. Deux machines peuvent être possédées et entretenues indépendamment ; le prêt ne reçoit jamais leurs modules personnels. Les conclusions V1/V1.1 ci-dessus restent historiques. Voir [la reprise V1.2](../../../production/mobility-20261108/REPRISE_V1_2.md) et la feuille `Remise_GravSled_V1_2` du classeur (24 feuilles, 780 formules). Aucune image nouvelle ni certification canonique.
-
-## Livraison des Forges
-
-Le comptoir affiche les conditions d’achat qui restent à remplir pour la moto de clan. Une fois la moto achetée, le garage propose une course libre et le contrat de livraison. Le contrat place les deux premières balises à l’ouest, le chargement de 25 kg au quai nord-ouest et la troisième balise à l’est. Le dépôt au sas exige l’arrêt et le franchissement des trois balises.
-
-La remise de la moto valide le contrat si le circuit est terminé, avec au moins 50 % d’état et dix secondes de conduite. Le compte reçoit 30 marques une fois par campagne. Le versement et le reçu partagent l’écriture du registre. Le retour anticipé laisse le contrat disponible et la récupération de sécurité conserve le remorquage prévu. La conduite reprend en pause au comptoir, avec la même charge, la même position et le même état du véhicule.
