@@ -9,7 +9,7 @@ import { GameAudio } from "./sound";
 import YautjaTranslationV67 from "./YautjaTranslationV67";
 import { SOLO_V70_GALLERY_M017, SOLO_V70_ROYAL_M017, SOLO_V70_RESCUE_M017, soloV70RoyalStatusM017, soloV70PurgeRemainingM017 } from "./systems/firstHuntSoloV70DepthsM017";
 import { drawFirstHuntSoloV70, loadTempleArtV70 } from "./firstHuntSoloV70Rendering";
-import { normalizeSoloV70State, stepSoloV70, soloV70NeedsImmediateCheckpoint, soloV70Objective, soloV70Room, SOLO_V70_DEPTHS_M017, soloV70DepthDoorOpeningM017, type SoloV70State, type SoloV70Receipt, soloV70ReconnectionPreview, soloV70NefDeploymentM017 } from "./systems/firstHuntSoloV70";
+import { normalizeSoloV70State, stepSoloV70, soloV70NeedsImmediateCheckpoint, soloV70Objective, soloV70Room, SOLO_V70_DEPTHS_M017, soloV70DepthDoorOpeningM017, type SoloV70State, type SoloV70Receipt, soloV70ReconnectionPreview, soloV70NefDeploymentM017, soloV70TrioPresent } from "./systems/firstHuntSoloV70";
 import styles from "./FirstHuntSoloV70.module.css";
 
 export interface FirstHuntSoloV70Props {
@@ -20,7 +20,28 @@ export interface FirstHuntSoloV70Props {
   onExit(): void | Promise<void>; onReturnToCity(): Promise<boolean>; onOpenSettings?(): void;
   continueTriad?: boolean;
 }
-const BUTTONS = [["left", "←"], ["right", "→"], ["jump", "Saut"], ["blade", "Lame / Signal"], ["interact", "Interagir"]] as const;
+const BUTTONS = [
+  ["left", "←", "Marcher à gauche"], ["right", "→", "Marcher à droite"], ["jump", "Saut", "Sauter"],
+  ["blade", "Lame / Signal", "Lame ou signal de triade"], ["interact", "Interagir", "Interagir"],
+] as const;
+
+function TempleReport({ state }: { state: SoloV70State }) {
+  const sectors = state.visited.filter(Boolean).length;
+  const extension = state.depthsM017?.extension;
+  return <>
+    <p>Le vétéran reçoit le relevé de {sectors} secteurs et de {state.configuration} configurations.</p>
+    <ul aria-label="Preuves rapportées au vétéran" data-temple-report>
+      <li>Drone neutralisé et vanne locale isolée.</li>
+      {state.riteAdmission?.sealedEnergy && <li>Trois émetteurs scellés.</li>}
+      {extension?.gallery?.screened && <li>Éclosion confinée dans la Galerie des Coques.</li>}
+      {extension?.observations["royal-lock"] && <li>Loge de la reine captive isolée.</li>}
+      {extension?.rescue?.delivered && <li>Saar porté jusqu’au refuge avec Vek.</li>}
+      {extension?.observations["vent-purge"] && <li>Conduite du sas purgée.</li>}
+      {state.depthsM017?.huntThreshold && <li>Triade réunie au seuil de chasse.</li>}
+    </ul>
+    <p>Le rang reste Young Blood. Les chasses individuelles et le rite Blooded se jouent ensuite.</p>
+  </>;
+}
 /** The owner commits every receipt before simulation resumes. A rejected checkpoint stays mounted. */
 export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
   const [initial] = useState(() => normalizeSoloV70State(props.checkpoint));
@@ -172,6 +193,7 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
   const royal = state?.room === SOLO_V70_ROYAL_M017.room ? soloV70RoyalStatusM017(extension, state.tick) : undefined;
   const rescue = state?.room === SOLO_V70_RESCUE_M017.room ? extension?.rescue : undefined;
   const rescueStage = rescue && (rescue.delivered ? "safe" : rescue.pickedUp ? "carrying" : "wounded");
+  const regrouping = state && !modal && state.companionMode === "follow" && !soloV70TrioPresent(state);
   return <section className={styles.screen} data-solo-v70 data-solo-step={state?.phase ?? "invalid"}
     data-temple-rescue={rescueStage}
     data-temple-royal={royal?.stage}
@@ -187,6 +209,7 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
     data-temple-nef={preview ? "warning" : nefDeploying ? "moving" : state?.reconnectionVariant && state.configuration >= 2 ? "deployed" : "off"} data-temple-threshold={state?.riteAdmission && (state.riteAdmission.threshold ? "triad-confirmed" : "pending")}>
     <header className={styles.header} inert={modal && !props.externallyPaused ? true : undefined}><strong>CAMPAGNE · TEMPLE DES TROIS OMBRES · ACTE I</strong><div><button type="button" onClick={pause} disabled={!state || pendingUi}>Pause</button><button type="button" onClick={() => setTouchUi(v => !v)} aria-pressed={touchUi}>Tactile</button></div></header>
     <div className={styles.objective}><h1>{objective?.title ?? "Checkpoint non pris en charge"}</h1><p>{objective?.instruction ?? "La partie est conservée. Aucun état neuf ne remplace ce checkpoint."}</p>{state && <div className={styles.measure}><span>{soloV70Room(state.room).name}</span><span>{soloV70Room(state.room).level} · Configuration {state.configuration}</span><span>Secteurs {state.visited.filter(Boolean).length}/{state.visited.length}</span><span>Vitalité {state.health}/6</span>{state.riteAdmission?.sealedEnergy && <span>3 émetteurs scellés</span>}{state.milestones['belvedere-serviced'] && <span>Belvédère · {state.belvedereLever ? 'mécanismes' : 'hauteurs'}</span>}{state.riteAdmission?.threshold && <span>{state.depthsM017 ? 'Vanne · 3/3' : 'Triade au seuil · 3/3'}</span>}{state.depthsM017?.huntThreshold && <span>Seuil de chasse · 3/3</span>}{saving && <span role="status">Enregistrement…</span>}</div>}</div>
+    {regrouping && !rescueStage && <p role="status">Attends Saar et Vek avant de franchir une porte.</p>}
     {rescueStage === "carrying" && <p role="status">Saar est porté. Vek escorte la triade.</p>}
     {rescueStage === "safe" && <p role="status">Saar a rejoint le refuge.</p>}
     {royal?.stage === "warning" && <p role="status">Le glyphe annonce un balayage au sol.</p>}
@@ -196,13 +219,13 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
     {!!depthOpening && <p role="status" data-temple-depth-countdown>Rotation du volet · {(depthOpening / 60).toFixed(1)} s.</p>}
     {nefDeploying && <p role="status">Passerelles en mouvement. Commande haute verrouillée.</p>}
     <div className={styles.view} inert={modal && !props.externallyPaused ? true : undefined}><canvas ref={canvasRef} width={960} height={540} tabIndex={0} aria-label="Terrain jouable du Temple des Trois Ombres. Déplacement, saut, plaques de triade, mécanismes, portes et combat physique." />{spoken && !modal && <p className={styles.spoken}><YautjaTranslationV67 text={spoken} paused={paused || !!props.externallyPaused || pendingUi} reducedMotion={props.reducedMotion} /></p>}{notice && !modal && <p className={styles.notice} role="status">{notice}</p>}</div>
-    {touchUi && <div className={styles.controls} aria-label="Commandes tactiles du Temple des Trois Ombres">{BUTTONS.map(([action, label]) => <button type="button" key={action} data-solo-action={action} disabled={!!modal || !!props.externallyPaused || pendingUi} onPointerDown={e => setTouch(action, true, e)} onPointerUp={() => setTouch(action, false)} onPointerCancel={() => setTouch(action, false)} onLostPointerCapture={() => setTouch(action, false)} onBlur={() => setTouch(action, false)} onKeyDown={e => { if ((e.key === " " || e.key === "Enter") && !e.repeat) { e.preventDefault(); setTouch(action, true); } }} onKeyUp={e => { if (e.key === " " || e.key === "Enter") { e.preventDefault(); setTouch(action, false); } }}>{label}</button>)}</div>}
+    {touchUi && <div className={styles.controls} aria-label="Commandes tactiles du Temple des Trois Ombres">{BUTTONS.map(([action, label, accessibleLabel]) => <button type="button" key={action} aria-label={accessibleLabel} data-solo-action={action} disabled={!!modal || !!props.externallyPaused || pendingUi} onPointerDown={e => setTouch(action, true, e)} onPointerUp={() => setTouch(action, false)} onPointerCancel={() => setTouch(action, false)} onLostPointerCapture={() => setTouch(action, false)} onBlur={() => setTouch(action, false)} onKeyDown={e => { if ((e.key === " " || e.key === "Enter") && !e.repeat) { e.preventDefault(); setTouch(action, true); } }} onKeyUp={e => { if (e.key === " " || e.key === "Enter") { e.preventDefault(); setTouch(action, false); } }}>{label}</button>)}</div>}
     <p className={styles.keys}>Marcher {controlActionShortcut(YOUTH_CONTROL_ACTIONS.left, props.bindings)} / {controlActionShortcut(YOUTH_CONTROL_ACTIONS.right, props.bindings)} · Saut {controlActionShortcut(YOUTH_CONTROL_ACTIONS.jump, props.bindings)} · Lame / Signal {controlActionShortcut(YOUTH_CONTROL_ACTIONS.blade, props.bindings)} · Interagir {controlActionShortcut(YOUTH_CONTROL_ACTIONS.interact, props.bindings)} · Manette : croix/stick, A, Y, LB</p>
     {modal && !props.externallyPaused && <div className={styles.overlay}><div ref={panelRef} className={styles.panel} role="dialog" aria-modal="true" aria-label={state?.phase === "complete" ? "Évaluation terminée" : "Pause et sauvegarde"} onKeyDown={e => {
       if (e.key === "Escape" && paused && !pendingUi) { e.preventDefault(); resume(); }
       if (e.key === "Tab") { const nodes = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>("button:not(:disabled)")); if (!nodes.length) return; const first = nodes[0], last = nodes[nodes.length - 1]; if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } }
     }}><h2>{state?.phase === "complete" ? "Évaluation conservée" : "Le Temple des Trois Ombres · Acte I"}</h2>
-      {!state ? <p>Le checkpoint est invalide ou appartient à une version non prise en charge. Reviens au menu pour consulter les sauvegardes ; il n’a pas été écrasé.</p> : state.phase === "complete" ? <p>Le vétéran reçoit les neuf secteurs et les trois configurations, le drone neutralisé et la vanne locale isolée. Tu restes Young Blood : les profondeurs, la reine, les chasses individuelles de la triade et le rite Blooded restent à accomplir.</p> : <p>Les mécanismes, les compagnons et le combat sont arrêtés. Relâche les commandes avant la reprise.</p>}
+      {!state ? <p>Le checkpoint est invalide ou appartient à une version non prise en charge. Reviens au menu pour consulter les sauvegardes ; il n’a pas été écrasé.</p> : state.phase === "complete" ? <TempleReport state={state} /> : <p>Les mécanismes, les compagnons et le combat sont arrêtés. Relâche les commandes avant la reprise.</p>}
       {(saveError || props.persistenceError) && <p className={styles.error} role="alert">{saveError || props.persistenceError}</p>}{artError && <p className={styles.error} role="alert">{artError}</p>}
       <nav>{!state ? <button type="button" onClick={() => void props.onExit()}>Retour au menu</button> : <>
         {artError && <button type="button" onClick={() => { setArtError(""); setLoadAttempt(a => a + 1); }}>Recharger les images</button>}
