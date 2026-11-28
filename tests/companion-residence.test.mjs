@@ -528,3 +528,94 @@ test('quarter sockets and medical actors stand outside walkable floor without re
   assert.equal(personal.SHIP_INTERIOR_25D_ROOM_ORDER.length, 8);
   assert.equal(clan.CLAN_SHIP_INTERIOR_ROOM_ORDER.length, 7);
 });
+
+test('recruited clan hunter and tracker share a real refit, insertion and extraction receipt', () => {
+  const hunt = qa.load('app/game/systems/huntInsertion.ts');
+  const arrival = qa.load('app/game/systems/planetArrival.ts');
+  const presentation = qa.load('app/game/systems/planetArrivalPresentation.ts');
+  const pods = qa.load('app/game/systems/huntPodRecovery.ts');
+  const world = qa.load('app/game/systems/worldBlueprints.ts').worldBlueprintFor('jungle-vey');
+  const planet = { version: 1, method: 'pod', team: 'triad', memberIds: ['cold-trace', 'ash-scar'] };
+  const noCrew = recruitTriad();
+  assert.throws(() => triad.recruitExpeditionMember(noCrew.expeditionRoster, OWNER, 'cold-trace'), TypeError);
+  assert.equal(residence.registerInstalledExpeditionCrew(noCrew, 'cold-trace', SHIP), null);
+  assert.equal(triad.normalizePlanetInsertionPlan({ ...planet, team: 'solo' }), null);
+  assert.equal(triad.normalizePlanetInsertionPlan({ ...planet, memberIds: ['cold-trace', 'cold-trace'] }), null);
+
+  let save = recruitClan(mandate(noCrew));
+  save = clanAct(save, { type: 'accept-contract', contractId: 'field-jungle-survey' });
+  const survey = rawResult();
+  const encounterRun = save.missionProgress[survey.missionId].attempts;
+  const followed = ops.bindClanShipMission(save.clanShipOperations, {
+    ownerCreatedAt: OWNER, missionId: survey.missionId, encounterRun, expectedRevision: save.clanShipOperations.revision,
+  });
+  assert.equal(followed.accepted, true, followed.message);
+  save = { ...save, clanShipOperations: followed.state };
+  const progressed = saves.applyMissionResult(save, survey);
+  const credited = ops.settleClanShipMission(followed.state, save, progressed, survey,
+    { ownerSaveCreatedAt: OWNER, missionId: survey.missionId, encounterRun });
+  assert.equal(credited.accepted, true, credited.message);
+  assert.equal(credited.changed, true);
+  assert.equal(credited.state.activeContract, null);
+  save = clanAct({ ...progressed, clanShipOperations: credited.state }, { type: 'recruit', npcId: 'cold-trace' }, 'archives');
+
+  const balance = save.profile.clanMarks;
+  assert.equal(triad.expeditionTrioReady(save.expeditionRoster, OWNER, SHIP, planet), false);
+  assert.equal(residence.registerInstalledExpeditionCrew(save, 'cold-trace', SHIP), null);
+  save = refit(refit(save, 'cold-trace'), 'ash-scar');
+  assert.equal(save.profile.clanMarks, balance - 40);
+  assert.equal(triad.expeditionTrioReady(save.expeditionRoster, OWNER, SHIP, planet), true);
+  assert.equal(triad.expeditionTrioReady(save.expeditionRoster, OWNER, OTHER_SHIP, planet), false);
+  const oldCabin = { ...save, expeditionRoster: { ...save.expeditionRoster, members: save.expeditionRoster.members.filter(entry => entry.id !== 'cold-trace') } };
+  assert.equal(presence(oldCabin).find(entry => entry.id === 'cold-trace')?.avatarVisible, true, 'installed legacy cabin stays visible');
+  assert.deepEqual(residence.registerInstalledExpeditionCrew(oldCabin, 'cold-trace', SHIP), save.expeditionRoster);
+
+  save = { ...save, clanShipDocking: null };
+  const mission = 'jungle-vey', start = save.missionProgress[mission].attempts, runId = 'field-crew-native-run';
+  const bound = residence.bindCompanionResidenceMission(save, { ownerCreatedAt: OWNER, missionId: mission, encounterRun: start,
+    shipId: SHIP, insertion: planet });
+  assert.equal(bound.accepted, true, bound.message);
+  save = { ...save, companionResidence: bound.state,
+    planetArrival: arrival.createPlanetArrival({
+      ownerCreatedAt: OWNER, missionId: mission, encounterRun: start, runId, hunterPresetId: save.appearance.presetId,
+      personalShipId: SHIP, insertion: planet,
+    }),
+  };
+  save.planetArrivalRun = { version: 1, ownerCreatedAt: OWNER, runId, startedAt: OWNER,
+    difficultyId: save.settings.difficultyId, configuration: {
+      inventory: save.inventory, loadout: save.loadout, appearance: save.appearance,
+      gauntletVariantId: 'standard', elapsedSeconds: 0, insertion: planet, insertionShipId: SHIP,
+      visualOptions: { screenShake: true, reducedGore: false, highContrastVision: false },
+    },
+  };
+  const portable = saves.parseSaveImport(JSON.stringify(save));
+  assert.ok(portable.save, portable.failure);
+  assert.deepEqual(portable.save.planetArrival.insertion.memberIds, planet.memberIds);
+  const swapped = clone(save);
+  swapped.planetArrivalRun.configuration.insertion.memberIds.reverse();
+  assert.equal(saves.parseSaveImport(JSON.stringify(swapped)).failure, 'invalid-save');
+  assert.equal(saves.parseSaveImport(JSON.stringify({ ...save, companionResidence: null })).failure, 'invalid-save');
+
+  assert.deepEqual(presentation.arrivalFormationSlots('triad', planet.memberIds).slice(1).map(slot => slot.id), planet.memberIds);
+  assert.deepEqual(pods.huntPodAnchors(planet, world).slice(1).map(slot => slot.id), planet.memberIds);
+  const field = hunt.createHuntInsertion(portable.save.planetArrival.insertion, runId, world);
+  assert.deepEqual(field.companions.map(entry => entry.id), planet.memberIds);
+  assert.equal(hunt.restoreHuntInsertion({ ...clone(field), companions: [...field.companions].reverse() }, runId, world), null);
+  const restored = hunt.restoreHuntInsertion(clone(field), runId, world);
+  assert.deepEqual(restored.companions.map(entry => entry.id), planet.memberIds);
+  assert.equal(hunt.hurtHuntCompanion(restored.companions[0], 14), true);
+  for (const [i, ally] of restored.companions.entries()) ally.x = world.extraction.x - ally.width / 2 + (i ? 45 : -45);
+  assert.equal(hunt.beginHuntCompanionBoarding(restored, world), true);
+  hunt.completeHuntCompanionBoarding(restored);
+  const receipt = hunt.huntInsertionOutcome(restored);
+  assert.deepEqual(receipt.extracted, planet.memberIds);
+  assert.deepEqual(receipt.injured, ['cold-trace']);
+  const roster = triad.settleExpeditionOutcome(save.expeditionRoster, OWNER, runId, planet, SHIP, receipt);
+  assert.ok(roster);
+  assert.equal(roster.members.find(entry => entry.id === 'cold-trace').availability, 'recovering');
+  assert.equal(roster.members.find(entry => entry.id === 'ash-scar').availability, 'ready');
+  assert.equal(triad.settleExpeditionOutcome(roster, OWNER, runId, planet, SHIP, receipt), null);
+  assert.equal(triad.expeditionTrioReady(roster, OWNER, SHIP, planet), false);
+  const medicine = triad.careForExpeditionMember(roster, OWNER, 'cold-trace', save.profile.clanMarks, 'recovering');
+  assert.equal(triad.expeditionTrioReady(medicine.roster, OWNER, SHIP, planet), true);
+});

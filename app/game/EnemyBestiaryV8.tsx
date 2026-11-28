@@ -12,6 +12,7 @@ import {
   type EcologyV8PlanetId,
 } from "./ecologyV8";
 import EnemyTrophyPreview from "./EnemyTrophyPreview";
+import YautjaTranslationV67 from "./YautjaTranslationV67";
 import HomeworldFaunaCatalogueV77 from "./HomeworldFaunaCatalogueV77";
 import AlienBaseArchiveV1 from "./AlienBaseArchiveV1";
 
@@ -193,7 +194,7 @@ export default function EnemyBestiaryV8({
               <figcaption>
                 <span>
                   {isDiscovered
-                    ? CATEGORY_LABELS[enemy.category]
+                    ? <YautjaTranslationV67 text={CATEGORY_LABELS[enemy.category]} />
                     : "Signature brouillée"}
                 </span>
                 <strong>
@@ -212,7 +213,7 @@ export default function EnemyBestiaryV8({
                     </span>
                     <span>{enemy.role}</span>
                   </div>
-                  <h3>{enemy.name}</h3>
+                  <h3><YautjaTranslationV67 text={enemy.name} /></h3>
                   <p>{enemy.behavior}</p>
                   <EnemyTrophyPreview
                     enemyId={enemy.id}

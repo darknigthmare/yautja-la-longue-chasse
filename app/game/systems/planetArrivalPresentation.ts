@@ -1,6 +1,6 @@
 import type { BiomeId } from '../types';
 import { PLANET_ARRIVAL_CONTACT_PROGRESS, PLANET_ARRIVAL_SHOTS, type PlanetArrivalShotId } from './planetArrival';
-import { TRIO_INSERTION_OFFSETS, TRIO_MEMBERS, type PlanetInsertionPlan } from './planetInsertion';
+import { EXPEDITION_SLOT_OFFSETS, expeditionMember, expeditionMemberIds, type ExpeditionMemberId, type PlanetInsertionPlan } from './planetInsertion';
 
 /** Presentation values are driven by the saved cinematic clock, never wall time. */
 export const ARRIVAL_CONTACT_MS = PLANET_ARRIVAL_SHOTS[6].startMs +
@@ -19,15 +19,21 @@ export const ARRIVAL_SHIP_CLOAK_ACTIVATION_MS = 100;
 export const ARRIVAL_SHIP_CLOAK_RELEASE_START_MS = 52_300;
 export const ARRIVAL_SHIP_CLOAK_RELEASE_END_MS = 53_300;
 
-export const ARRIVAL_FORMATION_SLOTS = Object.freeze([
-  { id: 'player', name: 'Chasseur', index: 0, offsetX: 0, delayMs: 0, color: null },
-  ...TRIO_MEMBERS.map((member, index) => ({ id: member.id, name: member.name, index: index + 1,
-    offsetX: TRIO_INSERTION_OFFSETS[member.id], delayMs: ARRIVAL_TRIAD_DELAY_MS * (index + 1), color: member.color })),
-]);
+const PLAYER_SLOT = { id: 'player', name: 'Chasseur', index: 0, offsetX: 0, delayMs: 0, color: null } as const;
+
+function arrivalCompanionSlots(ids: readonly ExpeditionMemberId[]) {
+  return ids.map((id, index) => {
+    const member = expeditionMember(id)!;
+    return { id, name: member.name, index: index + 1, offsetX: EXPEDITION_SLOT_OFFSETS[index],
+      delayMs: ARRIVAL_TRIAD_DELAY_MS * (index + 1), color: member.color };
+  });
+}
+export const ARRIVAL_FORMATION_SLOTS = Object.freeze([PLAYER_SLOT, ...arrivalCompanionSlots(expeditionMemberIds({ team: 'triad' }))]);
 
 /** The same formation survives a skipped montage and is handed to HuntCanvas. */
-export function arrivalFormationSlots(team: PlanetInsertionPlan['team']) {
-  return team === 'triad' ? ARRIVAL_FORMATION_SLOTS : ARRIVAL_FORMATION_SLOTS.slice(0, 1);
+export function arrivalFormationSlots(team: PlanetInsertionPlan['team'], memberIds?: PlanetInsertionPlan['memberIds']) {
+  if (team === 'solo') return ARRIVAL_FORMATION_SLOTS.slice(0, 1);
+  return memberIds ? [PLAYER_SLOT, ...arrivalCompanionSlots(expeditionMemberIds({ team, memberIds }))] : ARRIVAL_FORMATION_SLOTS;
 }
 
 export function arrivalShotLabel(shot: PlanetArrivalShotId, fallback: string, method: PlanetInsertionPlan['method']) {

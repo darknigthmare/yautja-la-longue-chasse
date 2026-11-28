@@ -8,6 +8,7 @@ import {
   accusationCaseV147, baseGravityV147, callableWitnesses, defenseTraces, tribunalStatusV147,
   type TribunalActionV147, type TribunalOutcomeV147,
 } from "./systems/honorTribunalV147";
+import { YautjaTermV67 } from "./YautjaTranslationV67";
 import justiceStyles from "./JusticePanel.module.css";
 import styles from "./HonorTribunalPanelV147.module.css";
 
@@ -53,7 +54,7 @@ export default function HonorTribunalPanelV147({ save, onCommit, onNotify }: Hon
     <h3 id="tribunal-v147-heading">Tribunal et sanctions</h3>
     <dl className={justiceStyles.metrics}>
       <div><dt>Statut</dt><dd>{status.label}</dd></div>
-      <div><dt>Honneur</dt><dd>{save.profile.honor}</dd></div>
+      <div><dt>Honneur · <YautjaTermV67 term="yin-tekai" /></dt><dd>{save.profile.honor}</dd></div>
       <div><dt>Rang</dt><dd>{CHRONICLE_RANK_LABELS[save.profile.rankId]}{status.frozen ? " · gelé" : ""}</dd></div>
       <div><dt>Seconde chance</dt><dd>{tribunal?.secondChanceUsed ? "Déjà donnée" : "Disponible"}</dd></div>
     </dl>
@@ -114,6 +115,7 @@ export default function HonorTribunalPanelV147({ save, onCommit, onNotify }: Hon
 
     {tribunal?.exile && <section className={justiceStyles.detention} aria-labelledby="tribunal-v147-exile">
       <h4 id="tribunal-v147-exile">{tribunal.exile.definitive ? "Exil définitif" : "Exil · voie Bad Blood"}</h4>
+      <p><YautjaTermV67 term="ic-jit" /></p>
       <p>L'accès à la cité et au navire de clan est fermé. Tes rangs restent écrits, mais tu ne peux plus en gagner dans le clan.</p>
       {status.canSurrender && <button type="button" onClick={() => perform({ type: "surrender" })}>Se rendre au clan (seule seconde chance)</button>}
     </section>}

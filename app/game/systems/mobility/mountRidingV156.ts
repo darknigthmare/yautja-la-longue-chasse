@@ -1,5 +1,5 @@
 /**
- * V156 · Chevauchée du Kha’Rha recruté sur l'aire des convois.
+ * V156 · Chevauchée des montures recrutées sur l’aire des convois.
  *
  * Sources :
  * - Classeur mobilité, « Fonctionnement » kha_rha : capacités « Bond long →
@@ -49,13 +49,14 @@ import {
   type MountConditionV153, type MountsV153,
 } from './mountsV153.ts';
 import type { SaveGame } from '../../types';
+import { MOUNT_EXPEDITION_IDS_V153 } from './mountExpeditionsV153.ts';
 
 // ---------------------------------------------------------------------------
 // Constantes
 // ---------------------------------------------------------------------------
 
-/** Seule monture avec une voie de recrutement jouable (V153). */
-export const MOUNT_RIDE_MODELS_V156 = ['kha_rha'] as const;
+/** L’aire admet les espèces dont le recrutement et les commandes sont jouables. */
+export const MOUNT_RIDE_MODELS_V156: readonly string[] = ['kha_rha', ...MOUNT_EXPEDITION_IDS_V153];
 /** V6 MOUNT-xx « Seuil monte » 50 (transposé au kha_rha : proposé). */
 export const MOUNT_RIDE_MIN_BOND_V156 = 50;
 /** Proposé : fatigue gagnée par seconde d'effort au pas ou au galop. */
@@ -142,7 +143,7 @@ export function mountRideHazardReactionV156(mountId: string, bond: number, x: nu
  * il ne réduit jamais la fatigue (STATE5-15).
  */
 export function stepMountRideV156(previous: MountRideCourseV156, input: MobilityInput, mountId: string, bond: number, arena: MountRideArenaV156 = MOUNT_RIDE_YARD_V156): MountRideCourseV156 {
-  if (!validMobilityInput(input) || !validMountRideCourseV156(previous) || !(MOUNT_RIDE_MODELS_V156 as readonly string[]).includes(mountId) ||
+  if (!validMobilityInput(input) || !validMountRideCourseV156(previous) || !MOUNT_RIDE_MODELS_V156.includes(mountId) ||
       !Number.isSafeInteger(bond) || bond < 0 || bond > MOUNT_BOND_MAX_V153) throw new TypeError('Commande de chevauchée incompatible');
   if (previous.tick >= COURSE_MAX_TICKS) return { ...previous, speed: 0 };
   const s: MountRideCourseV156 = { ...previous, npcTicks: [...previous.npcTicks] as [number, number] }, dt = COURSE_STEP;
@@ -241,7 +242,7 @@ export function inspectMountRidesV156(raw: unknown, owner: string, mounts: Mount
   const a = raw.active;
   if (a !== null) {
     if (!record(a) || !keys(a, ['id', 'mountId', 'bond', 'startFatigue', 'startInjury', 'course']) || !integer(a.id, 1) ||
-        a.id >= (raw.nextRideId as number) || typeof a.mountId !== 'string' || !(MOUNT_RIDE_MODELS_V156 as readonly string[]).includes(a.mountId) ||
+        a.id >= (raw.nextRideId as number) || typeof a.mountId !== 'string' || !MOUNT_RIDE_MODELS_V156.includes(a.mountId) ||
         !integer(a.bond, MOUNT_RIDE_MIN_BOND_V156, MOUNT_BOND_MAX_V153) || !integer(a.startFatigue, 0, MOUNT_FATIGUE_REFUSAL_V153 - 1) ||
         !integer(a.startInjury, 0, MOUNT_INJURY_REFUSAL_V153 - 1) || !validMountRideCourseV156(a.course) ||
         a.course.fatigue < a.startFatigue || a.course.injury < a.startInjury) return bad;
@@ -252,7 +253,7 @@ export function inspectMountRidesV156(raw: unknown, owner: string, mounts: Mount
   if (r !== null) {
     if (!record(r) || !keys(r, ['rideId', 'mountId', 'result', 'distance', 'impacts', 'ticks', 'fatigue', 'injury', 'bondGain', 'sessionId']) ||
         !integer(r.rideId, 1) || r.rideId >= (raw.nextRideId as number) || typeof r.mountId !== 'string' ||
-        !(MOUNT_RIDE_MODELS_V156 as readonly string[]).includes(r.mountId) || !['passed', 'returned', 'recovered'].includes(String(r.result)) ||
+        !MOUNT_RIDE_MODELS_V156.includes(r.mountId) || !['passed', 'returned', 'recovered'].includes(String(r.result)) ||
         !finite(r.distance, 0, 300000) || !integer(r.impacts, 0, COURSE_MAX_TICKS) || !integer(r.ticks, 0, COURSE_MAX_TICKS) ||
         !integer(r.fatigue, 0, 100) || !integer(r.injury, 0, 100) || !integer(r.bondGain, 0, MOUNT_SESSION_GAIN_CAP_V153) ||
         (r.result === 'passed') !== (typeof r.sessionId === 'string') ||
@@ -266,7 +267,7 @@ export function inspectMountRidesV156(raw: unknown, owner: string, mounts: Mount
 /** Raison d'un refus de départ, ou null. Seuils de fatigue et de blessure : ceux de #151. */
 export function mountRideRefusalV156(mounts: MountsV153, mountId: string): string | null {
   const m = mounts.mounts.find(v => v.id === mountId);
-  if (!m || !(MOUNT_RIDE_MODELS_V156 as readonly string[]).includes(mountId)) return 'Monture non recrutée ou non admise sur l’aire.';
+  if (!m || !MOUNT_RIDE_MODELS_V156.includes(mountId)) return 'Monture non recrutée ou non admise sur l’aire.';
   if (mounts.session) return 'Clos la séance de lien en cours avant de monter.';
   if (m.injury >= MOUNT_INJURY_REFUSAL_V153) return 'Blessé, il refuse d’être monté : des soins sont nécessaires.';
   if (m.fatigue >= MOUNT_FATIGUE_REFUSAL_V153) return 'Épuisé, il refuse d’être monté : repos et soins nécessaires. Le lien ne remplace pas le repos.';

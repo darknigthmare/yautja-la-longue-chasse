@@ -2,7 +2,8 @@
 
 import { shipForId, type ShipId } from './shipCatalogue';
 import type { MissionId } from './types';
-import { EXPEDITION_CARE_COST, TRIO_MEMBERS, expeditionTrioReady, planetInsertionPressure,
+import { EXPEDITION_CARE_COST, EXPEDITION_MEMBERS, expeditionMember, expeditionMemberIds, expeditionTrioReady,
+  isExpeditionCrewId, planetInsertionPressure,
   shipSupportsSurfaceInsertion, triadRecommendedForMission, type ExpeditionMemberId,
   type ExpeditionRoster, type PlanetInsertionPlan } from './systems/planetInsertion';
 import { SHIP_INSERTION_ENERGY, shipInsertionCharge, type ShipInsertionEnergy } from './systems/shipInsertionEnergy';
@@ -30,7 +31,15 @@ export default function InsertionPlanPanel({ plan, missionId, shipId, ownerCreat
   campaignAccess, busy, onChange, onRecruit, onAssign, onReserve, onCare }: Props) {
   const pressure = planetInsertionPressure(plan);
   const surfaceCapable = shipSupportsSurfaceInsertion(shipId);
-  const ready = expeditionTrioReady(roster, ownerCreatedAt, shipId);
+  const ready = expeditionTrioReady(roster, ownerCreatedAt, shipId, plan);
+  const selected = expeditionMemberIds(plan);
+  const available = new Set(roster?.members.filter(member => member.assignedShipId === shipId && member.availability === 'ready').map(member => member.id));
+  const choosePartner = (slot: number, raw: string) => {
+    const id = expeditionMember(raw)?.id;
+    const other = selected[1 - slot];
+    if (!id || !other || id === other || !available.has(id)) return;
+    onChange({ ...plan, memberIds: slot === 0 ? [id, other] : [other, id] });
+  };
   const ship = shipForId(shipId);
   const charge = shipInsertionCharge(shipEnergy, ownerCreatedAt, shipId);
   const cloakAffordable = charge !== null && charge - SHIP_INSERTION_ENERGY.cloakCost >= SHIP_INSERTION_ENERGY.safetyReserve;
@@ -40,7 +49,7 @@ export default function InsertionPlanPanel({ plan, missionId, shipId, ownerCreat
     <fieldset disabled={busy} className={styles.choices}>
       <legend>Insertion</legend>
       <label data-selected={plan.method === 'pod'}><input type="radio" name="insertion-method" value="pod"
-        checked={plan.method === 'pod'} onChange={() => onChange({ version: 1, method: 'pod', team: plan.team })} />
+        checked={plan.method === 'pod'} onChange={() => onChange({ version: 1, method: 'pod', team: plan.team, ...(plan.memberIds ? { memberIds: plan.memberIds } : {}) })} />
         <span><strong>Capsule</strong><small>Signature limitée. Le vaisseau reste en altitude.</small></span></label>
       <label data-selected={plan.method === 'ship'}><input type="radio" name="insertion-method" value="ship"
         checked={plan.method === 'ship'} disabled={!campaignAccess.allowed || !surfaceCapable}
@@ -53,8 +62,7 @@ export default function InsertionPlanPanel({ plan, missionId, shipId, ownerCreat
       <legend>Camouflage d’approche</legend>
       <label><input type="checkbox" aria-label="Camouflage optique du vaisseau" checked={!!plan.shipCloak}
         disabled={!plan.shipCloak && !cloakAffordable}
-        onChange={event => onChange({ version: 1, method: 'ship', team: plan.team,
-          ...(event.target.checked ? { shipCloak: true } : {}) })} />
+        onChange={event => onChange({ ...plan, shipCloak: event.target.checked })} />
         <span><strong>Activer avant la descente</strong><small>La coque est moins visible. Les moteurs et la proximité peuvent encore signaler l’arrivée.</small></span></label>
       <p data-insertion-energy="true" data-charge={charge ?? 'unavailable'} data-after-cloak={cloakAffordable ? charge! - SHIP_INSERTION_ENERGY.cloakCost : 'unavailable'}>
         Énergie auxiliaire : <strong>{charge ?? 'indisponible'} / {SHIP_INSERTION_ENERGY.capacity}</strong>.
@@ -71,12 +79,24 @@ export default function InsertionPlanPanel({ plan, missionId, shipId, ownerCreat
     <fieldset disabled={busy} className={styles.choices}>
       <legend>Équipe de chasse</legend>
       <label data-selected={plan.team === 'solo'}><input type="radio" name="insertion-team" value="solo"
-        checked={plan.team === 'solo'} onChange={() => onChange({ ...plan, team: 'solo' })} />
+        checked={plan.team === 'solo'} onChange={() => onChange({ version: 1, method: plan.method, team: 'solo', ...(plan.shipCloak ? { shipCloak: true } : {}) })} />
         <span><strong>Chasseur seul</strong><small>Approche autonome et empreinte réduite.</small></span></label>
       <label data-selected={plan.team === 'triad'}><input type="radio" name="insertion-team" value="triad"
         checked={plan.team === 'triad'} disabled={!campaignAccess.allowed} onChange={() => onChange({ ...plan, team: 'triad' })} />
-        <span><strong>Incursion du trio</strong><small>Ton chasseur, Ka’rhek et Sa’keth. Progression et extraction en groupe.</small></span></label>
+        <span><strong>Incursion du trio</strong><small>Ton chasseur et deux partenaires affectés à cette coque. Progression et extraction en groupe.</small></span></label>
     </fieldset>
+    {plan.team === 'triad' && campaignAccess.allowed && <fieldset disabled={busy} className={styles.composition}>
+      <legend>Composition du trio</legend>
+      {selected.map((id, slot) => <label key={slot}>
+        {slot === 0 ? 'Premier partenaire' : 'Second partenaire'}
+        <select data-expedition-slot={slot + 1} value={id} onChange={event => choosePartner(slot, event.target.value)}>
+          {EXPEDITION_MEMBERS.map(member => <option key={member.id} value={member.id}
+            disabled={member.id === selected[1 - slot] || member.id !== id && !available.has(member.id)}>
+            {member.name} · {member.role}
+          </option>)}
+        </select>
+      </label>)}
+    </fieldset>}
     {!campaignAccess.allowed && <p className={styles.notice}>{campaignAccess.reason}</p>}
     {triadRecommendedForMission(missionId) && <p className={styles.recommendation}>Le trio est conseillé pour cette cible. Le départ en solo reste possible.</p>}
     <div className={styles.pressure} aria-live="polite" aria-atomic="true">
@@ -89,7 +109,8 @@ export default function InsertionPlanPanel({ plan, missionId, shipId, ownerCreat
         : 'Les ennemis connaissent le point d’atterrissage. Romps leur ligne de vue et quitte la zone pour reprendre l’avantage.'}</p>}
     </div>
     {campaignAccess.allowed && <div className={styles.roster} aria-label="Préparation des compagnons">
-      {TRIO_MEMBERS.map(member => {
+      {EXPEDITION_MEMBERS.map(member => {
+        const clanCrew = isExpeditionCrewId(member.id);
         const entry = roster?.members.find(candidate => candidate.id === member.id);
         const assigned = entry?.assignedShipId === shipId;
         const unavailable = entry && entry.availability !== 'ready';
@@ -106,17 +127,17 @@ export default function InsertionPlanPanel({ plan, missionId, shipId, ownerCreat
           {assigned && <span className={styles.ready}>Affectation confirmée</span>}
           <div className={styles.rosterActions}>
             {!entry && <button type="button" className="ghost-button" disabled={busy} onClick={() => onRecruit(member.id)}>
-              Recruter {member.name}
+              {clanCrew ? 'Inscrire depuis l’alcôve équipée' : `Recruter ${member.name}`}
             </button>}
             {unavailable && <button type="button" className="ghost-button" disabled={busy || clanMarks < careCost}
               onClick={() => onCare(member.id, entry.availability as 'recovering' | 'missing')}>
               {entry.availability === 'missing' ? 'Rapatriement du clan' : 'Soins du clan'} · {careCost} marques
             </button>}
-            {entry && !unavailable && !assigned && <button type="button" className="ghost-button" disabled={busy}
+            {entry && !unavailable && !assigned && !clanCrew && <button type="button" className="ghost-button" disabled={busy}
               onClick={() => onAssign(member.id, shipId)}>
               Affecter au vaisseau
             </button>}
-            {entry?.assignedShipId && <button type="button" className="ghost-button" disabled={busy}
+            {entry?.assignedShipId && !clanCrew && <button type="button" className="ghost-button" disabled={busy}
               onClick={() => onReserve(member.id, entry.assignedShipId!)}>
               Mettre en réserve
             </button>}
@@ -124,8 +145,8 @@ export default function InsertionPlanPanel({ plan, missionId, shipId, ownerCreat
         </article>;
       })}
       {plan.team === 'triad' && !ready && <p className={styles.notice}>Prépare les deux compagnons et affecte-les à cette coque pour partir en trio.</p>}
-      <p className={styles.care}>Le recrutement ne crée aucune affectation de bord. Affecte chaque partenaire au vaisseau choisi avant le départ ; une mise en réserve conserve son recrutement et ses soins éventuels.
-        {' '}En mission : ordres de suivi ou d’attente, assistance au combat et stabilisation avec une charge de médicomp. Rassemble les trois chasseurs au point d’extraction. Solde : {clanMarks} marques.</p>
+      <p className={styles.care}>Le pisteur et le vétéran utilisent leur alcôve aménagée au quai. Les deux compagnons de départ s’affectent depuis ce briefing.
+        {' '}En chasse, donne les ordres de suivi ou d’attente et stabilise un allié avec une charge de médicomp. Rassemble les trois chasseurs au point d’extraction. Solde : {clanMarks} marques.</p>
     </div>}
   </section>;
 }

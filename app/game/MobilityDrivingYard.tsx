@@ -5,7 +5,7 @@ import {matchingControlActions} from './systems/controlBindings';
 import {MobilityHeldControls,MobilityPadGate,type MobilityControl} from './systems/mobility/controls';
 import {controlActionShortcut} from './controlBindingLabels';
 import {mobilityDefinition} from './systems/mobility/catalogue';
-import {COURSE_STEP,COURSE_MAX_TICKS,MOBILITY_YARD,mobilityCourseLayout,mobilityYardNpcs,parkedAtDepot,type MobilityInput} from './systems/mobility/course';
+import {COURSE_STEP,COURSE_MAX_TICKS,mobilityCourseLayout,mobilityYardNpcs,parkedAtDepot,type MobilityInput} from './systems/mobility/course';
 import {MobilityDriveController,type MobilityWriter} from './systems/mobility/controller';
 import type {MobilityLedger} from './systems/mobility/ledger';
 import type {GameSfxId} from './sound';
@@ -24,6 +24,8 @@ export default function MobilityDrivingYard(props:Props){
  const active=props.state.active!;
  const model=mobilityDefinition(active.modelId)!;
  const delivery=active.route==='forge-delivery';
+ const dunes=active.route==='dunes-crossing';
+ const convoy=active.route==='trophy-convoy';
  const layout=mobilityCourseLayout(active.route);
  const sceneAudio=useRef<ReturnType<typeof createMobilityAudio>|null>(null);
  useEffect(()=>{latest.current=props;},[props]);
@@ -108,19 +110,20 @@ export default function MobilityDrivingYard(props:Props){
    onLostPointerCapture={e=>held.current.release(`pointer:${e.pointerId}`)}>{label}</button>;
  const npcs=mobilityYardNpcs(course.npcTicks,course);
  return <section className={styles.yard} data-mobility-yard data-run-id={active.id} data-route={active.route??'yard'} data-x={course.x.toFixed(4)} data-y={course.y.toFixed(4)} data-heading={course.heading.toFixed(5)} data-speed={course.speed.toFixed(3)} data-tick={course.tick} data-paused={paused} data-checkpoint={course.checkpoint} data-cargo={course.cargoKg}>
-  <div className={styles.heading}><div><small>{delivery?'LIVRAISON DES FORGES':'AIRE DES CONVOIS'} · SORTIE ENREGISTRÉE</small><h3>{model.name}{active.loaned?' · prêt de formation':''}</h3></div><strong>{paused?'EN PAUSE':'EN CONDUITE'}</strong></div>
+  <div className={styles.heading}><div><small>{layout.name.toLocaleUpperCase('fr-FR')} · SORTIE ENREGISTRÉE</small><h3>{model.name}{convoy?' · prêt du clan':active.loaned?' · prêt de formation':''}</h3></div><strong>{paused?'EN PAUSE':'EN CONDUITE'}</strong></div>
   <div className={styles.metrics}>
    <span>État <b>{course.condition.toFixed(1)} %</b></span><span>Énergie <b>{course.energy.toFixed(1)} %</b></span>
    <span>Chaleur <b>{course.heat.toFixed(0)} %{course.overheated?' · boost coupé':''}</b></span><span>Charge <b>{course.cargoKg} kg</b></span>
    <span>Balises <b>{course.checkpoint}/3</b></span><span>Retour cargo <b>{course.cargoDelivered?'effectué':'à faire'}</b></span>
   </div>
-  <svg ref={canvasRef} viewBox="0 0 1000 620" role="img" tabIndex={0} aria-label={delivery?'Livraison des Forges, sas au sud-ouest, quai de chargement au nord-ouest et trois balises':'Aire de conduite, sas en bas à gauche, trois balises ordonnées et chargement en haut à droite'} className={styles.track}>
-   <rect x="0" y="0" width="1000" height="620" rx="18" fill="#171b1d"/>
-   <path d="M140 490 H820 V130 H140 Z" fill="none" stroke="#394247" strokeWidth="110"/>
-   <path d="M140 490 H820 V130 H140 Z" fill="none" stroke="#76818a" strokeWidth="2" strokeDasharray="10 14"/>
-   <rect {...{x:MOBILITY_YARD.mud.x,y:MOBILITY_YARD.mud.y,width:MOBILITY_YARD.mud.w,height:MOBILITY_YARD.mud.h}} fill="#514633" opacity=".85"/><text x="640" y="570" fill="#d2b27b">CENDRES · ADHÉRENCE RÉDUITE</text>
-   {MOBILITY_YARD.obstacles.map((o,i)=><rect key={i} x={o.x} y={o.y} width={o.w} height={o.h} rx="12" fill="#29292a" stroke="#a17d42" strokeWidth="4"/>)}
-   <text x="395" y="305" fill="#c8b17e">ATELIERS · ACCÈS INTERDIT</text>
+  <svg ref={canvasRef} viewBox="0 0 1000 620" role="img" tabIndex={0} aria-label={layout.name+', sas au sud-ouest, trois balises numérotées et carré de chargement'} className={styles.track}>
+   <rect x="0" y="0" width="1000" height="620" rx="18" fill={dunes?'#2c2019':'#171b1d'}/>
+   <path d={layout.track} fill="none" stroke={dunes?'#5e4735':'#394247'} strokeWidth="110"/>
+   <path d={layout.track} fill="none" stroke={dunes?'#c8a06d':'#76818a'} strokeWidth="2" strokeDasharray="10 14"/>
+   <rect x={layout.mud.x} y={layout.mud.y} width={layout.mud.w} height={layout.mud.h} fill={dunes?'#927045':'#514633'} opacity=".85"/>
+   <text x={dunes?288:640} y="570" fill="#d2b27b">{dunes?'SABLE · CORRIGE LA DÉRIVE':'CENDRES · ADHÉRENCE RÉDUITE'}</text>
+   {layout.obstacles.map((o,i)=><rect key={i} x={o.x} y={o.y} width={o.w} height={o.h} rx="12" fill={dunes?'#48332a':'#29292a'} stroke="#a17d42" strokeWidth="4"/>)}
+   <text x="395" y="305" fill="#c8b17e">{dunes?'ROCHE · PASSAGE FERMÉ':'ATELIERS · ACCÈS INTERDIT'}</text>
    <circle cx="140" cy="490" r="50" fill="#254d45" stroke="#8ed9bd" strokeWidth="3"/><text x="82" y="586" fill="#b3e6cf">SAS DU GARAGE</text>
    {layout.checkpoints.map((p,i)=><g key={i}><circle cx={p.x} cy={p.y} r="38" fill="none" stroke={i<course.checkpoint?'#83d1ae':'#dfbd78'} strokeWidth="4"/><text x={p.x-6} y={p.y+7} fill="#fff" fontSize="24">{i+1}</text></g>)}
    {!course.cargoDelivered&&course.cargoKg===0&&<rect data-mobility-loading-bay x={layout.cargo.x-15} y={layout.cargo.y-18} width="30" height="32" fill="#aa7e44" stroke="#ebc789"/>}
@@ -132,12 +135,12 @@ export default function MobilityDrivingYard(props:Props){
     {course.cargoKg>0&&<rect x="-8" y="18" width="16" height="12" fill="#c19859"/>}
    </g>
   </svg>
-  <p className={styles.hint}>{delivery?'Prends les deux premières balises à l’ouest. Charge la caisse à l’arrêt au quai nord-ouest, valide la balise est puis décharge au sas. Remise la moto pour faire consigner la livraison.':'Passe les balises dans l’ordre. À la deuxième, freine et charge la caisse. Rapporte-la au sas, à l’arrêt.'} Les convois circulent sur leur voie logistique.</p>
+  <p className={styles.hint}>{delivery?'Prends les deux premières balises à l’ouest. Charge la caisse à l’arrêt au quai nord-ouest, valide la balise est puis décharge au sas. Remise la moto pour faire consigner la livraison.':dunes?'Sur les plaques dures, le Skimmer ralentit. Sur le sable, garde le cap malgré le vent. Charge à la deuxième balise, monte à la troisième, puis rapporte la caisse au sas.':convoy?'Charge le coffre de 75 kg à l’arrêt après la deuxième balise. Franchis la troisième, rapporte le coffre au sas et rends le porteur.':'Passe les balises dans l’ordre. À la deuxième, freine et charge la caisse. Rapporte-la au sas, à l’arrêt.'} Les convois circulent sur leur voie logistique.</p>
   <div className={styles.actions}><button onClick={paused?resume:pause} disabled={props.suspended||controller.blocked}>{paused?'Reprendre la conduite':'Pause et enregistrer'}</button>
    <button onClick={()=>finish('return')} disabled={props.suspended||!parkedAtDepot(course)||controller.blocked}>Remiser au garage</button>
    <button onClick={()=>{pause();setRecovery(true);}} disabled={props.suspended||controller.blocked}>Retour de sécurité</button>
   </div>
-  {recovery&&<div role="alert" className={styles.notice}><p>Le clan récupère l’engin sans récompense. L’usure et l’énergie consommée restent enregistrées. Un engin personnel entraîne une dette de 20 à 120 marques ; le prêt de formation est récupéré sans frais.</p><button onClick={()=>finish('recover')} disabled={props.suspended}>Confirmer la récupération</button><button onClick={()=>setRecovery(false)}>Annuler</button></div>}
+  {recovery&&<div role="alert" className={styles.notice}><p>Le clan récupère l’engin sans récompense. L’usure et l’énergie consommée restent enregistrées. Un engin personnel entraîne une dette de 20 à 120 marques ; le véhicule du clan prêté est récupéré sans frais.</p><button onClick={()=>finish('recover')} disabled={props.suspended}>Confirmer la récupération</button><button onClick={()=>setRecovery(false)}>Annuler</button></div>}
   {controller.blocked&&<div role="alert" className={styles.notice}><p>La séquence non confirmée est conservée. Aucun achat n’est autorisé pendant ce blocage.</p><button onClick={flush} disabled={props.suspended}>Réessayer la même écriture</button></div>}
   {padNeutral&&<p role="status" className={styles.notice}>Relâche le stick et les boutons de la manette avant de reprendre son contrôle.</p>}
   <p role="status" aria-live="polite">{notice}</p>

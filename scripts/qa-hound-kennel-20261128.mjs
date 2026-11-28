@@ -148,6 +148,12 @@ try {
   assert.equal(await kennel.locator('[data-hound-kennel-candidate="' + candidates[2].id + '"]').count(), 0);
   await kennel.locator("[data-hound-kennel-archive] > summary").click();
   assert(await kennel.locator('[data-hound-id="ancien-tombe"][data-condition="dead"]').isVisible());
+  assert.equal(await kennel.locator('[data-hound-kennel-candidate="breche"]').count(), 0);
+  for (const [id, role] of [[candidates[4].id, "tracker"], [candidates[6].id, "driver"], [candidates[0].id, "guard"]]) {
+    await kennel.locator('[data-hound-kennel-candidate="' + id + '"]').click();
+    await kennel.locator('[data-hound-kennel-aptitude="' + role + '"]').waitFor();
+  }
+  report.checks.push("Le prérequis de Brèche et les trois aptitudes apparaissent dans le vrai chenil.");
   await kennel.locator("input").fill("Trace-de-Cendre");
   const portrait = kennel.locator("figure img");
   await portrait.waitFor();
@@ -182,6 +188,9 @@ try {
   await commands.waitFor();
   assert.equal(await commands.getAttribute("data-hound-orders-completed"), "0");
   assert(await commands.locator('[data-hound-field-order="track"]').isDisabled());
+  const signature = commands.locator('[data-hound-field-order="signature"]');
+  assert(await signature.isDisabled());
+  assert.match(await signature.innerText(), /Charge courte/);
   await commands.locator('[data-hound-field-order="recall"]').click();
   await page.locator('[data-hound-current-order="recall"][data-hound-orders-completed="1"]').waitFor();
   await screenshot("03-rappel");
@@ -190,6 +199,9 @@ try {
   const field = checkpoint.snapshot.checkpoint.houndFieldV147;
   assert.equal(field.ordersCompleted, 1);
   assert.equal(field.houndId, candidates[0].id);
+  assert.equal(field.version, 2);
+  assert.equal(field.aptitude, "guard");
+  assert.equal(field.maxHealth, 78);
   await page.reload();
   const resume = page.getByRole("dialog", { name: "Chasse en pause · Carte et sac" })
     .getByRole("button", { name: "Reprendre", exact: true });
@@ -197,6 +209,7 @@ try {
   if (await resume.isVisible()) await resume.click();
   await page.locator('[data-hound-current-order="recall"][data-hound-orders-completed="1"]').waitFor();
   assert.equal(await page.locator('[data-hound-proof-resume="failed"]').count(), 0);
+  assert.match(await signature.innerText(), /Charge courte/);
   report.checks.push("Le chien adopté rejoint HuntCanvas. Le bouton de rappel exécute l’ordre, le pistage attend le lien requis et le rappel revient après rechargement du checkpoint.");
   assert.deepEqual(report.errors, []);
   report.passed = true;

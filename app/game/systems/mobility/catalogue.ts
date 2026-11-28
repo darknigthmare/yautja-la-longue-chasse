@@ -17,16 +17,18 @@ export interface MobilityDefinition {
   shopEnabled: boolean; trialEnabled: boolean; artStatus: string; previewPath: string | null;
   sourcePath: string | null; artValidated: boolean; canonValidated: boolean; npcPolicy: string; productionStatus: string;
 }
+export const SAND_SKIMMER_MODEL = 'sand_skimmer';
+export const TROPHY_CARRIER_MODEL = 'trophy_carrier';
 const acquisitionPolicies = ['quest','quest','purchase','craft','training-loan','quest','faction','quest','craft','quest','quest','quest','craft','quest','quest','clan-service','faction','faction','quest','clan-service','quest','quest','insertion','narrative','quest','quest','quest','quest','faction','faction','faction','faction','non-pilotable','faction'];
 /** Byte-identical runtime projection; scripts/sync-mobility-catalogue.mjs verifies the five authoritative bible files. */
 export const MOBILITY_CATALOGUE: readonly MobilityDefinition[] = [...first,...second,...third,...fourth,...fifth].map((item,i)=>{
   const n=i+1, acquisitionMode=acquisitionPolicies[i]??'quest';
   return {...item,index:n,kind:n>=35?'mount':'machine',acquisitionMode,purchasePrice:n===3?420:null,
-    minimumRank:item.tier<=3?'blooded':item.tier===4?'elite':'elder',shopEnabled:n===3,trialEnabled:n===3||n===5,
-    artStatus:n<=40?'source-review':'missing-hd',previewPath:[3,5,19].includes(n)?`/game/mobility/v1/${String(n).padStart(2,'0')}_${item.id}__3q_left.png`:null,
+    minimumRank:item.tier<=3?'blooded':item.tier===4?'elite':'elder',shopEnabled:n===3,trialEnabled:[3,5,8,19].includes(n),
+    artStatus:n<=40?'source-review':'missing-hd',previewPath:[3,5,8,19].includes(n)?`/game/mobility/v1/${String(n).padStart(2,'0')}_${item.id}__3q_left.png`:null,
     sourcePath:n<=40?`art-source/mobilite/vehicules-montures/v0.2-individual-hd/${String(n).padStart(2,'0')}_${item.id}__3q_left.png`:null,
     artValidated:false,canonValidated:false,npcPolicy:n>=35?'species-biome':n>=29?'faction-enforcer':n>=25?'outlaw':[16,17,18,20,21,22].includes(n)?'clan-service':'licensed-route',
-    productionStatus:n===3||n===5?'playable-yard':n===19?'npc-yard':'catalogue-only'} as MobilityDefinition;
+    productionStatus:[3,5,8].includes(n)?'playable-yard':n===19?'playable-service-yard':'catalogue-only'} as MobilityDefinition;
 });
 export const mobilityDefinition = (id: unknown) => MOBILITY_CATALOGUE.find(d => d.id === id);
 export const MOBILITY_MODULES: readonly { id: MobilityModule; name: string; price: number; description: string }[] = [
