@@ -77,7 +77,10 @@ export type GameSfxId =
   | "defeat"
   | "vacuum-step"
   | "vacuum-impact"
-  | "vacuum-energy";
+  | "vacuum-energy"
+  | "vacuum-field-warning"
+  | "vacuum-field-active"
+  | "vacuum-field-clear";
 
 export interface GameAudioOptions { manifestUrl?: string }
 
@@ -585,6 +588,11 @@ export class GameAudio {
       case "vacuum-energy":
         this.vacuumSuitCue(id);
         break;
+      case "vacuum-field-warning":
+      case "vacuum-field-active":
+      case "vacuum-field-clear":
+        this.vacuumFieldCue(id);
+        break;
       case "victory":
         this.victory();
         break;
@@ -592,6 +600,17 @@ export class GameAudio {
         this.defeat();
         break;
     }
+  }
+
+  private vacuumFieldCue(id: "vacuum-field-warning" | "vacuum-field-active" | "vacuum-field-clear"): void {
+    const now = this.readyTime();
+    if (now === null) return;
+    const notes = id === "vacuum-field-warning" ? [385, 510] : id === "vacuum-field-clear" ? [340, 255] : [145, 92];
+    notes.forEach((frequency, index) => this.tone(frequency, {
+      at: now + index * 0.1, duration: 0.12, gain: 0.043, type: "sine", filterFrequency: 650,
+    }));
+    if (id === "vacuum-field-active") this.noise({ at: now, duration: 0.23, gain: 0.042,
+      filterType: "lowpass", filterFrequency: 205, endFilterFrequency: 105 });
   }
 
   /** Contact transmitted through the suit and signals generated inside its display. */
