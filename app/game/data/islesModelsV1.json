@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "source": "Meshy text-to-3d et rigging, 28 novembre 2026 ; provenance dans art-source/isles-meshy-20261128 ; optimisés par scripts/build-isles-models-v1.mjs",
+  "source": "Meshy text-to-3d et rigging, 28 novembre 2026 ; provenance dans art-source/isles-meshy-20261128 (humains, premiers animaux, autel) et art-source/isles-meshy-20261128b (véhicules, autres animaux) ; optimisés par scripts/build-isles-models-v1.mjs. L’avant d’un modèle est +Z ; yaw corrige ceux dont l’avant est -X.",
   "models": {
     "braconnier": {"url": "/game/isles/models/braconnier.glb", "runUrl": "/game/isles/models/braconnier-course.glb", "height": 1.78},
     "unite-tactique": {"url": "/game/isles/models/unite-tactique.glb", "runUrl": "/game/isles/models/unite-tactique-course.glb", "height": 1.82},
@@ -9,6 +9,24 @@
     "chien": {"url": "/game/isles/models/chien.glb", "length": 1.1},
     "sanglier": {"url": "/game/isles/models/sanglier.glb", "length": 1.4},
     "crocodile": {"url": "/game/isles/models/crocodile.glb", "length": 3.6},
-    "autel": {"url": "/game/isles/models/autel.glb", "height": 3.4}
+    "autel": {"url": "/game/isles/models/autel.glb", "height": 3.4},
+    "metro": {"url": "/game/isles/models/metro.glb", "length": 15, "yaw": 1.5708},
+    "train": {"url": "/game/isles/models/train.glb", "length": 14, "yaw": 1.5708},
+    "train-fret": {"url": "/game/isles/models/train-fret.glb", "length": 16, "yaw": 1.5708},
+    "bus": {"url": "/game/isles/models/bus.glb", "length": 12, "yaw": 1.5708},
+    "camion": {"url": "/game/isles/models/camion.glb", "length": 16, "yaw": 1.5708},
+    "pickup": {"url": "/game/isles/models/pickup.glb", "length": 5.5, "yaw": 1.5708},
+    "ferry": {"url": "/game/isles/models/ferry.glb", "length": 60, "yaw": 1.5708},
+    "bateau": {"url": "/game/isles/models/bateau.glb", "length": 14, "yaw": 1.5708},
+    "avion": {"url": "/game/isles/models/avion.glb", "length": 38, "yaw": 1.5708},
+    "avion-brousse": {"url": "/game/isles/models/avion-brousse.glb", "length": 13.3, "yaw": 1.5708},
+    "helicoptere": {"url": "/game/isles/models/helicoptere.glb", "length": 13, "yaw": 1.5708},
+    "telepherique": {"url": "/game/isles/models/telepherique.glb", "length": 5, "yaw": 1.5708},
+    "ours-brun": {"url": "/game/isles/models/ours-brun.glb", "length": 2.2},
+    "loup": {"url": "/game/isles/models/loup.glb", "length": 1.5},
+    "cerf": {"url": "/game/isles/models/cerf.glb", "length": 2.0},
+    "lion": {"url": "/game/isles/models/lion.glb", "length": 2.4},
+    "buffle": {"url": "/game/isles/models/buffle.glb", "length": 2.8},
+    "requin": {"url": "/game/isles/models/requin.glb", "length": 2.6}
   }
 }

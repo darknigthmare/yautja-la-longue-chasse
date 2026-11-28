@@ -1,0 +1,56 @@
+{
+  "id": "01a222a7-1fe6-7606-bee1-04105df5657f",
+  "type": "text-to-3d-refine",
+  "mode": "refine",
+  "name": "",
+  "model_type": "standard",
+  "seed": 331457387,
+  "prompt": "Low-poly stylized-realistic game vehicle, small double-ended roll-on roll-off car ferry, long low flat barge-like hull, wide open empty vehicle deck running the full length, low side bulwarks, a hinged loading ramp at the bow and at the stern, small narrow wheelhouse tower at mid-length on one side, plain white and navy paint, original design, no logos, no text, no flags, no markings",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877707768,
+  "progress": 100,
+  "started_at": 1795877707786,
+  "finished_at": 1795877751511,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1fe6-7606-bee1-04105df5657f/output/model.glb?Expires=4949424000&Signature=T0s2X3yf24D17Z1d827Ohcin311jaDm4lmWf3hszyi199kygmuosYsOxifLf-Vfa7d2q~qw1GiYHSuPbzCXZAnEAUjAyjMY~bersaaiUxof4WC32nnKKN86M0HUtCDia05GNkXjvA3qbWXIp03lWRcDLtjc~Sg9lqOY~PsIAfSthgcOnRFpSfN-DG7W-ry0NcJp4HYqSu43x9J7e9TQ703in4A6KlD3XLnt3xgdxiA8Q6Fg4PrP57M-W0So0su5cu6V0ce3erNK44GYGttj1TDACunL6VN6Los8tVQFcBzRr3jw2AFBWnK9edxQL97deUaODTKycgjGgb4UomIEe-g__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1fe6-7606-bee1-04105df5657f/output/preview.png?Expires=4949424000&Signature=BdHR5HMtwBJkE1d23ohKNq4T7Ef4Kk6ld3-h81F5vFyj3d1xeASMfvnCiGPf9n0QPy4SIAkmL-WlisDIlPYLu~8PUlWLqArlCTtow3GPTybbzla-LxqJxRf8h3IHUosFGKSwTSToHZIykcDg8HbyBzc8eiBcLwvwplvIlHBqpkqJyNsVf1m1ObW4sBmuLw4AH0LK75oYaSeDEJmyucMJjHQ10KhbAtKG7hUsfMcuzT~TOuRauuaeVQU9Xm4mnW7lNuIp0iZV-iusZu1YUUkNt-8He6JZU6IAuUMjUFjz89SjB1FNz56wCMiw0mqlGTLPtTtzr-8pGm5WGrH5Hu8Uig__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [
+    {
+      "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1fe6-7606-bee1-04105df5657f/output/texture_0.png?Expires=4949424000&Signature=Y6u9gw371Sfn-L4PC2c4CHqdR-QupC6bQv6fglv1Fx7ZclGKSvJVF3PYLJQcZTTJb3QW7XTmIBwYf0MYh2RrljPzkpdPIOqm2lkLivkiQMnv~UhvjUdy8EpVo6O-fnujljj4EV8NkfanV6eDcExi-2I3TA-sbUcuWxADnr5HgSTPemWswS7A7pujLMTd1PncNYBfydTXkpvAgFaEOx0dXuu7G2iI6X34-E3g6uTyVqD6V~dNWnzFAtW24v8bEOpmq3reT4u8ljrluELTboFSPilgiPOnL9SdxP4gXlJbgrs5ztjeEgd4jBK8~UdeeCXxGk3rPehivr~d-gj-quXCHw__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    }
+  ],
+  "consumed_credits": 10,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "enable_pbr": false,
+    "mode": "refine",
+    "preview_task_id": "01a222a5-ea82-734a-bbb2-05a0f5a5d178",
+    "remove_lighting": true,
+    "target_formats": [
+      "glb"
+    ],
+    "texture_resolution": "2k"
+  },
+  "output": {
+    "seed": 331457387,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1fe6-7606-bee1-04105df5657f/output/model.glb?Expires=4949424000&Signature=T0s2X3yf24D17Z1d827Ohcin311jaDm4lmWf3hszyi199kygmuosYsOxifLf-Vfa7d2q~qw1GiYHSuPbzCXZAnEAUjAyjMY~bersaaiUxof4WC32nnKKN86M0HUtCDia05GNkXjvA3qbWXIp03lWRcDLtjc~Sg9lqOY~PsIAfSthgcOnRFpSfN-DG7W-ry0NcJp4HYqSu43x9J7e9TQ703in4A6KlD3XLnt3xgdxiA8Q6Fg4PrP57M-W0So0su5cu6V0ce3erNK44GYGttj1TDACunL6VN6Los8tVQFcBzRr3jw2AFBWnK9edxQL97deUaODTKycgjGgb4UomIEe-g__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1fe6-7606-bee1-04105df5657f/output/preview.png?Expires=4949424000&Signature=BdHR5HMtwBJkE1d23ohKNq4T7Ef4Kk6ld3-h81F5vFyj3d1xeASMfvnCiGPf9n0QPy4SIAkmL-WlisDIlPYLu~8PUlWLqArlCTtow3GPTybbzla-LxqJxRf8h3IHUosFGKSwTSToHZIykcDg8HbyBzc8eiBcLwvwplvIlHBqpkqJyNsVf1m1ObW4sBmuLw4AH0LK75oYaSeDEJmyucMJjHQ10KhbAtKG7hUsfMcuzT~TOuRauuaeVQU9Xm4mnW7lNuIp0iZV-iusZu1YUUkNt-8He6JZU6IAuUMjUFjz89SjB1FNz56wCMiw0mqlGTLPtTtzr-8pGm5WGrH5Hu8Uig__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": [
+      {
+        "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1fe6-7606-bee1-04105df5657f/output/texture_0.png?Expires=4949424000&Signature=Y6u9gw371Sfn-L4PC2c4CHqdR-QupC6bQv6fglv1Fx7ZclGKSvJVF3PYLJQcZTTJb3QW7XTmIBwYf0MYh2RrljPzkpdPIOqm2lkLivkiQMnv~UhvjUdy8EpVo6O-fnujljj4EV8NkfanV6eDcExi-2I3TA-sbUcuWxADnr5HgSTPemWswS7A7pujLMTd1PncNYBfydTXkpvAgFaEOx0dXuu7G2iI6X34-E3g6uTyVqD6V~dNWnzFAtW24v8bEOpmq3reT4u8ljrluELTboFSPilgiPOnL9SdxP4gXlJbgrs5ztjeEgd4jBK8~UdeeCXxGk3rPehivr~d-gj-quXCHw__&Key-Pair-Id=K1VGYTHIYLM9UM",
+        "metallic": null,
+        "roughness": null,
+        "normal": null,
+        "metallic_roughness": null,
+        "emission": null
+      }
+    ]
+  }
+}

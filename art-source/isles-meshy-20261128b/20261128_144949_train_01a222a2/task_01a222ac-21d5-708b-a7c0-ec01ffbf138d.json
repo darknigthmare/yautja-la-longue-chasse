@@ -1,0 +1,57 @@
+{
+  "id": "01a222ac-21d5-708b-a7c0-ec01ffbf138d",
+  "type": "text-to-3d-refine",
+  "mode": "refine",
+  "name": "",
+  "model_type": "standard",
+  "seed": 1304480960,
+  "prompt": "Low-poly stylized-realistic game vehicle, single diesel passenger locomotive, long boxy body with a sloped driver cab at the front, plain dark green paint with a plain cream band, roof exhaust vents and grilles, wheel bogies underneath, original design, no logos, no text, no numbers, no company livery",
+  "texture_prompt": "Plain dark green locomotive body with one plain cream band, dark grey roof, black underframe and bogies, completely blank unmarked panels, no numerals, no lettering, no decals, no signs, no plates",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795878038069,
+  "progress": 100,
+  "started_at": 1795878038082,
+  "finished_at": 1795878093582,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-21d5-708b-a7c0-ec01ffbf138d/output/model.glb?Expires=4949424000&Signature=oXy7eFhnxnSYcrxQLhXuEUsccQ~X0re8TgYctaTjwvHlnxO4efTaWswug9hyPRUerd~XvkIwtNSH7KMu1l1wo9icwXbiQZvKKV2sQSPtQ2YcCIieJ1mGb4m5lYUe6QVAO60e8E7po4Uo8hnm-zWoTjkPdO8LEy1~ZKW9utEmVUxcIO6OYI1N0TFWFgm0wCZDnNjnfJ1zaAgXNSNlcOTxJH4YtLdbxP-fRaWuT-rtihdHkv6yp6ZBykYI5A6d1-QfAhJhzfSwXfHxEwMIPvLVm1hAr9uLNlXaFMYm~inAUEUsVHdde6izs45QbwSnkcHuteksDNRM5-IcFCeqpAzjvA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-21d5-708b-a7c0-ec01ffbf138d/output/preview.png?Expires=4949424000&Signature=pVLhP3syEE2i6G71ADiPZMCAqOMdckOTIVOHmBorVdQ50kEHuj3TXy90Uw5r9APaPnVTfQaZCxM2WBb9rQvx0fEmc7q0N1NUjOum1fWLVi0hQZVV6Tj-H2vWA8VB5lYiThHx3dMaRgGbPihl2tkI8poShR~RxdDUD8zICnmLpILi46QFQCjbSQdLOfmq4mqZKFQkHUMAEvvtz8vlV9Cyl1DGsFmYBg7iRARJ8mCnE9EJTMKQNbBMnOIvv3XhtwU7WeMMHX3ODVmT7gxlZTkd9IQCE4CuSQ~dix212np78O168cVl9OHIYtyLJp0lWgWdjqZYmsb--svhNDdxjiK5lw__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [
+    {
+      "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-21d5-708b-a7c0-ec01ffbf138d/output/texture_0.png?Expires=4949424000&Signature=iPwxoTGMXiLrB62TKz9kovrQxfjhQoNaMA~MDsUzdBWhYTrTakOldUb-BDihlhvtrNki7Y5VlK6UVwQe7Z89nWEINrfzwxwxdnxkQ9Z1t2hlaF7rtgBc~eQOr6-MOQ9KoJTokynAelIRu-bHCw2kv0TVmAKstgviXbScQ20orXpO~a3A8RzVALWQhVaBUXB41-DuzOCuKqYJweq17~imd3whW77FwZzCb7t-uKt-eWao7mgdWc50PG44YeHDWZTi4z8wo~C9ZeYZsgngzPrdOP7A0UbKZFOs2d9B3S7rMrf6D7NXAYy~5LTuitSS8QLTSFXTyLUvHs62Cxngq22n7g__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    }
+  ],
+  "consumed_credits": 10,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "enable_pbr": false,
+    "mode": "refine",
+    "preview_task_id": "01a222a2-374e-7087-9cc8-5cd93b486500",
+    "remove_lighting": true,
+    "target_formats": [
+      "glb"
+    ],
+    "texture_prompt": "Plain dark green locomotive body with one plain cream band, dark grey roof, black underframe and bogies, completely blank unmarked panels, no numerals, no lettering, no decals, no signs, no plates",
+    "texture_resolution": "2k"
+  },
+  "output": {
+    "seed": 1304480960,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-21d5-708b-a7c0-ec01ffbf138d/output/model.glb?Expires=4949424000&Signature=oXy7eFhnxnSYcrxQLhXuEUsccQ~X0re8TgYctaTjwvHlnxO4efTaWswug9hyPRUerd~XvkIwtNSH7KMu1l1wo9icwXbiQZvKKV2sQSPtQ2YcCIieJ1mGb4m5lYUe6QVAO60e8E7po4Uo8hnm-zWoTjkPdO8LEy1~ZKW9utEmVUxcIO6OYI1N0TFWFgm0wCZDnNjnfJ1zaAgXNSNlcOTxJH4YtLdbxP-fRaWuT-rtihdHkv6yp6ZBykYI5A6d1-QfAhJhzfSwXfHxEwMIPvLVm1hAr9uLNlXaFMYm~inAUEUsVHdde6izs45QbwSnkcHuteksDNRM5-IcFCeqpAzjvA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-21d5-708b-a7c0-ec01ffbf138d/output/preview.png?Expires=4949424000&Signature=pVLhP3syEE2i6G71ADiPZMCAqOMdckOTIVOHmBorVdQ50kEHuj3TXy90Uw5r9APaPnVTfQaZCxM2WBb9rQvx0fEmc7q0N1NUjOum1fWLVi0hQZVV6Tj-H2vWA8VB5lYiThHx3dMaRgGbPihl2tkI8poShR~RxdDUD8zICnmLpILi46QFQCjbSQdLOfmq4mqZKFQkHUMAEvvtz8vlV9Cyl1DGsFmYBg7iRARJ8mCnE9EJTMKQNbBMnOIvv3XhtwU7WeMMHX3ODVmT7gxlZTkd9IQCE4CuSQ~dix212np78O168cVl9OHIYtyLJp0lWgWdjqZYmsb--svhNDdxjiK5lw__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": [
+      {
+        "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-21d5-708b-a7c0-ec01ffbf138d/output/texture_0.png?Expires=4949424000&Signature=iPwxoTGMXiLrB62TKz9kovrQxfjhQoNaMA~MDsUzdBWhYTrTakOldUb-BDihlhvtrNki7Y5VlK6UVwQe7Z89nWEINrfzwxwxdnxkQ9Z1t2hlaF7rtgBc~eQOr6-MOQ9KoJTokynAelIRu-bHCw2kv0TVmAKstgviXbScQ20orXpO~a3A8RzVALWQhVaBUXB41-DuzOCuKqYJweq17~imd3whW77FwZzCb7t-uKt-eWao7mgdWc50PG44YeHDWZTi4z8wo~C9ZeYZsgngzPrdOP7A0UbKZFOs2d9B3S7rMrf6D7NXAYy~5LTuitSS8QLTSFXTyLUvHs62Cxngq22n7g__&Key-Pair-Id=K1VGYTHIYLM9UM",
+        "metallic": null,
+        "roughness": null,
+        "normal": null,
+        "metallic_roughness": null,
+        "emission": null
+      }
+    ]
+  }
+}

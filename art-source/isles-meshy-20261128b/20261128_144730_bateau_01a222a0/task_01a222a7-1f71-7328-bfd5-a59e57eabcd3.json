@@ -1,0 +1,56 @@
+{
+  "id": "01a222a7-1f71-7328-bfd5-a59e57eabcd3",
+  "type": "text-to-3d-refine",
+  "mode": "refine",
+  "name": "",
+  "model_type": "standard",
+  "seed": 1025352084,
+  "prompt": "Low-poly stylized-realistic game vehicle, small coastal fishing boat, weathered plain blue and white wooden hull, small wheelhouse cabin near the bow, open rear working deck with a net winch and crates, short mast, original design, no logos, no text, no name, no numbers, no flags",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877707654,
+  "progress": 100,
+  "started_at": 1795877707669,
+  "finished_at": 1795877736072,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1f71-7328-bfd5-a59e57eabcd3/output/model.glb?Expires=4949424000&Signature=N6r1ULZKHTa6i2EPs3-GHJPV3OPpqCOtZvn1F~RtijoxHbNbKS6Ewqc~6q~u0YMrtTe63~Hicg0W7VfLdw1stwBi5akV7dGzO2L1pn-1PHLLFEygtGrJ1gu8B4CTQJUBfX-n4DtpLxvVijkEORwJ50Y1pXuy3MBKmD7AImKPRML4B5DRRpc8FrintzzmXAgxG~mDh~uZfviYCkqzHZRh4M3EqHBgVnJA-FIFd30KTezeSA3HHY~6R~b7SkpQznnsM--Zctev9fZWLrJx6I9XIgJfC9B3R1w~ZcL6YOfKUj2s4xGhJiFZp29resty0gfAOnmDEQds9rTsW63o99fdDw__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1f71-7328-bfd5-a59e57eabcd3/output/preview.png?Expires=4949424000&Signature=ob1vntJG729bmfOXHVBKuTlUojx8oAqsBTfYDsJzZS1SQoPcaaTgEGyJkDGUALtCulyRS9BzPPwZW2lbcx~1hTeqVbET2r3azcsV-tgXU39Ra2tgxjbQcTRrblxh3FYgu0-EuPfZTKl86MRwpvFytcu41n7x2I8NtB4JAQTLoxXDm-esFcpB08eELtzdAv8k9ZSqpSkf65sMhq-qq3nKFrgPyB4WjFKaDb0eP0-TWj-V~zUPz8uLDCwFxsz0qlSJnLE9LukIr0e8vHG3Pe~HNxXKriCsgZT5ejHudO71Z3~eunVNyWcrGXj86L3uI9mLTTGbMbHsNBdkk9lVLUi9Jw__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [
+    {
+      "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1f71-7328-bfd5-a59e57eabcd3/output/texture_0.png?Expires=4949424000&Signature=JEwTlir5S99zzEdoM0W7-K1TvoGJwaiGFoB9OlTkgWCygo2QTaskJMVB10VoBQ5bhdNPIw5hLMZ4nve5GR-exZ0UJl6Vf-2hKbqFGfwbT33xaYY8xb9heCCUhYfF6u9itAY1Y8UZHmyIb1AQUach-B2pdbO9S~CH08JQ~nfK-C21N~S0551IF~ObS2rcqcrZOYHYBDBUyM5WPxZA8jfHtYrRyrLKFiw70uZ396AWPjJwLTLYwzZLT4RXy~xSNVszqFNtrux5jKwz7fDhcekSEu2-OwwKCanNwwP0Zq6gL2afH22D8hZSUgBT0JhEQcRGqBjdOYFCrejEY5PMZ28PCg__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    }
+  ],
+  "consumed_credits": 10,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "enable_pbr": false,
+    "mode": "refine",
+    "preview_task_id": "01a222a0-1300-70df-964f-3fbabe29c974",
+    "remove_lighting": true,
+    "target_formats": [
+      "glb"
+    ],
+    "texture_resolution": "2k"
+  },
+  "output": {
+    "seed": 1025352084,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1f71-7328-bfd5-a59e57eabcd3/output/model.glb?Expires=4949424000&Signature=N6r1ULZKHTa6i2EPs3-GHJPV3OPpqCOtZvn1F~RtijoxHbNbKS6Ewqc~6q~u0YMrtTe63~Hicg0W7VfLdw1stwBi5akV7dGzO2L1pn-1PHLLFEygtGrJ1gu8B4CTQJUBfX-n4DtpLxvVijkEORwJ50Y1pXuy3MBKmD7AImKPRML4B5DRRpc8FrintzzmXAgxG~mDh~uZfviYCkqzHZRh4M3EqHBgVnJA-FIFd30KTezeSA3HHY~6R~b7SkpQznnsM--Zctev9fZWLrJx6I9XIgJfC9B3R1w~ZcL6YOfKUj2s4xGhJiFZp29resty0gfAOnmDEQds9rTsW63o99fdDw__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1f71-7328-bfd5-a59e57eabcd3/output/preview.png?Expires=4949424000&Signature=ob1vntJG729bmfOXHVBKuTlUojx8oAqsBTfYDsJzZS1SQoPcaaTgEGyJkDGUALtCulyRS9BzPPwZW2lbcx~1hTeqVbET2r3azcsV-tgXU39Ra2tgxjbQcTRrblxh3FYgu0-EuPfZTKl86MRwpvFytcu41n7x2I8NtB4JAQTLoxXDm-esFcpB08eELtzdAv8k9ZSqpSkf65sMhq-qq3nKFrgPyB4WjFKaDb0eP0-TWj-V~zUPz8uLDCwFxsz0qlSJnLE9LukIr0e8vHG3Pe~HNxXKriCsgZT5ejHudO71Z3~eunVNyWcrGXj86L3uI9mLTTGbMbHsNBdkk9lVLUi9Jw__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": [
+      {
+        "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1f71-7328-bfd5-a59e57eabcd3/output/texture_0.png?Expires=4949424000&Signature=JEwTlir5S99zzEdoM0W7-K1TvoGJwaiGFoB9OlTkgWCygo2QTaskJMVB10VoBQ5bhdNPIw5hLMZ4nve5GR-exZ0UJl6Vf-2hKbqFGfwbT33xaYY8xb9heCCUhYfF6u9itAY1Y8UZHmyIb1AQUach-B2pdbO9S~CH08JQ~nfK-C21N~S0551IF~ObS2rcqcrZOYHYBDBUyM5WPxZA8jfHtYrRyrLKFiw70uZ396AWPjJwLTLYwzZLT4RXy~xSNVszqFNtrux5jKwz7fDhcekSEu2-OwwKCanNwwP0Zq6gL2afH22D8hZSUgBT0JhEQcRGqBjdOYFCrejEY5PMZ28PCg__&Key-Pair-Id=K1VGYTHIYLM9UM",
+        "metallic": null,
+        "roughness": null,
+        "normal": null,
+        "metallic_roughness": null,
+        "emission": null
+      }
+    ]
+  }
+}

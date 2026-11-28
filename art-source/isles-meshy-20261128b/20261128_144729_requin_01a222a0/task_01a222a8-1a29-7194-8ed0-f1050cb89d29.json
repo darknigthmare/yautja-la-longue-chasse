@@ -1,0 +1,56 @@
+{
+  "id": "01a222a8-1a29-7194-8ed0-f1050cb89d29",
+  "type": "text-to-3d-refine",
+  "mode": "refine",
+  "name": "",
+  "model_type": "standard",
+  "seed": 3134795197,
+  "prompt": "Low-poly stylized-realistic game creature, grey reef shark swimming, straight streamlined body in a neutral horizontal pose, grey back and white belly, dorsal fin, pectoral fins spread, crescent tail fin, mouth closed, full body",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877771840,
+  "progress": 100,
+  "started_at": 1795877771850,
+  "finished_at": 1795877792462,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a8-1a29-7194-8ed0-f1050cb89d29/output/model.glb?Expires=4949424000&Signature=eXvhCcPfHmFm0n44f0ew1rVC9mZxGt7IvDH~QzasMotw305nL~X1u4Ig3SQY56CSPVpmfV4uQaFUCT5jJcMlVIn~64b6BjZe3nIXFQuvSgPyUrRxIdNyJUwV-rlGIjVOMr8Yrf8VBb1R5gXEzPMT8vnQ9KpkRNtPqmsdG8z2Qt2X1WebQnWYMBzOluMl4xZi40otL1pjit4Evx3AXYRZ4czqXHxl9XN0fba0BGxVUAQIZ6d11PN2WQrDLO9sN91lR95eOMfFWG95UBPjzhM3LUk-nKrt2lh26hiEqr8ScEkzNcdIvrDwmFZtTBDqrWutnMcpw9v5F~VVqYnuQtBssQ__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a8-1a29-7194-8ed0-f1050cb89d29/output/preview.png?Expires=4949424000&Signature=YCv0z81RF29Rya9Ju6z~cSnyJ4uMpAOBQhv1DIsqjOKPRAUuOiGKcZy-HZNxx7uo~hUleHx-aIRRkk2Wbq-aQoyQ--9yoJ6VhlKV4YA9hCYBmoqYgi8QQ9snfPo58j5hMMzfvWdhTO-VtGETZblclGYzsdx-Q3IkLdz~FFfcWz1ItFN9yXxV5kRjON02ZYyfjNf8w4kc86ZxukcdeksNjrqFF-i15QeOrwfHuZxHnSE62PO54kXnuKeduDGUBLny4UE59meNtdwfK4A2lRCbog8oL7ffexE3CpncxW~mhucO9CmOxYVOSQXMO3W~IjJqSVEhxVKdiLY6HSkiOXKPNA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [
+    {
+      "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a8-1a29-7194-8ed0-f1050cb89d29/output/texture_0.png?Expires=4949424000&Signature=IGqyDrrSO4VcWJQDT~LCJblq763uLRwTSiNyHrKYsbToGyqKFDBY9Mx8lTZ4cqpC8FnJQnLxcoFOclHAWWTyUCmEOyAPtbxBZQLh6L-jMoCK~2PCnE6JJf0BzY1tv3fs1PZGavb~l-BhrSEgaiYlfkkF8I~Bo5253nW9Ugzn54kWRkrAxvcfTDjBCtt9bKVGcWVqXhYk4w9PyKimBHp~hABoZxy8fmWYWgZrxnAQ3oLUu3QmREH0qhP87FregY-~SjplYouHyX6BznRe-h3JxUZKxVIDgOaw8GHKgEv5foUc5gYREAbqRuNEHoY~sRfro4e0q1e6RwaV8TqbLGeutQ__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    }
+  ],
+  "consumed_credits": 10,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "enable_pbr": false,
+    "mode": "refine",
+    "preview_task_id": "01a222a0-123f-74b5-8258-1a9043c9162c",
+    "remove_lighting": true,
+    "target_formats": [
+      "glb"
+    ],
+    "texture_resolution": "2k"
+  },
+  "output": {
+    "seed": 3134795197,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a8-1a29-7194-8ed0-f1050cb89d29/output/model.glb?Expires=4949424000&Signature=eXvhCcPfHmFm0n44f0ew1rVC9mZxGt7IvDH~QzasMotw305nL~X1u4Ig3SQY56CSPVpmfV4uQaFUCT5jJcMlVIn~64b6BjZe3nIXFQuvSgPyUrRxIdNyJUwV-rlGIjVOMr8Yrf8VBb1R5gXEzPMT8vnQ9KpkRNtPqmsdG8z2Qt2X1WebQnWYMBzOluMl4xZi40otL1pjit4Evx3AXYRZ4czqXHxl9XN0fba0BGxVUAQIZ6d11PN2WQrDLO9sN91lR95eOMfFWG95UBPjzhM3LUk-nKrt2lh26hiEqr8ScEkzNcdIvrDwmFZtTBDqrWutnMcpw9v5F~VVqYnuQtBssQ__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a8-1a29-7194-8ed0-f1050cb89d29/output/preview.png?Expires=4949424000&Signature=YCv0z81RF29Rya9Ju6z~cSnyJ4uMpAOBQhv1DIsqjOKPRAUuOiGKcZy-HZNxx7uo~hUleHx-aIRRkk2Wbq-aQoyQ--9yoJ6VhlKV4YA9hCYBmoqYgi8QQ9snfPo58j5hMMzfvWdhTO-VtGETZblclGYzsdx-Q3IkLdz~FFfcWz1ItFN9yXxV5kRjON02ZYyfjNf8w4kc86ZxukcdeksNjrqFF-i15QeOrwfHuZxHnSE62PO54kXnuKeduDGUBLny4UE59meNtdwfK4A2lRCbog8oL7ffexE3CpncxW~mhucO9CmOxYVOSQXMO3W~IjJqSVEhxVKdiLY6HSkiOXKPNA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": [
+      {
+        "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a8-1a29-7194-8ed0-f1050cb89d29/output/texture_0.png?Expires=4949424000&Signature=IGqyDrrSO4VcWJQDT~LCJblq763uLRwTSiNyHrKYsbToGyqKFDBY9Mx8lTZ4cqpC8FnJQnLxcoFOclHAWWTyUCmEOyAPtbxBZQLh6L-jMoCK~2PCnE6JJf0BzY1tv3fs1PZGavb~l-BhrSEgaiYlfkkF8I~Bo5253nW9Ugzn54kWRkrAxvcfTDjBCtt9bKVGcWVqXhYk4w9PyKimBHp~hABoZxy8fmWYWgZrxnAQ3oLUu3QmREH0qhP87FregY-~SjplYouHyX6BznRe-h3JxUZKxVIDgOaw8GHKgEv5foUc5gYREAbqRuNEHoY~sRfro4e0q1e6RwaV8TqbLGeutQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+        "metallic": null,
+        "roughness": null,
+        "normal": null,
+        "metallic_roughness": null,
+        "emission": null
+      }
+    ]
+  }
+}

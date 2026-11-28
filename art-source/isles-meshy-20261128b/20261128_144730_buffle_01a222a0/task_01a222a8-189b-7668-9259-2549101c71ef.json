@@ -1,0 +1,56 @@
+{
+  "id": "01a222a8-189b-7668-9259-2549101c71ef",
+  "type": "text-to-3d-refine",
+  "mode": "refine",
+  "name": "",
+  "model_type": "standard",
+  "seed": 3354877294,
+  "prompt": "Low-poly stylized-realistic game creature, African cape buffalo bull standing on all four legs in a neutral side-profile stance, all four hooves on the ground, massive dark grey-black body, heavy curved horns fused in a boss over the forehead, head level, full body",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877771445,
+  "progress": 100,
+  "started_at": 1795877771462,
+  "finished_at": 1795877797286,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a8-189b-7668-9259-2549101c71ef/output/model.glb?Expires=4949424000&Signature=jX1pKX5lQVWzOm9ZfTNS2P64X91kptjBwASYvXtAJRiFb0dSZkvdGoTgMuIitr-5yigbyef4LwZOP4SEcislUOBHoNVY0CamxECMBy0M5vDlUC04k6-sN3eyCNSocVbe7JiKZCJuo1b7h1nkPuAa-DUt38jRC0ED1LIAcMR2KKgkP9RC7Q2T9Sb~MPD2kEOjdiW-k7X2nQktGrMjiIiyIxx6OjlYvaO3XV-5h6vE4iJ5yxLW0~qCSw6IvatQEGfs5VGNSK1u-eCiFqVFU7pTiSOBb~M5eI56Gv32iGgObhFI6uLgx652FzsXmU1eKqtXjW1kj-X3rvK1zY9u6-0u5w__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a8-189b-7668-9259-2549101c71ef/output/preview.png?Expires=4949424000&Signature=GJhE7158Pf0DeSOoLFSpW~16Jw5HICfcdPQJG4nZ~4t9nJ5swNG755QS3bTyvccRpw~FGGcFTvFwLtciYY3zt~VA9BrHwNH0HpdjtIrr6QLMqA--ianqxAENZRLeFkj-3ue~uO6hE31Y7EA~P8osWugKmOFPnF~QR1aAQ6veM4k6j8y~qqKUaRjkRxNEDURdutUtjUAR1LIDnBQ5C~AnRzuVEXrk1ACljm4Q8eg6u7PgLcqJCtnv~XENeziME2jmFmIL0UZgIS0KYlxa7yvTubCjTkNAs0e~LH0MfZIzlmnrt6xhciT29pYBc-Fou2K-c0bp32paTsKL6otqM08rEA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [
+    {
+      "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a8-189b-7668-9259-2549101c71ef/output/texture_0.png?Expires=4949424000&Signature=ncb38Inn3xypGUbJRyfft9yQl1fcqW98W7ZUIxyUNdt8lMAtwhYOqoQqyi6afkLmSeHNOhnAJhTyA8F3jeqVtx7DYT5p~kWwWbDIY35BkvPpiS-RWNOLe3bM-j8~L9s6SAA78OvkeA4dtmpYOoxu46xr1voQRycfcoKOhigjTlPNU1XPpb~6LBDZJpx6PgGYpBmNFMBTHNvrIyDHSR6i0G3qpJK90mguLkPdoR4ypHssJ80-W3SjAu8KvxRxibY9PpHsGOtLqf8-Dy2O3Id3BQP1HpVqDEwN9-eP6Tsk-mgYpAe5eQBfkn8ykmdu~333EHOY0G7-l-~ZUDCuXhEovQ__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    }
+  ],
+  "consumed_credits": 10,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "enable_pbr": false,
+    "mode": "refine",
+    "preview_task_id": "01a222a0-122c-708d-916b-dc1b8bb8c92a",
+    "remove_lighting": true,
+    "target_formats": [
+      "glb"
+    ],
+    "texture_resolution": "2k"
+  },
+  "output": {
+    "seed": 3354877294,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a8-189b-7668-9259-2549101c71ef/output/model.glb?Expires=4949424000&Signature=jX1pKX5lQVWzOm9ZfTNS2P64X91kptjBwASYvXtAJRiFb0dSZkvdGoTgMuIitr-5yigbyef4LwZOP4SEcislUOBHoNVY0CamxECMBy0M5vDlUC04k6-sN3eyCNSocVbe7JiKZCJuo1b7h1nkPuAa-DUt38jRC0ED1LIAcMR2KKgkP9RC7Q2T9Sb~MPD2kEOjdiW-k7X2nQktGrMjiIiyIxx6OjlYvaO3XV-5h6vE4iJ5yxLW0~qCSw6IvatQEGfs5VGNSK1u-eCiFqVFU7pTiSOBb~M5eI56Gv32iGgObhFI6uLgx652FzsXmU1eKqtXjW1kj-X3rvK1zY9u6-0u5w__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a8-189b-7668-9259-2549101c71ef/output/preview.png?Expires=4949424000&Signature=GJhE7158Pf0DeSOoLFSpW~16Jw5HICfcdPQJG4nZ~4t9nJ5swNG755QS3bTyvccRpw~FGGcFTvFwLtciYY3zt~VA9BrHwNH0HpdjtIrr6QLMqA--ianqxAENZRLeFkj-3ue~uO6hE31Y7EA~P8osWugKmOFPnF~QR1aAQ6veM4k6j8y~qqKUaRjkRxNEDURdutUtjUAR1LIDnBQ5C~AnRzuVEXrk1ACljm4Q8eg6u7PgLcqJCtnv~XENeziME2jmFmIL0UZgIS0KYlxa7yvTubCjTkNAs0e~LH0MfZIzlmnrt6xhciT29pYBc-Fou2K-c0bp32paTsKL6otqM08rEA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": [
+      {
+        "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a8-189b-7668-9259-2549101c71ef/output/texture_0.png?Expires=4949424000&Signature=ncb38Inn3xypGUbJRyfft9yQl1fcqW98W7ZUIxyUNdt8lMAtwhYOqoQqyi6afkLmSeHNOhnAJhTyA8F3jeqVtx7DYT5p~kWwWbDIY35BkvPpiS-RWNOLe3bM-j8~L9s6SAA78OvkeA4dtmpYOoxu46xr1voQRycfcoKOhigjTlPNU1XPpb~6LBDZJpx6PgGYpBmNFMBTHNvrIyDHSR6i0G3qpJK90mguLkPdoR4ypHssJ80-W3SjAu8KvxRxibY9PpHsGOtLqf8-Dy2O3Id3BQP1HpVqDEwN9-eP6Tsk-mgYpAe5eQBfkn8ykmdu~333EHOY0G7-l-~ZUDCuXhEovQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+        "metallic": null,
+        "roughness": null,
+        "normal": null,
+        "metallic_roughness": null,
+        "emission": null
+      }
+    ]
+  }
+}

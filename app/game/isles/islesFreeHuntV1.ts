@@ -139,6 +139,11 @@ export function freeHuntReputationV1(state: FreeHuntStateV1, rules: FreeHuntRule
   return islesReputationV1(state.profile, rules.reputation);
 }
 
+/** Height in metres above an animal within which its bite still reaches the hunter. */
+const MELEE_REACH_UP = 2.5;
+/** Longest stretch in metres a patrol plans at once (the windowed path search covers about 320 m). */
+const PATROL_STRIDE = 100;
+
 function contractsForDay(seed: number, day: number, rules: FreeHuntRulesV1): ContractTemplate[] {
   const order = rules.contracts.templates.map(t => ({t, k: hashString(seed + ":" + day + ":" + t.id)})).sort((a, b) => a.k - b.k);
   return order.slice(0, rules.contracts.perDay).map(item => item.t);
@@ -159,6 +164,11 @@ export function createFreeHuntV1(world: FreeHuntWorldV1, rules: FreeHuntRulesV1,
   };
   const {day} = freeHuntClockV1(state, rules);
   state.contractsToday = contractsForDay(seed, day, rules);
+  // A resumed profile keeps the contracts it accepted today, whatever the seed of the new session draws.
+  if (profile.contracts.day === day && profile.contracts.accepted.length) {
+    const kept = profile.contracts.accepted.map(id => rules.contracts.templates.find(t => t.id === id)).filter((t): t is ContractTemplate => !!t);
+    if (kept.length) state.contractsToday = kept;
+  }
   say(state, "Le vaisseau se pose à l’autel de Verdant. Sœur-de-Pierre attend sur la pyramide.");
   spawnUniques(state, world, rules);
   return state;
@@ -495,9 +505,13 @@ function stepNpcs(state: FreeHuntStateV1, world: FreeHuntWorldV1, rules: FreeHun
       let goal = {x: npc.goalX, z: npc.goalZ}, key = "goal:" + Math.round(npc.goalX) + ":" + Math.round(npc.goalZ);
       if (npc.unique === "bounty" && npc.state !== "investigate") {
         const route = map.markers.bounty;
-        const target = tileCenterV1(map, route[npc.waypoint ?? 0][0], route[npc.waypoint ?? 0][1]);
-        if (dist(npc, target) < 4) npc.waypoint = ((npc.waypoint ?? 0) + 1) % route.length;
-        goal = target; key = "bounty:" + npc.waypoint;
+        // The waypoint advances first, so that the cached path and its destination always agree.
+        const reached = tileCenterV1(map, route[npc.waypoint ?? 0][0], route[npc.waypoint ?? 0][1]);
+        if (dist(npc, reached) < 4) npc.waypoint = ((npc.waypoint ?? 0) + 1) % route.length;
+        // A leg of the round is longer than the path window: the bounty walks it in strides of about 100 m.
+        const next = tileCenterV1(map, route[npc.waypoint ?? 0][0], route[npc.waypoint ?? 0][1]), far = dist(npc, next);
+        goal = far > PATROL_STRIDE ? {x: npc.x + (next.x - npc.x) * PATROL_STRIDE / far, z: npc.z + (next.z - npc.z) * PATROL_STRIDE / far} : next;
+        key = "bounty:" + npc.waypoint + ":" + Math.round(npc.x / (PATROL_STRIDE / 2)) + ":" + Math.round(npc.z / (PATROL_STRIDE / 2));
         if (dist(npc, a) < 40 && npc.timer <= 0) { npc.timer = 30; say(state, "Radio · " + rules.bounty.name + " : " + rules.bounty.radio[Math.floor(random(state) * rules.bounty.radio.length)]); }
       } else if (npc.unique === "escort" && leader) {
         goal = {x: leader.x + (npc.id.charCodeAt(npc.id.length - 1) % 2 ? 2.5 : -2.5), z: leader.z - 2}; key = "escort:" + Math.round(goal.x / 4) + ":" + Math.round(goal.z / 4);
@@ -526,7 +540,10 @@ function stepNpcs(state: FreeHuntStateV1, world: FreeHuntWorldV1, rules: FreeHun
     if (hostile) {
       npc.state = "combat"; npc.running = true;
       npc.facing = Math.atan2(a.x - npc.x, a.z - npc.z);
-      if (d < 1.6) {
+      // A bite needs reach: a hunter on a roof, a cliff or the canopy is out of it.
+      const below = a.y - heightAtV1(map, ...tileAtV1(map, npc.x, npc.z));
+      if (d < 1.6 && below > MELEE_REACH_UP) npc.moving = false;
+      else if (d < 1.6) {
         npc.moving = false;
         if (npc.fireTimer <= 0) { npc.fireTimer = 1.2; hurtPlayer(state, legendary ? rules.legendary.damage : animal.damage, npc.name ?? animal.label); }
       } else {

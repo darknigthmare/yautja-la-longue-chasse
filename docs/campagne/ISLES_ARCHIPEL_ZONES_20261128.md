@@ -20,6 +20,8 @@ Cette fiche fixe la **forme de l'archipel** et le **contenu attendu de chaque zo
 
 Les noms d'îles absents des notes sont *(proposés)*. Les notes citaient des packs de décors d'un autre moteur : ils servent seulement de référence d'ambiance, puisque le mode est produit en three.js avec ses propres modèles.
 
+**Fiche liée.** Les routes, les bâtiments, les props, les transports, la faune, la flore, la météo et le relief de chaque zone sont dans [Le monde vivant](ISLES_MONDE_VIVANT_20261128.md).
+
 ---
 
 ## 1. La forme de l'archipel
@@ -151,9 +153,9 @@ Le vaisseau personnel garde sa règle : voyage rapide entre repaires découverts
 
 **Ce qui n'est pas encore fait.**
 
-- La chasse libre (gibier, primes, honneur, missions) tourne toujours sur la carte à part de Verdant (2 km). Dans l'archipel entier on se déplace, on grimpe, on nage et on se camoufle, mais le monde n'est pas encore peuplé.
+- La chasse libre (gibier, primes, honneur, missions) tourne toujours sur la carte à part de Verdant (2 km). Dans l'archipel entier, la faune, la météo et les transports sont en place (voir la fiche du monde vivant) ; les humains, les primes et les missions restent à brancher.
 - Hors de Calder, d'Eastbank, de Steelwater et de Blackrock, les zones sont des gabarits génériques par type : leurs lieux nommés (lycée, mine, station polaire…) ne sont pas encore construits un par un.
-- Le relief est comprimé : le plus haut sommet, sur Calder, fait une centaine de mètres, contre 130 m pour ses tours.
+- Le relief est à la vraie échelle depuis la fiche [du monde vivant](ISLES_MONDE_VIVANT_20261128.md) : mont Hollow 1 850 m, l'Ember 1 480 m, mont Calder 920 m, tours de Calder jusqu'à 310 m.
 - Les routes sont tracées automatiquement (voir ci-dessous) : sur les trois îles détaillées elles relient les mêmes zones que vos plans, sans en suivre le tracé exact. Ferries, bateaux, navettes, métro et lignes d'avion ne sont pas encore jouables.
 - Pas de niveau de détail lointain : on voit 3 zones (192 m) autour de soi. Les performances n'ont été mesurées que sur le rendu logiciel de la recette, pas sur une vraie carte graphique.
 

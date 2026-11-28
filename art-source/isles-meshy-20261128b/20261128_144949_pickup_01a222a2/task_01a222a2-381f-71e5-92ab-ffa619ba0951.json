@@ -1,0 +1,43 @@
+{
+  "id": "01a222a2-381f-71e5-92ab-ffa619ba0951",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 3636890794,
+  "prompt": "Low-poly stylized-realistic game vehicle, rugged off-road pickup truck, dusty faded sand-beige paint with dried mud, double cab, open empty cargo bed, raised suspension, chunky all-terrain tyres, steel bumper, original design, no logos, no text, no badges, no licence plate text",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877386875,
+  "progress": 100,
+  "started_at": 1795877386888,
+  "finished_at": 1795877465130,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-381f-71e5-92ab-ffa619ba0951/output/model.glb?Expires=4949424000&Signature=dwuYpDfxLPDtrTj1--OVaPWxVTnLMxr5Px187lrk5He1dSntNFehQaF9H2O~xLZ3DX5SqeIbxc7Es5iZlnABKQr-0iTOtXZ4Z3mEKkRsgHasGhe7NCMkDaEU5R3Xqs7RuMQk0vEpmqDZmg6bwaqY2gUjjJc3exaImeYvYO-6-5dbt7t6sb4Er8yEcrmR0Nl69wE5R03rx~t3HeAqlOi~ZSRVhn9dg1qOCsB~eiw0-f67DLTVJY9UpF0~yuK7IunLEwDarWcTC8Z3RzNhWczEs-TEKW5OGEAg~7c2Uacf~VWR5UtUCIfIqHAV02AQZDYWjeUvN~VeRlCz6zGqY5Rukg__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-381f-71e5-92ab-ffa619ba0951/output/preview.png?Expires=4949424000&Signature=B9IE6cJXAWgql~5ZN3xB1Fg1rjBwIYS0-fKUIualIwJJu6oeISEhnIptr-9bFLViBe3c11iBwGKWQzAO-BSUQaPpk3AmUgDatpAKuZyfb9sgyaPCj~haLXyRXNgvUhDToWJmjwA13v3jMrD0YN-GEbii9Ub0dkA~jKxFPZ3HcO1wJ9oVzw~qNVsFqRpDWSDEJPhc4kGvN8jHC9JEmLS01nxLYosNtqsM1i9kGjw2Oi1RMSxxPIFLEcy17SdDGaAk43Brz7HZpoxEc~Qet6zjEEdPOF5PH2e3Of3xt741Fq7Vl6w7ebK9Fn-MqvFwLo8JlMl4z6STT8gcYFdB8j0HOw__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game vehicle, rugged off-road pickup truck, dusty faded sand-beige paint with dried mud, double cab, open empty cargo bed, raised suspension, chunky all-terrain tyres, steel bumper, original design, no logos, no text, no badges, no licence plate text",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 3636890794,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-381f-71e5-92ab-ffa619ba0951/output/model.glb?Expires=4949424000&Signature=dwuYpDfxLPDtrTj1--OVaPWxVTnLMxr5Px187lrk5He1dSntNFehQaF9H2O~xLZ3DX5SqeIbxc7Es5iZlnABKQr-0iTOtXZ4Z3mEKkRsgHasGhe7NCMkDaEU5R3Xqs7RuMQk0vEpmqDZmg6bwaqY2gUjjJc3exaImeYvYO-6-5dbt7t6sb4Er8yEcrmR0Nl69wE5R03rx~t3HeAqlOi~ZSRVhn9dg1qOCsB~eiw0-f67DLTVJY9UpF0~yuK7IunLEwDarWcTC8Z3RzNhWczEs-TEKW5OGEAg~7c2Uacf~VWR5UtUCIfIqHAV02AQZDYWjeUvN~VeRlCz6zGqY5Rukg__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-381f-71e5-92ab-ffa619ba0951/output/preview.png?Expires=4949424000&Signature=B9IE6cJXAWgql~5ZN3xB1Fg1rjBwIYS0-fKUIualIwJJu6oeISEhnIptr-9bFLViBe3c11iBwGKWQzAO-BSUQaPpk3AmUgDatpAKuZyfb9sgyaPCj~haLXyRXNgvUhDToWJmjwA13v3jMrD0YN-GEbii9Ub0dkA~jKxFPZ3HcO1wJ9oVzw~qNVsFqRpDWSDEJPhc4kGvN8jHC9JEmLS01nxLYosNtqsM1i9kGjw2Oi1RMSxxPIFLEcy17SdDGaAk43Brz7HZpoxEc~Qet6zjEEdPOF5PH2e3Of3xt741Fq7Vl6w7ebK9Fn-MqvFwLo8JlMl4z6STT8gcYFdB8j0HOw__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

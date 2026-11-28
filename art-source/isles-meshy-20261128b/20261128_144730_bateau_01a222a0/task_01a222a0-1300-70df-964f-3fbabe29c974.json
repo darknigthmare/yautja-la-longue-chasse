@@ -1,0 +1,43 @@
+{
+  "id": "01a222a0-1300-70df-964f-3fbabe29c974",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 2202264166,
+  "prompt": "Low-poly stylized-realistic game vehicle, small coastal fishing boat, weathered plain blue and white wooden hull, small wheelhouse cabin near the bow, open rear working deck with a net winch and crates, short mast, original design, no logos, no text, no name, no numbers, no flags",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877247432,
+  "progress": 100,
+  "started_at": 1795877247452,
+  "finished_at": 1795877306032,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-1300-70df-964f-3fbabe29c974/output/model.glb?Expires=4949424000&Signature=lXhXi5bXyJs4tVRP95m0hYJWcntlJ8bOcrKyZbTsmdw4Qoi9qPyrUTwbUpzS4~BnOUCQ5NX0pKwfTQ7xyE7dtvfChzWQxrtcuWoP1eZbTS2Vt5v6yHPA5XdsoS3n9jfCziACPZvLkxOAXvjRuImZurAITecfOR0f-WJHniNUgKCZMi6i1wwlukmY4PJOrpniDcmLnqC3YlmHQ6s8ALNU~QdJEZTrrFqfaT8IzbVvd10sGNjGpgPTeKJylGWw8ZBlCq2iN4LU1yItBJHMRYtlbIPD1TqNcrwUncLkbjeE~ENFHQQdu7GE6i2bAiH9gynNKhjx3mvmjWmsDiEiMiwlAA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-1300-70df-964f-3fbabe29c974/output/preview.png?Expires=4949424000&Signature=BoEzlCBvbZ7y6JOJiSKzKgFTwI2yf0Y0vIOpFeCHINFXxgZ88DUHB1m1CJPQCpV2CM9eVLA6CVpnd9r4cjLtlZhN32oMQ2MPN26Lm33ahbKEIZDVW5uTVsa8DXEAwxt2nFutEDowyVoOmHZ~Ot9sppP26M4VHzlU5qOFx9IHO4KN0O599AjP8d-o9oa2wxmUpEc7NCKtSV4VtOI3c5llMTE99caw4Vew0O4X1ZS~9C2Qv1ekQl5HhCOcO1pRtcp3zPQL-Hfn71qbnQduL~jvQ5ba0OXO-9dlg63jD2b6Zoj4qRBG9iX0FSRebvVx6qjljNxFDnEt8T65O3Oq9sZhHA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game vehicle, small coastal fishing boat, weathered plain blue and white wooden hull, small wheelhouse cabin near the bow, open rear working deck with a net winch and crates, short mast, original design, no logos, no text, no name, no numbers, no flags",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 2202264166,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-1300-70df-964f-3fbabe29c974/output/model.glb?Expires=4949424000&Signature=lXhXi5bXyJs4tVRP95m0hYJWcntlJ8bOcrKyZbTsmdw4Qoi9qPyrUTwbUpzS4~BnOUCQ5NX0pKwfTQ7xyE7dtvfChzWQxrtcuWoP1eZbTS2Vt5v6yHPA5XdsoS3n9jfCziACPZvLkxOAXvjRuImZurAITecfOR0f-WJHniNUgKCZMi6i1wwlukmY4PJOrpniDcmLnqC3YlmHQ6s8ALNU~QdJEZTrrFqfaT8IzbVvd10sGNjGpgPTeKJylGWw8ZBlCq2iN4LU1yItBJHMRYtlbIPD1TqNcrwUncLkbjeE~ENFHQQdu7GE6i2bAiH9gynNKhjx3mvmjWmsDiEiMiwlAA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-1300-70df-964f-3fbabe29c974/output/preview.png?Expires=4949424000&Signature=BoEzlCBvbZ7y6JOJiSKzKgFTwI2yf0Y0vIOpFeCHINFXxgZ88DUHB1m1CJPQCpV2CM9eVLA6CVpnd9r4cjLtlZhN32oMQ2MPN26Lm33ahbKEIZDVW5uTVsa8DXEAwxt2nFutEDowyVoOmHZ~Ot9sppP26M4VHzlU5qOFx9IHO4KN0O599AjP8d-o9oa2wxmUpEc7NCKtSV4VtOI3c5llMTE99caw4Vew0O4X1ZS~9C2Qv1ekQl5HhCOcO1pRtcp3zPQL-Hfn71qbnQduL~jvQ5ba0OXO-9dlg63jD2b6Zoj4qRBG9iX0FSRebvVx6qjljNxFDnEt8T65O3Oq9sZhHA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

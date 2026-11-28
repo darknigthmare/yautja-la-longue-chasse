@@ -1,0 +1,41 @@
+{
+  "schema_version": 2,
+  "project_name": "avion-brousse",
+  "folder": "20261128_144949_avion-brousse_01a222a2",
+  "root_task_id": "01a222a2-38bd-749f-8df8-e5538b463515",
+  "created_at": "2026-11-28T14:49:49.520Z",
+  "updated_at": "2026-11-28T14:56:09.624Z",
+  "tasks": [
+    {
+      "task_id": "01a222a2-38bd-749f-8df8-e5538b463515",
+      "task_type": "text-to-3d-preview",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "preview",
+      "parent_task_id": null,
+      "status": "SUCCEEDED",
+      "files": [],
+      "task_json": "task_01a222a2-38bd-749f-8df8-e5538b463515.json",
+      "operation_id": null,
+      "created_at": "2026-11-28T14:50:32.219Z",
+      "updated_at": "2026-11-28T14:50:32.219Z"
+    },
+    {
+      "task_id": "01a222a7-9a3f-7063-b7a4-b4364f55fdc6",
+      "task_type": "text-to-3d-refine",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "refine",
+      "parent_task_id": "01a222a2-38bd-749f-8df8-e5538b463515",
+      "status": "SUCCEEDED",
+      "files": [
+        "model.glb",
+        "preview.png"
+      ],
+      "task_json": "task_01a222a7-9a3f-7063-b7a4-b4364f55fdc6.json",
+      "operation_id": "6060f0b5-c01c-44d2-956c-aed708597067",
+      "created_at": "2026-11-28T14:55:39.217Z",
+      "updated_at": "2026-11-28T14:56:09.624Z"
+    }
+  ]
+}

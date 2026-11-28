@@ -1,0 +1,43 @@
+{
+  "id": "01a222a0-11bc-7456-bfae-406f7ed32044",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 942689547,
+  "prompt": "Low-poly stylized-realistic game vehicle, light civilian utility helicopter, rounded glass cockpit, plain dark orange body, landing skids, slender tail boom with small tail rotor, two-blade main rotor aligned along the body, original design, no logos, no text, no numbers, no registration markings",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877247546,
+  "progress": 100,
+  "started_at": 1795877247557,
+  "finished_at": 1795877315159,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-11bc-7456-bfae-406f7ed32044/output/model.glb?Expires=4949424000&Signature=fmEhH~MHVVgVkGWRhDxc6JXCw5ZGw~j8oU6CbLS82EW-w9mPKBJczS2jn9gXmMq5VUZKVpNPgtT0qcj1IGLaRZnXi7qCtrLV5CHg9lUueHUmOp9-i7LQ1g-AaVvuOmaqHwzQzh3PGJ0h2E2WjAOFJ3HaTIqpf~ugpEai55SjL4PP9wLb4c2kGALr0auGsXfq0HX46tpUrJwqOG5yaDnq1vrU2dXQnhKcDpXwaxSg6htblP~LLQ6oJ4HHNvb~QMgwclanu53QtGymXw3HqmhBkvY2YHmxLRkA0dME7m7gXnQtMDRHS4Y0pkTPWNRrkF7u~xbsDPe3hvuxx2EoWZc7rQ__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-11bc-7456-bfae-406f7ed32044/output/preview.png?Expires=4949424000&Signature=o17pFmzAv8IMXQzFzyKcFSzF~mtT5FnrKKbBtgUSegKL~Prg8qbcQxEJrjmPLjY18LTtehdQjP2QO-YC9FT67wU21j-kU9qhcAq-5l3HG~VWUFBFRgzLJbxdjinbwaxeRILYxS59uQcHXTfI02O-h1bF-s0e1gtyHEzQ7SMIV3QnVEIzoMLzQYXyIVux~~fVZMuUpmv1cgeqNKWrZkzErYb8~Vcu43euUHQYL6fIwlhvxWGW72SEGkz~7pHb4KBtSnO-Sx7R0BTP5piiA33TInb7xWzdObeVL-8eMSO5Q3OjwZld4kLotbbts0A4ncsaTzI6TUH9ZESe4SV2K0YlVQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game vehicle, light civilian utility helicopter, rounded glass cockpit, plain dark orange body, landing skids, slender tail boom with small tail rotor, two-blade main rotor aligned along the body, original design, no logos, no text, no numbers, no registration markings",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 942689547,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-11bc-7456-bfae-406f7ed32044/output/model.glb?Expires=4949424000&Signature=fmEhH~MHVVgVkGWRhDxc6JXCw5ZGw~j8oU6CbLS82EW-w9mPKBJczS2jn9gXmMq5VUZKVpNPgtT0qcj1IGLaRZnXi7qCtrLV5CHg9lUueHUmOp9-i7LQ1g-AaVvuOmaqHwzQzh3PGJ0h2E2WjAOFJ3HaTIqpf~ugpEai55SjL4PP9wLb4c2kGALr0auGsXfq0HX46tpUrJwqOG5yaDnq1vrU2dXQnhKcDpXwaxSg6htblP~LLQ6oJ4HHNvb~QMgwclanu53QtGymXw3HqmhBkvY2YHmxLRkA0dME7m7gXnQtMDRHS4Y0pkTPWNRrkF7u~xbsDPe3hvuxx2EoWZc7rQ__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-11bc-7456-bfae-406f7ed32044/output/preview.png?Expires=4949424000&Signature=o17pFmzAv8IMXQzFzyKcFSzF~mtT5FnrKKbBtgUSegKL~Prg8qbcQxEJrjmPLjY18LTtehdQjP2QO-YC9FT67wU21j-kU9qhcAq-5l3HG~VWUFBFRgzLJbxdjinbwaxeRILYxS59uQcHXTfI02O-h1bF-s0e1gtyHEzQ7SMIV3QnVEIzoMLzQYXyIVux~~fVZMuUpmv1cgeqNKWrZkzErYb8~Vcu43euUHQYL6fIwlhvxWGW72SEGkz~7pHb4KBtSnO-Sx7R0BTP5piiA33TInb7xWzdObeVL-8eMSO5Q3OjwZld4kLotbbts0A4ncsaTzI6TUH9ZESe4SV2K0YlVQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

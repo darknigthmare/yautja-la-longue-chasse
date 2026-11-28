@@ -1,6 +1,10 @@
 {
   "version": 1,
   "source": "art-source/isles-meshy-20261128",
+  "sources": [
+    "art-source/isles-meshy-20261128",
+    "art-source/isles-meshy-20261128b"
+  ],
   "generator": "Meshy text-to-3d (preview + refine), rigging for humans",
   "models": {
     "braconnier.glb": {
@@ -72,6 +76,150 @@
       "bytes": 709168,
       "sha256": "b26197cef84deb9b5e13584c610b210c9d5e46845c9542ce4e04f8aa8fc2f12a",
       "sourceSha256": "ef6c0fe2d1ba8955bc524fbe8a3e187f3f101f2a9c4ce382c5895fbd32ece754"
+    },
+    "metro.glb": {
+      "id": "metro",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144624_metro_01a2229f/model.glb",
+      "bytes": 757308,
+      "sha256": "96cae95f5341165d10dcf46f05c2a7d2cdba94d5aa55eb36d028e1af5dcadbb7",
+      "sourceSha256": "62af5151f07134d38a0c64dda69d7dc986af375524f46712ecf0b13c715928b8"
+    },
+    "train.glb": {
+      "id": "train",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144949_train_01a222a2/model.glb",
+      "bytes": 723920,
+      "sha256": "c5c22facc687f1898393466c82699239cae71137f073c68f87b9f941003bfbb2",
+      "sourceSha256": "c37be0ebf412ffd94fc31ec6530534a8f9fdd4bef6e6b2326a0c793126cba1e4"
+    },
+    "train-fret.glb": {
+      "id": "train-fret",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144727_train-fret_01a222a0/model.glb",
+      "bytes": 806996,
+      "sha256": "9fe14a6f496bb9d082082aed1dfd596cb8c0c16aeccda81102a04e9e126ecd12",
+      "sourceSha256": "6ca1ac70da53c55165b1651adec73fc78f3ebce1665d907d6bb253a6b96bd70e"
+    },
+    "bus.glb": {
+      "id": "bus",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144948_bus_01a222a2/model.glb",
+      "bytes": 607556,
+      "sha256": "2457fa630b7aba4327b7d4dc2c21cc86b40ac954a2d24eed1f542546849fe944",
+      "sourceSha256": "33532715f0aeed20b89549ad2196f9eaa49f015c92e2162505d852c25f586ddd"
+    },
+    "camion.glb": {
+      "id": "camion",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144730_camion_01a222a0/model.glb",
+      "bytes": 733068,
+      "sha256": "14eb4ea891b0446bd027280aa630cc29083b21624a9809e33148b19437f4917e",
+      "sourceSha256": "92a00aa962b81363edde183e106dbb200d50fb3f09dedf106f0c702a1cc70d6f"
+    },
+    "pickup.glb": {
+      "id": "pickup",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144949_pickup_01a222a2/model.glb",
+      "bytes": 829632,
+      "sha256": "fdeddfc65ac0dc34bbdaff4d63870de1b50cbd92665865fc078d14ab65310070",
+      "sourceSha256": "20822114a06ce17d8d63a89ff5af4059b7c67a0e71a00366d33b3ff155eaef67"
+    },
+    "ferry.glb": {
+      "id": "ferry",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_145352_ferry_01a222a5/model.glb",
+      "bytes": 741352,
+      "sha256": "d674c7c3eac45cced525c67bdea2f8470bb2764694f79ce4700ef887547859d0",
+      "sourceSha256": "ef7683cc8547b564ab5e5eba314b8abadadaffecc700ce6df394b316fd2bb670"
+    },
+    "bateau.glb": {
+      "id": "bateau",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144730_bateau_01a222a0/model.glb",
+      "bytes": 807976,
+      "sha256": "cc0329542d16ba47576320370231576b71b0db4200790e13957567f8a847f39c",
+      "sourceSha256": "4cb24a0fd51de71dc5a9486aa210de8694842fbe66c1c059d473dff1fa8dc90d"
+    },
+    "avion.glb": {
+      "id": "avion",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144728_avion_01a222a0/model.glb",
+      "bytes": 622332,
+      "sha256": "464f8dca7c0a044fd65d11e0b73e52d77813c8ce3aa5900d508b25300d94eeac",
+      "sourceSha256": "ca1ff0cd829d544c73e536d0556d11595bf02748cca3a1930ec34a3ce9c46489"
+    },
+    "avion-brousse.glb": {
+      "id": "avion-brousse",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144949_avion-brousse_01a222a2/model.glb",
+      "bytes": 679792,
+      "sha256": "d5f79d1963946aaa37c10900c6cd83bbfa4197137544c7a31c321ce9d38a7ae0",
+      "sourceSha256": "6b26c97eb562742e728fcf636134c3c2948ef807b0af5334301187fb33898af8"
+    },
+    "helicoptere.glb": {
+      "id": "helicoptere",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144730_helicoptere_01a222a0/model.glb",
+      "bytes": 659292,
+      "sha256": "fd2d3174cee0087f103b94fc62a2b46e49c95aa6430f056124b60b8ca7806c09",
+      "sourceSha256": "9202c8ada27a972c98c3c1612971977ce46b3129c35da317fff6502948a9c9bf"
+    },
+    "telepherique.glb": {
+      "id": "telepherique",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144729_telepherique_01a222a0/model.glb",
+      "bytes": 685360,
+      "sha256": "f92368763fa6b15da842bc61fe3a1f888d8efdbb07c0f6064d6513c177d9a450",
+      "sourceSha256": "88d664d83e5a184b8b5e659efddaa23674f59be34c12f678722aac4cb1d1b395"
+    },
+    "ours-brun.glb": {
+      "id": "ours-brun",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144730_ours-brun_01a222a0/model.glb",
+      "bytes": 680500,
+      "sha256": "ae9e207da63f9b2464afae3c67b9a98bbef39dc1dfc45e04392382b955c02943",
+      "sourceSha256": "6612ea999b2b7c1dc64b5538f7efd2e11b82632d70f4bc9240a83ddb4dd5aff1"
+    },
+    "loup.glb": {
+      "id": "loup",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144948_loup_01a222a2/model.glb",
+      "bytes": 850860,
+      "sha256": "19f5f1cfb4ba7cb587fc91623b00c1a15cd53e251f56b838006d0cd94bf25572",
+      "sourceSha256": "2481eb7a449937ca5548033f04c914c6cda6f71a57d70cd6aa8e5736fb4e88c5"
+    },
+    "cerf.glb": {
+      "id": "cerf",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144949_cerf_01a222a2/model.glb",
+      "bytes": 593828,
+      "sha256": "baeae087318366783ff2e8a133352946f4fc4996c051d52c1c17525c53422d16",
+      "sourceSha256": "28aa01467040906684d0493617fc95a53d4cbed3eb7cf193c8e59f02a21232d8"
+    },
+    "lion.glb": {
+      "id": "lion",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144950_lion_01a222a2/model.glb",
+      "bytes": 733056,
+      "sha256": "5756531cddb065218b9d3de6d5f30f26749fc43bbe9e99d64042b01f36ec1a29",
+      "sourceSha256": "b1d2f9187a432aee894bf48908e80be444610e917f344f984f92db58e9230c6c"
+    },
+    "buffle.glb": {
+      "id": "buffle",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144730_buffle_01a222a0/model.glb",
+      "bytes": 466160,
+      "sha256": "384ac9e5935154bfed1a0d1d90c5c221839cbd439c61ccc90242e29e87385901",
+      "sourceSha256": "e2488d0f49d355cd730f18b288e2d54fd0dd30459aa635f4c6b7472cb7063108"
+    },
+    "requin.glb": {
+      "id": "requin",
+      "source": "art-source/isles-meshy-20261128b",
+      "from": "20261128_144729_requin_01a222a0/model.glb",
+      "bytes": 502292,
+      "sha256": "efbf4a90e694d3df0116180eeb817032ffe4dacca711c4527116865b2749101d",
+      "sourceSha256": "8d3678ad02ce6ba42f691accadbfc214c20df51f9a8e033ea14aefe230214b1d"
     }
   }
 }

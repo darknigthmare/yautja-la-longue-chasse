@@ -1,0 +1,57 @@
+{
+  "id": "01a222ac-2314-730c-8736-c46c092c25ad",
+  "type": "text-to-3d-refine",
+  "mode": "refine",
+  "name": "",
+  "model_type": "standard",
+  "seed": 1476344115,
+  "prompt": "Low-poly stylized-realistic game vehicle, single railway flatcar freight wagon carrying one plain rust-red shipping container with corrugated sides, low steel deck, wheel bogies underneath, long and straight, original design, no logos, no text, no numbers, no markings",
+  "texture_prompt": "Plain rust-red corrugated steel sides, weathered, black underframe and bogies, completely blank unmarked panels, no lettering, no numerals, no decals, no labels, no stencils",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795878038208,
+  "progress": 100,
+  "started_at": 1795878038219,
+  "finished_at": 1795878092229,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-2314-730c-8736-c46c092c25ad/output/model.glb?Expires=4949424000&Signature=fPPjaCqKr4NPRTKoFT~j~u~OsNpk9UFaY6NLvaKHkEBizrkiEd5fXjpygStIX-YXLTCCp9qEqBRQUdkLL1gwIuTZngFxt7D88FADLrB62oSd3havsDVpSoAOZlBAkhEQEUQB0cvikyBGR~G7pDxY6PSyXH7x3FTRkhEYBjNhVQKHxXS1t~ifSpbahclM4p9bUiwNDd2dB~X6D2LuKXH3kiPbO~Fh1mW6cGtCmQYkf1OCieGVbrPD7pUwxWPBSiypK4VX40WSTGmt-z2G63d9IEHtwkPlRBhxaAtnDOzXIzctcIBVAwG355ZkbMCbN2hOfPXaJUafcP~7RuZQGkjAKg__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-2314-730c-8736-c46c092c25ad/output/preview.png?Expires=4949424000&Signature=e7Q9Grupn~PwibrCuUBe1niPiJFt36PAr0pSzrxPC1do2nji-cOLLtH-yBSJErKlk7OcgDvhHAAqvgtbu98xcpg7ed9h~rY7TNqt71RiexD0cr8txrle~Fa2UsGWUOktNfcNWzaTaZ8I635DMCGxjCKtE9sjJOaQoSPdjMTLMcAr5cj4HPw8Mq3VfdGFMTZtwtuvISTvx0Om9jbcGCkMiiEXBsn2Z7XPIpW4yL8LYn0B1lfAbRzbQGLDV5qmZNfLNKGI7QAKUu4wHRL5XbwpLmd9Nny3QtLZXdjIMD69hSnZNUrep7iY7FrDb4pR37p2-WQEj8ZrOmmDnVXvbgKcDA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [
+    {
+      "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-2314-730c-8736-c46c092c25ad/output/texture_0.png?Expires=4949424000&Signature=mUV--7MHvy00Kt4oJxcijpe0ZzzbLVKwt0wTFTFCNlDE8m9oP5BqQgqL2~7WLUGNofdvGr7lgTcH1T1dNa1LADyau7sa4yLNUYTwBGVvZT2mxwZevF8OsCsfjCbkrXV4lEDwE5daZR0Y6Lp23wwWksSxQggFb5jWDwo0DjJaFxgkGksiPl~wlM2ycDIfiksG0rTvpp~KNVbWqSrhc2MTUWW5~sKEaPb3qc2HTU32H7f~BDgD3Y5TL9s65cNjOEm2Fr~QtZG~EKFNeAdn7waIgHxqHoK0qz7-kuXOE9~ZbO~UuxYoLmLA2x5Fc6tQ3-0dyY7Ed4TUyQXhGC4qknCQvg__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    }
+  ],
+  "consumed_credits": 10,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "enable_pbr": false,
+    "mode": "refine",
+    "preview_task_id": "01a222a0-0f9e-7642-975a-33aa049e5d77",
+    "remove_lighting": true,
+    "target_formats": [
+      "glb"
+    ],
+    "texture_prompt": "Plain rust-red corrugated steel sides, weathered, black underframe and bogies, completely blank unmarked panels, no lettering, no numerals, no decals, no labels, no stencils",
+    "texture_resolution": "2k"
+  },
+  "output": {
+    "seed": 1476344115,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-2314-730c-8736-c46c092c25ad/output/model.glb?Expires=4949424000&Signature=fPPjaCqKr4NPRTKoFT~j~u~OsNpk9UFaY6NLvaKHkEBizrkiEd5fXjpygStIX-YXLTCCp9qEqBRQUdkLL1gwIuTZngFxt7D88FADLrB62oSd3havsDVpSoAOZlBAkhEQEUQB0cvikyBGR~G7pDxY6PSyXH7x3FTRkhEYBjNhVQKHxXS1t~ifSpbahclM4p9bUiwNDd2dB~X6D2LuKXH3kiPbO~Fh1mW6cGtCmQYkf1OCieGVbrPD7pUwxWPBSiypK4VX40WSTGmt-z2G63d9IEHtwkPlRBhxaAtnDOzXIzctcIBVAwG355ZkbMCbN2hOfPXaJUafcP~7RuZQGkjAKg__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-2314-730c-8736-c46c092c25ad/output/preview.png?Expires=4949424000&Signature=e7Q9Grupn~PwibrCuUBe1niPiJFt36PAr0pSzrxPC1do2nji-cOLLtH-yBSJErKlk7OcgDvhHAAqvgtbu98xcpg7ed9h~rY7TNqt71RiexD0cr8txrle~Fa2UsGWUOktNfcNWzaTaZ8I635DMCGxjCKtE9sjJOaQoSPdjMTLMcAr5cj4HPw8Mq3VfdGFMTZtwtuvISTvx0Om9jbcGCkMiiEXBsn2Z7XPIpW4yL8LYn0B1lfAbRzbQGLDV5qmZNfLNKGI7QAKUu4wHRL5XbwpLmd9Nny3QtLZXdjIMD69hSnZNUrep7iY7FrDb4pR37p2-WQEj8ZrOmmDnVXvbgKcDA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": [
+      {
+        "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-2314-730c-8736-c46c092c25ad/output/texture_0.png?Expires=4949424000&Signature=mUV--7MHvy00Kt4oJxcijpe0ZzzbLVKwt0wTFTFCNlDE8m9oP5BqQgqL2~7WLUGNofdvGr7lgTcH1T1dNa1LADyau7sa4yLNUYTwBGVvZT2mxwZevF8OsCsfjCbkrXV4lEDwE5daZR0Y6Lp23wwWksSxQggFb5jWDwo0DjJaFxgkGksiPl~wlM2ycDIfiksG0rTvpp~KNVbWqSrhc2MTUWW5~sKEaPb3qc2HTU32H7f~BDgD3Y5TL9s65cNjOEm2Fr~QtZG~EKFNeAdn7waIgHxqHoK0qz7-kuXOE9~ZbO~UuxYoLmLA2x5Fc6tQ3-0dyY7Ed4TUyQXhGC4qknCQvg__&Key-Pair-Id=K1VGYTHIYLM9UM",
+        "metallic": null,
+        "roughness": null,
+        "normal": null,
+        "metallic_roughness": null,
+        "emission": null
+      }
+    ]
+  }
+}

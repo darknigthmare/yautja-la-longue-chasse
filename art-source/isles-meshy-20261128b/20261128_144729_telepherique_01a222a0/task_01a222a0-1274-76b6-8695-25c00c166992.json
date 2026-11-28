@@ -1,0 +1,43 @@
+{
+  "id": "01a222a0-1274-76b6-8695-25c00c166992",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 1573336900,
+  "prompt": "Low-poly stylized-realistic game prop, aerial cable car gondola cabin, boxy cabin with large windows all around, plain red lower panels, grey roof, steel hanger arm on top with a wheeled cable carriage, sliding door, original design, no logos, no text, no numbers, no markings",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877247384,
+  "progress": 100,
+  "started_at": 1795877247392,
+  "finished_at": 1795877305797,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-1274-76b6-8695-25c00c166992/output/model.glb?Expires=4949424000&Signature=Cb2PD1Zb7PaYj~JNGEP6IvXgnQ8zH8QJxzhQoGlmsjlMuOGgduRNhVxYYxXmUA0SpVrkRKemKqi1O3npd1mZ78w7IB9eK7xLWlQgtb6RVGF5ld8WPKeVHS8AFnZgbQ3JWafW~tIFtfwRQzwhVvrG619v89sr5bA356xFTNZOWjir~2EJJCXonHcYA5b9ENkO-zUO8Bhxpsscp9NJD92qgwYBBVZzWxN1mRptpsxCkfb42PRlhaETcJHYfdUGLILsQhtS~-ct1x3rB7pWJrhQHhyUjilvzeSoiYd~ZzRgys9wMVyNuIaCGNwRTv9k6ejUPFVjn4fDJXSAJwO54dMzRg__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-1274-76b6-8695-25c00c166992/output/preview.png?Expires=4949424000&Signature=iRaO8sPg17tYPJz9FoSkaIuby1y3Dq6m0qHoAY74ODasWYVBMSvCWsjmToqNSkhosz~A5K-rsGfLCpUg197sHWBSsfy9CUEXVp7ZYRuoVY8uJ6d-JdO-8p1jTV4Hn8zKqHlF0wOYZ4YtnyXCyvFQ1SKQUUUhpcG2PT~jZ9Qz~iNR7BK-ImpKWTWRy7nWcgMm2Zwa0F0UxpIiLT42W13kjlI2hXVNRdzv~r63zDRqWTxdYZd2mYk2KQQf0LLQIm94lY0WQc8poTjLTG7JxfOz7gvJJPLf~hKCNM1kDsZVmsV~6udbwScC4QhZMdht-g8ofFvn54MQn0QFAWF-cci2WQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game prop, aerial cable car gondola cabin, boxy cabin with large windows all around, plain red lower panels, grey roof, steel hanger arm on top with a wheeled cable carriage, sliding door, original design, no logos, no text, no numbers, no markings",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 1573336900,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-1274-76b6-8695-25c00c166992/output/model.glb?Expires=4949424000&Signature=Cb2PD1Zb7PaYj~JNGEP6IvXgnQ8zH8QJxzhQoGlmsjlMuOGgduRNhVxYYxXmUA0SpVrkRKemKqi1O3npd1mZ78w7IB9eK7xLWlQgtb6RVGF5ld8WPKeVHS8AFnZgbQ3JWafW~tIFtfwRQzwhVvrG619v89sr5bA356xFTNZOWjir~2EJJCXonHcYA5b9ENkO-zUO8Bhxpsscp9NJD92qgwYBBVZzWxN1mRptpsxCkfb42PRlhaETcJHYfdUGLILsQhtS~-ct1x3rB7pWJrhQHhyUjilvzeSoiYd~ZzRgys9wMVyNuIaCGNwRTv9k6ejUPFVjn4fDJXSAJwO54dMzRg__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-1274-76b6-8695-25c00c166992/output/preview.png?Expires=4949424000&Signature=iRaO8sPg17tYPJz9FoSkaIuby1y3Dq6m0qHoAY74ODasWYVBMSvCWsjmToqNSkhosz~A5K-rsGfLCpUg197sHWBSsfy9CUEXVp7ZYRuoVY8uJ6d-JdO-8p1jTV4Hn8zKqHlF0wOYZ4YtnyXCyvFQ1SKQUUUhpcG2PT~jZ9Qz~iNR7BK-ImpKWTWRy7nWcgMm2Zwa0F0UxpIiLT42W13kjlI2hXVNRdzv~r63zDRqWTxdYZd2mYk2KQQf0LLQIm94lY0WQc8poTjLTG7JxfOz7gvJJPLf~hKCNM1kDsZVmsV~6udbwScC4QhZMdht-g8ofFvn54MQn0QFAWF-cci2WQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

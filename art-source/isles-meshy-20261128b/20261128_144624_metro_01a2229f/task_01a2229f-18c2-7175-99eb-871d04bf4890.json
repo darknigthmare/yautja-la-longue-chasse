@@ -1,0 +1,43 @@
+{
+  "id": "01a2229f-18c2-7175-99eb-871d04bf4890",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 3679378543,
+  "prompt": "Low-poly stylized-realistic game vehicle, single metro subway train car, boxy brushed steel grey body with one plain solid teal stripe along each side, row of windows and sliding passenger doors, flat roof, wheel bogies underneath, long and straight, original design, no logos, no text, no numbers, no markings",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877183528,
+  "progress": 100,
+  "started_at": 1795877183539,
+  "finished_at": 1795877220395,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a2229f-18c2-7175-99eb-871d04bf4890/output/model.glb?Expires=4949424000&Signature=gKf2AahjhiPkMm3GlxboGiOEIATpzve8owjbLCjDYnxcO62xTDVBvrcPzBE9VZAXb6ORUT9mjuUjxLSzJ8~qBelu7ZjMbiolSI1JJH~fnEkwmx9YuGLGby9T26IeCnVawdofkqjyAMWC0It3WT78DzD4UBeBeB5iuGCwNT2dD6BEnxfVdKsUUJQcxgT2~GQeqYQ~wRhHUjUhepIVuIRSvK~dULZPKWQupYEJIyYICaG6ycKaKE8DdoAODIDfVM6CJ3l~Qhu3p4uYO3IvxDtF3ENPm499H2DS9VLWn-Hg3RuMYWw0pD3h~lCn6xB40bzZ4tojWSZ7WC7PFmd-LP1PCw__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a2229f-18c2-7175-99eb-871d04bf4890/output/preview.png?Expires=4949424000&Signature=lpNZzdDPalegFfJholz1ZzaBeYRCev22xr1mRgUXBoxyE~1NyTYCv6S2kKZ1PYLZ2sHPjP4Mj81v3RWkcQ-7v-zX17WqB6GvrG6xdQPMhOrtlPtoFKOfVWgnQaVdlkfHzgqUW~HlRwCx0lx9TOHI4ZGKxjw6cR91Pq8J2FVehtDANtNGtWa7I3JobZGYLYCZaEZjn943urFuE3aQK-UKPKqxvcpFKSeKy33cUPRJb9yf9kwiRlBZ6ApVw41bomYW-9v8Xo49xgSpn4tsBGuK4OKZOwXLD1xdFO76~Lzv~wdnUj~sxMXGN8Z~WzhC3uMLnSXR0JX00IxNJZgKIKI3bQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game vehicle, single metro subway train car, boxy brushed steel grey body with one plain solid teal stripe along each side, row of windows and sliding passenger doors, flat roof, wheel bogies underneath, long and straight, original design, no logos, no text, no numbers, no markings",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 3679378543,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a2229f-18c2-7175-99eb-871d04bf4890/output/model.glb?Expires=4949424000&Signature=gKf2AahjhiPkMm3GlxboGiOEIATpzve8owjbLCjDYnxcO62xTDVBvrcPzBE9VZAXb6ORUT9mjuUjxLSzJ8~qBelu7ZjMbiolSI1JJH~fnEkwmx9YuGLGby9T26IeCnVawdofkqjyAMWC0It3WT78DzD4UBeBeB5iuGCwNT2dD6BEnxfVdKsUUJQcxgT2~GQeqYQ~wRhHUjUhepIVuIRSvK~dULZPKWQupYEJIyYICaG6ycKaKE8DdoAODIDfVM6CJ3l~Qhu3p4uYO3IvxDtF3ENPm499H2DS9VLWn-Hg3RuMYWw0pD3h~lCn6xB40bzZ4tojWSZ7WC7PFmd-LP1PCw__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a2229f-18c2-7175-99eb-871d04bf4890/output/preview.png?Expires=4949424000&Signature=lpNZzdDPalegFfJholz1ZzaBeYRCev22xr1mRgUXBoxyE~1NyTYCv6S2kKZ1PYLZ2sHPjP4Mj81v3RWkcQ-7v-zX17WqB6GvrG6xdQPMhOrtlPtoFKOfVWgnQaVdlkfHzgqUW~HlRwCx0lx9TOHI4ZGKxjw6cR91Pq8J2FVehtDANtNGtWa7I3JobZGYLYCZaEZjn943urFuE3aQK-UKPKqxvcpFKSeKy33cUPRJb9yf9kwiRlBZ6ApVw41bomYW-9v8Xo49xgSpn4tsBGuK4OKZOwXLD1xdFO76~Lzv~wdnUj~sxMXGN8Z~WzhC3uMLnSXR0JX00IxNJZgKIKI3bQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

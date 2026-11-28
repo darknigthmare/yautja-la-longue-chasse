@@ -1,0 +1,43 @@
+{
+  "id": "01a222a2-38bd-749f-8df8-e5538b463515",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 1955265844,
+  "prompt": "Low-poly stylized-realistic game vehicle, small single-engine high-wing bush floatplane on two floats, plain cream fuselage with one plain dark red stripe, three-blade propeller at the nose, wing struts, original design, no logos, no text, no numbers, no registration markings",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877386929,
+  "progress": 100,
+  "started_at": 1795877386941,
+  "finished_at": 1795877428326,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-38bd-749f-8df8-e5538b463515/output/model.glb?Expires=4949424000&Signature=BRrrhHP6If6B6ncmrjMUxN5iFD0GLiCgoMJXCm6cT0gnoZusqaMmwWwPAUXTPRZhc9UUheRlGz3BLUo9ynGeCi2SXWdpYmmf-V8ArMoGRTu4OsWhbD0cXMPnRyl2s8YtVdwoUK8hzBE1n8vRUuN0RgiShTV3ECy9UdSisk1xhDTW7dkeuGBweu4agtccEKmSgSCW~Wi9G7Z1PAlBS4rs8oJi1oDTG84f~olVKxu5hXrbTAXaUXwGmRmDnJ2gQzE2QIuF9fAN11T1PJKf03ZbDDZgpqd3UGBVBWh~GI82nfDHl9tly3CAxI5Or4Vix~F2~-9p85yhsPaCeqLHuszVLg__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-38bd-749f-8df8-e5538b463515/output/preview.png?Expires=4949424000&Signature=Wkxb6AaS0IFazVtKlNzdMUoFTx5G-tmRyXpcVvdd33Kzn4RLuBwKZjjNGCoWtWcJrHe~XKqa5y6kIRUZy19W620StD9WoqnRUtpUpmeA9McdRc65wt1HDoaJl8mF96VblsWLCUwgMIbIadXy77alOogjD3Pjza8mxF45kJBYYDvu6nclrkVFE0zWEV7PRhMXQrXBBPVEnqYnmLQI~wsbys5~VNF0iXVBwvLvZW6mvP3dIs7UHNzc14sdCI9yM0cPMjxAp~jX~1sGlKI80eptMrAmyPiGYnjDXYQClOs8UNDomuYuy0UMyn-IM9L~YM6iwBKY9eg3MHqx2~tnyV3YIA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game vehicle, small single-engine high-wing bush floatplane on two floats, plain cream fuselage with one plain dark red stripe, three-blade propeller at the nose, wing struts, original design, no logos, no text, no numbers, no registration markings",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 1955265844,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-38bd-749f-8df8-e5538b463515/output/model.glb?Expires=4949424000&Signature=BRrrhHP6If6B6ncmrjMUxN5iFD0GLiCgoMJXCm6cT0gnoZusqaMmwWwPAUXTPRZhc9UUheRlGz3BLUo9ynGeCi2SXWdpYmmf-V8ArMoGRTu4OsWhbD0cXMPnRyl2s8YtVdwoUK8hzBE1n8vRUuN0RgiShTV3ECy9UdSisk1xhDTW7dkeuGBweu4agtccEKmSgSCW~Wi9G7Z1PAlBS4rs8oJi1oDTG84f~olVKxu5hXrbTAXaUXwGmRmDnJ2gQzE2QIuF9fAN11T1PJKf03ZbDDZgpqd3UGBVBWh~GI82nfDHl9tly3CAxI5Or4Vix~F2~-9p85yhsPaCeqLHuszVLg__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-38bd-749f-8df8-e5538b463515/output/preview.png?Expires=4949424000&Signature=Wkxb6AaS0IFazVtKlNzdMUoFTx5G-tmRyXpcVvdd33Kzn4RLuBwKZjjNGCoWtWcJrHe~XKqa5y6kIRUZy19W620StD9WoqnRUtpUpmeA9McdRc65wt1HDoaJl8mF96VblsWLCUwgMIbIadXy77alOogjD3Pjza8mxF45kJBYYDvu6nclrkVFE0zWEV7PRhMXQrXBBPVEnqYnmLQI~wsbys5~VNF0iXVBwvLvZW6mvP3dIs7UHNzc14sdCI9yM0cPMjxAp~jX~1sGlKI80eptMrAmyPiGYnjDXYQClOs8UNDomuYuy0UMyn-IM9L~YM6iwBKY9eg3MHqx2~tnyV3YIA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

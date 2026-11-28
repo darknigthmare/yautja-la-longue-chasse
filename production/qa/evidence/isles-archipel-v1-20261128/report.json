@@ -6,9 +6,9 @@
     {
       "step": "l’archipel de 48 × 49 km s’ouvre sur Verdant, sans carte stockée",
       "zones": 49,
-      "terrainTriangles": 103498,
-      "instances": 17098,
-      "drawCalls": 49,
+      "terrainTriangles": 209474,
+      "instances": 17277,
+      "drawCalls": 61,
       "modelsReady": 0,
       "cached": 77
     },
@@ -73,12 +73,46 @@
       "step": "voyage : Blackrock · Prison fédérale de Blackrock"
     },
     {
+      "step": "relief à la vraie échelle : sommet de l’Ember",
+      "altitude": 1479
+    },
+    {
+      "step": "horloge, nuit et météo par climat",
+      "before": {
+        "hour": 7.964166666666577,
+        "weather": "brouillard"
+      },
+      "after": {
+        "hour": 21.02916666666664,
+        "weather": "pluie"
+      },
+      "chip": "07 h 57 · jour · brouillard · altitude 264 m"
+    },
+    {
+      "step": "transports : monter sur un métro, voyager, descendre",
+      "vehicle": "M2#3",
+      "kind": "metro",
+      "metres": 1084
+    },
+    {
+      "step": "faune par île : troupeaux de la savane, proie abattue",
+      "species": "antilope",
+      "honor": 4,
+      "log": [
+        "Envol : pigeons",
+        "Envol : pigeons",
+        "Envol : pigeons",
+        "antilope abattu · honneur + 4"
+      ],
+      "health": 240
+    },
+    {
       "step": "après 18 voyages, le monde en mémoire reste borné",
-      "zones": 49,
-      "terrainTriangles": 171398,
-      "instances": 499,
-      "drawCalls": 48,
-      "modelsReady": 0,
+      "zones": 56,
+      "terrainTriangles": 184880,
+      "instances": 6709,
+      "drawCalls": 129,
+      "modelsReady": 37,
       "cached": 900
     }
   ],
@@ -90,101 +124,296 @@
     },
     "start": {
       "zones": 49,
-      "terrainTriangles": 103498,
-      "instances": 17098,
-      "drawCalls": 49,
+      "terrainTriangles": 209474,
+      "instances": 17277,
+      "drawCalls": 61,
       "modelsReady": 0,
       "cached": 77
     },
+    "lines": [
+      {
+        "id": "M1",
+        "kind": "metro",
+        "vehicles": 4
+      },
+      {
+        "id": "M2",
+        "kind": "metro",
+        "vehicles": 3
+      },
+      {
+        "id": "T1",
+        "kind": "train",
+        "vehicles": 2
+      },
+      {
+        "id": "T2",
+        "kind": "train-fret",
+        "vehicles": 1
+      },
+      {
+        "id": "T3",
+        "kind": "train",
+        "vehicles": 1
+      },
+      {
+        "id": "T4",
+        "kind": "train-fret",
+        "vehicles": 1
+      },
+      {
+        "id": "B1",
+        "kind": "bus",
+        "vehicles": 4
+      },
+      {
+        "id": "B2",
+        "kind": "bus",
+        "vehicles": 2
+      },
+      {
+        "id": "B3",
+        "kind": "bus",
+        "vehicles": 2
+      },
+      {
+        "id": "B4",
+        "kind": "bus",
+        "vehicles": 4
+      },
+      {
+        "id": "B5",
+        "kind": "bus",
+        "vehicles": 2
+      },
+      {
+        "id": "B6",
+        "kind": "bus",
+        "vehicles": 2
+      },
+      {
+        "id": "C1",
+        "kind": "camion",
+        "vehicles": 3
+      },
+      {
+        "id": "C2",
+        "kind": "camion",
+        "vehicles": 1
+      },
+      {
+        "id": "P1",
+        "kind": "pickup",
+        "vehicles": 1
+      },
+      {
+        "id": "P2",
+        "kind": "pickup",
+        "vehicles": 2
+      },
+      {
+        "id": "P3",
+        "kind": "pickup",
+        "vehicles": 4
+      },
+      {
+        "id": "P4",
+        "kind": "motoneige",
+        "vehicles": 2
+      },
+      {
+        "id": "F1",
+        "kind": "ferry",
+        "vehicles": 2
+      },
+      {
+        "id": "F2",
+        "kind": "ferry",
+        "vehicles": 5
+      },
+      {
+        "id": "F3",
+        "kind": "ferry",
+        "vehicles": 1
+      },
+      {
+        "id": "F4",
+        "kind": "ferry",
+        "vehicles": 2
+      },
+      {
+        "id": "S1",
+        "kind": "bateau",
+        "vehicles": 1
+      },
+      {
+        "id": "S2",
+        "kind": "bateau",
+        "vehicles": 2
+      },
+      {
+        "id": "S3",
+        "kind": "bateau",
+        "vehicles": 2
+      },
+      {
+        "id": "S4",
+        "kind": "barge",
+        "vehicles": 2
+      },
+      {
+        "id": "S5",
+        "kind": "cargo",
+        "vehicles": 1
+      },
+      {
+        "id": "A1",
+        "kind": "avion",
+        "vehicles": 1
+      },
+      {
+        "id": "A2",
+        "kind": "avion-brousse",
+        "vehicles": 2
+      },
+      {
+        "id": "H1",
+        "kind": "helicoptere",
+        "vehicles": 1
+      },
+      {
+        "id": "H2",
+        "kind": "helicoptere",
+        "vehicles": 1
+      },
+      {
+        "id": "K1",
+        "kind": "telepherique",
+        "vehicles": 6
+      },
+      {
+        "id": "K2",
+        "kind": "telepherique",
+        "vehicles": 1
+      }
+    ],
     "end": {
-      "zones": 49,
-      "terrainTriangles": 171398,
-      "instances": 499,
-      "drawCalls": 48,
-      "modelsReady": 0,
+      "zones": 56,
+      "terrainTriangles": 184880,
+      "instances": 6709,
+      "drawCalls": 129,
+      "modelsReady": 37,
       "cached": 900
     }
   },
   "captures": [
     {
       "file": "01-verdant-autel.png",
-      "sha256": "37168bc8a5f3edbe6997b60697d7b1efe9361e1f274b3f81ee04e09642eefab3"
+      "sha256": "fd2c28449094d9b7859a950deb303459dae7dee684cc15ed59bfc410425f4937"
     },
     {
       "file": "02-carte-de-l-archipel.png",
-      "sha256": "cfa8ac9c93f42bd0c956a5f1826fcf00acab2f29561fa720b707f517bcea0e23"
+      "sha256": "914a8f0eb840435accae0f3a948ded9bf330e149c18b270cc15c9ca97f7a2295"
     },
     {
       "file": "03-calder-downtown.png",
-      "sha256": "5d6a002f93a066d91fd5dbeccf019433ca890845801d312cd301f60187d88d05"
+      "sha256": "f2f8d072bcf9e5f0f37c1c6e812bcb3ccdbaac17fa90e5e063182b85e6aae212"
     },
     {
       "file": "04-frost-isle-glacier.png",
-      "sha256": "397d54688147c3f65e7c7e2e76c61da8e1c0e958e89453391a34b2925bbc48f5"
+      "sha256": "06c95cb4be1a997ac4ddfcb344c5d25a403433a22a5d6d8e25cba053c745da72"
     },
     {
       "file": "05-ember-volcan.png",
-      "sha256": "a15496b96bd311bd2260eeb949acd77224c5ccc3706bde746b90661bb235b98b"
+      "sha256": "6afcd7f1eca87fd250a0678b27fab1374d810ea8dbf870530f9aace9caac51b2"
     },
     {
       "file": "06-redmesa-desert.png",
-      "sha256": "bffbbc41de749e508e80f56e9a84fbc51821a4cf54824b1797ceb586005778b8"
+      "sha256": "5e69ad694831e44e853c39ececfd2e28a944d65044c565f8dd580e3ac26f94d1"
     },
     {
       "file": "07-shallows-atoll.png",
-      "sha256": "8069202f214405f0d42d289fd422a49dec0a1a986e8fe93464094a75b37788f1"
+      "sha256": "9cca2f1c8b320a83dcfc439a3316e953a43d7c8d6b1ff939cd54634863709af8"
     },
     {
       "file": "08-hollowpine-montagne.png",
-      "sha256": "2d75633fe41bbca39e3e85191a0aa9e51bd1bfd127985b4b05ae6a910753b904"
+      "sha256": "116b430de6e71727edcd24d8741f71b99638cfed11b8a7d9436d3fc94ead0ed7"
     },
     {
       "file": "09-saltmarsh-bayous.png",
-      "sha256": "dd31a882f79b40ee1d15639f18269570c5ff274941155997f8abb526978a192a"
+      "sha256": "d2745ba86563d508b52c6a38a4fd6501d3108fa7db36c0c77da7a277f73edaa0"
     },
     {
       "file": "10-calder-aeroport.png",
-      "sha256": "ca7bd4f8ccd1ae2797d2b54068796d1490b67c0f6cdabf02a13a4d1fdc2035bd"
+      "sha256": "e29af2328a3c7e5a28c0accbdb39820cdc86039fd6c9c3fc4eccb2a9c39e718b"
     },
     {
       "file": "11-calder-complexe-sportif.png",
-      "sha256": "c62d4a21a30769c6151bb339015f1317ccd66628cbd5dba97474158e965468cd"
+      "sha256": "0b39b662a050c1e85550b17ccc133e45cf9567b91d003399cc324d97eb6a04c1"
     },
     {
       "file": "12-calder-big-ball-circuit.png",
-      "sha256": "b9a6e9fd72b7cb68317838d5befc35615835a460ac7afe0d0fdd352ade33f961"
+      "sha256": "494e7f7d8e37cec0568690d4775398eb6099d9684f1732f0410404b4f3443b88"
     },
     {
       "file": "13-calder-marina-richou.png",
-      "sha256": "910bc98c69539728124f0bda9b6cf8b000664673f9e18ff76a9606259ccbd312"
+      "sha256": "c590ddf47192597a26a61d20d8e9e54d9ab64dd6263fcc2078891955f9f6963d"
     },
     {
       "file": "14-calder-beach.png",
-      "sha256": "0a7d1c5008820213df3115def55de15c9baeabede7f2b5f01f1e6c7bc1bb0012"
+      "sha256": "ac8e9b6f8a91cd58cce8efe175793bf3a22c3deee2a2ae15575e72ca2b97f9a8"
     },
     {
       "file": "15-eastbank-gull-pier.png",
-      "sha256": "2946b7e92ca53e58bce2dfc056bbbc12d53bd2350c89b9e557d82e00788b795c"
+      "sha256": "93865163966aad7a3f290df44c972055fc461642c5e1deda6421a7f853aae162"
     },
     {
       "file": "16-eastbank-parc-attractions.png",
-      "sha256": "5be02923fbff2e249639bdff46b1632d4eda12d9f909c6524fffcc312b09f13d"
+      "sha256": "498778e0d7d600ee343c92ff1a502b6f104a9b957d5e0e07b1a0489006dbd066"
     },
     {
       "file": "17-eastbank-zoo.png",
-      "sha256": "44c788ac65d8da7a884c5028c769400534de69e1500746f1a6efc84b31c27f4f"
+      "sha256": "24a370877fc3f6f26e4da64120386e94c437170dc0cb041881047a5f8a59f891"
     },
     {
       "file": "18-steelwater-raffinerie.png",
-      "sha256": "b4ee0db2227a92d913aae0cb1dc7291cc901553e9f9c3dc29ddb889e8981b85a"
+      "sha256": "36aee42c6c4f3948c8b296b5df5e51dcc2d4e639081decb7ac0fcf49e0a6dafd"
     },
     {
       "file": "19-steelwater-conteneurs.png",
-      "sha256": "7043b5c2d83cf8e611199f1a60471b284737c1c9723d3237217f28d337fcd3d7"
+      "sha256": "ecb3e14923be33a7e6a3be7eee2803794ded52b33b5a4c4831d259fd1bdd3775"
     },
     {
       "file": "20-blackrock-prison.png",
-      "sha256": "5bd438638ef727f934fd84e2955e385190c635f6651bda41290e12fc25349d5b"
+      "sha256": "c7c42f8b470c04b09dfe459ebc16f31d4fcb2efbdc6976a21ce281d6f98fd199"
+    },
+    {
+      "file": "21-ember-sommet-vraie-echelle.png",
+      "sha256": "7ed70ee2dac569f665c47c2b672e67268c6056b6a6ee5b16f1542b6952f8ba07"
+    },
+    {
+      "file": "22-hollowpine-altitude.png",
+      "sha256": "d389b8db341b444919db4d06d953ed1f78d74ec4eafeb009afd885f6bb9b8e72"
+    },
+    {
+      "file": "23-nuit-et-meteo.png",
+      "sha256": "a07f34d44db1ac1da58667dc5b99f00eafd518d5356679247e95586c72f2a792"
+    },
+    {
+      "file": "24-sur-le-toit-du-metro.png",
+      "sha256": "a776b234299af6b88489d1448e655391f2691b4b790bd64bde99b7babd81639d"
+    },
+    {
+      "file": "25-voyage-en-metro.png",
+      "sha256": "e00e177629018e41c54792f6e16d2854de68d18d4a601ed74d244fc2e35d8ac9"
+    },
+    {
+      "file": "26-faune-de-tallgrass.png",
+      "sha256": "0a2a3b9c4d9ad6984ab8b7a96c93f1d38aec299158c0d370a915e28d7b4b0eae"
+    },
+    {
+      "file": "27-proie-abattue.png",
+      "sha256": "d3a5482ed8a0ecc80a63d4b64972a88790b6447c29c7d752e4d1795df535f538"
     }
   ],
   "errors": []

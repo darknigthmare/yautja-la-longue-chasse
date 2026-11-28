@@ -3,7 +3,7 @@
  * the view prototype on the test island, the reverse hunt on Verdant, solo against the AI,
  * and Verdant in free hunt (step 4). The free hunt keeps its progress in its own `islesV1`
  * profile; nothing here touches the campaign. */
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState, type CSSProperties} from "react";
 import tuningJson from "./data/islesTuningV1.json";
 import testMapJson from "./data/islesMapTestV1.json";
 import verdantMapJson from "./data/islesMapVerdantV1.json";
@@ -12,7 +12,12 @@ import freeRulesJson from "./data/islesFreeHuntV1.json";
 import verdantWorldJson from "./data/islesVerdantWorldV1.json";
 import modelsJson from "./data/islesModelsV1.json";
 import archipelagoJson from "./data/islesArchipelagoV1.json";
-import {createArchipelagoWorldV1, type IslesArchipelagoSourceV1, type IslesArchipelagoWorldV1} from "./isles/islesArchipelagoGenV1";
+import {createArchipelagoWorldV1, type IslesArchipelagoSourceV1, type IslesArchipelagoWorldV1, type IslesLivingSourceV1} from "./isles/islesArchipelagoGenV1";
+import livingJson from "./data/islesLivingWorldV1.json";
+import {islesLightningAtV1, islesWeatherAtV1, islesWeatherStopsV1, type IslesWeatherRulesV1, type IslesWeatherV1} from "./isles/islesWeatherV1";
+import {createIslesFaunaV1, damageIslesFaunaV1, islesFaunaViewV1, stepIslesFaunaV1, type IslesFaunaRulesV1} from "./isles/islesFaunaV1";
+import {createIslesTransportNetworkV1, islesNearestStopV1, islesRideStepV1, islesVehicleDeckV1, islesVehiclesAtV1, withIslesLinePathV1,
+  type IslesLivingTransportV1, type IslesVehicleV1} from "./isles/islesTransportV1";
 import {nearestWalkableV1} from "./isles/islesPathV1";
 import {screenToWorldMoveV1, stepCameraLeadV1, viewBasisV1, type IslesCameraTuningV1} from "./isles/islesCameraV1";
 import {kindAtV1, markerV1, parseIslesMapV1, tileAtV1, tileCenterV1, type IslesMapSourceV1, type IslesMapV1} from "./isles/islesMapV1";
@@ -75,17 +80,24 @@ interface HudV1 {
     extraction: string; eta: number; log: string[]; outcome: ReverseHuntStateV1["outcome"]; seed: number;
   };
   free?: FreeHudV1;
-  world?: {island: string; biome: string; zone: string | null; east: number; south: number; sizeKm: [number, number]; cached: number};
+  world?: {island: string; biome: string; zone: string | null; east: number; south: number; sizeKm: [number, number]; cached: number;
+    hour: number; night: boolean; weather: string; weatherId: string; fog: number; flash: boolean; altitude: number;
+    stop: {label: string; distance: number; next: string[]} | null; riding: string | null; boardable: string | null; vehicles: number;
+    animals: number; honor: number; health: number; log: string[]};
 }
 
 declare global {
   interface Window { __islesV1?: Record<string, unknown> }
 }
 
+/** Hull colour of a vehicle volume by transport class. */
+const VEHICLE_COLORS: Record<string, string> = {rail: "#7d8794", route: "#c9a23a", mer: "#e8e6df", air: "#f2f2f2", "câble": "#b5483a"};
+
 const MAP_COLORS: Record<string, [number, number, number]> = {
   water: [36, 84, 112], ford: [86, 126, 108], sand: [210, 190, 132], grass: [104, 146, 70], jungle: [58, 100, 48], mud: [118, 96, 66], road: [134, 124, 110],
   bush: [70, 116, 52], crate: [134, 102, 56], rock: [134, 132, 122], tree: [32, 66, 28], wall: [180, 168, 146], roof: [150, 76, 50], pillar: [164, 158, 146], ruin: [196, 186, 146],
   snow: [238, 244, 248], lava: [226, 84, 32], savanna: [194, 178, 100], pine: [28, 68, 52], palm: [84, 150, 74], building: [112, 116, 128],
+  rail: [60, 54, 50], cactus: [70, 120, 70], deadtree: [60, 52, 46], reed: [150, 160, 90], crop: [190, 176, 80],
 };
 
 /** The island seen from above, for the map key (M). */
@@ -119,11 +131,11 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
     if (!canvas || !labelLayer) return;
     let world: FreeHuntWorldV1 | null = null;
     if (kind === "free") world = generateIslesWorldV1(verdantWorldJson as unknown as IslesWorldSourceV1, tuningJson.tileMeters);
-    const archipelago: IslesArchipelagoWorldV1 | null = kind === "world" ? createArchipelagoWorldV1(archipelagoJson as unknown as IslesArchipelagoSourceV1) : null;
+    const archipelago: IslesArchipelagoWorldV1 | null = kind === "world" ? createArchipelagoWorldV1(archipelagoJson as unknown as IslesArchipelagoSourceV1, 900, livingJson as unknown as IslesLivingSourceV1) : null;
     const map = archipelago?.map ?? world?.map ?? parseIslesMapV1((kind === "reverse" ? verdantMapJson : testMapJson) as unknown as IslesMapSourceV1, tuningJson.tileMeters);
     queueMicrotask(() => setWorldMeters(map.width * map.tileMeters));
     let scene: IslesSceneV1;
-    try { scene = createIslesSceneV1(canvas, map, cameraTuning, {models, streamRadius: 3}); } catch {
+    try { scene = createIslesSceneV1(canvas, map, archipelago ? {...cameraTuning, distance: cameraTuning.distance * 3} : cameraTuning, {models, streamRadius: 3}); } catch {
       queueMicrotask(() => setFailure("WebGL indisponible : le mode The Isles demande WebGL2."));
       return;
     }
@@ -142,6 +154,18 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
       actor = createIslesActorV1(map, to.x, to.z, cloak);
       setMapOpen(false);
     };
+    // Living world of the archipelago: weather by climate, transport lines on their real ways.
+    const weatherRules = livingJson as unknown as IslesWeatherRulesV1;
+    const climates = new Map<string, string>(archipelagoJson.islands.map(island => [island.id, island.climate]));
+    const faunaRules = livingJson as unknown as IslesFaunaRulesV1;
+    const worldHour = () => freeRules.clock.startHour + seconds / freeRules.clock.realSecondsPerHour;
+    const living = archipelago ? (() => {
+      const ground = (x: number, z: number) => archipelago.tileAt(Math.floor(x / map.tileMeters), Math.floor(z / map.tileMeters));
+      let network = createIslesTransportNetworkV1(livingJson as unknown as IslesLivingTransportV1, archipelagoJson as unknown as IslesArchipelagoSourceV1, ground);
+      for (const [lineId, points] of Object.entries(archipelago.linePaths)) network = withIslesLinePathV1(network, lineId, points.map(([x, z]) => ({x, z, y: Math.max(0, ground(x, z).height)})));
+      return {network, vehicles: [] as IslesVehicleV1[], riding: null as string | null, weather: null as IslesWeatherV1 | null,
+        fauna: createIslesFaunaV1(seed), honor: 0, health: livingJson.hunter.health, hurtAt: -99, plasmaAt: -99, deadFor: 0, log: [] as string[]};
+    })() : null;
     const match = kind === "reverse" ? createReverseHuntV1(map, rules, {movement, cloak}, seed) : null;
     if (match) actor = match.yautja.actor;
     const loaded = kind === "free" ? loadIslesProfileV1(storage()) : null;
@@ -211,6 +235,68 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
         stepFreeHuntV1(free, {...input, strike: first && once("KeyE"), plasma: first && once("KeyF"), trophyHeld: held("KeyT"), interact: first && once("KeyG")},
           world, freeRules, {movement, cloak}, dt);
         actor = free.player.actor;
+      } else if (archipelago && living) {
+        // Weather of the island under the hunter: it drains the cloak, slows the pace and stops boats and aircraft.
+        const place = archipelago.placeAt(actor.x, actor.z), islandId = place?.islandId ?? "";
+        living.weather = islesWeatherAtV1(weatherRules, climates.get(islandId) ?? "", worldHour(), seed,
+          {altitude: actor.y, snowLine: livingJson.relief.islands[islandId as keyof typeof livingJson.relief.islands]?.snowLine});
+        const w = living.weather;
+        const before = living.vehicles;
+        living.vehicles = islesVehiclesAtV1(living.network, seconds + dt, {x: actor.x, z: actor.z, radius: 420}, {stopped: kindOf => islesWeatherStopsV1(w, kindOf)});
+        const mine = living.riding ? living.vehicles.find(v => v.id === living.riding) : undefined;
+        const was = living.riding ? before.find(v => v.id === living.riding) : undefined;
+        if (first && once("KeyG")) {
+          if (living.riding) {
+            // Step off: down to the nearest ground beside the vehicle.
+            const to = landing(actor.x + 4, actor.z + 4);
+            actor = createIslesActorV1(map, to.x, to.z, cloak); living.riding = null;
+          } else {
+            const near = living.vehicles.find(v => Math.hypot(v.x - actor.x, v.z - actor.z) < v.length / 2 + 6 && Math.abs(v.y + v.height - actor.y) < 16);
+            if (near) { living.riding = near.id; actor = {...actor, x: near.x, y: near.y + near.height, z: near.z, vx: 0, vy: 0, vz: 0, climbing: false, swimming: false}; }
+          }
+        } else if (mine && was) {
+          // Carried by the roof or the deck: the hunter keeps his place on a vehicle that moves and turns.
+          const to = islesRideStepV1(was, mine, actor);
+          actor = {...actor, x: to.x, y: islesVehicleDeckV1(mine, to.x, to.z).deckY, z: to.z, vx: 0, vy: 0, vz: 0};
+          if (input.cloak) actor = {...actor, cloaked: !actor.cloaked && actor.cloakEnergy >= cloak.minToEngage};
+        } else {
+          if (living.riding) living.riding = null;
+          if (living.deadFor <= 0) actor = stepIslesActorV1(actor, input, map, {...movement, walkSpeed: movement.walkSpeed * w.moveFactor, runSpeed: movement.runSpeed * w.moveFactor},
+            {...cloak, drainPerSecond: cloak.drainPerSecond * w.cloakDrain, runDrainPerSecond: cloak.runDrainPerSecond * w.cloakDrain}, dt).actor;
+        }
+        // Wildlife of the island: it flees, charges or hunts; the wrist blades and the plasma caster answer.
+        const h = livingJson.hunter, note = (text: string) => { living.log.push(text); if (living.log.length > 4) living.log.shift(); };
+        const fired = first && once("KeyF") && seconds - living.plasmaAt >= h.plasmaSeconds && living.deadFor <= 0;
+        if (fired) living.plasmaAt = seconds;
+        const stepped = stepIslesFaunaV1(living.fauna, faunaRules, archipelago, {x: actor.x, y: actor.y, z: actor.z, cloaked: actor.cloaked, moving: Math.hypot(actor.vx, actor.vz) > 0.5,
+          noise: fired ? h.plasmaNoise : undefined}, {hour: worldHour() % 24, day: Math.floor(worldHour() / 24)}, {humanSight: w.humanSight, noiseCover: w.noiseCover}, dt);
+        living.fauna = stepped.state;
+        for (const event of stepped.events) {
+          if (event.type === "attack" && living.deadFor <= 0 && !living.riding) { living.health -= event.damage; living.hurtAt = seconds; }
+          if (event.type === "flushed") note("Envol : " + (livingJson.species[event.species as keyof typeof livingJson.species]?.label ?? event.species));
+        }
+        const strike = first && once("KeyE") && living.deadFor <= 0;
+        if (strike || fired) {
+          const reach = strike ? h.strikeRange : h.plasmaRange, fx = Math.sin(actor.facing), fz = Math.cos(actor.facing);
+          let target: {id: string; d: number} | null = null;
+          for (const animal of islesFaunaViewV1(living.fauna)) {
+            if (animal.dead) continue;
+            const dx = animal.x - actor.x, dz = animal.z - actor.z, d = Math.hypot(dx, dz);
+            if (d > reach || (d > 1 && (dx * fx + dz * fz) / d < (strike ? 0.3 : 0.85)) || Math.abs(animal.y - actor.y) > (strike ? 3 : 30)) continue;
+            if (!target || d < target.d) target = {id: animal.id, d};
+          }
+          if (target) {
+            const hit = damageIslesFaunaV1(living.fauna, target.id, strike ? h.strikeDamage : h.plasmaDamage);
+            living.fauna = hit.state;
+            const name = hit.species ? livingJson.species[hit.species as keyof typeof livingJson.species]?.label ?? hit.species : "";
+            if (hit.killed) { living.honor += hit.honor; note(name + " abattu" + (hit.honor ? " · honneur + " + hit.honor : " · aucun honneur")); } else note(name + " touché");
+          }
+        }
+        if (living.deadFor > 0) {
+          living.deadFor -= dt;
+          if (living.deadFor <= 0) { const to = landing(actor.x, actor.z); actor = createIslesActorV1(map, to.x, to.z, cloak); living.health = h.health; }
+        } else if (living.health <= 0) { living.deadFor = h.respawnSeconds; note("Le chasseur tombe. Il se relève plus loin."); }
+        else if (seconds - living.hurtAt > h.regenDelay) living.health = Math.min(h.health, living.health + h.regenPerSecond * dt);
       } else {
         actor = stepIslesActorV1(actor, input, map, movement, cloak, dt).actor;
       }
@@ -240,6 +326,15 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
         if (ext.phase === "landed") list.push({id: "plane", kind: "plane", x: ext.x, y: -0.4, z: ext.z, facing: Math.PI / 2});
         if (ext.phase === "calling" || ext.phase === "inbound") list.push({id: "beacon", kind: "beacon", x: match.mast.x, y: 0, z: match.mast.z, facing: 0});
         for (const beast of match.wildlife) if (beast.health > 0) list.push({id: beast.id, kind: "prey", x: beast.x, y: 0, z: beast.z, facing: beast.facing, color: "#c9a23a"});
+      }
+      if (living) for (const v of living.vehicles) list.push({id: v.id, kind: "vehicle", model: livingJson.transports[v.kind as keyof typeof livingJson.transports]?.model, x: v.x, y: v.y, z: v.z,
+        facing: v.yaw, size: [v.length, v.width, v.height], color: VEHICLE_COLORS[v.cls] ?? "#8d949c"});
+      if (living) for (const animal of islesFaunaViewV1(living.fauna)) {
+        if (Math.hypot(animal.x - actor.x, animal.z - actor.z) > 140) continue;
+        const models = livingJson.speciesModels;
+        list.push({id: animal.id, kind: "animal", model: models.models[animal.species as keyof typeof models.models], x: animal.x, y: animal.y, z: animal.z, facing: animal.yaw,
+          color: models.tints[animal.species as keyof typeof models.tints], downed: animal.dead, moving: animal.state !== "rest" && animal.state !== "idle" && !animal.dead,
+          running: animal.state === "flee" || animal.state === "hunt" || animal.state === "charge"});
       }
       if (free) {
         list.push(...fixed);
@@ -339,8 +434,18 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
         wading: actor.wading, running: actor.running, y: actor.y}, rotation, zoom, thermal, stats: scene.stats(), reverse, free: freeHud,
         world: archipelago ? (() => {
           const place = archipelago.placeAt(actor.x, actor.z);
+          const hour = worldHour() % 24, w = living?.weather, stop = living ? islesNearestStopV1(living.network, actor.x, actor.z, seconds) : null;
+          const board = living && !living.riding ? living.vehicles.find(v => Math.hypot(v.x - actor.x, v.z - actor.z) < v.length / 2 + 6 && Math.abs(v.y + v.height - actor.y) < 16) : undefined;
+          const label = (kindOf: string) => livingJson.transports[kindOf as keyof typeof livingJson.transports]?.label ?? kindOf;
           return {island: place?.island ?? "En mer", biome: place?.biome ?? "", zone: place?.zone ?? null, east: actor.x / 1000, south: actor.z / 1000,
-            sizeKm: [map.width * map.tileMeters / 1000, map.depth * map.tileMeters / 1000] as [number, number], cached: archipelago.cachedZones()};
+            sizeKm: [map.width * map.tileMeters / 1000, map.depth * map.tileMeters / 1000] as [number, number], cached: archipelago.cachedZones(),
+            hour, night: hour >= freeRules.clock.nightFrom || hour < freeRules.clock.nightTo, weather: w?.label ?? "", weatherId: w?.type ?? "clair", fog: w?.fog ?? 0,
+            flash: !!w && islesLightningAtV1(w, worldHour(), seed), altitude: actor.y,
+            stop: stop && stop.distance < 400 ? {label: stop.stop.label, distance: stop.distance,
+              next: stop.departures.slice(0, 3).map(d => label(d.kind) + " vers " + d.towards + " dans " + Math.max(0, Math.round(d.waitSeconds / 60)) + " min")} : null,
+            riding: living?.riding ? label(living.vehicles.find(v => v.id === living.riding)?.kind ?? "") : null, boardable: board ? label(board.kind) : null,
+            vehicles: living?.vehicles.length ?? 0, animals: living ? islesFaunaViewV1(living.fauna).filter(a => !a.dead).length : 0,
+            honor: living?.honor ?? 0, health: living ? Math.max(0, living.health) / livingJson.hunter.health : 1, log: living?.log.slice() ?? []};
         })() : undefined});
       if (archipelago) {
         const names = new Map<string, {x: number; z: number; n: number}>();
@@ -370,8 +475,9 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
       yaw += turn * Math.min(1, dt * 10);
       zoomShown += (cameraTuning.zoomHalfHeights[zoom] - zoomShown) * Math.min(1, dt * 8);
       const list = entities();
-      const night = match?.night ?? (free ? freeHuntClockV1(free, freeRules).night : undefined);
-      scene.render({target: {x: actor.x + lead.x, y: Math.max(0, actor.y) * 0.85, z: actor.z + lead.z}, feet: {x: actor.x, y: actor.y, z: actor.z},
+      const hourNow = worldHour() % 24;
+      const night = match?.night ?? (free ? freeHuntClockV1(free, freeRules).night : archipelago ? hourNow >= freeRules.clock.nightFrom || hourNow < freeRules.clock.nightTo : undefined);
+      scene.render({target: {x: actor.x + lead.x, y: archipelago ? actor.y : Math.max(0, actor.y) * 0.85, z: actor.z + lead.z}, feet: {x: actor.x, y: actor.y, z: actor.z},
         yaw, zoomHalfHeight: zoomShown, entities: list, thermal, night, seconds});
       labels();
       frames++;
@@ -387,6 +493,10 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
         kind, actor: () => actor, match: () => match, free: () => free, world: () => world, stats: () => scene.stats(), rotation: () => rotation,
         archipelago: () => archipelago && {sites: archipelago.sites, cached: archipelago.cachedZones(), width: map.width, depth: map.depth},
         travel: (x: number, z: number) => travelRef.current(x, z),
+        fauna: () => living ? islesFaunaViewV1(living.fauna) : [],
+        living: () => living && {honor: living.honor, health: living.health, log: living.log, vehicles: living.vehicles, riding: living.riding, weather: living.weather, hour: worldHour(), stops: living.network.stops, lines: living.network.lines.map(l => ({id: l.id, kind: l.kind, vehicles: l.vehicles}))},
+        vehiclesAt: (time: number, x: number, z: number, radius: number) => living ? islesVehiclesAtV1(living.network, time, {x, z, radius}) : [],
+        clock: (to: number) => { seconds = to; },
         cutaway: (enabled: boolean) => scene.setCutaway(enabled), project: (x: number, y: number, z: number) => scene.project(x, y, z),
         place: (x: number, z: number, y = 0) => {
           actor = {...actor, x, y, z, vx: 0, vy: 0, vz: 0};
@@ -416,6 +526,8 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
   const ariaLabel = kind === "reverse" ? "Verdant, vue isométrique de la Chasse inversée" : kind === "free" ? "Verdant en chasse libre, vue isométrique" : kind === "world" ? "Archipel entier, vue isométrique" : "Île de test, vue isométrique";
   return <div className={styles.play} data-isles-play-v1={kind} data-isles-thermal={hud?.thermal ? "on" : "off"}>
     <canvas ref={canvasRef} className={styles.canvas} tabIndex={0} aria-label={ariaLabel} />
+    {hud?.world ? <div className={styles.weather} data-weather={hud.world.weatherId} data-flash={hud.world.flash ? "1" : "0"} aria-hidden="true"
+      style={{"--isles-fog": String(hud.world.fog)} as CSSProperties} /> : null}
     <div ref={labelsRef} className={styles.labels} aria-hidden="true" />
     {r?.rain ? <div className={styles.rain} aria-hidden="true" /> : null}
     {r?.jammed ? <div className={styles.jam} aria-hidden="true" /> : null}
@@ -447,6 +559,11 @@ function IslesPlayV1({kind, seed, onQuit}: {kind: PlayKind; seed: number; onQuit
       <label>Camouflage{hud.actor.cloaked ? " actif" : ""}<meter min={0} max={cloak.capacity} value={hud.actor.cloakEnergy} /></label>
       <p className={styles.motion}>{hud.actor.climbing ? "Escalade" : hud.actor.swimming ? "Nage (camouflage impossible)" : hud.actor.wading ? "Dans l’eau" : hud.actor.running ? "Course" : "Marche"} · hauteur {hud.actor.y.toFixed(1)} m</p>
       {f ? <p className={styles.motion} data-isles-carried={f.carried.length}>Trophées portés : {f.carried.length ? f.carried.join(", ") : "aucun"}{f.lair ? "" : " · repaire à découvrir derrière les chutes"}</p> : null}
+      {w ? <p className={styles.motion} data-isles-weather={w.weatherId}>{String(Math.floor(w.hour)).padStart(2, "0")} h {String(Math.floor(w.hour % 1 * 60)).padStart(2, "0")} · {w.night ? "nuit" : "jour"} · {w.weather} · altitude {Math.round(w.altitude)} m</p> : null}
+      {w ? <p className={styles.motion} data-isles-hunt>Vie {Math.round(w.health * 100)} % · honneur {w.honor} · {w.animals} animaux alentour · {w.vehicles} véhicules{w.log.length ? " · " + w.log[w.log.length - 1] : ""}</p> : null}
+      {w?.riding ? <p className={styles.motion} data-isles-riding>À bord : {w.riding} · <kbd>G</kbd> descendre</p>
+        : w?.boardable ? <p className={styles.motion} data-isles-boardable><kbd>G</kbd> monter sur : {w.boardable}</p> : null}
+      {w?.stop ? <p className={styles.motion} data-isles-stop>Arrêt {w.stop.label} à {Math.round(w.stop.distance)} m{w.stop.next.length ? " · " + w.stop.next.join(" · ") : ""}</p> : null}
       {w ? <p className={styles.motion}>Zones calculées en mémoire : {w.cached} · <kbd>M</kbd> carte et voyage</p> : null}
       {kind !== "reverse" ? <p className={styles.tech} data-isles-stats>{hud.stats.zones} zones chargées · {hud.stats.terrainTriangles} triangles · {hud.stats.instances} objets instanciés · {hud.stats.modelsReady} modèles · {hud.stats.drawCalls} appels · {hud.fps} i/s</p> : null}
     </aside> : null}

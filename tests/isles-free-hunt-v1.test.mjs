@@ -337,3 +337,45 @@ test('a session is deterministic for a seed and the same inputs', () => {
   };
   assert.equal(run(), run());
 });
+
+test('review: a resumed profile keeps the contracts accepted today, whatever the seed of the new session', () => {
+  const first = session(I.defaultIslesProfileV1(), 7);
+  place(first, at('altarFront'));
+  step(first, {...idle, interact: true});
+  const accepted = [...first.profile.contracts.accepted];
+  assert.equal(accepted.length, rules.contracts.perDay);
+  // Another seed alone would draw other contracts; the saved ones win.
+  const fresh = session(I.defaultIslesProfileV1(), 8);
+  assert.notDeepEqual(fresh.contractsToday.map(c => c.id).sort(), [...accepted].sort());
+  const resumed = session(I.migrateIslesProfileV1(JSON.parse(JSON.stringify(first.profile))), 8);
+  assert.deepEqual(resumed.contractsToday.map(c => c.id).sort(), [...accepted].sort());
+});
+
+test('review: the bounty leaves its first waypoint and walks its round', () => {
+  const state = session();
+  const bounty = () => state.npcs.find(npc => npc.unique === 'bounty');
+  const start = {x: bounty().x, z: bounty().z};
+  // The hunter stays 70 m away, out of sight: nothing but the patrol moves the bounty.
+  for (let i = 0; i < 40; i++) { place(state, {x: start.x + 70, z: start.z}); step(state, idle, 1); }
+  assert.ok(Math.hypot(bounty().x - start.x, bounty().z - start.z) > 20, 'la cible de prime a quitté son point de départ');
+  assert.ok((bounty().waypoint ?? 0) >= 1);
+});
+
+test('review: an animal on the ground cannot bite a hunter standing 7 m above it', () => {
+  const state = session();
+  const ring = at('trialRings', 0);
+  const jaguar = {id: 'test-jaguar', type: 'jaguar', role: 'animal', armed: false, specialist: false, x: ring.x + 1, z: ring.z, facing: 0, health: 110, maxHealth: 110,
+    state: 'combat', homeX: ring.x, homeZ: ring.z, goalX: ring.x, goalZ: ring.z, path: [], pathKey: 'x', timer: 0, fireTimer: 0, seeing: 9, lastSawAt: 0, lastSeen: null,
+    reported: -999, hurt: true, moving: false, running: false, cell: null, spawnKey: null, deadAt: -1, killedBy: null, honorValue: 20, trophyTaken: false};
+  state.npcs = [jaguar];
+  const ground = I.heightAtV1(map, ...I.tileAtV1(map, jaguar.x, jaguar.z));
+  place(state, ring, ground + 7);
+  const before = state.player.health;
+  I.stepFreeHuntV1(state, idle, world, rules, T, DT);
+  assert.equal(state.player.health, before, 'aucune morsure à travers la canopée');
+  // On the same level the bite lands.
+  place(state, {x: jaguar.x - 1, z: jaguar.z}, ground);
+  jaguar.fireTimer = 0;
+  for (let i = 0; i < 40 && state.player.health === before; i++) { jaguar.x = state.player.actor.x + 1; jaguar.z = state.player.actor.z; jaguar.hurt = true; I.stepFreeHuntV1(state, idle, world, rules, T, DT); }
+  assert.ok(state.player.health < before, 'au même niveau, le jaguar mord');
+});

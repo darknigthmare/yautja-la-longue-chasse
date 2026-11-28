@@ -1,0 +1,787 @@
+{
+ "version": 1,
+ "source": "docs/campagne/ISLES_MONDE_VIVANT_20261128.md ; décisions du propriétaire du 28 novembre 2026 : transports utilisables, relief à la vraie échelle, météo avec effets de jeu, volumes partout puis modèles pour l’essentiel",
+ "roadTypes": {
+  "highway": {"label": "voie rapide", "halfWidth": 7, "surface": "road", "speedLimit": 110, "where": "métropole, industrie, commerces"},
+  "road": {"label": "route", "halfWidth": 3.5, "surface": "road", "speedLimit": 70, "where": "partout où il y a une ville ou un village"},
+  "street": {"label": "rue", "halfWidth": 2.5, "surface": "road", "speedLimit": 30, "where": "grilles de ville, lotissements, zones bâties"},
+  "track": {"label": "piste", "halfWidth": 2, "surface": "mud", "speedLimit": 40, "where": "jungle, savane, désert, marais, toundra, lande"},
+  "trail": {"label": "sentier", "halfWidth": 1, "surface": "mud", "speedLimit": 0, "where": "montagne, falaises, jungle profonde ; à pied seulement"},
+  "rail": {"label": "voie ferrée", "halfWidth": 2, "surface": "rail", "speedLimit": 90, "where": "Calder, Eastbank, Steelwater, Hollowpine sud, mine de Redmesa"},
+  "metro": {"label": "métro (aérien dans The Heights, souterrain ailleurs)", "halfWidth": 2, "surface": "rail", "speedLimit": 60, "where": "Calder, ses Jumelles et le terminus d’Eastbank seulement"},
+  "boardwalk": {"label": "ponton et passerelle", "halfWidth": 1.5, "surface": "road", "speedLimit": 0, "where": "marais, mangroves, marinas, jetées"},
+  "bridge": {"label": "pont ou digue", "halfWidth": 3.5, "surface": "road", "speedLimit": 70, "where": "liaisons entre îles"},
+  "ford": {"label": "gué", "halfWidth": 3.5, "surface": "ford", "speedLimit": 10, "where": "Redmesa–Tallgrass, Tallgrass–Saltmarsh, Verdant–The Shallows"}
+ },
+ "relief": {
+  "unit": "mètres au-dessus de la mer ; vraie échelle",
+  "terraceMeters": 3,
+  "islands": {
+   "hollowpine": {
+    "peak": 1850,
+    "name": "mont Hollow",
+    "snowLine": 1300,
+    "treeLine": 1000,
+    "forms": "chaîne au nord, lac d’altitude, vallées glaciaires, piémont et plaine agricole au sud"
+   },
+   "ember": {
+    "peak": 1480,
+    "name": "l’Ember",
+    "snowLine": null,
+    "treeLine": 500,
+    "forms": "stratovolcan, cratère et lac de lave, coulées, fumerolles, côte de basalte"
+   },
+   "calder": {
+    "peak": 920,
+    "name": "mont Calder",
+    "snowLine": null,
+    "treeLine": 800,
+    "forms": "montagne au nord autour du lac de retenue, collines de l’est (jusqu’à 400 m), plaine urbaine au sud"
+   },
+   "solana": {
+    "peak": 760,
+    "name": "monte Solana",
+    "snowLine": null,
+    "treeLine": 650,
+    "forms": "crête calcaire, terrasses de culture, calanques"
+   },
+   "frost-isle": {
+    "peak": 680,
+    "name": "dôme du glacier",
+    "snowLine": 0,
+    "treeLine": 0,
+    "forms": "calotte, crevasses, moraines, grève basse"
+   },
+   "grayhaven": {
+    "peak": 540,
+    "name": "les Hauts",
+    "snowLine": null,
+    "treeLine": 500,
+    "forms": "plateau boisé au nord, cuvette de l’incident, plaine d’Ashgrove"
+   },
+   "redmesa": {
+    "peak": 420,
+    "name": "la Table rouge",
+    "snowLine": null,
+    "treeLine": 0,
+    "forms": "mesas à sommet plat, canyons de 80 à 150 m, dunes, lit de rivière à sec"
+   },
+   "verdant": {
+    "peak": 380,
+    "name": "la Sœur de pierre",
+    "snowLine": null,
+    "treeLine": 380,
+    "forms": "piton rocheux, gorge du fleuve, chutes, collines couvertes de jungle"
+   },
+   "highland": {
+    "peak": 310,
+    "name": "le Ben",
+    "snowLine": null,
+    "treeLine": 150,
+    "forms": "plateau de lande, falaises de 80 à 120 m, aiguilles en mer"
+   },
+   "eastbank": {
+    "peak": 180,
+    "name": "les hauteurs",
+    "snowLine": null,
+    "treeLine": 180,
+    "forms": "crêtes au nord et à l’est, cuvette commerciale"
+   },
+   "tallgrass": {
+    "peak": 140,
+    "name": "kopje du lodge",
+    "snowLine": null,
+    "treeLine": 140,
+    "forms": "plaine d’herbes, kopjes de granit, lit du point d’eau"
+   },
+   "halcyon-cay": {
+    "peak": 90,
+    "name": "la butte du manoir",
+    "snowLine": null,
+    "treeLine": 90,
+    "forms": "butte centrale, plages, récif"
+   },
+   "steelwater": {
+    "peak": 25,
+    "name": "terril de la carrière",
+    "snowLine": null,
+    "treeLine": 25,
+    "forms": "terre-pleins plats, quais, carrière en creux"
+   },
+   "saltmarsh": {
+    "peak": 6,
+    "name": "levée de Bayou Cross",
+    "snowLine": null,
+    "treeLine": 6,
+    "forms": "levées, chenaux, bancs de vase"
+   },
+   "shallows": {
+    "peak": 4,
+    "name": "dune de Coral Key",
+    "snowLine": null,
+    "treeLine": 4,
+    "forms": "cayes plates, lagons, récif"
+   }
+  },
+  "built": {
+   "calderTowerMax": 310,
+   "calderTowerTypical": [40, 180],
+   "steelwaterStack": 120,
+   "lighthouse": 33,
+   "riskNote": "les tours restent sous les sommets : 310 m contre 920 m pour le mont Calder"
+  }
+ },
+ "weatherTypes": {
+  "clair": {"label": "temps clair", "cloakDrain": 1, "humanSight": 1, "thermalContrast": 1, "noiseCover": 0, "moveFactor": 1, "fog": 0},
+  "pluie": {"label": "pluie", "cloakDrain": 1.6, "cloakFlicker": true, "humanSight": 0.8, "thermalContrast": 1.15, "noiseCover": 0.3, "moveFactor": 1, "fog": 0.25},
+  "orage": {"label": "orage", "cloakDrain": 2.2, "cloakFlicker": true, "humanSight": 0.65, "thermalContrast": 1.2, "noiseCover": 0.7, "moveFactor": 0.95, "fog": 0.4, "lightning": true},
+  "brouillard": {"label": "brouillard", "cloakDrain": 1, "humanSight": 0.45, "thermalContrast": 1.1, "noiseCover": 0.1, "moveFactor": 1, "fog": 0.8},
+  "neige": {"label": "neige", "cloakDrain": 1.2, "humanSight": 0.75, "thermalContrast": 1.5, "noiseCover": 0.2, "moveFactor": 0.9, "fog": 0.35, "tracks": true},
+  "blizzard": {"label": "blizzard", "cloakDrain": 1.5, "humanSight": 0.35, "thermalContrast": 1.6, "noiseCover": 0.8, "moveFactor": 0.75, "fog": 0.9, "tracks": true},
+  "tempete-de-sable": {"label": "tempête de sable", "cloakDrain": 1.8, "cloakFlicker": true, "humanSight": 0.3, "thermalContrast": 0.7, "noiseCover": 0.8, "moveFactor": 0.8, "fog": 0.85},
+  "canicule": {"label": "canicule", "cloakDrain": 1, "humanSight": 0.9, "thermalContrast": 0.45, "noiseCover": 0, "moveFactor": 1, "fog": 0.1},
+  "cendres": {"label": "pluie de cendres", "cloakDrain": 1.7, "cloakFlicker": true, "humanSight": 0.6, "thermalContrast": 0.6, "noiseCover": 0.2, "moveFactor": 0.95, "fog": 0.6},
+  "tempete": {"label": "tempête tropicale", "cloakDrain": 2.4, "cloakFlicker": true, "humanSight": 0.5, "thermalContrast": 1.2, "noiseCover": 0.9, "moveFactor": 0.85, "fog": 0.55, "lightning": true, "stopsTransports": [ "ferry", "bateau", "barge", "cargo", "avion", "avion-brousse", "helicoptere" ]}
+ },
+ "weatherRules": {
+  "blockHours": 3,
+  "note": "le temps change par blocs de trois heures de jeu ; il dépend du climat de l’île, de l’heure et de la graine, jamais du hasard de la machine",
+  "altitude": {
+   "coldAbove": 1300,
+   "effect": "au-dessus de la limite des neiges, la pluie devient neige et l’orage blizzard"
+  },
+  "climates": {
+   "polaire": {
+    "clair": 30,
+    "neige": 40,
+    "blizzard": 20,
+    "brouillard": 10
+   },
+   "tempéré froid": {
+    "clair": 40,
+    "pluie": 30,
+    "brouillard": 18,
+    "orage": 6,
+    "neige": 6
+   },
+   "océanique frais": {
+    "clair": 28,
+    "pluie": 34,
+    "brouillard": 30,
+    "orage": 8
+   },
+   "tempéré": {
+    "clair": 50,
+    "pluie": 28,
+    "brouillard": 12,
+    "orage": 10
+   },
+   "tempéré chaud": {
+    "clair": 58,
+    "pluie": 22,
+    "brouillard": 8,
+    "orage": 12
+   },
+   "méditerranéen": {
+    "clair": 70,
+    "canicule": 14,
+    "pluie": 10,
+    "orage": 6
+   },
+   "aride": {
+    "clair": 52,
+    "canicule": 30,
+    "tempete-de-sable": 15,
+    "orage": 3
+   },
+   "tropical sec": {
+    "clair": 55,
+    "canicule": 25,
+    "orage": 12,
+    "pluie": 8
+   },
+   "subtropical": {
+    "clair": 48,
+    "pluie": 26,
+    "orage": 14,
+    "brouillard": 8,
+    "tempete": 4
+   },
+   "subtropical humide": {
+    "clair": 34,
+    "pluie": 30,
+    "brouillard": 20,
+    "orage": 12,
+    "tempete": 4
+   },
+   "tropical humide": {
+    "clair": 36,
+    "pluie": 34,
+    "orage": 18,
+    "brouillard": 6,
+    "tempete": 6
+   },
+   "tropical d’altitude": {
+    "clair": 38,
+    "pluie": 24,
+    "cendres": 18,
+    "orage": 12,
+    "brouillard": 8
+   }
+  }
+ },
+ "transports": {
+  "metro": {"label": "métro", "class": "rail", "speed": 16, "length": 60, "width": 3, "height": 3.6, "rideOn": "toit", "stopSeconds": 20, "model": "metro"},
+  "train": {"label": "train de voyageurs", "class": "rail", "speed": 24, "length": 90, "width": 3.2, "height": 4, "rideOn": "toit", "stopSeconds": 40, "model": "train"},
+  "train-fret": {"label": "train de marchandises", "class": "rail", "speed": 14, "length": 160, "width": 3.2, "height": 4.2, "rideOn": "toit et wagons plats", "stopSeconds": 90, "model": "train-fret"},
+  "bus": {"label": "bus", "class": "route", "speed": 11, "length": 12, "width": 2.6, "height": 3.2, "rideOn": "toit", "stopSeconds": 15, "model": "bus"},
+  "camion": {"label": "camion", "class": "route", "speed": 13, "length": 16, "width": 2.6, "height": 4, "rideOn": "remorque", "stopSeconds": 60, "model": "camion"},
+  "pickup": {"label": "pick-up de piste", "class": "route", "speed": 10, "length": 5.5, "width": 2, "height": 1.9, "rideOn": "benne", "stopSeconds": 45, "model": "pickup"},
+  "ferry": {"label": "ferry", "class": "mer", "speed": 8, "length": 60, "width": 14, "height": 9, "rideOn": "pont", "stopSeconds": 90, "model": "ferry"},
+  "bateau": {"label": "bateau de pêche ou de plaisance", "class": "mer", "speed": 7, "length": 14, "width": 4.5, "height": 3, "rideOn": "pont", "stopSeconds": 60, "model": "bateau"},
+  "cargo": {"label": "porte-conteneurs", "class": "mer", "speed": 6, "length": 180, "width": 28, "height": 22, "rideOn": "conteneurs", "stopSeconds": 240, "model": "cargo"},
+  "barge": {"label": "barge de bayou et hydroglisseur", "class": "mer", "speed": 9, "length": 8, "width": 3, "height": 2, "rideOn": "pont", "stopSeconds": 30, "model": "bateau"},
+  "avion": {"label": "avion de ligne", "class": "air", "speed": 70, "length": 38, "width": 34, "height": 11, "rideOn": "train d’atterrissage ou soute, au sol seulement", "stopSeconds": 180, "cruiseAltitude": 2600, "model": "avion"},
+  "avion-brousse": {"label": "avion de brousse", "class": "air", "speed": 45, "length": 11, "width": 14, "height": 3.6, "rideOn": "flotteur ou aile, au sol seulement", "stopSeconds": 120, "cruiseAltitude": 1900, "model": "avion-brousse"},
+  "helicoptere": {"label": "hélicoptère", "class": "air", "speed": 40, "length": 13, "width": 3, "height": 4, "rideOn": "patin", "stopSeconds": 60, "cruiseAltitude": 400, "model": "helicoptere"},
+  "telepherique": {"label": "téléphérique", "class": "câble", "speed": 6, "length": 5, "width": 3, "height": 3, "rideOn": "toit de la cabine", "stopSeconds": 30, "model": "telepherique"},
+  "motoneige": {"label": "motoneige et traîneau", "class": "route", "speed": 12, "length": 3, "width": 1.2, "height": 1.4, "rideOn": "traîneau", "stopSeconds": 60, "model": "pickup"}
+ },
+ "lines": [
+  {
+   "id": "M1",
+   "kind": "metro",
+   "name": "métro de Calder, ligne 1",
+   "loop": true,
+   "everyMinutes": 6,
+   "stops": ["4.1", "4.3", "4.5", "4.7", "4.8", "4.2", "4.6"]
+  },
+  {
+   "id": "M2",
+   "kind": "metro",
+   "name": "métro, ligne des stades",
+   "loop": false,
+   "everyMinutes": 10,
+   "stops": ["4.3", "4.8", "4.17", "6.6"]
+  },
+  {
+   "id": "T1",
+   "kind": "train",
+   "name": "train côtier Calder – Eastbank – Steelwater",
+   "loop": false,
+   "everyMinutes": 20,
+   "stops": ["4.2", "4.17", "6.6", "6.1", "5.1", "5.3"]
+  },
+  {
+   "id": "T2",
+   "kind": "train-fret",
+   "name": "fret du port",
+   "loop": true,
+   "everyMinutes": 30,
+   "stops": ["5.7", "5.2", "5.4", "5.8", "5.3", "5.1"]
+  },
+  {
+   "id": "T3",
+   "kind": "train",
+   "name": "train de Maple Hollow",
+   "loop": false,
+   "everyMinutes": 30,
+   "stops": ["2.4", "2.5", "2.7"]
+  },
+  {
+   "id": "T4",
+   "kind": "train-fret",
+   "name": "train de la mine",
+   "loop": false,
+   "everyMinutes": 40,
+   "stops": ["1S.4", "1S.3"]
+  },
+  {
+   "id": "B1",
+   "kind": "bus",
+   "name": "bus du centre de Calder",
+   "loop": true,
+   "everyMinutes": 8,
+   "stops": ["4.1", "4.11", "4.13", "4.7", "4.5", "4.3"]
+  },
+  {
+   "id": "B2",
+   "kind": "bus",
+   "name": "bus des collines et du circuit",
+   "loop": false,
+   "everyMinutes": 20,
+   "stops": ["4.1", "4.15", "4.9", "4.14"]
+  },
+  {
+   "id": "B3",
+   "kind": "bus",
+   "name": "navette d’Eastbank",
+   "loop": true,
+   "everyMinutes": 10,
+   "stops": ["6.4", "6.6", "6.1", "6.3", "6.5", "6.2"]
+  },
+  {
+   "id": "B4",
+   "kind": "bus",
+   "name": "bus de Maple Hollow",
+   "loop": true,
+   "everyMinutes": 15,
+   "stops": ["2.4", "2.3", "2.5", "2.6", "2.7"]
+  },
+  {
+   "id": "B5",
+   "kind": "bus",
+   "name": "car de Solana",
+   "loop": false,
+   "everyMinutes": 30,
+   "stops": ["11.1", "11.5", "11.2", "11.3", "11.4"]
+  },
+  {
+   "id": "B6",
+   "kind": "bus",
+   "name": "car de la Route 9",
+   "loop": false,
+   "everyMinutes": 45,
+   "stops": ["1S.3", "1S.2", "1S.4"]
+  },
+  {
+   "id": "C1",
+   "kind": "camion",
+   "name": "camions de Steelwater",
+   "loop": true,
+   "everyMinutes": 12,
+   "stops": ["5.1", "5.7", "5.2", "5.4", "5.8", "5.3"]
+  },
+  {
+   "id": "C2",
+   "kind": "camion",
+   "name": "camions de la raffinerie de Saltmarsh",
+   "loop": false,
+   "everyMinutes": 40,
+   "stops": ["12.3", "12.2"]
+  },
+  {
+   "id": "P1",
+   "kind": "pickup",
+   "name": "pick-up des braconniers",
+   "loop": false,
+   "everyMinutes": 25,
+   "stops": ["9.4", "9.6", "9.7"]
+  },
+  {
+   "id": "P2",
+   "kind": "pickup",
+   "name": "4×4 de safari",
+   "loop": true,
+   "everyMinutes": 20,
+   "stops": ["14.3", "14.4", "14.1", "14.2", "14.5"]
+  },
+  {
+   "id": "P3",
+   "kind": "pickup",
+   "name": "patrouille de la quarantaine",
+   "loop": true,
+   "everyMinutes": 15,
+   "stops": ["1N.2", "1N.1", "1N.6", "1N.4"]
+  },
+  {
+   "id": "P4",
+   "kind": "motoneige",
+   "name": "motoneiges de la station",
+   "loop": false,
+   "everyMinutes": 30,
+   "stops": ["13.1", "13.2", "13.3"]
+  },
+  {
+   "id": "F1",
+   "kind": "ferry",
+   "name": "ferry du nord",
+   "loop": false,
+   "everyMinutes": 40,
+   "stops": ["2.4", "13.1"]
+  },
+  {
+   "id": "F2",
+   "kind": "ferry",
+   "name": "ferry de Highland",
+   "loop": false,
+   "everyMinutes": 40,
+   "stops": ["4.2", "7.4", "13.1"]
+  },
+  {
+   "id": "F3",
+   "kind": "ferry",
+   "name": "ferry d’Ember",
+   "loop": false,
+   "everyMinutes": 30,
+   "stops": ["12.2", "3.3"]
+  },
+  {
+   "id": "F4",
+   "kind": "ferry",
+   "name": "ferry de Solana",
+   "loop": false,
+   "everyMinutes": 30,
+   "stops": ["11.1", "4.12"]
+  },
+  {
+   "id": "S1",
+   "kind": "bateau",
+   "name": "bateau privé de Halcyon",
+   "loop": false,
+   "everyMinutes": 60,
+   "stops": ["8.4", "9.7"]
+  },
+  {
+   "id": "S2",
+   "kind": "bateau",
+   "name": "vedette des trafiquants",
+   "loop": false,
+   "everyMinutes": 45,
+   "stops": ["10.4", "9.7", "5.6"]
+  },
+  {
+   "id": "S3",
+   "kind": "bateau",
+   "name": "bateaux de pêche de Northwick",
+   "loop": true,
+   "everyMinutes": 50,
+   "stops": ["13.1", "7.4"]
+  },
+  {
+   "id": "S4",
+   "kind": "barge",
+   "name": "hydroglisseur des bayous",
+   "loop": true,
+   "everyMinutes": 20,
+   "stops": ["12.2", "12.1", "12.4"]
+  },
+  {
+   "id": "S5",
+   "kind": "cargo",
+   "name": "porte-conteneurs du large",
+   "loop": false,
+   "everyMinutes": 120,
+   "stops": ["5.2", "sea:sable-7"]
+  },
+  {
+   "id": "A1",
+   "kind": "avion",
+   "name": "ligne des notes : Calder ⇒ Steelwater ⇒ Eastbank ⇒ Maple Hollow ⇒ Ashgrove ⇒ Redmesa",
+   "loop": true,
+   "everyMinutes": 60,
+   "stops": ["4.16", "5.5", "6.7", "2.7", "1N.6", "1S.5"]
+  },
+  {
+   "id": "A2",
+   "kind": "avion-brousse",
+   "name": "avion de brousse",
+   "loop": true,
+   "everyMinutes": 45,
+   "stops": ["14.5", "9.6", "13.2", "6.7"]
+  },
+  {
+   "id": "H1",
+   "kind": "helicoptere",
+   "name": "navette des plateformes",
+   "loop": true,
+   "everyMinutes": 30,
+   "stops": ["5.3", "sea:sable-7", "sea:sable-9", "sea:sable-4"]
+  },
+  {
+   "id": "H2",
+   "kind": "helicoptere",
+   "name": "hélicoptère d’ARGOS",
+   "loop": true,
+   "everyMinutes": 40,
+   "stops": ["islet:ironhook", "4.1", "1N.3"]
+  },
+  {
+   "id": "K1",
+   "kind": "telepherique",
+   "name": "téléphérique du mont Hollow",
+   "loop": false,
+   "everyMinutes": 10,
+   "stops": ["2.6", "2.2"]
+  },
+  {
+   "id": "K2",
+   "kind": "telepherique",
+   "name": "téléphérique du mont Calder",
+   "loop": false,
+   "everyMinutes": 10,
+   "stops": ["4.15", "4.9"]
+  }
+ ],
+ "species": {
+  "ours-polaire": {"label": "ours polaire", "class": "apex", "honor": 30, "health": 220, "damage": 28, "speed": 6, "temper": "hunter", "group": [ 1, 1 ], "active": "jour et nuit"},
+  "loup-arctique": {"label": "loup arctique", "class": "prédateur", "honor": 12, "health": 70, "damage": 12, "speed": 7, "temper": "pack", "group": [ 3, 5 ], "active": "nuit"},
+  "morse": {"label": "morse", "class": "gros gibier", "honor": 10, "health": 180, "damage": 18, "speed": 2, "temper": "charge-when-hurt", "group": [ 3, 8 ], "active": "jour"},
+  "phoque": {"label": "phoque", "class": "petit gibier", "honor": 0, "health": 40, "damage": 0, "speed": 3, "temper": "flee", "group": [ 2, 6 ], "active": "jour"},
+  "ours-brun": {"label": "ours brun", "class": "apex", "honor": 25, "health": 200, "damage": 24, "speed": 6.5, "temper": "hunter", "group": [ 1, 1 ], "active": "aube et crépuscule"},
+  "loup": {"label": "loup", "class": "prédateur", "honor": 12, "health": 65, "damage": 11, "speed": 7.2, "temper": "pack", "group": [ 3, 6 ], "active": "nuit"},
+  "cerf": {"label": "cerf", "class": "gros gibier", "honor": 5, "health": 70, "damage": 6, "speed": 8, "temper": "flee", "group": [ 2, 5 ], "active": "aube et crépuscule"},
+  "puma": {"label": "puma", "class": "prédateur", "honor": 18, "health": 95, "damage": 15, "speed": 7.5, "temper": "ambush", "group": [ 1, 1 ], "active": "nuit"},
+  "aigle": {"label": "aigle", "class": "oiseau", "honor": 0, "health": 20, "damage": 0, "speed": 12, "temper": "flee", "group": [ 1, 2 ], "active": "jour"},
+  "cerf-des-landes": {"label": "cerf des landes", "class": "gros gibier", "honor": 6, "health": 80, "damage": 8, "speed": 8, "temper": "flee", "group": [ 3, 8 ], "active": "jour"},
+  "mouton": {"label": "mouton", "class": "bétail", "honor": 0, "health": 35, "damage": 0, "speed": 4, "temper": "flee", "group": [ 5, 12 ], "active": "jour"},
+  "oiseau-de-mer": {"label": "oiseaux de mer", "class": "oiseau", "honor": 0, "health": 10, "damage": 0, "speed": 10, "temper": "flee", "group": [ 6, 20 ], "active": "jour"},
+  "chien-errant": {"label": "meute de chiens errants", "class": "prédateur", "honor": 6, "health": 45, "damage": 8, "speed": 6.5, "temper": "pack", "group": [ 3, 6 ], "active": "nuit"},
+  "corbeau": {"label": "corbeaux", "class": "oiseau", "honor": 0, "health": 8, "damage": 0, "speed": 9, "temper": "flee", "group": [ 4, 12 ], "active": "jour", "note": "s’envolent et trahissent une présence"},
+  "mutant": {"label": "bête de la quarantaine", "class": "apex", "honor": 35, "health": 240, "damage": 26, "speed": 6.8, "temper": "hunter", "group": [ 1, 2 ], "active": "nuit", "note": "animal altéré par l’incident ; proposé"},
+  "coyote": {"label": "coyote", "class": "prédateur", "honor": 6, "health": 45, "damage": 8, "speed": 7.5, "temper": "pack", "group": [ 2, 4 ], "active": "nuit"},
+  "serpent-a-sonnette": {"label": "serpent à sonnette", "class": "venimeux", "honor": 4, "health": 15, "damage": 14, "speed": 2, "temper": "ambush", "group": [ 1, 1 ], "active": "jour", "note": "venin : dégâts dans la durée"},
+  "vautour": {"label": "vautours", "class": "oiseau", "honor": 0, "health": 15, "damage": 0, "speed": 9, "temper": "flee", "group": [ 3, 7 ], "active": "jour", "note": "tournent au-dessus des cadavres : ils signalent une chasse"},
+  "mouflon": {"label": "mouflon", "class": "gros gibier", "honor": 6, "health": 70, "damage": 9, "speed": 7.5, "temper": "charge-when-hurt", "group": [ 2, 6 ], "active": "jour"},
+  "sanglier": {"label": "sanglier", "class": "gros gibier", "honor": 5, "health": 70, "damage": 10, "speed": 4.6, "temper": "charge-when-hurt", "group": [ 1, 4 ], "active": "aube et crépuscule"},
+  "jaguar": {"label": "jaguar", "class": "apex", "honor": 20, "health": 110, "damage": 16, "speed": 6.2, "temper": "hunter", "group": [ 1, 1 ], "active": "nuit"},
+  "crocodile": {"label": "crocodile", "class": "prédateur", "honor": 10, "health": 140, "damage": 22, "speed": 2.4, "temper": "ambush", "group": [ 1, 3 ], "active": "jour et nuit"},
+  "singe": {"label": "singes hurleurs", "class": "petit gibier", "honor": 0, "health": 20, "damage": 0, "speed": 6, "temper": "flee", "group": [ 4, 10 ], "active": "jour", "note": "donnent l’alerte par leurs cris"},
+  "perroquet": {"label": "perroquets", "class": "oiseau", "honor": 0, "health": 8, "damage": 0, "speed": 10, "temper": "flee", "group": [ 4, 12 ], "active": "jour"},
+  "anaconda": {"label": "anaconda", "class": "prédateur", "honor": 15, "health": 120, "damage": 18, "speed": 2.2, "temper": "ambush", "group": [ 1, 1 ], "active": "nuit"},
+  "alligator": {"label": "alligator", "class": "apex", "honor": 18, "health": 160, "damage": 24, "speed": 2.6, "temper": "ambush", "group": [ 1, 3 ], "active": "jour et nuit"},
+  "heron": {"label": "hérons et aigrettes", "class": "oiseau", "honor": 0, "health": 10, "damage": 0, "speed": 9, "temper": "flee", "group": [ 2, 8 ], "active": "jour"},
+  "lion": {"label": "lion", "class": "apex", "honor": 28, "health": 170, "damage": 22, "speed": 7.5, "temper": "pack", "group": [ 2, 5 ], "active": "nuit"},
+  "hyene": {"label": "hyène", "class": "prédateur", "honor": 10, "health": 75, "damage": 13, "speed": 7, "temper": "pack", "group": [ 3, 6 ], "active": "nuit"},
+  "buffle": {"label": "buffle", "class": "gros gibier", "honor": 14, "health": 210, "damage": 22, "speed": 6.5, "temper": "charge-when-hurt", "group": [ 6, 14 ], "active": "jour"},
+  "antilope": {"label": "antilope", "class": "gros gibier", "honor": 4, "health": 55, "damage": 0, "speed": 9.5, "temper": "flee", "group": [ 5, 15 ], "active": "jour"},
+  "rhinoceros": {"label": "rhinocéros", "class": "apex", "honor": 30, "health": 320, "damage": 30, "speed": 6, "temper": "charge-when-hurt", "group": [ 1, 2 ], "active": "jour"},
+  "requin": {"label": "requin de récif", "class": "apex", "honor": 22, "health": 150, "damage": 24, "speed": 6, "temper": "hunter", "group": [ 1, 2 ], "active": "jour et nuit", "note": "dans l’eau seulement"},
+  "tortue": {"label": "tortue marine", "class": "petit gibier", "honor": 0, "health": 60, "damage": 0, "speed": 2, "temper": "flee", "group": [ 1, 3 ], "active": "nuit", "note": "espèce protégée : la tuer n’apporte rien"},
+  "chevre": {"label": "chèvres", "class": "bétail", "honor": 0, "health": 30, "damage": 0, "speed": 5, "temper": "flee", "group": [ 4, 10 ], "active": "jour"},
+  "vipere": {"label": "vipère", "class": "venimeux", "honor": 3, "health": 12, "damage": 10, "speed": 2, "temper": "ambush", "group": [ 1, 1 ], "active": "jour"},
+  "rat": {"label": "rats", "class": "nuisible", "honor": 0, "health": 5, "damage": 0, "speed": 5, "temper": "flee", "group": [ 3, 10 ], "active": "nuit"},
+  "pigeon": {"label": "pigeons", "class": "oiseau", "honor": 0, "health": 5, "damage": 0, "speed": 9, "temper": "flee", "group": [ 5, 20 ], "active": "jour", "note": "s’envolent quand on les approche : attention aux toits"},
+  "chien-de-garde": {"label": "chien de garde", "class": "dressé", "honor": 0, "health": 50, "damage": 9, "speed": 6.5, "temper": "tracker", "group": [ 1, 2 ], "active": "nuit"},
+  "mouette": {"label": "mouettes", "class": "oiseau", "honor": 0, "health": 6, "damage": 0, "speed": 10, "temper": "flee", "group": [ 5, 20 ], "active": "jour"},
+  "fauve-du-zoo": {"label": "fauve échappé du zoo", "class": "apex", "honor": 25, "health": 160, "damage": 22, "speed": 7.5, "temper": "hunter", "group": [ 1, 1 ], "active": "nuit", "note": "seulement si un enclos a été ouvert"},
+  "salamandre": {"label": "lézard des laves", "class": "petit gibier", "honor": 2, "health": 25, "damage": 4, "speed": 5, "temper": "flee", "group": [ 1, 4 ], "active": "jour"},
+  "chevre-sauvage": {"label": "chèvre sauvage", "class": "gros gibier", "honor": 4, "health": 45, "damage": 6, "speed": 7.5, "temper": "flee", "group": [ 3, 7 ], "active": "jour"},
+  "guepard": {"label": "guépard", "class": "prédateur", "honor": 16, "health": 80, "damage": 14, "speed": 11, "temper": "hunter", "group": [ 1, 2 ], "active": "jour", "note": "le plus rapide de l’archipel ; canon du mode, section 9.2"},
+  "python": {"label": "python", "class": "prédateur", "honor": 12, "health": 100, "damage": 16, "speed": 2, "temper": "ambush", "group": [ 1, 1 ], "active": "nuit", "note": "canon du mode, section 9.2"},
+  "panthere": {"label": "panthère des marais", "class": "prédateur", "honor": 18, "health": 100, "damage": 16, "speed": 7, "temper": "ambush", "group": [ 1, 1 ], "active": "nuit", "note": "canon du mode, section 9.2"},
+  "elan": {"label": "élan", "class": "gros gibier", "honor": 8, "health": 160, "damage": 16, "speed": 7, "temper": "charge-when-hurt", "group": [ 1, 3 ], "active": "aube et crépuscule", "note": "canon du mode, section 9.2"},
+  "crocodile-marin": {"label": "crocodile marin", "class": "apex", "honor": 24, "health": 200, "damage": 28, "speed": 2.8, "temper": "ambush", "group": [ 1, 2 ], "active": "jour et nuit", "note": "apex de The Shallows ; canon du mode, section 9.2"},
+  "raie": {"label": "raie", "class": "petit gibier", "honor": 2, "health": 30, "damage": 8, "speed": 4, "temper": "flee", "group": [ 1, 4 ], "active": "jour", "note": "dans l’eau peu profonde ; son dard blesse si on marche dessus"},
+  "barracuda": {"label": "barracudas", "class": "prédateur", "honor": 6, "health": 35, "damage": 10, "speed": 8, "temper": "pack", "group": [ 4, 9 ], "active": "jour", "note": "dans l’eau seulement ; autour de l’avion échoué"},
+  "harpie": {"label": "harpie féroce", "class": "oiseau", "honor": 4, "health": 25, "damage": 6, "speed": 12, "temper": "flee", "group": [ 1, 1 ], "active": "jour", "note": "rapace de la canopée de Verdant"},
+  "cheval-sauvage": {"label": "chevaux sauvages", "class": "gros gibier", "honor": 0, "health": 120, "damage": 8, "speed": 10, "temper": "flee", "group": [ 4, 9 ], "active": "jour", "note": "dans les canyons de Redmesa ; leur fuite soulève la poussière et se voit de loin"},
+  "renard": {"label": "renard", "class": "petit gibier", "honor": 1, "health": 20, "damage": 0, "speed": 7, "temper": "flee", "group": [ 1, 2 ], "active": "nuit", "note": "faune revenue sur le plateau de Grayhaven"}
+ },
+ "flora": {
+  "pine": {"label": "pin et sapin", "tile": "pine", "height": [ 9, 24 ], "cover": "tronc"},
+  "tree": {"label": "feuillu (chêne, érable, hêtre)", "tile": "tree", "height": [ 7, 18 ], "cover": "tronc et canopée"},
+  "palm": {"label": "palmier et cocotier", "tile": "palm", "height": [ 6, 14 ], "cover": "tronc"},
+  "jungle-giant": {"label": "géant de la canopée (fromager)", "tile": "tree", "height": [ 28, 45 ], "cover": "canopée praticable"},
+  "mangrove": {"label": "palétuvier", "tile": "tree", "height": [ 4, 8 ], "cover": "racines dans l’eau"},
+  "cypress": {"label": "cyprès chauve et mousse espagnole", "tile": "tree", "height": [ 10, 22 ], "cover": "tronc dans l’eau"},
+  "olive": {"label": "olivier, chêne vert, cyprès de Provence", "tile": "tree", "height": [ 4, 12 ], "cover": "tronc"},
+  "acacia": {"label": "acacia parasol et baobab", "tile": "tree", "height": [ 6, 16 ], "cover": "ombre large"},
+  "dead-tree": {"label": "arbre brûlé", "tile": "deadtree", "height": [ 5, 14 ], "cover": "tronc nu"},
+  "cactus": {"label": "cactus saguaro et yucca", "tile": "cactus", "height": [ 2, 7 ], "cover": "faible ; blesse au contact"},
+  "bush": {"label": "buisson, fougère, bruyère", "tile": "bush", "height": [ 1, 1.6 ], "cover": "cache un corps accroupi"},
+  "tall-grass": {"label": "hautes herbes", "tile": "bush", "height": [ 1.2, 1.8 ], "cover": "cache un corps debout immobile"},
+  "reed": {"label": "roseaux", "tile": "reed", "height": [ 1.5, 2.5 ], "cover": "cache un corps dans l’eau"},
+  "crop": {"label": "cultures (maïs, blé, vigne)", "tile": "crop", "height": [ 1, 2.4 ], "cover": "cache un corps debout ; rangs droits"},
+  "lichen": {"label": "lichen et mousse de toundra", "tile": "snow", "height": [ 0, 0 ], "cover": "aucune"},
+  "kelp": {"label": "corail et herbier", "tile": "ford", "height": [ 0, 0 ], "cover": "aucune ; eau peu profonde"}
+ },
+ "islands": {
+  "frost-isle": {
+   "roads": ["track", "trail", "boardwalk"],
+   "transports": ["motoneige", "ferry", "bateau", "avion-brousse"],
+   "buildings": ["maisons sur pilotis", "conserverie", "musée baleinier", "modules de la station polaire", "dôme radar", "garage à motoneiges", "cabane de trappeur"],
+   "props": ["casiers à crabes", "séchoirs à poisson", "fûts de carburant", "antennes", "traîneaux", "balises de piste", "épave de baleinière"],
+   "fauna": ["ours-polaire", "loup-arctique", "morse", "phoque", "oiseau-de-mer"],
+   "flora": ["lichen", "bush"],
+   "weatherNote": "froid permanent : jauge de chaleur ; les traces de pas restent dans la neige"
+  },
+  "hollowpine": {
+   "roads": ["road", "street", "track", "trail", "rail", "bridge"],
+   "transports": ["train", "bus", "pickup", "ferry", "telepherique", "avion"],
+   "buildings": ["chalets", "scierie", "tour de guet incendie", "refuge d’altitude", "gare du téléphérique", "maisons de banlieue", "lycée", "église", "diner", "station-service", "fermes", "silos", "granges", "gare de Maple Hollow"],
+   "props": ["piles de grumes", "boîtes aux lettres", "bus scolaires", "bottes de foin", "tracteurs", "panneaux de randonnée", "barques sur le lac", "pylônes du téléphérique"],
+   "fauna": ["ours-brun", "loup", "cerf", "puma", "aigle", "sanglier", "elan"],
+   "flora": ["pine", "tree", "bush", "crop"],
+   "weatherNote": "neige au-dessus de 1 300 m ; brouillard de vallée à l’aube"
+  },
+  "highland": {
+   "roads": ["track", "trail"],
+   "transports": ["ferry", "bateau"],
+   "buildings": ["église en ruine", "phare", "bergerie", "cottage de pierre", "tour de guet ancienne"],
+   "props": ["murets de pierre sèche", "croix celtiques", "enclos à moutons", "tas de tourbe", "casiers à homards", "canot retourné"],
+   "fauna": ["cerf-des-landes", "mouton", "oiseau-de-mer", "aigle"],
+   "flora": ["bush", "pine"],
+   "weatherNote": "brouillard une fois sur trois ; le vent couvre les bruits au bord des falaises"
+  },
+  "grayhaven": {
+   "roads": ["road", "street", "track", "bridge"],
+   "transports": ["pickup", "helicoptere", "avion"],
+   "buildings": ["mur de quarantaine et miradors", "poste militaire", "maisons abandonnées", "école vide", "hôpital de campagne", "laboratoire d’ARGOS", "port désaffecté", "aérodrome d’Ashgrove", "métro noyé (ruine, sans rame)"],
+   "props": ["voitures abandonnées", "barrières et barbelés", "tentes de décontamination", "projecteurs", "fûts marqués", "épaves de bateaux", "panneaux d’évacuation"],
+   "fauna": ["chien-errant", "corbeau", "cerf", "mutant", "rat", "renard", "ours-brun"],
+   "flora": ["dead-tree", "tree", "bush"],
+   "weatherNote": "cendres en suspension près du site de l’incident : la vue thermique y porte moins loin"
+  },
+  "solana": {
+   "roads": ["road", "street", "track", "trail", "bridge"],
+   "transports": ["bus", "ferry", "bateau"],
+   "buildings": ["maisons blanches à toit de tuile", "église et campanile", "villas", "caves viticoles", "moulin", "temple en ruine", "théâtre antique", "cabanons des calanques"],
+   "props": ["treilles de vigne", "barques de pêche", "amphores", "colonnes tombées", "terrasses de café", "filets qui sèchent", "scooters"],
+   "fauna": ["chevre", "sanglier", "vipere", "mouette", "aigle", "loup"],
+   "flora": ["olive", "pine", "bush", "crop"],
+   "weatherNote": "canicule l’été : la vue thermique distingue mal les corps du sol chaud"
+  },
+  "calder": {
+   "roads": ["highway", "road", "street", "rail", "metro", "trail", "boardwalk", "bridge"],
+   "transports": ["metro", "train", "bus", "camion", "ferry", "bateau", "avion", "helicoptere", "telepherique"],
+   "buildings": ["gratte-ciel", "immeubles de brique", "banque", "commissariats", "stations de métro", "gare centrale", "gare routière", "hôpital", "musées", "université", "villas de Richou", "capitainerie", "hôtels du front de mer", "Big Ball", "stades", "terminal de l’aéroport", "barrage et centrale"],
+   "props": ["feux et lampadaires", "abribus", "bouches de métro", "escaliers de secours", "citernes de toit", "enseignes", "bennes", "échafaudages", "grues", "voitures garées", "kiosques", "yachts"],
+   "fauna": ["pigeon", "rat", "chien-de-garde", "mouette", "cerf", "puma"],
+   "flora": ["tree", "pine", "bush", "palm"],
+   "weatherNote": "le brouillard monte du port la nuit ; la pluie fait briller le camouflage sous les néons"
+  },
+  "eastbank": {
+   "roads": ["highway", "road", "street", "rail", "boardwalk", "bridge"],
+   "transports": ["train", "metro", "bus", "bateau", "avion", "avion-brousse"],
+   "buildings": ["centre commercial", "grands magasins", "parking à étages", "boutiques", "cinéma", "manèges", "grande roue", "bassins et toboggans", "enclos du zoo", "hangars de l’aérodrome", "gare d’Eastbank"],
+   "props": ["chariots", "panneaux publicitaires", "voitures garées", "stands forains", "bouées et transats", "cages et fossés", "bornes d’arcade"],
+   "fauna": ["pigeon", "mouette", "rat", "chien-de-garde", "fauve-du-zoo"],
+   "flora": ["tree", "palm", "bush"],
+   "weatherNote": "orages d’été en fin de journée : les parcs se vident"
+  },
+  "redmesa": {
+   "roads": ["road", "track", "trail", "rail", "ford"],
+   "transports": ["bus", "camion", "pickup", "train-fret", "avion", "helicoptere"],
+   "buildings": ["motel", "diner", "station-service", "saloon de Dustwater", "chevalements de la mine", "tribunes du Speedway", "hangars militaires enterrés", "casse automobile", "château d’eau"],
+   "props": ["carcasses de voitures", "éoliennes de pompage", "panneaux de la Route 9", "wagonnets", "pneus du circuit", "clôtures électrifiées", "antennes paraboliques"],
+   "fauna": ["coyote", "serpent-a-sonnette", "vautour", "mouflon", "puma", "cheval-sauvage"],
+   "flora": ["cactus", "bush"],
+   "weatherNote": "tempête de sable : personne ne voit à plus de quelques mètres, le camouflage se couvre de poussière"
+  },
+  "tallgrass": {
+   "roads": ["track", "trail", "ford"],
+   "transports": ["pickup", "avion-brousse"],
+   "buildings": ["lodge abandonné", "ranch", "tentes du safari-camp", "mirador d’observation", "hangar de l’aérodrome de brousse"],
+   "props": ["4×4 de safari", "abreuvoirs", "carcasses", "termitières", "clôtures du ranch", "manche à air"],
+   "fauna": ["lion", "hyene", "buffle", "antilope", "rhinoceros", "vautour", "guepard"],
+   "flora": ["acacia", "tall-grass", "bush"],
+   "weatherNote": "saison sèche : feux de brousse possibles après un tir de plasma"
+  },
+  "saltmarsh": {
+   "roads": ["road", "track", "boardwalk", "ford"],
+   "transports": ["barge", "camion", "ferry", "bateau"],
+   "buildings": ["cabanes sur pilotis", "église en bois", "bar de Bayou Cross", "raffinerie", "pontons", "cabane de trappeur"],
+   "props": ["hydroglisseurs", "pièges à écrevisses", "barques", "lampes-tempête", "fûts", "conduites de la raffinerie"],
+   "fauna": ["alligator", "heron", "sanglier", "anaconda", "python", "panthere"],
+   "flora": ["cypress", "reed", "bush"],
+   "weatherNote": "brouillard à l’aube ; l’eau partout trahit le camouflage"
+  },
+  "ember": {
+   "roads": ["road", "track", "trail"],
+   "transports": ["ferry", "bateau", "helicoptere", "pickup"],
+   "buildings": ["bains de Sulfur Springs", "centrale géothermique", "observatoire du volcan", "entrepôts du Vieux Port", "phare de basalte"],
+   "props": ["conduites de vapeur", "capteurs sismiques", "barques", "panneaux de danger", "blocs de lave", "fumerolles"],
+   "fauna": ["chevre-sauvage", "salamandre", "oiseau-de-mer"],
+   "flora": ["palm", "bush", "dead-tree"],
+   "weatherNote": "pluie de cendres : elle se dépose sur le camouflage et la chaleur du sol brouille la vue thermique"
+  },
+  "steelwater": {
+   "roads": ["highway", "road", "street", "rail", "bridge"],
+   "transports": ["train-fret", "train", "camion", "cargo", "bateau", "helicoptere", "avion"],
+   "buildings": ["entrepôts", "usine de viande", "chaîne automobile", "usine de camions", "centrale", "raffinerie", "portiques", "capitainerie et douane", "phare", "hangars d’avions", "gare de triage"],
+   "props": ["conteneurs", "chariots élévateurs", "palettes", "citernes", "wagons", "conduites", "grues", "épaves de barges", "cheminées"],
+   "fauna": ["rat", "mouette", "chien-de-garde"],
+   "flora": ["bush", "palm"],
+   "weatherNote": "fumées et vapeur : des écrans naturels contre la vue des gardes"
+  },
+  "halcyon-cay": {
+   "roads": ["track", "trail", "boardwalk"],
+   "transports": ["bateau", "helicoptere"],
+   "buildings": ["manoir", "pavillons d’invités", "héliport", "hangar à bateaux", "serre"],
+   "props": ["statues", "fontaines", "voiturettes", "caméras", "transats", "yacht à quai"],
+   "fauna": ["perroquet", "singe", "chien-de-garde", "tortue", "requin"],
+   "flora": ["palm", "tree", "bush"],
+   "weatherNote": "tempête tropicale : bateaux et hélicoptère restent à quai, l’île est coupée du monde"
+  },
+  "verdant": {
+   "roads": ["track", "trail", "boardwalk", "ford"],
+   "transports": ["pickup", "bateau", "avion-brousse"],
+   "buildings": ["autel yautja", "camp des braconniers", "tentes des fouilles", "cases de Port-Tahren", "hangar de la piste cachée", "plateformes dans la canopée"],
+   "props": ["cages à animaux", "caisses", "pirogues", "lianes", "ponts de corde", "générateurs", "statues couvertes de mousse"],
+   "fauna": ["jaguar", "sanglier", "crocodile", "singe", "perroquet", "anaconda", "harpie"],
+   "flora": ["jungle-giant", "tree", "palm", "bush"],
+   "weatherNote": "pluie un tiers du temps : elle couvre les bruits mais fait scintiller le camouflage"
+  },
+  "shallows": {
+   "roads": ["boardwalk", "ford", "trail"],
+   "transports": ["bateau"],
+   "buildings": ["cabanes de pêcheurs", "ponton des trafiquants", "phare des Shallows", "épave du Meridian"],
+   "props": ["casiers", "bouées", "filets", "caisses étanches", "canots"],
+   "fauna": ["requin", "tortue", "crocodile", "heron", "oiseau-de-mer", "crocodile-marin", "raie", "barracuda"],
+   "flora": ["mangrove", "palm", "kelp"],
+   "weatherNote": "marée : à marée basse les gués relient les cayes"
+  }
+ },
+ "speciesModels": {
+  "note": "modèle 3D utilisé par espèce ; une espèce sans modèle propre emprunte le plus proche, teinté ou non ; les autres restent des volumes simples",
+  "models": {
+   "ours-polaire": "ours-brun",
+   "ours-brun": "ours-brun",
+   "loup-arctique": "loup",
+   "loup": "loup",
+   "coyote": "loup",
+   "hyene": "loup",
+   "chien-errant": "chien",
+   "chien-de-garde": "chien",
+   "cerf": "cerf",
+   "cerf-des-landes": "cerf",
+   "antilope": "cerf",
+   "mouflon": "cerf",
+   "chevre": "cerf",
+   "chevre-sauvage": "cerf",
+   "mouton": "sanglier",
+   "puma": "jaguar",
+   "jaguar": "jaguar",
+   "fauve-du-zoo": "lion",
+   "lion": "lion",
+   "mutant": "ours-brun",
+   "buffle": "buffle",
+   "rhinoceros": "buffle",
+   "morse": "buffle",
+   "sanglier": "sanglier",
+   "crocodile": "crocodile",
+   "alligator": "crocodile",
+   "anaconda": "crocodile",
+   "requin": "requin",
+   "guepard": "jaguar",
+   "panthere": "jaguar",
+   "python": "crocodile",
+   "elan": "cerf",
+   "crocodile-marin": "crocodile",
+   "barracuda": "requin",
+   "cheval-sauvage": "cerf"
+  },
+  "tints": {
+   "ours-polaire": "#f2f2ee",
+   "loup-arctique": "#e6e6e2",
+   "mutant": "#5a3a4a",
+   "morse": "#8a6a55",
+   "rhinoceros": "#8d8d88",
+   "mouton": "#e9e4d6"
+  }
+ },
+ "hunter": {
+  "health": 240,
+  "regenPerSecond": 2,
+  "regenDelay": 8,
+  "strikeDamage": 45,
+  "strikeRange": 2.6,
+  "plasmaDamage": 55,
+  "plasmaRange": 34,
+  "plasmaNoise": 40,
+  "plasmaSeconds": 0.6,
+  "respawnSeconds": 3
+ },
+ "coherence": ["pas de métro en service hors de Calder, de ses Jumelles et du terminus d’Eastbank ; le métro noyé d’Ashgrove est une ruine sans rame", "pas de voie ferrée sur les îles sans ville ni industrie (Frost Isle, Highland Isle, Tallgrass, Verdant, Halcyon Cay, The Shallows, Saltmarsh, Ember)", "pas de voie rapide hors de Calder, d’Eastbank et de Steelwater", "avions de ligne seulement entre de vraies pistes ; avions de brousse sur les pistes en terre", "pas de palmier au nord, pas de pin dans la jungle, pas de cactus hors de Redmesa", "un apex par île sauvage, celui du canon : ours polaire, ours brun, puma, jaguar, lion, alligator, crocodile marin ; aucun grand prédateur en liberté dans les villes", "neige seulement au-dessus de la limite des neiges, sauf sur Frost Isle", "les transports de mer et d’air s’arrêtent pendant une tempête tropicale"]
+}
