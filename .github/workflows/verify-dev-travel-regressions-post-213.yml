@@ -1,0 +1,40 @@
+name: Verify the two development travel suites
+on:
+  push:
+    branches: [codex/verify-dev-travel-regressions-post-213]
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 638d4b61b2f1b5626ed5c2cd84713f75df1da340
+          persist-credentials: false
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /tests/
+            /scripts/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install the locked test dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Run the actual route fixtures and session callbacks
+        run: |
+          test "$(git rev-parse HEAD)" = '638d4b61b2f1b5626ed5c2cd84713f75df1da340'
+          node --experimental-strip-types --test --test-concurrency=1 --test-reporter=spec tests/dev-travel-destinations.test.mjs tests/dev-travel-session.test.mjs
+      - name: Check the touched sources
+        run: npx eslint app/dev/destinations.ts app/dev/session.tsx tests/dev-travel-destinations.test.mjs tests/dev-travel-session.test.mjs
