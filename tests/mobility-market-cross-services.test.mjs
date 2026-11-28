@@ -19,7 +19,8 @@ const houndAction = { type: "recruit", catalogueId: kennel.HOUND_CATALOGUE_V147[
 
 function market(balance) {
   const seed = saves.defaultSave(owner);
-  seed.profile = { ...seed.profile, clanMarks: balance, honor: 300, rankId: "blooded" };
+  seed.profile = { ...seed.profile, clanMarks: balance, rankId: "blooded",
+    acquiredRankIdV166: "blooded" };
   seed.mobilityV1 = { ...mobility.createMobilityLedger(owner), circulationPermit: true };
   const entries = new Map();
   const disk = { getItem: key => entries.get(key) ?? null, setItem: (key, value) => entries.set(key, value),
