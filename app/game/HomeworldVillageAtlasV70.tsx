@@ -1,6 +1,7 @@
 import { HOMEWORLD_GEOMETRY_V64, homeworldBuildingFootprintV64 } from './systems/homeworldGeometryV64';
 import { HOMEWORLD_REGIONS_V68, HOMEWORLD_VILLAGE_PERIMETER_V68, type HomeworldRegionIdV68 } from './systems/homeworldRegionsV68';
 import { villageDestinationsV70 } from './systems/homeworldVillageRoutesV70';
+import { homeworldRegionNames, yautjaLocalLabel } from './systems/yautjaPlaceNames';
 import type { HomeworldVec2 } from './systems/homeworldCity';
 import styles from './HomeworldVillageAtlasV70.module.css';
 
@@ -10,9 +11,11 @@ export default function HomeworldVillageAtlasV70({ regionId, actor, disabled, on
   regionId: HomeworldRegionIdV68; actor: HomeworldVec2; disabled?: boolean; onChoose(id: string): void;
 }) {
   const definition = HOMEWORLD_REGIONS_V68[regionId], targets = villageDestinationsV70(regionId), d = HOMEWORLD_GEOMETRY_V64.depthScale;
+  const names = homeworldRegionNames(regionId);
+  const villageLabel = names ? yautjaLocalLabel(names.village) : definition.village;
   return <div className={styles.atlas} data-village-atlas-v70>
     <p>Choisis un lieu, puis suis ses repères à pied. Les entrées sont au sud des façades ; le poste extérieur se rejoint par le chemin oriental.</p>
-    <svg viewBox={`0 0 4500 ${4000 * d}`} role="img" aria-label={`Plan des approches de ${definition.village}`}>
+    <svg viewBox={`0 0 4500 ${4000 * d}`} role="img" aria-label={`Plan des approches de ${villageLabel}`}>
       <g transform={`scale(1 ${d})`}>
         <polygon points={HOMEWORLD_VILLAGE_PERIMETER_V68.map(p => `${p.x},${p.y}`).join(' ')} fill={definition.groundColor} stroke={definition.accent} strokeWidth="15" />
         {definition.buildings.map(b => { const f = homeworldBuildingFootprintV64(b); return <rect key={b.id} x={f.left} y={f.top} width={f.right - f.left} height={f.bottom - f.top} fill="#151e1c" stroke="#a4916c" strokeWidth="8" />; })}

@@ -1,3 +1,4 @@
+import residentNames from '../data/homeworldResidentNames.json';
 import type { SaveGame, HunterBodyMorphId, DreadStyleId } from '../types';
 import { canVisitHomeworldVillagesV69, type HomeworldAccessSaveV69 } from './homeworldAccessV69';
 import { HOMEWORLD_ACTOR, pointInHomeworldPolygon, stepHomeworldActorOnFloor, type HomeworldActor, type HomeworldVec2 } from './homeworldCity';
@@ -79,21 +80,22 @@ function makeBuildings(index: number): RegionBuildingV68[] {
     return { id: String(id), label: String(label), ...position, width: art.footprintWorld.width, height: art.wallHeightWorld, artId: artId as keyof typeof HOMEWORLD_BUILDING_ART_V64, art, footprint: { ...art.footprintWorld }, role: role as RegionBuildingV68['role'] };
   });
 }
-function makeResidents(guideName: string, index: number): RegionResidentV68[] {
+function makeResidents(regionId: HomeworldRegionIdV68, guideName: string, index: number): RegionResidentV68[] {
+  const names = residentNames.regionalPosts[regionId];
   const dy = index % 2 ? 100 : 0;
   const roles = [
     ['guide', guideName, 'Pisteur du clan', 1900, 1450 + dy, 'elder', 'elder', 'Lis les trois relevés du territoire. Le coffret de balise n’est pas une prise : rapporte-le après une traversée prudente.'],
-    ['artisan', `Ka’resh ${index + 1}`, 'Artisane des balises', 3200, 1500 + dy, 'huntress', 'huntress', 'Nous réparons ce qui permet à d’autres de rentrer. Une marque de propriété demeure celle de son auteur.'],
-    ['healer', `Na’ra ${index + 1}`, 'Soigneuse', 1000, 2640 + dy, 'huntress', 'huntress', 'Une sortie interrompue vaut mieux qu’une blessure cachée. Reste hors de la zone signalée lorsque le terrain s’agite.'],
-    ['keeper', index === 1 ? 'Isha’ren' : `Osh’ka ${index + 1}`, 'Gardienne des récits', 3190, 2740 + dy, 'elder', 'elder', 'Nous gardons les noms des disparus et les engagements tenus. Rapporter un outil ne donne pas le trophée d’un autre.'],
-    ['porter-a', `Tor’esh ${index + 1}`, 'Porteur', 1350, 1850, 'classic', 'classic', 'Les charges suivent la place, pas les logements. Laisse le passage libre près des ateliers.'],
-    ['porter-b', `Vel’ra ${index + 1}`, 'Convoyeuse', 2400, 2150, 'huntress', 'huntress', 'Le poste extérieur change à chaque accalmie. Les trois relevés te diront où chercher.'],
-    ['hunter-a', `Khe’ron ${index + 1}`, 'Chasseur de retour', 570, 1500, 'classic', 'classic', 'Observe les traces, la pierre et le vent avant de chercher une cible.'],
-    ['hunter-b', `Sha’vek ${index + 1}`, 'Chasseuse', 3650, 2900, 'huntress', 'huntress', 'Une chasse appartient à celui qui la mène ; nos balises sont une responsabilité commune.'],
-    ['apprentice-a', `Or’ta ${index + 1}`, 'Apprenti accompagné', 1600, 3080, 'young', 'classic', 'Notre maître vérifie les relevés avant de nous laisser suivre la piste.'],
-    ['apprentice-b', `Vesh’ra ${index + 1}`, 'Apprentie accompagnée', 2050, 3080, 'young', 'classic', 'Nous répétons le trajet sur la place. Les territoires dangereux attendront.'],
-    ['watcher-a', `Rha’ko ${index + 1}`, 'Veilleur', 4200, 2270, 'super', 'veteran', 'Le poste extérieur est à l’est. Observe l’avertissement, écarte-toi puis reprends pendant l’accalmie.'],
-    ['watcher-b', `Tek’na ${index + 1}`, 'Veilleuse', 450, 2850, 'classic', 'classic', 'La corniche revient à la cité. La traversée se fait à pied, dans les deux sens.'],
+    ['artisan', names['artisan'], 'Artisane des balises', 3200, 1500 + dy, 'huntress', 'huntress', 'Nous réparons ce qui permet à d’autres de rentrer. Une marque de propriété demeure celle de son auteur.'],
+    ['healer', names['healer'], 'Soigneuse', 1000, 2640 + dy, 'huntress', 'huntress', 'Une sortie interrompue vaut mieux qu’une blessure cachée. Reste hors de la zone signalée lorsque le terrain s’agite.'],
+    ['keeper', names['keeper'], 'Gardienne des récits', 3190, 2740 + dy, 'elder', 'elder', 'Nous gardons les noms des disparus et les engagements tenus. Rapporter un outil ne donne pas le trophée d’un autre.'],
+    ['porter-a', names['porter-a'], 'Porteur', 1350, 1850, 'classic', 'classic', 'Les charges suivent la place, pas les logements. Laisse le passage libre près des ateliers.'],
+    ['porter-b', names['porter-b'], 'Convoyeuse', 2400, 2150, 'huntress', 'huntress', 'Le poste extérieur change à chaque accalmie. Les trois relevés te diront où chercher.'],
+    ['hunter-a', names['hunter-a'], 'Chasseur de retour', 570, 1500, 'classic', 'classic', 'Observe les traces, la pierre et le vent avant de chercher une cible.'],
+    ['hunter-b', names['hunter-b'], 'Chasseuse', 3650, 2900, 'huntress', 'huntress', 'Une chasse appartient à celui qui la mène ; nos balises sont une responsabilité commune.'],
+    ['apprentice-a', names['apprentice-a'], 'Apprenti accompagné', 1600, 3080, 'young', 'classic', 'Notre maître vérifie les relevés avant de nous laisser suivre la piste.'],
+    ['apprentice-b', names['apprentice-b'], 'Apprentie accompagnée', 2050, 3080, 'young', 'classic', 'Nous répétons le trajet sur la place. Les territoires dangereux attendront.'],
+    ['watcher-a', names['watcher-a'], 'Veilleur', 4200, 2270, 'super', 'veteran', 'Le poste extérieur est à l’est. Observe l’avertissement, écarte-toi puis reprends pendant l’accalmie.'],
+    ['watcher-b', names['watcher-b'], 'Veilleuse', 450, 2850, 'classic', 'classic', 'La corniche revient à la cité. La traversée se fait à pied, dans les deux sens.'],
   ] as const;
   const buildings = makeBuildings(index);
   return roles.map(([id, name, role, x, y, morphId, dreadStyleId, greeting], n) => ({
@@ -123,7 +125,7 @@ export const HOMEWORLD_REGIONS_V68: Readonly<Record<HomeworldRegionIdV68, Region
     { id: 'field-beacon', artId: 'beacon', x: 4270, y: 2450 }, { id: 'garden-a', artId: 'rock-plant', x: 650, y: 2220 },
     { id: 'garden-b', artId: 'rock-plant', x: 2870, y: 3040 }, { id: 'cache', artId: 'chest', x: 7830, y: 2130 },
   ];
-  return [id, { id, name, village, clan, routeTitle, panorama, accent, groundColor, hazard, guideName, introduction, traceNotes: animalTraceNotes[id] ?? traceNotes, cacheNote, route, buildings: makeBuildings(index), residents: makeResidents(guideName, index), props }];
+  return [id, { id, name, village, clan, routeTitle, panorama, accent, groundColor, hazard, guideName, introduction, traceNotes: animalTraceNotes[id] ?? traceNotes, cacheNote, route, buildings: makeBuildings(index), residents: makeResidents(id, guideName, index), props }];
 })) as unknown as Readonly<Record<HomeworldRegionIdV68, RegionDefinitionV68>>;
 
 export const HOMEWORLD_VILLAGE_WORLD_V68 = { width: 8600, depth: 4000 } as const;

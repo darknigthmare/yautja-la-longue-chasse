@@ -1,6 +1,7 @@
 import type { SaveGame } from "../types";
 import { getChronicleRank } from "./clanChronicle";
 import { inspectClanShipDocking } from "./clanShipDocking";
+import { CLAN_SHIP_CREW_NAMES } from "./clanShipCrewNames";
 import type { ClanShipNpcId } from "./clanShipOperations";
 import { tribunalAccessV147 } from "./honorTribunalV147";
 import { shipAcquisitionOwnedHullV89 } from "./shipAcquisitionV89";
@@ -32,9 +33,9 @@ const record = (value: unknown): value is Record<string, unknown> =>
 const pledge = (value: unknown): value is ClanHullPledgeV171 => value === "shared-watch" || value === "personal";
 
 export const CLAN_HULL_CONTACTS = [
-  { id: "threshold-guard", roomId: "hangar", mask: 1, name: "Garde du Seuil",
+  { id: "threshold-guard", roomId: "hangar", mask: 1, name: CLAN_SHIP_CREW_NAMES["threshold-guard"],
     reply: "Les deux ponts resteront sous scellés jusqu’à leur réception. L’accès au hangar ne donne aucun droit sur eux." },
-  { id: "star-watch", roomId: "conseil", mask: 2, name: "Veille des Astres",
+  { id: "star-watch", roomId: "conseil", mask: 2, name: CLAN_SHIP_CREW_NAMES["star-watch"],
     reply: "La Veille Partagée demande un équipage et un mandat. Tu peux aussi continuer sur la coque personnelle qui t’a été remise." },
 ] as const;
 

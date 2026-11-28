@@ -4,7 +4,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {build} from 'esbuild';
 import {chromium} from 'playwright-core';
-import {mobilityQaGuidance} from './mobility-qa-driver.mjs';
+import {forgeDeliveryQaGuidance,mobilityQaGuidance} from './mobility-qa-driver.mjs';
 
 // MOB-001: the mounted production GameClient, its physical forge and its real
 // campaign writer. Only the initial adult checkpoint and explicit Storage
@@ -13,6 +13,7 @@ const root=process.cwd();
 const url=process.env.MOBILITY_CAMPAIGN_QA_URL??'http://127.0.0.1:3150';
 assert(['127.0.0.1','localhost'].includes(new URL(url).hostname));
 const probe=process.argv.includes('--probe');
+const forgeDelivery=process.argv.includes('--forge-delivery');
 const out=path.resolve(process.env.MOBILITY_CAMPAIGN_QA_OUTPUT??'outputs/mobility-campaign-20261109');
 await fs.mkdir(out,{recursive:true});
 await fs.writeFile(path.join(out,'run.lock'),new Date().toISOString()+'\n',{flag:'wx'});
@@ -42,7 +43,7 @@ const browserBundle=await build({stdin:{contents,resolveDir:root},bundle:true,fo
 const owner='2026-11-08T17:00:00.000Z';
 const save=domain.defaultSave(owner);
 save.profile.hunterName='QA mobilité · préconditions déclarées';
-save.profile.honor=300;save.profile.rankId='blooded';save.profile.clanMarks=10000;
+save.profile.honor=300;save.profile.rankId='blooded';save.profile.acquiredRankIdV166='blooded';save.profile.clanMarks=10000;
 save.settings.masterVolume=0;
 const building=domain.HOMEWORLD_BUILDINGS_V77.find(item=>item.id==='deep-forge');
 assert(building);
@@ -80,7 +81,7 @@ assert.equal(save.mobilityV1,undefined);
 assert.equal(domain.parseSaveImport(JSON.stringify(save)).failure,null);
 await fs.writeFile(path.join(out,'initial-save.json'),JSON.stringify(save,null,2)+'\n');
 await fs.writeFile(path.join(out,'fixture-disclosure.json'),JSON.stringify({owner,adultHistoricalCampaign:true,
-  prologue:save.prologue,rank:save.profile.rankId,honor:save.profile.honor,clanMarks:10000,
+  prologue:save.prologue,rank:save.profile.rankId,acquiredRank:save.profile.acquiredRankIdV166,honor:save.profile.honor,clanMarks:10000,
   startingExterior:start,doorApproach:door.approach,forgeCounter:counter,initialMobilityLedger:null,
   initialPermit:false,initialOwnedVehicles:0,seededMobilityResults:0,fullCampaignFromZeroPlayed:false,
   initialCampaignSlot:'Created by the actual migrateLegacyCampaignSlot and saveCampaignCheckpoint APIs before the first played session.',
@@ -255,7 +256,11 @@ try{
     check('failed purchase announces no owned vehicle and no debit',!(await stored()).mobilityV1.owned.length&&(await stored()).profile.clanMarks===10000&&await page.locator('[data-mobility-owned-count="0"]').isVisible());
     await shot('05-purchase-refused');await click('Confirmer l’achat · 420 marques');disk=await stored();
     check('retry confirms one purchase and one exact debit through the campaign owner',disk.profile.clanMarks===9580&&disk.mobilityV1.owned.length===1&&disk.mobilityV1.owned[0].id==='clan_hoverbike');
-    await click('Sortir sur l’aire');yard=page.locator('[data-mobility-yard]');await yard.waitFor();
+    await click(forgeDelivery?'Prendre le contrat des Forges':'Sortir sur l’aire');
+    yard=page.locator('[data-mobility-yard]');await yard.waitFor();
+    if(forgeDelivery)check('the purchased motorcycle opens the western delivery course',
+      (await stored()).mobilityV1.active.route==='forge-delivery'&&await yard.getAttribute('data-route')==='forge-delivery'&&
+      await yard.locator('[data-mobility-loading-bay]').getAttribute('x')==='125');
     await page.evaluate(()=>{window.__mobilityWriteFault.armed='drive';});
     const beforeDrive=(await stored()).mobilityV1;
     await click('Reprendre la conduite');await page.keyboard.down(forward);
@@ -286,6 +291,48 @@ try{
     check('native campaign driving controls and wallet fit the 320px station',await fittedGarage()&&await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2));
     await shot('08b-paused-sortie-after-continue-320');
     await page.setViewportSize({width:390,height:844});
+    if(forgeDelivery){
+      await page.setViewportSize({width:1440,height:1000});
+      await click('Reprendre la conduite');
+      stage=0;held=new Set();
+      const deliverySamples=report.forgeDeliveryRoute=[],deliveryStarted=Date.now();
+      try{
+        while(Date.now()-deliveryStarted<120000){
+          const at=await observeDrive();
+          assert(!at.paused,'Native contracted delivery paused unexpectedly.');
+          const guide=forgeDeliveryQaGuidance(at,stage),desired=new Set();
+          if(guide.throttle)desired.add(forward);
+          if(guide.steer)desired.add(guide.steer>0?turnRight:turnLeft);
+          if(guide.brake)desired.add(brake);
+          if(guide.interact)desired.add(interact);
+          if(guide.advance){
+            if(stage===6){if((await stored()).mobilityV1.active.course.cargoDelivered)break;}
+            else if(stage!==1||at.cargo===25)stage++;
+          }
+          for(const heldKey of held)if(!desired.has(heldKey))await page.keyboard.up(heldKey);
+          for(const desiredKey of desired)if(!held.has(desiredKey))await page.keyboard.down(desiredKey);
+          held=desired;
+          if(!deliverySamples.length||deliverySamples.at(-1).tick+30<=at.tick)deliverySamples.push({stage,...at});
+          await page.waitForTimeout(55);
+        }
+      }finally{for(const heldKey of held)await page.keyboard.up(heldKey);}
+      await click('Pause et enregistrer');disk=await stored();
+      const delivery=disk.mobilityV1.active;
+      check('native keyboard carries the west cargo through three beacons back to the depot',
+        delivery?.route==='forge-delivery'&&delivery.course.checkpoint===3&&delivery.course.cargoDelivered&&delivery.course.distance>1500,
+        {distance:delivery?.course.distance,beacons:delivery?.course.checkpoint});
+      await shot('08c-forge-delivery-at-depot');
+      await click('Remiser au garage');disk=await stored();
+      check('delivery and 30 marks persist atomically, once only',
+        disk.mobilityV1.active===null&&disk.mobilityV1.forgeDelivery?.runId===delivery.id&&disk.mobilityV1.forgeDelivery.marks===30&&
+        disk.profile.clanMarks===9610&&await page.locator('[data-forge-delivery="paid"]').isVisible()&&
+        !(await page.getByRole('button',{name:'Prendre le contrat des Forges',exact:true}).count()));
+      await page.reload({waitUntil:'networkidle'});await continueCampaign();
+      await page.locator('[data-homeworld-interior-target="point"]').click();await click('Ouvrir le comptoir et le garage');
+      check('cold reload shows the same paid contract and balance',await page.locator('[data-forge-delivery="paid"]').isVisible()&&
+        (await stored()).profile.clanMarks===9610);
+      await click('Sortir sur l’aire');yard=page.locator('[data-mobility-yard]');await yard.waitFor();
+    }
     await click('Retour de sécurité');await click('Confirmer la récupération');disk=await stored();
     check('explicit recovery closes the owned sortie once and retains consumed condition and energy',disk.mobilityV1.active===null&&disk.mobilityV1.recoveryDebt>=20&&disk.mobilityV1.recoveryCount===1&&disk.mobilityV1.owned[0].energy<100&&disk.mobilityV1.owned[0].condition<100);
     await click('Retour au comptoir des Forges');await page.locator('[data-homeworld-hub]').waitFor();
@@ -293,7 +340,7 @@ try{
     await shot('09-returned-to-physical-forge');
     report.finalSave=await stored();await fs.writeFile(path.join(out,'final-save.json'),JSON.stringify(report.finalSave,null,2)+'\n');
     check('final saved campaign parses with the real importer',domain.parseSaveImport(JSON.stringify(report.finalSave)).failure===null);
-    const expectedProfile={...campaignBaseline.profile,clanMarks:9580,playTimeSeconds:report.finalSave.profile.playTimeSeconds};
+    const expectedProfile={...campaignBaseline.profile,clanMarks:forgeDelivery?9610:9580,playTimeSeconds:report.finalSave.profile.playTimeSeconds};
     check('mobility preserves the hunter, rank, honor and every other profile field',JSON.stringify(report.finalSave.profile)===JSON.stringify(expectedProfile));
     check('mobility grants no unrelated mission, trophy or inventory progress',
       ['missionProgress','trophies','inventory'].every(field=>JSON.stringify(report.finalSave[field])===JSON.stringify(campaignBaseline[field])));

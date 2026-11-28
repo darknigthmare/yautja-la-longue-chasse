@@ -123,7 +123,7 @@ try {
   await page.waitForFunction(key => JSON.parse(localStorage.getItem(key))?.clanShipOperations?.onboardingStep === 1, key);
   await closeProject();
   await talkTo("hangar", "threshold-guard");
-  await button("Écouter Garde du Seuil sur les droits").click();
+  await button("Écouter Thar’zek « Garde du Seuil » sur les droits").click();
   await panel.getByText(/L’accès au hangar ne donne aucun droit/).first().waitFor();
   assert.equal((await disk()).clanHullProjectV171.consultations, 1);
   assert.equal(await button("Conserver le vaisseau personnel").count(), 0);
@@ -136,7 +136,7 @@ try {
   await page.waitForFunction(() =>
     !document.querySelector("[data-clan-interior]")?.getAttribute("data-interior-target-room"));
   await talkTo("conseil", "star-watch");
-  await button("Écouter Veille des Astres sur les droits").click();
+  await button("Écouter Osh’veli « Veille des Astres » sur les droits").click();
   const shared = button("Viser la Veille Partagée");
   const personal = button("Conserver le vaisseau personnel");
   await shared.waitFor();

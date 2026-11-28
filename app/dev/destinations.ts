@@ -29,16 +29,21 @@ import {
   type HomeworldRegionIdV68,
 } from '../game/systems/homeworldRegionsV68';
 
-export type DevDestinationCategory = 'hubs' | 'clan' | 'homeworld' | 'missions' | 'wolf' | 'arrivals';
+import { DEV_EXERCISES, type DevExercise } from "./updates";
+import { prepareDevExercise } from "./exercise-fixtures";
+
+export type DevDestinationCategory = 'hubs' | 'clan' | 'homeworld' | 'missions' | 'wolf' | 'arrivals' | 'exercises';
 
 interface DevDestinationDetails {
   readonly id: string;
   readonly label: string;
   readonly description: string;
   readonly category: DevDestinationCategory;
+  readonly walkthrough?: readonly string[];
 }
 
 export type DevDestination = DevDestinationDetails & (
+  | { readonly kind: 'exercise'; readonly exercise: DevExercise }
   | { readonly kind: 'ship' }
   | { readonly kind: 'warp' }
   | { readonly kind: 'cradle'; readonly checkpointId: CradleCheckpointId }
@@ -150,6 +155,7 @@ export const DEV_DESTINATIONS: readonly DevDestination[] = [
     missionId: 'jungle-vey', insertion: { version: 1, method: 'ship', team: 'triad', shipCloak: true },
     description: 'Approcher sous camouflage, retrouver la coque visible avant le posé et commencer avec une pression réduite et 70 unités d’énergie.',
   },
+  ...DEV_EXERCISES,
 ];
 
 export function resolveDevDestination(id: string | null | undefined): DevDestination | undefined {
@@ -223,7 +229,7 @@ export function createDevSave(destination: DevDestination): SaveGame {
     }
     save.wolfCastle = inspected.state;
   }
-  return save;
+  return prepareDevExercise(save, canonical.id);
 }
 
 /** The native montage and its frozen run stay outside the campaign document:

@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- unmodified native ground, architectural modules and animation cells */
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent, type ReactNode } from 'react';
 import type { SaveGame } from './types';
+import { homeworldRegionNames, yautjaLocalLabel } from './systems/yautjaPlaceNames';
 import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldBuildingSpritePlacementV64 } from './systems/homeworldGeometryV64';
 import { HOMEWORLD_BUILDING_ART_V64, HOMEWORLD_GROUND_ART_V64, HOMEWORLD_PROP_ART_V64, HOMEWORLD_INTERIOR_ART_V64 } from './systems/homeworldArtV64';
 import { homeworldInteriorShellV64 } from './systems/homeworldInteriorShellV64';
@@ -75,6 +76,10 @@ function currentYard(save: SaveGame, state: HomeworldRegionStateV68) {
 
 export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const { regionId, save, suspended = false } = props, definition = HOMEWORLD_REGIONS_V68[regionId];
+  const names = homeworldRegionNames(regionId);
+  const regionLabel = names ? yautjaLocalLabel(names.region) : definition.name;
+  const villageLabel = names ? yautjaLocalLabel(names.village) : definition.village;
+  const clanLabel = names ? yautjaLocalLabel(names.clan) : definition.clan;
   const youthWelcome = usesHomeworldYouthAppearanceV69(save), hero = youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69 : homeworldHeroPlate(save.appearance.presetId);
   const [state, setState] = useState(() => props.checkpoint == null ? createHomeworldRegionV68(regionId, `${regionId}-${Date.now()}`, props.startAtVillage) : normalizeHomeworldRegionV68(props.checkpoint));
   const current = useRef(state), latest = useRef(props), held = useRef(new Set<string>()), touch = useRef(new Set<Move>()), interact = useRef(false), gamepad = useRef(createHomeworldGamepadState());
@@ -342,8 +347,8 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   };
   return <section className={styles.root} data-homeworld-region-v68={regionId} data-zone={state.zone} data-interior-building={state.buildingId ?? undefined} data-state-tick={state.tick} style={{ '--region-accent': definition.accent, '--region-ground': definition.groundColor } as CSSProperties} inert={suspended}>
     <div className={styles.panorama} aria-hidden="true" style={{ backgroundImage: `url("${definition.panorama}")`, transform: `translateX(${-Math.min(90, state.actor.x / 210)}px)` }} />
-    <header className={styles.header} inert={modal}><div><span>{definition.clan}</span><h1>{state.zone === 'passage' ? definition.routeTitle : definition.village}</h1></div><div>{state.zone === 'village' && <button data-village-open-atlas-v70 onClick={openAtlas}>Plan du village</button>}<button onClick={pause}>Pause</button>{props.onOpenSettings && <button onClick={props.onOpenSettings}>Réglages</button>}</div></header>
-    <div className={styles.viewport} ref={viewport} tabIndex={0} aria-label={`Explorer ${definition.name}`} inert={modal}>
+    <header className={styles.header} inert={modal}><div><span>{clanLabel}</span><h1>{state.zone === 'passage' ? regionLabel : villageLabel}</h1>{state.zone === 'passage' && <small>{definition.routeTitle}</small>}</div><div>{state.zone === 'village' && <button data-village-open-atlas-v70 onClick={openAtlas}>Plan du village</button>}<button onClick={pause}>Pause</button>{props.onOpenSettings && <button onClick={props.onOpenSettings}>Réglages</button>}</div></header>
+    <div className={styles.viewport} ref={viewport} tabIndex={0} aria-label={`Explorer ${regionLabel}`} inert={modal}>
       <div className={styles.world} ref={scene} style={{ width: world.width, height: world.depth * d + 700, transform: `translate(${-camera.x}px, ${-camera.y}px) scale(${zoom})` }}>
         <svg className={styles.floor} width={world.width} height={world.depth * d + 500} aria-hidden="true"><defs><pattern id={`stone-${regionId}`} width="220" height="220" patternUnits="userSpaceOnUse"><image href={HOMEWORLD_GROUND_ART_V64.src} width="220" height="220" /></pattern></defs><g transform={`scale(1 ${d})`}>
           {state.zone === 'passage' ? <polyline points={definition.route.map(p => `${p.x},${p.y}`).join(' ')} fill="none" stroke={`url(#stone-${regionId})`} strokeWidth="320" strokeLinejoin="round" strokeLinecap="round" /> : state.zone === 'village' ? <>
@@ -360,7 +365,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         {state.zone === 'passage' && <>
           <HomeworldFaunaDisplayV77 regionId={regionId} tick={state.tick} groundColor={definition.groundColor} />
           {regionBridgesV68(regionId).flatMap((b, n) => Array.from({ length: b.modules }, (_, i) => { const p = project({ x: b.x + i * bridge.width, y: b.y }); return <img key={`${n}-${i}`} className={styles.bridge} data-region-bridge={`${n}-${i}`} src={bridge.src} alt="" draggable={false} style={{ left: p.x - bridge.deck.left * bridgeScale, top: p.y - (bridge.deck.back + bridge.deck.front) / 2 * bridgeScale, width: bridge.sourceWidth * bridgeScale, height: bridge.sourceHeight * bridgeScale }} />; }))}
-          {definition.route.map((p, n) => { const v = project(p); return <span key={n} className={styles.waypoint} style={{ left: v.x, top: v.y + 18 }}><b>{n === definition.route.length - 1 ? definition.village : p.name}</b><small>{Math.round(n / (definition.route.length - 1) * homeworldRegionRouteMetresV68(regionId))} m</small></span>; })}
+          {definition.route.map((p, n) => { const v = project(p); return <span key={n} className={styles.waypoint} style={{ left: v.x, top: v.y + 18 }}><b>{n === definition.route.length - 1 ? villageLabel : p.name}</b><small>{Math.round(n / (definition.route.length - 1) * homeworldRegionRouteMetresV68(regionId))} m</small></span>; })}
         </>}
         {state.zone === 'village' && <>
           {definition.buildings.map(b => { const placement = homeworldBuildingSpritePlacementV64(b); return <span key={b.id} data-region-building={b.id} className={styles.building} style={{ ...placement, zIndex: Math.round(b.y), opacity: villageFacadeFadedV70(b, state.actor, youthWelcome ? 82 : 100) ? .42 : 1 }}><img alt="" draggable={false} src={b.art.src} /><span>{b.label}</span></span>; })}
@@ -481,7 +486,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         disabled={!localAllowed} onClick={openResidenceThreshold}>Au seuil de la demeure</button>}
       <small>{controlActionShortcut('hunt.pause', save.settings.controlBindings)} · Pause</small></footer>
     {modal && <div className={styles.backdrop}><div className={`${styles.dialog} ${localPanel === 'atlas' ? styles.atlasDialog : ''}`} role="dialog" aria-modal="true" aria-labelledby="region-v68-title" tabIndex={-1} ref={panel}>
-      <span>{definition.name}</span><h2 id="region-v68-title">{error ? 'Reprise conservée' : localPanel === 'atlas' ? 'Chemins du village' : selectedActivity ? selectedActivity.name : localPanel === 'residence-threshold' ? 'Au seuil de la résidence' : localPanel === 'interior' ? serviceBuilding?.label : notice ? 'Paroles du clan' : !gate.allowed ? 'Départ accompagné requis' : state.status === 'at-city' ? 'La cité est devant toi' : state.zone === 'passage' ? definition.routeTitle : definition.village}</h2>
+      <span>{regionLabel}</span><h2 id="region-v68-title">{error ? 'Reprise conservée' : localPanel === 'atlas' ? 'Chemins du village' : selectedActivity ? selectedActivity.name : localPanel === 'residence-threshold' ? 'Au seuil de la résidence' : localPanel === 'interior' ? serviceBuilding?.label : notice ? 'Paroles du clan' : !gate.allowed ? 'Départ accompagné requis' : state.status === 'at-city' ? 'La cité est devant toi' : state.zone === 'passage' ? definition.routeTitle : villageLabel}</h2>
       {error ? <p>{error}</p> : localPanel === 'bible-v86' ?
         <BibleSceneCulturalV86 ledger={save.homeworld.bibleScenesV86} context={bibleContext} onAction={bibleAction}
           message={bibleMessage} onClose={() => { bibleOpenRef.current = false; resume(); }}

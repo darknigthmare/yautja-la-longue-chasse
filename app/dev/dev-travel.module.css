@@ -86,3 +86,8 @@
   .card { min-height: 215px; }
 }
 @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
+
+.walkthrough { padding: 12px 24px; border-bottom: 1px solid #405031; color: #dbe6bc; background: #192217; font-size: 13px; line-height: 1.55; }
+.walkthrough summary { width: fit-content; cursor: pointer; }
+.walkthrough ol { padding-left: 22px; margin: 10px 0 0; }
+.walkthrough summary:focus-visible { outline: 2px solid #d4ec99; outline-offset: 4px; }

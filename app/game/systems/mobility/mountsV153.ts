@@ -52,6 +52,8 @@ export const MOUNT_PANIC_INJURY_V153 = 10;
 /** Proposé : « explosions répétées » = à partir de la 2e exposition d'une même séance. */
 export const MOUNT_REPEATED_EXPLOSIONS_V153 = 2;
 export const MOUNT_EVENT_MEMORY_V153 = 64;
+/** Tarif d’adoption d’un Kha’Rha élevé aux Forges, proposé pour La Longue Chasse. */
+export const KHA_RHA_ADOPTION_MARKS_V153 = 180;
 
 // ---------------------------------------------------------------------------
 // Profils (tirés du catalogue)
@@ -175,7 +177,7 @@ export interface MountTrialV153 {
 }
 export interface MountV153 {
   id: string; recruitedRevision: number;
-  proof: { kind: 'trust-exercises'; trialId: string; eventIds: string[] };
+  proof: { kind: 'trust-exercises'; trialId: string; eventIds: string[]; adoptionMarks?: number };
   bond: number; fatigue: number; injury: number; sessions: number;
 }
 export interface MountSessionV153 { id: string; mountId: string; gain: number; explosions: number }
@@ -194,6 +196,7 @@ export type MountOrderV153 =
   | { type: 'begin-trial'; mountId: string }
   | { type: 'trust-exercise'; trialId: string; exerciseId: string; optionId: string; eventId: string }
   | { type: 'recruit'; mountId: string; trialId: string }
+  | { type: 'adopt'; mountId: string; trialId: string; expectedCost: number }
   | { type: 'open-session'; mountId: string }
   | { type: 'exercise'; sessionId: string; exerciseId: string; condition: MountConditionV153; eventId: string }
   | { type: 'close-session'; sessionId: string }
@@ -250,9 +253,13 @@ export function inspectMountsV153(raw: unknown, owner: string): { status: 'absen
     if (!integer(m.recruitedRevision, 1) || m.recruitedRevision > (raw.revision as number) || !integer(m.bond, 0, MOUNT_BOND_MAX_V153) ||
         !integer(m.fatigue, 0, 100) || !integer(m.injury, 0, 100) || !integer(m.sessions)) return bad;
     const proof = m.proof;
-    if (!record(proof) || !keys(proof, ['kind', 'trialId', 'eventIds']) || proof.kind !== 'trust-exercises' || !record(trial) ||
+    if (!record(proof) || proof.kind !== 'trust-exercises' || !record(trial) ||
         trial.status !== 'complete' || trial.mountId !== m.id || proof.trialId !== trial.id || !Array.isArray(proof.eventIds) ||
         JSON.stringify(proof.eventIds) !== JSON.stringify((trial.passed as { eventId: string }[]).map(p => p.eventId))) return bad;
+    if (Object.hasOwn(proof, 'adoptionMarks')) {
+      if (!keys(proof, ['kind', 'trialId', 'eventIds', 'adoptionMarks']) || m.id !== 'kha_rha' ||
+          proof.adoptionMarks !== KHA_RHA_ADOPTION_MARKS_V153 || (raw.spentMarks as number) < proof.adoptionMarks) return bad;
+    } else if (!keys(proof, ['kind', 'trialId', 'eventIds'])) return bad;
     ids.add(m.id);
   }
   const s = raw.session;
@@ -344,19 +351,29 @@ export function actMountsV153(campaign: Campaign, command: MountCommandV153): Mo
       outcome = 'interrupted';
       message = option.feedback;
     }
-  } else if (command.type === 'recruit') {
+  } else if (command.type === 'recruit' || command.type === 'adopt') {
     const profile = mountProfileV153(command.mountId), d = mobilityDefinition(command.mountId);
     const trial = state.trial;
     if (!profile || !d || profile.recruitment !== 'trust-exercises') return refuse('Aucune voie de recrutement jouable pour cette monture.');
     if (!trial || trial.id !== command.trialId || trial.mountId !== profile.id || trial.status !== 'complete') return refuse('Preuve absente : les trois exercices de confiance doivent être réussis.');
     if (state.mounts.some(m => m.id === profile.id) || mobility.state?.owned.some(v => v.id === profile.id)) return refuse('Cette monture est déjà inscrite.');
     if (mobilityRankIndex(campaign.profile.rankId) < mobilityRankIndex(d.minimumRank)) return refuse('Rang insuffisant pour recruter cette monture.');
+    const proof: MountV153['proof'] = { kind: 'trust-exercises', trialId: trial.id, eventIds: trial.passed.map(p => p.eventId) };
+    let acquisition = 'recruté';
+    if (command.type === 'adopt') {
+      const cost = KHA_RHA_ADOPTION_MARKS_V153;
+      if (profile.id !== 'kha_rha') return refuse('L’élevage ne propose pas cette monture à l’adoption.');
+      if (command.expectedCost !== cost || marks < cost || state.spentMarks + cost > 1e9) return refuse('Devis périmé ou marques insuffisantes pour l’adoption.');
+      marks -= cost;
+      state.spentMarks += cost;
+      proof.adoptionMarks = cost;
+      acquisition = 'adopté aux Forges';
+    }
     state.mounts.push({
-      id: profile.id, recruitedRevision: state.revision + 1,
-      proof: { kind: 'trust-exercises', trialId: trial.id, eventIds: trial.passed.map(p => p.eventId) },
+      id: profile.id, recruitedRevision: state.revision + 1, proof,
       bond: 0, fatigue: 0, injury: 0, sessions: 0,
     });
-    message = `${profile.name} recruté. BOND 0 : le lien se construit séance par séance (5 points au plus par séance).`;
+    message = `${profile.name} ${acquisition}. BOND 0 : le lien se construit séance par séance (5 points au plus par séance).`;
   } else if (command.type === 'open-session') {
     const m = state.mounts.find(v => v.id === command.mountId);
     if (!m) return refuse('Monture non recrutée.');
