@@ -7,13 +7,14 @@ import {useMenuGamepad} from './useMenuGamepad';
 import {menuFocusIndex,type MenuDirection} from './systems/menuNavigation';
 import styles from './CampaignMainMenu.module.css';
 import GameVersionBadge from './GameVersionBadge';
+import CampaignCoopLobbyPanel from './CampaignCoopLobbyPanel';
 import {openCloudAccountV71} from './CloudAccountV71';
 import { MAIN_MENU_MODE_LABELS_V81, type MainMenuGameModeV81 } from './systems/mainMenuModesV81';
 import { GAME_CONTENT_VERSION } from './buildInfo';
 import { CAMPAIGN_SLOT_IMPORT_MAX_BYTES, type CampaignSlotImportPreview, type CampaignSlotImportPreparation } from './systems/campaignSlots';
 
 type MenuSection = 'campaign'|'modes'|'archives'|'system';
-type MenuView = 'main'|MenuSection|'new'|'load'|'import';
+type MenuView = 'main'|MenuSection|'new'|'load'|'import'|'coop';
 export interface CampaignMenuEntry {section:MenuSection;action?:string}
 const SECTION_TITLES:Record<MenuSection,string>={campaign:'Campagne',modes:'Modes de jeu',archives:'Archives & chroniques',system:'Système'};
 const isMenuSection=(view:MenuView):view is MenuSection=>view in SECTION_TITLES;
@@ -105,7 +106,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
  const slot=catalog?.slots.find(slot=>slot.id===selected);
  const canRecoverNew=Boolean(catalog?.workspaceRecoveryAvailable&&ready.length===0&&slot?.status==='empty'&&onRecoverNew);
  const currentCheckpoint=current?.checkpoints.find(checkpoint=>checkpoint.id===current.lastCheckpointId)??current?.checkpoints.toSorted((a,b)=>Date.parse(b.savedAt)-Date.parse(a.savedAt))[0];
- const open=(target:'new'|'load'|'import',trigger:string=target)=>{if(busy)return;campaignReturnRef.current=trigger;navigationFocusRef.current=null;importReadGeneration.current++;setImportPreview(null);setImportConfirmation(null);setImportFileName('');setImportText('');setImportMessage(null);setImportReading(false);setConfirmation(null);setView(target);setSelected((target==='new'||target==='import'?catalog?.slots.find(s=>s.status==='empty'):current)?.id??1);};
+ const open=(target:'new'|'load'|'import'|'coop',trigger:string=target)=>{if(busy)return;campaignReturnRef.current=trigger;navigationFocusRef.current=null;importReadGeneration.current++;setImportPreview(null);setImportConfirmation(null);setImportFileName('');setImportText('');setImportMessage(null);setImportReading(false);setConfirmation(null);setView(target);setSelected((target==='new'||target==='import'?catalog?.slots.find(s=>s.status==='empty'):current)?.id??1);};
  const openSection=(section:MenuSection)=>{if(busy)return;navigationFocusRef.current=null;setView(section);};
  const fullscreenState=useSyncExternalStore(subscribeFullscreen,fullscreenSnapshot,serverFullscreenSnapshot);
  const fullscreenAvailable=fullscreenState!=='unavailable',fullscreen=fullscreenState==='fullscreen';
@@ -174,6 +175,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
        <button className={!current?styles.featured:undefined} type="button" disabled={busy||!catalog} data-menu-action="new" onClick={()=>open('new')}><span className={styles.actionTitle}>Nouvelle partie</span><small>Commencer le prologue dans la nurserie</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
        <button type="button" disabled={busy||!catalog||!catalog.slots.some(s=>s.status!=='empty')} data-menu-action="load" onClick={()=>open('load')}><span className={styles.actionTitle}>Charger une partie</span><small>Retrouver une campagne et ses sauvegardes</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
        {onPrepareImport&&onImport&&<button type="button" disabled={busy||!catalog||archivesBlocked||!catalog.slots.some(item=>item.status==='empty')} data-menu-action="import" data-campaign-import-open onClick={()=>open('import')}><span className={styles.actionTitle}>Importer une campagne JSON</span><small>Archiver dans un emplacement vide</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>}
+       <button type="button" disabled={busy||!catalog} data-menu-action="coop" onClick={()=>open('coop')}><span className={styles.actionTitle}>Salon de campagne local</span><small>Inviter deux chroniques de ce navigateur</small><span className={styles.actionArrow} aria-hidden="true">›</span></button>
        {catalog?.slots.every(s=>s.status!=='empty')&&<p className={styles.notice}>Les cinq emplacements sont occupés ou protégés. Nouvelle partie permet de choisir une campagne à remplacer, uniquement après confirmation.</p>}
       </>:view==='modes'?<>
        {onOpenGameMode&&<>
@@ -199,7 +201,8 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
      {current?<><p>{currentCheckpoint?place(currentCheckpoint):'Campagne enregistrée'}</p>{currentCheckpoint&&<p className={styles.checkpointSummary}>Partie {current.id} · {time(currentCheckpoint.playTimeSeconds)}<br/>Dernière sauvegarde : {date(currentCheckpoint.savedAt)}</p>}</>:<p>La nurserie, les premiers liens du clan.<br/>C’est ici que commence votre histoire.</p>}
     </aside>
    </div>:<section className={styles.manager} aria-labelledby="campaign-manager-title">
-    <div className={styles.managerHeader}><div><p className={styles.eyebrow}>Archives du clan</p><h2 id="campaign-manager-title">{view==='new'?'Nouvelle partie':view==='import'?'Importer une campagne':'Charger une partie'}</h2></div><button className={styles.backButton} type="button" disabled={busy} data-menu-back aria-label="Retour à Campagne" onClick={back}>Retour à Campagne <kbd aria-hidden="true">B</kbd></button></div>
+    <div className={styles.managerHeader}><div><p className={styles.eyebrow}>Archives du clan</p><h2 id="campaign-manager-title">{view==='new'?'Nouvelle partie':view==='import'?'Importer une campagne':view==='coop'?'Salon de campagne local':'Charger une partie'}</h2></div><button className={styles.backButton} type="button" disabled={busy} data-menu-back aria-label="Retour à Campagne" onClick={back}>Retour à Campagne <kbd aria-hidden="true">B</kbd></button></div>
+    {view==='coop'?<CampaignCoopLobbyPanel catalog={catalog} />:<>
     <div className={styles.parties} aria-label="Les cinq parties">{catalog?.slots.map(item=><button type="button" key={item.id} data-campaign-slot={item.id} data-slot-state={item.status} aria-pressed={selected===item.id} disabled={busy||(view==='import'&&(importReading||item.status!=='empty'||archivesBlocked))} onClick={()=>{importReadGeneration.current++;setImportReading(false);setSelected(item.id);setImportPreview(null);setImportConfirmation(null);setImportMessage(null);}}><span>PARTIE {String(item.id).padStart(2,'0')}</span><strong>{item.status==='empty'?'Emplacement libre':item.hunterName??'Archive protégée'}</strong><small>{item.status==='blocked'?'Archive protégée':item.status==='empty'?'Nouvelle histoire':`${item.checkpoints.length} / 12 sauvegardes`}{item.hardcoreV155==='alive'?' · Hardcore':item.hardcoreV155==='death-pending'?' · Hardcore · mort à confirmer':item.hardcoreV155==='closed'?' · Hardcore · chronique close':''}{item.blackGodV162==='victory'?' · Black God (hors canon)':item.blackGodV162==='sacrificed'?' · Black God · chronique close (sacrifice)':''}</small></button>)}</div>
     {view==='new'?<div className={styles.newGame}>
      <figure className={styles.prologuePreview}><img src="/game/prologue/v47/arena.png" alt="" decoding="async" /><figcaption><span>PROLOGUE</span><h3>La nurserie du clan</h3><p>Grandissez sur Yautja Prime : accueil Unblooded, dojo, camp, reconnaissance et patrouille du désert. La petite Fosse propose ensuite un duel de novices facultatif.</p></figcaption></figure>
@@ -247,6 +250,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
       <button type="button" disabled={busy||importReading||!canImport||selected!==importPreview.slotId} data-campaign-import-prepare onClick={event=>{confirmationTriggerRef.current=event.currentTarget;setImportConfirmation(importPreview);}}>Préparer l’import dans la partie {importPreview.slotId}</button>
      </div>}
     </section>:slot?.status==='ready'?<div className={styles.saveArchive}><div className={styles.archiveHeading}><h3>{slot.hunterName} · partie {slot.id}</h3><p>10 sauvegardes manuelles · 2 automatiques</p></div><div className={styles.checkpoints}>{(['manual','auto'] as const).flatMap(kind=>Array.from({length:kind==='manual'?10:2},(_,i)=>{const checkpoint=slot.checkpoints.find(c=>c.kind===kind&&c.index===i+1);return <button type="button" key={`${kind}-${i+1}`} disabled={busy||!checkpoint} data-checkpoint-id={`${kind}-${i+1}`} onClick={event=>{if(checkpoint){confirmationTriggerRef.current=event.currentTarget;setConfirmation({slot,checkpoint});}}}><strong>{kind==='manual'?'Manuelle':'Automatique'} {i+1}</strong>{checkpoint?<><span>{date(checkpoint.savedAt)}</span><small>{place(checkpoint)} · {time(checkpoint.playTimeSeconds)}</small></>:<span>Vide</span>}</button>;}))}</div></div>:<div className={styles.emptyArchive} role="status"><h3>{slot?.status==='blocked'?'Archive protégée':'Aucune sauvegarde'}</h3><p>{slot?.status==='blocked'?'Cette archive est illisible ou provient d’une version plus récente. Aucune tentative ne l’efface.':'Cette partie ne contient aucun checkpoint.'}</p>{slot?.recoveryAvailable&&<button type="button" disabled={busy} onClick={()=>onRecover(slot.id)}>Récupérer la copie de secours de la partie {slot.id}</button>}</div>}
+    </>}
    </section>}
    <footer className={styles.footer}>
     <p className={styles.status} role="status" aria-live="polite">{busy?'Vérification et enregistrement des archives…':message}</p>
