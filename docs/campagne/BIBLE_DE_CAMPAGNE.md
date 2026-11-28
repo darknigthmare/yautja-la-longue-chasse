@@ -1132,17 +1132,19 @@ Un procès bien mené (preuve d'une contrainte, témoin qui confirme) peut faire
 
 ### Langue yautja
 
-**Décision :** mots canon, complétés par un glossaire inventé et cohérent ; clics et voix, sous-titres en français ; glossaire consultable dans le codex du jeu.
+Le français s’affiche dès l’ouverture des dialogues. Une annotation en caractères latins peut accompagner le texte quand une forme documentée correspond à la notion ou à la réplique.
 
-**Règles :**
+- Le vocabulaire classique des romans est repéré par sa source. Les formes appuyées par les travaux de Britton Watkins pour les films suivent leurs distinctions de sens et de registre.
+- Une transcription recensée de film garde l’origine de sa graphie et accompagne uniquement la réplique correspondante. Pour une formulation sans traduction attestée, le texte reste en français.
+- Les noms d’auteur sont des noms propres du projet. Les marques de décor et de mécanisme servent à lire les scènes. Le lecteur de dialogue ne fabrique aucun glyphe.
 
-- un mot canon existe pour une notion : on l'emploie (par exemple *Ic'jit* pour Bad Blood, *Chiva* pour une épreuve, *Kehrite* pour l'aire d'entraînement) ;
-- un mot inventé ne doit jamais reprendre un mot canon avec un autre sens ; il est marqué « proposé » dans le glossaire ;
-- deux couches de canon : le vocabulaire classique des romans et de l'univers étendu, et la langue de *Predator: Badlands* (2025), dont plusieurs mots ont été confirmés par Britton Watkins (d'après AvP Central) ; la seconde a une grammaire (pronoms, négation) que le glossaire suit.
+[Registre des attestations et usages du codex](LANGUE_YAUTJA.md) · [Entretien avec Britton Watkins](https://www.latimes.com/entertainment-arts/movies/story/2025-11-10/predator-badlands-yautja-alien-language-dan-trachtenberg-britton-watkins)
 
-**Extrait du vocabulaire canon à utiliser :**
+#### Repères historiques du registre V147
 
-| Mot | Sens | Usage dans le jeu |
+Ce tableau conserve les choix du registre de production. Leur emploi dans le jeu suit les attestations du codex.
+
+| Forme recensée | Sens attribué | Contexte prévu |
 | --- | --- | --- |
 | Kainde Amedha | « viande dure », Xénomorphe | toutes les ruches |
 | Kainde Amedha Chiva | épreuve de la viande dure, chasse de passage | la pyramide (L-04) |
@@ -1159,7 +1161,7 @@ Un procès bien mené (preuve d'une contrainte, témoin qui confirme) peut faire
 | Yauhwaq yi'ai | tueur de tueurs (*Badlands*) | titre de légende (héritage) |
 | Ngu djei chish | « je ne suis la proie de personne » (*Badlands*) | phrase du départ O1 |
 
-Source : [dictionnaire yautja, AvP Central](https://www.avpcentral.com/yautja-dictionary-vocabulary-of-predators).
+[Recension du vocabulaire utilisée pour le registre](https://www.avpcentral.com/yautja-dictionary-vocabulary-of-predators)
 
 Les noms des personnages du clan, des habitants et des animaux du chenil suivent le [registre des noms yautja du projet](NOMS_YAUTJA.md). Les noms d’auteur y restent distincts des noms issus des œuvres.
 
@@ -2131,7 +2133,7 @@ L’entraînement de triade V90 précède le retour du Quatza-Rij. Le trio dépo
 - **Choix :** route de hauteur ou route de mécanismes.
 - **Échec et reprise :** une séparation ouvre des mécanismes de regroupement, sans réinitialiser le temple.
 - **Sauvegarde :** `rite.templeConfiguration ; rite.templeThresholdReached`
-- **Existant :** V69 (Seuils du Premier Sang), V70 acte I : Marches des Trois, Vestibule des Serments, Tribune des Signes, Arsenal des Épreuves, Belvédère Fracturé, Puits des Contrepoids, Camp des Intrus, Nef des Anneaux, Vanne de Quarantaine. Les nouvelles campagnes à triade préparée parcourent six salles profondes, observent les œufs, réamorcent la purge et rejoignent le seuil du Quatza-Rij. Dans les nouvelles configurations à quinze salles, l’éclosion de la Galerie des Coques déclenche le bond d’un facehugger. La triade doit consigner le confinement avant de poursuivre. La loge royale impose une esquive puis un Signal à deux appuis avant que la console isole la Reine captive. Le transport du blessé et les chasses qualifiantes restent ouverts.
+- **Existant :** V69 (Seuils du Premier Sang), V70 acte I : Marches des Trois, Vestibule des Serments, Tribune des Signes, Arsenal des Épreuves, Belvédère Fracturé, Puits des Contrepoids, Camp des Intrus, Nef des Anneaux, Vanne de Quarantaine. Les nouvelles campagnes à triade préparée parcourent six salles profondes, observent les œufs, réamorcent la purge et rejoignent le seuil du Quatza-Rij. Dans les nouvelles configurations à quinze salles, l’éclosion de la Galerie des Coques déclenche le bond d’un facehugger. La triade doit consigner le confinement avant de poursuivre. La loge royale impose une esquive puis un Signal à deux appuis avant que la console isole la Reine captive. Saar est porté jusqu’au refuge avec Vek avant la purge. Le bilan reprend les preuves de la route jouée. Les chasses qualifiantes du rite relèvent de la suite, et la vérification sur appareil tactile physique reste ouverte.
 
 *Production (proposé)* — **Props :** râtelier où déposer les armes énergétiques, passerelles mobiles, volets pivotants, chambres à configuration variable, glyphes annonçant le prochain mouvement, mécanismes de regroupement (leviers à deux mains). **VFX :** poussière qui tombe avant chaque déplacement, glyphe qui s'allume 2 s avant, secousse de caméra. **SFX :** `stone-grind`, `gear-tick`, `door-stone-close`, `glyph-hum`. **Musique :** MUS-13.
 
@@ -3343,3 +3345,20 @@ Les recettes couvrent les étapes jouées en navigateur, la reprise et les crit�
 
 - **M017 · Commandes tactiles du Temple** · Sur Chromium, en mode tactile 393 × 852, le joueur rejoint le Temple, place les trois émetteurs, reprend la sauvegarde et franchit le seuil avec sa triade. La recette sur un appareil tactile physique et les chasses qualifiantes du rite restent ouvertes. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46140777745)
 
+## Reprise du 28 novembre · Langue attestée, mobilité et compagnons
+
+Les recettes et les critères encore ouverts sont repris dans le lot XI. [Classeur Excel](https://github.com/darknigthmare/yautja-la-longue-chasse/blob/main/production/YAUTJA_LOTS_P0_P3_LOT11_20261121.xlsx) · [Pull request](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/216)
+
+- **Langue yautja dans les dialogues et le codex** · Les dialogues du lecteur commun se lisent immédiatement en français. Le codex donne cinq formes confirmées par Britton Watkins, conserve séparément les formes classiques des romans et les répliques du film dont la romanisation est recensée. Des repères alimentent aussi le bestiaire, les rites et le tribunal. Les phrases sans équivalent documenté restent en français. Les noms d’auteur gardent leur provenance. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46157575966)
+
+- **Skimmer des dunes et Porteur de trophées** · Les mandibules de la Sandmaw extraites sur Serekh‑9 ouvrent la remise du Skimmer des dunes. Un trophée exposé à bord ouvre le prêt du Porteur de trophées, avec son convoi de 75 kg. Les deux modèles roulent sur leurs trajets et reprennent avec leur état. Les acquisitions des autres modèles restent liées à leurs quêtes, ateliers ou factions dans le catalogue. Le skiff de campagne garde son scénario W3‑S09. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46157134524)
+
+- **Montures supplémentaires aux Forges** · Forest Stalker, Sand Mauler, Ice Fang et Stoneback possèdent chacun un parcours d’obtention. Les montures rejoignent le registre à l’issue des étapes requises et se montent à 50 de lien. Le sauvetage de Stoneback demande le rang Elite. Les parcours des autres espèces, le tournoi du Kha’Rha de guerre et le déploiement militaire restent ouverts. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46157600360)
+
+- **Spécialités du chenil et Brèche** · Les onze compagnons du chenil se répartissent entre trois aptitudes avec une action de spécialité au lien maximal. Brèche rejoint les choix du chenil après sa rencontre sur Oseris et l’installation de son habitat personnel. Ses soins et ses blessures utilisent le même registre. Un repère de piste actif conserve son échéance de simulation à la reprise. Les parcours d’obtention de Silex et Rhazor et la validation de nouvelles poses restent ouverts. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46158698309)
+
+- **Recrues yautja du vaisseau en chasse** · Le relevé d’Oseris‑IV et le circuit d’entraînement du vaisseau ouvrent respectivement Trace Froide et Balafre de Cendre. L’alcôve coûte 20 Marques par recrue. Deux chasseurs équipés sont choisis au briefing et gardent leur identité à l’insertion et au règlement. Les deux acteurs ont été retrouvés dans le vrai HuntCanvas et leurs ordres sont accessibles. Les équipiers suspendus ou en réaménagement sont désactivés dès le briefing. Les autres membres d’équipage et leurs affectations de chasse gardent leurs parcours propres. [Recette 1](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46158946970) [Recette 2](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46159367310)
+
+- **M017 · Rapport du Temple et commandes tactiles** · Le vétéran reçoit un relevé des secteurs effectivement parcourus et des preuves acquises. La route de quinze secteurs restitue la loge isolée, Saar au refuge, la purge et le seuil. Le parcours tactile émulé reste jouable avec la triade. Le téléphone physique reste à qualifier. Les chasses qualifiantes du rite gardent leur suivi après le seuil. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46156742464)
+
+- **The Isles · Verdant et archipel** · La PR #215 ajoute la chasse libre de Verdant et un archipel exploratoire de 48 × 49 km avec Calder, Eastbank et Steelwater détaillées d’après les plans. Le build et l’inventaire officiels ont passé leurs contrôles. Le peuplement de l’archipel, ses transports et la mesure de performance sur matériel réel restent ouverts. [Recette 1](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46155519488) [Recette 2](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46155519410)
