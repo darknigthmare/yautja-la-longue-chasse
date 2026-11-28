@@ -1,6 +1,6 @@
 "use client";
 
-import { lazy, Suspense, useCallback, useState } from "react";
+import { lazy, Suspense, useCallback, useRef, useState } from "react";
 import type { SaveGame } from "../game/types";
 import type { GameAudio, GameSfxId } from "../game/sound";
 import type { SceneAudioPort } from "../game/systems/sceneAudio";
@@ -84,7 +84,6 @@ interface Props {
   readSave: () => SaveGame;
   replaceSave: (next: SaveGame) => void;
   suspended: boolean;
-  recognitionPaused: boolean;
   ensureAudio: () => GameAudio | null;
   createSceneAudio: () => SceneAudioPort | null;
   onSound: (id: GameSfxId) => void;
@@ -96,12 +95,15 @@ interface Props {
 }
 
 export default function DevExerciseScene({
-  exercise, save, readSave, replaceSave, suspended, recognitionPaused, ensureAudio, createSceneAudio,
+  exercise, save, readSave, replaceSave, suspended, ensureAudio, createSceneAudio,
   onSound, onRecognitionAudio, onNotify, onClose, onOpenSettings, onOpenCradle,
 }: Props) {
-  const [recognition] = useState(() => exercise === "recognition" ? createDevRecognitionCheckpoint() : null);
+  const [recognition, setRecognition] = useState(() => ({
+    revision: 0,
+    checkpoint: exercise === "recognition" ? createDevRecognitionCheckpoint() : null,
+  }));
+  const lastRecognitionRef = useRef(recognition.checkpoint);
   const [temple] = useState(() => exercise === "temple" ? createSoloV70State(15) : null);
-  const [revision, setRevision] = useState(0);
   const enableSound = useCallback(() => { void ensureAudio()?.unlock(); }, [ensureAudio]);
   const commitForge = (apply: CustomizationApplyV146, confirmation: string) => {
     const next = apply(readSave());
@@ -164,22 +166,24 @@ export default function DevExerciseScene({
             ...(outcome.prologue ? { prologue: outcome.prologue } : {}) });
           return outcome;
         }} />}
-      {exercise === "recognition" && recognition && <>
+      {exercise === "recognition" && recognition.checkpoint && <>
         <div className={styles.actions}><button type="button" onClick={enableSound}>Activer le son de l’essai</button></div>
-        <FirstHuntSoloV68 key={revision} checkpoint={recognition} bindings={save.settings.controlBindings}
+        <FirstHuntSoloV68 key={recognition.revision} checkpoint={recognition.checkpoint} bindings={save.settings.controlBindings}
           externallyPaused={suspended} onOpenSettings={onOpenSettings}
-          onCheckpoint={state => { Object.assign(recognition, structuredClone(state)); return true; }}
-          onProgress={async (_receipts, state) => { Object.assign(recognition, structuredClone(state)); return true; }}
+          onCheckpoint={state => { lastRecognitionRef.current = structuredClone(state); return true; }}
+          onProgress={async (_receipts, state) => { lastRecognitionRef.current = structuredClone(state); return true; }}
           onExit={onClose} onReturnToCity={async () => { onClose(); return true; }}
           onRecognitionAudio={onRecognitionAudio} />
-        <div className={styles.actions}><button type="button" disabled={suspended || recognitionPaused}
-          onClick={() => setRevision(value => value + 1)}>Reprendre du point conservé</button></div>
+        <div className={styles.actions}><button type="button" disabled={suspended}
+          onClick={() => {
+            const checkpoint = lastRecognitionRef.current;
+            setRecognition(previous => ({ revision: previous.revision + 1, checkpoint }));
+          }}>Reprendre du point conservé</button></div>
       </>}
       {exercise === "temple" && temple && <FirstHuntSoloV70 checkpoint={temple} bindings={save.settings.controlBindings} continueTriad
         externallyPaused={suspended} soundEnabled={save.settings.masterVolume > 0}
         masterVolume={save.settings.masterVolume} effectsVolume={save.settings.effectsVolume}
-        onOpenSettings={onOpenSettings} onCheckpoint={state => { Object.assign(temple, structuredClone(state)); return true; }}
-        onProgress={async (_receipts, state) => { Object.assign(temple, structuredClone(state)); return true; }}
+        onOpenSettings={onOpenSettings} onCheckpoint={() => true} onProgress={async () => true}
         onExit={onClose} onReturnToCity={async () => { onClose(); return true; }} />}
       {exercise === "forge" && <HunterPieceForgeV146 save={save} disabled={suspended}
         allowEquipmentUpgrades onCommit={commitForge} onToolUpgrade={commitForge} />}
