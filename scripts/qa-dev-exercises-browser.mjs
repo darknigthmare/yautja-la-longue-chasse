@@ -10,17 +10,18 @@ assert.equal(origin.hostname, "127.0.0.1");
 const output = resolve(process.env.DEV_EXERCISES_OUTPUT ?? "outputs/qa-dev-exercises");
 await mkdir(output, { recursive: true });
 const log = createWriteStream(resolve(output, "next.log"));
-const server = spawn(process.execPath, ["node_modules/next/dist/bin/next", "dev", "--webpack", "--hostname", origin.hostname, "--port", origin.port], {
-  env: { ...process.env, YAUTJA_NEXT_DIST_DIR: ".next-dev-exercises" },
-});
-server.stdout.pipe(log, { end: false });
-server.stderr.pipe(log, { end: false });
+const server = process.env.DEV_EXERCISES_EXTERNAL_SERVER === "1" ? null :
+  spawn(process.execPath, ["node_modules/next/dist/bin/next", "dev", "--webpack", "--hostname", origin.hostname, "--port", origin.port], {
+    env: { ...process.env, YAUTJA_NEXT_DIST_DIR: ".next-dev-exercises" },
+  });
+server?.stdout.pipe(log, { end: false });
+server?.stderr.pipe(log, { end: false });
 const report = { checks: [], failures: [], errors: [], storageWrites: [] };
 let browser;
 
 async function ready() {
   for (let attempt = 0; attempt < 180; attempt++) {
-    if (server.exitCode !== null) throw new Error("Next s’est arrêté avant le chargement de /dev.");
+    if (server && server.exitCode !== null) throw new Error("Next s’est arrêté avant le chargement de /dev.");
     try {
       if ((await fetch(new URL("/dev", origin), { signal: AbortSignal.timeout(3000) })).ok) return;
     } catch {}
@@ -66,7 +67,7 @@ try {
     }
   };
   const open = async id => {
-    await page.goto(new URL("/dev?lieu=" + id, origin), { waitUntil: "domcontentloaded" });
+    await page.goto(new URL("/dev?lieu=" + id, origin).href, { waitUntil: "domcontentloaded" });
     await page.locator('[data-dev-session="' + id + '"]').waitFor({ timeout: 100000 });
   };
   async function walkWarp(field, tag, target) {
@@ -78,7 +79,7 @@ try {
     assert.equal(Number(await field.getAttribute("data-" + tag + "-position")), target);
   }
   await run("catalogue-et-sortie-f8", async () => {
-    await page.goto(new URL("/dev", origin));
+    await page.goto(new URL("/dev", origin).href);
     await page.locator('[data-dev-category="exercises"]').click();
     assert.equal(await page.locator("[data-dev-card]").count(), 14);
     await page.locator("[data-dev-search]").fill("Smart Disc");
@@ -88,6 +89,7 @@ try {
     assert.equal(await page.locator("[data-dev-walkthrough] li").count(), 2);
     await page.keyboard.press("F8");
     await page.locator("[data-dev-catalogue]").waitFor();
+    await page.waitForFunction(() => document.activeElement?.getAttribute("data-dev-launch") === "dev-forge");
     assert.equal(new URL(page.url()).searchParams.has("lieu"), false);
     assert.equal(await page.locator('[data-dev-launch="dev-forge"]').evaluate(node => node === document.activeElement), true);
   });
@@ -178,7 +180,8 @@ try {
     const canvas = scene.locator("canvas");
     await scene.and(page.locator('[data-solo-step="debrief"]')).waitFor();
     await canvas.focus();
-    await page.keyboard.press("KeyE");
+    await scene.locator("h1").waitFor();
+    await page.keyboard.press("KeyE", { delay: 150 });
     await scene.and(page.locator('[data-solo-step="recognition"]')).waitFor();
     await page.keyboard.press("Escape");
     await scene.getByRole("button", { name: "Reprendre", exact: true }).waitFor();
@@ -245,6 +248,6 @@ try {
 } finally {
   await writeFile(resolve(output, "report.json"), JSON.stringify(report, null, 2) + "\n");
   await browser?.close();
-  if (server.exitCode === null) server.kill("SIGTERM");
+  if (server && server.exitCode === null) server.kill("SIGTERM");
   log.end();
 }
