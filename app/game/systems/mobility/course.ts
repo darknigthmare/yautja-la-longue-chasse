@@ -1,8 +1,10 @@
 /** Fixed-step, deterministic driving yard. No film/hunt completion or reward lives here. */
-import { mobilityDefinition, mobilityStats, type MobilityLevels } from './catalogue.ts';
+import { mobilityDefinition, mobilityStats, TROPHY_CARRIER_MODEL, type MobilityLevels } from './catalogue.ts';
 export const COURSE_STEP = 1 / 60;
 export const COURSE_MAX_TICKS = 72_000;
 export const MOBILITY_YARD = {
+  name: 'Aire des convois',
+  track: 'M140 490 H820 V130 H140 Z',
   width: 1000, height: 620, radius: 18,
   depot: { x: 140, y: 490, radius: 50 },
   checkpoints: [{ x: 820, y: 490 }, { x: 820, y: 130 }, { x: 140, y: 130 }],
@@ -10,14 +12,41 @@ export const MOBILITY_YARD = {
   mud: { x: 630, y: 430, w: 100, h: 115 },
   cargo: { x: 820, y: 130, kg: 25 },
 } as const;
-export type MobilityRoute = 'forge-delivery';
+export type MobilityRoute = 'forge-delivery' | 'dunes-crossing' | 'trophy-convoy';
+
 export const FORGE_DELIVERY_YARD = {
+  ...MOBILITY_YARD,
   name: 'Livraison des Forges',
   checkpoints: [{ x: 140, y: 290 }, { x: 140, y: 130 }, { x: 840, y: 290 }],
   cargo: { x: 140, y: 130, kg: 25 },
 } as const;
-export const mobilityCourseLayout = (route?: MobilityRoute) =>
-  route === 'forge-delivery' ? FORGE_DELIVERY_YARD : MOBILITY_YARD;
+
+const DUNES_CROSSING_YARD = {
+  ...MOBILITY_YARD,
+  name: 'Piste des dunes',
+  track: 'M140 490 H870 V125 H140 Z',
+  checkpoints: [{ x: 470, y: 490 }, { x: 870, y: 490 }, { x: 870, y: 125 }],
+  obstacles: [{ x: 335, y: 245, w: 325, h: 155 }, { x: 750, y: 235, w: 55, h: 110 }],
+  mud: { x: 255, y: 425, w: 445, h: 120 },
+  cargo: { x: 870, y: 490, kg: 25 },
+} as const;
+
+const TROPHY_CONVOY_YARD = {
+  ...MOBILITY_YARD,
+  name: 'Convoi de la Salle des trophées',
+  track: 'M140 490 V140 H825 V490 Z',
+  checkpoints: [{ x: 140, y: 285 }, { x: 140, y: 140 }, { x: 825, y: 490 }],
+  cargo: { x: 140, y: 140, kg: 75 },
+} as const;
+
+const routes = {
+  'forge-delivery': FORGE_DELIVERY_YARD,
+  'dunes-crossing': DUNES_CROSSING_YARD,
+  'trophy-convoy': TROPHY_CONVOY_YARD,
+} as const;
+export const isMobilityRoute = (route: unknown): route is MobilityRoute =>
+  typeof route==='string'&&Object.hasOwn(routes,route);
+export const mobilityCourseLayout = (route?: MobilityRoute) => route ? routes[route] : MOBILITY_YARD;
 
 export interface MobilityInput { throttle: -1|0|1; steer: -1|0|1; brake: boolean; boost: boolean; interact: boolean }
 export interface MobilityCourseState {
@@ -38,7 +67,7 @@ export function validMobilityInput(v: unknown): v is MobilityInput {
   return Object.keys(i).length === 5 && [-1,0,1].includes(i.throttle as number) && [-1,0,1].includes(i.steer as number) &&
     typeof i.brake === 'boolean' && typeof i.boost === 'boolean' && typeof i.interact === 'boolean';
 }
-export function validMobilityCourse(v: unknown): v is MobilityCourseState {
+export function validMobilityCourse(v: unknown, route?: MobilityRoute): v is MobilityCourseState {
   if (!v || typeof v !== 'object' || Array.isArray(v)) return false;
   const s = v as MobilityCourseState;
   if (Object.keys(s).length !== 16) return false;
@@ -47,7 +76,7 @@ export function validMobilityCourse(v: unknown): v is MobilityCourseState {
     Number.isSafeInteger(s.tick) && s.tick >= 0 && s.tick <= COURSE_MAX_TICKS && finite(s.energy,0,100) && finite(s.heat,0,100) &&
     finite(s.condition,0,100) && finite(s.distance,0,300000) && Number.isSafeInteger(s.impacts) && s.impacts >= 0 && s.impacts <= s.tick &&
     finite(s.hitCooldown,0,1) && Number.isInteger(s.checkpoint) && s.checkpoint >= 0 && s.checkpoint <= 3 &&
-    (s.cargoKg === 0 || s.cargoKg === 25) && typeof s.cargoDelivered === 'boolean' && typeof s.overheated === 'boolean' &&
+    (s.cargoKg === 0 || s.cargoKg === mobilityCourseLayout(route).cargo.kg) && typeof s.cargoDelivered === 'boolean' && typeof s.overheated === 'boolean' &&
     !(s.cargoDelivered && s.cargoKg > 0) && !(s.cargoKg > 0 && s.checkpoint < 2);
 }
 function rectanglePoint(t: number) {
@@ -64,12 +93,13 @@ function rectanglePoint(t: number) {
 export function mobilityYardNpcs(ticks: readonly number[], driver: {x:number;y:number}): MobilityNpcPose[] {
   return [0,1].map(i=>{
     const p=rectanglePoint(ticks[i]*COURSE_STEP*16+i*340);
-    return {id:`yard-convoy-${i}`,modelId:'trophy_carrier',...p,state:Math.hypot(p.x-driver.x,p.y-driver.y)<65?'yielding':'moving'};
+    return {id:`yard-convoy-${i}`,modelId:TROPHY_CARRIER_MODEL,...p,state:Math.hypot(p.x-driver.x,p.y-driver.y)<65?'yielding':'moving'};
   });
 }
-export function courseCollision(x: number, y: number): boolean {
-  const r=MOBILITY_YARD.radius;
-  return x<r || y<r || x>1000-r || y>620-r || MOBILITY_YARD.obstacles.some(o=>x>o.x-r&&x<o.x+o.w+r&&y>o.y-r&&y<o.y+o.h+r);
+export function courseCollision(x: number, y: number, route?: MobilityRoute): boolean {
+  const { radius, width, height, obstacles } = mobilityCourseLayout(route);
+  return x<radius || y<radius || x>width-radius || y>height-radius ||
+    obstacles.some(o=>x>o.x-radius&&x<o.x+o.w+radius&&y>o.y-radius&&y<o.y+o.h+radius);
 }
 export function parkedAtDepot(s: MobilityCourseState): boolean {
   return Math.hypot(s.x-140,s.y-490)<=50 && Math.abs(s.speed)<6;
@@ -80,25 +110,30 @@ export function mobilityCoursePassed(s: MobilityCourseState): boolean {
 export function stepMobilityCourse(
   previous: MobilityCourseState, input: MobilityInput, modelId: string, levels: MobilityLevels, route?: MobilityRoute,
 ): MobilityCourseState {
-  if (!validMobilityInput(input) || !validMobilityCourse(previous) || !mobilityDefinition(modelId)) throw new TypeError('Commande de conduite incompatible');
+  if (!validMobilityInput(input) || !validMobilityCourse(previous,route) || !mobilityDefinition(modelId)) throw new TypeError('Commande de conduite incompatible');
   if (previous.tick>=COURSE_MAX_TICKS) return {...previous,speed:0};
   const s={...previous,npcTicks:[...previous.npcTicks] as [number,number]}, dt=COURSE_STEP;
   const stats=mobilityStats(modelId,levels,s.condition,s.cargoKg);
-  const inMud=s.x>630&&s.x<730&&s.y>430&&s.y<545;
+  const layout=mobilityCourseLayout(route);
+  const surface=layout.mud;
+  const inSoftGround=s.x>surface.x&&s.x<surface.x+surface.w&&s.y>surface.y&&s.y<surface.y+surface.h;
+  // The course represents the skimmer's sand preference and lateral wind.
+  const traction=route==='dunes-crossing'?(inSoftGround?1:.66):(inSoftGround?.55:1);
   const powered=s.energy>0&&s.condition>0;
   s.overheated=s.heat>=98||(s.overheated&&s.heat>40);
   const boost=input.boost&&input.throttle>0&&powered&&!s.overheated;
-  const target=powered&&!input.brake?input.throttle*stats.speed*(input.throttle<0?.35:boost?1.35:1)*(inMud?.55:1):0;
+  const target=powered&&!input.brake?input.throttle*stats.speed*(input.throttle<0?.35:boost?1.35:1)*traction:0;
   s.speed=towards(s.speed,target,(input.brake?240:input.throttle===0?45:stats.acceleration)*dt);
   // Low-speed steering remains possible, but a damaged unpowered hull cannot pivot for free.
   const turn=powered?input.steer*stats.turn*dt*(Math.abs(s.speed)>3?Math.sign(s.speed):.35):0;
-  s.heading=Math.atan2(Math.sin(s.heading+turn),Math.cos(s.heading+turn));
+  const wind=route==='dunes-crossing'&&powered&&Math.abs(s.speed)>3?Math.sin(s.tick*dt*.48)*.17*dt:0;
+  s.heading=Math.atan2(Math.sin(s.heading+turn+wind),Math.cos(s.heading+turn+wind));
   const x=s.x+Math.cos(s.heading)*s.speed*dt, y=s.y+Math.sin(s.heading)*s.speed*dt;
   const movingNpc=mobilityYardNpcs(s.npcTicks,s);
   movingNpc.forEach((npc,i)=>{ if(npc.state==='moving') s.npcTicks[i]++; });
   const trafficHit=movingNpc.some(p=>Math.hypot(x-p.x,y-p.y)<36);
   s.hitCooldown=Math.max(0,s.hitCooldown-dt);
-  if(courseCollision(x,y)||trafficHit){
+  if(courseCollision(x,y,route)||trafficHit){
     if(Math.abs(s.speed)>12&&s.hitCooldown===0){
       s.condition=bounded(s.condition-Math.abs(s.speed)*.12*(1-stats.collisionResistance),0,100);s.impacts++;s.hitCooldown=.7;
     }
@@ -108,7 +143,6 @@ export function stepMobilityCourse(
   s.energy=bounded(s.energy-(effort?stats.energyUse*(boost?4:1)*dt:0),0,100);
   s.heat=bounded(s.heat+(boost?16:-stats.cooling)*dt,0,100);
   s.condition=bounded(s.condition-(effort?.0005*Math.abs(s.speed)*dt:0),0,100);
-  const layout=mobilityCourseLayout(route);
   const targetGate=layout.checkpoints[s.checkpoint];
   if(targetGate&&Math.hypot(s.x-targetGate.x,s.y-targetGate.y)<55)s.checkpoint++;
   if(input.interact&&Math.abs(s.speed)<6){

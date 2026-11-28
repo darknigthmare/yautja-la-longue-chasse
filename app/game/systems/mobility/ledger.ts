@@ -1,5 +1,5 @@
-import { mobilityDefinition, mobilityRankIndex, MOBILITY_MODULES, emptyMobilityLevels, type MobilityLevels, type MobilityModule } from './catalogue.ts';
-import { createMobilityCourse, validMobilityCourse, validMobilityInput, stepMobilityCourse, mobilityCoursePassed, parkedAtDepot, type MobilityCourseState, type MobilityInput, type MobilityRoute } from './course.ts';
+import { mobilityDefinition, mobilityRankIndex, MOBILITY_MODULES, SAND_SKIMMER_MODEL, TROPHY_CARRIER_MODEL, emptyMobilityLevels, type MobilityLevels, type MobilityModule } from './catalogue.ts';
+import { createMobilityCourse, isMobilityRoute, validMobilityCourse, validMobilityInput, stepMobilityCourse, mobilityCoursePassed, parkedAtDepot, type MobilityCourseState, type MobilityInput, type MobilityRoute } from './course.ts';
 import type { SaveGame } from '../../types';
 import { evaluateClanShipAccess } from '../clanShipOperations';
 export interface OwnedMobility {
@@ -10,6 +10,7 @@ export interface MobilityRun { id: number; modelId: string; loaned: boolean; cou
 export const FORGE_DELIVERY_MODEL = 'clan_hoverbike';
 export const FORGE_DELIVERY_MARKS = 30;
 interface ForgeDeliveryReceipt { runId: number; marks: typeof FORGE_DELIVERY_MARKS }
+interface SandSkimmerReceipt { trophyId: string; claimedAt: string }
 export interface MobilityReport { runId: number; modelId: string; result: 'passed'|'returned'|'recovered'; distance: number; impacts: number; ticks: number }
 /** An earned, owner-bound receipt. Never inferred from a legacy permit or report. */
 export interface MobilityTrainingReward {
@@ -21,9 +22,11 @@ export interface MobilityLedger {
   spentMarks: number; repairCount: number; recoveryDebt: number; recoveryCount: number;
   trainingReward: MobilityTrainingReward | null;
   forgeDelivery?: ForgeDeliveryReceipt;
+  sandSkimmer?: SandSkimmerReceipt;
 }
 export type MobilityOrder =
   | { type:'claim-training'; rewardRunId:number }
+  | { type:'claim-sand-skimmer'; trophyId:string }
   | { type:'settle-recovery'; expectedCost:number }
   | { type:'buy'; modelId:string; expectedCost:number }
   | { type:'upgrade'; modelId:string; module:MobilityModule; expectedCost:number }
@@ -52,7 +55,7 @@ export function inspectMobilityLedger(raw:unknown,owner:string): {status:'absent
   if(!record(raw))return bad;
   if(record(raw.trainingReward)&&typeof raw.trainingReward.version==='number'&&raw.trainingReward.version>1)return {status:'future-version',state:null};
   if(raw.version!==1||raw.ownerCreatedAt!==owner||!Number.isFinite(Date.parse(owner))||!keys(raw,['version','ownerCreatedAt','revision','circulationPermit','owned','active','nextRunId','lastReport','spentMarks','repairCount','recoveryDebt','recoveryCount','trainingReward',
-       ...(Object.hasOwn(raw,'forgeDelivery')?['forgeDelivery']:[])])||
+       ...(Object.hasOwn(raw,'forgeDelivery')?['forgeDelivery']:[]),...(Object.hasOwn(raw,'sandSkimmer')?['sandSkimmer']:[])])||
      !integer(raw.revision)||typeof raw.circulationPermit!=='boolean'||!Array.isArray(raw.owned)||raw.owned.length>50||!integer(raw.nextRunId,1)||!integer(raw.spentMarks)||!integer(raw.repairCount)||!integer(raw.recoveryDebt)||!integer(raw.recoveryCount))return bad;
   const reward=raw.trainingReward;
   if(reward!==null&&(!record(reward)||!keys(reward,['version','runId','status','course'])||reward.version!==1||
@@ -76,15 +79,27 @@ export function inspectMobilityLedger(raw:unknown,owner:string): {status:'absent
   if(Object.hasOwn(raw,'forgeDelivery')&&(!record(delivery)||!keys(delivery,['runId','marks'])||
      !integer(delivery.runId,1)||delivery.runId>=raw.nextRunId||delivery.marks!==FORGE_DELIVERY_MARKS||
      !boughtForgeBike||!raw.circulationPermit))return bad;
+  const skimmer=raw.sandSkimmer;
+  if(Object.hasOwn(raw,'sandSkimmer')&&(!record(skimmer)||!keys(skimmer,['trophyId','claimedAt'])||
+     typeof skimmer.trophyId!=='string'||skimmer.trophyId.length===0||skimmer.trophyId.length>300||
+     typeof skimmer.claimedAt!=='string'||!Number.isFinite(Date.parse(skimmer.claimedAt))||
+     !ids.has(SAND_SKIMMER_MODEL)||!raw.circulationPermit))return bad;
   if(raw.active!==null){
     const a=raw.active;
     if(!record(a)||!keys(a,['id','modelId','loaned','course',...(Object.hasOwn(a,'route')?['route']:[])])||
        !integer(a.id,1)||a.id>=raw.nextRunId||typeof a.modelId!=='string'||
-       typeof a.loaned!=='boolean'||!validMobilityCourse(a.course)||!mobilityDefinition(a.modelId)?.trialEnabled)return bad;
-    if(a.loaned?a.modelId!=='scout_grav_sled':!ids.has(a.modelId))return bad;
-    if(Object.hasOwn(a,'route')&&(a.route!=='forge-delivery'||a.loaned||a.modelId!==FORGE_DELIVERY_MODEL||
-       !boughtForgeBike||!raw.circulationPermit||delivery!==undefined||
-       a.course.cargoDelivered&&a.course.checkpoint!==3))return bad;
+       typeof a.loaned!=='boolean'||!mobilityDefinition(a.modelId)?.trialEnabled)return bad;
+    const route=a.route;
+    if(route!==undefined&&!isMobilityRoute(route))return bad;
+    if(route===undefined&&Object.hasOwn(a,'route'))return bad;
+    if(!validMobilityCourse(a.course,route))return bad;
+    if(a.loaned ? !(a.modelId==='scout_grav_sled'&&route===undefined||a.modelId===TROPHY_CARRIER_MODEL&&route==='trophy-convoy')
+      : !ids.has(a.modelId)||a.modelId===TROPHY_CARRIER_MODEL)return bad;
+    if(a.modelId===SAND_SKIMMER_MODEL&&route!=='dunes-crossing')return bad;
+    if(route&&(!raw.circulationPermit||a.course.cargoDelivered&&a.course.checkpoint!==3))return bad;
+    if(route==='forge-delivery'&&(a.loaned||a.modelId!==FORGE_DELIVERY_MODEL||!boughtForgeBike||delivery!==undefined))return bad;
+    if(route==='dunes-crossing'&&(a.loaned||a.modelId!==SAND_SKIMMER_MODEL||!skimmer))return bad;
+    if(route==='trophy-convoy'&&(!a.loaned||a.modelId!==TROPHY_CARRIER_MODEL))return bad;
     if(!a.loaned){
       const owned=raw.owned.find(v=>v.id===a.modelId);
       if(owned.condition!==a.course.condition||owned.energy!==a.course.energy)return bad;
@@ -107,7 +122,27 @@ export function mobilityServiceQuote(state:MobilityLedger,id:string,type:'repair
   return d.kind==='machine'&&m&&v.upgrades[m.id]<3?m.price*(2**v.upgrades[m.id]):null;
 }
 export function mobilityCampaignEligible(campaign:Pick<SaveGame,'prologue'>):boolean {return evaluateClanShipAccess(campaign).allowed;}
-export function actMobility(campaign:Pick<SaveGame,'createdAt'|'profile'|'prologue'> & {mobilityV1?:MobilityLedger|null}, command:MobilityCommand):MobilityResult {
+
+type MobilityCampaignEvidence = Partial<Pick<SaveGame,'missionProgress'|'trophies'|'trophyUsagesV147'>>;
+const SANDMAW_MISSION = 'desert-sandmaw';
+export function mobilitySandSkimmerProof(campaign:MobilityCampaignEvidence, trophyId?:string):SandSkimmerReceipt|null {
+  const hunt=campaign.missionProgress?.[SANDMAW_MISSION];
+  if(hunt?.status!=='completed'||hunt.completions<1)return null;
+  const trophy=campaign.trophies?.find(entry=>
+    (trophyId===undefined||entry.id===trophyId)&&entry.missionId===SANDMAW_MISSION&&entry.definitionId==='trophy-desert-sandmaw'&&
+    entry.targetKind==='beast'&&entry.partId==='skull'&&!entry.sourceEnemyId&&Number.isFinite(Date.parse(entry.claimedAt)));
+  return trophy?{trophyId:trophy.id,claimedAt:trophy.claimedAt}:null;
+}
+
+export function mobilityTrophyConvoyAvailable(campaign:MobilityCampaignEvidence):boolean {
+  const assignments=campaign.trophyUsagesV147?.assignments;
+  return !!assignments&&!!campaign.trophies?.some(trophy=>{
+    const entry=assignments[trophy.id];
+    return entry?.usage==='displayed'&&entry.site==='ship';
+  });
+}
+
+export function actMobility(campaign:Pick<SaveGame,'createdAt'|'profile'|'prologue'|'mobilityV1'> & MobilityCampaignEvidence, command:MobilityCommand):MobilityResult {
   const refuse=(message:string):MobilityResult=>({accepted:false,message,state:null,clanMarks:campaign.profile.clanMarks});
   if(!record(command)||command.ownerCreatedAt!==campaign.createdAt)return refuse('Le propriétaire de la campagne a changé.');
   const inspected=inspectMobilityLedger(campaign.mobilityV1,campaign.createdAt);
@@ -128,26 +163,50 @@ export function actMobility(campaign:Pick<SaveGame,'createdAt'|'profile'|'prolog
     state.owned.push({id:'scout_grav_sled',acquiredBy:'quest',condition:reward.course.condition,energy:reward.course.energy,
       bond:0,upgrades:emptyMobilityLevels(),distance:reward.course.distance});
     reward.status='claimed';message='Le clan te confie ce Grav-Sled. Son usure et sa réserve restent celles du retour ; aucune place à bord n’est créée.';
+  }else if(command.type==='claim-sand-skimmer'){
+    if(state.active||state.recoveryDebt>0||state.sandSkimmer)return refuse('Remise déjà inscrite, sortie en cours ou récupération à régler.');
+    const rank=mobilityRankIndex(campaign.profile.rankId);
+    if(!state.circulationPermit||rank<mobilityRankIndex('blooded'))return refuse('Permis de circulation et rang Blooded requis.');
+    const proof=typeof command.trophyId==='string'&&command.trophyId.length>0?mobilitySandSkimmerProof(campaign,command.trophyId):null;
+    if(!proof)return refuse('Rapporte les mandibules de la Matriarche et consigne la chasse de Serekh-9 pour recevoir le Skimmer.');
+    // An older ledger may already carry the model identity. Keep its condition, modules and odometer.
+    if(!state.owned.some(v=>v.id===SAND_SKIMMER_MODEL))
+      state.owned.push({id:SAND_SKIMMER_MODEL,acquiredBy:'quest',condition:100,energy:100,bond:0,upgrades:emptyMobilityLevels(),distance:0});
+    state.sandSkimmer=proof;
+    message='Le Skimmer des dunes est inscrit. Les mandibules restent dans ta collection.';
   }else if(command.type==='settle-recovery'){
     if(state.active||state.recoveryDebt===0||command.expectedCost!==state.recoveryDebt||!pay(state.recoveryDebt))return refuse('Dette absente, devis périmé ou marques insuffisantes.');
     state.recoveryDebt=0;message='Remorquage réglé ; le registre de sortie est de nouveau disponible.';
   }else if(command.type==='start'){
-    if(typeof command.loaned!=='boolean')return refuse('Type de prêt invalide.');
-    if(!command.loaned&&state.recoveryDebt>0)return refuse('Règle le remorquage avant de sortir un engin personnel.');
-    if(state.active||!mobilityDefinition(command.modelId)?.trialEnabled)return refuse('Aire occupée ou modèle non admis sur cette piste.');
-    const owned=state.owned.find(v=>v.id===command.modelId);
-    if(command.loaned?command.modelId!=='scout_grav_sled':!owned)return refuse('Modèle non possédé ou prêt de formation incompatible.');
-    if(!command.loaned&&(!state.circulationPermit||mobilityRankIndex(campaign.profile.rankId)<mobilityRankIndex(mobilityDefinition(command.modelId)!.minimumRank)))return refuse('Permis et rang du modèle requis pour une sortie personnelle.');
-    if(command.route!==undefined&&(command.route!=='forge-delivery'||command.loaned||command.modelId!==FORGE_DELIVERY_MODEL||
-       owned?.acquiredBy!=='purchase'||state.forgeDelivery))return refuse('Le contrat exige une moto de clan achetée et une livraison encore ouverte.');
-    if(command.route&&!integer(marks+FORGE_DELIVERY_MARKS))return refuse('Le solde doit accepter la gratification avant le départ.');
+    const route=command.route;
+    if(typeof command.loaned!=='boolean'||route!==undefined&&!isMobilityRoute(route))return refuse('Type de sortie invalide.');
+    const model=mobilityDefinition(command.modelId);
+    if(state.active||!model?.trialEnabled)return refuse('Aire occupée ou modèle non admis sur cette piste.');
+    const training=route===undefined&&command.loaned&&model.id==='scout_grav_sled';
+    if(!training&&(state.recoveryDebt>0||!state.circulationPermit||
+      mobilityRankIndex(campaign.profile.rankId)<mobilityRankIndex(model.minimumRank)))
+      return refuse('Permis, rang du modèle et récupérations réglées sont requis pour cette sortie.');
+    const owned=state.owned.find(v=>v.id===model.id);
+    if(route==='trophy-convoy'){
+      if(!command.loaned||model.id!==TROPHY_CARRIER_MODEL||!mobilityTrophyConvoyAvailable(campaign))
+        return refuse('Expose une prise dans la Salle des trophées de ton vaisseau pour emprunter le porteur du clan.');
+    }else if(!training&&(command.loaned||!owned||model.id===TROPHY_CARRIER_MODEL))
+      return refuse('Modèle non possédé ou prêt incompatible.');
+    if(route==='forge-delivery'&&(model.id!==FORGE_DELIVERY_MODEL||owned?.acquiredBy!=='purchase'||state.forgeDelivery))
+      return refuse('Le contrat exige une moto de clan achetée et une livraison encore ouverte.');
+    if((route==='dunes-crossing'||model.id===SAND_SKIMMER_MODEL)&&
+      (model.id!==SAND_SKIMMER_MODEL||route!=='dunes-crossing'||!state.sandSkimmer))
+      return refuse('Le Skimmer remis par le clan est requis sur la piste des dunes.');
+    if(route==='forge-delivery'&&!integer(marks+FORGE_DELIVERY_MARKS))return refuse('Le solde doit accepter la gratification avant le départ.');
     if(owned&&!command.loaned&&(owned.condition<25||owned.energy<10))return refuse('Répare et recharge cet engin avant de repartir.');
     if(state.nextRunId>=1e9)return refuse('Limite du registre atteinte.');
     state.active={id:state.nextRunId++,modelId:command.modelId,loaned:command.loaned,
       course:createMobilityCourse(command.loaned?100:owned!.energy,command.loaned?100:owned!.condition),
-      ...(command.route?{route:command.route}:{})};
-    message=command.loaned?'Prêt de formation ouvert, sans propriété ni récompense de rang.':
-      command.route?'Contrat ouvert. Rejoins le quai nord-ouest et rapporte la caisse au sas.':'Engin sorti sur l’aire des convois.';
+      ...(route?{route}:{})};
+    message=route==='trophy-convoy'?'Porteur prêté par le clan. Rapporte le coffre de 75 kg au sas.':
+      route==='dunes-crossing'?'Piste des dunes ouverte. Surveille la dérive latérale et les portions rocheuses.':
+      route==='forge-delivery'?'Contrat ouvert. Rejoins le quai nord-ouest et rapporte la caisse au sas.':
+      training?'Prêt de formation ouvert, sans propriété ni récompense de rang.':'Engin sorti sur l’aire des convois.';
   }else if(command.type==='drive'){
     if(!state.active||state.active.id!==command.runId||!Array.isArray(command.inputs)||command.inputs.length<1||command.inputs.length>60||!command.inputs.every(validMobilityInput))return refuse('Séquence de conduite invalide ou périmée.');
     const owned=state.owned.find(v=>v.id===state.active!.modelId);
@@ -161,7 +220,7 @@ export function actMobility(campaign:Pick<SaveGame,'createdAt'|'profile'|'prolog
     if(command.type==='return'&&!parkedAtDepot(active.course))return refuse('Reviens au sas du garage et immobilise le véhicule.');
     // Recovery never grants the permit, even when a forged/misplaced stop reaches the button.
     const passed=command.type==='return'&&mobilityCoursePassed(active.course);
-    if(passed&&active.loaned){
+    if(passed&&active.loaned&&active.modelId==='scout_grav_sled'){
       state.circulationPermit=true;
       // The juvenile supervised initiation never transfers ownership. Adults confirm separately.
       if(!state.trainingReward&&mobilityRankIndex(campaign.profile.rankId)>=mobilityRankIndex('blooded'))
@@ -181,6 +240,8 @@ export function actMobility(campaign:Pick<SaveGame,'createdAt'|'profile'|'prolog
       message=`Livraison des Forges consignée. ${FORGE_DELIVERY_MARKS} marques versées au registre.`;
     }else if(active.route==='forge-delivery'&&command.type==='return'){
       message='Moto remisée. Livraison incomplète, contrat à reprendre au comptoir.';
+    }else if(active.route==='trophy-convoy'&&command.type==='return'){
+      message=passed?'Convoi consigné. Le porteur revient au clan.':'Porteur remis au clan. Itinéraire incomplet.';
     }else message=passed&&active.loaned?'Permis de circulation confirmé. La remise éventuelle du Grav-Sled se confirme séparément aux Forges ; aucun rang ni honneur accordé.':command.type==='recover'?'Retour de sécurité du clan. Usure et énergie consommée conservées.':'Engin remisé ; état conservé.';
   }else{
     if(state.active)return refuse('Remise au garage requise avant toute transaction.');
