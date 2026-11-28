@@ -12269,6 +12269,7 @@ export default function HuntCanvas({
     togglePauseRef.current = () => {
       if (game.phase === "dead" || game.phase === "finished") return;
       input.pressed.clear();
+      input.houndDirectOrderV147 = null;
       game.paused = !game.paused;
       game.jumpAssist = freshJumpAssistState({ requireRelease: true });
       lastObservedPaused = game.paused;
@@ -12386,7 +12387,7 @@ export default function HuntCanvas({
       }
       if (
         isInteractiveControl(event.target) &&
-        !(event.target instanceof Element && event.target.closest('[data-hunt-rites-v77]')) &&
+        !(event.target instanceof Element && event.target.closest("[data-hunt-rites-v77], [data-hound-current-order]")) &&
         !actions.includes("pause")
       ) {
         return;
