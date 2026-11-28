@@ -67,9 +67,16 @@ try {
   await page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]').or(motionError).waitFor();
   assert.equal(await motionError.count(), 0, await motionError.textContent({ timeout: 300 }).catch(() => undefined));
   await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 1000);
-  const nav = homeworldNavigatorV77(page, api);
+  const nav = homeworldNavigatorV77(page, api, { driverTickMs: 16 });
   await nav.reach({ levelId: '0', point: dock });
+  const approach = await nav.position();
+  const certifiedY = Array.from({ length: 101 }, (_, index) => dock.y - 25 + index / 2)
+    .filter(y => api.homeworldSkiffFootOnDeckV77({ x: approach.x, y }) && api.homeworldWalkableV77('0', { x: approach.x, y }));
+  assert(certifiedY.length > 0);
+  await nav.driveTo({ x: approach.x, y: (certifiedY[0] + certifiedY.at(-1)) / 2 }, 2.2);
   await nav.release();
+  report.boardingPoint = await nav.position();
+  assert(api.beginHomeworldSkiffV77('0', { ...actor, ...report.boardingPoint }, true), 'all four foot corners must be supported by the actual deck');
   await page.keyboard.press('KeyE');
   await nav.tick(96);
   const board = page.locator('button[data-homeworld-region-v68="thermal-caves"]');
@@ -79,7 +86,8 @@ try {
   assert(await page.locator('[data-homeworld-ferryman-v77]').count());
   await board.click();
   await nav.tick(96);
-  assert.equal(await hub.getAttribute('data-homeworld-skiff-v77'), 'thermal-caves');
+  assert.equal(await hub.getAttribute('data-homeworld-skiff-v77'), 'thermal-caves',
+    await hub.getByRole('dialog').textContent({ timeout: 300 }).catch(() => undefined));
   const positions = [];
   for (let n = 0; n < 154; n++) {
     await nav.tick(80);
