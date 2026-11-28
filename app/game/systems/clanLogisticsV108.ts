@@ -58,6 +58,11 @@ export const logisticsWorkV108=(s:LogisticsStateV108,id:SiteId)=>s.works.find(w=
 export const logisticsPcV108=(s:LogisticsStateV108,rules=DEFAULT_WAR_RULES_V6)=>s.actors.filter(a=>a.active).reduce((sum,a)=>sum+unit(a,rules).commandPoints,0);
 export function logisticsReadyV108(s:LogisticsStateV108,a:LogisticsActorV108){return a.active&&a.hired&&a.readyAt<=s.turn&&!a.aboard;}
 export function logisticsFunctionalV108(s:LogisticsStateV108,id:SiteId){const w=logisticsWorkV108(s,id),a=logisticsActorV108(s,actorId(id))!;return w.phase==='ready'&&w.staffed&&w.supplied&&a.supplied&&a.until>=s.turn&&logisticsReadyV108(s,a)&&a.layer==='surface'&&near(a,CLAN_LOGISTICS_SITES_V108[id]);}
+/** The switch alone does not energize a screen without its crew and installed cell. */
+export function logisticsScreenPoweredV108(state: LogisticsStateV108): boolean {
+  return state.screen && state.cell.holder === 'site' && state.cell.charge > 0 &&
+    logisticsFunctionalV108(state, 'W3-S13');
+}
 export function logisticsConservationV108(s:LogisticsStateV108){return s.depot+s.boat.cargo+s.shuttle.cargo+s.actors.reduce((sum,a)=>sum+a.rav,0)+s.works.reduce((sum,w)=>sum+w.bin,0)+s.recruitment+s.construction+s.upkeep===600;}
 export function createLogisticsV108(rules:WarRulesV6=DEFAULT_WAR_RULES_V6):LogisticsStateV108|null {
  const defs=specializedDefinitionsV107(rules);if(defs.length!==6||!rules.units.some(u=>u.id==='W3-U19'))return null;
@@ -154,9 +159,12 @@ export function applyLogisticsV108(current:LogisticsStateV108,action:LogisticsCo
   else if(action.kind==='boat-depart'){if(!['west','east'].includes(b.phase)||!service('W3-S09')||s.turn%4>1)return no('Quai tenu et fenêtre de courant 0–1 modulo 4 requis.');b.phase=b.phase==='west'?'outbound':'inbound';b.progress=0;b.trip++;turn=true;message='Traversée engagée avec le pilote civil identifié.';}
   else if(action.kind==='boat-step'){if(!['outbound','inbound'].includes(b.phase))return no('Aucune traversée engagée.');const out=b.phase==='outbound';b.progress++;b.x=round(out?390+180*b.progress/12:570-180*b.progress/12);b.y=300-30*Math.sin(Math.PI*b.progress/12);if(b.passenger){carrier.x=b.x;carrier.y=b.y;}if(b.progress===12){b.phase=out?'east':'west';s.receipts.push(`boat:${b.trip}:${b.phase}`);turn=true;}message=`Même coque et manifeste : ${b.progress}/12.`;}
   else{if(!b.passenger||!['west','east'].includes(b.phase))return no('Arrivée effective requise avant de débarquer.');b.passenger=null;carrier.aboard=null;carrier.x=b.x+(b.phase==='west'?-20:20);carrier.y=b.y;message='Mêmes porteurs débarqués ; les RAV restent dans la soute identifiée.';}
- }else if(action.kind==='screen'){if(!service('W3-S13')||s.cell.holder!=='site'||s.cell.charge<1)return no('Écran tenu et cellule chargée installée requis.');s.screen=!s.screen;message=s.screen?'Seul le couloir nord est alimenté.':'Écran coupé.';
+ }else if(action.kind==='screen'){
+  if(!s.screen&&(!service('W3-S13')||s.cell.holder!=='site'||s.cell.charge<1))return no('Écran tenu et cellule chargée installée requis.');
+  s.screen=!s.screen;
+  message=s.screen?'Seul le couloir nord est alimenté.':'Écran coupé.';
  }else if(action.kind==='probe'){if(s.probe.route||!['north','south'].includes(action.route))return no('Terminer le trajet de la même sonde.');s.probe.route=action.route;s.probe.step=0;s.probe.x=560;s.probe.y=action.route==='north'?190:370;message='Sonde inerte au départ connu du rail choisi.';
- }else if(action.kind==='probe-step'){const p=s.probe;if(!p.route)return no('Choisir le rail de la sonde.');p.step++;p.x+=15;if(p.route==='north'&&p.x>=620&&s.screen&&service('W3-S13')){s.cell.charge--;s.cell.consumed++;p.blocked++;p.route=null;if(!s.cell.charge)s.screen=false;turn=true;message='Sonde arrêtée au seul écran ; une charge consommée.';}else if(p.step===10){p.crossed++;p.route=null;turn=true;message='Sonde arrivée ; le passage adjacent reste libre.';}else message='Sonde avancée sur son rail.';
+ }else if(action.kind==='probe-step'){const p=s.probe;if(!p.route)return no('Choisir le rail de la sonde.');p.step++;p.x+=15;if(p.route==='north'&&p.x>=620&&logisticsScreenPoweredV108(s)){s.cell.charge--;s.cell.consumed++;p.blocked++;p.route=null;if(!s.cell.charge)s.screen=false;turn=true;message='Sonde arrêtée au seul écran ; une charge consommée.';}else if(p.step===10){p.crossed++;p.route=null;turn=true;message='Sonde arrivée ; le passage adjacent reste libre.';}else message='Sonde avancée sur son rail.';
  }else if(action.kind==='sign'||action.kind.startsWith('duel-')){
   const duel=s.duel,op=logisticsActorV108(s,actorId('W3-S14'))!,rival=logisticsActorV108(s,'rival')!,p=CLAN_LOGISTICS_SITES_V108['W3-S14'];
   if(action.kind==='sign'){const a=logisticsActorV108(s,action.actor);if(!a||!['operator:W3-S14','rival'].includes(a.id)||!at(a,p)||!['unsigned','accepted'].includes(duel.phase)||duel.signatures.includes(a.members[0]))return no('Chaque signataire présent accepte une seule fois.');duel.signatures.push(a.members[0]);duel.phase=duel.signatures.length===2?'accepted':'unsigned';message='Accord limité au coffre identifié et aux deux signataires.';}
