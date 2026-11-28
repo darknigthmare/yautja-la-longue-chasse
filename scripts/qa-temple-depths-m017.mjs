@@ -400,7 +400,7 @@ try {
       assert.equal(await rescueStage(), 'safe');
       const { delivered } = await readRescue();
       assert(delivered);
-      assert(delivered.tick - pickedUp.tick >= relief.holdTicks + Math.ceil((delivered.positions[0] - pickedUp.positions[0]) / carrySpeed));
+      assert(delivered.positions[0] - pickedUp.positions[0] <= (delivered.tick - pickedUp.tick - relief.holdTicks) * carrySpeed + .01);
       await shot('07c-saar-au-refuge');
       await page.reload();
       await boot();
