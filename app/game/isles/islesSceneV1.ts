@@ -11,14 +11,16 @@ import {
 import {GLTFLoader, type GLTF} from "three/examples/jsm/loaders/GLTFLoader.js";
 import {clone as cloneSkinned} from "three/examples/jsm/utils/SkeletonUtils.js";
 import {BODY_ABOVE_CHEST_V1, BODY_BELOW_CHEST_V1, type IslesCameraTuningV1} from "./islesCameraV1";
-import {heightAtV1, isTreeKindV1, kindAtV1, type IslesMapV1, type IslesTileKindV1} from "./islesMapV1";
+import {heightAtV1, isShrubKindV1, isTreeKindV1, kindAtV1, type IslesMapV1, type IslesTileKindV1} from "./islesMapV1";
 
 export const ISLES_ZONE_TILES_V1 = 32;
 
 /** Something drawn on the map this frame. */
 export interface IslesViewEntityV1 {
   id: string;
-  kind: "yautja" | "human" | "prey" | "plane" | "piece" | "beacon" | "npc" | "animal" | "decor" | "marker";
+  kind: "yautja" | "human" | "prey" | "plane" | "piece" | "beacon" | "npc" | "animal" | "decor" | "marker" | "vehicle";
+  /** Length, width and height in metres of a vehicle (its simple volume until a model loads). */
+  size?: [number, number, number];
   /** Runtime model id (app/game/data/islesModelsV1.json); the simple volume stands in until it loads. */
   model?: string;
   moving?: boolean;
@@ -66,6 +68,7 @@ const KIND_COLORS: Record<IslesTileKindV1, string> = {
   road: "#8b8072", bush: "#3f6b34", crate: "#8a6a3a", rock: "#8c8a80", tree: "#3f6b34", wall: "#b9ad97",
   roof: "#9b4f35", pillar: "#a8a397", ruin: "#a39a7c",
   snow: "#eef3f6", lava: "#e2531f", savanna: "#c2b062", pine: "#2c5a44", palm: "#5f9a52", building: "#8d929c",
+  rail: "#4b4640", cactus: "#4f7f4a", deadtree: "#3a322a", reed: "#8f9a55", crop: "#b9a94a",
 };
 
 function hash(x: number, z: number): number {
@@ -135,7 +138,7 @@ function withCutaway<T extends Material>(material: T, uniforms: Uniforms, hot = 
 function groundOfV1(map: IslesMapV1, tx: number, tz: number): {kind: IslesTileKindV1; top: number} {
   if (map.sample && tx >= 0 && tz >= 0 && tx < map.width && tz < map.depth) {
     const t = map.sample(tx, tz) as {kind: IslesTileKindV1; height: number; base?: number; ground?: IslesTileKindV1};
-    return isTreeKindV1(t.kind) || t.kind === "bush" || t.kind === "crate" ? {kind: t.ground ?? "grass", top: t.base ?? 0} : {kind: t.kind, top: t.height};
+    return isTreeKindV1(t.kind) || isShrubKindV1(t.kind) || t.kind === "crate" ? {kind: t.ground ?? "grass", top: t.base ?? 0} : {kind: t.kind, top: t.height};
   }
   const kind = kindAtV1(map, tx, tz);
   if (isTreeKindV1(kind) || kind === "bush") return {kind: map.id.includes("verdant") ? "jungle" : "grass", top: 0};
@@ -274,7 +277,7 @@ export function createIslesSceneV1(canvas: HTMLCanvasElement, map: IslesMapV1, c
   renderer.setClearColor("#1d3a40");
   const scene = new Scene();
   const uniforms = createCutawayUniforms();
-  const view = new OrthographicCamera(-10, 10, 10, -10, 0.1, 400);
+  const view = new OrthographicCamera(-10, 10, 10, -10, 0.1, camera.distance + 340);
   const hemi = new HemisphereLight("#dfeee6", "#3b4a32", 1.1);
   const sun = new DirectionalLight("#fff1d6", 1.8);
   sun.castShadow = true;
@@ -296,6 +299,7 @@ export function createIslesSceneV1(canvas: HTMLCanvasElement, map: IslesMapV1, c
   const crownMaterial = withCutaway(new MeshLambertMaterial({color: "#ffffff"}), uniforms, false, true, true);
   const matrix = new Matrix4(), q = new Quaternion(), s = new Vector3(), p = new Vector3(), up = new Vector3(0, 1, 0);
   const pineColors = [new Color("#1f4a3a"), new Color("#28584a")], palmColor = new Color("#5f9a52");
+  const cactusColor = new Color("#4f7f4a"), burntColor = new Color("#2a2420"), reedColor = new Color("#9aa35a"), cropColor = new Color("#c2b04e");
   const crownColors = [new Color("#2f5d2a"), new Color("#3b6e30"), new Color("#28502a")], bushColors = [new Color("#4c7a37"), new Color("#3e6a30")];
   interface ZoneV1 { objects: Mesh[]; triangles: number; instances: number }
   const loaded = new Map<string, ZoneV1>();
@@ -313,7 +317,7 @@ export function createIslesSceneV1(canvas: HTMLCanvasElement, map: IslesMapV1, c
     const cells: Record<"tree" | "bush" | "crate", [number, number][]> = {tree: [], bush: [], crate: []};
     for (let tz = z0; tz < Math.min(map.depth, z0 + ISLES_ZONE_TILES_V1); tz++) for (let tx = x0; tx < Math.min(map.width, x0 + ISLES_ZONE_TILES_V1); tx++) {
       const kind = kindAtV1(map, tx, tz);
-      if (isTreeKindV1(kind)) cells.tree.push([tx, tz]); else if (kind === "bush" || kind === "crate") cells[kind].push([tx, tz]);
+      if (isTreeKindV1(kind)) cells.tree.push([tx, tz]); else if (isShrubKindV1(kind)) cells.bush.push([tx, tz]); else if (kind === "crate") cells.crate.push([tx, tz]);
     }
     const instance = (shape: BufferGeometry, material: MeshLambertMaterial, list: [number, number][],
       place: (tx: number, tz: number) => [number, number, number, number, number, number, number], tint?: (tx: number, tz: number) => Color) => {
@@ -332,12 +336,15 @@ export function createIslesSceneV1(canvas: HTMLCanvasElement, map: IslesMapV1, c
     instance(crownGeometry, crownMaterial, cells.tree, (tx, tz) => {
       const kind = kindAtV1(map, tx, tz), h = tall(tx, tz);
       // Pines are narrow and tall, palms a small tuft, broadleaves a wide crown.
+      // A cactus is a green column, a burnt tree keeps only a stump of crown.
+      if (kind === "cactus") return [(tx + .5) * t, base(tx, tz) + h * 0.55, (tz + .5) * t, 0.3, h * 0.5, 0.3, hash(tx, tz) * 6];
+      if (kind === "deadtree") return [(tx + .5) * t, base(tx, tz) + h - 0.4, (tz + .5) * t, 0.22, 0.4, 0.22, hash(tx, tz) * 6];
       return kind === "pine" ? [(tx + .5) * t, base(tx, tz) + h - 3, (tz + .5) * t, 0.85, 3, 0.85, hash(tx, tz) * 6]
         : kind === "palm" ? [(tx + .5) * t, base(tx, tz) + h - 0.8, (tz + .5) * t, 1.25, 0.8, 1.25, hash(tx, tz) * 6]
         : [(tx + .5) * t, base(tx, tz) + h - 1.7, (tz + .5) * t, 1.15, 1.7, 1.15, hash(tx, tz) * 6];
-    }, (tx, tz) => { const kind = kindAtV1(map, tx, tz); return kind === "pine" ? pineColors[Math.floor(hash(tz, tx) * 2)] : kind === "palm" ? palmColor : crownColors[Math.floor(hash(tz, tx) * 3)]; });
+    }, (tx, tz) => { const kind = kindAtV1(map, tx, tz); return kind === "cactus" ? cactusColor : kind === "deadtree" ? burntColor : kind === "pine" ? pineColors[Math.floor(hash(tz, tx) * 2)] : kind === "palm" ? palmColor : crownColors[Math.floor(hash(tz, tx) * 3)]; });
     instance(bushGeometry, leafMaterial, cells.bush, (tx, tz) => [(tx + .5) * t, base(tx, tz) + 0.35, (tz + .5) * t, 1.3, 0.8, 1.3, hash(tx, tz) * 6],
-      (tx, tz) => bushColors[Math.floor(hash(tz, tx) * 2)]);
+      (tx, tz) => { const kind = kindAtV1(map, tx, tz); return kind === "reed" ? reedColor : kind === "crop" ? cropColor : bushColors[Math.floor(hash(tz, tx) * 2)]; });
     instance(crateGeometry, crateMaterial, cells.crate, (tx, tz) => [(tx + .5) * t, base(tx, tz) + 0.5, (tz + .5) * t, 1, 1, 1, hash(tx, tz) * 0.6]);
     for (const object of zone.objects) scene.add(object);
     return zone;
@@ -440,6 +447,14 @@ export function createIslesSceneV1(canvas: HTMLCanvasElement, map: IslesMapV1, c
     if (entity.kind === "decor") {
       const stand = new Group(); const block = new Mesh(new BoxGeometry(2, 1, 1.2), lambert("#9a9078", uniforms)); block.position.y = 0.5; stand.add(block);
       return withModel(entity, stand);
+    }
+    if (entity.kind === "vehicle") {
+      // A hull, a darker band of windows and a lighter roof: readable from above until the model loads.
+      const [length, width, height] = entity.size ?? [8, 2.5, 3], group = new Group();
+      const hull = new Mesh(new BoxGeometry(width, height * 0.72, length), lambert(entity.color ?? "#8d949c", uniforms)); hull.position.y = height * 0.36; hull.castShadow = true; group.add(hull);
+      const band = new Mesh(new BoxGeometry(width * 1.02, height * 0.2, length * 0.94), lambert("#1f2a33", uniforms)); band.position.y = height * 0.72; group.add(band);
+      const roof = new Mesh(new BoxGeometry(width * 0.96, height * 0.12, length * 0.98), lambert("#d9dde0", uniforms)); roof.position.y = height * 0.94; group.add(roof);
+      return withModel(entity, group);
     }
     if (entity.kind === "marker") {
       const group = new Group();

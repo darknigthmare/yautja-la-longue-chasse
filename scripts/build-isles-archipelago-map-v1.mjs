@@ -14,11 +14,13 @@ const out = path.join(root, 'docs/campagne/assets/isles-archipel-plan-20261128.p
 const bundle = await build({stdin: {contents: 'export * from "./app/game/isles/islesArchipelagoGenV1";', resolveDir: root, loader: 'ts'},
   bundle: true, write: false, format: 'esm', platform: 'node', logLevel: 'silent'});
 const {createArchipelagoWorldV1} = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].text).toString('base64'));
-const world = createArchipelagoWorldV1(data);
+const living = JSON.parse(await readFile(path.join(root, 'app/game/data/islesLivingWorldV1.json'), 'utf8'));
+const world = createArchipelagoWorldV1(data, 900, living);
 const step = 20, W = Math.floor(world.map.width / step), H = Math.floor(world.map.depth / step);
 const colors = {water: [38, 88, 118], ford: [92, 150, 140], sand: [222, 204, 150], grass: [111, 154, 74], jungle: [50, 110, 52], mud: [122, 99, 69], road: [124, 122, 116],
   bush: [76, 122, 55], crate: [138, 106, 58], rock: [140, 138, 128], tree: [30, 80, 34], wall: [90, 90, 90], roof: [170, 84, 56], pillar: [200, 180, 60], ruin: [200, 190, 150],
-  snow: [240, 246, 250], lava: [230, 80, 30], savanna: [196, 180, 100], pine: [26, 66, 50], palm: [80, 150, 70], building: [70, 74, 86]};
+  snow: [240, 246, 250], lava: [230, 80, 30], savanna: [196, 180, 100], pine: [26, 66, 50], palm: [80, 150, 70], building: [70, 74, 86],
+  rail: [48, 40, 36], cactus: [70, 120, 70], deadtree: [60, 52, 46], reed: [150, 160, 90], crop: [196, 180, 84]};
 /** Colours a window of the world, one tile in `every`, from tile (x0, z0). */
 function draw(x0, z0, width, height, every) {
   const image = Buffer.alloc(width * height * 3);
@@ -26,7 +28,7 @@ function draw(x0, z0, width, height, every) {
     const t = world.tileAt(x0 + i * every, z0 + j * every);
     let c = colors[t.kind];
     if (t.kind === 'building') { const k = Math.min(1, t.height / 120); c = [70 + 150 * k, 74 + 120 * k, 86 + 90 * k]; }
-    else if (t.base >= 3) { const k = Math.min(1.35, 1 + t.base / 90); c = c.map(v => Math.min(255, v * k + t.base * 0.9)); }
+    else if (t.base >= 3) { const k = 1 + Math.min(0.5, t.base / 1800); c = c.map(v => Math.min(255, v * k + Math.min(60, t.base * 0.05))); }
     image.set(c, (j * width + i) * 3);
   }
   return image;

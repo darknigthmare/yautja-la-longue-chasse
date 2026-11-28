@@ -1,0 +1,43 @@
+{
+  "id": "01a222a0-1207-76fe-af89-ca2d1e7ec731",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 1276685808,
+  "prompt": "Low-poly stylized-realistic game vehicle, small open-deck car ferry boat, flat open vehicle deck with low side walls and a loading ramp at each end, small raised wheelhouse on one side, plain white and navy hull, empty deck, original design, no logos, no text, no flags, no markings",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877247598,
+  "progress": 100,
+  "started_at": 1795877247609,
+  "finished_at": 1795877296051,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-1207-76fe-af89-ca2d1e7ec731/output/model.glb?Expires=4949424000&Signature=R7i-tJ6qKY0W6eLVZplKwGcFNvjw6Pa~1srHDFYNzyY3122exMrtOAJgfL6JQOXpNJqBgjAN7vXUo3yB3D7RfcQOyT2JGgCS3NDMOj8OUmR8mBc3CmDVxJTME92yMKZuUF2uCkf9RX4TpNu5826-I5Q84Bn4esrf-FKdXru9I4q35OIPXwJi4Y6EwnaGgH1HRRufVQ~jbziOmLc30zzwhrvUC0NrblEqniyaWgsaPA-KE~4nKfJisz~r7mDn3gNK4I5VhbXLPa6dLPBmSVSTFEu4OE0jtYk5Kygz5-qU~WjRAiFrvOUlWk9sCPJSUFDsuNuM-g-yigUaAbeWVVDq~g__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-1207-76fe-af89-ca2d1e7ec731/output/preview.png?Expires=4949424000&Signature=N~Xex2ocqBxeWSvPqsphluYuEKGW7WT9UgmKjAFLzjimpjBw5wmTfGS4gcGYXQXPRd7bfeZKJCTLEp7eb2Hyo6NSF0gmQxeMJtIdqdntl29faehPLFMIJEzEBuzJddHJp43oZQgGObXC7Qct~ZMjD7IKL81~Pa3j-RUCJQOEWUhqOqwtUcpl~XIq0qB7jHXuUrctJTv9qLlNoAnPQbNJmNOAnJ8epgekhv~Um06ZZ3bzR2pKxlIpqWMlzszmnYQVqtykkWd-X7jmDmr5QDbw2rigaJYGIZbxxLo1AocFJg3NrwQCFgABXaBbf0fuWCEoogskcHUs891GvuIseKD49g__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game vehicle, small open-deck car ferry boat, flat open vehicle deck with low side walls and a loading ramp at each end, small raised wheelhouse on one side, plain white and navy hull, empty deck, original design, no logos, no text, no flags, no markings",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 1276685808,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-1207-76fe-af89-ca2d1e7ec731/output/model.glb?Expires=4949424000&Signature=R7i-tJ6qKY0W6eLVZplKwGcFNvjw6Pa~1srHDFYNzyY3122exMrtOAJgfL6JQOXpNJqBgjAN7vXUo3yB3D7RfcQOyT2JGgCS3NDMOj8OUmR8mBc3CmDVxJTME92yMKZuUF2uCkf9RX4TpNu5826-I5Q84Bn4esrf-FKdXru9I4q35OIPXwJi4Y6EwnaGgH1HRRufVQ~jbziOmLc30zzwhrvUC0NrblEqniyaWgsaPA-KE~4nKfJisz~r7mDn3gNK4I5VhbXLPa6dLPBmSVSTFEu4OE0jtYk5Kygz5-qU~WjRAiFrvOUlWk9sCPJSUFDsuNuM-g-yigUaAbeWVVDq~g__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-1207-76fe-af89-ca2d1e7ec731/output/preview.png?Expires=4949424000&Signature=N~Xex2ocqBxeWSvPqsphluYuEKGW7WT9UgmKjAFLzjimpjBw5wmTfGS4gcGYXQXPRd7bfeZKJCTLEp7eb2Hyo6NSF0gmQxeMJtIdqdntl29faehPLFMIJEzEBuzJddHJp43oZQgGObXC7Qct~ZMjD7IKL81~Pa3j-RUCJQOEWUhqOqwtUcpl~XIq0qB7jHXuUrctJTv9qLlNoAnPQbNJmNOAnJ8epgekhv~Um06ZZ3bzR2pKxlIpqWMlzszmnYQVqtykkWd-X7jmDmr5QDbw2rigaJYGIZbxxLo1AocFJg3NrwQCFgABXaBbf0fuWCEoogskcHUs891GvuIseKD49g__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

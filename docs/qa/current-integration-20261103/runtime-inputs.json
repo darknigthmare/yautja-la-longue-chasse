@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2853,
-  "bytes": 1260668233,
+  "files": 2857,
+  "bytes": 1260809890,
   "entries": [
     {
       "path": ".github/workflows/gameplay-cloud-v94.yml",
@@ -1760,13 +1760,13 @@
     },
     {
       "path": "app/game/IslesModeV1.module.css",
-      "bytes": 6628,
-      "sha256": "0ab0c4207bc8fa8e729c4397c290ee350d53c5f1de22141cd8e24b4886988bcc"
+      "bytes": 8075,
+      "sha256": "51a4cd1bf356ec3b456650230e5c972d8b073c6fdd4f0ccae3304f2bae277e2a"
     },
     {
       "path": "app/game/IslesModeV1.tsx",
-      "bytes": 40975,
-      "sha256": "b7ec547a0ee148f1d0fa6f6c071b7e6c54529fad51f1d7adf72f2d0114a30f8d"
+      "bytes": 53165,
+      "sha256": "e2b7e4de77aaa422885e1e4d5c231b0800eb30c831f1c97d11cc1b113b5ea99d"
     },
     {
       "path": "app/game/JungleHunterLayeredV134.module.css",
@@ -3129,6 +3129,11 @@
       "sha256": "370969d5a7c351dc50419d2049ee51d5181eb063243f259f1d30c549fa9590ea"
     },
     {
+      "path": "app/game/data/islesLivingWorldV1.json",
+      "bytes": 36869,
+      "sha256": "cc3bf3a614b95f2480c13c7d690e45c8a3b274e5e181b889c089e04e7b841e61"
+    },
+    {
       "path": "app/game/data/islesMapTestV1.json",
       "bytes": 3909,
       "sha256": "cccdf1674f438a505634e0fce8685e65ae8056f9b24a7cbbea4d87f9abcb7eac"
@@ -3140,8 +3145,8 @@
     },
     {
       "path": "app/game/data/islesModelsV1.json",
-      "bytes": 922,
-      "sha256": "ed000ac60b09bbf4a37421b429d439b4fdbf8a023bb702786be96ded01e6a876"
+      "bytes": 2569,
+      "sha256": "f553fca9fbf2a644c969e18edf63e59182b9a0049a36d6ce4f97f0dba56fcbdc"
     },
     {
       "path": "app/game/data/islesNetConfigV1.json",
@@ -3155,8 +3160,8 @@
     },
     {
       "path": "app/game/data/islesTuningV1.json",
-      "bytes": 1160,
-      "sha256": "2d0046fe9554bff2ef5f22b904402f28dbe07f2ec3a64da56c1344a618f66cd4"
+      "bytes": 1206,
+      "sha256": "4e111c29a24941dcd877d37d6129c630452a092be7e4303a305bad7e0cf72bd8"
     },
     {
       "path": "app/game/data/islesVerdantWorldV1.json",
@@ -3770,13 +3775,18 @@
     },
     {
       "path": "app/game/isles/islesArchipelagoGenV1.ts",
-      "bytes": 29653,
-      "sha256": "50115a44ac4ed109fdc6886e7a9044c20b8d3b9bd6839222478beb4716753fd3"
+      "bytes": 41385,
+      "sha256": "ca0eae1ff0a16707b4775ddbfd2aafe86fa86aca583cb88927c3ab57910ede40"
     },
     {
       "path": "app/game/isles/islesCameraV1.ts",
       "bytes": 4802,
       "sha256": "d729fa4050af0195df5cdc4931464a1d46a5c2171e3f812a520d4b0971c9802b"
+    },
+    {
+      "path": "app/game/isles/islesFaunaV1.ts",
+      "bytes": 38748,
+      "sha256": "f1788573f329f6922cff01c4b0b386f310c1ea67d5f9ef74a61c8c2063c69d19"
     },
     {
       "path": "app/game/isles/islesFreeHuntV1.ts",
@@ -3785,8 +3795,8 @@
     },
     {
       "path": "app/game/isles/islesMapV1.ts",
-      "bytes": 5070,
-      "sha256": "7ee5cb4cd4f847fcad508cbd287a32efacf9eda255cd0e5d9b3152f1c3f88780"
+      "bytes": 5819,
+      "sha256": "c4116a300d41246b5bb022e0e62f540869b269666870dc3a3073366e56cd008a"
     },
     {
       "path": "app/game/isles/islesMovementV1.ts",
@@ -3820,13 +3830,23 @@
     },
     {
       "path": "app/game/isles/islesSceneV1.ts",
-      "bytes": 32985,
-      "sha256": "5e85c6e1d96ac8babab4e593f7e8b7ed63a190c4cf211cb77d20c783cf30a682"
+      "bytes": 34769,
+      "sha256": "f84780e44282cf64c73eeb865d96c6b59b5711a5791d31a0e3446d00819ce32b"
+    },
+    {
+      "path": "app/game/isles/islesTransportV1.ts",
+      "bytes": 25998,
+      "sha256": "2f58ba1fdead57db9bf2c0d2c8a965396a389e1fe3e1bcfceaa26191d652e7cd"
+    },
+    {
+      "path": "app/game/isles/islesWeatherV1.ts",
+      "bytes": 10394,
+      "sha256": "c8754e2045f991f8c35158d9e489effcbd355055ca31379a383c0bbd9b71869c"
     },
     {
       "path": "app/game/isles/islesWorldGenV1.ts",
-      "bytes": 12813,
-      "sha256": "5c2b994bfc31d8fd0e44105339fc1f50b4245544fe898b7b38d0c5816505e0e5"
+      "bytes": 12866,
+      "sha256": "0ca8650448f09b98b64809919cef42b82603c7b5dcf0038e00f07068846d2b89"
     },
     {
       "path": "app/game/littleTrailArtO6.ts",

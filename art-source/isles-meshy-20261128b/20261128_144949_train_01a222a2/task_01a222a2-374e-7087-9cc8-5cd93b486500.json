@@ -1,0 +1,43 @@
+{
+  "id": "01a222a2-374e-7087-9cc8-5cd93b486500",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 1432691742,
+  "prompt": "Low-poly stylized-realistic game vehicle, single diesel passenger locomotive, long boxy body with a sloped driver cab at the front, plain dark green paint with a plain cream band, roof exhaust vents and grilles, wheel bogies underneath, original design, no logos, no text, no numbers, no company livery",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877386887,
+  "progress": 100,
+  "started_at": 1795877386907,
+  "finished_at": 1795877436326,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-374e-7087-9cc8-5cd93b486500/output/model.glb?Expires=4949424000&Signature=m4ebgWf82yU~yMIBqZ~pf4ALfkGCO6M1jzpmY283IHqIB4GxTaMIe4hc~ZU1zYPeT-XS7QT4RXZvVbrcCbHh91mpy9lu0i3vRiYiLU~RF34HjWj5F8xNPTbv3HyCozBdIETInG95H4Soj03djf-yAEskJTnmUgJ6FnHX0ne223JE04p2MZ0ZhmJb3ji7IdJihB1ULSVb4BX5cVR7olMtK-QSpN2yZEHRqBfT5uMa9tRpappm~IIo6gVfGERLEiEq9-52Sgg5ILnfwfxLuQliTPt2piQN8YqSTJalFWxSjEl~8jaMFCn45fdN4IXvBpk3SskWHqATiwhIpk0mvkx2Bw__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-374e-7087-9cc8-5cd93b486500/output/preview.png?Expires=4949424000&Signature=Q~SN~go0tMR~dtgLBaY4SJ3uwuJcsFniSUjsxlP3l~ki7DPMBfTOItr5LsKYopHXjcnCoyvqX-908z~Vsq~l~fR0b1u5oQL78MJCyBytoGdEMYTMg7-~DB~bsELUp~s4WE4F~RBP81C4f-ix7MDPodp-P6ZwZz0keulJ~g8Ro28Mq82eb1rAkkFr1PJJ3AWHVLrie9IxlxGInFVZ41UZPxtPSAQQLFcFGv5zrO2HsNqvk-e0JegiqUscZdlBQIWa-Fx7gQ1iKdTd4TSxBcK2wbSsCCrOqN-HMhStaOthvFm0yCDy5zTIKcjejf8O~EzFUPijrYZurM1~XRngdvjS6Q__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game vehicle, single diesel passenger locomotive, long boxy body with a sloped driver cab at the front, plain dark green paint with a plain cream band, roof exhaust vents and grilles, wheel bogies underneath, original design, no logos, no text, no numbers, no company livery",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 1432691742,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-374e-7087-9cc8-5cd93b486500/output/model.glb?Expires=4949424000&Signature=m4ebgWf82yU~yMIBqZ~pf4ALfkGCO6M1jzpmY283IHqIB4GxTaMIe4hc~ZU1zYPeT-XS7QT4RXZvVbrcCbHh91mpy9lu0i3vRiYiLU~RF34HjWj5F8xNPTbv3HyCozBdIETInG95H4Soj03djf-yAEskJTnmUgJ6FnHX0ne223JE04p2MZ0ZhmJb3ji7IdJihB1ULSVb4BX5cVR7olMtK-QSpN2yZEHRqBfT5uMa9tRpappm~IIo6gVfGERLEiEq9-52Sgg5ILnfwfxLuQliTPt2piQN8YqSTJalFWxSjEl~8jaMFCn45fdN4IXvBpk3SskWHqATiwhIpk0mvkx2Bw__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-374e-7087-9cc8-5cd93b486500/output/preview.png?Expires=4949424000&Signature=Q~SN~go0tMR~dtgLBaY4SJ3uwuJcsFniSUjsxlP3l~ki7DPMBfTOItr5LsKYopHXjcnCoyvqX-908z~Vsq~l~fR0b1u5oQL78MJCyBytoGdEMYTMg7-~DB~bsELUp~s4WE4F~RBP81C4f-ix7MDPodp-P6ZwZz0keulJ~g8Ro28Mq82eb1rAkkFr1PJJ3AWHVLrie9IxlxGInFVZ41UZPxtPSAQQLFcFGv5zrO2HsNqvk-e0JegiqUscZdlBQIWa-Fx7gQ1iKdTd4TSxBcK2wbSsCCrOqN-HMhStaOthvFm0yCDy5zTIKcjejf8O~EzFUPijrYZurM1~XRngdvjS6Q__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "01a222a0-0f9e-7642-975a-33aa049e5d77",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 1275009460,
+  "prompt": "Low-poly stylized-realistic game vehicle, single railway flatcar freight wagon carrying one plain rust-red shipping container with corrugated sides, low steel deck, wheel bogies underneath, long and straight, original design, no logos, no text, no numbers, no markings",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877246690,
+  "progress": 100,
+  "started_at": 1795877246701,
+  "finished_at": 1795877305389,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-0f9e-7642-975a-33aa049e5d77/output/model.glb?Expires=4949424000&Signature=Acm-iXpuHu62c~b64dkNKf7kmnwwvQZRg9UFmh1~Fa18w~Wbywsh10U9nM5CxhgksyguEk-irHtXQtDgW51tvOJ7T~rtYH9rZ65KBk3mPYLdVUPts8jPK0FhrRQ2-jYoPpogg8eHHKQ8m-ZVsU7xkUGTbii7XWvWeg00m~3f8RjqYqLJl-rz3zzCK7fcGKEe1TpQJHeeZ8nPqiSkyw9m~yLXIDEx5RaIqwKdWMbFtqDrykD7XOItMofF2zVudoOfAxipc0948xZwpsDDt1KuAug~rFaojmBMoVPftNFw8hwjf1~QEk0ls0WfoU7LoK7bGDr2ubnxEntebekrMhcy2w__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-0f9e-7642-975a-33aa049e5d77/output/preview.png?Expires=4949424000&Signature=l9BvFNEQnYXmbyztRtnF5T1zx9Vkfe5LsBqNwAUo25PEWSkjs8kAS4ox0CeMPClhTc5~TfWHqAt5DnRwW5P1am4RNMYJrl03Jgtv8eHK1iIbx0pcic~44jtVJvE7T-~VqWqJyBtVSR-VWPweA03BejfBDKYnNc4E-03qtPIoJsQIUdWtkilhSQiwicVn8rOE7HF2z5j513jcmyhul6GDSyii1r6vyLRO9OgLVF1XO86NPCqgAXvYQM4AHjjrZzvrMiEeAaDNind5DQmU5Evg8033UR~diqzSo11598Wsn2aCcrGiderWDtdB9B8qyb-OuP0NRifbhHl4OFaxRf7bRA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game vehicle, single railway flatcar freight wagon carrying one plain rust-red shipping container with corrugated sides, low steel deck, wheel bogies underneath, long and straight, original design, no logos, no text, no numbers, no markings",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 1275009460,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-0f9e-7642-975a-33aa049e5d77/output/model.glb?Expires=4949424000&Signature=Acm-iXpuHu62c~b64dkNKf7kmnwwvQZRg9UFmh1~Fa18w~Wbywsh10U9nM5CxhgksyguEk-irHtXQtDgW51tvOJ7T~rtYH9rZ65KBk3mPYLdVUPts8jPK0FhrRQ2-jYoPpogg8eHHKQ8m-ZVsU7xkUGTbii7XWvWeg00m~3f8RjqYqLJl-rz3zzCK7fcGKEe1TpQJHeeZ8nPqiSkyw9m~yLXIDEx5RaIqwKdWMbFtqDrykD7XOItMofF2zVudoOfAxipc0948xZwpsDDt1KuAug~rFaojmBMoVPftNFw8hwjf1~QEk0ls0WfoU7LoK7bGDr2ubnxEntebekrMhcy2w__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-0f9e-7642-975a-33aa049e5d77/output/preview.png?Expires=4949424000&Signature=l9BvFNEQnYXmbyztRtnF5T1zx9Vkfe5LsBqNwAUo25PEWSkjs8kAS4ox0CeMPClhTc5~TfWHqAt5DnRwW5P1am4RNMYJrl03Jgtv8eHK1iIbx0pcic~44jtVJvE7T-~VqWqJyBtVSR-VWPweA03BejfBDKYnNc4E-03qtPIoJsQIUdWtkilhSQiwicVn8rOE7HF2z5j513jcmyhul6GDSyii1r6vyLRO9OgLVF1XO86NPCqgAXvYQM4AHjjrZzvrMiEeAaDNind5DQmU5Evg8033UR~diqzSo11598Wsn2aCcrGiderWDtdB9B8qyb-OuP0NRifbhHl4OFaxRf7bRA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

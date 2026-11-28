@@ -1,0 +1,43 @@
+{
+  "id": "01a222a2-38c7-7101-81ca-3856e8a9fa32",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 2919139672,
+  "prompt": "Low-poly stylized-realistic game creature, adult male lion with a full dark-gold mane standing on all four legs in a neutral side-profile stance, all four paws on the ground, tawny coat, mouth closed, tail down with tuft, full body",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877387217,
+  "progress": 100,
+  "started_at": 1795877387228,
+  "finished_at": 1795877428094,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-38c7-7101-81ca-3856e8a9fa32/output/model.glb?Expires=4949424000&Signature=KgQT0FhHKAXcJMkzscu4LlBtEUUlfNgiAVF19gbxgU2lHQtnM6aKFg65iKNjMHkf2HAD3nOAXejpMG09wck2PHbOeFC5DuoAhU2lc274ByntKBTtNQhdpYcruQiEBm8k8Xg50N8UR-Nrrw9uxS~OSM3smM6Cr-76fyUkfhaVgJC3RtbhDh30V8dskclQMDwHEA~uspfHz8UuUQol3pdrDIKHHC-GSJJuSTQbsiwHtPe~ElrAkS-Nid9jp8yQmDdZb6oOMFQl3MtjkfRonJZyp0IV~EgvZKRTU1nAToedR06o8M5WEs3vOof5IM0O5Z1bPCBtJHpp5EBpZjz5L0rcgA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-38c7-7101-81ca-3856e8a9fa32/output/preview.png?Expires=4949424000&Signature=TRV0sZSZwNkXbvjGXd71dPyEGy~ipreZvQOy9OBJmQlwJW6Gj43CcXpF~Q7M6YrGjVnC7e7tX50lOh~67R6-d1-i4iwIjraaC7ynWnbaILm48DhPa0308JFsv1aFO5FRViXJCZiLVfzRdKZC12AOAdsQUcZcQ8rTfyXRKIIU9UOvx6-LqvodXsy9hj5xlP4oJSkSUllV9TvewkzMMK4Nd2RZ7ZzQQcLl2mJHz3Ow8u4HWuNpw4kXfJN2Vez150XqsOnOwYkFVR--4wcUtFPM1Ekt~I6wGaxGBOMcm4QHe7pmCpJocAoEoKXRghjCIFSZX0SYyIdR8m3BX1yM3UCUog__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game creature, adult male lion with a full dark-gold mane standing on all four legs in a neutral side-profile stance, all four paws on the ground, tawny coat, mouth closed, tail down with tuft, full body",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 2919139672,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-38c7-7101-81ca-3856e8a9fa32/output/model.glb?Expires=4949424000&Signature=KgQT0FhHKAXcJMkzscu4LlBtEUUlfNgiAVF19gbxgU2lHQtnM6aKFg65iKNjMHkf2HAD3nOAXejpMG09wck2PHbOeFC5DuoAhU2lc274ByntKBTtNQhdpYcruQiEBm8k8Xg50N8UR-Nrrw9uxS~OSM3smM6Cr-76fyUkfhaVgJC3RtbhDh30V8dskclQMDwHEA~uspfHz8UuUQol3pdrDIKHHC-GSJJuSTQbsiwHtPe~ElrAkS-Nid9jp8yQmDdZb6oOMFQl3MtjkfRonJZyp0IV~EgvZKRTU1nAToedR06o8M5WEs3vOof5IM0O5Z1bPCBtJHpp5EBpZjz5L0rcgA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-38c7-7101-81ca-3856e8a9fa32/output/preview.png?Expires=4949424000&Signature=TRV0sZSZwNkXbvjGXd71dPyEGy~ipreZvQOy9OBJmQlwJW6Gj43CcXpF~Q7M6YrGjVnC7e7tX50lOh~67R6-d1-i4iwIjraaC7ynWnbaILm48DhPa0308JFsv1aFO5FRViXJCZiLVfzRdKZC12AOAdsQUcZcQ8rTfyXRKIIU9UOvx6-LqvodXsy9hj5xlP4oJSkSUllV9TvewkzMMK4Nd2RZ7ZzQQcLl2mJHz3Ow8u4HWuNpw4kXfJN2Vez150XqsOnOwYkFVR--4wcUtFPM1Ekt~I6wGaxGBOMcm4QHe7pmCpJocAoEoKXRghjCIFSZX0SYyIdR8m3BX1yM3UCUog__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

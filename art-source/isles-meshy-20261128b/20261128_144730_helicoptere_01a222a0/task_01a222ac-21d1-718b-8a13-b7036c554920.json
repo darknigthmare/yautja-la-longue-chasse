@@ -1,0 +1,57 @@
+{
+  "id": "01a222ac-21d1-718b-8a13-b7036c554920",
+  "type": "text-to-3d-refine",
+  "mode": "refine",
+  "name": "",
+  "model_type": "standard",
+  "seed": 3975869339,
+  "prompt": "Low-poly stylized-realistic game vehicle, light civilian utility helicopter, rounded glass cockpit, plain dark orange body, landing skids, slender tail boom with small tail rotor, two-blade main rotor aligned along the body, original design, no logos, no text, no numbers, no registration markings",
+  "texture_prompt": "Plain dark orange fuselage and tail boom, dark tinted cockpit glass, black landing skids, grey rotor blades, completely blank unmarked panels, no lettering, no numerals, no registration, no decals",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795878038016,
+  "progress": 100,
+  "started_at": 1795878038035,
+  "finished_at": 1795878096706,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-21d1-718b-8a13-b7036c554920/output/model.glb?Expires=4949424000&Signature=Tu4bsxJ7MKyHUKM3L4MtDfsxgZntlxy0YjJZkt204qgs3AaDzGX~bb3Dyez8IX~yHLewn39wrKIx2WBEed1m0v5NM8N5SLlCWooiKLuT--cTPUx9feTJBou4gHcLw5LW8ZKJ2QNoHaNriK3fYSsMoFlQXpTpRabXm53-HqoLJTn95oZzqGDhvCeaB8k7~A-Kl9q8Tpfuk5AbCYRlQbUbVnp1cXZcd7p80maCu1pWrBhlED8npQcbdnc~8gn7mavXgUx-yo9jQ7Uin5ahDxVC7n12o~HftZs4uf4p1w-dIxzr3xaeJ7UMt9k0zsj~MPqRgQnoR1QqkXPruTVHTZB4WA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-21d1-718b-8a13-b7036c554920/output/preview.png?Expires=4949424000&Signature=NysPZqf7DY4R~hxCjo4uq~cX~LThEtRfXJDm8azOevQ~NEdDZYvFloBwK-PonzTTmgDJKhvqvGkWB4JN5jl3hT~ek4TfIav4juR4xhBe-FEMR9b5EeLMupFGaqH9K8CAqyaU2Ng8FsK5S0vUZMdj3h1gqWT797BPR6KfEYrxRCN6a09bfxdzSgaSE1A3Jn7evn3dX81ANZD9~XGuLzAkdEGWGd3StiBWKFByedyiqNyp~np72S1GgR7ciCuRPCVMrbZVxk8ux1xIyFg36EHZPw3HdT84JW5bgcmNi-jN3h5lTrO1S8zyAVg3F1g3FR-Y8Gah-Dlb12bRqgcvUtnr1w__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [
+    {
+      "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-21d1-718b-8a13-b7036c554920/output/texture_0.png?Expires=4949424000&Signature=er4YtyR2~dLqGAGnhKL-nmI92KBswoadA~7RsXZvaVNgWslgLaiHER3izG-yRc7HZMW7XHIuNriPFiSkAXM9sF8tq94rmYeIeuF2hlLA8kslIH6zDFnwZ9FdzvuVH4HS68U6RvZcX9lQekjuCUFeIhUjxGIAcuh462yEuQhGl0fS6KtJFtSHsKiRKuxbZqQ-XB6kQ0IhSOpzyU8dvDsGK8STrLjCyxnEm57KbsBMkSDjjBzQcyHtfop1~C2n4ZkM3lEEVVxdw0G56HBkx-6In~CNdHkrSr0ixkGj1XkNuRC7LzpP-93b36coHUSw-nDnH9iVG8zm2bgSe5FHU6HiEw__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    }
+  ],
+  "consumed_credits": 10,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "enable_pbr": false,
+    "mode": "refine",
+    "preview_task_id": "01a222a0-11bc-7456-bfae-406f7ed32044",
+    "remove_lighting": true,
+    "target_formats": [
+      "glb"
+    ],
+    "texture_prompt": "Plain dark orange fuselage and tail boom, dark tinted cockpit glass, black landing skids, grey rotor blades, completely blank unmarked panels, no lettering, no numerals, no registration, no decals",
+    "texture_resolution": "2k"
+  },
+  "output": {
+    "seed": 3975869339,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-21d1-718b-8a13-b7036c554920/output/model.glb?Expires=4949424000&Signature=Tu4bsxJ7MKyHUKM3L4MtDfsxgZntlxy0YjJZkt204qgs3AaDzGX~bb3Dyez8IX~yHLewn39wrKIx2WBEed1m0v5NM8N5SLlCWooiKLuT--cTPUx9feTJBou4gHcLw5LW8ZKJ2QNoHaNriK3fYSsMoFlQXpTpRabXm53-HqoLJTn95oZzqGDhvCeaB8k7~A-Kl9q8Tpfuk5AbCYRlQbUbVnp1cXZcd7p80maCu1pWrBhlED8npQcbdnc~8gn7mavXgUx-yo9jQ7Uin5ahDxVC7n12o~HftZs4uf4p1w-dIxzr3xaeJ7UMt9k0zsj~MPqRgQnoR1QqkXPruTVHTZB4WA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-21d1-718b-8a13-b7036c554920/output/preview.png?Expires=4949424000&Signature=NysPZqf7DY4R~hxCjo4uq~cX~LThEtRfXJDm8azOevQ~NEdDZYvFloBwK-PonzTTmgDJKhvqvGkWB4JN5jl3hT~ek4TfIav4juR4xhBe-FEMR9b5EeLMupFGaqH9K8CAqyaU2Ng8FsK5S0vUZMdj3h1gqWT797BPR6KfEYrxRCN6a09bfxdzSgaSE1A3Jn7evn3dX81ANZD9~XGuLzAkdEGWGd3StiBWKFByedyiqNyp~np72S1GgR7ciCuRPCVMrbZVxk8ux1xIyFg36EHZPw3HdT84JW5bgcmNi-jN3h5lTrO1S8zyAVg3F1g3FR-Y8Gah-Dlb12bRqgcvUtnr1w__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": [
+      {
+        "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222ac-21d1-718b-8a13-b7036c554920/output/texture_0.png?Expires=4949424000&Signature=er4YtyR2~dLqGAGnhKL-nmI92KBswoadA~7RsXZvaVNgWslgLaiHER3izG-yRc7HZMW7XHIuNriPFiSkAXM9sF8tq94rmYeIeuF2hlLA8kslIH6zDFnwZ9FdzvuVH4HS68U6RvZcX9lQekjuCUFeIhUjxGIAcuh462yEuQhGl0fS6KtJFtSHsKiRKuxbZqQ-XB6kQ0IhSOpzyU8dvDsGK8STrLjCyxnEm57KbsBMkSDjjBzQcyHtfop1~C2n4ZkM3lEEVVxdw0G56HBkx-6In~CNdHkrSr0ixkGj1XkNuRC7LzpP-93b36coHUSw-nDnH9iVG8zm2bgSe5FHU6HiEw__&Key-Pair-Id=K1VGYTHIYLM9UM",
+        "metallic": null,
+        "roughness": null,
+        "normal": null,
+        "metallic_roughness": null,
+        "emission": null
+      }
+    ]
+  }
+}

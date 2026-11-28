@@ -1,0 +1,43 @@
+{
+  "id": "01a222a2-38ab-74ea-95a3-30d32b29d591",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 672544483,
+  "prompt": "Low-poly stylized-realistic game creature, grey wolf standing on all four legs in a neutral side-profile stance, all four paws on the ground, grey and cream coat, head level, mouth closed, tail down, full body",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877387152,
+  "progress": 100,
+  "started_at": 1795877494991,
+  "finished_at": 1795877581842,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-38ab-74ea-95a3-30d32b29d591/output/model.glb?Expires=4949424000&Signature=hjPXwF43STc0KOArXDj32SmEt65ONNt1tSWoM4YVlxyCYdV31dZvedaz9l67H9DgulmSSlhvMitQ5XjxMXi~NY3iGl7VpdtIAS2y9sDFANCbp9B7dlidVUVlNC3iSWWFtpXtrY~PMvBL0SwicblZlIXxHXh4fcIsiBQWeUt7qLlrJRsrqN5IKABlB18idVk1vkf-VFzOzvgWDzJF8S651H6ZguCiqkdKnNmEXz~aqiwZXdv6f~hOLs~jiIojpRW~2De~sgy1fHi68HE2PROO~1f658CNX0Li7ed6eTJ0Vboc3pbGByo50fn01Fro7mcx482wnvrjCKKv0irOCClDcA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-38ab-74ea-95a3-30d32b29d591/output/preview.png?Expires=4949424000&Signature=S8xyWxVr6qQFqgKshNaUG2g3AxydaUVYmbl4ReCM4ABGEtmr54He-CSms3yA1rKlLAuGZaY9fEA2gyj0QAaTVfhpVF~Fp6dP~h28P4LqGx1hzRRidNcy9zmqd~S2bmi~-v~qF~FSXbxrh7bII~lfBMngSWaDwQ9gAOaCdjYDFvIxMWHfmVPQk2fM9klG2IlFavOj4-WG8nZofs3VN19KVD2liYWBNtCd16SVmOzMv0kWdzsxb82KJeIdv9cBBzfy~FGGVD~sn3e8O1V86Lw0PeWoXQx-fUAjljPjPXyv3MSb6l26QPz3r69YYtHcsq8VANfuSvwhE3zpLj0ChBmJ7Q__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game creature, grey wolf standing on all four legs in a neutral side-profile stance, all four paws on the ground, grey and cream coat, head level, mouth closed, tail down, full body",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 672544483,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-38ab-74ea-95a3-30d32b29d591/output/model.glb?Expires=4949424000&Signature=hjPXwF43STc0KOArXDj32SmEt65ONNt1tSWoM4YVlxyCYdV31dZvedaz9l67H9DgulmSSlhvMitQ5XjxMXi~NY3iGl7VpdtIAS2y9sDFANCbp9B7dlidVUVlNC3iSWWFtpXtrY~PMvBL0SwicblZlIXxHXh4fcIsiBQWeUt7qLlrJRsrqN5IKABlB18idVk1vkf-VFzOzvgWDzJF8S651H6ZguCiqkdKnNmEXz~aqiwZXdv6f~hOLs~jiIojpRW~2De~sgy1fHi68HE2PROO~1f658CNX0Li7ed6eTJ0Vboc3pbGByo50fn01Fro7mcx482wnvrjCKKv0irOCClDcA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-38ab-74ea-95a3-30d32b29d591/output/preview.png?Expires=4949424000&Signature=S8xyWxVr6qQFqgKshNaUG2g3AxydaUVYmbl4ReCM4ABGEtmr54He-CSms3yA1rKlLAuGZaY9fEA2gyj0QAaTVfhpVF~Fp6dP~h28P4LqGx1hzRRidNcy9zmqd~S2bmi~-v~qF~FSXbxrh7bII~lfBMngSWaDwQ9gAOaCdjYDFvIxMWHfmVPQk2fM9klG2IlFavOj4-WG8nZofs3VN19KVD2liYWBNtCd16SVmOzMv0kWdzsxb82KJeIdv9cBBzfy~FGGVD~sn3e8O1V86Lw0PeWoXQx-fUAjljPjPXyv3MSb6l26QPz3r69YYtHcsq8VANfuSvwhE3zpLj0ChBmJ7Q__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

@@ -5,10 +5,15 @@ export type IslesTileKindV1 =
   | "water" | "ford" | "sand" | "grass" | "jungle" | "mud" | "road" | "bush"
   | "crate" | "rock" | "tree" | "wall" | "roof" | "pillar" | "ruin"
   // Kinds of the full archipelago (islesArchipelagoGenV1.ts).
-  | "snow" | "lava" | "savanna" | "pine" | "palm" | "building";
+  | "snow" | "lava" | "savanna" | "pine" | "palm" | "building"
+  // Living world: railway track, desert cactus, burnt tree, reeds and crops (the last two hide a body like a bush).
+  | "rail" | "cactus" | "deadtree" | "reed" | "crop";
 
 /** Tree kinds: a solid, climbable column drawn as a trunk and a crown. */
-export function isTreeKindV1(kind: IslesTileKindV1): boolean { return kind === "tree" || kind === "pine" || kind === "palm"; }
+export function isTreeKindV1(kind: IslesTileKindV1): boolean { return kind === "tree" || kind === "pine" || kind === "palm" || kind === "cactus" || kind === "deadtree"; }
+
+/** Low plants drawn on their tile without blocking it: bush, reeds, crops. */
+export function isShrubKindV1(kind: IslesTileKindV1): boolean { return kind === "bush" || kind === "reed" || kind === "crop"; }
 
 export interface IslesLegendEntryV1 { kind: IslesTileKindV1; height: number }
 
@@ -37,7 +42,7 @@ export interface IslesMapV1 {
 }
 
 const KINDS = new Set<IslesTileKindV1>(["water", "ford", "sand", "grass", "jungle", "mud", "road", "bush",
-  "crate", "rock", "tree", "wall", "roof", "pillar", "ruin", "snow", "lava", "savanna", "pine", "palm", "building"]);
+  "crate", "rock", "tree", "wall", "roof", "pillar", "ruin", "snow", "lava", "savanna", "pine", "palm", "building", "rail", "cactus", "deadtree", "reed", "crop"]);
 
 /** Validates and parses a map source. Throws on ragged rows, unknown characters or markers outside the map. */
 export function parseIslesMapV1(source: IslesMapSourceV1, tileMeters = 2): IslesMapV1 {
@@ -87,11 +92,15 @@ export function isDeepWaterV1(kind: IslesTileKindV1): boolean { return kind === 
 /** Water that reveals the cloak (swimming or wading). */
 export function isWetV1(kind: IslesTileKindV1): boolean { return kind === "water" || kind === "ford"; }
 
+const STRUCTURES = new Set<IslesTileKindV1>(["crate", "wall", "roof", "pillar", "ruin", "building"]);
+
 /** Ground a human on foot can cross without climbing. */
 export function isWalkableV1(map: IslesMapV1, tx: number, tz: number, stepHeight = 0.6): boolean {
   const kind = kindAtV1(map, tx, tz);
-  if (kind === "water") return false;
-  return heightAtV1(map, tx, tz) <= stepHeight && tx >= 0 && tz >= 0 && tx < map.width && tz < map.depth;
+  if (kind === "water" || tx < 0 || tz < 0 || tx >= map.width || tz >= map.depth) return false;
+  // A streamed world has relief: its ground is walkable at any altitude, its trees and buildings are not.
+  if (map.sample) return !STRUCTURES.has(kind) && !isTreeKindV1(kind);
+  return heightAtV1(map, tx, tz) <= stepHeight;
 }
 
 /** World centre (metres) of a tile. */

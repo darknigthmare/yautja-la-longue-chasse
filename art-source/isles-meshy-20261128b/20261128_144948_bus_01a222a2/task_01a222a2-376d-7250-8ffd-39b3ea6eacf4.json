@@ -1,0 +1,43 @@
+{
+  "id": "01a222a2-376d-7250-8ffd-39b3ea6eacf4",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 575335887,
+  "prompt": "Low-poly stylized-realistic game vehicle, single-deck city transit bus, long boxy body, plain pale yellow paint with a plain grey lower band, large side windows, two passenger doors, flat roof, four wheels, blank destination panel, original design, no logos, no text, no numbers, no markings",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877386782,
+  "progress": 100,
+  "started_at": 1795877506508,
+  "finished_at": 1795877565303,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-376d-7250-8ffd-39b3ea6eacf4/output/model.glb?Expires=4949424000&Signature=prZ1W~FMXcO8B~Ytp2oW7bQBPMycYoY4PSBpnbYuQOY-dVTn0YhU4ncivK5z8-Gt91Jh3XWno~LsXWsrHaRj5aCeQqqkOZ15WwHqEbsbKtT5ifsoUe443ODyLV3sv00XIXMOPxBWj9jGeNIGEJ4Reu1j5wyOneGPV8o-LLgYMtK8MFZ~dgDanUUkONxC3BY~l7VbTr8cZXUx-ph138y7WDzurj2UuYuiFyNIwKvhqKxutWab6VZ4dVAR3pYX5-PUX7cStLoHMfHZhfQ~Vp7dkze~DbP-9r7bjDq8ldoeVBP7m8Q7PStvveDjnFfqUfmzlDR0T02VCjc5xvyn8bWv1Q__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-376d-7250-8ffd-39b3ea6eacf4/output/preview.png?Expires=4949424000&Signature=GzBoKvhgSJhgO1YACyR66MbYNaeeXKDyAPQTfb4QgxrU4vMzyGuhFmrVfaFWK2L1rvTdBbAgx8ZT8vaObbabXuJYg6X-yKTPSicVhbawP92jF4-7dq6lSvuXVt7liyFnZIk6IP-ftbmE8fvgHdJx6KEdano8PudanBdMnOzG8gdhckMLh0jlK7C7xT5ENZlKXSiTsW1hh53tsSW8qjMyXS1X5-F8fOAaXnhygC5s50eJBp2z~2HBK-1S58oyjB87mYYSy9I0xwwJWTlHSSFjdYBp9aokqj~TQOzx0j6pAdcVI1uv30wav0lVvAb55QqIlW~aYWHJ5kfgova5n7gWlQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game vehicle, single-deck city transit bus, long boxy body, plain pale yellow paint with a plain grey lower band, large side windows, two passenger doors, flat roof, four wheels, blank destination panel, original design, no logos, no text, no numbers, no markings",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 575335887,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-376d-7250-8ffd-39b3ea6eacf4/output/model.glb?Expires=4949424000&Signature=prZ1W~FMXcO8B~Ytp2oW7bQBPMycYoY4PSBpnbYuQOY-dVTn0YhU4ncivK5z8-Gt91Jh3XWno~LsXWsrHaRj5aCeQqqkOZ15WwHqEbsbKtT5ifsoUe443ODyLV3sv00XIXMOPxBWj9jGeNIGEJ4Reu1j5wyOneGPV8o-LLgYMtK8MFZ~dgDanUUkONxC3BY~l7VbTr8cZXUx-ph138y7WDzurj2UuYuiFyNIwKvhqKxutWab6VZ4dVAR3pYX5-PUX7cStLoHMfHZhfQ~Vp7dkze~DbP-9r7bjDq8ldoeVBP7m8Q7PStvveDjnFfqUfmzlDR0T02VCjc5xvyn8bWv1Q__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-376d-7250-8ffd-39b3ea6eacf4/output/preview.png?Expires=4949424000&Signature=GzBoKvhgSJhgO1YACyR66MbYNaeeXKDyAPQTfb4QgxrU4vMzyGuhFmrVfaFWK2L1rvTdBbAgx8ZT8vaObbabXuJYg6X-yKTPSicVhbawP92jF4-7dq6lSvuXVt7liyFnZIk6IP-ftbmE8fvgHdJx6KEdano8PudanBdMnOzG8gdhckMLh0jlK7C7xT5ENZlKXSiTsW1hh53tsSW8qjMyXS1X5-F8fOAaXnhygC5s50eJBp2z~2HBK-1S58oyjB87mYYSy9I0xwwJWTlHSSFjdYBp9aokqj~TQOzx0j6pAdcVI1uv30wav0lVvAb55QqIlW~aYWHJ5kfgova5n7gWlQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

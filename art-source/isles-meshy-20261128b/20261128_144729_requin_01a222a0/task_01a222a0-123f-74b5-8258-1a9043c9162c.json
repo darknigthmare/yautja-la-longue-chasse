@@ -1,0 +1,43 @@
+{
+  "id": "01a222a0-123f-74b5-8258-1a9043c9162c",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 2840761828,
+  "prompt": "Low-poly stylized-realistic game creature, grey reef shark swimming, straight streamlined body in a neutral horizontal pose, grey back and white belly, dorsal fin, pectoral fins spread, crescent tail fin, mouth closed, full body",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877247206,
+  "progress": 100,
+  "started_at": 1795877247214,
+  "finished_at": 1795877364741,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-123f-74b5-8258-1a9043c9162c/output/model.glb?Expires=4949424000&Signature=N4jYWZJiMLymZwodZXA6C7j69rdeJ5EHV-oMnxXeGuz8cnaC3-S8sNgnDyXNIwU33Oyc-1Iy9H-acEDacv~T3c3PSnxeIwL1~run0ha9-7bRlN0QO4fZqgV099mfuQ3s10xbCGGZE~YYNs-GARjt3~AY5YvxpJOdNVyEsm1bi04D2HbzqLEsnw9qNPbpt~aAxZimivvu~WfYMRiV43CDkw4lfBq5RqW8Fxj6aVbtYsUKwnO2XaQBu5cKrpecwBj8-6fCWhkqhRsaWxw8yBo3NbxBCBYG0YdxkHxhsiWCRfE-UIc8P9PKwtr~AbxTCu8F9AzuawkU-Rb-QoLDI5N0CA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-123f-74b5-8258-1a9043c9162c/output/preview.png?Expires=4949424000&Signature=cqmDJ93qEKMvervNBLxGZR3L3Hb0G106yWYFm~uE8gNb4n6XYrYa0MNpQn0aACucz21oEjKnZjc3AHnwc0~kB1EwWDz8e1E0vovAPc~cNyD3-fWehOdPADdFif9YpNIBx-XK~b1DWzn6K4V5vcxoKFCMMwTSNYjuv4JhqHsfh8N-IFrkCvHKAWxGxkd7V50GnDSyZHOoOWkrA~jnIGF1qsI8jtQBYuDLzSgm1C-W8NHVFESaDMM2AzY3GEQXKWZ~MGh3lCg4IHpWxs1xkeX-J8xJt8h8dH4eVuVbWzJOZEd9xX0BXaA3hbluXnYA3Ay9IRRp7Iu9XhraN0shpIw73A__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game creature, grey reef shark swimming, straight streamlined body in a neutral horizontal pose, grey back and white belly, dorsal fin, pectoral fins spread, crescent tail fin, mouth closed, full body",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 2840761828,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-123f-74b5-8258-1a9043c9162c/output/model.glb?Expires=4949424000&Signature=N4jYWZJiMLymZwodZXA6C7j69rdeJ5EHV-oMnxXeGuz8cnaC3-S8sNgnDyXNIwU33Oyc-1Iy9H-acEDacv~T3c3PSnxeIwL1~run0ha9-7bRlN0QO4fZqgV099mfuQ3s10xbCGGZE~YYNs-GARjt3~AY5YvxpJOdNVyEsm1bi04D2HbzqLEsnw9qNPbpt~aAxZimivvu~WfYMRiV43CDkw4lfBq5RqW8Fxj6aVbtYsUKwnO2XaQBu5cKrpecwBj8-6fCWhkqhRsaWxw8yBo3NbxBCBYG0YdxkHxhsiWCRfE-UIc8P9PKwtr~AbxTCu8F9AzuawkU-Rb-QoLDI5N0CA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-123f-74b5-8258-1a9043c9162c/output/preview.png?Expires=4949424000&Signature=cqmDJ93qEKMvervNBLxGZR3L3Hb0G106yWYFm~uE8gNb4n6XYrYa0MNpQn0aACucz21oEjKnZjc3AHnwc0~kB1EwWDz8e1E0vovAPc~cNyD3-fWehOdPADdFif9YpNIBx-XK~b1DWzn6K4V5vcxoKFCMMwTSNYjuv4JhqHsfh8N-IFrkCvHKAWxGxkd7V50GnDSyZHOoOWkrA~jnIGF1qsI8jtQBYuDLzSgm1C-W8NHVFESaDMM2AzY3GEQXKWZ~MGh3lCg4IHpWxs1xkeX-J8xJt8h8dH4eVuVbWzJOZEd9xX0BXaA3hbluXnYA3Ay9IRRp7Iu9XhraN0shpIw73A__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

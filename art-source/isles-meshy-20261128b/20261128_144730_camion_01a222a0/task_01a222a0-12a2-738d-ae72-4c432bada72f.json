@@ -1,0 +1,43 @@
+{
+  "id": "01a222a0-12a2-738d-ae72-4c432bada72f",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 987890655,
+  "prompt": "Low-poly stylized-realistic game vehicle, semi-trailer truck, tractor cab in plain dark blue pulling a long closed box trailer with plain unmarked white sides, flat trailer roof, many wheels, straight alignment, original design, no logos, no text, no numbers, no company livery",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877247567,
+  "progress": 100,
+  "started_at": 1795877247577,
+  "finished_at": 1795877305137,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-12a2-738d-ae72-4c432bada72f/output/model.glb?Expires=4949424000&Signature=Mgm1wI4emV7ZaOGFJUzOaIQ35149WF9WmRV50U2seaOcCljJyJv2xRpzW2kUJyekVwACoTKQdKQjlhqoIuL-9J~o5SYzwHkxBCz16nl~0hmTk6Wwq215IFqh9fB2eeJmM8khdtP9pi48lIUVlyeTbHkY~LC-Tm9TMJ9NjDYZlpoFqXkqT6p0dlYB~Rb~sTtCmhYCB~PRM3quqogXbOx8F4fqC1WKBo-OxG~UUuk5Xe~o8X8Bpbh4xHkjD8G3Lv4317KzWSCkGBOKwAgFTjrDMS2D7-Cx3TucigUR2G2X0DrPi-n6HYH8GR~vxzcu5U-cbrIAMhbKmjFrjgzNmy41bQ__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-12a2-738d-ae72-4c432bada72f/output/preview.png?Expires=4949424000&Signature=WB83aUbz4GKhnaDCvv5ldT8OsnZmCnwdExwCImhzjH9~PYjAzDhFlb0f3xidEH605eNmF2zdwSwH9-Pw6rL9AuWfr1w2FZgclIOKSKGETsQFTSNT-ZYVrfc0fHrybKnIBC6lLIAq8CSCWgbshCK9ASTYmYbpaHLSOefhj5g-lwkXwEf6o0Bdc5mDosH4nXKkkV5CywV~XE0qDY~sOmvx9RRYVgMa08~QK5Gj3CMnECBy3bvtLuTBgBNFpBPPl9FHpEZaOG3PmndORPxjS~~rTxPisUSQhSUKKKJQTHhnUaXEzXPWUTWyNfzlrG-ngI4PeE7KbkT-bN1ljeQDVwqrbQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game vehicle, semi-trailer truck, tractor cab in plain dark blue pulling a long closed box trailer with plain unmarked white sides, flat trailer roof, many wheels, straight alignment, original design, no logos, no text, no numbers, no company livery",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 987890655,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-12a2-738d-ae72-4c432bada72f/output/model.glb?Expires=4949424000&Signature=Mgm1wI4emV7ZaOGFJUzOaIQ35149WF9WmRV50U2seaOcCljJyJv2xRpzW2kUJyekVwACoTKQdKQjlhqoIuL-9J~o5SYzwHkxBCz16nl~0hmTk6Wwq215IFqh9fB2eeJmM8khdtP9pi48lIUVlyeTbHkY~LC-Tm9TMJ9NjDYZlpoFqXkqT6p0dlYB~Rb~sTtCmhYCB~PRM3quqogXbOx8F4fqC1WKBo-OxG~UUuk5Xe~o8X8Bpbh4xHkjD8G3Lv4317KzWSCkGBOKwAgFTjrDMS2D7-Cx3TucigUR2G2X0DrPi-n6HYH8GR~vxzcu5U-cbrIAMhbKmjFrjgzNmy41bQ__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a0-12a2-738d-ae72-4c432bada72f/output/preview.png?Expires=4949424000&Signature=WB83aUbz4GKhnaDCvv5ldT8OsnZmCnwdExwCImhzjH9~PYjAzDhFlb0f3xidEH605eNmF2zdwSwH9-Pw6rL9AuWfr1w2FZgclIOKSKGETsQFTSNT-ZYVrfc0fHrybKnIBC6lLIAq8CSCWgbshCK9ASTYmYbpaHLSOefhj5g-lwkXwEf6o0Bdc5mDosH4nXKkkV5CywV~XE0qDY~sOmvx9RRYVgMa08~QK5Gj3CMnECBy3bvtLuTBgBNFpBPPl9FHpEZaOG3PmndORPxjS~~rTxPisUSQhSUKKKJQTHhnUaXEzXPWUTWyNfzlrG-ngI4PeE7KbkT-bN1ljeQDVwqrbQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

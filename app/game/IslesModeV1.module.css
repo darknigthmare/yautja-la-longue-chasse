@@ -72,3 +72,18 @@
 .mapMark[data-tone=alert]{color:var(--glyph);border:1px dashed var(--glyph)}
 .mapHint{margin:0;text-align:center;color:#c3d0c9}
 .mapFrame[data-isles-map-frame]{cursor:crosshair}
+
+/* Weather veil over the scene: fog thickens it, rain and snow streak it, lightning flashes it. */
+.weather { position: absolute; inset: 0; pointer-events: none; background: rgb(200 208 214 / calc(var(--isles-fog, 0) * 0.5)); transition: background 2s linear; }
+.weather[data-weather="pluie"], .weather[data-weather="orage"], .weather[data-weather="tempete"] {
+  background-image: repeating-linear-gradient(105deg, transparent 0 9px, rgb(190 210 230 / 0.16) 9px 10px);
+  background-color: rgb(120 136 150 / calc(var(--isles-fog, 0) * 0.5)); background-size: 220px 220px; animation: islesRain 0.5s linear infinite; }
+.weather[data-weather="neige"], .weather[data-weather="blizzard"] {
+  background-image: radial-gradient(rgb(255 255 255 / 0.55) 1px, transparent 1.6px); background-size: 46px 46px; animation: islesSnow 3s linear infinite; }
+.weather[data-weather="tempete-de-sable"] { background-color: rgb(196 160 96 / calc(var(--isles-fog, 0) * 0.6)); }
+.weather[data-weather="cendres"] { background-color: rgb(90 86 84 / calc(var(--isles-fog, 0) * 0.55)); }
+.weather[data-weather="canicule"] { background-color: rgb(255 214 150 / 0.08); }
+.weather[data-flash="1"] { background-color: rgb(255 255 255 / 0.45); transition: none; }
+@keyframes islesRain { to { background-position: -60px 220px; } }
+@keyframes islesSnow { to { background-position: 20px 46px; } }
+@media (prefers-reduced-motion: reduce) { .weather { animation: none !important; } }

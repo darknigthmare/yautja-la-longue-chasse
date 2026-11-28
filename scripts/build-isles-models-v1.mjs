@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-/** The Isles V1 · runtime models from the Meshy sources in art-source/isles-meshy-20261128.
+/** The Isles V1 · runtime models from the Meshy sources in art-source/isles-meshy-20261128
+ * (humans, first animals, altar) and art-source/isles-meshy-20261128b (vehicles, more animals).
  * Each GLB keeps its geometry, skin and animations; embedded textures are resized to 1024 px
  * JPEG so the whole set stays light for the browser. Writes public/game/isles/models/*.glb and
  * a manifest with sizes and SHA-256. `--check` verifies the outputs without writing. */
@@ -10,18 +11,27 @@ import {fileURLToPath} from 'node:url';
 import sharp from 'sharp';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const source = path.join(root, 'art-source/isles-meshy-20261128');
 const out = path.join(root, 'public/game/isles/models');
 const check = process.argv.includes('--check');
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 
-/** Runtime files: id → [source file in the Meshy project, published name]. */
+/** Runtime files of the first set: id → [source file in the Meshy project, published name]. */
 const PLAN = [
   ['braconnier', 'walking_glb.glb', 'braconnier.glb'], ['braconnier', 'running_armature_glb.glb', 'braconnier-course.glb'],
   ['unite-tactique', 'walking_glb.glb', 'unite-tactique.glb'], ['unite-tactique', 'running_armature_glb.glb', 'unite-tactique-course.glb'],
   ['archeologue', 'walking_glb.glb', 'archeologue.glb'],
   ['jaguar', 'model.glb', 'jaguar.glb'], ['chien', 'model.glb', 'chien.glb'], ['sanglier', 'model.glb', 'sanglier.glb'],
   ['crocodile', 'model.glb', 'crocodile.glb'], ['autel', 'model.glb', 'autel.glb'],
+];
+
+/** Second set: one static `model.glb` per id, published as `<id>.glb`. */
+const PLAN_B = ['metro', 'train', 'train-fret', 'bus', 'camion', 'pickup', 'ferry', 'bateau', 'avion', 'avion-brousse', 'helicoptere', 'telepherique',
+  'ours-brun', 'loup', 'cerf', 'lion', 'buffle', 'requin'].map(id => [id, 'model.glb', id + '.glb']);
+
+/** Source sets in publication order. `maxBytes` is the per-file budget of a set (the first set predates it). */
+const SETS = [
+  {dir: 'art-source/isles-meshy-20261128', plan: PLAN},
+  {dir: 'art-source/isles-meshy-20261128b', plan: PLAN_B, maxBytes: 1_200_000},
 ];
 
 function readGlb(bytes) {
@@ -70,23 +80,32 @@ async function shrink(bytes) {
   return writeGlb(json, newBin);
 }
 
-const projects = (await readdir(source)).filter(name => /^\d{8}_\d{6}_/.test(name));
-const projectOf = id => projects.find(name => name.split('_').slice(2, -1).join('_') === id);
-const manifest = {version: 1, source: 'art-source/isles-meshy-20261128', generator: 'Meshy text-to-3d (preview + refine), rigging for humans', models: {}};
+const manifest = {version: 1, source: SETS[0].dir, sources: SETS.map(set => set.dir), generator: 'Meshy text-to-3d (preview + refine), rigging for humans', models: {}};
 if (!check) await mkdir(out, {recursive: true});
 let failed = false;
-for (const [id, file, name] of PLAN) {
-  const project = projectOf(id);
-  if (!project) throw new Error('Projet Meshy absent : ' + id);
-  const input = await readFile(path.join(source, project, file));
-  const output = await shrink(input);
-  manifest.models[name] = {id, from: path.posix.join(project, file), bytes: output.length, sha256: sha(output), sourceSha256: sha(input)};
-  if (check) {
-    const current = await readFile(path.join(out, name)).catch(() => null);
-    if (!current || sha(current) !== sha(output)) { failed = true; process.stderr.write(name + ' est à régénérer.\n'); }
-  } else {
-    await writeFile(path.join(out, name), output);
-    process.stdout.write(name + ' · ' + (input.length / 1e6).toFixed(2) + ' → ' + (output.length / 1e6).toFixed(2) + ' Mo\n');
+for (const set of SETS) {
+  const source = path.join(root, set.dir);
+  const projects = (await readdir(source)).filter(name => /^\d{8}_\d{6}_/.test(name));
+  /** state.json names the kept project when a retry left two folders for one id. */
+  const state = JSON.parse(await readFile(path.join(source, 'state.json'), 'utf8'));
+  const projectOf = id => {
+    const named = projects.filter(name => name.split('_').slice(2, -1).join('_') === id);
+    return named.length > 1 ? named.find(name => name === path.basename(state[id]?.project ?? '')) : named[0];
+  };
+  for (const [id, file, name] of set.plan) {
+    const project = projectOf(id);
+    if (!project) throw new Error('Projet Meshy absent : ' + id);
+    const input = await readFile(path.join(source, project, file));
+    const output = await shrink(input);
+    manifest.models[name] = {id, ...(set === SETS[0] ? {} : {source: set.dir}), from: path.posix.join(project, file), bytes: output.length, sha256: sha(output), sourceSha256: sha(input)};
+    if (set.maxBytes && output.length > set.maxBytes) { failed = true; process.stderr.write(name + ' dépasse ' + (set.maxBytes / 1e6).toFixed(1) + ' Mo.\n'); }
+    if (check) {
+      const current = await readFile(path.join(out, name)).catch(() => null);
+      if (!current || sha(current) !== sha(output)) { failed = true; process.stderr.write(name + ' est à régénérer.\n'); }
+    } else {
+      await writeFile(path.join(out, name), output);
+      process.stdout.write(name + ' · ' + (input.length / 1e6).toFixed(2) + ' → ' + (output.length / 1e6).toFixed(2) + ' Mo\n');
+    }
   }
 }
 if (!check) await writeFile(path.join(out, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');

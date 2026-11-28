@@ -1,0 +1,56 @@
+{
+  "id": "01a222a7-1f05-73eb-9952-e1b0660991b7",
+  "type": "text-to-3d-refine",
+  "mode": "refine",
+  "name": "",
+  "model_type": "standard",
+  "seed": 3092140356,
+  "prompt": "Low-poly stylized-realistic game vehicle, single metro subway train car, boxy brushed steel grey body with one plain solid teal stripe along each side, row of windows and sliding passenger doors, flat roof, wheel bogies underneath, long and straight, original design, no logos, no text, no numbers, no markings",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877707550,
+  "progress": 100,
+  "started_at": 1795877707582,
+  "finished_at": 1795877725675,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1f05-73eb-9952-e1b0660991b7/output/model.glb?Expires=4949424000&Signature=RrEri6TnXtXEWif35t7hGIPgbIGLCzne5qgVvsi1S~tligS23LVAjEYF-V5UPIOPdKfYJFGpKWOEwP710n1J2HOAOd45fHz-0a44dnSGjGvJmLacjBSh5PrkVDp6OurlK2l6BWiKdT0BmXfxO3MAGYBwfLOnDBccYFk1K8nc1qAj~7wnAwAbt8aLJUULAJoW7JeM30A2j3Hl3SVT4D-xwsQi4yNCDWKHBBO1Re8XsZOYHxov-uKvbg07bj-mqHXDIH20ZdsMwBVEkdOT0-tk4Yz30smCXZhF82BPo2vFrti6q-jJX8zlkrqFPsUjwDkLzX~Byq857dAC6OxYlV0K4g__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1f05-73eb-9952-e1b0660991b7/output/preview.png?Expires=4949424000&Signature=lhiLgrq4qemr-Q3nwESbW1D3IUe7kPukJsE0tb4UPr3XMsYXZXrMFNF-WvGtbM6UvTxELlUo0etUe0paQ~ZZUOEZoOwxiY0iYZcqZ0MriD3fL9iLfrxKVWmdA3ZrjMK-2mABh33BefAM9PYF~AatVVh8jcyBE~t55gxvPAilLWzwwp3WiOVhEMfz-UKhHX~YFupdohWL4zmjf~DsXPaznIB1~1CoKDQTXFzMqccC1zMt41IMyJHBE72~xEczgkzIiSDNonP~dUkYCRefy5xv5Frp2bAtfisRCmFkKAlJ0XAZ3V7ahyRkqtwrH-3wLbe9Thdt9mHzQCL5Xqfq39Ezjg__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [
+    {
+      "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1f05-73eb-9952-e1b0660991b7/output/texture_0.png?Expires=4949424000&Signature=XCWirqYPkGhTyyZcN-eFEM2JfD3uRUKFGZja4VygOGjmpxU0PKPjOZjQcsdLA2MMaRvHhMmKukxyAMMjtJjEe56Z1-LvwLQUHsm00qB7qLe-ti62~S8X294gOLXqpSSh7mC63t1-X16BEuQZRa4WD07-bT3k5KVDKDNWpMNHtwtV1mJUzgqqB6bQs5WvJbIKghqccyyHhPHFV6OVqCPG9ofbRib0~hhJVPVb0TjydlNr9guzQvDr2NFID60aU6fEJVKByZWgXYoSzXSGD9PmUJ18FPL0CDNQ1R8mMu10HhpyWxN7fUkePcPctl8vnnzD2dFETd~UBK8JALZjOQHtzw__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    }
+  ],
+  "consumed_credits": 10,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "enable_pbr": false,
+    "mode": "refine",
+    "preview_task_id": "01a2229f-18c2-7175-99eb-871d04bf4890",
+    "remove_lighting": true,
+    "target_formats": [
+      "glb"
+    ],
+    "texture_resolution": "2k"
+  },
+  "output": {
+    "seed": 3092140356,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1f05-73eb-9952-e1b0660991b7/output/model.glb?Expires=4949424000&Signature=RrEri6TnXtXEWif35t7hGIPgbIGLCzne5qgVvsi1S~tligS23LVAjEYF-V5UPIOPdKfYJFGpKWOEwP710n1J2HOAOd45fHz-0a44dnSGjGvJmLacjBSh5PrkVDp6OurlK2l6BWiKdT0BmXfxO3MAGYBwfLOnDBccYFk1K8nc1qAj~7wnAwAbt8aLJUULAJoW7JeM30A2j3Hl3SVT4D-xwsQi4yNCDWKHBBO1Re8XsZOYHxov-uKvbg07bj-mqHXDIH20ZdsMwBVEkdOT0-tk4Yz30smCXZhF82BPo2vFrti6q-jJX8zlkrqFPsUjwDkLzX~Byq857dAC6OxYlV0K4g__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1f05-73eb-9952-e1b0660991b7/output/preview.png?Expires=4949424000&Signature=lhiLgrq4qemr-Q3nwESbW1D3IUe7kPukJsE0tb4UPr3XMsYXZXrMFNF-WvGtbM6UvTxELlUo0etUe0paQ~ZZUOEZoOwxiY0iYZcqZ0MriD3fL9iLfrxKVWmdA3ZrjMK-2mABh33BefAM9PYF~AatVVh8jcyBE~t55gxvPAilLWzwwp3WiOVhEMfz-UKhHX~YFupdohWL4zmjf~DsXPaznIB1~1CoKDQTXFzMqccC1zMt41IMyJHBE72~xEczgkzIiSDNonP~dUkYCRefy5xv5Frp2bAtfisRCmFkKAlJ0XAZ3V7ahyRkqtwrH-3wLbe9Thdt9mHzQCL5Xqfq39Ezjg__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": [
+      {
+        "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1f05-73eb-9952-e1b0660991b7/output/texture_0.png?Expires=4949424000&Signature=XCWirqYPkGhTyyZcN-eFEM2JfD3uRUKFGZja4VygOGjmpxU0PKPjOZjQcsdLA2MMaRvHhMmKukxyAMMjtJjEe56Z1-LvwLQUHsm00qB7qLe-ti62~S8X294gOLXqpSSh7mC63t1-X16BEuQZRa4WD07-bT3k5KVDKDNWpMNHtwtV1mJUzgqqB6bQs5WvJbIKghqccyyHhPHFV6OVqCPG9ofbRib0~hhJVPVb0TjydlNr9guzQvDr2NFID60aU6fEJVKByZWgXYoSzXSGD9PmUJ18FPL0CDNQ1R8mMu10HhpyWxN7fUkePcPctl8vnnzD2dFETd~UBK8JALZjOQHtzw__&Key-Pair-Id=K1VGYTHIYLM9UM",
+        "metallic": null,
+        "roughness": null,
+        "normal": null,
+        "metallic_roughness": null,
+        "emission": null
+      }
+    ]
+  }
+}

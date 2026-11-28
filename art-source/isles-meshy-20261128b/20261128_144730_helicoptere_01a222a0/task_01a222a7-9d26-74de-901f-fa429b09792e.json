@@ -1,0 +1,56 @@
+{
+  "id": "01a222a7-9d26-74de-901f-fa429b09792e",
+  "type": "text-to-3d-refine",
+  "mode": "refine",
+  "name": "",
+  "model_type": "standard",
+  "seed": 1593671642,
+  "prompt": "Low-poly stylized-realistic game vehicle, light civilian utility helicopter, rounded glass cockpit, plain dark orange body, landing skids, slender tail boom with small tail rotor, two-blade main rotor aligned along the body, original design, no logos, no text, no numbers, no registration markings",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877739844,
+  "progress": 100,
+  "started_at": 1795877739861,
+  "finished_at": 1795877765656,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-9d26-74de-901f-fa429b09792e/output/model.glb?Expires=4949424000&Signature=JHvOe6MDpbCeDQUP~MNEX3v8uHaXglh7PhVGH0yehEMFvIaZxMlgwbvVDJpdf3CjEWk66jFwU7r7RoFv7fATcQbj0prpIqDfstfc3zbevNCZwDCGIt4xGM3klJMTcBMq6B7uBfAjpyQ7Zsyr0Re3wNIzV8JN4oVDp6t3En~5sIWDiI9sYgU4Syv0fYlw9hrAj5OqcwT0mYOisrsSbagQmCQE3sCZGpk5YuRAksHcwzHd3LOFfScDpuxDmkMgAbruaBp-DklmN9-cI39LEn-vNCvvrlxiBrovG5Bw~A7BT12XBqoG0awXZY0l9v1SosPYqyiXDp6S8VUQli7PW5yq~w__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-9d26-74de-901f-fa429b09792e/output/preview.png?Expires=4949424000&Signature=T8jXHtEhfJfYWAjfL6IAgLs41DERO~9g8B2Miy-7vQXDijlUF4IJgQlEkLo9I5pnVfGgve6nW9L3lrACBRXbPyH8w0DXVFTOZyq9YrJrvf8IDcIz~TZr2BV5eGiYvMo8IeepMUW4XSkIanutbuX1RtSs-vDWWczGHYM5U1YYznoJuwIlF5L0HgPETriaUcvERQC5q~-C6CxDTevrXyZKqYC8Bc43RjJ5dMkRJA4tGPOJChRcT5jLQGYHY~YiwcnT-Ccz45jg9QspBkFGdU0fnuu8V5WamDW40NYe4Xza3f--Gs0rml7kJCBnMxnodGBw1g6YHMVD7uZUgQuDVGtQ5A__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [
+    {
+      "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-9d26-74de-901f-fa429b09792e/output/texture_0.png?Expires=4949424000&Signature=oz7YjIa1IYrxzPbIT3iKLZDfaRnci5UoL6~oHAHZ-S3OAORQe-hLai02E9S9IQdtM-RUAJWSa1Z32Fxak6SA2DQa024chEsEi1dyj3uNSFgDL02cS4TKzQiNiIQSRagTIrUnOTHbklzPuS1gpI1oRoWIwSyfBimA0fdzWtYsxUfjJ~jTWk~Id2wFPDrcfRgZ38FjEC9WewTadzd9061JgyNo1wqaq-YYShawVfrwJMjE06eAmU1cJwN~9Zt7ZuVJVol59p7diLCUAK0dPR7L8OoSgn7nNHGwsXeRvEX8z7llYaFu-DHdYxV68FjVY8Sjcfc0akS6GdZ2EjGnEP1e9Q__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    }
+  ],
+  "consumed_credits": 10,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "enable_pbr": false,
+    "mode": "refine",
+    "preview_task_id": "01a222a0-11bc-7456-bfae-406f7ed32044",
+    "remove_lighting": true,
+    "target_formats": [
+      "glb"
+    ],
+    "texture_resolution": "2k"
+  },
+  "output": {
+    "seed": 1593671642,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-9d26-74de-901f-fa429b09792e/output/model.glb?Expires=4949424000&Signature=JHvOe6MDpbCeDQUP~MNEX3v8uHaXglh7PhVGH0yehEMFvIaZxMlgwbvVDJpdf3CjEWk66jFwU7r7RoFv7fATcQbj0prpIqDfstfc3zbevNCZwDCGIt4xGM3klJMTcBMq6B7uBfAjpyQ7Zsyr0Re3wNIzV8JN4oVDp6t3En~5sIWDiI9sYgU4Syv0fYlw9hrAj5OqcwT0mYOisrsSbagQmCQE3sCZGpk5YuRAksHcwzHd3LOFfScDpuxDmkMgAbruaBp-DklmN9-cI39LEn-vNCvvrlxiBrovG5Bw~A7BT12XBqoG0awXZY0l9v1SosPYqyiXDp6S8VUQli7PW5yq~w__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-9d26-74de-901f-fa429b09792e/output/preview.png?Expires=4949424000&Signature=T8jXHtEhfJfYWAjfL6IAgLs41DERO~9g8B2Miy-7vQXDijlUF4IJgQlEkLo9I5pnVfGgve6nW9L3lrACBRXbPyH8w0DXVFTOZyq9YrJrvf8IDcIz~TZr2BV5eGiYvMo8IeepMUW4XSkIanutbuX1RtSs-vDWWczGHYM5U1YYznoJuwIlF5L0HgPETriaUcvERQC5q~-C6CxDTevrXyZKqYC8Bc43RjJ5dMkRJA4tGPOJChRcT5jLQGYHY~YiwcnT-Ccz45jg9QspBkFGdU0fnuu8V5WamDW40NYe4Xza3f--Gs0rml7kJCBnMxnodGBw1g6YHMVD7uZUgQuDVGtQ5A__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": [
+      {
+        "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-9d26-74de-901f-fa429b09792e/output/texture_0.png?Expires=4949424000&Signature=oz7YjIa1IYrxzPbIT3iKLZDfaRnci5UoL6~oHAHZ-S3OAORQe-hLai02E9S9IQdtM-RUAJWSa1Z32Fxak6SA2DQa024chEsEi1dyj3uNSFgDL02cS4TKzQiNiIQSRagTIrUnOTHbklzPuS1gpI1oRoWIwSyfBimA0fdzWtYsxUfjJ~jTWk~Id2wFPDrcfRgZ38FjEC9WewTadzd9061JgyNo1wqaq-YYShawVfrwJMjE06eAmU1cJwN~9Zt7ZuVJVol59p7diLCUAK0dPR7L8OoSgn7nNHGwsXeRvEX8z7llYaFu-DHdYxV68FjVY8Sjcfc0akS6GdZ2EjGnEP1e9Q__&Key-Pair-Id=K1VGYTHIYLM9UM",
+        "metallic": null,
+        "roughness": null,
+        "normal": null,
+        "metallic_roughness": null,
+        "emission": null
+      }
+    ]
+  }
+}

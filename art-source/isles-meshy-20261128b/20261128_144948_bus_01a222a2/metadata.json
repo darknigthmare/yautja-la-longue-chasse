@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "project_name": "bus",
+  "folder": "20261128_144948_bus_01a222a2",
+  "root_task_id": "01a222a2-376d-7250-8ffd-39b3ea6eacf4",
+  "created_at": "2026-11-28T14:49:48.781Z",
+  "updated_at": "2026-11-28T15:01:52.630Z",
+  "tasks": [
+    {
+      "task_id": "01a222a2-376d-7250-8ffd-39b3ea6eacf4",
+      "task_type": "text-to-3d-preview",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "preview",
+      "parent_task_id": null,
+      "status": "SUCCEEDED",
+      "files": [],
+      "task_json": "task_01a222a2-376d-7250-8ffd-39b3ea6eacf4.json",
+      "operation_id": null,
+      "created_at": "2026-11-28T14:52:53.367Z",
+      "updated_at": "2026-11-28T14:52:53.367Z"
+    },
+    {
+      "task_id": "01a222a7-20a8-751a-acb7-0758fa01c450",
+      "task_type": "text-to-3d-refine",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "refine",
+      "parent_task_id": "01a222a2-376d-7250-8ffd-39b3ea6eacf4",
+      "status": "SUCCEEDED",
+      "files": [
+        "model.glb",
+        "preview.png"
+      ],
+      "task_json": "task_01a222a7-20a8-751a-acb7-0758fa01c450.json",
+      "operation_id": "c48e4eef-206f-4221-90db-1a344afa4423",
+      "created_at": "2026-11-28T14:55:08.072Z",
+      "updated_at": "2026-11-28T14:55:53.923Z"
+    },
+    {
+      "task_id": "01a222ac-2292-75c3-8f4f-05e4e8574da6",
+      "task_type": "text-to-3d-refine",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "refine",
+      "parent_task_id": "01a222a2-376d-7250-8ffd-39b3ea6eacf4",
+      "status": "SUCCEEDED",
+      "files": [
+        "model.glb",
+        "preview.png"
+      ],
+      "task_json": "task_01a222ac-2292-75c3-8f4f-05e4e8574da6.json",
+      "operation_id": "76eb4945-3c72-4a80-9a02-1009063e19ab",
+      "created_at": "2026-11-28T15:00:38.269Z",
+      "updated_at": "2026-11-28T15:01:52.630Z"
+    }
+  ]
+}

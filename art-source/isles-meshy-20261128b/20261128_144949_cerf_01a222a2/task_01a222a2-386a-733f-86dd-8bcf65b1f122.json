@@ -1,0 +1,43 @@
+{
+  "id": "01a222a2-386a-733f-86dd-8bcf65b1f122",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 1565842350,
+  "prompt": "Low-poly stylized-realistic game creature, male red deer stag with large branched antlers standing on all four legs in a neutral side-profile stance, all four hooves on the ground, reddish-brown coat, head up, full body",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877387185,
+  "progress": 100,
+  "started_at": 1795877387195,
+  "finished_at": 1795877469566,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-386a-733f-86dd-8bcf65b1f122/output/model.glb?Expires=4949424000&Signature=aZTgxrJPZULFVEFkApll5wY7VgJXIaS3w36Q6sIIREWhmhPbd3pMc9lSpG2Ph83qv2HHr7bIQdZGzMXVFpeTj8RmfvhRMCPbcWCLRahsBdzmurlSwkHdKPLw94WvXHJ~EKPaiJjhDjx7RlD8HnlvnvFppdFZZL4bwgpnVRNek~W4p8NE0GwYne3PDkzQKC6DaGGW1HKN98ta6ei40XfstsRtRZu2GTId~UoqS4x7AQOOju9hDWw6H06N2BWh7eUo1lUFe-ChyRSstXBa7PtfqOEboIqzRo5PrnGaKN9wPEVBvnqJXofcNzLRrXZaY4-v1C0WUm6D-iuQ55BorrWZjQ__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-386a-733f-86dd-8bcf65b1f122/output/preview.png?Expires=4949424000&Signature=hY0DK2JR4CX69BhNya5y20sVVzud7OHOCzuwxnbVkKmcM4l9Nc5mNBGGJftHt~jBaz0LQALvqfqVpG6HhsDkI7YlFxPrqnHvDxa8gqa1baZJ14movFSTKoF4dqkKJVX~jseqaUrSbFYGpECX7z2iPoDKTU52f4o1QA3gS-JSCtAY~j5tuE0j7DVVnRHBwssAtjWtO3oMXbYGlGB6hEBEvHfxBLGiymp~-oHz1q-n8-u5CxVQW6KOPJUQmhkqg8yPK8MTD-sJGF04lHdG7hju5QM0PnpreOits16wWexgCQJ7DGt~xA-iGeA12rPWrZEO5RjjUUn3DkSYK9ggHZ3WYA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game creature, male red deer stag with large branched antlers standing on all four legs in a neutral side-profile stance, all four hooves on the ground, reddish-brown coat, head up, full body",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 1565842350,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-386a-733f-86dd-8bcf65b1f122/output/model.glb?Expires=4949424000&Signature=aZTgxrJPZULFVEFkApll5wY7VgJXIaS3w36Q6sIIREWhmhPbd3pMc9lSpG2Ph83qv2HHr7bIQdZGzMXVFpeTj8RmfvhRMCPbcWCLRahsBdzmurlSwkHdKPLw94WvXHJ~EKPaiJjhDjx7RlD8HnlvnvFppdFZZL4bwgpnVRNek~W4p8NE0GwYne3PDkzQKC6DaGGW1HKN98ta6ei40XfstsRtRZu2GTId~UoqS4x7AQOOju9hDWw6H06N2BWh7eUo1lUFe-ChyRSstXBa7PtfqOEboIqzRo5PrnGaKN9wPEVBvnqJXofcNzLRrXZaY4-v1C0WUm6D-iuQ55BorrWZjQ__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a2-386a-733f-86dd-8bcf65b1f122/output/preview.png?Expires=4949424000&Signature=hY0DK2JR4CX69BhNya5y20sVVzud7OHOCzuwxnbVkKmcM4l9Nc5mNBGGJftHt~jBaz0LQALvqfqVpG6HhsDkI7YlFxPrqnHvDxa8gqa1baZJ14movFSTKoF4dqkKJVX~jseqaUrSbFYGpECX7z2iPoDKTU52f4o1QA3gS-JSCtAY~j5tuE0j7DVVnRHBwssAtjWtO3oMXbYGlGB6hEBEvHfxBLGiymp~-oHz1q-n8-u5CxVQW6KOPJUQmhkqg8yPK8MTD-sJGF04lHdG7hju5QM0PnpreOits16wWexgCQJ7DGt~xA-iGeA12rPWrZEO5RjjUUn3DkSYK9ggHZ3WYA__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

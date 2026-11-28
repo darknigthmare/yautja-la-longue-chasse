@@ -1,0 +1,56 @@
+{
+  "id": "01a222a7-1e41-7281-839c-1fe53e9043b9",
+  "type": "text-to-3d-refine",
+  "mode": "refine",
+  "name": "",
+  "model_type": "standard",
+  "seed": 1259574183,
+  "prompt": "Low-poly stylized-realistic game vehicle, rugged off-road pickup truck, dusty faded sand-beige paint with dried mud, double cab, open empty cargo bed, raised suspension, chunky all-terrain tyres, steel bumper, original design, no logos, no text, no badges, no licence plate text",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877707345,
+  "progress": 100,
+  "started_at": 1795877707362,
+  "finished_at": 1795877730956,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1e41-7281-839c-1fe53e9043b9/output/model.glb?Expires=4949424000&Signature=haHSGDJpEfftSTRUXyTOPzLWVf9oWyp4Htd7ojjnu-9NH~OyyVCcvxjTe3dD6dRxSeW2V8iZEwgbtydyq7fF33cMjEzr1qo0BEWjTLoQEcaJG2KJe~6wzxu7n2sJfICWYCA-8GXi9eUrU5WnnuPq74Qj2ruqLI3h3eBEGm5yi3iwHkJ2DIhYMOTObIK76Zeu9s5bYisFeXK9Og1RsZiKU-v-3SA2sY8wJicmlLu7DsmtmJoRX1n77eb7QK6Z32Doux51N9e4ksfxwEVnS5qzzS~Lpo359qHU~L47gnwz53bhpVGg7c1U2IRNxeD-hs~hs6TYPLmdu~xhFKOC55IiEA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1e41-7281-839c-1fe53e9043b9/output/preview.png?Expires=4949424000&Signature=l5hVyOPbUuCRvAw3pgbniYeoDqLuZmHl2oVOMuzyKPKE4IVdH~rQ7pK98WyCqTaepv559wvKk2XQFImB1K9yibPHoGVRmLmAsO7GyTVm~F8mzfKp05R8TTGUu69x-psCJgAiJUM3apHS35WksOAjp5-KkqQQ9ipzjKAo4NlXwoMHhZLJHANPA~6m71YfOXa9lpUEM8NZBw4Piz4GHv6SwLgjjprtNCo3HwDYPHGWbDOxzDfD7w8EJnExdAKpoO-UHTgjoGvMq1NUJBGf8gIKJfOXwbbnlOcopuhSXLT6lNNXicPGtpinlHTfvnY9yy0Gl73ENN~WwOa7aepdqGSj-A__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [
+    {
+      "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1e41-7281-839c-1fe53e9043b9/output/texture_0.png?Expires=4949424000&Signature=gehkT1-R8PPaoXM0vZMu0t1LTHPIQqX8iTbegeExZe~MxTZd8rsUSrzui4kqmPwAuqGt5Qm7J2yYDotE0DUU4GLz5M3DC89nMvvc19vrdkVNPk-NRGc72Z2NYEsTAtTQD03yqENZGwiRKJ2vVkoZvQwt2D8GuyOVYA2ygcr4MLnpmVdIiQ1vwJopGb9uJ-9fR3FEm422SZQDmE2~mhN6Cq6R1XVt0ilcB5yNOgRihMHPTDX-5KhS0oVWZub4O~JYsddz~TGd3zo04hVwyujrEkn0ozSQndNTwYIyxLMEeI7Rvw4ti3X1a347S7CLZKziuneJJbYosMqOMb9BGkz9NQ__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    }
+  ],
+  "consumed_credits": 10,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "enable_pbr": false,
+    "mode": "refine",
+    "preview_task_id": "01a222a2-381f-71e5-92ab-ffa619ba0951",
+    "remove_lighting": true,
+    "target_formats": [
+      "glb"
+    ],
+    "texture_resolution": "2k"
+  },
+  "output": {
+    "seed": 1259574183,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1e41-7281-839c-1fe53e9043b9/output/model.glb?Expires=4949424000&Signature=haHSGDJpEfftSTRUXyTOPzLWVf9oWyp4Htd7ojjnu-9NH~OyyVCcvxjTe3dD6dRxSeW2V8iZEwgbtydyq7fF33cMjEzr1qo0BEWjTLoQEcaJG2KJe~6wzxu7n2sJfICWYCA-8GXi9eUrU5WnnuPq74Qj2ruqLI3h3eBEGm5yi3iwHkJ2DIhYMOTObIK76Zeu9s5bYisFeXK9Og1RsZiKU-v-3SA2sY8wJicmlLu7DsmtmJoRX1n77eb7QK6Z32Doux51N9e4ksfxwEVnS5qzzS~Lpo359qHU~L47gnwz53bhpVGg7c1U2IRNxeD-hs~hs6TYPLmdu~xhFKOC55IiEA__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1e41-7281-839c-1fe53e9043b9/output/preview.png?Expires=4949424000&Signature=l5hVyOPbUuCRvAw3pgbniYeoDqLuZmHl2oVOMuzyKPKE4IVdH~rQ7pK98WyCqTaepv559wvKk2XQFImB1K9yibPHoGVRmLmAsO7GyTVm~F8mzfKp05R8TTGUu69x-psCJgAiJUM3apHS35WksOAjp5-KkqQQ9ipzjKAo4NlXwoMHhZLJHANPA~6m71YfOXa9lpUEM8NZBw4Piz4GHv6SwLgjjprtNCo3HwDYPHGWbDOxzDfD7w8EJnExdAKpoO-UHTgjoGvMq1NUJBGf8gIKJfOXwbbnlOcopuhSXLT6lNNXicPGtpinlHTfvnY9yy0Gl73ENN~WwOa7aepdqGSj-A__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": [
+      {
+        "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1e41-7281-839c-1fe53e9043b9/output/texture_0.png?Expires=4949424000&Signature=gehkT1-R8PPaoXM0vZMu0t1LTHPIQqX8iTbegeExZe~MxTZd8rsUSrzui4kqmPwAuqGt5Qm7J2yYDotE0DUU4GLz5M3DC89nMvvc19vrdkVNPk-NRGc72Z2NYEsTAtTQD03yqENZGwiRKJ2vVkoZvQwt2D8GuyOVYA2ygcr4MLnpmVdIiQ1vwJopGb9uJ-9fR3FEm422SZQDmE2~mhN6Cq6R1XVt0ilcB5yNOgRihMHPTDX-5KhS0oVWZub4O~JYsddz~TGd3zo04hVwyujrEkn0ozSQndNTwYIyxLMEeI7Rvw4ti3X1a347S7CLZKziuneJJbYosMqOMb9BGkz9NQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+        "metallic": null,
+        "roughness": null,
+        "normal": null,
+        "metallic_roughness": null,
+        "emission": null
+      }
+    ]
+  }
+}

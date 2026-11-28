@@ -1,0 +1,56 @@
+{
+  "id": "01a222a7-1fba-70e6-b7c8-7f2544ff2a47",
+  "type": "text-to-3d-refine",
+  "mode": "refine",
+  "name": "",
+  "model_type": "standard",
+  "seed": 3787114731,
+  "prompt": "Low-poly stylized-realistic game vehicle, single railway flatcar freight wagon carrying one plain rust-red shipping container with corrugated sides, low steel deck, wheel bogies underneath, long and straight, original design, no logos, no text, no numbers, no markings",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795877707723,
+  "progress": 100,
+  "started_at": 1795877707739,
+  "finished_at": 1795877727416,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1fba-70e6-b7c8-7f2544ff2a47/output/model.glb?Expires=4949424000&Signature=RbXgOMT7eCFVYvgbziUP1kswzHQCav87to4L0PponaNY~BHAmEb5vrSEJXTLptrJ780vPElKfBDuobIh7vKtpZqXKtzDm5rRDtW6Ty0D6QFUZsZX6iY8ri6UQFVf7Wxshub-OJevzl56EBvGBgL915IfgwHui66Y9iPjRchOAmIKCumE7q9484qpIj5ESuuc54J5bwJaTcuk7VOQh07~moG-mWAcBgMlpNGYR~aczuQ6mPIC3t3fV-Rrq406s8JsFfpEJpJtzQEnyphywA-8bbRRMWUJtnhfsStuEm5bXoVo3ewxG4jqabyP2bczGGEjPZy7TsBdB5YTaYtkd7v0zw__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1fba-70e6-b7c8-7f2544ff2a47/output/preview.png?Expires=4949424000&Signature=SgeNRQh5D5PQQAqKkBY2CC3A66LG8lsCaRaTZFfoKreM-Jm1-S~bfFVHVvVeyzVF7d-30VH-ROtaB4h4W4Vbv6Ly5ZtLb6X96lvZOpKiBmD42dpl9Q6pFj5J4JiQsGCmFpCJqB8rQejSoQM9dxTjN4TWTWyfGCQ64cyuD-3fWdT8IcC~MvAEz2IXDuPXOiAmktJmGCNN2oJgU0ZAljxS0mUWpif431CFXzehPR9JNmbZt0X1OSb15FH3hDAc-9jIdxa8jbe6W5S190LmFILK2hFq4n1qUQVuGjqVmOw-cEonz73zX4HC7Uj1HUIc5fOgRfKnrckHihHFaK2KtnISDQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [
+    {
+      "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1fba-70e6-b7c8-7f2544ff2a47/output/texture_0.png?Expires=4949424000&Signature=eT60~BQgTfNMm~YEvqTd4mvf8P0RaEr2U3n~1Hpc4xc33djGsosIN8Y~PdxVgxIGlARumE7ohj95CSMN5Zy0cX3hzlWXgNdxE2THGInCwqlSAf~dcX7-Tyej9S5gxgdm~C0o299V8Ue~lAMkqlIZX3Do8~5lgCYVNAE8i90cB06cxaa3OlIVNJEu0WNqa6R1uvkQh0TefGrbl7Gu8lVP4MDcDKFRNxVyCI1lCDQ1AhRpFSs8-b2mTcoNyQg7iX0rZ5LvI~97hJWmYdHOmbkIEuPp9ZEiSQIxIUAxjcPRvCg56IuzUIqeaJibPBuNQtPjUabB9yZzBzJXVw3Z~Q89Jg__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    }
+  ],
+  "consumed_credits": 10,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "enable_pbr": false,
+    "mode": "refine",
+    "preview_task_id": "01a222a0-0f9e-7642-975a-33aa049e5d77",
+    "remove_lighting": true,
+    "target_formats": [
+      "glb"
+    ],
+    "texture_resolution": "2k"
+  },
+  "output": {
+    "seed": 3787114731,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1fba-70e6-b7c8-7f2544ff2a47/output/model.glb?Expires=4949424000&Signature=RbXgOMT7eCFVYvgbziUP1kswzHQCav87to4L0PponaNY~BHAmEb5vrSEJXTLptrJ780vPElKfBDuobIh7vKtpZqXKtzDm5rRDtW6Ty0D6QFUZsZX6iY8ri6UQFVf7Wxshub-OJevzl56EBvGBgL915IfgwHui66Y9iPjRchOAmIKCumE7q9484qpIj5ESuuc54J5bwJaTcuk7VOQh07~moG-mWAcBgMlpNGYR~aczuQ6mPIC3t3fV-Rrq406s8JsFfpEJpJtzQEnyphywA-8bbRRMWUJtnhfsStuEm5bXoVo3ewxG4jqabyP2bczGGEjPZy7TsBdB5YTaYtkd7v0zw__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1fba-70e6-b7c8-7f2544ff2a47/output/preview.png?Expires=4949424000&Signature=SgeNRQh5D5PQQAqKkBY2CC3A66LG8lsCaRaTZFfoKreM-Jm1-S~bfFVHVvVeyzVF7d-30VH-ROtaB4h4W4Vbv6Ly5ZtLb6X96lvZOpKiBmD42dpl9Q6pFj5J4JiQsGCmFpCJqB8rQejSoQM9dxTjN4TWTWyfGCQ64cyuD-3fWdT8IcC~MvAEz2IXDuPXOiAmktJmGCNN2oJgU0ZAljxS0mUWpif431CFXzehPR9JNmbZt0X1OSb15FH3hDAc-9jIdxa8jbe6W5S190LmFILK2hFq4n1qUQVuGjqVmOw-cEonz73zX4HC7Uj1HUIc5fOgRfKnrckHihHFaK2KtnISDQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": [
+      {
+        "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a222a7-1fba-70e6-b7c8-7f2544ff2a47/output/texture_0.png?Expires=4949424000&Signature=eT60~BQgTfNMm~YEvqTd4mvf8P0RaEr2U3n~1Hpc4xc33djGsosIN8Y~PdxVgxIGlARumE7ohj95CSMN5Zy0cX3hzlWXgNdxE2THGInCwqlSAf~dcX7-Tyej9S5gxgdm~C0o299V8Ue~lAMkqlIZX3Do8~5lgCYVNAE8i90cB06cxaa3OlIVNJEu0WNqa6R1uvkQh0TefGrbl7Gu8lVP4MDcDKFRNxVyCI1lCDQ1AhRpFSs8-b2mTcoNyQg7iX0rZ5LvI~97hJWmYdHOmbkIEuPp9ZEiSQIxIUAxjcPRvCg56IuzUIqeaJibPBuNQtPjUabB9yZzBzJXVw3Z~Q89Jg__&Key-Pair-Id=K1VGYTHIYLM9UM",
+        "metallic": null,
+        "roughness": null,
+        "normal": null,
+        "metallic_roughness": null,
+        "emission": null
+      }
+    ]
+  }
+}

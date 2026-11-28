@@ -29,7 +29,20 @@ export interface IslesArchipelagoSourceV1 {
   links: [string, string, string][];
 }
 
+/** Part of app/game/data/islesLivingWorldV1.json the terrain needs: true-scale relief, road types and transport lines. */
+export interface IslesLivingSourceV1 {
+  relief: {terraceMeters: number; islands: Record<string, {peak: number; snowLine: number | null; treeLine: number}>};
+  roadTypes: Record<string, {halfWidth: number; surface: string}>;
+  islands: Record<string, {roads: string[]}>;
+  transports: Record<string, {class: string}>;
+  lines: {id: string; kind: string; loop: boolean; stops: string[]}[];
+}
+
 export interface IslesArchipelagoWorldV1 {
+  /** Ground route of each rail or road transport line, in metres, stop after stop (islesTransportV1.ts follows it). */
+  linePaths: Record<string, [number, number][]>;
+  /** Altitude in metres of each zone anchor (its terrace). */
+  siteAltitude(id: string): number;
   map: IslesMapV1;
   sites: (IslesWorldSiteV1 & {island: string; stamp: IslesStampV1})[];
   /** Island and nearest zone at a world position (metres), or null at sea. */
@@ -42,16 +55,27 @@ export interface IslesArchipelagoWorldV1 {
 interface Shape {
   id: string; name: string; biome: string; polygon: Point[] | null; cx: number; cz: number; radius: number;
   minX: number; minZ: number; maxX: number; maxZ: number; amp: number; warp: number; size: number; anchors: Anchor[];
+  /** Highest value of the unit relief of the shape, measured once: the peak of the data is reached there. */
+  rawMax?: number;
 }
-interface Anchor { x: number; z: number; r: number; hold: number; cos: number; sin: number; zone: IslesArchipelagoZoneV1 }
-interface Road { ax: number; az: number; bx: number; bz: number; len: number; amp: number; ford: boolean; phase: number; minX: number; minZ: number; maxX: number; maxZ: number }
+interface Anchor { x: number; z: number; r: number; hold: number; cos: number; sin: number; zone: IslesArchipelagoZoneV1; shape?: Shape; alt?: number }
+interface RoadNode { x: number; z: number; zone?: string; anchor?: Anchor }
+interface Road {
+  a: RoadNode; b: RoadNode; len: number; amp: number; half: number; surface: IslesTileKindV1; ford: boolean; phase: number;
+  minX: number; minZ: number; maxX: number; maxZ: number; ha?: number; hb?: number;
+}
 
 const ZONE = 32;
 const ISLET_BIOME: Record<string, string> = {ironhook: "militaire", blackrock: "rocher", "twin-keys": "commercial", navigator: "rocher",
   breakwater: "rocher", "gull-rock": "rocher", "cinder-rocks": "volcan", "little-ember": "volcan"};
 const STAMP_RADIUS: Record<IslesStampV1, number> = {none: 24, camp: 60, village: 120, town: 190, industrial: 170, ruins: 130, city: 0, ...ISLES_FEATURE_RADIUS_V1};
-const ROAD_HALF = 3.5, ROAD_SHOULDER = 44;
-const TREE_HEIGHT: Record<string, number> = {tree: 7, pine: 9, palm: 6};
+const ROAD_SHOULDER = 60, ZONE_BLEND = 260, CITY_REACH = 560;
+/** Stamps that stand at sea level whatever the relief: shores and the city grid. */
+const SEA_LEVEL_STAMPS = new Set<string>(["city", "marina", "pier", "beach", "port", "airport", "lighthouse"]);
+const MAJOR_STAMPS = new Set<string>(["city", "mall", "port", "industrial", "airport", "refinery", "parking", "stadium"]);
+const LEGACY_PEAK = 100;
+const TREE_HEIGHT: Record<string, number> = {tree: 7, pine: 9, palm: 6, cactus: 4, deadtree: 7};
+type TreeKind = "tree" | "pine" | "palm" | "cactus" | "deadtree";
 
 function hash2(x: number, z: number, seed: number): number {
   let h = Math.imul(x | 0, 374761393) ^ Math.imul(z | 0, 668265263) ^ Math.imul(seed | 0, 2246822519);
@@ -80,7 +104,7 @@ function polygonDistance(x: number, z: number, polygon: Point[]): number {
 }
 
 /** Builds the streamed world. `cacheZones` bounds the memory (a zone is 1 024 tiles). */
-export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cacheZones = 900): IslesArchipelagoWorldV1 {
+export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cacheZones = 900, living?: IslesLivingSourceV1): IslesArchipelagoWorldV1 {
   const tile = source.tileMeters, perKm = source.scale * 1000 / tile, seed = source.seed;
   const width = Math.round(source.sizeKm[0] * perKm), depth = Math.round(source.sizeKm[1] * perKm);
   const toTile = ([x, y]: Point): Point => [x * perKm, y * perKm];
@@ -102,6 +126,8 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
         const hold = Math.max(18, r * (isIslesFeatureV1(zone.stamp) ? ISLES_FEATURE_HOLD_V1[zone.stamp] ?? 0.55 : 0.55));
         return {x, z, r, hold, cos: Math.cos(angle), sin: Math.sin(angle), zone};
       })});
+    const made = shapes[shapes.length - 1];
+    for (const anchor of made.anchors) anchor.shape = made;
   };
   for (const island of source.islands) {
     // A zone belongs to the part of the island that contains it, or else to the main land.
@@ -116,50 +142,93 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
   const baseId = (id: string) => id.split(/[:#]/)[0];
 
   // Road network: every zone of an island is joined to the others by the shortest tree, the plans add their own roads,
-  // and each bridge, causeway or ford of the links joins the two nearest places of its islands.
+  // each bridge, causeway or ford of the links joins the two nearest places of its islands, and every rail or road
+  // transport line gets its own way from stop to stop. The type of a road follows what the island allows.
   const roads: Road[] = [];
-  const nodesOf = (id: string): {x: number; z: number; zone?: string}[] => {
+  const roadKeys = new Map<string, Road>();
+  const typeOf = (name: string) => living?.roadTypes[name] ?? {halfWidth: name === "track" ? 2 : 3.5, surface: name === "track" ? "mud" : name === "ford" ? "ford" : "road"};
+  const nodesOf = (id: string): RoadNode[] => {
     const list = shapes.filter(shape => baseId(shape.id) === id);
-    const anchors = list.flatMap(shape => shape.anchors.map(a => ({x: a.x, z: a.z, zone: a.zone.id})));
+    const anchors = list.flatMap(shape => shape.anchors.map(anchor => ({x: anchor.x, z: anchor.z, zone: anchor.zone.id, anchor})));
     return anchors.length ? anchors : list.map(shape => ({x: shape.cx, z: shape.cz}));
   };
-  const addRoad = (a: {x: number; z: number}, b: {x: number; z: number}, ford: boolean) => {
+  const addRoad = (a: RoadNode, b: RoadNode, type: string, straight = false): Road | null => {
     const len = Math.hypot(b.x - a.x, b.z - a.z);
-    if (len < 8) return;
-    const amp = Math.min(90, len * 0.08), pad = amp + ROAD_SHOULDER + 2;
-    roads.push({ax: a.x, az: a.z, bx: b.x, bz: b.z, len, amp, ford, phase: roads.length * 7.31,
-      minX: Math.min(a.x, b.x) - pad, minZ: Math.min(a.z, b.z) - pad, maxX: Math.max(a.x, b.x) + pad, maxZ: Math.max(a.z, b.z) + pad});
+    if (len < 8) return null;
+    const key = [a.x, a.z, b.x, b.z, typeOf(type).surface === "rail"].join(","), back = [b.x, b.z, a.x, a.z, typeOf(type).surface === "rail"].join(",");
+    const known = roadKeys.get(key) ?? roadKeys.get(back);
+    if (known) return known;
+    const {halfWidth, surface} = typeOf(type), amp = straight ? 0 : Math.min(90, len * 0.08), pad = amp + halfWidth + ROAD_SHOULDER + 2;
+    const road: Road = {a, b, len, amp, half: halfWidth, surface: (surface === "rail" ? "rail" : surface === "mud" || surface === "ford" ? "mud" : "road"), ford: type === "ford", phase: roads.length * 7.31,
+      minX: Math.min(a.x, b.x) - pad, minZ: Math.min(a.z, b.z) - pad, maxX: Math.max(a.x, b.x) + pad, maxZ: Math.max(a.z, b.z) + pad};
+    roads.push(road); roadKeys.set(key, road);
+    return road;
   };
-  for (const island of source.islands) {
+  const allNodes = new Map<string, RoadNode>();
+  for (const island of [...source.islands, source.chain]) {
+    const allowed = new Set(living?.islands[island.id]?.roads ?? ["road", "track"]);
     const nodes = nodesOf(island.id), linked = new Set([0]);
+    for (const node of nodes) if (node.zone) allNodes.set(node.zone, node);
+    if (island.id === source.chain.id) continue;
+    const pick = (a: RoadNode, b: RoadNode) => {
+      const sa = a.anchor?.zone.stamp ?? "none", sb = b.anchor?.zone.stamp ?? "none", wild = (stamp: string) => stamp === "none" || stamp === "camp" || stamp === "ruins";
+      if (!wild(sa) && !wild(sb)) return allowed.has("highway") && MAJOR_STAMPS.has(sa) && MAJOR_STAMPS.has(sb) ? "highway" : allowed.has("road") ? "road" : "track";
+      return allowed.has("track") ? "track" : allowed.has("road") ? "road" : "trail";
+    };
     while (linked.size < nodes.length) {
       let best = Infinity, from = 0, to = 0;
       for (const i of linked) nodes.forEach((node, j) => { const d = linked.has(j) ? Infinity : Math.hypot(node.x - nodes[i].x, node.z - nodes[i].z); if (d < best) { best = d; from = i; to = j; } });
-      linked.add(to); addRoad(nodes[from], nodes[to], false);
+      linked.add(to); addRoad(nodes[from], nodes[to], pick(nodes[from], nodes[to]));
     }
-    for (const [a, b] of island.roads ?? []) { const na = nodes.find(n => n.zone === a), nb = nodes.find(n => n.zone === b); if (na && nb) addRoad(na, nb, false); }
+    for (const [a, b] of (island as {roads?: [string, string][]}).roads ?? []) { const na = allNodes.get(a), nb = allNodes.get(b); if (na && nb) addRoad(na, nb, pick(na, nb)); }
   }
+  for (const islet of source.islets) for (const node of nodesOf(islet.id)) if (node.zone) allNodes.set(node.zone, node);
   for (const [a, b, means] of source.links) {
     if (!/pont|digue|poste|gué|rail/.test(means)) continue;
-    let best = Infinity, pair: [{x: number; z: number}, {x: number; z: number}] | null = null;
+    let best = Infinity, pair: [RoadNode, RoadNode] | null = null;
     for (const na of nodesOf(a)) for (const nb of nodesOf(b)) { const d = Math.hypot(na.x - nb.x, na.z - nb.z); if (d < best) { best = d; pair = [na, nb]; } }
-    if (pair) addRoad(pair[0], pair[1], /gué/.test(means) && !/pont/.test(means));
+    if (pair) addRoad(pair[0], pair[1], /gué/.test(means) && !/pont/.test(means) ? "ford" : "bridge");
   }
-  /** Distance in tiles to the nearest road centre line (99 beyond ROAD_SHOULDER), and whether that road is a ford.
-   * Roads wander a little between their two ends. */
-  let nearFord = false;
+  /** Sideways wander of a road at a share `t` of its length, in tiles. */
+  const bendOf = (road: Road, t: number) => road.amp ? road.amp * Math.sin(Math.PI * t) * (fbm(t * road.len / 260 + road.phase, road.phase * 0.37, seed + 251, 2) - 0.5) * 2 : 0;
+  // Ways of the transport lines: straight rails, and roads for buses, lorries and pick-ups; their course is kept for the vehicles.
+  const linePaths: Record<string, [number, number][]> = {};
+  for (const line of living?.lines ?? []) {
+    const cls = living?.transports[line.kind]?.class;
+    if (cls !== "rail" && cls !== "route") continue;
+    const stops = line.stops.map(id => allNodes.get(id)).filter((node): node is RoadNode => !!node), points: [number, number][] = [];
+    const legs = line.loop ? stops.length : stops.length - 1;
+    for (let i = 0; i < legs; i++) {
+      const from = stops[i], to = stops[(i + 1) % stops.length];
+      const road = addRoad(from, to, cls === "rail" ? "rail" : line.kind === "pickup" || line.kind === "motoneige" ? "track" : "road", cls === "rail");
+      if (!road) continue;
+      const forward = road.a === from, steps = Math.max(1, Math.ceil(road.len / 8));
+      for (let k = i ? 1 : 0; k <= steps; k++) {
+        const t = forward ? k / steps : 1 - k / steps, dx = (road.b.x - road.a.x) / road.len, dz = (road.b.z - road.a.z) / road.len, bend = bendOf(road, t);
+        points.push([(road.a.x + dx * road.len * t + dz * bend) * tile, (road.a.z + dz * road.len * t - dx * bend) * tile]);
+      }
+    }
+    if (points.length > 1) linePaths[line.id] = points;
+  }
+  /** Nearest road at a tile: distance to its edge in tiles (0 or less on the road, 99 beyond the shoulder), with its
+   * height there and its surface. */
+  const near = {edge: 99, height: 0, surface: "road" as IslesTileKindV1, ford: false};
   const roadNear = (x: number, z: number): number => {
-    let best = 99;
+    near.edge = 99;
     for (const road of roads) {
       if (x < road.minX || x > road.maxX || z < road.minZ || z > road.maxZ) continue;
-      const dx = (road.bx - road.ax) / road.len, dz = (road.bz - road.az) / road.len, t = ((x - road.ax) * dx + (z - road.az) * dz) / road.len;
+      const dx = (road.b.x - road.a.x) / road.len, dz = (road.b.z - road.a.z) / road.len, t = ((x - road.a.x) * dx + (z - road.a.z) * dz) / road.len;
       if (t < 0 || t > 1) continue;
-      const side = (x - road.ax) * dz - (z - road.az) * dx;
-      const bend = road.amp * Math.sin(Math.PI * t) * (fbm(t * road.len / 260 + road.phase, road.phase * 0.37, seed + 251, 2) - 0.5) * 2;
-      const d = Math.abs(side - bend);
-      if (d < best && d <= ROAD_SHOULDER) { best = d; nearFord = road.ford; }
+      const edge = Math.abs((x - road.a.x) * dz - (z - road.a.z) * dx - bendOf(road, t)) - road.half;
+      // Rails keep their bed where a road runs over them: the train never leaves its track.
+      if ((edge < near.edge || (edge <= 0 && road.surface === "rail" && near.surface !== "rail")) && edge <= ROAD_SHOULDER && !(near.edge <= 0 && near.surface === "rail")) {
+        if (road.ha === undefined) { road.ha = road.a.anchor ? altitudeOf(road.a.anchor) : 0; road.hb = road.b.anchor ? altitudeOf(road.b.anchor) : 0; }
+        near.edge = edge; near.ford = road.ford; near.surface = road.surface;
+        // A road climbs at a steady grade between its two ends, in half-metre steps a walker takes without climbing.
+        near.height = Math.round((road.ha + (road.hb! - road.ha) * t) * 2) / 2;
+      }
     }
-    return best;
+    return near.edge;
   };
 
   /** Land field of one shape: > 0 on land, about the distance to the shore in tiles. */
@@ -199,8 +268,75 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
 
   const water: IslesWorldTileV1 = {kind: "water", height: -1.2, base: -1.2, ground: "water"};
   const ground = (kind: IslesTileKindV1, height = 0): IslesWorldTileV1 => ({kind, height, base: height, ground: kind});
-  const tree = (kind: "tree" | "pine" | "palm", under: IslesTileKindV1, base: number): IslesWorldTileV1 => ({kind, height: base + TREE_HEIGHT[kind], base, ground: under});
-  const terrace = (metres: number) => metres < 3 ? 0 : Math.floor(metres / 3) * 3;
+  const tree = (kind: TreeKind, under: IslesTileKindV1, base: number, tall = TREE_HEIGHT[kind]): IslesWorldTileV1 => ({kind, height: base + tall, base, ground: under});
+  const step = living?.relief.terraceMeters ?? 3;
+  const terrace = (metres: number) => metres < step ? 0 : Math.floor(metres / step) * step;
+  const shallow = (base: number): IslesWorldTileV1 => ({kind: "ford", height: base - 0.35, base: base - 0.35, ground: "ford"});
+  /** Lifts a built tile onto the terrace of its zone; open water does not exist in altitude, a mountain lake is waded. */
+  const lift = (built: IslesWorldTileV1, alt: number): IslesWorldTileV1 => alt === 0 ? built
+    : built.kind === "water" || built.kind === "ford" ? shallow(alt) : {...built, height: built.height + alt, base: built.base + alt};
+  const reliefOf = (shape: Shape) => {
+    const main = !/[#:]/.test(shape.id) || shape.id.startsWith(source.chain.id);
+    return living?.relief.islands[baseId(shape.id)] && main ? living.relief.islands[baseId(shape.id)] : {peak: main && shape.polygon ? LEGACY_PEAK : 6, snowLine: null, treeLine: 0};
+  };
+
+  /** Unit relief of a biome at a tile: only its shape matters, the peak of the data scales it. */
+  function rawRelief(shape: Shape, tx: number, tz: number, dM: number, ridge: number, detail: number, rr: number): number {
+    switch (shape.biome) {
+      case "forêt de pins": return (0.1 + 0.9 * smooth(shape.cz + shape.radius * 0.12 - tz, -300, 900)) * smooth(dM, 150, 3200) * Math.pow(ridge, 2.6);
+      case "toundra": return smooth(dM, 60, 1500) * (0.35 + ridge) * Math.max(0.15, 1 - rr * 0.8);
+      case "lande": return dM > 16 ? 0.3 + 0.7 * smooth(ridge, 0.45, 0.75) * smooth(dM, 100, 800) : 0;
+      case "quarantaine": return smooth(shape.cz - shape.radius * 0.3 - tz + (detail - 0.5) * 700, -200, 500) * smooth(dM, 100, 1200) * ridge;
+      case "désert": {
+        if (dM < 200) return 0;
+        // A plateau cut by canyons, with flat-topped mesas standing on it.
+        if (Math.abs(fbm(tx / 340 + 5, tz / 340 + 9, seed + 97, 2) - 0.5) < 0.022) return 0;
+        return ridge > 0.66 ? 1 : ridge > 0.6 ? 0.66 : 0.3 * smooth(dM, 200, 900);
+      }
+      case "savane": return ridge > 0.74 && detail > 0.55 ? 1 : 0.1 * ridge;
+      case "marais": return ridge > 0.72 ? 1 : 0;
+      case "volcan": return Math.pow(Math.max(0, 1 - rr * 1.15), 1.25) * (0.85 + 0.3 * detail);
+      case "méditerranéen": return smooth(dM, 150, 1800) * Math.pow(ridge, 1.6);
+      case "tropical": case "jungle": return smooth(dM, 200, 1500) * Math.pow(ridge, 2.4);
+      case "mangroves": return detail > 0.7 ? 1 : 0;
+      case "métropole": {
+        // Plan « Big City »: a mountain in the north around the reservoir, a line of hills along the east shore.
+        const north = smooth(shape.cz - shape.radius * 0.25 - tz, -400, 900), east = smooth(tx - shape.cx - shape.radius * 0.45, -200, 500);
+        return (0.08 + north + 0.43 * east) * smooth(dM, 150, 1500) * Math.pow(ridge, 2.2);
+      }
+      // Plan « Comercial Zone »: « Mountain » on the north and east shores.
+      case "commercial": return smooth(tx - shape.cx + (shape.cz - tz) * 0.8, shape.radius * 0.45, shape.radius * 0.95) * smooth(dM, 60, 500) * (0.5 + ridge);
+      case "industriel": case "militaire": return 0;
+      default: return dM > 20 ? 0.5 + (ridge > 0.55 ? 0.5 : 0) : 0;
+    }
+  }
+  const noiseAt = (tx: number, tz: number) => ({ridge: fbm(tx / 620 + 11, tz / 620 + 5, seed + 3, 4), detail: fbm(tx / 90, tz / 90, seed + 5, 3)});
+  /** Natural altitude in metres at a tile of a shape, before any terrace, zone or road. */
+  function natural(shape: Shape, tx: number, tz: number, dM: number, ridge: number, detail: number): number {
+    if (shape.rawMax === undefined) {
+      // Measured once on a coarse grid of the shape, so that its highest point is the peak of the data.
+      let max = 0;
+      const cells = 72, sx = (shape.maxX - shape.minX) / cells, sz = (shape.maxZ - shape.minZ) / cells;
+      for (let j = 0; j <= cells; j++) for (let i = 0; i <= cells; i++) {
+        const x = shape.minX + i * sx, z = shape.minZ + j * sz, f = field(shape, x, z);
+        if (f <= 0) continue;
+        const n = noiseAt(x, z);
+        max = Math.max(max, rawRelief(shape, x, z, f * tile, n.ridge, n.detail, Math.hypot(x - shape.cx, z - shape.cz) / Math.max(1, shape.radius)));
+      }
+      shape.rawMax = max || 1;
+    }
+    const raw = rawRelief(shape, tx, tz, dM, ridge, detail, Math.hypot(tx - shape.cx, tz - shape.cz) / Math.max(1, shape.radius));
+    return shape.polygon || shape.id.startsWith(source.chain.id) ? reliefOf(shape).peak * Math.min(1, raw / shape.rawMax) : 6 * raw;
+  }
+  /** Altitude of the terrace of a zone: the natural ground at its anchor, sea level for shores, city blocks and lowlands. */
+  function altitudeOf(anchor: Anchor): number {
+    if (anchor.alt !== undefined) return anchor.alt;
+    anchor.alt = 0;
+    const shape = anchor.shape;
+    if (!shape || SEA_LEVEL_STAMPS.has(anchor.zone.stamp)) return 0;
+    const n = noiseAt(anchor.x, anchor.z), height = terrace(natural(shape, anchor.x, anchor.z, Math.max(0, field(shape, anchor.x, anchor.z)) * tile, n.ridge, n.detail));
+    return anchor.alt = height < 12 ? 0 : height;
+  }
 
   /** Named place of the plans (airport, stadium, marina…) at a tile, if any. */
   function feature(shape: Shape, x: number, z: number, onLand: boolean): IslesWorldTileV1 | null {
@@ -210,7 +346,7 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
       const dx = x - anchor.x, dz = z - anchor.z;
       if (Math.abs(dx) > anchor.r || Math.abs(dz) > anchor.r) continue;
       const built = islesFeatureTileV1(kind, dx * anchor.cos + dz * anchor.sin, -dx * anchor.sin + dz * anchor.cos, seed + Math.round(anchor.x), onLand);
-      if (built) return built;
+      if (built) return lift(built, onLand ? altitudeOf(anchor) : 0);
     }
     return null;
   }
@@ -220,25 +356,25 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
     for (const anchor of shape.anchors) {
       const kind = anchor.zone.stamp;
       if (kind === "city" || isIslesFeatureV1(kind)) continue;
-      const dx = x - anchor.x, dz = z - anchor.z, dist = Math.hypot(dx, dz);
+      const dx = x - anchor.x, dz = z - anchor.z, dist = Math.hypot(dx, dz), up = (built: IslesWorldTileV1) => lift(built, altitudeOf(anchor));
       if (dist > anchor.r) continue;
-      if (kind === "none") return dist < 10 ? ground(land === "snow" ? "snow" : "mud") : null;
+      if (kind === "none") return dist < 10 ? up(ground(land === "snow" ? "snow" : "mud")) : null;
       const cell = kind === "industrial" ? 30 : kind === "town" ? 18 : kind === "camp" ? 12 : 16;
       const lx = ((Math.round(dx) % cell) + cell) % cell, lz = ((Math.round(dz) % cell) + cell) % cell;
       const street: IslesTileKindV1 = kind === "camp" || kind === "ruins" ? "mud" : "road";
-      if (lx < 2 || lz < 2) return ground(street);
+      if (lx < 2 || lz < 2) return up(ground(street));
       const cx = Math.floor(Math.round(dx) / cell), cz = Math.floor(Math.round(dz) / cell);
       const pick = hash2(cx * 7 + 3, cz * 11 + 5, seed + anchor.zone.id.length * 97 + Math.round(anchor.x));
       const density = kind === "camp" ? 0.3 : kind === "ruins" ? 0.6 : kind === "village" ? 0.62 : 0.8;
       const edge = dist > anchor.r * 0.82;
-      if (pick > density || edge) return ground(kind === "village" || kind === "camp" ? "grass" : street);
+      if (pick > density || edge) return up(ground(kind === "village" || kind === "camp" ? "grass" : street));
       const inset = kind === "industrial" ? 4 : 3, far = cell - (kind === "industrial" ? 3 : 2);
-      if (lx < inset || lz < inset || lx >= far || lz >= far) return ground(kind === "village" ? "grass" : street);
-      if (kind === "camp") return pick < 0.08 ? ground("crate", 1) : ground("roof", 3.5);
-      if (kind === "village") return ground("roof", 3.5);
-      if (kind === "ruins") return hash2(x, z, seed + 41) < 0.25 ? ground("mud") : ground("ruin", pick < 0.2 ? 6.5 : pick < 0.4 ? 4 : 2);
-      if (kind === "industrial") return ground("building", pick < 0.25 ? 15 : pick < 0.55 ? 12 : 9);
-      return ground("building", pick < 0.3 ? 10.5 : 7);
+      if (lx < inset || lz < inset || lx >= far || lz >= far) return up(ground(kind === "village" ? "grass" : street));
+      if (kind === "camp") return up(pick < 0.08 ? ground("crate", 1) : ground("roof", 3.5));
+      if (kind === "village") return up(ground("roof", 3.5));
+      if (kind === "ruins") return up(hash2(x, z, seed + 41) < 0.25 ? ground("mud") : ground("ruin", pick < 0.2 ? 6.5 : pick < 0.4 ? 4 : 2));
+      if (kind === "industrial") return up(ground("building", pick < 0.25 ? 15 : pick < 0.55 ? 12 : 9));
+      return up(ground("building", pick < 0.3 ? 10.5 : 7));
     }
     return null;
   }
@@ -259,7 +395,8 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
     const downtown = anchors.reduce((best, a) => Math.min(best, a.zone.id === "4.1" || a.zone.id === "4.3" ? Math.hypot(x - a.x, z - a.z) : best), Infinity);
     // Each block is split in two lots of different heights.
     const lot = hash2(bx * 2 + (lx > block / 2 ? 1 : 0), bz, seed + 67);
-    const tall = 12 + Math.round((120 * Math.exp(-downtown / 520) * (0.35 + 0.65 * lot) + 18 * lot) / 3) * 3;
+    // Towers up to about 310 m in the business district, far below the 920 m of mount Calder.
+    const tall = Math.min(309, 12 + Math.round((280 * Math.exp(-downtown / 420) * (0.3 + 0.7 * lot) + 18 * lot) / 3) * 3);
     return ground("building", tall);
   }
 
@@ -276,77 +413,79 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
         const built = feature(shape, tx, tz, false);
         if (built) return built;
       }
-      // Bridges and causeways cross the straits just above the water; a ford is waded.
-      if (roadNear(tx, tz) <= ROAD_HALF) return nearFord ? {kind: "ford", height: -0.35, base: -0.35, ground: "ford"} : ground("road", 0.5);
+      // Bridges, causeways and rail viaducts cross the straits above the water; a ford is waded.
+      if (roadNear(tx, tz) <= 0) return near.ford ? shallow(0) : ground(near.surface, Math.max(0.5, near.height));
       return water;
     }
-    if (own.reef) return {kind: "ford", height: -0.35, base: -0.35, ground: "ford"};
+    if (own.reef) return shallow(0);
     const {shape, d} = own, dM = d * tile, biome = shape.biome;
-    const ridge = fbm(tx / 620 + 11, tz / 620 + 5, seed + 3, 4), detail = fbm(tx / 90, tz / 90, seed + 5, 3), r = hash2(tx, tz, seed + 7);
+    const {ridge, detail} = noiseAt(tx, tz), r = hash2(tx, tz, seed + 7);
     const rr = Math.hypot(tx - shape.cx, tz - shape.cz) / Math.max(1, shape.radius);
     const beach: IslesTileKindV1 = biome === "toundra" ? "snow" : biome === "lande" || biome === "volcan" || biome === "rocher" ? "rock" : "sand";
 
     const named = feature(shape, tx, tz, true);
     if (named) return named;
-    // Roads are level: the ground is cut down to them and rises again over about 80 m on each side.
-    const shoulder = roadNear(tx, tz), road = shoulder <= ROAD_HALF, cut = smooth(shoulder, ROAD_HALF + 2, ROAD_SHOULDER);
-    if (biome === "métropole") {
+    const edge = roadNear(tx, tz), road = edge <= 0, roadHeight = near.height, roadSurface = near.surface;
+    if (biome === "métropole" && !(road && roadSurface === "rail")) {
       const built = city(shape, tx, tz, dM);
       if (built) return built;
     }
-    let land: IslesTileKindV1 = "grass", relief = 0, treeKind: "tree" | "pine" | "palm" = "tree", trees = 0, bushes = 0;
+    let relief = natural(shape, tx, tz, dM, ridge, detail);
+    let land: IslesTileKindV1 = "grass", treeKind: TreeKind = "tree", trees = 0, bushes = 0, shrub: IslesTileKindV1 = "bush", giants = 0;
     switch (biome) {
       case "forêt de pins": {
         const north = smooth(shape.cz + shape.radius * 0.12 - tz, -300, 900);
-        relief = (6 + 46 * north) * smooth(dM, 150, 3200) * Math.pow(ridge, 2.6) * 2.9;
         treeKind = "pine"; trees = 0.05 + 0.2 * north * detail * 1.6; bushes = 0.03;
-        if (dM > 500 && fbm(tx / 520, tz / 520, seed + 71, 2) < 0.2 && relief < 6) return water;
+        if (dM > 500 && fbm(tx / 520, tz / 520, seed + 71, 2) < 0.2 && relief < 6 && !road) return water;
+        // Harvest Flats: fields in straight rows on the southern plain.
+        const farm = shape.anchors.find(a => a.zone.id === "2.7");
+        if (farm && relief < 6 && Math.hypot(tx - farm.x, tz - farm.z) < 620 && fbm(tx / 70, tz / 70, seed + 101, 2) > 0.42) { trees = 0; bushes = tx % 6 < 4 ? 0.85 : 0; shrub = "crop"; land = "mud"; }
         break;
       }
-      case "toundra": land = "snow"; relief = 16 * smooth(dM, 60, 900) * ridge * 1.7; treeKind = "pine"; trees = 0.012; break;
-      case "lande": relief = dM > 16 ? 9 + (ridge > 0.6 ? 3 : 0) : 0; bushes = 0.07; trees = 0.004; treeKind = "pine"; break;
+      case "toundra": land = "snow"; treeKind = "pine"; trees = 0.006; break;
+      case "lande": bushes = 0.09; trees = 0.004; treeKind = "pine"; break;
       case "quarantaine": {
         const site = shape.anchors.find(a => a.zone.id === "1N.3");
         const burn = site ? Math.hypot(tx - site.x, tz - site.z) : Infinity;
-        relief = 15 * smooth(shape.cz - shape.radius * 0.3 - tz + (detail - 0.5) * 700, -200, 500) * smooth(dM, 100, 1200) * ridge * 1.8;
-        if (burn < 70) return ground("rock", burn < 46 ? 0 : 3);
-        if (burn < 800 + (ridge - 0.5) * 900) { land = "mud"; trees = 0.035; bushes = 0.01; } else { trees = 0.11 * detail * 1.7; bushes = 0.05; }
+        if (burn < 70 && !road) return ground("rock", (site ? altitudeOf(site) : 0) + (burn < 46 ? 0 : 3));
+        if (burn < 800 + (ridge - 0.5) * 900) { land = "mud"; treeKind = "deadtree"; trees = 0.035; bushes = 0.01; } else { trees = 0.11 * detail * 1.7; bushes = 0.05; }
         break;
       }
-      case "désert": land = "sand"; relief = ridge > 0.66 && dM > 200 ? 15 : ridge > 0.6 && dM > 160 ? 9 : 0; bushes = 0.012; break;
-      case "savane": land = "savanna"; relief = ridge > 0.74 && detail > 0.55 ? 6 : 0; trees = 0.012; bushes = 0.03; break;
+      case "désert": land = "sand"; treeKind = "cactus"; trees = 0.006; bushes = 0.012; break;
+      case "savane": land = "savanna"; trees = 0.012; bushes = 0.13; break;
       case "marais": {
         const w = Math.abs(fbm(tx / 230, tz / 230, seed + 73, 2) - 0.5);
-        if (w < 0.035 && dM > 40) return water;
-        if (w < 0.07) return r < 0.14 ? tree("tree", "ford", -0.35) : {kind: "ford", height: -0.35, base: -0.35, ground: "ford"};
-        land = "mud"; trees = 0.1; bushes = 0.08;
+        if (!road) {
+          if (w < 0.035 && dM > 40) return water;
+          if (w < 0.07) return r < 0.14 ? tree("tree", "ford", -0.35) : r < 0.42 ? {kind: "reed", height: -0.35, base: -0.35, ground: "ford"} : shallow(0);
+        }
+        land = "mud"; trees = 0.1; bushes = 0.1; shrub = w < 0.12 ? "reed" : "bush";
         break;
       }
       case "volcan": {
-        land = "rock"; relief = 72 * Math.pow(Math.max(0, 1 - rr * 1.15), 1.25) * (0.85 + 0.3 * detail);
-        if (rr < 0.075) return ground("lava", Math.max(0, terrace(relief) - 6));
+        land = "rock";
+        if (rr < 0.075 && !road) return ground("lava", Math.max(0, terrace(relief) - 60));
         if (Math.abs(fbm(tx / 150 + rr * 3, tz / 150, seed + 79, 2) - 0.5) < 0.012 && rr < 0.6) land = "lava";
         treeKind = "palm"; trees = rr > 0.7 ? 0.04 : 0; bushes = rr > 0.55 ? 0.03 : 0;
         break;
       }
-      case "méditerranéen": land = "savanna"; relief = 16 * smooth(dM, 150, 1800) * ridge * 1.5; treeKind = "pine"; trees = 0.028; bushes = 0.07; break;
-      case "tropical": case "jungle": land = "jungle"; relief = ridge > 0.7 && dM > 300 ? 6 : 0; trees = 0.17 * (0.6 + detail); bushes = 0.1; break;
-      case "mangroves":
-        if (rr < 0.38 + (detail - 0.5) * 0.3) return {kind: "ford", height: -0.35, base: -0.35, ground: "ford"};
-        if (dM < 46) return r < 0.2 ? tree("tree", "ford", -0.35) : {kind: "ford", height: -0.35, base: -0.35, ground: "ford"};
-        land = "sand"; treeKind = "palm"; trees = 0.06; bushes = 0.05;
-        break;
-      case "métropole": {
-        // Plan « Big City »: a mountain in the north around the reservoir, a line of hills along the east shore.
-        const north = smooth(shape.cz - shape.radius * 0.25 - tz, -400, 900), east = smooth(tx - shape.cx - shape.radius * 0.45, -200, 500);
-        relief = (6 + 48 * north + 22 * east) * smooth(dM, 150, 1500) * Math.pow(ridge, 2.2) * 2.6; trees = 0.1; bushes = 0.04;
+      case "méditerranéen": {
+        land = "savanna"; treeKind = "tree"; trees = 0.028; bushes = 0.07;
+        // Terraces of vines and olive trees around « Les terrasses ».
+        const vines = shape.anchors.find(a => a.zone.id === "11.2");
+        if (vines && Math.hypot(tx - vines.x, tz - vines.z) < 420) { trees = 0.02; bushes = tz % 4 < 2 ? 0.8 : 0; shrub = "crop"; }
         break;
       }
+      case "tropical": case "jungle": land = "jungle"; trees = 0.17 * (0.6 + detail); bushes = 0.1; giants = biome === "jungle" ? 0.06 : 0; break;
+      case "mangroves":
+        if (rr < 0.38 + (detail - 0.5) * 0.3) return shallow(0);
+        if (dM < 46) return r < 0.2 ? tree("tree", "ford", -0.35, 5) : shallow(0);
+        land = "sand"; treeKind = "palm"; trees = 0.06; bushes = 0.05;
+        break;
+      case "métropole": trees = 0.1; bushes = 0.04; if (relief > 300) treeKind = "pine"; break;
       case "commercial": {
         const cell = 84, lx = ((tx % cell) + cell) % cell, lz = ((tz % cell) + cell) % cell, pick = hash2(Math.floor(tx / cell), Math.floor(tz / cell), seed + 83);
-        // Plan « Comercial Zone »: « Mountain » on the north and east shores.
-        relief = 26 * smooth(tx - shape.cx + (shape.cz - tz) * 0.8, shape.radius * 0.45, shape.radius * 0.95) * smooth(dM, 60, 500) * (0.5 + ridge);
-        if (dM > 60 && !road && relief < 3) {
+        if (dM > 60 && edge > 0 && relief < 3) {
           if (lx < 6 || lz < 6) return ground("road");
           if (pick < 0.4) return lx > 18 && lz > 14 && lx < 66 && lz < 60 ? ground("building", pick < 0.12 ? 12 : 9) : ground("road");
           if (pick < 0.55) return ground("road");
@@ -361,25 +500,41 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
         if (dM > 50 && pick > 0.9 && r < 0.2) return ground("crate", 1);
         break;
       }
-      default: land = "rock"; relief = dM > 20 ? 3 + (ridge > 0.55 ? 3 : 0) : 0; bushes = 0.02;
+      default: land = "rock"; bushes = 0.02;
     }
-    if (road) return ground("road");
-    relief *= cut;
+    // Zones stand on a terrace at the altitude of their anchor; the ground joins it over about 500 m.
+    let reach = Infinity, terraceAt = 0;
+    for (const anchor of shape.anchors) {
+      const stampKind = anchor.zone.stamp;
+      if (stampKind === "none") continue;
+      const outside = Math.hypot(tx - anchor.x, tz - anchor.z) - (stampKind === "city" ? CITY_REACH : anchor.r);
+      if (outside < reach) { reach = outside; terraceAt = altitudeOf(anchor); }
+    }
+    if (reach < ZONE_BLEND) relief = terraceAt + (relief - terraceAt) * smooth(reach, 0, ZONE_BLEND);
+    // Roads are graded: the ground is cut or filled down to them and joins the slope again over about 120 m.
+    if (edge < ROAD_SHOULDER) relief = roadHeight + (relief - roadHeight) * smooth(edge, 1, ROAD_SHOULDER);
+    if (road) return ground(roadSurface, roadHeight);
     const built = stamp(shape, tx, tz, land);
     if (built) return built;
     if (dM < 14 && relief < 3 && biome !== "lande") return ground(beach);
-    const height = terrace(relief);
-    const top: IslesTileKindV1 = biome === "forêt de pins" || biome === "quarantaine" ? (height >= 42 ? "snow" : height >= 21 ? "rock" : land)
-      : height >= 3 && (biome === "désert" || biome === "savane") ? "rock" : height >= 12 && biome === "méditerranéen" ? "rock" : land;
+    const height = terrace(relief), lines = reliefOf(shape);
+    const top: IslesTileKindV1 = lines.snowLine !== null && height >= Math.max(lines.snowLine, 0) && (lines.snowLine > 0 || biome === "toundra") ? "snow"
+      : lines.treeLine > 0 && height >= lines.treeLine ? "rock"
+      : (biome === "désert" && height >= lines.peak * 0.5) || (biome === "savane" && height >= 30) ? "rock" : height >= 300 && biome === "méditerranéen" ? "rock" : land;
     if (biome === "tropical" || biome === "jungle") { if (dM < 90 && r < 0.07) return tree("palm", "sand", height); }
-    if (top !== "rock" && top !== "lava" && r < trees) return tree(treeKind, top, height);
-    if (top !== "lava" && r < trees + bushes) return {kind: "bush", height, base: height, ground: top};
+    const wooded = top !== "rock" && top !== "lava" && (top !== "snow" || biome === "toundra");
+    if (wooded && r < trees) {
+      // Trees differ in height; a few giants of the canopy stand far above the jungle.
+      const vary = hash2(tz, tx, seed + 109);
+      return tree(treeKind, top, height, vary < giants ? 30 + Math.round(vary / giants * 5) * 3 : Math.round(TREE_HEIGHT[treeKind] * (0.8 + 0.7 * vary) * 2) / 2);
+    }
+    if (top !== "lava" && top !== "snow" && r < trees + bushes) return {kind: shrub, height, base: height, ground: top};
     return ground(top, height);
   }
 
   // Bounded zone cache: the last zone used is checked first.
   const KIND_LIST: IslesTileKindV1[] = ["water", "ford", "sand", "grass", "jungle", "mud", "road", "bush", "crate", "rock", "tree", "wall", "roof", "pillar", "ruin",
-    "snow", "lava", "savanna", "pine", "palm", "building"];
+    "snow", "lava", "savanna", "pine", "palm", "building", "rail", "cactus", "deadtree", "reed", "crop"];
   const KIND_INDEX = new Map(KIND_LIST.map((kind, i) => [kind, i]));
   interface Chunk { kinds: Uint8Array; grounds: Uint8Array; heights: Float32Array; bases: Float32Array }
   const cache = new Map<number, Chunk>();
@@ -418,8 +573,10 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
   markers.spawn = markers["site:9.1"] ?? [[Math.round(width / 2), Math.round(depth / 2)]];
   const map: IslesMapV1 = {id: "isles-archipelago-v1", name: "Archipel des Îles", width, depth, tileMeters: tile, kinds: [], heights: new Float32Array(0), markers, sample};
 
+  const siteAnchors = new Map(shapes.flatMap(shape => shape.anchors.map(anchor => [anchor.zone.id, anchor] as const)));
   return {
-    map, sites,
+    map, sites, linePaths,
+    siteAltitude: id => { const anchor = siteAnchors.get(id); return anchor ? altitudeOf(anchor) : 0; },
     tileAt: compute,
     cachedZones: () => cache.size,
     placeAt(x, z) {
