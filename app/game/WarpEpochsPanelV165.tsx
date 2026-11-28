@@ -8,7 +8,7 @@ import { MISSIONS } from "./data";
 import {
   WARP_BRANCHES_V165, WARP_COMPONENTS_V165, WARP_PROTOTYPE_ARC_V165, WARP_W02_CONTRACTS_V165, WARP_W02_STEPS_V165,
   W02_HUNT_BASE_MISSION_ID_V165, WARP_W02_BONSHO_V165, WARP_W02_TERRACE_ALERT_V165,
-  actWarpVillageV165, advanceWarpCommonRouteV165, advanceWarpFjordW01, advanceWarpSurveyR2, applyW02HuntResultV165, branchVisitV165, canLaunchW02HuntV165, canReturnFromWarpV165,
+  actWarpVillageV165, advanceWarpCommonRouteV165, advanceWarpFjordW01, advanceWarpFortressW01, advanceWarpSurveyR2, applyW02HuntResultV165, branchVisitV165, canLaunchW02HuntV165, canReturnFromWarpV165,
   createWarpEpochsV165, departWarpV165, evaluateWarpDepartureV165, installWarpModuleV165, normalizeWarpEpochsV165,
   resolveW02StepV165, returnFromWarpV165, selectWarpBranchV165, verifyWarpComponentV165,
   warpAccessContextFromSaveV165, warpConditionsV165, warpVillageRankAllowed, warpW02HuntMissionV165,
@@ -21,6 +21,7 @@ import { shipReceiptV161 } from "./systems/shipReceiptV161";
 import { warpCommonViewR2 } from "./systems/warpCommonRouteR2";
 import WarpCommonSceneR2, { WarpSurveySceneR2 } from "./WarpCommonSceneR2";
 import WarpFjordScene from "./WarpFjordScene";
+import WarpFortressScene from "./WarpFortressScene";
 import { W01_FJORD_BRANCH, W01_FJORD_ROUTES } from "./systems/warpFjordW01";
 import styles from "./WarpEpochsPanelV165.module.css";
 
@@ -108,7 +109,7 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
   const canWork = !!hull && ctx.blooded && ctx.adjutant && !state.activeWarpTripId;
   const inW02 = state.activeTripBranchId === "W-02";
   const inW01 = state.activeTripBranchId === W01_FJORD_BRANCH;
-  const fjord = branchVisitV165(state, W01_FJORD_BRANCH).fjordW01;
+  const { fjordW01: fjord, fortressW01: fortress } = branchVisitV165(state, W01_FJORD_BRANCH);
   const huntLaunch = canLaunchW02HuntV165(state);
   const conditionRows = [
     ["blooded", "Rang Blooded"], ["ship", "Vaisseau personnel possédé"], ["adjutant", "Fonction Adjutant"],
@@ -123,7 +124,7 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
       <div><p className={styles.eyebrow}>WARP · ÉPOQUES · V165</p><h2 id="warp-v165-title">Le Warp</h2></div>
       <button type="button" onClick={onClose} disabled={!!state.activeWarpTripId} title={state.activeWarpTripId ? "Reviens d'abord par le retour réservé" : undefined}>Retour</button>
     </header>
-    <p className={styles.notice}>Chapitre facultatif : aucune mission Warp ne valide un rang (WARP-R02, WARP-R24). Expéditions ouvertes : la reconnaissance du fjord en 841, le Japon féodal en 1629 et Tantalus en 2204.</p>
+    <p className={styles.notice}>Chapitre facultatif : aucune mission Warp ne valide un rang (WARP-R02, WARP-R24). Expéditions ouvertes : le fjord et la forteresse en 841, le Japon féodal en 1629 et Tantalus en 2204.</p>
     <p className={styles.message} role="status" aria-live="polite">{message}</p>
 
     <div className={styles.section}>
@@ -165,7 +166,7 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
     <div className={styles.section}>
       <h3>Branches (L-10)</h3>
       <div className={styles.cards}>{WARP_BRANCHES_V165.map(branch => <article key={branch.id} data-warp-branch-card={branch.id} data-status={branch.status}>
-        <span className={styles.badge}>{branch.id === W01_FJORD_BRANCH ? "Reconnaissance" : branch.status === "jouable" ? "jouable" : "non implémentée"}</span>
+        <span className={styles.badge}>{branch.id === W01_FJORD_BRANCH ? "Deux relevés" : branch.status === "jouable" ? "jouable" : "non implémentée"}</span>
         <h4>{branch.id} · {branch.label}</h4>
         <p>{branch.canonFrame}</p>
         <p>Scène proposée : {branch.proposedScene}</p>
@@ -175,7 +176,7 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
       </article>)}</div>
       <div className={styles.actions}>
         <button type="button" disabled={!departure.allowed} onClick={() => apply(departWarpV165(state, ctx))}>Engager le voyage</button>
-        <button type="button" disabled={!canReturnFromWarpV165(state)} onClick={() => apply(returnFromWarpV165(state))}>{inW01 && !fjord?.returned ? "Repli d’urgence (retour réservé)" : "Revenir (retour réservé)"}</button>
+        <button type="button" disabled={!canReturnFromWarpV165(state)} onClick={() => apply(returnFromWarpV165(state))}>{inW01 && fortress?.stage !== "returned" ? "Repli d’urgence (retour réservé)" : "Revenir (retour réservé)"}</button>
       </div>
       {!departure.allowed && !state.activeWarpTripId && <p className={styles.missing}>Départ impossible : {departure.missing.map(m => m.label).join(" · ")}</p>}
       {state.activeWarpTripId && <p>Voyage {state.activeWarpTripId} engagé vers {state.activeTripBranchId}. Le retour reste réservé même si une condition de départ se perd.</p>}
@@ -193,6 +194,13 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
         <p>Voyage {fjord.tripId} · Retour par la fenêtre réservée</p>
       </article> : <WarpFjordScene key={state.activeWarpTripId} record={fjord} identity={save}
         onAction={action => apply(advanceWarpFjordW01(state, action))} />}
+      {fortress?.stage === "returned" ? <article data-warp-fortress-register>
+        <h4>Registre du vaisseau · La forteresse des marées</h4>
+        <p>Les marques de relève relient la halle du guet à la tour du guerrier.</p>
+        <p>Voyage {fortress.tripId} · Retour par la fenêtre réservée</p>
+      </article> : inW01 && fjord?.returned ? <WarpFortressScene key={state.activeWarpTripId} record={fortress}
+        route={fjord.route} identity={save} onAction={action => apply(advanceWarpFortressW01(state, action))} />
+        : fjord?.returned && <p>Engage un nouveau voyage W-01 pour atteindre la forteresse avec ce relevé.</p>}
     </div>}
 
     <div className={styles.section} data-warp-w02 data-visits={w02.visits}>
