@@ -1159,6 +1159,8 @@ Un procès bien mené (preuve d'une contrainte, témoin qui confirme) peut faire
 
 Source : [dictionnaire yautja, AvP Central](https://www.avpcentral.com/yautja-dictionary-vocabulary-of-predators).
 
+Les noms des personnages du clan, des habitants et des animaux du chenil suivent le [registre des noms yautja du projet](NOMS_YAUTJA.md). Les noms d’auteur y restent distincts des noms issus des œuvres.
+
 **Passe de vérification (6 novembre 2026) :** les 68 noms composés de la bible (clans, communautés, régions, personnages proposés) ont été comparés au dictionnaire ci-dessus. Aucun nom inventé ne reprend un mot canon ; les seuls mots canon présents sont ceux employés volontairement dans ce tableau. Dans le dépôt, le système `system-kaail` porte un mot canon (*Kaail*, « rage ») : compatible comme nom de lieu, à garder.
 
 ### Combat du Black God : déroulé
