@@ -2,24 +2,32 @@
  * 48 × 49 km at 2 m per tile is about 590 million tiles: nothing is stored. Each 32 × 32 zone is
  * computed on demand from the island outlines, fractal coast noise, a rule set per biome and the
  * zone anchors, then kept in a bounded cache. Same data and seed, same world, tile for tile. */
-import type {IslesLegendEntryV1, IslesMapV1, IslesTileKindV1} from "./islesMapV1";
+import type {IslesMapV1, IslesTileKindV1} from "./islesMapV1";
 import {valueNoiseV1, type IslesWorldSiteV1} from "./islesWorldGenV1";
+import {ISLES_FEATURE_HOLD_V1, ISLES_FEATURE_OVER_WATER_V1, ISLES_FEATURE_RADIUS_V1, isIslesFeatureV1, islesFeatureTileV1,
+  type IslesFeatureKindV1, type IslesWorldTileV1} from "./islesArchipelagoFeaturesV1";
+export type {IslesWorldTileV1} from "./islesArchipelagoFeaturesV1";
 
 type Point = [number, number];
-export type IslesStampV1 = "none" | "camp" | "village" | "town" | "industrial" | "ruins" | "city";
+/** Generic settlements, or a named feature of islesArchipelagoFeaturesV1.ts. */
+export type IslesStampV1 = "none" | "camp" | "village" | "town" | "industrial" | "ruins" | "city" | IslesFeatureKindV1;
 
-export interface IslesArchipelagoZoneV1 { id: string; name: string; at: Point; stamp: IslesStampV1 }
+/** `angle` (degrees, 0 = east, 90 = south) turns a feature: its length runs along the angle, its front faces 90° further. */
+export interface IslesArchipelagoZoneV1 { id: string; name: string; at: Point; stamp: IslesStampV1; angle?: number }
 export interface IslesArchipelagoSourceV1 {
   version: number; seed: number; scale: number; sizeKm: Point; tileMeters: number;
-  islands: {number: string; id: string; name: string; biome: string; climate: string; outline: Point[]; zones: IslesArchipelagoZoneV1[]}[];
+  islands: {number: string; id: string; name: string; biome: string; climate: string; outline: Point[]; zones: IslesArchipelagoZoneV1[];
+    /** Other lands of the same island (barrier islands, twin islets). */
+    parts?: Point[][];
+    /** Outline taken from a detailed plan: the shore follows it closely. */
+    fidelity?: boolean;
+    /** Roads between two zones, added to the network that joins every zone of the island. */
+    roads?: [string, string][]}[];
   chain: {number: string; id: string; name: string; biome: string; islets: {name: string; center: Point; radiusKm: number}[]; zones: IslesArchipelagoZoneV1[]};
-  islets: {id: string; name: string; center: Point; radiusKm: number; note: string}[];
+  islets: {id: string; name: string; center: Point; radiusKm: number; note: string; zones?: IslesArchipelagoZoneV1[]}[];
   seaZone: {id: string; name: string; rigs: {id: string; name: string; center: Point; kind: string}[]};
   links: [string, string, string][];
 }
-
-/** A tile of the streamed world: trees and props also say what ground they stand on. */
-export interface IslesWorldTileV1 extends IslesLegendEntryV1 { base: number; ground: IslesTileKindV1 }
 
 export interface IslesArchipelagoWorldV1 {
   map: IslesMapV1;
@@ -33,13 +41,16 @@ export interface IslesArchipelagoWorldV1 {
 
 interface Shape {
   id: string; name: string; biome: string; polygon: Point[] | null; cx: number; cz: number; radius: number;
-  minX: number; minZ: number; maxX: number; maxZ: number; amp: number; warp: number; size: number; anchors: {x: number; z: number; r: number; zone: IslesArchipelagoZoneV1}[];
+  minX: number; minZ: number; maxX: number; maxZ: number; amp: number; warp: number; size: number; anchors: Anchor[];
 }
+interface Anchor { x: number; z: number; r: number; hold: number; cos: number; sin: number; zone: IslesArchipelagoZoneV1 }
+interface Road { ax: number; az: number; bx: number; bz: number; len: number; amp: number; ford: boolean; phase: number; minX: number; minZ: number; maxX: number; maxZ: number }
 
 const ZONE = 32;
 const ISLET_BIOME: Record<string, string> = {ironhook: "militaire", blackrock: "rocher", "twin-keys": "commercial", navigator: "rocher",
   breakwater: "rocher", "gull-rock": "rocher", "cinder-rocks": "volcan", "little-ember": "volcan"};
-const STAMP_RADIUS: Record<IslesStampV1, number> = {none: 24, camp: 60, village: 120, town: 190, industrial: 170, ruins: 130, city: 0};
+const STAMP_RADIUS: Record<IslesStampV1, number> = {none: 24, camp: 60, village: 120, town: 190, industrial: 170, ruins: 130, city: 0, ...ISLES_FEATURE_RADIUS_V1};
+const ROAD_HALF = 3.5, ROAD_SHOULDER = 44;
 const TREE_HEIGHT: Record<string, number> = {tree: 7, pine: 9, palm: 6};
 
 function hash2(x: number, z: number, seed: number): number {
@@ -75,22 +86,81 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
   const toTile = ([x, y]: Point): Point => [x * perKm, y * perKm];
 
   const shapes: Shape[] = [];
-  const addShape = (id: string, name: string, biome: string, polygon: Point[] | null, center: Point, radius: number, zones: IslesArchipelagoZoneV1[]) => {
+  const addShape = (id: string, name: string, biome: string, polygon: Point[] | null, center: Point, radius: number, zones: IslesArchipelagoZoneV1[], fidelity = false) => {
     const xs = polygon ? polygon.map(p => p[0]) : [center[0] - radius, center[0] + radius];
     const zs = polygon ? polygon.map(p => p[1]) : [center[1] - radius, center[1] + radius];
     const size = Math.max(Math.max(...xs) - Math.min(...xs), Math.max(...zs) - Math.min(...zs));
     // Real shores are not polygons: the outline is bent at the scale of the island, then cut into bays and capes.
-    const warp = Math.min(1500, size * (polygon ? 0.16 : 0.3)), amp = Math.min(420, Math.max(40, size * 0.055));
-    const margin = warp * 1.25 + amp * 1.6 + 8;
+    // An outline taken from a detailed plan is bent far less.
+    const warp = Math.min(1500, size * (polygon ? 0.16 : 0.3)) * (fidelity ? 0.22 : 1), amp = Math.min(420, Math.max(40, size * 0.055)) * (fidelity ? 0.55 : 1);
+    const margin = warp * 1.25 + amp * 1.6 + 330;
     const cx = polygon ? xs.reduce((a, b) => a + b, 0) / xs.length : center[0], cz = polygon ? zs.reduce((a, b) => a + b, 0) / zs.length : center[1];
     shapes.push({id, name, biome, polygon, cx, cz, radius: polygon ? size / 2 : radius, amp, warp, size,
       minX: Math.min(...xs) - margin, minZ: Math.min(...zs) - margin, maxX: Math.max(...xs) + margin, maxZ: Math.max(...zs) + margin,
-      anchors: zones.map(zone => { const [x, z] = toTile(zone.at); return {x, z, r: STAMP_RADIUS[zone.stamp], zone}; })});
+      anchors: zones.map(zone => {
+        const [x, z] = toTile(zone.at), r = STAMP_RADIUS[zone.stamp], angle = (zone.angle ?? 0) * Math.PI / 180;
+        const hold = Math.max(18, r * (isIslesFeatureV1(zone.stamp) ? ISLES_FEATURE_HOLD_V1[zone.stamp] ?? 0.55 : 0.55));
+        return {x, z, r, hold, cos: Math.cos(angle), sin: Math.sin(angle), zone};
+      })});
   };
-  for (const island of source.islands) addShape(island.id, island.name, island.biome, island.outline.map(toTile), [0, 0], 0, island.zones);
+  for (const island of source.islands) {
+    // A zone belongs to the part of the island that contains it, or else to the main land.
+    const parts = (island.parts ?? []).map(part => part.map(toTile));
+    const partOf = (zone: IslesArchipelagoZoneV1) => { const [x, z] = toTile(zone.at); return parts.findIndex(part => polygonDistance(x, z, part) > 0); };
+    addShape(island.id, island.name, island.biome, island.outline.map(toTile), [0, 0], 0, island.zones.filter(zone => partOf(zone) < 0), island.fidelity);
+    parts.forEach((part, k) => addShape(island.id + "#" + k, island.name, island.biome, part, [0, 0], 0, island.zones.filter(zone => partOf(zone) === k), island.fidelity));
+  }
   source.chain.islets.forEach((islet, i) => addShape(source.chain.id + ":" + i, source.chain.name, "mangroves", null, toTile(islet.center), islet.radiusKm * perKm,
     source.chain.zones.filter(zone => zone.at[0] === islet.center[0] && zone.at[1] === islet.center[1])));
-  for (const islet of source.islets) addShape(islet.id, islet.name, ISLET_BIOME[islet.id] ?? "rocher", null, toTile(islet.center), islet.radiusKm * perKm, []);
+  for (const islet of source.islets) addShape(islet.id, islet.name, ISLET_BIOME[islet.id] ?? "rocher", null, toTile(islet.center), islet.radiusKm * perKm, islet.zones ?? []);
+  const baseId = (id: string) => id.split(/[:#]/)[0];
+
+  // Road network: every zone of an island is joined to the others by the shortest tree, the plans add their own roads,
+  // and each bridge, causeway or ford of the links joins the two nearest places of its islands.
+  const roads: Road[] = [];
+  const nodesOf = (id: string): {x: number; z: number; zone?: string}[] => {
+    const list = shapes.filter(shape => baseId(shape.id) === id);
+    const anchors = list.flatMap(shape => shape.anchors.map(a => ({x: a.x, z: a.z, zone: a.zone.id})));
+    return anchors.length ? anchors : list.map(shape => ({x: shape.cx, z: shape.cz}));
+  };
+  const addRoad = (a: {x: number; z: number}, b: {x: number; z: number}, ford: boolean) => {
+    const len = Math.hypot(b.x - a.x, b.z - a.z);
+    if (len < 8) return;
+    const amp = Math.min(90, len * 0.08), pad = amp + ROAD_SHOULDER + 2;
+    roads.push({ax: a.x, az: a.z, bx: b.x, bz: b.z, len, amp, ford, phase: roads.length * 7.31,
+      minX: Math.min(a.x, b.x) - pad, minZ: Math.min(a.z, b.z) - pad, maxX: Math.max(a.x, b.x) + pad, maxZ: Math.max(a.z, b.z) + pad});
+  };
+  for (const island of source.islands) {
+    const nodes = nodesOf(island.id), linked = new Set([0]);
+    while (linked.size < nodes.length) {
+      let best = Infinity, from = 0, to = 0;
+      for (const i of linked) nodes.forEach((node, j) => { const d = linked.has(j) ? Infinity : Math.hypot(node.x - nodes[i].x, node.z - nodes[i].z); if (d < best) { best = d; from = i; to = j; } });
+      linked.add(to); addRoad(nodes[from], nodes[to], false);
+    }
+    for (const [a, b] of island.roads ?? []) { const na = nodes.find(n => n.zone === a), nb = nodes.find(n => n.zone === b); if (na && nb) addRoad(na, nb, false); }
+  }
+  for (const [a, b, means] of source.links) {
+    if (!/pont|digue|poste|gué|rail/.test(means)) continue;
+    let best = Infinity, pair: [{x: number; z: number}, {x: number; z: number}] | null = null;
+    for (const na of nodesOf(a)) for (const nb of nodesOf(b)) { const d = Math.hypot(na.x - nb.x, na.z - nb.z); if (d < best) { best = d; pair = [na, nb]; } }
+    if (pair) addRoad(pair[0], pair[1], /gué/.test(means) && !/pont/.test(means));
+  }
+  /** Distance in tiles to the nearest road centre line (99 beyond ROAD_SHOULDER), and whether that road is a ford.
+   * Roads wander a little between their two ends. */
+  let nearFord = false;
+  const roadNear = (x: number, z: number): number => {
+    let best = 99;
+    for (const road of roads) {
+      if (x < road.minX || x > road.maxX || z < road.minZ || z > road.maxZ) continue;
+      const dx = (road.bx - road.ax) / road.len, dz = (road.bz - road.az) / road.len, t = ((x - road.ax) * dx + (z - road.az) * dz) / road.len;
+      if (t < 0 || t > 1) continue;
+      const side = (x - road.ax) * dz - (z - road.az) * dx;
+      const bend = road.amp * Math.sin(Math.PI * t) * (fbm(t * road.len / 260 + road.phase, road.phase * 0.37, seed + 251, 2) - 0.5) * 2;
+      const d = Math.abs(side - bend);
+      if (d < best && d <= ROAD_SHOULDER) { best = d; nearFord = road.ford; }
+    }
+    return best;
+  };
 
   /** Land field of one shape: > 0 on land, about the distance to the shore in tiles. */
   const field = (shape: Shape, x: number, z: number): number => {
@@ -105,7 +175,7 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
       (valueNoiseV1(x / 9, z / 9, seed + 29) - 0.5) * 6;
     let f = d + n;
     for (const anchor of shape.anchors) {
-      const hold = Math.max(18, anchor.r * 0.55) - Math.hypot(x - anchor.x, z - anchor.z);
+      const hold = anchor.hold - Math.hypot(x - anchor.x, z - anchor.z);
       if (hold > f) f = hold;
     }
     return f;
@@ -132,11 +202,24 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
   const tree = (kind: "tree" | "pine" | "palm", under: IslesTileKindV1, base: number): IslesWorldTileV1 => ({kind, height: base + TREE_HEIGHT[kind], base, ground: under});
   const terrace = (metres: number) => metres < 3 ? 0 : Math.floor(metres / 3) * 3;
 
+  /** Named place of the plans (airport, stadium, marina…) at a tile, if any. */
+  function feature(shape: Shape, x: number, z: number, onLand: boolean): IslesWorldTileV1 | null {
+    for (const anchor of shape.anchors) {
+      const kind = anchor.zone.stamp;
+      if (!isIslesFeatureV1(kind) || (!onLand && !ISLES_FEATURE_OVER_WATER_V1.has(kind))) continue;
+      const dx = x - anchor.x, dz = z - anchor.z;
+      if (Math.abs(dx) > anchor.r || Math.abs(dz) > anchor.r) continue;
+      const built = islesFeatureTileV1(kind, dx * anchor.cos + dz * anchor.sin, -dx * anchor.sin + dz * anchor.cos, seed + Math.round(anchor.x), onLand);
+      if (built) return built;
+    }
+    return null;
+  }
+
   /** Buildings on a local street grid around a zone anchor. */
   function stamp(shape: Shape, x: number, z: number, land: IslesTileKindV1): IslesWorldTileV1 | null {
     for (const anchor of shape.anchors) {
       const kind = anchor.zone.stamp;
-      if (kind === "city") continue;
+      if (kind === "city" || isIslesFeatureV1(kind)) continue;
       const dx = x - anchor.x, dz = z - anchor.z, dist = Math.hypot(dx, dz);
       if (dist > anchor.r) continue;
       if (kind === "none") return dist < 10 ? ground(land === "snow" ? "snow" : "mud") : null;
@@ -164,13 +247,9 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
   function city(shape: Shape, x: number, z: number, dM: number): IslesWorldTileV1 | null {
     const anchors = shape.anchors.filter(a => a.zone.stamp === "city");
     if (!anchors.length || dM < 90) return null;
-    const hills = shape.anchors.find(a => a.zone.id === "4.9");
-    if (hills && z < hills.z + 700 + (fbm(x / 500, z / 500, seed + 241, 3) - 0.5) * 1100) return null;
-    const park = shape.anchors.find(a => a.zone.id === "4.4");
-    if (park && Math.abs(x - park.x) < 420 && Math.abs(z - park.z) < 170) {
-      if (Math.hypot((x - park.x - 120) / 1.8, z - park.z) < 60) return water;
-      return hash2(x, z, seed + 51) < 0.07 ? tree("tree", "grass", 0) : ground("grass");
-    }
+    // The grid covers the districts of the plan, not the whole island: hills, suburbs and shores keep their ground.
+    const nearest = anchors.reduce((best, a) => Math.min(best, Math.hypot(x - a.x, z - a.z)), Infinity);
+    if (nearest > 560 + (fbm(x / 300, z / 300, seed + 241, 2) - 0.5) * 260) return null;
     const block = 46, lx = ((x % block) + block) % block, lz = ((z % block) + block) % block;
     const avenue = (Math.floor(x / block) % 5 === 0 && lx < 9) || (Math.floor(z / block) % 6 === 0 && lz < 8);
     if (lx < 6 || lz < 5 || avenue) return ground("road");
@@ -178,8 +257,6 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
     if (pick < 0.05) return hash2(x, z, seed + 53) < 0.06 ? tree("tree", "grass", 0) : ground("grass");
     if (lx < 8 || lz < 7 || lx > block - 3 || lz > block - 3) return ground("road");
     const downtown = anchors.reduce((best, a) => Math.min(best, a.zone.id === "4.1" || a.zone.id === "4.3" ? Math.hypot(x - a.x, z - a.z) : best), Infinity);
-    const nearest = anchors.reduce((best, a) => Math.min(best, Math.hypot(x - a.x, z - a.z)), Infinity);
-    if (nearest > 1500) return pick < 0.5 ? ground("roof", 3.5) : ground("grass");
     // Each block is split in two lots of different heights.
     const lot = hash2(bx * 2 + (lx > block / 2 ? 1 : 0), bz, seed + 67);
     const tall = 12 + Math.round((120 * Math.exp(-downtown / 520) * (0.35 + 0.65 * lot) + 18 * lot) / 3) * 3;
@@ -194,6 +271,13 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
         const [rx, rz] = toTile(rig.center), dx = Math.abs(tx - rx), dz = Math.abs(tz - rz);
         if (dx < 22 && dz < 22) return dx < 6 && dz < 6 ? ground("building", 30) : (dx % 16 < 2 && dz % 16 < 2) ? ground("pillar", 12) : ground("wall", 12);
       }
+      for (const shape of shapes) {
+        if (tx < shape.minX || tx > shape.maxX || tz < shape.minZ || tz > shape.maxZ) continue;
+        const built = feature(shape, tx, tz, false);
+        if (built) return built;
+      }
+      // Bridges and causeways cross the straits just above the water; a ford is waded.
+      if (roadNear(tx, tz) <= ROAD_HALF) return nearFord ? {kind: "ford", height: -0.35, base: -0.35, ground: "ford"} : ground("road", 0.5);
       return water;
     }
     if (own.reef) return {kind: "ford", height: -0.35, base: -0.35, ground: "ford"};
@@ -202,6 +286,10 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
     const rr = Math.hypot(tx - shape.cx, tz - shape.cz) / Math.max(1, shape.radius);
     const beach: IslesTileKindV1 = biome === "toundra" ? "snow" : biome === "lande" || biome === "volcan" || biome === "rocher" ? "rock" : "sand";
 
+    const named = feature(shape, tx, tz, true);
+    if (named) return named;
+    // Roads are level: the ground is cut down to them and rises again over about 80 m on each side.
+    const shoulder = roadNear(tx, tz), road = shoulder <= ROAD_HALF, cut = smooth(shoulder, ROAD_HALF + 2, ROAD_SHOULDER);
     if (biome === "métropole") {
       const built = city(shape, tx, tz, dM);
       if (built) return built;
@@ -248,10 +336,17 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
         if (dM < 46) return r < 0.2 ? tree("tree", "ford", -0.35) : {kind: "ford", height: -0.35, base: -0.35, ground: "ford"};
         land = "sand"; treeKind = "palm"; trees = 0.06; bushes = 0.05;
         break;
-      case "métropole": relief = 20 * smooth(dM, 150, 1500) * ridge * 1.6; trees = 0.1; bushes = 0.04; break;
+      case "métropole": {
+        // Plan « Big City »: a mountain in the north around the reservoir, a line of hills along the east shore.
+        const north = smooth(shape.cz - shape.radius * 0.25 - tz, -400, 900), east = smooth(tx - shape.cx - shape.radius * 0.45, -200, 500);
+        relief = (6 + 48 * north + 22 * east) * smooth(dM, 150, 1500) * Math.pow(ridge, 2.2) * 2.6; trees = 0.1; bushes = 0.04;
+        break;
+      }
       case "commercial": {
         const cell = 84, lx = ((tx % cell) + cell) % cell, lz = ((tz % cell) + cell) % cell, pick = hash2(Math.floor(tx / cell), Math.floor(tz / cell), seed + 83);
-        if (dM > 60) {
+        // Plan « Comercial Zone »: « Mountain » on the north and east shores.
+        relief = 26 * smooth(tx - shape.cx + (shape.cz - tz) * 0.8, shape.radius * 0.45, shape.radius * 0.95) * smooth(dM, 60, 500) * (0.5 + ridge);
+        if (dM > 60 && !road && relief < 3) {
           if (lx < 6 || lz < 6) return ground("road");
           if (pick < 0.4) return lx > 18 && lz > 14 && lx < 66 && lz < 60 ? ground("building", pick < 0.12 ? 12 : 9) : ground("road");
           if (pick < 0.55) return ground("road");
@@ -261,12 +356,15 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
       case "industriel": case "militaire": {
         const cell = 64, lx = ((tx % cell) + cell) % cell, lz = ((tz % cell) + cell) % cell, pick = hash2(Math.floor(tx / cell), Math.floor(tz / cell), seed + 89);
         land = "road";
+        if (road) break;
         if (dM > 50 && pick < 0.55 && lx > 10 && lz > 10 && lx < 54 && lz < 50) return pick < 0.12 ? ground("pillar", 18) : ground("building", pick < 0.3 ? 15 : 9);
         if (dM > 50 && pick > 0.9 && r < 0.2) return ground("crate", 1);
         break;
       }
       default: land = "rock"; relief = dM > 20 ? 3 + (ridge > 0.55 ? 3 : 0) : 0; bushes = 0.02;
     }
+    if (road) return ground("road");
+    relief *= cut;
     const built = stamp(shape, tx, tz, land);
     if (built) return built;
     if (dM < 14 && relief < 3 && biome !== "lande") return ground(beach);
@@ -332,8 +430,8 @@ export function createArchipelagoWorldV1(source: IslesArchipelagoSourceV1, cache
         const d = Math.hypot(x / tile - anchor.x, z / tile - anchor.z);
         if (d < best) { best = d; zone = anchor.zone.id + " " + anchor.zone.name; }
       }
-      const island = source.islands.find(item => item.id === own.shape.id);
-      return {islandId: own.shape.id.split(":")[0], island: own.shape.name, biome: island?.biome ?? own.shape.biome, zone};
+      const island = source.islands.find(item => item.id === baseId(own.shape.id));
+      return {islandId: baseId(own.shape.id), island: own.shape.name, biome: island?.biome ?? own.shape.biome, zone};
     },
   };
 }

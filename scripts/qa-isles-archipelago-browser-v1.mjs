@@ -95,7 +95,12 @@ try {
   step('voyage en vaisseau par un clic sur la carte : Calder, Downtown');
 
   const visits = [['13.3', 'Frost Isle', '04-frost-isle-glacier'], ['3.1', 'Ember', '05-ember-volcan'], ['1S.1', 'Redmesa', '06-redmesa-desert'],
-    ['10.2', 'The Shallows', '07-shallows-atoll'], ['2.2', 'Hollowpine', '08-hollowpine-montagne'], ['12.1', 'Saltmarsh', '09-saltmarsh-bayous']];
+    ['10.2', 'The Shallows', '07-shallows-atoll'], ['2.2', 'Hollowpine', '08-hollowpine-montagne'], ['12.1', 'Saltmarsh', '09-saltmarsh-bayous'],
+    // Named places of the plans « Big City », « Comercial Zone » and « Industrial zone ».
+    ['4.16', 'Calder', '10-calder-aeroport'], ['4.17', 'Calder', '11-calder-complexe-sportif'], ['4.14', 'Calder', '12-calder-big-ball-circuit'],
+    ['4.12', 'Calder', '13-calder-marina-richou'], ['4.13', 'Calder', '14-calder-beach'], ['6.4', 'Eastbank', '15-eastbank-gull-pier'],
+    ['6.3', 'Eastbank', '16-eastbank-parc-attractions'], ['6.2', 'Eastbank', '17-eastbank-zoo'], ['5.8', 'Steelwater', '18-steelwater-raffinerie'],
+    ['5.7', 'Steelwater', '19-steelwater-conteneurs'], ['B.1', 'Blackrock', '20-blackrock-prison']];
   for (const [id, name, file] of visits) {
     const site = size.sites.find(item => item.id === id);
     await hook((isles, at) => isles.travel(at.x, at.z), {x: site.x, z: site.z});
@@ -107,7 +112,7 @@ try {
   report.metrics.end = await hook(isles => ({...isles.stats(), cached: isles.archipelago().cached}));
   assert.ok(report.metrics.end.cached <= 900, 'cache borné : ' + report.metrics.end.cached);
   assert.ok(report.metrics.end.zones <= 81, 'zones affichées bornées : ' + report.metrics.end.zones);
-  step('après sept voyages, le monde en mémoire reste borné', report.metrics.end);
+  step('après ' + (visits.length + 1) + ' voyages, le monde en mémoire reste borné', report.metrics.end);
   assert.deepEqual(errors, []);
 } finally {
   report.errors = errors;

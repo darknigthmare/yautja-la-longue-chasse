@@ -10,6 +10,7 @@ Cette fiche fixe la **forme de l'archipel** et le **contenu attendu de chaque zo
 | --- | --- | --- |
 | « The Isle » (croquis et listes) | 21 juin 2022 | cinq îles, la liste des zones et de leurs sous-zones, les modes de jeu, les événements de la grande ville, les types d'ennemis, les lieux inspirés d'un tournage en ville |
 | « Plan » (vues de travail) | 8 février 2023 | le relief de l'île de la grande ville, avec sa grille de rues, et celui de l'île industrielle |
+| « Big City », « Comercial Zone », « Industrial zone » (plans annotés) | 24 octobre 2022 | le contour, les sous-zones, les routes et la liste des lieux de la grande ville, de l'île commerciale et de l'île industrielle, chacun avec une barre d'échelle de 1 km |
 | « Plan 2 » (schéma) | 17 mai 2023 | la **multitude d'îles** : quatorze îles numérotées, des îlots, une zone de mer avec trois plateformes, deux îles bonus |
 
 **Règle de lecture.** La colonne « Origine » dit d'où vient chaque sous-zone :
@@ -27,7 +28,11 @@ Les noms d'îles absents des notes sont *(proposés)*. Les notes citaient des pa
 
 ![Plan de l'archipel, tiré du monde généré](assets/isles-archipel-plan-20261128.png)
 
-Le plan ci-dessus n'est pas un dessin : `scripts/build-isles-archipelago-map-v1.mjs` interroge le vrai générateur (`app/game/isles/islesArchipelagoGenV1.ts`) une tuile sur vingt et colorie ce qu'il répond. Les données sont dans `app/game/data/islesArchipelagoV1.json` : contours relevés sur le Plan 2, climat de chaque île, ancre et type de chaque zone, liaisons. Le générateur déforme ces contours pour en faire des côtes naturelles (section 1.4) ; aucune île n'est un carré ni un rond.
+![Calder, Eastbank et Steelwater d'après les plans du 24 octobre 2022](assets/isles-trois-iles-plan-20261128.png)
+
+*Vue rapprochée (une tuile sur dix, 20 m par point) : Calder et ses deux Jumelles en haut, Eastbank au milieu, Steelwater et ses îles-barrières en bas ; Ironhook au nord-est, Blackrock à l'est d'Eastbank.*
+
+Les deux plans ci-dessus ne sont pas des dessins : `scripts/build-isles-archipelago-map-v1.mjs` interroge le vrai générateur (`app/game/isles/islesArchipelagoGenV1.ts`) une tuile sur vingt et colorie ce qu'il répond. Les données sont dans `app/game/data/islesArchipelagoV1.json` : contours relevés sur le Plan 2, climat de chaque île, ancre et type de chaque zone, liaisons. Le générateur déforme ces contours pour en faire des côtes naturelles (section 1.4) ; aucune île n'est un carré ni un rond.
 
 **Placement par climat.** Le Plan 2 donnait les voisinages ; la latitude de chaque île suit maintenant la logique d'un archipel terrestre de l'hémisphère nord, froid en haut, tropical en bas.
 
@@ -60,7 +65,7 @@ Ember, Petite Ember et Les Cendres sont alignées : c'est un **arc volcanique**,
 | 12 | swamp | **Saltmarsh** | marais | centre-sud-ouest |
 | 13 | Northern island 2 | **Frost Isle** | toundra et glacier | extrême nord |
 | 14 | savanna | **Tallgrass** | savane | sud-ouest, contre Redmesa |
-| îlots | petits contours autour des îles 4, 5 et 6 | Ironhook, Blackrock, les Jumelles, îlot du Navigateur, les Brisants, Rocher aux Mouettes, Les Cendres, Petite Ember | — | est et arc d'Ember |
+| îlots | petits contours autour des îles 4, 5 et 6 | Ironhook, Blackrock, îlot du Navigateur, les Brisants, Rocher aux Mouettes, Les Cendres, Petite Ember | — | est et arc d'Ember |
 | zone de mer | oil rigs, tentacle branch, variant | plateformes Sable-7, Sable-9 et Sable-4 | pleine mer | à l'est de Steelwater |
 | bonus | Nihon, Méditerranée | **Nihon** (hors carte) ; la Méditerranée est devenue l'île 11 | — | plus tard |
 
@@ -72,7 +77,9 @@ Ember, Petite Ember et Les Cendres sont alignées : c'est un **arc volcanique**,
 | Grayhaven | îlot à l'est, sous Eastbank | grande île de l'ouest, collée à Redmesa par le mur | proposé, d'après « forêt brûlée / aftermath » de l'île 1 |
 | Maple Hollow et Harvest Flats | sur Eastbank et sur Tallgrass | sur Hollowpine, au sud de la forêt de pins | proposé, d'après la « Neighborhood zone » de l'île 2 |
 | Zone industrielle et port de conteneurs | sur Eastbank | sur leur propre île, Steelwater | décision (île 5) |
-| Aéroport international | sur Eastbank | au nord de Steelwater | proposé |
+| Aéroports | un aéroport international sur Eastbank | trois : l'aéroport de Calder sur la Jumelle ouest, l'aéroport de fret de Steelwater, le petit aéroport d'Eastbank | décision (plans du 24 octobre 2022) |
+| Les Jumelles | deux îlots à part | deux terres de Calder : l'aéroport à l'ouest, le complexe sportif à l'est | décision (plan « Big City ») |
+| Blackrock | rocher à l'est de Calder | île « ? » du plan de la zone commerciale, au nord-est d'Eastbank ; l'îlot du Navigateur prend sa place à l'est de Calder | proposé |
 | Frost Isle | grande île du nord | île longue et basse de l'extrême nord, 12,8 km | décision (île 13) ; déplacée au nord le 28 novembre pour la cohérence du climat, à confirmer |
 | Ironhook | île moyenne | îlot fortifié au nord-est de Calder | proposé |
 | Halcyon Cay | îlot | île tropicale n° 8 | proposé |
@@ -112,8 +119,8 @@ La carte fait **48 km d'ouest en est et 49,2 km du nord au sud**, soit 24 000 ×
 | Tallgrass | Saltmarsh | gué |
 | Solana | Calder | pont suspendu |
 | Saltmarsh | Ember | ferry |
-| Calder | les Jumelles, puis Eastbank | ponts et métro |
-| Eastbank | Steelwater | pont routier et voie ferrée |
+| Calder | Eastbank, par la Jumelle est | pont et métro |
+| Eastbank | Steelwater | deux ponts : route et voie ferrée à l'ouest, second pont à l'est (plan « Comercial Zone ») |
 | Calder | Ironhook | digue fermée |
 | Hollowpine | Frost Isle | ferry du nord |
 | Calder | Highland Isle | ferry |
@@ -136,15 +143,18 @@ Le vaisseau personnel garde sa règle : voyage rapide entre repaires découverts
 | Relief | montagne et lac sur Hollowpine, glacier sur Frost Isle, falaises sur Highland Isle, mesas et canyons sur Redmesa, cône de 60 m et cratère de lave sur Ember, chenaux sur Saltmarsh |
 | Végétation | pins au nord, feuillus au centre, maquis sur Solana, palmiers et jungle au sud, palétuviers dans The Shallows, arbres brûlés sur Grayhaven |
 | Zones bâties | chaque zone a une ancre et un type (camp, village, ville, industrie, ruines, métropole) : rues, murs, toits, tours. Calder a une grille d'avenues, un parc central et des tours de 20 à 130 m |
+| Îles en plusieurs terres | une île peut avoir plusieurs terres (`parts`) : Calder et ses deux Jumelles, Steelwater, son île du nord-est et ses deux îles-barrières. Une île relevée sur un plan détaillé (`fidelity`) garde un rivage proche du plan |
+| Lieux nommés | `app/game/isles/islesArchipelagoFeaturesV1.ts` : vingt lieux construits tuile par tuile (aéroport, aérodrome, stades, circuit et Big Ball, lac et barrage, parc, quartier résidentiel, marina, jetée, port à conteneurs, raffinerie, zoo, parc d'attractions, parc aquatique, parking aérien, centre commercial, phare, prison, plage, chantier), orientables par un angle |
+| Routes et ponts | toutes les zones d'une île sont reliées par le plus court réseau, plus les routes ajoutées d'après les plans ; chaque pont, digue ou poste des liaisons (section 1.3) devient un tablier de 14 m juste au-dessus de l'eau, chaque gué une bande d'eau peu profonde. Les routes sont planes : le relief est entaillé puis remonte sur 80 m de chaque côté. On va à pied de Calder à Steelwater |
 | Carte | touche M : l'archipel entier, le nom des îles, la position ; un clic sur une terre y transporte le Predator (outil de repérage de cette étape, il deviendra le voyage par vaisseau) |
 | Affichage | île, biome, zone, position en kilomètres |
 
 **Ce qui n'est pas encore fait.**
 
 - La chasse libre (gibier, primes, honneur, missions) tourne toujours sur la carte à part de Verdant (2 km). Dans l'archipel entier on se déplace, on grimpe, on nage et on se camoufle, mais le monde n'est pas encore peuplé.
-- Les zones sont des gabarits génériques par type : les lieux nommés des sections 3 à 18 (lycée, stade, aéroport, prison…) ne sont pas encore construits un par un.
-- Le relief est comprimé : le plus haut sommet fait environ 70 m, contre 130 m pour les tours de Calder.
-- Ponts, digues et gués des liaisons ne sont pas tracés ; on passe d'une île à l'autre à la nage ou par la carte.
+- Hors de Calder, d'Eastbank, de Steelwater et de Blackrock, les zones sont des gabarits génériques par type : leurs lieux nommés (lycée, mine, station polaire…) ne sont pas encore construits un par un.
+- Le relief est comprimé : le plus haut sommet, sur Calder, fait une centaine de mètres, contre 130 m pour ses tours.
+- Les routes sont tracées automatiquement (voir ci-dessous) : sur les trois îles détaillées elles relient les mêmes zones que vos plans, sans en suivre le tracé exact. Ferries, bateaux, navettes, métro et lignes d'avion ne sont pas encore jouables.
 - Pas de niveau de détail lointain : on voit 3 zones (192 m) autour de soi. Les performances n'ont été mesurées que sur le rendu logiciel de la recette, pas sur une vraie carte graphique.
 
 ---
@@ -410,23 +420,40 @@ Note d'origine : « Old farwest town ».
 
 ## 7. Île 4 — Calder, la grande ville
 
-**Note d'origine :** « Big city », avec la grille de rues du « Plan ». Les huit quartiers sont décrits dans [l'extension](ISLES_EXTENSION_METROPOLE_QUARANTAINE_20261122.md), section 3. Ce tableau ajoute les sous-zones des notes.
+**Note d'origine :** plan « Big City » du 24 octobre 2022. L'île fait environ 12 × 15 km. Une montagne et son lac de retenue occupent le nord, une ligne de collines borde l'est ; la ville elle-même tient en deux ensembles, le centre d'affaires au milieu de l'île et la grille de rues au sud. À l'ouest, une presqu'île porte Richou, son quartier riche et sa marina. Au sud, deux îles proches, les Jumelles, portent l'aéroport et le complexe sportif. Les huit quartiers de la grille sont décrits dans [l'extension](ISLES_EXTENSION_METROPOLE_QUARANTAINE_20261122.md), section 3.
 
-- **Repère :** la tour Hale.
+- **Repère :** la tour Hale, dans le centre d'affaires.
 - **Factions :** police, deux gangs (les Docks et les Hauteurs), cartel, sécurité privée.
 - **Apex :** aucun ; humains seulement.
 - **Repaire :** aucun vaisseau à Calder ; un toit-refuge à découvrir dans The Heights.
 
+**Du plan au monde généré**
+
+| Repère du plan | Zone | Ce que le générateur construit |
+| --- | --- | --- |
+| « Big Ball / The Racing Track » | 4.14 | dôme de 39 m au centre d'un circuit fermé à virages, stand le long de la ligne droite, parkings |
+| montagne et lac, « Dam is a big city » | 4.9 | relief jusqu'à une centaine de mètres, lac de retenue de 1 km fermé par un barrage de 18 m, cité du barrage en aval |
+| « Construction site / old city » | 4.15 | ossatures de poteaux à hauteurs variées, palissades, grue de 45 m, îlots de la vieille ville en ruine |
+| « Centre d'affaire » | 4.1 | grille de rues et tours de 12 à 130 m |
+| « Richou residential » | 4.11 | villas avec jardin, une sur trois avec piscine |
+| « Richou marina » | 4.12 | quais bâtis, pontons parallèles sur l'eau, bateaux à l'amarre |
+| grille de rues | 4.2, 4.3, 4.5 à 4.8 | six quartiers en grille, avenues, immeubles, squares |
+| parc du centre | 4.4 | pelouses, allées en croix, étang, arbres |
+| « Big city beach » | 4.13 | 1,2 km de sable et de palmiers, promenade, rangée d'hôtels de 18 à 45 m |
+| « underground » | 4.10 | point d'entrée seulement ; le dessous n'est pas encore généré |
+| « Big city airport » | 4.16 | piste de 1,4 km, voie de circulation, tarmac, terminal, hangars, tour de contrôle de 36 m, parking |
+| « Parking », « Stade Baseball », « Sportif Complex » | 4.17 | stade de football américain à gradins, stade de baseball et son losange, petit terrain clos, parkings |
+
 | Zone | Sous-zone | Contenu | Qui y est | Jeu | Origine |
 | --- | --- | --- | --- | --- | --- |
-| 4.1 Downtown | Gratte-ciel | tours de bureaux, halls, étages techniques, tour Hale | sécurité privée, employés (civils) | chasse de toit en toit au grappin | notes (« skyscaper city ») |
+| 4.1 Downtown, le centre d'affaires | Gratte-ciel | tours de bureaux, halls, étages techniques, tour Hale | sécurité privée, employés (civils) | chasse de toit en toit au grappin | notes (« skyscaper city ») |
 | | Banque et chambre forte | hall, guichets, salle des coffres au sous-sol | sécurité ; braqueurs pendant l'événement | événement « braquage en cours » | notes (« bank vault ») |
 | | Penthouse | appartement-terrasse au sommet d'une tour, piscine, héliport | chef de cartel et ses gardes | cible de prime ; arrivée par le toit | notes |
 | 4.2 Old Harbor | Quais et entrepôts de brique | marché aux poissons, pub, musée maritime | les Docks | caves et tunnels de contrebande | Bible |
 | | Complexe de viande | abattoir, chambres froides, quai de chargement | bouchers (civils), gardes | **source de viande** du joueur ; l'OWLF peut y tendre un piège | notes (« meat complex », « slaughterhouse ») |
 | 4.3 Midtown | Centre et petit parc | Lumen Square, gare centrale, square arboré | foule (civils), police | presque impossible de jour | notes (« center of the big city with a little park ») |
 | | Calder Arena | salle de basket et de hockey au-dessus de la gare | public (civil) | passerelles techniques | Bible |
-| 4.4 Commons Park | Grand parc | lac, bois, zoo, kiosque | civils, police montée | canopée urbaine | Bible |
+| 4.4 Commons Park | Grand parc | étang, bois, kiosque (le zoo est sur Eastbank, section 9) | civils, police montée | canopée urbaine | Bible |
 | | Cimetière | allées, caveaux, chapelle | fossoyeur (civil) ; cartel la nuit | échange nocturne entre les tombes | notes (« cemetary ») |
 | 4.5 Uptown | Immeubles et musées | musée d'histoire, université | sécurité, civils | toits résidentiels ; musée fermé la nuit | Bible |
 | | Appartements visitables | salon, cuisine, chambre, escalier de secours | habitants (civils) ; une cible | approche par l'escalier de secours | notes (« apartment interior ») |
@@ -440,10 +467,20 @@ Note d'origine : « Old farwest town ».
 | | Ruelle sombre | impasse, bennes, sortie de secours | dealers, acheteurs | événement « vente d'armes » | notes (« dark alley », « back alley ») |
 | | Motel | motel de passage sous l'autoroute | clients (civils), un indicateur | cible dans une chambre | notes |
 | | Chantier | immeuble en construction, grue, échafaudages | ouvriers (civils) le jour ; gang la nuit | combat sur les poutres | notes (« construction site ») |
-| 4.9 Les collines du nord | Collines et lac | relief du « Plan » : hauteurs boisées, lac de retenue, routes en lacets, villas | sécurité privée, civils | seul coin de nature de l'île ; vue sur toute la ville | notes (relief du « Plan ») |
+| 4.9 Les collines du nord, le lac et le barrage | Montagne et lac | montagne boisée, lac de retenue, routes en lacets | gardes forestiers, civils | vue sur toute l'île | notes (plan « Big City ») |
+| | Barrage et cité du barrage | mur de 18 m, salle des turbines, galerie de visite ; petite ville en aval (« Dam is a big city ») | techniciens (civils), sécurité privée | couper le courant de Calder ; chute depuis la crête | notes |
 | | Aérodrome privé | piste courte, hangars | pilotes, gardes | fuite d'une cible en avion | proposé |
 | 4.10 Le dessous de Calder | Métro | stations, rames, tunnels, dépôt | usagers (civils), police | événements « attaque de punks » et « prise d'otages » | notes (« metro », « train ») |
-| | Souterrains | égouts, parkings, anciens tunnels de contrebande | sans-abri (civils), contrebandiers | réseau complet sous la ville | notes (« underground ») |
+| | Souterrains | égouts, parkings, anciens tunnels de contrebande, tunnels routiers | sans-abri (civils), contrebandiers | réseau complet sous la ville | notes (« underground », « modular tunnels ») |
+| 4.11 Richou, quartier résidentiel | Villas | maisons modernes, jardins, piscines, portails, rues en courbe | habitants riches (civils), sécurité privée | cible de prime chez elle ; alarmes et chiens | notes (« Richou residential », « modern house ») |
+| 4.12 Marina de Richou | Pontons et capitainerie | pontons, yachts, club nautique, restaurant du port | plaisanciers (civils), gardes d'un yacht | « boat departure in dock » : une cible s'enfuit par bateau | notes (« Richou marina ») |
+| 4.13 Calder Beach | Plage et front de mer | longue plage, postes de secours, promenade, hôtels, skatepark | baigneurs (civils), police de plage | foule le jour ; déserte la nuit | notes (« Big city beach », « long seaside », « skatepark ») |
+| 4.14 Le Big Ball et le circuit | Big Ball | grande salle en dôme : hockey, basket, concerts | public (civil), sécurité | passerelles sous la voûte | notes (« Big Ball », « hockey stadium », « basketball stadium ») |
+| | Circuit | piste, stands, tribune, paddock | pilotes et public (civils) | « racing circuit with course in progress » : traverser la piste pendant une course | notes |
+| 4.15 Le chantier et la vieille ville | Chantier | tours en construction, grue, échafaudages, bungalows | ouvriers (civils) le jour ; gang la nuit | combat sur les poutres | notes (« construction site ») |
+| | Vieille ville | rues étroites, immeubles murés, cinéma à devanture ancienne, musée historique | squatteurs, gang | embuscades de ruelle | notes (« old city », « cinéma », « historical museum ») |
+| 4.16 Aéroport de Calder (Jumelle ouest) | Terminal, pistes et tour | piste, terminal, hangars, tour de contrôle, parking | voyageurs (civils), police | lignes d'avion vers les autres aéroports (section 7.2) ; très surveillé | notes (« Big city airport ») |
+| 4.17 Complexe sportif des Jumelles (Jumelle est) | Stades et parkings | stade de football américain (70 000 places), stade de baseball (40 000 places), petit terrain de baseball, courts de tennis, parkings, station de métro | public (civil) les soirs de match | interdits au combat les jours de match ; vides la nuit | notes (« Stade Baseball », « Sportif Complex », « Parking », « tennis court ») |
 
 ### 7.1 Événements de la grande ville
 
@@ -461,62 +498,116 @@ Note d'origine : « Old farwest town ».
 | Tour de bureaux | prise d'otages d'employés | idem |
 | Rue | poursuite en voiture, tireurs armés | les tireurs sont des proies ; attention aux passants |
 
+### 7.2 Autres lieux de la liste « Big City »
+
+| Lieu des notes | Où | Statut |
+| --- | --- | --- |
+| Gare routière avec entrée de métro (deux modèles) | centre d'affaires (4.1) et sortie du dessous de Calder (4.10) | à construire |
+| Bureaux, bibliothèque moderne | centre d'affaires (4.1) | à construire (intérieurs) |
+| Commissariats | un par quartier de la grille | à construire |
+| Parkings modulaires, station-service, péage routier | entrées de la grille et tête des ponts | à construire |
+| Boîte de nuit dans une usine | Riverside (4.8) | à construire |
+| Lignes d'avion : « industrial ⇒ commercial ⇒ neighbor ⇒ old town ⇒ desert » | aéroport de Calder → Steelwater → Eastbank → Maple Hollow → Ashgrove → Redmesa | à construire ; les pistes de Calder, de Steelwater et d'Eastbank existent |
+| Départ de bateaux au dock, départ de camions à l'usine | marina de Richou (4.12), Steelwater (5.3) | à construire |
+
 ---
 
 ## 8. Île 5 — Steelwater, la zone industrielle
 
-**Note d'origine :** « Industrial zone », île « LAND_IND » du « Plan » : une île longue, bordée à l'ouest de fines îles-barrières.
+**Note d'origine :** plan « Industrial zone » du 24 octobre 2022. L'île fait environ 9 km. Le corps principal descend du nord-ouest au sud-est ; une presqu'île à l'ouest porte le phare, une île au nord-est est reliée par un pont, et deux îles-barrières ferment le port à l'ouest : celle de l'aéroport et une longue langue au sud. Les trois plateformes sont au large, à l'est.
 
-- **Repère :** les portiques du port de conteneurs.
+- **Repère :** les portiques du port et la torchère de la raffinerie.
 - **Faction :** les Docks (trafics), sécurité privée, douane.
 - **Apex :** aucun.
-- **Repaire :** une cale sèche désaffectée.
+- **Repaire :** une cale sèche désaffectée du port.
+
+**Du plan au monde généré**
+
+| Repère du plan | Zone | Ce que le générateur construit |
+| --- | --- | --- |
+| « Phare » | 5.9 | phare de 33 m sur sa pointe rocheuse, maison du gardien |
+| « WareHouse Zone » | 5.1 | grands entrepôts de 9 à 15 m sur une trame de rues |
+| « Container Zone » | 5.7 | piles de conteneurs sur un à quatre niveaux, allées, portiques de 33 m |
+| « Meat Factory » | 5.3 | usines et halles |
+| « WareHouse Zone 02 » | 5.4 | entrepôts et ateliers |
+| « Port » | 5.2 | terre-plein de conteneurs et portiques le long du chenal |
+| « Airport » | 5.5 | piste de 680 m sur l'île-barrière, hangars, petite tour |
+| « Heavy Industrial Oil Raffinary » | 5.8 | cuves rondes, colonnes de 24 à 42 m, conduites, torchère de 48 m |
+| île du nord-est (sans nom sur le plan) | 5.10 | entrepôts ; le hangar du vaisseau caché des notes |
+| langue de terre du sud | 5.6 | île-barrière |
+| « Oil Rig 01, 02, 03 » | zone de mer | trois plateformes sur pilotis (section 8.1) |
 
 ### 5.1 Zone des entrepôts
 
 | Sous-zone | Contenu | Qui y est | Hauteurs et dessous | Jeu | Origine |
 | --- | --- | --- | --- | --- | --- |
 | Entrepôt 1 (en chantier) | charpente métallique nue, échafaudages, matériaux, bungalows de chantier | ouvriers (civils) le jour ; trafiquants la nuit | poutres, échafaudages | combat en hauteur | notes |
-| Centre de nettoyage de citernes | cuves, portiques de lavage, fosses, camions-citernes | employés (civils), deux gardes | passerelles au-dessus des cuves | vapeur et eau : le camouflage se voit | notes (« tank cleaning zone ») |
 | Entrepôt 2 (stockage) | rayonnages hauts, chariots élévateurs, quais de chargement, bureau vitré | caristes (civils), receleurs | rayonnages (trois niveaux) | cache d'armes ; labyrinthe de palettes | notes |
+| Grande distribution | plateforme logistique d'une enseigne, quais à camions | chauffeurs (civils), vigiles | toits plats | « big retail, style metro retailer » | notes |
 
-### 5.2 Zone portuaire
+### 5.2 Le port
 
 | Sous-zone | Contenu | Qui y est | Hauteurs et dessous | Jeu | Origine |
 | --- | --- | --- | --- | --- | --- |
-| Port de conteneurs | terminaux, portiques, piles de conteneurs, navires à quai | dockers (civils), les Docks, douane | portiques à escalader | labyrinthe ; vedette (Chasse inversée) | notes (« port container »), Bible |
+| Quais et bassins | quais, bittes, grues, porte-conteneurs à quai | dockers (civils), les Docks, douane | grues et ponts des navires | vedette (Chasse inversée) ; monter à bord d'un navire | notes (« harbor », « port », « container ships ») |
 | Douane et capitainerie | bureaux, scanner à camions, tour de contrôle du port | douaniers armés | tour | voler les manifestes révèle les trafics | proposé |
 | Cale sèche | bassin vide, coque en réparation | personne la nuit | coque, grues | **repaire** de l'île | proposé |
 
-### 5.3 Quartier des usines
+### 5.3 Usine de viande et quartier des usines
 
 | Sous-zone | Contenu | Qui y est | Hauteurs et dessous | Jeu | Origine |
 | --- | --- | --- | --- | --- | --- |
-| Rues d'usines | usines de brique, cheminées, voies de fret, wagons | ouvriers (civils), sécurité privée | cheminées, toits en dents de scie | peu de civils la nuit | notes (« factory district ») |
+| Usine de viande | abattoir, chaîne de découpe, chambres froides, quai des camions frigorifiques | ouvriers (civils), gardes | rails à crochets, toit | **source de viande** du joueur ; froid qui trahit moins la chaleur | notes (« meat factory ») |
+| Chaîne automobile | ligne d'assemblage, robots, parc de voitures neuves | ouvriers (civils), sécurité privée | convoyeurs, ponts roulants | convoyeurs en marche | notes (« automobile assembly line ») |
+| Usine de camions | halls, cabines en cours de montage, « truck departure in factory » | ouvriers (civils), un passeur | charpente | suivre un camion jusqu'à sa livraison | notes (« truck factory ») |
 | Centrale électrique | salle des machines, transformateurs, tour de refroidissement | techniciens (civils), gardes | tour | couper le courant de l'île | Bible |
-| Station d'épuration, casse auto, cimenterie | bassins, piles d'épaves, silos | ferrailleurs armés à la casse | silos, grue de la casse | casse : presse qui écrase une épave où l'on se cache | Bible |
 
-### 5.4 Zone d'usine
-
-| Sous-zone | Contenu | Qui y est | Hauteurs et dessous | Jeu | Origine |
-| --- | --- | --- | --- | --- | --- |
-| Atelier abandonné | établis, machines-outils rouillées, verrière brisée | squatteurs, gang | verrière | embuscade par le toit | notes (« workshop ») |
-| Usine | chaîne de montage, convoyeurs, salle de contrôle, vestiaires | ouvriers (civils), contremaîtres armés liés aux Docks | convoyeurs, ponts roulants | convoyeurs en marche | notes (« factory ») |
-| Motel des routiers | motel au bord de la zone, parking de camions | routiers (civils), un passeur | toit | cible de prime de passage | notes (« motel2 ») |
-
-### 5.5 Aéroport international
+### 5.4 Entrepôts sud et zone d'usine
 
 | Sous-zone | Contenu | Qui y est | Hauteurs et dessous | Jeu | Origine |
 | --- | --- | --- | --- | --- | --- |
-| Terminal | hall, portiques de sécurité, salles d'embarquement | voyageurs (civils), police | toit | zone très surveillée | Bible |
-| Pistes et hangars | pistes, hangars de maintenance, fret | mécaniciens (civils), sécurité | hangars | hangars de nuit ; avion d'une cible | Bible |
-| Tour de contrôle | vigie, salle radar | contrôleurs (civils) | sommet (point de vue) | révèle la carte | Bible |
+| Entrepôt 3 | silos, hangars réfrigérés, stockage de produits | caristes (civils), receleurs | silos | « stockage product : refregirator, silo, hangar » | notes |
+| Atelier abandonné | établis, machines-outils rouillées, verrière brisée | squatteurs, gang | verrière | embuscade par le toit | notes (« old factory ») |
+| Parc à camions | parking de poids lourds, station de lavage, stock | routiers (civils) | toits des remorques | « truck stockage : wash, stock » | notes |
+| Centre de nettoyage de citernes | cuves, portiques de lavage, fosses, camions-citernes | employés (civils), deux gardes | passerelles au-dessus des cuves | vapeur et eau : le camouflage se voit | notes (« tank cleaner ») |
+| Motel des routiers | motel au bord de la zone | routiers (civils), un passeur | toit | cible de prime de passage | notes |
+
+### 5.5 Aéroport de fret
+
+| Sous-zone | Contenu | Qui y est | Hauteurs et dessous | Jeu | Origine |
+| --- | --- | --- | --- | --- | --- |
+| Piste et hangars | piste, hangars d'avions, fret, citernes de carburant | mécaniciens (civils), sécurité | hangars | hangars de nuit ; avion d'une cible ; escale des lignes d'avion | notes (« Airport », « airplane hangar ») |
 
 ### 5.6 Îles-barrières
 
 | Sous-zone | Contenu | Qui y est | Hauteurs et dessous | Jeu | Origine |
 | --- | --- | --- | --- | --- | --- |
-| Bancs de sable | deux langues de sable et de roche, feux de navigation, épaves de barges | oiseaux marins, contrebandiers en canot | feux de navigation | approche discrète du port par l'ouest | notes (relief du « Plan ») |
+| Langue du sud | sable et roche, feux de navigation, épaves de barges | oiseaux marins, contrebandiers en canot | feux de navigation | approche discrète du port par l'ouest | notes (plan « Industrial zone ») |
+
+### 5.7 Zone des conteneurs
+
+| Sous-zone | Contenu | Qui y est | Hauteurs et dessous | Jeu | Origine |
+| --- | --- | --- | --- | --- | --- |
+| Parc à conteneurs | piles de conteneurs, portiques, cavaliers, voies ferrées | dockers (civils), les Docks | sommet des piles, portiques | labyrinthe ; conteneur piégé | notes (« container stockage ») |
+
+### 5.8 Raffinerie lourde
+
+| Sous-zone | Contenu | Qui y est | Hauteurs et dessous | Jeu | Origine |
+| --- | --- | --- | --- | --- | --- |
+| Raffinerie et usine chimique | colonnes de distillation, cuves, conduites, torchère, salle de contrôle | opérateurs (civils), sécurité privée | colonnes, passerelles | le plasma près des cuves déclenche un incendie ; fumée qui gêne la vue thermique | notes (« oil refinery », « chemical plant ») |
+| Carrière | front de taille, concasseur, tapis | ouvriers (civils) | gradins de roche | tirs de mine à heures fixes | notes (« quarry ») |
+
+### 5.9 Le phare
+
+| Sous-zone | Contenu | Qui y est | Hauteurs et dessous | Jeu | Origine |
+| --- | --- | --- | --- | --- | --- |
+| Phare | tour, lanterne, maison du gardien, ponton | gardien (civil) | lanterne (point de vue) | révèle la carte de l'île ; le plan note « ? Phare » : la prison citée en tête de liste est Blackrock (section 18) | notes |
+
+### 5.10 L'île du hangar caché
+
+| Sous-zone | Contenu | Qui y est | Hauteurs et dessous | Jeu | Origine |
+| --- | --- | --- | --- | --- | --- |
+| Hangar du vaisseau | entrepôt gardé ; un vaisseau y est caché | ARGOS, sécurité privée | charpente | récupérer ou détruire le vaisseau | notes (« warehouse, hidden ship inside an hangar ») ; placement proposé |
 
 ### 8.1 Zone de mer : les plateformes
 
@@ -530,22 +621,44 @@ Note d'origine : « Old farwest town ».
 
 ## 9. Île 6 — Eastbank, la zone commerciale
 
-**Note d'origine :** « Comercial Zone ». Les Jumelles, entre Calder et Eastbank, portent les stades.
+**Note d'origine :** plan « Comercial Zone » du 24 octobre 2022. L'île fait environ 6 × 5 km. Une boucle de route en fait le tour ; des hauteurs bordent le nord et l'est. Un pont la relie au nord à la Jumelle est de Calder, deux ponts au sud à Steelwater.
 
 - **Repère :** la grande roue de Gull Pier.
 - **Faction :** sécurité des commerces ; gangs la nuit.
-- **Apex :** aucun.
+- **Apex :** aucun en liberté ; les fauves du zoo.
 - **Repaire :** le local technique de la grande roue.
+
+**Du plan au monde généré**
+
+| Repère du plan | Zone | Ce que le générateur construit |
+| --- | --- | --- |
+| « Commercial store pier » | 6.4 | jetée de 600 m au-dessus de l'eau, stands, plate-forme, grande roue de 30 m |
+| « Parking aerial » | 6.6 | parking à étages de 15 m, rangée de boutiques, parkings |
+| « Commercial Zone Shop » | 6.1 | centre commercial de 600 m de long, deux grands magasins, parkings, route de ceinture |
+| « Zoo » | 6.2 | enclos murés avec bassin, rocher ou bosquet, allées |
+| « sewer hole » | 6.9 | point d'entrée seulement |
+| « Water Park » | 6.5 | bassins, rivière en anneau, tour et toboggan |
+| « Amusement Park » | 6.3 | montagnes russes sur pylônes, carrousel, grande roue, stands |
+| « Little Airport » | 6.7 | piste de 680 m, hangars, petite tour |
+| « Mountain » (nord et est) | 6.8 | relief d'une trentaine de mètres |
 
 | Zone | Sous-zone | Contenu | Qui y est | Jeu | Origine |
 | --- | --- | --- | --- | --- | --- |
-| 6.1 Bayview, centre commercial | Galerie marchande | deux étages, verrière, boutiques, aire de restauration, parking couvert | clients (civils), vigiles | fermé la nuit : terrain de chasse vide et éclairé | notes (« shopping mall »), Bible |
-| | Grandes surfaces et drive-in | hypermarché, parkings immenses, multiplexe, drive-in | civils | toits plats immenses | Bible |
-| 6.2 Le grand parc | Parc | pelouses, lac, amphithéâtre de plein air, serres | promeneurs (civils) | concerts : foule | notes (« big park ») |
-| 6.3 Parc d'attractions et Gull Pier | Parc d'attractions | montagnes russes en bois, carrousel, maison des miroirs, train fantôme | forains et visiteurs (civils) ; gang la nuit | combats sur les rails, dans le noir, parmi les miroirs | notes (« park tycoon »), Bible |
-| | Gull Pier | ponton de 600 m, grande roue, stands, aquarium, arcade | idem | Chasse inversée « Gull Pier de nuit » | Bible |
-| 6.4 Ville commerçante | Rue commerçante | boutiques, cafés, cinéma, hôtel, marché couvert | civils, police | cible suivie dans la foule | notes (« commercial town ») |
-| 6.5 Les stades | Harbor Park et Calder Stadium | baseball (40 000 places) et football (70 000 places), sur les Jumelles | public (civil) les soirs de match | interdits au combat les jours de match | Bible |
+| 6.1 Bayview, le grand centre commercial | Galerie marchande | deux étages, verrière, boutiques de vêtements, téléphonie, aire de restauration | clients (civils), vigiles | fermé la nuit : terrain de chasse vide et éclairé | notes (« big shopping mall », « hall stores », « modern clothes shop », « mobile shop ») |
+| | Grandes surfaces | hypermarché, concessionnaire automobile, magasins de scooters et de BMX, station de lavage, station-service | civils | toits plats immenses | notes (« car dealer », « scooter shop », « bmx store », « car wash box », « gas station ») |
+| 6.2 Le zoo et le grand parc | Zoo | enclos des fauves, volière, bassin des otaries, vivarium | visiteurs (civils), soigneurs ; **fauves** | ouvrir un enclos lâche un prédateur dans l'île ; les fauves sont des proies dignes | notes (« zoo ») |
+| | Grand parc | pelouses, lac, amphithéâtre de plein air, serres | promeneurs (civils) | concerts : foule | notes (« big park ») |
+| 6.3 Parc d'attractions | Manèges | montagnes russes, carrousel, maison des miroirs, train fantôme | forains et visiteurs (civils) ; gang la nuit | combats sur les rails, dans le noir, parmi les miroirs | notes (« amusement park ») |
+| 6.4 Gull Pier et les boutiques du front de mer | Gull Pier | jetée de 600 m, grande roue, stands, aquarium, arcade | forains et visiteurs (civils) | Chasse inversée « Gull Pier de nuit » | notes (« Commercial store pier »), Bible |
+| | Front de mer | magasins généraux, café, restaurant, bibliothèque | civils, police | cible suivie dans la foule | notes (« general stores », « coffee shop », « restaurant », « library ») |
+| 6.5 Parc aquatique | Bassins et toboggans | piscine à vagues, rivière lente, tour des toboggans, vestiaires | baigneurs (civils), maîtres-nageurs | l'eau trahit le camouflage ; fermé la nuit | notes (« waterpark ») |
+| 6.6 Parking aérien et rue commerçante | Parking à étages | rampes, niveaux ouverts, toit | clients (civils) ; dealers la nuit | étages ouverts : tir d'un niveau à l'autre | notes (« Parking aerial ») |
+| | Rue commerçante | boutiques, cinéma, hôtel, marché couvert | civils, police | toits bas continus | notes (« commercial town ») |
+| 6.7 Petit aéroport d'Eastbank | Aérodrome | piste courte, hangars, aéroclub | pilotes (civils), gardes d'un jet privé | fuite d'une cible en avion ; escale des lignes d'avion | notes (« Little Airport ») |
+| 6.8 Les hauteurs | Collines | crêtes boisées au nord et à l'est, belvédère, antenne | randonneurs (civils) | seul point de vue sur toute l'île ; approche à couvert | notes (« Mountain ») |
+| 6.9 Bouche d'égout et collecteurs | Égouts | collecteur central sous la boucle, sorties vers la mer | sans-abri (civils), contrebandiers | traverser l'île sans être vu | notes (« sewer hole ») |
+
+Les stades, que la fiche plaçait sur Eastbank, sont sur la Jumelle est de Calder (zone 4.17).
 
 ---
 
@@ -722,8 +835,7 @@ Note d'origine : « Old farwest town ».
 | Îlot | Contenu | Qui y est | Jeu | Origine |
 | --- | --- | --- | --- | --- |
 | **Ironhook** | îlot fortifié : base, chantier naval, abri de sous-marins, laboratoire ARGOS, piste, hôpital et prison militaires, radars, digue vers Calder | garnison, ARGOS | entrer met l'alerte à 3 ; siège d'Ironhook, sommet du mode | Bible |
-| **Blackrock** | prison fédérale sur un rocher : blocs, cour, phare de garde | gardiens armés, prisonniers (interdits, sauf mutins armés) | mutinerie | Bible |
-| **Les Jumelles** | deux îlots et leur lagon : Harbor Park, Calder Stadium, parkings, station de métro | public (civil) les soirs de match | stades vides la nuit : terrain de chasse | notes (relief du « Plan »), Bible |
+| **Blackrock** (zone B.1 Prison fédérale de Blackrock) | prison fédérale sur l'île « ? » du plan de la zone commerciale : mur d'enceinte de 6 m, miradors, deux blocs, cour | gardiens armés, prisonniers (interdits, sauf mutins armés) | mutinerie | Bible |
 | **Îlot du Navigateur** | statue, esplanade, petit musée | touristes (civils) | point de vue sur la baie | Bible |
 | **Les Brisants** | rochers entre Eastbank et Steelwater, balise | — | passage à la nage ; cache | proposé |
 | **Rocher aux Mouettes** | îlot nu, cabane de pêcheur | contrebandiers | rendez-vous en canot | proposé |
@@ -783,7 +895,8 @@ Les trois modes avec des xénomorphes touchent à la décision « présent fixe,
 3. **Maple Hollow et Harvest Flats sur Hollowpine**, d'après la « Neighborhood zone » de l'île 2.
 4. **Frost Isle à l'extrême nord et Highland Isle au nord-est** : le Plan 2 les plaçait au centre ; elles ont été déplacées pour que le climat soit cohérent. À confirmer.
 5. **Ironhook en îlot** au nord-est de Calder, et **Halcyon Cay en île 8**.
-6. **Aéroport international sur Steelwater.**
+6. **Trois aéroports** (Calder, Steelwater, Eastbank) et l'ordre des lignes d'avion de la section 7.2.
+12. **Blackrock sur l'île « ? »** du plan de la zone commerciale, et **l'île du nord-est de Steelwater** comme hangar du vaisseau caché.
 7. **Contenu de Solana et de Highland Isle**, presque entièrement proposé.
 8. **Modes avec xénomorphes** (Infection Control, Xeno invasion) et **BR Mode** : à garder ou non.
 9. **Échelle ×4** (48 × 49 km) : à confirmer, ou choisir plus petit (×2, 24 km) ou plus grand.

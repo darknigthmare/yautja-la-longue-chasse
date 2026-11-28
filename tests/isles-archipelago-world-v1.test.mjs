@@ -54,7 +54,7 @@ test('the cache of computed zones stays bounded while travelling across the map'
 });
 
 test('every island of the plan exists, with every zone anchored on land near a walkable spot', () => {
-  assert.equal(world.sites.length, source.islands.reduce((s, i) => s + i.zones.length, 0) + source.chain.zones.length);
+  assert.equal(world.sites.length, source.islands.reduce((s, i) => s + i.zones.length, 0) + source.chain.zones.length + source.islets.reduce((s, i) => s + (i.zones?.length ?? 0), 0));
   for (const site of world.sites) {
     const [tx, tz] = A.tileAtV1(map, site.x, site.z);
     const place = world.placeAt(site.x, site.z);
@@ -130,4 +130,79 @@ test('the hunter can walk and climb on the streamed world', () => {
   for (let i = 0; i < 600; i++) actor = A.stepIslesActorV1(actor, {moveX: 1, moveZ: 0.3, run: true, jump: false, cloak: false}, map, tuning.movement, tuning.cloak, 1 / 60).actor;
   assert.ok(Math.hypot(actor.x - start.x, actor.z - start.z) > 10, 'le chasseur avance ou grimpe : ' + JSON.stringify([actor.x - start.x, actor.y]));
   assert.ok(Number.isFinite(actor.y));
+});
+
+/** Tiles of a square of `half` tiles around a zone anchor, sampled every `step`. */
+function around(id, half, step = 2) {
+  const site = world.sites.find(item => item.id === id), [cx, cz] = A.tileAtV1(map, site.x, site.z), tiles = [];
+  for (let z = cz - half; z <= cz + half; z += step) for (let x = cx - half; x <= cx + half; x += step) tiles.push(world.tileAt(x, z));
+  return tiles;
+}
+const share = (tiles, test) => tiles.filter(test).length / tiles.length;
+
+test('the three detailed plans: several lands per island, each zone on its own land', () => {
+  for (const [id, parts] of [['calder', 2], ['steelwater', 3], ['eastbank', 0]]) {
+    assert.equal(island(id).parts?.length ?? 0, parts, id);
+    assert.equal(island(id).fidelity, true);
+  }
+  // The two Jumelles are lands of Calder, cut from it by water.
+  const airport = world.sites.find(site => site.id === '4.16'), riverside = world.sites.find(site => site.id === '4.8');
+  assert.equal(world.placeAt(airport.x, airport.z).islandId, 'calder');
+  let sea = 0;
+  for (let k = 0; k <= 400; k++) if (world.tileAt(Math.round((airport.x + (riverside.x - airport.x) * k / 400) / 2), Math.round((airport.z + (riverside.z - airport.z) * k / 400) / 2)).kind === 'water') sea++;
+  assert.ok(sea >= 3, 'un bras de mer sépare la Jumelle ouest de Calder : ' + sea);
+});
+
+test('named places of the plans are built: runway, stadium, reservoir and dam, refinery, port, pier', () => {
+  const runway = around('4.16', 60);
+  assert.ok(share(runway, t => t.kind === 'road') > 0.15 && share(runway, t => t.kind === 'water') === 0, 'piste de l’aéroport de Calder');
+  assert.ok(around('4.16', 200, 4).some(t => t.kind === 'pillar' && t.height === 36), 'tour de contrôle');
+  const stadium = around('4.17', 130, 3);
+  assert.ok(stadium.some(t => t.kind === 'building' && t.height >= 24) && share(stadium, t => t.kind === 'grass') > 0.05, 'gradins et pelouses');
+  const lake = around('4.9', 130, 3);
+  assert.ok(share(lake, t => t.kind === 'water') > 0.2 && around('4.9', 260, 2).some(t => t.kind === 'wall' && t.height === 18), 'lac de retenue et barrage');
+  assert.ok(around('4.14', 60, 2).some(t => t.kind === 'building' && t.height >= 33), 'le Big Ball');
+  const refinery = around('5.8', 150, 3);
+  assert.ok(refinery.some(t => t.kind === 'pillar' && t.height >= 24) && share(refinery, t => t.kind === 'building') > 0.05, 'cuves et colonnes de la raffinerie');
+  assert.ok(share(around('5.2', 100, 2), t => t.kind === 'crate') > 0.15, 'piles de conteneurs du port');
+  assert.ok(around('5.9', 6, 1).some(t => t.kind === 'pillar' && t.height === 33), 'phare');
+  assert.ok(share(around('6.1', 60, 3), t => t.kind === 'building') > 0.5, 'centre commercial');
+  assert.ok(around('B.1', 100, 2).some(t => t.kind === 'wall' && t.height === 6), 'mur d’enceinte de Blackrock');
+  // Gull Pier runs over the sea: road tiles above the water, far from the shore.
+  const pier = world.sites.find(site => site.id === '6.4'), [px, pz] = A.tileAtV1(map, pier.x, pier.z);
+  let deck = 0;
+  for (let k = 60; k < 290; k += 5) { const t = world.tileAt(px - k, pz); if (t.kind === 'road' && t.height === 0.5) deck++; }
+  assert.ok(deck >= 20, 'tablier de Gull Pier au-dessus de l’eau : ' + deck);
+});
+
+test('roads join the zones of an island, and bridges cross to the next one on foot', () => {
+  // Calder → Eastbank by the east Jumelle, then Eastbank → Steelwater: walkable all the way.
+  const from = world.sites.find(site => site.id === '4.8'), to = world.sites.find(site => site.id === '5.1');
+  const start = A.nearestWalkableV1(map, ...A.tileAtV1(map, from.x, from.z), 40), goal = A.nearestWalkableV1(map, ...A.tileAtV1(map, to.x, to.z), 40);
+  // Best-first walk toward the goal on walkable tiles, two tiles at a time (a bridge is 7 tiles wide).
+  const far = (x, z) => Math.hypot(x - goal[0], z - goal[1]);
+  const seen = new Set([start[0] + ',' + start[1]]), heap = [[far(...start), ...start]];
+  const push = item => { heap.push(item); let i = heap.length - 1; while (i > 0) { const up = (i - 1) >> 1; if (heap[up][0] <= heap[i][0]) break; [heap[up], heap[i]] = [heap[i], heap[up]]; i = up; } };
+  const pop = () => { const top = heap[0], last = heap.pop(); if (heap.length) { heap[0] = last; let i = 0; for (;;) { let m = i; for (const c of [2 * i + 1, 2 * i + 2]) if (c < heap.length && heap[c][0] < heap[m][0]) m = c; if (m === i) break; [heap[m], heap[i]] = [heap[i], heap[m]]; i = m; } } return top; };
+  let reached = false, sea = 0;
+  while (heap.length && seen.size < 600000) {
+    const [left, x, z] = pop();
+    if (left < 120) { reached = true; break; }
+    for (const [dx, dz] of [[2, 0], [-2, 0], [0, 2], [0, -2]]) {
+      const nx = x + dx, nz = z + dz, key = nx + ',' + nz;
+      if (seen.has(key) || !A.isWalkableV1(map, nx, nz) || !A.isWalkableV1(map, x + dx / 2, z + dz / 2)) continue;
+      seen.add(key); push([far(nx, nz), nx, nz]);
+      if (world.tileAt(nx, nz).height === 0.5) sea++;
+    }
+  }
+  assert.ok(reached, 'de Riverside aux entrepôts de Steelwater à pied, par les ponts (' + seen.size + ' cases vues)');
+  assert.ok(sea > 100, 'le trajet passe sur des tabliers de pont : ' + sea);
+  // A ford, not a bridge, between Redmesa and Tallgrass.
+  const [a, b] = ['1S.2', '14.3'].map(id => world.sites.find(site => site.id === id)).map(site => A.tileAtV1(map, site.x, site.z));
+  const span = Math.hypot(b[0] - a[0], b[1] - a[1]);
+  let ford = 0;
+  for (let k = 0; k <= span; k += 4) for (let side = -100; side <= 100; side += 2) {
+    if (world.tileAt(Math.round(a[0] + (b[0] - a[0]) * k / span + (b[1] - a[1]) / span * side), Math.round(a[1] + (b[1] - a[1]) * k / span - (b[0] - a[0]) / span * side)).kind === 'ford') ford++;
+  }
+  assert.ok(ford > 20, 'gué entre Redmesa et Tallgrass : ' + ford);
 });
