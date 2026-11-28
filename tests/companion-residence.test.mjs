@@ -570,6 +570,30 @@ test('recruited clan hunter and tracker share a real refit, insertion and extrac
   assert.equal(presence(oldCabin).find(entry => entry.id === 'cold-trace')?.avatarVisible, true, 'installed legacy cabin stays visible');
   assert.deepEqual(residence.registerInstalledExpeditionCrew(oldCabin, 'cold-trace', SHIP), save.expeditionRoster);
 
+  const detached = triad.assignExpeditionMember(noCrew.expeditionRoster, OWNER, SHIP, 'karhek');
+  assert.equal(residence.expeditionBoardingIssue({ ...noCrew, expeditionRoster: detached }, 'karhek', SHIP), null);
+  assert.equal(residence.expeditionBoardingIssue(save, 'cold-trace', SHIP), null);
+  const suspended = perform(save, { type: 'suspend', id: 'cold-trace' }, 'launch-airlock');
+  const pending = perform(suspended, { type: 'plan-refit', id: 'ash-scar', host: CLAN });
+  const ownIssue = id => residence.expeditionBoardingIssue(pending, id, SHIP);
+  assert.match(ownIssue('cold-trace'), /suspendu/);
+  assert.match(ownIssue('ash-scar'), /Réaménagement en cours/);
+  const denied = residence.bindCompanionResidenceMission(pending, {
+    ownerCreatedAt: OWNER, missionId: 'jungle-vey', encounterRun: save.missionProgress['jungle-vey'].attempts,
+    shipId: SHIP, insertion: planet,
+  });
+  assert.equal(denied.accepted, false);
+  assert.equal(denied.message, ownIssue('cold-trace'));
+  const preview = qa.render('app/game/InsertionPlanPanel.tsx', {
+    plan: planet, missionId: 'jungle-vey', ownerCreatedAt: OWNER, shipId: SHIP, roster: pending.expeditionRoster,
+    clanMarks: pending.profile.clanMarks, campaignAccess: { allowed: true, reason: '' }, busy: false, boardingIssue: ownIssue,
+  });
+  assert.match(preview, /<option(?=[^>]*value="cold-trace")(?=[^>]*disabled)/);
+  assert.match(preview, /<option(?=[^>]*value="ash-scar")(?=[^>]*disabled)/);
+  assert.match(preview, /Accord de chasse suspendu/);
+  assert.match(preview, /Réaménagement en cours/);
+  assert.doesNotMatch(preview, /Prêt à embarquer/);
+
   save = { ...save, clanShipDocking: null };
   const mission = 'jungle-vey', start = save.missionProgress[mission].attempts, runId = 'field-crew-native-run';
   const bound = residence.bindCompanionResidenceMission(save, { ownerCreatedAt: OWNER, missionId: mission, encounterRun: start,

@@ -2,7 +2,7 @@
 
 import { shipForId, type ShipId } from './shipCatalogue';
 import type { MissionId } from './types';
-import { EXPEDITION_CARE_COST, EXPEDITION_MEMBERS, expeditionMember, expeditionMemberIds, expeditionTrioReady,
+import { EXPEDITION_CARE_COST, EXPEDITION_MEMBERS, expeditionMember, expeditionMemberIds,
   isExpeditionCrewId, planetInsertionPressure,
   shipSupportsSurfaceInsertion, triadRecommendedForMission, type ExpeditionMemberId,
   type ExpeditionRoster, type PlanetInsertionPlan } from './systems/planetInsertion';
@@ -20,6 +20,7 @@ interface Props {
   onRecharge: (shipId: ShipId, expectedCharge: number) => void;
   campaignAccess: { allowed: boolean; reason: string };
   busy: boolean;
+  boardingIssue: (id: ExpeditionMemberId) => string | null;
   onChange: (plan: PlanetInsertionPlan) => void;
   onRecruit: (id: ExpeditionMemberId) => void;
   onAssign: (id: ExpeditionMemberId, expectedShipId: ShipId) => void;
@@ -28,16 +29,16 @@ interface Props {
 }
 
 export default function InsertionPlanPanel({ plan, missionId, shipId, ownerCreatedAt, roster, clanMarks, shipEnergy, onRecharge,
-  campaignAccess, busy, onChange, onRecruit, onAssign, onReserve, onCare }: Props) {
+  campaignAccess, busy, boardingIssue, onChange, onRecruit, onAssign, onReserve, onCare }: Props) {
   const pressure = planetInsertionPressure(plan);
   const surfaceCapable = shipSupportsSurfaceInsertion(shipId);
-  const ready = expeditionTrioReady(roster, ownerCreatedAt, shipId, plan);
   const selected = expeditionMemberIds(plan);
-  const available = new Set(roster?.members.filter(member => member.assignedShipId === shipId && member.availability === 'ready').map(member => member.id));
+  const blockers = new Map(EXPEDITION_MEMBERS.map(member => [member.id, boardingIssue(member.id)]));
+  const ready = selected.length === 2 && selected.every(id => !blockers.get(id));
   const choosePartner = (slot: number, raw: string) => {
     const id = expeditionMember(raw)?.id;
     const other = selected[1 - slot];
-    if (!id || !other || id === other || !available.has(id)) return;
+    if (!id || !other || id === other || blockers.get(id)) return;
     onChange({ ...plan, memberIds: slot === 0 ? [id, other] : [other, id] });
   };
   const ship = shipForId(shipId);
@@ -91,7 +92,7 @@ export default function InsertionPlanPanel({ plan, missionId, shipId, ownerCreat
         {slot === 0 ? 'Premier partenaire' : 'Second partenaire'}
         <select data-expedition-slot={slot + 1} value={id} onChange={event => choosePartner(slot, event.target.value)}>
           {EXPEDITION_MEMBERS.map(member => <option key={member.id} value={member.id}
-            disabled={member.id === selected[1 - slot] || member.id !== id && !available.has(member.id)}>
+            disabled={member.id === selected[1 - slot] || !!blockers.get(member.id)}>
             {member.name} · {member.role}
           </option>)}
         </select>
@@ -113,6 +114,7 @@ export default function InsertionPlanPanel({ plan, missionId, shipId, ownerCreat
         const clanCrew = isExpeditionCrewId(member.id);
         const entry = roster?.members.find(candidate => candidate.id === member.id);
         const assigned = entry?.assignedShipId === shipId;
+        const blocker = blockers.get(member.id);
         const unavailable = entry && entry.availability !== 'ready';
         const careCost = unavailable ? EXPEDITION_CARE_COST[entry.availability as 'recovering' | 'missing'] : 0;
         return <article key={member.id} data-expedition-member={member.id} data-availability={entry?.availability ?? 'unrecruited'}
@@ -120,7 +122,7 @@ export default function InsertionPlanPanel({ plan, missionId, shipId, ownerCreat
           <h3>{member.name}<small>{member.role}</small></h3>
           <p>{!entry ? member.invitation : entry.availability === 'missing' ? 'Resté sur le terrain. Un rapatriement du clan est nécessaire avant les soins.'
             : entry.availability === 'recovering' ? 'Rapatrié, en attente de soins avant le prochain départ.'
-              : assigned ? 'Prêt à embarquer dans le vaisseau sélectionné.' : 'Disponible pour une prochaine affectation.'}</p>
+              : assigned ? blocker ?? 'Prêt à embarquer dans le vaisseau sélectionné.' : 'Disponible pour une prochaine affectation.'}</p>
           {entry && <p>{entry.assignedShipId === null
             ? 'En réserve : recruté, sans affectation à un vaisseau.'
             : `Affecté à : ${shipForId(entry.assignedShipId).name}.`}</p>}
@@ -144,7 +146,7 @@ export default function InsertionPlanPanel({ plan, missionId, shipId, ownerCreat
           </div>
         </article>;
       })}
-      {plan.team === 'triad' && !ready && <p className={styles.notice}>Prépare les deux compagnons et affecte-les à cette coque pour partir en trio.</p>}
+      {plan.team === 'triad' && !ready && <p className={styles.notice}>Choisis deux partenaires disponibles pour cette coque.</p>}
       <p className={styles.care}>Le pisteur et le vétéran utilisent leur alcôve aménagée au quai. Les deux compagnons de départ s’affectent depuis ce briefing.
         {' '}En chasse, donne les ordres de suivi ou d’attente et stabilise un allié avec une charge de médicomp. Rassemble les trois chasseurs au point d’extraction. Solde : {clanMarks} marques.</p>
     </div>}

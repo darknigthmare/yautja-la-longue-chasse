@@ -152,12 +152,12 @@ import { commitEliteMastery, type MasteryCommand, type MasteryResponse } from '.
 import { getCradleCrownCondition } from './systems/buriedCradle';
 import cradleArt from './data/buriedCradleArt.json';
 import { actCompanionResidence, bindCompanionResidenceMission, settleCompanionResidenceMission, releaseCompanionResidenceMission,
-  registerCompanionResidenceRecruitment, registerInstalledExpeditionCrew, expeditionCrewMatchesCabins,
+  registerCompanionResidenceRecruitment, registerInstalledExpeditionCrew, expeditionCrewMatchesCabins, expeditionBoardingIssue,
   availableClanResidenceCrew, clanResidenceCrewPostRooms, type CompanionResidenceAction, type CompanionResidenceObservation } from './systems/companionResidence';
 import { createWolfCastleVisit, inspectWolfCastleVisit, actWolfCastle, applyWolfCastleCheckpoint, type WolfCastleAction, type WolfCastleCheckpoint } from "./systems/wolfCastle";
 import { createPlanetArrival, inspectPlanetArrival, completePlanetArrivalHandoff, type PlanetArrivalState } from "./systems/planetArrival";
 import { inspectPlanetArrivalRun, type PlanetArrivalRun } from "./systems/planetArrivalRun";
-import { DEFAULT_PLAN, assignExpeditionMember, careForExpeditionMember, expeditionMember, expeditionTrioReady, isExpeditionCrewId,
+import { DEFAULT_PLAN, assignExpeditionMember, careForExpeditionMember, expeditionMember, expeditionMemberIds, expeditionTrioReady, isExpeditionCrewId,
   normalizePlanetInsertionPlan, recruitExpeditionMember, reserveExpeditionMember, samePlanetInsertion, settleExpeditionOutcome, shipSupportsSurfaceInsertion,
   type ExpeditionMemberId, type PlanetInsertionPlan } from "./systems/planetInsertion";
 import InsertionPlanPanel from "./InsertionPlanPanel";
@@ -4163,9 +4163,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (chosenInsertion.method === 'ship' && !shipSupportsSurfaceInsertion(chosenShip)) {
       setToast('Cette coque reste en orbite. Choisis une capsule ou une coque compatible avec l’atterrissage.'); return;
     }
-    if (chosenInsertion.team === 'triad' && (!expeditionCrewMatchesCabins(saveRef.current) ||
-        !expeditionTrioReady(saveRef.current.expeditionRoster, saveRef.current.createdAt, chosenShip, chosenInsertion))) {
-      setToast('Les deux partenaires choisis doivent être aptes et affectés à cette coque.'); return;
+    for (const id of expeditionMemberIds(chosenInsertion)) {
+      const issue = expeditionBoardingIssue(saveRef.current, id, chosenShip);
+      if (issue) { setToast(`${expeditionMember(id)?.name} · ${issue}`); return; }
     }
     if (chosenInsertion.shipCloak) {
       const charge = shipInsertionCharge(saveRef.current.shipInsertionEnergy, saveRef.current.createdAt, chosenShip);
@@ -6417,6 +6417,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   shipEnergy={save.shipInsertionEnergy} onRecharge={rechargeInsertionShip}
                   ownerCreatedAt={save.createdAt} roster={save.expeditionRoster} clanMarks={save.profile.clanMarks}
                   campaignAccess={evaluateClanShipAccess(save)}
+                  boardingIssue={id => expeditionBoardingIssue(save, id, selectedShipId)}
                   busy={settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !!resumableHunt}
                   onChange={setInsertionPlan} onRecruit={recruitExpeditionHunter} onAssign={assignExpeditionHunter}
                   onReserve={reserveExpeditionHunter} onCare={careForExpeditionHunter} />

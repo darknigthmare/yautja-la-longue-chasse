@@ -291,6 +291,29 @@ export function registerInstalledExpeditionCrew(save: CompanionCampaign, id: Com
   return assignExpeditionMember(recruitExpeditionMember(old.state, owner, id, clan), owner, shipId, id);
 }
 
+/** A departure and its briefing offer the same availability for each place. */
+export function expeditionBoardingIssue(save: CompanionCampaign, id: ExpeditionMemberId, shipId: ShipId,
+  binding?: Pick<CompanionMissionBinding, 'missionId' | 'encounterRun'>): string | null {
+  const partner = inspectExpeditionRoster(save.expeditionRoster, save.createdAt).state?.members.find(entry => entry.id === id);
+  if (!partner || partner.assignedShipId !== shipId) return 'Affectation à cette coque requise.';
+  if (partner.availability === 'missing') return 'Un rapatriement du clan est nécessaire.';
+  if (partner.availability === 'recovering') return 'Des soins du clan sont nécessaires.';
+  const residence = inspectCompanionResidence(save.companionResidence, save.createdAt);
+  if (residence.status === 'invalid-save' || residence.status === 'future-version') return 'Registre de bord incompatible.';
+  const member = residence.state?.members.find(entry => entry.id === id);
+  if (!member && !isExpeditionCrewId(id)) return null;
+  const host = { kind: 'personal' as const, shipId };
+  if (isExpeditionCrewId(id) && (!member?.installation || !sameCompanionHost(member.assignment, host) || !companionHasRecruitment(save, id)))
+    return 'Recrutement du clan et alcôve équipée sur cette coque requis.';
+  if (!member) return 'Dossier du compagnon indisponible.';
+  if (member.relation !== 'active') return 'Accord de chasse suspendu.';
+  if (member.refit) return 'Réaménagement en cours. Confirme ou annule les travaux.';
+  if (member.assignment && (!member.installation || !sameCompanionHost(member.assignment, host))) return 'Quartier affecté à une autre coque.';
+  if (member.deployment && (member.deployment.shipId !== shipId || member.deployment.missionId !== binding?.missionId ||
+      member.deployment.encounterRun !== binding?.encounterRun)) return 'Partenaire déjà engagé sur une autre sortie.';
+  return null;
+}
+
 export function evaluateCompanionResidenceCampaign(state: CompanionResidenceState, save: CompanionCampaign): { allowed: boolean; reason: string } {
   if (inspectCompanionResidence(state, save.createdAt).status !== 'valid') return { allowed: false, reason: 'Registre de présence incompatible avec cette campagne.' };
   if (!evaluateClanShipAccess(save).allowed) return { allowed: false, reason: 'L’accès Blooded est requis pour ces accords de bord.' };
@@ -657,23 +680,13 @@ export function bindCompanionResidenceMission(save: CompanionCampaign, binding: 
     if (contact.encounterRun === null) { contact.encounterRun = binding.encounterRun; changed = true; }
   }
   if (insertion.team === 'triad') {
-    const selected = expeditionMemberIds(insertion);
-    // A legacy hull posting still exists until its first refit completes. Its
-    // suspension or pending work must block departure even without a new berth.
-    for (const member of next.members.filter(entry => selected.some(id => id === entry.id) &&
-      save.expeditionRoster?.members.some(legacy => legacy.id === entry.id && legacy.assignedShipId === binding.shipId))) {
-      if (member.refit || member.relation !== 'active' || companionResidenceAvailability(save, member) !== 'ready' ||
-          member.assignment && !sameCompanionHost(member.assignment, { kind: 'personal', shipId: binding.shipId }))
-        return missionRefused(state, 'Un partenaire affecté est indisponible ou attend son réaménagement.');
-    }
-    for (const member of next.members.filter(entry => selected.some(id => id === entry.id) &&
-      entry.assignment?.kind === 'personal' && entry.assignment.shipId === binding.shipId)) {
-      if (member.refit || member.relation !== 'active' || companionResidenceAvailability(save, member) !== 'ready' ||
-          save.expeditionRoster?.members.find(entry => entry.id === member.id)?.assignedShipId !== binding.shipId)
-        return missionRefused(state, 'Un partenaire affecté est indisponible ou attend son réaménagement.');
-      if (member.deployment && (member.deployment.missionId !== binding.missionId || member.deployment.encounterRun !== binding.encounterRun))
-        return missionRefused(state, 'Ce partenaire est encore engagé ailleurs.');
-      if (!member.deployment) { member.deployment = { missionId: binding.missionId, encounterRun: binding.encounterRun, shipId: binding.shipId }; changed = true; }
+    for (const id of expeditionMemberIds(insertion)) {
+      const issue = expeditionBoardingIssue(save, id, binding.shipId, binding);
+      if (issue) return missionRefused(state, issue);
+      const member = next.members.find(entry => entry.id === id);
+      if (member?.assignment?.kind !== 'personal' || member.deployment) continue;
+      member.deployment = { missionId: binding.missionId, encounterRun: binding.encounterRun, shipId: binding.shipId };
+      changed = true;
     }
   }
   if (!changed) return missionUnchanged(state);
