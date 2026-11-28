@@ -168,7 +168,8 @@ export function eliteRecognitionMatchesSave(save: EliteRecognitionSave): boolean
 export function isEliteRecognitionSuccessor(previous: EliteRecognitionV174 | null | undefined, next: EliteRecognitionV174): boolean {
   if (!inspectEliteRecognition(next, next.ownerCreatedAt).state) return false;
   if (!previous) return next.revision === 1;
-  const briefingAfterRecognition = previous.recognized && !previous.queenMandate && next.recognized && next.queenMandate;
+  const briefingAfterRecognition = previous.recognized === true && previous.queenMandate !== true &&
+    next.recognized === true && next.queenMandate === true;
   return previous.ownerCreatedAt === next.ownerCreatedAt && (!previous.recognized || briefingAfterRecognition) &&
     (!previous.queenMandate || next.queenMandate === true) &&
     next.revision === previous.revision + 1 && (!previous.audience || previous.audience === next.audience) &&
