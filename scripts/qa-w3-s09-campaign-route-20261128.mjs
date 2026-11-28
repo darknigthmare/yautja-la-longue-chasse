@@ -30,7 +30,7 @@ seed.homeworld.locationV77 = api.createHomeworldCheckpointV77(seed.createdAt, '0
 seed.settings.masterVolume = 0;
 assert(api.canEnterHomeworldRegionV68(seed, 'thermal-caves').allowed);
 assert(!seed.homeworldRegionV68);
-const report = { commit, buildId, passed: false, errors: [], admission: 'Compétences antérieures jouées par le moteur, point de départ indiqué à pied près de l’embarcadère. Le quai, le départ, les 12 secondes de traversée et la reprise de la rive sont joués dans Chromium.' };
+const report = { commit, buildId, passed: false, errors: [], missingAssets: [], admission: 'Compétences antérieures jouées par le moteur, point de départ indiqué à pied près de l’embarcadère. Le quai, le départ, les 12 secondes de traversée et la reprise de la rive sont joués dans Chromium.' };
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_EXECUTABLE || undefined, headless: true });
 const page = await browser.newPage({
   viewport: { width: 1440, height: 990 },
@@ -38,6 +38,11 @@ const page = await browser.newPage({
 });
 page.setDefaultTimeout(45_000);
 page.on('pageerror', error => report.errors.push(error.message));
+page.on('response', response => {
+  if (response.status() >= 400 && report.missingAssets.length < 80) {
+    report.missingAssets.push(new URL(response.url()).pathname + ' ' + response.status());
+  }
+});
 const disk = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), p.SAVE_STORAGE_KEY);
 const hub = page.locator('[data-homeworld-hub]');
 const region = page.locator('section[data-homeworld-region-v68="thermal-caves"]');
@@ -57,7 +62,10 @@ async function open() {
 try {
   await page.clock.install();
   await open();
-  await page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]').waitFor();
+  await hub.waitFor();
+  const motionError = hub.locator('[data-homeworld-motion-loading-v74][role="alert"]');
+  await page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]').or(motionError).waitFor();
+  assert.equal(await motionError.count(), 0, await motionError.textContent({ timeout: 300 }).catch(() => undefined));
   await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 1000);
   const nav = homeworldNavigatorV77(page, api);
   await nav.reach({ levelId: '0', point: dock });
@@ -94,17 +102,37 @@ try {
   assert.equal(await region.locator('[data-w3-s09-arrival]').getAttribute('data-w3-s09-arrival'), receipt.runId);
   for (const key of ['createdAt', 'profile', 'inventory', 'trophies']) assert.deepEqual(after[key], before[key]);
   await capture('02-rive-et-recu');
+  const shoreActor = region.locator('[data-region-player]');
+  const pointOnShore = () => shoreActor.evaluate(node => ({ x: Number(node.dataset.x), y: Number(node.dataset.y) }));
+  const landing = await pointOnShore();
+  await region.locator('[data-region-resume]').click();
+  const [entry, next] = api.HOMEWORLD_REGIONS_V68['thermal-caves'].route;
+  const keys = [Math.abs(next.x - entry.x) > 1 ? next.x > entry.x ? 'ArrowRight' : 'ArrowLeft' : null,
+    Math.abs(next.y - entry.y) > 1 ? next.y > entry.y ? 'ArrowDown' : 'ArrowUp' : null].filter(Boolean);
+  await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 1000);
+  for (const key of keys) await page.keyboard.down(key);
+  await page.clock.runFor(600);
+  for (const key of keys) await page.keyboard.up(key);
+  const walked = await pointOnShore();
+  assert(Math.hypot(walked.x - landing.x, walked.y - landing.y) > 20);
+  await page.clock.resume();
+  await capture('03-rive-a-pied');
 
   await open();
   await region.waitFor();
   assert.deepEqual((await disk()).homeworldRegionV68.skiffArrivalW3S09, receipt);
   assert.equal(await region.locator('[data-w3-s09-arrival]').getAttribute('data-w3-s09-vessel'), receipt.vessel);
-  await capture('03-reprise-meme-recu');
+  await capture('04-reprise-meme-recu');
   assert.deepEqual(report.errors, []);
-  report.result = { receipt, observedFrames: positions.length, sameCampaignOnReload: true };
+  report.result = { receipt, observedFrames: positions.length, sameCampaignOnReload: true, landing, walked };
   report.passed = true;
 } catch (error) {
   report.failure = String(error.stack ?? error);
+  report.failurePage = await page.evaluate(() => ({
+    location: document.querySelector('[data-campaign-location]')?.getAttribute('data-campaign-location'),
+    motion: document.querySelector('[data-homeworld-motion-loading-v74]')?.textContent,
+    text: document.body.innerText.slice(0, 1400),
+  })).catch(() => null);
   await capture('failure').catch(() => {});
   throw error;
 } finally {
