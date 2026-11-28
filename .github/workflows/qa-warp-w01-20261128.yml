@@ -1,0 +1,71 @@
+name: Warp W-01 · recette du fjord
+on:
+  push:
+    branches: ['codex/qa-warp-w01-suite-20261128']
+
+permissions:
+  contents: read
+
+jobs:
+  warp-w01:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 28
+    env:
+      WARP_FJORD_COMMIT: 'ee8621169cbed6114019abfcda4ddfbcb4756d5c'
+      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - name: Checkout exact application source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.WARP_FJORD_COMMIT }}
+          filter: blob:none
+          fetch-depth: 0
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /build/
+            /db/
+            /desktop/
+            /docs/qa/current-integration-20261103/
+            /.openai/
+            /drizzle/
+            /content/
+            /scripts/
+            /tests/
+            /types/
+            /worker/
+            /public/**/manifest.json
+            /public/game/sprites/v60/pit-arenas/arena-186-snow-hunt/p0-depth.png
+            /public/game/warp-universe/20261109-p1/191_viking_treuil.png
+      - name: Confirm that the workflow is the only overlay
+        run: |
+          test "$(git rev-parse HEAD)" = "$WARP_FJORD_COMMIT"
+          test "$(git diff --name-only "$WARP_FJORD_COMMIT" "$GITHUB_SHA")" = '.github/workflows/qa-warp-w01-20261128.yml'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node scripts/materialize-asset-raccords-20261120.mjs runtime
+      - name: Warp, archives and branch compatibility
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/warp-fjord-w01.test.mjs tests/warp-epochs-v165.test.mjs tests/tantalus-warp-v167.test.mjs
+      - run: npm run typecheck
+      - name: Lint the Warp sources
+        run: >-
+          npx --no-install eslint --max-warnings=0 app/game/WarpFjordScene.tsx
+          app/game/WarpEpochsPanelV165.tsx app/game/WarpCommonSceneR2.tsx
+          app/game/GalaxyMapPanel.tsx app/game/systems/warpFjordW01.ts
+          app/game/systems/warpEpochsV165.ts tests/warp-fjord-w01.test.mjs
+          tests/warp-epochs-v165.test.mjs scripts/qa-warp-fjord-w01.mjs
+      - name: Browser route, repli, register and native images
+        run: node scripts/qa-warp-fjord-w01.mjs
+      - if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: warp-fjord-w01-${{ env.WARP_FJORD_COMMIT }}
+          path: outputs/qa-warp-fjord-w01/
+          if-no-files-found: ignore
