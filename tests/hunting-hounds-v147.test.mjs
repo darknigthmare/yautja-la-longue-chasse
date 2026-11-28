@@ -136,8 +136,9 @@ test("V147 field orders: refusals, recall, track marks the freshest trail, drive
     return { field: f, events };
   };
   field = m.issueHoundOrderV147(field, "track", 25).field;
-  let r = run(field, 40);
+  let r = run(field, 20);
   assert.deepEqual(r.events.filter(e => e.type === "marked").map(e => e.preyId), ["fresh"]);
+  assert.ok(r.field.x > m.HOUND_FIELD_V147.heelDistance, "the hunter recalls from a real distance");
   assert.equal(r.field.ordersCompleted, 1);
   field = m.issueHoundOrderV147(r.field, "recall", 0).field;
   r = run(field, 60);
