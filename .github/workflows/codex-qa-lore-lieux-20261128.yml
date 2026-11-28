@@ -27,6 +27,7 @@ jobs:
             /desktop/
             /content/the-pit/les-masques-brises/
             /docs/campagne/BIBLE_DE_CAMPAGNE.md
+            /public/**/manifest.json
             /public/game/homeworld/v67/
             /public/game/assets/v37/tribes/v2/
             /public/game/backgrounds/
@@ -37,4 +38,5 @@ jobs:
           cache: npm
       - run: npm ci
       - run: node --experimental-strip-types --test --test-concurrency=1 tests/yautja-place-names.test.mjs tests/homeworld-regions-v68.test.mjs tests/homeworld-world-checkpoint-v77.test.mjs
-      - run: npm run typecheck
+      - if: success() || failure()
+        run: npm run typecheck
