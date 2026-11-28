@@ -43,7 +43,9 @@ for (const record of checkpoint.assets) {
 
   const accepted = matchingAttempt(record, record);
   assert.ok(accepted, record.id);
-  assert.equal(accepted.promptExact, record.promptExact, record.id);
+  const summaryAttempt = record.attempts.find(attempt => attempt.promptExact === record.promptExact);
+  assert.ok(summaryAttempt, record.id);
+  if (summaryAttempt.attemptIndex !== accepted.attemptIndex) assert.equal(summaryAttempt.accepted, false, record.id);
   assert.equal(accepted.nativeSourceName, record.nativeSourceName, record.id);
   assert.equal(final.acceptedOutputPromptExact, null, record.id);
   const earlierPng = verifyPng(checkpointCommit, record);
@@ -55,11 +57,13 @@ for (const record of checkpoint.assets) {
     earlierPng,
     finalPng,
     earlierAcceptedAttempt: accepted.attemptIndex,
+    checkpointSummaryPromptAttempt: summaryAttempt.attemptIndex,
     earlierNativeSourceName: accepted.nativeSourceName,
     receiptCreatedAtUtc: record.receiptCreatedAtUtc,
   });
 }
 assert.equal(replacements.length, 6);
+assert.equal(replacements.filter(row => row.earlierAcceptedAttempt !== row.checkpointSummaryPromptAttempt).length, 2);
 console.log(JSON.stringify({
   checkpoint: { commit: checkpointCommit, path: checkpointPath, blob: checkpointBlob, receipts: checkpoint.assets.length },
   release: { commit: finalCommit, path: manifestPath, blob: finalManifestBlob },
