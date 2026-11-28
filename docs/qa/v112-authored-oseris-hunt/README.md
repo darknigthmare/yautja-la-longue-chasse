@@ -12,6 +12,12 @@ Le pilote scanne les trois traces puis récupère le transpondeur. Vey entre en 
 
 Les six vérifications précédentes passent sur `8dbd07227bdb59c871875717a5aac60f90adabb6`. Le navigateur entre dans l’armurerie mais l’assertion sur la casse du texte rendu arrête ce premier essai avant le premier geste de nettoyage. Le rapport observe 292 ressources chargées et zéro erreur de page. [Exécution Chromium](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46126162864) · [Rapport et captures](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46126162864/artifacts/15256405168)
 
+## Nettoyage confirmé dans l’armurerie
+
+La relance sur `95d1a3c9b69c768a8a57364cba6e7a28b7900e68` suit la même patrouille originale, rejoue les rites et la reprise, puis embarque à 95,70 s simulées. L’armurerie affiche le pelage `jungle-vey:0:jungle-patrol-2:hide` reçu de cette sortie. Le chasseur paie deux marques et effectue trois gestes par Entrée. La sauvegarde confirme le passage de `raw` à `cleaned`, la qualité de 80, le même poids et le même volume, avec l’outil à 90/100. Les deux trophées restent en inventaire.
+
+Les 29 tests de mêlée et de canopée, le lint et les huit contrôles Chromium passent. Les 292 ressources demandées correspondent aux octets Git de la révision. Le rapport contient six captures et les deux états de reprise. [Exécution exacte](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46127293531) · [Rapport, sauvegarde et captures](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46127293531/artifacts/15256920262)
+
 ## Reproduction
 
 ```sh
