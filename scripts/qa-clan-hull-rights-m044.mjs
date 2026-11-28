@@ -117,6 +117,10 @@ try {
   report.steps.push("relevé propriétaire des deux scellés pour la même coque après recharge et réimport");
   await take("03-relevé-enregistré.png");
 
+  // Le poste d’accueil fait entrer les détenteurs dans le registre de bord.
+  await panel.locator('[data-clan-operations-tab="post"]').click();
+  await panel.locator('[data-clan-onboard-step="berth-register"]').click();
+  await page.waitForFunction(key => JSON.parse(localStorage.getItem(key))?.clanShipOperations?.onboardingStep === 1, key);
   await closeProject();
   await talkTo("hangar", "threshold-guard");
   await button("Écouter Garde du Seuil sur les droits").click();
@@ -158,6 +162,10 @@ try {
   assert.deepEqual(report.errors, []);
   report.steps.push("ouverture de la liste des opérations et choix récupéré depuis la campagne rechargée");
   await take("06-intention-consignée.png");
+} catch (error) {
+  report.failure = String(error.stack ?? error);
+  await take("failure.png").catch(() => {});
+  throw error;
 } finally {
   await writeFile(resolve(output, "parcours.json"), JSON.stringify(report, null, 2));
   await browser.close();
