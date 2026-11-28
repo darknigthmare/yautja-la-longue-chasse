@@ -49,6 +49,15 @@ test('the fifteen-room route reaches four new physical doors and records each ob
   const depth = state.depthsM017;
   assert(state.visited.every(Boolean));
   assert.equal(state.visited.length, 15);
+  const report = runtime.render('app/game/FirstHuntSoloV70.tsx', {
+    checkpoint: state, bindings: save.settings.controlBindings, onCheckpoint: () => true,
+    onProgress: async () => true, onReturnToCity: async () => true, onExit() {},
+  });
+  assert.match(report, /15 secteurs/);
+  assert.match(report, /Loge de la reine captive isolée/);
+  assert.match(report, /Saar porté jusqu’au refuge avec Vek/);
+  assert.match(report, /Triade réunie au seuil de chasse/);
+  assert.doesNotMatch(report, /neuf secteurs/);
   assert.deepEqual(Object.keys(depth.extension.observations), p.SOLO_V70_DEPTH_POSTS_M017.map(post => post.id));
   for (const candidate of p.SOLO_V70_DEPTH_POSTS_M017) {
     const post = p.soloV70DepthPostM017(candidate.room, true);

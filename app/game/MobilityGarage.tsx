@@ -4,8 +4,8 @@ import {useMemo,useState} from 'react';
 import type {SaveGame} from './types';
 import type {GameSfxId} from './sound';
 import type {SceneAudioPort} from './systems/sceneAudio';
-import {MOBILITY_CATALOGUE,MOBILITY_MODULES,mobilityStats,mobilityRankIndex} from './systems/mobility/catalogue';
-import {createMobilityLedger,FORGE_DELIVERY_MARKS,FORGE_DELIVERY_MODEL,mobilityServiceQuote,type MobilityOrder} from './systems/mobility/ledger';
+import {MOBILITY_CATALOGUE,MOBILITY_MODULES,SAND_SKIMMER_MODEL,TROPHY_CARRIER_MODEL,mobilityStats,mobilityRankIndex} from './systems/mobility/catalogue';
+import {createMobilityLedger,FORGE_DELIVERY_MARKS,FORGE_DELIVERY_MODEL,mobilitySandSkimmerProof,mobilityServiceQuote,mobilityTrophyConvoyAvailable,type MobilityOrder} from './systems/mobility/ledger';
 import {mobilityUpgradePreview,MOBILITY_STAT_LABELS} from './systems/mobility/workshop';
 import type {MobilityWriter} from './systems/mobility/controller';
 import MobilityDrivingYard from './MobilityDrivingYard';
@@ -25,7 +25,7 @@ export default function MobilityGarage({save,suspended=false,onCommand,onMountCo
  const ride=save.mountRidesV156?.active?save.mountRidesV156:null;
  const allowed=!suspended&&!ledger.active&&!ride;
  const order=(action:MobilityOrder)=>{if(!allowed)return;const r=onCommand({...action,ownerCreatedAt:save.createdAt,expectedRevision:ledger.revision});setMessage(r.message);if(r.accepted)onSound?.('select');return r;};
- const entries=MOBILITY_CATALOGUE.filter(d=>filter==='all'||filter==='owned'&&(ledger.owned.some(v=>v.id===d.id)||!!save.mountsV153?.mounts.some(v=>v.id===d.id))||filter==='sale'&&d.shopEnabled||filter===d.kind);
+ const entries=MOBILITY_CATALOGUE.filter(d=>filter==='all'||filter==='owned'&&(ledger.owned.some(v=>v.id===d.id)||!!save.mountsV153?.mounts.some(v=>v.id===d.id))||filter==='sale'&&d.shopEnabled||filter==='pilotable'&&d.trialEnabled||filter===d.kind);
  const paidAllowed=allowed&&ledger.recoveryDebt===0;
  const reward=ledger.trainingReward;
  const claimAllowed=paidAllowed&&reward?.status==='available'&&mobilityRankIndex(save.profile.rankId)>=mobilityRankIndex('blooded');
@@ -35,8 +35,13 @@ export default function MobilityGarage({save,suspended=false,onCommand,onMountCo
   model.purchasePrice!==null&&save.profile.clanMarks<model.purchasePrice?`Il manque ${model.purchasePrice-save.profile.clanMarks} marques.`:null,
  ].filter(Boolean);
  const canBuy=paidAllowed&&!owned&&model.shopEnabled&&purchaseRequirements.length===0;
- const canDrive=paidAllowed&&model.trialEnabled&&ledger.circulationPermit&&
-  mobilityRankIndex(save.profile.rankId)>=mobilityRankIndex(model.minimumRank)&&!!owned&&owned.condition>=25&&owned.energy>=10;
+ const permitAndRank=ledger.circulationPermit&&mobilityRankIndex(save.profile.rankId)>=mobilityRankIndex(model.minimumRank);
+ const skimmer=model.id===SAND_SKIMMER_MODEL;
+ const carrier=model.id===TROPHY_CARRIER_MODEL;
+ const sandmaw=skimmer?mobilitySandSkimmerProof(save):null;
+ const displayedTrophy=carrier&&mobilityTrophyConvoyAvailable(save);
+ const canDrive=paidAllowed&&model.trialEnabled&&permitAndRank&&!!owned&&owned.condition>=25&&owned.energy>=10&&
+  !carrier&&(!skimmer||!!ledger.sandSkimmer);
  const deliveryBike=model.id===FORGE_DELIVERY_MODEL&&owned?.acquiredBy==='purchase';
  return <section className={styles.shell} aria-labelledby="mobility-title" data-mobility-garage>
   <header className={styles.heading}><div><small>FORGES · COMPTOIR DES CONVOIS</small><h2 id="mobility-title">Registre de mobilité</h2><p>Commande, entretien et aire de conduite du clan</p></div><div className={styles.balance}><strong>{save.profile.clanMarks.toLocaleString('fr-FR')}</strong><span>marques de clan</span><span>Permis : {ledger.circulationPermit?'confirmé':'à obtenir'}</span><span data-mobility-owned-count={ledger.owned.length}>{ledger.owned.length} engin(s) au garage</span></div></header>
@@ -48,7 +53,7 @@ export default function MobilityGarage({save,suspended=false,onCommand,onMountCo
     {reward?.status==='available'?<><p>Le chargement est rentré et le trajet est consigné. Le clan peut te confier le Grav-Sled de cette formation, une seule fois, après reconnaissance du rang Blooded.</p><p>État à la remise : {reward.course.condition.toFixed(1)} % · réserve : {reward.course.energy.toFixed(1)} %. Aucune réparation ou recharge offerte.</p><button disabled={!claimAllowed} onClick={()=>{if(reward){const result=order({type:'claim-training',rewardRunId:reward.runId});if(result?.accepted)setSelected('scout_grav_sled');}}}>Recevoir le Grav-Sled du clan</button></>:reward?.status==='claimed'?<p>La remise est inscrite au registre. Ton Grav-Sled apparaît dans « Au garage » ; les prochains prêts ne le réparent pas et ne créent pas un second engin.</p>:<p>Termine une formation en tant que Blooded, ramène le colis et remise le prêt au sas. Le permis seul, une ancienne attestation ou un retour de sécurité ne vaut pas remise.</p>}
    </section>
    <div className={styles.layout}>
-    <aside className={styles.catalogue}><label htmlFor="mobility-filter">Registre du clan</label><select id="mobility-filter" value={filter} onChange={e=>setFilter(e.target.value)} disabled={suspended}><option value="all">Tous les modèles · 50</option><option value="sale">Modèles vendus aux Forges</option><option value="owned">Mon garage</option><option value="machine">Machines</option><option value="mount">Montures</option></select>
+    <aside className={styles.catalogue}><label htmlFor="mobility-filter">Registre du clan</label><select id="mobility-filter" value={filter} onChange={e=>setFilter(e.target.value)} disabled={suspended}><option value="all">Tous les modèles · 50</option><option value="sale">Modèles vendus aux Forges</option><option value="owned">Mon garage</option><option value="pilotable">Modèles pilotables</option><option value="machine">Machines</option><option value="mount">Montures</option></select>
      <div role="list" className={styles.items}>{entries.map(d=><div role="listitem" key={d.id}><button type="button" data-mobility-model={d.id} aria-pressed={selected===d.id} onClick={()=>setSelected(d.id)} disabled={suspended} className={selected===d.id?styles.selected:''}><small>{String(d.index).padStart(2,'0')} · {d.kind==='mount'?'MONTURE':'MACHINE'}</small><strong>{d.name}</strong><span>{ledger.owned.some(v=>v.id===d.id)?'Au garage':save.mountsV153?.mounts.some(v=>v.id===d.id)?'Monture recrutée':modeLabels[d.acquisitionMode]}</span></button></div>)}</div>{entries.length===0&&<p>Aucun modèle dans cette sélection.</p>}
     </aside>
     <article className={styles.detail} aria-label={model.name}>
@@ -58,7 +63,21 @@ export default function MobilityGarage({save,suspended=false,onCommand,onMountCo
      <dl className={styles.metrics}><div><dt>Vitesse de piste</dt><dd>{stats.speed.toFixed(1)} u/s</dd></div><div><dt>Accélération</dt><dd>{stats.acceleration.toFixed(1)} u/s²</dd></div><div><dt>Charge utile</dt><dd>{stats.capacity.toFixed(0)} kg</dd></div><div><dt>Résistance aux chocs</dt><dd>{(stats.collisionResistance*100).toFixed(0)} %</dd></div></dl>
      <p className={styles.hint}>Valeurs originales d’équilibrage de la piste, pas des mesures canoniques. Les capacités annoncées dans la bible ne sont pas toutes jouables.</p>
      <section><h4>Obtention et disponibilité</h4><p>{model.acquisition}</p>{model.shopEnabled?<><p>Commande : <strong>{model.purchasePrice} marques</strong> · permis et rang Blooded requis.</p>{!owned&&purchaseRequirements.length>0&&<ul>{purchaseRequirements.map(requirement=><li key={requirement}>{requirement}</li>)}</ul>}<button disabled={!canBuy} onClick={()=>order({type:'buy',modelId:model.id,expectedCost:model.purchasePrice!})}>{owned?'Déjà au garage':`Confirmer l’achat · ${model.purchasePrice} marques`}</button></>:<p className={styles.tag}>{model.id==='kha_rha'?'Confiance requise avant recrutement ou adoption.':'Ce modèle s’obtient par la voie indiquée ci-dessus.'}</p>}</section>
-     {owned&&<section data-mobility-maintenance><h4>Garage · état persistant</h4><p>État {owned.condition.toFixed(1)} % · réserve {owned.energy.toFixed(1)} % · trajet {owned.distance.toFixed(0)} unités de piste</p><div className={styles.actions}>{(['repair','recharge','care']as const).map(type=>{const cost=mobilityServiceQuote(ledger,model.id,type);if((type==='care')!==(model.kind==='mount'))return null;return <button key={type} disabled={!paidAllowed||cost===null||save.profile.clanMarks<(cost??Infinity)} onClick={()=>order({type,modelId:model.id,expectedCost:cost!})}>{type==='repair'?'Réparer':type==='recharge'?'Recharger':'Soigner / reposer'}{cost!==null?` · ${cost} marques`:' · inutile'}</button>;})}<button disabled={!canDrive} onClick={()=>order({type:'start',modelId:model.id,loaned:false})}>Sortir sur l’aire</button></div>
+     {skimmer&&!ledger.sandSkimmer&&<section className={styles.notice} data-sand-skimmer={sandmaw?'eligible':'unearned'}>
+      <h4>Remise du Skimmer</h4>
+      <p>{sandmaw?'Les mandibules de la Matriarche sont inscrites. Le clan te remet le Skimmer au comptoir et tu gardes la prise.':'Termine « Le chant sous les dunes » sur Serekh-9 et extrais les mandibules de la Matriarche avant de revenir au comptoir.'}</p>
+      <p>Rang Blooded et permis de circulation requis.</p>
+      <button disabled={!paidAllowed||!permitAndRank||!sandmaw}
+       onClick={()=>{if(sandmaw)order({type:'claim-sand-skimmer',trophyId:sandmaw.trophyId});}}>Recevoir le Skimmer des dunes</button>
+     </section>}
+     {carrier&&<section className={styles.notice} data-trophy-convoy={displayedTrophy?'eligible':'unearned'}>
+      <h4>Prêt du porteur de trophées</h4>
+      <p>Expose une prise dans la Salle des trophées de ton vaisseau, puis demande un prêt au comptoir. Le clan garde le porteur à la remise.</p>
+      <p>Le convoi transporte un coffre d’exercice de 75 kg.</p>
+      <button disabled={!paidAllowed||!permitAndRank||!displayedTrophy}
+       onClick={()=>order({type:'start',modelId:TROPHY_CARRIER_MODEL,loaned:true,route:'trophy-convoy'})}>Emprunter le porteur du clan</button>
+     </section>}
+     {owned&&<section data-mobility-maintenance><h4>Garage · état persistant</h4><p>État {owned.condition.toFixed(1)} % · réserve {owned.energy.toFixed(1)} % · trajet {owned.distance.toFixed(0)} unités de piste</p><div className={styles.actions}>{(['repair','recharge','care']as const).map(type=>{const cost=mobilityServiceQuote(ledger,model.id,type);if((type==='care')!==(model.kind==='mount'))return null;return <button key={type} disabled={!paidAllowed||cost===null||save.profile.clanMarks<(cost??Infinity)} onClick={()=>order({type,modelId:model.id,expectedCost:cost!})}>{type==='repair'?'Réparer':type==='recharge'?'Recharger':'Soigner / reposer'}{cost!==null?` · ${cost} marques`:' · inutile'}</button>;})}<button disabled={!canDrive} onClick={()=>order({type:'start',modelId:model.id,loaned:false,...(skimmer?{route:'dunes-crossing'}:{})})}>{skimmer?'Rejoindre la piste des dunes':'Sortir sur l’aire'}</button></div>
       {model.kind==='machine'&&<div className={styles.modules}>{MOBILITY_MODULES.map(mod=>{const preview=mobilityUpgradePreview(ledger,model.id,mod.id);const cost=mobilityServiceQuote(ledger,model.id,'upgrade',mod.id);return <article key={mod.id}><strong>{mod.name} · {owned.upgrades[mod.id]}/3</strong><p>{mod.description}</p>{preview&&<div data-upgrade-preview={mod.id}><p className={styles.hint}>Avant → après · état {preview.condition.toFixed(1)} %, sans cargaison</p><dl className={styles.comparison}>{MOBILITY_STAT_LABELS.map(stat=>{const scale='scale' in stat?stat.scale:1;const before=preview.current[stat.key]*scale,after=preview.next[stat.key]*scale;return <div key={stat.key}><dt>{stat.label}</dt><dd>{before.toFixed(stat.decimals)} → <strong>{after.toFixed(stat.decimals)}</strong> {stat.unit}</dd></div>;})}</dl></div>}<button disabled={!paidAllowed||cost===null||save.profile.clanMarks<(cost??Infinity)} onClick={()=>order({type:'upgrade',modelId:model.id,module:mod.id,expectedCost:cost!})}>{cost===null?'Niveau maximal':`Installer · ${cost} marques`}</button></article>;})}</div>}
      </section>}
      {deliveryBike&&<section className={styles.notice} aria-label="Livraison des Forges" data-forge-delivery={ledger.forgeDelivery?'paid':'available'}>

@@ -204,6 +204,9 @@ try {
     await open("dev-l06");
     const arena = page.locator("[data-elite-clan-arena]");
     await arena.waitFor();
+    const term = page.locator('[data-yautja-term="kehrite"]');
+    await term.waitFor();
+    assert.match(await term.innerText(), /Kehrite/);
     assert.match(await page.locator("[data-elite-clan-rites]").innerText(), /Avance jusqu’au poste/);
     await open("dev-o6-terrace");
     await page.locator('[data-o6-horizon-action="saar"]').click({ timeout: 100000 });
@@ -235,7 +238,12 @@ try {
   });
   await run("temple-acheron-mycora-et-chenil", async () => {
     await open("dev-temple-triad");
-    await page.locator('[data-solo-v70][data-solo-step="briefing"]').waitFor();
+    const temple = page.locator('[data-solo-v70][data-solo-step="briefing"]');
+    await temple.waitFor();
+    const dialogue = temple.locator('[data-yautja-translation-v67][data-translation-complete="true"]');
+    assert.match(await dialogue.innerText(), /Saar et Vek entrent avec toi/);
+    await temple.getByRole("button", { name: "Tactile", exact: true }).click();
+    await temple.getByRole("button", { name: "Marcher à gauche" }).waitFor();
     for (const id of ["dev-acheron-field", "dev-mycora-canopy"]) {
       await open(id);
       await page.locator('[data-dev-stage="hunt"] canvas').first().waitFor({ timeout: 80000 });

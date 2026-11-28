@@ -104,7 +104,7 @@ function SceneRehearsal({ scene, replies, choices, variants, tables, voiceProfil
       <div className={styles.rehearsalProgress} role="status">{finished ? "Fin de la répétition" : paused ? "En pause" : "Réplique à consulter"} · {Math.min(position + 1, sequence.length)}/{sequence.length}</div>
       {line && !finished && <article className={styles.rehearsalLine}>
         <div className={styles.speaker}><strong>{speaker}</strong><span>{cellText(line, "C")} · {line.id}</span></div>
-        <div className={styles.spokenText}><YautjaTranslationV67 key={line.id} text={cellText(line, "G")} paused={paused || suspended} showSkip /></div>
+        <div className={styles.spokenText}><YautjaTranslationV67 key={line.id} text={cellText(line, "G")} paused={paused || suspended} /></div>
         <dl className={styles.rehearsalDirections}><div><dt>Geste / intention de jeu · cellule H{line.row}</dt><dd>{cellText(line, "H") || "Aucune indication dans cette cellule."}</dd></div>
           <div><dt>Condition de cette réplique · cellule I{line.row}</dt><dd>{cellText(line, "I") || "Aucune condition dans cette cellule."}</dd></div>
           {cellText(line, "D") && <div><dt>Choix lié dans la source</dt><dd>{cellText(line, "D")}</dd></div>}</dl>
@@ -122,7 +122,7 @@ function SceneRehearsal({ scene, replies, choices, variants, tables, voiceProfil
         <RelatedRecords title="Variantes et conditions à respecter" table={tables.get(VARIANTS)} records={variants} />
       </div>}
     </>}
-    <small className={styles.rehearsalFootnote}>Glyphes décoratifs de l’interface V67 : effet visuel, sans TTS ni langue Yautja présentée comme canonique.</small>
+    <small className={styles.rehearsalFootnote}>La lecture affiche le texte du classeur et les repères de vocabulaire yautja documentés.</small>
   </section>;
 }
 

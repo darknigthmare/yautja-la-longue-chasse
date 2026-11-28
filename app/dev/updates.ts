@@ -16,7 +16,7 @@ export const DEV_EXERCISES: readonly DevDestination[] = [
     id: "dev-mounts", category: "exercises", kind: "exercise", exercise: "mobility",
     label: "Montures · épreuves et sortie",
     description: "La même écurie avec 500 marques, aucune monture et un rang Blooded de test.",
-    walkthrough: ["Choisis Kha’Rha dans le registre, joue les trois épreuves et confirme l’adoption.", "Prépare la monture, puis chevauche jusqu’au sas et vérifie le lien et la fatigue."],
+    walkthrough: ["Choisis Kha’Rha ou une autre monture accessible dans le registre et termine ses étapes de recrutement.", "Prépare la monture, puis chevauche jusqu’au sas et vérifie le lien et la fatigue. Le sauvetage de Stoneback se joue avec un profil Elite en campagne."],
   },
   {
     id: "dev-warp", category: "exercises", kind: "exercise", exercise: "warp",

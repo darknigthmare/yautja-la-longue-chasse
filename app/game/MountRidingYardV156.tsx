@@ -11,6 +11,7 @@ import {
  type MountRidesV156,type MountRideWriterV156,
 } from './systems/mobility/mountRidingV156';
 import {MOUNT_FATIGUE_REFUSAL_V153} from './systems/mobility/mountsV153';
+import {mountExpeditionV153} from './systems/mobility/mountExpeditionsV153';
 import type {GameSfxId} from './sound';
 import type {SceneAudioPort} from './systems/sceneAudio';
 import {createMobilityAudio} from './systems/mobility/audio';
@@ -24,7 +25,7 @@ interface Props {state:MountRidesV156;bindings:ControlBindings;suspended:boolean
  * V156 : sortie montée sur l'aire des convois. Même géométrie, mêmes balises,
  * même trafic et mêmes commandes que l'aire des machines (constantes de
  * course.ts) ; composant séparé pour ne pas toucher à la conduite des engins.
- * Aucun sprite du Kha’Rha n'est admis : silhouette provisoire dessinée.
+ * Le Kha’Rha historique conserve son repère. Les nouvelles montures affichent leur portrait de référence.
  */
 export default function MountRidingYardV156(props:Props){
  const [controller]=useState(()=>new MountRideControllerV156(props.state));
@@ -32,6 +33,7 @@ export default function MountRidingYardV156(props:Props){
  const latest=useRef(props),pauseRef=useRef(true),held=useRef(new MobilityHeldControls()),padGate=useRef(new MobilityPadGate()),neutralRef=useRef(false),canvasRef=useRef<SVGSVGElement|null>(null);
  const active=props.state.active!;
  const model=mobilityDefinition(active.mountId)!;
+ const portrait=mountExpeditionV153(active.mountId)?.portrait;
  const sceneAudio=useRef<ReturnType<typeof createMobilityAudio>|null>(null);
  useEffect(()=>{latest.current=props;},[props]);
  const clear=()=>{held.current.clear();padGate.current.reset();neutralRef.current=false;setPadNeutral(false);};
@@ -128,20 +130,22 @@ export default function MountRidingYardV156(props:Props){
    {MOBILITY_YARD.checkpoints.map((p,i)=><g key={i}><circle cx={p.x} cy={p.y} r="38" fill="none" stroke={i<course.checkpoint?'#83d1ae':'#dfbd78'} strokeWidth="4"/><text x={p.x-6} y={p.y+7} fill="#fff" fontSize="24">{i+1}</text></g>)}
    {MOUNT_RIDE_YARD_V156.hazards.map(h=><rect key={h.id} data-ride-hazard={h.condition} x={h.x} y={h.y} width={h.w} height={h.h} fill="#7a2c18" opacity=".6"/>)}
    {npcs.map(n=><g key={n.id} data-mobility-npc={n.state} transform={`translate(${n.x} ${n.y})`}><circle r="34" fill="none" stroke={n.state==='yielding'?'#e9bc73':'#537777'}/><image href={mobilityDefinition(n.modelId)?.previewPath??''} x="-48" y="-36" width="96" height="64"/><text y="-39" textAnchor="middle" fill="#c9dbdb" fontSize="12">{n.state==='yielding'?'CÈDE LE PASSAGE':'CONVOI'}</text></g>)}
-   <g transform={`translate(${course.x} ${course.y})`} data-mount-silhouette="provisoire"><ellipse cy="12" rx="37" ry="14" fill="#000" opacity=".5"/>
+   <g transform={`translate(${course.x} ${course.y})`} data-mount-silhouette={portrait?'portrait':'provisoire'} data-mount-model={active.mountId}><ellipse cy="12" rx="37" ry="14" fill="#000" opacity=".5"/>
     {Math.abs(course.speed)>20&&<path d={`M${-Math.cos(course.heading)*35} ${-Math.sin(course.heading)*35} l${-Math.cos(course.heading)*Math.min(55,Math.abs(course.speed)/2)} ${-Math.sin(course.heading)*Math.min(55,Math.abs(course.speed)/2)}`} stroke="#caa66c" strokeWidth="7" opacity=".35"/>}
+    {portrait&&<image data-mount-portrait href={portrait} x="-43" y="-34" width="86" height="68" />}
     <g transform={`rotate(${course.heading*180/Math.PI})`}>
-     {/* Silhouette provisoire vue de dessus : quadrupède, épaules hautes, plaques dorsales. Aucun sprite admis. */}
+     {!portrait&&<>
      <ellipse rx="30" ry="12" fill="#5d4a3a" stroke="#c7a978" strokeWidth="2"/>
      <ellipse cx="32" rx="11" ry="8" fill="#6e5643" stroke="#c7a978" strokeWidth="2"/>
      <path d="M-22 -4 L-12 -9 L-2 -4 L8 -9 L18 -4" fill="none" stroke="#d8c08f" strokeWidth="2"/>
      <path d="M-20 -12 L-24 -20 M-20 12 L-24 20 M18 -12 L22 -20 M18 12 L22 20" stroke="#5d4a3a" strokeWidth="5" strokeLinecap="round"/>
      <circle cx="-2" r="5" fill="#9c8a6a" stroke="#2a2420"/>
+     </>}
      <path d="M44 0 L52 0 M46 -5 L52 0 L46 5" fill="none" stroke="#b7ecdc" strokeWidth="3"/>
     </g>
    </g>
   </svg>
-  <p className={styles.hint}>Passe les trois balises dans l’ordre puis reviens au sas et arrête l’animal. Pas de caisse pour une monture (proposé). Cette aire ne comporte aucun feu, aucune zone toxique et aucune explosion : la peur du feu ne s’y déclenche pas. Silhouette provisoire : aucun sprite du Kha’Rha n’est admis ; les animations de monte (ANM-35) restent à produire.</p>
+  <p className={styles.hint}>Passe les trois balises dans l’ordre puis reviens au sas et arrête l’animal. Pas de caisse pour une monture (proposé). Cette aire ne comporte aucun feu, aucune zone toxique et aucune explosion : la peur du feu ne s’y déclenche pas. {portrait?'Le repère de la monture reprend son portrait de référence.':'Le repère du Kha’Rha est une silhouette provisoire.'}</p>
   <p className={styles.hint}>Proposé : fatigue {`+0,5`} par seconde d’effort, triplée au sprint ; dès 80 l’animal ne va plus qu’au pas. Les chocs blessent (même formule que les chocs d’engins). À 50 de blessure ou en panique, il s’arrête : mets pied à terre. Le BOND ne réduit jamais la fatigue.</p>
   <div className={styles.actions}><button onClick={paused?resume:pause} disabled={props.suspended||controller.blocked}>{paused?'Reprendre la chevauchée':'Pause et enregistrer'}</button>
    <button onClick={()=>finish('return')} disabled={props.suspended||!mountRideAtDepotV156(course)||controller.blocked}>Mettre pied à terre au sas</button>

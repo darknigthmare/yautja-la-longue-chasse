@@ -11,6 +11,11 @@ const entry = `
 export * from "./app/game/systems/huntingHoundsV147.ts";
 export * from "./app/game/systems/houndKennelV147.ts";
 export { normalizeSave, applyMissionResult, defaultSave, parseSaveImport } from "./app/game/save.ts";
+export { actCompanionResidence, bindCompanionResidenceMission, companionResidencePresence,
+  settleCompanionResidenceMission } from "./app/game/systems/companionResidence.ts";
+export { createClanShipDockingState, actClanShipDocking } from "./app/game/systems/clanShipDocking.ts";
+export { SHIP_INTERIOR_25D_ROOMS } from "./app/game/systems/shipInterior25d.ts";
+export { MISSION_BY_ID } from "./app/game/data.ts";
 `;
 const bundle = build({
   stdin: { contents: entry, resolveDir: root, loader: "ts" },
@@ -122,9 +127,9 @@ test("V147 a hound's kill counts as the player's for the honour code (same event
   assert.match(hunt, /source === "melee" \? "Mise à mort rapprochée" : "Proie neutralisée",\s*source === "melee" \? 3 : 1/);
 });
 
-test("V147 field orders: refusals, recall, track marks the freshest trail, drive pushes, attack bites", async () => {
+test("V147 historical field orders work without a registered aptitude", async () => {
   const m = await bundle;
-  const hound = recruited(m).hounds[0];
+  const hound = { ...recruited(m).hounds[0], catalogueId: null };
   let field = m.createHoundFieldV147(hound, { x: 0, y: 0 });
   assert.equal(m.issueHoundOrderV147(field, "attack", 50, "p1").reason, "locked");
   assert.equal(m.issueHoundOrderV147(field, "signature", 100).reason, "undefined-order");
@@ -266,4 +271,142 @@ test("Idle and repeated idle recall earn nothing, and a checkpoint preserves the
   const defeated = step(restored, [{ id: "prey", alive: false, x: 0, y: 0 }]);
   assert.deepEqual(defeated.events, [{ type: "attack-done", preyId: "prey" }]);
   assert.equal(defeated.field.ordersCompleted, 2);
+});
+
+test("the listed kennel roles use their own field stats and signature orders", async () => {
+  const m = await bundle;
+  const at = { x: 0, y: 0 };
+  const forCatalogue = catalogueId => m.createHoundFieldV147({ ...recruited(m).hounds[0], catalogueId }, at);
+  const step = (field, x) => m.stepHoundFieldV147(field, {
+    dt: 0.1, player: at, prey: [{ id: "prey", alive: true, x, y: 0 }],
+  });
+  const aptitudes = new Set(m.HOUND_CATALOGUE_V147.map(entry => m.houndAptitudeV147(entry.id)));
+  assert.deepEqual(aptitudes, new Set(["guard", "driver", "tracker"]));
+  assert(m.HOUND_CATALOGUE_V147.every(entry => m.houndAptitudeV147(entry.id)));
+
+  const tracker = forCatalogue("original-companion-05");
+  assert.equal(m.issueHoundOrderV147(tracker, "signature", 99).reason, "locked");
+  assert.equal(m.nextHoundOrderV147("attack", 100, false, tracker.aptitude), "recall");
+  assert.equal(m.nextHoundOrderV147("drive", 100, false, tracker.aptitude), "signature");
+  assert.deepEqual(step(m.issueHoundOrderV147(tracker, "track", 100).field, 233).events, []);
+  const signature = m.issueHoundOrderV147(tracker, "signature", 100).field;
+  const restored = m.restoreHoundFieldV147(m.snapshotHoundFieldV147(signature));
+  assert.deepEqual(restored, signature);
+  assert.deepEqual(step(restored, 233).events, [{ type: "marked", preyId: "prey", visibleSeconds: 12 }]);
+  const legacySnapshot = m.snapshotHoundFieldV147({ ...tracker, order: "track" });
+  delete legacySnapshot.aptitude;
+  legacySnapshot.version = 1;
+  assert.equal(m.restoreHoundFieldV147(legacySnapshot).order, "track");
+  assert.equal(m.restoreHoundFieldV147({ ...legacySnapshot, order: "signature" }), null);
+
+  const driver = { ...forCatalogue("original-companion-02"), x: 225 };
+  const normalDrive = step(m.issueHoundOrderV147(driver, "drive", 100).field, 135);
+  assert.deepEqual(normalDrive.events, [{ type: "driven", preyId: "prey" }]);
+  const closeDrive = step(m.issueHoundOrderV147(driver, "signature", 100).field, 135);
+  assert(closeDrive.events.some(event => event.type === "push" && event.dx < -9));
+  assert.equal(closeDrive.field.orderDone, false);
+
+  const guard = forCatalogue("original-companion-01");
+  assert(guard.maxHealth > driver.maxHealth && driver.maxHealth > tracker.maxHealth);
+  assert.equal(m.issueHoundOrderV147(guard, "signature", 100).reason, "no-target");
+  const charge = step(m.issueHoundOrderV147(guard, "signature", 100, "prey").field, 0);
+  assert.deepEqual(charge.events, [{ type: "bite", preyId: "prey", damage: 20 }]);
+  assert.equal(charge.field.ordersCompleted, 1);
+  assert.deepEqual(step(charge.field, 0).events, []);
+});
+
+test("Brèche follows the real rescue and refit before joining the kennel field roster", async () => {
+  const m = await bundle;
+  const owner = "2026-11-06T00:00:00.000Z", shipId = "classic-predator-spaceship", missionId = "jungle-vey";
+  const host = { kind: "personal", shipId };
+  const enroll = { type: "recruit", catalogueId: "breche", name: "" };
+  let save = m.defaultSave(owner);
+  save = { ...save, profile: { ...save.profile, clanMarks: 150 } };
+  assert(!m.kennelCandidatesV147(save.houndsV147, m.brecheAdmittedV147(save, shipId)).some(entry => entry.id === "breche"));
+  assert.equal(m.applyKennelActionV147(save, enroll, "CITY-28").reason, "breche-campaign-required");
+  const mission = m.MISSION_BY_ID[missionId];
+  const huntResult = completedAt => ({ missionId, difficultyId: "hunter", outcome: "success", score: 80, scans: 3,
+    elapsedSeconds: 240, completedObjectiveIds: mission.objectives.filter(item => item.required || item.kind === "extract").map(item => item.id),
+    honorEvents: [], trophyQuality: "elite", trophyClaims: [{ id: "breche-proof", definitionId: mission.trophy.id,
+      targetName: mission.targetName, targetKind: mission.targetKind, partId: mission.trophy.partId, condition: "pristine", quality: "elite" }],
+    kills: 3, secondWindUsed: false, completedAt });
+  const atStation = (command, roomId = "clan-archives") => {
+    const result = m.actCompanionResidence({
+      ...command, expectedRevision: save.companionResidence?.revision ?? 0, ownerCreatedAt: owner,
+    }, {
+      save, selectedShipId: shipId, ownedShipIds: [shipId], active: true, site: "personal",
+      observation: { site: "personal", roomId, ...m.SHIP_INTERIOR_25D_ROOMS[roomId].station.approach },
+    });
+    assert.equal(result.accepted, true, result.message);
+    save = { ...save, companionResidence: result.state, profile: { ...save.profile, clanMarks: result.clanMarks } };
+  };
+  save = m.applyMissionResult(save, huntResult("2026-11-06T01:00:00.000Z"));
+  atStation({ type: "discover" });
+  atStation({ type: "accept-contact", id: "breche" });
+  const encounterRun = save.missionProgress[missionId].attempts;
+  const bound = m.bindCompanionResidenceMission(save, { ownerCreatedAt: owner, missionId, encounterRun, shipId,
+    insertion: { version: 1, method: "ship", team: "solo" } });
+  assert(bound.accepted, bound.message);
+  save = { ...save, companionResidence: bound.state };
+  const raw = huntResult("2026-11-06T02:00:00.000Z");
+  const progressed = m.applyMissionResult(save, raw);
+  const returned = m.settleCompanionResidenceMission(save, progressed, raw, { ownerSaveCreatedAt: owner, missionId, encounterRun });
+  assert(returned.accepted, returned.message);
+  save = { ...progressed, companionResidence: returned.state };
+  atStation({ type: "prepare-contact", id: "breche", stepId: "care", choiceId: "quiet-care" }, "medical-bay");
+  atStation({ type: "prepare-contact", id: "breche", stepId: "recall", choiceId: "recall-stop" }, "training-arena");
+  atStation({ type: "recruit", id: "breche" });
+  assert.equal(m.brecheAdmittedV147(save, shipId), false, "rescue alone leaves Brèche at the refuge");
+  let docking = m.createClanShipDockingState(owner, shipId);
+  for (const type of ["approach", "dock"]) {
+    const result = m.actClanShipDocking(docking, { type }, { ownerCreatedAt: owner, personalShipId: shipId });
+    assert(result.accepted, result.message);
+    docking = result.state;
+  }
+  save = { ...save, clanShipDocking: docking };
+  atStation({ type: "plan-refit", id: "breche", host });
+  atStation({ type: "fund-refit", id: "breche" }, "launch-airlock");
+  atStation({ type: "complete-refit", id: "breche" }, "launch-airlock");
+  assert.equal(m.brecheAdmittedV147(save, "wolf-ship"), false);
+  assert.equal(m.kennelCandidatesV147(save.houndsV147, m.brecheAdmittedV147(save, shipId)).at(-1).name, "Brèche");
+  const registered = m.applyKennelActionV147(save, enroll, "CITY-28", m.brecheAdmittedV147(save, shipId));
+  assert(registered.ok);
+  assert.equal(registered.clanMarks, save.profile.clanMarks);
+  save = m.normalizeSave({ ...save, houndsV147: registered.houndsV147 });
+  const hound = m.activeKennelHoundV147(save, shipId);
+  assert.equal(hound.name, "Brèche");
+  assert.equal(hound.bond, 0);
+  assert.equal(m.activeKennelHoundV147(save, "wolf-ship"), null);
+  assert.equal(m.applyKennelActionV147(save, enroll, "CITY-28", m.brecheAdmittedV147(save, shipId)).reason, "already-recruited");
+  save = { ...save, houndsV147: m.woundHoundV147(save.houndsV147, hound.id, "2026-11-06T03:00:00.000Z").state };
+  assert.equal(m.activeKennelHoundV147(save, shipId), null);
+  assert.equal(m.companionResidencePresence(save, host).find(entry => entry.id === "breche").availability, "recovering");
+  const care = m.applyKennelActionV147(save, { type: "heal", houndId: hound.id }, "CITY-28", m.brecheAdmittedV147(save, shipId));
+  assert(care.ok);
+  save = { ...save, houndsV147: m.killHoundV147(care.houndsV147, hound.id, "2026-11-06T04:00:00.000Z").state };
+  assert.equal(m.companionResidencePresence(save, host).find(entry => entry.id === "breche").avatarVisible, false);
+  assert.equal(m.activeKennelHoundV147(save, shipId), null);
+  assert.equal(m.kennelCandidatesV147(save.houndsV147).find(entry => entry.id === "breche").status, "fallen");
+});
+
+test("an active scent marker keeps its deadline and belongs only to the recorded hound and live prey", async () => {
+  const m = await bundle;
+  const hound = { ...recruited(m, 100).hounds[0], catalogueId: "original-companion-05" };
+  const at = { x: 0, y: 0 }, prey = { id: "native-prey", alive: true, active: true, x: 233, y: 0 };
+  const field = m.createHoundFieldV147(hound, at);
+  const signature = m.issueHoundOrderV147(field, "signature", 100).field;
+  const marked = m.stepHoundFieldV147(signature, { dt: 0.1, player: at, prey: [prey] });
+  const signal = marked.events.find(event => event.type === "marked");
+  assert.equal(signal.visibleSeconds, 12);
+  const elapsed = 18.5, mark = { houndId: hound.id, preyId: signal.preyId, until: elapsed + signal.visibleSeconds };
+  const checkpoint = JSON.parse(JSON.stringify({ field: m.snapshotHoundFieldV147(marked.field), elapsed: elapsed + 2, mark }));
+  const restoredField = m.restoreHoundFieldV147(checkpoint.field);
+  assert.deepEqual(m.restoreHoundMarkV147(checkpoint.mark, restoredField, checkpoint.elapsed, [prey]), mark);
+  assert.equal(m.restoreHoundMarkV147(checkpoint.mark, restoredField, mark.until, [prey]), null);
+  assert.equal(m.restoreHoundMarkV147({ ...mark, until: checkpoint.elapsed + 13 }, restoredField, checkpoint.elapsed, [prey]), null);
+  assert.equal(m.restoreHoundMarkV147({ ...mark, houndId: "autre" }, restoredField, checkpoint.elapsed, [prey]), null);
+  assert.equal(m.restoreHoundMarkV147(mark, { ...restoredField, markedIds: [] }, checkpoint.elapsed, [prey]), null);
+  assert.equal(m.restoreHoundMarkV147(mark, restoredField, checkpoint.elapsed, [{ ...prey, alive: false }]), null);
+  assert.equal(m.restoreHoundMarkV147(mark, restoredField, checkpoint.elapsed, [{ ...prey, active: false }]), null);
+  assert.equal(m.restoreHoundMarkV147(undefined, restoredField, checkpoint.elapsed, [prey]), null);
 });

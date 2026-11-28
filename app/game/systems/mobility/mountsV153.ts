@@ -30,6 +30,7 @@
 import { MOBILITY_CATALOGUE, mobilityDefinition, mobilityRankIndex } from './catalogue.ts';
 import { inspectMobilityLedger, mobilityCampaignEligible, type MobilityLedger } from './ledger.ts';
 import type { SaveGame } from '../../types';
+import { mountExpeditionV153 } from './mountExpeditionsV153.ts';
 
 // ---------------------------------------------------------------------------
 // Constantes
@@ -146,12 +147,15 @@ export interface MountProfileV153 {
 }
 
 export const MOUNT_PROFILES_V153: readonly MountProfileV153[] = Object.freeze(
-  MOBILITY_CATALOGUE.filter(d => d.kind === 'mount').map(d => ({
-    id: d.id, name: d.name, acquisition: d.acquisition, weaknesses: d.weaknesses,
-    reactions: MOUNT_REACTION_SOURCES_V153.filter(r => d.weaknesses.includes(r.source)),
-    recruitment: d.id === 'kha_rha' ? 'trust-exercises' as const : null,
-    trustExercises: d.id === 'kha_rha' ? KHA_RHA_TRUST_EXERCISES_V153 : [],
-  })),
+  MOBILITY_CATALOGUE.filter(d => d.kind === 'mount').map(d => {
+    const exercises = d.id === 'kha_rha' ? KHA_RHA_TRUST_EXERCISES_V153 : mountExpeditionV153(d.id)?.stages;
+    return {
+      id: d.id, name: d.name, acquisition: d.acquisition, weaknesses: d.weaknesses,
+      reactions: MOUNT_REACTION_SOURCES_V153.filter(r => d.weaknesses.includes(r.source)),
+      recruitment: exercises ? 'trust-exercises' as const : null,
+      trustExercises: exercises ?? [],
+    };
+  }),
 );
 export const mountProfileV153 = (id: unknown): MountProfileV153 | undefined => MOUNT_PROFILES_V153.find(p => p.id === id);
 
@@ -174,6 +178,8 @@ export interface MountTrialV153 {
   id: string; mountId: string; status: 'open' | 'complete';
   passed: { exerciseId: string; eventId: string }[];
   attempts: number;
+  /** Position de marche dans un parcours de terrain, absente des anciennes approches. */
+  fieldAt?: number;
 }
 export interface MountV153 {
   id: string; recruitedRevision: number;
@@ -184,6 +190,8 @@ export interface MountSessionV153 { id: string; mountId: string; gain: number; e
 export interface MountsV153 {
   version: 1; ownerCreatedAt: string; revision: number;
   trial: MountTrialV153 | null;
+  /** Approches terminées conservées après l’ouverture d’un autre parcours. */
+  completedTrials?: MountTrialV153[];
   mounts: MountV153[];
   session: MountSessionV153 | null;
   lastSession: { id: string; mountId: string; gain: number; outcome: 'closed' | 'interrupted' } | null;
@@ -194,6 +202,8 @@ export interface MountsV153 {
 
 export type MountOrderV153 =
   | { type: 'begin-trial'; mountId: string }
+  | { type: 'step-trial'; trialId: string; direction: -1 | 1 }
+  | { type: 'leave-trial'; trialId: string }
   | { type: 'trust-exercise'; trialId: string; exerciseId: string; optionId: string; eventId: string }
   | { type: 'recruit'; mountId: string; trialId: string }
   | { type: 'adopt'; mountId: string; trialId: string; expectedCost: number }
@@ -213,6 +223,31 @@ const keys = (v: object, allowed: readonly string[]) => Object.keys(v).length ==
 const EVENT_ID = /^[a-z0-9][a-z0-9-]{3,63}$/;
 const trialIdFor = (mountId: string) => `trial-${mountId.replace(/_/g, '-')}`;
 
+const TRIAL_KEYS = ['id', 'mountId', 'status', 'passed', 'attempts'];
+const MOUNTS_KEYS = ['version', 'ownerCreatedAt', 'revision', 'trial', 'mounts', 'session', 'lastSession', 'nextSessionId', 'consumedEventIds', 'spentMarks'];
+
+function validMountTrialV153(value: unknown): value is MountTrialV153 {
+  if (!record(value) || typeof value.mountId !== 'string') return false;
+  const profile = mountProfileV153(value.mountId);
+  const field = mountExpeditionV153(value.mountId);
+  if (!profile || profile.recruitment !== 'trust-exercises' ||
+      !keys(value, field ? [...TRIAL_KEYS, 'fieldAt'] : TRIAL_KEYS) || value.id !== trialIdFor(profile.id) ||
+      (value.status !== 'open' && value.status !== 'complete') || !Array.isArray(value.passed) ||
+      !integer(value.attempts) || value.passed.length > profile.trustExercises.length ||
+      value.attempts < value.passed.length) return false;
+  const passedIds = new Set<string>();
+  for (const [index, step] of value.passed.entries()) {
+    if (!record(step) || !keys(step, ['exerciseId', 'eventId']) || step.exerciseId !== profile.trustExercises[index].id ||
+        typeof step.eventId !== 'string' || !EVENT_ID.test(step.eventId) || passedIds.has(step.eventId)) return false;
+    passedIds.add(step.eventId);
+  }
+  const complete = value.passed.length === profile.trustExercises.length;
+  if ((value.status === 'complete') !== complete) return false;
+  if (!field) return true;
+  const destination = field.stages[Math.min(value.passed.length, field.stages.length - 1)].position;
+  return complete ? value.fieldAt === destination : integer(value.fieldAt, 0, destination);
+}
+
 /** Aucun animal par défaut : l'état neuf est vide. */
 export const createMountsV153 = (ownerCreatedAt: string): MountsV153 => ({
   version: 1, ownerCreatedAt, revision: 0, trial: null, mounts: [], session: null, lastSession: null,
@@ -225,25 +260,22 @@ export function inspectMountsV153(raw: unknown, owner: string): { status: 'absen
   if (!record(raw)) return bad;
   if (typeof raw.version === 'number' && raw.version > 1) return { status: 'future-version', state: null };
   if (raw.version !== 1 || raw.ownerCreatedAt !== owner || !Number.isFinite(Date.parse(owner)) ||
-      !keys(raw, ['version', 'ownerCreatedAt', 'revision', 'trial', 'mounts', 'session', 'lastSession', 'nextSessionId', 'consumedEventIds', 'spentMarks']) ||
+      !keys(raw, Object.hasOwn(raw, 'completedTrials') ? [...MOUNTS_KEYS, 'completedTrials'] : MOUNTS_KEYS) ||
       !integer(raw.revision) || !integer(raw.nextSessionId, 1) || !integer(raw.spentMarks) ||
       !Array.isArray(raw.mounts) || raw.mounts.length > MOUNT_PROFILES_V153.length ||
       !Array.isArray(raw.consumedEventIds) || raw.consumedEventIds.length > MOUNT_EVENT_MEMORY_V153 ||
       !raw.consumedEventIds.every(e => typeof e === 'string' && EVENT_ID.test(e)) ||
       new Set(raw.consumedEventIds).size !== raw.consumedEventIds.length) return bad;
   const trial = raw.trial;
-  if (trial !== null) {
-    if (!record(trial) || !keys(trial, ['id', 'mountId', 'status', 'passed', 'attempts']) || typeof trial.mountId !== 'string') return bad;
-    const profile = mountProfileV153(trial.mountId);
-    if (!profile || profile.recruitment !== 'trust-exercises' || trial.id !== trialIdFor(profile.id) ||
-        !['open', 'complete'].includes(String(trial.status)) || !Array.isArray(trial.passed) || !integer(trial.attempts) ||
-        trial.passed.length > profile.trustExercises.length || trial.attempts < trial.passed.length) return bad;
-    for (const [i, p] of trial.passed.entries()) {
-      if (!record(p) || !keys(p, ['exerciseId', 'eventId']) || p.exerciseId !== profile.trustExercises[i].id ||
-          typeof p.eventId !== 'string' || !EVENT_ID.test(p.eventId)) return bad;
-    }
-    if ((trial.status === 'complete') !== (trial.passed.length === profile.trustExercises.length)) return bad;
-  }
+  if (trial !== null && !validMountTrialV153(trial)) return bad;
+  const past = Object.hasOwn(raw, 'completedTrials') ? raw.completedTrials : [];
+  if (!Array.isArray(past) || past.length >= MOUNT_PROFILES_V153.length ||
+      (Object.hasOwn(raw, 'completedTrials') && past.length === 0) ||
+      past.some(entry => !validMountTrialV153(entry) || entry.status !== 'complete')) return bad;
+  const trials: MountTrialV153[] = [...past, ...(trial ? [trial] : [])];
+  const byMount = new Map(trials.map(entry => [entry.mountId, entry]));
+  const evidence = trials.flatMap(entry => entry.passed.map(step => step.eventId));
+  if (byMount.size !== trials.length || new Set(evidence).size !== evidence.length) return bad;
   const ids = new Set<string>();
   for (const m of raw.mounts) {
     if (!record(m) || !keys(m, ['id', 'recruitedRevision', 'proof', 'bond', 'fatigue', 'injury', 'sessions']) || typeof m.id !== 'string' || ids.has(m.id)) return bad;
@@ -252,16 +284,17 @@ export function inspectMountsV153(raw: unknown, owner: string): { status: 'absen
     if (!profile || profile.recruitment !== 'trust-exercises') return bad;
     if (!integer(m.recruitedRevision, 1) || m.recruitedRevision > (raw.revision as number) || !integer(m.bond, 0, MOUNT_BOND_MAX_V153) ||
         !integer(m.fatigue, 0, 100) || !integer(m.injury, 0, 100) || !integer(m.sessions)) return bad;
-    const proof = m.proof;
-    if (!record(proof) || proof.kind !== 'trust-exercises' || !record(trial) ||
-        trial.status !== 'complete' || trial.mountId !== m.id || proof.trialId !== trial.id || !Array.isArray(proof.eventIds) ||
-        JSON.stringify(proof.eventIds) !== JSON.stringify((trial.passed as { eventId: string }[]).map(p => p.eventId))) return bad;
+    const proof = m.proof, evidenceTrial = byMount.get(m.id);
+    if (!record(proof) || proof.kind !== 'trust-exercises' || evidenceTrial?.status !== 'complete' ||
+        proof.trialId !== evidenceTrial.id || !Array.isArray(proof.eventIds) ||
+        JSON.stringify(proof.eventIds) !== JSON.stringify(evidenceTrial.passed.map(p => p.eventId))) return bad;
     if (Object.hasOwn(proof, 'adoptionMarks')) {
       if (!keys(proof, ['kind', 'trialId', 'eventIds', 'adoptionMarks']) || m.id !== 'kha_rha' ||
           proof.adoptionMarks !== KHA_RHA_ADOPTION_MARKS_V153 || (raw.spentMarks as number) < proof.adoptionMarks) return bad;
     } else if (!keys(proof, ['kind', 'trialId', 'eventIds'])) return bad;
     ids.add(m.id);
   }
+  if (past.some(entry => !ids.has(entry.mountId))) return bad;
   const s = raw.session;
   if (s !== null) {
     if (!record(s) || !keys(s, ['id', 'mountId', 'gain', 'explosions']) || typeof s.id !== 'string' || !/^S[1-9][0-9]{0,9}$/.test(s.id) ||
@@ -314,7 +347,9 @@ export function actMountsV153(campaign: Campaign, command: MountCommandV153): Mo
   const state = structuredClone(old);
   let marks = campaign.profile.clanMarks, message = 'Registre des montures confirmé.', outcome: MountOutcomeV153 = 'recorded';
   const consume = (eventId: unknown): boolean => {
-    if (typeof eventId !== 'string' || !EVENT_ID.test(eventId) || state.consumedEventIds.includes(eventId)) return false;
+    if (typeof eventId !== 'string' || !EVENT_ID.test(eventId) || state.consumedEventIds.includes(eventId) ||
+        state.trial?.passed.some(step => step.eventId === eventId) ||
+        state.completedTrials?.some(trial => trial.passed.some(step => step.eventId === eventId))) return false;
     state.consumedEventIds.push(eventId);
     if (state.consumedEventIds.length > MOUNT_EVENT_MEMORY_V153) state.consumedEventIds.shift();
     return true;
@@ -329,15 +364,37 @@ export function actMountsV153(campaign: Campaign, command: MountCommandV153): Mo
     const profile = mountProfileV153(command.mountId), d = mobilityDefinition(command.mountId);
     if (!profile || !d || profile.recruitment !== 'trust-exercises') return refuse('Aucune voie de recrutement jouable pour cette monture.');
     if (mobilityRankIndex(campaign.profile.rankId) < mobilityRankIndex(d.minimumRank)) return refuse('Rang insuffisant pour approcher cette monture.');
-    if (state.trial || state.mounts.some(m => m.id === profile.id) || mobility.state?.owned.some(v => v.id === profile.id)) return refuse('Une approche existe déjà pour cette monture.');
-    state.trial = { id: trialIdFor(profile.id), mountId: profile.id, status: 'open', passed: [], attempts: 0 };
-    message = 'Approche ouverte. Aucun animal n’est attribué : trois exercices de confiance réussis, puis un recrutement confirmé, sont nécessaires.';
+    if (state.mounts.some(m => m.id === profile.id) || mobility.state?.owned.some(v => v.id === profile.id)) return refuse('Cette monture est déjà inscrite.');
+    if (state.trial) {
+      if (!state.mounts.some(m => m.id === state.trial!.mountId)) return refuse('Termine ou quitte l’approche en cours avant d’en ouvrir une autre.');
+      state.completedTrials = [...(state.completedTrials ?? []), state.trial];
+    }
+    state.trial = { id: trialIdFor(profile.id), mountId: profile.id, status: 'open', passed: [], attempts: 0,
+      ...(mountExpeditionV153(profile.id) ? { fieldAt: 0 } : {}) };
+    message = 'Approche ouverte. Réussis les trois épreuves et confirme le recrutement.';
+  } else if (command.type === 'step-trial' || command.type === 'leave-trial') {
+    const trial = state.trial;
+    if (!trial || trial.id !== command.trialId || state.mounts.some(m => m.id === trial.mountId)) return refuse('Aucune approche modifiable à cette référence.');
+    if (command.type === 'leave-trial') {
+      state.trial = null;
+      message = 'Approche quittée. Tu peux ouvrir un autre parcours.';
+    } else {
+      const destination = mountExpeditionV153(trial.mountId)?.stages[trial.passed.length];
+      if (trial.status !== 'open' || trial.fieldAt === undefined || !destination ||
+          (command.direction !== -1 && command.direction !== 1)) return refuse('Cette approche ne permet pas ce déplacement.');
+      const next = trial.fieldAt + command.direction;
+      if (next < 0 || next > destination.position) return refuse('Le poste suivant attend son épreuve.');
+      trial.fieldAt = next;
+      message = next === destination.position ? 'Tu es au poste d’épreuve.' : 'Position du pisteur enregistrée.';
+    }
   } else if (command.type === 'trust-exercise') {
     const trial = state.trial;
     if (!trial || trial.id !== command.trialId || trial.status !== 'open') return refuse('Aucune approche ouverte pour cet exercice.');
     const profile = mountProfileV153(trial.mountId)!;
     const exercise = profile.trustExercises[trial.passed.length];
-    if (!exercise || exercise.id !== command.exerciseId) return refuse('Les exercices de confiance se font dans l’ordre.');
+    if (!exercise || exercise.id !== command.exerciseId) return refuse('Les épreuves se font dans l’ordre.');
+    const field = mountExpeditionV153(trial.mountId);
+    if (field && trial.fieldAt !== field.stages[trial.passed.length].position) return refuse('Rejoins physiquement le poste indiqué.');
     const option = exercise.options.find(o => o.id === command.optionId);
     if (!option) return refuse('Choix inconnu.');
     if (!consume(command.eventId)) return refuse('Événement déjà consommé ou identifiant invalide.');
@@ -348,6 +405,10 @@ export function actMountsV153(campaign: Campaign, command: MountCommandV153): Mo
       outcome = 'passed';
       message = `${exercise.label} réussi. ${option.feedback}`;
     } else {
+      if (field) {
+        trial.passed = [];
+        trial.fieldAt = 0;
+      }
       outcome = 'interrupted';
       message = option.feedback;
     }

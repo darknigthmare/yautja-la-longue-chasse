@@ -37,3 +37,13 @@ const FORGE_QA_ROUTE = [
 export function forgeDeliveryQaGuidance(state, stage) {
   return waypointGuidance(state, Number.isInteger(stage) ? FORGE_QA_ROUTE[stage] : undefined, stage === 2 || stage === 3 ? 3 : 27, stage === 1 || stage === 6);
 }
+
+const NEW_ROUTE_GUIDANCE = {
+  'dunes-crossing': [[470, 490], [870, 490], [870, 125], [870, 29], [140, 29], [140, 490]],
+  'trophy-convoy': [[140, 285], [140, 140], [140, 29], [825, 29], [825, 490], [140, 490]],
+};
+
+export function mobilityExtensionQaGuidance(state, route, stage) {
+  const boundary = route === 'dunes-crossing' ? stage === 3 || stage === 4 : stage === 2 || stage === 3;
+  return waypointGuidance(state, NEW_ROUTE_GUIDANCE[route]?.[stage], boundary ? 3 : 27, stage === 1 || stage === 5);
+}
