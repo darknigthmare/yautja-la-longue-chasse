@@ -1,0 +1,36 @@
+name: Inspect evidence from the two authentic hunt attempts
+on:
+  push:
+    branches: [codex/diagnose-native-hunt-naraka-serekh-20261128]
+permissions:
+  actions: read
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          run-id: '46133915748'
+          github-token: ${{ github.token }}
+          pattern: native-hunt-*
+          path: evidence
+      - run: |
+          node --input-type=module <<'NODE'
+          import {readFileSync,readdirSync} from 'node:fs';
+          import {dirname} from 'node:path';
+          for(const f of readdirSync('evidence',{recursive:true}).filter(p=>p.endsWith('/report.json'))){
+            const path='evidence/'+f,r=JSON.parse(readFileSync(path,'utf8')),a=r.attempts[0],s=a.final.state;
+            const p=JSON.parse(readFileSync(dirname(path)+'/progress.json','utf8'));
+            const band=y=>({x:y.x,y:y.y,w:y.width,h:y.height});
+            const nearby=x=>Math.abs((x.x??0)-s.player.x)<1800;
+            console.log('PILOT_DIAGNOSIS '+JSON.stringify({mission:a.missionId,route:p.lastDecision,
+              phase:s.phase,elapsed:s.elapsed,encounter:a.final.encounterRun,player:band(s.player),unlock:s.bossUnlockReceived,
+              traces:s.scanNodes,tech:s.recoveryNodes,objectives:s.objectives,flags:s.completedObjectiveIds,
+              boss:{id:s.boss.id,x:s.boss.x,y:s.boss.y,health:s.boss.health,active:s.boss.active,alive:s.boss.alive},
+              arena:s.world.bossArena,world:{width:s.world.width,floor:s.world.floorY},nearby:s.enemies.filter(x=>x.alive&&nearby(x)).map(x=>({id:x.id,x:x.x,y:x.y,active:x.active,health:x.health,role:x.role})),
+              hazards:s.world.hazards.filter(nearby),solids:s.world.platforms.filter(x=>x.collision==='solid'&&nearby(x)).map(band),
+              deaths:a.retryEvents?.map(d=>({x:d.nativeDeath?.state.player.x,elapsed:d.elapsed,button:d.button})),
+              acquired:a.final.state.huntRites.specimensV112}));
+          }
+          NODE
