@@ -211,6 +211,7 @@ import {
   type TrophyRitualState,
   type TrophyVictoryState,
 } from "./systems/trophyRitual";
+import { drawWorldHazard } from "./worldHazardRendering";
 import {
   hazardPhaseAt,
   isHazardActive,
@@ -5010,39 +5011,6 @@ function drawAmbientFauna(
   }
 }
 
-function hazardColor(kind: WorldBlueprint["hazards"][number]["kind"]): string {
-  if (kind === "lava" || kind === "steam-vent") return "#ff6338";
-  if (
-    kind === "thin-ice" ||
-    kind === "falling-ice" ||
-    kind === "whiteout"
-  ) {
-    return "#b9efff";
-  }
-  if (kind === "flash-flood") return "#48b2d0";
-  if (kind === "ash-squall") return "#c0a995";
-  if (kind === "tidal-surge" || kind === "rogue-wave") return "#38b9d2";
-  if (kind === "sand-collapse" || kind === "glass-storm") return "#d9a85f";
-  if (kind === "heat-burst") return "#ff8c42";
-  if (kind === "electrical-surge") return "#75f4ff";
-  if (kind === "abyssal-vent") return "#49d9b8";
-  if (
-    kind === "spore-cloud" ||
-    kind === "mycelial-snare" ||
-    kind === "acid-bloom"
-  ) {
-    return "#bf70e8";
-  }
-  if (
-    kind === "gravity-pulse" ||
-    kind === "nanite-field" ||
-    kind === "laser-grid"
-  ) {
-    return "#ff4fd8";
-  }
-  return "#d8ff5f";
-}
-
 function environmentPropImage(
   assets: AssetBank,
   asset: Pick<EnvironmentPropRuntimeAsset, "runtimeUrl">,
@@ -5664,22 +5632,22 @@ function renderGame(
         0.88,
       );
     }
+    if (
+      hazard.x >= cameraX + VIEW_WIDTH || hazard.x + hazard.width <= cameraX ||
+      hazard.y >= cameraY + VIEW_HEIGHT || hazard.y + hazard.height <= cameraY
+    ) continue;
     const hazardPhase = hazardPhaseAt(hazard, state.elapsed);
     if (hazardPhase === "inactive") continue;
-    const telegraphing = hazardPhase === "telegraph";
-    const pulse = telegraphing
-      ? 0.17 + Math.sin(state.elapsed * 11 + hazard.x * 0.01) * 0.07
-      : 0.1 + Math.sin(state.elapsed * 7 + hazard.x * 0.01) * 0.035;
-    context.save();
-    context.globalAlpha = pulse;
-    context.fillStyle = hazardColor(hazard.kind);
-    context.fillRect(hazard.x, hazard.y, hazard.width, hazard.height);
-    context.strokeStyle = hazardColor(hazard.kind);
-    context.lineWidth = telegraphing ? 3 : 2;
-    context.setLineDash(telegraphing ? [4, 5] : [10, 8]);
-    context.strokeRect(hazard.x, hazard.y, hazard.width, hazard.height);
-    context.setLineDash([]);
-    context.restore();
+    drawWorldHazard(
+      context,
+      hazard,
+      hazardPhase,
+      state.elapsed,
+      reducedMotion,
+      hazard.kind === "whiteout" || hazard.kind === "ash-squall" || hazard.kind === "glass-storm"
+        ? sampleWind(state.world.wind, state.elapsed, hazard.x).x
+        : 0,
+    );
   }
 
   for (const effect of state.arsenal.activeEffects) {
