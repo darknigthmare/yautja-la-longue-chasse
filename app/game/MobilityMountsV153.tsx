@@ -3,7 +3,7 @@ import {useState} from 'react';
 import type {SaveGame} from './types';
 import {
   createMountsV153, mountProfileV153, mountCareQuoteV153, mountExerciseRefusalV153,
-  MOUNT_EXERCISES_V153, MOUNT_CONDITIONS_V153, MOUNT_CONDITION_LABELS_V153, MOUNT_SESSION_GAIN_CAP_V153,
+  KHA_RHA_ADOPTION_MARKS_V153, MOUNT_EXERCISES_V153, MOUNT_CONDITIONS_V153, MOUNT_CONDITION_LABELS_V153, MOUNT_SESSION_GAIN_CAP_V153,
   type MountConditionV153, type MountOrderV153, type MountWriterV153,
 } from './systems/mobility/mountsV153';
 import {MOUNT_RIDE_MIN_BOND_V156,mountRideRefusalV156,createMountRidesV156,type MountRideWriterV156} from './systems/mobility/mountRidingV156';
@@ -37,9 +37,17 @@ export default function MobilityMountsV153({save,mountId,allowed,onCommand,onRid
    {!trial&&<button disabled={!can} onClick={()=>order({type:'begin-trial',mountId:profile.id})}>Approcher un jeune adulte</button>}
    {trial&&<ol>{profile.trustExercises.map((ex,i)=>{const done=i<trial.passed.length,current=i===trial.passed.length&&trial.status==='open';return <li key={ex.id} data-trust-exercise={ex.id} data-trust-state={done?'passed':current?'current':'locked'}><strong>{ex.label}</strong> {done?'· réussi':current?'':'· à venir'}<br/><small className={styles.hint}>{ex.source}</small>{current&&<div className={styles.actions}>{ex.options.map(o=><button key={o.id} disabled={!can} onClick={()=>order({type:'trust-exercise',trialId:trial.id,exerciseId:ex.id,optionId:o.id,eventId})}>{o.label}</button>)}</div>}</li>;})}</ol>}
    {trial&&<p>Tentatives : {trial.attempts} · réussis : {trial.passed.length}/{profile.trustExercises.length}</p>}
-   {trial?.status==='complete'&&<button disabled={!can} onClick={()=>order({type:'recruit',mountId:profile.id,trialId:trial.id})}>Confirmer le recrutement de {profile.name}</button>}
+   {trial?.status==='complete'&&<>
+    <div className={styles.actions}>
+     <button disabled={!can} onClick={()=>order({type:'recruit',mountId:profile.id,trialId:trial.id})}>Confirmer le recrutement de {profile.name}</button>
+     {profile.id==='kha_rha'&&<button type="button" data-mount-adoption={profile.id} disabled={!can||save.profile.clanMarks<KHA_RHA_ADOPTION_MARKS_V153} onClick={()=>order({type:'adopt',mountId:profile.id,trialId:trial.id,expectedCost:KHA_RHA_ADOPTION_MARKS_V153})}>Adopter à l’élevage · {KHA_RHA_ADOPTION_MARKS_V153} marques</button>}
+    </div>
+    <p className={styles.hint}>L’adoption finance l’élevage des Forges. Le lien avec l’animal commence à zéro et se construit pendant les séances.</p>
+    {save.profile.clanMarks<KHA_RHA_ADOPTION_MARKS_V153&&<p className={styles.hint}>Il manque {KHA_RHA_ADOPTION_MARKS_V153-save.profile.clanMarks} marques pour l’adoption.</p>}
+   </>}
   </div>}
   {mount&&<div data-mount-recruited={mount.id}>
+   {mount.proof.adoptionMarks!==undefined&&<p data-mount-adoption-receipt={mount.proof.adoptionMarks}>Adopté à l’élevage des Forges · {mount.proof.adoptionMarks} marques</p>}
    <dl className={styles.metrics}><div><dt>BOND</dt><dd data-mount-bond={mount.bond}>{mount.bond} / 100</dd></div><div><dt>Fatigue</dt><dd data-mount-fatigue={mount.fatigue}>{mount.fatigue} / 100</dd></div><div><dt>Blessures</dt><dd data-mount-injury={mount.injury}>{mount.injury} / 100</dd></div><div><dt>Séances</dt><dd>{mount.sessions}</dd></div></dl>
    {!session?<div className={styles.actions}>
     <button disabled={!can||!!state.session} onClick={()=>order({type:'open-session',mountId:mount.id})}>Ouvrir une séance de lien</button>
