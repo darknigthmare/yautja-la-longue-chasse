@@ -1,0 +1,48 @@
+name: Jouer la relève coopérative sous autorité de l’hôte
+on:
+  push:
+    branches: [codex/verify-coop-releve-balise-20261128]
+permissions:
+  contents: read
+jobs:
+  navigateur:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 'aea4c9812face84788c457615c54869a52a18e75'
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /app/
+            /types/
+            /content/the-pit/les-masques-brises/
+            /public/**/manifest.json
+            /public/game/dialogues/v85/bible-dialogues.json
+            /public/game/prologue/v47/village.png
+            /public/game/prologue/v47/arena.png
+            /scripts/qa-campaign-coop-lobby.mjs
+            /tests/browser/campaign-menu-navigation.fixture.tsx
+            /tests/campaign-coop-lobby.test.mjs
+            /tests/campaign-coop-rewards.test.mjs
+            /tests/campaign-menu-ui.test.mjs
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "22"
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Admissions, règlement existant et contrôle des archives
+        run: node --experimental-strip-types --test --test-reporter=spec tests/campaign-coop-lobby.test.mjs tests/campaign-coop-rewards.test.mjs tests/campaign-menu-ui.test.mjs
+      - name: Vérifier les types du moteur et du registre du salon
+        run: node node_modules/typescript/bin/tsc --strict --noEmit --skipLibCheck --allowImportingTsExtensions --target ES2022 --module esnext --moduleResolution bundler app/game/systems/campaignCoopExercise.ts app/game/systems/campaignCoopLobby.ts
+      - name: Relève depuis le menu réel dans quatre onglets Chrome
+        run: node scripts/qa-campaign-coop-lobby.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: salon-coop-campagne
+          path: outputs/campaign-coop-lobby/
+          if-no-files-found: warn
