@@ -1,6 +1,5 @@
 import type { SaveGame } from '../types';
-import { inspectMountsV153, mountProfileV153 } from './mobility/mountsV153';
-import { mountRideRefusalV156 } from './mobility/mountRidingV156';
+import { inspectMountsV153, mountExerciseRefusalV153, MOUNT_EXERCISES_V153 } from './mobility/mountsV153';
 
 export type W3S10MountCampaign = Pick<SaveGame, 'createdAt' | 'mountsV153' | 'mountRidesV156'>;
 
@@ -17,10 +16,13 @@ export function w3S10MountAdmission(campaign: W3S10MountCampaign | undefined, mo
   if (campaign.mountRidesV156?.active) return { admission: null, reason: 'Ramène la monture à l’aire des convois avant de la présenter.' };
   const inspected = inspectMountsV153(campaign.mountsV153, campaign.createdAt);
   const mounts = inspected.state;
-  if (!mounts || !mountProfileV153(mountId)) return { admission: null, reason: 'Le carnet de campagne ne contient aucune monture admissible.' };
-  const reason = mountRideRefusalV156(mounts, mountId);
-  const mount = mounts.mounts.find(item => item.id === mountId);
-  if (reason || !mount) return { admission: null, reason: reason ?? 'Le carnet ne confirme pas cette monture.' };
+  const mount = mounts?.mounts.find(item => item.id === mountId);
+  if (!mount) return { admission: null, reason: 'Le carnet de campagne ne contient aucune monture admissible.' };
+  if (mounts?.session) return { admission: null, reason: 'Termine la séance en cours avant de présenter la monture.' };
+  const lead = MOUNT_EXERCISES_V153.find(exercise => exercise.id === 'lead')!;
+  if (mount.bond < lead.minBond) return { admission: null, reason: `La marche en longe exige un lien BOND de ${lead.minBond}.` };
+  const reason = mountExerciseRefusalV153(mount, lead);
+  if (reason) return { admission: null, reason };
   const admission: W3S10MountAdmission = {
     ownerCreatedAt: campaign.createdAt,
     mountId: mount.id,
