@@ -37,4 +37,6 @@ Les nouveaux noms reprennent la cadence courte du classeur, ses groupes consonan
 
 Yautja Prime désigne le monde natal. C’ntlip désigne un breuvage attesté dans une continuité sous licence. Les cinq noms des chasses raccordées au registre galactique, les destinations humaines et les lieux du Warp suivent leurs sources respectives. [Sources franchise](campagne/planetes-tribus/SOURCES_LORE.md) · [Concordance planétaire](campagne/planetes-tribus/PLANETES.md) · [Référentiel Warp](campagne/WARP_UNIVERSE.md)
 
+À l’issue du rite Blooded, Ulh’vark accueille le joueur au chantier naval R2-M021. Ce nom est une création du jeu pour le personnage identifié comme Responsable du chantier dans la source du classeur. La scène et la voix suivent les références `D6-C-R2-M021` et `D6-V-C-CHANTIER`. [Chantier naval](ship-acquisition-v89.md)
+
 Les clés des régions, des points d’intérêt, des portes et les coordonnées physiques relient l’atlas aux trajets et à la reprise des parties. La nomenclature s’applique à leurs libellés d’affichage. [Registre](../app/game/systems/yautjaPlaceNames.ts)
