@@ -1,0 +1,91 @@
+name: Verify the authored Oseris hunt from combat to workshop
+on:
+  push:
+    branches: [codex/verify-v112-chasse-native-oseris-20261128]
+permissions:
+  contents: read
+jobs:
+  native-hunt:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+      SKINNING_CANOPY_QA_OUTPUT: outputs/qa-oseris-authored-hunt
+    steps:
+      - name: Checkout the exact application and Git asset index
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '8dbd07227bdb59c871875717a5aac60f90adabb6'
+          filter: blob:none
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /content/the-pit/
+            /lib/
+            /types/
+            /worker/
+            /desktop/
+            /docs/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/hosting.json
+            /public/**/manifest.json
+      - name: Use Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install the locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Materialize native route assets
+        run: |
+          node --input-type=module <<'NODE'
+          import {execFileSync} from 'node:child_process';
+          import {readFileSync} from 'node:fs';
+          const index=JSON.parse(readFileSync('tests/fixtures/skinning-canopy-browser-assets-20261109.json','utf8'));
+          const paths=execFileSync('git',['ls-tree','-r','--name-only','HEAD','--','public'],{encoding:'utf8',maxBuffer:16*1024*1024}).trim().split('\n');
+          const selected=new Set([...index.assets.map(a=>a.path),...paths.filter(p=>/(?:\/|[-_])(jungle|oseris)(?:\/|[-_])/.test(p)||p.includes('/enemy-trophy-gameplay/'))]);
+          execFileSync('git',['sparse-checkout','add','--stdin'],{input:[...selected].sort().map(p=>'/'+p).join('\n')+'\n',stdio:['pipe','inherit','inherit']});
+          NODE
+          node scripts/materialize-asset-raccords-20261120.mjs hunt-runtime
+      - name: Lint the native route and run relevant tests
+        run: |
+          node node_modules/eslint/bin/eslint.js --max-warnings=0 scripts/qa-oseris-authored-hunt-v112.mjs scripts/qa-oseris-trophy-return-20261128.mjs tests/browser/oseris-trophy-return-20261128.fixture.jsx
+          node --test tests/hunt-melee-combat.test.mjs tests/canopy-traversal-v112.test.mjs
+      - name: Play native combat, harvest, extraction and conservation
+        run: |
+          test "$(git rev-parse HEAD)" = '8dbd07227bdb59c871875717a5aac60f90adabb6'
+          node scripts/qa-oseris-trophy-return-20261128.mjs --native-oseris
+      - name: Print exact browser evidence
+        if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import {existsSync, readFileSync} from 'node:fs';
+          const p = process.env.SKINNING_CANOPY_QA_OUTPUT + '/report.json';
+          if (!existsSync(p)) console.log('No browser report');
+          else {
+            const {sourceCommit,classification,browserExecuted,passed,checks,cases,errors,captures,failure,failureState,failureText,assets,assetFailures}=JSON.parse(readFileSync(p,'utf8'));
+            const data=cases['native-oseris'];
+            console.log(JSON.stringify({sourceCommit,classification,browserExecuted,passed,
+              checks:checks.map(({name,status,error,details})=>({name,status,error,details:status==='PASS'&&details?.delivery?{delivery:details.delivery.specimensV112}:details})),
+              controls:data?.controls?.slice(-10),progress:data?.progress?.slice(-8),
+              errors,captures:captures.length,assetCount:assets?.length,assetFailures, failure, failureState:failureState?{phase:failureState.phase,message:failureState.message,x:failureState.player.x,y:failureState.player.y,boss:failureState.boss,enemies:failureState.enemies,rites:failureState.rites}:null,
+              visibleFailure:failureText?.slice(-2200)}));
+          }
+          NODE
+      - name: Preserve the browser report, sidecar and captures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: v112-chasse-native-oseris-${{ github.sha }}
+          path: |
+            outputs/qa-oseris-authored-hunt/
+            outputs/qa-asset-raccords-20261120/materialization-hunt-runtime.json
+          if-no-files-found: error
+          retention-days: 30
