@@ -17,7 +17,7 @@ jobs:
       - name: Checkout the exact application and Git asset index
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '52bb755e6c835565ca4af1521e26d1025099dfd2'
+          ref: '95d1a3c9b69c768a8a57364cba6e7a28b7900e68'
           filter: blob:none
           fetch-depth: 1
           sparse-checkout-cone-mode: false
@@ -60,7 +60,7 @@ jobs:
           node --test tests/hunt-melee-combat.test.mjs tests/canopy-traversal-v112.test.mjs
       - name: Play native combat, harvest, extraction and conservation
         run: |
-          test "$(git rev-parse HEAD)" = '52bb755e6c835565ca4af1521e26d1025099dfd2'
+          test "$(git rev-parse HEAD)" = '95d1a3c9b69c768a8a57364cba6e7a28b7900e68'
           node scripts/qa-oseris-trophy-return-20261128.mjs --native-oseris
       - name: Print exact browser evidence
         if: always()
@@ -75,7 +75,7 @@ jobs:
             console.log(JSON.stringify({sourceCommit,classification,browserExecuted,passed,
               checks:checks.map(({name,status,error,details})=>({name,status,error,details:status==='PASS'&&details?.delivery?{delivery:details.delivery.specimensV112}:details})),
               controls:data?.controls?.slice(-10),progress:data?.progress?.slice(-8),
-              errors,captures:captures.length,assetCount:assets?.length,assetFailures, failure, failureState:failureState?{phase:failureState.phase,message:failureState.message,x:failureState.player.x,y:failureState.player.y,boss:failureState.boss,enemies:failureState.enemies,rites:failureState.rites}:null,
+              errors,captures:captures.length,assetCount:assets?.length,assetFailures, mismatches:assets?.filter(asset=>!asset.matchesHead), failure, failureState:failureState?{phase:failureState.phase,message:failureState.message,x:failureState.player.x,y:failureState.player.y,boss:failureState.boss,enemies:failureState.enemies,rites:failureState.rites}:null,
               visibleFailure:failureText?.slice(-2200)}));
           }
           NODE
