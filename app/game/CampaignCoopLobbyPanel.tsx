@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { CampaignCatalogView } from "./CampaignMainMenu";
+import CampaignCoopExercisePanel from "./CampaignCoopExercisePanel";
 import {
   CAMPAIGN_COOP_LOBBY_KEY, CAMPAIGN_COOP_MAX_PLAYERS,
   campaignCoopLobbyIsOpen, sameCampaignCoopOwner, type CampaignCoopLobbyFailure,
@@ -18,11 +19,16 @@ const errorText: Record<CampaignCoopLobbyFailure, string> = {
   occupied: "Un salon est déjà ouvert sur ce profil de navigateur.",
   stale: "Ce salon a été fermé, a expiré ou sa chronique a changé.",
   owner: "Sélectionnez une chronique disponible dans les archives.",
-  host: "Seul l’onglet qui héberge le salon peut gérer les admissions.",
+  host: "Cette décision appartient à l’onglet hôte.",
   guest: "Cette place n’est plus réservée.",
   invitation: "Le code d’invitation est invalide, remplacé ou déjà utilisé.",
   full: "Les trois places du trio sont réservées.",
   already: "Cet onglet ou cette chronique a déjà une place dans le salon.",
+  exercise: "L’exercice a changé ou ne peut plus reprendre avec ces chroniques.",
+  assignment: "Cette manœuvre dépend d’un autre poste du trio.",
+  order: "Le trio attend un autre signal.",
+  route: "La voie signalée ne porte plus de traces fraîches. Relisez la piste.",
+  support: "Cette prise cède sous la charge. Éprouvez l’autre appui.",
 };
 
 export default function CampaignCoopLobbyPanel({ catalog }: { catalog: CampaignCatalogView | null }) {
@@ -108,7 +114,7 @@ export default function CampaignCoopLobbyPanel({ catalog }: { catalog: CampaignC
   }
 
   return <div className={styles.panel} data-campaign-coop-lobby aria-busy={busy}>
-    <p>Réunissez jusqu’à trois chroniques dans des onglets de ce même profil de navigateur. Le salon prépare le trio. La chasse à plusieurs et les récompenses restent indisponibles ici.</p>
+    <p>Réunissez jusqu’à trois chroniques dans des onglets de ce même profil de navigateur pour jouer la relève de balise.</p>
     {!snapshot ? <p role="status">Lecture du registre du salon…</p> : snapshot.unavailable ?
       <p role="alert">Le registre local du salon est illisible ou inaccessible.</p> : !available ?
       <p role="alert">Le salon exige le stockage et le verrouillage d’un navigateur récent sur une adresse sécurisée.</p> :
@@ -164,6 +170,9 @@ export default function CampaignCoopLobbyPanel({ catalog }: { catalog: CampaignC
           {active ? "Demander à rejoindre" : "Ouvrir un salon"}
         </button>
       </form>)}
+    {active && (host || guest) && <CampaignCoopExercisePanel room={active} proof={proof} disabled={disabled}
+      players={[active.host, ...authorized].map(seat => ({ proof: seat.proof, name: title(seat) }))}
+      run={command => { void act(command); }} />}
     {active && full && <p>Les trois places du trio sont réservées.</p>}
     <p aria-live="polite" role="status">{message}</p>
   </div>;
