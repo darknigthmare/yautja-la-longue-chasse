@@ -16,7 +16,7 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'df7da2eb8ce5df95a4a5c45f1cf5ea8d9c7b709e'
+      ASSET_RACCORDS_SOURCE_COMMIT: '556417e084da5cb55c56c28b943c025a4feb7b66'
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: /usr/bin/google-chrome
       AUDIT_CHROME_CHANNEL: chrome
@@ -24,12 +24,12 @@ jobs:
       YAUTJA_QA_BASE_URL: http://127.0.0.1:3121
       YAUTJA_QA_MODE: compiled-app
       AUDIT_CHROME_EXECUTABLE: /usr/bin/google-chrome
-      YAUTJA_QA_RUNTIME_COMMIT: 'df7da2eb8ce5df95a4a5c45f1cf5ea8d9c7b709e'
+      YAUTJA_QA_RUNTIME_COMMIT: '556417e084da5cb55c56c28b943c025a4feb7b66'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'df7da2eb8ce5df95a4a5c45f1cf5ea8d9c7b709e'
+          ref: '556417e084da5cb55c56c28b943c025a4feb7b66'
           persist-credentials: false
           fetch-depth: 3
           filter: blob:none
