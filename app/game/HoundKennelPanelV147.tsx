@@ -8,16 +8,17 @@ import {
   nextBondThresholdV147, unlockedOrdersV147, HOUND_ORDERS_V147,
   type HoundV147, type HuntingHoundsV147,
 } from "./systems/huntingHoundsV147";
-import { HOUND_NAME_MAX_V147, kennelCandidatesV147 } from "./systems/houndKennelV147";
+import {
+  HOUND_KENNEL_ADOPTION_PRICE_V147, HOUND_NAME_MAX_V147, kennelCandidatesV147,
+  type HoundKennelActionV147,
+} from "./systems/houndKennelV147";
 import styles from "./HoundKennelPanelV147.module.css";
 
-export type HoundKennelActionV147 =
-  | { type: "recruit"; catalogueId: string; name: string }
-  | { type: "choose"; houndId: string | null }
-  | { type: "heal"; houndId: string };
+export type { HoundKennelActionV147 } from "./systems/houndKennelV147";
 
 interface Props {
   hounds?: HuntingHoundsV147 | null;
+  clanMarks: number;
   disabled?: boolean;
   /** Returns true only once the save confirmed the write. */
   onAction(action: HoundKennelActionV147): boolean;
@@ -30,16 +31,18 @@ const CONDITION_LABEL: Record<HoundV147["condition"], string> = {
 };
 
 /** V147: playable Chenil des Pisteurs (recruit, choose for the next hunt, heal). */
-export default function HoundKennelPanelV147({ hounds, disabled = false, onAction }: Props) {
+export default function HoundKennelPanelV147({ hounds, clanMarks, disabled = false, onAction }: Props) {
   const titleId = useId(), nameId = useId();
   const candidates = kennelCandidatesV147(hounds);
   const roster = hounds?.hounds ?? [];
   const living = roster.filter(hound => hound.condition !== "dead");
+  const fallen = roster.filter(hound => hound.condition === "dead");
   const available = candidates.filter(candidate => candidate.status === "available");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [name, setName] = useState("");
   const selected = available.find(candidate => candidate.id === selectedId) ?? available[0] ?? null;
   const full = roster.length >= HOUNDS_MAX_V147;
+  const canAfford = clanMarks >= HOUND_KENNEL_ADOPTION_PRICE_V147;
   const activeId = hounds?.activeHoundId ?? null;
 
   return <section className={styles.kennel} aria-labelledby={titleId} data-hound-kennel-v147={HOUND_KENNEL_LOCATION_V147}>
@@ -48,7 +51,7 @@ export default function HoundKennelPanelV147({ hounds, disabled = false, onActio
       <h3 id={titleId}>Tes chiens de chasse</h3>
     </header>
     <p className={styles.notice}>Un seul chien t’accompagne en chasse. Le lien monte avec les ordres menés à terme.
-      Un chien blessé attend ici ses soins ; un chien mort ne revient pas.</p>
+      Les soins sont gratuits. Le registre garde la trace des chiens tombés.</p>
 
     {living.length === 0
       ? <p className={styles.empty} data-hound-kennel-empty>Aucun chien ne marche avec toi. Choisis-en un au registre ci-dessous.</p>
@@ -76,7 +79,21 @@ export default function HoundKennelPanelV147({ hounds, disabled = false, onActio
         })}
       </ul>}
 
-    <h4 className={styles.subtitle}>Registre du chenil</h4>
+    {fallen.length > 0 && <details data-hound-kennel-archive>
+      <summary>Chiens tombés en chasse ({fallen.length})</summary>
+      <ul className={styles.roster}>
+        {fallen.map(hound => <li key={hound.id} data-hound-id={hound.id} data-condition={hound.condition}>
+          <div className={styles.row}><strong>{hound.name}</strong><span>{CONDITION_LABEL.dead}</span></div>
+          {hound.diedAt && hound.diedAt !== new Date(0).toISOString() &&
+            <time className={styles.bond} dateTime={hound.diedAt}>
+              {new Intl.DateTimeFormat("fr", { dateStyle: "medium", timeZone: "UTC" }).format(new Date(hound.diedAt))}
+            </time>}
+        </li>)}
+      </ul>
+    </details>}
+
+    <h4 className={styles.subtitle}>Adoption au chenil</h4>
+    <p className={styles.notice} data-hound-kennel-balance>Solde {clanMarks} Marques de clan · Adoption {HOUND_KENNEL_ADOPTION_PRICE_V147} Marques</p>
     {available.length === 0 || !selected
       ? <p className={styles.empty}>Le registre n’a plus de chien à te confier.</p>
       : <div className={styles.recruit}>
@@ -92,13 +109,17 @@ export default function HoundKennelPanelV147({ hounds, disabled = false, onActio
         </figure>
         <form className={styles.form} onSubmit={event => {
           event.preventDefault();
+          if (disabled || full || !canAfford) return;
           if (onAction({ type: "recruit", catalogueId: selected.id, name })) { setSelectedId(null); setName(""); }
         }}>
           <label htmlFor={nameId}>Nom du chien (facultatif)</label>
           <input id={nameId} type="text" value={name} maxLength={HOUND_NAME_MAX_V147} disabled={disabled}
             placeholder={selected.name} autoComplete="off" onChange={event => setName(event.target.value)} />
-          <button type="submit" disabled={disabled || full} data-hound-kennel-action="recruit">Recruter {name.trim() || selected.name}</button>
+          <button type="submit" disabled={disabled || full || !canAfford} data-hound-kennel-action="recruit">
+            Adopter {name.trim() || selected.name} · {HOUND_KENNEL_ADOPTION_PRICE_V147} Marques
+          </button>
           {full && <p role="status">Le chenil ne te confie pas plus de {HOUNDS_MAX_V147} chiens.</p>}
+          {!canAfford && <p role="status">Il te manque {HOUND_KENNEL_ADOPTION_PRICE_V147 - clanMarks} Marques de clan.</p>}
         </form>
       </div>}
   </section>;
