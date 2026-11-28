@@ -333,7 +333,7 @@ export function normalizeSoloV70State(v:unknown):SoloV70State|null{
         if (pickedUp && (!lock || !visited[room] || pickedUp.tick < lock.tick + pickup.holdTicks ||
             !soloV70RescuePartyM017(pickedUp.positions))) return null;
         if (delivered && (!pickedUp || !soloV70RescuePartyM017(delivered.positions) ||
-            delivered.tick - pickedUp.tick < relief.holdTicks + Math.ceil((delivered.positions[0] - pickedUp.positions[0]) / carrySpeed))) return null;
+            delivered.positions[0] - pickedUp.positions[0] > (delivered.tick - pickedUp.tick - relief.holdTicks) * carrySpeed + .01)) return null;
         if (purgeStartedAt !== null && (!delivered || purgeStartedAt < delivered.tick + SOLO_V70_PURGE_M017.holdTicks)) return null;
         if (visited[room] && !delivered) {
           const saar = (v.companions[0] as { x: number }).x;
