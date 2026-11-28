@@ -69,7 +69,7 @@ import React, {
 import HunterRigPreview from "./HunterRigPreview";
 import HunterChromaticForgeV113 from "./HunterChromaticForgeV113";
 import { HOUND_KENNEL_LOCATION_V147, activeHoundV147 } from "./systems/huntingHoundsV147";
-import { chooseAtKennelV147, healAtKennelV147, kennelRefusalTextV147, recruitAtKennelV147 } from "./systems/houndKennelV147";
+import { applyKennelActionV147, kennelRefusalTextV147 } from "./systems/houndKennelV147";
 import HunterPieceForgeV146, { type CustomizationApplyV146 } from "./HunterPieceForgeV146";
 import { emptyCustomizationV146, outfitForModeV146 } from "./systems/hunterCustomizationV146";
 import { appearanceForModeV147 } from "./systems/hunterModeAppearanceV147";
@@ -5739,13 +5739,16 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               </section>}
                 suspended={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}
                 onKennelActionV147={action => {
-                  const current = saveRef.current.houndsV147;
-                  const change = action.type === "recruit"
-                    ? recruitAtKennelV147(current, { catalogueId: action.catalogueId, name: action.name, locationId: HOUND_KENNEL_LOCATION_V147 })
-                    : action.type === "choose" ? chooseAtKennelV147(current, action.houndId, HOUND_KENNEL_LOCATION_V147)
-                    : healAtKennelV147(current, action.houndId, HOUND_KENNEL_LOCATION_V147);
+                  const current = saveRef.current;
+                  const change = applyKennelActionV147(current, action, HOUND_KENNEL_LOCATION_V147);
                   if (!change.ok) { setToast(kennelRefusalTextV147(change.reason)); return false; }
-                  return persistSocialProgress({ houndsV147: change.state });
+                  const persisted = persistSocialProgress({
+                    houndsV147: change.houndsV147,
+                    ...(change.clanMarks !== current.profile.clanMarks
+                      ? { profile: { ...current.profile, clanMarks: change.clanMarks } } : {}),
+                  });
+                  if (persisted) setToast(change.message);
+                  return persisted;
                 }}
                 onProgress={persistHomeworldProgress}
                 onAdjutantAppointment={(homeworld, prologue) => persistSocialProgress({ homeworld, prologue })}

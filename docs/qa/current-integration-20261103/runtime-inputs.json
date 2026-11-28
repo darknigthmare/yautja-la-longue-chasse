@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2819,
-  "bytes": 1246344458,
+  "files": 2853,
+  "bytes": 1260668233,
   "entries": [
     {
       "path": ".github/workflows/gameplay-cloud-v94.yml",
@@ -55,18 +55,33 @@
     },
     {
       "path": "app/dev/client.tsx",
-      "bytes": 9887,
-      "sha256": "d0039f33b6b242058828f91a7099902a4ccee3116eda1ec658ff34dfc0971dde"
+      "bytes": 10239,
+      "sha256": "40103019cfc3f844659fecbe9f6cb3366879dd3c85cf7af4caa346afa14174c1"
     },
     {
       "path": "app/dev/destinations.ts",
-      "bytes": 16599,
-      "sha256": "9aaafd77cd9a6c6408a2a2224a39b1edcb9b45ae7fcb4db13504179df673fb4c"
+      "bytes": 16805,
+      "sha256": "35cb1b420d297af41f7fde8e03e4e65401c844a7936b09b0c6fcc52fcca37e34"
     },
     {
       "path": "app/dev/dev-travel.module.css",
-      "bytes": 7595,
-      "sha256": "ea1402ad8aa8ffab933699d0772022def3bb06318eabac2c1799e9422373ad99"
+      "bytes": 8698,
+      "sha256": "6c3d8795437d82661e294622690fd39ef07c3168dcd5a48c4491658637bde1b9"
+    },
+    {
+      "path": "app/dev/exercise-fixtures.ts",
+      "bytes": 6496,
+      "sha256": "e62675fce8e0ad03a323ef0eb6338aa7ccc103f5cb958381bf0132fed3c8a644"
+    },
+    {
+      "path": "app/dev/exercise.tsx",
+      "bytes": 10612,
+      "sha256": "d66d358b27621fbf0d94f0b4e95ba7245d84630e3fe30466ccc41f53b8e1d98a"
+    },
+    {
+      "path": "app/dev/native-paths.tsx",
+      "bytes": 3362,
+      "sha256": "c0d461985b94be8aeb88e7212240d2f538fa92908d5dcce322016fedd5400ef0"
     },
     {
       "path": "app/dev/page.tsx",
@@ -75,18 +90,23 @@
     },
     {
       "path": "app/dev/services.tsx",
-      "bytes": 12291,
-      "sha256": "85fe4be5b450e1b7c4bee14815bdadc7c00bc74392d24ee52c750a7982e3707b"
+      "bytes": 12666,
+      "sha256": "808f6b77ec960e7ee91e3ef9805573ad6f32ba0b1a27ae37ce0b42fefd9b9d60"
     },
     {
       "path": "app/dev/session.module.css",
-      "bytes": 3984,
-      "sha256": "d877a7812000e081a71e8bff40dfab87e8fa1870c54ade01d223cae9b07fd357"
+      "bytes": 4586,
+      "sha256": "33193a268e569ce04b5417dd81203fea54ee364074a3868a0c1ceaa8a75d9adf"
     },
     {
       "path": "app/dev/session.tsx",
-      "bytes": 31174,
-      "sha256": "117fb92177a32e1daaab109635a9f607131495ae0f07f28c84752402b7462ddb"
+      "bytes": 35914,
+      "sha256": "24f9dff225a75768b5f6a8a77cf15cc85a0d71e45b25e5e83494353665a88fd3"
+    },
+    {
+      "path": "app/dev/updates.ts",
+      "bytes": 7061,
+      "sha256": "ff1af50e9ecf2c59162a4f4a0ae7b66604293b9568e3bdc207ff3da2601b4dd7"
     },
     {
       "path": "app/dialogues/page.tsx",
@@ -280,8 +300,8 @@
     },
     {
       "path": "app/game/ClanShipIncidentScene.tsx",
-      "bytes": 12163,
-      "sha256": "115af50a38cf547fbaa2d4813fefe288860a2bee90012eb1c53b1d8548c2a998"
+      "bytes": 12199,
+      "sha256": "6a1d0d86d9adfa659365f149e61937fac08ccec89bfc477b7c9a242d1e6dc028"
     },
     {
       "path": "app/game/ClanShipInterior.module.css",
@@ -895,8 +915,8 @@
     },
     {
       "path": "app/game/GameClient.tsx",
-      "bytes": 482573,
-      "sha256": "fc2d3651d78cfeea9d6338865d14f164b93ef10eacb8073e596287c3147980d4"
+      "bytes": 482524,
+      "sha256": "617b314d826d4785dedd23a1675ddd1462e81c45f68a043ac9f56c40aa586e45"
     },
     {
       "path": "app/game/GameReserveEntryV104.module.css",
@@ -1275,8 +1295,8 @@
     },
     {
       "path": "app/game/HomeworldHub.tsx",
-      "bytes": 239715,
-      "sha256": "28dbb93b817a080c59cde58c10265ed0b74eee01c5dbdfd8a7925090675af3a0"
+      "bytes": 240519,
+      "sha256": "7a1d4b17ecf6350afb2604e5eea688e36b29744efb26b02e9e4c09325e57bef9"
     },
     {
       "path": "app/game/HomeworldInteriorDecorV76.tsx",
@@ -1390,8 +1410,8 @@
     },
     {
       "path": "app/game/HomeworldRegionV68.tsx",
-      "bytes": 57576,
-      "sha256": "5904476b18440d92793e7a62fbf81c0f6b434e128d687070d9d920dc9d26db6e"
+      "bytes": 57976,
+      "sha256": "75adef6478878d17b38eb04416ad7ad554cc3d41ea431080ca0591ead04ae3ad"
     },
     {
       "path": "app/game/HomeworldRegionalLoopM014.module.css",
@@ -1540,8 +1560,8 @@
     },
     {
       "path": "app/game/HomeworldVillageAtlasV70.tsx",
-      "bytes": 2492,
-      "sha256": "277ca4fda81eafb3db696fd316c79af1b3f2ac20eb570971886331c578947d52"
+      "bytes": 2704,
+      "sha256": "057a5204cb285e88aee8f51ce5eafb553861b25208f9ba3e66b84cf91f65e3f0"
     },
     {
       "path": "app/game/HomeworldVillageLifeV69.module.css",
@@ -1570,8 +1590,8 @@
     },
     {
       "path": "app/game/HomeworldWorldMapV77.tsx",
-      "bytes": 26290,
-      "sha256": "fdd2ee36ccecaf82d95dececff4d5e3ade7509a7c400206553ad066883eab029"
+      "bytes": 27180,
+      "sha256": "1f68f178acf9739130b81e9e121d19df9bc1f1230695fba6ed884512e2c77946"
     },
     {
       "path": "app/game/HomeworldWorldSceneV77.tsx",
@@ -1605,8 +1625,8 @@
     },
     {
       "path": "app/game/HoundKennelPanelV147.tsx",
-      "bytes": 6016,
-      "sha256": "73bc9276ba40d8b1f07670841edc84fa9166d36c4c4e9a1a1a160ee9c910c914"
+      "bytes": 7411,
+      "sha256": "634983129c26c4f0b9e6f0b1485ae0191f6c2950c80013b4bd5a7b70aeb4712b"
     },
     {
       "path": "app/game/HouseMaterialsPanelV158.tsx",
@@ -1645,13 +1665,13 @@
     },
     {
       "path": "app/game/HuntCanvas.module.css",
-      "bytes": 4660,
-      "sha256": "19c1ace5aec6eafa6234e7f86239415f7d7cd1afda45a8fdaedf4a460be3a34d"
+      "bytes": 5596,
+      "sha256": "faeec84e6e00ce223d2bc2f52461028a9ccad1cea9686fd0f57c4408d14283c7"
     },
     {
       "path": "app/game/HuntCanvas.tsx",
-      "bytes": 510477,
-      "sha256": "6c46888d52cf0cd19de51e6eb0abf2e6167f485e4237158d7794825216514644"
+      "bytes": 513554,
+      "sha256": "52c158edc15b93113067d9145e035d6220782c1c1cf9023e9adc13139fd48e1f"
     },
     {
       "path": "app/game/HuntFieldGuideV112.tsx",
@@ -1720,8 +1740,8 @@
     },
     {
       "path": "app/game/HuntingHoundsPanelV147.tsx",
-      "bytes": 3311,
-      "sha256": "61c1153d5581a017df37645eba764fbcbff96d81b1e336096f60e4c8f8f67973"
+      "bytes": 3337,
+      "sha256": "25f718dac0122af10c5db88f936910b7ca91621cad1e75e975d94874489cb7db"
     },
     {
       "path": "app/game/IceExplorationMap.tsx",
@@ -1825,8 +1845,8 @@
     },
     {
       "path": "app/game/MobilityDrivingYard.tsx",
-      "bytes": 14715,
-      "sha256": "27102422f5fe494040dd09468a6a9aaaf85fccdf24f6ac0320cdf5afa1f11bc8"
+      "bytes": 15143,
+      "sha256": "0553eb52d7c92104bd33d96b452ae331fcbd252491817689204e1fb4177b8489"
     },
     {
       "path": "app/game/MobilityGarage.module.css",
@@ -1835,13 +1855,13 @@
     },
     {
       "path": "app/game/MobilityGarage.tsx",
-      "bytes": 12610,
-      "sha256": "c793f40e2cec41c08087fbe1f24048bb5de4094d4c393bf979ed1fb3cdcd4d74"
+      "bytes": 14048,
+      "sha256": "5ba51c02e4d1a162fff9f8cc60227943fe311fa1ff31b8ee7afb03d07816e242"
     },
     {
       "path": "app/game/MobilityMountsV153.tsx",
-      "bytes": 8112,
-      "sha256": "751e7732352ab1bf6c40e00e2c7031e06c1fbba8ac81e64b1827fa2d3df6bd9f"
+      "bytes": 9066,
+      "sha256": "e793754758ae099578654279fe1eb64247756189760757a9cf8d01abbac2a9ee"
     },
     {
       "path": "app/game/MountRidingYardV156.tsx",
@@ -2260,8 +2280,8 @@
     },
     {
       "path": "app/game/ShipAcquisitionV89.tsx",
-      "bytes": 12562,
-      "sha256": "d19bbb50fb4cd1a84f73527bbee29fa2acf7348bf00d1e91ba8b8e4d597dc4d5"
+      "bytes": 12673,
+      "sha256": "0e96d50521be2cf7be685376f06f6e9af5f43bf3d5a0c1a6d404569c3097f53d"
     },
     {
       "path": "app/game/ShipFlightDrillV87.module.css",
@@ -2705,8 +2725,8 @@
     },
     {
       "path": "app/game/data/companionCatalogueV56.json",
-      "bytes": 9839,
-      "sha256": "2bd1055ffa47dfb7d2f0b226c3583592ab7291466a96140ea3269fd9737c055d"
+      "bytes": 9732,
+      "sha256": "0f95527d50db5dc665895269f3157abbaba63924253b3b32a01c57dd9501b5ad"
     },
     {
       "path": "app/game/data/conceptBiomasksV133.json",
@@ -2985,8 +3005,8 @@
     },
     {
       "path": "app/game/data/homeworldLifeV69.json",
-      "bytes": 19305,
-      "sha256": "01754301a51d48caead08352d1049e76c2a9fe1ff1449075952d7cdc71eb3d6a"
+      "bytes": 19379,
+      "sha256": "5dce14579d5b684236ead530b93528b0696d05518461edff5a7677933e708dbe"
     },
     {
       "path": "app/game/data/homeworldLiftCabinArtV82.json",
@@ -3049,6 +3069,11 @@
       "sha256": "467ffb2831b8e53c228839c523bd44bd79a3bb81213748b322eea7fe74565de7"
     },
     {
+      "path": "app/game/data/homeworldResidentNames.json",
+      "bytes": 14036,
+      "sha256": "a5a6cb66a4c8362dd3ed0c6b0fcc795d783091644eb79f6e64982f72ab9a89c2"
+    },
+    {
       "path": "app/game/data/homeworldStreetCompositionsV92.json",
       "bytes": 13529,
       "sha256": "71336faf17412d3b6c43ecb97394904c920bf135f97546631af074a305f2fdea"
@@ -3075,8 +3100,8 @@
     },
     {
       "path": "app/game/data/homeworldVillageLifeV69.json",
-      "bytes": 217179,
-      "sha256": "52b21b087de501b4a7e247736df8d2802e1dfc1489a553f3d6ec7d8319ff68f0"
+      "bytes": 216579,
+      "sha256": "930a5c8d366c4964c0092b1f54e958745480aad68a656c9d65c972b27441708d"
     },
     {
       "path": "app/game/data/homeworldVillagePortraitReferencesV85.json",
@@ -4475,8 +4500,8 @@
     },
     {
       "path": "app/game/systems/clanHullProjectV171.ts",
-      "bytes": 8212,
-      "sha256": "c61952a8a8d5f6f7b3318c03fae97e9fa63dc70ece62514bb391fa38a444e04d"
+      "bytes": 8310,
+      "sha256": "59483a6f1b1cbb0fee88bee2f5216ac352f3f6235995e606c698941810b62945"
     },
     {
       "path": "app/game/systems/clanLogisticsSessionV108.ts",
@@ -4492,6 +4517,11 @@
       "path": "app/game/systems/clanShipCrewDialogue.ts",
       "bytes": 15242,
       "sha256": "70fe3a2eb0edd8e09721990ff16d8a6c1a07c7219d7c2891b04a8bd3827de58c"
+    },
+    {
+      "path": "app/game/systems/clanShipCrewNames.ts",
+      "bytes": 541,
+      "sha256": "4178cdc021b4abde0a45e9611fb3e7b9fa08e0600c61101b25b259256acca037"
     },
     {
       "path": "app/game/systems/clanShipDialogue.ts",
@@ -4525,8 +4555,8 @@
     },
     {
       "path": "app/game/systems/clanShipOperations.ts",
-      "bytes": 73838,
-      "sha256": "bb9c3cc1a9796b891f2a72614b957b2fbddd6df4eab393568672fa5c45a87c82"
+      "bytes": 73986,
+      "sha256": "8fbaf97eb9f8e6d81574450d7eea3f613a5f7fe186b6b68215105b8a6f363bda"
     },
     {
       "path": "app/game/systems/clanShipOperationsAudio.ts",
@@ -5570,8 +5600,8 @@
     },
     {
       "path": "app/game/systems/homeworldAtlasLandmarksV83.ts",
-      "bytes": 9783,
-      "sha256": "01e59ba6510383d7b04f4954dd9908081d79086c9c6f811cd7f9c18a999f06b8"
+      "bytes": 10112,
+      "sha256": "1725de571077ee04908b174159c372bdb824d8a6375ae58e15da864ec7a1aa38"
     },
     {
       "path": "app/game/systems/homeworldAtlasRoutesV70.ts",
@@ -6155,8 +6185,8 @@
     },
     {
       "path": "app/game/systems/homeworldRegionsV68.ts",
-      "bytes": 56865,
-      "sha256": "3e932c6fb5f692bb184682aeaefb1612bf5568c3da32de1cc0f5e7e22e48d436"
+      "bytes": 56928,
+      "sha256": "67318e7f06fe9d6569311021c171dd3c8976e083ee958099bae16e7f2042f38b"
     },
     {
       "path": "app/game/systems/homeworldResidentContactsV110.ts",
@@ -6425,8 +6455,8 @@
     },
     {
       "path": "app/game/systems/houndKennelV147.ts",
-      "bytes": 6609,
-      "sha256": "0ab5b3c8728756c2503c61dde6ef267bfc7c6dbcd88b09ab45aa75b582298c19"
+      "bytes": 8438,
+      "sha256": "98b35f9b4d17cb6fb0dce580052907676e04d1276fe5f11c112ccd48da8f90db"
     },
     {
       "path": "app/game/systems/houseDialogueV154.ts",
@@ -6515,8 +6545,8 @@
     },
     {
       "path": "app/game/systems/huntingHoundsV147.ts",
-      "bytes": 29290,
-      "sha256": "9c8271275c4299b7c84bd7341d00b74ec430745be9ec79b3437329b760497981"
+      "bytes": 29980,
+      "sha256": "6bc47dc144561c2ba52cae5cbe6052a4a759211d2bf56660aeef985cc677f3fe"
     },
     {
       "path": "app/game/systems/iceExplorationRegion.ts",
@@ -6625,8 +6655,8 @@
     },
     {
       "path": "app/game/systems/mobility/controller.ts",
-      "bytes": 2764,
-      "sha256": "d3fe64b0912453cb3ee0edd15f5529057cf92f83ffc4fb713f6332f1691530b4"
+      "bytes": 2812,
+      "sha256": "c39cadfa87d14bbe728a3d7bb79815162f2bd205ef8632d6366b9a955eacc59b"
     },
     {
       "path": "app/game/systems/mobility/controls.ts",
@@ -6635,13 +6665,13 @@
     },
     {
       "path": "app/game/systems/mobility/course.ts",
-      "bytes": 7273,
-      "sha256": "9ea4a712ec0d1992b8a1b76a8026ae77ebb93351ad93222446b2c888888eee99"
+      "bytes": 7795,
+      "sha256": "9d0212ca99b9d83b8a6f1c2c9079de6472a89e08c28722b12a9e87c9f2e27830"
     },
     {
       "path": "app/game/systems/mobility/ledger.ts",
-      "bytes": 17051,
-      "sha256": "db8d7ed2456eabd3942f688faf1bd66df45d3975e9fd55422ff7e3a1799e2a1d"
+      "bytes": 19231,
+      "sha256": "a55ac8748f2a94743455bfae69054cc85ec547981c8ea88d18ad40cc3fd5a187"
     },
     {
       "path": "app/game/systems/mobility/mountRidingV156.ts",
@@ -6650,8 +6680,8 @@
     },
     {
       "path": "app/game/systems/mobility/mountsV153.ts",
-      "bytes": 28450,
-      "sha256": "af37398a565e2a1170ac78f354643db98c53b1b3626dd5c59b29728640bd9b3a"
+      "bytes": 29593,
+      "sha256": "1d5cfe44fe7eb9ad82924758793fcae209f42ce6a8340464ba28531c38498d2a"
     },
     {
       "path": "app/game/systems/mobility/workshop.ts",
@@ -7607,6 +7637,11 @@
       "path": "app/game/systems/worldBlueprints.ts",
       "bytes": 65335,
       "sha256": "2afc002b8d94aec6e18a6567f3127b5113a7d7b886ddcc147981f5c9e0a94f78"
+    },
+    {
+      "path": "app/game/systems/yautjaPlaceNames.ts",
+      "bytes": 6183,
+      "sha256": "652c90a20538bb5f7c0e72cd97f6e9053039d9d90d1033326f80396ea25ffb50"
     },
     {
       "path": "app/game/systems/yautjaTranslationV67.ts",
@@ -12214,6 +12249,61 @@
       "sha256": "bea22b01bbf8a6b394932abc705b850e40d5037f077add9e6e347b3b65fee1ad"
     },
     {
+      "path": "public/game/user-pack/v56/cutouts/companion-01.png",
+      "bytes": 853867,
+      "sha256": "1e22287b4b90b40429232120809a43e2002d265a499c80691db3bfd3658bc45c"
+    },
+    {
+      "path": "public/game/user-pack/v56/cutouts/companion-02.png",
+      "bytes": 1426885,
+      "sha256": "8a9b8176a80d8e1fcb6fb3c81ec0b84f95145276f645ef3ff9736387dd60971e"
+    },
+    {
+      "path": "public/game/user-pack/v56/cutouts/companion-03.png",
+      "bytes": 1549862,
+      "sha256": "13206d149a02b5f52117a9c00b23a7f12f0903f3580f0461c96e5073684a09bc"
+    },
+    {
+      "path": "public/game/user-pack/v56/cutouts/companion-04.png",
+      "bytes": 1623142,
+      "sha256": "5a70f4f8aa9ecd81a8d5d69d03ae9820b4e45442952d3789f5f5dc39db508634"
+    },
+    {
+      "path": "public/game/user-pack/v56/cutouts/companion-05.png",
+      "bytes": 1082194,
+      "sha256": "c515b6fd1a9bf1c37338c04684f9fbae2b20fc262e8614e24810b2eeb74ac849"
+    },
+    {
+      "path": "public/game/user-pack/v56/cutouts/companion-06.png",
+      "bytes": 1064911,
+      "sha256": "2390dfc9ceae6edc19bcb869a5d27219db781ce3c9047115eca55145f2456cd1"
+    },
+    {
+      "path": "public/game/user-pack/v56/cutouts/companion-07.png",
+      "bytes": 1058996,
+      "sha256": "6d318c74c9237cf93d46decbef930a69f807333271874306682c9706d9ff5ed8"
+    },
+    {
+      "path": "public/game/user-pack/v56/cutouts/companion-08.png",
+      "bytes": 1300351,
+      "sha256": "5bd2b0f4e2c01561db24eda830d0a445ef71277f9e00952890dc2b8b704b2730"
+    },
+    {
+      "path": "public/game/user-pack/v56/cutouts/companion-09.png",
+      "bytes": 1299505,
+      "sha256": "85401774e7098ae52488455118be9d0a0eb9dfde48a02d4c80325e022f162eb1"
+    },
+    {
+      "path": "public/game/user-pack/v56/cutouts/companion-10.png",
+      "bytes": 1213755,
+      "sha256": "a3295fd37b3ac753a97748e32cc38a9edd7032edc0e464a0516cad8a87d2a7bf"
+    },
+    {
+      "path": "public/game/user-pack/v56/cutouts/preddog.png",
+      "bytes": 1615162,
+      "sha256": "0b794f20ba61e85ae705729b3298065847b000798677a7e66cd2b308f0b7513f"
+    },
+    {
       "path": "public/game/warp-universe/20261109-p1/179_viking_halle_fond.png",
       "bytes": 2978667,
       "sha256": "1ff5eaa3635ea059dde6bdc75025174e179c1306e246aefd29530df20382fb44"
@@ -12595,8 +12685,8 @@
     },
     {
       "path": "scripts/mobility-qa-driver.mjs",
-      "bytes": 1732,
-      "sha256": "d866f7c99ba27a6cb48ab192e0958fb5c5fab6c62bfa7b614f76bcd54dc8fd49"
+      "bytes": 2138,
+      "sha256": "b6bea19d9e1f14732c6eb91ac37bf6a5b92c911e460acb9d88d845a0fd173f07"
     },
     {
       "path": "scripts/pit-selection-browser-helpers.mjs",
@@ -12647,6 +12737,11 @@
       "path": "scripts/qa-clan-field-20261103.mjs",
       "bytes": 12109,
       "sha256": "cbbb9252b24be1976a9b300a9fcfd9b4428d4bc27a7532df9b10e5f719ab8226"
+    },
+    {
+      "path": "scripts/qa-clan-hull-rights-m044.mjs",
+      "bytes": 9252,
+      "sha256": "f685b5d133e59abe3b37c3ae53de24411301d65fdd34158871ed83c371f03bd0"
     },
     {
       "path": "scripts/qa-clan-ship-crew-dialogue-20261109.mjs",
@@ -12712,6 +12807,11 @@
       "path": "scripts/qa-clan-war-v115-multitab-v151.mjs",
       "bytes": 21476,
       "sha256": "121fab77bb7e07ea2361ad3daef6a43faeecfc66c1ee8c27fae8c7104025d148"
+    },
+    {
+      "path": "scripts/qa-dev-exercises-browser.mjs",
+      "bytes": 15019,
+      "sha256": "2bb5dacc1ff7c4c8ed3f705f4db6c93fd6f2ee3034789f6b7c571323a0acb8f5"
     },
     {
       "path": "scripts/qa-discovery-hud-layout-v112.mjs",
@@ -12784,6 +12884,11 @@
       "sha256": "8682f46175bbd805aff16aeff5dcd4e2d2e6ba52fe8559a352687684e8a3c2ca"
     },
     {
+      "path": "scripts/qa-hound-kennel-20261128.mjs",
+      "bytes": 12954,
+      "sha256": "ed572c5892787b409600f435d22ee457a91ff8d631433550ccbc168174a3fecd"
+    },
+    {
       "path": "scripts/qa-hunt-campaign-browser-v112.mjs",
       "bytes": 53672,
       "sha256": "0c7fb812c4b486f781b716daaffe78dc438b288265492c3da2011b405e2249d0"
@@ -12820,8 +12925,8 @@
     },
     {
       "path": "scripts/qa-mobility-campaign-20261109.mjs",
-      "bytes": 27270,
-      "sha256": "944101a34b897416f8604d2328c3986c34627185be29a61b2c176d96c5fc9a55"
+      "bytes": 32680,
+      "sha256": "7d2e681e4c93cdb3362a1738d9a297ec6d6da897fce7a1e394fed2817fb8a52a"
     },
     {
       "path": "scripts/qa-mobility-notice-smoke-20261109.mjs",
@@ -12964,6 +13069,11 @@
       "sha256": "04a99bc85362eefe2b65cb37e46598a9097f9d0f85c8e612e5cb45fc51b91512"
     },
     {
+      "path": "scripts/qa-temple-mobile-m017.mjs",
+      "bytes": 7083,
+      "sha256": "9291a6f2ecde926c45bc5dd3c1c91d1312323e5f4ca3cb21f825411c135d42ba"
+    },
+    {
       "path": "scripts/qa-triad-roles-m016.mjs",
       "bytes": 10645,
       "sha256": "c7e9719ebadffb62600c01ed18e95e433a1d9aa9effb1e13854cbf7bdbbf37ea"
@@ -13020,8 +13130,8 @@
     },
     {
       "path": "scripts/runtime-v113-inputs.json",
-      "bytes": 20006,
-      "sha256": "c659dd21568012d4a2892f837e96ba4826b969cd4114ea467949f1726927a7ff"
+      "bytes": 21500,
+      "sha256": "7a741f8b3894ba82076a7a6093331b13f7f6dd45d2160673277093898019e2f5"
     },
     {
       "path": "scripts/snapshot-runtime-v107.mjs",
@@ -13514,6 +13624,11 @@
       "sha256": "3fa8ffbf14ad02aeebe8b6b15852ce80c822d701c798f84d1e8d132f68dcbc6b"
     },
     {
+      "path": "tests/helpers/homeworld-interior-point-fixture.mjs",
+      "bytes": 2751,
+      "sha256": "75a188c2493a81b09238299d3bd06dc2e39128644625fc8b6e3fd37c90978154"
+    },
+    {
       "path": "tests/helpers/homeworld-scene-ssr-v78.mjs",
       "bytes": 2288,
       "sha256": "3f584f4c7d49d5e39abc99488db144091b61d4c54ee6bde0b00c16e613ea935a"
@@ -13527,6 +13642,11 @@
       "path": "tests/helpers/long-memory-r2-m055.mjs",
       "bytes": 3622,
       "sha256": "92245a428a3476c9cdbc49a5b3a5927c63b6849ca2b7c28888d23dccbcc35936"
+    },
+    {
+      "path": "tests/helpers/mount-riding-v156-route.mjs",
+      "bytes": 1031,
+      "sha256": "434dc9219c330ce29091ac59be1acc076b930bb7b5762f3380666f5c8bd2208c"
     },
     {
       "path": "tests/helpers/origin-cohort-race-o6.mjs",
@@ -13749,6 +13869,11 @@
       "sha256": "0836d5779d53e2a70b2d09c63a005cc51ac4d0a92c8e14f5f4cf336be913916a"
     },
     {
+      "path": "tests/homeworld-life-v69.test.mjs",
+      "bytes": 3885,
+      "sha256": "c7ad3a851afa246e0b1ed9ae2d266c0aa73c6960632ce92cfa5dd7ec6c0fb2de"
+    },
+    {
       "path": "tests/homeworld-live-guidance-v112.test.mjs",
       "bytes": 5005,
       "sha256": "c8e3fc2a42c2bdbe89884e2c6f4b8715018b7a1a5994a223a5594b497286c73f"
@@ -13807,6 +13932,11 @@
       "path": "tests/homeworld-triad-city-m016.test.mjs",
       "bytes": 14618,
       "sha256": "40885e20353bbf99acb67eb2ea4c436cb928ddfea5109d06b61ed6edf552e0b6"
+    },
+    {
+      "path": "tests/homeworld-village-life-v69.test.mjs",
+      "bytes": 6645,
+      "sha256": "411b161b75285e01dbaa4e86977d083158d0731736e5c048542ebfbc8796bfa3"
     },
     {
       "path": "tests/homeworld-world-checkpoint-v77.test.mjs",
@@ -13924,9 +14054,39 @@
       "sha256": "23a5f0d4ddc0abb20905021c14b310a9065c9325f420d1d0d50e3f5869160784"
     },
     {
+      "path": "tests/hunting-hounds-v147.test.mjs",
+      "bytes": 15763,
+      "sha256": "fc5fa2477cbfb421cccb3232cdda28bea0fc140804b5926e23034855482aca99"
+    },
+    {
       "path": "tests/legacy-finale-r2.test.mjs",
-      "bytes": 20596,
-      "sha256": "a4d66dd88cf84a012efd6b83588d51febcaa89573706b1c6dc6cbb42520edffb"
+      "bytes": 20731,
+      "sha256": "3124509ede7be057fe010d3a9cd22175b43be15347f01e1b61205161871e008f"
+    },
+    {
+      "path": "tests/minor-arcs-v160.test.mjs",
+      "bytes": 13029,
+      "sha256": "57dd9aac94d5e58026c3740602dc6c3fe8769a0bd48829b49663a300a34a5f76"
+    },
+    {
+      "path": "tests/mobility-forge-delivery.test.mjs",
+      "bytes": 6928,
+      "sha256": "5ef40ebf3c1871dd097308ba9eeb47477303ae7e242f884e3fbeff8666c0aff2"
+    },
+    {
+      "path": "tests/mobility-market-cross-services.test.mjs",
+      "bytes": 5394,
+      "sha256": "d904809254e5ef22d91145d314f19ebd7e02828baba303999c75aea5e5001c29"
+    },
+    {
+      "path": "tests/mount-riding-v156.test.mjs",
+      "bytes": 19331,
+      "sha256": "c2580f2bd2fbce576de7b4670bcd60bc12aeffed80360374e0a406d55130627c"
+    },
+    {
+      "path": "tests/mounts-v153.test.mjs",
+      "bytes": 17114,
+      "sha256": "4c66475c7bd82d2c55fef624a013f25f440159516d6ab9d45829e1baeaa97e94"
     },
     {
       "path": "tests/nef-rejoin-m017.test.mjs",
@@ -14044,6 +14204,11 @@
       "sha256": "d1b972ec42a4384a97281620adac61475ef5588c71d18550dc4bb0fc2b1362d1"
     },
     {
+      "path": "tests/residence-scenes-v154.test.mjs",
+      "bytes": 14080,
+      "sha256": "a2f14b0e8c903b55a4652cf84aad1c7d6aa17d09b434344df23ae9eb9db176df"
+    },
+    {
       "path": "tests/temple-depths-m017.test.mjs",
       "bytes": 5206,
       "sha256": "a8ddfb05e202d277151b352255b1ed38fa49b2748ed741a1a54078ac0fa3b72b"
@@ -14087,6 +14252,11 @@
       "path": "tests/world-hazard-rendering-20261128.test.mjs",
       "bytes": 4425,
       "sha256": "eadf0a18a4fce66c5025b58fcc714527abaeeb50f64e0abfae6366168036c6fb"
+    },
+    {
+      "path": "tests/yautja-place-names.test.mjs",
+      "bytes": 4697,
+      "sha256": "8a79f1e7ffb23ac8f75f68bfbee735bdfb507f3410a78c647675fe39d4834678"
     },
     {
       "path": "tests/youth-campaign.test.mjs",

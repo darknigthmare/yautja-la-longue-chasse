@@ -118,6 +118,7 @@ export default function DevServices({ service, save, progression, host, onSave, 
         const preset = HUNTER_PRESETS.find(entry => entry.id === event.target.value);
         if (preset) onSave({ ...save, appearance: appearanceForPreset(preset.id) });
       }}>{HUNTER_PRESETS.map(entry => <option key={entry.id} value={entry.id}>{entry.name}</option>)}</select></label>
+      <button type="button" onClick={() => onTravel("dev-forge")}>Essayer les parures et les améliorations à la forge</button>
       <Suspense fallback={<p>Chargement de l’apparence…</p>}><HunterRigPreview appearance={save.appearance} armorId={save.loadout.armorId} weaponIds={save.loadout.weaponIds} gearIds={save.loadout.gearIds} size={280} /></Suspense>
     </div>}
 
@@ -175,7 +176,13 @@ export default function DevServices({ service, save, progression, host, onSave, 
 
     {["mobility", "clan-war", "pit", "mausoleum"].includes(service) && <div className={styles.empty}>
       <h3>Service de campagne</h3>
-      {service === "mobility" && <p data-dev-mobility-readonly>Le prêt, le permis, les achats et l’entretien utilisent le registre de ta campagne. Cet essai ne crée aucun véhicule et ne dépense aucune marque.</p>}
+      {service === "mobility" && <>
+        <p data-dev-mobility-readonly>Le comptoir de cette visite ne crée aucun véhicule. Les essais du garage ouvrent un nouveau registre temporaire.</p>
+        <div className={styles.actions}>
+          <button type="button" onClick={() => onTravel("dev-vehicles")}>Essayer les véhicules</button>
+          <button type="button" onClick={() => onTravel("dev-mounts")}>Essayer les montures</button>
+        </div>
+      </>}
       <p>Tu peux explorer ce lieu dans l’essai. Ce service complet conserve sa progression propre et s’ouvre depuis la campagne.</p>
       <p>Reviens dans le lieu pour continuer sa visite ou choisis un autre point de test avec la barre supérieure.</p>
       <button type="button" onClick={onClose}>Continuer la visite</button>

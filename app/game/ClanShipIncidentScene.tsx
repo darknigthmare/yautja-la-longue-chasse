@@ -2,6 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element -- preserve measured native incident props */
 import { memo, useMemo } from 'react';
+import { CLAN_SHIP_CREW_NAMES } from './systems/clanShipCrewNames';
 import type { SaveGame } from './types';
 import type { ClanShipRoomId } from './systems/clanShipDocking';
 import { CLAN_SHIP_INCIDENT_ART } from './clanShipIncidentArt';
@@ -93,7 +94,7 @@ function TrophyIncidentScene({ save, view, roomId, position, suspended, onNaviga
           style={{ left: id === 'ash-scar' ? 620 : 1060, top: 500, zIndex: 500 }}>
           <span className={styles.witnessPlatform} aria-hidden="true" />
           <HomeworldNpcSpriteV84 npcId={clanShipCrewArtIdentity(id)} role={CLAN_SHIP_CREW_ART_ROLES[id]} height={190} facing={id === 'ash-scar' ? 1 : -1} />
-          <span className={styles.witnessName}><strong>{id === 'ash-scar' ? 'Balafre de Cendre' : 'Trace Froide'}</strong><small>Témoin du dossier C-37</small></span>
+          <span className={styles.witnessName}><strong>{CLAN_SHIP_CREW_NAMES[id]}</strong><small>Témoin du dossier C-37</small></span>
         </div>)}
       <div className={styles.trophySupport} data-clan-incident-prop="contested-trophy" data-trophy-plaque={trophy.conclusion ?? 'disputed'}
         data-incident-complete={view.completedRevision !== null} style={{ left: 820, top: 580, zIndex: 581 }}>

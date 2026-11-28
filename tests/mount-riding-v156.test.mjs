@@ -226,3 +226,41 @@ test('interface SSR : bouton Monter, refus affiché, aire montée en pause avec 
  assert(html.includes('data-mount-ride-yard'));assert(html.includes('EN PAUSE'));assert(html.includes('data-mount-silhouette="provisoire"'));
  assert(html.includes('aucun feu'));assert.equal((html.match(/data-mobility-npc=/g)||[]).length,2);assert(!html.includes('data-mobility-yard'));
 });
+
+test('adoption, progression réelle du lien, monte et reprise sans modifier le registre', () => {
+ const cost = mt.KHA_RHA_ADOPTION_MARKS_V153;
+ let save = actM(seed(), {type:'begin-trial', mountId:'kha_rha'});
+ for (const [exerciseId,optionId] of Object.entries(GOOD)) {
+  save = actM(save, {type:'trust-exercise', trialId:TRIAL, exerciseId, optionId, eventId:eid()});
+ }
+ save = actM(save, {type:'adopt', mountId:'kha_rha', trialId:TRIAL, expectedCost:cost});
+ assert.equal(save.profile.clanMarks, 10000 - cost);
+ act(save, {type:'mount', mountId:'kha_rha'}, false);
+ for (let i=0; i<10; i++) {
+  save = actM(save, {type:'open-session', mountId:'kha_rha'});
+  const sessionId = save.mountsV153.session.id;
+  for (let j=0; j<3; j++) {
+   save = actM(save, {type:'exercise', sessionId, exerciseId:'groundwork', condition:'calm', eventId:eid()});
+  }
+  save = actM(save, {type:'close-session', sessionId});
+  const care = mt.mountCareQuoteV153(save.mountsV153, 'kha_rha');
+  save = actM(save, {type:'care', mountId:'kha_rha', expectedCost:care});
+ }
+ assert.equal(mount(save).bond, rv.MOUNT_RIDE_MIN_BOND_V156);
+ save = act(save, {type:'mount', mountId:'kha_rha'}).save;
+ const rideId = save.mountRidesV156.active.id;
+ save = act(save, {type:'ride', rideId, inputs:Array.from({length:60}, () => GO)}).save;
+ const first = save.mountRidesV156.active.course;
+ assert(first.distance > 0);
+ const resumed = saves.parseSaveImport(saves.exportSave(save));
+ assert.equal(resumed.failure, null);
+ assert.deepEqual(resumed.save.mountRidesV156.active.course, first);
+ assert.equal(mount(resumed.save).proof.adoptionMarks, cost);
+ save = act(resumed.save, {type:'ride', rideId, inputs:Array.from({length:60}, () => GO)}).save;
+ assert(save.mountRidesV156.active.course.distance > first.distance);
+ save = act(save, {type:'dismount', rideId}).save;
+ assert.equal(save.mountRidesV156.active, null);
+ assert.equal(save.mountRidesV156.lastReport.result, 'recovered');
+ assert.equal(save.mountRidesV156.lastReport.bondGain, 0);
+ assert.equal(mount(save).proof.adoptionMarks, cost);
+});

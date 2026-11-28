@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { build } from 'esbuild';
-import { access } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import { regionGroundRouteV68 } from '../scripts/homeworld-region-navigation-v68.mjs';
 
 const bundle = await build({ stdin: { contents: "export * from './app/game/systems/homeworldVillageLifeV69';export * from './app/game/systems/homeworldRegionsV68';export * from './app/game/systems/homeworldGeometryV64';export * from './app/game/systems/homeworldArtV64';export * from './app/game/systems/homeworldCharacterPlacementV64';", resolveDir: process.cwd() }, bundle: true, write: false, platform: 'node', format: 'esm', logLevel: 'silent' });
@@ -20,6 +20,24 @@ function walk(state,target) {
   for(const p of regionGroundRouteV68(api,state.regionId,state.zone,state.actor,target,state.tick,state.buildingId).slice(1))state=advance(state,p);
   return state;
 }
+
+test('regional witnesses and village residents use distinct names without technical suffixes', async () => {
+  const path = new URL('../app/game/data/homeworldResidentNames.json', import.meta.url);
+  const registry = JSON.parse(await readFile(path, 'utf8'));
+  const allNames = [];
+  for (const id of api.HOMEWORLD_REGION_IDS_V68) {
+    const witnesses = api.HOMEWORLD_REGIONS_V68[id].residents;
+    const villagers = api.HOMEWORLD_VILLAGE_LIFE_V69[id].residents;
+    assert.deepEqual(Object.fromEntries(witnesses.filter(person => person.id !== 'guide')
+      .map(person => [person.id, person.name])), registry.regionalPosts[id]);
+    assert.deepEqual(Object.fromEntries(villagers.map(person => [person.id, person.name])), registry.villageLife[id]);
+    allNames.push(...witnesses.map(person => person.name), ...villagers.map(person => person.name));
+  }
+  assert.equal(allNames.length, 300);
+  assert.equal(new Set(allNames).size, 300);
+  for (const name of allNames) assert.match(name, /^[\p{L}’]+$/u);
+  assert.equal(api.HOMEWORLD_REGIONS_V68['glass-desert'].residents.find(person => person.id === 'keeper').name, 'Isha’ren');
+});
 
 for(const id of api.HOMEWORLD_REGION_IDS_V68) test(`${id}: eighteen safe routines, four local activities and old checkpoint geometry`, async()=>{
   const life=api.HOMEWORLD_VILLAGE_LIFE_V69[id],definition=api.HOMEWORLD_REGIONS_V68[id];

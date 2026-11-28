@@ -172,9 +172,9 @@ test("SSR: panel shows the scene with its source trigger; conversation shows cor
   assert.equal(source.render("app/game/HouseScenesPanelV154.tsx", { ...props, house: R.houseV149("HOME-CM08") }), "", "not the active residence");
   const chunk = JSON.parse(readFileSync(new URL("../app/game/data/dialoguesV6-401-500.json", import.meta.url), "utf8"));
   const dialogue = D.houseDialogueFromChunkV154(chunk, "V5-HOME-CM07-S1");
-  const talk = source.render("app/game/HouseSceneConversationV154.tsx", { guests: ["Ka’resh 7"], dialogue, moment: { kind: "opening" } });
+  const talk = source.render("app/game/HouseSceneConversationV154.tsx", { guests: ["Ka’resh"], dialogue, moment: { kind: "opening" } });
   assert.ok(talk.includes(D.dialogueLinesForV154(dialogue, { kind: "opening" })[0].text.replace(/’/g, "’")));
-  const presence = source.render("app/game/HouseSceneConversationV154.tsx", { guests: ["Ka’resh 7"], dialogue: null, moment: { kind: "opening" } });
+  const presence = source.render("app/game/HouseSceneConversationV154.tsx", { guests: ["Ka’resh"], dialogue: null, moment: { kind: "opening" } });
   assert.match(presence, /data-house-scene-conversation="presence"/);
   assert.doesNotMatch(presence, /data-dialogue-line/);
   // The real loader finds the corpus scene (dynamic import of the chunk).

@@ -5,6 +5,7 @@ import type {SaveGame} from '../types';
 import {HOMEWORLD_BUILDINGS_V77,HOMEWORLD_POINTS_V77,HOMEWORLD_DISTRICTS_V77,HOMEWORLD_CONNECTORS_V77,type HomeworldLevelV77} from './homeworldWorldV77';
 import {homeworldBuildingDoorwayV64} from './homeworldGeometryV64';
 import {homeworldInteriorForPointV64,homeworldInteriorForBuildingV64} from './homeworldInteriorsV64';
+import {homeworldLandmarkLabel,homeworldRegionNames,yautjaLocalLabel} from './yautjaPlaceNames';
 import {homeworldWayfindingDestinationsV75} from './homeworldWayfindingV75';
 
 export interface HomeworldAtlasLandmarkV83 {
@@ -23,7 +24,7 @@ export function homeworldAtlasLandmarksV83(save?:SaveGame):readonly HomeworldAtl
  const district=(id:string)=>HOMEWORLD_DISTRICTS_V77.find(d=>d.id===id)?.name??'Cité';
  const buildings=HOMEWORLD_BUILDINGS_V77.map(building=>{
   const id='building:'+building.id,meta=metadata.get(id),room=homeworldInteriorForBuildingV64(building.id);
-  return{id,label:meta?.label??building.label,detail:room?.title??building.label,levelId:building.levelId,
+  return{id,label:homeworldLandmarkLabel(building.id,meta?.label??building.label),detail:room?.title??building.label,levelId:building.levelId,
    district:district(building.districtId),category:'building' as const,buildingId:building.id,pointId:null,regionId:null,
    position:homeworldBuildingDoorwayV64(building).approach,access:meta?.access??'open',
    reason:meta?.reason??'Porte physique visitable. Les activités intérieures conservent les conditions de ta partie.',keywords:meta?.keywords??[]};
@@ -34,15 +35,16 @@ export function homeworldAtlasLandmarksV83(save?:SaveGame):readonly HomeworldAtl
   // An ordinary closed departure remains visible with its real restriction.
   // A sensitive reserve remains absent until its narrative authority reveals it.
   if(region==='forbidden-reserve'&&(!save||!meta))return[];
+  const names=homeworldRegionNames(region);
   const room=homeworldInteriorForPointV64(point.id),building=room?HOMEWORLD_BUILDINGS_V77.find(b=>b.id===room.buildingId):null;
   const category:HomeworldAtlasLandmarkV83['category']=region?'region':point.kind==='service'?'service'
    :point.kind==='ship'?'transport':point.kind==='evidence'?'evidence':'person';
-  return[{id,label:meta?.label??point.label,detail:meta?.detail??room?.title??point.label,
+  return[{id,label:names?yautjaLocalLabel(names.region):meta?.label??point.label,detail:meta?.detail??room?.title??point.label,
    levelId:building?.levelId??point.levelId,district:district(building?.districtId??point.districtId),category,
    buildingId:building?.id??null,pointId:point.id,regionId:region,
    position:building?homeworldBuildingDoorwayV64(building).approach:{x:point.x,y:point.y},
    access:meta?.access??(region?'locked':'open'),reason:meta?.reason??(region?'Consulte les conditions de ce départ sur place.':'Rejoins le lieu et interagis ; consulter ce repère ne valide aucune action.'),
-   keywords:meta?.keywords??[]}];
+   keywords:names&&meta?.access==='open'?[...(meta.keywords??[]),yautjaLocalLabel(names.village),yautjaLocalLabel(names.clan)]:meta?.keywords??[]}];
  });
  const archive:HomeworldAtlasLandmarkV83[]=save?.homeworld.visitedDistrictIds.includes('port')?[{
   id:HOMEWORLD_ARCHIVE_V106.npcId,label:HOMEWORLD_ARCHIVE_V106.npcName,detail:'Quai oriental : deux dossiers d’étude à porter séparément vers leurs supports.',levelId:'0',

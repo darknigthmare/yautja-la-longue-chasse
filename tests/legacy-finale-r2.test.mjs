@@ -110,7 +110,8 @@ test("M060 copies only played clan objects and crew, and the archive survives de
   // The didactic support never grants the contested trophy.
   assert.doesNotMatch(firstReadout.belongings[0], /C-37/);
   driver.move("epilogue", "relations", 11, {}, site);
-  assert.deepEqual(finale.legacyClanShipReadoutR2(driver.save.legacyFinaleR2).relations, ["Griffe de Fer"]);
+  assert.deepEqual(driver.save.legacyFinaleR2.epilogue.events[1].clanProof.map(member => member.id), ["iron-claw"]);
+  assert.deepEqual(finale.legacyClanShipReadoutR2(driver.save.legacyFinaleR2).relations, ["Korr’dhak « Griffe de Fer »"]);
   assert.ok(finale.legacyEpilogueChoicesR2(driver.save.legacyFinaleR2, site).includes("welcome"));
   driver.move("epilogue", "choose", 16, { choice: "transmit" }, site);
   driver.move("epilogue", "act", 21, {}, site);

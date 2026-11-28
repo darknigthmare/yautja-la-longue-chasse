@@ -5,11 +5,13 @@ import Link from "next/link";
 import GameVersionBadge from "../game/GameVersionBadge";
 import { DEV_DESTINATIONS, resolveDevDestination, type DevDestination } from "./destinations";
 import styles from "./dev-travel.module.css";
+import NativePaths from "./native-paths";
 
 const DevTravelSession = lazy(() => import("./session"));
 
 const CATEGORIES = [
   { id: "all", label: "Tous les lieux" },
+  { id: "exercises", label: "Ajouts récents" },
   { id: "hubs", label: "Vaisseau personnel" },
   { id: "clan", label: "Clan Ship" },
   { id: "wolf", label: "Château Wolf" },
@@ -107,7 +109,7 @@ export default function DevTravelClient({ initialDestinationId = null }: { initi
 
   const search = searchable(query.trim());
   const visible = DEV_DESTINATIONS.filter(item => (category === "all" || item.category === category)
-    && (!search || searchable(`${item.label} ${item.description} ${item.id}`).includes(search)));
+    && (!search || searchable(`${item.label} ${item.description} ${item.id} ${item.walkthrough?.join(" ") ?? ""}`).includes(search)));
 
   return <main className={styles.root} data-dev-travel>
     <header className={styles.header}>
@@ -141,6 +143,10 @@ export default function DevTravelClient({ initialDestinationId = null }: { initi
       </section>
       {notice && <p className={styles.notice} role="status" data-dev-notice>{notice}</p>}
       {manualLink && <label className={styles.manualLink}>Lien direct<input readOnly value={manualLink} onFocus={event => event.currentTarget.select()} /></label>}
+      {destination.walkthrough && <details className={styles.walkthrough} data-dev-walkthrough>
+        <summary>Étapes à vérifier dans cet essai</summary>
+        <ol>{destination.walkthrough.map(step => <li key={step}>{step}</li>)}</ol>
+      </details>}
       <div className={styles.scene}>
         <SceneBoundary key={`${destination.id}:${epoch}`} onExit={back}>
           <Suspense fallback={<section className={styles.loading} role="status"><span className={styles.loadingMark} aria-hidden="true">Ⅲ</span><h2>Ouverture du lieu…</h2><p>{destination.label}</p></section>}>
@@ -153,7 +159,7 @@ export default function DevTravelClient({ initialDestinationId = null }: { initi
         <div>
           <p className={styles.eyebrow}>ACCÈS DIRECT / LIEUX JOUABLES</p>
           <h1 ref={catalogueHeading} tabIndex={-1}>Choisis ton point d’arrivée.</h1>
-          <p className={styles.intro}>Explore les vaisseaux, le château Wolf et le Homeworld, ou teste une arrivée planétaire avant la chasse. Chaque essai s’ouvre directement, sans avancer la campagne.</p>
+          <p className={styles.intro}>Teste les ajouts récents ou explore les vaisseaux, Homeworld et les chasses. Les parcours guidés ouvrent une scène jouable et indiquent les gestes à vérifier.</p>
         </div>
         <aside className={styles.sessionCard}>
           <span className={styles.sessionIcon} aria-hidden="true">↺</span>
@@ -162,16 +168,17 @@ export default function DevTravelClient({ initialDestinationId = null }: { initi
         </aside>
       </section>
       {notice && <p className={styles.notice} role="status" data-dev-notice>{notice}</p>}
+      <NativePaths onSelect={launch} />
       <section className={styles.filters} aria-label="Trouver un lieu">
         <div className={styles.categories}>
           {CATEGORIES.map(item => <button key={item.id} type="button" data-dev-category={item.id} aria-pressed={category === item.id} onClick={() => setCategory(item.id)}>{item.label}</button>)}
         </div>
-        <label className={styles.search}><span>Rechercher un lieu</span><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Vaisseau, château, arrivée, marché…" data-dev-search /></label>
+        <label className={styles.search}><span>Rechercher un lieu ou un essai</span><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Canopée, écurie, M017, marché…" data-dev-search /></label>
       </section>
       <div className={styles.listHeading}><h2>Destinations</h2><span role="status">{visible.length} lieu{visible.length > 1 ? "x" : ""}</span></div>
       <div className={styles.grid}>
-        {visible.map((item, index) => <article key={item.id} className={styles.card} data-dev-card={item.id}>
-          <div className={styles.cardTop}><span>{CATEGORIES.find(group => group.id === item.category)?.label}</span><span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span></div>
+        {visible.map(item => <article key={item.id} className={styles.card} data-dev-card={item.id}>
+          <div className={styles.cardTop}><span>{CATEGORIES.find(group => group.id === item.category)?.label}</span></div>
           <h3>{item.label}</h3>
           <p>{item.description}</p>
           <button type="button" data-dev-launch={item.id} aria-label={`Entrer : ${item.label}`} onClick={() => launch(item.id)}>Entrer ici <span aria-hidden="true">↗</span></button>

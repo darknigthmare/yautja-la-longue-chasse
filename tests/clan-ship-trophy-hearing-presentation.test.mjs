@@ -5,6 +5,7 @@ import { qa, SHIP, clone, hearing, fixture, actHearing, actIncident, gathered, r
 
 // Actual components rendered by React SSR. These checks do not claim browser
 // hydration, pixels, layout, keyboard play or physical controller validation.
+const { CLAN_SHIP_CREW_NAMES } = qa.load('app/game/systems/clanShipCrewNames.ts');
 const rooms = ['hangar', 'conseil', 'armurerie', 'soins', 'entrainement', 'archives', 'trophees'];
 const witnesses = ['ash-scar', 'cold-trace'];
 const count = (html, attr, id) => html.split(`${attr}="${id}"`).length - 1;
@@ -103,8 +104,11 @@ test('SSR: a suspended or reassigned witness never becomes a ghost actor in the 
     assert.equal(count(all, 'data-clan-crew', 'cold-trace'), 0);
     assert.equal(count(all, 'data-companion-avatar', 'cold-trace'), 0);
     assert.equal(count(gallery, 'data-trophy-hearing-witness', 'ash-scar'), 1);
-    assert.match(gallery, /Trace Froide doit être présent et disponible au Clan Ship/);
-    assert.equal(hearing.clanShipTrophyHearingPresence(save).allowed, false);
+    const presence = hearing.clanShipTrophyHearingPresence(save);
+    const missingWitness = `${CLAN_SHIP_CREW_NAMES['cold-trace']} doit être présent et disponible au Clan Ship`;
+    assert.ok(presence.reason.startsWith(missingWitness));
+    assert.ok(gallery.includes(presence.reason));
+    assert.equal(presence.allowed, false);
   }
 });
 

@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import { qa, ops, saves, fixture, completeInterior, aboard, recruit, refit, residenceAct, gathered, completed, clone, SHIP, OWNER } from './helpers/clan-ship-trophy-hearing-fixture.mjs';
 const { clanShipDialogue: dialogue, CLAN_SHIP_DIALOGUE_TOPICS: topics, CLAN_SHIP_VOICES: voices } = qa.load('app/game/systems/clanShipDialogue.ts');
 const without = (value, keys) => Object.fromEntries(Object.entries(value).filter(([key]) => !keys.includes(key)));
+const { CLAN_SHIP_CREW_NAMES } = qa.load('app/game/systems/clanShipCrewNames.ts');
 const hearing = qa.load('app/game/systems/clanShipTrophyHearing.ts');
 const expeditions = qa.load('app/game/systems/planetInsertion.ts');
 const base = ['ship-seal-check', 'ship-armory-audit', 'ship-triage-route'].reduce(completeInterior, fixture({ evidence: false, ruins: false }));
@@ -41,7 +42,12 @@ test('the twelve original contracts and the collective escort retain their exact
     prerequisiteIds: [], missionId: null, minimumScore: 0, minimumScans: 0, spaceKind: 'escort', steps: [],
   }]);
   assert.deepEqual(ops.CLAN_SHIP_ONBOARDING_STEPS.map(step => without(step, ['label', 'description'])), frozen.onboarding);
-  assert.deepEqual(ops.CLAN_SHIP_RECRUITS.map(value => without(value, ['summary', 'joinLine'])), frozen.recruits);
+  assert.deepEqual(ops.CLAN_SHIP_RECRUITS.map(value => without(value, ['name', 'summary', 'joinLine'])),
+    frozen.recruits.map(value => without(value, ['name'])));
+  for (const [index, npc] of ops.CLAN_SHIP_RECRUITS.entries()) {
+    assert.equal(npc.name, CLAN_SHIP_CREW_NAMES[npc.id]);
+    assert.ok(npc.name.endsWith(` « ${frozen.recruits[index].name} »`), npc.id);
+  }
 });
 test('six original voices have complete, distinct responses without production IDs or a universal canon claim', () => {
   assert.equal(Object.keys(voices).length, 6); assert.equal(topics.length, 4);
