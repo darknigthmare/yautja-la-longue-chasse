@@ -1238,6 +1238,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const [insertionPlan, setInsertionPlan] = useState<PlanetInsertionPlan>(() => ({ ...DEFAULT_PLAN }));
   const [mapReturnScreen, setMapReturnScreen] =
     useState<MapReturnScreen>("deck");
+  const [warpReturnScreen, setWarpReturnScreen] = useState<"clan-chronicle" | "deck" | "map">("clan-chronicle");
   const [stationReturnScreen, setStationReturnScreen] =
     useState<StationReturnScreen>("deck");
   const [openedTrophyHallAtPost, setOpenedTrophyHallAtPost] = useState(false);
@@ -5606,8 +5607,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   ? undefined : () => go("buried-cradle-briefing")} />
             </Suspense>
             <p className="source-badge">
-              <button type="button" className="ghost-button" data-warp-entry-v165 onClick={() => go("warp-epochs")}>
-                Warp · époques (1629 et 2204)
+              <button type="button" className="ghost-button" data-warp-entry-v165
+                onClick={() => { setWarpReturnScreen("clan-chronicle"); go("warp-epochs"); }}>
+                Warp · expéditions temporelles
               </button>
             </p>
           </div>
@@ -5632,7 +5634,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   }
                   return persistSocialProgress(update);
                 }}
-                onClose={() => go("clan-chronicle")} />
+                onClose={() => go(warpReturnScreen)} />
             </Suspense>
           </div>
         </section>
@@ -6034,6 +6036,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <button type="button" className="ghost-button" onClick={() => { setChronicleReturnScreen("deck"); go("clan-chronicle"); }}>
                   Dossier de campagne
                 </button>
+                <button type="button" className="ghost-button" data-warp-deck-entry
+                  disabled={campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue || !!resumableHunt}
+                  onClick={() => { setWarpReturnScreen("deck"); go("warp-epochs"); }}>
+                  Warp · expéditions temporelles
+                </button>
                 <button type="button" className="ghost-button" data-open-queen-hunt-v163 disabled={queenHuntBusy} onClick={openQueenHunt}>
                   Queen Hunt · contrats de ruche{queenHuntAccess.allowed ? "" : " (fermé)"}
                 </button>
@@ -6209,6 +6216,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             onBack={() => go(mapReturnScreen)}
             onChooseMission={chooseMission}
             onVisitHomeworld={() => go("homeworld")}
+            onOpenWarp={campaignSaveBusy || archiveTransferBusy || archiveRecoveryIssue || resumableHunt
+              ? undefined : () => { setWarpReturnScreen("map"); go("warp-epochs"); }}
             onVisitEarth={earthAccessV171.allowed ? openEarthV171 : undefined}
             earthRouteLabel={earthViewV171.phase === "ground" ? "Sol · Reprendre le repérage"
               : earthViewV171.phase === "returned" ? "Sol · Consulter le relevé" : "Sol · Terre"}
