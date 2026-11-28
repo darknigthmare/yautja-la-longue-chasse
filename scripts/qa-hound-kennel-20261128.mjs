@@ -94,11 +94,16 @@ const plugin = {
   resolveId: id => id === harnessId ? "\0" + harnessId : null,
   load: id => id === "\0" + harnessId ? mount : null,
   configureServer(server) {
-    server.middlewares.use((request, response, next) => {
+    server.middlewares.use(async (request, response, next) => {
       if (request.url !== harnessPath) return next();
-      response.setHeader("Content-Type", "text/html; charset=utf-8");
-      response.end('<!doctype html><html><head><meta name="viewport" content="width=device-width"></head>' +
-        '<body><div id="hound-proof"></div><script type="module" src="/@id/' + harnessId + '"></script></body></html>');
+      try {
+        const html = '<!doctype html><html><head><meta name="viewport" content="width=device-width"></head>' +
+          '<body><div id="hound-proof"></div><script type="module" src="/@id/' + harnessId + '"></script></body></html>';
+        response.setHeader("Content-Type", "text/html; charset=utf-8");
+        response.end(await server.transformIndexHtml(harnessPath, html));
+      } catch (error) {
+        next(error);
+      }
     });
   },
 };
