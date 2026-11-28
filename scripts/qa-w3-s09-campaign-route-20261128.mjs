@@ -16,7 +16,8 @@ assert.equal(url.hostname, '127.0.0.1');
 await mkdir(output, { recursive: true });
 
 const api = homeworldQaModelV64(process.cwd(), ['homeworldWorldV77.ts', 'homeworldNavigationV77.ts',
-  'homeworldLocationV77.ts', 'homeworldRegionsV68.ts', 'homeworldSkiffProofW3S09.ts']);
+  'homeworldLocationV77.ts', 'homeworldRegionsV68.ts', 'homeworldGeometryV64.ts', 'homeworldInteriorsV64.ts',
+  'homeworldLavaPlacementV77.ts', 'homeworldSkiffProofW3S09.ts']);
 const seed = firstTracksCompleted();
 const dock = api.HOMEWORLD_LAVA_DOCK_V77;
 const anchor = [120, 135, 150, 165].flatMap(distance => [
