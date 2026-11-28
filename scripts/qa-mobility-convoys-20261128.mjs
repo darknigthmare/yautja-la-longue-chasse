@@ -63,7 +63,7 @@ function initialCampaign() {
   })).find(candidate => domain.homeworldCivicWalkableV80(building.levelId, candidate));
   const local = [40, 45, 50, 54].flatMap(distance => [[1,0],[-1,0],[0,1],[0,-1]].map(([dx,dy]) => ({
     x: point.x + dx * distance, y: point.y + dy * distance,
-  }))).find(candidate => domain.homeworldInteriorWalkableV64(room, candidate, { halfWidth: 32, halfDepth: 22 }) &&
+  }))).find(candidate => domain.isHomeworldInteriorWalkableV64(room, candidate, { halfWidth: 32, halfDepth: 22 }) &&
     domain.nearestHomeworldInteriorTargetV64(room, candidate)?.pointId === 'forge-service');
   assert(exterior && local, 'The disclosed checkpoint must fit the actual forge collision and service.');
   save.homeworld.locationV77 = { version: 1, layoutRevision: 1, ownerCreatedAt: owner, levelId: building.levelId,
