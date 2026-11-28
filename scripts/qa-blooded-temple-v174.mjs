@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { chromium } from "playwright-core";
 import { createServer } from "vite";
@@ -13,7 +13,17 @@ const output = resolve(process.env.BLOODED_TEMPLE_OUTPUT ?? "outputs/qa-blooded-
 const report = { commit: execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim(),
   admission: "Completed chapters V66–V90 and both M019 depositions are prepared using their existing reducers.",
   rooms: [], errors: [], passed: false };
-const seed = bloodedTempleAdmissionV174();
+const priorExportPath = process.env.BLOODED_TEMPLE_PREVIOUS_SAVE;
+const previouslyPlayed = priorExportPath ? saves.parseSaveImport(await readFile(priorExportPath, "utf8")) : null;
+if (previouslyPlayed) assert.ok(previouslyPlayed.save, previouslyPlayed.failure);
+const seed = previouslyPlayed?.save ?? bloodedTempleAdmissionV174();
+if (previouslyPlayed) {
+  assert.equal(temple.templeAvailableV174(seed), true);
+  assert.equal(seed.bloodedTempleV174 ?? null, null);
+  const trial = seed.quatzaRij.expeditions.triad;
+  assert.deepEqual([...trial.presentations].sort(), ["companions", "trophy"]);
+  report.admission = "Export Chromium M019 : le même trio a remis sa preuve avant la reconnaissance.";
+}
 seed.settings.masterVolume = 0;
 const checked = saves.parseSaveImport(saves.exportSave(seed));
 assert.ok(checked.save, checked.failure);
