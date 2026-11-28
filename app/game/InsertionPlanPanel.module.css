@@ -35,3 +35,7 @@
 .energy small { display: block; margin-top: 6px; color: #bad0ca; font-size: 12px; line-height: 1.6; }
 .energy button { min-height: 44px; max-width: 100%; white-space: normal; line-height: 1.5; }
 @media (max-width: 650px) { .panel { padding: 15px; } .choices, .roster { grid-template-columns: minmax(0, 1fr); } }
+
+.composition { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 12px; margin: 14px 0; border: 1px solid #4a6553; padding: 12px; }
+.composition label { display: grid; gap: 6px; min-width: 0; }
+.composition select { width: 100%; min-width: 0; padding: 7px; color: inherit; background: #14251b; border: 1px solid #628071; }

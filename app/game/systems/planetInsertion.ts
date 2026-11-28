@@ -1,6 +1,8 @@
 import { isShipId, shipForId, type ShipId } from '../shipCatalogue';
 import type { HunterAppearance, Loadout, MissionId } from '../types';
 import type { HuntInsertionOutcome } from './huntInsertion';
+import type { ClanShipOperationsState } from './clanShipOperations';
+import { CLAN_SHIP_CREW_NAMES } from './clanShipCrewNames';
 
 /** Frozen at departure and carried into the actual hunt, including a skipped montage. */
 export interface PlanetInsertionPlan {
@@ -9,6 +11,8 @@ export interface PlanetInsertionPlan {
   team: 'solo' | 'triad';
   /** Optional on earlier archives; an optical approach never silences the engines. */
   shipCloak?: boolean;
+  /** New compositions are explicit; earlier archives keep their original pair. */
+  memberIds?: readonly [ExpeditionMemberId, ExpeditionMemberId];
 }
 
 export const DEFAULT_PLAN: Readonly<PlanetInsertionPlan> = Object.freeze({ version: 1, method: 'pod', team: 'solo' });
@@ -16,25 +20,50 @@ export const TRIO_MEMBERS = [
   { id: 'karhek', name: 'Ka’rhek', role: 'Éclaireur', color: '#9bb89c', invitation: 'Je lirai la piste avec toi. Donne le signal pour avancer ou tenir la position.' },
   { id: 'saketh', name: 'Sa’keth', role: 'Garde de la triade', color: '#b9a782', invitation: 'Je couvrirai notre avancée. Nous préparerons aussi le retour des trois chasseurs.' },
 ] as const;
-export type ExpeditionMemberId = typeof TRIO_MEMBERS[number]['id'];
+const FIELD_CREW = [
+  { id: 'cold-trace', name: CLAN_SHIP_CREW_NAMES['cold-trace'], role: 'Pisteur de terrain', color: '#a2bcb0',
+    invitation: 'Termine le relevé de jungle, recrute le pisteur aux archives puis installe son alcôve dans ce vaisseau.' },
+  { id: 'ash-scar', name: CLAN_SHIP_CREW_NAMES['ash-scar'], role: 'Vétéran de ligne', color: '#d1ac83',
+    invitation: 'Termine le circuit d’entraînement, recrute le vétéran à son poste puis installe son alcôve dans ce vaisseau.' },
+] as const;
+export const EXPEDITION_MEMBERS = [...TRIO_MEMBERS, ...FIELD_CREW] as const;
+export type ExpeditionMemberId = typeof EXPEDITION_MEMBERS[number]['id'];
+export type ExpeditionCrewId = typeof FIELD_CREW[number]['id'];
+export const isExpeditionCrewId = (id: unknown): id is ExpeditionCrewId => FIELD_CREW.some(member => member.id === id);
+export const expeditionMember = (id: unknown) => EXPEDITION_MEMBERS.find(member => member.id === id);
+const DEFAULT_MEMBER_IDS = [TRIO_MEMBERS[0].id, TRIO_MEMBERS[1].id] as const;
+
 /** Shared final positions: cinematic and simulation meet at the same world coordinates. */
 export const TRIO_INSERTION_OFFSETS = Object.freeze({ karhek: 160, saketh: 320 });
+export const EXPEDITION_SLOT_OFFSETS = [TRIO_INSERTION_OFFSETS.karhek, TRIO_INSERTION_OFFSETS.saketh] as const;
 export const EXPEDITION_MEMBER_SIZE = Object.freeze({ width: 64, height: 112 });
-export const EXPEDITION_MEMBER_HEALTH: Readonly<Record<ExpeditionMemberId, number>> = Object.freeze({ karhek: 100, saketh: 120 });
+export const EXPEDITION_MEMBER_HEALTH: Readonly<Record<ExpeditionMemberId, number>> = Object.freeze({
+  karhek: 100, saketh: 120, 'cold-trace': 90, 'ash-scar': 135,
+});
+export const EXPEDITION_MEMBER_ATTACK: Readonly<Record<ExpeditionMemberId, { cooldown: number; damage: number }>> = Object.freeze({
+  karhek: { cooldown: 1.55, damage: 9 }, saketh: { cooldown: 1.8, damage: 12 },
+  'cold-trace': { cooldown: 1.3, damage: 8 }, 'ash-scar': { cooldown: 2.1, damage: 15 },
+});
+
+export function expeditionMemberIds(plan: Pick<PlanetInsertionPlan, 'team' | 'memberIds'>): readonly ExpeditionMemberId[] {
+  return plan.team === 'triad' ? plan.memberIds ?? DEFAULT_MEMBER_IDS : [];
+}
 export const EXPEDITION_CARE_COST = Object.freeze({ recovering: 20, missing: 60 });
 
 /** Original campaign characters use existing modular parts, never a named film likeness. */
 export function expeditionMemberAppearance(id: ExpeditionMemberId): HunterAppearance {
+  const tracker = id === 'karhek' || id === 'cold-trace';
   return { presetId: 'custom', bodyMorphId: 'classic', headStyleId: 'legacy-clan',
-    skinId: id === 'karhek' ? 'ashen-mottle' : 'ochre-mottle', biomaskId: 'jungle',
-    dreadStyleId: id === 'karhek' ? 'braided' : 'ringed', dreadTintId: 'obsidian',
-    armorStyleId: 'classic', armorTintId: id === 'karhek' ? 'gunmetal' : 'bronze',
-    trophyAdornmentId: 'none', laserColorId: id === 'karhek' ? 'cyan' : 'amber' };
+    skinId: tracker ? 'ashen-mottle' : 'ochre-mottle', biomaskId: 'jungle',
+    dreadStyleId: id === 'karhek' || id === 'ash-scar' ? 'braided' : 'ringed', dreadTintId: 'obsidian',
+    armorStyleId: 'classic', armorTintId: tracker ? 'gunmetal' : 'bronze',
+    trophyAdornmentId: 'none', laserColorId: tracker ? 'cyan' : 'amber' };
 }
 
 export function expeditionMemberLoadout(id: ExpeditionMemberId): Loadout {
-  return { armorId: id === 'karhek' ? 'scout' : 'hunter', weaponIds: ['combistick', 'wristblades'],
-    gearIds: id === 'karhek' ? ['motion-sensor', 'audio-decoy'] : ['snare', 'motion-sensor'] };
+  const tracker = id === 'karhek' || id === 'cold-trace';
+  return { armorId: tracker ? 'scout' : 'hunter', weaponIds: ['combistick', 'wristblades'],
+    gearIds: tracker ? ['motion-sensor', 'audio-decoy'] : ['snare', 'motion-sensor'] };
 }
 
 const record = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' &&
@@ -46,18 +75,27 @@ const exact = (value: Record<string, unknown>, keys: readonly string[]) => Refle
 
 export function normalizePlanetInsertionPlan(value: unknown): PlanetInsertionPlan | null {
   if (value === undefined) return { ...DEFAULT_PLAN };
-  if (!record(value) || !(exact(value, ['version', 'method', 'team']) ||
-      exact(value, ['version', 'method', 'team', 'shipCloak'])) || value.version !== 1 ||
-      (value.method !== 'pod' && value.method !== 'ship') || (value.team !== 'solo' && value.team !== 'triad') ||
+  if (!record(value) || Object.keys(value).some(key => !['version', 'method', 'team', 'shipCloak', 'memberIds'].includes(key)) ||
+      value.version !== 1 || (value.method !== 'pod' && value.method !== 'ship') ||
+      (value.team !== 'solo' && value.team !== 'triad') ||
       (Object.hasOwn(value, 'shipCloak') && typeof value.shipCloak !== 'boolean') ||
       (value.shipCloak === true && value.method !== 'ship')) return null;
-  return { version: 1, method: value.method as PlanetInsertionPlan['method'], team: value.team as PlanetInsertionPlan['team'],
-    ...(value.shipCloak === true ? { shipCloak: true } : {}) };
+  let memberIds: PlanetInsertionPlan['memberIds'];
+  if (Object.hasOwn(value, 'memberIds')) {
+    const ids = value.memberIds;
+    if (value.team !== 'triad' || !Array.isArray(ids) || ids.length !== 2 || ids[0] === ids[1] ||
+        !expeditionMember(ids[0]) || !expeditionMember(ids[1])) return null;
+    if (ids[0] !== DEFAULT_MEMBER_IDS[0] || ids[1] !== DEFAULT_MEMBER_IDS[1])
+      memberIds = [ids[0], ids[1]];
+  }
+  return { version: 1, method: value.method, team: value.team,
+    ...(value.shipCloak === true ? { shipCloak: true } : {}), ...(memberIds ? { memberIds } : {}) };
 }
 
 export function samePlanetInsertion(left: unknown, right: unknown): boolean {
   const a = normalizePlanetInsertionPlan(left), b = normalizePlanetInsertionPlan(right);
-  return !!a && !!b && a.method === b.method && a.team === b.team && !!a.shipCloak === !!b.shipCloak;
+  return !!a && !!b && a.method === b.method && a.team === b.team && !!a.shipCloak === !!b.shipCloak &&
+    expeditionMemberIds(a).every((id, index) => id === expeditionMemberIds(b)[index]);
 }
 
 /** Balance rules for this game, not claims about the dimensions of film spacecraft. */
@@ -100,13 +138,14 @@ export function inspectExpeditionRoster(value: unknown, owner: string): {
   const invalid = { status: 'invalid-save' as const, state: null };
   if (!record(value) || !exact(value, ['version', 'ownerCreatedAt', 'members', 'settledRunIds']) ||
       (value.version !== 1 && value.version !== EXPEDITION_ROSTER_VERSION) ||
-      value.ownerCreatedAt !== owner || !owner || !Array.isArray(value.members) || value.members.length > 2 ||
+      value.ownerCreatedAt !== owner || !owner || !Array.isArray(value.members) || value.members.length > EXPEDITION_MEMBERS.length ||
       !Array.isArray(value.settledRunIds) || value.settledRunIds.length > 64 ||
       value.settledRunIds.some(id => typeof id !== 'string' || !id || id.length > 160 || /[\x00-\x1f\x7f]/.test(id)) ||
       new Set(value.settledRunIds).size !== value.settledRunIds.length) return invalid;
   const members: ExpeditionRoster['members'] = [];
   for (const raw of value.members) {
-    if (!record(raw) || !exact(raw, ['id', 'assignedShipId', 'availability']) || !TRIO_MEMBERS.some(member => member.id === raw.id) ||
+    if (!record(raw) || !exact(raw, ['id', 'assignedShipId', 'availability']) || !expeditionMember(raw.id) ||
+        (value.version === 1 && isExpeditionCrewId(raw.id)) ||
         (!isShipId(raw.assignedShipId) && !(value.version === EXPEDITION_ROSTER_VERSION && raw.assignedShipId === null)) ||
         !['ready', 'recovering', 'missing'].includes(raw.availability as string) ||
         members.some(member => member.id === raw.id)) return invalid;
@@ -117,8 +156,10 @@ export function inspectExpeditionRoster(value: unknown, owner: string): {
 }
 
 /** Accept an explicit agreement without creating an occupant aboard any hull. */
-export function recruitExpeditionMember(roster: ExpeditionRoster | null | undefined, owner: string, id: ExpeditionMemberId): ExpeditionRoster {
-  if (!owner || !TRIO_MEMBERS.some(member => member.id === id)) throw new TypeError('Recrutement de triade invalide.');
+export function recruitExpeditionMember(roster: ExpeditionRoster | null | undefined, owner: string, id: ExpeditionMemberId,
+  clan?: ClanShipOperationsState | null): ExpeditionRoster {
+  if (!owner || !expeditionMember(id) || isExpeditionCrewId(id) &&
+      (clan?.ownerCreatedAt !== owner || !clan.recruitedNpcIds.includes(id))) throw new TypeError('Recrutement de triade invalide.');
   const current = inspectExpeditionRoster(roster, owner);
   if (current.status === 'invalid-save' || current.status === 'future-version') throw new TypeError('Registre de triade incompatible.');
   if (current.state?.members.some(member => member.id === id)) return current.state;
@@ -129,7 +170,7 @@ export function recruitExpeditionMember(roster: ExpeditionRoster | null | undefi
 
 /** Assign only an already recruited hunter; moving hull never changes availability. */
 export function assignExpeditionMember(roster: ExpeditionRoster | null | undefined, owner: string, shipId: ShipId, id: ExpeditionMemberId): ExpeditionRoster {
-  if (!owner || !isShipId(shipId) || !TRIO_MEMBERS.some(member => member.id === id)) throw new TypeError('Affectation de triade invalide.');
+  if (!owner || !isShipId(shipId) || !expeditionMember(id)) throw new TypeError('Affectation de triade invalide.');
   const current = inspectExpeditionRoster(roster, owner).state;
   if (!current?.members.some(member => member.id === id)) throw new TypeError('Un compagnon recruté est requis avant son affectation.');
   return { ...current, members: current.members.map(member => member.id === id ? { ...member, assignedShipId: shipId } : member) };
@@ -142,9 +183,12 @@ export function reserveExpeditionMember(roster: ExpeditionRoster | null | undefi
   return { ...current, members: current.members.map(member => member.id === id ? { ...member, assignedShipId: null } : member) };
 }
 
-export function expeditionTrioReady(roster: ExpeditionRoster | null | undefined, owner: string, shipId: ShipId): boolean {
+export function expeditionTrioReady(roster: ExpeditionRoster | null | undefined, owner: string, shipId: ShipId,
+  plan: PlanetInsertionPlan = { ...DEFAULT_PLAN, team: 'triad' }): boolean {
   const state = inspectExpeditionRoster(roster, owner).state;
-  return !!state && TRIO_MEMBERS.every(member => state.members.some(entry => entry.id === member.id &&
+  const normalized = normalizePlanetInsertionPlan(plan);
+  if (!state || normalized?.team !== 'triad') return false;
+  return expeditionMemberIds(normalized).every(id => state.members.some(entry => entry.id === id &&
     entry.assignedShipId === shipId && entry.availability === 'ready'));
 }
 
@@ -154,9 +198,10 @@ export function settleExpeditionOutcome(roster: ExpeditionRoster | null | undefi
   const current = inspectExpeditionRoster(roster, owner).state;
   if (!current || !record(outcome) || outcome.version !== 1 || outcome.runId !== expectedRunId || expectedPlan.team !== 'triad' ||
       !samePlanetInsertion(outcome.plan, expectedPlan) || current.settledRunIds.includes(expectedRunId)) return null;
-  if (!expeditionTrioReady(current, owner, shipId) || !Array.isArray(outcome.members) || outcome.members.length !== 2 ||
+  const selected = expeditionMemberIds(expectedPlan);
+  if (!expeditionTrioReady(current, owner, shipId, expectedPlan) || !Array.isArray(outcome.members) || outcome.members.length !== 2 ||
       !Array.isArray(outcome.extracted) || !Array.isArray(outcome.leftBehind) || !Array.isArray(outcome.injured)) return null;
-  if (outcome.members.some(member => !record(member) || !TRIO_MEMBERS.some(entry => entry.id === member.id) ||
+  if (outcome.members.some(member => !record(member) || !selected.includes(member.id) ||
       !['extracted', 'left-behind'].includes(member.status) || !Number.isFinite(member.health) ||
       member.maxHealth !== EXPEDITION_MEMBER_HEALTH[member.id] ||
       member.health < 0 || member.health > member.maxHealth || (member.status === 'extracted' && member.health === 0)) ||
@@ -167,7 +212,8 @@ export function settleExpeditionOutcome(roster: ExpeditionRoster | null | undefi
       !matches(outcome.leftBehind, outcome.members.filter(member => member.status === 'left-behind').map(member => member.id)) ||
       !matches(outcome.injured, outcome.members.filter(member => member.status === 'extracted' && member.health < member.maxHealth).map(member => member.id))) return null;
   return { ...current, settledRunIds: [...current.settledRunIds, expectedRunId].slice(-64), members: current.members.map(member => ({
-    ...member, availability: outcome.leftBehind.includes(member.id) ? 'missing' : outcome.injured.includes(member.id) ? 'recovering' : 'ready',
+    ...member, availability: !selected.includes(member.id) ? member.availability
+      : outcome.leftBehind.includes(member.id) ? 'missing' : outcome.injured.includes(member.id) ? 'recovering' : 'ready',
   })) };
 }
 

@@ -152,11 +152,12 @@ import { commitEliteMastery, type MasteryCommand, type MasteryResponse } from '.
 import { getCradleCrownCondition } from './systems/buriedCradle';
 import cradleArt from './data/buriedCradleArt.json';
 import { actCompanionResidence, bindCompanionResidenceMission, settleCompanionResidenceMission, releaseCompanionResidenceMission,
-  registerCompanionResidenceRecruitment, availableClanResidenceCrew, clanResidenceCrewPostRooms, type CompanionResidenceAction, type CompanionResidenceObservation } from './systems/companionResidence';
+  registerCompanionResidenceRecruitment, registerInstalledExpeditionCrew, expeditionCrewMatchesCabins,
+  availableClanResidenceCrew, clanResidenceCrewPostRooms, type CompanionResidenceAction, type CompanionResidenceObservation } from './systems/companionResidence';
 import { createWolfCastleVisit, inspectWolfCastleVisit, actWolfCastle, applyWolfCastleCheckpoint, type WolfCastleAction, type WolfCastleCheckpoint } from "./systems/wolfCastle";
 import { createPlanetArrival, inspectPlanetArrival, completePlanetArrivalHandoff, type PlanetArrivalState } from "./systems/planetArrival";
 import { inspectPlanetArrivalRun, type PlanetArrivalRun } from "./systems/planetArrivalRun";
-import { DEFAULT_PLAN, TRIO_MEMBERS, assignExpeditionMember, careForExpeditionMember, expeditionTrioReady,
+import { DEFAULT_PLAN, assignExpeditionMember, careForExpeditionMember, expeditionMember, expeditionTrioReady, isExpeditionCrewId,
   normalizePlanetInsertionPlan, recruitExpeditionMember, reserveExpeditionMember, samePlanetInsertion, settleExpeditionOutcome, shipSupportsSurfaceInsertion,
   type ExpeditionMemberId, type PlanetInsertionPlan } from "./systems/planetInsertion";
 import InsertionPlanPanel from "./InsertionPlanPanel";
@@ -619,7 +620,8 @@ function normalizeHuntConfiguration(
     ((insertion.method === 'ship' || insertion.team === 'triad') && !evaluateClanShipAccess(baseSave).allowed) ||
     (insertion.method === 'ship' && (!isShipId(configuration.insertionShipId) || !shipSupportsSurfaceInsertion(configuration.insertionShipId))) ||
     (insertion.team === 'triad' && (!isShipId(configuration.insertionShipId) ||
-      !expeditionTrioReady(baseSave.expeditionRoster, baseSave.createdAt, configuration.insertionShipId))) ||
+      !expeditionCrewMatchesCabins(baseSave) ||
+      !expeditionTrioReady(baseSave.expeditionRoster, baseSave.createdAt, configuration.insertionShipId, insertion))) ||
     (insertion.shipCloak ? !hasShipInsertionDebit(baseSave.shipInsertionEnergy, baseSave.createdAt,
       configuration.insertionEnergyRunId, configuration.insertionShipId) : configuration.insertionEnergyRunId !== undefined)
   ) {
@@ -2754,12 +2756,19 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const current = saveRef.current;
     if (screen !== 'briefing' || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy ||
         activeHuntSessionRef.current || resumableHunt || current.planetArrival || !evaluateClanShipAccess(current).allowed) return;
+    if (isExpeditionCrewId(id)) {
+      const roster = registerInstalledExpeditionCrew(current, id, loadShipProgression(current).selectedShipId);
+      if (!roster) { setToast('Recrute ce membre du clan et confirme son alcôve sur cette coque au quai.'); return; }
+      if (persistSocialProgress({ expeditionRoster: roster })) setToast(`${expeditionMember(id)?.name} : place de terrain confirmée.`);
+      return;
+    }
     const roster = recruitExpeditionMember(current.expeditionRoster, current.createdAt, id);
-    if (persistSocialProgress({ expeditionRoster: roster })) setToast(`${TRIO_MEMBERS.find(member => member.id === id)?.name} : recrutement confirmé. Choisis ensuite son affectation.`);
+    if (persistSocialProgress({ expeditionRoster: roster })) setToast(`${expeditionMember(id)?.name} : recrutement confirmé. Choisis ensuite son affectation.`);
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, persistSocialProgress, resumableHunt, screen, settingsOpen]);
 
   const assignExpeditionHunter = useCallback((id: ExpeditionMemberId, expectedShipId: ShipId) => {
     const current = saveRef.current;
+    if (isExpeditionCrewId(id)) return;
     if (screen !== 'briefing' || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy ||
         activeHuntSessionRef.current || resumableHunt || current.planetArrival || !evaluateClanShipAccess(current).allowed) return;
     const shipId = loadShipProgression(current).selectedShipId;
@@ -2774,11 +2783,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast('Gère cette affectation depuis le registre des compagnons au quai.'); return;
     }
     const roster = assignExpeditionMember(current.expeditionRoster, current.createdAt, shipId, id);
-    if (persistSocialProgress({ expeditionRoster: roster })) setToast(`${TRIO_MEMBERS.find(member => member.id === id)?.name} : affectation au vaisseau confirmée.`);
+    if (persistSocialProgress({ expeditionRoster: roster })) setToast(`${expeditionMember(id)?.name} : affectation au vaisseau confirmée.`);
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, persistSocialProgress, resumableHunt, screen, settingsOpen]);
 
   const reserveExpeditionHunter = useCallback((id: ExpeditionMemberId, expectedShipId: ShipId) => {
     const current = saveRef.current;
+    if (isExpeditionCrewId(id)) return;
     if (screen !== 'briefing' || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy ||
         activeHuntSessionRef.current || resumableHunt || current.planetArrival || !evaluateClanShipAccess(current).allowed) return;
     if (current.expeditionRoster?.members.find(member => member.id === id)?.assignedShipId !== expectedShipId) {
@@ -2788,7 +2798,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast('Gère cette affectation depuis le registre des compagnons au quai.'); return;
     }
     const roster = reserveExpeditionMember(current.expeditionRoster, current.createdAt, id);
-    if (persistSocialProgress({ expeditionRoster: roster })) setToast(`${TRIO_MEMBERS.find(member => member.id === id)?.name} : mise en réserve confirmée. Son recrutement et son état sont conservés.`);
+    if (persistSocialProgress({ expeditionRoster: roster })) setToast(`${expeditionMember(id)?.name} : mise en réserve confirmée. Son recrutement et son état sont conservés.`);
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, persistSocialProgress, resumableHunt, screen, settingsOpen]);
 
   const careForExpeditionHunter = useCallback((id: ExpeditionMemberId, expectedAvailability: 'recovering' | 'missing') => {
@@ -4153,8 +4163,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (chosenInsertion.method === 'ship' && !shipSupportsSurfaceInsertion(chosenShip)) {
       setToast('Cette coque reste en orbite. Choisis une capsule ou une coque compatible avec l’atterrissage.'); return;
     }
-    if (chosenInsertion.team === 'triad' && !expeditionTrioReady(saveRef.current.expeditionRoster, saveRef.current.createdAt, chosenShip)) {
-      setToast('Ka’rhek et Sa’keth doivent être aptes et affectés à ce vaisseau pour partir en trio.'); return;
+    if (chosenInsertion.team === 'triad' && (!expeditionCrewMatchesCabins(saveRef.current) ||
+        !expeditionTrioReady(saveRef.current.expeditionRoster, saveRef.current.createdAt, chosenShip, chosenInsertion))) {
+      setToast('Les deux partenaires choisis doivent être aptes et affectés à cette coque.'); return;
     }
     if (chosenInsertion.shipCloak) {
       const charge = shipInsertionCharge(saveRef.current.shipInsertionEnergy, saveRef.current.createdAt, chosenShip);
@@ -7680,7 +7691,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             </div>
             {lastResult.insertionOutcome?.plan.team === 'triad' && <section aria-label="Bilan de la triade" className="source-badge">
               <h2>Retour de la triade</h2>
-              {TRIO_MEMBERS.map(member => <p key={member.id}>{member.name} : {lastResult.insertionOutcome?.leftBehind.includes(member.id)
+              {lastResult.insertionOutcome.members.map(member => <p key={member.id}>{expeditionMember(member.id)?.name} : {lastResult.insertionOutcome?.leftBehind.includes(member.id)
                 ? 'resté sur le terrain — rapatriement du clan nécessaire'
                 : lastResult.insertionOutcome?.injured.includes(member.id) ? 'extrait — soins nécessaires' : 'extrait — apte au prochain départ'}</p>)}
             </section>}

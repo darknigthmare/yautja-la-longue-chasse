@@ -25,7 +25,7 @@ import { arrivalShipMotionAssetPaths, arrivalShipMotionFrame, arrivalShipViewReg
   type ArrivalShipViewTransform } from './systems/planetArrivalShipMotion';
 import { ARRIVAL_SHIP_ENGINE_ART, arrivalShipEffectAssetPaths, arrivalShipEngineAperture,
   arrivalShipEngineFrame } from './systems/planetArrivalShipEffects';
-import { DEFAULT_PLAN, EXPEDITION_MEMBER_SIZE, expeditionMemberAppearance, expeditionMemberLoadout, normalizePlanetInsertionPlan,
+import { DEFAULT_PLAN, EXPEDITION_MEMBERS, EXPEDITION_MEMBER_SIZE, expeditionMemberAppearance, expeditionMemberLoadout, normalizePlanetInsertionPlan,
   type ExpeditionMemberId } from './systems/planetInsertion';
 import {
   PLANET_ARRIVAL_CONTACT_PROGRESS, PLANET_ARRIVAL_DURATION_MS, PLANET_ARRIVAL_SHOTS, advancePlanetArrival,
@@ -110,9 +110,9 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
   const motionReduced = reducedMotion || systemReducedMotion;
   const insertion = normalizePlanetInsertionPlan(state.insertion) ?? DEFAULT_PLAN;
   const shipInsertion = insertion.method === 'ship';
-  const formation = arrivalFormationSlots(insertion.team);
-  const companionLooks = useMemo(() => ({ karhek: expeditionMemberAppearance('karhek'), saketh: expeditionMemberAppearance('saketh') }), []);
-  const companionKits = useMemo(() => ({ karhek: expeditionMemberLoadout('karhek'), saketh: expeditionMemberLoadout('saketh') }), []);
+  const formation = arrivalFormationSlots(insertion.team, insertion.memberIds);
+  const companionLooks = useMemo(() => new Map(EXPEDITION_MEMBERS.map(member => [member.id, expeditionMemberAppearance(member.id)])), []);
+  const companionKits = useMemo(() => new Map(EXPEDITION_MEMBERS.map(member => [member.id, expeditionMemberLoadout(member.id)])), []);
 
   // One film plane, uniformly scaled on every viewport. A portrait layout must
   // never stretch a trajectory, an asset or its attachment points independently.
@@ -764,8 +764,8 @@ export default function PlanetArrivalCinematic({ state, appearance, loadout, gau
     const hunterPose = arrivalHunterEgress(hunterTime, hunterGeometry, motionReduced);
     const footContacts = arrivalFootContacts(hunterTime, hunterGeometry, motionReduced);
     const memberId = slot.id as ExpeditionMemberId;
-    const look = slot.index ? companionLooks[memberId] : appearance;
-    const kit = slot.index ? companionKits[memberId] : loadout;
+    const look = slot.index ? companionLooks.get(memberId)! : appearance;
+    const kit = slot.index ? companionKits.get(memberId)! : loadout;
     const clipId = `${hunterPortalId}-${slot.id}`;
     const hunterPortalActive = hunterPose.portalReveal < 1 && hunterPose.opacity > 0;
     const interiorLight = shipInsertion ? 0 : arrivalEffectsFrame(hunterTime, motionReduced).interiorLight;

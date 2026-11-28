@@ -94,7 +94,7 @@ import { inspectElderMentoring, isElderMentoringSuccessor } from "./systems/elde
 import { elderReliefRecorded, inspectElderAssembly, isElderAssemblySuccessor } from "./systems/elderAssemblyV168";
 import { canWorkWithClanArmorerV172, hasElderWorkshopFoundationV172, inspectElderWorkshopV172, isElderWorkshopSuccessorV172 } from "./systems/elderWorkshopV172";
 import { inspectEliteMastery, isEliteMasterySuccessor } from "./systems/eliteMasteryV170";
-import { inspectCompanionResidence, evaluateCompanionResidenceCampaign } from "./systems/companionResidence";
+import { inspectCompanionResidence, evaluateCompanionResidenceCampaign, expeditionCrewMatchesCabins } from "./systems/companionResidence";
 import { inspectClanShipIncidents, evaluateClanShipIncidentsCampaign, evaluateClanShipTrophyHearingCampaign } from "./systems/clanShipIncidents";
 import { inspectClanShipTrophyHearing } from "./systems/clanShipTrophyHearing";
 import { inspectClanShipReturnEscort, evaluateClanShipReturnEscortCampaign } from "./systems/clanShipReturnEscort";
@@ -1735,6 +1735,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (elderAssembly.state && (!elderMentoring.state?.resolved || !elderPassage.state?.resolved)) {
     return { save: null, failure: "invalid-save" };
   }
+  if (!expeditionCrewMatchesCabins(value as unknown as SaveGame)) return { save: null, failure: "invalid-save" };
   if (residence.state && (!isRecord(value.missionProgress) || !isRecord(value.profile) ||
       !evaluateCompanionResidenceCampaign(residence.state, value as unknown as SaveGame).allowed)) {
     return { save: null, failure: 'invalid-save' };
@@ -1766,7 +1767,7 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
        arrival.state?.insertion?.team === 'triad') &&
       !evaluateClanShipAccess(value as unknown as Pick<SaveGame, 'prologue'>).allowed) return { save: null, failure: 'invalid-save' };
   if (arrival.state?.insertion?.team === 'triad' && !expeditionTrioReady(expedition.state,
-      arrival.state.ownerCreatedAt, arrival.state.personalShipId)) return { save: null, failure: 'invalid-save' };
+      arrival.state.ownerCreatedAt, arrival.state.personalShipId, arrival.state.insertion)) return { save: null, failure: 'invalid-save' };
   if (arrival.state) {
     const progress = isRecord(value.missionProgress) ? value.missionProgress[arrival.state.missionId] : null;
     if (!isRecord(progress) || progress.status === "locked" || progress.attempts !== arrival.state.encounterRun ||

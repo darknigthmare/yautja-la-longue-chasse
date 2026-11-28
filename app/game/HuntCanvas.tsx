@@ -300,7 +300,7 @@ import {
   huntPodRecoveryPersistenceKey, stepHuntPodRecovery, type HuntPodSafetyInput, type HuntPodSafety,
 } from "./systems/huntPodRecovery";
 import {
-  DEFAULT_PLAN, TRIO_MEMBERS, expeditionMemberAppearance, expeditionMemberLoadout,
+  DEFAULT_PLAN, expeditionMember, expeditionMemberAppearance, expeditionMemberLoadout,
   normalizePlanetInsertionPlan, planetInsertionPressure, samePlanetInsertion,
   type ExpeditionMemberId, type PlanetInsertionPlan,
 } from "./systems/planetInsertion";
@@ -1957,7 +1957,7 @@ function commandHuntCompanion(state: GameState, id: ExpeditionMemberId, command:
       state.trophyExtracting || state.dropShip?.phase === 'boarding' || state.dropShip?.phase === 'departure') return false;
   const member = state.insertion.companions.find(entry => entry.id === id);
   if (!member) return false;
-  const name = TRIO_MEMBERS.find(entry => entry.id === id)!.name;
+  const name = expeditionMember(id)!.name;
   if (command === 'aid') {
     if (!aidHuntCompanion(member, state.player, state.world, state.world.covers.filter(cover => !state.brokenPillarIds.has(cover.id)))) return false;
     announce(state, `${name} stabilisé : une charge de médicomp utilisée.`, 3);
@@ -2480,7 +2480,7 @@ function deserializeActiveHuntCheckpoint(
     !(checkpoint.enemies as JsonObject[]).every(enemy =>
       typeof enemy.id === "string" && typeof enemy.alive === "boolean" &&
       typeof enemy.active === "boolean" && isValidSerializedHuntActor(enemy) &&
-      (enemy.pendingAttackTargetId === undefined || ['hunter', 'karhek', 'saketh'].includes(enemy.pendingAttackTargetId as string))) ||
+      (enemy.pendingAttackTargetId === undefined || enemy.pendingAttackTargetId === 'hunter' || !!expeditionMember(enemy.pendingAttackTargetId))) ||
     !(checkpoint.projectiles as JsonObject[]).every(isValidSerializedHuntProjectile)
   ) return null;
 
@@ -4245,7 +4245,7 @@ function drawHuntCompanions(context: CanvasRenderingContext2D, state: GameState,
     const player = companionPlayerState(state.player, member);
     const renderState = { ...state, player, huntRites: { ...state.huntRites, operation: null },
       trophyExtracting: false, trophyExtraction: 0, trophyVictory: null, trophyCarried: false };
-    const definition = TRIO_MEMBERS.find(entry => entry.id === member.id)!;
+    const definition = expeditionMember(member.id)!;
     const centerX = member.x + member.width / 2;
     context.save();
     if (member.status === 'downed' || member.status === 'left-behind' && member.health === 0) {
@@ -8435,7 +8435,7 @@ function interact(
     state.dropShip ??= createDropShipArrival();
     const missing = state.insertion ? missingHuntCompanions(state.insertion, state.world) : [];
     if (missing.length) {
-      announce(state, `Triade incomplète : ${missing.map(member => TRIO_MEMBERS.find(entry => entry.id === member.id)!.name).join(', ')}. ` +
+      announce(state, `Triade incomplète : ${missing.map(member => expeditionMember(member.id)!.name).join(', ')}. ` +
         'Rassemble-les à la balise, stabilise un blessé à portée, ou choisis « Extraire sans lui » dans les ordres.', 5);
       return;
     }
@@ -12699,7 +12699,7 @@ export default function HuntCanvas({
   const companionOrders = () => ui.insertion.members.length > 0 ? (
     <div role="group" aria-label="Ordres de la triade" data-hunt-trio="true" style={{ display: 'grid', gap: 12, margin: '12px 0' }}>
       {ui.insertion.members.map(member => {
-        const definition = TRIO_MEMBERS.find(entry => entry.id === member.id)!;
+        const definition = expeditionMember(member.id)!;
         const unavailable = !assetsReady || missionOpeningOpen || ui.phase === 'dead' || ui.phase === 'finished' ||
           ui.dropShipPhase === 'boarding' || ui.dropShipPhase === 'departure';
         const stateLabel = member.status === 'downed' ? 'À stabiliser' : member.status === 'boarding' ? 'Embarque' :
