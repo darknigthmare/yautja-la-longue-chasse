@@ -191,7 +191,8 @@ try {
   assert.equal(field.ordersCompleted, 1);
   assert.equal(field.houndId, candidates[0].id);
   await page.reload();
-  const resume = page.getByRole("button", { name: "Reprendre la chasse", exact: true }).first();
+  const resume = page.getByRole("dialog", { name: "Chasse en pause · Carte et sac" })
+    .getByRole("button", { name: "Reprendre", exact: true });
   await resume.or(commands).first().waitFor();
   if (await resume.isVisible()) await resume.click();
   await page.locator('[data-hound-current-order="recall"][data-hound-orders-completed="1"]').waitFor();
