@@ -13,7 +13,7 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'e285088408bc5af1467820146c4edac719ee7247'
+      ASSET_RACCORDS_SOURCE_COMMIT: '56394dcbc058bcaff22953acef596d1b0816b836'
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: /usr/bin/google-chrome
       AUDIT_CHROME_CHANNEL: chrome
@@ -21,12 +21,12 @@ jobs:
       YAUTJA_QA_BASE_URL: http://127.0.0.1:3121
       YAUTJA_QA_MODE: compiled-app
       AUDIT_CHROME_EXECUTABLE: /usr/bin/google-chrome
-      YAUTJA_QA_RUNTIME_COMMIT: 'e285088408bc5af1467820146c4edac719ee7247'
+      YAUTJA_QA_RUNTIME_COMMIT: '56394dcbc058bcaff22953acef596d1b0816b836'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'e285088408bc5af1467820146c4edac719ee7247'
+          ref: '56394dcbc058bcaff22953acef596d1b0816b836'
           persist-credentials: false
           fetch-depth: 3
           filter: blob:none
@@ -287,6 +287,61 @@ jobs:
         run: |
           node scripts/materialize-asset-raccords-20261120.mjs catalogue
           ASSET_RACCORDS_PREPARE_ONLY=1 node scripts/qa-asset-raccords-browser-20261120.mjs
+      - name: Matérialiser les sources réelles du quai et de la rive
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { existsSync } from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          import { homeworldQaModelV64 } from './scripts/homeworld-qa-model-v64.mjs';
+          const lists = {
+            homeworldArchivistMotionV111: 'HOMEWORLD_ARCHIVIST_SCENE_SOURCES_V111',
+            homeworldSceneAssetsV76: 'HOMEWORLD_SCENE_ASSETS_V76',
+            homeworldConnectorArtV82: 'HOMEWORLD_CONNECTOR_SCENE_SOURCES_V82',
+            homeworldLiftCabinV82: 'HOMEWORLD_LIFT_CABIN_SCENE_SOURCES_V82',
+            homeworldBackdropArtV82: 'HOMEWORLD_BACKDROP_SCENE_SOURCES_V82',
+            homeworldCntlipPhysicalV77: 'HOMEWORLD_CNTLIP_HOST_ASSETS_V77',
+            homeworldCityNativeArtV78: 'HOMEWORLD_CITY_NATIVE_SCENE_SOURCES_V78',
+            homeworldCivicDecorV80: 'HOMEWORLD_CIVIC_SCENE_SOURCES_V80',
+            homeworldNativeArchitectureV81: 'HOMEWORLD_NATIVE_SCENE_SOURCES_V81',
+            homeworldStreetDecorV83: 'HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V83',
+            homeworldStreetDecorV84: 'HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V84',
+            homeworldLavaPlacementV77: 'HOMEWORLD_LAVA_NATIVE_SOURCES_V77',
+          };
+          const model = homeworldQaModelV64(process.cwd(), [...Object.keys(lists),
+            'homeworldCivilianMotionV74', 'homeworldYouthMotionV74', 'homeworldArchivePlaqueDefinitionV109',
+            'homeworldRegionsV68', 'homeworldArtV64', 'homeworldFaunaV77', 'homeworldPassageV67'].map(file => file + '.ts'));
+          const scene = Object.values(lists).flatMap(name => model[name]);
+          const civilian = model.HOMEWORLD_CIVILIAN_MOTION_V74;
+          const civilianIds = new Set(Object.values(civilian.roles).flatMap(actor =>
+            [...actor.clips.left, ...actor.clips.right].map(frame => frame.sourceId)));
+          const youth = model.HOMEWORLD_YOUTH_MOTION_ART_V74;
+          const youthIds = new Set(Object.values(youth.actors).flatMap(actor =>
+            [actor.idle, ...actor.walk].map(frame => frame.sourceId)));
+          const sourceUrls = [
+            ...scene.map(item => item.src),
+            ...[...civilianIds].map(id => civilian.sources[id].src),
+            ...[...youthIds].map(id => youth.sources[id].src),
+            ...(model.archivePlaqueArtAdmittedV109() ? [model.HOMEWORLD_ARCHIVE_PLAQUE_ART_V109.src] : []),
+            model.HOMEWORLD_REGIONS_V68['thermal-caves'].panorama,
+            model.HOMEWORLD_GROUND_ART_V64.src,
+            model.HOMEWORLD_INTERIOR_ART_V64.north.src,
+            model.HOMEWORLD_PASSAGE_BRIDGE_V67.src,
+            ...Object.values(model.HOMEWORLD_BUILDING_ART_V64).map(item => item.src),
+            ...Object.values(model.HOMEWORLD_PROP_ART_V64).map(item => item.src),
+            model.REGION_FAUNA_ART_V68['thermal-caves']?.src,
+            ...model.homeworldFaunaSourceUrlsV77('thermal-caves'),
+          ].filter(Boolean);
+          const paths = [...new Set(sourceUrls)].map(src => {
+            assert.match(src, /^\/game\/[A-Za-z0-9._/-]+$/);
+            assert.ok(src.split('/').slice(1).every(part => part && part !== '.' && part !== '..'));
+            return 'public' + src;
+          });
+          execFileSync('git', ['sparse-checkout', 'add', '--stdin'],
+            { input: paths.map(path => '/' + path).join('\n') + '\n', stdio: ['pipe', 'inherit', 'inherit'] });
+          assert.deepEqual(paths.filter(path => !existsSync(path)), [], 'Native publications used by the route');
+          console.log('Selected native route inputs:', paths.length);
+          NODE
       - name: Vérifier le skiff et les anciens trajets
         run: |
           set -o pipefail
@@ -312,7 +367,7 @@ jobs:
       - name: Marcher au quai et reprendre à la rive
         if: ${{ !cancelled() && steps.server.conclusion == 'success' }}
         env:
-          W3_S09_COMMIT: 'e285088408bc5af1467820146c4edac719ee7247'
+          W3_S09_COMMIT: '56394dcbc058bcaff22953acef596d1b0816b836'
           W3_S09_URL: 'http://127.0.0.1:3121/'
         run: |
           node scripts/qa-w3-s09-campaign-route-20261128.mjs
@@ -320,7 +375,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: w3-s09-quai-e285088408bc
+          name: w3-s09-quai-56394dcbc058
           path: |
             outputs/p0-p3-20261121/
             outputs/qa-w3-s09/
