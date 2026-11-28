@@ -1,0 +1,40 @@
+name: Vérification des noms locaux du monde natal
+on:
+  push:
+    branches: [codex/qa-lore-lieux-20261128]
+permissions:
+  contents: read
+jobs:
+  lore:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 8ad683789346ed8e02db3f0f717c742a74cd6cfb
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /desktop/
+            /content/the-pit/les-masques-brises/
+            /docs/campagne/BIBLE_DE_CAMPAGNE.md
+            /public/game/homeworld/v67/
+            /public/game/assets/v37/tribes/v2/
+            /public/game/backgrounds/
+            /public/game/sprites/v8/ecology/
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --experimental-strip-types --test --test-concurrency=1 tests/yautja-place-names.test.mjs tests/homeworld-regions-v68.test.mjs tests/homeworld-world-checkpoint-v77.test.mjs
+      - run: npm run typecheck
