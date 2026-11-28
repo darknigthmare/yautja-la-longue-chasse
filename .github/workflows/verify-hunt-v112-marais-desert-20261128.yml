@@ -1,0 +1,74 @@
+name: Play Naraka and Serekh original hunts through workshop
+on:
+  push:
+    branches: [codex/verify-hunt-v112-marais-desert-20261128]
+permissions:
+  contents: read
+jobs:
+  native:
+    name: Native hunt and conservation · ${{ matrix.mission }}
+    strategy:
+      fail-fast: false
+      matrix:
+        mission: [swamp-hydra, desert-sandmaw]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 27
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      HUNT_MISSION: ${{ matrix.mission }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '37a3ddf3e3376331e0798647641880e4e51dd794'
+          persist-credentials: false
+          filter: blob:none
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /content/the-pit/
+            /lib/
+            /types/
+            /worker/
+            /desktop/
+            /docs/qa/v112-ground-campaign/campaign-origin-save.json
+            /docs/qa/v112-ground-campaign/campaign-origin-provenance.json
+            /tests/
+            /scripts/
+            /build/
+            /.openai/hosting.json
+            /public/**/manifest.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Play the exact product using browser controls
+        run: |
+          test "$(git rev-parse HEAD)" = "37a3ddf3e3376331e0798647641880e4e51dd794"
+          git diff --exit-code
+          node scripts/qa-hunt-campaign-browser-v112.mjs --missions "$HUNT_MISSION" --campaign-source docs/qa/v112-ground-campaign/campaign-origin-save.json --replay-completed --require-complete --require-resume --require-harvest-workshop --max-retries 2 --wall-seconds 900 --chromium /usr/bin/google-chrome --output "outputs/qa-actual-hunt/$HUNT_MISSION"
+      - name: Print the proven settlement, sidecar and workshop
+        if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import {existsSync,readFileSync} from 'node:fs';
+          const p='outputs/qa-actual-hunt/'+process.env.HUNT_MISSION+'/report.json';
+          if(!existsSync(p)){console.log('No browser report');process.exit(0);}
+          const q=JSON.parse(readFileSync(p,'utf8'));
+          const {revision,browser,qualification,coverage,requiredCoverageFailure,failure,errors,missingAssets,armoryTransactions,workshop,resumeObservations}=q;
+          const zeroAttempts=(q.attempts??[]).map(x=>({missionId:x.missionId,status:x.status,settlement:x.settlement,delivered:x.delivered,controller:x.controlLoop,final:{phase:x.final?.state?.phase,time:x.final?.state?.elapsed,player:x.final?.state?.player,apex:x.final?.state?.boss?.health},retryEvents:x.retryEvents}));
+          console.log('HUNT_RESULT '+JSON.stringify({revision,browser,qualification,coverage,requiredCoverageFailure,failure,errors,missingAssets,armoryTransactions,workshop,resumeObservations,attempts:zeroAttempts,assets:q.assets?.length??q.sourceAssets?.length,inputs:q.inputs?.length,captures:q.captures?.length,harvest:q.harvestAttempts?.map(z=>({body:z.bodyId,actions:z.actions,result:z.specimens,reason:z.failure})).slice(-10)}));
+          NODE
+      - name: Preserve the original proof
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: native-hunt-${{ matrix.mission }}-${{ github.sha }}
+          path: |
+            outputs/qa-actual-hunt/
+          if-no-files-found: warn
+          retention-days: 30
