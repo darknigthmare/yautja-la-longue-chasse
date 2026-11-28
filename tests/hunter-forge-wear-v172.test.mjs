@@ -223,6 +223,7 @@ test("a forged tool brace spends only the quoted bone and stays aligned with phy
 test("the equipped weapon advances across both native tiers with the exact selected bone and tissue only", () => {
   const current = withDamagedPlate();
   const weaponId = "combistick";
+  current.loadout.weaponIds = [weaponId, "wristblades"];
   assert(work.equippedForgeWeaponsV146(current).includes(weaponId));
   const native = qa.load("app/game/systems/arsenal.ts");
   const bone = { speciesId: "nivalis-k--glacier-ram", partId: "bone", label: "Côte renforcée", count: 5, qualityTotal: 453 };
@@ -323,6 +324,7 @@ for (const [weapon, expected, charge, recovery] of [
 ]) {
   test(`the forge preserves ${weapon} identity, exact stock and effective attacks through both tiers`, () => {
     let save = withDamagedPlate();
+    save.loadout.weaponIds = ["combistick", "wristblades"];
     const untouched = save.inventory.harvestV112.archive[0];
     const boneCount = expected[0].bone + expected[1].bone;
     const tissueCount = expected[0].tissue + expected[1].tissue;
