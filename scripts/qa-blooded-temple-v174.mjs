@@ -30,12 +30,13 @@ try {
     sessionStorage.setItem("bloodedTempleQA", "1");
     localStorage.setItem(key, JSON.stringify(seed));
   }, { key, seed: checked.save });
-  const page = await context.newPage();
+  const primaryPage = await context.newPage();
+  const page = primaryPage;
   page.on("pageerror", error => report.errors.push(error.message));
   page.setDefaultTimeout(30000);
   const scene = page.locator("[data-blooded-temple-v174]");
   const read = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), key);
-  async function openTemple() {
+  async function openTemple(page = primaryPage) {
     await page.locator("[data-campaign-menu]").waitFor({ timeout: 90000 });
     const campaign = page.locator('[data-menu-section="campaign"]');
     if (await campaign.isVisible()) await campaign.click();
@@ -45,7 +46,7 @@ try {
     await page.getByRole("button", { name: "Navigation", exact: true }).click();
     await page.locator("[data-open-quatza-homeworld]").click({ timeout: 30000 });
     await page.locator("[data-open-blooded-temple-v174]").click();
-    await scene.scrollIntoViewIfNeeded();
+    await page.locator("[data-blooded-temple-v174]").scrollIntoViewIfNeeded();
   }
   async function act(action) {
     const revision = (await read()).bloodedTempleV174?.events.length ?? 0;
@@ -87,6 +88,48 @@ try {
   assert.equal(chronicles.getChronicleRank(complete.prologue.chronicle), "blooded");
   assert.ok(saves.parseSaveImport(saves.exportSave(complete)).save);
   await scene.screenshot({ path: resolve(output, "reconnaissance.png"), animations: "disabled" });
+  const alternateStorage = await context.storageState();
+  const alternateContext = await browser.newContext({ viewport: { width: 1380, height: 1000 },
+    reducedMotion: "reduce", storageState: alternateStorage });
+  const alternate = await alternateContext.newPage();
+  alternate.on("pageerror", error => report.errors.push(error.message));
+  report.ceremonies = [];
+  for (const [player, action, choice] of [[page, "celebrate-cohort", "cohort"], [alternate, "visit-quietly", "quiet"]]) {
+    if (player === alternate) {
+      await player.goto("http://127.0.0.1:4217");
+      await openTemple(player);
+    }
+    const court = player.locator("[data-blooded-ceremony]");
+    await court.locator('[data-blooded-action="' + action + '"]').click();
+    await court.locator('[data-blooded-action="right"]').press("ArrowRight");
+    await player.locator('[data-blooded-court-position="1"]').waitFor();
+    await player.reload();
+    await openTemple(player);
+    assert.equal(await court.getAttribute("data-blooded-ceremony"), choice);
+    assert.equal(await court.getAttribute("data-blooded-court-position"), "1");
+    await court.locator('[data-blooded-action="right"]').click();
+    await court.locator('[data-blooded-action="greet-witness"]').click();
+    await player.locator('[data-blooded-witness="true"]').waitFor();
+    const played = await player.evaluate(key => JSON.parse(localStorage.getItem(key)), key);
+    assert.equal(temple.inspectBloodedTempleV174(played.bloodedTempleV174, played.createdAt).view.ceremony, choice);
+    assert.deepEqual(played.prologue.chronicle.rites, complete.prologue.chronicle.rites);
+    assert.ok(saves.parseSaveImport(saves.exportSave(played)).save);
+    await court.screenshot({ path: resolve(output, "reconnaissance-" + choice + ".png"), animations: "disabled" });
+    report.ceremonies.push({ choice, witness: true, resumedAt: 1 });
+  }
+  await page.getByRole("button", { name: "Revenir au dossier", exact: true }).click();
+  await page.locator("[data-open-blooded-temple-v174]").waitFor();
+  const close = page.getByRole("button", { name: "Retour", exact: true });
+  await close.click();
+  await page.locator("[data-homeworld-viewport]").waitFor();
+  const nav = page.getByRole("button", { name: "Navigation", exact: true });
+  const shipyard = page.getByRole("button", { name: "Chantier naval · inspection", exact: true });
+  if (!(await shipyard.isVisible())) await nav.click();
+  await shipyard.click();
+  const dock = page.locator('[data-ship-acquisition="v89"]');
+  await dock.waitFor();
+  await dock.screenshot({ path: resolve(output, "chantier-naval.png"), animations: "disabled" });
+  report.shipyardOpened = true;
   assert.deepEqual(report.errors, []);
   report.passed = true;
 } finally {
