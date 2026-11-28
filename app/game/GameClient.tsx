@@ -2008,6 +2008,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [persistNursery, reconcileNurseryAttempt]);
   const checkpointSoloV68 = useCallback((state: SoloV68State): boolean => {
     if (!sessionAliveRef.current || !reconcileNurseryAttempt()) return false;
+    // The terminal receipt is already durable before the scene offers either exit.
+    // The end screen may advance its presentation tick without changing that receipt.
+    if (state.phase === "complete" && saveRef.current.soloV68?.status === "completed") return true;
     const next = withSoloV68Checkpoint(saveRef.current, state);
     return next !== null && persistNursery(next);
   }, [persistNursery, reconcileNurseryAttempt]);

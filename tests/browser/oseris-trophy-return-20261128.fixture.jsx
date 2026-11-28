@@ -113,8 +113,13 @@ window.__onSkinningCanopyMountV112=handle=>{
   audit.runtime=handle;
   const game=handle.game;
   audit.mounts.push({resumed:handle.resumed,elapsed:game.elapsed,originalEnemyCount:game.enemies.length});
-  if(handle.resumed||(mode!=='loaded-oseris'&&mode!=='loaded-naraka'))return;
-  const sourceEnemyId = mode === 'loaded-naraka' ? 'naraka-delta--iron-croc' : 'oseris-iv--vineback-grazer';
+  if(handle.resumed)return;
+  const sourceEnemyId = {
+    'loaded-oseris':'oseris-iv--vineback-grazer',
+    'loaded-naraka':'naraka-delta--iron-croc',
+    'loaded-mycora':'mycora-v--spore-hound',
+  }[mode];
+  if(typeof sourceEnemyId!=='string')return;
   const originalEnemyIds=game.enemies.map(enemy=>enemy.id);
   const prey=handle.native.makeEnemy(
     'qa-field-prey',sourceEnemyId,handle.mission.id,
@@ -149,7 +154,7 @@ window.__onCanopyRootDrawV112=(id,image)=>{
   }
 };
 audit.prepareApex=()=>{
-  if(mode==='native-oseris')throw Error('The native route only observes the live hunt');
+  if(mode==='native-oseris'||mode==='loaded-mycora')throw Error('This route does not stage the Apex');
   const {game,native,mission}=audit.runtime;
   if(audit.apexSetup||game.phase!=='tracking'||!game.player.grounded||!game.boss.alive||
       !game.regularTrophyDrops.some(drop=>drop.collected))throw Error('A completed local trophy route must precede the declared Apex setup');
