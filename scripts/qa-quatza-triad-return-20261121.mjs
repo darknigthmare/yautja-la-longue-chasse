@@ -256,7 +256,7 @@ try {
   await play(expected.careEndTick, expected.input.length);
   await page.clock.resume();
   await witness.waitFor({ state: 'attached' });
-  const nativeWitness = await witness.locator('img[data-homeworld-npc-role-v84="guard"]').evaluate(async image => {
+  const nativeWitness = await witness.locator('img[data-homeworld-npc-role-v84="rite-keeper"]').evaluate(async image => {
     await image.decode();
     return { src: image.getAttribute('src'), width: image.naturalWidth, height: image.naturalHeight };
   });
@@ -276,7 +276,7 @@ try {
   const attempt = progress(delivered).attempts[0];
   assert.deepEqual(attempt.input, expected.input);
   assert.equal(attempt.phase, 'delivered');
-  assert.deepEqual(engine.replayQuatzaAttempt(mode, attempt.input, attempt.returnRules), expected.frame);
+  assert.deepEqual(engine.replayQuatzaAttempt(mode, attempt.input, attempt.returnRules, attempt.roster), expected.frame);
 
   await action('companions').click();
   const first = await awaitPresentations(1);
@@ -289,7 +289,7 @@ try {
   assert.deepEqual(progress(await disk()).presentations, ['companions']);
   assert.equal(await carried.getAttribute(proofAttr), proof);
   await action('trophy').click();
-  assert.equal(await carried.count(), 0);
+  await carried.waitFor({ state: 'detached' });
   for (const piece of ['hide', 'skull']) {
     const received = expedition.locator('[data-quatza-handover="' + piece + '"]');
     assert.equal(await received.getAttribute(proofAttr), proof);
