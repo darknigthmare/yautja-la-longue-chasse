@@ -346,9 +346,22 @@ try{
         disk.mobilityV1.active===null&&disk.mobilityV1.forgeDelivery?.runId===delivery.id&&disk.mobilityV1.forgeDelivery.marks===30&&
         disk.profile.clanMarks===9610&&await page.locator('[data-forge-delivery="paid"]').isVisible()&&
         !(await page.getByRole('button',{name:'Prendre le contrat des Forges',exact:true}).count()));
+      const paidReceipt=JSON.stringify(disk.mobilityV1.forgeDelivery);
       await page.reload({waitUntil:'networkidle'});await continueCampaign();
+      const coldDisk=await stored();
+      check('cold Continue keeps the exact receipt and 30 marks in the live disk',
+        JSON.stringify(coldDisk.mobilityV1?.forgeDelivery)===paidReceipt&&coldDisk.profile.clanMarks===9610,
+        {receipt:coldDisk.mobilityV1?.forgeDelivery,funds:coldDisk.profile.clanMarks});
+      const coldSlot=await managedSlot(),coldCheckpoint=coldSlot.checkpoints.find(item=>item.id===coldSlot.lastCheckpointId);
+      check('ordinary Continue archives the exact paid receipt and balance',
+        JSON.stringify(coldCheckpoint.archive.campaign.mobilityV1?.forgeDelivery)===paidReceipt&&
+        coldCheckpoint.archive.campaign.profile.clanMarks===9610);
       await page.locator('[data-homeworld-interior-target="point"]').click();await click('Ouvrir le comptoir et le garage');
-      check('cold reload shows the same paid contract and balance',await page.locator('[data-forge-delivery="paid"]').isVisible()&&
+      const paidPanel=page.locator('[data-forge-delivery="paid"]');
+      await paidPanel.waitFor();
+      check('cold reload shows the same paid contract and balance',
+        (await paidPanel.textContent()).includes('30 marques versées')&&
+        JSON.stringify((await stored()).mobilityV1?.forgeDelivery)===paidReceipt&&
         (await stored()).profile.clanMarks===9610);
       await click('Sortir sur l’aire');yard=page.locator('[data-mobility-yard]');await yard.waitFor();
     }
