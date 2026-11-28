@@ -121,10 +121,12 @@ test('Saar is physically carried to the refuge and the position survives a cold 
   const imported = saves.parseSaveImport(saves.exportSave(archive));
   assert.equal(imported.failure, null);
   const restored = imported.save.soloV70.checkpoint;
-  assert.deepEqual(restored, carrying);
+  assert.deepEqual(restored, { ...carrying, inputArmed: false });
   assert.equal(restored.companions[0].x, p.soloV70SaarCarryX(restored.player.x));
 
-  const stepped = p.stepSoloV70(restored, { move: 1, jump: true }, templeEnvironment).state;
+  const armed = p.stepSoloV70(restored, {}, templeEnvironment).state;
+  assert.equal(armed.tick, restored.tick);
+  const stepped = p.stepSoloV70(armed, { move: 1, jump: true }, templeEnvironment).state;
   assert.equal(stepped.player.y, relief.y);
   assert(Math.abs(stepped.player.x - restored.player.x - carrySpeed) < .01);
   assert(p.withSoloV70Checkpoint(imported.save, stepped, stamp));
