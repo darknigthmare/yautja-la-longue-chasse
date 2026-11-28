@@ -392,7 +392,8 @@ export type HoundFieldEventV147 =
   | { type: "push"; preyId: string; dx: number; dy: number }
   | { type: "driven"; preyId: string }
   | { type: "bite"; preyId: string; damage: number }
-  | { type: "attack-done"; preyId: string };
+  | { type: "attack-done"; preyId: string }
+  | { type: "target-lost"; preyId: string };
 
 export const HOUND_FIELD_V147 = Object.freeze({
   speed: 260, heelDistance: 48, markDistance: 140, flankOffset: 90,
@@ -403,7 +404,7 @@ export const HOUND_FIELD_V147 = Object.freeze({
 
 export function createHoundFieldV147(hound: HoundV147, at: { x: number; y: number }, maxHealth = 60): HoundFieldV147 {
   return { houndId: hound.id, x: at.x, y: at.y, health: maxHealth, maxHealth, order: "recall", targetId: null,
-    biteCooldown: 0, orderDone: false, ordersCompleted: 0, markedIds: [], wounded: false, dead: false };
+    biteCooldown: 0, orderDone: true, ordersCompleted: 0, markedIds: [], wounded: false, dead: false };
 }
 
 export type HoundOrderRefusalV147 = "locked" | "undefined-order" | "wounded" | "dead" | "no-target";
@@ -427,7 +428,7 @@ export function damageHoundFieldV147(field: HoundFieldV147, amount: number): Hou
   const wounded = !dead && health <= field.maxHealth * HOUND_FIELD_V147.woundedShare;
   // A wounded hound drops its order and comes back to the hunter.
   return { ...field, health, dead, wounded: field.wounded || wounded,
-    ...(wounded && !field.wounded ? { order: "recall" as const, targetId: null, orderDone: false } : {}) };
+    ...(wounded && !field.wounded ? { order: "recall" as const, targetId: null, orderDone: true } : {}) };
 }
 
 function moveToward(field: HoundFieldV147, x: number, y: number, dt: number): number {
@@ -459,9 +460,16 @@ export function stepHoundFieldV147(
   const heel = () => moveToward(field, input.player.x, input.player.y, dt) <= HOUND_FIELD_V147.heelDistance;
 
   switch (field.order) {
-    case "recall":
-      if (heel() && !field.orderDone) { complete(); events.push({ type: "returned" }); }
+    case "recall": {
+      const wasAway = Math.hypot(field.x - input.player.x, field.y - input.player.y) > HOUND_FIELD_V147.heelDistance;
+      if (heel() && !field.orderDone) {
+        // The first deliberate recall establishes contact even if the hound is close.
+        if (wasAway || field.ordersCompleted === 0 && !field.wounded) complete();
+        else field.orderDone = true;
+        events.push({ type: "returned" });
+      }
       break;
+    }
     case "track": {
       if (field.orderDone) { heel(); break; }
       let prey = target();
@@ -492,9 +500,19 @@ export function stepHoundFieldV147(
     case "attack": {
       const prey = target();
       if (!prey) {
-        if (field.targetId && !field.orderDone) { complete(); events.push({ type: "attack-done", preyId: field.targetId }); }
-        heel(); break;
+        if (field.targetId && !field.orderDone) {
+          if (input.prey.some(entry => entry.id === field.targetId && !entry.alive)) {
+            complete();
+            events.push({ type: "attack-done", preyId: field.targetId });
+          } else {
+            field.orderDone = true;
+            events.push({ type: "target-lost", preyId: field.targetId });
+          }
+        }
+        heel();
+        break;
       }
+      if (field.orderDone) { heel(); break; }
       if (moveToward(field, prey.x, prey.y, dt) <= HOUND_FIELD_V147.biteDistance && field.biteCooldown === 0) {
         field.biteCooldown = HOUND_FIELD_V147.biteInterval;
         events.push({ type: "bite", preyId: prey.id, damage: HOUND_FIELD_V147.biteDamage });

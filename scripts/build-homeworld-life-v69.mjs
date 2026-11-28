@@ -18,7 +18,7 @@ const roles = {
   'rampart-walk': ['Guetteuse des ponts', 'Réparateur des balises', 'Courrier des corniches'],
   esplanade: ['Hôte des retrouvailles', 'Aspirante à l’écoute', 'Ancien des récits'],
 };
-const names = ['Kesh', 'Tha’ra', 'Vorak', 'Ish’ren', 'Sek’ta', 'Nar’esh', 'Kor’na'];
+const { city: names } = JSON.parse(fs.readFileSync(new URL('../app/game/data/homeworldResidentNames.json', import.meta.url), 'utf8'));
 const population = [];
 const occupied = api.HOMEWORLD_RESIDENTS_V68.map(r => r.path[0]);
 // Reserve grounded furniture before new routines. Keep every old citizen and public doorway route clear.
@@ -73,8 +73,11 @@ for (const [index, district] of api.HOMEWORLD_DISTRICTS.entries()) {
       && api.isHomeworldRouteSegmentWalkable(start,p));
     if (!end) throw Error('No safe citizen routine: '+district.id+' '+slot);
     occupied.push(start);
-    population.push({id:`resident-v69-${district.id}-${slot+1}`,districtId:district.id,
-      role:roles[district.id][slot],name:names[(index*3+slot)%names.length],
+    const id = `resident-v69-${district.id}-${slot+1}`;
+    const name = names[id];
+    if (!name) throw new Error('Nom manquant pour ' + id);
+    population.push({id,districtId:district.id,
+      role:roles[district.id][slot],name,
       morphId:['classic','huntress','young','elder'][(index+slot)%4],path:[start,end],
       speed:28+slot*7,dwellSeconds:13+slot*5,phaseSeconds:index*4.1+slot*8.7,
       activity:slot===0?'inspection':slot===1?'transmission':'preparation'});

@@ -10,6 +10,15 @@ export const MOBILITY_YARD = {
   mud: { x: 630, y: 430, w: 100, h: 115 },
   cargo: { x: 820, y: 130, kg: 25 },
 } as const;
+export type MobilityRoute = 'forge-delivery';
+export const FORGE_DELIVERY_YARD = {
+  name: 'Livraison des Forges',
+  checkpoints: [{ x: 140, y: 290 }, { x: 140, y: 130 }, { x: 840, y: 290 }],
+  cargo: { x: 140, y: 130, kg: 25 },
+} as const;
+export const mobilityCourseLayout = (route?: MobilityRoute) =>
+  route === 'forge-delivery' ? FORGE_DELIVERY_YARD : MOBILITY_YARD;
+
 export interface MobilityInput { throttle: -1|0|1; steer: -1|0|1; brake: boolean; boost: boolean; interact: boolean }
 export interface MobilityCourseState {
   x: number; y: number; heading: number; speed: number; tick: number; energy: number;
@@ -68,7 +77,9 @@ export function parkedAtDepot(s: MobilityCourseState): boolean {
 export function mobilityCoursePassed(s: MobilityCourseState): boolean {
   return s.checkpoint===3 && s.cargoDelivered && s.condition>=50 && s.tick>=600 && parkedAtDepot(s);
 }
-export function stepMobilityCourse(previous: MobilityCourseState, input: MobilityInput, modelId: string, levels: MobilityLevels): MobilityCourseState {
+export function stepMobilityCourse(
+  previous: MobilityCourseState, input: MobilityInput, modelId: string, levels: MobilityLevels, route?: MobilityRoute,
+): MobilityCourseState {
   if (!validMobilityInput(input) || !validMobilityCourse(previous) || !mobilityDefinition(modelId)) throw new TypeError('Commande de conduite incompatible');
   if (previous.tick>=COURSE_MAX_TICKS) return {...previous,speed:0};
   const s={...previous,npcTicks:[...previous.npcTicks] as [number,number]}, dt=COURSE_STEP;
@@ -97,11 +108,13 @@ export function stepMobilityCourse(previous: MobilityCourseState, input: Mobilit
   s.energy=bounded(s.energy-(effort?stats.energyUse*(boost?4:1)*dt:0),0,100);
   s.heat=bounded(s.heat+(boost?16:-stats.cooling)*dt,0,100);
   s.condition=bounded(s.condition-(effort?.0005*Math.abs(s.speed)*dt:0),0,100);
-  const targetGate=MOBILITY_YARD.checkpoints[s.checkpoint];
+  const layout=mobilityCourseLayout(route);
+  const targetGate=layout.checkpoints[s.checkpoint];
   if(targetGate&&Math.hypot(s.x-targetGate.x,s.y-targetGate.y)<55)s.checkpoint++;
   if(input.interact&&Math.abs(s.speed)<6){
-    if(!s.cargoDelivered&&s.cargoKg===0&&s.checkpoint>=2&&Math.hypot(s.x-820,s.y-130)<55&&stats.capacity>=25)s.cargoKg=25;
-    else if(s.cargoKg===25&&parkedAtDepot(s)){s.cargoKg=0;s.cargoDelivered=true;}
+    const cargo=layout.cargo;
+    if(!s.cargoDelivered&&s.cargoKg===0&&s.checkpoint>=2&&Math.hypot(s.x-cargo.x,s.y-cargo.y)<55&&stats.capacity>=cargo.kg)s.cargoKg=cargo.kg;
+    else if(s.cargoKg===cargo.kg&&parkedAtDepot(s)&&(!route||s.checkpoint===3)){s.cargoKg=0;s.cargoDelivered=true;}
   }
   s.tick++;
   return s;

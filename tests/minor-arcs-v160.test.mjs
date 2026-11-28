@@ -19,7 +19,9 @@ const regions = source.load('app/game/systems/homeworldRegionsV68.ts');
 const owner = '2026-11-06T09:00:00.000Z';
 function bloodedSave() {
   const save = saveApi.defaultSave(owner);
-  save.profile.rankId = 'blooded'; save.profile.honor = 300; // seuil Blooded = 250 (RANK_THRESHOLDS)
+  save.profile.rankId = 'blooded';
+  save.profile.acquiredRankIdV166 = 'blooded';
+  save.profile.honor = saveApi.RANK_THRESHOLDS.blooded + 50;
   // Chasses 1 et 2 réussies : la chaîne normalisée ouvre alors Cinder-12.
   for (const id of ['jungle-vey', 'ice-cryostalker']) save.missionProgress[id] = { ...save.missionProgress[id], status: 'completed', completions: 1 };
   save.missionProgress['volcano-bad-blood'] = { ...save.missionProgress['volcano-bad-blood'], status: 'available' };
@@ -106,6 +108,7 @@ test('SC-1 de bout en bout : seule une chasse réussie après l’accord et sans
   // Une réussite antérieure à l'accord ne remplit pas le contrat.
   save = saveApi.applyMissionResult(save, badBloodResult());
   assert.equal(save.minorArcsV160, undefined, 'champ non créé par une chasse');
+  assert.equal(save.profile.rankId, 'blooded', 'la chasse conserve le rang acquis');
   const accepted = act(save, 'SC-1'); assert.ok(accepted.changed, accepted.message); save.minorArcsV160 = accepted.state;
   const violated = saveApi.applyMissionResult(save, badBloodResult(false));
   assert.equal(violated.minorArcsV160.entries[0].steps[0].proof, null);

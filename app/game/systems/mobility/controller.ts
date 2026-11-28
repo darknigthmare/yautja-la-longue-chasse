@@ -18,7 +18,7 @@ export class MobilityDriveController {
   step(input:MobilityInput): boolean {
     if(this.blocked||this.pending.length>=30||!this.confirmed.active)return false;
     const active=this.confirmed.active, levels=active.loaned?emptyMobilityLevels():this.confirmed.owned.find(v=>v.id===active.modelId)?.upgrades??emptyMobilityLevels();
-    this.predicted=stepMobilityCourse(this.predicted,input,active.modelId,levels);
+    this.predicted=stepMobilityCourse(this.predicted,input,active.modelId,levels,active.route);
     this.pending.push({...input});return true;
   }
   flush(write:MobilityWriter): boolean {
@@ -33,7 +33,7 @@ export class MobilityDriveController {
     const state=result.state;
     const valid=state && inspectMobilityLedger(state,this.confirmed.ownerCreatedAt).status==='valid';
     if(!result.accepted||!valid||!state?.active||state.revision!==this.confirmed.revision+1||
-       state.active.id!==active.id||state.active.modelId!==active.modelId||state.active.loaned!==active.loaned||
+       state.active.id!==active.id||state.active.modelId!==active.modelId||state.active.loaned!==active.loaned||state.active.route!==active.route||
        JSON.stringify(state.active.course)!==JSON.stringify(this.predicted)){
       this.blocked=true;
       if(result.accepted)this.message='Accusé de sauvegarde incohérent ; séquence conservée sans avance de simulation.';

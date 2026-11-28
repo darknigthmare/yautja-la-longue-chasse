@@ -192,3 +192,49 @@ test('garage SSR : panneau monture, voie Kha’Rha marquée proposée, autres mo
  const owned=qa.render('app/game/MobilityMountsV153.tsx',{save:withSession(),mountId:'kha_rha',allowed:true,onCommand:()=>{},onMessage:()=>{}});
  assert(owned.includes('data-mount-bond="0"'));assert(owned.includes('data-mount-session="S1"'));assert(owned.includes('BOND 25 requis'));
 });
+
+test('adoption de l’élevage : preuve complète, devis exact et débit unique', () => {
+ const cost = mt.KHA_RHA_ADOPTION_MARKS_V153;
+ const order = {type:'adopt', mountId:'kha_rha', trialId:TRIAL, expectedCost:cost};
+ const empty = seed();
+ act(empty, order, false);
+ const ready = trialDone();
+ act(ready, {...order, trialId:'autre-approche'}, false);
+ act(ready, {...order, expectedCost:cost - 1}, false);
+ act(ready, {...order, expectedRevision:ready.mountsV153.revision - 1}, false);
+ act(ready, {...order, mountId:'war_kha_rha'}, false);
+ act({...ready, profile:{...ready.profile, clanMarks:cost - 1}}, order, false);
+ act({...ready, profile:{...ready.profile, rankId:'young-blood'}}, order, false);
+
+ const bought = act({...ready, profile:{...ready.profile, clanMarks:cost}}, order).save;
+ assert.equal(bought.profile.clanMarks, 0);
+ assert.equal(bought.mountsV153.spentMarks, cost);
+ assert.equal(bought.mountsV153.mounts.length, 1);
+ assert.equal(mount(bought).proof.adoptionMarks, cost);
+ assert.deepEqual(mount(bought).proof.eventIds, ready.mountsV153.trial.passed.map(p => p.eventId));
+ assert.equal(mount(bought).bond, 0);
+ act(bought, {...order, expectedRevision:ready.mountsV153.revision}, false);
+ act(bought, {type:'recruit', mountId:'kha_rha', trialId:TRIAL}, false);
+ act(bought, order, false);
+
+ const db = store();
+ const receipt = saves.writeSaveWithStatus(bought, db);
+ assert(receipt.persisted, receipt.failure);
+ const resumed = saves.loadSaveWithStatus(db);
+ assert.equal(resumed.failure, null);
+ assert.deepEqual(resumed.save.mountsV153, bought.mountsV153);
+ assert.equal(resumed.save.profile.clanMarks, 0);
+ for (const tamper of [
+  state => {state.spentMarks = cost - 1;},
+  state => {state.mounts[0].proof.adoptionMarks = cost - 1;},
+  state => {state.mounts[0].proof.eventIds = [];},
+ ]) {
+  const invalid = structuredClone(bought.mountsV153);
+  tamper(invalid);
+  assert.equal(mt.inspectMountsV153(invalid, OWNER).status, 'invalid-save');
+ }
+ const legacy = act(ready, {type:'recruit', mountId:'kha_rha', trialId:TRIAL}).save;
+ assert.equal(legacy.profile.clanMarks, ready.profile.clanMarks);
+ assert.equal(Object.hasOwn(mount(legacy).proof, 'adoptionMarks'), false);
+ assert.equal(mt.inspectMountsV153(legacy.mountsV153, OWNER).status, 'valid');
+});
