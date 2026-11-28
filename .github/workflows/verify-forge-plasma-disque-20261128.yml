@@ -3,6 +3,9 @@ on:
   push:
     branches: [codex/verify-forge-plasma-disque-20261128]
     paths: ['.github/workflows/verify-forge-plasma-disque-20261128.yml']
+concurrency:
+  group: forge-plasma-disque
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
@@ -13,7 +16,7 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '1c58a644ff2f68bededca9fb856afa52a81fcae1'
+      ASSET_RACCORDS_SOURCE_COMMIT: '17364fed7d8d02cdaca3b53ebc904eb93754064b'
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: /usr/bin/google-chrome
       AUDIT_CHROME_CHANNEL: chrome
@@ -21,12 +24,12 @@ jobs:
       YAUTJA_QA_BASE_URL: http://127.0.0.1:3121
       YAUTJA_QA_MODE: compiled-app
       AUDIT_CHROME_EXECUTABLE: /usr/bin/google-chrome
-      YAUTJA_QA_RUNTIME_COMMIT: '1c58a644ff2f68bededca9fb856afa52a81fcae1'
+      YAUTJA_QA_RUNTIME_COMMIT: '17364fed7d8d02cdaca3b53ebc904eb93754064b'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '1c58a644ff2f68bededca9fb856afa52a81fcae1'
+          ref: '17364fed7d8d02cdaca3b53ebc904eb93754064b'
           persist-credentials: false
           fetch-depth: 3
           filter: blob:none
@@ -311,7 +314,7 @@ jobs:
       - name: Qualify both forged levels, retained stock, the frozen hunt and cold reloads
         if: ${{ !cancelled() && steps.server.conclusion == 'success' }}
         env:
-          HUNTER_FORGE_QA_COMMIT: '1c58a644ff2f68bededca9fb856afa52a81fcae1'
+          HUNTER_FORGE_QA_COMMIT: '17364fed7d8d02cdaca3b53ebc904eb93754064b'
         run: |
           for weapon in plasma-caster smart-disc; do
             HUNTER_FORGE_QA_TARGET="$weapon" HUNTER_FORGE_QA_OUTPUT="outputs/qa-hunter-forge-wear/$weapon" node scripts/qa-hunter-forge-wear-20261121.mjs
