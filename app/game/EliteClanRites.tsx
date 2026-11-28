@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import TrainingDrill from "./TrainingDrill";
+import { YautjaTermV67 } from "./YautjaTranslationV67";
 import HomeworldNpcSpriteV84 from "./HomeworldNpcSpriteV84";
 import {
   canEnterEliteClanRites, canWalkEliteClanRites, completedEliteClanRites, ELITE_CLAN_RITES_GROUND, ELITE_CLAN_RITES_POSTS,
@@ -94,7 +95,7 @@ export default function EliteClanRites({ save, suspended, onCommand, onClose, on
   return <section className={styles.scene} aria-labelledby="elite-clan-rites-heading"
     data-elite-clan-rites={completedEliteClanRites(receipts) ? "complete" : "training"}>
     <header className={styles.header}>
-      <h3 id="elite-clan-rites-heading">Les rites du clan</h3>
+      <div><h3 id="elite-clan-rites-heading">Les rites du clan</h3><YautjaTermV67 term="kehrite" /></div>
       <button type="button" onClick={onClose}>Fermer les épreuves</button>
     </header>
     <div className={arena.layout}>

@@ -5,6 +5,7 @@ import type { SaveGame } from "./types";
 import { BLOODED_ROOMS, inspectBloodedTempleV174, templePassageLaneV174, type TempleActionV174, type TempleCommandV174 } from "./systems/bloodedTempleV174";
 import { shipAcquisitionAuthorityV161 } from "./systems/shipReceiptV161";
 import styles from "./BloodedTempleV174.module.css";
+import { YautjaTermV67 } from "./YautjaTranslationV67";
 
 type Props = {
   save: SaveGame;
@@ -57,6 +58,7 @@ export default function BloodedTempleV174({ save, suspended, onCommand, onClose 
         <h3 id="blooded-temple-title">Le rite de la pyramide</h3>
         <button type="button" className="ghost-button" onClick={onClose}>Revenir au dossier</button>
       </header>
+      <p><YautjaTermV67 term="kainde-amedha-chiva" /></p>
       {view.stage === "council" && <>
         <p>Les Anciens portent le masque cérémoniel. Ils attendent le crâne du Quatza-Rij et le témoignage du trio rentré ensemble.</p>
         {button("present", "Présenter le crâne et entendre les Anciens")}
