@@ -7,7 +7,7 @@ import { GameAudio, type GameMusicContext, type GameSfxId } from "../game/sound"
 import type { SoloV68RecognitionAudio } from "../game/FirstHuntSoloV68";
 import type { HoundKennelActionV147 } from "../game/HoundKennelPanelV147";
 import { activeHoundV147, HOUND_KENNEL_LOCATION_V147 } from "../game/systems/huntingHoundsV147";
-import { chooseAtKennelV147, healAtKennelV147, kennelRefusalTextV147, recruitAtKennelV147 } from "../game/systems/houndKennelV147";
+import { applyKennelActionV147, kennelRefusalTextV147 } from "../game/systems/houndKennelV147";
 import type { HorizonsRecordO6 } from "../game/systems/originHorizonsO6";
 import { useHomeworldReducedMotionV77 } from "../game/useHomeworldReducedMotionV77";
 import { actClanShipDocking, type ClanShipDockingAction } from "../game/systems/clanShipDocking";
@@ -21,7 +21,7 @@ import { actWolfCastle, applyWolfCastleCheckpoint, type WolfCastleAction, type W
 import type { HomeworldProgress } from "../game/systems/homeworld";
 import type { HomeworldRegionStateV68 } from "../game/systems/homeworldRegionsV68";
 import type { HuntPersistencePayload } from "../game/HuntCanvas";
-import type { MissionResult, SaveGame } from "../game/types";
+import type { MissionId, MissionResult, SaveGame } from "../game/types";
 import { createDevArrival, createDevSave, createMemoryStorage, resolveDevDestination, type DevDestination } from "./destinations";
 import { createBuriedCradleProgress, type BuriedCradleProgress, type CradleRoomId } from '../game/systems/buriedCradle';
 import DevServices, { type DevService } from "./services";
@@ -107,7 +107,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
   const [arrival, setArrival] = useState(arrivalFixture?.state ?? null);
   const arrivalRef = useRef(arrival);
   const [huntRunning, setHuntRunning] = useState(true);
-  const [kennelHunt, setKennelHunt] = useState(false);
+  const [exerciseHunt, setExerciseHunt] = useState<MissionId | null>(null);
   const [recognitionAudio, setRecognitionAudio] = useState<SoloV68RecognitionAudio>("outside");
   const recognitionPaused = recognitionAudio === "paused";
   const recognitionPausedRef = useRef(false);
@@ -122,9 +122,8 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
   const [huntObservation, setHuntObservation] = useState<HuntObservation | null>(null);
   const selectedShipId = save.wolfCastle?.personalShipId ?? save.clanShipDocking?.personalShipId ?? DEFAULT_SHIP_ID;
   const nativeSceneSuspended = service !== null || !gameFocused;
-  const missionId = kennelHunt ? "jungle-vey" :
-    destination.kind === "mission" || destination.kind === "arrival" ? destination.missionId : null;
-  const inHunt = kennelHunt || destination.kind === "mission" || (destination.kind === "arrival" && arrival?.status === "complete");
+  const missionId = exerciseHunt ?? (destination.kind === "mission" || destination.kind === "arrival" ? destination.missionId : null);
+  const inHunt = exerciseHunt !== null || destination.kind === "mission" || (destination.kind === "arrival" && arrival?.status === "complete");
   const arrivalGauntlet = typeof arrivalFixture?.run.configuration.gauntletVariantId === "string"
     ? arrivalFixture.run.configuration.gauntletVariantId : undefined;
   const arrivalShipId = arrivalFixture?.run.configuration.insertionShipId;
@@ -200,13 +199,10 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
   const actKennel = useCallback((action: HoundKennelActionV147): boolean => {
     if (!sessionAliveRef.current || destination.id !== "dev-kennel" || serviceRef.current !== null || !readGameFocus()) return false;
     const current = saveRef.current;
-    const locationId = HOUND_KENNEL_LOCATION_V147;
-    const update = action.type === "recruit"
-      ? recruitAtKennelV147(current.houndsV147, { catalogueId: action.catalogueId, name: action.name, locationId })
-      : action.type === "choose" ? chooseAtKennelV147(current.houndsV147, action.houndId, locationId)
-        : healAtKennelV147(current.houndsV147, action.houndId, locationId);
+    const update = applyKennelActionV147(current, action, HOUND_KENNEL_LOCATION_V147);
     if (!update.ok) { setNotice(kennelRefusalTextV147(update.reason)); return false; }
-    replaceSave({ ...current, houndsV147: update.state });
+    replaceSave({ ...current, houndsV147: update.houndsV147, profile: { ...current.profile, clanMarks: update.clanMarks } });
+    setNotice(update.message);
     return true;
   }, [destination.id, replaceSave]);
   const saveRegion = useCallback((next: HomeworldRegionStateV68) => {
@@ -405,9 +401,12 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
     setHuntResult(null); setHuntCheckpoint(null); beginHuntGeneration();
   };
   const chosenHound = activeHoundV147(save.houndsV147);
-  const openKennelHunt = () => {
-    if (!activeHoundV147(saveRef.current.houndsV147)) return;
-    setKennelHunt(true);
+  const openExerciseHunt = () => {
+    setExerciseHunt("jungle-vey");
+    restartHunt();
+  };
+  const closeExerciseHunt = () => {
+    setExerciseHunt(null);
     restartHunt();
   };
 
@@ -433,11 +432,16 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
       <p className={styles.notice} role="status" data-dev-notice>
         {notice || "Session de test temporaire. Les déplacements et résultats de cet essai disparaissent au changement de lieu ou au rechargement."}
       </p>
-      {destination.id === "dev-kennel" && !kennelHunt && <div className={styles.actions}>
-        <button type="button" data-dev-kennel-hunt disabled={!chosenHound || service !== null} onClick={openKennelHunt}>
+      {destination.id === "dev-kennel" && !exerciseHunt && <div className={styles.actions}>
+        <button type="button" data-dev-kennel-hunt disabled={!chosenHound || service !== null} onClick={openExerciseHunt}>
           {chosenHound ? `Chasser avec ${chosenHound.name}` : "Chasser avec ce compagnon"}
         </button>
         {!chosenHound && <span>Choisis un compagnon prêt au chenil.</span>}
+      </div>}
+      {destination.id === "dev-forge" && !exerciseHunt && <div className={styles.actions}>
+        <button type="button" data-dev-forge-hunt disabled={service !== null} onClick={openExerciseHunt}>
+          Essayer les armes de l’atelier en chasse
+        </button>
       </div>}
       <div className={styles.viewport}>
         <div ref={sceneRef} className={styles.scene} hidden={service !== null} inert={service !== null}>
@@ -449,7 +453,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
               onExtract={progress => { setCradleProgress(structuredClone(progress)); setNotice(progress.crownClaimed ? 'Essai : crête extraite.' : 'Essai : repli sans crête.'); return true; }}
               onExit={exitSession} onSound={sound => audioRef.current?.playSfx(sound)} />}
             {destination.kind === "warp" && <WarpModuleBay save={save} onExit={exitSession} suspended={service !== null} />}
-            {destination.kind === "exercise" && <DevExerciseScene exercise={destination.exercise} save={save} readSave={readSave}
+            {destination.kind === "exercise" && !exerciseHunt && <DevExerciseScene exercise={destination.exercise} save={save} readSave={readSave}
               replaceSave={replaceSave} suspended={nativeSceneSuspended}
               ensureAudio={ensureAudio} createSceneAudio={createSceneAudio} onSound={playSound}
               onRecognitionAudio={receiveRecognitionAudio} onNotify={setNotice} onClose={exitSession}
@@ -485,7 +489,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
               onExit={returnToShip}
               onOpenSettings={() => openService("settings")}
             />}
-            {destination.kind === "homeworld" && !kennelHunt && <HomeworldHub
+            {destination.kind === "homeworld" && !exerciseHunt && <HomeworldHub
               save={save}
               selectedShipId={selectedShipId}
               suspended={service !== null}
@@ -579,6 +583,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
             <div className={styles.actions}>
               {!huntResult && huntCheckpoint && <button type="button" onClick={resumeHunt}>Reprendre cet essai</button>}
               <button type="button" onClick={restartHunt}>Recommencer la chasse</button>
+              {exerciseHunt && <button type="button" onClick={closeExerciseHunt}>Revenir à l’essai d’origine</button>}
               <button type="button" onClick={exitSession}>Choisir un autre lieu</button>
               <button type="button" onClick={returnToShip}>Rejoindre mon vaisseau</button>
             </div>
