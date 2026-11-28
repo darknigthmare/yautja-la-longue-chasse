@@ -1,3 +1,4 @@
+import { writeFileSync } from 'node:fs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { homeworldSceneSsrV78 } from './helpers/homeworld-scene-ssr-v78.mjs';
@@ -595,6 +596,7 @@ test('recruited clan hunter and tracker share a real refit, insertion and extrac
   assert.doesNotMatch(preview, /Prêt à embarquer/);
 
   save = { ...save, clanShipDocking: null };
+  writeFileSync('outputs/qa-compagnons-chasse-seed.json', JSON.stringify(save));
   const mission = 'jungle-vey', start = save.missionProgress[mission].attempts, runId = 'field-crew-native-run';
   const bound = residence.bindCompanionResidenceMission(save, { ownerCreatedAt: OWNER, missionId: mission, encounterRun: start,
     shipId: SHIP, insertion: planet });
