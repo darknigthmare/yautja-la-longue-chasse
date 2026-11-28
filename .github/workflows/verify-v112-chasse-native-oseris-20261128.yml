@@ -17,7 +17,7 @@ jobs:
       - name: Checkout the exact application and Git asset index
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '8dbd07227bdb59c871875717a5aac60f90adabb6'
+          ref: '52bb755e6c835565ca4af1521e26d1025099dfd2'
           filter: blob:none
           fetch-depth: 1
           sparse-checkout-cone-mode: false
@@ -60,7 +60,7 @@ jobs:
           node --test tests/hunt-melee-combat.test.mjs tests/canopy-traversal-v112.test.mjs
       - name: Play native combat, harvest, extraction and conservation
         run: |
-          test "$(git rev-parse HEAD)" = '8dbd07227bdb59c871875717a5aac60f90adabb6'
+          test "$(git rev-parse HEAD)" = '52bb755e6c835565ca4af1521e26d1025099dfd2'
           node scripts/qa-oseris-trophy-return-20261128.mjs --native-oseris
       - name: Print exact browser evidence
         if: always()
