@@ -14,13 +14,13 @@ jobs:
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'bee025d556d36e8a05fea5c265ce3910c9a566e3'
+      ASSET_RACCORDS_SOURCE_COMMIT: '11717f4e5269f4c3bda758f9182b14719a3ccd7e'
       BASE_COMMIT: '37a3ddf3e3376331e0798647641880e4e51dd794'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'bee025d556d36e8a05fea5c265ce3910c9a566e3'
+          ref: '11717f4e5269f4c3bda758f9182b14719a3ccd7e'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
