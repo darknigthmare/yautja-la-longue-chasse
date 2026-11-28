@@ -463,7 +463,8 @@ export function stepHoundFieldV147(
     case "recall": {
       const wasAway = Math.hypot(field.x - input.player.x, field.y - input.player.y) > HOUND_FIELD_V147.heelDistance;
       if (heel() && !field.orderDone) {
-        if (wasAway) complete();
+        // The first deliberate recall establishes contact even if the hound is close.
+        if (wasAway || field.ordersCompleted === 0 && !field.wounded) complete();
         else field.orderDone = true;
         events.push({ type: "returned" });
       }
