@@ -26,10 +26,12 @@ const withinReach = (x: number, target: number) => Math.abs(x - target) <= 1;
 const styleAt = (position: number) => ({ left: 6 + 88 * position / WARP_COMMON_LIMIT_R2 + "%" });
 
 type WarpHunter = Pick<SaveGame, "appearance" | "loadout">;
-function WarpWalker({ identity, position, facing }: { identity: WarpHunter; position: number; facing: -1 | 1 }) {
+export function WarpWalker({ identity, position, facing, limit = WARP_COMMON_LIMIT_R2, floor, inset = 6 }: {
+  identity: WarpHunter; position: number; facing: -1 | 1; limit?: number; floor?: string; inset?: number;
+}) {
   const size = 64;
   const footY = HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.width * size;
-  return <div className={styles.actor} aria-hidden="true" style={styleAt(position)}>
+  return <div className={styles.actor} aria-hidden="true" style={{ left: inset + (100 - 2 * inset) * position / limit + "%", bottom: floor }}>
     <HunterRigPreview appearance={identity.appearance} armorId={identity.loadout.armorId} weaponIds={identity.loadout.weaponIds}
       gearIds={identity.loadout.gearIds} size={size} facing={facing}
       style={{ position: "absolute", top: -footY, left: -size / 2 }} />

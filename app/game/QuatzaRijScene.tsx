@@ -4,11 +4,14 @@
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from 'react';
 import type { SaveGame } from './types';
 import HunterRigPreview from './HunterRigPreview';
+import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
 import { controlActionShortcut } from './controlBindingLabels';
 import { DEFAULT_CONTROL_BINDINGS, matchesControlAction } from './systems/controlBindings';
 import {
-  QUATZA_FLOOR, QUATZA_INPUT, QUATZA_PLATFORMS, QUATZA_POSTS, QUATZA_RETURN_SUBJECTS, QUATZA_WIDTH,
-  canEnterQuatza, canRetryQuatza, quatzaMissingCompanion, quatzaRescueFinished, replayQuatzaAttempt, replayQuatzaRescue,
+  QUATZA_FLOOR, QUATZA_INPUT, QUATZA_PLATFORMS, QUATZA_POSTS, QUATZA_RETURN_AID_TICKS, QUATZA_RETURN_SUBJECTS,
+  QUATZA_RETURN_WITNESS, QUATZA_WIDTH,
+  canEnterQuatza, canRetryQuatza, quatzaMissingCompanion, quatzaRescueFinished, quatzaReturnAidPatient, quatzaReturnProof,
+  replayQuatzaAttempt, replayQuatzaRescue,
   stepQuatza, stepQuatzaRescue, type QuatzaAttempt, type QuatzaCommand, type QuatzaFrame, type QuatzaMode,
   type QuatzaRescue, type QuatzaRescueFrame, type QuatzaReturnSubject,
 } from './systems/quatzaRij';
@@ -18,6 +21,7 @@ const BEAST = '/game/quatza-rij/poses.png';
 const HIDE = '/game/quatza-rij/hide.png';
 const SKULL = '/game/quatza-rij/skull.png';
 const title: Record<QuatzaMode, string> = { triad: 'Le Quatza-Rij à trois', solo: 'Le Quatza-Rij solitaire' };
+const companionName = { saar: 'Saar', vek: 'Vek' } as const;
 const subjectLabel: Record<QuatzaReturnSubject, string> = { companions: 'Saar et Vek', trophy: 'La peau et le crâne' };
 const controls = [
   ['left', 'hunt.moveLeft', '←'], ['right', 'hunt.moveRight', '→'], ['jump', 'hunt.jump', 'Sauter'],
@@ -77,10 +81,22 @@ function poseOf(frame: QuatzaFrame): number {
   return 0;
 }
 
+function ReturnWitness({ save }: { save: SaveGame }) {
+  const witness = QUATZA_RETURN_WITNESS;
+  return <div className={styles.actor} data-quatza-witness-actor={witness.id}
+    style={{ left: QUATZA_POSTS.witness + 38, top: QUATZA_FLOOR }}>
+    <span className={styles.witnessName}>{witness.name}</span>
+    <HomeworldNpcSpriteV84 npcId={witness.id} regionId="quatza-rij" role="guard" height={98} facing={-1}>
+      <div><HunterRigPreview appearance={save.appearance} armorId="scout" weaponIds={[]} gearIds={[]}
+        size={98} facing={-1} label={witness.name} /></div>
+    </HomeworldNpcSpriteV84>
+  </div>;
+}
+
 function Expedition({ save, mode, attempt, attempts, onCommand, suspended = false }: Props & {
   mode: QuatzaMode; attempt: QuatzaAttempt; attempts: number;
 }) {
-  const [frame, setFrame] = useState(() => replayQuatzaAttempt(mode, attempt.input));
+  const [frame, setFrame] = useState(() => replayQuatzaAttempt(mode, attempt.input, attempt.returnRules));
   const [running, setRunning] = useState(false);
   const [blocked, setBlocked] = useState(false);
   const [witnessError, setWitnessError] = useState(false);
@@ -162,13 +178,14 @@ function Expedition({ save, mode, attempt, attempts, onCommand, suspended = fals
         accumulated -= 1000 / 60;
         const code = controlsRef.current;
         const safeCode = (code & 3) === 3 ? code & ~3 : code;
-        const next = stepQuatza(mode, current, safeCode);
+        const next = stepQuatza(mode, current, safeCode, attempt.returnRules);
         if (next === current) break;
         buffer.current.push(safeCode);
         frameRef.current = next;
         const significant = next.phase !== current.phase || next.checked !== current.checked || next.route !== current.route ||
           next.kit !== current.kit || next.player.health !== current.player.health || next.beast.health !== current.beast.health ||
-          next.hide !== current.hide || next.skull !== current.skull || buffer.current.length >= 64;
+          next.hide !== current.hide || next.skull !== current.skull ||
+          next.companions.some((ally, index) => ally.health !== current.companions[index]?.health) || buffer.current.length >= 64;
         current = next;
         if (significant && !flush()) { setFrame(current); return; }
         if (next.phase === 'retreated' || next.phase === 'delivered') { setFrame(next); setRunning(false); return; }
@@ -178,7 +195,7 @@ function Expedition({ save, mode, attempt, attempts, onCommand, suspended = fals
     };
     raf = requestAnimationFrame(tick);
     return () => { cancelAnimationFrame(raf); controlsRef.current = 0; };
-  }, [assets, blocked, flush, mode, running, suspended]);
+  }, [assets, attempt.returnRules, blocked, flush, mode, running, suspended]);
 
   useEffect(() => {
     if (!running || suspended || blocked) return;
@@ -211,6 +228,10 @@ function Expedition({ save, mode, attempt, attempts, onCommand, suspended = fals
   const reachedWitnesses = mode === 'triad' && frame.phase === 'delivered' && attempt.phase === 'delivered';
   const presentations = reachedWitnesses ? save.quatzaRij?.expeditions.triad?.presentations ?? [] : [];
   const remainingSubjects = QUATZA_RETURN_SUBJECTS.filter(subject => !presentations.includes(subject));
+  const returning = mode === 'triad' && frame.phase === 'return';
+  const proof = mode === 'triad' ? quatzaReturnProof(save.createdAt, attempts, frame) : null;
+  const patient = returning && attempt.returnRules && Math.abs(frame.player.x - QUATZA_POSTS.witness) > 52
+    ? quatzaReturnAidPatient(frame) : undefined;
   const heldProof = frame.hide && (frame.phase === 'field' || frame.phase === 'return' ||
     reachedWitnesses && remainingSubjects.includes('trophy'));
   return <div ref={expeditionRef} data-quatza-expedition={mode}
@@ -254,7 +275,9 @@ function Expedition({ save, mode, attempt, attempts, onCommand, suspended = fals
           {frame.beast.stage === 'dead' && !frame.skull && <img className={styles.proof} src={frame.hide ? SKULL : HIDE}
             style={{ left: frame.beast.x + 12, top: QUATZA_FLOOR }} alt={frame.hide ? 'Crâne à prélever' : 'Peau à prélever'} />}
         </>}
-        {frame.companions.map(ally => <div className={styles.actor} key={ally.id} style={{ left: ally.x, top: QUATZA_FLOOR, opacity: ally.health > 0 ? 1 : .48 }}>
+        {(returning || reachedWitnesses) && <ReturnWitness save={save} />}
+        {frame.companions.map(ally => <div className={styles.actor} key={ally.id} data-quatza-companion={ally.id}
+          data-health={ally.health} style={{ left: ally.x, top: QUATZA_FLOOR, opacity: ally.health > 0 ? 1 : .48 }}>
           <span className={styles.actorName}>{ally.id === 'saar' ? 'Saar' : 'Vek'}</span>
           <div><HunterRigPreview appearance={save.appearance} armorId={ally.id === 'saar' ? 'scout' : save.loadout.armorId}
             weaponIds={['wristblades']} gearIds={[]} size={98} label={ally.id === 'saar' ? 'Saar' : 'Vek'} /></div>
@@ -264,16 +287,23 @@ function Expedition({ save, mode, attempt, attempts, onCommand, suspended = fals
             facing={frame.player.facing} size={108} label="Ton chasseur" pose={frame.player.vy ? 'jump' : frame.previous & 3 ? 'run' : 'idle'}
             phase={frame.tick / 8} bladesExtended={frame.player.cooldown > 12} />
         </div></div>
-        {heldProof && <img className={styles.proof} data-quatza-carried src={frame.skull ? SKULL : HIDE}
+        {heldProof && <img className={styles.proof} data-quatza-carried data-quatza-return-proof={proof ?? undefined}
+          src={frame.skull ? SKULL : HIDE}
           style={{ left: frame.player.x - 21, top: frame.player.y - 35 }} alt={frame.skull ? 'Peau et crâne portés' : 'Peau portée'} />}
         {frame.phase === 'delivered' && (mode === 'solo' || presentations.includes('trophy')) &&
-          <img className={styles.proof} src={SKULL} style={{ left: QUATZA_POSTS.witness + 62, top: QUATZA_FLOOR - 28 }} alt="Crâne remis" />}
+          <img className={styles.proof} src={SKULL} data-quatza-return-proof={proof ?? undefined} data-quatza-handover="skull"
+            style={{ left: QUATZA_POSTS.witness + 77, top: QUATZA_FLOOR - 28 }} alt="Crâne remis" />}
         {reachedWitnesses && presentations.includes('trophy') &&
-          <img className={styles.proof} src={HIDE} style={{ left: QUATZA_POSTS.witness + 109, top: QUATZA_FLOOR - 28 }} alt="Peau remise" />}
+          <img className={styles.proof} src={HIDE} data-quatza-return-proof={proof ?? undefined} data-quatza-handover="hide"
+            style={{ left: QUATZA_POSTS.witness + 124, top: QUATZA_FLOOR - 28 }} alt="Peau remise" />}
       </div>
     </div>
     <p className={styles.status} role="status">{objective(frame, mode)}</p>
-    {reachedWitnesses && <section className={styles.testimony} aria-label="Présentation aux témoins" data-quatza-witness>
+    {patient && <p className={styles.status}>Arrête-toi près de {companionName[patient.id]} et maintiens Interagir pour le soigner.</p>}
+    {frame.returnAid && <progress aria-label={'Soins de ' + companionName[frame.returnAid.patient]}
+      value={frame.returnAid.ticks} max={QUATZA_RETURN_AID_TICKS} />}
+    {reachedWitnesses && <section className={styles.testimony} aria-label="Présentation au témoin du clan"
+      data-quatza-witness={QUATZA_RETURN_WITNESS.id}>
       {presentations.length > 0 && <ol aria-label="Ordre des présentations">{presentations.map(subject => <li key={subject}
         data-quatza-presented={subject}>{subjectLabel[subject]}</li>)}</ol>}
       {presentations.includes('companions') && <ul aria-label="État des partenaires au retour">{frame.companions.map(member =>
@@ -297,7 +327,6 @@ function Expedition({ save, mode, attempt, attempts, onCommand, suspended = fals
 }
 
 const rescueControls = controls.filter(([id]) => id === 'left' || id === 'right' || id === 'interact' || id === 'signal');
-const companionName = { saar: 'Saar', vek: 'Vek' } as const;
 
 function rescueObjective(frame: QuatzaRescueFrame) {
   const name = companionName[frame.patient];
@@ -409,7 +438,7 @@ function Recovery({ save, hunt, rescue, attempts, onCommand, suspended = false }
   const readsWitness = frame.phase === 'report' || frame.phase === 'return' || frame.phase === 'reunited';
   const marker = readsWitness ? QUATZA_POSTS.witness : frame.phase === 'departure' ? QUATZA_POSTS.departure :
     frame.phase === 'track' ? frame.traceX : frame.phase === 'treat' ? frame.lastSeenX : QUATZA_POSTS.refuge;
-  const markerLabel = readsWitness ? 'Témoin' : frame.phase === 'departure' ? 'Départ du camp' :
+  const markerLabel = readsWitness ? QUATZA_RETURN_WITNESS.name : frame.phase === 'departure' ? 'Départ du camp' :
     frame.phase === 'track' ? 'Dernière trace' : frame.phase === 'treat' ? companionName[frame.patient] : 'Refuge';
   const camera = Math.max(0, Math.min(QUATZA_WIDTH - width, frame.x - width * .42));
   return <section ref={node} data-quatza-rescue={rescue.id} data-phase={frame.phase} data-tick={frame.tick}
@@ -433,6 +462,7 @@ function Recovery({ save, hunt, rescue, attempts, onCommand, suspended = false }
           style={{ left: place.left, top: place.y, width: place.right - place.left }} />)}
         {frame.phase !== 'interrupted' && <span className={styles.marker} data-ready
           style={{ left: marker, top: QUATZA_FLOOR - 28 }}>{markerLabel}</span>}
+        {readsWitness && <ReturnWitness save={save} />}
         <div className={styles.actor} style={{ left: frame.x, top: QUATZA_FLOOR }}>
           <div><HunterRigPreview appearance={save.appearance} armorId={save.loadout.armorId} weaponIds={['wristblades']}
             gearIds={[]} facing={frame.facing} size={108} label="Ton chasseur" pose={frame.previous & 3 ? 'run' : 'idle'}
@@ -471,7 +501,7 @@ export default function QuatzaRijScene(props: Props & { mode: QuatzaMode }) {
   if (!expedition && !mayStart) return null;
   const attempts = expedition?.attempts.length ?? 0;
   const attempt = expedition?.attempts.at(-1);
-  const hunt = mode === 'triad' && attempt?.phase === 'retreated' ? replayQuatzaAttempt(mode, attempt.input) : null;
+  const hunt = mode === 'triad' && attempt?.phase === 'retreated' ? replayQuatzaAttempt(mode, attempt.input, attempt.returnRules) : null;
   const absent = hunt && quatzaMissingCompanion(hunt);
   return <section id={'quatza-expedition-' + mode} className={styles.quest} data-quatza-campaign aria-label={title[mode]}>
     <h3>{title[mode]}</h3>

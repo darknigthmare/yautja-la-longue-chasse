@@ -14,7 +14,8 @@ const saves = modules.load('app/game/save.ts');
 const { YOUTH_CONTROL_ACTIONS: actions } = modules.load('app/game/systems/youthControls.ts');
 const { descent, hunt } = thresholdsTemple.SOLO_V70_DEPTHS_M017;
 const legacyGallery = process.argv.includes('--legacy-gallery');
-const expanded = legacyGallery || process.argv.includes('--complete-depths');
+const legacyRoyal = process.argv.includes('--legacy-royal');
+const expanded = legacyGallery || legacyRoyal || process.argv.includes('--complete-depths');
 const royalEncounter = expanded && !legacyGallery;
 const royalAsset = '/game/xeno-prime/berceau-v1/sprites/personnages/059_matriarche_intacte.png';
 let loadedRoyalAsset = false;
@@ -28,7 +29,7 @@ const previous = thresholdsCampaignRoute().save;
 const origin = { ...previous, prologue: { ...previous.prologue, templeTriadFirstM017: true } };
 const waiting = formationCampaignRoute({ origin, stop: 'observe' }).save;
 const seed = templeCampaignRoute({ origin: waiting, stop: 'return',
-  archiveRoomCount: expanded ? undefined : 11, legacyGallery }).save;
+  archiveRoomCount: expanded ? undefined : 11, legacyGallery, legacyRoyal }).save;
 seed.settings.masterVolume = 0;
 assert.equal(saves.parseSaveImport(saves.exportSave(seed)).failure, null);
 const key = saves.SAVE_STORAGE_KEY;
@@ -36,7 +37,7 @@ const output = resolve(process.env.M017_OUTPUT ?? 'outputs/qa-temple-depths-m017
 const report = {
   commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   seed: 'V69, V90 roles and V70 Vanne reached through native reducers. Only Chromium keyboard input acts after the Vanne.',
-  route: legacyGallery ? 'historical-gallery' : royalEncounter ? 'royal' : 'historical-eleven-rooms',
+  route: legacyGallery ? 'historical-gallery' : legacyRoyal ? 'historical-royal' : royalEncounter ? 'rescue' : 'historical-eleven-rooms',
   passed: false, errors: [],
 };
 const bindings = seed.settings.controlBindings;
@@ -353,7 +354,64 @@ try {
 
     await crossTo(vent.room);
     const { x, duration } = thresholdsTemple.SOLO_V70_PURGE_M017;
-    await approach(x, 1);
+    const rescueStage = () => page.locator('[data-solo-v70]').getAttribute('data-temple-rescue');
+    const readRescue = async () => (await saved()).soloV70.checkpoint.depthsM017.extension.rescue;
+    if (royalEncounter && !legacyRoyal) {
+      const { pickup, relief, carrySpeed } = thresholdsTemple.SOLO_V70_RESCUE_M017;
+      assert.equal(await rescueStage(), 'wounded');
+      assert.equal((await live()).companions[0].x, pickup.x);
+      await shot('07a-saar-blesse');
+      await hold(interact, 130);
+      assert.equal((await live()).room, vent.room, 'The triad cannot leave the wounded teammate behind.');
+      await approach(x, 1);
+      await hold(interact, 655);
+      assert.equal((await live()).depthsM017.extension.purgeStartedAt, null, 'The upstream valve is gated by the rescue.');
+
+      await approach(pickup.x, 1);
+      await page.clock.runFor(650);
+      await hold(interact, 850);
+      const { pickedUp } = await readRescue();
+      assert(pickedUp);
+      assert.equal(await rescueStage(), 'carrying');
+      assert.equal(await page.getByRole('status').filter({ hasText: 'Vek escorte la triade' }).count(), 1);
+
+      await approach((pickup.x + relief.x) / 2, 1);
+      await hold(jump, 250);
+      const carried = await live();
+      assert.equal(carried.player.y, relief.y, 'The wounded must be carried at ground level.');
+      assert(carried.player.x > pickup.x + 60 && carried.player.x < relief.x - 40);
+      assert.equal(carried.companions[0].x, thresholdsTemple.soloV70SaarCarryX(carried.player.x));
+      await shot('07b-transport-de-saar');
+      await page.getByRole('button', { name: 'Pause', exact: true }).click();
+      const checkpoint = (await saved()).soloV70.checkpoint;
+      assert.equal(checkpoint.player.x, carried.player.x);
+      assert.deepEqual(checkpoint.depthsM017.extension.rescue, { pickedUp, delivered: null });
+      await page.reload();
+      await boot();
+      const resumed = await live();
+      assert.equal(await rescueStage(), 'carrying');
+      assert.equal(resumed.player.x, checkpoint.player.x);
+      assert.equal(resumed.companions[0].x, checkpoint.companions[0].x);
+      assert.deepEqual(await readRescue(), checkpoint.depthsM017.extension.rescue);
+
+      await approach(relief.x, 1);
+      await page.clock.runFor(300);
+      await hold(interact, 950);
+      assert.equal(await rescueStage(), 'safe');
+      const { delivered } = await readRescue();
+      assert(delivered);
+      assert(delivered.positions[0] - pickedUp.positions[0] <= (delivered.tick - pickedUp.tick - relief.holdTicks) * carrySpeed + .01);
+      await shot('07c-saar-au-refuge');
+      await page.reload();
+      await boot();
+      assert.equal(await rescueStage(), 'safe');
+      assert.deepEqual(await readRescue(), { pickedUp, delivered });
+      report.rescue = { pickedUp, delivered, resumedAt: resumed.player.x, exitsAndPurgeBlockedBeforeRescue: true };
+    } else {
+      assert.equal(await rescueStage(), null);
+      assert.equal(await readRescue(), undefined);
+    }
+    await approach(x, x > (await live()).player.x ? 1 : -1);
     await hold(interact, 655);
     const first = (await saved()).soloV70.checkpoint.depthsM017.extension.purgeStartedAt;
     assert(first);
@@ -401,6 +459,12 @@ try {
     assert.deepEqual(report.deepObservations['royal-lock'], report.royal.lock);
   }
   if (legacyGallery) assert.equal(backAtVanne.soloV70.checkpoint.depthsM017.extension.royal, undefined);
+  if (report.rescue) {
+    const { pickedUp, delivered } = backAtVanne.soloV70.checkpoint.depthsM017.extension.rescue;
+    assert.deepEqual(pickedUp, report.rescue.pickedUp);
+    assert.deepEqual(delivered, report.rescue.delivered);
+    assert(delivered.tick < report.purgeTries[0]);
+  }
   report.passed = true;
 } catch (error) {
   report.errors.push(error.stack);
