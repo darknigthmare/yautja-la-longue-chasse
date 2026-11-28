@@ -45,6 +45,18 @@ export default function NativePaths({ onSelect }: { onSelect: (id: string) => vo
         description="Reprends une campagne qui remplit les prérequis. Vérifie le dossier de coque dans le vaisseau du clan, puis les traces de mémoire dans le chapitre Longue Mémoire.">
         <Link href="/" prefetch={false}>Retour au menu du jeu</Link>
       </NativePath>
+      <NativePath label="Voie O6 · Enfance, piste et départ"
+        description="Dans la campagne O6, vérifie la cohorte, la piste de Saar, puis les choix du mentor et leur reprise depuis un jalon de cette voie.">
+        <Link href="/" prefetch={false}>Ouvrir le menu Campagne</Link>
+      </NativePath>
+      <NativePath label="The Isles · Île de test et chasse inversée"
+        description="Choisis Modes de jeu, puis The Isles. Essaie la navigation sur l’île, puis la variante sur Verdant.">
+        <Link href="/" prefetch={false}>Ouvrir le menu des modes</Link>
+      </NativePath>
+      <NativePath label="Chroniques · Mausolée des Grandes Chasses"
+        description="Dans Archives &amp; chroniques, ouvre DLC / Chroniques de chasse pour examiner les trophées et les traces de campagne disponibles.">
+        <Link href="/" prefetch={false}>Ouvrir le menu des chroniques</Link>
+      </NativePath>
       <NativePath label="The Pit · Atelier d’animation"
         description="Contrôle les animations et les poses des Masques brisés dans l’atelier. Le menu du jeu donne accès au scénario jouable selon ta progression.">
         <Link href="/pit-lab" prefetch={false}>Ouvrir l’atelier The Pit</Link>
