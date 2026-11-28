@@ -149,10 +149,12 @@ try {
   assert.equal(completed.soloV68.receipts.length, 13);
   assert.equal(p.getChronicleRank(completed.prologue.chronicle), "young-blood");
   assert.equal(completed.soloV68.receipts.at(-1).id, "aspirant-recognition");
-  await scene.locator("[data-solo-return]").click();
-  await page.locator("[data-homeworld-hub]").waitFor();
+  report.checks.push({ checkpoint: "The final native interaction granted the Young Blood receipt", receipts: 13 });
+  await button("Sauvegarder et quitter").click();
+  await scene.waitFor({ state: "detached" });
   await silent();
-  report.checks.push({ checkpoint: "Young Blood receipt and city return end the native score", receipts: 13, listeners: 0 });
+  assert.equal((await saved()).soloV68.status, "completed");
+  report.checks.push({ checkpoint: "The native save-and-exit stops the registered score with the final receipt persisted", activeStreams: 0 });
   assert.deepEqual(report.errors, []);
   report.passed = true;
   console.log(JSON.stringify(report));
@@ -160,6 +162,7 @@ try {
   report.failure = String(error.stack ?? error);
   report.scene = await page?.locator("[data-solo-v68]").getAttribute("data-solo-step", { timeout: 1500 }).catch(() => null);
   report.audio = await page?.evaluate(() => window.__m015Audio?.()).catch(() => null);
+  report.visible = await page?.locator("body").innerText({ timeout: 1500 }).then(text => text.slice(0, 2200)).catch(() => "");
   console.error(JSON.stringify(report));
   await page?.screenshot({ path: resolve(output, "echec.png") }).catch(() => {});
   throw error;
