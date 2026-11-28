@@ -1,5 +1,5 @@
 import type { SaveGame } from '../types';
-import { SOLO_V70_DEPTH_POSTS_M017, SOLO_V70_PURGE_M017, SOLO_V70_GALLERY_M017, SOLO_V70_ROYAL_M017,
+import { SOLO_V70_DEPTH_POSTS_M017, SOLO_V70_PURGE_M017, SOLO_V70_GALLERY_M017, SOLO_V70_ROYAL_M017, SOLO_V70_RESCUE_M017,
   soloV70DepthPostM017, soloV70DepthAppuisM017, soloV70PurgeRemainingM017 } from './firstHuntSoloV70DepthsM017';
 import { normalizeSoloV69Campaign, soloV69MatchesSave, templeRankKeepsEarlierTrialV174 } from './campaignSoloV69';
 import { normalizeSoloV90Campaign, soloV90AtTempleHandoffM017 } from './campaignSoloV90Progress';
@@ -59,6 +59,9 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
  const oldDepths = old.depthsM017, nextDepths = next.depthsM017;
  const startedRelay = !oldDepths?.relay && !!nextDepths?.relay;
  const previousExtension = oldDepths?.extension, nextExtension = nextDepths?.extension;
+ const previousRescue = previousExtension?.rescue, rescue = nextExtension?.rescue;
+ const liftedSaar = !!rescue?.pickedUp && !previousRescue?.pickedUp;
+ const carryingSaar = !!previousRescue?.pickedUp && !previousRescue.delivered;
  const pendingPost = previousExtension && soloV70DepthPostM017(old.room, !!previousExtension.royal);
  if (Boolean(previousExtension) !== Boolean(nextExtension)) return null;
  if (previousExtension && nextExtension) {
@@ -91,9 +94,26 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
        !same(royal.evade, { tick: next.tick, x: next.player.x, y: next.player.y })
      )) return null;
    }
+   if (Boolean(previousRescue) !== Boolean(rescue)) return null;
+   if (previousRescue && rescue) {
+     const { room, pickup, relief, carrySpeed } = SOLO_V70_RESCUE_M017;
+     if (carryingSaar && (next.room !== room || Math.abs(next.player.x - old.player.x) > delta * carrySpeed + .1)) return null;
+     const validRescueStep = (target: typeof pickup | typeof relief, receipt: NonNullable<typeof rescue.pickedUp>) =>
+       old.phase === 'return' && old.room === room && near(room, target.x, target.y, 38) &&
+       !next.player.vx && !next.player.vy && old.scan + delta >= target.holdTicks &&
+       next.scan === 0 && same(receipt, soloV70TrioObservation(next, 3));
+     if (previousRescue.pickedUp) {
+       if (!same(previousRescue.pickedUp, rescue.pickedUp)) return null;
+     } else if (rescue.pickedUp && (!previousExtension.observations['royal-lock'] ||
+         !validRescueStep(pickup, rescue.pickedUp))) return null;
+     if (previousRescue.delivered) {
+       if (!same(previousRescue.delivered, rescue.delivered)) return null;
+     } else if (rescue.delivered && (!previousRescue.pickedUp || !validRescueStep(relief, rescue.delivered))) return null;
+   }
    const { purgeStartedAt } = nextExtension;
    if (purgeStartedAt !== previousExtension.purgeStartedAt &&
-       (pendingPost?.id !== 'vent-purge' || nextExtension.observations['vent-purge'] || soloV70PurgeRemainingM017(next) !== SOLO_V70_PURGE_M017.duration ||
+       (pendingPost?.id !== 'vent-purge' || previousRescue && !previousRescue.delivered ||
+         nextExtension.observations['vent-purge'] || soloV70PurgeRemainingM017(next) !== SOLO_V70_PURGE_M017.duration ||
         !near(pendingPost.room, SOLO_V70_PURGE_M017.x, SOLO_V70_PURGE_M017.y, 38) ||
         previousExtension.purgeStartedAt !== null && next.tick - previousExtension.purgeStartedAt < SOLO_V70_PURGE_M017.duration ||
         old.phase !== 'return' || next.player.vx !== 0 || old.scan + delta < SOLO_V70_PURGE_M017.holdTicks ||
@@ -159,7 +179,7 @@ function advance(save:SoloV70Save,raw:SoloV70State,incoming:readonly SoloV70Rece
  if(next.room!==old.room){const side=next.room>old.room?'right':'left',exit=soloV70CampaignPortal(old,old.room,side),entry=soloV70CampaignPortal(next,next.room,side==='right'?'left':'right');if(!soloV70CanTravel(oldDepths ? {...old,tick:next.tick} : old,next.room)||
    oldDepths&&Math.max(old.room,next.room)>=descent.room&&old.companions.some(c=>Math.abs(c.x-exit.x)>delta*2.9+227)||next.doorCrossings!==old.doorCrossings+1||next.lastDoor?.from!==old.room||next.lastDoor.to!==next.room||next.lastDoor.tick!==next.tick||next.roomEnteredAt!==next.tick||Math.abs(old.player.x-exit.x)>delta*3.5+42||!near(next.room,entry.x,entry.y,1)||next.player.vx!==0||next.player.vy!==0)return null;}
  else if(next.doorCrossings!==old.doorCrossings||!same(next.lastDoor,old.lastDoor)||next.attempts===old.attempts&&Math.abs(next.player.x-old.player.x)>delta*3.5+.1)return null;
- if(next.visited.some((x,i)=>x!==(old.visited[i]||i===next.room))||next.room===old.room&&next.companions.some((c,i)=>Math.abs(c.x-old.companions[i].x)>delta*2.9+.1))return null;
+ if(next.visited.some((x,i)=>x!==(old.visited[i]||i===next.room))||next.room===old.room&&next.companions.some((c,i)=>!(i===0&&liftedSaar)&&Math.abs(c.x-old.companions[i].x)>delta*2.9+.1))return null;
  if(next.signs>old.signs){const p=SOLO_V70_SIGNS[old.signs];if(old.phase!=='signs'||!p||!near(2,p.x,p.y)||next.scan!==0)return null;}
  const belvedereSignal = old.phase === 'belvedere' && old.room === SOLO_V70_BELVEDERE.room && !old.belvedereLever &&
    (next.signals > old.signals || Boolean(next.belvedereLever));
