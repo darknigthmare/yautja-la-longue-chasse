@@ -3,7 +3,12 @@
 import { lazy, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
 import { MISSION_BY_ID } from "../game/data";
 import { DEFAULT_SHIP_ID, isShipId } from "../game/shipCatalogue";
-import { GameAudio } from "../game/sound";
+import { GameAudio, type GameMusicContext, type GameSfxId } from "../game/sound";
+import type { SoloV68RecognitionAudio } from "../game/FirstHuntSoloV68";
+import type { HoundKennelActionV147 } from "../game/HoundKennelPanelV147";
+import { activeHoundV147, HOUND_KENNEL_LOCATION_V147 } from "../game/systems/huntingHoundsV147";
+import { chooseAtKennelV147, healAtKennelV147, kennelRefusalTextV147, recruitAtKennelV147 } from "../game/systems/houndKennelV147";
+import type { HorizonsRecordO6 } from "../game/systems/originHorizonsO6";
 import { useHomeworldReducedMotionV77 } from "../game/useHomeworldReducedMotionV77";
 import { actClanShipDocking, type ClanShipDockingAction } from "../game/systems/clanShipDocking";
 import { actClanShipOperations, createClanShipOperations, inspectClanShipOperations, type ClanShipOperationsAction } from "../game/systems/clanShipOperations";
@@ -63,10 +68,12 @@ interface HuntObservation {
 /** A separate owner for the production scenes. It neither loads a campaign nor
  * imports its write/slot services. Reset/travel unmounts the whole owner. */
 const WarpModuleBay = lazy(() => import("../game/WarpModuleBay"));
+const DevExerciseScene = lazy(() => import("./exercise"));
 
 export default function DevTravelSession({ destination, onTravel, onExit }: DevTravelSessionProps) {
   const [save, setSave] = useState(() => createDevSave(destination));
   const saveRef = useRef(save);
+  const readSave = useCallback(() => saveRef.current, []);
   const ownerRef = useRef(save.createdAt);
   const sessionAliveRef = useRef(false);
   const audioRef = useRef<GameAudio | null>(null);
@@ -80,7 +87,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
   const subscribeFocus = useCallback((notify: () => void) => subscribeGameFocus(() => {
     if (!sessionAliveRef.current) return;
     // Resume the shared bus before React lets a child request its room loop.
-    audioRef.current?.setPaused(serviceRef.current !== null || !readGameFocus());
+    audioRef.current?.setPaused(serviceRef.current !== null || recognitionPausedRef.current || !readGameFocus());
     notify();
   }), []);
   const gameFocused = useSyncExternalStore(subscribeFocus, readGameFocus, serverGameFocus);
@@ -100,6 +107,10 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
   const [arrival, setArrival] = useState(arrivalFixture?.state ?? null);
   const arrivalRef = useRef(arrival);
   const [huntRunning, setHuntRunning] = useState(true);
+  const [kennelHunt, setKennelHunt] = useState(false);
+  const [recognitionAudio, setRecognitionAudio] = useState<SoloV68RecognitionAudio>("outside");
+  const recognitionPaused = recognitionAudio === "paused";
+  const recognitionPausedRef = useRef(false);
   // HuntCanvas creates its simulation from these props. A discovery is reported
   // back to the owner, but must not replace the active simulation's inputs.
   const [huntGeneration, setHuntGeneration] = useState(() => ({
@@ -111,8 +122,9 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
   const [huntObservation, setHuntObservation] = useState<HuntObservation | null>(null);
   const selectedShipId = save.wolfCastle?.personalShipId ?? save.clanShipDocking?.personalShipId ?? DEFAULT_SHIP_ID;
   const nativeSceneSuspended = service !== null || !gameFocused;
-  const missionId = destination.kind === "mission" || destination.kind === "arrival" ? destination.missionId : null;
-  const inHunt = destination.kind === "mission" || (destination.kind === "arrival" && arrival?.status === "complete");
+  const missionId = kennelHunt ? "jungle-vey" :
+    destination.kind === "mission" || destination.kind === "arrival" ? destination.missionId : null;
+  const inHunt = kennelHunt || destination.kind === "mission" || (destination.kind === "arrival" && arrival?.status === "complete");
   const arrivalGauntlet = typeof arrivalFixture?.run.configuration.gauntletVariantId === "string"
     ? arrivalFixture.run.configuration.gauntletVariantId : undefined;
   const arrivalShipId = arrivalFixture?.run.configuration.insertionShipId;
@@ -126,7 +138,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
       audioRef.current = null;
     };
   }, []);
-  const createSceneAudio = useCallback(() => {
+  const ensureAudio = useCallback(() => {
     if (!sessionAliveRef.current) return null;
     // The scene invokes this from an effect. Lazy construction also works when
     // its chunk is cached and its effect precedes the owner's passive effects.
@@ -135,15 +147,29 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
     const settings = saveRef.current.settings;
     audio.setMix({ master: settings.masterVolume, music: settings.musicVolume,
       effects: settings.effectsVolume, muted: settings.masterVolume === 0 });
-    audio.setPaused(serviceRef.current !== null || !readGameFocus());
-    return audio.createSceneAudio();
+    audio.setPaused(serviceRef.current !== null || recognitionPausedRef.current || !readGameFocus());
+    return audio;
   }, []);
+  const createSceneAudio = useCallback(() => ensureAudio()?.createSceneAudio() ?? null, [ensureAudio]);
+  const playSound = useCallback((id: GameSfxId) => ensureAudio()?.playSfx(id), [ensureAudio]);
+  const setHuntMusic = useCallback((context: GameMusicContext | null) => {
+    void ensureAudio()?.setMusicContext(context);
+  }, [ensureAudio]);
+  const receiveRecognitionAudio = useCallback((state: SoloV68RecognitionAudio) => {
+    recognitionPausedRef.current = state === "paused";
+    setRecognitionAudio(state);
+  }, []);
+  useEffect(() => {
+    if (destination.kind !== "exercise" || destination.exercise !== "recognition") return;
+    const audio = ensureAudio();
+    void audio?.setMusicContext(recognitionAudio === "outside" ? null : "ceremony-m006", { fadeSeconds: 0.5 });
+  }, [destination, ensureAudio, recognitionAudio]);
   useEffect(() => {
     if (!sessionAliveRef.current) return;
     audioRef.current?.setMix({ master: save.settings.masterVolume, music: save.settings.musicVolume,
       effects: save.settings.effectsVolume, muted: save.settings.masterVolume === 0 });
-    audioRef.current?.setPaused(serviceRef.current !== null || !readGameFocus());
-  }, [nativeSceneSuspended, save.settings.masterVolume, save.settings.musicVolume, save.settings.effectsVolume]);
+    audioRef.current?.setPaused(nativeSceneSuspended || recognitionPaused);
+  }, [nativeSceneSuspended, recognitionPaused, save.settings.masterVolume, save.settings.musicVolume, save.settings.effectsVolume]);
   useLayoutEffect(() => {
     if (service !== null || !gameFocused || !restoreWolfFocusRef.current || !sessionAliveRef.current) return;
     const root = sceneRef.current;
@@ -162,10 +188,27 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
     saveRef.current = next;
     setSave(next);
   }, []);
-  const saveHomeworld = useCallback((next: HomeworldProgress) => {
-    replaceSave({ ...saveRef.current, homeworld: structuredClone(next) });
+  const saveHomeworld = useCallback((next: HomeworldProgress, _townBell?: unknown, _workshop?: unknown, horizons?: HorizonsRecordO6) => {
+    const current = saveRef.current;
+    if (horizons && !current.originV151) return false;
+    replaceSave({
+      ...current, homeworld: structuredClone(next),
+      ...(horizons && current.originV151 ? { originV151: { ...current.originV151, horizonsO6: structuredClone(horizons) } } : {}),
+    });
     return true;
   }, [replaceSave]);
+  const actKennel = useCallback((action: HoundKennelActionV147): boolean => {
+    if (!sessionAliveRef.current || destination.id !== "dev-kennel" || serviceRef.current !== null || !readGameFocus()) return false;
+    const current = saveRef.current;
+    const locationId = HOUND_KENNEL_LOCATION_V147;
+    const update = action.type === "recruit"
+      ? recruitAtKennelV147(current.houndsV147, { catalogueId: action.catalogueId, name: action.name, locationId })
+      : action.type === "choose" ? chooseAtKennelV147(current.houndsV147, action.houndId, locationId)
+        : healAtKennelV147(current.houndsV147, action.houndId, locationId);
+    if (!update.ok) { setNotice(kennelRefusalTextV147(update.reason)); return false; }
+    replaceSave({ ...current, houndsV147: update.state });
+    return true;
+  }, [destination.id, replaceSave]);
   const saveRegion = useCallback((next: HomeworldRegionStateV68) => {
     replaceSave({ ...saveRef.current, homeworldRegionV68: structuredClone(next) });
     return true;
@@ -361,6 +404,12 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
   const restartHunt = () => {
     setHuntResult(null); setHuntCheckpoint(null); beginHuntGeneration();
   };
+  const chosenHound = activeHoundV147(save.houndsV147);
+  const openKennelHunt = () => {
+    if (!activeHoundV147(saveRef.current.houndsV147)) return;
+    setKennelHunt(true);
+    restartHunt();
+  };
 
   return (
     <section className={styles.session} data-dev-session={destination.id} data-dev-kind={destination.kind}
@@ -384,6 +433,12 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
       <p className={styles.notice} role="status" data-dev-notice>
         {notice || "Session de test temporaire. Les déplacements et résultats de cet essai disparaissent au changement de lieu ou au rechargement."}
       </p>
+      {destination.id === "dev-kennel" && !kennelHunt && <div className={styles.actions}>
+        <button type="button" data-dev-kennel-hunt disabled={!chosenHound || service !== null} onClick={openKennelHunt}>
+          {chosenHound ? `Chasser avec ${chosenHound.name}` : "Chasser avec ce compagnon"}
+        </button>
+        {!chosenHound && <span>Choisis un compagnon prêt au chenil.</span>}
+      </div>}
       <div className={styles.viewport}>
         <div ref={sceneRef} className={styles.scene} hidden={service !== null} inert={service !== null}>
           <Suspense fallback={<div className={styles.loading} role="status">Chargement du lieu…</div>}>
@@ -394,6 +449,11 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
               onExtract={progress => { setCradleProgress(structuredClone(progress)); setNotice(progress.crownClaimed ? 'Essai : crête extraite.' : 'Essai : repli sans crête.'); return true; }}
               onExit={exitSession} onSound={sound => audioRef.current?.playSfx(sound)} />}
             {destination.kind === "warp" && <WarpModuleBay save={save} onExit={exitSession} suspended={service !== null} />}
+            {destination.kind === "exercise" && <DevExerciseScene exercise={destination.exercise} save={save} readSave={readSave}
+              replaceSave={replaceSave} suspended={nativeSceneSuspended} recognitionPaused={recognitionPaused}
+              ensureAudio={ensureAudio} createSceneAudio={createSceneAudio} onSound={playSound}
+              onRecognitionAudio={receiveRecognitionAudio} onNotify={setNotice} onClose={exitSession}
+              onOpenSettings={() => openService("settings")} onOpenCradle={() => leaveSession("cradle-entry")} />}
             {destination.kind === "ship" && <ShipInterior25D
               appearance={save.appearance}
               loadout={save.loadout}
@@ -425,13 +485,14 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
               onExit={returnToShip}
               onOpenSettings={() => openService("settings")}
             />}
-            {destination.kind === "homeworld" && <HomeworldHub
+            {destination.kind === "homeworld" && !kennelHunt && <HomeworldHub
               save={save}
               selectedShipId={selectedShipId}
               suspended={service !== null}
               recoveryStorage={recoveryStorage}
               ephemeralSession
               onProgress={saveHomeworld}
+              onKennelActionV147={destination.id === "dev-kennel" ? actKennel : undefined}
               onService={openService}
               onReturnShip={returnToShip}
               onRegionV68={visitRegion}
@@ -484,6 +545,9 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
                 insertionShipId: isShipId(arrivalShipId) ? arrivalShipId : undefined,
               } : {})}
               appearance={huntGeneration.runtimeSave.appearance}
+              houndV147={activeHoundV147(huntGeneration.runtimeSave.houndsV147)}
+              onSound={playSound}
+              onMusicContext={setHuntMusic}
               gauntletVariantId={arrivalGauntlet}
               loadout={huntGeneration.runtimeSave.loadout}
               inventory={huntGeneration.runtimeSave.inventory}
