@@ -11324,9 +11324,9 @@ function stepGame(
   for (const enemy of state.enemies) {
     updateRegularEnemy(state, enemy, mission, delta);
   }
-  const houndStickOrder = state.riteMenuCorpseId ? null : input.houndDirectOrderV147 ?? null;
+  const directHoundOrder = state.riteMenuCorpseId ? null : input.houndDirectOrderV147 ?? null;
   input.houndDirectOrderV147 = null;
-  updateHoundV147(state, mission, playerInput, delta, houndStickOrder);
+  updateHoundV147(state, mission, playerInput, delta, directHoundOrder);
   updateBoss(state, mission, difficulty, delta);
   state.playerUsedRangedWeapon = false;
   state.playerUsedEnergyWeapon = false;
@@ -13154,7 +13154,7 @@ export default function HuntCanvas({
           navigation={ui.canopyNavigationV112} bindings={activeBindings}
           gamepadButtons={activeAccessibility.gamepadButtons} gripInput={activeAccessibility.gripInput}/>}
 
-      {ui.houndV147 && !missionOpeningOpen && !huntDialogOpen && !ui.riteMenu?.open && <HoundOrdersV147
+      {assetsReady && ui.houndV147 && !missionOpeningOpen && !huntDialogOpen && !ui.huntRiteMenu?.open && <HoundOrdersV147
         hound={ui.houndV147} disabled={ui.paused || ui.phase === "dead" || ui.phase === "finished"}
         shortcut={controlActionShortcut("hunt.houndOrder", activeBindings)}
         onOrder={order => { inputRef.current.houndDirectOrderV147 = order; }} />}
@@ -13446,7 +13446,7 @@ function HoundOrdersV147({ hound, disabled, shortcut, onOrder }: {
           {order.label}{!unlocked && <small>Lien {order.bond}</small>}
         </button>;
       })}
-      <small>{shortcut} · ordre suivant <span aria-hidden="true">·</span> Stick droit</small>
+      <small>{shortcut} · ordre suivant · Stick droit</small>
     </div>}
   </section>;
 }
