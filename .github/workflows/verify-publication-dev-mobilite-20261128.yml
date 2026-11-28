@@ -1,0 +1,24 @@
+name: Verify the public developer lab
+on:
+  push:
+    branches: [codex/verify-publication-dev-mobilite-0044c465]
+permissions: {}
+jobs:
+  public:
+    name: Open the public game and the updated developer catalogue
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Fetch the live routes and verify the companion image
+        env:
+          PUBLISHED_SHA: '0044c4652d8b98a6a5213022932e0c1c57f2adbd'
+          EXPECTED_PNG: '1e22287b4b90b40429232120809a43e2002d265a499c80691db3bfd3658bc45c'
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 4 --retry-all-errors --max-time 35 https://yautja-la-longue-chasse.vercel.app/ -o /tmp/yautja-game.html
+          curl -fsSL --retry 4 --retry-all-errors --max-time 35 https://yautja-la-longue-chasse.vercel.app/dev -o /tmp/yautja-dev.html
+          curl -fsSL --retry 4 --retry-all-errors --max-time 35 https://yautja-la-longue-chasse.vercel.app/game/user-pack/v56/cutouts/companion-01.png -o /tmp/yautja-companion.png
+          test -s /tmp/yautja-game.html
+          node -e "const html=require('node:fs').readFileSync('/tmp/yautja-dev.html','utf8');for(const label of ['Ajouts récents','Autres parcours à vérifier','data-dev-launch','M017'])if(!html.includes(label))throw Error(label)"
+          printf '%s  %s\n' "$EXPECTED_PNG" /tmp/yautja-companion.png | sha256sum --check
+          printf 'PUBLIC_GAME_AND_DEV %s\n' "$PUBLISHED_SHA"
