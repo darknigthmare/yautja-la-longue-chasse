@@ -49,3 +49,41 @@ test('W3-S15 gain and pan follow the existing playback range and the real occlus
 });
 
 test('same U19, hull and finite cargo resume midflight and return across physically distinct layers',()=>{const d=driver();initial(d,'W3-S18');d.build('W3-S18');d.home('carrier');d.send({kind:'rav-load',actor:'carrier',location:'depot',amount:20});d.east('carrier',900,480);d.send({kind:'rav-deposit',actor:'carrier',location:'W3-S18',amount:20});d.send({kind:'rav-load',actor:'carrier',location:'W3-S18',amount:6});d.send({kind:'recon'});d.send({kind:'authorize'});d.send({kind:'shuttle-board'});d.send({kind:'shuttle-depart'});for(let i=0;i<7;i++)d.send({kind:'shuttle-step'});const mid=api.importLogisticsV108(api.exportLogisticsV108(d.s));assert.deepEqual(mid.state,d.s);d.deny({kind:'shuttle-land'});for(let i=7;i<16;i++)d.send({kind:'shuttle-step'});d.send({kind:'shuttle-land'});assert.equal(d.s.actors[0].layer,'orbit');d.walk('carrier',890,60);d.deny({kind:'move',actor:'carrier',dx:-18,dy:0});d.send({kind:'shuttle-board'});d.send({kind:'shuttle-depart'});for(let i=0;i<16;i++)d.send({kind:'shuttle-step'});d.send({kind:'shuttle-land'});assert.equal(d.s.actors[0].layer,'surface');assert.equal(d.s.shuttle.fuel,2);assert.equal(d.s.receipts.filter(r=>r.startsWith('shuttle:')).length,2);assert.equal(api.logisticsConservationV108(d.s),true);});
+
+test('W3-S13 exposes true power and consumes the exact installed cell only while staffed', () => {
+  const d = driver();
+  initial(d, 'W3-S13');
+  d.build('W3-S13');
+  d.home('carrier');
+  d.send({kind:'load-object',object:'cell'});
+  d.east('carrier',620,190);
+  d.send({kind:'install-object',object:'cell'});
+  const cellId = d.s.cell.id;
+  d.send({kind:'screen'});
+  assert.equal(api.logisticsScreenPoweredV108(d.s), true);
+
+  d.send({kind:'probe',route:'south'});
+  for (let i = 0; i < 10; i++) d.send({kind:'probe-step'});
+  assert.equal(d.s.probe.crossed, 1);
+  assert.equal(d.s.cell.charge, 4);
+  d.send({kind:'staff',work:'W3-S13'});
+  assert.equal(d.s.screen, true);
+  assert.equal(api.logisticsScreenPoweredV108(d.s), false);
+  const archived = api.importLogisticsV108(api.exportLogisticsV108(d.s)).state;
+  assert.deepEqual(archived, d.s);
+  assert.equal(api.logisticsScreenPoweredV108(archived), false);
+
+  d.send({kind:'probe',route:'north'});
+  for (let i = 0; i < 4; i++) d.send({kind:'probe-step'});
+  assert.equal(d.s.probe.blocked, 0);
+  assert.equal(d.s.probe.x, 620);
+  assert.equal(d.s.cell.charge, 4);
+  d.send({kind:'screen'});
+  d.send({kind:'recover-object',object:'cell'});
+  for (let i = 0; i < 6; i++) d.send({kind:'probe-step'});
+  assert.equal(d.s.probe.crossed, 2);
+  assert.equal(d.s.cell.holder, 'carrier');
+  assert.equal(d.s.cell.charge, 4);
+  assert.equal(d.s.cell.id, cellId);
+  d.deny({kind:'screen'});
+});

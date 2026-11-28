@@ -1,4 +1,5 @@
 import { createWarTeamV6, DEFAULT_WAR_RULES_V6, type WarRulesV6, type WarTeamStateV6 } from "./clanWarBibleV6";
+import { w3S10MountAdmission, type W3S10MountAdmission, type W3S10MountCampaign } from "./w3S10MountAdmission";
 
 /** A separate, replayable exercise: never a campaign acquisition or a V87–V106 migration. */
 export const SPECIALIZED_IDS_V107 = ["W3-S09", "W3-S10", "W3-S13", "W3-S14", "W3-S15", "W3-S18"] as const;
@@ -37,6 +38,7 @@ export interface SpecializedStateV107 {
   work: { position: PointV107 | null; phase: "unplaced" | "planned" | "reserved" | "carried" | "delivered" | "building" | "ready"; supports: number[]; worked: number; staffed: boolean; supplied: boolean };
   kit: { id: string; holder: "depot" | "carrier" | "site" };
   boat: PointV107 & { id: string; pilotId: string; phase: "home" | "outbound" | "away" | "inbound"; progress: number; cargo: number; passengers: string[]; trip: number };
+  mountAdmission?: W3S10MountAdmission;
   mounts: (PointV107 & { id: string; fatigue: number; leadBy: string | null; watered: number })[]; waterContainerId: string; water: number; waterSite: number; waterCarried: number;
   battery: { id: string; holder: "depot" | "carrier" | "site"; charge: number }; screenOn: boolean;
   probe: PointV107 & { id: string; blocked: number; crossings: number; route: "north" | "south" | null; progress: number };
@@ -70,7 +72,17 @@ function seal(state: SpecializedStateV107) {
   freeze(state); trusted.add(state); return state;
 }
 export function createSpecializedV107(scenario: SpecializedIdV107, rules: WarRulesV6 = DEFAULT_WAR_RULES_V6): SpecializedStateV107 | null {
-  const definition = specializedDefinitionsV107(rules).find(item => item.id === scenario); if (!definition) return null;
+  return startSpecializedV107(scenario, rules);
+}
+
+export function createSpecializedMountW3S10(campaign: W3S10MountCampaign, rules: WarRulesV6 = DEFAULT_WAR_RULES_V6) {
+  const { admission, reason } = w3S10MountAdmission(campaign);
+  return { state: admission ? startSpecializedV107("W3-S10", rules, admission) : null, reason };
+}
+
+function startSpecializedV107(scenario: SpecializedIdV107, rules: WarRulesV6, mountAdmission?: W3S10MountAdmission): SpecializedStateV107 | null {
+  const definition = specializedDefinitionsV107(rules).find(item => item.id === scenario);
+  if (!definition || mountAdmission && scenario !== "W3-S10") return null;
   const unitIds = [definition.operator, "W3-U19", ...(scenario === "W3-S14" ? ["W3-U08"] : [])];
   const units = unitIds.map(id => rules.units.find(unit => unit.id === id)); if (units.some(unit => !unit)) return null;
   const recruitment = units.reduce((sum, unit) => sum + unit!.recruitmentRav, 0);
@@ -79,7 +91,10 @@ export function createSpecializedV107(scenario: SpecializedIdV107, rules: WarRul
   return seal({ version: 1, context: "free-specialized-works-v107", sourceSha: rules.metadata.sha256, rulesKey: key(rules), scenario, turn: 0, revision: 0, depot: 120 - recruitment, bin: 0, spent: 0, recruitment, lastNeed: 0, lastPaid: 0, actors,
     work: { position: null, phase: "unplaced", supports: [], worked: 0, staffed: false, supplied: false }, kit: { id: `${scenario}-kit-1`, holder: "depot" },
     boat: { id: "skiff-prête-01", pilotId: "passeur-civil-01", x: 300, y: 270, phase: "home", progress: 0, cargo: 0, passengers: [], trip: 0 },
-    mounts: [{ id: "monture-prêtée-01", x: 190, y: 100, fatigue: 60, leadBy: null, watered: 0 }, { id: "monture-prêtée-02", x: 255, y: 100, fatigue: 45, leadBy: null, watered: 0 }], waterContainerId: "bidon-eau-01", water: 6, waterSite: 0, waterCarried: 0,
+    ...(mountAdmission ? { mountAdmission } : {}),
+    mounts: mountAdmission ? [{ id: mountAdmission.mountId, x: 190, y: 100, fatigue: mountAdmission.fatigue, leadBy: null, watered: 0 }]
+      : [{ id: "monture-prêtée-01", x: 190, y: 100, fatigue: 60, leadBy: null, watered: 0 }, { id: "monture-prêtée-02", x: 255, y: 100, fatigue: 45, leadBy: null, watered: 0 }],
+    waterContainerId: "bidon-eau-01", water: 6, waterSite: 0, waterCarried: 0,
     battery: { id: "cellule-01", holder: "depot", charge: 4 }, screenOn: false, probe: { id: "sonde-inerte-01", x: 350, y: 100, blocked: 0, crossings: 0, route: null, progress: 0 },
     duel: { signatures: [], phase: "unsigned", player: 3, rival: 3, round: 0, result: null, winnerId: null, objective: { id: "coffre-exercice-01", holder: "site" } }, recordings: [], compared: false,
     ship: { id: "navette-prêtée-01", pilotId: "pilote-civil-01", x: 320, y: 280, phase: "surface", progress: 0, fuel: 4, passengers: [], cargo: 0, trip: 0, recon: false, authorized: false },
@@ -338,21 +353,24 @@ export function applySpecializedV107(current: SpecializedStateV107, action: Spec
   state.revision++; state.history.push(clone(action)); state.log = [...state.log, `T${state.turn} · ${message}`].slice(-80);
   return { state: seal(state), accepted: true, message };
 }
-function replay(scenario: SpecializedIdV107, history: unknown[], rules: WarRulesV6) {
-  let state = createSpecializedV107(scenario, rules); if (!state || history.length > 5000) return null;
+function replay(scenario: SpecializedIdV107, history: unknown[], rules: WarRulesV6, mountAdmission?: W3S10MountAdmission) {
+  let state = startSpecializedV107(scenario, rules, mountAdmission); if (!state || history.length > 5000) return null;
   for (const action of history) { if (!validAction(action)) return null; const result = applySpecializedV107(state, action, rules); if (!result.accepted) return null; state = result.state; }
   return state;
 }
 export function exportSpecializedV107(state: SpecializedStateV107, rules: WarRulesV6 = DEFAULT_WAR_RULES_V6): string | null {
-  const rebuilt = replay(state.scenario, state.history, rules);
+  const rebuilt = replay(state.scenario, state.history, rules, state.mountAdmission);
   return trusted.has(state) && rebuilt && JSON.stringify(rebuilt) === JSON.stringify(state) ? JSON.stringify(state, null, 2) : null;
 }
-export function importSpecializedV107(text: string, rules: WarRulesV6 = DEFAULT_WAR_RULES_V6): { state: SpecializedStateV107 | null; error: string | null } {
+export function importSpecializedV107(text: string, rules: WarRulesV6 = DEFAULT_WAR_RULES_V6, campaign?: W3S10MountCampaign): { state: SpecializedStateV107 | null; error: string | null } {
   try {
     if (new TextEncoder().encode(text).length > 4 * 1024 * 1024) throw new Error("Carnet supérieur à 4 Mo.");
     const value = JSON.parse(text) as SpecializedStateV107;
     if (!value || value.version !== 1 || value.context !== "free-specialized-works-v107" || !SPECIALIZED_IDS_V107.includes(value.scenario) || value.sourceSha !== rules.metadata.sha256 || value.rulesKey !== key(rules) || !Array.isArray(value.history)) throw new Error("Version, contexte ou source incompatible ; carnet actuel conservé.");
-    const state = replay(value.scenario, value.history, rules);
+    const admission = value.mountAdmission ? w3S10MountAdmission(campaign, value.mountAdmission.mountId).admission : null;
+    if (value.mountAdmission && JSON.stringify(admission) !== JSON.stringify(value.mountAdmission))
+      throw new Error("Ce carnet requiert la même monture admise et le même état de départ dans la campagne.");
+    const state = replay(value.scenario, value.history, rules, admission ?? undefined);
     if (!state || JSON.stringify(state) !== JSON.stringify(value)) throw new Error("Checkpoint incohérent avec ses actions physiques ; import refusé sans modifier le carnet courant.");
     return { state, error: null };
   } catch (error) { return { state: null, error: error instanceof Error ? error.message : "Carnet illisible." }; }

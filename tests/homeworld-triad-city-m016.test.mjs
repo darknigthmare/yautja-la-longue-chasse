@@ -4,6 +4,7 @@ import { homeworldSceneSsrV78 } from "./helpers/homeworld-scene-ssr-v78.mjs";
 import { templeCampaignRoute, stamp } from "./helpers/solo-v70-played-route.mjs";
 import { formationCampaignRoute } from "./helpers/solo-v90-played-route.mjs";
 import { thresholdsCampaignRoute } from "./helpers/solo-v69-played-route.mjs";
+import { playQuatzaHunt } from "./helpers/quatza-triage-route.mjs";
 
 const browserModules = homeworldSceneSsrV78();
 const model = browserModules.load("app/game/systems/homeworldTriadM016.ts");
@@ -164,6 +165,37 @@ test("M016 recruits Yena and Tov at real posts and carries their identities thro
   assert.deepEqual(battle.state.contributions, { player: 8, yena: 8, tov: 8 });
   assert.deepEqual(battle.save.prologue.chronicle, save.prologue.chronicle);
   assert(saves.parseSaveImport(saves.exportSave(battle.save)).save);
+
+  const quatza = browserModules.load("app/game/systems/quatzaRij.ts");
+  let hunt = battle.save;
+  const commit = command => {
+    const result = quatza.commitQuatzaRij(hunt, { mode: "triad", ...command });
+    assert(result.ok, result.message);
+    hunt = { ...hunt, quatzaRij: result.state };
+  };
+  commit({ type: "begin", expectedAttempts: 0 });
+  assert.equal(hunt.quatzaRij.expeditions.triad.attempts[0].roster, "yena-tov");
+  const played = playQuatzaHunt(quatza, "triad");
+  played.prepare();
+  played.fight();
+  played.gatherAndReturn();
+  for (let tick = 0; tick < played.input.length; tick += 64) {
+    commit({ type: "advance", expectedAttempts: 1, expectedTick: tick, input: played.input.slice(tick, tick + 64) });
+  }
+  commit({ type: "present-return", expectedAttempts: 1, expectedPresentations: 0, subject: "trophy" });
+  commit({ type: "present-return", expectedAttempts: 1, expectedPresentations: 1, subject: "companions" });
+  const huntReload = saves.parseSaveImport(saves.exportSave(hunt));
+  assert(huntReload.save, huntReload.failure);
+  const delivery = huntReload.save.quatzaRij.expeditions.triad;
+  const attempt = delivery.attempts[0];
+  assert.equal(attempt.phase, "delivered");
+  assert.deepEqual(delivery.presentations, ["trophy", "companions"]);
+  const returned = quatza.replayQuatzaAttempt("triad", attempt.input, attempt.returnRules, attempt.roster);
+  assert.deepEqual(returned.companions.map(ally => ally.id), ["yena", "tov"]);
+  assert(returned.companions.every(ally => ally.contribution && ally.health > 0));
+  const wrongRoster = structuredClone(hunt);
+  delete wrongRoster.quatzaRij.expeditions.triad.attempts[0].roster;
+  assert.equal(saves.parseSaveImport(JSON.stringify(wrongRoster)).failure, "invalid-save");
 
   const forged = { ...battle.save, homeworld: { ...battle.save.homeworld, triadCityM016: original } };
   assert(!campaign.soloV90MatchesSave(forged));

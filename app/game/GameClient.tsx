@@ -100,6 +100,7 @@ import { startSoloV90Campaign, withSoloV90Checkpoint, withSoloV90Progress, soloV
 import type { SoloV90State, SoloV90Receipt } from "./systems/firstHuntSoloV90";
 import { advanceRegionalLoopM014, regionalLoopAdmissionM014, startRegionalLoopM014, type RegionalLoopCommandM014 } from "./systems/homeworldRegionalLoopM014";
 import { createHomeworldRegionV68, normalizeHomeworldRegionV68, homeworldRegionInteractionV68, canEnterHomeworldRegionV68, canAdvanceHomeworldRegionV68, acknowledgeHomeworldRegionEventV68, type HomeworldRegionStateV68, type HomeworldRegionIdV68, type RegionFieldEventV68 } from "./systems/homeworldRegionsV68";
+import { acknowledgeSkiffReceiptW3S09, skiffArrivalReceiptW3S09, type HomeworldSkiffArrivalW3S09 } from "./systems/homeworldSkiffProofW3S09";
 import {BIBLE_CULTURAL_BINDING_V86,bibleCulturalContextV86,createBibleSceneTransactionV86,defaultBibleSceneLedgerV86,normalizeBibleSceneLedgerV86,type BibleSceneActionV86,type BibleSceneResultV86} from './systems/bibleSceneCulturalV86';
 import { bindContractsVillageRunV68, recordContractsFieldEventV68, contractMarksV68 } from "./systems/homeworldContractsV68";
 import { bindMinorArcsRunV160, recordMinorArcsFieldEventV160, type MinorArcsV160 } from "./systems/minorArcsV160";
@@ -1238,6 +1239,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const [insertionPlan, setInsertionPlan] = useState<PlanetInsertionPlan>(() => ({ ...DEFAULT_PLAN }));
   const [mapReturnScreen, setMapReturnScreen] =
     useState<MapReturnScreen>("deck");
+  const [warpReturnScreen, setWarpReturnScreen] = useState<"clan-chronicle" | "deck" | "map">("clan-chronicle");
   const [stationReturnScreen, setStationReturnScreen] =
     useState<StationReturnScreen>("deck");
   const [openedTrophyHallAtPost, setOpenedTrophyHallAtPost] = useState(false);
@@ -3423,7 +3425,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setScreen("homeworld");
   }, [entry.ownerCreatedAt, regionalLoopSuspendedM014, screen]);
 
-  const openHomeworldRegionV68 = useCallback((regionId: HomeworldRegionIdV68): boolean => {
+  const openHomeworldRegionV68 = useCallback((regionId: HomeworldRegionIdV68, arrival?: HomeworldSkiffArrivalW3S09): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || current.homeworldPassageV67) return false;
     if (!tribunalAccessV147(current.tribunalV147).city) { setToast("La cité est fermée pendant l’exil."); return false; }
@@ -3431,12 +3433,20 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!access.allowed) { setToast(access.reason); return false; }
     const previous = current.homeworldRegionV68;
     if (previous && previous.status !== "at-city" && previous.regionId !== regionId) { setToast("Reviens au seuil de la cité avant de changer de région."); return false; }
-    const state = previous && previous.status !== "at-city" ? previous : createHomeworldRegionV68(regionId, globalThis.crypto.randomUUID());
+    const resumed = previous && previous.status !== "at-city" ? previous : null;
+    const runId = resumed?.runId ?? globalThis.crypto.randomUUID();
+    const skiffReceipt = regionId === "thermal-caves" && !resumed ? skiffArrivalReceiptW3S09(arrival, runId) : null;
+    if (regionId === "thermal-caves" && !resumed && !skiffReceipt) {
+      setToast("Termine la traversée avec le passeur pour ouvrir cette rive.");
+      return false;
+    }
+    const state = resumed ?? createHomeworldRegionV68(regionId, runId, false, skiffReceipt ?? undefined);
     const binding = bindContractsVillageRunV68(current.homeworld.contractsV68, regionId, state.runId);
     // V160 : la même sortie est liée aux épreuves de mini-arc suivies, dans la même écriture.
     const arcsBinding = bindMinorArcsRunV160(current.minorArcsV160, current.createdAt, regionId, state.runId);
     if (!binding.ok || !arcsBinding.ok || !persistSocialProgress({ homeworldRegionV68: state, homeworld: { ...current.homeworld, contractsV68: binding.state },
       ...(arcsBinding.changed && arcsBinding.state ? { minorArcsV160: arcsBinding.state } : {}) })) return false;
+    if (arrival) acknowledgeSkiffReceiptW3S09(arrival);
     setHubLocation("homeworld"); setScreen("homeworld-region-v68"); return true;
   }, [entry.ownerCreatedAt, persistSocialProgress]);
   /** V150: guests set out / go home and absence is counted with each region checkpoint (same write). */
@@ -5606,8 +5616,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   ? undefined : () => go("buried-cradle-briefing")} />
             </Suspense>
             <p className="source-badge">
-              <button type="button" className="ghost-button" data-warp-entry-v165 onClick={() => go("warp-epochs")}>
-                Warp · époques (1629 et 2204)
+              <button type="button" className="ghost-button" data-warp-entry-v165
+                onClick={() => { setWarpReturnScreen("clan-chronicle"); go("warp-epochs"); }}>
+                Warp · expéditions temporelles
               </button>
             </p>
           </div>
@@ -5632,7 +5643,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   }
                   return persistSocialProgress(update);
                 }}
-                onClose={() => go("clan-chronicle")} />
+                onClose={() => go(warpReturnScreen)} />
             </Suspense>
           </div>
         </section>
@@ -6034,6 +6045,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <button type="button" className="ghost-button" onClick={() => { setChronicleReturnScreen("deck"); go("clan-chronicle"); }}>
                   Dossier de campagne
                 </button>
+                <button type="button" className="ghost-button" data-warp-deck-entry
+                  disabled={campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue || !!resumableHunt}
+                  onClick={() => { setWarpReturnScreen("deck"); go("warp-epochs"); }}>
+                  Warp · expéditions temporelles
+                </button>
                 <button type="button" className="ghost-button" data-open-queen-hunt-v163 disabled={queenHuntBusy} onClick={openQueenHunt}>
                   Queen Hunt · contrats de ruche{queenHuntAccess.allowed ? "" : " (fermé)"}
                 </button>
@@ -6209,6 +6225,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             onBack={() => go(mapReturnScreen)}
             onChooseMission={chooseMission}
             onVisitHomeworld={() => go("homeworld")}
+            onOpenWarp={campaignSaveBusy || archiveTransferBusy || archiveRecoveryIssue || resumableHunt
+              ? undefined : () => { setWarpReturnScreen("map"); go("warp-epochs"); }}
             onVisitEarth={earthAccessV171.allowed ? openEarthV171 : undefined}
             earthRouteLabel={earthViewV171.phase === "ground" ? "Sol · Reprendre le repérage"
               : earthViewV171.phase === "returned" ? "Sol · Consulter le relevé" : "Sol · Terre"}

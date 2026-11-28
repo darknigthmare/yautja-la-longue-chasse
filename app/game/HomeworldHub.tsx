@@ -85,6 +85,7 @@ import {HOMEWORLD_WORLD_V77,HOMEWORLD_BUILDINGS_V77,HOMEWORLD_DISTRICTS_V77,
  homeworldLevelV77,projectHomeworldWorldV77,homeworldCameraWorldV77,
  beginHomeworldTransitV77,nearestHomeworldConnectorV77,
  HOMEWORLD_CONNECTORS_V77,beginHomeworldSkiffV77,stepHomeworldSkiffV77,type HomeworldSkiffV77,type HomeworldLevelV77,type HomeworldTransitV77} from './systems/homeworldWorldV77';
+import type { HomeworldSkiffArrivalW3S09 } from './systems/homeworldSkiffProofW3S09';
 import {stepHomeworldTransitV110,homeworldWorldArrivalV110,homeworldInteriorExitV110,homeworldExteriorArrivalAllowedV110} from './systems/homeworldTransitionsV110';
 import {nearestHomeworldResidentContactV110,homeworldResidentDialogueContactV110,homeworldResidentContactPlacesV110,requestHomeworldResidentLandmarkV110} from './systems/homeworldResidentContactsV110';
 import {createHomeworldCheckpointV77} from './systems/homeworldLocationV77';
@@ -195,7 +196,7 @@ export interface HomeworldHubProps {
   onSoloV69?(): boolean;
   onSoloV70?(): boolean;
   onSoloV90?(): boolean;
-  onRegionV68?(id: HomeworldRegionIdV68): boolean;
+  onRegionV68?(id: HomeworldRegionIdV68, arrival?: HomeworldSkiffArrivalW3S09): boolean;
   /** V160 : renvoie false si l’écriture n’est pas confirmée ; rien n’est alors annoncé. */
   onMinorArcsV160?(next: MinorArcsV160): boolean;
   /** A completed connector returns at its physical threshold while its arrival
@@ -1295,7 +1296,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
             // The visual ride ends first. Access is then rechecked against the
             // current save; a refused callback returns to the supported dock.
             next = { ...before, ...ride.source, vx: 0, vy: 0 }; actorRef.current = next;
-            if (!canEnterHomeworldRegionV68(saveRef.current, ride.regionId).allowed || !onRegionV68?.(ride.regionId)) {
+            if (!canEnterHomeworldRegionV68(saveRef.current, ride.regionId).allowed || !onRegionV68?.(ride.regionId, moving.arrival)) {
               setAnnouncement('Traversée non confirmée : retour au quai, aucun accès ni gain accordé.');
             }
           }
