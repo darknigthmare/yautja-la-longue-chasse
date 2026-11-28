@@ -38,7 +38,7 @@ test("accès refusé sans quête commune ni module, et sans Adjutant pour commen
   assert.equal(s.warpModuleInstalled, false);
   assert(warp.evaluateWarpDepartureV165(s, full).missing.some(m => m.id === "module"));
   // Une branche non implémentée ne peut pas être choisie.
-  assert.equal(warp.selectWarpBranchV165(readyState(), "W-01").accepted, false);
+  assert.equal(warp.selectWarpBranchV165(readyState(), "W-03").accepted, false);
 });
 
 test("voyage engagé vers W-02, retour réservé même après la perte d'Adjutant", () => {
@@ -206,7 +206,8 @@ test("rendu SSR du panneau et intégration au client", () => {
   assert.match(html, /data-warp-quest="non_commence"/);
   assert.match(html, /data-warp-condition="module" data-met="false"/);
   assert.match(html, /W-02 · Japon féodal, 1629/);
-  assert.match(html, /data-warp-branch-card="W-01" data-status="non-implemente"/);
+  assert.match(html, /data-warp-branch-card="W-01" data-status="jouable"/);
+  assert.match(html, /data-warp-branch-card="W-03" data-status="non-implemente"/);
   const ready = { ...save, warpEpochsV165: ok(warp.departWarpV165(readyState(), full)) };
   const html2 = source.render("app/game/WarpEpochsPanelV165.tsx", { save: ready, onPersist: () => true, onClose: () => {} });
   assert.match(html2, /data-warp-trip="warp-trip-1"/);

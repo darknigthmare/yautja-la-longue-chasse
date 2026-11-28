@@ -79,6 +79,12 @@ audit.state=()=>{
     fieldLoad:handle.native.huntFieldLoadV112(game),
     riteToolInitialCondition:game.riteToolInitialConditionV112,
     damageTaken:game.damageTaken,
+    objectives: [...game.completedObjectives],
+    scanNodes:game.scanNodes,
+    recoveryNodes:game.recoveryNodes,
+    supportKills:game.supportKills,
+    secondWindUsed:game.secondWindUsed,
+    boss:{id:game.boss.id,archetype:game.boss.archetype,x:game.boss.x,y:game.boss.y,width:game.boss.width,height:game.boss.height,active:game.boss.active,alive:game.boss.alive,health:game.boss.health,maxHealth:game.boss.maxHealth,scanned:game.boss.scanned,telegraph:game.boss.telegraph},
     world:{
       width:game.world.width,
       floorY:game.world.floorY,
@@ -90,7 +96,7 @@ audit.state=()=>{
     },
     enemies:game.enemies.map(enemy=>({
       id:enemy.id,archetype:enemy.archetype,alive:enemy.alive,
-      active:enemy.active,boss:enemy.boss,x:enemy.x,y:enemy.y,health:enemy.health,
+      active:enemy.active,boss:enemy.boss,x:enemy.x,y:enemy.y,height:enemy.height,width:enemy.width,health:enemy.health,maxHealth:enemy.maxHealth,scanned:enemy.scanned,telegraph:enemy.telegraph,
     })),
     ship:game.dropShip,
     secondaryDrops:game.regularTrophyDrops,
@@ -143,6 +149,7 @@ window.__onCanopyRootDrawV112=(id,image)=>{
   }
 };
 audit.prepareApex=()=>{
+  if(mode==='native-oseris')throw Error('The native route only observes the live hunt');
   const {game,native,mission}=audit.runtime;
   if(audit.apexSetup||game.phase!=='tracking'||!game.player.grounded||!game.boss.alive||
       !game.regularTrophyDrops.some(drop=>drop.collected))throw Error('A completed local trophy route must precede the declared Apex setup');

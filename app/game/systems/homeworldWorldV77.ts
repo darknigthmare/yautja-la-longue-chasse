@@ -15,6 +15,7 @@ import {HOMEWORLD_REGION_CONNECTIONS_V72,HOMEWORLD_CONNECTION_STREETS_V72,HOMEWO
 import {homeworldCouncilStairRailsV77} from './homeworldConnectorArtV77';
 import {homeworldConnectorSupportsV82} from './homeworldConnectorSupportsV82';
 import {HOMEWORLD_LAVA_BASES_V77,homeworldSkiffFootOnDeckV77} from './homeworldLavaPlacementV77';
+import {HOMEWORLD_SKIFF_W3_S09,recordSkiffLandingW3S09,type HomeworldSkiffArrivalW3S09} from './homeworldSkiffProofW3S09';
 import {HOMEWORLD_RESIDENT_PATH_REVISIONS_V81} from './homeworldResidentPlacementsV81';
 import {HOMEWORLD_LEGACY_PROP_PLACEMENTS_V81,HOMEWORLD_LEGACY_EXTERIOR_PLACEMENTS_V82,HOMEWORLD_LEGACY_FRONTAGE_PLACEMENTS_V82} from './homeworldLegacyPlacementsV81';
 import {HOMEWORLD_RETAINING_SUPPORTS_V82,homeworldRetainingTouchesV82} from './homeworldRetainingAssembliesV82';
@@ -165,8 +166,8 @@ export const HOMEWORLD_MARSH_GROUND_JOINTS_V113=compileHomeworldMarshGroundJoint
 export const HOMEWORLD_GROUND_V77=[...HOMEWORLD_RETAINED_GROUND_V113,...HOMEWORLD_MARSH_GROUND_JOINTS_V113];
 export const HOMEWORLD_REGIONAL_DOCKS_V77=[
  {regionId:'leviathan-coast',levelId:'0' as const,point:{x:260,y:2230},kind:'walk' as const,name:'Sentier du rivage · côte occidentale'},
- {regionId:'thermal-caves',levelId:'0' as const,point:{x:460,y:3600},kind:'skiff' as const,name:'Passeur du canyon volcanique · Grottes Thermiques',duration:12,
-  route:[{x:460,y:3600},{x:390,y:3720},{x:260,y:3850}],statueSockets:[{x:100,y:3620},{x:660,y:3620}],artStatus:'SKIFF_AND_STATUES_REQUIRED'},
+ {regionId:'thermal-caves',levelId:'0' as const,point:{x:460,y:3600},kind:'skiff' as const,name:'Passeur du canyon volcanique · Grottes Thermiques',duration:HOMEWORLD_SKIFF_W3_S09.seconds,
+  route:[{x:460,y:3600},{x:390,y:3720},HOMEWORLD_SKIFF_W3_S09.shore],statueSockets:[{x:100,y:3620},{x:660,y:3620}],artStatus:'SKIFF_AND_STATUES_REQUIRED'},
 ];
 export const HOMEWORLD_POINTS_V77=HOMEWORLD_POINTS.map(point=>{
  const dock=HOMEWORLD_REGIONAL_DOCKS_V77.find(dock=>dock.regionId===point.regionId);
@@ -300,14 +301,19 @@ export function beginHomeworldSkiffV77(levelId:HomeworldLevelV77,actor:Homeworld
  const dock=HOMEWORLD_REGIONAL_DOCKS_V77.find(d=>d.kind==='skiff')!;
  return allowed&&levelId===dock.levelId&&homeworldWalkableV77(levelId,actor)&&Math.hypot(actor.x-dock.point.x,actor.y-dock.point.y)<145&&homeworldSkiffFootOnDeckV77(actor,dock.point,HOMEWORLD_ACTOR)?{regionId:'thermal-caves',elapsed:0,source:{x:actor.x,y:actor.y}}:null;
 }
-export function stepHomeworldSkiffV77(ride:HomeworldSkiffV77,actor:HomeworldActor,seconds:number,suspended=false){
+export function stepHomeworldSkiffV77(ride:HomeworldSkiffV77,actor:HomeworldActor,seconds:number,suspended=false):{
+  ride:HomeworldSkiffV77|null;actor:HomeworldActor;done:boolean;arrival?:HomeworldSkiffArrivalW3S09;
+}{
  const dock=HOMEWORLD_REGIONAL_DOCKS_V77.find(d=>d.kind==='skiff')!;
  if(suspended||!Number.isFinite(seconds)||seconds<=0)return{ride,actor,done:false};
  const elapsed=Math.min(dock.duration!,ride.elapsed+Math.min(seconds,.1)),t=elapsed/dock.duration!;
  const nodes=[ride.source,...dock.route!.slice(1)],lengths=nodes.slice(1).map((p,i)=>Math.hypot(p.x-nodes[i].x,p.y-nodes[i].y)),total=lengths.reduce((a,b)=>a+b,0);let travelled=total*t,index=0;
  while(index<lengths.length-1&&travelled>lengths[index])travelled-=lengths[index++];
  const fraction=lengths[index]?travelled/lengths[index]:1,a=nodes[index],b=nodes[index+1];
- return{ride:t===1?null:{...ride,elapsed},actor:{...actor,x:a.x+(b.x-a.x)*fraction,y:a.y+(b.y-a.y)*fraction,vx:0,vy:0},done:t===1};
+ const next={...actor,x:a.x+(b.x-a.x)*fraction,y:a.y+(b.y-a.y)*fraction,vx:0,vy:0};
+ return t===1
+   ? {ride:null,actor:next,done:true,arrival:recordSkiffLandingW3S09(next,elapsed)}
+   : {ride:{...ride,elapsed},actor:next,done:false};
 }
 export const HOMEWORLD_ART_GAPS_V77={council:'V81 native Council hall and public multi-space gallery present; dedicated elder action sheets and ceremonies still required',palace:'V81 native 1100×700 royal pyramid and public multi-space audience wing present; complete private suites and royal cinematics still required',
  connectors:'Native structures for all seven existing connectors; V83 separate cabin with local per-party station state, visible empty calls and unchanged five-second passenger transit; no authored multi-frame machinery sheets, cloud-synchronized lift simulation or V83 gameplay QA',lava:'Two native giant statues and fixed skiff present; ferryman uses existing civilian role, no dedicated action sheet or native skiff movement clips',

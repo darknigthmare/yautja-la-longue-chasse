@@ -7,7 +7,7 @@ import { controlActionShortcut } from "./controlBindingLabels";
 import { type YouthArtBank } from "./youthTrainingRendering";
 import { GameAudio } from "./sound";
 import YautjaTranslationV67 from "./YautjaTranslationV67";
-import { SOLO_V70_GALLERY_M017, SOLO_V70_ROYAL_M017, soloV70RoyalStatusM017, soloV70PurgeRemainingM017 } from "./systems/firstHuntSoloV70DepthsM017";
+import { SOLO_V70_GALLERY_M017, SOLO_V70_ROYAL_M017, SOLO_V70_RESCUE_M017, soloV70RoyalStatusM017, soloV70PurgeRemainingM017 } from "./systems/firstHuntSoloV70DepthsM017";
 import { drawFirstHuntSoloV70, loadTempleArtV70 } from "./firstHuntSoloV70Rendering";
 import { normalizeSoloV70State, stepSoloV70, soloV70NeedsImmediateCheckpoint, soloV70Objective, soloV70Room, SOLO_V70_DEPTHS_M017, soloV70DepthDoorOpeningM017, type SoloV70State, type SoloV70Receipt, soloV70ReconnectionPreview, soloV70NefDeploymentM017 } from "./systems/firstHuntSoloV70";
 import styles from "./FirstHuntSoloV70.module.css";
@@ -122,6 +122,8 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
           if (next.room === SOLO_V70_ROYAL_M017.room &&
               soloV70RoyalStatusM017(next.depthsM017?.extension, next.tick)?.stage === "warning" &&
               (prior.room !== next.room || soloV70RoyalStatusM017(prior.depthsM017?.extension, prior.tick)?.stage !== "warning")) audio?.enemyAlert();
+          if (prior.depthsM017?.extension?.rescue?.pickedUp !== next.depthsM017?.extension?.rescue?.pickedUp ||
+              prior.depthsM017?.extension?.rescue?.delivered !== next.depthsM017?.extension?.rescue?.delivered) audio?.ui();
           if (next.failedAt !== null && prior.failedAt === null) audio?.defeat();
           if (output.receipts.length) { pending.current = output; audio?.setMuted(true); setPendingUi(true); accumulated = 0; clear(); void submit(); break; }
           if (soloV70NeedsImmediateCheckpoint(prior, output.state)) {
@@ -154,7 +156,9 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
   };
   const objective = state ? soloV70Objective(state) : null;
   const spoken = state?.phase === "briefing" ? "Saar et Vek entrent avec toi. Les outils ouvrent la route ; seules des chasses réelles et le retour des trois achèveront le rite." : state?.phase === "debrief" ? state.depthsM017?.extension?.royal && state.depthsM017.extension.observations["royal-lock"]
-    ? "La loge de la reine captive est isolée, la conduite est purgée et le seuil a été franchi ensemble. Nomme les chasses qui restent."
+    ? (state.depthsM017.extension.rescue?.delivered
+      ? "Saar a rejoint le refuge. Vous avez purgé le sas et franchi le seuil ensemble. Nomme les chasses qui restent."
+      : "La loge de la reine captive est isolée, la conduite est purgée et le seuil a été franchi ensemble. Nomme les chasses qui restent.")
     : "Le drone de la vanne est tombé. Les profondeurs sont fermées, elles ne sont pas purgées. Nomme précisément ce qui reste." : state?.phase === "recognition" ? state.depthsM017?.extension?.royal && state.depthsM017.extension.observations["royal-lock"]
     ? "Le clan reçoit votre ouverture. La reine reste captive et chaque chasse individuelle reste à accomplir. Votre rang demeure Young Blood."
     : "Le clan reçoit votre ouverture. La reine et chaque chasse individuelle restent devant vous. Votre rang demeure Young Blood." : "";
@@ -166,7 +170,10 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
   const purgeRemaining = state && state.room === 14 ? soloV70PurgeRemainingM017(state) : 0;
   const extension = state?.depthsM017?.extension;
   const royal = state?.room === SOLO_V70_ROYAL_M017.room ? soloV70RoyalStatusM017(extension, state.tick) : undefined;
+  const rescue = state?.room === SOLO_V70_RESCUE_M017.room ? extension?.rescue : undefined;
+  const rescueStage = rescue && (rescue.delivered ? "safe" : rescue.pickedUp ? "carrying" : "wounded");
   return <section className={styles.screen} data-solo-v70 data-solo-step={state?.phase ?? "invalid"}
+    data-temple-rescue={rescueStage}
     data-temple-royal={royal?.stage}
     data-temple-royal-remaining={royal && "remaining" in royal ? royal.remaining : undefined}
     data-temple-gallery={state?.room === SOLO_V70_GALLERY_M017.room && extension?.gallery
@@ -180,6 +187,8 @@ export default function FirstHuntSoloV70(props: FirstHuntSoloV70Props) {
     data-temple-nef={preview ? "warning" : nefDeploying ? "moving" : state?.reconnectionVariant && state.configuration >= 2 ? "deployed" : "off"} data-temple-threshold={state?.riteAdmission && (state.riteAdmission.threshold ? "triad-confirmed" : "pending")}>
     <header className={styles.header} inert={modal && !props.externallyPaused ? true : undefined}><strong>CAMPAGNE · TEMPLE DES TROIS OMBRES · ACTE I</strong><div><button type="button" onClick={pause} disabled={!state || pendingUi}>Pause</button><button type="button" onClick={() => setTouchUi(v => !v)} aria-pressed={touchUi}>Tactile</button></div></header>
     <div className={styles.objective}><h1>{objective?.title ?? "Checkpoint non pris en charge"}</h1><p>{objective?.instruction ?? "La partie est conservée. Aucun état neuf ne remplace ce checkpoint."}</p>{state && <div className={styles.measure}><span>{soloV70Room(state.room).name}</span><span>{soloV70Room(state.room).level} · Configuration {state.configuration}</span><span>Secteurs {state.visited.filter(Boolean).length}/{state.visited.length}</span><span>Vitalité {state.health}/6</span>{state.riteAdmission?.sealedEnergy && <span>3 émetteurs scellés</span>}{state.milestones['belvedere-serviced'] && <span>Belvédère · {state.belvedereLever ? 'mécanismes' : 'hauteurs'}</span>}{state.riteAdmission?.threshold && <span>{state.depthsM017 ? 'Vanne · 3/3' : 'Triade au seuil · 3/3'}</span>}{state.depthsM017?.huntThreshold && <span>Seuil de chasse · 3/3</span>}{saving && <span role="status">Enregistrement…</span>}</div>}</div>
+    {rescueStage === "carrying" && <p role="status">Saar est porté. Vek escorte la triade.</p>}
+    {rescueStage === "safe" && <p role="status">Saar a rejoint le refuge.</p>}
     {royal?.stage === "warning" && <p role="status">Le glyphe annonce un balayage au sol.</p>}
     {royal?.stage === "strike" && <p role="status">Balayage. Gagne le couvert haut.</p>}
     {preview && <p data-temple-nef-countdown>Passerelles dans {Math.ceil(preview.remainingTicks / 60)} s.</p>}

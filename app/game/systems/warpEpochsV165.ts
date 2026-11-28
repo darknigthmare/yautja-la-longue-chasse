@@ -29,6 +29,10 @@
  * seul retour réservé, état de branche STATE5-30).
  */
 import type { MissionDefinition, MissionResult, SaveGame } from "../types";
+import {
+  W01_FJORD_BRANCH, W01_FJORD_ROUTES, normalizeWarpFjordRecord, warpFjordWithinReach,
+  type WarpFjordAction, type WarpFjordRecord,
+} from "./warpFjordW01";
 import { actWarpVillage, normalizeWarpVillage, type WarpVillageOrder, type WarpVillageRecord } from "./warpVillageR2M048";
 import {
   evaluateChronicleAccess, getChronicleFunctions, getChronicleRank, migrateV35ClanChronicle, type ChronicleAccessContext, type ClanChronicle,
@@ -66,13 +70,13 @@ export interface WarpBranchV165 {
   proposedScene: string;
   year: number | null;
   canonHeroes: readonly WarpCanonHeroV165[];
-  /** W-02 (V165) et la branche 2204 (V167) ont une boucle jouable. */
+  /** Une reconnaissance suffit à ouvrir la branche. L’arc complet est suivi à part. */
   status: "jouable" | "non-implemente";
 }
 
 export const WARP_BRANCHES_V165: readonly WarpBranchV165[] = [
   { id: "W-01", label: "Scandinavie viking, 841", canonFrame: "Scandinavie viking, 841 (Killer of Killers)", proposedScene: "fjord en hiver, chasse d'un guerrier champion", year: 841,
-    canonHeroes: [{ id: "ursa", name: "Ursa", year: 841, killable: false }], status: "non-implemente" },
+    canonHeroes: [{ id: "ursa", name: "Ursa", year: 841, killable: false }], status: "jouable" },
   { id: "W-02", label: "Japon féodal, 1629", canonFrame: "Japon féodal, 1629 (duel des frères en 1609) (Killer of Killers)", proposedScene: "château de nuit, duel au sabre", year: 1629,
     canonHeroes: [{ id: "kenji", name: "Kenji", year: 1629, killable: false }], status: "jouable" },
   { id: "W-03", label: "1715", canonFrame: "1715 (pistolet de Predator 2)", proposedScene: "navire et port, trophée d'un capitaine", year: 1715,
@@ -190,6 +194,8 @@ export interface WarpBranchVisitV165 {
   /** V167, branche 2204 seulement : sort de l'Echo-8, décidé une fois et conservé (STATE5-30). Absent ailleurs. */
   echo8?: WarpTantalusEcho8V165;
   r2M048?: WarpVillageRecord;
+  /** Première reconnaissance W-01, archivée seulement après le retour à pied. */
+  fjordW01?: WarpFjordRecord;
 }
 export interface WarpEchoV165 { id: string; fromBranchId: WarpBranchIdV165; toBranchId: WarpBranchIdV165; text: string; effect: string }
 export type WarpSurveyR2 = { tripId: string; stage: "marker" | "complete"; nicheVisited: boolean };
@@ -286,9 +292,15 @@ function normalizeVisit(value: unknown, id: WarpBranchIdV165): WarpBranchVisitV1
     r2M048 = normalizeWarpVillage(value.r2M048);
     if (!r2M048) return null;
   }
+  let fjordW01: WarpFjordRecord | null = null;
+  if (Object.hasOwn(value, "fjordW01")) {
+    if (id !== W01_FJORD_BRANCH || value.visits < 1) return null;
+    fjordW01 = normalizeWarpFjordRecord(value.fjordW01);
+    if (!fjordW01) return null;
+  }
   return { visits: value.visits, steps, alertedPassages, deadIds, takenObjectIds, localKills: value.localKills,
     huntRuns: value.huntRuns, huntSuccess: value.huntSuccess, trophy, epochCompleted: value.epochCompleted,
-    ...(echo8 ? { echo8 } : {}), ...(r2M048 ? { r2M048 } : {}) };
+    ...(echo8 ? { echo8 } : {}), ...(r2M048 ? { r2M048 } : {}), ...(fjordW01 ? { fjordW01 } : {}) };
 }
 
 /** Renvoie l'état normalisé, ou null si la forme est invalide ou d'une autre campagne. */
@@ -331,6 +343,23 @@ export function normalizeWarpEpochsV165(value: unknown, ownerCreatedAt: string):
   const tripActive = value.activeWarpTripId !== null;
   if (tripActive !== (value.warpReturnReservation === "reservee") || tripActive !== (value.activeTripBranchId !== null)) return null;
   if (value.warpModuleInstalled && value.warpQuestOutcome !== "reussi") return null;
+  const fjord = branchVisitState[W01_FJORD_BRANCH]?.fjordW01;
+  if (fjord) {
+    const prefix = "trip:" + fjord.tripId;
+    const depart = consumedEventIds.indexOf(prefix + ":depart");
+    const observe = consumedEventIds.indexOf(prefix + ":w01-observe-" + fjord.route);
+    const otherRoute = fjord.route === "quai" ? "falaise" : "quai";
+    const returned = consumedEventIds.indexOf(prefix + ":return");
+    const report = consumedEventIds.indexOf(prefix + ":w01-report");
+    if (!value.warpModuleInstalled || Number(fjord.tripId.slice(10)) > value.tripCount ||
+        depart < 0 || observe <= depart || consumedEventIds.includes(prefix + ":w01-observe-" + otherRoute)) return null;
+    if (fjord.returned) {
+      if (returned <= observe || report <= returned || value.activeWarpTripId === fjord.tripId) return null;
+    } else if (returned !== -1 || report !== -1 || value.activeWarpTripId !== fjord.tripId ||
+        value.activeTripBranchId !== W01_FJORD_BRANCH) return null;
+  }
+  const fjordReports = consumedEventIds.filter(id => /:w01-report$/.test(id));
+  if (fjordReports.length !== (fjord?.returned ? 1 : 0)) return null;
   const commonRouteR2 = value.commonRouteR2 === undefined ? undefined : normalizeWarpCommonR2(value.commonRouteR2, ownerCreatedAt);
   if (commonRouteR2 === null) return null;
   if (commonRouteR2) {
@@ -431,7 +460,7 @@ export function evaluateWarpDepartureV165(state: WarpEpochsStateV165 | null, ctx
   if (state?.activeWarpTripId) missing.push({ id: "trip-active", label: "Un voyage est déjà engagé", where: "Revenir par le retour réservé" });
   const branch = WARP_BRANCHES_V165.find(entry => entry.id === state?.warpBranchId);
   if (!branch) missing.push({ id: "branch", label: "Choisir une branche (STATE5-27)", where: "Carte des branches" });
-  else if (branch.status !== "jouable") missing.push({ id: "branch-not-implemented", label: `${branch.id} n'est pas encore implémentée`, where: "Choisir W-02 ou 2204" });
+  else if (branch.status !== "jouable") missing.push({ id: "branch-not-implemented", label: `${branch.id} n'est pas encore implémentée`, where: "Choisir W-01, W-02 ou 2204" });
   return { allowed: missing.length === 0, missing };
 }
 
@@ -542,8 +571,61 @@ export function returnFromWarpV165(state: WarpEpochsStateV165): WarpUpdateV165 {
   if (!canReturnFromWarpV165(state)) return refuse(state, "Aucun voyage engagé.");
   const next: WarpEpochsStateV165 = { ...state, activeWarpTripId: null, activeTripBranchId: null, warpReturnReservation: "utilisee" };
   if (next.firstSurveyR2?.stage === "marker") delete next.firstSurveyR2;
+  const fjord = next.branchVisitState[W01_FJORD_BRANCH]?.fjordW01;
+  if (state.activeTripBranchId === W01_FJORD_BRANCH && fjord && !fjord.returned) {
+    next.branchVisitState = withVisit(next, W01_FJORD_BRANCH, visit => {
+      const retreat = { ...visit };
+      delete retreat.fjordW01;
+      return retreat;
+    });
+  }
   return commit(state, `trip:${state.activeWarpTripId}:return`, next,
     "Retour par la fenêtre réservée. La branche garde son état.");
+}
+
+/** W-01 demande une observation puis un retour à pied dans le même voyage. */
+export function advanceWarpFjordW01(state: WarpEpochsStateV165, action: WarpFjordAction): WarpUpdateV165 {
+  const tripId = state.activeWarpTripId;
+  const visit = branchVisitV165(state, W01_FJORD_BRANCH);
+  const fjord = visit.fjordW01;
+  if (!tripId || state.activeTripBranchId !== W01_FJORD_BRANCH || !canReturnFromWarpV165(state) || fjord?.returned) {
+    return refuse(state, "La première reconnaissance demande un voyage engagé vers W-01.");
+  }
+  const prefix = "trip:" + tripId;
+  if (action.kind === "observe") {
+    const route = W01_FJORD_ROUTES[action.route];
+    if (!route || !warpFjordWithinReach(action.at, route.checkpoint)) return refuse(state, "Approche du point d’observation.");
+    if (fjord) return refuse(state, "Le relevé est prêt. Rejoins la caverne.");
+    return commit(state, prefix + ":w01-observe-" + action.route, {
+      ...state,
+      branchVisitState: withVisit(state, W01_FJORD_BRANCH, previous => ({
+        ...previous, fjordW01: { tripId, route: action.route, returned: false },
+      })),
+    }, "L’équipage et la piste du guerrier sont relevés. Reviens par la caverne.");
+  }
+  if (!fjord || fjord.tripId !== tripId || action.route !== "grotte" || !warpFjordWithinReach(action.at, 0)) {
+    return refuse(state, "Reviens à l’ancre de la caverne avec ton relevé.");
+  }
+  const returned = returnFromWarpV165(state);
+  if (!returned.changed) return returned;
+  return commit(returned.state, prefix + ":w01-report", {
+    ...returned.state,
+    branchVisitState: withVisit(returned.state, W01_FJORD_BRANCH, previous => ({
+      ...previous, fjordW01: { ...fjord, returned: true },
+    })),
+  }, "Retour par la fenêtre réservée. Le registre du vaisseau conserve ton relevé.");
+}
+
+export function isWarpFjordSuccessorW01(previous: WarpEpochsStateV165 | null | undefined, next: WarpEpochsStateV165 | null | undefined): boolean {
+  const before = previous?.branchVisitState[W01_FJORD_BRANCH]?.fjordW01;
+  const after = next?.branchVisitState[W01_FJORD_BRANCH]?.fjordW01;
+  if (JSON.stringify(before ?? null) === JSON.stringify(after ?? null)) return true;
+  const tripId = previous?.activeWarpTripId;
+  if (!previous || !tripId || previous.activeTripBranchId !== W01_FJORD_BRANCH || !next || before?.returned ||
+      !normalizeWarpEpochsV165(next, previous.ownerCreatedAt)) return false;
+  if (!before) return !!after && !after.returned && after.tripId === tripId && next.activeWarpTripId === tripId;
+  if (next.activeWarpTripId !== null || !next.consumedEventIds.includes("trip:" + tripId + ":return")) return false;
+  return !after || (after.returned && after.tripId === before.tripId && after.route === before.route);
 }
 
 /** Short W-02 reconnaissance. The always-available emergency return grants no survey report. */

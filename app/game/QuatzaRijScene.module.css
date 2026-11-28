@@ -13,6 +13,7 @@
 .actorName { position: absolute; min-width: 48px; text-align: center; bottom: 93px; left: -24px; color: #eef7ed; background: #182d27; border-radius: 4px; }
 .beast { z-index: 3; transform: translate(-48%, -100%); background-repeat: no-repeat; }
 .groundWarning { position: absolute; z-index: 2; top: 389px; height: 16px; border: 2px solid #ffbc70; background: repeating-linear-gradient(135deg, #d98c4e88 0 7px, #822c1477 7px 14px); }
+.witnessName { position: absolute; bottom: 100px; left: 0; transform: translateX(-50%); white-space: nowrap; color: #ffe2ad; background: #182d27; border-radius: 4px; padding: 0 5px; }
 .marker { z-index: 2; border-left: 2px solid #b9e694; padding: 7px; max-width: 130px; color: #f1ffea; transform: translate(-12%, -100%); background: #10261ddd; }
 .marker[data-ready=true]{border-color:#f9c878;color:#ffd7a0;}
 .marker::after { content: ''; position: absolute; top: 100%; left: -2px; height: 28px; border-left: 2px solid #b9e694; }
