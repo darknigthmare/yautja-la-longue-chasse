@@ -9,6 +9,7 @@ const read = relative => readFileSync(root + relative, "utf8");
 
 const entry = `
 export * from "./app/game/systems/huntingHoundsV147.ts";
+export * from "./app/game/systems/houndKennelV147.ts";
 export { normalizeSave, applyMissionResult, defaultSave, parseSaveImport } from "./app/game/save.ts";
 `;
 const bundle = build({
@@ -194,4 +195,74 @@ test("V147 panel is mounted in the companions register and never recruits", () =
   assert.match(chronicle, /<HuntingHoundsPanelV147 hounds=\{save\.houndsV147\} \/>/);
   assert.doesNotMatch(panel, /recruitHoundV147/);
   assert.match(panel, /Aucun chien recruté/);
+});
+
+test("CITY-28 adopts exactly one catalogue identity at the displayed price", async () => {
+  const m = await bundle;
+  const previous = m.defaultSave("2026-11-06T00:00:00.000Z");
+  const price = m.HOUND_KENNEL_ADOPTION_PRICE_V147;
+  const catalogueId = m.HOUND_CATALOGUE_V147[0].id;
+  const action = { type: "recruit", catalogueId, name: "  Trace-de-Cendre " };
+  const buy = save => m.applyKennelActionV147(save, action, m.HOUND_KENNEL_LOCATION_V147);
+  assert.equal(buy(previous).reason, "insufficient-clan-marks");
+  assert.equal(previous.profile.clanMarks, 0);
+  assert.equal(previous.houndsV147, undefined);
+  previous.profile.clanMarks = price;
+  assert.equal(m.applyKennelActionV147(previous, action, "CITY-01").reason, "not-at-kennel");
+  const adopted = buy(previous);
+  assert.equal(adopted.ok, true);
+  assert.equal(adopted.clanMarks, 0);
+  assert.equal(adopted.houndsV147.activeHoundId, catalogueId);
+  assert.equal(adopted.houndsV147.hounds[0].name, "Trace-de-Cendre");
+  assert.equal(previous.houndsV147, undefined);
+  assert.equal(previous.profile.clanMarks, price);
+  const reloaded = m.parseSaveImport(JSON.stringify({
+    ...previous, houndsV147: adopted.houndsV147, profile: { ...previous.profile, clanMarks: adopted.clanMarks },
+  })).save;
+  assert.deepEqual(reloaded.houndsV147, adopted.houndsV147);
+  assert.equal(reloaded.profile.clanMarks, 0);
+  assert.equal(buy(reloaded).reason, "already-recruited");
+});
+
+test("CITY-28 recognizes historical catalogue links, preserves a fallen hound and heals without payment", async () => {
+  const m = await bundle;
+  const save = m.defaultSave();
+  const original = recruited(m, 25);
+  const wounded = m.woundHoundV147(original, "breche", "2026-11-06T10:00:00.000Z").state;
+  const care = m.applyKennelActionV147({ ...save, houndsV147: wounded }, { type: "heal", houndId: "breche" }, "CITY-28");
+  assert.equal(care.ok, true);
+  assert.equal(care.clanMarks, 0);
+  assert.equal(care.houndsV147.hounds[0].condition, "ready");
+  const choose = m.applyKennelActionV147({ ...save, houndsV147: care.houndsV147 }, { type: "choose", houndId: "breche" }, "CITY-28");
+  assert.equal(choose.ok, true);
+  assert.equal(m.activeHoundV147(choose.houndsV147).bond, 25);
+  const fallen = m.killHoundV147(choose.houndsV147, "breche", "2026-11-06T11:00:00.000Z").state;
+  assert.equal(m.activeHoundV147(fallen), null);
+  const catalogueId = fallen.hounds[0].catalogueId;
+  assert.equal(m.kennelCandidatesV147(fallen).find(candidate => candidate.id === catalogueId).status, "fallen");
+  const retry = m.applyKennelActionV147({ ...save, houndsV147: fallen }, { type: "recruit", catalogueId, name: "" }, "CITY-28");
+  assert.equal(retry.reason, "fallen-identity");
+});
+
+test("Idle and repeated idle recall earn nothing, and a checkpoint preserves the executed order", async () => {
+  const m = await bundle;
+  const hound = recruited(m, 75).hounds[0], at = { x: 0, y: 0 };
+  const step = (field, prey = []) => m.stepHoundFieldV147(field, { dt: 0.1, player: at, prey });
+  let { field } = step(m.createHoundFieldV147(hound, at));
+  assert.equal(field.ordersCompleted, 0);
+  ({ field } = step(m.issueHoundOrderV147(field, "recall", hound.bond).field));
+  assert.equal(field.ordersCompleted, 1);
+  ({ field } = step(m.issueHoundOrderV147(field, "recall", hound.bond).field));
+  assert.equal(field.ordersCompleted, 1);
+  const attack = m.issueHoundOrderV147(field, "attack", hound.bond, "prey").field;
+  const restored = m.restoreHoundFieldV147(JSON.parse(JSON.stringify(m.snapshotHoundFieldV147(attack))));
+  assert.deepEqual(restored, attack);
+  let lost = step(restored);
+  assert.deepEqual(lost.events, [{ type: "target-lost", preyId: "prey" }]);
+  assert.equal(lost.field.ordersCompleted, 1);
+  lost = step(lost.field, [{ id: "prey", alive: true, x: 0, y: 0 }]);
+  assert.deepEqual(lost.events, []);
+  const defeated = step(restored, [{ id: "prey", alive: false, x: 0, y: 0 }]);
+  assert.deepEqual(defeated.events, [{ type: "attack-done", preyId: "prey" }]);
+  assert.equal(defeated.field.ordersCompleted, 2);
 });
