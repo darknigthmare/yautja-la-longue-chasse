@@ -1,0 +1,90 @@
+name: Play the loaded Mycora canopy from tree to liana to ground
+on:
+  push:
+    branches: [codex/verify-mycora-canopy-charge-20261128]
+permissions:
+  contents: read
+jobs:
+  durable-field:
+    name: Native Mycora loaded canopy
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+      SKINNING_CANOPY_QA_OUTPUT: outputs/qa-mycora-loaded-canopy
+    steps:
+      - name: Checkout current application and exact asset index
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '378763eeff6a79ab683bbc6d11fc8fb1baaf9f00'
+          filter: blob:none
+          fetch-depth: 3
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /content/the-pit/
+            /lib/
+            /types/
+            /worker/
+            /desktop/
+            /docs/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/hosting.json
+            /public/**/manifest.json
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize tracked canopy and campaign assets
+        run: |
+          node --input-type=module <<'NODE'
+          import {execFileSync} from 'node:child_process';
+          import {readFileSync} from 'node:fs';
+          const index=JSON.parse(readFileSync('tests/fixtures/skinning-canopy-browser-assets-20261109.json','utf8'));
+          const assets=execFileSync('git',['ls-tree','-r','--name-only','HEAD','--','public'],{encoding:'utf8',maxBuffer:16*1024*1024}).trim().split('\n');
+          const regional=assets.filter(p=>/(?:\/|[-_])(jungle|oseris|fungal|mycora)(?:\/|[-_])/.test(p));
+          const selected=new Set([...index.assets.map(a=>a.path),...regional]);
+          execFileSync('git',['sparse-checkout','add','--stdin'],{input:[...selected].sort().map(p=>'/'+p).join('\n')+'\n',stdio:['pipe','inherit','inherit']});
+          NODE
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Materialize current V19 sector bindings without rewriting the historical index
+        run: node scripts/materialize-asset-raccords-20261120.mjs hunt-runtime
+      - name: Lint and test the authored canopy mechanics
+        run: |
+          node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/systems/canopyTraversalV112.ts app/game/systems/canopyNavigationV112.ts app/game/HuntCanopyHudV112.tsx scripts/qa-mycora-loaded-canopy-v112.mjs scripts/qa-oseris-trophy-return-20261128.mjs tests/browser/oseris-trophy-return-20261128.fixture.jsx
+          node --test tests/canopy-traversal-v112.test.mjs tests/hunt-canopy-runtime-v112.test.mjs
+      - name: Play the loaded route and restore from disk
+        run: |
+          test "$(git rev-parse HEAD)" = '378763eeff6a79ab683bbc6d11fc8fb1baaf9f00'
+          node scripts/qa-oseris-trophy-return-20261128.mjs --mycora-canopy
+      - name: Print the result of the native browser recipe
+        if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import {existsSync, readFileSync} from 'node:fs';
+          const p = process.env.SKINNING_CANOPY_QA_OUTPUT + '/report.json';
+          if (!existsSync(p)) console.log('The browser recipe did not produce a report');
+          else {
+            const {classification, browserExecuted, passed, checks, cases, errors, captures, failure, failureState, failureText, assets} = JSON.parse(readFileSync(p, 'utf8'));
+            const detail = pattern => checks.find(({name}) => pattern.test(name))?.details;
+            console.log(JSON.stringify({classification,browserExecuted,passed,checks:checks.map(({name,status})=>({name,status})),cases:Object.keys(cases),errors,captures:captures.length,assetCount:assets?.length,failure,failurePlayer:failureState?.player,visibleFailure:failureText?.slice(-1600),cargo:checks[0]?.details?.cargo,load:checks[0]?.details?.load,pendulum:detail(/cold restart/),ground:detail(/terminal tree/)}));
+          }
+          NODE
+      - name: Preserve the actual browser report and original captures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: mycora-loaded-canopy-${{ github.sha }}
+          path: |
+            outputs/qa-mycora-loaded-canopy/
+            outputs/qa-asset-raccords-20261120/materialization-hunt-runtime.json
+          if-no-files-found: error
+          retention-days: 30
+
