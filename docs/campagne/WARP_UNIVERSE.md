@@ -144,6 +144,8 @@ Prévoir une arrivée, un objectif, des solutions alternatives lisibles, des lig
 
 Les adversaires réagissent avec des moyens plausibles pour leur époque : bruit, traces, guetteurs, formation, communications, éclairage et pièges. Ils ne connaissent pas magiquement le camouflage. Ne pas transformer un duel ancien en parade infinie contre n'importe quelle arme ; les restrictions fortes sont des règles de scénario ou des serments annoncés.
 
+**W‑01 · Une voile dans la brume.** Le départ est accessible depuis le pont, la carte ou le dossier de campagne. Le fjord de 841 propose le passage du quai et du treuil, ou la corniche. Le relevé n’est consigné qu’au retour à pied. Les deux autres épisodes de WU‑E05 restent ouverts. [Recette native](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46126806126).
+
 ## 6. Module à bord, portail et boucle de mission
 
 La baie du vaisseau personnel est un espace accessible, pas seulement un bouton : plateforme, montants blindés, conduites, console, réacteur, balise de retour, supports de trophées. La sélection montre la destination, le monde, la période, la branche, le mode, l'avatar, les restrictions, les risques, les récompenses et le moyen de revenir. Une prévisualisation derrière la membrane n'est ni le niveau chargé ni une certification de sa profondeur.

@@ -2107,7 +2107,7 @@ Un outil par fiche (masque, lames, camouflage, combistick, speargun, mines, medi
 
 ## Acte III — Young Blood (R2-M016 → M020)
 
-La triade, le Temple des Trois Ombres et le Quatza-Rij mènent au rang Blooded. Existent : l'acte I du temple (9 salles, V70) et un entraînement de triade (V90, V92). Le rite, le retour et la marque restent à faire.
+L’entraînement de triade V90 précède le retour du Quatza-Rij. Le trio dépose la peau et le crâne au même gardien. Les six salles de la pyramide, la restitution des outils et la marque Blooded conduisent ensuite au chantier naval. Les variantes du Temple, dont la route de quinze salles, conservent leurs propres critères d’admission et de reprise.
 
 ### R2-M016 — Former la triade
 
@@ -2531,7 +2531,7 @@ Le terrain du dossier de campagne est accessible après la reconnaissance Bloode
 
 *Production (proposé)* — **Props :** arène solitaire à trois niveaux, issue de repli, cible Quatza-Rij (même sprite que R2-M018, variante adulte plus grande), corps et trophée. **VFX :** sang acide, vapeur, marqueur de fenêtre ouverte par le joueur seul. **SFX :** `xeno-hiss`, `xeno-screech`, `acid-sizzle`, hit / slash (existe). **Musique :** MUS-14.
 
-**Raccord jouable.** Après les huit chasses et la remise de la coque personnelle, le dossier du clan ouvre la préparation et le terrain solo. Le râtelier, le plan et la marge choisie conditionnent la sortie. Le relevé de terrain conserve les attaques, les replis et la remise des deux pièces. La reconnaissance et les sons dédiés restent à produire.
+**Raccord jouable.** Après les huit chasses et la remise de la coque personnelle, le dossier du clan ouvre la préparation et le terrain solo. Le râtelier, le plan et la marge choisie conditionnent la sortie. Le relevé de terrain conserve les attaques, les replis et la remise des deux pièces. La reconnaissance est jouable dans R2-M043. Les sons dédiés restent à produire.
 
 ### R2-M043 — La reconnaissance Elite
 
@@ -2549,7 +2549,7 @@ Navire de clan, résidence, opérations collectives, conséquences de guerre, me
 
 *Production (proposé)* — **Props :** Chantier des Coques Ouvertes, coque collective en cale sèche, ponts fermés par des scellés, détenteurs des droits (PNJ). **VFX :** projecteurs de chantier, étincelles. **SFX :** `shipyard-ambience`, `weld-loop`, `seal-locked`. **Musique :** MUS-47. **Lien :** `production/clan-ship-20261104/`.
 
-**Raccord jouable.** À bord du Clan Ship, après la reconnaissance Elite et la remise de la coque personnelle, le poste du hangar conserve le relevé des deux ponts scellés. Le Garde du Seuil au hangar et la Veille des Astres au conseil éclairent les droits depuis leurs postes. Le conseil enregistre l’intention, puis le dossier ouvre les opérations du navire. Le registre `clanHullProjectV171` conserve ce choix avec le reçu de la coque personnelle. La visite extérieure en cale sèche et ses effets restent à produire.
+**Raccord jouable.** À bord du Clan Ship, après la reconnaissance Elite et la remise de la coque personnelle, le poste du hangar conserve le relevé des deux ponts scellés. Le Garde du Seuil au hangar et la Veille des Astres au conseil éclairent les droits depuis leurs postes. Le conseil enregistre l’intention, puis le dossier ouvre les opérations du navire. Le registre `clanHullProjectV171` conserve ce choix avec le reçu de la coque personnelle. La visite extérieure en cale sèche est jouable. Les décors détaillés et les sons dédiés restent à produire.
 
 ### R2-M045 — Une porte, plusieurs haltes
 
@@ -3264,3 +3264,40 @@ Dans les nouvelles configurations à quinze salles, le relevé déclenche l’é
 - **Forge et canopée · Arc Yautja et reprises de terrain** · Sur Naraka-Delta, le cuir ferrique de 4,4 kg est déposé puis repris sur la racine d’origine. Le retour descend par deux appuis et se poursuit à pied vers la balise. La plaque nucale, le trophée de l’Hydre et le cuir sont livrés une seule fois depuis le sol. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46078425387)
 
 - **Terre · Reconnaissance de la Plaine des lions** · Après le survol de Sol, la reconnaissance de la Plaine des lions permet de choisir une fenêtre, descendre au dépôt, contourner une crue par la levée, relever les empreintes et la troupe au biomask puis revenir physiquement. Le journal de coque conserve la crue, les observations et la position. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46077963937)
+
+## Suite des recettes · Campagne et priorités du 28 novembre 2026
+
+Les résultats ci-dessous sont consignés dans le huitième lot P0 à P3. Chaque recette cite le point joué et la reprise effectivement contrôlée. [Classeur associé](https://github.com/darknigthmare/yautja-la-longue-chasse/blob/main/production/YAUTJA_LOTS_P0_P3_LOT8_20261121.xlsx) · [Pull request](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/211)
+
+- **R2-M017 · Saar blessé dans le Temple** · Après la loge royale, Saar doit être pris en charge et porté jusqu’au sas. Vek ouvre la relève au point de dépose. Le carnet reprend avec le blessé, la distance portée et le sas bloqué tant que la dépose manque. Les chasses qualifiantes du rite et la recette sur appareil tactile physique restent ouvertes. [Recette 1](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46126860267) [Recette 2](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46127377452)
+
+- **R2-M019 · Retour et dépôt du Quatza‑Rij** · La triade vainc le Quatza‑Rij, ramène le blessé et présente la peau puis le crâne au gardien des rites. Les deux objets portent le même identifiant de chasse et restent liés à la triade après reprise et export. Le combat pendant le rite du Temple relève d’une étape séparée. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46126494635)
+
+- **R2-M020 · Reconnaissance Blooded et chantier naval** · Le même trio a présenté le Quatza‑Rij, joué le rite Blooded puis ouvert le chantier naval. Après restitution des outils, la célébration de cohorte et la visite calme sont jouables et se reprennent avant le salut au témoin. L’habillage de la marque, le décor 3D et les sons dédiés restent à produire. [Recette 1](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46127025311) [Recette 2](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46126620124)
+
+- **R2-M043 et L‑06 · Rite Elite** · Après les trois épreuves du clan, la présentation des preuves, le geste au socle et la reconnaissance sont joués jusqu’au rang Elite dans les deux configurations, devant l’assemblée publique ou les témoins restreints. L’arène, les personnages du chef et du vétéran, et la mission de la Reine remise par le chef restent à compléter pour L‑06. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46126374921)
+
+- **R2-M047 · Conséquences de Korthas** · Les deux parcours de la Passe des Cendres sont vérifiés sur la base actuelle. Le joueur retrouve la vétérane, observe le pont détruit, rouvre ce passage ou accompagne les blessés, puis remet le rapport au retour. L’accompagnement animé, les déplacements libres et le décor dédié restent ouverts. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46126220919)
+
+- **W‑01 · Une voile dans la brume** · Depuis le pont, la carte ou le dossier, le fjord de 841 s’ouvre à la reconnaissance. Le quai et le treuil offrent un passage distinct de la corniche. Le rapport d’équipage et du champion n’est consigné qu’au retour à pied. Les autres épisodes de Scandinavie, la chasse et les contrats du Warp restent à raccorder. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46126806126)
+
+- **Coopération de campagne · Salon local** · Le salon du menu réunit trois chroniques au maximum dans des onglets d’un même navigateur. L’hôte invite, examine les demandes, accepte ou refuse, ferme la session et reprend les places réservées. Le transport entre appareils, l’autorité de simulation en réseau, les gains et les rites de rang restent ouverts. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46126918547)
+
+- **Effets de danger · Huit terrains de chasse** · Les huit terrains affichent des motifs distincts pour les dangers. Les zones annoncées et actives suivent la géométrie de collision. Les contours et le traitement du mouvement réduit restent lisibles. Les effets d’ambiance et de boss, dont la réfraction du champ d’Achéron, restent à qualifier séparément. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46126850211)
+
+- **Oseris‑IV · Chasse et atelier sur le même parcours** · Oseris‑IV enchaîne par les commandes du jeu le combat contre le Bondisseur des brumes, le prélèvement des crocs et du pelage, Vey, la reprise disque et l’extraction. Le pelage de la même dépouille est nettoyé à l’atelier en trois gestes. Le protocole REM112 exige encore la matrice des huit chasses et des charges prescrites. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46127293531)
+
+- **W3‑S13 · Confinement sous alimentation** · Dans l’exercice V108, l’état affiché, la coupure et le débit d’interception suivent l’alimentation réelle. Le retrait des sentinelles permet la coupure et le retrait de la même cellule, y compris après import. La provenance d’un stock de cellules et l’autorisation de campagne restent ouvertes. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46126854529)
+
+- **W3‑S09 · Liaison du quai à la rive** · Chromium a joué le départ à pied, la traversée sur le pont du skiff et le trajet sur la rive des Grottes. Le reçu garde le même passeur et la même embarcation après reprise. L’affectation d’un transport militaire de campagne et le déplacement de cargaison à stock fini restent ouverts. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46128361856)
+
+- **W3‑S10 · Monture de campagne dans l’atelier** · Dans l’atelier, U21 conduit la même Kha’Rha recrutée. La fente étroite est refusée, le passage large est praticable et la longe comme la position sont reprises après import. Le repère visuel est provisoire. L’autorité de déploiement, les gardiens en campagne et les conséquences hors atelier restent ouverts. [Recette 1](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46128299109) [Recette 2](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46127015349)
+
+- **P3 · Provenance des archives Enforcers** · Les octets des six images préliminaires V6.13 ont été retrouvés dans le checkpoint et rapprochés de leurs tentatives acceptées. Le contrôle compare chacune à son remplacement final. V6.13 compte encore 21 reçus finaux manquants. Les 36 traces V6.10 restent sans PNG original retrouvé. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46127452728)
+
+- **Décors V19 · Repères jouables de Cinder‑12** · La marque tombée accompagne les trois relevés de chasse. Le présentoir profané appartient au Sanctuaire. Les deux éléments réemploient les WebP admis et sont chargés à leurs emplacements dédiés. Le catalogue reste à 464 éléments sur 800. Les 336 éléments sans paire source et rendu natif restent à produire. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46127907715)
+
+- **R2-M042 · Quatza‑Rij en solitaire** · Depuis la coque personnelle, le chasseur se replie, reprend le dossier au pont puis gagne la seconde tentative. La recette interrompt le combat, le reprend dans le même état et remet la peau et le crâne au retour. Les sons dédiés restent à produire. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46127582684)
+
+- **R2-M044 · Droits de la coque collective** · Après la visite de la cale et le rapport sur les deux scellés, le chasseur rencontre le Garde du Seuil au hangar puis la Veille des Astres au conseil. Le choix personnel ouvre les contrats et se relit avec la même coque après rechargement. Les décors détaillés et sons dédiés de la visite restent à produire. [Recette](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46127970549)
+
