@@ -30,6 +30,9 @@ const owner = '2026-11-28T10:00:00.000Z';
 const completedAt = '2026-11-28T10:30:00.000Z';
 const trophyId = 'serekh-convoys-conclusion';
 const mission = domain.MISSION_BY_ID['desert-sandmaw'];
+const building = domain.HOMEWORLD_BUILDINGS_V77.find(item => item.id === 'deep-forge');
+const room = domain.homeworldInteriorForBuildingV64(building.id);
+const door = domain.homeworldBuildingDoorwayV64(building);
 
 function initialCampaign() {
   const fresh = domain.defaultSave(owner);
@@ -53,32 +56,48 @@ function initialCampaign() {
   trophy.workshop = { completedActions: ['prepare'], bestScore: 82, lastCompletedAt: completedAt };
   const save = domain.applyTrophyUsageV147(settled, { kind: 'display', trophyId, site: 'ship' }, completedAt, { atPersonalTrophyHall: true });
   assert(save);
-  const building = domain.HOMEWORLD_BUILDINGS_V77.find(item => item.id === 'deep-forge');
-  const room = domain.homeworldInteriorForBuildingV64(building.id);
-  const door = domain.homeworldBuildingDoorwayV64(building);
-  const point = room.points.find(item => item.pointId === 'forge-service');
   const normal = door.normal ?? { x: 0, y: 1 };
   const exterior = [64, 48, 32, 16, 0].map(distance => ({
     x: door.approach.x + normal.x * distance, y: door.approach.y + normal.y * distance,
   })).find(candidate => domain.homeworldCivicWalkableV80(building.levelId, candidate));
-  const local = [40, 45, 50, 54].flatMap(distance => [[1,0],[-1,0],[0,1],[0,-1]].map(([dx,dy]) => ({
-    x: point.x + dx * distance, y: point.y + dy * distance,
-  }))).find(candidate => domain.isHomeworldInteriorWalkableV64(room, candidate, { halfWidth: 32, halfDepth: 22 }) &&
-    domain.nearestHomeworldInteriorTargetV64(room, candidate)?.pointId === 'forge-service');
-  assert(exterior && local, 'The disclosed checkpoint must fit the actual forge collision and service.');
+  assert(exterior, 'The disclosed exterior checkpoint must stand on free ground.');
   save.homeworld.locationV77 = { version: 1, layoutRevision: 1, ownerCreatedAt: owner, levelId: building.levelId,
-    exterior, interiorId: 'deep-forge', local };
+    exterior, interiorId: null, local: null };
   assert(domain.resolveHomeworldLocationV77(save.homeworld.locationV77, owner).restored);
-  assert(domain.atMobilityForge(save));
   assert.equal(domain.parseSaveImport(JSON.stringify(save)).failure, null);
   return save;
+}
+
+// Follow the already-qualified route to the real counter from an exterior save.
+function forgeWaypoints(start) {
+  const seen = new Set([start.x + ':' + start.y]);
+  const queue = [{ ...start, previous: null }];
+  for (let index = 0; index < queue.length; index++) {
+    const at = queue[index], target = domain.nearestHomeworldInteriorTargetV64(room, at);
+    if (target?.kind === 'point' && target.pointId === 'forge-service' &&
+      Math.hypot(at.x - target.position.x, at.y - target.position.y) < 56) {
+      const path = [];
+      for (let step = at; step; step = step.previous) path.unshift({ x: step.x, y: step.y });
+      return path.filter((point, i) => i > 0 && (i === path.length - 1 ||
+        Math.sign(point.x - path[i - 1].x) !== Math.sign(path[i + 1].x - point.x) ||
+        Math.sign(point.y - path[i - 1].y) !== Math.sign(path[i + 1].y - point.y)));
+    }
+    for (const [dx, dy] of [[8, 0], [-8, 0], [0, 8], [0, -8]]) {
+      const next = { x: at.x + dx, y: at.y + dy, previous: at };
+      const key = next.x + ':' + next.y;
+      if (seen.has(key) || !domain.isHomeworldInteriorWalkableV64(room, next, { halfWidth: 32, halfDepth: 22 })) continue;
+      seen.add(key);
+      queue.push(next);
+    }
+  }
+  throw Error('The physical Forge counter is unreachable from its native door.');
 }
 
 const seed = initialCampaign();
 const storageKey = domain.SAVE_STORAGE_KEY;
 const report = {
   passed: false,
-  fixture: 'Licensed Blooded, living trophy prepared/displayed and successful Serekh result recorded by the real reducers. The save starts at the reachable native Forge counter, with no vehicle or mobility reward. All pilot controls are real keyboard input.',
+  fixture: 'Licensed Blooded, living trophy prepared/displayed and successful Serekh result recorded by the real reducers. The save starts outside the Forge with no vehicle or mobility reward. The recipe walks through the native door to the real counter. All pilot controls are real keyboard input.',
   build: process.env.YAUTJA_QA_RUNTIME_COMMIT ?? null,
   runs: [],
   errors: [],
@@ -103,13 +122,49 @@ try {
   }, { seed, storageKey });
   const read = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), storageKey);
   const click = name => page.getByRole('button', { name, exact: true }).click();
+  const actor = () => page.locator('[data-homeworld-actor]').evaluate(element => ({
+    x: Number(element.dataset.x), y: Number(element.dataset.y),
+  }));
+  const [up, down, west, east] = ['hunt.moveUp', 'hunt.moveDown', 'hunt.moveLeft', 'hunt.moveRight']
+    .map(id => seed.settings.controlBindings[id][0]);
+  async function walk(target) {
+    await page.locator('[data-homeworld-viewport]').focus();
+    let held = new Set();
+    const started = Date.now();
+    try {
+      while (Date.now() - started < 30000) {
+        const at = await actor(), dx = target.x - at.x, dy = target.y - at.y;
+        if (Math.hypot(dx, dy) < 12) break;
+        const desired = new Set();
+        if (Math.abs(dx) > 7) desired.add(dx > 0 ? east : west);
+        if (Math.abs(dy) > 7) desired.add(dy > 0 ? down : up);
+        for (const key of held) if (!desired.has(key)) await page.keyboard.up(key);
+        for (const key of desired) if (!held.has(key)) await page.keyboard.down(key);
+        held = desired;
+        await page.waitForTimeout(65);
+      }
+    } finally {
+      for (const key of held) await page.keyboard.up(key);
+    }
+    await page.waitForTimeout(180);
+    const at = await actor();
+    assert(Math.hypot(at.x - target.x, at.y - target.y) < 24, 'Walking did not reach ' + JSON.stringify({ target, at }));
+  }
   async function openFromMenu() {
     await page.locator('[data-campaign-menu]').waitFor();
     const section = page.locator('[data-menu-section="campaign"]');
     if (await section.isVisible()) await section.click();
     await page.locator('[data-menu-action="continue"]').click();
     await page.bringToFront();
-    await page.locator('[data-homeworld-hub][data-homeworld-interior-id="deep-forge"][data-homeworld-motion-ready="true"]').waitFor({ timeout: 90000 });
+    const hub = page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]');
+    await hub.waitFor({ timeout: 90000 });
+    if (await hub.getAttribute('data-homeworld-interior-id') === null) {
+      await walk(door.approach);
+      await page.locator('[data-homeworld-door-id="deep-forge"]').click();
+      await page.locator('[data-homeworld-hub][data-homeworld-interior-id="deep-forge"]').waitFor();
+      for (const waypoint of forgeWaypoints(await actor())) await walk(waypoint);
+    }
+    assert.equal(await hub.getAttribute('data-homeworld-interior-id'), 'deep-forge');
     await page.locator('[data-homeworld-interior-target="point"]').click();
     await page.locator('[data-mobility-forge-entry]').waitFor();
     await click('Ouvrir le comptoir et le garage');
