@@ -113,7 +113,12 @@ test('all seven Clan Ship room fixtures use valid clan state and a safe spawn di
 
 test('mission choices come from the real catalogue and ordinary village fixtures are admitted without a campaign', () => {
   const missions = api.DEV_DESTINATIONS.filter(destination => destination.kind === 'mission');
-  assert.deepEqual(missions.map(destination => destination.missionId).sort(), api.MISSIONS.map(mission => mission.id).sort());
+  const regularMissions = missions.filter(destination => destination.category === 'missions');
+  assert.deepEqual(regularMissions.map(destination => destination.missionId).sort(), api.MISSIONS.map(mission => mission.id).sort());
+  assert.deepEqual(missions.filter(destination => destination.category !== 'missions').map(({ id, missionId }) => [id, missionId]), [
+    ['dev-acheron-field', 'ruins-ancient-guardian'], ['dev-mycora-canopy', 'fungal-hivemind'],
+  ]);
+  assert(missions.every(destination => api.MISSIONS.some(mission => mission.id === destination.missionId)));
   const regions = api.DEV_DESTINATIONS.filter(destination => destination.kind === 'region');
   assert.equal(regions.length, api.HOMEWORLD_REGION_IDS_V68.length - 1);
   for (const destination of regions) {

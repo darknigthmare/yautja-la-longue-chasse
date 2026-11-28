@@ -40,7 +40,7 @@ function mountSession(id) {
     ...api, destination, arrivalFixture: fixture,
     saveRef: { current: save }, ownerRef: { current: save.createdAt },
     sessionAliveRef: { current: true }, serviceRef: { current: null },
-    restoreWolfFocusRef: { current: false },
+    restoreWolfFocusRef: { current: false }, recognitionPausedRef: { current: false },
     audioRef: { current: { setPaused(value) { observations.audioPauses.push(value); observations.order.push(`audio:${value}`); } } },
     arrivalRef: { current: fixture?.state ?? null },
     selectedShipId: api.DEFAULT_SHIP_ID,
@@ -223,6 +223,14 @@ test('returning from settings or blur resumes the audio owner before native scen
   run.observations.order.length = 0;
   run.controls.notifyFocus();
   assert.deepEqual(run.observations.order, ['audio:false', 'notify-focus']);
+  host.recognitionPausedRef.current = true;
+  run.observations.order.length = 0;
+  run.controls.notifyFocus();
+  assert.deepEqual(run.observations.order, ['audio:true', 'notify-focus']);
+  host.openService('settings');
+  run.observations.order.length = 0;
+  host.closeService();
+  assert.deepEqual(run.observations.order, ['audio:true', 'service:null']);
   host.leaveSession();
   run.observations.order.length = 0;
   host.openService('settings');

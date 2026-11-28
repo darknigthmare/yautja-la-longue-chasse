@@ -30,7 +30,6 @@ import {
 } from '../game/systems/homeworldRegionsV68';
 
 import { DEV_EXERCISES, type DevExercise } from "./updates";
-import { prepareDevExercise } from "./exercise-fixtures";
 
 export type DevDestinationCategory = 'hubs' | 'clan' | 'homeworld' | 'missions' | 'wolf' | 'arrivals' | 'exercises';
 
@@ -229,7 +228,7 @@ export function createDevSave(destination: DevDestination): SaveGame {
     }
     save.wolfCastle = inspected.state;
   }
-  return prepareDevExercise(save, canonical.id);
+  return save;
 }
 
 /** The native montage and its frozen run stay outside the campaign document:

@@ -25,6 +25,7 @@ import type { MissionId, MissionResult, SaveGame } from "../game/types";
 import { createDevArrival, createDevSave, createMemoryStorage, resolveDevDestination, type DevDestination } from "./destinations";
 import { createBuriedCradleProgress, type BuriedCradleProgress, type CradleRoomId } from '../game/systems/buriedCradle';
 import DevServices, { type DevService } from "./services";
+import { prepareDevExercise } from "./exercise-fixtures";
 import styles from "./session.module.css";
 
 const ShipInterior25D = lazy(() => import("../game/ShipInterior25D"));
@@ -71,7 +72,7 @@ const WarpModuleBay = lazy(() => import("../game/WarpModuleBay"));
 const DevExerciseScene = lazy(() => import("./exercise"));
 
 export default function DevTravelSession({ destination, onTravel, onExit }: DevTravelSessionProps) {
-  const [save, setSave] = useState(() => createDevSave(destination));
+  const [save, setSave] = useState(() => prepareDevExercise(createDevSave(destination), destination.id));
   const saveRef = useRef(save);
   const readSave = useCallback(() => saveRef.current, []);
   const ownerRef = useRef(save.createdAt);
