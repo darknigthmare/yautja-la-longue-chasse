@@ -5,6 +5,7 @@ import Link from "next/link";
 import GameVersionBadge from "../game/GameVersionBadge";
 import { DEV_DESTINATIONS, resolveDevDestination, type DevDestination } from "./destinations";
 import styles from "./dev-travel.module.css";
+import NativePaths from "./native-paths";
 
 const DevTravelSession = lazy(() => import("./session"));
 
@@ -167,16 +168,17 @@ export default function DevTravelClient({ initialDestinationId = null }: { initi
         </aside>
       </section>
       {notice && <p className={styles.notice} role="status" data-dev-notice>{notice}</p>}
+      <NativePaths onSelect={launch} />
       <section className={styles.filters} aria-label="Trouver un lieu">
         <div className={styles.categories}>
           {CATEGORIES.map(item => <button key={item.id} type="button" data-dev-category={item.id} aria-pressed={category === item.id} onClick={() => setCategory(item.id)}>{item.label}</button>)}
         </div>
-        <label className={styles.search}><span>Rechercher un lieu</span><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Vaisseau, château, arrivée, marché…" data-dev-search /></label>
+        <label className={styles.search}><span>Rechercher un lieu ou un essai</span><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Canopée, écurie, M017, marché…" data-dev-search /></label>
       </section>
       <div className={styles.listHeading}><h2>Destinations</h2><span role="status">{visible.length} lieu{visible.length > 1 ? "x" : ""}</span></div>
       <div className={styles.grid}>
-        {visible.map((item, index) => <article key={item.id} className={styles.card} data-dev-card={item.id}>
-          <div className={styles.cardTop}><span>{CATEGORIES.find(group => group.id === item.category)?.label}</span><span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span></div>
+        {visible.map(item => <article key={item.id} className={styles.card} data-dev-card={item.id}>
+          <div className={styles.cardTop}><span>{CATEGORIES.find(group => group.id === item.category)?.label}</span></div>
           <h3>{item.label}</h3>
           <p>{item.description}</p>
           <button type="button" data-dev-launch={item.id} aria-label={`Entrer : ${item.label}`} onClick={() => launch(item.id)}>Entrer ici <span aria-hidden="true">↗</span></button>
