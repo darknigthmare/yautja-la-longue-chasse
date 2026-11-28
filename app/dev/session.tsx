@@ -411,7 +411,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
   };
 
   return (
-    <section className={styles.session} data-dev-session={destination.id} data-dev-kind={destination.kind}
+    <section className={styles.session} data-dev-session={destination.id} data-dev-kind={destination.kind} data-dev-interactive={gameFocused}
       data-dev-stage={inHunt ? "hunt" : destination.kind}
       data-dev-arrival-run={arrival?.runId} data-dev-arrival-status={arrival?.status}
       data-dev-arrival-completed-by={arrival?.completedBy ?? undefined}
