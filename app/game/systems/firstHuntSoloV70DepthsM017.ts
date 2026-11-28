@@ -14,6 +14,7 @@ export interface SoloV70DepthExtensionM017 {
   /** Les relevés à quinze salles déjà commencés n’ont pas cette rencontre. */
   gallery?: { openedAt: number | null; screened: SoloV70TrioObservation | null };
   royal?: { startedAt: number | null; evade: { tick: number; x: number; y: number } | null };
+  rescue?: { pickedUp: SoloV70TrioObservation | null; delivered: SoloV70TrioObservation | null };
 }
 
 export const SOLO_V70_GALLERY_M017 = { room: 10, x: 740, y: 430, holdTicks: 40, hatchDelay: 24 } as const;
@@ -54,6 +55,23 @@ export function soloV70RoyalStatusM017(extension: SoloV70DepthExtensionM017 | un
   if (royal.startedAt === null) return { stage: 'waiting' } as const;
   return soloV70RoyalSweepM017(royal.startedAt, tick);
 }
+
+export const SOLO_V70_RESCUE_M017 = {
+  room: 14, pickup: { x: 320, y: 430, holdTicks: 36 }, relief: { x: 557, y: 430, holdTicks: 42 },
+  carrySpeed: 2.2, shoulderOffset: 31,
+} as const;
+
+export function soloV70RescueTargetM017(extension: SoloV70DepthExtensionM017 | undefined) {
+  if (!extension?.rescue || !extension.observations['royal-lock'] || extension.rescue.delivered) return undefined;
+  return extension.rescue.pickedUp ? SOLO_V70_RESCUE_M017.relief : SOLO_V70_RESCUE_M017.pickup;
+}
+
+export const soloV70SaarCarryX = (playerX: number) =>
+  Math.max(65, playerX - SOLO_V70_RESCUE_M017.shoulderOffset);
+
+export const soloV70RescuePartyM017 = (positions: readonly number[]) =>
+  positions.length === 3 && Math.abs(positions[1] - soloV70SaarCarryX(positions[0])) < .01 &&
+  Math.abs(positions[2] - positions[0]) < 185;
 
 interface DepthPostM017 {
   id: SoloV70DepthProofM017;
