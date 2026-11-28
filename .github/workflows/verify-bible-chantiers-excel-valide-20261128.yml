@@ -1,0 +1,120 @@
+name: Audit the Bible and production priorities workbooks
+on:
+  push:
+    branches: [codex/verify-bible-chantiers-excel-valide-20261128]
+permissions:
+  contents: read
+jobs:
+  workbook:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '36504baced02a4217296ed2545f6f142af2f4deb'
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/build-bible-inventory-workbook-20261122.mjs
+            /scripts/lib/workbook-ooxml.mjs
+            /scripts/build-priority-lots-workbook-20261121.mjs
+            /production/INVENTAIRE_BIBLE_20261122.*
+            /production/INVENTAIRE_BIBLE_20261127.*
+            /production/YAUTJA_LOTS_P0_P3*.json
+            /production/YAUTJA_LOTS_P0_P3*.xlsx
+            /docs/campagne/BIBLE_DE_CAMPAGNE.md
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Compare both workbooks against the canonical generator and inspect the five worksheets
+        run: |
+          node scripts/build-bible-inventory-workbook-20261122.mjs --check
+          node scripts/build-bible-inventory-workbook-20261122.mjs --date=20261127 --check
+          node scripts/build-priority-lots-workbook-20261121.mjs --check
+          for lot in {2..8}; do node scripts/build-priority-lots-workbook-20261121.mjs "--lot-$lot" --check; done
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from collections import Counter
+          from pathlib import Path
+          from xml.etree import ElementTree as ET
+          from zipfile import ZipFile
+
+          path = Path('production/INVENTAIRE_BIBLE_20261127')
+          data = json.loads(path.with_suffix('.json').read_text(encoding='utf-8'))
+          rows = data['missions']
+          assert len(rows) == len(set(item['id'] for item in rows)) == 68
+          assert Counter(data['stats']) == Counter(row['etatSurMain'] for row in rows)
+          assert data['refMain'] == 'd868273d4a31c5f5d7e01cd246d4598846742024'
+          assert data['stats'] == {'RACCORDE': 67, 'PARTIEL_MISSION': 1, 'VOISIN': 0, 'NON_COMMENCE_OBSERVE': 0}
+          assert data['bilanComposition']['projectionDuCandidat'] == {'RACCORDE': 67, 'PARTIEL_MISSION': 1, 'VOISIN': 0, 'NON_COMMENCE_OBSERVE': 0}
+          assert len(data['transverses']) == 23
+          assert all(item['etat'] != 'NON_COMMENCE_OBSERVE' for item in data['transverses'])
+          assert {p['pr'] for p in data['aventants'] if p['fusionnee']} >= {188, 189, 190, 191, 194, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209}
+          assert len({p['pr'] for p in data['aventants']}) == len(data['aventants'])
+          assert {r['id'] for r in rows if r['etatSurMain'] == 'PARTIEL_MISSION'} == {'R2-M017'}
+          assert any(row['id'] == 'O6_M01_PREMIER_CHOC' and row['etat'] == 'RACCORDE' for row in data['transverses'])
+          assert any(row['id'] == 'O6_M02_SACS_COHORTE' and row['etat'] == 'RACCORDE' for row in data['transverses'])
+          assert any(row['id'] == 'O6_M03_ATELIERS_COHORTE' and row['etat'] == 'RACCORDE' for row in data['transverses'])
+          assert any(row['id'] == 'O6_M04_RIVALITE' for row in data['transverses'])
+          source = data.get('sourceDocument', {})
+          bible_file = Path(source.get('path', data['source']))
+          bible_bytes = bible_file.read_bytes()
+          if 'blob' in source:
+              prefix = ('blob ' + str(len(bible_bytes)) + chr(0)).encode('ascii')
+              assert hashlib.sha1(prefix + bible_bytes).hexdigest() == source['blob']
+          assert data['source'].endswith('/blob/' + source['commit'] + '/' + source['path'])
+          bible = bible_bytes.decode('utf-8').splitlines()
+          for row in rows:
+              label = row['id']
+              assert bible[row['table']['ligne'] - 1].startswith(f"| {row['ordre']} | {label} | ")
+              heading = bible[row['fiche'] - 1]
+              if label == 'R2-M024':
+                  assert heading.startswith('## Acte V — La Longue Chasse')
+              else:
+                  assert heading.startswith(f'### {label} — ')
+          main = '{http://schemas.openxmlformats.org/spreadsheetml/2006/main}'
+          with ZipFile(path.with_suffix('.xlsx')) as archive:
+              assert archive.testzip() is None
+              assert len(set(archive.namelist())) == len(archive.namelist())
+              for name in archive.namelist():
+                  if name.endswith(('.xml', '.rels')):
+                      ET.fromstring(archive.read(name))
+              wb = ET.fromstring(archive.read('xl/workbook.xml'))
+              sheets = [n.attrib['name'] for n in wb.findall('.//' + main + 'sheet')]
+              assert sheets == ['Synthèse', 'Campagne', 'Transverses', 'Avenants', 'Preuves']
+              mission_sheet = ET.fromstring(archive.read('xl/worksheets/sheet2.xml'))
+              assert len([n for n in mission_sheet.findall('.//' + main + 'hyperlink') if n.attrib['ref'].startswith('D')]) == len(rows)
+              proof = ET.fromstring(archive.read('xl/worksheets/sheet5.xml'))
+              print('QUALIFIED', len(rows), len(data['transverses']), len(data['aventants']), len(proof.findall('.//' + main + 'hyperlink')), sheets)
+          historical = {}
+          for n in range(1, 8):
+              suffix = '' if n == 1 else f'_LOT{n}'
+              former = json.loads(Path(f'production/YAUTJA_LOTS_P0_P3{suffix}_20261121.json').read_text(encoding='utf-8'))
+              for lot in former['lots']:
+                  for row in lot['entries']:
+                      historical[row['id']] = (lot['priority'], row['criterion'])
+          assert len(historical) == 70
+          priorities = Path('production/YAUTJA_LOTS_P0_P3_LOT8_20261121')
+          lot8 = json.loads(priorities.with_suffix('.json').read_text(encoding='utf-8'))
+          actual = {}
+          for lot in lot8['lots']:
+              assert len(lot['entries']) <= 10
+              for row in lot['entries']:
+                  assert historical[row['id']] == (lot['priority'], row['criterion'])
+                  actual[row['id']] = row['status']
+          closed = ["R2-M019","R2-M020","R2-M042","R2-M043","R2-M044","R2-M047"]
+          assert all(actual[id] == 'VÉRIFIÉ' for id in closed)
+          assert all(actual[f'REM112-{n:02}'].lower() == 'bloqué' for n in (1, 2, 3, 4, 5, 7))
+          assert actual['ENFORCERS-V610-TRACES'] == 'BLOQUÉ'
+          assert actual['ENFORCERS-V613-RECEIPTS'] == 'PARTIEL'
+          with ZipFile(priorities.with_suffix('.xlsx')) as archive:
+              assert archive.testzip() is None
+              expected = ['Synthèse', 'P0', 'P1', 'P2', 'P3', 'Livraisons']
+              assert [node.attrib['name'] for node in ET.fromstring(archive.read('xl/workbook.xml')).findall('.//' + main + 'sheet')] == expected
+              for name in archive.namelist():
+                  if name.endswith(('.xml', '.rels')):
+                      ET.fromstring(archive.read(name))
+          print('LOT8', len(actual), 'rows:', closed, expected)
+          PY
