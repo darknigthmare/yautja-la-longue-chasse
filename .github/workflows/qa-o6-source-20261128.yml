@@ -1,0 +1,41 @@
+name: Lire les lignes O6 du classeur de campagne
+on:
+  push:
+    branches: ['codex/qa-o6-source-20261128']
+jobs:
+  source:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: '37a3ddf3e3376331e0798647641880e4e51dd794'
+          sparse-checkout: |
+            docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx
+          sparse-checkout-cone-mode: false
+      - run: |
+          python3 - <<'PY'
+          from zipfile import ZipFile
+          from pathlib import PurePosixPath
+          import re
+          from xml.etree import ElementTree as E
+          m = {'s':'http://schemas.openxmlformats.org/spreadsheetml/2006/main','r':'http://schemas.openxmlformats.org/officeDocument/2006/relationships'}
+          f = 'docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx'
+          with ZipFile(f) as z:
+              names = {row.get('Id'):row.get('Target') for row in E.fromstring(z.read('xl/_rels/workbook.xml.rels'))}
+              strings = E.fromstring(z.read('xl/sharedStrings.xml')) if 'xl/sharedStrings.xml' in z.namelist() else []
+              strings = [''.join(t.text or '' for t in item.findall('.//s:t',m)) for item in strings]
+              for sheet in E.fromstring(z.read('xl/workbook.xml')).findall('.//s:sheet',m):
+                  name=sheet.get('name'); addr=names[sheet.get('{'+m['r']+'}id')]
+                  target=addr.lstrip('/') if addr.startswith('/') else str(PurePosixPath('xl')/addr)
+                  if not re.search(r'mission|transitions',name,re.I):continue
+                  print(name)
+                  for row in E.fromstring(z.read(target)).findall('.//s:row',m):
+                      cells=[]
+                      for el in row.findall('s:c',m):
+                          v=el.findtext('s:v',namespaces=m)
+                          if v is not None and el.get('t')=='s': v=strings[int(v)]
+                          if v is None: v=''.join(t.text or '' for t in el.findall('.//s:t',m))
+                          cells.append((el.get('r'),v))
+                      if any(re.match(r'^O6-M(?:1[89]|2[0-9])$',v) for k,v in cells) or (row.get('r') in ('1','2','3','4','5','6') and cells):
+                          print(row.get('r'), cells)
+          PY
