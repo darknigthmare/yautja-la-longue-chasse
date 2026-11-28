@@ -315,9 +315,10 @@ import { camouflageVisibilityV146, heavyHitPieceV146, missionWearV146, wearFilte
 import { armorWearCanvasV172, armorWearPieceIsWornV172, type ArmorWearV172 } from "./hunterArmorWearV172";
 import { markColorV146, markLayerV146, markStrokesV146 } from "./hunterMarksArtV146";
 import {
-  createHoundFieldV147, damageHoundFieldV147, houndHuntReportFromFieldV147, houndOrderModeV147, houndOrdersV147, issueHoundOrderV147,
-  houndStickOrderV147, nextHoundOrderV147, pickHoundTargetV147, restoreHoundFieldV147, snapshotHoundFieldV147,
-  stepHoundFieldV147, type FieldPreyV147, type HoundAptitudeV147, type HoundOrderIdV147,
+  HOUND_MARK_SECONDS_V147, createHoundFieldV147, damageHoundFieldV147, houndHuntReportFromFieldV147,
+  houndOrderModeV147, houndOrdersV147, issueHoundOrderV147, houndStickOrderV147, nextHoundOrderV147,
+  pickHoundTargetV147, restoreHoundFieldV147, restoreHoundMarkV147, snapshotHoundFieldV147,
+  stepHoundFieldV147, type FieldPreyV147, type HoundAptitudeV147, type HoundMarkV147, type HoundOrderIdV147,
   type HoundFieldSnapshotV147, type HoundFieldV147, type HoundV147,
 } from "./systems/huntingHoundsV147";
 import { BRECHE_HOUND_ID_V147, houndCatalogueEntryV147, type HoundCatalogueEntryV147 } from "./systems/houndKennelV147";
@@ -605,6 +606,7 @@ interface GearSlotSnapshot {
 interface MissionCheckpointPayload {
   /** V147: written only when a hound joined the hunt. */
   houndFieldV147?: HoundFieldSnapshotV147;
+  houndMarkV147?: HoundMarkV147;
   insertion?: HuntInsertionState;
   ecosystem?: CorpseDiscoveryStateV112;
   huntRites?: RitesOfHuntV77;
@@ -815,7 +817,7 @@ interface GameState {
   houndFieldV147?: HoundFieldV147;
   houndV147?: { name: string; bond: number };
   /** Prey the hound marked, shown above it for a few seconds. */
-  houndMarkV147?: { preyId: string; until: number } | null;
+  houndMarkV147?: HoundMarkV147 | null;
   houndFacingV147?: -1 | 1;
   insertion: HuntInsertionState;
   /** Live session identity, deliberately outside checkpoint authority. */
@@ -2104,6 +2106,7 @@ function captureCheckpoint(
       checkpointPlayer.weaponAmmo[slotIndex] + 1,
     );
   }
+  const houndMark = restoreHoundMarkV147(state.houndMarkV147, state.houndFieldV147, state.elapsed, state.enemies);
   return {
     insertion: state.insertion ? cloneHuntInsertion(state.insertion) : undefined,
     ecosystem: state.ecosystem ? JSON.parse(JSON.stringify(state.ecosystem)) : undefined,
@@ -2138,6 +2141,7 @@ function captureCheckpoint(
     supportKills: state.supportKills,
     damageTaken: state.damageTaken,
     ...(state.houndFieldV147 ? { houndFieldV147: snapshotHoundFieldV147(state.houndFieldV147) } : {}),
+    ...(houndMark ? { houndMarkV147: houndMark } : {}),
     secondWindUsed: state.secondWindUsed,
     boss: cloneEnemyState(state.boss),
     bossMechanics: cloneBossMechanics(state.bossMechanics),
@@ -2633,13 +2637,14 @@ function restoreCheckpoint(
     player.meleeCooldown = 0;
   }
 
+  const houndField = restoredHoundFieldV147(state, checkpoint);
   return {
     ...state,
     insertion: restoredInsertion ?? state.insertion,
     ecosystem: restoredEcosystem,
     huntRites: restoredRites ?? state.huntRites,
-    houndFieldV147: restoredHoundFieldV147(state, checkpoint),
-    houndMarkV147: null,
+    houndFieldV147: houndField,
+    houndMarkV147: restoreHoundMarkV147(checkpoint.houndMarkV147, houndField, checkpoint.elapsed, checkpoint.enemies),
     riteMenuCorpseId: null,
     riteOperationDamageStart: checkpoint.riteOperationDamageStart ?? null,
     exploration,
@@ -11155,7 +11160,10 @@ function updateHoundV147(
       // The prey fights back while it stands (provisional value, proposé).
       if (enemy.alive) field = damageHoundFieldV147(field, Math.max(1, enemy.damage * 0.35));
     } else if (event.type === "marked" && enemy) {
-      state.houndMarkV147 = { preyId: enemy.id, until: state.elapsed + (event.visibleSeconds ?? 6) };
+      state.houndMarkV147 = {
+        houndId: field.houndId, preyId: enemy.id,
+        until: state.elapsed + (event.visibleSeconds ?? HOUND_MARK_SECONDS_V147),
+      };
       announce(state, `${hound.name} marque une proie.`, 1.6);
     } else if (event.type === "driven") {
       announce(state, `${hound.name} a rabattu la proie vers toi.`, 1.6);
@@ -11170,7 +11178,7 @@ function updateHoundV147(
   if (field.dead && !wasDead) announce(state, `${hound.name} est mort. Il ne reviendra pas.`, 4);
   else if (field.wounded && !wasWounded) announce(state, `${hound.name} est blessé et revient au pied.`, 3);
   if (Math.abs(field.x - fromX) > 0.5) state.houndFacingV147 = field.x > fromX ? 1 : -1;
-  if (state.houndMarkV147 && state.houndMarkV147.until < state.elapsed) state.houndMarkV147 = null;
+  if (state.houndMarkV147 && (field.dead || state.houndMarkV147.until <= state.elapsed)) state.houndMarkV147 = null;
   state.houndFieldV147 = field;
 }
 

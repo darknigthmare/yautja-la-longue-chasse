@@ -388,3 +388,25 @@ test("Brèche follows the real rescue and refit before joining the kennel field 
   assert.equal(m.activeKennelHoundV147(save, shipId), null);
   assert.equal(m.kennelCandidatesV147(save.houndsV147).find(entry => entry.id === "breche").status, "fallen");
 });
+
+test("an active scent marker keeps its deadline and belongs only to the recorded hound and live prey", async () => {
+  const m = await bundle;
+  const hound = { ...recruited(m, 100).hounds[0], catalogueId: "original-companion-05" };
+  const at = { x: 0, y: 0 }, prey = { id: "native-prey", alive: true, active: true, x: 233, y: 0 };
+  const field = m.createHoundFieldV147(hound, at);
+  const signature = m.issueHoundOrderV147(field, "signature", 100).field;
+  const marked = m.stepHoundFieldV147(signature, { dt: 0.1, player: at, prey: [prey] });
+  const signal = marked.events.find(event => event.type === "marked");
+  assert.equal(signal.visibleSeconds, 12);
+  const elapsed = 18.5, mark = { houndId: hound.id, preyId: signal.preyId, until: elapsed + signal.visibleSeconds };
+  const checkpoint = JSON.parse(JSON.stringify({ field: m.snapshotHoundFieldV147(marked.field), elapsed: elapsed + 2, mark }));
+  const restoredField = m.restoreHoundFieldV147(checkpoint.field);
+  assert.deepEqual(m.restoreHoundMarkV147(checkpoint.mark, restoredField, checkpoint.elapsed, [prey]), mark);
+  assert.equal(m.restoreHoundMarkV147(checkpoint.mark, restoredField, mark.until, [prey]), null);
+  assert.equal(m.restoreHoundMarkV147({ ...mark, until: checkpoint.elapsed + 13 }, restoredField, checkpoint.elapsed, [prey]), null);
+  assert.equal(m.restoreHoundMarkV147({ ...mark, houndId: "autre" }, restoredField, checkpoint.elapsed, [prey]), null);
+  assert.equal(m.restoreHoundMarkV147(mark, { ...restoredField, markedIds: [] }, checkpoint.elapsed, [prey]), null);
+  assert.equal(m.restoreHoundMarkV147(mark, restoredField, checkpoint.elapsed, [{ ...prey, alive: false }]), null);
+  assert.equal(m.restoreHoundMarkV147(mark, restoredField, checkpoint.elapsed, [{ ...prey, active: false }]), null);
+  assert.equal(m.restoreHoundMarkV147(undefined, restoredField, checkpoint.elapsed, [prey]), null);
+});

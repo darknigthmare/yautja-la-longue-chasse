@@ -462,6 +462,30 @@ export type HoundFieldEventV147 =
   | { type: "attack-done"; preyId: string }
   | { type: "target-lost"; preyId: string };
 
+export const HOUND_MARK_SECONDS_V147 = 6;
+const HOUND_SIGNATURE_MARK_SECONDS_V147 = 12;
+
+export interface HoundMarkV147 {
+  houndId: string;
+  preyId: string;
+  until: number;
+}
+
+/** Reject optional marks that do not belong to the resumed hound or live prey.
+ * The absolute expiry lives on the simulation clock, so a pause never renews it. */
+export function restoreHoundMarkV147(
+  raw: unknown, field: HoundFieldV147 | undefined, elapsed: number,
+  enemies: readonly { id: string; alive: boolean; active: boolean }[],
+): HoundMarkV147 | null {
+  if (!field || field.dead || !Number.isFinite(elapsed) || elapsed < 0 || !isRecord(raw) ||
+      raw.houndId !== field.houndId || typeof raw.preyId !== "string" ||
+      typeof raw.until !== "number" || !Number.isFinite(raw.until) ||
+      raw.until <= elapsed || raw.until > elapsed + HOUND_SIGNATURE_MARK_SECONDS_V147 ||
+      !field.markedIds.includes(raw.preyId) ||
+      !enemies.some(enemy => enemy.id === raw.preyId && enemy.alive && enemy.active)) return null;
+  return { houndId: field.houndId, preyId: raw.preyId, until: raw.until };
+}
+
 export const HOUND_FIELD_V147 = Object.freeze({
   speed: 260, heelDistance: 48, markDistance: 140, flankOffset: 90,
   pushSpeed: 70, drivenDistance: 160, biteDistance: 36, biteDamage: 12, biteInterval: 0.9,
@@ -554,7 +578,7 @@ export function stepHoundFieldV147(
       if (moveToward(field, prey.x, prey.y, dt) <= markDistance) {
         field.markedIds.push(prey.id);
         complete();
-        events.push({ type: "marked", preyId: prey.id, ...(signature ? { visibleSeconds: 12 } : {}) });
+        events.push({ type: "marked", preyId: prey.id, ...(signature ? { visibleSeconds: HOUND_SIGNATURE_MARK_SECONDS_V147 } : {}) });
       }
       break;
     }
