@@ -1,0 +1,18 @@
+name: Check the public production deployment
+on:
+  push:
+    branches: [codex/verify-publication-bible-suite-20261128]
+permissions:
+  contents: read
+jobs:
+  public:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - name: Serve the actual page and the exact registered audio catalogue
+        run: |
+          curl -fsSL --retry 2 --max-time 45 -o /tmp/yautja-live-home.html https://yautja-la-longue-chasse.vercel.app/
+          test -s /tmp/yautja-live-home.html
+          curl -fsSL --retry 2 --max-time 45 -o /tmp/yautja-live-audio.json https://yautja-la-longue-chasse.vercel.app/audio/manifest.json
+          echo 'e3029ef566b8115775b6c77aa3d4cbaf9e13941cc4bd794e67a44459d1416451  /tmp/yautja-live-audio.json' | sha256sum --check
+          python3 -c 'import json; from pathlib import Path; entries = json.loads(Path("/tmp/yautja-live-audio.json").read_text())["entries"]; assert sum(x["id"].startswith("vacuum-field-") for x in entries) == 3'
