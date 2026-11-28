@@ -95,11 +95,17 @@ export function houndAptitudeV147(catalogueId: string | null | undefined): Hound
   return catalogueId && Object.hasOwn(CATALOGUE_APTITUDES, catalogueId) ? CATALOGUE_APTITUDES[catalogueId] : undefined;
 }
 
-const ordersByAptitude = Object.fromEntries(Object.entries(HOUND_APTITUDES_V147).map(([aptitude, role]) => [
-  aptitude, HOUND_ORDERS_V147.map(order => order.id === "signature"
+function supportedOrdersV147(role: (typeof HOUND_APTITUDES_V147)[HoundAptitudeV147]): readonly HoundOrderDefinitionV147[] {
+  return HOUND_ORDERS_V147.map(order => order.id === "signature"
     ? { ...order, defined: true, label: role.signatureLabel, effect: role.signatureEffect }
-    : order),
-])) as Record<HoundAptitudeV147, readonly HoundOrderDefinitionV147[]>;
+    : order);
+}
+
+const ordersByAptitude = {
+  tracker: supportedOrdersV147(HOUND_APTITUDES_V147.tracker),
+  driver: supportedOrdersV147(HOUND_APTITUDES_V147.driver),
+  guard: supportedOrdersV147(HOUND_APTITUDES_V147.guard),
+} satisfies Record<HoundAptitudeV147, readonly HoundOrderDefinitionV147[]>;
 
 export function houndOrdersV147(aptitude?: HoundAptitudeV147): readonly HoundOrderDefinitionV147[] {
   return aptitude ? ordersByAptitude[aptitude] : HOUND_ORDERS_V147;
