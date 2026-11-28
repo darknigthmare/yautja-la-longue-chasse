@@ -18,6 +18,7 @@ test("inventory covers every declared effect, biome and music context without re
     "netgun", "snare", "enemy-alert", "objective", "ceremony-rack", "ceremony-cohort-response", "hit", "trophy", "field-work", "field-secure",
     "canopy-grab", "canopy-release", "victory", "defeat",
     "vacuum-step", "vacuum-impact", "vacuum-energy",
+    "vacuum-field-warning", "vacuum-field-active", "vacuum-field-clear",
   ].sort(), "the declared optional slots retain every native effect, including pod, field, canopy and vacuum events");
   assert.equal(expected.filter(slot => slot.category === "ambience").length, 10);
   assert.equal(expected.filter(slot => slot.category === "music").length, 9);

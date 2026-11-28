@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { campaignCoopExerciseView } from "../app/game/systems/campaignCoopExercise.ts";
 import {
   advanceCampaignCoopLobby, campaignCoopLobbyIsOpen, parseCampaignCoopLobby,
 } from "../app/game/systems/campaignCoopLobby.ts";
@@ -90,4 +91,73 @@ test("une ancienne campagne importée conserve son identifiant d’archive exact
   const room = success(advance(null, { type: "open", owner: legacy }, hostProof, exactOwners));
   assert.equal(room.host.ownerCreatedAt, legacy.ownerCreatedAt);
   assert.equal(campaignCoopLobbyIsOpen(room, [{ ...legacy, ownerCreatedAt: "2019-04-12T10:22:00.000Z" }], now), false);
+});
+
+function withGuests(andPeer = false) {
+  let room = success(join(invite(open())));
+  room = success(advance(room, { type: "admit", guest: room.pending[0] }));
+  if (andPeer) {
+    room = success(join(invite(room, freshCode), peer, peerProof, freshCode));
+    room = success(advance(room, { type: "admit", guest: room.pending[0] }));
+  }
+  return room;
+}
+
+const start = (room, actor) => advance(room, { type: "exercise-start" }, actor);
+const exerciseMove = (room, actor, passage, move, exerciseId = room.exercise.id) =>
+  advance(room, { type: "exercise-move", exerciseId, passage, move }, actor);
+
+test("la relève rejoue neuf signaux liés à leurs postes et au passage, même après la reprise", () => {
+  assert.deepEqual(start(open()), { ok: false, reason: "exercise" });
+  let room = withGuests(true);
+  assert.deepEqual(start(room, guestProof), { ok: false, reason: "host" });
+  room = success(start(room));
+  assert.deepEqual(start(room), { ok: false, reason: "exercise" });
+
+  for (let passage = 0; passage < 3; passage++) {
+    const view = campaignCoopExerciseView(room.exercise);
+    const route = view.trackLeft ? "trace-left" : "trace-right";
+    const wrongRoute = view.trackLeft ? "trace-right" : "trace-left";
+    const support = view.anchored ? "take-anchor" : "take-brace";
+    const wrongSupport = view.anchored ? "take-brace" : "take-anchor";
+    assert.deepEqual(exerciseMove(room, hostProof, passage, "advance"), { ok: false, reason: "order" });
+    assert.deepEqual(exerciseMove(room, fourthProof, passage, route), { ok: false, reason: "assignment" });
+    assert.deepEqual(exerciseMove(room, hostProof, passage, route), { ok: false, reason: "assignment" });
+    assert.deepEqual(exerciseMove(room, guestProof, passage, wrongRoute), { ok: false, reason: "route" });
+    assert.deepEqual(exerciseMove(room, guestProof, passage + 1, route), { ok: false, reason: "order" });
+    room = success(exerciseMove(room, guestProof, passage, route));
+    assert.deepEqual(exerciseMove(room, guestProof, passage, route), { ok: false, reason: "order" });
+    assert.deepEqual(exerciseMove(room, peerProof, passage, wrongSupport), { ok: false, reason: "support" });
+    room = success(exerciseMove(room, peerProof, passage, support));
+    assert.deepEqual(exerciseMove(room, peerProof, passage, "advance"), { ok: false, reason: "assignment" });
+    room = success(exerciseMove(room, hostProof, passage, "advance"));
+  }
+  assert.equal(room.exercise.journal.length, 9);
+  assert.deepEqual(room.exercise.journal.map(event => event.actor), [guestProof, peerProof, hostProof,
+    guestProof, peerProof, hostProof, guestProof, peerProof, hostProof]);
+  assert.deepEqual(exerciseMove(room, hostProof, 2, "advance"), { ok: false, reason: "exercise" });
+  const broken = structuredClone(room);
+  broken.exercise.journal[0].actor = hostProof;
+  assert.equal(parseCampaignCoopLobby(JSON.stringify(broken)), null);
+  const fresh = success(start(room));
+  assert.notEqual(fresh.exercise.id, room.exercise.id);
+  assert.deepEqual(exerciseMove(fresh, guestProof, 0, "trace-left", room.exercise.id), { ok: false, reason: "exercise" });
+});
+
+test("la relève en binôme confie la prise à l’hôte et s’interrompt après un départ", () => {
+  let room = success(start(withGuests()));
+  const view = campaignCoopExerciseView(room.exercise);
+  const route = view.trackLeft ? "trace-left" : "trace-right";
+  assert.equal(view.support, hostProof);
+  const quitCommand = { type: "exercise-abandon", exerciseId: room.exercise.id };
+  assert.deepEqual(advance(room, quitCommand, guestProof), { ok: false, reason: "host" });
+  room = success(exerciseMove(room, guestProof, 0, route));
+  assert.deepEqual(advance(room, { type: "exercise-move", exerciseId: room.exercise.id, passage: 0, move: "take-anchor" },
+    hostProof, [host, peer, fourth]), { ok: false, reason: "exercise" });
+  assert.deepEqual(advance(room, { type: "exercise-start" }, hostProof, [host, peer, fourth]), { ok: false, reason: "exercise" });
+  assert.equal(success(advance(room, quitCommand)).exercise.abandoned, true);
+  room = success(advance(room, { type: "leave" }, guestProof));
+  assert.equal(room.exercise.abandoned, true);
+  assert.equal(room.exercise.journal.length, 1);
+  assert.equal(room.guests.length, 0);
 });

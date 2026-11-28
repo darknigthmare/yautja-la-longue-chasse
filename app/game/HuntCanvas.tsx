@@ -212,6 +212,7 @@ import {
   type TrophyVictoryState,
 } from "./systems/trophyRitual";
 import { drawMudFootstep, drawWorldHazard } from "./worldHazardRendering";
+import { drawAcheronRefraction } from "./acheronRefraction";
 import {
   hazardPhaseAt,
   isHazardActive,
@@ -5984,7 +5985,7 @@ function renderGame(
     }
   }
 
-  drawGuardianAdaptiveField(context, state, palette);
+  drawGuardianAdaptiveField(context, state, palette, reducedMotion);
 
   drawHuntRiteCorpsesV77(context,state,assets);
   drawFieldStashesV112(context,state.huntRites);
@@ -9952,6 +9953,7 @@ function drawGuardianAdaptiveField(
   context: CanvasRenderingContext2D,
   state: GameState,
   palette: MissionDefinition["palette"],
+  reducedMotion: boolean,
 ): void {
   if (state.bossMechanics.missionId !== "ruins-ancient-guardian" ||
     !state.boss.active || !state.boss.alive) return;
@@ -9959,11 +9961,12 @@ function drawGuardianAdaptiveField(
   if (!adaptation || (adaptation.warningSeconds <= 0 && adaptation.fieldSeconds <= 0)) return;
   const warning = adaptation.warningSeconds > 0;
   const center = { x: state.boss.x + state.boss.width / 2, y: state.boss.y + state.boss.height / 2 };
+  if (!warning && !reducedMotion) drawAcheronRefraction(context, center, GUARDIAN_ADAPTATION.rangePx, state.elapsed);
   context.save();
   context.strokeStyle = warning ? palette.danger : palette.accent;
   context.fillStyle = context.strokeStyle;
   context.lineWidth = warning ? 3 : 2;
-  context.globalAlpha = warning ? 0.55 + Math.sin(state.elapsed * 10) * 0.2 : 0.28;
+  context.globalAlpha = warning ? (reducedMotion ? 0.65 : 0.55 + Math.sin(state.elapsed * 10) * 0.2) : 0.42;
   context.setLineDash(warning ? [12, 8] : [4, 8]);
   context.beginPath();
   context.arc(center.x, center.y, GUARDIAN_ADAPTATION.rangePx, 0, Math.PI * 2);
@@ -10342,6 +10345,7 @@ function updateBoss(
         );
         break;
       case "guardian-adaptive-warning":
+        queueSound(state, "vacuum-field-warning");
         boss.pendingAttackId = null;
         boss.telegraph = effect.value;
         boss.velocityX = 0;
@@ -10352,11 +10356,13 @@ function updateBoss(
         );
         break;
       case "guardian-adaptive-evaded":
+        queueSound(state, "vacuum-field-clear");
         boss.telegraph = 0;
         boss.pendingAttackId = null;
         announce(state, "Verrouillage déjoué : le Gardien a perdu ta signature.", 2.5);
         break;
       case "guardian-adaptive-field":
+        queueSound(state, "vacuum-field-active");
         // The persistent lock comes from bossMechanics, not a one-frame flag.
         // Preserve kinetic ammunition, returning discs and distant plasma shots.
         state.projectiles = state.projectiles.filter(

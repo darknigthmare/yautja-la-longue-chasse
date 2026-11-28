@@ -11,11 +11,14 @@ import { drawFirstHuntSoloV68 } from "./firstHuntSoloV68Rendering";
 import { normalizeSoloV68State, stepSoloV68, soloV68Objective, type SoloV68State, type SoloV68Receipt } from "./systems/firstHuntSoloV68";
 import styles from "./FirstHuntSoloV68.module.css";
 
+export type SoloV68RecognitionAudio = "outside" | "active" | "paused";
+
 export interface FirstHuntSoloV68Props {
   checkpoint: unknown; bindings: ControlBindings; externallyPaused?: boolean; reducedMotion?: boolean; persistenceError?: string | null;
   onCheckpoint(state: SoloV68State): boolean;
   onProgress(receipts: readonly SoloV68Receipt[], state: SoloV68State): Promise<boolean>;
   onExit(): void | Promise<void>; onReturnToCity(): Promise<boolean>; onOpenSettings?(): void;
+  onRecognitionAudio?(state: SoloV68RecognitionAudio): void;
 }
 const BUTTONS = [["left", "←"], ["right", "→"], ["jump", "Saut"], ["light", "Toucher"], ["blade", "Suivre / Attendre"], ["interact", "Interagir"]] as const;
 /** The owner commits every receipt before simulation resumes. A rejected checkpoint stays mounted. */
@@ -118,6 +121,13 @@ export default function FirstHuntSoloV68(props: FirstHuntSoloV68Props) {
     catch { setSaveError("Le départ a échoué. La scène reste disponible."); }
     finally { busy.current = false; if (mounted.current) setSaving(false); }
   };
+  const onRecognitionAudio = props.onRecognitionAudio;
+  const recognitionVisible = bank && (state?.phase === "recognition" || state?.phase === "complete");
+  const recognitionAudio = !recognitionVisible ? "outside" :
+    paused || props.externallyPaused || pendingUi || saving ? "paused" : "active";
+  useEffect(() => { onRecognitionAudio?.(recognitionAudio); }, [onRecognitionAudio, recognitionAudio]);
+  useEffect(() => () => { onRecognitionAudio?.("outside"); }, [onRecognitionAudio]);
+
   const objective = state ? soloV68Objective(state) : null;
   const spoken = state?.phase === "briefing" ? "« Trois partiront. Trois reviendront. Le clan examine celui qui retrouve la piste et ceux qui ne laissent personne derrière. »" : state?.phase === "debrief" ? "« Saar et Vek sont revenus avec toi. Maintenant, le clan reçoit les preuves de ta Piste sans guide. »" : state?.phase === "relay" ? "« Vek tient le premier relais. Saar tient le deuxième. Prends le dernier et donne le signal. »" : state?.phase === "recognition" ? "« Ta Piste sans guide est reçue. Tu peux désormais te présenter à l’initiation avec les autres aspirants. »" : "";
   const modal = !state || !!artError || paused || pendingUi && !!saveError || state?.phase === "complete" && !pendingUi;

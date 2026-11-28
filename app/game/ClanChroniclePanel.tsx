@@ -209,7 +209,8 @@ export default function ClanChroniclePanel({
       </section>
       {activeRite === "elite-clan-rites" && onEliteRecognitionCommand && <EliteClanRites key={save.createdAt}
         save={save} suspended={!!quatzaSuspended} onCommand={onEliteRecognitionCommand} onClose={closeCampaignRite}
-        onOpenRecognition={() => setCampaignRite("elite-recognition")} />}
+        onOpenRecognition={() => setCampaignRite("elite-recognition")}
+        onOpenQueenMission={rankDossier.queen.canOpenExpedition ? onOpenCradle : undefined} />}
       {activeRite === "elite-recognition" && onEliteRecognitionCommand && <EliteRecognition key={save.createdAt}
         save={save} onCommand={onEliteRecognitionCommand} onClose={closeCampaignRite}
         onOpenTrials={() => setCampaignRite("elite-clan-rites")} />}

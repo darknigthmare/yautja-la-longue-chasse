@@ -459,8 +459,18 @@ function WeaponForgeMaterialsV146({ save, disabled, huntBlocksUpgrade, onUpgrade
         <p className={styles.note} data-forge-weapon-stats>
           Dégâts {currentStats.damage} → {nextStats.damage}
           {" · "}Délai {currentStats.cooldownSeconds} s → {nextStats.cooldownSeconds} s
-          {weapon === "yautja-bow" && <>
+          {weapon === "plasma-caster" && <>
+            {" · "}Dégâts à pleine charge {currentStats.heavyDamage} → {nextStats.heavyDamage}
+            {" · "}Énergie sans charge {currentStats.energyCost} → {nextStats.energyCost}
+          </>}
+          {weapon === "smart-disc" && <>
+            {" · "}Énergie par lancer {currentStats.energyCost} → {nextStats.energyCost}
+            {" · "}Disques {currentStats.ammo} → {nextStats.ammo}
+          </>}
+          {(weapon === "yautja-bow" || weapon === "plasma-caster" || weapon === "smart-disc") && <>
             {" · "}Portée {currentStats.rangePx} → {nextStats.rangePx}
+          </>}
+          {weapon === "yautja-bow" && <>
             {" · "}Flèches {currentStats.ammo} → {nextStats.ammo}
           </>}
         </p>
@@ -493,7 +503,7 @@ function WeaponForgeMaterialsV146({ save, disabled, huntBlocksUpgrade, onUpgrade
           Forger le niveau {recipe.nextLevel}
         </button>
       </> : <p>Niveau {level}/2 atteint.</p>}
-    </> : <p>Équipe les lames de poignet, le Combistick ou l’Arc Yautja pour les améliorer ici.</p>}
+    </> : <p>Équipe une arme débloquée pour l’améliorer ici.</p>}
   </fieldset>;
 }
 

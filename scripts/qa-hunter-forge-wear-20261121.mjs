@@ -30,10 +30,19 @@ const key = saves.SAVE_STORAGE_KEY;
 const owner = '2026-11-21T21:00:00.000Z';
 const species = 'oseris-iv--jungle-xeno-scout';
 const hideSpecies = 'oseris-iv--mist-pouncer';
-const forgeBow = process.env.HUNTER_FORGE_QA_BOW === '1';
-const forgeWeapon = forgeBow || process.env.HUNTER_FORGE_QA_WEAPON === '1';
-const forgeTarget = forgeBow ? 'yautja-bow' : 'combistick';
-const weaponCosts = forgeBow ? [[1, 2], [2, 3]] : [[2, 1], [3, 2]];
+const requestedWeapon = process.env.HUNTER_FORGE_QA_TARGET;
+const forgeWeapon = Boolean(requestedWeapon) || process.env.HUNTER_FORGE_QA_BOW === '1' || process.env.HUNTER_FORGE_QA_WEAPON === '1';
+const forgeTarget = requestedWeapon || (process.env.HUNTER_FORGE_QA_BOW === '1' ? 'yautja-bow' : 'combistick');
+const weaponCosts = new Map([
+  ['combistick', [[2, 1], [3, 2]]],
+  ['yautja-bow', [[1, 2], [2, 3]]],
+  ['plasma-caster', [[2, 2], [3, 3]]],
+  ['smart-disc', [[3, 1], [4, 2]]],
+]).get(forgeTarget);
+assert(weaponCosts, 'Unknown forge weapon: ' + forgeTarget);
+const forgeBow = forgeTarget === 'yautja-bow';
+const forgePlasma = forgeTarget === 'plasma-caster';
+const forgeDisc = forgeTarget === 'smart-disc';
 const forgeTool = !forgeWeapon && process.env.HUNTER_FORGE_QA_TOOL === '1';
 const forgeArmor = !forgeWeapon && !forgeTool && process.env.HUNTER_FORGE_QA_ARMOR === '1';
 const selectMaterial = forgeArmor || forgeTool || forgeWeapon || process.env.HUNTER_FORGE_QA_SELECT_MATERIAL === '1';
@@ -46,8 +55,8 @@ function fixture() {
   save.profile.hunterName = 'QA forge · plastron';
   save.profile.clanMarks = forgeWeapon ? 600 : 200;
   save.settings.masterVolume = 0;
-  if (forgeBow) {
-    save.profile.honor = 225;
+  if (forgeBow || forgeDisc) {
+    save.profile.honor = forgeDisc ? 500 : 225;
     assert(!save.inventory.unlockedWeaponIds.includes(forgeTarget));
   } else if (forgeWeapon) save.loadout.weaponIds = [forgeTarget, 'wristblades'];
   const purchased = tools.purchaseFieldToolV111(save, 'flaying-tool');
@@ -98,8 +107,26 @@ function fixture() {
   assert.deepEqual(settled.customizationV146.heavyWear, { chest: 1 });
   assert.deepEqual(settled.inventory.harvestV112, delivery.inventory.harvestV112);
   save = settled;
-  if (forgeBow) {
-    assert(save.inventory.unlockedWeaponIds.includes(forgeTarget), 'The actual mission result must admit the bow');
+  if (forgeDisc) {
+    const ice = MISSION_BY_ID['ice-cryostalker'];
+    assert(!save.inventory.unlockedWeaponIds.includes(forgeTarget), 'Jungle settlement cannot admit the Smart Disc');
+    save = saves.applyMissionResult(save, {
+      ...result,
+      missionId: ice.id,
+      completedObjectiveIds: ice.objectives.filter(item => item.required || item.kind === 'extract').map(item => item.id),
+      trophyClaims: [{
+        ...result.trophyClaims[0],
+        id: ice.id + '-forge-admission', definitionId: ice.trophy.id, targetName: ice.targetName,
+        targetKind: ice.targetKind, partId: ice.trophy.partId,
+      }],
+      completedAt: '2026-11-21T21:08:00.000Z',
+      specimensV112: [], toolUseIdsV112: [], harvestEncounterRunV112: save.missionProgress[ice.id].attempts,
+      wearV146: { heavyPieces: [] },
+    });
+    assert.equal(save.missionProgress[ice.id].status, 'completed');
+  }
+  if (forgeBow || forgeDisc) {
+    assert(save.inventory.unlockedWeaponIds.includes(forgeTarget), 'The required mission result must admit the weapon');
     save.loadout.weaponIds = [forgeTarget, 'wristblades'];
   }
   for (const specimen of specimens) {
@@ -142,6 +169,7 @@ try {
   if (forgeTool) report.admission += ' Le même navigateur installe ensuite le renfort avec les os archivés par les réducteurs.';
   if (forgeWeapon) report.admission += ' Le même navigateur choisit deux lots de réserve et forge les deux niveaux de ' + forgeTarget + '.';
   if (forgeBow) report.admission += ' Le résultat de la première chasse a débloqué l’arc avec l’honneur requis préparé dans la sauvegarde.';
+  if (forgeDisc) report.admission += ' Le résultat Cryostalker déclaré en amont admet le Smart Disc via le vrai réducteur avec l’honneur requis.';
   report.initial = { wear: seed.customizationV146.heavyWear, stock: start, chosen, marks: seed.profile.clanMarks };
   browser = await chromium.launch({
     executablePath: process.env.CHROMIUM_EXECUTABLE || process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || undefined,
@@ -411,9 +439,17 @@ try {
       const preview = await forge.locator('[data-forge-weapon-stats]').innerText();
       assert.match(preview, /Dégâts/);
       assert(preview.includes(previous.damage + ' → ' + projected.damage));
-      if (forgeBow) {
+      if (forgeBow || forgePlasma || forgeDisc) {
         assert(preview.includes('Portée ' + previous.rangePx + ' → ' + projected.rangePx));
-        assert(preview.includes('Flèches ' + previous.ammo + ' → ' + projected.ammo));
+      }
+      if (forgeBow) assert(preview.includes('Flèches ' + previous.ammo + ' → ' + projected.ammo));
+      if (forgePlasma) {
+        assert(preview.includes('Dégâts à pleine charge ' + previous.heavyDamage + ' → ' + projected.heavyDamage));
+        assert(preview.includes('Énergie sans charge ' + previous.energyCost + ' → ' + projected.energyCost));
+      }
+      if (forgeDisc) {
+        assert(preview.includes('Disques ' + previous.ammo + ' → ' + projected.ammo));
+        assert(preview.includes('Énergie par lancer ' + previous.energyCost + ' → ' + projected.energyCost));
       }
       await forge.screenshot({ path: join(output, 'devis-' + weaponId + '-niveau-' + level + '.png'), animations: 'disabled' });
 
@@ -446,8 +482,15 @@ try {
       await openForge();
       await marker.waitFor();
       assert.deepEqual((await disk()).inventory, mounted.inventory);
-      rounds.push({ level, quote, damage: projected.damage, cooldownSeconds: projected.cooldownSeconds,
-        arrows: forgeBow ? projected.ammo : null, rangePx: projected.rangePx, remaining: expected });
+      const portable = saves.parseSaveImport(saves.exportSave(await disk()));
+      assert(portable.save, portable.failure);
+      assert.deepEqual(portable.save.inventory, mounted.inventory);
+      rounds.push({
+        level, quote, damage: projected.damage, heavyDamage: projected.heavyDamage,
+        cooldownSeconds: projected.cooldownSeconds, energyCost: projected.energyCost,
+        arrows: forgeBow ? projected.ammo : null, discs: forgeDisc ? projected.ammo : null,
+        rangePx: projected.rangePx, remaining: expected,
+      });
     }
     assert.equal(await upgrade.count(), 0);
     report.weaponForge = { weaponId, rounds, rejectedIncompatibleSidecar: true };

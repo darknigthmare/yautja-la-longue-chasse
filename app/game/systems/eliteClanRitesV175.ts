@@ -13,6 +13,31 @@ export const ELITE_CLAN_TRIALS = [
   { id: "hunt", label: "La chasse holographique du clan", disciplineId: "clan-hunt", seed: 1, clanPlasma: false },
 ] as const;
 
+export type EliteClanRitePoint = { column: number; row: number };
+
+export const ELITE_CLAN_RITES_GROUND = [
+  "#########",
+  "#...c...#",
+  "#...h...#",
+  "#.l.v.p.#",
+  "#.......#",
+  "#...e...#",
+  "#########",
+] as const;
+
+export const ELITE_CLAN_RITES_POSTS = {
+  entry: { column: 4, row: 5 },
+  blades: { column: 2, row: 3 },
+  plasma: { column: 6, row: 3 },
+  hunt: { column: 4, row: 2 },
+} as const;
+
+export function canWalkEliteClanRites(point: EliteClanRitePoint): boolean {
+  if (!point || !Number.isSafeInteger(point.column) || !Number.isSafeInteger(point.row)) return false;
+  const tile = ELITE_CLAN_RITES_GROUND[point.row]?.[point.column];
+  return tile !== undefined && tile !== "#" && tile !== "v" && tile !== "c";
+}
+
 export type EliteClanTrialId = typeof ELITE_CLAN_TRIALS[number]["id"];
 export interface EliteClanTrialReceipt { id: EliteClanTrialId; trace: TrainingDrillTrace }
 
