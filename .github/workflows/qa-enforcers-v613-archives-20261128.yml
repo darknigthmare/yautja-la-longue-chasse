@@ -1,0 +1,36 @@
+name: Enforcers V6.13 · sorties archivées
+on:
+  push:
+    branches: ['codex/qa-enforcers-v613-archives-20261128']
+
+permissions:
+  contents: read
+
+jobs:
+  archive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '2247c53b0d7eb00b1d9ff3dab030cd28a7ee5a37'
+          fetch-depth: 0
+          filter: blob:none
+          sparse-checkout: |
+            /scripts/audit-enforcer-historical-recovery.mjs
+            /scripts/audit-enforcer-replaced-v613.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Hash the actual archived and final PNG bytes
+        run: |
+          test "$(git rev-parse HEAD)" = '2247c53b0d7eb00b1d9ff3dab030cd28a7ee5a37'
+          mkdir -p outputs/qa-enforcers-v613-archives
+          set -o pipefail
+          node scripts/audit-enforcer-replaced-v613.mjs | tee outputs/qa-enforcers-v613-archives/report.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: enforcers-v613-archived-outputs
+          path: outputs/qa-enforcers-v613-archives/report.json
+          if-no-files-found: error
