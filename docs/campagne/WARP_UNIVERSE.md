@@ -144,7 +144,9 @@ Prévoir une arrivée, un objectif, des solutions alternatives lisibles, des lig
 
 Les adversaires réagissent avec des moyens plausibles pour leur époque : bruit, traces, guetteurs, formation, communications, éclairage et pièges. Ils ne connaissent pas magiquement le camouflage. Ne pas transformer un duel ancien en parade infinie contre n'importe quelle arme ; les restrictions fortes sont des règles de scénario ou des serments annoncés.
 
-**W‑01 · Une voile dans la brume.** Le départ est accessible depuis le pont, la carte ou le dossier de campagne. Le fjord de 841 propose le passage du quai et du treuil, ou la corniche. Le relevé n’est consigné qu’au retour à pied. Les deux autres épisodes de WU‑E05 restent ouverts. [Recette native](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46126806126).
+**W‑01 · Une voile dans la brume.** Le départ est accessible depuis le pont, la carte ou le dossier de campagne. Le fjord de 841 propose le passage du quai et du treuil, ou la corniche. Le relevé n’est consigné qu’au retour à pied. [Recette native](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46126806126).
+
+**W‑01 · La forteresse des marées.** Après le premier rapport archivé, le voyage suivant ouvre la route de la forteresse. Les marques de marée conduisent à la halle et au registre du guet. Le rapport d’étape attend le retour physique au portail. La chasse du champion de la falaise reste ouverte. [Recette native](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/46134243211).
 
 ## 6. Module à bord, portail et boucle de mission
 
