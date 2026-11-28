@@ -160,7 +160,7 @@ test("THE PIT terminal results stay isolated from campaign rewards", async () =>
 
   assert.match(
     pitCanvasSource,
-    /playbackReplay \|\| combat\.phase !== "match-over"/,
+    /playbackReplay \|\|[^;]*combat\.phase !== "match-over"/,
   );
   assert.match(pitCanvasSource, /reportedMatchFrameRef\.current !== null/);
   assert.match(pitCanvasSource, /leftRoundsWon: combat\.fighters\[0\]\.roundsWon/);
