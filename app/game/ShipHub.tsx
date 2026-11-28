@@ -173,6 +173,7 @@ export interface ShipHubProps {
   gamepadEnabled?: boolean;
   onProgressionChange?: ShipTrainingReceiverV94;
   onSelectedShipChange?: (shipId: ShipId) => void;
+  lockShipSelection?: boolean;
   onRoomChange?: (roomId: ShipRoomId) => void;
   onOpenDeck?: () => void;
   onOpenMap: () => void;
@@ -256,6 +257,7 @@ export default function ShipHub({
   gamepadEnabled = true,
   onProgressionChange,
   onSelectedShipChange,
+  lockShipSelection = false,
   onRoomChange,
   onOpenDeck,
   onOpenMap,
@@ -636,7 +638,7 @@ export default function ShipHub({
           const selected = progression.selectedShipId === ship.id;
           const hullEngaged = Boolean(save.clanShipDocking && save.clanShipDocking.status !== "free-flight");
           const canSelect =
-            !hullEngaged && ship.selectable && (unlocked || availability.requirementsMet);
+            !lockShipSelection && !hullEngaged && ship.selectable && (unlocked || availability.requirementsMet);
           return {
             id: `hangar-select-${ship.id}`,
             label: selected
@@ -644,7 +646,9 @@ export default function ShipHub({
               : canSelect
                 ? `Sélectionner · ${ship.shortName}`
                 : `Inspecter · ${ship.shortName}`,
-            detail: hullEngaged && !selected
+            detail: lockShipSelection && !selected
+              ? "La chasse suspendue conserve la coque du départ."
+              : hullEngaged && !selected
               ? "Inspection disponible. Désamarre le vaisseau personnel avant de changer de coque."
               : !ship.selectable
               ? `${ship.originLabel} · ${ship.deckNote}`
@@ -659,6 +663,10 @@ export default function ShipHub({
               }
               if (selected) {
                 notify(`${ship.name} est déjà le vaisseau actif.`);
+                return;
+              }
+              if (lockShipSelection) {
+                notify("Reprends ou abandonne la chasse suspendue avant de changer de coque.");
                 return;
               }
               if (hullEngaged) {
@@ -793,6 +801,7 @@ export default function ShipHub({
     hangarFilteredShips,
     hangarMedia,
     hangarPageCount,
+    lockShipSelection,
     notify,
     onApplyLoadout,
     onOpenDeck,

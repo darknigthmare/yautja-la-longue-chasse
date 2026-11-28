@@ -187,6 +187,7 @@ export interface HomeworldHubProps {
   ephemeralSession?: boolean;
   onService(service: HomeworldService): void;
   /** Save a kennel action after Homeworld has checked the hunter's physical reach. */
+  kennelLockedByHunt?: boolean;
   onKennelActionV147?(action: HoundKennelActionV147): boolean;
   onReturnShip(): void;
   /** Available only at the physically reached mentor after the chief. */
@@ -220,7 +221,7 @@ function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInt
   return original ? { ...original, ...target.position } : null;
 }
 
-export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onAdjutantAppointment, recoveryStorage, ephemeralSession = false, onService, onKennelActionV147, onReturnShip, onExpedition, onNotify, onYouthTraining, onChildhoodSound, onChildhoodCeremonyAudio, onSoloV66, onSoloV67, onRegionalLoopM014, regionalLoopM014Admission, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
+export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, onAdjutantAppointment, recoveryStorage, ephemeralSession = false, onService, kennelLockedByHunt = false, onKennelActionV147, onReturnShip, onExpedition, onNotify, onYouthTraining, onChildhoodSound, onChildhoodCeremonyAudio, onSoloV66, onSoloV67, onRegionalLoopM014, regionalLoopM014Admission, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
   const [initialLocationV77] = useState(() => resolveCargoArrivalV108(save.homeworld.locationV77,save.createdAt,save.homeworld.cargoV108,{cartographyV104:save.homeworld.cartographyV104,cartographyV105:save.homeworld.cartographyV105,archiveV106:save.homeworld.archiveV106,archiveComparisonV107:save.homeworld.archiveComparisonV107}));
   const [upgradeRecoveryPendingV112,setUpgradeRecoveryPendingV112]=useState(()=>!initialLocationV77.migrationBackup&&homeworldGeometryRecoveryRequiredV112(save.homeworld.locationV77,save.createdAt,homeworldGeometryRecoveryLedgersV112(save.homeworld)));
   const upgradeRecoveryPendingRefV112=useRef(upgradeRecoveryPendingV112);
@@ -2262,9 +2263,13 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
             <button type="button" data-r2-m003-stop="kennel" disabled={suspended || paused || inactive}
               onClick={() => saveYouthCityErrand({ stop: "kennel" })}>{YOUTH_CITY_STOPS_V172.kennel.label}</button>}
           {onKennelActionV147 && isHoundKennelContactV147(selectedStreetContactV100.id) &&
-            <HoundKennelPanelV147 hounds={save.houndsV147} clanMarks={save.profile.clanMarks}
-              brecheAdmitted={brecheAdmittedV147(save, selectedShipId)} disabled={cargoMigrationPendingV108||suspended||paused||inactive}
-              onAction={handleKennelActionV147} />}
+            <>
+              {kennelLockedByHunt && <p role="status" data-hound-kennel-locked>Les choix et les soins attendent la fin de la chasse suspendue.</p>}
+              <HoundKennelPanelV147 hounds={save.houndsV147} clanMarks={save.profile.clanMarks}
+                brecheAdmitted={brecheAdmittedV147(save, selectedShipId)}
+                disabled={kennelLockedByHunt || cargoMigrationPendingV108 || suspended || paused || inactive}
+                onAction={handleKennelActionV147} />
+            </>}
         </> : dialog.streetContactV100 ? <p role="status">La conversation est interrompue. Rejoins cet habitant sur son passage.</p> : selectedResidentV68 ? <>
           <p data-homeworld-civilian-routine-v84={selectedResidentPoseV84?.phase} data-homeworld-civilian-group-v84={selectedResidentRoutineV84?.groupId ?? undefined}>
             {selectedResidentPoseV84?.phaseLabel}{selectedResidentRoutineV84?.groupLabel ? ` · ${selectedResidentRoutineV84.groupLabel}` : ''}.

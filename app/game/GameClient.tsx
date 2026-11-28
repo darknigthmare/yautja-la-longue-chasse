@@ -4138,6 +4138,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if(saveRef.current.mobilityV1?.active){setToast("Remise au garage requise avant une chasse : reprends la sortie depuis le comptoir des Forges.");return;}
     if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de lancer une chasse."); return; }
     if (!sessionAliveRef.current) return;
+    if (resumableHunt || activeHuntSessionRef.current) {
+      setToast("Reprends ou abandonne la chasse suspendue avant de prendre un autre contrat.");
+      return;
+    }
     // Resolve an uncertain paid departure before a baseline write can replace
     // the writer's observation of the previous campaign bytes.
     if (pendingSocialWriteRef.current && !persistSocialProgress({})) return;
@@ -4241,7 +4245,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     void playSound("select");
     setNewGamePhase(null);
     setScreen("planet-arrival");
-  }, [hunterGauntlet.equippedId, insertionPlan, persistSocialProgress, playSound, save, selectedMission]);
+  }, [hunterGauntlet.equippedId, insertionPlan, persistSocialProgress, playSound, resumableHunt, save, selectedMission]);
 
   const resumeActiveHunt = useCallback(() => {
     if (!sessionAliveRef.current || blackGodStatusV162(saveRef.current) === "sacrificed") return;
@@ -5749,7 +5753,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <p>{campaignWelcomeV69(save).next}</p>
               </section>}
                 suspended={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}
+                kennelLockedByHunt={!!resumableHunt}
                 onKennelActionV147={action => {
+                  if (resumableHunt || activeHuntSessionRef.current) {
+                    setToast("Reprends ou abandonne la chasse suspendue avant de gérer le chenil.");
+                    return false;
+                  }
                   const current = saveRef.current;
                   const admitted = brecheAdmittedV147(current, loadShipProgression(current).selectedShipId);
                   const change = applyKennelActionV147(current, action, HOUND_KENNEL_LOCATION_V147, admitted);
@@ -6187,6 +6196,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             onOpenPit={openPit}
             onApplyLoadout={applyShipLoadout}
             onSelectedShipChange={setSelectedShipId}
+            lockShipSelection={!!resumableHunt}
             onNotify={setToast}
           />
         </Suspense>
@@ -6232,6 +6242,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               onOpenPit={openPit}
               onApplyLoadout={applyShipLoadout}
               onSelectedShipChange={setSelectedShipId}
+              lockShipSelection={!!resumableHunt}
               onNotify={setToast}
             />
           </section>
@@ -6422,10 +6433,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   busy={settingsOpen || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy || !!resumableHunt}
                   onChange={setInsertionPlan} onRecruit={recruitExpeditionHunter} onAssign={assignExpeditionHunter}
                   onReserve={reserveExpeditionHunter} onCare={careForExpeditionHunter} />
+                {resumableHunt && <p role="status">Une chasse est suspendue. Reprends-la avant un nouveau départ.</p>}
                 <div className="briefing-actions">
+                  {resumableHunt && <button type="button" className="alien-button" onClick={resumeActiveHunt}>
+                    Reprendre la chasse suspendue
+                  </button>}
                   <button
                     type="button"
                     className="alien-button"
+                    disabled={briefingAtAirlock && !!resumableHunt}
                     onClick={briefingAtAirlock ? launchMission : () => {
                       go("deck");
                       setToast("Destination confirmée. Rejoins le sas pour vérifier ton arsenal et partir.");
@@ -6443,7 +6459,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                     Modifier l’arsenal
                   </button>
                   {!briefingAtAirlock && (
-                    <button type="button" className="ghost-button" data-launch-mission onClick={launchMission}>
+                    <button type="button" className="ghost-button" data-launch-mission disabled={!!resumableHunt} onClick={launchMission}>
                       Départ rapide
                     </button>
                   )}
