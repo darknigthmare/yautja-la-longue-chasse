@@ -43,7 +43,7 @@ const browserBundle=await build({stdin:{contents,resolveDir:root},bundle:true,fo
 const owner='2026-11-08T17:00:00.000Z';
 const save=domain.defaultSave(owner);
 save.profile.hunterName='QA mobilité · préconditions déclarées';
-save.profile.honor=300;save.profile.rankId='blooded';save.profile.clanMarks=10000;
+save.profile.honor=300;save.profile.rankId='blooded';save.profile.acquiredRankIdV166='blooded';save.profile.clanMarks=10000;
 save.settings.masterVolume=0;
 const building=domain.HOMEWORLD_BUILDINGS_V77.find(item=>item.id==='deep-forge');
 assert(building);
@@ -81,7 +81,7 @@ assert.equal(save.mobilityV1,undefined);
 assert.equal(domain.parseSaveImport(JSON.stringify(save)).failure,null);
 await fs.writeFile(path.join(out,'initial-save.json'),JSON.stringify(save,null,2)+'\n');
 await fs.writeFile(path.join(out,'fixture-disclosure.json'),JSON.stringify({owner,adultHistoricalCampaign:true,
-  prologue:save.prologue,rank:save.profile.rankId,honor:save.profile.honor,clanMarks:10000,
+  prologue:save.prologue,rank:save.profile.rankId,acquiredRank:save.profile.acquiredRankIdV166,honor:save.profile.honor,clanMarks:10000,
   startingExterior:start,doorApproach:door.approach,forgeCounter:counter,initialMobilityLedger:null,
   initialPermit:false,initialOwnedVehicles:0,seededMobilityResults:0,fullCampaignFromZeroPlayed:false,
   initialCampaignSlot:'Created by the actual migrateLegacyCampaignSlot and saveCampaignCheckpoint APIs before the first played session.',
