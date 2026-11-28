@@ -1,0 +1,29 @@
+name: Read the confirmed Forge continuation evidence
+on:
+  push:
+    branches: [codex/qa-mobility-forge-delivery-20261128]
+    paths: ['.github/workflows/check-forge-delivery-reload-evidence-20261128.yml']
+permissions:
+  actions: read
+  contents: read
+jobs:
+  receipt:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: forge-delivery-evidence-46140965986
+          run-id: 46140965986
+          github-token: ${{ github.token }}
+          path: evidence
+      - name: Print only receipt, funds and viewport metrics
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';
+          const report=JSON.parse(readFileSync('evidence/browser/report.browser-run.json','utf8'));
+          const {campaign,nativeYard,notices}=report.failureObservation??{};
+          const receipt=campaign?.mobilityV1?.forgeDelivery;
+          console.log(JSON.stringify({receipt,funds:campaign?.profile?.clanMarks,active:campaign?.mobilityV1?.active??null,
+            noticeCount:notices?.length,activeYardPresent:Boolean(nativeYard),fits:report.mobilityMobileFits,
+            pageErrors:report.errors,httpErrors:report.httpErrors,consoleErrors:report.consoleErrors,requestFailures:report.requestFailures}));
+          NODE
