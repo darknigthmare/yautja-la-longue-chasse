@@ -24,6 +24,8 @@ export function templeInput(s){
    return {move,interact:royal.startedAt===null&&!move&&!s.previousInteract,
      jump:!move&&ground&&a.y>p.SOLO_V70_ROYAL_M017.coverY&&!s.previousJump&&sweep?.stage==='warning'&&sweep.remaining<=27};
  }
+ if (s.room === p.SOLO_V70_RESCUE_M017.room && p.soloV70RescueTargetM017(extension))
+   return {move,interact:!move};
  const post=extension&&p.soloV70DepthPostM017(s.room,Boolean(royal));
  const depthPost=post&&!extension.observations[post.id];
  const depthHunt=depths&&s.room===p.soloV70HuntTargetM017(s).room&&!depths.huntThreshold;
