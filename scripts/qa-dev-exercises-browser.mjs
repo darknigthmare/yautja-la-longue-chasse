@@ -242,7 +242,22 @@ try {
     await open("dev-kennel");
     await page.locator("[data-dev-kennel-hunt]").waitFor();
     assert.equal(await page.locator("[data-dev-kennel-hunt]").isDisabled(), true);
-    await page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]').waitFor({ timeout: 100000 });
+    const city = page.locator('[data-homeworld-hub][data-homeworld-motion-ready="true"]');
+    await city.waitFor({ timeout: 100000 });
+    await city.locator("[data-homeworld-viewport]").focus();
+    await page.keyboard.press("KeyE");
+    const kennel = page.locator('[data-hound-kennel-v147="CITY-28"]');
+    await kennel.waitFor();
+    await kennel.locator('[data-hound-kennel-action="recruit"]').click();
+    const balance = kennel.locator("[data-hound-kennel-balance]");
+    assert.match((await balance.innerText()).replaceAll(/\s/g, " "), /988 Marques/);
+    await kennel.locator('[data-hound-kennel-action="heal"]').click();
+    assert.equal(await kennel.locator('[data-hound-id][data-condition="wounded"]').count(), 0);
+    await page.locator("[data-dev-kennel-hunt]").click();
+    await page.getByRole("button", { name: "Commencer la chasse", exact: true }).click();
+    await page.locator("[data-hound-current-order]").waitFor();
+    await page.locator('[data-hound-field-order="recall"]').click();
+    await page.locator('[data-hound-current-order="recall"]').waitFor();
   });
   await run("campagne-et-stockage-preserves", async () => {
     const data = await page.evaluate(() => ({ saved: localStorage.getItem("qa.campagne-existante"), local: localStorage.length, session: sessionStorage.length }));
