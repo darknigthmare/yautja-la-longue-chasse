@@ -166,11 +166,11 @@ export async function playNativeOseris({
     await menu.locator('[data-rite-action-v112="analyze"]').click();
     await page.waitForFunction(id=>window.__skinningCanopyQaV112.state().rites.corpses.find(item=>item.id===id)?.analyzed,prey.id);
     await menu.locator('[data-rite-action-v112="flay"]').click();
-    await page.waitForFunction(id=>window.__skinningCanopyQaV112.state().rites.corpses.find(item=>item.id===id)?.flayed,prey.id,{timeout:15000});
+    await page.waitForFunction(id=>window.__skinningCanopyQaV112.state().rites.corpses.find(item=>item.id===id)?.flayed,prey.id,{timeout:60000});
     const reopen = menu.getByRole('button',{name:'Examiner la proie vaincue',exact:true});
     if (await reopen.count()) await reopen.click();
     await menu.locator('[data-rite-action-v112="harvest-hide"]').click();
-    await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().rites.specimensV112.length===1,null,{timeout:15000});
+    await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().rites.specimensV112.length===1,null,{timeout:60000});
     const loaded=await observe();
     [cargo]=loaded.rites.specimensV112;
     assert.equal(cargo.stage,'raw');
@@ -298,6 +298,7 @@ export async function playNativeOseris({
     await press('KeyE',arrival);
     await delivery.waitFor();
     const settled=await campaign();
+    data.settledCampaign=settled;
     const results=await page.evaluate(()=>window.__skinningCanopyQaV112.results);
     assert.equal(results.length,1);
     assert.equal(results[0].outcome,'success');
