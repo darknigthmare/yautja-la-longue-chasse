@@ -150,14 +150,15 @@ try {
     window.cinderPaintTrace = (index, scan) => {
       const node = game.scanNodes[index];
       const observed = renderAt(node.x, marker);
-      const before = { scanned: node.scanned, count: game.scans, energy: game.player.energy };
+      const snapshot = () => ({ scanned: node.scanned, traces: game.scanNodes.filter(item => item.scanned).map(item => item.id), energy: game.player.energy });
+      const before = snapshot();
       if (scan) {
         game.player.scanCooldown = 0;
         r.playerScan(game, mission);
         paint();
       }
       return { ...observed, id: node.id, x: node.x, y: node.y, before,
-        after: { scanned: node.scanned, count: game.scans, energy: game.player.energy },
+        after: snapshot(),
         stillDrawn: draws.some(({ id }) => id === marker.id) };
     };
     window.cinderPaintSanctum = () => ({
@@ -179,7 +180,7 @@ try {
     await capture(initial.id + "-before.png");
     const result = await page.evaluate(i => window.cinderPaintTrace(i, true), index);
     assert.equal(result.after.scanned, true);
-    assert.equal(result.after.count - result.before.count, 1);
+    assert.deepEqual(result.after.traces, [...result.before.traces, result.id]);
     assert.equal(result.before.energy - result.after.energy, 8);
     assert.equal(result.stillDrawn, true);
     await capture(result.id + "-scanned.png");
