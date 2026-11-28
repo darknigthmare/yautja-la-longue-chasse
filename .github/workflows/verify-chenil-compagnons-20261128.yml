@@ -12,12 +12,12 @@ jobs:
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'f36d9263361aa61817086608dea2bef1644d750a'
+      ASSET_RACCORDS_SOURCE_COMMIT: '78738f0866ad2af01045128a7b3978a900608e27'
     steps:
       - name: Checkout the game under test
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'f36d9263361aa61817086608dea2bef1644d750a'
+          ref: '78738f0866ad2af01045128a7b3978a900608e27'
           persist-credentials: false
           fetch-depth: 1
           filter: blob:none
@@ -34,6 +34,7 @@ jobs:
             /scripts/
             /build/
             /docs/
+            /content/the-pit/les-masques-brises/*.json
             /.openai/
             /public/**/manifest.json
             /public/game/user-pack/v56/cutouts/companion-*.png
