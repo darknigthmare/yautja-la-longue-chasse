@@ -64,7 +64,7 @@ import { normalizeSoloV67Campaign, soloV67MatchesSave } from "./systems/campaign
 import { normalizeSoloV68Campaign, soloV68MatchesSave } from "./systems/campaignSoloV68";
 import { normalizeSoloV69Campaign, soloV69MatchesSave } from "./systems/campaignSoloV69";
 import { normalizeSoloV70Campaign, soloV70MatchesSave } from "./systems/campaignSoloV70";
-import { inspectBloodedTempleV174, templeAvailableV174, templeHasFoundationV174, templeJournalSuccessorV174 } from "./systems/bloodedTempleV174";
+import { bloodedTempleSessionAvailableV174, inspectBloodedTempleV174, templeHasFoundationV174, templeJournalSuccessorV174 } from "./systems/bloodedTempleV174";
 import { eliteRecognitionMatchesSave, inspectEliteRecognition, isEliteRecognitionSuccessor } from "./systems/eliteRecognitionV174";
 import { normalizeSoloV90Campaign, soloV90MatchesSave } from "./systems/campaignSoloV90";
 import { normalizeHomeworldRegionV68, canEnterHomeworldRegionV68 } from "./systems/homeworldRegionsV68";
@@ -2440,7 +2440,7 @@ function persistCampaign(
       const requestedTemple = requested.bloodedTempleV174;
       if (JSON.stringify(previousTemple ?? null) !== JSON.stringify(requestedTemple ?? null) &&
           (!requestedTemple || !templeJournalSuccessorV174(previousTemple, requestedTemple) ||
-            !templeAvailableV174(previous))) {
+            !bloodedTempleSessionAvailableV174(previous))) {
         return failed("save-conflict", previous);
       }
       const previousWorkshop = previous.elderWorkshopV172;
