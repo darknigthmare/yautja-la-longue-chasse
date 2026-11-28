@@ -159,6 +159,8 @@ Thermique, électromagnétique, mouvement et analyse fonctionnent comme sur Terr
 ## 6. La carte de l'archipel
 
 > **Révision du 22 novembre :** la carte passe à 12 × 12 km avec Eastbank et Grayhaven. La carte à jour est dans [Métropole, transports, zone de quarantaine](ISLES_EXTENSION_METROPOLE_QUARANTAINE_20261122.md), section 2. Le schéma ci-dessous est la première version.
+>
+> **Révision du 28 novembre :** la forme de l'archipel suit désormais le Plan 2 du propriétaire : quatorze îles, un chapelet, des îlots et trois plateformes en mer. Le plan, la correspondance des îles et le contenu de chaque zone et sous-zone sont dans [L'archipel, île par île](ISLES_ARCHIPEL_ZONES_20261128.md). Cette fiche prévaut sur les schémas en grille pour la position et la liste des îles.
 
 ```text
                                   N
@@ -636,6 +638,8 @@ Un repaire principal (au choix du joueur) expose les trophées du mode, avec leu
 9. **Autres modes en ligne** (course aux trophées, grand gibier).
 
 **Avancement du prototype intégré :** étapes 1 et 3 jouables hors ligne, avec l'île de test et la Chasse inversée en solo contre l'IA. L'étape 2 dispose d'une salle facultative de test local, séparée du menu et du build web. [Prototype V1](ISLES_PROTOTYPE_V1_20261123.md).
+
+**Étape 4 (28 novembre 2026) :** Verdant en chasse libre, sur une île de 2 km générée à partir de données, avec un profil `islesV1` séparé de la campagne et des modèles Meshy. [Verdant en chasse libre](ISLES_VERDANT_CHASSE_LIBRE_20261128.md).
 
 ### 15.3 Tests
 - Caméra : aucun moment où le joueur est caché derrière un décor sans transparence.

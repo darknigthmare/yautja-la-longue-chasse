@@ -3,7 +3,12 @@
 
 export type IslesTileKindV1 =
   | "water" | "ford" | "sand" | "grass" | "jungle" | "mud" | "road" | "bush"
-  | "crate" | "rock" | "tree" | "wall" | "roof" | "pillar" | "ruin";
+  | "crate" | "rock" | "tree" | "wall" | "roof" | "pillar" | "ruin"
+  // Kinds of the full archipelago (islesArchipelagoGenV1.ts).
+  | "snow" | "lava" | "savanna" | "pine" | "palm" | "building";
+
+/** Tree kinds: a solid, climbable column drawn as a trunk and a crown. */
+export function isTreeKindV1(kind: IslesTileKindV1): boolean { return kind === "tree" || kind === "pine" || kind === "palm"; }
 
 export interface IslesLegendEntryV1 { kind: IslesTileKindV1; height: number }
 
@@ -27,10 +32,12 @@ export interface IslesMapV1 {
   kinds: IslesTileKindV1[];
   heights: Float32Array;
   markers: Record<string, [number, number][]>;
+  /** Large streamed worlds have no arrays: this returns a tile on demand (kinds and heights stay empty). */
+  sample?: (tx: number, tz: number) => IslesLegendEntryV1;
 }
 
 const KINDS = new Set<IslesTileKindV1>(["water", "ford", "sand", "grass", "jungle", "mud", "road", "bush",
-  "crate", "rock", "tree", "wall", "roof", "pillar", "ruin"]);
+  "crate", "rock", "tree", "wall", "roof", "pillar", "ruin", "snow", "lava", "savanna", "pine", "palm", "building"]);
 
 /** Validates and parses a map source. Throws on ragged rows, unknown characters or markers outside the map. */
 export function parseIslesMapV1(source: IslesMapSourceV1, tileMeters = 2): IslesMapV1 {
@@ -65,13 +72,13 @@ export function tileAtV1(map: IslesMapV1, x: number, z: number): [number, number
 /** Kind of a tile; outside the map is open sea, closed by the ARGOS cordon. */
 export function kindAtV1(map: IslesMapV1, tx: number, tz: number): IslesTileKindV1 {
   if (tx < 0 || tz < 0 || tx >= map.width || tz >= map.depth) return "water";
-  return map.kinds[tz * map.width + tx];
+  return map.sample ? map.sample(tx, tz).kind : map.kinds[tz * map.width + tx];
 }
 
 /** Top of the tile column in metres. */
 export function heightAtV1(map: IslesMapV1, tx: number, tz: number): number {
   if (tx < 0 || tz < 0 || tx >= map.width || tz >= map.depth) return -1.2;
-  return map.heights[tz * map.width + tx];
+  return map.sample ? map.sample(tx, tz).height : map.heights[tz * map.width + tx];
 }
 
 /** Water you swim in (a ford is waded, not swum). */

@@ -1,0 +1,43 @@
+{
+  "id": "01a22213-78c2-731c-92ce-86e2fbd5266f",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 2734685991,
+  "prompt": "Low-poly stylized-realistic game creature, adult jaguar standing on all four legs in a neutral stance, golden coat with black rosettes, muscular build, tail down, full body",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795868033315,
+  "progress": 100,
+  "started_at": 1795868033321,
+  "finished_at": 1795868062227,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-78c2-731c-92ce-86e2fbd5266f/output/model.glb?Expires=4949424000&Signature=eBtJIrqLajV7b~6drgus5U~rUL1N4LYfEHA7lHUaxEEpMax9yboB6zng39DJ8xU~oM4QwfaESLABBYcGfLKqHxihH2DhhwRDssxpPSGeybCIiNqXjCkxMn08eBfQWAPatIYPvvjIIPR~Hn8JEYOIbEBrgpOLfbQ0u~XrDewLnBk2GaH-ChaY9UFTKsnAmYmPqUahE-LIbem5TaCL~NEYyhFi217nCtuUQ7h1EXBRoAYDhlBHo1PMFpMf1Z3GpPT201gzJh0wU8Dt30q98RpENVTw-MRrGVK8Aj8FwNWClcgJtqDPczPX9eWaMBXdAZKS7R5PCTy-4C72rZx260LJcw__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-78c2-731c-92ce-86e2fbd5266f/output/preview.png?Expires=4949424000&Signature=eTfHcprKesH7IJRPV0Ys~TdFyA2svqRa9XGA60RVmxYkYJDS5BULxwiNSPo~TsYwhG5~CaRXIN1EQH87Exf5q0xchYRQJFC2EZ66e~WIaWmYl3gIWAE6sb-4KACh7KXhIcEIOms308MJDsoKldpQ3iUlhEfifpTRI-bWTcvulGU~Fjel01~3gCMkQzqllEvpoXdz~SkEbWdwQ3xTOa6eXcyLAmvwjfGY~8rQ~sgaLdaE4AOvHQstQUa3~8oLaIARQO79ktywwXrOaCKkdK0FsqtQ63gAvnml1iwhXFDjHZIT4F~o7djrcNsKsx9yzzodpgwnNNHW1XaZirb~FiQNZQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "prompt": "Low-poly stylized-realistic game creature, adult jaguar standing on all four legs in a neutral stance, golden coat with black rosettes, muscular build, tail down, full body",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 2734685991,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-78c2-731c-92ce-86e2fbd5266f/output/model.glb?Expires=4949424000&Signature=eBtJIrqLajV7b~6drgus5U~rUL1N4LYfEHA7lHUaxEEpMax9yboB6zng39DJ8xU~oM4QwfaESLABBYcGfLKqHxihH2DhhwRDssxpPSGeybCIiNqXjCkxMn08eBfQWAPatIYPvvjIIPR~Hn8JEYOIbEBrgpOLfbQ0u~XrDewLnBk2GaH-ChaY9UFTKsnAmYmPqUahE-LIbem5TaCL~NEYyhFi217nCtuUQ7h1EXBRoAYDhlBHo1PMFpMf1Z3GpPT201gzJh0wU8Dt30q98RpENVTw-MRrGVK8Aj8FwNWClcgJtqDPczPX9eWaMBXdAZKS7R5PCTy-4C72rZx260LJcw__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-78c2-731c-92ce-86e2fbd5266f/output/preview.png?Expires=4949424000&Signature=eTfHcprKesH7IJRPV0Ys~TdFyA2svqRa9XGA60RVmxYkYJDS5BULxwiNSPo~TsYwhG5~CaRXIN1EQH87Exf5q0xchYRQJFC2EZ66e~WIaWmYl3gIWAE6sb-4KACh7KXhIcEIOms308MJDsoKldpQ3iUlhEfifpTRI-bWTcvulGU~Fjel01~3gCMkQzqllEvpoXdz~SkEbWdwQ3xTOa6eXcyLAmvwjfGY~8rQ~sgaLdaE4AOvHQstQUa3~8oLaIARQO79ktywwXrOaCKkdK0FsqtQ63gAvnml1iwhXFDjHZIT4F~o7djrcNsKsx9yzzodpgwnNNHW1XaZirb~FiQNZQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}

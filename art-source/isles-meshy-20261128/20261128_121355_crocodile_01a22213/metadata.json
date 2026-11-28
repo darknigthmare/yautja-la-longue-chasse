@@ -1,0 +1,41 @@
+{
+  "schema_version": 2,
+  "project_name": "crocodile",
+  "folder": "20261128_121355_crocodile_01a22213",
+  "root_task_id": "01a22213-796c-7295-a3ba-8ac961f03a6e",
+  "created_at": "2026-11-28T12:13:55.405Z",
+  "updated_at": "2026-11-28T12:17:14.890Z",
+  "tasks": [
+    {
+      "task_id": "01a22213-796c-7295-a3ba-8ac961f03a6e",
+      "task_type": "text-to-3d-preview",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "preview",
+      "parent_task_id": null,
+      "status": "SUCCEEDED",
+      "files": [],
+      "task_json": "task_01a22213-796c-7295-a3ba-8ac961f03a6e.json",
+      "operation_id": null,
+      "created_at": "2026-11-28T12:14:22.299Z",
+      "updated_at": "2026-11-28T12:14:22.299Z"
+    },
+    {
+      "task_id": "01a22213-f5c2-76ed-bf01-088187abfba4",
+      "task_type": "text-to-3d-refine",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "refine",
+      "parent_task_id": "01a22213-796c-7295-a3ba-8ac961f03a6e",
+      "status": "SUCCEEDED",
+      "files": [
+        "model.glb",
+        "preview.png"
+      ],
+      "task_json": "task_01a22213-f5c2-76ed-bf01-088187abfba4.json",
+      "operation_id": "00afff5b-c29d-4f92-911b-0e026d62dddc",
+      "created_at": "2026-11-28T12:14:23.266Z",
+      "updated_at": "2026-11-28T12:17:14.890Z"
+    }
+  ]
+}

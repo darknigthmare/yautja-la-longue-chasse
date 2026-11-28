@@ -1,0 +1,56 @@
+{
+  "id": "01a22214-7c6c-7772-960f-4bdae052fc30",
+  "type": "text-to-3d-refine",
+  "mode": "refine",
+  "name": "",
+  "model_type": "standard",
+  "seed": 2910301456,
+  "prompt": "Low-poly game prop, ancient stepped stone pyramid altar ruin overgrown with jungle vines and moss, square base with four tiers and a central stair, flat top with a stone altar slab, weathered carved glyphs of an unknown alien hunter culture, original design",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795868097659,
+  "progress": 100,
+  "started_at": 1795868097666,
+  "finished_at": 1795868121925,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22214-7c6c-7772-960f-4bdae052fc30/output/model.glb?Expires=4949424000&Signature=ly4TfsX1ILgfYRsmpETeUtH0hd2En9oxnRt6w2hA7jC0ZtfLaKT4UZMN9uuYnUcAnS1-lop6h4bZYGy1HyuPnYnSYF4q0W1rGMNwgdXycJzPtzqAg-Qt7LHclSZDqDN54gtntYoTAkY5tRuZzdBcq-puMfpkFUqcDW~aNwkTqsHi9OxsyemW39ydEnaY5Z38I47562uvmVXFHEFQhNB7q5mNudYJnXjqVtrdDiCwrNTrwvbrReQNERiAdb4BZL8jgygR0A9HxCrW6Gpx48XuUHvoglA8obk3AazZHxZubeGavnbWGt0pHdYVJfmaQVfN0Uiqbhb~obFEOAPR7hgGZQ__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22214-7c6c-7772-960f-4bdae052fc30/output/preview.png?Expires=4949424000&Signature=f9aj-ENJeBFzp2SwRu7L4L6O-bz6kE6LD9apGRhIZXQE8Xgpb7sJmKKH1jHWKN4Rpq2P2RcilH25utXODd~O1XfNa4d837Ufn7CrOJV2VtdQYpa8TmmGtBOgyBHaoggl7C534K7qVafVYNRVCu0onsKPoUo7OZ4j7YIEM03HCeSWZC1zdMuxgErukNEb~C7PJDD~ZbG7pZctKxlyQZZ2ZDs~ULZxsfUstO9gNwpaOMX-uSaSkqWlAA34iCKx-tUDLRgec8D8r3S8kRDHMRuyp0XmZwGzOkkGg1KWpf3nucLjpDWQSTqE53jtdg94rGbqI0Gitl7MB8j8siSTvwY0SQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [
+    {
+      "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22214-7c6c-7772-960f-4bdae052fc30/output/texture_0.png?Expires=4949424000&Signature=SA~ZvTfB87WpgE8EgOkYde8-Wq3wjVx~VdTwFSCOVxZex4xdVk3u7~4HAMjNPkKqL68KgFhiEgQeqhNCyHTQpSfK1rdrCkNmvC-dV5QF9Mh8bd8KtO26QYJkCfwxwIwQEqEoKACiHyBY1ZscuT7mUzImDcXpgH8atdcRhzpnCm7P66WmCqvvJvqOXfCAzX~3VGlmyX4bB4c4dzNfgmcB6ZVQYjhQrwAh8bErqOO3CdPlNYzz7j6XloMkJPT0--MGlJB2tXhJQau~gR6leGhgjXYnjV0AyhPAq4SLd5j3VkAhP00Q476CSeYDA6RX~lb~055v10XLdhqIpWeGrcx96w__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    }
+  ],
+  "consumed_credits": 10,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "enable_pbr": false,
+    "mode": "refine",
+    "preview_task_id": "01a22213-795d-74ed-843e-f1d4c149f2b7",
+    "remove_lighting": true,
+    "target_formats": [
+      "glb"
+    ],
+    "texture_resolution": "2k"
+  },
+  "output": {
+    "seed": 2910301456,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22214-7c6c-7772-960f-4bdae052fc30/output/model.glb?Expires=4949424000&Signature=ly4TfsX1ILgfYRsmpETeUtH0hd2En9oxnRt6w2hA7jC0ZtfLaKT4UZMN9uuYnUcAnS1-lop6h4bZYGy1HyuPnYnSYF4q0W1rGMNwgdXycJzPtzqAg-Qt7LHclSZDqDN54gtntYoTAkY5tRuZzdBcq-puMfpkFUqcDW~aNwkTqsHi9OxsyemW39ydEnaY5Z38I47562uvmVXFHEFQhNB7q5mNudYJnXjqVtrdDiCwrNTrwvbrReQNERiAdb4BZL8jgygR0A9HxCrW6Gpx48XuUHvoglA8obk3AazZHxZubeGavnbWGt0pHdYVJfmaQVfN0Uiqbhb~obFEOAPR7hgGZQ__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22214-7c6c-7772-960f-4bdae052fc30/output/preview.png?Expires=4949424000&Signature=f9aj-ENJeBFzp2SwRu7L4L6O-bz6kE6LD9apGRhIZXQE8Xgpb7sJmKKH1jHWKN4Rpq2P2RcilH25utXODd~O1XfNa4d837Ufn7CrOJV2VtdQYpa8TmmGtBOgyBHaoggl7C534K7qVafVYNRVCu0onsKPoUo7OZ4j7YIEM03HCeSWZC1zdMuxgErukNEb~C7PJDD~ZbG7pZctKxlyQZZ2ZDs~ULZxsfUstO9gNwpaOMX-uSaSkqWlAA34iCKx-tUDLRgec8D8r3S8kRDHMRuyp0XmZwGzOkkGg1KWpf3nucLjpDWQSTqE53jtdg94rGbqI0Gitl7MB8j8siSTvwY0SQ__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": [
+      {
+        "base_color": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22214-7c6c-7772-960f-4bdae052fc30/output/texture_0.png?Expires=4949424000&Signature=SA~ZvTfB87WpgE8EgOkYde8-Wq3wjVx~VdTwFSCOVxZex4xdVk3u7~4HAMjNPkKqL68KgFhiEgQeqhNCyHTQpSfK1rdrCkNmvC-dV5QF9Mh8bd8KtO26QYJkCfwxwIwQEqEoKACiHyBY1ZscuT7mUzImDcXpgH8atdcRhzpnCm7P66WmCqvvJvqOXfCAzX~3VGlmyX4bB4c4dzNfgmcB6ZVQYjhQrwAh8bErqOO3CdPlNYzz7j6XloMkJPT0--MGlJB2tXhJQau~gR6leGhgjXYnjV0AyhPAq4SLd5j3VkAhP00Q476CSeYDA6RX~lb~055v10XLdhqIpWeGrcx96w__&Key-Pair-Id=K1VGYTHIYLM9UM",
+        "metallic": null,
+        "roughness": null,
+        "normal": null,
+        "metallic_roughness": null,
+        "emission": null
+      }
+    ]
+  }
+}

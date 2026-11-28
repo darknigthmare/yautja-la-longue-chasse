@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "project_name": "archeologue",
+  "folder": "20261128_121354_archeologue_01a22213",
+  "root_task_id": "01a22213-793b-746f-a79d-0313768f2491",
+  "created_at": "2026-11-28T12:13:54.375Z",
+  "updated_at": "2026-11-28T12:17:03.610Z",
+  "tasks": [
+    {
+      "task_id": "01a22213-793b-746f-a79d-0313768f2491",
+      "task_type": "text-to-3d-preview",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "preview",
+      "parent_task_id": null,
+      "status": "SUCCEEDED",
+      "files": [],
+      "task_json": "task_01a22213-793b-746f-a79d-0313768f2491.json",
+      "operation_id": null,
+      "created_at": "2026-11-28T12:14:37.195Z",
+      "updated_at": "2026-11-28T12:14:37.195Z"
+    },
+    {
+      "task_id": "01a22214-30ad-7725-8473-5a8f6d3ebde1",
+      "task_type": "text-to-3d-refine",
+      "resource": "text-to-3d",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "stage": "refine",
+      "parent_task_id": "01a22213-793b-746f-a79d-0313768f2491",
+      "status": "SUCCEEDED",
+      "files": [
+        "model.glb",
+        "preview.png"
+      ],
+      "task_json": "task_01a22214-30ad-7725-8473-5a8f6d3ebde1.json",
+      "operation_id": "c983d264-dd71-460b-b046-01f96be1263e",
+      "created_at": "2026-11-28T12:14:38.349Z",
+      "updated_at": "2026-11-28T12:17:03.610Z"
+    },
+    {
+      "task_id": "01a22214-74f3-7562-96ed-7eda630a136e",
+      "task_type": "rig",
+      "resource": "rigging",
+      "endpoint": "/openapi/v1/rigging",
+      "stage": "rigging",
+      "parent_task_id": "01a22214-30ad-7725-8473-5a8f6d3ebde1",
+      "status": "SUCCEEDED",
+      "files": [
+        "walking_glb.glb",
+        "running_armature_glb.glb",
+        "rigged.glb"
+      ],
+      "task_json": "task_01a22214-74f3-7562-96ed-7eda630a136e.json",
+      "operation_id": "394fc19a-58b6-4672-a9fb-dc83fc7c3e77",
+      "created_at": "2026-11-28T12:14:59.561Z",
+      "updated_at": "2026-11-28T12:16:40.112Z"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "source": "docs/campagne/MODE_THE_ISLES_20261121.md §7.1 ; ISLES_PRODUCTION_COMPLETE_20261121.md « Verdant » ; ISLES_MONDE_LEVEL_DESIGN_20261122.md §7 et §10",
+  "id": "isles-verdant-free-v1",
+  "name": "Verdant",
+  "seed": 20261128,
+  "size": 1000,
+  "island": {"centerX": 500, "centerZ": 500, "radius": 445, "coastNoise": 38, "beach": 4},
+  "highlands": [
+    {"id": "falaises-des-chutes", "x": 290, "z": 250, "rx": 120, "rz": 85, "level": 6},
+    {"id": "plateau-de-la-piste", "x": 790, "z": 230, "rx": 120, "rz": 75, "level": 3},
+    {"id": "eperon-du-sud", "x": 250, "z": 760, "rx": 55, "rz": 40, "level": 6}
+  ],
+  "river": {
+    "points": [[300, 272], [330, 340], [380, 410], [455, 470], [520, 545], [600, 585], [690, 600], [760, 605], [840, 625], [955, 650]],
+    "width": 6,
+    "fords": [[455, 470], [600, 585]],
+    "pools": [
+      {"x": 760, "z": 605, "rx": 18, "rz": 11},
+      {"x": 300, "z": 285, "rx": 9, "rz": 7}
+    ]
+  },
+  "vegetation": {"treeDensity": 0.2, "bushDensity": 0.1, "noiseScale": 0.035, "clearings": 0.18},
+  "canopyBand": {
+    "points": [[380, 650], [430, 640], [480, 655], [530, 640], [575, 650]],
+    "width": 9
+  },
+  "trails": [
+    {"from": "autel", "to": "fouilles", "width": 3},
+    {
+      "from": "autel",
+      "to": "repaire",
+      "width": 2,
+      "via": [[440, 330]]
+    },
+    {
+      "from": "autel",
+      "to": "piste",
+      "width": 2,
+      "via": [[680, 300]]
+    },
+    {
+      "from": "autel",
+      "to": "camp",
+      "width": 2,
+      "via": [[420, 450]]
+    },
+    {
+      "from": "camp",
+      "to": "village",
+      "width": 2,
+      "via": [[300, 700], [400, 830]]
+    },
+    {
+      "from": "fouilles",
+      "to": "village",
+      "width": 4,
+      "road": true,
+      "via": [[640, 640], [560, 800]]
+    },
+    {"from": "fouilles", "to": "extraction", "width": 2},
+    {
+      "from": "village",
+      "to": "epreuve",
+      "width": 2,
+      "via": [[440, 760]]
+    }
+  ],
+  "sites": {
+    "autel": {"x": 560, "z": 380, "clear": 26, "label": "Autel yautja"},
+    "fouilles": {"x": 690, "z": 470, "clear": 20, "label": "Fouilles archéologiques"},
+    "repaire": {"x": 300, "z": 330, "clear": 8, "label": "Repaire derrière les chutes"},
+    "chutes": {"x": 300, "z": 285, "clear": 0, "label": "Chutes"},
+    "camp": {"x": 230, "z": 520, "clear": 22, "label": "Camp des braconniers"},
+    "piste": {"x": 790, "z": 230, "clear": 30, "label": "Piste cachée"},
+    "village": {"x": 480, "z": 870, "clear": 28, "label": "Village côtier"},
+    "extraction": {"x": 760, "z": 622, "clear": 10, "label": "Bassin de l’hydravion"},
+    "epreuve": {"x": 370, "z": 653, "clear": 4, "label": "Épreuve de la canopée"}
+  },
+  "structures": {
+    "camp": [[-8, -6, 4, 3], [5, -8, 3, 3], [-4, 6, 4, 3], [9, 4, 3, 2]],
+    "fouilles": [[-7, -5, 4, 3], [4, -6, 3, 2], [-2, 6, 5, 2]],
+    "village": [[-18, -8, 4, 4], [-8, -12, 4, 3], [4, -10, 4, 4], [14, -6, 4, 3], [-12, 6, 4, 3], [6, 8, 5, 3]],
+    "piste": [[18, -10, 4, 3], [24, -10, 3, 3]]
+  },
+  "points": {
+    "spawn": [[560, 392]],
+    "repaireEntry": [[300, 330]],
+    "altarFront": [[560, 390]],
+    "carcassCircle": [[540, 396], [580, 396], [540, 414], [580, 414]],
+    "traces": [[244, 512], [222, 534], [214, 506]],
+    "radio": [[234, 514]],
+    "chief": [[228, 522]],
+    "fragments": [[410, 330], [650, 300], [860, 500], [560, 760], [180, 640]],
+    "trialRings": [[384, 650], [404, 646], [430, 640], [455, 648], [480, 655], [505, 648], [530, 640], [552, 646], [575, 650]],
+    "legendary": [[420, 700]],
+    "bounty": [[236, 528], [420, 470], [455, 470], [600, 585], [700, 420], [790, 240]],
+    "witnessRefuge": [[480, 860]],
+    "viewpoints": [[260, 250], [700, 205]]
+  }
+}

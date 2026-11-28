@@ -1,0 +1,44 @@
+{
+  "id": "01a22213-78cc-7488-9e5e-2a8dfd8e1381",
+  "type": "text-to-3d-preview",
+  "mode": "preview",
+  "name": "",
+  "model_type": "standard",
+  "seed": 2506672060,
+  "prompt": "Low-poly stylized-realistic game character, modern tactical response officer, dark navy uniform, ballistic helmet with goggles, plate carrier vest with radio and pouches, gloves, knee pads, boots, empty hands, A-pose, full body, original design, no logos, no text, no insignia",
+  "texture_prompt": "",
+  "texture_image_url": "",
+  "status": "SUCCEEDED",
+  "created_at": 1795868033879,
+  "progress": 100,
+  "started_at": 1795868033886,
+  "finished_at": 1795868076076,
+  "model_urls": {
+    "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-78cc-7488-9e5e-2a8dfd8e1381/output/model.glb?Expires=4949424000&Signature=dEOkwVvpZa5jh3697NvmUz0AH2sCXYQlwHecfWC7zzaCeSsDHocL8~aM5wi~M8UhF5FLkmgZJpX5J2cylz9lr-cu8u9823ac4AcwPXz6gqBzZTK9IsckqzIxcrpARyNWdAiu3f6ki7Io5RXQ1SxaZv~eZ09QoVDA1s5ljayFqCuke93rV4KCx1tEE4OgdXu2vbzU3u1f9JDjSjX~NOVS4zHHLN8~cIgY~qk~rNMyxyTB0PXoMZsXnwZynimWMTScGr3n~x-CyKDPGV9-WPh60uE4jmaMp6~t0XYuO~KpTuC96FtlnVjk~WbGHFFcPV~6~B6Emvc7T7cFHWa5MKGQLg__&Key-Pair-Id=K1VGYTHIYLM9UM"
+  },
+  "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-78cc-7488-9e5e-2a8dfd8e1381/output/preview.png?Expires=4949424000&Signature=Z6Qf3nIC5P~0wmGd7O0NtKFX9Oso6l8Vve8GQFGHKwQa0TYrVmR~n4NqKJeGIjaBEn86GtuOWZDWQ~Qhg0F86tJ-vfJ0B-dopYcjGsLl8iLM7Ux3w8UiaktSvLhcOF6aB7O0VjKlCeqClcM5fP7~7Y8lOiN5AUREooHgWfrRlUl8WoaapLa1aN4K2LsY5-cPP63Y4tv384xluADHdEvegyfkfuhUGdPCVA9pvUjKlGu82LxdpQuoKZ--CfVNgZcSgGCF-4rkj-r9AR63d2Kc9XZjvb2xwlBUCa0fn6bClmezRtdV2Qwzb2F-mGlCdQBYpR3FW3UqxAWJy1p7wOwP7Q__&Key-Pair-Id=K1VGYTHIYLM9UM",
+  "texture_urls": [],
+  "consumed_credits": 20,
+  "task_error": null,
+  "expires_at": null,
+  "input": {
+    "mode": "preview",
+    "pose_mode": "a-pose",
+    "prompt": "Low-poly stylized-realistic game character, modern tactical response officer, dark navy uniform, ballistic helmet with goggles, plate carrier vest with radio and pouches, gloves, knee pads, boots, empty hands, A-pose, full body, original design, no logos, no text, no insignia",
+    "should_remesh": true,
+    "target_formats": [
+      "glb"
+    ],
+    "target_polycount": 8000,
+    "topology": "triangle"
+  },
+  "output": {
+    "seed": 2506672060,
+    "model_urls": {
+      "glb": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-78cc-7488-9e5e-2a8dfd8e1381/output/model.glb?Expires=4949424000&Signature=dEOkwVvpZa5jh3697NvmUz0AH2sCXYQlwHecfWC7zzaCeSsDHocL8~aM5wi~M8UhF5FLkmgZJpX5J2cylz9lr-cu8u9823ac4AcwPXz6gqBzZTK9IsckqzIxcrpARyNWdAiu3f6ki7Io5RXQ1SxaZv~eZ09QoVDA1s5ljayFqCuke93rV4KCx1tEE4OgdXu2vbzU3u1f9JDjSjX~NOVS4zHHLN8~cIgY~qk~rNMyxyTB0PXoMZsXnwZynimWMTScGr3n~x-CyKDPGV9-WPh60uE4jmaMp6~t0XYuO~KpTuC96FtlnVjk~WbGHFFcPV~6~B6Emvc7T7cFHWa5MKGQLg__&Key-Pair-Id=K1VGYTHIYLM9UM"
+    },
+    "thumbnail_url": "https://assets.meshy.ai/52596fa9-0461-40f4-b5ad-d9522e05c265/tasks/01a22213-78cc-7488-9e5e-2a8dfd8e1381/output/preview.png?Expires=4949424000&Signature=Z6Qf3nIC5P~0wmGd7O0NtKFX9Oso6l8Vve8GQFGHKwQa0TYrVmR~n4NqKJeGIjaBEn86GtuOWZDWQ~Qhg0F86tJ-vfJ0B-dopYcjGsLl8iLM7Ux3w8UiaktSvLhcOF6aB7O0VjKlCeqClcM5fP7~7Y8lOiN5AUREooHgWfrRlUl8WoaapLa1aN4K2LsY5-cPP63Y4tv384xluADHdEvegyfkfuhUGdPCVA9pvUjKlGu82LxdpQuoKZ--CfVNgZcSgGCF-4rkj-r9AR63d2Kc9XZjvb2xwlBUCa0fn6bClmezRtdV2Qwzb2F-mGlCdQBYpR3FW3UqxAWJy1p7wOwP7Q__&Key-Pair-Id=K1VGYTHIYLM9UM",
+    "alpha_thumbnail_url": null,
+    "texture_urls": []
+  }
+}
