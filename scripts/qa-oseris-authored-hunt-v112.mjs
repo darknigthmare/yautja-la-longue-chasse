@@ -320,13 +320,15 @@ export async function playNativeOseris({
     await page.getByRole('button',{name:/^ARMURERIE.*Ouvrir l’interface/i}).first().click();
     const item=page.locator('[data-specimen-id-v112="'+cargo.id+'"]');
     await item.waitFor();
-    assert.ok((await item.innerText()).includes(cargo.label));
+    assert.equal(await item.getAttribute('aria-label'),cargo.label);
     const before=await campaign();
-    await item.getByRole('button',{name:/^Nettoyer · 2 marques/}).click();
-    const action=item.getByRole('button',{name:/^Effectuer un geste/});
+    const start=item.getByRole('button',{name:/^Nettoyer · 2 marques/i});
+    await start.focus();
+    await page.keyboard.press('Enter');
+    const action=item.getByRole('button',{name:/^Effectuer un geste/i});
     for (let step=0;step<3;step++) {
-      if (await item.innerText().then(value=>value.includes('Nettoyée'))) break;
-      await action.click();
+      await action.focus();
+      await page.keyboard.press('Enter');
     }
     const after=await campaign();
     assert.equal(after.inventory.harvestV112.specimens.find(entry=>entry.id===cargo.id)?.stage,'cleaned');
