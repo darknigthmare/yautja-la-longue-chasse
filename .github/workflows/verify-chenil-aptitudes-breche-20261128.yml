@@ -12,12 +12,12 @@ jobs:
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '3ba9960103ce8a3a98c2493929571dbffad5bde7'
+      ASSET_RACCORDS_SOURCE_COMMIT: '8017ba9a0f29da53868522de25e97560d3ebf923'
     steps:
       - name: Checkout the game under test
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '3ba9960103ce8a3a98c2493929571dbffad5bde7'
+          ref: '8017ba9a0f29da53868522de25e97560d3ebf923'
           persist-credentials: false
           fetch-depth: 1
           filter: blob:none
@@ -52,15 +52,15 @@ jobs:
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Exercise the prices, legacy roster and order simulation
         run: node --test --test-reporter=spec tests/hunting-hounds-v147.test.mjs tests/companion-residence.test.mjs tests/mobility-market-cross-services.test.mjs
-      - name: Materialize pinned runtime assets
-        run: node scripts/materialize-asset-raccords-20261120.mjs runtime
-      - name: Play the kennel and field orders in Chromium
-        run: node scripts/qa-hound-kennel-20261128.mjs
       - name: Verify types and targeted lint
         run: |
           node node_modules/next/dist/bin/next typegen
           node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
-          node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/HoundKennelPanelV147.tsx app/game/HuntingHoundsPanelV147.tsx app/game/systems/huntingHoundsV147.ts app/game/systems/houndKennelV147.ts app/game/systems/companionResidence.ts scripts/qa-hound-kennel-20261128.mjs tests/hunting-hounds-v147.test.mjs
+          node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/HuntCanvas.tsx app/game/HoundKennelPanelV147.tsx app/game/HuntingHoundsPanelV147.tsx app/game/systems/huntingHoundsV147.ts app/game/systems/houndKennelV147.ts app/game/systems/companionResidence.ts scripts/qa-hound-kennel-20261128.mjs tests/hunting-hounds-v147.test.mjs
+      - name: Materialize pinned runtime assets
+        run: node scripts/materialize-asset-raccords-20261120.mjs runtime
+      - name: Play the kennel and field orders in Chromium
+        run: node scripts/qa-hound-kennel-20261128.mjs
       - name: Upload the native receipts
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
