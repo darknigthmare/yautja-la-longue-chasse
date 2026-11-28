@@ -91,7 +91,7 @@ try {
     const revision = () => state.bossMechanics.guardianAdaptation;
     const tick = (seconds, shot = false) => {
       state.elapsed += seconds;
-      state.scanPulse = 1;
+      state.scanPulse = 0.36;
       state.playerUsedEnergyWeapon = shot;
       state.playerUsedRangedWeapon = shot;
       r.updateBoss(state, mission, "hunter", seconds);
