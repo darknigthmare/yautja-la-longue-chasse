@@ -148,24 +148,24 @@ export interface ClanShipRecruitDefinition {
   summary: string; effect: string; requiredContractIds: readonly ClanShipContractId[];
   spaceCrewRole: ClanShipSpaceCrewRole; joinLine: string;
 }
-/** Original French epithets. A recruitment is an agreement after proof, not a purchase. */
+/** Original Yautja names with their established French epithets. */
 export const CLAN_SHIP_RECRUITS: readonly ClanShipRecruitDefinition[] = [
-  { id: 'ash-scar', name: 'Balafre de Cendre', role: 'Vétéran des exercices', roomId: 'entrainement',
+  { id: 'ash-scar', name: 'Dhar’sek « Balafre de Cendre »', role: 'Vétéran des exercices', roomId: 'entrainement',
     summary: 'Il veut voir ce que tu apprends d’une chasse, pas seulement entendre le nom de ta prise.', effect: 'À l’entraînement ; sa coordination réduit les pertes de la formation pendant les opérations spatiales.',
     requiredContractIds: ['ship-training-circuit'], spaceCrewRole: 'veteran', joinLine: 'Tu sais enfin pourquoi tu places tes cibles. Nous pourrons travailler ensemble. Pour les prochaines sorties, viens me chercher.' },
-  { id: 'star-watch', name: 'Veille des Astres', role: 'Navigatrice', roomId: 'conseil',
+  { id: 'star-watch', name: 'Osh’veli « Veille des Astres »', role: 'Navigatrice', roomId: 'conseil',
     summary: 'Elle n’ouvre pas une route au clan sur la foi d’un récit ancien.', effect: 'Au conseil ; sa première manœuvre place la formation à portée rapprochée.',
     requiredContractIds: ['field-ice-route'], spaceCrewRole: 'navigator', joinLine: 'Cette fois, tu as parcouru la route. Je préparerai les suivantes avec toi. Préviens-moi avant le départ.' },
-  { id: 'iron-claw', name: 'Griffe de Fer', role: 'Armurier', roomId: 'armurerie',
+  { id: 'iron-claw', name: 'Korr’dhak « Griffe de Fer »', role: 'Armurier', roomId: 'armurerie',
     summary: 'Il reconnaît les armes qu’il confie aux chasseurs et n’aime pas les retrouver au mauvais râtelier.', effect: 'À l’armurerie ; sa préparation renforce les tirs et la neutralisation des moteurs.',
     requiredContractIds: ['ship-armory-audit'], spaceCrewRole: 'armorer', joinLine: 'Tu as regardé les marques avant d’accuser un porteur. Apporte-moi tes armes quand nous repartirons.' },
-  { id: 'cold-trace', name: 'Trace Froide', role: 'Pisteur des archives', roomId: 'archives',
+  { id: 'cold-trace', name: 'Kesh’var « Trace Froide »', role: 'Pisteur des archives', roomId: 'archives',
     summary: 'Il cherche dans les relevés ce qu’un chasseur pressé de frapper n’a pas vu.', effect: 'Aux archives ; il identifie le contact et prépare l’abordage en une seule analyse.',
     requiredContractIds: ['field-jungle-survey'], spaceCrewRole: 'tracker', joinLine: 'Ces images montrent autre chose que le dernier coup. Garde cette habitude ; je chercherai les pistes avec toi.' },
-  { id: 'black-suture', name: 'Suture Noire', role: 'Responsable des soins', roomId: 'soins',
+  { id: 'black-suture', name: 'Nha’serk « Suture Noire »', role: 'Responsable des soins', roomId: 'soins',
     summary: 'Elle prépare le retour des vivants, y compris de ceux qui refusent encore d’admettre leurs blessures.', effect: 'Aux soins ; son assistance réduit les pertes de la formation pendant les engagements.',
     requiredContractIds: ['ship-triage-route'], spaceCrewRole: 'medic', joinLine: 'Le passage est prêt. Bien. Quand nous chasserons ensemble, annonce tes blessures avant qu’elles ne te fassent tomber.' },
-  { id: 'threshold-guard', name: 'Garde du Seuil', role: 'Responsable du confinement', roomId: 'hangar',
+  { id: 'threshold-guard', name: 'Thar’zek « Garde du Seuil »', role: 'Responsable du confinement', roomId: 'hangar',
     summary: 'Il ne laisse pas une prise entrer à bord simplement parce que son porteur se dit victorieux.', effect: 'Au hangar ; il réduit le coût d’abordage et les pertes du transport ou de la capsule.',
     requiredContractIds: ['ship-seal-check'], spaceCrewRole: 'warden', joinLine: 'Tu es revenu vérifier le sas. C’est là que beaucoup s’arrêtent trop tôt. Nous pourrons garder ce seuil ensemble.' },
 ];
