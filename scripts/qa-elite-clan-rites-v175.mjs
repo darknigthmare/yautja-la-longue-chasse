@@ -28,7 +28,7 @@ const page = await browser.newPage({
   storageState: { cookies: [], origins: [{ origin: url.origin,
     localStorage: [{ name: SAVE_STORAGE_KEY, value: JSON.stringify(admission.save) }] }] },
 });
-const report = { audience, mandateRoute, checkpoints: [], pageErrors: [] };
+const report = { audience, mandateRoute, checkpoints: [], trialAttempts: [], pageErrors: [] };
 page.on("pageerror", error => report.pageErrors.push(error.message));
 const disk = () => page.evaluate(key => JSON.parse(localStorage.getItem(key) ?? "null"), SAVE_STORAGE_KEY);
 const boot = async () => {
@@ -45,13 +45,23 @@ const playTrial = async (trial, unsafe = false) => {
   const start = dialog.getByRole("button", { name: /Commencer l’épreuve/ });
   await start.click();
   const state = createTrainingDrill(trial.disciplineId, trial.seed, trial.clanPlasma);
+  await dialog.locator("[data-training-drill-action=primary]").waitFor();
+  await dialog.focus();
+  const keyboard = { left: "q", right: "d", primary: "p", secondary: "e" };
   for (const [i, action] of state.sequence.entries()) {
     const command = unsafe && i === 3 ? "primary" : action;
-    if (command === "primary") await dialog.press("p", { timeout: 5000 });
-    else await dialog.locator("[data-training-drill-action=" + command + "]").press("Enter", { timeout: 5000 });
+    await page.keyboard.press(keyboard[command]);
   }
-  await dialog.getByRole("button", { name: "Consigner le résultat" }).click();
+  const confirm = dialog.getByRole("button", { name: "Consigner le résultat" });
+  await confirm.waitFor();
+  const score = (await dialog.innerText()).split("\n").find(line => line.includes("réponses correctes"));
+  await confirm.click();
   await dialog.waitFor({ state: "hidden" });
+  const written = await disk();
+  const receipts = written.eliteRecognitionV174?.trials.map(receipt => receipt.id) ?? [];
+  const feedback = await page.locator("[data-elite-clan-rites] > [role=status]").textContent({ timeout: 2500 }).catch(() => "");
+  report.trialAttempts.push({ id: trial.id, unsafe, score, receipts, feedback });
+  assert.equal(receipts.includes(trial.id), !unsafe, JSON.stringify(report.trialAttempts.at(-1)));
 };
 try {
   await boot();
@@ -150,6 +160,12 @@ try {
     assert.deepEqual(report.pageErrors, []);
     report.checkpoints.push("reconnaissance au socle, chronique Elite et rechargement confirmé");
   }
+} catch (error) {
+  report.failure = String(error);
+  report.visible = (await page.locator("body").innerText().catch(() => "")).slice(0, 1800);
+  console.error(JSON.stringify({ failure: report.failure, trialAttempts: report.trialAttempts, pageErrors: report.pageErrors }));
+  await snap("error.png").catch(() => {});
+  throw error;
 } finally {
   await writeFile(resolve(output, "parcours.json"), JSON.stringify(report, null, 2));
   await browser.close();
