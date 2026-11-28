@@ -15,7 +15,7 @@ jobs:
       - name: Checkout the exact application revision
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'f91a35e0c271ad824680c0c5d33b967990002861'
+          ref: 'f29fa712e9b43150e64f6a2ff3154a521f668933'
           filter: blob:none
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -39,17 +39,18 @@ jobs:
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Run behavior tests and type checks
         run: |
-          test "$(git rev-parse HEAD)" = 'f91a35e0c271ad824680c0c5d33b967990002861'
+          test "$(git rev-parse HEAD)" = 'f29fa712e9b43150e64f6a2ff3154a521f668933'
           node --experimental-strip-types --test tests/world-hazard-rendering-20261128.test.mjs tests/world-blueprint-validation.test.mjs
           npm run typecheck
           node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/worldHazardRendering.ts tests/world-hazard-rendering-20261128.test.mjs scripts/qa-world-hazard-vfx-20261128.mjs
       - name: Draw the production hunt in Chromium
+        if: ${{ !cancelled() }}
         run: node scripts/qa-world-hazard-vfx-20261128.mjs
       - name: Preserve report and pixels
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: dangers-biomes-f91a35e0c271ad824680c0c5d33b967990002861
+          name: dangers-biomes-f29fa712e9b43150e64f6a2ff3154a521f668933
           path: outputs/qa-world-hazard-vfx-20261128/
           if-no-files-found: warn
           retention-days: 30
