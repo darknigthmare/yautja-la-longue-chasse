@@ -73,7 +73,7 @@ try {
         await page.getByRole("button", { name: "Dossier de campagne", exact: true }).click();
         await page.locator("[data-warp-entry-v165]").click();
       } else {
-        await page.getByRole("button", { name: "Jouer", exact: true }).click();
+        await page.locator("[data-warp-deck-entry]").waitFor();
         if (via === "map") {
           await page.getByRole("button", { name: "Accès rapide aux installations", exact: true }).click();
           await page.getByText("Accès direct aux interfaces", { exact: true }).click();
