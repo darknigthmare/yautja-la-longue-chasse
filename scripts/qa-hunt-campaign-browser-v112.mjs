@@ -380,6 +380,7 @@ try{
     let final=null,lastSecond=-1,lastPhase='',resumed=false,resumeReceipt=null,lastDecision=null,groundApproach=null;
     let startedWestOfIceGate=false,seenIceUnderpass=false;
     let trophyApproachMemory={},previousApexReason=null;
+    let recoveryApproach={};
     const releaseKeys=async()=>{for(const action of held)await page.keyboard.up(keys[action]);held.clear();};
     while(!stopRequested&&Date.now()-start<budget*1000){
       const {observed,activeElement,bodyId}=await page.evaluate(()=>{
@@ -463,7 +464,7 @@ try{
         }
         retryEvents.push({elapsed:game.elapsed,nativeDeath:final,button:label});
         Object.assign(memory,{previousX:0,stuckTicks:0,jumpUntil:-1,nextJump:0,nextInteractTick:0});
-        trophyApproachMemory={};previousApexReason=null;
+        trophyApproachMemory={};previousApexReason=null;recoveryApproach={};
         delete memory.dropDirection;delete memory.dropTargetX;delete memory.harvestEdge;delete memory.harvestDirection;
         examined.clear();harvestTries.clear();
         // The new live attempt needs its own observed save roundtrip.
@@ -545,6 +546,17 @@ try{
       }
       const tick=Math.round(game.elapsed*60);
       const decision=decideHuntCampaignInputV112(game,tick,memory,'mixed');
+      const technology=game.phase==='target'?game.recoveryNodes.find(node=>!node.recovered):null;
+      if(requireGroundExtraction&&technology&&['technology','descend by support edge'].includes(decision.reason)){
+        if(recoveryApproach.nodeId!==technology.id)recoveryApproach={nodeId:technology.id};
+        const reach=Math.hypot(technology.x-player.x-player.width/2,technology.y-player.y-player.height/2)<=105;
+        const approach=decideGroundApexTrophyInputV112(game,tick,recoveryApproach,technology,reach);
+        decision.held=approach.held;
+        decision.pressed=[...decision.pressed.filter(action=>action==='heal'||action==='scan'),...approach.pressed];
+        decision.pointer=null;
+        decision.reason=reach?'recover the nearby technology':'walk to the observed technology';
+        decision.target=technology;
+      }
       const trophy=observed.apexTrophy;
       const purgePending=game.bossMechanics.missionId==='volcano-bad-blood'&&
         game.bossMechanics.purgeSeconds!==null&&!game.bossMechanics.purgeResolved;
@@ -593,7 +605,8 @@ try{
         }else await page.keyboard.press(keys[action]);
         report.inputs.push({missionId,elapsed:game.elapsed,type:'press',action});
       }
-      if(!resumed&&game.elapsed>=20){
+      if(!resumed&&game.elapsed>=20&&(!requireGroundExtraction||game.huntRites.specimensV112.length)){
+        const carriedAtSuspension=game.huntRites.specimensV112;
         await releaseKeys();
         await page.getByRole('button',{name:'Mettre en pause, consulter la carte et le sac',exact:true}).click();
         const pause=page.getByRole('dialog',{name:'Chasse en pause · Carte et sac',exact:true});
@@ -612,6 +625,10 @@ try{
         assert.ok(restored?.alive&&restored.missionId===missionId&&restored.encounterRun===observed.encounterRun&&
           restored.state.elapsed>=sidecar.snapshot.checkpoint.elapsed&&restored.state.elapsed-sidecar.snapshot.checkpoint.elapsed<2,
           'the real mounted runtime must continue the persisted hunt at its observed encounter');
+        if(requireGroundExtraction){
+          assert.deepEqual(restored.state.huntRites.specimensV112,carriedAtSuspension,
+            'the same loaded specimens must survive the native suspend and reload');
+        }
         resumeReceipt={sidecar,restored};resumed=true;lastElapsed=null;lastSecond=-1;
         const resume={missionId,encounterRun:restored.encounterRun,
           savedElapsed:sidecar.snapshot.checkpoint.elapsed,restoredElapsed:restored.state.elapsed,sidecarSha256:hash(sidecar)};
