@@ -149,4 +149,48 @@ test("the real campaign records each exercise, rejects standalone promotion and 
   assert.notEqual(rankReceipts({ ...save, quatzaRij: null })[1].status, "recognized");
   assert.equal(saves.writeSaveWithStatus(stale, disk).failure, "save-conflict");
   assert(!command(save, { type: "recognize" }, POSTS.mark).ok);
+  assert.equal(save.eliteRecognitionV174.queenMandate, undefined, "Recognition saves from before the arena stay eligible");
+  advance({ type: "queen-mandate" }, trialRules.ELITE_CLAN_RITES_POSTS.hunt);
+  assert.equal(chronicle.getChronicleRank(save.prologue.chronicle), "elite");
+  assert(save.eliteRecognitionV174.recognized && save.eliteRecognitionV174.queenMandate);
+});
+
+test("the chief writes one owner-bound mandate after trials reached on the arena floor", () => {
+  const hall = trialRules.ELITE_CLAN_RITES_POSTS;
+  assert(trialRules.canWalkEliteClanRites(hall.hunt));
+  assert(!trialRules.canWalkEliteClanRites({ column: 4, row: 3 }));
+  assert(!trialRules.canWalkEliteClanRites({ column: 4, row: 1 }));
+  const diskState = new Map();
+  const disk = { getItem: key => diskState.get(key) ?? null, setItem: (key, value) => diskState.set(key, value),
+    removeItem: key => diskState.delete(key) };
+  let save = saves.replaceSaveWithStatus(admitEliteCampaign({ returnCrown: false }), disk).save;
+  assert(save && !save.buriedCradle);
+  const mandate = { type: "queen-mandate" };
+  assert(!command(save, mandate, hall.hunt).ok);
+  for (const trial of trialRules.ELITE_CLAN_TRIALS) {
+    const result = command(save, { type: "trial", id: trial.id, trace: playedTrial(trial) }, hall[trial.id]);
+    assert(result.ok, result.message);
+    const written = saves.writeSaveWithStatus({ ...save, eliteRecognitionV174: result.state }, disk);
+    assert(written.persisted, written.failure);
+    save = written.save;
+  }
+  const legacy = save;
+  assert(saves.parseSaveImport(saves.exportSave(legacy)).save, "Campaigns with old trials remain readable");
+  assert(!command(save, mandate, hall.entry).ok);
+  assert(!command(save, mandate, hall.hunt, 2).ok);
+  const result = command(save, mandate, hall.hunt);
+  assert(result.ok, result.message);
+  const written = saves.writeSaveWithStatus({ ...save, eliteRecognitionV174: result.state }, disk);
+  assert(written.persisted, written.failure);
+  const imported = saves.parseSaveImport(saves.exportSave(written.save)).save;
+  assert(imported.eliteRecognitionV174.queenMandate);
+  assert.equal(imported.eliteRecognitionV174.revision, 4);
+  assert.equal(chronicle.getChronicleRank(imported.prologue.chronicle), "blooded");
+  assert(!imported.buriedCradle);
+  assert.deepEqual(imported.prologue, legacy.prologue);
+  assert(!command(imported, mandate, hall.hunt).ok);
+  assert(!saves.writeSaveWithStatus(legacy, disk).persisted);
+  const tampered = { ...legacy.eliteRecognitionV174, trials: legacy.eliteRecognitionV174.trials.slice(0, 2),
+    queenMandate: true };
+  assert.equal(ceremony.inspectEliteRecognition(tampered, legacy.createdAt).status, "invalid-save");
 });

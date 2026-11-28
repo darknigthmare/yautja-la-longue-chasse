@@ -40,6 +40,19 @@ const snapshot = page => page.evaluate(storageKey => JSON.parse(localStorage.get
 const archive = page => page.evaluate(storageKey => Object.fromEntries(Object.keys(localStorage)
   .filter(name => name !== storageKey).map(name => [name, localStorage.getItem(name)])), key);
 const roster = page => lobby(page).getByRole("list", { name: "Invités admis" });
+const exercise = page => lobby(page).locator("[data-campaign-coop-exercise]");
+const step = (page, expected) => exercise(page).locator('[data-coop-exercise-step="' + expected + '"]');
+
+async function followCue(page, prefix, cluePattern, wrong = false) {
+  const panel = exercise(page);
+  const clue = await panel.getByText(cluePattern).innerText();
+  const choices = panel.getByRole("button", { name: new RegExp("^" + prefix + " ") });
+  assert.equal(await choices.count(), 2);
+  const labels = await choices.allTextContents();
+  const correct = labels.findIndex(label => clue.endsWith(" " + label.trim().slice(prefix.length + 1) + "."));
+  assert.ok(correct >= 0, clue);
+  await choices.nth(wrong ? 1 - correct : correct).click();
+}
 
 async function enterLobby(page) {
   await page.locator('[data-menu-section="campaign"]').click();
@@ -154,7 +167,60 @@ try {
   await host.screenshot({ path: resolve(output, "salon-trio.png"), animations: "disabled" });
   pass("Le renouvellement invalide l’ancien code et le trio complet bloque une quatrième place.");
 
+  await button(host, "Lancer l’exercice").click();
+  await Promise.all([host, winner, other].map(page => step(page, "track").waitFor()));
+  assert.equal(await exercise(fourth).count(), 0);
+  assert.equal(await button(host, "Faire franchir le trio").count(), 0);
+  assert.equal(await exercise(host).getByRole("button", { name: /^Signaler/ }).count(), 0);
+  assert.equal(await exercise(other).getByRole("button", { name: /^Signaler/ }).count(), 0);
+
+  await followCue(winner, "Signaler", /^Les traces fraîches/, true);
+  await lobby(winner).getByText(/La voie signalée ne porte/).waitFor();
+  assert.equal((await snapshot(host)).exercise.journal.length, 0);
+  await followCue(winner, "Signaler", /^Les traces fraîches/);
+  await step(other, "support").waitFor();
+  const firstSignal = (await snapshot(host)).exercise.journal;
+  for (const page of [host, winner, other]) {
+    await page.reload();
+    await enterLobby(page);
+    await step(page, "support").waitFor();
+    assert.deepEqual((await snapshot(page)).exercise.journal, firstSignal);
+  }
+  await host.screenshot({ path: resolve(output, "releve-apres-reprise.png"), animations: "disabled" });
+
+  for (let passage = 0; passage < 3; passage++) {
+    if (passage > 0) {
+      await step(winner, "track").waitFor();
+      await followCue(winner, "Signaler", /^Les traces fraîches/);
+    }
+    await step(other, "support").waitFor();
+    if (passage === 0) {
+      await followCue(other, "Assurer", /^La charge tient/, true);
+      await lobby(other).getByText(/Cette prise cède/).waitFor();
+      assert.equal((await snapshot(host)).exercise.journal.length, 1);
+    }
+    await followCue(other, "Assurer", /^La charge tient/);
+    await step(host, "lead").waitFor();
+    assert.equal(await button(other, "Faire franchir le trio").count(), 0);
+    await button(host, "Faire franchir le trio").click();
+  }
+  for (const page of [host, winner, other]) {
+    await exercise(page).getByText(/^Relève terminée/).waitFor();
+    const current = await snapshot(page);
+    assert.equal(current.exercise.journal.length, 9);
+    assert.deepEqual(current.exercise.journal.map(entry => entry.actor),
+      [current.guests[0].proof, current.guests[1].proof, current.host.proof,
+        current.guests[0].proof, current.guests[1].proof, current.host.proof,
+        current.guests[0].proof, current.guests[1].proof, current.host.proof]);
+  }
+  await host.screenshot({ path: resolve(output, "releve-terminee.png"), animations: "disabled" });
+  pass("Les trois chroniques jouent la relève sous l’autorité de l’hôte. Neuf signaux, deux erreurs corrigées et une reprise au même passage.");
+
+  await button(host, "Relancer l’exercice").click();
+  await step(winner, "track").waitFor();
   await button(winner, "Quitter le salon").click();
+  await exercise(host).getByText(/^Relève interrompue/).waitFor();
+  assert.equal((await snapshot(host)).exercise.abandoned, true);
   await roster(host).getByText(winnerName).waitFor({ state: "detached" });
   await button(host, "Fermer le salon").click();
   await lobby(other).getByText(/Le précédent salon est clos/).waitFor();

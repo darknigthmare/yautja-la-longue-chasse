@@ -223,6 +223,7 @@ test("a forged tool brace spends only the quoted bone and stays aligned with phy
 test("the equipped weapon advances across both native tiers with the exact selected bone and tissue only", () => {
   const current = withDamagedPlate();
   const weaponId = "combistick";
+  current.loadout.weaponIds = [weaponId, "wristblades"];
   assert(work.equippedForgeWeaponsV146(current).includes(weaponId));
   const native = qa.load("app/game/systems/arsenal.ts");
   const bone = { speciesId: "nivalis-k--glacier-ram", partId: "bone", label: "Côte renforcée", count: 5, qualityTotal: 453 };
@@ -316,3 +317,64 @@ test("the material path for the bow respects admission, native ammunition and th
   assert.equal(native.effectiveWeaponStats(bow, restored.inventory.weaponUpgrades[bow]).ammo, 10);
   assert.equal(work.forgeWeaponRecipeV146(restored, bow), null);
 });
+
+for (const [weapon, expected, charge, recovery] of [
+  ["plasma-caster", [{ bone: 2, tissue: 2 }, { bone: 3, tissue: 3 }], 1.1, "none"],
+  ["smart-disc", [{ bone: 3, tissue: 1 }, { bone: 4, tissue: 2 }], 0, "return"],
+]) {
+  test(`the forge preserves ${weapon} identity, exact stock and effective attacks through both tiers`, () => {
+    let save = withDamagedPlate();
+    save.loadout.weaponIds = ["combistick", "wristblades"];
+    const untouched = save.inventory.harvestV112.archive[0];
+    const boneCount = expected[0].bone + expected[1].bone;
+    const tissueCount = expected[0].tissue + expected[1].tissue;
+    const bone = { speciesId: "nivalis-k--glacier-ram", partId: "bone", label: "Côte renforcée", count: boneCount, qualityTotal: boneCount * 91 };
+    const tissue = { speciesId: "oseris-iv--vineback-grazer", partId: "tissue", label: "Ligament dorsal", count: tissueCount, qualityTotal: tissueCount * 79 };
+    const stock = [untouched, bone, tissue];
+    save.inventory.harvestV112.archive = stock;
+    const selection = { bone: work.forgeMaterialKeyV146(bone), tissue: work.forgeMaterialKeyV146(tissue) };
+    assert.equal(work.planForgeWeaponMaterialsV146(save, weapon, selection), null, "A spare weapon cannot go in this vise");
+    save.loadout.weaponIds = [weapon, "wristblades"];
+    const locked = structuredClone(save);
+    locked.inventory.unlockedWeaponIds = locked.inventory.unlockedWeaponIds.filter(id => id !== weapon);
+    assert.equal(work.planForgeWeaponMaterialsV146(locked, weapon, selection), null);
+    if (weapon === "smart-disc") {
+      assert(!save.inventory.unlockedWeaponIds.includes(weapon));
+      save.inventory.unlockedWeaponIds.push(weapon);
+    }
+    const arsenal = qa.load("app/game/systems/arsenal.ts");
+    const combat = qa.load("app/game/systems/huntSystems.ts");
+    const startMarks = save.profile.clanMarks;
+    for (const level of [1, 2]) {
+      const plan = work.planForgeWeaponMaterialsV146(save, weapon, selection);
+      assert(plan);
+      assert.deepEqual(plan.quote.requirements, expected[level - 1]);
+      const applied = work.applyHunterForgeWeaponUpgradeV146(save, plan.quote);
+      assert(applied);
+      assert.equal(work.applyHunterForgeWeaponUpgradeV146(applied, plan.quote), null);
+      const restored = saves.parseSaveImport(saves.exportSave(applied));
+      assert(restored.save, restored.failure);
+      save = restored.save;
+      assert.equal(save.inventory.weaponUpgrades[weapon], level);
+      assert.equal(save.inventory.weaponUpgrades.wristblades, 0);
+      assert.deepEqual(save.loadout.weaponIds, [weapon, "wristblades"]);
+      assert.equal(save.profile.clanMarks, startMarks);
+      assert.deepEqual(save.inventory.harvestV112.archive, level === 1 ? [
+        untouched,
+        { ...bone, count: expected[1].bone, qualityTotal: expected[1].bone * 91 },
+        { ...tissue, count: expected[1].tissue, qualityTotal: expected[1].tissue * 79 },
+      ] : [untouched]);
+      const before = arsenal.effectiveWeaponStats(weapon, level - 1);
+      const current = arsenal.effectiveWeaponStats(weapon, save.inventory.weaponUpgrades[weapon]);
+      const attack = combat.resolveHunterWeaponAttack(weapon, current, charge);
+      const previousAttack = combat.resolveHunterWeaponAttack(weapon, before, charge);
+      assert(attack.damage > previousAttack.damage);
+      assert(attack.energyCost < previousAttack.energyCost);
+      assert(attack.cooldownSeconds < previousAttack.cooldownSeconds);
+      assert.equal(attack.recovery, recovery);
+      assert.equal(attack.ammoCost, weapon === "smart-disc" ? 1 : 0);
+      assert.equal(current.ammo, weapon === "smart-disc" ? level + 1 : null);
+    }
+    assert.equal(work.forgeWeaponRecipeV146(save, weapon), null);
+  });
+}

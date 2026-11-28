@@ -33,6 +33,11 @@ import {
   W01_FJORD_BRANCH, W01_FJORD_ROUTES, normalizeWarpFjordRecord, warpFjordWithinReach,
   type WarpFjordAction, type WarpFjordRecord,
 } from "./warpFjordW01";
+import {
+  normalizeWarpFortressRecord, warpFortressInReach, warpFortressNextStage, W01_FORTRESS_APPROACH,
+  W01_FORTRESS_STAGES, W01_FORTRESS_TABLE, W01_FORTRESS_TIDE_POST,
+  type WarpFortressAction, type WarpFortressRecord,
+} from "./warpFortressW01";
 import { actWarpVillage, normalizeWarpVillage, type WarpVillageOrder, type WarpVillageRecord } from "./warpVillageR2M048";
 import {
   evaluateChronicleAccess, getChronicleFunctions, getChronicleRank, migrateV35ClanChronicle, type ChronicleAccessContext, type ClanChronicle,
@@ -196,6 +201,7 @@ export interface WarpBranchVisitV165 {
   r2M048?: WarpVillageRecord;
   /** Première reconnaissance W-01, archivée seulement après le retour à pied. */
   fjordW01?: WarpFjordRecord;
+  fortressW01?: WarpFortressRecord;
 }
 export interface WarpEchoV165 { id: string; fromBranchId: WarpBranchIdV165; toBranchId: WarpBranchIdV165; text: string; effect: string }
 export type WarpSurveyR2 = { tripId: string; stage: "marker" | "complete"; nicheVisited: boolean };
@@ -298,9 +304,16 @@ function normalizeVisit(value: unknown, id: WarpBranchIdV165): WarpBranchVisitV1
     fjordW01 = normalizeWarpFjordRecord(value.fjordW01);
     if (!fjordW01) return null;
   }
+  let fortressW01: WarpFortressRecord | null = null;
+  if (Object.hasOwn(value, "fortressW01")) {
+    if (!fjordW01?.returned || value.visits < 2) return null;
+    fortressW01 = normalizeWarpFortressRecord(value.fortressW01);
+    if (!fortressW01 || Number(fortressW01.tripId.slice(10)) <= Number(fjordW01.tripId.slice(10))) return null;
+  }
   return { visits: value.visits, steps, alertedPassages, deadIds, takenObjectIds, localKills: value.localKills,
     huntRuns: value.huntRuns, huntSuccess: value.huntSuccess, trophy, epochCompleted: value.epochCompleted,
-    ...(echo8 ? { echo8 } : {}), ...(r2M048 ? { r2M048 } : {}), ...(fjordW01 ? { fjordW01 } : {}) };
+    ...(echo8 ? { echo8 } : {}), ...(r2M048 ? { r2M048 } : {}), ...(fjordW01 ? { fjordW01 } : {}),
+    ...(fortressW01 ? { fortressW01 } : {}) };
 }
 
 /** Renvoie l'état normalisé, ou null si la forme est invalide ou d'une autre campagne. */
@@ -360,6 +373,26 @@ export function normalizeWarpEpochsV165(value: unknown, ownerCreatedAt: string):
   }
   const fjordReports = consumedEventIds.filter(id => /:w01-report$/.test(id));
   if (fjordReports.length !== (fjord?.returned ? 1 : 0)) return null;
+  const fortress = branchVisitState[W01_FJORD_BRANCH]?.fortressW01;
+  const fortressReports = consumedEventIds.filter(id => /:w01-fortress-returned$/.test(id));
+  if (fortressReports.length !== (fortress?.stage === "returned" ? 1 : 0)) return null;
+  if (fortress && fjord) {
+    const prefix = "trip:" + fortress.tripId;
+    const departure = consumedEventIds.indexOf(prefix + ":depart");
+    const firstReport = consumedEventIds.indexOf("trip:" + fjord.tripId + ":w01-report");
+    const played = consumedEventIds.filter(id => id.startsWith(prefix + ":w01-fortress-"));
+    const expected = W01_FORTRESS_STAGES.slice(0, W01_FORTRESS_STAGES.indexOf(fortress.stage) + 1);
+    if (Number(fortress.tripId.slice(10)) > value.tripCount || departure <= firstReport ||
+        played.length !== expected.length || expected.some((step, index) => played[index] !== prefix + ":w01-fortress-" + step) ||
+        consumedEventIds.indexOf(played[0]) <= departure) return null;
+    const returned = consumedEventIds.indexOf(prefix + ":return");
+    if (fortress.stage === "returned") {
+      const copied = consumedEventIds.indexOf(prefix + ":w01-fortress-copied");
+      if (returned <= copied || consumedEventIds.indexOf(played.at(-1)!) <= returned ||
+          value.activeWarpTripId === fortress.tripId) return null;
+    } else if (returned !== -1 || value.activeWarpTripId !== fortress.tripId ||
+        value.activeTripBranchId !== W01_FJORD_BRANCH) return null;
+  }
   const commonRouteR2 = value.commonRouteR2 === undefined ? undefined : normalizeWarpCommonR2(value.commonRouteR2, ownerCreatedAt);
   if (commonRouteR2 === null) return null;
   if (commonRouteR2) {
@@ -571,13 +604,16 @@ export function returnFromWarpV165(state: WarpEpochsStateV165): WarpUpdateV165 {
   if (!canReturnFromWarpV165(state)) return refuse(state, "Aucun voyage engagé.");
   const next: WarpEpochsStateV165 = { ...state, activeWarpTripId: null, activeTripBranchId: null, warpReturnReservation: "utilisee" };
   if (next.firstSurveyR2?.stage === "marker") delete next.firstSurveyR2;
-  const fjord = next.branchVisitState[W01_FJORD_BRANCH]?.fjordW01;
-  if (state.activeTripBranchId === W01_FJORD_BRANCH && fjord && !fjord.returned) {
-    next.branchVisitState = withVisit(next, W01_FJORD_BRANCH, visit => {
-      const retreat = { ...visit };
-      delete retreat.fjordW01;
-      return retreat;
-    });
+  if (state.activeTripBranchId === W01_FJORD_BRANCH) {
+    const visit = branchVisitV165(next, W01_FJORD_BRANCH);
+    if ((visit.fjordW01 && !visit.fjordW01.returned) || (visit.fortressW01 && visit.fortressW01.stage !== "returned")) {
+      next.branchVisitState = withVisit(next, W01_FJORD_BRANCH, previous => {
+        const retreat = { ...previous };
+        if (retreat.fjordW01 && !retreat.fjordW01.returned) delete retreat.fjordW01;
+        if (retreat.fortressW01?.stage !== "returned") delete retreat.fortressW01;
+        return retreat;
+      });
+    }
   }
   return commit(state, `trip:${state.activeWarpTripId}:return`, next,
     "Retour par la fenêtre réservée. La branche garde son état.");
@@ -616,7 +652,51 @@ export function advanceWarpFjordW01(state: WarpEpochsStateV165, action: WarpFjor
   }, "Retour par la fenêtre réservée. Le registre du vaisseau conserve ton relevé.");
 }
 
+/** La seconde visite utilise le relevé du fjord pour atteindre la halle à marée basse. */
+export function advanceWarpFortressW01(state: WarpEpochsStateV165, action: WarpFortressAction): WarpUpdateV165 {
+  const tripId = state.activeWarpTripId;
+  const { fjordW01: fjord, fortressW01: fortress } = branchVisitV165(state, W01_FJORD_BRANCH);
+  if (!tripId || state.activeTripBranchId !== W01_FJORD_BRANCH || !canReturnFromWarpV165(state) ||
+      !fjord?.returned || fjord.tripId === tripId || (fortress && fortress.tripId !== tripId)) {
+    return refuse(state, "Reviens dans le fjord avec le premier relevé archivé.");
+  }
+  if (action.kind !== warpFortressNextStage(fortress?.stage)) return refuse(state, "La prochaine étape reste à franchir.");
+  const approach = W01_FORTRESS_APPROACH[fjord.route];
+  const position = { sounded: W01_FORTRESS_TIDE_POST, entered: approach.gate, copied: W01_FORTRESS_TABLE, returned: 0 };
+  if (!warpFortressInReach(action.at, position[action.kind])) return refuse(state, "Rejoins le repère indiqué.");
+  const update = action.kind === "returned" ? returnFromWarpV165(state) : null;
+  if (update && !update.changed) return update;
+  const next = update?.state ?? state;
+  const message = {
+    sounded: "La marque d’eau dégage ton approche. Gagne l’accès avant la halle.",
+    entered: "L’accès est ouvert. Entre dans la halle et rejoins la table du guet.",
+    copied: "Les marques de relève indiquent le chemin de la tour. Retourne à l’ancre avec le relevé.",
+    returned: "Retour réservé franchi. Le registre du vaisseau conserve le relevé de la forteresse.",
+  };
+  return commit(next, "trip:" + tripId + ":w01-fortress-" + action.kind, {
+    ...next,
+    branchVisitState: withVisit(next, W01_FJORD_BRANCH, previous => ({
+      ...previous, fortressW01: { tripId, stage: action.kind },
+    })),
+  }, message[action.kind]);
+}
+
+function isWarpFortressSuccessorW01(previous: WarpEpochsStateV165 | null | undefined, next: WarpEpochsStateV165 | null | undefined): boolean {
+  const before = previous?.branchVisitState[W01_FJORD_BRANCH];
+  const oldRecord = before?.fortressW01;
+  const newRecord = next?.branchVisitState[W01_FJORD_BRANCH]?.fortressW01;
+  if (JSON.stringify(oldRecord ?? null) === JSON.stringify(newRecord ?? null)) return true;
+  if (!previous || !next || !before?.fjordW01?.returned || oldRecord?.stage === "returned" ||
+      !previous.activeWarpTripId || previous.activeTripBranchId !== W01_FJORD_BRANCH ||
+      !normalizeWarpEpochsV165(next, previous.ownerCreatedAt)) return false;
+  const tripId = previous.activeWarpTripId;
+  if (!newRecord) return !!oldRecord && next.activeWarpTripId === null && next.consumedEventIds.includes("trip:" + tripId + ":return");
+  return newRecord.tripId === tripId && newRecord.stage === warpFortressNextStage(oldRecord?.stage) &&
+    (newRecord.stage === "returned" ? next.activeWarpTripId === null : next.activeWarpTripId === tripId);
+}
+
 export function isWarpFjordSuccessorW01(previous: WarpEpochsStateV165 | null | undefined, next: WarpEpochsStateV165 | null | undefined): boolean {
+  if (!isWarpFortressSuccessorW01(previous, next)) return false;
   const before = previous?.branchVisitState[W01_FJORD_BRANCH]?.fjordW01;
   const after = next?.branchVisitState[W01_FJORD_BRANCH]?.fjordW01;
   if (JSON.stringify(before ?? null) === JSON.stringify(after ?? null)) return true;

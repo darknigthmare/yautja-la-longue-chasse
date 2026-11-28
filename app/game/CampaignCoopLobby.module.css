@@ -29,3 +29,33 @@
 .roster li > span { display: inline-block; margin: 0 8px 8px 0; overflow-wrap: anywhere; }
 .roster li > .actions { display: inline-flex; }
 .code { overflow-wrap: anywhere; font: 1rem ui-monospace, monospace; color: #ffe1a0; }
+
+.exercise {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #aa815052;
+}
+.exercise h3 { margin-top: 0; }
+.passages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+.passages li {
+  padding: 8px 10px;
+  border: 1px solid #aa815052;
+}
+.passages li[aria-current="step"] {
+  border-color: #e2b474;
+  background: #563719;
+}
+.assignments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+}
+.assignments dt { font-weight: 700; color: #ffe1a0; }
+.assignments dd { margin: 3px 0 0; overflow-wrap: anywhere; }
+.cue { flex-basis: 100%; margin: 0 0 4px; }
