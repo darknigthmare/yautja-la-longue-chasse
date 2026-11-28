@@ -3,7 +3,6 @@ const VERSION = 1 as const;
 const LIFETIME_MS = 24 * 60 * 60 * 1000;
 const ROOM_ID = /^[0-9a-f]{32}$/;
 const PROOF = /^[0-9a-f]{64}$/;
-const OWNER = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
 
 export const CAMPAIGN_COOP_LOBBY_KEY = "yautja-long-hunt.campaign-coop-lobby";
 export const CAMPAIGN_COOP_MAX_PLAYERS = 3;
@@ -54,14 +53,14 @@ export const sameCampaignCoopOwner = (a: CampaignCoopIdentity, b: CampaignCoopId
 const record = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
 
-function canonicalOwner(value: unknown): boolean {
-  return typeof value === "string" && OWNER.test(value) &&
-    Number.isFinite(Date.parse(value)) && new Date(value).toISOString() === value;
+function validOwner(value: unknown): value is string {
+  // Preserve the exact identifier of imported slots, including older date formats.
+  return typeof value === "string" && value.length <= 128 && Number.isFinite(Date.parse(value));
 }
 
 function isSeat(value: unknown): value is Seat {
   return record(value) && typeof value.slotId === "number" && Number.isInteger(value.slotId) &&
-    value.slotId >= 1 && value.slotId <= 5 && canonicalOwner(value.ownerCreatedAt) &&
+    value.slotId >= 1 && value.slotId <= 5 && validOwner(value.ownerCreatedAt) &&
     typeof value.proof === "string" && PROOF.test(value.proof);
 }
 
@@ -117,7 +116,7 @@ export function advanceCampaignCoopLobby(
   const exists = (identity: CampaignCoopIdentity) => owners.some(owner => sameCampaignCoopOwner(owner, identity));
   if (command.type === "open") {
     if (campaignCoopLobbyIsOpen(room, owners, now)) return refuse("occupied");
-    if (!exists(command.owner) || !canonicalOwner(command.owner.ownerCreatedAt)) return refuse("owner");
+    if (!exists(command.owner) || !validOwner(command.owner.ownerCreatedAt)) return refuse("owner");
     return { ok: true, room: {
       format: FORMAT, version: VERSION, id: command.roomId, revision: 0, expiresAt: now + LIFETIME_MS,
       host: { ...command.owner, proof: actorProof }, pending: [], guests: [], invitationHash: null, closed: false,
@@ -132,7 +131,7 @@ export function advanceCampaignCoopLobby(
   });
   const full = pending.length + guests.length + 1 >= CAMPAIGN_COOP_MAX_PLAYERS;
   if (command.type === "request") {
-    if (!exists(command.owner) || !canonicalOwner(command.owner.ownerCreatedAt)) return refuse("owner");
+    if (!exists(command.owner) || !validOwner(command.owner.ownerCreatedAt)) return refuse("owner");
     const seats = [room.host, ...pending, ...guests];
     if (seats.some(seat => seat.proof === actorProof || seat.ownerCreatedAt === command.owner.ownerCreatedAt)) return refuse("already");
     if (full) return refuse("full");

@@ -77,9 +77,17 @@ test("le registre invalide, inconnu ou ambigu est refusé avant usage", () => {
     { ...room, version: 2 },
     { ...room, pending: [room.pending[0], room.pending[0]] },
     { ...room, pending: [{ ...room.pending[0], ticket: null }] },
-    { ...room, host: { ...room.host, ownerCreatedAt: "2026-02-30T00:00:00.000Z" } },
+    { ...room, host: { ...room.host, ownerCreatedAt: "date illisible" } },
     { ...room, closed: true },
     { ...room, revision: -1 },
   ]) assert.equal(parseCampaignCoopLobby(JSON.stringify(broken)), null);
   assert.equal(parseCampaignCoopLobby("malformé"), null);
+});
+
+test("une ancienne campagne importée conserve son identifiant d’archive exact", () => {
+  const legacy = { slotId: 5, ownerCreatedAt: "2019-04-12T10:22:00Z" };
+  const exactOwners = [...owners, legacy];
+  const room = success(advance(null, { type: "open", owner: legacy }, hostProof, exactOwners));
+  assert.equal(room.host.ownerCreatedAt, legacy.ownerCreatedAt);
+  assert.equal(campaignCoopLobbyIsOpen(room, [{ ...legacy, ownerCreatedAt: "2019-04-12T10:22:00.000Z" }], now), false);
 });
