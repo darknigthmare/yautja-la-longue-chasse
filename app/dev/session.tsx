@@ -228,7 +228,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
   const closeService = useCallback(() => {
     if (!sessionAliveRef.current) return;
     serviceRef.current = null;
-    audioRef.current?.setPaused(!readGameFocus());
+    audioRef.current?.setPaused(recognitionPausedRef.current || !readGameFocus());
     setService(null);
   }, []);
   const leaveSession = useCallback((destinationId?: string) => {
@@ -450,7 +450,7 @@ export default function DevTravelSession({ destination, onTravel, onExit }: DevT
               onExit={exitSession} onSound={sound => audioRef.current?.playSfx(sound)} />}
             {destination.kind === "warp" && <WarpModuleBay save={save} onExit={exitSession} suspended={service !== null} />}
             {destination.kind === "exercise" && <DevExerciseScene exercise={destination.exercise} save={save} readSave={readSave}
-              replaceSave={replaceSave} suspended={nativeSceneSuspended} recognitionPaused={recognitionPaused}
+              replaceSave={replaceSave} suspended={nativeSceneSuspended}
               ensureAudio={ensureAudio} createSceneAudio={createSceneAudio} onSound={playSound}
               onRecognitionAudio={receiveRecognitionAudio} onNotify={setNotice} onClose={exitSession}
               onOpenSettings={() => openService("settings")} onOpenCradle={() => leaveSession("cradle-entry")} />}
