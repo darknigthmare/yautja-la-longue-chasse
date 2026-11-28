@@ -73,7 +73,8 @@ try {
   const certifiedY = Array.from({ length: 101 }, (_, index) => dock.y - 25 + index / 2)
     .filter(y => api.homeworldSkiffFootOnDeckV77({ x: approach.x, y }) && api.homeworldWalkableV77('0', { x: approach.x, y }));
   assert(certifiedY.length > 0);
-  await nav.driveTo({ x: approach.x, y: (certifiedY[0] + certifiedY.at(-1)) / 2 }, 2.2);
+  const deckNav = homeworldNavigatorV77(page, api, { driverTickMs: 16, waypointTolerance: 2.2, pulseInputs: true });
+  await deckNav.follow([approach, { x: approach.x, y: (certifiedY[0] + certifiedY.at(-1)) / 2 }]);
   await nav.release();
   report.boardingPoint = await nav.position();
   assert(api.beginHomeworldSkiffV77('0', { ...actor, ...report.boardingPoint }, true), 'all four foot corners must be supported by the actual deck');
