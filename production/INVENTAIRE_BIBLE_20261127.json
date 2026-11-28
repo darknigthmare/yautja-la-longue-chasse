@@ -1,9 +1,9 @@
 {
   "date": "2026-11-27",
   "depot": "darknigthmare/yautja-la-longue-chasse",
-  "refMain": "d868273d4a31c5f5d7e01cd246d4598846742024",
-  "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/d868273d4a31c5f5d7e01cd246d4598846742024/docs/campagne/BIBLE_DE_CAMPAGNE.md",
-  "methode": "Le relevé part de main 429a8b0. Les nouvelles recettes font foi pour les étapes effectivement jouées et relues.",
+  "refMain": "a3c1723e249df1e56caa3ee8142ce779363625e5",
+  "source": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/a3c1723e249df1e56caa3ee8142ce779363625e5/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+  "methode": "Comparaison des chantiers avec main 37a3ddf. Les critères et limites restent liés aux recettes citées.",
   "statuts": {
     "RACCORDE": "Boucle de la fiche jouée et persistée, ou chapitre que la Bible accepte expressément comme équivalent. Les écarts signalés restent ouverts.",
     "PARTIEL_MISSION": "Une partie propre à la fiche a un déclenchement ou une preuve jouable. Des étapes spécifiées restent ouvertes.",
@@ -1390,7 +1390,7 @@
       },
       "fiche": 2536,
       "etatSurMain": "RACCORDE",
-      "observation": "Après les trois épreuves du clan, la présentation des preuves, le geste au socle et la reconnaissance sont joués jusqu’au rang Elite dans les deux configurations, devant l’assemblée publique ou les témoins restreints.",
+      "observation": "Le joueur rejoint à pied le vétéran pour les lames et le plasma, puis le chef pour la simulation. Les trois épreuves débouchent sur un mandat unique, repris à froid, qui ouvre le dossier réel du Berceau. Les deux cérémonies Elite déjà jouables restent accessibles.",
       "preuves": [
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/ClanChroniclePanel.tsx#L138-L151",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/rankRiteDossierV168.ts",
@@ -1398,8 +1398,8 @@
         "pull/171",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404/app/game/systems/eliteRecognitionV174.ts"
       ],
-      "etatDeLivraison": "Vérifié dans le parcours indiqué · fusion associée à #211",
-      "reste": "L’arène, les personnages du chef et du vétéran, et la mission de la Reine remise par le chef restent à compléter pour L‑06.",
+      "etatDeLivraison": "Sous-parcours vérifié dans la recette de #212",
+      "reste": "Le décor 3D, les deux musiques et la chasse L‑07 complète restent ouverts.",
       "preuvesLivraison": [
         "actions/runs/45977281063",
         "actions/runs/45977281063/artifacts/15187901935",
@@ -1413,7 +1413,9 @@
         "actions/runs/45997710068/artifacts/15196164324",
         "pull/197",
         "actions/runs/46126374921",
-        "pull/211"
+        "pull/211",
+        "actions/runs/46135459181",
+        "pull/212"
       ]
     },
     {
@@ -2459,10 +2461,10 @@
       "titre": "Bible et suivi de production · chantiers de campagne, Warp et chasses",
       "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/211",
       "commit": "d868273d4a31c5f5d7e01cd246d4598846742024",
-      "etat": "open",
-      "fusionnee": false,
+      "etat": "closed",
+      "fusionnee": true,
       "fusionGitPossible": true,
-      "observation": "Le dossier recense les sous-parcours vérifiés et leurs écarts. Le lot VIII conserve les critères des sept lots précédents.",
+      "observation": "Fusionnée dans main au commit 37a3ddf. Le dossier recense les sous-parcours vérifiés et leurs écarts. Le lot VIII conserve les critères des sept lots précédents.",
       "controles": [
         {
           "nom": "TypeScript, ESLint, tests intégrés et build servi",
@@ -2565,6 +2567,73 @@
           "conclusion": "réussite"
         }
       ]
+    },
+    {
+      "pr": 212,
+      "titre": "Bible de campagne · Warp, forge et prochaines étapes",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/212",
+      "commit": "a3c1723e249df1e56caa3ee8142ce779363625e5",
+      "etat": "open",
+      "fusionnee": false,
+      "fusionGitPossible": true,
+      "observation": "Les contrôles sont rattachés aux scènes effectivement jouées et aux limites indiquées.",
+      "controles": [
+        {
+          "nom": "TypeScript, ESLint, tests intégrés et production servie",
+          "lien": "actions/runs/46136060261",
+          "conclusion": "réussite"
+        },
+        {
+          "nom": "Achéron · Le champ du Gardien",
+          "lien": "actions/runs/46134390784",
+          "conclusion": "réussite"
+        },
+        {
+          "nom": "W‑01 · La forteresse des marées",
+          "lien": "actions/runs/46134243211",
+          "conclusion": "réussite"
+        },
+        {
+          "nom": "Coop locale · Relève de balise",
+          "lien": "actions/runs/46134258971",
+          "conclusion": "réussite"
+        },
+        {
+          "nom": "O6 · Trois horizons depuis la terrasse",
+          "lien": "actions/runs/46134577119",
+          "conclusion": "réussite"
+        },
+        {
+          "nom": "L‑06 · Arène du clan et mandat du chef",
+          "lien": "actions/runs/46135459181",
+          "conclusion": "réussite"
+        },
+        {
+          "nom": "Forge · Plasma Caster et Smart Disc",
+          "lien": "actions/runs/46134241412",
+          "conclusion": "réussite"
+        },
+        {
+          "nom": "REM112 · Replis de Naraka‑Delta et Serekh‑9",
+          "lien": "actions/runs/46133915748",
+          "conclusion": "préparation, reprises et prélèvement vérifiés"
+        },
+        {
+          "nom": "REM112 · Replis de Naraka‑Delta et Serekh‑9",
+          "lien": "actions/runs/46134126330",
+          "conclusion": "prélèvement de Serekh et combat partiel vérifiés"
+        },
+        {
+          "nom": "M015 · MUS‑06 pendant la reconnaissance",
+          "lien": "actions/runs/46135884603",
+          "conclusion": "réussite"
+        },
+        {
+          "nom": "Mycora‑V · Arbre, liane et retour avec la récolte",
+          "lien": "actions/runs/46135282400",
+          "conclusion": "réussite"
+        }
+      ]
     }
   ],
   "transverses": [
@@ -2620,7 +2689,7 @@
     {
       "id": "SON_MUSIQUES",
       "etat": "PARTIEL_MISSION",
-      "observation": "Un brasero sonore et une composition originale de 1 min 45 accompagnent la passation visible. La musique et l’ambiance respectent la suspension et la sortie. Les trois réponses jouées lors du dépôt des outils sont conservées.",
+      "observation": "Le morceau original démarre au débrief. Chromium retrouve le même flux après une pause et le rétablit après une reprise à froid. Le reçu Young Blood est conservé après la sortie sauvegardée et la musique s’arrête.",
       "presents": [
         {
           "contexte": "ship",
@@ -2644,30 +2713,34 @@
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2543-L2549"
       ],
       "chantierActif": "bible_transversale / MUS-01 selon disponibilité",
-      "etatDeLivraison": "Sources de cérémonie raccordées",
-      "reste": "L’habillage 3D dédié et la qualification de MUS-06 dans la cérémonie M015 restent ouverts.",
+      "etatDeLivraison": "Sous-parcours vérifié dans la recette de #212",
+      "reste": "La présentation 3D et les autres habillages de la cérémonie restent ouverts.",
       "preuvesLivraison": [
         "actions/runs/44996634637",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/7c2173343532f2ad10dcd5b02a4f61fadef21c8c/scripts/generate-menu-theme-mus01.mjs",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/7c2173343532f2ad10dcd5b02a4f61fadef21c8c/public/audio/music/menu/mus-01.ogg",
         "actions/runs/44997260025",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/113903ef98aae3debb1f41db4c90fc9beb9575f4/public/audio/manifest.json",
-        "actions/runs/46079421007"
+        "actions/runs/46079421007",
+        "actions/runs/46135884603",
+        "pull/212"
       ]
     },
     {
       "id": "VFX_DANGERS",
       "etat": "PARTIEL_MISSION",
-      "observation": "Les huit terrains affichent des motifs distincts pour les dangers. Les zones annoncées et actives suivent la géométrie de collision. Les contours et le traitement du mouvement réduit restent lisibles.",
+      "observation": "Les 22 dangers des huit terrains conservent leurs indications liées aux phases. Sur Achéron, le champ actif réfracte le décor dans sa zone et trois signaux de combinaison suivent l’alerte, l’esquive et l’activation. Chromium distingue les trois transitions et le mode mouvement réduit.",
       "preuves": [
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L2551-L2553",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/HuntCanvas.tsx#L5595-L5610"
       ],
-      "etatDeLivraison": "Vérifié dans le parcours indiqué · fusion associée à #211",
-      "reste": "Les effets d’ambiance et de boss, dont la réfraction du champ d’Achéron, restent à qualifier séparément.",
+      "etatDeLivraison": "Sous-parcours vérifié dans la recette de #212",
+      "reste": "Les effets d’ambiance et les autres effets de boss restent à produire ou vérifier.",
       "preuvesLivraison": [
         "actions/runs/46126850211",
-        "pull/211"
+        "pull/211",
+        "actions/runs/46134390784",
+        "pull/212"
       ]
     },
     {
@@ -2700,17 +2773,20 @@
     {
       "id": "CHASSES_4_8_ENTREES_ET_BOSS",
       "etat": "PARTIEL_MISSION",
-      "observation": "Oseris‑IV enchaîne par les commandes du jeu le combat contre le Bondisseur des brumes, le prélèvement des crocs et du pelage, Vey, la reprise disque et l’extraction. Le pelage de la même dépouille est nettoyé à l’atelier en trois gestes.",
+      "observation": "Les recettes ont joué l’achat de l’outil, le repli et la reprise. Le Crocodile de fer de Naraka a livré une vertèbre de qualité 93. À Serekh‑9, le chasseur a prélevé un tendon sur l’échassier d’origine et entamé le duel contre la Sandmaw.",
       "preuves": [
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/huntExpansionLayoutsV157.ts",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/huntSystems.ts#L2187-L2277",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L3000-L3012"
       ],
-      "etatDeLivraison": "Vérifié dans le parcours indiqué · fusion associée à #211",
-      "reste": "Le protocole REM112 exige encore la matrice des huit chasses et des charges prescrites.",
+      "etatDeLivraison": "Sous-parcours vérifié dans la recette de #212",
+      "reste": "Les cycles sont restés incomplets avant l’extraction. Le protocole des huit chasses et des charges prescrites reste ouvert.",
       "preuvesLivraison": [
         "actions/runs/46127293531",
-        "pull/211"
+        "pull/211",
+        "actions/runs/46133915748",
+        "actions/runs/46134126330",
+        "pull/212"
       ]
     },
     {
@@ -2734,13 +2810,13 @@
     {
       "id": "ACHERON_VIDE",
       "etat": "PARTIEL_MISSION",
-      "observation": "Les tests chargent la constante de mission réelle à la reprise. L’approche distingue le flash proche et le silence des patrouilles hors de portée, tout en conservant les tests des autres mondes. La vibration et le champ d’énergie restent les signaux établis.",
+      "observation": "Les 22 dangers des huit terrains conservent leurs indications liées aux phases. Sur Achéron, le champ actif réfracte le décor dans sa zone et trois signaux de combinaison suivent l’alerte, l’esquive et l’activation. Chromium distingue les trois transitions et le mode mouvement réduit.",
       "preuves": [
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/HuntCanvas.tsx#L6651-L6709",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L3018-L3020"
       ],
-      "reste": "Les sons complémentaires de combinaison et les effets d’arène restent ouverts. La chasse complète garde sa recette de campagne.",
-      "etatDeLivraison": "Régressions de l’alerte et des sauvegardes rejouées",
+      "reste": "La composition de l’arène, les autres effets de combinaison et le parcours complet de la chasse restent ouverts.",
+      "etatDeLivraison": "Sous-parcours vérifié dans la recette de #212",
       "preuvesLivraison": [
         "actions/runs/46011008133",
         "actions/runs/46011008133/artifacts/15203473706",
@@ -2749,7 +2825,9 @@
         "actions/runs/46012258746/artifacts/15203404680",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/a6f37902385f5f7854d28e900109bffab183130e/tests/hunt-exploration-save-runtime.test.mjs",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/a6f37902385f5f7854d28e900109bffab183130e/tests/hunt-insertion.test.mjs",
-        "actions/runs/46070279658"
+        "actions/runs/46070279658",
+        "actions/runs/46134390784",
+        "pull/212"
       ]
     },
     {
@@ -2766,29 +2844,31 @@
     {
       "id": "WARP_AUTRES_EPOQUES_ET_PROTOTYPE",
       "etat": "PARTIEL_MISSION",
-      "observation": "Depuis le pont, la carte ou le dossier, le fjord de 841 s’ouvre à la reconnaissance. Le quai et le treuil offrent un passage distinct de la corniche. Le rapport d’équipage et du champion n’est consigné qu’au retour à pied.",
+      "observation": "Le second voyage au fjord ouvre la forteresse après le premier rapport. Le joueur traverse les accès, lit les marques de marée, retrouve le registre du guet dans la halle puis rentre à pied pour le consigner.",
       "preuves": [
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/warpEpochsV165.ts#L64-L103",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/WarpEpochsPanelV165.tsx#L140-L171"
       ],
-      "etatDeLivraison": "Vérifié dans le parcours indiqué · fusion associée à #211",
-      "reste": "Les autres épisodes de Scandinavie, la chasse et les contrats du Warp restent à raccorder.",
+      "etatDeLivraison": "Sous-parcours vérifié dans la recette de #212",
+      "reste": "Le champion de la falaise, les contrats et les autres époques restent ouverts.",
       "preuvesLivraison": [
         "actions/runs/46126806126",
-        "pull/211"
+        "pull/211",
+        "actions/runs/46134243211",
+        "pull/212"
       ]
     },
     {
       "id": "FIN_DE_VOIE",
       "etat": "PARTIEL_MISSION",
-      "observation": "Au retour de la petite piste, le joueur range deux outils à la forge puis monte par l’escalier du Conseil. Quatre échanges lui permettent d’annoncer une ambition ou de laisser le choix ouvert. Il peut ensuite revenir écouter les compagnons et reprendre son dossier.",
+      "observation": "Deux routes rejoignent le Conseil par l’escalier natif. Le joueur prépare trois projets puis consigne son choix auprès de Saar. La demeure indisponible renvoie l’enseignement à la cour commune. Le choix, la position et les dix gestes du journal se reprennent.",
       "preuves": [
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/originEndingsV170.ts#L39-L50",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/originEndingsV170.ts#L138-L155",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L777-L804"
       ],
-      "etatDeLivraison": "Le retour rejoint les reçus déjà jouables de la voie",
-      "reste": "Les jalons de milieu de voie, dont O6-M22 à M25 et M28, et les autres issues restent ouverts.",
+      "etatDeLivraison": "Sous-parcours vérifié dans la recette de #212",
+      "reste": "Le raccord depuis M27, le verrou canonique vers M29 et les autres jalons du milieu de voie restent ouverts.",
       "preuvesLivraison": [
         "https://github.com/darknigthmare/yautja-la-longue-chasse/commit/4b7f25486f7bd258c67b4b69bb5dc7fa7ce0722c",
         "actions/runs/45997821189",
@@ -2814,32 +2894,36 @@
         "actions/runs/46072524722",
         "actions/runs/46072524722/artifacts/15233891287",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/113903ef98aae3debb1f41db4c90fc9beb9575f4/app/game/systems/originEndingsV170.ts",
-        "actions/runs/46079466473"
+        "actions/runs/46079466473",
+        "actions/runs/46134577119",
+        "pull/212"
       ]
     },
     {
       "id": "COOP_DE_CAMPAGNE",
       "etat": "PARTIEL_MISSION",
-      "observation": "Le salon du menu réunit trois chroniques au maximum dans des onglets d’un même navigateur. L’hôte invite, examine les demandes, accepte ou refuse, ferme la session et reprend les places réservées.",
+      "observation": "Trois chroniques ont joué neuf manœuvres, corrigé deux erreurs et repris au même passage. Les choix du pisteur et du soutien précèdent la validation de l’hôte. Le départ d’un invité interrompt l’exercice et les archives de campagne gardent les mêmes octets.",
       "preuves": [
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/docs/campagne/BIBLE_DE_CAMPAGNE.md#L816-L825",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/ClanWarMultiplayerPracticeV127.tsx",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/clanWarMultiplayerV126.ts"
       ],
-      "reste": "Le transport entre appareils, l’autorité de simulation en réseau, les gains et les rites de rang restent ouverts.",
-      "etatDeLivraison": "Vérifié dans le parcours indiqué · fusion associée à #211",
+      "reste": "Le transport entre appareils, l’autorité distante, les récompenses de campagne et les rites de rang restent ouverts.",
+      "etatDeLivraison": "Sous-parcours vérifié dans la recette de #212",
       "preuvesLivraison": [
         "actions/runs/46010949709",
         "actions/runs/46011224099",
         "pull/200",
         "actions/runs/46126918547",
-        "pull/211"
+        "pull/211",
+        "actions/runs/46134258971",
+        "pull/212"
       ]
     },
     {
       "id": "FORGE_CARTE_RECOLTE_CANOPEE",
       "etat": "PARTIEL_MISSION",
-      "observation": "Sur Naraka-Delta, le cuir ferrique de 4,4 kg est déposé puis repris sur la racine d’origine. Le retour descend par deux appuis et se poursuit à pied vers la balise. La plaque nucale, le trophée de l’Hydre et le cuir sont livrés une seule fois depuis le sol.",
+      "observation": "Le Plasma Caster et le Smart Disc ont chacun deux niveaux de forge en os et tissus. Chromium a joué les paiements et les reprises à froid. Les cinq familles d’armes disposent désormais d’une recette de matières et les tirs réutilisent les statistiques du niveau acquis. Sur Mycora‑V, une récolte de 0,4 kg a passé arbres et liane avec reprise.",
       "preuves": [
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/hunterArmorWearV172.ts",
         "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/65361bb4e2071ce7b61b81f17ab812e7ba299335/app/game/systems/spaceRoutesV159.ts#L495-L515",
@@ -2886,10 +2970,12 @@
         "actions/runs/46078425387",
         "actions/runs/46078425387/artifacts/15236545531",
         "actions/runs/46077799888",
-        "actions/runs/46077799888/artifacts/15235903169"
+        "actions/runs/46077799888/artifacts/15235903169",
+        "actions/runs/46134241412",
+        "pull/212"
       ],
-      "etatDeLivraison": "Lots choisis à l’atelier et trajet chargé",
-      "reste": "Les autres branches d’armement et régions chargées, ainsi que les essais sur appareils physiques, restent ouverts."
+      "etatDeLivraison": "Sous-parcours vérifié dans la recette de #212",
+      "reste": "Les autres parcours chargés, les essais sur appareils physiques et certains habillages restent ouverts."
     },
     {
       "id": "PIT_MASQUES_BRISES",
@@ -3066,20 +3152,17 @@
     "fichesVoisines": [],
     "fichesNonCommenceesObservees": [],
     "chantiersVérifiés": [
-      "R2-M017",
-      "R2-M019",
-      "R2-M020",
-      "R2-M043",
-      "R2-M047",
-      "R2-M042",
-      "R2-M044"
+      "R2-M043"
     ],
     "transversesVerifies": [
-      "WARP_AUTRES_EPOQUES_ET_PROTOTYPE",
-      "COOP_DE_CAMPAGNE",
+      "SON_MUSIQUES",
       "VFX_DANGERS",
       "CHASSES_4_8_ENTREES_ET_BOSS",
-      "DECORS_V19"
+      "ACHERON_VIDE",
+      "WARP_AUTRES_EPOQUES_ET_PROTOTYPE",
+      "FIN_DE_VOIE",
+      "COOP_DE_CAMPAGNE",
+      "FORGE_CARTE_RECOLTE_CANOPEE"
     ],
     "projectionDuCandidat": {
       "RACCORDE": 67,
@@ -3093,12 +3176,12 @@
       "VOISIN": 0,
       "NON_COMMENCE_OBSERVE": 0
     },
-    "refComposition": "d868273d4a31c5f5d7e01cd246d4598846742024",
-    "prComposition": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/211",
+    "refComposition": "a3c1723e249df1e56caa3ee8142ce779363625e5",
+    "prComposition": "https://github.com/darknigthmare/yautja-la-longue-chasse/pull/212",
     "controlesGroupes": {
-      "ref": "659c51429c57a86525698f8ebb4cdce397514782",
-      "tests": "actions/runs/46127959078",
-      "build": "actions/runs/46127959078"
+      "ref": "c6ea86ed7d2ef7b113f72813c8f5aa4bf039c4e6",
+      "tests": "actions/runs/46136060261",
+      "build": "actions/runs/46136060261"
     }
   },
   "refHistorique": "451d5c2208430f38901b9310a548d06a5922c688",
@@ -3171,8 +3254,8 @@
   },
   "sourceDocument": {
     "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
-    "commit": "d868273d4a31c5f5d7e01cd246d4598846742024",
-    "blob": "432b866b8309a5ca7157c70c7425a20c7e327364"
+    "commit": "a3c1723e249df1e56caa3ee8142ce779363625e5",
+    "blob": "09727e1c128a2c07de2e61afa8bbb5d51c518d78"
   },
   "historiqueLot197": {
     "refMain": "9a98912989dbd6477ca2b9b87a1b3f1b3c5d3404",
