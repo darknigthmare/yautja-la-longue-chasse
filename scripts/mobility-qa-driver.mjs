@@ -6,16 +6,14 @@
 export const MOBILITY_QA_ROUTE = Object.freeze([
   [820, 490], [820, 130], [820, 30], [140, 30], [140, 130], [140, 490],
 ]);
-export function mobilityQaGuidance(state, stage) {
-  if (!Number.isInteger(stage) || stage < 0 || stage >= MOBILITY_QA_ROUTE.length ||
-      !['x', 'y', 'heading', 'speed'].every(k => Number.isFinite(state[k]))) {
+function waypointGuidance(state, target, radius, shouldInteract) {
+  if (!target || !['x', 'y', 'heading', 'speed'].every(k => Number.isFinite(state[k]))) {
     throw new TypeError('Invalid native QA navigation observation');
   }
-  const [tx, ty] = MOBILITY_QA_ROUTE[stage];
+  const [tx, ty] = target;
   const distance = Math.hypot(tx - state.x, ty - state.y);
   const error = Math.atan2(Math.sin(Math.atan2(ty - state.y, tx - state.x) - state.heading),
     Math.cos(Math.atan2(ty - state.y, tx - state.x) - state.heading));
-  const radius = stage === 2 || stage === 3 ? 3 : 27;
   const stopped = Math.abs(state.speed) < 5;
   const arrived = distance < radius;
   const brakingDistance = state.speed * state.speed / (2 * 240) + Math.abs(state.speed) * .16;
@@ -24,6 +22,18 @@ export function mobilityQaGuidance(state, stage) {
   // A narrow deadband turns the exact failing boundary pose back into the yard.
   const steer = !arrived && Math.abs(error) > .008 ? Math.sign(error) : 0;
   return { throttle: !arrived && !brake && !turning ? 1 : 0, steer, brake,
-    boost: false, interact: arrived && stopped && (stage === 1 || stage === 5),
+    boost: false, interact: arrived && stopped && shouldInteract,
     advance: arrived && stopped, distance, error };
+}
+
+export function mobilityQaGuidance(state, stage) {
+  return waypointGuidance(state, Number.isInteger(stage) ? MOBILITY_QA_ROUTE[stage] : undefined, stage === 2 || stage === 3 ? 3 : 27, stage === 1 || stage === 5);
+}
+
+const FORGE_QA_ROUTE = [
+  [140, 290], [140, 130], [140, 29], [840, 29], [840, 290], [840, 490], [140, 490],
+];
+
+export function forgeDeliveryQaGuidance(state, stage) {
+  return waypointGuidance(state, Number.isInteger(stage) ? FORGE_QA_ROUTE[stage] : undefined, stage === 2 || stage === 3 ? 3 : 27, stage === 1 || stage === 6);
 }
