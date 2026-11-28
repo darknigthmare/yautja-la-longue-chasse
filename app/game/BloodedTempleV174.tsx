@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { SaveGame } from "./types";
 import { BLOODED_ROOMS, inspectBloodedTempleV174, templePassageLaneV174, type TempleActionV174, type TempleCommandV174 } from "./systems/bloodedTempleV174";
+import { shipAcquisitionAuthorityV161 } from "./systems/shipReceiptV161";
 import styles from "./BloodedTempleV174.module.css";
 
 type Props = {
@@ -39,7 +40,13 @@ export default function BloodedTempleV174({ save, suspended, onCommand, onClose 
     <section className={styles.temple} aria-labelledby="blooded-temple-title"
       data-blooded-temple-v174={view.stage} data-blooded-room={view.room} data-blooded-column={view.column}
       onKeyDown={(event) => {
-        if (view.stage !== "temple" || event.ctrlKey || event.metaKey || event.altKey || suspended) return;
+        if (event.ctrlKey || event.metaKey || event.altKey || suspended) return;
+        if (view.stage === "complete" && view.ceremony && !view.witnessGreeted && view.courtPosition < 2 && event.key === "ArrowRight") {
+          event.preventDefault();
+          if (!event.repeat) act("right");
+          return;
+        }
+        if (view.stage !== "temple") return;
         const action = event.key === "ArrowLeft" ? "left" : event.key === "ArrowRight" ? "right" :
           event.key === "ArrowUp" || event.key === "ArrowDown" ? "lane" : null;
         if (!action) return;
@@ -109,7 +116,28 @@ export default function BloodedTempleV174({ save, suspended, onCommand, onClose 
           </div>
         </>}
       </>}
-      {view.stage === "complete" && <p>Le trio est revenu et la marque Blooded est consignée. Les démarches de vaisseau sont ouvertes.</p>}
+      {view.stage === "complete" && <section className={styles.returnCourt} data-blooded-ceremony={view.ceremony ?? "choice"}
+        data-blooded-witness={view.witnessGreeted} data-blooded-court-position={view.courtPosition} aria-labelledby="blooded-court-title">
+        <h4 id="blooded-court-title">{view.ceremony === "cohort" ? "La cour de la cohorte" :
+          view.ceremony === "quiet" ? "La galerie des témoins" : "Les témoins de la marque"}</h4>
+        <p>{shipAcquisitionAuthorityV161(save) ? "Ta marque Blooded est consignée. Le chantier naval peut ouvrir ton dossier." :
+          "La marque est consignée dans le registre du rite."}</p>
+        {!view.ceremony && <div className={styles.controls}>
+          {button("celebrate-cohort", "Célébrer avec la cohorte")}
+          {button("visit-quietly", "Rendre une visite calme")}
+        </div>}
+        {view.ceremony && <>
+          <p>{view.ceremony === "cohort" ? "La cohorte s’écarte et les témoins te font signe dans la cour éclairée." :
+            "Dans la galerie calme, un témoin abaisse sa lanterne devant la marque."}</p>
+          <ol className={styles.courtRoute} aria-label="Trajet des témoins de la marque">
+            {["Entrée", view.ceremony === "cohort" ? "Cour" : "Galerie", "Témoins"].map((stop, index) =>
+              <li key={stop} aria-current={index === view.courtPosition ? "step" : undefined}>{stop}</li>)}
+          </ol>
+          {view.witnessGreeted ? <p>{view.ceremony === "cohort" ? "La cohorte reprend le salut avec toi." :
+            "Le témoin rend ton salut et laisse la galerie au silence."}</p> : view.courtPosition < 2 ?
+            button("right", "Approcher des témoins") : button("greet-witness", "Saluer les témoins")}
+        </>}
+      </section>}
       {feedback && <p role="status">{feedback}</p>}
     </section>
   );
