@@ -21,7 +21,8 @@ const landed = new WeakSet<HomeworldSkiffArrivalW3S09>();
 const route = HOMEWORLD_SKIFF_W3_S09;
 
 export function recordSkiffLandingW3S09(shore: HomeworldVec2, seconds: number): HomeworldSkiffArrivalW3S09 | undefined {
-  if (seconds !== route.seconds || Math.hypot(shore.x - route.shore.x, shore.y - route.shore.y) > 0.01) return;
+  const offset = Math.hypot(shore.x - route.shore.x, shore.y - route.shore.y);
+  if (seconds !== route.seconds || !Number.isFinite(offset) || offset > 0.01) return;
   const arrival = Object.freeze({ ...route, shore: Object.freeze({ ...route.shore }) });
   landed.add(arrival);
   return arrival;
