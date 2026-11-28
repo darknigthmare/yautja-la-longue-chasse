@@ -134,7 +134,8 @@ export function recordHorizonsO6(save: SaveGame, order: HorizonOrderO6, at: Home
 
 export function horizonsMatchSaveO6(save: SaveGame): boolean {
   const receipt = save.originV151?.horizonsO6;
-  return !receipt || (receipt.ownerCreatedAt === save.createdAt && hasHorizonWitnessO6(save));
+  return !receipt || (receipt.ownerCreatedAt === save.createdAt && hasHorizonWitnessO6(save) &&
+    receipt.journal.every(event => event.kind !== "prepare" || event.reduced || !shorterO6(save, event.horizon)));
 }
 
 export function keepsHorizonsO6(previous: SaveGame, next: SaveGame): boolean {
