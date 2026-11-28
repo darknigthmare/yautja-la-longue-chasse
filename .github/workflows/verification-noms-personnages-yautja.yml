@@ -11,17 +11,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 9e100b77c782e84c466f142a50337d984cbd7986
+          ref: 09a65a4ae41ae888f5545fe59ff8900f01da5cb0
           fetch-depth: 1
           persist-credentials: false
           sparse-checkout: |
             app
             scripts
             tests
+            docs/campagne
             public/game/homeworld/v64
             public/game/homeworld/v67
+            public/game/assets/v15/trophies
             public/game/assets/v37/tribes
             public/game/backgrounds
+            public/game/sprites/v8/ecology
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -36,5 +39,20 @@ jobs:
           tests/clan-ship-crew-dialogue.test.mjs
           tests/clan-ship-crew-dialogue-ui.test.mjs
           tests/clan-ship-operations-save.test.mjs
+          tests/clan-hull-project-v171.test.mjs
           tests/minor-arcs-v160.test.mjs
           tests/residence-scenes-v154.test.mjs
+      - name: Vérifier le catalogue canin
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { readFileSync } from 'node:fs';
+          const { entries } = JSON.parse(readFileSync('app/game/data/companionCatalogueV56.json', 'utf8'));
+          assert.equal(entries.length, 11);
+          assert.equal(new Set(entries.map(entry => entry.name)).size, 11);
+          for (const entry of entries) {
+            assert.notEqual(entry.name, entry.sourceName.replace(/\.[^.]+$/, ''));
+            assert.ok(entry.imagePath && entry.cutoutSHA256 && entry.sourceSHA256);
+          }
+          assert.equal(entries.find(entry => entry.id === 'user-preddog-2018').name, 'Chien yautja — The Predator (2018)');
+          NODE
