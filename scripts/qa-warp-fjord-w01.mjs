@@ -89,7 +89,7 @@ try {
       const at = Number(await landing.getAttribute("data-fjord-position"));
       const right = at < target;
       for (let step = 0; step < Math.abs(at - target); step++) {
-        if (route === "falaise") await landing.locator("[tabindex]").press(right ? "ArrowRight" : "ArrowLeft");
+        if (route === "falaise") await landing.getByRole("group", { name: /^Sentier/ }).press(right ? "ArrowRight" : "ArrowLeft");
         else await landing.locator('[data-fjord-walk="' + (right ? "right" : "left") + '"]').click();
       }
       assert.equal(Number(await landing.getAttribute("data-fjord-position")), target);
@@ -106,7 +106,7 @@ try {
     assert.equal(await landing.locator("[data-fjord-observe]").isDisabled(), true);
     await walk(W01_FJORD_ROUTES[route].checkpoint);
     await landing.locator("[data-fjord-observe]").click();
-    await landing.locator("xpath=self::*[@data-fjord-observed='true']").waitFor();
+    await panel.locator('[data-warp-fjord][data-fjord-observed="true"]').waitFor();
     await landing.screenshot({ path: resolve(output, route + "-" + width + ".png"), animations: "disabled" });
     await page.reload();
     await open("chronique");
