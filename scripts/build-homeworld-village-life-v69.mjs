@@ -1,9 +1,10 @@
 import { build } from 'esbuild';
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 
 const compiled = await build({ stdin: { contents: "export * from './app/game/systems/homeworldRegionsV68';export * from './app/game/systems/homeworldGeometryV64';export * from './app/game/systems/homeworldArtV64';", resolveDir: process.cwd() }, bundle: true, write: false, platform: 'node', format: 'esm', logLevel: 'silent' });
 const api = await import('data:text/javascript;base64,' + Buffer.from(compiled.outputFiles[0].text).toString('base64'));
+const { villageLife: names } = JSON.parse(await readFile(new URL('../app/game/data/homeworldResidentNames.json', import.meta.url), 'utf8'));
 const themes = [
   ['Tri des charges cendrées', 'Réglage des balises', 'Mémoire des convois', 'Entretien des réserves', 'Les porteurs protègent les charges du souffle de cendres. Les coffrets sont fermés avant chaque départ.'],
   ['Tour des citernes', 'Inspection des conduits', 'Transmission des routes', 'Réserve du soir', 'Le Peuple des Citernes répartit les réserves avant les traversées. Le relevé des conduits distingue une fuite du passage du fouisseur.'],
@@ -44,7 +45,10 @@ const villages=api.HOMEWORLD_REGION_IDS_V68.map((regionId,index)=>{
     const young=n===12||n===13,morphId=young?'young':n%5===0?'elder':n%2?'huntress':'classic';
     const sceneId=n<8?scenes[Math.floor(n/2)].id:null;
     const role=n<8?['Porteur des réserves','Artisane des conduits','Conservateur local','Veilleuse de relève'][Math.floor(n/2)]:young?'Aspirant accompagné':n>=16?'Accompagnateur des aspirants':n>=14?'Visiteur du clan':'Habitant des demeures';
-    residents.push({id:`${regionId}-life-${n+1}`,name:['Kha’len','Nesh’ta','Vhar’esh','Osh’ra','Tor’vek','Sha’len'][n%6]+` ${index+1}-${Math.floor(n/6)+1}`,role,morphId,dreadStyleId:morphId==='elder'?'elder':morphId==='huntress'?'huntress':'classic',skinId:(index+n)%3===2?'dark-mottle':'ochre-mottle',dreadTintId:index%2?'umber':'obsidian',sceneId,path,speed:n<8?24+n%3*5:young?20:32,dwellSeconds:n<8?7+n%3*3:4+n%4,phaseSeconds:n*7+index*3,greeting:sceneId?`${scenes.find(s=>s.id===sceneId).name}. ${themes[index][4]}`:young?'Notre accompagnateur vérifie le parcours avant de quitter les demeures. Les sorties autonomes attendent la reconnaissance du clan.':`${themes[index][4]} Les services de la halte restent ouverts aux voyageurs qui respectent ces chemins.`});
+    const id = `${regionId}-life-${n+1}`;
+    const name = names[regionId]?.[id];
+    assert.ok(name, 'Nom manquant pour ' + id);
+    residents.push({id,name,role,morphId,dreadStyleId:morphId==='elder'?'elder':morphId==='huntress'?'huntress':'classic',skinId:(index+n)%3===2?'dark-mottle':'ochre-mottle',dreadTintId:index%2?'umber':'obsidian',sceneId,path,speed:n<8?24+n%3*5:young?20:32,dwellSeconds:n<8?7+n%3*3:4+n%4,phaseSeconds:n*7+index*3,greeting:sceneId?`${scenes.find(s=>s.id===sceneId).name}. ${themes[index][4]}`:young?'Notre accompagnateur vérifie le parcours avant de quitter les demeures. Les sorties autonomes attendent la reconnaissance du clan.':`${themes[index][4]} Les services de la halte restent ouverts aux voyageurs qui respectent ces chemins.`});
   }
   const buildings=[...definition.buildings.filter(b=>b.role==='residence'),definition.buildings.find(b=>b.role==='forge')];
   const props=buildings.flatMap((b,n)=>[-1,1].map((side,k)=>{

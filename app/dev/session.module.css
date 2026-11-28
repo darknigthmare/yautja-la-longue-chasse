@@ -46,3 +46,10 @@
   .actions { flex-direction: column; }
   .empty { padding: 18px; }
 }
+
+.recognitionExercise { display: flex; min-height: 640px; height: max(640px, calc(100svh - 205px)); flex-direction: column; }
+.recognitionControls { display: flex; flex-wrap: wrap; gap: 8px; padding: 8px 16px; background: #15221a; }
+.recognitionControls button { min-height: 44px; padding: 8px 12px; border: 1px solid #638573; color: #e0eee6; background: #192c23; cursor: pointer; }
+.recognitionControls button:disabled { opacity: .6; cursor: default; }
+.recognitionStage { flex: 1; min-height: 0; }
+.recognitionStage > [data-solo-v68] { position: relative; inset: auto; height: 100%; z-index: auto; }

@@ -1,5 +1,6 @@
 "use client";
 
+import {homeworldLandmarkLabel,homeworldRegionNames,YAUTJA_HOME_CITY,yautjaLocalLabel} from './systems/yautjaPlaceNames';
 import {HOMEWORLD_ARCHIVIST_SCENE_SOURCES_V111} from './systems/homeworldArchivistMotionV111';
 
 /* eslint-disable @next/next/no-img-element -- local transparent whole-character plates and game props */
@@ -323,6 +324,9 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   const district = currentBuilding ? HOMEWORLD_DISTRICTS_V77.find(entry => entry.id === currentBuilding.districtId) : districtAtHomeworldActorV77(levelIdV77, actor);
   const nearest = pointInCurrentSpace(actor, interior, levelIdV77);
   const nearestDoor = interior ? null : nearestHomeworldDoorV77(levelIdV77, actor);
+  const nearbyRegion = nearest?.regionId === 'forbidden-reserve' && !canEnterHomeworldRegionV68(save, nearest.regionId).allowed
+    ? null : homeworldRegionNames(nearest?.regionId);
+  const nearestLabel = nearbyRegion ? yautjaLocalLabel(nearbyRegion.region) : nearest?.label;
   const indoorTarget = interior ? nearestHomeworldInteriorTargetV64(interior, actor) : null;
   const sceneWidth = interior?.width ?? HOMEWORLD_WORLD_V77.width;
   const sceneDepth = interior?.depth ?? HOMEWORLD_WORLD_V77.height;
@@ -1522,6 +1526,8 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     setDialog(current => current ? { ...current, message } : current);
   };
   const selectedPoint = dialog?.point;
+  const selectedRegionNames = selectedPoint?.regionId === 'forbidden-reserve' && !canEnterHomeworldRegionV68(save, selectedPoint.regionId).allowed
+    ? null : homeworldRegionNames(selectedPoint?.regionId);
   const submitHomeworldRouteM034 = (action: HomeworldRouteActionM034) => {
     const current = saveRef.current;
     const room = interiorRef.current;
@@ -1781,7 +1787,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     "arena-steward": "Le temps des arènes viendra après ta formation. Présente-toi d’abord au chef, puis à l’instructeur.",
   };
   const youthServiceLocked = youthWelcome && !!selectedPoint?.service && ["armory", "customization", "training", "medbay", "pit"].includes(selectedPoint.service);
-  const title = dialog?.recoveryV111 ? 'Restaurer un point extérieur conservé' : dialog?.archivePlaqueV109 ? HOMEWORLD_ARCHIVE_PLAQUE_V109.npcName : dialog?.cargoV108 ? 'Intendante · lots et passage du quai' : dialog?.archiveComparisonV107 ? dialog.archiveComparisonV107.at==='table'?'Comparaison · objet C et contexte':'Archiviste · étude située' : dialog?.archiveV106 ? HOMEWORLD_ARCHIVE_V106.npcName : dialog?.cartographyObservationV105 ? 'Relevé depuis le point haut' : dialog?.cartographyV104 ? HOMEWORLD_CARTOGRAPHY_V104.npcName : dialog?.cntlipSiteId ? 'C’ntlip · réception originale du clan' : dialog?.navigation ? "Navigation de la cité" : selectedStreetContactV100?.role ?? selectedResidentV68?.role ?? (youthWelcome && selectedNpc?.id === "hunt-king" ? "Accueil du chef du clan" : youthWelcome && selectedPoint?.kind === "ship" ? "Quais du clan" : selectedNpc?.name ?? selectedPoint?.label ?? "La Couronne de Cendres");
+  const title = dialog?.recoveryV111 ? 'Restaurer un point extérieur conservé' : dialog?.archivePlaqueV109 ? HOMEWORLD_ARCHIVE_PLAQUE_V109.npcName : dialog?.cargoV108 ? 'Intendante · lots et passage du quai' : dialog?.archiveComparisonV107 ? dialog.archiveComparisonV107.at==='table'?'Comparaison · objet C et contexte':'Archiviste · étude située' : dialog?.archiveV106 ? HOMEWORLD_ARCHIVE_V106.npcName : dialog?.cartographyObservationV105 ? 'Relevé depuis le point haut' : dialog?.cartographyV104 ? HOMEWORLD_CARTOGRAPHY_V104.npcName : dialog?.cntlipSiteId ? 'C’ntlip · réception originale du clan' : dialog?.navigation ? "Navigation de la cité" : selectedStreetContactV100?.role ?? selectedResidentV68?.role ?? (youthWelcome && selectedNpc?.id === "hunt-king" ? "Accueil du chef du clan" : youthWelcome && selectedPoint?.kind === "ship" ? "Quais du clan" : selectedNpc?.name ?? (selectedRegionNames ? yautjaLocalLabel(selectedRegionNames.region) : selectedPoint?.label) ?? "La Couronne de Cendres");
   const heroPlate = youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69 : homeworldHeroPlate(save.appearance.presetId);
   const actorSpeed = Math.hypot(actor.vx, actor.vy);
   const youthSpeedV74 = Math.hypot(youthMotionV74.velocity.x, youthMotionV74.velocity.y);
@@ -1834,7 +1840,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   const interactionLabel = (townBellAction ? TOWN_BELL_LABELS_O6[townBellAction]
     : horizonAction ? horizonActionLabelO6(horizonAction, horizonChoiceReady)
       : twilightAction ? TWILIGHT_LABELS_O6[twilightAction] : workshopLabel) ??
-    youthCityPlaceAction?.label ?? saarMark?.label ?? streetAction?.label ?? (nearbyPlaqueActionV109?nearbyPlaqueActionV109.label:nearbyPlaqueHostV109?'Archiviste · plaque K-17':nearbyCargoActionV108?nearbyCargoActionV108.label:nearbyCargoHostV108?'Intendante · répartir les lots':nearbyComparisonActionV107?nearbyComparisonActionV107.label:nearbyComparisonHostV107?'Archiviste · preuve située':nearbyArchiveActionV106?nearbyArchiveActionV106.label:nearbyArchivistV106?'Archiviste · dossiers séparés':nearbyConnectorV77 ? connectorLabelV83 : indoorTarget?.kind === "exit" ? "Sortir vers la cité" : atCoordinationGateM028 ? coordinationPromptM028 : atAdjutantWorkshopM029 ? "Poser le relais du convoi" : highPointAvailableV105&&progress.cartographyV105?.receipt?.phase==='observing'?'Comparer les repères du viaduc':nearbyCntlipHostV77?`Halte · ${nearbyCntlipHostV77.name}` : nearbyCartographerV104?'Cartographe · liaison du port':nearestDoor ? `Entrer · ${nearestDoor.label}` : nearest?.label ?? (nearbyResidentV68 ? `Parler · ${nearbyResidentV68.role}` : nearbyStreetContactV100?`Parler · ${nearbyStreetContactV100.role}`:null));
+    youthCityPlaceAction?.label ?? saarMark?.label ?? streetAction?.label ?? (nearbyPlaqueActionV109?nearbyPlaqueActionV109.label:nearbyPlaqueHostV109?'Archiviste · plaque K-17':nearbyCargoActionV108?nearbyCargoActionV108.label:nearbyCargoHostV108?'Intendante · répartir les lots':nearbyComparisonActionV107?nearbyComparisonActionV107.label:nearbyComparisonHostV107?'Archiviste · preuve située':nearbyArchiveActionV106?nearbyArchiveActionV106.label:nearbyArchivistV106?'Archiviste · dossiers séparés':nearbyConnectorV77 ? connectorLabelV83 : indoorTarget?.kind === "exit" ? "Sortir vers la cité" : atCoordinationGateM028 ? coordinationPromptM028 : atAdjutantWorkshopM029 ? "Poser le relais du convoi" : highPointAvailableV105&&progress.cartographyV105?.receipt?.phase==='observing'?'Comparer les repères du viaduc':nearbyCntlipHostV77?`Halte · ${nearbyCntlipHostV77.name}` : nearbyCartographerV104?'Cartographe · liaison du port':nearestDoor ? `Entrer · ${homeworldLandmarkLabel(nearestDoor.id, nearestDoor.label)}` : nearestLabel ?? (nearbyResidentV68 ? `Parler · ${nearbyResidentV68.role}` : nearbyStreetContactV100?`Parler · ${nearbyStreetContactV100.role}`:null));
   const heroPlacement = !youthWelcome && heroPlate.status === "custom-modular-body"
     ? homeworldModularPlacementV64(save.appearance.bodyMorphId, save.appearance.headStyleId)
     : homeworldPortraitPlacementV64(heroPlate.plateId, heroPlate.src, youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69.physicalHeight : 100);
@@ -1845,7 +1851,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   return <section ref={rootRef} className={styles.hub} style={suspended ? { display: "none" } : undefined}
     aria-label="Homeworld — Cité des Premiers Trophées" data-homeworld-hub="true" data-homeworld-motion-ready={motionAssetsV74.ready} data-homeworld-interior-id={interior?.buildingId} data-homeworld-level-v77={levelIdV77} data-homeworld-elevation-v77={elevationV77.toFixed(3)} data-homeworld-transit-v77={transitV77?.connectorId} data-homeworld-skiff-v77={skiffV77?.regionId} data-homeworld-lift-position-v83={liftStateV83.position.toFixed(4)} data-homeworld-lift-motion-v83={liftStateV83.journey?.kind ?? 'docked'}>
     <header className={styles.header}>
-      <div><div className={styles.eyebrow}>Yautja Prime · {interior ? "Intérieur parcourable" : "Monde natal"}</div><h2>{interior?.title ?? "La Cité des Premiers Trophées"}</h2><p>{interior?.description ?? (youthWelcome ? "Ton parcours Unblooded : accueil du clan, dojo, premier équipement et camp. Aucun vaisseau personnel avant le rite Blooded." : "Une cité de clans et de serments. Ton vaisseau reste ta demeure.")}</p></div>
+      <div><div className={styles.eyebrow}>Yautja Prime · {interior ? "Intérieur parcourable" : "Monde natal"}</div><h2>{interior ? homeworldLandmarkLabel(interior.buildingId, interior.title) : yautjaLocalLabel(YAUTJA_HOME_CITY)}</h2><p>{interior?.description ?? (youthWelcome ? "Ton parcours Unblooded : accueil du clan, dojo, premier équipement et camp. Aucun vaisseau personnel avant le rite Blooded." : "Une cité de clans et de serments. Ton vaisseau reste ta demeure.")}</p></div>
       <div className={styles.hudActionsV64}><button type="button" disabled={cargoMigrationPendingV108 || suspended || paused || inactive || !!dialog || spatialCodexOpen || wayfindingOpenV75 || !motionAssetsV74.ready} onClick={() => changeWayfindingOpenV75(true)}>Repères</button>
       <button type="button" disabled={cargoMigrationPendingV108 || wayfindingOpenV75 || spatialCodexOpen} onClick={() => { clearInputs(); setDialog({ point: null, navigation: true }); }}>Navigation</button>
       <button type="button" disabled={cargoMigrationPendingV108 || wayfindingOpenV75 || spatialCodexOpen} onClick={() => { clearInputs(); if (!paused && !transitRefV77.current) recordLocationV77(); setPaused(value => !value); if (paused) requestAnimationFrame(() => viewportRef.current?.focus({ preventScroll: true })); }}>{paused ? "Reprendre" : "Pause"}</button><button type="button" disabled={cargoMigrationPendingV108 || suspended || !!transitV77} onClick={recordLocationV77}>Enregistrer la position</button></div>
@@ -2256,7 +2262,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
             <button type="button" data-r2-m003-stop="kennel" disabled={suspended || paused || inactive}
               onClick={() => saveYouthCityErrand({ stop: "kennel" })}>{YOUTH_CITY_STOPS_V172.kennel.label}</button>}
           {onKennelActionV147 && isHoundKennelContactV147(selectedStreetContactV100.id) &&
-            <HoundKennelPanelV147 hounds={save.houndsV147} disabled={cargoMigrationPendingV108||suspended||paused||inactive}
+            <HoundKennelPanelV147 hounds={save.houndsV147} clanMarks={save.profile.clanMarks} disabled={cargoMigrationPendingV108||suspended||paused||inactive}
               onAction={handleKennelActionV147} />}
         </> : dialog.streetContactV100 ? <p role="status">La conversation est interrompue. Rejoins cet habitant sur son passage.</p> : selectedResidentV68 ? <>
           <p data-homeworld-civilian-routine-v84={selectedResidentPoseV84?.phase} data-homeworld-civilian-group-v84={selectedResidentRoutineV84?.groupId ?? undefined}>

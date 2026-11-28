@@ -14,6 +14,9 @@ import {
 } from './systems/shipAcquisitionV89';
 import styles from './ShipAcquisitionV89.module.css';
 
+const shipyardHostName = 'Ulh’vark';
+const shipyardHostLabel = `${shipyardHostName} · ${binding.npcName}`;
+
 export interface ShipAcquisitionControlledV89 {
   state: ShipAcquisitionStateV89 | null;
   context: ShipAcquisitionContextV89;
@@ -87,7 +90,7 @@ export default function ShipAcquisitionV89({controlled, appearance, loadout, onE
             <div className={styles.interior} style={{left: binding.entryX}}><span>SEUIL INTÉRIEUR</span></div>
             {e.hostAvailable && <div className={styles.host} style={{left: binding.posts.responsible}}>
               <HunterRigPreview appearance={hostAppearance} armorId="scout" weaponIds={[]} gearIds={[]} size={134}
-                label="Responsable du chantier · interprétation visuelle originale, sans arme" facing={1} />
+                label={shipyardHostLabel} facing={1} />
             </div>}
             {state && <div className={styles.actor} style={{left: state.actor.x}} data-actor-x={state.actor.x}>
               <HunterRigPreview appearance={appearance} armorId={loadout.armorId} weaponIds={loadout.weaponIds}
@@ -141,8 +144,8 @@ export default function ShipAcquisitionV89({controlled, appearance, loadout, onE
       </aside>
     </div>
     <section className={styles.exchange} aria-label="Dernier échange réellement consigné">
-      <h3>Auprès du responsable</h3>
-      {lastLine ? <><p className={styles.speaker}>{lastLine.speaker} · échange consigné</p>
+      <h3>{shipyardHostLabel}</h3>
+      {lastLine ? <><p className={styles.speaker}>{lastLine.speaker === binding.npcName ? shipyardHostName : lastLine.speaker} · échange consigné</p>
         <blockquote><YautjaTranslationV67 key={lastLine.id} text={lastLine.text} paused={e.paused || !e.hostNear} showSkip /></blockquote>
         <p>{lastLine.gesture}</p><small>{lastLine.address}</small></> :
         <p>Les paroles d’acquisition attendent leurs conditions réelles. L’inspection préliminaire et le rapport restent jouables ; aucun accord ni enregistrement audio n’est inventé.</p>}
