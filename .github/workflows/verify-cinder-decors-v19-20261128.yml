@@ -15,7 +15,7 @@ jobs:
       - name: Checkout exact app and original Cinder inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'e2aecdb258655aa4dfb6e3738994646f3badd39e'
+          ref: '2e3108b08e5947999701c393900551d31e9c62b9'
           filter: blob:none
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -34,13 +34,7 @@ jobs:
             /.openai/hosting.json
             /public/**/manifest.json
             /public/game/assets/v19/biome-decor/
-            /art-source/v19/biome-decor/batches/2026-08-31-volcano-01/manifest.json
-            /art-source/v19/biome-decor/batches/2026-08-31-volcano-01/sources/orn-fallen-hunter-marker-01-single.png
-            /art-source/v19/biome-decor/volcano/orn/masters/orn-fallen-hunter-marker-01-single-chroma.webp
-            /art-source/v19/biome-decor/batches/2026-08-31-volcano-01/processing/orn-fallen-hunter-marker-01-single.json
-            /art-source/v19/biome-decor/batches/2026-08-31-volcano-01/sources/orn-profaned-trophy-rack-04-fallen.png
-            /art-source/v19/biome-decor/volcano/orn/masters/orn-profaned-trophy-rack-04-fallen-chroma.webp
-            /art-source/v19/biome-decor/batches/2026-08-31-volcano-01/processing/orn-profaned-trophy-rack-04-fallen.json
+            /art-source/v19/biome-decor/
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -49,7 +43,7 @@ jobs:
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Compare original bytes and play production scan in Chromium
         run: |
-          test "$(git rev-parse HEAD)" = 'e2aecdb258655aa4dfb6e3738994646f3badd39e'
+          test "$(git rev-parse HEAD)" = '2e3108b08e5947999701c393900551d31e9c62b9'
           node scripts/qa-cinder-decors-v19-20261128.mjs
       - name: Check catalogue and TypeScript
         if: ${{ !cancelled() }}
@@ -61,7 +55,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: cinder-decors-v19-e2aecdb258655aa4dfb6e3738994646f3badd39e
+          name: cinder-decors-v19-2e3108b08e5947999701c393900551d31e9c62b9
           path: outputs/qa-cinder-decors-v19-20261128/
           if-no-files-found: warn
           retention-days: 30
