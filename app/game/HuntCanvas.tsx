@@ -269,6 +269,7 @@ import {
   cullEnvironmentDecorPlacements,
   environmentDecorPlacementsForMission,
   environmentGameplayPropForGeometryId,
+  CINDER_FALLEN_HUNTER_MARKER_V19,
   environmentPropRuntimeUrlsForSector,
   type EnvironmentDecorPropPlacement,
   type EnvironmentPropRuntimeAsset,
@@ -5060,6 +5061,30 @@ function drawEnvironmentGameplayProp(
   drawEnvironmentProp(context, image, role, bounds, opacity);
 }
 
+function drawCinderFallenMarks(
+  context: CanvasRenderingContext2D,
+  state: GameState,
+  image: HTMLImageElement,
+  cameraX: number,
+): void {
+  const ratio = image.naturalWidth / image.naturalHeight;
+  if (!Number.isFinite(ratio) || ratio <= 0) return;
+  const width = Math.min(106, 94 * ratio);
+  const height = width / ratio;
+  for (const node of state.scanNodes) {
+    if (node.x + width / 2 < cameraX || node.x - width / 2 > cameraX + VIEW_WIDTH) continue;
+    // A freestanding memorial uses the first actual surface below its trace.
+    // Persisted trace coordinates continue to own the scan and its signal.
+    const floor = state.world.platforms.reduce((bottom, platform) =>
+      platform.x + width / 2 <= node.x && platform.x + platform.width - width / 2 >= node.x &&
+        platform.y >= node.y && platform.y < bottom ? platform.y : bottom,
+    state.world.floorY);
+    drawEnvironmentGameplayProp(context, image, "decoration", {
+      x: node.x - width / 2, y: floor - height, width, height,
+    });
+  }
+}
+
 function drawEnvironmentDecorPass(
   context: CanvasRenderingContext2D,
   state: GameState,
@@ -5756,6 +5781,10 @@ function renderGame(
     }
   }
 
+  if (mission.id === "volcano-bad-blood" && CINDER_FALLEN_HUNTER_MARKER_V19) {
+    const memorial = environmentPropImage(assets, CINDER_FALLEN_HUNTER_MARKER_V19);
+    if (memorial) drawCinderFallenMarks(context, state, memorial, cameraX);
+  }
   if (state.phase === "tracking" || state.phase === "target") {
     for (const node of state.scanNodes) {
       if (node.scanned) continue;
@@ -11798,6 +11827,10 @@ export default function HuntCanvas({
       }
     };
     preloadEnvironmentAroundScreen(game.worldScreenId);
+    if (mission.id === "volcano-bad-blood" && CINDER_FALLEN_HUNTER_MARKER_V19) {
+      const { runtimeUrl } = CINDER_FALLEN_HUNTER_MARKER_V19;
+      queueImage(runtimeUrl, (image) => { assets.environmentProps[runtimeUrl] = image; });
+    }
 
     // Reuse the exact available V15 cutout for extraction and hand carry.
     const campaignTrophyVisual = trophyHuntVisualForDefinitionId(mission.trophy.id);
