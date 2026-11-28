@@ -1,4 +1,4 @@
-/** Parcours d’obtention proposés à partir des trois fiches du catalogue du jeu. */
+/** Parcours d’obtention proposés à partir des fiches du catalogue du jeu. */
 import type { TrustExerciseV153 } from './mountsV153.ts';
 
 export interface MountFieldStageV153 extends TrustExerciseV153 { position: number }
@@ -68,6 +68,37 @@ const expeditions: Readonly<Record<string, MountExpeditionV153>> = {
         options: [
           { id: 'release-at-guet', label: 'Libérer le fouisseur devant la meute et reculer', ok: true, feedback: 'La meute accepte la proie vivante. Un individu s’approche.' },
           { id: 'steal-young', label: 'Garder la proie et attraper le plus jeune', ok: false, feedback: 'La meute défend ses petits. Reviens aux terriers.' },
+        ],
+      },
+    ],
+  },
+  stoneback: {
+    title: 'Le passage du troupeau',
+    route: 'Désert rocheux · Guet, défilé et refuge',
+    portrait: '/game/mobility/mounts/39_stoneback__3q_left.png',
+    stages: [
+      {
+        id: 'record-illegal-hunt', position: 3, label: 'Guet · établir la chasse illégale',
+        source: 'La fiche d’acquisition demande de sauver un troupeau d’une chasse illégale.',
+        options: [
+          { id: 'relay-hunt-traces', label: 'Relever les filets fermés et transmettre l’alerte aux gardiens', ok: true, feedback: 'Les gardiens confirment le braconnage et protègent le guet.' },
+          { id: 'rush-herd', label: 'Foncer au milieu du troupeau pour le faire déguerpir', ok: false, feedback: 'Les adultes se dispersent près des filets. Retour au guet.' },
+        ],
+      },
+      {
+        id: 'clear-herd-passage', position: 8, label: 'Défilé · dégager le passage large',
+        source: 'La masse du Stoneback lui interdit les passages étroits.',
+        options: [
+          { id: 'open-wide-route', label: 'Décrocher la fermeture du large défilé pour les adultes', ok: true, feedback: 'Adultes et petits peuvent passer ensemble hors des filets.' },
+          { id: 'choose-tight-slot', label: 'Diriger le troupeau vers la fente la plus courte', ok: false, feedback: 'Les adultes bloquent la fente. Les gardiens les ramènent en amont.' },
+        ],
+      },
+      {
+        id: 'verify-safe-herd', position: 12, label: 'Refuge · faire constater le passage',
+        source: 'Le maître des bêtes confie un Stoneback après le sauvetage du troupeau.',
+        options: [
+          { id: 'wait-all-and-confirm', label: 'Attendre les derniers petits et appeler le maître des bêtes', ok: true, feedback: 'Le troupeau est à l’abri. Le maître des bêtes confie un Stoneback au registre.' },
+          { id: 'claim-alone', label: 'Réclamer le premier adulte avant le passage des petits', ok: false, feedback: 'Le sauvetage doit couvrir tout le troupeau. Reviens au guet.' },
         ],
       },
     ],

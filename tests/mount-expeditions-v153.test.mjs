@@ -9,9 +9,9 @@ const riding = qa.load('app/game/systems/mobility/mountRidingV156.ts');
 const saves = qa.load('app/game/save.ts');
 const owner = '2026-11-28T13:00:00.000Z';
 
-function campaign() {
+function campaign(rank = 'elite') {
   const save = saves.defaultSave(owner);
-  save.profile = { ...save.profile, acquiredRankIdV166: 'blooded', rankId: 'blooded', clanMarks: 400 };
+  save.profile = { ...save.profile, acquiredRankIdV166: rank, rankId: rank, clanMarks: 400 };
   return save;
 }
 
@@ -50,7 +50,7 @@ function acquire(save, id) {
   return order(save, { type: 'recruit', mountId: id, trialId });
 }
 
-test('three field expeditions with separate evidence coexist alongside a legacy Kha’Rha', () => {
+test('four field expeditions with separate evidence coexist alongside a legacy Kha’Rha', () => {
   let save = open(campaign(), 'kha_rha');
   for (const [index, stage] of mounts.KHA_RHA_TRUST_EXERCISES_V153.entries()) {
     save = choose(save, stage, stage.options.find(option => option.ok).id, 'kha-legacy-' + index);
@@ -63,10 +63,10 @@ test('three field expeditions with separate evidence coexist alongside a legacy 
   const local = { getItem: key => written.get(key) ?? null, setItem: (key, value) => written.set(key, value), removeItem: key => written.delete(key) };
   assert.ok(saves.writeSaveWithStatus(save, local).persisted);
   const restored = saves.loadSaveWithStatus(local).save;
-  assert.equal(restored.mountsV153.completedTrials.length, 3);
+  assert.equal(restored.mountsV153.completedTrials.length, 4);
   assert.deepEqual(restored.mountsV153.mounts[0], original);
   assert.deepEqual(restored.mountsV153.mounts.map(m => m.id), ['kha_rha', ...field.MOUNT_EXPEDITION_IDS_V153]);
-  assert.deepEqual(restored.mountsV153.mounts.map(m => m.bond), [0, 0, 0, 0]);
+  assert.deepEqual(restored.mountsV153.mounts.map(m => m.bond), [0, 0, 0, 0, 0]);
   assert.equal(restored.profile.clanMarks, 400);
   assert.deepEqual(saves.parseSaveImport(saves.exportSave(restored)).save.mountsV153, restored.mountsV153);
   const forged = structuredClone(restored.mountsV153);
@@ -78,6 +78,7 @@ test('three field expeditions with separate evidence coexist alongside a legacy 
 });
 
 test('a field expedition requires real positions, restrictions and a unique confirmation', () => {
+  order(campaign('blooded'), { type: 'begin-trial', mountId: 'stoneback' }, false);
   for (const id of field.MOUNT_EXPEDITION_IDS_V153) {
     const [first, second, third] = field.mountExpeditionV153(id).stages;
     const initial = open(campaign(), id);
@@ -120,21 +121,25 @@ test('every new species takes actual riding inputs and resumes the same mount an
     const start = riding.actMountRideV156(save, { type: 'mount', mountId: id, ownerCreatedAt: owner, expectedRevision: 0 });
     assert.ok(start.accepted, start.message);
     save = { ...save, mountRidesV156: start.rides };
-    const driving = riding.actMountRideV156(save, {
-      type: 'ride', rideId: start.rides.active.id, ownerCreatedAt: owner, expectedRevision: 1,
-      inputs: Array.from({ length: 60 }, () => ({ throttle: 1, steer: 0, brake: false, boost: false })),
-    });
-    assert.ok(driving.accepted, driving.message);
-    assert.ok(driving.rides.active.course.x > start.rides.active.course.x);
-    moved.push(driving.rides.active.course.distance);
-    const restored = saves.parseSaveImport(saves.exportSave({ ...save, mountRidesV156: driving.rides })).save;
-    assert.deepEqual(restored.mountRidesV156.active, driving.rides.active);
-    const dismount = riding.actMountRideV156(restored, { type: 'dismount', rideId: driving.rides.active.id, ownerCreatedAt: owner, expectedRevision: 2 });
+    for (let block = 0; block < 2; block++) {
+      const driving = riding.actMountRideV156(save, {
+        type: 'ride', rideId: start.rides.active.id, ownerCreatedAt: owner, expectedRevision: save.mountRidesV156.revision,
+        inputs: Array.from({ length: 60 }, () => ({ throttle: 1, steer: 0, brake: false, boost: false })),
+      });
+      assert.ok(driving.accepted, driving.message);
+      save = { ...save, mountRidesV156: driving.rides };
+    }
+    const active = save.mountRidesV156.active;
+    assert.ok(active.course.x > start.rides.active.course.x);
+    moved.push(active.course.distance);
+    const restored = saves.parseSaveImport(saves.exportSave(save)).save;
+    assert.deepEqual(restored.mountRidesV156.active, active);
+    const dismount = riding.actMountRideV156(restored, { type: 'dismount', rideId: active.id, ownerCreatedAt: owner, expectedRevision: restored.mountRidesV156.revision });
     assert.ok(dismount.accepted, dismount.message);
     assert.equal(dismount.rides.lastReport.mountId, id);
     assert.equal(dismount.rides.active, null);
     assert.ok(dismount.mounts.mounts[0].fatigue > 0);
     assert.equal(dismount.mounts.mounts[0].bond, 50);
   }
-  assert.equal(new Set(moved).size, 3, 'les trois profils utilisent des statistiques de pied différentes');
+  assert.equal(new Set(moved).size, 4, 'les quatre profils utilisent des statistiques de pied différentes');
 });

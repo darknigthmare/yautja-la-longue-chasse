@@ -34,7 +34,7 @@ test('profils : seize montures du catalogue, faiblesses citées exactement',()=>
  assert.deepEqual(mt.MOUNT_PROFILES_V153.map(p=>p.id),cat.MOBILITY_CATALOGUE.filter(d=>d.kind==='mount').map(d=>d.id));
  for(const r of mt.MOUNT_REACTION_SOURCES_V153)assert(cat.MOBILITY_CATALOGUE.some(d=>d.weaknesses.includes(r.source)),r.source);
  assert.deepEqual(mt.mountProfileV153('kha_rha').reactions.map(r=>r.trigger),['fire','toxic']);
- assert.deepEqual(mt.MOUNT_PROFILES_V153.filter(p=>p.recruitment).map(p=>p.id),['kha_rha','forest_stalker_mount','sand_mauler','ice_fang']);
+ assert.deepEqual(mt.MOUNT_PROFILES_V153.filter(p=>p.recruitment).map(p=>p.id),['kha_rha','forest_stalker_mount','sand_mauler','stoneback','ice_fang']);
 });
 
 test('aucun animal par défaut : état neuf vide, ancienne sauvegarde sans monture',()=>{

@@ -1,6 +1,7 @@
 "use client";
 import {useState} from 'react';
 import type {SaveGame} from './types';
+import {mobilityDefinition,mobilityRankIndex} from './systems/mobility/catalogue';
 import {
   createMountsV153, mountProfileV153, mountCareQuoteV153, mountExerciseRefusalV153,
   KHA_RHA_ADOPTION_MARKS_V153, MOUNT_EXERCISES_V153, MOUNT_CONDITIONS_V153, MOUNT_CONDITION_LABELS_V153, MOUNT_SESSION_GAIN_CAP_V153,
@@ -25,6 +26,8 @@ export default function MobilityMountsV153({save,mountId,allowed,onCommand,onRid
  const order=(action:MountOrderV153)=>{if(!can||!onCommand)return;const r=onCommand({...action,ownerCreatedAt:save.createdAt,expectedRevision:state.revision} as Parameters<MountWriterV153>[0]);onMessage(r.message);};
  const mount=state.mounts.find(m=>m.id===profile.id);
  const expedition=mountExpeditionV153(profile.id);
+ const minimumRank=mobilityDefinition(profile.id)?.minimumRank;
+ const rankOk=minimumRank===undefined||mobilityRankIndex(save.profile.rankId)>=mobilityRankIndex(minimumRank);
  const conflict=state.trial&&!state.mounts.some(m=>m.id===state.trial?.mountId)&&state.trial.mountId!==profile.id;
  const trial=state.trial?.mountId===profile.id?state.trial:null;
  const session=state.session?.mountId===profile.id?state.session:null;
@@ -40,7 +43,8 @@ export default function MobilityMountsV153({save,mountId,allowed,onCommand,onRid
    <p>Source : « {profile.acquisition} »</p>
    {!expedition&&<p className={styles.hint}>Proposé : la quête « Premier lien » n’existe pas encore ; l’approche d’un jeune adulte au comptoir des Forges remplace sa capture. Le contenu des trois exercices est proposé.</p>}
    {conflict&&<p className={styles.hint}>Une autre approche est ouverte. Termine-la ou quitte-la dans sa fiche.</p>}
-   {!trial&&<button type="button" data-mount-begin={profile.id} disabled={!can||!!conflict} onClick={()=>order({type:'begin-trial',mountId:profile.id})}>{expedition?'Ouvrir le parcours':'Approcher un jeune adulte'}</button>}
+   {!trial&&!rankOk&&<p className={styles.hint}>Rang requis : {minimumRank==='elite'?'Elite':'Blooded'}.</p>}
+   {!trial&&<button type="button" data-mount-begin={profile.id} disabled={!can||!rankOk||!!conflict} onClick={()=>order({type:'begin-trial',mountId:profile.id})}>{expedition?'Ouvrir le parcours':'Approcher un jeune adulte'}</button>}
    {trial&&expedition&&<MountExpeditionRouteV153 expedition={expedition} trial={trial} can={can} eventId={eventId} order={order}/>}
    {trial&&!expedition&&<ol>{profile.trustExercises.map((ex,i)=>{const done=i<trial.passed.length,current=i===trial.passed.length&&trial.status==='open';return <li key={ex.id} data-trust-exercise={ex.id} data-trust-state={done?'passed':current?'current':'locked'}><strong>{ex.label}</strong> {done?'· réussi':current?'':'· à venir'}<br/><small className={styles.hint}>{ex.source}</small>{current&&<div className={styles.actions}>{ex.options.map(o=><button key={o.id} disabled={!can} onClick={()=>order({type:'trust-exercise',trialId:trial.id,exerciseId:ex.id,optionId:o.id,eventId})}>{o.label}</button>)}</div>}</li>;})}</ol>}
    {trial&&<>
