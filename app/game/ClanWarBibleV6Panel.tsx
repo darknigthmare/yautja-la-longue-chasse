@@ -20,6 +20,7 @@ import ClanWarSourceMapStudyV128 from "./ClanWarSourceMapStudyV128";
 import ClanWarRtsMissionStudyV129 from "./ClanWarRtsMissionStudyV129";
 import ClanWarRtsSquadsV133 from "./ClanWarRtsSquadsV133";
 import type { RecordedSceneAudioPort } from "./systems/sceneAudio";
+import type { W3S10MountCampaign } from "./systems/w3S10MountAdmission";
 import type { WarSourceRtsScenarioIdV119 } from "./systems/clanWarRtsScenariosV119";
 
 const COUNCIL_TOOL_GROUPS = [
@@ -40,7 +41,7 @@ type CouncilSection = typeof COUNCIL_TOOL_GROUPS[number]["tools"][number][0];
 
 const fold = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 /** Latest workbook figures and route planning, without invented campaign acquisitions. */
-export default function ClanWarBibleV6Panel({ active = true, gauntletId = "jungle-hunter", holographic = false, createSceneAudio, campaignRoutesPanel, campaignOwnerCreatedAt }: { active?: boolean; gauntletId?: string; holographic?: boolean; createSceneAudio?: () => RecordedSceneAudioPort | null; campaignRoutesPanel?: ReactNode; campaignOwnerCreatedAt?: string }) {
+export default function ClanWarBibleV6Panel({ active = true, gauntletId = "jungle-hunter", holographic = false, createSceneAudio, campaignRoutesPanel, campaignOwnerCreatedAt, w3S10Campaign }: { active?: boolean; gauntletId?: string; holographic?: boolean; createSceneAudio?: () => RecordedSceneAudioPort | null; campaignRoutesPanel?: ReactNode; campaignOwnerCreatedAt?: string; w3S10Campaign?: W3S10MountCampaign }) {
   const [privateRules, setPrivateRules] = useState<WarRulesV6 | null>(null);
   const [importName, setImportName] = useState(""), [importError, setImportError] = useState(""), [importBusy, setImportBusy] = useState(false);
   const importTicket = useRef(0);
@@ -131,7 +132,7 @@ export default function ClanWarBibleV6Panel({ active = true, gauntletId = "jungl
       onOpenSourceRts={id=>{setRequestedRtsPilot(id);setSection("missions");}}/>}
     <div hidden={section !== "exercise"}><ClanWarExerciseV6 key={rulesGeneration} rules={rules}/></div>
     <div hidden={section !== "works"}><ClanWarWorksV6 key={rulesGeneration} rules={rules}/></div>
-    <div hidden={section !== "specialized"}><ClanWarSpecializedV107 key={rulesGeneration} rules={rules} active={active && section === "specialized" && !sourceOpen && !rulesOpen}/></div>
+    <div hidden={section !== "specialized"}><ClanWarSpecializedV107 key={rulesGeneration} rules={rules} w3S10Campaign={w3S10Campaign} active={active && section === "specialized" && !sourceOpen && !rulesOpen}/></div>
     <div hidden={section !== "logistics"}>{section === "logistics" && <ClanSupplyRouteV109 key={rulesGeneration} rules={rules} active={active && section === "logistics" && !sourceOpen && !rulesOpen} campaignRoutesPanel={campaignRoutesPanel} campaignOwnerCreatedAt={campaignOwnerCreatedAt}/>}</div>
     {section === "teams" && <div>
       <h4>Hypothèses de l’équipe</h4><p>Le calcul reprend la feuille « Simuler Une équipe ». Ces valeurs servent à comparer une préparation ; elles ne deviennent pas des guerriers, des compétences ou des ressources dans votre campagne.</p>
