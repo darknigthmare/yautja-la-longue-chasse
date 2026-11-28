@@ -7,7 +7,7 @@ const mt=qa.load('app/game/systems/mobility/mountsV153.ts');
 const m=qa.load('app/game/systems/mobility/ledger.ts');
 const cat=qa.load('app/game/systems/mobility/catalogue.ts');
 const saves=qa.load('app/game/save.ts');
-const OWNER='2026-11-08T10:00:00.000Z',MAIN=saves.SAVE_STORAGE_KEY;
+const OWNER='2026-11-08T10:00:00.000Z';
 
 function seed(){const s=saves.defaultSave(OWNER);s.profile.honor=300;s.profile.rankId='blooded';s.profile.clanMarks=10000;return s;}
 let ev=0;const eid=()=>`ev-test-${++ev}`;
