@@ -39,13 +39,9 @@ jobs:
             /public/**/manifest.json
             /public/game/user-pack/v56/cutouts/companion-*.png
             /public/game/user-pack/v56/cutouts/preddog.png
-            /public/game/homeworld/v67/ash-causeway-vista.png
-            /public/game/homeworld/v67/glass-processional-vista.png
-            /public/game/homeworld/v84/npcs/chief/16.png
-            /public/game/homeworld/v84/npcs/instructor/18.png
-            /public/game/homeworld/v64/clan-shuttle.png
-            /public/game/homeworld/v77/lava-transit-skiff.png
-            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/
+            /public/game/assets/v3/actors/yautja/hunter/
+            /public/game/sprites/v62/heads/
       - name: Use Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -54,12 +50,12 @@ jobs:
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Exercise the prices, legacy roster and order simulation
         run: node --test --test-reporter=spec tests/hunting-hounds-v147.test.mjs
-      - name: Verify types
-        run: npx tsc --noEmit
       - name: Materialize pinned runtime assets
         run: node scripts/materialize-asset-raccords-20261120.mjs runtime
       - name: Play the kennel and field orders in Chromium
         run: node scripts/qa-hound-kennel-20261128.mjs
+      - name: Verify types
+        run: npx tsc --noEmit
       - name: Upload the native receipts
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
