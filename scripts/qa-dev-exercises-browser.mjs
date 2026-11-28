@@ -140,6 +140,7 @@ try {
     }
     await page.locator("[data-dev-forge-hunt]").click();
     await page.locator('[data-dev-stage="hunt"] canvas').first().waitFor();
+    await page.getByRole("button", { name: "Commencer la chasse", exact: true }).click();
     await page.locator("[data-dev-reset]").click();
     await page.getByRole("tab", { name: "Réparations", exact: true }).click();
     assert.equal(Number(await stock.getAttribute("data-forge-repair-stock")), started);
@@ -186,7 +187,7 @@ try {
     await scene.and(page.locator('[data-solo-step="debrief"]')).waitFor();
     await canvas.focus();
     await scene.locator('canvas[data-solo-assets="true"][data-solo-armed="true"]').waitFor();
-    await page.keyboard.press("KeyE", { delay: 150 });
+    await page.keyboard.press("KeyH", { delay: 150 });
     await scene.and(page.locator('[data-solo-step="recognition"]')).waitFor();
     await page.keyboard.press("Escape");
     await scene.getByRole("button", { name: "Reprendre", exact: true }).waitFor();
@@ -194,10 +195,10 @@ try {
     await scene.and(page.locator('[data-solo-step="recognition"]')).waitFor();
     await canvas.focus();
     await scene.locator('canvas[data-solo-assets="true"][data-solo-armed="true"]').waitFor();
-    await page.keyboard.down("KeyE");
+    await page.keyboard.down("KeyH");
     try {
       await scene.and(page.locator('[data-solo-step="complete"]')).waitFor();
-    } finally { await page.keyboard.up("KeyE"); }
+    } finally { await page.keyboard.up("KeyH"); }
   });
   await run("rites-l06-et-terrasse-o6", async () => {
     await open("dev-l06");
