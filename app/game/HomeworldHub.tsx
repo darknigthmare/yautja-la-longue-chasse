@@ -324,7 +324,8 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
   const district = currentBuilding ? HOMEWORLD_DISTRICTS_V77.find(entry => entry.id === currentBuilding.districtId) : districtAtHomeworldActorV77(levelIdV77, actor);
   const nearest = pointInCurrentSpace(actor, interior, levelIdV77);
   const nearestDoor = interior ? null : nearestHomeworldDoorV77(levelIdV77, actor);
-  const nearbyRegion = homeworldRegionNames(nearest?.regionId);
+  const nearbyRegion = nearest?.regionId === 'forbidden-reserve' && !canEnterHomeworldRegionV68(save, nearest.regionId).allowed
+    ? null : homeworldRegionNames(nearest?.regionId);
   const nearestLabel = nearbyRegion ? yautjaLocalLabel(nearbyRegion.region) : nearest?.label;
   const indoorTarget = interior ? nearestHomeworldInteriorTargetV64(interior, actor) : null;
   const sceneWidth = interior?.width ?? HOMEWORLD_WORLD_V77.width;
@@ -1525,7 +1526,8 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     setDialog(current => current ? { ...current, message } : current);
   };
   const selectedPoint = dialog?.point;
-  const selectedRegion = homeworldRegionNames(selectedPoint?.regionId);
+  const selectedRegionNames = selectedPoint?.regionId === 'forbidden-reserve' && !canEnterHomeworldRegionV68(save, selectedPoint.regionId).allowed
+    ? null : homeworldRegionNames(selectedPoint?.regionId);
   const submitHomeworldRouteM034 = (action: HomeworldRouteActionM034) => {
     const current = saveRef.current;
     const room = interiorRef.current;
@@ -1785,7 +1787,7 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     "arena-steward": "Le temps des arènes viendra après ta formation. Présente-toi d’abord au chef, puis à l’instructeur.",
   };
   const youthServiceLocked = youthWelcome && !!selectedPoint?.service && ["armory", "customization", "training", "medbay", "pit"].includes(selectedPoint.service);
-  const title = dialog?.recoveryV111 ? 'Restaurer un point extérieur conservé' : dialog?.archivePlaqueV109 ? HOMEWORLD_ARCHIVE_PLAQUE_V109.npcName : dialog?.cargoV108 ? 'Intendante · lots et passage du quai' : dialog?.archiveComparisonV107 ? dialog.archiveComparisonV107.at==='table'?'Comparaison · objet C et contexte':'Archiviste · étude située' : dialog?.archiveV106 ? HOMEWORLD_ARCHIVE_V106.npcName : dialog?.cartographyObservationV105 ? 'Relevé depuis le point haut' : dialog?.cartographyV104 ? HOMEWORLD_CARTOGRAPHY_V104.npcName : dialog?.cntlipSiteId ? 'C’ntlip · réception originale du clan' : dialog?.navigation ? "Navigation de la cité" : selectedStreetContactV100?.role ?? selectedResidentV68?.role ?? (youthWelcome && selectedNpc?.id === "hunt-king" ? "Accueil du chef du clan" : youthWelcome && selectedPoint?.kind === "ship" ? "Quais du clan" : selectedNpc?.name ?? (selectedRegion ? yautjaLocalLabel(selectedRegion.region) : selectedPoint?.label) ?? "La Couronne de Cendres");
+  const title = dialog?.recoveryV111 ? 'Restaurer un point extérieur conservé' : dialog?.archivePlaqueV109 ? HOMEWORLD_ARCHIVE_PLAQUE_V109.npcName : dialog?.cargoV108 ? 'Intendante · lots et passage du quai' : dialog?.archiveComparisonV107 ? dialog.archiveComparisonV107.at==='table'?'Comparaison · objet C et contexte':'Archiviste · étude située' : dialog?.archiveV106 ? HOMEWORLD_ARCHIVE_V106.npcName : dialog?.cartographyObservationV105 ? 'Relevé depuis le point haut' : dialog?.cartographyV104 ? HOMEWORLD_CARTOGRAPHY_V104.npcName : dialog?.cntlipSiteId ? 'C’ntlip · réception originale du clan' : dialog?.navigation ? "Navigation de la cité" : selectedStreetContactV100?.role ?? selectedResidentV68?.role ?? (youthWelcome && selectedNpc?.id === "hunt-king" ? "Accueil du chef du clan" : youthWelcome && selectedPoint?.kind === "ship" ? "Quais du clan" : selectedNpc?.name ?? (selectedRegionNames ? yautjaLocalLabel(selectedRegionNames.region) : selectedPoint?.label) ?? "La Couronne de Cendres");
   const heroPlate = youthWelcome ? HOMEWORLD_YOUTH_PLATE_V69 : homeworldHeroPlate(save.appearance.presetId);
   const actorSpeed = Math.hypot(actor.vx, actor.vy);
   const youthSpeedV74 = Math.hypot(youthMotionV74.velocity.x, youthMotionV74.velocity.y);
